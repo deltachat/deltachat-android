@@ -232,6 +232,9 @@
     <string name="menu_message_details">Nachrichteninfo</string>
     <string name="menu_copy_to_clipboard">In Zwischenablage kopieren</string>
     <string name="share_invite_link">Einladungslink teilen</string>
+    <string name="invite_friends">Freunde einladen</string>
+    <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
+    <string name="invite_friends_text">Kontaktiere mich auf Delta Chat:\n%1$s</string>
     <string name="menu_copy_selection_to_clipboard">Auswahl kopieren</string>
     <string name="menu_copy_link_to_clipboard">Link kopieren</string>
     <string name="menu_copy_text_to_clipboard">Text kopieren</string>

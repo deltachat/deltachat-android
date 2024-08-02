@@ -239,6 +239,10 @@
     <string name="menu_delete_location">Elimino questa Posizione?</string>
     <string name="menu_message_details">Dettagli Messaggio</string>
     <string name="menu_copy_to_clipboard">Copia negli Appunti</string>
+    <string name="share_invite_link">Condividi Link d\'Invito</string>
+    <string name="invite_friends">Invita Gli Amici</string>
+    <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
+    <string name="invite_friends_text">Contattami su Delta Chat:\n%1$s</string>
     <string name="menu_copy_selection_to_clipboard">Copia Selezione</string>
     <string name="menu_copy_link_to_clipboard">Copia Link</string>
     <string name="menu_copy_text_to_clipboard">Copia Testo</string>
@@ -935,6 +939,7 @@
     <string name="chat_protection_broken_explanation">La crittografia end-to-end non può più essere garantita, probabilmente perché %1$s ha reinstallato Delta Chat o inviato un messaggio da un altro dispositivo.\n\nPuoi incontrarlo di persona e scansionare nuovamente il suo Codice QR per ristabilire la crittografia end-to-end garantita.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s richiede la crittografia end-to-end che non è ancora configurata per questa chat. Tocca per saperne di più.</string>
     <string name="invalid_unencrypted_explanation">Per stabilire la crittografia end-to-end, potresti incontrare i contatti di persona e scansionare il loro codice QR per presentarli.</string>
+    <string name="encryption_required_for_new_contact">È richiesta la crittografia end-to-end, ma non è ancora configurata per %1$s.\n\nPuoi condividere con loro il link d\'invito o incontrarli di persona e scansionare il loro Codice QR.</string>
     <string name="learn_more">Per Saperne di Più</string>
 
     <string name="devicemsg_self_deleted">Hai eliminato la chat \"Messaggi salvati\".\n\nℹ️ Per utilizzare nuovamente la funzione \"Messaggi salvati\", crea una nuova chat con te stesso.</string>

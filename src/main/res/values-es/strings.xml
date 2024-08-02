@@ -239,6 +239,10 @@
     <string name="menu_delete_location">¿Eliminar esta ubicación?</string>
     <string name="menu_message_details">Detalles del mensaje</string>
     <string name="menu_copy_to_clipboard">Copiar al portapapeles</string>
+    <string name="share_invite_link">Compartir enlace de invitación</string>
+    <string name="invite_friends">Invitar amigos</string>
+    <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
+    <string name="invite_friends_text">Contáctame en Delta Chat:\n%1$s</string>
     <string name="menu_copy_selection_to_clipboard">Copiar selección</string>
     <string name="menu_copy_link_to_clipboard">Copiar enlace</string>
     <string name="menu_copy_text_to_clipboard">Copiar texto</string>
@@ -935,6 +939,7 @@
     <string name="chat_protection_broken_explanation">El cifrado de extremo a extremo ya no se puede garantizar, probablemente porque %1$s reinstaló Delta Chat o envió un mensaje desde otro dispositivo.\n\nPueden encontrarse en persona y escanear su código QR nuevamente para restablecer el cifrado de extremo a extremo garantizado.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s requiere cifrado de extremo a extremo que aún no está configurado para este chat. Toca para obtener más información.</string>
     <string name="invalid_unencrypted_explanation">Para establecer un cifrado de extremo a extremo, puede reunirse con los contactos en persona y escanear su código QR.</string>
+    <string name="encryption_required_for_new_contact">Se requiere cifrado de extremo a extremo, pero aún no está disponible para %1$s.\n\nPuede compartir su enlace de invitación o reunirse en persona y escanear su código QR.</string>
     <string name="learn_more">Aprender más</string>
 
     <string name="devicemsg_self_deleted">Eliminaste los chats de los \"Mensajes guardados\". \n\nℹ️ Para volver a usar los\"Mensajes guardados\", debes crear un chat contigo mismo.</string>
@@ -1179,4 +1184,5 @@
     <string name="update_1_44_android">Novedades:\n\n❤️ ¡Sí! Esto era muy esperado: toque prolongadamente un mensaje para reaccionar\n\n🔗 Si no puede escanear códigos QR, compártalos como enlaces de invitación\n\n🔵 Los mensajes no leídos de todas las cuentas se cuentan y se muestran en el título ahora\n\n… y TONELADAS de correcciones de errores… %1$s\n\nAyuda a mejorar la aplicación: usa \"Configuración/Avanzado/Enviar estadísticas\" para ayudar a los desarrolladores a optimizar mejor el uso en el mundo real. Puedes revisar los datos antes de enviar</string>
     <string name="update_1_44_ios">Novedades:\n\n❤️ ¡Sí! Esto era muy esperado: toque prolongadamente un mensaje para reaccionar\n\n🫸 Notificaciones PUSH para proveedores que lo soporten, como https://nine.testrun.org\n\n🔗 Si no puede escanear códigos QR, compártalos como enlaces de invitación\n\n… y TONELADAS de correcciones de errores… %1$s</string>
     <string name="update_1_46_android">Nueva pantalla de bienvenida 🐣 y más:\n\n⚡️ Regístrese en servidores de chatmail rápidos y seguros (https://delta.chat/chatmail) o use servidores de correo electrónico clásicos\n\n👉 Notificaciones PUSH para cualquier servidor de chatmail\n\n👤 Presenta un amigo a otro de forma segura usando \"Adjuntar Contacto\"\n\n🥰 Reacciona con cualquier emoji\n\n📌 Ancla chats directamente desde los resultados de la búsqueda... y MUCHO más en %1$s</string>
-    </resources>
+    <string name="update_1_46_ios">Nueva pantalla inicial 🐣 y más:\n\n⚡️ Regístrese en servidores de chatmail rápidos y seguros (https://delta.chat/chatmail) o use servidores de correo electrónico clásicos\n\n👉 Notificaciones PUSH para cualquier servidor de chatmail\n\n👤 Reciba \"Contactos adjuntos\" y conéctese con sus amigos\n\n🥰 Selección de reacción más rápida... y MÁS en %1$s</string>
+</resources>
