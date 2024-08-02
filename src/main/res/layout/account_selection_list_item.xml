@@ -11,8 +11,8 @@
         android:background="?attr/conversation_list_item_background"
         android:paddingLeft="16dp"
         android:paddingStart="16dp"
-        android:paddingRight="10dp"
-        android:paddingEnd="10dp">
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="45dp"
@@ -89,16 +89,5 @@
     <ImageView android:id="@+id/unread_indicator"
                android:layout_width="24dp"
                android:layout_height="24dp"/>
-
-    <ImageButton
-        android:id="@+id/delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:padding="6dp"
-        android:contentDescription="@string/delete"
-        android:background="#00ffffff"
-        android:src="@drawable/ic_delete_white_24dp" />
 
 </org.thoughtcrime.securesms.accounts.AccountSelectionListItem>

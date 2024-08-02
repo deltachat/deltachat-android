@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.accounts;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 
 public class AccountSelectionListAdapter extends RecyclerView.Adapter
 {
+  private final @NonNull AccountSelectionListFragment fragment;
   private final @NonNull Context              context;
   private final @NonNull DcAccounts           accounts;
   private @NonNull int[]                      accountList = new int[0];
@@ -39,7 +41,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
       super(itemView);
     }
 
-    public abstract void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected, boolean isMuted);
+    public abstract void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected, boolean isMuted, AccountSelectionListFragment fragment);
     public abstract void unbind(@NonNull GlideRequests glideRequests);
   }
 
@@ -53,19 +55,14 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
           clickListener.onItemClick(getView());
         }
       });
-      getView().getDeleteBtn().setOnClickListener(view -> {
-        if (clickListener != null) {
-          clickListener.onDeleteButtonClick(getView().getAccountId());
-        }
-      });
     }
 
     public AccountSelectionListItem getView() {
       return (AccountSelectionListItem) itemView;
     }
 
-    public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected, boolean isMuted) {
-      getView().bind(glideRequests, accountId, self, name, addr, unreadCount, selected, isMuted);
+    public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected, boolean isMuted, AccountSelectionListFragment fragment) {
+      getView().bind(glideRequests, accountId, self, name, addr, unreadCount, selected, isMuted, fragment);
     }
 
     @Override
@@ -74,12 +71,13 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
     }
   }
 
-  public AccountSelectionListAdapter(@NonNull  Context context,
+  public AccountSelectionListAdapter(@NonNull  AccountSelectionListFragment fragment,
                                      @NonNull  GlideRequests glideRequests,
                                      @Nullable ItemClickListener clickListener)
   {
     super();
-    this.context       = context;
+    this.fragment      = fragment;
+    this.context       = fragment.getActivity();
     this.accounts      = DcHelper.getAccounts(context);
     this.li            = LayoutInflater.from(context);
     this.glideRequests = glideRequests;
@@ -116,12 +114,11 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
 
     ViewHolder holder = (ViewHolder) viewHolder;
     holder.unbind(glideRequests);
-    holder.bind(glideRequests, id, dcContact, name, addr, unreadCount, id == selectedAccountId, dcContext.isMuted());
+    holder.bind(glideRequests, id, dcContact, name, addr, unreadCount, id == selectedAccountId, dcContext.isMuted(), fragment);
   }
 
   public interface ItemClickListener {
     void onItemClick(AccountSelectionListItem item);
-    void onDeleteButtonClick(int accountId);
   }
 
   public void changeData(int[] ids, int selectedAccountId) {

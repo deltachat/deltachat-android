@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item android:title="@string/menu_mute"
+      android:id="@+id/menu_mute_notifications"/>
+
+  <item android:title="@string/delete"
+        android:id="@+id/delete"/>
+
+</menu>
