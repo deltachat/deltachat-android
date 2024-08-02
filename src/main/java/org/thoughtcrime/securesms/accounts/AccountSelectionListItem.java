@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.accounts;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -31,7 +32,6 @@ public class AccountSelectionListItem extends LinearLayout {
   private TextView        nameView;
   private ImageView       unreadIndicator;
   private ImageView       checkbox;
-  private ImageButton     deleteBtn;
 
   private int           accountId;
 
@@ -52,21 +52,17 @@ public class AccountSelectionListItem extends LinearLayout {
     this.nameView          = findViewById(R.id.name);
     this.unreadIndicator   = findViewById(R.id.unread_indicator);
     this.checkbox          = findViewById(R.id.checkbox);
-    this.deleteBtn         = findViewById(R.id.delete);
 
-    deleteBtn.setColorFilter(DynamicTheme.isDarkTheme(getContext())? Color.WHITE : Color.BLACK);
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected, boolean isMuted) {
+  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected, boolean isMuted, AccountSelectionListFragment fragment) {
     this.accountId     = accountId;
 
     Recipient recipient;
     if (accountId != DcContact.DC_CONTACT_ID_ADD_ACCOUNT) {
-      deleteBtn.setVisibility(selected? View.INVISIBLE : View.VISIBLE);
       recipient = new Recipient(getContext(), self, name);
     } else {
-      deleteBtn.setVisibility(View.GONE);
       recipient = null;
     }
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
@@ -85,6 +81,12 @@ public class AccountSelectionListItem extends LinearLayout {
 
     updateUnreadIndicator(unreadCount, isMuted);
     setText(name, addr);
+
+    if (accountId != DcContact.DC_CONTACT_ID_ADD_ACCOUNT) {
+      fragment.registerForContextMenu(this);
+    } else {
+      fragment.unregisterForContextMenu(this);
+    }
   }
 
   public void unbind(GlideRequests glideRequests) {
@@ -117,10 +119,6 @@ public class AccountSelectionListItem extends LinearLayout {
     } else {
       this.addrContainer.setVisibility(View.GONE);
     }
-  }
-
-  public ImageButton getDeleteBtn() {
-    return deleteBtn;
   }
 
   public int getAccountId() {

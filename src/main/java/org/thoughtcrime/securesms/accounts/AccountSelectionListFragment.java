@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -14,12 +16,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcAccounts;
+import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ConnectivityActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_ADD_ACCOUNT;
@@ -31,7 +35,7 @@ public class AccountSelectionListFragment extends DialogFragment
   @Override
   public void onActivityCreated(Bundle icicle) {
     super.onActivityCreated(icicle);
-    AccountSelectionListAdapter adapter = new AccountSelectionListAdapter(getActivity(),
+    AccountSelectionListAdapter adapter = new AccountSelectionListAdapter(this,
             GlideApp.with(getActivity()),
             new ListClickListener());
     recyclerView.setAdapter(adapter);
@@ -66,6 +70,71 @@ public class AccountSelectionListFragment extends DialogFragment
     return builder.setView(view).create();
   }
 
+  @Override
+  public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+    super.onCreateContextMenu(menu, v, menuInfo);
+    requireActivity().getMenuInflater().inflate(R.menu.account_item_context, menu);
+
+    AccountSelectionListItem listItem = (AccountSelectionListItem) v;
+    int accountId = listItem.getAccountId();
+    DcAccounts dcAccounts = DcHelper.getAccounts(getActivity());
+
+    if (accountId == dcAccounts.getSelectedAccount().getAccountId()) {
+      menu.findItem(R.id.delete).setVisible(false);
+    } else {
+      Util.redMenuItem(menu, R.id.delete);
+    }
+
+    if (dcAccounts.getAccount(accountId).isMuted()) {
+      menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);
+    }
+
+    // hack to make onContextItemSelected() work with DialogFragment,
+    // see https://stackoverflow.com/questions/15929026/oncontextitemselected-does-not-get-called-in-a-dialogfragment
+    MenuItem.OnMenuItemClickListener listener = item -> {
+      onContextItemSelected(item, accountId);
+      return true;
+    };
+    for (int i = 0, n = menu.size(); i < n; i++) {
+      menu.getItem(i).setOnMenuItemClickListener(listener);
+    }
+    // /hack
+  }
+
+  private void onContextItemSelected(MenuItem item, int accountId) {
+    switch (item.getItemId()) {
+    case R.id.delete:
+      onDeleteAccount(accountId);
+      break;
+    case R.id.menu_mute_notifications:
+      onToggleMute(accountId);
+      break;
+    }
+  }
+
+  private void onDeleteAccount(int accountId) {
+    Activity activity = getActivity();
+    AccountSelectionListFragment.this.dismiss();
+    if (activity == null) return;
+    DcAccounts accounts = DcHelper.getAccounts(activity);
+    new AlertDialog.Builder(activity)
+      .setTitle(accounts.getAccount(accountId).getNameNAddr())
+      .setMessage(R.string.forget_login_confirmation_desktop)
+      .setNegativeButton(R.string.cancel, (dialog, which) -> AccountManager.getInstance().showSwitchAccountMenu(activity))
+      .setPositiveButton(R.string.ok, (dialog2, which2) -> {
+          DcHelper.getNotificationCenter(activity).removeAllNotifiations(accountId);
+          accounts.removeAccount(accountId);
+          AccountManager.getInstance().showSwitchAccountMenu(activity);
+      })
+      .show();
+  }
+
+  private void onToggleMute(int accountId) {
+    DcAccounts dcAccounts = DcHelper.getAccounts(getActivity());
+    DcContext dcContext = dcAccounts.getAccount(accountId);
+    dcContext.setMuted(!dcContext.isMuted());
+    recyclerView.getAdapter().notifyDataSetChanged();
+  }
 
   private class ListClickListener implements AccountSelectionListAdapter.ItemClickListener {
 
@@ -79,24 +148,6 @@ public class AccountSelectionListFragment extends DialogFragment
       } else if (accountId != DcHelper.getAccounts(activity).getSelectedAccount().getAccountId()) {
         AccountManager.getInstance().switchAccountAndStartActivity(activity, accountId);
       }
-    }
-
-    @Override
-    public void onDeleteButtonClick(int accountId) {
-      Activity activity = getActivity();
-      AccountSelectionListFragment.this.dismiss();
-      if (activity == null) return;
-      DcAccounts accounts = DcHelper.getAccounts(activity);
-      new AlertDialog.Builder(activity)
-              .setTitle(accounts.getAccount(accountId).getNameNAddr())
-              .setMessage(R.string.forget_login_confirmation_desktop)
-              .setNegativeButton(R.string.cancel, (dialog, which) -> AccountManager.getInstance().showSwitchAccountMenu(activity))
-              .setPositiveButton(R.string.ok, (dialog2, which2) -> {
-                DcHelper.getNotificationCenter(activity).removeAllNotifiations(accountId);
-                accounts.removeAccount(accountId);
-                AccountManager.getInstance().showSwitchAccountMenu(activity);
-              })
-              .show();
     }
   }
 
