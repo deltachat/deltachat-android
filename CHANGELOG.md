@@ -1,5 +1,40 @@
 # Delta Chat Android Changelog
 
+## v1.46.8
+2024-08
+
+* "Share Contact" directly from a contact's profile
+* add "Share Invite Link" to "New Contact" screen
+* add "Invite Friends" to main menu
+* cleanup "Profile Switcher", long tap to delete profiles
+* "Mute Notifications" via a long tap directly from "Profile Switcher"
+* search non-english messages case-insensitive
+* display attached contact's names in summaries and quotes
+* protect From: and To: metadata where possible
+* do not reveal sender's language metadata in read receipts
+* allow importing contacts exported by Proton Mail
+* for chatmail profile, hide error prone "add contact manually" in favor to invite links
+* automatically expand "Password and Account / Advanced" if there were advanced options set before
+* show potentially dangerous menu entries with red color
+* remove "Switch Account" from main menu, as this very often used option causes confusion with finger memory and other menus;
+  instead, just tap your profile image in the upper left corner to add or to switch profiles
+* prevent creating contact without encryption in chatmail account via mailto:-links
+* no unarchiving of groups on member removal messages
+* improve caching of DNS results
+* focus on name for QR code titles
+* report first error instead of the last on connection failure
+* long tap email address in contact's profile for copying to clipboard
+* fix battery drain due to endless IMAP loop
+* fix: remove push notification toggle, it is not needed as raised false expectations
+* fix: keep "chatmail" state after failed reconfiguration
+* fix issues with failed backup imports
+* fix: avoid group creation on member removal messages
+* fix downloading partially downloaded messages
+* fix various networking bugs
+* update translations and local help
+* update to core 1.142.2
+
+
 ## v1.46.7
 2024-07
 
