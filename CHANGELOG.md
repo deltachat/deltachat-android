@@ -24,6 +24,7 @@
 * focus on name for QR code titles
 * report first error instead of the last on connection failure
 * long tap email address in contact's profile for copying to clipboard
+* fix battery drain due to endless IMAP loop
 * fix: remove push notification toggle, it is not needed as raised false expectations
 * fix: keep "chatmail" state after failed reconfiguration
 * fix issues with failed backup imports
