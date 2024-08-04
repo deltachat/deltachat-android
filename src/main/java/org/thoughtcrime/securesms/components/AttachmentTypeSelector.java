@@ -137,10 +137,10 @@ public class AttachmentTypeSelector extends PopupWindow {
       animateButtonIn(cameraButton, ANIMATION_DURATION / 2);
       animateButtonIn(videoButton, ANIMATION_DURATION / 2);
       animateButtonIn(imageButton, ANIMATION_DURATION / 3);
-      animateButtonIn(audioButton, ANIMATION_DURATION / 3);
+      animateButtonIn(contactButton, ANIMATION_DURATION / 3);
       animateButtonIn(locationButton, ANIMATION_DURATION / 4);
       animateButtonIn(documentButton, ANIMATION_DURATION / 4);
-      animateButtonIn(contactButton, 0);
+      animateButtonIn(audioButton, 0);
       animateButtonIn(closeButton, 0);
     }
   }
