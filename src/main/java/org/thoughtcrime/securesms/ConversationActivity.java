@@ -157,7 +157,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private static final int PICK_GALLERY        = 1;
   private static final int PICK_DOCUMENT       = 2;
-  private static final int INVITE_VIDEO_CHAT   = 3;
   private static final int PICK_CONTACT        = 4;
   private static final int GROUP_EDIT          = 6;
   private static final int TAKE_PHOTO          = 7;
@@ -385,8 +384,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       break;
     case PICK_DOCUMENT:
       setMedia(data.getData(), MediaType.DOCUMENT);
-      break;
-    case INVITE_VIDEO_CHAT:
       break;
     case PICK_CONTACT:
       addAttachmentContactInfo(data.getIntExtra(AttachContactActivity.CONTACT_ID_EXTRA, 0));
