@@ -64,10 +64,6 @@ public class DcChat {
       return getType() == DC_CHAT_TYPE_BROADCAST;
     }
 
-    public boolean canVideochat() {
-        return canSend() && !isSelfTalk();
-    }
-
     public boolean isHalfBlocked() {
       return isProtectionBroken() || isContactRequest();
     }
