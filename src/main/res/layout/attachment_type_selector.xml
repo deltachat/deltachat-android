@@ -198,7 +198,7 @@
                     android:id="@+id/invite_video_chat_button"
                     android:layout_width="53dp"
                     android:layout_height="53dp"
-                    android:src="@drawable/ic_headset_white_24dp"
+                    android:src="@drawable/baseline_call_24"
                     android:scaleType="center"
                     android:contentDescription="@string/videochat"
                     app:circleColor="@color/audio_icon"/>
