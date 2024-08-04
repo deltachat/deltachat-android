@@ -453,7 +453,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_show_map).setVisible(false);
     }
 
-    if (!DcHelper.isWebrtcConfigOk(dcContext) || !dcChat.canVideochat()) {
+    if (!DcHelper.isWebrtcConfigOk(dcContext) || !dcChat.canSend()) {
       menu.findItem(R.id.menu_videochat_invite).setVisible(false);
     }
 
