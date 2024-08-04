@@ -31,9 +31,6 @@
     <item android:title="@string/menu_mute"
         android:id="@+id/menu_mute_notifications"/>
 
-    <item android:id="@+id/menu_videochat_invite"
-        android:title="@string/videochat" />
-
     <item android:id="@+id/menu_show_map"
         android:title="@string/tab_map"
         android:icon="@drawable/ic_map_white_24dp"

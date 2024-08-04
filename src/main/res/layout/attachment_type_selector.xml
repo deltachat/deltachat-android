@@ -195,19 +195,20 @@
                 android:orientation="vertical">
 
                 <org.thoughtcrime.securesms.components.CircleColorImageView
-                    android:id="@+id/audio_button"
+                    android:id="@+id/invite_video_chat_button"
                     android:layout_width="53dp"
                     android:layout_height="53dp"
                     android:src="@drawable/ic_headset_white_24dp"
                     android:scaleType="center"
-                    android:contentDescription="@string/audio"
+                    android:contentDescription="@string/videochat"
                     app:circleColor="@color/audio_icon"/>
 
                 <TextView android:layout_marginTop="10dp"
+                    android:id="@+id/invite_video_chat_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/AttachmentTypeLabel"
-                    android:text="@string/audio"/>
+                    android:text="@string/videochat"/>
 
             </LinearLayout>
 
