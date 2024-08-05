@@ -44,7 +44,7 @@
         <item name="theme_type">light</item>
         <item name="actionBarStyle">@style/TextSecure.LightActionBar</item>
         <item name="actionBarTabBarStyle">@style/TextSecure.LightActionBar.TabBar</item>
-        <item name="actionModeBackground">@color/gray50</item>
+        <item name="actionModeBackground">@color/action_mode_menu_bar</item>
         <item name="colorPrimary">@color/delta_primary</item>
         <item name="colorPrimaryDark">@color/delta_primary_dark</item>
 
