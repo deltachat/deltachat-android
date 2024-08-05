@@ -372,7 +372,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     switch (reqCode) {
     case PICK_GALLERY:
       MediaType mediaType;
-
       String mimeType = MediaUtil.getMimeType(this, data.getData());
 
       if      (MediaUtil.isGif(mimeType))   mediaType = MediaType.GIF;
@@ -380,23 +379,29 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       else                                  mediaType = MediaType.IMAGE;
 
       setMedia(data.getData(), mediaType);
+      break;
 
-      break;
     case PICK_DOCUMENT:
-      setMedia(data.getData(), MediaType.DOCUMENT);
+      final String docMimeType = MediaUtil.getMimeType(this, data.getData());
+      final MediaType docMediaType = MediaUtil.isAudioType(docMimeType) ? MediaType.AUDIO : MediaType.DOCUMENT;
+      setMedia(data.getData(), docMediaType);
       break;
+
     case PICK_CONTACT:
       addAttachmentContactInfo(data.getIntExtra(AttachContactActivity.CONTACT_ID_EXTRA, 0));
       break;
+
     case GROUP_EDIT:
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
       break;
+
     case TAKE_PHOTO:
       if (attachmentManager.getImageCaptureUri() != null) {
         setMedia(attachmentManager.getImageCaptureUri(), MediaType.IMAGE);
       }
       break;
+
     case RECORD_VIDEO:
       Uri uri = null;
       if (data!=null) { uri = data.getData(); }
@@ -408,11 +413,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         Toast.makeText(this, "No video returned from system", Toast.LENGTH_LONG).show();
       }
       break;
+
     case PICK_LOCATION:
       break;
+
     case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
       setMedia(data.getData(), MediaType.IMAGE);
       break;
+
     case SMS_DEFAULT:
       initializeSecurity(isSecureText, isDefaultSms);
       break;
