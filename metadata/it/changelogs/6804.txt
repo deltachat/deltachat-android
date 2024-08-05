@@ -1,8 +1,0 @@
-- "Reazioni": tocca a lungo un messaggio per reagire ad esso
-- Se non riesci a scansionare i codici QR, condividili come "link di invito"
-- I messaggi non letti di tutti gli account ora vengono conteggiati e mostrati nel titolo
-- Rimosso limite di invio di webxdc
-- Gli elementi dell'elenco chat a tocco prolungato ora consentono di disattivare/attivare l'audio delle chat direttamente
-- Richiede lo sblocco segreto del sistema prima di aprire "Password & Account"
-- Nuova opzione "Impostazioni/Avanzate/Leggi Rubrica di Sistema"
-- Tonnellate di correzioni bug
