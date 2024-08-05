@@ -104,10 +104,12 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
       name = context.getString(R.string.add_account);
     } else {
       dcContact = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
-      addr = dcContact.getAddr();
       name = dcContext.getConfig("displayname");
       if (TextUtils.isEmpty(name)) {
-        name = addr;
+        name = dcContact.getAddr();
+      }
+      if (!dcContext.isChatmail()) {
+        addr = dcContact.getAddr();
       }
       unreadCount = dcContext.getFreshMsgs().length;
     }
