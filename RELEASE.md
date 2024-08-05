@@ -83,17 +83,8 @@ on <https://play.google.com/apps/publish/>:
 
 ## Release on F-Droid
 
-10. Add "4" at the end of versionCode to calculate F-Droid version code number.
-    E.g. for versionCode 456 you get number 4564
-    (this version conversion is due to `VercodeOperation` in
-    <https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.yml>
-    metadata file, see <https://f-droid.org/docs/Build_Metadata_Reference/#VercodeOperation> for
-    documentation)  
-    Add `metadata/en-US/changelogs/4564.txt` file with a changelog for F-Droid.
-    The changelog must not be longer than 500 characters.
-
-11. make sure, everything is pushed, then:  
-    $ git tag v1.2.1; git push --tags
+10. make sure, everything is pushed, then:  
+    $ git tag v1.2.1 COMMIT; git push --tags
     
 F-Droid picks on the tags starting with "v" and builds the version.
 This may take some days.
@@ -103,7 +94,7 @@ This may take some days.
 
 on <https://developer.amazon.com/dashboard>:
 
-12. a) for "Delta Chat", select "Add upcoming version" on the left
+11. a) for "Delta Chat", select "Add upcoming version" on the left
     b) at "Step 1 / Existing file(s)" hit "Replace", upload the APK from above
     c) on the "Step 1" page, add "Release notes" from CHANGELOG.md, hit "Next"
     d) on "Step 2" page: "Does your app collect or transfer user data to third parties?" -> No, then "Next"
@@ -115,7 +106,7 @@ on <https://developer.amazon.com/dashboard>:
 
 on <https://developer.huawei.com/consumer/en/appgallery>:
 
-13. a) go to "Upload your app / Android / Delta Chat / Update", again "Update" upper right
+12. a) go to "Upload your app / Android / Delta Chat / Update", again "Update" upper right
     b) "Manage Packages / Upload", upload the APK from above, hit "Save"
     c) Update "App Information / New Features", hit "Save", then "Next"
     d) Hit "Submit"; on the next page, confirm version and language
