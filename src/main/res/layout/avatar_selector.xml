@@ -90,10 +90,10 @@
 					android:id="@+id/remove_button"
 					android:layout_width="53dp"
 					android:layout_height="53dp"
-					android:src="@drawable/ic_delete_white_24dp"
+					android:src="?menu_trash_icon"
 					android:scaleType="center"
 					android:contentDescription="@string/profile_image_delete"
-					app:circleColor="#FD3C00"/>
+					app:circleColor="?attr/close_icon_color"/>
 
 				<TextView
 					android:id="@+id/remove_button_label"
