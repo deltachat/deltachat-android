@@ -25,7 +25,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-    <!-- normal permissions - adding them here is enough -->
+    <!-- normal/instant permissions - adding them here is enough -->
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -39,6 +39,7 @@
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
 
     <!-- force compiling emojipicker on sdk<21; runtime checks are required then -->
     <uses-sdk tools:overrideLibrary="androidx.emoji2.emojipicker"/>
@@ -361,14 +362,15 @@
         android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
     </activity>
 
-    <service android:name=".connect.KeepAliveService" android:enabled="true" />
+    <service android:name=".connect.KeepAliveService" android:foregroundServiceType="dataSync" android:enabled="true" />
 
-    <service android:name=".geolocation.LocationBackgroundService"  />
+    <service android:name=".geolocation.LocationBackgroundService" android:foregroundServiceType="location" />
 
-    <service android:name=".service.GenericForegroundService" />
+    <service android:name=".service.GenericForegroundService" android:foregroundServiceType="dataSync" />
 
     <service
         android:name=".service.IPCAddAccountsService"
+        android:foregroundServiceType="dataSync"
         android:enabled="true"
         android:exported="true"
         >
