@@ -8,7 +8,7 @@ Delta Chat is a decentralized and secure messenger app
 
 💬 Reliable instant messaging with multi-profile and multi-device support.
 
-⚡️ Sign-up is easy - you don’t need a phone number or any private data.
+⚡️ Sign-up easily using secure fast chatmail servers. You don’t need a phone number or any private data.
 
 📧 Can be used as an e-mail client with your existing e-mail account to read your inbox as chats.
 
