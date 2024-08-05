@@ -1,6 +1,0 @@
-- sincronizza le modifiche alle opzioni "Nome Tuo Profilo", "Mostra E-Mails Tradizionali", "Ricevute di Lettura" su tutti i dispositivi
-- rimosso il limite del ricevitore sulla dimensione .xdc
-- corretti gli errori di accesso per provider come 163.com
-- corretti gli errori di decrittazione quando si utilizzano più chiavi private
-- corretti gli errori di blocco del database sugli aggiornamenti webxdc
-- aggiornate le traduzioni
