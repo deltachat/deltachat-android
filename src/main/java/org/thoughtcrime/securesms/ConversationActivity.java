@@ -157,7 +157,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private static final int PICK_GALLERY        = 1;
   private static final int PICK_DOCUMENT       = 2;
-  private static final int PICK_AUDIO          = 3;
   private static final int PICK_CONTACT        = 4;
   private static final int GROUP_EDIT          = 6;
   private static final int TAKE_PHOTO          = 7;
@@ -373,7 +372,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     switch (reqCode) {
     case PICK_GALLERY:
       MediaType mediaType;
-
       String mimeType = MediaUtil.getMimeType(this, data.getData());
 
       if      (MediaUtil.isGif(mimeType))   mediaType = MediaType.GIF;
@@ -381,26 +379,29 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       else                                  mediaType = MediaType.IMAGE;
 
       setMedia(data.getData(), mediaType);
+      break;
 
-      break;
     case PICK_DOCUMENT:
-      setMedia(data.getData(), MediaType.DOCUMENT);
+      final String docMimeType = MediaUtil.getMimeType(this, data.getData());
+      final MediaType docMediaType = MediaUtil.isAudioType(docMimeType) ? MediaType.AUDIO : MediaType.DOCUMENT;
+      setMedia(data.getData(), docMediaType);
       break;
-    case PICK_AUDIO:
-      setMedia(data.getData(), MediaType.AUDIO);
-      break;
+
     case PICK_CONTACT:
       addAttachmentContactInfo(data.getIntExtra(AttachContactActivity.CONTACT_ID_EXTRA, 0));
       break;
+
     case GROUP_EDIT:
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
       break;
+
     case TAKE_PHOTO:
       if (attachmentManager.getImageCaptureUri() != null) {
         setMedia(attachmentManager.getImageCaptureUri(), MediaType.IMAGE);
       }
       break;
+
     case RECORD_VIDEO:
       Uri uri = null;
       if (data!=null) { uri = data.getData(); }
@@ -412,11 +413,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         Toast.makeText(this, "No video returned from system", Toast.LENGTH_LONG).show();
       }
       break;
+
     case PICK_LOCATION:
       break;
+
     case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
       setMedia(data.getData(), MediaType.IMAGE);
       break;
+
     case SMS_DEFAULT:
       initializeSecurity(isSecureText, isDefaultSms);
       break;
@@ -451,10 +455,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (!Prefs.isLocationStreamingEnabled(this)) {
       menu.findItem(R.id.menu_show_map).setVisible(false);
-    }
-
-    if (!DcHelper.isWebrtcConfigOk(dcContext) || !dcChat.canSend()) {
-      menu.findItem(R.id.menu_videochat_invite).setVisible(false);
     }
 
     if (!dcChat.canSend() || dcChat.isBroadcast() || dcChat.isMailingList()) {
@@ -532,7 +532,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_search_down:           handleMenuSearchNext(true);        return true;
       case android.R.id.home:               handleReturnToConversationList();  return true;
       case R.id.menu_ephemeral_messages:    handleEphemeralMessages();         return true;
-      case R.id.menu_videochat_invite:      handleVideochatInvite();           return true;
     }
 
     return false;
@@ -573,10 +572,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       EphemeralMessagesDialog.show(this, preselected, duration -> {
         dcContext.setChatEphemeralTimer(chatId, (int) duration);
       });
-  }
-
-  private void handleVideochatInvite() {
-    new VideochatUtil().invite(this, chatId);
   }
 
   private void handleReturnToConversationList() {
@@ -940,8 +935,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       AttachmentManager.selectGallery(this, PICK_GALLERY); break;
     case AttachmentTypeSelector.ADD_DOCUMENT:
       AttachmentManager.selectDocument(this, PICK_DOCUMENT); break;
-    case AttachmentTypeSelector.ADD_SOUND:
-      AttachmentManager.selectAudio(this, PICK_AUDIO); break;
+    case AttachmentTypeSelector.INVITE_VIDEO_CHAT:
+      new VideochatUtil().invite(this, chatId); break;
     case AttachmentTypeSelector.ADD_CONTACT_INFO:
       startContactChooserActivity(); break;
     case AttachmentTypeSelector.ADD_LOCATION:

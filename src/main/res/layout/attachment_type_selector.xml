@@ -143,25 +143,25 @@
             <!-- second row -->
 
             <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:gravity="center"
-                          android:layout_weight="1"
-                          android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1">
 
                 <org.thoughtcrime.securesms.components.CircleColorImageView
-                    android:id="@+id/audio_button"
+                    android:id="@+id/contact_button"
                     android:layout_width="53dp"
                     android:layout_height="53dp"
-                    android:src="@drawable/ic_headset_white_24dp"
+                    android:src="@drawable/ic_person_white_24dp"
                     android:scaleType="center"
-                    android:contentDescription="@string/audio"
-                    app:circleColor="@color/audio_icon"/>
+                    android:contentDescription="@string/contact"
+                    app:circleColor="@color/contact_icon"/>
 
                 <TextView android:layout_marginTop="10dp"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          style="@style/AttachmentTypeLabel"
-                          android:text="@string/audio"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AttachmentTypeLabel"
+                    android:text="@string/contact"/>
 
             </LinearLayout>
 
@@ -189,25 +189,26 @@
             </LinearLayout>
 
             <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:gravity="center"
-                          android:orientation="vertical"
-                          android:layout_weight="1">
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <org.thoughtcrime.securesms.components.CircleColorImageView
-                        android:id="@+id/contact_button"
-                        android:layout_width="53dp"
-                        android:layout_height="53dp"
-                        android:src="@drawable/ic_person_white_24dp"
-                        android:scaleType="center"
-                        android:contentDescription="@string/contact"
-                        app:circleColor="@color/contact_icon"/>
+                    android:id="@+id/invite_video_chat_button"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:src="@drawable/baseline_call_24"
+                    android:scaleType="center"
+                    android:contentDescription="@string/videochat"
+                    app:circleColor="@color/audio_icon"/>
 
                 <TextView android:layout_marginTop="10dp"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          style="@style/AttachmentTypeLabel"
-                          android:text="@string/contact"/>
+                    android:id="@+id/invite_video_chat_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AttachmentTypeLabel"
+                    android:text="@string/videochat"/>
 
             </LinearLayout>
 
