@@ -46,24 +46,6 @@
             android:textSize="16sp"
             tools:text="Frieeeeeeedrich Nieeeeeeeeeetzsche" />
 
-        <LinearLayout android:id="@+id/addr_container"
-                      android:orientation="horizontal"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content">
-
-            <TextView android:id="@+id/addr"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:textDirection="ltr"
-                      android:singleLine="true"
-                      android:ellipsize="marquee"
-                      android:textAppearance="?android:attr/textAppearanceSmall"
-                      android:textSize="14sp"
-                      android:fontFamily="sans-serif-light"
-                      tools:text="user@example.com" />
-
-        </LinearLayout>
-
     </LinearLayout>
 
     <org.thoughtcrime.securesms.components.emoji.EmojiTextView
