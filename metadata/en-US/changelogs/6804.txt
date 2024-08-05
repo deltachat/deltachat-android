@@ -1,8 +1,0 @@
-- "Reactions": long tap a message to react to it
-- If you cannot scan QR codes, share them as "invite links"
-- Unread messages of all accounts are counted and shown in title now
-- Webxdc sending limit removed
-- Long-tapping chatlist items now allow to mute/unmute chats directly
-- Ask for system unlock secret before opening "Password & Account"
-- New option "Settings / Advanced / Read System Address Book"
-- Tons of bug fixes
