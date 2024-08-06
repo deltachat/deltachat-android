@@ -375,6 +375,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     menu.clear();
     MenuInflater inflater = this.getMenuInflater();
     inflater.inflate(R.menu.media_preview, menu);
+    Util.redMenuItem(menu, R.id.delete);
 
     if (!isMediaInDb()) {
       menu.findItem(R.id.media_preview__overview).setVisible(false);
