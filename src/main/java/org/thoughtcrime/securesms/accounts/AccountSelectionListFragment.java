@@ -117,16 +117,17 @@ public class AccountSelectionListFragment extends DialogFragment
     AccountSelectionListFragment.this.dismiss();
     if (activity == null) return;
     DcAccounts accounts = DcHelper.getAccounts(activity);
-    new AlertDialog.Builder(activity)
+    AlertDialog dialog = new AlertDialog.Builder(activity)
       .setTitle(accounts.getAccount(accountId).getNameNAddr())
       .setMessage(R.string.forget_login_confirmation_desktop)
-      .setNegativeButton(R.string.cancel, (dialog, which) -> AccountManager.getInstance().showSwitchAccountMenu(activity))
-      .setPositiveButton(R.string.ok, (dialog2, which2) -> {
+      .setNegativeButton(R.string.cancel, (d, which) -> AccountManager.getInstance().showSwitchAccountMenu(activity))
+      .setPositiveButton(R.string.delete, (d2, which2) -> {
           DcHelper.getNotificationCenter(activity).removeAllNotifiations(accountId);
           accounts.removeAccount(accountId);
           AccountManager.getInstance().showSwitchAccountMenu(activity);
       })
       .show();
+    Util.redPositiveButton(dialog);
   }
 
   private void onToggleMute(int accountId) {

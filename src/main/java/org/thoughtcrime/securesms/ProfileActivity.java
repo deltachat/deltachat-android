@@ -595,13 +595,14 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           }).show();
     }
     else {
-      new AlertDialog.Builder(this)
+      AlertDialog dialog = new AlertDialog.Builder(this)
           .setMessage(R.string.ask_block_contact)
           .setCancelable(true)
           .setNegativeButton(android.R.string.cancel, null)
-          .setPositiveButton(R.string.menu_block_contact, (dialog, which) -> {
+          .setPositiveButton(R.string.menu_block_contact, (d, which) -> {
             dcContext.blockContact(contactId, 1);
           }).show();
+      Util.redPositiveButton(dialog);
     }
   }
 

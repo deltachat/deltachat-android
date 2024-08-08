@@ -299,8 +299,8 @@ public class ProfileSettingsFragment extends Fragment
             readableToDelList.append(dcContext.getContact(toDelId).getDisplayName());
           }
           DcChat dcChat = dcContext.getChat(chatId);
-          new AlertDialog.Builder(getContext())
-              .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+          AlertDialog dialog = new AlertDialog.Builder(getContext())
+              .setPositiveButton(R.string.remove_desktop, (d, which) -> {
                 for (Integer toDelId : toDelIds) {
                   dcContext.removeContactFromChat(chatId, toDelId);
                 }
@@ -309,6 +309,7 @@ public class ProfileSettingsFragment extends Fragment
               .setNegativeButton(android.R.string.cancel, null)
               .setMessage(getString(dcChat.isBroadcast()? R.string.ask_remove_from_broadcast : R.string.ask_remove_members, readableToDelList))
               .show();
+          Util.redPositiveButton(dialog);
           return true;
       }
       return false;

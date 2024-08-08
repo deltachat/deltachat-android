@@ -365,7 +365,8 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       finish();
     });
     builder.setNegativeButton(android.R.string.cancel, null);
-    builder.show();
+    AlertDialog dialog = builder.show();
+    Util.redPositiveButton(dialog);
   }
 
   @Override

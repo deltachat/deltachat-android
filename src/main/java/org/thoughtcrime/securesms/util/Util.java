@@ -41,6 +41,7 @@ import android.view.accessibility.AccessibilityManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.ComposeText;
@@ -92,11 +93,21 @@ public class Util {
     return spanned;
   }
 
+  private static final int redDestructiveColor = 0xffff0c16; // typical "destructive red" for light/dark mode
+
   public static void redMenuItem(Menu menu, int id) {
     MenuItem item = menu.findItem(id);
     SpannableString s = new SpannableString(item.getTitle());
-    s.setSpan(new ForegroundColorSpan(0xffff0c16 /*typical "destructive red" for light/dark mode*/), 0, s.length(), 0);
+    s.setSpan(new ForegroundColorSpan(redDestructiveColor), 0, s.length(), 0);
     item.setTitle(s);
+  }
+
+  public static void redPositiveButton(AlertDialog dialog) {
+    try {
+      dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(redDestructiveColor);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   public static @NonNull int[] appendInt(@Nullable int[] cur, int val) {
