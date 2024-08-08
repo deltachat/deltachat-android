@@ -10,9 +10,6 @@ repositories {
         url "https://www.jitpack.io"
         name 'JitPack Github wrapper'
     }
-    flatDir {
-        dirs 'vendor'
-    }
 }
 
 android {
@@ -165,10 +162,10 @@ dependencies {
     implementation 'androidx.work:work-runtime:2.8.1'
     implementation 'androidx.emoji2:emoji2-emojipicker:1.4.0'
     implementation 'com.google.guava:guava:29.0-android'
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.6@aar' // plays video and audio
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.6@aar'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.6' // plays video and audio
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.6'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.journeyapps:zxing-android-embedded:3.4.0@aar' // QR Code scanner
+    implementation 'com.journeyapps:zxing-android-embedded:3.4.0' // QR Code scanner
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1' // used as JSON library
     implementation 'com.google.code.gson:gson:2.9.1' // used as JSON library. Don't upgrade to 2.10.1: https://github.com/deltachat/deltachat-android/pull/2610
     implementation "me.leolin:ShortcutBadger:1.1.16" // display messagecount on the home screen icon.
@@ -190,9 +187,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
     implementation 'com.annimon:stream:1.1.8' // brings future java streams api to SDK Version < 24
-    implementation 'com.codewaves.stickyheadergrid:stickyheadergrid:0.9.4@aar' // glues the current time segment text in the gallery to the top.
 
-    implementation 'com.getkeepsafe.relinker:relinker:1.4.1@aar' // required by safe-content-resolver
     // Replacement for ContentResolver
     // that protects against the Surreptitious Sharing attack.
     // <https://github.com/cketti/SafeContentResolver>
