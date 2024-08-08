@@ -33,7 +33,7 @@ android {
         applicationId "com.b44t.messenger"
         multiDexEnabled true
 
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 33
 
         vectorDrawables.useSupportLibrary = true
@@ -191,7 +191,7 @@ dependencies {
     // Replacement for ContentResolver
     // that protects against the Surreptitious Sharing attack.
     // <https://github.com/cketti/SafeContentResolver>
-    implementation 'de.cketti.safecontentresolver:safe-content-resolver-v14:1.0.0'
+    implementation 'de.cketti.safecontentresolver:safe-content-resolver-v21:1.0.0'
 
     gplayImplementation('com.google.firebase:firebase-messaging:23.4.1') { // for PUSH notifications
         exclude group: 'com.google.firebase', module: 'firebase-core'
