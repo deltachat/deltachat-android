@@ -183,7 +183,7 @@ dependencies {
     implementation 'com.pnikosis:materialish-progress:1.5' // used only in the "Progress Wheel" in Share Activity.
     implementation 'com.soundcloud.android:android-crop:1.0.1@aar' // used for profile and group avatar selection in Android SDK<19
     implementation 'com.nineoldandroids:library:2.4.0' // DEPRECATED! Used to slide in the half-camera.
-    implementation 'com.github.deltachat:TextDrawable:1.0.1'  // number of unread messages,
+    implementation 'com.github.amulyakhare:TextDrawable:558677ea31'  // number of unread messages,
     // the one-letter circle for the contacts (when there is not avatar) and a white background.
     implementation 'com.googlecode.mp4parser:isoparser:1.0.6' // MP4 recoding; upgrading eg. to 1.1.22 breaks recoding, however, i have not investigated further, just reset to 1.0.6
     implementation ('com.davemorrissey.labs:subsampling-scale-image-view:3.6.0') { // for the zooming on photos / media
