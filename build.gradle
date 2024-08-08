@@ -11,7 +11,9 @@ repositories {
         url "https://www.jitpack.io"
         name 'JitPack Github wrapper'
     }
-    jcenter()
+    flatDir {
+        dirs 'vendor'
+    }
 }
 
 android {
