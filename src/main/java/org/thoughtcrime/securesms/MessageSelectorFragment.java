@@ -22,6 +22,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StorageUtil;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.util.Set;
 
@@ -66,15 +67,16 @@ public abstract class MessageSelectorFragment
       dcChat.isDeviceTalk()? R.plurals.ask_delete_messages_simple : R.plurals.ask_delete_messages,
       messageIds.length, messageIds.length);
 
-    new AlertDialog.Builder(getActivity())
+    AlertDialog dialog = new AlertDialog.Builder(getActivity())
             .setMessage(text)
             .setCancelable(true)
-            .setPositiveButton(R.string.delete, (dialog, which) -> {
+            .setPositiveButton(R.string.delete, (d, which) -> {
                 dcContext.deleteMsgs(messageIds);
                 if (actionMode != null) actionMode.finish();
             })
             .setNegativeButton(android.R.string.cancel, null)
             .show();
+    Util.redPositiveButton(dialog);
   }
 
   protected void handleSaveAttachment(final Set<DcMsg> messageRecords) {
