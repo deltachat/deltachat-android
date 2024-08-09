@@ -162,6 +162,7 @@
     <string name="video">Video</string>
     <string name="documents">Documents</string>
     <string name="contact">Contact</string>
+    <string name="bot">Bot</string>
     <string name="camera">Camera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Capture</string>
