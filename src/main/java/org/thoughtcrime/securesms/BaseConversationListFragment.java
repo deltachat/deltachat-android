@@ -7,6 +7,7 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -246,17 +247,26 @@ public abstract class BaseConversationListFragment extends Fragment implements A
 
   @SuppressLint("StaticFieldLeak")
   private void handleDeleteAllSelected() {
-    final DcContext            dcContext          = DcHelper.getContext(requireActivity());
-    int                        conversationsCount = getListAdapter().getBatchSelections().size();
-    AlertDialog.Builder        alert              = new AlertDialog.Builder(requireActivity());
-    alert.setMessage(requireActivity().getResources().getQuantityString(R.plurals.ask_delete_chat,
-                                                                    conversationsCount, conversationsCount));
+    final Activity activity = requireActivity();
+    final DcContext dcContext = DcHelper.getContext(activity);
+    final Set<Long> selectedChats = getListAdapter().getBatchSelections();
+
+    final int chatsCount = selectedChats.size();
+    final String alertText;
+    if (chatsCount == 1) {
+      long chatId = selectedChats.iterator().next();
+      alertText = activity.getResources().getString(R.string.ask_delete_named_chat, dcContext.getChat((int)chatId).getName());
+    } else {
+      alertText = activity.getResources().getQuantityString(R.plurals.ask_delete_chat, chatsCount, chatsCount);
+    }
+
+    AlertDialog.Builder alert = new AlertDialog.Builder(activity);
+    alert.setMessage(alertText);
     alert.setCancelable(true);
 
     alert.setPositiveButton(R.string.delete, (dialog, which) -> {
-      final Set<Long> selectedConversations = getListAdapter().getBatchSelections();
 
-      if (!selectedConversations.isEmpty()) {
+      if (!selectedChats.isEmpty()) {
         new AsyncTask<Void, Void, Void>() {
           private ProgressDialog dialog;
 
@@ -271,7 +281,7 @@ public abstract class BaseConversationListFragment extends Fragment implements A
           @Override
           protected Void doInBackground(Void... params) {
             int accountId = dcContext.getAccountId();
-            for (long chatId : selectedConversations) {
+            for (long chatId : selectedChats) {
               DcHelper.getNotificationCenter(requireContext()).removeNotifications(accountId, (int) chatId);
               dcContext.deleteChat((int) chatId);
               DirectShareUtil.clearShortcut(requireContext(), (int) chatId);
