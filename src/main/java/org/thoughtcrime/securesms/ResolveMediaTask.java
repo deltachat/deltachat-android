@@ -17,7 +17,6 @@ import java.util.HashSet;
 import static org.thoughtcrime.securesms.util.MediaUtil.getMimeType;
 
 import de.cketti.safecontentresolver.SafeContentResolver;
-import de.cketti.safecontentresolver.SafeContentResolverCompat;
 
 public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
 
@@ -50,7 +49,7 @@ public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
                 String fileName = null;
                 Long fileSize = null;
 
-                SafeContentResolver safeContentResolver = SafeContentResolverCompat.newInstance(contextRef.get());
+                SafeContentResolver safeContentResolver = SafeContentResolver.newInstance(contextRef.get());
                 inputStream = safeContentResolver.openInputStream(uri);
 
                 if (inputStream == null) {

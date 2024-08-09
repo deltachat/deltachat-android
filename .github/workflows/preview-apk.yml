@@ -35,13 +35,6 @@ jobs:
         with:
           ndk-version: r23c
 
-      - name: Compile core
-        env:
-          ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
-        run: |
-          export PATH="${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/"
-          scripts/install-toolchains.sh && scripts/ndk-make.sh
-
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
 
