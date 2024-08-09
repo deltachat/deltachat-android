@@ -189,7 +189,6 @@
     <string name="menu_add_attachment">첨부 파일 추가</string>
     <string name="menu_leave_group">그룹 나가기</string>
     <string name="menu_delete_chat">채팅 삭제</string>
-    <string name="ask_delete_named_chat">메시지 \"%1$s\"을 지우려는 것이 확실한가요?</string>
     <string name="menu_delete_messages">메시지 삭제</string>
     <string name="delete_contact">연락처 삭제</string>
     <string name="menu_delete_location">이 위치를 삭제하시겠습니까?</string>
@@ -291,6 +290,7 @@
     <plurals name="ask_delete_chat">
         <item quantity="other">채팅 %d을/를 삭제하시겠습니까? 대화 상대의 메시지는 더 이상 대화 목록에 표시되지 않고 서버에 남아 있습니다.</item>
     </plurals>
+    <string name="ask_delete_named_chat">메시지 \"%1$s\"을 지우려는 것이 확실한가요?</string>
     <string name="ask_delete_message">이 메시지를 삭제하시겠습니까?</string>
     <plurals name="ask_delete_messages">
         <item quantity="other">%d개의 메시지를 이 곳과 서버에서 삭제하시겠습니까?</item>

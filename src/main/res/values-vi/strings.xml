@@ -214,7 +214,6 @@
     <string name="menu_delete_chat">Xóa cuộc trò chuyện</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Xóa cuộc trò chuyện</string>
-    <string name="ask_delete_named_chat">Bạn có chắc chắn muốn xóa \"%1$s\" không?</string>
     <string name="menu_delete_messages">Xóa tin nhắn</string>
     <string name="delete_contact">Xóa liên hệ</string>
     <string name="menu_delete_location">Xóa vị trí này?</string>
@@ -323,6 +322,7 @@
     <plurals name="ask_delete_chat">
         <item quantity="other">Xóa cuộc trò chuyện %d? Nó sẽ không còn được hiển thị trong danh sách trò chuyện nữa; tin nhắn của nó sẽ vẫn còn trên máy chủ.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Bạn có chắc chắn muốn xóa \"%1$s\" không?</string>
     <string name="ask_delete_message">Bạn có chắc chắn muốn xóa tin nhắn này?</string>
     <plurals name="ask_delete_messages">
         <item quantity="other">Xóa %d tin nhắn ở đây và trên máy chủ?</item>

@@ -196,7 +196,6 @@
     <string name="menu_delete_chat">Hapus obrolan</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Hapus Obrolan</string>
-    <string name="ask_delete_named_chat">Apakah anda yakin ingin menghapus \"%1$s\"?</string>
     <string name="menu_delete_messages">Hapus pesan</string>
     <string name="delete_contact">Hapus kontak</string>
     <string name="menu_delete_location">Hapus lokasi ini?</string>
@@ -291,6 +290,7 @@
     <plurals name="ask_delete_chat">
         <item quantity="other">Hapus %d obrolan? Obrolan ini akan menghilang dari daftar tetapi pesan-pesannya akan tetap tersimpan di server.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Apakah anda yakin ingin menghapus \"%1$s\"?</string>
     <plurals name="ask_delete_messages">
         <item quantity="other">Hapus %d pesan disini dan di server?</item>
     </plurals>

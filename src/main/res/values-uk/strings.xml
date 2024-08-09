@@ -241,7 +241,6 @@
     <string name="menu_delete_chat">Видалити чат</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Очистити чат</string>
-    <string name="ask_delete_named_chat">Ви впевнені, що хочете видалити \"%1$s\"?</string>
     <string name="menu_delete_messages">Видалити повідомлення</string>
     <string name="delete_contact">Видалити контакт</string>
     <string name="menu_delete_location">Видалити це місце?</string>
@@ -357,6 +356,7 @@
         <item quantity="many">Видалити %d чатів? Вони більше не будуть відображатися у списку чатів, їх повідомлення залишаться на сервері.</item>
         <item quantity="other">Видалити %d чатів? Вони більше не будуть відображатися у списку чатів, їх повідомлення залишаться на сервері.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Ви впевнені, що хочете видалити \"%1$s\"?</string>
     <string name="ask_delete_message">Ви впевнені, що хочете видалити це повідомлення?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Видалити %d повідомлення тут і на сервері?</item>

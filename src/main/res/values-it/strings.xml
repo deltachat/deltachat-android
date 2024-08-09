@@ -233,7 +233,6 @@
     <string name="menu_delete_chat">Elimina Chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Cancella Messaggi</string>
-    <string name="ask_delete_named_chat">Sei sicuro di voler eliminare \"%1$s\"?</string>
     <string name="menu_delete_messages">Elimina Messaggi</string>
     <string name="delete_contact">Elimina Contatto</string>
     <string name="menu_delete_location">Elimino questa Posizione?</string>
@@ -351,6 +350,7 @@
         <item quantity="many">Eliminare %d chat? Non verranno più mostrate nella lista delle chat, ma i messaggi rimarranno sul server.</item>
         <item quantity="other">Eliminare %d chat? Non verranno più mostrate nella lista delle chat, ma i messaggi rimarranno sul server.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Sei sicuro di voler eliminare \"%1$s\"?</string>
     <string name="ask_delete_message">Sei sicuro di voler eliminare questo messaggio?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Eliminare %d messaggio qui e sul sever?</item>
@@ -954,7 +954,7 @@
 
     <!-- qr code stuff -->
     <string name="qr_code">Codice QR</string>
-    <string name="load_qr_code_as_image">Carica il Codice QR come Immagine</string>
+    <string name="load_qr_code_as_image">Carica il Codice QR da Immagine</string>
     <string name="qrscan_title">Scansiona Codice QR</string>
     <string name="qrscan_hint">Posiziona la camera sopra il codice QR</string>
     <string name="qrscan_hint_desktop">Sposta il codice QR sulla fotocamera</string>

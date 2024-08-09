@@ -153,7 +153,6 @@
     <string name="menu_add_attachment">زیاد کردنی پێوەلکاو</string>
     <string name="menu_leave_group">بەجێهێشتنی کۆڕ</string>
     <string name="menu_delete_chat">سڕینەوەی وتووێژ</string>
-    <string name="ask_delete_named_chat">دڵنیای دەتەوێت \"%1$s\" بسڕیتەوە؟</string>
     <string name="menu_delete_messages">سڕینەوەی پەیامەکان</string>
     <string name="delete_contact">سڕینەوەی بەردەنگ</string>
     <string name="menu_delete_location">ئەم شوێنە دەسڕیتەوە؟</string>
@@ -241,6 +240,7 @@
         <item quantity="one">%d وتووێژ دەسڕیتەوە؟ ئیدی لە نیو لیستەی وتووێژەکاندا دیار نامێنن، بەڵام پەیامەکانیان لەسەر سێرڤەر دەمێنێتەوە.</item>
         <item quantity="other">%d وتووێژ دەسڕیتەوە؟ ئیدی لە نێو لیستەی وتووێژەکاندا دیار نامێنن، بەڵام پەیامەکانیان لەسەر سێرڤەر دەمێنێتەوە.</item>
     </plurals>
+    <string name="ask_delete_named_chat">دڵنیای دەتەوێت \"%1$s\" بسڕیتەوە؟</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">دەتەوێت ئەم %d پەیامە لێرە و لەسەر سێرڤەر بسڕیتەوە؟</item>
         <item quantity="other">دەتەوێت ئەم %d پەیامە لێرە و لەسەر سێرڤەر بسڕیتەوە؟</item>

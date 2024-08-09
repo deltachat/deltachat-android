@@ -225,7 +225,6 @@
     <string name="menu_delete_chat">Gesprek verwijderen</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Ale berichten wissen</string>
-    <string name="ask_delete_named_chat">Weet je zeker dat je ‘%1$s’ wilt verwijderen?</string>
     <string name="menu_delete_messages">Berichten verwijderen</string>
     <string name="delete_contact">Contactpersoon verwijderen</string>
     <string name="menu_delete_location">Wil je deze locatie verwijderen?</string>
@@ -337,6 +336,7 @@
         <item quantity="one">Wil je %d gesprek verwijderen? Het gesprek wordt niet langer getoond in de gesprekslijst, maar de berichten blijven bewaard op de server.</item>
         <item quantity="other">Wil je %d gesprekken verwijderen? Ze worden niet langer getoond in de gesprekslijst, maar de berichten blijven bewaard op de server.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Weet je zeker dat je ‘%1$s’ wilt verwijderen?</string>
     <string name="ask_delete_message">Weet je zeker dat je dit bericht wilt verwijderen?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Wil je %d bericht verwijderen, zowel hier als op de server?</item>

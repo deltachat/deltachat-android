@@ -175,7 +175,6 @@
     <string name="menu_add_attachment">បន្ថែមឯកសារភ្ជាប់</string>
     <string name="menu_leave_group">ចាកចេញពីក្រុម</string>
     <string name="menu_delete_chat">លុបសារសន្ទនា</string>
-    <string name="ask_delete_named_chat">តើអ្នកប្រាកដហើយថាចង់លុប \"%1$s\"?</string>
     <string name="menu_delete_messages">លុបសារ</string>
     <string name="delete_contact">លុបទំនាក់ទំនង</string>
     <string name="menu_delete_location">លុបទីតាំងនេះ?</string>
@@ -272,6 +271,7 @@
     <plurals name="ask_delete_chat">
         <item quantity="other">លុបសារសន្ទនាទាំង %d  នេះ? ពួកគេនឹងមិនត្រូវបានបង្ហាញនៅក្នុងបញ្ជីសន្ទនាទៀតទេ។ សាររបស់ពួកគេនឹងនៅមានលើម៉ាសុីនមេ</item>
     </plurals>
+    <string name="ask_delete_named_chat">តើអ្នកប្រាកដហើយថាចង់លុប \"%1$s\"?</string>
     <string name="ask_delete_message">តើអ្នកប្រាកដថា ចង់លុបសារនេះ?</string>
     <plurals name="ask_delete_messages">
         <item quantity="other">លុបសារទាំង %d នេះ នៅទីនេះ និងនៅលើម៉ាសុីននេ</item>

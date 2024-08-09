@@ -208,7 +208,6 @@
     <string name="menu_delete_chat">Forigi babilon</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Viŝi la babilejon</string>
-    <string name="ask_delete_named_chat">Ĉu vi certas, ke vi deziras forigi \"%1$s\"?</string>
     <string name="menu_delete_messages">Forigi mesaĝojn</string>
     <string name="delete_contact">Forviŝi Kontakton</string>
     <string name="menu_delete_location">Ĉu forigi tiun ĉi lokon?</string>
@@ -288,6 +287,7 @@
         <item quantity="one">Ĉu forigi %d babilon? Ĝi ne plu troveblos en la babilaro, tamen ĝiaj mesaĝoj plurestos en la servilo.</item>
         <item quantity="other">Ĉu forigi %d babilojn? Ili ne plu troveblos en la babilaro, tamen iliaj mesaĝoj plurestos en la servilo.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Ĉu vi certas, ke vi deziras forigi \"%1$s\"?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Ĉu forigi %d mesaĝon kaj ĉi tie kaj en la servilo?</item>
         <item quantity="other">Ĉu forigi %d mesaĝojn kaj ĉi tie kaj en la servilo?</item>

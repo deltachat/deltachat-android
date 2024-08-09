@@ -225,12 +225,15 @@
     <string name="menu_delete_chat">Sohbeti Sil</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Sohbeti Temizle</string>
-    <string name="ask_delete_named_chat">\"%1$s\" sohbetini silmek istediğinizden emin misiniz?</string>
     <string name="menu_delete_messages">İletileri Sil</string>
     <string name="delete_contact">Kişiyi Sil</string>
     <string name="menu_delete_location">Bu Konumu Sil</string>
     <string name="menu_message_details">İleti Bilgisi</string>
     <string name="menu_copy_to_clipboard">Panoya Kopyala</string>
+    <string name="share_invite_link">Çağırma Bağlantısı Paylaş</string>
+    <string name="invite_friends">Arkadaşları Çağır</string>
+    <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
+    <string name="invite_friends_text">Delta Chat üzerinden bana ulaşın:\n%1$s</string>
     <string name="menu_copy_selection_to_clipboard">Seçimi Kopyala</string>
     <string name="menu_copy_link_to_clipboard">Bağlantıyı Kopyala</string>
     <string name="menu_copy_text_to_clipboard">Metni Kopyala</string>
@@ -337,6 +340,7 @@
         <item quantity="one">%d sohbet silinsin mi? O artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
         <item quantity="other">%d sohbet silinsin mi? Onlar artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
     </plurals>
+    <string name="ask_delete_named_chat">\"%1$s\" sohbetini silmek istediğinizden emin misiniz?</string>
     <string name="ask_delete_message">Bu iletiyi silmek istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">%d ileti buradan ve sunucudan silinsin mi?</item>
@@ -920,6 +924,7 @@
     <string name="chat_protection_broken_explanation">Uçtan uca şifreleme artık güvencelenemiyor; çünkü büyük olasılıkla %1$s Delta Chat\'i yeniden yükledi ya da başka bir aygıttan ileti gönderdi.\n\nOnlarla kişisel olarak tanışabilir ve güvenceli uçtan uca şifrelemeyi yeniden kurmak için onların QR kodunu yeniden tarayabilirsiniz.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s, bu sohbet için henüz ayarlanmayan uçtan uca şifrelemeyi gerektirir. Daha fazlasını öğrenmek için dokunun.</string>
     <string name="invalid_unencrypted_explanation">Uçtan uca şifrelemeyi kurmak için kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
+    <string name="encryption_required_for_new_contact">Uçtan uca şifreleme gereklidir ama %1$s için henüz ayarlanmadı.\n\nÇağırma bağlantınızı onunla paylaşabilirsiniz ya da kişisel olarak tanışarak onun QR kodunu tarayabilirsiniz.</string>
     <string name="learn_more">Daha Fazlasını Öğrenin</string>
 
     <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
@@ -1151,7 +1156,7 @@
     <!-- deprecated -->
     <string name="pref_push_ask_disable">Anında İletme Hizmeti kullanımı etkisizleştirilsin mi?\n\nBu, bildirimlerin gecikmesiyle sonuçlanabilir.</string>
     <string name="pref_background_notifications">Arka Plan Bağlantısı Kullan</string>
-    <string name="pref_background_notifications_explain">Pil iyileştirmelerinin yoksayılmasını gerektirir, Anında İletme Hizmeti kullanım dışıysa kullanın</string>
+    <string name="pref_background_notifications_explain">Pil iyileştirmelerinin yoksayılmasını gerektirir, bildirimler zamanında gelmezse kullanın</string>
     <string name="pref_reliable_service">Arka Plan Bağlantısını Zorla</string>
     <string name="pref_reliable_service_explain">Kalıcı bir bildirime neden olur</string>
 

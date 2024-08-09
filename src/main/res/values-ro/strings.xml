@@ -213,7 +213,6 @@
     <string name="menu_delete_chat">Ștergeți Chat-ul</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Curăță Chat-ul</string>
-    <string name="ask_delete_named_chat">Sunteți sigur că vreți să ștergeți \"%1$s\"?</string>
     <string name="menu_delete_messages">Ștergeți mesajele</string>
     <string name="delete_contact">Ștergeți Contactul</string>
     <string name="menu_delete_location">Ștergeți această locație?</string>
@@ -320,6 +319,7 @@
         <item quantity="few">Ștergeți %d chat-uri? Acestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
         <item quantity="other">Ștergeți %d de chat-urilAcestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Sunteți sigur că vreți să ștergeți \"%1$s\"?</string>
     <string name="ask_delete_message">Sunteți sigur că doriți să ștergeți acest mesaj?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Ștergeți %d mesajul aici și pe server?</item>
