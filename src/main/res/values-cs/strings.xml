@@ -224,7 +224,6 @@
     <string name="menu_delete_chat">Vymaž chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Vyčisti chat</string>
-    <string name="ask_delete_named_chat">Skutečně úplně vymazat \"%1$s\"?</string>
     <string name="menu_delete_messages">Vymaž zprávy</string>
     <string name="delete_contact">Vymaž kontakt</string>
     <string name="menu_delete_location">Smazat tuto polohu?</string>
@@ -332,6 +331,7 @@
         <item quantity="many">Vymazat %d hovorů? Pak už je neuvidíte v seznamu hovorů, ale jejich zprávy zůstanou na serveru.</item>
         <item quantity="other">Vymazat %d hovorů? Pak už je neuvidíte v seznamu hovorů, ale jejich zprávy zůstanou na serveru.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Skutečně úplně vymazat \"%1$s\"?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Vymaž %d zprávu zde i ze serveru?</item>
         <item quantity="few">Vymaž %d zprávy zde i ze serveru?</item>

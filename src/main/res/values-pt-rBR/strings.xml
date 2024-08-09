@@ -218,7 +218,6 @@
     <string name="menu_delete_chat">Apagar conversa</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Limpar bate-papo</string>
-    <string name="ask_delete_named_chat">Você tem certeza que quer apagar \"%1$s\"?</string>
     <string name="menu_delete_messages">Apagar mensagens</string>
     <string name="delete_contact">Apagar contato</string>
     <string name="menu_delete_location">Apagar esta localização?</string>
@@ -326,6 +325,7 @@
         <item quantity="many">Apagar %d conversas? Elas não mais serão exibidas na lista, mas ficarão no servidor.</item>
         <item quantity="other">Apagar %d conversas? Elas não mais serão exibidas na lista, mas ficarão no servidor.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Você tem certeza que quer apagar \"%1$s\"?</string>
     <string name="ask_delete_message">Tem certeza que quer apagar esta mensagem?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Delete %d message here and on the server?</item>

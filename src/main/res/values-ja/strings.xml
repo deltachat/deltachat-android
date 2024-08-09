@@ -164,7 +164,6 @@
     <string name="menu_add_attachment">ファイルを添付する</string>
     <string name="menu_leave_group">退室する</string>
     <string name="menu_delete_chat">チャットを削除</string>
-    <string name="ask_delete_named_chat">%1$sを削除してよろしいですか？</string>
     <string name="menu_delete_messages">メッセージを削除</string>
     <string name="delete_contact">連絡先を解除する</string>
     <string name="menu_delete_location">この位置情報を削除しますか</string>
@@ -255,6 +254,7 @@
     <plurals name="ask_delete_chat">
         <item quantity="other">%d個のチャットを削除しますか？チャットリストには表示されなくなりますが、メッセージはサーバーに残ります。</item>
     </plurals>
+    <string name="ask_delete_named_chat">%1$sを削除してよろしいですか？</string>
     <string name="ask_delete_message">メッセージを削除してもよろしいですか？</string>
     <plurals name="ask_delete_messages">
         <item quantity="other">こことサーバー上の%dつのメッセージを削除しますか？</item>

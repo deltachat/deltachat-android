@@ -150,7 +150,6 @@
     <string name="menu_add_attachment">Annanghe un\'allegadu</string>
     <string name="menu_leave_group">Lassa su grupu</string>
     <string name="menu_delete_chat">Iscantzella sa tzarrada</string>
-    <string name="ask_delete_named_chat">Ses seguru de chèrrere iscantzellare \"%1$s\"?</string>
     <string name="menu_delete_messages">Iscantzella sos messàgios</string>
     <string name="menu_delete_location">Iscantzellare custa positzione?</string>
     <string name="menu_message_details">Detàllios de su messàgiu</string>
@@ -223,6 +222,7 @@
         <item quantity="one">Cheres iscantzellare %d tzarrada? No at a èssere prus ammustrada in sa lista de sas tzarradas, ma sos messàgios ant a abarrare in su servidore.</item>
         <item quantity="other">Cheres iscantzellare %d tzarradas? No ant a èssere prus ammustradas in sa lista de sas tzarradas, ma sos messàgios ant a abarrare in su servidore.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Ses seguru de chèrrere iscantzellare \"%1$s\"?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Iscantzellare %d messàgiu inoghe e in su servidore?</item>
         <item quantity="other">Iscantzellare %d messàgios inoghe e in su servidore?</item>

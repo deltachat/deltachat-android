@@ -197,7 +197,6 @@
     <string name="menu_add_attachment">Προσθήκη συνημμένου</string>
     <string name="menu_leave_group">Αποχώρηση απ\' την ομάδα</string>
     <string name="menu_delete_chat">Διαγραφή Συνομιλίας</string>
-    <string name="ask_delete_named_chat">Είστε σίγουρος ότι θέλετε να διαγράψετε \"%1$s\";</string>
     <string name="menu_delete_messages">Διαγραφή Μηνυμάτων</string>
     <string name="delete_contact">Διαγραφή Επαφής</string>
     <string name="menu_delete_location">Διαγραφή αυτής της τοποθεσίας;</string>
@@ -302,6 +301,7 @@
         <item quantity="one">Διαγραφή %d συνομιλίας; Δεν θα εμφανίζετε πλέον στη λίστα συνομιλιών, αλλά τα μηνύματά της θα παραμείνουν στον διακομιστή.</item>
         <item quantity="other">Διαγραφή %d συνομιλιών; Δεν θα εμφανίζονται πλέον στη λίστα συνομιλιών, αλλά τα μηνύματά τους θα παραμείνουν στον διακομιστή.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Είστε σίγουρος ότι θέλετε να διαγράψετε \"%1$s\";</string>
     <string name="ask_delete_message">Είστε σίγουρος/-η ότι θέλετε να διαγράψετε αυτό το μήνυμα;</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Διαγραφή %d μηνύματος εδώ και στον διακομιστη;</item>

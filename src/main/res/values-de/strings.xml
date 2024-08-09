@@ -162,6 +162,7 @@
     <string name="video">Video</string>
     <string name="documents">Dokumente</string>
     <string name="contact">Kontakt</string>
+    <string name="bot">Bot</string>
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Aufnehmen</string>
@@ -225,7 +226,6 @@
     <string name="menu_delete_chat">Chat löschen</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Chat leeren</string>
-    <string name="ask_delete_named_chat">Sind Sie sicher, dass Sie \"%1$s\" löschen möchten?</string>
     <string name="menu_delete_messages">Nachrichten löschen</string>
     <string name="delete_contact">Kontakt löschen</string>
     <string name="menu_delete_location">Diesen Standort löschen?</string>
@@ -341,6 +341,7 @@
         <item quantity="one">%d Chat löschen? Gelöschte Chats werden nicht länger in der Chat-Liste angezeigt, die Nachrichten verbleiben auf dem Server.</item>
         <item quantity="other">%d Chats löschen? Gelöschte Chats werden nicht länger in der Chat-Liste angezeigt, die Nachrichten verbleiben auf dem Server.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Chat \"%1$s\" löschen? Gelöschte Chats werden nicht länger in der Chat-Liste angezeigt, die Nachrichten verbleiben auf dem Server.</string>
     <string name="ask_delete_message">Möchten Sie diese Nachricht wirklich löschen?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">%d Nachricht lokal und vom Server löschen?</item>

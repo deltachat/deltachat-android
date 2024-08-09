@@ -203,7 +203,6 @@
     <string name="menu_delete_chat">Eliminar conversa</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Limpar Chat</string>
-    <string name="ask_delete_named_chat">Tes a certeza de querer eliminar \"%1$s\"?</string>
     <string name="menu_delete_messages">Eliminar mensaxes</string>
     <string name="delete_contact">Eliminar contacto</string>
     <string name="menu_delete_location">Eliminar esta localización?</string>
@@ -308,6 +307,7 @@
         <item quantity="one">Eliminar %d conversa? Non se mostrará na lista de conversas, as súas mensaxes permanecerán no servidor.</item>
         <item quantity="other">Eliminar %d conversas? Non se mostrarán máis na listas de conversas, as mensaxes permanecerán no servidor.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Tes a certeza de querer eliminar \"%1$s\"?</string>
     <string name="ask_delete_message">Tes a certeza de querer eliminar esta mensaxe?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Eliminar %d mensaxe aquí e no servidor?</item>
