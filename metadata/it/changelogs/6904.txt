@@ -1,0 +1,4 @@
+- aggiungi un'opzione per contrassegnare tutte le chat selezionate come "Lette" (tocca a lungo una chat per avviare la modalità di selezione)
+ - i nuovi profili chatmail per dispositivo singolo hanno come impostazione predefinita "Elimina Messaggi Dopo il Download"
+ - quando si utilizza un profilo chatmail su più dispositivi, la cancellazione viene modificata in "Automatica" (la strategia di cancellazione dipende quindi dal server)
+ - Risolti bug e altro ancora
