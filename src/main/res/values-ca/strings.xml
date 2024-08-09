@@ -218,7 +218,6 @@
     <string name="menu_delete_chat">Esborra el xat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Neteja el xat</string>
-    <string name="ask_delete_named_chat">Segur que voleu esborrar \"%1$s\"?</string>
     <string name="menu_delete_messages">Esborra els missatges</string>
     <string name="delete_contact">Esborra el contacte</string>
     <string name="menu_delete_location">Voleu esborrar aquesta ubicació?</string>
@@ -326,6 +325,7 @@
         <item quantity="one">Esborra %d xat? Ja no es mostrarà al llistat de xats, i els seus missatges no romandran al servidor.</item>
         <item quantity="other">Voleu esborrar %d xats? Ja no es mostraran al llistat de xats i els missatges no quedaran al servidor.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Segur que voleu esborrar \"%1$s\"?</string>
     <string name="ask_delete_message">Esteu segur de voler esborrar aquest missatge?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Esborra %d missatge aquí i al servidor?</item>

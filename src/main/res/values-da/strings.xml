@@ -166,7 +166,6 @@
     <string name="menu_add_attachment">Tilføj vedhæftning</string>
     <string name="menu_leave_group">Forlad gruppe</string>
     <string name="menu_delete_chat">Slet samtale</string>
-    <string name="ask_delete_named_chat">Er du sikker på at du vil slette \"%1$s\"?</string>
     <string name="menu_delete_messages">Slet beskeder</string>
     <string name="delete_contact">Slet kontakt</string>
     <string name="menu_delete_location">Slet denne placering?</string>
@@ -260,6 +259,7 @@
         <item quantity="one">Slette %d samtale? Den vil ikke længere blive vist i samtale listen, dens beskeder vil forblive på serveren.</item>
         <item quantity="other">Slet %d samtaler? De vil ikke længere blive vist i samtale listen, deres beskeder vil forblive på serveren.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Er du sikker på at du vil slette \"%1$s\"?</string>
     <string name="ask_delete_message">Er du sikker på at du vil slette denne besked?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Slette %d besked her og på serveren?</item>

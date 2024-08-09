@@ -213,7 +213,6 @@
     <string name="menu_add_attachment">Pridať prílohu</string>
     <string name="menu_leave_group">Opustiť skupinu</string>
     <string name="menu_delete_chat">Odstrániť konverzáciu</string>
-    <string name="ask_delete_named_chat">Naozaj chcete položku odstrániť  \"%1$s\" ?</string>
     <string name="menu_delete_messages">Odstrániť správy</string>
     <string name="delete_contact">Odstrániť kontakt</string>
     <string name="menu_delete_location">Odstrániť toto miesto?</string>
@@ -322,6 +321,7 @@
         <item quantity="many">Odstrániť %d chaty? Už sa nebudú zobrazovať v zozname chatu, ich správy zostanú na serveri.</item>
         <item quantity="other">Odstrániť %d konverzácií? Už sa nebudú zobrazovať v zozname konverzácií, ich správy zostanú na serveri.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Naozaj chcete položku odstrániť  \"%1$s\" ?</string>
     <string name="ask_delete_message">Naozaj chcete odstrániť túto správu?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Odstrániť %d správu tu a na serveri?</item>

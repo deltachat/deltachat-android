@@ -169,7 +169,6 @@
     <string name="menu_add_attachment">Lägg till bilaga</string>
     <string name="menu_leave_group">Lämna grupp</string>
     <string name="menu_delete_chat">Ta bort chatt</string>
-    <string name="ask_delete_named_chat">Är du säker på att du vill ta bort \"%1$s\"?</string>
     <string name="menu_delete_messages">Ta bort meddelanden</string>
     <string name="delete_contact">Ta bort kontakt</string>
     <string name="menu_delete_location">Ta bort denna plats?</string>
@@ -268,6 +267,7 @@
         <item quantity="one">Radera %d chatt? Det kommer inte längre synas i chattlistan, meddelanden kommer att finnas kvar på servern.</item>
         <item quantity="other">Radera %d chattar? De kommer inte att visas i chattlistan, deras meddelanden kommer finnas kvar på servern.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Är du säker på att du vill ta bort \"%1$s\"?</string>
     <string name="ask_delete_message">Är du säker på att du vill radera detta meddelande?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Radera %d meddelande här och på servern.</item>

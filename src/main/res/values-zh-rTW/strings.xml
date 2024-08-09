@@ -214,7 +214,6 @@
     <string name="menu_delete_chat">刪除對話</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">清除對話</string>
-    <string name="ask_delete_named_chat">你確定你要刪除\"%1$s\"？</string>
     <string name="menu_delete_messages">刪除訊息</string>
     <string name="delete_contact">刪除聯絡人</string>
     <string name="menu_delete_location">刪除這個地點？</string>
@@ -322,6 +321,7 @@
     <plurals name="ask_delete_chat">
         <item quantity="other">確定刪除%d個對話嗎？將會從對話紀錄中刪除，然而伺服器中仍會保留對話。</item>
     </plurals>
+    <string name="ask_delete_named_chat">你確定你要刪除\"%1$s\"？</string>
     <string name="ask_delete_message">你確定要刪除這則訊息？</string>
     <plurals name="ask_delete_messages">
         <item quantity="other">刪除本地及伺服器上的%d個訊息？</item>

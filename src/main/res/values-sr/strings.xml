@@ -217,7 +217,6 @@
     <string name="menu_delete_chat">Обриши ћаскање</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Обриши ћаскање</string>
-    <string name="ask_delete_named_chat">Јесте ли сигурни да желите да избришете „%1$s“?</string>
     <string name="menu_delete_messages">Избришите поруке</string>
     <string name="delete_contact">Избриши контакт</string>
     <string name="menu_delete_location">Избриши овај положај?</string>
@@ -325,6 +324,7 @@
         <item quantity="few">Избриши %d ћаскањa? Они више неће бити приказани на листи ћаскања; али поруке ће остати на серверу.</item>
         <item quantity="other">Избриши %d ћаскањa? Они више неће бити приказани на листи ћаскања; али поруке ће остати на серверу.</item>
     </plurals>
+    <string name="ask_delete_named_chat">Јесте ли сигурни да желите да избришете „%1$s“?</string>
     <string name="ask_delete_message">Да ли желите да избришете ову поруку?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Обриши %d поруку овде и са сервера.</item>
