@@ -35,6 +35,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DirectShareUtil;
 import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
@@ -302,7 +303,8 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     });
 
     alert.setNegativeButton(android.R.string.cancel, null);
-    alert.show();
+    AlertDialog dialog = alert.show();
+    Util.redPositiveButton(dialog);
   }
 
   private void handleSelectAllThreads() {

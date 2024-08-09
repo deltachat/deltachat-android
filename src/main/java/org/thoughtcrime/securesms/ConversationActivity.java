@@ -609,14 +609,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleLeaveGroup() {
-    new AlertDialog.Builder(this)
+    AlertDialog dialog = new AlertDialog.Builder(this)
       .setMessage(getString(R.string.ask_leave_group))
-      .setPositiveButton(R.string.yes, (dialog, which) -> {
+      .setPositiveButton(R.string.menu_leave_group, (d, which) -> {
         dcContext.removeContactFromChat(chatId, DcContact.DC_CONTACT_ID_SELF);
         Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
       })
-      .setNegativeButton(R.string.no, null)
+      .setNegativeButton(R.string.cancel, null)
       .show();
+    Util.redPositiveButton(dialog);
   }
 
   private void handleArchiveChat() {
@@ -632,16 +633,16 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleDeleteChat() {
-
-    new AlertDialog.Builder(this)
+    AlertDialog dialog = new AlertDialog.Builder(this)
         .setMessage(getResources().getString(R.string.ask_delete_named_chat, dcChat.getName()))
-        .setPositiveButton(R.string.delete, (dialog, which) -> {
+        .setPositiveButton(R.string.delete, (d, which) -> {
           dcContext.deleteChat(chatId);
           DirectShareUtil.clearShortcut(this, chatId);
           finish();
         })
         .setNegativeButton(R.string.cancel, null)
         .show();
+    Util.redPositiveButton(dialog);
   }
 
   private void handleAddAttachment() {

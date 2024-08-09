@@ -211,9 +211,9 @@ public class ContactSelectionListFragment extends    Fragment
   }
 
   private void handleDeleteSelected() {
-    new AlertDialog.Builder(getActivity())
+    AlertDialog dialog = new AlertDialog.Builder(getActivity())
       .setMessage(R.string.ask_delete_contacts)
-      .setPositiveButton(R.string.delete, (dialogInterface, i) -> {
+      .setPositiveButton(R.string.delete, (d, i) -> {
           ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
           final SparseIntArray actionModeSelection = adapter.getActionModeSelection().clone();
           new Thread(() -> {
@@ -234,6 +234,7 @@ public class ContactSelectionListFragment extends    Fragment
           })
       .setNegativeButton(R.string.cancel, null)
       .show();
+    Util.redPositiveButton(dialog);
   }
 
   private ContactSelectionListAdapter getContactSelectionListAdapter() {
