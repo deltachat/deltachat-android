@@ -368,7 +368,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           if (chatIsDeviceTalk) {
             return getString(R.string.profile);
           } else if(isContactProfile()) {
-            return getString(R.string.tab_contact);
+            if (dcContext.getContact(contactId).isBot()) {
+              return getString(R.string.bot);
+            } else {
+              return getString(R.string.tab_contact);
+            }
           }
           else if (chatIsBroadcast) {
             return getString(R.string.broadcast_list);
