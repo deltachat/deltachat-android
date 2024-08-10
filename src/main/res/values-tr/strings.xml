@@ -162,6 +162,7 @@
     <string name="video">Video</string>
     <string name="documents">Belgeler</string>
     <string name="contact">Kişi</string>
+    <string name="bot">Bot</string>
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Yakala</string>
@@ -340,7 +341,7 @@
         <item quantity="one">%d sohbet silinsin mi? O artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
         <item quantity="other">%d sohbet silinsin mi? Onlar artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
     </plurals>
-    <string name="ask_delete_named_chat">\"%1$s\" sohbetini silmek istediğinizden emin misiniz?</string>
+    <string name="ask_delete_named_chat">\"%1$s\" sohbeti silinsin mi? O artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</string>
     <string name="ask_delete_message">Bu iletiyi silmek istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">%d ileti buradan ve sunucudan silinsin mi?</item>
@@ -1170,4 +1171,4 @@
     <string name="update_1_44_ios">Ne yeni:\n\n❤️ Evet! Bu uzun zamandır bekleniyordu: Tepki vermek için bir iletiye uzun dokunun\n\n🫸 https://nine.testrun.org gibi sağlayıcılar tarafından destekleniyorsa ANLIK bildirimler\n\n🔗 QR kodlarını tarayamıyorsanız, onları çağırma bağlantısı olarak paylaşın\n\n… ve TONLARCA hata düzeltmesi … %1$s</string>
     <string name="update_1_46_android">Yeni Katılım 🐣 ve Daha Fazlası:\n\n⚡️ Hızlı güvenli Chatmail sunucularına kayıt olun (https://delta.chat/chatmail) ya da klasik e-posta sunucularını kullanın\n\n👉 Herhangi bir Chatmail sunucusu için ANINDA İLETME bildirimleri\n\n👤 \"Kişileri iliştir\" üzerinden arkadaşlarınıza güvenlice bağlanın\n\n🥰 Herhangi bir emojiyle tepki verin\n\n📌 Sohbetleri doğrudan aramadan sabitleyin … ve DAHA FAZLASI %1$s</string>
     <string name="update_1_46_ios">Yeni Katılım 🐣 ve Daha Fazlası:\n\n⚡️ Güvenli hızlı Chatmail sunucularına kaydolun (https://delta.chat/chatmail) ya da klasik e-posta sunucularını kullanın\n\n👉 Herhangi bir Chatmail sunucusu için ANLIK bildirimler\n\n👤 \"İliştirilen kişileri\" alın ve arkadaşlarınıza bağlanın\n\n🥰 Daha hızlı tepki seçimi … ve DAHA FAZLASI için %1$s</string>
-</resources>
+    </resources>
