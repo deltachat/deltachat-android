@@ -1158,4 +1158,4 @@
     <string name="perm_enable_bg_already_done">Annoit jo luvan viestien vastaanottamiselle taustalla.\n\nJos et saa viestejä taustalla, tarkista myös järjestelmäasetukset.</string>
 
     <string name="update_1_46_ios">Uusittu käyttöönotto 🐣 ja muuta:\n\n⚡️ Rekisteröidy nopeille chatmail -palvelimille (https://delta.chat/chatmail) tai käytä tavanomaisia sähköpostipalvelimia\n\n👉 PUSH -ilmoitukset toimivat millä tahansa chatmail -palvelimella\n\n👤 Vastaanota \"Liitettyjä yhteystietoja\" ja ota yhteys ystäviisi\n\n🥰 Nopeampi reaktioiden valinta ... LISÄÄ osoitteessa %1$s</string>
-</resources>
+    </resources>

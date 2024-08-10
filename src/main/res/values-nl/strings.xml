@@ -162,6 +162,7 @@
     <string name="video">Video</string>
     <string name="documents">Documenten</string>
     <string name="contact">Contactpersoon</string>
+    <string name="bot">Bot</string>
     <string name="camera">Camera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Vastleggen</string>
@@ -230,6 +231,10 @@
     <string name="menu_delete_location">Wil je deze locatie verwijderen?</string>
     <string name="menu_message_details">Berichtinformatie</string>
     <string name="menu_copy_to_clipboard">Kopiëren naar klembord</string>
+    <string name="share_invite_link">Uitnodigingslink versturen</string>
+    <string name="invite_friends">Vrienden uitnodigen</string>
+    <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
+    <string name="invite_friends_text">Neem contact met me op via Delta Chat:\n%1$s</string>
     <string name="menu_copy_selection_to_clipboard">Selectie kopiëren</string>
     <string name="menu_copy_link_to_clipboard">Link kopiëren</string>
     <string name="menu_copy_text_to_clipboard">Tekst kopiëren</string>
@@ -920,6 +925,7 @@
     <string name="chat_protection_broken_explanation">Eind-tot-eindversleuteling kan niet meer worden gegarandeerd, omdat %1$s Delta Chat opnieuw heeft geïnstalleerd of een bericht vanaf een ander apparaat heeft verstuurd.\n\nMaak een afspraak met hem/haar en scan de QR-code opnieuw om eind-tot-eindversleuteling weer in te schakelen.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ Voor %1$s is eind-tot-eindversleuteling vereist, maar dit is nog niet ingesteld in het huidige gesprek. Druk voor meer informatie.</string>
     <string name="invalid_unencrypted_explanation">Spreek met elkaar af en scan elkaars QR-code om eind-tot-eindversleuteling op te zetten.</string>
+    <string name="encryption_required_for_new_contact">Eind-tot-eindversleuteling is vereist, maar nog niet ingesteld op %1$s.\n\nJe kunt deze link alleen delen met personen die je kent of die je in het echt ontmoet en waarvan je de QR-code scant.</string>
     <string name="learn_more">Meer informatie</string>
 
     <string name="devicemsg_self_deleted">Je hebt het gesprek ‘Bewaarde berichten’ verwijderd.\n\nℹ️ Als je weer gebruik wilt maken van deze functie, begin dan een nieuw gesprek met jezelf.</string>
@@ -1165,4 +1171,4 @@
     <string name="update_1_44_ios">Wijzigingslog:\n\n❤️ Jaaaa! Eindelijk een langverwachte functie toegevoegd: een bericht lang ingedrukt houden om te reageren\n\n🫸 PUSHmeldingen, indien ondersteund door diensten als https://nine.testrun.org\n\n🔗 Als je geen QR-codes kunt scannen, dan kun je ze voortaan delen als uitnodigingslinks\n\n🔵 Voortaan wordt het aantal ongelezen berichten van alle accounts in de titel getoond\n\n… en vele, vele bugs opgelost… %1$s</string>
     <string name="update_1_46_android">Nieuwe registratiemogelijkheden 🐣 en nog veel meer:\n\n⚡️ Registreer een account bij snelle chatmailservers (https://delta.chat/chatmail) of maak gebruik van traditionele mailservers\n\n👉 Ontvang pushmeldingen van elke chatmailserver\n\n👤 Voeg contactpersonen toe via ‘Contactpersonen bijvoegen’\n\n🥰 Reageer met een emoji\n\n📌 Maak gesprekken vast … en nog veel meer op %1$s</string>
     <string name="update_1_46_ios">Nieuwe registratiemogelijkheden 🐣 en nog veel meer:\n\n⚡️ Registreer een account bij snelle chatmailservers (https://delta.chat/chatmail) of maak gebruik van traditionele mailservers\n\n👉 Ontvang pushmeldingen van elke chatmailserver\n\n👤 Voeg contactpersonen toe via ‘Contactpersonen bijvoegen’\n\n🥰 Reageer met een emoji\n\n📌 Maak gesprekken vast … en nog veel meer op %1$s</string>
-</resources>
+    </resources>
