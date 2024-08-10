@@ -56,7 +56,7 @@
     <string name="show_full_message">显示完整消息…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">将所有标记为已读</string>
-    <string name="mark_as_read">标为已读</string>
+    <string name="mark_as_read">标记为已读</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">已读</string>
     <!-- Placeholder text when something is loading -->
@@ -154,6 +154,7 @@
     <string name="video">视频</string>
     <string name="documents">文档</string>
     <string name="contact">联系人</string>
+    <string name="bot">机器人</string>
     <string name="camera">相机</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">捕获</string>
@@ -330,7 +331,7 @@
     <plurals name="ask_delete_chat">
         <item quantity="other">删除 %d 个聊天？被删除的聊天不会再显示在聊天列表中；聊天消息仍将保留于服务器。</item>
     </plurals>
-    <string name="ask_delete_named_chat">您确定要删除“%1$s”吗？</string>
+    <string name="ask_delete_named_chat">删除聊天“%1$s”？它将不再显示在聊天列表中，其消息将保留在服务器上。</string>
     <string name="ask_delete_message">您确定要删除这条消息吗？</string>
     <plurals name="ask_delete_messages">
         <item quantity="other">在此处和服务器上删除 %d 条消息？</item>
@@ -495,7 +496,7 @@
     <string name="multidevice_this_creates_a_qr_code">这会创建供第二台设备扫描、用于复制此账户的二维码。</string>
     <string name="multidevice_install_dc_on_other_device">在你的其他设备上安装 Delta Chat (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
-    <string name="multidevice_tap_scan_on_other_device">启动 Delta Chat 应用，点击“添加为第二台设备”并扫描显示的二维码</string>
+    <string name="multidevice_tap_scan_on_other_device">启动 Delta Chat，点击“我已经有登录凭据了/添加为第二台设备”，扫描此处显示的二维码</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">扫描此处为 %1$s 设置第二台设备</string>
     <string name="multidevice_receiver_title">添加为第二台设备</string>
@@ -797,7 +798,7 @@
     <string name="autodel_server_warn_multi_device">如果您启用一次删除，则无法在此配置文件中使用多个设备。</string>
     <string name="autodel_confirm">我了解，将这些消息全部删除</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
-    <string name="autodel_at_once">立刻</string>
+    <string name="autodel_at_once">下载后立即</string>
     <string name="after_30_seconds">30 秒后</string>
     <string name="after_1_minute">1 分钟后</string>
     <string name="after_5_minutes">5 分钟后</string>
@@ -1060,7 +1061,7 @@
     <string name="select_group_image_desktop">选择群组图像</string>
     <string name="export_backup_desktop">导出备份</string>
     <string name="autocrypt_correct_desktop">Autocrypt 设置已传输 。</string>
-    <string name="forget_login_confirmation_desktop">删除此登录？ 一切都将被删除，包括您的端到端设置、联系人、聊天、消息及媒体。 此操作无法撤消。</string>
+    <string name="forget_login_confirmation_desktop">删除此登录？所有内容都将会删除，包括您的端到端设置、联系人、聊天、消息和媒体。此操作无法撤销。</string>
     <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">电子邮件：%1$s\n大小：%2$s\n账户 Id：%3$s</string>
     <string name="message_detail_sent_desktop">发送于</string>
@@ -1137,7 +1138,7 @@
     <!-- deprecated -->
     <string name="pref_push_notifications">使用推送服务</string>
     <!-- deprecated -->
-    <string name="pref_push_notifications_explain">Chatmail 服务器的可靠推送通知</string>
+    <string name="pref_push_notifications_explain">聊天邮件服务器的可靠推送通知</string>
     <!-- deprecated -->
     <string name="pref_push_ask_disable">停用推送服务吗？\n\n这可能导致通知延迟。</string>
     <string name="pref_background_notifications">使用后台连接</string>
@@ -1155,4 +1156,4 @@
     <string name="update_1_44_ios">变化：\n\n❤️ 耶！等待已久的功能来了：长按消息做出回应\n\n🫸 支持推送通知，不过需要提供商像 https://nine.testrun.org 一样支持该功能\n\n🔗 如果你无法扫描二维码，将它们分享为邀请链接\n\n… 以及修复许多 bug … %1$s</string>
     <string name="update_1_46_android">新用户引导流程 🐣 以及更多信息：\n\n⚡️ 注册安全的快速聊天邮件服务器（https://delta.chat/chatmail）或使用传统的电子邮件服务器\n\n👉 为任何聊天邮件服务器推送通知\n\n👤 通过“附加联系人”安全地连接您的朋友\n\n🥰 使用任何表情符号进行回应\n\n📌 直接从搜索中固定聊天…以及更多信息，请访问 %1$s</string>
     <string name="update_1_46_ios">新用户引导流程 🐣 以及更多信息：\n\n⚡️ 注册安全的快速聊天邮件服务器（https://delta.chat/chatmail）或使用传统的电子邮件服务器\n\n👉 为任何聊天邮件服务器推送通知\n\n👤 接收“附加联系人”安全地连接您的朋友\n\n🥰 更快选择消息回应 …更多信息，请访问 %1$s</string>
-</resources>
+    </resources>

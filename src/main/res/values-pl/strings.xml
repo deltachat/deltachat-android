@@ -178,6 +178,7 @@
     <string name="video">Wideo</string>
     <string name="documents">Dokumenty</string>
     <string name="contact">Kontakt</string>
+    <string name="bot">Bot</string>
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Zrób to</string>
@@ -360,7 +361,7 @@
         <item quantity="many">Usunąć %d czaty? Nie będą już wyświetlane na liście czatów, ich wiadomości pozostaną na serwerze.</item>
         <item quantity="other">Usunąć %d czatów? Nie będą już wyświetlane na liście czatów, ich wiadomości pozostaną na serwerze.</item>
     </plurals>
-    <string name="ask_delete_named_chat">Czy na pewno chcesz usunąć „%1$s”?</string>
+    <string name="ask_delete_named_chat">Usunąć czat „%1$s”? Nie będzie on już wyświetlany na liście czatów. Jego wiadomości pozostaną na serwerze.</string>
     <string name="ask_delete_message">Czy na pewno chcesz usunąć tę wiadomość?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Usunąć %d wiadomość tutaj i na serwerze?</item>
@@ -1200,4 +1201,4 @@
     <string name="update_1_44_ios">Co nowego:\n\n❤️ Tak! To było długo oczekiwane: naciśnij i przytrzymaj wiadomości, aby zareagować\n\n🫸 Powiadomienia PUSH, jeśli są obsługiwane przez dostawców, takich jak https://nine.testrun.org\n\n🔗 Jeśli nie możesz zeskanować kodów QR, udostępnij go jako linki z zaproszeniem \n\n… i MNÓSTWO poprawek błędów…%1$s</string>
     <string name="update_1_46_android">Nowe wdrożenie 🐣 i nie tylko:\n\n⚡️ Zarejestruj się, aby korzystać z bezpiecznych i szybkich serwerów chatmail (https://delta.chat/chatmail) lub korzystaj z klasycznych serwerów e-mail\n\n👉 Powiadomienia PUSH dla dowolnego serwera chatmail\n\n👤 Połącz bezpiecznie znajomych za pomocą opcji „Dołącz kontakty”\n\n🥰 Reaguj dowolnymi emoji\n\n📌 Przypinaj czaty bezpośrednio z wyszukiwarki… i wiele WIĘCEJ na %1$s</string>
     <string name="update_1_46_ios">Nowe wdrożenie 🐣 i nie tylko:\n\n⚡️ Zarejestruj się, aby korzystać z bezpiecznych i szybkich serwerów chatmail (https://delta.chat/chatmail) lub korzystaj z klasycznych serwerów e-mail\n\n👉 Powiadomienia PUSH dla dowolnego serwera chatmail\n\n👤 Odbierz „Dołączone kontakty” i łącz się ze znajomymi\n\n🥰 Szybszy wybór reakcji… i wiele WIĘCEJ na %1$s</string>
-</resources>
+    </resources>
