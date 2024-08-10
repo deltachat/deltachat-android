@@ -128,6 +128,19 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         }
         Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, deviceMsgLabel);
       }
+
+      // add info about moved "switch profile" option; added 2024-08, can be removed after ~3 months
+      if (!Prefs.getBooleanPreference(this, "info_about_switch_profile_added", false)) {
+        final DcAccounts dcAccounts = DcHelper.getAccounts(this);
+        if (dcAccounts.getAll().length >= 2) {
+          DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+          msg.setText(getString(R.string.update_switch_profile_placement));
+          dcContext.addDeviceMsg("info_about_switch_profile", msg);
+        }
+        Prefs.setBooleanPreference(this, "info_about_switch_profile_added", true);
+      }
+      // /add info
+
     } catch(Exception e) {
       e.printStackTrace();
     }
