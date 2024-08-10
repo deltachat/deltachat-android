@@ -1,5 +1,18 @@
 # Delta Chat Android Changelog
 
+## v1.46.10
+2024-08
+
+* mark bots in chat titles and profiles as such
+* if the experimental videochat is enabled, invitations can be sent via the "Attach" menu now
+* show potentially dangerous buttons with red color
+* focus on name and profile images in reaction details; the address is available on tap
+* focus on name and profile image in profile switcher; the address is still shown for classic e-mail profiles
+* add device message about new placement of "Switch Profile" if more than one profile is in use before update
+* update translations
+* using core 1.142.2
+
+
 ## v1.46.8
 2024-08
 
@@ -16,9 +29,9 @@
 * for chatmail profile, hide error prone "add contact manually" in favor to invite links
 * automatically expand "Password and Account / Advanced" if there were advanced options set before
 * show potentially dangerous menu entries with red color
-* remove "Switch Account" from main menu, as this very often used option causes confusion with finger memory and other menus;
+* remove "Switch Profile" from main menu, as this very often used option causes confusion with finger memory and other menus;
   instead, just tap your profile image in the upper left corner to add or to switch profiles
-* prevent creating contact without encryption in chatmail account via mailto:-links
+* prevent creating contact without encryption in chatmail profiles via mailto:-links
 * no unarchiving of groups on member removal messages
 * improve caching of DNS results
 * focus on name for QR code titles
