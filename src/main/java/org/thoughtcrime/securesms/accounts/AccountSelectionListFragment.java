@@ -36,6 +36,8 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_ADD_ACCOUNT;
 
+import java.util.ArrayList;
+
 public class AccountSelectionListFragment extends DialogFragment
 {
   private RecyclerView recyclerView;
@@ -51,12 +53,12 @@ public class AccountSelectionListFragment extends DialogFragment
     DcAccounts accounts = DcHelper.getAccounts(getActivity());
     int[] accountIds = accounts.getAll();
 
-    int[] ids = new int[accountIds.length + 1];
-    int j = 0;
+    ArrayList<Integer> ids = new ArrayList<>();
     for (int accountId : accountIds) {
-      ids[j++] = accountId;
+      ids.add(accountId);
     }
-    ids[j] = DC_CONTACT_ID_ADD_ACCOUNT;
+    ids.add(0, DC_CONTACT_ID_ADD_ACCOUNT);
+
     adapter.changeData(ids, accounts.getSelectedAccount().getAccountId());
   }
 

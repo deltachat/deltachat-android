@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms.accounts;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +23,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
   private final @NonNull AccountSelectionListFragment fragment;
   private final @NonNull Context              context;
   private final @NonNull DcAccounts           accounts;
-  private @NonNull int[]                      accountList = new int[0];
+  private @NonNull ArrayList<Integer>         accountList = new ArrayList<>();
   private int                                 selectedAccountId;
   private final LayoutInflater                li;
   private final ItemClickListener             clickListener;
@@ -29,7 +31,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
 
   @Override
   public int getItemCount() {
-    return accountList.length;
+    return accountList.size();
   }
 
   public abstract static class ViewHolder extends RecyclerView.ViewHolder {
@@ -89,7 +91,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
 
   @Override
   public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-    int id = accountList[i];
+    int id = accountList.get(i);
     DcContext dcContext = accounts.getAccount(id);
 
     ViewHolder holder = (ViewHolder) viewHolder;
@@ -101,8 +103,8 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
     void onItemClick(AccountSelectionListItem item);
   }
 
-  public void changeData(int[] ids, int selectedAccountId) {
-    this.accountList = ids==null? new int[0] : ids;
+  public void changeData(@NonNull ArrayList<Integer> ids, int selectedAccountId) {
+    this.accountList = ids;
     this.selectedAccountId = selectedAccountId;
     notifyDataSetChanged();
   }
