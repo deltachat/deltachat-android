@@ -648,6 +648,10 @@
     <string name="switch_account">Switch Profile</string>
     <string name="add_account">Add Profile</string>
     <string name="delete_account">Delete Profile</string>
+    <string name="sort_up">Sort Up</string>
+    <string name="internal_label">Personal Label</string>
+    <string name="internal_label_placeholder">Work, Private, Action</string>
+    <string name="internal_label_hint">Label that is visible only for you; helping you to differ between your profiles.</string>
     <string name="delete_account_ask">Are you sure you want to delete your profile data?</string>
     <string name="delete_account_explain_with_name">All profile data of \"%s\" on this device will be deleted, including your end-to-end encryption setup, contacts, chats, messages and media. This action cannot be undone.</string>
     <string name="unconfigured_account">Unconfigured profile</string>

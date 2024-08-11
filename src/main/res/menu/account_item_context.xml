@@ -5,6 +5,12 @@
   <item android:title="@string/menu_mute"
       android:id="@+id/menu_mute_notifications"/>
 
+  <item android:title="@string/sort_up"
+      android:id="@+id/menu_sort_up"/>
+
+  <item android:title="@string/internal_label"
+      android:id="@+id/menu_internal_label"/>
+
   <item android:title="@string/delete"
         android:id="@+id/delete"/>
 
