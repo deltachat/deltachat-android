@@ -37,6 +37,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_ADD_ACCOUNT;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class AccountSelectionListFragment extends DialogFragment
 {
@@ -57,6 +58,7 @@ public class AccountSelectionListFragment extends DialogFragment
     for (int accountId : accountIds) {
       ids.add(accountId);
     }
+    Collections.sort(ids, (idLeft, idRight) -> Integer.compare(accounts.getAccount(idLeft).getConfigInt("ui.sort"), accounts.getAccount(idRight).getConfigInt("ui.sort")));
     ids.add(0, DC_CONTACT_ID_ADD_ACCOUNT);
 
     adapter.changeData(ids, accounts.getSelectedAccount().getAccountId());
@@ -109,6 +111,8 @@ public class AccountSelectionListFragment extends DialogFragment
 
   private void onContextItemSelected(MenuItem item, int accountId) {
     switch (item.getItemId()) {
+    case R.id.menu_sort_up:
+      break;
     case R.id.delete:
       onDeleteAccount(accountId);
       break;
