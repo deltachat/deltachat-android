@@ -3,6 +3,8 @@
 
 ## Generate APKs
 
+on the command-line, in a PR called "update-core-and-stuff-DATE":
+
 1. update core:
    ```
    ./scripts/update-core.sh               # shows used branch
@@ -16,6 +18,9 @@
    ./scripts/tx-pull-translations.sh
    ./scripts/create-local-help.sh  # requires deltachat-pages checked out at ../deltachat-pages
    ```
+
+the "update-core-and-stuff-DATE" PR can be merged without review
+(as everyrhing was already reviewed in their repos).
 
 the following steps are done in a PR called `prep-VERSION` (no leading "v"):
 
@@ -81,7 +86,7 @@ on <https://play.google.com/apps/publish/>:
       click "Send change for review", confirm
 
 
-## Release on F-Droid
+## Tag for F-Droid and create Github release
 
 10. make sure, everything is pushed, then:  
     $ git tag v1.2.1 COMMIT; git push --tags
@@ -89,12 +94,17 @@ on <https://play.google.com/apps/publish/>:
 F-Droid picks on the tags starting with "v" and builds the version.
 This may take some days.
 
+11. a) on <https://github.com/deltachat/deltachat-android/releases>,
+       tap "Draft a new Release", choose just created tag, fill changelog
+	b) add APK from above using "Attach binary".
+	c) tap "Publish release"
+
 
 ## Release on Amazon Appstore
 
 on <https://developer.amazon.com/dashboard>:
 
-11. a) for "Delta Chat", select "Add upcoming version" on the left
+12. a) for "Delta Chat", select "Add upcoming version" on the left
     b) at "Step 1 / Existing file(s)" hit "Replace", upload the APK from above
     c) on the "Step 1" page, add "Release notes" from CHANGELOG.md, hit "Next"
     d) on "Step 2" page: "Does your app collect or transfer user data to third parties?" -> No, then "Next"
@@ -106,7 +116,7 @@ on <https://developer.amazon.com/dashboard>:
 
 on <https://developer.huawei.com/consumer/en/appgallery>:
 
-12. a) go to "Upload your app / Android / Delta Chat / Update", again "Update" upper right
+13. a) go to "Upload your app / Android / Delta Chat / Update", again "Update" upper right
     b) "Manage Packages / Upload", upload the APK from above, hit "Save"
     c) Update "App Information / New Features", hit "Save", then "Next"
     d) Hit "Submit"; on the next page, confirm version and language
