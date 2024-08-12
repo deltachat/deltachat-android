@@ -162,8 +162,8 @@ dependencies {
     implementation 'androidx.work:work-runtime:2.8.1'
     implementation 'androidx.emoji2:emoji2-emojipicker:1.4.0'
     implementation 'com.google.guava:guava:29.0-android'
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.6' // plays video and audio
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.6'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.19.1' // plays video and audio
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.19.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.journeyapps:zxing-android-embedded:3.4.0' // QR Code scanner
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1' // used as JSON library
