@@ -46,11 +46,11 @@
     <string name="unarchive">取消存档</string>
     <string name="mute">静音</string>
     <string name="ephemeral_messages">消息定时销毁</string>
-    <string name="ephemeral_messages_hint">对本聊天内使用 Delta Chat 的成员有效；不过，这些成员还是能够保存、复制和转发消息，以及使用其他的电子邮件客户端。</string>
+    <string name="ephemeral_messages_hint">适用于此聊天内使用 Delta Chat 的所有成员；这些成员仍然可以复制、保存和转发消息，或使用其他电子邮件客户端。</string>
     <string name="save">保存</string>
     <string name="chat">聊天</string>
     <string name="media">媒体</string>
-    <string name="profile">概要</string>
+    <string name="profile">账号</string>
     <string name="main_menu">主菜单</string>
     <string name="start_chat">开始聊天</string>
     <string name="show_full_message">显示完整消息…</string>
@@ -263,7 +263,7 @@
     <string name="menu_edit_name">编辑名称</string>
     <string name="menu_settings">设置</string>
     <string name="menu_advanced">高级</string>
-    <string name="menu_view_profile">查看概要</string>
+    <string name="menu_view_profile">查看账号</string>
     <string name="menu_zoom_in">放大</string>
     <string name="menu_zoom_out">缩小</string>
     <string name="menu_save_log">保存日志</string>
@@ -385,7 +385,7 @@
     <string name="chat_record_explain">按住来录制语音消息，松开来发送</string>
     <string name="chat_no_chats_yet_title">收件箱为空。\n按“+”来开始新聊天。</string>
     <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">您可以与其他 Delta Chat 用户以及任意电子邮件地址聊天。</string>
+    <string name="chat_no_chats_yet_hint">您可以与其他 Delta Chat 用户以及任何电子邮件地址聊天。</string>
     <string name="chat_all_archived">所有聊天已存档。\n按“+”来开始新聊天。</string>
     <string name="chat_share_with_title">分享给</string>
     <string name="chat_input_placeholder">输入消息…</string>
@@ -493,21 +493,21 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">添加第二台设备</string>
     <string name="multidevice_same_network_hint">让两台设备连接相同的 Wi-Fi 或网络</string>
-    <string name="multidevice_this_creates_a_qr_code">这会创建供第二台设备扫描、用于复制此账户的二维码。</string>
+    <string name="multidevice_this_creates_a_qr_code">这将创建第二台设备可以扫描用于复制此账号的二维码。</string>
     <string name="multidevice_install_dc_on_other_device">在你的其他设备上安装 Delta Chat (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
-    <string name="multidevice_tap_scan_on_other_device">启动 Delta Chat，点击“我已经有登录凭据了/添加为第二台设备”，扫描此处显示的二维码</string>
+    <string name="multidevice_tap_scan_on_other_device">启动 Delta Chat，点击“我已有账号/添加为第二台设备”，扫描此处显示的二维码</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">扫描此处为 %1$s 设置第二台设备</string>
     <string name="multidevice_receiver_title">添加为第二台设备</string>
     <string name="multidevice_open_settings_on_other_device">在第一台设备上，转到“设置/添加第二台设备”并扫描显示的二维码</string>
-    <string name="multidevice_receiver_scanning_ask">将账户从其他设备复制到此设备吗？</string>
+    <string name="multidevice_receiver_scanning_ask">是否将账号从其他设备复制到此设备？</string>
     <string name="multidevice_abort">中止第二台设备的设置吗？</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">这会让复制到剪贴板的二维码失效。</string>
     <string name="multidevice_experimental_hint">（实验性，需要 1.36 版本）</string>
-    <string name="multidevice_transfer_done_devicemsg">ℹ️ 账户已传输到你的第二台设备。</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ 账号已传输到您的第二台设备。</string>
     <!-- Shown beside progress bar, stay short -->
-    <string name="preparing_account">准备账户中…</string>
+    <string name="preparing_account">正在准备账号…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">等待接收者…</string>
     <!-- Shown beside progress bar, stay short -->
@@ -543,9 +543,9 @@
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
-    <string name="onboarding_create_instant_account">让我们开始吧！</string>
+    <string name="onboarding_create_instant_account">创建新账号</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
-    <string name="onboarding_alternative_logins">我已经有登录凭据了</string>
+    <string name="onboarding_alternative_logins">我已有账号</string>
     <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">传统电子邮件登录</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
@@ -557,7 +557,7 @@
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
     <string name="instant_onboarding_agree_instance">关于 %1$s 上的个人资料</string>
     <!-- Confirmation button on the instant onboarding screen -->
-    <string name="instant_onboarding_create">同意 &amp; 创建个人资料</string>
+    <string name="instant_onboarding_create">同意并创建账号</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">使用其他服务器</string>
     <string name="instant_onboarding_other_server">列出聊天邮件服务器</string>
@@ -574,9 +574,9 @@
     <string name="scan_invitation_code">扫描邀请码</string>
     <string name="login_title">登录</string>
     <!-- for classic email, we use the classical term "Account" -->
-    <string name="login_header">登录您的电子邮件账户</string>
+    <string name="login_header">登录您的电子邮件账号</string>
     <!-- for classic email, we use the classical term "Account" -->
-    <string name="login_explain">使用现有电子邮件帐户登录</string>
+    <string name="login_explain">使用现有电子邮件账号登录</string>
     <string name="login_subheader">对于已知的电子邮件提供商，附加设置会被自动设置。有时 IMAP 需要在网页版设置里启用。 请咨询您的电子邮件提供商或朋友来寻求帮助。</string>
     <string name="login_no_servers_hint">不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
     <string name="login_inbox">收件箱</string>
@@ -614,13 +614,13 @@
     <string name="accept_invalid_certificates">接受无效的证书</string>
     <!-- deprecated -->
     <string name="used_settings">已使用设置：</string>
-    <string name="switch_account">切换账户 </string>
-    <string name="add_account">添加账户</string>
-    <string name="delete_account">删除账户</string>
-    <string name="delete_account_ask">您确定要删除您的账户数据吗？</string>
-    <string name="delete_account_explain_with_name">此设备上“%s”的所有帐户数据都将被删除，包括您的端到端加密设置、联系人、聊天、消息及媒体。 此操作无法撤消。</string>
-    <string name="unconfigured_account">未配置的账户</string>
-    <string name="unconfigured_account_hint">打开账户来配置它</string>
+    <string name="switch_account">切换账号</string>
+    <string name="add_account">添加账号</string>
+    <string name="delete_account">删除账号</string>
+    <string name="delete_account_ask">是否确定要删除您的账号数据？</string>
+    <string name="delete_account_explain_with_name">将会删除此设备上“%s”的所有账号数据，包括您的端到端加密设置、联系人、聊天、消息和媒体。此操作无法撤销。</string>
+    <string name="unconfigured_account">未配置的账号</string>
+    <string name="unconfigured_account_hint">打开账号来配置它</string>
     <string name="try_connect_now">立即尝试连接</string>
     <string name="sync_all">同步所有</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
@@ -643,7 +643,7 @@
     <string name="pref_blocked_contacts">已屏蔽的联系人</string>
     <string name="blocked_empty_hint">被您屏蔽的联系人将显示于此。</string>
     <!-- for classic email, we use the classical term "Account" -->
-    <string name="pref_password_and_account_settings">密码和账户</string>
+    <string name="pref_password_and_account_settings">密码和账号</string>
     <string name="pref_who_can_see_profile_explain">在与其他用户交流时，您的个人资料图片和名称将与您的消息一起发送。</string>
     <string name="pref_your_name">您的名称</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
@@ -705,7 +705,7 @@
     <!-- the placeholder will be replaced by the name of the profile's email address -->
     <string name="pref_backup_export_x">导出 %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
-    <string name="pref_backup_export_all">导出全部 %1$d 个账户</string>
+    <string name="pref_backup_export_all">导出全部 %1$d 个账号</string>
     <string name="pref_backup_export_start_button">开始备份</string>
     <string name="pref_backup_written_to_x">备份已成功写入到“%1$s”。</string>
     <string name="pref_managekeys_menu_title">管理密钥</string>
@@ -724,7 +724,7 @@
     <string name="pref_watch_sent_folder">监视已发送文件夹</string>
     <string name="pref_send_copy_to_self">给自己发送副本</string>
     <!-- for classic email, we use the classical term "Account" -->
-    <string name="pref_send_copy_to_self_explain">在多台设备上使用此账户时，这是必需的。</string>
+    <string name="pref_send_copy_to_self_explain">在多台设备上使用此账号时，这是必需的。</string>
     <string name="pref_auto_folder_moves">自动移动至 DeltaChat 文件夹</string>
     <string name="pref_auto_folder_moves_explain">移动聊天对话以免弄乱收件箱</string>
     <string name="pref_only_fetch_mvbox_title">只从 DeltaChat 文件夹获取</string>
@@ -956,16 +956,16 @@
     <string name="qrshow_join_contact_hint">扫描此处来与 %1$s 聊天。</string>
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
     <string name="qraccount_ask_create_and_login">在“%1$s”创建新的电子邮件地址并登录？</string>
-    <string name="qraccount_ask_create_and_login_another">在“%1$s”创建新的电子邮件地址并登录？\n\n已存在的账户不会被删除。使用“切换账户”来在账户之间切换。</string>
+    <string name="qraccount_ask_create_and_login_another">在“%1$s”创建新账号并登录？\n\n不会删除您现有的账号。使用“切换账号”在账号之间切换。</string>
     <string name="set_name_and_avatar_explain">设置一个你的联系人认得出的名字。你还可以设置头像图片</string>
     <string name="please_enter_name">请输入名字</string>
-    <string name="qraccount_qr_code_cannot_be_used">无法使用扫描到的二维码建立新账户。</string>
+    <string name="qraccount_qr_code_cannot_be_used">扫描的二维码不能用于创建新账号。</string>
     <!-- deprecated -->
     <string name="qraccount_use_on_new_install">扫描到的二维码是用于设置新帐户的。设置新的 Delta Chat 安装时，您可以扫描此二维码。</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">登录 \"%1$s\"吗？</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
-    <string name="qrlogin_ask_login_another">登录“%1$s“吗？\n\n你现有的账户不会被删除。使用“切换账户”来在不同账户间进行切换。</string>
+    <string name="qrlogin_ask_login_another">是否登录“%1$s”？\n\n不会删除您现有的账号。使用“切换账号”在账号之间切换。</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s 邀请你加入此群组。\n\n等待 %2$s 的设备回复…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -1063,7 +1063,7 @@
     <string name="autocrypt_correct_desktop">Autocrypt 设置已传输 。</string>
     <string name="forget_login_confirmation_desktop">删除此登录？所有内容都将会删除，包括您的端到端设置、联系人、聊天、消息和媒体。此操作无法撤销。</string>
     <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">电子邮件：%1$s\n大小：%2$s\n账户 Id：%3$s</string>
+    <string name="account_info_hover_tooltip_desktop2">电子邮件：%1$s\n大小：%2$s\n账号 ID：%3$s</string>
     <string name="message_detail_sent_desktop">发送于</string>
     <string name="message_detail_received_desktop">接收于</string>
     <string name="menu.view.developer.open.log.folder">打开日志文件夹</string>
@@ -1101,7 +1101,7 @@
     <string name="a11y_voice_message_hint_ios">录音后轻按两次发送。要丢弃录音，用两根手指左右滑动。</string>
     <string name="a11y_connectivity_hint">轻按两次查看连接详情</string>
     <string name="login_error_no_internet_connection">无互联网连接，登录失败。</string>
-    <string name="share_account_not_configured">账户未配置。</string>
+    <string name="share_account_not_configured">账号未配置。</string>
     <string name="cannot_play_audio_file">无法播放音频文件。</string>
     <!-- iOS camera permission alert -->
     <string name="perm_ios_explain_access_to_camera_denied">要拍照、拍摄视频或扫描二维码，请打开系统设置并启用“相机”。</string>
@@ -1152,8 +1152,9 @@
     <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n若 Delta Chat 在后台时消息仍未到达，请检查系统设置。</string>
 
     <!-- device messages for updates -->
-    <string name="update_1_44_android">变化：\n\n❤️ 耶！等待已久的功能来了：长按消息做出回应\n\n🔗 如果你无法扫描二维码，将它们分享为邀请链接\n\n🔵 计算所有账户的未读消息并显示在标题中\n\n… 以及修复许多 bug … %1$s\n\n帮助改进应用：使用“设置/高级、发送统计数据”帮助开发者为实际使用而更好地优化。发送前你可以查看数据</string>
+    <string name="update_1_44_android">变化：\n\n❤️ 耶！等待已久的功能来了：长按消息做出回应\n\n🔗 如果您无法扫描二维码，将它们分享为邀请链接\n\n🔵 计算所有账号的未读消息并显示在标题中\n\n… 以及修复许多错误 …%1$s\n\n帮助改进应用：使用“设置/高级/发送统计数据”帮助开发者为实际使用而更好地优化。您可以在发送之前查看数据</string>
     <string name="update_1_44_ios">变化：\n\n❤️ 耶！等待已久的功能来了：长按消息做出回应\n\n🫸 支持推送通知，不过需要提供商像 https://nine.testrun.org 一样支持该功能\n\n🔗 如果你无法扫描二维码，将它们分享为邀请链接\n\n… 以及修复许多 bug … %1$s</string>
     <string name="update_1_46_android">新用户引导流程 🐣 以及更多信息：\n\n⚡️ 注册安全的快速聊天邮件服务器（https://delta.chat/chatmail）或使用传统的电子邮件服务器\n\n👉 为任何聊天邮件服务器推送通知\n\n👤 通过“附加联系人”安全地连接您的朋友\n\n🥰 使用任何表情符号进行回应\n\n📌 直接从搜索中固定聊天…以及更多信息，请访问 %1$s</string>
     <string name="update_1_46_ios">新用户引导流程 🐣 以及更多信息：\n\n⚡️ 注册安全的快速聊天邮件服务器（https://delta.chat/chatmail）或使用传统的电子邮件服务器\n\n👉 为任何聊天邮件服务器推送通知\n\n👤 接收“附加联系人”安全地连接您的朋友\n\n🥰 更快选择消息回应 …更多信息，请访问 %1$s</string>
-    </resources>
+    <string name="update_switch_profile_placement">ℹ️ “切换账号”选项已移动：点击主屏幕上角的个人资料图片以添加或切换账号 💡</string>
+</resources>
