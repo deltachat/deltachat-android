@@ -34,10 +34,10 @@ ENV PATH ${PATH}:${ANDROID_SDK_ROOT}/cmdline-tools/bin
 # Install NDK manually. Other SDK parts are installed automatically by gradle.
 #
 # If you change the NDK version here, also change it in `flake.nix`.
-# NDK version r23c LTS aka 23.2.8568313
-RUN sdkmanager --sdk_root=${ANDROID_SDK_ROOT} 'ndk;23.2.8568313'
+# NDK version r27 LTS aka 27.0.11902837
+RUN sdkmanager --sdk_root=${ANDROID_SDK_ROOT} 'ndk;27.0.11902837'
 
-ENV ANDROID_NDK_ROOT ${ANDROID_SDK_ROOT}/ndk/23.2.8568313
+ENV ANDROID_NDK_ROOT ${ANDROID_SDK_ROOT}/ndk/27.0.11902837
 ENV PATH ${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain none
