@@ -33,7 +33,7 @@ android {
         applicationId "com.b44t.messenger"
         multiDexEnabled true
 
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 33
 
         vectorDrawables.useSupportLibrary = true
@@ -189,10 +189,11 @@ dependencies {
     }
     implementation 'com.annimon:stream:1.1.8' // brings future java streams api to SDK Version < 24
 
+    implementation 'com.getkeepsafe.relinker:relinker:1.4.4' // needed to avoid safe-content-resolver-v14 trying to fetch older non-existing version
     // Replacement for ContentResolver
     // that protects against the Surreptitious Sharing attack.
     // <https://github.com/cketti/SafeContentResolver>
-    implementation 'de.cketti.safecontentresolver:safe-content-resolver-v21:1.0.0'
+    implementation 'de.cketti.safecontentresolver:safe-content-resolver-v14:1.0.0'
 
     gplayImplementation('com.google.firebase:firebase-messaging:23.4.1') { // for PUSH notifications
         exclude group: 'com.google.firebase', module: 'firebase-core'
