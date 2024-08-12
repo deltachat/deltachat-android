@@ -107,7 +107,10 @@ public class QrScanFragment extends Fragment {
         // therefore, we only show a non-disturbing error here.
         @Override
         protected void displayFrameworkBugMessageAndExit(String message) {
-            Toast.makeText(myActivity, R.string.zxing_msg_camera_framework_bug, Toast.LENGTH_SHORT).show();
+            if (message.isEmpty()) {
+                message = activity.getString(R.string.zxing_msg_camera_framework_bug);
+            }
+            Toast.makeText(myActivity, message, Toast.LENGTH_SHORT).show();
         }
     }
 
