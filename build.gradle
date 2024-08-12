@@ -165,7 +165,8 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-core:2.19.1' // plays video and audio
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.19.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.journeyapps:zxing-android-embedded:3.4.0' // QR Code scanner
+    implementation 'com.google.zxing:core:3.3.0' // fixed version to support SDK<24
+    implementation ('com.journeyapps:zxing-android-embedded:4.3.0') { transitive = false } // QR Code scanner
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1' // used as JSON library
     implementation 'com.google.code.gson:gson:2.9.1' // used as JSON library. Don't upgrade to 2.10.1: https://github.com/deltachat/deltachat-android/pull/2610
     implementation "me.leolin:ShortcutBadger:1.1.16" // display messagecount on the home screen icon.
