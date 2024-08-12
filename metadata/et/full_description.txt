@@ -1,0 +1,19 @@
+Delta Chat on hajutatud ja turvaline sõnumirakendus, mis tervikuna ja täielikult
+ühildub olemasoleva e-posti taristuga.
+
+Seega Delta Chati abil saad kasutada tänapäevaset tuntud vestlusrakendustega kaasnevat
+lihtsust e-posti levi alusel.
+
+Ülevaade tähtsamatest omadustest:
+
+💬 Turvaline sõnumiklient, mis toimib mitme kasutajakontoga ja mitmetes seadmetes.
+
+⚡️ Lihtne liitumine kiire ja turvalise vestlusserveriga. Pole vaja telefoninumbrit ega isiklikke andmeid.
+
+📧 Alternatiivina kasuta oma tavapärast e-postiaadressi, aga loe sõnumeid vestlustena.
+
+🎮 Vestlustes leiduvad interaktiivsed pisirakendused mängude ja ühistöö jaoks.
+
+🔒 Auditeeritud läbiv krüptimine, mis on turvaline võrgu- ja serverirünnete vastu.
+
+🆓 Internetistandarditel põhinev avatud lähtekoodiga vaba tarkvara.
