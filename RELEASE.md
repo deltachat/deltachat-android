@@ -20,7 +20,7 @@ on the command-line, in a PR called "update-core-and-stuff-DATE":
    ```
 
 the "update-core-and-stuff-DATE" PR can be merged without review
-(as everyrhing was already reviewed in their repos).
+(as everything was already reviewed in their repos).
 
 the following steps are done in a PR called `prep-VERSION` (no leading "v"):
 
