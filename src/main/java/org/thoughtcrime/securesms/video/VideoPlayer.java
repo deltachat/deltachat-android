@@ -17,27 +17,26 @@
 package org.thoughtcrime.securesms.video;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.google.android.exoplayer2.DefaultLoadControl;
-import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.LoadControl;
+import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.extractor.ExtractorsFactory;
-import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
+import com.google.android.exoplayer2.source.ProgressiveMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.android.exoplayer2.trackselection.TrackSelection;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
-import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
+import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
@@ -49,7 +48,7 @@ import org.thoughtcrime.securesms.video.exo.AttachmentDataSourceFactory;
 
 public class VideoPlayer extends FrameLayout {
 
-  @Nullable private final SimpleExoPlayerView exoView;
+  @Nullable private final PlayerView exoView;
 
   @Nullable private       SimpleExoPlayer     exoPlayer;
   @Nullable private       Window              window;
@@ -93,12 +92,15 @@ public class VideoPlayer extends FrameLayout {
 
   private void setExoViewSource(@NonNull VideoSlide videoSource, boolean autoplay)
   {
-    BandwidthMeter         bandwidthMeter             = new DefaultBandwidthMeter();
-    TrackSelection.Factory videoTrackSelectionFactory = new AdaptiveTrackSelection.Factory(bandwidthMeter);
-    TrackSelector          trackSelector              = new DefaultTrackSelector(videoTrackSelectionFactory);
+    BandwidthMeter         bandwidthMeter             = new DefaultBandwidthMeter.Builder(getContext()).build();
+    TrackSelector          trackSelector              = new DefaultTrackSelector(getContext());
     LoadControl            loadControl                = new DefaultLoadControl();
 
-    exoPlayer = ExoPlayerFactory.newSimpleInstance(getContext(), trackSelector, loadControl);
+    exoPlayer = new SimpleExoPlayer.Builder(getContext())
+      .setTrackSelector(trackSelector)
+      .setBandwidthMeter(bandwidthMeter)
+      .setLoadControl(loadControl)
+      .build();
     exoPlayer.addListener(new ExoPlayerListener(window));
     //noinspection ConstantConditions
     exoView.setPlayer(exoPlayer);
@@ -107,13 +109,14 @@ public class VideoPlayer extends FrameLayout {
     AttachmentDataSourceFactory attachmentDataSourceFactory = new AttachmentDataSourceFactory(defaultDataSourceFactory);
     ExtractorsFactory           extractorsFactory           = new DefaultExtractorsFactory();
 
-    MediaSource mediaSource = new ExtractorMediaSource(videoSource.getUri(), attachmentDataSourceFactory, extractorsFactory, null, null);
+    MediaSource mediaSource = new ProgressiveMediaSource.Factory(attachmentDataSourceFactory, extractorsFactory)
+      .createMediaSource(MediaItem.fromUri(videoSource.getUri()));
 
     exoPlayer.prepare(mediaSource);
     exoPlayer.setPlayWhenReady(autoplay);
   }
 
-  private static class ExoPlayerListener implements Player.EventListener {
+  private static class ExoPlayerListener implements Player.Listener {
     private final Window window;
 
     ExoPlayerListener(Window window) {

@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.qr;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -106,8 +107,11 @@ public class QrScanFragment extends Fragment {
         // which makes _showing_ the QR-code impossible if scanning goes wrong.
         // therefore, we only show a non-disturbing error here.
         @Override
-        protected void displayFrameworkBugMessageAndExit() {
-            Toast.makeText(myActivity, R.string.zxing_msg_camera_framework_bug, Toast.LENGTH_SHORT).show();
+        protected void displayFrameworkBugMessageAndExit(String message) {
+            if (TextUtils.isEmpty(message)) {
+                message = myActivity.getString(R.string.zxing_msg_camera_framework_bug);
+            }
+            Toast.makeText(myActivity, message, Toast.LENGTH_SHORT).show();
         }
     }
 
