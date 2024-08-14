@@ -18,6 +18,8 @@ package org.thoughtcrime.securesms;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.getDirectSharingChatId;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedTitle;
@@ -140,6 +142,20 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         Prefs.setBooleanPreference(this, "info_about_switch_profile_added", true);
       }
       // /add info
+
+
+      // remove gmail oauth2
+      final int serverFlags = dcContext.getConfigInt(CONFIG_SERVER_FLAGS);
+      if ((serverFlags & DcContext.DC_LP_AUTH_OAUTH2)!=0) {
+        Util.runOnAnyBackgroundThread(() -> {
+          if (dcContext.isGmailOauth2Addr(dcContext.getConfig(CONFIG_ADDRESS))) {
+            final DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+            msg.setText("⚠️ GMail Users: If you have problems using GMail, go to \"Settings / Advanced / Password and Account\".\n\nThere, login again using an \"App Password\".");
+            dcContext.addDeviceMsg("info_about_gmail_oauth2_removal8", msg);
+          }
+        });
+      }
+      // /remove gmail oauth2
 
     } catch(Exception e) {
       e.printStackTrace();
