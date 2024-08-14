@@ -362,11 +362,18 @@
         android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
     </activity>
 
-    <service android:name=".connect.KeepAliveService" android:foregroundServiceType="dataSync" android:enabled="true" />
+    <service
+        android:name=".connect.KeepAliveService"
+        android:foregroundServiceType="dataSync"
+        android:enabled="true" />
 
-    <service android:name=".geolocation.LocationBackgroundService" android:foregroundServiceType="location" />
+    <service
+        android:name=".geolocation.LocationBackgroundService"
+        android:foregroundServiceType="location" />
 
-    <service android:name=".service.GenericForegroundService" android:foregroundServiceType="dataSync" />
+    <service
+        android:name=".service.GenericForegroundService"
+        android:foregroundServiceType="dataSync" />
 
     <service
         android:name=".service.IPCAddAccountsService"
