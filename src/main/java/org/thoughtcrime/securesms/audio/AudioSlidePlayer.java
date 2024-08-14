@@ -16,16 +16,16 @@ import androidx.annotation.Nullable;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
-import com.google.android.exoplayer2.ExoPlaybackException;
-import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.LoadControl;
+import com.google.android.exoplayer2.MediaItem;
+import com.google.android.exoplayer2.PlaybackException;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.audio.AudioAttributes;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.extractor.ExtractorsFactory;
-import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.ProgressiveMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 
@@ -76,10 +76,13 @@ public class AudioSlidePlayer {
 
   public void requestDuration() {
     try {
-      LoadControl loadControl = new DefaultLoadControl.Builder().setBufferDurationsMs(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE).createDefaultLoadControl();
-      durationCalculator = ExoPlayerFactory.newSimpleInstance(context, new DefaultRenderersFactory(context), new DefaultTrackSelector(), loadControl);
+      LoadControl loadControl = new DefaultLoadControl.Builder().setBufferDurationsMs(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE).build();
+      durationCalculator = new SimpleExoPlayer.Builder(context, new DefaultRenderersFactory(context))
+        .setTrackSelector(new DefaultTrackSelector(context))
+        .setLoadControl(loadControl)
+        .build();
       durationCalculator.setPlayWhenReady(false);
-      durationCalculator.addListener(new Player.EventListener() {
+      durationCalculator.addListener(new Player.Listener() {
         @Override
         public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
           if (playbackState == Player.STATE_READY) {
@@ -113,16 +116,19 @@ public class AudioSlidePlayer {
       throw new IOException("Slide has no URI!");
     }
 
-    LoadControl loadControl = new DefaultLoadControl.Builder().setBufferDurationsMs(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE).createDefaultLoadControl();
-    this.mediaPlayer           = ExoPlayerFactory.newSimpleInstance(context, new DefaultRenderersFactory(context), new DefaultTrackSelector(), loadControl);
+    LoadControl loadControl = new DefaultLoadControl.Builder().setBufferDurationsMs(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE).build();
+    this.mediaPlayer           = new SimpleExoPlayer.Builder(context, new DefaultRenderersFactory(context))
+      .setTrackSelector(new DefaultTrackSelector(context))
+      .setLoadControl(loadControl)
+      .build();
 
     mediaPlayer.prepare(createMediaSource(slide.getUri()));
     mediaPlayer.setPlayWhenReady(true);
     mediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
-            .setContentType(earpiece ? C.CONTENT_TYPE_SPEECH : C.CONTENT_TYPE_MUSIC)
+            .setContentType(earpiece ? C.AUDIO_CONTENT_TYPE_SPEECH : C.AUDIO_CONTENT_TYPE_MUSIC)
             .setUsage(earpiece ? C.USAGE_VOICE_COMMUNICATION : C.USAGE_MEDIA)
-            .build());
-    mediaPlayer.addListener(new Player.EventListener() {
+            .build(), false);
+    mediaPlayer.addListener(new Player.Listener() {
 
       boolean started = false;
 
@@ -171,7 +177,7 @@ public class AudioSlidePlayer {
       }
 
       @Override
-      public void onPlayerError(ExoPlaybackException error) {
+      public void onPlayerError(PlaybackException error) {
         Log.w(TAG, "MediaPlayer Error: " + error);
 
         synchronized (AudioSlidePlayer.this) {
@@ -194,9 +200,8 @@ public class AudioSlidePlayer {
     AttachmentDataSourceFactory attachmentDataSourceFactory = new AttachmentDataSourceFactory(defaultDataSourceFactory);
     ExtractorsFactory           extractorsFactory           = new DefaultExtractorsFactory().setConstantBitrateSeekingEnabled(true);
 
-    return new ExtractorMediaSource.Factory(attachmentDataSourceFactory)
-            .setExtractorsFactory(extractorsFactory)
-            .createMediaSource(uri);
+    return new ProgressiveMediaSource.Factory(attachmentDataSourceFactory, extractorsFactory)
+            .createMediaSource(MediaItem.fromUri(uri));
   }
 
   public synchronized void stop() {
