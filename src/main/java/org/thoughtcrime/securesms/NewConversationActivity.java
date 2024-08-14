@@ -155,16 +155,4 @@ public class NewConversationActivity extends ContactSelectionActivity {
     startActivity(intent);
     finish();
   }
-
-  @Override
-  protected boolean onPrepareOptionsPanel(View view, Menu menu) {
-    /* currently not needed
-    MenuInflater inflater = this.getMenuInflater();
-    menu.clear();
-    inflater.inflate(R.menu.new_conversation_activity, menu);
-    */
-    super.onPrepareOptionsMenu(menu);
-    return true;
-  }
-
 }
