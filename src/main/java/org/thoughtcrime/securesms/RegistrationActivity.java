@@ -231,7 +231,16 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
             int serverFlags = DcHelper.getInt(this, CONFIG_SERVER_FLAGS);
             int sel = 0;
-            if((serverFlags&DcContext.DC_LP_AUTH_OAUTH2)!=0) sel = 1;
+            if((serverFlags&DcContext.DC_LP_AUTH_OAUTH2)!=0) {
+              sel = 1;
+
+              // remove gmail oauth2
+              if (DcHelper.getContext(this).isGmailOauth2Addr(email)) { // this is a blocking call, not perfect, but as rarely used and temporary, good enough
+                sel = 0;
+                updateProviderInfo(); // we refer to the hints in the device message, show them immediately
+              }
+              // /remove gmail oauth2
+            }
             authMethod.setSelection(sel);
             expandAdvanced = expandAdvanced || sel != 0;
 
@@ -424,6 +433,13 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             // and should be whitelisted by the supported oauth2 services
             String redirectUrl = "chat.delta:/"+BuildConfig.APPLICATION_ID+"/auth";
             oauth2url = dcContext.getOauth2Url(email, redirectUrl);
+
+            // remove gmail oauth2
+            if (dcContext.isGmailOauth2Url(oauth2url)) {
+              oauth2url = null;
+            }
+            // /remove gmail oauth2
+
             return null;
         }
 
