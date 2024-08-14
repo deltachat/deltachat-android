@@ -260,6 +260,15 @@ public class DcContext {
       }
     }
 
+    public boolean isGmailOauth2Addr(String addr) {
+      final String oauth2url = getOauth2Url(addr, "chat.delta:/foo");
+      return isGmailOauth2Url(oauth2url);
+    }
+
+    public boolean isGmailOauth2Url(String oauth2url) {
+      return oauth2url.startsWith("https://accounts.google.com/");
+    }
+
     /**
      * @return true if at least one chat has location streaming enabled
      */
