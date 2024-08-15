@@ -29,8 +29,6 @@
     <string name="emoji">Émoji</string>
     <string name="attachment">Pièce jointe</string>
     <string name="back">Retour</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">Connu</string>
     <string name="close">Fermer</string>
     <string name="close_window">Fermer la fenêtre</string>
     <string name="forward">Faire suivre</string>
@@ -403,8 +401,6 @@
     <string name="chat_record_slide_to_cancel">Glisser pour annuler</string>
     <string name="chat_record_explain">Appuyer et maintenir pour enregistrer un message vocal, relâcher pour l’envoyer</string>
     <string name="chat_no_chats_yet_title">Boîte de réception vide. Appuyer sur \"+\" pour commencer une nouvelle discussion.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Vous pouvez discuter avec d\'autres utilisateurs de Delta Chat et avec n\'importe quelle adresse de courriel.</string>
     <string name="chat_all_archived">Toutes les discussions sont archivées.\nAppuyer sur \"+\" pour commencer une nouvelle discussion.</string>
     <string name="chat_share_with_title">Partager avec</string>
     <string name="chat_input_placeholder">Message</string>
@@ -598,8 +594,6 @@
     <string name="login_error_cannot_login">Connexion en tant que \"%1$s\" échouée. Vérifiez que votre adresse courriel et votre mot de passe sont corrects.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accepter les certificats non valides</string>
-    <!-- deprecated -->
-    <string name="used_settings">Paramètres utilisés :</string>
     <string name="switch_account">Changer de compte</string>
     <string name="add_account">Ajouter un compte</string>
     <string name="delete_account">Supprimer le compte</string>
@@ -776,16 +770,10 @@
     <string name="autodel_after_1_hour">Après 1 heure</string>
     <string name="autodel_after_1_day">Après 1 jour</string>
     <string name="autodel_after_1_week">Après 1 semaine</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">Après 4 semaines</string>
     <string name="after_5_weeks">Après 5 semaines</string>
     <string name="autodel_after_1_year">Après 1 année</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt est une nouvelle spécification ouverte pour le chiffrement automatique de bout en bout des courriels.\n\nVotre configuration de bout en bout est créée automatiquement si nécessaire et vous pouvez la transférer entre vos appareils grâce aux messages de configuration Autocrypt.</string>
     <string name="autocrypt_send_asm_title">Envoyer le message de configuration Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Un \"Message de configuration d\'Autocrypt\" partages en toute sécurité vos paramètres de bout-en-bout avec les autres applications conformes à Autocrypt.\n\nLa configuration sera chiffrée par un code d\'installation affiché ici et doit être saisi sur l\'autre appareil.</string>
     <string name="autocrypt_send_asm_button">Envoyer le message de configuration Autocrypt</string>
@@ -921,8 +909,6 @@
     <string name="qraccount_ask_create_and_login">Créer une nouvelle adresse de courriel sur « %1$s » et se connecter ici ?</string>
     <string name="qraccount_ask_create_and_login_another">Créer une nouvelle adresse de courriel sur « %1$s » et s\'y connecter ?\n\nVotre compte existant ne sera pas supprimé. Utilisez l\'élément de menu « Changer de compte » pour passer d\'un compte à l\'autre.</string>
     <string name="qraccount_qr_code_cannot_be_used">Le code QR scanné ne peut pas être utilisé pour ouvrir un nouveau compte.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">Le code QR scanné permet de configurer un nouveau compte. Vous pouvez scanner le code QR à la configuration d\'une nouvelle installation de Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Se connecter au compte « %1$s » ?</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
@@ -1019,8 +1005,6 @@
     <string name="export_backup_desktop">Exporter la sauvegarde</string>
     <string name="autocrypt_correct_desktop">Configuration Autocrypt transférée.</string>
     <string name="forget_login_confirmation_desktop">Supprimer cette connexion ? Tout sera effacé, y compris vos paramètres de chiffrement de bout en bout, vos contacts, discussions, messages et fichiers multimédia. Cette action est irrévocable.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">Adresse: %1$s\nTaille: %2$s\nID du compte: %3$s</string>
     <string name="message_detail_sent_desktop">envoyé</string>
     <string name="message_detail_received_desktop">reçu</string>
     <string name="menu.view.developer.open.log.folder">Ouvrir le dossier Journal</string>

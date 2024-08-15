@@ -364,8 +364,6 @@
     <string name="chat_record_slide_to_cancel">Desliza para cancelar</string>
     <string name="chat_record_explain">Toca e mantén para gravar mensaxe de voz, solta para enviar</string>
     <string name="chat_no_chats_yet_title">Caixa de entrada baldeira.\n Preme \"+\" para iniciar conversa.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Podes conversar con outra usuaria Delta Chat e con calquera enderezo de correo.</string>
     <string name="chat_all_archived">Arquiváronse todas as conversas.\nPreme \"+\" para iniciar unha nova.</string>
     <string name="chat_share_with_title">Compartir con</string>
     <string name="chat_input_placeholder">Mensaxe</string>
@@ -521,8 +519,6 @@
     <string name="login_error_cannot_login">Non se puido acceder como \"%1$s\". Comproba o enderezo de correo e o contrasinal.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Aceptar certificados non válidos</string>
-    <!-- deprecated -->
-    <string name="used_settings">Axustes utilizados:</string>
     <string name="switch_account">Cambiar de conta</string>
     <string name="add_account">Engadir conta</string>
     <string name="delete_account">Eliminar conta</string>
@@ -689,16 +685,10 @@
     <string name="autodel_after_1_hour">Após 1 hora</string>
     <string name="autodel_after_1_day">Após 1 día</string>
     <string name="autodel_after_1_week">Após 1 semana</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">Após 4 semanas</string>
     <string name="after_5_weeks">Após 5 semanas</string>
     <string name="autodel_after_1_year">Após 1 ano</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt é un xeito novo de cifrado extremo-a-extremo automático do correo electrónico.\n\nOs axustes extremo-a-extremo créanse de xeito automático cando se precisan e son transferidos entre dispositivos con Mensaxes de Configuración Autocrypt.</string>
     <string name="autocrypt_send_asm_title">Enviar Mensaxe de Configuración Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Unha Mensaxe de Configuración Autocrypt comparte de xeito seguro o teu cifrado extremo-a-extremo con outras apps compatibles con Autocrypt.\n\nO axuste realízase cifrado e protexido cun código que se debe escribir no outro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Enviar Mensaxe de Configuración Autocrypt</string>
@@ -799,8 +789,6 @@
     <string name="qraccount_ask_create_and_login">Crear un novo enderezo de correo en \"%1$s\" e acceder ali?</string>
     <string name="qraccount_ask_create_and_login_another">Crear un novo enderezo de email en \"%1$s\" e acceder?\n\nNon se eliminará a conta actual. Usa \"Cambiar de conta\" para cambiar entre as túas contas.</string>
     <string name="qraccount_qr_code_cannot_be_used">O código QR escaneado non se pode utilizar para crear unha nova conta.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">O código QR escaneado é para crear unha nova conta. Podes escanear o código QR cando configures unha nova instalación de Delta Chat.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s convidoute a este grupo.\n\nAgardando a que responda o dispositivo de %2$s ...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -882,8 +870,6 @@
     <string name="export_backup_desktop">Exportar respaldo</string>
     <string name="autocrypt_correct_desktop">Axuste Autocrypt transferido.</string>
     <string name="forget_login_confirmation_desktop">Eliminar esta conexión? Borrarase todo, incluíndo os axustes de cifrado, contactos, conversas, mensaxes e ficheiros de medios. Esta acción non ten volta atrás.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">Email: %1$s \nTamaño: %2$s \nId. da conta: %3$s</string>
     <string name="message_detail_sent_desktop">enviado</string>
     <string name="message_detail_received_desktop">recibido</string>
     <string name="menu.view.developer.open.log.folder">Abrir cartafol do rexistro</string>

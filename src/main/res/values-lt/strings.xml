@@ -357,8 +357,6 @@
     <string name="chat_new_group_hint">Rašykite pirmąją žinutę, taip leisdami kitiems atsakyti šioje grupėje..\n\n• Nieko tokio, jei ne visi dalyviai naudoja Delta Chat.\n\n• Pirmosios žinutės pristatymas gali šiek tiek užtrukti.</string>
     <string name="chat_record_slide_to_cancel">Perbraukite, norėdami atsisakyti</string>
     <string name="chat_record_explain">Bakstelėkite ir laikykite, norėdami įrašyti balso žinutę. Atleiskite, norėdami išsiųsti</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Galite bendrauti su kitais Delta Chat naudotojais ir bet kuriais el. pašto adresais.</string>
     <string name="chat_all_archived">Visi pokalbiai archyvuoti.\nPaspauskite „+“ norėdami pradėti naują pokalbį.</string>
     <string name="chat_share_with_title">Bendrinti su</string>
     <string name="chat_input_placeholder">Žinutė</string>
@@ -491,8 +489,6 @@
     <string name="login_error_cannot_login">Nepavyksta prisijungti kaip \"%1$s\". Patikrinkite ar el. pašto adresas ir slaptažodis yra teisingi.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Priimti negaliojančius liudijimus</string>
-    <!-- deprecated -->
-    <string name="used_settings">Naudoti nustatymai:</string>
     <string name="switch_account">Perjungti paskyrą</string>
     <string name="add_account">Pridėti paskyrą</string>
     <string name="delete_account">Ištrinti paskyrą</string>
@@ -645,16 +641,10 @@
     <string name="autodel_after_1_hour">Po 1 valandos</string>
     <string name="autodel_after_1_day">Po 1 dienos</string>
     <string name="autodel_after_1_week">Po 1 savaitės</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">Po 4 savaičių</string>
     <string name="after_5_weeks">Po 5 savaičių</string>
     <string name="autodel_after_1_year">Po 1 metų</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt yra naujoji ir atviroji specifikacija automatiniam ištisiniam el. pašto šifravimui.\n\nPrireikus, jūsų ištisinė sąranka yra sukuriama automatiškai ir gali būti perduodama tarp įrenginių, naudojant Autocrypt sąrankos žinutes.</string>
     <string name="autocrypt_send_asm_title">Siųsti Autocrypt sąrankos žinutę</string>
     <string name="autocrypt_send_asm_explain_before">\"Autocrypt sąrankos žinutė\" saugiai bendrina jūsų ištisinę sąranką su kitomis su Autocrypt suderinamomis programomis.\n\nSąranka bus užšifruota sąrankos kodu, kuris yra rodomas čia ir privalės būti įvestas kitame įrenginyje.</string>
     <string name="autocrypt_send_asm_button">Siųsti Autocrypt sąrankos žinutę</string>
@@ -753,8 +743,6 @@
     <string name="qraccount_ask_create_and_login">Sukurti naują el. pašto adresą ties „%1$s“ ir prisijungti ten?</string>
     <string name="please_enter_name">Įrašykite vardą.</string>
     <string name="qraccount_qr_code_cannot_be_used">Nuskenuotas QR kodas negali būti naudojamas naujos paskyros nustatymui.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">Nuskenuotas QR kodas yra skirtas naujos paskyros nustatymui. Galite nuskenuoti QR kodą tuomet, kai nustatote naują Delta Chat diegimą.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Prisijungti prie „%1$s“?</string>
     <string name="contact_verified">%1$s patvirtintas.</string>
@@ -828,8 +816,6 @@
     <string name="export_backup_desktop">Eksportuoti atsarginę kopiją</string>
     <string name="autocrypt_correct_desktop">Autocrypt sąranka sėkmingai perduota!</string>
     <string name="forget_login_confirmation_desktop">Ištrinti šį prisijungimą? Viskas bus ištrinta, įskaitant jūsų ištisinę sąranką, adresatus, pokalbius, žinutes ir mediją. Šis veiksmas yra galutinis ir negalės būti panaikintas.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">El. paštas: %1$s\nDydis: %2$s\nPaskyros Id: %3$s</string>
     <string name="message_detail_sent_desktop">išsiųsta</string>
     <string name="message_detail_received_desktop">gauta</string>
     <string name="menu.view.developer.open.log.folder">Atverti žurnalų aplanką</string>

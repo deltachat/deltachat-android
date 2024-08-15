@@ -31,8 +31,6 @@
     <string name="emoji">شکلک</string>
     <string name="attachment">پیوست</string>
     <string name="back">بازگشت</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">احراز هویت شده</string>
     <string name="close">بستن</string>
     <string name="close_window">بستن پنجره</string>
     <string name="forward">هدایت</string>
@@ -391,8 +389,6 @@ https://meet.jit.si/$ROOM
     <string name="chat_record_slide_to_cancel">برای لغو بکشید.</string>
     <string name="chat_record_explain">برای ضبط پیام صوتی فشار داده و نگهدارید، برای ارسال رها کنید. </string>
     <string name="chat_no_chats_yet_title">گفتگویی وجود ندارد.\nبرای شروع گفتگو جدید دکمه «+» را فشار دهید.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">می‌توانید با دیگر کاربران دلتاچت و هر نشانی رایانامه‌ای گپ بزنید.</string>
     <string name="chat_all_archived">تمام گپ‌ها بایگانی شده‌اند. /n برای شروع گپ جدید، «+» را فشار دهید. </string>
     <string name="chat_share_with_title">اشتراک گذاری با</string>
     <string name="chat_input_placeholder">پیام</string>
@@ -599,8 +595,6 @@ https://meet.jit.si/$ROOM
     <string name="login_error_cannot_login">نتوانست به عنوان «%1$s» وارد شود. لطفاً صحت نشانی رایانامه و گذرواژه را بررسی کنید. </string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">پذیرش گواهینامه‌های نامعتبر</string>
-    <!-- deprecated -->
-    <string name="used_settings">تنظیم‌های استفاده شده:</string>
     <string name="switch_account">تغییر حساب کاربری</string>
     <string name="add_account">افزودن حساب کاربری</string>
     <string name="delete_account">حذف حساب کاربری</string>
@@ -787,16 +781,10 @@ https://meet.jit.si/$ROOM
     <string name="autodel_after_1_hour">بعد از ۱ ساعت</string>
     <string name="autodel_after_1_day">بعد از ۱  روز</string>
     <string name="autodel_after_1_week">بعد از ۱ هفته</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">بعد از۴ هفته</string>
     <string name="after_5_weeks">بعد از ۵ هفته</string>
     <string name="autodel_after_1_year">بعد از ۱ سال</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">اتوکریپت</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">اتوکریپت  یک ویژگی جدید و باز برای رمزگذاری سرتاسر خودکار رایانامه است.\n\n تنظیم‌های رمزگذاری سرتاسر در هنگام نیاز به صورت خودکار ایجاد می‌شود و می‌توانید آن را  با پیام‌های تنظیم اتوکریپت بین دستگاه‌ها انتقال دهید. </string>
     <string name="autocrypt_send_asm_title">ارسال پیام برپاسازی اتوکریپت</string>
     <string name="autocrypt_send_asm_explain_before">پیام برپاسازی اتوکریپت تنظیم‌های رمزگذاری سرتاسر شما را به شکلی امن با دیگر برنامه‌ها به اشتراک می‌گذارد.\n\n تنظیم‌ها با یک کد برپاسازی که در اینجا نمایش داده می‌شود رمزگذاری می‌شوند و باید در دستگاه دیگر تایپ شود. </string>
     <string name="autocrypt_send_asm_button">ارسال پیام برپاسازی اتوکریپت</string>
@@ -941,8 +929,6 @@ https://meet.jit.si/$ROOM
     <string name="set_name_and_avatar_explain">اسمی انتخاب کنید که مخاطبینتان با آن شما را بشناسند. می توانید برای خود عکسی هم انتخاب کنید.</string>
     <string name="please_enter_name">لطفا یک نام وارد کنید.</string>
     <string name="qraccount_qr_code_cannot_be_used">این کد کیوآر اسکن شده را نمی‌توان برای راه‌اندازی حساب جدید استفاده کرد. </string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">کد کیوآر اسکن شده برای راه‌اندازی یک حساب جدید است. می‌توانید در حال تنظیم یک دلتاچت تازه نصب شده کیوآر را اسکن کنید.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">آیا به \"%1$s\" وارد شوید؟</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
@@ -1057,10 +1043,6 @@ GNU GPL ورژن ۳
     <string name="export_backup_desktop">صادر کردن نسخه پشتیبان</string>
     <string name="autocrypt_correct_desktop">برپاسازی اتوکریپت انتقال یافت.</string>
     <string name="forget_login_confirmation_desktop">پاک کردن این حساب؟ همه‌چیز پاک می‌شود که شامل رمزگذاری سراسری، مخاطبین، گپ‌ها، پیام‌ها و رسانه‌ها می‌شود. این عملیات قابل بازگردانی نیست.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">رایانامه: %1$s
-فضا: %2$s
-شناسه حساب:‌%3$s</string>
     <string name="message_detail_sent_desktop">ارسال شد</string>
     <string name="message_detail_received_desktop">دریافت شد</string>
     <string name="menu.view.developer.open.log.folder">پوشه گزارش را باز کن</string>
@@ -1130,8 +1112,6 @@ GNU GPL ورژن ۳
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">دلتاچت میخواهد تصاویر را در آلبوم شما ذخیره کند.</string>
 
 
-    <!-- deprecated -->
-    <string name="pref_push_notifications">استفاده از خدمت Push</string>
     <string name="pref_background_notifications">استفاده از اتصال پس‌زمینه</string>
     <string name="pref_reliable_service">اجبار کردن اتصال پس‌زمینه</string>
     <string name="pref_reliable_service_explain">اعلانی دائمی نشان می‌دهد</string>

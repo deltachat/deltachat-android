@@ -31,8 +31,6 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Bijlage</string>
     <string name="back">Terug</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">Goedgekeurd</string>
     <string name="close">Sluiten</string>
     <string name="close_window">Venster sluiten</string>
     <string name="forward">Doorsturen</string>
@@ -399,8 +397,6 @@
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
     <string name="chat_record_explain">Houd ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
     <string name="chat_no_chats_yet_title">Er zijn nog geen gesprekken.\nDruk op ‘+’ om een gesprek te beginnen.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Je kunt een gesprek voeren met andere Delta Chat-gebruikers en via alle soorten e-mailadressen.</string>
     <string name="chat_all_archived">Alle gesprekken zijn gearchiveerd.\nDruk op ‘+’ om een gesprek te beginnen.</string>
     <string name="chat_share_with_title">Delen met</string>
     <string name="chat_input_placeholder">Bericht</string>
@@ -565,8 +561,6 @@
     <string name="manual_account_setup_option">Inloggen met eigen e-mailadres</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Mijn profiel</string>
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_default">Privacybeleid lezen</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
     <string name="instant_onboarding_agree_default2">Privacybeleid van %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
@@ -627,8 +621,6 @@
     <string name="login_error_cannot_login">Het inloggen als ‘%1$s’ is mislukt. Controleer je e-mailadres en wachtwoord.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Ongeldige certificaten accepteren</string>
-    <!-- deprecated -->
-    <string name="used_settings">Gebruikte instellingen:</string>
     <string name="switch_account">Ander account kiezen</string>
     <string name="add_account">Account toevoegen</string>
     <string name="delete_account">Account verwijderen</string>
@@ -821,16 +813,10 @@
     <string name="autodel_after_1_hour">Na 1 uur</string>
     <string name="autodel_after_1_day">Na 1 dag</string>
     <string name="autodel_after_1_week">Na 1 week</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">Na 4 weken</string>
     <string name="after_5_weeks">Na 5 weken</string>
     <string name="autodel_after_1_year">Na 1 jaar</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt is een nieuwe, open specificatie voor het automatisch instellen van eind-tot-eindversleuteling.\n\nJe instellingen worden, indien nodig, automatisch aangemaakt en kunnen worden overgezet naar andere apparaten middels instelberichten.</string>
     <string name="autocrypt_send_asm_title">Autocrypt-instelbericht versturen</string>
     <string name="autocrypt_send_asm_explain_before">Een ‘Autocrypt-instelbericht’ deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps.\n\nDe instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
     <string name="autocrypt_send_asm_button">Autocrypt-instelbericht versturen</string>
@@ -975,8 +961,6 @@
     <string name="set_name_and_avatar_explain">Kies een naam die herkenbaar is voor je contactpersonen en, desgewenst, een profielfoto.</string>
     <string name="please_enter_name">Voer een naam in.</string>
     <string name="qraccount_qr_code_cannot_be_used">De gescande QR-code kan niet worden gebruikt om een nieuw account in te stellen.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">De gescande QR-code is voor het instellen van een nieuw account. Je kunt deze direct scannen na het (opnieuw) installeren van Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Inloggen als ‘%1$s’?</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
@@ -1077,8 +1061,6 @@
     <string name="export_backup_desktop">Reservekopie exporteren</string>
     <string name="autocrypt_correct_desktop">Autocrypt-instellingen overgedragen!</string>
     <string name="forget_login_confirmation_desktop">Wil je dit account verwijderen? Alles wordt verwijderd: je eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie is onomkeerbaar.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">E-mail: %1$s\nGrootte: %2$s\nAccount-id: %3$s</string>
     <string name="message_detail_sent_desktop">verstuurd</string>
     <string name="message_detail_received_desktop">ontvangen</string>
     <string name="menu.view.developer.open.log.folder">Map met logbestanden openen</string>
@@ -1150,12 +1132,6 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Onmiddellijke bezorging</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications">Push-afleverdienst gebruiken</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications_explain">Betrouwbare pushmeldingen voor chatmailservers</string>
-    <!-- deprecated -->
-    <string name="pref_push_ask_disable">Weet je zeker dat je de push-afleverdienst wilt uitschakelen?\n\nDit kan leiden tot vertraagde meldingen.</string>
     <string name="pref_background_notifications">Achtergrondverbinding gebruiken</string>
     <string name="pref_background_notifications_explain">Hiervoor is het verplicht dat accu-optimalisering wordt uitgeschakeld. Let op: gebruik alleen indien de push-afleverdienst niet beschikbaar is.</string>
     <string name="pref_reliable_service">Achtergrondverbinding afdwingen</string>
@@ -1167,8 +1143,6 @@
     <string name="perm_enable_bg_already_done">Je hebt al toestemming gegeven voor het ophalen van berichten op de achtergrond.\n\nAls het nog steeds niet werkt, controleer dan de systeeminstellingen.</string>
 
     <!-- device messages for updates -->
-    <string name="update_1_44_android">Wijzigingslog:\n\n❤️ Jaaaa! Eindelijk een langverwachte functie toegevoegd: een bericht lang ingedrukt houden om te reageren\n\n🔗 Als je geen QR-codes kunt scannen, dan kun je ze voortaan delen als uitnodigingslinks\n\n🔵 Voortaan wordt het aantal ongelezen berichten van alle accounts in de titel getoond\n\n… en vele, vele bugs opgelost… %1$s\n\nHelp de app te verbeteren: via ‘Instellingen → Geavanceerd → Statistieken versturen’ kun je de ontwikkelaars helpen om inzicht te krijgen in het dagelijks gebruik. Je kunt alle te versturen gegevens vooraf inzien.</string>
-    <string name="update_1_44_ios">Wijzigingslog:\n\n❤️ Jaaaa! Eindelijk een langverwachte functie toegevoegd: een bericht lang ingedrukt houden om te reageren\n\n🫸 PUSHmeldingen, indien ondersteund door diensten als https://nine.testrun.org\n\n🔗 Als je geen QR-codes kunt scannen, dan kun je ze voortaan delen als uitnodigingslinks\n\n🔵 Voortaan wordt het aantal ongelezen berichten van alle accounts in de titel getoond\n\n… en vele, vele bugs opgelost… %1$s</string>
     <string name="update_1_46_android">Nieuwe registratiemogelijkheden 🐣 en nog veel meer:\n\n⚡️ Registreer een account bij snelle chatmailservers (https://delta.chat/chatmail) of maak gebruik van traditionele mailservers\n\n👉 Ontvang pushmeldingen van elke chatmailserver\n\n👤 Voeg contactpersonen toe via ‘Contactpersonen bijvoegen’\n\n🥰 Reageer met een emoji\n\n📌 Maak gesprekken vast … en nog veel meer op %1$s</string>
     <string name="update_1_46_ios">Nieuwe registratiemogelijkheden 🐣 en nog veel meer:\n\n⚡️ Registreer een account bij snelle chatmailservers (https://delta.chat/chatmail) of maak gebruik van traditionele mailservers\n\n👉 Ontvang pushmeldingen van elke chatmailserver\n\n👤 Voeg contactpersonen toe via ‘Contactpersonen bijvoegen’\n\n🥰 Reageer met een emoji\n\n📌 Maak gesprekken vast … en nog veel meer op %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ De optie om een ander profiel te kiezen is verplaatst: druk op je profielfoto op het hoofdscherm om het profielmenu te openen.💡</string>

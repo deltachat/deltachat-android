@@ -29,8 +29,6 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Anexo</string>
     <string name="back">Voltar</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">Verificado</string>
     <string name="close">Fechar</string>
     <string name="forward">Encaminhar</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -387,8 +385,6 @@
     <string name="chat_record_slide_to_cancel">Deslize para cancelar</string>
     <string name="chat_record_explain">Toque e segure para gravar uma mensagem de voz e, depois, solte para enviar</string>
     <string name="chat_no_chats_yet_title">Caixa vazia.\nPressione \"+\" para conversar com alguém.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Você pode conversar com usuários do Delta Chat e com qualquer e-mail.</string>
     <string name="chat_all_archived">Apenas conversas arquivadas.\nPressione \"+\" para uma nova conversa.</string>
     <string name="chat_share_with_title">Compartilhar com</string>
     <string name="chat_input_placeholder">Mensagem</string>
@@ -575,8 +571,6 @@
     <string name="login_error_cannot_login">Impossível acessar \"%1$s\". Por favor, verifique o e-mail e senha.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Aceitar certificados inválidos</string>
-    <!-- deprecated -->
-    <string name="used_settings">Configurações utilizadadas:</string>
     <string name="switch_account">Mudar de conta</string>
     <string name="add_account">Adicionar conta</string>
     <string name="delete_account">Apagar conta</string>
@@ -743,16 +737,10 @@
     <string name="autodel_after_1_hour">Após 1 hora</string>
     <string name="autodel_after_1_day">Após 1 dia</string>
     <string name="autodel_after_1_week">Após 1 semana</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">Após 4 semanas</string>
     <string name="after_5_weeks">Após 5 semanas </string>
     <string name="autodel_after_1_year">Após 1 ano</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">A criptografia automática (Autocrypt) é um padrão novo e aberto para criptografia de e-mail de ponta a ponta. \n\n A sua configuração é feita automaticamente conforme necessário e pode ser compartilhada entre dispositivos diferentes com \"mensagens de configuração do Autocrypt\".</string>
     <string name="autocrypt_send_asm_title">Enviar \"mensagem de configuração do Autocrypt\"?</string>
     <string name="autocrypt_send_asm_explain_before">A \"mensagem de configuração do Autocrypt\" compartilha com segurança a sua configuração de ponta a ponta com outros aplicativos compatíveis. \n\nA configuração será criptografada por um código de configuração que será exibido aqui e deverá ser digitado no outro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Enviar \"mensagem de configuração do Autocrypt\"?</string>
@@ -880,8 +868,6 @@
     <string name="qraccount_ask_create_and_login">Criar novo endereço de e-mail em \"%1$s\" e entrar nele?</string>
     <string name="qraccount_ask_create_and_login_another">Criar novo endereço de e-mail em \"%1$s\"  e entrar nele?\n\n nSua conta existente não será excluída. Use o item \"Trocar conta\" para alternar entre suas contas.</string>
     <string name="qraccount_qr_code_cannot_be_used">O código QR lido não pode ser usado para configurar uma nova conta.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">O código QR digitalizado é para configurar uma nova conta. Você pode ler o código QR ao configurar uma nova instalação Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Conectar-se em \"%1$s\"?</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
@@ -969,8 +955,6 @@
     <string name="export_backup_desktop">Exportar becape</string>
     <string name="autocrypt_correct_desktop">Configuração Autocrypt completada!</string>
     <string name="forget_login_confirmation_desktop">Apagar este login? Tudo será apagado, incluindo sua configuração de criptografia, contatos, conversas, mensagens e mídia. Esta ação é final e irreversível.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nTamanho: %2$s\nConta Id: %3$s</string>
     <string name="message_detail_sent_desktop">enviado</string>
     <string name="message_detail_received_desktop">recebido</string>
     <string name="menu.view.developer.open.log.folder">Abrir pasta de relatórios</string>

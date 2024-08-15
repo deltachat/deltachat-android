@@ -31,8 +31,6 @@
     <string name="emoji">Smajlíky</string>
     <string name="attachment">Příloha</string>
     <string name="back">Zpět</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">Ověřeno</string>
     <string name="close">Zavřít</string>
     <string name="close_window">Zavřít okno</string>
     <string name="forward">Přeposlat</string>
@@ -388,8 +386,6 @@
     <string name="chat_record_slide_to_cancel">Zrušit tahem</string>
     <string name="chat_record_explain">K nahrání hlasové zprávy stiskni a drž mikrofon, uvolni pro odeslání.</string>
     <string name="chat_no_chats_yet_title">Prázdná schránka.\nStiskem \"+\" založ nový chat.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Založ chat s jakýmkoli uživatelem Delta Chatu a s jakýmkoli e-mailem.</string>
     <string name="chat_all_archived">Všechny chaty archivovány.\nStiskem \"+\" založ nový chat.</string>
     <string name="chat_share_with_title">Sdílet s</string>
     <string name="chat_input_placeholder">Zpráva</string>
@@ -490,8 +486,6 @@
     <string name="login_error_cannot_login">Přihlášení jako \"%1$s\" selhalo. Zkontrolujte si prosím ještě jednou e-mail a heslo.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Přijmout neplatné certifikáty</string>
-    <!-- deprecated -->
-    <string name="used_settings">Použité nastavení</string>
     <string name="switch_account">Přepni účet</string>
     <string name="add_account">Přidej účet</string>
     <string name="delete_account">Vymaž účet</string>
@@ -640,16 +634,10 @@
     <string name="autodel_after_1_hour">Po 1 hodině</string>
     <string name="autodel_after_1_day">Po 1 dni</string>
     <string name="autodel_after_1_week">Po 1 týdnu</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">Po 4 týdnech</string>
     <string name="after_5_weeks">Po 5 týdnech</string>
     <string name="autodel_after_1_year">Po 1 roce</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt je nový, otevřený technický popis samočinného end-to-end šifrování.\n\nNastavení šifrování se vytváří samočinně dle potřeby a mužeš si ho přenášet mezi zařízeními zasláním zprávy s Nastavením Autocryptu.</string>
     <string name="autocrypt_send_asm_title">Pošli Nastavení Autocryptu</string>
     <string name="autocrypt_send_asm_explain_before">Pomocí Nastavení Autocryptu lze bezpečně sdílet nastavení šifrování této aplikace s jinou, která také používá Autocrypt.\n\nNastavení je zašifrované zobrazeným kódem, který musí být vložen i na druhém zařízení.</string>
     <string name="autocrypt_send_asm_button">Pošli Nastavení Autocryptu</string>
@@ -758,8 +746,6 @@
     <string name="qraccount_ask_create_and_login">Vytvořit nový e-mail na \"%1$s\" a připojit se k němu?</string>
     <string name="qraccount_ask_create_and_login_another">Vytvořit nový e-mail na \"%1$s\" a připojit se k němu?\n\nTvůj původní ůčet nebude smazán. Použij \"Přepni účet\" k přepnutí na jiný účet.</string>
     <string name="qraccount_qr_code_cannot_be_used">Sejmutý QR kód neumožňuje nastavení nového účtu.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">Sejmutý QR kód je k nastavení nového účtu. Tento QR kód můžeš použít když budeš provádět novou instalaci Delta Chatu.</string>
     <string name="contact_verified">%1$s ověřen.</string>
     <string name="contact_not_verified">Nelze ověřit %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

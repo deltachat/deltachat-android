@@ -237,8 +237,6 @@
     <string name="chat_record_slide_to_cancel">Irristatu ezeztatzeko</string>
     <string name="chat_record_explain">Sakatu eta mantendu ahots-mezu bat grabatzeko, askatu bidaltzeko.</string>
     <string name="chat_no_chats_yet_title">Sarrera-ontzi hutsa.\nSakatu \"+\" txat berria hasteko.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Beste Delta Chat erabiltzaileekin txateatu dezakezu, edo edozein e-mail helbiderekin</string>
     <string name="chat_all_archived">Txat guztiak artxibatuta.\nSakatu \"+\" txat berri bat hasteko.</string>
     <string name="chat_share_with_title">Partekatu honekin</string>
     <string name="chat_input_placeholder">Mezua</string>
@@ -311,8 +309,6 @@
     <string name="login_error_cannot_login">Ezin da \"%1$s\" bezala saioa hasi. Egiaztatu E-mail helbidea eta pasahitza zuzenak diren.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Onartu ziurtagiri baliogabeak</string>
-    <!-- deprecated -->
-    <string name="used_settings">Erabilitako ezarpenak:</string>
     <string name="switch_account">Aldatu kontua</string>
     <string name="add_account">Gehitu kontua</string>
     <string name="delete_account">Ezabatu kontua</string>
@@ -419,15 +415,9 @@
     <string name="autodel_after_1_hour">Ordubete eta gero</string>
     <string name="autodel_after_1_day">Egun bat eta gero</string>
     <string name="autodel_after_1_week">Aste bat eta gero</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">4 aste eta gero</string>
     <string name="autodel_after_1_year">Urtebete eta gero</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt e-maila muturretik muturrera zifratzeko espezifikazio berri eta ireki bat da.\n\nZure muturretik muturrerako ezarpena automatikoki sortzend a behar denean eta gailutik gailura eraman dezakezu Autocrypt ezarpen mezuekin.</string>
     <string name="autocrypt_send_asm_title">Bidali Autocrypt ezarpen mezua</string>
     <string name="autocrypt_send_asm_explain_before">\"Autocrypt ezarpen mezua\" batek modu seguruan partekatzen du zure muturretik muturrerako ezarpena Autocryptekin bateragarriak diren beste aplikazioekin. Ezarpena hemen bistaratutako ezarpen kodearekin zifratuko  da, eta beste gailuan kode hau sartu beharko da.</string>
     <string name="autocrypt_send_asm_button">Bidali Autocrypt ezarpen mezua</string>
@@ -489,8 +479,6 @@
     <string name="qrshow_join_contact_no_connection_toast">Ez dago Internet konexiorik, ezin da QR kode bidezko ezarpena aplikatu</string>
     <string name="qraccount_ask_create_and_login">Sortu kontu berria \"%1$s\" zerbitzarian eta saioa han hasi?</string>
     <string name="qraccount_qr_code_cannot_be_used">Eskaneatutako QR kodea ezin da kontu berri bat ezartzeko erabili.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">Eskaneatutako QR kodea kontu berri bat ezartzeko da. QR kodea Delta Chat instalazio berri batean eskaneatu dezakezu.</string>
     <string name="contact_verified">%1$s egiaztatuta.</string>
     <string name="contact_not_verified">Ezin da %1$s egiaztatu</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

@@ -31,8 +31,6 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Bilaga</string>
     <string name="back">Tillbaka</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">Verifierad</string>
     <string name="close">Stäng</string>
     <string name="close_window">Stäng fönster</string>
     <string name="forward">Vidarebefordra</string>
@@ -399,8 +397,6 @@
     <string name="chat_record_slide_to_cancel">Svep för att avbryta</string>
     <string name="chat_record_explain">Tryck och håll ner för att spela in ett röstmeddelande, släpp för att skicka.</string>
     <string name="chat_no_chats_yet_title">Tom inkorg.\nTryck på \"+\" för att starta en ny chatt.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Du kan chatta med andra Delta Chat-användare och med vilken e-postadress som helst.</string>
     <string name="chat_all_archived">Alla chattar arkiverade.\nTryck på \"+\" för att starta en ny chatt.</string>
     <string name="chat_share_with_title">Dela med</string>
     <string name="chat_input_placeholder">Meddelande</string>
@@ -565,8 +561,6 @@
     <string name="manual_account_setup_option">Klassisk e-postinloggning</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Din profil</string>
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_default">Läs integritetspolicyn</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
     <string name="instant_onboarding_agree_default2">Integritetspolicy för %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
@@ -627,8 +621,6 @@
     <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". Kontrollera om e-postadressen och lösenordet är korrekt.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptera ogiltiga certifikat</string>
-    <!-- deprecated -->
-    <string name="used_settings">Använda inställningar:</string>
     <string name="switch_account">Byt konto</string>
     <string name="add_account">Lägg till konto</string>
     <string name="delete_account">Ta bort konto</string>
@@ -821,16 +813,10 @@
     <string name="autodel_after_1_hour">Efter 1 timma</string>
     <string name="autodel_after_1_day">Efter 1 dag</string>
     <string name="autodel_after_1_week">Efter 1 vecka</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">Efter 4 veckor</string>
     <string name="after_5_weeks">Efter 5 veckor</string>
     <string name="autodel_after_1_year">Efter 1 år</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt är en ny och öppen specifikation för automatisk slutpunkt-till-slutpunkt e-postkryptering.\n\nDin slutpunkt-till-slutpunkt-inställning skapas automatiskt vid behov och du kan överföra den mellan olika enheter med Autocrypt inställningsmeddelanden.</string>
     <string name="autocrypt_send_asm_title">Skicka Autocrypt inställningsmeddelande</string>
     <string name="autocrypt_send_asm_explain_before">Ett meddelande för att ställa in Autocrypt, delar den informationen med andra Autocrypt-anpassade program på ett säkert sätt. Informationen krypteras med en kod som visas här och som måste matas in på den mottagande enheten.</string>
     <string name="autocrypt_send_asm_button">Skicka Autocrypt inställningsmeddelande</string>
@@ -975,8 +961,6 @@
     <string name="set_name_and_avatar_explain">Ange ett namn som dina kontakter kommer att känna igen. Du kan också ange en profilbild.</string>
     <string name="please_enter_name">Ange ett namn.</string>
     <string name="qraccount_qr_code_cannot_be_used">Den skannade QR-koden kan inte användas för att konfigurera ett nytt konto.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">Den skannade QR-koden är till för att konfigurera ett nytt konto. Du kan skanna QR-koden när du konfigurerar en ny Delta Chat-installation.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Vill du logga in på \"%1$s\"?</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
@@ -1077,8 +1061,6 @@
     <string name="export_backup_desktop">Exportera säkerhetskopia</string>
     <string name="autocrypt_correct_desktop">Autocrypt-inställning överförd.</string>
     <string name="forget_login_confirmation_desktop">Ta bort den här inloggningen? Allt kommer att raderas, inklusive din slutpunkt-till-slutpunkt-inställning, dina kontakter, media och meddelanden. Denna åtgärd kan inte ångras.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">E-post: %1$s\nStorlek: %2$s\nKonto-ID: %3$s</string>
     <string name="message_detail_sent_desktop">skickat</string>
     <string name="message_detail_received_desktop">mottaget</string>
     <string name="menu.view.developer.open.log.folder">Öppna loggmappen</string>
@@ -1150,12 +1132,6 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Omedelbar leverans</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications">Använd Push-tjänsten</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications_explain">Tillförlitliga push-notiser för chatmail-servrar</string>
-    <!-- deprecated -->
-    <string name="pref_push_ask_disable">Vill du inaktivera användning av Push-tjänsten?\n\nDetta kan leda till fördröjda meddelanden.</string>
     <string name="pref_background_notifications">Använd bakgrundsanslutning</string>
     <string name="pref_background_notifications_explain">Kräver ignorerade batterioptimeringar, använd om aviseringar inte kommer i tid</string>
     <string name="pref_reliable_service">Tvinga fram bakgrundsanslutning</string>
@@ -1167,8 +1143,6 @@
     <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
 
     <!-- device messages for updates -->
-    <string name="update_1_44_android">Vad är nytt:\n\n❤️ Ja! Detta var efterlängtat: Långtryck på ett meddelande för att reagera\n\n🔗 Om du inte kan skanna QR-koder kan du dela dem som inbjudningslänkar\n\n🔵 Olästa meddelanden för alla konton räknas och visas i titeln nu\n\n... och massor av buggfixar ... %1$s\n\nHjälp till att förbättra appen: Använd \"Inställningar / Avancerat / Skicka statistik\" för att hjälpa utvecklarna att optimera bättre för verklig användning. Du kan granska data innan du skickar</string>
-    <string name="update_1_44_ios">Vad är nytt:\n\n❤️ Ja! Detta var efterlängtat: Långtryck på ett meddelande för att reagera\n\n🫸 PUSH-meddelanden om de stöds av leverantörer som https://nine.testrun.org\n\n🔗 Om du inte kan skanna QR-koder, dela dem som inbjudningslänkar\n\n\n... och massor av buggfixar ... %1$s</string>
     <string name="update_1_46_android">Ny onboarding 🐣 och mer:\n\n⚡️ Registrera dig för säkra snabba chatmailservrar (https://delta.chat/chatmail) eller använd klassiska e-postservrar\n\n👉 PUSH-meddelanden för alla chatmailservrar\n\n👤 Anslut dina vänner säkert via \"Bifoga kontakter\"\n\n🥰 Reagera med alla emoji\n\n📌 Fäst chattar direkt från sök ... och MER på %1$s</string>
     <string name="update_1_46_ios">Ny Onboarding 🐣 och mer:\n\n⚡️ Registrera dig för säkra snabba chatmailservrar (https://delta.chat/chatmail) eller använd klassiska e-postservrar\n\n👉 PUSH-meddelanden för alla chatmailservrar\n\n👤 Ta emot \"bifogade kontakter\" och anslut till dina vänner\n\n🥰 Snabbare reaktionsval ... och MER på %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ Alternativet \"Byt profil\" har flyttats: Tryck på din profilbild i det övre hörnet av huvudskärmen för att lägga till eller byta profil 💡</string>

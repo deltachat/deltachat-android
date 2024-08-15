@@ -31,8 +31,6 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Allegato</string>
     <string name="back">Indietro</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">Verificato</string>
     <string name="close">Chiudi</string>
     <string name="close_window">Chiudi finestra</string>
     <string name="forward">Inoltra</string>
@@ -414,8 +412,6 @@
     <string name="chat_record_slide_to_cancel">Scorri per annullare</string>
     <string name="chat_record_explain">Tocca e mantieni per registrare un messaggio vocale, rilascia per inviare </string>
     <string name="chat_no_chats_yet_title">Casella vuota.\nPremi \"+\" per iniziare una chat.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Puoi chattare con altri utenti Delta Chat o con qualsiasi indirizzo email.</string>
     <string name="chat_all_archived">Chat archiviate.\nPremi \"+\" per iniziare una nuova chat.</string>
     <string name="chat_share_with_title">Condividi con</string>
     <string name="chat_input_placeholder">Messaggio</string>
@@ -580,8 +576,6 @@
     <string name="manual_account_setup_option">Accesso E-Mail Classico</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Il Tuo Profilo</string>
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_default">Leggi l\'Informativa sulla Riservatezza</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
     <string name="instant_onboarding_agree_default2">Informativa sulla Riservatezza per %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
@@ -642,8 +636,6 @@
     <string name="login_error_cannot_login">Impossibile accedere come \"%1$s\". Verifica che l\'indirizzo email e la password siano corretti.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accetta certificati non validi</string>
-    <!-- deprecated -->
-    <string name="used_settings">Impostazioni in uso:</string>
     <string name="switch_account">Cambia Account</string>
     <string name="add_account">Aggiungi Account</string>
     <string name="delete_account">Elimina Account</string>
@@ -836,16 +828,10 @@
     <string name="autodel_after_1_hour">Dopo 1 ora</string>
     <string name="autodel_after_1_day">Dopo 1 giorno</string>
     <string name="autodel_after_1_week">Dopo 1 settimana</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">Dopo 4 settimane</string>
     <string name="after_5_weeks">Dopo 5 settimane</string>
     <string name="autodel_after_1_year">Dopo 1 anno</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt è una nuova specifica aperta per la cifratura end-to-end delle email.\n\nLa tua configurazione end-to-end viene creata automaticamente quando necessario e puoi trasferirla tra dispositivi tramite i Messaggi di configurazione.</string>
     <string name="autocrypt_send_asm_title">Messaggio di Configurazione Autocrypt </string>
     <string name="autocrypt_send_asm_explain_before">Un \'Messaggio di configurazione Autocrypt\' condivide in sicurezza le tue impostazioni end-to-end con altre app compatibili. Le impostazioni sono criptate con un codice mostrato qui che deve essere inserito nell\'altro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Invia Messaggio di Configurazione Autocrypt</string>
@@ -990,8 +976,6 @@
     <string name="set_name_and_avatar_explain">Imposta un nome che i tuoi contatti riconosceranno. Puoi anche impostare un\'immagine del profilo.</string>
     <string name="please_enter_name">Inserisci un nome.</string>
     <string name="qraccount_qr_code_cannot_be_used">Il codice QR scansionato non può essere utilizzato per creare un nuovo account.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">Il codice QR scansionato serve a creare un nuovo account. Puoi scansionare il codice quando configuri una nuova installazione di Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Accedere a \"%1$s\"?</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
@@ -1092,8 +1076,6 @@
     <string name="export_backup_desktop">Esporta Backup</string>
     <string name="autocrypt_correct_desktop">Configurazione di Autocrypt trasferita.</string>
     <string name="forget_login_confirmation_desktop">Eliminare questo accesso? Tutto verrà eliminato, inclusa la configurazione end-to-end, i contatti, le chat, i messaggi e i media. Questa azione non può essere annullata.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nDimensione: %2$s\nProfilo Id: %3$s</string>
     <string name="message_detail_sent_desktop">inviato</string>
     <string name="message_detail_received_desktop">ricevuto</string>
     <string name="menu.view.developer.open.log.folder">Apri Cartella dei Log</string>
@@ -1165,12 +1147,6 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Consegna Istantanea</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications">Utilizza Servizio Push</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications_explain">Notifiche Push Affidabili per Server-Chatmail</string>
-    <!-- deprecated -->
-    <string name="pref_push_ask_disable">Disabilitare Servizio Push?\n\nCiò potrebbe causare ritardi nelle notifiche.</string>
     <string name="pref_background_notifications">Utilizza Connessione Background</string>
     <string name="pref_background_notifications_explain">Richiede ignora ottimizzazioni della batteria, da utilizzare se il Servizio Push non è disponibile</string>
     <string name="pref_reliable_service">Forza Connessione Background</string>
@@ -1182,8 +1158,6 @@
     <string name="perm_enable_bg_already_done">Hai già autorizzato Delta Chat a ricevere messaggi in background.\n\nSe i messaggi non arrivano in background controlla le impostazioni di sistema.</string>
 
     <!-- device messages for updates -->
-    <string name="update_1_44_android">Novità:\n\n❤️ Sì! Questo era atteso da tempo: tocca a lungo un messaggio per reagire\n\n🔗 Se non riesci a scansionare i codici QR, condividili come link di invito\n\n🔵 I messaggi non letti di tutti i profili vengono ora conteggiati e mostrati nel titolo\n\n… e TONNELLATE di correzioni bug … %1$s\n\nAiuta a migliorare l\'app: usa \"Impostazioni/Avanzate/Invia statistiche\" per aiutare gli sviluppatori a ottimizzare meglio per l\'utilizzo nel mondo reale. È possibile rivedere i dati prima dell\'invio</string>
-    <string name="update_1_44_ios">Novità:\n\n❤️ Sì! Questo era atteso da tempo: tocca a lungo un messaggio per reagire\n\n🫸 Notifiche PUSH se supportate dai provider come https://nine.testrun.org\n\n🔗 Se non riesci a scansionare i codici QR, condividili come link di invito\n\n... e TONNELLATE di correzioni bug ... %1$s</string>
     <string name="update_1_46_android">Nuovo Inserimento 🐣 e Altro:\n\n⚡️ Iscriviti ai sicuri e veloci server chatmail (https://delta.chat/chatmail) o utilizza i classici server e-mail\n\n👉 Notifiche PUSH per qualsiasi server chatmail\n\n👤 Connettiti con i tuoi amici in modo sicuro tramite \"Allega contatti\"\n\n🥰 Reagisci con qualsiasi emoji\n\n📌 Appunta le chat direttamente dalla ricerca... e ALTRO su %1$s</string>
     <string name="update_1_46_ios">Nuovo Inserimento 🐣 e Altro:\n\n⚡️ Iscriviti ai sicuri e veloci server chatmail (https://delta.chat/chatmail) o usa i classici server e-mail\n\n👉 Notifiche PUSH per qualsiasi server chatmail\n\n👤 Ricevi \"Contatti allegati\" e connettiti ai tuoi amici\n\n🥰 Selezione della reazione più rapida ... e ALTRO su %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ Opzione \"Cambia Profilo\" spostata: tocca l\'immagine del tuo profilo nell\'angolo superiore della schermata principale per aggiungere o cambiare profili 💡</string>

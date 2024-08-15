@@ -269,8 +269,6 @@
     <string name="chat_record_slide_to_cancel">Iscurre pro annulare</string>
     <string name="chat_record_explain">Incarca e mantene incarcadu pro registrare unu messàgiu vocale, lassa pro imbiare</string>
     <string name="chat_no_chats_yet_title">Cartella de intrada bòida.\nIncarca \"+\" pro abèrrere una tzarrada noa.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Podes tzarrare cun àteros impreadores de Delta Chat e cun cale si siat indiritzu de posta eletrònica.</string>
     <string name="chat_all_archived">Tzarradas archiviadas.\nIncarca \"+\" pro abèrrere una tzarrada noa.</string>
     <string name="chat_share_with_title">Cumpartzi cun</string>
     <string name="chat_input_placeholder">Messàgiu</string>
@@ -350,8 +348,6 @@
     <string name="login_error_cannot_login">Impossìbile atzèdere comente \"%1$s\". pro paghere verìfica si s\'indiritzu de posta eletrònica e sa crae de intrada sunt curretos.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Atzetat tzertificados non vàlidos</string>
-    <!-- deprecated -->
-    <string name="used_settings">Impostatziones impreadas:</string>
     <string name="switch_account">Càmbia contu</string>
     <string name="add_account">Annanghe unu contu</string>
     <string name="delete_account">Iscantzella su contu</string>
@@ -479,15 +475,9 @@
     <string name="autodel_after_1_hour">A pustis de 1 ora</string>
     <string name="autodel_after_1_day">A pustis de 1 die</string>
     <string name="autodel_after_1_week">A pustis de 1 chida</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">A pustis de 4 chidas</string>
     <string name="autodel_after_1_year">A pustis de 1 annu</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt est un ispetzìfica noa e aberta pro sa tzifradura automàtica a nodu terminale (end-to-end) de sas lìteras de posta eletrònica.\n\nS\'impostatzione a nodu terminale tua benit creada automaticamente icando sebit e la podes tramudare dae unu dispositivu a s\'àteru cun sos Messàgios de impostatzione de Autocrypt.</string>
     <string name="autocrypt_send_asm_title">Imbia unu messàgiu de impostatzione de Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Unu \'Messàgiu de configuratzione Autocrypt\' cumpartzit sa configuratzione a nodu terminale (end-to-end) cun àteras aplicatziones cumpatìbiles cun Autocrypt.\n\nSa configuratzione ant a èssere tzifradas cun unu còdighe ammustradu inoghe chi depet èssere insertadu in s\'àteru dispositivu. </string>
     <string name="autocrypt_send_asm_button">Imbia unu messàgiu de impostatzione de Autocrypt</string>

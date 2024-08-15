@@ -27,8 +27,6 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Aldonaĵo</string>
     <string name="back">Reen</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">Konfirmita</string>
     <string name="close">Fermi</string>
     <string name="forward">Plusendi</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -323,8 +321,6 @@
     </plurals>
     <string name="chat_record_slide_to_cancel">Gliti por nuligi</string>
     <string name="chat_record_explain">Tuŝadi por registri voĉan mesaĝon, maltuŝadi por sendi</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Vi povas babili kun aliaj uzantoj de Delta Chat kaj kun iu ajn retadreso.</string>
     <string name="chat_all_archived">Ĉiuj babiloj enarĥivigitaj.\nPremu \"+\" por komenci novan babilon.</string>
     <string name="chat_share_with_title">Kunhavigi kun</string>
     <string name="chat_input_placeholder">Mesaĝo</string>
@@ -383,8 +379,6 @@
     <string name="import_backup_title">Importi savkopion</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Akcepti nevalidajn atestilojn</string>
-    <!-- deprecated -->
-    <string name="used_settings">Uzitaj agordoj:</string>
     <string name="delete_account">Forigi konton</string>
     <string name="delete_account_ask">Ĉu vi certas, ke vi volas forigi ĉiujn datumojn de vi konto?</string>
     <!-- share and forward messages -->
