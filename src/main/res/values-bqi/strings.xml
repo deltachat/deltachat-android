@@ -29,8 +29,6 @@
     <string name="emoji">êmuji</string>
     <string name="attachment">zamima</string>
     <string name="back">vorgaštên</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">taiď biďa</string>
     <string name="close">bastên</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">zênu bêfêšn</string>
@@ -347,8 +345,6 @@
     <string name="autodel_after_1_hour">ba\'ďê 1 sāat</string>
     <string name="autodel_after_1_day">ba\'ďê 1 ru</string>
     <string name="autodel_after_1_week">ba\'ďê 1 hafta</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">ba\'ďê 4 hafta</string>
     <string name="after_5_weeks">ba\'ďê 5 hafta</string>
     <string name="autodel_after_1_year">ba\'ďê 1 sāl</string>
 

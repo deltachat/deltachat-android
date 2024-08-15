@@ -31,8 +31,6 @@
     <string name="emoji">Emoticona</string>
     <string name="attachment">Adjunt</string>
     <string name="back">Enrere</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">Verificat</string>
     <string name="close">Tanca</string>
     <string name="close_window">Tanca la finestra</string>
     <string name="forward">Reenvia</string>
@@ -381,8 +379,6 @@
     <string name="chat_record_slide_to_cancel">Llisca per cancel·lar</string>
     <string name="chat_record_explain">Mantingues premut per gravar un missatge de veu i deixa anar per enviar-lo</string>
     <string name="chat_no_chats_yet_title">Safata d\'entrada buida.\nPrem \"+\" per començar un xat nou.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Pots xatejar amb altres usuaris de Delta Chat i amb qualsevol adreça de correu electrònic.</string>
     <string name="chat_all_archived">Tots els xats s\'han arxivat.\nPrem \"+\" per començar-ne un de nou.</string>
     <string name="chat_share_with_title">Comparteix amb</string>
     <string name="chat_input_placeholder">Missatge</string>
@@ -606,10 +602,6 @@
     <string name="pref_show_emails_accepted_contacts">Per a contactes acceptats</string>
     <string name="pref_show_emails_all">Tot</string>
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt és una especificació nova i oberta per al xifratge automàtic de correu electrònic d\'extrem a extrem.\n\nLa vostra configuració d\'extrem a extrem es crea automàticament segons calgui i es pot transferir entre dispositius amb els missatges de configuració Autocrypt.</string>
     <string name="autocrypt_send_asm_title">Envia el missatge de configuració Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Un \"missatge de configuració Autocrypt\" comparteix de forma segura la vostra configuració d\'extrem a extrem amb altres aplicacions compatibles amb Autocrypt.\n\nLa configuració es xifrarà amb un codi de configuració que es mostrarà aquí i que haureu d\'escriure a l’altre dispositiu.</string>
     <string name="autocrypt_send_asm_button">Envia el missatge de configuració Autocrypt</string>

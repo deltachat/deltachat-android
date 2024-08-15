@@ -321,8 +321,6 @@
     <string name="chat_record_slide_to_cancel">អូសដើម្បីផ្អាកសិន</string>
     <string name="chat_record_explain">ប៉ៈ និងសង្កត់ដើម្បីថតសារសម្លេង លែងដើម្បីផ្ញើ។</string>
     <string name="chat_no_chats_yet_title">ប្រអប់ទទួលគឺទទេ។\nចុច \"+\" ដើម្បីចាប់ផ្តើមការការសន្ទនាថ្មី។</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">អ្នកអាចសន្ទនាជាមួយអ្នកប្រើប្រាស់សា Delta Chat ផ្សេងទៀត និងជាមួយអ្នកមានអសយដ្ឋានអុីម៉េលណាមួយ។</string>
     <string name="chat_all_archived">សន្ទនាទាំងអស់បានកំណត់ទុក។\nចុច \"+\" ដើម្បីចាប់ផ្តើមការសន្ទនាថ្មី។</string>
     <string name="chat_share_with_title">ចែករំលែកជាមួយ</string>
     <string name="chat_input_placeholder">សារ</string>
@@ -460,8 +458,6 @@
     <string name="login_error_cannot_login">មិនអាចកត់ចូលជា \"%1$s\" ។ សូមផ្ទៀតផ្ទាត់មើលអស័យដ្ឋានអុីម៉េល និងពាក្យសម្ងាត់ឲ្យបានត្រឹមត្រូវ។</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">ទទួលយកលិខិតបញ្ជាក់មិនត្រឹមត្រូវ</string>
-    <!-- deprecated -->
-    <string name="used_settings">ការកំណត់ដែលបានប្រើ:</string>
     <string name="switch_account">ប្តូរឆ្លាស់គណនី</string>
     <string name="add_account">បន្ថែមគណនី</string>
     <string name="delete_account">លុបគណនី</string>
@@ -621,16 +617,10 @@
     <string name="autodel_after_1_hour">បន្ទាប់ពី ១ម៉ោង</string>
     <string name="autodel_after_1_day">បន្ទាប់ពី ១ថ្ងៃ</string>
     <string name="autodel_after_1_week">បន្ទាប់ពី ១អាទិត្យ</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">បន្ទាប់ពី ៤អាទិត្យ</string>
     <string name="after_5_weeks">ក្រោយរយៈពេល៣០៥សប្តាហ៍</string>
     <string name="autodel_after_1_year">បន្ទាប់ពី ១ឆ្នាំ</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">អ៊ិនគ្រីបស្វ័យប្រវត្តិ (ផ្ញើនិងទទួលសារដោយសម្ងាត់)</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">អ៊ិនគ្រីបស្វ័យប្រវត្តិគឺជាបើកការបញ្ជាក់ថ្មីសម្រាប់អ៊ិនគ្រីប  (ការធ្វើឲ្យការផ្ញើសារជាសារដាយសញ្ញាសម្ងាត់) អ៊ីមែលពីឧបករណ៍ដល់ឧបករណ៍ស្វ័យប្រវត្តិ\n\nការរៀបចំការចាត់របសឧបករណ៍ដល់ឧបករណ៍នឹអបានតាមស្វ័យប្រវត្តិបើយោងតាមតម្រូវការរបស់អ្នក។ អ្នកនឹងបានផ្ទេរវារវាងឧបករណ៍ពិសារអ៊ិនគ្រីបស្វ័យប្រវត្តិ</string>
     <string name="autocrypt_send_asm_title">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
     <string name="autocrypt_send_asm_explain_before">សារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំចែកចាយចាត់របសឧបករណ៍ដល់ឧបករណ៍ជាមួយកម្មវិធីដែលមានអ៊ិនគ្រីបស្វ័យប្រវត្តិផ្សេងទៀត។\n\n ការចាត់នឹងបានអ៊ិនគ្រីប (ការធ្វើឲ្យការផ្ញើសារជាសារដាយសញ្ញាសម្ងាត់) នៅទីនេះ នឹងត្រូវតែបានវាយបញ្ចូលនៅលើឧបករណ៍ផ្សេង។</string>
     <string name="autocrypt_send_asm_button">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
@@ -751,8 +741,6 @@
     <string name="qraccount_ask_create_and_login">បង្កើតអស័យដ្ឋានអុីម៉េលថ្មីនៅលើ \"%1$s\" និងកត់ចូលនៅទីនោះ?</string>
     <string name="qraccount_ask_create_and_login_another">បង្កើតអស័យដ្ឋានអុីម៉េលថ្មីនៅលើ \"%1$s\" និងកត់ចូលនៅទីនោះ?\n\nគណនីរបស់អ្នកដែលមានស្រាប់ នឹងមិនត្រូវបានលុបចោលទេ។ ប្រើប្រាស់ ការ \"ឆ្លាស់ប្តូរគណនី\" ដើម្បីធាតុប្តូររវាងគណនីរបស់អ្នក។</string>
     <string name="qraccount_qr_code_cannot_be_used">កូដ QR ដែលបានស្គេន មិនអាចត្រូវបានប្រើប្រាស់ដើម្បីរៀបចំគណនីថ្មីមួយទេ។</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">កូដ QR ដែលបានស្គេន គឺសម្រាប់ការកំណត់ឡើងនូវគណនីថ្មីមួយ។ អ្នកអាចស្គេនកូដ QR នៅពេលការកំណត់តម្លើងនូវ សា Delta Chat ។</string>
     <string name="contact_verified">%1$s បានផ្ទៀងផ្ទាត់</string>
     <string name="contact_not_verified">មិនអាចផ្ទៀងផ្ទាត់ %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

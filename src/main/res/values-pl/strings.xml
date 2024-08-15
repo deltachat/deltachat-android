@@ -31,8 +31,6 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Załącznik</string>
     <string name="back">Wróć</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">Zweryfikowano</string>
     <string name="close">Zamknij</string>
     <string name="close_window">Zamknij okno</string>
     <string name="forward">Przekaż</string>
@@ -429,8 +427,6 @@
     <string name="chat_record_slide_to_cancel">PRZESUŃ, BY ANULOWAĆ</string>
     <string name="chat_record_explain">Dotknij i przytrzymaj, aby nagrać wiadomość głosową, zwolnij, aby wysłać</string>
     <string name="chat_no_chats_yet_title">Pusta skrzynka odbiorcza.\nNaciśnij \"+\" aby rozpocząć nowy czat.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Możesz rozmawiać z innymi użytkownikami Delta Chat i z dowolnym adresem e-mail.</string>
     <string name="chat_all_archived">Wszystkie czaty zarchiwizowane.\nNaciśnij „+” aby rozpocząć nowy czat.</string>
     <string name="chat_share_with_title">Udostępnij</string>
     <string name="chat_input_placeholder">Wiadomość</string>
@@ -595,8 +591,6 @@
     <string name="manual_account_setup_option">Klasyczne logowanie e-mail</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Twój profil</string>
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_default">Przeczytaj politykę prywatności</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
     <string name="instant_onboarding_agree_default2">Polityka prywatności na %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
@@ -657,8 +651,6 @@
     <string name="login_error_cannot_login">Nie można się zalogować jako „%1$s. Sprawdź, czy adres e-mail i hasło są poprawne.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Zaakceptuj nieprawidłowe certyfikaty</string>
-    <!-- deprecated -->
-    <string name="used_settings">Użyte ustawienia:</string>
     <string name="switch_account">Przełącz konto</string>
     <string name="add_account">Dodaj konto</string>
     <string name="delete_account">Usuń konto</string>
@@ -851,16 +843,10 @@
     <string name="autodel_after_1_hour">Po 1 godzinie</string>
     <string name="autodel_after_1_day">Po 1 dniu</string>
     <string name="autodel_after_1_week">Po 1 tygodniu</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">Po 4 tygodniach</string>
     <string name="after_5_weeks">Po 5 tygodniach</string>
     <string name="autodel_after_1_year">Po 1 roku</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt to nowa i otwarta specyfikacja szyfrowania e-maili typu end-to-end.\n\nTwoja konfiguracja end-to-end w razie potrzeby jest tworzona automatycznie i można ją przesłać między urządzeniami za pomocą Wiadomości konfiguracyjnej automatycznego szyfrowania.</string>
     <string name="autocrypt_send_asm_title">Wyślij wiadomość konfiguracyjną Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Wiadomość konfiguracyjna automatycznego szyfrowania” bezpiecznie udostępnia twoją konfigurację end-to-end innym aplikacjom zgodnym z Autocrypt. Klucz zostanie zaszyfrowany za pomocą wyświetlonego tutaj kodu konfiguracyjnego, który należy wpisać na drugim urządzeniu.</string>
     <string name="autocrypt_send_asm_button">Wyślij wiadomość konfiguracyjną Autocrypt</string>
@@ -1005,8 +991,6 @@
     <string name="set_name_and_avatar_explain">Ustaw nazwę, którą rozpoznają twoje kontakty. Możesz także ustawić zdjęcie profilowe.</string>
     <string name="please_enter_name">Wpisz nazwę.</string>
     <string name="qraccount_qr_code_cannot_be_used">Zeskanowanego kodu QR nie można użyć do założenia nowego konta.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">Zeskanowany kod QR służy do zakładania nowego konta. Możesz zeskanować kod QR podczas konfigurowania nowej instalacji Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Zalogować się do „%1$s”?</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
@@ -1107,8 +1091,6 @@
     <string name="export_backup_desktop">Eksport kopii zapasowej</string>
     <string name="autocrypt_correct_desktop">Pomyślnie przetransferowano konfigurację Autocrypt!</string>
     <string name="forget_login_confirmation_desktop">Usunąć ten profil? Wszystko zostanie usunięte, w tym kompletna konfiguracja end-to-end, kontakty, czaty, wiadomości i multimedia. Ta akcja jest ostateczna i nie można jej odwrócić.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">E-mail: %1$s\nRozmiar: %2$s\nID konta: %3$s</string>
     <string name="message_detail_sent_desktop">wysłane</string>
     <string name="message_detail_received_desktop">odebrane</string>
     <string name="menu.view.developer.open.log.folder">Otwórz folder dziennika</string>
@@ -1180,12 +1162,6 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Natychmiastowe dostarczenie</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications">Użyj usługi push</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications_explain">Niezawodne powiadomienia push dla serwerów chatmail</string>
-    <!-- deprecated -->
-    <string name="pref_push_ask_disable">Wyłączyć korzystanie z usługi Push?\n\nMoże to skutkować opóźnieniami w powiadomieniach.</string>
     <string name="pref_background_notifications">Użyj połączenia w tle</string>
     <string name="pref_background_notifications_explain">Wymaga zignorowania optymalizacji baterii. Użyj, jeśli usługa Push jest niedostępna</string>
     <string name="pref_reliable_service">Wymuś połączenie w tle</string>
@@ -1197,8 +1173,6 @@
     <string name="perm_enable_bg_already_done">Pozwolono już Delta Chat na odbieranie wiadomości w tle.\n\nJeśli wiadomości nadal nie docierają w tle, sprawdź też ustawienia systemu.</string>
 
     <!-- device messages for updates -->
-    <string name="update_1_44_android">Co nowego:\n\n❤️ Tak! To było długo oczekiwane: naciśnij i przytrzymaj wiadomość, aby zareagować\n\n🔗 Jeśli nie możesz zeskanować kodów QR, udostępnij go jako linki z zaproszeniem\n\n🔵 Nieprzeczytane wiadomości ze wszystkich kont są teraz zliczane i wyświetlane w tytule\n\n … i MNÓSTWO poprawek błędów… %1$s\n\nPomóż w ulepszaniu aplikacji: użyj opcji „Ustawienia » Zaawansowane » Wyślij statystyki”, aby pomóc programistom w lepszej optymalizacji pod kątem rzeczywistego użytkowania. Możesz sprawdzić dane przed wysłaniem</string>
-    <string name="update_1_44_ios">Co nowego:\n\n❤️ Tak! To było długo oczekiwane: naciśnij i przytrzymaj wiadomości, aby zareagować\n\n🫸 Powiadomienia PUSH, jeśli są obsługiwane przez dostawców, takich jak https://nine.testrun.org\n\n🔗 Jeśli nie możesz zeskanować kodów QR, udostępnij go jako linki z zaproszeniem \n\n… i MNÓSTWO poprawek błędów…%1$s</string>
     <string name="update_1_46_android">Nowe wdrożenie 🐣 i nie tylko:\n\n⚡️ Zarejestruj się, aby korzystać z bezpiecznych i szybkich serwerów chatmail (https://delta.chat/chatmail) lub korzystaj z klasycznych serwerów e-mail\n\n👉 Powiadomienia PUSH dla dowolnego serwera chatmail\n\n👤 Połącz bezpiecznie znajomych za pomocą opcji „Dołącz kontakty”\n\n🥰 Reaguj dowolnymi emoji\n\n📌 Przypinaj czaty bezpośrednio z wyszukiwarki… i wiele WIĘCEJ na %1$s</string>
     <string name="update_1_46_ios">Nowe wdrożenie 🐣 i nie tylko:\n\n⚡️ Zarejestruj się, aby korzystać z bezpiecznych i szybkich serwerów chatmail (https://delta.chat/chatmail) lub korzystaj z klasycznych serwerów e-mail\n\n👉 Powiadomienia PUSH dla dowolnego serwera chatmail\n\n👤 Odbierz „Dołączone kontakty” i łącz się ze znajomymi\n\n🥰 Szybszy wybór reakcji… i wiele WIĘCEJ na %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ Opcja „Przełącz profil” została przeniesiona: Dotknij swojego zdjęcia profilowego w górnym rogu ekranu głównego, aby dodać lub przełączyć profile 💡</string>

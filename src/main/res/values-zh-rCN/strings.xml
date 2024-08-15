@@ -31,8 +31,6 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">附件</string>
     <string name="back">返回</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">已验证</string>
     <string name="close">关闭</string>
     <string name="close_window">关闭窗口</string>
     <string name="forward">转发</string>
@@ -384,8 +382,6 @@
     <string name="chat_record_slide_to_cancel">滑动来取消</string>
     <string name="chat_record_explain">按住来录制语音消息，松开来发送</string>
     <string name="chat_no_chats_yet_title">收件箱为空。\n按“+”来开始新聊天。</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">您可以与其他 Delta Chat 用户以及任何电子邮件地址聊天。</string>
     <string name="chat_all_archived">所有聊天已存档。\n按“+”来开始新聊天。</string>
     <string name="chat_share_with_title">分享给</string>
     <string name="chat_input_placeholder">输入消息…</string>
@@ -550,8 +546,6 @@
     <string name="manual_account_setup_option">传统电子邮件登录</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">个人资料</string>
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_default">阅读隐私政策</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
     <string name="instant_onboarding_agree_default2">%1$s 的隐私政策</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
@@ -612,8 +606,6 @@
     <string name="login_error_cannot_login">无法作为“%1$s”登录。请检查电子邮件地址和密码是否正确。</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">接受无效的证书</string>
-    <!-- deprecated -->
-    <string name="used_settings">已使用设置：</string>
     <string name="switch_account">切换账号</string>
     <string name="add_account">添加账号</string>
     <string name="delete_account">删除账号</string>
@@ -806,16 +798,10 @@
     <string name="autodel_after_1_hour">1 小时后</string>
     <string name="autodel_after_1_day">1 天后</string>
     <string name="autodel_after_1_week">1 周后</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">4 周后</string>
     <string name="after_5_weeks">5 周后</string>
     <string name="autodel_after_1_year">1 年后</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt 是一种用于自动端到端电子邮件加密的全新开放规范。\n\n您的端到端设置会根据需要自动创建；之后您可以使用 Autocrypt 设置消息在设备间传输此设置。</string>
     <string name="autocrypt_send_asm_title">发送 Autocrypt 设置消息</string>
     <string name="autocrypt_send_asm_explain_before">Autocrypt 设置消息安全地共享您的端到端设置至其他兼容 Autocrypt 的应用程序。\n\n该设置将通过在此显示的、必须在另一台设备上输入的设置码进行加密。</string>
     <string name="autocrypt_send_asm_button">发送 Autocrypt 设置消息</string>
@@ -960,8 +946,6 @@
     <string name="set_name_and_avatar_explain">设置一个你的联系人认得出的名字。你还可以设置头像图片</string>
     <string name="please_enter_name">请输入名字</string>
     <string name="qraccount_qr_code_cannot_be_used">扫描的二维码不能用于创建新账号。</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">扫描到的二维码是用于设置新帐户的。设置新的 Delta Chat 安装时，您可以扫描此二维码。</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">登录 \"%1$s\"吗？</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
@@ -1062,8 +1046,6 @@
     <string name="export_backup_desktop">导出备份</string>
     <string name="autocrypt_correct_desktop">Autocrypt 设置已传输 。</string>
     <string name="forget_login_confirmation_desktop">删除此登录？所有内容都将会删除，包括您的端到端设置、联系人、聊天、消息和媒体。此操作无法撤销。</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">电子邮件：%1$s\n大小：%2$s\n账号 ID：%3$s</string>
     <string name="message_detail_sent_desktop">发送于</string>
     <string name="message_detail_received_desktop">接收于</string>
     <string name="menu.view.developer.open.log.folder">打开日志文件夹</string>
@@ -1135,12 +1117,6 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">即时传送</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications">使用推送服务</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications_explain">聊天邮件服务器的可靠推送通知</string>
-    <!-- deprecated -->
-    <string name="pref_push_ask_disable">停用推送服务吗？\n\n这可能导致通知延迟。</string>
     <string name="pref_background_notifications">使用后台连接</string>
     <string name="pref_background_notifications_explain">需要忽略电池优化，请在推送服务不可用时使用它</string>
     <string name="pref_reliable_service">强制后台连接</string>
@@ -1152,8 +1128,6 @@
     <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n若 Delta Chat 在后台时消息仍未到达，请检查系统设置。</string>
 
     <!-- device messages for updates -->
-    <string name="update_1_44_android">变化：\n\n❤️ 耶！等待已久的功能来了：长按消息做出回应\n\n🔗 如果您无法扫描二维码，将它们分享为邀请链接\n\n🔵 计算所有账号的未读消息并显示在标题中\n\n… 以及修复许多错误 …%1$s\n\n帮助改进应用：使用“设置/高级/发送统计数据”帮助开发者为实际使用而更好地优化。您可以在发送之前查看数据</string>
-    <string name="update_1_44_ios">变化：\n\n❤️ 耶！等待已久的功能来了：长按消息做出回应\n\n🫸 支持推送通知，不过需要提供商像 https://nine.testrun.org 一样支持该功能\n\n🔗 如果你无法扫描二维码，将它们分享为邀请链接\n\n… 以及修复许多 bug … %1$s</string>
     <string name="update_1_46_android">新用户引导流程 🐣 以及更多信息：\n\n⚡️ 注册安全的快速聊天邮件服务器（https://delta.chat/chatmail）或使用传统的电子邮件服务器\n\n👉 为任何聊天邮件服务器推送通知\n\n👤 通过“附加联系人”安全地连接您的朋友\n\n🥰 使用任何表情符号进行回应\n\n📌 直接从搜索中固定聊天…以及更多信息，请访问 %1$s</string>
     <string name="update_1_46_ios">新用户引导流程 🐣 以及更多信息：\n\n⚡️ 注册安全的快速聊天邮件服务器（https://delta.chat/chatmail）或使用传统的电子邮件服务器\n\n👉 为任何聊天邮件服务器推送通知\n\n👤 接收“附加联系人”安全地连接您的朋友\n\n🥰 更快选择消息回应 …更多信息，请访问 %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ “切换账号”选项已移动：点击主屏幕上角的个人资料图片以添加或切换账号 💡</string>

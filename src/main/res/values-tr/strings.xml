@@ -31,8 +31,6 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">İlişik</string>
     <string name="back">Geri</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">Doğrulandı</string>
     <string name="close">Kapat</string>
     <string name="close_window">Pencereyi Kapat</string>
     <string name="forward">İlet</string>
@@ -399,8 +397,6 @@
     <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
     <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve basılı tutun, göndermek için bırakın</string>
     <string name="chat_no_chats_yet_title">Sohbet yok.\nYeni bir sohbet başlatmak için \"+\" tuşuna basın.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Diğer Delta Chat kullanıcılarıyla ve herhangi bir e-posta adresiyle sohbet edebilirsiniz.</string>
     <string name="chat_all_archived">Tüm sohbetler arşivlendi.\nYeni bir sohbet başlatmak için \"+\" simgesine basın.</string>
     <string name="chat_share_with_title">Paylaş</string>
     <string name="chat_input_placeholder">İleti</string>
@@ -565,8 +561,6 @@
     <string name="manual_account_setup_option">Klasik E-Posta Girişi</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profiliniz</string>
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_default">Gizlilik İlkesi\'ni Okuyun</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
     <string name="instant_onboarding_agree_default2">%1$s için Gizlilik İlkesi</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
@@ -627,8 +621,6 @@
     <string name="login_error_cannot_login">\"%1$s\" olarak giriş yapılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Geçersiz sertifikaları kabul et</string>
-    <!-- deprecated -->
-    <string name="used_settings">Kullanılan ayarlar:</string>
     <string name="switch_account">Profili Değiştir</string>
     <string name="add_account">Profil Ekle</string>
     <string name="delete_account">Profili Sil</string>
@@ -821,16 +813,10 @@
     <string name="autodel_after_1_hour">1 saat sonra</string>
     <string name="autodel_after_1_day">1 gün sonra</string>
     <string name="autodel_after_1_week">1 hafta sonra</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">4 hafta sonra</string>
     <string name="after_5_weeks">5 hafta sonra</string>
     <string name="autodel_after_1_year">1 yıl sonra</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt, otomatik uçtan uca e-posta şifrelemesi için yeni ve açık bir belirtimdir.\n\nUçtan uca ayarlamanız, gerektiğinde otomatik olarak oluşturulur ve Autocrypt Ayarlama İletileri ile aygıtlar arasında aktarabilirsiniz.</string>
     <string name="autocrypt_send_asm_title">Autocrypt Ayarlama İletisi Gönder</string>
     <string name="autocrypt_send_asm_explain_before">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır.\n\nAyarlama, burada görüntülenen ve diğer aygıtta yazılması gereken bir ayarlama kodu tarafından şifrelenecek.</string>
     <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi Gönder</string>
@@ -975,8 +961,6 @@
     <string name="set_name_and_avatar_explain">Kişilerinizin tanıyacağı bir ad ayarlayın. Bir profil görseli de ayarlayabilirsiniz.</string>
     <string name="please_enter_name">Lütfen bir ad girin.</string>
     <string name="qraccount_qr_code_cannot_be_used">Taranan QR kodu, yeni bir profil ayarlamak için kullanılamıyor.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">Taranan QR kodu, yeni bir profil ayarlamak içindir. QR kodunu yeni bir Delta Chat kurulumu ayarlanırken tarayabilirsiniz.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">\"%1$s\" adresine giriş yapılsın mı?</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
@@ -1077,8 +1061,6 @@
     <string name="export_backup_desktop">Yedeği Dışa Aktar</string>
     <string name="autocrypt_correct_desktop">Autocrypt ayarlaması aktarıldı.</string>
     <string name="forget_login_confirmation_desktop">Bu profil silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">E-Posta: %1$s\nBoyut: %2$s\nHesap Kimliği: %3$s</string>
     <string name="message_detail_sent_desktop">gönderilme</string>
     <string name="message_detail_received_desktop">alınma</string>
     <string name="menu.view.developer.open.log.folder">Günlük Klasörünü Aç</string>
@@ -1150,12 +1132,6 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Anında Teslimat</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications">Anında İletme Hizmeti Kullan</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications_explain">Chatmail Sunucuları için Güvenilir Anında İletme Bildirimleri</string>
-    <!-- deprecated -->
-    <string name="pref_push_ask_disable">Anında İletme Hizmeti kullanımı etkisizleştirilsin mi?\n\nBu, bildirimlerin gecikmesiyle sonuçlanabilir.</string>
     <string name="pref_background_notifications">Arka Plan Bağlantısı Kullan</string>
     <string name="pref_background_notifications_explain">Pil iyileştirmelerinin yoksayılmasını gerektirir, bildirimler zamanında gelmezse kullanın</string>
     <string name="pref_reliable_service">Arka Plan Bağlantısını Zorla</string>
@@ -1167,8 +1143,6 @@
     <string name="perm_enable_bg_already_done">Delta Chat\'in arka planda iletileri almasına zaten izin verdiniz.\n\nİletiler arka planda hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
 
     <!-- device messages for updates -->
-    <string name="update_1_44_android">Ne yeni:\n\n❤️ Evet! Bu uzun zamandır bekleniyordu: Tepki vermek için bir iletiye uzun dokunun\n\n🔗 QR kodlarını tarayamıyorsanız, onları çağırma bağlantısı olarak paylaşın\n\n🔵 Artık tüm hesapların okunmayan iletileri sayılır ve başlıkta gösterilir\n\n… ve TONLARCA hata düzeltmesi … %1$s\n\nUygulamanın iyileştirilmesine yardımcı olun: Gerçek dünya kullanımını daha da iyileştirmek için \"Ayarlar / Gelişmiş / İstatistikleri gönder\"i kullanarak geliştiricilere yardımcı olun. Göndermeden önce verilerinizi inceleyebilirsiniz</string>
-    <string name="update_1_44_ios">Ne yeni:\n\n❤️ Evet! Bu uzun zamandır bekleniyordu: Tepki vermek için bir iletiye uzun dokunun\n\n🫸 https://nine.testrun.org gibi sağlayıcılar tarafından destekleniyorsa ANLIK bildirimler\n\n🔗 QR kodlarını tarayamıyorsanız, onları çağırma bağlantısı olarak paylaşın\n\n… ve TONLARCA hata düzeltmesi … %1$s</string>
     <string name="update_1_46_android">Yeni Katılım 🐣 ve Daha Fazlası:\n\n⚡️ Hızlı güvenli Chatmail sunucularına kayıt olun (https://delta.chat/chatmail) ya da klasik e-posta sunucularını kullanın\n\n👉 Herhangi bir Chatmail sunucusu için ANINDA İLETME bildirimleri\n\n👤 \"Kişileri iliştir\" üzerinden arkadaşlarınıza güvenlice bağlanın\n\n🥰 Herhangi bir emojiyle tepki verin\n\n📌 Sohbetleri doğrudan aramadan sabitleyin … ve DAHA FAZLASI %1$s</string>
     <string name="update_1_46_ios">Yeni Katılım 🐣 ve Daha Fazlası:\n\n⚡️ Güvenli hızlı Chatmail sunucularına kaydolun (https://delta.chat/chatmail) ya da klasik e-posta sunucularını kullanın\n\n👉 Herhangi bir Chatmail sunucusu için ANLIK bildirimler\n\n👤 \"İliştirilen kişileri\" alın ve arkadaşlarınıza bağlanın\n\n🥰 Daha hızlı tepki seçimi … ve DAHA FAZLASI için %1$s</string>
     </resources>

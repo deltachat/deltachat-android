@@ -31,8 +31,6 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Liite</string>
     <string name="back">Takaisin</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">Varmistettu</string>
     <string name="close">Sulje</string>
     <string name="close_window">Sulje ikkuna</string>
     <string name="forward">Eteenpäin</string>
@@ -393,8 +391,6 @@
     <string name="chat_record_slide_to_cancel">Pyyhkäise peruuttaaksesi</string>
     <string name="chat_record_explain">Pidä painettuna nauhoittaaksesi ääniviestin, irrota lähettääksesi</string>
     <string name="chat_no_chats_yet_title">Saapuneet-kansio on tyhjä\nPaina \"+\" aloittaaksesi uuden keskustelun.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Voit keskustella Delta Chat -käyttäjien kanssa tai minkä tahansa sähköpostiosoitteen kanssa.</string>
     <string name="chat_all_archived">Kaikki keskustelut arkistoitu.\nPaina \"+\" aloittaaksesi uuden keskustelun.</string>
     <string name="chat_share_with_title">Jaa</string>
     <string name="chat_input_placeholder">Viesti</string>
@@ -559,8 +555,6 @@
     <string name="manual_account_setup_option">Tavanomainen sähköpostikirjautuminen</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profiilisi</string>
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_default">Lue yksityisyydensuojaseloste</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
     <string name="instant_onboarding_agree_default2">Yksityisyydensuojaseloste %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
@@ -621,8 +615,6 @@
     <string name="login_error_cannot_login">Osoitteella \"%1$s\" kirjautuminen epäonnistui. Tarkistathan että sähköpostiosoite ja salasana ovat oikeinkirjoitettuja.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Hyväksy rikkinäiset varmenteet</string>
-    <!-- deprecated -->
-    <string name="used_settings">Käytetyt asetukset:</string>
     <string name="switch_account">Vaihda profiilia</string>
     <string name="add_account">Lisää profiili</string>
     <string name="delete_account">Poista profiili</string>
@@ -813,16 +805,10 @@
     <string name="autodel_after_1_hour">1 tunnin päästä</string>
     <string name="autodel_after_1_day">1 päivän päästä</string>
     <string name="autodel_after_1_week">1 viikon päästä</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">4 viikon päästä</string>
     <string name="after_5_weeks">5 viikon päästä</string>
     <string name="autodel_after_1_year">1 vuoden päästä</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Autocrypt on uusi ja avoin spesifikaatio sähköpostien automaattiselle päästä-päähän-salaukselle.\n\nPäästä-päähän-salauksen asetukset luodaan automaattisesti tarpeen mukaan ja ne voidaan siirtää laitteiden välillä Autocrypt-asetusviestien avulla.</string>
     <string name="autocrypt_send_asm_title">Lähetä Autocrypt -käyttöönottoviesti</string>
     <string name="autocrypt_send_asm_explain_before">Autocrypt -käyttöönottoviesti jakaa turvallisesti päästä-päähän -salauksen asetukset toisten Autocrypt-yhteensopivien sovellusten kanssa.\n\nMäärittely salataan tässä näytettävällä käyttöönottokoodilla, joka on syötettävä toisella laittella.</string>
     <string name="autocrypt_send_asm_button">Lähetä Autocrypt -käyttöönottoviesti</string>
@@ -966,8 +952,6 @@
     <string name="set_name_and_avatar_explain">Aseta nimi jonka yhteystietosi tunnistavat. Voit myös asettaa profiilikuvan.</string>
     <string name="please_enter_name">Syötä nimi.</string>
     <string name="qraccount_qr_code_cannot_be_used">Uutta tiliä ei voida luoda skannatulla QR-koodilla.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">Skannattu QR-koodi on käytössä uuden tilin luomiseksi. Voit skannata QR-koodin uuden Delta Chat -asennuksen yhteydessä.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Haluatko kirjautua osoitteella \"%1$s\"?</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
@@ -1068,8 +1052,6 @@
     <string name="export_backup_desktop">Vie varmuuskopio</string>
     <string name="autocrypt_correct_desktop">Autocrypt-asetukset siirretty.</string>
     <string name="forget_login_confirmation_desktop">Poista tämä kirjautuminen? Kaikki tiedot poistetaan, mukaan lukien päästä-päähän-salauksen asetukset, yhteystiedot, keskustelut, viestit ja media. Tämä toiminto on peruuttamaton.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">Sähköposti: %1$s\nKoko: %2$s\nTilin tunniste: %3$s</string>
     <string name="message_detail_sent_desktop">lähetetty</string>
     <string name="message_detail_received_desktop">vastaanotettu</string>
     <string name="menu.view.developer.open.log.folder">Avaa lokikansio</string>
@@ -1141,12 +1123,6 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Välitön toimitus</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications">Käytä push -palvelua</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications_explain">Luotettavat push -ilmoitukset chatmail -palvelimille</string>
-    <!-- deprecated -->
-    <string name="pref_push_ask_disable">Lopeta push -palvelun käyttö?\n\nSe saattaa hidastaa ilmoitusten toimitusta.</string>
     <string name="pref_background_notifications">Käytä taustayhteyttä</string>
     <string name="pref_background_notifications_explain">Vaatii akun optimoinnin käytöstä poistoa, käytä jos push -palvelu ei ole saatavilla</string>
     <string name="pref_reliable_service">Pakota yhteys taustalla</string>
