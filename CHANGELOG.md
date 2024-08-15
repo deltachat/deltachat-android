@@ -1,5 +1,16 @@
 # Delta Chat Android Changelog
 
+## v1.46.11 Testrun
+2024-08
+
+* when SOCKS5 is enabled, route autoconfig and oauth2 config there
+* fix moving outgoing auto-generated messages to the "DeltaChat" folder
+* fix: try to create "INBOX.DeltaChat" if "DeltaChat" is not possible for some provider
+* fix receiving messages with "DeltaChat" folder cannot be selected
+* update provider database
+* update to core 1.142.6
+
+
 ## v1.46.10
 2024-08
 
