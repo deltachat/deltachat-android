@@ -29,8 +29,6 @@
     <string name="emoji">Емоџи</string>
     <string name="attachment">Прилог</string>
     <string name="back">Назад</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">Проверено</string>
     <string name="close">Затвори</string>
     <string name="forward">Проследи</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -386,8 +384,6 @@
     <string name="chat_record_slide_to_cancel">Превуците за отказивање</string>
     <string name="chat_record_explain">Додирните и држите за снимање гласовне поруке, пустите за слање</string>
     <string name="chat_no_chats_yet_title">Сандуче је празно.\nПритисните „+“ да почнете ново ћаскање.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Можете ћаскати са другим Delta Chat корисницима и са онима који имају било коју другу е-адресу.</string>
     <string name="chat_all_archived">Сва ћаскања су архивирана.\nПритисните „+“ да почнете ново ћаскање.</string>
     <string name="chat_share_with_title">Подели са</string>
     <string name="chat_input_placeholder">Порука</string>
@@ -542,8 +538,6 @@
     <string name="login_error_cannot_login">Не могу да се пријавим као „%1$s“. Проверите да ли су е-адреса и лозинка тачни.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Прихватите и неважеће сертификате</string>
-    <!-- deprecated -->
-    <string name="used_settings">Поставке за корисника:</string>
     <string name="switch_account">Промени налог</string>
     <string name="add_account">Додај налог</string>
     <string name="delete_account">Избриши налог</string>
@@ -710,16 +704,10 @@
     <string name="autodel_after_1_hour">За 1 сат</string>
     <string name="autodel_after_1_day">За 1 дан</string>
     <string name="autodel_after_1_week">За 1 недељу</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">За 4 недеље</string>
     <string name="after_5_weeks">За 5 недеља</string>
     <string name="autodel_after_1_year">За 1 годину</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Аутошифровање</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Аутошифровање је нова и отворена спецификација за аутоматско с-краја-на-крај шифровање е-поште.\n\nПостаке се стварају аутоматски по потреби и можете да их преносите између уређаја помоћу Порука поставки за аутошифровање.</string>
     <string name="autocrypt_send_asm_title">Пошаљите поруку поставки за аутошифровање</string>
     <string name="autocrypt_send_asm_explain_before">Порука о подешавању аутоматског шифровања безбедно дели ваше комплетно подешавање са другим апликацијама које су компатибилне са аутоматским шифровањем.\n\nПодешавање ће бити шифровано кодом за подешавање приказаним овде и мора се унети на другом уређају.</string>
     <string name="autocrypt_send_asm_button">Пошаљите поруку поставки за аутошифровање</string>
@@ -847,8 +835,6 @@
     <string name="qraccount_ask_create_and_login">Направите нову е-адресу на „%1$s“ и приступите јој тамо?</string>
     <string name="qraccount_ask_create_and_login_another">Направите нову е-адресу на „%1$s“ и приступите јој тамо?\n\nВаш постојећи налог неће бити избрисан. Користите „Промени налог“ да пређете са једног налога на други.</string>
     <string name="qraccount_qr_code_cannot_be_used">Очитани бар-кôд не може бити коришћен да подеси нови налог.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">Очитани бар-кôд је за подешавање новог налога. Можете очитати овај бар-кôд за подешавања после инсталације Delta Chat апликације.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Пријави се у „%1$s“?</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
@@ -936,8 +922,6 @@
     <string name="export_backup_desktop">Извези резервну копију</string>
     <string name="autocrypt_correct_desktop">Поставке за аутошифровање су послате.</string>
     <string name="forget_login_confirmation_desktop">Да ли желите да избришете овај налог? Све ће бити избрисано, укључујући и ваше подешавање с-краја-на-крај шифровања, контакти, ћаскања, поруке и медији. Ова радња се не може опозвати.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">Е-пошта: %1$s\nВеличина: %2$s\nИдентификатор налога: %3$s</string>
     <string name="message_detail_sent_desktop">послато</string>
     <string name="message_detail_received_desktop">примљено</string>
     <string name="menu.view.developer.open.log.folder">Отвори директоријум где се налазе дневници</string>

@@ -31,8 +31,6 @@
     <string name="emoji">Hangulatjel</string>
     <string name="attachment">Csatolmány</string>
     <string name="back">Vissza</string>
-    <!-- this string is deprecated; the new wording is "introduced by ..." -->
-    <string name="verified">Ellenőrzött</string>
     <string name="close">Bezárás</string>
     <string name="close_window">Ablak bezárása</string>
     <string name="forward">Továbbítás</string>
@@ -398,8 +396,6 @@
     <string name="chat_record_slide_to_cancel">Visszavonás csúsztatással</string>
     <string name="chat_record_explain">Hangüzenet rögzítéséhez koppintson és tartsa lenyomva; Az elküldéshez engedje el.</string>
     <string name="chat_no_chats_yet_title">Nincsenek csevegések.\nÉrintse meg a „+” gombot egy új csevegés indításához.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Cseveghet más Delta Chat felhasználókkal, valamint bármilyen e-mail címet használhat.</string>
     <string name="chat_all_archived">Minden csevegés archiválva van.\nÉrintse meg a „+” gombot egy új csevegés indításához.</string>
     <string name="chat_share_with_title">Megosztás ezzel</string>
     <string name="chat_input_placeholder">Üzenet</string>
@@ -564,8 +560,6 @@
     <string name="manual_account_setup_option">Klasszikus e-mail bejelentkezés</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profil</string>
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_default">Adatvédelmi irányelvek elolvasása</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
     <string name="instant_onboarding_agree_default2">Adatvédelmi irányelvek ehhez: %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
@@ -626,8 +620,6 @@
     <string name="login_error_cannot_login">Nem lehetett bejelentkezni ide: „%1$s”. Ellenőrizze, hogy a megadott e-mail cím és a jelszó helyes-e.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Érvénytelen tanúsítványok elfogadása</string>
-    <!-- deprecated -->
-    <string name="used_settings">Használt beállítások:</string>
     <string name="switch_account">Profilváltás</string>
     <string name="add_account">Profil hozzáadása</string>
     <string name="delete_account">Profil törlése</string>
@@ -820,16 +812,10 @@
     <string name="autodel_after_1_hour">1 óra elteltével</string>
     <string name="autodel_after_1_day">1 nap elteltével</string>
     <string name="autodel_after_1_week">1 hét elteltével</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">4 hét elteltével</string>
     <string name="after_5_weeks">5 hét elteltével</string>
     <string name="autodel_after_1_year">1 év elteltével</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Autocrypt</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Az autocrypt egy új és nyílt specifikáció az automatikus végpontok közötti e-mail titkosításhoz.\n\nA végpontok közötti titkosítás beállítása szükség szerint automatikusan létrejön, és az autocrypt beállító üzenetekkel átvihető az eszközök között.</string>
     <string name="autocrypt_send_asm_title">Autocrypt beállító üzenet küldése</string>
     <string name="autocrypt_send_asm_explain_before">Egy autocrypt beállító üzenet biztonságosan megosztja az ön végpontok közötti beállításait más autocrypt-kompatibilis alkalmazásokkal.\n\nA beállítás titkosítása egy, itt megjelenő beállítási kóddal történik, amelyet a másik eszközön kell begépelni.</string>
     <string name="autocrypt_send_asm_button">Autocrypt beállító üzenet küldése</string>
@@ -974,8 +960,6 @@
     <string name="set_name_and_avatar_explain">Adjon meg egy olyan nevet, amelyet az ismerősei felismernek. Beállíthat egy profilképet is.</string>
     <string name="please_enter_name">Adjon meg egy nevet.</string>
     <string name="qraccount_qr_code_cannot_be_used">A beolvasott QR-kód nem használható új profil beállítására.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">A beolvasott QR-kód egy új profil beállítására szolgál. A QR-kódot egy új Delta Chat telepítés beállításakor olvashatja be.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Bejelentkezés ide: „%1$s”?</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
@@ -1076,8 +1060,6 @@
     <string name="export_backup_desktop">Biztonsági mentés exportálása</string>
     <string name="autocrypt_correct_desktop">Autocrypt beállítások átvitele.</string>
     <string name="forget_login_confirmation_desktop">Törli ezt a bejelentkezést? Minden törlődik, beleértve a végpontok közötti titkosítási beállításokat, névjegyeket, csevegéseket, üzeneteket és médiát. Ez a művelet nem vonható vissza.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">E-mail: %1$s\nMéret: %2$s\nFiók azonosító: %3$s</string>
     <string name="message_detail_sent_desktop">elküldött</string>
     <string name="message_detail_received_desktop">érkezett</string>
     <string name="menu.view.developer.open.log.folder">Naplófájlok könyvtárának megnyitása</string>
@@ -1149,12 +1131,6 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Azonnali kézbesítés</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications">Push szolgáltatás használata</string>
-    <!-- deprecated -->
-    <string name="pref_push_notifications_explain">Megbízható push értesítések a chatmail kiszolgálókhoz</string>
-    <!-- deprecated -->
-    <string name="pref_push_ask_disable">Push szolgáltatás letiltása?\n\nEz késleltetett értesítéseket eredményezhet.</string>
     <string name="pref_background_notifications">Háttérkapcsolat használata</string>
     <string name="pref_background_notifications_explain">Figyelmen kívül hagyott akkumulátor-optimalizációt igényel, akkor használja, ha a Push szolgáltatás nem érhető el</string>
     <string name="pref_reliable_service">Kényszerített háttérkapcsolat</string>
@@ -1166,8 +1142,6 @@
     <string name="perm_enable_bg_already_done">Már engedélyezve van a Delta Chat számára, hogy a háttérben üzeneteket fogadjon.\n\nHa az üzenetek még mindig nem érkeznek meg a háttérben, ellenőrizze a rendszerbeállításokat is.</string>
 
     <!-- device messages for updates -->
-    <string name="update_1_44_android">Újdonságok:\n\n❤️ Igen! Ezt már régóta vártuk: Ha nem tudja beolvasni a QR-kódokat, ossza meg őket egy meghívó hivatkozásként\n\n\n🔵 Az összes fiók olvasatlan üzeneteit számoljuk és megjelenítjük a címben\n\n\n... és további hibajavítások ... %1$s\n\nSegítsen az alkalmazás fejlesztésében: Használja a „Beállítások / Speciális / Statisztikák küldése” lehetőséget, hogy segítsen a fejlesztőknek a valós használatra való optimalizálásban. A küldés előtt áttekintheti az adatokat</string>
-    <string name="update_1_44_ios">Újdonságok:\n\n❤️ Igen! Ezt már régóta vártuk: Koppintson hosszan az üzenetre az üzenetreakciók küldéséhez\n\n🫸 PUSH értesítések, ha a szolgáltatók támogatják, mint például a https://nine.testrun.org\n\n🔗 Ha nem tudja beolvasni a QR-kódokat, ossza meg őket egy meghívó hivatkozásként\n\n\n... és további hibajavítások ... %1$s</string>
     <string name="update_1_46_android">Új szolgáltatások 🐣 és további tudnivalók:\n\n⚡️ Regisztráljon biztonságos, gyors chatmail kiszolgálókra (https://delta.chat/chatmail) vagy használja a klasszikus e-mail kiszolgálókat\n\n👉 PUSH értesítések bármely chatmail kiszolgálóra\n\n👤 Kapcsolja össze ismerőseit biztonságosan a „Névjegyek csatolásával”\n\n🥰 Reagáljon bármilyen hangulatjellel\n\n📌 Tűzze ki a csevegéseket közvetlenül a keresésből ... tudjon meg többet itt: %1$s</string>
     <string name="update_1_46_ios">Új szolgáltatások 🐣 és további tudnivalók:\n\n⚡️ Regisztráljon biztonságos, gyors chatmail kiszolgálókra (https://delta.chat/chatmail) vagy használja a klasszikus e-mail kiszolgálókat\n\n👉 PUSH értesítések bármely chatmail kiszolgálóra\n\n👤 Fogadjon „Csatolt névjegyeket\" és csatlakozzon az ismerőseihez”\n\n🥰 Gyorsabb üzenetreakció kiválasztás ... tudjon meg többet itt: %1$s</string>
     </resources>

@@ -358,8 +358,6 @@
     <string name="chat_record_slide_to_cancel">Σύρε για ακύρωση</string>
     <string name="chat_record_explain">Πάτα και κράτα πατημένο για να ηχογραφήσεις ένα φωνητικό μήνυμα, άφησε το κουμπί για αποστολή</string>
     <string name="chat_no_chats_yet_title">Αδειάστε τα εισερχόμενα.\nΠατήστε \"+\" για να ξεκινήσετε μια νέα συνομιλία.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Μπορείτε να συνομιλήσετε με άλλους χρήστες του Delta Chat και με οποιαδήποτε διεύθυνση e-mail.</string>
     <string name="chat_all_archived">Όλες οι συνομιλίες αρχειοθετήθηκαν.\nΠατήστε \"+\" για να ξεκινήσετε μια νέα συνομιλία.</string>
     <string name="chat_share_with_title">Μοιράσου με</string>
     <string name="chat_input_placeholder">Μήνυμα</string>
@@ -514,8 +512,6 @@
     <string name="login_error_cannot_login">Δεν είναι δυνατή η είσοδος ως \"%1$s\". Ελέγξτε εάν η διεύθυνση e-mail και ο κωδικός πρόσβασης είναι σωστά.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Αποδοχή μη έγκυρων πιστοποιητικών</string>
-    <!-- deprecated -->
-    <string name="used_settings">Χρησιμοποιούμενες ρυθμίσεις:</string>
     <string name="switch_account">Αλλαγή λογαριασμού</string>
     <string name="add_account">Προσθήκη Λογαριασμού</string>
     <string name="delete_account">Διαγραφή Λογαριασμού</string>
@@ -682,16 +678,10 @@
     <string name="autodel_after_1_hour">Μετά από 1 ώρα</string>
     <string name="autodel_after_1_day">Μετά από 1 μέρα</string>
     <string name="autodel_after_1_week">Μετά από 1 εβδομάδα</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">Μετά από 4 εβδομάδες</string>
     <string name="after_5_weeks">Μετά από 5 εβδομάδες</string>
     <string name="autodel_after_1_year">Μετά από 1 χρόνο</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">Αυτόματη κρυπτογράφηση</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">Η αυτόματη κρυπτογράφηση είναι μια νέα και ανοιχτή προδιαγραφή για αυτόματη κρυπτογράφηση ηλεκτρονικού ταχυδρομείου από άκρο σε άκρο.\n\nΗ ρύθμιση από άκρο σε άκρο δημιουργείται αυτόματα ανάλογα με τις ανάγκες και μπορείτε να τη μεταφέρετε μεταξύ συσκευών με τα Μηνύματα ρύθμισης αυτόματης κρυπτογράφησης.</string>
     <string name="autocrypt_send_asm_title">Αποστολή μηνύματος ρύθμισης αυτόματης κρυπτογράφησης</string>
     <string name="autocrypt_send_asm_explain_before">Ένα μήνυμα ρύθμισης αυτόματης κρυπτογράφησης κοινοποιεί με ασφάλεια τη ρύθμισή σας από άκρο σε άκρο με άλλες εφαρμογές συμβατές με την Αυτόματη κρυπτογράφηση.\n\nΗ ρύθμιση θα κρυπτογραφηθεί από έναν κωδικό ρύθμισης που εμφανίζεται εδώ και θα πρέπει να πληκτρολογηθεί στην άλλη συσκευή.</string>
     <string name="autocrypt_send_asm_button">Αποστολή μηνύματος ρύθμισης αυτόματης κρυπτογράφησης</string>
@@ -819,8 +809,6 @@
     <string name="qraccount_ask_create_and_login">Δημιουργήστε νέα διεύθυνση e-mail στο \"%1$s\" και συνδεθείτε εκεί;</string>
     <string name="qraccount_ask_create_and_login_another">Δημιουργήστε νέα διεύθυνση e-mail στο \"%1$s\" και συνδεθείτε εκεί;\n\nΟ υπάρχων λογαριασμός σας δεν θα διαγραφεί. Χρησιμοποιήστε τη λειτουργία \"Εναλλαγή λογαριασμού\" για εναλλαγή μεταξύ των λογαριασμών σας.</string>
     <string name="qraccount_qr_code_cannot_be_used">Ο σαρωμένος κωδικός QR δεν μπορεί να χρησιμοποιηθεί για τη δημιουργία νέου λογαριασμού.</string>
-    <!-- deprecated -->
-    <string name="qraccount_use_on_new_install">Ο σαρωμένος κωδικός QR προορίζεται για τη δημιουργία νέου λογαριασμού. Μπορείτε να σαρώσετε τον κωδικό QR όταν ρυθμίζετε μια νέα εγκατάσταση Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Σύνδεση στο \"%1$s\";</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
@@ -906,8 +894,6 @@
     <string name="export_backup_desktop">Εξαγωγή Αντιγράφων Ασφαλείας</string>
     <string name="autocrypt_correct_desktop">Η ρύθμιση αυτόματης κρυπτογράφησης μεταφέρθηκε.</string>
     <string name="forget_login_confirmation_desktop">Διαγραφή αυτής της σύνδεσης; Τα πάντα θα διαγραφούν, συμπεριλαμβανομένων των ρυθμίσεων από άκρο σε άκρο, επαφών, συνομιλιών, μηνυμάτων και πολυμέσων. Αυτή η πράξη δε μπορεί να αναιρεθεί.</string>
-    <!-- deprecated -->
-    <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nΜέγεθος: %2$s\n Αναγνωριστικό Λογαριασμού: %3$s</string>
     <string name="message_detail_sent_desktop">Στάλθηκε</string>
     <string name="message_detail_received_desktop">Παραλήφθηκε</string>
     <string name="menu.view.developer.open.log.folder">Άνοιγμα του φακέλου καταγραφής</string>

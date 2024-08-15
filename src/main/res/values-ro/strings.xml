@@ -381,8 +381,6 @@
     <string name="chat_record_slide_to_cancel">Glisați pentru a anula</string>
     <string name="chat_record_explain">Atingeți continuu pentru a înregistra un mesaj vocal, apoi eliberați-l pentru a-l trimite</string>
     <string name="chat_no_chats_yet_title">Goliți inbox.\nPress \"+\" pentru a începe un nou chat.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">Puteți discuta cu alți utilizatori Delta Chat și cu orice adresă de e-mail.</string>
     <string name="chat_all_archived">Toate chat-urile sunt archived.\nPress \"+\" pentru a începe un nou chat.</string>
     <string name="chat_share_with_title">Împărtășiți cu</string>
     <string name="chat_input_placeholder">Mesaj</string>
@@ -565,8 +563,6 @@
     <string name="login_error_cannot_login">Nu se poate autentifica ca \"%1$s\". Vă rugăm să verificați dacă adresa de e-mail și parola sunt corecte.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptarea certificatelor nevalabile</string>
-    <!-- deprecated -->
-    <string name="used_settings">Setări utilizate:</string>
     <string name="switch_account">Schimbați contul</string>
     <string name="add_account">Adăugați un cont</string>
     <string name="delete_account">Ștergeți Contul</string>

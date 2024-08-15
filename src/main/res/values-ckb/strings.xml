@@ -288,8 +288,6 @@
     <string name="chat_record_slide_to_cancel">بیخشێنە بۆ وازهێنان</string>
     <string name="chat_record_explain">کرتە بکە و دەست لەسەری ڕابگرە بۆ تۆمارکردنی پەیامێکی دەنگی، پاشان دەستبەردە بۆ هەناردنی.</string>
     <string name="chat_no_chats_yet_title">هاتنگە بەتاڵە. \n \"+\" لێبدە بۆ دەستپێکی وتووێژێکی نوێ.</string>
-    <!-- deprecated -->
-    <string name="chat_no_chats_yet_hint">دەتوانیت لەگەڵ بەکارهێنەرانی دیکەی دێڵتاچات و هەروەها هەر ناونیشانێکی ئیمەیلدا وتووێژ بکەیت.</string>
     <string name="chat_all_archived">هەموو وتووێژەکان ئەرشیڤ کران. \n بۆ دەستپێکردنی وتووێژێکی نوێ، \"+\" لێبدە.</string>
     <string name="chat_share_with_title">هاوبەش کردن لەگەڵ</string>
     <string name="chat_input_placeholder">بنووسە</string>
@@ -366,8 +364,6 @@
     <string name="import_backup_no_backup_found">هیچ یەدەکێک نەدۆزرایەوە.\n\n یەدەکەکە کۆپی بکە بۆ\"%1$s\" و دیسان هەوڵبدەوە. یان بۆ بەردەوامبوون لەسەر پرۆسەی ئاسایی دامەزراندنەکە، دەستبنە بە \"دەستپێکی نامەنووسین\"دا .</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">\"%1$s\" ناتوانێت بچێتە ژوورەوە. سەرنج بدە بزانە ئیمەیل و تێپەڕوشەکە درووستە.</string>
-    <!-- deprecated -->
-    <string name="used_settings">ڕێکخستنە بەکارهێنراوەکان:</string>
     <string name="switch_account">گۆڕینی هەژمار</string>
     <string name="add_account">زیادکردنی هەژمار</string>
     <string name="delete_account">سڕینەوەی هەژمار</string>
@@ -487,16 +483,10 @@
     <string name="autodel_after_1_hour">پاش 1 کاتژمێر</string>
     <string name="autodel_after_1_day">پاش 1 ڕۆژ</string>
     <string name="autodel_after_1_week">پاش 1 حەوتە</string>
-    <!-- deprecated -->
-    <string name="autodel_after_4_weeks">پاش 4 حەوتە</string>
     <string name="after_5_weeks">پاش 5 حەوتە</string>
     <string name="autodel_after_1_year">پاش 1 ساڵ</string>
 
     <!-- autocrypt -->
-    <!-- deprecated, used "Encryption" if a headline is needed -->
-    <string name="autocrypt">ئۆتۆکریپت</string>
-    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
-    <string name="autocrypt_explain">ئۆتۆکریپت شێوازێکی نوێ و خۆڕاییە بۆ شفرەکردنی خۆکاری ئیمەیل بە چەشنی ئەمسەر-ئەوسەر.\n\n ڕێکخستنی ئەمسەر-ئەوسەرەکە، بە چەشنی پێویست، خۆکارانە درووست دەبێت و تۆ دەتوانیت لەنێوان ئامێرەکاندا، کە پەیامی ڕێکخستنی ئۆتۆکریپتیان هەیە، بیانگوازیتەوە.</string>
     <string name="autocrypt_send_asm_title">هەناردنی پەیامی ڕێکخستنی ئۆتۆکریپت</string>
     <string name="autocrypt_prefer_e2ee">هەڵبژاردنی شفرەکردنی ئەمسەر-ئەوسەر</string>
     <string name="autocrypt_asm_subject">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
