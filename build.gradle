@@ -132,6 +132,11 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+
+    androidResources {
+        generateLocaleConfig true
+    }
+
     lint {
         abortOnError false
     }
