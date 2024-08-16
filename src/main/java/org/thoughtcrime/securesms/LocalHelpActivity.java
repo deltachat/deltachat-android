@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.thoughtcrime.securesms.util.Util;
+
 import java.io.InputStream;
 import java.util.Locale;
 
@@ -25,7 +27,7 @@ public class LocalHelpActivity extends WebViewActivity
     String helpPath = "help/LANG/help.html";
     String helpLang = "en";
     try {
-      Locale locale = dynamicLanguage.getCurrentLocale();
+      Locale locale = Util.getLocale();
       String appLang = locale.getLanguage();
       String appCountry = locale.getCountry();
       if (assetExists(helpPath.replace("LANG", appLang))) {

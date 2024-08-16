@@ -17,8 +17,6 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.DateUtils;
 
-import java.util.Locale;
-
 public class ConversationItemFooter extends LinearLayout {
 
   private TextView            dateView;
@@ -58,8 +56,8 @@ public class ConversationItemFooter extends LinearLayout {
     }
   }
 
-  public void setMessageRecord(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
-    presentDate(messageRecord, locale);
+  public void setMessageRecord(@NonNull DcMsg messageRecord) {
+    presentDate(messageRecord);
     secureIndicatorView.setVisibility(messageRecord.isSecure() ? View.VISIBLE : View.GONE);
     locationIndicatorView.setVisibility(messageRecord.hasLocation() ? View.VISIBLE : View.GONE);
     presentDeliveryStatus(messageRecord);
@@ -72,14 +70,9 @@ public class ConversationItemFooter extends LinearLayout {
     deliveryStatusView.setTint(color);
   }
 
-  private void presentDate(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
+  private void presentDate(@NonNull DcMsg messageRecord) {
     dateView.forceLayout();
-//    if(messageRecord.hasDeviatingTimestamp()) {
-      dateView.setText(DateUtils.getExtendedRelativeTimeSpanString(getContext(), locale, messageRecord.getTimestamp()));
-//    }
-//    else {
-//      dateView.setText(DateUtils.getTimeOfDayTimeSpanString(getContext(), locale, messageRecord.getTimestamp()));
-//    }
+    dateView.setText(DateUtils.getExtendedRelativeTimeSpanString(getContext(), messageRecord.getTimestamp()));
   }
 
   private void presentDeliveryStatus(@NonNull DcMsg messageRecord) {

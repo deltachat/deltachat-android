@@ -19,8 +19,6 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
 public class ConversationListArchiveActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
 {
-  private ConversationListFragment conversationListFragment;
-
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -33,8 +31,7 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
 
     Bundle bundle = new Bundle();
     bundle.putBoolean(ConversationListFragment.ARCHIVE, true);
-
-    conversationListFragment = initFragment(android.R.id.content, new ConversationListFragment(), dynamicLanguage.getCurrentLocale(), bundle);
+    initFragment(android.R.id.content, new ConversationListFragment(), bundle);
   }
 
   @Override

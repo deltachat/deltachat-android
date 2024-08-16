@@ -9,14 +9,12 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 
-import java.util.Locale;
 import java.util.Set;
 
 public interface BindableConversationItem extends Unbindable {
   void bind(@NonNull DcMsg                   messageRecord,
             @NonNull DcChat                  dcChat,
             @NonNull GlideRequests           glideRequests,
-            @NonNull Locale                  locale,
             @NonNull Set<DcMsg>              batchSelected,
             @NonNull Recipient               recipients,
                      boolean                 pulseHighlight);

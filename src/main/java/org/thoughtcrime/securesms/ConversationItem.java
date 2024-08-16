@@ -77,7 +77,6 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -97,7 +96,6 @@ public class ConversationItem extends BaseConversationItem
   private static final int MAX_MEASURE_CALLS = 3;
 
   private DcContact     dcContact;
-  private Locale        locale;
   // Whether the sender's avatar and name should be shown (usually the case in group threads):
   private boolean       showSender;
   private GlideRequests glideRequests;
@@ -172,13 +170,11 @@ public class ConversationItem extends BaseConversationItem
   public void bind(@NonNull DcMsg                   messageRecord,
                    @NonNull DcChat                  dcChat,
                    @NonNull GlideRequests           glideRequests,
-                   @NonNull Locale                  locale,
                    @NonNull Set<DcMsg>              batchSelected,
                    @NonNull Recipient               recipients,
                    boolean                          pulseHighlight)
   {
     bind(messageRecord, dcChat, batchSelected, pulseHighlight, recipients);
-    this.locale                 = locale;
     this.glideRequests          = glideRequests;
     this.showSender             = (dcChat.isMultiUser() && !messageRecord.isOutgoing()) || messageRecord.getOverrideSenderName() != null;
 
@@ -196,7 +192,7 @@ public class ConversationItem extends BaseConversationItem
     setAuthor(messageRecord, showSender);
     setMessageSpacing(context);
     setReactions(messageRecord);
-    setFooter(messageRecord, locale);
+    setFooter(messageRecord);
     setQuote(messageRecord);
     if (Util.isTouchExplorationEnabled(context)) {
       setContentDescription();
@@ -748,7 +744,7 @@ public class ConversationItem extends BaseConversationItem
     }
   }
 
-  private void setFooter(@NonNull DcMsg current, @NonNull Locale locale) {
+  private void setFooter(@NonNull DcMsg current) {
     ViewUtil.updateLayoutParams(footer, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
     footer.setVisibility(GONE);
@@ -756,7 +752,7 @@ public class ConversationItem extends BaseConversationItem
 
     ConversationItemFooter activeFooter = getActiveFooter(current);
     activeFooter.setVisibility(VISIBLE);
-    activeFooter.setMessageRecord(current, locale);
+    activeFooter.setMessageRecord(current);
   }
 
   private void setReactions(@NonNull DcMsg current) {

@@ -22,13 +22,11 @@ import org.thoughtcrime.securesms.util.MediaUtil;
 
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 
 class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
 
   private final Context             context;
-  private final Locale              locale;
   private final ItemClickListener   itemClickListener;
   private final Set<DcMsg>          selected;
 
@@ -60,11 +58,9 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
 
   ProfileDocumentsAdapter(@NonNull Context context,
                         BucketedThreadMedia media,
-                        Locale locale,
                         ItemClickListener clickListener)
   {
     this.context           = context;
-    this.locale            = locale;
     this.media             = media;
     this.itemClickListener = clickListener;
     this.selected          = new HashSet<>();
@@ -86,7 +82,7 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
 
   @Override
   public void onBindHeaderViewHolder(StickyHeaderGridAdapter.HeaderViewHolder viewHolder, int section) {
-    ((HeaderHolder)viewHolder).textView.setText(media.getName(section, locale));
+    ((HeaderHolder)viewHolder).textView.setText(media.getName(section));
   }
 
   @Override
@@ -135,7 +131,7 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
     viewHolder.itemView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
     viewHolder.itemView.setSelected(selected.contains(dcMsg));
 
-    viewHolder.date.setText(DateUtils.getBriefRelativeTimeSpanString(context, locale, dcMsg.getTimestamp()));
+    viewHolder.date.setText(DateUtils.getBriefRelativeTimeSpanString(context, dcMsg.getTimestamp()));
   }
 
   @Override

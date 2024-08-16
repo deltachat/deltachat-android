@@ -21,6 +21,8 @@ import android.app.ActivityManager;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -42,6 +44,8 @@ import android.view.accessibility.AccessibilityManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.os.ConfigurationCompat;
+import androidx.core.view.ViewCompat;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.ComposeText;
@@ -54,6 +58,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
 
@@ -356,5 +361,35 @@ public class Util {
     } catch (Exception e) {
       return false;
     }
+  }
+
+  private static Locale lastLocale = null;
+
+  public synchronized static Locale getLocale() {
+    if (lastLocale == null) {
+      try {
+        lastLocale = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).get(0);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+      if (lastLocale == null) {
+        // Locale.getDefault() returns the locale the App was STARTED in, not the locale of the system.
+        // It just happens to be the same for the majority of use cases.
+        lastLocale = Locale.getDefault();
+      }
+    }
+    return lastLocale;
+  }
+
+  public synchronized static void localeChanged() {
+    lastLocale = null;
+  }
+
+  public static int getLayoutDirection(Context context) {
+    if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR1) {
+      Configuration configuration = context.getResources().getConfiguration();
+      return configuration.getLayoutDirection();
+    }
+    return ViewCompat.LAYOUT_DIRECTION_LTR;
   }
 }

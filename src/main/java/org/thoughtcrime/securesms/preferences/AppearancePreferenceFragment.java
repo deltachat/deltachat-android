@@ -10,11 +10,9 @@ import androidx.preference.Preference;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import java.util.Arrays;
-import java.util.Locale;
 
 public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment {
 

@@ -41,8 +41,8 @@ import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -56,13 +56,9 @@ import java.util.Date;
 import java.util.Locale;
 
 public class LogViewFragment extends Fragment {
-  private static final String TAG = LogViewFragment.class.getSimpleName();
-
   private EditText logPreview;
-  private final @NonNull DynamicLanguage dynamicLanguage;
 
-  public LogViewFragment(DynamicLanguage dynamicLanguage) {
-    this.dynamicLanguage = dynamicLanguage;
+  public LogViewFragment() {
   }
 
   @Override
@@ -254,10 +250,10 @@ public class LogViewFragment extends Fragment {
       builder.append("reliableService=").append(
               Prefs.reliableService(context)).append("\n");
 
-      Locale locale = fragment.dynamicLanguage.getCurrentLocale();
+      Locale locale = Util.getLocale();
       builder.append("lang=").append(locale.toString()).append("\n");
       if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR1) {
-        boolean isRtl = DynamicLanguage.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL;
+        boolean isRtl = Util.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL;
         builder.append("rtl=").append(isRtl).append("\n");
       }
 

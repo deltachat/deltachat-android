@@ -14,7 +14,6 @@ import com.b44t.messenger.DcLot;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 
-import java.util.Locale;
 import java.util.Set;
 
 public class ConversationListItemInboxZero extends LinearLayout implements BindableConversationListItem{
@@ -41,7 +40,7 @@ public class ConversationListItemInboxZero extends LinearLayout implements Binda
   }
 
   @Override
-  public void bind(@NonNull ThreadRecord thread, int msgId, @NonNull DcLot dcSummary, @NonNull GlideRequests glideRequests, @NonNull Locale locale, @NonNull Set<Long> selectedThreads, boolean batchMode) {
+  public void bind(@NonNull ThreadRecord thread, int msgId, @NonNull DcLot dcSummary, @NonNull GlideRequests glideRequests, @NonNull Set<Long> selectedThreads, boolean batchMode) {
 
   }
 }

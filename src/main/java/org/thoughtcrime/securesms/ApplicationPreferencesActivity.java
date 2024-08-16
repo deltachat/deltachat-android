@@ -117,8 +117,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     if (key.equals(Prefs.THEME_PREF)) {
       DynamicTheme.setDefaultDayNightMode(this);
       recreate();
-    } else if (key.equals(Prefs.LANGUAGE_PREF)) {
-      finish();
     }
   }
 

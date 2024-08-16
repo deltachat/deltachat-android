@@ -36,7 +36,6 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 
-import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -46,7 +45,6 @@ public class SearchFragment extends BaseConversationListFragment
         implements SearchListAdapter.EventListener, DcEventCenter.DcEventDelegate {
 
   public static final String TAG          = "SearchFragment";
-  public static final String EXTRA_LOCALE = "locale";
 
   private TextView               noResultsView;
   private RecyclerView           listView;
@@ -55,11 +53,9 @@ public class SearchFragment extends BaseConversationListFragment
   private SearchViewModel   viewModel;
   private SearchListAdapter listAdapter;
   private String            pendingQuery;
-  private Locale            locale;
 
-  public static SearchFragment newInstance(@NonNull Locale locale) {
+  public static SearchFragment newInstance() {
     Bundle args = new Bundle();
-    args.putSerializable(EXTRA_LOCALE, locale);
 
     SearchFragment fragment = new SearchFragment();
     fragment.setArguments(args);
@@ -70,8 +66,6 @@ public class SearchFragment extends BaseConversationListFragment
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
-    this.locale = (Locale) getArguments().getSerializable(EXTRA_LOCALE);
 
     viewModel = ViewModelProviders.of(this, (ViewModelProvider.Factory) new SearchViewModel.Factory(requireContext())).get(SearchViewModel.class);
     DcEventCenter eventCenter = DcHelper.getEventCenter(requireContext());
@@ -102,7 +96,7 @@ public class SearchFragment extends BaseConversationListFragment
     listView      = view.findViewById(R.id.search_list);
     fab           = view.findViewById(R.id.fab);
 
-    listAdapter    = new SearchListAdapter(getContext(), GlideApp.with(this), this, locale);
+    listAdapter    = new SearchListAdapter(getContext(), GlideApp.with(this), this);
     listDecoration = new StickyHeaderDecoration(listAdapter, false, true);
 
     fab.setVisibility(View.GONE);

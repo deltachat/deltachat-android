@@ -175,7 +175,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     fragmentContainer        = findViewById(R.id.fragment_container);
 
     Bundle bundle = new Bundle();
-    conversationListFragment = initFragment(R.id.fragment_container, new ConversationListFragment(), dynamicLanguage.getCurrentLocale(), bundle);
+    conversationListFragment = initFragment(R.id.fragment_container, new ConversationListFragment(), bundle);
 
     initializeSearchListener();
 
@@ -384,7 +384,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
         if (trimmed.length() > 0) {
           if (searchFragment == null) {
-            searchFragment = SearchFragment.newInstance(dynamicLanguage.getCurrentLocale());
+            searchFragment = SearchFragment.newInstance();
             getSupportFragmentManager().beginTransaction()
                                        .add(R.id.fragment_container, searchFragment, null)
                                        .commit();

@@ -321,33 +321,28 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           fragment = new ProfileSettingsFragment();
           args.putInt(ProfileSettingsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
           args.putInt(ProfileSettingsFragment.CONTACT_ID_EXTRA, (contactId==0&&!isGlobalProfile())? -1 : contactId);
-          args.putSerializable(ProfileSettingsFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
 
         case TAB_GALLERY:
           fragment = new ProfileGalleryFragment();
           args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
-          args.putSerializable(ProfileGalleryFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
 
         case TAB_AUDIO:
           fragment = new ProfileDocumentsFragment();
           args.putInt(ProfileDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
           args.putBoolean(ProfileDocumentsFragment.SHOW_AUDIO_EXTRA, true);
-          args.putSerializable(ProfileDocumentsFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
 
         case TAB_WEBXDC:
           fragment = new ProfileDocumentsFragment();
           args.putInt(ProfileDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
           args.putBoolean(ProfileDocumentsFragment.SHOW_WEBXDC_EXTRA, true);
-          args.putSerializable(ProfileDocumentsFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
 
         default:
           fragment = new ProfileDocumentsFragment();
           args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
-          args.putSerializable(ProfileDocumentsFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
       }
 

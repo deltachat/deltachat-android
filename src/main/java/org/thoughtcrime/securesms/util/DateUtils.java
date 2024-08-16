@@ -25,7 +25,6 @@ import org.thoughtcrime.securesms.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -45,9 +44,9 @@ public class DateUtils extends android.text.format.DateUtils {
     return (int) to.convert(System.currentTimeMillis() - millis, TimeUnit.MILLISECONDS);
   }
 
-  private static String getFormattedDateTime(long time, String template, Locale locale) {
-    final String localizedPattern = getLocalizedPattern(template, locale);
-    String ret = new SimpleDateFormat(localizedPattern, locale).format(new Date(time));
+  private static String getFormattedDateTime(long time, String template) {
+    final String localizedPattern = getLocalizedPattern(template);
+    String ret = new SimpleDateFormat(localizedPattern).format(new Date(time));
 
     // having ".," in very common and known abbreviates as weekdays or month names is not needed,
     // looks ugly and makes the string longer than needed
@@ -56,7 +55,7 @@ public class DateUtils extends android.text.format.DateUtils {
     return ret;
   }
 
-  public static String getBriefRelativeTimeSpanString(final Context c, final Locale locale, final long timestamp) {
+  public static String getBriefRelativeTimeSpanString(final Context c, final long timestamp) {
     if (isWithin(timestamp, 1, TimeUnit.MINUTES)) {
       return c.getString(R.string.now);
     } else if (isWithin(timestamp, 1, TimeUnit.HOURS)) {
@@ -66,15 +65,15 @@ public class DateUtils extends android.text.format.DateUtils {
       int hours = convertDelta(timestamp, TimeUnit.HOURS);
       return c.getResources().getQuantityString(R.plurals.n_hours, hours, hours);
     } else if (isWithin(timestamp, 6, TimeUnit.DAYS)) {
-      return getFormattedDateTime(timestamp, "EEE", locale);
+      return getFormattedDateTime(timestamp, "EEE");
     } else if (isWithin(timestamp, 365, TimeUnit.DAYS)) {
-      return getFormattedDateTime(timestamp, "MMM d", locale);
+      return getFormattedDateTime(timestamp, "MMM d");
     } else {
-      return getFormattedDateTime(timestamp, "MMM d, yyyy", locale);
+      return getFormattedDateTime(timestamp, "MMM d, yyyy");
     }
   }
 
-  public static String getExtendedTimeSpanString(final Context c, final Locale locale, final long timestamp) {
+  public static String getExtendedTimeSpanString(final Context c, final long timestamp) {
     StringBuilder format = new StringBuilder();
     if      (DateUtils.isToday(timestamp))                 {}
     else if (isWithin(timestamp,   6, TimeUnit.DAYS)) format.append("EEE ");
@@ -84,22 +83,21 @@ public class DateUtils extends android.text.format.DateUtils {
     if (DateFormat.is24HourFormat(c)) format.append("HH:mm");
     else                              format.append("hh:mm a");
 
-    return getFormattedDateTime(timestamp, format.toString(), locale);
+    return getFormattedDateTime(timestamp, format.toString());
   }
 
-  public static String getExtendedRelativeTimeSpanString(final Context c, final Locale locale, final long timestamp) {
+  public static String getExtendedRelativeTimeSpanString(final Context c, final long timestamp) {
     if (isWithin(timestamp, 1, TimeUnit.MINUTES)) {
       return c.getString(R.string.now);
     } else if (isWithin(timestamp, 1, TimeUnit.HOURS)) {
       int mins = (int)TimeUnit.MINUTES.convert(System.currentTimeMillis() - timestamp, TimeUnit.MILLISECONDS);
       return c.getResources().getQuantityString(R.plurals.n_minutes, mins, mins);
     } else {
-      return getExtendedTimeSpanString(c, locale, timestamp);
+      return getExtendedTimeSpanString(c, timestamp);
     }
   }
 
   public static String getRelativeDate(@NonNull Context context,
-                                       @NonNull Locale locale,
                                        long timestamp)
   {
     if (isToday(timestamp)) {
@@ -107,15 +105,15 @@ public class DateUtils extends android.text.format.DateUtils {
     } else if (isYesterday(timestamp)) {
       return context.getString(R.string.yesterday);
     } else {
-      return getFormattedDateTime(timestamp, "EEEE, MMMM d, yyyy", locale);
+      return getFormattedDateTime(timestamp, "EEEE, MMMM d, yyyy");
     }
   }
 
-  private static String getLocalizedPattern(String template, Locale locale) {
+  private static String getLocalizedPattern(String template) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-      return DateFormat.getBestDateTimePattern(locale, template);
+      return DateFormat.getBestDateTimePattern(Util.getLocale(), template);
     } else {
-      return new SimpleDateFormat(template, locale).toLocalizedPattern();
+      return new SimpleDateFormat(template, Util.getLocale()).toLocalizedPattern();
     }
   }
 
