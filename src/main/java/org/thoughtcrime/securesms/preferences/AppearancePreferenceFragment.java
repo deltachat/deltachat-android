@@ -23,9 +23,7 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
     super.onCreate(paramBundle);
 
     this.findPreference(Prefs.THEME_PREF).setOnPreferenceChangeListener(new ListSummaryListener());
-    this.findPreference(Prefs.LANGUAGE_PREF).setOnPreferenceChangeListener(new ListSummaryListener());
     initializeListSummary((ListPreference)findPreference(Prefs.THEME_PREF));
-    initializeListSummary((ListPreference)findPreference(Prefs.LANGUAGE_PREF));
     this.findPreference(Prefs.BACKGROUND_PREF).setOnPreferenceClickListener(new BackgroundClickListener());
     this.findPreference(Prefs.MESSAGE_BODY_TEXT_SIZE_PREF).setOnPreferenceChangeListener(new ListSummaryListener());
     initializeListSummary((ListPreference) findPreference(Prefs.MESSAGE_BODY_TEXT_SIZE_PREF));
@@ -61,12 +59,6 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
   public void onStop() {
     super.onStop();
     getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener((ApplicationPreferencesActivity) getActivity());
-
-    // update the locale of the applicationContext so that the core gets the correct strings
-    // (for pending activities, the locale is updated by calling DynamicLanguage.onResume)
-    Context applicationContext = this.getActivity().getApplicationContext();
-    DynamicLanguage.setContextLocale(applicationContext, DynamicLanguage.getSelectedLocale(applicationContext));
-    DcHelper.setStockTranslations(applicationContext);
   }
 
   public static CharSequence getSummary(Context context) {
@@ -84,25 +76,11 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
       backgroundString = context.getString(R.string.custom);
     }
 
-    String[] languageEntries     = context.getResources().getStringArray(R.array.language_entries);
-    String[] languageEntryValues = context.getResources().getStringArray(R.array.language_values);
-    int langIndex = Arrays.asList(languageEntryValues).indexOf(Prefs.getLanguage(context));
-    if(langIndex==0) {
-      Locale locale = DynamicLanguage.getSelectedLocale(context);
-      String localeAbbr = locale.getLanguage();
-      langIndex = Arrays.asList(languageEntryValues).indexOf(localeAbbr);
-      if(langIndex==-1 && localeAbbr.length()>2) {
-        langIndex = Arrays.asList(languageEntryValues).indexOf(localeAbbr.substring(0,2));
-      }
-    }
-    if (langIndex == -1) langIndex = 0;
-
     // adding combined strings as "Read receipt: %1$s, Screen lock: %1$s, "
     // makes things inflexible on changes and/or adds lot of additional works to programmers.
     // however, if needed, we can refine this later.
     return themeEntries[themeIndex] + ", "
-        + context.getString(R.string.pref_background) + " " + backgroundString + ", "
-        + languageEntries[langIndex];
+        + context.getString(R.string.pref_background) + " " + backgroundString;
   }
 
   private class BackgroundClickListener implements Preference.OnPreferenceClickListener {

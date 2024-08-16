@@ -19,7 +19,6 @@ cp $RES/values/strings.xml $RES/values-$LANG/strings.xml
 touch -t 201901010000 $RES/values-$LANG/strings.xml
 
 echo "$RES/values-$LANG/strings.xml added:"
-echo "- add the name to $RES/values/arrays.xml"
 echo "- if needed, language mappings can be added to .tx/config"
 echo "- pull translations using ./scripts/tx-pull-translations.sh"
 echo "  (on problems, 'tx -d pull' gives verbose output)"

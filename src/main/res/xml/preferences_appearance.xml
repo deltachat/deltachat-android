@@ -28,11 +28,4 @@
         android:title="@string/pref_use_system_emoji"
         android:summary="@string/pref_use_system_emoji_explain" />
 
-    <ListPreference
-            android:key="pref_language"
-            android:title="@string/pref_language"
-            android:entries="@array/language_entries"
-            android:entryValues="@array/language_values"
-            android:defaultValue="zz"/>
-
 </PreferenceScreen>
