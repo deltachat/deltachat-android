@@ -10,7 +10,7 @@ For the core library and other common info, please refer to the
 
 For general contribution hints, please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-<img alt="Screenshot Chat List" src="fastline/android/metadata/en-US/images/phoneScreenshots/1.png" width="298" /> <img alt="Screenshot Chat View" src="fastline/android/metadata/en-US/images/phoneScreenshots/2.png" width="298" />
+<img alt="Screenshot Chat List" src="fastline/metadata/android/en-US/images/phoneScreenshots/1.png" width="298" /> <img alt="Screenshot Chat View" src="fastline/metadata/android/en-US/images/phoneScreenshots/2.png" width="298" />
 
 
 # Check Out Repository
