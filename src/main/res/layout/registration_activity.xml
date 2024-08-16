@@ -122,7 +122,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             tools:visibility="visible"
-            app:constraint_referenced_ids="encrypt_checkbox, inbox, imap_login, imap_server, imap_port, imap_security_label, imap_security, outbox_view_spacer_top,
+            app:constraint_referenced_ids="inbox, imap_login, imap_server, imap_port, imap_security_label, imap_security, outbox_view_spacer_top,
             outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, auth_method_label, auth_method, cert_check_label, cert_check, view_log_button, socks5_switch" />
 
         <ImageView
@@ -151,17 +151,6 @@
             app:layout_constraintStart_toEndOf="@id/advanced_icon"
             app:layout_constraintTop_toBottomOf="@id/no_servers_hint" />
 
-        <CheckBox
-            android:id="@+id/encrypt_checkbox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Encrypt database (highly experimental, use at your own risk)"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
-            app:layout_constraintTop_toBottomOf="@id/advanced_text" />
-
         <TextView
             android:id="@+id/inbox"
             android:layout_width="wrap_content"
@@ -170,7 +159,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/login_inbox"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/encrypt_checkbox" />
+            app:layout_constraintTop_toBottomOf="@id/advanced_text" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imap_login"
