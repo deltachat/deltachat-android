@@ -93,7 +93,7 @@ public final class GenericForegroundService extends Service {
   private synchronized void handleStart(@NonNull Intent intent) {
     Entry entry = Entry.fromIntent(intent);
 
-    Log.i(TAG, String.format(Locale.US, "handleStart() %s", entry));
+    Log.i(TAG, String.format(Locale.ENGLISH, "handleStart() %s", entry));
 
     allActiveMessages.put(entry.id, entry);
   }
@@ -240,7 +240,7 @@ public final class GenericForegroundService extends Service {
 
     @Override
     public @NonNull String toString() {
-      return String.format(Locale.US, "ChannelId: %s  Id: %d Progress: %d/%d %s", channelId, id, progress, progressMax, indeterminate ? "indeterminate" : "determinate");
+      return String.format(Locale.ENGLISH, "ChannelId: %s  Id: %d Progress: %d/%d %s", channelId, id, progress, progressMax, indeterminate ? "indeterminate" : "determinate");
     }
 
     @Override

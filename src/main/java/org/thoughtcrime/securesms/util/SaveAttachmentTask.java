@@ -261,7 +261,7 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
     } else {
       String dir = getExternalPathForType(contentType);
       if (dir == null) {
-        throw new IOException(String.format(Locale.US, "Path for type: %s was not available", contentType));
+        throw new IOException(String.format(Locale.ENGLISH, "Path for type: %s was not available", contentType));
       }
 
       String outputFileName = fileName;
