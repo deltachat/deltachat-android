@@ -94,9 +94,6 @@
     <attr name="dialog_alert_icon" format="reference" />
     <attr name="dialog_background_color" format="reference|color" />
 
-    <attr name="contact_selection_label_text" format="reference|color" />
-    <attr name="contact_selection_header_text" format="reference|color" />
-
     <attr name="device_link_item_card_background" format="reference|color" />
 
     <attr name="import_export_item_background_color" format="reference|color" />
@@ -126,8 +123,6 @@
     </declare-styleable>
 
     <attr name="group_members_dialog_icon" format="reference"/>
-
-    <attr name="recipient_preference_blocked" format="color"/>
 
     <attr name="verification_background" format="color"/>
 
