@@ -94,10 +94,6 @@
     <attr name="dialog_alert_icon" format="reference" />
     <attr name="dialog_background_color" format="reference|color" />
 
-    <attr name="import_export_item_background_color" format="reference|color" />
-    <attr name="import_export_item_background_shadow_color" format="reference|color" />
-    <attr name="import_export_item_card_background" format="reference" />
-
     <attr name="menu_new_conversation_icon" format="reference" />
     <attr name="menu_search_icon" format="reference" />
     <attr name="menu_popup_expand" format="reference"/>
@@ -121,8 +117,6 @@
     </declare-styleable>
 
     <attr name="group_members_dialog_icon" format="reference"/>
-
-    <attr name="verification_background" format="color"/>
 
     <attr name="profile_toolbar_background" format="color"/>
     <attr name="profile_toolbar_foreground" format="color"/>
