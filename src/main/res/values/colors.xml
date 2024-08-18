@@ -38,9 +38,6 @@
     <color name="action_mode_status_bar">@color/gray50</color>
     <color name="touch_highlight">#400099cc</color>
 
-    <color name="device_link_item_background_light">#ffffffff</color>
-    <color name="device_link_item_background_dark">#ff333333</color>
-
     <color name="import_export_item_background_light">#ffeeeeee</color>
     <color name="import_export_item_background_dark">#ff333333</color>
     <color name="import_export_item_background_shadow_light">#ffd5d5d5</color>
