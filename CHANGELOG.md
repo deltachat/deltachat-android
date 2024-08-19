@@ -1,20 +1,24 @@
 # Delta Chat Android Changelog
 
-## v1.46.11 Testrun
+## v1.46.12
 2024-08
 
+* upgrade the status bar to modern Android look and feel
 * add direct support for android14, required to be able to continue shipping to Google Play
-* drop support for android4, as this is no longer supported by various dependencies
+* increase minimal supported android to 5; as required by updating several outdated dependencies
 * drop support for gmail oauth2, gmail can still be used using "App Passwords", you'll get hints as needed
   (reason for dropping was unmaintainable bureaucracy and costs added by google)
 * update various dependencies for added security and stability
 * jcenter (a dependency origin) is closing, move dependencies to other origins
 * when SOCKS5 is enabled, route autoconfig and oauth2 config there
+* fix encryption compatibility with old Delta Chat clients
+* fix crashes when opening log view with many lines
+* fix: hide copy to clipboard while QR is not ready
 * fix moving outgoing auto-generated messages to the "DeltaChat" folder
 * fix: try to create "INBOX.DeltaChat" if "DeltaChat" is not possible for some provider
 * fix receiving messages with "DeltaChat" folder cannot be selected
 * update provider database
-* update to core 1.142.6
+* update to core 1.142.7
 
 
 ## v1.46.10
