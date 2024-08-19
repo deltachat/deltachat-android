@@ -56,7 +56,6 @@
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background</item>
         <item name="conversation_list_item_contact_color">@color/core_light_90</item>
         <item name="conversation_list_item_subject_color">@color/core_light_60</item>
-        <item name="conversation_list_item_delivery_icon_color">@color/core_light_35</item>
         <item name="conversation_list_item_date_color">@color/core_light_60</item>
         <item name="conversation_list_item_unread_color">@color/core_black</item>
         <item name="conversation_list_item_divider">@drawable/conversation_list_divider_shape</item>
@@ -192,7 +191,6 @@
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background_dark</item>
         <item name="conversation_list_item_contact_color">@color/white</item>
         <item name="conversation_list_item_subject_color">@color/core_dark_30</item>
-        <item name="conversation_list_item_delivery_icon_color">@color/core_dark_55</item>
         <item name="conversation_list_item_date_color">@color/core_dark_30</item>
         <item name="conversation_list_item_unread_color">@color/core_white</item>
         <item name="conversation_list_item_divider">@drawable/conversation_list_divider_shape_dark</item>
