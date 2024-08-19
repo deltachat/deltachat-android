@@ -14,10 +14,6 @@
     <attr name="conversation_list_item_unread_color" format="reference|color"/>
     <attr name="conversation_list_item_divider" format="reference"/>
 
-    <attr name="conversation_sent_card_background" format="reference|color"/>
-    <attr name="conversation_group_member_name" format="reference|color"/>
-    <attr name="conversation_received_card_background" format="reference|color"/>
-
     <attr name="secondary_button_fg" format="reference"/>
     <attr name="send_button_bg" format="reference"/>
     <attr name="floating_mini_bg" format="reference"/>
@@ -26,9 +22,6 @@
     <attr name="input_panel_bg_color" format="reference|color" />
     <attr name="lower_right_divet" format="reference" />
     <attr name="close_icon_color" format="reference|color" />
-
-    <attr name="centered_app_title_color" format="reference|color" />
-    <attr name="ic_arrow_forward" format="reference" />
 
     <attr name="conversation_background" format="reference|color"/>
     <attr name="conversation_editor_background" format="reference|color"/>

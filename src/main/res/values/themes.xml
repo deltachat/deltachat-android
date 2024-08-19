@@ -69,8 +69,6 @@
         <item name="lower_right_divet">@drawable/divet_lower_right_dark</item>
         <item name="close_icon_color">#A4A6A9</item>
 
-        <item name="conversation_group_member_name">#99000000</item>
-
         <!-- light theme -->
         <item name="conversation_background">@color/gray10</item>
         <item name="conversation_editor_background">#22000000</item>
@@ -198,8 +196,6 @@
         <item name="secondary_button_fg">@color/gray10</item>
         <item name="send_button_bg">@drawable/send_button_bg_dark</item>
         <item name="floating_mini_bg">@drawable/floating_mini_bg_dark</item>
-
-        <item name="conversation_group_member_name">@color/sticker_selected_color</item>
 
         <!-- dark theme -->
         <item name="conversation_item_incoming_bubble_color">@color/black</item>
