@@ -95,7 +95,7 @@ public class Prefs {
   }
 
   public static void setProfileAvatarId(Context context, int id) {
-    setIntegerPrefrence(context, PROFILE_AVATAR_ID_PREF, id);
+    setIntegerPreference(context, PROFILE_AVATAR_ID_PREF, id);
   }
 
   public static int getProfileAvatarId(Context context) {
@@ -111,7 +111,7 @@ public class Prefs {
   }
 
   public static void setDirectCaptureCameraId(Context context, int value) {
-    setIntegerPrefrence(context, DIRECT_CAPTURE_CAMERA_ID, value);
+    setIntegerPreference(context, DIRECT_CAPTURE_CAMERA_ID, value);
   }
 
   @SuppressWarnings("deprecation")
@@ -160,7 +160,7 @@ public class Prefs {
   }
 
   public static void setPromptedDozeMsgId(Context context, int msg_id) {
-    setIntegerPrefrence(context, PROMPTED_DOZE_MSG_ID_PREF, msg_id);
+    setIntegerPreference(context, PROMPTED_DOZE_MSG_ID_PREF, msg_id);
   }
 
   public static int getPrompteDozeMsgId(Context context) {
@@ -246,7 +246,7 @@ public class Prefs {
   public static void setChatVibrate(Context context, int accountId, int chatId, VibrateState vibrateState) {
     final String KEY = (accountId != 0 && chatId != 0)? CHAT_VIBRATE+accountId+"."+chatId : CHAT_VIBRATE;
     if(vibrateState!=VibrateState.DEFAULT) {
-      setIntegerPrefrence(context, KEY, vibrateState.getId());
+      setIntegerPreference(context, KEY, vibrateState.getId());
     }
     else {
       removePreference(context, KEY);
@@ -309,7 +309,7 @@ public class Prefs {
     return PreferenceManager.getDefaultSharedPreferences(context).getInt(key, defaultValue);
   }
 
-  private static void setIntegerPrefrence(Context context, String key, int value) {
+  private static void setIntegerPreference(Context context, String key, int value) {
     PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(key, value).apply();
   }
 
