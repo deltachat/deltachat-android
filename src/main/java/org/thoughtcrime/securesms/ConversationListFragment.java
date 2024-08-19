@@ -144,19 +144,16 @@ public class ConversationListFragment extends BaseConversationListFragment
 
     if (requireActivity().getIntent().getIntExtra(RELOAD_LIST, 0) == 1
         && !chatlistJustLoaded) {
-      Log.i(TAG, "🤠 resuming chatlist: loading chatlist");
       loadChatlist();
       reloadTimerInstantly = false;
     }
     chatlistJustLoaded = false;
 
-    Log.i(TAG, "🤠 resuming chatlist: starting update timer");
     reloadTimer = new Timer();
     reloadTimer.scheduleAtFixedRate(new TimerTask() {
       @Override
       public void run() {
         Util.runOnMain(() -> {
-          Log.i(TAG, "🤠 update timer: refreshing chatlist");
           list.getAdapter().notifyDataSetChanged();
         });
       }
@@ -167,7 +164,6 @@ public class ConversationListFragment extends BaseConversationListFragment
   public void onPause() {
     super.onPause();
 
-    Log.i(TAG, "🤠 pausing chatlist: cancel update timer");
     reloadTimer.cancel();
     reloadTimerInstantly = true;
 
