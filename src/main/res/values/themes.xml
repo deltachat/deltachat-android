@@ -166,10 +166,6 @@
 
         <item name="search_toolbar_background">@color/white</item>
         <item name="search_background">@color/white</item>
-
-        <item name="shared_contact_details_header_background">@color/grey_100</item>
-        <item name="shared_contact_details_titlebar">@color/grey_400</item>
-        <item name="shared_contact_item_button_color">@color/core_light_02</item>
     </style>
 
     <style name="TextSecure.DarkTheme" parent="@style/Theme.AppCompat">
@@ -305,10 +301,6 @@
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.Fix</item>
         <item name="search_toolbar_background">@color/black</item>
         <item name="search_background">@color/black</item>
-
-        <item name="shared_contact_details_header_background">@color/grey_800</item>
-        <item name="shared_contact_details_titlebar">@color/grey_900</item>
-        <item name="shared_contact_item_button_color">@color/core_dark_85</item>
     </style>
     
     <style name="TextSecure.ScribbleTheme" parent="TextSecure.DarkNoActionBar">
