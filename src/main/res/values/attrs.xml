@@ -8,7 +8,6 @@
 
     <attr name="conversation_list_item_background" format="reference"/>
     <attr name="pinned_list_item_background" format="reference"/>
-    <attr name="conversation_list_deaddrop_bg_color" format="reference|color"/>
     <attr name="conversation_list_item_contact_color" format="reference|color"/>
     <attr name="conversation_list_item_subject_color" format="reference|color"/>
     <attr name="conversation_list_item_delivery_icon_color" format="reference|color"/>
