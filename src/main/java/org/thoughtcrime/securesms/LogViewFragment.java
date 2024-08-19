@@ -128,26 +128,24 @@ public class LogViewFragment extends Fragment {
   }
 
   private static String grabLogcat(LogViewFragment fragment) {
+    String command = "logcat -v threadtime -d -t 10000";
+    if (!Prefs.isDeveloperModeEnabled(fragment.getActivity())) {
+      command += " *:I";
+    }
     try {
-      final Process         process        = Runtime.getRuntime().exec("logcat -v threadtime -d");
+      final Process         process        = Runtime.getRuntime().exec(command);
       final BufferedReader  bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
       final StringBuilder   log            = new StringBuilder();
       final String          separator      = System.getProperty("line.separator");
-      final boolean devMode = Prefs.isDeveloperModeEnabled(fragment.getActivity());
 
       String line;
       while ((line = bufferedReader.readLine()) != null) {
         line = line.replaceFirst(" (\\d+) E ", " $1 \uD83D\uDD34 ");
         line = line.replaceFirst(" (\\d+) W ", " $1 \uD83D\uDFE0 ");
         line = line.replaceFirst(" (\\d+) I ", " $1 \uD83D\uDD35 ");
-        String debugLine = line.replaceFirst(" (\\d+) D ", " $1 \uD83D\uDFE2 ");
-        if (debugLine.equals(line)) { // not a debug entry
-          log.append(line);
-          log.append(separator);
-        } else if (devMode) {
-          log.append(debugLine);
-          log.append(separator);
-        }
+        line = line.replaceFirst(" (\\d+) D ", " $1 \uD83D\uDFE2 ");
+        log.append(line);
+        log.append(separator);
       }
       return log.toString();
     } catch (Exception e) {
