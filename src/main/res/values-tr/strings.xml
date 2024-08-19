@@ -1145,4 +1145,5 @@
     <!-- device messages for updates -->
     <string name="update_1_46_android">Yeni Katılım 🐣 ve Daha Fazlası:\n\n⚡️ Hızlı güvenli Chatmail sunucularına kayıt olun (https://delta.chat/chatmail) ya da klasik e-posta sunucularını kullanın\n\n👉 Herhangi bir Chatmail sunucusu için ANINDA İLETME bildirimleri\n\n👤 \"Kişileri iliştir\" üzerinden arkadaşlarınıza güvenlice bağlanın\n\n🥰 Herhangi bir emojiyle tepki verin\n\n📌 Sohbetleri doğrudan aramadan sabitleyin … ve DAHA FAZLASI %1$s</string>
     <string name="update_1_46_ios">Yeni Katılım 🐣 ve Daha Fazlası:\n\n⚡️ Güvenli hızlı Chatmail sunucularına kaydolun (https://delta.chat/chatmail) ya da klasik e-posta sunucularını kullanın\n\n👉 Herhangi bir Chatmail sunucusu için ANLIK bildirimler\n\n👤 \"İliştirilen kişileri\" alın ve arkadaşlarınıza bağlanın\n\n🥰 Daha hızlı tepki seçimi … ve DAHA FAZLASI için %1$s</string>
-    </resources>
+    <string name="update_switch_profile_placement">ℹ️ \"Profili Değiştir\" seçeneği taşındı: Yeni profil eklemek ya da profilleri değiştirmek için ana ekranın üst köşesindeki profil görselinize dokunun 💡</string>
+</resources>
