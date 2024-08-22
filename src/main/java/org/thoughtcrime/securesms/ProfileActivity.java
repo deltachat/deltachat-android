@@ -6,6 +6,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -550,12 +551,21 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
     else {
       DcContact dcContact = dcContext.getContact(contactId);
+
+      String authName = dcContact.getAuthName();
+      if (TextUtils.isEmpty(authName)) {
+        authName = dcContact.getAddr();
+      }
+
       View gl = View.inflate(this, R.layout.single_line_input, null);
       EditText inputField = gl.findViewById(R.id.input_field);
       inputField.setText(dcContact.getName());
       inputField.setSelection(inputField.getText().length());
+      inputField.setHint(getString(R.string.edit_name_placeholder, authName));
+
       new AlertDialog.Builder(this)
           .setTitle(R.string.menu_edit_name)
+          .setMessage(getString(R.string.edit_name_explain, authName))
           .setView(gl)
           .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
             String newName = inputField.getText().toString();
