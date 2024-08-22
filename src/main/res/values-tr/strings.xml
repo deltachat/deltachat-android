@@ -683,7 +683,7 @@
     <string name="pref_appearance">Görünüm</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Dil</string>
-    <string name="pref_incognito_keyboard">Gizlenen Klavye</string>
+    <string name="pref_incognito_keyboard">Gizli Klavye</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Kişiselleştirilen öğrenmeyi etkisizleştirmek için klavye iste</string>
     <string name="pref_read_receipts">Okundu Onayları</string>
