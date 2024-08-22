@@ -47,6 +47,7 @@ public class DcContact {
 
     public native int     getId          ();
     public native String  getName        ();
+    public native String  getAuthName    ();
     public native String  getDisplayName ();
     public native String  getAddr        ();
     public native String  getNameNAddr   ();

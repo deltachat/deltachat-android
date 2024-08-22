@@ -1778,6 +1778,15 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getName(JNIEnv *env, jobject
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getAuthName(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_contact_get_auth_name(get_dc_contact(env, obj));
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getDisplayName(JNIEnv *env, jobject obj)
 {
     char* temp = dc_contact_get_display_name(get_dc_contact(env, obj));
