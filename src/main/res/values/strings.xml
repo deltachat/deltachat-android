@@ -268,7 +268,7 @@
     <string name="select_more">Select more</string>
     <string name="menu_edit_name">Edit Name</string>
     <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
-    <string name="edit_name_explain">Set a local nickname to replace \"%1$s\". Leave empty to use the contact\'s chosen name.</string>
+    <string name="edit_name_explain">Set a nickname that will be displayed for you instead of \"%1$s\". Leave empty to use the contact\'s chosen name.</string>
     <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
     <string name="edit_name_placeholder">Nickname for \"%1$s\"</string>
     <string name="menu_settings">Settings</string>
