@@ -161,6 +161,10 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         menu.findItem(R.id.menu_vibrate).setVisible(false);
       }
 
+      if (isContactProfile()) {
+        menu.findItem(R.id.edit_name).setTitle(R.string.menu_edit_name);
+      }
+
       if (!isContactProfile() || chatIsDeviceTalk) {
         menu.findItem(R.id.block_contact).setVisible(false);
       }
