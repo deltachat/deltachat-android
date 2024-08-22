@@ -267,6 +267,10 @@
     <string name="select_chat">Chat auswählen</string>
     <string name="select_more">Mehr auswählen</string>
     <string name="menu_edit_name">Name bearbeiten</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_explain">Nicknamen festlegen, der anstelle von „%1$s“ angezeigt wird. Leer lassen, um den vom Kontakt gewählten Namen zu verwenden.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_placeholder">Nickname für \"%1$s\"</string>
     <string name="menu_settings">Einstellungen</string>
     <string name="menu_advanced">Erweitert</string>
     <string name="menu_view_profile">Profil anzeigen</string>
