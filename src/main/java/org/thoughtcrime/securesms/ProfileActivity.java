@@ -572,6 +572,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
             dcContext.createContact(newName, dcContact.getAddr());
           })
           .setNegativeButton(android.R.string.cancel, null)
+          .setCancelable(false)
           .show();
     }
   }
