@@ -259,6 +259,10 @@
     <string name="select_chat">选择聊天</string>
     <string name="select_more">选择更多</string>
     <string name="menu_edit_name">编辑名称</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_explain">设置将显示给您的昵称，而不是“%1$s”。留空可使用联系人选择的名称。</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_placeholder">“%1$s”的昵称</string>
     <string name="menu_settings">设置</string>
     <string name="menu_advanced">高级</string>
     <string name="menu_view_profile">查看账号</string>
