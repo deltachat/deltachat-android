@@ -1,8 +1,9 @@
 # Delta Chat Android Changelog
 
-## v1.46.12
+## v1.46.13
 2024-08
 
+* improve contact profile's "Edit Name" dialog
 * upgrade the status bar to modern Android look and feel
 * add direct support for android14, required to be able to continue shipping to Google Play
 * increase minimal supported android to 5; as required by updating several outdated dependencies
@@ -17,8 +18,9 @@
 * fix moving outgoing auto-generated messages to the "DeltaChat" folder
 * fix: try to create "INBOX.DeltaChat" if "DeltaChat" is not possible for some provider
 * fix receiving messages with "DeltaChat" folder cannot be selected
+* fix: do not crash on unknown "Certificate Checks" values
 * update provider database
-* update to core 1.142.7
+* update to core 1.142.8
 
 
 ## v1.46.10
