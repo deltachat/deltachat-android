@@ -267,6 +267,10 @@
     <string name="select_chat">Sohbet Seç</string>
     <string name="select_more">Daha fazlasını seç</string>
     <string name="menu_edit_name">Adı Düzenle</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_explain">\"%1$s\" yerine size gösterilecek bir takma ad ayarlayın. Kişinin seçilen adını kullanmak için boş bırakın.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_placeholder">\"%1$s\" için Takma Ad</string>
     <string name="menu_settings">Ayarlar</string>
     <string name="menu_advanced">Gelişmiş</string>
     <string name="menu_view_profile">Profili Görüntüle</string>
