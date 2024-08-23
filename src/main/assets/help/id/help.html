@@ -80,7 +80,6 @@
       <li><a href="#how-can-i-use-audiovideo-calls-with-delta-chat">How can I use audio/video calls with Delta Chat?</a></li>
       <li><a href="#what-are-broadcast-lists-and-how-can-i-use-them">What are Broadcast Lists and how can I use them?</a></li>
       <li><a href="#how-can-i-share-my-location-with-my-chat-partners">How can I share my location with my chat partners?</a></li>
-      <li><a href="#what-does-the-experimental-database-encryption-actually-protect">What does the experimental database encryption actually protect?</a></li>
       <li><a href="#why-can-i-choose-to-only-watch-the-deltachat-folder">Why can I choose to only watch the DeltaChat folder?</a></li>
       <li><a href="#how-can-i-use-a-different-e-mail-address-with-my-profile">How can I use a different e-mail address with my profile?</a></li>
     </ul>
@@ -1541,29 +1540,6 @@ Map tiles are downloaded from <a href="https://openstreetmap.org">OpenStreetMap<
   <li>On desktop, the OS typically can’t determine your location. Instead you can
 right click on the map and describe a location, which is sent to the chat as
 a message, but also appears on the map.</li>
-</ul>
-    
-      <h3 id="what-does-the-experimental-database-encryption-actually-protect">
-        
-        
-          What does the experimental database encryption actually protect? <a href="#what-does-the-experimental-database-encryption-actually-protect" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>Right now, the database encryption is still very experimental. Don’t rely on
-it for protection, you should additionally use encryption of your operating
-system, if it provides any.</li>
-  <li>The database encryption does not yet encrypt the blobs, only the rows and
-columns of the database. This more or less means that your messages are safe,
-but not your attachments.</li>
-  <li>For iOS and Android, the encryption keys are stored in the system keychain.
-This means the encryption is as secure as the operating system it’s running
-on.</li>
-  <li>The Delta Chat desktop client doesn’t offer database encryption yet, as there
-is no standard way to store the encryption keys on the different supported
-platforms.</li>
 </ul>
     
       <h3 id="why-can-i-choose-to-only-watch-the-deltachat-folder">
