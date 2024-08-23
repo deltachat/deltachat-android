@@ -264,6 +264,10 @@
     <string name="select_chat">Përzgjidhni Fjalosje</string>
     <string name="select_more">Përzgjidhni më tepër</string>
     <string name="menu_edit_name">Përpunoni Emrin</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_explain">Caktoni një nofkë që do t’ju shfaqet në vend të “%1$s”. Që të përdoret emri i zgjedhur nga kontakti, lëreni të zbrazët.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_placeholder">Nofkë për “%1$s”</string>
     <string name="menu_settings">Rregullime</string>
     <string name="menu_advanced">Të mëtejshme</string>
     <string name="menu_view_profile">Shihini Profilin</string>
