@@ -56,7 +56,6 @@ import com.b44t.messenger.util.concurrent.ListenableFuture;
 import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.google.android.material.textfield.TextInputEditText;
 
-import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -87,8 +86,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     private TextView providerLink;
     private @Nullable DcProvider provider;
 
-    private CheckBox encryptCheckbox;
-
     private Group advancedGroup;
     private ImageView advancedIcon;
     private ProgressDialog progressDialog;
@@ -115,8 +112,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         providerHint = findViewById(R.id.provider_hint);
         providerLink = findViewById(R.id.provider_link);
         providerLink.setOnClickListener(l -> onProviderLink());
-
-        encryptCheckbox = findViewById(R.id.encrypt_checkbox);
 
         advancedGroup = findViewById(R.id.advanced_group);
         advancedIcon = findViewById(R.id.advanced_icon);
@@ -247,10 +242,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             int certCheckFlags = DcHelper.getInt(this, "imap_certificate_checks");
             certCheck.setSelection(certCheckFlags);
             expandAdvanced = expandAdvanced || certCheckFlags != 0;
-
-            encryptCheckbox.setHeight(0);
-            encryptCheckbox.setClickable(false);
-            encryptCheckbox.setFocusable(false);
 
             if (expandAdvanced) { onAdvancedSettings(); }
         } else if (getIntent() != null && getIntent().getBundleExtra(ACCOUNT_DATA) != null) {
@@ -599,35 +590,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             return;
         }
 
-        if (encryptCheckbox.isChecked()) {
-            AccountManager accountManager = AccountManager.getInstance();
-
-            if (progressDialog != null) {
-                progressDialog.dismiss();
-                progressDialog = null;
-            }
-
-            progressDialog = new ProgressDialog(this);
-            progressDialog.setMessage(getString(R.string.one_moment));
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.setCancelable(false);
-            progressDialog.show();
-
-            // Prevent the user from disabling the checkbox again, switching to unencrypted account is currently not implemented
-            encryptCheckbox.setEnabled(false);
-            Util.runOnBackground(() -> {
-                DcHelper.getEventCenter(this).removeObservers(this);
-                accountManager.switchToEncrypted(this);
-                // Event center changed, register for events again
-                registerForEvents();
-                Util.runOnMain(this::continueLogin);
-            });
-        } else {
-            continueLogin();
-        }
-    }
-
-    private void continueLogin() {
         setupConfig();
 
         if (progressDialog != null) {
