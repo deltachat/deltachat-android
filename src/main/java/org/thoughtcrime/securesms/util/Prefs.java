@@ -31,7 +31,6 @@ public class Prefs {
 
   public  static final String DISABLE_PASSPHRASE_PREF          = "pref_disable_passphrase";
   public  static final String THEME_PREF                       = "pref_theme";
-  public  static final String LANGUAGE_PREF                    = "pref_language";
   public  static final String BACKGROUND_PREF                  = "pref_chat_background";
 
   private static final String DATABASE_ENCRYPTED_SECRET        = "pref_database_encrypted_secret_"; // followed by account-id
@@ -149,14 +148,6 @@ public class Prefs {
 
   public static String getTheme(Context context) {
     return getStringPreference(context, THEME_PREF, DynamicTheme.systemThemeAvailable() ? DynamicTheme.SYSTEM : DynamicTheme.LIGHT);
-  }
-
-  public static String getLanguage(Context context) {
-    return getStringPreference(context, LANGUAGE_PREF, "zz");
-  }
-
-  public static void setLanguage(Context context, String language) {
-    setStringPreference(context, LANGUAGE_PREF, language);
   }
 
   public static void setPromptedDozeMsgId(Context context, int msg_id) {

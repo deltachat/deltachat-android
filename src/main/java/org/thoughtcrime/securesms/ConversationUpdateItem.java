@@ -20,7 +20,6 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.JsonUtils;
 
 import java.io.ByteArrayInputStream;
-import java.util.Locale;
 import java.util.Set;
 
 public class ConversationUpdateItem extends BaseConversationItem
@@ -62,7 +61,6 @@ public class ConversationUpdateItem extends BaseConversationItem
   public void bind(@NonNull DcMsg                   messageRecord,
                    @NonNull DcChat                  dcChat,
                    @NonNull GlideRequests           glideRequests,
-                   @NonNull Locale                  locale,
                    @NonNull Set<DcMsg>              batchSelected,
                    @NonNull Recipient               conversationRecipient,
                             boolean                 pulseUpdate)

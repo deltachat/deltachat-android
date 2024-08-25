@@ -15,24 +15,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import java.lang.reflect.Field;
-import java.util.Locale;
 
 
 public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   private static final String TAG = BaseActionBarActivity.class.getSimpleName();
-  public static final String LOCALE_EXTRA = "locale_extra";
-  protected final DynamicLanguage dynamicLanguage = new DynamicLanguage();
   protected DynamicTheme dynamicTheme = new DynamicTheme();
 
   protected void onPreCreate() {
     dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
   }
 
   @Override
@@ -49,14 +44,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     super.onResume();
     initializeScreenshotSecurity();
     dynamicTheme.onResume(this);
-    dynamicLanguage.onResume(this);
-  }
-
-  @Override
-  public void onConfigurationChanged(Configuration newConfig) {
-    super.onConfigurationChanged(newConfig);
-    // on orientation changes locale is reset in the context/activity so set locale as onCreate()
-    dynamicLanguage.onCreate(this);
   }
 
   @Override
@@ -121,18 +108,9 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   protected <T extends Fragment> T initFragment(@IdRes int target,
                                                 @NonNull T fragment,
-                                                @Nullable Locale locale)
-  {
-    return initFragment(target, fragment, locale, null);
-  }
-
-  protected <T extends Fragment> T initFragment(@IdRes int target,
-                                                @NonNull T fragment,
-                                                @Nullable Locale locale,
                                                 @Nullable Bundle extras)
   {
     Bundle args = new Bundle();
-    args.putSerializable(LOCALE_EXTRA, locale);
 
     if (extras != null) {
       args.putAll(extras);

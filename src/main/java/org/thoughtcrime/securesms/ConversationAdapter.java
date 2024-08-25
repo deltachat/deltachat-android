@@ -46,7 +46,6 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -66,7 +65,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 {
 
   private static final int MAX_CACHE_SIZE = 40;
-  private static final String TAG = ConversationAdapter.class.getSimpleName();
   private final Map<Integer,SoftReference<DcMsg>> recordCache =
       Collections.synchronizedMap(new LRUCache<Integer,SoftReference<DcMsg>>(MAX_CACHE_SIZE));
 
@@ -87,7 +85,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   private final @Nullable ItemClickListener clickListener;
   private final @NonNull  GlideRequests     glideRequests;
-  private final @NonNull  Locale            locale;
   private final @NonNull  Recipient         recipient;
   private final @NonNull  LayoutInflater    inflater;
   private final @NonNull  Context           context;
@@ -213,12 +210,10 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   public ConversationAdapter(@NonNull Context context,
                              @NonNull DcChat dcChat,
                              @NonNull GlideRequests glideRequests,
-                             @NonNull Locale locale,
                              @Nullable ItemClickListener clickListener,
                              @NonNull Recipient recipient) {
     this.dcChat = dcChat;
     this.glideRequests = glideRequests;
-    this.locale = locale;
     this.clickListener = clickListener;
     this.recipient = recipient;
     this.context = context;
@@ -243,7 +238,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     long elapsed = now - pulseHighlightingSince;
     boolean pulseHighlight = (positionCurrentlyPulseHighlighting == position && elapsed < PULSE_HIGHLIGHT_MILLIS);
 
-    holder.getItem().bind(getMsg(position), dcChat, glideRequests, locale, batchSelected, recipient, pulseHighlight);
+    holder.getItem().bind(getMsg(position), dcChat, glideRequests, batchSelected, recipient, pulseHighlight);
   }
 
   @Override
@@ -374,7 +369,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
    */
   @Override
   public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
-    viewHolder.setText(DateUtils.getRelativeDate(getContext(), locale, getSortTimestamp(position)));
+    viewHolder.setText(DateUtils.getRelativeDate(getContext(), getSortTimestamp(position)));
   }
 
 

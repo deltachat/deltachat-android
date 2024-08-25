@@ -52,7 +52,6 @@ import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -67,7 +66,6 @@ public class ConversationListFragment extends BaseConversationListFragment
   private RecyclerView                list;
   private View                        emptyState;
   private TextView                    emptySearch;
-  private Locale                      locale;
   private final String                queryFilter  = "";
   private boolean                     archive;
   private Timer                       reloadTimer;
@@ -77,7 +75,6 @@ public class ConversationListFragment extends BaseConversationListFragment
   @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
-    locale = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
     archive = getArguments().getBoolean(ARCHIVE, false);
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(requireActivity());
@@ -131,7 +128,7 @@ public class ConversationListFragment extends BaseConversationListFragment
 
     setHasOptionsMenu(true);
     initializeFabClickListener(false);
-    list.setAdapter(new ConversationListAdapter(requireActivity(), GlideApp.with(this), locale, this));
+    list.setAdapter(new ConversationListAdapter(requireActivity(), GlideApp.with(this), this));
     loadChatlistAsync();
     chatlistJustLoaded = true;
   }

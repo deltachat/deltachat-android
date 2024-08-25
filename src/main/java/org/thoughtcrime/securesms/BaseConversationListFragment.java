@@ -41,7 +41,6 @@ import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 
 public abstract class BaseConversationListFragment extends Fragment implements ActionMode.Callback {
@@ -92,11 +91,11 @@ public abstract class BaseConversationListFragment extends Fragment implements A
           ArrayList<Uri> uris = getSharedUris(getActivity());
           String message;
           if (isForwarding(getActivity())) {
-            message = String.format(Locale.getDefault(), getString(R.string.ask_forward_multiple), selectedChats.size());
+            message = String.format(Util.getLocale(), getString(R.string.ask_forward_multiple), selectedChats.size());
           } else if (!uris.isEmpty()) {
-            message = String.format(Locale.getDefault(), getString(R.string.share_multiple_attachments_multiple_chats), uris.size(), selectedChats.size());
+            message = String.format(Util.getLocale(), getString(R.string.share_multiple_attachments_multiple_chats), uris.size(), selectedChats.size());
           } else {
-            message = String.format(Locale.getDefault(), getString(R.string.share_text_multiple_chats), selectedChats.size(), getSharedText(getActivity()));
+            message = String.format(Util.getLocale(), getString(R.string.share_text_multiple_chats), selectedChats.size(), getSharedText(getActivity()));
           }
           Context context = getContext();
           if (context != null) {

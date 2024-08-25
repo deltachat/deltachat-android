@@ -39,12 +39,10 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Locale;
 
 public class ProfileSettingsFragment extends Fragment
              implements ProfileSettingsAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
 
-  public static final String LOCALE_EXTRA  = "locale_extra";
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
 
@@ -57,7 +55,6 @@ public class ProfileSettingsFragment extends Fragment
   private final ActionModeCallback actionModeCallback = new ActionModeCallback();
 
 
-  private Locale               locale;
   private DcContext            dcContext;
   protected int                chatId;
   private int                  contactId;
@@ -70,8 +67,6 @@ public class ProfileSettingsFragment extends Fragment
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
 
-    locale = (Locale)getArguments().getSerializable(LOCALE_EXTRA);
-    if (locale == null) throw new AssertionError();
     chatId = getArguments().getInt(CHAT_ID_EXTRA, -1);
     contactId = getArguments().getInt(CONTACT_ID_EXTRA, -1);
     dcContext = DcHelper.getContext(getContext());
@@ -80,7 +75,7 @@ public class ProfileSettingsFragment extends Fragment
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.profile_settings_fragment, container, false);
-    adapter = new ProfileSettingsAdapter(getContext(), GlideApp.with(this), locale,this);
+    adapter = new ProfileSettingsAdapter(getContext(), GlideApp.with(this), this);
 
     list  = ViewUtil.findById(view, R.id.recycler_view);
     list.setAdapter(adapter);

@@ -35,7 +35,6 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.lang.ref.WeakReference;
-import java.util.Locale;
 
 /**
  * A CursorAdapter for building a list of conversation threads.
@@ -52,7 +51,6 @@ class ConversationListAdapter extends BaseConversationListAdapter<ConversationLi
   private @NonNull        DcContext            dcContext;
   private @NonNull        DcChatlist           dcChatlist;
   private final @NonNull  GlideRequests        glideRequests;
-  private final @NonNull  Locale               locale;
   private final @NonNull  LayoutInflater       inflater;
   private final @Nullable ItemClickListener    clickListener;
 
@@ -79,7 +77,6 @@ class ConversationListAdapter extends BaseConversationListAdapter<ConversationLi
 
   ConversationListAdapter(@NonNull Context context,
                           @NonNull GlideRequests glideRequests,
-                          @NonNull Locale locale,
                           @Nullable ItemClickListener clickListener)
   {
     super();
@@ -87,7 +84,6 @@ class ConversationListAdapter extends BaseConversationListAdapter<ConversationLi
     this.glideRequests  = glideRequests;
     this.dcContext      = DcHelper.getContext(context);
     this.dcChatlist     = new DcChatlist(0, 0);
-    this.locale         = locale;
     this.inflater       = LayoutInflater.from(context);
     this.clickListener  = clickListener;
     setHasStableIds(true);
@@ -134,7 +130,7 @@ class ConversationListAdapter extends BaseConversationListAdapter<ConversationLi
 
     DcChat chat = dcContext.getChat(dcChatlist.getChatId(i));
     DcLot summary = dcChatlist.getSummary(i, chat);
-    viewHolder.getItem().bind(DcHelper.getThreadRecord(context, summary, chat), dcChatlist.getMsgId(i), summary, glideRequests, locale, batchSet, batchMode);
+    viewHolder.getItem().bind(DcHelper.getThreadRecord(context, summary, chat), dcChatlist.getMsgId(i), summary, glideRequests, batchSet, batchMode);
   }
 
   @Override

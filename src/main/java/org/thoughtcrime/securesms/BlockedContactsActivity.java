@@ -32,7 +32,7 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
   public void onCreate(Bundle bundle, boolean ready) {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setTitle(R.string.pref_blocked_contacts);
-    initFragment(android.R.id.content, new BlockedAndShareContactsFragment(), null, getIntent().getExtras());
+    initFragment(android.R.id.content, new BlockedAndShareContactsFragment(), getIntent().getExtras());
   }
 
   @Override

@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 
 public class ProfileSettingsAdapter extends RecyclerView.Adapter
@@ -37,7 +36,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   public static final int INFO_SEND_MESSAGE_BUTTON = 120;
 
   private final @NonNull Context              context;
-  private final @NonNull Locale               locale;
   private final @NonNull DcContext            dcContext;
 
   private final @NonNull ArrayList<ItemData>  itemData = new ArrayList<>();
@@ -87,13 +85,11 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   public ProfileSettingsAdapter(@NonNull  Context context,
                                 @NonNull  GlideRequests glideRequests,
-                                @NonNull  Locale locale,
                                 @Nullable ItemClickListener clickListener)
   {
     super();
     this.context        = context;
     this.glideRequests  = glideRequests;
-    this.locale         = locale;
     this.clickListener  = clickListener;
     this.dcContext      = DcHelper.getContext(context);
     this.layoutInflater = LayoutInflater.from(context);
@@ -185,7 +181,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
       conversationListItem.bind(DcHelper.getThreadRecord(context, summary, chat),
           itemDataSharedChats.getMsgId(chatlistIndex), summary, glideRequests,
-          locale, Collections.emptySet(), false);
+          Collections.emptySet(), false);
       conversationListItem.setOnClickListener(view -> clickListener.onSharedChatClicked(chatId));
     }
     else if(holder.itemView instanceof ProfileStatusItem) {
@@ -329,7 +325,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           lastSeenTxt = context.getString(R.string.last_seen_unknown);
         }
         else {
-          lastSeenTxt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, locale, lastSeenTimestamp));
+          lastSeenTxt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, lastSeenTimestamp));
         }
         itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_LAST_SEEN, lastSeenTxt, 0, 0));
 

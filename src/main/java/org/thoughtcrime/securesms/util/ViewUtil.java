@@ -162,7 +162,7 @@ public class ViewUtil {
   @SuppressLint("RtlHardcoded")
   public static void setTextViewGravityStart(final @NonNull TextView textView, @NonNull Context context) {
     if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR1) {
-      if (DynamicLanguage.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL) {
+      if (Util.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL) {
         textView.setGravity(Gravity.RIGHT);
       } else {
         textView.setGravity(Gravity.LEFT);
@@ -172,7 +172,7 @@ public class ViewUtil {
 
   public static void mirrorIfRtl(View view, Context context) {
     if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR1 &&
-        DynamicLanguage.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL) {
+        Util.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL) {
       view.setScaleX(-1.0f);
     }
   }
@@ -182,7 +182,7 @@ public class ViewUtil {
   }
 
   public static boolean isLtr(@NonNull Context context) {
-    return DynamicLanguage.getLayoutDirection(context) == ViewCompat.LAYOUT_DIRECTION_LTR;
+    return Util.getLayoutDirection(context) == ViewCompat.LAYOUT_DIRECTION_LTR;
   }
 
   public static boolean isRtl(@NonNull View view) {
@@ -190,7 +190,7 @@ public class ViewUtil {
   }
 
   public static boolean isRtl(@NonNull Context context) {
-    return DynamicLanguage.getLayoutDirection(context) == ViewCompat.LAYOUT_DIRECTION_RTL;
+    return Util.getLayoutDirection(context) == ViewCompat.LAYOUT_DIRECTION_RTL;
   }
 
   public static int dpToPx(Context context, int dp) {

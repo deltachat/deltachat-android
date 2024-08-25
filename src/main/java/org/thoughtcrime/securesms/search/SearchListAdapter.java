@@ -24,7 +24,6 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 
-import java.util.Locale;
 import java.util.Set;
 
 class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.SearchResultViewHolder>
@@ -36,7 +35,6 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
 
   private final GlideRequests glideRequests;
   private final EventListener eventListener;
-  private final Locale        locale;
 
   @NonNull
   private SearchResult searchResult = SearchResult.EMPTY;
@@ -46,12 +44,10 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
 
   SearchListAdapter(Context                context,
                     @NonNull GlideRequests glideRequests,
-                    @NonNull EventListener eventListener,
-                    @NonNull Locale        locale)
+                    @NonNull EventListener eventListener)
   {
     this.glideRequests = glideRequests;
     this.eventListener = eventListener;
-    this.locale        = locale;
     this.context       = context;
     this.dcContext     = DcHelper.getContext(context);
   }
@@ -68,21 +64,21 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
     DcChatlist.Item conversationResult = getConversationResult(position);
 
     if (conversationResult != null) {
-      holder.bind(context, conversationResult, glideRequests, eventListener, locale, batchSet, batchMode, searchResult.getQuery());
+      holder.bind(context, conversationResult, glideRequests, eventListener, batchSet, batchMode, searchResult.getQuery());
       return;
     }
 
     DcContact contactResult = getContactResult(position);
 
     if (contactResult != null) {
-      holder.bind(contactResult, glideRequests, eventListener, locale, searchResult.getQuery());
+      holder.bind(contactResult, glideRequests, eventListener, searchResult.getQuery());
       return;
     }
 
     DcMsg messageResult = getMessageResult(position);
 
     if (messageResult != null) {
-      holder.bind(messageResult, glideRequests, eventListener, locale, searchResult.getQuery());
+      holder.bind(messageResult, glideRequests, eventListener, searchResult.getQuery());
     }
   }
 
@@ -208,14 +204,13 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
               @NonNull  DcChatlist.Item chatlistItem,
               @NonNull  GlideRequests glideRequests,
               @NonNull  EventListener eventListener,
-              @NonNull  Locale        locale,
               @NonNull Set<Long> selectedThreads,
               boolean   batchMode,
               @Nullable String        query)
     {
       DcContext dcContext = DcHelper.getContext(context);
       ThreadRecord threadRecord = DcHelper.getThreadRecord(context, chatlistItem.summary, dcContext.getChat(chatlistItem.chatId));
-      root.bind(threadRecord, chatlistItem.msgId, chatlistItem.summary, glideRequests, locale, selectedThreads, batchMode, query);
+      root.bind(threadRecord, chatlistItem.msgId, chatlistItem.summary, glideRequests, selectedThreads, batchMode, query);
       root.setOnClickListener(view -> eventListener.onConversationClicked(chatlistItem));
       root.setOnLongClickListener(view -> {
         eventListener.onConversationLongClicked(chatlistItem);
@@ -226,20 +221,18 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
     void bind(@NonNull  DcContact     contactResult,
               @NonNull  GlideRequests glideRequests,
               @NonNull  EventListener eventListener,
-              @NonNull  Locale        locale,
               @Nullable String        query)
     {
-      root.bind(contactResult, glideRequests, locale, query);
+      root.bind(contactResult, glideRequests, query);
       root.setOnClickListener(view -> eventListener.onContactClicked(contactResult));
     }
 
     void bind(@NonNull  DcMsg         messageResult,
               @NonNull  GlideRequests glideRequests,
               @NonNull  EventListener eventListener,
-              @NonNull  Locale        locale,
               @Nullable String        query)
     {
-      root.bind(messageResult, glideRequests, locale, query);
+      root.bind(messageResult, glideRequests, query);
       root.setOnClickListener(view -> eventListener.onMessageClicked(messageResult));
     }
 

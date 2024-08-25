@@ -51,11 +51,11 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.ThemeUtil;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 
 public class ConversationListItem extends RelativeLayout
@@ -108,18 +108,16 @@ public class ConversationListItem extends RelativeLayout
                    int msgId,
                    @NonNull DcLot dcSummary,
                    @NonNull GlideRequests glideRequests,
-                   @NonNull Locale locale,
                    @NonNull Set<Long> selectedThreads,
                    boolean batchMode)
   {
-    bind(thread, msgId, dcSummary, glideRequests, locale, selectedThreads, batchMode, null);
+    bind(thread, msgId, dcSummary, glideRequests, selectedThreads, batchMode, null);
   }
 
   public void bind(@NonNull ThreadRecord thread,
                    int msgId,
                    @NonNull DcLot dcSummary,
                    @NonNull GlideRequests glideRequests,
-                   @NonNull Locale locale,
                    @NonNull Set<Long> selectedThreads,
                    boolean batchMode,
                    @Nullable String highlightSubstring)
@@ -135,7 +133,7 @@ public class ConversationListItem extends RelativeLayout
     int unreadCount = thread.getUnreadCount();
 
     if (highlightSubstring != null) {
-      this.fromView.setText(getHighlightedSpan(locale, recipient.getName(), highlightSubstring));
+      this.fromView.setText(getHighlightedSpan(recipient.getName(), highlightSubstring));
     } else {
       this.fromView.setText(recipient, state!=DcMsg.DC_STATE_IN_FRESH);
     }
@@ -146,7 +144,7 @@ public class ConversationListItem extends RelativeLayout
                                                                  : ThemeUtil.getThemedColor(getContext(), R.attr.conversation_list_item_subject_color));
 
     if (thread.getDate() > 0) {
-      CharSequence date = DateUtils.getBriefRelativeTimeSpanString(getContext(), locale, thread.getDate());
+      CharSequence date = DateUtils.getBriefRelativeTimeSpanString(getContext(), thread.getDate());
       dateView.setText(date);
     }
     else {
@@ -176,16 +174,15 @@ public class ConversationListItem extends RelativeLayout
 
   public void bind(@NonNull  DcContact     contact,
                    @NonNull  GlideRequests glideRequests,
-                   @NonNull  Locale        locale,
                    @Nullable String        highlightSubstring)
   {
     this.selectedThreads = Collections.emptySet();
     Recipient recipient  = new Recipient(getContext(), contact);
     this.glideRequests   = glideRequests;
 
-    fromView.setText(getHighlightedSpan(locale, contact.getDisplayName(), highlightSubstring));
+    fromView.setText(getHighlightedSpan(contact.getDisplayName(), highlightSubstring));
     fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    subjectView.setText(getHighlightedSpan(locale, contact.getAddr(), highlightSubstring));
+    subjectView.setText(getHighlightedSpan(contact.getAddr(), highlightSubstring));
     dateView.setText("");
     dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     archivedBadgeView.setVisibility(GONE);
@@ -200,7 +197,6 @@ public class ConversationListItem extends RelativeLayout
 
   public void bind(@NonNull  DcMsg         messageResult,
                    @NonNull  GlideRequests glideRequests,
-                   @NonNull  Locale        locale,
                    @Nullable String        highlightSubstring)
   {
     DcContext dcContext = DcHelper.getContext(getContext());
@@ -211,11 +207,11 @@ public class ConversationListItem extends RelativeLayout
 
     fromView.setText(recipient, true);
     fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    subjectView.setText(getHighlightedSpan(locale, messageResult.getSummarytext(512), highlightSubstring));
+    subjectView.setText(getHighlightedSpan(messageResult.getSummarytext(512), highlightSubstring));
 
     long timestamp = messageResult.getTimestamp();
     if(timestamp>0) {
-      dateView.setText(DateUtils.getBriefRelativeTimeSpanString(getContext(), locale, messageResult.getTimestamp()));
+      dateView.setText(DateUtils.getBriefRelativeTimeSpanString(getContext(), messageResult.getTimestamp()));
     }
     else {
       dateView.setText("");
@@ -311,8 +307,7 @@ public class ConversationListItem extends RelativeLayout
     ta.recycle();
   }
 
-  private Spanned getHighlightedSpan(@NonNull  Locale locale,
-                                     @Nullable String value,
+  private Spanned getHighlightedSpan(@Nullable String value,
                                      @Nullable String highlight)
   {
     if (TextUtils.isEmpty(value)) {
@@ -325,8 +320,8 @@ public class ConversationListItem extends RelativeLayout
       return new SpannableString(value);
     }
 
-    String       normalizedValue  = value.toLowerCase(locale);
-    String       normalizedTest   = highlight.toLowerCase(locale);
+    String       normalizedValue  = value.toLowerCase(Util.getLocale());
+    String       normalizedTest   = highlight.toLowerCase(Util.getLocale());
     List<String> testTokens       = Stream.of(normalizedTest.split(" ")).filter(s -> s.trim().length() > 0).toList();
 
     Spannable spanned          = new SpannableString(value);

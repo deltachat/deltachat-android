@@ -73,11 +73,11 @@ public class BackupTransferActivity extends BaseActionBarActivity {
 
         switch(transferMode) {
             case SENDER_SHOW_QR:
-                initFragment(android.R.id.content, new BackupProviderFragment(), dynamicLanguage.getCurrentLocale(), icicle);
+                initFragment(android.R.id.content, new BackupProviderFragment(), icicle);
                 break;
 
           case RECEIVER_SCAN_QR:
-                initFragment(android.R.id.content, new BackupReceiverFragment(), dynamicLanguage.getCurrentLocale(), icicle);
+                initFragment(android.R.id.content, new BackupReceiverFragment(), icicle);
                 break;
         }
 
