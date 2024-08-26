@@ -182,7 +182,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
 
     TooltipCompat.setTooltipText(selfAvatar, getText(R.string.switch_account));
-    toolbar.setOnClickListener(v -> {
+    findViewById(R.id.avatar_and_title).setOnClickListener(v -> {
       if (!isRelayingMessageContent(this)) {
         AccountManager.getInstance().showSwitchAccountMenu(this);
       }
