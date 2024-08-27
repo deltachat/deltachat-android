@@ -30,7 +30,6 @@ public class AccountSelectionListItem extends LinearLayout {
   private TextView        addrView;
   private TextView        nameView;
   private ImageView       unreadIndicator;
-  private ImageView       checkbox;
 
   private int           accountId;
 
@@ -50,7 +49,6 @@ public class AccountSelectionListItem extends LinearLayout {
     this.addrView          = findViewById(R.id.addr);
     this.nameView          = findViewById(R.id.name);
     this.unreadIndicator   = findViewById(R.id.unread_indicator);
-    this.checkbox          = findViewById(R.id.checkbox);
 
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
@@ -87,14 +85,13 @@ public class AccountSelectionListItem extends LinearLayout {
 
     nameView.setCompoundDrawablesWithIntrinsicBounds(isMuted? R.drawable.ic_volume_off_grey600_18dp : 0, 0, 0, 0);
 
+    setSelected(selected);
     if (selected) {
       addrView.setTypeface(null, Typeface.BOLD);
       nameView.setTypeface(null, Typeface.BOLD);
-      checkbox.setVisibility(View.VISIBLE);
     } else {
       addrView.setTypeface(null, Typeface.NORMAL);
       nameView.setTypeface(null, accountId == DcContact.DC_CONTACT_ID_ADD_ACCOUNT? Typeface.BOLD : Typeface.NORMAL);
-      checkbox.setVisibility(View.GONE);
     }
 
     updateUnreadIndicator(unreadCount, isMuted);
