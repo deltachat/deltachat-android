@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.accounts;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarImageView;
@@ -53,8 +55,27 @@ public class AccountSelectionListItem extends LinearLayout {
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected, boolean isMuted, AccountSelectionListFragment fragment) {
+  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContext dcContext, boolean selected, AccountSelectionListFragment fragment) {
     this.accountId     = accountId;
+    DcContact self = null;
+    String name;
+    String addr = null;
+    int unreadCount = 0;
+    boolean isMuted = dcContext.isMuted();
+
+    if (accountId == DcContact.DC_CONTACT_ID_ADD_ACCOUNT) {
+      name = getContext().getString(R.string.add_account);
+    } else {
+      self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
+      name = dcContext.getConfig("displayname");
+      if (TextUtils.isEmpty(name)) {
+        name = self.getAddr();
+      }
+      if (!dcContext.isChatmail()) {
+        addr = self.getAddr();
+      }
+      unreadCount = dcContext.getFreshMsgs().length;
+    }
 
     Recipient recipient;
     if (accountId != DcContact.DC_CONTACT_ID_ADD_ACCOUNT) {
