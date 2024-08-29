@@ -307,7 +307,7 @@
     <string name="videochat_tap_to_open">Otvoríte klepnutím</string>
     <string name="videochat_instance">Inštancia videohovoru</string>
     <string name="videochat_instance_placeholder">Vaša inštancia videohovoru</string>
-    <string name="videochat_instance_example">Príklady: https://meet.jit.si/$MIESTNOST alebo basicwebrtc:https://vas-server</string>
+    <string name="videochat_instance_example">Príklady: https://meet.jit.si/$ROOM alebo basicwebrtc:https://vas-server</string>
     <string name="videochat_instance_explain_2">Ak to zapnete, môžete začať video rozhovor z každej konverzácie. Vyžaduje kompatibilnú aplikáciu alebo prehliadač na oboch stranách.</string>
     <string name="videochat_instance_from_qr">Použiť „%1$s“ na odoslanie pozvánky na videohovor?\n\nPo nastavení môžete začať videohovor z každej jednotlivej konverzácie. Toto nahradí predchádzajúce nastavenie pre videohovory, ak existujú.</string>
     <string name="videochat_invitation">Pozvánka na videohovor</string>
