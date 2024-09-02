@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ConnectivityActivity;
 import org.thoughtcrime.securesms.R;
@@ -118,11 +120,13 @@ public class AccountSelectionListFragment extends DialogFragment
     AccountSelectionListFragment.this.dismiss();
     if (activity == null) return;
     DcAccounts accounts = DcHelper.getAccounts(activity);
+    Rpc rpc = DcHelper.getRpc(activity);
 
     View dialogView = View.inflate(activity, R.layout.dialog_delete_profile, null);
     AvatarView avatar = dialogView.findViewById(R.id.avatar);
     TextView nameView = dialogView.findViewById(R.id.name);
-    TextView addrView = dialogView.findViewById(R.id.number);
+    TextView addrView = dialogView.findViewById(R.id.address);
+    TextView sizeView = dialogView.findViewById(R.id.size_label);
     TextView description = dialogView.findViewById(R.id.description);
     DcContext dcContext = accounts.getAccount(accountId);
     String name = dcContext.getConfig("displayname");
@@ -134,6 +138,11 @@ public class AccountSelectionListFragment extends DialogFragment
     avatar.setAvatar(GlideApp.with(activity), recipient, false);
     nameView.setText(name);
     addrView.setText(contact.getAddr());
+    try {
+      sizeView.setText(Util.getPrettyFileSize(rpc.getAccountFileSize(accountId)));
+    } catch (RpcException e) {
+      e.printStackTrace();
+    }
     description.setText(activity.getString(R.string.delete_account_explain_with_name, name));
 
     AlertDialog dialog = new AlertDialog.Builder(activity)

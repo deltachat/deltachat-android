@@ -1,31 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="wrap_content">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingLeft="20dp"
+      android:paddingRight="20dp"
+      android:paddingTop="10dp"
+      android:paddingBottom="10dp"
+      android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:text="@string/delete_account_ask" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:orientation="vertical">
+        android:background="@drawable/delete_account_item_background">
 
-        <TextView
-            android:layout_width="match_parent"
+      <org.thoughtcrime.securesms.components.AvatarView
+          android:id="@+id/avatar"
+          android:layout_width="56dp"
+          android:layout_height="56dp" />
+
+      <LinearLayout
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_marginLeft="16dp"
+          android:layout_marginStart="16dp"
+          android:paddingRight="16dp"
+          android:paddingEnd="16dp"
+          android:orientation="vertical">
+
+        <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/delete_account_ask" />
-
-        <include layout="@layout/contact_selection_list_item"/>
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            tools:text="Frieeeeeeedrich Nieeeeeeeeeetzsche" />
 
         <TextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textDirection="ltr"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-light"
+            tools:text="me@example.com" />
+
+        <TextView
+            android:id="@+id/size_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-light"
+            tools:text="150 MB" />
+
+      </LinearLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="@string/delete_account_explain_with_name"/>
+
+  </LinearLayout>
 
 </ScrollView>
 
