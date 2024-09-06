@@ -1,5 +1,18 @@
 # Delta Chat Android Changelog
 
+## v1.46.14
+2024-09
+
+* add monochrome/themed launcher icon support
+* allow to remove the selected profile in "Switch Profile" dialog
+* improve display of selected profile in "Switch Profile" dialog
+* improve the hit/tap area to open "Switch Profile" dialog in the main screen's toolbar
+* add support for system per-app language and remove in-app language selector
+* remove the experimental "encrypt database" checkbox in classic registration screen
+* fix various bugs
+* update to core 1.142.12
+
+
 ## v1.46.13
 2024-08
 
