@@ -20,6 +20,7 @@ import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_ENABLED;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.getDirectSharingChatId;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedTitle;
@@ -357,14 +358,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     if (!isRelayingMessageContent(this)) {
       inflater.inflate(R.menu.text_secure_normal, menu);
-      MenuItem item = menu.findItem(R.id.menu_global_map);
-      if (Prefs.isLocationStreamingEnabled(this)) {
-        item.setVisible(true);
-      }
-
-      if (!Prefs.isLocationStreamingEnabled(this)) {
-        menu.findItem(R.id.menu_global_map).setVisible(false);
-      }
+      menu.findItem(R.id.menu_global_map).setVisible(Prefs.isLocationStreamingEnabled(this));
+      menu.findItem(R.id.menu_proxy_settings).setVisible(DcHelper.getInt(this, CONFIG_SOCKS5_ENABLED) == 1);
     }
 
     super.onPrepareOptionsMenu(menu);
@@ -429,6 +424,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         return true;
       case R.id.menu_global_map:
         WebxdcActivity.openMaps(this, 0);
+        return true;
+      case R.id.menu_proxy_settings:
+        startActivity(new Intent(this, ProxySettingsActivity.class));
         return true;
       case android.R.id.home:
         onBackPressed();
