@@ -90,6 +90,12 @@ public class ProxySettingsActivity extends BaseActionBarActivity {
     saveConfig();
   }
 
+  @Override
+  public void onPause() {
+    super.onPause();
+    saveConfig();
+  }
+
   private void focusListener(View view, boolean focused, VerificationType type) {
 
     if (!focused) {
