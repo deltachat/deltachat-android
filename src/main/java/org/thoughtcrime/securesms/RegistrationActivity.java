@@ -96,7 +96,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     Spinner certCheck;
 
     private SwitchCompat proxySwitch;
-    private Group proxyGroup;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -127,15 +126,11 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         authMethod = findViewById(R.id.auth_method);
         certCheck = findViewById(R.id.cert_check);
 
-        proxyGroup = findViewById(R.id.socks5_group);
-        proxySwitch = findViewById(R.id.socks5_switch);
-        proxySwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            proxyGroup.setVisibility(isChecked? advancedGroup.getVisibility() : View.GONE);
+        proxySwitch = findViewById(R.id.proxy_settings);
+        proxySwitch.setOnClickListener(l -> {
+            proxySwitch.setChecked(!proxySwitch.isChecked()); // revert toggle
+            startActivity(new Intent(this, ProxySettingsActivity.class));
         });
-        TextInputEditText proxyHostInput = findViewById(R.id.socks5_host_text);
-        TextInputEditText proxyPortInput = findViewById(R.id.socks5_port_text);
-        proxyHostInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.SERVER));
-        proxyPortInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.PORT));
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -161,7 +156,16 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         advancedIcon.setOnClickListener(l -> onAdvancedSettings());
         advancedIcon.setRotation(45);
         viewLogText.setOnClickListener((view) -> showLog());
+
         boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
+        boolean expandAdvanced = false;
+        String strVal;
+        int intVal;
+
+        intVal = DcHelper.getInt(this, CONFIG_SOCKS5_ENABLED);
+        proxySwitch.setChecked(intVal == 1);
+        expandAdvanced = expandAdvanced || intVal == 1;
+
         if (isConfigured) {
             String email = DcHelper.get(this, CONFIG_ADDRESS);
             emailInput.setText(email);
@@ -169,10 +173,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 emailInput.setSelection(email.length(), email.length());
             }
             passwordInput.setText(DcHelper.get(this, CONFIG_MAIL_PASSWORD));
-
-            boolean expandAdvanced = false;
-            String strVal;
-            int intVal;
 
             TextInputEditText imapLoginInput = findViewById(R.id.imap_login_text);
             strVal = DcHelper.get(this, CONFIG_MAIL_USER);
@@ -213,17 +213,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             smtpSecurity.setSelection(intVal);
             expandAdvanced = expandAdvanced || intVal != 0;
 
-            intVal = DcHelper.getInt(this, CONFIG_SOCKS5_ENABLED);
-            proxySwitch.setChecked(intVal == 1);
-            expandAdvanced = expandAdvanced || intVal == 1;
-
-            proxyHostInput.setText(DcHelper.get(this, CONFIG_SOCKS5_HOST));
-            proxyPortInput.setText(DcHelper.get(this, CONFIG_SOCKS5_PORT));
-            TextInputEditText proxyUserInput = findViewById(R.id.socks5_user_text);
-            TextInputEditText proxyPasswordInput = findViewById(R.id.socks5_password_text);
-            proxyUserInput.setText(DcHelper.get(this, CONFIG_SOCKS5_USER));
-            proxyPasswordInput.setText(DcHelper.get(this, CONFIG_SOCKS5_PASSWORD));
-
             int serverFlags = DcHelper.getInt(this, CONFIG_SERVER_FLAGS);
             int sel = 0;
             if((serverFlags&DcContext.DC_LP_AUTH_OAUTH2)!=0) {
@@ -242,8 +231,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             int certCheckFlags = DcHelper.getInt(this, "imap_certificate_checks");
             certCheck.setSelection(certCheckFlags);
             expandAdvanced = expandAdvanced || certCheckFlags != 0;
-
-            if (expandAdvanced) { onAdvancedSettings(); }
         } else if (getIntent() != null && getIntent().getBundleExtra(ACCOUNT_DATA) != null) {
           // Companion app might have sent account data
           Bundle b = getIntent().getBundleExtra(ACCOUNT_DATA);
@@ -261,6 +248,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
           }
         }
 
+        if (expandAdvanced) { onAdvancedSettings(); }
         registerForEvents();
     }
 
@@ -272,6 +260,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     public void onResume() {
         super.onResume();
         dynamicTheme.onResume(this);
+        proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_SOCKS5_ENABLED) == 1);
     }
 
     private void showLog() {
@@ -574,12 +563,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     private void onAdvancedSettings() {
         boolean advancedViewVisible = advancedGroup.getVisibility() == View.VISIBLE;
         if (advancedViewVisible) {
-            proxyGroup.setVisibility(View.GONE);
             advancedGroup.setVisibility(View.GONE);
             advancedIcon.setRotation(45);
         } else {
             advancedGroup.setVisibility(View.VISIBLE);
-            if (proxySwitch.isChecked()) proxyGroup.setVisibility(View.VISIBLE);
             advancedIcon.setRotation(0);
         }
     }
@@ -621,15 +608,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         setConfig(R.id.smtp_port_text, CONFIG_SEND_PORT, true);
         setConfig(R.id.smtp_login_text, CONFIG_SEND_USER, false);
         setConfig(R.id.smtp_password_text, CONFIG_SEND_PASSWORD, false);
-        if (proxySwitch.isChecked()) {
-            DcHelper.getContext(this).setConfigInt(CONFIG_SOCKS5_ENABLED, 1);
-            setConfig(R.id.socks5_host_text, CONFIG_SOCKS5_HOST, true);
-            setConfig(R.id.socks5_port_text, CONFIG_SOCKS5_PORT, true);
-            setConfig(R.id.socks5_user_text, CONFIG_SOCKS5_USER, true);
-            setConfig(R.id.socks5_password_text, CONFIG_SOCKS5_PASSWORD, false);
-        } else {
-            DcHelper.getContext(this).setConfigInt(CONFIG_SOCKS5_ENABLED, 0);
-        }
 
         DcHelper.getContext(this).setConfigInt(CONFIG_MAIL_SECURITY, imapSecurity.getSelectedItemPosition());
         DcHelper.getContext(this).setConfigInt(CONFIG_SEND_SECURITY, smtpSecurity.getSelectedItemPosition());

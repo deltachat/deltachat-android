@@ -7,6 +7,11 @@
           android:icon="@drawable/baseline_qr_code_24"
           app:showAsAction="always"/>
 
+    <item android:title="@string/proxy_settings"
+          android:id="@+id/menu_proxy_settings"
+          android:visible="false"
+          />
+
     <item android:title="@string/invite_friends"
           android:id="@+id/menu_invite_friends" />
 

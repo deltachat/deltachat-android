@@ -90,6 +90,9 @@
 
     <PreferenceCategory android:title="@string/pref_server">
 
+        <Preference android:key="proxy_settings_button"
+            android:title="@string/proxy_settings"/>
+
         <Preference android:key="password_account_settings_button"
             android:title="@string/pref_password_and_account_settings"/>
 
