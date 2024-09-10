@@ -565,7 +565,7 @@ public class NotificationCenter {
         } catch (Exception e) { Log.w(TAG, e); }
     }
 
-    public void removeAllNotifiations(int accountId) {
+    public void removeAllNotifications(int accountId) {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         String tag = String.valueOf(accountId);
         synchronized (inboxes) {

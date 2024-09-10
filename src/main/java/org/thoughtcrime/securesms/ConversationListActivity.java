@@ -262,7 +262,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     DcContext dcContext = DcHelper.getContext(this);
     int accountId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, dcContext.getAccountId());
     if (getIntent().getBooleanExtra(CLEAR_NOTIFICATIONS, false)) {
-      DcHelper.getNotificationCenter(this).removeAllNotifiations(accountId);
+      DcHelper.getNotificationCenter(this).removeAllNotifications(accountId);
     }
     if (accountId != dcContext.getAccountId()) {
       AccountManager.getInstance().switchAccountAndStartActivity(this, accountId);

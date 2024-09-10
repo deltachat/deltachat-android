@@ -119,7 +119,7 @@ public class AccountSelectionListFragment extends DialogFragment
       .setNegativeButton(R.string.cancel, (d, which) -> AccountManager.getInstance().showSwitchAccountMenu(activity))
       .setPositiveButton(R.string.delete, (d2, which2) -> {
           boolean selected = accountId == accounts.getSelectedAccount().getAccountId();
-          DcHelper.getNotificationCenter(activity).removeAllNotifiations(accountId);
+          DcHelper.getNotificationCenter(activity).removeAllNotifications(accountId);
           accounts.removeAccount(accountId);
           if (selected) {
             DcContext selAcc = accounts.getSelectedAccount();
