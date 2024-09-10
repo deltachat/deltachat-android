@@ -17,6 +17,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.Group;
 
+import com.b44t.messenger.DcContext;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -137,11 +138,14 @@ public class ProxySettingsActivity extends BaseActionBarActivity {
   }
 
   private void saveConfig() {
-    DcHelper.getContext(this).setConfigInt(CONFIG_SOCKS5_ENABLED, proxySwitch.isChecked()? 1 : 0);
+    DcContext dcContext = DcHelper.getContext(this);
+    dcContext.setConfigInt(CONFIG_SOCKS5_ENABLED, proxySwitch.isChecked()? 1 : 0);
     setConfig(R.id.proxy_host_text, CONFIG_SOCKS5_HOST, true);
     setConfig(R.id.proxy_port_text, CONFIG_SOCKS5_PORT, true);
     setConfig(R.id.proxy_user_text, CONFIG_SOCKS5_USER, true);
     setConfig(R.id.proxy_password_text, CONFIG_SOCKS5_PASSWORD, false);
+    dcContext.stopIo();
+    dcContext.startIo();
   }
 
   private void setConfig(@IdRes int viewId, String configTarget, boolean doTrim) {
