@@ -1,0 +1,7 @@
+- nuovo inserimento: puoi creare un nuovo profilo con un tocco su "Crea Nuovo Profilo" - oppure utilizzare un accesso esistente o la configurazione del secondo dispositivo come al solito
+i contatti possono essere allegati come "Schede" in "Allega/Contatto"; quando il destinatario tocca le carte, è possibile stabilire la crittografia end-to-end garantita
+- aggiungi contatti manualmente in "Nuova Chat / Nuovo Contatto / Aggiungi Contatto Manualmente"
+ - invia qualsiasi emoji come reazione
+ - mostrare le reazioni nei riepiloghi
+ - blocca/archivia/ecc. le chat direttamente dai risultati di ricerca
+ - Risolti bug e altro ancora
