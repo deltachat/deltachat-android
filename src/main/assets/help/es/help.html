@@ -80,7 +80,6 @@
       <li><a href="#cómo-puedo-usar-llamadas-de-audiovideo-con-delta-chat">¿Cómo puedo usar llamadas de audio/video con Delta Chat?</a></li>
       <li><a href="#qué-son-las-listas-de-difusión-y-cómo-puedo-usarlas">¿Qué son las listas de difusión y cómo puedo usarlas?</a></li>
       <li><a href="#cómo-puedo-compartir-mi-ubicación-con-mis-compañeros-de-chat">¿Cómo puedo compartir mi ubicación con mis compañeros de chat?</a></li>
-      <li><a href="#qué-protege-realmente-el-cifrado-experimental-de-la-base-de-datos">¿Qué protege realmente el cifrado experimental de la base de datos?</a></li>
       <li><a href="#por-qué-puedo-seleccionar-solo-obtener-de-la-carpeta-deltachat">¿Por qué puedo seleccionar “solo obtener de la carpeta DeltaChat”?</a></li>
       <li><a href="#cómo-puedo-cambiar-mi-cuenta-a-una-dirección-de-correo-electrónico-diferente">¿Cómo puedo cambiar mi cuenta a una dirección de correo electrónico diferente?</a></li>
     </ul>
@@ -1503,29 +1502,6 @@ Map tiles are downloaded from <a href="https://openstreetmap.org">OpenStreetMap<
   <li>On desktop, the OS typically can’t determine your location. Instead you can
 right click on the map and describe a location, which is sent to the chat as
 a message, but also appears on the map.</li>
-</ul>
-    
-      <h3 id="qué-protege-realmente-el-cifrado-experimental-de-la-base-de-datos">
-        
-        
-          ¿Qué protege realmente el cifrado experimental de la base de datos? <a href="#qué-protege-realmente-el-cifrado-experimental-de-la-base-de-datos" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>Right now, the database encryption is still very experimental. Don’t rely on
-it for protection, you should additionally use encryption of your operating
-system, if it provides any.</li>
-  <li>The database encryption does not yet encrypt the blobs, only the rows and
-columns of the database. This more or less means that your messages are safe,
-but not your attachments.</li>
-  <li>For iOS and Android, the encryption keys are stored in the system keychain.
-This means the encryption is as secure as the operating system it’s running
-on.</li>
-  <li>The Delta Chat desktop client doesn’t offer database encryption yet, as there
-is no standard way to store the encryption keys on the different supported
-platforms.</li>
 </ul>
     
       <h3 id="por-qué-puedo-seleccionar-solo-obtener-de-la-carpeta-deltachat">

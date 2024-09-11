@@ -27,8 +27,8 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        versionCode 693
-        versionName "1.46.11"
+        versionCode 696
+        versionName "1.46.14"
 
         applicationId "com.b44t.messenger"
         multiDexEnabled true
@@ -132,6 +132,11 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+
+    androidResources {
+        generateLocaleConfig true
+    }
+
     lint {
         abortOnError false
     }

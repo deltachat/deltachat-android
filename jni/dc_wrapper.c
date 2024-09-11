@@ -282,12 +282,6 @@ JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_addAccount(JNIEnv *env, jobjec
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_addClosedAccount(JNIEnv *env, jobject obj)
-{
-    return dc_accounts_add_closed_account(get_dc_accounts(env, obj));
-}
-
-
 JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_migrateAccount(JNIEnv *env, jobject obj, jstring dbfile)
 {
     CHAR_REF(dbfile);
@@ -1772,6 +1766,15 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContact_getId(JNIEnv *env, jobject obj)
 JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getName(JNIEnv *env, jobject obj)
 {
     char* temp = dc_contact_get_name(get_dc_contact(env, obj));
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getAuthName(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_contact_get_auth_name(get_dc_contact(env, obj));
         jstring ret = JSTRING_NEW(temp);
     dc_str_unref(temp);
     return ret;

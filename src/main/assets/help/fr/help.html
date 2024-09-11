@@ -80,7 +80,6 @@
       <li><a href="#comment-passer-des-appels-audiovidéo-avec-delta-chat-">Comment passer des appels audio/vidéo avec Delta Chat ?</a></li>
       <li><a href="#que-sont-les-listes-de-diffusion-et-comment-les-utiliser-">Que sont les listes de diffusion et comment les utiliser ?</a></li>
       <li><a href="#comment-partager-ma-géolocalisation-avec-mes-contacts-">Comment partager ma géolocalisation avec mes contacts ?</a></li>
-      <li><a href="#que-protège-réellement-le-chiffrement-expérimental-de-base-de-données-">Que protège réellement le chiffrement expérimental de base de données ?</a></li>
       <li><a href="#pourquoi-peut-on-choisir-de-ne-consulter-que-le-dossier-delta-chat-">Pourquoi peut-on choisir de ne consulter que le dossier Delta Chat ?</a></li>
       <li><a href="#comment-changer-mon-compte-pour-une-adresse-courriel-différente-">Comment changer mon compte pour une adresse courriel différente ?</a></li>
     </ul>
@@ -1477,21 +1476,6 @@ Map tiles are downloaded from <a href="https://openstreetmap.org">OpenStreetMap<
   <li>On desktop, the OS typically can’t determine your location. Instead you can
 right click on the map and describe a location, which is sent to the chat as
 a message, but also appears on the map.</li>
-</ul>
-    
-      <h3 id="que-protège-réellement-le-chiffrement-expérimental-de-base-de-données-">
-        
-        
-          Que protège réellement le chiffrement expérimental de base de données ? <a href="#que-protège-réellement-le-chiffrement-expérimental-de-base-de-données-" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>À l’heure actuelle, le chiffrement de la base de données est encore expérimental. Mieux vaut ne pas vous y fier pour la protection de vos données et activer aussi le chiffrement votre système d’exploitation si vous le pouvez.</li>
-  <li>Le chiffrement de base de données ne permet pas encore de chiffrer les blobs, seulement les lignes et les colonnes de la base. Cela signifie grosso modo que vos messages sont bien protégés, mais pas les pièces jointes.</li>
-  <li>Sur iOS et Android, les clefs de chiffrements sont stockées dans le trousseau système. Par conséquent, le chiffrement est aussi fiable que le système d’exploitation dont il dépend.</li>
-  <li>Comme il n’existe aucun moyen standardisé de stocker les clefs de chiffrement sur les différentes plateformes disponibles, le chiffrement de la base de données n’est pas encore disponible pour le client bureau de Delta Chat.</li>
 </ul>
     
       <h3 id="pourquoi-peut-on-choisir-de-ne-consulter-que-le-dossier-delta-chat-">

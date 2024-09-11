@@ -79,11 +79,7 @@ public class AccountSelectionListFragment extends DialogFragment
     int accountId = listItem.getAccountId();
     DcAccounts dcAccounts = DcHelper.getAccounts(getActivity());
 
-    if (accountId == dcAccounts.getSelectedAccount().getAccountId()) {
-      menu.findItem(R.id.delete).setVisible(false);
-    } else {
-      Util.redMenuItem(menu, R.id.delete);
-    }
+    Util.redMenuItem(menu, R.id.delete);
 
     if (dcAccounts.getAccount(accountId).isMuted()) {
       menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);
@@ -122,9 +118,15 @@ public class AccountSelectionListFragment extends DialogFragment
       .setMessage(R.string.forget_login_confirmation_desktop)
       .setNegativeButton(R.string.cancel, (d, which) -> AccountManager.getInstance().showSwitchAccountMenu(activity))
       .setPositiveButton(R.string.delete, (d2, which2) -> {
-          DcHelper.getNotificationCenter(activity).removeAllNotifiations(accountId);
+          boolean selected = accountId == accounts.getSelectedAccount().getAccountId();
+          DcHelper.getNotificationCenter(activity).removeAllNotifications(accountId);
           accounts.removeAccount(accountId);
-          AccountManager.getInstance().showSwitchAccountMenu(activity);
+          if (selected) {
+            DcContext selAcc = accounts.getSelectedAccount();
+            AccountManager.getInstance().switchAccountAndStartActivity(activity, selAcc.isOk()? selAcc.getAccountId() : 0);
+          } else {
+            AccountManager.getInstance().showSwitchAccountMenu(activity);
+          }
       })
       .show();
     Util.redPositiveButton(dialog);

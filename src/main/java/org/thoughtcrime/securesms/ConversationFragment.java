@@ -76,7 +76,6 @@ import org.thoughtcrime.securesms.videochat.VideochatUtil;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -85,7 +84,6 @@ import java.util.TimerTask;
 public class ConversationFragment extends MessageSelectorFragment
 {
     private static final String TAG       = ConversationFragment.class.getSimpleName();
-    private static final String KEY_LIMIT = "limit";
 
     private static final int SCROLL_ANIMATION_THRESHOLD = 50;
     private static final int CODE_ADD_EDIT_CONTACT      = 77;
@@ -99,7 +97,6 @@ public class ConversationFragment extends MessageSelectorFragment
     private long                        chatId;
     private int                         startingPosition;
     private boolean                     firstLoad;
-    private Locale                      locale;
     private RecyclerView                list;
     private RecyclerView.ItemDecoration lastSeenDecoration;
     private StickyHeaderDecoration      dateDecoration;
@@ -115,7 +112,6 @@ public class ConversationFragment extends MessageSelectorFragment
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        this.locale = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
         this.dcContext = DcHelper.getContext(getContext());
 
         DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
@@ -285,7 +281,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
     private void initializeListAdapter() {
         if (this.recipient != null && this.chatId != -1) {
-            ConversationAdapter adapter = new ConversationAdapter(getActivity(), this.recipient.getChat(), GlideApp.with(this), locale, selectionClickListener, this.recipient);
+            ConversationAdapter adapter = new ConversationAdapter(getActivity(), this.recipient.getChat(), GlideApp.with(this), selectionClickListener, this.recipient);
             list.setAdapter(adapter);
 
             if (dateDecoration != null) {

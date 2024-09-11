@@ -41,8 +41,8 @@ import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -56,13 +56,9 @@ import java.util.Date;
 import java.util.Locale;
 
 public class LogViewFragment extends Fragment {
-  private static final String TAG = LogViewFragment.class.getSimpleName();
-
   private EditText logPreview;
-  private final @NonNull DynamicLanguage dynamicLanguage;
 
-  public LogViewFragment(DynamicLanguage dynamicLanguage) {
-    this.dynamicLanguage = dynamicLanguage;
+  public LogViewFragment() {
   }
 
   @Override
@@ -128,26 +124,24 @@ public class LogViewFragment extends Fragment {
   }
 
   private static String grabLogcat(LogViewFragment fragment) {
+    String command = "logcat -v threadtime -d -t 10000";
+    if (!Prefs.isDeveloperModeEnabled(fragment.getActivity())) {
+      command += " *:I";
+    }
     try {
-      final Process         process        = Runtime.getRuntime().exec("logcat -v threadtime -d");
+      final Process         process        = Runtime.getRuntime().exec(command);
       final BufferedReader  bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
       final StringBuilder   log            = new StringBuilder();
       final String          separator      = System.getProperty("line.separator");
-      final boolean devMode = Prefs.isDeveloperModeEnabled(fragment.getActivity());
 
       String line;
       while ((line = bufferedReader.readLine()) != null) {
         line = line.replaceFirst(" (\\d+) E ", " $1 \uD83D\uDD34 ");
         line = line.replaceFirst(" (\\d+) W ", " $1 \uD83D\uDFE0 ");
         line = line.replaceFirst(" (\\d+) I ", " $1 \uD83D\uDD35 ");
-        String debugLine = line.replaceFirst(" (\\d+) D ", " $1 \uD83D\uDFE2 ");
-        if (debugLine.equals(line)) { // not a debug entry
-          log.append(line);
-          log.append(separator);
-        } else if (devMode) {
-          log.append(debugLine);
-          log.append(separator);
-        }
+        line = line.replaceFirst(" (\\d+) D ", " $1 \uD83D\uDFE2 ");
+        log.append(line);
+        log.append(separator);
       }
       return log.toString();
     } catch (Exception e) {
@@ -254,10 +248,10 @@ public class LogViewFragment extends Fragment {
       builder.append("reliableService=").append(
               Prefs.reliableService(context)).append("\n");
 
-      Locale locale = fragment.dynamicLanguage.getCurrentLocale();
+      Locale locale = Util.getLocale();
       builder.append("lang=").append(locale.toString()).append("\n");
       if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR1) {
-        boolean isRtl = DynamicLanguage.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL;
+        boolean isRtl = Util.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL;
         builder.append("rtl=").append(isRtl).append("\n");
       }
 

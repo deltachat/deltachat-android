@@ -44,14 +44,13 @@ import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.notifications.InChatSounds;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
-//import com.squareup.leakcanary.LeakCanary;
 
 public class ApplicationContext extends MultiDexApplication {
   private static final String TAG = ApplicationContext.class.getSimpleName();
@@ -191,19 +190,13 @@ public class ApplicationContext extends MultiDexApplication {
     InChatSounds.getInstance(this);
 
     dcLocationManager = new DcLocationManager(this);
-    try {
-      DynamicLanguage.setContextLocale(this, DynamicLanguage.getSelectedLocale(this));
-    }
-    catch (Exception e) {
-      e.printStackTrace();
-    }
-
     DynamicTheme.setDefaultDayNightMode(this);
 
     IntentFilter filter = new IntentFilter(Intent.ACTION_LOCALE_CHANGED);
     registerReceiver(new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            Util.localeChanged();
             DcHelper.setStockTranslations(context);
         }
     }, filter);

@@ -267,6 +267,10 @@
     <string name="select_chat">Select Chat</string>
     <string name="select_more">Select more</string>
     <string name="menu_edit_name">Edit Name</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_explain">Set a nickname that will be shown to you instead of \"%1$s\". Leave empty to use the contact\'s chosen name.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_placeholder">Nickname for \"%1$s\"</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_advanced">Advanced</string>
     <string name="menu_view_profile">View Profile</string>
@@ -600,6 +604,8 @@
     <string name="login_smtp_port">SMTP Port</string>
     <string name="login_smtp_security">SMTP Security</string>
     <string name="login_auth_method">Authorization Method</string>
+    <string name="proxy_settings">Proxy Settings</string>
+    <string name="proxy_use_proxy">Use Proxy</string>
     <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Use SOCKS5</string>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="@string/proxy_settings"
+          android:id="@+id/menu_proxy_settings"
+          app:showAsAction="never"/>
+
+    <item android:title="@string/pref_view_log"
+          android:id="@+id/menu_view_log"
+          app:showAsAction="never"/>
+
+</menu>

@@ -11,6 +11,7 @@ import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,7 +21,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMediaLoader.BucketedThreadMedia> {
@@ -147,11 +147,11 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
       else                                    return OLDER.getItem(section - activeTimeBuckets.size(), item);
     }
 
-    public String getName(int section, Locale locale) {
+    public String getName(int section) {
       List<TimeBucket> activeTimeBuckets = Stream.of(TIME_SECTIONS).filter(timeBucket -> !timeBucket.isEmpty()).toList();
 
       if (section < activeTimeBuckets.size()) return activeTimeBuckets.get(section).getName();
-      else                                    return OLDER.getName(section - activeTimeBuckets.size(), locale);
+      else                                    return OLDER.getName(section - activeTimeBuckets.size());
     }
 
     // tests should override this function to deliver a preset calendar.
@@ -266,10 +266,10 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
         return keys.get(section);
       }
 
-      String getName(int section, Locale locale) {
+      String getName(int section) {
         Date sectionDate = getSection(section);
 
-        return new SimpleDateFormat("MMMM yyyy", locale).format(sectionDate);
+        return new SimpleDateFormat("MMMM yyyy", Util.getLocale()).format(sectionDate);
       }
     }
   }

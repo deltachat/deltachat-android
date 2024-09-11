@@ -18,8 +18,8 @@ import com.b44t.messenger.DcEvent;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Util;
 
-import java.util.Locale;
 
 public class BackupReceiverFragment extends Fragment implements DcEventCenter.DcEventDelegate {
 
@@ -87,7 +87,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
             } else if (permille <= 950 ) {
                 percent = ((permille-100)*100)/850;
                 percentMax = 100;
-                statusLineText = getString(R.string.transferring) + String.format(Locale.getDefault(), " %d%%", percent);
+                statusLineText = getString(R.string.transferring) + String.format(Util.getLocale(), " %d%%", percent);
                 hideSameNetworkHint = true;
             } else if (permille < 1000) {
                 statusLineText = "Finishing..."; // range not used, should not happen

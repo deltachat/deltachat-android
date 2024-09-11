@@ -6,6 +6,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -159,6 +160,10 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         menu.findItem(R.id.menu_mute_notifications).setVisible(false);
         menu.findItem(R.id.menu_sound).setVisible(false);
         menu.findItem(R.id.menu_vibrate).setVisible(false);
+      }
+
+      if (isContactProfile()) {
+        menu.findItem(R.id.edit_name).setTitle(R.string.menu_edit_name);
       }
 
       if (!isContactProfile() || chatIsDeviceTalk) {
@@ -321,33 +326,28 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           fragment = new ProfileSettingsFragment();
           args.putInt(ProfileSettingsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
           args.putInt(ProfileSettingsFragment.CONTACT_ID_EXTRA, (contactId==0&&!isGlobalProfile())? -1 : contactId);
-          args.putSerializable(ProfileSettingsFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
 
         case TAB_GALLERY:
           fragment = new ProfileGalleryFragment();
           args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
-          args.putSerializable(ProfileGalleryFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
 
         case TAB_AUDIO:
           fragment = new ProfileDocumentsFragment();
           args.putInt(ProfileDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
           args.putBoolean(ProfileDocumentsFragment.SHOW_AUDIO_EXTRA, true);
-          args.putSerializable(ProfileDocumentsFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
 
         case TAB_WEBXDC:
           fragment = new ProfileDocumentsFragment();
           args.putInt(ProfileDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
           args.putBoolean(ProfileDocumentsFragment.SHOW_WEBXDC_EXTRA, true);
-          args.putSerializable(ProfileDocumentsFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
 
         default:
           fragment = new ProfileDocumentsFragment();
           args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
-          args.putSerializable(ProfileDocumentsFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
       }
 
@@ -546,18 +546,28 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
     else {
       DcContact dcContact = dcContext.getContact(contactId);
+
+      String authName = dcContact.getAuthName();
+      if (TextUtils.isEmpty(authName)) {
+        authName = dcContact.getAddr();
+      }
+
       View gl = View.inflate(this, R.layout.single_line_input, null);
       EditText inputField = gl.findViewById(R.id.input_field);
       inputField.setText(dcContact.getName());
       inputField.setSelection(inputField.getText().length());
+      inputField.setHint(getString(R.string.edit_name_placeholder, authName));
+
       new AlertDialog.Builder(this)
           .setTitle(R.string.menu_edit_name)
+          .setMessage(getString(R.string.edit_name_explain, authName))
           .setView(gl)
           .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
             String newName = inputField.getText().toString();
             dcContext.createContact(newName, dcContact.getAddr());
           })
           .setNegativeButton(android.R.string.cancel, null)
+          .setCancelable(false)
           .show();
     }
   }

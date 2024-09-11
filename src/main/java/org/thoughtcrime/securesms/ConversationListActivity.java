@@ -20,6 +20,7 @@ import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_ENABLED;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.getDirectSharingChatId;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedTitle;
@@ -175,7 +176,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     fragmentContainer        = findViewById(R.id.fragment_container);
 
     Bundle bundle = new Bundle();
-    conversationListFragment = initFragment(R.id.fragment_container, new ConversationListFragment(), dynamicLanguage.getCurrentLocale(), bundle);
+    conversationListFragment = initFragment(R.id.fragment_container, new ConversationListFragment(), bundle);
 
     initializeSearchListener();
 
@@ -183,7 +184,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     TooltipCompat.setTooltipText(selfAvatar, getText(R.string.switch_account));
     selfAvatar.setOnClickListener(v -> AccountManager.getInstance().showSwitchAccountMenu(this));
-    title.setOnClickListener(v -> {
+    findViewById(R.id.avatar_and_title).setOnClickListener(v -> {
       if (!isRelayingMessageContent(this)) {
         AccountManager.getInstance().showSwitchAccountMenu(this);
       }
@@ -262,7 +263,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     DcContext dcContext = DcHelper.getContext(this);
     int accountId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, dcContext.getAccountId());
     if (getIntent().getBooleanExtra(CLEAR_NOTIFICATIONS, false)) {
-      DcHelper.getNotificationCenter(this).removeAllNotifiations(accountId);
+      DcHelper.getNotificationCenter(this).removeAllNotifications(accountId);
     }
     if (accountId != dcContext.getAccountId()) {
       AccountManager.getInstance().switchAccountAndStartActivity(this, accountId);
@@ -357,14 +358,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     if (!isRelayingMessageContent(this)) {
       inflater.inflate(R.menu.text_secure_normal, menu);
-      MenuItem item = menu.findItem(R.id.menu_global_map);
-      if (Prefs.isLocationStreamingEnabled(this)) {
-        item.setVisible(true);
-      }
-
-      if (!Prefs.isLocationStreamingEnabled(this)) {
-        menu.findItem(R.id.menu_global_map).setVisible(false);
-      }
+      menu.findItem(R.id.menu_global_map).setVisible(Prefs.isLocationStreamingEnabled(this));
+      menu.findItem(R.id.menu_proxy_settings).setVisible(DcHelper.getInt(this, CONFIG_SOCKS5_ENABLED) == 1);
     }
 
     super.onPrepareOptionsMenu(menu);
@@ -384,7 +379,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
         if (trimmed.length() > 0) {
           if (searchFragment == null) {
-            searchFragment = SearchFragment.newInstance(dynamicLanguage.getCurrentLocale());
+            searchFragment = SearchFragment.newInstance();
             getSupportFragmentManager().beginTransaction()
                                        .add(R.id.fragment_container, searchFragment, null)
                                        .commit();
@@ -429,6 +424,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         return true;
       case R.id.menu_global_map:
         WebxdcActivity.openMaps(this, 0);
+        return true;
+      case R.id.menu_proxy_settings:
+        startActivity(new Intent(this, ProxySettingsActivity.class));
         return true;
       case android.R.id.home:
         onBackPressed();

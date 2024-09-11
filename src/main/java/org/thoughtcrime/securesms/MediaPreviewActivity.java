@@ -156,7 +156,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       CharSequence relativeTimeSpan;
 
       if (mediaItem.date > 0) {
-        relativeTimeSpan = DateUtils.getExtendedRelativeTimeSpanString(this,dynamicLanguage.getCurrentLocale(), mediaItem.date);
+        relativeTimeSpan = DateUtils.getExtendedRelativeTimeSpanString(this, mediaItem.date);
       } else {
         relativeTimeSpan = getString(R.string.draft);
       }

@@ -181,27 +181,11 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                     } else {
                         final String backupFile = dcContext.imexHasBackup(imexDir.getAbsolutePath());
                         if (backupFile != null) {
-
-
-                            View gl = View.inflate(this, R.layout.dialog_with_checkbox, null);
-                            CheckBox encryptCheckbox = gl.findViewById(R.id.dialog_checkbox);
-                            TextView msg = gl.findViewById(R.id.dialog_message);
-
-                            // If we'd use both `setMessage()` and `setView()` on the same AlertDialog, on small screens the
-                            // "OK" and "Cancel" buttons would not be show. So, put the message into our custom view:
-                            msg.setText(String.format(getResources().getString(R.string.import_backup_ask), backupFile) );
-                            encryptCheckbox.setText("Encrypt database (highly experimental, use at your own risk)");
-                            int[]      tintAttr   = new int[]{android.R.attr.textColorSecondary};
-                            TypedArray typedArray = obtainStyledAttributes(tintAttr);
-                            int        color      = typedArray.getColor(0, Color.GRAY);
-                            typedArray.recycle();
-                            encryptCheckbox.setTextColor(color);
-
                             new AlertDialog.Builder(this)
                                     .setTitle(R.string.import_backup_title)
-                                    .setView(gl)
+                                    .setMessage(String.format(getResources().getString(R.string.import_backup_ask), backupFile))
                                     .setNegativeButton(android.R.string.cancel, null)
-                                    .setPositiveButton(android.R.string.ok, (dialog, which) -> startImport(backupFile, null, encryptCheckbox.isChecked()))
+                                    .setPositiveButton(android.R.string.ok, (dialog, which) -> startImport(backupFile, null))
                                     .show();
                         }
                         else {
@@ -216,38 +200,10 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 .execute();
     }
 
-    private void startImport(@Nullable final String backupFile, final @Nullable Uri backupFileUri, boolean encrypt)
+    private void startImport(@Nullable final String backupFile, final @Nullable Uri backupFileUri)
     {
         notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.import_backup_title));
 
-        if (encrypt) {
-            AccountManager accountManager = AccountManager.getInstance();
-
-            if (progressDialog != null) {
-                progressDialog.dismiss();
-                progressDialog = null;
-            }
-
-            progressDialog = new ProgressDialog(this);
-            progressDialog.setMessage(getString(R.string.one_moment));
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.setCancelable(false);
-            progressDialog.show();
-
-            Util.runOnBackground(() -> {
-                DcHelper.getEventCenter(this).removeObservers(this);
-                accountManager.switchToEncrypted(this);
-                // Event center changed, register for events again
-                registerForEvents();
-                Util.runOnMain(() -> continueStartBackup(backupFile, backupFileUri));
-            });
-        } else {
-            continueStartBackup(backupFile, backupFileUri);
-        }
-
-    }
-
-    private void continueStartBackup(String backupFile, Uri backupFileUri) {
         if( progressDialog!=null ) {
             progressDialog.dismiss();
             progressDialog = null;
@@ -411,7 +367,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 Log.e(TAG, " Can't import null URI");
                 return;
             }
-            startImport(null, uri, false);
+            startImport(null, uri);
         }
     }
 

@@ -31,7 +31,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.util.Locale;
 import java.util.Set;
 
 public class ProfileDocumentsFragment
@@ -39,7 +38,6 @@ public class ProfileDocumentsFragment
     implements LoaderManager.LoaderCallbacks<BucketedThreadMediaLoader.BucketedThreadMedia>,
                ProfileDocumentsAdapter.ItemClickListener
 {
-  public static final String LOCALE_EXTRA  = "locale_extra";
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String SHOW_AUDIO_EXTRA = "show_audio";
   public static final String SHOW_WEBXDC_EXTRA = "show_webxdc";
@@ -52,7 +50,6 @@ public class ProfileDocumentsFragment
   private boolean showWebxdc;
 
   protected int                chatId;
-  protected Locale             locale;
 
   @Override
   public void onCreate(Bundle bundle) {
@@ -62,8 +59,6 @@ public class ProfileDocumentsFragment
     chatId = getArguments().getInt(CHAT_ID_EXTRA, -1);
     showAudio = getArguments().getBoolean(SHOW_AUDIO_EXTRA, false);
     showWebxdc = getArguments().getBoolean(SHOW_WEBXDC_EXTRA, false);
-    locale = (Locale)getArguments().getSerializable(LOCALE_EXTRA);
-    if (locale == null) throw new AssertionError();
 
     getLoaderManager().initLoader(0, null, this);
   }
@@ -78,7 +73,6 @@ public class ProfileDocumentsFragment
 
     this.recyclerView.setAdapter(new ProfileDocumentsAdapter(getContext(),
         new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()),
-        locale,
         this));
     this.recyclerView.setLayoutManager(gridManager);
     this.recyclerView.setHasFixedSize(true);

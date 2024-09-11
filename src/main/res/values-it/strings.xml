@@ -275,6 +275,10 @@
     <string name="select_chat">Seleziona Chat</string>
     <string name="select_more">Seleziona di più</string>
     <string name="menu_edit_name">Modifica Nome</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_explain">Imposta un soprannome che ti verrà mostrato al posto di \"%1$s\". Lasciare vuoto per utilizzare il nome scelto dal contatto.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_placeholder">Soprannome per \"%1$s\"</string>
     <string name="menu_settings">Impostazioni</string>
     <string name="menu_advanced">Avanzate</string>
     <string name="menu_view_profile">Vedi Profilo</string>

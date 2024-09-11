@@ -267,6 +267,10 @@
     <string name="select_chat">Kies een gesprek</string>
     <string name="select_more">Meer selecteren</string>
     <string name="menu_edit_name">Naam wijzigen</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_explain">Geef deze persoon een bijnaam, ter vervanging van “%1$s”. Laat leeg om de standaardnaam te gebruiken.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_placeholder">Bijnaam van %1$s</string>
     <string name="menu_settings">Instellingen</string>
     <string name="menu_advanced">Geavanceerd</string>
     <string name="menu_view_profile">Profiel bekijken</string>

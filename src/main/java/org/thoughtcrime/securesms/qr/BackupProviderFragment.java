@@ -86,6 +86,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 try {
                     SVG svg = SVG.getFromString(QrShowFragment.fixSVG(dcBackupProvider.getQrSvg()));
                     qrImageView.setSVG(svg);
+                    qrImageView.setVisibility(View.VISIBLE);
                 } catch (SVGParseException e) {
                     e.printStackTrace();
                 }

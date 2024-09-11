@@ -249,6 +249,11 @@
         </intent-filter>
     </activity>
 
+    <activity android:name=".ProxySettingsActivity"
+              android:label="@string/proxy_settings"
+              android:windowSoftInputMode="stateHidden"
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
+
     <activity android:name=".LogViewActivity"
               android:label="@string/pref_log_header"
               android:windowSoftInputMode="stateHidden"

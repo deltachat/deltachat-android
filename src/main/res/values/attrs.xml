@@ -8,17 +8,11 @@
 
     <attr name="conversation_list_item_background" format="reference"/>
     <attr name="pinned_list_item_background" format="reference"/>
-    <attr name="conversation_list_deaddrop_bg_color" format="reference|color"/>
     <attr name="conversation_list_item_contact_color" format="reference|color"/>
     <attr name="conversation_list_item_subject_color" format="reference|color"/>
-    <attr name="conversation_list_item_delivery_icon_color" format="reference|color"/>
     <attr name="conversation_list_item_date_color" format="reference|color"/>
     <attr name="conversation_list_item_unread_color" format="reference|color"/>
     <attr name="conversation_list_item_divider" format="reference"/>
-
-    <attr name="conversation_sent_card_background" format="reference|color"/>
-    <attr name="conversation_group_member_name" format="reference|color"/>
-    <attr name="conversation_received_card_background" format="reference|color"/>
 
     <attr name="secondary_button_fg" format="reference"/>
     <attr name="send_button_bg" format="reference"/>
@@ -29,13 +23,7 @@
     <attr name="lower_right_divet" format="reference" />
     <attr name="close_icon_color" format="reference|color" />
 
-    <attr name="centered_app_title_color" format="reference|color" />
-    <attr name="ic_arrow_forward" format="reference" />
-
     <attr name="conversation_background" format="reference|color"/>
-    <attr name="conversation_editor_background" format="reference|color"/>
-    <attr name="conversation_editor_text_color" format="reference|color"/>
-    <attr name="conversation_input_background" format="reference"/>
     <attr name="conversation_transport_sms_indicator" format="reference"/>
     <attr name="conversation_transport_push_indicator" format="reference"/>
     <attr name="conversation_transport_popup_background" format="reference"/>
@@ -94,15 +82,6 @@
     <attr name="dialog_alert_icon" format="reference" />
     <attr name="dialog_background_color" format="reference|color" />
 
-    <attr name="contact_selection_label_text" format="reference|color" />
-    <attr name="contact_selection_header_text" format="reference|color" />
-
-    <attr name="device_link_item_card_background" format="reference|color" />
-
-    <attr name="import_export_item_background_color" format="reference|color" />
-    <attr name="import_export_item_background_shadow_color" format="reference|color" />
-    <attr name="import_export_item_card_background" format="reference" />
-
     <attr name="menu_new_conversation_icon" format="reference" />
     <attr name="menu_search_icon" format="reference" />
     <attr name="menu_popup_expand" format="reference"/>
@@ -125,20 +104,10 @@
         <attr name="custom_pref_toggle" format="string"/>
     </declare-styleable>
 
-    <attr name="group_members_dialog_icon" format="reference"/>
-
-    <attr name="recipient_preference_blocked" format="color"/>
-
-    <attr name="verification_background" format="color"/>
-
     <attr name="profile_toolbar_background" format="color"/>
     <attr name="profile_toolbar_foreground" format="color"/>
     <attr name="profile_header_foreground" format="color"/>
     <attr name="profile_document_foreground" format="color"/>
-
-    <attr name="shared_contact_details_header_background" format="color"/>
-    <attr name="shared_contact_details_titlebar" format="color"/>
-    <attr name="shared_contact_item_button_color" format="color"/>
 
     <attr name="search_toolbar_background" format="color"/>
     <attr name="search_background" format="color"/>

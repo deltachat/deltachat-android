@@ -33,7 +33,6 @@ import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.util.Locale;
 import java.util.Set;
 
 public class ProfileGalleryFragment
@@ -41,7 +40,6 @@ public class ProfileGalleryFragment
     implements LoaderManager.LoaderCallbacks<BucketedThreadMediaLoader.BucketedThreadMedia>,
                ProfileGalleryAdapter.ItemClickListener
 {
-  public static final String LOCALE_EXTRA  = "locale_extra";
   public static final String CHAT_ID_EXTRA = "chat_id";
 
   protected TextView noMedia;
@@ -50,7 +48,6 @@ public class ProfileGalleryFragment
   private final ActionModeCallback actionModeCallback = new ActionModeCallback();
 
   private int                  chatId;
-  private Locale               locale;
 
   @Override
   public void onCreate(Bundle bundle) {
@@ -58,8 +55,6 @@ public class ProfileGalleryFragment
 
     dcContext = DcHelper.getContext(getContext());
     chatId = getArguments().getInt(CHAT_ID_EXTRA, -1);
-    locale = (Locale)getArguments().getSerializable(LOCALE_EXTRA);
-    if (locale == null) throw new AssertionError();
 
     getLoaderManager().initLoader(0, null, this);
   }
@@ -75,7 +70,6 @@ public class ProfileGalleryFragment
     this.recyclerView.setAdapter(new ProfileGalleryAdapter(getContext(),
                                                          GlideApp.with(this),
                                                          new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()),
-                                                         locale,
                                                          this));
     this.recyclerView.setLayoutManager(gridManager);
     this.recyclerView.setHasFixedSize(true);

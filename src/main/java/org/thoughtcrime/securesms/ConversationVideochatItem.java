@@ -24,7 +24,6 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.util.Locale;
 import java.util.Set;
 
 public class ConversationVideochatItem extends LinearLayout
@@ -57,7 +56,6 @@ public class ConversationVideochatItem extends LinearLayout
   public void bind(@NonNull DcMsg                   dcMsg,
                    @NonNull DcChat                  dcChat,
                    @NonNull GlideRequests           glideRequests,
-                   @NonNull Locale                  locale,
                    @NonNull Set<DcMsg>              batchSelected,
                    @NonNull Recipient               conversationRecipient,
                             boolean                 pulseUpdate)
@@ -76,14 +74,14 @@ public class ConversationVideochatItem extends LinearLayout
     contactPhoto.setAvatar(glideRequests, new Recipient(getContext(), dcContact), true);
 
     setSelected(batchSelected.contains(dcMsg));
-    setFooter(dcMsg, locale);
+    setFooter(dcMsg);
   }
 
-  private void setFooter(@NonNull DcMsg dcMsg, @NonNull Locale locale) {
+  private void setFooter(@NonNull DcMsg dcMsg) {
     ViewUtil.updateLayoutParams(footer, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
     footer.setVisibility(VISIBLE);
-    footer.setMessageRecord(dcMsg, locale);
+    footer.setMessageRecord(dcMsg);
   }
 
   @Override
