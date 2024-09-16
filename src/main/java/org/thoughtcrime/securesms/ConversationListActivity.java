@@ -303,6 +303,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   public void refreshAvatar() {
+    if (selfAvatarContainer == null) return;
+
     if (isRelayingMessageContent(this)) {
       selfAvatarContainer.setVisibility(View.GONE);
     } else {
