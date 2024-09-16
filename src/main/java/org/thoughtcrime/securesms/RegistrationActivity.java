@@ -12,11 +12,7 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SECURITY;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SERVER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_ENABLED;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_HOST;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_PASSWORD;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_PORT;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_USER;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 import static org.thoughtcrime.securesms.service.IPCAddAccountsService.ACCOUNT_DATA;
 
@@ -59,6 +55,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
@@ -162,7 +159,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         String strVal;
         int intVal;
 
-        intVal = DcHelper.getInt(this, CONFIG_SOCKS5_ENABLED);
+        intVal = DcHelper.getInt(this, CONFIG_PROXY_ENABLED);
         proxySwitch.setChecked(intVal == 1);
         expandAdvanced = expandAdvanced || intVal == 1;
 
@@ -260,7 +257,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     public void onResume() {
         super.onResume();
         dynamicTheme.onResume(this);
-        proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_SOCKS5_ENABLED) == 1);
+        proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1);
     }
 
     private void showLog() {

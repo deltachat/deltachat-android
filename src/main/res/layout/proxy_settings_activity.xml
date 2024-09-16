@@ -1,128 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".ProxySettingsActivity">
+    tools:context=".proxy.ProxySettingsActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/proxy_switch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:animateLayoutChanges="true">
+        android:padding="16dp"
+        android:text="@string/proxy_use_proxy" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_root_start_shifted"
-            android:layout_width="wrap_content"
-            android:layout_height="16dp"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="14dp" />
+    <ListView
+        android:id="@+id/proxy_list"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_root_start"
-            android:layout_width="wrap_content"
-            android:layout_height="16dp"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="16dp" />
+    <TextView
+        android:id="@+id/add_proxy_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/proxy_add"
+        android:textColor="@color/delta_accent"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        android:typeface="sans" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_root_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="16dp" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/proxy_switch"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingTop="16dp"
-            android:paddingBottom="10dp"
-            android:text="@string/proxy_use_proxy"
-            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
-            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/proxy_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            tools:visibility="visible"
-            app:constraint_referenced_ids="proxy_host, proxy_port, proxy_user, proxy_password" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/proxy_host"
-            android:layout_width="0dp"
-            android:layout_height="58dp"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
-            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/proxy_switch">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/proxy_host_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/login_socks5_host"
-                android:inputType="textUri|textNoSuggestions" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/proxy_port"
-            android:layout_width="0dp"
-            android:layout_height="58dp"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
-            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/proxy_host">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/proxy_port_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/login_socks5_port"
-                android:inputType="number" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/proxy_user"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
-            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/proxy_port">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/proxy_user_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textNoSuggestions"
-                android:hint="@string/login_socks5_user" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/proxy_password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
-            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/proxy_user"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/proxy_password_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/login_socks5_password"
-                android:inputType="textPassword" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </ScrollView>
