@@ -81,6 +81,7 @@ public class ProxySettingsActivity extends BaseActionBarActivity implements Prox
   @Override
   public void onItemClick(String proxyUrl) {
     adapter.selectProxy(proxyUrl);
+    proxySwitch.setChecked(!adapter.isEmpty());
   }
 
   private void showAddProxyDialog() {
@@ -97,7 +98,7 @@ public class ProxySettingsActivity extends BaseActionBarActivity implements Prox
           if (!TextUtils.isEmpty(newProxy)) {
             adapter.selectProxy(newProxy);
           }
-          if (adapter.isEmpty()) proxySwitch.setChecked(false);
+          proxySwitch.setChecked(!adapter.isEmpty());
       })
       .setNegativeButton(android.R.string.cancel, (dialog, whichButton) -> {
           if (adapter.isEmpty()) proxySwitch.setChecked(false);
