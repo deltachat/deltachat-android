@@ -283,6 +283,8 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     }
 
     public static void maybeShowConfigurationError(Activity activity, String data2) {
+        if (activity.isFinishing()) return;  // avoid android.view.WindowManager$BadTokenException
+
         if (data2 != null && !data2.isEmpty()) {
             AlertDialog d = new AlertDialog.Builder(activity)
                 .setMessage(data2)
