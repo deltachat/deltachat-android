@@ -58,6 +58,7 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
     if (responseText != null) {
       Util.runOnAnyBackgroundThread(() -> {
         DcContext dcContext = DcHelper.getAccounts(context).getAccount(accountId);
+        dcContext.marknoticedChat(chatId);
         if (dcContext.getChat(chatId).isContactRequest()) {
           dcContext.acceptChat(chatId);
         }
