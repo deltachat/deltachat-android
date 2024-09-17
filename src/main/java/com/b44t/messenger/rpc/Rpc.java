@@ -138,6 +138,10 @@ public class Rpc {
         getResult("leave_webxdc_realtime", accountId, instanceMessageId);
     }
 
+    public int getAccountFileSize(int accountId) throws RpcException {
+        return getResult("get_account_file_size", accountId).getAsInt();
+    }
+
     private static class Request {
         private final String jsonrpc = "2.0";
         public final String method;

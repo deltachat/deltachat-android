@@ -68,4 +68,6 @@
     <color name="reaction_pill_background_selected">@color/light_green</color>
     <color name="reaction_pill_border_selected">@color/reaction_pill_border</color>
     <color name="reaction_pill_text_color_selected">@color/reaction_pill_text_color</color>
+
+    <color name="delete_account_item_bg">#eeeeee</color>
 </resources>

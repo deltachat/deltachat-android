@@ -9,4 +9,6 @@
 
     <color name="action_mode_status_bar">@color/gray78</color>
     <color name="dummy_avatar_color">#808080</color>
+
+    <color name="delete_account_item_bg">#222222</color>
 </resources>
