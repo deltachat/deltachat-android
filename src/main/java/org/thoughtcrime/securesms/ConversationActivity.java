@@ -35,7 +35,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PowerManager;
 import android.os.Vibrator;
 import android.provider.Browser;
 import android.text.Editable;
@@ -301,12 +300,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     DcHelper.getNotificationCenter(this).updateVisibleChat(dcContext.getAccountId(), chatId);
 
     attachmentManager.onResume();
-
-    // action bar might be hidden by workaround in onStop()
-    ActionBar supportActionBar = getSupportActionBar();
-    if (supportActionBar != null && !supportActionBar.isShowing()) {
-        supportActionBar.show();
-    }
   }
 
   @Override
@@ -320,23 +313,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();
     AudioSlidePlayer.stopAll();
-  }
-
-  @Override
-  public void onStop() {
-    super.onStop();
-
-    // hack/workaround to fix https://github.com/deltachat/deltachat-android/issues/2798
-    // the real cause of the problem is still unknown but hiding the action bar here fixes it
-    if ( Build.VERSION.SDK_INT >= 34) {
-      ActionBar supportActionBar = getSupportActionBar();
-      if (supportActionBar != null && container.isKeyboardOpen()) {
-        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        if (!pm.isInteractive()) {
-          supportActionBar.hide();
-        }
-      }
-    }
   }
 
   @Override
