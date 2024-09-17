@@ -128,12 +128,13 @@ public class NotificationCenter {
                 .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
-    private PendingIntent getRemoteReplyIntent(ChatData chatData) {
+    private PendingIntent getRemoteReplyIntent(ChatData chatData, int msgId) {
         Intent intent = new Intent(RemoteReplyReceiver.REPLY_ACTION);
         intent.setClass(context, RemoteReplyReceiver.class);
         intent.setData(Uri.parse("custom://"+chatData.accountId+"."+chatData.chatId));
         intent.putExtra(RemoteReplyReceiver.ACCOUNT_ID_EXTRA, chatData.accountId);
         intent.putExtra(RemoteReplyReceiver.CHAT_ID_EXTRA, chatData.chatId);
+        intent.putExtra(RemoteReplyReceiver.MSG_ID_EXTRA, msgId);
         intent.setPackage(context.getPackageName());
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
@@ -449,7 +450,7 @@ public class NotificationCenter {
             // if privacy options are enabled, the buttons are not added.
             if (privacy.isDisplayContact() && privacy.isDisplayMessage()) {
                 try {
-                    PendingIntent inNotificationReplyIntent = getRemoteReplyIntent(chatData);
+                    PendingIntent inNotificationReplyIntent = getRemoteReplyIntent(chatData, msgId);
                     PendingIntent markReadIntent = getMarkAsReadIntent(chatData, msgId, true);
 
                     NotificationCompat.Action markAsReadAction = new NotificationCompat.Action(R.drawable.check,
