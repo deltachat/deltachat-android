@@ -138,12 +138,13 @@ public class NotificationCenter {
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
-    private PendingIntent getMarkAsReadIntent(ChatData chatData, boolean markNoticed) {
+    private PendingIntent getMarkAsReadIntent(ChatData chatData, int msgId, boolean markNoticed) {
         Intent intent = new Intent(markNoticed? MarkReadReceiver.MARK_NOTICED_ACTION : MarkReadReceiver.CANCEL_ACTION);
         intent.setClass(context, MarkReadReceiver.class);
         intent.setData(Uri.parse("custom://"+chatData.accountId+"."+chatData.chatId));
         intent.putExtra(MarkReadReceiver.ACCOUNT_ID_EXTRA, chatData.accountId);
         intent.putExtra(MarkReadReceiver.CHAT_ID_EXTRA, chatData.chatId);
+        intent.putExtra(MarkReadReceiver.MSG_ID_EXTRA, msgId);
         intent.setPackage(context.getPackageName());
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
@@ -377,7 +378,7 @@ public class NotificationCenter {
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                     .setOnlyAlertOnce(!signal)
                     .setContentText(line)
-                    .setDeleteIntent(getMarkAsReadIntent(chatData, false))
+                    .setDeleteIntent(getMarkAsReadIntent(chatData, msgId, false))
                     .setContentIntent(getOpenChatIntent(chatData));
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -449,7 +450,7 @@ public class NotificationCenter {
             if (privacy.isDisplayContact() && privacy.isDisplayMessage()) {
                 try {
                     PendingIntent inNotificationReplyIntent = getRemoteReplyIntent(chatData);
-                    PendingIntent markReadIntent = getMarkAsReadIntent(chatData, true);
+                    PendingIntent markReadIntent = getMarkAsReadIntent(chatData, msgId, true);
 
                     NotificationCompat.Action markAsReadAction = new NotificationCompat.Action(R.drawable.check,
                             context.getString(R.string.mark_as_read_short),
