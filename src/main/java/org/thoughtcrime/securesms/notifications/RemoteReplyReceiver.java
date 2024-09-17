@@ -27,6 +27,7 @@ import android.os.Bundle;
 import androidx.core.app.RemoteInput;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Util;
@@ -65,7 +66,12 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
         if (dcContext.getChat(chatId).isContactRequest()) {
           dcContext.acceptChat(chatId);
         }
-        dcContext.sendTextMsg(chatId, responseText.toString());
+
+        DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+        msg.setText(responseText.toString());
+        msg.setQuote(dcContext.getMsg(msgId));
+        dcContext.sendMsg(chatId, msg);
+
         DcHelper.getNotificationCenter(context).removeNotifications(accountId, chatId);
       });
     }
