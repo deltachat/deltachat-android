@@ -349,6 +349,7 @@
     <string name="videochat_tap_to_open">Торкніться, щоб відкрити</string>
     <string name="videochat_instance">Відео чат</string>
     <string name="videochat_instance_placeholder">Ваш відео чат</string>
+    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
     <string name="videochat_instance_example">Приклади: https://meet.jit.si/$ROOM або basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">Якщо ввімкнено, Ви можете почати відеочат із кожного чату. Обидві сторони повинні встановити сумісний додаток або браузер.</string>
     <string name="videochat_instance_from_qr">Використовувати \"%1$s\" аби запросити інших у відеочат?\n\nПісля встановлення Ви можете розпочати відеочат із кожного індивідуального чату. Це замінить попереднє налаштування для відеочату, якщо воно є.</string>

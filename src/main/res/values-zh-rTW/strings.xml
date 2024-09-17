@@ -308,6 +308,7 @@
     <string name="videochat_tap_to_open">點擊以開啟</string>
     <string name="videochat_instance">視訊通話服務商</string>
     <string name="videochat_instance_placeholder">你的視訊通話服務商</string>
+    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
     <string name="videochat_instance_example">範例：https://your-server.org/$ROOM</string>
     <string name="videochat_instance_explain_2">如果啟用，你可以在每個對話中開始視訊聊天。兩端都需要相容的應用程式或瀏覽器。</string>
     <string name="videochat_instance_from_qr">要使用\"%1$s\"來邀請其他人加入視訊通話嗎？\n\n一旦設定完成，你可以在每個聊天室內開啟視訊通話。這將會取代先前的視訊通話設定。</string>

@@ -287,6 +287,7 @@
     <string name="videochat_tap_to_open">Bakstelėkite norėdami atverti</string>
     <string name="videochat_instance">Vaizdo pokalbio egzempliorius</string>
     <string name="videochat_instance_placeholder">Jūsų vaizdo pokalbio egzempliorius</string>
+    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
     <string name="videochat_instance_example">Pavyzdys: https://jūsų-serveris.org/$KAMBARYS</string>
     <string name="videochat_invitation">Pakvietimas į vaizdo pokalbį</string>
     <string name="videochat_invitation_body">Jūs esate kviečiami į vaizdo pokalbį. Spustelėkite %1$s jei norite prisijungti.</string>

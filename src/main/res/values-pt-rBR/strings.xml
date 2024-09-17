@@ -310,6 +310,7 @@
     <string name="videochat_tap_to_open">Clique para abrir</string>
     <string name="videochat_instance">Instância de conversa de vídeo</string>
     <string name="videochat_instance_placeholder">Sua instância de conversa de vídeo</string>
+    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
     <string name="videochat_instance_example">Exemplos: https://meet.jit.si/$ROOM o basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">Se o video chat estiver habilitado, você pode iniciar uma ligação de video a partir de cada chat. Os bate-papos de vídeo exigem um aplicativo compatível ou um navegador compatível nos dos lados.</string>
     <string name="videochat_instance_from_qr">Use \"%1$s\" para convidar outros para a conversas de vídeo?\n\nUma vez configurado, você pode iniciar uma conversa de vídeo para cada conversa um-para-um. Isto irá substituir os ajustes prévios para conversas de vídeo, caso existam.</string>

@@ -278,6 +278,7 @@
     <string name="videochat_you_invited_hint">Anda diundang ke obrolan video.</string>
     <string name="videochat_tap_to_join">Ketuk untuk bergabung</string>
     <string name="videochat_tap_to_open">Ketuk untuk membuka</string>
+    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
     <string name="videochat_instance_example">Contoh: https://your-server.org/$ROOM</string>
     <string name="videochat_instance_from_qr">Gunakan \"%1$s\" untuk mengundang orang lain ke obrolan video? Setelah diatur, Anda dapat memulai obrolan video dari setiap obrolan. Ini menggantikan pengaturan sebelumnya untuk obrolan video.</string>
     <string name="videochat_invitation">Undangan obrolan video</string>

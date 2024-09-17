@@ -327,6 +327,7 @@
     <string name="videochat_tap_to_open">Tryck för att öppna</string>
     <string name="videochat_instance">Videochattinstans</string>
     <string name="videochat_instance_placeholder">Din videochattinstans</string>
+    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
     <string name="videochat_instance_example">Exempel: https://din-server.org/$RUM</string>
     <string name="videochat_instance_explain_2">Om det är aktiverat kan du starta en videochatt från varje chatt. Kräver en kompatibel app eller en webbläsare på båda sidor.</string>
     <string name="videochat_instance_from_qr">Vill du använda \"%1$s\" för att bjuda in andra till videochattar?\n\nNär det väl är inställt kan du starta en videochatt från vilken en-till-en-chatt som helst. Detta ersätter den tidigare inställningen för eventuella videochattar.</string>
