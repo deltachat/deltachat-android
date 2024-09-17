@@ -41,6 +41,7 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
   public static final String REPLY_ACTION  = "org.thoughtcrime.securesms.notifications.WEAR_REPLY";
   public static final String ACCOUNT_ID_EXTRA = "account_id";
   public static final String CHAT_ID_EXTRA = "chat_id";
+  public static final String MSG_ID_EXTRA = "msg_id";
   public static final String EXTRA_REMOTE_REPLY = "extra_remote_reply";
 
   @SuppressLint("StaticFieldLeak")
@@ -50,6 +51,7 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
     Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
     final int accountId = intent.getIntExtra(ACCOUNT_ID_EXTRA, 0);
     final int chatId = intent.getIntExtra(CHAT_ID_EXTRA, DC_CHAT_NO_CHAT);
+    final int msgId = intent.getIntExtra(MSG_ID_EXTRA, 0);
 
     if (remoteInput == null || chatId == DC_CHAT_NO_CHAT || accountId == 0) return;
 
@@ -59,6 +61,7 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
       Util.runOnAnyBackgroundThread(() -> {
         DcContext dcContext = DcHelper.getAccounts(context).getAccount(accountId);
         dcContext.marknoticedChat(chatId);
+        dcContext.markseenMsgs(new int[]{msgId});
         if (dcContext.getChat(chatId).isContactRequest()) {
           dcContext.acceptChat(chatId);
         }
