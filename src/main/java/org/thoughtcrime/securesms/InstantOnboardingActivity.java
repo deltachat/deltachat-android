@@ -403,7 +403,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
   private void progressError(String data2) {
     progressDialog.dismiss();
-    maybeShowConfigurationError(this, data2);
+    WelcomeActivity.maybeShowConfigurationError(this, data2);
   }
 
   private void progressSuccess() {
@@ -414,22 +414,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
     startActivity(intent);
     finishAffinity();
-  }
-
-  public static void maybeShowConfigurationError(Activity activity, String data2) {
-    if (data2 != null && !data2.isEmpty()) {
-      AlertDialog d = new AlertDialog.Builder(activity)
-        .setMessage(data2)
-        .setPositiveButton(android.R.string.ok, null)
-        .create();
-      d.show();
-      try {
-        //noinspection ConstantConditions
-        Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS | Linkify.EMAIL_ADDRESSES);
-      } catch(NullPointerException e) {
-        Log.e(TAG, "Linkify failed", e);
-      }
-    }
   }
 
   @SuppressLint("StaticFieldLeak")
