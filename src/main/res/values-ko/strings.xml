@@ -279,6 +279,7 @@
     <string name="videochat_tap_to_open">열기 위해 탭하기</string>
     <string name="videochat_instance">비디오 채팅 인스턴스</string>
     <string name="videochat_instance_placeholder">당신의 비디오 채팅 인스턴스</string>
+    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
     <string name="videochat_instance_example">예시: https://meet.jit.si/$ROOM 또는 basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">비디오 채팅을 사용할 수 있는 경우 각 채팅에서 비디오 채팅을 시작할 수 있습니다. 화상 채팅을 하려면 호환되는 앱 또는 호환 가능한 브라우저가 양쪽 끝에 필요합니다.</string>
     <string name="videochat_instance_from_qr">\"%1$s\"를 사용하여 다른 사람을 화상 채팅에 초대하시겠습니까?\n\n설정되면 각 채팅에서 비디오 채팅을 시작할 수 있습니다. 이것은 비디오 채팅에 대한 이전 설정을 대체합니다.</string>

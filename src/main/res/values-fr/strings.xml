@@ -325,6 +325,7 @@
     <string name="videochat_tap_to_open">Appuyer pour ouvrir</string>
     <string name="videochat_instance">Instance de discussion vidéo</string>
     <string name="videochat_instance_placeholder">Votre instance de discussion vidéo</string>
+    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
     <string name="videochat_instance_example">Par exemple : https://your-server.org/$ROOM</string>
     <string name="videochat_instance_explain_2">Si vous avez activé les discussions vidéo, vous pouvez démarrer une conversation vidéo dans chacune de vos discussions. Il faut que chaque participant-e ait une application ou un navigateur compatibles pour pouvoir utiliser cette option.</string>
     <string name="videochat_instance_from_qr">Utiliser « %1$s » pour inviter d\'autres personnes à des discussions vidéo ?\n\nUne fois configuré, vous pouvez discuter en vidéo dans chaque discussion privée. Remplace vos préférences de configurations précédentes pour les discussions vidéos.</string>

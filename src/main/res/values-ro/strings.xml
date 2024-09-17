@@ -306,6 +306,7 @@
     <string name="videochat_tap_to_open">Atingeți pentru a deschide</string>
     <string name="videochat_instance">Instanță de Videochat</string>
     <string name="videochat_instance_placeholder">Instanța Dumneavoastră de Videochat</string>
+    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
     <string name="videochat_instance_example">Exemple: https://meet.jit.si/$ROOM ori basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">Dacă este activată, puteți începe un chat video din fiecare chat. Necesită un app compatibil sau un browser la ambele capete.</string>
     <string name="videochat_instance_from_qr">Folosiți \"%1$s\" pentru a invita alte persoane la chat-uri video?\n\nOnce setat, puteți începe un chat video din fiecare chat. Acest lucru înlocuiește orice setare anterioară pentru chat-urile video.</string>

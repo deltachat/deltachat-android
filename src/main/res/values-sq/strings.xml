@@ -328,6 +328,7 @@
     <string name="videochat_tap_to_open">Prekeni që të Hapet</string>
     <string name="videochat_instance">Instancë Fjalosjeje me Video</string>
     <string name="videochat_instance_placeholder">Instanca juaj e Fjalosjes me Video</string>
+    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
     <string name="videochat_instance_example">Shembull: https://shërbyesi-juaj.org/$ROOM</string>
     <string name="videochat_instance_explain_2">Nëse është aktivizuar, mund të nisni një fjalosje me video prej secilës fjalosje. Kjo lyp në të dy skajet një aplikacion të përputhshëm, ose një shfletues të përputhshëm.</string>
     <string name="videochat_instance_from_qr">Të përdoret “%1$s” për të ftuar të tjerë në fjalosje me video?\n\nPasi të ujdiset kjo, mund të filloni një fjalosje me video që prej një fjalosjeje tek-për-tek. Kështu do të zëvendësohet rregullimi i mëparshëm për fjalosje video, në pastë.</string>
