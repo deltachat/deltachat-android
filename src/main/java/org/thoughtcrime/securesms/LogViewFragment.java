@@ -259,7 +259,7 @@ public class LogViewFragment extends Fragment {
 
       final String token = FcmReceiveService.getToken();
       boolean notifPermGranted = PermissionChecker.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PermissionChecker.PERMISSION_GRANTED;
-      builder.append("notifications-permission=").append(notifPermGranted).append("\n");
+      builder.append("post-notifications-granted=").append(notifPermGranted).append("\n");
       builder.append("push-enabled=").append(Prefs.isPushEnabled(context)).append("\n");
       builder.append("push-token=").append(token == null ? "<empty>" : token).append("\n");
     } catch (Exception e) {
