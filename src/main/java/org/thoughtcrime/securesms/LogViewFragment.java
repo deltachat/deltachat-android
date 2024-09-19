@@ -17,6 +17,7 @@
 
 package org.thoughtcrime.securesms;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Context;
@@ -35,6 +36,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.PermissionChecker;
 import androidx.fragment.app.Fragment;
 
 import com.b44t.messenger.DcContext;
@@ -256,6 +258,8 @@ public class LogViewFragment extends Fragment {
       }
 
       final String token = FcmReceiveService.getToken();
+      boolean notifPermGranted = PermissionChecker.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PermissionChecker.PERMISSION_GRANTED;
+      builder.append("notifications-permission=").append(notifPermGranted).append("\n");
       builder.append("push-enabled=").append(Prefs.isPushEnabled(context)).append("\n");
       builder.append("push-token=").append(token == null ? "<empty>" : token).append("\n");
     } catch (Exception e) {
