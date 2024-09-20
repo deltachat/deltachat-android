@@ -276,6 +276,12 @@ JNIEXPORT void Java_com_b44t_messenger_DcAccounts_setPushDeviceToken(JNIEnv *env
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcAccounts_backgroundFetch(JNIEnv *env, jobject obj, jint timeout_seconds)
+{
+    return dc_accounts_background_fetch(get_dc_accounts(env, obj), timeout_seconds) != 0;
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_addAccount(JNIEnv *env, jobject obj)
 {
     return dc_accounts_add_account(get_dc_accounts(env, obj));
