@@ -257,9 +257,14 @@ public class LogViewFragment extends Fragment {
         builder.append("rtl=").append(isRtl).append("\n");
       }
 
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        boolean notifPermGranted = PermissionChecker.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PermissionChecker.PERMISSION_GRANTED;
+        builder.append("post-notifications-granted=").append(notifPermGranted).append("\n");
+      } else {
+        builder.append("post-notifications-granted=<not needed>").append("\n");
+      }
+
       final String token = FcmReceiveService.getToken();
-      boolean notifPermGranted = PermissionChecker.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PermissionChecker.PERMISSION_GRANTED;
-      builder.append("post-notifications-granted=").append(notifPermGranted).append("\n");
       builder.append("push-enabled=").append(Prefs.isPushEnabled(context)).append("\n");
       builder.append("push-token=").append(token == null ? "<empty>" : token).append("\n");
     } catch (Exception e) {
