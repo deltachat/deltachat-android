@@ -607,8 +607,9 @@
     <string name="proxy_settings">Proxy Settings</string>
     <string name="proxy_use_proxy">Use Proxy</string>
     <string name="proxy_add">Add Proxy</string>
-    <string name="proxy_add_explain">Supported proxy types are SOCKS5 and Shadowsocks</string>
+    <string name="proxy_add_explain">Supported proxy types are HTTP(S), SOCKS5 and Shadowsocks</string>
     <string name="proxy_add_url_hint">Enter proxy URL here</string>
+    <string name="proxy_invalid">Invalid or unsupported proxy URL</string>
 
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>

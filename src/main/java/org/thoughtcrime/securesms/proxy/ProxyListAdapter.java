@@ -36,26 +36,6 @@ public class ProxyListAdapter extends BaseAdapter {
     notifyDataSetChanged();
   }
 
-  public void remove(@NonNull String proxy) {
-    if (proxies.remove(proxy)) {
-      notifyDataSetChanged();
-    }
-  }
-
-  public void selectProxy(@NonNull String proxy) {
-    proxies.remove(proxy);
-    proxies.add(0, proxy);
-    notifyDataSetChanged();
-  }
-
-  public boolean isEmpty() {
-    return proxies.isEmpty();
-  }
-
-  public String getProxyUrl() {
-    return String.join("\n", proxies);
-  }
-
   @Override
   public int getCount() {
     return proxies.size();

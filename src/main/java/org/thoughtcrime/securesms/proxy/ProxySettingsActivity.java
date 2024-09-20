@@ -9,12 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcLot;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
@@ -45,8 +47,11 @@ public class ProxySettingsActivity extends BaseActionBarActivity implements Prox
     proxySwitch = findViewById(R.id.proxy_switch);
     proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1);
     proxySwitch.setOnClickListener(l -> {
-      if (proxySwitch.isChecked() && adapter.isEmpty()) {
+      if (proxySwitch.isChecked() && adapter.getCount() == 0) {
         showAddProxyDialog();
+      } else {
+        DcHelper.set(this, CONFIG_PROXY_ENABLED, proxySwitch.isChecked()? "1" : "0");
+        restartIO();
       }
     });
 
@@ -63,12 +68,6 @@ public class ProxySettingsActivity extends BaseActionBarActivity implements Prox
     dynamicTheme.onResume(this);
   }
 
-  @Override
-  public void onPause() {
-    super.onPause();
-    saveConfig();
-  }
-
   public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
     if (id == android.R.id.home) {
@@ -80,8 +79,13 @@ public class ProxySettingsActivity extends BaseActionBarActivity implements Prox
 
   @Override
   public void onItemClick(String proxyUrl) {
-    adapter.selectProxy(proxyUrl);
-    proxySwitch.setChecked(!adapter.isEmpty());
+    if (DcHelper.getContext(this).setConfigFromQr(proxyUrl)) {
+      restartIO();
+      adapter.changeData(DcHelper.get(this, CONFIG_PROXY_URL));
+      proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1);
+    } else {
+      Toast.makeText(this, R.string.proxy_invalid, Toast.LENGTH_LONG).show();
+    }
   }
 
   private void showAddProxyDialog() {
@@ -95,24 +99,29 @@ public class ProxySettingsActivity extends BaseActionBarActivity implements Prox
       .setView(view)
       .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
           String newProxy = inputField.getText().toString().trim();
-          if (!TextUtils.isEmpty(newProxy)) {
-            adapter.selectProxy(newProxy);
+          DcContext dcContext = DcHelper.getContext(this);
+          final DcLot qrParsed = dcContext.checkQr(newProxy);
+          if (qrParsed.getState() == DcContext.DC_QR_PROXY) {
+            dcContext.setConfigFromQr(newProxy);
+            restartIO();
+            adapter.changeData(DcHelper.get(this, CONFIG_PROXY_URL));
+          } else {
+            Toast.makeText(this, R.string.proxy_invalid, Toast.LENGTH_LONG).show();
           }
-          proxySwitch.setChecked(!adapter.isEmpty());
+          proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1);
       })
       .setNegativeButton(android.R.string.cancel, (dialog, whichButton) -> {
-          if (adapter.isEmpty()) proxySwitch.setChecked(false);
+          if (proxySwitch.isChecked() && adapter.getCount() == 0) {
+            // user enabled switch without having proxies yet, revert
+            proxySwitch.setChecked(false);
+          }
       })
       .setCancelable(false)
       .show();
   }
 
-  private void saveConfig() {
+  private void restartIO() {
     DcContext dcContext = DcHelper.getContext(this);
-    String proxyUrl = adapter.getProxyUrl();
-    boolean proxyEnabled = proxySwitch.isChecked() && !TextUtils.isEmpty(proxyUrl);
-    dcContext.setConfigInt(CONFIG_PROXY_ENABLED, proxyEnabled? 1 : 0);
-    dcContext.setConfig(CONFIG_PROXY_URL, proxyUrl);
     dcContext.stopIo();
     dcContext.startIo();
   }
