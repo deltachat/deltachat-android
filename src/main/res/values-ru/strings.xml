@@ -54,6 +54,7 @@
     <string name="show_full_message">Показать сообщение полностью…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Отметить Все как Прочитанные</string>
+    <string name="mark_as_read">Отметить как прочитанное</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Прочитано</string>
     <!-- Placeholder text when something is loading -->
@@ -175,6 +176,7 @@
     <string name="video">Видео</string>
     <string name="documents">Документы</string>
     <string name="contact">Контакт</string>
+    <string name="bot">Бот</string>
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Захват</string>
@@ -243,6 +245,10 @@
     <string name="menu_delete_location">Удалить местоположение?</string>
     <string name="menu_message_details">Подробности сообщения</string>
     <string name="menu_copy_to_clipboard">Скопировать в буфер обмена</string>
+    <string name="share_invite_link">Поделиться ссылкой-приглашением</string>
+    <string name="invite_friends">Пригласить друзей</string>
+    <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
+    <string name="invite_friends_text">Свяжитесь со мной через Delta Chat:\n%1$s</string>
     <string name="menu_copy_selection_to_clipboard">Копировать выделенное</string>
     <string name="menu_copy_link_to_clipboard">Копировать ссылку</string>
     <string name="menu_copy_text_to_clipboard">Копировать текст</string>
@@ -277,6 +283,10 @@
     <string name="select_chat">Выбрать Чат</string>
     <string name="select_more">Выбрать больше</string>
     <string name="menu_edit_name">Изменить имя</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_explain">Задайте имя, которое будет отображаться вместо \"%1$s\". Оставьте поле пустым, чтобы использовать выбранное контактом имя.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_placeholder">Имя для \"%1$s\"</string>
     <string name="menu_settings">Настройки</string>
     <string name="menu_advanced">Дополнительные параметры</string>
     <string name="menu_view_profile">Просмотреть Профиль</string>
@@ -625,6 +635,9 @@
     <string name="login_smtp_port">Порт SMTP</string>
     <string name="login_smtp_security">Параметры безопасности SMTP</string>
     <string name="login_auth_method">Метод авторизации</string>
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <string name="proxy_settings">Прокси</string>
+    <string name="proxy_use_proxy">Использовать прокси</string>
     <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Использовать SOCKS5</string>
@@ -826,6 +839,8 @@
     <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все недавно доставленные сообщения \"%2$s\" в будущем?\n\n⚠️ Включая письма, медиафайлы и \"Сохранённые сообщения\"  во всех папках сервера\n\n⚠️ Не используйте эту функцию, если вы хотите сохранить данные на сервере\n\n⚠️ Не используйте эту функцию, если вы используете другие почтовые клиенты помимо Delta Chat</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Это включает почту, медиафайлы и \"Сохранённые сообщения\" во всех папках сервера. Не используйте эту функцию, если вы хотите сохранить данные на сервере или если используете другие почтовые клиенты помимо Delta Chat.</string>
+    <string name="autodel_server_warn_multi_device_title">Включить удаление без запроса</string>
+    <string name="autodel_server_warn_multi_device">Если включить удаление без запроса, вы не сможете использовать этот профиль на нескольких устройствах.</string>
     <string name="autodel_confirm">Я понимаю, удалить все эти сообщения</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Сразу</string>
@@ -934,6 +949,7 @@
     <string name="chat_protection_broken_explanation">Сквозное шифрование больше не может быть гарантировано, вероятно потому что %1$s переустановил Delta Chat или отправил сообщение с другого устройства.\n\nВы можете встретиться с ним лично и отсканировать QR-код снова чтобы восстановить гарантированное сквозное шифрование.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s требуется сквозное шифрование, которое ещё не настроено для данного чата. Нажмите, чтобы узнать больше.</string>
     <string name="invalid_unencrypted_explanation">Чтобы установить сквозное шифрование, вы можете встретиться с контактами лично и отсканировать их QR-код, чтобы представиться друг другу.</string>
+    <string name="encryption_required_for_new_contact">Требуется сквозное шифрование, но оно для %1$s еще не настроено.\n\nВы можете поделиться ссылкой-приглашением или встретиться лично и отсканировать QR-код.</string>
     <string name="learn_more">Узнать Больше</string>
 
     <string name="devicemsg_self_deleted">Вы удалили чат \"Сохраненные сообщения\".\n\nℹ️ Чтобы снова использовать функцию \"Сохраненные сообщения\", создайте новый чат с самим собой.</string>
@@ -1168,4 +1184,5 @@
     <!-- device messages for updates -->
     <string name="update_1_46_android">Новые Объявления 🐣 и другое:\n\n⚡️ Зарегистрируйтесь на защищённых быстрых серверах электронной почты (https://delta.chat/chatmail) или используйте классические почтовые серверы\n\n👉 Push-уведомления для любого почтового сервера чата\n\n👤 Безопасное подключение друзей с помощью функции \"Прикрепить контакты\".\n\n🥰 Реагируйте на сообщения эмоциями\n\n📌 Закрепляйте чаты прямо из поиска … и ещё МНОГОЕ на %1$s</string>
     <string name="update_1_46_ios">Новые Объявления 🐣 и Многое другое:\n\n⚡️ Зарегистрируйтесь на одном из безопасных и быстрых среверов chatmail (https://delta.chat/chatmail) или используйте классические сервера эл.почты\n\n👉 PUSH уведомления на любом из chatmail серверов\n\n👤 Получите \"Прикреплённые контакты\" и присоединяйтесь к вашим друзья\n\n🥰 Выбор быстрой реакции … и Многое другое на %1$s</string>
-    </resources>
+    <string name="update_switch_profile_placement">ℹ️ \"Сменить профиль\" перемещено: Нажмите на изображение вашего профиля в верхнем углу главного экрана, чтобы добавить или переключить профили. 💡</string>
+</resources>

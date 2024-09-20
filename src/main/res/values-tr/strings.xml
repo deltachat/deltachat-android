@@ -605,6 +605,9 @@
     <string name="login_smtp_port">SMTP Bağlantı Noktası</string>
     <string name="login_smtp_security">SMTP Güvenliği</string>
     <string name="login_auth_method">Yetkilendirme Yöntemi</string>
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <string name="proxy_settings">Proxy</string>
+    <string name="proxy_use_proxy">Proxy Kullan</string>
     <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">SOCKS5\'i Kullan</string>
