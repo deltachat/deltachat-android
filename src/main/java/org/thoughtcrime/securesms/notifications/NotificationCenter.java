@@ -168,6 +168,7 @@ public class NotificationCenter {
     public static final int ID_PERMANENT   = 1;
     public static final int ID_MSG_SUMMARY = 2;
     public static final int ID_GENERIC     = 3;
+    public static final int ID_FETCH       = 4;
     public static final int ID_MSG_OFFSET  = 0; // msgId is added - as msgId start at 10, there are no conflicts with lower numbers
 
 

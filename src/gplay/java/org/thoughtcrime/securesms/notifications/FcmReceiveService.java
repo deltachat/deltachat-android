@@ -17,20 +17,15 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
-import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.service.GenericForegroundService;
-import org.thoughtcrime.securesms.service.NotificationController;
+import org.thoughtcrime.securesms.service.FetchForegroundService;
 import org.thoughtcrime.securesms.util.Util;
 
 public class FcmReceiveService extends FirebaseMessagingService {
   private static final String TAG = FcmReceiveService.class.getSimpleName();
   private static final Object INIT_LOCK = new Object();
-  private static final Object NOTIFICATION_CONTROLLER_LOCK = new Object();
-
   private static boolean initialized;
   private static volatile boolean triedRegistering;
   private static volatile String prefixedToken;
-  private static NotificationController notificationController;
 
   public static void register(Context context) {
     if (Build.VERSION.SDK_INT < 19) {
@@ -101,21 +96,11 @@ public class FcmReceiveService extends FirebaseMessagingService {
   @Override
   public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
     Log.i(TAG, "FCM push notification received");
-    synchronized (NOTIFICATION_CONTROLLER_LOCK) {
-      notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.connectivity_updating));
-      if (!ApplicationContext.dcAccounts.backgroundFetch(19)) { // we should complete within 20 seconds
-        notificationController.close();
-        notificationController = null;
-      }
+    FetchForegroundService.start(this);
+    if (!ApplicationContext.dcAccounts.backgroundFetch(19)) { // we should complete within 20 seconds
+      FetchForegroundService.stop(this);
     }
     Log.i(TAG, "background fetch done");
-  }
-
-  public static void backgroundFetchDone() {
-    synchronized (NOTIFICATION_CONTROLLER_LOCK) {
-      notificationController.close();
-      notificationController = null;
-    }
   }
 
   @Override

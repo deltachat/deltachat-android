@@ -11,7 +11,7 @@ import com.b44t.messenger.DcEvent;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.notifications.FcmReceiveService;
+import org.thoughtcrime.securesms.service.FetchForegroundService;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.ArrayList;
@@ -179,7 +179,7 @@ public class DcEventCenter {
         break;
 
       case DcContext.DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE:
-        FcmReceiveService.backgroundFetchDone();
+        FetchForegroundService.stop(context);
         break;
 
       case DcContext.DC_EVENT_IMEX_PROGRESS:
