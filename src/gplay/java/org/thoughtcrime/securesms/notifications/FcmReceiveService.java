@@ -102,7 +102,7 @@ public class FcmReceiveService extends FirebaseMessagingService {
   public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
     Log.i(TAG, "FCM push notification received");
     synchronized (NOTIFICATION_CONTROLLER_LOCK) {
-      notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.connectivity_updating), false);
+      notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.connectivity_updating));
       if (!ApplicationContext.dcAccounts.backgroundFetch(19)) { // we should complete within 20 seconds
         notificationController.close();
         notificationController = null;

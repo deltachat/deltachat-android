@@ -151,7 +151,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   }
 
   private void showProgressDialog() {
-    notificationController = GenericForegroundService.startForegroundTask(getContext(), getString(R.string.export_backup_desktop), true);
+    notificationController = GenericForegroundService.startForegroundTask(getContext(), getString(R.string.export_backup_desktop));
     if( progressDialog!=null ) {
       progressDialog.dismiss();
       progressDialog = null;
