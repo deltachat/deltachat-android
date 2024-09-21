@@ -20,7 +20,7 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
       return;
     }
 
-    if (GenericForegroundService.isForegroundTaskStarted()) {
+    if (GenericForegroundService.hasPinnedActivity()) {
       // this does not prevent intent set by onNewIntent(),
       // however, at least during onboarding,
       // this catches a lot of situations with otherwise weird app states.
