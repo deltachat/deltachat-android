@@ -381,6 +381,10 @@
         android:foregroundServiceType="dataSync" />
 
     <service
+        android:name=".service.FetchForegroundService"
+        android:foregroundServiceType="dataSync" />
+
+    <service
         android:name=".service.IPCAddAccountsService"
         android:foregroundServiceType="dataSync"
         android:enabled="true"
