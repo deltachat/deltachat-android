@@ -4,26 +4,29 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_URL;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcLot;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
-public class ProxySettingsActivity extends BaseActionBarActivity implements ProxyListAdapter.ItemClickListener {
+public class ProxySettingsActivity extends BaseActionBarActivity
+  implements ProxyListAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
 
   private final DynamicTheme dynamicTheme = new DynamicTheme();
   private SwitchCompat proxySwitch;
@@ -55,17 +58,26 @@ public class ProxySettingsActivity extends BaseActionBarActivity implements Prox
       }
     });
 
-    findViewById(R.id.add_proxy_button).setOnClickListener(l -> showAddProxyDialog());
-
     ListView proxyList = findViewById(R.id.proxy_list);
     proxyList.setAdapter(adapter);
+    proxyList.addHeaderView(View.inflate(this, R.layout.proxy_list_header, null), null, false);
+    View footer = View.inflate(this, R.layout.proxy_list_footer, null);
+    footer.setOnClickListener(l -> showAddProxyDialog());
+    proxyList.addFooterView(footer);
     adapter.changeData(DcHelper.get(this, CONFIG_PROXY_URL));
+    DcHelper.getEventCenter(this).addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
   }
 
   @Override
   public void onResume() {
     super.onResume();
     dynamicTheme.onResume(this);
+  }
+
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    DcHelper.getEventCenter(this).removeObservers(this);
   }
 
   public boolean onOptionsItemSelected(MenuItem item) {
@@ -124,6 +136,13 @@ public class ProxySettingsActivity extends BaseActionBarActivity implements Prox
     DcContext dcContext = DcHelper.getContext(this);
     dcContext.stopIo();
     dcContext.startIo();
+  }
+
+  @Override
+  public void handleEvent(@NonNull DcEvent event) {
+    if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
+      adapter.notifyDataSetChanged();
+    }
   }
 
 }

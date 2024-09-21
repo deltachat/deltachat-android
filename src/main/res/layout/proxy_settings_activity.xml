@@ -1,44 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".proxy.ProxySettingsActivity">
 
-  <LinearLayout
+  <androidx.appcompat.widget.SwitchCompat
+      android:id="@+id/proxy_switch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:orientation="vertical">
+      android:padding="16dp"
+      android:text="@string/proxy_use_proxy" />
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/proxy_switch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="@string/proxy_use_proxy" />
+  <ListView
+      android:id="@+id/proxy_list"
+      android:paddingTop="10dp"
+      android:paddingStart="16dp"
+      android:paddingEnd="16dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
 
-    <ListView
-        android:id="@+id/proxy_list"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/add_proxy_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="@string/proxy_add"
-        android:textColor="@color/delta_accent"
-        android:textSize="16sp"
-        android:textStyle="normal"
-        android:typeface="sans" />
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>

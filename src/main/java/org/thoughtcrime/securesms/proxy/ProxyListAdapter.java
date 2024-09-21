@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms.proxy;
 
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
+
 import android.content.Context;
 
 import androidx.annotation.NonNull;
@@ -10,9 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcLot;
+
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -20,12 +27,14 @@ import java.util.List;
 
 public class ProxyListAdapter extends BaseAdapter {
   @NonNull  private final Context context;
+  @NonNull  private final DcContext dcContext;
   @NonNull  private final List<String> proxies = new LinkedList<>();
   @Nullable private ItemClickListener itemClickListener;
 
   public ProxyListAdapter(@NonNull Context context)
   {
     this.context = context;
+    this.dcContext = DcHelper.getContext(context);
   }
 
   public void changeData(String newProxies) {
@@ -54,15 +63,34 @@ public class ProxyListAdapter extends BaseAdapter {
   @Override
   public View getView(final int position, View v, final ViewGroup parent) {
     if (v == null) {
-      v = LayoutInflater.from(context).inflate(R.layout.selected_contact_list_item, parent, false);
+      v = LayoutInflater.from(context).inflate(R.layout.proxy_list_item, parent, false);
     }
 
-    final String proxy = (String)getItem(position);
-    TextView name = v.findViewById(R.id.name);
-    name.setText(proxy);
+    TextView host = v.findViewById(R.id.host);
+    TextView protocol = v.findViewById(R.id.protocol);
+    ImageView checkmark = v.findViewById(R.id.checkmark);
+    TextView status = v.findViewById(R.id.status);
+
+    final String proxyUrl = (String)getItem(position);
+    final DcLot qrParsed = dcContext.checkQr(proxyUrl);
+    if (qrParsed.getState() == DcContext.DC_QR_PROXY) {
+      host.setText(qrParsed.getText1());
+      protocol.setText(proxyUrl.split(":", 2)[0]);
+    } else {
+      host.setText(proxyUrl);
+      protocol.setText(R.string.unknown);
+    }
+    if (position == 0 && DcHelper.getInt(context, CONFIG_PROXY_ENABLED) == 1) {
+      checkmark.setVisibility(View.VISIBLE);
+      status.setVisibility(View.VISIBLE);
+      status.setText(DcHelper.getConnectivitySummary(context, R.string.connectivity_connected));
+    } else {
+      checkmark.setVisibility(View.GONE);
+      status.setVisibility(View.GONE);
+    }
     v.setOnClickListener(view -> {
       if (itemClickListener != null) {
-        itemClickListener.onItemClick(proxy);
+        itemClickListener.onItemClick(proxyUrl);
       }
     });
 
