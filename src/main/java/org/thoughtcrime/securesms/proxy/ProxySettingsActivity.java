@@ -141,7 +141,7 @@ public class ProxySettingsActivity extends BaseActionBarActivity
   @Override
   public void handleEvent(@NonNull DcEvent event) {
     if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
-      adapter.notifyDataSetChanged();
+      adapter.refreshConnectivity();
     }
   }
 

@@ -26,23 +26,23 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ProxyListAdapter extends BaseAdapter {
+  private enum ProxyState {
+    CONNECTED,
+    CONNECTING,
+    NOT_CONNECTED,
+    DISABLED,
+  }
+
   @NonNull  private final Context context;
   @NonNull  private final DcContext dcContext;
   @NonNull  private final List<String> proxies = new LinkedList<>();
   @Nullable private ItemClickListener itemClickListener;
+  @Nullable private ProxyState proxyState;
 
   public ProxyListAdapter(@NonNull Context context)
   {
     this.context = context;
     this.dcContext = DcHelper.getContext(context);
-  }
-
-  public void changeData(String newProxies) {
-    proxies.clear();
-    if (!TextUtils.isEmpty(newProxies)) {
-      Collections.addAll(proxies, newProxies.split("\n"));
-    }
-    notifyDataSetChanged();
   }
 
   @Override
@@ -80,10 +80,10 @@ public class ProxyListAdapter extends BaseAdapter {
       host.setText(proxyUrl);
       protocol.setText(R.string.unknown);
     }
-    if (position == 0 && DcHelper.getInt(context, CONFIG_PROXY_ENABLED) == 1) {
+    if (position == 0 && proxyState != ProxyState.DISABLED) {
       checkmark.setVisibility(View.VISIBLE);
       status.setVisibility(View.VISIBLE);
-      status.setText(DcHelper.getConnectivitySummary(context, R.string.connectivity_connected));
+      status.setText(getConnectivityString());
     } else {
       checkmark.setVisibility(View.GONE);
       status.setVisibility(View.GONE);
@@ -95,6 +95,51 @@ public class ProxyListAdapter extends BaseAdapter {
     });
 
     return v;
+  }
+
+  public void changeData(String newProxies) {
+    proxies.clear();
+    if (!TextUtils.isEmpty(newProxies)) {
+      Collections.addAll(proxies, newProxies.split("\n"));
+    }
+    proxyState = null; // to force notifyDataSetChanged() in refreshConnectivity()
+    refreshConnectivity();
+  }
+
+  private String getConnectivityString() {
+    if (proxyState == ProxyState.CONNECTED) {
+      return context.getString(R.string.connectivity_connected);
+    }
+    if (proxyState == ProxyState.CONNECTING) {
+      return context.getString(R.string.connectivity_connecting);
+    }
+    return context.getString(R.string.connectivity_not_connected);
+  }
+
+  public void refreshConnectivity() {
+    if (DcHelper.getInt(context, CONFIG_PROXY_ENABLED) != 1) {
+      if (proxyState != ProxyState.DISABLED) {
+        proxyState = ProxyState.DISABLED;
+        notifyDataSetChanged();
+      }
+      return;
+    }
+
+    int connectivity = dcContext.getConnectivity();
+    if (connectivity >= DcContext.DC_CONNECTIVITY_WORKING) {
+      if (proxyState != ProxyState.CONNECTED) {
+        proxyState = ProxyState.CONNECTED;
+        notifyDataSetChanged();
+      }
+    } else if (connectivity >= DcContext.DC_CONNECTIVITY_CONNECTING) {
+      if (proxyState != ProxyState.CONNECTING) {
+        proxyState = ProxyState.CONNECTING;
+        notifyDataSetChanged();
+      }
+    } else if (proxyState != ProxyState.NOT_CONNECTED) {
+      proxyState = ProxyState.NOT_CONNECTED;
+      notifyDataSetChanged();
+    }
   }
 
   public void setItemClickListener(@Nullable ItemClickListener listener) {
