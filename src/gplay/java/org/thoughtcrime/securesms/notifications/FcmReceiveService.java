@@ -97,9 +97,13 @@ public class FcmReceiveService extends FirebaseMessagingService {
   public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
     Log.i(TAG, "FCM push notification received");
     FetchForegroundService.start(this);
-    if (!ApplicationContext.dcAccounts.backgroundFetch(19)) { // we should complete within 20 seconds
+
+    // we should complete within 20 seconds,
+    // see https://firebase.google.com/docs/cloud-messaging/android/receive
+    if (!ApplicationContext.dcAccounts.backgroundFetch(19)) {
       FetchForegroundService.stop(this);
     }
+
     Log.i(TAG, "background fetch done");
   }
 
