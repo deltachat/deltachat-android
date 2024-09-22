@@ -109,7 +109,7 @@ public class ProxySettingsActivity extends BaseActionBarActivity
       .setTitle(R.string.proxy_add)
       .setMessage(R.string.proxy_add_explain)
       .setView(view)
-      .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
+      .setPositiveButton(R.string.proxy_use_proxy, (dialog, whichButton) -> {
           String newProxy = inputField.getText().toString().trim();
           DcContext dcContext = DcHelper.getContext(this);
           final DcLot qrParsed = dcContext.checkQr(newProxy);
