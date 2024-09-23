@@ -53,16 +53,11 @@ public final class FetchForegroundService extends Service {
 
     startForeground(NotificationCenter.ID_FETCH, notification);
 
-    // Start explicit fetch only after we marked ourselves as requiring foreground;
-    // this may help we on getting network and time adequately
-    // Fetch is started in background to not block the UI.
-    // We then run not longer than the max. of 20 seconds,
-    // see https://firebase.google.com/docs/cloud-messaging/android/receive .
     Util.runOnAnyBackgroundThread(() -> {
       Log.i(TAG, "Starting fetch");
-      if (!ApplicationContext.dcAccounts.backgroundFetch(19)) {
+      if (!ApplicationContext.dcAccounts.backgroundFetch(300)) { // as startForeground() was called, there is time
         FetchForegroundService.stop(this);
-      }
+      } // else we stop FetchForegroundService on DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE
     });
   }
 
