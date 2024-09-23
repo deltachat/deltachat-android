@@ -97,7 +97,7 @@ public class ProxySettingsActivity extends BaseActionBarActivity
   public void onItemClick(String proxyUrl) {
     if (DcHelper.getContext(this).setConfigFromQr(proxyUrl)) {
       restartIO();
-      adapter.changeData(DcHelper.get(this, CONFIG_PROXY_URL));
+      adapter.setSelectedProxy(proxyUrl);
       proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1);
     } else {
       Toast.makeText(this, R.string.proxy_invalid, Toast.LENGTH_LONG).show();

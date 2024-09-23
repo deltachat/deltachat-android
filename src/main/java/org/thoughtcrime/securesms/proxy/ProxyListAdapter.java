@@ -30,7 +30,6 @@ public class ProxyListAdapter extends BaseAdapter {
     CONNECTED,
     CONNECTING,
     NOT_CONNECTED,
-    DISABLED,
   }
 
   @NonNull  private final Context context;
@@ -38,6 +37,7 @@ public class ProxyListAdapter extends BaseAdapter {
   @NonNull  private final List<String> proxies = new LinkedList<>();
   @Nullable private ItemClickListener itemClickListener;
   @Nullable private ProxyState proxyState;
+  @Nullable private String selectedProxy;
 
   public ProxyListAdapter(@NonNull Context context)
   {
@@ -80,7 +80,7 @@ public class ProxyListAdapter extends BaseAdapter {
       host.setText(proxyUrl);
       protocol.setText(R.string.unknown);
     }
-    if (position == 0 && proxyState != ProxyState.DISABLED) {
+    if (proxyUrl.equals(selectedProxy)) {
       checkmark.setVisibility(View.VISIBLE);
       status.setVisibility(View.VISIBLE);
       status.setText(getConnectivityString());
@@ -113,8 +113,14 @@ public class ProxyListAdapter extends BaseAdapter {
     if (!TextUtils.isEmpty(newProxies)) {
       Collections.addAll(proxies, newProxies.split("\n"));
     }
+    selectedProxy = proxies.isEmpty()? null : proxies.get(0);
     proxyState = null; // to force notifyDataSetChanged() in refreshConnectivity()
     refreshConnectivity();
+  }
+
+  public void setSelectedProxy(String proxyUrl) {
+    selectedProxy = proxyUrl;
+    notifyDataSetChanged();
   }
 
   private String getConnectivityString() {
@@ -129,8 +135,8 @@ public class ProxyListAdapter extends BaseAdapter {
 
   public void refreshConnectivity() {
     if (DcHelper.getInt(context, CONFIG_PROXY_ENABLED) != 1) {
-      if (proxyState != ProxyState.DISABLED) {
-        proxyState = ProxyState.DISABLED;
+      if (proxyState != ProxyState.NOT_CONNECTED) {
+        proxyState = ProxyState.NOT_CONNECTED;
         notifyDataSetChanged();
       }
       return;
