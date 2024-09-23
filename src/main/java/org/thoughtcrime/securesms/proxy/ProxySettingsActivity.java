@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.proxy;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_URL;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +25,9 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.Util;
+
+import java.util.LinkedList;
 
 public class ProxySettingsActivity extends BaseActionBarActivity
   implements ProxyListAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
@@ -98,6 +102,43 @@ public class ProxySettingsActivity extends BaseActionBarActivity
     } else {
       Toast.makeText(this, R.string.proxy_invalid, Toast.LENGTH_LONG).show();
     }
+  }
+
+  @Override
+  public void onItemShare(String proxyUrl) {
+    Intent intent = new Intent(Intent.ACTION_SEND);
+    intent.setType("text/plain");
+    intent.putExtra(Intent.EXTRA_TEXT, proxyUrl);
+    startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
+  }
+
+  @Override
+  public void onItemDelete(String proxyUrl) {
+    String host = DcHelper.getContext(this).checkQr(proxyUrl).getText1();
+    AlertDialog dialog = new AlertDialog.Builder(this)
+      .setTitle(R.string.proxy_delete)
+      .setMessage(getString(R.string.proxy_delete_explain, host))
+      .setPositiveButton(R.string.delete, (dlg, btn) -> deleteProxy(proxyUrl))
+      .setNegativeButton(android.R.string.cancel, null)
+      .show();
+    Util.redPositiveButton(dialog);
+  }
+
+  private void deleteProxy(String proxyUrl) {
+    final LinkedList<String> proxies = new LinkedList<>();
+    for (String proxy: DcHelper.get(this, CONFIG_PROXY_URL).split("\n")) {
+      if (!proxy.equals(proxyUrl)) {
+        proxies.add(proxy);
+      }
+    }
+    if (proxies.isEmpty()) {
+      DcHelper.set(this, CONFIG_PROXY_ENABLED, "0");
+      proxySwitch.setChecked(false);
+    }
+    String proxyUrls = String.join("\n", proxies);
+    DcHelper.set(this, CONFIG_PROXY_URL, proxyUrls);
+    restartIO();
+    adapter.changeData(proxyUrls);
   }
 
   private void showAddProxyDialog() {

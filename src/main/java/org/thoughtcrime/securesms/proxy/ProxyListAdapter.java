@@ -88,9 +88,20 @@ public class ProxyListAdapter extends BaseAdapter {
       checkmark.setVisibility(View.GONE);
       status.setVisibility(View.GONE);
     }
+
     v.setOnClickListener(view -> {
       if (itemClickListener != null) {
         itemClickListener.onItemClick(proxyUrl);
+      }
+    });
+    v.findViewById(R.id.share).setOnClickListener(view -> {
+      if (itemClickListener != null) {
+        itemClickListener.onItemShare(proxyUrl);
+      }
+    });
+    v.findViewById(R.id.delete).setOnClickListener(view -> {
+      if (itemClickListener != null) {
+        itemClickListener.onItemDelete(proxyUrl);
       }
     });
 
@@ -148,5 +159,8 @@ public class ProxyListAdapter extends BaseAdapter {
 
   public interface ItemClickListener {
     void onItemClick(String proxyUrl);
+    void onItemShare(String proxyUrl);
+    void onItemDelete(String proxyUrl);
   }
+
 }

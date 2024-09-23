@@ -611,6 +611,8 @@
     <string name="proxy_add_url_hint">Enter proxy URL here</string>
     <string name="proxy_invalid">Invalid or unsupported proxy URL</string>
     <string name="proxy_list_header">Connections</string>
+    <string name="proxy_delete">Delete Proxy</string>
+    <string name="proxy_delete_explain">Are you sure you want to delete \"%1$s\"?</string>
 
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
