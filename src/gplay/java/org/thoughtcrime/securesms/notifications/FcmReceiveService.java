@@ -96,13 +96,13 @@ public class FcmReceiveService extends FirebaseMessagingService {
   @Override
   public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
     Log.i(TAG, "FCM push notification received");
-    FetchForegroundService.start(this);
+    FetchForegroundService.startIfInBackground(this);
   }
 
   @Override
   public void onDeletedMessages() {
     Log.i(TAG, "FCM push notifications dropped");
-    FetchForegroundService.start(this);
+    FetchForegroundService.startIfInBackground(this);
   }
 
   @Override

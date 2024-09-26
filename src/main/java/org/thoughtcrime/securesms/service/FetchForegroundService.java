@@ -13,6 +13,8 @@ import androidx.core.content.ContextCompat;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.connect.ForegroundDetector;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.Util;
@@ -22,7 +24,17 @@ public final class FetchForegroundService extends Service {
   private static final Object SERVICE_LOCK = new Object();
   private static Intent service;
 
-  public static void start(Context context) {
+  public static void startIfInBackground(Context context) {
+    ForegroundDetector foregroundDetector = ForegroundDetector.getInstance();
+    if (foregroundDetector.isBackground()) {
+      // the app is in background, start visible foreground service to not get killed
+      FetchForegroundService.start(context);
+    } else {
+      DcHelper.getAccounts(context).maybeNetwork();
+    }
+  }
+
+  private static void start(Context context) {
     GenericForegroundService.createFgNotificationChannel(context);
     synchronized (SERVICE_LOCK) {
       if (service == null) {
