@@ -1,5 +1,35 @@
 # Delta Chat Android Changelog
 
+## v1.46.15
+2024-09
+
+* new proxy settings screen available at "Advanced / Proxy"
+* manage a list of HTTP(S), SOCKS5 or Shadowsocks proxies
+* proxies icon shown on the chatlist if proxies are used
+* improve profile deletion dialog: show name, size and avatar of the profile being deleted
+* improve notification: allow to "Mark Read" from the notification
+* automatic reconfiguration, e.g. switching to implicit TLS if STARTTLS port stops working
+* parallelize IMAP and SMTP connection attempts
+* always use preloaded DNS results
+* always move auto-generated messages to DeltaChat folder
+* ignore invalid securejoin messages silently
+* delete messages from a chatmail server immediately by default
+* make resending pending messages possible
+* don't SMTP-send messages to self-chat if BccSelf is disabled
+* HTTP(S) tunneling
+* don't put displayname into From/To/Sender if it equals to address
+* hide sync messages from INBOX (use IMAP APPEND command to upload sync messages)
+* more verbose SMTP connection establishment errors
+* log unexpected message state when resending fails
+* fix: avoid app being killed when processing a PUSH notification
+* fix crash when refreshing avatar
+* fix crash in gallery
+* fix: shorten message text in locally sent messages too
+* fix: Set http I/O timeout to 1 minute rather than whole request timeout
+* fix: don't sync QR code token before populating the group
+* update to core 1.145.0
+
+
 ## v1.46.14
 2024-09
 
