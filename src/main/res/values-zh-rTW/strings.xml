@@ -499,13 +499,14 @@
     <string name="login_smtp_port">SMTP 埠</string>
     <string name="login_smtp_security">SMTP 安全</string>
     <string name="login_auth_method">授權方式</string>
-    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">使用 SOCKS5</string>
     <string name="login_socks5_host">SOCKS5 主機</string>
     <string name="login_socks5_port">SOCKS5 通訊埠</string>
     <string name="login_socks5_user">SOCKS5 使用者</string>
     <string name="login_socks5_password">SOCKS5 密碼</string>
+
     <string name="login_info_oauth2_title">繼續使用簡易設定?</string>
     <string name="login_info_oauth2_text">輸入的電子郵件地址支援簡化設定（OAuth 2.0）。\n\n在下一步中，請允許 Delta Chat 充當你的電子郵件對話應用程式。\n\nDelta Chat 不會收集使用者資料，所有內容都保留在你的裝置上。</string>
     <string name="login_certificate_checks">憑證檢查</string>
@@ -715,6 +716,7 @@
     <string name="qrshow_join_contact_hint">掃描 QRCode 以新增 %1$s</string>
     <string name="please_enter_name">請輸入名稱。</string>
     <!-- notifications  -->
+    <!-- deprecated, use mark_as_read or mark_as_read_short -->
     <string name="notify_dismiss">忽視</string>
     <string name="notify_reply_button">回覆</string>
     <string name="notify_new_message">新訊息</string>

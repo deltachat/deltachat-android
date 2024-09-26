@@ -471,13 +471,14 @@
     <string name="login_smtp_port">SMTP 포트</string>
     <string name="login_smtp_security">SMTP 보안</string>
     <string name="login_auth_method">권한 부여 방법</string>
-    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">SOCKS5 사용</string>
     <string name="login_socks5_host">SOCKS5 호스트</string>
     <string name="login_socks5_port">SOCKS5 포트</string>
     <string name="login_socks5_user">SOCKS5 사용자</string>
     <string name="login_socks5_password">SOCKS5 비밀번호</string>
+
     <string name="login_info_oauth2_title">간소화된 설치를 계속하시겠습니까?</string>
     <string name="login_info_oauth2_text">입력한 이메일 주소는 단순화된 설정(OAuth 2.0)을 지원합니다.\n\n다음 단계에서는 Delta Chat 이 이메일을 통한 채팅 앱 역할을 하도록 허용하십시오.\n\nDelta 채팅 서버가 없으며 데이터가 장치에 남아 있습니다.</string>
     <string name="login_certificate_checks">인증서 확인</string>
@@ -791,6 +792,7 @@
     <string name="mailto_link_could_not_be_decoded">링크로 보내는 메일을 디코딩할 수 없습니다: %1$s</string>
 
     <!-- notifications  -->
+    <!-- deprecated, use mark_as_read or mark_as_read_short -->
     <string name="notify_dismiss">무시하기</string>
     <string name="notify_reply_button">답장하기</string>
     <string name="notify_new_message">새 메시지</string>

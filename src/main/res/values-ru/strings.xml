@@ -14,7 +14,7 @@
     <string name="off">Выкл.</string>
     <string name="def">По умолчанию</string>
     <string name="default_value">По умолчанию (%1$s)</string>
-    <string name="default_value_as_above">По умолчанию (как указано выше)</string>
+    <string name="default_value_as_above">По умолчанию (так же, как выше)</string>
     <string name="custom">Персональная настройка</string>
     <string name="none">Не задано</string>
     <string name="automatic">Автоматически</string>
@@ -295,7 +295,7 @@
     <string name="menu_save_log">Сохранить журнал</string>
     <string name="menu_more_options">Больше настроек</string>
     <string name="menu_learn_spelling">Запоминать правописание </string>
-    <string name="menu_chat_audit_log">Chat Audit Log</string>
+    <string name="menu_chat_audit_log">Журнал аудита чата</string>
     <string name="jump_to_message">Перейти к сообщению</string>
     <string name="copy_json">Копировать JSON</string>
     <string name="replace_draft">Заменить черновик</string>
@@ -477,7 +477,7 @@
 
     <!-- chat audit log -->
     <string name="chat_audit_log_empty_message">Здесь будут появляться системные сообщения этого чата</string>
-    <string name="chat_audit_log_title">Chat Audit Log для %1$s</string>
+    <string name="chat_audit_log_title">Журнал аудита чата для %1$s</string>
     <string name="chat_audit_log_description">Здесь отображаются только системные и информационные сообщения. Полезно для поиска последних действий в чате без прокрутки множества обычных сообщений. </string>
 
     <!-- punycode warning / labeled links -->
@@ -638,13 +638,14 @@
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
     <string name="proxy_settings">Прокси</string>
     <string name="proxy_use_proxy">Использовать прокси</string>
-    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Использовать SOCKS5</string>
     <string name="login_socks5_host">Сервер SOCKS5</string>
     <string name="login_socks5_port">Порт SOCKS5</string>
     <string name="login_socks5_user">Пользователь SOCKS5</string>
     <string name="login_socks5_password">Пароль SOCKS5</string>
+
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
     <string name="login_info_oauth2_text">Введённый адрес эл. почты поддерживает упрощённую настройку (OAuth 2.0).\n\nНа следующем шаге пожалуйста, разрешите Delta Chat выступать в качестве Вашего приложения для Чата по Эл. почте.\n\nDelta Chat не собирает данные пользователей, все данные остаются на вашем устройстве.</string>
     <string name="login_certificate_checks">Проверки сертификатов</string>
@@ -1024,6 +1025,7 @@
     <string name="mailto_link_could_not_be_decoded">ссылка mailto не может быть декодирована: %1$s</string>
 
     <!-- notifications  -->
+    <!-- deprecated, use mark_as_read or mark_as_read_short -->
     <string name="notify_dismiss">Отклонить</string>
     <string name="notify_reply_button">Ответить</string>
     <string name="notify_new_message">Новое сообщение</string>

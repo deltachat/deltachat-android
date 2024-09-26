@@ -608,13 +608,22 @@
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Proxy verwenden</string>
-    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="proxy_add">Proxy hinzufügen</string>
+    <string name="proxy_add_explain">Unterstützte Typen: HTTP(S), SOCKS5 und Shadowsocks.</string>
+    <string name="proxy_add_url_hint">Proxy URL hier eingeben</string>
+    <string name="proxy_invalid">Ungültige oder nicht unterstützte Proxy-URL</string>
+    <string name="proxy_list_header">Proxies</string>
+    <string name="proxy_delete">Proxy löschen</string>
+    <string name="proxy_delete_explain">\"%1$s\" löschen?</string>
+
+    <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">SOCKS5 verwenden</string>
     <string name="login_socks5_host">SOCKS5-Host</string>
     <string name="login_socks5_port">SOCKS5-Port</string>
     <string name="login_socks5_user">SOCKS5-Anmeldename</string>
     <string name="login_socks5_password">SOCKS5-Passwort</string>
+
     <string name="login_info_oauth2_title">Weiter mit vereinfachter Einrichtung?</string>
     <string name="login_info_oauth2_text">Die eingegebene E-Mail-Adresse unterstützt eine vereinfachte Einrichtung (OAuth 2.0).\n\nBitte erlauben Sie Delta Chat im nächsten Schritt, als Chat-über-E-Mail-App zu arbeiten.\n\nDelta Chat sammelt keine Benutzerdaten, alles bleibt auf Ihrem Gerät.</string>
     <string name="login_certificate_checks">Zertifikatsüberprüfung</string>
@@ -994,6 +1003,7 @@
     <string name="mailto_link_could_not_be_decoded">Mailto-Link konnte nicht dekodiert werden: %1$s</string>
 
     <!-- notifications  -->
+    <!-- deprecated, use mark_as_read or mark_as_read_short -->
     <string name="notify_dismiss">Verwerfen</string>
     <string name="notify_reply_button">Antworten</string>
     <string name="notify_new_message">Neue Nachricht</string>

@@ -546,13 +546,14 @@
     <string name="login_smtp_port">Cổng SMTP</string>
     <string name="login_smtp_security">Bảo mật SMTP</string>
     <string name="login_auth_method">Phương thức ủy quyền</string>
-    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Sử dụng SOCKS5</string>
     <string name="login_socks5_host">Máy chủ SOCKS5</string>
     <string name="login_socks5_port">Cổng SOCKS5</string>
     <string name="login_socks5_user">Người dùng SOCKS5</string>
     <string name="login_socks5_password">Mật khẩu SOCKS5</string>
+
     <string name="login_info_oauth2_title">Tiếp tục với thiết lập đơn giản hóa?</string>
     <string name="login_info_oauth2_text">Địa chỉ e-mail đã nhập hỗ trợ thiết lập đơn giản hóa (OAuth 2.0).\n\nTrong bước tiếp theo, vui lòng cho phép Delta Chat hoạt động như ứng dụng Trò chuyện qua E-mail của bạn.\n\nKhông có máy chủ Delta Chat, dữ liệu của bạn vẫn ở trên thiết bị của bạn.</string>
     <string name="login_certificate_checks">Kiểm tra chứng chỉ</string>
@@ -908,6 +909,7 @@
     <string name="mailto_link_could_not_be_decoded">không thể giải mã được liên kết mailto: %1$s</string>
 
     <!-- notifications  -->
+    <!-- deprecated, use mark_as_read or mark_as_read_short -->
     <string name="notify_dismiss">Loại bỏ</string>
     <string name="notify_reply_button">Trả lời</string>
     <string name="notify_new_message">Tin nhắn mới</string>
