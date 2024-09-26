@@ -492,13 +492,14 @@
     <string name="login_smtp_port">Θύρα SMTP</string>
     <string name="login_smtp_security">Ασφάλεια SMTP</string>
     <string name="login_auth_method">Μέθοδος Πιστοποίησης</string>
-    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Χρήση SOCKS5</string>
     <string name="login_socks5_host">SOCKS5 Κεντρικός</string>
     <string name="login_socks5_port">Θύρα SOCKS5</string>
     <string name="login_socks5_user">Χρήστης SOCKS5</string>
     <string name="login_socks5_password">Κωδικός SOCKS5</string>
+
     <string name="login_info_oauth2_title">Συνέχεια με την απλοποιημένη ρύθμιση;</string>
     <string name="login_info_oauth2_text">Η εισαγόμενη διεύθυνση e-mail υποστηρίζει μια απλοποιημένη ρύθμιση (OAuth 2.0).\n\nΣτο επόμενο βήμα, επιτρέψτε στο Delta Chat να λειτουργεί ως η εφαρμογή Chat μέσω ηλεκτρονικού ταχυδρομείου.\n\nΔεν υπάρχουν διακομιστές Delta Chat, τα δεδομένα σας παραμένει στη συσκευή σας.</string>
     <string name="login_certificate_checks">Έλεγχοι Πιστοποιητικών</string>
@@ -829,6 +830,7 @@
     <string name="mailto_link_could_not_be_decoded">Αδυναμία αποκωδικοποίησης του συνδέσμου mailto: %1$s</string>
 
     <!-- notifications  -->
+    <!-- deprecated, use mark_as_read or mark_as_read_short -->
     <string name="notify_dismiss">Απόρριψη</string>
     <string name="notify_reply_button">Απάντηση</string>
     <string name="notify_new_message">Νέο μήνυμα</string>

@@ -518,13 +518,14 @@
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Zabezpečenie SMTP</string>
     <string name="login_auth_method">Metóda autorizácie</string>
-    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Použiť SOCKS5</string>
     <string name="login_socks5_host">SOCKS5 Host</string>
     <string name="login_socks5_port">SOCKS5 Port</string>
     <string name="login_socks5_user">SOCKS5 Používateľ</string>
     <string name="login_socks5_password">SOCKS5 Heslo</string>
+
     <string name="login_info_oauth2_title">Pokračovať v zjednodušenom nastavovaní?</string>
     <string name="login_info_oauth2_text">Zadaná e-mailová adresa podporuje zjednodušené nastavenie (OAuth 2.0).\n\nV ďalšom kroku povoľte aplikácii Delta Chat, aby fungovala ako vaša aplikácia Chat cez e-mail.\n\nNie sú k dispozícii servery Delta Chat, vaše dáta zostanú vo vašom zariadení .</string>
     <string name="login_certificate_checks">Osvedčovacie kontroly</string>
@@ -853,6 +854,7 @@
     <string name="mailto_link_could_not_be_decoded">prepojenie mailto sa nepodarilo dekódovať: %1$s</string>
 
     <!-- notifications  -->
+    <!-- deprecated, use mark_as_read or mark_as_read_short -->
     <string name="notify_dismiss">Odmietnuť</string>
     <string name="notify_reply_button">Odpovedať</string>
     <string name="notify_new_message">Nová správa</string>

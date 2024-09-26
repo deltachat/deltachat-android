@@ -601,13 +601,14 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP säkerhet</string>
     <string name="login_auth_method">Auktoriseringsmetod</string>
-    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Använd SOCKS5</string>
     <string name="login_socks5_host">SOCKS5-värd</string>
     <string name="login_socks5_port">SOCKS5-port</string>
     <string name="login_socks5_user">SOCKS5-användare</string>
     <string name="login_socks5_password">SOCKS5-lösenord</string>
+
     <string name="login_info_oauth2_title">Fortsätta med förenklad installation?</string>
     <string name="login_info_oauth2_text">Den angivna e-postadressen stödjer förenklad inställning (OAuth 2.0).\n\nLåt Delta Chat agera som ditt chatt-över-epost-program, i nästa steg.\n\nDet finns ingen Delta Chat-server, din data stannar på din enhet.</string>
     <string name="login_certificate_checks">Certifikatkontroller</string>
@@ -987,6 +988,7 @@
     <string name="mailto_link_could_not_be_decoded">mailto-länken kunde inte avkodas: %1$s</string>
 
     <!-- notifications  -->
+    <!-- deprecated, use mark_as_read or mark_as_read_short -->
     <string name="notify_dismiss">Avvisa</string>
     <string name="notify_reply_button">Svara</string>
     <string name="notify_new_message">Nytt meddelande</string>

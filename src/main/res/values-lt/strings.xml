@@ -470,13 +470,14 @@
     <string name="login_smtp_port">SMTP prievadas</string>
     <string name="login_smtp_security">SMTP saugumas</string>
     <string name="login_auth_method">Įgaliojimų suteikimo metodas</string>
-    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Naudoti SOCKS5</string>
     <string name="login_socks5_host">SOCKS5 serveris</string>
     <string name="login_socks5_port">SOCKS5 prievadas</string>
     <string name="login_socks5_user">SOCKS5 naudotojas</string>
     <string name="login_socks5_password">SOCKS5 slaptažodis</string>
+
     <string name="login_info_oauth2_title">Tęsti, naudojant supaprastintą sąranką?</string>
     <string name="login_certificate_checks">Liudijimų patikrinimai</string>
     <string name="login_error_mail">Įveskite teisingą el. pašto adresą.</string>
@@ -755,6 +756,7 @@
     <string name="mailto_link_could_not_be_decoded">nepavyko dekoduoti mailto nuorodos: %1$s</string>
 
     <!-- notifications  -->
+    <!-- deprecated, use mark_as_read or mark_as_read_short -->
     <string name="notify_dismiss">Atmesti</string>
     <string name="notify_reply_button">Atsakyti</string>
     <string name="notify_new_message">Nauja žinutė</string>

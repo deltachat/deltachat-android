@@ -56,7 +56,7 @@
     <string name="mark_all_as_read">Segna Tutti come Letti</string>
     <string name="mark_as_read">Segna come Letto</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
-    <string name="mark_as_read_short">Leggi</string>
+    <string name="mark_as_read_short">Segna Letto</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Caricamento in Corso…</string>
     <string name="hide">Nascondi</string>
@@ -623,13 +623,14 @@
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Usa Proxy</string>
-    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Usa SOCKS5</string>
     <string name="login_socks5_host">SOCKS5 Host</string>
     <string name="login_socks5_port">SOCKS5 Porta</string>
     <string name="login_socks5_user">SOCKS5 Utente</string>
     <string name="login_socks5_password">SOCKS5 Password</string>
+
     <string name="login_info_oauth2_title">Usare il setup semplificato?</string>
     <string name="login_info_oauth2_text">L\'indirizzo email inserito supporta l\'autenticazione semplificata (OAuth2.0).\n\nContinuando, puoi autorizzare Delta Chat a operare come app di messaggistica via e-mail.\n\nNon esistono server di Delta Chat, i tuoi dati restano nel tuo dispositivo!</string>
     <string name="login_certificate_checks">Controlli Certificato</string>
@@ -1009,6 +1010,7 @@
     <string name="mailto_link_could_not_be_decoded">Il link mailto non può essere decodificato: %1$s</string>
 
     <!-- notifications  -->
+    <!-- deprecated, use mark_as_read or mark_as_read_short -->
     <string name="notify_dismiss">Ignora</string>
     <string name="notify_reply_button">Rispondi</string>
     <string name="notify_new_message">Nuovo messaggio</string>

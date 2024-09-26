@@ -574,13 +574,14 @@
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Sécurité SMTP</string>
     <string name="login_auth_method">Méthode d\'autorisation</string>
-    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Utiliser SOCKS5</string>
     <string name="login_socks5_host">Hôte SOCKS5</string>
     <string name="login_socks5_port">Port SOCKS5</string>
     <string name="login_socks5_user">Utilisateur SOCKS5</string>
     <string name="login_socks5_password">Mot de passe SOCKS5</string>
+
     <string name="login_info_oauth2_title">Continuer avec une configuration simplifiée ?</string>
     <string name="login_info_oauth2_text">L\'adresse de courriel saisie prend en charge une configuration simplifiée (OAuth2.0). \n\nDans l\'étape suivante, autorisez Delta Chat à agir comme votre application de Chat avec courriel . Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
     <string name="login_certificate_checks">Vérification du certificat</string>
@@ -933,6 +934,7 @@
     <string name="mailto_link_could_not_be_decoded">Le lien mailto n\'a pas pu être décodé: %1$s</string>
 
     <!-- notifications  -->
+    <!-- deprecated, use mark_as_read or mark_as_read_short -->
     <string name="notify_dismiss">Rejeter</string>
     <string name="notify_reply_button">Répondre</string>
     <string name="notify_new_message">Nouveau message</string>
