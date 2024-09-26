@@ -5,12 +5,7 @@
     <item android:title="@string/qr_code"
           android:id="@+id/menu_qr"
           android:icon="@drawable/baseline_qr_code_24"
-          app:showAsAction="always"/>
-
-    <item android:title="@string/proxy_settings"
-          android:id="@+id/menu_proxy_settings"
-          android:visible="false"
-          />
+          app:showAsAction="ifRoom"/>
 
     <item android:title="@string/invite_friends"
           android:id="@+id/menu_invite_friends" />
@@ -23,6 +18,13 @@
 
     <item android:title="@string/menu_show_global_map"
         android:id="@+id/menu_global_map"
+        android:visible="false"
+        />
+
+    <item android:title="@string/proxy_settings"
+        android:id="@+id/menu_proxy_settings"
+        android:icon="@drawable/baseline_proxy_24"
+        app:showAsAction="always"
         android:visible="false"
         />
 
