@@ -608,13 +608,22 @@
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Use Proxy</string>
-    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="proxy_add">Add Proxy</string>
+    <string name="proxy_add_explain">Supported proxy types: HTTP(S), SOCKS5 and Shadowsocks.</string>
+    <string name="proxy_add_url_hint">Enter proxy URL here</string>
+    <string name="proxy_invalid">Invalid or unsupported proxy URL</string>
+    <string name="proxy_list_header">Connections</string>
+    <string name="proxy_delete">Delete Proxy</string>
+    <string name="proxy_delete_explain">Are you sure you want to delete \"%1$s\"?</string>
+
+    <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Use SOCKS5</string>
     <string name="login_socks5_host">SOCKS5 Host</string>
     <string name="login_socks5_port">SOCKS5 Port</string>
     <string name="login_socks5_user">SOCKS5 User</string>
     <string name="login_socks5_password">SOCKS5 Password</string>
+
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
     <string name="login_info_oauth2_text">The entered e-mail address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to act as your Chat over E-mail app.\n\nDelta Chat does not collect user data, everything stays on your device.</string>
     <string name="login_certificate_checks">Certificate Checks</string>

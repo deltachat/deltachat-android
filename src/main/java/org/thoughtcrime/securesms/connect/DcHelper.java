@@ -72,11 +72,8 @@ public class DcHelper {
     public static final String CONFIG_SHOW_EMAILS = "show_emails";
     public static final String CONFIG_MEDIA_QUALITY = "media_quality";
     public static final String CONFIG_WEBRTC_INSTANCE = "webrtc_instance";
-    public static final String CONFIG_SOCKS5_ENABLED = "socks5_enabled";
-    public static final String CONFIG_SOCKS5_HOST = "socks5_host";
-    public static final String CONFIG_SOCKS5_PORT = "socks5_port";
-    public static final String CONFIG_SOCKS5_USER = "socks5_user";
-    public static final String CONFIG_SOCKS5_PASSWORD = "socks5_password";
+    public static final String CONFIG_PROXY_ENABLED = "proxy_enabled";
+    public static final String CONFIG_PROXY_URL = "proxy_url";
     public static final String CONFIG_VERIFIED_ONE_ON_ONE_CHATS = "verified_one_on_one_chats";
     public static final String CONFIG_WEBXDC_REALTIME_ENABLED = "webxdc_realtime_enabled";
 

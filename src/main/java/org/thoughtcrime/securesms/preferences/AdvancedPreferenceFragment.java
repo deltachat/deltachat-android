@@ -37,7 +37,7 @@ import com.b44t.messenger.rpc.RpcException;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
-import org.thoughtcrime.securesms.ProxySettingsActivity;
+import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.RegistrationActivity;
 import org.thoughtcrime.securesms.connect.DcEventCenter;

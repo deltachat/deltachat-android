@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:background="?attr/conversation_list_item_background"
+    >
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:paddingTop="10dp"
+      android:paddingBottom="10dp"
+      android:text="@string/proxy_add"
+      android:drawablePadding="5dp"
+      android:singleLine="true"
+      android:ellipsize="marquee"
+      android:fontFamily="sans-serif"
+      android:textSize="16sp"
+      />
+
+</LinearLayout>
