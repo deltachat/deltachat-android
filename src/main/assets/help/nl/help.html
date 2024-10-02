@@ -55,7 +55,7 @@
       <li><a href="#how-can-i-ensure-message-end-to-end-encryption-and-deletion">How can I ensure message end-to-end encryption and deletion?</a></li>
       <li><a href="#pfs">Does Delta Chat support Perfect Forward Secrecy?</a></li>
       <li><a href="#is-end-to-end-encryption-of-delta-chat-as-safe-as-signal">Is end-to-end encryption of Delta Chat as safe as Signal?</a></li>
-      <li><a href="#kan-ik-mijn-bestaande-privésleutel-hergebruiken">Kan ik mijn bestaande privésleutel hergebruiken?</a></li>
+      <li><a href="#importkey">Kan ik mijn bestaande privésleutel hergebruiken?</a></li>
       <li><a href="#ik-kan-mijn-bestaande-pgp-sleutel-niet-importeren">Ik kan mijn bestaande PGP-sleutel niet importeren</a></li>
       <li><a href="#security-audits">Heeft Delta Chat ooit onafhankelijke beveiligingscontroles ondergaan?</a></li>
     </ul>
@@ -97,7 +97,7 @@
       <li><a href="#waarom-kan-ik-kiezen-om-de-map-verzonden-te-controleren">Waarom kan ik kiezen om de map ‘Verzonden’ te controleren?</a></li>
       <li><a href="#waarom-kan-ik-kiezen-om-de-deltachat-map-te-negeren">Waarom kan ik kiezen om de DeltaChat-map te negeren?</a></li>
       <li><a href="#is-delta-chat-compatibel-met-protonmailtutanotacriptext">Is Delta Chat compatibel met Protonmail/Tutanota/Criptext?</a></li>
-      <li><a href="#hoe-kan-ik-mijn-account-verwijderen">Hoe kan ik mijn account verwijderen?</a></li>
+      <li><a href="#remove-account">Hoe kan ik mijn account verwijderen?</a></li>
       <li><a href="#ik-wil-graag-meer-weten-over-de-gebruikte-technieken-waar-kan-ik-meer-informatie-vinden">Ik wil graag meer weten over de gebruikte technieken. Waar kan ik meer informatie vinden?</a></li>
       <li><a href="#hoe-wordt-de-ontwikkeling-van-delta-chat-gefinancierd">Hoe wordt de ontwikkeling van Delta Chat gefinancierd?</a></li>
     </ul>
@@ -1143,10 +1143,10 @@ past encrypted messages.</p>
 <p>In any case, Delta Chat’s end-to-end encryption uses a <a href="#openpgp-secure">secure subset of OpenPGP</a>
 which has been <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">independently security-audited</a>.</p>
     
-      <h3 id="kan-ik-mijn-bestaande-privésleutel-hergebruiken">
+      <h3 id="importkey">
         
         
-          Kan ik mijn bestaande privésleutel hergebruiken? <a href="#kan-ik-mijn-bestaande-privésleutel-hergebruiken" class="anchor"></a>
+          Kan ik mijn bestaande privésleutel hergebruiken? <a href="#importkey" class="anchor"></a>
         
         
       </h3>
@@ -1823,22 +1823,38 @@ uses.</li>
 <a href="https://autocrypt.org/dev-status.html">Autocrypt-enabled e-mail app</a>.</li>
 </ul>
     
-      <h3 id="hoe-kan-ik-mijn-account-verwijderen">
+      <h3 id="remove-account">
         
         
-          Hoe kan ik mijn account verwijderen? <a href="#hoe-kan-ik-mijn-account-verwijderen" class="anchor"></a>
+          Hoe kan ik mijn account verwijderen? <a href="#remove-account" class="anchor"></a>
         
         
       </h3>
 
-<p>Delta Chat maakt gebruik van je e-mailaccount,
-dus de verwijderprocedure is afhankelijk van je provider.
-We hebben geen zeggenschap over je account,
-dus helaas kunnen we je daar niet bij helpen.</p>
+<p>If you use a default chat profile
+you can simply uninstall the app.
+This will automatically trigger deletion of all associated account data on the chatmail server.
+For more info, please refer to <a href="https://nine.testrun.org/info.html#account-deletion">nine.testrun.org account-deletion</a> for the default onboarding server,
+or the respective page from your chosen <a href="https://delta.chat/nl/chatmail">3rd party chatmail server</a>.</p>
 
-<p>Als je je account wilt behouden maar Delta Chat
-niet wilt verwijderen, verlaat dan groeps-
-gesprekken voordat je Delta Chat verwijdert.</p>
+<p>If you have set up your chat profile on multiple devices
+you need to remove it from all devices.</p>
+
+<p>If you are using more than one account,
+but don’t want to get rid of all of them,
+you can remove it in the account switcher menu (on android and iOS),
+or in the sidebar with a right click (in the desktop client).</p>
+
+<p>Accounts on <a href="https://providers.delta.chat">classic e-mail providers</a>
+will not be deleted automatically;
+how you can delete your account depends on your e-mail provider.
+We don’t have any control over e-mail accounts at those providers,
+so unfortunately we can’t help you with that.</p>
+
+<p>If you want to continue using a classic e-mail account with other apps,
+but uninstall Delta Chat,
+it is recommended to leave any group chat before uninstalling Delta Chat.
+Otherwise you might receive undecryptable messages from those group chats.</p>
     
       <h3 id="ik-wil-graag-meer-weten-over-de-gebruikte-technieken-waar-kan-ik-meer-informatie-vinden">
         

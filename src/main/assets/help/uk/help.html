@@ -55,7 +55,7 @@
       <li><a href="#як-забезпечити-наскрізне-шифрування-та-видалення-повідомлень">Як забезпечити наскрізне шифрування та видалення повідомлень?</a></li>
       <li><a href="#pfs">Чи підтримує Delta Chat цілковиту пряму секретність (Perfect Forward Secrecy)?</a></li>
       <li><a href="#чи-є-наскрізне-шифрування-delta-chat-таким-же-безпечним-як-signal">Чи є наскрізне шифрування Delta Chat таким же безпечним, як Signal?</a></li>
-      <li><a href="#чи-можна-повторно-використовувати-існуючий-закритий-ключ">Чи можна повторно використовувати існуючий закритий ключ?</a></li>
+      <li><a href="#importkey">Чи можна повторно використовувати існуючий закритий ключ?</a></li>
       <li><a href="#я-не-можу-імпортувати-свій-існуючий-pgp-ключ-у-delta-chat">Я не можу імпортувати свій існуючий PGP ключ у Delta Chat.</a></li>
       <li><a href="#security-audits">Чи проходив Delta Chat незалежний аудит на наявність вразливостей у безпеці?</a></li>
     </ul>
@@ -97,7 +97,7 @@
       <li><a href="#чому-я-можу-обрати-стеження-за--папкою-надіслані">Чому я можу обрати стеження за  папкою “Надіслані”?</a></li>
       <li><a href="#чому-я-можу-відмовитись-від-стеження-за--папкою-deltachat">Чому я можу відмовитись від стеження за  папкою DeltaChat?</a></li>
       <li><a href="#чи-сумісний-delta-chat-із-protonmail--tutanota--criptext">Чи сумісний Delta Chat із Protonmail / Tutanota / Criptext?</a></li>
-      <li><a href="#як-мені-видалити-свій-обліковий-запис">Як мені видалити свій обліковий запис?</a></li>
+      <li><a href="#remove-account">Як мені видалити свій обліковий запис?</a></li>
       <li><a href="#мене-цікавлять-технічні-деталі-можете-розповісти-більше">Мене цікавлять технічні деталі. Можете розповісти більше?</a></li>
       <li><a href="#як-фінансується-розробка-delta-chat">Як фінансується розробка Delta Chat?</a></li>
     </ul>
@@ -831,10 +831,10 @@ Autocrypt використовує обмежену і <a href="#openpgp-secure"
 
 <p>У будь-якому випадку, наскрізне шифрування Delta Chat використовує <a href="#openpgp-secure">безпечну підмножину OpenPGP</a> який пройшов <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">незалежний аудит безпеки</a>.</p>
     
-      <h3 id="чи-можна-повторно-використовувати-існуючий-закритий-ключ">
+      <h3 id="importkey">
         
         
-          Чи можна повторно використовувати існуючий закритий ключ? <a href="#чи-можна-повторно-використовувати-існуючий-закритий-ключ" class="anchor"></a>
+          Чи можна повторно використовувати існуючий закритий ключ? <a href="#importkey" class="anchor"></a>
         
         
       </h3>
@@ -1344,17 +1344,38 @@ Look for something like <strong>Start Autocrypt Setup Transfer</strong> in the s
   <li>Delta Chat може наскрізно шифрувати через будь-якого провайдера електронної пошти з будь-якою <a href="https://autocrypt.org/dev-status.html">поштовою програмою з підтримкою автошифрування</a>.</li>
 </ul>
     
-      <h3 id="як-мені-видалити-свій-обліковий-запис">
+      <h3 id="remove-account">
         
         
-          Як мені видалити свій обліковий запис? <a href="#як-мені-видалити-свій-обліковий-запис" class="anchor"></a>
+          Як мені видалити свій обліковий запис? <a href="#remove-account" class="anchor"></a>
         
         
       </h3>
 
-<p>Оскільки ви використовуєте обліковий запис електронної пошти для Delta Chat, спосіб видалення облікового запису залежить від вашого постачальника послуг електронної пошти. Ми не маємо жодного контролю над вашим обліковим записом електронної пошти, тому, на жаль, ми не можемо вам у цьому допомогти.</p>
+<p>If you use a default chat profile
+you can simply uninstall the app.
+This will automatically trigger deletion of all associated account data on the chatmail server.
+For more info, please refer to <a href="https://nine.testrun.org/info.html#account-deletion">nine.testrun.org account-deletion</a> for the default onboarding server,
+or the respective page from your chosen <a href="https://delta.chat/uk/chatmail">3rd party chatmail server</a>.</p>
 
-<p>Якщо ви хочете зберегти обліковий запис, але видалити Delta Chat, перед видаленням Delta Chat рекомендується покинути будь-які групові чати.</p>
+<p>If you have set up your chat profile on multiple devices
+you need to remove it from all devices.</p>
+
+<p>If you are using more than one account,
+but don’t want to get rid of all of them,
+you can remove it in the account switcher menu (on android and iOS),
+or in the sidebar with a right click (in the desktop client).</p>
+
+<p>Accounts on <a href="https://providers.delta.chat">classic e-mail providers</a>
+will not be deleted automatically;
+how you can delete your account depends on your e-mail provider.
+We don’t have any control over e-mail accounts at those providers,
+so unfortunately we can’t help you with that.</p>
+
+<p>If you want to continue using a classic e-mail account with other apps,
+but uninstall Delta Chat,
+it is recommended to leave any group chat before uninstalling Delta Chat.
+Otherwise you might receive undecryptable messages from those group chats.</p>
     
       <h3 id="мене-цікавлять-технічні-деталі-можете-розповісти-більше">
         
