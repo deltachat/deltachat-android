@@ -608,6 +608,14 @@
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Proxy Kullan</string>
+    <string name="proxy_add">Proxy Ekle</string>
+    <string name="proxy_add_explain">Desteklenen proxy türleri: HTTP(S), SOCKS5 ve Shadowsocks.</string>
+    <string name="proxy_add_url_hint">Buraya proxy URL\'sini girin</string>
+    <string name="proxy_invalid">Geçersiz ya da desteklenmeyen proxy URL\'si</string>
+    <string name="proxy_list_header">Kaydedilen Proxy\'ler</string>
+    <string name="proxy_delete">Proxy\'yi Sil</string>
+    <string name="proxy_delete_explain">\"%1$s\" proxy\'sini silmek istediğinizden emin misiniz?</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">SOCKS5\'i Kullan</string>

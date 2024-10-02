@@ -602,6 +602,14 @@
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
     <string name="proxy_settings">Ndërmjetës</string>
     <string name="proxy_use_proxy">Përdor Ndërmjetës</string>
+    <string name="proxy_add">Shtoni Ndërmjetës</string>
+    <string name="proxy_add_explain">Lloje ndërmjetësish që mbulohen: HTTP(S), SOCKS5 dhe Shadowsocks.</string>
+    <string name="proxy_add_url_hint">Jepni këtu URL-në e ndërmjetësit</string>
+    <string name="proxy_invalid">URL ndërmjetësi e pavlefshme, ose që s’mbulohet</string>
+    <string name="proxy_list_header">Ndërmjetës të Ruajtur</string>
+    <string name="proxy_delete">Fshije Ndërmjetësin</string>
+    <string name="proxy_delete_explain">Jeni i sigurt se doni të fshihet “%1$s”?</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Përdor SOCKS5</string>
