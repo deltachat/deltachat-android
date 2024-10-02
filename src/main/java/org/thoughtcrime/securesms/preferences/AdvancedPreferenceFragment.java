@@ -460,6 +460,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                   }
               )
               .setNegativeButton(R.string.cancel, null)
+              .setNeutralButton(R.string.learn_more, (d, w) -> DcHelper.openHelp(getActivity(), "#importkey"))
               .show();
         })
         .execute();
