@@ -638,6 +638,14 @@
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Użyj proxy</string>
+    <string name="proxy_add">Dodaj proxy</string>
+    <string name="proxy_add_explain">Obsługiwane typy serwerów proxy: HTTP(S), SOCKS5 i Shadowsocks.</string>
+    <string name="proxy_add_url_hint">Wpisz tu URL proxy</string>
+    <string name="proxy_invalid">Nieprawidłowy lub nieobsługiwany URL proxy</string>
+    <string name="proxy_list_header">Zapisane proxy</string>
+    <string name="proxy_delete">Usuń proxy</string>
+    <string name="proxy_delete_explain">Na pewno chcesz usunąć „%1$s”?</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Użyj SOCKS5</string>

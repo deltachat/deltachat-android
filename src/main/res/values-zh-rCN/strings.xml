@@ -593,6 +593,14 @@
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
     <string name="proxy_settings">代理</string>
     <string name="proxy_use_proxy">使用代理</string>
+    <string name="proxy_add">添加代理</string>
+    <string name="proxy_add_explain">支持的代理类型：HTTP(S)、SOCKS5 和 Shadowsocks.</string>
+    <string name="proxy_add_url_hint">在此输入代理 URL</string>
+    <string name="proxy_invalid">无效或不受支持的代理 URL</string>
+    <string name="proxy_list_header">已保存的代理</string>
+    <string name="proxy_delete">删除代理</string>
+    <string name="proxy_delete_explain">你确定要删除 \"%1$s\"吗？</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">使用 SOCKS5 代理</string>
