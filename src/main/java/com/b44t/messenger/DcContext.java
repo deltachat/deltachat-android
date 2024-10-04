@@ -182,7 +182,6 @@ public class DcContext {
     public native int[]        searchMsgs           (int chat_id, String query);
     public native int[]        getFreshMsgs         ();
     public native int[]        getChatMedia         (int chat_id, int type1, int type2, int type3);
-    public native int          getNextMedia         (int msg_id, int dir, int type1, int type2, int type3);
     public native int[]        getChatContacts      (int chat_id);
     public native int          getChatEphemeralTimer (int chat_id);
     public native boolean      setChatEphemeralTimer (int chat_id, int timer);
