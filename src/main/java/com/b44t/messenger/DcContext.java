@@ -235,6 +235,14 @@ public class DcContext {
       return ret.trim();
     }
 
+    public String getName() {
+      String displayname = getConfig("displayname");
+      if (displayname.isEmpty()) {
+        displayname = getConfig("addr");
+      }
+      return displayname;
+    }
+
     public boolean isChatmail() {
       return getConfigInt("is_chatmail") == 1;
     }
