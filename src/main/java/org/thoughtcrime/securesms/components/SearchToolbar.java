@@ -27,6 +27,7 @@ public class SearchToolbar extends LinearLayout {
   private static final String TAG = SearchToolbar.class.getSimpleName();
   private float x, y;
   private MenuItem searchItem;
+  private EditText searchText;
   private SearchListener listener;
 
   public SearchToolbar(Context context) {
@@ -63,7 +64,7 @@ public class SearchToolbar extends LinearLayout {
 
     this.searchItem = toolbar.getMenu().findItem(R.id.action_filter_search);
     SearchView searchView = (SearchView) searchItem.getActionView();
-    EditText   searchText = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+    searchText = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
     searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
     searchView.setSubmitButtonEnabled(false);
@@ -105,6 +106,17 @@ public class SearchToolbar extends LinearLayout {
         hide();
         return true;
       }
+    });
+
+    MenuItem searchUnread = toolbar.getMenu().findItem(R.id.search_unread);
+    searchUnread.setOnMenuItemClickListener(item -> {
+      String t = searchText.getText().toString();
+      if (!t.contains("is:unread")) {
+        t += (t.isEmpty() ? "" : " ") + "is:unread ";
+      }
+      searchText.setText(t);
+      searchText.setSelection(t.length(), t.length());
+      return true;
     });
 
     toolbar.setNavigationOnClickListener(v -> hide());

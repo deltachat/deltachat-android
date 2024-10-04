@@ -8,4 +8,8 @@
             app:actionViewClass="androidx.appcompat.widget.SearchView"
             app:showAsAction="collapseActionView|always" />
 
+    <item android:title="@string/search_unread"
+        android:id="@+id/search_unread"
+        app:showAsAction="never"/>
+
 </menu>
