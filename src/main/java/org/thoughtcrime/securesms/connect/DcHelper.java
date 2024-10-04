@@ -452,10 +452,6 @@ public class DcHelper {
       }
   }
 
-  public static String getConnectivitySummary(Context context, int connectedString) {
-    return getConnectivitySummary(context, context.getString(connectedString));
-  }
-
   public static void showVerificationBrokenDialog(Context context, String name) {
     new AlertDialog.Builder(context)
       .setMessage(context.getString(R.string.chat_protection_broken_explanation, name))
