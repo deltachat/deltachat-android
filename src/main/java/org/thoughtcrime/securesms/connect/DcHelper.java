@@ -435,13 +435,14 @@ public class DcHelper {
    * Gets a string you can show to the user with basic information about connectivity.
    * @param context
    * @param connectedString Usually "Connected", but when using this as the title in
-   *                        ConversationListActivity, we want to write "Delta Chat" there instead.
+   *                        ConversationListActivity, we want to write "Delta Chat"
+   *                        or the user's display name there instead.
    * @return
    */
-  public static String getConnectivitySummary(Context context, int connectedString) {
+  public static String getConnectivitySummary(Context context, String connectedString) {
       int connectivity = getContext(context).getConnectivity();
       if (connectivity >= DcContext.DC_CONNECTIVITY_CONNECTED) {
-          return context.getString(connectedString);
+          return connectedString;
       } else if (connectivity >= DcContext.DC_CONNECTIVITY_WORKING) {
           return context.getString(R.string.connectivity_updating);
       } else if (connectivity >= DcContext.DC_CONNECTIVITY_CONNECTING) {

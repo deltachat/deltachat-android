@@ -298,7 +298,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       }
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     } else {
-      title.setText(DcHelper.getConnectivitySummary(this, R.string.app_name));
+      boolean multiProfile = DcHelper.getAccounts(this).getAll().length > 1;
+      String defText = multiProfile? DcHelper.getContext(this).getName() : getString(R.string.app_name);
+      title.setText(DcHelper.getConnectivitySummary(this, defText));
       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
   }
