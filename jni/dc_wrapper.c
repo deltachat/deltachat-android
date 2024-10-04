@@ -1331,12 +1331,6 @@ JNIEXPORT jintArray Java_com_b44t_messenger_DcContext_getChatMedia(JNIEnv *env, 
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_getNextMedia(JNIEnv *env, jobject obj, jint msg_id, jint dir, jint type1, jint type2, jint type3)
-{
-    return dc_get_next_media(get_dc_context(env, obj), msg_id, dir, type1, type2, type3);
-}
-
-
 JNIEXPORT jintArray Java_com_b44t_messenger_DcContext_getChatMsgs(JNIEnv *env, jobject obj, jint chat_id, jint flags, jint marker1before)
 {
     dc_array_t* ca = dc_get_chat_msgs(get_dc_context(env, obj), chat_id, flags, marker1before);
