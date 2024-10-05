@@ -252,7 +252,22 @@
     <activity android:name=".proxy.ProxySettingsActivity"
               android:label="@string/proxy_settings"
               android:windowSoftInputMode="stateHidden"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
+              android:exported="true"
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
+
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <!-- Android's scheme matcher is case-sensitive, so include most likely variations -->
+            <data android:scheme="ss" />
+            <data android:scheme="socks5" />
+            <data android:scheme="SOCKS5" tools:ignore="AppLinkUrlError" />
+            <data android:scheme="SS" tools:ignore="AppLinkUrlError" />
+        </intent-filter>
+
+    </activity>
+
 
     <activity android:name=".LogViewActivity"
               android:label="@string/pref_log_header"

@@ -4,6 +4,7 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_URL;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -70,6 +71,14 @@ public class ProxySettingsActivity extends BaseActionBarActivity
     proxyList.addFooterView(footer);
     adapter.changeData(DcHelper.get(this, CONFIG_PROXY_URL));
     DcHelper.getEventCenter(this).addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
+
+    handleOpenProxyUrl();
+  }
+
+  @Override
+  protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+    handleOpenProxyUrl();
   }
 
   @Override
@@ -171,6 +180,34 @@ public class ProxySettingsActivity extends BaseActionBarActivity
       })
       .setCancelable(false)
       .show();
+  }
+
+  private void handleOpenProxyUrl() {
+    if (getIntent() != null && Intent.ACTION_VIEW.equals(getIntent().getAction())) {
+      Uri uri = getIntent().getData();
+      if (uri == null) {
+        return;
+      }
+
+      DcContext dcContext = DcHelper.getContext(this);
+      final DcLot qrParsed = dcContext.checkQr(uri.toString());
+      if (qrParsed.getState() == DcContext.DC_QR_PROXY) {
+        new AlertDialog.Builder(this)
+          .setTitle(R.string.proxy_use_proxy)
+          .setMessage(getString(R.string.proxy_use_proxy_confirm, qrParsed.getText1()))
+          .setPositiveButton(R.string.proxy_use_proxy, (dlg, btn) -> {
+              dcContext.setConfigFromQr(uri.toString());
+              dcContext.restartIo();
+              adapter.changeData(DcHelper.get(this, CONFIG_PROXY_URL));
+              proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1);
+          })
+          .setNegativeButton(R.string.cancel, null)
+          .setCancelable(false)
+          .show();
+      } else {
+        Toast.makeText(this, R.string.proxy_invalid, Toast.LENGTH_LONG).show();
+      }
+    }
   }
 
   @Override
