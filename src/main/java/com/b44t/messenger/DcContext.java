@@ -263,6 +263,11 @@ public class DcContext {
       return oauth2url.startsWith("https://accounts.google.com/");
     }
 
+    public void restartIo() {
+      stopIo();
+      startIo();
+    }
+
     /**
      * @return true if at least one chat has location streaming enabled
      */

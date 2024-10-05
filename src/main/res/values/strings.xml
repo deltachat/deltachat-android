@@ -615,6 +615,7 @@
     <string name="proxy_list_header">Saved Proxies</string>
     <string name="proxy_delete">Delete Proxy</string>
     <string name="proxy_delete_explain">Are you sure you want to delete \"%1$s\"?</string>
+    <string name="proxy_use_proxy_confirm">Do you want to use proxy \"%1$s\"?</string>
 
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>

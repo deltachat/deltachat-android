@@ -58,7 +58,7 @@ public class ProxySettingsActivity extends BaseActionBarActivity
         showAddProxyDialog();
       } else {
         DcHelper.set(this, CONFIG_PROXY_ENABLED, proxySwitch.isChecked()? "1" : "0");
-        restartIO();
+        DcHelper.getContext(this).restartIo();
       }
     });
 
@@ -96,7 +96,7 @@ public class ProxySettingsActivity extends BaseActionBarActivity
   @Override
   public void onItemClick(String proxyUrl) {
     if (DcHelper.getContext(this).setConfigFromQr(proxyUrl)) {
-      restartIO();
+      DcHelper.getContext(this).restartIo();
       adapter.setSelectedProxy(proxyUrl);
       proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1);
     } else {
@@ -137,7 +137,7 @@ public class ProxySettingsActivity extends BaseActionBarActivity
     }
     String proxyUrls = String.join("\n", proxies);
     DcHelper.set(this, CONFIG_PROXY_URL, proxyUrls);
-    restartIO();
+    DcHelper.getContext(this).restartIo();
     adapter.changeData(proxyUrls);
   }
 
@@ -156,7 +156,7 @@ public class ProxySettingsActivity extends BaseActionBarActivity
           final DcLot qrParsed = dcContext.checkQr(newProxy);
           if (qrParsed.getState() == DcContext.DC_QR_PROXY) {
             dcContext.setConfigFromQr(newProxy);
-            restartIO();
+            DcHelper.getContext(this).restartIo();
             adapter.changeData(DcHelper.get(this, CONFIG_PROXY_URL));
           } else {
             Toast.makeText(this, R.string.proxy_invalid, Toast.LENGTH_LONG).show();
@@ -171,12 +171,6 @@ public class ProxySettingsActivity extends BaseActionBarActivity
       })
       .setCancelable(false)
       .show();
-  }
-
-  private void restartIO() {
-    DcContext dcContext = DcHelper.getContext(this);
-    dcContext.stopIo();
-    dcContext.startIo();
   }
 
   @Override

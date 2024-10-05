@@ -89,6 +89,17 @@ public class QrCodeHandler {
                 BackupTransferActivity.appendSSID(activity, alertDialog.findViewById(android.R.id.message));
                 return;
 
+            case DcContext.DC_QR_PROXY:
+                builder.setTitle(R.string.proxy_use_proxy);
+                builder.setMessage(activity.getString(R.string.proxy_use_proxy_confirm, qrParsed.getText1()));
+                builder.setPositiveButton(R.string.proxy_use_proxy, (dlg, btn) -> {
+                    dcContext.setConfigFromQr(rawString);
+                    dcContext.restartIo();
+                });
+                builder.setNegativeButton(R.string.cancel, null);
+                builder.setCancelable(false);
+                break;
+
             case DcContext.DC_QR_WEBRTC:
                 builder.setMessage(activity.getString(R.string.videochat_instance_from_qr, qrParsed.getText1()));
                 builder.setPositiveButton(R.string.ok, (dialog, which) -> {
