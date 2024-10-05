@@ -199,7 +199,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
         imexProgress.put(event.getAccountId(), (int) progress);
         int totalProgress = getTotalProgress();
         int percent = totalProgress / (10 * imexAccounts.length);
-        String formattedPercent = String.format(" %d%%", percent);
+        String formattedPercent = percent > 0 ? String.format(" %d%%", percent) : "";
         progressDialog.setMessage(getResources().getString(R.string.one_moment) + formattedPercent);
         notifController.setProgress(1000L * imexAccounts.length, totalProgress, formattedPercent);
       }
