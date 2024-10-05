@@ -81,16 +81,11 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
                 getTransferActivity().setTransferError("Receiving Error");
-            } else if (permille <= 100) {
-                statusLineText = getString(R.string.preparing_account);
-                hideSameNetworkHint = true;
-            } else if (permille <= 950 ) {
-                percent = ((permille-100)*100)/850;
+            } else if (permille < 1000) {
+                percent = permille/10;
                 percentMax = 100;
                 statusLineText = getString(R.string.transferring) + String.format(Util.getLocale(), " %d%%", percent);
                 hideSameNetworkHint = true;
-            } else if (permille < 1000) {
-                statusLineText = "Finishing..."; // range not used, should not happen
             } else if (permille == 1000) {
                 getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_SUCCESS);
                 getTransferActivity().doFinish();
