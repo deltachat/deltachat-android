@@ -89,7 +89,6 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
             } else if (permille == 1000) {
                 getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_SUCCESS);
                 getTransferActivity().doFinish();
-                dcContext.assumeMultiDevice();
                 return;
             }
 

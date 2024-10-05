@@ -327,7 +327,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             else if (progress==1000/*done*/) {
                 DcHelper.getAccounts(this).startIo();
                 progressSuccess();
-                dcContext.assumeMultiDevice();
                 notificationController.close();
                 cleanupTempBackupFile();
             }

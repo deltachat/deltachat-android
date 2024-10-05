@@ -391,7 +391,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
         progressUpdate((int)progress);
       } else if (progress==1000/*done*/) {
         DcHelper.getAccounts(this).startIo();
-        dcContext.assumeSingleDevice();
         progressSuccess();
       }
     }
