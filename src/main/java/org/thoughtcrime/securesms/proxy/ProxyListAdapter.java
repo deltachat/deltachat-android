@@ -82,8 +82,12 @@ public class ProxyListAdapter extends BaseAdapter {
     }
     if (proxyUrl.equals(selectedProxy)) {
       checkmark.setVisibility(View.VISIBLE);
-      status.setVisibility(View.VISIBLE);
-      status.setText(getConnectivityString());
+      if(dcContext.isConfigured() == 1 && dcContext.getConfigInt(CONFIG_PROXY_ENABLED) == 1) {
+        status.setVisibility(View.VISIBLE);
+        status.setText(getConnectivityString());
+      } else {
+        status.setVisibility(View.GONE);
+      }
     } else {
       checkmark.setVisibility(View.GONE);
       status.setVisibility(View.GONE);
