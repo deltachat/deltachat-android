@@ -24,6 +24,7 @@ import com.b44t.messenger.rpc.Rpc;
 import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ConnectivityActivity;
+import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -158,6 +159,11 @@ public class AccountSelectionListFragment extends DialogFragment
             AccountManager.getInstance().switchAccountAndStartActivity(activity, selAcc.isOk()? selAcc.getAccountId() : 0);
           } else {
             AccountManager.getInstance().showSwitchAccountMenu(activity);
+          }
+
+          // title update needed to show "Delta Chat" in case there is only one profile left
+          if (activity instanceof ConversationListActivity) {
+            ((ConversationListActivity)activity).refreshTitle();
           }
       })
       .show();
