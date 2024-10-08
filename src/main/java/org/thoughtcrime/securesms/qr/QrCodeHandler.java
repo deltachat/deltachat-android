@@ -95,6 +95,7 @@ public class QrCodeHandler {
                 builder.setPositiveButton(R.string.proxy_use_proxy, (dlg, btn) -> {
                     dcContext.setConfigFromQr(rawString);
                     dcContext.restartIo();
+                    showDoneToast(activity);
                 });
                 builder.setNegativeButton(R.string.cancel, null);
                 builder.setCancelable(false);
