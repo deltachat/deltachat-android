@@ -357,8 +357,6 @@
     <string name="search">Cari</string>
     <string name="search_explain">Mencari obrolan, kontak dan pesan</string>
     <string name="search_no_result_for_x">Tak ada hasil dari \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nama grup</string>
     <string name="group_avatar">Avatar grup</string>

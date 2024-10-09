@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Souhlas</string>
     <string name="cancel">Zrušit</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">nebo</string>
     <string name="clear_search">Vyčistit vyhledávání</string>
     <string name="yes">Ano</string>
@@ -421,8 +421,6 @@
     <string name="search_in_chat">Vyhledávat v chatu</string>
     <string name="search_explain">Vyhledávat chaty, kontakty a zprávy</string>
     <string name="search_no_result_for_x">Žádný výsledek pro \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Název skupiny</string>
     <string name="group_avatar">Obrázek skupiny</string>

@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Гаразд</string>
     <string name="cancel">Скасувати</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">або</string>
     <string name="clear_search">Очистити пошук</string>
     <string name="yes">Так</string>
@@ -496,8 +496,6 @@
     <string name="search_files">Шукати файли</string>
     <string name="search_explain">Пошук чатів, контактів і повідомлень</string>
     <string name="search_no_result_for_x">Запит \"%s\" не дав результатів</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Назва групи</string>
     <string name="group_avatar">Аватар групи</string>
@@ -554,9 +552,9 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Обліковий запис перенесено на ваш другий пристрій.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Підготовка облікового запису…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">Очікування одержувача…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="receiver_connected">Одержувача підключено…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Передача…</string>
@@ -645,7 +643,6 @@
     <string name="proxy_list_header">Збережені проксі-сервери</string>
     <string name="proxy_delete">Видалити проксі-сервер</string>
     <string name="proxy_delete_explain">Ви дійсно хочете видалити \"%1$s\"?</string>
-
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Використовувати SOCKS5</string>

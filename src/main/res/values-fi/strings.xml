@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Peruuta</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">tai</string>
     <string name="clear_search">Tyhjennä haku</string>
     <string name="yes">Kyllä</string>
@@ -456,8 +456,6 @@
     <string name="search_files">Hae tiedostoja</string>
     <string name="search_explain">Etsi keskusteluja, yhteystietoja ja viestejä</string>
     <string name="search_no_result_for_x">Ei tuloksia haulle \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Ryhmän nimi</string>
     <string name="group_avatar">Ryhmän kuva</string>
@@ -514,9 +512,9 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profiili siirretty toiselle laitteellesi.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Valmistellaan profiilia...</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">Odotetaan vastaanottajaa...</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="receiver_connected">Vastaanottaja yhdistetty...</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Siirretään...</string>

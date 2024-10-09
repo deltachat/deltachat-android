@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">或</string>
     <string name="clear_search">清除搜索</string>
     <string name="yes">是</string>
@@ -451,8 +451,6 @@
     <string name="search_files">搜索文件</string>
     <string name="search_explain">搜索聊天、联系人和消息</string>
     <string name="search_no_result_for_x">没有找到有关\"%s\"的结果</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">群组名称</string>
     <string name="group_avatar">群组图像</string>
@@ -509,9 +507,9 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ 账号已传输到您的第二台设备。</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">正在准备账号…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">等待接收者…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="receiver_connected">接收者已连接…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">传输中…</string>
@@ -600,7 +598,6 @@
     <string name="proxy_list_header">已保存的代理</string>
     <string name="proxy_delete">删除代理</string>
     <string name="proxy_delete_explain">你确定要删除 \"%1$s\"吗？</string>
-
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">使用 SOCKS5 代理</string>

@@ -420,8 +420,6 @@
     <string name="search">Buscar</string>
     <string name="search_explain">Buscar conversas, contactos e mensaxes</string>
     <string name="search_no_result_for_x">Non hai resultados para \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nome do grupo</string>
     <string name="group_avatar">Avatar do grupo</string>

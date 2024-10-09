@@ -4,7 +4,7 @@
     <string name="app_name">دلتاچت</string>
     <string name="ok">تأیید</string>
     <string name="cancel">لغو</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">یا</string>
     <string name="clear_search">پاک کردن جست‌وجو</string>
     <string name="yes">بله</string>
@@ -451,8 +451,6 @@ https://meet.jit.si/$ROOM
     <string name="search_files">جستجوی پرونده‌ها</string>
     <string name="search_explain">جست‌وجو برای گپ‌ها، مخاطبان و پیام‌ها</string>
     <string name="search_no_result_for_x">نتیجه‌ای برای \"%s\" پیدا نشد</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">نام گروه</string>
     <string name="group_avatar">تصویر گروه</string>
@@ -505,9 +503,9 @@ https://meet.jit.si/$ROOM
     <string name="multidevice_transfer_done_devicemsg">ℹ️ حساب به دستگاه دوم شما منتقل شد.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">در حال آماده سازی حساب…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">در انتظار گیرنده…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="receiver_connected">گیرنده متصل شد…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">در حال انتقال…</string>

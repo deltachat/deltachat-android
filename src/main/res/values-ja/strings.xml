@@ -327,8 +327,6 @@
     <string name="search">検索</string>
     <string name="search_explain">チャット･メッセージ･連絡先を検索</string>
     <string name="search_no_result_for_x">｢%s｣は見付かりませんでした｡</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">グループ名</string>
     <string name="group_avatar">グループ画像</string>

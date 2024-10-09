@@ -444,8 +444,6 @@
     <string name="search">Vyhľadávanie</string>
     <string name="search_explain">Vyhľadajte konverzácie, kontakty a správy</string>
     <string name="search_no_result_for_x">Neboli nájdené žiadne výsledky pre \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Názov skupiny</string>
     <string name="group_avatar">Obrázok skupiny</string>

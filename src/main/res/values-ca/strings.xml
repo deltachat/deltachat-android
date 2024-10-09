@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel·la</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">o</string>
     <string name="clear_search">Neteja la cerca</string>
     <string name="yes">Si</string>
@@ -434,8 +434,6 @@
     <string name="search_files">Busca els fitxers</string>
     <string name="search_explain">Busca als xats, contactes i missatges</string>
     <string name="search_no_result_for_x">No s\'han trobat resultats per \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nom del grup</string>
     <string name="group_avatar">Imatge del grup</string>

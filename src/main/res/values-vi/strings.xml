@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Hủy</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">hoặc</string>
     <string name="clear_search">Dọn dẹp tìm kiếm</string>
     <string name="yes">Có</string>
@@ -435,8 +435,6 @@
     <string name="search_files">Tìm kiếm tập tin</string>
     <string name="search_explain">Tìm kiếm cuộc trò chuyện, danh bạ và tin nhắn</string>
     <string name="search_no_result_for_x">Không tìm thấy kết quả nào cho \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Tên nhóm</string>
     <string name="group_avatar">Hình ảnh nhóm</string>
@@ -493,9 +491,9 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Tài khoản đã được chuyển sang thiết bị thứ hai của bạn.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Đang chuẩn bị tài khoản…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">Đang chờ người nhận…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="receiver_connected">Đã kết nối bộ thu…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Đang chuyển…</string>

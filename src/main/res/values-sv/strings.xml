@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Avbryt</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">eller</string>
     <string name="clear_search">Rensa sök</string>
     <string name="yes">Ja</string>
@@ -462,8 +462,6 @@
     <string name="search_files">Sök filer</string>
     <string name="search_explain">Sök efter chattar, kontakter och meddelanden</string>
     <string name="search_no_result_for_x">Inga resultat hittades för \" %s \"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Gruppnamn</string>
     <string name="group_avatar">Gruppbild</string>
@@ -520,9 +518,9 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profilen överförd till din andra enhet.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Förbereder profil...</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">Väntar på mottagare...</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="receiver_connected">Mottagare ansluten...</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Överför...</string>

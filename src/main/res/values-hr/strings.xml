@@ -157,8 +157,6 @@
     <!-- search -->
     <string name="search">Traži</string>
     <string name="search_no_result_for_x">Nema pronađenih rezultata za \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Naziv grupe</string>
     <string name="group_avatar">Grupni avatar</string>
