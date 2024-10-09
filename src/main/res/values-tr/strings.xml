@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Tamam</string>
     <string name="cancel">İptal</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">ya da</string>
     <string name="clear_search">Aramayı Temizle</string>
     <string name="yes">Evet</string>
@@ -466,8 +466,6 @@
     <string name="search_files">Dosyalar Ara</string>
     <string name="search_explain">Sohbetleri, kişileri ve iletileri ara</string>
     <string name="search_no_result_for_x">\"%s\" için sonuç bulunamadı</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Öbek Adı</string>
     <string name="group_avatar">Öbek Görseli</string>
@@ -524,9 +522,9 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profil, ikinci aygıtınıza aktarıldı.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Profil hazırlanıyor…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">Alıcı bekleniyor…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="receiver_connected">Alıcı bağlandı…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Aktarılıyor…</string>
@@ -615,7 +613,6 @@
     <string name="proxy_list_header">Kaydedilen Proxy\'ler</string>
     <string name="proxy_delete">Proxy\'yi Sil</string>
     <string name="proxy_delete_explain">\"%1$s\" proxy\'sini silmek istediğinizden emin misiniz?</string>
-
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">SOCKS5\'i Kullan</string>

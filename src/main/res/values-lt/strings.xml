@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Gerai</string>
     <string name="cancel">Atsisakyti</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">arba</string>
     <string name="clear_search">Išvalyti paiešką</string>
     <string name="yes">Taip</string>
@@ -391,8 +391,6 @@
     <string name="search_files">Ieškoti failų</string>
     <string name="search_explain">Ieškokite pokalbių, adresatų ir žinučių</string>
     <string name="search_no_result_for_x">Nerasta jokių rezultatų pagal užklausą \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Grupės pavadinimas</string>
     <string name="group_avatar">Grupės avataras</string>

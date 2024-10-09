@@ -445,8 +445,6 @@
     <string name="search">Procurar</string>
     <string name="search_explain">Procurar conversas, contatos e mensagens</string>
     <string name="search_no_result_for_x">Nada relativo a \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nome do grupo</string>
     <string name="group_avatar">Avatar do grupo</string>
@@ -498,9 +496,9 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Conta transferida para seu outro dispositivo.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Preparando a conta...</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">Esperando pelo receptor...</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="receiver_connected">Receptor conectado...</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Transferindo...</string>

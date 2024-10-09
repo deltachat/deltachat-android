@@ -414,8 +414,6 @@
     <string name="search">Αναζήτηση</string>
     <string name="search_explain">Αναζήτηση για συνομιλίες, επαφές, και μηνύματα</string>
     <string name="search_no_result_for_x">Δε βρέθηκαν αποτελέσματα για \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Όνομα ομάδας</string>
     <string name="group_avatar">Εικόνα Ομάδας</string>

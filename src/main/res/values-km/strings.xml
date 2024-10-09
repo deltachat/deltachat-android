@@ -370,8 +370,6 @@
     <string name="search">ស្វែងរក</string>
     <string name="search_explain">ស្វែងរកការសន្ទនា ទំនាក់ទំនង និងសារ។</string>
     <string name="search_no_result_for_x">រកមិនឃើញលទ្ធផលសម្រាប់ \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">ឈ្មោះរបស់ក្រុម</string>
     <string name="group_avatar">រូបភាពរបស់ក្រុម</string>

@@ -233,8 +233,6 @@
     <string name="search">Axtarış</string>
     <string name="search_explain">Çatlar, kontaktlar və mesajlar axtar</string>
     <string name="search_no_result_for_x">\"%s\" üçün heç bir nəticə tapılmadı</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Qrup adı</string>
     <string name="group_avatar">Qrupun şəkili</string>

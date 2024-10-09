@@ -312,8 +312,6 @@
     <string name="search">گەڕان</string>
     <string name="search_explain">بگەڕە بۆ وتووێژەکان و بەردەنگەکان و پەیامەکان</string>
     <string name="search_no_result_for_x">هیچ ئەنجامێک نەدۆزرایەوە بۆ \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">ناوی کۆڕ</string>
     <string name="group_avatar">وێنەی کۆڕ</string>

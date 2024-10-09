@@ -336,8 +336,6 @@
     <string name="search">Serĉi</string>
     <string name="search_explain">Serĉi babilojn, kontaktojn, kaj mesaĝojn</string>
     <string name="search_no_result_for_x">Neniu rezulto trovita por \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Grup-nomo</string>
     <string name="group_avatar">Bildo de la grupo</string>

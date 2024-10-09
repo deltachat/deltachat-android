@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Anuluj</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">lub</string>
     <string name="clear_search">Wyczyść wyszukiwanie</string>
     <string name="yes">Tak</string>
@@ -496,8 +496,6 @@
     <string name="search_files">Szukaj plików</string>
     <string name="search_explain">Wyszukaj czaty, kontakty i wiadomości</string>
     <string name="search_no_result_for_x">Nie znaleziono wyników dla „%s</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nazwa grupy</string>
     <string name="group_avatar">Obraz grupy</string>
@@ -554,9 +552,9 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Konto przeniesione na twoje kolejne urządzenie.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Przygotowywanie konta…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">Oczekiwanie na odbiorcę…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="receiver_connected">Odbiorca połączony…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Przenoszenie…</string>
@@ -645,7 +643,6 @@
     <string name="proxy_list_header">Zapisane proxy</string>
     <string name="proxy_delete">Usuń proxy</string>
     <string name="proxy_delete_explain">Na pewno chcesz usunąć „%1$s”?</string>
-
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Użyj SOCKS5</string>

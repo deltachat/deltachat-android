@@ -440,8 +440,6 @@
     <string name="search">Претрага</string>
     <string name="search_explain">Претражи ћаскања, контакте и поруке</string>
     <string name="search_no_result_for_x">Нема резултата за „%s“</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Назив групе</string>
     <string name="group_avatar">Слика групе</string>

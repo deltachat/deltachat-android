@@ -336,8 +336,6 @@
     <string name="search">Søg</string>
     <string name="search_explain">Søg efter samtaler, kontakter og beskeder</string>
     <string name="search_no_result_for_x">Ingen resultater fundet for  \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Gruppenavn</string>
     <string name="group_avatar">Gruppeikon</string>

@@ -255,8 +255,6 @@
     <string name="search">Bilatu</string>
     <string name="search_explain">Bilatu txatak, kontaktuak, eta mezuak.</string>
     <string name="search_no_result_for_x">Ez da emaitzarik aurkitu \"%s\" bilaketarentzat</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Taldearen izena</string>
     <string name="group_avatar">Taldearen abatarra</string>

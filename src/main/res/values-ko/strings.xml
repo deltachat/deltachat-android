@@ -394,8 +394,6 @@
     <string name="search">검색</string>
     <string name="search_explain">채팅, 연락, 메시지를 찾으시오</string>
     <string name="search_no_result_for_x">\"%s\"에 대한 검색 결과가 없음</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">그룹 이름</string>
     <string name="group_avatar">그룹 이미지</string>

@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">確定</string>
     <string name="cancel">取消</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">或</string>
     <string name="clear_search">清除搜尋</string>
     <string name="yes">是</string>
@@ -412,8 +412,6 @@
     <string name="search_files">搜尋檔案</string>
     <string name="search_explain">搜尋對話紀錄、聯絡人以及訊息</string>
     <string name="search_no_result_for_x">找不到 %s</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">群組名稱</string>
     <string name="group_avatar">群組頭像</string>

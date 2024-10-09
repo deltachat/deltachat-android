@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
-    <string name="app_name">Dêltā Čat</string>
-    <string name="ok">xā</string>
-    <string name="cancel">raď</string>
-   <string name="clear_search">roftênê pitiniďên</string>
-    <string name="yes">harêy</string>
+    <string name="app_name">دلتا چت</string>
+    <string name="ok">خا</string>
+    <string name="cancel">رڌ</string>
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
+    <string name="or_separator">یا</string>
+    <string name="clear_search">روفتن پیتینیڌن</string>
+    <string name="yes">هری</string>
     <string name="no">na</string>
     <string name="select">pêsand</string>
     <string name="on">rušên</string>

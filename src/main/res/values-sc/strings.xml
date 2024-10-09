@@ -292,8 +292,6 @@
     <string name="search">Chirca</string>
     <string name="search_explain">Chirca in sas tzarradas, sos cuntatos e sos messàgios</string>
     <string name="search_no_result_for_x">Perunu resurtadu pro \"%s\"</string>
-
-
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nùmene de su grupu</string>
     <string name="group_avatar">Avatar de su grupu</string>
