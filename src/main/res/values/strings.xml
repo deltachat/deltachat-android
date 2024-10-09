@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">or</string>
     <string name="clear_search">Clear Search</string>
     <string name="yes">Yes</string>
@@ -526,9 +526,9 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profile transferred to your second device.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Preparing profile…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">Waiting for receiver…</string>
-    <!-- Shown beside progress bar, stay short -->
+    <!-- deprecated, shown beside progress bar, stay short -->
     <string name="receiver_connected">Receiver connected…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Transferring…</string>
