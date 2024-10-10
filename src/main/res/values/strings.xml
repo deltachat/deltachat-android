@@ -656,7 +656,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Forward to…</string>
-    <string name="ask_send_files_to_selected_chat">Send %1$d files to the selected chat?</string>
+    <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
+    <string name="ask_send_files_to_chat">Send %1$d files to \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Send %1$d file(s) to %2$d chats?</string>
     <string name="videos_sent_without_recoding">(Videos are sent as original, big files. To send videos as smaller files, attach them separately)</string>
     <string name="share_text_multiple_chats">Send this text to %1$d chats?\n\n\"%2$s\"</string>
