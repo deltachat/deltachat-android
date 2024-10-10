@@ -578,8 +578,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Înainte spre...</string>
-    <string name="share_multiple_attachments">Trimiteți %1$d la chat-ul selectat?\n\nArhivele sunt trimise nemodificate în dimensiunea lor originală (de exemplu, imaginile și clipurile video nu sunt recodificate).</string>
-    <string name="share_multiple_attachments_multiple_chats">Trimiteți %1$d fișier(e) la %2$d chat?\n\nFilele sunt trimise nemodificate în dimensiunea lor originală (de exemplu, imaginile și videoclipurile nu sunt recodificate).</string>
+    <string name="ask_send_files_to_selected_chat">Trimiteți %1$d la chat-ul selectat?</string>
+    <string name="ask_send_files_to_selected_chats">Trimiteți %1$d fișier(e) la %2$d chat?</string>
     <string name="share_text_multiple_chats">Trimiteți acest text la %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Partajarea a fost întreruptă din cauza permisiunilor lipsă.</string>
 

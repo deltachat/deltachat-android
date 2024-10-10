@@ -586,8 +586,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Encaminhar para...</string>
-    <string name="share_multiple_attachments">Enviar %1$d arquivos para a conversa selecionada?\n\nOs arquivos são enviados sem modificações em seu tamanho original, ex. imagens e vídeos não são gravados.</string>
-    <string name="share_multiple_attachments_multiple_chats">Enviar %1$d arquivo(s) para %2$d conversas?\n\nOs arquivos são enviados sem modificações em seu tamanho original, ex. imagens e vídeos não são gravados.</string>
+    <string name="ask_send_files_to_selected_chat">Enviar %1$d arquivos para a conversa selecionada?</string>
+    <string name="ask_send_files_to_selected_chats">Enviar %1$d arquivo(s) para %2$d conversas?</string>
     <string name="share_text_multiple_chats">Enviar este texto para %1$d conversas?\n\n\"%2$s\"</string>
     <string name="share_abort">Compartilhamento abortado devido a falta de permissões.</string>
 

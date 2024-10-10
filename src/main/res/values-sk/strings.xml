@@ -553,8 +553,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Poslať ďalej ...</string>
-    <string name="share_multiple_attachments">Poslať %1$d súbory do vybranej konverzácie?\n\nSúbory sa odosielajú bez zmeny v pôvodnej veľkosti, napr. obrázky a videá nie sú prekódované.</string>
-    <string name="share_multiple_attachments_multiple_chats">Poslať %1$d súbor(y) do %2$d konverzácií?\n\nSúbory sa odosielajú neupravené v pôvodnej veľkosti, napr. obrázky a videá nie sú prekódované.</string>
+    <string name="ask_send_files_to_selected_chat">Poslať %1$d súbory do vybranej konverzácie?</string>
+    <string name="ask_send_files_to_selected_chats">Poslať %1$d súbor(y) do %2$d konverzácií?</string>
     <string name="share_text_multiple_chats">Odoslať tento text d %1$d konverzácií?\n\n \"%2$s\"</string>
     <string name="share_abort">Zdieľanie bolo prerušené z dôvodu chýbajúcich povolení.</string>
 

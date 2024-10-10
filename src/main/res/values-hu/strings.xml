@@ -643,8 +643,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Továbbítás…</string>
-    <string name="share_multiple_attachments">%1$d fájl megosztása a kiválasztott csevegésben?\n\nA fájlok eredeti méretükben, változatlanul kerülnek elküldésre (pl. a képek és videók nem kerülnek újrakódolásra).</string>
-    <string name="share_multiple_attachments_multiple_chats">%1$d fájl megosztása a vele való csevegésben: %2$d?\n\nA fájlok eredeti méretükben, változatlanul kerülnek elküldésre (pl. a képek és videók nem kerülnek újrakódolásra).</string>
+    <string name="ask_send_files_to_selected_chat">%1$d fájl megosztása a kiválasztott csevegésben?</string>
+    <string name="ask_send_files_to_selected_chats">%1$d fájl megosztása a vele való csevegésben: %2$d?</string>
     <string name="share_text_multiple_chats">Megosztja ezt a szöveget a vele való csevegésben: %1$d?\n\n„%2$s”</string>
     <string name="share_abort">A megosztás megszakadt a hiányzó engedélyek miatt.</string>
 

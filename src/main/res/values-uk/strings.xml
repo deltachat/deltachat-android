@@ -680,8 +680,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Переслати...</string>
-    <string name="share_multiple_attachments">Надіслати %1$d файлів у обраний чат?\n\nФайли надсилаються незмінними в оригінальному розмірі (тобто зображення та відео не перекодовуються).</string>
-    <string name="share_multiple_attachments_multiple_chats">Надіслати %1$d файл (файлів) у %2$d чати?\n\nФайли надсилаються незмінними в оригінальному розмірі (тобто зображення та відео не перекодовуються).</string>
+    <string name="ask_send_files_to_selected_chat">Надіслати %1$d файлів у обраний чат?</string>
+    <string name="ask_send_files_to_selected_chats">Надіслати %1$d файл (файлів) у %2$d чати?</string>
     <string name="share_text_multiple_chats">Надіслати цей текст у %1$d чати?\n\n\"%2$s\"</string>
     <string name="share_abort">Надсилання обірване через відсутність дозволів.</string>
 

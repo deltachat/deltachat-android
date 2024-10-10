@@ -504,8 +504,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">채팅방 선택</string>
-    <string name="share_multiple_attachments">선택한 채팅으로 %1$d파일을 보내시겠습니까?\n\n파일은 원래 크기로 수정되지 않고 전송됩니다(예: 이미지와 비디오가 다시 인코딩되지 않음).</string>
-    <string name="share_multiple_attachments_multiple_chats">%1$d 파일을 %2$d 채팅으로 보내시겠습니까?\n\n파일은 원래 크기로 수정되지 않고 전송됩니다(예: 이미지와 비디오가 다시 인코딩되지 않음).</string>
+    <string name="ask_send_files_to_selected_chat">선택한 채팅으로 %1$d파일을 보내시겠습니까?</string>
+    <string name="ask_send_files_to_selected_chats">%1$d 파일을 %2$d 채팅으로 보내시겠습니까?</string>
     <string name="share_text_multiple_chats">\"%2$s\"를 %1$d 채팅에 보내시겠습니까?</string>
     <string name="share_abort">권한이 없어 공유가 중단되었습니다.</string>
 

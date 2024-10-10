@@ -680,8 +680,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Przekaż do…</string>
-    <string name="share_multiple_attachments">Wysłać %1$d pliki do wybranych czatów?\n\nWysyłane pliki są niezmodyfikowane w oryginalnym rozmiarze, np. obrazy i filmy nie są przekodowywane.</string>
-    <string name="share_multiple_attachments_multiple_chats">Wysłać %1$d plik(i) do %2$d czatów?\n\nWysyłane pliki są niezmodyfikowane w oryginalnym rozmiarze, np. obrazy i filmy nie są przekodowywane.</string>
+    <string name="ask_send_files_to_selected_chat">Wysłać %1$d pliki do wybranych czatów?</string>
+    <string name="ask_send_files_to_selected_chats">Wysłać %1$d plik(i) do %2$d czatów?</string>
     <string name="share_text_multiple_chats">Wysłać ten tekst do %1$d czatów?\n\n\"%2$s\"</string>
     <string name="share_abort">Udostępnianie zostało przerwane z powodu brakujących uprawnień.</string>
 

@@ -627,8 +627,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Препращане на…</string>
-    <string name="share_multiple_attachments">Да бъдат ли изпратени %1$d файла към избрания чат?\n\nФайловете се изпращат без промяна и в своя оригинален размер (напр. изображения и видеоклипове не се прекодират).</string>
-    <string name="share_multiple_attachments_multiple_chats">Да бъдат ли изпратени %1$d файл(а) към %2$d чата?\n\nФайловете се изпращат без промяна и в своя оригинален размер (напр. изображения и видеоклипове не се прекодират).</string>
+    <string name="ask_send_files_to_selected_chat">Да бъдат ли изпратени %1$d файла към избрания чат?</string>
+    <string name="ask_send_files_to_selected_chats">Да бъдат ли изпратени %1$d файл(а) към %2$d чата?</string>
     <string name="share_text_multiple_chats">Да бъде ли изпратен този текст към %1$d чата?\n\n\"%2$s\"</string>
     <string name="share_abort">Споделянето е прекъснато поради липсващи позволения.</string>
 

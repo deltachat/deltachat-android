@@ -527,8 +527,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Κοινοποίηση σε...</string>
-    <string name="share_multiple_attachments">Αποστολή %1$d αρχείων στην επιλεγμένη συνομιλία;\n\nΤα αρχεία αποστέλλονται χωρίς τροποποίηση στο αρχικό τους μέγεθος (π.χ. οι εικόνες και τα βίντεο δεν κωδικοποιούνται εκ νέου).</string>
-    <string name="share_multiple_attachments_multiple_chats">Αποστολή %1$d αρχείου(-ων) σε %2$d συνομιλίες;\n\nΤα αρχεία αποστέλλονται χωρίς τροποποίηση στο αρχικό τους μέγεθος (π.χ. οι εικόνες και τα βίντεο δεν κωδικοποιούνται εκ νέου).</string>
+    <string name="ask_send_files_to_selected_chat">Αποστολή %1$d αρχείων στην επιλεγμένη συνομιλία;</string>
+    <string name="ask_send_files_to_selected_chats">Αποστολή %1$d αρχείου(-ων) σε %2$d συνομιλίες;</string>
     <string name="share_text_multiple_chats">Αποστολή αυτού του κειμένου σε %1$d συνομιλίες;\n\n\"%2$s\"</string>
     <string name="share_abort">Η κοινή χρήση ματαιώθηκε λόγω έλλειψης αδειών.</string>
 

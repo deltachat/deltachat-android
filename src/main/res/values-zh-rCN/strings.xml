@@ -641,8 +641,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">转发给…</string>
-    <string name="share_multiple_attachments">发送 %1$d 个文件到所选聊天？\n\n文件将以原样发送（例如：图像和视频不会被重新编码）。</string>
-    <string name="share_multiple_attachments_multiple_chats">发送 %1$d 个文件到 %2$d 个聊天？\n\n文件将以原样发送（例如：图像和视频不会被重新编码）。</string>
+    <string name="ask_send_files_to_selected_chat">发送 %1$d 个文件到所选聊天？</string>
+    <string name="ask_send_files_to_selected_chats">发送 %1$d 个文件到 %2$d 个聊天？</string>
     <string name="share_text_multiple_chats">发送这段文字到 %1$d 个聊天？\n\n\"%2$s“</string>
     <string name="share_abort">由于缺少权限，分享中止。</string>
 

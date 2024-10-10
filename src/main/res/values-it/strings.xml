@@ -671,8 +671,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Inoltra a…</string>
-    <string name="share_multiple_attachments">Invia %1$d files alla chat selezionata?\n\nI files vengono inviati non modificati nella loro dimensione originale (ad es. immagini e video non vengono ricodificati).</string>
-    <string name="share_multiple_attachments_multiple_chats">Invia %1$d file(s) a %2$d chat?\n\nI files vengono inviati non modificati nella loro dimensione originale (ad es. immagini e video non vengono ricodificat)i.</string>
+    <string name="ask_send_files_to_selected_chat">Invia %1$d files alla chat selezionata?</string>
+    <string name="ask_send_files_to_selected_chats">Invia %1$d file(s) a %2$d chat?</string>
     <string name="share_text_multiple_chats">Invia questo testo alle %1$d chat?\n\n\"%2$s\"</string>
     <string name="share_abort">Condivisione annullata per permessi mancanti.</string>
 
