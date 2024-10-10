@@ -117,7 +117,7 @@ public class SendRelayedMessageUtil {
     DcContext dcContext = DcHelper.getContext(context);
     try {
 
-      String filename = "cannot-resolve.jpg";
+      String filename = "cannot-resolve.jpg"; // best guess, this still leads to most images being workable if OS does weird things
       if (PartAuthority.isLocalUri(uri)) {
         filename = uri.getPathSegments().get(PersistentBlobProvider.FILENAME_PATH_SEGMENT);
       } else if (uri.getScheme().equals("content")) {
