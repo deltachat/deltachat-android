@@ -52,11 +52,11 @@ public class AccountSelectionListFragment extends DialogFragment
     int[] accountIds = accounts.getAll();
 
     int[] ids = new int[accountIds.length + 1];
-    ids[0] = DC_CONTACT_ID_ADD_ACCOUNT;
     int j = 0;
     for (int accountId : accountIds) {
-      ids[++j] = accountId;
+      ids[j++] = accountId;
     }
+    ids[j] = DC_CONTACT_ID_ADD_ACCOUNT;
     adapter.changeData(ids, accounts.getSelectedAccount().getAccountId());
   }
 
