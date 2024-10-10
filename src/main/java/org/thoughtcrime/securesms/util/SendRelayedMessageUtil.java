@@ -1,8 +1,11 @@
 package org.thoughtcrime.securesms.util;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
+import android.provider.OpenableColumns;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
@@ -113,13 +116,32 @@ public class SendRelayedMessageUtil {
   private static String getRealPathFromUri(Context context, Uri uri) throws NullPointerException {
     DcContext dcContext = DcHelper.getContext(context);
     try {
-      String filename = uri.getPathSegments().get(PersistentBlobProvider.FILENAME_PATH_SEGMENT);
+
+      String filename = "cannot-resolve.jpg";
+      if (PartAuthority.isLocalUri(uri)) {
+        filename = uri.getPathSegments().get(PersistentBlobProvider.FILENAME_PATH_SEGMENT);
+      } else if (uri.getScheme().equals("content")) {
+        final ContentResolver contentResolver = context.getContentResolver();
+        final Cursor cursor = contentResolver.query(uri, null, null, null, null);
+        try {
+          if (cursor != null && cursor.moveToFirst()) {
+            final int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+            if (nameIndex >= 0) {
+              filename = cursor.getString(nameIndex);
+            }
+          }
+        } finally {
+          cursor.close();
+        }
+      }
+
       String ext = "";
       int i = filename.lastIndexOf(".");
       if (i >= 0) {
         ext = filename.substring(i);
         filename = filename.substring(0, i);
       }
+
       String path = DcHelper.getBlobdirFile(dcContext, filename, ext);
 
       // copy content to this file
