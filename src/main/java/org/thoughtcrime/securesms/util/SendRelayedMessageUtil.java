@@ -57,7 +57,7 @@ public class SendRelayedMessageUtil {
     dcContext.forwardMsgs(forwardedMessageIDs, chatId);
   }
 
-  private static void handleSharing(Context context, int chatId, ArrayList<Uri> sharedUris, String sharedText) {
+  public static void handleSharing(Context context, int chatId, ArrayList<Uri> sharedUris, String sharedText) {
     DcContext dcContext = DcHelper.getContext(context);
     ArrayList<Uri> uris = sharedUris;
     String text = sharedText;
