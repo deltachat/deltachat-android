@@ -665,20 +665,24 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
+  private void askSendingFiles(ArrayList<Uri> uriList, Runnable onConfirm) {
+    String message = String.format(getString(R.string.ask_send_files_to_selected_chat), uriList.size());
+    if (SendRelayedMessageUtil.containsVideoType(context, uriList)) {
+      message += "\n\n" + getString(R.string.videos_sent_without_recoding);
+    }
+    new AlertDialog.Builder(this)
+      .setMessage(message)
+      .setCancelable(false)
+      .setNegativeButton(android.R.string.cancel, null)
+      .setPositiveButton(R.string.menu_send, (dialog, which) -> onConfirm.run())
+      .show();
+  }
+
   private void handleSharing() {
     ArrayList<Uri> uriList =  RelayUtil.getSharedUris(this);
     int sharedContactId = RelayUtil.getSharedContactId(this);
     if (uriList.size() > 1) {
-      String message = String.format(getString(R.string.ask_send_files_to_selected_chat), uriList.size());
-      if (SendRelayedMessageUtil.containsVideoType(context, uriList)) {
-        message += "\n\n" + getString(R.string.videos_sent_without_recoding);
-      }
-      new AlertDialog.Builder(this)
-              .setMessage(message)
-              .setCancelable(false)
-              .setNegativeButton(android.R.string.cancel, ((dialog, which) -> finish()))
-              .setPositiveButton(R.string.menu_send, (dialog, which) -> SendRelayedMessageUtil.immediatelyRelay(this, chatId))
-              .show();
+      askSendingFiles(uriList, () -> SendRelayedMessageUtil.immediatelyRelay(this, chatId));
     } else {
       if (sharedContactId != 0) {
         addAttachmentContactInfo(sharedContactId);
