@@ -431,8 +431,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Videresend til …</string>
-    <string name="share_multiple_attachments">Send %1$d filer til den valgte samtale?\n\nFilerne bliver sendt umodificeret i deres originale størrelse, f.eks. billeder og videoer bliver ikke ændret.</string>
-    <string name="share_multiple_attachments_multiple_chats">Send %1$d file(er) til %2$d samtaler?\n\nFilerne bliver sendt umodificeret i deres originale størrelse, f.eks. billeder og videoer bliver ikke ændret.</string>
+    <string name="ask_send_files_to_selected_chat">Send %1$d filer til den valgte samtale?</string>
+    <string name="ask_send_files_to_selected_chats">Send %1$d file(er) til %2$d samtaler?</string>
     <string name="share_text_multiple_chats">Send denne tekst til %1$d samtaler?\n\n\"%2$s\"</string>
     <string name="share_abort">Deling afbrudt på grund af manglende tilladelser.</string>
 

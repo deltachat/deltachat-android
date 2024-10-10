@@ -656,8 +656,9 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Weiterleiten an ...</string>
-    <string name="share_multiple_attachments">%1$d Dateien an den ausgewählten Chat senden?\n\nDie Dateien werden unverändert in ihrer Originalgröße gesendet, z.B. werden Bilder und Videos nicht neu codiert.</string>
-    <string name="share_multiple_attachments_multiple_chats">%1$d Datei(en) an %2$d Chats senden?\n\nDie Dateien werden unverändert in ihrer Originalgröße gesendet, z.B. werden Bilder und Videos nicht neu codiert.</string>
+    <string name="ask_send_files_to_selected_chat">%1$d Dateien an den ausgewählten Chat senden?</string>
+    <string name="ask_send_files_to_selected_chats">%1$d Datei(en) an %2$d Chats senden?</string>
+    <string name="videos_sent_without_recoding">(Videos werden als große Originaldateien versandt. Um Videos als kleinere Dateien zu versenden, hängen Sie sie einzeln an)</string>
     <string name="share_text_multiple_chats">Den folgenden Text an %1$d Chats senden?\n\n\"%2$s\"</string>
     <string name="share_abort">Teilen aufgrund fehlender Berechtigungen abgebrochen.</string>
 

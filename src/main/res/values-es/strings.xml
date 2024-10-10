@@ -655,8 +655,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Reenviar a…</string>
-    <string name="share_multiple_attachments">¿Enviar %1$d archivos al chat seleccionado?\n\nLos archivos son enviados sin modificar en su tamaño original, ej. las imágenes y los videos no son codificados nuevamente.</string>
-    <string name="share_multiple_attachments_multiple_chats">¿Enviar %1$d archivo(s) a %2$d chats?\n\nLos archivos son enviados sin modificar en su tamaño original, ej. imágenes y videos no son codificados nuevamente.</string>
+    <string name="ask_send_files_to_selected_chat">¿Enviar %1$d archivos al chat seleccionado?</string>
+    <string name="ask_send_files_to_selected_chats">¿Enviar %1$d archivo(s) a %2$d chats?</string>
     <string name="share_text_multiple_chats">¿Enviar este texto  a %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Intercambio abortado debido a la falta de permisos.</string>
 

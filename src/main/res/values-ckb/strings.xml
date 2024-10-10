@@ -371,7 +371,7 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">هەناردن بۆ...</string>
-    <string name="share_multiple_attachments">%1$dپەڕگە دەنێریت بە ئەو وتووێژە؟n\n فایلەکان بەبێ دەستکاری و هەر بە قەبارەی خۆیانەوە دەنێردرێن. بۆنموونە، وێنە و ڤیدیۆکان دیسان شفرە ناکرێنەوە.</string>
+    <string name="ask_send_files_to_selected_chat">%1$dپەڕگە دەنێریت بە ئەو وتووێژە؟</string>
     <string name="share_text_multiple_chats">ئەم دەقە دەنێریت بۆ %1$d وتووێژ؟n\n\"%2$s\"</string>
     <!-- preferences -->
     <string name="pref_using_custom">بەکارهێنانی دڵخواز: %s</string>

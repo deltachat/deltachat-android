@@ -232,6 +232,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Reencaminhar ...</string>
+    <string name="ask_send_files_to_selected_chat">Enviar %1$d arquivos para a conversa selecionada?</string>
+    <string name="ask_send_files_to_selected_chats">Enviar %1$d arquivo(s) para %2$d conversas?</string>
     <!-- preferences -->
     <string name="pref_using_custom">Utilizando personalizado %s</string>
     <string name="pref_using_default">Utilizando padrão: %s</string>

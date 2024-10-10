@@ -610,8 +610,8 @@ https://meet.jit.si/$ROOM
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">هدایت به...</string>
-    <string name="share_multiple_attachments">ارسال %1$dپرونده به گپ انتخاب شده؟ n/n/ پرونده‌ها بدون تغییر و در اندازهٔ اصلی ارسال می‌شوند (مثلاً تصاویر و ویدیوها فشرده نمی‌شوند).</string>
-    <string name="share_multiple_attachments_multiple_chats">ارسال  %1$dپرونده به %2$d گپ؟n/n/ پرونده‌(ها) بدون تغییر ارسال می‌شوند (مثلاً تصاویر و ویدیوها فشرده نمی‌شوند).</string>
+    <string name="ask_send_files_to_selected_chat">ارسال %1$dپرونده به گپ انتخاب شده؟</string>
+    <string name="ask_send_files_to_selected_chats">ارسال %1$dپرونده به %2$d گپ؟</string>
     <string name="share_text_multiple_chats">ارسال این متن به %1$d گپ؟n/n/«%2$s»</string>
     <string name="share_abort">اشتراک گذاری به دلیل نبود مجوز‌ها متوقف شد.</string>
 
