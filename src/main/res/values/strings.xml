@@ -658,7 +658,7 @@
     <string name="forward_to">Forward to…</string>
     <string name="ask_send_files_to_selected_chat">Send %1$d files to the selected chat?</string>
     <string name="ask_send_files_to_selected_chats">Send %1$d file(s) to %2$d chats?</string>
-    <string name="videos_sent_without_recoding">(Videos are sent as original, big files. To send videos as smaller files, attach them separately).</string>
+    <string name="videos_sent_without_recoding">(Videos are sent as original, big files. To send videos as smaller files, attach them separately)</string>
     <string name="share_text_multiple_chats">Send this text to %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Sharing aborted due to missing permissions.</string>
 
