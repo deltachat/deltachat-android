@@ -74,6 +74,16 @@ public class SendRelayedMessageUtil {
     }
   }
 
+  public static boolean containsVideoType(Context context, ArrayList<Uri> uris) {
+    for (final Uri uri : uris) {
+      final String mimeType = MediaUtil.getMimeType(context, uri);
+      if (MediaUtil.isVideoType(mimeType)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public static DcMsg createMessage(Context context, Uri uri, String text) throws NullPointerException {
     DcContext dcContext = DcHelper.getContext(context);
     DcMsg message;

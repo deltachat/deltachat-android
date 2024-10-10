@@ -669,7 +669,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     ArrayList<Uri> uriList =  RelayUtil.getSharedUris(this);
     int sharedContactId = RelayUtil.getSharedContactId(this);
     if (uriList.size() > 1) {
-      String message = String.format(getString(R.string.share_multiple_attachments), uriList.size());
+      String message = String.format(getString(R.string.ask_send_files_to_selected_chat), uriList.size());
+      if (SendRelayedMessageUtil.containsVideoType(context, uriList)) {
+        message += "\n\n" + getString(R.string.videos_sent_without_recoding);
+      }
       new AlertDialog.Builder(this)
               .setMessage(message)
               .setCancelable(false)
