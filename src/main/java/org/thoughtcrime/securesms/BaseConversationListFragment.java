@@ -93,12 +93,16 @@ public abstract class BaseConversationListFragment extends Fragment implements A
           if (isForwarding(getActivity())) {
             message = String.format(Util.getLocale(), getString(R.string.ask_forward_multiple), selectedChats.size());
           } else if (!uris.isEmpty()) {
-            message = String.format(Util.getLocale(), getString(R.string.share_multiple_attachments_multiple_chats), uris.size(), selectedChats.size());
+            message = String.format(Util.getLocale(), getString(R.string.ask_send_files_to_selected_chats), uris.size(), selectedChats.size());
           } else {
             message = String.format(Util.getLocale(), getString(R.string.share_text_multiple_chats), selectedChats.size(), getSharedText(getActivity()));
           }
+
           Context context = getContext();
           if (context != null) {
+            if (SendRelayedMessageUtil.containsVideoType(context, uris)) {
+              message += "\n\n" + getString(R.string.videos_sent_without_recoding);
+            }
             new AlertDialog.Builder(context)
                     .setMessage(message)
                     .setCancelable(false)
