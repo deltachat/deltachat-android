@@ -678,7 +678,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void askSendingFiles(ArrayList<Uri> uriList, Runnable onConfirm) {
-    String message = String.format(getString(R.string.ask_send_files_to_selected_chat), uriList.size());
+    String message = String.format(getString(R.string.ask_send_files_to_chat), uriList.size(), dcChat.getName());
     if (SendRelayedMessageUtil.containsVideoType(context, uriList)) {
       message += "\n\n" + getString(R.string.videos_sent_without_recoding);
     }
