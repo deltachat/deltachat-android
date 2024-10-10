@@ -448,6 +448,13 @@
     <string name="last_msg_sent_successfully">Paskutinė žinutė sėkmingai išsiųsta.</string>
     <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Žinutės</string>
+    <!-- welcome and login -->
+    <!-- Primary button on the welcome screen, allows to create an instant profile -->
+    <string name="onboarding_create_instant_account">Sukurti naują profilį</string>
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
+    <string name="onboarding_alternative_logins">Aš jau turiu profilį</string>
+    <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
+    <string name="instant_onboarding_title">Jūsų profilis</string>
     <string name="scan_invitation_code">Skenuoti pakvietimo kodą</string>
     <string name="login_title">Prisijungti</string>
     <!-- for classic email, we use the classical term "Account" -->
@@ -468,6 +475,10 @@
     <string name="login_smtp_port">SMTP prievadas</string>
     <string name="login_smtp_security">SMTP saugumas</string>
     <string name="login_auth_method">Įgaliojimų suteikimo metodas</string>
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <string name="proxy_settings">Įgaliotasis serveris</string>
+    <string name="proxy_use_proxy">Naudoti įgaliotąjį serverį</string>
+    <string name="proxy_add">Pridėti įgaliotąjį serverį</string>
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Naudoti SOCKS5</string>
@@ -548,6 +559,8 @@
     <string name="pref_incognito_keyboard_explain">Prašyti klaviatūros išjungti suasmenintą mokymąsi</string>
     <string name="pref_read_receipts">Pranešimai apie skaitymą</string>
     <string name="pref_read_receipts_explain">Jei pranešimai apie skaitymą yra išjungti, jūs negalėsite matyti pranešimų apie skaitymą iš kitų žmonių.</string>
+    <string name="pref_server">Serveris</string>
+    <string name="pref_encryption">Šifravimas</string>
     <string name="pref_manage_keys">Tvarkyti raktus</string>
     <string name="pref_use_system_emoji">Naudoti sistemos šypsniukus</string>
     <string name="pref_use_system_emoji_explain">Išjungti Delta Chat įtaisytąjį šypsniukų palaikymą</string>
