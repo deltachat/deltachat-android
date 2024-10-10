@@ -451,6 +451,10 @@
     <string name="search_files">搜索文件</string>
     <string name="search_explain">搜索聊天、联系人和消息</string>
     <string name="search_no_result_for_x">没有找到有关\"%s\"的结果</string>
+    <!-- Adjective, as in "Show Unread Messages" -->
+    <string name="search_unread">未读</string>
+
+
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">群组名称</string>
     <string name="group_avatar">群组图像</string>
@@ -598,6 +602,8 @@
     <string name="proxy_list_header">已保存的代理</string>
     <string name="proxy_delete">删除代理</string>
     <string name="proxy_delete_explain">你确定要删除 \"%1$s\"吗？</string>
+    <string name="proxy_use_proxy_confirm">你想使用代理“%1$s”吗？</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">使用 SOCKS5 代理</string>

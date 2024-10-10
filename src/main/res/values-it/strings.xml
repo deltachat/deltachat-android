@@ -481,6 +481,10 @@
     <string name="search_files">Cerca Files</string>
     <string name="search_explain">Cerca in chat, contatti e messaggi</string>
     <string name="search_no_result_for_x">Nessun risultato per \"%s\"</string>
+    <!-- Adjective, as in "Show Unread Messages" -->
+    <string name="search_unread">Non Letto</string>
+
+
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nome del Gruppo</string>
     <string name="group_avatar">Immagine Gruppo</string>
@@ -628,6 +632,8 @@
     <string name="proxy_list_header">Proxy Salvati</string>
     <string name="proxy_delete">Elimina Proxy</string>
     <string name="proxy_delete_explain">Sei sicuro di voler eliminare \"%1$s\"?</string>
+    <string name="proxy_use_proxy_confirm">Vuoi usare il proxy \"%1$s\"?</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Usa SOCKS5</string>

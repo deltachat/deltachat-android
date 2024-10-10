@@ -460,6 +460,10 @@
     <string name="search_files">Kërko në Kartela</string>
     <string name="search_explain">Kërkoni për fjalosje, kontakte dhe mesazhe.</string>
     <string name="search_no_result_for_x">S\’u gjetën përfundime për “%s”</string>
+    <!-- Adjective, as in "Show Unread Messages" -->
+    <string name="search_unread">Të palexuar</string>
+
+
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Emër Grupi</string>
     <string name="group_avatar">Avatar Grupi</string>
@@ -607,6 +611,8 @@
     <string name="proxy_list_header">Ndërmjetës të Ruajtur</string>
     <string name="proxy_delete">Fshije Ndërmjetësin</string>
     <string name="proxy_delete_explain">Jeni i sigurt se doni të fshihet “%1$s”?</string>
+    <string name="proxy_use_proxy_confirm">Doni të përdore ndërmjetësi “%1$s”?</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Përdor SOCKS5</string>
