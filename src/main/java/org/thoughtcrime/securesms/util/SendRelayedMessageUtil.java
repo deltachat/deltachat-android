@@ -10,6 +10,7 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.ConversationListRelayingActivity;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.PartAuthority;
+import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -112,7 +113,7 @@ public class SendRelayedMessageUtil {
   private static String getRealPathFromUri(Context context, Uri uri) throws NullPointerException {
     DcContext dcContext = DcHelper.getContext(context);
     try {
-      String filename = uri.getPathSegments().get(2); // Get real file name from Uri
+      String filename = uri.getPathSegments().get(PersistentBlobProvider.FILENAME_PATH_SEGMENT);
       String ext = "";
       int i = filename.lastIndexOf(".");
       if (i >= 0) {

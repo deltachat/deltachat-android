@@ -35,7 +35,7 @@ public class PersistentBlobProvider {
   public  static final String     EXPECTED_PATH_NEW     = "capture-new/*/*/*/*/#";
 
   private static final int        MIMETYPE_PATH_SEGMENT = 1;
-  private static final int        FILENAME_PATH_SEGMENT = 2;
+  public static final int         FILENAME_PATH_SEGMENT = 2;
   private static final int        FILESIZE_PATH_SEGMENT = 3;
 
   private static final String     BLOB_EXTENSION        = "blob";
