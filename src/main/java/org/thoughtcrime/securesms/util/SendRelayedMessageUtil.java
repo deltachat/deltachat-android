@@ -50,7 +50,7 @@ public class SendRelayedMessageUtil {
       resetRelayingMessageContent(activity);
       Util.runOnAnyBackgroundThread(() -> {
         for (long chatId : chatIds) {
-          handleSharing(activity, (int) chatId, sharedUris, sharedText);
+          sendMultipleMsgs(activity, (int) chatId, sharedUris, sharedText);
         }
       });
     }
@@ -61,7 +61,7 @@ public class SendRelayedMessageUtil {
     dcContext.forwardMsgs(forwardedMessageIDs, chatId);
   }
 
-  public static void handleSharing(Context context, int chatId, ArrayList<Uri> sharedUris, String sharedText) {
+  public static void sendMultipleMsgs(Context context, int chatId, ArrayList<Uri> sharedUris, String sharedText) {
     DcContext dcContext = DcHelper.getContext(context);
     ArrayList<Uri> uris = sharedUris;
     String text = sharedText;
