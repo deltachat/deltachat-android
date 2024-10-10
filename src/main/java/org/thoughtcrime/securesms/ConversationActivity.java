@@ -363,7 +363,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             for (int i = 0; i < uriCount; i++) {
               uriList.add(multipleUris.getItemAt(i).getUri());
             }
-            askSendingFiles(uriList, () -> SendRelayedMessageUtil.handleSharing(this, chatId, uriList, null));
+            askSendingFiles(uriList, () -> SendRelayedMessageUtil.sendMultipleMsgs(this, chatId, uriList, null));
           }
         }
       }
