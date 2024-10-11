@@ -496,6 +496,10 @@
     <string name="search_files">Шукати файли</string>
     <string name="search_explain">Пошук чатів, контактів і повідомлень</string>
     <string name="search_no_result_for_x">Запит \"%s\" не дав результатів</string>
+    <!-- Adjective, as in "Show Unread Messages" -->
+    <string name="search_unread">Непрочитане</string>
+
+
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Назва групи</string>
     <string name="group_avatar">Аватар групи</string>
@@ -643,6 +647,8 @@
     <string name="proxy_list_header">Збережені проксі-сервери</string>
     <string name="proxy_delete">Видалити проксі-сервер</string>
     <string name="proxy_delete_explain">Ви дійсно хочете видалити \"%1$s\"?</string>
+    <string name="proxy_use_proxy_confirm">Ви хочете використовувати проксі \"%1$s\"?</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Використовувати SOCKS5</string>
@@ -682,6 +688,7 @@
     <string name="forward_to">Переслати...</string>
     <string name="ask_send_files_to_selected_chat">Надіслати %1$d файлів у обраний чат?</string>
     <string name="ask_send_files_to_selected_chats">Надіслати %1$d файл (файлів) у %2$d чати?</string>
+    <string name="videos_sent_without_recoding">(Відео надсилаються у вигляді оригінальних великих файлів. Щоб надіслати відео у вигляді менших файлів, прикріпіть їх окремо)</string>
     <string name="share_text_multiple_chats">Надіслати цей текст у %1$d чати?\n\n\"%2$s\"</string>
     <string name="share_abort">Надсилання обірване через відсутність дозволів.</string>
 
@@ -1082,7 +1089,7 @@
     <string name="global_menu_edit_cut_desktop">Вирізати</string>
     <string name="global_menu_edit_copy_desktop">Копіювати</string>
     <string name="global_menu_edit_paste_desktop">Вставити</string>
-    <string name="global_menu_view_desktop">Переглянути</string>
+    <string name="global_menu_view_desktop">Вигляд</string>
     <string name="global_menu_view_floatontop_desktop">Виводити на перший план</string>
     <string name="global_menu_view_developer_desktop">Розробник</string>
     <string name="global_menu_view_developer_tools_desktop">Інструменти розробника</string>

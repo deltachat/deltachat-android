@@ -455,6 +455,8 @@
     <string name="onboarding_alternative_logins">Aš jau turiu profilį</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Jūsų profilis</string>
+    <!-- Secondary, link-like button to open a page with other possible instances -->
+    <string name="instant_onboarding_show_more_instances">Naudoti kitą serverį</string>
     <string name="scan_invitation_code">Skenuoti pakvietimo kodą</string>
     <string name="login_title">Prisijungti</string>
     <!-- for classic email, we use the classical term "Account" -->
@@ -479,6 +481,9 @@
     <string name="proxy_settings">Įgaliotasis serveris</string>
     <string name="proxy_use_proxy">Naudoti įgaliotąjį serverį</string>
     <string name="proxy_add">Pridėti įgaliotąjį serverį</string>
+    <string name="proxy_delete_explain">Ar tikrai norite ištrinti „%1$s“?</string>
+    <string name="proxy_use_proxy_confirm">Ar norite naudoti įgaliotąjį serverį „%1$s“?</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Naudoti SOCKS5</string>
