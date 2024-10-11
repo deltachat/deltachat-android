@@ -237,7 +237,8 @@ Android metadata and changelogs are translated using [Weblate](https://hosted.we
 
 # Credits
 
-The user interface classes are based on the Signal messenger.
+Many of the user interface classes were based on the Android Signal messenger when we ported it from the former Telegram-UI base in 2019. 
+Meanwhile, development has diverged in many areas. 
 
 
 # License
