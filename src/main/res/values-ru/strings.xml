@@ -688,6 +688,7 @@
     <string name="forward_to">Переслать…</string>
     <string name="ask_send_files_to_selected_chat">Отправить %1$d файл(ов) в выбранный чат?</string>
     <string name="ask_send_files_to_selected_chats">Отправить %1$d файл(ов) в %2$d чата(ов)?</string>
+    <string name="videos_sent_without_recoding">(Видеофайлы отправляются в исходном виде, без сжатия. Чтобы отправить видео в более компактном виде, прикрепите их отдельно)</string>
     <string name="share_text_multiple_chats">Отправить текст в %1$d чата(ов)?\n\n\"%2$s\"</string>
     <string name="share_abort">Общий доступ прерван из-за отсутствия необходимых разрешений.</string>
 

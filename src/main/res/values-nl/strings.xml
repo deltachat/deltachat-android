@@ -658,6 +658,7 @@
     <string name="forward_to">Doorsturen naar…</string>
     <string name="ask_send_files_to_selected_chat">Wil je %1$d bestanden delen in het gekozen gesprek?</string>
     <string name="ask_send_files_to_selected_chats">Wil je %1$d bestand(en) delen in %2$d gesprekken?</string>
+    <string name="videos_sent_without_recoding">(Video\'s worden verstuurd in de oorspronkelijke grootte. Voeg bestanden los toe om te versturen als kleinere bestanden.)</string>
     <string name="share_text_multiple_chats">Wil je deze tekst versturen naar %1$d gesprekken?\n\n“%2$s”</string>
     <string name="share_abort">Het delen is afgebroken wegens ontbrekende rechten.</string>
 

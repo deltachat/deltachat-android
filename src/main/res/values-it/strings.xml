@@ -673,6 +673,7 @@
     <string name="forward_to">Inoltra a…</string>
     <string name="ask_send_files_to_selected_chat">Invia %1$d files alla chat selezionata?</string>
     <string name="ask_send_files_to_selected_chats">Invia %1$d file(s) a %2$d chat?</string>
+    <string name="videos_sent_without_recoding">(I video vengono inviati come file originali di grandi dimensioni. Per inviare i video come file più piccoli, allegali separatamente)</string>
     <string name="share_text_multiple_chats">Invia questo testo alle %1$d chat?\n\n\"%2$s\"</string>
     <string name="share_abort">Condivisione annullata per permessi mancanti.</string>
 
