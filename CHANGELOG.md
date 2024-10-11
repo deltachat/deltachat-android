@@ -29,14 +29,23 @@
 * add "Learn More" button to "Manage keys"
 * log unexpected message state when resending fails
 * smoother backup and "Add Second Device" progress bars
+* assign messages to ad-hoc group with matching name and members
+* use stricter TLS checks for HTTPS downloads (images in HTML mails, Autoconfig)
+* improve logging for failed QR code scans
+* show more context for the "Cannot establish guaranteed..." info message
+* show original file name in "Message Info"
 * fix: avoid app being killed when processing a PUSH notification
 * fix crash when refreshing avatar
 * fix crash in gallery
 * fix: shorten message text in locally sent messages too
 * fix: Set http I/O timeout to 1 minute rather than whole request timeout
 * fix: don't sync QR code token before populating the group
+* fix: do not get stuck if the message to download does not exist anymore
+* fix: do not attempt to reference info messages
+* fix: do mpt get stuck if there is an error transferring backup
+* fix: make it possible to cancel ongoing backup transfer
 * update translations
-* update to core 1.145.0
+* update to core 1.147.0
 
 
 ## v1.46.14
