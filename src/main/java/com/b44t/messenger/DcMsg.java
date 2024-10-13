@@ -184,13 +184,14 @@ public class DcMsg {
       return cPtr != 0 ? new DcMsg(cPtr) : null;
     }
 
+    public boolean    hasOriginal       () { return getOriginalChatId() != 0; }
+    public native int getOriginalChatId ();
+    public native int getSavedMsgId     ();
+
     public DcMsg getOriginalMsg() {
       long cPtr = getOriginalMsgCPtr();
       return cPtr != 0 ? new DcMsg(cPtr) : null;
     }
-
-    public native int getOriginalChatId ();
-    public boolean    hasOriginal       () { return getOriginalChatId() != 0; }
 
     public File getFileAsFile() {
         if(getFile()==null)
