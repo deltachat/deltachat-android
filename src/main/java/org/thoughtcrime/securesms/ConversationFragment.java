@@ -338,7 +338,7 @@ public class ConversationFragment extends MessageSelectorFragment
             boolean showReplyPrivately = chat.isMultiUser() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
             menu.findItem(R.id.menu_add_to_home_screen).setVisible(messageRecord.getType() == DcMsg.DC_MSG_WEBXDC);
-            menu.findItem(R.id.menu_show_in_chat).setVisible(messageRecord.getOriginalMsg() != null);
+            menu.findItem(R.id.menu_show_in_chat).setVisible(messageRecord.hasOriginal());
         }
 
         // if one of the selected items cannot be saved, disable saving.
@@ -964,7 +964,7 @@ public class ConversationFragment extends MessageSelectorFragment
                     handleResendMessage(getListAdapter().getSelectedItems());
                     return true;
               case R.id.menu_show_in_chat:
-                    handleShowInChat(getSelectedMessageRecord(getListAdapter().getSelectedItems()).getOriginalMsg());
+                    handleShowInChat(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
                     return true;
             }
 

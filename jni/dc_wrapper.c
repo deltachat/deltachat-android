@@ -1729,6 +1729,12 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getOriginalMsgCPtr(JNIEnv *env, jo
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getOriginalChatId(JNIEnv *env, jobject obj)
+{
+    return (jint)dc_msg_get_original_chat_id(get_dc_msg(env, obj));
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getError(JNIEnv *env, jobject obj)
 {
     char* temp = dc_msg_get_error(get_dc_msg(env, obj));
