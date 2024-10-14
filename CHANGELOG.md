@@ -44,8 +44,10 @@
 * fix: do not attempt to reference info messages
 * fix: do mpt get stuck if there is an error transferring backup
 * fix: make it possible to cancel ongoing backup transfer
+* fix: reset quota when entering a new address
+* fix: better detection of file extensions
 * update translations
-* update to core 1.147.0
+* update to core 1.147.1
 
 
 ## v1.46.14
