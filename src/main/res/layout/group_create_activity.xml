@@ -32,7 +32,9 @@
             android:lines="1"
             android:maxLength="255"
             android:inputType="textAutoCorrect"
-            android:hint="@string/group_name" />
+            android:hint="@string/group_name">
+          <requestFocus />
+        </org.thoughtcrime.securesms.components.emoji.EmojiEditText>
     </LinearLayout>
 
     <TextView
