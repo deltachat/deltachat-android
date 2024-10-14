@@ -75,8 +75,7 @@ public class QrActivity extends BaseActionBarActivity {
         getSupportActionBar().setTitle(R.string.menu_new_contact);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        int lastSelectedTab = PreferenceManager.getDefaultSharedPreferences(this).getInt("qrTab", TAB_SHOW);
-        viewPager.setCurrentItem(lastSelectedTab);
+        viewPager.setCurrentItem(TAB_SHOW);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -95,8 +94,6 @@ public class QrActivity extends BaseActionBarActivity {
         });
 
         tabLayout.setupWithViewPager(viewPager);
-
-        checkPermissions(lastSelectedTab, adapter, viewPager);
     }
 
     private void checkPermissions(int position, ProfilePagerAdapter adapter, ViewPager viewPager) {
@@ -121,13 +118,6 @@ public class QrActivity extends BaseActionBarActivity {
         menu.findItem(R.id.copy).setVisible(false);
       }
       return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        int currentSelectedTab = tabLayout.getSelectedTabPosition();
-        PreferenceManager.getDefaultSharedPreferences(this).edit().putInt("qrTab", currentSelectedTab).apply();
     }
 
     @Override
