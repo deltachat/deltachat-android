@@ -113,9 +113,9 @@ public abstract class MessageSelectorFragment
     Intent intent = new Intent(getContext(), ConversationActivity.class);
     intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, savedMsg.getOriginalChatId());
 
-    DcMsg originalMsg = savedMsg.getOriginalMsg();
-    if (originalMsg != null) {
-      intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, DcMsg.getMessagePosition(originalMsg, dcContext));
+    int originalMsgId = savedMsg.getOriginalMsgId();
+    if (originalMsgId != 0) {
+      intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, DcMsg.getMessagePosition(dcContext.getMsg(originalMsgId), dcContext));
     }
 
     startActivity(intent);

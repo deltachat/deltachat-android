@@ -186,12 +186,8 @@ public class DcMsg {
 
     public boolean    hasOriginal       () { return getOriginalChatId() != 0; }
     public native int getOriginalChatId ();
+    public native int getOriginalMsgId  ();
     public native int getSavedMsgId     ();
-
-    public DcMsg getOriginalMsg() {
-      long cPtr = getOriginalMsgCPtr();
-      return cPtr != 0 ? new DcMsg(cPtr) : null;
-    }
 
     public File getFileAsFile() {
         if(getFile()==null)
@@ -258,6 +254,5 @@ public class DcMsg {
     private native void setQuoteCPtr    (long quoteCPtr);
     private native long getQuotedMsgCPtr ();
     private native long getParentCPtr   ();
-    private native long getOriginalMsgCPtr();
     private native String getWebxdcInfoJson ();
 };
