@@ -581,7 +581,6 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Chuyển tiếp tới…</string>
-    <string name="ask_send_files_to_selected_chat">Gửi tệp %1$d đến cuộc trò chuyện đã chọn?</string>
     <string name="ask_send_files_to_selected_chats">Gửi %1$d tệp tới %2$d cuộc trò chuyện?</string>
     <string name="share_text_multiple_chats">Gửi văn bản này tới %1$d cuộc trò chuyện?\n\n\"%2$s\"</string>
     <string name="share_abort">Chia sẻ bị hủy do thiếu quyền.</string>

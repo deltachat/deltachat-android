@@ -357,7 +357,6 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Inoltra a...</string>
-    <string name="ask_send_files_to_selected_chat">Cheres imbiare %1$d documentos a sa tzarrada ischertada?</string>
     <string name="ask_send_files_to_selected_chats">Cheres imbiare %1$d documentu(os) a %2$d tzarradas?</string>
     <string name="share_text_multiple_chats">Cheres inviare custu testu a %1$d tzarradas?\n\n\"%2$s\"</string>
     <string name="share_abort">Cumpartzidura annullada pro permissos chi mancant.</string>

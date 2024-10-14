@@ -686,7 +686,6 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Переслати...</string>
-    <string name="ask_send_files_to_selected_chat">Надіслати %1$d файлів у обраний чат?</string>
     <string name="ask_send_files_to_selected_chats">Надіслати %1$d файл (файлів) у %2$d чати?</string>
     <string name="videos_sent_without_recoding">(Відео надсилаються у вигляді оригінальних великих файлів. Щоб надіслати відео у вигляді менших файлів, прикріпіть їх окремо)</string>
     <string name="share_text_multiple_chats">Надіслати цей текст у %1$d чати?\n\n\"%2$s\"</string>

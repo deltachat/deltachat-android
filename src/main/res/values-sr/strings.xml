@@ -553,7 +553,6 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Проследи за…</string>
-    <string name="ask_send_files_to_selected_chat">Пошаљи %1$d фајлове у изабрано ћаскање?</string>
     <string name="ask_send_files_to_selected_chats">Пошаљи %1$d фајл(ове) у %2$d ћаскања?</string>
     <string name="share_text_multiple_chats">Пошаљи овај текст %1$dиз ћаскања?\n\n„%2$s“</string>
     <string name="share_abort">Дељење прекинуто због неодговарајуће дозволе.</string>

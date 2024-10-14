@@ -630,7 +630,6 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Välitä...</string>
-    <string name="ask_send_files_to_selected_chat">Lähetetäänkö %1$d tiedostoa valittuun keskusteluun?</string>
     <string name="ask_send_files_to_selected_chats">Lähetä %1$d tiedosto(a) %2$d keskusteluun?</string>
     <string name="share_text_multiple_chats">Lähetä tämä teksti %1$d keskusteluun?\n\n\"%2$s\"</string>
     <string name="share_abort">Jakaminen keskeytetty puuttuvien käyttöoikeuksien vuoksi.</string>
