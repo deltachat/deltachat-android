@@ -85,8 +85,8 @@
     <string name="file_not_found">Не удалось найти %1$s.</string>
     <string name="copied_to_clipboard">Скопировано в буфер обмена.</string>
     <string name="contacts_headline">Контакты</string>
-    <string name="email_address">Адрес эл.почты</string>
-    <string name="bad_email_address">Неправильный адрес эл.почты.</string>
+    <string name="email_address">Адрес электронной почты</string>
+    <string name="bad_email_address">Неправильный адрес электронной почты.</string>
     <string name="password">Пароль</string>
     <string name="existing_password">Текущий пароль</string>
     <string name="now">Сейчас</string>
@@ -253,7 +253,7 @@
     <string name="menu_copy_link_to_clipboard">Копировать ссылку</string>
     <string name="menu_copy_text_to_clipboard">Копировать текст</string>
     <string name="menu_copy_image_to_clipboard">Копировать изображение</string>
-    <string name="menu_copy_email_to_clipboard">Копировать E-Mail</string>
+    <string name="menu_copy_email_to_clipboard">Копировать электронную почту</string>
     <string name="paste_from_clipboard">Вставить из буфера обмена</string>
     <string name="ask_copy_unopenable_link_to_clipboard">Ссылка \"%1$d\" не может быть открыта в веб-браузере. Хотите скопировать ссылку в буфер обмена?</string>
     <string name="menu_forward">Переслать сообщение</string>
@@ -294,7 +294,7 @@
     <string name="menu_zoom_out">Уменьшить масштаб</string>
     <string name="menu_save_log">Сохранить журнал</string>
     <string name="menu_more_options">Дополнительно</string>
-    <string name="menu_learn_spelling">Запоминать правописание </string>
+    <string name="menu_learn_spelling">Запоминать правописание</string>
     <string name="menu_chat_audit_log">Журнал аудита чата</string>
     <string name="jump_to_message">Перейти к сообщению</string>
     <string name="copy_json">Копировать JSON</string>
@@ -397,8 +397,8 @@
 
     <!-- contact list -->
     <string name="contacts_title">Контакты</string>
-    <string name="contacts_enter_name_or_email">Введите имя или адрес эл. почты</string>
-    <string name="contacts_type_email_above">Введите адрес эл. почты, выше.</string>
+    <string name="contacts_enter_name_or_email">Введите имя или адрес электронной почты</string>
+    <string name="contacts_type_email_above">Введите адрес электронной почты выше</string>
     <string name="contacts_empty_hint">Нет контактов.</string>
 
 
@@ -595,7 +595,7 @@
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">У меня уже есть профиль</string>
     <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Логин в классическую Эл. Почту</string>
+    <string name="manual_account_setup_option">Вход в обычную электронную почту</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Ваш профиль</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -620,9 +620,9 @@
     <string name="scan_invitation_code">Сканировать код приглашения</string>
     <string name="login_title">Войти</string>
     <!-- for classic email, we use the classical term "Account" -->
-    <string name="login_header">Войти в ваш имэйл-аккаунт</string>
+    <string name="login_header">Вход в аккаунт</string>
     <!-- for classic email, we use the classical term "Account" -->
-    <string name="login_explain">Войти с существующим аккаунтом эл.почты</string>
+    <string name="login_explain">Вход в аккаунт электронной почты</string>
     <string name="login_subheader">Для известных провайдеров электронной почты дополнительные настройки устанавливаются автоматически. Иногда необходимо включить IMAP в настройках веб-сайта. Проконсультируйтесь с технической поддержкой вашей почтовой службы или друзьями, для получения помощи.</string>
     <string name="login_no_servers_hint">Delta Chat не собирает данные пользователей, все данные хранятся на вашем устройстве!</string>
     <string name="login_inbox">Входящие</string>
@@ -660,10 +660,10 @@
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
     <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth 2.0).\n\nНа следующем шаге разрешите Delta Chat действовать как ваше приложение для чата по электронной почте.\n\nDelta Chat не собирает данные пользователей, все данные остаются на вашем устройстве.</string>
     <string name="login_certificate_checks">Проверки сертификатов</string>
-    <string name="login_error_mail">Введите действительный адрес эл. почты</string>
+    <string name="login_error_mail">Введите правильный адрес электронной почты</string>
     <string name="login_error_server">Введите действительный адрес сервера / IP-адрес</string>
     <string name="login_error_port">Введите действительный порт (1-65535)</string>
-    <string name="login_error_required_fields">Введите действительный адрес эл. почты и пароль</string>
+    <string name="login_error_required_fields">Введите правильный адрес электронной почты и пароль</string>
     <string name="import_backup_title">Восстановить из резервной копии</string>
     <string name="import_backup_ask">Найдена резервная копия в \"%1$s\".\n\nВы хотите импортировать и использовать все данные и настройки из нее?</string>
     <string name="import_backup_no_backup_found">Резервных копий не найдено.\n\nСкопируйте резервную копию в \"%1$s\" и повторите попытку. Или нажмите \"Начать общение\", чтобы продолжить стандартный процесс установки.</string>
@@ -694,7 +694,7 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Использовать персонализованно: %s</string>
+    <string name="pref_using_custom">Использовать персональное: %s</string>
     <string name="pref_using_default">Используется по умолчанию: %s</string>
     <string name="pref_profile_info_headline">Ваш профиль</string>
     <string name="pref_profile_photo">Изображение профиля</string>
@@ -797,8 +797,8 @@
     <string name="pref_developer_mode_explain">Включает режим отладки и может снизить стабильность приложения. Только для разработчиков.</string>
     <string name="pref_background_default">Изображение по умолчанию</string>
     <string name="pref_background_default_color">Цвет по умолчанию</string>
-    <string name="pref_background_custom_image">Пользовательское изображение</string>
-    <string name="pref_background_custom_color">Пользовательский цвет</string>
+    <string name="pref_background_custom_image">Персональное изображение</string>
+    <string name="pref_background_custom_color">Персональный цвет</string>
     <string name="export_aborted">Экспорт прерван.</string>
     <string name="auto_download_messages">Автозагрузка сообщений</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
@@ -885,7 +885,7 @@
 
     <!-- system messages -->
     <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Уведомление о прочтении</string>
+    <string name="systemmsg_read_receipt_subject">Сообщение открыто</string>
     <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Сообщение \"%1$s\" было показано на экране получателя.\n\nЭто не гарантирует, что сообщение было прочитано.</string>
     <string name="systemmsg_cannot_decrypt">Это сообщение не может быть расшифровано.\n\n• Попробуйте просто ответить на это сообщение и попросить отправителя отправить его снова.\n\n• Если вы только что переустановили Delta Chat, то лучше сейчас заново настроить Delta Chat и выбрать \"Добавить как второе устройство\" или импортировать резервную копию.</string>
@@ -997,7 +997,7 @@
     <string name="revive_verifygroup_explain">Этот QR-код могут сканировать другие люди, чтобы присоединиться к группе \"%1$s\".\n\nНа этом устройстве QR-код не активирован.</string>
     <string name="revive_qr_code">Активировать QR-код</string>
     <string name="qrshow_title">QR-код приглашения</string>
-    <string name="qrshow_x_joining">%1$s присоединилось.</string>
+    <string name="qrshow_x_joining">%1$s присоединяется.</string>
     <string name="qrshow_x_verified">%1$s подтверждён.</string>
     <string name="qrshow_x_has_joined_group">%1$s присоединился к группе.</string>
     <string name="qrshow_join_group_title">QR-код приглашения</string>

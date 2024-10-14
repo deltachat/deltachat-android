@@ -466,6 +466,10 @@
     <string name="search_files">Dosyalar Ara</string>
     <string name="search_explain">Sohbetleri, kişileri ve iletileri ara</string>
     <string name="search_no_result_for_x">\"%s\" için sonuç bulunamadı</string>
+    <!-- Adjective, as in "Show Unread Messages" -->
+    <string name="search_unread">Okunmayan</string>
+
+
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Öbek Adı</string>
     <string name="group_avatar">Öbek Görseli</string>
@@ -613,6 +617,8 @@
     <string name="proxy_list_header">Kaydedilen Proxy\'ler</string>
     <string name="proxy_delete">Proxy\'yi Sil</string>
     <string name="proxy_delete_explain">\"%1$s\" proxy\'sini silmek istediğinizden emin misiniz?</string>
+    <string name="proxy_use_proxy_confirm">\"%1$s\" proxy\'sini kullanmak istiyor musunuz?</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">SOCKS5\'i Kullan</string>
@@ -652,6 +658,7 @@
     <string name="forward_to">İlet…</string>
     <string name="ask_send_files_to_selected_chat">%1$d dosya seçilen sohbete gönderilsin mi?</string>
     <string name="ask_send_files_to_selected_chats">%1$d dosya %2$d sohbete gönderilsin mi?</string>
+    <string name="videos_sent_without_recoding">(Videolar özgün, büyük dosyalar olarak gönderilir. Videoları daha küçük dosyalar olarak göndermek için onları ayrı ayrı iliştirin)</string>
     <string name="share_text_multiple_chats">Bu metin %1$d sohbete gönderilsin mi?\n\n\"%2$s\"</string>
     <string name="share_abort">Eksik izinlerden dolayı paylaşımdan vazgeçildi.</string>
 
