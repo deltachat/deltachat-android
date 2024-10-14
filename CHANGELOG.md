@@ -9,6 +9,7 @@
 * scan Proxies' QR code and use them
 * make Proxy URLs inside Delta Chat tappable
 * open Delta Chat when tapping Proxy URLs in other apps
+* allow to attach multiple images in one step
 * improve profile deletion dialog: show name, size and avatar of the profile being deleted
 * show profile name in title bar when the user has multiple profiles
 * improve profile switcher layout
