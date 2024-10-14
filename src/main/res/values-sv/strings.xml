@@ -636,7 +636,6 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Vidarebefordra till...</string>
-    <string name="ask_send_files_to_selected_chat">Vill du skicka %1$d filer till den valda chatten?</string>
     <string name="ask_send_files_to_selected_chats">Vill du skicka %1$d fil(er) till %2$d chattar?</string>
     <string name="share_text_multiple_chats">Vill du skicka denna text till %1$d chattar?\n\n\"%2$s\"</string>
     <string name="share_abort">Delningen avbröts på grund av saknad behörighet.</string>
