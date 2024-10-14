@@ -191,7 +191,7 @@
                 android:paddingBottom="@dimen/message_bubble_showmore_padding"
                 android:minHeight="1dp"
                 android:minWidth="0dp"
-                android:background="@android:color/transparent"
+                android:background="@drawable/touch_highlight_background_strong"
                 android:textColor="@color/delta_accent_darker"
                 android:text="@string/show_full_message"
                 android:textAllCaps="false"/>
