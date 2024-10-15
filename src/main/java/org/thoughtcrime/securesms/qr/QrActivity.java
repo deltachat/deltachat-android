@@ -12,10 +12,10 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.MenuCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -42,7 +42,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class QrActivity extends BaseActionBarActivity {
+public class QrActivity extends BaseActionBarActivity implements View.OnClickListener {
 
     private final static String TAG = QrActivity.class.getSimpleName();
     private final static int REQUEST_CODE_IMAGE = 46243;
@@ -64,7 +64,7 @@ public class QrActivity extends BaseActionBarActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_qr);
-        qrShowFragment = new QrShowFragment();
+        qrShowFragment = new QrShowFragment(this);
         tabLayout = ViewUtil.findById(this, R.id.tab_layout);
         viewPager = ViewUtil.findById(this, R.id.pager);
         ProfilePagerAdapter adapter = new ProfilePagerAdapter(this, getSupportFragmentManager());
@@ -214,6 +214,11 @@ public class QrActivity extends BaseActionBarActivity {
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        viewPager.setCurrentItem(TAB_SCAN);
     }
 
     private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
