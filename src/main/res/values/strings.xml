@@ -7,6 +7,8 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">or</string>
     <string name="clear_search">Clear Search</string>
+    <string name="link">Link</string>
+    <string name="scan">Scan</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="select">Select</string>
