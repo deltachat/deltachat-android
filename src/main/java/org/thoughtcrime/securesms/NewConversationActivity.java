@@ -106,8 +106,6 @@ public class NewConversationActivity extends ContactSelectionActivity {
       int contactId = dcContext.lookupContactIdByAddr(addr);
       if (contactId!=0 && dcContext.getChatIdByContactId(contactId)!=0) {
         openConversation(dcContext.getChatIdByContactId(contactId));
-      } else if (contactId == 0 && dcContext.isChatmail()) {
-        DcHelper.showEncryptionRequiredDialog(this, addr);
       } else {
         String nameNAddr = contactId == 0 ? addr : dcContext.getContact(contactId).getNameNAddr();
         new AlertDialog.Builder(this)
