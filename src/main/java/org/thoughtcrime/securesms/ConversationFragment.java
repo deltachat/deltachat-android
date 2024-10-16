@@ -327,6 +327,7 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_reply).setVisible(false);
             menu.findItem(R.id.menu_context_reply_privately).setVisible(false);
             menu.findItem(R.id.menu_add_to_home_screen).setVisible(false);
+            menu.findItem(R.id.menu_show_in_chat).setVisible(false);
         } else {
             DcMsg messageRecord = messageRecords.iterator().next();
             DcChat chat = getListAdapter().getChat();
@@ -337,6 +338,7 @@ public class ConversationFragment extends MessageSelectorFragment
             boolean showReplyPrivately = chat.isMultiUser() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
             menu.findItem(R.id.menu_add_to_home_screen).setVisible(messageRecord.getType() == DcMsg.DC_MSG_WEBXDC);
+            menu.findItem(R.id.menu_show_in_chat).setVisible(messageRecord.hasOriginal());
         }
 
         // if one of the selected items cannot be saved, disable saving.
@@ -960,6 +962,19 @@ public class ConversationFragment extends MessageSelectorFragment
                     return true;
                 case R.id.menu_resend:
                     handleResendMessage(getListAdapter().getSelectedItems());
+                    return true;
+              case R.id.menu_show_in_chat:
+                    DcMsg savedMsg = getSelectedMessageRecord(getListAdapter().getSelectedItems());
+                    int originalChatId = savedMsg.getOriginalChatId();
+                    if (originalChatId != 0) {
+                      Intent intent = new Intent(getContext(), ConversationActivity.class);
+                      intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, originalChatId);
+                      int originalMsgId = savedMsg.getOriginalMsgId();
+                      if (originalMsgId != 0) {
+                        intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, DcMsg.getMessagePosition(dcContext.getMsg(originalMsgId), dcContext));
+                      }
+                      startActivity(intent);
+                    }
                     return true;
             }
 
