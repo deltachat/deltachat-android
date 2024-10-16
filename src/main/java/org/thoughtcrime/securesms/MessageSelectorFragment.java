@@ -109,15 +109,10 @@ public abstract class MessageSelectorFragment
     if (actionMode != null) actionMode.finish();
   }
 
-  protected void handleShowInChat(final DcMsg savedMsg) {
+  protected void handleShowInChat(final DcMsg dcMsg) {
     Intent intent = new Intent(getContext(), ConversationActivity.class);
-    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, savedMsg.getOriginalChatId());
-
-    int originalMsgId = savedMsg.getOriginalMsgId();
-    if (originalMsgId != 0) {
-      intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, DcMsg.getMessagePosition(dcContext.getMsg(originalMsgId), dcContext));
-    }
-
+    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, dcMsg.getChatId());
+    intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, DcMsg.getMessagePosition(dcMsg, dcContext));
     startActivity(intent);
   }
 

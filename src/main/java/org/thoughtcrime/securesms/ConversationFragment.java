@@ -964,7 +964,17 @@ public class ConversationFragment extends MessageSelectorFragment
                     handleResendMessage(getListAdapter().getSelectedItems());
                     return true;
               case R.id.menu_show_in_chat:
-                    handleShowInChat(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+                    DcMsg savedMsg = getSelectedMessageRecord(getListAdapter().getSelectedItems());
+                    int originalChatId = savedMsg.getOriginalChatId();
+                    if (originalChatId != 0) {
+                      Intent intent = new Intent(getContext(), ConversationActivity.class);
+                      intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, originalChatId);
+                      int originalMsgId = savedMsg.getOriginalMsgId();
+                      if (originalMsgId != 0) {
+                        intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, DcMsg.getMessagePosition(dcContext.getMsg(originalMsgId), dcContext));
+                      }
+                      startActivity(intent);
+                    }
                     return true;
             }
 
