@@ -19,6 +19,7 @@ package org.thoughtcrime.securesms;
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_URL;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
@@ -353,6 +354,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   @Override
   public void onResume() {
     super.onResume();
+    invalidateOptionsMenu();
     DirectShareUtil.triggerRefreshDirectShare(this);
   }
 
@@ -364,7 +366,14 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     if (!isRelayingMessageContent(this)) {
       inflater.inflate(R.menu.text_secure_normal, menu);
       menu.findItem(R.id.menu_global_map).setVisible(Prefs.isLocationStreamingEnabled(this));
-      menu.findItem(R.id.menu_proxy_settings).setVisible(!TextUtils.isEmpty(DcHelper.get(this, CONFIG_PROXY_URL)));
+      MenuItem proxyItem = menu.findItem(R.id.menu_proxy_settings);
+      if (TextUtils.isEmpty(DcHelper.get(this, CONFIG_PROXY_URL))) {
+        proxyItem.setVisible(false);
+      } else {
+        boolean proxyEnabled = DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1;
+        proxyItem.setIcon(proxyEnabled? R.drawable.ic_proxy_enabled_24 : R.drawable.ic_proxy_disabled_24);
+        proxyItem.setVisible(true);
+      }
     }
 
     super.onPrepareOptionsMenu(menu);
