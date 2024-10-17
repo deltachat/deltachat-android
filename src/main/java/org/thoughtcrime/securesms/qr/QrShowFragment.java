@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -98,7 +99,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             e.printStackTrace();
         }
 
-        view.findViewById(R.id.share_link_button).setOnClickListener((v) -> shareInviteURL());
+        view.findViewById(R.id.share_link_button).setOnClickListener((v) -> showInviteLinkDialog());
         Button scanBtn = view.findViewById(R.id.scan_qr_button);
         if (scanClicklistener != null) {
             scanBtn.setVisibility(View.VISIBLE);
@@ -146,6 +147,19 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
         });
         builder.setNegativeButton(R.string.cancel, null);
         builder.create().show();
+    }
+
+    public void showInviteLinkDialog() {
+      View view = View.inflate(getActivity(), R.layout.dialog_share_invite_link, null);
+      String inviteURL = Util.QrDataToInviteURL(dcContext.getSecurejoinQr(chatId));
+      ((TextView)view.findViewById(R.id.invite_link)).setText(inviteURL);
+      new AlertDialog.Builder(getActivity())
+        .setView(view)
+        .setNegativeButton(R.string.cancel, null)
+        .setNeutralButton(R.string.menu_copy_to_clipboard, (d, b) -> copyQrData())
+        .setPositiveButton(R.string.menu_share, (d, b) -> shareInviteURL())
+        .create()
+        .show();
     }
 
     @Override
