@@ -1,5 +1,8 @@
 package org.thoughtcrime.securesms;
 
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_URL;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -138,6 +141,14 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   public boolean onPrepareOptionsMenu(Menu menu) {
     menu.clear();
     getMenuInflater().inflate(R.menu.instant_onboarding_menu, menu);
+    MenuItem proxyItem = menu.findItem(R.id.menu_proxy_settings);
+    if (TextUtils.isEmpty(DcHelper.get(this, CONFIG_PROXY_URL))) {
+      proxyItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+    } else {
+      boolean proxyEnabled = DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1;
+      proxyItem.setIcon(proxyEnabled? R.drawable.ic_proxy_enabled_24 : R.drawable.ic_proxy_disabled_24);
+      proxyItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
     return super.onPrepareOptionsMenu(menu);
   }
 
@@ -239,6 +250,12 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
         Log.e(TAG, "Failed to save avatar", e);
       }
     }
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    invalidateOptionsMenu();
   }
 
   @Override
