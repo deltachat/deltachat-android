@@ -118,7 +118,6 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
       menu.findItem(R.id.new_classic_contact).setVisible(!DcHelper.getContext(this).isChatmail());
       if(tabLayout.getSelectedTabPosition() == TAB_SCAN) {
         menu.findItem(R.id.withdraw).setVisible(false);
-        menu.findItem(R.id.copy).setVisible(false);
       }
       return super.onPrepareOptionsMenu(menu);
     }
@@ -140,12 +139,6 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
                 return true;
             case R.id.new_classic_contact:
                 this.startActivity(new Intent(this, NewContactActivity.class));
-                break;
-            case R.id.share:
-                qrShowFragment.shareInviteURL();
-                break;
-            case R.id.copy:
-                qrShowFragment.copyQrData();
                 break;
             case R.id.withdraw:
                 qrShowFragment.withdrawQr();
