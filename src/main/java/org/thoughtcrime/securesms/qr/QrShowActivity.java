@@ -85,12 +85,6 @@ public class QrShowActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 return true;
-            case R.id.share:
-                fragment.shareInviteURL();
-                break;
-            case R.id.copy:
-                fragment.copyQrData();
-                break;
             case R.id.withdraw:
                 fragment.withdrawQr();
                 break;

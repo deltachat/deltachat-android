@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingLeft="20dp"
+      android:paddingRight="20dp"
+      android:paddingTop="16dp"
+      android:paddingBottom="10dp"
+      android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:paddingBottom="16dp"
+        android:text="@string/share_invite_link_explain" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:background="@drawable/delete_account_item_background">
+
+      <TextView
+          android:id="@+id/invite_link"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:ellipsize="marquee"
+          android:fontFamily="sans-serif"
+          android:textSize="16sp"
+          tools:text="https://i.delta.chat/#9AF055DB87EC48A1C009B6CA55E3712A6F7D346F&amp;a=botsindex%40nine.testrun.org&amp;n=Public%20Bots&amp;i=QpBSronexvP&amp;s=nAfQ0q_JomN"
+          />
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+</ScrollView>
+
