@@ -251,26 +251,18 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
     }
   */
 
-    String addr = null;
     if(chatId == -1 && extraEmail != null && extraEmail.length > 0) {
-      addr = extraEmail[0];
+      final String addr = extraEmail[0];
       int contactId = dcContext.lookupContactIdByAddr(addr);
 
-      if(contactId != 0 || !dcContext.isChatmail()) {
-        if(contactId == 0) {
-          contactId = dcContext.createContact(null, addr);
-        }
-
-        chatId = dcContext.createChatByContactId(contactId);
-        addr = null;
+      if(contactId == 0) {
+        contactId = dcContext.createContact(null, addr);
       }
+
+      chatId = dcContext.createChatByContactId(contactId);
     }
     Intent composeIntent;
-    if (addr != null) {
-      composeIntent = new Intent(this, ConversationListActivity.class);
-      composeIntent.putExtra(ConversationListActivity.WARN_CANNOT_ENCRYPT, addr);
-      startActivity(composeIntent);
-    } else if (chatId != -1) {
+    if (chatId != -1) {
       composeIntent = getBaseShareIntent(ConversationActivity.class);
       composeIntent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
       RelayUtil.setSharedUris(composeIntent, resolvedExtras);
