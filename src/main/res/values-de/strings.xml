@@ -125,6 +125,10 @@
         <item quantity="one">%d Nachricht</item>
         <item quantity="other">%d Nachrichten</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d Reaktion</item>
+        <item quantity="other">%d Reaktionen</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d Mitglied</item>
         <item quantity="other">%d Mitglieder</item>

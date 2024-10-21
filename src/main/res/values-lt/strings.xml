@@ -135,7 +135,7 @@
     <string name="image">Paveikslas</string>
     <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Atsakymas</string>
-    <string name="gif">Gif</string>
+    <string name="gif">GIF</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Lipdukas</string>
     <string name="add_to_sticker_collection">Pridėti į lipdukų rinkinį</string>
@@ -154,6 +154,7 @@
     <string name="switch_camera">Perjungti kamerą</string>
     <string name="toggle_fullscreen">Perjungti viso ekrano veikseną</string>
     <string name="location">Vieta</string>
+    <string name="locations">Vietos</string>
     <string name="gallery">Galerija</string>
     <string name="images_and_videos">Paveikslai ir vaizdo įrašai</string>
     <string name="file">Failas</string>
@@ -185,6 +186,7 @@
 
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Naujas adresatas</string>
+    <string name="menu_new_classic_contact">Pridėti adresatą rankiniu būdu</string>
     <string name="menu_new_chat">Naujas pokalbis</string>
     <string name="menu_new_group">Nauja grupė</string>
     <string name="add_recipients">Pridėti gavėjus</string>
@@ -455,6 +457,8 @@
     <string name="onboarding_alternative_logins">Aš jau turiu profilį</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Jūsų profilis</string>
+    <!-- The placeholder will be replaced by the default onboarding server -->
+    <string name="instant_onboarding_agree_default2">%1$s privatumo politika</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Naudoti kitą serverį</string>
     <string name="scan_invitation_code">Skenuoti pakvietimo kodą</string>
@@ -496,7 +500,7 @@
     <string name="login_socks5_user">SOCKS5 naudotojas</string>
     <string name="login_socks5_password">SOCKS5 slaptažodis</string>
 
-    <string name="login_info_oauth2_title">Tęsti, naudojant supaprastintą sąranką?</string>
+    <string name="login_info_oauth2_title">Tęsti naudojant supaprastintą sąranką?</string>
     <string name="login_certificate_checks">Liudijimų patikrinimai</string>
     <string name="login_error_mail">Įveskite teisingą el. pašto adresą.</string>
     <string name="login_error_server">Įveskite teisingą serverį / IP adresą</string>
