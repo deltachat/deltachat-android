@@ -61,7 +61,7 @@
                       android:layout_height="wrap_content">
 
           <org.thoughtcrime.securesms.components.emoji.EmojiTextView
-              android:id="@+id/addr"
+              android:id="@+id/addr_or_tag"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:textDirection="ltr"
