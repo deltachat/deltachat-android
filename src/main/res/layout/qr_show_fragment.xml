@@ -6,6 +6,13 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guideline"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.6"/>
+
     <org.thoughtcrime.securesms.components.ScaleStableImageView
         android:id="@+id/background"
         android:layout_width="match_parent"
@@ -13,6 +20,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/background_hd"
         tools:ignore="ContentDescription" />
 
 	<com.caverock.androidsvg.SVGImageView
@@ -20,22 +28,46 @@
 		android:layout_width="match_parent"
         android:layout_height="0dp"
 		android:layout_gravity="center"
+        android:padding="16dp"
         android:contentDescription="@string/qrscan_title"
-        app:layout_constraintBottom_toTopOf="@id/share_link_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/guideline"
+        />
 
-    <Button
-        android:id="@+id/share_link_button"
-        style="@style/ButtonPrimary"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/buttons_group"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:text="@string/share_invite_link"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/qrImage"
+        >
+
+      <Button
+          android:id="@+id/share_link_button"
+          style="@style/ButtonPrimary"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:paddingLeft="16dp"
+          android:paddingRight="16dp"
+          android:text="@string/link"
+          android:drawableStart="@drawable/ic_link_24"
+          />
+
+      <Button
+          android:id="@+id/scan_qr_button"
+          style="@style/ButtonPrimary"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:paddingLeft="16dp"
+          android:paddingRight="16dp"
+          android:text="@string/scan"
+          android:drawableStart="@drawable/ic_qr_code_scanner_24"
+          android:drawablePadding="4dp"
+          />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
