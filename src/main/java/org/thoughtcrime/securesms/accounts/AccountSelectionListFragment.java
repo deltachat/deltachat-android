@@ -125,7 +125,7 @@ public class AccountSelectionListFragment extends DialogFragment
     if (activity == null) return;
     AccountSelectionListFragment.this.dismiss();
 
-    DcContext dcContext = DcHelper.getContext(activity);
+    DcContext dcContext = DcHelper.getAccounts(activity).getAccount(accountId);
     View view = View.inflate(activity, R.layout.single_line_input, null);
     EditText inputField = view.findViewById(R.id.input_field);
     inputField.setHint(R.string.enter_tag);
