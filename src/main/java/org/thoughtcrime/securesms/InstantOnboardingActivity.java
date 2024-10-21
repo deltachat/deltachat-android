@@ -194,9 +194,15 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
         break;
 
       case IntentIntegrator.REQUEST_CODE:
-        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (scanResult != null && scanResult.getFormatName() != null) {
-          setProviderFromQr(scanResult.getContents());
+        String qrRaw = data.getStringExtra(RegistrationQrActivity.QRDATA_EXTRA);
+        if (qrRaw == null) {
+          IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+          if (scanResult != null && scanResult.getFormatName() != null) {
+            qrRaw = scanResult.getContents();
+          }
+        }
+        if (qrRaw != null) {
+          setProviderFromQr(qrRaw);
         }
         break;
     }

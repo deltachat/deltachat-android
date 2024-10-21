@@ -18,10 +18,12 @@ import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.Util;
 
 public class RegistrationQrActivity extends BaseActionBarActivity {
 
     public static final String ADD_AS_SECOND_DEVICE_EXTRA = "add_as_second_device";
+    public static final String QRDATA_EXTRA = "qrdata";
 
     private CaptureManager capture;
 
@@ -81,6 +83,12 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
                 return true;
             case R.id.troubleshooting:
                 DcHelper.openHelp(this, "#multiclient");
+                return true;
+            case R.id.menu_paste:
+                Intent intent = new Intent();
+                intent.putExtra(QRDATA_EXTRA, Util.getTextFromClipboard(this));
+                setResult(Activity.RESULT_OK, intent);
+                finish();
                 return true;
         }
 
