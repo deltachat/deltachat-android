@@ -128,7 +128,7 @@ public class AccountSelectionListFragment extends DialogFragment
     DcContext dcContext = DcHelper.getAccounts(activity).getAccount(accountId);
     View view = View.inflate(activity, R.layout.single_line_input, null);
     EditText inputField = view.findViewById(R.id.input_field);
-    inputField.setHint(R.string.enter_tag);
+    inputField.setHint(R.string.tag_field_hint);
     inputField.setText(dcContext.getTag());
 
     new AlertDialog.Builder(activity)
