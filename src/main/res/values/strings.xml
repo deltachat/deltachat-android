@@ -7,6 +7,7 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">or</string>
     <string name="clear_search">Clear Search</string>
+    <!-- a noun, used on a button, short for "show link" -->
     <string name="link">Link</string>
     <!-- "scan" in the meaning of "scan QR code" -->
     <string name="scan">Scan</string>
