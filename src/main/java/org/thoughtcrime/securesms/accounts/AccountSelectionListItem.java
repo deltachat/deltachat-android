@@ -129,7 +129,7 @@ public class AccountSelectionListItem extends LinearLayout {
   private void setText(String name, String addr) {
     this.nameView.setText(name==null? "#" : name);
 
-    if(addr != null) {
+    if(!TextUtils.isEmpty(addr)) {
       this.addrView.setText(addr);
       this.addrContainer.setVisibility(View.VISIBLE);
     } else {
