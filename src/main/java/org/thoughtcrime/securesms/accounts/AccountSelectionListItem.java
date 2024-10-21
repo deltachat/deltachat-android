@@ -69,7 +69,8 @@ public class AccountSelectionListItem extends LinearLayout {
       if (TextUtils.isEmpty(name)) {
         name = self.getAddr();
       }
-      if (!dcContext.isChatmail()) {
+      addr = dcContext.getTag();
+      if ("".equals(addr) && !dcContext.isChatmail()) {
         addr = self.getAddr();
       }
       unreadCount = dcContext.getFreshMsgs().length;

@@ -652,6 +652,10 @@
     <string name="accept_invalid_certificates">Accept invalid certificates</string>
     <string name="switch_account">Switch Profile</string>
     <string name="add_account">Add Profile</string>
+    <string name="profile_tag">Profile Tag</string>
+    <string name="enter_tag">Enter Tag</string>
+    <string name="set_tag">Set Tag</string>
+    <string name="profile_tag_explain">Set a tag to easily recognize profiles you use in different contexts, for example \"work\" or \"family\". Only you can see your profile tag.</string>
     <string name="delete_account">Delete Profile</string>
     <string name="delete_account_ask">Are you sure you want to delete your profile data?</string>
     <string name="delete_account_explain_with_name">All profile data of \"%s\" on this device will be deleted, including your end-to-end encryption setup, contacts, chats, messages and media. This action cannot be undone.</string>

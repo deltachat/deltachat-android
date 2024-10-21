@@ -9,6 +9,7 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -113,7 +114,33 @@ public class AccountSelectionListFragment extends DialogFragment
     case R.id.menu_mute_notifications:
       onToggleMute(accountId);
       break;
+    case R.id.menu_set_tag:
+      onSetTag(accountId);
+      break;
     }
+  }
+
+  private void onSetTag(int accountId) {
+    Activity activity = getActivity();
+    if (activity == null) return;
+    AccountSelectionListFragment.this.dismiss();
+
+    DcContext dcContext = DcHelper.getContext(activity);
+    View view = View.inflate(activity, R.layout.single_line_input, null);
+    EditText inputField = view.findViewById(R.id.input_field);
+    inputField.setHint(R.string.enter_tag);
+    inputField.setText(dcContext.getTag());
+
+    new AlertDialog.Builder(activity)
+      .setTitle(R.string.profile_tag)
+      .setMessage(R.string.profile_tag_explain)
+      .setView(view)
+      .setPositiveButton(android.R.string.ok, (d, b) -> {
+        dcContext.setTag(inputField.getText().toString().trim());
+        AccountManager.getInstance().showSwitchAccountMenu(activity);
+      })
+      .setNegativeButton(R.string.cancel, (d, b) -> AccountManager.getInstance().showSwitchAccountMenu(activity))
+      .show();
   }
 
   private void onDeleteAccount(int accountId) {
