@@ -8,6 +8,7 @@
     <string name="or_separator">or</string>
     <string name="clear_search">Clear Search</string>
     <string name="link">Link</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
     <string name="scan">Scan</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
