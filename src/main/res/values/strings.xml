@@ -125,6 +125,10 @@
         <item quantity="one">%d message</item>
         <item quantity="other">%d messages</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d reaction</item>
+        <item quantity="other">%d reactions</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d member</item>
         <item quantity="other">%d members</item>
