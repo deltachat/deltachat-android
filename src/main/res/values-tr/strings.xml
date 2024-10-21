@@ -656,6 +656,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">İlet…</string>
+    <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
+    <string name="ask_send_files_to_chat">%1$d dosya \"%2$s\" sohbetine gönderilsin mi?</string>
     <string name="ask_send_files_to_selected_chats">%1$d dosya %2$d sohbete gönderilsin mi?</string>
     <string name="videos_sent_without_recoding">(Videolar özgün, büyük dosyalar olarak gönderilir. Videoları daha küçük dosyalar olarak göndermek için onları ayrı ayrı iliştirin)</string>
     <string name="share_text_multiple_chats">Bu metin %1$d sohbete gönderilsin mi?\n\n\"%2$s\"</string>

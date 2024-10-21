@@ -656,6 +656,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Doorsturen naar…</string>
+    <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
+    <string name="ask_send_files_to_chat">Wil je %1$d bestanden delen met %2$s?</string>
     <string name="ask_send_files_to_selected_chats">Wil je %1$d bestand(en) delen in %2$d gesprekken?</string>
     <string name="videos_sent_without_recoding">(Video\'s worden verstuurd in de oorspronkelijke grootte. Voeg bestanden los toe om te versturen als kleinere bestanden.)</string>
     <string name="share_text_multiple_chats">Wil je deze tekst versturen naar %1$d gesprekken?\n\n“%2$s”</string>
