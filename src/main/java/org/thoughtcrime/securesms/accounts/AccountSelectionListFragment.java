@@ -36,6 +36,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_ADD_ACCOUNT;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PRIVATE_TAG;
 
 public class AccountSelectionListFragment extends DialogFragment
 {
@@ -129,14 +130,15 @@ public class AccountSelectionListFragment extends DialogFragment
     View view = View.inflate(activity, R.layout.single_line_input, null);
     EditText inputField = view.findViewById(R.id.input_field);
     inputField.setHint(R.string.profile_tag_hint);
-    inputField.setText(dcContext.getTag());
+    inputField.setText(dcContext.getConfig(CONFIG_PRIVATE_TAG));
 
     new AlertDialog.Builder(activity)
       .setTitle(R.string.profile_tag)
       .setMessage(R.string.profile_tag_explain)
       .setView(view)
       .setPositiveButton(android.R.string.ok, (d, b) -> {
-        dcContext.setTag(inputField.getText().toString().trim());
+        String newTag = inputField.getText().toString().trim();
+        dcContext.setConfig(CONFIG_PRIVATE_TAG, newTag);
         AccountManager.getInstance().showSwitchAccountMenu(activity);
       })
       .setNegativeButton(R.string.cancel, (d, b) -> AccountManager.getInstance().showSwitchAccountMenu(activity))

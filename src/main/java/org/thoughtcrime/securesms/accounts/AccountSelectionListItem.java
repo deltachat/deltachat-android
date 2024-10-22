@@ -1,5 +1,8 @@
 package org.thoughtcrime.securesms.accounts;
 
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_DISPLAY_NAME;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PRIVATE_TAG;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -65,11 +68,11 @@ public class AccountSelectionListItem extends LinearLayout {
       name = getContext().getString(R.string.add_account);
     } else {
       self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
-      name = dcContext.getConfig("displayname");
+      name = dcContext.getConfig(CONFIG_DISPLAY_NAME);
       if (TextUtils.isEmpty(name)) {
         name = self.getAddr();
       }
-      addrOrTag = dcContext.getTag();
+      addrOrTag = dcContext.getConfig(CONFIG_PRIVATE_TAG);
       if ("".equals(addrOrTag) && !dcContext.isChatmail()) {
         addrOrTag = self.getAddr();
       }

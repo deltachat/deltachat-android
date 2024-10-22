@@ -91,8 +91,6 @@ public class DcContext {
     public final static int DC_CONNECTIVITY_WORKING = 3000;
     public final static int DC_CONNECTIVITY_CONNECTED = 4000;
 
-    private static final String CONFIG_ACCOUNT_TAG = "ui.tag";
-
     // when using DcAccounts, use DcAccounts.addAccount() instead
     public DcContext(String osName, String dbfile) {
         contextCPtr = createContextCPtr(osName, dbfile);
@@ -268,14 +266,6 @@ public class DcContext {
     public void restartIo() {
       stopIo();
       startIo();
-    }
-
-    public String getTag() {
-      return getConfig(CONFIG_ACCOUNT_TAG);
-    }
-
-    public void setTag(String tag) {
-      setConfig(CONFIG_ACCOUNT_TAG, tag);
     }
 
     /**
