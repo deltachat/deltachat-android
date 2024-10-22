@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
+    android:paddingBottom="10dp"
     android:orientation="vertical"
     >
 
@@ -21,7 +22,6 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:textSize="16sp"
-      android:paddingBottom="16dp"
       android:text="@string/proxy_share_explain"
       />
 
