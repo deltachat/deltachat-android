@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
   <com.caverock.androidsvg.SVGImageView
       android:id="@+id/qr_image"
@@ -21,6 +22,7 @@
       android:layout_height="wrap_content"
       android:textSize="16sp"
       android:paddingBottom="16dp"
-      android:text="@string/proxy_share_explain" />
+      android:text="@string/proxy_share_explain"
+      />
 
 </LinearLayout>
