@@ -20,6 +20,9 @@ import androidx.appcompat.widget.SwitchCompat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcLot;
+import com.caverock.androidsvg.SVG;
+import com.caverock.androidsvg.SVGImageView;
+import com.caverock.androidsvg.SVGParseException;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
@@ -115,10 +118,25 @@ public class ProxySettingsActivity extends BaseActionBarActivity
 
   @Override
   public void onItemShare(String proxyUrl) {
-    Intent intent = new Intent(Intent.ACTION_SEND);
-    intent.setType("text/plain");
-    intent.putExtra(Intent.EXTRA_TEXT, proxyUrl);
-    startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
+    View view = View.inflate(this, R.layout.dialog_share_proxy, null);
+    SVGImageView qrImage = view.findViewById(R.id.qr_image);
+    try {
+      SVG svg = SVG.getFromString(DcHelper.getContext(this).createQrSvg(proxyUrl));
+      qrImage.setSVG(svg);
+    } catch (SVGParseException e) {
+      e.printStackTrace();
+    }
+
+    AlertDialog dialog = new AlertDialog.Builder(this)
+      .setView(view)
+      .setPositiveButton(android.R.string.ok, null)
+      .setNeutralButton(R.string.proxy_share_link, (dlg, btn) -> {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, proxyUrl);
+        startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
+      })
+      .show();
   }
 
   @Override
