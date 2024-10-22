@@ -888,9 +888,9 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_createQrSvg(JNIEnv *env, job
 {
     CHAR_REF(payload);
         char* temp = dc_create_qr_svg(payloadPtr);
+             jstring ret = JSTRING_NEW(temp);
+        dc_str_unref(temp);
     CHAR_UNREF(payload);
-    jstring ret = JSTRING_NEW(temp);
-    dc_str_unref(temp);
     return ret;
 }
 
