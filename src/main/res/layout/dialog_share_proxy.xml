@@ -8,10 +8,10 @@
     android:orientation="vertical">
 
   <com.caverock.androidsvg.SVGImageView
-	  android:id="@+id/qr_image"
-	  android:layout_width="match_parent"
+      android:id="@+id/qr_image"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-	  android:layout_gravity="center"
+      android:layout_gravity="center"
       android:padding="16dp"
       android:contentDescription="@string/qrscan_title"
       />
