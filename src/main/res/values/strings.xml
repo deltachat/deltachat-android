@@ -622,7 +622,7 @@
     <string name="proxy_add">Add Proxy</string>
     <string name="proxy_add_explain">Supported proxy types: HTTP(S), SOCKS5 and Shadowsocks.</string>
     <string name="proxy_add_url_hint">Enter proxy link here</string>
-    <string name="proxy_invalid">Invalid or unsupported proxy link</string>
+    <string name="proxy_invalid">Invalid or unsupported proxy</string>
     <string name="proxy_list_header">Saved Proxies</string>
     <string name="proxy_delete">Delete Proxy</string>
     <string name="proxy_delete_explain">Are you sure you want to delete \"%1$s\"?</string>
