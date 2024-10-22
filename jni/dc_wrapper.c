@@ -887,7 +887,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getSecurejoinQrSvg(JNIEnv *e
 JNIEXPORT jstring Java_com_b44t_messenger_DcContext_createQrSvg(JNIEnv *env, jobject obj, jstring payload)
 {
     CHAR_REF(payload);
-        char* temp = dc_create_qr_svg(get_dc_context(env, obj), payloadPtr);
+        char* temp = dc_create_qr_svg(payloadPtr);
     CHAR_UNREF(payload);
     jstring ret = JSTRING_NEW(temp);
     dc_str_unref(temp);
