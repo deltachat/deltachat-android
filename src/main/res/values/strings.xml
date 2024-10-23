@@ -653,7 +653,7 @@
     <string name="switch_account">Switch Profile</string>
     <string name="add_account">Add Profile</string>
     <string name="profile_tag">Private Tag</string>
-    <string name="profile_tag_hint">eg. Work, Family, ...</string>
+    <string name="profile_tag_hint">eg. Work, Family</string>
     <string name="profile_tag_explain">Tag that is visible only for you; helping you to differ between your profiles.</string>
     <string name="delete_account">Delete Profile</string>
     <string name="delete_account_ask">Are you sure you want to delete your profile data?</string>
