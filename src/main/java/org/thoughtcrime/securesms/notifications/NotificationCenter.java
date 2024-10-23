@@ -403,11 +403,10 @@ public class NotificationCenter {
 
             // if privacy allows, for better accessibility,
             // prepend the sender in the ticker also for one-to-one chats (for group-chats, this is already done)
-            String tickerLine = line;
             if (!dcChat.isMultiUser() && privacy.isDisplayContact()) {
                 line = dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId()), false) + ": " + line;
             }
-            builder.setTicker(tickerLine);
+            builder.setTicker(line);
 
             // set sound, vibrate, led for systems that do not have notification channels
             if (!notificationChannelsSupported()) {
