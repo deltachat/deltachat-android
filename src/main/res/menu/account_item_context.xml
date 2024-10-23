@@ -5,6 +5,9 @@
   <item android:title="@string/menu_mute"
       android:id="@+id/menu_mute_notifications"/>
 
+  <item android:title="@string/profile_tag"
+      android:id="@+id/menu_set_tag"/>
+
   <item android:title="@string/delete"
         android:id="@+id/delete"/>
 

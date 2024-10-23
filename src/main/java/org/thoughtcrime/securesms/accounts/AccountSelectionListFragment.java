@@ -9,6 +9,7 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_ADD_ACCOUNT;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PRIVATE_TAG;
 
 public class AccountSelectionListFragment extends DialogFragment
 {
@@ -113,7 +115,34 @@ public class AccountSelectionListFragment extends DialogFragment
     case R.id.menu_mute_notifications:
       onToggleMute(accountId);
       break;
+    case R.id.menu_set_tag:
+      onSetTag(accountId);
+      break;
     }
+  }
+
+  private void onSetTag(int accountId) {
+    Activity activity = getActivity();
+    if (activity == null) return;
+    AccountSelectionListFragment.this.dismiss();
+
+    DcContext dcContext = DcHelper.getAccounts(activity).getAccount(accountId);
+    View view = View.inflate(activity, R.layout.single_line_input, null);
+    EditText inputField = view.findViewById(R.id.input_field);
+    inputField.setHint(R.string.profile_tag_hint);
+    inputField.setText(dcContext.getConfig(CONFIG_PRIVATE_TAG));
+
+    new AlertDialog.Builder(activity)
+      .setTitle(R.string.profile_tag)
+      .setMessage(R.string.profile_tag_explain)
+      .setView(view)
+      .setPositiveButton(android.R.string.ok, (d, b) -> {
+        String newTag = inputField.getText().toString().trim();
+        dcContext.setConfig(CONFIG_PRIVATE_TAG, newTag);
+        AccountManager.getInstance().showSwitchAccountMenu(activity);
+      })
+      .setNegativeButton(R.string.cancel, (d, b) -> AccountManager.getInstance().showSwitchAccountMenu(activity))
+      .show();
   }
 
   private void onDeleteAccount(int accountId) {

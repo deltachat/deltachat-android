@@ -1,5 +1,8 @@
 package org.thoughtcrime.securesms.accounts;
 
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_DISPLAY_NAME;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PRIVATE_TAG;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -27,7 +30,7 @@ public class AccountSelectionListItem extends LinearLayout {
 
   private AvatarImageView contactPhotoImage;
   private View            addrContainer;
-  private TextView        addrView;
+  private TextView        addrOrTagView;
   private TextView        nameView;
   private ImageView       unreadIndicator;
 
@@ -46,7 +49,7 @@ public class AccountSelectionListItem extends LinearLayout {
     super.onFinishInflate();
     this.contactPhotoImage = findViewById(R.id.contact_photo_image);
     this.addrContainer     = findViewById(R.id.addr_container);
-    this.addrView          = findViewById(R.id.addr);
+    this.addrOrTagView     = findViewById(R.id.addr_or_tag);
     this.nameView          = findViewById(R.id.name);
     this.unreadIndicator   = findViewById(R.id.unread_indicator);
 
@@ -57,7 +60,7 @@ public class AccountSelectionListItem extends LinearLayout {
     this.accountId     = accountId;
     DcContact self = null;
     String name;
-    String addr = null;
+    String addrOrTag = null;
     int unreadCount = 0;
     boolean isMuted = dcContext.isMuted();
 
@@ -65,12 +68,13 @@ public class AccountSelectionListItem extends LinearLayout {
       name = getContext().getString(R.string.add_account);
     } else {
       self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
-      name = dcContext.getConfig("displayname");
+      name = dcContext.getConfig(CONFIG_DISPLAY_NAME);
       if (TextUtils.isEmpty(name)) {
         name = self.getAddr();
       }
-      if (!dcContext.isChatmail()) {
-        addr = self.getAddr();
+      addrOrTag = dcContext.getConfig(CONFIG_PRIVATE_TAG);
+      if ("".equals(addrOrTag) && !dcContext.isChatmail()) {
+        addrOrTag = self.getAddr();
       }
       unreadCount = dcContext.getFreshMsgs().length;
     }
@@ -87,15 +91,15 @@ public class AccountSelectionListItem extends LinearLayout {
 
     setSelected(selected);
     if (selected) {
-      addrView.setTypeface(null, Typeface.BOLD);
+      addrOrTagView.setTypeface(null, Typeface.BOLD);
       nameView.setTypeface(null, Typeface.BOLD);
     } else {
-      addrView.setTypeface(null, Typeface.NORMAL);
+      addrOrTagView.setTypeface(null, Typeface.NORMAL);
       nameView.setTypeface(null, Typeface.NORMAL);
     }
 
     updateUnreadIndicator(unreadCount, isMuted);
-    setText(name, addr);
+    setText(name, addrOrTag);
 
     if (accountId != DcContact.DC_CONTACT_ID_ADD_ACCOUNT) {
       fragment.registerForContextMenu(this);
@@ -125,11 +129,11 @@ public class AccountSelectionListItem extends LinearLayout {
     }
   }
 
-  private void setText(String name, String addr) {
+  private void setText(String name, String addrOrTag) {
     this.nameView.setText(name==null? "#" : name);
 
-    if(addr != null) {
-      this.addrView.setText(addr);
+    if(!TextUtils.isEmpty(addrOrTag)) {
+      this.addrOrTagView.setText(addrOrTag);
       this.addrContainer.setVisibility(View.VISIBLE);
     } else {
       this.addrContainer.setVisibility(View.GONE);
