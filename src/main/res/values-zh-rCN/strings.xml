@@ -120,6 +120,9 @@
     <plurals name="n_messages">
         <item quantity="other">%d 条消息</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="other">%d 个回应</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="other">%d 个成员</item>
     </plurals>

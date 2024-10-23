@@ -125,6 +125,10 @@
         <item quantity="one">%d ileti</item>
         <item quantity="other">%d ileti</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d tepki</item>
+        <item quantity="other">%d tepki</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d üye</item>
         <item quantity="other">%d üye</item>

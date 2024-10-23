@@ -130,6 +130,11 @@
         <item quantity="many">%d messaggi</item>
         <item quantity="other">%d messaggi</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d reazione</item>
+        <item quantity="many">%d reazioni</item>
+        <item quantity="other">%d reazioni</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d membri</item>
         <item quantity="many">%d membri</item>

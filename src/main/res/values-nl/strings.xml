@@ -125,6 +125,10 @@
         <item quantity="one">%d bericht</item>
         <item quantity="other">%d berichten</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d reactie</item>
+        <item quantity="other">%d reacties</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d deelnemer</item>
         <item quantity="other">%d deelnemers</item>
