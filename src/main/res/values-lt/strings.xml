@@ -32,6 +32,7 @@
     <string name="close">Užverti</string>
     <string name="close_window">Užverti langą</string>
     <string name="forward">Persiųsti</string>
+    <string name="create">Sukurti</string>
     <string name="later">Vėliau</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Siųsti iš naujo</string>
@@ -117,6 +118,12 @@
         <item quantity="few">%d žinutės</item>
         <item quantity="many">%d žinučių</item>
         <item quantity="other">%d žinutė</item>
+    </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d reakcija</item>
+        <item quantity="few">%d reakcijos</item>
+        <item quantity="many">%d reakcijų</item>
+        <item quantity="other">%d reakcija</item>
     </plurals>
     <plurals name="n_members">
         <item quantity="one">%d dalyvis</item>
@@ -430,6 +437,10 @@
     <string name="multidevice_open_settings_on_other_device">Pirmajame įrenginyje pereikite į „Nustatymai / Pridėti antrąjį įrenginį“ ir nuskenuokite ten rodomą kodą</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Ruošiama paskyra…</string>
+    <!-- deprecated, shown beside progress bar, stay short -->
+    <string name="waiting_for_receiver">Laukiama gavėjo…</string>
+    <!-- deprecated, shown beside progress bar, stay short -->
+    <string name="receiver_connected">Gavėjas prisijungęs…</string>
     <string name="troubleshooting">Nesklandumų šalinimas</string>
 
     <!-- Connectivity -->
@@ -485,6 +496,7 @@
     <string name="proxy_settings">Įgaliotasis serveris</string>
     <string name="proxy_use_proxy">Naudoti įgaliotąjį serverį</string>
     <string name="proxy_add">Pridėti įgaliotąjį serverį</string>
+    <string name="proxy_add_explain">Palaikomi įgaliotųjų serverių tipai: HTTP(S), SOCKS5 ir Shadowsocks.</string>
     <string name="proxy_add_url_hint">Čia įveskite įgaliotojo serverio URL</string>
     <string name="proxy_invalid">Neteisingas arba nepalaikomas įgaliotojo serverio URL</string>
     <string name="proxy_list_header">Įrašyti įgaliotieji serveriai</string>

@@ -125,6 +125,10 @@
         <item quantity="one">%d mesazh</item>
         <item quantity="other">%d mesazhe</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d reagim</item>
+        <item quantity="other">%d reagime</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d anëtar</item>
         <item quantity="other">%d anëtarë</item>
@@ -160,6 +164,7 @@
     <string name="video">Video</string>
     <string name="documents">Dokumente</string>
     <string name="contact">Kontakt</string>
+    <string name="bot">Robot</string>
     <string name="camera">Kamerë</string>
     <string name="switch_camera">Ndërro Kamera</string>
     <string name="toggle_fullscreen">Kalo në / Dil nga mënyra “Sa krejt ekrani”</string>
@@ -434,6 +439,8 @@
     <string name="send_file_to">Dërgoni “%1$s” për …</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Dërgoni Mesazh për…</string>
+    <string name="enable_realtime_explain">Aktivizoni API të atypëratyshme Webxdc, që të krijoni lidhje të drejtpërdrejta mes pajisjesh.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Shfaq vendndodhje në rrjedhë kohore</string>
     <string name="show_location_traces">Shfaq gjurmë</string>

@@ -7,6 +7,10 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">oder</string>
     <string name="clear_search">Suche löschen</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Link</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Scannen</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
     <string name="select">Auswählen</string>
@@ -234,6 +238,7 @@
     <string name="menu_message_details">Nachrichteninfo</string>
     <string name="menu_copy_to_clipboard">In Zwischenablage kopieren</string>
     <string name="share_invite_link">Einladungslink teilen</string>
+    <string name="share_invite_link_explain">Teilen Sie den Link nur mit Personen, denen Sie vertrauen. Jeder, der diesen Link hat, kann einen Chat mit Ihnen starten.</string>
     <string name="invite_friends">Freunde einladen</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Kontaktiere mich auf Delta Chat:\n%1$s</string>
