@@ -621,12 +621,14 @@
     <string name="proxy_use_proxy">Use Proxy</string>
     <string name="proxy_add">Add Proxy</string>
     <string name="proxy_add_explain">Supported proxy types: HTTP(S), SOCKS5 and Shadowsocks.</string>
-    <string name="proxy_add_url_hint">Enter proxy URL here</string>
-    <string name="proxy_invalid">Invalid or unsupported proxy URL</string>
+    <string name="proxy_add_url_hint">Enter proxy link here</string>
+    <string name="proxy_invalid">Invalid or unsupported proxy</string>
     <string name="proxy_list_header">Saved Proxies</string>
     <string name="proxy_delete">Delete Proxy</string>
     <string name="proxy_delete_explain">Are you sure you want to delete \"%1$s\"?</string>
     <string name="proxy_use_proxy_confirm">Do you want to use proxy \"%1$s\"?</string>
+    <string name="proxy_share_explain">Your friends can add this proxy by scanning the QR code.</string>
+    <string name="proxy_share_link">Share Link</string>
 
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
