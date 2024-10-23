@@ -350,7 +350,7 @@ public class NotificationCenter {
           tickerLine = dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId()), false) + ": " + tickerLine;
         }
 
-        maybeAddNotification(accountId, chatId, msgId, shortLine, tickerLine, true);
+        maybeAddNotification(accountId, dcChat, msgId, shortLine, tickerLine, true);
       });
     }
 
@@ -366,15 +366,15 @@ public class NotificationCenter {
 
         DcContact sender = dcContext.getContact(contactId);
         String shortLine = context.getString(R.string.reaction_by_other, sender.getDisplayName(), reaction, dcMsg.getSummarytext(2000));
-        maybeAddNotification(accountId, dcMsg.getChatId(), msgId, shortLine, shortLine, false);
+        maybeAddNotification(accountId, dcContext.getChat(dcMsg.getChatId()), msgId, shortLine, shortLine, false);
       });
     }
 
     @WorkerThread
-    private void maybeAddNotification(int accountId, int chatId, int msgId, String shortLine, String tickerLine, boolean playInChatSound) {
+    private void maybeAddNotification(int accountId, DcChat dcChat, int msgId, String shortLine, String tickerLine, boolean playInChatSound) {
 
             DcContext dcContext = context.dcAccounts.getAccount(accountId);
-            DcChat dcChat = dcContext.getChat(chatId);
+            int chatId = dcChat.getId();
             ChatData chatData = new ChatData(accountId, chatId);
 
             if (dcContext.isMuted() || dcChat.isMuted()) {
