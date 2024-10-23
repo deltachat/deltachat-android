@@ -171,7 +171,11 @@ public class DcEventCenter {
 
     switch (id) {
       case DcContext.DC_EVENT_INCOMING_MSG:
-        DcHelper.getNotificationCenter(context).addNotification(accountId, event.getData1Int(), event.getData2Int());
+        DcHelper.getNotificationCenter(context).notifyMessage(accountId, event.getData1Int(), event.getData2Int());
+        break;
+
+      case DcContext.DC_EVENT_INCOMING_REACTION:
+        DcHelper.getNotificationCenter(context).notifyReaction(accountId, event.getData1Int(), event.getData2Int(), event.getData2Str());
         break;
 
       case DcContext.DC_EVENT_MSGS_NOTICED:
