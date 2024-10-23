@@ -384,8 +384,8 @@ public class NotificationCenter {
                 return;
             }
 
-            if (playInChatSound && Util.equals(visibleChat, chatData)) {
-                if (Prefs.isInChatNotifications(context)) {
+            if (Util.equals(visibleChat, chatData)) {
+                if (playInChatSound && Prefs.isInChatNotifications(context)) {
                     InChatSounds.getInstance(context).playIncomingSound();
                 }
                 return;
