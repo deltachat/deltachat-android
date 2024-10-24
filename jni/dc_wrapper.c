@@ -854,7 +854,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getConfig(JNIEnv *env, jobje
             }
         dc_str_unref(temp);
     CHAR_UNREF(key);
-    return ret; /* returns NULL only if key is unset and "def" is NULL */
+    return ret;
 }
 
 
