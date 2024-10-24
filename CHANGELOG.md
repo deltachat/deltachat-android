@@ -1,16 +1,32 @@
 # Delta Chat Android Changelog
 
-## v1.46.15
-2024-09
+## v1.48.0
+2024-10
 
-* new proxy settings screen available at "Advanced / Proxy"
-* manage a list of HTTP(S), SOCKS5 or Shadowsocks proxies
-* proxies icon shown on the chatlist if proxies are used
+* new Proxy settings screen available at "Advanced / Proxy"
+* manage a list of HTTP(S), SOCKS5 or Shadowsocks Proxies
+* Proxies icon shown on the chatlist if proxies are used
+* share Proxies by showing a QR code
+* scan Proxies' QR code and use them
+* make Proxy URLs inside Delta Chat tappable
+* open Delta Chat when tapping Proxy URLs in other apps
+* "New Contact / Link" button to view, share or copy the invite line
+* "New Contact / Scan" button to easier access the scanner functionality
+* open "New Contact" scan/show activities directly, do not try to be too smart and open the last active tab
+* allow to attach multiple images in one step
+* to easier differ between multiple profiles, set a "Private Tag" (long tap profile switcher)
 * improve profile deletion dialog: show name, size and avatar of the profile being deleted
+* show profile name in title bar when the user has multiple profiles
+* improve profile switcher layout
 * improve notification: allow to "Mark Read" from the notification
+* search for unread chats in the search's three-dot-menu
+* allow pasting QR codes from "Add As Second Device" screen
+* save traffic by supporting "IMAP COMPRESS"
 * automatic reconfiguration, e.g. switching to implicit TLS if STARTTLS port stops working
 * parallelize IMAP and SMTP connection attempts
+* improve DNS caching
 * always use preloaded DNS results
+* prioritize cached results if DNS resolver returns many results
 * always move auto-generated messages to DeltaChat folder
 * ignore invalid securejoin messages silently
 * delete messages from a chatmail server immediately by default
@@ -20,14 +36,33 @@
 * don't put displayname into From/To/Sender if it equals to address
 * hide sync messages from INBOX (use IMAP APPEND command to upload sync messages)
 * more verbose SMTP connection establishment errors
+* add "Learn More" button to "Manage keys"
+* visual feedback when tapping the action button of a message
 * log unexpected message state when resending fails
+* smoother backup and "Add Second Device" progress bars
+* assign messages to ad-hoc group with matching name and members
+* use stricter TLS checks for HTTPS downloads (images in HTML mails, Autoconfig)
+* improve logging for failed QR code scans, AEAP, Autocrypt, notification permissions and sending errors
+* show more context for the "Cannot establish guaranteed..." info message
+* show original file name in "Message Info"
+* fix: Sort received outgoing message down if it's fresher than all non fresh messages
 * fix: avoid app being killed when processing a PUSH notification
 * fix crash when refreshing avatar
 * fix crash in gallery
 * fix: shorten message text in locally sent messages too
 * fix: Set http I/O timeout to 1 minute rather than whole request timeout
 * fix: don't sync QR code token before populating the group
-* update to core 1.145.0
+* fix: do not get stuck if the message to download does not exist anymore
+* fix: do not attempt to reference info messages
+* fix: do mpt get stuck if there is an error transferring backup
+* fix: make it possible to cancel ongoing backup transfer
+* fix: reset quota when entering a new address
+* fix: better detection of file extensions
+* fix: "database locked" errors
+* fix: never initialize realtime channels if realtime is disabled
+* fix scanning "add second device" QR code from scanner above chatlist
+* update translations and local help
+* update to core 1.148.2
 
 
 ## v1.46.14
