@@ -7,6 +7,10 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">или</string>
     <string name="clear_search">Очистить поиск</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Ссылка</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Сканировать</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="select">Выбрать</string>
@@ -63,7 +67,7 @@
     <string name="activate">Активировать</string>
     <string name="load_remote_content">Загрузка изображений из внешних источников</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">Изображения размещенные на внешних источниках можно использовать для слежки за вами.\n\nЭта настройка также позволяет загружать шрифты и другое содержимое. Если она отключена, вы сможете видеть встроенные или кешированные изображения.\n\nРазрешить загрузку из внешних источников?</string>
+    <string name="load_remote_content_ask">Изображения, размещенные на внешних источниках, можно использовать для слежки за вами.\n\nЭта настройка также позволяет загружать шрифты и другое содержимое. Если она отключена, вы сможете видеть встроенные или кешированные изображения.\n\nРазрешить загрузку из внешних источников?</string>
     <string name="always">Всегда</string>
     <string name="always_load_remote_images">Всегда загружать изображения из внешних источников</string>
     <string name="once">Только сейчас</string>
@@ -216,7 +220,7 @@
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Новый контакт</string>
     <string name="menu_new_classic_contact">Добавить контакт вручную</string>
-    <string name="new_classic_contact_explain">Контакты добавленные вручную, можно использовать для отправки текстовых сообщений по обычной электронной почте, без гарантированного сквозного шифрования.</string>
+    <string name="new_classic_contact_explain">Контакты, добавленные вручную, можно использовать для отправки текстовых сообщений по обычной электронной почте, без гарантированного сквозного шифрования.</string>
     <string name="menu_new_chat">Новый чат</string>
     <string name="menu_new_group">Новая группа</string>
     <string name="clone_chat">Клонировать чат</string>
@@ -246,6 +250,7 @@
     <string name="menu_message_details">Информация о сообщении</string>
     <string name="menu_copy_to_clipboard">Копировать в буфер обмена</string>
     <string name="share_invite_link">Поделиться ссылкой-приглашением</string>
+    <string name="share_invite_link_explain">Кто угодно, у кого есть эта ссылка, сможет просмотреть ваш профиль и начать с вами беседу. Делитесь ею только с теми людьми, которым вы доверяете.</string>
     <string name="invite_friends">Пригласить друзей</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Свяжитесь со мной через Delta Chat:\n%1$s</string>
@@ -438,7 +443,7 @@
     <string name="chat_archived_label">Архивировано</string>
     <string name="chat_request_label">Запрос</string>
     <string name="chat_no_messages">Нет сообщений.</string>
-    <string name="chat_self_talk_subtitle">Сообщения отправленные себе</string>
+    <string name="chat_self_talk_subtitle">Сообщения, отправленные себе</string>
     <string name="archive_empty_hint">Здесь можно просмотреть архивные чаты.</string>
     <string name="saved_messages">Сохранённые сообщения</string>
     <string name="saved_messages_explain">• Пересылайте сообщения сюда для быстрого доступа\n\n• Создайте текстовые или голосовые заметки\n\n• Прикрепляйте медиафайлы, чтобы сохранить их</string>
@@ -960,7 +965,7 @@
     <string name="chat_protection_enabled_tap_to_learn_more">Теперь сообщения гарантированно шифруются сквозным шифрованием. Нажмите, чтобы узнать больше.</string>
     <string name="chat_protection_enabled_explanation">Теперь сообщения в этом чате гарантированно шифруются сквозным шифрованием.\n\nСквозное шифрование гарантирует, что сообщения остаются конфиденциальными между вами и вашими собеседниками. Даже ваш провайдер электронной почты не имеет доступа к ним.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s отправил сообщение с другого устройства. Нажмите, чтобы узнать больше.</string>
-    <string name="chat_protection_broken_explanation">Сквозное шифрование больше не может быть гарантировано, вероятно потому что %1$s переустановил Delta Chat или отправил сообщение с другого устройства.\n\nВы можете встретиться с ним лично и отсканировать QR-код снова чтобы восстановить гарантированное сквозное шифрование.</string>
+    <string name="chat_protection_broken_explanation">Сквозное шифрование больше не может быть гарантировано, вероятно, потому что %1$s переустановил Delta Chat или отправил сообщение с другого устройства.\n\nВы можете встретиться с ним лично и отсканировать QR-код снова чтобы восстановить гарантированное сквозное шифрование.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s требуется сквозное шифрование, которое ещё не настроено для данного чата. Нажмите, чтобы узнать больше.</string>
     <string name="invalid_unencrypted_explanation">Чтобы установить сквозное шифрование, вы можете встретиться с контактами лично и отсканировать их QR-код, чтобы подтвердить их личность.</string>
     <string name="encryption_required_for_new_contact">Требуется сквозное шифрование, но оно для %1$s еще не настроено.\n\nВы можете поделиться ссылкой-приглашением или встретиться лично, и отсканировать QR-код.</string>

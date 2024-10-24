@@ -7,6 +7,10 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">lub</string>
     <string name="clear_search">Wyczyść wyszukiwanie</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Link</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Skanuj</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
     <string name="select">Zaznacz</string>
@@ -135,6 +139,12 @@
         <item quantity="many">%d wiadomości</item>
         <item quantity="other">%d wiadomości </item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d reakcja</item>
+        <item quantity="few">%d reakcje</item>
+        <item quantity="many">%d reakcji</item>
+        <item quantity="other">%d reakcji</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d członek</item>
         <item quantity="few">%d członków </item>
@@ -246,6 +256,7 @@
     <string name="menu_message_details">Szczegóły wiadomości</string>
     <string name="menu_copy_to_clipboard">Kopiuj do schowka</string>
     <string name="share_invite_link">Udostępnij link zaproszenia</string>
+    <string name="share_invite_link_explain">Każdy, kto ma ten link, może zobaczyć twój profil i rozpocząć z tobą czat. Udostępniaj go tylko osobom, którym ufasz.</string>
     <string name="invite_friends">Zaproś znajomych</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Skontaktuj się ze mną przez Delta Chat:\n%1$s</string>

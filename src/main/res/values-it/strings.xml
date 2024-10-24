@@ -7,6 +7,10 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">o</string>
     <string name="clear_search">Cancella Ricerca</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Collegamento</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Scansiona</string>
     <string name="yes">Sì</string>
     <string name="no">No</string>
     <string name="select">Seleziona</string>
@@ -242,17 +246,18 @@
     <string name="menu_delete_location">Elimino questa Posizione?</string>
     <string name="menu_message_details">Dettagli Messaggio</string>
     <string name="menu_copy_to_clipboard">Copia negli Appunti</string>
-    <string name="share_invite_link">Condividi Link d\'Invito</string>
+    <string name="share_invite_link">Condividi Collegamento D\'Invito</string>
+    <string name="share_invite_link_explain">Chiunque abbia questo collegamento può visualizzare il tuo profilo e iniziare una chat con te. Condividilo solo con persone di cui ti fidi.</string>
     <string name="invite_friends">Invita Gli Amici</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Contattami su Delta Chat:\n%1$s</string>
     <string name="menu_copy_selection_to_clipboard">Copia Selezione</string>
-    <string name="menu_copy_link_to_clipboard">Copia Link</string>
+    <string name="menu_copy_link_to_clipboard">Copia Collegamento</string>
     <string name="menu_copy_text_to_clipboard">Copia Testo</string>
     <string name="menu_copy_image_to_clipboard">Copia l\'Immagine</string>
     <string name="menu_copy_email_to_clipboard">Copia E-Mail</string>
     <string name="paste_from_clipboard">Incolla dagli Appunti</string>
-    <string name="ask_copy_unopenable_link_to_clipboard">Il link \"%1$d\" non può essere aperto nel browser web. Vuoi invece copiare il collegamento negli appunti?</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">Il collegamento \"%1$d\" non può essere aperto nel browser web. Vuoi invece copiare il collegamento negli appunti?</string>
     <string name="menu_forward">Inoltra Messaggio</string>
     <string name="menu_reply">Rispondi al Messaggio</string>
     <string name="menu_mute">Silenzia Notifiche</string>
@@ -385,7 +390,7 @@
     <string name="ask_remove_members">Rimuovere %1$s dal gruppo?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_broadcast">Rimuovere %1$s dalla lista di trasmissione?</string>
-    <string name="open_url_confirmation">Vuoi aprire questo link?</string>
+    <string name="open_url_confirmation">Vuoi aprire questo collegamento?</string>
 
 
     <!-- contact list -->
@@ -473,11 +478,11 @@
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
     <string name="open_external_url_trust_domain">Non chiedere di nuovo per %1$s</string>
-    <string name="puny_code_warning_header">Rilevato link sospetto</string>
+    <string name="puny_code_warning_header">Rilevato collegamento sospetto</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Sei sicuro di voler visitare %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Hai seguito un link che potrebbe rappresentare in modo errato i caratteri utilizzando caratteri dall\'aspetto simile ad alfabeti diversi. Se si segue il link con l\'etichetta %1$s si arriva a %2$s che è normale per i caratteri non latini. Se non ti aspettavi tali caratteri, questo collegamento potrebbe essere dannoso</string>
+    <string name="puny_code_warning_description">Hai seguito un collegamento che potrebbe rappresentare in modo errato i caratteri utilizzando caratteri dall\'aspetto simile ad alfabeti diversi. Se si segue il collegamento con l\'etichetta %1$s si arriva a %2$s che è normale per i caratteri non latini. Se non ti aspettavi tali caratteri, questo collegamento potrebbe essere dannoso</string>
 
 
     <!-- search -->
@@ -953,7 +958,7 @@
     <string name="chat_protection_broken_explanation">La crittografia end-to-end non può più essere garantita, probabilmente perché %1$s ha reinstallato Delta Chat o inviato un messaggio da un altro dispositivo.\n\nPuoi incontrarlo di persona e scansionare nuovamente il suo Codice QR per ristabilire la crittografia end-to-end garantita.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s richiede la crittografia end-to-end che non è ancora configurata per questa chat. Tocca per saperne di più.</string>
     <string name="invalid_unencrypted_explanation">Per stabilire la crittografia end-to-end, potresti incontrare i contatti di persona e scansionare il loro codice QR per presentarli.</string>
-    <string name="encryption_required_for_new_contact">È richiesta la crittografia end-to-end, ma non è ancora configurata per %1$s.\n\nPuoi condividere con loro il link d\'invito o incontrarli di persona e scansionare il loro Codice QR.</string>
+    <string name="encryption_required_for_new_contact">È richiesta la crittografia end-to-end, ma non è ancora configurata per %1$s.\n\nPuoi condividere con loro il collegamento d\'invito o incontrarli di persona e scansionare il loro Codice QR.</string>
     <string name="learn_more">Per Saperne di Più</string>
 
     <string name="devicemsg_self_deleted">Hai eliminato la chat \"Messaggi salvati\".\n\nℹ️ Per utilizzare nuovamente la funzione \"Messaggi salvati\", crea una nuova chat con te stesso.</string>
@@ -1025,7 +1030,7 @@
     <string name="mailto_dialog_header_select_chat">Seleziona la chat a cui inviare il messaggio</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s ha già una bozza di messaggio, vuoi sostituirla?</string>
-    <string name="mailto_link_could_not_be_decoded">Il link mailto non può essere decodificato: %1$s</string>
+    <string name="mailto_link_could_not_be_decoded">Il collegamento mailto non può essere decodificato: %1$s</string>
 
     <!-- notifications  -->
     <!-- deprecated, use mark_as_read or mark_as_read_short -->

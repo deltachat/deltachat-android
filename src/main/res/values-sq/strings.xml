@@ -7,6 +7,10 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">ose</string>
     <string name="clear_search">Spastroje Kërkimin</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Lidhje</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Skanoje</string>
     <string name="yes">Po</string>
     <string name="no">Jo</string>
     <string name="select">Përzgjidhni</string>
@@ -232,6 +236,7 @@
     <string name="menu_message_details">Hollësi Mesazhi</string>
     <string name="menu_copy_to_clipboard">Kopjoje në të Papastër</string>
     <string name="share_invite_link">Jepuni Lidhje Ftese</string>
+    <string name="share_invite_link_explain">Cilido me këtë lidhje mund të shohë profilin tuaj dhe të nisë një fjalosje me ju. Jepuani vetëm personave që u zini besë.</string>
     <string name="invite_friends">Ftoni Shokë</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Lidhuni me mua në Delta Chat:\n%1$s</string>
