@@ -732,7 +732,7 @@
 
 * fix sending status updates of private apps
 * show full messages: do not load remote content for requests automatically
-* update to core107.1
+* using core107.1
 
 
 ## v1.34.12
