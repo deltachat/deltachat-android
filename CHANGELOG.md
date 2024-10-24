@@ -6,15 +6,21 @@
 * new Proxy settings screen available at "Advanced / Proxy"
 * manage a list of HTTP(S), SOCKS5 or Shadowsocks Proxies
 * Proxies icon shown on the chatlist if proxies are used
+* share Proxies by showing a QR code
 * scan Proxies' QR code and use them
 * make Proxy URLs inside Delta Chat tappable
 * open Delta Chat when tapping Proxy URLs in other apps
+* "New Contact / Link" button to view, share or copy the invite line
+* "New Contact / Scan" button to easier access the scanner functionality
+* open "New Contact" scan/show activities directly, do not try to be too smart and open the last active tab
 * allow to attach multiple images in one step
+* to easier differ between multiple profiles, set a "Private Tag" (long tap profile switcher)
 * improve profile deletion dialog: show name, size and avatar of the profile being deleted
 * show profile name in title bar when the user has multiple profiles
 * improve profile switcher layout
 * improve notification: allow to "Mark Read" from the notification
 * search for unread chats in the search's three-dot-menu
+* allow pasting QR codes from "Add As Second Device" screen
 * save traffic by supporting "IMAP COMPRESS"
 * automatic reconfiguration, e.g. switching to implicit TLS if STARTTLS port stops working
 * parallelize IMAP and SMTP connection attempts
@@ -31,11 +37,12 @@
 * hide sync messages from INBOX (use IMAP APPEND command to upload sync messages)
 * more verbose SMTP connection establishment errors
 * add "Learn More" button to "Manage keys"
+* visual feedback when tapping the action button of a message
 * log unexpected message state when resending fails
 * smoother backup and "Add Second Device" progress bars
 * assign messages to ad-hoc group with matching name and members
 * use stricter TLS checks for HTTPS downloads (images in HTML mails, Autoconfig)
-* improve logging for failed QR code scans, AEAP, Autocrypt and sending errors
+* improve logging for failed QR code scans, AEAP, Autocrypt, notification permissions and sending errors
 * show more context for the "Cannot establish guaranteed..." info message
 * show original file name in "Message Info"
 * fix: Sort received outgoing message down if it's fresher than all non fresh messages
@@ -53,7 +60,8 @@
 * fix: better detection of file extensions
 * fix: "database locked" errors
 * fix: never initialize realtime channels if realtime is disabled
-* update translations
+* fix scanning "add second device" QR code from scanner above chatlist
+* update translations and local help
 * update to core 1.148.2
 
 
