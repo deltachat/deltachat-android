@@ -396,7 +396,9 @@ public class NotificationCenter {
 
             if (privacy.isDisplayContact()) {
                 builder.setContentTitle(dcChat.getName());
-                builder.setSubText(accountTag);
+                if (!TextUtils.isEmpty(accountTag)) {
+                    builder.setSubText(accountTag);
+                }
             }
 
             // if privacy allows, for better accessibility,
@@ -540,7 +542,7 @@ public class NotificationCenter {
                     .setContentTitle("Delta Chat") // content title would only be used on SDK <24
                     .setContentText("New messages") // content text would only be used on SDK <24
                     .setContentIntent(getOpenChatlistIntent(accountId));
-                  if (privacy.isDisplayContact()) {
+                  if (privacy.isDisplayContact() && !TextUtils.isEmpty(accountTag)) {
                     summary.setSubText(accountTag);
                   }
                   notificationManager.notify(String.valueOf(accountId), ID_MSG_SUMMARY, summary.build());
