@@ -15,9 +15,12 @@
 * improve profile switcher layout
 * improve notification: allow to "Mark Read" from the notification
 * search for unread chats in the search's three-dot-menu
+* save traffic by supporting "IMAP COMPRESS"
 * automatic reconfiguration, e.g. switching to implicit TLS if STARTTLS port stops working
 * parallelize IMAP and SMTP connection attempts
+* improve DNS caching
 * always use preloaded DNS results
+* prioritize cached results if DNS resolver returns many results
 * always move auto-generated messages to DeltaChat folder
 * ignore invalid securejoin messages silently
 * delete messages from a chatmail server immediately by default
@@ -32,9 +35,10 @@
 * smoother backup and "Add Second Device" progress bars
 * assign messages to ad-hoc group with matching name and members
 * use stricter TLS checks for HTTPS downloads (images in HTML mails, Autoconfig)
-* improve logging for failed QR code scans
+* improve logging for failed QR code scans, AEAP, Autocrypt and sending errors
 * show more context for the "Cannot establish guaranteed..." info message
 * show original file name in "Message Info"
+* fix: Sort received outgoing message down if it's fresher than all non fresh messages
 * fix: avoid app being killed when processing a PUSH notification
 * fix crash when refreshing avatar
 * fix crash in gallery
@@ -47,8 +51,10 @@
 * fix: make it possible to cancel ongoing backup transfer
 * fix: reset quota when entering a new address
 * fix: better detection of file extensions
+* fix: "database locked" errors
+* fix: never initialize realtime channels if realtime is disabled
 * update translations
-* update to core 1.147.1
+* update to core 1.148.2
 
 
 ## v1.46.14
