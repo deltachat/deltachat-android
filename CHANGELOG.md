@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v1.48.0
+## v1.48.1
 2024-10
 
 * new Proxy settings screen available at "Advanced / Proxy"
@@ -15,6 +15,7 @@
 * open "New Contact" scan/show activities directly, do not try to be too smart and open the last active tab
 * allow to attach multiple images in one step
 * to easier differ between multiple profiles, set a "Private Tag" (long tap profile switcher)
+* "Private Tag" is shown in notifications
 * improve profile deletion dialog: show name, size and avatar of the profile being deleted
 * show profile name in title bar when the user has multiple profiles
 * improve profile switcher layout
@@ -60,9 +61,12 @@
 * fix: better detection of file extensions
 * fix: "database locked" errors
 * fix: never initialize realtime channels if realtime is disabled
+* fix reception of realtime channels
+* fix: normalize proxy URLs
+* fix connections getting stuck in "Updating..." sometimes
 * fix scanning "add second device" QR code from scanner above chatlist
 * update translations and local help
-* update to core 1.148.2
+* update to core 1.148.4
 
 
 ## v1.46.14
