@@ -57,6 +57,11 @@ the following steps are done in a PR called `prep-VERSION` (no leading "v"):
 On serious deteriorations, **ping devs**, make sure they get fixed, and start over at step 1.
 
 
+## Add to releases.md
+
+Add the release to https://github.com/deltachat/deltachat-pages/blob/main/releases.md
+
+
 ## Release on get.delta.chat
 
 Take care the APK used here and in the following steps
