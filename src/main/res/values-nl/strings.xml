@@ -7,6 +7,10 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">of</string>
     <string name="clear_search">Zoekopdracht wissen</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Link</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Scannen</string>
     <string name="yes">Ja</string>
     <string name="no">Nee</string>
     <string name="select">Selecteren</string>
@@ -234,6 +238,7 @@
     <string name="menu_message_details">Berichtinformatie</string>
     <string name="menu_copy_to_clipboard">Kopiëren naar klembord</string>
     <string name="share_invite_link">Uitnodigingslink versturen</string>
+    <string name="share_invite_link_explain">Iedereen die deze link ontvangt kan je profiel bekijken en een gesprek met je starten. Deel hem daarom alleen met mensen die je vertrouwt.</string>
     <string name="invite_friends">Vrienden uitnodigen</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Neem contact met me op via Delta Chat:\n%1$s</string>

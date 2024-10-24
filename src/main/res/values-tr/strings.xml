@@ -7,6 +7,10 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">ya da</string>
     <string name="clear_search">Aramayı Temizle</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Bağlantı</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Tara</string>
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
     <string name="select">Seç</string>
@@ -234,6 +238,7 @@
     <string name="menu_message_details">İleti Bilgisi</string>
     <string name="menu_copy_to_clipboard">Panoya Kopyala</string>
     <string name="share_invite_link">Çağırma Bağlantısı Paylaş</string>
+    <string name="share_invite_link_explain">Herhangi birisi bu bağlantıyla profilinizi görüntüleyebilir ve sizinle bir sohbet başlatabilir. Onu yalnızca güvendiğiniz insanlarla paylaşın.</string>
     <string name="invite_friends">Arkadaşları Çağır</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Delta Chat üzerinden bana ulaşın:\n%1$s</string>
