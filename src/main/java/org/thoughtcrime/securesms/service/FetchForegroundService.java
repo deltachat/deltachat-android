@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.ForegroundDetector;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.Util;
@@ -23,6 +24,11 @@ public final class FetchForegroundService extends Service {
   private static Intent service;
 
   public static void start(Context context) {
+    ForegroundDetector foregroundDetector = ForegroundDetector.getInstance();
+    if (foregroundDetector != null && foregroundDetector.isForeground()) {
+      return;
+    }
+
     GenericForegroundService.createFgNotificationChannel(context);
     synchronized (SERVICE_LOCK) {
       if (service == null) {
