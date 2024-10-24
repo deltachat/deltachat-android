@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms.notifications;
 
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PRIVATE_TAG;
+
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationChannelGroup;
@@ -387,10 +389,16 @@ public class NotificationCenter {
                 builder.setGroup(GRP_MSG + "." + accountId);
             }
 
-            String accountAddr = dcContext.getConfig("addr");
+            String accountTag = dcContext.getConfig(CONFIG_PRIVATE_TAG);
+            if (accountTag.isEmpty() && context.dcAccounts.getAll().length > 1) {
+                accountTag = dcContext.getName();
+            }
+
             if (privacy.isDisplayContact()) {
                 builder.setContentTitle(dcChat.getName());
-                builder.setSubText(accountAddr);
+                if (!TextUtils.isEmpty(accountTag)) {
+                    builder.setSubText(accountTag);
+                }
             }
 
             // if privacy allows, for better accessibility,
@@ -534,8 +542,8 @@ public class NotificationCenter {
                     .setContentTitle("Delta Chat") // content title would only be used on SDK <24
                     .setContentText("New messages") // content text would only be used on SDK <24
                     .setContentIntent(getOpenChatlistIntent(accountId));
-                  if (privacy.isDisplayContact()) {
-                    summary.setSubText(accountAddr);
+                  if (privacy.isDisplayContact() && !TextUtils.isEmpty(accountTag)) {
+                    summary.setSubText(accountTag);
                   }
                   notificationManager.notify(String.valueOf(accountId), ID_MSG_SUMMARY, summary.build());
                 } catch (Exception e) {
