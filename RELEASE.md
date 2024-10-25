@@ -24,11 +24,15 @@ the "update-core-and-stuff-DATE" PR can be merged without review
 
 the following steps are done in a PR called `prep-VERSION` (no leading "v"):
 
-3. update `CHANGELOG.md`
-   from <https://github.com/deltachat/deltachat-core-rust/blob/main/CHANGELOG.md>
-   and <https://github.com/deltachat/deltachat-android/pulls?q=is%3Apr+is%3Aclosed+sort%3Aupdated-desc>.
-   avoid technical terms, library versions etc. the changelog is for the end user.
-   do not forget to update/mention used core version and release month.  
+3. a) update `CHANGELOG.md`
+      from <https://github.com/deltachat/deltachat-core-rust/blob/main/CHANGELOG.md>
+      and <https://github.com/deltachat/deltachat-android/pulls?q=is%3Apr+is%3Aclosed+sort%3Aupdated-desc>.
+      do not just copy and avoid technical terms.
+      the changelog is for the end user and shall show impacts form that angle.
+   b) update changelog date as `YYYY-MM`
+   c) add used core version to end of changelog entry
+      as `update to core 1.2.3` or `using core 1.2.3`
+
    in case previous entries of the changelog refer to betas or to not officially released versions,
    the entries can be summarized.
    this makes it easier for the end user to follow changes by showing major changes atop
