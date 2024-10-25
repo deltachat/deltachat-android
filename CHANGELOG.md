@@ -55,7 +55,7 @@
 * fix: don't sync QR code token before populating the group
 * fix: do not get stuck if the message to download does not exist anymore
 * fix: do not attempt to reference info messages
-* fix: do mpt get stuck if there is an error transferring backup
+* fix: do not get stuck if there is an error transferring backup
 * fix: make it possible to cancel ongoing backup transfer
 * fix: reset quota when entering a new address
 * fix: better detection of file extensions

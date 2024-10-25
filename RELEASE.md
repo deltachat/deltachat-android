@@ -35,7 +35,7 @@ the following steps are done in a PR called `prep-VERSION` (no leading "v"):
 
    in case previous entries of the changelog refer to betas or to not officially released versions,
    the entries can be summarized.
-   this makes it easier for the end user to follow changes by showing major changes atop
+   this makes it easier for the end user to follow changes by showing major changes atop.
 
 4. add a device message to `ConversationListActivity::onCreate()` or remove the old one.
    do not repeat the CHANGELOG here: write what really is the ux outcome
