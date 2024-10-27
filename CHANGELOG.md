@@ -45,7 +45,7 @@
 * use stricter TLS checks for HTTPS downloads (images in HTML mails, Autoconfig)
 * improve logging for failed QR code scans, AEAP, Autocrypt, notification permissions and sending errors
 * show more context for the "Cannot establish guaranteed..." info message
-* show original file name in "Message Info"
+* show file name in "Message Info"
 * fix: Sort received outgoing message down if it's fresher than all non fresh messages
 * fix: avoid app being killed when processing a PUSH notification
 * fix crash when refreshing avatar
