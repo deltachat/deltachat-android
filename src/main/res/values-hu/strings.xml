@@ -7,6 +7,10 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">vagy</string>
     <string name="clear_search">Keresés kiürítése</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Hivatkozás</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Beolvasás</string>
     <string name="yes">Igen</string>
     <string name="no">Nem</string>
     <string name="select">Kiválasztás</string>
@@ -234,6 +238,7 @@
     <string name="menu_message_details">Üzenet részletei</string>
     <string name="menu_copy_to_clipboard">Vágólapra másolás</string>
     <string name="share_invite_link">Meghívó-hivatkozás megosztása</string>
+    <string name="share_invite_link_explain">Ezen a hivatkozáson keresztül bárki megtekintheti az Ön profilját, és csevegést kezdeményezhet Önnel. Csak olyan emberekkel ossza meg, akikben megbízik.</string>
     <string name="invite_friends">Ismerősök meghívása</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Lépjen kapcsolatba velem a Delta Chaten:\n%1$s</string>

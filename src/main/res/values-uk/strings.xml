@@ -7,6 +7,10 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">або</string>
     <string name="clear_search">Очистити пошук</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Посилання</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Сканувати</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
     <string name="select">Обрати</string>
@@ -135,6 +139,12 @@
         <item quantity="many">%d повідомлень</item>
         <item quantity="other">%d повідомлень</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d реакція</item>
+        <item quantity="few">%d реакції</item>
+        <item quantity="many">%d реакцій</item>
+        <item quantity="other">%d реакції</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d учасник</item>
         <item quantity="few">%d учасники</item>
@@ -246,6 +256,7 @@
     <string name="menu_message_details">Інформація про повідомлення</string>
     <string name="menu_copy_to_clipboard">Копіювати в буфер обміну</string>
     <string name="share_invite_link">Поділитися посиланням на запрошення</string>
+    <string name="share_invite_link_explain">Будь-хто за цим посиланням може переглянути ваш профіль і почати з вами чат. Діліться ним лише з людьми, яким ви довіряєте.</string>
     <string name="invite_friends">Запросити друзів</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Зв\'яжіться зі мною в Delta Chat:\n%1$s</string>
@@ -686,6 +697,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Переслати...</string>
+    <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
+    <string name="ask_send_files_to_chat">Надіслати %1$d файли до \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Надіслати %1$d файл (файлів) у %2$d чати?</string>
     <string name="videos_sent_without_recoding">(Відео надсилаються у вигляді оригінальних великих файлів. Щоб надіслати відео у вигляді менших файлів, прикріпіть їх окремо)</string>
     <string name="share_text_multiple_chats">Надіслати цей текст у %1$d чати?\n\n\"%2$s\"</string>
