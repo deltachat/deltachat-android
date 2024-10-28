@@ -618,12 +618,14 @@
     <string name="proxy_use_proxy">Përdor Ndërmjetës</string>
     <string name="proxy_add">Shtoni Ndërmjetës</string>
     <string name="proxy_add_explain">Lloje ndërmjetësish që mbulohen: HTTP(S), SOCKS5 dhe Shadowsocks.</string>
-    <string name="proxy_add_url_hint">Jepni këtu URL-në e ndërmjetësit</string>
-    <string name="proxy_invalid">URL ndërmjetësi e pavlefshme, ose që s’mbulohet</string>
+    <string name="proxy_add_url_hint">Jepni këtu lidhjen e ndërmjetësit</string>
+    <string name="proxy_invalid">Ndërmjetës i pavlefshëm, ose që s’mbulohet</string>
     <string name="proxy_list_header">Ndërmjetës të Ruajtur</string>
     <string name="proxy_delete">Fshije Ndërmjetësin</string>
     <string name="proxy_delete_explain">Jeni i sigurt se doni të fshihet “%1$s”?</string>
     <string name="proxy_use_proxy_confirm">Doni të përdore ndërmjetësi “%1$s”?</string>
+    <string name="proxy_share_explain">Shokët tuaj mund ta shtojnë këtë ndërmjetës përmes skanimit të kodit QR.</string>
+    <string name="proxy_share_link">Jepeni Lidhjen</string>
 
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
@@ -649,6 +651,9 @@
     <string name="accept_invalid_certificates">Prano dëshmi të pavlefshme</string>
     <string name="switch_account">Ndërroni Llogari</string>
     <string name="add_account">Shtoni Llogari</string>
+    <string name="profile_tag">Etiketë Private</string>
+    <string name="profile_tag_hint">p.sh., Pune, Familjeje</string>
+    <string name="profile_tag_explain">Ajo etiketë është e dukshme vetëm për ju; për t’ju ndihmuar ju të bëni dallimin mes profileve tuaja.</string>
     <string name="delete_account">Fshije Llogarinë</string>
     <string name="delete_account_ask">Jeni i sigurt se doni të fshihen të dhënat e llogarisë tuaj?</string>
     <string name="delete_account_explain_with_name">Krejt të dhënat e llogarisë për “%s” në këtë pajisje do të fshihen, përfshi ato të ujdisjes tuaj për fshehtëzim skaj-më-skaj, kontakte, fjalosje, mesazhe dhe media. Ky veprim s’mund të zhbëhet.</string>

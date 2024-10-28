@@ -653,12 +653,14 @@
     <string name="proxy_use_proxy">Użyj proxy</string>
     <string name="proxy_add">Dodaj proxy</string>
     <string name="proxy_add_explain">Obsługiwane typy serwerów proxy: HTTP(S), SOCKS5 i Shadowsocks.</string>
-    <string name="proxy_add_url_hint">Wpisz tu URL proxy</string>
-    <string name="proxy_invalid">Nieprawidłowy lub nieobsługiwany URL proxy</string>
+    <string name="proxy_add_url_hint">Wpisz tu link proxy</string>
+    <string name="proxy_invalid">Nieprawidłowe lub nieobsługiwane proxy</string>
     <string name="proxy_list_header">Zapisane proxy</string>
     <string name="proxy_delete">Usuń proxy</string>
     <string name="proxy_delete_explain">Na pewno chcesz usunąć „%1$s”?</string>
     <string name="proxy_use_proxy_confirm">Chcesz użyć proxy „%1$s”?</string>
+    <string name="proxy_share_explain">Twoi znajomi mogą dodać ten serwer proxy, skanując kod QR.</string>
+    <string name="proxy_share_link">Udostępnij link</string>
 
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
@@ -684,6 +686,9 @@
     <string name="accept_invalid_certificates">Zaakceptuj nieprawidłowe certyfikaty</string>
     <string name="switch_account">Przełącz konto</string>
     <string name="add_account">Dodaj konto</string>
+    <string name="profile_tag">Prywatna etykieta</string>
+    <string name="profile_tag_hint">np. Praca, Rodzina</string>
+    <string name="profile_tag_explain">Etykieta jest widoczna tylko dla ciebie; pomaga odróżnić twoje profile.</string>
     <string name="delete_account">Usuń konto</string>
     <string name="delete_account_ask">Czy na pewno chcesz usunąć dane swojego konta?</string>
     <string name="delete_account_explain_with_name">Wszystkie dane konta „%s” na tym urządzeniu zostaną usunięte, w tym konfiguracja szyfrowania end-to-end, kontakty, czaty, wiadomości i multimedia. Tej operacji nie można cofnąć.</string>

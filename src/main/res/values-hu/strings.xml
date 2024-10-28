@@ -621,13 +621,10 @@
     <string name="proxy_use_proxy">Proxy használata</string>
     <string name="proxy_add">Proxy hozzáadása</string>
     <string name="proxy_add_explain">Támogatott proxytípusok: HTTP(S), SOCKS5 és ShadowSOCKS</string>
-    <string name="proxy_add_url_hint">Adja meg a proxy webcímét</string>
-    <string name="proxy_invalid">Érvénytelen vagy nem támogatott a proxy webcíme</string>
     <string name="proxy_list_header">Mentett proxyk</string>
     <string name="proxy_delete">Proxy törlése</string>
     <string name="proxy_delete_explain">Biztosan törli a következőt: „%1$s”?</string>
     <string name="proxy_use_proxy_confirm">Biztosan használni akarja a következő proxyt: „%1$s”?</string>
-
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">SOCKS5 használata</string>

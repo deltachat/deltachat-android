@@ -497,13 +497,10 @@
     <string name="proxy_use_proxy">Naudoti įgaliotąjį serverį</string>
     <string name="proxy_add">Pridėti įgaliotąjį serverį</string>
     <string name="proxy_add_explain">Palaikomi įgaliotųjų serverių tipai: HTTP(S), SOCKS5 ir Shadowsocks.</string>
-    <string name="proxy_add_url_hint">Čia įveskite įgaliotojo serverio URL</string>
-    <string name="proxy_invalid">Neteisingas arba nepalaikomas įgaliotojo serverio URL</string>
     <string name="proxy_list_header">Įrašyti įgaliotieji serveriai</string>
     <string name="proxy_delete">Ištrinti įgaliotąjį serverį</string>
     <string name="proxy_delete_explain">Ar tikrai norite ištrinti „%1$s“?</string>
     <string name="proxy_use_proxy_confirm">Ar norite naudoti įgaliotąjį serverį „%1$s“?</string>
-
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Naudoti SOCKS5</string>
