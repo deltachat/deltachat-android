@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v1.48.1
+## v1.48.2
 2024-10
 
 * new Proxy settings screen available at "Advanced / Proxy"
@@ -65,8 +65,11 @@
 * fix: normalize proxy URLs
 * fix connections getting stuck in "Updating..." sometimes
 * fix scanning "add second device" QR code from scanner above chatlist
+* fix warning about wrong password
+* fix app getting stale when receiving a PUSH notifications takes longer
+* fix app getting stale on network changes
 * update translations and local help
-* update to core 1.148.4
+* update to core 1.148.5
 
 
 ## v1.46.14
