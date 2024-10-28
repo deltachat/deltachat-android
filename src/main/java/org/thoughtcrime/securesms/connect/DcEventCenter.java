@@ -188,11 +188,10 @@ public class DcEventCenter {
         return 0;
     }
 
-    boolean devMode = Prefs.isDeveloperModeEnabled(context);
-    String logPrefix = devMode? "[accId="+accountId + "] " : "";
-
     if (accountId != context.dcContext.getAccountId()) {
+      final boolean devMode = Prefs.isDeveloperModeEnabled(context);
       if (devMode || accountId == 0) {
+        final String logPrefix = devMode? "[accId="+accountId + "] " : "";
         switch (id) {
           case DcContext.DC_EVENT_INFO:
             Log.i("DeltaChat", logPrefix + event.getData2Str());
