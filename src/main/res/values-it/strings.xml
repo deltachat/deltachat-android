@@ -637,12 +637,14 @@
     <string name="proxy_use_proxy">Usa Proxy</string>
     <string name="proxy_add">Aggiungi Proxy</string>
     <string name="proxy_add_explain">Tipi di proxy supportati: HTTP(S), SOCKS5 e Shadowsocks.</string>
-    <string name="proxy_add_url_hint">Inserisci qui l\'URL del proxy</string>
-    <string name="proxy_invalid">URL proxy non valido o non supportato</string>
+    <string name="proxy_add_url_hint">Inserisci qui il collegamento proxy</string>
+    <string name="proxy_invalid">Proxy non valido o non supportato</string>
     <string name="proxy_list_header">Proxy Salvati</string>
     <string name="proxy_delete">Elimina Proxy</string>
     <string name="proxy_delete_explain">Sei sicuro di voler eliminare \"%1$s\"?</string>
     <string name="proxy_use_proxy_confirm">Vuoi usare il proxy \"%1$s\"?</string>
+    <string name="proxy_share_explain">I tuoi amici possono aggiungere questo proxy scansionando il Codice QR.</string>
+    <string name="proxy_share_link">Condividi Collegamento</string>
 
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
@@ -668,6 +670,9 @@
     <string name="accept_invalid_certificates">Accetta certificati non validi</string>
     <string name="switch_account">Cambia Account</string>
     <string name="add_account">Aggiungi Account</string>
+    <string name="profile_tag">Etichetta Privata</string>
+    <string name="profile_tag_hint">es. Lavoro, Famiglia</string>
+    <string name="profile_tag_explain">Etichetta visibile solo a te, che ti aiuta a distinguere i tuoi profili.</string>
     <string name="delete_account">Elimina Account</string>
     <string name="delete_account_ask">Sei certo di voler eliminare i dati dell\'account?</string>
     <string name="delete_account_explain_with_name">Verranno eliminati tutti i dati dell\'account di \"%s\" su questo dispositivo, inclusa la configurazione della crittografia end-to-end, contatti, chat, messaggi e contenuti multimediali. Questa azione non può essere annullata.</string>

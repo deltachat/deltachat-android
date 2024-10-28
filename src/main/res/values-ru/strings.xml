@@ -647,13 +647,10 @@
     <string name="proxy_use_proxy">Использовать прокси</string>
     <string name="proxy_add">Добавить прокси</string>
     <string name="proxy_add_explain">Поддерживаемые типы прокси: HTTP(S), SOCKS5 и Shadowsocks.</string>
-    <string name="proxy_add_url_hint">Введите URL прокси</string>
-    <string name="proxy_invalid">Некорректный или неподдерживаемый URL прокси</string>
     <string name="proxy_list_header">Сохранённые прокси</string>
     <string name="proxy_delete">Удалить прокси</string>
     <string name="proxy_delete_explain">Вы уверены, что хотите удалить \"%1$s\"?</string>
     <string name="proxy_use_proxy_confirm">Вы хотите использовать прокси \"%1$s\"?</string>
-
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Использовать SOCKS5</string>

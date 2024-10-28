@@ -597,8 +597,6 @@
     <string name="proxy_use_proxy">Utiliser le proxy</string>
     <string name="proxy_add">Ajouter un proxy</string>
     <string name="proxy_add_explain">Types de proxy supportés: HTTP(S), SOCKS5 et Shadowsocks.</string>
-    <string name="proxy_add_url_hint">Entrez l\'URL du proxy ici</string>
-    <string name="proxy_invalid">URL invalide ou non supportée</string>
     <string name="proxy_list_header">Sauver les proxy</string>
     <string name="proxy_delete">Effacer le proxy</string>
     <!-- deprecated -->
