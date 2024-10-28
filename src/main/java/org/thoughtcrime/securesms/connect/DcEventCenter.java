@@ -12,7 +12,6 @@ import com.b44t.messenger.DcEvent;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.service.FetchForegroundService;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.ArrayList;
@@ -188,37 +187,26 @@ public class DcEventCenter {
         return 0;
     }
 
+    final String logPrefix = "[accId="+accountId + "] ";
+    switch (id) {
+      case DcContext.DC_EVENT_INFO:
+        Log.i("DeltaChat", logPrefix + event.getData2Str());
+        break;
+
+      case DcContext.DC_EVENT_WARNING:
+        Log.w("DeltaChat", logPrefix + event.getData2Str());
+        break;
+
+      case DcContext.DC_EVENT_ERROR:
+        Log.e("DeltaChat", logPrefix + event.getData2Str());
+        break;
+    }
+
     if (accountId != context.dcContext.getAccountId()) {
-      final boolean devMode = Prefs.isDeveloperModeEnabled(context);
-      if (devMode || accountId == 0) {
-        final String logPrefix = devMode? "[accId="+accountId + "] " : "";
-        switch (id) {
-          case DcContext.DC_EVENT_INFO:
-            Log.i("DeltaChat", logPrefix + event.getData2Str());
-            break;
-
-          case DcContext.DC_EVENT_WARNING:
-            Log.w("DeltaChat", logPrefix + event.getData2Str());
-            break;
-
-          case DcContext.DC_EVENT_ERROR:
-            Log.e("DeltaChat", logPrefix + event.getData2Str());
-            break;
-        }
-      }
-
       return 0;
     }
 
     switch (id) {
-      case DcContext.DC_EVENT_INFO:
-        Log.i("DeltaChat", event.getData2Str());
-        break;
-
-      case DcContext.DC_EVENT_WARNING:
-        Log.w("DeltaChat", event.getData2Str());
-        break;
-
       case DcContext.DC_EVENT_ERROR:
         handleError(id, event.getData2Str());
         break;
