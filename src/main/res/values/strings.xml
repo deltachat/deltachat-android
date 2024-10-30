@@ -449,7 +449,7 @@
     <string name="send_message_to">Send Message to…</string>
     <string name="enable_realtime">Support Real-Time Apps</string>
     <string name="enable_realtime_explain">Enable real-time support for apps shared in chats. If enabled, chat partners may be able to discover your IP address when you start an app.</string>
-    <string name="realtime_disabled_warning">Real-time support is disabled, this app may not work properly. Do you want to enable it?</string>
+    <string name="realtime_disabled_warning">Real-time support is disabled, this app may not work properly. Do you want to enable it? Chat partners may be able to discover your IP address</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Show locations in time frame</string>
