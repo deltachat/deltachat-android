@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms;
 
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_WEBXDC_REALTIME_ENABLED;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +30,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.pm.ShortcutInfoCompat;
 import androidx.core.content.pm.ShortcutManagerCompat;
@@ -72,6 +75,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private String sourceCodeUrl = "";
   private boolean internetAccess = false;
   private boolean hideActionBar = false;
+  private boolean realtimeWarned = false;
 
   public static void openMaps(Context context, int chatId) {
     DcContext dcContext = DcHelper.getContext(context);
@@ -529,12 +533,32 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     /** @noinspection unused*/
     @JavascriptInterface
     public void sendRealtimeAdvertisement() {
-      int accountId = WebxdcActivity.this.dcContext.getAccountId();
-      int msgId = WebxdcActivity.this.dcAppMsg.getId();
-      try {
-        WebxdcActivity.this.rpc.sendWebxdcRealtimeAdvertisement(accountId, msgId);
-      } catch (RpcException e) {
-        e.printStackTrace();
+      final WebxdcActivity activity = WebxdcActivity.this;
+      final DcContext dcContext = activity.dcContext;
+      final int accountId = activity.dcContext.getAccountId();
+      final int msgId = activity.dcAppMsg.getId();
+      if (dcContext.getConfigInt(CONFIG_WEBXDC_REALTIME_ENABLED) != 0) {
+        try {
+          activity.rpc.sendWebxdcRealtimeAdvertisement(accountId, msgId);
+        } catch (RpcException e) {
+          e.printStackTrace();
+        }
+      } else if (!activity.realtimeWarned) {
+        activity.realtimeWarned = true;
+        Util.runOnMain(() -> {
+            new AlertDialog.Builder(activity)
+            .setMessage(R.string.realtime_disabled_warning)
+            .setPositiveButton(R.string.enable, (d, b) -> {
+                dcContext.setConfigInt(CONFIG_WEBXDC_REALTIME_ENABLED, 1);
+                try {
+                  activity.rpc.sendWebxdcRealtimeAdvertisement(accountId, msgId);
+                } catch (RpcException e) {
+                  e.printStackTrace();
+                }
+            })
+            .setNegativeButton(R.string.cancel, null)
+            .show();
+        });
       }
     }
 
