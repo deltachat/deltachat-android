@@ -111,6 +111,7 @@ public class ConversationItem extends BaseConversationItem
   protected ViewGroup              contactPhotoHolder;
   private   ViewGroup              container;
   private   Button                 msgActionButton;
+  private   Button                 showFullButton;
 
   private @NonNull  Stub<ConversationItemThumbnail> mediaThumbnailStub;
   private @NonNull  Stub<AudioView>                 audioViewStub;
@@ -157,6 +158,7 @@ public class ConversationItem extends BaseConversationItem
     this.container               =            findViewById(R.id.container);
     this.replyView               =            findViewById(R.id.reply_icon);
     this.msgActionButton         =            findViewById(R.id.msg_action_button);
+    this.showFullButton          =            findViewById(R.id.show_full_button);
 
     setOnClickListener(new ClickListener(null));
 
@@ -406,6 +408,7 @@ public class ConversationItem extends BaseConversationItem
 
     int downloadState = messageRecord.getDownloadState();
     if (downloadState == DcMsg.DC_DOWNLOAD_AVAILABLE || downloadState == DcMsg.DC_DOWNLOAD_FAILURE || downloadState == DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
+      showFullButton.setVisibility(View.GONE);
       msgActionButton.setVisibility(View.VISIBLE);
       if (downloadState==DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
         msgActionButton.setEnabled(false);
@@ -426,6 +429,7 @@ public class ConversationItem extends BaseConversationItem
         }
       });
     } else if (messageRecord.getType() == DcMsg.DC_MSG_WEBXDC) {
+      showFullButton.setVisibility(View.GONE);
       msgActionButton.setVisibility(View.VISIBLE);
       msgActionButton.setEnabled(true);
       msgActionButton.setText(R.string.start_app);
@@ -438,10 +442,11 @@ public class ConversationItem extends BaseConversationItem
       });
     }
     else if (messageRecord.hasHtml()) {
-      msgActionButton.setVisibility(View.VISIBLE);
-      msgActionButton.setEnabled(true);
-      msgActionButton.setText(R.string.show_full_message);
-      msgActionButton.setOnClickListener(view -> {
+      msgActionButton.setVisibility(View.GONE);
+      showFullButton.setVisibility(View.VISIBLE);
+      showFullButton.setEnabled(true);
+      showFullButton.setText(R.string.show_full_message);
+      showFullButton.setOnClickListener(view -> {
         if (eventListener != null && batchSelected.isEmpty()) {
           eventListener.onShowFullClicked(messageRecord);
         } else {
@@ -450,6 +455,7 @@ public class ConversationItem extends BaseConversationItem
       });
     } else {
       msgActionButton.setVisibility(View.GONE);
+      showFullButton.setVisibility(View.GONE);
     }
   }
 
