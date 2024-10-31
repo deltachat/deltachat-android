@@ -462,8 +462,8 @@
     <string name="send_file_to">Invia \"%1$s\" a…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Invia Messaggio a...</string>
-    <string name="enable_realtime">Canali Webxdc in Tempo Reale</string>
-    <string name="enable_realtime_explain">Abilita le API in tempo reale Webxdc per creare connessioni dirette tra dispositivi</string>
+    <string name="enable_realtime">Apps in Tempo Reale</string>
+    <string name="enable_realtime_explain">Abilitando connessioni in tempo reale per app condivise nelle chat. Se abilitato, i partner della chat potrebbero essere in grado di scoprire il tuo indirizzo IP quando avvii un\'app.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Mostra le posizioni nel tempo</string>

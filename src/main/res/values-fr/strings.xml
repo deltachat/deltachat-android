@@ -442,9 +442,6 @@
     <string name="send_file_to">Envoyer \"%1$s\" à</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Envoyer un message à</string>
-    <string name="enable_realtime">Canaux Webxdc temps réel</string>
-    <string name="enable_realtime_explain">Enclenchez l\'API temps réel Webxdc pour créer des connexions entre les appareils.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Afficher les positions pour une période</string>
     <string name="show_location_traces">Afficher les traces</string>

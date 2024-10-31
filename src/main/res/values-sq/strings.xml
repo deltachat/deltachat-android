@@ -444,8 +444,6 @@
     <string name="send_file_to">Dërgoni “%1$s” për …</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Dërgoni Mesazh për…</string>
-    <string name="enable_realtime_explain">Aktivizoni API të atypëratyshme Webxdc, që të krijoni lidhje të drejtpërdrejta mes pajisjesh.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Shfaq vendndodhje në rrjedhë kohore</string>
     <string name="show_location_traces">Shfaq gjurmë</string>
