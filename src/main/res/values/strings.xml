@@ -446,8 +446,8 @@
     <string name="send_file_to">Send \"%1$s\" to…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Send Message to…</string>
-    <string name="enable_realtime">Realtime Webxdc Channels</string>
-    <string name="enable_realtime_explain">Enable Webxdc realtime APIs to create direct connections between devices.</string>
+    <string name="enable_realtime">Real-Time Apps</string>
+    <string name="enable_realtime_explain">Enable real-time connections for apps shared in chats. If enabled, chat partners may be able to discover your IP address when you start an app.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Show locations in time frame</string>
