@@ -647,10 +647,15 @@
     <string name="proxy_use_proxy">Использовать прокси</string>
     <string name="proxy_add">Добавить прокси</string>
     <string name="proxy_add_explain">Поддерживаемые типы прокси: HTTP(S), SOCKS5 и Shadowsocks.</string>
+    <string name="proxy_add_url_hint">Введите ссылку на прокси</string>
+    <string name="proxy_invalid">Недопустимый или неподдерживаемый прокси</string>
     <string name="proxy_list_header">Сохранённые прокси</string>
     <string name="proxy_delete">Удалить прокси</string>
     <string name="proxy_delete_explain">Вы уверены, что хотите удалить \"%1$s\"?</string>
     <string name="proxy_use_proxy_confirm">Вы хотите использовать прокси \"%1$s\"?</string>
+    <string name="proxy_share_explain">Ваши друзья могут добавить этот прокси, отсканировав QR-код.</string>
+    <string name="proxy_share_link">Поделиться ссылкой</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Использовать SOCKS5</string>
@@ -675,6 +680,9 @@
     <string name="accept_invalid_certificates">Принимать недействительные сертификаты</string>
     <string name="switch_account">Сменить профиль</string>
     <string name="add_account">Добавить профиль</string>
+    <string name="profile_tag">Личный тег</string>
+    <string name="profile_tag_hint">Например: Работа, Семья</string>
+    <string name="profile_tag_explain">Тег, видимый только вам, помогает различать ваши профили.</string>
     <string name="delete_account">Удалить профиль</string>
     <string name="delete_account_ask">Вы уверены, что хотите удалить данные своего профиля?</string>
     <string name="delete_account_explain_with_name">Все данные профиля \"%s\" на этом устройстве будут безвозвратно удалены, включая настройки сквозного шифрования, контакты, чаты, сообщения и медиафайлы. Это действие не может быть отменено.</string>
