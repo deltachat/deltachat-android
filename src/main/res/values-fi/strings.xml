@@ -427,9 +427,6 @@
     <string name="send_file_to">Lähetä \"%1$s\" kohteeseen...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Lähetä viesti kohteeseen...</string>
-    <string name="enable_realtime">Reaaliaikaiset Webxdc -kanavat</string>
-    <string name="enable_realtime_explain">Ota Webxdc:n reaaliaikaiset ohjelmointirajapinnat käyttöön niin voit luoda suoria yhteyksiä laitteiden välillä.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Näytä sijainnit aikajanalla</string>
     <string name="show_location_traces">Näytä jäljet</string>

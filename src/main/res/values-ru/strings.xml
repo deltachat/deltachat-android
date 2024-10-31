@@ -472,9 +472,6 @@
     <string name="send_file_to">Отправить \"%1$s\" …</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Отправить сообщение…</string>
-    <string name="enable_realtime">Каналы Webxdc в реальном времени</string>
-    <string name="enable_realtime_explain">Активировать Webxdc API реального времени для создания прямого подключения между устройствами.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Показать местоположения с интервалом времени</string>
     <string name="show_location_traces">Показывать маршруты</string>

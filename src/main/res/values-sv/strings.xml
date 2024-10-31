@@ -433,9 +433,6 @@
     <string name="send_file_to">Skicka \"%1$s\" till...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Skicka meddelande till...</string>
-    <string name="enable_realtime">Realtids Webxdc-kanaler</string>
-    <string name="enable_realtime_explain">Aktivera Webxtc realtids-API för att skapa direktanslutningar mellan enheter.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Visa platser inom tidsramen</string>
     <string name="show_location_traces">Visa spår</string>

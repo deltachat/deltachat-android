@@ -430,9 +430,6 @@
     <string name="send_file_to">发送“%1$s\"到...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">发送消息到...</string>
-    <string name="enable_realtime">实时 Webxdc 频道</string>
-    <string name="enable_realtime_explain">启用 Webxdc 实时 API 来创建设备间的直接连接</string>
-
     <!-- map -->
     <string name="filter_map_on_time">显示时间范围内的位置</string>
     <string name="show_location_traces">显示轨迹</string>

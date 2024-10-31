@@ -446,9 +446,6 @@
     <string name="send_file_to">“%1$s” versturen naar…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Bericht versturen naar…</string>
-    <string name="enable_realtime">Live-webxdckanalen</string>
-    <string name="enable_realtime_explain">Maak gebruik van live-api\'s van Webxdc om directe verbindingen tussen apparaten op te zetten.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Locaties tonen in tijdsbeeld</string>
     <string name="show_location_traces">Sporen tonen</string>
