@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v1.48.2
+## v1.48.3
 2024-10
 
 * new Proxy settings screen available at "Advanced / Proxy"
@@ -10,6 +10,8 @@
 * scan Proxies' QR code and use them
 * make Proxy URLs inside Delta Chat tappable
 * open Delta Chat when tapping Proxy URLs in other apps
+* support for realtime webxdc apps moved out of experimental and enabled by default
+* realtime webxdc apps can be disabled at "Settings / Advanced"
 * "New Contact / Link" button to view, share or copy the invite line
 * "New Contact / Scan" button to easier access the scanner functionality
 * open "New Contact" scan/show activities directly, do not try to be too smart and open the last active tab
@@ -44,8 +46,10 @@
 * assign messages to ad-hoc group with matching name and members
 * use stricter TLS checks for HTTPS downloads (images in HTML mails, Autoconfig)
 * improve logging for failed QR code scans, AEAP, Autocrypt, notification permissions and sending errors
+* improve logging of multi account setup (log account ID)
 * show more context for the "Cannot establish guaranteed..." info message
 * show file name in "Message Info"
+* show root SMTP connection failure in connectivity view
 * fix: Sort received outgoing message down if it's fresher than all non fresh messages
 * fix: avoid app being killed when processing a PUSH notification
 * fix crash when refreshing avatar
@@ -68,8 +72,9 @@
 * fix warning about wrong password
 * fix app getting stale when receiving a PUSH notifications takes longer
 * fix app getting stale on network changes
+* fix: skip IDLE if we got unsolicited FETCH
 * update translations and local help
-* update to core 1.148.5
+* update to core 1.148.6
 
 
 ## v1.46.14
