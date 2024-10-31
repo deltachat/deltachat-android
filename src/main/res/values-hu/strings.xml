@@ -621,10 +621,15 @@
     <string name="proxy_use_proxy">Proxy használata</string>
     <string name="proxy_add">Proxy hozzáadása</string>
     <string name="proxy_add_explain">Támogatott proxytípusok: HTTP(S), SOCKS5 és ShadowSOCKS</string>
+    <string name="proxy_add_url_hint">Adja meg a proxy hivatkozását</string>
+    <string name="proxy_invalid">Érvénytelen vagy nem támogatott proxy</string>
     <string name="proxy_list_header">Mentett proxyk</string>
     <string name="proxy_delete">Proxy törlése</string>
     <string name="proxy_delete_explain">Biztosan törli a következőt: „%1$s”?</string>
     <string name="proxy_use_proxy_confirm">Biztosan használni akarja a következő proxyt: „%1$s”?</string>
+    <string name="proxy_share_explain">Az ismerősei a QR-kód beolvasásával hozzáadhatják ezt a proxyt.</string>
+    <string name="proxy_share_link">Hivatkozás megosztása</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">SOCKS5 használata</string>
@@ -649,6 +654,9 @@
     <string name="accept_invalid_certificates">Érvénytelen tanúsítványok elfogadása</string>
     <string name="switch_account">Profilváltás</string>
     <string name="add_account">Profil hozzáadása</string>
+    <string name="profile_tag">Privát címke</string>
+    <string name="profile_tag_hint">Például: „Munka”, „Család”</string>
+    <string name="profile_tag_explain">A címke csak az Ön számára jelenik meg; segít megkülönböztetni a profiljait.</string>
     <string name="delete_account">Profil törlése</string>
     <string name="delete_account_ask">Biztosan törölni szeretné a profiladatait?</string>
     <string name="delete_account_explain_with_name">A(z) „%s” nevű profilhoz tartozó mindet adat ezen az eszközön törölve lesz,  beleértve a végpontok közötti titkosítás beállításait, a névjegyeket, a csevegéseket, az üzeneteket és a médiát. Ez a művelet nem vonható vissza. </string>
