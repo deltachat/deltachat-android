@@ -48,7 +48,8 @@ the following steps are done in a PR called `prep-VERSION` (no leading "v"):
 6. build APKs:
    a) generate debug APK at "Build / Build Bundle(s)/APK / Build APK(s)"  
    b) generate release APK at "Build / Generate Signed Bundle or APK",
-      select "APK", add keys, flavor `gplayRelease`
+      select "APK", add keys, flavor `gplayRelease`.
+      this APK will go to the stores and is located at `gplay/release`
 
 
 ## Push Test Releases
@@ -79,8 +80,8 @@ only afterwards, push the APK to stores. **consider a blog post.**
 
 on <https://play.google.com/apps/publish/>:
 
-9. a) open "Delta Chat/Release/Production"
-      then "Create new release" and upload APK from above  
+9. a) open "Delta Chat / Test and release / Production"
+      then "Create new release" and upload APK from above
    b) fill out "Release details/Release notes" (500 chars), add the line
       "These features will roll out over the coming days. Thanks for using Delta Chat!";
       release name should be default ("123 (1.2.3)")  
