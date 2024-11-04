@@ -31,7 +31,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -225,9 +224,12 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             authMethod.setSelection(sel);
             expandAdvanced = expandAdvanced || sel != 0;
 
-            int certCheckFlags = DcHelper.getInt(this, "imap_certificate_checks");
-            certCheck.setSelection(certCheckFlags);
-            expandAdvanced = expandAdvanced || certCheckFlags != 0;
+            int imapCertificateChecks = DcHelper.getInt(this, "imap_certificate_checks");
+            if (imapCertificateChecks == 3) {
+              imapCertificateChecks = 2; // 3 is a deprecated alias for 2
+            }
+            certCheck.setSelection(imapCertificateChecks);
+            expandAdvanced = expandAdvanced || imapCertificateChecks != 0;
         } else if (getIntent() != null && getIntent().getBundleExtra(ACCOUNT_DATA) != null) {
           // Companion app might have sent account data
           Bundle b = getIntent().getBundleExtra(ACCOUNT_DATA);
