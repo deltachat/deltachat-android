@@ -66,6 +66,10 @@
                android:resource="@xml/automotive_app_desc" />
     -->
 
+    <!-- Opt out of metrics collection: https://developer.android.com/develop/ui/views/layout/webapps/managing-webview#metrics -->
+    <meta-data android:name="android.webkit.WebView.MetricsOptOut"
+               android:value="true" />
+
     <activity android:name=".ShareActivity"
               android:theme="@android:style/Theme.Translucent.NoTitleBar"
               android:excludeFromRecents="true"
