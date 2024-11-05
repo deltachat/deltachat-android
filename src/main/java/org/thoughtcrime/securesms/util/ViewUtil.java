@@ -38,6 +38,7 @@ import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.AbsSpinner;
 import android.widget.TextView;
 
 import com.b44t.messenger.util.concurrent.ListenableFuture;
@@ -266,5 +267,15 @@ public class ViewUtil {
       }
       return result;
     }
+  }
+
+  // Checks if a selection is valid for a given Spinner view.
+  // Returns given selection if valid.
+  // Otherwise, to avoid ArrayIndexOutOfBoundsException, 0 is returned, assuming to refer to a good default.
+  public static int checkBounds(int selection, AbsSpinner view) {
+    if (selection < 0 || selection >= view.getCount()) {
+      return 0;
+    }
+    return selection;
   }
 }
