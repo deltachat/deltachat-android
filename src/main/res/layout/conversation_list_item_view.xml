@@ -51,7 +51,7 @@
                 long word and the chat is muted, then the long word is not shown at all
                 (instead of using `…`). That's why we use android:singleLine="true" -->
 
-            <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

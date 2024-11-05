@@ -25,7 +25,7 @@
                   android:paddingEnd="16dp"
                   android:orientation="vertical">
 
-        <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

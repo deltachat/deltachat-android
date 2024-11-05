@@ -12,7 +12,7 @@
     android:paddingEnd="7dp"
     android:gravity="center">
 
-  <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+  <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/reactions_pill_emoji"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 import androidx.emoji2.emojipicker.EmojiPickerView;
 
@@ -17,15 +18,14 @@ import com.b44t.messenger.rpc.Reactions;
 import com.b44t.messenger.rpc.Rpc;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Map;
 
 public class AddReactionView extends LinearLayout {
-    private EmojiTextView [] defaultReactionViews;
-    private EmojiTextView anyReactionView;
+    private AppCompatTextView[] defaultReactionViews;
+    private AppCompatTextView anyReactionView;
     private boolean anyReactionClearsReaction;
     private Context context;
     private DcContext dcContext;
@@ -46,7 +46,7 @@ public class AddReactionView extends LinearLayout {
           context = getContext();
           dcContext = DcHelper.getContext(context);
           rpc = DcHelper.getRpc(getContext());
-          defaultReactionViews = new EmojiTextView[]{
+          defaultReactionViews = new AppCompatTextView[]{
               findViewById(R.id.reaction_0),
               findViewById(R.id.reaction_1),
               findViewById(R.id.reaction_2),
@@ -79,7 +79,7 @@ public class AddReactionView extends LinearLayout {
 
         final String existingReaction = getSelfReaction();
         boolean existingHilited = false;
-        for (EmojiTextView defaultReactionView : defaultReactionViews) {
+        for (AppCompatTextView defaultReactionView : defaultReactionViews) {
             if (defaultReactionView.getText().toString().equals(existingReaction)) {
                 defaultReactionView.setBackground(ContextCompat.getDrawable(context, R.drawable.reaction_pill_background_selected));
                 existingHilited = true;

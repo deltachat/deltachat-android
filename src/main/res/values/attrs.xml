@@ -125,13 +125,6 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="EmojiTextView">
-        <attr name="scaleEmojis" format="boolean" />
-        <attr name="emoji_maxLength" format="integer" />
-        <attr name="emoji_forceCustom" format="boolean" />
-        <attr name="createInBackground" format="boolean" />
-    </declare-styleable>
-
     <declare-styleable name="ColorPreference">
         <attr name="itemLayout" format="reference" />
         <attr name="choices" format="reference" />

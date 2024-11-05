@@ -84,7 +84,7 @@
                 android:visibility="gone"
                 tools:visibility="visible">
 
-                <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/group_message_sender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
                 android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
                 android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
 
-            <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/conversation_item_body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -175,7 +175,6 @@
                 android:textColor="?conversation_item_incoming_text_primary_color"
                 android:textColorLink="?conversation_item_incoming_text_primary_color"
                 android:importantForAccessibility="no"
-                app:scaleEmojis="true"
                 tools:text="Mango pickle lorem ipsum"/>
 
             <Button

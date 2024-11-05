@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -18,7 +19,6 @@ import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarImageView;
-import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -102,7 +102,7 @@ public class SelectedContactsAdapter extends BaseAdapter {
     }
 
     AvatarImageView avatar = v.findViewById(R.id.contact_photo_image);
-    EmojiTextView   name   = v.findViewById(R.id.name);
+    AppCompatTextView name = v.findViewById(R.id.name);
     TextView        phone  = v.findViewById(R.id.phone);
     ImageButton     delete = v.findViewById(R.id.delete);
 

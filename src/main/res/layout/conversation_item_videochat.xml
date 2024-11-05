@@ -65,7 +65,7 @@
 
         </LinearLayout>
 
-        <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/conversation_update_body"
             style="@style/Delta.Text.UpdateHeader"
             android:layout_width="wrap_content"
