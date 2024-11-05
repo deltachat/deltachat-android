@@ -84,7 +84,8 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
             } else if (permille < 1000) {
                 percent = permille/10;
                 percentMax = 100;
-                statusLineText = getString(R.string.transferring) + String.format(Util.getLocale(), " %d%%", percent);
+                String formattedPercent = percent > 0 ? String.format(Util.getLocale(), " %d%%", percent) : "";
+                statusLineText = getString(R.string.transferring) + formattedPercent;
                 hideSameNetworkHint = true;
             } else if (permille == 1000) {
                 getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_SUCCESS);
