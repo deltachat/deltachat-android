@@ -141,7 +141,7 @@
                 android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
                 android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
 
-            <org.thoughtcrime.securesms.components.emoji.AutoScaledEmojiTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/conversation_item_body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
