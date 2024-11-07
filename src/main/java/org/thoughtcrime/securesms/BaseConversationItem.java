@@ -1,10 +1,13 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
+import android.text.InputType;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -116,6 +119,8 @@ public abstract class BaseConversationItem extends LinearLayout
       if (!shouldInterceptClicks(messageRecord) && parent != null) {
         if (batchSelected.isEmpty() && Util.isTouchExplorationEnabled(context)) {
           BaseConversationItem.this.onAccessibilityClick();
+        } else if (Util.equals(messageRecord.getText(), "about:config") && dcChat.isSelfTalk()) {
+          showAboutConfig();
         }
         parent.onClick(v);
       } else if (messageRecord.isFailed()) {
@@ -137,5 +142,63 @@ public abstract class BaseConversationItem extends LinearLayout
         DcHelper.showInvalidUnencryptedDialog(context);
       }
     }
+  }
+
+  private void showAboutConfig() {
+    final EditText input = new EditText(context);
+    input.setInputType(InputType.TYPE_CLASS_TEXT);
+
+    new AlertDialog.Builder(context)
+            .setView(input)
+            .setTitle("Which config do you want to see?")
+            .setPositiveButton(R.string.ok, (d, i) -> {
+              String config = input.getText().toString();
+              if (Util.equals(config, DcHelper.CONFIG_MAIL_PASSWORD)
+                      || Util.equals(config, DcHelper.CONFIG_SEND_PASSWORD)
+                      || Util.equals(config, "configured_mail_pw")
+                      || Util.equals(config, "configured_send_pw")
+                      || Util.equals(config, "proxy_url")
+                      || Util.equals(config, "socks5_password"))
+              {
+                Toast.makeText(context, "Not showing possibly sensitive config", Toast.LENGTH_SHORT).show();
+              } else {
+                showAboutConfig();
+              }
+            })
+            .setNeutralButton(R.string.cancel, (d, i) -> {})
+            .setCancelable(true)
+            .show();
+    input.requestFocus();
+  }
+
+  private void showAboutConfig(String config) {
+    new AlertDialog.Builder(context)
+            .setTitle(config)
+            .setMessage("The current value is: '" + dcContext.getConfig(config) + "'.\n\nWarning: Only change it if you know what you are doing!")
+            .setPositiveButton("Change", (d, i) -> showAboutConfigChangeField(config))
+            .setNeutralButton(R.string.cancel, (d, i) -> {})
+            .setCancelable(true)
+            .show();
+  }
+
+  private void showAboutConfigChangeField(String config) {
+    final EditText input = new EditText(context);
+    input.setInputType(InputType.TYPE_CLASS_TEXT);
+
+    new AlertDialog.Builder(context)
+            .setTitle("Change " + config + " (current: '" + dcContext.getConfig(config) + "')")
+            .setView(input)
+            .setPositiveButton("Confirm", (d, i) -> {
+              String oldConfig = dcContext.getConfig(config);
+              dcContext.setConfig(config, input.getText().toString());
+
+              DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+              msg.setText("You manually changed config " + config + " from '" + oldConfig + "' to '" + dcContext.getConfig(config) + "'.");
+              dcContext.addDeviceMsg(null, msg);
+            })
+            .setNeutralButton(R.string.cancel, (d, i) -> {})
+            .setCancelable(true)
+            .show();
+    input.requestFocus();
   }
 }
