@@ -117,7 +117,7 @@ public abstract class BaseConversationItem extends LinearLayout
 
     public void onClick(View v) {
       if (!shouldInterceptClicks(messageRecord) && parent != null) {
-        if (batchSelected.isEmpty() && Util.isTouchExplorationEnabled(context)) {
+        if (batchSelected.isEmpty() && Util.isTouchExplorationEnabled(context) && BuildConfig.DEBUG) {
           BaseConversationItem.this.onAccessibilityClick();
         } else if (Util.equals(messageRecord.getText(), "about:config") && dcChat.isSelfTalk()) {
           showAboutConfig();
