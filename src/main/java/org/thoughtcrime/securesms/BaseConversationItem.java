@@ -162,7 +162,7 @@ public abstract class BaseConversationItem extends LinearLayout
               {
                 Toast.makeText(context, "Not showing possibly sensitive config", Toast.LENGTH_SHORT).show();
               } else {
-                showAboutConfig();
+                aboutConfig_ViewConfig(config);
               }
             })
             .setNeutralButton(R.string.cancel, (d, i) -> {})
@@ -171,17 +171,17 @@ public abstract class BaseConversationItem extends LinearLayout
     input.requestFocus();
   }
 
-  private void showAboutConfig(String config) {
+  private void aboutConfig_ViewConfig(String config) {
     new AlertDialog.Builder(context)
             .setTitle(config)
             .setMessage("The current value is: '" + dcContext.getConfig(config) + "'.\n\nWarning: Only change it if you know what you are doing!")
-            .setPositiveButton("Change", (d, i) -> showAboutConfigChangeField(config))
+            .setPositiveButton("Change", (d, i) -> aboutConfig_ChangeConfig(config))
             .setNeutralButton(R.string.cancel, (d, i) -> {})
             .setCancelable(true)
             .show();
   }
 
-  private void showAboutConfigChangeField(String config) {
+  private void aboutConfig_ChangeConfig(String config) {
     final EditText input = new EditText(context);
     input.setInputType(InputType.TYPE_CLASS_TEXT);
 
