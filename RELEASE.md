@@ -112,9 +112,8 @@ on <https://developer.amazon.com/dashboard>:
 12. a) for "Delta Chat", select "Add upcoming version" on the left
     b) at "Step 1 / Existing file(s)" hit "Replace", upload the APK from above
     c) on the "Step 1" page, add "Release notes" from CHANGELOG.md, hit "Next"
-    d) on "Step 2" page: "Does your app collect or transfer user data to third parties?" -> No, then "Next"
-    e) on "Step 3" page: "Next"
-    f) on "Step 4" page: "Submit app"
+    d) on "Step 2" and "Step 3" pages, hit "Next"
+    e) on "Step 4" page: "Submit app"
 
 
 ## Release on Huawei AppGallery
