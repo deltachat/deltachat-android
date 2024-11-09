@@ -85,10 +85,15 @@ on <https://play.google.com/apps/publish/>:
    b) fill out "Release details/Release notes" (500 chars), add the line
       "These features will roll out over the coming days. Thanks for using Delta Chat!";
       release name should be default ("123 (1.2.3)")  
-   c) click "Next", set "Rollout Percentage" to 1% (later 2%, 5%, 10%, 20%, 50%, 100%),
-      click "Save"
+   c) click "Next", set "Rollout Percentage" to 50%, click "Save"
    d) Go to "Publishing Overview", "Managed publishing" is usually off;
       click "Send change for review", confirm
+
+2 days later, change "Rollout Percentage" to 99%. Two more days later to 100%.
+Rollout is anyways slower in practise, however,
+only as long as we do not enter 100%, we can retract the version
+(Once we reach 100%, we have to submit a new version for approval.
+During these up to 4 days, sometimes longer, we cannot do anything on existing rollout)
 
 
 ## Tag for F-Droid and create Github release
