@@ -68,9 +68,9 @@ fi
 unset RUSTFLAGS
 
 TOOLCHAIN="$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/$NDK_HOST_TAG"
-export CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER="$TOOLCHAIN/bin/armv7a-linux-androideabi16-clang"
+export CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER="$TOOLCHAIN/bin/armv7a-linux-androideabi21-clang"
 export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/aarch64-linux-android21-clang"
-export CARGO_TARGET_I686_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/i686-linux-android16-clang"
+export CARGO_TARGET_I686_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/i686-linux-android21-clang"
 export CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/x86_64-linux-android21-clang"
 
 export RUSTUP_TOOLCHAIN=$(cat "$(dirname "$0")/rust-toolchain")
@@ -116,7 +116,7 @@ unset CPATH
 
 if test -z $1 || test $1 = armeabi-v7a; then
     echo "-- cross compiling to armv7-linux-androideabi (arm) --"
-    TARGET_CC="$TOOLCHAIN/bin/armv7a-linux-androideabi16-clang" \
+    TARGET_CC="$TOOLCHAIN/bin/armv7a-linux-androideabi21-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
     cargo build $RELEASEFLAG --target armv7-linux-androideabi -p deltachat_ffi --features jsonrpc
@@ -134,7 +134,7 @@ fi
 
 if test -z $1 || test $1 = x86; then
     echo "-- cross compiling to i686-linux-android (x86) --"
-    TARGET_CC="$TOOLCHAIN/bin/i686-linux-android16-clang" \
+    TARGET_CC="$TOOLCHAIN/bin/i686-linux-android21-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
     cargo build $RELEASEFLAG --target i686-linux-android -p deltachat_ffi --features jsonrpc

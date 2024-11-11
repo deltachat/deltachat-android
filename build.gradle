@@ -23,7 +23,7 @@ android {
     //   > Task :stripFatDebugDebugSymbols
     //   Unable to strip the following libraries, packaging them as they are: libanimation-decoder-gif.so, libnative-utils.so.
     // See <https://issuetracker.google.com/issues/237187538> for details.
-    ndkVersion "23.2.8568313"
+    ndkVersion "27.0.12077973"
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {

@@ -20,7 +20,7 @@
             ndk-bundle
             platform-tools
             platforms-android-34
-            ndk-23-2-8568313
+            ndk-27-0-11902837
           ]);
         rust-version = pkgs.lib.removeSuffix "\n"
           (builtins.readFile ./scripts/rust-toolchain);
@@ -28,7 +28,7 @@
         devShells.default = pkgs.mkShell {
           ANDROID_SDK_ROOT = "${android-sdk}/share/android-sdk";
           ANDROID_NDK_ROOT =
-            "${android-sdk}/share/android-sdk/ndk/23.2.8568313";
+            "${android-sdk}/share/android-sdk/ndk/27.0.11902837";
           buildInputs = [
             android-sdk
             pkgs.openjdk17
