@@ -27,7 +27,6 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventEmitter;
 import com.b44t.messenger.rpc.Rpc;
 
-import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -84,11 +83,6 @@ public class ApplicationContext extends MultiDexApplication {
     // LeakCanary.install(this);
 
     Log.i("DeltaChat", "++++++++++++++++++ ApplicationContext.onCreate() ++++++++++++++++++");
-
-    // The first call to `getInstance` takes about 100ms-300ms, so, do it on a background thread
-    Thread t = new Thread(() -> EmojiProvider.getInstance(this), "InitEmojiProviderThread");
-    t.setPriority(Thread.MIN_PRIORITY);
-    t.start();
 
     System.loadLibrary("native-utils");
 

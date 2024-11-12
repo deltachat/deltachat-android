@@ -39,9 +39,6 @@
 
     <dimen name="gallery_thumbnail_radius">1dp</dimen>
 
-    <dimen name="media_keyboard_provider_icon_padding">5dp</dimen>
-    <dimen name="media_keyboard_provider_icon_margin">4dp</dimen>
-
     <dimen name="recording_voice_lock_target">-150dp</dimen>
 
     <dimen name="conversation_individual_right_gutter">12dp</dimen>

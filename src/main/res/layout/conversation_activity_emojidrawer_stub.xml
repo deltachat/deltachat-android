@@ -4,4 +4,15 @@
         android:id="@+id/emoji_drawer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:visibility="gone">
+
+  <androidx.emoji2.emojipicker.EmojiPickerView
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      android:id="@+id/emoji_picker"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="?emoji_drawer_background"
+      app:emojiGridColumns="9"/>
+
+</org.thoughtcrime.securesms.components.emoji.MediaKeyboard>

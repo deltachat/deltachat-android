@@ -28,7 +28,7 @@
           android:layout_height="wrap_content"
           android:layout_marginLeft="10dp">
 
-        <org.thoughtcrime.securesms.components.emoji.EmojiEditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/name_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

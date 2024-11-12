@@ -9,7 +9,6 @@ import android.os.Build;
 import android.text.format.DateUtils;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
@@ -29,14 +28,12 @@ import com.b44t.messenger.util.concurrent.SettableFuture;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.animation.AnimationCompleteListener;
-import org.thoughtcrime.securesms.components.emoji.EmojiKeyboardProvider;
 import org.thoughtcrime.securesms.components.emoji.EmojiToggle;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.QuoteModel;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
@@ -46,9 +43,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class InputPanel extends ConstraintLayout
-    implements MicrophoneRecorderView.Listener,
-               KeyboardAwareLinearLayout.OnKeyboardShownListener,
-               EmojiKeyboardProvider.EmojiEventListener
+  implements MicrophoneRecorderView.Listener,
+             KeyboardAwareLinearLayout.OnKeyboardShownListener,
+             MediaKeyboard.MediaKeyboardListener
 {
 
   private static final String TAG = InputPanel.class.getSimpleName();
@@ -56,7 +53,7 @@ public class InputPanel extends ConstraintLayout
   private static final int FADE_TIME = 150;
 
   private QuoteView       quoteView;
-  private EmojiToggle     mediaKeyboard;
+  private EmojiToggle     emojiToggle;
   private ComposeText     composeText;
   private View            quickCameraToggle;
   private View            quickAudioToggle;
@@ -70,7 +67,6 @@ public class InputPanel extends ConstraintLayout
   private ValueAnimator quoteAnimator;
 
   private @Nullable Listener listener;
-  private           boolean  emojiVisible;
 
   public InputPanel(Context context) {
     super(context);
@@ -92,7 +88,7 @@ public class InputPanel extends ConstraintLayout
     View quoteDismiss           = findViewById(R.id.quote_dismiss);
 
     this.quoteView              = findViewById(R.id.quote_view);
-    this.mediaKeyboard          = findViewById(R.id.emoji_toggle);
+    this.emojiToggle            = findViewById(R.id.emoji_toggle);
     this.composeText            = findViewById(R.id.embedded_text_editor);
     this.quickCameraToggle      = findViewById(R.id.quick_camera_toggle);
     this.quickAudioToggle       = findViewById(R.id.quick_audio_toggle);
@@ -106,21 +102,13 @@ public class InputPanel extends ConstraintLayout
 
     this.recordLockCancel.setOnClickListener(v -> microphoneRecorderView.cancelAction());
 
-    if (Prefs.isSystemEmojiPreferred(getContext())) {
-      mediaKeyboard.setVisibility(View.GONE);
-      emojiVisible = false;
-    } else {
-      mediaKeyboard.setVisibility(View.VISIBLE);
-      emojiVisible = true;
-    }
-
     quoteDismiss.setOnClickListener(v -> clearQuote());
   }
 
   public void setListener(final @NonNull Listener listener) {
     this.listener = listener;
 
-    mediaKeyboard.setOnClickListener(v -> listener.onEmojiToggle());
+    emojiToggle.setOnClickListener(v -> listener.onEmojiToggle());
   }
 
   public void setMediaListener(@NonNull MediaListener listener) {
@@ -207,7 +195,7 @@ public class InputPanel extends ConstraintLayout
   }
 
   public void setMediaKeyboard(@NonNull MediaKeyboard mediaKeyboard) {
-    this.mediaKeyboard.attach(mediaKeyboard);
+    mediaKeyboard.setKeyboardListener(this);
   }
 
   @Override
@@ -221,7 +209,7 @@ public class InputPanel extends ConstraintLayout
     recordTime.display();
     slideToCancel.display();
 
-    if (emojiVisible) ViewUtil.fadeOut(mediaKeyboard, FADE_TIME, View.INVISIBLE);
+    ViewUtil.fadeOut(emojiToggle, FADE_TIME, View.INVISIBLE);
     ViewUtil.fadeOut(composeText, FADE_TIME, View.INVISIBLE);
     ViewUtil.fadeOut(quickCameraToggle, FADE_TIME, View.INVISIBLE);
     ViewUtil.fadeOut(quickAudioToggle, FADE_TIME, View.INVISIBLE);
@@ -276,7 +264,7 @@ public class InputPanel extends ConstraintLayout
 
   public void setEnabled(boolean enabled) {
     composeText.setEnabled(enabled);
-    mediaKeyboard.setEnabled(enabled);
+    emojiToggle.setEnabled(enabled);
     quickAudioToggle.setEnabled(enabled);
     quickCameraToggle.setEnabled(enabled);
   }
@@ -290,7 +278,7 @@ public class InputPanel extends ConstraintLayout
     future.addListener(new AssertedSuccessListener<Void>() {
       @Override
       public void onSuccess(Void result) {
-        if (emojiVisible) ViewUtil.fadeIn(mediaKeyboard, FADE_TIME);
+        ViewUtil.fadeIn(emojiToggle, FADE_TIME);
         ViewUtil.fadeIn(composeText, FADE_TIME);
         ViewUtil.fadeIn(quickCameraToggle, FADE_TIME);
         ViewUtil.fadeIn(quickAudioToggle, FADE_TIME);
@@ -304,17 +292,7 @@ public class InputPanel extends ConstraintLayout
 
   @Override
   public void onKeyboardShown() {
-    mediaKeyboard.setToMedia();
-  }
-
-  @Override
-  public void onKeyEvent(KeyEvent keyEvent) {
-    composeText.dispatchKeyEvent(keyEvent);
-  }
-
-  @Override
-  public void onEmojiSelected(String emoji) {
-    composeText.insertEmoji(emoji);
+    emojiToggle.setToMedia();
   }
 
   public boolean isRecordingInLockedMode() {
@@ -323,6 +301,25 @@ public class InputPanel extends ConstraintLayout
 
   public void releaseRecordingLock() {
     microphoneRecorderView.unlockAction();
+  }
+
+  @Override
+  public void onShown() {
+    emojiToggle.setToIme();
+  }
+
+  @Override
+  public void onHidden() {
+    emojiToggle.setToMedia();
+  }
+
+  @Override
+  public void onEmojiPicked(String emoji) {
+    final int start = composeText.getSelectionStart();
+    final int end   = composeText.getSelectionEnd();
+
+    composeText.getText().replace(Math.min(start, end), Math.max(start, end), emoji);
+    composeText.setSelection(start + emoji.length());
   }
 
   public interface Listener {

@@ -23,7 +23,7 @@
             android:layout_marginEnd="10dp"
             android:contentDescription="@string/group_avatar" />
 
-        <org.thoughtcrime.securesms.components.emoji.EmojiEditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/group_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
             android:inputType="textAutoCorrect"
             android:hint="@string/group_name">
           <requestFocus />
-        </org.thoughtcrime.securesms.components.emoji.EmojiEditText>
+        </androidx.appcompat.widget.AppCompatEditText>
     </LinearLayout>
 
     <TextView

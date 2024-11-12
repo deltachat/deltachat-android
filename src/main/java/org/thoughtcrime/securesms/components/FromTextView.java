@@ -2,6 +2,8 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
 import android.graphics.Typeface;
+
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.view.ViewCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -14,12 +16,11 @@ import android.text.style.TypefaceSpan;
 import android.util.AttributeSet;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.ResUtil;
 import org.thoughtcrime.securesms.util.spans.CenterAlignedRelativeSizeSpan;
 
-public class FromTextView extends EmojiTextView {
+public class FromTextView extends AppCompatTextView {
 
   private static final String TAG = FromTextView.class.getSimpleName();
 

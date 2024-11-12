@@ -2,14 +2,14 @@ package org.thoughtcrime.securesms.components.emoji;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatImageButton;
 import android.util.AttributeSet;
+
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.ResUtil;
 
-public class EmojiToggle extends AppCompatImageButton implements MediaKeyboard.MediaKeyboardListener {
+public class EmojiToggle extends AppCompatImageButton {
 
   private Drawable emojiToggle;
 //  private Drawable stickerToggle;
@@ -50,10 +50,6 @@ public class EmojiToggle extends AppCompatImageButton implements MediaKeyboard.M
     setToMedia();
   }
 
-  public void attach(MediaKeyboard drawer) {
-    drawer.setKeyboardListener(this);
-  }
-
   public void setStickerMode(boolean stickerMode) {
     this.mediaToggle = /*stickerMode ? stickerToggle :*/ emojiToggle;
 
@@ -65,21 +61,5 @@ public class EmojiToggle extends AppCompatImageButton implements MediaKeyboard.M
   public boolean isStickerMode() {
     //return this.mediaToggle == stickerToggle;
     return false;
-  }
-
-  @Override public void onShown() {
-    setToIme();
-  }
-
-  @Override public void onHidden() {
-    setToMedia();
-  }
-
-  @Override
-  public void onKeyboardProviderChanged(@NonNull MediaKeyboardProvider provider) {
-    setStickerMode(false);
-    //setStickerMode(provider instanceof StickerKeyboardProvider);
-    /*TextSecurePreferences.setMediaKeyboardMode(getContext(), (provider instanceof StickerKeyboardProvider) ? TextSecurePreferences.MediaKeyboardMode.STICKER
-                                                                                                           : TextSecurePreferences.MediaKeyboardMode.EMOJI);*/
   }
 }

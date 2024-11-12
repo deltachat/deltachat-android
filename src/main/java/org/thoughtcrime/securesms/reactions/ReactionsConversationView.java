@@ -11,12 +11,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
 import com.b44t.messenger.rpc.Reaction;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.ArrayList;
@@ -93,7 +93,7 @@ public class ReactionsConversationView extends LinearLayout {
 
   private static View buildPill(@NonNull Context context, @NonNull ViewGroup parent, @NonNull Reaction reaction) {
     View           root      = LayoutInflater.from(context).inflate(R.layout.reactions_pill, parent, false);
-    EmojiTextView  emojiView = root.findViewById(R.id.reactions_pill_emoji);
+    AppCompatTextView emojiView = root.findViewById(R.id.reactions_pill_emoji);
     TextView       countView = root.findViewById(R.id.reactions_pill_count);
     View           spacer    = root.findViewById(R.id.reactions_pill_spacer);
 

@@ -35,7 +35,7 @@
                   android:paddingEnd="16dp"
                   android:orientation="vertical">
 
-        <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,13 +48,14 @@
 
     </LinearLayout>
 
-    <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/reaction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="22dp"
         android:fontFamily="sans-serif"
+        android:textColor="?attr/emoji_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
