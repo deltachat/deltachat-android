@@ -315,7 +315,11 @@ public class InputPanel extends ConstraintLayout
 
   @Override
   public void onEmojiPicked(String emoji) {
-    composeText.append(emoji);
+    final int start = composeText.getSelectionStart();
+    final int end   = composeText.getSelectionEnd();
+
+    composeText.getText().replace(Math.min(start, end), Math.max(start, end), emoji);
+    composeText.setSelection(start + emoji.length());
   }
 
   public interface Listener {
