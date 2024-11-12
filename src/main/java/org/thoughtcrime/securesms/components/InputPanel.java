@@ -88,7 +88,7 @@ public class InputPanel extends ConstraintLayout
     View quoteDismiss           = findViewById(R.id.quote_dismiss);
 
     this.quoteView              = findViewById(R.id.quote_view);
-    this.emojiToggle          = findViewById(R.id.emoji_toggle);
+    this.emojiToggle            = findViewById(R.id.emoji_toggle);
     this.composeText            = findViewById(R.id.embedded_text_editor);
     this.quickCameraToggle      = findViewById(R.id.quick_camera_toggle);
     this.quickAudioToggle       = findViewById(R.id.quick_audio_toggle);
