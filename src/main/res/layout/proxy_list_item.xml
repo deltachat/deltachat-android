@@ -38,6 +38,22 @@
         android:gravity="center_vertical"
         >
 
+        <TextView
+            android:id="@+id/protocol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+            android:textAllCaps="true"
+            android:textColor="?attr/conversation_list_item_date_color"
+            android:background="@drawable/archived_indicator_background"
+            style="@style/Signal.Text.Caption"
+            tools:text="socks5"
+            />
+
       <ImageView
           android:id="@+id/checkmark"
           android:layout_width="wrap_content"
@@ -53,7 +69,6 @@
           android:id="@+id/status"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginEnd="5dp"
           android:singleLine="true"
           android:ellipsize="marquee"
           android:textAppearance="?android:attr/textAppearanceSmall"
@@ -61,21 +76,6 @@
           android:fontFamily="sans-serif-light"
           tools:text="@string/connectivity_connected"
           />
-
-        <TextView
-            android:id="@+id/protocol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="1dp"
-            android:paddingBottom="1dp"
-            android:textAllCaps="true"
-            android:textColor="?attr/conversation_list_item_date_color"
-            android:background="@drawable/archived_indicator_background"
-            style="@style/Signal.Text.Caption"
-            tools:text="socks5"
-            />
 
     </LinearLayout>
 
