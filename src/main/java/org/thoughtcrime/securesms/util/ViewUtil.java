@@ -31,6 +31,8 @@ import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +40,7 @@ import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.AbsSpinner;
 import android.widget.TextView;
 
 import com.b44t.messenger.util.concurrent.ListenableFuture;
@@ -46,6 +49,8 @@ import com.b44t.messenger.util.concurrent.SettableFuture;
 import org.thoughtcrime.securesms.util.views.Stub;
 
 public class ViewUtil {
+  private final static String TAG = ViewUtil.class.getSimpleName();
+
   @SuppressWarnings("deprecation")
   public static void setBackground(final @NonNull View v, final @Nullable Drawable drawable) {
     v.setBackground(drawable);
@@ -266,5 +271,16 @@ public class ViewUtil {
       }
       return result;
     }
+  }
+
+  // Checks if a selection is valid for a given Spinner view.
+  // Returns given selection if valid.
+  // Otherwise, to avoid ArrayIndexOutOfBoundsException, 0 is returned, assuming to refer to a good default.
+  public static int checkBounds(int selection, AbsSpinner view) {
+    if (selection < 0 || selection >= view.getCount()) {
+      Log.w(TAG, "index " + selection + " out of bounds of " + view.toString());
+      return 0;
+    }
+    return selection;
   }
 }
