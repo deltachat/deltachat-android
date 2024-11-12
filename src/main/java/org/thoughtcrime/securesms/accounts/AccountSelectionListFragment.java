@@ -168,11 +168,16 @@ public class AccountSelectionListFragment extends DialogFragment
     avatar.setAvatar(GlideApp.with(activity), recipient, false);
     nameView.setText(name);
     addrView.setText(contact.getAddr());
-    try {
-      sizeView.setText(Util.getPrettyFileSize(rpc.getAccountFileSize(accountId)));
-    } catch (RpcException e) {
-      e.printStackTrace();
-    }
+    Util.runOnAnyBackgroundThread(() -> {
+      try {
+        final int sizeBytes = rpc.getAccountFileSize(accountId);
+        Util.runOnMain(() -> {
+          sizeView.setText(Util.getPrettyFileSize(sizeBytes));
+        });
+      } catch (RpcException e) {
+        e.printStackTrace();
+      }
+    });
     description.setText(activity.getString(R.string.delete_account_explain_with_name, name));
 
     AlertDialog dialog = new AlertDialog.Builder(activity)
