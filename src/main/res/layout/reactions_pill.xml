@@ -12,7 +12,7 @@
     android:paddingEnd="7dp"
     android:gravity="center">
 
-  <!-- to avoid default transparency in text color that makes emoji transparent -->
+  <!-- android:textColor is set to avoid default transparency making emoji transparent -->
   <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/reactions_pill_emoji"
       android:layout_width="wrap_content"
