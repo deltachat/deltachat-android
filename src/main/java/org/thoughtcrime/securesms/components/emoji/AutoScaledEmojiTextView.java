@@ -47,10 +47,10 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
 
     
   private float getTextScale(String text) {
-    if (text.length() > 16) {
+    if (text.length() > 21) {
       return 1;
     }
-    int emojiCount = countGraphemes(text);
+    int emojiCount = countGraphemes(text, 8);
     if (emojiCount > 8) {
       return 1;
     }
@@ -66,7 +66,7 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
     return 1;
   }
 
-  public static int countGraphemes(String text) {
+  public static int countGraphemes(String text, int max) {
     // Create a BreakIterator for grapheme boundaries
     BreakIterator graphemeIterator = BreakIterator.getCharacterInstance(Locale.getDefault());
 
@@ -79,7 +79,7 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
     // Iterate over the text and count graphemes
     int start = graphemeIterator.first();
     for (int end = graphemeIterator.next(); end != BreakIterator.DONE; start = end, end = graphemeIterator.next()) {
-      graphemeCount++;
+      if (++graphemeCount > max) break;
     }
 
     return graphemeCount;
