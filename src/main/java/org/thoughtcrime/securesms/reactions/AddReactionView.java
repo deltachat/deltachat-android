@@ -105,7 +105,7 @@ public class AddReactionView extends LinearLayout {
         } else {
             x += offset;
         }
-        ViewUtil.setLeftMargin(this, x);
+        ViewUtil.setLeftMargin(this, Math.max(x, 0));
 
         int y = Math.max((int)parentView.getY() - offset, offset/2);
         ViewUtil.setTopMargin(this, y);
