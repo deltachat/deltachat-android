@@ -56,7 +56,6 @@ import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.QuoteView;
 import org.thoughtcrime.securesms.components.VcardView;
 import org.thoughtcrime.securesms.components.WebxdcView;
-import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
@@ -69,6 +68,7 @@ import org.thoughtcrime.securesms.mms.StickerSlide;
 import org.thoughtcrime.securesms.mms.VcardSlide;
 import org.thoughtcrime.securesms.reactions.ReactionsConversationView;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.Linkifier;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -400,7 +400,7 @@ public class ConversationItem extends BaseConversationItem
     else {
       SpannableString spannable = new SpannableString(text);
       if (batchSelected.isEmpty()) {
-        spannable = EmojiTextView.linkify(spannable);
+        spannable = Linkifier.linkify(spannable);
       }
       bodyText.setText(spannable);
       bodyText.setVisibility(View.VISIBLE);

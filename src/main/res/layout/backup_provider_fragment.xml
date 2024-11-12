@@ -5,7 +5,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:orientation="vertical">
 
-	<org.thoughtcrime.securesms.components.emoji.EmojiTextView
+	<androidx.appcompat.widget.AppCompatTextView
 		android:id="@+id/status_line"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"

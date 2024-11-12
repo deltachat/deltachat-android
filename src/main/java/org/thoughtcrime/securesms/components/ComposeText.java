@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.core.view.inputmethod.EditorInfoCompat;
 import androidx.core.view.inputmethod.InputConnectionCompat;
 import androidx.core.view.inputmethod.InputContentInfoCompat;
@@ -25,10 +26,9 @@ import android.view.inputmethod.InputConnection;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.TransportOption;
-import org.thoughtcrime.securesms.components.emoji.EmojiEditText;
 import org.thoughtcrime.securesms.util.Prefs;
 
-public class ComposeText extends EmojiEditText {
+public class ComposeText extends AppCompatEditText {
 
   private CharSequence    hint;
   private SpannableString subHint;

@@ -6,7 +6,7 @@
              android:focusable="true"
              android:padding="16dp">
 
-    <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+    <androidx.appcompat.widget.AppCompatTextView
               android:id="@+id/status_text"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"

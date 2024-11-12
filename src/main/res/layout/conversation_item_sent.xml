@@ -141,7 +141,7 @@
                 android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
                 android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
 
-            <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+            <org.thoughtcrime.securesms.components.emoji.AutoScaledEmojiTextView
                 android:id="@+id/conversation_item_body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -153,7 +153,6 @@
                 android:textColor="?conversation_item_outgoing_text_primary_color"
                 android:textColorLink="?conversation_item_outgoing_text_primary_color"
                 android:importantForAccessibility="no"
-                app:scaleEmojis="true"
                 tools:text="Mango pickle lorem ipsum"/>
 
             <Button

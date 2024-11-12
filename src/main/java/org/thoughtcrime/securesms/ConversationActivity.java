@@ -89,7 +89,6 @@ import org.thoughtcrime.securesms.components.SendButton;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.AttachmentDrawerListener;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.DrawerState;
-import org.thoughtcrime.securesms.components.emoji.EmojiKeyboardProvider;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -1277,7 +1276,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void onEmojiToggle() {
     if (!emojiDrawerStub.resolved()) {
-      initializeMediaKeyboardProviders(emojiDrawerStub.get(), false);
       inputPanel.setMediaKeyboard(emojiDrawerStub.get());
     }
 
@@ -1314,13 +1312,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
     msg.setFile(path, null);
     dcContext.sendMsg(chatId, msg);
-  }
-
-  private void initializeMediaKeyboardProviders(@NonNull MediaKeyboard mediaKeyboard, boolean stickersAvailable) {
-    boolean isSystemEmojiPreferred   = Prefs.isSystemEmojiPreferred(this);
-    if (!isSystemEmojiPreferred) {
-      mediaKeyboard.setProviders(0, new EmojiKeyboardProvider(this, inputPanel));
-    }
   }
 
   // Listeners

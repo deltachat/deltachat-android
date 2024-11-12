@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -32,8 +31,6 @@ import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.AvatarSelector;
 import org.thoughtcrime.securesms.components.InputAwareLayout;
-import org.thoughtcrime.securesms.components.emoji.EmojiKeyboardProvider;
-import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
@@ -51,7 +48,7 @@ import java.security.SecureRandom;
 
 
 @SuppressLint("StaticFieldLeak")
-public class CreateProfileActivity extends BaseActionBarActivity implements EmojiKeyboardProvider.EmojiEventListener {
+public class CreateProfileActivity extends BaseActionBarActivity {
 
   private static final String TAG = CreateProfileActivity.class.getSimpleName();
 
@@ -62,7 +59,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
   private InputAwareLayout       container;
   private ImageView              avatar;
   private EditText               name;
-  private MediaKeyboard          emojiDrawer;
   private EditText               statusView;
 
   private boolean fromWelcome;
@@ -87,7 +83,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     attachmentManager = new AttachmentManager(this, () -> {});
     avatarChanged = false;
     initializeResources();
-    initializeEmojiInput();
     initializeProfileName();
     initializeProfileAvatar();
     initializeStatusText();
@@ -123,15 +118,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
       updateProfile();
     } else {
       super.onBackPressed();
-    }
-  }
-
-  @Override
-  public void onConfigurationChanged(Configuration newConfig) {
-    super.onConfigurationChanged(newConfig);
-
-    if (container.getCurrentInput() == emojiDrawer) {
-      container.hideAttachedInput(true);
     }
   }
 
@@ -201,7 +187,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     TextView loginSuccessText              = ViewUtil.findById(this, R.id.login_success_text);
     this.avatar       = ViewUtil.findById(this, R.id.avatar);
     this.name         = ViewUtil.findById(this, R.id.name_text);
-    this.emojiDrawer  = ViewUtil.findById(this, R.id.emoji_drawer);
     this.container    = ViewUtil.findById(this, R.id.container);
     this.statusView   = ViewUtil.findById(this, R.id.status_text);
 
@@ -239,33 +224,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
             new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener(), imageLoaded)
                     .show(this, avatar)
     );
-  }
-
-
-  @Override
-  public void onEmojiSelected(String emoji) {
-    final int start = name.getSelectionStart();
-    final int end   = name.getSelectionEnd();
-
-    name.getText().replace(Math.min(start, end), Math.max(start, end), emoji);
-    name.setSelection(start + emoji.length());
-  }
-
-  @Override
-  public void onKeyEvent(KeyEvent keyEvent) {
-    name.dispatchKeyEvent(keyEvent);
-  }
-
-  private void initializeMediaKeyboardProviders(@NonNull MediaKeyboard mediaKeyboard) {
-    boolean isSystemEmojiPreferred   = Prefs.isSystemEmojiPreferred(this);
-    if (!isSystemEmojiPreferred) {
-      mediaKeyboard.setProviders(0, new EmojiKeyboardProvider(this, this));
-    }
-  }
-
-  private void initializeEmojiInput() {
-    initializeMediaKeyboardProviders(emojiDrawer);
-    this.name.setOnClickListener(v -> container.showSoftkey(name));
   }
 
   private void initializeStatusText() {

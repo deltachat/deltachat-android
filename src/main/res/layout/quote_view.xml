@@ -31,7 +31,7 @@
 			android:orientation="vertical"
 			android:layout_weight="1">
 
-			<org.thoughtcrime.securesms.components.emoji.EmojiTextView
+			<androidx.appcompat.widget.AppCompatTextView
 				android:id="@+id/quote_author"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
 				tools:visibility="gone"
 				tools:text="Peter Parker" />
 
-			<org.thoughtcrime.securesms.components.emoji.EmojiTextView
+			<androidx.appcompat.widget.AppCompatTextView
 				android:id="@+id/quote_text"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"

@@ -50,7 +50,7 @@
                 android:visibility="gone" />
 
             <!--Links should be clickable, see https://github.com/deltachat/deltachat-android/issues/1546-->
-            <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/conversation_update_body"
                 style="@style/Delta.Text.UpdateHeader"
                 android:layout_width="wrap_content"
