@@ -47,7 +47,7 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
 
     
   private float getTextScale(String text) {
-    if (text.length() > 21) {
+    if (text.length() > 21 || text.isEmpty() || Character.isLetter(text.charAt(0))) {
       return 1;
     }
     int emojiCount = countGraphemes(text, 8);
