@@ -41,7 +41,9 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
   @Override
   public void setText(@Nullable CharSequence text, BufferType type) {
     float scale = text != null ? getTextScale(text.toString()) : 1;
-    super.setTextSize(TypedValue.COMPLEX_UNIT_PX, originalFontSize * scale);
+    if (scale != 1) {
+      super.setTextSize(TypedValue.COMPLEX_UNIT_PX, originalFontSize * scale);
+    }
     super.setText(text, type);
   }
 
