@@ -913,7 +913,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void setComposePanelVisibility() {
-    if (dcChat.canSend()) {
+    DcMsg draft = dcContext.getDraft(chatId);
+    if (dcChat.canSend() || draft.isOk()) {
       composePanel.setVisibility(View.VISIBLE);
       attachmentManager.setHidden(false);
     } else {
@@ -1011,7 +1012,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     // for a quick ui feedback, we clear the related controls immediately on sending messages.
     // for drafts, however, we do not change the controls, the activity may be resumed.
-    if (action==ACTION_SEND_OUT) {
+    if (action==ACTION_SEND_OUT && dcChat.canSend()) {
       composeText.setText("");
       inputPanel.clearQuote();
     }
@@ -1479,7 +1480,16 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
       initializeSecurity(isSecureText, isDefaultSms);
-      setComposePanelVisibility();
+
+      // Save the draft so compose panel is shown
+      // if we have a draft but cannot write to the chat anymore
+      // because we have been removed from the member list.
+      processComposeControls(ACTION_SAVE_DRAFT).addListener(new AssertedSuccessListener<Integer>() {
+        @Override
+        public void onSuccess(Integer chatId) {
+          setComposePanelVisibility();
+        }
+      });
       initializeContactRequest();
     } else if ((eventId == DcContext.DC_EVENT_INCOMING_MSG
                 || eventId == DcContext.DC_EVENT_MSG_READ)
