@@ -8,6 +8,8 @@ import android.util.TypedValue;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import org.thoughtcrime.securesms.util.ViewUtil;
+
 import java.text.BreakIterator;
 import java.util.Locale;
 import java.util.regex.Pattern;
@@ -34,14 +36,14 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
   public AutoScaledEmojiTextView(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
     TypedArray typedArray = context.obtainStyledAttributes(attrs, new int[]{android.R.attr.textSize});
-    originalFontSize = typedArray.getDimensionPixelSize(0, 0);
+    originalFontSize = ViewUtil.pxToSp(context, typedArray.getDimensionPixelSize(0, 0));
     typedArray.recycle();
   }
 
   @Override
   public void setText(@Nullable CharSequence text, BufferType type) {
     float scale = text != null ? getTextScale(text.toString()) : 1;
-    super.setTextSize(TypedValue.COMPLEX_UNIT_PX, originalFontSize * scale);
+    super.setTextSize(TypedValue.COMPLEX_UNIT_SP, originalFontSize * scale);
     super.setText(text, type);
   }
 
@@ -52,7 +54,12 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
 
   @Override
   public void setTextSize(int unit, float size) {
-    originalFontSize = TypedValue.applyDimension(unit, size, getResources().getDisplayMetrics());
+    if (unit == TypedValue.COMPLEX_UNIT_SP) {
+      originalFontSize = size;
+    } else {
+      float pxSize = TypedValue.applyDimension(unit, size, getResources().getDisplayMetrics());
+      originalFontSize = ViewUtil.pxToSp(getContext(), (int) pxSize);
+    }
     super.setTextSize(unit, size);
   }
     
