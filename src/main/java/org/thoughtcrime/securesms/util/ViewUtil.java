@@ -32,7 +32,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -200,6 +202,18 @@ public class ViewUtil {
 
   public static int dpToPx(Context context, int dp) {
     return (int)((dp * context.getResources().getDisplayMetrics().density) + 0.5);
+  }
+
+  public static float pxToSp(Context context, int px) {
+    DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+    if (VERSION.SDK_INT >= VERSION_CODES.UPSIDE_DOWN_CAKE) {
+      return TypedValue.deriveDimension(TypedValue.COMPLEX_UNIT_SP, px, metrics);
+    } else {
+      if (metrics.scaledDensity == 0) {
+        return 0;
+      }
+      return px / metrics.scaledDensity;
+    }
   }
 
   public static void updateLayoutParams(@NonNull View view, int width, int height) {

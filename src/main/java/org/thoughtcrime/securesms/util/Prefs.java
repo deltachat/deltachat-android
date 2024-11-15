@@ -47,7 +47,6 @@ public class Prefs {
   public  static final String DOZE_ASKED_DIRECTLY              = "pref_doze_asked_directly";
   public  static final String ASKED_FOR_NOTIFICATION_PERMISSION= "pref_asked_for_notification_permission";
   private static final String IN_THREAD_NOTIFICATION_PREF      = "pref_key_inthread_notifications";
-  public  static final String MESSAGE_BODY_TEXT_SIZE_PREF      = "pref_message_body_text_size";
 
   public  static final String NOTIFICATION_PRIVACY_PREF        = "pref_notification_privacy";
   public  static final String NOTIFICATION_PRIORITY_PREF       = "pref_notification_priority";
@@ -102,10 +101,6 @@ public class Prefs {
 
   public static int getNotificationPriority(Context context) {
     return Integer.valueOf(getStringPreference(context, NOTIFICATION_PRIORITY_PREF, String.valueOf(NotificationCompat.PRIORITY_HIGH)));
-  }
-
-  public static int getMessageBodyTextSize(Context context) {
-    return Integer.valueOf(getStringPreference(context, MESSAGE_BODY_TEXT_SIZE_PREF, "16"));
   }
 
   public static void setDirectCaptureCameraId(Context context, int value) {
