@@ -61,7 +61,7 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
       originalFontSize = size;
     } else {
       float pxSize = TypedValue.applyDimension(unit, size, getResources().getDisplayMetrics());
-      float spSize =  = ViewUtil.pxToSp(getContext(), (int) pxSize);
+      float spSize = ViewUtil.pxToSp(getContext(), (int) pxSize);
       if (spSize > 0) {
         originalFontSize = spSize;
       }
