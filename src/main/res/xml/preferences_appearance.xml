@@ -15,11 +15,4 @@
         android:key="pref_chat_background"
         android:title="@string/pref_background"/>
 
-    <ListPreference
-        android:key="pref_message_body_text_size"
-        android:title="@string/pref_message_text_size"
-        android:entries="@array/pref_message_font_size_entries"
-        android:entryValues="@array/pref_message_font_size_values"
-        android:defaultValue="16"/>
-
 </PreferenceScreen>

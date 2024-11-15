@@ -736,6 +736,7 @@
     <string name="pref_app_access">App Access</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">In-Chat Sounds</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Message Font Size</string>
     <string name="pref_view_log">View Log</string>
     <string name="pref_saved_log">Saved the log to \"Downloads\" folder</string>

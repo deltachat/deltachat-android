@@ -175,20 +175,6 @@
         <item>#000000</item>
     </array>
 
-    <string-array name="pref_message_font_size_entries">
-        <item>@string/small</item>
-        <item>@string/normal</item>
-        <item>@string/large</item>
-        <item>@string/extra_large</item>
-    </string-array>
-
-    <string-array name="pref_message_font_size_values">
-        <item>13</item>
-        <item>16</item>
-        <item>20</item>
-        <item>30</item>
-    </string-array>
-
     <string-array name="pref_notification_priority_entries">
         <item>@string/def</item>
         <item>@string/notify_priority_high</item>
