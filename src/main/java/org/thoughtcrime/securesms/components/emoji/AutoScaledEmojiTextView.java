@@ -74,7 +74,7 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
       return 1;
     }
     int emojiCount = countEmojis(text, 8);
-    if (emojiCount > 8 || emojiCount == 0) {
+    if (emojiCount <= 0) {
       return 1;
     }
 
@@ -86,7 +86,8 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
   }
 
   /**
-   * Returns the number of emojis if there are only emojis, or 0 otherwise.
+   * Returns the number of emojis if there are only emojis AND there are no more than `max` emojis,
+   * or -1 otherwise.
    */
   public static int countEmojis(String text, int max) {
     BreakIterator graphemeIterator = BreakIterator.getCharacterInstance(Locale.getDefault());
@@ -99,8 +100,8 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
     int start = graphemeIterator.first();
     for (int end = graphemeIterator.next(); end != BreakIterator.DONE; start = end, end = graphemeIterator.next()) {
       String grapheme = text.substring(start, end);
-      if (!emojiRegex.matcher(grapheme).matches()) return 0;
-      if (++graphemeCount > max) return 0;
+      if (!emojiRegex.matcher(grapheme).matches()) return -1;
+      if (++graphemeCount > max) return -1;
     }
 
     return graphemeCount;
