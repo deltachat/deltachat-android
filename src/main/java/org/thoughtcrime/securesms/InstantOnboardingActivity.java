@@ -244,16 +244,22 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   protected void onPause() {
     super.onPause();
 
-    final String displayName = name.getText().toString();
-    DcHelper.set(this, DcHelper.CONFIG_DISPLAY_NAME, TextUtils.isEmpty(displayName)? null : displayName);
+    // Save display name and avatar in the unconfigured profile.
+    // If the currently selected profile is configured, then this means that rollbackAccountCreation()
+    // was called (see handleOnBackPressed() above), i.e. the newly created profile was removed already
+    // and we can't save the display name & avatar.
+    if (DcHelper.getContext(this).isConfigured() == 0) {
+      final String displayName = name.getText().toString();
+      DcHelper.set(this, DcHelper.CONFIG_DISPLAY_NAME, TextUtils.isEmpty(displayName) ? null : displayName);
 
-    if (avatarChanged) {
-      try {
-        AvatarHelper.setSelfAvatar(InstantOnboardingActivity.this, avatarBmp);
-        Prefs.setProfileAvatarId(InstantOnboardingActivity.this, new SecureRandom().nextInt());
-        avatarChanged = false;
-      } catch (IOException e) {
-        Log.e(TAG, "Failed to save avatar", e);
+      if (avatarChanged) {
+        try {
+          AvatarHelper.setSelfAvatar(InstantOnboardingActivity.this, avatarBmp);
+          Prefs.setProfileAvatarId(InstantOnboardingActivity.this, new SecureRandom().nextInt());
+          avatarChanged = false;
+        } catch (IOException e) {
+          Log.e(TAG, "Failed to save avatar", e);
+        }
       }
     }
   }
