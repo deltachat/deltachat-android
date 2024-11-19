@@ -717,7 +717,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     DcMsg draft = dcContext.getDraft(chatId);
     final String sharedText = RelayUtil.getSharedText(this);
 
-    if (draft == null) {
+    if (!draft.isOk()) {
       if (TextUtils.isEmpty(sharedText)) {
         future.set(false);
       } else {
