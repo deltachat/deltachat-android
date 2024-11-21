@@ -104,7 +104,7 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
   }
 
   private void updateKeyboardState() {
-    if (viewInset == 0 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) viewInset = getViewInset();
+    if (viewInset == 0) viewInset = getViewInset();
 
     getWindowVisibleDisplayFrame(rect);
 
@@ -148,7 +148,6 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
     }
   }
 
-  @RequiresApi(api = Build.VERSION_CODES.KITKAT)
   private int getViewInset() {
     try {
       Field attachInfoField = View.class.getDeclaredField("mAttachInfo");
@@ -219,11 +218,7 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
       return Surface.ROTATION_0;
     }
 
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      return ServiceUtil.getWindowManager(getContext()).getDefaultDisplay().getRotation();
-    }
-
-    if (Build.VERSION.SDK_INT >= 30) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
       getContext().getDisplay().getRealMetrics(displayMetrics);
     } else {
         ServiceUtil.getWindowManager(getContext()).getDefaultDisplay().getRealMetrics(displayMetrics);

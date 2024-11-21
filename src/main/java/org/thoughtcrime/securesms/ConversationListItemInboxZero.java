@@ -29,7 +29,6 @@ public class ConversationListItemInboxZero extends LinearLayout implements Binda
     super(context, attrs, defStyleAttr);
   }
 
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
   public ConversationListItemInboxZero(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
   }

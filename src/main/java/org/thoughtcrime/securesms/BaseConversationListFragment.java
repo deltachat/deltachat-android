@@ -364,9 +364,7 @@ public abstract class BaseConversationListFragment extends Fragment implements A
 
     mode.setTitle("1");
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      requireActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
-    }
+    requireActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
 
     return true;
   }
@@ -395,11 +393,9 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     actionMode = null;
     getListAdapter().initializeBatchMode(false);
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      TypedArray color = requireActivity().getTheme().obtainStyledAttributes(new int[] {android.R.attr.statusBarColor});
-      requireActivity().getWindow().setStatusBarColor(color.getColor(0, Color.BLACK));
-      color.recycle();
-    }
+    TypedArray color = requireActivity().getTheme().obtainStyledAttributes(new int[]{android.R.attr.statusBarColor});
+    requireActivity().getWindow().setStatusBarColor(color.getColor(0, Color.BLACK));
+    color.recycle();
 
     Context context = getContext();
     if (context != null) {

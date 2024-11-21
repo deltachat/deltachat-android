@@ -130,33 +130,23 @@ public class AttachmentTypeSelector extends PopupWindow {
       public void onGlobalLayout() {
         getContentView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-          animateWindowInCircular(anchor, getContentView());
-        } else {
-          animateWindowInTranslate(getContentView());
-        }
+        animateWindowInCircular(anchor, getContentView());
       }
     });
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      animateButtonIn(cameraButton, ANIMATION_DURATION / 2);
-      animateButtonIn(videoButton, ANIMATION_DURATION / 2);
-      animateButtonIn(imageButton, ANIMATION_DURATION / 3);
-      animateButtonIn(contactButton, ANIMATION_DURATION / 3);
-      animateButtonIn(locationButton, ANIMATION_DURATION / 4);
-      animateButtonIn(documentButton, ANIMATION_DURATION / 4);
-      animateButtonIn(videoChatButton, 0);
-      animateButtonIn(closeButton, 0);
-    }
+    animateButtonIn(cameraButton, ANIMATION_DURATION / 2);
+    animateButtonIn(videoButton, ANIMATION_DURATION / 2);
+    animateButtonIn(imageButton, ANIMATION_DURATION / 3);
+    animateButtonIn(contactButton, ANIMATION_DURATION / 3);
+    animateButtonIn(locationButton, ANIMATION_DURATION / 4);
+    animateButtonIn(documentButton, ANIMATION_DURATION / 4);
+    animateButtonIn(videoChatButton, 0);
+    animateButtonIn(closeButton, 0);
   }
 
   @Override
   public void dismiss() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      animateWindowOutCircular(currentAnchor, getContentView());
-    } else {
-      animateWindowOutTranslate(getContentView());
-    }
+    animateWindowOutCircular(currentAnchor, getContentView());
   }
 
   public void setListener(@Nullable AttachmentClickedListener listener) {
@@ -186,7 +176,6 @@ public class AttachmentTypeSelector extends PopupWindow {
     button.startAnimation(animation);
   }
 
-  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
   private void animateWindowInCircular(@Nullable View anchor, @NonNull View contentView) {
     Pair<Integer, Integer> coordinates = getClickOrigin(anchor, contentView);
     Animator animator = ViewAnimationUtils.createCircularReveal(contentView,
@@ -205,7 +194,6 @@ public class AttachmentTypeSelector extends PopupWindow {
     getContentView().startAnimation(animation);
   }
 
-  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
   private void animateWindowOutCircular(@Nullable View anchor, @NonNull View contentView) {
     Pair<Integer, Integer> coordinates = getClickOrigin(anchor, contentView);
     Animator               animator    = ViewAnimationUtils.createCircularReveal(getContentView(),

@@ -96,11 +96,7 @@ public final class ImageEditorHud extends LinearLayout {
   }
 
   private void initializeVisibilityMap() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      setVisibleViewsWhenInMode(Mode.NONE, drawButton, highlightButton, blurButton, textButton, stickerButton, cropButton, undoButton, saveButton);
-    } else {
-      setVisibleViewsWhenInMode(Mode.NONE, drawButton, highlightButton, textButton, stickerButton, cropButton, undoButton, saveButton);
-    }
+    setVisibleViewsWhenInMode(Mode.NONE, drawButton, highlightButton, blurButton, textButton, stickerButton, cropButton, undoButton, saveButton);
 
     setVisibleViewsWhenInMode(Mode.DRAW, confirmButton, undoButton, colorPicker, colorPalette);
 

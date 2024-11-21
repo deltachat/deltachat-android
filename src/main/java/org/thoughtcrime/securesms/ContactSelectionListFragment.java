@@ -136,9 +136,7 @@ public class ContactSelectionListFragment extends    Fragment
       public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         MenuInflater inflater = getActivity().getMenuInflater();
         inflater.inflate(R.menu.contact_list, menu);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-          getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
-        }
+        getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
         setCorrectMenuVisibility(menu);
         actionMode.setTitle("1");
         return true;
@@ -170,11 +168,9 @@ public class ContactSelectionListFragment extends    Fragment
         ContactSelectionListFragment.this.actionMode = null;
         getContactSelectionListAdapter().resetActionModeSelection();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-          TypedArray color = getActivity().getTheme().obtainStyledAttributes(new int[] {android.R.attr.statusBarColor});
-          getActivity().getWindow().setStatusBarColor(color.getColor(0, Color.BLACK));
-          color.recycle();
-        }
+        TypedArray color = getActivity().getTheme().obtainStyledAttributes(new int[]{android.R.attr.statusBarColor});
+        getActivity().getWindow().setStatusBarColor(color.getColor(0, Color.BLACK));
+        color.recycle();
       }
     };
 

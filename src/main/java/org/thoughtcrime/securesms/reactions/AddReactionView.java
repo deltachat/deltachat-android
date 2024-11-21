@@ -59,9 +59,6 @@ public class AddReactionView extends LinearLayout {
           }
           anyReactionView = findViewById(R.id.reaction_any);
           anyReactionView.setOnClickListener(v -> anyReactionClicked());
-          if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-              anyReactionView.setVisibility(View.GONE); // EmojiPickerView requires SDK 21 or newer
-          }
       }
     }
 

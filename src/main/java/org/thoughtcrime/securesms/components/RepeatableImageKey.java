@@ -29,7 +29,6 @@ public class RepeatableImageKey extends ImageButton {
     init();
   }
 
-  @TargetApi(VERSION_CODES.LOLLIPOP)
   public RepeatableImageKey(Context context, AttributeSet attrs, int defStyleAttr,
                             int defStyleRes)
   {

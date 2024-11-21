@@ -71,12 +71,10 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     this.pauseButton.setOnClickListener(new PauseClickedListener());
     this.seekBar.setOnSeekBarChangeListener(new SeekBarModifiedListener());
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      this.playButton.setImageDrawable(context.getDrawable(R.drawable.play_icon));
-      this.pauseButton.setImageDrawable(context.getDrawable(R.drawable.pause_icon));
-      this.playButton.setBackground(context.getDrawable(R.drawable.ic_circle_fill_white_48dp));
-      this.pauseButton.setBackground(context.getDrawable(R.drawable.ic_circle_fill_white_48dp));
-    }
+    this.playButton.setImageDrawable(context.getDrawable(R.drawable.play_icon));
+    this.pauseButton.setImageDrawable(context.getDrawable(R.drawable.pause_icon));
+    this.playButton.setBackground(context.getDrawable(R.drawable.ic_circle_fill_white_48dp));
+    this.pauseButton.setBackground(context.getDrawable(R.drawable.ic_circle_fill_white_48dp));
 
     setTint(getContext().getResources().getColor(R.color.audio_icon));
   }
@@ -192,13 +190,8 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   }
 
   public void setTint(int foregroundTint) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      this.playButton.setBackgroundTintList(ColorStateList.valueOf(foregroundTint));
-      this.pauseButton.setBackgroundTintList(ColorStateList.valueOf(foregroundTint));
-    } else {
-      this.playButton.setColorFilter(foregroundTint, PorterDuff.Mode.SRC_IN);
-      this.pauseButton.setColorFilter(foregroundTint, PorterDuff.Mode.SRC_IN);
-    }
+    this.playButton.setBackgroundTintList(ColorStateList.valueOf(foregroundTint));
+    this.pauseButton.setBackgroundTintList(ColorStateList.valueOf(foregroundTint));
 
     this.seekBar.getProgressDrawable().setColorFilter(foregroundTint, PorterDuff.Mode.SRC_IN);
 
@@ -220,25 +213,20 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   private void togglePlayToPause() {
     controlToggle.displayQuick(pauseButton);
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      AnimatedVectorDrawable playToPauseDrawable = (AnimatedVectorDrawable)getContext().getDrawable(R.drawable.play_to_pause_animation);
-      pauseButton.setImageDrawable(playToPauseDrawable);
-      playToPauseDrawable.start();
-    }
+    AnimatedVectorDrawable playToPauseDrawable = (AnimatedVectorDrawable) getContext().getDrawable(R.drawable.play_to_pause_animation);
+    pauseButton.setImageDrawable(playToPauseDrawable);
+    playToPauseDrawable.start();
   }
 
   private void togglePauseToPlay() {
     controlToggle.displayQuick(playButton);
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      AnimatedVectorDrawable pauseToPlayDrawable = (AnimatedVectorDrawable)getContext().getDrawable(R.drawable.pause_to_play_animation);
-      playButton.setImageDrawable(pauseToPlayDrawable);
-      pauseToPlayDrawable.start();
-    }
+    AnimatedVectorDrawable pauseToPlayDrawable = (AnimatedVectorDrawable) getContext().getDrawable(R.drawable.pause_to_play_animation);
+    playButton.setImageDrawable(pauseToPlayDrawable);
+    pauseToPlayDrawable.start();
   }
 
   private class PlayClickedListener implements View.OnClickListener {
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onClick(View v) {
       try {
@@ -279,7 +267,6 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   }
 
   private class PauseClickedListener implements View.OnClickListener {
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onClick(View v) {
       Log.w(TAG, "pausebutton onClick");

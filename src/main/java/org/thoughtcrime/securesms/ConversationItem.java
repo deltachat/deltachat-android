@@ -495,9 +495,7 @@ public class ConversationItem extends BaseConversationItem
       audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
       audioViewStub.get().setOnClickListener(passthroughClickListener);
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-        audioViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
-      }
+      audioViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -515,9 +513,7 @@ public class ConversationItem extends BaseConversationItem
       documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord));
       documentViewStub.get().setDocumentClickListener(new ThumbnailClickListener());
       documentViewStub.get().setOnLongClickListener(passthroughClickListener);
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-        documentViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
-      }
+      documentViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -534,9 +530,7 @@ public class ConversationItem extends BaseConversationItem
       webxdcViewStub.get().setWebxdc(messageRecord, context.getString(R.string.webxdc_app));
       webxdcViewStub.get().setWebxdcClickListener(new ThumbnailClickListener());
       webxdcViewStub.get().setOnLongClickListener(passthroughClickListener);
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-        webxdcViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
-      }
+      webxdcViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -554,9 +548,7 @@ public class ConversationItem extends BaseConversationItem
       vcardViewStub.get().setVcardClickListener(new ThumbnailClickListener());
       vcardViewStub.get().setOnLongClickListener(passthroughClickListener);
 
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-        vcardViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
-      }
+      vcardViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -592,9 +584,7 @@ public class ConversationItem extends BaseConversationItem
       mediaThumbnailStub.get().setOnLongClickListener(passthroughClickListener);
       mediaThumbnailStub.get().setOnClickListener(passthroughClickListener);
       mediaThumbnailStub.get().showShade(TextUtils.isEmpty(messageRecord.getText()));
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-        mediaThumbnailStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
-      }
+      mediaThumbnailStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
       setThumbnailOutlineCorners(messageRecord, showSender);
 
@@ -617,9 +607,7 @@ public class ConversationItem extends BaseConversationItem
       stickerStub.get().setThumbnailClickListener(new StickerClickListener());
       stickerStub.get().setOnLongClickListener(passthroughClickListener);
       stickerStub.get().setOnClickListener(passthroughClickListener);
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-        stickerStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
-      }
+      stickerStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

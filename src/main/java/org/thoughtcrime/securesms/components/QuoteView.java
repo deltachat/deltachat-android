@@ -78,7 +78,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     initialize(attrs);
   }
 
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
   public QuoteView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
     initialize(attrs);

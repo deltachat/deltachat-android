@@ -63,15 +63,10 @@ public class AvatarHelper {
     }
 
     public static void cropAvatar(Activity context, Uri imageUri) {
-        if (Build.VERSION.SDK_INT >= 19) { // Image editor requires Android 4.4 KitKat or newer.
-            Intent intent = new Intent(context, ScribbleActivity.class);
-            intent.setData(imageUri);
-            intent.putExtra(ScribbleActivity.CROP_AVATAR, true);
-            context.startActivityForResult(intent, ScribbleActivity.SCRIBBLE_REQUEST_CODE);
-        } else {
-            Uri outputFile = Uri.fromFile(new File(context.getCacheDir(), "cropped"));
-            Crop.of(imageUri, outputFile).asSquare().start(context);
-        }
+      Intent intent = new Intent(context, ScribbleActivity.class);
+      intent.setData(imageUri);
+      intent.putExtra(ScribbleActivity.CROP_AVATAR, true);
+      context.startActivityForResult(intent, ScribbleActivity.SCRIBBLE_REQUEST_CODE);
     }
 
 }
