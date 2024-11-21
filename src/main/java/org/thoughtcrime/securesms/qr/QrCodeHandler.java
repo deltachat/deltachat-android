@@ -98,6 +98,9 @@ public class QrCodeHandler {
                     dcContext.restartIo();
                     showDoneToast(activity);
                 });
+                if (rawString.toLowerCase().startsWith("http")) {
+                    builder.setNeutralButton(R.string.open, (d, b) -> IntentUtils.showBrowserIntent(activity, rawString));
+                }
                 builder.setNegativeButton(R.string.cancel, null);
                 builder.setCancelable(false);
                 break;
