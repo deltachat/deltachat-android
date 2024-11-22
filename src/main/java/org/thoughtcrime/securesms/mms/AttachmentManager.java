@@ -585,7 +585,7 @@ public class AttachmentManager {
     final Intent intent = new Intent();
     intent.setType(type);
 
-    if (extraMimeType != null && Build.VERSION.SDK_INT >= 19) {
+    if (extraMimeType != null) {
       intent.putExtra(Intent.EXTRA_MIME_TYPES, extraMimeType);
     }
 
@@ -597,14 +597,12 @@ public class AttachmentManager {
       intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
     }
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-      intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-      try {
-        activity.startActivityForResult(intent, requestCode);
-        return;
-      } catch (ActivityNotFoundException anfe) {
-        Log.w(TAG, "couldn't complete ACTION_OPEN_DOCUMENT, no activity found. falling back.");
-      }
+    intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+    try {
+      activity.startActivityForResult(intent, requestCode);
+      return;
+    } catch (ActivityNotFoundException anfe) {
+      Log.w(TAG, "couldn't complete ACTION_OPEN_DOCUMENT, no activity found. falling back.");
     }
 
     intent.setAction(Intent.ACTION_GET_CONTENT);

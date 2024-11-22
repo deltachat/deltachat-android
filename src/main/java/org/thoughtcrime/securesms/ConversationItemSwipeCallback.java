@@ -174,9 +174,7 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
         vibrate(viewHolder.itemView.getContext());
       }
     }
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-      recyclerView.cancelPendingInputEvents();
-    }
+    recyclerView.cancelPendingInputEvents();
   }
 
   private static void resetProgress(RecyclerView.ViewHolder viewHolder) {
@@ -199,11 +197,7 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
   }
 
   private static float getSignFromDirection(@NonNull View view) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      return view.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL ? -1f : 1f;
-    } else {
-      return 1f;
-    }
+    return view.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL ? -1f : 1f;
   }
 
   private static boolean sameSign(float dX, float sign) {

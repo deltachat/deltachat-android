@@ -100,14 +100,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   public static void openWebxdcActivity(Context context, int msgId, boolean hideActionBar) {
     if (!Util.isClickedRecently()) {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        if (Prefs.isDeveloperModeEnabled(context)) {
-          WebView.setWebContentsDebuggingEnabled(true);
-        }
-        context.startActivity(getWebxdcIntent(context, msgId, hideActionBar));
-      } else {
-        Toast.makeText(context, "At least Android 5.0 (Lollipop) required for Webxdc.", Toast.LENGTH_LONG).show();
+      if (Prefs.isDeveloperModeEnabled(context)) {
+        WebView.setWebContentsDebuggingEnabled(true);
       }
+      context.startActivity(getWebxdcIntent(context, msgId, hideActionBar));
     }
   }
 
@@ -329,7 +325,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       res = new WebResourceResponse("text/plain", "UTF-8", targetStream);
     }
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && !internetAccess) {
+    if (!internetAccess) {
       Map<String, String> headers = new HashMap<>();
       headers.put("Content-Security-Policy",
           "default-src 'self'; "
@@ -348,12 +344,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   }
 
   private void callJavaScriptFunction(String func) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-      if (internetAccess) {
-        webView.evaluateJavascript("window." + func + ";", null);
-      } else {
-        webView.evaluateJavascript("document.getElementById('frame').contentWindow." + func + ";", null);
-      }
+    if (internetAccess) {
+      webView.evaluateJavascript("window." + func + ";", null);
+    } else {
+      webView.evaluateJavascript("document.getElementById('frame').contentWindow." + func + ";", null);
     }
   }
 

@@ -117,16 +117,13 @@ final class UriGlideRenderer implements Renderer {
 
       rendererContext.restore();
 
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-        renderBlurOverlay(rendererContext);
-      }
+      renderBlurOverlay(rendererContext);
     } else if (rendererContext.isBlockingLoad()) {
       // If failed to load, we draw a black out, in case image was sticker positioned to cover private info.
       rendererContext.canvas.drawRect(Bounds.FULL_BOUNDS, paint);
     }
   }
 
-  @RequiresApi(17)
   private void renderBlurOverlay(RendererContext rendererContext) {
       boolean renderMask = false;
 

@@ -122,7 +122,6 @@ public class ComposeText extends AppCompatEditText {
       editorInfo.imeOptions &= ~EditorInfo.IME_FLAG_NO_ENTER_ACTION;
     }
 
-    if (Build.VERSION.SDK_INT < 21) return inputConnection;
     if (mediaListener == null)      return inputConnection;
     if (inputConnection == null)    return null;
 

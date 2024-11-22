@@ -197,12 +197,11 @@ public class LogViewFragment extends Fragment {
                          asMegs(info.maxMemory()));
   }
 
-  @TargetApi(VERSION_CODES.KITKAT)
   public static String getMemoryClass(Context context) {
     ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
     String          lowMem          = "";
 
-    if (VERSION.SDK_INT >= VERSION_CODES.KITKAT && activityManager.isLowRamDevice()) {
+    if (activityManager.isLowRamDevice()) {
       lowMem = ", low-mem device";
     }
     return activityManager.getMemoryClass() + lowMem;
@@ -252,10 +251,8 @@ public class LogViewFragment extends Fragment {
 
       Locale locale = Util.getLocale();
       builder.append("lang=").append(locale.toString()).append("\n");
-      if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR1) {
-        boolean isRtl = Util.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL;
-        builder.append("rtl=").append(isRtl).append("\n");
-      }
+      boolean isRtl = Util.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL;
+      builder.append("rtl=").append(isRtl).append("\n");
 
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         boolean notifPermGranted = PermissionChecker.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PermissionChecker.PERMISSION_GRANTED;

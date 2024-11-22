@@ -260,9 +260,7 @@ public class DcHelper {
   }
 
   public static File getImexDir() {
-    // DIRECTORY_DOCUMENTS is only available since KitKat;
-    // as we also support Ice Cream Sandwich and Jellybean (2017: 11% in total), this is no option.
-    // Moreover, DIRECTORY_DOWNLOADS seems to be easier accessible by the user,
+    // DIRECTORY_DOCUMENTS could be used but DIRECTORY_DOWNLOADS seems to be easier accessible by the user,
     // eg. "Download Managers" are nearly always installed.
     // CAVE: do not use DownloadManager to add the file as it is deleted on uninstall then ...
     return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);

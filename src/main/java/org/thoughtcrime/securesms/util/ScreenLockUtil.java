@@ -12,7 +12,7 @@ public class ScreenLockUtil {
     public static boolean applyScreenLock(Activity activity, String title, String descr, int requestCode) {
         KeyguardManager keyguardManager = (KeyguardManager) activity.getSystemService(Context.KEYGUARD_SERVICE);
         Intent intent;
-        if (keyguardManager != null && isScreenLockAvailable()) {
+        if (keyguardManager != null) {
             intent = keyguardManager.createConfirmDeviceCredentialIntent(title, descr);
             if (intent != null) {
                 activity.startActivityForResult(intent, requestCode);
@@ -22,7 +22,4 @@ public class ScreenLockUtil {
         return false;
     }
 
-    private static boolean isScreenLockAvailable() {
-        return android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP;
-    }
 }

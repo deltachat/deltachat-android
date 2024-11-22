@@ -268,11 +268,9 @@ public class ProfileSettingsFragment extends Fragment
       menu.findItem(R.id.menu_select_all).setVisible(false);
       mode.setTitle("1");
 
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        Window window = getActivity().getWindow();
-        originalStatusBarColor = window.getStatusBarColor();
-        window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
-      }
+      Window window = getActivity().getWindow();
+      originalStatusBarColor = window.getStatusBarColor();
+      window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
       return true;
     }
 
@@ -314,9 +312,7 @@ public class ProfileSettingsFragment extends Fragment
     public void onDestroyActionMode(ActionMode mode) {
       actionMode = null;
       adapter.clearSelection();
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        getActivity().getWindow().setStatusBarColor(originalStatusBarColor);
-      }
+      getActivity().getWindow().setStatusBarColor(originalStatusBarColor);
     }
   }
 
