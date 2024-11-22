@@ -187,9 +187,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
 
     Preference developerModeEnabled = this.findPreference("pref_developer_mode_enabled");
     developerModeEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        WebView.setWebContentsDebuggingEnabled((Boolean) newValue);
-      }
+      WebView.setWebContentsDebuggingEnabled((Boolean) newValue);
       return true;
     });
 

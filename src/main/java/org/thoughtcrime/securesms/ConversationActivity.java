@@ -940,12 +940,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case AttachmentTypeSelector.TAKE_PHOTO:
       attachmentManager.capturePhoto(this, TAKE_PHOTO); break;
     case AttachmentTypeSelector.RECORD_VIDEO:
-      if(VideoRecoder.canRecode()) {
-        attachmentManager.captureVideo(this, RECORD_VIDEO);
-      }
-      else {
-        Toast.makeText(this, "This device does not support video-compression (requires Android 4.4 KitKat)", Toast.LENGTH_LONG).show();
-      }
+      attachmentManager.captureVideo(this, RECORD_VIDEO);
       break;
     }
   }

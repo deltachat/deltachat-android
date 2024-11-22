@@ -110,11 +110,7 @@ public class DateUtils extends android.text.format.DateUtils {
   }
 
   private static String getLocalizedPattern(String template) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-      return DateFormat.getBestDateTimePattern(Util.getLocale(), template);
-    } else {
-      return new SimpleDateFormat(template, Util.getLocale()).toLocalizedPattern();
-    }
+    return DateFormat.getBestDateTimePattern(Util.getLocale(), template);
   }
 
   public static String getFormatedDuration(long millis) {

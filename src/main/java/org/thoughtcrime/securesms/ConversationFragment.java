@@ -893,11 +893,9 @@ public class ConversationFragment extends MessageSelectorFragment
 
             mode.setTitle("1");
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                Window window = getActivity().getWindow();
-                statusBarColor = window.getStatusBarColor();
-                window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
-            }
+            Window window = getActivity().getWindow();
+            statusBarColor = window.getStatusBarColor();
+            window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
 
             setCorrectMenuVisibility(menu);
             ConversationAdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
@@ -914,9 +912,7 @@ public class ConversationFragment extends MessageSelectorFragment
             ((ConversationAdapter)list.getAdapter()).clearSelection();
             list.getAdapter().notifyDataSetChanged();
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                getActivity().getWindow().setStatusBarColor(statusBarColor);
-            }
+            getActivity().getWindow().setStatusBarColor(statusBarColor);
 
             actionMode = null;
             hideAddReactionView();

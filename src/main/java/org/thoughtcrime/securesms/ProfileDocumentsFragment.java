@@ -228,11 +228,9 @@ public class ProfileDocumentsFragment
       mode.getMenuInflater().inflate(R.menu.profile_context, menu);
       mode.setTitle("1");
 
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        Window window = getActivity().getWindow();
-        originalStatusBarColor = window.getStatusBarColor();
-        window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
-      }
+      Window window = getActivity().getWindow();
+      originalStatusBarColor = window.getStatusBarColor();
+      window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
       setCorrectMenuVisibility(menu);
       return true;
     }
@@ -282,9 +280,7 @@ public class ProfileDocumentsFragment
       actionMode = null;
       getListAdapter().clearSelection();
 
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        getActivity().getWindow().setStatusBarColor(originalStatusBarColor);
-      }
+      getActivity().getWindow().setStatusBarColor(originalStatusBarColor);
     }
   }
 }

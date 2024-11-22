@@ -15,10 +15,6 @@ public final class AccessibilityUtil {
       Log.e("AccessibilityUtil", "animationsDisabled: context was null");
       return false;
     }
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      return Settings.Global.getFloat(context.getContentResolver(), Settings.Global.ANIMATOR_DURATION_SCALE, 1) == 0f;
-    } else {
-      return false;
-    }
+    return Settings.Global.getFloat(context.getContentResolver(), Settings.Global.ANIMATOR_DURATION_SCALE, 1) == 0f;
   }
 }

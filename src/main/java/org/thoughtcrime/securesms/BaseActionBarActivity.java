@@ -33,9 +33,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     onPreCreate();
-    if (BaseActivity.isMenuWorkaroundRequired()) {
-      forceOverflowMenu();
-    }
     super.onCreate(savedInstanceState);
   }
 
@@ -44,20 +41,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     super.onResume();
     initializeScreenshotSecurity();
     dynamicTheme.onResume(this);
-  }
-
-  @Override
-  public boolean onKeyDown(int keyCode, KeyEvent event) {
-    return (keyCode == KeyEvent.KEYCODE_MENU && BaseActivity.isMenuWorkaroundRequired()) || super.onKeyDown(keyCode, event);
-  }
-
-  @Override
-  public boolean onKeyUp(int keyCode, @NonNull KeyEvent event) {
-    if (keyCode == KeyEvent.KEYCODE_MENU && BaseActivity.isMenuWorkaroundRequired()) {
-      openOptionsMenu();
-      return true;
-    }
-    return super.onKeyUp(keyCode, event);
   }
 
   private void initializeScreenshotSecurity() {

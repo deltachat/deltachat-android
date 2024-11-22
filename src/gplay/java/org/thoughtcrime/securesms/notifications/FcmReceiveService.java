@@ -28,11 +28,6 @@ public class FcmReceiveService extends FirebaseMessagingService {
   private static volatile String prefixedToken;
 
   public static void register(Context context) {
-    if (Build.VERSION.SDK_INT < 19) {
-      Log.w(TAG, "FCM not available on SDK < 19");
-      triedRegistering = true;
-      return;
-    }
 
     if (FcmReceiveService.prefixedToken != null) {
       Log.i(TAG, "FCM already registered");

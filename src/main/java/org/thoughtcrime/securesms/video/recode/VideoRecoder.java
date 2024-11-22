@@ -1,14 +1,10 @@
 package org.thoughtcrime.securesms.video.recode;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.media.MediaCodec;
 import android.media.MediaCodecInfo;
-import android.media.MediaCodecList;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
-import android.os.Build;
 import android.util.Log;
 
 import androidx.appcompat.app.AlertDialog;
@@ -36,14 +32,7 @@ public class VideoRecoder {
 
   private static final String TAG = VideoRecoder.class.getSimpleName();
 
-  private boolean videoConvertFirstWrite = true;
   private final static String MIME_TYPE = "video/avc";
-  private final static int PROCESSOR_TYPE_OTHER = 0;
-  private final static int PROCESSOR_TYPE_QCOM = 1;
-  private final static int PROCESSOR_TYPE_INTEL = 2;
-  private final static int PROCESSOR_TYPE_MTK = 3;
-  private final static int PROCESSOR_TYPE_SEC = 4;
-  private final static int PROCESSOR_TYPE_TI = 5;
   private final boolean cancelCurrentVideoConversion = false;
   private final Object videoConvertSync = new Object();
 
@@ -57,7 +46,6 @@ public class VideoRecoder {
     }
   }
 
-  @TargetApi(16)
   private int selectTrack(MediaExtractor extractor, boolean audio) {
     int numTracks = extractor.getTrackCount();
     for (int i = 0; i < numTracks; i++) {
@@ -76,60 +64,6 @@ public class VideoRecoder {
     return -5;
   }
 
-  @SuppressLint("NewApi")
-  private static MediaCodecInfo selectCodec(String mimeType) {
-    int numCodecs = MediaCodecList.getCodecCount();
-    MediaCodecInfo lastCodecInfo = null;
-    for (int i = 0; i < numCodecs; i++) {
-      MediaCodecInfo codecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (!codecInfo.isEncoder()) {
-        continue;
-      }
-      String[] types = codecInfo.getSupportedTypes();
-      for (String type : types) {
-        if (type.equalsIgnoreCase(mimeType)) {
-          lastCodecInfo = codecInfo;
-          if (!lastCodecInfo.getName().equals("OMX.SEC.avc.enc")) {
-            return lastCodecInfo;
-          } else if (lastCodecInfo.getName().equals("OMX.SEC.AVC.Encoder")) {
-            return lastCodecInfo;
-          }
-        }
-      }
-    }
-    return lastCodecInfo;
-  }
-
-  private static boolean isRecognizedFormat(int colorFormat) {
-    switch (colorFormat) {
-      case MediaCodecInfo.CodecCapabilities.COLOR_FormatYUV420Planar:
-      case MediaCodecInfo.CodecCapabilities.COLOR_FormatYUV420PackedPlanar:
-      case MediaCodecInfo.CodecCapabilities.COLOR_FormatYUV420SemiPlanar:
-      case MediaCodecInfo.CodecCapabilities.COLOR_FormatYUV420PackedSemiPlanar:
-      case MediaCodecInfo.CodecCapabilities.COLOR_TI_FormatYUV420PackedSemiPlanar:
-        return true;
-      default:
-        return false;
-    }
-  }
-
-  @SuppressLint("NewApi")
-  private static int selectColorFormat(MediaCodecInfo codecInfo, String mimeType) {
-    MediaCodecInfo.CodecCapabilities capabilities = codecInfo.getCapabilitiesForType(mimeType);
-    int lastColorFormat = 0;
-    for (int i = 0; i < capabilities.colorFormats.length; i++) {
-      int colorFormat = capabilities.colorFormats[i];
-      if (isRecognizedFormat(colorFormat)) {
-        lastColorFormat = colorFormat;
-        if (!(codecInfo.getName().equals("OMX.SEC.AVC.Encoder") && colorFormat == 19)) {
-          return colorFormat;
-        }
-      }
-    }
-    return lastColorFormat;
-  }
-
-  @TargetApi(16)
   private long readAndWriteTrack(MediaExtractor extractor, MP4Builder mediaMuxer, MediaCodec.BufferInfo info, long start, long end, File file, boolean isAudio) throws Exception {
     int trackIndex = selectTrack(extractor, isAudio);
     if (trackIndex >= 0) {
@@ -199,7 +133,6 @@ public class VideoRecoder {
     return -1;
   }
 
-  @TargetApi(16)
   private boolean convertVideo(final VideoEditedInfo videoEditedInfo, String destPath) {
 
     long startTime = videoEditedInfo.startTime;
@@ -214,29 +147,21 @@ public class VideoRecoder {
     int rotateRender = 0;
     File cacheFile = new File(destPath);
 
-    if (Build.VERSION.SDK_INT < 18 && resultHeight > resultWidth && resultWidth != originalWidth && resultHeight != originalHeight) {
+    if (rotationValue == 90) {
       int temp = resultHeight;
       resultHeight = resultWidth;
       resultWidth = temp;
-      rotationValue = 90;
+      rotationValue = 0;
       rotateRender = 270;
-    } else if (Build.VERSION.SDK_INT > 20) {
-      if (rotationValue == 90) {
-        int temp = resultHeight;
-        resultHeight = resultWidth;
-        resultWidth = temp;
-        rotationValue = 0;
-        rotateRender = 270;
-      } else if (rotationValue == 180) {
-        rotateRender = 180;
-        rotationValue = 0;
-      } else if (rotationValue == 270) {
-        int temp = resultHeight;
-        resultHeight = resultWidth;
-        resultWidth = temp;
-        rotationValue = 0;
-        rotateRender = 90;
-      }
+    } else if (rotationValue == 180) {
+      rotateRender = 180;
+      rotationValue = 0;
+    } else if (rotationValue == 270) {
+      int temp = resultHeight;
+      resultHeight = resultWidth;
+      resultWidth = temp;
+      rotationValue = 0;
+      rotateRender = 90;
     }
 
     File inputFile = new File(videoEditedInfo.originalPath);
@@ -246,7 +171,6 @@ public class VideoRecoder {
       return false;
     }
 
-    videoConvertFirstWrite = true;
     boolean error = false;
     long videoStartTime = startTime;
 
@@ -282,70 +206,11 @@ public class VideoRecoder {
               boolean outputDone = false;
               boolean inputDone = false;
               boolean decoderDone = false;
-              int swapUV = 0;
               int videoTrackIndex = -5;
 
               int colorFormat;
-              int processorType = PROCESSOR_TYPE_OTHER;
-              String manufacturer = Build.MANUFACTURER.toLowerCase();
-              if (Build.VERSION.SDK_INT < 18) {
-                MediaCodecInfo codecInfo = selectCodec(MIME_TYPE);
-                colorFormat = selectColorFormat(codecInfo, MIME_TYPE);
-                if (colorFormat == 0) {
-                  throw new RuntimeException("no supported color format");
-                }
-                String codecName = codecInfo.getName();
-                if (codecName.contains("OMX.qcom.")) {
-                  processorType = PROCESSOR_TYPE_QCOM;
-                  if (Build.VERSION.SDK_INT == 16) {
-                    if (manufacturer.equals("lge") || manufacturer.equals("nokia")) {
-                      swapUV = 1;
-                    }
-                  }
-                } else if (codecName.contains("OMX.Intel.")) {
-                  processorType = PROCESSOR_TYPE_INTEL;
-                } else if (codecName.equals("OMX.MTK.VIDEO.ENCODER.AVC")) {
-                  processorType = PROCESSOR_TYPE_MTK;
-                } else if (codecName.equals("OMX.SEC.AVC.Encoder")) {
-                  processorType = PROCESSOR_TYPE_SEC;
-                  swapUV = 1;
-                } else if (codecName.equals("OMX.TI.DUCATI1.VIDEO.H264E")) {
-                  processorType = PROCESSOR_TYPE_TI;
-                }
-                //Log.i("DeltaChat", "codec = " + codecInfo.getName() + " manufacturer = " + manufacturer + "device = " + Build.MODEL);
-              } else {
-                colorFormat = MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface;
-              }
+              colorFormat = MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface;
               //Log.i("DeltaChat", "colorFormat = " + colorFormat);
-
-              int resultHeightAligned = resultHeight;
-              int padding = 0;
-              int bufferSize = resultWidth * resultHeight * 3 / 2;
-              if (processorType == PROCESSOR_TYPE_OTHER) {
-                if (resultHeight % 16 != 0) {
-                  resultHeightAligned += (16 - (resultHeight % 16));
-                  padding = resultWidth * (resultHeightAligned - resultHeight);
-                  bufferSize += padding * 5 / 4;
-                }
-              } else if (processorType == PROCESSOR_TYPE_QCOM) {
-                if (!manufacturer.toLowerCase().equals("lge")) {
-                  int uvoffset = (resultWidth * resultHeight + 2047) & ~2047;
-                  padding = uvoffset - (resultWidth * resultHeight);
-                  bufferSize += padding;
-                }
-              } else if (processorType == PROCESSOR_TYPE_TI) {
-                //resultHeightAligned = 368;
-                //bufferSize = resultWidth * resultHeightAligned * 3 / 2;
-                //resultHeightAligned += (16 - (resultHeight % 16));
-                //padding = resultWidth * (resultHeightAligned - resultHeight);
-                //bufferSize += padding * 5 / 4;
-              } else if (processorType == PROCESSOR_TYPE_MTK) {
-                if (manufacturer.equals("baidu")) {
-                  resultHeightAligned += (16 - (resultHeight % 16));
-                  padding = resultWidth * (resultHeightAligned - resultHeight);
-                  bufferSize += padding * 5 / 4;
-                }
-              }
 
               extractor.selectTrack(videoIndex);
               if (startTime > 0) {
@@ -360,39 +225,21 @@ public class VideoRecoder {
               outputFormat.setInteger(MediaFormat.KEY_BIT_RATE, resultVideoBitrate != 0 ? resultVideoBitrate : 921600);
               outputFormat.setInteger(MediaFormat.KEY_FRAME_RATE, 25);
               outputFormat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 10);
-              if (Build.VERSION.SDK_INT < 18) {
-                outputFormat.setInteger("stride", resultWidth + 32);
-                outputFormat.setInteger("slice-height", resultHeight);
-              }
 
               encoder = MediaCodec.createEncoderByType(MIME_TYPE);
               encoder.configure(outputFormat, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE);
-              if (Build.VERSION.SDK_INT >= 18) {
-                inputSurface = new InputSurface(encoder.createInputSurface());
-                inputSurface.makeCurrent();
-              }
+              inputSurface = new InputSurface(encoder.createInputSurface());
+              inputSurface.makeCurrent();
               encoder.start();
 
               decoder = MediaCodec.createDecoderByType(inputFormat.getString(MediaFormat.KEY_MIME));
-              if (Build.VERSION.SDK_INT >= 18) {
-                outputSurface = new OutputSurface();
-              } else {
-                outputSurface = new OutputSurface(resultWidth, resultHeight, rotateRender);
-              }
+              outputSurface = new OutputSurface();
               decoder.configure(inputFormat, outputSurface.getSurface(), null, 0);
               decoder.start();
 
               final int TIMEOUT_USEC = 2500;
               ByteBuffer[] decoderInputBuffers = null;
               ByteBuffer[] encoderOutputBuffers = null;
-              ByteBuffer[] encoderInputBuffers = null;
-              if (Build.VERSION.SDK_INT < 21) {
-                decoderInputBuffers = decoder.getInputBuffers();
-                encoderOutputBuffers = encoder.getOutputBuffers();
-                if (Build.VERSION.SDK_INT < 18) {
-                  encoderInputBuffers = encoder.getInputBuffers();
-                }
-              }
 
               checkConversionCanceled();
 
@@ -405,11 +252,7 @@ public class VideoRecoder {
                     int inputBufIndex = decoder.dequeueInputBuffer(TIMEOUT_USEC);
                     if (inputBufIndex >= 0) {
                       ByteBuffer inputBuf;
-                      if (Build.VERSION.SDK_INT < 21) {
-                        inputBuf = decoderInputBuffers[inputBufIndex];
-                      } else {
-                        inputBuf = decoder.getInputBuffer(inputBufIndex);
-                      }
+                      inputBuf = decoder.getInputBuffer(inputBufIndex);
                       int chunkSize = extractor.readSampleData(inputBuf, 0);
                       if (chunkSize < 0) {
                         decoder.queueInputBuffer(inputBufIndex, 0, 0, 0L, MediaCodec.BUFFER_FLAG_END_OF_STREAM);
@@ -439,9 +282,6 @@ public class VideoRecoder {
                   if (encoderStatus == MediaCodec.INFO_TRY_AGAIN_LATER) {
                     encoderOutputAvailable = false;
                   } else if (encoderStatus == MediaCodec.INFO_OUTPUT_BUFFERS_CHANGED) {
-                    if (Build.VERSION.SDK_INT < 21) {
-                      encoderOutputBuffers = encoder.getOutputBuffers();
-                    }
                   } else if (encoderStatus == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) {
                     MediaFormat newFormat = encoder.getOutputFormat();
                     if (videoTrackIndex == -5) {
@@ -451,11 +291,7 @@ public class VideoRecoder {
                     throw new RuntimeException("unexpected result from encoder.dequeueOutputBuffer: " + encoderStatus);
                   } else {
                     ByteBuffer encodedData;
-                    if (Build.VERSION.SDK_INT < 21) {
-                      encodedData = encoderOutputBuffers[encoderStatus];
-                    } else {
-                      encodedData = encoder.getOutputBuffer(encoderStatus);
-                    }
+                    encodedData = encoder.getOutputBuffer(encoderStatus);
                     if (encodedData == null) {
                       throw new RuntimeException("encoderOutputBuffer " + encoderStatus + " was null");
                     }
@@ -513,11 +349,7 @@ public class VideoRecoder {
                       throw new RuntimeException("unexpected result from decoder.dequeueOutputBuffer: " + decoderStatus);
                     } else {
                       boolean doRender;
-                      if (Build.VERSION.SDK_INT >= 18) {
-                        doRender = info.size != 0;
-                      } else {
-                        doRender = info.size != 0 || info.presentationTimeUs != 0;
-                      }
+                      doRender = info.size != 0;
                       if (endTime > 0 && info.presentationTimeUs >= endTime) {
                         inputDone = true;
                         decoderDone = true;
@@ -542,40 +374,15 @@ public class VideoRecoder {
                           Log.w(TAG, "error while waiting for recording output surface", e);
                         }
                         if (!errorWait) {
-                          if (Build.VERSION.SDK_INT >= 18) {
-                            outputSurface.drawImage(false);
-                            inputSurface.setPresentationTime(info.presentationTimeUs * 1000);
-                            inputSurface.swapBuffers();
-                          } else {
-                            Log.w(TAG, "Cannot proceed with the current SDK version");
-                            return false; // TODO: this should be caught much earlier
-                            /*
-                            int inputBufIndex = encoder.dequeueInputBuffer(TIMEOUT_USEC);
-                            if (inputBufIndex >= 0) {
-                              outputSurface.drawImage(true);
-                              ByteBuffer rgbBuf = outputSurface.getFrame();
-                              ByteBuffer yuvBuf = encoderInputBuffers[inputBufIndex];
-                              yuvBuf.clear();
-                              Utilities.convertVideoFrame(rgbBuf, yuvBuf, colorFormat, resultWidth, resultHeight, padding, swapUV);
-                              encoder.queueInputBuffer(inputBufIndex, 0, bufferSize, info.presentationTimeUs, 0);
-                            } else {
-                              //Log.i("DeltaChat", "input buffer not available");
-                            }
-                            */
-                          }
+                          outputSurface.drawImage(false);
+                          inputSurface.setPresentationTime(info.presentationTimeUs * 1000);
+                          inputSurface.swapBuffers();
                         }
                       }
                       if ((info.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
                         decoderOutputAvailable = false;
                         //Log.i("DeltaChat", "decoder stream end");
-                        if (Build.VERSION.SDK_INT >= 18) {
-                          encoder.signalEndOfInputStream();
-                        } else {
-                          int inputBufIndex = encoder.dequeueInputBuffer(TIMEOUT_USEC);
-                          if (inputBufIndex >= 0) {
-                            encoder.queueInputBuffer(inputBufIndex, 0, 1, info.presentationTimeUs, MediaCodec.BUFFER_FLAG_END_OF_STREAM);
-                          }
-                        }
+                        encoder.signalEndOfInputStream();
                       }
                     }
                   }
@@ -660,45 +467,6 @@ public class VideoRecoder {
     int    resultVideoBitrate;
 
     int    estimatedBytes;
-  }
-
-  public static boolean canRecode()
-  {
-    boolean canRecode = true;
-    if (Build.VERSION.SDK_INT < 16 /*= Jelly Bean 4.1 (before that codecInfo.getName() was not there) */) {
-      Log.w(TAG, "Cannot recode: API < 16");
-      canRecode = false;
-    }
-    else if (Build.VERSION.SDK_INT < 18 /*= Jelly Bean 4.3*/) {
-      try {
-        MediaCodecInfo codecInfo = VideoRecoder.selectCodec(VideoRecoder.MIME_TYPE);
-        if (codecInfo == null) {
-          Log.w(TAG, "Cannot recode: cannot select codec");
-          canRecode = false;
-        } else {
-          String name = codecInfo.getName();
-          if (name.equals("OMX.google.h264.encoder") ||
-              name.equals("OMX.ST.VFM.H264Enc") ||
-              name.equals("OMX.Exynos.avc.enc") ||
-              name.equals("OMX.MARVELL.VIDEO.HW.CODA7542ENCODER") ||
-              name.equals("OMX.MARVELL.VIDEO.H264ENCODER") ||
-              name.equals("OMX.k3.video.encoder.avc") ||
-              name.equals("OMX.TI.DUCATI1.VIDEO.H264E")) {
-            Log.w(TAG, "Cannot recode: no supported codec found");
-            canRecode = false;
-          } else {
-            if (VideoRecoder.selectColorFormat(codecInfo, VideoRecoder.MIME_TYPE) == 0) {
-              Log.w(TAG, "Cannot recode: cannot select color format");
-              canRecode = false;
-            }
-          }
-        }
-      } catch (Exception e) {
-        Log.w(TAG, "Cannot recode: Determinating recoding capabilities failed unexpectedly", e);
-        canRecode = false;
-      }
-    }
-    return canRecode;
   }
 
   private static VideoEditedInfo getVideoEditInfoFromFile(String videoPath) {
@@ -810,11 +578,6 @@ public class VideoRecoder {
         msg.setDimension(vei.originalWidth, vei.originalHeight);
       }
       msg.setDuration((int)vei.originalDurationMs);
-
-      if (!canRecode()) {
-        alert(context, String.format("Recoding failed for %s: this system cannot recode videos", inPath));
-        return false;
-      }
 
       // check if video bitrate is already reasonable
       final int  MAX_KBPS = 1500000;

@@ -26,7 +26,6 @@ public class ProfilePreference extends Preference {
   private TextView  profileNameView;
   private TextView profileAddressView;
 
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
   public ProfilePreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
     initialize();

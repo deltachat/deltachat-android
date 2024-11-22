@@ -40,7 +40,6 @@ public class MediaView extends FrameLayout {
     initialize();
   }
 
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
   public MediaView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
     initialize();

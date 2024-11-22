@@ -36,7 +36,6 @@ import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.connect.NetworkStateReceiver;
 import org.thoughtcrime.securesms.crypto.DatabaseSecret;
 import org.thoughtcrime.securesms.crypto.DatabaseSecretProvider;
-import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
@@ -178,7 +177,6 @@ public class ApplicationContext extends MultiDexApplication {
 
     KeepAliveService.maybeStartSelf(this);
 
-    initializeRandomNumberFix();
     initializeLogging();
     initializeJobManager();
     InChatSounds.getInstance(this);
@@ -224,10 +222,6 @@ public class ApplicationContext extends MultiDexApplication {
 
   public JobManager getJobManager() {
     return jobManager;
-  }
-
-  private void initializeRandomNumberFix() {
-    PRNGFixes.apply();
   }
 
   private void initializeLogging() {

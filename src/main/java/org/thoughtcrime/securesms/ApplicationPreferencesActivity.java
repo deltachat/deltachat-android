@@ -152,10 +152,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       this.findPreference(PREFERENCE_CATEGORY_HELP)
           .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_HELP));
 
-      if (VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-        tintIcons(getActivity());
-      }
-
       DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
     }
 

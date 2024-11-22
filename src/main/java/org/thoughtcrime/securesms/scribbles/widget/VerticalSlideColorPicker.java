@@ -98,7 +98,6 @@ public class VerticalSlideColorPicker extends View {
     init();
   }
 
-  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
   public VerticalSlideColorPicker(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
     init();
