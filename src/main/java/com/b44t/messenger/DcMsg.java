@@ -147,6 +147,7 @@ public class DcMsg {
         return new JSONObject();
       }
     }
+    public native String  getWebxdcHref      ();
     public native boolean isForwarded        ();
     public native boolean isInfo             ();
     public native boolean isSetupMessage     ();
