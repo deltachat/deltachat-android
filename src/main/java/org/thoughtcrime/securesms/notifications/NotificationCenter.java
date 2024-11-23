@@ -32,6 +32,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import org.json.JSONObject;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
@@ -42,6 +43,7 @@ import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPrefere
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.IntentUtils;
+import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -366,7 +368,28 @@ public class NotificationCenter {
 
         DcContact sender = dcContext.getContact(contactId);
         String shortLine = context.getString(R.string.reaction_by_other, sender.getDisplayName(), reaction, dcMsg.getSummarytext(2000));
-        maybeAddNotification(accountId, dcContext.getChat(dcMsg.getChatId()), msgId, shortLine, shortLine, false);
+        maybeAddNotification(accountId, dcContext.getChat(dcMsg.getChatId()), msgId, shortLine, shortLine, true);
+      });
+    }
+
+    public void notifyWebxdc(int accountId, int contactId, int msgId, String text) {
+      Util.runOnAnyBackgroundThread(() -> {
+        NotificationPrivacyPreference privacy = Prefs.getNotificationPrivacy(context);
+        if (!privacy.isDisplayContact() || !privacy.isDisplayMessage()) {
+          return; // showing "New Message" is wrong, just do nothing.
+        }
+
+        DcContext dcContext = context.dcAccounts.getAccount(accountId);
+        DcMsg dcMsg = dcContext.getMsg(msgId);
+        JSONObject info;
+        if(dcMsg.getType() == DcMsg.DC_MSG_WEBXDC) {
+          info = dcMsg.getWebxdcInfo();
+        } else { // info message, get from parent xdc
+          info = dcMsg.getParent().getWebxdcInfo();
+        }
+        final String name = JsonUtils.optString(info, "name");
+        String shortLine = name.isEmpty()? text : (name + ": " + text);
+        maybeAddNotification(accountId, dcContext.getChat(dcMsg.getChatId()), msgId, shortLine, shortLine, true);
       });
     }
 
