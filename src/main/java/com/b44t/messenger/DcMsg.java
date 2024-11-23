@@ -250,4 +250,5 @@ public class DcMsg {
     private native long getQuotedMsgCPtr ();
     private native long getParentCPtr   ();
     private native String getWebxdcInfoJson ();
+    private native String getWebxdcHref ();
 };
