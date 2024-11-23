@@ -166,10 +166,10 @@ public class DcMsg {
     public native String  getError           ();
     public native String  getOverrideSenderName();
 
-    public String getSenderName(DcContact dcContact, boolean markOverride) {
+    public String getSenderName(DcContact dcContact) {
         String overrideName = getOverrideSenderName();
         if (overrideName != null) {
-            return (markOverride ? "~" : "") + overrideName;
+            return "~" + overrideName;
         } else {
             return dcContact.getDisplayName();
         }
