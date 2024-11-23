@@ -42,11 +42,12 @@
       style="display: none"
     ></iframe>
     <script>
-      const thisUnchangable = (async () => {
+      const loadingDiv = document.getElementById("loading");
+      const iframe = document.getElementById("frame");
+
+      let fill500 = async (href) => {
         const connections = [];
         const loadingProgress = document.getElementById("progress");
-        const loadingDiv = document.getElementById("loading");
-        const iframe = document.getElementById("frame");
         const isolatedContextTest = document.getElementById(
           "test-isolated-sandbox-context"
         );
@@ -131,7 +132,7 @@
           } else {
             loadingDiv.innerHTML = "";
             iframe.style.display = 'block';
-            iframe.src = "index.html";
+            iframe.src = href;
           }
         }
 
@@ -140,7 +141,24 @@
             return connections.length;
           },
         });
-      })();
+      };
+
+     const params = new URLSearchParams(document.location.search);
+     const internetAccess = (params.get("i") || "0") === "1";
+     let href = params.get("href") || "";
+     if (!href || href.startsWith("#")) {
+         href = "index.html" + href;
+     }
+
+     if (internetAccess) {  // fill500 not needed, just load the frame
+         fill500 = (href) => {
+             loadingDiv.innerHTML = "";
+             iframe.style.display = 'block';
+             iframe.src = href;
+         }
+     }
+
+     const thisUnchangable = fill500(href)
     </script>
   </body>
 </html>
