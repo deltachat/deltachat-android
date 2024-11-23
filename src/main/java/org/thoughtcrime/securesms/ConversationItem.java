@@ -22,12 +22,10 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
-import android.os.Build;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -791,14 +789,14 @@ public class ConversationItem extends BaseConversationItem
 
     if (messageRecord.isForwarded()) {
       if (showSender && dcContact !=null) {
-        this.groupSender.setText(context.getString(R.string.forwarded_by, messageRecord.getSenderName(dcContact, false)));
+        this.groupSender.setText(context.getString(R.string.forwarded_by, messageRecord.getSenderName(dcContact)));
       } else {
         this.groupSender.setText(context.getString(R.string.forwarded_message));
       }
       this.groupSender.setTextColor(context.getResources().getColor(R.color.unknown_sender));
     }
     else if (showSender && dcContact !=null) {
-      this.groupSender.setText(messageRecord.getSenderName(dcContact, true));
+      this.groupSender.setText(messageRecord.getSenderName(dcContact));
       this.groupSender.setTextColor(Util.rgbToArgbColor(dcContact.getColor()));
     }
   }

@@ -24,7 +24,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -427,7 +426,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
             if (msg.getFromId() != prevMsg.getFromId() && !singleMsg) {
                 DcContact contact = dcContext.getContact(msg.getFromId());
-                result.append(msg.getSenderName(contact, false)).append(":\n");
+                result.append(msg.getSenderName(contact)).append(":\n");
             }
             if (msg.getType() == DcMsg.DC_MSG_TEXT || (singleMsg && !msg.getText().isEmpty())) {
                 result.append(msg.getText());

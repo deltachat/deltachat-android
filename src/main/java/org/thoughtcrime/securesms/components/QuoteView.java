@@ -4,7 +4,6 @@ package org.thoughtcrime.securesms.components;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.net.Uri;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -16,7 +15,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.annimon.stream.Stream;
 import com.b44t.messenger.DcContact;
@@ -155,7 +153,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
       if (contact == null) {
         authorView.setText(getContext().getString(R.string.forwarded_message));
       } else {
-        authorView.setText(getContext().getString(R.string.forwarded_by, quotedMsg.getSenderName(contact, false)));
+        authorView.setText(getContext().getString(R.string.forwarded_by, quotedMsg.getSenderName(contact)));
       }
       authorView.setTextColor(getForwardedColor());
       quoteBarView.setBackgroundColor(getForwardedColor());
@@ -166,7 +164,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
         quoteBarView.setBackgroundColor(getForwardedColor());
       } else {
         authorView.setVisibility(VISIBLE);
-        authorView.setText(quotedMsg.getSenderName(contact, true));
+        authorView.setText(quotedMsg.getSenderName(contact));
         if (hasSticker) {
           authorView.setTextColor(getResources().getColor(R.color.core_dark_05));
           quoteBarView.setBackgroundColor(getResources().getColor(R.color.core_dark_05));

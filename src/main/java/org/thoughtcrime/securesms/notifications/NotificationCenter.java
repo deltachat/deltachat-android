@@ -343,12 +343,12 @@ public class NotificationCenter {
 
         String shortLine = privacy.isDisplayMessage()? dcMsg.getSummarytext(2000) : context.getString(R.string.notify_new_message);
         if (dcChat.isMultiUser() && privacy.isDisplayContact()) {
-          shortLine = dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId()), false) + ": " + shortLine;
+          shortLine = dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId())) + ": " + shortLine;
         }
         String tickerLine = shortLine;
         if (!dcChat.isMultiUser() && privacy.isDisplayContact()) {
           DcContact contact = dcContext.getContact(dcMsg.getFromId());
-          tickerLine = dcMsg.getSenderName(contact, false) + ": " + tickerLine;
+          tickerLine = dcMsg.getSenderName(contact) + ": " + tickerLine;
 
           if (!Util.equals(dcChat.getName(), contact.getDisplayName())) {
             // There is an "overridden" display name on the message, so, we need to prepend the display name to the message,
