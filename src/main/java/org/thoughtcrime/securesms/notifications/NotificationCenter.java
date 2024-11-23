@@ -368,7 +368,7 @@ public class NotificationCenter {
 
         DcContact sender = dcContext.getContact(contactId);
         String shortLine = context.getString(R.string.reaction_by_other, sender.getDisplayName(), reaction, dcMsg.getSummarytext(2000));
-        maybeAddNotification(accountId, dcContext.getChat(dcMsg.getChatId()), msgId, shortLine, shortLine, true);
+        maybeAddNotification(accountId, dcContext.getChat(dcMsg.getChatId()), msgId, shortLine, shortLine, false);
       });
     }
 
@@ -389,7 +389,7 @@ public class NotificationCenter {
         }
         final String name = JsonUtils.optString(info, "name");
         String shortLine = name.isEmpty()? text : (name + ": " + text);
-        maybeAddNotification(accountId, dcContext.getChat(dcMsg.getChatId()), msgId, shortLine, shortLine, true);
+        maybeAddNotification(accountId, dcContext.getChat(dcMsg.getChatId()), msgId, shortLine, shortLine, false);
       });
     }
 
