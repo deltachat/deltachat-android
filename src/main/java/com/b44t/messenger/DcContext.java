@@ -204,7 +204,7 @@ public class DcContext {
     public native int          sendMsg              (int chat_id, DcMsg msg);
     public native int          sendTextMsg          (int chat_id, String text);
     public native int          sendVideochatInvitation(int chat_id);
-    public native boolean      sendWebxdcStatusUpdate(int msg_id, String payload, String descr);
+    public native boolean      sendWebxdcStatusUpdate(int msg_id, String payload);
     public native String       getWebxdcStatusUpdates(int msg_id, int last_known_serial);
     public native void         setWebxdcIntegration (String file);
     public native int          initWebxdcIntegration(int chat_id);
