@@ -528,7 +528,7 @@ public class NotificationCenter {
                         }
                         lines.add(tickerLine);
 
-                        for (int l = lines.size() - 1; l >= 0; l--) {
+                        for (int l = 0; l < lines.size(); l++) {
                             inboxStyle.addLine(lines.get(l));
                         }
                     }
