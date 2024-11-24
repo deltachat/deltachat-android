@@ -385,7 +385,7 @@ public class NotificationCenter {
         if(dcMsg.getType() == DcMsg.DC_MSG_WEBXDC) {
           info = dcMsg.getWebxdcInfo();
         } else { // info message, get from parent xdc
-          info = dcMsg.getParent() != null? dcMsg.getParent().getWebxdcInfo() : "";
+          info = dcMsg.getParent() != null? dcMsg.getParent().getWebxdcInfo() : new JSONObject();
         }
         final String name = JsonUtils.optString(info, "name");
         String shortLine = name.isEmpty()? text : (name + ": " + text);
