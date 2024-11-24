@@ -68,8 +68,8 @@ window.webxdc = (() => {
       return Promise.resolve([]);
     },
 
-    sendUpdate: (payload, descr) => {
-      InternalJSApi.sendStatusUpdate(JSON.stringify(payload), descr);
+    sendUpdate: (payload) => {
+      InternalJSApi.sendStatusUpdate(JSON.stringify(payload));
     },
 
     sendToChat: async (message) => {

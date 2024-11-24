@@ -488,9 +488,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
     /** @noinspection unused*/
     @JavascriptInterface
-    public boolean sendStatusUpdate(String payload, String descr) {
+    public boolean sendStatusUpdate(String payload) {
       Log.i(TAG, "sendStatusUpdate");
-      if (!WebxdcActivity.this.dcContext.sendWebxdcStatusUpdate(WebxdcActivity.this.dcAppMsg.getId(), payload, descr)) {
+      if (!WebxdcActivity.this.dcContext.sendWebxdcStatusUpdate(WebxdcActivity.this.dcAppMsg.getId(), payload)) {
         DcChat dcChat =  WebxdcActivity.this.dcContext.getChat(WebxdcActivity.this.dcAppMsg.getChatId());
         Toast.makeText(WebxdcActivity.this,
                       dcChat.isContactRequest() ?
