@@ -74,6 +74,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private DcMsg dcAppMsg;
   private String baseURL;
   private String sourceCodeUrl = "";
+  private String selfAddr = "";
   private boolean internetAccess = false;
   private boolean hideActionBar = false;
 
@@ -198,6 +199,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
     final JSONObject info = this.dcAppMsg.getWebxdcInfo();
     internetAccess = JsonUtils.optBoolean(info, "internet_access");
+    selfAddr = JsonUtils.optString(info, "self_addr");
 
     toggleFakeProxy(!internetAccess);
 
@@ -471,7 +473,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   class InternalJSApi {
     @JavascriptInterface
     public String selfAddr() {
-      return WebxdcActivity.this.dcContext.getConfig("addr");
+      return WebxdcActivity.this.selfAddr;
     }
 
     /** @noinspection unused*/
