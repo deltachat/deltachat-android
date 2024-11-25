@@ -2,10 +2,6 @@ package com.b44t.messenger;
 
 public class DcContext {
 
-    public final static int DC_PREF_DEFAULT_MDNS_ENABLED = 1;
-    public final static int DC_PREF_DEFAULT_TRIM_ENABLED = 0;
-    public final static int DC_PREF_DEFAULT_TRIM_LENGTH  = 500;
-
     public final static int DC_EVENT_INFO                        = 100;
     public final static int DC_EVENT_WARNING                     = 300;
     public final static int DC_EVENT_ERROR                       = 400;
@@ -83,10 +79,6 @@ public class DcContext {
 
     public final static int DC_MEDIA_QUALITY_BALANCED = 0;
     public final static int DC_MEDIA_QUALITY_WORSE    = 1;
-
-    public final static int DC_DECISION_START_CHAT = 0;
-    public final static int DC_DECISION_BLOCK      = 1;
-    public final static int DC_DECISION_NOT_NOW    = 2;
 
     public final static int DC_CONNECTIVITY_NOT_CONNECTED = 1000;
     public final static int DC_CONNECTIVITY_CONNECTING = 2000;
@@ -218,24 +210,6 @@ public class DcContext {
     public native void         sendLocationsToChat  (int chat_id, int seconds);
     public native boolean      isSendingLocationsToChat(int chat_id);
     public DcProvider          getProviderFromEmailWithDns (String email) { long cptr = getProviderFromEmailWithDnsCPtr(email); return cptr!=0 ? new DcProvider(cptr) : null; }
-
-    public String getNameNAddr() {
-      String displayname = getConfig("displayname");
-      String addr = getConfig("addr");
-      String ret = "";
-
-      if (!displayname.isEmpty() && !addr.isEmpty()) {
-        ret = String.format("%s (%s)", displayname, addr);
-      } else if (!addr.isEmpty()) {
-        ret = addr;
-      }
-
-      if (ret.isEmpty() || isConfigured() == 0) {
-        ret += " (not configured)";
-      }
-
-      return ret.trim();
-    }
 
     public String getName() {
       String displayname = getConfig("displayname");
