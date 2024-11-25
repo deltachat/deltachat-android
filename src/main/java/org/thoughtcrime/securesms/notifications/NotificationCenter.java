@@ -349,10 +349,9 @@ public class NotificationCenter {
         }
         String tickerLine = shortLine;
         if (!dcChat.isMultiUser() && privacy.isDisplayContact()) {
-          DcContact contact = dcContext.getContact(dcMsg.getFromId());
-          tickerLine = dcMsg.getSenderName(contact) + ": " + tickerLine;
+          tickerLine = dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId())) + ": " + tickerLine;
 
-          if (!Util.equals(dcChat.getName(), contact.getDisplayName())) {
+          if (dcMsg.getOverrideSenderName() != null) {
             // There is an "overridden" display name on the message, so, we need to prepend the display name to the message,
             // i.e. set the shortLine to be the same as the tickerLine.
             shortLine = tickerLine;
