@@ -345,11 +345,17 @@ public class NotificationCenter {
 
         String shortLine = privacy.isDisplayMessage()? dcMsg.getSummarytext(2000) : context.getString(R.string.notify_new_message);
         if (dcChat.isMultiUser() && privacy.isDisplayContact()) {
-          shortLine = dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId()), false) + ": " + shortLine;
+          shortLine = dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId())) + ": " + shortLine;
         }
         String tickerLine = shortLine;
         if (!dcChat.isMultiUser() && privacy.isDisplayContact()) {
-          tickerLine = dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId()), false) + ": " + tickerLine;
+          tickerLine = dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId())) + ": " + tickerLine;
+
+          if (dcMsg.getOverrideSenderName() != null) {
+            // There is an "overridden" display name on the message, so, we need to prepend the display name to the message,
+            // i.e. set the shortLine to be the same as the tickerLine.
+            shortLine = tickerLine;
+          }
         }
 
         maybeAddNotification(accountId, dcChat, msgId, shortLine, tickerLine, true);
@@ -549,7 +555,7 @@ public class NotificationCenter {
                             lines = new ArrayList<>();
                             accountInbox.put(chatId, lines);
                         }
-                        lines.add(tickerLine);
+                        lines.add(shortLine);
 
                         for (int l = 0; l < lines.size(); l++) {
                             inboxStyle.addLine(lines.get(l));
