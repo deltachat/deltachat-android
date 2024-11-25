@@ -4,9 +4,9 @@
 
     <item android:title="@string/add_to_home_screen"
         android:id="@+id/menu_add_to_home_screen" />
-    <item android:title="@string/source_code"
-        android:id="@+id/source_code" />
     <item android:id="@+id/show_in_chat"
         android:title="@string/show_in_chat" />
+    <item android:title="@string/source_code"
+        android:id="@+id/source_code" />
 
 </menu>
