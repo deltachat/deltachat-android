@@ -260,6 +260,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       case R.id.source_code:
         openUrlInBrowser(this, sourceCodeUrl);
         return true;
+      case R.id.show_in_chat:
+        showInChat();
+        return true;
     }
     return false;
   }
@@ -404,6 +407,13 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         sourceCodeUrl = currSourceCodeUrl;
         invalidateOptionsMenu();
       }
+  }
+
+  private void showInChat() {
+    Intent intent = new Intent(this, ConversationActivity.class);
+    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, dcAppMsg.getChatId());
+    intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, DcMsg.getMessagePosition(dcAppMsg, dcContext));
+    startActivity(intent);
   }
 
   public static void addToHomeScreen(Activity activity, int msgId) {
