@@ -446,6 +446,9 @@
     <string name="send_file_to">“%1$s” versturen naar…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Bericht versturen naar…</string>
+    <string name="enable_realtime">Real-timeapps</string>
+    <string name="enable_realtime_explain">Laat apps een real-timeverbinding gebruiken in gedeelde gesprekken. Let op: gesprekspartners kunnen hierdoor mogelijk je ip-adres zien.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Locaties tonen in tijdsbeeld</string>
     <string name="show_location_traces">Sporen tonen</string>

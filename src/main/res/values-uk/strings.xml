@@ -478,6 +478,9 @@
     <string name="send_file_to">Надіслати \"%1$s\" до…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Надіслати повідомлення до...</string>
+    <string name="enable_realtime">Додатки реального часу</string>
+    <string name="enable_realtime_explain">Увімкнути з\'єднання в режимі реального часу для застосунків, якими діляться в чатах. Якщо ввімкнено, співрозмовники можуть отримати доступ до вашої IP-адреси, коли ви запускаєте застосунок.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Показати місця у часовому проміжку</string>
     <string name="show_location_traces">Показати треки</string>
@@ -650,10 +653,15 @@
     <string name="proxy_use_proxy">Використовувати проксі</string>
     <string name="proxy_add">Додати проксі-сервер</string>
     <string name="proxy_add_explain">Підтримувані типи проксі: HTTP(S), SOCKS5 і Shadowsocks.</string>
+    <string name="proxy_add_url_hint">Введіть посилання на проксі-сервер тут</string>
+    <string name="proxy_invalid">Недійсний або непідтримуваний проксі-сервер</string>
     <string name="proxy_list_header">Збережені проксі-сервери</string>
     <string name="proxy_delete">Видалити проксі-сервер</string>
     <string name="proxy_delete_explain">Ви дійсно хочете видалити \"%1$s\"?</string>
     <string name="proxy_use_proxy_confirm">Ви хочете використовувати проксі \"%1$s\"?</string>
+    <string name="proxy_share_explain">Ваші друзі можуть додати цей проксі, відсканувавши QR-код.</string>
+    <string name="proxy_share_link">Поділитися посиланням</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Використовувати SOCKS5</string>
@@ -678,6 +686,9 @@
     <string name="accept_invalid_certificates">Приймати недійсні сертифікати</string>
     <string name="switch_account">Перемкнути обліковий запис</string>
     <string name="add_account">Додати обліковий запис</string>
+    <string name="profile_tag">Особистий тег</string>
+    <string name="profile_tag_hint">наприклад \"Робота\", \"Сім\'я\"</string>
+    <string name="profile_tag_explain">Тег, видимий тільки для вас; допомагає розрізняти ваші профілі.</string>
     <string name="delete_account">Видалити обліковий запис</string>
     <string name="delete_account_ask">Ви впевнені, що хочете видалити дані вашого облікового запису?</string>
     <string name="delete_account_explain_with_name">Дані облікового запису \"%s\" на цьому пристрої будуть видалені, включаючи налаштування наскрізного шифрування, контакти, чати, повідомлення та медіа. Ця дія не може бути скасована.</string>
