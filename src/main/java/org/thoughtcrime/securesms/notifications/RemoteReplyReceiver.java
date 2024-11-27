@@ -69,7 +69,6 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
 
         DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
         msg.setText(responseText.toString());
-        msg.setQuote(dcContext.getMsg(msgId));
         dcContext.sendMsg(chatId, msg);
 
         DcHelper.getNotificationCenter(context).removeNotifications(accountId, chatId);
