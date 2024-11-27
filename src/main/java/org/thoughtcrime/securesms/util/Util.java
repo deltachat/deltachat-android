@@ -85,10 +85,6 @@ public class Util {
     return false;
   }
 
-  public static String QrDataToInviteURL(String qrData) {
-    return "https://" + INVITE_DOMAIN + "/#" + qrData.split(":", 2)[1].replaceFirst("#", "&");
-  }
-
   public static CharSequence getBoldedString(String value) {
     SpannableString spanned = new SpannableString(value);
     spanned.setSpan(new StyleSpan(Typeface.BOLD), 0,

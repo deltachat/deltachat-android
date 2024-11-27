@@ -533,7 +533,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private void shareInvite() {
     Intent intent = new Intent(Intent.ACTION_SEND);
     intent.setType("text/plain");
-    String inviteURL = Util.QrDataToInviteURL(DcHelper.getContext(this).getSecurejoinQr(0));
+    String inviteURL = DcHelper.getContext(this).getSecurejoinQr(0);
     intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.invite_friends_text, inviteURL));
     startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
   }
