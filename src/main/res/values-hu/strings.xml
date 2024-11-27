@@ -277,7 +277,7 @@
     <string name="select_more">Több kiválasztása</string>
     <string name="menu_edit_name">Név szerkesztése</string>
     <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
-    <string name="edit_name_explain">Állítson be egy becenevet a(z) „%1$s” nevű ismerősének. Hagyja üresen a partnere által választott név megjelenítéséhez.</string>
+    <string name="edit_name_explain">Állítson be egy becenevet a(z) „%1$s” nevű ismerősének. Hagyja üresen az ismerőse által választott név megjelenítéséhez.</string>
     <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
     <string name="edit_name_placeholder">Becenév megadása „%1$s“ számára</string>
     <string name="menu_settings">Beállítások</string>
@@ -446,6 +446,9 @@
     <string name="send_file_to">„%1$s” küldése…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Üzenet küldése…</string>
+    <string name="enable_realtime">Valós idejű alkalmazások</string>
+    <string name="enable_realtime_explain">Valós idejű kapcsolatok engedélyezése a csevegésekben megosztott alkalmazásokhoz. Ha engedélyezve van, az ismerősei képesek lehetnek felfedezni az Ön IP-címét, amikor elindít egy alkalmazást.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Helyszínek megjelenítése időkeretben</string>
     <string name="show_location_traces">Nyomvonalak megjelenítése</string>
@@ -720,7 +723,7 @@
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Tanulás letiltásának kérése a billentyűzettől</string>
     <string name="pref_read_receipts">Olvasási visszaigazolások</string>
-    <string name="pref_read_receipts_explain">Ha az olvasási visszaigazolások le vannak tiltva, ön sem fogja látni mások olvasási visszaigazolásait.</string>
+    <string name="pref_read_receipts_explain">Ha az olvasási visszaigazolások le vannak tiltva, így Ön sem fogja látni mások olvasási visszaigazolásait.</string>
     <string name="pref_server">Kiszolgáló</string>
     <string name="pref_encryption">Titkosítás</string>
     <string name="pref_manage_keys">Privát kulcsok kezelése</string>
@@ -762,7 +765,7 @@
     <string name="pref_imap_folder_handling">IMAP-mappák kezelése</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ha megváltoztatja ezt a beállítást, győződjön meg arról, hogy a kiszolgálója és a többi kliense is ennek megfelelően van beállítva.\n\nMáskülönben előfordulhat, hogy a dolgok egyáltalán nem fognak működni.</string>
     <string name="pref_watch_sent_folder">Elküldött üzenetek mappájának figyelése</string>
-    <string name="pref_send_copy_to_self">Másolat küldése önmagának</string>
+    <string name="pref_send_copy_to_self">Másolat küldése Önmagának</string>
     <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Szükséges, ha ezt a fiókot több eszközön is használja.</string>
     <string name="pref_auto_folder_moves">Automatikus áthelyezés a DeltaChat mappába</string>
@@ -772,7 +775,7 @@
     <string name="pref_show_emails">Klasszikus e-mailek megjelenítése</string>
     <string name="pref_show_emails_no">Nem, csak csevegések</string>
     <string name="pref_show_emails_accepted_contacts">Elfogadott ismerősök számára</string>
-    <string name="pref_show_emails_all">Mind</string>
+    <string name="pref_show_emails_all">Összes</string>
     <string name="pref_experimental_features">Kísérleti funkciók</string>
     <string name="pref_on_demand_location_streaming">On-Demand folyamatos helyszín megosztás</string>
     <string name="pref_developer_mode">Fejlesztői mód</string>

@@ -139,6 +139,12 @@
         <item quantity="many">%d сообщений</item>
         <item quantity="other">%d сообщений</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d реакция</item>
+        <item quantity="few">%d реакции</item>
+        <item quantity="many">%d реакций</item>
+        <item quantity="other">%d реакций</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d участник</item>
         <item quantity="few">%d участника</item>
@@ -472,6 +478,9 @@
     <string name="send_file_to">Отправить \"%1$s\" …</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Отправить сообщение…</string>
+    <string name="enable_realtime">Приложения реального времени</string>
+    <string name="enable_realtime_explain">Включить соединения в реальном времени для приложений, которыми вы делитесь в чатах. Если этот параметр включен, собеседники по чату смогут узнать ваш IP-адрес при запуске приложения.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Показать местоположения с интервалом времени</string>
     <string name="show_location_traces">Показывать маршруты</string>
