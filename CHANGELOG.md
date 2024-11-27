@@ -1,5 +1,33 @@
 # Delta Chat Android Changelog
 
+## v1.49.0
+2024-11
+
+* New emoji picker with support for more emojis
+* Webxdc apps can now trigger notifications
+* Webxdc apps can now deep-link to internal sections when you click their info-messages in chat
+* Add "Show in Chat" to the menu of opened Webxdc apps
+* Reverse order of messages in the notification group
+* Notify reactions to own messages
+* Improve the button to start Webxdc apps
+* Make account deletion confirmation dialog faster
+* Rename "Back up Chats to External Storage" to "Export Backup"
+* Improve compatibility with classic email clients in the outgoing messages
+* Removed internal font scaling setting in favor of the better system settings
+* Use privacy-preserving webxdc addresses
+* Use Rustls for connections with strict TLS
+* fix: Trim whitespace from scanned QR codes.
+* fix quotes: Line-before-quote may be up to 120 character long instead of 80
+* fix: Prevent accidental wrong-password-notifications
+* fix: Remove footers from "Show Full Message..."
+* fix: Only add "member added/removed" messages if they actually do that
+* fix: Update state of message when fully downloading it
+* fix: send message: Do not fail if the message does not exist anymore
+* fix: Do not percent-encode dot when passing to autoconfig server (so, fix handling of some servers)
+* fix displaynames not being updated when intially scanned by a QR code
+* several bug fixes
+* update to core 1.151.2
+
 ## v1.48.3
 2024-10
 
