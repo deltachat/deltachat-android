@@ -478,6 +478,9 @@
     <string name="send_file_to">Wyślij „%1$s” do…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Wyślij wiadomość do…</string>
+    <string name="enable_realtime">Aplikacje w czasie rzeczywistym</string>
+    <string name="enable_realtime_explain">Włącz połączenia w czasie rzeczywistym dla aplikacji udostępnianych na czatach. Jeśli ta opcja jest włączona, partnerzy czatu mogą być w stanie wykryć twój adres IP, gdy uruchamiasz aplikację.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Pokaż lokalizacje w ramach czasowych</string>
     <string name="show_location_traces">Pokaż ślady</string>

@@ -4,7 +4,13 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancelar</string>
-   <string name="clear_search">Limpar busca</string>
+   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
+    <string name="or_separator">ou</string>
+    <string name="clear_search">Limpar busca</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Link</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Scan</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
     <string name="select">Selecionar</string>
@@ -30,7 +36,9 @@
     <string name="attachment">Anexo</string>
     <string name="back">Voltar</string>
     <string name="close">Fechar</string>
+    <string name="close_window">Fechar Janela</string>
     <string name="forward">Encaminhar</string>
+    <string name="create">Criar</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Re-enviar</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
