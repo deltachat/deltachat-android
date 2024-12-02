@@ -418,6 +418,7 @@ public class NotificationCenter {
             DcContext dcContext = context.dcAccounts.getAccount(accountId);
             int chatId = dcChat.getId();
             ChatData chatData = new ChatData(accountId, chatId);
+            isMention = isMention && dcContext.isMentionsEnabled();
 
             if (dcContext.isMuted() || (!isMention &&  dcChat.isMuted())) {
                 return;

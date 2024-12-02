@@ -36,6 +36,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
   private CheckBoxPreference ignoreBattery;
   private CheckBoxPreference notificationsEnabled;
+  private CheckBoxPreference mentionNotifEnabled;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -99,6 +100,13 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       dcContext.setMuted(!enabled);
       return true;
     });
+
+    mentionNotifEnabled = this.findPreference("pref_enable_mention_notifications");
+    mentionNotifEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
+      boolean enabled = (Boolean) newValue;
+      dcContext.setMentionsEnabled(enabled);
+      return true;
+    });
   }
 
   @Override
@@ -114,6 +122,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     // update ignoreBattery in onResume() to reflects changes done in the system settings
     ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
     notificationsEnabled.setChecked(!dcContext.isMuted());
+    mentionNotifEnabled.setChecked(dcContext.isMentionsEnabled());
   }
 
   @Override
