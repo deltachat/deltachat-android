@@ -79,23 +79,6 @@ public class Rpc {
         }
     }
 
-    public int addAccount() throws RpcException {
-        return gson.fromJson(getResult("add_account"), int.class);
-    }
-
-    public void startIO() throws RpcException {
-        getResult("start_io_for_all_accounts");
-    }
-
-    public void stopIO() throws RpcException {
-        getResult("stop_io_for_all_accounts");
-    }
-
-    public Map<String, String> getSystemInfo() throws RpcException {
-        TypeToken<Map<String, String>> mapType = new TypeToken<Map<String, String>>(){};
-        return gson.fromJson(getResult("get_system_info"), mapType.getType());
-    }
-
     public List<VcardContact> parseVcard(String path) throws RpcException {
         TypeToken<List<VcardContact>> listType = new TypeToken<List<VcardContact>>(){};
         return gson.fromJson(getResult("parse_vcard", path), listType.getType());
