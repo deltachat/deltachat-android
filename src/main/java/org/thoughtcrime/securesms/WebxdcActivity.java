@@ -235,6 +235,18 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   }
 
   @Override
+  public void onResume() {
+    super.onResume();
+    DcHelper.getNotificationCenter(this).updateVisibleWebxdc(dcContext.getAccountId(), dcAppMsg.getId());
+  }
+
+  @Override
+  protected void onPause() {
+    super.onPause();
+    DcHelper.getNotificationCenter(this).clearVisibleWebxdc();
+  }
+
+  @Override
   protected void onDestroy() {
     DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
     leaveRealtimeChannel();

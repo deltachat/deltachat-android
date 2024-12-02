@@ -44,6 +44,7 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.JsonUtils;
+import org.thoughtcrime.securesms.util.Pair;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -58,6 +59,7 @@ public class NotificationCenter {
     private static final String TAG = NotificationCenter.class.getSimpleName();
     @NonNull private final ApplicationContext context;
     private volatile ChatData visibleChat = null;
+    private volatile Pair<Integer, Integer> visibleWebxdc = null;
     private volatile long lastAudibleNotification = 0;
     private static final long MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(2);
 
@@ -387,12 +389,18 @@ public class NotificationCenter {
 
         DcContext dcContext = context.dcAccounts.getAccount(accountId);
         DcMsg dcMsg = dcContext.getMsg(msgId);
-        JSONObject info;
+        DcMsg parentMsg;
         if(dcMsg.getType() == DcMsg.DC_MSG_WEBXDC) {
-          info = dcMsg.getWebxdcInfo();
-        } else { // info message, get from parent xdc
-          info = dcMsg.getParent() != null? dcMsg.getParent().getWebxdcInfo() : new JSONObject();
+            parentMsg = dcMsg;
+        } else { // info message, get parent xdc
+            parentMsg = dcMsg.getParent() != null? dcMsg.getParent() : dcMsg;
         }
+
+        if (Util.equals(visibleWebxdc, new Pair<>(accountId, parentMsg.getId()))) {
+            return; // do not notify if the app is already open
+        }
+
+        JSONObject info = parentMsg.getWebxdcInfo();
         final String name = JsonUtils.optString(info, "name");
         String shortLine = name.isEmpty()? text : (name + ": " + text);
         maybeAddNotification(accountId, dcContext.getChat(dcMsg.getChatId()), msgId, shortLine, shortLine, false);
@@ -658,6 +666,18 @@ public class NotificationCenter {
 
     public void clearVisibleChat() {
         visibleChat = null;
+    }
+
+    public void updateVisibleWebxdc(int accountId, int msgId) {
+        if (accountId != 0 && msgId != 0) {
+            visibleWebxdc = new Pair<>(accountId, msgId);
+        } else {
+            visibleWebxdc = null;
+        }
+    }
+
+    public void clearVisibleWebxdc() {
+        visibleWebxdc = null;
     }
 
     public void maybePlaySendSound(DcChat dcChat) {
