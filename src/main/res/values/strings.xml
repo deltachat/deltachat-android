@@ -1181,7 +1181,7 @@
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
 
     <!-- device messages for updates -->
-    <string name="update_1_46_android">New Onboarding 🐣 and More:\n\n⚡️ Sign up to secure fast chatmail servers (https://delta.chat/chatmail) or use classic e-mail servers\n\n👉 PUSH notifications for any chatmail server\n\n👤 Connect your friends securely via \"Attach contacts\"\n\n🥰 React with any emoji\n\n📌 Pin chats directly from search … and MORE at %1$s</string>
+    <string name="update_1_50_android">New Emoji Picker ❤️‍🔥 and More:\n\n🆕 New emoji picker with support for more emojis\n\n🎮 Webxdc apps can now trigger notifications and deep-link to sections directly on opening by tapping in-chat announcements\n\n👍 Notify reactions to your messages\n\n🔔 Change to more natural order of messages in grouped notifications\n\n🥸 Don\'t expose your real email address to Webxdc apps … and MORE at %1$s</string>
     <string name="update_1_46_ios">New Onboarding 🐣 and More:\n\n⚡️ Sign up to secure fast chatmail servers (https://delta.chat/chatmail) or use classic e-mail servers\n\n👉 PUSH notifications for any chatmail server\n\n👤 Receive \"Attached contacts\" and connect to your friends\n\n🥰 Faster reaction selection … and MORE at %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ \"Switch Profile\" option moved: Tap your profile image in the upper corner of the main screen to add or switch profiles 💡</string>
 </resources>

@@ -1,7 +1,7 @@
 # Delta Chat Android Changelog
 
-## v1.49.0
-2024-11
+## v1.50.0
+2024-12
 
 * New emoji picker with support for more emojis
 * Webxdc apps can now trigger notifications
@@ -16,7 +16,9 @@
 * Removed internal font scaling setting in favor of the better system settings
 * Use privacy-preserving webxdc addresses
 * Use Rustls for connections with strict TLS
-* fix: Trim whitespace from scanned QR codes.
+* Mark Saved Messages chat as protected
+* Allow the user to replace maps integration
+* fix: Trim whitespace from scanned QR codes
 * fix quotes: Line-before-quote may be up to 120 character long instead of 80
 * fix: Prevent accidental wrong-password-notifications
 * fix: Remove footers from "Show Full Message..."
@@ -26,7 +28,7 @@
 * fix: Do not percent-encode dot when passing to autoconfig server (so, fix handling of some servers)
 * fix displaynames not being updated when intially scanned by a QR code
 * several bug fixes
-* update to core 1.151.2
+* update to core 1.151.3
 
 ## v1.48.3
 2024-10
