@@ -189,6 +189,28 @@
             </LinearLayout>
 
             <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:gravity="center"
+                          android:orientation="vertical">
+
+                <org.thoughtcrime.securesms.components.CircleColorImageView
+                        android:id="@+id/webxdc_button"
+                        android:layout_width="53dp"
+                        android:layout_height="53dp"
+                        android:src="@drawable/ic_webxdc"
+                        android:scaleType="centerInside"
+                        android:contentDescription="@string/webxdc_apps"/>
+
+                <TextView android:layout_marginTop="10dp"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          style="@style/AttachmentTypeLabel"
+                          android:text="@string/webxdc_apps"/>
+
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_weight="1"
@@ -209,29 +231,6 @@
                     android:layout_height="wrap_content"
                     style="@style/AttachmentTypeLabel"
                     android:text="@string/videochat"/>
-
-            </LinearLayout>
-
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_weight="1"
-                          android:gravity="center"
-                          android:orientation="vertical">
-
-                <org.thoughtcrime.securesms.components.CircleColorImageView
-                        android:id="@+id/close_button"
-                        android:layout_width="53dp"
-                        android:layout_height="53dp"
-                        android:src="@drawable/ic_keyboard_arrow_down_white_24dp"
-                        android:scaleType="center"
-                        android:contentDescription="@string/cancel"
-                        app:circleColor="?attr/close_icon_color"/>
-
-                <TextView android:layout_marginTop="10dp"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          style="@style/AttachmentTypeLabel"
-                          android:text=" "/>
 
             </LinearLayout>
 
