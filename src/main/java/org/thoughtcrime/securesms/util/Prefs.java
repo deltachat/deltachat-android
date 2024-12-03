@@ -62,6 +62,8 @@ public class Prefs {
   public  static final boolean ALWAYS_LOAD_REMOTE_CONTENT_DEFAULT = false;
 
   public  static final String LAST_DEVICE_MSG_LABEL            = "pref_last_device_msg_id";
+  public  static final String WEBXDC_STORE_URL_PREF            = "pref_webxdc_store_url";
+  public  static final String DEFAULT_WEBXDC_STORE_URL         = "https://webxdc.org/apps/";
 
   public enum VibrateState {
     DEFAULT(0), ENABLED(1), DISABLED(2);
@@ -142,6 +144,15 @@ public class Prefs {
 
   public static String getTheme(Context context) {
     return getStringPreference(context, THEME_PREF, DynamicTheme.systemThemeAvailable() ? DynamicTheme.SYSTEM : DynamicTheme.LIGHT);
+  }
+
+  public static String getWebxdcStoreUrl(Context context) {
+    return getStringPreference(context, WEBXDC_STORE_URL_PREF, DEFAULT_WEBXDC_STORE_URL);
+  }
+
+  public static void setWebxdcStoreUrl(Context context, String url) {
+    if (url == null || url.trim().isEmpty() || DEFAULT_WEBXDC_STORE_URL.equals(url)) url = null;
+    setStringPreference(context, WEBXDC_STORE_URL_PREF, url);
   }
 
   public static void setPromptedDozeMsgId(Context context, int msg_id) {

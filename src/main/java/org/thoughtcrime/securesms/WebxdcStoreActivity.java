@@ -22,6 +22,7 @@ import com.b44t.messenger.rpc.Rpc;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.util.MediaUtil;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;
@@ -80,9 +81,7 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
     webSettings.setDomStorageEnabled(true);
     webView.setNetworkAvailable(true); // this does not block network but sets `window.navigator.isOnline` in js land
 
-    // TODO: use setting
-    String storeURL = "https://webxdc.org/apps/";
-    webView.loadUrl(storeURL);
+    webView.loadUrl(Prefs.getWebxdcStoreUrl(this));
   }
 
   private WebResourceResponse interceptRequest(String url) {

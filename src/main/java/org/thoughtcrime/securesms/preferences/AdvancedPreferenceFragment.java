@@ -156,6 +156,10 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     webrtcInstance.setOnPreferenceClickListener(new WebrtcInstanceListener());
     updateWebrtcSummary();
 
+    Preference webxdcStore = this.findPreference(Prefs.WEBXDC_STORE_URL_PREF);
+    webxdcStore.setOnPreferenceClickListener(new WebxdcStoreUrlListener());
+    updateWebxdcStoreSummary();
+
     Preference newBroadcastList = this.findPreference("pref_new_broadcast_list");
     newBroadcastList.setOnPreferenceChangeListener((preference, newValue) -> {
       if ((Boolean)newValue) {
@@ -345,11 +349,41 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     }
   }
 
+  private class WebxdcStoreUrlListener implements Preference.OnPreferenceClickListener {
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+      View gl = View.inflate(getActivity(), R.layout.single_line_input, null);
+      EditText inputField = gl.findViewById(R.id.input_field);
+      inputField.setHint(Prefs.DEFAULT_WEBXDC_STORE_URL);
+      inputField.setText(Prefs.getWebxdcStoreUrl(getActivity()));
+      inputField.setSelection(inputField.getText().length());
+      inputField.setInputType(TYPE_TEXT_VARIATION_URI);
+      new AlertDialog.Builder(getActivity())
+              .setTitle(R.string.webxdc_store_url)
+              .setMessage(R.string.webxdc_store_url_explain)
+              .setView(gl)
+              .setNegativeButton(android.R.string.cancel, null)
+              .setPositiveButton(android.R.string.ok, (dlg, btn) -> {
+                Prefs.setWebxdcStoreUrl(getActivity(), inputField.getText().toString());
+                updateWebxdcStoreSummary();
+              })
+              .show();
+      return true;
+    }
+  }
+
   private void updateWebrtcSummary() {
     Preference webrtcInstance = this.findPreference("pref_webrtc_instance");
     if (webrtcInstance != null) {
       webrtcInstance.setSummary(DcHelper.isWebrtcConfigOk(dcContext)?
               dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE) : getString(R.string.none));
+    }
+  }
+
+  private void updateWebxdcStoreSummary() {
+    Preference preference = this.findPreference(Prefs.WEBXDC_STORE_URL_PREF);
+    if (preference != null) {
+        preference.setSummary(Prefs.getWebxdcStoreUrl(getActivity()));
     }
   }
 
