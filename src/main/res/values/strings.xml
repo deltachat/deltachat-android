@@ -184,8 +184,8 @@
     <string name="webxdc_app">App</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Apps</string>
-    <string name="webxdc_store_url">Apps Picker URL</string>
-    <string name="webxdc_store_url_explain">If set, it will be used as the apps picker URL instead of the default one</string>
+    <string name="webxdc_store_url">App Picker URL</string>
+    <string name="webxdc_store_url_explain">If set, the URL will be used as the App Picker instead of the default one</string>
     <string name="unknown">Unknown</string>
 
     <string name="green">Green</string>
