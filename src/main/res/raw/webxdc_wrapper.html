@@ -145,7 +145,7 @@
 
      const params = new URLSearchParams(document.location.search);
      const internetAccess = (params.get("i") || "0") === "1";
-     let href = params.get("href") || "index.html";
+     const href = params.get("href");
 
      if (internetAccess) {  // fill500 not needed, just load the frame
          fill500 = (href) => {
