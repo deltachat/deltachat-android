@@ -379,8 +379,7 @@
     <activity android:name=".WebxdcStoreActivity"
               android:label=""
               android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode"
-              android:exported="true">
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode">
     </activity>
 
     <activity android:name=".FullMsgActivity"
