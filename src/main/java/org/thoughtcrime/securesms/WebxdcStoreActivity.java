@@ -112,7 +112,7 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
       res = new WebResourceResponse(mimeType, httpResponse.getEncoding(), data);
     } catch (Exception e) {
       e.printStackTrace();
-      ByteArrayInputStream data = new ByteArrayInputStream(("Error: " + e.getMessage()).getBytes());
+      ByteArrayInputStream data = new ByteArrayInputStream(("Could not load apps. Are you online?\n\n" + e.getMessage()).getBytes());
       res = new WebResourceResponse("text/plain", "UTF-8", data);
     }
 
