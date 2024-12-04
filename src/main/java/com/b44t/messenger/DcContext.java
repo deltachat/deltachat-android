@@ -85,7 +85,7 @@ public class DcContext {
     public final static int DC_CONNECTIVITY_WORKING = 3000;
     public final static int DC_CONNECTIVITY_CONNECTED = 4000;
 
-    private static final String CONFIG_MENTION_NOTIF_ENABLED = "ui.notify_mentions";
+    private static final String CONFIG_NOTIFY_MENTIONS_IF_MUTED = "ui.notify_mentions_if_muted";
 
     // when using DcAccounts, use DcAccounts.addAccount() instead
     public DcContext(String osName, String dbfile) {
@@ -136,7 +136,8 @@ public class DcContext {
     public void                setConfigInt         (String key, int value) { setConfig(key, Integer.toString(value)); }
     public native boolean      setConfigFromQr      (String qr);
     public native String       getConfig            (String key);
-    public int                 getConfigInt         (String key) { try{return Integer.parseInt(getConfig(key));} catch(Exception e) {} return 0; }
+    public int                 getConfigInt         (String key) { return getConfigInt(key, 0); }
+    public int                 getConfigInt         (String key, int defaultValue) { try {return Integer.parseInt(getConfig(key));} catch(Exception e) {} return defaultValue; }
     public native String       getInfo              ();
     public native int          getConnectivity      ();
     public native String       getConnectivityHtml  ();
@@ -214,11 +215,11 @@ public class DcContext {
     public DcProvider          getProviderFromEmailWithDns (String email) { long cptr = getProviderFromEmailWithDnsCPtr(email); return cptr!=0 ? new DcProvider(cptr) : null; }
 
     public boolean isMentionsEnabled() {
-      return !"0".equals(getConfig(CONFIG_MENTION_NOTIF_ENABLED));
+      return getConfigInt(CONFIG_NOTIFY_MENTIONS_IF_MUTED, 1) == 1;
     }
 
     public void setMentionsEnabled(boolean enabled) {
-      setConfigInt(CONFIG_MENTION_NOTIF_ENABLED, enabled? 1 : 0);
+      setConfigInt(CONFIG_NOTIFY_MENTIONS_IF_MUTED, enabled? 1 : 0);
     }
 
     public String getName() {
