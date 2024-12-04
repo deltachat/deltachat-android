@@ -67,6 +67,7 @@ public class EphemeralMessagesDialog {
                         case 5:  burnAfter = TimeUnit.DAYS.toSeconds(1);  break;
                         case 6:  burnAfter = TimeUnit.DAYS.toSeconds(7);  break;
                         case 7:  burnAfter = TimeUnit.DAYS.toSeconds(35); break;
+                        case 8:  burnAfter = TimeUnit.DAYS.toSeconds(90); break;
                         default: burnAfter = 0; break;
                     }
                     listener.onTimeSelected(burnAfter);
