@@ -702,8 +702,8 @@
     <string name="pref_screen_security_explain">Request to block screenshots in the recents list and inside the app</string>
     <string name="pref_screen_security_please_restart_hint">To apply the screen security setting please restart the app.</string>
     <string name="pref_notifications">Notifications</string>
-    <string name="pref_mention_notifications">Notify mentions</string>
-    <string name="pref_mention_notifications_explain">Notify messages in muted chats if they are directed to you, like replies or reactions to your messages</string>
+    <string name="pref_mention_notifications">Mentions</string>
+    <string name="pref_mention_notifications_explain">In muted groups, notify messages directed to you, like replies or reactions</string>
     <string name="pref_notifications_show">Show</string>
     <string name="pref_notifications_priority">Priority</string>
     <string name="pref_notifications_explain">Enable system notifications for new messages</string>
