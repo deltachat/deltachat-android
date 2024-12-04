@@ -12,12 +12,14 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.rpc.HttpResponse;
 import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
@@ -49,24 +51,34 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
     webView.setWebViewClient(new WebViewClient() {
       @Override
       public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        view.loadUrl(url);
+        String ext = MediaUtil.getFileExtensionFromUrl(Uri.parse(url).getPath());
+        if ("xdc".equals(ext)) {
+          try {
+            HttpResponse httpResponse = rpc.getHttpResponse(dcContext.getAccountId(), url);
+            Uri uri = PersistentBlobProvider.getInstance().create(WebxdcStoreActivity.this, httpResponse.getBlob(), "application/octet-stream", "app.xdc");
+            Intent intent = new Intent();
+            intent.setData(uri);
+            setResult(Activity.RESULT_OK, intent);
+            finish();
+          } catch (RpcException e) {
+            e.printStackTrace();
+            Toast.makeText(WebxdcStoreActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+          }
+        } else {
+          WebViewActivity.openUrlInBrowser(WebxdcStoreActivity.this, url);
+        }
         return true;
       }
 
       @TargetApi(Build.VERSION_CODES.N)
       @Override
       public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-        view.loadUrl(request.getUrl().toString());
-        return true;
+        return shouldOverrideUrlLoading(view, request.getUrl().toString());
       }
 
       @Override
       public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-        WebResourceResponse res = interceptRequest(request.getUrl().toString());
-        if (res == null) {
-          res = super.shouldInterceptRequest(view, request);
-        }
-        return res;
+        return interceptRequest(request.getUrl().toString());
       }
     });
 
@@ -96,28 +108,17 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
         mimeType = "application/octet-stream";
       }
 
-      String ext = MediaUtil.getFileExtensionFromUrl(Uri.parse(url).getPath());
-      if ("xdc".equals(ext)) {
-        Intent intent = new Intent();
-        Uri uri = PersistentBlobProvider.getInstance().create(this, httpResponse.getBlob(), mimeType, "app.xdc");
-        intent.setType(mimeType);
-        intent.setData(uri);
-        setResult(Activity.RESULT_OK, intent);
-        finish();
-      } else {
-        ByteArrayInputStream data = new ByteArrayInputStream(httpResponse.getBlob());
-        res = new WebResourceResponse(mimeType, httpResponse.getEncoding(), data);
-      }
+      ByteArrayInputStream data = new ByteArrayInputStream(httpResponse.getBlob());
+      res = new WebResourceResponse(mimeType, httpResponse.getEncoding(), data);
     } catch (Exception e) {
       e.printStackTrace();
       ByteArrayInputStream data = new ByteArrayInputStream(("Error: " + e.getMessage()).getBytes());
       res = new WebResourceResponse("text/plain", "UTF-8", data);
     }
-    if (res != null) {
-      HashMap<String, String> headers = new HashMap<>();
-      headers.put("access-control-allow-origin", "*");
-      res.setResponseHeaders(headers);
-    }
+
+    HashMap<String, String> headers = new HashMap<>();
+    headers.put("access-control-allow-origin", "*");
+    res.setResponseHeaders(headers);
     return res;
   }
 
