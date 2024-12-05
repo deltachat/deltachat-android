@@ -736,6 +736,7 @@
     <string name="pref_app_access">Alkalmazás-hozzáférés</string>
     <string name="pref_chats">Csevegések</string>
     <string name="pref_in_chat_sounds">Csevegésen belüli hangok</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Üzenetek betűmérete</string>
     <string name="pref_view_log">Naplófájl megtekintése</string>
     <string name="pref_saved_log">A naplófájl elmentve a „Letöltések” mappába</string>
@@ -1179,8 +1180,6 @@
     <string name="perm_enable_bg_reminder_title">Koppintson ide az üzenetek fogadásához, miközben a Delta Chat a háttérben fut.</string>
     <string name="perm_enable_bg_already_done">Már engedélyezve van a Delta Chat számára, hogy a háttérben üzeneteket fogadjon.\n\nHa az üzenetek még mindig nem érkeznek meg a háttérben, ellenőrizze a rendszerbeállításokat is.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_1_46_android">Új szolgáltatások 🐣 és további tudnivalók:\n\n⚡️ Regisztráljon biztonságos, gyors chatmail-kiszolgálókra (https://delta.chat/chatmail) vagy használja a klasszikus e-mail-kiszolgálókat\n\n👉 PUSH értesítések bármely chatmail-kiszolgálóra\n\n👤 Kapcsolja össze ismerőseit biztonságosan a „Névjegyek csatolásával”\n\n🥰 Reagáljon bármilyen hangulatjellel\n\n📌 Tűzze ki a csevegéseket közvetlenül a keresésből … tudjon meg többet itt: %1$s</string>
     <string name="update_1_46_ios">Új szolgáltatások 🐣 és további tudnivalók:\n\n⚡️ Regisztráljon biztonságos, gyors chatmail-kiszolgálókra (https://delta.chat/chatmail) vagy használja a klasszikus e-mail-kiszolgálókat\n\n👉 PUSH értesítések bármely chatmail-kiszolgálóra\n\n👤 Fogadjon „Csatolt névjegyeket\" és csatlakozzon az ismerőseihez\n\n🥰 Gyorsabb üzenetreakció kiválasztás … tudjon meg többet itt: %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ A „Profilváltás” beállítás át lett helyezve:
 Érintse meg a főképernyő felső sarkában lévő profilképet a profilok hozzáadásához vagy váltásához 💡</string>

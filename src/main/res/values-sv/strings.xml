@@ -696,6 +696,7 @@
     <string name="pref_app_access">Programåtkomst</string>
     <string name="pref_chats">Chattar</string>
     <string name="pref_in_chat_sounds">Ljud i konversationer</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Teckenstorlek för meddelanden</string>
     <string name="pref_view_log">Visa logg</string>
     <string name="pref_saved_log">Sparade loggen i mappen \"Nedladdningar\"</string>
@@ -1139,8 +1140,6 @@
     <string name="perm_enable_bg_reminder_title">Tryck här för att ta emot meddelanden medan Delta Chat är i bakgrunden.</string>
     <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_1_46_android">Ny onboarding 🐣 och mer:\n\n⚡️ Registrera dig för säkra snabba chatmailservrar (https://delta.chat/chatmail) eller använd klassiska e-postservrar\n\n👉 PUSH-meddelanden för alla chatmailservrar\n\n👤 Anslut dina vänner säkert via \"Bifoga kontakter\"\n\n🥰 Reagera med alla emoji\n\n📌 Fäst chattar direkt från sök ... och MER på %1$s</string>
     <string name="update_1_46_ios">Ny Onboarding 🐣 och mer:\n\n⚡️ Registrera dig för säkra snabba chatmailservrar (https://delta.chat/chatmail) eller använd klassiska e-postservrar\n\n👉 PUSH-meddelanden för alla chatmailservrar\n\n👤 Ta emot \"bifogade kontakter\" och anslut till dina vänner\n\n🥰 Snabbare reaktionsval ... och MER på %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ Alternativet \"Byt profil\" har flyttats: Tryck på din profilbild i det övre hörnet av huvudskärmen för att lägga till eller byta profil 💡</string>
 </resources>

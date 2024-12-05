@@ -560,6 +560,7 @@
     <string name="pref_app_access">앱 접근</string>
     <string name="pref_chats">채팅</string>
     <string name="pref_in_chat_sounds">앱 내 알림</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">메시지 폰트 크기</string>
     <string name="pref_view_log">로그 보기</string>
     <string name="pref_saved_log">로그를 \"다운로드\" 폴더에 저장했습니다.</string>

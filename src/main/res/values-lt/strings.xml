@@ -591,6 +591,7 @@
     <string name="pref_app_access">Prieiga prie programėlės</string>
     <string name="pref_chats">Pokalbiai</string>
     <string name="pref_in_chat_sounds">Garsai pokalbiuose</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Žinučių šrifto dydis</string>
     <string name="pref_view_log">Rodyti žurnalą</string>
     <string name="pref_saved_log">Žurnalas įrašytas į „Atsiuntimų“ aplanką</string>

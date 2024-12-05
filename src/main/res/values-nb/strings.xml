@@ -335,6 +335,7 @@
     <string name="pref_app_access">Programtilgang</string>
     <string name="pref_chats">Sludringer</string>
     <string name="pref_in_chat_sounds">Merknader i programmet</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Skriftstørrelse i meldinger</string>
     <string name="pref_view_log">Vis logg</string>
     <string name="pref_log_header">Logg</string>
