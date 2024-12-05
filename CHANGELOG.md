@@ -16,6 +16,8 @@
 * Removed internal font scaling setting in favor of the better system settings
 * Use privacy-preserving webxdc addresses
 * Use Rustls for connections with strict TLS
+* QR codes for adding contacts and joining groups provide help when opened in a normal browser
+* Encrypt notification tokens
 * Mark Saved Messages chat as protected
 * Allow the user to replace maps integration
 * fix: Trim whitespace from scanned QR codes
