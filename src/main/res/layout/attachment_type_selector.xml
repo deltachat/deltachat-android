@@ -198,9 +198,11 @@
                         android:id="@+id/webxdc_button"
                         android:layout_width="53dp"
                         android:layout_height="53dp"
-                        android:src="@drawable/ic_webxdc"
-                        android:scaleType="centerInside"
-                        android:contentDescription="@string/webxdc_apps"/>
+                        android:src="@drawable/baseline_apps_24"
+                        android:scaleType="center"
+                        android:contentDescription="@string/webxdc_apps"
+                        app:circleColor="@color/apps_icon"
+                        />
 
                 <TextView android:layout_marginTop="10dp"
                           android:layout_width="wrap_content"
