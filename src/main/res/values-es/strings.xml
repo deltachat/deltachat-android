@@ -7,6 +7,10 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">o</string>
     <string name="clear_search">Borrar búsqueda</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Enlace</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Escanear</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="select">Seleccionar</string>
@@ -130,6 +134,11 @@
         <item quantity="many">%d mensajes</item>
         <item quantity="other">%d mensajes</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d reacción</item>
+        <item quantity="many">%d reacciones</item>
+        <item quantity="other">%d reacciones</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d miembro</item>
         <item quantity="many">%d miembros</item>
@@ -238,6 +247,7 @@
     <string name="menu_message_details">Detalles del mensaje</string>
     <string name="menu_copy_to_clipboard">Copiar al portapapeles</string>
     <string name="share_invite_link">Compartir enlace de invitación</string>
+    <string name="share_invite_link_explain">Cualquier persona que tenga este enlace podrá ver tu perfil y comenzar a chatear contigo. Compártelo solo con personas en las que confíes.</string>
     <string name="invite_friends">Invitar amigos</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Contáctame en Delta Chat:\n%1$s</string>
@@ -452,6 +462,9 @@
     <string name="send_file_to">Enviar \"%1$s\" a…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Enviar mensaje a…</string>
+    <string name="enable_realtime">Aplicaciones en tiempo real</string>
+    <string name="enable_realtime_explain">Habilite las conexiones en tiempo real para las aplicaciones compartidas en los chats. Si esta opción está habilitada, los participantes del chat podrán descubrir su dirección IP cuando inicie una aplicación.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Mostrar ubicaciones en el marco de tiempo</string>
     <string name="show_location_traces">Mostrar trazas</string>
@@ -478,6 +491,10 @@
     <string name="search_files">Buscar archivos</string>
     <string name="search_explain">Buscar chats, contactos, y mensajes</string>
     <string name="search_no_result_for_x">No se encontraron resultados para \"%s\"</string>
+    <!-- Adjective, as in "Show Unread Messages" -->
+    <string name="search_unread">No leído</string>
+
+
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nombre del grupo</string>
     <string name="group_avatar">Imagen del grupo</string>
@@ -615,6 +632,20 @@
     <string name="login_smtp_port">Puerto SMTP</string>
     <string name="login_smtp_security">Seguridad SMTP</string>
     <string name="login_auth_method">Método de autorización</string>
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <string name="proxy_settings">Proxy</string>
+    <string name="proxy_use_proxy">Usar proxy</string>
+    <string name="proxy_add">Añadir proxy</string>
+    <string name="proxy_add_explain">Tipos de proxy admitidos: HTTP(S), SOCKS5 y Shadowsocks.</string>
+    <string name="proxy_add_url_hint">Introduzca el enlace del proxy aquí</string>
+    <string name="proxy_invalid">Proxy no válido o no compatible</string>
+    <string name="proxy_list_header">Proxies guardados</string>
+    <string name="proxy_delete">Eliminar proxy</string>
+    <string name="proxy_delete_explain">¿Seguro que quieres eliminar \"%1$s\"?</string>
+    <string name="proxy_use_proxy_confirm">¿Quieres utilizar el proxy \"%1$s\"?</string>
+    <string name="proxy_share_explain">Tus amigos pueden agregar este proxy escaneando el código QR.</string>
+    <string name="proxy_share_link">Compartir enlace</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">Usar SOCKS5</string>
@@ -639,6 +670,9 @@
     <string name="accept_invalid_certificates">Aceptar certificados no válidos</string>
     <string name="switch_account">Cambiar cuenta</string>
     <string name="add_account">Agregar cuenta</string>
+    <string name="profile_tag">Etiqueta privada</string>
+    <string name="profile_tag_hint">ej. Trabajo, Familia</string>
+    <string name="profile_tag_explain">Etiqueta que es visible sólo para ti; útil para diferenciar tus perfiles.</string>
     <string name="delete_account">Eliminar cuenta</string>
     <string name="delete_account_ask">¿Estás seguro de que quieres eliminar los datos de tu cuenta?</string>
     <string name="delete_account_explain_with_name">Todos los datos de la cuenta de \"%s\" este dispositivo serán eliminados. Incluyendo la configuración de encriptado punto a punto, contactos, chats, mensajes y multimedia. Esta acción no puede ser deshecha.</string>
@@ -652,7 +686,10 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Reenviar a…</string>
+    <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
+    <string name="ask_send_files_to_chat">¿Enviar %1$d archivos a \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">¿Enviar %1$d archivo(s) a %2$d chats?</string>
+    <string name="videos_sent_without_recoding">(Los videos se enviarán en su tamaño original. Para enviar videos como archivos más pequeños, adjúntelos por separado)</string>
     <string name="share_text_multiple_chats">¿Enviar este texto  a %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Intercambio abortado debido a la falta de permisos.</string>
 
