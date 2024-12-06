@@ -413,6 +413,7 @@
     <string name="pref_app_access">Atzessu a s\'aplicatzione</string>
     <string name="pref_chats">Tzarradas</string>
     <string name="pref_in_chat_sounds">Sonos in sa tzarrada</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Mannària de sos caràteres in sos messàgios</string>
     <string name="pref_view_log">Pòmpia su registru</string>
     <string name="pref_saved_log">Registru sarvadu in sa cartella \"Iscarrigamentos\"</string>

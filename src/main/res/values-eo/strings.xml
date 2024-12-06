@@ -422,6 +422,7 @@
     <string name="pref_app_access">Aliro al aplikaĵo</string>
     <string name="pref_chats">Interparoloj</string>
     <string name="pref_in_chat_sounds">Sonoj dum interparolado</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Mesaĝa tipargrando</string>
     <string name="pref_view_log">Vidi protokolon</string>
     <string name="pref_saved_log">Konservis protokolon al la elŝuta dosierujo</string>

@@ -671,6 +671,7 @@ https://meet.jit.si/$ROOM
     <string name="pref_app_access">دسترسی نرم‌افزار</string>
     <string name="pref_chats">گپ‌ها</string>
     <string name="pref_in_chat_sounds">صداهای درون‌گپی</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">اندازه نوشته‌های پیام</string>
     <string name="pref_view_log">نمایش گزارش</string>
     <string name="pref_saved_log">گزارش را در پوشه\"دانلودها\" ذخیره کن </string>

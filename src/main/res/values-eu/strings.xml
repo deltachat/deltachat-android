@@ -365,6 +365,7 @@
     <string name="pref_app_access">Aplikazio sarbidea</string>
     <string name="pref_chats">Txatak</string>
     <string name="pref_in_chat_sounds">Txat bitarteko soinuak</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Mezuen letra tamaina</string>
     <string name="pref_view_log">Ikusi egunkaria</string>
     <string name="pref_saved_log">Egunkaria deskargen karpetan gorde da</string>

@@ -471,6 +471,7 @@
     <string name="pref_app_access">Akes Aplikasi</string>
     <string name="pref_chats">Obrolan</string>
     <string name="pref_in_chat_sounds">Suara dalam obrolan</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Ukuran huruf pesan</string>
     <string name="pref_view_log">Lihat catatan</string>
     <string name="pref_saved_log">Menyimpan log ke folder \"Unduhan\"</string>

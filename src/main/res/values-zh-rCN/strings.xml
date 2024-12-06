@@ -720,6 +720,7 @@
     <string name="pref_app_access">应用程序访问</string>
     <string name="pref_chats">聊天</string>
     <string name="pref_in_chat_sounds">聊天音</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">消息字体大小</string>
     <string name="pref_view_log">查看日志</string>
     <string name="pref_saved_log">已将日志保存至“下载”文件夹</string>
@@ -1164,7 +1165,7 @@
     <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n若 Delta Chat 在后台时消息仍未到达，请检查系统设置。</string>
 
     <!-- device messages for updates -->
-    <string name="update_1_46_android">新用户引导流程 🐣 以及更多信息：\n\n⚡️ 注册安全的快速聊天邮件服务器（https://delta.chat/chatmail）或使用传统的电子邮件服务器\n\n👉 为任何聊天邮件服务器推送通知\n\n👤 通过“附加联系人”安全地连接您的朋友\n\n🥰 使用任何表情符号进行回应\n\n📌 直接从搜索中固定聊天…以及更多信息，请访问 %1$s</string>
+    <string name="update_1_50_android">有什么新功能？\n\n❤️‍🔥 新的表情符号选择器，包含更多表情符号\n\n🎮 增强的聊天应用：获取通知并在上下文中打开支持应用，即直接打开添加的日历条目\n\n👍 收到有关对您的消息的回应的通知\n\n…🛠️ %1$s 上的修复和更多内容</string>
     <string name="update_1_46_ios">新用户引导流程 🐣 以及更多信息：\n\n⚡️ 注册安全的快速聊天邮件服务器（https://delta.chat/chatmail）或使用传统的电子邮件服务器\n\n👉 为任何聊天邮件服务器推送通知\n\n👤 接收“附加联系人”安全地连接您的朋友\n\n🥰 更快选择消息回应 …更多信息，请访问 %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ “切换账号”选项已移动：点击主屏幕上角的个人资料图片以添加或切换账号 💡</string>
 </resources>

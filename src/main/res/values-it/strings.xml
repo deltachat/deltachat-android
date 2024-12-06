@@ -752,6 +752,7 @@
     <string name="pref_app_access">Accesso all\'App</string>
     <string name="pref_chats">Chat</string>
     <string name="pref_in_chat_sounds">Suoni In-Chat</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Dimensione Font Messaggi</string>
     <string name="pref_view_log">Vedi Registro</string>
     <string name="pref_saved_log">Log salvato nella cartella \"Downloads\"</string>
@@ -1196,7 +1197,7 @@
     <string name="perm_enable_bg_already_done">Hai già autorizzato Delta Chat a ricevere messaggi in background.\n\nSe i messaggi non arrivano in background controlla le impostazioni di sistema.</string>
 
     <!-- device messages for updates -->
-    <string name="update_1_46_android">Nuovo Inserimento 🐣 e Altro:\n\n⚡️ Iscriviti ai sicuri e veloci server chatmail (https://delta.chat/chatmail) o utilizza i classici server e-mail\n\n👉 Notifiche PUSH per qualsiasi server chatmail\n\n👤 Connettiti con i tuoi amici in modo sicuro tramite \"Allega contatti\"\n\n🥰 Reagisci con qualsiasi emoji\n\n📌 Appunta le chat direttamente dalla ricerca... e ALTRO su %1$s</string>
+    <string name="update_1_50_android">Novità?\n\n❤️‍🔥 Nuovo selettore di emoji con più emoji\n\n🎮 App in chat migliorate: ricevi notifiche e apri le app supportate nel contesto, ad es. apri una voce del calendario cliccando direttamente sul messaggio\n\n👍 Ricevi notifiche sulle reazioni ai tuoi messaggi...\n\n🛠️ CORREZIONI e ANCORA DI PIÙ su %1$s</string>
     <string name="update_1_46_ios">Nuovo Inserimento 🐣 e Altro:\n\n⚡️ Iscriviti ai sicuri e veloci server chatmail (https://delta.chat/chatmail) o usa i classici server e-mail\n\n👉 Notifiche PUSH per qualsiasi server chatmail\n\n👤 Ricevi \"Contatti allegati\" e connettiti ai tuoi amici\n\n🥰 Selezione della reazione più rapida ... e ALTRO su %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ Opzione \"Cambia Profilo\" spostata: tocca l\'immagine del tuo profilo nell\'angolo superiore della schermata principale per aggiungere o cambiare profili 💡</string>
 </resources>

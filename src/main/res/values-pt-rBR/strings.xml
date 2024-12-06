@@ -651,6 +651,7 @@
     <string name="pref_app_access">Acesso do aplicativo</string>
     <string name="pref_chats">Conversas</string>
     <string name="pref_in_chat_sounds">Sons da conversa</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Tamanho da fonte de mensagens</string>
     <string name="pref_view_log">Ver relatório</string>
     <string name="pref_saved_log">Registro salvo na pasta de \"Downloads\"</string>
