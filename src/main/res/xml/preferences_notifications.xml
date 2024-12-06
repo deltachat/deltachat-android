@@ -7,6 +7,13 @@
                             android:title="@string/pref_notifications"
                             android:defaultValue="true" />
 
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:dependency="pref_enable_notifications"
+            android:key="pref_enable_mention_notifications"
+            android:title="@string/pref_mention_notifications"
+            android:summary="@string/pref_mention_notifications_explain"
+            android:defaultValue="true" />
+
         <Preference
                 android:dependency="pref_enable_notifications"
                 android:key="pref_key_ringtone"

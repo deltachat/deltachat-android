@@ -85,6 +85,8 @@ public class DcContext {
     public final static int DC_CONNECTIVITY_WORKING = 3000;
     public final static int DC_CONNECTIVITY_CONNECTED = 4000;
 
+    private static final String CONFIG_MUTE_MENTIONS_IF_MUTED = "ui.mute_mentions_if_muted";
+
     // when using DcAccounts, use DcAccounts.addAccount() instead
     public DcContext(String osName, String dbfile) {
         contextCPtr = createContextCPtr(osName, dbfile);
@@ -210,6 +212,14 @@ public class DcContext {
     public native void         sendLocationsToChat  (int chat_id, int seconds);
     public native boolean      isSendingLocationsToChat(int chat_id);
     public DcProvider          getProviderFromEmailWithDns (String email) { long cptr = getProviderFromEmailWithDnsCPtr(email); return cptr!=0 ? new DcProvider(cptr) : null; }
+
+    public boolean isMentionsEnabled() {
+      return getConfigInt(CONFIG_MUTE_MENTIONS_IF_MUTED) != 1;
+    }
+
+    public void setMentionsEnabled(boolean enabled) {
+      setConfigInt(CONFIG_MUTE_MENTIONS_IF_MUTED, enabled? 0 : 1);
+    }
 
     public String getName() {
       String displayname = getConfig("displayname");
