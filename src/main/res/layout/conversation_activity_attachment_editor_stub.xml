@@ -4,6 +4,7 @@
              android:id="@+id/attachment_editor"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
+             android:background="?attr/input_panel_bg_color"
              android:gravity="center_horizontal"
              android:visibility="gone">
 
