@@ -1,5 +1,11 @@
 # Delta Chat Android Changelog
 
+## v1.50.2
+2024-12
+
+* Encrypt notification tokens
+* update to core 1.151.5
+
 ## v1.50.0
 2024-12
 
@@ -17,7 +23,6 @@
 * Use privacy-preserving webxdc addresses
 * Use Rustls for connections with strict TLS
 * QR codes for adding contacts and joining groups provide help when opened in a normal browser
-* Encrypt notification tokens
 * Mark Saved Messages chat as protected
 * Allow the user to replace maps integration
 * fix: Trim whitespace from scanned QR codes
