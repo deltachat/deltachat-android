@@ -459,6 +459,7 @@
     <string name="pref_app_access">アプリのアクセス</string>
     <string name="pref_chats">チャット</string>
     <string name="pref_in_chat_sounds">着信音</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">文字の大きさ</string>
     <string name="pref_view_log">ログの表示</string>
     <string name="pref_saved_log">ログはダウンロードフォルダに保存されました。</string>

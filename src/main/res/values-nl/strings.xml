@@ -736,6 +736,7 @@
     <string name="pref_app_access">Apptoegang</string>
     <string name="pref_chats">Gesprekken</string>
     <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Tekstgrootte van berichten</string>
     <string name="pref_view_log">Logboek bekijken</string>
     <string name="pref_saved_log">Het logboek is opgeslagen in de downloadmap</string>
@@ -1179,8 +1180,6 @@
     <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen als Delta Chat niet geopend is.</string>
     <string name="perm_enable_bg_already_done">Je hebt al toestemming gegeven voor het ophalen van berichten op de achtergrond.\n\nAls het nog steeds niet werkt, controleer dan de systeeminstellingen.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_1_46_android">Nieuwe registratiemogelijkheden 🐣 en nog veel meer:\n\n⚡️ Registreer een account bij snelle chatmailservers (https://delta.chat/chatmail) of maak gebruik van traditionele mailservers\n\n👉 Ontvang pushmeldingen van elke chatmailserver\n\n👤 Voeg contactpersonen toe via ‘Contactpersonen bijvoegen’\n\n🥰 Reageer met een emoji\n\n📌 Maak gesprekken vast … en nog veel meer op %1$s</string>
     <string name="update_1_46_ios">Nieuwe registratiemogelijkheden 🐣 en nog veel meer:\n\n⚡️ Registreer een account bij snelle chatmailservers (https://delta.chat/chatmail) of maak gebruik van traditionele mailservers\n\n👉 Ontvang pushmeldingen van elke chatmailserver\n\n👤 Voeg contactpersonen toe via ‘Contactpersonen bijvoegen’\n\n🥰 Reageer met een emoji\n\n📌 Maak gesprekken vast … en nog veel meer op %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ De optie om een ander profiel te kiezen is verplaatst: druk op je profielfoto op het hoofdscherm om het profielmenu te openen.💡</string>
 </resources>

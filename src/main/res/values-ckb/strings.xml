@@ -420,6 +420,7 @@
     <string name="pref_app_access">ڕێگەپێدان</string>
     <string name="pref_chats">وتووێژەکان</string>
     <string name="pref_in_chat_sounds">دەنگەکانی نێو-وتووێژی</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">قەبارەی فۆنتی پەیامەکان</string>
     <string name="pref_other">کەسانی دی</string>
     <string name="pref_backup">یەدەک</string>

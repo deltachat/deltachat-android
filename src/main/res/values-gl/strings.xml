@@ -591,6 +591,7 @@
     <string name="pref_app_access">Acceso a app</string>
     <string name="pref_chats">Conversas</string>
     <string name="pref_in_chat_sounds">Sons na conversa</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Tamaño da letra na mensaxe</string>
     <string name="pref_view_log">Ver rexistro</string>
     <string name="pref_saved_log">Gardouse o rexistro no cartafol \"Descargas\"</string>

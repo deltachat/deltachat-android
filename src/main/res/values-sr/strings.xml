@@ -610,6 +610,7 @@
     <string name="pref_app_access">Приступ апликацији</string>
     <string name="pref_chats">Ћаскања</string>
     <string name="pref_in_chat_sounds">Звуци ћаскања</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Величина слова поруке</string>
     <string name="pref_view_log">Погледај дневник</string>
     <string name="pref_saved_log">Дневник је снимљен у „Downloads“ директоријум</string>

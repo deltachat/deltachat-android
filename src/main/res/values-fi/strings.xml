@@ -690,6 +690,7 @@
     <string name="pref_app_access">Sovelluksen pääsy</string>
     <string name="pref_chats">Keskustelut</string>
     <string name="pref_in_chat_sounds">Keskustelunaikaiset äänet</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Viestin fonttikoko</string>
     <string name="pref_view_log">Näytä loki</string>
     <string name="pref_saved_log">Tallenna loki \"Lataukset\" -kansioon</string>

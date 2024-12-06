@@ -276,6 +276,7 @@
     <string name="pref_app_access">Acesso à App</string>
     <string name="pref_chats">chats</string>
     <string name="pref_in_chat_sounds">Sons na chat</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Tamanho do texto das mensagens</string>
     <string name="pref_view_log">Ver o log</string>
     <string name="pref_other">Outro</string>

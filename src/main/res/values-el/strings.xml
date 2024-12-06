@@ -584,6 +584,7 @@
     <string name="pref_app_access">Πρόσβαση εφαρμογής</string>
     <string name="pref_chats">Συνομιλίες</string>
     <string name="pref_in_chat_sounds">Ήχοι μέσα στη συνομιλία</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Μέγεθος γραμματοσειράς μηνύματος</string>
     <string name="pref_view_log">Προβολή Αρχείου Καταγραφής</string>
     <string name="pref_saved_log">ΤΟ αρχείο καταγραφής αποθηκεύτηκε στο φάκελο \"Λήψεις\".</string>

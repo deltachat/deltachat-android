@@ -554,6 +554,7 @@
     <string name="pref_app_access">Přístup aplikace</string>
     <string name="pref_chats">Chaty</string>
     <string name="pref_in_chat_sounds">Zvuky v rámci chatu</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Velikost písma zprávy</string>
     <string name="pref_view_log">Zobrazit záznam běhu</string>
     <string name="pref_saved_log">Záznam běhu uložen do složky \"Downloads\"</string>
