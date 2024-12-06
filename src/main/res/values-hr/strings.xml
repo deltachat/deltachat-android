@@ -211,6 +211,7 @@
     <string name="pref_app_access">Pristup aplikaciji</string>
     <string name="pref_chats">Razgovori</string>
     <string name="pref_in_chat_sounds">Zvuk unutar razgovora</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Veličina fonta poruke</string>
     <string name="pref_other">Ostalo</string>
     <string name="pref_backup">Sigurnosna kopija</string>

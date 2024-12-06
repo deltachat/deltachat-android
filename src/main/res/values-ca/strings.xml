@@ -572,6 +572,7 @@
     <string name="pref_app_access">Accés a l\'aplicació</string>
     <string name="pref_chats">Xats</string>
     <string name="pref_in_chat_sounds">Sons d\'entrada</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Mida de la font del missatge</string>
     <string name="pref_view_log">Veure el registre</string>
     <string name="pref_other">Altres</string>

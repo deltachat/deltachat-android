@@ -488,6 +488,7 @@
     <string name="pref_app_access">Programadgang</string>
     <string name="pref_chats">Samtaler</string>
     <string name="pref_in_chat_sounds">In-chat-lyde</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Besked tekststørrelse</string>
     <string name="pref_view_log">Visningslog</string>
     <string name="pref_saved_log">Gem loggen til \"Downloads\" mappen</string>

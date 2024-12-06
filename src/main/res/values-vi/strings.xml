@@ -640,6 +640,7 @@
     <string name="pref_app_access">Quyền truy cập ứng dụng</string>
     <string name="pref_chats">Trò chuyện</string>
     <string name="pref_in_chat_sounds">Âm thanh trong cuộc trò chuyện</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Kích thước phông chữ tin nhắn</string>
     <string name="pref_view_log">Xem nhật ký</string>
     <string name="pref_saved_log">Đã lưu nhật ký vào thư mục \"Tải xuống\"</string>

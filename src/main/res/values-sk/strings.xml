@@ -610,6 +610,7 @@
     <string name="pref_app_access">Prístup k aplikácii</string>
     <string name="pref_chats">Konverzácie</string>
     <string name="pref_in_chat_sounds">Zvuky v konverzáciách</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">Veľkosť písma správy</string>
     <string name="pref_view_log">Prezrieť záznam</string>
     <string name="pref_saved_log">Denník bol uložený do priečinka „Súbory na stiahnutie“</string>

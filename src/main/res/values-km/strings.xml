@@ -529,6 +529,7 @@
     <string name="pref_app_access">ចូលដំណើរការកម្មវិធី</string>
     <string name="pref_chats">សន្ទនា</string>
     <string name="pref_in_chat_sounds">សម្លេងនៅក្នុងសន្ទនា</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">ទំហំអក្សរសារ</string>
     <string name="pref_view_log">មើលកំណត់ហេតុ</string>
     <string name="pref_saved_log">បានរក្សាទុក កំណត់ហេតុទៅថតឯកសារ \"ទាញយក\"</string>

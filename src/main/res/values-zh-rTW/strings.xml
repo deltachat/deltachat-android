@@ -720,6 +720,7 @@
     <string name="pref_app_access">App 存取</string>
     <string name="pref_chats">對話</string>
     <string name="pref_in_chat_sounds">對話內的音效</string>
+    <!-- deprecated -->
     <string name="pref_message_text_size">訊息的字型大小</string>
     <string name="pref_view_log">觀看系統紀錄</string>
     <string name="pref_saved_log">已將日誌保存到 「下載」 資料夾</string>
@@ -1163,8 +1164,6 @@
     <string name="perm_enable_bg_reminder_title">點擊此處可在 Delta Chat 處於後台時接收訊息。</string>
     <string name="perm_enable_bg_already_done">您已經允許 Delta Chat 在後台接收訊息。\n\n如果消息仍未在後台到達，請同時檢查您的系統設定。</string>
 
-    <!-- device messages for updates -->
-    <string name="update_1_46_android">新用戶引導流程 🐣 以及更多資訊：\n\n⚡️ 註冊安全的快速聊天郵件伺服器( https://delta.chat/chatmail )或使用傳統的電子郵件伺服器\n\n👉 為任何聊天郵件伺服器推送通知\n\n👤 通過「附加聯絡人」安全地連接您的朋友\n\n🥰 使用任何表情符號進行回覆\n\n📌 直接從搜索中選釘聊天... 以及更多資訊，請訪問 %1$s</string>
     <string name="update_1_46_ios">新用戶引導流程 🐣 以及更多資訊：\n\n⚡️ 註冊安全的快速聊天郵件伺服器( https://delta.chat/chatmail )或使用傳統的電子郵件伺服器\n\n👉 為任何聊天郵件伺服器推送通知\n\n👤 接收「附加聯絡人」安全地連接您的朋友\n\n🥰 更快選擇訊息回覆 ... 更多資訊，請訪問 %1$s</string>
     <string name="update_switch_profile_placement">ℹ️「切換賬戶」選項已移動：點擊主螢幕右上角的賬戶大頭貼以添加或切換賬戶 💡</string>
 </resources>
