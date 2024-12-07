@@ -158,8 +158,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final int GROUP_EDIT          = 6;
   private static final int TAKE_PHOTO          = 7;
   private static final int RECORD_VIDEO        = 8;
-  private static final int PICK_LOCATION       = 9;  // TODO: i think, this can be deleted
-  private static final int SMS_DEFAULT         = 11; // TODO: i think, this can be deleted
+  private static final int PICK_WEBXDC         = 9;
 
   private   GlideRequests               glideRequests;
   protected ComposeText                 composeText;
@@ -337,8 +336,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public void onActivityResult(final int reqCode, int resultCode, Intent data) {
     super.onActivityResult(reqCode, resultCode, data);
 
-    if ((data == null && reqCode != TAKE_PHOTO && reqCode != RECORD_VIDEO && reqCode != SMS_DEFAULT) ||
-        (resultCode != RESULT_OK && reqCode != SMS_DEFAULT))
+    if (resultCode != RESULT_OK || (data == null && reqCode != TAKE_PHOTO && reqCode != RECORD_VIDEO))
     {
       return;
     }
@@ -374,6 +372,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       setMedia(data.getData(), docMediaType);
       break;
 
+    case PICK_WEBXDC:
+      setMedia(data.getData(), MediaType.DOCUMENT);
+      break;
+
     case PICK_CONTACT:
       addAttachmentContactInfo(data.getIntExtra(AttachContactActivity.CONTACT_ID_EXTRA, 0));
       break;
@@ -401,15 +403,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       break;
 
-    case PICK_LOCATION:
-      break;
-
     case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
       setMedia(data.getData(), MediaType.IMAGE);
-      break;
-
-    case SMS_DEFAULT:
-      initializeSecurity(isSecureText, isDefaultSms);
       break;
     }
   }
@@ -942,6 +937,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case AttachmentTypeSelector.RECORD_VIDEO:
       attachmentManager.captureVideo(this, RECORD_VIDEO);
       break;
+    case AttachmentTypeSelector.ADD_WEBXDC:
+      AttachmentManager.selectWebxdc(this, PICK_WEBXDC); break;
     }
   }
 

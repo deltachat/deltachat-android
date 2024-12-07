@@ -26,6 +26,10 @@
             android:title="@string/videochat_instance"
             android:summary="@string/none"/>
 
+        <Preference android:key="pref_webxdc_store_url"
+            android:title="@string/webxdc_store_url"
+            android:summary="@string/none"/>
+
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_new_broadcast_list"

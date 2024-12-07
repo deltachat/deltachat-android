@@ -41,6 +41,7 @@ public class AttachmentTypeSelector extends PopupWindow {
   public static final int TAKE_PHOTO        = 5;
   public static final int ADD_LOCATION      = 6;
   public static final int RECORD_VIDEO      = 7;
+  public static final int ADD_WEBXDC        = 8;
 
   private static final int ANIMATION_DURATION = 300;
 
@@ -53,7 +54,7 @@ public class AttachmentTypeSelector extends PopupWindow {
   private final @NonNull ImageView           cameraButton;
   private final @NonNull ImageView           videoButton;
   private final @NonNull ImageView           locationButton;
-  private final @NonNull ImageView           closeButton;
+  private final @NonNull ImageView           webxdcButton;
 
   private @Nullable View                      currentAnchor;
   private @Nullable AttachmentClickedListener listener;
@@ -76,7 +77,7 @@ public class AttachmentTypeSelector extends PopupWindow {
     this.cameraButton   = ViewUtil.findById(layout, R.id.camera_button);
     this.videoButton    = ViewUtil.findById(layout, R.id.record_video_button);
     this.locationButton = ViewUtil.findById(layout, R.id.location_button);
-    this.closeButton    = ViewUtil.findById(layout, R.id.close_button);
+    this.webxdcButton   = ViewUtil.findById(layout, R.id.webxdc_button);
 
     this.imageButton.setOnClickListener(new PropagatingClickListener(ADD_GALLERY));
     this.videoChatButton.setOnClickListener(new PropagatingClickListener(INVITE_VIDEO_CHAT));
@@ -85,7 +86,7 @@ public class AttachmentTypeSelector extends PopupWindow {
     this.cameraButton.setOnClickListener(new PropagatingClickListener(TAKE_PHOTO));
     this.videoButton.setOnClickListener(new PropagatingClickListener(RECORD_VIDEO));
     this.locationButton.setOnClickListener(new PropagatingClickListener(ADD_LOCATION));
-    this.closeButton.setOnClickListener(new CloseClickListener());
+    this.webxdcButton.setOnClickListener(new PropagatingClickListener(ADD_WEBXDC));
     this.recentRail.setListener(new RecentPhotoSelectedListener());
 
     if (!Prefs.isLocationStreamingEnabled(context)) {
@@ -140,8 +141,8 @@ public class AttachmentTypeSelector extends PopupWindow {
     animateButtonIn(contactButton, ANIMATION_DURATION / 3);
     animateButtonIn(locationButton, ANIMATION_DURATION / 4);
     animateButtonIn(documentButton, ANIMATION_DURATION / 4);
+    animateButtonIn(webxdcButton, 0);
     animateButtonIn(videoChatButton, 0);
-    animateButtonIn(closeButton, 0);
   }
 
   @Override
@@ -287,13 +288,6 @@ public class AttachmentTypeSelector extends PopupWindow {
       if (listener != null) listener.onClick(type);
     }
 
-  }
-
-  private class CloseClickListener implements View.OnClickListener {
-    @Override
-    public void onClick(View v) {
-      dismiss();
-    }
   }
 
   public interface AttachmentClickedListener {
