@@ -23,6 +23,7 @@ import com.googlecode.mp4parser.util.Path;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -551,11 +552,9 @@ public class VideoRecoder {
   }
 
   // prepareVideo() assumes the msg object is set up properly to being sent;
-  // the function fills out missing information and also recodes the video as needed;
-  // to get a responsive ui, DcChat.prepareMsg() may be called.
+  // the function fills out missing information and also recodes the video as needed.
   // return: true=video might be prepared, can be sent, false=error
   public static boolean prepareVideo(Context context, int chatId, DcMsg msg) {
-
     try {
       String inPath = msg.getFile();
       Log.i(TAG, "Preparing video: " + inPath);
@@ -623,7 +622,6 @@ public class VideoRecoder {
         msg.setDimension(vei.resultWidth, vei.resultHeight);
       }
       msg.setDuration((int) resultDurationMs);
-      DcHelper.getContext(context).prepareMsg(chatId, msg);
 
       // calculate bytes
       vei.estimatedBytes = VideoRecoder.calculateEstimatedSize((float) resultDurationMs / vei.originalDurationMs,
