@@ -51,6 +51,7 @@ import org.thoughtcrime.securesms.MediaPreviewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareLocationDialog;
 import org.thoughtcrime.securesms.WebxdcActivity;
+import org.thoughtcrime.securesms.WebxdcStoreActivity;
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
@@ -450,6 +451,11 @@ public class AttachmentManager {
 
   public static void selectDocument(Activity activity, int requestCode) {
     selectMediaType(activity, "*/*", null, requestCode);
+  }
+
+  public static void selectWebxdc(Activity activity, int requestCode) {
+    Intent intent = new Intent(activity, WebxdcStoreActivity.class);
+    activity.startActivityForResult(intent, requestCode);
   }
 
   public static void selectGallery(Activity activity, int requestCode) {
