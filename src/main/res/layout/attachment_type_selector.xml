@@ -26,8 +26,7 @@
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="16dp"
                       android:layout_marginRight="16dp"
-                      android:layout_marginTop="16dp"
-                      android:weightSum="4">
+                      android:layout_marginTop="16dp">
 
             <!-- first row -->
 
@@ -120,7 +119,6 @@
                     app:circleColor="@color/location_icon"/>
 
                 <TextView android:layout_marginTop="10dp"
-                          android:id="@+id/location_button_label"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:visibility="visible"
@@ -137,8 +135,7 @@
                       android:layout_marginTop="16dp"
                       android:layout_marginLeft="16dp"
                       android:layout_marginRight="16dp"
-                      android:layout_marginBottom="16dp"
-                      android:weightSum="4">
+                      android:layout_marginBottom="16dp">
 
             <!-- second row -->
 
@@ -213,6 +210,7 @@
             </LinearLayout>
 
             <LinearLayout android:layout_width="match_parent"
+                android:id="@+id/invite_video_chat_linear_layout"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_weight="1"
@@ -228,7 +226,6 @@
                     app:circleColor="@color/audio_icon"/>
 
                 <TextView android:layout_marginTop="10dp"
-                    android:id="@+id/invite_video_chat_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/AttachmentTypeLabel"
