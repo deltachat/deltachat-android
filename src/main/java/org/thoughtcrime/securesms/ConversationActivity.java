@@ -117,6 +117,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.guava.Optional;
+import org.thoughtcrime.securesms.util.views.ProgressDialog;
 import org.thoughtcrime.securesms.util.views.Stub;
 import org.thoughtcrime.securesms.video.recode.VideoRecoder;
 import org.thoughtcrime.securesms.videochat.VideochatUtil;
@@ -171,6 +172,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   View                        composePanel;
   private   ScaleStableImageView        backgroundView;
   private   MessageRequestsBottomView   messageRequestBottomView;
+  private   ProgressDialog              progressDialog;
 
   private   AttachmentTypeSelector attachmentTypeSelector;
   private   AttachmentManager      attachmentManager;
@@ -1072,7 +1074,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           {
             boolean doSend = true;
             if (recompress==DcMsg.DC_MSG_VIDEO) {
+              Util.runOnMain(() -> {
+                progressDialog = ProgressDialog.show(
+                        ConversationActivity.this,
+                        "",
+                        getString(R.string.one_moment),
+                        true,
+                        false
+                );
+              });
               doSend = VideoRecoder.prepareVideo(ConversationActivity.this, dcChat.getId(), msg);
+              Util.runOnMain(() -> progressDialog.dismiss());
             }
 
             if (doSend) {
