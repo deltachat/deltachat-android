@@ -1572,12 +1572,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isForwarded(JNIEnv *env, jobjec
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isIncreation(JNIEnv *env, jobject obj)
-{
-    return dc_msg_is_increation(get_dc_msg(env, obj))!=0;
-}
-
-
 JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isInfo(JNIEnv *env, jobject obj)
 {
     return dc_msg_is_info(get_dc_msg(env, obj))!=0;
