@@ -17,7 +17,6 @@
           with sdkPkgs; [
             build-tools-33-0-1
             cmdline-tools-latest
-            ndk-bundle
             platform-tools
             platforms-android-34
             ndk-27-0-11902837
