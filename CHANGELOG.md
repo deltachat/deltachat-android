@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v1.51.0
+## v1.50.3
 2024-12
 
 * Add in-chat apps picker to attachments options
