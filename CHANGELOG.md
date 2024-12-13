@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v1.50.3
+2024-12
+
+* Add in-chat apps picker to attachments options
+* Notify replies and reactions to your messages in muted chats (can be disabled in settings)
+* Cache HTTP GET requests (ex. when loading images from HTML messages)
+* update to core 1.152.0
+
 ## v1.50.2
 2024-12
 
