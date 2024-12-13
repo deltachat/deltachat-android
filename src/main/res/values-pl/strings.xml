@@ -734,6 +734,8 @@
     <string name="pref_screen_security_explain">Poproś o zablokowanie zrzutów ekranu na liście ostatnich i wewnątrz aplikacji</string>
     <string name="pref_screen_security_please_restart_hint">Aby zastosować ustawienia bezpieczeństwa ekranu, uruchom ponownie aplikację.</string>
     <string name="pref_notifications">Powiadomienia</string>
+    <string name="pref_mention_notifications">Wzmianki</string>
+    <string name="pref_mention_notifications_explain">W wyciszonych grupach powiadamiaj o wiadomościach skierowanych do ciebie, takich jak odpowiedzi lub reakcje</string>
     <string name="pref_notifications_show">Pokaż</string>
     <string name="pref_notifications_priority">Priorytet</string>
     <string name="pref_notifications_explain">Włącz powiadomienia systemowe o nowych wiadomościach</string>
@@ -1212,6 +1214,8 @@
     <string name="perm_enable_bg_reminder_title">Dotknij tutaj, aby odbierać wiadomości, podczas gdy Delta Chat działa w tle.</string>
     <string name="perm_enable_bg_already_done">Pozwolono już Delta Chat na odbieranie wiadomości w tle.\n\nJeśli wiadomości nadal nie docierają w tle, sprawdź też ustawienia systemu.</string>
 
+    <!-- device messages for updates -->
+    <string name="update_1_50_android">Co nowego?\n\n❤️‍🔥 Nowy selektor emoji z większą liczbą emoji\n\n🎮 Ulepszone aplikacje czatu: Otrzymuj powiadomienia i otwieraj aplikacje pomocnicze w kontekście, np. otwieraj dodany wpis kalendarza bezpośrednio\n\n👍 Otrzymuj powiadomienia o reakcjach na swoje wiadomości\n\n... 🛠️ POPRAWKI i JESZCZE WIĘCEJ na %1$s</string>
     <string name="update_1_46_ios">Nowe wdrożenie 🐣 i nie tylko:\n\n⚡️ Zarejestruj się, aby korzystać z bezpiecznych i szybkich serwerów chatmail (https://delta.chat/chatmail) lub korzystaj z klasycznych serwerów e-mail\n\n👉 Powiadomienia PUSH dla dowolnego serwera chatmail\n\n👤 Odbierz „Dołączone kontakty” i łącz się ze znajomymi\n\n🥰 Szybszy wybór reakcji… i wiele WIĘCEJ na %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ Opcja „Przełącz profil” została przeniesiona: Dotknij swojego zdjęcia profilowego w górnym rogu ekranu głównego, aby dodać lub przełączyć profile 💡</string>
 </resources>

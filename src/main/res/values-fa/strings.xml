@@ -7,6 +7,10 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">یا</string>
     <string name="clear_search">پاک کردن جست‌وجو</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">پیوند</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">اسکن</string>
     <string name="yes">بله</string>
     <string name="no">خیر</string>
     <string name="select">انتخاب</string>
@@ -56,7 +60,7 @@
     <string name="mark_all_as_read">همه را خوانده شده بزن</string>
     <string name="mark_as_read">علامت زدن به عنوان خوانده شده</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
-    <string name="mark_as_read_short">خوانده شد</string>
+    <string name="mark_as_read_short">علامت زدن به عنوان خوانده شده</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">در حال بارگیری...</string>
     <string name="hide">مخفی کردن</string>
@@ -125,6 +129,10 @@
         <item quantity="one">%d پیام</item>
         <item quantity="other">%d پیام</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%dواکنش</item>
+        <item quantity="other">%dواکنش</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d عضو</item>
         <item quantity="other">%d عضو</item>
@@ -148,6 +156,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">استیکر</string>
     <string name="add_to_sticker_collection">افزودن به مجموعه استیکر</string>
+    <string name="add_stickers_instructions">برای اضافه کردن برچسب روی «بازکردن پوشهٔ برچسب» بزنید، یک زیرپوشه برای دستهٔ برچسب خود درست کنید و برچسب‌ها را به آن‌جا بکشید</string>
     <string name="open_sticker_folder">بازکردن پوشه استیکر</string>
     <string name="images">تصاویر</string>
     <string name="audio">صدا</string>
@@ -159,6 +168,7 @@
     <string name="video">فیلم</string>
     <string name="documents">اسناد</string>
     <string name="contact">مخاطب</string>
+    <string name="bot">ربات</string>
     <string name="camera">دوربین</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">گرفتن</string>
@@ -202,11 +212,15 @@
  استفاده شوند و رمزگذاری سراسری برای آن‌ها تضمین نمی‌شود.</string>
     <string name="menu_new_chat">گپ جدید</string>
     <string name="menu_new_group">گروه جدید</string>
+    <string name="clone_chat">درست کردن گپ جدید از این گپ</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">لیست Broadcast</string>
     <string name="broadcast_lists">لیست‌های Broadcast</string>
     <string name="new_broadcast_list">لیست Broadcast جدید</string>
     <string name="add_recipients">افزودن گیرنده</string>
+    <string name="edit_broadcast_list">ویرایش فهرست Broadcast</string>
+    <string name="broadcast_list_name">نام فهرست BroadCast</string>
+    <string name="please_enter_broadcast_list_name">وارد کردن نام برای فهرست Broadcast.</string>
     <string name="menu_send">ارسال</string>
     <string name="menu_toggle_keyboard">تعییر صفحه کلید شکلک‌ها</string>
     <string name="menu_edit_group">ویرایش گروه</string>
@@ -224,6 +238,12 @@
     <string name="menu_delete_location">حذف این موقعیت مکانی؟</string>
     <string name="menu_message_details">جزئیات پیام</string>
     <string name="menu_copy_to_clipboard">رونوشت‌برداری در حافظه</string>
+    <string name="share_invite_link">اشتراک پیوند دعوت</string>
+    <string name="share_invite_link_explain">هرکس با استفاده از این پیوند می‌تواند نمایهٔ شما را ببییند و یک گپ را با شما شروع کند. این را تنها به کسانی که اعتماد دارید بدهید.</string>
+    <string name="invite_friends">دعوت دوستان</string>
+    <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
+    <string name="invite_friends_text">تماس گرفتن با من در دلتاچت:\n
+%1$s</string>
     <string name="menu_copy_selection_to_clipboard">رونوشت برداری از انتخاب شده</string>
     <string name="menu_copy_link_to_clipboard">رونوشت برداری از لینک</string>
     <string name="menu_copy_text_to_clipboard">رونوشت گرفتن از متن</string>
@@ -258,6 +278,10 @@
     <string name="select_chat">انتخاب چت</string>
     <string name="select_more">انتخاب بیشتر</string>
     <string name="menu_edit_name">ویرایش نام</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_explain">به شما یک نام مستعار به جای «%1$s» نمایش می‌دهد. برای نمایش نام انتخابی خود مخاطب، این را خالی بگذارید.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_placeholder">نام مستعار برای «%1$s»</string>
     <string name="menu_settings">تنظیم‌ها</string>
     <string name="menu_advanced">پیشرفته</string>
     <string name="menu_view_profile">نمایش نمایه</string>
@@ -274,6 +298,8 @@
     <string name="device_talk">پیام‌های دستگاه</string>
     <string name="device_talk_subtitle">پیام‌های  داخلی</string>
     <string name="device_talk_explain">پیام‌ها در این گپ به صورت داخلی و توسط نرم‌افزار دلتاچت تولید شده‌اند. سازنده‌ها از این محل برای اعلان به روز‌رسانی‌ها و مشکلات پیش آمده حین کار استفاده می‌کنند. </string>
+    <string name="device_talk_welcome_message2">برقراری مکالمه!\n\n
+روی «کد QR» در صفحهٔ اصلی هر دو دستگاه بزنید. روی یکی از دستگاه‌ها «اسکن کد QR» را انتخاب کنید و با آن روی دستگاه دیگر بگیرید\n\nاگر در یک مکان نیستید، از طریق تماس تصویری اسکن کنید یا این‌که یک پیوند دعوت از «اسکن کد QR» به اشتراک بگذارید.\n\n.سپس از تجربه کردن پیام‌رسان بر روی بزرگترین شبکهٔ نامتمرکزی که تا به حال وجود داشته یعنی رایانامه لذت ببرید. در مقایسه با دیگر پیام‌رسان‌های محبوب، دلتاچت هیچ کنترل مرکزی‌ای ندارد. و شما، دوستهایتان، همکارهایتان یا خانواده‌هایتان را ردیابی نمی‌کند یا این‌که به سازمان‌های بزرگ نمی‌فروشد.</string>
     <string name="edit_contact">ویرایش مخاطب</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">سنجاق کردن گپ</string>
@@ -333,7 +359,7 @@ https://meet.jit.si/$ROOM
         <item quantity="one">پاک کردن %d گپ؟ دیگر در لیست گپ‌ها نشان داده نخواهد شد ولی پیام‌ها در سرور باقی می‌مانند. </item>
         <item quantity="other">پاک کردن %d گپ؟ دیگر در فهرست گپ‌ها نشان داده نخواهند شد؛ ولی پیام‌ها در کارساز باقی می‌مانند. </item>
     </plurals>
-    <string name="ask_delete_named_chat">اطمینان دارید می‌خواهید \"%1$s\" را پاک کنید؟</string>
+    <string name="ask_delete_named_chat">اطمینان دارید می‌خواهید «%1$s» را پاک کنید؟</string>
     <string name="ask_delete_message">مطمئن هستید می‌خواهید این پیام را پاک کنید؟</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">پاک کردن %d گپ از اینجا و سرور؟</item>
@@ -386,6 +412,7 @@ https://meet.jit.si/$ROOM
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">ارسال پیام. مشکلی نیست اگر %1$s از دلتاچت استفاده نمی‌کند.</string>
+    <string name="chat_new_broadcast_hint">در یک فهرست Broadcast گیرنده‌ها در یک گپ فقط خواندنی با شما، پیام‌ها را دریافت می‌کنند.</string>
     <string name="chat_new_group_hint">نوشتن اولین پیام به دیگران امکان می‌دهد در این گروه پاسخ دهند. \n\n• مشکلی نیست اگر همه اعضا از دلتاچت استفاده نکنند\n\n• دریافت اولین پیام ممکن است به زمان بیشتری نیاز داشته باشد. </string>
     <string name="chat_record_slide_to_cancel">برای لغو بکشید.</string>
     <string name="chat_record_explain">برای ضبط پیام صوتی فشار داده و نگهدارید، برای ارسال رها کنید. </string>
@@ -425,6 +452,9 @@ https://meet.jit.si/$ROOM
     <string name="send_file_to">ارسال \"%1$s\" به...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">ارسال پیام به...</string>
+    <string name="enable_realtime">برنامه‌های بلادرنگ</string>
+    <string name="enable_realtime_explain">فعال‌سازی اتصال‌های بلادرنگ برای برنامه‌های به اشتراک گذاشته‌شده در گپ‌ها. در صورت فعال‌سازی، زمانی که برنامه را باز می‌کنید، دیگر اعضای گپ ممکن است بتوانند نشانی اینترنتی شما را شناسایی کنند.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">نمایش موقعیت‌های مکانی در چارچوب زمان</string>
     <string name="show_location_traces">نمایش ردپاها</string>
@@ -451,6 +481,10 @@ https://meet.jit.si/$ROOM
     <string name="search_files">جستجوی پرونده‌ها</string>
     <string name="search_explain">جست‌وجو برای گپ‌ها، مخاطبان و پیام‌ها</string>
     <string name="search_no_result_for_x">نتیجه‌ای برای \"%s\" پیدا نشد</string>
+    <!-- Adjective, as in "Show Unread Messages" -->
+    <string name="search_unread">خوانده نشده</string>
+
+
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">نام گروه</string>
     <string name="group_avatar">تصویر گروه</string>
@@ -477,6 +511,10 @@ https://meet.jit.si/$ROOM
     <string name="tab_webxdc_empty_hint">برنامه‌هایی که در این چت به اشتراک گذاشته شده‌اند، این‌جا نمایش داده خواهند شد.</string>
     <string name="tab_all_media_empty_hint">رسانه‌های به اشتراک گذاشته شده همه چت‌ها در اینجا ظاهر می‌شود.</string>
     <string name="media_preview">نمایش رسانه</string>
+    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <string name="aspect_ratio_grid">حفظ مقیاس تصویر</string>
+    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <string name="square_grid">جدول مربعی</string>
     <string name="send_message">ارسال پیام</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">مخاطب %1$s نشانی خود را از %2$s به %3$s تغییر داده است.  </string>
@@ -545,11 +583,24 @@ https://meet.jit.si/$ROOM
     <string name="manual_account_setup_option">ساخت حساب کاربری با حساب رایانامه معمولی</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">نمایه شما</string>
+    <!-- The placeholder will be replaced by the default onboarding server -->
+    <string name="instant_onboarding_agree_default2">سیاست حریم خصوصی برای %1$s</string>
+    <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <string name="instant_onboarding_agree_instance">دربارهٔ نمایه‌ها در %1$s</string>
+    <!-- Confirmation button on the instant onboarding screen -->
+    <string name="instant_onboarding_create">قبول کردن و ایجاد نمایه</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">استفاده از یک کارساز دیگر</string>
     <string name="instant_onboarding_other_server">فهرست کارسازهای Chatmail</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <string name="instant_onboarding_group_info">ایجاد نمایه برای وارد شدن به گپ «%1$s».</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
     <string name="instant_onboarding_contact_info">برای گفتگو با %1$s یک حساب کاربری ایجاد کنید.</string>
+    <!-- Question shown when another user's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_contact">می‌خواهید یک نمایهٔ جدید درست کنید و با %1$sشروع به گپ زدن کنید؟</string>
+    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_group">می‌خواهید یک نمایهٔ جدید درست کنید و به گروه «%1$s» ملحق شوید؟</string>
+
     <string name="welcome_chat_over_email">گفتگو غیرمتمرکز و ایمن</string>
     <string name="scan_invitation_code">اسکن کردن کد دعوت</string>
     <string name="login_title">ورود</string>
@@ -571,6 +622,20 @@ https://meet.jit.si/$ROOM
     <string name="login_smtp_port">SMTP Port</string>
     <string name="login_smtp_security">SMTP Security</string>
     <string name="login_auth_method">Authorization Method</string>
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <string name="proxy_settings">پروکسی</string>
+    <string name="proxy_use_proxy">استفاده از پروکسی</string>
+    <string name="proxy_add">اضافه کردن پروکسی</string>
+    <string name="proxy_add_explain">پشتیبانی از پروکسی‌های: HTTP، HTTPS، SOCKS5 و Shadowsocks</string>
+    <string name="proxy_add_url_hint">ویرایش پیوند پروکسی</string>
+    <string name="proxy_invalid">پروکسی نامعتبر است یا پشتیبانی از پروکسی وجود ندارد</string>
+    <string name="proxy_list_header">پروکسی‌های ذخیره شده</string>
+    <string name="proxy_delete">حذف پروکسی</string>
+    <string name="proxy_delete_explain">مطمئنید می‌خواهید «%1$s» را حذف کنید؟</string>
+    <string name="proxy_use_proxy_confirm">می‌خواهید از پروکسی «%1$s» استفاده کنید؟</string>
+    <string name="proxy_share_explain">دوست‌هایتان می‌توانند با اسکن کردن کد QR این پروکسی را اضافه کنند.</string>
+    <string name="proxy_share_link">اشتراک گذاشتن پیوند</string>
+
     <!-- deprecated -->
     <string name="login_socks5">SOCKS5</string>
     <string name="login_socks5_use_socks5">استفاده از SOCKS5</string>
@@ -597,6 +662,9 @@ https://meet.jit.si/$ROOM
     <string name="accept_invalid_certificates">پذیرش گواهینامه‌های نامعتبر</string>
     <string name="switch_account">تغییر حساب کاربری</string>
     <string name="add_account">افزودن حساب کاربری</string>
+    <string name="profile_tag">پرچسب شخصی</string>
+    <string name="profile_tag_hint">مثل «کار» یا «خانواده»</string>
+    <string name="profile_tag_explain">این برچسب تنها به شما نمایش داده می‌شود تا برای تشخیص دادن نمایه‌ها از یک دیگر کمک کند.</string>
     <string name="delete_account">حذف حساب کاربری</string>
     <string name="delete_account_ask">آیا از حذف حساب کاربری اطمینان دارید؟</string>
     <string name="delete_account_explain_with_name">همه اطلاعات حساب مربوط به «%s» روی این دستگاه پاک می‌شود. این شامل تنظیم‌های رمزگذاری سراسری، مخاطبین، گفتگوها، پیام‌ها و رسانه‌ها می‌شود. این عمل قابل بازگردانی نیست.</string>
@@ -610,7 +678,10 @@ https://meet.jit.si/$ROOM
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">هدایت به...</string>
+    <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
+    <string name="ask_send_files_to_chat">ارسال %1$dپرونده به «%2$s»؟</string>
     <string name="ask_send_files_to_selected_chats">ارسال %1$dپرونده به %2$d گپ؟</string>
+    <string name="videos_sent_without_recoding">(فیلم‌ها به صورت پرونده‌های بزرگ بدون تغییر ارسال می‌شوند. برای ارسال فیلم‌ها به عنوان پرونده‌های کوچک‌تر، آن‌ها را به صورت جدا پیوست کنید)</string>
     <string name="share_text_multiple_chats">ارسال این متن به %1$d گپ؟n/n/«%2$s»</string>
     <string name="share_abort">اشتراک گذاری به دلیل نبود مجوز‌ها متوقف شد.</string>
 
@@ -668,6 +739,7 @@ https://meet.jit.si/$ROOM
     <string name="pref_use_system_emoji_explain">غیرفعال کردن شکلک‌های داخلی دلتاچت</string>
     <string name="pref_use_inapp_camera">استفاده از دوربین درون‌برنامه</string>
     <string name="pref_use_inapp_camera_explain">دوربین درون‌برنامه معمولا امکانات کمتری نسبت به دوربین سیستم دارد</string>
+    <string name="pref_show_system_contacts">خواندن دفترچه آدرس دستگاه</string>
     <string name="pref_app_access">دسترسی نرم‌افزار</string>
     <string name="pref_chats">گپ‌ها</string>
     <string name="pref_in_chat_sounds">صداهای درون‌گپی</string>
@@ -736,6 +808,7 @@ https://meet.jit.si/$ROOM
     <string name="profile_image_delete">حذف تصویر نمایه</string>
     <string name="pref_show_tray_icon">نمایش نمادک در زیر صفحه</string>
     <string name="pref_edit_profile">ویرایش نمایه</string>
+    <string name="disable_imap_idle">غیر فعال‌سازی IMAP IDLE</string>
     <string name="send_stats_to_devs">ارسال آمار برای توسعه‌دهندگان دلتاچت</string>
 
 
@@ -875,6 +948,8 @@ https://meet.jit.si/$ROOM
     <string name="chat_protection_enabled_tap_to_learn_more">رمزنگاری سرتاسر پیام ها از این به بعد تضمین می شود. برای اطلاعات بیشتر ضربه بزنید.</string>
     <string name="chat_protection_enabled_explanation">رمزنگاری سراسری پیام‌های این گفتگو اکنون تضمین می‌شود. رمزنگاری سراسری باعث می‌شود پیام‌هایتان بین شما و مخاطبین شما محرمانه بماند. حتی ارائه‌دهنده رایانامه شما هم نمی‌تواند آن‌ها را بخواند.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s پیامی را از دستگاه دیگری ارسال کرد. برای اطلاعات بیشتر ضربه بزنید.</string>
+    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s به رمزنگاری سراسری نیاز دارد که هنوز برای این گپ پیکره‌بندی نشده است. برای یادگیری بیش‌تر این‌جا بزنید.</string>
+    <string name="encryption_required_for_new_contact">رمزنگاری سراسری لازم است اما برای %1$s هنوز پیکره‌بندی نشده است.\n\nمی‌توانید پیوند دعوت خود را به مخاطبتان بدهید یا این‌که به صورت حضوری کد QR مخاطب را اسکن کنید.</string>
     <string name="learn_more">بیشتر بدانید</string>
 
     <string name="devicemsg_self_deleted">شما گپ «پیام‌های ذخیره شده» را پاک کردید.\n\nℹ️ برای استفادهٔ دوباره از «پیام‌های ذخیره شده» کافی است یک گپ جدید با خودتان درست کنید. </string>
@@ -947,6 +1022,7 @@ https://meet.jit.si/$ROOM
     <string name="verified_by_you">تأیید شده توسط من</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">تنظیم‌ها برای %1$s تغییر کرد. </string>
+    <string name="verified_contact_required_explain">برای تضمین رمزنگاری سراسری شما تنها می‌توانید مخاطب‌هایی که یک تیک سبز دارند به این گروه اضافه کنید.\n\nمی‌توانید با مخاطب‌هایتان حضوری ملاقات کنید و برای معرفی، کد QR آن‌ها را اسکن کنید.</string>
     <string name="copy_qr_data_success">آدرس کیوآر در حافظه ذخیر شد</string>
     <string name="mailto_dialog_header_select_chat">گپ را برای ارسال پیام انتخاب کنید</string>
     <!-- first placeholder is the name of the chat -->
@@ -990,6 +1066,8 @@ https://meet.jit.si/$ROOM
 گزینه
 «موقعیت مکانی» 
 را فعال نمایید.</string>
+    <string name="perm_explain_access_to_notifications_denied">برای دریافت اعلان‌ها به «تنظیمات دستگاه > برنامه‌ها > دلتاچت» بروید و «اعلان‌ها» را فعال کنید.</string>
+
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">هر کجا مایلید شروع به رسم کردن کنید تا مات شود.</string>
     <string name="ImageEditorHud_add_text">افزودن متن</string>
@@ -1113,7 +1191,10 @@ GNU GPL ورژن ۳
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">دلتاچت میخواهد تصاویر را در آلبوم شما ذخیره کند.</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_instant_delivery">تحویل آنی</string>
     <string name="pref_background_notifications">استفاده از اتصال پس‌زمینه</string>
+    <string name="pref_background_notifications_explain">برای استفاده باید «نادیده گرفتن بهینه‌سازی‌های باتری» فعال باشد. اگر اعلان‌ها به موقع نمی‌رسند، این را فعال کنید.</string>
     <string name="pref_reliable_service">اجبار کردن اتصال پس‌زمینه</string>
     <string name="pref_reliable_service_explain">اعلانی دائمی نشان می‌دهد</string>
 
