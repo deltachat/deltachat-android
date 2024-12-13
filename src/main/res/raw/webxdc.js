@@ -42,6 +42,10 @@ window.webxdc = (() => {
   }
 
   return {
+    sendUpdateMaxSize: InternalJSApi.sendUpdateMaxSize(),
+
+    sendUpdateInterval: InternalJSApi.sendUpdateInterval(),
+
     selfAddr: InternalJSApi.selfAddr(),
 
     selfName: InternalJSApi.selfName(),
