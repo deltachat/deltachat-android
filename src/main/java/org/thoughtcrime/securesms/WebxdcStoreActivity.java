@@ -25,6 +25,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;
@@ -53,17 +54,19 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
       public boolean shouldOverrideUrlLoading(WebView view, String url) {
         String ext = MediaUtil.getFileExtensionFromUrl(Uri.parse(url).getPath());
         if ("xdc".equals(ext)) {
-          try {
-            HttpResponse httpResponse = rpc.getHttpResponse(dcContext.getAccountId(), url);
-            Uri uri = PersistentBlobProvider.getInstance().create(WebxdcStoreActivity.this, httpResponse.getBlob(), "application/octet-stream", "app.xdc");
-            Intent intent = new Intent();
-            intent.setData(uri);
-            setResult(Activity.RESULT_OK, intent);
-            finish();
-          } catch (RpcException e) {
-            e.printStackTrace();
-            Toast.makeText(WebxdcStoreActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-          }
+          Util.runOnAnyBackgroundThread(() -> {
+            try {
+              HttpResponse httpResponse = rpc.getHttpResponse(dcContext.getAccountId(), url);
+              Uri uri = PersistentBlobProvider.getInstance().create(WebxdcStoreActivity.this, httpResponse.getBlob(), "application/octet-stream", "app.xdc");
+              Intent intent = new Intent();
+              intent.setData(uri);
+              setResult(Activity.RESULT_OK, intent);
+              finish();
+            } catch (RpcException e) {
+              e.printStackTrace();
+              Util.runOnMain(() -> Toast.makeText(WebxdcStoreActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show());
+            }
+          });
         } else {
           WebViewActivity.openUrlInBrowser(WebxdcStoreActivity.this, url);
         }
