@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -e # stop on all errors
 
 git submodule update --init --recursive

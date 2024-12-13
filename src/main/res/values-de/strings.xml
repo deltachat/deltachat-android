@@ -702,6 +702,8 @@
     <string name="pref_screen_security_explain">Aufforderung zum Sperren von Screenshots in der kürzlich erstellten Liste und in der App</string>
     <string name="pref_screen_security_please_restart_hint">Um die Bildschirmsicherheitseinstellungen anzuwenden, bitte App neu starten.</string>
     <string name="pref_notifications">Benachrichtigungen</string>
+    <string name="pref_mention_notifications">Erwähnungen</string>
+    <string name="pref_mention_notifications_explain">In stummgeschalteten Gruppen, über an Sie gerichtete Nachrichten, wie Antworten oder Reaktionen, benachrichtigen</string>
     <string name="pref_notifications_show">Anzeigen</string>
     <string name="pref_notifications_priority">Priorität</string>
     <string name="pref_notifications_explain">System-Benachrichtigungen bei neuen Nachrichten aktivieren</string>
@@ -1180,6 +1182,8 @@
     <string name="perm_enable_bg_reminder_title">Tippen Sie hier, um Nachrichten zu empfangen, während Delta Chat im Hintergrund läuft.</string>
     <string name="perm_enable_bg_already_done">Sie haben Delta Chat bereits erlaubt, Nachrichten im Hintergrund zu empfangen.\n\nFalls keine Nachrichten eingehen, überprüfen Sie bitte auch Ihre Systemeinstellungen.</string>
 
+    <!-- device messages for updates -->
+    <string name="update_1_50_android">Was ist neu?\n\n❤️‍🔥 Neuer Emoji-icker mit mehr Emojis\n\n🎮 In-Chat-App Verbesserungen: Benachrichtigungen erhalten und Apps im Kontext öffnen, z.B. einen hinzugefügten Kalendereintrag direkt anzeigen\n\n👍 Lassen Sie sich über Reaktionen auf Ihre Nachrichten benachrichtigen\n\n... 🛠️ FIXES und NOCH MEHR unter %1$s</string>
     <string name="update_1_46_ios">Neuer Startbildschirm 🐣 und mehr:\n\n⚡️ Melden Sie sich bei sicheren, schnellen Chatmail-Servern (https://delta.chat/chatmail) an oder nutzen Sie klassische E-Mail-Server\n\n👉 PUSH-Benachrichtigungen auf allen Chatmail-Server\n\n👤 Empfangen Sie „Angehängte Kontakte“ von Ihren Freunden\n\n🥰 Direktere Auswahl von Reaktionen ... und MEHR auf %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ \"Profil wechseln\" verschoben: Tippen Sie auf Ihr Profilbild in der oberen Ecke des Hauptbildschirms, um Profile hinzuzufügen oder zu wechseln 💡.</string>
 </resources>
