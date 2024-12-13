@@ -114,14 +114,14 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       if (!dcContext.wasDeviceMsgEverAdded(deviceMsgLabel)) {
         DcMsg msg = null;
         if (!getIntent().getBooleanExtra(FROM_WELCOME, false)) {
-          // msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+          msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
 
           // InputStream inputStream = getResources().getAssets().open("device-messages/green-checkmark.jpg");
           // String outputFile = DcHelper.getBlobdirFile(dcContext, "green-checkmark", ".jpg");
           // Util.copy(inputStream, new FileOutputStream(outputFile));
           // msg.setFile(outputFile, "image/jpeg");
 
-          // msg.setText(getString(R.string.update_1_50_android, "https://get.delta.chat/#changelogs"));
+          msg.setText(getString(R.string.update_1_50_android, "https://get.delta.chat/#changelogs"));
         }
         dcContext.addDeviceMsg(deviceMsgLabel, msg);
 
