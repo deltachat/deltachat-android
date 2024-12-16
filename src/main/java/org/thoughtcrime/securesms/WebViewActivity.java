@@ -54,13 +54,13 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   protected void onCreate(Bundle state, boolean ready) {
-    setContentView(R.layout.web_view_activity);
+    webView = new WebView(this);
+    setContentView(webView);
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {
       actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
-    webView = findViewById(R.id.webview);
     webView.setWebViewClient(new WebViewClient() {
       // IMPORTANT: this is will likely not be called inside iframes.
       // `shouldOverrideUrlLoading()` is called when the user clicks a URL,
