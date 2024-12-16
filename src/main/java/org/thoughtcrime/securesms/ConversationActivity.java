@@ -328,7 +328,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       container.hideAttachedInput(true);
     }
 
-    reloadEmojiPicker();
+    emojiPicker = null; // force reloading next time onEmojiToggle() is called
     initializeBackground();
   }
 
