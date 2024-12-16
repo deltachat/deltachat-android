@@ -42,6 +42,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Pair;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,6 +51,7 @@ import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -177,7 +179,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   AttachmentTypeSelector attachmentTypeSelector;
   private   AttachmentManager      attachmentManager;
   private   AudioRecorder          audioRecorder;
-  private   Stub<MediaKeyboard>    emojiDrawerStub;
+  private   FrameLayout            emojiPickerContainer;
+  private   MediaKeyboard          emojiPicker;
   protected HidingLinearLayout     quickAttachmentToggle;
   private   QuickAttachmentDrawer  quickAttachmentDrawer;
   private   InputPanel             inputPanel;
@@ -321,10 +324,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText.setTransport(sendButton.getSelectedTransport());
     quickAttachmentDrawer.onConfigurationChanged();
 
-    if (emojiDrawerStub.resolved() && container.getCurrentInput() == emojiDrawerStub.get()) {
+    if (emojiPicker != null && container.getCurrentInput() == emojiPicker) {
       container.hideAttachedInput(true);
     }
 
+    reloadEmojiPicker();
     initializeBackground();
   }
 
@@ -812,7 +816,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     sendButton            = ViewUtil.findById(this, R.id.send_button);
     attachButton          = ViewUtil.findById(this, R.id.attach_button);
     composeText           = ViewUtil.findById(this, R.id.embedded_text_editor);
-    emojiDrawerStub       = ViewUtil.findStubById(this, R.id.emoji_drawer_stub);
+    emojiPickerContainer  = ViewUtil.findById(this, R.id.emoji_picker_container);
     composePanel          = ViewUtil.findById(this, R.id.bottom_panel);
     container             = ViewUtil.findById(this, R.id.layout_container);
     quickAttachmentDrawer = ViewUtil.findById(this, R.id.quick_attachment_drawer);
@@ -1277,16 +1281,23 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     });
   }
 
+  private void reloadEmojiPicker() {
+    emojiPickerContainer.removeAllViews();
+    emojiPicker = (MediaKeyboard) LayoutInflater.from(this).inflate(R.layout.conversation_activity_emojidrawer_stub, emojiPickerContainer, false);
+    emojiPickerContainer.addView(emojiPicker);
+    inputPanel.setMediaKeyboard(emojiPicker);
+  }
+
   @Override
   public void onEmojiToggle() {
-    if (!emojiDrawerStub.resolved()) {
-      inputPanel.setMediaKeyboard(emojiDrawerStub.get());
+    if (emojiPicker == null) {
+      reloadEmojiPicker();
     }
 
-    if (container.getCurrentInput() == emojiDrawerStub.get()) {
+    if (container.getCurrentInput() == emojiPicker) {
       container.showSoftkey(composeText);
     } else {
-      container.show(composeText, emojiDrawerStub.get());
+      container.show(composeText, emojiPicker);
     }
   }
 
