@@ -21,6 +21,8 @@ import org.thoughtcrime.securesms.util.Util;
 public final class FetchForegroundService extends Service {
   private static final String TAG = FcmReceiveService.class.getSimpleName();
   private static final Object SERVICE_LOCK = new Object();
+  private static final Object STOP_NOTIFIER = new Object();
+  private static volatile boolean fetchingSynchronously = false;
   private static Intent service;
 
   public static void start(Context context) {
@@ -30,15 +32,40 @@ public final class FetchForegroundService extends Service {
     }
 
     GenericForegroundService.createFgNotificationChannel(context);
-    synchronized (SERVICE_LOCK) {
-      if (service == null) {
-        service = new Intent(context, FetchForegroundService.class);
-        ContextCompat.startForegroundService(context, service);
+    try {
+      synchronized (SERVICE_LOCK) {
+        if (service == null) {
+          service = new Intent(context, FetchForegroundService.class);
+          ContextCompat.startForegroundService(context, service);
+        }
+      }
+    } catch (Exception e) {
+      Log.w(TAG, "Failed to start foreground service: " + e + ", fetching in background.");
+      // According to the documentation https://firebase.google.com/docs/cloud-messaging/android/receive,
+      // we need to handle the message within 20s, and the time window may be even shorter than 20s,
+      // so, use 10s to be safe.
+      fetchingSynchronously = true;
+      if (ApplicationContext.dcAccounts.backgroundFetch(10)) {
+        // The background fetch was successful, but we need to wait until all events were processed.
+        // After all events were processed, we will get DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE,
+        // and stop() will be called.
+        while (fetchingSynchronously) {
+          try {
+            // The `wait()` needs to be enclosed in a while loop because there may be
+            // "spurious wake-ups", i.e. `wait()` may return even though `notifyAll()` wasn't called.
+            STOP_NOTIFIER.wait();
+          } catch (InterruptedException ex) { }
+        }
       }
     }
   }
 
   public static void stop(Context context) {
+    if (fetchingSynchronously) {
+      fetchingSynchronously = false;
+      STOP_NOTIFIER.notifyAll();
+    }
+
     synchronized (SERVICE_LOCK) {
       if (service != null) {
         context.stopService(service);
