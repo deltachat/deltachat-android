@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- WARNING: on modifications also update the layout-land folder. -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,5 +10,5 @@
         android:id="@+id/emoji_picker"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:emojiGridColumns="8"/>
+        app:emojiGridColumns="10"/>
 </RelativeLayout>

@@ -57,12 +57,11 @@
 
             <include layout="@layout/conversation_input_panel"/>
 
-            <ViewStub
-                android:id="@+id/emoji_drawer_stub"
+            <FrameLayout
+                android:id="@+id/emoji_picker_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inflatedId="@+id/emoji_drawer"
-                android:layout="@layout/conversation_activity_emojidrawer_stub" />
+                />
 
         </LinearLayout>
     </org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer>
