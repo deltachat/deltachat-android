@@ -254,6 +254,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   @Override
   protected void onNewIntent(Intent intent) {
+    if (isFinishing()) {
+      Log.w(TAG, "Activity is finishing, aborting onNewIntent()");
+      return;
+    }
     super.onNewIntent(intent);
     setIntent(intent);
     refresh();
