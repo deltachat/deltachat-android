@@ -210,7 +210,7 @@ public class ConversationFragment extends MessageSelectorFragment
     public void onResume() {
         super.onResume();
 
-        dcContext.marknoticedChat((int) chatId);
+        Util.runOnBackground(() -> dcContext.marknoticedChat((int) chatId));
         if (list.getAdapter() != null) {
             list.getAdapter().notifyDataSetChanged();
         }
