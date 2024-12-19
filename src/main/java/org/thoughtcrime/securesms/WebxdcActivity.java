@@ -67,6 +67,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private static final String EXTRA_HIDE_ACTION_BAR = "hideActionBar";
   private static final String EXTRA_HREF = "href";
   private static final int REQUEST_CODE_FILE_PICKER = 51426;
+  private static long lastOpenTime = 0;
 
   private ValueCallback<Uri[]> filePathCallback;
   private DcContext dcContext;
@@ -233,7 +234,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       e.printStackTrace();
     }
 
-    webView.loadUrl(this.baseURL + "/webxdc_bootstrap324567869.html?i=" + (internetAccess? "1" : "0") + "&href=" + encodedHref);
+    long timeDelta = System.currentTimeMillis() - lastOpenTime;
+    final String url = this.baseURL + "/webxdc_bootstrap324567869.html?i=" + (internetAccess? "1" : "0") + "&href=" + encodedHref;
+    Util.runOnAnyBackgroundThread(() -> {
+      if (timeDelta < 2000) {
+        // this is to avoid getting stuck in the FILL500 in some devices if the
+        // previous webview was not destroyed yet and a new app is opened too soon
+        Util.sleep(1000);
+      }
+      Util.runOnMain(() -> webView.loadUrl(url));
+    });
 
     Util.runOnAnyBackgroundThread(() -> {
       final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
@@ -257,6 +267,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   @Override
   protected void onDestroy() {
+    lastOpenTime = System.currentTimeMillis();
     DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
     leaveRealtimeChannel();
     super.onDestroy();
