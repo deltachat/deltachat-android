@@ -237,7 +237,11 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     long timeDelta = System.currentTimeMillis() - lastOpenTime;
     final String url = this.baseURL + "/webxdc_bootstrap324567869.html?i=" + (internetAccess? "1" : "0") + "&href=" + encodedHref;
     Util.runOnAnyBackgroundThread(() -> {
-      if (timeDelta < 2000) {Util.sleep(1000);}
+      if (timeDelta < 2000) {
+        // this is to avoid getting stuck in the FILL500 in some devices if the
+        // previous webview was not destroyed yet and a new app is opened too soon
+        Util.sleep(1000);
+      }
       Util.runOnMain(() -> webView.loadUrl(url));
     });
 
