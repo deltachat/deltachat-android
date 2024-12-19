@@ -234,9 +234,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       e.printStackTrace();
     }
 
-    long now = System.currentTimeMillis();
-    long timeDelta = now - lastOpenTime;
-    lastOpenTime = now;
+    long timeDelta = System.currentTimeMillis() - lastOpenTime;
     final String url = this.baseURL + "/webxdc_bootstrap324567869.html?i=" + (internetAccess? "1" : "0") + "&href=" + encodedHref;
     Util.runOnAnyBackgroundThread(() -> {
       if (timeDelta < 2000) {Util.sleep(1000);}
@@ -265,6 +263,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   @Override
   protected void onDestroy() {
+    lastOpenTime = System.currentTimeMillis();
     DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
     leaveRealtimeChannel();
     super.onDestroy();
