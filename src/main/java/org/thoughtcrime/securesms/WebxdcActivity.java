@@ -239,10 +239,8 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     lastOpenTime = now;
     final String url = this.baseURL + "/webxdc_bootstrap324567869.html?i=" + (internetAccess? "1" : "0") + "&href=" + encodedHref;
     Util.runOnAnyBackgroundThread(() -> {
-      if (timeDelta < 2000) Util.sleep(1000);
-      Util.runOnMain(() -> {
-        webView.loadUrl(url);
-      });
+      if (timeDelta < 2000) {Util.sleep(1000);}
+      Util.runOnMain(() -> webView.loadUrl(url));
     });
 
     Util.runOnAnyBackgroundThread(() -> {
