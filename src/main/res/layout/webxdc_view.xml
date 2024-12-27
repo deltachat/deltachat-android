@@ -20,6 +20,7 @@
                 android:layout_width="128dp"
                 android:layout_height="128dp"
                 android:scaleType="centerCrop"
+                app:strokeColor="@null"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
 
             <TextView android:id="@+id/webxdc_app_name"
