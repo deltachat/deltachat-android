@@ -367,6 +367,7 @@ public class DcHelper {
     return mimeType;
   }
 
+  // TODO the following function can prob. be simplified and unified with the next fn now.
   public static String getBlobdirFile(DcContext dcContext, String filename, String ext) {
     filename = FileUtils.sanitizeFilename(filename);
     ext = FileUtils.sanitizeFilename(ext);
