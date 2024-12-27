@@ -93,7 +93,7 @@ public class SharingTest {
       }
     }
     Uri uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + Uri.encode(pngImage));
-    DcHelper.sharedFiles.put("/" + pngImage, 1);
+    DcHelper.sharedFiles.put(pngImage, 1);
 
     Intent i = new Intent(Intent.ACTION_SEND);
     i.setType("image/png");

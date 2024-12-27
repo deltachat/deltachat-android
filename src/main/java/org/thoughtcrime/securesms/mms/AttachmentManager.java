@@ -23,7 +23,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -68,7 +67,6 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.MediaUtil;
-import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.Stub;
@@ -257,11 +255,11 @@ public class AttachmentManager {
             return new DocumentSlide(context, msg);
           }
           else if (PartAuthority.isLocalUri(uri)) {
-            return getManuallyCalculatedSlideInfo(uri, width, height);
+            return getManuallyCalculatedSlideInfo(uri, width, height, msg);
           } else {
             Slide result = getContentResolverSlideInfo(uri, width, height, chatId);
 
-            if (result == null) return getManuallyCalculatedSlideInfo(uri, width, height);
+            if (result == null) return getManuallyCalculatedSlideInfo(uri, width, height, msg);
             else                return result;
           }
         } catch (IOException e) {
@@ -362,15 +360,19 @@ public class AttachmentManager {
         return null;
       }
 
-      private @NonNull Slide getManuallyCalculatedSlideInfo(Uri uri, int width, int height) throws IOException {
+      private @NonNull Slide getManuallyCalculatedSlideInfo(Uri uri, int width, int height, @Nullable DcMsg msg) throws IOException {
         long start      = System.currentTimeMillis();
         Long mediaSize  = null;
         String fileName = null;
         String mimeType = null;
 
+        if (msg != null) {
+          fileName = msg.getFilename();
+        }
+
         if (PartAuthority.isLocalUri(uri)) {
           mediaSize = PartAuthority.getAttachmentSize(context, uri);
-          fileName  = PartAuthority.getAttachmentFileName(context, uri);
+          if (fileName != null) fileName  = PartAuthority.getAttachmentFileName(context, uri);
           mimeType  = PartAuthority.getAttachmentContentType(context, uri);
         }
 
@@ -688,7 +690,7 @@ public class AttachmentManager {
           DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_WEBXDC);
           Attachment attachment = new UriAttachment(uri, null, MediaUtil.WEBXDC, AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, fileName, null, false);
           String path = attachment.getRealPath(context);
-          msg.setFile(path, MediaUtil.WEBXDC);
+          msg.setFileAndDeduplicate(path, fileName, MediaUtil.WEBXDC);
           dcContext.setDraft(chatId, msg);
           return new DocumentSlide(context, msg);
         }
