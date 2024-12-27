@@ -184,6 +184,11 @@ public class DcMsg {
       return cPtr != 0 ? new DcMsg(cPtr) : null;
     }
 
+    public boolean    hasOriginal       () { return getOriginalChatId() != 0; }
+    public native int getOriginalChatId ();
+    public native int getOriginalMsgId  ();
+    public native int getSavedMsgId     ();
+
     public File getFileAsFile() {
         if(getFile()==null)
             throw new AssertionError("expected a file to be present.");
