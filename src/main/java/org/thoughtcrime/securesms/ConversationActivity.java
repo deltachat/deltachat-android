@@ -1045,7 +1045,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
             }
             String path = attachment.getRealPath(this);
-            msg.setFile(path, null);
+            msg.setFileAndDeduplicate(path, attachment.getFileName(), null);
           }
         }
         msg.setText(body);
@@ -1335,7 +1335,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (quote.isPresent()) {
       msg.setQuote(quote.get().getQuotedMsg());
     }
-    msg.setFile(path, null);
+    msg.setFileAndDeduplicate(path, null, null);
     dcContext.sendMsg(chatId, msg);
   }
 
