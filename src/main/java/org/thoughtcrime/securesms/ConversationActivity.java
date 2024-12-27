@@ -120,7 +120,6 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
-import org.thoughtcrime.securesms.util.views.Stub;
 import org.thoughtcrime.securesms.video.recode.VideoRecoder;
 import org.thoughtcrime.securesms.videochat.VideochatUtil;
 
@@ -746,8 +745,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       handleReplyMessage(quote);
     }
 
-    String filename = draft.getFile();
-    if (filename.isEmpty() || !new File(filename).exists()) {
+    String file = draft.getFile();
+    if (file.isEmpty() || !new File(file).exists()) {
       future.set(!text.isEmpty());
       updateToggleButtonState();
       return future;
@@ -767,26 +766,21 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     };
 
-    File file = new File(filename);
-    Uri uri = Uri.fromFile(file);
     switch (draft.getType()) {
       case DcMsg.DC_MSG_IMAGE:
-        setMedia(uri, MediaType.IMAGE).addListener(listener);
+        setMedia(draft, MediaType.IMAGE).addListener(listener);
         break;
       case DcMsg.DC_MSG_GIF:
-        setMedia(uri, MediaType.GIF).addListener(listener);
+        setMedia(draft, MediaType.GIF).addListener(listener);
         break;
       case DcMsg.DC_MSG_AUDIO:
-        setMedia(uri, MediaType.AUDIO).addListener(listener);
+        setMedia(draft, MediaType.AUDIO).addListener(listener);
         break;
       case DcMsg.DC_MSG_VIDEO:
-        setMedia(uri, MediaType.VIDEO).addListener(listener);
-        break;
-      case DcMsg.DC_MSG_WEBXDC:
-        setMedia(draft, MediaType.DOCUMENT).addListener(listener);
+        setMedia(draft, MediaType.VIDEO).addListener(listener);
         break;
       default:
-        setMedia(uri, MediaType.DOCUMENT).addListener(listener);
+        setMedia(draft, MediaType.DOCUMENT).addListener(listener);
         break;
     }
 
