@@ -29,7 +29,12 @@ public class AttachmentsContentProvider extends ContentProvider {
     public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
         DcContext dcContext = DcHelper.getContext(getContext());
 
-        String path = uri.getPath();
+        // `uri` originally comes from DcHelper.openForViewOrShare() and
+        // looks like `content://chat.delta.attachments/ef39a39/text.txt`
+        // where ef39a39 is the file in the blob directory
+        // and text.txt is the original name of the file, as returned by `msg.getFilename()`.
+        // `uri.getPathSegments()` returns ["ef39a39", "text.txt"] in this example.
+        String path = uri.getPathSegments().get(0);
         if (!DcHelper.sharedFiles.containsKey(path)) {
             throw new FileNotFoundException("File was not shared before.");
         }
