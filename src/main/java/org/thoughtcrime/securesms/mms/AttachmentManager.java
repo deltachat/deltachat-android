@@ -257,11 +257,11 @@ public class AttachmentManager {
             return new DocumentSlide(context, msg);
           }
           else if (PartAuthority.isLocalUri(uri)) {
-            return getManuallyCalculatedSlideInfo(uri, width, height);
+            return getManuallyCalculatedSlideInfo(uri, width, height, msg);
           } else {
             Slide result = getContentResolverSlideInfo(uri, width, height, chatId);
 
-            if (result == null) return getManuallyCalculatedSlideInfo(uri, width, height);
+            if (result == null) return getManuallyCalculatedSlideInfo(uri, width, height, msg);
             else                return result;
           }
         } catch (IOException e) {
@@ -362,15 +362,19 @@ public class AttachmentManager {
         return null;
       }
 
-      private @NonNull Slide getManuallyCalculatedSlideInfo(Uri uri, int width, int height) throws IOException {
+      private @NonNull Slide getManuallyCalculatedSlideInfo(Uri uri, int width, int height, @Nullable DcMsg msg) throws IOException {
         long start      = System.currentTimeMillis();
         Long mediaSize  = null;
         String fileName = null;
         String mimeType = null;
 
+        if (msg != null) {
+          fileName = msg.getFilename();
+        }
+
         if (PartAuthority.isLocalUri(uri)) {
           mediaSize = PartAuthority.getAttachmentSize(context, uri);
-          fileName  = PartAuthority.getAttachmentFileName(context, uri);
+          if (fileName != null) fileName  = PartAuthority.getAttachmentFileName(context, uri);
           mimeType  = PartAuthority.getAttachmentContentType(context, uri);
         }
 
