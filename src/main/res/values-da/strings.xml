@@ -757,8 +757,6 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat bruger din mikrofon til at optage og sende talebeskeder og videoer med lyd.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat vil lade dig vælge hvilke billeder fra dit bibliotek du vil sende.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat vil gerne gemme billeder til dig billede-bibliotek</string>
-
-
     <string name="pref_background_notifications_rationale">Ignorer batterioptimeringer i næste skridt for at vedligeholde en forbindelse til din mail-server og modtage beskeder i baggrunden.\n\nDelta Chat bruger få ressourcer og passer på ikke at dræne dit batteri.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Tryk her for at modtage beskeder når Delta Chat er i baggrunden.</string>

@@ -7,6 +7,10 @@
    <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">o</string>
     <string name="clear_search">Neteja la cerca</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Enllaç</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Escaneja</string>
     <string name="yes">Si</string>
     <string name="no">No</string>
     <string name="select">Trieu</string>
@@ -54,6 +58,7 @@
     <string name="show_full_message">Mostra el missatge sencer...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Marca-ho tot com a llegit</string>
+    <string name="mark_as_read">Marca com a llegit</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Llegit</string>
     <!-- Placeholder text when something is loading -->
@@ -535,6 +540,8 @@
     <string name="pref_profile_info_headline">Informació del vostre perfil</string>
     <string name="pref_profile_photo">Fotografia de perfil</string>
     <string name="pref_blocked_contacts">Contactes bloquejats</string>
+    <!-- for classic email, we use the classical term "Account" -->
+    <string name="pref_password_and_account_settings">Contrasenya i compte</string>
     <string name="pref_who_can_see_profile_explain">La vostra imatge de perfil i el vostre nom es mostraran en els missatges que envieu als altres usuaris. La informació que ja s\'hagi enviat no es pot eliminar ni esborrar.</string>
     <string name="pref_your_name">El vostre nom</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
@@ -566,6 +573,7 @@
     <string name="pref_incognito_keyboard_explain">Sol·licita al teclat que deshabiliti l\'aprenentatge personalitzat</string>
     <string name="pref_read_receipts">Confirmació de lectura</string>
     <string name="pref_read_receipts_explain">Si desactiveu la confirmació de lectura dels vostres missatges, tampoc no rebreu la dels altres usuaris.</string>
+    <string name="pref_server">Servidor</string>
     <string name="pref_manage_keys">Gestioneu les claus</string>
     <string name="pref_use_system_emoji">Useu emojis de sistema</string>
     <string name="pref_use_system_emoji_explain">Deshabilita el suport de sèrie per emoticones a Delta Chat</string>
@@ -601,6 +609,9 @@
     <string name="pref_show_emails_no">No, només xats</string>
     <string name="pref_show_emails_accepted_contacts">Per a contactes acceptats</string>
     <string name="pref_show_emails_all">Tot</string>
+    <string name="send_stats_to_devs">Envia estadístiques als desenvolupadors del Delta Chat</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt_send_asm_title">Envia el missatge de configuració Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Un \"missatge de configuració Autocrypt\" comparteix de forma segura la vostra configuració d\'extrem a extrem amb altres aplicacions compatibles amb Autocrypt.\n\nLa configuració es xifrarà amb un codi de configuració que es mostrarà aquí i que haureu d\'escriure a l’altre dispositiu.</string>
