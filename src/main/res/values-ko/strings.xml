@@ -914,8 +914,6 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 은 마이크를 사용하여 음성 메시지와 비디오를 소리와 함께 녹음하고 전송합니다.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 을 통해 라이브러리에서 보낼 사진을 선택할 수 있습니다.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 에서 사진 라이브러리에 이미지를 저장하려고 합니다.</string>
-
-
     <string name="pref_background_notifications_rationale">이메일 서버에 대한 연결을 유지하고 백그라운드에서 메시지를 수신하려면 다음 단계에서 배터리 최적화를 무시하십시오.\n\nDelta Chat은 리소스를 거의 사용하지 않으며 배터리가 소모되지 않도록 주의합니다.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Delta Chat이 백그라운드에 있는 동안 메시지를 받으려면 여기를 누르십시오.</string>

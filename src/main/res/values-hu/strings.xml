@@ -1168,8 +1168,6 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">A Delta Chat az eszköze mikrofonját használja a hangüzenetek és a hangos videók rögzítésére, valamint küldésére.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">A Delta Chat segítségével kiválaszthatja, hogy mely fényképeket szeretné elküldeni a könyvtárából.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">A Delta Chat el akarja menteni a képeket az eszköze fotótárába.</string>
-
-
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Azonnali kézbesítés</string>
     <string name="pref_background_notifications">Háttérkapcsolat használata</string>

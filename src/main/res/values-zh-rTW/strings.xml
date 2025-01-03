@@ -1150,8 +1150,6 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用您的麥克風錄製和發送音訊和帶聲音的視頻。</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 將讓您從圖庫中選擇要傳送的照片。</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 希望將圖像保存到您的照片庫。</string>
-
-
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">即時傳送</string>
     <string name="pref_background_notifications">使用背景連接</string>

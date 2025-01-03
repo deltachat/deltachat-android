@@ -1117,8 +1117,6 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat използва Вашия микрофон, за да записва и изпраща гласови съобщения и видеоклипове със звук.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat ще Ви даде да изберете кои снимки от Вашата библотека да изпратите.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat иска да запише изображения във Вашата библиотека със снимки.</string>
-
-
     <string name="pref_background_notifications_rationale">За да се поддържа връзката към Вашия сървър за електронна поща и да получавате съобщения във фонов режим, игнорирайте оптимизациите на батерията на следващата стъпка.\n\nDelta Chat използва малко ресурси и се грижи да не изтощава Вашата батерия.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Докоснете тук, за да получавате съобщения, докато Delta Chat е във фонов режим.</string>

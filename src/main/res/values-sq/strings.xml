@@ -1159,8 +1159,6 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat-i përdor mikrofonin tuaj për të incizuar dhe dërguar mesazhe zanorë dhe video me zë.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat-i do t’ju lejojë të zgjidhni cilat foto të dërgohen nga fototeka juaj.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat dëshiron të ruajë figura në fototekën tuaj.</string>
-
-
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Dërgim i Menjëhershëm</string>
     <string name="pref_background_notifications">Përdor Lidhje Në Prapaskenë</string>
