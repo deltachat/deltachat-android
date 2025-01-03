@@ -245,4 +245,4 @@ Meanwhile, development has diverged in many areas.
 
 Licensed GPLv3+, see the LICENSE file for details.
 
-Copyright © 2022 Delta Chat contributors.
+Copyright © Delta Chat contributors.
