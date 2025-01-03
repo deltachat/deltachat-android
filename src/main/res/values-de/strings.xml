@@ -184,6 +184,8 @@
     <string name="webxdc_app">App</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Apps</string>
+    <string name="webxdc_store_url">App-Picker-URL</string>
+    <string name="webxdc_store_url_explain">Wenn gesetzt, wird diese URL als App-Picker anstelle der Voreinstellung verwendet.</string>
     <string name="unknown">Unbekannt</string>
 
     <string name="green">Grün</string>
@@ -585,7 +587,7 @@
     <string name="instant_onboarding_create">Einverstanden &amp; Profil erstellen</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Anderen Server verwenden</string>
-    <string name="instant_onboarding_other_server">Chatmail-Servers anzeigen</string>
+    <string name="instant_onboarding_other_server">Chatmail-Server anzeigen</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">Erstelle ein Profil, um der Gruppe \"%1$s\" beizutreten.</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
@@ -655,7 +657,7 @@
     <string name="switch_account">Profil wechseln</string>
     <string name="add_account">Profil hinzufügen</string>
     <string name="profile_tag">Private Bezeichnung</string>
-    <string name="profile_tag_hint">Familie, Arbeit, Freunde</string>
+    <string name="profile_tag_hint">z.B. Familie, Arbeit, Freunde</string>
     <string name="profile_tag_explain">Die Bezeichnung ist nur für Sie sichtbar um zwischen Profilen zu unterscheiden.</string>
     <string name="delete_account">Profil löschen</string>
     <string name="delete_account_ask">Möchten Sie das Profil und alle Daten wirklich von diesem Gerät löschen?</string>
@@ -1168,6 +1170,7 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat verwendet das Mikrofon, um Sprachnachrichten und Videos mit Sound aufzunehmen und zu versenden.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat verwendet die Fotos, um Ihnen die Möglichkeit zu geben, diese auszuwählen und zu versenden.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat möchte Bilder in Ihrer Fotobibliothek speichern.</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat kann Face-ID verwenden, um Ihr lokales Profil, Backups und die Einrichtung eines zweiten Geräts zu schützen.</string>
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->

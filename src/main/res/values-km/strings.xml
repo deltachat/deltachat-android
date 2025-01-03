@@ -838,8 +838,6 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">សា Delta Chat ប្រើមីក្រូហ្វូនរបស់អ្នកដើម្បីថត និងផ្ញើសារជាសម្លេង និងវីដេអូជាមួយសម្លេង។</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">សា Delta Chat នឹងអនុញ្ញាតឲ្យអ្នកជ្រើសរើសរូបថតមួយណា ពីបណ្ណាល័យរូបថតរបស់អ្នកដើម្បីផ្ញើ។</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">សា Delta Chat ចង់រក្សាទុករូបភាពទៅបណ្ណាល័យរូបថតរបស់អ្មក។</string>
-
-
     <string name="pref_background_notifications_rationale">ដើម្បីថែរក្សាតំណភ្ជាប់ទៅម៉ាសុីនបម្រើអុីម៉េលរបស់អ្នក និងទទួលសារនៅផ្ទៃខាងក្រោយ។ បដិសេធការបង្កើនប្រសិទ្ធភាពថ្ម នៅក្នុងជំហានបន្ទាប់។\n\nសាហារីសង្ឃ ប្រើធនធានបន្តិចបន្តួច និងយកចិត្តទុកដាក់មិនបង្ហូរថ្មរបស់អ្នក។</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">ប៉ះទីនេះដើម្បីទទួលសារកំឡុងពេល សា Delta Chat គឺស្ថិតនៅក្នុងផ្ទៃខាងក្រោយ។</string>

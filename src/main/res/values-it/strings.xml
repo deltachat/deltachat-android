@@ -661,7 +661,7 @@
     <string name="login_error_server">Per piacere inserisci un server / indirizzo IP valido</string>
     <string name="login_error_port">Per piacere inserisci una porta valida (1-65535)</string>
     <string name="login_error_required_fields">Per piacere inserisci un indirizzo e-mail e una password validi</string>
-    <string name="import_backup_title">Ripristina dal Backup</string>
+    <string name="import_backup_title">Ripristina da Backup</string>
     <string name="import_backup_ask">Backup trovato in \"%1$s\".\n\nVuoi importarlo e usare tutti i dati e le impostazioni salvate?</string>
     <string name="import_backup_no_backup_found">Nessun backup trovato\n\nCopia il backup in \"%1$s\" e riprova ancora. Altimenti premi \"Inizia a messaggiare\" per procedere con le impostazioni normali.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
@@ -787,9 +787,9 @@
     <string name="pref_send_copy_to_self">Invia Copia a Me</string>
     <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Richiesto quando si utilizza questo profilo su più dispositivi.</string>
-    <string name="pref_auto_folder_moves">Sposta automaticamente nella Cartella DeltaChat</string>
+    <string name="pref_auto_folder_moves">Sposta nella Cartella DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Le conversazioni chat vengono spostate per evitare di ingombrare la Posta in arrivo</string>
-    <string name="pref_only_fetch_mvbox_title">Recupera solo dalla Cartella DeltaChat</string>
+    <string name="pref_only_fetch_mvbox_title">Recupera dalla Cartella DeltaChat</string>
     <string name="pref_only_fetch_mvbox_explain">Ignora altre cartelle. Richiede che il tuo server sposti i messaggi delle chat nella cartella DeltaChat.</string>
     <string name="pref_show_emails">Mostra E-mail Classiche</string>
     <string name="pref_show_emails_no">No, solo chat</string>
@@ -857,7 +857,7 @@
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Questo include e-mail, media e \"Messaggi salvati\" in tutte le cartelle del server. Non utilizzare questa funzione se desideri mantenere i dati sul server o se stai utilizzando altri client e-mail oltre a Delta Chat.</string>
     <string name="autodel_server_warn_multi_device_title">Attiva l\'eliminazione immediata</string>
-    <string name="autodel_server_warn_multi_device">Se abiliti l\'eliminazione immediata non potrai utilizzare più dispositivi su questo profilo.</string>
+    <string name="autodel_server_warn_multi_device">Se abiliti l\'eliminazione immediata non potrai utilizzare questo profilo su più dispositivi.</string>
     <string name="autodel_confirm">Ho capito, elimina tutti questi messaggi</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Subito dopo Scaricato</string>
@@ -1184,8 +1184,6 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat utilizza il tuo microfono per registrare e inviare messaggi vocali e video con audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat ti permetterà di scegliere quali foto della tua libreria inviare.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat vuole salvare le immagini nella tua libreria fotografica.</string>
-
-
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Consegna Istantanea</string>
     <string name="pref_background_notifications">Utilizza Connessione Secondo Piano</string>
