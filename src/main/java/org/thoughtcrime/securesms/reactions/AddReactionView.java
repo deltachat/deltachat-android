@@ -16,6 +16,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.b44t.messenger.rpc.Reactions;
 import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -124,12 +125,14 @@ public class AddReactionView extends LinearLayout {
         String result = null;
         try {
             final Reactions reactions = rpc.getMsgReactions(dcContext.getAccountId(), msgToReactTo.getId());
-            final Map<Integer, String[]> reactionsByContact = reactions.getReactionsByContact();
-            final String [] selfReactions = reactionsByContact.get(DcContact.DC_CONTACT_ID_SELF);
-            if (selfReactions != null && selfReactions.length > 0) {
-                result = selfReactions[0];
+            if (reactions != null) {
+                final Map<Integer, String[]> reactionsByContact = reactions.getReactionsByContact();
+                final String [] selfReactions = reactionsByContact.get(DcContact.DC_CONTACT_ID_SELF);
+                if (selfReactions != null && selfReactions.length > 0) {
+                    result = selfReactions[0];
+                }
             }
-        } catch(Exception e) {
+        } catch(RpcException e) {
            e.printStackTrace();
         }
         return result;
