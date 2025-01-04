@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.rpc.Reactions;
 import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ProfileActivity;
@@ -85,17 +86,20 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
 
     int accId = DcHelper.getContext(requireActivity()).getAccountId();
     try {
-      Map<Integer, String[]> reactionsByContact = DcHelper.getRpc(requireActivity()).getMsgReactions(accId, msgId).getReactionsByContact();
+      final Reactions reactions = DcHelper.getRpc(requireActivity()).getMsgReactions(accId, msgId);
       ArrayList<Pair<Integer, String>> contactsReactions = new ArrayList<>();
-      String[] selfReactions = reactionsByContact.remove(DcContact.DC_CONTACT_ID_SELF);
-      for (Integer contact: reactionsByContact.keySet()) {
-        for (String reaction: reactionsByContact.get(contact)) {
-          contactsReactions.add(new Pair<>(contact, reaction));
+      if (reactions != null) {
+        Map<Integer, String[]> reactionsByContact = reactions.getReactionsByContact();
+        String[] selfReactions = reactionsByContact.remove(DcContact.DC_CONTACT_ID_SELF);
+        for (Integer contact: reactionsByContact.keySet()) {
+          for (String reaction: reactionsByContact.get(contact)) {
+            contactsReactions.add(new Pair<>(contact, reaction));
+          }
         }
-      }
-      if (selfReactions != null) {
-        for (String reaction: selfReactions) {
-          contactsReactions.add(new Pair<>(DcContact.DC_CONTACT_ID_SELF, reaction));
+        if (selfReactions != null) {
+          for (String reaction: selfReactions) {
+            contactsReactions.add(new Pair<>(DcContact.DC_CONTACT_ID_SELF, reaction));
+          }
         }
       }
       adapter.changeData(contactsReactions);
