@@ -292,7 +292,9 @@ public class DcHelper {
 
       Uri uri;
       if (path.startsWith(dcContext.getBlobdir())) {
-        // Build a Uri that will later be parsed by AttachmentsContentProvider.openFile():
+        // Build a Uri that will later be passed to AttachmentsContentProvider.openFile().
+        // The last part needs to be `filename`, i.e. the original, user-visible name of the file,
+        // so that the external apps show the name of the file correctly.
         uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + Uri.encode(file.getName()) + "/" + Uri.encode(filename));
         sharedFiles.put(file.getName(), 1); // as different Android version handle uris in putExtra differently, we also check them on our own
       } else {
