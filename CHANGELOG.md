@@ -7,13 +7,12 @@
 * improve emoji picker in landscape mode and when changing from landscape to portrait
 * avoid crash when receiving push notifications if the user restricted the app from working in background
 * improve UI when attaching a file or image to easily recognize it is attached but not sent yet
-* avoid slow loading of in-chat apps in some devices after quickly re-opening an app after closing it
+* avoid slow loading of in-chat apps in some devices when quickly re-opening an app after closing it
 * allow to select multiple images at once in the media picker via "Gallery" button
 * mark holiday notice messages as bot-generated
 * don't mark contacts as bot when receiving location-only and sync messages
 * prefer to encrypt even if peers have their preference to "no preference"
-* start ephemeral messages timers when the chat is archived
-* start ephemeral messages timers when the chat is noticed
+* start ephemeral messages timers when the chat is archived or noticed
 * several bug fixes and updated translations
 * update to core 1.153.0
 
