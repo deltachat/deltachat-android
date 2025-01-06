@@ -184,6 +184,8 @@
     <string name="webxdc_app">Uygulama</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Uygulamalar</string>
+    <string name="webxdc_store_url">Uygulama Seçici URL\'si</string>
+    <string name="webxdc_store_url_explain">Ayarlanırsa URL, varsayılan birinin yerine Uygulama Seçici olarak kullanılacak</string>
     <string name="unknown">Bilinmeyen</string>
 
     <string name="green">Yeşil</string>
@@ -1168,6 +1170,9 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat, sesli iletiler ve sesli videolar kaydetmek ve göndermek için mikrofonunuzu kullanır.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat, kitaplığınızdan hangi fotoğrafların gönderileceğini seçmenize izin verir.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat, görselleri fotoğraf kitaplığınıza kaydetmek istiyor.</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat; yerel profilinizi korumak, yedek oluşturmak ve ikinci aygıt ayarlaması için Face ID\'yi kullanabilir.</string>
+
+
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Anında Teslimat</string>
     <string name="pref_background_notifications">Arka Plan Bağlantısı Kullan</string>

@@ -175,6 +175,8 @@
     <string name="webxdc_app">私人应用</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">私人应用</string>
+    <string name="webxdc_store_url">\"应用选择器“ URL</string>
+    <string name="webxdc_store_url_explain">设置后，该 URL 而不是默认的 URL 将被用作“应用选择器”</string>
     <string name="unknown">未知</string>
 
     <string name="green">绿色</string>
@@ -1152,6 +1154,9 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用麦克风来录制、发送语音消息和带有声音的视频。</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 将让您选择要从图库中发送哪些照片。</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 想将图像保存到图库。</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat 可以使用 Face ID 保护你的本地配置文件，备份创建和第二台设备设置。</string>
+
+
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">即时传送</string>
     <string name="pref_background_notifications">使用后台连接</string>

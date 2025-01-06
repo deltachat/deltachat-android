@@ -184,6 +184,8 @@
     <string name="webxdc_app">Privé-app</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Privé-apps</string>
+    <string name="webxdc_store_url">Appkiezer-url</string>
+    <string name="webxdc_store_url_explain">Stel in om apps te kiezen vanaf een url in plaats van de standaard appkiezer</string>
     <string name="unknown">Onbekend</string>
 
     <string name="green">Groen</string>
@@ -1168,6 +1170,9 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Geef Delta Chat toegang tot je microfoon om audio op te nemen voor spraakberichten en video\'s.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Geef Delta Chat toegang tot je foto\'s om afbeeldingen te versturen.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat wil afbeeldingen opslaan in je fotogalerij.</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat kan gebruikmaken van Face ID om je account te beveiligen, reservekopieën te maken en secundaire apparaten in te stellen.</string>
+
+
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Onmiddellijke bezorging</string>
     <string name="pref_background_notifications">Achtergrondverbinding gebruiken</string>
