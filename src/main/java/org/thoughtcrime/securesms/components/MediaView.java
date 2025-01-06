@@ -3,10 +3,8 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
 import android.net.Uri;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.Window;
