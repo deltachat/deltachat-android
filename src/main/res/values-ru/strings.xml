@@ -202,6 +202,8 @@
     <string name="webxdc_app">Приложение</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Приложения</string>
+    <string name="webxdc_store_url">URL селектора приложений</string>
+    <string name="webxdc_store_url_explain">Если установлено, URL будет использоваться в качестве селектора приложений вместо стандартного</string>
     <string name="unknown">Неизвестно</string>
 
     <string name="green">Зелёный</string>
@@ -1200,6 +1202,9 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat использует микрофон для записи и отправки голосовых сообщений, а также видео со звуком.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat предоставит вам возможность выбирать какие фотографии и из какой галереи отправлять.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat хочет сохранить изображения в вашей галерее.</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat поддерживает использование Face ID для защиты локального профиля, создания резервных копий и настройки второго устройства.</string>
+
+
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Мгновенная доставка</string>
     <string name="pref_background_notifications">Использовать соединение в фоновом режиме</string>
