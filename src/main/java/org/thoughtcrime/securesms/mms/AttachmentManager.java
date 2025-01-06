@@ -253,8 +253,8 @@ public class AttachmentManager {
       @Override
       protected @Nullable Slide doInBackground(Void... params) {
         try {
-          if (msg != null && msg.getType() == DcMsg.DC_MSG_WEBXDC) {
-            return new DocumentSlide(context, msg);
+          if (msg != null) {
+            return MediaUtil.getSlideForMsg(context, msg);
           }
           else if (PartAuthority.isLocalUri(uri)) {
             return getManuallyCalculatedSlideInfo(uri, width, height, msg);
@@ -374,7 +374,7 @@ public class AttachmentManager {
 
         if (PartAuthority.isLocalUri(uri)) {
           mediaSize = PartAuthority.getAttachmentSize(context, uri);
-          if (fileName != null) fileName  = PartAuthority.getAttachmentFileName(context, uri);
+          if (fileName != null) fileName = PartAuthority.getAttachmentFileName(context, uri);
           mimeType  = PartAuthority.getAttachmentContentType(context, uri);
         }
 
@@ -680,10 +680,10 @@ public class AttachmentManager {
       }
 
       switch (this) {
-      case IMAGE:    return new ImageSlide(context, uri, dataSize, width, height);
-      case GIF:      return new GifSlide(context, uri, dataSize, width, height);
+      case IMAGE:    return new ImageSlide(context, uri, fileName, dataSize, width, height);
+      case GIF:      return new GifSlide(context, uri, fileName, dataSize, width, height);
       case AUDIO:    return new AudioSlide(context, uri, dataSize, false, fileName);
-      case VIDEO:    return new VideoSlide(context, uri, dataSize);
+      case VIDEO:    return new VideoSlide(context, uri, fileName, dataSize);
       case DOCUMENT:
         // We have to special-case Webxdc slides: The user can interact with them as soon as a draft
         // is set. Therefore we need to create a DcMsg already now.

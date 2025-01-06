@@ -520,7 +520,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       MediaView mediaView = itemView.findViewById(R.id.media_view);
 
       try {
-        mediaView.set(glideRequests, window, uri, mediaType, size, true);
+        mediaView.set(glideRequests, window, uri, name, mediaType, size, true);
       } catch (IOException e) {
         Log.w(TAG, e);
       }
@@ -605,7 +605,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
       try {
         //noinspection ConstantConditions
-        mediaView.set(glideRequests, window, Uri.fromFile(msg.getFileAsFile()),
+        mediaView.set(glideRequests, window, Uri.fromFile(msg.getFileAsFile()), msg.getFilename(),
             msg.getFilemime(), msg.getFilebytes(), autoplay);
       } catch (IOException e) {
         Log.w(TAG, e);
