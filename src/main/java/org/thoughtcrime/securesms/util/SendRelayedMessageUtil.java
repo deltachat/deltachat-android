@@ -136,14 +136,7 @@ public class SendRelayedMessageUtil {
         }
       }
 
-      String ext = "";
-      int i = filename.lastIndexOf(".");
-      if (i >= 0) {
-        ext = filename.substring(i);
-        filename = filename.substring(0, i);
-      }
-
-      String path1 = DcHelper.getBlobdirFile(dcContext, filename, ext);
+      String path1 = DcHelper.getBlobdirFile(dcContext, filename, "temp");
 
       // copy content to this file
       if (path1 != null) {
