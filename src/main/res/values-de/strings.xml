@@ -1157,6 +1157,9 @@
     <string name="notifications_avg_minutes">Im Mittel alle %1$d Minuten</string>
     <string name="notifications_avg_hours">Im Mittel alle %1$d Stunden</string>
     <string name="last_check_at">Überprüft um %1$s</string>
+    <string name="system_settings">Systemeinstellungen</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">Töne, Vorschau, Stil und mehr bearbeiten</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">Empfangene oder gesendete Apps werden hier angezeigt. Unter \"Dateien\" können Sie auf heruntergeladene Apps zugreifen.</string>
     <!-- iOS shortcut widget -->
