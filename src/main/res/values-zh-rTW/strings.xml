@@ -1139,9 +1139,6 @@
     <string name="last_check_at">在%1$s檢查</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">在任何聊天中接收或發送的應用程式都會顯示在此處。「文件」顯示剛剛下載的應用程式。</string>
-    <!-- iOS webxdc shortcut page -->
-    <string name="shortcut_step1_tap_share_btn">點按「分享」按鈕</string>
-    <string name="shortcut_step2_tap_add_to_home_screen">選擇「添加到主螢幕」 以將應用程式添加到您的主螢幕。</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用您的相機拍攝和傳送照片和影片，以及掃描QR碼。</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的聯絡人來顯示您可以寫入的電子郵件位址清單。Delta Chat 沒有伺服器，您的聯絡人不會發送到任何地方。</string>

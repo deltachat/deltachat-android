@@ -973,9 +973,6 @@
     <string name="notifications_avg_minutes">V priemere každých %1$d minút</string>
     <string name="notifications_avg_hours">V priemere každých %1$d hodín</string>
     <string name="last_check_at">Skontrolované %1$s</string>
-    <!-- iOS webxdc shortcut page -->
-    <string name="shortcut_step1_tap_share_btn">Kliknite na tlačidlo pre zdieľanie</string>
-    <string name="shortcut_step2_tap_add_to_home_screen">Vyberte \"Pridať na domovskú obrazovku\" pre pridanie aplikácie na domovskú obrazovku.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat používa váš fotoaparát na snímanie a odosielanie fotografií a videí a na skenovanie QR kódov.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat používa vaše kontakty na zobrazenie zoznamu e-mailových adries, na ktoré môžete písať. Delta Chat nemá žiadny server, vaše kontakty sa nikam neposielajú.</string>

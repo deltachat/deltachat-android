@@ -1115,9 +1115,6 @@
     <string name="last_check_at">Kontrollerad %1$s</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">Appar som tas emot eller skickas i en chatt visas här. \"Filer\" visar appar som just har laddats ner.</string>
-    <!-- iOS webxdc shortcut page -->
-    <string name="shortcut_step1_tap_share_btn">Klicka på delningsknappen</string>
-    <string name="shortcut_step2_tap_add_to_home_screen">Välj \"Lägg till på hemskärmen\" för att lägga till appen på din hemskärm.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat använder din kamera för att ta och skicka foton och filmer, och för att skanna QR-koder.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat använder dina kontakter för att visa en lista över e-postadresser som du kan skriva till.m Delta Chat har ingen server, dina kontakter skickas inte någonstans.</string>

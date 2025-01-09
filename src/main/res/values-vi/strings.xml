@@ -1037,9 +1037,6 @@
     <string name="last_check_at">Đã kiểm tra lúc %1$s</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">Các ứng dụng được nhận hoặc gửi trong bất kỳ cuộc trò chuyện nào sẽ xuất hiện ở đây. \"Tệp\" hiển thị các ứng dụng vừa tải xuống.</string>
-    <!-- iOS webxdc shortcut page -->
-    <string name="shortcut_step1_tap_share_btn">Nhấp vào nút chia sẻ</string>
-    <string name="shortcut_step2_tap_add_to_home_screen">Chọn \"Thêm vào màn hình chính\" để thêm ứng dụng vào màn hình chính của bạn.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat sử dụng máy ảnh của bạn để chụp và gửi ảnh cũng như video cũng như quét mã QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat sử dụng danh bạ của bạn để hiển thị danh sách các địa chỉ email mà bạn có thể viết thư vào. Delta Chat không có máy chủ, danh bạ của bạn sẽ không được gửi đi đâu cả.</string>
