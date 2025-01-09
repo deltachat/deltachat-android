@@ -1157,6 +1157,9 @@
     <string name="notifications_avg_minutes">On average every %1$d minutes</string>
     <string name="notifications_avg_hours">On average every %1$d hours</string>
     <string name="last_check_at">Checked at %1$s</string>
+    <string name="system_settings">System Settings</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">Edit type, badges, preview and more</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">Apps received or sent in any chat will appear here. \"Files\" shows apps just downloaded.</string>
     <!-- iOS shortcut widget -->
