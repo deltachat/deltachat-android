@@ -1106,9 +1106,6 @@
     <string name="last_check_at">Проверено на %1$s</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">Приложенията, получени или изпратени в кой да е чат, ще се появяват тук. \"Файлове\" показва току-що свалените приложения.</string>
-    <!-- iOS webxdc shortcut page -->
-    <string name="shortcut_step1_tap_share_btn">Натиснете бутона \"Споделяне\"</string>
-    <string name="shortcut_step2_tap_add_to_home_screen">Изберете \"Добавяне към началния екран\", за да добавите приложението към началния екран. </string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat използва Вашата камера, за да прави и изпраща снимки и видеоклипове, както и да сканира QR кодове.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat използва Вашите контакти, за да показва списък на e-mail адресите, до които можете да пишете. Delta Chat няма собствен сървър, Вашите контакти не се пращат никъде.</string>

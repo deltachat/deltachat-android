@@ -903,9 +903,6 @@
     <string name="last_check_at">%1$s에 확인됨</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">채팅에서 보내거나 받은 개인 앱들이 여기에 나타납니다. \"파일\"에서 방금 다운로드 받은 개인 앱들을 보여줍니다.</string>
-    <!-- iOS webxdc shortcut page -->
-    <string name="shortcut_step1_tap_share_btn">공유 버튼을 누르시오</string>
-    <string name="shortcut_step2_tap_add_to_home_screen">홈 화면에 앱을 추가하려면 \"홈 화면에 추가\"를 선택합니다.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat은 카메라를 사용하여 사진과 비디오를 찍고 전송하고 QR 코드를 스캔합니다.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 은 연락처를 사용하여 쓸 수 있는 이메일 주소 목록을 표시합니다. Delta Chat 에는 서버가 없으며 연락처는 아무 곳에도 전송되지 않습니다.</string>
