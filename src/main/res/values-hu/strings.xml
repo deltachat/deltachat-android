@@ -18,7 +18,7 @@
     <string name="off">Kikapcsolva</string>
     <string name="def">Alapértelmezett</string>
     <string name="default_value">Alapértelmezett (%1$s)</string>
-    <string name="default_value_as_above">Alapértelmezett (ugyanaz, mint fent)</string>
+    <string name="default_value_as_above">Alapértelmezett (ugyanaz, mint fentebb)</string>
     <string name="custom">Egyéni</string>
     <string name="none">Egyik sem</string>
     <string name="automatic">Automatikus</string>
@@ -184,6 +184,8 @@
     <string name="webxdc_app">Alkalmazás</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Alkalmazások</string>
+    <string name="webxdc_store_url">Alkalmazás-választó-webcím</string>
+    <string name="webxdc_store_url_explain">Ha be van állítva, akkor a webcím lesz használva mint alkalmazás-választó az alapértelmezett helyett</string>
     <string name="unknown">Ismeretlen</string>
 
     <string name="green">Zöld</string>
@@ -1168,6 +1170,9 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">A Delta Chat az eszköze mikrofonját használja a hangüzenetek és a hangos videók rögzítésére, valamint küldésére.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">A Delta Chat segítségével kiválaszthatja, hogy mely fényképeket szeretné elküldeni a könyvtárából.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">A Delta Chat el akarja menteni a képeket az eszköze fotótárába.</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">A Delta Chat használhatja az arcfelimerést az Ön helyi profiljának biztonsági mentésének létrehozásához és a második eszköz biztonságos beállításához.</string>
+
+
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Azonnali kézbesítés</string>
     <string name="pref_background_notifications">Háttérkapcsolat használata</string>

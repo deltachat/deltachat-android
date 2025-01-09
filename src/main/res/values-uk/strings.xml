@@ -202,6 +202,8 @@
     <string name="webxdc_app">Застосунок</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Застосунки</string>
+    <string name="webxdc_store_url">URL-адреса для вибору додатків</string>
+    <string name="webxdc_store_url_explain">Якщо встановлено, URL-адреса буде використовуватися для вибору додатків, а не за замовчуванням</string>
     <string name="unknown">Невідомо</string>
 
     <string name="green">Зелений</string>
@@ -734,6 +736,8 @@
     <string name="pref_screen_security_explain">Запит на блокування скріншотів у списку останніх і всередині програми</string>
     <string name="pref_screen_security_please_restart_hint">Для застосування налаштувань безпеки екрану перезавантажте додаток.</string>
     <string name="pref_notifications">Сповіщення</string>
+    <string name="pref_mention_notifications">Згадки</string>
+    <string name="pref_mention_notifications_explain">У приглушених групах сповіщати про повідомлення, адресовані вам, наприклад, відповіді або реакції</string>
     <string name="pref_notifications_show">Показати</string>
     <string name="pref_notifications_priority">Пріоритет</string>
     <string name="pref_notifications_explain">Увімкнути системні сповіщення для нових повідомлень</string>
@@ -1198,6 +1202,9 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat використовує Ваш мікрофон для запису й надсилання голосових повідомлень та відео зі звуком.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat дасть Вам обрати, які фото з Вашої бібліотеки надіслати.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat хоче зберігати зображення до Вашої фото-бібліотеки.</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat може використовувати Face ID для захисту вашого локального профілю, створення резервної копії та налаштування другого пристрою.</string>
+
+
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Миттєва доставка</string>
     <string name="pref_background_notifications">Використовувати фонове підключення</string>
