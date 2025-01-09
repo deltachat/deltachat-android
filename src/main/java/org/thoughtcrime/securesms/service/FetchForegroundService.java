@@ -53,7 +53,9 @@ public final class FetchForegroundService extends Service {
           try {
             // The `wait()` needs to be enclosed in a while loop because there may be
             // "spurious wake-ups", i.e. `wait()` may return even though `notifyAll()` wasn't called.
-            STOP_NOTIFIER.wait();
+            synchronized (STOP_NOTIFIER) {
+              STOP_NOTIFIER.wait();
+            }
           } catch (InterruptedException ex) { }
         }
       }
@@ -63,7 +65,9 @@ public final class FetchForegroundService extends Service {
   public static void stop(Context context) {
     if (fetchingSynchronously) {
       fetchingSynchronously = false;
-      STOP_NOTIFIER.notifyAll();
+      synchronized (STOP_NOTIFIER) {
+        STOP_NOTIFIER.notifyAll();
+      }
     }
 
     synchronized (SERVICE_LOCK) {
