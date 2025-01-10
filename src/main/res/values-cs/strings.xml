@@ -4,8 +4,6 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Souhlas</string>
     <string name="cancel">Zrušit</string>
-   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
-    <string name="or_separator">nebo</string>
     <string name="clear_search">Vyčistit vyhledávání</string>
     <string name="yes">Ano</string>
     <string name="no">Ne</string>
@@ -554,8 +552,6 @@
     <string name="pref_app_access">Přístup aplikace</string>
     <string name="pref_chats">Chaty</string>
     <string name="pref_in_chat_sounds">Zvuky v rámci chatu</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Velikost písma zprávy</string>
     <string name="pref_view_log">Zobrazit záznam běhu</string>
     <string name="pref_saved_log">Záznam běhu uložen do složky \"Downloads\"</string>
     <string name="pref_save_log_failed">Uložení záznamu běhu selhalo</string>
@@ -750,6 +746,7 @@
     <string name="contact_setup_changed">Změněné nastavení pro %1$s.</string>
     <string name="copy_qr_data_success">URL z QR kódu zkopírováno do mezipaměti</string>
     <string name="mailto_dialog_header_select_chat">Vyberte chat, kterému chcete zprávu odeslat </string>
+    <!-- notifications  -->
     <string name="notify_reply_button">Odpověď</string>
     <string name="notify_new_message">Nová zpráva</string>
     <string name="notify_background_connection_enabled">Spojení na pozadí je zapnuto</string>

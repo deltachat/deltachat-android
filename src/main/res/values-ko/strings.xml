@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">확인</string>
     <string name="cancel">취소</string>
-   <string name="clear_search">검색 지우기</string>
+    <string name="clear_search">검색 지우기</string>
     <string name="yes">예</string>
     <string name="no">아니오</string>
     <string name="select">선택</string>
@@ -560,8 +560,6 @@
     <string name="pref_app_access">앱 접근</string>
     <string name="pref_chats">채팅</string>
     <string name="pref_in_chat_sounds">앱 내 알림</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">메시지 폰트 크기</string>
     <string name="pref_view_log">로그 보기</string>
     <string name="pref_saved_log">로그를 \"다운로드\" 폴더에 저장했습니다.</string>
     <string name="pref_save_log_failed">로그 저장을 실패했습니다.</string>
@@ -790,8 +788,6 @@
     <string name="mailto_link_could_not_be_decoded">링크로 보내는 메일을 디코딩할 수 없습니다: %1$s</string>
 
     <!-- notifications  -->
-    <!-- deprecated, use mark_as_read or mark_as_read_short -->
-    <string name="notify_dismiss">무시하기</string>
     <string name="notify_reply_button">답장하기</string>
     <string name="notify_new_message">새 메시지</string>
     <string name="notify_background_connection_enabled">백그라운드 연결 사용</string>

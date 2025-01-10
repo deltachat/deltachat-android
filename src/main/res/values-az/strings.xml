@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Imtina</string>
-   <string name="yes">Bəli</string>
+    <string name="yes">Bəli</string>
     <string name="no">Xeyir</string>
     <string name="on">Açıq</string>
     <string name="off">Bağlı</string>
@@ -332,8 +332,6 @@
     <string name="pref_app_access">Daxil oldu</string>
     <string name="pref_chats">Çatlar</string>
     <string name="pref_in_chat_sounds">Çatda olan səslər</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Mətnin ölçüsü</string>
     <string name="pref_view_log">Log-a bax</string>
     <string name="pref_saved_log">Loqi Yükləmələr qovluğuna saxlanıldı</string>
     <string name="pref_save_log_failed">Loqu saxlaya bilmədi</string>
@@ -428,6 +426,7 @@
     <string name="contact_not_verified">%1$sDoğrula bilmir</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$süçün quraşdırma dəyişdirildi</string>
+    <!-- notifications  -->
     <string name="notify_reply_button">Cavab ver</string>
     <string name="notify_new_message">Yeni mesaj</string>
     <string name="notify_background_connection_enabled">Arxa fon əlaqəsi aktivdir</string>

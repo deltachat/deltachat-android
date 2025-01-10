@@ -4,8 +4,6 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel·la</string>
-   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
-    <string name="or_separator">o</string>
     <string name="clear_search">Neteja la cerca</string>
     <!-- a noun, used on a button, short for "show link" -->
     <string name="link">Enllaç</string>
@@ -580,8 +578,6 @@
     <string name="pref_app_access">Accés a l\'aplicació</string>
     <string name="pref_chats">Xats</string>
     <string name="pref_in_chat_sounds">Sons d\'entrada</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Mida de la font del missatge</string>
     <string name="pref_view_log">Veure el registre</string>
     <string name="pref_other">Altres</string>
     <string name="pref_backup">Còpia de seguretat</string>
@@ -673,6 +669,7 @@
     <string name="contact_not_verified">No es pot verificar%1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuració canviada per %1$s</string>
+    <!-- notifications  -->
     <string name="notify_reply_button">Respondre</string>
     <string name="notify_new_message">Missatge nou</string>
     <string name="notify_background_connection_enabled">Connexió habilitada en segon pla</string>

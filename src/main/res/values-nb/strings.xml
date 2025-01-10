@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Avbryt</string>
-   <string name="yes">Ja</string>
+    <string name="yes">Ja</string>
     <string name="no">Nei</string>
     <string name="select">Velg</string>
     <string name="on">På</string>
@@ -335,8 +335,6 @@
     <string name="pref_app_access">Programtilgang</string>
     <string name="pref_chats">Sludringer</string>
     <string name="pref_in_chat_sounds">Merknader i programmet</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Skriftstørrelse i meldinger</string>
     <string name="pref_view_log">Vis logg</string>
     <string name="pref_log_header">Logg</string>
     <string name="pref_other">Annet</string>
@@ -405,6 +403,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Skann dette for å bekrefte en kontakt med %1$s.</string>
     <string name="contact_verified">%1$s bekreftet.</string>
+    <!-- notifications  -->
     <string name="notify_reply_button">Svar</string>
     <string name="notify_new_message">Ny meldin</string>
     <string name="notify_priority_high">Høy</string>

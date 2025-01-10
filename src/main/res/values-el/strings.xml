@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Εντάξει</string>
     <string name="cancel">Ακύρωση</string>
-   <string name="clear_search">Αναζήτηση</string>
+    <string name="clear_search">Αναζήτηση</string>
     <string name="yes">Ναι</string>
     <string name="no">Όχι</string>
     <string name="select">Επιλογή</string>
@@ -584,8 +584,6 @@
     <string name="pref_app_access">Πρόσβαση εφαρμογής</string>
     <string name="pref_chats">Συνομιλίες</string>
     <string name="pref_in_chat_sounds">Ήχοι μέσα στη συνομιλία</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Μέγεθος γραμματοσειράς μηνύματος</string>
     <string name="pref_view_log">Προβολή Αρχείου Καταγραφής</string>
     <string name="pref_saved_log">ΤΟ αρχείο καταγραφής αποθηκεύτηκε στο φάκελο \"Λήψεις\".</string>
     <string name="pref_save_log_failed">Αποτυχία αποθήκευσης του αρχείου καταγραφής</string>
@@ -828,8 +826,6 @@
     <string name="mailto_link_could_not_be_decoded">Αδυναμία αποκωδικοποίησης του συνδέσμου mailto: %1$s</string>
 
     <!-- notifications  -->
-    <!-- deprecated, use mark_as_read or mark_as_read_short -->
-    <string name="notify_dismiss">Απόρριψη</string>
     <string name="notify_reply_button">Απάντηση</string>
     <string name="notify_new_message">Νέο μήνυμα</string>
     <string name="notify_background_connection_enabled">Η σύνδεση στο παρασκήνιο ενεργοποιήθηκε</string>

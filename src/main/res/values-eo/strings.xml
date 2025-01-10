@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Bone</string>
     <string name="cancel">Nuligi</string>
-   <string name="clear_search">Forviŝi Serĉon</string>
+    <string name="clear_search">Forviŝi Serĉon</string>
     <string name="yes">Jes</string>
     <string name="no">Ne</string>
     <string name="select">Elekti</string>
@@ -422,8 +422,6 @@
     <string name="pref_app_access">Aliro al aplikaĵo</string>
     <string name="pref_chats">Interparoloj</string>
     <string name="pref_in_chat_sounds">Sonoj dum interparolado</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Mesaĝa tipargrando</string>
     <string name="pref_view_log">Vidi protokolon</string>
     <string name="pref_saved_log">Konservis protokolon al la elŝuta dosierujo</string>
     <string name="pref_save_log_failed">Malsukcesis konservi protokolon</string>
@@ -446,6 +444,7 @@
     <string name="pref_send_copy_to_self">Sendi kopion al mi mem</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
     <string name="autocrypt_prefer_e2ee">Preferi tutvojan ĉifradon</string>
+    <!-- notifications  -->
     <string name="notify_reply_button">Respondi</string>
     <string name="notify_new_message">Nova mesaĝo</string>
     <string name="notify_priority_high">Alta</string>

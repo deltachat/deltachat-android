@@ -4,8 +4,6 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Mégse</string>
-   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
-    <string name="or_separator">vagy</string>
     <string name="clear_search">Keresés kiürítése</string>
     <!-- a noun, used on a button, short for "show link" -->
     <string name="link">Hivatkozás</string>
@@ -537,10 +535,6 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ A profil átkerül az Ön második eszközére.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Profil készítése…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="waiting_for_receiver">Várakozás a vevőeszközre…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="receiver_connected">Vevőeszköz kapcsolódott…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Átvitel…</string>
     <string name="troubleshooting">Hibaelhárítás</string>
@@ -740,8 +734,6 @@
     <string name="pref_app_access">Alkalmazás-hozzáférés</string>
     <string name="pref_chats">Csevegések</string>
     <string name="pref_in_chat_sounds">Csevegésen belüli hangok</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Üzenetek betűmérete</string>
     <string name="pref_view_log">Naplófájl megtekintése</string>
     <string name="pref_saved_log">A naplófájl elmentve a „Letöltések” mappába</string>
     <string name="pref_save_log_failed">Nem sikerült elmenteni a naplófájlt</string>
@@ -1027,8 +1019,6 @@
     <string name="mailto_link_could_not_be_decoded">Nem sikerült dekódolni a mailto-hivatkozást: %1$s</string>
 
     <!-- notifications  -->
-    <!-- deprecated, use mark_as_read or mark_as_read_short -->
-    <string name="notify_dismiss">Elvetés</string>
     <string name="notify_reply_button">Válasz</string>
     <string name="notify_new_message">Új üzenet</string>
     <string name="notify_background_connection_enabled">Háttérkapcsolat engedélyezve</string>

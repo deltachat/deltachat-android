@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancelar</string>
-   <string name="yes">Sim</string>
+    <string name="yes">Sim</string>
     <string name="no">Não</string>
     <string name="on">Ligado</string>
     <string name="off">Desligado</string>
@@ -276,8 +276,6 @@
     <string name="pref_app_access">Acesso à App</string>
     <string name="pref_chats">chats</string>
     <string name="pref_in_chat_sounds">Sons na chat</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Tamanho do texto das mensagens</string>
     <string name="pref_view_log">Ver o log</string>
     <string name="pref_other">Outro</string>
     <string name="pref_backup">Backup</string>
@@ -363,6 +361,7 @@
     <string name="contact_not_verified">Não é possível verificar %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuração alterada para %1$s</string>
+    <!-- notifications  -->
     <string name="notify_reply_button">Responder</string>
     <string name="notify_new_message">Mensagem nova</string>
     <string name="notify_background_connection_enabled">Conexão em segundo plano ativada</string>
