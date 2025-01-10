@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## v1.50.5
+2025-01
+
+* fix push-notifications handling for certain devices where it was not working correctly
+* update translations
+* using core 1.153.0
+
 ## v1.50.4
 2025-01
 
