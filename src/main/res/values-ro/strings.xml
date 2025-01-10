@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Anulați</string>
-   <string name="clear_search">Stergere Căutare</string>
+    <string name="clear_search">Stergere Căutare</string>
     <string name="yes">Da</string>
     <string name="no">Nu</string>
     <string name="select">Selectați</string>
@@ -488,10 +488,6 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Contul a fost transferat pe dispozitivul secundar.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Pregătirea contului...</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="waiting_for_receiver">În așteptare pentru receptor...</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="receiver_connected">Receptorul conectat...</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Transferul...</string>
     <string name="troubleshooting">Depanare</string>

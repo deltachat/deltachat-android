@@ -4,8 +4,6 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Гаразд</string>
     <string name="cancel">Скасувати</string>
-   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
-    <string name="or_separator">або</string>
     <string name="clear_search">Очистити пошук</string>
     <!-- a noun, used on a button, short for "show link" -->
     <string name="link">Посилання</string>
@@ -569,10 +567,6 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Обліковий запис перенесено на ваш другий пристрій.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Підготовка облікового запису…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="waiting_for_receiver">Очікування одержувача…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="receiver_connected">Одержувача підключено…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Передача…</string>
     <string name="troubleshooting">Вирішення проблем</string>
@@ -772,8 +766,6 @@
     <string name="pref_app_access">Доступ додатку</string>
     <string name="pref_chats">Чати</string>
     <string name="pref_in_chat_sounds">Звуки в чаті</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Розмір шрифту повідомлення</string>
     <string name="pref_view_log">Переглянути журнал</string>
     <string name="pref_saved_log">Лог збережено у папку \"Завантаження\"</string>
     <string name="pref_save_log_failed">Не вдалося зберегти лог</string>
@@ -1059,8 +1051,6 @@
     <string name="mailto_link_could_not_be_decoded">неможливо декодувати посилання mailto: %1$s</string>
 
     <!-- notifications  -->
-    <!-- deprecated, use mark_as_read or mark_as_read_short -->
-    <string name="notify_dismiss">Відхилити</string>
     <string name="notify_reply_button">Відповісти</string>
     <string name="notify_new_message">Нове повідомлення</string>
     <string name="notify_background_connection_enabled">З\'єднання у фоновому режимі ввімкнено</string>

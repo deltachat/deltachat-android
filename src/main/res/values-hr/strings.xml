@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Otkaži</string>
-   <string name="yes">Da</string>
+    <string name="yes">Da</string>
     <string name="no">Ne</string>
     <string name="on">Uključeno</string>
     <string name="off">Isključeno</string>
@@ -211,8 +211,6 @@
     <string name="pref_app_access">Pristup aplikaciji</string>
     <string name="pref_chats">Razgovori</string>
     <string name="pref_in_chat_sounds">Zvuk unutar razgovora</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Veličina fonta poruke</string>
     <string name="pref_other">Ostalo</string>
     <string name="pref_backup">Sigurnosna kopija</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
@@ -224,6 +222,7 @@
     <!-- qr code stuff -->
     <string name="qr_code">QR kod</string>
     <string name="qrscan_fingerprint_label">Otisak prsta</string>
+    <!-- notifications  -->
     <string name="notify_reply_button">Odgovori</string>
     <string name="notify_new_message">Nova poruka</string>
     <string name="notify_priority_high">Visoko</string>

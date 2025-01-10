@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">了承</string>
     <string name="cancel">取消</string>
-   <string name="clear_search">検索履歴を消す</string>
+    <string name="clear_search">検索履歴を消す</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
     <string name="select">選択</string>
@@ -459,8 +459,6 @@
     <string name="pref_app_access">アプリのアクセス</string>
     <string name="pref_chats">チャット</string>
     <string name="pref_in_chat_sounds">着信音</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">文字の大きさ</string>
     <string name="pref_view_log">ログの表示</string>
     <string name="pref_saved_log">ログはダウンロードフォルダに保存されました。</string>
     <string name="pref_save_log_failed">ログの保存に失敗しました</string>
@@ -622,6 +620,7 @@
     <string name="contact_not_verified">%1$sを確認できません。</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">設定が%1$sに変わりました。</string>
+    <!-- notifications  -->
     <string name="notify_reply_button">返信</string>
     <string name="notify_new_message">新規メッセージ</string>
     <string name="notify_priority_high">高</string>

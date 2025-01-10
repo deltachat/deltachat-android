@@ -4,8 +4,6 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Hủy</string>
-   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
-    <string name="or_separator">hoặc</string>
     <string name="clear_search">Dọn dẹp tìm kiếm</string>
     <string name="yes">Có</string>
     <string name="no">Không</string>
@@ -491,10 +489,6 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Tài khoản đã được chuyển sang thiết bị thứ hai của bạn.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Đang chuẩn bị tài khoản…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="waiting_for_receiver">Đang chờ người nhận…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="receiver_connected">Đã kết nối bộ thu…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Đang chuyển…</string>
     <string name="troubleshooting">Khắc phục sự cố</string>
@@ -640,8 +634,6 @@
     <string name="pref_app_access">Quyền truy cập ứng dụng</string>
     <string name="pref_chats">Trò chuyện</string>
     <string name="pref_in_chat_sounds">Âm thanh trong cuộc trò chuyện</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Kích thước phông chữ tin nhắn</string>
     <string name="pref_view_log">Xem nhật ký</string>
     <string name="pref_saved_log">Đã lưu nhật ký vào thư mục \"Tải xuống\"</string>
     <string name="pref_save_log_failed">Không lưu được nhật ký</string>
@@ -907,8 +899,6 @@
     <string name="mailto_link_could_not_be_decoded">không thể giải mã được liên kết mailto: %1$s</string>
 
     <!-- notifications  -->
-    <!-- deprecated, use mark_as_read or mark_as_read_short -->
-    <string name="notify_dismiss">Loại bỏ</string>
     <string name="notify_reply_button">Trả lời</string>
     <string name="notify_new_message">Tin nhắn mới</string>
     <string name="notify_background_connection_enabled">Đã bật kết nối nền</string>

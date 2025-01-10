@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Zrušiť</string>
-   <string name="clear_search">Zrušiť hľadanie</string>
+    <string name="clear_search">Zrušiť hľadanie</string>
     <string name="yes">Áno</string>
     <string name="no">Nie</string>
     <string name="select">Vybrať</string>
@@ -610,8 +610,6 @@
     <string name="pref_app_access">Prístup k aplikácii</string>
     <string name="pref_chats">Konverzácie</string>
     <string name="pref_in_chat_sounds">Zvuky v konverzáciách</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Veľkosť písma správy</string>
     <string name="pref_view_log">Prezrieť záznam</string>
     <string name="pref_saved_log">Denník bol uložený do priečinka „Súbory na stiahnutie“</string>
     <string name="pref_save_log_failed">Uloženie denníka zlyhalo</string>
@@ -852,8 +850,6 @@
     <string name="mailto_link_could_not_be_decoded">prepojenie mailto sa nepodarilo dekódovať: %1$s</string>
 
     <!-- notifications  -->
-    <!-- deprecated, use mark_as_read or mark_as_read_short -->
-    <string name="notify_dismiss">Odmietnuť</string>
     <string name="notify_reply_button">Odpovedať</string>
     <string name="notify_new_message">Nová správa</string>
     <string name="notify_background_connection_enabled">Pripojenie na pozadí je povolené</string>

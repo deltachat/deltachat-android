@@ -4,8 +4,6 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Oké</string>
     <string name="cancel">Annuleren</string>
-   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
-    <string name="or_separator">of</string>
     <string name="clear_search">Zoekopdracht wissen</string>
     <!-- a noun, used on a button, short for "show link" -->
     <string name="link">Link</string>
@@ -537,10 +535,6 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Het account is overgezet naar je tweede apparaat.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Bezig met voorbereiden…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="waiting_for_receiver">Bezig met wachten op ontvanger…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="receiver_connected">De ontvanger is verbonden…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Bezig met overdragen…</string>
     <string name="troubleshooting">Probleemoplossing</string>
@@ -740,8 +734,6 @@
     <string name="pref_app_access">Apptoegang</string>
     <string name="pref_chats">Gesprekken</string>
     <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Tekstgrootte van berichten</string>
     <string name="pref_view_log">Logboek bekijken</string>
     <string name="pref_saved_log">Het logboek is opgeslagen in de downloadmap</string>
     <string name="pref_save_log_failed">Kan logboek niet opslaan</string>
@@ -1027,8 +1019,6 @@
     <string name="mailto_link_could_not_be_decoded">De mailto-link kan niet worden ontcijferd: %1$s</string>
 
     <!-- notifications  -->
-    <!-- deprecated, use mark_as_read or mark_as_read_short -->
-    <string name="notify_dismiss">Verwerpen</string>
     <string name="notify_reply_button">Beantwoorden</string>
     <string name="notify_new_message">Nieuw bericht</string>
     <string name="notify_background_connection_enabled">Achtergrondverbinding ingeschakeld</string>
@@ -1157,8 +1147,20 @@
     <string name="notifications_avg_minutes">Gemiddeld elke %1$d minuten</string>
     <string name="notifications_avg_hours">Gemiddeld elke %1$d uur</string>
     <string name="last_check_at">Gecontroleerd om %1$s</string>
+    <string name="system_settings">Systeeminstellingen</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">Pas het type, emblemen, de voorvertoning en meer aan</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">Privéapps die je verstuurt of ontvangt worden hier getoond. Bij de bestanden zie je de zojuist gedownloade apps.</string>
+    <!-- iOS shortcut widget -->
+    <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
+    <string name="shortcuts_widget_title">Opdrachten</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="shortcuts_widget_description">Gebruik Delta Chats ‘Tonen op widget’ om items toe te voegen</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="remove_from_widget">Niet tonen op widget</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="add_to_widget">Tonen op widget</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken en QR-codes te scannen.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen. Delta Chat heeft geen servers, dus ze worden niet aan ons opgestuurd.</string>

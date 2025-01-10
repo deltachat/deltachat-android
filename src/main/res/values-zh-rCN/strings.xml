@@ -4,8 +4,6 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
-   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
-    <string name="or_separator">或</string>
     <string name="clear_search">清除搜索</string>
     <!-- a noun, used on a button, short for "show link" -->
     <string name="link">链接</string>
@@ -521,10 +519,6 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ 账号已传输到您的第二台设备。</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">正在准备账号…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="waiting_for_receiver">等待接收者…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="receiver_connected">接收者已连接…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">传输中…</string>
     <string name="troubleshooting">故障排除</string>
@@ -724,8 +718,6 @@
     <string name="pref_app_access">应用程序访问</string>
     <string name="pref_chats">聊天</string>
     <string name="pref_in_chat_sounds">聊天音</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">消息字体大小</string>
     <string name="pref_view_log">查看日志</string>
     <string name="pref_saved_log">已将日志保存至“下载”文件夹</string>
     <string name="pref_save_log_failed">保存日志失败</string>
@@ -1011,8 +1003,6 @@
     <string name="mailto_link_could_not_be_decoded">无法解码 mailto 链接：%1$s</string>
 
     <!-- notifications  -->
-    <!-- deprecated, use mark_as_read or mark_as_read_short -->
-    <string name="notify_dismiss">不予理会</string>
     <string name="notify_reply_button">回复</string>
     <string name="notify_new_message">新消息</string>
     <string name="notify_background_connection_enabled">已启用后台连接</string>
@@ -1141,8 +1131,20 @@
     <string name="notifications_avg_minutes">平均每 %1$d 分钟</string>
     <string name="notifications_avg_hours">平均每 %1$d 小时</string>
     <string name="last_check_at">检查于 %1$s</string>
+    <string name="system_settings">系统设置</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">编辑类型、徽章、预览等</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">任何聊天中接收或发送的私人应用都会出现在这里。“文件”显示刚下载的私人应用。</string>
+    <!-- iOS shortcut widget -->
+    <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
+    <string name="shortcuts_widget_title">快捷方式</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="shortcuts_widget_description">使用 Delta Chat 的“添加到微件”添加项目</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="remove_from_widget">从微件中移除</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="add_to_widget">添加到微件</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用相机来拍摄、发送照片和视频以及扫描二维码。</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>

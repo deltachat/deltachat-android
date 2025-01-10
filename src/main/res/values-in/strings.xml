@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Batalkan</string>
-   <string name="clear_search">Hapus pencarian</string>
+    <string name="clear_search">Hapus pencarian</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="select">Pilih</string>
@@ -471,8 +471,6 @@
     <string name="pref_app_access">Akes Aplikasi</string>
     <string name="pref_chats">Obrolan</string>
     <string name="pref_in_chat_sounds">Suara dalam obrolan</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Ukuran huruf pesan</string>
     <string name="pref_view_log">Lihat catatan</string>
     <string name="pref_saved_log">Menyimpan log ke folder \"Unduhan\"</string>
     <string name="pref_save_log_failed">Gagal menyimpan log</string>
@@ -602,6 +600,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ubah pengaturan untuk %1$s.</string>
     <string name="copy_qr_data_success">Salin QR url ke papan klip</string>
+    <!-- notifications  -->
     <string name="notify_reply_button">Balasan</string>
     <string name="notify_new_message">Pesan baru</string>
     <string name="notify_background_connection_enabled">Koneksi latar diaktifkan</string>
