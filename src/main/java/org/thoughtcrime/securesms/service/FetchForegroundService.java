@@ -49,14 +49,14 @@ public final class FetchForegroundService extends Service {
         // The background fetch was successful, but we need to wait until all events were processed.
         // After all events were processed, we will get DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE,
         // and stop() will be called.
-        while (fetchingSynchronously) {
-          try {
-            // The `wait()` needs to be enclosed in a while loop because there may be
-            // "spurious wake-ups", i.e. `wait()` may return even though `notifyAll()` wasn't called.
-            synchronized (STOP_NOTIFIER) {
+        synchronized (STOP_NOTIFIER) {
+          while (fetchingSynchronously) {
+            try {
+              // The `wait()` needs to be enclosed in a while loop because there may be
+              // "spurious wake-ups", i.e. `wait()` may return even though `notifyAll()` wasn't called.
               STOP_NOTIFIER.wait();
-            }
-          } catch (InterruptedException ex) { }
+            } catch (InterruptedException ex) {}
+          }
         }
       }
     }
