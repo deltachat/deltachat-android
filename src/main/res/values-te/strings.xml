@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">సరే</string>
     <string name="cancel">రద్దు</string>
-   <string name="yes">అవును</string>
+    <string name="yes">అవును</string>
     <string name="no">కాదు</string>
     <string name="on">ఆన్</string>
     <string name="off">ఆఫ్</string>
@@ -182,14 +182,13 @@
     <string name="pref_app_access">అనువర్తన ప్రాప్యత</string>
     <string name="pref_chats">చాట్లు</string>
     <string name="pref_in_chat_sounds">యాప్-లోపల నోటిఫికేషన్లు</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">సందేశం ఫాంట్ పరిమాణం</string>
     <string name="pref_other">ఇతర</string>
     <string name="pref_backup">బ్యాకప్</string>
     <string name="pref_managekeys_export_secret_keys">రహస్య కీలను ఎగుమతి చెయి</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">చాట్ నేపధ్యం</string>
     <string name="qrscan_fingerprint_label">ఫింగర్‌ప్రింట్స్</string>
+    <!-- notifications  -->
     <string name="notify_reply_button">జవాబు</string>
     <string name="notify_new_message">కొత్త సందేశం</string>
     <string name="notify_priority_high">అధికం</string>

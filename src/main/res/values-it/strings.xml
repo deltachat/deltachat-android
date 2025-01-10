@@ -4,8 +4,6 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Annulla</string>
-   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
-    <string name="or_separator">o</string>
     <string name="clear_search">Cancella Ricerca</string>
     <!-- a noun, used on a button, short for "show link" -->
     <string name="link">Collegamento</string>
@@ -553,10 +551,6 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profilo trasferito sul tuo secondo dispositivo.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Preparazione profilo…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="waiting_for_receiver">In attesa del ricevente...</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="receiver_connected">Ricevente connesso…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Trasferimento…</string>
     <string name="troubleshooting">Risoluzione dei problemi</string>
@@ -756,8 +750,6 @@
     <string name="pref_app_access">Accesso App</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">Suoni In-Chat</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Dimensione Font Messaggi</string>
     <string name="pref_view_log">Vedi Registro</string>
     <string name="pref_saved_log">Registro salvato nella cartella \"Downloads\"</string>
     <string name="pref_save_log_failed">Salvataggio registro non riuscito</string>
@@ -1043,8 +1035,6 @@
     <string name="mailto_link_could_not_be_decoded">Il collegamento mailto non può essere decodificato: %1$s</string>
 
     <!-- notifications  -->
-    <!-- deprecated, use mark_as_read or mark_as_read_short -->
-    <string name="notify_dismiss">Ignora</string>
     <string name="notify_reply_button">Rispondi</string>
     <string name="notify_new_message">Nuovo messaggio</string>
     <string name="notify_background_connection_enabled">Connessione in secondo piano abilitata</string>
@@ -1067,7 +1057,7 @@
     <string name="perm_explain_access_to_mic_denied">Per inviare messaggi audio, vai alle impostazioni dell\'app, seleziona \"Autorizzazioni\" e abilita \"Microfono\".</string>
     <string name="perm_explain_access_to_storage_denied">Per ricevere o inviare files, vai alle impostazioni dell\'app, seleziona \"Autorizzazioni\" e abilita \"Archiviazione\".</string>
     <string name="perm_explain_access_to_location_denied">Per allegare una posizione, vai alle impostazioni dell\'app, seleziona \"Autorizzazioni\" e abilita \"Posizione\".</string>
-    <string name="perm_explain_access_to_notifications_denied">Per ricevere le notifiche, vai su \"Impostazioni Sistema / App / Delta Chat\" e attiva \"Notifiche\".</string>
+    <string name="perm_explain_access_to_notifications_denied">Per ricevere le notifiche, vai su \"Impostazioni di Sistema / App / Delta Chat\" e attiva \"Notifiche\".</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Disegna ovunque per sfocare</string>
@@ -1173,8 +1163,20 @@
     <string name="notifications_avg_minutes">In media ogni %1$d minuti</string>
     <string name="notifications_avg_hours">In media ogni %1$d ore</string>
     <string name="last_check_at">Controllato a %1$s</string>
+    <string name="system_settings">Impostazioni di Sistema</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">Modifica tipo, distintivi, anteprima e altro</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">Le app ricevute o inviate in qualsiasi chat verranno mostrate qui. \"Files\" mostra le app appena scaricate.</string>
+    <!-- iOS shortcut widget -->
+    <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
+    <string name="shortcuts_widget_title">Scorciatoie</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="shortcuts_widget_description">Utilizza \"Aggiungi al Widget\" di Delta Chat per aggiungere elementi</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="remove_from_widget">Rimuovi dal Widget</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="add_to_widget">Aggiungi al Widget</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilizza la tua fotocamera per scattare e inviare foto e video e per scansionare i codici QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat usa i tuoi contatti per mostrare una lista di indirizzi e-mail a cui puoi scrivere. Delta Chat non ha un server, i tuoi contatti non vengono inviati da nessuna parte.</string>

@@ -4,8 +4,6 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Anuluj</string>
-   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
-    <string name="or_separator">lub</string>
     <string name="clear_search">Wyczyść wyszukiwanie</string>
     <!-- a noun, used on a button, short for "show link" -->
     <string name="link">Link</string>
@@ -569,10 +567,6 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Konto przeniesione na twoje kolejne urządzenie.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Przygotowywanie konta…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="waiting_for_receiver">Oczekiwanie na odbiorcę…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="receiver_connected">Odbiorca połączony…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Przenoszenie…</string>
     <string name="troubleshooting">Rozwiązywanie problemów</string>
@@ -772,8 +766,6 @@
     <string name="pref_app_access">Dostęp do aplikacji</string>
     <string name="pref_chats">Czaty</string>
     <string name="pref_in_chat_sounds">Dźwięki w czacie</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Rozmiar czcionki w wiadomości</string>
     <string name="pref_view_log">Wyświetl dziennik</string>
     <string name="pref_saved_log">Zapisano dziennik w folderze Pobrane</string>
     <string name="pref_save_log_failed">Nie udało się zapisać dziennika</string>
@@ -1059,8 +1051,6 @@
     <string name="mailto_link_could_not_be_decoded">link mailto nie mógł zostać odszyfrowany: %1$s</string>
 
     <!-- notifications  -->
-    <!-- deprecated, use mark_as_read or mark_as_read_short -->
-    <string name="notify_dismiss">Odrzuć</string>
     <string name="notify_reply_button">Odpowiedz</string>
     <string name="notify_new_message">Nowa wiadomość</string>
     <string name="notify_background_connection_enabled">Połączenie w tle włączone</string>
@@ -1189,8 +1179,20 @@
     <string name="notifications_avg_minutes">Średnio co %1$d min.</string>
     <string name="notifications_avg_hours">Średnio co %1$d godz.</string>
     <string name="last_check_at">Sprawdzono o %1$s</string>
+    <string name="system_settings">Ustawienia systemowe</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">Edytuj typ, plakietki, podgląd i więcej</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">Tutaj pojawią się prywatne aplikacje otrzymane lub wysłane w dowolnym czacie. „Pliki” pokazuje właśnie pobrane prywatne aplikacje.</string>
+    <!-- iOS shortcut widget -->
+    <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
+    <string name="shortcuts_widget_title">Skróty</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="shortcuts_widget_description">Użyj „Dodaj do widżetu” w Delta Chat, aby dodać elementy</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="remove_from_widget">Usuń z widżetu</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="add_to_widget">Dodaj do widżetu</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat używa aparatu do robienia i wysyłania zdjęć i filmów oraz do skanowania kodów QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Zezwolenie na dostęp do książki adresowej pozwala czatować z kontaktami z urządzenia.</string>

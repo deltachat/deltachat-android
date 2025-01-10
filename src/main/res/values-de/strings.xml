@@ -4,8 +4,6 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Abbruch</string>
-   <!-- deprecated, the word "or" to separate blocks in the user interface that are mutually exclusive -->
-    <string name="or_separator">oder</string>
     <string name="clear_search">Suche löschen</string>
     <!-- a noun, used on a button, short for "show link" -->
     <string name="link">Link</string>
@@ -537,10 +535,6 @@
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profil wurde auf Ihr Zweitgerät übertragen.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Profil vorbereiten…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="waiting_for_receiver">Warte auf Empfänger…</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="receiver_connected">Empfänger verbunden…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Transfer…</string>
     <string name="troubleshooting">Fehlersuche</string>
@@ -740,8 +734,6 @@
     <string name="pref_app_access">App-Zugriff</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">In-Chat-Klänge</string>
-    <!-- deprecated -->
-    <string name="pref_message_text_size">Schriftgröße</string>
     <string name="pref_view_log">Protokoll anzeigen</string>
     <string name="pref_saved_log">Die Logdatei wurde im Downloads Ordner gespeichert.</string>
     <string name="pref_save_log_failed">Logdatei konnte nicht gespeichert werden.</string>
@@ -1027,8 +1019,6 @@
     <string name="mailto_link_could_not_be_decoded">Mailto-Link konnte nicht dekodiert werden: %1$s</string>
 
     <!-- notifications  -->
-    <!-- deprecated, use mark_as_read or mark_as_read_short -->
-    <string name="notify_dismiss">Verwerfen</string>
     <string name="notify_reply_button">Antworten</string>
     <string name="notify_new_message">Neue Nachricht</string>
     <string name="notify_background_connection_enabled">Hintergrundverbindung aktiviert</string>
