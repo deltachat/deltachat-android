@@ -54,6 +54,7 @@ import org.thoughtcrime.securesms.profiles.ProfileMediaConstraints;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
@@ -331,7 +332,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     privacyPolicyBtn.setOnClickListener(view -> {
       if (!isDcLogin) {
-        WebViewActivity.openUrlInBrowser(this, "https://" + providerHost + "/privacy.html");
+        IntentUtils.showBrowserIntent(this, "https://" + providerHost + "/privacy.html");
       }
     });
 
@@ -350,7 +351,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       .create();
 
     view.findViewById(R.id.use_other_server).setOnClickListener((v) -> {
-      WebViewActivity.openUrlInBrowser(this, INSTANCES_URL);
+      IntentUtils.showBrowserIntent(this, INSTANCES_URL);
       signUpDialog.dismiss();
     });
     view.findViewById(R.id.login_button).setOnClickListener((v) -> {

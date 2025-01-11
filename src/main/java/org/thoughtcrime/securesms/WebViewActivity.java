@@ -26,6 +26,7 @@ import androidx.webkit.ProxyController;
 import androidx.webkit.ProxyConfig;
 
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.IntentUtils;
 
 public class WebViewActivity extends PassphraseRequiredActionBarActivity
                                implements SearchView.OnQueryTextListener,
@@ -278,16 +279,8 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   // onBackPressed() can be overwritten by derived classes as needed.
   // the default behavior (close the activity) is just fine eg. for Webxdc, Connectivity, HTML-mails
 
-  public static void openUrlInBrowser(Context context, String url) {
-    try {
-      context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-    } catch (ActivityNotFoundException e) {
-      Toast.makeText(context, R.string.no_browser_installed, Toast.LENGTH_LONG).show();
-    }
-  }
-
   protected boolean openOnlineUrl(String url) {
-    openUrlInBrowser(this, url);
+    IntentUtils.showBrowserIntent(this, url);
     // returning `true` causes the WebView to abort loading
     return true;
   }

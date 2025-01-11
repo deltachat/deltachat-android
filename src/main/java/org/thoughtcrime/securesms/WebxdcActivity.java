@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -45,6 +44,7 @@ import org.json.JSONObject;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -290,7 +290,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         addToHomeScreen(this, dcAppMsg.getId());
         return true;
       case R.id.source_code:
-        openUrlInBrowser(this, sourceCodeUrl);
+        IntentUtils.showBrowserIntent(this, sourceCodeUrl);
         return true;
       case R.id.show_in_chat:
         showInChat();
