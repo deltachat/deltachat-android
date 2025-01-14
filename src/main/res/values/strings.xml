@@ -653,6 +653,8 @@
     <string name="profile_tag">Private Tag</string>
     <string name="profile_tag_hint">eg. Work, Family</string>
     <string name="profile_tag_explain">Tag that is visible only for you; helping you to differ between your profiles.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">Move to Top</string>
     <string name="delete_account">Delete Profile</string>
     <string name="delete_account_ask">Are you sure you want to delete your profile data?</string>
     <string name="delete_account_explain_with_name">All profile data of \"%s\" on this device will be deleted, including your end-to-end encryption setup, contacts, chats, messages and media. This action cannot be undone.</string>
