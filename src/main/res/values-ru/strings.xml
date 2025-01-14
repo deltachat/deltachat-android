@@ -1179,8 +1179,20 @@
     <string name="notifications_avg_minutes">В среднем каждые %1$d минут(ы)</string>
     <string name="notifications_avg_hours">В среднем каждые %1$d часа(ов)</string>
     <string name="last_check_at">Проверено в %1$s</string>
+    <string name="system_settings">Настройки системы</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">Редактировать тип, значки, предпросмотр и другое</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">Здесь можно просмотреть приложения, полученные или отправленные в любом чате. \"Файлы\" показывает только загруженные приложения.</string>
+    <!-- iOS shortcut widget -->
+    <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
+    <string name="shortcuts_widget_title">Ярлыки</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="shortcuts_widget_description">Используйте \"Добавить в виджет\" Delta Chat, чтобы добавить элементы</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="remove_from_widget">Удалить из виджета</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="add_to_widget">Добавить в виджет</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat использует вашу камеру для фото- и видеосъёмки, и сканирования QR-кодов.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat использует ваши контакты для отображения списка адресов электронной почты, которым вы можете написать. Delta Chat не имеет сервера, ваши контакты никуда не будут отправлены.</string>

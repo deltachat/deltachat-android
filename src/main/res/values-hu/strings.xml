@@ -274,7 +274,7 @@
     <string name="privacy_policy">Adatvédelmi irányelvek</string>
     <string name="menu_select_all">Összes kiválasztása</string>
     <string name="select_chat">Csevegés kiválasztása</string>
-    <string name="select_more">Több kiválasztása</string>
+    <string name="select_more">Továbbiak kiválasztása</string>
     <string name="menu_edit_name">Név szerkesztése</string>
     <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
     <string name="edit_name_explain">Állítson be egy becenevet a(z) „%1$s” nevű ismerősének. Hagyja üresen az ismerőse által választott név megjelenítéséhez.</string>
@@ -461,7 +461,7 @@
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Ne kérdezzen rá újra erre: %1$s</string>
+    <string name="open_external_url_trust_domain">Ne kérdezzen rá újra a következőre: %1$s</string>
     <string name="puny_code_warning_header">Gyanús hivatkozás észlelve</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Biztosan meglátogatja a következőt: %1$s?</string>
@@ -511,9 +511,9 @@
     <string name="square_grid">Négyzetrács</string>
     <string name="send_message">Üzenet küldése</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
-    <string name="aeap_addr_changed">%1$s megváltoztatta a címét erről: %2$s, erre: %3$s </string>
+    <string name="aeap_addr_changed">%1$s megváltoztatta a címét következőről: %2$s, erre: %3$s </string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
-    <string name="aeap_explanation">Ön megváltoztatta a saját e-mail-címét erről: %1$s erre: %2$s.\n\nHa most üzenetet küld egy hitelesített csoportba, az ottani ismerősei automatikusan lecserélik az Ön régi címét az új címére.\n\nEzért nagyon ajánlott beállítani, hogy a régi e-mail szolgáltatója továbbítsa-e az összes e-mailt e-mail-címére. Ellenkező esetben lemaradhat azoknak az ismerőseinek az üzeneteiről, akik még nem kapták meg az új címét.</string>
+    <string name="aeap_explanation">Ön megváltoztatta a saját e-mail-címét a következőről: %1$s erre: %2$s.\n\nHa most üzenetet küld egy hitelesített csoportba, az ottani ismerősei automatikusan lecserélik az Ön régi címét az új címére.\n\nEzért nagyon ajánlott beállítani, hogy a régi e-mail szolgáltatója továbbítsa-e az összes e-mailt e-mail-címére. Ellenkező esetben lemaradhat azoknak az ismerőseinek az üzeneteiről, akik még nem kapták meg az új címét.</string>
 
 
     <!-- Multi Device -->
@@ -820,9 +820,9 @@
     <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
     <string name="react">Reakció</string>
     <!-- %1$s will be replaced by an emoji. %2$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %2$s will often not being visible). Eg. 'You reacted 👍 to "Found my suitcase"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer and work as well. -->
-    <string name="reaction_by_you">Ön ezzel reagált: %1$s, erre: „%2$s”</string>
+    <string name="reaction_by_you">Ön a következővel reagált: %1$s, erre: „%2$s”</string>
     <!-- %1$s will be replaced a name. %2$s will be replaced by an emoji. %3$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %3$s will often not being visible). Eg. 'Alice reacted 👍 to "Nice photos"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer work as well. -->
-    <string name="reaction_by_other">%1$s ezzel reagált: %2$s, erre: „%3$s”</string>
+    <string name="reaction_by_other">%1$s a következővel reagált: %2$s, erre: „%3$s”</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Régi üzenetek törlése</string>
@@ -875,9 +875,9 @@
     <string name="systemmsg_subject_for_new_contact">Üzenet tőle: %1$s</string>
     <string name="systemmsg_failed_sending_to">Nem sikerült elküldeni az üzenetet „%1$s” számára.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
-    <string name="group_name_changed_by_you">Ön megváltoztatta a csoport nevét erről: „%1$s”, erre: „%2$s”.</string>
+    <string name="group_name_changed_by_you">Ön megváltoztatta a csoport nevét a következőről: „%1$s”, erre: „%2$s”.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
-    <string name="group_name_changed_by_other">%3$s megváltoztatta a csoport nevét erről: „%1$s”, erre: „%2$s”.</string>
+    <string name="group_name_changed_by_other">%3$s megváltoztatta a csoport nevét a következőről: „%1$s”, erre: „%2$s”.</string>
     <string name="group_image_changed_by_you">Ön megváltoztatta a csoport profilképét.</string>
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s megváltoztatta a csoport profilképét.</string>
@@ -1147,8 +1147,20 @@
     <string name="notifications_avg_minutes">Átlagosan %1$d percenként</string>
     <string name="notifications_avg_hours">Átlagosan %1$d óránként</string>
     <string name="last_check_at">Ellenőrizve ekkor: %1$s</string>
+    <string name="system_settings">Rendszer-beállítások</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">Típus-, kitűzők-, előnézet- és egyebek szerkesztése</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">A bármelyik csevegésben kapott vagy küldött alkalmazások itt fognak megjelenni. A „Fájlok” az éppen letöltött alkalmazásokat jeleníti meg.</string>
+    <!-- iOS shortcut widget -->
+    <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
+    <string name="shortcuts_widget_title">Parancsikonok</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="shortcuts_widget_description">Használja a Delta Chat „Hozzáadás modulhoz” funkcióját az elemek hozzáadásához</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="remove_from_widget">Eltávolítás a modulból</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="add_to_widget">Hozzáadás modulhoz</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">A Delta Chat az eszköze kameráját használja fényképek és videók készítésére és küldésére, valamint QR-kódok beolvasására.</string>
     <string name="InfoPlist_NSContactsUsageDescription">A Delta Chat a névjegyek segítségével megjeleníti azon e-mail-címek listáját, amelyekkel cseveghet. A Delta Chatnek nincs központi kiszolgálója, a névjegyeit nem küldjük el sehova.</string>

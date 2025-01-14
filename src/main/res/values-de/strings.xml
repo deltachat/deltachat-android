@@ -653,6 +653,8 @@
     <string name="profile_tag">Private Bezeichnung</string>
     <string name="profile_tag_hint">z.B. Familie, Arbeit, Freunde</string>
     <string name="profile_tag_explain">Die Bezeichnung ist nur für Sie sichtbar um zwischen Profilen zu unterscheiden.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">Nach oben</string>
     <string name="delete_account">Profil löschen</string>
     <string name="delete_account_ask">Möchten Sie das Profil und alle Daten wirklich von diesem Gerät löschen?</string>
     <string name="delete_account_explain_with_name">Alle Daten des Profils \"%s\" werden von diesem Gerät gelöscht, dies schließt Ihre Ende-zu-Ende Autocrypt-Einstellungen, Kontakte, Chats, Nachrichten und Medien mit ein. Diese Aktion kann nicht rückgängig gemacht werden.</string>
