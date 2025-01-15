@@ -370,12 +370,13 @@ public class AttachmentManager {
 
         if (msg != null) {
           fileName = msg.getFilename();
+          mimeType = msg.getFilemime();
         }
 
         if (PartAuthority.isLocalUri(uri)) {
           mediaSize = PartAuthority.getAttachmentSize(context, uri);
           if (fileName == null) fileName = PartAuthority.getAttachmentFileName(context, uri);
-          mimeType  = PartAuthority.getAttachmentContentType(context, uri);
+          if (mimeType == null) mimeType = PartAuthority.getAttachmentContentType(context, uri);
         }
 
         if (mediaSize == null) {
