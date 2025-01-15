@@ -30,16 +30,16 @@ import java.io.File;
 
 public class VideoSlide extends Slide {
 
-  private static Attachment constructVideoAttachment(Context context, Uri uri, long dataSize)
+  private static Attachment constructVideoAttachment(Context context, Uri uri, String fileName, long dataSize)
   {
     Uri thumbnailUri = Uri.fromFile(new File(DcHelper.getBlobdirFile(DcHelper.getContext(context), "temp-preview.jpg")));
     MediaUtil.ThumbnailSize retWh = new MediaUtil.ThumbnailSize(0, 0);
     MediaUtil.createVideoThumbnailIfNeeded(context, uri, thumbnailUri, retWh);
-    return constructAttachmentFromUri(context, uri, MediaUtil.VIDEO_UNSPECIFIED, dataSize, retWh.width, retWh.height, thumbnailUri, null, false);
+    return constructAttachmentFromUri(context, uri, MediaUtil.VIDEO_UNSPECIFIED, dataSize, retWh.width, retWh.height, thumbnailUri, fileName, false);
   }
 
-  public VideoSlide(Context context, Uri uri, long dataSize) {
-    super(context, constructVideoAttachment(context, uri, dataSize));
+  public VideoSlide(Context context, Uri uri, String fileName, long dataSize) {
+    super(context, constructVideoAttachment(context, uri, fileName, dataSize));
   }
 
   public VideoSlide(Context context, DcMsg dcMsg) {

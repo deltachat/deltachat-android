@@ -257,11 +257,11 @@ public class AttachmentManager {
             return new DocumentSlide(context, msg);
           }
           else if (PartAuthority.isLocalUri(uri)) {
-            return getManuallyCalculatedSlideInfo(uri, width, height);
+            return getManuallyCalculatedSlideInfo(uri, width, height, msg);
           } else {
             Slide result = getContentResolverSlideInfo(uri, width, height, chatId);
 
-            if (result == null) return getManuallyCalculatedSlideInfo(uri, width, height);
+            if (result == null) return getManuallyCalculatedSlideInfo(uri, width, height, msg);
             else                return result;
           }
         } catch (IOException e) {
@@ -362,16 +362,21 @@ public class AttachmentManager {
         return null;
       }
 
-      private @NonNull Slide getManuallyCalculatedSlideInfo(Uri uri, int width, int height) throws IOException {
+      private @NonNull Slide getManuallyCalculatedSlideInfo(Uri uri, int width, int height, @Nullable DcMsg msg) throws IOException {
         long start      = System.currentTimeMillis();
         Long mediaSize  = null;
         String fileName = null;
         String mimeType = null;
 
+        if (msg != null) {
+          fileName = msg.getFilename();
+          mimeType = msg.getFilemime();
+        }
+
         if (PartAuthority.isLocalUri(uri)) {
           mediaSize = PartAuthority.getAttachmentSize(context, uri);
-          fileName  = PartAuthority.getAttachmentFileName(context, uri);
-          mimeType  = PartAuthority.getAttachmentContentType(context, uri);
+          if (fileName == null) fileName = PartAuthority.getAttachmentFileName(context, uri);
+          if (mimeType == null) mimeType = PartAuthority.getAttachmentContentType(context, uri);
         }
 
         if (mediaSize == null) {
@@ -676,10 +681,10 @@ public class AttachmentManager {
       }
 
       switch (this) {
-      case IMAGE:    return new ImageSlide(context, uri, dataSize, width, height);
-      case GIF:      return new GifSlide(context, uri, dataSize, width, height);
+      case IMAGE:    return new ImageSlide(context, uri, fileName, dataSize, width, height);
+      case GIF:      return new GifSlide(context, uri, fileName, dataSize, width, height);
       case AUDIO:    return new AudioSlide(context, uri, dataSize, false, fileName);
-      case VIDEO:    return new VideoSlide(context, uri, dataSize);
+      case VIDEO:    return new VideoSlide(context, uri, fileName, dataSize);
       case DOCUMENT:
         // We have to special-case Webxdc slides: The user can interact with them as soon as a draft
         // is set. Therefore we need to create a DcMsg already now.
