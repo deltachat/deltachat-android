@@ -136,16 +136,14 @@ public class SendRelayedMessageUtil {
         }
       }
 
-      String path1 = DcHelper.getBlobdirFile(dcContext, filename, "temp");
+      path = DcHelper.getBlobdirFile(dcContext, filename, "temp");
 
       // copy content to this file
-      if (path1 != null) {
+      if (path != null) {
         InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
-        OutputStream outputStream = new FileOutputStream(path1);
+        OutputStream outputStream = new FileOutputStream(path);
         Util.copy(inputStream, outputStream);
       }
-
-      path = path1;
     } catch (Exception e) {
       e.printStackTrace();
       path = null;
