@@ -99,7 +99,7 @@ public class QrCodeHandler {
                     showDoneToast(activity);
                 });
                 if (rawString.toLowerCase().startsWith("http")) {
-                    builder.setNeutralButton(R.string.open, (d, b) -> IntentUtils.showBrowserIntent(activity, rawString));
+                    builder.setNeutralButton(R.string.open, (d, b) -> IntentUtils.showInBrowser(activity, rawString));
                 }
                 builder.setNegativeButton(R.string.cancel, null);
                 builder.setCancelable(false);
@@ -182,7 +182,7 @@ public class QrCodeHandler {
         final String url = qrParsed.getText1();
         String msg = String.format(activity.getString(R.string.qrscan_contains_url), url);
         builder.setMessage(msg);
-        builder.setPositiveButton(R.string.open, (dialog, which) -> IntentUtils.showBrowserIntent(activity, url));
+        builder.setPositiveButton(R.string.open, (dialog, which) -> IntentUtils.showInBrowser(activity, url));
         builder.setNegativeButton(android.R.string.cancel, null);
         builder.setNeutralButton(R.string.menu_copy_to_clipboard, (dialog, which) -> {
             Util.writeTextToClipboard(activity, url);

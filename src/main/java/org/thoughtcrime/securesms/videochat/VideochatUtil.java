@@ -35,7 +35,7 @@ public class VideochatUtil {
     DcContext dcContext = DcHelper.getContext(activity);
     DcMsg dcMsg = dcContext.getMsg(msgId);
     String videochatUrl = dcMsg.getVideochatUrl();
-    IntentUtils.showBrowserIntent(activity, videochatUrl);
+    IntentUtils.showInBrowser(activity, videochatUrl);
   }
 
 }

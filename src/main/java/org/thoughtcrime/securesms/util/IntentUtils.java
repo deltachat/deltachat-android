@@ -23,7 +23,7 @@ public class IntentUtils {
     return resolveInfoList != null && resolveInfoList.size() > 1;
   }
 
-  public static void showBrowserIntent(Context context, String url) {
+  public static void showInBrowser(Context context, String url) {
     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
     try {
       context.startActivity(browserIntent);

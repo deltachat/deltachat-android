@@ -280,7 +280,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   // the default behavior (close the activity) is just fine eg. for Webxdc, Connectivity, HTML-mails
 
   protected boolean openOnlineUrl(String url) {
-    IntentUtils.showBrowserIntent(this, url);
+    IntentUtils.showInBrowser(this, url);
     // returning `true` causes the WebView to abort loading
     return true;
   }

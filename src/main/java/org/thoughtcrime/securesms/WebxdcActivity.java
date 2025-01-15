@@ -290,7 +290,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         addToHomeScreen(this, dcAppMsg.getId());
         return true;
       case R.id.source_code:
-        IntentUtils.showBrowserIntent(this, sourceCodeUrl);
+        IntentUtils.showInBrowser(this, sourceCodeUrl);
         return true;
       case R.id.show_in_chat:
         showInChat();

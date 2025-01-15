@@ -332,7 +332,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     privacyPolicyBtn.setOnClickListener(view -> {
       if (!isDcLogin) {
-        IntentUtils.showBrowserIntent(this, "https://" + providerHost + "/privacy.html");
+        IntentUtils.showInBrowser(this, "https://" + providerHost + "/privacy.html");
       }
     });
 
@@ -351,7 +351,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       .create();
 
     view.findViewById(R.id.use_other_server).setOnClickListener((v) -> {
-      IntentUtils.showBrowserIntent(this, INSTANCES_URL);
+      IntentUtils.showInBrowser(this, INSTANCES_URL);
       signUpDialog.dismiss();
     });
     view.findViewById(R.id.login_button).setOnClickListener((v) -> {

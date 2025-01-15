@@ -69,7 +69,7 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
             }
           });
         } else {
-          IntentUtils.showBrowserIntent(WebxdcStoreActivity.this, url);
+          IntentUtils.showInBrowser(WebxdcStoreActivity.this, url);
         }
         return true;
       }

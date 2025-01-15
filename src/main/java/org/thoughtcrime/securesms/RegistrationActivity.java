@@ -437,7 +437,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                         .setPositiveButton(R.string.perm_continue, (dialog, which)-> {
                             // pass control to browser, we'll be back in business at (**)
                             activity.oauth2Requested = System.currentTimeMillis();
-                            IntentUtils.showBrowserIntent(activity, oauth2url);
+                            IntentUtils.showInBrowser(activity, oauth2url);
                             oauth2started.set(true);
                         })
                         .setCancelable(false)
@@ -492,7 +492,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         if (provider!=null) {
             String url = provider.getOverviewPage();
             if(!url.isEmpty()) {
-                IntentUtils.showBrowserIntent(this, url);
+                IntentUtils.showInBrowser(this, url);
             } else {
                 // this should normally not happen
                 Toast.makeText(this, "ErrProviderWithoutUrl", Toast.LENGTH_LONG).show();
