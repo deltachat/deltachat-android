@@ -207,7 +207,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       messageRecord = null;
       long date = getIntent().getLongExtra(DATE_EXTRA, 0);
       long size = getIntent().getLongExtra(SIZE_EXTRA, 0);
-      initialMedia = new MediaItem(null, getIntent().getData(), getIntent().getType(),
+      initialMedia = new MediaItem(null, getIntent().getData(), null, getIntent().getType(),
           DcMsg.DC_MSG_NO_ID, date, size, false);
 
       if (address != null) {
@@ -218,7 +218,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     } else {
       messageRecord = dcContext.getMsg(msgId);
       initialMedia = new MediaItem(Recipient.fromChat(context, msgId), Uri.fromFile(messageRecord.getFileAsFile()),
-          messageRecord.getFilemime(), messageRecord.getId(), messageRecord.getDateReceived(),
+          messageRecord.getFilename(), messageRecord.getFilemime(), messageRecord.getId(), messageRecord.getDateReceived(),
           messageRecord.getFilebytes(), messageRecord.isOutgoing());
       conversationRecipient = Recipient.fromChat(context, msgId);
     }
@@ -232,12 +232,11 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     // if you search for the place where the media are loaded, go to 'onCreateLoader'.
 
     Log.w(TAG, "Loading Part URI: " + initialMedia);
-
     if (messageRecord != null) {
       getSupportLoaderManager().restartLoader(0, null, this);
     } else {
       mediaPager.setAdapter(new SingleItemPagerAdapter(this, GlideApp.with(this),
-          getWindow(), initialMedia.uri, initialMedia.type, initialMedia.size));
+          getWindow(), initialMedia.uri, initialMedia.name, initialMedia.type, initialMedia.size));
     }
   }
 
@@ -313,7 +312,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   private void performSavetoDisk(@NonNull MediaItem mediaItem) {
     SaveAttachmentTask saveTask = new SaveAttachmentTask(MediaPreviewActivity.this);
     long               saveDate = (mediaItem.date > 0) ? mediaItem.date : System.currentTimeMillis();
-    saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Attachment(mediaItem.uri, mediaItem.type, saveDate, null));
+    saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Attachment(mediaItem.uri, mediaItem.type, saveDate, mediaItem.name));
   }
 
   private void showInChat() {
@@ -486,18 +485,20 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     private final GlideRequests glideRequests;
     private final Window        window;
     private final Uri           uri;
+    private final String        name;
     private final String        mediaType;
     private final long          size;
 
     private final LayoutInflater inflater;
 
     SingleItemPagerAdapter(@NonNull Context context, @NonNull GlideRequests glideRequests,
-                           @NonNull Window window, @NonNull Uri uri, @NonNull String mediaType,
+                           @NonNull Window window, @NonNull Uri uri, @Nullable String name, @NonNull String mediaType,
                            long size)
     {
       this.glideRequests = glideRequests;
       this.window        = window;
       this.uri           = uri;
+      this.name          = name;
       this.mediaType     = mediaType;
       this.size          = size;
       this.inflater      = LayoutInflater.from(context);
@@ -519,7 +520,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       MediaView mediaView = itemView.findViewById(R.id.media_view);
 
       try {
-        mediaView.set(glideRequests, window, uri, mediaType, size, true);
+        mediaView.set(glideRequests, window, uri, name, mediaType, size, true);
       } catch (IOException e) {
         Log.w(TAG, e);
       }
@@ -539,7 +540,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
     @Override
     public MediaItem getMediaItemFor(int position) {
-      return new MediaItem(null, uri, mediaType, DcMsg.DC_MSG_NO_ID, -1, -1, true);
+      return new MediaItem(null, uri, name, mediaType, DcMsg.DC_MSG_NO_ID, -1, -1, true);
     }
 
     @Override
@@ -604,7 +605,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
       try {
         //noinspection ConstantConditions
-        mediaView.set(glideRequests, window, Uri.fromFile(msg.getFileAsFile()),
+        mediaView.set(glideRequests, window, Uri.fromFile(msg.getFileAsFile()), msg.getFilename(),
             msg.getFilemime(), msg.getFilebytes(), autoplay);
       } catch (IOException e) {
         Log.w(TAG, e);
@@ -633,6 +634,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
       return new MediaItem(Recipient.fromChat(context, msg.getId()),
                            Uri.fromFile(msg.getFileAsFile()),
+                           msg.getFilename(),
                            msg.getFilemime(),
                            msg.getId(),
                            msg.getDateReceived(),
@@ -655,6 +657,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   private static class MediaItem {
     private final @Nullable Recipient          recipient;
     private final @NonNull  Uri                uri;
+    private final @Nullable String             name;
     private final @NonNull  String             type;
     private final           int                msgId;
     private final           long               date;
@@ -663,6 +666,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
     private MediaItem(@Nullable Recipient recipient,
                       @NonNull Uri uri,
+                      @Nullable String name,
                       @NonNull String type,
                       int msgId,
                       long date,
@@ -671,6 +675,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     {
       this.recipient  = recipient;
       this.uri        = uri;
+      this.name       = name;
       this.type       = type;
       this.msgId      = msgId;
       this.date       = date;

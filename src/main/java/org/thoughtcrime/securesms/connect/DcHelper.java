@@ -281,6 +281,7 @@ public class DcHelper {
 
     DcMsg msg = dcContext.getMsg(msg_id);
     String path = msg.getFile();
+    String filename = msg.getFilename();
     String mimeType = msg.getFilemime();
     try {
       File file = new File(path);
@@ -291,8 +292,11 @@ public class DcHelper {
 
       Uri uri;
       if (path.startsWith(dcContext.getBlobdir())) {
-        uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + Uri.encode(file.getName()));
-        sharedFiles.put("/" + file.getName(), 1); // as different Android version handle uris in putExtra differently, we also check them on our own
+        // Build a Uri that will later be passed to AttachmentsContentProvider.openFile().
+        // The last part needs to be `filename`, i.e. the original, user-visible name of the file,
+        // so that the external apps show the name of the file correctly.
+        uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + Uri.encode(file.getName()) + "/" + Uri.encode(filename));
+        sharedFiles.put(file.getName(), 1); // as different Android version handle uris in putExtra differently, we also check them on our own
       } else {
         if (Build.VERSION.SDK_INT >= 24) {
           uri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".fileprovider", file);
@@ -302,7 +306,7 @@ public class DcHelper {
       }
 
       if (cmd.equals(Intent.ACTION_VIEW)) {
-        mimeType = checkMime(path, mimeType);
+        mimeType = checkMime(filename, mimeType);
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(uri, mimeType);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
