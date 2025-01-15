@@ -23,6 +23,7 @@ import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
@@ -68,7 +69,7 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
             }
           });
         } else {
-          WebViewActivity.openUrlInBrowser(WebxdcStoreActivity.this, url);
+          IntentUtils.showInBrowser(WebxdcStoreActivity.this, url);
         }
         return true;
       }

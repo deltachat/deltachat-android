@@ -16,7 +16,6 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 import static org.thoughtcrime.securesms.service.IPCAddAccountsService.ACCOUNT_DATA;
 
-import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -438,7 +437,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                         .setPositiveButton(R.string.perm_continue, (dialog, which)-> {
                             // pass control to browser, we'll be back in business at (**)
                             activity.oauth2Requested = System.currentTimeMillis();
-                            IntentUtils.showBrowserIntent(activity, oauth2url);
+                            IntentUtils.showInBrowser(activity, oauth2url);
                             oauth2started.set(true);
                         })
                         .setCancelable(false)
@@ -493,11 +492,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         if (provider!=null) {
             String url = provider.getOverviewPage();
             if(!url.isEmpty()) {
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-                } catch (ActivityNotFoundException e) {
-                    Toast.makeText(this, R.string.no_browser_installed, Toast.LENGTH_LONG).show();
-                }
+                IntentUtils.showInBrowser(this, url);
             } else {
                 // this should normally not happen
                 Toast.makeText(this, "ErrProviderWithoutUrl", Toast.LENGTH_LONG).show();

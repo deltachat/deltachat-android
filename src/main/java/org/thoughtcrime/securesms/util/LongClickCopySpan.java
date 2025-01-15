@@ -87,7 +87,7 @@ public class LongClickCopySpan extends ClickableSpan {
         QrCodeHandler qrCodeHandler = new QrCodeHandler(activity);
         qrCodeHandler.handleQrData(url);
       } else {
-        IntentUtils.showBrowserIntent(widget.getContext(), url);
+        IntentUtils.showInBrowser(widget.getContext(), url);
       }
     }
   }
