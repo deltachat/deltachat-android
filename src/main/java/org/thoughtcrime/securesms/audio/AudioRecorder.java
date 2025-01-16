@@ -48,7 +48,7 @@ public class AudioRecorder {
         ParcelFileDescriptor fds[] = ParcelFileDescriptor.createPipe();
 
         captureUri  = blobProvider.create(context, new ParcelFileDescriptor.AutoCloseInputStream(fds[0]),
-                                          MediaUtil.AUDIO_AAC, null, null);
+                                          MediaUtil.AUDIO_AAC, "voice.aac", null);
         audioCodec  = new AudioCodec(context);
 
         audioCodec.start(new ParcelFileDescriptor.AutoCloseOutputStream(fds[1]));
