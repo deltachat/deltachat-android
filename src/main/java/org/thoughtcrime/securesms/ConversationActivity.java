@@ -1178,7 +1178,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void onImageCapture(@NonNull final byte[] imageBytes) {
     setMedia(PersistentBlobProvider.getInstance()
-                                   .create(this, imageBytes, MediaUtil.IMAGE_JPEG, null),
+                                   .create(this, imageBytes, MediaUtil.IMAGE_JPEG, "image.jpeg"),
              MediaType.IMAGE);
     quickAttachmentDrawer.hide(false);
   }
