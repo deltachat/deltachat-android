@@ -101,7 +101,6 @@ public abstract class Attachment {
     return height;
   }
 
-  // TODO the following function can prob. be deleted now. Adb may be able to tell me some context why it was introduced.
   public String getRealPath(Context context) {
     try {
       // get file in the blobdir as `<blobdir>/<name>[-<uniqueNumber>].<ext>`

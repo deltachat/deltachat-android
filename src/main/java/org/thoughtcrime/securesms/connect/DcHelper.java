@@ -367,7 +367,13 @@ public class DcHelper {
     return mimeType;
   }
 
-  // TODO the following function can prob. be simplified and unified with the next fn now.
+  /**
+   * Return the path of a not-yet-existing file in the blobdir with roughly the given filename
+   * and the given extension.
+   * In many cases, since we're using setFileAndDeduplicate now, this wouldn't be necessary anymore
+   * and we could just create a file with a random filename,
+   * but there are a few usages that still need the current behavior (like `openMaps()`).
+   */
   public static String getBlobdirFile(DcContext dcContext, String filename, String ext) {
     filename = FileUtils.sanitizeFilename(filename);
     ext = FileUtils.sanitizeFilename(ext);

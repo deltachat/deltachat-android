@@ -360,7 +360,6 @@ public class AttachmentManager {
         return null;
       }
 
-      // TODO we should be able to revert the changes here
       private @NonNull Slide getManuallyCalculatedSlideInfo(Uri uri, int width, int height, @Nullable DcMsg msg) throws IOException {
         long start      = System.currentTimeMillis();
         Long mediaSize  = null;
