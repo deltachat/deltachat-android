@@ -37,6 +37,7 @@
     <string name="close_window">Close Window</string>
     <string name="forward">Forward</string>
     <string name="create">Create</string>
+    <string name="reset">Reset</string>
     <string name="later">Later</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Resend</string>
@@ -45,6 +46,7 @@
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Unarchive</string>
     <string name="mute">Mute</string>
+    <string name="muted">Muted</string>
     <string name="ephemeral_messages">Disappearing Messages</string>
     <string name="ephemeral_messages_hint">Applies to all members of this chat if they use Delta Chat; they can still copy, save, and forward messages or use other e-mail clients.</string>
     <string name="save">Save</string>
@@ -184,6 +186,12 @@
     <string name="webxdc_apps">Apps</string>
     <string name="webxdc_store_url">App Picker URL</string>
     <string name="webxdc_store_url_explain">If set, the URL will be used as the App Picker instead of the default one</string>
+    <string name="home">Home</string>
+    <string name="games">Games</string>
+    <string name="tools">Tools</string>
+    <string name="app_size">Size</string>
+    <string name="app_date_published">Published</string>
+    <string name="add_to_chat">Add to Chat</string>
     <string name="unknown">Unknown</string>
 
     <string name="green">Green</string>
@@ -719,6 +727,7 @@
     <string name="pref_appearance">Appearance</string>
     <string name="pref_theme">Theme</string>
     <string name="pref_language">Language</string>
+    <string name="pref_use_system_ui_font">Use System Font</string>
     <string name="pref_incognito_keyboard">Incognito Keyboard</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Request keyboard to disable personalized learning</string>
