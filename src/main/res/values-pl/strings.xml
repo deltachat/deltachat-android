@@ -685,6 +685,8 @@
     <string name="profile_tag">Prywatna etykieta</string>
     <string name="profile_tag_hint">np. Praca, Rodzina</string>
     <string name="profile_tag_explain">Etykieta jest widoczna tylko dla ciebie; pomaga odróżnić twoje profile.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">Przenieś na górę</string>
     <string name="delete_account">Usuń konto</string>
     <string name="delete_account_ask">Czy na pewno chcesz usunąć dane swojego konta?</string>
     <string name="delete_account_explain_with_name">Wszystkie dane konta „%s” na tym urządzeniu zostaną usunięte, w tym konfiguracja szyfrowania end-to-end, kontakty, czaty, wiadomości i multimedia. Tej operacji nie można cofnąć.</string>

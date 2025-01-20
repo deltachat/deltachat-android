@@ -37,6 +37,7 @@
     <string name="close_window">Fenster schließen</string>
     <string name="forward">Weiterleiten</string>
     <string name="create">Erstellen</string>
+    <string name="reset">Zurücksetzen</string>
     <string name="later">Später</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Erneut senden</string>
@@ -45,6 +46,7 @@
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Dearchivieren</string>
     <string name="mute">Stumm</string>
+    <string name="muted">Stumm</string>
     <string name="ephemeral_messages">Verschwindende Nachrichten</string>
     <string name="ephemeral_messages_hint">Gilt für alle Gruppenmitglieder, die Delta Chat verwenden. Nachrichten können kopiert, gespeichert und weitergeleitet werden oder es können andere E-Mail-Clients verwendet werden.</string>
     <string name="save">Speichern</string>
@@ -184,6 +186,12 @@
     <string name="webxdc_apps">Apps</string>
     <string name="webxdc_store_url">App-Picker-URL</string>
     <string name="webxdc_store_url_explain">Wenn gesetzt, wird diese URL als App-Picker anstelle der Voreinstellung verwendet.</string>
+    <string name="home">Start</string>
+    <string name="games">Spiele</string>
+    <string name="tools">Tools</string>
+    <string name="app_size">Größe</string>
+    <string name="app_date_published">Veröffentlicht</string>
+    <string name="add_to_chat">Zum Chat hinzufügen</string>
     <string name="unknown">Unbekannt</string>
 
     <string name="green">Grün</string>
@@ -719,6 +727,7 @@
     <string name="pref_appearance">Darstellung</string>
     <string name="pref_theme">Design</string>
     <string name="pref_language">Sprache</string>
+    <string name="pref_use_system_ui_font">Systemschrift verwenden</string>
     <string name="pref_incognito_keyboard">Inkognito-Tastatur</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Deaktivierung des personalisierten Lernens der Tastatur anfordern.</string>
@@ -1090,6 +1099,8 @@
     <string name="timestamp_format_m_desktop">D MMM</string>
     <string name="remove_desktop">Entfernen</string>
     <string name="save_desktop">Speichern</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">Nicht mehr speichern</string>
     <string name="name_desktop">Name</string>
     <string name="select_group_image_desktop">Gruppenbild auswählen</string>
     <string name="export_backup_desktop">Backup exportieren</string>

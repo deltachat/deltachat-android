@@ -182,6 +182,10 @@
     <string name="webxdc_apps">Aplikacione</string>
     <string name="webxdc_store_url">URL Marrësi Aplikacioni</string>
     <string name="webxdc_store_url_explain">Në u ujdistë, URL-ja do të përdoret si Marrës Aplikacioni, në vend të atij parazgjedhje</string>
+    <string name="games">Lojëra</string>
+    <string name="tools">Mjete</string>
+    <string name="app_size">Madhësi</string>
+    <string name="add_to_chat">Shtoje te Fjalosje</string>
     <string name="unknown">E panjohur</string>
 
     <string name="green">E gjelbër</string>
@@ -648,6 +652,8 @@
     <string name="profile_tag">Etiketë Private</string>
     <string name="profile_tag_hint">p.sh., Pune, Familjeje</string>
     <string name="profile_tag_explain">Ajo etiketë është e dukshme vetëm për ju; për t’ju ndihmuar ju të bëni dallimin mes profileve tuaja.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">Shpjere Në Krye</string>
     <string name="delete_account">Fshije Llogarinë</string>
     <string name="delete_account_ask">Jeni i sigurt se doni të fshihen të dhënat e llogarisë tuaj?</string>
     <string name="delete_account_explain_with_name">Krejt të dhënat e llogarisë për “%s” në këtë pajisje do të fshihen, përfshi ato të ujdisjes tuaj për fshehtëzim skaj-më-skaj, kontakte, fjalosje, mesazhe dhe media. Ky veprim s’mund të zhbëhet.</string>
@@ -712,6 +718,7 @@
     <string name="pref_appearance">Dukje</string>
     <string name="pref_theme">Temë</string>
     <string name="pref_language">Gjuhë</string>
+    <string name="pref_use_system_ui_font">Përdor Shkronja Sistemi</string>
     <string name="pref_incognito_keyboard">Tastierë Incognito</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Kërkoji tastierës të çaktivizojë nxënie të personalizuar</string>
