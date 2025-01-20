@@ -37,6 +37,7 @@
     <string name="close_window">Chiudi Finestra</string>
     <string name="forward">Inoltra</string>
     <string name="create">Crea</string>
+    <string name="reset">Azzera</string>
     <string name="later">Dopo</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Reinvia</string>
@@ -45,6 +46,7 @@
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Ripristina</string>
     <string name="mute">Silenzia</string>
+    <string name="muted">Disattivato</string>
     <string name="ephemeral_messages">Messaggi a Scomparsa</string>
     <string name="ephemeral_messages_hint">Si applica a tutti i membri di questa chat se utilizzano Delta Chat; possono comunque copiare, salvare e inoltrare messaggi o utilizzare altri client e-mail.</string>
     <string name="save">Salva</string>
@@ -193,6 +195,12 @@
     <string name="webxdc_apps">Apps</string>
     <string name="webxdc_store_url">URL Selettore App</string>
     <string name="webxdc_store_url_explain">Se impostato, l\'URL verrà utilizzato come Selettore App anziché quello predefinito</string>
+    <string name="home">Inizio</string>
+    <string name="games">Giochi</string>
+    <string name="tools">Strumenti</string>
+    <string name="app_size">Dimensione</string>
+    <string name="app_date_published">Pubblicato</string>
+    <string name="add_to_chat">Aggiungi alla Chat</string>
     <string name="unknown">Sconosciuto</string>
 
     <string name="green">Verde</string>
@@ -669,6 +677,8 @@
     <string name="profile_tag">Etichetta Privata</string>
     <string name="profile_tag_hint">es. Lavoro, Famiglia</string>
     <string name="profile_tag_explain">Etichetta che è visibile solo a te; ti aiuta a distinguere i tuoi profili.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">Sposta in Alto</string>
     <string name="delete_account">Elimina Profilo</string>
     <string name="delete_account_ask">Sei certo di voler eliminare i dati del tuo profilo?</string>
     <string name="delete_account_explain_with_name">Tutti i dati del profilo di \"%s\" su questo dispositivo verranno eliminati, inclusa la configurazione della crittografia end-to-end, i contatti, le chat, i messaggi e i contenuti multimediali. Questa azione non può essere annullata.</string>
@@ -733,6 +743,7 @@
     <string name="pref_appearance">Aspetto</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Lingua</string>
+    <string name="pref_use_system_ui_font">Usa Font di Sistema</string>
     <string name="pref_incognito_keyboard">Tastiera Incognito</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Richiedi alla tastiera di disattivare l\'apprendimento personalizzato</string>

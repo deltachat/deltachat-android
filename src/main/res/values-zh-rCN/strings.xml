@@ -37,6 +37,7 @@
     <string name="close_window">关闭窗口</string>
     <string name="forward">转发</string>
     <string name="create">创建</string>
+    <string name="reset">重置</string>
     <string name="later">稍后</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">重新发送</string>
@@ -45,6 +46,7 @@
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">取消存档</string>
     <string name="mute">静音</string>
+    <string name="muted">已静音</string>
     <string name="ephemeral_messages">消息定时销毁</string>
     <string name="ephemeral_messages_hint">适用于此聊天内使用 Delta Chat 的所有成员；这些成员仍然可以复制、保存和转发消息，或使用其他电子邮件客户端。</string>
     <string name="save">保存</string>
@@ -175,6 +177,12 @@
     <string name="webxdc_apps">私人应用</string>
     <string name="webxdc_store_url">\"应用选择器“ URL</string>
     <string name="webxdc_store_url_explain">设置后，该 URL 而不是默认的 URL 将被用作“应用选择器”</string>
+    <string name="home">首页</string>
+    <string name="games">游戏</string>
+    <string name="tools">工具</string>
+    <string name="app_size">尺寸</string>
+    <string name="app_date_published">已发布</string>
+    <string name="add_to_chat">添加到聊天</string>
     <string name="unknown">未知</string>
 
     <string name="green">绿色</string>
@@ -637,6 +645,8 @@
     <string name="profile_tag">私密标签</string>
     <string name="profile_tag_hint">如工作、家庭</string>
     <string name="profile_tag_explain">仅对你可见的标签；帮助你区分不同的配置文件</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">移到顶部</string>
     <string name="delete_account">删除账号</string>
     <string name="delete_account_ask">是否确定要删除您的账号数据？</string>
     <string name="delete_account_explain_with_name">将会删除此设备上“%s”的所有账号数据，包括您的端到端加密设置、联系人、聊天、消息和媒体。此操作无法撤销。</string>
@@ -701,6 +711,7 @@
     <string name="pref_appearance">外观</string>
     <string name="pref_theme">主题</string>
     <string name="pref_language">语言</string>
+    <string name="pref_use_system_ui_font">使用系统字体</string>
     <string name="pref_incognito_keyboard">无痕键盘</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">请求输入法禁用个性化学习</string>
