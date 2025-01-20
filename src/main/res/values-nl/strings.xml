@@ -37,6 +37,7 @@
     <string name="close_window">Venster sluiten</string>
     <string name="forward">Doorsturen</string>
     <string name="create">Aanmaken</string>
+    <string name="reset">Standaardwaarden</string>
     <string name="later">Later</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Opnieuw versturen</string>
@@ -45,6 +46,7 @@
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">De-archiveren</string>
     <string name="mute">Negeren</string>
+    <string name="muted">Genegeerd</string>
     <string name="ephemeral_messages">Verdwijnende berichten</string>
     <string name="ephemeral_messages_hint">Deze instellingen zijn van toepassing op alle deelnemers die Delta Chat gebruiken. Ze kunnen echter wél berichten kopiëren, opslaan of doorsturen middels andere e-mailapps.</string>
     <string name="save">Opslaan</string>
@@ -184,6 +186,12 @@
     <string name="webxdc_apps">Privé-apps</string>
     <string name="webxdc_store_url">Appkiezer-url</string>
     <string name="webxdc_store_url_explain">Stel in om apps te kiezen vanaf een url in plaats van de standaard appkiezer</string>
+    <string name="home">Overzicht</string>
+    <string name="games">Games</string>
+    <string name="tools">Hulpmiddelen</string>
+    <string name="app_size">Grootte</string>
+    <string name="app_date_published">Publicatiedatum</string>
+    <string name="add_to_chat">Toevoegen aan gesprek</string>
     <string name="unknown">Onbekend</string>
 
     <string name="green">Groen</string>
@@ -653,6 +661,8 @@
     <string name="profile_tag">Privélabel</string>
     <string name="profile_tag_hint">bijv. werk, familie</string>
     <string name="profile_tag_explain">Een label dat alleen jij kan zien, om profielen van elkaar te onderscheiden.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">Bovenaan tonen</string>
     <string name="delete_account">Account verwijderen</string>
     <string name="delete_account_ask">Weet je zeker dat je je accountgegevens wilt verwijderen?</string>
     <string name="delete_account_explain_with_name">Alle gegevens van ‘%s’ worden verwijderd: de eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
@@ -717,6 +727,7 @@
     <string name="pref_appearance">Uiterlijk</string>
     <string name="pref_theme">Thema</string>
     <string name="pref_language">Taal</string>
+    <string name="pref_use_system_ui_font">Systeemlettertype gebruiken</string>
     <string name="pref_incognito_keyboard">Privétoetsenbord</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Verzoek het toetsenbord om geen persoonlijke woorden op te nemen</string>

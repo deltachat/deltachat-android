@@ -37,6 +37,7 @@
     <string name="close_window">Закрыть окно</string>
     <string name="forward">Переслать</string>
     <string name="create">Создать</string>
+    <string name="reset">Сброс</string>
     <string name="later">Позже</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Отправить повторно</string>
@@ -45,6 +46,7 @@
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Вернуть из архива</string>
     <string name="mute">Отключить уведомления</string>
+    <string name="muted">Беззвучный</string>
     <string name="ephemeral_messages">Исчезающие сообщения</string>
     <string name="ephemeral_messages_hint">Эти настройки применяются ко всем участникам, использующим Delta Chat. Тем не менее, они могут копировать, сохранять и пересылать сообщения или использовать другие почтовые клиенты.</string>
     <string name="save">Сохранить</string>
@@ -202,6 +204,12 @@
     <string name="webxdc_apps">Приложения</string>
     <string name="webxdc_store_url">URL селектора приложений</string>
     <string name="webxdc_store_url_explain">Если установлено, URL будет использоваться в качестве селектора приложений вместо стандартного</string>
+    <string name="home">Домой</string>
+    <string name="games">Игры</string>
+    <string name="tools">Инструменты</string>
+    <string name="app_size">Размер</string>
+    <string name="app_date_published">Опубликовано</string>
+    <string name="add_to_chat">Добавить в чат</string>
     <string name="unknown">Неизвестно</string>
 
     <string name="green">Зелёный</string>
@@ -685,6 +693,8 @@
     <string name="profile_tag">Личный тег</string>
     <string name="profile_tag_hint">Например: Работа, Семья</string>
     <string name="profile_tag_explain">Тег, видимый только вам, помогает различать ваши профили.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">Переместить вверх</string>
     <string name="delete_account">Удалить профиль</string>
     <string name="delete_account_ask">Вы уверены, что хотите удалить данные своего профиля?</string>
     <string name="delete_account_explain_with_name">Все данные профиля \"%s\" на этом устройстве будут безвозвратно удалены, включая настройки сквозного шифрования, контакты, чаты, сообщения и медиафайлы. Это действие не может быть отменено.</string>
@@ -749,6 +759,7 @@
     <string name="pref_appearance">Внешний вид</string>
     <string name="pref_theme">Тема</string>
     <string name="pref_language">Язык</string>
+    <string name="pref_use_system_ui_font">Использовать системный шрифт</string>
     <string name="pref_incognito_keyboard">Клавиатура инкогнито</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Запрос клавиатуре на отключение персонализированного обучения</string>

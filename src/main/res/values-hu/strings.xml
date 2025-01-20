@@ -30,13 +30,14 @@
     <string name="delete">Törlés</string>
     <string name="info">Infó</string>
     <string name="update">Frissítés</string>
-    <string name="emoji">Hangulatjel</string>
+    <string name="emoji">Emodzsi</string>
     <string name="attachment">Csatolmány</string>
     <string name="back">Vissza</string>
     <string name="close">Bezárás</string>
     <string name="close_window">Ablak bezárása</string>
     <string name="forward">Továbbítás</string>
     <string name="create">Létrehozás</string>
+    <string name="reset">Visszaállítás</string>
     <string name="later">Később</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Újraküldés</string>
@@ -45,6 +46,7 @@
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Archiválás visszavonása</string>
     <string name="mute">Némítás</string>
+    <string name="muted">Némított</string>
     <string name="ephemeral_messages">Eltűnő üzenetek</string>
     <string name="ephemeral_messages_hint">A csevegés összes tagjára vonatkozik, ha a Delta Chatet használják; az üzeneteket továbbra is másolhatják, menthetik és továbbíthatják, vagy más e-mail klienseket használhatnak.</string>
     <string name="save">Mentés</string>
@@ -184,6 +186,12 @@
     <string name="webxdc_apps">Alkalmazások</string>
     <string name="webxdc_store_url">Alkalmazás-választó-webcím</string>
     <string name="webxdc_store_url_explain">Ha be van állítva, akkor a webcím lesz használva mint alkalmazás-választó az alapértelmezett helyett</string>
+    <string name="home">Főoldal</string>
+    <string name="games">Játékok</string>
+    <string name="tools">Eszközök</string>
+    <string name="app_size">Méret</string>
+    <string name="app_date_published">Közzétéve</string>
+    <string name="add_to_chat">Hozzáadás csevegéshez</string>
     <string name="unknown">Ismeretlen</string>
 
     <string name="green">Zöld</string>
@@ -221,7 +229,7 @@
     <string name="broadcast_list_name">Adáslista neve</string>
     <string name="please_enter_broadcast_list_name">Adjon meg egy nevet az adáslistának</string>
     <string name="menu_send">Küldés</string>
-    <string name="menu_toggle_keyboard">Váltás hangulatjel-billentyűzetre</string>
+    <string name="menu_toggle_keyboard">Váltás emodzsi-billentyűzetre</string>
     <string name="menu_edit_group">Csoport szerkesztése</string>
     <string name="menu_group_name_and_image">Csoportnév és -kép</string>
     <string name="menu_show_global_map">Az összes helyszín megjelenítése</string>
@@ -653,6 +661,8 @@
     <string name="profile_tag">Privát címke</string>
     <string name="profile_tag_hint">Például: „Munka”, „Család”</string>
     <string name="profile_tag_explain">A címke csak az Ön számára jelenik meg; segít megkülönböztetni a profiljait.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">Felülre helyezés</string>
     <string name="delete_account">Profil törlése</string>
     <string name="delete_account_ask">Biztosan törölni szeretné a profiladatait?</string>
     <string name="delete_account_explain_with_name">A(z) „%s” nevű profilhoz tartozó mindet adat ezen az eszközön törölve lesz,  beleértve a végpontok közötti titkosítás beállításait, a névjegyeket, a csevegéseket, az üzeneteket és a médiát. Ez a művelet nem vonható vissza. </string>
@@ -717,6 +727,7 @@
     <string name="pref_appearance">Megjelenés</string>
     <string name="pref_theme">Téma</string>
     <string name="pref_language">Nyelv</string>
+    <string name="pref_use_system_ui_font">Rendszer betűtípusának használata</string>
     <string name="pref_incognito_keyboard">Inkognitó-billentyűzet</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Tanulás letiltásának kérése a billentyűzettől</string>
@@ -725,8 +736,8 @@
     <string name="pref_server">Kiszolgáló</string>
     <string name="pref_encryption">Titkosítás</string>
     <string name="pref_manage_keys">Privát kulcsok kezelése</string>
-    <string name="pref_use_system_emoji">Rendszer hangulatjeleinek használata</string>
-    <string name="pref_use_system_emoji_explain">A Delta Chat beépített hangulatjel-támogatásának letiltása</string>
+    <string name="pref_use_system_emoji">Rendszeremodzsik használata</string>
+    <string name="pref_use_system_emoji_explain">A Delta Chat beépített emodzsi-támogatásának letiltása</string>
     <string name="pref_use_inapp_camera">Alkalmazás kamerájának használata</string>
     <string name="pref_use_inapp_camera_explain">Az alkalmazáson belüli kamera általában kevesebb funkcióval rendelkezik, mint a rendszer kamerája.</string>
     <string name="pref_show_system_contacts">A rendszer névjegyzékének olvasása</string>
@@ -735,7 +746,7 @@
     <string name="pref_chats">Csevegések</string>
     <string name="pref_in_chat_sounds">Csevegésen belüli hangok</string>
     <string name="pref_view_log">Naplófájl megtekintése</string>
-    <string name="pref_saved_log">A naplófájl elmentve a „Letöltések” mappába</string>
+    <string name="pref_saved_log">A naplófájl elmentve a „Letöltések” nevű mappába</string>
     <string name="pref_save_log_failed">Nem sikerült elmenteni a naplófájlt</string>
     <string name="pref_log_header">Naplófájl</string>
     <string name="pref_other">Egyéb</string>
@@ -765,10 +776,10 @@
     <string name="pref_send_copy_to_self">Másolat küldése Önmagának</string>
     <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Szükséges, ha ezt a fiókot több eszközön is használja.</string>
-    <string name="pref_auto_folder_moves">Automatikus áthelyezés a DeltaChat mappába</string>
+    <string name="pref_auto_folder_moves">Automatikus áthelyezés a DeltaChat nevű mappába</string>
     <string name="pref_auto_folder_moves_explain">A csevegések áthelyezésre kerülnek, hogy elkerüljék a bejövő üzenetek mappa zűrzavarát.</string>
-    <string name="pref_only_fetch_mvbox_title">Csak a DeltaChat-mappából történjen lekérdezés</string>
-    <string name="pref_only_fetch_mvbox_explain">Más mappák figyelmen kívül hagyása. A kiszolgálónak a DeltaChat mappába kell áthelyeznie a csevegőüzeneteket.</string>
+    <string name="pref_only_fetch_mvbox_title">Csak a DeltaChat nevű mappából történjen lekérdezés</string>
+    <string name="pref_only_fetch_mvbox_explain">Más mappák figyelmen kívül hagyása. A kiszolgálónak a DeltaChat nevű mappába kell áthelyeznie a csevegőüzeneteket.</string>
     <string name="pref_show_emails">Klasszikus e-mailek megjelenítése</string>
     <string name="pref_show_emails_no">Nem, csak csevegések</string>
     <string name="pref_show_emails_accepted_contacts">Elfogadott ismerősök számára</string>
@@ -804,7 +815,7 @@
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Keresési eredmények</string>
-    <string name="emoji_not_found">Nem található hangulatjel</string>
+    <string name="emoji_not_found">Nem található emodzsi</string>
     <string name="emoji_recent">Nemrég használt</string>
     <string name="emoji_people">Emberek és test</string>
     <string name="emoji_nature">Állatok és természet</string>
@@ -1095,7 +1106,7 @@
     <string name="forget_login_confirmation_desktop">Törli ezt a profilt? Az összes adata törlődni fog, beleértve a végpontok közötti titkosítási beállításokat, névjegyeket, csevegéseket, üzeneteket és médiát. Ez a művelet nem vonható vissza.</string>
     <string name="message_detail_sent_desktop">elküldött</string>
     <string name="message_detail_received_desktop">érkezett</string>
-    <string name="menu.view.developer.open.log.folder">Naplófájlok könyvtárának megnyitása</string>
+    <string name="menu.view.developer.open.log.folder">Naplófájlok mappájának megnyitása</string>
     <string name="menu.view.developer.open.current.log.file">Jelenlegi naplófájl megnyitása</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">A tálca ikonja nem kapcsolható ki, mivel a Delta Chat a --minimized kapcsolóval indult.</string>
     <string name="no_spellcheck_suggestions_found">Nem találhatók helyesírási javaslatok.</string>
@@ -1185,7 +1196,7 @@
     <string name="perm_enable_bg_already_done">Már engedélyezve van a Delta Chat számára, hogy a háttérben üzeneteket fogadjon.\n\nHa az üzenetek még mindig nem érkeznek meg a háttérben, ellenőrizze a rendszerbeállításokat is.</string>
 
     <!-- device messages for updates -->
-    <string name="update_1_50_android">Mik az újdonságok?\n\n❤️‍🔥 Új hangulatjel-választó még több hangulatjellel\n\n🎮 Továbbfejlesztett, a csevegésben használható alkalmazások: Értesítéseket kaphat és megnyithatja az azokat támogató alkalmazásokban, azaz közvetlenül megnyithat egy hozzáadott naptárbejegyzést\n\n👍 Értesítést kaphat az üzeneteire adott reakciókról\n\n… 🛠️ Egyéb javítások, tudjon meg többet itt: %1$s</string>
+    <string name="update_1_50_android">Mik az újdonságok?\n\n❤️‍🔥 Új emodzsi-választó még több emodzsival\n\n🎮 Továbbfejlesztett, a csevegésben használható alkalmazások: Értesítéseket kaphat és megnyithatja az azokat támogató alkalmazásokban, azaz közvetlenül megnyithat egy hozzáadott naptárbejegyzést\n\n👍 Értesítést kaphat az üzeneteire adott reakciókról\n\n… 🛠️ Egyéb javítások, tudjon meg többet itt: %1$s</string>
     <string name="update_1_46_ios">Új szolgáltatások 🐣 és további tudnivalók:\n\n⚡️ Regisztráljon biztonságos, gyors chatmail-kiszolgálókra (https://delta.chat/chatmail) vagy használja a klasszikus e-mail-kiszolgálókat\n\n👉 PUSH értesítések bármely chatmail-kiszolgálóra\n\n👤 Fogadjon „Csatolt névjegyeket\" és csatlakozzon az ismerőseihez\n\n🥰 Gyorsabb üzenetreakció kiválasztás … tudjon meg többet itt: %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ A „Profilváltás” beállítás át lett helyezve:
 Érintse meg a főképernyő felső sarkában lévő profilképet a profilok hozzáadásához vagy váltásához 💡</string>

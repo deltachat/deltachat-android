@@ -657,6 +657,8 @@
 
     <!-- Reactions -->
     <string name="reactions">Reakcijos</string>
+    <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
+    <string name="react">Reaguoti</string>
     <!-- automatically delete message -->
     <string name="delete_old_messages">Ištrinti senas žinutes</string>
     <string name="autodel_device_title">Ištrinti žinutes iš įrenginio</string>
@@ -696,6 +698,10 @@
     <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Tai yra pranešimas apie žinutės \"%1$s\" skaitymą.\n\nTai reiškia, kad žinutė buvo atvaizduota gavėjo įrenginyje, tačiau neužtikrina, kad jos turinys buvo perskaitytas.</string>
     <string name="systemmsg_subject_for_new_contact">Žinutė nuo %1$s</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Jūs pakeitėte grupės pavadinimą iš „%1$s“ į „%2$s“.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">%3$s pakeitė grupės pavadinimą iš „%1$s“ į „%2$s“.</string>
     <!-- "left" in the meaning of "exited" -->
     <string name="group_left_by_you">Jūs išėjote iš grupės.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->

@@ -37,6 +37,7 @@
     <string name="close_window">Pencereyi Kapat</string>
     <string name="forward">İlet</string>
     <string name="create">Oluştur</string>
+    <string name="reset">Sıfırla</string>
     <string name="later">Daha Sonra</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Yeniden Gönder</string>
@@ -45,6 +46,7 @@
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Arşivleme</string>
     <string name="mute">Sessize Al</string>
+    <string name="muted">Sessize alındı</string>
     <string name="ephemeral_messages">Kaybolan İletiler</string>
     <string name="ephemeral_messages_hint">Bu sohbetin tüm üyelerine onlar Delta Chat\'i kullanıyorsa uygulanır; onlar hâlâ iletileri kopyalayabilir, kaydedebilir ve iletebilir ya da diğer e-posta istemcilerini kullanabilir.</string>
     <string name="save">Kaydet</string>
@@ -184,6 +186,12 @@
     <string name="webxdc_apps">Uygulamalar</string>
     <string name="webxdc_store_url">Uygulama Seçici URL\'si</string>
     <string name="webxdc_store_url_explain">Ayarlanırsa URL, varsayılan birinin yerine Uygulama Seçici olarak kullanılacak</string>
+    <string name="home">Ana Sayfa</string>
+    <string name="games">Oyunlar</string>
+    <string name="tools">Araçlar</string>
+    <string name="app_size">Boyut</string>
+    <string name="app_date_published">Yayımlanma</string>
+    <string name="add_to_chat">Sohbete Ekle</string>
     <string name="unknown">Bilinmeyen</string>
 
     <string name="green">Yeşil</string>
@@ -653,6 +661,8 @@
     <string name="profile_tag">Özel Etiket</string>
     <string name="profile_tag_hint">ör. İş, Aile</string>
     <string name="profile_tag_explain">Yalnızca sizin için görünür etiket; profilleriniz arasında farklılığa yardımcı olur.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">En Üste Taşı</string>
     <string name="delete_account">Profili Sil</string>
     <string name="delete_account_ask">Profil verilerinizi silmek istediğinizden emin misiniz?</string>
     <string name="delete_account_explain_with_name">Uçtan uca şifreleme ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak \"%s\" profilinin bu aygıttaki verilerinin tümü silinecek. Bu eylem geri alınamaz.</string>
@@ -717,6 +727,7 @@
     <string name="pref_appearance">Görünüm</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Dil</string>
+    <string name="pref_use_system_ui_font">Sistem Yazı Tipini Kullan</string>
     <string name="pref_incognito_keyboard">Gizli Klavye</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Kişiselleştirilen öğrenmeyi etkisizleştirmek için klavye iste</string>
@@ -1070,7 +1081,7 @@
     <string name="global_menu_edit_copy_desktop">Kopyala</string>
     <string name="global_menu_edit_paste_desktop">Yapıştır</string>
     <string name="global_menu_view_desktop">Görünüm</string>
-    <string name="global_menu_view_floatontop_desktop">Üstte Yüzdür</string>
+    <string name="global_menu_view_floatontop_desktop">En Üstte Yüzdür</string>
     <string name="global_menu_view_developer_desktop">Geliştirici</string>
     <string name="global_menu_view_developer_tools_desktop">Geliştirici Araçları</string>
     <string name="global_menu_help_desktop">Yardım</string>
