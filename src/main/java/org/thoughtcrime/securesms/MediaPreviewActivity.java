@@ -476,7 +476,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
           MediaItem item = adapter.getMediaItemFor(position);
           if (item.recipient != null) item.recipient.removeListener(MediaPreviewActivity.this);
         } catch (IllegalArgumentException e) {
-          e.printStackTrace();
+          Log.w(TAG, "Ignoring invalid position index");
         }
         adapter.pause(position);
       }
