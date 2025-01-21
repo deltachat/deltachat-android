@@ -472,9 +472,12 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       MediaItemAdapter adapter = (MediaItemAdapter)mediaPager.getAdapter();
 
       if (adapter != null) {
-        MediaItem item = adapter.getMediaItemFor(position);
-        if (item.recipient != null) item.recipient.removeListener(MediaPreviewActivity.this);
-
+        try {
+          MediaItem item = adapter.getMediaItemFor(position);
+          if (item.recipient != null) item.recipient.removeListener(MediaPreviewActivity.this);
+        } catch (IllegalArgumentException e) {
+          e.printStackTrace();
+        }
         adapter.pause(position);
       }
     }
