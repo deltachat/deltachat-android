@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application' version '8.1.4'
+    id 'com.android.application' version '8.5.2'
     id 'com.google.gms.google-services' version '4.4.1'
 }
 
@@ -149,7 +149,7 @@ android {
 
 dependencies {
     implementation 'androidx.sharetarget:sharetarget:1.2.0'
-    implementation 'androidx.webkit:webkit:1.11.0'
+    implementation 'androidx.webkit:webkit:1.12.1'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'com.google.android.material:material:1.12.0'
@@ -169,7 +169,7 @@ dependencies {
     implementation 'com.google.guava:guava:31.1-android'
     implementation 'com.google.android.exoplayer:exoplayer-core:2.19.1' // plays video and audio
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.19.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
     implementation 'com.google.zxing:core:3.3.0' // fixed version to support SDK<24
     implementation ('com.journeyapps:zxing-android-embedded:4.3.0') { transitive = false } // QR Code scanner
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1' // used as JSON library
@@ -181,7 +181,7 @@ dependencies {
     implementation 'com.caverock:androidsvg-aar:1.4' // SVG support.
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-    annotationProcessor 'androidx.annotation:annotation:1.8.2'
+    annotationProcessor 'androidx.annotation:annotation:1.9.1'
     implementation 'com.makeramen:roundedimageview:2.1.0' // crops the avatars to circles
     implementation 'com.pnikosis:materialish-progress:1.5' // used only in the "Progress Wheel" in Share Activity.
     implementation 'com.soundcloud.android:android-crop:1.0.1@aar' // used for profile and group avatar selection in Android SDK<19
@@ -200,7 +200,7 @@ dependencies {
     // <https://github.com/cketti/SafeContentResolver>
     implementation 'de.cketti.safecontentresolver:safe-content-resolver-v14:1.0.0'
 
-    gplayImplementation('com.google.firebase:firebase-messaging:24.0.0') { // for PUSH notifications
+    gplayImplementation('com.google.firebase:firebase-messaging:24.1.0') { // for PUSH notifications
         exclude group: 'com.google.firebase', module: 'firebase-core'
         exclude group: 'com.google.firebase', module: 'firebase-analytics'
         exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
@@ -214,7 +214,7 @@ dependencies {
     testImplementation 'org.powermock:powermock-module-junit4-rule:1.6.1'
     testImplementation 'org.powermock:powermock-classloading-xstream:1.6.1'
 
-    androidTestImplementation 'androidx.test:runner:1.6.1'
+    androidTestImplementation 'androidx.test:runner:1.6.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.6.1'
     androidTestImplementation 'androidx.test:rules:1.6.1'
