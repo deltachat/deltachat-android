@@ -987,6 +987,7 @@
     <string name="chat_protection_broken_explanation">Сквозное шифрование больше не может быть гарантировано, вероятно, потому что %1$s переустановил Delta Chat или отправил сообщение с другого устройства.\n\nВы можете встретиться с ним лично и отсканировать QR-код снова чтобы восстановить гарантированное сквозное шифрование.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s требуется сквозное шифрование, которое ещё не настроено для данного чата. Нажмите, чтобы узнать больше.</string>
     <string name="invalid_unencrypted_explanation">Чтобы установить сквозное шифрование, вы можете встретиться с контактами лично и отсканировать их QR-код, чтобы подтвердить их личность.</string>
+    <!-- deprecated -->
     <string name="encryption_required_for_new_contact">Требуется сквозное шифрование, но оно для %1$s еще не настроено.\n\nВы можете поделиться ссылкой-приглашением или встретиться лично, и отсканировать QR-код.</string>
     <string name="learn_more">Узнать больше</string>
 
@@ -1117,7 +1118,9 @@
     <string name="global_menu_view_developer_desktop">Разработчик</string>
     <string name="global_menu_view_developer_tools_desktop">Инструменты разработчика</string>
     <string name="global_menu_help_desktop">Справка</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Узнать больше о Delta Chat</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Присоединиться к разработке на GitHub</string>
     <string name="global_menu_help_report_desktop">Сообщить о проблеме</string>
     <string name="global_menu_help_about_desktop">О Delta Chat</string>
@@ -1131,6 +1134,8 @@
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">Удалить</string>
     <string name="save_desktop">Сохранить</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">Не сохранять</string>
     <string name="name_desktop">Имя</string>
     <string name="select_group_image_desktop">Выбрать изображение группы</string>
     <string name="export_backup_desktop">Экспорт резервной копии</string>

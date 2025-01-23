@@ -955,6 +955,7 @@
     <string name="chat_protection_broken_explanation">Eind-tot-eindversleuteling kan niet meer worden gegarandeerd, omdat %1$s Delta Chat opnieuw heeft geïnstalleerd of een bericht vanaf een ander apparaat heeft verstuurd.\n\nMaak een afspraak met hem/haar en scan de QR-code opnieuw om eind-tot-eindversleuteling weer in te schakelen.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ Voor %1$s is eind-tot-eindversleuteling vereist, maar dit is nog niet ingesteld in het huidige gesprek. Druk voor meer informatie.</string>
     <string name="invalid_unencrypted_explanation">Spreek met elkaar af en scan elkaars QR-code om eind-tot-eindversleuteling op te zetten.</string>
+    <!-- deprecated -->
     <string name="encryption_required_for_new_contact">Eind-tot-eindversleuteling is vereist, maar nog niet ingesteld op %1$s.\n\nJe kunt deze link alleen delen met personen die je kent of die je in het echt ontmoet en waarvan je de QR-code scant.</string>
     <string name="learn_more">Meer informatie</string>
 
@@ -1085,8 +1086,12 @@
     <string name="global_menu_view_developer_desktop">Ontwikkelaar</string>
     <string name="global_menu_view_developer_tools_desktop">Ontwikkelaarshulpmiddelen</string>
     <string name="global_menu_help_desktop">Hulp</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Meer informatie over Delta Chat</string>
+    <string name="delta_chat_homepage">Delta Chat-website</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Draag bij op GitHub</string>
+    <string name="contribute">Bijdragen</string>
     <string name="global_menu_help_report_desktop">Meld een probleem</string>
     <string name="global_menu_help_about_desktop">Over Delta Chat</string>
     <string name="global_menu_file_open_desktop">Delta Chat openen</string>
@@ -1099,6 +1104,8 @@
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">Verwijderen</string>
     <string name="save_desktop">Opslaan</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">Niet meer bewaren</string>
     <string name="name_desktop">Naam</string>
     <string name="select_group_image_desktop">Kies een groepsafbeelding</string>
     <string name="export_backup_desktop">Reservekopie exporteren</string>

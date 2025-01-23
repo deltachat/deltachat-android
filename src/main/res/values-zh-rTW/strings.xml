@@ -924,6 +924,7 @@
     <string name="chat_protection_broken_explanation">無法再保證端到端加密，可能是因為%1$s重新安裝了 Delta Chat 或從其他裝置傳送了訊息\n\n您可以再次當面掃描他們的QR碼，以重新建立有保證的端到端加密。</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s需要端到端加密，但尚未為此聊天設置。輕觸以瞭解更多資訊。</string>
     <string name="invalid_unencrypted_explanation">要建立端到端加密，您可以當面掃描聯絡人的QR碼。</string>
+    <!-- deprecated -->
     <string name="encryption_required_for_new_contact">端到端加密是必需的，但尚未設置%1$s。\n\n您可以與他們分享您的邀請連結，或者當面掃描他們的二維碼。</string>
     <string name="learn_more">瞭解更多</string>
 
@@ -1054,7 +1055,9 @@
     <string name="global_menu_view_developer_desktop">開發者</string>
     <string name="global_menu_view_developer_tools_desktop">開發者工具</string>
     <string name="global_menu_help_desktop">幫助</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">了解有關 Delta Chat 的更多資訊</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">在 GitHub 上作出貢獻</string>
     <string name="global_menu_help_report_desktop">報告問題</string>
     <string name="global_menu_help_about_desktop">關於 Delta Chat</string>

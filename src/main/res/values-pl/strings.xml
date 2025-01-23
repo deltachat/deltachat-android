@@ -37,6 +37,7 @@
     <string name="close_window">Zamknij okno</string>
     <string name="forward">Przekaż</string>
     <string name="create">Utwórz</string>
+    <string name="reset">Zresetuj</string>
     <string name="later">Później</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Wyślij ponownie</string>
@@ -45,6 +46,7 @@
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Przywróć z archiwum</string>
     <string name="mute">Wyłącz powiadomienia</string>
+    <string name="muted">Wyciszony</string>
     <string name="ephemeral_messages">Znikające wiadomości</string>
     <string name="ephemeral_messages_hint">Te ustawienia dotyczą wszystkich uczestników korzystających z Delta Chat. Mogą jednak kopiować, zapisywać i przekazywać wiadomości lub korzystać z innych klientów poczty e-mail.</string>
     <string name="save">Zapisz</string>
@@ -202,6 +204,12 @@
     <string name="webxdc_apps">Prywatne aplikacje</string>
     <string name="webxdc_store_url">Adres URL selektora aplikacji</string>
     <string name="webxdc_store_url_explain">Jeśli ustawiony, adres URL będzie używany jako selektor aplikacji zamiast domyślnego</string>
+    <string name="home">Główna</string>
+    <string name="games">Gry</string>
+    <string name="tools">Narzędzia</string>
+    <string name="app_size">Rozmiar</string>
+    <string name="app_date_published">Opublikowany</string>
+    <string name="add_to_chat">Dodaj do czatu</string>
     <string name="unknown">Nieznany</string>
 
     <string name="green">Zielony</string>
@@ -751,6 +759,7 @@
     <string name="pref_appearance">Wygląd</string>
     <string name="pref_theme">Motyw</string>
     <string name="pref_language">Język</string>
+    <string name="pref_use_system_ui_font">Użyj czcionki systemowej</string>
     <string name="pref_incognito_keyboard">Klawiatura incognito</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Poproś klawiaturę o wyłączenie spersonalizowanej nauki</string>
@@ -978,6 +987,7 @@
     <string name="chat_protection_broken_explanation">Nie można już zagwarantować szyfrowania end-to-end, prawdopodobnie z powodu ponownej instalacji Delta Chat przez %1$s lub wysłania wiadomości z innego urządzenia.\n\nMożesz spotkać się z tą osobą osobiście i ponownie zeskanować jej kod QR, aby przywrócić gwarantowane szyfrowanie end-to-end.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s wymaga szyfrowania end-to-end, które nie zostało jeszcze skonfigurowane dla tego czatu. Dotknij, aby dowiedzieć się więcej.</string>
     <string name="invalid_unencrypted_explanation">Aby ustanowić szyfrowanie end-to-end, możesz spotkać się z kontaktami osobiście i zeskanować ich kod QR, żeby ich wprowadzić.</string>
+    <!-- deprecated -->
     <string name="encryption_required_for_new_contact">Wymagane jest szyfrowanie end-to-end, ale nie zostało ono jeszcze skonfigurowane dla %1$s.\n\nMożesz udostępnić im swój link zaproszenia lub spotkać się osobiście i zeskanować ich kod QR.</string>
     <string name="learn_more">Czytaj więcej</string>
 
@@ -1108,7 +1118,9 @@
     <string name="global_menu_view_developer_desktop">Programista</string>
     <string name="global_menu_view_developer_tools_desktop">Narzędzia Programisty</string>
     <string name="global_menu_help_desktop">Pomoc</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Dowiedz się więcej o Delta Chat</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Przyczyń się do rozwoju na GitHub</string>
     <string name="global_menu_help_report_desktop">Zgłoś problem</string>
     <string name="global_menu_help_about_desktop">O Delta Chat</string>

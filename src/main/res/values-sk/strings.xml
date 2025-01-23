@@ -896,7 +896,9 @@
     <string name="global_menu_view_developer_desktop">Vývojár</string>
     <string name="global_menu_view_developer_tools_desktop">Nástroje pre vývojárov</string>
     <string name="global_menu_help_desktop">Pomocník</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Získať viac informácií o službe Delta Chat</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Prispieť na GitHub-e</string>
     <string name="global_menu_help_report_desktop">Nahlásiť problém</string>
     <string name="global_menu_help_about_desktop">O spoločnosti Delta Chat</string>

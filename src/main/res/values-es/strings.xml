@@ -956,6 +956,7 @@
     <string name="chat_protection_broken_explanation">El cifrado de extremo a extremo ya no se puede garantizar, probablemente porque %1$s reinstaló Delta Chat o envió un mensaje desde otro dispositivo.\n\nPueden encontrarse en persona y escanear su código QR nuevamente para restablecer el cifrado de extremo a extremo garantizado.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s requiere cifrado de extremo a extremo que aún no está configurado para este chat. Toca para obtener más información.</string>
     <string name="invalid_unencrypted_explanation">Para establecer un cifrado de extremo a extremo, puede reunirse con los contactos en persona y escanear su código QR.</string>
+    <!-- deprecated -->
     <string name="encryption_required_for_new_contact">Se requiere cifrado de extremo a extremo, pero aún no está disponible para %1$s.\n\nPuede compartir su enlace de invitación o reunirse en persona y escanear su código QR.</string>
     <string name="learn_more">Aprender más</string>
 
@@ -1086,7 +1087,9 @@
     <string name="global_menu_view_developer_desktop">Programador</string>
     <string name="global_menu_view_developer_tools_desktop">Herramientas del Programador</string>
     <string name="global_menu_help_desktop">Ayuda</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Aprender más sobre Delta Chat</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Contribuir en GitHub</string>
     <string name="global_menu_help_report_desktop">Reportar un problema</string>
     <string name="global_menu_help_about_desktop">Sobre Delta Chat</string>

@@ -555,6 +555,7 @@
     <string name="global_menu_edit_paste_desktop">لکاندن</string>
     <string name="global_menu_view_desktop">دیتن</string>
     <string name="global_menu_help_desktop">یارمەتی</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">زۆرتر سەبارەت بە دێڵتاچات_ەوە بزانە</string>
     <string name="global_menu_help_report_desktop">کێشەیەک گوزارشت بکە</string>
     <string name="global_menu_help_about_desktop">سەبارەت بە دێڵتا چات</string>
