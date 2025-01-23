@@ -125,6 +125,7 @@ public class DirectShareUtil {
 
       Intent intent = new Intent(context, ShareActivity.class);
       intent.setAction(Intent.ACTION_SEND);
+      intent.putExtra(ShareActivity.EXTRA_ACC_ID, dcContext.getAccountId());
       intent.putExtra(ShareActivity.EXTRA_CHAT_ID, chat.getId());
 
       Recipient recipient = new Recipient(context, chat);
