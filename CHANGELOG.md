@@ -1,5 +1,17 @@
 # Delta Chat Android Changelog
 
+## v1.52.0
+2025-01
+
+* new group consistency algorithm
+* fix: don't show animated .webp stickers as static stickers
+* fix the chat shortcuts (created via long-press in launcher) to properly support multi-profile
+* fix some small bugs in certain android versions and special situations
+* avoid the app freezing in slow phones in some situations
+* improve menu in the help screen
+* update translations
+* update to core 1.155.0
+
 ## v1.50.5
 2025-01
 
