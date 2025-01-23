@@ -955,6 +955,7 @@
     <string name="chat_protection_broken_explanation">Die Ende-zu-Ende-Verschlüsselung kann nicht mehr garantiert werden, wahrscheinlich weil %1$s Delta Chat neu installiert oder eine Nachricht von einem anderen Gerät gesendet hat.\n\nSie können sich persönlich treffen und den QR-Code erneut scannen, um die garantierte Ende-zu-Ende-Verschlüsselung wiederherzustellen.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s verlangt eine Ende-zu-Ende-Verschlüsselung, die für diesen Chat noch nicht hergestellt wurde. Tippen, um mehr zu erfahren.</string>
     <string name="invalid_unencrypted_explanation">Um eine Ende-zu-Ende-Verschlüsselung herzustellen, können Sie Kontakte persönlich treffen und ihren QR-Code scannen.</string>
+    <!-- deprecated -->
     <string name="encryption_required_for_new_contact">Ende-zu-Ende-Verschlüsselung ist notwendig, aber für %1$s nicht eingerichtet.\n\nZum Herstellen der Ende-zu-Ende-Verschlüsselung, können Sie Ihren Einladungslink teilen oder den Kontakt persönlich zum QR-Code-Scannen treffen.</string>
     <string name="learn_more">Mehr erfahren</string>
 
@@ -1085,8 +1086,12 @@
     <string name="global_menu_view_developer_desktop">EntwicklerIn</string>
     <string name="global_menu_view_developer_tools_desktop">Entwicklungswerkzeug</string>
     <string name="global_menu_help_desktop">Hilfe</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Mehr über Delta Chat erfahren</string>
+    <string name="delta_chat_homepage">Delta Chat Homepage</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Auf GitHub mitwirken</string>
+    <string name="contribute">Mitwirken</string>
     <string name="global_menu_help_report_desktop">Ein Problem melden</string>
     <string name="global_menu_help_about_desktop">Über Delta Chat</string>
     <string name="global_menu_file_open_desktop">Delta Chat öffnen</string>

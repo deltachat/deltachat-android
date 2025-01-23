@@ -832,7 +832,9 @@
     <string name="global_menu_view_developer_desktop">Plėtotojas</string>
     <string name="global_menu_view_developer_tools_desktop">Plėtotojo įrankiai</string>
     <string name="global_menu_help_desktop">Žinynas</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Sužinokite daugiau apie Delta Chat</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Talkinti „Github“ svetainėje</string>
     <string name="global_menu_help_report_desktop">Pranešti apie klaidą</string>
     <string name="global_menu_help_about_desktop">Apie Delta Chat</string>

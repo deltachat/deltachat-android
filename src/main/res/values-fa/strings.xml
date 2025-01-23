@@ -941,6 +941,7 @@ https://meet.jit.si/$ROOM
     <string name="chat_protection_enabled_explanation">رمزنگاری سراسری پیام‌های این گفتگو اکنون تضمین می‌شود. رمزنگاری سراسری باعث می‌شود پیام‌هایتان بین شما و مخاطبین شما محرمانه بماند. حتی ارائه‌دهنده رایانامه شما هم نمی‌تواند آن‌ها را بخواند.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s پیامی را از دستگاه دیگری ارسال کرد. برای اطلاعات بیشتر ضربه بزنید.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s به رمزنگاری سراسری نیاز دارد که هنوز برای این گپ پیکره‌بندی نشده است. برای یادگیری بیش‌تر این‌جا بزنید.</string>
+    <!-- deprecated -->
     <string name="encryption_required_for_new_contact">رمزنگاری سراسری لازم است اما برای %1$s هنوز پیکره‌بندی نشده است.\n\nمی‌توانید پیوند دعوت خود را به مخاطبتان بدهید یا این‌که به صورت حضوری کد QR مخاطب را اسکن کنید.</string>
     <string name="learn_more">بیشتر بدانید</string>
 
@@ -1093,7 +1094,9 @@ GNU GPL ورژن ۳
     <string name="global_menu_view_developer_desktop">برنامه‌نویس</string>
     <string name="global_menu_view_developer_tools_desktop">ابزار برنامه نویس</string>
     <string name="global_menu_help_desktop">کمک</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">یادگیری بیشتر درمورد دلتاچت</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">کمک به گیت‌هاب</string>
     <string name="global_menu_help_report_desktop">گزارش یک مشکل</string>
     <string name="global_menu_help_about_desktop">درباره دلتاچت</string>

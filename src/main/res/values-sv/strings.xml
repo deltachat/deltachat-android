@@ -900,6 +900,7 @@
     <string name="chat_protection_broken_explanation">Totalsträckskryptering kan inte garanteras längre, troligen för att %1$s installerade om Delta Chat eller skickade ett meddelande från en annan enhet.\n\nDu kan träffa dem personligen och skanna deras QR-kod igen för att återupprätta garanterad totalsträckskryptering.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s kräver totalsträckskryptering som inte är kofigurerad för den här chatten ännu. Tryck för att lära dig mer.</string>
     <string name="invalid_unencrypted_explanation">För att skapa totalsträckskryptering kan du träffa kontakter personligen och skanna deras QR-kod för att introducera dem.</string>
+    <!-- deprecated -->
     <string name="encryption_required_for_new_contact">Totalsträckskryptering krävs men det är ännu inte konfigurerat för %1$s.\n\nDu kan dela din inbjudningslänk med dem eller träffas personligen och skanna deras QR-kod.</string>
     <string name="learn_more">Lär dig mer</string>
 
@@ -1030,7 +1031,9 @@
     <string name="global_menu_view_developer_desktop">Utvecklare</string>
     <string name="global_menu_view_developer_tools_desktop">Utvecklingsverktyg</string>
     <string name="global_menu_help_desktop">Hjälp</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Lär dig mer om Delta Chat</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Bidra på GitHub</string>
     <string name="global_menu_help_report_desktop">Rapportera ett ärende</string>
     <string name="global_menu_help_about_desktop">Om Delta Chat</string>

@@ -1021,7 +1021,9 @@
     <string name="global_menu_view_developer_desktop">Kehittäjä</string>
     <string name="global_menu_view_developer_tools_desktop">Kehittäjätyökalut</string>
     <string name="global_menu_help_desktop">Ohje</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Lisätietoja Delta Chatista</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Osallistu GitHubissa</string>
     <string name="global_menu_help_report_desktop">Ilmoita ongelma</string>
     <string name="global_menu_help_about_desktop">Tietoja Delta Chatista</string>

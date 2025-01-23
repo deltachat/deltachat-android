@@ -976,6 +976,7 @@
     <string name="chat_protection_broken_explanation">Наскрізне шифрування більше не гарантується, імовірно, через те, що %1$s перевстановив (-ла) Delta Chat або надіслав (-ла) повідомлення з іншого пристрою.\n\nВи можете зустрітися з ним (нею) особисто та знову відсканувати його (її) QR-код, щоб відновити гарантоване наскрізне шифрування.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s вимагає наскрізного шифрування, яке ще не налаштоване для цього чату. Натисніть, щоб дізнатися більше.</string>
     <string name="invalid_unencrypted_explanation">Щоб установити наскрізне шифрування, Ви можете зустрітися з контактами особисто та відсканувати їхній QR-код, щоб додати їх.</string>
+    <!-- deprecated -->
     <string name="encryption_required_for_new_contact">Потрібне наскрізне шифрування, але воно ще не налаштоване на %1$s.\n\nВи можете поділитися з ними посиланням на запрошення або зустрітися особисто і відсканувати їхній QR-код.</string>
     <string name="learn_more">Дізнатися більше</string>
 
@@ -1106,7 +1107,9 @@
     <string name="global_menu_view_developer_desktop">Розробник</string>
     <string name="global_menu_view_developer_tools_desktop">Інструменти розробника</string>
     <string name="global_menu_help_desktop">Допомога</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Дізнатися більше про Delta Chat</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Приєднатися до розробки на GitHub</string>
     <string name="global_menu_help_report_desktop">Повідомити про проблему</string>
     <string name="global_menu_help_about_desktop">Про Delta Chat</string>
