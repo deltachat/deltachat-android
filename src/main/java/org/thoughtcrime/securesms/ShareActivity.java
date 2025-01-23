@@ -56,6 +56,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
 {
   private static final String TAG = ShareActivity.class.getSimpleName();
 
+  public static final String EXTRA_ACC_ID = "acc_id";
   public static final String EXTRA_CHAT_ID = "chat_id";
   public static final String EXTRA_TITLE = "extra_title";
 
@@ -206,12 +207,8 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
   }
 
   private void handleResolvedMedia(Intent intent) {
+    int       accId            = intent.getIntExtra(EXTRA_ACC_ID, -1);
     int       chatId           = intent.getIntExtra(EXTRA_CHAT_ID, -1);
-
-    String shortcutId = intent.getStringExtra(ShortcutManagerCompat.EXTRA_SHORTCUT_ID);
-    if (chatId == -1 && shortcutId != null) {
-      chatId = Integer.parseInt(shortcutId);
-    }
 
     String[] extraEmail = getIntent().getStringArrayExtra(Intent.EXTRA_EMAIL);
     /*
@@ -262,9 +259,10 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
       chatId = dcContext.createChatByContactId(contactId);
     }
     Intent composeIntent;
-    if (chatId != -1) {
+    if (accId != -1 && chatId != -1) {
       composeIntent = getBaseShareIntent(ConversationActivity.class);
       composeIntent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+      composeIntent.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, accId);
       RelayUtil.setSharedUris(composeIntent, resolvedExtras);
       startActivity(composeIntent);
     } else {
