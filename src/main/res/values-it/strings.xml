@@ -971,6 +971,7 @@
     <string name="chat_protection_broken_explanation">La crittografia end-to-end non può più essere garantita, probabilmente perché %1$s ha reinstallato Delta Chat o inviato un messaggio da un altro dispositivo.\n\nPuoi incontrarlo di persona e scansionare nuovamente il suo Codice QR per ristabilire la crittografia end-to-end garantita.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s richiede la crittografia end-to-end che non è ancora configurata per questa chat. Tocca per saperne di più.</string>
     <string name="invalid_unencrypted_explanation">Per stabilire la crittografia end-to-end, potresti incontrare i contatti di persona e scansionare il loro Codice QR per verificarli.</string>
+    <!-- deprecated -->
     <string name="encryption_required_for_new_contact">È richiesta la crittografia end-to-end, ma non è ancora configurata per %1$s.\n\nPuoi condividere con loro il collegamento d\'invito o incontrarli di persona e scansionare il loro Codice QR.</string>
     <string name="learn_more">Per Saperne di Più</string>
 
@@ -1101,7 +1102,9 @@
     <string name="global_menu_view_developer_desktop">Sviluppatore</string>
     <string name="global_menu_view_developer_tools_desktop">Strumenti di Sviluppo</string>
     <string name="global_menu_help_desktop">Aiuto</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Scopri di più su Delta Chat</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Contribuisci su GitHub</string>
     <string name="global_menu_help_report_desktop">Segnala Problema</string>
     <string name="global_menu_help_about_desktop">Informazioni Delta Chat</string>
@@ -1115,6 +1118,8 @@
     <string name="timestamp_format_m_desktop">D MMM</string>
     <string name="remove_desktop">Rimuovi</string>
     <string name="save_desktop">Salva</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">Non Salvare</string>
     <string name="name_desktop">Nome</string>
     <string name="select_group_image_desktop">Seleziona Immagine Gruppo</string>
     <string name="export_backup_desktop">Esporta Backup</string>

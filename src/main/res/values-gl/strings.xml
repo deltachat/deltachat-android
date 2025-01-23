@@ -848,7 +848,9 @@
     <string name="global_menu_view_developer_desktop">Desenvolvedora</string>
     <string name="global_menu_view_developer_tools_desktop">Ferramentas de desenvolvedora</string>
     <string name="global_menu_help_desktop">Axuda</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Coñece máis sobre Delta Chat</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Contribúe en GitHub</string>
     <string name="global_menu_help_report_desktop">Informa dun fallo</string>
     <string name="global_menu_help_about_desktop">Acerca de Delta Chat</string>

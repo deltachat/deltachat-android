@@ -955,6 +955,7 @@
     <string name="chat_protection_broken_explanation">A végpontok közötti titkosítás már nem garantálható, valószínűleg azért, mert %1$s újratelepítette a Delta Chatet, vagy egy másik eszközről küldött üzenetet.\n\n Személyesen találkozhat vele, és újra beolvashatja a QR-kódját a garantált végpontok közötti titkosítás visszaállításához.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ A(z) %1$s végpontok közötti titkosítást igényel, ami még nincs beállítva erre a csevegésre. Koppintson, ha többet szeretne megtudni.</string>
     <string name="invalid_unencrypted_explanation">A végpontok közötti titkosítás létrehozásához személyesen is találkozhat az ismerőseivel, és a QR-kódjukat beolvasva bemutathatja őket.</string>
+    <!-- deprecated -->
     <string name="encryption_required_for_new_contact">A végpontok közötti titkosítás beállítása szükséges, de a(z) %1$s nevű ismerőse esetében az még nincs beállítva.\n\nMegoszthatja a meghívó-hivatkozását, vagy személyesen is találkozhat vele, és beolvashatja a QR-kódját.</string>
     <string name="learn_more">Tudjon meg többet</string>
 
@@ -1085,8 +1086,12 @@
     <string name="global_menu_view_developer_desktop">Fejlesztő</string>
     <string name="global_menu_view_developer_tools_desktop">Fejlesztői eszközök</string>
     <string name="global_menu_help_desktop">Súgó</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Tudjon meg többet a Delta Chatről</string>
+    <string name="delta_chat_homepage">A Delta Chat weboldala</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Hozzájárulás a GitHubon</string>
+    <string name="contribute">Közreműködés</string>
     <string name="global_menu_help_report_desktop">Jelentsen egy problémát</string>
     <string name="global_menu_help_about_desktop">A Delta Chatről</string>
     <string name="global_menu_file_open_desktop">Delta Chat megnyitása</string>
@@ -1099,6 +1104,8 @@
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">Eltávolítás</string>
     <string name="save_desktop">Mentés</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">Mentés megszüntetése</string>
     <string name="name_desktop">Név</string>
     <string name="select_group_image_desktop">Csoport képének kiválasztása</string>
     <string name="export_backup_desktop">Biztonsági mentés exportálása</string>

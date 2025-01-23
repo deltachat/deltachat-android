@@ -955,6 +955,7 @@
     <string name="chat_protection_broken_explanation">Uçtan uca şifreleme artık güvencelenemiyor; çünkü büyük olasılıkla %1$s Delta Chat\'i yeniden yükledi ya da başka bir aygıttan ileti gönderdi.\n\nOnlarla kişisel olarak tanışabilir ve güvenceli uçtan uca şifrelemeyi yeniden kurmak için onların QR kodunu yeniden tarayabilirsiniz.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s, bu sohbet için henüz ayarlanmayan uçtan uca şifrelemeyi gerektirir. Daha fazlasını öğrenmek için dokunun.</string>
     <string name="invalid_unencrypted_explanation">Uçtan uca şifrelemeyi kurmak için kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
+    <!-- deprecated -->
     <string name="encryption_required_for_new_contact">Uçtan uca şifreleme gereklidir ama %1$s için henüz ayarlanmadı.\n\nÇağırma bağlantınızı onunla paylaşabilirsiniz ya da kişisel olarak tanışarak onun QR kodunu tarayabilirsiniz.</string>
     <string name="learn_more">Daha Fazlasını Öğrenin</string>
 
@@ -1085,7 +1086,9 @@
     <string name="global_menu_view_developer_desktop">Geliştirici</string>
     <string name="global_menu_view_developer_tools_desktop">Geliştirici Araçları</string>
     <string name="global_menu_help_desktop">Yardım</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Delta Chat hakkında daha fazlasını öğrenin</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">GitHub\'da katkıda bulunun</string>
     <string name="global_menu_help_report_desktop">Bir Sorun Raporla</string>
     <string name="global_menu_help_about_desktop">Delta Chat hakkında</string>

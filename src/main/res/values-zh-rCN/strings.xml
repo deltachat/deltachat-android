@@ -939,6 +939,7 @@
     <string name="chat_protection_broken_explanation">无法再确保端到端加密，可能的原因是 %1$s 重新安装了 Delta Chat 或从其他设备发送了一则消息。\n\n你可以和联系人线下见面并再次扫描联系人的二维码重新建立端到端加密的通信。</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s要求端到端加密，而此聊天尚未建立端到端加密。轻按了解更多。</string>
     <string name="invalid_unencrypted_explanation">要建立端到端加密，你可以亲自和联系人碰面并扫描联系人的二维码</string>
+    <!-- deprecated -->
     <string name="encryption_required_for_new_contact">端到端加密是必需的但 %1$s 还没有设置它。\n\n你可以和这些人分享你的邀请链接或亲自会面扫描其二维码。</string>
     <string name="learn_more">了解更多</string>
 
@@ -1069,8 +1070,12 @@
     <string name="global_menu_view_developer_desktop">开发者</string>
     <string name="global_menu_view_developer_tools_desktop">开发者工具</string>
     <string name="global_menu_help_desktop">帮助</string>
+    <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">了解有关 Delta Chat 的更多信息</string>
+    <string name="delta_chat_homepage">Delta Chat 主页</string>
+    <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">在 GitHub 上做贡献</string>
+    <string name="contribute">贡献</string>
     <string name="global_menu_help_report_desktop">报告一个问题</string>
     <string name="global_menu_help_about_desktop">关于 Delta Chat</string>
     <string name="global_menu_file_open_desktop">打开 Delta Chat</string>
@@ -1083,6 +1088,8 @@
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">移除</string>
     <string name="save_desktop">保存</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">取消保存</string>
     <string name="name_desktop">名称</string>
     <string name="select_group_image_desktop">选择群组图像</string>
     <string name="export_backup_desktop">导出备份</string>
