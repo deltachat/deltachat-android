@@ -15,7 +15,7 @@
         pkgs = import nixpkgs { inherit system overlays; };
         android-sdk = android.sdk.${system} (sdkPkgs:
           with sdkPkgs; [
-            build-tools-33-0-1
+            build-tools-34-0-0
             cmdline-tools-latest
             platform-tools
             platforms-android-34
