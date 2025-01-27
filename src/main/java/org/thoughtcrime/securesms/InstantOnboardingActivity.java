@@ -39,7 +39,6 @@ import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.AvatarSelector;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -188,10 +187,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
       case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
         setAvatarView(data.getData());
-        break;
-
-      case Crop.REQUEST_CROP:
-        setAvatarView(Crop.getOutput(data));
         break;
 
       case IntentIntegrator.REQUEST_CODE:
