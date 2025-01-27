@@ -23,7 +23,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -68,7 +67,6 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.MediaUtil;
-import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.Stub;
@@ -693,7 +691,7 @@ public class AttachmentManager {
           DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_WEBXDC);
           Attachment attachment = new UriAttachment(uri, null, MediaUtil.WEBXDC, AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, fileName, null, false);
           String path = attachment.getRealPath(context);
-          msg.setFile(path, MediaUtil.WEBXDC);
+          msg.setFileAndDeduplicate(path, fileName, MediaUtil.WEBXDC);
           dcContext.setDraft(chatId, msg);
           return new DocumentSlide(context, msg);
         }
