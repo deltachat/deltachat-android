@@ -105,7 +105,7 @@ public class SendRelayedMessageUtil {
     }
 
     if (uri != null) {
-      message.setFile(getRealPathFromUri(context, uri), mimeType);
+      setFileFromUri(context, uri, message, mimeType);
     }
     if (text != null) {
       message.setText(text);
@@ -113,11 +113,12 @@ public class SendRelayedMessageUtil {
     return message;
   }
 
-  private static String getRealPathFromUri(Context context, Uri uri) throws NullPointerException {
+  private static void setFileFromUri(Context context, Uri uri, DcMsg message, String mimeType) {
+    String path;
     DcContext dcContext = DcHelper.getContext(context);
+    String filename = "cannot-resolve.jpg"; // best guess, this still leads to most images being workable if OS does weird things
     try {
 
-      String filename = "cannot-resolve.jpg"; // best guess, this still leads to most images being workable if OS does weird things
       if (PartAuthority.isLocalUri(uri)) {
         filename = uri.getPathSegments().get(PersistentBlobProvider.FILENAME_PATH_SEGMENT);
       } else if (uri.getScheme().equals("content")) {
@@ -135,14 +136,7 @@ public class SendRelayedMessageUtil {
         }
       }
 
-      String ext = "";
-      int i = filename.lastIndexOf(".");
-      if (i >= 0) {
-        ext = filename.substring(i);
-        filename = filename.substring(0, i);
-      }
-
-      String path = DcHelper.getBlobdirFile(dcContext, filename, ext);
+      path = DcHelper.getBlobdirFile(dcContext, filename, "temp");
 
       // copy content to this file
       if (path != null) {
@@ -150,11 +144,11 @@ public class SendRelayedMessageUtil {
         OutputStream outputStream = new FileOutputStream(path);
         Util.copy(inputStream, outputStream);
       }
-
-      return path;
     } catch (Exception e) {
       e.printStackTrace();
-      return null;
+      path = null;
     }
+    message.setFileAndDeduplicate(path, filename, mimeType);
   }
+
 }

@@ -640,10 +640,7 @@ public class VideoRecoder {
         return false;
       }
 
-      if (!Util.moveFile(tempPath, inPath)) {
-        alert(context, String.format("Recoding failed for %s: cannot move temporary file %s", inPath, tempPath));
-        return false;
-      }
+      msg.setFileAndDeduplicate(tempPath, msg.getFilename(), msg.getFilemime());
 
       Log.i(TAG, String.format("recoding for %s done", inPath));
     }
