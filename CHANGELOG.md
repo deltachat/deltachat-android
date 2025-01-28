@@ -3,7 +3,7 @@
 ## v1.52.1 Testrun
 2025-01
 
-* newly received/sent files are deduplicated in storage
+* DC now requires less storage on your SD card by deduplicating newly received/sent files
 * some small bug fixes
 * update translations
 * update to core 1.155.1
