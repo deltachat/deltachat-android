@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v1.52.1 Testrun
+2025-01
+
+* the app now requires less storage on your SD card by deduplicating newly received/sent files
+* some small bug fixes
+* update translations
+* update to core 1.155.1
+
 ## v1.52.0
 2025-01
 
