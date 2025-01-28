@@ -1088,8 +1088,10 @@
     <string name="global_menu_help_desktop">Yardım</string>
     <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Delta Chat hakkında daha fazlasını öğrenin</string>
+    <string name="delta_chat_homepage">Delta Chat Ana Sayfası</string>
     <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">GitHub\'da katkıda bulunun</string>
+    <string name="contribute">Katkıda Bulunun</string>
     <string name="global_menu_help_report_desktop">Bir Sorun Raporla</string>
     <string name="global_menu_help_about_desktop">Delta Chat hakkında</string>
     <string name="global_menu_file_open_desktop">Delta Chat\'i Aç</string>
@@ -1102,6 +1104,8 @@
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">Kaldır</string>
     <string name="save_desktop">Kaydet</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">Kaydetme</string>
     <string name="name_desktop">Ad</string>
     <string name="select_group_image_desktop">Öbek Görseli Seç</string>
     <string name="export_backup_desktop">Yedeği Dışa Aktar</string>

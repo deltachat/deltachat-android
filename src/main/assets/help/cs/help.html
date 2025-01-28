@@ -599,16 +599,16 @@ to any system involved in the delivery of Push Notifications.</p>
 
 <ul>
   <li>
-    <p>A Delta Chat app obtains a “device token” locally and stores it
+    <p>A Delta Chat app obtains a “device token” locally, encrypts it and stores it
 on the <a href="https://delta.chat/chatmail">chatmail</a> server.</p>
   </li>
   <li>
     <p>When a <a href="https://delta.chat/chatmail">chatmail</a> server receives an e-mail for a Delta Chat user
-it forwards the “device token” to the central Delta Chat notification proxy.</p>
+it forwards the encrypted device token to the central Delta Chat notification proxy.</p>
   </li>
   <li>
-    <p>The central Delta Chat notification proxy forwards
-the “device token” to the respective Push service (Apple, Google, etc.),
+    <p>The central Delta Chat notification proxy decrypts the device token
+and forwards it to the respective Push service (Apple, Google, etc.),
 without ever knowing the IP or e-mail address of Delta Chat users.</p>
   </li>
   <li>
@@ -621,13 +621,14 @@ and also never see any message content (also not in encrypted forms).</p>
   </li>
 </ul>
 
-<p>As of May 2024, chatmail servers know about “device tokens”
-but we plan to encrypt this information to the notification proxy
-such that the chatmail server never learns the device token.</p>
-
 <p>The central Delta Chat notification proxy <a href="https://github.com/deltachat/notifiers">is small and fully implemented in Rust</a>
 and forgets about device-tokens as soon as Apple/Google/etc processed them,
 usually in a matter of milliseconds.</p>
+
+<p>Note that the device token is encrypted between apps and notification proxy
+but it is not signed. 
+The notification proxy thus never sees e-mail addresses, IP-addresses or
+any cryptographic identity information associated with a user’s device (token).</p>
 
 <p>Resulting from this overall privacy design, even the seizure of a chatmail server,
 or the full seizure of the central Delta Chat notification proxy

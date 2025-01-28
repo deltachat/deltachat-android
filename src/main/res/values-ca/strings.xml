@@ -127,6 +127,10 @@
         <item quantity="one">%d missatge</item>
         <item quantity="other">%d missatges</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d reacció</item>
+        <item quantity="other">%d reaccions</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d membre</item>
         <item quantity="other">%d membres</item>
@@ -605,9 +609,16 @@
     <string name="pref_show_emails_no">No, només xats</string>
     <string name="pref_show_emails_accepted_contacts">Per a contactes acceptats</string>
     <string name="pref_show_emails_all">Tot</string>
+    <string name="pref_edit_profile">Edita el perfil</string>
     <string name="send_stats_to_devs">Envia estadístiques als desenvolupadors del Delta Chat</string>
 
 
+    <!-- Reactions -->
+    <string name="reactions">Reaccions</string>
+    <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
+    <string name="react">Reacciona</string>
+    <!-- %1$s will be replaced by an emoji. %2$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %2$s will often not being visible). Eg. 'You reacted 👍 to "Found my suitcase"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer and work as well. -->
+    <string name="reaction_by_you">Heu reaccionat amb %1$s a «%2$s»</string>
     <!-- autocrypt -->
     <string name="autocrypt_send_asm_title">Envia el missatge de configuració Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Un \"missatge de configuració Autocrypt\" comparteix de forma segura la vostra configuració d\'extrem a extrem amb altres aplicacions compatibles amb Autocrypt.\n\nLa configuració es xifrarà amb un codi de configuració que es mostrarà aquí i que haureu d\'escriure a l’altre dispositiu.</string>
