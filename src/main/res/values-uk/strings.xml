@@ -37,6 +37,7 @@
     <string name="close_window">Закрити вікно</string>
     <string name="forward">Переслати</string>
     <string name="create">Створити</string>
+    <string name="reset">Скинути</string>
     <string name="later">Пізніше</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Відправити знову</string>
@@ -45,6 +46,7 @@
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Розархівувати</string>
     <string name="mute">Вимкнути сповіщення</string>
+    <string name="muted">Вимкнено</string>
     <string name="ephemeral_messages">Зникаючі повідомлення</string>
     <string name="ephemeral_messages_hint">Ці налаштування застосовуються до всіх учасників, що використовують DeltaChat. Однак вони можуть копіювати, зберігати та пересилати повідомлення або використовувати інші клієнти електронної пошти.</string>
     <string name="save">Зберегти</string>
@@ -202,6 +204,12 @@
     <string name="webxdc_apps">Застосунки</string>
     <string name="webxdc_store_url">URL-адреса для вибору додатків</string>
     <string name="webxdc_store_url_explain">Якщо встановлено, URL-адреса буде використовуватися для вибору додатків, а не за замовчуванням</string>
+    <string name="home">Домівка</string>
+    <string name="games">Ігри</string>
+    <string name="tools">Інструменти</string>
+    <string name="app_size">Розмір</string>
+    <string name="app_date_published">Опубліковано</string>
+    <string name="add_to_chat">Додати до чату</string>
     <string name="unknown">Невідомо</string>
 
     <string name="green">Зелений</string>
@@ -685,6 +693,8 @@
     <string name="profile_tag">Особистий тег</string>
     <string name="profile_tag_hint">наприклад \"Робота\", \"Сім\'я\"</string>
     <string name="profile_tag_explain">Тег, видимий тільки для вас; допомагає розрізняти ваші профілі.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">Перемістити на початок</string>
     <string name="delete_account">Видалити обліковий запис</string>
     <string name="delete_account_ask">Ви впевнені, що хочете видалити дані вашого облікового запису?</string>
     <string name="delete_account_explain_with_name">Дані облікового запису \"%s\" на цьому пристрої будуть видалені, включаючи налаштування наскрізного шифрування, контакти, чати, повідомлення та медіа. Ця дія не може бути скасована.</string>
@@ -749,6 +759,7 @@
     <string name="pref_appearance">Зовнішній вигляд</string>
     <string name="pref_theme">Тема</string>
     <string name="pref_language">Мова</string>
+    <string name="pref_use_system_ui_font">Використовувати системний шрифт</string>
     <string name="pref_incognito_keyboard">Клавіатура Інкогніто</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Вимагати вимкнення персоналізації підказок клавіатури</string>
@@ -1109,8 +1120,10 @@
     <string name="global_menu_help_desktop">Допомога</string>
     <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Дізнатися більше про Delta Chat</string>
+    <string name="delta_chat_homepage">Домашня сторінка Delta Chat</string>
     <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Приєднатися до розробки на GitHub</string>
+    <string name="contribute">Зробити внесок</string>
     <string name="global_menu_help_report_desktop">Повідомити про проблему</string>
     <string name="global_menu_help_about_desktop">Про Delta Chat</string>
     <string name="global_menu_file_open_desktop">Відкрити Delta Chat</string>
@@ -1123,6 +1136,8 @@
     <string name="timestamp_format_m_desktop">MMMM D</string>
     <string name="remove_desktop">Видалити</string>
     <string name="save_desktop">Зберегти</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">Відмінити збереження</string>
     <string name="name_desktop">Ім\'я</string>
     <string name="select_group_image_desktop">Вибрати зображення групи</string>
     <string name="export_backup_desktop">Експорт резервної копії</string>
@@ -1182,8 +1197,20 @@
     <string name="notifications_avg_minutes">У середньому %1$d хвилин</string>
     <string name="notifications_avg_hours">У середньому %1$d годин</string>
     <string name="last_check_at">Перевірено о %1$s</string>
+    <string name="system_settings">Системні налаштування</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">Редагування типу, бейджів, попереднього перегляду та багато іншого</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">Додатки, отримані або надіслані у цьому чаті, будуть відображатися тут. \"Файли\" відображають щойно завантажені додатки.</string>
+    <!-- iOS shortcut widget -->
+    <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
+    <string name="shortcuts_widget_title">Ярлики</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="shortcuts_widget_description">Використовуйте кнопку \"Додати у віджет\" у Delta Chat, щоб додати елементи</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="remove_from_widget">Видалити з віджету</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="add_to_widget">Додати у віджет</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat використовує вашу камеру для знімання та надсилання фото та відео, а також для сканування QR-кодів.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat використовує Ваші контакти аби показати список адрес ел.пошти, на які Ви можете написати. Delta Chat не має серверів, тож Ваші контакти нікуди не надсилаються.</string>

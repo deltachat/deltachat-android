@@ -1120,8 +1120,10 @@
     <string name="global_menu_help_desktop">Pomoc</string>
     <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Dowiedz się więcej o Delta Chat</string>
+    <string name="delta_chat_homepage">Strona Delta Chat</string>
     <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Przyczyń się do rozwoju na GitHub</string>
+    <string name="contribute">Wsparcie</string>
     <string name="global_menu_help_report_desktop">Zgłoś problem</string>
     <string name="global_menu_help_about_desktop">O Delta Chat</string>
     <string name="global_menu_file_open_desktop">Otwórz Delta Chat</string>
