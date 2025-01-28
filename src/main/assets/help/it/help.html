@@ -597,17 +597,17 @@ a qualsiasi sistema coinvolto nella consegna di Notifiche Push.</p>
 
 <ul>
   <li>
-    <p>Un’app Delta Chat ottiene un “gettone del dispositivo” localmente e lo memorizza
-sul server <a href="https://delta.chat/chatmail">chatmail</a>.</p>
+    <p>A Delta Chat app obtains a “device token” locally, encrypts it and stores it
+on the <a href="https://delta.chat/chatmail">chatmail</a> server.</p>
   </li>
   <li>
-    <p>Quando un server <a href="https://delta.chat/chatmail">chatmail</a> riceve un’e-mail per un utente Delta Chat
-inoltra il “gettone del dispositivo” al proxy di notifica centrale di Delta Chat.</p>
+    <p>When a <a href="https://delta.chat/chatmail">chatmail</a> server receives an e-mail for a Delta Chat user
+it forwards the encrypted device token to the central Delta Chat notification proxy.</p>
   </li>
   <li>
-    <p>Il proxy di notifica centrale di Delta Chat inoltra
-il “gettone del dispositivo” al rispettivo servizio Push (Apple, Google, ecc.),
-senza mai conoscere l’IP o l’indirizzo e-mail degli utenti Delta Chat.</p>
+    <p>The central Delta Chat notification proxy decrypts the device token
+and forwards it to the respective Push service (Apple, Google, etc.),
+without ever knowing the IP or e-mail address of Delta Chat users.</p>
   </li>
   <li>
     <p>Il Servizio Push centrale (Apple, Google, ecc.)
@@ -619,13 +619,14 @@ e inoltre non vedono mai il contenuto del messaggio (anche non in forma crittogr
   </li>
 </ul>
 
-<p>A partire da Maggio 2024, i server chatmail conoscono i “gettoni del dispositivo”
-ma prevediamo di crittografare queste informazioni nel proxy di notifica
-in modo tale che il server chatmail non apprenda mai il gettone del dispositivo.</p>
-
 <p>Il proxy di notifica centrale di Delta Chat <a href="https://github.com/deltachat/notifiers">è piccolo e completamente implementato in Rust</a>
 e si dimentica dei gettoni del dispositivo non appena Apple/Google/ecc li elabora,
 di solito nel giro di pochi millisecondi.</p>
+
+<p>Note that the device token is encrypted between apps and notification proxy
+but it is not signed. 
+The notification proxy thus never sees e-mail addresses, IP-addresses or
+any cryptographic identity information associated with a user’s device (token).</p>
 
 <p>Come risultato di questo disegno complessivo sulla riservatezza, anche il sequestro di un server chatmail,
 o il sequestro totale del proxy di notifica centrale di Delta Chat

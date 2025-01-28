@@ -494,22 +494,22 @@ nadal będziesz mógł pisać, ale nie będziesz już powiadamiany o żadnych no
 
 <ul>
   <li>
-    <p>Aplikacja Delta Chat uzyskuje lokalnie „token urządzenia” i przechowuje go na serwerze <a href="https://delta.chat/chatmail">chatmail</a>.</p>
+    <p>Aplikacja Delta Chat uzyskuje lokalnie „token urządzenia”, szyfruje i przechowuje go na serwerze <a href="https://delta.chat/chatmail">chatmail</a>.</p>
   </li>
   <li>
-    <p>Kiedy serwer <a href="https://delta.chat/chatmail">chatmail</a> odbierze wiadomość e-mail od użytkownika Delta Chat, przekazuje „token urządzenia” do centralnego serwera proxy powiadomień Delta Chat.</p>
+    <p>Kiedy serwer <a href="https://delta.chat/chatmail">chatmail</a> odbierze wiadomość e-mail od użytkownika Delta Chat, przekazuje zaszyfrowany token urządzenia do centralnego serwera proxy powiadomień Delta Chat.</p>
   </li>
   <li>
-    <p>Centralny serwer proxy powiadomień Delta Chat przekazuje „token urządzenia” do odpowiedniej usługi Push (Apple, Google itp.), nie znając nawet adresu IP ani adresu e-mail użytkowników Delta Chat.</p>
+    <p>Centralny serwer proxy powiadomień Delta Chat deszyfruje token urządzenia i przekazuje go do odpowiedniej usługi Push (Apple, Google itp.), nie znając nawet adresu IP ani adresu e-mail użytkowników Delta Chat.</p>
   </li>
   <li>
     <p>Centralna usługa Push (Apple, Google itp.) budzi aplikację Delta Chat na twoim urządzeniu, aby sprawdzić w tle nowe wiadomości. Nie zna chatmaila ani adresu e-mail urządzenia, na którym się budzi. Centralne usługi push Apple/Google nigdy nie widzą adresu e-mail (nadawcy ani odbiorcy), a także nigdy nie widzą treści wiadomości (również w formie zaszyfrowanej).</p>
   </li>
 </ul>
 
-<p>Od maja 2024 r. serwery chatmail znają „tokeny urządzenia”, ale planujemy szyfrować te informacje na serwerze proxy powiadomień, tak aby serwer chatmail nigdy nie poznał tokena urządzenia.</p>
-
 <p>Centralny serwer proxy powiadomień Delta Chat <a href="https://github.com/deltachat/notifiers">jest mały i w pełni zaimplementowany w Rust</a> i zapomina o tokenach urządzeń zaraz po ich przetworzeniu przez Apple/Google/itp, zwykle w ciągu kilku milisekund.</p>
+
+<p>Pamiętaj, że token urządzenia jest szyfrowany między aplikacjami a serwerem proxy powiadomień, ale nie jest podpisany. Serwer proxy powiadomień nigdy nie widzi adresów e-mail, adresów IP ani żadnych kryptograficznych informacji identyfikujących powiązanych z urządzeniem użytkownika (tokenem).</p>
 
 <p>W wyniku tego ogólnego projektu ochrony prywatności nawet przejęcie serwera chatmail lub pełne przejęcie centralnego serwera proxy powiadomień Delta Chat nie spowodowałoby ujawnienia prywatnych informacji, których usługi Push jeszcze nie posiadają.</p>
     
@@ -945,7 +945,7 @@ W przypadku innych programów można znaleźć rozwiązanie online.</p>
     <p>W systemie <strong>iOS</strong> upewnij się, że jest przydzielony dostęp do opcji „Ustawienia » Aplikacje » Delta Chat » <strong>Sieć lokalna</strong>”</p>
   </li>
   <li>
-    <p>W systemie <strong>macOS</strong> włącz „Ustawienia systemowe » Prywatność i bezpieczeństwo » <strong>Sieć lokalna</strong> » Delta Chat”</p>
+    <p>W systemie <strong>macOS</strong> włącz „Preferencje systemowe » Ochrona i prywatność » <strong>Sieć lokalna</strong> » Delta Chat”</p>
   </li>
   <li>
     <p>Twój system może mieć „zaporę ogniową”, o której wiadomo, że powoduje problemy (szczególnie w systemie Windows).
