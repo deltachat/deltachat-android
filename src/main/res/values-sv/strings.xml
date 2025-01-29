@@ -482,6 +482,7 @@
     <string name="tab_audio_empty_hint">Ljudfiler och röstmeddelanden delade i denna chatt kommer att visas här.</string>
     <string name="tab_webxdc_empty_hint">Appar delade i denna chatt kommer att visas här.</string>
     <string name="tab_all_media_empty_hint">Media delad i någon chatt kommer att visas här.</string>
+    <string name="all_apps_empty_hint">Appar som tas emot eller skickas i en chatt visas här.</string>
     <string name="media_preview">Förhandsvisning av media</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Rutnät för bildförhållande</string>
@@ -1106,8 +1107,6 @@
     <string name="notifications_avg_minutes">I genomsnitt var %1$d minut</string>
     <string name="notifications_avg_hours">I genomsnitt var %1$d:e timma</string>
     <string name="last_check_at">Kontrollerad %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Appar som tas emot eller skickas i en chatt visas här. \"Filer\" visar appar som just har laddats ner.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat använder din kamera för att ta och skicka foton och filmer, och för att skanna QR-koder.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat använder dina kontakter för att visa en lista över e-postadresser som du kan skriva till.m Delta Chat har ingen server, dina kontakter skickas inte någonstans.</string>

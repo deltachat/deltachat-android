@@ -475,6 +475,7 @@
     <string name="tab_audio_empty_hint">Os arquivos de áudio e mensagens de voz compartilhados neste chat serão exibidos aqui.</string>
     <string name="tab_webxdc_empty_hint">Apps compartilhadas neste chat serão exibidas aqui.</string>
     <string name="tab_all_media_empty_hint">Mídias compartilhadas em qualquer bate-papo aparecerão aqui.</string>
+    <string name="all_apps_empty_hint">Apps recebidas ou enviadas em qualquer bate-papo aparecerão aqui.</string>
     <string name="media_preview">Pré-visualização.</string>
     <string name="send_message">Enviar mensagem</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -1010,8 +1011,6 @@
     <string name="notifications_avg_minutes">Em média, a cada %1$d minutos</string>
     <string name="notifications_avg_hours">Em média, a cada %1$d horas</string>
     <string name="last_check_at">Verificado em %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Apps recebidas ou enviadas em qualquer bate-papo aparecerão aqui. \"Arquivos\" mostra as apps que acabaram de serem baixadas.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat usa sua câmera para tirar e enviar fotos e vídeos e para escanear códigos QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">O Delta Chat usa seus contatos para mostrar uma lista de endereços de e-mail para os quais você pode escrever. O Delta Chat não tem servidor, seus contatos não são enviados a lugar nenhum.</string>
