@@ -201,6 +201,7 @@
     <string name="group_add_members">Adicionar membros</string>
     <string name="group_self_not_in_group">Você deve ser um membro do grupo para executar essa ação.</string>
     <string name="profile_encryption">Encriptação</string>
+    <string name="all_apps_empty_hint">Apps recebidas ou enviadas em qualquer bate-papo aparecerão aqui.</string>
     <string name="media_preview">Visualização de mídia</string>
     <string name="login_title">Login</string>
     <!-- for classic email, we use the classical term "Account" -->

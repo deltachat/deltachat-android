@@ -463,6 +463,7 @@
     <string name="tab_video_empty_hint">Видео записи подељени у овом ћаскању ће се појавити овде.</string>
     <string name="tab_audio_empty_hint">Звучне поруке и записи подељене у овом ћаскању ће се појавити овде.</string>
     <string name="tab_webxdc_empty_hint">Приватне апликације подељене у овом ћаскању ће се појавити овде.</string>
+    <string name="all_apps_empty_hint">Приватне апликације примљене или послате у било ком ћаскању ће се појавити овде.</string>
     <string name="media_preview">Преглед медијума</string>
     <string name="send_message">Пошаљи поруку</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -975,8 +976,6 @@
     <string name="notifications_avg_minutes">У просеку сваких %1$dминута</string>
     <string name="notifications_avg_hours">У просеку сваких %1$dсати</string>
     <string name="last_check_at">Проверено у %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Приватне апликације примљене или послате у било ком ћаскању ће се појавити овде. „Фајлови“ приказује приватне апликације које су управо преузете.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat користи вашу камеру за снимање и слање фотографија и видео записа и за очитавање бар-кôда.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat користи ваше контакте да прикаже листу е-адреса на које можете слати поруке. Delta Chat нема сервер и ваши контакти се не шаљу нигде.</string>
