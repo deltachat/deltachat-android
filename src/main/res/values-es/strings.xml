@@ -518,6 +518,7 @@
     <string name="tab_audio_empty_hint">Los archivos de audio y los mensajes de voz compartidos en este chat se mostrarán aquí.</string>
     <string name="tab_webxdc_empty_hint">Aplicaciones privadas compartidas en este chat se mostrarán aquí</string>
     <string name="tab_all_media_empty_hint">La multimedia compartida en cualquier chat aparecerá aquí</string>
+    <string name="all_apps_empty_hint">Aplicaciones privadas recibidas o enviadas en cualquier chat aparecerán aquí.</string>
     <string name="media_preview">Vista previa de multimedia</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Cuadrícula de relación de aspecto</string>
@@ -1162,8 +1163,6 @@
     <string name="notifications_avg_minutes">Promedio cada %1$d minutos</string>
     <string name="notifications_avg_hours">Promedio cada %1$d horas</string>
     <string name="last_check_at">Comprobado en %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Aplicaciones privadas recibidas o enviadas en cualquier chat aparecerán aquí. \"Archivos\" muestra aplicaciones privadas descargadas. </string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Al permitir el acceso a la cámara podrás tomar fotos y videos.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Al permitir acceder a tu libreta de direcciones podrás chatear con los contactos de tu dispositivo.</string>

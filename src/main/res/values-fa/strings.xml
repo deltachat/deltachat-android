@@ -1169,8 +1169,6 @@ GNU GPL ورژن ۳
     <string name="notifications_avg_minutes">به صورت متوسط هر%1$d دقیقه</string>
     <string name="notifications_avg_hours">به صورت متوسط هر %1$d ساعت</string>
     <string name="last_check_at">بررسی شده در %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">برنامه‌های دریافت‌شده یا ارسال‌شده از همه چت‌ها در این‌جا نمایش داده می‌شود. «پرونده‌ها» تنها برنامه‌های اخیرا دریافت‌شده را نمایش می‌دهد.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">دلتاچت برای گرفتن و ارسال عکس و فیلم و برای اسکن کردن کیوآر کد از دوربین شما استفاده می‌کند. </string>
     <string name="InfoPlist_NSContactsUsageDescription">دلتاچت از مخاطبین شما برای نمایش فهرست رایانامه‌هایی که می‌توانید برایشان پیام ارسال کنید استفاده می‌کند. دلتاچت کارساز ندارد، مخاطبین شما به جایی ارسال نمی‌شوند. </string>

@@ -491,6 +491,7 @@
     <string name="tab_audio_empty_hint">Les fichiers audio et messages vocaux partagés dans cette discussion seront affichés ici.</string>
     <string name="tab_webxdc_empty_hint">Les applis partagées dans cette discussion seront affichées ici.</string>
     <string name="tab_all_media_empty_hint">Les fichiers multimédias partagés dans une discussion apparaissent ici.</string>
+    <string name="all_apps_empty_hint">Les applications envoyées ou reçues dans une discussion apparaissent ici.</string>
     <string name="media_preview">Prévisualiser le fichier multimédia</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Grille de proportions</string>
@@ -1089,8 +1090,6 @@
     <string name="notifications_avg_minutes">Toutes les %1$d minutes en moyenne</string>
     <string name="notifications_avg_hours">Toutes les %1$d heures en moyenne</string>
     <string name="last_check_at">Dernièrement vu à %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Les applications envoyées ou reçues dans une discussion apparaissent ici. « Fichiers » affiche les applis que vous venez de télécharger.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilise votre appareil photo pour prendre des photos et des vidéos et les envoyer, ainsi que pour scanner des QR codes.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat utilise vos contacts pour montrer une liste d\'adresses de courriel auxquels vous pouvez écrire. Delta Chat n\'a pas de serveur, vos contacts ne sont envoyés nulle part.</string>

@@ -476,6 +476,7 @@
     <string name="tab_audio_empty_hint">Аудио файловете и гласовите съобщения, споделени в този чат, ще се появяват тук.</string>
     <string name="tab_webxdc_empty_hint">Приложенията, споделени в този чат, ще се появяват тук.</string>
     <string name="tab_all_media_empty_hint">Медийните файлове, споделени в кой да е чат, ще се появяват тук.</string>
+    <string name="all_apps_empty_hint">Приложенията, получени или изпратени в кой да е чат, ще се появяват тук.</string>
     <string name="media_preview">Предварителен преглед на медия файл</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Мрежа, запазваща съотношенията</string>
@@ -1096,8 +1097,6 @@
     <string name="notifications_avg_minutes">Средно всеки %1$d минути</string>
     <string name="notifications_avg_hours">Средно всеки %1$d часа</string>
     <string name="last_check_at">Проверено на %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Приложенията, получени или изпратени в кой да е чат, ще се появяват тук. \"Файлове\" показва току-що свалените приложения.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat използва Вашата камера, за да прави и изпраща снимки и видеоклипове, както и да сканира QR кодове.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat използва Вашите контакти, за да показва списък на e-mail адресите, до които можете да пишете. Delta Chat няма собствен сървър, Вашите контакти не се пращат никъде.</string>

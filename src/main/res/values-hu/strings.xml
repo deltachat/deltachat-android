@@ -512,6 +512,7 @@
     <string name="tab_audio_empty_hint">Az ebben a csevegésben megosztott hangfájlok és hangüzenetek itt fognak megjelenni.</string>
     <string name="tab_webxdc_empty_hint">Az ebben a csevegésben megosztott alkalmazások itt fognak megjelenni.</string>
     <string name="tab_all_media_empty_hint">A bármelyik csevegésben megosztott média itt fog megjelenni.</string>
+    <string name="all_apps_empty_hint">A bármelyik csevegésben kapott vagy küldött alkalmazások itt fognak megjelenni.</string>
     <string name="media_preview">Média előnézete</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Tengelyarányrács</string>
@@ -1168,8 +1169,6 @@
     <string name="system_settings">Rendszer-beállítások</string>
     <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
     <string name="system_settings_notify_explain_ios">Típus-, kitűzők-, előnézet- és egyebek szerkesztése</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">A bármelyik csevegésben kapott vagy küldött alkalmazások itt fognak megjelenni. A „Fájlok” az éppen letöltött alkalmazásokat jeleníti meg.</string>
     <!-- iOS shortcut widget -->
     <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
     <string name="shortcuts_widget_title">Parancsikonok</string>

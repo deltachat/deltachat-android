@@ -458,6 +458,7 @@
     <string name="tab_audio_empty_hint">Các tệp âm thanh và tin nhắn thoại được chia sẻ trong cuộc trò chuyện này sẽ xuất hiện ở đây.</string>
     <string name="tab_webxdc_empty_hint">Các ứng dụng được chia sẻ trong cuộc trò chuyện này sẽ xuất hiện ở đây.</string>
     <string name="tab_all_media_empty_hint">Phương tiện được chia sẻ trong bất kỳ cuộc trò chuyện nào sẽ xuất hiện ở đây.</string>
+    <string name="all_apps_empty_hint">Các ứng dụng được nhận hoặc gửi trong bất kỳ cuộc trò chuyện nào sẽ xuất hiện ở đây.</string>
     <string name="media_preview">Xem trước phương tiện</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Lưới tỷ lệ khung hình</string>
@@ -1027,8 +1028,6 @@
     <string name="notifications_avg_minutes">Trung bình cứ sau %1$d phút</string>
     <string name="notifications_avg_hours">Trung bình cứ sau %1$d giờ</string>
     <string name="last_check_at">Đã kiểm tra lúc %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Các ứng dụng được nhận hoặc gửi trong bất kỳ cuộc trò chuyện nào sẽ xuất hiện ở đây. \"Tệp\" hiển thị các ứng dụng vừa tải xuống.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat sử dụng máy ảnh của bạn để chụp và gửi ảnh cũng như video cũng như quét mã QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat sử dụng danh bạ của bạn để hiển thị danh sách các địa chỉ email mà bạn có thể viết thư vào. Delta Chat không có máy chủ, danh bạ của bạn sẽ không được gửi đi đâu cả.</string>
