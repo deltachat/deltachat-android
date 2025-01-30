@@ -13,6 +13,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.Util;
 
 public class QrShowActivity extends AppCompatActivity {
 
@@ -68,6 +69,7 @@ public class QrShowActivity extends AppCompatActivity {
       menu.findItem(R.id.new_classic_contact).setVisible(false);
       menu.findItem(R.id.paste).setVisible(false);
       menu.findItem(R.id.load_from_image).setVisible(false);
+      Util.redMenuItem(menu, R.id.withdraw);
       return super.onCreateOptionsMenu(menu);
     }
 
