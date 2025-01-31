@@ -124,7 +124,9 @@ public class QrCodeHandler {
                     dcContext.setConfigFromQr(rawString);
                 });
                 builder.setPositiveButton(R.string.ok, null);
-                break;
+                AlertDialog withdrawDialog = builder.show();
+                Util.redButton(withdrawDialog, AlertDialog.BUTTON_NEUTRAL);
+                return;
 
             case DcContext.DC_QR_REVIVE_VERIFYCONTACT:
             case DcContext.DC_QR_REVIVE_VERIFYGROUP:
