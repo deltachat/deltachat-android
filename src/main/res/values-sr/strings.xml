@@ -815,9 +815,7 @@
     <string name="withdraw_verifycontact_explain">Други могу да очитају овај бар-кôд да би вас контактирали.\n\nОвде можете да деактивирате бар-кôд и поново га активирате тако што ћете га поново oчитати.</string>
     <string name="withdraw_verifygroup_explain">Други могу да очитају овај бар-кôд да би приступили групи „%1$s“.\n\nОвде можете да деактивирате бар-кôд и поново га активирате тако што ћете га поново oчитати.</string>
     <string name="withdraw_qr_code">Деактивирај бар-кôд</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Други могу да очитају овај бар-кôд да би вас контактирали.\n\nОвај бар-кôд није активан на овом уређају.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Други могу да очитају овај бар-кôд да би приступили групи „%1$s“.\n\nОвај бар-кôд није активан на овом уређају.</string>
     <string name="revive_qr_code">Активирај бар-кôд</string>
     <string name="qrshow_title">Бар-кôд за потврду</string>

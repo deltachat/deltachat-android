@@ -201,6 +201,8 @@
     <string name="app_size">Dimensione</string>
     <string name="app_date_published">Pubblicato</string>
     <string name="add_to_chat">Aggiungi alla Chat</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Sfoglia</string>
     <string name="unknown">Sconosciuto</string>
 
     <string name="green">Verde</string>
@@ -1002,9 +1004,7 @@
     <string name="withdraw_verifycontact_explain">Questo codice QR può essere scansionato da altri utenti per contattarti.\n\nÈ possibile disattivare il codice QR qui e riattivarlo scansionandolo di nuovo.</string>
     <string name="withdraw_verifygroup_explain">Questo codice QR può essere scansionato da altri per unirsi al gruppo \"%1$s\".\n\nPuoi disattivare il codice QR qui e riattivarlo scansionandolo di nuovo.</string>
     <string name="withdraw_qr_code">Disattiva Codice QR</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Questo codice QR potrebbe essere scansionato da altri per contattarti.\n\nIl codice QR non è attivo su questo dispositivo.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Questo codice QR può essere scansionato da altri per unirsi al gruppo \"%1$s\".\n\nIl codice QR non è attivo su questo dispositivo.</string>
     <string name="revive_qr_code">Attiva Codice QR </string>
     <string name="qrshow_title">Codice QR Invito</string>
@@ -1105,8 +1105,10 @@
     <string name="global_menu_help_desktop">Aiuto</string>
     <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Scopri di più su Delta Chat</string>
+    <string name="delta_chat_homepage">Delta Chat Pagina Iniziale</string>
     <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Contribuisci su GitHub</string>
+    <string name="contribute">Contribuisci</string>
     <string name="global_menu_help_report_desktop">Segnala Problema</string>
     <string name="global_menu_help_about_desktop">Informazioni Delta Chat</string>
     <string name="global_menu_file_open_desktop">Apri Delta Chat</string>

@@ -858,9 +858,7 @@
     <string name="withdraw_verifycontact_explain">Người khác có thể quét mã QR này để liên hệ với bạn.\n\nBạn có thể tắt mã QR tại đây và kích hoạt lại bằng cách quét lại.</string>
     <string name="withdraw_verifygroup_explain">Những người khác có thể quét mã QR này để tham gia nhóm \"%1$s\".\n\nBạn có thể tắt mã QR tại đây và kích hoạt lại bằng cách quét lại.</string>
     <string name="withdraw_qr_code">Vô hiệu hóa mã QR</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Mã QR này có thể được người khác quét để liên hệ với bạn.\n\nMã QR không hoạt động trên thiết bị này.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Những người khác có thể quét mã QR này để tham gia nhóm \"%1$s\".\n\nMã QR không hoạt động trên thiết bị này.</string>
     <string name="revive_qr_code">Kích hoạt mã QR</string>
     <string name="qrshow_title">Mã mời QR</string>

@@ -751,9 +751,7 @@
     <string name="withdraw_verifycontact_explain">이 QR 코드는 다른 사용자가 스캔하여 사용자에게 연락할 수 있습니다.\n\n여기서 QR 코드를 비활성화하고 다시 스캔하여 다시 활성화할 수 있습니다.</string>
     <string name="withdraw_verifygroup_explain">이 QR 코드는 다른 사용자가 스캔하여 \"%1$s\" 그룹에 가입할 수 있습니다.\n\n여기서 QR 코드를 비활성화하고 다시 스캔하여 다시 활성화할 수 있습니다.</string>
     <string name="withdraw_qr_code">QR 코드 비활성화</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">이 QR 코드는 다른 사용자가 스캔하여 사용자에게 연락할 수 있습니다.\n\nQR 코드가 이 장치에서 활성화되지 않았습니다.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">이 QR 코드는 다른 사람이 스캔하여 그룹 \"%1$s\"에 가입할 수 있다.\n\nQR 코드가 이 장치에서 활성화되지 않았습니다.</string>
     <string name="revive_qr_code">QR 코드 활성화</string>
     <string name="qrshow_title">QR 초대 코드</string>

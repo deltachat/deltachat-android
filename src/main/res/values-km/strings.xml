@@ -719,9 +719,7 @@
     <string name="withdraw_verifycontact_explain">អ្នកផ្សេងទៀតអាចស្កេនលេខកូដ QR នេះដើម្បីទាក់ទងអ្នក។\n\nអ្នកអាចធ្វើឱ្យកូដ QR អសកម្មនៅទីនេះហើយបើកដំណើរ។</string>
     <string name="withdraw_verifygroup_explain">អ្នកផ្សេងទៀតអាចស្កេនលេខកូដ QR នេះដើម្បីចូលរួមក្រុម \"%1$s\"។\n\nអ្នកអាចធ្វើឱ្យកូដ QR អសកម្មនៅទីនេះ ហើយធ្វើឱ្យវាសកម្មឡើងវិញដោយស្កេនម្តងទៀត។</string>
     <string name="withdraw_qr_code">ធ្វើឱ្យកូដ QR អសកម្ម</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">អ្នកផ្សេងទៀតអាចស្កេនលេខកូដ QR នេះដើម្បីទាក់ទងអ្នក។\n\nកូដ QR មិនសកម្មនៅលើឧបករណ៍នេះទេ។</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">អ្នកផ្សេងទៀតអាចស្កេនលេខកូដ QR នេះដើម្បីចូលរួមក្រុម \"%1$s \"។\n\n កូដ QR មិនសកម្មនៅលើឧបករណ៍នេះទេ។</string>
     <string name="revive_qr_code">ធ្វើឱ្យកូដ QR សកម្ម</string>
     <string name="qrshow_title">កូដ QR សម្រាប់ការអញ្ជើញ</string>

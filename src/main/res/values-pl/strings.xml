@@ -210,6 +210,8 @@
     <string name="app_size">Rozmiar</string>
     <string name="app_date_published">Opublikowany</string>
     <string name="add_to_chat">Dodaj do czatu</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Przeglądaj</string>
     <string name="unknown">Nieznany</string>
 
     <string name="green">Zielony</string>
@@ -1018,9 +1020,7 @@
     <string name="withdraw_verifycontact_explain">Ten kod QR może zostać zeskanowany przez inne osoby w celu skontaktowania się z Tobą.\n\nTutaj możesz dezaktywować kod QR i ponownie go aktywować poprzez zeskanowanie.</string>
     <string name="withdraw_verifygroup_explain">Ten kod QR może zostać zeskanowany przez inne osoby, aby dołączyć do grupy „%1$s”.\n\nTutaj możesz dezaktywować kod QR i ponownie go aktywować poprzez zeskanowanie.</string>
     <string name="withdraw_qr_code">Dezaktywuj kod QR</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Ten kod QR mógł być skanowany przez inne osoby w celu skontaktowania się z Tobą.\n\nKod QR nie jest już aktywny na tym urządzeniu.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Ten kod QR mógł być skanowany przez inne osoby, aby dołączyć do grupy „%1$s”.\n\nKod QR nie jest już aktywny na tym urządzeniu.</string>
     <string name="revive_qr_code">Aktywuj kod QR</string>
     <string name="qrshow_title">Kod QR zaproszenia</string>
@@ -1137,6 +1137,8 @@
     <string name="timestamp_format_m_desktop">D MMM</string>
     <string name="remove_desktop">Usuń</string>
     <string name="save_desktop">Zapisz</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">Przywróć</string>
     <string name="name_desktop">Nazwa</string>
     <string name="select_group_image_desktop">Wybierz obraz grupy</string>
     <string name="export_backup_desktop">Eksport kopii zapasowej</string>
