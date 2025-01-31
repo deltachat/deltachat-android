@@ -113,9 +113,12 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
       menu.clear();
       getMenuInflater().inflate(R.menu.qr_show, menu);
       menu.findItem(R.id.new_classic_contact).setVisible(!DcHelper.getContext(this).isChatmail());
+
+      Util.redMenuItem(menu, R.id.withdraw);
       if(tabLayout.getSelectedTabPosition() == TAB_SCAN) {
         menu.findItem(R.id.withdraw).setVisible(false);
       }
+
       return super.onPrepareOptionsMenu(menu);
     }
 

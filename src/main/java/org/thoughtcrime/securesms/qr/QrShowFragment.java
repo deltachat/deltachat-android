@@ -138,15 +138,19 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
     public void withdrawQr() {
         Activity activity = getActivity();
+        String message = chatId == 0 ? activity.getString(R.string.withdraw_verifycontact_explain)
+                          : activity.getString(R.string.withdraw_verifygroup_explain, dcContext.getChat(chatId).getName());
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setMessage(activity.getString(R.string.withdraw_verifycontact_explain));
-        builder.setPositiveButton(R.string.withdraw_qr_code, (dialog, which) -> {
+        builder.setTitle(R.string.withdraw_qr_code);
+        builder.setMessage(message);
+        builder.setPositiveButton(R.string.reset, (dialog, which) -> {
                 DcContext dcContext = DcHelper.getContext(activity);
                 dcContext.setConfigFromQr(dcContext.getSecurejoinQr(chatId));
                 activity.finish();
         });
         builder.setNegativeButton(R.string.cancel, null);
-        builder.create().show();
+        AlertDialog dialog = builder.show();
+        Util.redPositiveButton(dialog);
     }
 
     public void showInviteLinkDialog() {

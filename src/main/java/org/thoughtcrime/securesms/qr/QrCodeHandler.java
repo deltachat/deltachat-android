@@ -115,35 +115,27 @@ public class QrCodeHandler {
                 break;
 
             case DcContext.DC_QR_WITHDRAW_VERIFYCONTACT:
-                builder.setMessage(activity.getString(R.string.withdraw_verifycontact_explain));
-                builder.setPositiveButton(R.string.withdraw_qr_code, (dialog, which) -> {
+            case DcContext.DC_QR_WITHDRAW_VERIFYGROUP:
+                String message = qrParsed.getState() == DcContext.DC_QR_WITHDRAW_VERIFYCONTACT ? activity.getString(R.string.withdraw_verifycontact_explain)
+                                  : activity.getString(R.string.withdraw_verifygroup_explain, qrParsed.getText1());
+                builder.setTitle(R.string.qrshow_title);
+                builder.setMessage(message);
+                builder.setNeutralButton(R.string.reset, (dialog, which) -> {
                     dcContext.setConfigFromQr(rawString);
                 });
-                builder.setNegativeButton(R.string.cancel, null);
-                break;
+                builder.setPositiveButton(R.string.ok, null);
+                AlertDialog withdrawDialog = builder.show();
+                Util.redButton(withdrawDialog, AlertDialog.BUTTON_NEUTRAL);
+                return;
 
             case DcContext.DC_QR_REVIVE_VERIFYCONTACT:
-                builder.setMessage(activity.getString(R.string.revive_verifycontact_explain));
-                builder.setPositiveButton(R.string.revive_qr_code, (dialog, which) -> {
-                    dcContext.setConfigFromQr(rawString);
-                });
-                builder.setNegativeButton(R.string.cancel, null);
-                break;
-
-            case DcContext.DC_QR_WITHDRAW_VERIFYGROUP:
-                builder.setMessage(activity.getString(R.string.withdraw_verifygroup_explain, qrParsed.getText1()));
-                builder.setPositiveButton(R.string.withdraw_qr_code, (dialog, which) -> {
-                    dcContext.setConfigFromQr(rawString);
-                });
-                builder.setNegativeButton(R.string.cancel, null);
-                break;
-
             case DcContext.DC_QR_REVIVE_VERIFYGROUP:
-                builder.setMessage(activity.getString(R.string.revive_verifygroup_explain, qrParsed.getText1()));
-                builder.setPositiveButton(R.string.revive_qr_code, (dialog, which) -> {
+                builder.setTitle(R.string.qrshow_title);
+                builder.setMessage(activity.getString(R.string.revive_verifycontact_explain));
+                builder.setNeutralButton(R.string.revive_qr_code, (dialog, which) -> {
                     dcContext.setConfigFromQr(rawString);
                 });
-                builder.setNegativeButton(R.string.cancel, null);
+                builder.setPositiveButton(R.string.ok, null);
                 break;
 
             default:
