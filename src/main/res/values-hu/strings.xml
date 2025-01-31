@@ -192,6 +192,8 @@
     <string name="app_size">Méret</string>
     <string name="app_date_published">Közzétéve</string>
     <string name="add_to_chat">Hozzáadás csevegéshez</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Böngészés</string>
     <string name="unknown">Ismeretlen</string>
 
     <string name="green">Zöld</string>
@@ -986,9 +988,7 @@
     <string name="withdraw_verifycontact_explain">Ezt a QR-kódot mások is beolvashatják, hogy felvegyék önnel a kapcsolatot.\n\nA QR-kódot itt kikapcsolhatja, és újból bekapcsolhatja, ha újra beolvassa.</string>
     <string name="withdraw_verifygroup_explain">Ezt a QR-kódot mások is beolvashatják, hogy csatlakozhassanak a(z) „%1$s” nevű csoporthoz.\n\nA QR-kódot itt kikapcsolhatja, és újra bekapcsolhatja, ha újra beolvassa.</string>
     <string name="withdraw_qr_code">QR-kód kikapcsolása</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Ezt a QR-kódot mások is beolvashatják, hogy kapcsolatba lépjenek Önnel.\n\nA QR-kód nincs bekapcsolva ezen az eszközön.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Ezt a QR-kódot mások is beolvashatják, hogy csatlakozzanak a(z) „%1$s” nevű csoporthoz.\n\nA QR-kód nincs bekapcsolva ezen az eszközön.</string>
     <string name="revive_qr_code">QR-kód bekapcsolása</string>
     <string name="qrshow_title">QR-kód-meghívó</string>

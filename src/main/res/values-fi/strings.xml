@@ -921,9 +921,7 @@
     <string name="withdraw_verifycontact_explain">Muut voivat skannata tämän QR-koodin ottaakseen yhteyttä sinuun.\n\nVoit kytkeä QR-koodin pois täällä ja aktivoida sen uudelleen skannaamalla uudestaan.</string>
     <string name="withdraw_verifygroup_explain">Muut voivat skannata tämän QR-koodin liittyäkseen ryhmään \"%1$s\".\n\nVoit kytkeä QR-koodin pois täällä ja aktivoida sen uudelleen skannaamalla.</string>
     <string name="withdraw_qr_code">Kytke QR-koodi pois käytöstä</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Muut voivat skannata tämän QR-koodin ottaakseen yhteyttä sinuun.\n\nQR-koodi ei ole aktiivinen tällä laitteella.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Muut voivat skannata tämän QR-koodin liittyäkseen ryhmään \"%1$s\".\n\nQR-koodi ei ole aktiivinen tällä laitteella.</string>
     <string name="revive_qr_code">Aktivoi QR-koodi</string>
     <string name="qrshow_title">QR-kutsukoodi</string>

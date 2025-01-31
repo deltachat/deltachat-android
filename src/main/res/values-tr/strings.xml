@@ -986,9 +986,7 @@
     <string name="withdraw_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranabilir.\n\nQR kodunu buradan etkisizleştirebilir ve yeniden tarayarak etkinleştirebilirsiniz.</string>
     <string name="withdraw_verifygroup_explain">Bu QR kodu, \"%1$s\" öbeğine katılmak için diğerleri tarafından taranabilir.\n\nQR kodunu buradan etkisizleştirebilir ve yeniden tarayarak etkinleştirebilirsiniz.</string>
     <string name="withdraw_qr_code">QR Kodunu Etkisizleştir</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranmış olabilir.\n\nQR kodu bu aygıtta etkin değil.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Bu QR kodu, \"%1$s\" öbeğine katılmak için diğerleri tarafından taranmış olabilir.\n\nQR kodu bu aygıtta etkin değil.</string>
     <string name="revive_qr_code">QR Kodunu Etkinleştir</string>
     <string name="qrshow_title">QR Çağrı Kodu</string>

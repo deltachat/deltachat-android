@@ -814,9 +814,7 @@
     <string name="withdraw_verifycontact_explain">Tento QR kód môžu naskenovať iní, aby vás mohli kontaktovať.\n\nTu môžete deaktivovať QR kód a znova ho aktivovať opätovným naskenovaním.</string>
     <string name="withdraw_verifygroup_explain">Tento QR kód môžu naskenovať ostatní, aby sa pripojili ku skupine \"%1$s\".\n\nTu môžete deaktivovať QR kód a znova ho aktivovať opätovným naskenovaním.</string>
     <string name="withdraw_qr_code">Vypnúť QR kód</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Tento QR kód mohol byť naskenovaný inými, aby vás mohli kontaktovať.\n\nQR kód nie je na tomto zariadení aktívny.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Tento QR kód mohli naskenovať iní, aby sa pripojili ku skupine „%1$s“.\n\nQR kód nie je na tomto zariadení aktívny.</string>
     <string name="revive_qr_code">Povoliť QR kód.</string>
     <string name="qrshow_title">QR pozývací kód</string>

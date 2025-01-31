@@ -183,6 +183,8 @@
     <string name="app_size">尺寸</string>
     <string name="app_date_published">已发布</string>
     <string name="add_to_chat">添加到聊天</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">浏览</string>
     <string name="unknown">未知</string>
 
     <string name="green">绿色</string>
@@ -970,9 +972,7 @@
     <string name="withdraw_verifycontact_explain">其他人可以扫描此二维码与您联系。\n\n您可以在此处停用二维码并通过再次扫描来重新激活它。</string>
     <string name="withdraw_verifygroup_explain">其他人可以扫描此二维码加入群组 “%1$s”。\n\n您可以在此处停用二维码并通过再次扫描来重新激活它。</string>
     <string name="withdraw_qr_code">停用二维码</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">其他人可扫描此二维码以与您联系。\n\n此设备上的二维码未激活。</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">其他人可扫描此二维码加入群组“%1$s”。\n\n此设备上的二维码未激活。</string>
     <string name="revive_qr_code">激活二维码</string>
     <string name="qrshow_title">邀请二维码</string>

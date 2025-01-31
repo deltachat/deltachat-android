@@ -850,9 +850,7 @@
     <string name="withdraw_verifycontact_explain">Este código QR pode ser lido por outras pessoas para entrar em contato com você.\n\nVocê pode desativar o código QR aqui e reativá-lo escaneando-o novamente.</string>
     <string name="withdraw_verifygroup_explain">Este código QR pode ser lido por outras pessoas para entrar no grupo \"%1$s\".\n\nVocê pode desativar o código QR aqui e reativá-lo escaneando-o novamente.</string>
     <string name="withdraw_qr_code">Desativar Código QR</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Este código QR pode ser lido por outras pessoas para entrar em contato com você.\n\nO código QR não está ativo neste dispositivo.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Este código QR pode ser lido por outras pessoas para se juntar ao grupo \"%1$s\".\n\nO código QR não está ativo neste dispositivo.</string>
     <string name="revive_qr_code">Ativar Código QR</string>
     <string name="qrshow_title">Código QR de convite</string>

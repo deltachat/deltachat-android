@@ -921,9 +921,7 @@
     <string name="withdraw_verifycontact_explain">Чрез сканиране на този QR код други хора могат да се свързват с Вас.\n\nМожете да деактивирате QR кода тук и повторно да го активирате, като го сканирате отново.</string>
     <string name="withdraw_verifygroup_explain">Чрез сканиране на този QR код други хора могат да се присъединяват към крупата \"%1$s\".\n\nМожете да деактивирате QR кода тук и повторно да го активирате, като го сканирате отново.</string>
     <string name="withdraw_qr_code">Деактивиране на QR кода</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Чрез сканиране на този QR код други хора могат да се свързват с Вас.\n\nQR кодът не е активен на това устройство.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Този QR код е давал възможност други да се присъединяват към групата \"%1$s\" чрез сканирането му.\n\nQR кодът не е активен на това устройство.</string>
     <string name="revive_qr_code">Активиране на QR кода</string>
     <string name="qrshow_title">QR код за покана</string>

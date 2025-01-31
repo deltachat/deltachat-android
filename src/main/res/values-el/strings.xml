@@ -789,9 +789,7 @@
     <string name="withdraw_verifycontact_explain">Αυτός ο κωδικός QR μπορεί να σαρωθεί από άλλους για να επικοινωνήσουν μαζί σας.\n\nΜπορείτε να απενεργοποιήσετε τον κωδικό QR εδώ και να τον ξαναενεργοποιήσετε ξανασαρώνοντάς τον.</string>
     <string name="withdraw_verifygroup_explain">Αυτός ο κωδικός QR μπορεί να σαρωθεί από άλλους για να συμμετάσχουν στην ομάδα \"%1$s\".\n\nΜπορείτε να απενεργοποιήσετε τον κωδικό QR εδώ και να τον ξαναενεργοποιήσετε ξανασαρώνοντάς τον.</string>
     <string name="withdraw_qr_code">Απενεργοποίηση του κωδικού QR</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Αυτός ο κωδικός QR θα μπορούσε να σαρωθεί από άλλους για να επικοινωνήσουν μαζί σας.\n\nΟ κωδικός QR δεν είναι ενεργός σε αυτήν τη συσκευή.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Αυτός ο κωδικός QR θα μπορούσε να σαρωθεί από άλλους για να συμμετάσχουν στην ομάδα \"%1$s\".\n\nΟ κωδικός QR δεν είναι ενεργός σε αυτήν τη συσκευή.</string>
     <string name="revive_qr_code">Ενεργοποίηση του κωδικού QR</string>
     <string name="qrshow_title">Κωδικός Πρόσκλησης QR</string>
