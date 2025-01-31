@@ -104,8 +104,12 @@ public class Util {
   }
 
   public static void redPositiveButton(AlertDialog dialog) {
+    redButton(dialog, AlertDialog.BUTTON_POSITIVE);
+  }
+
+  public static void redButton(AlertDialog dialog, int whichButton) {
     try {
-      dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(redDestructiveColor);
+      dialog.getButton(whichButton).setTextColor(redDestructiveColor);
     } catch (Exception e) {
       e.printStackTrace();
     }
