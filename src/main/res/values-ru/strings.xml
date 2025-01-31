@@ -210,6 +210,8 @@
     <string name="app_size">Размер</string>
     <string name="app_date_published">Опубликовано</string>
     <string name="add_to_chat">Добавить в чат</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Обзор</string>
     <string name="unknown">Неизвестно</string>
 
     <string name="green">Зелёный</string>
@@ -1018,9 +1020,7 @@
     <string name="withdraw_verifycontact_explain">Этот QR-код могут сканировать другие люди, чтобы связаться с вами.\n\nВы можете деактивировать QR-код здесь и активировать вновь, отсканировав его снова.</string>
     <string name="withdraw_verifygroup_explain">Этот QR-код могут сканировать другие люди, чтобы присоединиться к группе \"%1$s\".\n\nВы можете деактивировать QR-код здесь и активировать вновь, отсканировав его снова.</string>
     <string name="withdraw_qr_code">Деактивировать QR-код</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Этот QR-код могут сканировать другие люди, чтобы связаться с вами.\n\nНа этом устройстве QR-код не активирован.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Этот QR-код могут сканировать другие люди, чтобы присоединиться к группе \"%1$s\".\n\nНа этом устройстве QR-код не активирован.</string>
     <string name="revive_qr_code">Активировать QR-код</string>
     <string name="qrshow_title">QR-код приглашения</string>

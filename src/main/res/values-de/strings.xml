@@ -985,13 +985,11 @@
     <string name="qrscan_contains_text">Gescannter QR-Code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Gescannter QR-Code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerabdruck</string>
-    <string name="withdraw_verifycontact_explain">Dieser QR-Code kann von anderen gescannt werden, um Sie zu kontaktieren.\n\n Sie können den QR-Code hier deaktivieren und durch erneutes Scannen wieder aktivieren.</string>
-    <string name="withdraw_verifygroup_explain">Dieser QR-Code kann von anderen gescannt werden, um der Gruppe \"%1$s\" beizutreten.\n\n Sie können den QR-Code hier deaktivieren und durch erneutes Scannen wieder aktivieren.</string>
-    <string name="withdraw_qr_code">QR-Code deaktivieren</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifycontact_explain">Dieser QR-Code konnte von anderen gescannt werden, um Sie zu kontaktieren.\n\nDer QR-Code ist auf diesem Gerät nicht aktiv.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifygroup_explain">Dieser QR-Code konnte von anderen gescannt werden, um der Gruppe \"%1$s\" bezutreten.\n\nDer QR-Code ist auf diesem Gerät nicht aktiv.</string>
+    <string name="withdraw_verifycontact_explain">Dieser QR-Code kann von anderen gescannt werden, um Sie zu kontaktieren.\n\nSie können den QR-Code zurücksetzen; der bestehende QR-Code oder Einladungslink wird dann nicht mehr funktionieren.</string>
+    <string name="withdraw_verifygroup_explain">Dieser QR-Code kann von anderen gescannt werden, um der Gruppe \"%1$s\" beizutreten.\n\nSie können den QR-Code zurücksetzen; der bestehende QR-Code oder Einladungslink wird dann nicht mehr funktionieren.</string>
+    <string name="withdraw_qr_code">QR-Code zurücksetzen</string>
+    <string name="revive_verifycontact_explain">Dieser QR-Code wurde zurückgesetzt und ist nicht mehr aktiv.</string>
+    <string name="revive_verifygroup_explain">Dieser QR-Code für die Gruppe \"%1$s\" wurde zurückgesetzt und ist nicht mehr aktiv.</string>
     <string name="revive_qr_code">QR-Code aktivieren</string>
     <string name="qrshow_title">QR-Einladungscode</string>
     <string name="qrshow_x_joining">%1$s beigetreten.</string>

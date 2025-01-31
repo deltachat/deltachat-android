@@ -975,9 +975,7 @@ https://meet.jit.si/$ROOM
     <string name="withdraw_verifycontact_explain">دیگران برای ارتباط با شما می‌توانند این کد کیوآر را اسکن کنند. \n\n می‌توان کد کیوآر را در اینجا غیر فعال کنید و با اسکن کردن مجدد، آن را فعال کنید. </string>
     <string name="withdraw_verifygroup_explain">این کد کیوآر می‌تواند توسط دیگران و برای پیوستن به گروه \"%1$s\" اسکن شود.\n\n شما می‌تواند این کد کیوآر را در اینجا غیرفعال کنید و با اسکن کردن مجدد، آن را فعال نمایید. </string>
     <string name="withdraw_qr_code">غیرفعال کردن کد کیوآر</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">دیگران برای تماس با شما می‌توانند این کد کیوآر را اسکن کنند. \n\n این کد کیوآر در این دستگاه فعال نیست. </string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">دیگران می‌توانند برای پیوستن به گروه \"%1$s\" این کد کیوآر را اسکن کنند. این کد کیوآر روی این دستگاه فعال نیست. </string>
     <string name="revive_qr_code">فعال کردن کد کیوآر</string>
     <string name="qrshow_title">کد دعوت کیوآر</string>

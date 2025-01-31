@@ -915,9 +915,7 @@
     <string name="withdraw_verifycontact_explain">Ce code QR pourrait être scanné par d\'autre personnes pour vous contacter.\n\nVous pouvez désactiver le QR code ici et le réactiver en le scannant ici de nouveau.</string>
     <string name="withdraw_verifygroup_explain">Le code QR peut être scanné par d\'autres personnes pour rejoindre le groupe \"%1$s\".\n\nVous pouvez désactiver le QR code ici et le réactiver en le scannant ici de nouveau.</string>
     <string name="withdraw_qr_code">Désactiver le QR Code</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Ce code QR pourrait être scanné par d\'autre personnes pour vous contacter.\n\nCe code QR n\'est pas actif sur cet appareil.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Ce code QR pourrait être scanné par d\'autre personnes pour rejoindre le groupe \"%1$s\".\n\nLe code QR n\'est pas actif sur cet appareil.</string>
     <string name="revive_qr_code">Activer le QR Code</string>
     <string name="qrshow_title">QR Code d\'Invitation</string>
