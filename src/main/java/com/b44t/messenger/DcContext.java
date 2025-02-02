@@ -193,6 +193,7 @@ public class DcContext {
     public native int          estimateDeletionCount(boolean from_server, long seconds);
     public native void         deleteMsgs           (int msg_ids[]);
     public native void         forwardMsgs          (int msg_ids[], int chat_id);
+    public native void         saveMsgs             (int msg_ids[]);
     public native boolean      resendMsgs           (int msg_ids[]);
     public native int          sendMsg              (int chat_id, DcMsg msg);
     public native int          sendTextMsg          (int chat_id, String text);

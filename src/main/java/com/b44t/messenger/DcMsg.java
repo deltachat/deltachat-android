@@ -189,6 +189,7 @@ public class DcMsg {
     public native int getSavedMsgId     ();
 
     public boolean canSave() {
+      // saving info-messages out of context results in confusion, see https://github.com/deltachat/deltachat-ios/issues/2567
       return !isInfo();
     }
 

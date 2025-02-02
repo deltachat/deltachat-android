@@ -326,6 +326,7 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_reply).setVisible(false);
             menu.findItem(R.id.menu_context_reply_privately).setVisible(false);
             menu.findItem(R.id.menu_add_to_home_screen).setVisible(false);
+            menu.findItem(R.id.toggle_save).setVisible(false);
         } else {
             DcMsg messageRecord = messageRecords.iterator().next();
             DcChat chat = getListAdapter().getChat();
@@ -336,6 +337,10 @@ public class ConversationFragment extends MessageSelectorFragment
             boolean showReplyPrivately = chat.isMultiUser() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
             menu.findItem(R.id.menu_add_to_home_screen).setVisible(messageRecord.getType() == DcMsg.DC_MSG_WEBXDC);
+
+            boolean showSavedIcon = messageRecord.isSaved() || chat.isSelfTalk();
+            menu.findItem(R.id.toggle_save).setVisible(messageRecord.canSave());
+            menu.findItem(R.id.toggle_save).setIcon(showSavedIcon ? R.drawable.baseline_star_24 : R.drawable.baseline_star_outline_24);
         }
 
         // if one of the selected items cannot be saved, disable saving.
@@ -475,6 +480,21 @@ public class ConversationFragment extends MessageSelectorFragment
             getActivity().startActivity(intent);
         } else {
             Log.e(TAG, "Activity was null");
+        }
+    }
+
+    private void handleToggleSave(final Set<DcMsg> messageRecords) {
+        DcMsg msg = getSelectedMessageRecord(messageRecords);
+        if (getListAdapter().getChat().isSelfTalk()) {
+          if (msg.getOriginalMsgId() != 0) {
+            dcContext.deleteMsgs(new int[]{msg.getId()});
+          } else {
+            handleDeleteMessages((int) chatId, messageRecords);
+          }
+        } else if (msg.getSavedMsgId() != 0) {
+          dcContext.deleteMsgs(new int[]{msg.getSavedMsgId()});
+        } else {
+          dcContext.saveMsgs(new int[]{msg.getId()});
         }
     }
 
@@ -952,6 +972,10 @@ public class ConversationFragment extends MessageSelectorFragment
                     return true;
                 case R.id.menu_context_reply_privately:
                     handleReplyMessagePrivately(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+                    return true;
+                case R.id.toggle_save:
+                    handleToggleSave(getListAdapter().getSelectedItems());
+                    actionMode.finish();
                     return true;
                 case R.id.menu_resend:
                     handleResendMessage(getListAdapter().getSelectedItems());

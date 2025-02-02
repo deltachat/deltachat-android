@@ -691,6 +691,13 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_forwardMsgs(JNIEnv *env, jobjec
     free(msg_ids_ptr);
 }
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_saveMsgs(JNIEnv *env, jobject obj, jintArray msg_ids)
+{
+    int msg_ids_cnt = 0;
+    uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
+        dc_save_msgs(get_dc_context(env, obj), msg_ids_ptr, msg_ids_cnt);
+    free(msg_ids_ptr);
+}
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_resendMsgs(JNIEnv *env, jobject obj, jintArray msg_ids)
 {
