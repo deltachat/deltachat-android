@@ -1688,6 +1688,15 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getParentCPtr(JNIEnv *env, jobject
     return (jlong)dc_msg_get_parent(get_dc_msg(env, obj));
 }
 
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getOriginalMsgId(JNIEnv *env, jobject obj)
+{
+    return (jint)dc_msg_get_original_msg_id(get_dc_msg(env, obj));
+}
+
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getSavedMsgId(JNIEnv *env, jobject obj)
+{
+    return (jint)dc_msg_get_saved_msg_id(get_dc_msg(env, obj));
+}
 
 JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getError(JNIEnv *env, jobject obj)
 {

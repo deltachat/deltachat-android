@@ -185,6 +185,17 @@ public class DcMsg {
       return cPtr != 0 ? new DcMsg(cPtr) : null;
     }
 
+    public native int getOriginalMsgId  ();
+    public native int getSavedMsgId     ();
+
+    public boolean canSave() {
+      return !isInfo();
+    }
+
+    public boolean isSaved() {
+      return getOriginalMsgId() != 0 || getSavedMsgId() != 0;
+    }
+
     public File getFileAsFile() {
         if(getFile()==null)
             throw new AssertionError("expected a file to be present.");

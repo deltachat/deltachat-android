@@ -72,7 +72,11 @@ public class ConversationItemFooter extends LinearLayout {
 
   private void presentDate(@NonNull DcMsg messageRecord) {
     dateView.forceLayout();
-    dateView.setText(DateUtils.getExtendedRelativeTimeSpanString(getContext(), messageRecord.getTimestamp()));
+    String text = DateUtils.getExtendedRelativeTimeSpanString(getContext(), messageRecord.getTimestamp());
+    if (messageRecord.isSaved()) {
+      text += " ★";
+    }
+    dateView.setText(text);
   }
 
   private void presentDeliveryStatus(@NonNull DcMsg messageRecord) {
