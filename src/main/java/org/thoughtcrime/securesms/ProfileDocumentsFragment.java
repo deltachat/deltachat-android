@@ -121,7 +121,7 @@ public class ProfileDocumentsFragment
 
     noMedia.setVisibility(recyclerView.getAdapter().getItemCount() > 0 ? View.GONE : View.VISIBLE);
     if (chatId == DC_CHAT_NO_CHAT) {
-      noMedia.setText(R.string.tab_all_media_empty_hint);
+      noMedia.setText(showWebxdc ? R.string.all_apps_empty_hint : R.string.tab_all_media_empty_hint);
     } else if (showAudio) {
       noMedia.setText(R.string.tab_audio_empty_hint);
     } else if (showWebxdc) {
