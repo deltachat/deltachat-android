@@ -514,6 +514,7 @@
     <string name="tab_audio_empty_hint">Audio files and voice messages shared in this chat will appear here.</string>
     <string name="tab_webxdc_empty_hint">Apps shared in this chat will appear here.</string>
     <string name="tab_all_media_empty_hint">Media shared in any chat will appear here.</string>
+    <string name="all_files_empty_hint">Documents and other files shared in any chat will appear here.</string>
     <string name="all_apps_empty_hint">Apps received or sent in any chat will appear here.</string>
     <string name="media_preview">Media Preview</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
