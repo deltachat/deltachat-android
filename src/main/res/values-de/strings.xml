@@ -514,7 +514,8 @@
     <string name="tab_audio_empty_hint">In diesem Chat geteilte Audiodateien und Sprachnachrichten werden hier angezeigt.</string>
     <string name="tab_webxdc_empty_hint">In diesem Chat geteilte Apps werden hier angezeigt.</string>
     <string name="tab_all_media_empty_hint">Medien aus allen Chats werden hier angezeigt.</string>
-    <string name="all_apps_empty_hint">Empfangene oder gesendete Apps werden hier angezeigt.</string>
+    <string name="all_files_empty_hint">Dokumente und Dateien aus allen Chats werden hier angezeigt.</string>
+    <string name="all_apps_empty_hint">Apps aus allen Chats werden hier angezeigt.</string>
     <string name="media_preview">Medien-Vorschau</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Raster im Seitenverhältnis</string>

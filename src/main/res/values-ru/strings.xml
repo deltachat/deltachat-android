@@ -1017,11 +1017,11 @@
     <string name="qrscan_contains_text">Текст из QR-кода:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL из QR-кода:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Отпечаток</string>
-    <string name="withdraw_verifycontact_explain">Этот QR-код могут сканировать другие люди, чтобы связаться с вами.\n\nВы можете деактивировать QR-код здесь и активировать вновь, отсканировав его снова.</string>
-    <string name="withdraw_verifygroup_explain">Этот QR-код могут сканировать другие люди, чтобы присоединиться к группе \"%1$s\".\n\nВы можете деактивировать QR-код здесь и активировать вновь, отсканировав его снова.</string>
-    <string name="withdraw_qr_code">Деактивировать QR-код</string>
-    <string name="revive_verifycontact_explain">Этот QR-код могут сканировать другие люди, чтобы связаться с вами.\n\nНа этом устройстве QR-код не активирован.</string>
-    <string name="revive_verifygroup_explain">Этот QR-код могут сканировать другие люди, чтобы присоединиться к группе \"%1$s\".\n\nНа этом устройстве QR-код не активирован.</string>
+    <string name="withdraw_verifycontact_explain">Этот QR-код могут сканировать другие люди, чтобы связаться с вами.\n\nВы можете сбросить его, чтобы существующий QR-код или ссылка-приглашение больше не работали.</string>
+    <string name="withdraw_verifygroup_explain">Этот QR-код могут сканировать другие люди, чтобы присоединиться к группе \"%1$s\".\n\nВы можете сбросить его, чтобы существующий QR-код или ссылка-приглашение больше не работали.</string>
+    <string name="withdraw_qr_code">Сбросить QR-код</string>
+    <string name="revive_verifycontact_explain">Этот QR-код был сброшен и больше не работает.</string>
+    <string name="revive_verifygroup_explain">Этот QR-код для присоединения к группе \"%1$s\" был сброшен и больше не работает.</string>
     <string name="revive_qr_code">Активировать QR-код</string>
     <string name="qrshow_title">QR-код приглашения</string>
     <string name="qrshow_x_joining">%1$s присоединяется.</string>

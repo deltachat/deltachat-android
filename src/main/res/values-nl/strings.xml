@@ -985,11 +985,11 @@
     <string name="qrscan_contains_text">Gescande QR-codetekst:\n\n %1$s</string>
     <string name="qrscan_contains_url">Gescande QR-code-url:\n\n %1$s</string>
     <string name="qrscan_fingerprint_label">Vingerafdruk</string>
-    <string name="withdraw_verifycontact_explain">Deze QR-code kan door anderen worden gescand om contact met je op te nemen.\n\nJe kunt de QR-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
-    <string name="withdraw_verifygroup_explain">Deze QR-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nJe kunt de QR-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
+    <string name="withdraw_verifycontact_explain">Deze QR-code kan door anderen worden gescand om contact met je op te nemen.\n\nJe kunt de QR-code hier deactiveren, zodat die niet meer werkt.</string>
+    <string name="withdraw_verifygroup_explain">Deze QR-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nJe kunt de QR-code hier deactiveren, zodat die niet meer werkt.</string>
     <string name="withdraw_qr_code">QR-code deactiveren</string>
-    <string name="revive_verifycontact_explain">Deze QR-code kan door anderen worden gescand om contact met je op te nemen.\n\nDe QR-code is niet actief op dit apparaat.</string>
-    <string name="revive_verifygroup_explain">Deze QR-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nDe QR-code is niet actief op dit apparaat.</string>
+    <string name="revive_verifycontact_explain">Deze QR-code is gedactiveerd en kan niet meer worden gebruikt.</string>
+    <string name="revive_verifygroup_explain">Deze QR-code voor de groep ‘%1$s’ is gedeactiveerd en kan niet meer worden gebruikt.</string>
     <string name="revive_qr_code">QR-code activeren</string>
     <string name="qrshow_title">QR-uitnodigingscode</string>
     <string name="qrshow_x_joining">%1$s heeft deelgenomen.</string>

@@ -37,6 +37,7 @@
     <string name="close_window">Cerrar ventana</string>
     <string name="forward">Reenviar</string>
     <string name="create">Crear</string>
+    <string name="reset">Restablecer</string>
     <string name="later">Luego</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Volver a enviar</string>
@@ -45,6 +46,7 @@
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Des-archivar</string>
     <string name="mute">Silenciar</string>
+    <string name="muted">Silenciar</string>
     <string name="ephemeral_messages">Desaparición de mensajes</string>
     <string name="ephemeral_messages_hint">Estos ajustes se aplican a todos los participantes que usan Delta Chat. Sin embargo, pueden copiar, guardar y reenviar mensajes o usar otros clientes de correo</string>
     <string name="save">Guardar</string>
@@ -191,6 +193,16 @@
     <string name="webxdc_app">Aplicación</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Aplicaciones</string>
+    <string name="webxdc_store_url">App Picker URL</string>
+    <string name="webxdc_store_url_explain">Si se establece, la URL se utilizará como App Picker en lugar de la predeterminada</string>
+    <string name="home">Inicio</string>
+    <string name="games">Juegos</string>
+    <string name="tools">Herramientas</string>
+    <string name="app_size">Tamaño</string>
+    <string name="app_date_published">Publicado</string>
+    <string name="add_to_chat">Agregar al chat</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Navegar</string>
     <string name="unknown">Desconocido</string>
 
     <string name="green">Verde</string>
@@ -668,6 +680,8 @@
     <string name="profile_tag">Etiqueta privada</string>
     <string name="profile_tag_hint">ej. Trabajo, Familia</string>
     <string name="profile_tag_explain">Etiqueta que es visible sólo para ti; útil para diferenciar tus perfiles.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">Mover arriba</string>
     <string name="delete_account">Eliminar cuenta</string>
     <string name="delete_account_ask">¿Estás seguro de que quieres eliminar los datos de tu cuenta?</string>
     <string name="delete_account_explain_with_name">Todos los datos de la cuenta de \"%s\" este dispositivo serán eliminados. Incluyendo la configuración de encriptado punto a punto, contactos, chats, mensajes y multimedia. Esta acción no puede ser deshecha.</string>
@@ -713,6 +727,8 @@
     <string name="pref_screen_security_explain">Solicitar bloqueo de capturas de pantalla en la lista de recientes y dentro de la aplicación</string>
     <string name="pref_screen_security_please_restart_hint">Para aplicar la configuración de seguridad de la pantalla, reinicie la aplicación.</string>
     <string name="pref_notifications">Notificaciones </string>
+    <string name="pref_mention_notifications">Menciones</string>
+    <string name="pref_mention_notifications_explain">En los grupos silenciados, notifica los mensajes dirigidos a ti, como respuestas o reacciones</string>
     <string name="pref_notifications_show">Mostrar</string>
     <string name="pref_notifications_priority">Prioridad</string>
     <string name="pref_notifications_explain">Habilitar las notificaciones del sistema para nuevos mensajes</string>
@@ -730,6 +746,7 @@
     <string name="pref_appearance">Apariencia</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Idioma</string>
+    <string name="pref_use_system_ui_font">Usar fuentes del sistema</string>
     <string name="pref_incognito_keyboard">Teclado incógnito</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Solicitar al teclado deshabilitar el aprendizaje personalizado</string>
@@ -1088,8 +1105,10 @@
     <string name="global_menu_help_desktop">Ayuda</string>
     <!-- deprecated, use delta_chat_homepage instead -->
     <string name="global_menu_help_learn_desktop">Aprender más sobre Delta Chat</string>
+    <string name="delta_chat_homepage">Página de inicio de Delta Chat</string>
     <!-- deprecated, use contribute instead -->
     <string name="global_menu_help_contribute_desktop">Contribuir en GitHub</string>
+    <string name="contribute">Contribuir</string>
     <string name="global_menu_help_report_desktop">Reportar un problema</string>
     <string name="global_menu_help_about_desktop">Sobre Delta Chat</string>
     <string name="global_menu_file_open_desktop">Abrir Delta Chat</string>
@@ -1102,6 +1121,8 @@
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">Eliminar</string>
     <string name="save_desktop">Guardar</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">Deshacer guardado</string>
     <string name="name_desktop">Nombre</string>
     <string name="select_group_image_desktop">Seleccionar imagen de grupo</string>
     <string name="export_backup_desktop">Exportar copia de respaldo</string>
@@ -1161,6 +1182,18 @@
     <string name="notifications_avg_minutes">Promedio cada %1$d minutos</string>
     <string name="notifications_avg_hours">Promedio cada %1$d horas</string>
     <string name="last_check_at">Comprobado en %1$s</string>
+    <string name="system_settings">Configuración del sistema</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">Editar tipo, insignias, vista previa y más</string>
+    <!-- iOS shortcut widget -->
+    <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
+    <string name="shortcuts_widget_title">Accesos directos</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="shortcuts_widget_description">Utilice «Añadir al widget» de Delta Chat para añadir elementos</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="remove_from_widget">Quitar del widget.</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="add_to_widget">Agregar al widget</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Al permitir el acceso a la cámara podrás tomar fotos y videos.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Al permitir acceder a tu libreta de direcciones podrás chatear con los contactos de tu dispositivo.</string>
@@ -1169,6 +1202,9 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Al permitir el acceso al micrófono podrás grabar audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Al permitir el acceso a la galería de fotos podrás subir tus imágenes desde allí.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat quiere guardar imágenes en tu galería</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat puede utilizar Face ID para proteger su perfil local, la creación de copias de seguridad y la configuración de un segundo dispositivo.</string>
+
+
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Entrega inmediata</string>
     <string name="pref_background_notifications">Usar conexión en segundo plano</string>
