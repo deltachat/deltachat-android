@@ -192,6 +192,8 @@
     <string name="app_size">Boyut</string>
     <string name="app_date_published">Yayımlanma</string>
     <string name="add_to_chat">Sohbete Ekle</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Gözat</string>
     <string name="unknown">Bilinmeyen</string>
 
     <string name="green">Yeşil</string>
@@ -983,11 +985,11 @@
     <string name="qrscan_contains_text">Taranan QR kodu metni:\n\n%1$s</string>
     <string name="qrscan_contains_url">Taranan QR kodu URL\'si:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Parmak izi</string>
-    <string name="withdraw_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranabilir.\n\nQR kodunu buradan etkisizleştirebilir ve yeniden tarayarak etkinleştirebilirsiniz.</string>
-    <string name="withdraw_verifygroup_explain">Bu QR kodu, \"%1$s\" öbeğine katılmak için diğerleri tarafından taranabilir.\n\nQR kodunu buradan etkisizleştirebilir ve yeniden tarayarak etkinleştirebilirsiniz.</string>
-    <string name="withdraw_qr_code">QR Kodunu Etkisizleştir</string>
-    <string name="revive_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranmış olabilir.\n\nQR kodu bu aygıtta etkin değil.</string>
-    <string name="revive_verifygroup_explain">Bu QR kodu, \"%1$s\" öbeğine katılmak için diğerleri tarafından taranmış olabilir.\n\nQR kodu bu aygıtta etkin değil.</string>
+    <string name="withdraw_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
+    <string name="withdraw_verifygroup_explain">Bu QR kodu, \"%1$s\" öbeğine katılmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
+    <string name="withdraw_qr_code">QR Kodunu Sıfırla</string>
+    <string name="revive_verifycontact_explain">Bu QR kodu sıfırlandı ve artık etkin değil.</string>
+    <string name="revive_verifygroup_explain">\"%1$s\" öbeğine katılmak için taranan bu QR kodu sıfırlandı ve artık etkin değil.</string>
     <string name="revive_qr_code">QR Kodunu Etkinleştir</string>
     <string name="qrshow_title">QR Çağrı Kodu</string>
     <string name="qrshow_x_joining">%1$s katılıyor.</string>
