@@ -395,7 +395,7 @@
         android:enabled="true" />
 
     <service
-        android:name=".geolocation.LocationBackgroundService"
+        android:name=".geolocation.LocationStreamingService"
         android:foregroundServiceType="location" />
 
     <service
