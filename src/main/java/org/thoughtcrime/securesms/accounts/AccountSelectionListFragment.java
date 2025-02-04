@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.rpc.Rpc;
 import com.b44t.messenger.rpc.RpcException;
 
@@ -29,6 +30,7 @@ import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.connect.AccountManager;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -38,28 +40,21 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_ADD_ACCOUNT;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PRIVATE_TAG;
 
-public class AccountSelectionListFragment extends DialogFragment
+public class AccountSelectionListFragment extends DialogFragment implements DcEventCenter.DcEventDelegate
 {
   private RecyclerView recyclerView;
+  private AccountSelectionListAdapter adapter;
 
   @Override
   public void onActivityCreated(Bundle icicle) {
     super.onActivityCreated(icicle);
-    AccountSelectionListAdapter adapter = new AccountSelectionListAdapter(this,
-            GlideApp.with(getActivity()),
-            new ListClickListener());
+    adapter = new AccountSelectionListAdapter(this, GlideApp.with(getActivity()), new ListClickListener());
     recyclerView.setAdapter(adapter);
-
-    DcAccounts accounts = DcHelper.getAccounts(getActivity());
-    int[] accountIds = accounts.getAll();
-
-    int[] ids = new int[accountIds.length + 1];
-    int j = 0;
-    for (int accountId : accountIds) {
-      ids[j++] = accountId;
-    }
-    ids[j] = DC_CONTACT_ID_ADD_ACCOUNT;
-    adapter.changeData(ids, accounts.getSelectedAccount().getAccountId());
+    refreshData();
+    DcEventCenter eventCenter = DcHelper.getEventCenter(requireActivity());
+    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
+    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
   }
 
   @NonNull
@@ -78,6 +73,32 @@ public class AccountSelectionListFragment extends DialogFragment
     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
     return builder.setView(view).create();
+  }
+
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    DcHelper.getEventCenter(requireActivity()).removeObservers(this);
+  }
+
+  @Override
+  public void handleEvent(@NonNull DcEvent event) {
+    refreshData();
+  }
+
+  private void refreshData() {
+    if (adapter == null) return;
+
+    DcAccounts accounts = DcHelper.getAccounts(getActivity());
+    int[] accountIds = accounts.getAll();
+
+    int[] ids = new int[accountIds.length + 1];
+    int j = 0;
+    for (int accountId : accountIds) {
+      ids[j++] = accountId;
+    }
+    ids[j] = DC_CONTACT_ID_ADD_ACCOUNT;
+    adapter.changeData(ids, accounts.getSelectedAccount().getAccountId());
   }
 
   @Override
