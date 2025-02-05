@@ -67,14 +67,13 @@ public class AvatarView extends ConstraintLayout {
   }
 
   public void setConnectivity(int connectivity) {
+      if (connectivity >= DcContext.DC_CONNECTIVITY_CONNECTED || connectivity >= DcContext.DC_CONNECTIVITY_WORKING) {
+        seenRecentlyIndicator.setVisibility(View.GONE);
+        return;
+      }
+
       final int id;
-      String text = "";
-      if (connectivity >= DcContext.DC_CONNECTIVITY_CONNECTED) {
-        id = R.color.status_dot_online;
-      } else if (connectivity >= DcContext.DC_CONNECTIVITY_WORKING) {
-        text = "⇅";
-        id = R.color.status_dot_online;
-      } else if (connectivity >= DcContext.DC_CONNECTIVITY_CONNECTING) {
+      if (connectivity >= DcContext.DC_CONNECTIVITY_CONNECTING) {
         id = R.color.status_dot_connecting;
       } else {
         id = R.color.status_dot_offline;
@@ -88,7 +87,7 @@ public class AvatarView extends ConstraintLayout {
               .fontSize(ViewUtil.dpToPx(getContext(), 23))
               .bold()
               .endConfig()
-              .buildRound(text, getResources().getColor(id)));
+              .buildRound("", getResources().getColor(id)));
       seenRecentlyIndicator.setVisibility(View.VISIBLE);
   }
 
