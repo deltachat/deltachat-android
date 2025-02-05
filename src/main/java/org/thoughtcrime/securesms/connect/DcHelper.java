@@ -299,7 +299,11 @@ public class DcHelper {
         // The last part needs to be `filename`, i.e. the original, user-visible name of the file,
         // so that the external apps show the name of the file correctly.
         uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + Uri.encode(file.getName()) + "/" + Uri.encode(filename));
-        sharedFiles.put(file.getName(), mimeType); // as different Android version handle uris in putExtra differently, we also check them on our own
+
+        // As different Android version handle uris in putExtra differently,
+        // we also check on our own that the file was actually shared.
+        // The check happens in AttachmentsContentProvider.openFile().
+        sharedFiles.put(file.getName(), mimeType);
       } else {
         if (Build.VERSION.SDK_INT >= 24) {
           uri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".fileprovider", file);
