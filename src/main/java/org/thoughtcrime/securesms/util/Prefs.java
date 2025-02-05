@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms.util;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.hardware.Camera.CameraInfo;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
@@ -51,8 +50,6 @@ public class Prefs {
   public  static final String NOTIFICATION_PRIVACY_PREF        = "pref_notification_privacy";
   public  static final String NOTIFICATION_PRIORITY_PREF       = "pref_notification_priority";
 
-  public  static final String BUILTIN_CAMERA_PREF              = "pref_builtin_camera";
-  public  static final String DIRECT_CAPTURE_CAMERA_ID         = "pref_direct_capture_camera_id";
   private static final String PROFILE_AVATAR_ID_PREF           = "pref_profile_avatar_id";
   public  static final String INCOGNITO_KEYBORAD_PREF          = "pref_incognito_keyboard";
 
@@ -103,15 +100,6 @@ public class Prefs {
 
   public static int getNotificationPriority(Context context) {
     return Integer.valueOf(getStringPreference(context, NOTIFICATION_PRIORITY_PREF, String.valueOf(NotificationCompat.PRIORITY_HIGH)));
-  }
-
-  public static void setDirectCaptureCameraId(Context context, int value) {
-    setIntegerPreference(context, DIRECT_CAPTURE_CAMERA_ID, value);
-  }
-
-  @SuppressWarnings("deprecation")
-  public static int getDirectCaptureCameraId(Context context) {
-    return getIntegerPreference(context, DIRECT_CAPTURE_CAMERA_ID, CameraInfo.CAMERA_FACING_FRONT);
   }
 
   public static NotificationPrivacyPreference getNotificationPrivacy(Context context) {
@@ -268,10 +256,6 @@ public class Prefs {
 
   public static void setBackgroundImagePath(Context context, int accountId, String path) {
     setStringPreference(context, BACKGROUND_PREF+accountId, path);
-  }
-
-  public static boolean isBuiltInCameraPreferred(Context context) {
-    return getBooleanPreference(context, BUILTIN_CAMERA_PREF, false);
   }
 
   public static boolean getAlwaysLoadRemoteContent(Context context) {

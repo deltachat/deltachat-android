@@ -15,12 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-    <org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer
-            android:id="@+id/quick_attachment_drawer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
         <LinearLayout android:id="@+id/conversation_container"
                       android:layout_width="match_parent"
                       android:layout_height="match_parent"
@@ -64,6 +58,5 @@
                 />
 
         </LinearLayout>
-    </org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer>
     </org.thoughtcrime.securesms.components.InputAwareLayout>
 </RelativeLayout>
