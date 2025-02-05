@@ -498,6 +498,7 @@
     <string name="tab_audio_empty_hint">此聊天中分享的音频文件和语音消息将显示在这里。</string>
     <string name="tab_webxdc_empty_hint">在此聊天中分享的私人应用会出现在这里</string>
     <string name="tab_all_media_empty_hint">任何聊天中分享的媒体文件都将出现在这里</string>
+    <string name="all_files_empty_hint">在任何聊天中分享的文档和其他文件会出现在这里。</string>
     <string name="all_apps_empty_hint">任何聊天中接收或发送的私人应用都会出现在这里。</string>
     <string name="media_preview">媒体预览</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
@@ -620,14 +621,6 @@
     <string name="proxy_use_proxy_confirm">你想使用代理“%1$s”吗？</string>
     <string name="proxy_share_explain">你的好友可以扫描二维码添加此代理</string>
     <string name="proxy_share_link">分享链接</string>
-
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">使用 SOCKS5 代理</string>
-    <string name="login_socks5_host">SOCKS5 主机</string>
-    <string name="login_socks5_port">SOCKS5 端口</string>
-    <string name="login_socks5_user">SOCKS5 用户名</string>
-    <string name="login_socks5_password">SOCKS5 密码</string>
 
     <string name="login_info_oauth2_title">使用简易设置继续？</string>
     <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n在下一步中，请允许 Delta Chat 充当您的“通过电子邮件聊天”应用程序。\n\n不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
@@ -864,10 +857,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">消息已被打开</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">您发送的“%1$s”消息已在接收者的屏幕上显示过。\n\n这并不保证内容已被阅读。</string>
     <string name="systemmsg_cannot_decrypt">无法解密此消息。\n\n• 简化对此消息的回复并请求发送方再次发送消息可能会有帮助。\n\n•  如果你刚重新安装 Delta Chat，你最好立即重新设置 Delta Chat 并选择“添加为第二台设备”或导入备份文件。</string>
     <string name="systemmsg_unknown_sender_for_chat">此聊天发送者未知。查看“信息”来获取更多详情。</string>
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
@@ -942,8 +931,6 @@
     <string name="chat_protection_broken_explanation">无法再确保端到端加密，可能的原因是 %1$s 重新安装了 Delta Chat 或从其他设备发送了一则消息。\n\n你可以和联系人线下见面并再次扫描联系人的二维码重新建立端到端加密的通信。</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s要求端到端加密，而此聊天尚未建立端到端加密。轻按了解更多。</string>
     <string name="invalid_unencrypted_explanation">要建立端到端加密，你可以亲自和联系人碰面并扫描联系人的二维码</string>
-    <!-- deprecated -->
-    <string name="encryption_required_for_new_contact">端到端加密是必需的但 %1$s 还没有设置它。\n\n你可以和这些人分享你的邀请链接或亲自会面扫描其二维码。</string>
     <string name="learn_more">了解更多</string>
 
     <string name="devicemsg_self_deleted">您已删除“保存的消息”聊天。\n\nℹ️要再次使用“保存的消息”功能，请创建一个与自己的新聊天。</string>
@@ -1071,11 +1058,7 @@
     <string name="global_menu_view_developer_desktop">开发者</string>
     <string name="global_menu_view_developer_tools_desktop">开发者工具</string>
     <string name="global_menu_help_desktop">帮助</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">了解有关 Delta Chat 的更多信息</string>
     <string name="delta_chat_homepage">Delta Chat 主页</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">在 GitHub 上做贡献</string>
     <string name="contribute">贡献</string>
     <string name="global_menu_help_report_desktop">报告一个问题</string>
     <string name="global_menu_help_about_desktop">关于 Delta Chat</string>
@@ -1187,6 +1170,5 @@
 
     <!-- device messages for updates -->
     <string name="update_1_50_android">有什么新功能？\n\n❤️‍🔥 新的表情符号选择器，包含更多表情符号\n\n🎮 增强的聊天应用：获取通知并在上下文中打开支持应用，即直接打开添加的日历条目\n\n👍 收到有关对您的消息的回应的通知\n\n…🛠️ %1$s 上的修复和更多内容</string>
-    <string name="update_1_46_ios">新用户引导流程 🐣 以及更多信息：\n\n⚡️ 注册安全的快速聊天邮件服务器（https://delta.chat/chatmail）或使用传统的电子邮件服务器\n\n👉 为任何聊天邮件服务器推送通知\n\n👤 接收“附加联系人”安全地连接您的朋友\n\n🥰 更快选择消息回应 …更多信息，请访问 %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ “切换账号”选项已移动：点击主屏幕上角的个人资料图片以添加或切换账号 💡</string>
 </resources>

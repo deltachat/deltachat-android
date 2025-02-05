@@ -630,14 +630,6 @@ https://meet.jit.si/$ROOM
     <string name="proxy_share_explain">دوست‌هایتان می‌توانند با اسکن کردن کد QR این پروکسی را اضافه کنند.</string>
     <string name="proxy_share_link">اشتراک گذاشتن پیوند</string>
 
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">استفاده از SOCKS5</string>
-    <string name="login_socks5_host">SOCKS5 Host</string>
-    <string name="login_socks5_port">SOCKS5 Port</string>
-    <string name="login_socks5_user">SOCKS5 User</string>
-    <string name="login_socks5_password">SOCKS5 Password</string>
-
     <string name="login_info_oauth2_title">با تنظیم‌ها ساده‌ شده ادامه می‌دهید؟</string>
     <string name="login_info_oauth2_text">نشانی رایانامه وارد شده از تنظیم‌های ساده پشتیبانی می‌کند
 (OAuth 2.0).\n\nIn
@@ -865,11 +857,6 @@ https://meet.jit.si/$ROOM
     <string name="autocrypt_bad_setup_code">کد برپاسازی نادرست. لطفاً دوباره تلاش کنید. \n\n اگر کد برپاسازی را فراموش کرده‌اید یک پیام برپاسازی اتوکریپت جدید را از دستگاه دیگر ارسال کنید. </string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">پیام باز شد</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">پیام\"%1$s\" که ارسال کرده بودید در ثفحه گیرنده نمایش داده شد\n\n. تضمینی وجود ندارد که محتوای پیام را خوانده باشد. </string>
     <string name="systemmsg_unknown_sender_for_chat">فرستنده در این گفت و گو ناشناس است. برای جزئیات بیشتر به \"اطلاعات\" مراجعه کنید.</string>
     <string name="systemmsg_subject_for_new_contact">پیام از%1$s</string>
     <string name="systemmsg_failed_sending_to">ارسال ناموفق پیام به %1$s.</string>
@@ -941,8 +928,6 @@ https://meet.jit.si/$ROOM
     <string name="chat_protection_enabled_explanation">رمزنگاری سراسری پیام‌های این گفتگو اکنون تضمین می‌شود. رمزنگاری سراسری باعث می‌شود پیام‌هایتان بین شما و مخاطبین شما محرمانه بماند. حتی ارائه‌دهنده رایانامه شما هم نمی‌تواند آن‌ها را بخواند.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s پیامی را از دستگاه دیگری ارسال کرد. برای اطلاعات بیشتر ضربه بزنید.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s به رمزنگاری سراسری نیاز دارد که هنوز برای این گپ پیکره‌بندی نشده است. برای یادگیری بیش‌تر این‌جا بزنید.</string>
-    <!-- deprecated -->
-    <string name="encryption_required_for_new_contact">رمزنگاری سراسری لازم است اما برای %1$s هنوز پیکره‌بندی نشده است.\n\nمی‌توانید پیوند دعوت خود را به مخاطبتان بدهید یا این‌که به صورت حضوری کد QR مخاطب را اسکن کنید.</string>
     <string name="learn_more">بیشتر بدانید</string>
 
     <string name="devicemsg_self_deleted">شما گپ «پیام‌های ذخیره شده» را پاک کردید.\n\nℹ️ برای استفادهٔ دوباره از «پیام‌های ذخیره شده» کافی است یک گپ جدید با خودتان درست کنید. </string>
@@ -1092,10 +1077,6 @@ GNU GPL ورژن ۳
     <string name="global_menu_view_developer_desktop">برنامه‌نویس</string>
     <string name="global_menu_view_developer_tools_desktop">ابزار برنامه نویس</string>
     <string name="global_menu_help_desktop">کمک</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">یادگیری بیشتر درمورد دلتاچت</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">کمک به گیت‌هاب</string>
     <string name="global_menu_help_report_desktop">گزارش یک مشکل</string>
     <string name="global_menu_help_about_desktop">درباره دلتاچت</string>
     <string name="global_menu_file_open_desktop">بازکردن دلتاچت</string>

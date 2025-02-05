@@ -539,14 +539,6 @@
     <string name="login_smtp_port">Cổng SMTP</string>
     <string name="login_smtp_security">Bảo mật SMTP</string>
     <string name="login_auth_method">Phương thức ủy quyền</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Sử dụng SOCKS5</string>
-    <string name="login_socks5_host">Máy chủ SOCKS5</string>
-    <string name="login_socks5_port">Cổng SOCKS5</string>
-    <string name="login_socks5_user">Người dùng SOCKS5</string>
-    <string name="login_socks5_password">Mật khẩu SOCKS5</string>
-
     <string name="login_info_oauth2_title">Tiếp tục với thiết lập đơn giản hóa?</string>
     <string name="login_info_oauth2_text">Địa chỉ e-mail đã nhập hỗ trợ thiết lập đơn giản hóa (OAuth 2.0).\n\nTrong bước tiếp theo, vui lòng cho phép Delta Chat hoạt động như ứng dụng Trò chuyện qua E-mail của bạn.\n\nKhông có máy chủ Delta Chat, dữ liệu của bạn vẫn ở trên thiết bị của bạn.</string>
     <string name="login_certificate_checks">Kiểm tra chứng chỉ</string>
@@ -755,10 +747,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Đã mở tin nhắn</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Tin nhắn \"%1$s\" bạn gửi đã được hiển thị trên màn hình của người nhận.\n\nĐiều này không đảm bảo rằng nội dung đã được đọc.</string>
     <string name="systemmsg_cannot_decrypt">Không thể giải mã tin nhắn này.\n\n• Bạn chỉ cần trả lời tin nhắn này và yêu cầu người gửi gửi lại tin nhắn là đủ.\n\n• Nếu bạn vừa cài đặt lại Delta Chat thì tốt nhất bạn nên cài đặt lại thiết lập lại Delta Chat ngay bây giờ và chọn "Thêm làm thiết bị thứ hai" hoặc nhập bản sao lưu.</string>
     <string name="systemmsg_unknown_sender_for_chat">Người gửi không xác định cho cuộc trò chuyện này. Xem \'thông tin\' để biết thêm chi tiết.</string>
     <string name="systemmsg_subject_for_new_contact">Tin nhắn từ %1$s</string>
@@ -951,10 +939,6 @@
     <string name="global_menu_view_developer_desktop">Nhà phát triển</string>
     <string name="global_menu_view_developer_tools_desktop">Công cụ dành cho nhà phát triển</string>
     <string name="global_menu_help_desktop">Trợ giúp</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Tìm hiểu thêm về Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Đóng góp trên GitHub</string>
     <string name="global_menu_help_report_desktop">Báo cáo sự cố</string>
     <string name="global_menu_help_about_desktop">Giới thiệu về Delta Chat</string>
     <string name="global_menu_file_open_desktop">Mở Delta Chat</string>

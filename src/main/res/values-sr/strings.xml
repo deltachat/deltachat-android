@@ -517,14 +517,6 @@
     <string name="login_smtp_port">СМТП порт</string>
     <string name="login_smtp_security">СМТП безбедност</string>
     <string name="login_auth_method">Начин овлашћења</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Користи SOCKS5</string>
-    <string name="login_socks5_host">SOCKS5 сервер</string>
-    <string name="login_socks5_port">SOCKS5 порт</string>
-    <string name="login_socks5_user">SOCKS5 корисник</string>
-    <string name="login_socks5_password">SOCKS5 лозинка</string>
-
     <string name="login_info_oauth2_title">Наставите са поједностављеним поставкама?</string>
     <string name="login_info_oauth2_text">Унета е-адреса подржава поједностављено подешавање (OAuth 2.0).\n\nУ следећем кораку, дозволите Delta Chat-у да  да дејствује као ваша апликација за ћаскање преко е-поште.\n\nDelta Chat нема сервере и ваши подаци остају на вашем уређају.</string>
     <string name="login_certificate_checks">Провери сертификате</string>
@@ -722,11 +714,6 @@
     <string name="autocrypt_bad_setup_code">Погрешан кôд за подешавање. Покушајте поново.\n\nАко се не сећате кôда за подешавање, пошаљите нову поруку за подешавање аутоматског шифровања са другог уређаја.</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Порука је отворена</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Порука „%1$s“ коју сте послали била је приказана на екрану примаоца.\n\nОво није гаранција да је садржај прочитан.</string>
     <string name="systemmsg_unknown_sender_for_chat">Непознати пошиљалац за ово ћаскање. Погледајте „информације“ за више детаља.</string>
     <string name="systemmsg_subject_for_new_contact">Поруке од %1$s</string>
     <string name="systemmsg_failed_sending_to">Слање поруке %1$s је било неуспешно.</string>
@@ -899,10 +886,6 @@
     <string name="global_menu_view_developer_desktop">Програмер</string>
     <string name="global_menu_view_developer_tools_desktop">Алати за развој</string>
     <string name="global_menu_help_desktop">Помоћ</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Научите више о Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Допринесите развоју на Гитхабу</string>
     <string name="global_menu_help_report_desktop">Пријавите проблем</string>
     <string name="global_menu_help_about_desktop">О Delta Chat</string>
     <string name="global_menu_file_open_desktop">Отвори Delta Chat</string>

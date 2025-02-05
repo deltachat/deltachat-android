@@ -546,11 +546,6 @@
     <string name="autocrypt_bad_setup_code">Kode pengaturan jelek. Ayo cakepan lagi.\n\nKalau Anda lupa kode pengaturan, kirim lagi Autocrypt Setup Message dari perangkat lainnya.</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Pesan dibuka</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Pesan \"%1$s\" yang Anda kirimkan tampak di layar penerima.\n\nIni bukan jaminan kalau isinya dibaca.</string>
     <string name="systemmsg_unknown_sender_for_chat">Pengirim tidak dikenal untuk obrolan ini. Lihat \'info\' untuk lebih jelasnya.</string>
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>
     <string name="systemmsg_failed_sending_to">Gagal mengirim pesan ke %1$s.</string>
@@ -638,10 +633,6 @@
     <string name="global_menu_view_developer_desktop">Pengembang</string>
     <string name="global_menu_view_developer_tools_desktop">Alat pengembang</string>
     <string name="global_menu_help_desktop">Bantuan</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Pelajari lebih lanjut Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Kontribusi di GitHub</string>
     <string name="global_menu_help_report_desktop">Laporkan masalah</string>
     <string name="global_menu_help_about_desktop">Tentang Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Pilih obrolan atau buat sebuah obrolan baru</string>

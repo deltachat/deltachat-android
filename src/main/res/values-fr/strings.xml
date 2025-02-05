@@ -591,14 +591,6 @@
     <string name="proxy_add_explain">Types de proxy supportés: HTTP(S), SOCKS5 et Shadowsocks.</string>
     <string name="proxy_list_header">Sauver les proxy</string>
     <string name="proxy_delete">Effacer le proxy</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Utiliser SOCKS5</string>
-    <string name="login_socks5_host">Hôte SOCKS5</string>
-    <string name="login_socks5_port">Port SOCKS5</string>
-    <string name="login_socks5_user">Utilisateur SOCKS5</string>
-    <string name="login_socks5_password">Mot de passe SOCKS5</string>
-
     <string name="login_info_oauth2_title">Continuer avec une configuration simplifiée ?</string>
     <string name="login_info_oauth2_text">L\'adresse de courriel saisie prend en charge une configuration simplifiée (OAuth2.0). \n\nDans l\'étape suivante, autorisez Delta Chat à agir comme votre application de Chat avec courriel . Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
     <string name="login_certificate_checks">Vérification du certificat</string>
@@ -812,10 +804,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Accusé de lecture</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Ceci est un accusé de lecture pour le message \"%1$s\".\n\nCela signifie que le message a été affiché sur l\'appareil du destinataire, pas forcément que le contenu ait été lu.</string>
     <string name="systemmsg_cannot_decrypt">Ce message ne peut pas être déchiffré.\n\n• Essayez de demander à l\'expéditeur de vous l\'envoyer à nouveaux.\n\n• Si vous venez de réinstaller Delta Chat il serait bien de le reconfigurer en sélectionnant \"Ajouter un deuxième appareil\" ou d\'importer une sauvegarde.</string>
     <string name="systemmsg_unknown_sender_for_chat">Expéditeur inconnu de cette discussion. Voir « Info » pour plus de détails.</string>
     <string name="systemmsg_subject_for_new_contact">Message de %1$s</string>
@@ -1013,10 +1001,6 @@
     <string name="global_menu_view_developer_desktop">Développeur</string>
     <string name="global_menu_view_developer_tools_desktop">Outils de développement</string>
     <string name="global_menu_help_desktop">Aide</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">En savoir plus sur Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Contribuer sur Github</string>
     <string name="global_menu_help_report_desktop">Signaler un problème</string>
     <string name="global_menu_help_about_desktop">À propos de Delta Chat</string>
     <string name="global_menu_file_open_desktop">Ouvrir Delta Chat</string>

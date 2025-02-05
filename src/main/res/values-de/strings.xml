@@ -221,6 +221,8 @@
     <string name="new_classic_contact_explain">Manuell hinzugefügte Kontakte können verwendet werden, um klassische E-Mail-Adressen anzuschreiben; diese sind nicht garantiert Ende-zu-Ende-verschlüsselt.</string>
     <string name="menu_new_chat">Neuer Chat</string>
     <string name="menu_new_group">Neue Gruppe</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Chatte mit…</string>
     <string name="clone_chat">Chat klonen</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Broadcast-Liste</string>
@@ -638,14 +640,6 @@
     <string name="proxy_share_explain">Freunde können das Proxy durch Scannen des QR-Codes verwenden.</string>
     <string name="proxy_share_link">Link teilen</string>
 
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">SOCKS5 verwenden</string>
-    <string name="login_socks5_host">SOCKS5-Host</string>
-    <string name="login_socks5_port">SOCKS5-Port</string>
-    <string name="login_socks5_user">SOCKS5-Anmeldename</string>
-    <string name="login_socks5_password">SOCKS5-Passwort</string>
-
     <string name="login_info_oauth2_title">Weiter mit vereinfachter Einrichtung?</string>
     <string name="login_info_oauth2_text">Die eingegebene E-Mail-Adresse unterstützt eine vereinfachte Einrichtung (OAuth 2.0).\n\nBitte erlauben Sie Delta Chat im nächsten Schritt, als Chat-über-E-Mail-App zu arbeiten.\n\nDelta Chat sammelt keine Benutzerdaten, alles bleibt auf Ihrem Gerät.</string>
     <string name="login_certificate_checks">Zertifikatsüberprüfung</string>
@@ -881,10 +875,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Empfangsbestätigung</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Ihre Nachricht \"%1$s\" wurde auf dem Empfangsgerät angezeigt.\n\nDas ist keine Garantie dafür, dass sie auch gelesen wurde.</string>
     <string name="systemmsg_cannot_decrypt">Diese Nachricht kann nicht entschlüsselt werden.\n\n• Es kann bereits helfen, auf diese Nachricht zu antworten und den Absender zu bitten, die Nachricht noch einmal zu senden.\n\n• Wenn Sie Delta Chat gerade neu installiert haben, ist es am besten, wenn Sie Delta Chat mit \"Als Zweitgerät hinzufügen\" neu einrichten oder ein Backup importieren.</string>
     <string name="systemmsg_unknown_sender_for_chat">Absender ist für diesen Chat unbekannt. Siehe \"Info\" für weitere Details,</string>
     <string name="systemmsg_subject_for_new_contact">Nachricht von %1$s</string>
@@ -959,8 +949,6 @@
     <string name="chat_protection_broken_explanation">Die Ende-zu-Ende-Verschlüsselung kann nicht mehr garantiert werden, wahrscheinlich weil %1$s Delta Chat neu installiert oder eine Nachricht von einem anderen Gerät gesendet hat.\n\nSie können sich persönlich treffen und den QR-Code erneut scannen, um die garantierte Ende-zu-Ende-Verschlüsselung wiederherzustellen.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s verlangt eine Ende-zu-Ende-Verschlüsselung, die für diesen Chat noch nicht hergestellt wurde. Tippen, um mehr zu erfahren.</string>
     <string name="invalid_unencrypted_explanation">Um eine Ende-zu-Ende-Verschlüsselung herzustellen, können Sie Kontakte persönlich treffen und ihren QR-Code scannen.</string>
-    <!-- deprecated -->
-    <string name="encryption_required_for_new_contact">Ende-zu-Ende-Verschlüsselung ist notwendig, aber für %1$s nicht eingerichtet.\n\nZum Herstellen der Ende-zu-Ende-Verschlüsselung, können Sie Ihren Einladungslink teilen oder den Kontakt persönlich zum QR-Code-Scannen treffen.</string>
     <string name="learn_more">Mehr erfahren</string>
 
     <string name="devicemsg_self_deleted">Sie haben den Chat \"Gespeicherte Nachrichten\" gelöscht.\n\nℹ️ Um die Funktion \"Gespeicherte Nachrichten\" erneut zu verwenden, erstellen Sie einfach einen Chat mit sich selbst.</string>
@@ -1088,11 +1076,7 @@
     <string name="global_menu_view_developer_desktop">EntwicklerIn</string>
     <string name="global_menu_view_developer_tools_desktop">Entwicklungswerkzeug</string>
     <string name="global_menu_help_desktop">Hilfe</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Mehr über Delta Chat erfahren</string>
     <string name="delta_chat_homepage">Delta Chat Homepage</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Auf GitHub mitwirken</string>
     <string name="contribute">Mitwirken</string>
     <string name="global_menu_help_report_desktop">Ein Problem melden</string>
     <string name="global_menu_help_about_desktop">Über Delta Chat</string>
@@ -1204,6 +1188,5 @@
 
     <!-- device messages for updates -->
     <string name="update_1_50_android">Was ist neu?\n\n❤️‍🔥 Neuer Emoji-icker mit mehr Emojis\n\n🎮 In-Chat-App Verbesserungen: Benachrichtigungen erhalten und Apps im Kontext öffnen, z.B. einen hinzugefügten Kalendereintrag direkt anzeigen\n\n👍 Lassen Sie sich über Reaktionen auf Ihre Nachrichten benachrichtigen\n\n... 🛠️ FIXES und NOCH MEHR unter %1$s</string>
-    <string name="update_1_46_ios">Neuer Startbildschirm 🐣 und mehr:\n\n⚡️ Melden Sie sich bei sicheren, schnellen Chatmail-Servern (https://delta.chat/chatmail) an oder nutzen Sie klassische E-Mail-Server\n\n👉 PUSH-Benachrichtigungen auf allen Chatmail-Server\n\n👤 Empfangen Sie „Angehängte Kontakte“ von Ihren Freunden\n\n🥰 Direktere Auswahl von Reaktionen ... und MEHR auf %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ \"Profil wechseln\" verschoben: Tippen Sie auf Ihr Profilbild in der oberen Ecke des Hauptbildschirms, um Profile hinzuzufügen oder zu wechseln 💡.</string>
 </resources>
