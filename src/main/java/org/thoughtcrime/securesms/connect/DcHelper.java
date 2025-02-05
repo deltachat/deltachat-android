@@ -266,7 +266,9 @@ public class DcHelper {
     return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
   }
 
-  public static final HashMap<String, Integer> sharedFiles = new HashMap<>();
+  // When the user shares a file to another app or opens a file in another app, it is added here.
+  // `HashMap<file, mimetype>` where `file` is the name of the file in the blobdir (not the user-visible filename).
+  public static final HashMap<String, String> sharedFiles = new HashMap<>();
 
   public static void openForViewOrShare(Context activity, int msg_id, String cmd) {
     DcContext dcContext = getContext(activity);
@@ -291,12 +293,13 @@ public class DcHelper {
       }
 
       Uri uri;
+      mimeType = checkMime(filename, mimeType);
       if (path.startsWith(dcContext.getBlobdir())) {
         // Build a Uri that will later be passed to AttachmentsContentProvider.openFile().
         // The last part needs to be `filename`, i.e. the original, user-visible name of the file,
         // so that the external apps show the name of the file correctly.
         uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + Uri.encode(file.getName()) + "/" + Uri.encode(filename));
-        sharedFiles.put(file.getName(), 1); // as different Android version handle uris in putExtra differently, we also check them on our own
+        sharedFiles.put(file.getName(), mimeType); // as different Android version handle uris in putExtra differently, we also check them on our own
       } else {
         if (Build.VERSION.SDK_INT >= 24) {
           uri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".fileprovider", file);
@@ -306,7 +309,6 @@ public class DcHelper {
       }
 
       if (cmd.equals(Intent.ACTION_VIEW)) {
-        mimeType = checkMime(filename, mimeType);
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(uri, mimeType);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -357,7 +359,7 @@ public class DcHelper {
     activity.startActivity(intent);
   }
 
-  private static String checkMime(String path, String mimeType) {
+  public static String checkMime(String path, String mimeType) {
     if(mimeType == null || mimeType.equals("application/octet-stream")) {
       path = path.replaceAll(" ", "");
       String extension = MediaUtil.getFileExtensionFromUrl(path);
