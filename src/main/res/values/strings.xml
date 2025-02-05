@@ -638,14 +638,6 @@
     <string name="proxy_share_explain">Your friends can add this proxy by scanning the QR code.</string>
     <string name="proxy_share_link">Share Link</string>
 
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Use SOCKS5</string>
-    <string name="login_socks5_host">SOCKS5 Host</string>
-    <string name="login_socks5_port">SOCKS5 Port</string>
-    <string name="login_socks5_user">SOCKS5 User</string>
-    <string name="login_socks5_password">SOCKS5 Password</string>
-
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
     <string name="login_info_oauth2_text">The entered e-mail address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to act as your Chat over E-mail app.\n\nDelta Chat does not collect user data, everything stays on your device.</string>
     <string name="login_certificate_checks">Certificate Checks</string>
@@ -881,10 +873,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Message opened</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">The \"%1$s\" message you sent was displayed on the screen of the recipient.\n\nThis is no guarantee the content was read.</string>
     <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• If you just re-installed Delta Chat then it is best if you re-setup Delta Chat now and choose "Add as second device" or import a backup.</string>
     <string name="systemmsg_unknown_sender_for_chat">Unknown sender for this chat. See \'info\' for more details.</string>
     <string name="systemmsg_subject_for_new_contact">Message from %1$s</string>
@@ -959,8 +947,6 @@
     <string name="chat_protection_broken_explanation">End-to-end encryption cannot be guaranteed anymore, likely because %1$s reinstalled Delta Chat or sent a message from another device.\n\nYou may meet them in person and scan their QR code again to reestablish guaranteed end-to-end encryption.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s requires end-to-end encryption which is not setup for this chat yet. Tap to learn more.</string>
     <string name="invalid_unencrypted_explanation">To establish end-to-end-encryption, you may meet contacts in person and scan their QR Code to introduce them.</string>
-    <!-- deprecated -->
-    <string name="encryption_required_for_new_contact">End-to-end encryption is required but it is not setup for %1$s yet.\n\nYou may share your invite link with them or meet in person and scan their QR Code.</string>
     <string name="learn_more">Learn More</string>
 
     <string name="devicemsg_self_deleted">You deleted the \"Saved messages\" chat.\n\nℹ️ To use the \"Saved messages\" feature again, create a new chat with yourself.</string>
@@ -1088,11 +1074,7 @@
     <string name="global_menu_view_developer_desktop">Developer</string>
     <string name="global_menu_view_developer_tools_desktop">Developer Tools</string>
     <string name="global_menu_help_desktop">Help</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Learn more about Delta Chat</string>
     <string name="delta_chat_homepage">Delta Chat Homepage</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Contribute on GitHub</string>
     <string name="contribute">Contribute</string>
     <string name="global_menu_help_report_desktop">Report an Issue</string>
     <string name="global_menu_help_about_desktop">About Delta Chat</string>
@@ -1204,6 +1186,5 @@
 
     <!-- device messages for updates -->
     <string name="update_1_50_android">What\'s new?\n\n❤️‍🔥 New emojis picker with more emoji\n\n🎮 Enhanced in-chat apps: Get notifications and open supporting apps in context, i.e. open an added calendar entry directly\n\n👍 Get notified about reactions to your messages\n\n... 🛠️ FIXES and EVEN MORE at %1$s</string>
-    <string name="update_1_46_ios">New Onboarding 🐣 and More:\n\n⚡️ Sign up to secure fast chatmail servers (https://delta.chat/chatmail) or use classic e-mail servers\n\n👉 PUSH notifications for any chatmail server\n\n👤 Receive \"Attached contacts\" and connect to your friends\n\n🥰 Faster reaction selection … and MORE at %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ \"Switch Profile\" option moved: Tap your profile image in the upper corner of the main screen to add or switch profiles 💡</string>
 </resources>
