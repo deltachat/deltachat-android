@@ -537,14 +537,6 @@
     <string name="login_smtp_port">Portul SMTP </string>
     <string name="login_smtp_security">Securitate SMTP</string>
     <string name="login_auth_method">Metoda de autorizare</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Utilizați SOCKS5</string>
-    <string name="login_socks5_host">Gazdă SOCKS5</string>
-    <string name="login_socks5_port">Portul SOCKS5</string>
-    <string name="login_socks5_user">Utilizator SOCKS5</string>
-    <string name="login_socks5_password">Parolă SOCKS5</string>
-
     <string name="login_info_oauth2_title">Continuați cu configurația simplificată?</string>
     <string name="login_info_oauth2_text">Adresa de e-mail introdusă suportă o configurare simplificată (OAuth 2.0).\n\nÎn pasul următor, vă rugăm să permiteți ca Delta Chat să acționeze ca aplicație de chat prin e-mail.\n\nNu există servere Delta Chat, datele voastre rămân pe dispozitivul dumneavoastră.</string>
     <string name="login_certificate_checks">Verificări de certificate</string>

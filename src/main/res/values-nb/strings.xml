@@ -361,11 +361,6 @@
     <string name="autocrypt_bad_setup_code">Feil oppsettskode. Prøv igjen.\n\nHvis du ikke husker den, sett igang nøkkeloverføringen på en andre enheten igjen.</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Meldingskvittering</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Dette er en meldingskvittering for meldingen \"%1$s\".\n\nDenne meldingskvitteringen bekrefter bare at meldingen ble vist på mottakerens enhet. Det finnes ingen garanti for at mottakeren har lest meldingsinnholdet.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Gruppenavn endret fra \"%1$s\" til \"%2$s\" av meg.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->

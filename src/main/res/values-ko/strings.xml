@@ -470,14 +470,6 @@
     <string name="login_smtp_port">SMTP 포트</string>
     <string name="login_smtp_security">SMTP 보안</string>
     <string name="login_auth_method">권한 부여 방법</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">SOCKS5 사용</string>
-    <string name="login_socks5_host">SOCKS5 호스트</string>
-    <string name="login_socks5_port">SOCKS5 포트</string>
-    <string name="login_socks5_user">SOCKS5 사용자</string>
-    <string name="login_socks5_password">SOCKS5 비밀번호</string>
-
     <string name="login_info_oauth2_title">간소화된 설치를 계속하시겠습니까?</string>
     <string name="login_info_oauth2_text">입력한 이메일 주소는 단순화된 설정(OAuth 2.0)을 지원합니다.\n\n다음 단계에서는 Delta Chat 이 이메일을 통한 채팅 앱 역할을 하도록 허용하십시오.\n\nDelta 채팅 서버가 없으며 데이터가 장치에 남아 있습니다.</string>
     <string name="login_certificate_checks">인증서 확인</string>
@@ -660,11 +652,6 @@
     <string name="autocrypt_bad_setup_code">잘못된 설정 코드입니다. 다시 시도하십시오.\n\n설정 코드가 기억나지 않으면 다른 장치에서 새 자동 암호화 설치 메시지를 보냅니다.</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">메시지 열림</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">보낸 \"%1$s\" 메시지가 수신자의 화면에 표시되었습니다.\n\n이것은 내용이 읽혔다는 것을 보장하지 않습니다.</string>
     <string name="systemmsg_unknown_sender_for_chat">이 채팅의 발신자를 알 수 없습니다. 자세한 내용은 \'info\'를 확인하세요.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s가 보낸 메시지</string>
     <string name="systemmsg_failed_sending_to">%1$s에게 메시지를 보내지 못했습니다.</string>
@@ -833,10 +820,6 @@
     <string name="global_menu_view_developer_desktop">개발자</string>
     <string name="global_menu_view_developer_tools_desktop">개발자 도구</string>
     <string name="global_menu_help_desktop">도움말</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Delta Chat에 대해 더 알아보기</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">GitHub에 기여</string>
     <string name="global_menu_help_report_desktop">문제 보고</string>
     <string name="global_menu_help_about_desktop">Delta Chat에 대해</string>
     <string name="global_menu_file_open_desktop">Delta Chat 열기</string>

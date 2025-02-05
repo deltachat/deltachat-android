@@ -585,14 +585,6 @@
     <string name="login_smtp_port">SMTP порт</string>
     <string name="login_smtp_security">Сигурност на SMTP връзката</string>
     <string name="login_auth_method">Метод за оторизация</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Да се използва SOCKS5</string>
-    <string name="login_socks5_host">SOCKS5 хост</string>
-    <string name="login_socks5_port">SOCKS5 порт</string>
-    <string name="login_socks5_user">SOCKS5 потребител</string>
-    <string name="login_socks5_password">SOCKS5 парола</string>
-
     <string name="login_info_oauth2_title">Да се продължи ли с опростената настройка?</string>
     <string name="login_info_oauth2_text">Въведеният адрес за електронна поща поддържа опростена настройка (OAuth 2.0).\n\nНа следващата стъпка, моля позволете на Delta Chat да действа в качеството си на избраното от Вас приложение за чат върху електронна поща.\n\nDelta Chat няма сървъри, Вашите данни стоят на Вашето устройство.</string>
     <string name="login_certificate_checks">Проверки на сертификатите</string>
@@ -815,10 +807,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Съобщението е отворено</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Съобщението \"%1$s\", което изпратихте, беше показано на екрана на получателя.\n\nТова не е гаранция, че съдържанието му е прочетено.</string>
     <string name="systemmsg_cannot_decrypt">Това съобщение не може да бъде декриптирано.\n\n• Бихте могли просто да му отговорите и да помолите подателя да го изпрати отново.\n\n• Ако току-що сте преинсталирали Delta Chat, е най-добре да настроите приложението отново сега и да изберете \"Добавяне като второ устройство\" или да импортирате от архив.</string>
     <string name="systemmsg_unknown_sender_for_chat">Неизвестен подател за този чат. Вижте \"информация\" за повече подробности.</string>
     <string name="systemmsg_subject_for_new_contact">Съобщение от %1$s</string>
@@ -1020,10 +1008,6 @@
     <string name="global_menu_view_developer_desktop">Разработчик</string>
     <string name="global_menu_view_developer_tools_desktop">Инструменти за разработчици</string>
     <string name="global_menu_help_desktop">Помощ</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Научете повече за Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Допринесете в GitHub</string>
     <string name="global_menu_help_report_desktop">Съобщаване за проблем</string>
     <string name="global_menu_help_about_desktop">Относно Delta Chat</string>
     <string name="global_menu_file_open_desktop">Отваряне на Delta Chat</string>

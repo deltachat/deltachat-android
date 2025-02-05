@@ -430,11 +430,6 @@
     <string name="autocrypt_bad_setup_code">Ezarpen kode okerra. Saiatu berriro mesedez.\n\nEz baduzu ezarpen kodea gogoratzen, bidali beste Autocrypt ezarpen mezu bat beste gailutik.</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Irakurragiria</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Hau \"%1$s\" mezuaren irakurragiri bat da.\n\nHonek mezua jasotzailearen gailuan bistaratu dela esan nahi du, ez edukia irakurri dela.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Nik: Taldearen izena \"%1$s\" izatetik \"%2$s\" izatera aldatu da</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -514,10 +509,6 @@
     <string name="global_menu_view_developer_desktop">Garatzailea</string>
     <string name="global_menu_view_developer_tools_desktop">Garatzaile-tresnak</string>
     <string name="global_menu_help_desktop">Laguntza</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Ikasi gehiago Delta Chat-i buruz</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Hartu parte GitHub-en</string>
     <string name="global_menu_help_report_desktop">Eman arazo baten berri</string>
     <string name="global_menu_help_about_desktop">Delta Chat-i buruz</string>
     <string name="no_chat_selected_suggestion_desktop">Hautatu txat bat edo sortu txat berri bat</string>

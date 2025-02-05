@@ -396,14 +396,6 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP sikkerhed</string>
     <string name="login_auth_method">Autorisationsmetode</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Brug SOCKS5</string>
-    <string name="login_socks5_host">SOCKS5 Værtsnavn</string>
-    <string name="login_socks5_port">SOCKS5 Port</string>
-    <string name="login_socks5_user">SOCKS5 Brugernavn</string>
-    <string name="login_socks5_password">SOCKS5 adgangskode</string>
-
     <string name="login_info_oauth2_title">Fortsæt med forenklet opsætning?</string>
     <string name="login_info_oauth2_text">Indtastet e-mail adresse understøtter simple opsætning (OAuth2).\n\nTillad i næste trin at Delta Chat agerer som samtale med e-mail program.\n\nDer er ingen Delta Chat servere, data forbliver på enhed.</string>
     <string name="login_certificate_checks">Certifikationstjek</string>
@@ -581,11 +573,6 @@
     <string name="autocrypt_bad_setup_code">Ugyldig opsætningskode. Prøv igen.\n\nKan opsætningskoden ikke huskes, send blot en anden Autocrypt opsætning besked fra den anden enhed.</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Besked åbnet</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Beskeden \"%1$s\" du har sendt blev vist på modtagerens skærm.\n\nDette er ikke en garanti for at indholdet blev læst.</string>
     <string name="systemmsg_unknown_sender_for_chat">Ukent afsender af denne chat. Se \'info\' for flere detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Besked fra %1$s</string>
     <string name="systemmsg_failed_sending_to">Mislykket forsøg på afsendelse af besked til %1$s.</string>
@@ -716,10 +703,6 @@
     <string name="global_menu_view_developer_desktop">Udvikler</string>
     <string name="global_menu_view_developer_tools_desktop">Udvikler værktøj</string>
     <string name="global_menu_help_desktop">Hjælp</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Lær mere om Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Bidrag på GitHub</string>
     <string name="global_menu_help_report_desktop">Rapporter en sag</string>
     <string name="global_menu_help_about_desktop">Om Delta Chat</string>
     <string name="global_menu_minimize_to_tray">Minimer</string>
