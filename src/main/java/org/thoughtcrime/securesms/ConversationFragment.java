@@ -338,9 +338,8 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
             menu.findItem(R.id.menu_add_to_home_screen).setVisible(messageRecord.getType() == DcMsg.DC_MSG_WEBXDC);
 
-            boolean showSavedIcon = messageRecord.isSaved() || chat.isSelfTalk();
-            menu.findItem(R.id.toggle_save).setVisible(messageRecord.canSave());
-            menu.findItem(R.id.toggle_save).setIcon(showSavedIcon ? R.drawable.baseline_star_24 : R.drawable.baseline_star_outline_24);
+            menu.findItem(R.id.toggle_save).setVisible(!chat.isSelfTalk() && messageRecord.canSave());
+            menu.findItem(R.id.toggle_save).setIcon(messageRecord.isSaved() ? R.drawable.baseline_star_24 : R.drawable.baseline_star_outline_24);
         }
 
         // if one of the selected items cannot be saved, disable saving.
