@@ -585,14 +585,6 @@
     <string name="login_smtp_port">SMTP -portti</string>
     <string name="login_smtp_security">SMTP -turvallisuusprotokolla</string>
     <string name="login_auth_method">Kirjautumismenetelmä</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Käytä SOCKS5</string>
-    <string name="login_socks5_host">SOCKS5 -isäntä</string>
-    <string name="login_socks5_port">SOCKS5 -portti</string>
-    <string name="login_socks5_user">SOCKS5 -käyttäjä</string>
-    <string name="login_socks5_password">SOCKS5 -salasana</string>
-
     <string name="login_info_oauth2_title">Jatka yksinkertaistetulla käyttöönotolla?</string>
     <string name="login_info_oauth2_text">Annettu sähköpostiosoite tukee yksinkertaista käyttöönottoa (OAuth 2.0).\n\nSeuraavassa vaiheessa sinun tulisi antaa Delta Chatille oikeus toimia keskustelusovelluksena sähköpostia hyödyntäen.\n\nDelta Chat ei kerää käyttäjädataa, kaikki tallennetaan vain laitteellesi.</string>
     <string name="login_certificate_checks">Varmenteiden tarkastus</string>
@@ -815,10 +807,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Viesti avattu</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Lähettämäsi viesti \"%1$s\" näytettiin vastaanottajan näytöllä.\n\nTämä ei takaa, että sisältö luettiin.</string>
     <string name="systemmsg_cannot_decrypt">Viestin salausta ei voitu purkaa.\n\n• Voi olla että vastaamalla tähän ja pyytämällä lähettäjää lähettämään viesti uudelleen ongelma ratkeaa.\n\n• Jos juuri uudelleenasensit Delta Chatin, lienee parasta että otat sovelluksen uudelleen käyttöön ja valitset \"Lisää toisena laitteena\" tai palauta varmuuskopiosta.</string>
     <string name="systemmsg_unknown_sender_for_chat">Tuntematon lähettäjä. Katso \"lisätietoja\".</string>
     <string name="systemmsg_subject_for_new_contact">Viesti lähettäjältä %1$s</string>
@@ -1020,10 +1008,6 @@
     <string name="global_menu_view_developer_desktop">Kehittäjä</string>
     <string name="global_menu_view_developer_tools_desktop">Kehittäjätyökalut</string>
     <string name="global_menu_help_desktop">Ohje</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Lisätietoja Delta Chatista</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Osallistu GitHubissa</string>
     <string name="global_menu_help_report_desktop">Ilmoita ongelma</string>
     <string name="global_menu_help_about_desktop">Tietoja Delta Chatista</string>
     <string name="global_menu_file_open_desktop">Avaa Delta Chat</string>
@@ -1115,5 +1099,4 @@
     <string name="perm_enable_bg_reminder_title">Napauta vastaanottaaksesi viestejä, kun Delta Chat on taustalla.</string>
     <string name="perm_enable_bg_already_done">Annoit jo luvan viestien vastaanottamiselle taustalla.\n\nJos et saa viestejä taustalla, tarkista myös järjestelmäasetukset.</string>
 
-    <string name="update_1_46_ios">Uusittu käyttöönotto 🐣 ja muuta:\n\n⚡️ Rekisteröidy nopeille chatmail -palvelimille (https://delta.chat/chatmail) tai käytä tavanomaisia sähköpostipalvelimia\n\n👉 PUSH -ilmoitukset toimivat millä tahansa chatmail -palvelimella\n\n👤 Vastaanota \"Liitettyjä yhteystietoja\" ja ota yhteys ystäviisi\n\n🥰 Nopeampi reaktioiden valinta ... LISÄÄ osoitteessa %1$s</string>
     </resources>

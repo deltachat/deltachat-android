@@ -516,8 +516,6 @@
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Seguretat SMTP</string>
     <string name="login_auth_method">Mètode d\'autorització</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
     <string name="login_info_oauth2_title">Voleu continuar amb la configuració simplificada?</string>
     <string name="login_info_oauth2_text">L’adreça d\'e-mail que heu introduït admet una configuració simplificada. (OAuth2).\n\nEn el pas següent, permeteu que Delta Chat actuï com a xat amb l\'aplicació de correu electrònic..\n\nNo hi ha servidors de Delta Chat, les vostres dades romanen al vostre dispositiu!</string>
     <string name="login_error_mail">Si us plau poseu una adreça d\'email vàlida</string>
@@ -635,11 +633,6 @@
     <string name="autocrypt_bad_setup_code">Codi de configuració incorrecte. Siusplau torneu-ho a provar.\n\nSi no recordeu el codi de configuració Autocrypt, envieu-ne un de nou des de l’altre dispositiu.</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Confirmació de lectura</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Confirmació de lectura del missatge \"%1$s\".\n\nVol dir que el missatge s\'ha mostrat al dispositiu del receptor, no necessàriament que s\'hagi llegit.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Nom del grup \"%1$s\" canviat a \"%2$s\" per mi.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -713,8 +706,6 @@
     <string name="global_menu_view_developer_desktop">Desenvolupador</string>
     <string name="global_menu_view_developer_tools_desktop">Eines de desenvolupador</string>
     <string name="global_menu_help_desktop">Ajuda</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Col·labora a GitHub</string>
     <string name="global_menu_help_report_desktop">Informa d\'un problema</string>
     <string name="no_chat_selected_suggestion_desktop">Tria un xat o crea\'n un de nou</string>
     <string name="write_message_desktop">Escriu un missatge</string>

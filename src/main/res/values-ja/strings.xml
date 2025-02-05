@@ -537,9 +537,6 @@
     <string name="autocrypt_asm_subject">自動暗号化設定用ﾒｯｾｰｼﾞ</string>
     <string name="autocrypt_continue_transfer_title">自動暗号化設定用ﾒｯｾｰｼﾞ</string>
     <string name="autocrypt_continue_transfer_retry">再試行</string>
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">既読</string>
     <string name="systemmsg_subject_for_new_contact">%1$sさんからのメッセージ</string>
     <string name="systemmsg_failed_sending_to">%1$sさんへのメッセージ送信に失敗しました。</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -655,10 +652,6 @@
     <string name="global_menu_view_developer_desktop">開発者</string>
     <string name="global_menu_view_developer_tools_desktop">開発者ツール</string>
     <string name="global_menu_help_desktop">ヘルプ</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">DeltaChatについて詳しく知る</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">GitHubで貢献する</string>
     <string name="global_menu_help_report_desktop">問題を報告する</string>
     <string name="global_menu_help_about_desktop">Delta Chatについて</string>
     <string name="write_message_desktop">メッセージを送信</string>

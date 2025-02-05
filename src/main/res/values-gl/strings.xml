@@ -497,14 +497,6 @@
     <string name="login_smtp_port">Porto SMTP</string>
     <string name="login_smtp_security">Seguridade SMTP</string>
     <string name="login_auth_method">Método de autorización</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Usar SOCKS5</string>
-    <string name="login_socks5_host">Servidor SOCKS5</string>
-    <string name="login_socks5_port">Porto SOCKS5</string>
-    <string name="login_socks5_user">Usuaria SOCKS5</string>
-    <string name="login_socks5_password">Contrasinal SOCKS5</string>
-
     <string name="login_info_oauth2_title">Continuar co axuste simplificado?</string>
     <string name="login_info_oauth2_text">O enderezo introducido soporta o axuste simplificado (OAuth 2.0).\n\nNo seguinte paso, permite a Delta Chat actuar como app de Conversa sobre Correo-e.\n\nNon hai servidores Delta Chat, os teus datos permanecen no dispositivo.</string>
     <string name="login_certificate_checks">Comprobacións do certificado</string>
@@ -702,11 +694,6 @@
     <string name="autocrypt_bad_setup_code">Código incorrecto. Inténtao outra vez.\n\nSe non lembras o código, envía unha nova Mensaxe de Configuración Autocrypt desde o outro dispositivo.</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Mensaxe aberta</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">A mensaxe \"%1$s\" que enviaches mostrouse na pantalla do correspondente.\n\nNon hai garantía de que o contido fose lido.</string>
     <string name="systemmsg_unknown_sender_for_chat">Remitente descoñecido para esta convers. Mira en \'info\' para saber máis.</string>
     <string name="systemmsg_subject_for_new_contact">Mensaxe de %1$s</string>
     <string name="systemmsg_failed_sending_to">Fallou o envío para %1$s.</string>
@@ -846,10 +833,6 @@
     <string name="global_menu_view_developer_desktop">Desenvolvedora</string>
     <string name="global_menu_view_developer_tools_desktop">Ferramentas de desenvolvedora</string>
     <string name="global_menu_help_desktop">Axuda</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Coñece máis sobre Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Contribúe en GitHub</string>
     <string name="global_menu_help_report_desktop">Informa dun fallo</string>
     <string name="global_menu_help_about_desktop">Acerca de Delta Chat</string>
     <string name="global_menu_file_open_desktop">Abrir Delta Chat</string>

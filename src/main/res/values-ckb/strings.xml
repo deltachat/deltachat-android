@@ -488,9 +488,6 @@
     <string name="autocrypt_asm_subject">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
     <string name="autocrypt_continue_transfer_title">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
     <string name="autocrypt_continue_transfer_retry">دیسان هەوڵدانەوە</string>
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">پەیامەکە کرایەوە</string>
     <string name="systemmsg_unknown_sender_for_chat">پەیامنێری ئەم وتووێژە نەناسراوە. بۆ وردەکاری زۆرتر سەیری \'زانیارییەکان\' بکە.</string>
     <string name="systemmsg_subject_for_new_contact">پەیام لەلایەن %1$s</string>
     <string name="systemmsg_failed_sending_to">هەناردنی پەیام بۆ %1$s سەرنەکەوت</string>
@@ -555,8 +552,6 @@
     <string name="global_menu_edit_paste_desktop">لکاندن</string>
     <string name="global_menu_view_desktop">دیتن</string>
     <string name="global_menu_help_desktop">یارمەتی</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">زۆرتر سەبارەت بە دێڵتاچات_ەوە بزانە</string>
     <string name="global_menu_help_report_desktop">کێشەیەک گوزارشت بکە</string>
     <string name="global_menu_help_about_desktop">سەبارەت بە دێڵتا چات</string>
     <string name="no_chat_selected_suggestion_desktop">وتووێژێک هەڵبژێرە یان وتووێژێکی نوێ درووست بکە</string>
