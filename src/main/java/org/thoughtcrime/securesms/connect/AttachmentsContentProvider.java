@@ -5,8 +5,14 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
+import android.webkit.MimeTypeMap;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcContext;
+
+import org.thoughtcrime.securesms.util.MediaUtil;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -34,12 +40,12 @@ public class AttachmentsContentProvider extends ContentProvider {
         // where ef39a39 is the file in the blob directory
         // and text.txt is the original name of the file, as returned by `msg.getFilename()`.
         // `uri.getPathSegments()` returns ["ef39a39", "text.txt"] in this example.
-        String path = uri.getPathSegments().get(0);
-        if (!DcHelper.sharedFiles.containsKey(path)) {
+        String file = uri.getPathSegments().get(0);
+        if (!DcHelper.sharedFiles.containsKey(file)) {
             throw new FileNotFoundException("File was not shared before.");
         }
 
-        File privateFile = new File(dcContext.getBlobdir(), path);
+        File privateFile = new File(dcContext.getBlobdir(), file);
         return ParcelFileDescriptor.open(privateFile, ParcelFileDescriptor.MODE_READ_ONLY);
     }
 
@@ -49,8 +55,17 @@ public class AttachmentsContentProvider extends ContentProvider {
     }
 
     @Override
-    public String getType(Uri arg0) {
-        return null;
+    public String getType(Uri uri) {
+        String file = uri.getPathSegments().get(0);
+        String mimeType = DcHelper.sharedFiles.get(file);
+
+        return DcHelper.checkMime(uri.toString(), mimeType);
+    }
+
+    @Override
+    public String getTypeAnonymous(Uri uri) {
+        String ext = MediaUtil.getFileExtensionFromUrl(uri.toString());
+        return MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext);
     }
 
     @Override
