@@ -100,6 +100,7 @@ public class ConversationItem extends BaseConversationItem
   protected ViewGroup              bodyBubble;
   protected ReactionsConversationView reactionsView;
   protected View                   replyView;
+  protected View                   jumptoView;
   @Nullable private QuoteView      quoteView;
   private   ConversationItemFooter footer;
   private   TextView               groupSender;
@@ -154,6 +155,7 @@ public class ConversationItem extends BaseConversationItem
     this.quoteView               =            findViewById(R.id.quote_view);
     this.container               =            findViewById(R.id.container);
     this.replyView               =            findViewById(R.id.reply_icon);
+    this.jumptoView              =            findViewById(R.id.jumpto_icon);
     this.msgActionButton         =            findViewById(R.id.msg_action_button);
     this.showFullButton          =            findViewById(R.id.show_full_button);
 
@@ -179,6 +181,17 @@ public class ConversationItem extends BaseConversationItem
 
     if (showSender) {
       this.dcContact = dcContext.getContact(messageRecord.getFromId());
+    }
+
+    if (dcChat.isSelfTalk() && messageRecord.getOriginalMsgId() != 0) {
+      jumptoView.setVisibility(View.VISIBLE);
+      jumptoView.setOnClickListener(view -> {
+        if (eventListener != null) {
+          eventListener.onJumpToOriginalClicked(messageRecord);
+        }
+      });
+    } else {
+        jumptoView.setVisibility(View.GONE);
     }
 
     setGutterSizes(messageRecord, showSender);
