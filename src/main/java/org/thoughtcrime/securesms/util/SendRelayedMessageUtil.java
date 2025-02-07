@@ -38,9 +38,24 @@ public class SendRelayedMessageUtil {
     if (isForwarding(activity)) {
       int[] forwardedMessageIDs = getForwardedMessageIDs(activity);
       resetRelayingMessageContent(activity);
+      if (forwardedMessageIDs == null) return;
+
       Util.runOnAnyBackgroundThread(() -> {
-        for (long chatId : chatIds) {
-          handleForwarding(activity, (int) chatId, forwardedMessageIDs);
+        DcContext dcContext = DcHelper.getContext(activity);
+        for (long longChatId : chatIds) {
+          int chatId = (int) longChatId;
+          if (dcContext.getChat(chatId).isSelfTalk()) {
+            for (int msgId : forwardedMessageIDs) {
+              DcMsg msg = dcContext.getMsg(msgId);
+              if (msg.canSave() && msg.getSavedMsgId() == 0 && msg.getChatId() != chatId) {
+                dcContext.saveMsgs(new int[]{msgId});
+              } else {
+                handleForwarding(activity, chatId, new int[]{msgId});
+              }
+            }
+          } else {
+            handleForwarding(activity, chatId, forwardedMessageIDs);
+          }
         }
 
       });
