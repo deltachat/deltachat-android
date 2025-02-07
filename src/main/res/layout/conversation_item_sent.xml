@@ -13,6 +13,19 @@
     android:clipToPadding="false"
     android:clipChildren="false">
 
+  <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/jumpto_icon"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:layout_gravity="center_vertical"
+      android:layout_marginStart="@dimen/conversation_individual_left_gutter"
+      android:padding="5dp"
+      android:src="@drawable/rounded_arrow_forward_24"
+      android:background="@drawable/jumpto_btn_bg"
+      android:contentDescription="@string/show_in_chat"
+      android:visibility="gone"
+      />
+
     <RelativeLayout
         android:id="@+id/container"
         android:layout_width="match_parent"

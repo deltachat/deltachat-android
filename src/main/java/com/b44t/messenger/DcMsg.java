@@ -190,11 +190,7 @@ public class DcMsg {
 
     public boolean canSave() {
       // saving info-messages out of context results in confusion, see https://github.com/deltachat/deltachat-ios/issues/2567
-      return !isInfo();
-    }
-
-    public boolean isSaved() {
-      return getOriginalMsgId() != 0 || getSavedMsgId() != 0;
+      return !isInfo() && getType() != DC_MSG_VIDEOCHAT_INVITATION;
     }
 
     public File getFileAsFile() {
