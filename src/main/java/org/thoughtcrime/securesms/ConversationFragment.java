@@ -822,20 +822,18 @@ public class ConversationFragment extends MessageSelectorFragment
             }
         }
 
-        @Override
-        public void onQuoteClicked(DcMsg messageRecord) {
-            DcMsg quoted = messageRecord.getQuotedMsg();
-            if (quoted == null) {
-                Log.i(TAG, "Clicked on a quote whose original message we never had.");
+        private void jumpToOriginal(DcMsg original) {
+            if (original == null) {
+                Log.i(TAG, "Clicked on a quote or jump-to-original whose original message was deleted/non-existing.");
                 Toast.makeText(getContext(), R.string.ConversationFragment_quoted_message_not_found, Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            int foreignChatId = quoted.getChatId();
+            int foreignChatId = original.getChatId();
             if (foreignChatId != 0 && foreignChatId != chatId) {
                 Intent intent = new Intent(getActivity(), ConversationActivity.class);
                 intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, foreignChatId);
-                int start = DcMsg.getMessagePosition(quoted, dcContext);
+                int start = DcMsg.getMessagePosition(original, dcContext);
                 intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, start);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 ((ConversationActivity) getActivity()).hideSoftKeyboard();
@@ -845,8 +843,18 @@ public class ConversationFragment extends MessageSelectorFragment
                     Log.e(TAG, "Activity was null");
                 }
             } else {
-                scrollMaybeSmoothToMsgId(quoted.getId());
+                scrollMaybeSmoothToMsgId(original.getId());
             }
+        }
+
+        @Override
+        public void onJumpToOriginalClicked(DcMsg messageRecord) {
+            jumpToOriginal(dcContext.getMsg(messageRecord.getOriginalMsgId()));
+        }
+
+        @Override
+        public void onQuoteClicked(DcMsg messageRecord) {
+            jumpToOriginal(messageRecord.getQuotedMsg());
         }
 
       @Override

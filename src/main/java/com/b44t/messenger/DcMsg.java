@@ -185,6 +185,14 @@ public class DcMsg {
       return cPtr != 0 ? new DcMsg(cPtr) : null;
     }
 
+    public native int getOriginalMsgId  ();
+    public native int getSavedMsgId     ();
+
+    public boolean canSave() {
+      // saving info-messages out of context results in confusion, see https://github.com/deltachat/deltachat-ios/issues/2567
+      return !isInfo() && getType() != DC_MSG_VIDEOCHAT_INVITATION;
+    }
+
     public File getFileAsFile() {
         if(getFile()==null)
             throw new AssertionError("expected a file to be present.");
