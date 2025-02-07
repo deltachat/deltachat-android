@@ -193,10 +193,6 @@ public class DcMsg {
         return !isInfo() && getType() != DC_MSG_VIDEOCHAT_INVITATION;
     }
 
-    public boolean isSaved() {
-      return getOriginalMsgId() != 0 || getSavedMsgId() != 0;
-    }
-
     public File getFileAsFile() {
         if(getFile()==null)
             throw new AssertionError("expected a file to be present.");
