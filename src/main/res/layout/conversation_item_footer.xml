@@ -9,7 +9,7 @@
     tools:parentTag="org.thoughtcrime.securesms.components.ConversationItemFooter">
 
     <ImageView
-        android:id="@+id/footer_stared_indicator"
+        android:id="@+id/footer_bookmark_indicator"
         android:layout_width="12sp"
         android:layout_height="11sp"
         android:src="@drawable/baseline_bookmark_24"
