@@ -12,7 +12,7 @@
         android:id="@+id/footer_stared_indicator"
         android:layout_width="12sp"
         android:layout_height="11sp"
-        android:src="@drawable/baseline_star_24"
+        android:src="@drawable/baseline_bookmark_24"
         android:layout_gravity="center_vertical|end"
         android:importantForAccessibility="no"
         android:visibility="gone"
