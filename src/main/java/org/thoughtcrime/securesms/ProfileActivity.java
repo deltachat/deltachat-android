@@ -153,6 +153,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           menu.findItem(R.id.share).setVisible(false);
         }
       } else {
+        menu.findItem(R.id.menu_clone).setVisible(false);
         canReceive = false;
       }
 
