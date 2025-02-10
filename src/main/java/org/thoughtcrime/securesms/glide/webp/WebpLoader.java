@@ -6,7 +6,6 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.ResourceDecoder;
 import com.bumptech.glide.load.engine.Resource;
-import com.bumptech.glide.load.resource.SimpleResource;
 import com.github.penfeizhou.animation.loader.ByteBufferLoader;
 import com.github.penfeizhou.animation.io.StreamReader;
 import com.github.penfeizhou.animation.loader.Loader;
@@ -40,7 +39,7 @@ public class WebpLoader implements ResourceDecoder<InputStream, WebPDecoder> {
           return byteBuffer;
         }
       };
-    return new SimpleResource<>(new WebPDecoder(loader, null));
+    return new WebPDecoderResource(new WebPDecoder(loader, null), byteBuffer.limit());
   }
 
   private static byte[] inputStreamToBytes(InputStream is) {
@@ -57,5 +56,37 @@ public class WebpLoader implements ResourceDecoder<InputStream, WebPDecoder> {
       return null;
     }
     return buffer.toByteArray();
+  }
+
+  private static class WebPDecoderResource implements Resource<WebPDecoder> {
+    private final WebPDecoder decoder;
+    private final int size;
+
+    WebPDecoderResource(WebPDecoder decoder, int size) {
+      this.decoder = decoder;
+      this.size = size;
+    }
+
+    @NonNull
+    @Override
+    public Class<WebPDecoder> getResourceClass() {
+      return WebPDecoder.class;
+    }
+
+    @NonNull
+    @Override
+    public WebPDecoder get() {
+      return this.decoder;
+    }
+
+    @Override
+    public int getSize() {
+      return this.size;
+    }
+
+    @Override
+    public void recycle() {
+      this.decoder.stop();
+    }
   }
 }
