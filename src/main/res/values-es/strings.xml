@@ -749,7 +749,9 @@
     <string name="pref_manage_keys">Administrar claves</string>
     <string name="pref_use_system_emoji">Usar emoji del sistema</string>
     <string name="pref_use_system_emoji_explain">Deshabilitar el soporte de emoji integrado de Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera">Usar cámara interna</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera_explain">La cámara interna suele tener menos funcionalidades que la cámara del sistema</string>
     <string name="pref_show_system_contacts">Leer la libreta de direcciones del sistema</string>
     <string name="pref_show_system_contacts_explain">Ofrecer crear chats con contactos de la libreta de direcciones. Algunos proveedores necesitan primero una configuración de cifrado de extremo a extremo.</string>

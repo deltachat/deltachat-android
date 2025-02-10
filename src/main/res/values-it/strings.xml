@@ -230,6 +230,8 @@
     <string name="new_classic_contact_explain">I contatti aggiunti manualmente possono essere utilizzati per inviare testo all\' e-mail classica e non sono garantiti con crittografia end-to-end.</string>
     <string name="menu_new_chat">Nuova Chat</string>
     <string name="menu_new_group">Nuovo Gruppo</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Chatta con…</string>
     <string name="clone_chat">Clona Chat</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Lista Trasmissione</string>
@@ -389,8 +391,8 @@
     <string name="ask_forward">Inoltrare messaggi a %1$s?</string>
     <string name="ask_forward_multiple">Inoltra messaggi a %1$d chats?</string>
     <string name="ask_export_attachment">Esportare allegati permetterà ad ogni altra app sul tuo dispositivo di accedervi.\n\nContinuare?</string>
-    <string name="ask_block_contact">Bloccare questo contatto? Non riceverai più messaggi da esso.</string>
-    <string name="ask_unblock_contact">Sbloccare il contatto? Potrai nuovamente ricevere messaggi da esso.</string>
+    <string name="ask_block_contact">Vuoi bloccare questo contatto?\n\nI messaggi diretti o i gruppi creati dai contatti bloccati non verranno visualizzati.\n\nGli altri gruppi con contatti bloccati continueranno a visualizzare i loro messaggi.</string>
+    <string name="ask_unblock_contact">Sbloccare questo contatto?</string>
     <string name="ask_delete_contacts">Eliminare contatti?\n\nI contatti con chat in corso o in rubrica di sistema non possono essere eliminati definitivamente.</string>
     <string name="ask_delete_contact">Eliminare il contatto %1$s?\n\nI contatti con chat in corso o in rubrica di sistema non possono essere eliminati definitivamente.</string>
     <string name="cannot_delete_contacts_in_use">Impossibile eliminare contatti con chat in corso.</string>
@@ -517,6 +519,8 @@
     <string name="profile_encryption">Crittografia</string>
     <string name="profile_shared_chats">Chats Condivise</string>
     <string name="related_chats">Chats Correlate</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Membri Passati</string>
     <string name="tab_contact">Contatto</string>
     <string name="tab_group">Gruppo</string>
     <string name="tab_gallery">Galleria</string>
@@ -531,7 +535,7 @@
     <string name="tab_webxdc_empty_hint">Le app condivise in questa chat verranno mostrate qui.</string>
     <string name="tab_all_media_empty_hint">I media condivisi in qualsiasi chat verranno mostrate qui.</string>
     <string name="all_files_empty_hint">Qui verranno visualizzati i documenti e gli altri file condivisi in qualsiasi chat.</string>
-    <string name="all_apps_empty_hint">Le app ricevute o inviate in qualsiasi chat verranno mostrate qui.</string>
+    <string name="all_apps_empty_hint">Le apps condivise in qualsiasi chat appariranno qui.</string>
     <string name="media_preview">Anteprima Media</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Aspetto Griglia Proporzioni</string>
@@ -750,7 +754,9 @@
     <string name="pref_manage_keys">Gestisci Chiavi</string>
     <string name="pref_use_system_emoji">Usa Emoji di Sistema</string>
     <string name="pref_use_system_emoji_explain">Disattiva il supporto delle emoji integrato in Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera">Usa Fotocamera App</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera_explain">La fotocamera dell\'app di solito ha meno funzionalità della fotocamera di sistema</string>
     <string name="pref_show_system_contacts">Leggi Rubrica di Sistema</string>
     <string name="pref_show_system_contacts_explain">Offri la possibilità di creare chats con i contatti della rubrica. Alcuni provider necessitano prima della configurazione della crittografia end-to-end.</string>
@@ -988,11 +994,11 @@
     <string name="qrscan_contains_text">Testo codice QR scansionato:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL del codice QR scansionato:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Impronta digitale</string>
-    <string name="withdraw_verifycontact_explain">Questo codice QR può essere scansionato da altri utenti per contattarti.\n\nÈ possibile disattivare il codice QR qui e riattivarlo scansionandolo di nuovo.</string>
-    <string name="withdraw_verifygroup_explain">Questo codice QR può essere scansionato da altri per unirsi al gruppo \"%1$s\".\n\nPuoi disattivare il codice QR qui e riattivarlo scansionandolo di nuovo.</string>
-    <string name="withdraw_qr_code">Disattiva Codice QR</string>
-    <string name="revive_verifycontact_explain">Questo codice QR potrebbe essere scansionato da altri per contattarti.\n\nIl codice QR non è attivo su questo dispositivo.</string>
-    <string name="revive_verifygroup_explain">Questo codice QR può essere scansionato da altri per unirsi al gruppo \"%1$s\".\n\nIl codice QR non è attivo su questo dispositivo.</string>
+    <string name="withdraw_verifycontact_explain">Questo codice QR può essere scansionato da altri per contattarti.\n\nPuoi reimpostarlo, in modo che il codice QR o il link di invito esistente non funzionino più.</string>
+    <string name="withdraw_verifygroup_explain">Questo codice QR può essere scansionato da altri per unirsi al gruppo \"%1$s\".\n\nPuoi reimpostarlo, in modo che il codice QR o il link di invito esistente non funzionino più.</string>
+    <string name="withdraw_qr_code">Reimposta Codice QR</string>
+    <string name="revive_verifycontact_explain">Questo codice QR è stato reimpostato e non è più attivo.</string>
+    <string name="revive_verifygroup_explain">Questo codice QR per unirsi al gruppo \"%1$s\" è stato reimpostato e non è più attivo.</string>
     <string name="revive_qr_code">Attiva Codice QR </string>
     <string name="qrshow_title">Codice QR Invito</string>
     <string name="qrshow_x_joining">%1$s si unisce.</string>

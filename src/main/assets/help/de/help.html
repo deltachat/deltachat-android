@@ -836,7 +836,7 @@ und <em>GnuPG (GPG)</em>, einem Kommandozeilenprogramm, das OpenPGP implementier
 In vielen öffentlichen Kritiken zu OpenPGP wird GnuPG diskutiert, das Delta Chat nie verwendet hat. 
 Delta Chat verwendet stattdessen die OpenPGP-Rust-Implementierung <a href="https://github.com/rpgp/rpgp">rPGP</a>,
 die als <a href="https://crates.io/crates/pgp">ein unabhängiges “pgp”-Paket</a>,
-verfügbar und <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">2019 sicherheitsgeprüft</a> wurde.</p>
+verfügbar ist und <a href="#security-audits">2019 und 2024 sicherheitsgeprüft</a> wurde.</p>
 
 <p>Unser Ziel ist, zusammen mit anderen OpenPGP-Implementierungen, 
 die Sicherheitseigenschaften durch das im Sommer 2023 angenommene
@@ -1080,7 +1080,7 @@ aber irgendwie nicht Ihre Nachrichten - gleichzeitig aber eine vollständige Auf
 vergangenen verschlüsselten Nachrichten hat.</p>
 
 <p>In jedem Fall verwendet die Ende-zu-Ende-Verschlüsselung von Delta Chat eine <a href="#openpgp-secure">sichere Untermenge von OpenPGP</a>
-das [unabhängig sicherheitsgeprüft] wurde (../assets/blog/2019-first-security-review.pdf).</p>
+das <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">unabhängig sicherheitsgeprüft</a> wurde.</p>
     
       <h3 id="importkey">
         
@@ -1138,9 +1138,22 @@ Für andere Programme können Sie online eine Lösung finden.</p>
         
       </h3>
 
-<p>Das Delta-Chat-Projekt wurde in den letzten Jahren fünf unabhängigen Sicherheitsprüfungen und -analysen unterzogen:</p>
+<p>Ja, mehrfach.
+Das Delta-Chat-Projekt wird kontinuierlich unabhängigen Sicherheitsaudits und -analysen unterzogen:</p>
 
 <ul>
+  <li>
+    <p>Im Dezember 2024 fand eine <a href="https://github.com/rpgp/docs/blob/main/audits/NGI%20Core%20rPGP%20penetration%20test%20report%202024%201.0.pdf">von NLNET in Auftrag gegebene Bewertung von rPGP</a> durch <a href="https://www.radicallyopensecurity.com/">Radically Open Security</a> statt.
+rPGP wird für die <a href="https://openpgp.org">OpenPGP</a>-Ende-zu-Ende-Verschlüsselung verwendet. 
+Im Zusammenhang mit den Ergebnissen dieser Prüfung wurden zwei Hinweise veröffentlicht:</p>
+
+    <ul>
+      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-9rmp-2568-59rv">“Panics on Malformed Untrusted Input”</a> CVE-2024-53856</li>
+      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-4grw-m28r-q285">“Potential Resource Exhaustion when handling Untrusted Messages”</a> CVE-2024-53857</li>
+    </ul>
+
+    <p>Die in diesen Hinweisen beschriebenen Probleme wurden behoben und sind Bestandteil der Delta Chat Veröffentlichungen in allen Appstores seit Dezember 2024.</p>
+  </li>
   <li>
     <p>Im März 2024 erhielten wir von der Forschungsgruppe “Applied Cryptography” der ETH Zürich eine umfassende Sicherheitsanalyse und haben alle aufgeworfenen Fragen adressiert. 
 Weitere Informationen finden Sie in unserem Blogbeitrag über <a href="https://delta.chat/en/2024-03-25-crypto-analysis-securejoin">Hardening Guaranteed End-to-End encryption</a> und in der hinterher publizierten <a href="https://eprint.iacr.org/2024/918.pdf">Kryptografischen Analyse von Delta Chat</a></p>
@@ -1157,7 +1170,7 @@ Es wurden keine kritischen oder hochgradig gefährlichen Probleme gefunden. Der 
   </li>
   <li>
     <p>Im Jahr 2019 analysierte <a href="https://includesecurity.com">Include Security</a> die von Delta Chat verwendeten <a href="https://github.com/rpgp/rpgp">PGP-</a> und <a href="https://github.com/RustCrypto/RSA">RSA-</a> Bibliotheken.
-Es wurden keine kritischen Probleme gefunden, aber zwei Probleme mit hohem Schweregrad, die wir anschließend behoben haben. Außerdem wurden ein mittelschweres und einige weniger schwerwiegende Probleme gefunden, aber es gab keine Möglichkeit, diese Schwachstellen in der Delta-Chat-Implementierung auszunutzen. Einige dieser Schwachstellen haben wir dennoch nach Abschluss des Audits behoben. Sie können den [vollständigen Bericht hier] lesen (../assets/blog/2019-first-security-review.pdf).</p>
+Es wurden keine kritischen Probleme gefunden, aber zwei Probleme mit hohem Schweregrad, die wir anschließend behoben haben. Außerdem wurden ein mittelschweres und einige weniger schwerwiegende Probleme gefunden, aber es gab keine Möglichkeit, diese Schwachstellen in der Delta-Chat-Implementierung auszunutzen. Einige dieser Schwachstellen haben wir dennoch nach Abschluss des Audits behoben. Sie können den <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">vollständigen Bericht hier</a> lesen.</p>
   </li>
 </ul>
     
