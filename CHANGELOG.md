@@ -4,6 +4,7 @@
 2025-02
 
 * enhanced "Saved Messages" feature, now when forwarding a message to "Saved Messages" chat, it retains the sender information and a button to jump to the original message
+* Saved messages are marked by a bookmark sign
 * improve explanation when blocking a contact
 * improve wording in empty "apps" and "files" tabs in chat media screen
 * remove deprecated/legacy built-in "half-camera"
