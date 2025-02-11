@@ -3,6 +3,8 @@ package org.thoughtcrime.securesms.mms;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.bumptech.glide.Glide;
@@ -11,9 +13,12 @@ import com.bumptech.glide.Registry;
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.load.model.UnitModelLoader;
 import com.bumptech.glide.module.AppGlideModule;
+import com.github.penfeizhou.animation.webp.decode.WebPDecoder;
 
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.glide.ContactPhotoLoader;
+import org.thoughtcrime.securesms.glide.webp.WebpDrawableTranscoder;
+import org.thoughtcrime.securesms.glide.webp.WebpLoader;
 import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader.DecryptableUri;
 
 import java.io.File;
@@ -49,5 +54,9 @@ public class SignalGlideModule extends AppGlideModule {
     registry.append(ContactPhoto.class, InputStream.class, new ContactPhotoLoader.Factory(context));
     registry.append(DecryptableUri.class, InputStream.class, new DecryptableStreamUriLoader.Factory(context));
     //registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory());
+
+    registry
+        .prepend(InputStream.class, WebPDecoder.class, new WebpLoader())
+        .register(WebPDecoder.class, Drawable.class, new WebpDrawableTranscoder());
   }
 }
