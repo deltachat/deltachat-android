@@ -723,7 +723,9 @@ https://meet.jit.si/$ROOM
     <string name="pref_manage_keys">مدیریت کلیدها</string>
     <string name="pref_use_system_emoji">استفاده از شکلک‌های سیستم</string>
     <string name="pref_use_system_emoji_explain">غیرفعال کردن شکلک‌های داخلی دلتاچت</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera">استفاده از دوربین درون‌برنامه</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera_explain">دوربین درون‌برنامه معمولا امکانات کمتری نسبت به دوربین سیستم دارد</string>
     <string name="pref_show_system_contacts">خواندن دفترچه آدرس دستگاه</string>
     <string name="pref_app_access">دسترسی نرم‌افزار</string>

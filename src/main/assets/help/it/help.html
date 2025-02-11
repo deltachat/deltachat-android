@@ -597,17 +597,15 @@ a qualsiasi sistema coinvolto nella consegna di Notifiche Push.</p>
 
 <ul>
   <li>
-    <p>A Delta Chat app obtains a “device token” locally, encrypts it and stores it
-on the <a href="https://delta.chat/chatmail">chatmail</a> server.</p>
+    <p>Un’app Delta Chat ottiene un “token del dispositivo” localmente, lo crittografa e lo memorizza sul server <a href="https://delta.chat/chatmail">chatmail</a>.</p>
   </li>
   <li>
-    <p>When a <a href="https://delta.chat/chatmail">chatmail</a> server receives an e-mail for a Delta Chat user
-it forwards the encrypted device token to the central Delta Chat notification proxy.</p>
+    <p>Quando un server <a href="https://delta.chat/chatmail">chatmail</a> riceve un’e-mail per un utente Delta Chat, inoltra il token del dispositivo crittografato al proxy di notifica centrale Delta Chat.</p>
   </li>
   <li>
-    <p>The central Delta Chat notification proxy decrypts the device token
-and forwards it to the respective Push service (Apple, Google, etc.),
-without ever knowing the IP or e-mail address of Delta Chat users.</p>
+    <p>Il proxy di notifica centrale di Delta Chat decifra il token del dispositivo
+e lo inoltra al rispettivo servizio Push (Apple, Google, ecc.),
+senza mai conoscere l’IP o l’indirizzo e-mail degli utenti di Delta Chat.</p>
   </li>
   <li>
     <p>Il Servizio Push centrale (Apple, Google, ecc.)
@@ -623,10 +621,10 @@ e inoltre non vedono mai il contenuto del messaggio (anche non in forma crittogr
 e si dimentica dei gettoni del dispositivo non appena Apple/Google/ecc li elabora,
 di solito nel giro di pochi millisecondi.</p>
 
-<p>Note that the device token is encrypted between apps and notification proxy
-but it is not signed. 
-The notification proxy thus never sees e-mail addresses, IP-addresses or
-any cryptographic identity information associated with a user’s device (token).</p>
+<p>Si noti che il token del dispositivo è crittografato tra le app e il proxy di notifica
+ma non è firmato.
+Il proxy di notifica quindi non vede mai indirizzi e-mail, indirizzi IP o
+alcune informazioni di identità crittografica associate al dispositivo di un utente (token).</p>
 
 <p>Come risultato di questo disegno complessivo sulla riservatezza, anche il sequestro di un server chatmail,
 o il sequestro totale del proxy di notifica centrale di Delta Chat
@@ -948,7 +946,7 @@ compresi eventuali allegati,
 se non sono crittografati end-to-end.</p>
 
 <p>Delta Chat per impostazione predefinita utilizza
-[Crittografia TLS] rigorosa (https://en.wikipedia.org/wiki/Transport_Layer_Security)
+<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">Crittografia TLS</a> rigorosa 
 che protegge le connessioni tra il tuo dispositivo e il tuo provider e-mail.
 Tutta la gestione TLS di Delta Chat è stata sottoposta a <a href="#security-audits">controlli di sicurezza</a> in modo indipendente.
 Inoltre, la connessione tra il tuo provider e-mail e quello del destinatario
@@ -1192,10 +1190,25 @@ Per altri programmi, dovresti essere in grado di trovare una soluzione online.</
         
       </h3>
 
-<p>Il progetto Delta Chat è stato sottoposto a quattro controlli di sicurezza indipendenti e
-un’analisi di sicurezza indipendente, dal più recente al più vecchio:</p>
+<p>Yes, multiple times. 
+The Delta Chat project continuously undergoes independent security audits and analysis,
+from most recent to older:</p>
 
 <ul>
+  <li>
+    <p>2024 December, an <a href="https://github.com/rpgp/docs/blob/main/audits/NGI%20Core%20rPGP%20penetration%20test%20report%202024%201.0.pdf">NLNET-commissioned Evaluation of
+rPGP</a> by <a href="https://www.radicallyopensecurity.com/">Radically Open Security</a> took place.
+rPGP serves as the end-to-end encyption <a href="https://openpgp.org">OpenPGP</a> engine of Delta Chat. 
+Two advisories were released related to the findings of this audit:</p>
+
+    <ul>
+      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-9rmp-2568-59rv">“Panics on Malformed Untrusted Input”</a> CVE-2024-53856</li>
+      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-4grw-m28r-q285">“Potential Resource Exhaustion when handling Untrusted Messages”</a> CVE-2024-53857</li>
+    </ul>
+
+    <p>The issues outlined in these advisories have been fixed and are part of Delta Chat 
+releases on all appstores since December 2024.</p>
+  </li>
   <li>
     <p>Marzo 2024, abbiamo ricevuto un’analisi approfondita della sicurezza dalla Crittografia Applicata
 gruppo di ricerca dell’ETH di Zurigo e ha affrontato tutte le questioni sollevate. 
@@ -1912,7 +1925,7 @@ tramite <a href="https://autocrypt.org">Autocrypt</a>.</p>
 prima sovvenzione 2018/2019 (~$200K) durante la quale abbiamo notevolmente migliorato l’app Android
 e ha rilasciato una prima versione beta dell’app desktop, e che inoltre
 ancorato i nostri sviluppi delle funzionalità nella ricerca sulla UX nei contesti dei diritti umani,
-vedete il nostro [Rapporto Needfinding e UX] conclusivo (https://delta.chat/en/2019-07-19-uxreport).
+vedete il nostro <a href="https://delta.chat/en/2019-07-19-uxreport">Rapporto Needfinding e UX</a> conclusivo.
 La seconda sovvenzione 2019/2020 (~$300K) ci ha aiutato a farlo
 rilasciare nelle versioni Delta/iOS, per convertire la nostra libreria principale in Rust, e
 per fornire nuove funzionalità per tutte le piattaforme.</p>
@@ -1936,7 +1949,7 @@ e fornendo “inserimento immediato” in tutte le app rilasciate da aprile 2024
   </li>
   <li>
     <p>Nel 2023 e nel 2024 siamo stati accettati nel programma Next Generation Internet (NGI)
-per il nostro lavoro in [webxdc PUSH].(https://nlnet.nl/project/WebXDC-Push/),
+per il nostro lavoro in <a href="https://nlnet.nl/project/WebXDC-Push/">webxdc PUSH</a>,
 insieme ai partner di collaborazione che lavorano su 
 <a href="https://nlnet.nl/project/Webxdc-Evolve/">webxdc evolve</a>, 
 <a href="https://nlnet.nl/project/WebXDC-XMPP/">webxdc XMPP</a>, 

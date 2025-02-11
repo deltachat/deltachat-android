@@ -239,6 +239,8 @@
     <string name="new_classic_contact_explain">Контакты, добавленные вручную, можно использовать для отправки текстовых сообщений по обычной электронной почте, без гарантированного сквозного шифрования.</string>
     <string name="menu_new_chat">Новый чат</string>
     <string name="menu_new_group">Новая группа</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Начать чат с…</string>
     <string name="clone_chat">Клонировать чат</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Список рассылки</string>
@@ -533,6 +535,8 @@
     <string name="profile_encryption">Шифрование</string>
     <string name="profile_shared_chats">Общие чаты</string>
     <string name="related_chats">Похожие чаты</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Прошлые участники</string>
     <string name="tab_contact">Контакты</string>
     <string name="tab_group">Группа</string>
     <string name="tab_gallery">Галерея</string>
@@ -766,7 +770,9 @@
     <string name="pref_manage_keys">Управление ключами</string>
     <string name="pref_use_system_emoji">Использовать системные эмодзи</string>
     <string name="pref_use_system_emoji_explain">Отключить поддержку встроенных эмодзи Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera">Использовать камеру приложения</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera_explain">Камера приложения обычно имеет меньше функций, чем системная</string>
     <string name="pref_show_system_contacts">Чтение системной адресной книги</string>
     <string name="pref_show_system_contacts_explain">Предлагать создать чаты с контактами из адресной книги. Некоторые провайдеры требуют предварительной настройки сквозного шифрования.</string>

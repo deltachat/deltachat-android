@@ -676,7 +676,9 @@
     <string name="pref_manage_keys">Gérer les clés</string>
     <string name="pref_use_system_emoji">Utiliser les émojis système</string>
     <string name="pref_use_system_emoji_explain">Désactiver la prise en charge des émojis intégrés de Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera">Utiliser l\'appareil photo de l\'appli</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera_explain">L\'appareil photo de l\'appli possède généralement moins de fonctionnalités que celui du système</string>
     <string name="pref_app_access">Accès à l\'application</string>
     <string name="pref_chats">Discussions</string>

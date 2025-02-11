@@ -622,7 +622,9 @@
     <string name="pref_manage_keys">Quản lý khóa</string>
     <string name="pref_use_system_emoji">Sử dụng Emoji hệ thống</string>
     <string name="pref_use_system_emoji_explain">Tắt tính năng hỗ trợ emoji tích hợp của Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera">Sử dụng máy ảnh trong ứng dụng</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera_explain">Camera trong ứng dụng thường có ít tính năng hơn camera hệ thống</string>
     <string name="pref_app_access">Quyền truy cập ứng dụng</string>
     <string name="pref_chats">Trò chuyện</string>

@@ -221,6 +221,8 @@
     <string name="new_classic_contact_explain">Elle eklenen kişiler, klasik e-postaya metin göndermede kullanılabilir ve uçtan uca şifreleme güvencelenmez.</string>
     <string name="menu_new_chat">Yeni Sohbet</string>
     <string name="menu_new_group">Yeni Öbek</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Sohbet et…</string>
     <string name="clone_chat">Sohbeti Çoğalt</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Yayın Listesi</string>
@@ -501,6 +503,8 @@
     <string name="profile_encryption">Şifreleme</string>
     <string name="profile_shared_chats">Paylaşılan Sohbetler</string>
     <string name="related_chats">İlgili Sohbetler</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Geçmişteki Üyeler</string>
     <string name="tab_contact">Kişi</string>
     <string name="tab_group">Öbek</string>
     <string name="tab_gallery">Galeri</string>
@@ -734,7 +738,9 @@
     <string name="pref_manage_keys">Anahtarları Yönet</string>
     <string name="pref_use_system_emoji">Sistem Emojisini Kullan</string>
     <string name="pref_use_system_emoji_explain">Delta Chat\'in gömülü emoji desteğini kapat</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera">Uygulama İçi Kamerayı Kullan</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera_explain">Uygulama içi kameranın genellikle sistem kamerasından daha az özelliği vardır</string>
     <string name="pref_show_system_contacts">Sistem Adres Defterini Oku</string>
     <string name="pref_show_system_contacts_explain">Adres defterinden gelen kişilerle sohbet oluşturmayı teklif edin. Bazı sağlayıcılara önce uçtan uca şifreleme ayarlaması gerekir.</string>
