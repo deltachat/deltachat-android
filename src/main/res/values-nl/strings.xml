@@ -221,6 +221,8 @@
     <string name="new_classic_contact_explain">Handmatig toegevoegde contactpersonen zijn bedoeld voor traditionele e-mailcommunicatie - eind-tot-endversleuteling is daarom niet gegarandeerd.</string>
     <string name="menu_new_chat">Nieuw gesprek</string>
     <string name="menu_new_group">Nieuwe groep</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Gesprek voeren met…</string>
     <string name="clone_chat">Gesprek klonen</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Verzendlijst</string>
@@ -501,6 +503,8 @@
     <string name="profile_encryption">Versleuteling</string>
     <string name="profile_shared_chats">Gedeelde gesprekken</string>
     <string name="related_chats">Verwante gesprekken</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Voormalige deelnemers</string>
     <string name="tab_contact">Contactpersoon</string>
     <string name="tab_group">Groep</string>
     <string name="tab_gallery">Galerij</string>
@@ -734,7 +738,9 @@
     <string name="pref_manage_keys">Sleutels beheren</string>
     <string name="pref_use_system_emoji">Systeememoji gebruiken</string>
     <string name="pref_use_system_emoji_explain">Schakel Delta Chats ingebouwde emojiondersteuning uit</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera">Ingebouwde camera gebruiken</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera_explain">Let op: de ingebouwde camera beschikt over minder functies dan de systeemcamera</string>
     <string name="pref_show_system_contacts">Adresboek uitlezen</string>
     <string name="pref_show_system_contacts_explain">Bied aan om gesprekken te beginnen met contactpersonen uit het adresboek. Let op: voor sommige providers is eind-tot-eindversleuteling benodigd.</string>

@@ -239,6 +239,8 @@
     <string name="new_classic_contact_explain">Ręcznie dodane kontakty mogą być używane do wysyłania tekstu w klasycznych e-mailach i nie ma gwarancji, że będą one szyfrowane metodą end-to-end.</string>
     <string name="menu_new_chat">Nowy czat</string>
     <string name="menu_new_group">Nowa grupa</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Czat z…</string>
     <string name="clone_chat">Klonuj czat</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Lista rozgłoszeniowa</string>
@@ -766,7 +768,9 @@
     <string name="pref_manage_keys">Zarządzaj prywatnymi kluczami</string>
     <string name="pref_use_system_emoji">Użyj emoji systemowych</string>
     <string name="pref_use_system_emoji_explain">Wyłącza wbudowaną obsługę emoji Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera">Użyj aparatu w aplikacji</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera_explain">Aparat w aplikacji ma zwykle mniej funkcji niż aparat systemowy</string>
     <string name="pref_show_system_contacts">Odczytaj systemową książkę adresową</string>
     <string name="pref_show_system_contacts_explain">Zaproponuj tworzenie czatów z kontaktami z książki adresowej. Niektórzy dostawcy wymagają najpierw szyfrowania end-to-end.</string>

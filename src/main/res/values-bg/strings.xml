@@ -670,7 +670,9 @@
     <string name="pref_manage_keys">Управление на ключове</string>
     <string name="pref_use_system_emoji">Да се използва Emoji на системата</string>
     <string name="pref_use_system_emoji_explain">Изключване на вградената поддръжка за Emoji на Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera">Да се използва камерата вътре в приложението</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera_explain">Камерата в приложението обикновено има по-малко възможности от системната камера</string>
     <string name="pref_show_system_contacts">Прочитане на системната адресна книга</string>
     <string name="pref_show_system_contacts_explain">Да се предлага създаване на чатове с контакти от адресната книга. За някои доставчици е необходимо първо да се настрои криптиране от край до край.</string>

@@ -31,6 +31,7 @@
     <string name="close_window">Užverti langą</string>
     <string name="forward">Persiųsti</string>
     <string name="create">Sukurti</string>
+    <string name="reset">Atstatyti</string>
     <string name="later">Vėliau</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Siųsti iš naujo</string>
@@ -169,6 +170,10 @@
     <string name="webxdc_app">Privati programėlė</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Privačios programėlės</string>
+    <string name="games">Žaidimai</string>
+    <string name="app_size">Dydis</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Naršyti</string>
     <string name="unknown">Nežinoma</string>
 
     <string name="green">Žalia</string>

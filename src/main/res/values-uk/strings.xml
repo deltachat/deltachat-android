@@ -210,6 +210,8 @@
     <string name="app_size">Розмір</string>
     <string name="app_date_published">Опубліковано</string>
     <string name="add_to_chat">Додати до чату</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Перегляд</string>
     <string name="unknown">Невідомо</string>
 
     <string name="green">Зелений</string>
@@ -237,6 +239,8 @@
     <string name="new_classic_contact_explain">Контакти, додані вручну, можна використовувати для надсилання тексту на класичну електронну пошту, але вони не гарантовано зашифровані наскрізним шифруванням.</string>
     <string name="menu_new_chat">Новий чат</string>
     <string name="menu_new_group">Нова група</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Повідомлення до...</string>
     <string name="clone_chat">Клонувати чат</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Список трансляцій</string>
@@ -400,8 +404,8 @@
     <string name="ask_forward">Переслати повідомлення %1$s?</string>
     <string name="ask_forward_multiple">Переслати повідомлення в %1$d?</string>
     <string name="ask_export_attachment">Якщо експортувати вкладені файли, інші програми на вашому пристрої отримають до них доступ.\n\nПродовжити?</string>
-    <string name="ask_block_contact">Заблокувати цей контакт? Ви більше не будете отримувати від нього повідомлення.</string>
-    <string name="ask_unblock_contact">Розблокувати цей контакт? Ви знову зможете отримувати від нього повідомлення.</string>
+    <string name="ask_block_contact">Заблокувати цей контакт?\n\nПрямі повідомлення або групи, створені заблокованими контактами, не відображатимуться.\n\nІнші групи із заблокованими контактами все одно показуватимуть свої повідомлення.</string>
+    <string name="ask_unblock_contact">Розблокувати цей контакт?</string>
     <string name="ask_delete_contacts">Видалити контакти?\n\nКонтакти з поточними чатами або з системної адресної книги неможливо видалити остаточно.</string>
     <string name="ask_delete_contact">Видалити %1$s?\n\nКонтакти з діючих чатів та з адресної книги системи не можна видалити назавжди.</string>
     <string name="cannot_delete_contacts_in_use">Неможливо видалити контакти, з якими є активні чати.</string>
@@ -531,6 +535,8 @@
     <string name="profile_encryption">Шифрування</string>
     <string name="profile_shared_chats">Розшарені чати</string>
     <string name="related_chats">Пов\'язані чати</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Колишні учасники</string>
     <string name="tab_contact">Контакт</string>
     <string name="tab_group">Група</string>
     <string name="tab_gallery">Галерея</string>
@@ -544,7 +550,8 @@
     <string name="tab_audio_empty_hint">Аудіозаписи та голосові повідомлення, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_webxdc_empty_hint">Застосунки, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_all_media_empty_hint">Тут відображатимуться медіафайли, якими Ви ділилися в будь-якому чаті.</string>
-    <string name="all_apps_empty_hint">Додатки, отримані або надіслані у цьому чаті, будуть відображатися тут.</string>
+    <string name="all_files_empty_hint">Документи та інші файли, якими поділилися в будь-якому чаті, з’являться тут.</string>
+    <string name="all_apps_empty_hint">Програми, якими поділилися в будь-якому чаті, з’являться тут.</string>
     <string name="media_preview">Попередній перегляд медіа</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Сітка співвідношення сторін</string>
@@ -763,7 +770,9 @@
     <string name="pref_manage_keys">Управління ключами</string>
     <string name="pref_use_system_emoji">Використовувати системні емодзі</string>
     <string name="pref_use_system_emoji_explain">Вимкнути вбудовану підтримку емодзі</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera">Використовувати вбудовану в додаток камеру</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera_explain">Вбудована в додаток камера зазвичай має менше функцій ніж системна.</string>
     <string name="pref_show_system_contacts">Прочитати адресну книгу системи</string>
     <string name="pref_show_system_contacts_explain">Пропозиція створювати чати з контактами з адресної книги. Деякі провайдери потребують попереднього налаштування наскрізного шифрування.</string>
@@ -1001,11 +1010,11 @@
     <string name="qrscan_contains_text">Текст з QR-коду:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL з QR-коду:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Відбиток</string>
-    <string name="withdraw_verifycontact_explain">Цей QR-код можуть сканувати інші, щоб зв’язатися з Вами.\n\nВи можете деактивувати QR-код і знову активувати його, відсканувавши повторно.</string>
-    <string name="withdraw_verifygroup_explain">Цей QR-код можуть сканувати інші, щоб приєднатися до групи \"%1$s\".\n\nВи можете деактивувати QR-код і знову активувати його, відсканувавши повторно.</string>
-    <string name="withdraw_qr_code">Деактивувати QR-код</string>
-    <string name="revive_verifycontact_explain">Цей QR-код можуть сканувати інші, щоб зв’язатися з Вами.\n\nQR-код неактивний на цьому пристрої.</string>
-    <string name="revive_verifygroup_explain">Цей QR-код можуть сканувати інші, щоб приєднатися до групи \"%1$s\".\n\nQR-код неактивний на цьому пристрої.</string>
+    <string name="withdraw_verifycontact_explain">Цей QR-код можуть відсканувати інші, щоб зв\'язатися з вами.\n\nВи можете скинути його, так що існуючий QR-код або посилання-запрошення більше не буде працювати.</string>
+    <string name="withdraw_verifygroup_explain">Цей QR-код можуть відсканувати інші, щоб приєднатися до групи \"%1$s\".\n\nВи можете скинути його, щоб існуючий QR-код або запрошувальне посилання більше не працювали.</string>
+    <string name="withdraw_qr_code">Скинути QR-код</string>
+    <string name="revive_verifycontact_explain">Цей QR-код було скинуто і він більше не активний.</string>
+    <string name="revive_verifygroup_explain">Цей QR-код для приєднання до групи \"%1$s\" було скинуто, і він більше не активний.</string>
     <string name="revive_qr_code">Активувати QR-код</string>
     <string name="qrshow_title">QR-код запрошення</string>
     <string name="qrshow_x_joining">%1$s приєднався(-лася).</string>

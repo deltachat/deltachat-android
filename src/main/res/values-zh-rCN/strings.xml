@@ -212,6 +212,8 @@
     <string name="new_classic_contact_explain">手动添加的联系人可用于向传统电子邮件发送文本，并且不能保证端到端加密。</string>
     <string name="menu_new_chat">新建聊天</string>
     <string name="menu_new_group">新建群组</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">聊天…</string>
     <string name="clone_chat">克隆聊天</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">广播列表</string>
@@ -485,6 +487,8 @@
     <string name="profile_encryption">加密</string>
     <string name="profile_shared_chats">共有聊天</string>
     <string name="related_chats">相关聊天</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">过去成员</string>
     <string name="tab_contact">联系人</string>
     <string name="tab_group">群组</string>
     <string name="tab_gallery">图库</string>
@@ -718,7 +722,9 @@
     <string name="pref_manage_keys">管理密钥</string>
     <string name="pref_use_system_emoji">使用系统 emoji</string>
     <string name="pref_use_system_emoji_explain">关闭 Delta Chat 内置 emoji 支持</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera">使用应用内相机</string>
+    <!-- deprecated -->
     <string name="pref_use_inapp_camera_explain">应用内相机功能通常比系统相机少</string>
     <string name="pref_show_system_contacts">读取系统通讯录</string>
     <string name="pref_show_system_contacts_explain">从通讯录建立和联系人的聊天。一些邮件服务商需要先行设置才能进行端到端加密的聊天。</string>
