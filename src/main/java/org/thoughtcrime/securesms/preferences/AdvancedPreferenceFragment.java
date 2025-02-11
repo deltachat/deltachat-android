@@ -269,7 +269,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     }
 
     if (dcContext.isChatmail()) {
-      preferE2eeCheckbox.setVisible(false);
+      this.findPreference("pref_category_encryption").setVisible(false);
       showSystemContacts.setVisible(false);
       sentboxWatchCheckbox.setVisible(false);
       bccSelfCheckbox.setVisible(false);
