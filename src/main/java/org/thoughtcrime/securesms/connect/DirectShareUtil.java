@@ -144,7 +144,7 @@ public class DirectShareUtil {
     return results;
   }
 
-  private static Bitmap getIconForShortcut(@NonNull Context context, @NonNull Recipient recipient) {
+  public static Bitmap getIconForShortcut(@NonNull Context context, @NonNull Recipient recipient) {
     try {
       return getShortcutInfoBitmap(context, recipient);
     } catch (ExecutionException | InterruptedException | NullPointerException e) {
