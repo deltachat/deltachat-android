@@ -44,15 +44,12 @@ public class DcLocationManager implements Observer {
         this.context = context.getApplicationContext();
         DcLocation.getInstance().addObserver(this);
         if (DcHelper.getContext(context).isSendingLocationsToChat(0)) {
-            startLocationEngine();
+            //startLocationEngine();
         }
     }
 
     public void startLocationEngine() {
-        if (serviceBinder == null) {
-            Intent intent = new Intent(context.getApplicationContext(), LocationBackgroundService.class);
-            context.bindService(intent, serviceConnection, BIND_AUTO_CREATE);
-        }
+        LocationStreamingService.startForegroundService(context.getApplicationContext());
     }
 
     public void stopLocationEngine() {
