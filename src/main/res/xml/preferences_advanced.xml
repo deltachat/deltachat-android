@@ -70,7 +70,9 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/pref_encryption">
+    <PreferenceCategory
+        android:key="pref_category_encryption"
+        android:title="@string/pref_encryption">
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
