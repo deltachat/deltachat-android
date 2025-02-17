@@ -1,0 +1,19 @@
+Delta Chat to zdecentralizowany i bezpieczny komunikator, który jest całkowicie
+kompatybilny z istniejącą infrastrukturą poczty e-mail.
+
+Dzięki Delta Chat zyskujesz możliwość łatwego i wygodnego komunikowania się ze swoimi kontaktami
+e-mail.
+
+Niektóre funkcje w skrócie:
+
+💬 Niezawodne wiadomości błyskawiczne z obsługą wielu profili i urządzeń.
+
+⚡️ Łatwa rejestracja przy użyciu bezpiecznych i szybkich serwerów chatmail. Nie wymaga to numeru telefonu ani żadnych prywatnych danych.
+
+📧 Możesz również użyć istniejącego adresu e-mail, aby odtworzyć swoją skrzynkę odbiorczą jako czaty.
+
+🎮 Interaktywne mini-aplikacje w czatach do gier i współpracy.
+
+🔒 Sprawdzone szyfrowanie end-to-end chroniące przed atakami sieciowymi i serwerowymi.
+
+🆓 W pełni otwarte oprogramowanie, oparte na standardach internetowych.
