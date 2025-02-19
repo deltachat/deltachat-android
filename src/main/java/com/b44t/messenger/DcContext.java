@@ -87,7 +87,7 @@ public class DcContext {
 
     private static final String CONFIG_MUTE_MENTIONS_IF_MUTED = "ui.mute_mentions_if_muted";
 
-    // when using DcAccounts, use DcAccounts.addAccount() instead
+    // when using DcAccounts, use Rpc.addAccount() instead
     public DcContext(String osName, String dbfile) {
         contextCPtr = createContextCPtr(osName, dbfile);
     }
