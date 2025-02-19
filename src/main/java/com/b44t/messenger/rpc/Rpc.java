@@ -125,6 +125,10 @@ public class Rpc {
         return getResult("get_account_file_size", accountId).getAsInt();
     }
 
+    public int addAccount() throws RpcException {
+        return getResult("add_account").getAsInt();
+    }
+
     private static class Request {
         private final String jsonrpc = "2.0";
         public final String method;

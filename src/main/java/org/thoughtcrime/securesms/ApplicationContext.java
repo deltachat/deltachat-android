@@ -26,6 +26,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventEmitter;
 import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -104,7 +105,11 @@ public class ApplicationContext extends MultiDexApplication {
       }
     }
     if (allAccounts.length == 0) {
-      dcAccounts.addAccount();
+      try {
+        rpc.addAccount();
+      } catch (RpcException e) {
+        e.printStackTrace();
+      }
     }
     dcContext = dcAccounts.getSelectedAccount();
     notificationCenter = new NotificationCenter(this);
