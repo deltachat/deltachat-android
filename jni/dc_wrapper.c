@@ -1623,6 +1623,20 @@ JNIEXPORT void Java_com_b44t_messenger_DcMsg_setText(JNIEnv *env, jobject obj, j
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcMsg_sendEditRequest(JNIEnv *env, jobject obj, jstring text)
+{
+    CHAR_REF(text);
+        dc_send_edit_request(get_dc_msg(env, obj), textPtr);
+    CHAR_UNREF(text);
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isEdited(JNIEnv *env, jobject obj)
+{
+    return dc_msg_is_edited(get_dc_msg(env, obj));
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_DcMsg_setFileAndDeduplicate(JNIEnv *env, jobject obj, jstring file, jstring name, jstring filemime)
 {
     CHAR_REF(file);
