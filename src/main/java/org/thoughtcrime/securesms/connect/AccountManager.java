@@ -13,6 +13,8 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ConversationListActivity;
@@ -86,15 +88,21 @@ public class AccountManager {
     // add accounts
 
     public int beginAccountCreation(Context context) {
+        Rpc rpc = DcHelper.getRpc(context);
         DcAccounts accounts = DcHelper.getAccounts(context);
         DcContext selectedAccount = accounts.getSelectedAccount();
         if (selectedAccount.isOk()) {
           PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(LAST_ACCOUNT_ID, selectedAccount.getAccountId()).apply();
         }
 
-        int id = accounts.addAccount();
-        resetDcContext(context);
-        return id;
+      int id = 0;
+      try {
+        id = rpc.addAccount();
+      } catch (RpcException e) {
+        e.printStackTrace();
+      }
+      resetDcContext(context);
+      return id;
     }
 
     public boolean canRollbackAccountCreation(Context context) {

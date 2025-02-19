@@ -231,12 +231,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcAccounts_backgroundFetch(JNIEnv *en
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_addAccount(JNIEnv *env, jobject obj)
-{
-    return dc_accounts_add_account(get_dc_accounts(env, obj));
-}
-
-
 JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_migrateAccount(JNIEnv *env, jobject obj, jstring dbfile)
 {
     CHAR_REF(dbfile);
