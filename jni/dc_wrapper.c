@@ -1623,16 +1623,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcMsg_setText(JNIEnv *env, jobject obj, j
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcMsg_setFile(JNIEnv *env, jobject obj, jstring file, jstring filemime)
-{
-    CHAR_REF(file);
-    CHAR_REF(filemime);
-        dc_msg_set_file(get_dc_msg(env, obj), filePtr, filemimePtr);
-    CHAR_UNREF(filemime);
-    CHAR_UNREF(file);
-}
-
-
 JNIEXPORT void Java_com_b44t_messenger_DcMsg_setFileAndDeduplicate(JNIEnv *env, jobject obj, jstring file, jstring name, jstring filemime)
 {
     CHAR_REF(file);
