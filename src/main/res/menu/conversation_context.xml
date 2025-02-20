@@ -20,11 +20,6 @@
         android:icon="?menu_forward_icon"
         app:showAsAction="ifRoom" />
 
-  <item android:title="@string/menu_message_details"
-        android:id="@+id/menu_context_details"
-        android:icon="?menu_info_icon"
-        app:showAsAction="never" />
-
   <item android:title="@string/add_to_home_screen"
         android:id="@+id/menu_add_to_home_screen"
         android:visible="false"
@@ -35,7 +30,11 @@
         android:visible="false"
         app:showAsAction="never" />
 
-  <item android:title="@string/menu_reply"
+  <item android:title="@string/info"
+        android:id="@+id/menu_context_details"
+        app:showAsAction="never" />
+
+  <item android:title="@string/notify_reply_button"
         android:id="@+id/menu_context_reply"
         app:showAsAction="never" />
 
@@ -47,7 +46,7 @@
         android:id="@+id/menu_resend"
         app:showAsAction="never" />
 
-  <item android:title="@string/menu_delete_messages"
+  <item android:title="@string/delete"
         android:id="@+id/menu_context_delete_message"
         android:icon="?menu_trash_icon"
         app:showAsAction="never" />
