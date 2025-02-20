@@ -1287,8 +1287,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void onQuoteDismissed() {
+    if (isEditing) composeText.setText("");
     isEditing = false;
-    composeText.setText("");
   }
 
   // media selected by the system keyboard
