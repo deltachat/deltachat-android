@@ -189,7 +189,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private boolean    isDefaultSms             = true;
   private boolean    isSecurityInitialized    = false;
   private boolean successfulForwardingAttempt = false;
-  private boolean    isEditing = false;
+  private boolean isEditing = false;
 
   @Override
   protected void onCreate(Bundle state, boolean ready) {
