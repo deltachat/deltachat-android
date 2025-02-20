@@ -253,7 +253,7 @@
     <string name="share_invite_link_explain">Qualsevol amb aquest enllaç pot veure el vostre perfil i començar un xat amb vós. Compartiu-lo només amb qui tingueu confiança.</string>
     <string name="invite_friends">Convida amics</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
-    <string name="invite_friends_text">Contacta amb mi a Delta Chat:\n %1$s</string>
+    <string name="invite_friends_text">Contacta amb mi a Delta Chat:\n%1$s</string>
     <string name="menu_copy_selection_to_clipboard">Copia la selecció</string>
     <string name="menu_copy_link_to_clipboard">Copia l\'enllaç</string>
     <string name="menu_copy_text_to_clipboard">Copia el text</string>
@@ -308,6 +308,7 @@
     <string name="device_talk">Missatges del dispositiu</string>
     <string name="device_talk_subtitle">Missatges generats localment</string>
     <string name="device_talk_explain">Els missatges d\'aquest xat són generats en el vostre dispositiu per a informar-vos sobre actualitzacions de l\'aplicació o de problemes durant el seu ús.</string>
+    <string name="device_talk_welcome_message2">Esteu en contacte!\n\n🙌 Toqueu «Codi QR» en la finestra principal d\'ambdós dispositius. Trieu «Escaneja codi QR» en un dispositiu, i apunteu cap a l\'altre\n\n🌍 Si no esteu en la mateixa sala, podeu escanejar o compartir un enllaç d\'invitació des de «Escaneja codi QR»\n\nDesprés: gaudiu de l\'experiència de missatgeria sobre la xarxa descentralitzada més gran que ha existit mai: el correu electrònic. I, en contrast amb altres aplicacions populars, sense control central, seguiment ni comercialització de vós, amics, col·legues o familiars amb grans organitzacions.</string>
     <string name="edit_contact">Edita el contacte</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Fixa el xat</string>
@@ -321,8 +322,8 @@
     <string name="reply_privately">Respon en privat</string>
     <string name="source_code">Codi font</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
-    <string name="add_to_home_screen">Afegeix a la finestra d\'inici</string>
-    <string name="donate">Fes un donatiu</string>
+    <string name="add_to_home_screen">Afegeix a la pantalla d\'inici</string>
+    <string name="donate">Feu un donatiu</string>
 
     <string name="mute_for_one_hour">Silencia 1 hora</string>
     <string name="mute_for_two_hours">Silencia 2 hores</string>
@@ -330,11 +331,11 @@
     <string name="mute_for_seven_days">Silencia 7 dies</string>
     <string name="mute_forever">Sempre silenciat</string>
 
-    <string name="share_location_for_5_minutes">durant 5 minuts</string>
-    <string name="share_location_for_30_minutes">durant 30 minuts</string>
-    <string name="share_location_for_one_hour">durant 1 hora</string>
-    <string name="share_location_for_two_hours">durant 2 hores</string>
-    <string name="share_location_for_six_hours">durant 6 hores</string>
+    <string name="share_location_for_5_minutes">Durant 5 minuts</string>
+    <string name="share_location_for_30_minutes">Durant 30 minuts</string>
+    <string name="share_location_for_one_hour">Durant 1 hora</string>
+    <string name="share_location_for_two_hours">Durant 2 hores</string>
+    <string name="share_location_for_six_hours">Durant 6 hores</string>
 
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Voleu enviar el següent fitxer a %s?</item>
@@ -342,28 +343,29 @@
     </plurals>
     <string name="file_saved_to">El fitxer s\'ha desat a «%1$s».</string>
 
-    <string name="videochat">Vídeo xat</string>
-    <string name="videochat_invite_user_to_videochat">Voleu convidar %1$s a un vídeo xat?</string>
+    <string name="videochat">Xat de vídeo</string>
+    <string name="videochat_invite_user_to_videochat">Voleu convidar %1$s a un xat de vídeo?</string>
     <string name="videochat_invite_user_hint">Això requereix una aplicació o navegador compatible en ambdós extrems.</string>
-    <string name="videochat_contact_invited_hint">%1$s ha estat convidat a un vídeo xat.</string>
-    <string name="videochat_you_invited_hint">Heu enviat una invitació de videoxat.</string>
+    <string name="videochat_contact_invited_hint">%1$s ha estat convidat a un xat de vídeo.</string>
+    <string name="videochat_you_invited_hint">Heu enviat una invitació de xat de video.</string>
     <string name="videochat_tap_to_join">Toca per a afegir-t\'hi</string>
     <string name="videochat_tap_to_open">Toca per a obrir-ho</string>
-    <string name="videochat_instance">Instància de vídeo xat</string>
-    <string name="videochat_instance_placeholder">La vostra instància de vídeoxat</string>
+    <string name="videochat_instance">Instància de xat de vídeo</string>
+    <string name="videochat_instance_placeholder">La vostra instància de xat de vídeo</string>
     <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
     <string name="videochat_instance_example">Exemple: https://el-vostre-servidor.org/$SALA</string>
-    <string name="videochat_instance_explain_2">Si està activada, podeu iniciar un videoxat des de cada xat. Necessita una aplicació o navegador compatible en ambdós extrems.</string>
-    <string name="videochat_invitation">Invitació a un vídeo xat</string>
-    <string name="videochat_invitation_body">Heu sigut convidats a un vídeo xat, cliqueu %1$s per unir-vos-hi.</string>
+    <string name="videochat_instance_explain_2">Si està activada, podeu iniciar un xat de video des de cada xat. Necessita una aplicació o navegador compatible en ambdós extrems.</string>
+    <string name="videochat_instance_from_qr">Voleu usar «%1$s» per a convidar altres participants a xats de video?\n\nUna vegada definit, podeu iniciar un xat de vídeo des de cada xat. Això substitueix la configuració anterior per a xats de video.</string>
+    <string name="videochat_invitation">Invitació a un xat de vídeo</string>
+    <string name="videochat_invitation_body">Us han convidat a un xat de vídeo, feu clic a %1$s per unir-vos-hi.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Segur que voleu deixar aquest grup?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Esborra %d xat? Ja no es mostrarà al llistat de xats, i els seus missatges no romandran al servidor.</item>
-        <item quantity="other">Voleu esborrar %d xats? Ja no es mostraran al llistat de xats i els missatges no quedaran al servidor.</item>
+        <item quantity="other">Voleu esborrar %d xats? Ja no es mostraran al llistat de xats però els missatges es conservaran al servidor.</item>
     </plurals>
-    <string name="ask_delete_named_chat">Voleu esborrar el xat «%1$s»? Ja no es mostrà més en el llistat de xats i els missatges romandran al servidor.</string>
+    <string name="ask_delete_named_chat">Voleu esborrar el xat «%1$s»? Ja no es mostrarà més en el llistat de xats i els missatges romandran al servidor.</string>
     <string name="ask_delete_message">Esteu segur de voler esborrar aquest missatge?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Esborra %d missatge aquí i al servidor?</item>
@@ -376,9 +378,10 @@
     <string name="ask_forward">Reenvia missatges a %1$s?</string>
     <string name="ask_forward_multiple">Voleu reenviar els missatges a %1$d xats?</string>
     <string name="ask_export_attachment">En exportar els adjunts permetreu que altres aplicacions del dispositiu hi puguin accedir.\n\nVoleu continuar?</string>
-    <string name="ask_block_contact">Voleu blocar aquest contacte? En aquest cas ja no en rebreu més missatges.</string>
-    <string name="ask_unblock_contact">Voleu desblocar aquest contacte? Llavors podreu tornar a rebre\'n missatges.</string>
-    <string name="ask_delete_contacts">Voleu esborrar els contactes? Això eliminarà definitivament els contactes seleccionats.\n\nEls contactes amb xats oberts i els que estiguin al vostre directori d\'adreces no es poden eliminar definitivament. </string>
+    <string name="ask_block_contact">Voleu blocar aquest contacte?\n\nNo podreu veure els missatges directes o grups creats pels contactes blocats.\n\nAltres grups amb contactes blocats els continuareu veient.</string>
+    <string name="ask_unblock_contact">Voleu desblocar aquest contacte?</string>
+    <string name="ask_delete_contacts">Voleu esborrar els contactes?\n\nEls contactes amb xats actius i els que estiguin al vostre directori d\'adreces no es poden eliminar definitivament. </string>
+    <string name="ask_delete_contact">Voleu esborrar el contacte %1$s?\n\nEls contactes dels xats actius o de la llibreta d\'adreces del sistema no es poden esborrar permanentment.</string>
     <string name="cannot_delete_contacts_in_use">No es poden esborrar els contactes amb xats actius.</string>
     <string name="ask_start_chat_with">Voleu xatejar amb %1$s?</string>
     <string name="ask_delete_value">Voleu esborrar %s?</string>
@@ -407,14 +410,14 @@
     </plurals>
     <string name="chat_archived_chats_title">Xats arxivats</string>
     <string name="chat_please_enter_message">Si us plau, escriviu un missatge</string>
-    <string name="chat_camera_unavailable">Càmera no disponible.</string>
+    <string name="chat_camera_unavailable">La càmera no és disponible.</string>
     <string name="chat_unable_to_record_audio">No es pot gravar so.</string>
     <plurals name="chat_n_new_messages">
         <item quantity="one">%d nou missatge</item>
         <item quantity="other">%d missatges nous</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Envieu un missatge. No hi fa pas res si %1$s no fa servir Delta Chat.</string>
+    <string name="chat_new_one_to_one_hint">Envia un missatge a %1$s.</string>
     <string name="chat_new_broadcast_hint">En una llista de difusió, els destinataris rebran missatges en mode de només lectura en un xat amb tu.</string>
     <string name="chat_new_group_hint">Els altres membres només veuran aquest grup després que hi envieu el primer missatge.</string>
     <string name="chat_record_slide_to_cancel">Llisca per cancel·lar</string>
@@ -518,15 +521,25 @@
     <string name="all_files_empty_hint">Els documents i altres fitxers compartits en qualsevol xat apareixeran aquí.</string>
     <string name="all_apps_empty_hint">Les aplicacions compartides en qualsevol xat apareixeran aquí.</string>
     <string name="media_preview">Previsualització multimèdia</string>
+    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <string name="aspect_ratio_grid">Graella d\'aspecte proporcinal</string>
+    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <string name="square_grid">Graella quadrada</string>
     <string name="send_message">Envia el missatge</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s ha canviat la seva adreça de %2$s a %3$s</string>
+    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <string name="aeap_explanation">Heu canviat la vostra adreça de correu electrònic de %1$s a %2$s.\n\nSi ara envieu un missatge a un grup verificat, els contactes del grup canviaran de forma automàtica l\'adreça antiga per la nova.\n\nUs recomanem que configureu el compte antic a fi que us reenvïi els missatges a l\'adreça nova. Si no ho feu, podríeu perdre missatges de contactes que encara no hagin actualitzat la vostra adreça.</string>
+
+
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Afegeix un segon dispositiu</string>
     <string name="multidevice_same_network_hint">Assegureu-vos que els dos dispositius estan a la mateixa Wi-Fi o xarxa</string>
     <string name="multidevice_this_creates_a_qr_code">Això crea codi QR que es pot escanejar en el segon dispositiu per a copiar el perfil.</string>
     <string name="multidevice_install_dc_on_other_device">Instal·leu Delta Chat en el vostre altre dispositiu (https://get.delta.chat)</string>
+    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <string name="multidevice_tap_scan_on_other_device">Inicieu Delta Chat, toqueu  «Ja tinc un perfil / Afegeix un segon dispositiu» i escanegeu el codi que es mostra aquí.</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Escanegeu-lo per configurar un segon dispositiu per a %1$s</string>
     <string name="multidevice_receiver_title">Afegeix com a segon dispositiu</string>
@@ -534,6 +547,7 @@
     <string name="multidevice_receiver_scanning_ask">Voleu copiar el perfil de l\'altre dispositiu en aquest?</string>
     <string name="multidevice_abort">Voleu cancel·lar la configuració d\'un segon dispositiu?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Això invalidarà el codi QR copiat al porta-retalls.</string>
+    <string name="multidevice_experimental_hint">(experimental, es requereix la versió 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ El perfil s\'ha transferit al segon dispositiu.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">S\'està preparant el perfil...</string>
@@ -546,6 +560,8 @@
     <string name="incoming_messages">Missatges entrants</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Missatges sortints</string>
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Emmagatzematge a %1$s.</string>
     <string name="connectivity">Connectivitat</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Desconnectat</string>
@@ -569,19 +585,35 @@
     <string name="onboarding_create_instant_account">Crea un perfil nou</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Ja tinc un perfil</string>
+    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Inici de sessió correu-e clàssic</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">El vostre perfil</string>
+    <!-- The placeholder will be replaced by the default onboarding server -->
+    <string name="instant_onboarding_agree_default2">Política de privadesa de %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
     <string name="instant_onboarding_agree_instance">Quant als perfils en %1$s</string>
+    <!-- Confirmation button on the instant onboarding screen -->
+    <string name="instant_onboarding_create">D\'acord i crea el perfil</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Usa un altre servidor</string>
     <string name="instant_onboarding_other_server">Llista els servidors chatmail</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">Creeu un perfil per unir-vos al grup \"%1$s\".</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <string name="instant_onboarding_contact_info">Crea un perfil per a xatejar amb %1$s</string>
+    <!-- Question shown when another user's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_contact">Voleu crear un perfil nou i començar a xatejar amb %1$s?</string>
+    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_group">Voleu crear un perfil nou i unir-vos al grup de xat «%1$s»?</string>
+
+    <string name="welcome_chat_over_email">Xat segur i descentralitzat</string>
     <string name="scan_invitation_code">Escaneja el Codi d\'Invitació</string>
     <string name="login_title">Identifiqueu-vos</string>
     <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Identifiqueu-vos al vostre servidor</string>
+    <!-- for classic email, we use the classical term "Account" -->
+    <string name="login_explain">Inicia sessió amb un compte de correu electrònic existent</string>
     <string name="login_subheader">Als proveïdors de mail coneguts els paràmetres es configuren automàticament. De vegades l\'IMAP s\'ha d\'activar a la interfície web. Consulta el teu proveïdor de correu electrònic o a un amic perquè t\'ajudi. </string>
     <string name="login_no_servers_hint">No hi ha servidors de Delta Chat: les vostres dades es queden al vostre dispositiu!</string>
     <string name="login_inbox">Safata d\'entrada</string>
@@ -628,10 +660,12 @@
     <string name="add_account">Afegeix un compte</string>
     <string name="profile_tag">Etiqueta privada</string>
     <string name="profile_tag_hint">p.ex. treball, família</string>
+    <string name="profile_tag_explain">Etiqueteu allò que és visible només per a vós. Això us ajuda a diferenciar els vostres perfils.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Desplaçat a l\'inici</string>
     <string name="delete_account">Esborra el perfil</string>
     <string name="delete_account_ask">Esteu segur de voler esborrar les dades del vostre perfil?</string>
+    <string name="delete_account_explain_with_name">S\'esborraran totes les dades del perfil «%s» en aquest dispositiu, incloent-hi la configuració de xifratge d\'extrem a extrem, contactes, xats, missatges i contingut multimèdia. Aquesta acció no es pot desfer.</string>
     <string name="unconfigured_account">Perfil sense configurar</string>
     <string name="unconfigured_account_hint">Obriu el per perfil per a configurar-lo.</string>
     <string name="try_connect_now">Prova de connectar-hi ara</string>
@@ -645,6 +679,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Voleu enviar %1$d fitxers a \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Voleu enviar %1$d fitxer(s) a %2$d xats?</string>
+    <string name="videos_sent_without_recoding">(Els vídeos s\'envien en el format original, fitxers grans. Per a enviar vídeos en fitxers més petits, adjunteu-los per separat)</string>
     <string name="share_text_multiple_chats">Voleu enviar aquest text a %1$d xats?\n\n«%2$s»</string>
     <string name="share_abort">S\'ha avortat la compartició per falta de permisos.</string>
 
@@ -664,6 +699,7 @@
     <string name="pref_default_status_label">Signatura</string>
     <string name="pref_enter_sends">La tecla \"Intro\" envia</string>
     <string name="pref_enter_sends_explain">Els missatges s\'enviaran prement la tecla \"Intro\"</string>
+    <string name="pref_outgoing_media_quality">Qualitat del contingut multimèdia sortint</string>
     <string name="pref_outgoing_balanced">Balancejat</string>
     <string name="pref_outgoing_worse">Pitjor qualitat, mida petita</string>
     <string name="pref_vibrate">Vibració</string>
@@ -704,7 +740,10 @@
     <string name="pref_use_system_emoji_explain">Desactiva el suport de sèrie per emojis a Delta Chat</string>
     <!-- deprecated -->
     <string name="pref_use_inapp_camera">Usa la càmera en l\'aplicació</string>
+    <!-- deprecated -->
+    <string name="pref_use_inapp_camera_explain">La càmera integrada a l\'aplicació sol tenir menors prestacions que la del sistema.</string>
     <string name="pref_show_system_contacts">Llegeix la llibreta d\'adreces del sistema</string>
+    <string name="pref_show_system_contacts_explain">Ofereix de crear xats amb els contactes de la llibreta d\'adreces. Alguns proveïdors necessiten de configurar abans el xifratge d\'extrem a extrem.</string>
     <string name="pref_app_access">Accés a l\'aplicació</string>
     <string name="pref_chats">Xats</string>
     <string name="pref_in_chat_sounds">Sons d\'entrada</string>
@@ -741,6 +780,8 @@
     <string name="pref_send_copy_to_self_explain">Imprescindible quan s\'utilitza aquest compte en diversos dispositius.</string>
     <string name="pref_auto_folder_moves">Moure automàticament a la carpeta de Delta Chat</string>
     <string name="pref_auto_folder_moves_explain">Les converses de xat s\'han mogut per no atapeir la safata d’entrada</string>
+    <string name="pref_only_fetch_mvbox_title">Agafa només de la carpeta de DeltaChat</string>
+    <string name="pref_only_fetch_mvbox_explain">Ignora les altres carpetes. Requereix que el vostre servidor mogui els missatges de xat a la carpeta DeltaChat.</string>
     <string name="pref_show_emails">Mostra els correus clàssics</string>
     <string name="pref_show_emails_no">No, només xats</string>
     <string name="pref_show_emails_accepted_contacts">Per a contactes acceptats</string>
@@ -748,6 +789,7 @@
     <string name="pref_experimental_features">Funcionalitats experimentals</string>
     <string name="pref_on_demand_location_streaming">Difusió de la ubicació sota demanda</string>
     <string name="pref_developer_mode">Mode de desenvolupador</string>
+    <string name="pref_developer_mode_explain">Activa les opcions de depuració i pot fer que l\'aplicació sigui menys estable. Només per a desenvolupadors.</string>
     <string name="pref_background_default">Imatge per defecte</string>
     <string name="pref_background_default_color">Color per defecte</string>
     <string name="pref_background_custom_image">Imatge personalitzada</string>
@@ -756,15 +798,20 @@
     <string name="auto_download_messages">Baixa els missatges automàticament</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">Fins a %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">Fins a %1$s, les imatges de pitjor qualitat</string>
+    <string name="up_to_x_most_balanced_quality_images">Fins a %1$s, imatges de qualitat la majoria de vegades.</string>
     <string name="download_failed">La baixada ha fallat</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s missatge</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">Baixa el màxim disponible fins a %1$s</string>
     <string name="profile_image_select">Trieu la imatge de perfil</string>
     <string name="select_your_new_profile_image">Trieu la imatge nova de perfil</string>
     <string name="profile_image_delete">Esborra la imatge del perfil</string>
     <string name="pref_show_tray_icon">Mostra la icona de la safata</string>
     <string name="pref_edit_profile">Edita el perfil</string>
     <string name="disable_imap_idle">Desactiva IMAP IDLE</string>
+    <string name="disable_imap_idle_explain">No usis l\'extensió IMAP IDLE encara que el servidor la permeti. Activar aquesta opció endarreria l\'obtenció de missatges, activeu-ho només per a proves.</string>
     <string name="send_stats_to_devs">Envia estadístiques als desenvolupadors del Delta Chat</string>
 
 
@@ -787,10 +834,17 @@
     <string name="react">Reacciona</string>
     <!-- %1$s will be replaced by an emoji. %2$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %2$s will often not being visible). Eg. 'You reacted 👍 to "Found my suitcase"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer and work as well. -->
     <string name="reaction_by_you">Heu reaccionat amb %1$s a «%2$s»</string>
+    <!-- %1$s will be replaced a name. %2$s will be replaced by an emoji. %3$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %3$s will often not being visible). Eg. 'Alice reacted 👍 to "Nice photos"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer work as well. -->
+    <string name="reaction_by_other">%1$sha reaccionat %2$s a «%3$s»</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Esborra els missatges antics</string>
     <string name="autodel_device_title">Esborra els missatges del dispositiu</string>
     <string name="autodel_server_title">Esborra els missatges del servidor</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_device_ask">Voleu esborrar ara %1$d missatges i tots els missatges \"%2$s\" futurs?\n\n• Això inclou tot el contingut multimèdia\n\n• S\'esborraran els missatges fins i tot si no s\'han llegit\n\n• Els \"Missatges desats\" no s\'esborraran de l\'emmagatzematge local</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_server_ask">Voleu esborrar ara %1$d missatges i tots els missatges nous \"%2$s\" futurs?\n\n⚠️ Això inclou els correus, contingut multimèdia i \"Missatges desats\" a totes les carpetes del servidor\n\n⚠️ No utilitzeu aquesta funció si voleu conservar les dades al servidor\n\n⚠️ No utilitzeu aquesta funció si feu servir un client de correu diferent del Delta Chat</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Això inclou els correus electrònics, contingut multimèdia i «Missatges desats» en totes les carpetes del servidor. No useu aquesta funció si voleu conservar dades al servidor o si useu altres clients de correu més enllà de Delta Chat.</string>
     <string name="autodel_server_warn_multi_device_title">Activa l\'esborrament immediat</string>
@@ -824,6 +878,8 @@
     <string name="autocrypt_bad_setup_code">Codi de configuració incorrecte. Siusplau torneu-ho a provar.\n\nSi no recordeu el codi de configuració Autocrypt, envieu-ne un de nou des de l’altre dispositiu.</string>
 
 
+    <!-- system messages -->
+    <string name="systemmsg_cannot_decrypt">Aquest missatge no es pot desxifrar.\n\n• Potser pot ajudar de respondre el missatge i demanar a l\'emissor que torni a enviar-lo,\n\n• Si acabeu de reinstal·lar Delta Chat, aleshores és millor de reconfigurar Delta Chat ara i triar «Afegeix un segon dispositiu» o importar una còpia de seguretat.</string>
     <string name="systemmsg_unknown_sender_for_chat">Remitent desconegut per a aquest xat. Vegeu «informació» per a més detalls.</string>
     <string name="systemmsg_subject_for_new_contact">Missatge de %1$s</string>
     <string name="systemmsg_failed_sending_to">No s\'ha pogut enviar el missatge a %1$s.</string>
@@ -891,19 +947,42 @@
     <string name="ephemeral_timer_weeks_by_other">%2$s ha definit el temporitzador dels missatges efímers a %1$s setmanes.</string>
     <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
     <string name="chat_protection_broken">%1$s ha enviat un missatge des d\'un altre dispositiu.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">Us garantim que a partir d\'ara els missatges són xifrats d\'extrem a extrem. Toqueu per a obtenir més informació.</string>
+    <string name="chat_protection_enabled_explanation">Ara es garanteix que tots els missatges d\'aquest xat són xifrats d\'extrem a extrem.\n\nEl xifratge d\'extrem a extrem manté privats els missatges entre vós i els companys de xat. Ni tan sols el vostre proveïdor de correu electrònic pot llegir-los.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s ha enviat un missatge des d\'un altre dispositiu. Toqueu per a obtenir més informació.</string>
+    <string name="chat_protection_broken_explanation">No es pot garantir el xifrat d\'extrem a extrem, probablement perquè %1$s ha reinstal·lat Delta Chat o ha enviat un missatge des d\'un altre dispositiu.\n\n Podeu trobar-vos físicament amb la persona i tornar a escanejar el seu codi QR per tomar-hi a tenir xifrat d\'extrem a extrem.</string>
+    <string name="invalid_unencrypted_tap_to_learn_more">%1$srequereix xifratge d\'extrem a extrem, que encara no s\'ha configurat per a aquest xat. Toqueu per a obtenir més informació.</string>
+    <string name="invalid_unencrypted_explanation">Per a establir xifratge d\'extrem a extrem, heu de trobar-vos amb els contactes en persona i escanejar el seu codi QR per a poder afegir-los.</string>
+    <string name="learn_more">Més informació</string>
+
     <string name="devicemsg_self_deleted">Heu esborrat el xat «Missatges desats».\n\nℹ️ Per a usar altre cop la funcionalitat de «Missatges desats», creeu un xat nou amb vós mateix.</string>
+    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Esteu a punt de quedar-vos sense espai d\'emmagatzematge al vostre proveïdor: ja esteu utilitzant %1$s%% .\n\nPodríeu deixar de rebre missatges si s\'emplena.\n\n👉 Reviseu a la interfície web del proveïdor si podeu esborrar dades antigues i considereu habilitar \"Preferències / Xats i multimèdia / Esborra els missatges antics\". Podeu veure sempre el nivell d\'ocupació a \"Preferències / Connectivitat\".</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ La data o l\'hora del vostre dispositiu no semblen correctes (%1$s).\n\nAdjusteu el rellotge ⏰🔧 per a assegurar que els missatges es reben correctament.</string>
+    <string name="devicemsg_update_reminder">⚠️ Delta Chat podría no estar actualitzat.\n\n Això us podria causar problemes perquè els vostres companys de xat utilitzen versions més noves i no teniu les últimes funcionalitats 😳\nComproveu a https://get.delta.chat o a la vostra botiga d\'aplicacions si hi ha actualitzacions.</string>
+
+    <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
+    <string name="enter_system_secret_to_continue">Desbloca per a continuar</string>
+
     <!-- qr code stuff -->
     <string name="qr_code">Codi QR</string>
     <string name="load_qr_code_as_image">Carrega el codi QR com a imatge</string>
     <string name="qrscan_title">Escaneja codi QR</string>
     <string name="qrscan_hint">Poseu la càmera davant del codi QR</string>
+    <string name="qrscan_hint_desktop">Mou el codi QR a la càmera</string>
+    <string name="qrscan_failed">No s\'ha pogut descodificar el codi QR</string>
     <string name="qrscan_ask_join_group">Voleu unir-vos al grup «%1$s»?</string>
     <string name="qrscan_fingerprint_mismatch">L\'empremta escanejada no coincideix amb l\'última empremta de %1$s</string>
     <string name="qrscan_no_addr_found">Aquest codi QR conté una empremta digital, però no hi ha cap adreça de correu electrònic.\n\nPer a una verificació fora de banda, establiu primer una connexió xifrada amb el destinatari.</string>
     <string name="qrscan_contains_text">Text del codi QR escanejat:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL del codi QR escanejat:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Empremta</string>
+    <string name="withdraw_verifycontact_explain">Altres persones que vulguin contactar amb vós poden escanejar aquest codi QR.\n\nPodeu reinicialitzar-lo, de manera que el codi QR o enllaç actual existent ja no servirà.</string>
+    <string name="withdraw_verifygroup_explain">Altres poden escanejar aquest codi QR per a unir-se al grup «%1$s».\n\nPodeu reinicialitzar-lo, de manera que el codi QR existent, o l\'enllaç d\'invitació, deixarà de funcionar.</string>
+    <string name="withdraw_qr_code">Reinicialitza el codi QR</string>
+    <string name="revive_verifycontact_explain">Aquest codi QR s\'ha reinicialitzat i ja no és actiu.</string>
+    <string name="revive_verifygroup_explain">Aquest codi QR per a unir-se al grup «%1$s» s\'ha reinicialitzat i ja no és actiu.</string>
     <string name="revive_qr_code">Activa el codi QR</string>
     <string name="qrshow_title">Codi QR d\'invitació</string>
     <string name="qrshow_x_joining">%1$s s\'uneix.</string>
@@ -916,12 +995,35 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Escanegeu això per establir contacte amb %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">No hi ha connexió a internet, no es pot fer la configuració amb codi QR.</string>
+    <string name="qraccount_ask_create_and_login">Voleu crear un perfil nou a «%1$s» i iniciar sessió allà?</string>
+    <string name="qraccount_ask_create_and_login_another">Voleu crear un perfil nou a «%1$s» i iniciar-hi sessió?\n\nEl vostre perfil existent no s\'esborrarà. Useu l\'element «Canvia el perfil» per a canviar entre els vostres perfils.</string>
     <string name="set_name_and_avatar_explain">Indiqueu un nom que els vostres contactes puguin reconèixer. També podeu establir una imatge de perfil.</string>
+    <string name="please_enter_name">Introduïu un nom</string>
+    <string name="qraccount_qr_code_cannot_be_used">El codi QR escanejat no es pot usar per a configurar un perfil nou.</string>
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <string name="qrlogin_ask_login">Voleu iniciar sessió a «%1$s»?</string>
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <string name="qrlogin_ask_login_another">Voleu iniciar «%1$s»?\n\nNo s\'esborrarà el perfil existent. Useu l\'element «Canvia el perfil» per a canviar entre els vostres perfils.</string>
+    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_started">%1$s us ha convidat a unir-vos a aquest grup.\n\nS\'està esperant el dispositiu de %2$s per a respondre...</string>
+    <!-- placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_replies">%1$s ha respost, espereu per a ser afegit al grup...</string>
+    <string name="secure_join_wait">S\'està establint el xifratge d\'extrem a extrem garantit, espereu...</string>
+    <string name="secure_join_wait_timeout">Encara no es pot garantir el xifrat punt-a-punt, però ja podeu enviar un missatge.</string>
     <string name="contact_verified">%1$s verificat.</string>
     <string name="contact_not_verified">No es pot verificar%1$s</string>
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <string name="verified_by">Afegit per %1$s</string>
+    <string name="verified_by_you">Afegit per mi</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuració canviada per %1$s</string>
+    <string name="verified_contact_required_explain">Per a garantir el xifrat extrem a extrem, només podeu afegir a aquest grup contactes que tinguin la marca verda.\n\nPodeu trobar-vos en persona amb els contactes per a escanejar els seus codis QR i poder-los afegir. </string>
+    <string name="copy_qr_data_success">S\'ha copiat l\'URL del codi QR al porta-retalls</string>
     <string name="mailto_dialog_header_select_chat">Trieu el xat on enviar el missatge</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="confirm_replace_draft">%1$s ja té un missatge d\'esborrany, voleu substituir-lo?</string>
+    <string name="mailto_link_could_not_be_decoded">No s\'ha pogut desxifrar l\'enllaç mailto: %1$s</string>
+
     <!-- notifications  -->
     <string name="notify_reply_button">Respondre</string>
     <string name="notify_new_message">Missatge nou</string>
@@ -931,9 +1033,13 @@
     <string name="notify_name_and_message">Nom i missatge</string>
     <string name="notify_name_only">Només nom</string>
     <string name="notify_no_name_or_message">Ni nom ni missatge</string>
+    <string name="notifications_disabled">Notificacions desactivades</string>
     <string name="new_messages">Missatges nous</string>
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">Teniu missatges nous</string>
+    <string name="n_messages_in_m_chats">%1$d missatges en %2$d xats</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">Es requereix permís</string>
     <string name="perm_continue">Continua</string>
@@ -943,7 +1049,14 @@
     <string name="perm_explain_access_to_location_denied">Per a adjuntar la ubicació, aneu a la configuració de l\'aplicació, trieu «Permisos» i activeu la «Ubicació».</string>
     <string name="perm_explain_access_to_notifications_denied">Per a rebre les notificacions, aneu a «Configuració del sistema / Aplicacions / Delta Chat» i activeu «Notificacions»</string>
 
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">Dibuixeu a qualsevol lloc per a difuminar-lo</string>
     <string name="ImageEditorHud_add_text">Afegeix text</string>
+    <string name="ImageEditorHud_blur">Difumina</string>
+    <string name="ImageEditorHud_brush_marker">Pinzell de marcatge</string>
+    <string name="ImageEditorHud_brush_highlight">Pinzell de ressaltat</string>
+    <string name="ImageEditorHud_crop">Retalla</string>
+    <string name="ImageEditorHud_flip">Capgira</string>
     <string name="ImageEditorHud_rotate">Gira</string>
 
     <!-- dc_str_* resources -->
@@ -951,6 +1064,7 @@
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Aquesta és l\'aplicació d\'escriptori oficial de Delta Chat.</string>
+    <string name="about_licensed_under_desktop">Aquest programari és llicenciat amb la llicència GNU GPL versió 3 i el codi font és disponible a GitHub</string>
     <string name="welcome_desktop">Us donem la benvinguda al Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Trieu l\'idioma...</string>
     <string name="global_menu_file_desktop">Arxiva</string>
@@ -991,23 +1105,38 @@
     <string name="message_detail_received_desktop">rebut</string>
     <string name="menu.view.developer.open.log.folder">Obre la carpeta de registre</string>
     <string name="menu.view.developer.open.current.log.file">Obre el fitxer de registre actual</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">La icona de la safata no es pot desactivar perquè Delta Chat s\'ha iniciat amb l\'opció --minimized</string>
     <string name="no_spellcheck_suggestions_found">No s\'ha trobat cap suggeriment ortogràfic.</string>
     <string name="show_window">Mostra la finestra</string>
+    <string name="login_socks5_experimental_warning">El suport de SOCKS5 és experimental. Utilitzeu-lo sota la vostra responsabilitat. Si poseu una adreça de correu electrònic en el camp de correu, es produirà una cerca de DNS que no passarà pel túnel SOCKS5.</string>
+
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">Dreceres de teclat</string>
+    <string name="switch_between_chats">Canvia entre xats</string>
+    <string name="scroll_messages">Desplaça els missatges</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Focus al camp de cerca</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">Focus a l\'entrada de text del missatge</string>
     <string name="force_refresh_network">Força l\'actualització de la xarxa</string>
     <string name="insert_newline">Insereix un salt de línia</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Estat d\'entrega: error</string>
+    <string name="a11y_encryption_padlock">Cadenat de xifratge</string>
     <string name="a11y_delivery_status_sending">Estat d\'entrega: enviant-se</string>
     <string name="a11y_delivery_status_draft">Estat d\'entrega: esborrany</string>
     <string name="a11y_delivery_status_delivered">Estat d\'entrega: entregat</string>
     <string name="a11y_delivery_status_read">Estat d\'entrega: llegit</string>
     <string name="a11y_delivery_status_invalid">Estat d\'entrega no vàlid</string>
     <string name="a11y_message_context_menu_btn_label">Accions de missatge</string>
+    <string name="a11y_background_preview_label">Previsualització del fons de pantalla</string>
     <string name="a11y_disappearing_messages_activated">S\'han activat els missatges efímers</string>
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Deixa de compartir la ubicació</string>
+    <string name="a11y_voice_message_hint_ios">Després d\'enregistrar, feu doble toc per a enviar-lo. Per a descartar l\'enregistrament, fregueu amb dos dits.</string>
+    <string name="a11y_connectivity_hint">Feu doble toc per a veure els detalls de connectivitat.</string>
     <string name="login_error_no_internet_connection">No hi ha connexió a internet, l\'inici de sessió ha fallat.</string>
     <string name="share_account_not_configured">No s\'ha configurat el perfil.</string>
     <string name="cannot_play_audio_file">No es pot reproduir l\'`audio.</string>
@@ -1017,10 +1146,18 @@
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">Importa els contactes del dispositiu</string>
     <string name="import_device_contacts_hint">Per a xatejar amb contactes des del vostre dispositiu, obriu Configuració i activeu «Contactes».</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">Desactivat a Delta Chat</string>
+    <string name="disabled_in_system_settings">Desactivat a la configuració del sistema</string>
+    <string name="bg_app_refresh_disabled">El \"Refresc en segon pla d\'aplicacions\" està deshabilitat als paràmetres del sistema</string>
+    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
+    <string name="delayed">Ajornat</string>
     <string name="notifications_avg_minutes">De mitjana, cada %1$d minuts</string>
     <string name="notifications_avg_hours">De mitjana, cada %1$d hores</string>
     <string name="last_check_at">Comprovat a les %1$s</string>
     <string name="system_settings">Paràmetres del sistema</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">Edita\'n el tipus, les insígnies, la previsualització i més</string>
     <!-- iOS shortcut widget -->
     <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
     <string name="shortcuts_widget_title">Dreceres</string>
@@ -1044,11 +1181,16 @@
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Entrega immediata</string>
     <string name="pref_background_notifications">Usa la connexió en segon pla</string>
+    <string name="pref_background_notifications_explain">Requereix optimitzacions de bateria que s\'han ignorat. Utilitzeu-les si les notificacions arriben tard</string>
     <string name="pref_reliable_service">Força la connexió en segon pla</string>
     <string name="pref_reliable_service_explain">Causa una notificació permanent</string>
 
+    <string name="pref_background_notifications_rationale">Per a mantenir la connexió amb el vostre servidor de correu i rebre missatges en segon pla, ignoreu les optimitzacions de bateria del següent pas.\n\nDelta Chat utilitza pocs recursos i té cura de no buidar-vos la bateria.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Prem aquí per rebre missatges mentre Delta Chat és en segon pla.</string>
+    <string name="perm_enable_bg_already_done">Ja heu autoritzat Delta Chat a rebre missatges en segon pla.\n\nSi encara no us arriben els missatge, reviseu els paràmetres de sistema.</string>
+
     <!-- device messages for updates -->
     <string name="update_1_50_android">Què hi ha de nou?\n\n❤️‍🔥 Un selector d\'emojis nou amb més emojis\n\n🎮 Aplicacions al xat millorades: rebeu notificacions i obriu les aplicacions suportades segons el context. P. ex. obriu una entrada afegida al calendari directament.\n\n👍 Rebeu notificacions de les reaccions dels vostres missatges\n\n... 🛠️ Correccions i moltes coses més a %1$s</string>
-    </resources>
+    <string name="update_switch_profile_placement">ℹ️ S\'ha mogut l\'opció «Canvia el perfil»: toqueu en la vostra imatge de perfil en la cantonada superior de la finestra principal per a afegir o canviar perfils 💡</string>
+</resources>
