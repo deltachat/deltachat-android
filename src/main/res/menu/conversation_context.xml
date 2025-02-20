@@ -20,11 +20,6 @@
         android:icon="?menu_forward_icon"
         app:showAsAction="ifRoom" />
 
-  <item android:title="@string/menu_delete_messages"
-        android:id="@+id/menu_context_delete_message"
-        android:icon="?menu_trash_icon"
-        app:showAsAction="never" />
-
   <item android:title="@string/menu_message_details"
         android:id="@+id/menu_context_details"
         android:icon="?menu_info_icon"
@@ -51,6 +46,11 @@
 
   <item android:title="@string/resend"
         android:id="@+id/menu_resend"
+        app:showAsAction="never" />
+
+  <item android:title="@string/menu_delete_messages"
+        android:id="@+id/menu_context_delete_message"
+        android:icon="?menu_trash_icon"
         app:showAsAction="never" />
 
   <!-- The `showAsAction` behaviors are managed by
