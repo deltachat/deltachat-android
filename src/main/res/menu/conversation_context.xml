@@ -44,7 +44,7 @@
         android:id="@+id/menu_context_reply_privately"
         app:showAsAction="never" />
 
-    <item android:title="@string/global_menu_edit_desktop"
+    <item android:title="@string/edit_message"
         android:id="@+id/menu_context_edit"
         app:showAsAction="never" />
 

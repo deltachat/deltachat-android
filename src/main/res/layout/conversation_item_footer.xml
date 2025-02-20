@@ -36,7 +36,7 @@
         android:linksClickable="false"
         style="@style/Signal.Text.Caption.MessageSent"
         android:textColor="?conversation_item_outgoing_text_secondary_color"
-        android:text="@string/message_edited"
+        android:text="@string/edited"
         android:paddingEnd="5dp"
         android:visibility="gone"
         tools:visibility="visible"/>

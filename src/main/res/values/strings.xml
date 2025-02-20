@@ -1071,8 +1071,6 @@
     <string name="global_menu_file_desktop">File</string>
     <string name="global_menu_file_quit_desktop">Quit</string>
     <string name="global_menu_edit_desktop">Edit</string>
-    <string name="edit_message">Edit Message</string>
-    <string name="message_edited">edited</string>
     <string name="global_menu_edit_undo_desktop">Undo</string>
     <string name="global_menu_edit_redo_desktop">Redo</string>
     <string name="global_menu_edit_cut_desktop">Cut</string>
