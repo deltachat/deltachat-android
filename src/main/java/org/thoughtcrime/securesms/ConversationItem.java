@@ -717,7 +717,8 @@ public class ConversationItem extends BaseConversationItem
             author,
             quoteTxt,
             slideDeck,
-            current.getType() == DcMsg.DC_MSG_STICKER);
+            current.getType() == DcMsg.DC_MSG_STICKER,
+            false);
 
     quoteView.setVisibility(View.VISIBLE);
     quoteView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;

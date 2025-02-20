@@ -186,6 +186,7 @@ public class DcContext {
     public native void         blockChat            (int chat_id);
     public native void         acceptChat           (int chat_id);
     public DcMsg               getMsg               (int msg_id) { return new DcMsg(getMsgCPtr(msg_id)); }
+    public native void         sendEditRequest      (int msg_id, String text);
     public native String       getMsgInfo           (int id);
     public native String       getMsgHtml           (int msg_id);
     public native void         downloadFullMsg      (int msg_id);
