@@ -653,6 +653,14 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getMsgInfo(JNIEnv *env, jobj
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_sendEditRequest(JNIEnv *env, jobject obj, jint msg_id, jstring text)
+{
+    CHAR_REF(text);
+        dc_send_edit_request(get_dc_context(env, obj), msg_id, textPtr);
+    CHAR_UNREF(text);
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getMsgHtml(JNIEnv *env, jobject obj, jint msg_id)
 {
     char* temp = dc_get_msg_html(get_dc_context(env, obj), msg_id);
@@ -1619,14 +1627,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcMsg_setText(JNIEnv *env, jobject obj, j
 {
     CHAR_REF(text);
         dc_msg_set_text(get_dc_msg(env, obj), textPtr);
-    CHAR_UNREF(text);
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcMsg_sendEditRequest(JNIEnv *env, jobject obj, jstring text)
-{
-    CHAR_REF(text);
-        dc_send_edit_request(get_dc_msg(env, obj), textPtr);
     CHAR_UNREF(text);
 }
 

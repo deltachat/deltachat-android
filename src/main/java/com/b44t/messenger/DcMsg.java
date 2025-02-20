@@ -164,7 +164,6 @@ public class DcMsg {
     public native String  getQuotedText      ();
     public native String  getError           ();
     public native String  getOverrideSenderName();
-    public native void    sendEditRequest    (String text);
     public native boolean isEdited           ();
 
     public String getSenderName(DcContact dcContact) {
