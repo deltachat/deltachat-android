@@ -1425,6 +1425,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void handleReplyMessage(DcMsg msg) {
+    if (isEditing) composeText.setText("");
+    isEditing = false;
     // If you modify these lines you may also want to modify ConversationItem.setQuote():
     Recipient author = new Recipient(this, dcContext.getContact(msg.getFromId()));
 
