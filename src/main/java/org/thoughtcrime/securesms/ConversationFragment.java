@@ -324,6 +324,7 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_details).setVisible(false);
             menu.findItem(R.id.menu_context_share).setVisible(false);
             menu.findItem(R.id.menu_context_reply).setVisible(false);
+            menu.findItem(R.id.menu_context_edit).setVisible(false);
             menu.findItem(R.id.menu_context_reply_privately).setVisible(false);
             menu.findItem(R.id.menu_add_to_home_screen).setVisible(false);
         } else {
@@ -333,6 +334,8 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_share).setVisible(messageRecord.hasFile());
             boolean canReply = canReplyToMsg(messageRecord);
             menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
+            boolean canEdit = canEditMsg(messageRecord);
+            menu.findItem(R.id.menu_context_edit).setVisible(chat.canSend() && canEdit);
             boolean showReplyPrivately = chat.isMultiUser() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
             menu.findItem(R.id.menu_add_to_home_screen).setVisible(messageRecord.getType() == DcMsg.DC_MSG_WEBXDC);
@@ -359,6 +362,10 @@ public class ConversationFragment extends MessageSelectorFragment
 
     static boolean canReplyToMsg(DcMsg dcMsg) {
         return !dcMsg.isInfo() && dcMsg.getType() != DcMsg.DC_MSG_VIDEOCHAT_INVITATION;
+    }
+
+    static boolean canEditMsg(DcMsg dcMsg) {
+        return dcMsg.isOutgoing() && !dcMsg.isInfo() && dcMsg.getType() == DcMsg.DC_MSG_TEXT;
     }
 
     public void handleClearChat() {
@@ -459,6 +466,16 @@ public class ConversationFragment extends MessageSelectorFragment
         }
 
         listener.handleReplyMessage(message);
+    }
+
+    @SuppressLint("RestrictedApi")
+    private void handleEditMessage(final DcMsg message) {
+        if (getActivity() != null) {
+            //noinspection ConstantConditions
+            ((AppCompatActivity) getActivity()).getSupportActionBar().collapseActionView();
+        }
+
+        listener.handleEditMessage(message);
     }
 
     private void handleReplyMessagePrivately(final DcMsg msg) {
@@ -591,6 +608,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
     public interface ConversationFragmentListener {
         void handleReplyMessage(DcMsg messageRecord);
+        void handleEditMessage(DcMsg messageRecord);
     }
 
     private class ConversationScrollListener extends OnScrollListener {
@@ -956,6 +974,10 @@ public class ConversationFragment extends MessageSelectorFragment
             return true;
           } else if (itemId == R.id.menu_context_reply) {
             handleReplyMessage(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+            actionMode.finish();
+            return true;
+          } else if (itemId == R.id.menu_context_edit) {
+            handleEditMessage(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
             actionMode.finish();
             return true;
           } else if (itemId == R.id.menu_context_reply_privately) {

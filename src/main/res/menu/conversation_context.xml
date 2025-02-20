@@ -44,6 +44,10 @@
         android:id="@+id/menu_context_reply_privately"
         app:showAsAction="never" />
 
+    <item android:title="@string/global_menu_edit_desktop"
+        android:id="@+id/menu_context_edit"
+        app:showAsAction="never" />
+
     <item android:title="@string/resend"
         android:id="@+id/menu_resend"
         app:showAsAction="never" />

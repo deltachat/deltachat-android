@@ -189,6 +189,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private boolean    isDefaultSms             = true;
   private boolean    isSecurityInitialized    = false;
   private boolean successfulForwardingAttempt = false;
+  private boolean    isEditing = false;
 
   @Override
   protected void onCreate(Bundle state, boolean ready) {
@@ -489,13 +490,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       Log.e(TAG, "cannot set up in-chat-search: ", e);
     }
 
-    if (!dcChat.canSend()) {
-      MenuItem attachItem =  menu.findItem(R.id.menu_add_attachment);
-      if (attachItem!=null) {
-        attachItem.setVisible(false);
-      }
-    }
-
     super.onPrepareOptionsMenu(menu);
     return true;
   }
@@ -504,10 +498,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
     int itemId = item.getItemId();
-    if (itemId == R.id.menu_add_attachment) {
-      handleAddAttachment();
-      return true;
-    } else if (itemId == R.id.menu_leave) {
+    if (itemId == R.id.menu_leave) {
       handleLeaveGroup();
       return true;
     } else if (itemId == R.id.menu_archive_chat) {
@@ -731,6 +722,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
    * @return
    */
   private ListenableFuture<Boolean> initializeDraft() {
+    isEditing = false;
     final SettableFuture<Boolean> future = new SettableFuture<>();
     DcMsg draft = dcContext.getDraft(chatId);
     final String sharedText = RelayUtil.getSharedText(this);
@@ -1016,12 +1008,25 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     DcMsg msg = null;
     Optional<QuoteModel> quote = inputPanel.getQuote();
     Integer recompress = 0;
+    boolean editing = isEditing;
 
     // for a quick ui feedback, we clear the related controls immediately on sending messages.
     // for drafts, however, we do not change the controls, the activity may be resumed.
     if (action==ACTION_SEND_OUT) {
       composeText.setText("");
       inputPanel.clearQuote();
+    }
+
+    if (editing) {
+      int msgId = quote.get().getQuotedMsg().getId();
+      Util.runOnAnyBackgroundThread(() -> {
+        if (action == ACTION_SEND_OUT) {
+          dcContext.sendEditRequest(msgId, body);
+        } else {
+          dcContext.setDraft(chatId, null);
+        }
+      });
+      return future;
     }
 
     if(slideDeck!=null) {
@@ -1162,7 +1167,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return;
     }
 
-    if (composeText.getText().length() == 0 && !attachmentManager.isAttachmentPresent()) {
+    if (!isEditing && composeText.getText().length() == 0 && !attachmentManager.isAttachmentPresent()) {
       buttonToggle.display(attachButton);
       quickAttachmentToggle.show();
     } else {
@@ -1280,9 +1285,16 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
+  @Override
+  public void onQuoteDismissed() {
+    isEditing = false;
+    composeText.setText("");
+  }
+
   // media selected by the system keyboard
   @Override
   public void onMediaSelected(@NonNull Uri uri, String contentType) {
+    if (isEditing) return;
     if (MediaUtil.isImageType(contentType)) {
       sendSticker(uri, contentType);
     } else if (MediaUtil.isVideoType(contentType)) {
@@ -1430,6 +1442,25 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             text,
             slideDeck);
 
+    inputPanel.clickOnComposeInput();
+  }
+
+  @Override
+  public void handleEditMessage(DcMsg msg) {
+    isEditing = true;
+    Recipient author = new Recipient(this, dcContext.getContact(msg.getFromId()));
+
+    SlideDeck slideDeck = new SlideDeck();
+    String text = msg.getSummarytext(500);
+
+    inputPanel.setQuote(GlideApp.with(this),
+            msg,
+            msg.getTimestamp(),
+            author,
+            text,
+            slideDeck);
+
+    setDraftText(msg.getText());
     inputPanel.clickOnComposeInput();
   }
 

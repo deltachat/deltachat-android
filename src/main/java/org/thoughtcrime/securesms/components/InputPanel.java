@@ -141,6 +141,7 @@ public class InputPanel extends ConstraintLayout
 
   public void clearQuoteWithoutAnimation() {
     quoteView.dismiss();
+    if (listener != null) listener.onQuoteDismissed();
   }
 
   public void clearQuote() {
@@ -152,6 +153,7 @@ public class InputPanel extends ConstraintLayout
       @Override
       public void onAnimationEnd(@NonNull Animator animation) {
         quoteView.dismiss();
+        if (listener != null) listener.onQuoteDismissed();
       }
     });
 
@@ -329,6 +331,7 @@ public class InputPanel extends ConstraintLayout
     void onRecorderCanceled();
     void onRecorderPermissionRequired();
     void onEmojiToggle();
+    void onQuoteDismissed();
   }
 
   private static class SlideToCancel {
