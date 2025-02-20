@@ -535,6 +535,8 @@
     <string name="profile_encryption">Szyfrowanie</string>
     <string name="profile_shared_chats">Wspólne czaty</string>
     <string name="related_chats">Powiązane czaty</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Byli członkowie</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupa</string>
     <string name="tab_gallery">Galeria</string>
@@ -1147,7 +1149,7 @@
     <!-- command to put the cursor to the search input field -->
     <string name="focus_search_input">Szukaj</string>
     <!-- command to put the cursor to the message input field -->
-    <string name="focus_message_input">Wpisz wiadomość</string>
+    <string name="focus_message_input">Napisz wiadomość</string>
     <string name="force_refresh_network">Wymuś odświeżenie sieci</string>
     <string name="insert_newline">Wstaw nową linię</string>
 
