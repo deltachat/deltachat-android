@@ -120,9 +120,10 @@ public class InputPanel extends ConstraintLayout
                        long id,
                        @NonNull Recipient author,
                        @NonNull CharSequence body,
-                       @NonNull SlideDeck attachments)
+                       @NonNull SlideDeck attachments,
+                       @NonNull boolean isEdit)
   {
-    this.quoteView.setQuote(glideRequests, msg, author, body, attachments, false);
+   this.quoteView.setQuote(glideRequests, msg, author, body, attachments, false, isEdit);
 
     int originalHeight = this.quoteView.getVisibility() == VISIBLE ? this.quoteView.getMeasuredHeight()
             : 0;

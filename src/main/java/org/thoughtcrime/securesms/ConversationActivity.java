@@ -1440,7 +1440,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             msg.getTimestamp(),
             author,
             text,
-            slideDeck);
+            slideDeck,
+            false);
 
     inputPanel.clickOnComposeInput();
   }
@@ -1458,7 +1459,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             msg.getTimestamp(),
             author,
             text,
-            slideDeck);
+            slideDeck,
+            true);
 
     setDraftText(msg.getText());
     inputPanel.clickOnComposeInput();
