@@ -368,6 +368,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Voulez-vous vraiment supprimer « %1$s » ?</string>
     <string name="ask_delete_message">Voulez-vous vraiment supprimer ce message ?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Supprimer %d message ici et sur le serveur ?</item>
         <item quantity="many">Supprimer %dmessages ici et sur le serveur ?</item>
@@ -732,10 +733,6 @@
     <string name="pref_manage_keys">Gérer les clés</string>
     <string name="pref_use_system_emoji">Utiliser les émojis système</string>
     <string name="pref_use_system_emoji_explain">Désactiver la prise en charge des émojis intégrés de Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera">Utiliser l\'appareil photo de l\'appli</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera_explain">L\'appareil photo de l\'appli possède généralement moins de fonctionnalités que celui du système</string>
     <string name="pref_app_access">Accès à l\'application</string>
     <string name="pref_chats">Discussions</string>
     <string name="pref_in_chat_sounds">Sons de messages entrants</string>

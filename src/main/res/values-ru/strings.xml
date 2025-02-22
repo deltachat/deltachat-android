@@ -41,6 +41,8 @@
     <string name="later">Позже</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Отправить повторно</string>
+    <string name="edited">Отредактировано</string>
+    <string name="edit_message">Редактировать сообщение</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Отправить в архив</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -389,6 +391,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Удалить чат \"%1$s\"?? Он больше не будет виден в списке чатов, его сообщения останутся на сервере.</string>
     <string name="ask_delete_message">Вы уверены, что хотите удалить это сообщение?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Удалить %d сообщение локально и на сервере?</item>
         <item quantity="few">Удалить %d сообщения локально и на сервере?</item>
@@ -770,10 +773,6 @@
     <string name="pref_manage_keys">Управление ключами</string>
     <string name="pref_use_system_emoji">Использовать системные эмодзи</string>
     <string name="pref_use_system_emoji_explain">Отключить поддержку встроенных эмодзи Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera">Использовать камеру приложения</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera_explain">Камера приложения обычно имеет меньше функций, чем системная</string>
     <string name="pref_show_system_contacts">Чтение системной адресной книги</string>
     <string name="pref_show_system_contacts_explain">Предлагать создать чаты с контактами из адресной книги. Некоторые провайдеры требуют предварительной настройки сквозного шифрования.</string>
     <string name="pref_app_access">Доступ приложения</string>

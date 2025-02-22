@@ -41,6 +41,8 @@
     <string name="later">Dopo</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Reinvia</string>
+    <string name="edited">Modificato</string>
+    <string name="edit_message">Modifica Messaggio</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archivia</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -378,6 +380,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Elimina chat \"%1$s\"? Essa non verrà più mostrata nell\'elenco delle chat; i suoi messaggi rimarranno sul server.</string>
     <string name="ask_delete_message">Sei sicuro di voler eliminare questo messaggio?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Eliminare %d messaggio qui e sul sever?</item>
         <item quantity="many">Eliminare %d messaggi qui e sul sever?</item>
@@ -754,10 +757,6 @@
     <string name="pref_manage_keys">Gestisci Chiavi</string>
     <string name="pref_use_system_emoji">Usa Emoji di Sistema</string>
     <string name="pref_use_system_emoji_explain">Disattiva il supporto delle emoji integrato in Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera">Usa Fotocamera App</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera_explain">La fotocamera dell\'app di solito ha meno funzionalità della fotocamera di sistema</string>
     <string name="pref_show_system_contacts">Leggi Rubrica di Sistema</string>
     <string name="pref_show_system_contacts_explain">Offri la possibilità di creare chats con i contatti della rubrica. Alcuni provider necessitano prima della configurazione della crittografia end-to-end.</string>
     <string name="pref_app_access">Accesso App</string>

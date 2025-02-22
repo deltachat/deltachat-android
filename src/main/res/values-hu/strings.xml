@@ -41,6 +41,8 @@
     <string name="later">Később</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Újraküldés</string>
+    <string name="edited">Szerkesztve</string>
+    <string name="edit_message">Üzenet szerkesztése</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archiválás</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -103,7 +105,7 @@
     <string name="last_week">Múlt héten</string>
     <string name="last_month">Múlt hónapban</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
-    <string name="last_seen_at">Utoljára látta ekkor: %1$s</string>
+    <string name="last_seen_at">Utolsó megtekintés ideje: %1$s</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Utoljára látta: %1$s</string>
     <string name="last_seen_unknown">Utoljára látta: - (ismeretlen)</string>
@@ -367,6 +369,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Biztosan törli a következőt: „%1$s”? Többé nem fog megjelenni a csevegőlistában; üzenetei a kiszolgálón maradnak.</string>
     <string name="ask_delete_message">Biztosan törölni szeretné ezt az üzenetet?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">%d üzenet törlése innen is és a kiszolgálóról is?</item>
         <item quantity="other">%d üzenet törlése innen is és a kiszolgálóról is?</item>
@@ -738,10 +741,6 @@
     <string name="pref_manage_keys">Privát kulcsok kezelése</string>
     <string name="pref_use_system_emoji">Rendszeremodzsik használata</string>
     <string name="pref_use_system_emoji_explain">A Delta Chat beépített emodzsi-támogatásának letiltása</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera">Alkalmazás kamerájának használata</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera_explain">Az alkalmazáson belüli kamera általában kevesebb funkcióval rendelkezik, mint a rendszer kamerája.</string>
     <string name="pref_show_system_contacts">A rendszer névjegyzékének olvasása</string>
     <string name="pref_show_system_contacts_explain">Csevegések létrehozása a névjegyzékéből származó ismerőseivel. Egyes szolgáltatóknál először a végpontok közötti titkosítás beállítására van szükség.</string>
     <string name="pref_app_access">Alkalmazás-hozzáférés</string>
@@ -1154,7 +1153,7 @@
     <string name="delayed">Késleltetve</string>
     <string name="notifications_avg_minutes">Átlagosan %1$d percenként</string>
     <string name="notifications_avg_hours">Átlagosan %1$d óránként</string>
-    <string name="last_check_at">Ellenőrizve ekkor: %1$s</string>
+    <string name="last_check_at">Ellenőrizés ideje: %1$s</string>
     <string name="system_settings">Rendszer-beállítások</string>
     <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
     <string name="system_settings_notify_explain_ios">Típus-, kitűzők-, előnézet- és egyebek szerkesztése</string>

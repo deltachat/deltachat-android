@@ -389,6 +389,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Usunąć czat „%1$s”? Nie będzie on już wyświetlany na liście czatów. Jego wiadomości pozostaną na serwerze.</string>
     <string name="ask_delete_message">Czy na pewno chcesz usunąć tę wiadomość?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Usunąć %d wiadomość tutaj i na serwerze?</item>
         <item quantity="few">Usunąć %d wiadomości tutaj i na serwerze?</item>
@@ -770,10 +771,6 @@
     <string name="pref_manage_keys">Zarządzaj prywatnymi kluczami</string>
     <string name="pref_use_system_emoji">Użyj emoji systemowych</string>
     <string name="pref_use_system_emoji_explain">Wyłącza wbudowaną obsługę emoji Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera">Użyj aparatu w aplikacji</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera_explain">Aparat w aplikacji ma zwykle mniej funkcji niż aparat systemowy</string>
     <string name="pref_show_system_contacts">Odczytaj systemową książkę adresową</string>
     <string name="pref_show_system_contacts_explain">Zaproponuj tworzenie czatów z kontaktami z książki adresowej. Niektórzy dostawcy wymagają najpierw szyfrowania end-to-end.</string>
     <string name="pref_app_access">Dostęp do aplikacji</string>

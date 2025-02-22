@@ -304,6 +304,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Είστε σίγουρος ότι θέλετε να διαγράψετε \"%1$s\";</string>
     <string name="ask_delete_message">Είστε σίγουρος/-η ότι θέλετε να διαγράψετε αυτό το μήνυμα;</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Διαγραφή %d μηνύματος εδώ και στον διακομιστη;</item>
         <item quantity="other">Διαγραφή %d μηνυμάτων εδώ και στον διακομιστη;</item>

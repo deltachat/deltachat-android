@@ -321,6 +321,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Bạn có chắc chắn muốn xóa \"%1$s\" không?</string>
     <string name="ask_delete_message">Bạn có chắc chắn muốn xóa tin nhắn này?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="other">Xóa %d tin nhắn ở đây và trên máy chủ?</item>
     </plurals>
@@ -622,10 +623,6 @@
     <string name="pref_manage_keys">Quản lý khóa</string>
     <string name="pref_use_system_emoji">Sử dụng Emoji hệ thống</string>
     <string name="pref_use_system_emoji_explain">Tắt tính năng hỗ trợ emoji tích hợp của Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera">Sử dụng máy ảnh trong ứng dụng</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera_explain">Camera trong ứng dụng thường có ít tính năng hơn camera hệ thống</string>
     <string name="pref_app_access">Quyền truy cập ứng dụng</string>
     <string name="pref_chats">Trò chuyện</string>
     <string name="pref_in_chat_sounds">Âm thanh trong cuộc trò chuyện</string>

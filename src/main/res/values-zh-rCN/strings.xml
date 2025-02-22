@@ -41,6 +41,8 @@
     <string name="later">稍后</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">重新发送</string>
+    <string name="edited">已编辑</string>
+    <string name="edit_message">编辑消息</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">存档</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -356,6 +358,7 @@
     </plurals>
     <string name="ask_delete_named_chat">删除聊天“%1$s”？它将不再显示在聊天列表中，其消息将保留在服务器上。</string>
     <string name="ask_delete_message">您确定要删除这条消息吗？</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="other">在此处和服务器上删除 %d 条消息？</item>
     </plurals>
@@ -722,10 +725,6 @@
     <string name="pref_manage_keys">管理密钥</string>
     <string name="pref_use_system_emoji">使用系统 emoji</string>
     <string name="pref_use_system_emoji_explain">关闭 Delta Chat 内置 emoji 支持</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera">使用应用内相机</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera_explain">应用内相机功能通常比系统相机少</string>
     <string name="pref_show_system_contacts">读取系统通讯录</string>
     <string name="pref_show_system_contacts_explain">从通讯录建立和联系人的聊天。一些邮件服务商需要先行设置才能进行端到端加密的聊天。</string>
     <string name="pref_app_access">应用程序访问</string>
@@ -964,7 +963,7 @@
     <string name="qrscan_fingerprint_label">指纹</string>
     <string name="withdraw_verifycontact_explain">其他人可以扫描此二维码与您联系。\n\n您可以在此处停用二维码并通过再次扫描来重新激活它。</string>
     <string name="withdraw_verifygroup_explain">其他人可以扫描此二维码加入群组 “%1$s”。\n\n您可以在此处停用二维码并通过再次扫描来重新激活它。</string>
-    <string name="withdraw_qr_code">停用二维码</string>
+    <string name="withdraw_qr_code">重置二维码</string>
     <string name="revive_verifycontact_explain">其他人可扫描此二维码以与您联系。\n\n此设备上的二维码未激活。</string>
     <string name="revive_verifygroup_explain">其他人可扫描此二维码加入群组“%1$s”。\n\n此设备上的二维码未激活。</string>
     <string name="revive_qr_code">激活二维码</string>
