@@ -63,9 +63,7 @@ public abstract class MessageSelectorFragment
   protected void handleDeleteMessages(int chatId, final int[] messageIds) {
     DcChat dcChat = DcHelper.getContext(getActivity()).getChat(chatId);
 
-    String text = getActivity().getResources().getQuantityString(
-      dcChat.isDeviceTalk()? R.plurals.ask_delete_messages_simple : R.plurals.ask_delete_messages,
-      messageIds.length, messageIds.length);
+    String text = getActivity().getResources().getQuantityString(R.plurals.ask_delete_messages_simple, messageIds.length, messageIds.length);
 
     AlertDialog dialog = new AlertDialog.Builder(getActivity())
             .setMessage(text)
