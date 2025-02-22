@@ -261,6 +261,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Er du sikker på at du vil slette \"%1$s\"?</string>
     <string name="ask_delete_message">Er du sikker på at du vil slette denne besked?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Slette %d besked her og på serveren?</item>
         <item quantity="other">Slet %d beskeder her og på serveren?</item>

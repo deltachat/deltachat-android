@@ -175,6 +175,7 @@
         <item quantity="one">%d çat silmək? Artıq chat siyahısında göstərilməyəcək, mesajlar serverdə qalacaq.</item>
         <item quantity="other">%d çat silmək? Artıq chat siyahısında göstərilməyəcək, mesajlar serverdə qalacaq.</item>
     </plurals>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">%dmesaj burada və serverdə silin?</item>
         <item quantity="other">%dmesaj burada və serverdə silin?</item>

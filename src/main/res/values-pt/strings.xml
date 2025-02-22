@@ -147,6 +147,7 @@
         <item quantity="many">Apagar %d conversas? Elas não serão mais mostrados na lista, mas permanecerão no servidor.</item>
         <item quantity="other">Apagar %d conversas? Elas não serão mais mostrados na lista, mas permanecerão no servidor.</item>
     </plurals>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Apagar %d mensagens aqui e no servidor?</item>
         <item quantity="many">Apagar %d mensagens aqui e no servidor?</item>

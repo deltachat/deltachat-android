@@ -41,6 +41,8 @@
     <string name="later">Später</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Erneut senden</string>
+    <string name="edited">Bearbeitet</string>
+    <string name="edit_message">Nachricht bearbeiten</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archivieren</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -363,10 +365,11 @@
     <string name="ask_leave_group">Diese Gruppe verlassen?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">%d Chat löschen? Gelöschte Chats werden nicht länger in der Chat-Liste angezeigt, die Nachrichten verbleiben auf dem Server.</item>
-        <item quantity="other">%d Chats löschen? Gelöschte Chats werden nicht länger in der Chat-Liste angezeigt, die Nachrichten verbleiben auf dem Server.</item>
+        <item quantity="other">%d Chats löschen?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Chat \"%1$s\" löschen? Gelöschte Chats werden nicht länger in der Chat-Liste angezeigt, die Nachrichten verbleiben auf dem Server.</string>
+    <string name="ask_delete_named_chat">Chat \"%1$s\" löschen?</string>
     <string name="ask_delete_message">Möchten Sie diese Nachricht wirklich löschen?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">%d Nachricht lokal und vom Server löschen?</item>
         <item quantity="other">%d Nachrichten lokal und vom Server löschen?</item>
@@ -503,6 +506,8 @@
     <string name="profile_encryption">Verschlüsselung</string>
     <string name="profile_shared_chats">Gemeinsame Chats</string>
     <string name="related_chats">Ähnliche Chats</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Ehemalige Mitglieder</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Gruppe</string>
     <string name="tab_gallery">Galerie</string>
@@ -736,10 +741,6 @@
     <string name="pref_manage_keys">Schlüssel verwalten</string>
     <string name="pref_use_system_emoji">System-Emoji benutzen</string>
     <string name="pref_use_system_emoji_explain">Eingebaute Emoji-Unterstützung von Delta Chat deaktivieren</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera">In-App Kamera verwenden</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera_explain">Die In-App-Kamera hat in der Regel weniger Funktionen als die Systemkamera</string>
     <string name="pref_show_system_contacts">System-Adressbuch lesen</string>
     <string name="pref_show_system_contacts_explain">Anbieten, Chats mit Kontakten aus dem Adressbuch zu erstellen. Bei einigen E-Mail-Anbieter muss zunächst eine Ende-zu-Ende-Verschlüsselung eingerichtet werden.</string>
     <string name="pref_app_access">App-Zugriff</string>

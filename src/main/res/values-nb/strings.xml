@@ -214,6 +214,7 @@
         <item quantity="one">Slett %d chat? Den vil ikke lenger vises</item>
         <item quantity="other">Slett %d chatter? De vil ikke lenger vises i chattelisten, meldingene vil fortsatt være lagret tjeneren.</item>
     </plurals>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Slett %d melding? Den vil også bli slettet fra tjeneren?</item>
         <item quantity="other">Slett %d meldinger? De vil også bli slettet fra tjeneren.</item>

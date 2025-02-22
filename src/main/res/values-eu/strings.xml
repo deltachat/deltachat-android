@@ -195,6 +195,7 @@
         <item quantity="one">Ezabatu txat %d? Ez da gehiago agertuko txaten zerrendan, mezuak zerbitzarian mantenduko dira.</item>
         <item quantity="other">Ezabatu %d txat? Ez dira gehiago agertuko txaten zerrendan, mezuak zerbitzarian mantenduko dira.</item>
     </plurals>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Ezabatu mezu  %d hemen eta zerbitzarian?</item>
         <item quantity="other">Ezabatu  %dmezu hemen eta zerbitzarian?</item>

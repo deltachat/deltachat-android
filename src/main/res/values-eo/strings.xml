@@ -286,6 +286,7 @@
         <item quantity="other">Ĉu forigi %d babilojn? Ili ne plu troveblos en la babilaro, tamen iliaj mesaĝoj plurestos en la servilo.</item>
     </plurals>
     <string name="ask_delete_named_chat">Ĉu vi certas, ke vi deziras forigi \"%1$s\"?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Ĉu forigi %d mesaĝon kaj ĉi tie kaj en la servilo?</item>
         <item quantity="other">Ĉu forigi %d mesaĝojn kaj ĉi tie kaj en la servilo?</item>

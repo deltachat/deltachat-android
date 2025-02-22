@@ -41,6 +41,8 @@
     <string name="later">Daha Sonra</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Yeniden Gönder</string>
+    <string name="edited">Düzenlendi</string>
+    <string name="edit_message">İletiyi Düzenle</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arşivle</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -367,6 +369,7 @@
     </plurals>
     <string name="ask_delete_named_chat">\"%1$s\" sohbeti silinsin mi? O artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</string>
     <string name="ask_delete_message">Bu iletiyi silmek istediğinizden emin misiniz?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">%d ileti buradan ve sunucudan silinsin mi?</item>
         <item quantity="other">%d ileti buradan ve sunucudan silinsin mi?</item>
@@ -738,10 +741,6 @@
     <string name="pref_manage_keys">Anahtarları Yönet</string>
     <string name="pref_use_system_emoji">Sistem Emojisini Kullan</string>
     <string name="pref_use_system_emoji_explain">Delta Chat\'in gömülü emoji desteğini kapat</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera">Uygulama İçi Kamerayı Kullan</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera_explain">Uygulama içi kameranın genellikle sistem kamerasından daha az özelliği vardır</string>
     <string name="pref_show_system_contacts">Sistem Adres Defterini Oku</string>
     <string name="pref_show_system_contacts_explain">Adres defterinden gelen kişilerle sohbet oluşturmayı teklif edin. Bazı sağlayıcılara önce uçtan uca şifreleme ayarlaması gerekir.</string>
     <string name="pref_app_access">Uygulama Erişimi</string>

@@ -324,6 +324,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Naozaj chcete položku odstrániť  \"%1$s\" ?</string>
     <string name="ask_delete_message">Naozaj chcete odstrániť túto správu?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Odstrániť %d správu tu a na serveri?</item>
         <item quantity="few">Odstrániť %d správy tu a na serveri?</item>
