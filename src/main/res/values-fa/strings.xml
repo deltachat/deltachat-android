@@ -359,6 +359,7 @@ https://meet.jit.si/$ROOM
     </plurals>
     <string name="ask_delete_named_chat">اطمینان دارید می‌خواهید «%1$s» را پاک کنید؟</string>
     <string name="ask_delete_message">مطمئن هستید می‌خواهید این پیام را پاک کنید؟</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">پاک کردن %d گپ از اینجا و سرور؟</item>
         <item quantity="other">پاک کردن %d گپ از این‌جا و از روی کارساز؟</item>
@@ -723,10 +724,6 @@ https://meet.jit.si/$ROOM
     <string name="pref_manage_keys">مدیریت کلیدها</string>
     <string name="pref_use_system_emoji">استفاده از شکلک‌های سیستم</string>
     <string name="pref_use_system_emoji_explain">غیرفعال کردن شکلک‌های داخلی دلتاچت</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera">استفاده از دوربین درون‌برنامه</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera_explain">دوربین درون‌برنامه معمولا امکانات کمتری نسبت به دوربین سیستم دارد</string>
     <string name="pref_show_system_contacts">خواندن دفترچه آدرس دستگاه</string>
     <string name="pref_app_access">دسترسی نرم‌افزار</string>
     <string name="pref_chats">گپ‌ها</string>

@@ -328,6 +328,7 @@
         <item quantity="other">Vymazat %d hovorů? Pak už je neuvidíte v seznamu hovorů, ale jejich zprávy zůstanou na serveru.</item>
     </plurals>
     <string name="ask_delete_named_chat">Skutečně úplně vymazat \"%1$s\"?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Vymaž %d zprávu zde i ze serveru?</item>
         <item quantity="few">Vymaž %d zprávy zde i ze serveru?</item>

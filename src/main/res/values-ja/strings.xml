@@ -256,6 +256,7 @@
     </plurals>
     <string name="ask_delete_named_chat">%1$sを削除してよろしいですか？</string>
     <string name="ask_delete_message">メッセージを削除してもよろしいですか？</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="other">こことサーバー上の%dつのメッセージを削除しますか？</item>
     </plurals>

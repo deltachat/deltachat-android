@@ -41,6 +41,8 @@
     <string name="later">Later</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Opnieuw versturen</string>
+    <string name="edited">Bewerkt</string>
+    <string name="edit_message">Bericht bewerken</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archiveren</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -367,6 +369,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Weet je zeker dat je ‘%1$s’ wilt verwijderen?</string>
     <string name="ask_delete_message">Weet je zeker dat je dit bericht wilt verwijderen?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Wil je %d bericht verwijderen, zowel hier als op de server?</item>
         <item quantity="other">Wil je %d berichten verwijderen, zowel hier als op de server?</item>
@@ -738,10 +741,6 @@
     <string name="pref_manage_keys">Sleutels beheren</string>
     <string name="pref_use_system_emoji">Systeememoji gebruiken</string>
     <string name="pref_use_system_emoji_explain">Schakel Delta Chats ingebouwde emojiondersteuning uit</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera">Ingebouwde camera gebruiken</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera_explain">Let op: de ingebouwde camera beschikt over minder functies dan de systeemcamera</string>
     <string name="pref_show_system_contacts">Adresboek uitlezen</string>
     <string name="pref_show_system_contacts_explain">Bied aan om gesprekken te beginnen met contactpersonen uit het adresboek. Let op: voor sommige providers is eind-tot-eindversleuteling benodigd.</string>
     <string name="pref_app_access">Apptoegang</string>

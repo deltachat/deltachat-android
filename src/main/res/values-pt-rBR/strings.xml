@@ -332,6 +332,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Você tem certeza que quer apagar \"%1$s\"?</string>
     <string name="ask_delete_message">Tem certeza que quer apagar esta mensagem?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Delete %d message here and on the server?</item>
         <item quantity="many">Apagar %d mensagens aqui e no servidor?</item>

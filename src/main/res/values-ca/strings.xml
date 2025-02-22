@@ -41,6 +41,8 @@
     <string name="later">Després</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Torna-ho a enviar</string>
+    <string name="edited">Editat</string>
+    <string name="edit_message">Edita el missatge</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arxiva</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -367,6 +369,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Voleu esborrar el xat «%1$s»? Ja no es mostrarà més en el llistat de xats i els missatges romandran al servidor.</string>
     <string name="ask_delete_message">Esteu segur de voler esborrar aquest missatge?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Esborra %d missatge aquí i al servidor?</item>
         <item quantity="other">Esborra %d missatges aquí i al servidor?</item>
@@ -697,8 +700,8 @@
     <string name="pref_your_name">El vostre nom</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Signatura</string>
-    <string name="pref_enter_sends">La tecla \"Intro\" envia</string>
-    <string name="pref_enter_sends_explain">Els missatges s\'enviaran prement la tecla \"Intro\"</string>
+    <string name="pref_enter_sends">La tecla «Retorn» envia</string>
+    <string name="pref_enter_sends_explain">Els missatges s\'enviaran prement la tecla «Retorn»</string>
     <string name="pref_outgoing_media_quality">Qualitat del contingut multimèdia sortint</string>
     <string name="pref_outgoing_balanced">Balancejat</string>
     <string name="pref_outgoing_worse">Pitjor qualitat, mida petita</string>
@@ -735,13 +738,9 @@
     <string name="pref_read_receipts_explain">Si desactiveu la confirmació de lectura dels vostres missatges, tampoc no rebreu la dels altres usuaris.</string>
     <string name="pref_server">Servidor</string>
     <string name="pref_encryption">Xifratge</string>
-    <string name="pref_manage_keys">Gestioneu les claus</string>
+    <string name="pref_manage_keys">Gestió de les claus</string>
     <string name="pref_use_system_emoji">Usa els emojis del sistema</string>
     <string name="pref_use_system_emoji_explain">Desactiva el suport de sèrie per emojis a Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera">Usa la càmera en l\'aplicació</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera_explain">La càmera integrada a l\'aplicació sol tenir menors prestacions que la del sistema.</string>
     <string name="pref_show_system_contacts">Llegeix la llibreta d\'adreces del sistema</string>
     <string name="pref_show_system_contacts_explain">Ofereix de crear xats amb els contactes de la llibreta d\'adreces. Alguns proveïdors necessiten de configurar abans el xifratge d\'extrem a extrem.</string>
     <string name="pref_app_access">Accés a l\'aplicació</string>

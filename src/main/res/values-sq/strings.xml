@@ -40,11 +40,14 @@
     <string name="later">Më vonë</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Ridërgoje</string>
+    <string name="edited">Të përpunuar</string>
+    <string name="edit_message">Përpunoni Mesazh</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arkivoje</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Çarkivoje</string>
     <string name="mute">Heshtoje</string>
+    <string name="muted">Heshtuar</string>
     <string name="ephemeral_messages">Mesazhe Që Zhduken</string>
     <string name="ephemeral_messages_hint">Këto rregullime zbatohen mbi krejt pjesëmarrësit që përdorin Delta Chat-in. Sidoqoftë, ata mund të kopjojnë, ruajnë dhe përcjellin mesazhe ose të përdorin klientë të tjerë email-i.</string>
     <string name="save">Ruaje</string>
@@ -362,6 +365,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Jeni i sigurt se doni të fshihet “%1$s”?</string>
     <string name="ask_delete_message">Jeni i sigurt se doni të fshihet ky mesazh?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Të fshihet %d mesazh këtu dhe te shërbyesi?</item>
         <item quantity="other">Të fshihen %d mesazhe këtu dhe te shërbyesi?</item>
@@ -732,10 +736,6 @@
     <string name="pref_manage_keys">Administroni Kyçe</string>
     <string name="pref_use_system_emoji">Përdor Emoji Sistemi</string>
     <string name="pref_use_system_emoji_explain">Çaktivizo mbulimin e brendshëm Delta Chat për emoji-t</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera">Përdor Kamerën e Vetë Aplikacionit</string>
-    <!-- deprecated -->
-    <string name="pref_use_inapp_camera_explain">Kamera e vetë aplikacionit, zakonisht, ka më pak veçori se kamera e sistemit</string>
     <string name="pref_show_system_contacts">Të Lexojë Libër Adresash Sistemi</string>
     <string name="pref_show_system_contacts_explain">Ofro krijim fjalosjesh me kontakte prej libri adresash. Disa shërbime lypin ujdisje fshehtëzimi skaj-më-skaj së pari.</string>
     <string name="pref_chats">Fjalosje</string>
