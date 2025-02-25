@@ -1,6 +1,9 @@
 package org.thoughtcrime.securesms;
 
+import static org.thoughtcrime.securesms.TransportOption.Type;
+
 import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -8,8 +11,6 @@ import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import static org.thoughtcrime.securesms.TransportOption.Type;
 
 public class TransportOptions {
   private final List<OnTransportChangedListener> listeners = new LinkedList<>();

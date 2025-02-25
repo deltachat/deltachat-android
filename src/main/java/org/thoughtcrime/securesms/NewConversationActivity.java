@@ -16,12 +16,15 @@
  */
 package org.thoughtcrime.securesms;
 
+import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
+import static org.thoughtcrime.securesms.ConversationActivity.TEXT_EXTRA;
+import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -35,11 +38,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.MailtoUtil;
-
-import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
-import static org.thoughtcrime.securesms.ConversationActivity.TEXT_EXTRA;
-import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
-import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 
 /**
  * Activity container for starting a new conversation.

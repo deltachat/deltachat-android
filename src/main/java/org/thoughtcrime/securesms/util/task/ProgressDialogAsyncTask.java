@@ -1,12 +1,12 @@
 package org.thoughtcrime.securesms.util.task;
 
-import org.thoughtcrime.securesms.util.views.ProgressDialog;
-
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.AsyncTask;
 
 import androidx.annotation.Nullable;
+
+import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.lang.ref.WeakReference;
 

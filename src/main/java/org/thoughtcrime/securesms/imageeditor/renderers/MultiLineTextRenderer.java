@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms.imageeditor.renderers;
 
+import static java.util.Collections.emptyList;
+
 import android.animation.ValueAnimator;
 import android.graphics.Matrix;
 import android.graphics.Paint;
@@ -19,8 +21,6 @@ import org.thoughtcrime.securesms.imageeditor.RendererContext;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.util.Collections.emptyList;
 
 /**
  * Renders multiple lines of {@link #text} in the specified {@link #color}.

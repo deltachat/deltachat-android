@@ -16,9 +16,9 @@
  */
 package org.thoughtcrime.securesms;
 
-import android.app.Activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -43,7 +43,6 @@ import androidx.loader.content.Loader;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMediaGalleryElement;
 import com.b44t.messenger.DcMsg;

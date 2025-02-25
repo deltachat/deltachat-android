@@ -1,5 +1,8 @@
 package org.thoughtcrime.securesms.accounts;
 
+import static com.b44t.messenger.DcContact.DC_CONTACT_ID_ADD_ACCOUNT;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PRIVATE_TAG;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -34,9 +37,6 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
-
-import static com.b44t.messenger.DcContact.DC_CONTACT_ID_ADD_ACCOUNT;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PRIVATE_TAG;
 
 public class AccountSelectionListFragment extends DialogFragment
 {

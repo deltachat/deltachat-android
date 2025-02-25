@@ -18,8 +18,6 @@ package org.thoughtcrime.securesms.util.guava;
 
 import static org.thoughtcrime.securesms.util.guava.Preconditions.checkNotNull;
 
-
-
 import java.util.Collections;
 import java.util.Set;
 

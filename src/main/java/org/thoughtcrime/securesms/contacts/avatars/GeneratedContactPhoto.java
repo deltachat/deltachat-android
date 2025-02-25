@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.contacts.avatars;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 

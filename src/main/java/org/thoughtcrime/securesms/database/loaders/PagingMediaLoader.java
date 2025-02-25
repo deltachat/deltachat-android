@@ -2,9 +2,10 @@ package org.thoughtcrime.securesms.database.loaders;
 
 
 import android.content.Context;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import android.util.Log;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMediaGalleryElement;

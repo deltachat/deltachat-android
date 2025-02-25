@@ -3,9 +3,10 @@ package org.thoughtcrime.securesms.audio;
 import android.content.Context;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
-import androidx.annotation.NonNull;
 import android.util.Log;
 import android.util.Pair;
+
+import androidx.annotation.NonNull;
 
 import com.b44t.messenger.util.concurrent.ListenableFuture;
 import com.b44t.messenger.util.concurrent.SettableFuture;

@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms;
 
+import static org.thoughtcrime.securesms.util.MediaUtil.getMimeType;
+
 import android.app.Activity;
 import android.database.Cursor;
 import android.net.Uri;
@@ -13,8 +15,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
-
-import static org.thoughtcrime.securesms.util.MediaUtil.getMimeType;
 
 import de.cketti.safecontentresolver.SafeContentResolver;
 

@@ -16,8 +16,8 @@ import com.b44t.messenger.DcMsg;
 import com.b44t.messenger.rpc.Rpc;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.util.HashSet;
 import java.util.Set;
