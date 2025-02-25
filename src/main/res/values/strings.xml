@@ -28,6 +28,8 @@
     <string name="join">Join</string>
     <string name="rejoin">Rejoin</string>
     <string name="delete">Delete</string>
+    <string name="delete_for_me">Delete for Me</string>
+    <string name="delete_for_everyone">Delete for Everyone</string>
     <string name="info">Info</string>
     <string name="update">Update</string>
     <string name="emoji">Emoji</string>
