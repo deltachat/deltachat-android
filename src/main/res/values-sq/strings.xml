@@ -40,11 +40,14 @@
     <string name="later">Më vonë</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Ridërgoje</string>
+    <string name="edited">Të përpunuar</string>
+    <string name="edit_message">Përpunoni Mesazh</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arkivoje</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Çarkivoje</string>
     <string name="mute">Heshtoje</string>
+    <string name="muted">Heshtuar</string>
     <string name="ephemeral_messages">Mesazhe Që Zhduken</string>
     <string name="ephemeral_messages_hint">Këto rregullime zbatohen mbi krejt pjesëmarrësit që përdorin Delta Chat-in. Sidoqoftë, ata mund të kopjojnë, ruajnë dhe përcjellin mesazhe ose të përdorin klientë të tjerë email-i.</string>
     <string name="save">Ruaje</string>
@@ -182,10 +185,13 @@
     <string name="webxdc_apps">Aplikacione</string>
     <string name="webxdc_store_url">URL Marrësi Aplikacioni</string>
     <string name="webxdc_store_url_explain">Në u ujdistë, URL-ja do të përdoret si Marrës Aplikacioni, në vend të atij parazgjedhje</string>
+    <string name="home">Kreu</string>
     <string name="games">Lojëra</string>
     <string name="tools">Mjete</string>
     <string name="app_size">Madhësi</string>
     <string name="add_to_chat">Shtoje te Fjalosje</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Shfletoni</string>
     <string name="unknown">E panjohur</string>
 
     <string name="green">E gjelbër</string>
@@ -213,6 +219,8 @@
     <string name="new_classic_contact_explain">Kontaktet e shtuar dorazi mund të përdoren për të dërguar tekst te email klasik dhe për ta s’garantohet fshehtëzim skaj-më-skaj.</string>
     <string name="menu_new_chat">Fjalosje e Re</string>
     <string name="menu_new_group">Grup i Ri</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Bisedoni me… </string>
     <string name="clone_chat">Klononi Fjalosjen</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Listë Transmetimi</string>
@@ -357,6 +365,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Jeni i sigurt se doni të fshihet “%1$s”?</string>
     <string name="ask_delete_message">Jeni i sigurt se doni të fshihet ky mesazh?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Të fshihet %d mesazh këtu dhe te shërbyesi?</item>
         <item quantity="other">Të fshihen %d mesazhe këtu dhe te shërbyesi?</item>
@@ -448,6 +457,8 @@
     <string name="send_file_to">Dërgoni “%1$s” për …</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Dërgoni Mesazh për…</string>
+    <string name="enable_realtime_explain">Aktivizoni lidhje aty për aty për aplikacione të përbashkët në fjalosje. Në u aktivizoftë, partnerë fjalosjeje mund të jenë në gjendje të zbulojnë adresën tuaj IP, kur nisni një aplikacion.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Shfaq vendndodhje në rrjedhë kohore</string>
     <string name="show_location_traces">Shfaq gjurmë</string>
@@ -490,6 +501,8 @@
     <string name="profile_encryption">Fshehtëzim</string>
     <string name="profile_shared_chats">Fjalosje të Përbashkëta</string>
     <string name="related_chats">Fjalosje të Afërta</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Anëtarë të Dikurshëm</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grup</string>
     <string name="tab_gallery">Galeri</string>
@@ -503,6 +516,8 @@
     <string name="tab_audio_empty_hint">Kartelat audio dhe mesazhet zanore të dhëna në këtë fjalosje do të shfaqen këtu.</string>
     <string name="tab_webxdc_empty_hint">Këtu do të shfaqen aplikacione private të përbashkët në këtë fjalosje </string>
     <string name="tab_all_media_empty_hint">Këtu do të duke media e dhënë në çfarëdo fjalosjeje.</string>
+    <string name="all_files_empty_hint">Dokumentet, muzika dhe kartela të tjera të dhëna në çfarëdo fjalosje do të shfaqen këtu.</string>
+    <string name="all_apps_empty_hint">Këtu do të duken aplikacione private të dërguar apo të marrë në cilëndo fjalosje.</string>
     <string name="media_preview">Paraparje Mediash</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Mozaik Përpjesëtimor  </string>
@@ -625,14 +640,6 @@
     <string name="proxy_share_explain">Shokët tuaj mund ta shtojnë këtë ndërmjetës përmes skanimit të kodit QR.</string>
     <string name="proxy_share_link">Jepeni Lidhjen</string>
 
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Përdor SOCKS5</string>
-    <string name="login_socks5_host">Strehë SOCKS5</string>
-    <string name="login_socks5_port">Portë SOCKS5</string>
-    <string name="login_socks5_user">Përdorues SOCKS5</string>
-    <string name="login_socks5_password">Fjalëkalim SOCKS5</string>
-
     <string name="login_info_oauth2_title">Të vazhdohet me rregullimin e thjeshtuar?</string>
     <string name="login_info_oauth2_text">Adresa email e dhënë mbulon një ujdisje të thjeshtuar (OAuth 2.0).\n\nNë hapin pasues, ju lutemi, lejojeni Delta Chat-in të veprojë si aplikacioni juaj për Fjalosje Përmes Email-i.\n\nS\’ka shërbyes Delta Chat, të dhënat tuaja rrinë në pajisjen tuaj!</string>
     <string name="login_certificate_checks">Kontrolle Dëshmish</string>
@@ -729,8 +736,6 @@
     <string name="pref_manage_keys">Administroni Kyçe</string>
     <string name="pref_use_system_emoji">Përdor Emoji Sistemi</string>
     <string name="pref_use_system_emoji_explain">Çaktivizo mbulimin e brendshëm Delta Chat për emoji-t</string>
-    <string name="pref_use_inapp_camera">Përdor Kamerën e Vetë Aplikacionit</string>
-    <string name="pref_use_inapp_camera_explain">Kamera e vetë aplikacionit, zakonisht, ka më pak veçori se kamera e sistemit</string>
     <string name="pref_show_system_contacts">Të Lexojë Libër Adresash Sistemi</string>
     <string name="pref_show_system_contacts_explain">Ofro krijim fjalosjesh me kontakte prej libri adresash. Disa shërbime lypin ujdisje fshehtëzimi skaj-më-skaj së pari.</string>
     <string name="pref_chats">Fjalosje</string>
@@ -866,10 +871,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Mesazhi u hap</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Mesazhi “%1$s” që dërguat, u shfaq në ekranin e marrësit.\n\nKjo s’është garanci se lënda u lexua.</string>
     <string name="systemmsg_cannot_decrypt">Ky mesazh s’mund të shfshehtëzohet.\n\n• Mundet t’ju ndihë thjesht t’i përgjigjeni këtij mesazhi dhe t’i kërkoni dërguesit ta ridërgojë mesazhin.\n\n• Nëse sapo riinstaluat Delta Chat-in, atëherë më e mira është të riujdisni Delta Chat-in tani dhe të zgjidhni “Shtoje si pajisje të dytë”, ose të importoni një kopjeruajtje.</string>
     <string name="systemmsg_unknown_sender_for_chat">Dërgues i panjohur për këtë fjalosje. Për më tepër hollësi, shihni \'info\'.</string>
     <string name="systemmsg_subject_for_new_contact">Mesazh nga %1$s</string>
@@ -944,8 +945,6 @@
     <string name="chat_protection_broken_explanation">Fshehtëzimi skaj-më-skaj s’mund të garantohet më, ngaqë, sipas gjasash, %1$s riinstaloi Delta Chat-in, ose dërgoi një mesazh nga një tjetër pajisje.\n\nMund ta takoni dhe të skanoni sërish KODIN e tij QR, që të rivendoset fshehtëzim skaj-më-skaj i garantuar.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s lyp fshehtëzim, i cili s’është ujdisur ende për këtë fjalosje. Që të mësoni më tepër, prekeni.</string>
     <string name="invalid_unencrypted_explanation">Për të vendosur fshehtëzim skaj-më-skaj, mund të takoheni personalisht me kontaktet dhe të skanoni kodin e tyre QR, për t’i pranuar.</string>
-    <!-- deprecated -->
-    <string name="encryption_required_for_new_contact">Është i domosdoshëm fshehtëzim skaj-më-skaj, por për %1$s s’është ujdisur ende i tillë.\n\nMund t’i jepni lidhjen e ftesës tuaj, ose të takoheni personalisht dhe të skanoni kodin e tij QR.</string>
     <string name="learn_more">Mësoni Më Tepër</string>
 
     <string name="devicemsg_self_deleted">Fshitë fjalosjen “Mesazhe të ruajtur”.\n\nℹ️ Që të përdorni sërish veçorinë “Mesazhe të ruajtur”, krijoni një fjalosje të re me veten tuaj.</string>
@@ -974,9 +973,7 @@
     <string name="withdraw_verifycontact_explain">Ky kod QR mund të skanohet nga të tjerë për t’u lidhur me ju.\n\nKodin QR mund ta çaktivizoni këtu dhe ta riaktivizoni duke e riskanuar.</string>
     <string name="withdraw_verifygroup_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e grupit “%1$s”.\n\nKodin QR mund ta çaktivizoni këtu dhe ta riaktivizoni duke e riskanuar.</string>
     <string name="withdraw_qr_code">Çaktivizoni Kodin QR</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Ky kod QR mund të skanohet nga të tjerë për të ujdisur kontakt me ju.\n\nKodi QR s’është aktiv në këtë pajisje.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e grupit “%1$s”.\n\nKodi QR s’është aktiv në këtë pajisje.</string>
     <string name="revive_qr_code">Aktivizoni Kod QR</string>
     <string name="qrshow_title">Kod QR Ftese</string>
@@ -1075,11 +1072,7 @@
     <string name="global_menu_view_developer_desktop">Zhvillues</string>
     <string name="global_menu_view_developer_tools_desktop">Mjete Zhvilluesi</string>
     <string name="global_menu_help_desktop">Ndihmë</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Mësoni më tepër rreth Delta Chat-it</string>
     <string name="delta_chat_homepage">Faqe hyrëse e Delta Chat-it</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Jepni ndihmesë në GitHub</string>
     <string name="contribute">Kontribuoni</string>
     <string name="global_menu_help_report_desktop">Njoftoni një Problem</string>
     <string name="global_menu_help_about_desktop">Rreth Delta Chat-it</string>
@@ -1153,8 +1146,6 @@
     <string name="system_settings">Rregullime Sistemi</string>
     <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
     <string name="system_settings_notify_explain_ios">Përpunoni lloje, stema, bëni paraparje, etj</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Këtu do të duken aplikacione private të dërguar apo të marrë në cilëndo fjalosje. “Kartela” shfaq aplikacione private të saposhkarkuara.</string>
     <!-- iOS shortcut widget -->
     <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
     <string name="shortcuts_widget_title">Shkurtore</string>
@@ -1189,6 +1180,5 @@
 
     <!-- device messages for updates -->
     <string name="update_1_50_android">Ç’ka të re?\n\n❤️‍🔥 Zgjedhës i ri emoji-sh, me më shumë të tillë\n\n🎮 Zgjerim aplikacionesh brenda fjalosjesh: Merrni njoftim dhe hapni aplikacionet përkatës sipas kontekstit, p.sh., hapni drejtpërdrejt një zë të saposhtuar kalendari\n\n👍 Merrni njoftim mbi reagime te mesazhet tuaj\n\n… 🛠️ NDREQJE DHE MË TEPËR te %1$s</string>
-    <string name="update_1_46_ios">Hapa të Rinj Mirëseardhjeje 🐣 dhe të Tjera:\n\n⚡️ Regjistrohuni te shërbyes të siguruar, të shpejtë chatmail-i (https://delta.chat/chatmail), ose përdorni shërbyes klasikë email-i\n\n👉 Njoftime PUSH për çfarëdo shërbyesish “chatmail”\n\n👤 Merrni “Kontakte bashkëmgjitur” dhe lidhuni me shokët tuaj\n\n🥰 Përzgjedhje më e shpejtë reagimesh…ETJ, te %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ Mundësia “Ndërroni Profil” u hoq: Që të shtoni, ose ndërroni profile, prekni figurën e profilit tuaj në cepin e sipërm të skenës kryesore 💡</string>
 </resources>

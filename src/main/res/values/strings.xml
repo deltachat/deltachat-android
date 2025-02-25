@@ -41,6 +41,8 @@
     <string name="later">Later</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Resend</string>
+    <string name="edited">Edited</string>
+    <string name="edit_message">Edit Message</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archive</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -192,6 +194,8 @@
     <string name="app_size">Size</string>
     <string name="app_date_published">Published</string>
     <string name="add_to_chat">Add to Chat</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Browse</string>
     <string name="unknown">Unknown</string>
 
     <string name="green">Green</string>
@@ -219,6 +223,8 @@
     <string name="new_classic_contact_explain">Manually added contacts can be used to text to classic e-mail and are not guaranteed end-to-end encrypted.</string>
     <string name="menu_new_chat">New Chat</string>
     <string name="menu_new_group">New Group</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Chat with…</string>
     <string name="clone_chat">Clone Chat</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Broadcast List</string>
@@ -358,11 +364,12 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Are you sure you want to leave this group?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Delete %d chat? It will no longer be shown in the chat list; its messages will remain on the server.</item>
-        <item quantity="other">Delete %d chats? They will no longer be shown in the chat list; their messages will remain on the server.</item>
+        <item quantity="one">Delete %d chat?</item>
+        <item quantity="other">Delete %d chats?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Delete chat \"%1$s\"? It will no longer be shown in the chat list; its messages will remain on the server.</string>
+    <string name="ask_delete_named_chat">Delete chat \"%1$s\"?</string>
     <string name="ask_delete_message">Are you sure you want to delete this message?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Delete %d message here and on the server?</item>
         <item quantity="other">Delete %d messages here and on the server?</item>
@@ -374,8 +381,8 @@
     <string name="ask_forward">Forward messages to %1$s?</string>
     <string name="ask_forward_multiple">Forward messages to %1$d chats?</string>
     <string name="ask_export_attachment">Exporting attachments will allow other apps on your device to access them.\n\nContinue?</string>
-    <string name="ask_block_contact">Block this contact? You will no longer receive messages from them.</string>
-    <string name="ask_unblock_contact">Unblock this contact? You will then be able to receive messages from them.</string>
+    <string name="ask_block_contact">Block this contact?\n\nDirect messages or groups created by blocked contacts will not show up.\n\nOther groups with blocked contacts will still show their messages.</string>
+    <string name="ask_unblock_contact">Unblock this contact?</string>
     <string name="ask_delete_contacts">Delete contacts?\n\nContacts with ongoing chats or from the system address book cannot be deleted permanently.</string>
     <string name="ask_delete_contact">Delete contact %1$s?\n\nContacts with ongoing chats or from the system address book cannot be deleted permanently.</string>
     <string name="cannot_delete_contacts_in_use">Cannot delete contacts with ongoing chats.</string>
@@ -499,6 +506,8 @@
     <string name="profile_encryption">Encryption</string>
     <string name="profile_shared_chats">Shared Chats</string>
     <string name="related_chats">Related Chats</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Past Members</string>
     <string name="tab_contact">Contact</string>
     <string name="tab_group">Group</string>
     <string name="tab_gallery">Gallery</string>
@@ -512,6 +521,8 @@
     <string name="tab_audio_empty_hint">Audio files and voice messages shared in this chat will appear here.</string>
     <string name="tab_webxdc_empty_hint">Apps shared in this chat will appear here.</string>
     <string name="tab_all_media_empty_hint">Media shared in any chat will appear here.</string>
+    <string name="all_files_empty_hint">Documents and other files shared in any chat will appear here.</string>
+    <string name="all_apps_empty_hint">Apps shared in any chat will appear here.</string>
     <string name="media_preview">Media Preview</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Aspect Ratio Grid</string>
@@ -634,14 +645,6 @@
     <string name="proxy_share_explain">Your friends can add this proxy by scanning the QR code.</string>
     <string name="proxy_share_link">Share Link</string>
 
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Use SOCKS5</string>
-    <string name="login_socks5_host">SOCKS5 Host</string>
-    <string name="login_socks5_port">SOCKS5 Port</string>
-    <string name="login_socks5_user">SOCKS5 User</string>
-    <string name="login_socks5_password">SOCKS5 Password</string>
-
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
     <string name="login_info_oauth2_text">The entered e-mail address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to act as your Chat over E-mail app.\n\nDelta Chat does not collect user data, everything stays on your device.</string>
     <string name="login_certificate_checks">Certificate Checks</string>
@@ -738,8 +741,6 @@
     <string name="pref_manage_keys">Manage Keys</string>
     <string name="pref_use_system_emoji">Use System Emoji</string>
     <string name="pref_use_system_emoji_explain">Turn off Delta Chat\'s built-in emoji support</string>
-    <string name="pref_use_inapp_camera">Use In-App Camera</string>
-    <string name="pref_use_inapp_camera_explain">In-app camera usually has less features than the system camera</string>
     <string name="pref_show_system_contacts">Read System Address Book</string>
     <string name="pref_show_system_contacts_explain">Offer to create chats with contacts from the address book. Some providers need end-to-end encryption setup first.</string>
     <string name="pref_app_access">App Access</string>
@@ -877,10 +878,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Message opened</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">The \"%1$s\" message you sent was displayed on the screen of the recipient.\n\nThis is no guarantee the content was read.</string>
     <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• If you just re-installed Delta Chat then it is best if you re-setup Delta Chat now and choose "Add as second device" or import a backup.</string>
     <string name="systemmsg_unknown_sender_for_chat">Unknown sender for this chat. See \'info\' for more details.</string>
     <string name="systemmsg_subject_for_new_contact">Message from %1$s</string>
@@ -955,8 +952,6 @@
     <string name="chat_protection_broken_explanation">End-to-end encryption cannot be guaranteed anymore, likely because %1$s reinstalled Delta Chat or sent a message from another device.\n\nYou may meet them in person and scan their QR code again to reestablish guaranteed end-to-end encryption.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s requires end-to-end encryption which is not setup for this chat yet. Tap to learn more.</string>
     <string name="invalid_unencrypted_explanation">To establish end-to-end-encryption, you may meet contacts in person and scan their QR Code to introduce them.</string>
-    <!-- deprecated -->
-    <string name="encryption_required_for_new_contact">End-to-end encryption is required but it is not setup for %1$s yet.\n\nYou may share your invite link with them or meet in person and scan their QR Code.</string>
     <string name="learn_more">Learn More</string>
 
     <string name="devicemsg_self_deleted">You deleted the \"Saved messages\" chat.\n\nℹ️ To use the \"Saved messages\" feature again, create a new chat with yourself.</string>
@@ -982,13 +977,11 @@
     <string name="qrscan_contains_text">Scanned QR code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Scanned QR code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerprint</string>
-    <string name="withdraw_verifycontact_explain">This QR code can be scanned by others to contact you.\n\nYou can deactivate the QR code here and reactivate it by scanning it again.</string>
-    <string name="withdraw_verifygroup_explain">This QR code can be scanned by others to join the group \"%1$s\".\n\nYou can deactivate the QR code here and reactivate it by scanning it again.</string>
-    <string name="withdraw_qr_code">Deactivate QR Code</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifycontact_explain">This QR code could be scanned by others to contact you.\n\nThe QR code is not active on this device.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifygroup_explain">This QR code could be scanned by others to join the group \"%1$s\".\n\nThe QR code is not active on this device.</string>
+    <string name="withdraw_verifycontact_explain">This QR code can be scanned by others to contact you.\n\nYou can reset it, so that the existing QR code or invite link will no longer work.</string>
+    <string name="withdraw_verifygroup_explain">This QR code can be scanned by others to join the group \"%1$s\".\n\nYou can reset it, so that the existing QR code or invite link will no longer work.</string>
+    <string name="withdraw_qr_code">Reset QR Code</string>
+    <string name="revive_verifycontact_explain">This QR code has been reset and is no longer active.</string>
+    <string name="revive_verifygroup_explain">This QR code to join group \"%1$s\" has been reset and is no longer active.</string>
     <string name="revive_qr_code">Activate QR Code</string>
     <string name="qrshow_title">QR Invite Code</string>
     <string name="qrshow_x_joining">%1$s joins.</string>
@@ -1086,11 +1079,7 @@
     <string name="global_menu_view_developer_desktop">Developer</string>
     <string name="global_menu_view_developer_tools_desktop">Developer Tools</string>
     <string name="global_menu_help_desktop">Help</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Learn more about Delta Chat</string>
     <string name="delta_chat_homepage">Delta Chat Homepage</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Contribute on GitHub</string>
     <string name="contribute">Contribute</string>
     <string name="global_menu_help_report_desktop">Report an Issue</string>
     <string name="global_menu_help_about_desktop">About Delta Chat</string>
@@ -1168,8 +1157,6 @@
     <string name="system_settings">System Settings</string>
     <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
     <string name="system_settings_notify_explain_ios">Edit type, badges, preview and more</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Apps received or sent in any chat will appear here. \"Files\" shows apps just downloaded.</string>
     <!-- iOS shortcut widget -->
     <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
     <string name="shortcuts_widget_title">Shortcuts</string>
@@ -1204,6 +1191,5 @@
 
     <!-- device messages for updates -->
     <string name="update_1_50_android">What\'s new?\n\n❤️‍🔥 New emojis picker with more emoji\n\n🎮 Enhanced in-chat apps: Get notifications and open supporting apps in context, i.e. open an added calendar entry directly\n\n👍 Get notified about reactions to your messages\n\n... 🛠️ FIXES and EVEN MORE at %1$s</string>
-    <string name="update_1_46_ios">New Onboarding 🐣 and More:\n\n⚡️ Sign up to secure fast chatmail servers (https://delta.chat/chatmail) or use classic e-mail servers\n\n👉 PUSH notifications for any chatmail server\n\n👤 Receive \"Attached contacts\" and connect to your friends\n\n🥰 Faster reaction selection … and MORE at %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ \"Switch Profile\" option moved: Tap your profile image in the upper corner of the main screen to add or switch profiles 💡</string>
 </resources>

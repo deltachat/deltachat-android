@@ -41,6 +41,8 @@
     <string name="later">Later</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Opnieuw versturen</string>
+    <string name="edited">Bewerkt</string>
+    <string name="edit_message">Bericht bewerken</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archiveren</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -192,6 +194,8 @@
     <string name="app_size">Grootte</string>
     <string name="app_date_published">Publicatiedatum</string>
     <string name="add_to_chat">Toevoegen aan gesprek</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Ontdekken</string>
     <string name="unknown">Onbekend</string>
 
     <string name="green">Groen</string>
@@ -219,6 +223,8 @@
     <string name="new_classic_contact_explain">Handmatig toegevoegde contactpersonen zijn bedoeld voor traditionele e-mailcommunicatie - eind-tot-endversleuteling is daarom niet gegarandeerd.</string>
     <string name="menu_new_chat">Nieuw gesprek</string>
     <string name="menu_new_group">Nieuwe groep</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Gesprek voeren met…</string>
     <string name="clone_chat">Gesprek klonen</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Verzendlijst</string>
@@ -363,6 +369,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Weet je zeker dat je ‘%1$s’ wilt verwijderen?</string>
     <string name="ask_delete_message">Weet je zeker dat je dit bericht wilt verwijderen?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Wil je %d bericht verwijderen, zowel hier als op de server?</item>
         <item quantity="other">Wil je %d berichten verwijderen, zowel hier als op de server?</item>
@@ -499,6 +506,8 @@
     <string name="profile_encryption">Versleuteling</string>
     <string name="profile_shared_chats">Gedeelde gesprekken</string>
     <string name="related_chats">Verwante gesprekken</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Voormalige deelnemers</string>
     <string name="tab_contact">Contactpersoon</string>
     <string name="tab_group">Groep</string>
     <string name="tab_gallery">Galerij</string>
@@ -506,12 +515,14 @@
     <string name="tab_links">Links</string>
     <string name="tab_map">Kaart</string>
     <string name="tab_gallery_empty_hint">De in dit gesprek gedeelde afbeeldingen en video\'s verschijnen hier.</string>
-    <string name="tab_docs_empty_hint">De in dit gesprek gedeelde documenten, muziek en overige bestanden verschijnen hier.</string>
+    <string name="tab_docs_empty_hint">Gedeelde documenten en andere bestanden uit dit gesprek worden hier getoond.</string>
     <string name="tab_image_empty_hint">De in dit gesprek gedeelde afbeeldingen verschijnen hier.</string>
     <string name="tab_video_empty_hint">De in dit gesprek gedeelde video\'s verschijnen hier.</string>
     <string name="tab_audio_empty_hint">De in dit gesprek gedeelde audiobestanden en spraakberichten verschijnen hier.</string>
     <string name="tab_webxdc_empty_hint">Privéapps in dit gesprek worden hier getoond.</string>
     <string name="tab_all_media_empty_hint">De in gesprekken gedeelde media verschijnen hier.</string>
+    <string name="all_files_empty_hint">Gedeelde documenten en andere bestanden uit gesprekken worden hier getoond.</string>
+    <string name="all_apps_empty_hint">Privéapps die je verstuurt of ontvangt worden hier getoond.</string>
     <string name="media_preview">Mediavoorbeeld</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Beeldverhouding van rooster</string>
@@ -634,14 +645,6 @@
     <string name="proxy_share_explain">Je kunt vrienden toevoegen aan deze proxy door de QR-code te scannen.</string>
     <string name="proxy_share_link">Link delen</string>
 
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">SOCKS5 gebruiken</string>
-    <string name="login_socks5_host">SOCKS5-host</string>
-    <string name="login_socks5_port">SOCKS5-poort</string>
-    <string name="login_socks5_user">SOCKS5-gebruiker</string>
-    <string name="login_socks5_password">SOCKS5-wachtwoord</string>
-
     <string name="login_info_oauth2_title">Wil je doorgaan met vereenvoudigd instellen?</string>
     <string name="login_info_oauth2_text">Het ingevoerde e-mailadres ondersteunt vereenvoudigd instellen (OAuth2).\n\nTijdens de volgende stap moet je Delta Chat toestaan te fungeren als je e-mailapp.\n\nDelta Chat heeft geen eigen servers; jóuw gegevens blijven op jóuw apparaat!</string>
     <string name="login_certificate_checks">Certificaatcontrole</string>
@@ -738,8 +741,6 @@
     <string name="pref_manage_keys">Sleutels beheren</string>
     <string name="pref_use_system_emoji">Systeememoji gebruiken</string>
     <string name="pref_use_system_emoji_explain">Schakel Delta Chats ingebouwde emojiondersteuning uit</string>
-    <string name="pref_use_inapp_camera">Ingebouwde camera gebruiken</string>
-    <string name="pref_use_inapp_camera_explain">Let op: de ingebouwde camera beschikt over minder functies dan de systeemcamera</string>
     <string name="pref_show_system_contacts">Adresboek uitlezen</string>
     <string name="pref_show_system_contacts_explain">Bied aan om gesprekken te beginnen met contactpersonen uit het adresboek. Let op: voor sommige providers is eind-tot-eindversleuteling benodigd.</string>
     <string name="pref_app_access">Apptoegang</string>
@@ -877,10 +878,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Leesbevestiging</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Het door jou verstuurde bericht, “%1$s”, heeft het scherm van de ontvanger bereikt.\n\nDit betekent echter niet dat het ook gelezen is.</string>
     <string name="systemmsg_cannot_decrypt">Dit bericht kan niet worden ontsleuteld.\n\n• Het kan helpen dit bericht te beantwoorden en de afzender te vragen het opnieuw te versturen.\n\n• Als je Delta Chat of een andere e-mailapp opnieuw hebt geïnstalleerd, voeg het dan toe als tweede apparaat of importeer een reservekopie.</string>
     <string name="systemmsg_unknown_sender_for_chat">Dit gesprek bevat een onbekende afzender. Zie ‘Informatie’ voor meer informatie.</string>
     <string name="systemmsg_subject_for_new_contact">Bericht van %1$s</string>
@@ -955,8 +952,6 @@
     <string name="chat_protection_broken_explanation">Eind-tot-eindversleuteling kan niet meer worden gegarandeerd, omdat %1$s Delta Chat opnieuw heeft geïnstalleerd of een bericht vanaf een ander apparaat heeft verstuurd.\n\nMaak een afspraak met hem/haar en scan de QR-code opnieuw om eind-tot-eindversleuteling weer in te schakelen.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ Voor %1$s is eind-tot-eindversleuteling vereist, maar dit is nog niet ingesteld in het huidige gesprek. Druk voor meer informatie.</string>
     <string name="invalid_unencrypted_explanation">Spreek met elkaar af en scan elkaars QR-code om eind-tot-eindversleuteling op te zetten.</string>
-    <!-- deprecated -->
-    <string name="encryption_required_for_new_contact">Eind-tot-eindversleuteling is vereist, maar nog niet ingesteld op %1$s.\n\nJe kunt deze link alleen delen met personen die je kent of die je in het echt ontmoet en waarvan je de QR-code scant.</string>
     <string name="learn_more">Meer informatie</string>
 
     <string name="devicemsg_self_deleted">Je hebt het gesprek ‘Bewaarde berichten’ verwijderd.\n\nℹ️ Als je weer gebruik wilt maken van deze functie, begin dan een nieuw gesprek met jezelf.</string>
@@ -982,13 +977,11 @@
     <string name="qrscan_contains_text">Gescande QR-codetekst:\n\n %1$s</string>
     <string name="qrscan_contains_url">Gescande QR-code-url:\n\n %1$s</string>
     <string name="qrscan_fingerprint_label">Vingerafdruk</string>
-    <string name="withdraw_verifycontact_explain">Deze QR-code kan door anderen worden gescand om contact met je op te nemen.\n\nJe kunt de QR-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
-    <string name="withdraw_verifygroup_explain">Deze QR-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nJe kunt de QR-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
+    <string name="withdraw_verifycontact_explain">Deze QR-code kan door anderen worden gescand om contact met je op te nemen.\n\nJe kunt de QR-code hier deactiveren, zodat die niet meer werkt.</string>
+    <string name="withdraw_verifygroup_explain">Deze QR-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nJe kunt de QR-code hier deactiveren, zodat die niet meer werkt.</string>
     <string name="withdraw_qr_code">QR-code deactiveren</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifycontact_explain">Deze QR-code kan door anderen worden gescand om contact met je op te nemen.\n\nDe QR-code is niet actief op dit apparaat.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifygroup_explain">Deze QR-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nDe QR-code is niet actief op dit apparaat.</string>
+    <string name="revive_verifycontact_explain">Deze QR-code is gedactiveerd en kan niet meer worden gebruikt.</string>
+    <string name="revive_verifygroup_explain">Deze QR-code voor de groep ‘%1$s’ is gedeactiveerd en kan niet meer worden gebruikt.</string>
     <string name="revive_qr_code">QR-code activeren</string>
     <string name="qrshow_title">QR-uitnodigingscode</string>
     <string name="qrshow_x_joining">%1$s heeft deelgenomen.</string>
@@ -1086,11 +1079,7 @@
     <string name="global_menu_view_developer_desktop">Ontwikkelaar</string>
     <string name="global_menu_view_developer_tools_desktop">Ontwikkelaarshulpmiddelen</string>
     <string name="global_menu_help_desktop">Hulp</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Meer informatie over Delta Chat</string>
     <string name="delta_chat_homepage">Delta Chat-website</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Draag bij op GitHub</string>
     <string name="contribute">Bijdragen</string>
     <string name="global_menu_help_report_desktop">Meld een probleem</string>
     <string name="global_menu_help_about_desktop">Over Delta Chat</string>
@@ -1168,8 +1157,6 @@
     <string name="system_settings">Systeeminstellingen</string>
     <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
     <string name="system_settings_notify_explain_ios">Pas het type, emblemen, de voorvertoning en meer aan</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Privéapps die je verstuurt of ontvangt worden hier getoond. Bij de bestanden zie je de zojuist gedownloade apps.</string>
     <!-- iOS shortcut widget -->
     <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
     <string name="shortcuts_widget_title">Opdrachten</string>
@@ -1204,6 +1191,5 @@
 
     <!-- device messages for updates -->
     <string name="update_1_50_android">Wijzigingslog:\n\n❤️‍🔥 Nieuwe emojikiezer met veel meer emojis\n\n🎮 Verbeterde apps in gesprekken: ontvang meldingen open ondersteunde apps met links, bijv. een agenda-uitnodiging\n\n👍 Ontvang meldingen bij reacties op berichten\n\n… 🛠️ Opgeloste fouten en VEEL MEER op %1$s</string>
-    <string name="update_1_46_ios">Nieuwe registratiemogelijkheden 🐣 en nog veel meer:\n\n⚡️ Registreer een account bij snelle chatmailservers (https://delta.chat/chatmail) of maak gebruik van traditionele mailservers\n\n👉 Ontvang pushmeldingen van elke chatmailserver\n\n👤 Voeg contactpersonen toe via ‘Contactpersonen bijvoegen’\n\n🥰 Reageer met een emoji\n\n📌 Maak gesprekken vast … en nog veel meer op %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ De optie om een ander profiel te kiezen is verplaatst: druk op je profielfoto op het hoofdscherm om het profielmenu te openen.💡</string>
 </resources>

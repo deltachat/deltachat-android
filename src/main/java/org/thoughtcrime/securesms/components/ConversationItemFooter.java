@@ -20,6 +20,7 @@ import org.thoughtcrime.securesms.util.DateUtils;
 public class ConversationItemFooter extends LinearLayout {
 
   private TextView            dateView;
+  private ImageView           bookmarkIndicatorView;
   private ImageView           secureIndicatorView;
   private ImageView           locationIndicatorView;
   private DeliveryStatusView  deliveryStatusView;
@@ -44,6 +45,7 @@ public class ConversationItemFooter extends LinearLayout {
     inflate(getContext(), R.layout.conversation_item_footer, this);
 
     dateView              = findViewById(R.id.footer_date);
+    bookmarkIndicatorView = findViewById(R.id.footer_bookmark_indicator);
     secureIndicatorView   = findViewById(R.id.footer_secure_indicator);
     locationIndicatorView = findViewById(R.id.footer_location_indicator);
     deliveryStatusView    = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
@@ -58,6 +60,8 @@ public class ConversationItemFooter extends LinearLayout {
 
   public void setMessageRecord(@NonNull DcMsg messageRecord) {
     presentDate(messageRecord);
+    boolean bookmark = messageRecord.getOriginalMsgId() != 0 || messageRecord.getSavedMsgId() != 0;
+    bookmarkIndicatorView.setVisibility(bookmark ? View.VISIBLE : View.GONE);
     secureIndicatorView.setVisibility(messageRecord.isSecure() ? View.VISIBLE : View.GONE);
     locationIndicatorView.setVisibility(messageRecord.hasLocation() ? View.VISIBLE : View.GONE);
     presentDeliveryStatus(messageRecord);
@@ -65,6 +69,7 @@ public class ConversationItemFooter extends LinearLayout {
 
   private void setTextColor(int color) {
     dateView.setTextColor(color);
+    bookmarkIndicatorView.setColorFilter(color);
     secureIndicatorView.setColorFilter(color);
     locationIndicatorView.setColorFilter(color);
     deliveryStatusView.setTint(color);

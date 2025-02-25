@@ -324,6 +324,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Naozaj chcete položku odstrániť  \"%1$s\" ?</string>
     <string name="ask_delete_message">Naozaj chcete odstrániť túto správu?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Odstrániť %d správu tu a na serveri?</item>
         <item quantity="few">Odstrániť %d správy tu a na serveri?</item>
@@ -516,14 +517,6 @@
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Zabezpečenie SMTP</string>
     <string name="login_auth_method">Metóda autorizácie</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Použiť SOCKS5</string>
-    <string name="login_socks5_host">SOCKS5 Host</string>
-    <string name="login_socks5_port">SOCKS5 Port</string>
-    <string name="login_socks5_user">SOCKS5 Používateľ</string>
-    <string name="login_socks5_password">SOCKS5 Heslo</string>
-
     <string name="login_info_oauth2_title">Pokračovať v zjednodušenom nastavovaní?</string>
     <string name="login_info_oauth2_text">Zadaná e-mailová adresa podporuje zjednodušené nastavenie (OAuth 2.0).\n\nV ďalšom kroku povoľte aplikácii Delta Chat, aby fungovala ako vaša aplikácia Chat cez e-mail.\n\nNie sú k dispozícii servery Delta Chat, vaše dáta zostanú vo vašom zariadení .</string>
     <string name="login_certificate_checks">Osvedčovacie kontroly</string>
@@ -721,11 +714,6 @@
     <string name="autocrypt_bad_setup_code">Chybný kód nastavenia. Skúste to znova.\n\nAk si nepamätáte nastavovací kód, odošlite z druhého zariadenia novú správu s nastavením automatického šifrovania.</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Správa otvorená</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">%1$s Správa, ktorú ste poslali, sa zobrazila na obrazovke príjemcu.\n\nZaručujeme, že obsah nebol prečítaný.</string>
     <string name="systemmsg_unknown_sender_for_chat">Neznámy odosielateľ pre túto konverzáciu. Ďalšie informácie nájdete v časti „Informácie“.</string>
     <string name="systemmsg_subject_for_new_contact">Správa od %1$s</string>
     <string name="systemmsg_failed_sending_to">Správu sa nepodarilo odoslať %1$s .</string>
@@ -814,9 +802,7 @@
     <string name="withdraw_verifycontact_explain">Tento QR kód môžu naskenovať iní, aby vás mohli kontaktovať.\n\nTu môžete deaktivovať QR kód a znova ho aktivovať opätovným naskenovaním.</string>
     <string name="withdraw_verifygroup_explain">Tento QR kód môžu naskenovať ostatní, aby sa pripojili ku skupine \"%1$s\".\n\nTu môžete deaktivovať QR kód a znova ho aktivovať opätovným naskenovaním.</string>
     <string name="withdraw_qr_code">Vypnúť QR kód</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Tento QR kód mohol byť naskenovaný inými, aby vás mohli kontaktovať.\n\nQR kód nie je na tomto zariadení aktívny.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Tento QR kód mohli naskenovať iní, aby sa pripojili ku skupine „%1$s“.\n\nQR kód nie je na tomto zariadení aktívny.</string>
     <string name="revive_qr_code">Povoliť QR kód.</string>
     <string name="qrshow_title">QR pozývací kód</string>
@@ -896,10 +882,6 @@
     <string name="global_menu_view_developer_desktop">Vývojár</string>
     <string name="global_menu_view_developer_tools_desktop">Nástroje pre vývojárov</string>
     <string name="global_menu_help_desktop">Pomocník</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Získať viac informácií o službe Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Prispieť na GitHub-e</string>
     <string name="global_menu_help_report_desktop">Nahlásiť problém</string>
     <string name="global_menu_help_about_desktop">O spoločnosti Delta Chat</string>
     <string name="global_menu_file_open_desktop">Otvoriť Delta Chat</string>

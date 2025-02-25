@@ -340,6 +340,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Är du säker på att du vill ta bort \"%1$s\"?</string>
     <string name="ask_delete_message">Är du säker på att du vill radera detta meddelande?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Radera %d meddelande här och på servern.</item>
         <item quantity="other">Radera %d meddelanden här och på servern?</item>
@@ -482,6 +483,7 @@
     <string name="tab_audio_empty_hint">Ljudfiler och röstmeddelanden delade i denna chatt kommer att visas här.</string>
     <string name="tab_webxdc_empty_hint">Appar delade i denna chatt kommer att visas här.</string>
     <string name="tab_all_media_empty_hint">Media delad i någon chatt kommer att visas här.</string>
+    <string name="all_apps_empty_hint">Appar som tas emot eller skickas i en chatt visas här.</string>
     <string name="media_preview">Förhandsvisning av media</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Rutnät för bildförhållande</string>
@@ -590,14 +592,6 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP säkerhet</string>
     <string name="login_auth_method">Auktoriseringsmetod</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Använd SOCKS5</string>
-    <string name="login_socks5_host">SOCKS5-värd</string>
-    <string name="login_socks5_port">SOCKS5-port</string>
-    <string name="login_socks5_user">SOCKS5-användare</string>
-    <string name="login_socks5_password">SOCKS5-lösenord</string>
-
     <string name="login_info_oauth2_title">Fortsätta med förenklad installation?</string>
     <string name="login_info_oauth2_text">Den angivna e-postadressen stödjer förenklad inställning (OAuth 2.0).\n\nLåt Delta Chat agera som ditt chatt-över-epost-program, i nästa steg.\n\nDet finns ingen Delta Chat-server, din data stannar på din enhet.</string>
     <string name="login_certificate_checks">Certifikatkontroller</string>
@@ -683,8 +677,6 @@
     <string name="pref_manage_keys">Hantera nycklar</string>
     <string name="pref_use_system_emoji">Använd systemets emojier</string>
     <string name="pref_use_system_emoji_explain">Inaktivera Delta Chat\'s inbyggda emojier</string>
-    <string name="pref_use_inapp_camera">Använd kameran i appen</string>
-    <string name="pref_use_inapp_camera_explain">Kameran i appen har vanligtvis färre funktioner än systemkameran</string>
     <string name="pref_show_system_contacts">Läs systemets adressbok</string>
     <string name="pref_show_system_contacts_explain">Erbjud att skapa chattar med kontakter från adressboken. Vissa leverantörer behöver först konfigureras för totalsträckskryptering.</string>
     <string name="pref_app_access">Programåtkomst</string>
@@ -822,10 +814,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Meddelande öppnat</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">\"%1$s\" meddelandet du skickade visades på mottagarens skärm.\n\nDet är ingen garanti för att innehållet har lästs.</string>
     <string name="systemmsg_cannot_decrypt">Det här meddelandet kan inte dekrypteras.\n\n- Det kan hjälpa att helt enkelt svara på det här meddelandet och be avsändaren att skicka meddelandet igen.\n\n- Om du just har installerat om Delta Chat är det bäst om du konfigurerar om Delta Chat nu och väljer \"Lägg till som en andra enhet\" eller importerar en säkerhetskopia.</string>
     <string name="systemmsg_unknown_sender_for_chat">Okänd avsändare för denna chatt. Se info för fler detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Meddelande från %1$s</string>
@@ -900,8 +888,6 @@
     <string name="chat_protection_broken_explanation">Totalsträckskryptering kan inte garanteras längre, troligen för att %1$s installerade om Delta Chat eller skickade ett meddelande från en annan enhet.\n\nDu kan träffa dem personligen och skanna deras QR-kod igen för att återupprätta garanterad totalsträckskryptering.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s kräver totalsträckskryptering som inte är kofigurerad för den här chatten ännu. Tryck för att lära dig mer.</string>
     <string name="invalid_unencrypted_explanation">För att skapa totalsträckskryptering kan du träffa kontakter personligen och skanna deras QR-kod för att introducera dem.</string>
-    <!-- deprecated -->
-    <string name="encryption_required_for_new_contact">Totalsträckskryptering krävs men det är ännu inte konfigurerat för %1$s.\n\nDu kan dela din inbjudningslänk med dem eller träffas personligen och skanna deras QR-kod.</string>
     <string name="learn_more">Lär dig mer</string>
 
     <string name="devicemsg_self_deleted">Du har tagit bort chatten \"Sparade meddelanden\".\n\nℹ️ Om du vill använda funktionen \"Sparade meddelanden\" igen skapar du en ny chatt med dig själv.</string>
@@ -930,9 +916,7 @@
     <string name="withdraw_verifycontact_explain">Denna QR-kod kan skannas av andra för att kontakta dig.\n\nDu kan avaktivera QR-koden här och återaktivera den genom att skanna den igen.</string>
     <string name="withdraw_verifygroup_explain">Denna QR-kod kan skannas av andra för att gå med i gruppen \"%1$s\".\n\nDu kan avaktivera QR-koden här och återaktivera den genom att skanna den igen.</string>
     <string name="withdraw_qr_code">Avaktivera QR-kod</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Den här QR-koden kan skannas av andra för att kontakta dig.\n\nQR-koden är inte aktiv på den här enheten.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Den här QR-koden kan skannas av andra för att gå med i gruppen \"%1$s\".\n\nQR-koden är inte aktiv på den här enheten.</string>
     <string name="revive_qr_code">Aktivera QR-kod</string>
     <string name="qrshow_title">QR-kod för inbjudan</string>
@@ -1031,10 +1015,6 @@
     <string name="global_menu_view_developer_desktop">Utvecklare</string>
     <string name="global_menu_view_developer_tools_desktop">Utvecklingsverktyg</string>
     <string name="global_menu_help_desktop">Hjälp</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Lär dig mer om Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Bidra på GitHub</string>
     <string name="global_menu_help_report_desktop">Rapportera ett ärende</string>
     <string name="global_menu_help_about_desktop">Om Delta Chat</string>
     <string name="global_menu_file_open_desktop">Öppna Delta Chat</string>
@@ -1106,8 +1086,6 @@
     <string name="notifications_avg_minutes">I genomsnitt var %1$d minut</string>
     <string name="notifications_avg_hours">I genomsnitt var %1$d:e timma</string>
     <string name="last_check_at">Kontrollerad %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Appar som tas emot eller skickas i en chatt visas här. \"Filer\" visar appar som just har laddats ner.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat använder din kamera för att ta och skicka foton och filmer, och för att skanna QR-koder.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat använder dina kontakter för att visa en lista över e-postadresser som du kan skriva till.m Delta Chat har ingen server, dina kontakter skickas inte någonstans.</string>
@@ -1128,6 +1106,5 @@
     <string name="perm_enable_bg_reminder_title">Tryck här för att ta emot meddelanden medan Delta Chat är i bakgrunden.</string>
     <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
 
-    <string name="update_1_46_ios">Ny Onboarding 🐣 och mer:\n\n⚡️ Registrera dig för säkra snabba chatmailservrar (https://delta.chat/chatmail) eller använd klassiska e-postservrar\n\n👉 PUSH-meddelanden för alla chatmailservrar\n\n👤 Ta emot \"bifogade kontakter\" och anslut till dina vänner\n\n🥰 Snabbare reaktionsval ... och MER på %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ Alternativet \"Byt profil\" har flyttats: Tryck på din profilbild i det övre hörnet av huvudskärmen för att lägga till eller byta profil 💡</string>
 </resources>

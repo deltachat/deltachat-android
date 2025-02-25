@@ -341,12 +341,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       return;
     }
 
-    DcMsg dcMsg = dcContext.getMsg(mediaItem.msgId);
-    DcChat dcChat = dcContext.getChat(dcMsg.getChatId());
-
-    String text = getResources().getQuantityString(
-      dcChat.isDeviceTalk()? R.plurals.ask_delete_messages_simple : R.plurals.ask_delete_messages,
-      1, 1);
+    String text = getResources().getQuantityString(R.plurals.ask_delete_messages_simple, 1, 1);
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setMessage(text);

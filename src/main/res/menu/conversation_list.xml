@@ -25,6 +25,10 @@
           android:id="@+id/menu_marknoticed_selected"
           app:showAsAction="never"/>
 
+    <item android:title="@string/add_to_home_screen"
+          android:id="@+id/menu_add_to_home_screen"
+          app:showAsAction="never"/>
+
     <item android:title="@string/menu_select_all"
           android:id="@+id/menu_select_all"
           app:showAsAction="never"/>

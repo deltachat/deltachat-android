@@ -223,6 +223,7 @@
         <item quantity="other">Cheres iscantzellare %d tzarradas? No ant a èssere prus ammustradas in sa lista de sas tzarradas, ma sos messàgios ant a abarrare in su servidore.</item>
     </plurals>
     <string name="ask_delete_named_chat">Ses seguru de chèrrere iscantzellare \"%1$s\"?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Iscantzellare %d messàgiu inoghe e in su servidore?</item>
         <item quantity="other">Iscantzellare %d messàgios inoghe e in su servidore?</item>

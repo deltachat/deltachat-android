@@ -293,6 +293,7 @@
     </plurals>
     <string name="ask_delete_named_chat">메시지 \"%1$s\"을 지우려는 것이 확실한가요?</string>
     <string name="ask_delete_message">이 메시지를 삭제하시겠습니까?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="other">%d개의 메시지를 이 곳과 서버에서 삭제하시겠습니까?</item>
     </plurals>
@@ -416,6 +417,7 @@
     <string name="tab_video_empty_hint">채팅에 공유된 비디오가 여기에 나타납니다.</string>
     <string name="tab_audio_empty_hint">이 채팅에서 공유된 오디오 파일과 음성 메시지가 여기에 나타납니다.</string>
     <string name="tab_webxdc_empty_hint">이 채팅에서 공유된 개인 앱이 여기에 나타납니다.</string>
+    <string name="all_apps_empty_hint">채팅에서 보내거나 받은 개인 앱들이 여기에 나타납니다.</string>
     <string name="media_preview">미디어 미리보기</string>
     <string name="send_message">메시지 전송</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -469,14 +471,6 @@
     <string name="login_smtp_port">SMTP 포트</string>
     <string name="login_smtp_security">SMTP 보안</string>
     <string name="login_auth_method">권한 부여 방법</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">SOCKS5 사용</string>
-    <string name="login_socks5_host">SOCKS5 호스트</string>
-    <string name="login_socks5_port">SOCKS5 포트</string>
-    <string name="login_socks5_user">SOCKS5 사용자</string>
-    <string name="login_socks5_password">SOCKS5 비밀번호</string>
-
     <string name="login_info_oauth2_title">간소화된 설치를 계속하시겠습니까?</string>
     <string name="login_info_oauth2_text">입력한 이메일 주소는 단순화된 설정(OAuth 2.0)을 지원합니다.\n\n다음 단계에서는 Delta Chat 이 이메일을 통한 채팅 앱 역할을 하도록 허용하십시오.\n\nDelta 채팅 서버가 없으며 데이터가 장치에 남아 있습니다.</string>
     <string name="login_certificate_checks">인증서 확인</string>
@@ -659,11 +653,6 @@
     <string name="autocrypt_bad_setup_code">잘못된 설정 코드입니다. 다시 시도하십시오.\n\n설정 코드가 기억나지 않으면 다른 장치에서 새 자동 암호화 설치 메시지를 보냅니다.</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">메시지 열림</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">보낸 \"%1$s\" 메시지가 수신자의 화면에 표시되었습니다.\n\n이것은 내용이 읽혔다는 것을 보장하지 않습니다.</string>
     <string name="systemmsg_unknown_sender_for_chat">이 채팅의 발신자를 알 수 없습니다. 자세한 내용은 \'info\'를 확인하세요.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s가 보낸 메시지</string>
     <string name="systemmsg_failed_sending_to">%1$s에게 메시지를 보내지 못했습니다.</string>
@@ -750,9 +739,7 @@
     <string name="withdraw_verifycontact_explain">이 QR 코드는 다른 사용자가 스캔하여 사용자에게 연락할 수 있습니다.\n\n여기서 QR 코드를 비활성화하고 다시 스캔하여 다시 활성화할 수 있습니다.</string>
     <string name="withdraw_verifygroup_explain">이 QR 코드는 다른 사용자가 스캔하여 \"%1$s\" 그룹에 가입할 수 있습니다.\n\n여기서 QR 코드를 비활성화하고 다시 스캔하여 다시 활성화할 수 있습니다.</string>
     <string name="withdraw_qr_code">QR 코드 비활성화</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">이 QR 코드는 다른 사용자가 스캔하여 사용자에게 연락할 수 있습니다.\n\nQR 코드가 이 장치에서 활성화되지 않았습니다.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">이 QR 코드는 다른 사람이 스캔하여 그룹 \"%1$s\"에 가입할 수 있다.\n\nQR 코드가 이 장치에서 활성화되지 않았습니다.</string>
     <string name="revive_qr_code">QR 코드 활성화</string>
     <string name="qrshow_title">QR 초대 코드</string>
@@ -834,10 +821,6 @@
     <string name="global_menu_view_developer_desktop">개발자</string>
     <string name="global_menu_view_developer_tools_desktop">개발자 도구</string>
     <string name="global_menu_help_desktop">도움말</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Delta Chat에 대해 더 알아보기</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">GitHub에 기여</string>
     <string name="global_menu_help_report_desktop">문제 보고</string>
     <string name="global_menu_help_about_desktop">Delta Chat에 대해</string>
     <string name="global_menu_file_open_desktop">Delta Chat 열기</string>
@@ -899,8 +882,6 @@
     <string name="notifications_avg_minutes">평균적으로 %1$d분마다</string>
     <string name="notifications_avg_hours">평균적으로 %1$d시간마다</string>
     <string name="last_check_at">%1$s에 확인됨</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">채팅에서 보내거나 받은 개인 앱들이 여기에 나타납니다. \"파일\"에서 방금 다운로드 받은 개인 앱들을 보여줍니다.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat은 카메라를 사용하여 사진과 비디오를 찍고 전송하고 QR 코드를 스캔합니다.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 은 연락처를 사용하여 쓸 수 있는 이메일 주소 목록을 표시합니다. Delta Chat 에는 서버가 없으며 연락처는 아무 곳에도 전송되지 않습니다.</string>

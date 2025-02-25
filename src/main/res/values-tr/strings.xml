@@ -41,6 +41,8 @@
     <string name="later">Daha Sonra</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Yeniden Gönder</string>
+    <string name="edited">Düzenlendi</string>
+    <string name="edit_message">İletiyi Düzenle</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arşivle</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -192,6 +194,8 @@
     <string name="app_size">Boyut</string>
     <string name="app_date_published">Yayımlanma</string>
     <string name="add_to_chat">Sohbete Ekle</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Gözat</string>
     <string name="unknown">Bilinmeyen</string>
 
     <string name="green">Yeşil</string>
@@ -219,6 +223,8 @@
     <string name="new_classic_contact_explain">Elle eklenen kişiler, klasik e-postaya metin göndermede kullanılabilir ve uçtan uca şifreleme güvencelenmez.</string>
     <string name="menu_new_chat">Yeni Sohbet</string>
     <string name="menu_new_group">Yeni Öbek</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Sohbet et…</string>
     <string name="clone_chat">Sohbeti Çoğalt</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Yayın Listesi</string>
@@ -363,6 +369,7 @@
     </plurals>
     <string name="ask_delete_named_chat">\"%1$s\" sohbeti silinsin mi? O artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</string>
     <string name="ask_delete_message">Bu iletiyi silmek istediğinizden emin misiniz?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">%d ileti buradan ve sunucudan silinsin mi?</item>
         <item quantity="other">%d ileti buradan ve sunucudan silinsin mi?</item>
@@ -374,8 +381,8 @@
     <string name="ask_forward">İletiler %1$s kişisine iletilsin mi?</string>
     <string name="ask_forward_multiple">İletiler %1$d sohbete iletilsin mi?</string>
     <string name="ask_export_attachment">İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
-    <string name="ask_block_contact">Bu kişi engellensin mi? Artık ondan gelen iletileri almayacaksınız.</string>
-    <string name="ask_unblock_contact">Bu kişi engellenmesin mi? Artık ondan gelen iletileri alabileceksiniz.</string>
+    <string name="ask_block_contact">Bu kişi engellensin mi?\n\nEngellenen kişiler tarafından oluşturulan doğrudan iletiler ya da öbekler gösterilmeyecek.\n\nEngellenen kişilerle olan diğer öbekler, onların iletilerini gösterecek.</string>
+    <string name="ask_unblock_contact">Bu kişi engellenmesin mi?</string>
     <string name="ask_delete_contacts">Kişiler silinsin mi?\n\nSohbetlerin sürdüğü ya da sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="ask_delete_contact">%1$s kişisi silinsin mi?\n\nSohbetlerin sürdüğü ya da sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="cannot_delete_contacts_in_use">Sohbetlerin sürdüğü kişiler silinemez.</string>
@@ -499,6 +506,8 @@
     <string name="profile_encryption">Şifreleme</string>
     <string name="profile_shared_chats">Paylaşılan Sohbetler</string>
     <string name="related_chats">İlgili Sohbetler</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Geçmişteki Üyeler</string>
     <string name="tab_contact">Kişi</string>
     <string name="tab_group">Öbek</string>
     <string name="tab_gallery">Galeri</string>
@@ -512,6 +521,8 @@
     <string name="tab_audio_empty_hint">Bu sohbette paylaşılan ses dosyaları ve sesli iletiler burada görünecek.</string>
     <string name="tab_webxdc_empty_hint">Bu sohbette paylaşılan uygulamalar burada görünecek.</string>
     <string name="tab_all_media_empty_hint">Herhangi bir sohbette paylaşılan ortamlar burada görünecek.</string>
+    <string name="all_files_empty_hint">Herhangi bir sohbette paylaşılan belgeler ve diğer dosyalar burada görünecek.</string>
+    <string name="all_apps_empty_hint">Herhangi bir sohbette paylaşılan uygulamalar burada görünecek.</string>
     <string name="media_preview">Ortam Önizlemesi</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">En Boy Oranı Izgarası</string>
@@ -634,14 +645,6 @@
     <string name="proxy_share_explain">Arkadaşlarınız, QR kodunu tarayarak bu proxy\'yi ekleyebilir.</string>
     <string name="proxy_share_link">Bağlantı Paylaş</string>
 
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">SOCKS5\'i Kullan</string>
-    <string name="login_socks5_host">SOCKS5 Ana Bilgisayarı</string>
-    <string name="login_socks5_port">SOCKS5 Bağlantı Noktası</string>
-    <string name="login_socks5_user">SOCKS5 Kullanıcısı</string>
-    <string name="login_socks5_password">SOCKS5 Parolası</string>
-
     <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
     <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth 2.0) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'in E-posta Üzerinden Sohbet uygulamanız olarak davranmasına izin verin.\n\nDelta Chat kullanıcı verisi toplamaz; her şey aygıtınızda kalır.</string>
     <string name="login_certificate_checks">Sertifika Denetimleri</string>
@@ -738,8 +741,6 @@
     <string name="pref_manage_keys">Anahtarları Yönet</string>
     <string name="pref_use_system_emoji">Sistem Emojisini Kullan</string>
     <string name="pref_use_system_emoji_explain">Delta Chat\'in gömülü emoji desteğini kapat</string>
-    <string name="pref_use_inapp_camera">Uygulama İçi Kamerayı Kullan</string>
-    <string name="pref_use_inapp_camera_explain">Uygulama içi kameranın genellikle sistem kamerasından daha az özelliği vardır</string>
     <string name="pref_show_system_contacts">Sistem Adres Defterini Oku</string>
     <string name="pref_show_system_contacts_explain">Adres defterinden gelen kişilerle sohbet oluşturmayı teklif edin. Bazı sağlayıcılara önce uçtan uca şifreleme ayarlaması gerekir.</string>
     <string name="pref_app_access">Uygulama Erişimi</string>
@@ -877,10 +878,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">İleti açıldı</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Gönderdiğiniz \"%1$s\" iletisi alıcının ekranında görüntülendi.\n\nBu, içeriğin okunduğunun güvencesi değildir.</string>
     <string name="systemmsg_cannot_decrypt">Bu ileti şifresi çözülemiyor.\n\n• Bu iletiye basitçe yanıt vermek ve gönderenden iletiyi yeniden göndermesini istemek zaten yardımcı olabilir.\n\n• Delta Chat\'i yeni kurduysanız, Delta Chat\'i şimdi yeniden ayarlayıp \"İkinci aygıt olarak ekle\"yi seçmeniz ya da bir yedeği içe aktarmanız en iyisidir.</string>
     <string name="systemmsg_unknown_sender_for_chat">Bu sohbet için bilinmeyen gönderen. Daha fazla ayrıntı için \'bilgi\'ye bakın.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s kişisinden gelen ileti</string>
@@ -955,8 +952,6 @@
     <string name="chat_protection_broken_explanation">Uçtan uca şifreleme artık güvencelenemiyor; çünkü büyük olasılıkla %1$s Delta Chat\'i yeniden yükledi ya da başka bir aygıttan ileti gönderdi.\n\nOnlarla kişisel olarak tanışabilir ve güvenceli uçtan uca şifrelemeyi yeniden kurmak için onların QR kodunu yeniden tarayabilirsiniz.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s, bu sohbet için henüz ayarlanmayan uçtan uca şifrelemeyi gerektirir. Daha fazlasını öğrenmek için dokunun.</string>
     <string name="invalid_unencrypted_explanation">Uçtan uca şifrelemeyi kurmak için kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
-    <!-- deprecated -->
-    <string name="encryption_required_for_new_contact">Uçtan uca şifreleme gereklidir ama %1$s için henüz ayarlanmadı.\n\nÇağırma bağlantınızı onunla paylaşabilirsiniz ya da kişisel olarak tanışarak onun QR kodunu tarayabilirsiniz.</string>
     <string name="learn_more">Daha Fazlasını Öğrenin</string>
 
     <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
@@ -982,13 +977,11 @@
     <string name="qrscan_contains_text">Taranan QR kodu metni:\n\n%1$s</string>
     <string name="qrscan_contains_url">Taranan QR kodu URL\'si:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Parmak izi</string>
-    <string name="withdraw_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranabilir.\n\nQR kodunu buradan etkisizleştirebilir ve yeniden tarayarak etkinleştirebilirsiniz.</string>
-    <string name="withdraw_verifygroup_explain">Bu QR kodu, \"%1$s\" öbeğine katılmak için diğerleri tarafından taranabilir.\n\nQR kodunu buradan etkisizleştirebilir ve yeniden tarayarak etkinleştirebilirsiniz.</string>
-    <string name="withdraw_qr_code">QR Kodunu Etkisizleştir</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranmış olabilir.\n\nQR kodu bu aygıtta etkin değil.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifygroup_explain">Bu QR kodu, \"%1$s\" öbeğine katılmak için diğerleri tarafından taranmış olabilir.\n\nQR kodu bu aygıtta etkin değil.</string>
+    <string name="withdraw_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
+    <string name="withdraw_verifygroup_explain">Bu QR kodu, \"%1$s\" öbeğine katılmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
+    <string name="withdraw_qr_code">QR Kodunu Sıfırla</string>
+    <string name="revive_verifycontact_explain">Bu QR kodu sıfırlandı ve artık etkin değil.</string>
+    <string name="revive_verifygroup_explain">\"%1$s\" öbeğine katılmak için taranan bu QR kodu sıfırlandı ve artık etkin değil.</string>
     <string name="revive_qr_code">QR Kodunu Etkinleştir</string>
     <string name="qrshow_title">QR Çağrı Kodu</string>
     <string name="qrshow_x_joining">%1$s katılıyor.</string>
@@ -1086,11 +1079,7 @@
     <string name="global_menu_view_developer_desktop">Geliştirici</string>
     <string name="global_menu_view_developer_tools_desktop">Geliştirici Araçları</string>
     <string name="global_menu_help_desktop">Yardım</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Delta Chat hakkında daha fazlasını öğrenin</string>
     <string name="delta_chat_homepage">Delta Chat Ana Sayfası</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">GitHub\'da katkıda bulunun</string>
     <string name="contribute">Katkıda Bulunun</string>
     <string name="global_menu_help_report_desktop">Bir Sorun Raporla</string>
     <string name="global_menu_help_about_desktop">Delta Chat hakkında</string>
@@ -1168,8 +1157,6 @@
     <string name="system_settings">Sistem Ayarları</string>
     <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
     <string name="system_settings_notify_explain_ios">Türü, rozetleri, önizlemeyi ve daha fazlasını düzenle</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Herhangi bir sohbette alınan ya da gönderilen uygulamalar burada görünecek. \"Dosyalar\", yalnızca indirilen uygulamaları gösterir.</string>
     <!-- iOS shortcut widget -->
     <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
     <string name="shortcuts_widget_title">Kısayollar</string>
@@ -1204,6 +1191,5 @@
 
     <!-- device messages for updates -->
     <string name="update_1_50_android">Ne yeni?\n\n❤️‍🔥 Daha fazla emojiyle yeni emoji seçicisi\n\n🎮 Geliştirilen sohbet içi uygulamalar: Bildirimler alın ve destekleyen uygulamaları bağlamda açın, yani eklenen bir takvim girdisini doğrudan açın\n\n👍 İletilerinize verilen tepkiler hakkında bildirimler alın\n\n... 🛠️ DÜZELTMELER ve HATTA DAHA FAZLASI için %1$s</string>
-    <string name="update_1_46_ios">Yeni Katılım 🐣 ve Daha Fazlası:\n\n⚡️ Güvenli hızlı Chatmail sunucularına kaydolun (https://delta.chat/chatmail) ya da klasik e-posta sunucularını kullanın\n\n👉 Herhangi bir Chatmail sunucusu için ANLIK bildirimler\n\n👤 \"İliştirilen kişileri\" alın ve arkadaşlarınıza bağlanın\n\n🥰 Daha hızlı tepki seçimi … ve DAHA FAZLASI için %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ \"Profili Değiştir\" seçeneği taşındı: Yeni profil eklemek ya da profilleri değiştirmek için ana ekranın üst köşesindeki profil görselinize dokunun 💡</string>
 </resources>

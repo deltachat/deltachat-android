@@ -273,6 +273,7 @@
     </plurals>
     <string name="ask_delete_named_chat">តើអ្នកប្រាកដហើយថាចង់លុប \"%1$s\"?</string>
     <string name="ask_delete_message">តើអ្នកប្រាកដថា ចង់លុបសារនេះ?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="other">លុបសារទាំង %d នេះ នៅទីនេះ និងនៅលើម៉ាសុីននេ</item>
     </plurals>
@@ -435,14 +436,6 @@
     <string name="login_smtp_port">ច្រករបស SMTP</string>
     <string name="login_smtp_security">សន្តិសុខ SMTP</string>
     <string name="login_auth_method">ការចុះបញ្ជី</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">ប្រើ SOCKS5</string>
-    <string name="login_socks5_host">ម្ចាស់ SOCKS5</string>
-    <string name="login_socks5_port">ច្រក SOCKS5</string>
-    <string name="login_socks5_user">អ្នកប្រើប្រាស់ SOCKS5</string>
-    <string name="login_socks5_password">ពាក្យសម្ងាត់ SOCKS5</string>
-
     <string name="login_info_oauth2_title">បន្តជាមួយការដំឡើងសាមញ្ញ?</string>
     <string name="login_info_oauth2_text">អស័យដ្ឋានអុីម៉េលដែលបានបញ្ចូល គាំទ្រការដំឡើងសាមញ្ញ (OAuth 2.0)\n\nនៅជំហានបន្ទាប់ សូមអនុញ្ញាតឲ្យសាហារីសង្ឃ ដើរតួជាការសន្ទនារបស់អ្នកនៅលើកម្មវិធីអុីម៉េល។\n\nមិនមាន ម៉ាសុីនមេ សាហារីសង្ឃទេ។ ទិន្ន័យរបស់អ្នកស្ថិតនៅលើឧបករណ៍របស់អ្នក។</string>
     <string name="login_certificate_checks">ការត្រួតពិនិត្យលិខិតបញ្ជាក់</string>
@@ -633,11 +626,6 @@
     <string name="autocrypt_bad_setup_code">កូដតម្លើងមិនត្រឹមត្រូវ។ សូមព្យាយាមម្តងទៀត\n\nប្រសិនបើអ្នកមិនចងចាំកូដតម្លើង ចូរផ្ញើសារតម្លើងចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិថ្មីមួយពីឧបករណ៍ផ្សេងទៀត។</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">សារត្រូវបានបើក</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">\"%1$s\" សារដែលអ្នកបានផ្ញើត្រូវបានបង្ហាញនៅលើ អេក្រង់របស់អ្នកទទួល\n\nនេះមិនមែនជាការធានាថា មាតិកាត្រួវបានអានទេ។</string>
     <string name="systemmsg_unknown_sender_for_chat">មិនស្គាល់អ្នកផ្ញើការសន្ទនានេះ។ មើល \'ពត៌មាន\' សម្រាប់ពត៌មានលំអិត</string>
     <string name="systemmsg_subject_for_new_contact">សារពី %1$s</string>
     <string name="systemmsg_failed_sending_to">បានបរាបានក្នុងការផ្ញើសារទៅ %1$s</string>
@@ -719,9 +707,7 @@
     <string name="withdraw_verifycontact_explain">អ្នកផ្សេងទៀតអាចស្កេនលេខកូដ QR នេះដើម្បីទាក់ទងអ្នក។\n\nអ្នកអាចធ្វើឱ្យកូដ QR អសកម្មនៅទីនេះហើយបើកដំណើរ។</string>
     <string name="withdraw_verifygroup_explain">អ្នកផ្សេងទៀតអាចស្កេនលេខកូដ QR នេះដើម្បីចូលរួមក្រុម \"%1$s\"។\n\nអ្នកអាចធ្វើឱ្យកូដ QR អសកម្មនៅទីនេះ ហើយធ្វើឱ្យវាសកម្មឡើងវិញដោយស្កេនម្តងទៀត។</string>
     <string name="withdraw_qr_code">ធ្វើឱ្យកូដ QR អសកម្ម</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">អ្នកផ្សេងទៀតអាចស្កេនលេខកូដ QR នេះដើម្បីទាក់ទងអ្នក។\n\nកូដ QR មិនសកម្មនៅលើឧបករណ៍នេះទេ។</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">អ្នកផ្សេងទៀតអាចស្កេនលេខកូដ QR នេះដើម្បីចូលរួមក្រុម \"%1$s \"។\n\n កូដ QR មិនសកម្មនៅលើឧបករណ៍នេះទេ។</string>
     <string name="revive_qr_code">ធ្វើឱ្យកូដ QR សកម្ម</string>
     <string name="qrshow_title">កូដ QR សម្រាប់ការអញ្ជើញ</string>
@@ -793,10 +779,6 @@
     <string name="global_menu_view_developer_desktop">អ្នកអភិវឌ្ឍន៍</string>
     <string name="global_menu_view_developer_tools_desktop">ឧបករណ៍អភិវឌ្ឍន៍</string>
     <string name="global_menu_help_desktop">ជួយ</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">ស្វែងយល់បន្ថែមអំពី សា Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">រួមចំណែកនៅលើ GitHub</string>
     <string name="global_menu_help_report_desktop">រាយការណ៍ពីបញ្ហា</string>
     <string name="global_menu_help_about_desktop">អំពីសា Delta Chat</string>
     <string name="global_menu_file_open_desktop">បើក Delta Chat</string>

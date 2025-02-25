@@ -332,6 +332,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Você tem certeza que quer apagar \"%1$s\"?</string>
     <string name="ask_delete_message">Tem certeza que quer apagar esta mensagem?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Delete %d message here and on the server?</item>
         <item quantity="many">Apagar %d mensagens aqui e no servidor?</item>
@@ -475,6 +476,7 @@
     <string name="tab_audio_empty_hint">Os arquivos de áudio e mensagens de voz compartilhados neste chat serão exibidos aqui.</string>
     <string name="tab_webxdc_empty_hint">Apps compartilhadas neste chat serão exibidas aqui.</string>
     <string name="tab_all_media_empty_hint">Mídias compartilhadas em qualquer bate-papo aparecerão aqui.</string>
+    <string name="all_apps_empty_hint">Apps recebidas ou enviadas em qualquer bate-papo aparecerão aqui.</string>
     <string name="media_preview">Pré-visualização.</string>
     <string name="send_message">Enviar mensagem</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -551,14 +553,6 @@
     <string name="login_smtp_port">Porta SMTP</string>
     <string name="login_smtp_security">Segurança SMTP</string>
     <string name="login_auth_method">Método de autorização</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Usar SOCKS5</string>
-    <string name="login_socks5_host">Servidor SOCKS5 </string>
-    <string name="login_socks5_port">Porta SOCKS5</string>
-    <string name="login_socks5_user">Usuário SOCKS5</string>
-    <string name="login_socks5_password">Senha SOCKS5</string>
-
     <string name="login_info_oauth2_title">Prosseguir pela configuração simplificada?</string>
     <string name="login_info_oauth2_text">Seu servidor de e-mail aceita o método de configuração simplificada (OAuth 2.0).\n\n No próximo passo, por favor, permita que o Delta Chat seja seu aplicativo de e-mail.\n\nNão há servidor do Delta Chat. Seus dados ficam no seu aparelho.</string>
     <string name="login_certificate_checks">Verificações de certificado</string>
@@ -756,11 +750,6 @@
     <string name="autocrypt_bad_setup_code">Código errado. Tente novamente.\n\nSe você não se lembra do código recomece a transferência de chaves no dispositivo original.</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Confirmação de leitura</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Confirmação de recebimento da mensagem \"%1$s\".\n\nEsta confirmação somente assegura que a mensagem foi exibida no aparelho do destinatário, mas não há garantia de que ele tenha lido o seu conteúdo.</string>
     <string name="systemmsg_unknown_sender_for_chat">Remetente desconhecido para esta conversa. Veja \'informações\' para mais detalhes.</string>
     <string name="systemmsg_subject_for_new_contact">Mensagem de %1$s</string>
     <string name="systemmsg_failed_sending_to">Falha ao enviar mensagem para %1$s.</string>
@@ -849,9 +838,7 @@
     <string name="withdraw_verifycontact_explain">Este código QR pode ser lido por outras pessoas para entrar em contato com você.\n\nVocê pode desativar o código QR aqui e reativá-lo escaneando-o novamente.</string>
     <string name="withdraw_verifygroup_explain">Este código QR pode ser lido por outras pessoas para entrar no grupo \"%1$s\".\n\nVocê pode desativar o código QR aqui e reativá-lo escaneando-o novamente.</string>
     <string name="withdraw_qr_code">Desativar Código QR</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Este código QR pode ser lido por outras pessoas para entrar em contato com você.\n\nO código QR não está ativo neste dispositivo.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Este código QR pode ser lido por outras pessoas para se juntar ao grupo \"%1$s\".\n\nO código QR não está ativo neste dispositivo.</string>
     <string name="revive_qr_code">Ativar Código QR</string>
     <string name="qrshow_title">Código QR de convite</string>
@@ -935,10 +922,6 @@
     <string name="global_menu_view_developer_desktop">Desenvolvedor</string>
     <string name="global_menu_view_developer_tools_desktop">Ferramentas de desenvolvedor</string>
     <string name="global_menu_help_desktop">Ajuda</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Aprenda mais sobre o Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Contribua no GitHub</string>
     <string name="global_menu_help_report_desktop">Relatar um erro</string>
     <string name="global_menu_help_about_desktop">Sobre o Delta Chat</string>
     <string name="global_menu_file_open_desktop">Abrir o Delta Chat </string>
@@ -1010,8 +993,6 @@
     <string name="notifications_avg_minutes">Em média, a cada %1$d minutos</string>
     <string name="notifications_avg_hours">Em média, a cada %1$d horas</string>
     <string name="last_check_at">Verificado em %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Apps recebidas ou enviadas em qualquer bate-papo aparecerão aqui. \"Arquivos\" mostra as apps que acabaram de serem baixadas.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat usa sua câmera para tirar e enviar fotos e vídeos e para escanear códigos QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">O Delta Chat usa seus contatos para mostrar uma lista de endereços de e-mail para os quais você pode escrever. O Delta Chat não tem servidor, seus contatos não são enviados a lugar nenhum.</string>

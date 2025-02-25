@@ -87,7 +87,7 @@ public class DcContext {
 
     private static final String CONFIG_MUTE_MENTIONS_IF_MUTED = "ui.mute_mentions_if_muted";
 
-    // when using DcAccounts, use DcAccounts.addAccount() instead
+    // when using DcAccounts, use Rpc.addAccount() instead
     public DcContext(String osName, String dbfile) {
         contextCPtr = createContextCPtr(osName, dbfile);
     }
@@ -193,6 +193,7 @@ public class DcContext {
     public native int          estimateDeletionCount(boolean from_server, long seconds);
     public native void         deleteMsgs           (int msg_ids[]);
     public native void         forwardMsgs          (int msg_ids[], int chat_id);
+    public native void         saveMsgs             (int msg_ids[]);
     public native boolean      resendMsgs           (int msg_ids[]);
     public native int          sendMsg              (int chat_id, DcMsg msg);
     public native int          sendTextMsg          (int chat_id, String text);

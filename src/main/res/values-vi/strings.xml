@@ -321,6 +321,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Bạn có chắc chắn muốn xóa \"%1$s\" không?</string>
     <string name="ask_delete_message">Bạn có chắc chắn muốn xóa tin nhắn này?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="other">Xóa %d tin nhắn ở đây và trên máy chủ?</item>
     </plurals>
@@ -458,6 +459,7 @@
     <string name="tab_audio_empty_hint">Các tệp âm thanh và tin nhắn thoại được chia sẻ trong cuộc trò chuyện này sẽ xuất hiện ở đây.</string>
     <string name="tab_webxdc_empty_hint">Các ứng dụng được chia sẻ trong cuộc trò chuyện này sẽ xuất hiện ở đây.</string>
     <string name="tab_all_media_empty_hint">Phương tiện được chia sẻ trong bất kỳ cuộc trò chuyện nào sẽ xuất hiện ở đây.</string>
+    <string name="all_apps_empty_hint">Các ứng dụng được nhận hoặc gửi trong bất kỳ cuộc trò chuyện nào sẽ xuất hiện ở đây.</string>
     <string name="media_preview">Xem trước phương tiện</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Lưới tỷ lệ khung hình</string>
@@ -538,14 +540,6 @@
     <string name="login_smtp_port">Cổng SMTP</string>
     <string name="login_smtp_security">Bảo mật SMTP</string>
     <string name="login_auth_method">Phương thức ủy quyền</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Sử dụng SOCKS5</string>
-    <string name="login_socks5_host">Máy chủ SOCKS5</string>
-    <string name="login_socks5_port">Cổng SOCKS5</string>
-    <string name="login_socks5_user">Người dùng SOCKS5</string>
-    <string name="login_socks5_password">Mật khẩu SOCKS5</string>
-
     <string name="login_info_oauth2_title">Tiếp tục với thiết lập đơn giản hóa?</string>
     <string name="login_info_oauth2_text">Địa chỉ e-mail đã nhập hỗ trợ thiết lập đơn giản hóa (OAuth 2.0).\n\nTrong bước tiếp theo, vui lòng cho phép Delta Chat hoạt động như ứng dụng Trò chuyện qua E-mail của bạn.\n\nKhông có máy chủ Delta Chat, dữ liệu của bạn vẫn ở trên thiết bị của bạn.</string>
     <string name="login_certificate_checks">Kiểm tra chứng chỉ</string>
@@ -629,8 +623,6 @@
     <string name="pref_manage_keys">Quản lý khóa</string>
     <string name="pref_use_system_emoji">Sử dụng Emoji hệ thống</string>
     <string name="pref_use_system_emoji_explain">Tắt tính năng hỗ trợ emoji tích hợp của Delta Chat</string>
-    <string name="pref_use_inapp_camera">Sử dụng máy ảnh trong ứng dụng</string>
-    <string name="pref_use_inapp_camera_explain">Camera trong ứng dụng thường có ít tính năng hơn camera hệ thống</string>
     <string name="pref_app_access">Quyền truy cập ứng dụng</string>
     <string name="pref_chats">Trò chuyện</string>
     <string name="pref_in_chat_sounds">Âm thanh trong cuộc trò chuyện</string>
@@ -754,10 +746,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Đã mở tin nhắn</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Tin nhắn \"%1$s\" bạn gửi đã được hiển thị trên màn hình của người nhận.\n\nĐiều này không đảm bảo rằng nội dung đã được đọc.</string>
     <string name="systemmsg_cannot_decrypt">Không thể giải mã tin nhắn này.\n\n• Bạn chỉ cần trả lời tin nhắn này và yêu cầu người gửi gửi lại tin nhắn là đủ.\n\n• Nếu bạn vừa cài đặt lại Delta Chat thì tốt nhất bạn nên cài đặt lại thiết lập lại Delta Chat ngay bây giờ và chọn "Thêm làm thiết bị thứ hai" hoặc nhập bản sao lưu.</string>
     <string name="systemmsg_unknown_sender_for_chat">Người gửi không xác định cho cuộc trò chuyện này. Xem \'thông tin\' để biết thêm chi tiết.</string>
     <string name="systemmsg_subject_for_new_contact">Tin nhắn từ %1$s</string>
@@ -857,9 +845,7 @@
     <string name="withdraw_verifycontact_explain">Người khác có thể quét mã QR này để liên hệ với bạn.\n\nBạn có thể tắt mã QR tại đây và kích hoạt lại bằng cách quét lại.</string>
     <string name="withdraw_verifygroup_explain">Những người khác có thể quét mã QR này để tham gia nhóm \"%1$s\".\n\nBạn có thể tắt mã QR tại đây và kích hoạt lại bằng cách quét lại.</string>
     <string name="withdraw_qr_code">Vô hiệu hóa mã QR</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Mã QR này có thể được người khác quét để liên hệ với bạn.\n\nMã QR không hoạt động trên thiết bị này.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Những người khác có thể quét mã QR này để tham gia nhóm \"%1$s\".\n\nMã QR không hoạt động trên thiết bị này.</string>
     <string name="revive_qr_code">Kích hoạt mã QR</string>
     <string name="qrshow_title">Mã mời QR</string>
@@ -952,10 +938,6 @@
     <string name="global_menu_view_developer_desktop">Nhà phát triển</string>
     <string name="global_menu_view_developer_tools_desktop">Công cụ dành cho nhà phát triển</string>
     <string name="global_menu_help_desktop">Trợ giúp</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Tìm hiểu thêm về Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Đóng góp trên GitHub</string>
     <string name="global_menu_help_report_desktop">Báo cáo sự cố</string>
     <string name="global_menu_help_about_desktop">Giới thiệu về Delta Chat</string>
     <string name="global_menu_file_open_desktop">Mở Delta Chat</string>
@@ -1027,8 +1009,6 @@
     <string name="notifications_avg_minutes">Trung bình cứ sau %1$d phút</string>
     <string name="notifications_avg_hours">Trung bình cứ sau %1$d giờ</string>
     <string name="last_check_at">Đã kiểm tra lúc %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Các ứng dụng được nhận hoặc gửi trong bất kỳ cuộc trò chuyện nào sẽ xuất hiện ở đây. \"Tệp\" hiển thị các ứng dụng vừa tải xuống.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat sử dụng máy ảnh của bạn để chụp và gửi ảnh cũng như video cũng như quét mã QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat sử dụng danh bạ của bạn để hiển thị danh sách các địa chỉ email mà bạn có thể viết thư vào. Delta Chat không có máy chủ, danh bạ của bạn sẽ không được gửi đi đâu cả.</string>

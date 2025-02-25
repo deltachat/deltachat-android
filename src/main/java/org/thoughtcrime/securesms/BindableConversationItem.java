@@ -25,6 +25,7 @@ public interface BindableConversationItem extends Unbindable {
 
   interface EventListener {
     void onQuoteClicked(DcMsg messageRecord);
+    void onJumpToOriginalClicked(DcMsg messageRecord);
     void onShowFullClicked(DcMsg messageRecord);
     void onDownloadClicked(DcMsg messageRecord);
     void onReactionClicked(DcMsg messageRecord);

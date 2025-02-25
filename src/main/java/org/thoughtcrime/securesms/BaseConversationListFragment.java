@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -18,12 +19,16 @@ import android.os.Build;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.pm.ShortcutInfoCompat;
+import androidx.core.content.pm.ShortcutManagerCompat;
+import androidx.core.graphics.drawable.IconCompat;
 import androidx.fragment.app.Fragment;
 
 import com.b44t.messenger.DcChat;
@@ -33,6 +38,7 @@ import com.google.android.material.snackbar.Snackbar;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DirectShareUtil;
+import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.Util;
@@ -316,9 +322,37 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     updateActionModeItems(actionMode.getMenu());
   }
 
+  private void handleAddToHomeScreen() {
+    final Activity activity = requireActivity();
+    final DcContext dcContext = DcHelper.getContext(activity);
+    final Set<Long> selectedChats = getListAdapter().getBatchSelections();
+    final DcChat chat = dcContext.getChat(selectedChats.iterator().next().intValue());
+
+    Intent intent = new Intent(activity, ShareActivity.class);
+    intent.setAction(Intent.ACTION_SEND);
+    intent.putExtra(ShareActivity.EXTRA_ACC_ID, dcContext.getAccountId());
+    intent.putExtra(ShareActivity.EXTRA_CHAT_ID, chat.getId());
+
+    Recipient recipient = new Recipient(activity, chat);
+    Bitmap avatar = DirectShareUtil.getIconForShortcut(activity, recipient);
+    ShortcutInfoCompat shortcutInfoCompat = new ShortcutInfoCompat.Builder(activity, "chat-" + dcContext.getAccountId() + "-" + chat.getId())
+        .setShortLabel(chat.getName())
+        .setIcon(IconCompat.createWithAdaptiveBitmap(avatar))
+        .setIntent(intent)
+        .build();
+    if (!ShortcutManagerCompat.requestPinShortcut(activity, shortcutInfoCompat, null)) {
+        Toast.makeText(activity, "ErrAddToHomescreen: requestPinShortcut() failed", Toast.LENGTH_LONG).show();
+    } else if (actionMode != null) {
+      actionMode.finish();
+      actionMode = null;
+    }
+  }
+
   private void updateActionModeItems(Menu menu) {
     // We do not show action mode icons when relaying (= sharing or forwarding).
     if (!isRelayingMessageContent(requireActivity())) {
+      final int selectedCount = getListAdapter().getBatchSelections().size();
+      menu.findItem(R.id.menu_add_to_home_screen).setVisible(selectedCount == 1);
       MenuItem archiveItem = menu.findItem(R.id.menu_archive_selected);
       if (offerToArchive()) {
           archiveItem.setIcon(R.drawable.ic_archive_white_24dp);
@@ -383,6 +417,7 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     case R.id.menu_archive_selected: handleArchiveAllSelected(); return true;
     case R.id.menu_mute_selected:    handleMuteAllSelected();    return true;
     case R.id.menu_marknoticed_selected: handleMarknoticedSelected(); return true;
+    case R.id.menu_add_to_home_screen:  handleAddToHomeScreen(); return true;
     }
 
     return false;

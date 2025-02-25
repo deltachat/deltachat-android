@@ -41,6 +41,8 @@
     <string name="later">稍后</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">重新发送</string>
+    <string name="edited">已编辑</string>
+    <string name="edit_message">编辑消息</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">存档</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -183,6 +185,8 @@
     <string name="app_size">尺寸</string>
     <string name="app_date_published">已发布</string>
     <string name="add_to_chat">添加到聊天</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">浏览</string>
     <string name="unknown">未知</string>
 
     <string name="green">绿色</string>
@@ -210,6 +214,8 @@
     <string name="new_classic_contact_explain">手动添加的联系人可用于向传统电子邮件发送文本，并且不能保证端到端加密。</string>
     <string name="menu_new_chat">新建聊天</string>
     <string name="menu_new_group">新建群组</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">聊天…</string>
     <string name="clone_chat">克隆聊天</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">广播列表</string>
@@ -352,6 +358,7 @@
     </plurals>
     <string name="ask_delete_named_chat">删除聊天“%1$s”？它将不再显示在聊天列表中，其消息将保留在服务器上。</string>
     <string name="ask_delete_message">您确定要删除这条消息吗？</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="other">在此处和服务器上删除 %d 条消息？</item>
     </plurals>
@@ -483,6 +490,8 @@
     <string name="profile_encryption">加密</string>
     <string name="profile_shared_chats">共有聊天</string>
     <string name="related_chats">相关聊天</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">过去成员</string>
     <string name="tab_contact">联系人</string>
     <string name="tab_group">群组</string>
     <string name="tab_gallery">图库</string>
@@ -496,6 +505,8 @@
     <string name="tab_audio_empty_hint">此聊天中分享的音频文件和语音消息将显示在这里。</string>
     <string name="tab_webxdc_empty_hint">在此聊天中分享的私人应用会出现在这里</string>
     <string name="tab_all_media_empty_hint">任何聊天中分享的媒体文件都将出现在这里</string>
+    <string name="all_files_empty_hint">在任何聊天中分享的文档和其他文件会出现在这里。</string>
+    <string name="all_apps_empty_hint">任何聊天中接收或发送的私人应用都会出现在这里。</string>
     <string name="media_preview">媒体预览</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">宽高比网格</string>
@@ -618,14 +629,6 @@
     <string name="proxy_share_explain">你的好友可以扫描二维码添加此代理</string>
     <string name="proxy_share_link">分享链接</string>
 
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">使用 SOCKS5 代理</string>
-    <string name="login_socks5_host">SOCKS5 主机</string>
-    <string name="login_socks5_port">SOCKS5 端口</string>
-    <string name="login_socks5_user">SOCKS5 用户名</string>
-    <string name="login_socks5_password">SOCKS5 密码</string>
-
     <string name="login_info_oauth2_title">使用简易设置继续？</string>
     <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n在下一步中，请允许 Delta Chat 充当您的“通过电子邮件聊天”应用程序。\n\n不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
     <string name="login_certificate_checks">证书检查</string>
@@ -722,8 +725,6 @@
     <string name="pref_manage_keys">管理密钥</string>
     <string name="pref_use_system_emoji">使用系统 emoji</string>
     <string name="pref_use_system_emoji_explain">关闭 Delta Chat 内置 emoji 支持</string>
-    <string name="pref_use_inapp_camera">使用应用内相机</string>
-    <string name="pref_use_inapp_camera_explain">应用内相机功能通常比系统相机少</string>
     <string name="pref_show_system_contacts">读取系统通讯录</string>
     <string name="pref_show_system_contacts_explain">从通讯录建立和联系人的聊天。一些邮件服务商需要先行设置才能进行端到端加密的聊天。</string>
     <string name="pref_app_access">应用程序访问</string>
@@ -861,10 +862,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">消息已被打开</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">您发送的“%1$s”消息已在接收者的屏幕上显示过。\n\n这并不保证内容已被阅读。</string>
     <string name="systemmsg_cannot_decrypt">无法解密此消息。\n\n• 简化对此消息的回复并请求发送方再次发送消息可能会有帮助。\n\n•  如果你刚重新安装 Delta Chat，你最好立即重新设置 Delta Chat 并选择“添加为第二台设备”或导入备份文件。</string>
     <string name="systemmsg_unknown_sender_for_chat">此聊天发送者未知。查看“信息”来获取更多详情。</string>
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
@@ -939,8 +936,6 @@
     <string name="chat_protection_broken_explanation">无法再确保端到端加密，可能的原因是 %1$s 重新安装了 Delta Chat 或从其他设备发送了一则消息。\n\n你可以和联系人线下见面并再次扫描联系人的二维码重新建立端到端加密的通信。</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s要求端到端加密，而此聊天尚未建立端到端加密。轻按了解更多。</string>
     <string name="invalid_unencrypted_explanation">要建立端到端加密，你可以亲自和联系人碰面并扫描联系人的二维码</string>
-    <!-- deprecated -->
-    <string name="encryption_required_for_new_contact">端到端加密是必需的但 %1$s 还没有设置它。\n\n你可以和这些人分享你的邀请链接或亲自会面扫描其二维码。</string>
     <string name="learn_more">了解更多</string>
 
     <string name="devicemsg_self_deleted">您已删除“保存的消息”聊天。\n\nℹ️要再次使用“保存的消息”功能，请创建一个与自己的新聊天。</string>
@@ -968,10 +963,8 @@
     <string name="qrscan_fingerprint_label">指纹</string>
     <string name="withdraw_verifycontact_explain">其他人可以扫描此二维码与您联系。\n\n您可以在此处停用二维码并通过再次扫描来重新激活它。</string>
     <string name="withdraw_verifygroup_explain">其他人可以扫描此二维码加入群组 “%1$s”。\n\n您可以在此处停用二维码并通过再次扫描来重新激活它。</string>
-    <string name="withdraw_qr_code">停用二维码</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="withdraw_qr_code">重置二维码</string>
     <string name="revive_verifycontact_explain">其他人可扫描此二维码以与您联系。\n\n此设备上的二维码未激活。</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">其他人可扫描此二维码加入群组“%1$s”。\n\n此设备上的二维码未激活。</string>
     <string name="revive_qr_code">激活二维码</string>
     <string name="qrshow_title">邀请二维码</string>
@@ -1070,11 +1063,7 @@
     <string name="global_menu_view_developer_desktop">开发者</string>
     <string name="global_menu_view_developer_tools_desktop">开发者工具</string>
     <string name="global_menu_help_desktop">帮助</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">了解有关 Delta Chat 的更多信息</string>
     <string name="delta_chat_homepage">Delta Chat 主页</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">在 GitHub 上做贡献</string>
     <string name="contribute">贡献</string>
     <string name="global_menu_help_report_desktop">报告一个问题</string>
     <string name="global_menu_help_about_desktop">关于 Delta Chat</string>
@@ -1152,8 +1141,6 @@
     <string name="system_settings">系统设置</string>
     <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
     <string name="system_settings_notify_explain_ios">编辑类型、徽章、预览等</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">任何聊天中接收或发送的私人应用都会出现在这里。“文件”显示刚下载的私人应用。</string>
     <!-- iOS shortcut widget -->
     <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
     <string name="shortcuts_widget_title">快捷方式</string>
@@ -1188,6 +1175,5 @@
 
     <!-- device messages for updates -->
     <string name="update_1_50_android">有什么新功能？\n\n❤️‍🔥 新的表情符号选择器，包含更多表情符号\n\n🎮 增强的聊天应用：获取通知并在上下文中打开支持应用，即直接打开添加的日历条目\n\n👍 收到有关对您的消息的回应的通知\n\n…🛠️ %1$s 上的修复和更多内容</string>
-    <string name="update_1_46_ios">新用户引导流程 🐣 以及更多信息：\n\n⚡️ 注册安全的快速聊天邮件服务器（https://delta.chat/chatmail）或使用传统的电子邮件服务器\n\n👉 为任何聊天邮件服务器推送通知\n\n👤 接收“附加联系人”安全地连接您的朋友\n\n🥰 更快选择消息回应 …更多信息，请访问 %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ “切换账号”选项已移动：点击主屏幕上角的个人资料图片以添加或切换账号 💡</string>
 </resources>

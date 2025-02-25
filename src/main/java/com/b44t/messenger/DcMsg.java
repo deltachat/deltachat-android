@@ -156,7 +156,6 @@ public class DcMsg {
     public native String  getVideochatUrl    ();
     public native int     getVideochatType   ();
     public native void    setText            (String text);
-    public native void    setFile            (String file, String filemime);
     public native void    setFileAndDeduplicate(String file, String name, String filemime);
     public native void    setDimension       (int width, int height);
     public native void    setDuration        (int duration);
@@ -183,6 +182,14 @@ public class DcMsg {
     public DcMsg getParent() {
       long cPtr = getParentCPtr();
       return cPtr != 0 ? new DcMsg(cPtr) : null;
+    }
+
+    public native int getOriginalMsgId  ();
+    public native int getSavedMsgId     ();
+
+    public boolean canSave() {
+      // saving info-messages out of context results in confusion, see https://github.com/deltachat/deltachat-ios/issues/2567
+      return !isInfo() && getType() != DC_MSG_VIDEOCHAT_INVITATION;
     }
 
     public File getFileAsFile() {

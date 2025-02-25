@@ -210,6 +210,8 @@
     <string name="app_size">Rozmiar</string>
     <string name="app_date_published">Opublikowany</string>
     <string name="add_to_chat">Dodaj do czatu</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Przeglądaj</string>
     <string name="unknown">Nieznany</string>
 
     <string name="green">Zielony</string>
@@ -237,6 +239,8 @@
     <string name="new_classic_contact_explain">Ręcznie dodane kontakty mogą być używane do wysyłania tekstu w klasycznych e-mailach i nie ma gwarancji, że będą one szyfrowane metodą end-to-end.</string>
     <string name="menu_new_chat">Nowy czat</string>
     <string name="menu_new_group">Nowa grupa</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Czat z…</string>
     <string name="clone_chat">Klonuj czat</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Lista rozgłoszeniowa</string>
@@ -385,6 +389,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Usunąć czat „%1$s”? Nie będzie on już wyświetlany na liście czatów. Jego wiadomości pozostaną na serwerze.</string>
     <string name="ask_delete_message">Czy na pewno chcesz usunąć tę wiadomość?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Usunąć %d wiadomość tutaj i na serwerze?</item>
         <item quantity="few">Usunąć %d wiadomości tutaj i na serwerze?</item>
@@ -531,6 +536,8 @@
     <string name="profile_encryption">Szyfrowanie</string>
     <string name="profile_shared_chats">Wspólne czaty</string>
     <string name="related_chats">Powiązane czaty</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Byli członkowie</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupa</string>
     <string name="tab_gallery">Galeria</string>
@@ -544,6 +551,8 @@
     <string name="tab_audio_empty_hint">Tutaj pojawią się pliki dźwiękowe i wiadomości głosowe udostępnione w tym czacie.</string>
     <string name="tab_webxdc_empty_hint">Tutaj pojawią się prywatne aplikacje udostępnione na tym czacie.</string>
     <string name="tab_all_media_empty_hint">Tutaj pojawią się multimedia udostępnione w dowolnym czacie.</string>
+    <string name="all_files_empty_hint">Tutaj pojawią się dokumenty, muzyka i inne pliki udostępnione w dowolnym czacie.</string>
+    <string name="all_apps_empty_hint">Tutaj pojawią się prywatne aplikacje otrzymane lub wysłane w dowolnym czacie.</string>
     <string name="media_preview">Podgląd multimediów</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Siatka proporcjonalna</string>
@@ -666,14 +675,6 @@
     <string name="proxy_share_explain">Twoi znajomi mogą dodać ten serwer proxy, skanując kod QR.</string>
     <string name="proxy_share_link">Udostępnij link</string>
 
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Użyj SOCKS5</string>
-    <string name="login_socks5_host">Host SOCKS5</string>
-    <string name="login_socks5_port">Port SOCKS5</string>
-    <string name="login_socks5_user">Użytkownik SOCKS5</string>
-    <string name="login_socks5_password">Hasło SOCKS5</string>
-
     <string name="login_info_oauth2_title">Kontynuuj w uproszczonej konfiguracji?</string>
     <string name="login_info_oauth2_text">Wprowadzony adres e-mail obsługuje uproszczoną konfigurację (OAuth2.0).\n\nW następnym kroku pozwól, aby Delta Chat działał jako czat z aplikacją e-mail.\n\nNie ma serwerów Delta Chat, Twoje dane pozostają na Twoim urządzeniu!</string>
     <string name="login_certificate_checks">Sprawdzanie certyfikatów</string>
@@ -770,8 +771,6 @@
     <string name="pref_manage_keys">Zarządzaj prywatnymi kluczami</string>
     <string name="pref_use_system_emoji">Użyj emoji systemowych</string>
     <string name="pref_use_system_emoji_explain">Wyłącza wbudowaną obsługę emoji Delta Chat</string>
-    <string name="pref_use_inapp_camera">Użyj aparatu w aplikacji</string>
-    <string name="pref_use_inapp_camera_explain">Aparat w aplikacji ma zwykle mniej funkcji niż aparat systemowy</string>
     <string name="pref_show_system_contacts">Odczytaj systemową książkę adresową</string>
     <string name="pref_show_system_contacts_explain">Zaproponuj tworzenie czatów z kontaktami z książki adresowej. Niektórzy dostawcy wymagają najpierw szyfrowania end-to-end.</string>
     <string name="pref_app_access">Dostęp do aplikacji</string>
@@ -909,10 +908,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Potwierdzenie odczytu</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">To jest potwierdzenie odczytu dla wiadomości ”%1$s„.\n\nTo potwierdzenie odczytu tylko informuje, że wiadomość została wyświetlona na urządzeniu odbiorcy. Nie ma gwarancji, że odbiorca przeczytał treść wiadomości.</string>
     <string name="systemmsg_cannot_decrypt">Tej wiadomości nie można odszyfrować.\n\n• Możesz teraz pomóc odpowiadając po prostu na tą wiadomość i poprosić nadawcę o ponowne wysłanie wiadomości.\n\n• Jeśli właśnie ponownie zainstalowałeś Delta Chat, najlepiej będzie, jeśli ponownie skonfigurujesz Delta Chat teraz i wybierzesz „Dodaj jako drugie urządzenie” lub zaimportujesz kopię zapasową.</string>
     <string name="systemmsg_unknown_sender_for_chat">Nieznany nadawca tego czatu. Więcej szczegółów znajdziesz w sekcji „Informacje”.</string>
     <string name="systemmsg_subject_for_new_contact">Wiadomość od %1$s</string>
@@ -987,8 +982,6 @@
     <string name="chat_protection_broken_explanation">Nie można już zagwarantować szyfrowania end-to-end, prawdopodobnie z powodu ponownej instalacji Delta Chat przez %1$s lub wysłania wiadomości z innego urządzenia.\n\nMożesz spotkać się z tą osobą osobiście i ponownie zeskanować jej kod QR, aby przywrócić gwarantowane szyfrowanie end-to-end.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s wymaga szyfrowania end-to-end, które nie zostało jeszcze skonfigurowane dla tego czatu. Dotknij, aby dowiedzieć się więcej.</string>
     <string name="invalid_unencrypted_explanation">Aby ustanowić szyfrowanie end-to-end, możesz spotkać się z kontaktami osobiście i zeskanować ich kod QR, żeby ich wprowadzić.</string>
-    <!-- deprecated -->
-    <string name="encryption_required_for_new_contact">Wymagane jest szyfrowanie end-to-end, ale nie zostało ono jeszcze skonfigurowane dla %1$s.\n\nMożesz udostępnić im swój link zaproszenia lub spotkać się osobiście i zeskanować ich kod QR.</string>
     <string name="learn_more">Czytaj więcej</string>
 
     <string name="devicemsg_self_deleted">Usunięto czat „Zapisane wiadomości”.\n\nℹ️ Aby ponownie użyć funkcji „Zapisane wiadomości”, utwórz nowy czat ze sobą.</string>
@@ -1017,9 +1010,7 @@
     <string name="withdraw_verifycontact_explain">Ten kod QR może zostać zeskanowany przez inne osoby w celu skontaktowania się z Tobą.\n\nTutaj możesz dezaktywować kod QR i ponownie go aktywować poprzez zeskanowanie.</string>
     <string name="withdraw_verifygroup_explain">Ten kod QR może zostać zeskanowany przez inne osoby, aby dołączyć do grupy „%1$s”.\n\nTutaj możesz dezaktywować kod QR i ponownie go aktywować poprzez zeskanowanie.</string>
     <string name="withdraw_qr_code">Dezaktywuj kod QR</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Ten kod QR mógł być skanowany przez inne osoby w celu skontaktowania się z Tobą.\n\nKod QR nie jest już aktywny na tym urządzeniu.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Ten kod QR mógł być skanowany przez inne osoby, aby dołączyć do grupy „%1$s”.\n\nKod QR nie jest już aktywny na tym urządzeniu.</string>
     <string name="revive_qr_code">Aktywuj kod QR</string>
     <string name="qrshow_title">Kod QR zaproszenia</string>
@@ -1118,11 +1109,7 @@
     <string name="global_menu_view_developer_desktop">Programista</string>
     <string name="global_menu_view_developer_tools_desktop">Narzędzia Programisty</string>
     <string name="global_menu_help_desktop">Pomoc</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Dowiedz się więcej o Delta Chat</string>
     <string name="delta_chat_homepage">Strona Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Przyczyń się do rozwoju na GitHub</string>
     <string name="contribute">Wsparcie</string>
     <string name="global_menu_help_report_desktop">Zgłoś problem</string>
     <string name="global_menu_help_about_desktop">O Delta Chat</string>
@@ -1136,6 +1123,8 @@
     <string name="timestamp_format_m_desktop">D MMM</string>
     <string name="remove_desktop">Usuń</string>
     <string name="save_desktop">Zapisz</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">Przywróć</string>
     <string name="name_desktop">Nazwa</string>
     <string name="select_group_image_desktop">Wybierz obraz grupy</string>
     <string name="export_backup_desktop">Eksport kopii zapasowej</string>
@@ -1157,7 +1146,7 @@
     <!-- command to put the cursor to the search input field -->
     <string name="focus_search_input">Szukaj</string>
     <!-- command to put the cursor to the message input field -->
-    <string name="focus_message_input">Wpisz wiadomość</string>
+    <string name="focus_message_input">Napisz wiadomość</string>
     <string name="force_refresh_network">Wymuś odświeżenie sieci</string>
     <string name="insert_newline">Wstaw nową linię</string>
 
@@ -1198,8 +1187,6 @@
     <string name="system_settings">Ustawienia systemowe</string>
     <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
     <string name="system_settings_notify_explain_ios">Edytuj typ, plakietki, podgląd i więcej</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Tutaj pojawią się prywatne aplikacje otrzymane lub wysłane w dowolnym czacie. „Pliki” pokazuje właśnie pobrane prywatne aplikacje.</string>
     <!-- iOS shortcut widget -->
     <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
     <string name="shortcuts_widget_title">Skróty</string>
@@ -1234,6 +1221,5 @@
 
     <!-- device messages for updates -->
     <string name="update_1_50_android">Co nowego?\n\n❤️‍🔥 Nowy selektor emoji z większą liczbą emoji\n\n🎮 Ulepszone aplikacje czatu: Otrzymuj powiadomienia i otwieraj aplikacje pomocnicze w kontekście, np. otwieraj dodany wpis kalendarza bezpośrednio\n\n👍 Otrzymuj powiadomienia o reakcjach na swoje wiadomości\n\n... 🛠️ POPRAWKI i JESZCZE WIĘCEJ na %1$s</string>
-    <string name="update_1_46_ios">Nowe wdrożenie 🐣 i nie tylko:\n\n⚡️ Zarejestruj się, aby korzystać z bezpiecznych i szybkich serwerów chatmail (https://delta.chat/chatmail) lub korzystaj z klasycznych serwerów e-mail\n\n👉 Powiadomienia PUSH dla dowolnego serwera chatmail\n\n👤 Odbierz „Dołączone kontakty” i łącz się ze znajomymi\n\n🥰 Szybszy wybór reakcji… i wiele WIĘCEJ na %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ Opcja „Przełącz profil” została przeniesiona: Dotknij swojego zdjęcia profilowego w górnym rogu ekranu głównego, aby dodać lub przełączyć profile 💡</string>
 </resources>

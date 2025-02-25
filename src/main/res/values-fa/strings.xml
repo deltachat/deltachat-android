@@ -359,6 +359,7 @@ https://meet.jit.si/$ROOM
     </plurals>
     <string name="ask_delete_named_chat">اطمینان دارید می‌خواهید «%1$s» را پاک کنید؟</string>
     <string name="ask_delete_message">مطمئن هستید می‌خواهید این پیام را پاک کنید؟</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">پاک کردن %d گپ از اینجا و سرور؟</item>
         <item quantity="other">پاک کردن %d گپ از این‌جا و از روی کارساز؟</item>
@@ -630,14 +631,6 @@ https://meet.jit.si/$ROOM
     <string name="proxy_share_explain">دوست‌هایتان می‌توانند با اسکن کردن کد QR این پروکسی را اضافه کنند.</string>
     <string name="proxy_share_link">اشتراک گذاشتن پیوند</string>
 
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">استفاده از SOCKS5</string>
-    <string name="login_socks5_host">SOCKS5 Host</string>
-    <string name="login_socks5_port">SOCKS5 Port</string>
-    <string name="login_socks5_user">SOCKS5 User</string>
-    <string name="login_socks5_password">SOCKS5 Password</string>
-
     <string name="login_info_oauth2_title">با تنظیم‌ها ساده‌ شده ادامه می‌دهید؟</string>
     <string name="login_info_oauth2_text">نشانی رایانامه وارد شده از تنظیم‌های ساده پشتیبانی می‌کند
 (OAuth 2.0).\n\nIn
@@ -731,8 +724,6 @@ https://meet.jit.si/$ROOM
     <string name="pref_manage_keys">مدیریت کلیدها</string>
     <string name="pref_use_system_emoji">استفاده از شکلک‌های سیستم</string>
     <string name="pref_use_system_emoji_explain">غیرفعال کردن شکلک‌های داخلی دلتاچت</string>
-    <string name="pref_use_inapp_camera">استفاده از دوربین درون‌برنامه</string>
-    <string name="pref_use_inapp_camera_explain">دوربین درون‌برنامه معمولا امکانات کمتری نسبت به دوربین سیستم دارد</string>
     <string name="pref_show_system_contacts">خواندن دفترچه آدرس دستگاه</string>
     <string name="pref_app_access">دسترسی نرم‌افزار</string>
     <string name="pref_chats">گپ‌ها</string>
@@ -865,11 +856,6 @@ https://meet.jit.si/$ROOM
     <string name="autocrypt_bad_setup_code">کد برپاسازی نادرست. لطفاً دوباره تلاش کنید. \n\n اگر کد برپاسازی را فراموش کرده‌اید یک پیام برپاسازی اتوکریپت جدید را از دستگاه دیگر ارسال کنید. </string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">پیام باز شد</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">پیام\"%1$s\" که ارسال کرده بودید در ثفحه گیرنده نمایش داده شد\n\n. تضمینی وجود ندارد که محتوای پیام را خوانده باشد. </string>
     <string name="systemmsg_unknown_sender_for_chat">فرستنده در این گفت و گو ناشناس است. برای جزئیات بیشتر به \"اطلاعات\" مراجعه کنید.</string>
     <string name="systemmsg_subject_for_new_contact">پیام از%1$s</string>
     <string name="systemmsg_failed_sending_to">ارسال ناموفق پیام به %1$s.</string>
@@ -941,8 +927,6 @@ https://meet.jit.si/$ROOM
     <string name="chat_protection_enabled_explanation">رمزنگاری سراسری پیام‌های این گفتگو اکنون تضمین می‌شود. رمزنگاری سراسری باعث می‌شود پیام‌هایتان بین شما و مخاطبین شما محرمانه بماند. حتی ارائه‌دهنده رایانامه شما هم نمی‌تواند آن‌ها را بخواند.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s پیامی را از دستگاه دیگری ارسال کرد. برای اطلاعات بیشتر ضربه بزنید.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s به رمزنگاری سراسری نیاز دارد که هنوز برای این گپ پیکره‌بندی نشده است. برای یادگیری بیش‌تر این‌جا بزنید.</string>
-    <!-- deprecated -->
-    <string name="encryption_required_for_new_contact">رمزنگاری سراسری لازم است اما برای %1$s هنوز پیکره‌بندی نشده است.\n\nمی‌توانید پیوند دعوت خود را به مخاطبتان بدهید یا این‌که به صورت حضوری کد QR مخاطب را اسکن کنید.</string>
     <string name="learn_more">بیشتر بدانید</string>
 
     <string name="devicemsg_self_deleted">شما گپ «پیام‌های ذخیره شده» را پاک کردید.\n\nℹ️ برای استفادهٔ دوباره از «پیام‌های ذخیره شده» کافی است یک گپ جدید با خودتان درست کنید. </string>
@@ -975,9 +959,7 @@ https://meet.jit.si/$ROOM
     <string name="withdraw_verifycontact_explain">دیگران برای ارتباط با شما می‌توانند این کد کیوآر را اسکن کنند. \n\n می‌توان کد کیوآر را در اینجا غیر فعال کنید و با اسکن کردن مجدد، آن را فعال کنید. </string>
     <string name="withdraw_verifygroup_explain">این کد کیوآر می‌تواند توسط دیگران و برای پیوستن به گروه \"%1$s\" اسکن شود.\n\n شما می‌تواند این کد کیوآر را در اینجا غیرفعال کنید و با اسکن کردن مجدد، آن را فعال نمایید. </string>
     <string name="withdraw_qr_code">غیرفعال کردن کد کیوآر</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">دیگران برای تماس با شما می‌توانند این کد کیوآر را اسکن کنند. \n\n این کد کیوآر در این دستگاه فعال نیست. </string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">دیگران می‌توانند برای پیوستن به گروه \"%1$s\" این کد کیوآر را اسکن کنند. این کد کیوآر روی این دستگاه فعال نیست. </string>
     <string name="revive_qr_code">فعال کردن کد کیوآر</string>
     <string name="qrshow_title">کد دعوت کیوآر</string>
@@ -1094,10 +1076,6 @@ GNU GPL ورژن ۳
     <string name="global_menu_view_developer_desktop">برنامه‌نویس</string>
     <string name="global_menu_view_developer_tools_desktop">ابزار برنامه نویس</string>
     <string name="global_menu_help_desktop">کمک</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">یادگیری بیشتر درمورد دلتاچت</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">کمک به گیت‌هاب</string>
     <string name="global_menu_help_report_desktop">گزارش یک مشکل</string>
     <string name="global_menu_help_about_desktop">درباره دلتاچت</string>
     <string name="global_menu_file_open_desktop">بازکردن دلتاچت</string>
@@ -1169,8 +1147,6 @@ GNU GPL ورژن ۳
     <string name="notifications_avg_minutes">به صورت متوسط هر%1$d دقیقه</string>
     <string name="notifications_avg_hours">به صورت متوسط هر %1$d ساعت</string>
     <string name="last_check_at">بررسی شده در %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">برنامه‌های دریافت‌شده یا ارسال‌شده از همه چت‌ها در این‌جا نمایش داده می‌شود. «پرونده‌ها» تنها برنامه‌های اخیرا دریافت‌شده را نمایش می‌دهد.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">دلتاچت برای گرفتن و ارسال عکس و فیلم و برای اسکن کردن کیوآر کد از دوربین شما استفاده می‌کند. </string>
     <string name="InfoPlist_NSContactsUsageDescription">دلتاچت از مخاطبین شما برای نمایش فهرست رایانامه‌هایی که می‌توانید برایشان پیام ارسال کنید استفاده می‌کند. دلتاچت کارساز ندارد، مخاطبین شما به جایی ارسال نمی‌شوند. </string>

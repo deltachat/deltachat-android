@@ -304,6 +304,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Είστε σίγουρος ότι θέλετε να διαγράψετε \"%1$s\";</string>
     <string name="ask_delete_message">Είστε σίγουρος/-η ότι θέλετε να διαγράψετε αυτό το μήνυμα;</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Διαγραφή %d μηνύματος εδώ και στον διακομιστη;</item>
         <item quantity="other">Διαγραφή %d μηνυμάτων εδώ και στον διακομιστη;</item>
@@ -437,6 +438,7 @@
     <string name="tab_video_empty_hint">Τα βίντεο που κοινοποιούνται σε αυτήν τη συνομιλία θα εμφανίζονται εδώ.</string>
     <string name="tab_audio_empty_hint">Τα αρχεία ήχου και τα φωνητικά μηνύματα που κοινοποιούνται σε αυτήν τη συνομιλία θα εμφανίζονται εδώ.</string>
     <string name="tab_webxdc_empty_hint">Οι ιδιωτικές εφαρμογές που κοινοποιούνται σε αυτήν τη συνομιλία θα εμφανίζονται εδώ.</string>
+    <string name="all_apps_empty_hint">Οι ιδιωτικές εφαρμογές που λαμβάνονται ή αποστέλλονται σε οποιαδήποτε συνομιλία θα εμφανίζονται εδώ.</string>
     <string name="media_preview">Προεπισκόπιση</string>
     <string name="send_message">Αποστολή μηνύματος</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -490,14 +492,6 @@
     <string name="login_smtp_port">Θύρα SMTP</string>
     <string name="login_smtp_security">Ασφάλεια SMTP</string>
     <string name="login_auth_method">Μέθοδος Πιστοποίησης</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Χρήση SOCKS5</string>
-    <string name="login_socks5_host">SOCKS5 Κεντρικός</string>
-    <string name="login_socks5_port">Θύρα SOCKS5</string>
-    <string name="login_socks5_user">Χρήστης SOCKS5</string>
-    <string name="login_socks5_password">Κωδικός SOCKS5</string>
-
     <string name="login_info_oauth2_title">Συνέχεια με την απλοποιημένη ρύθμιση;</string>
     <string name="login_info_oauth2_text">Η εισαγόμενη διεύθυνση e-mail υποστηρίζει μια απλοποιημένη ρύθμιση (OAuth 2.0).\n\nΣτο επόμενο βήμα, επιτρέψτε στο Delta Chat να λειτουργεί ως η εφαρμογή Chat μέσω ηλεκτρονικού ταχυδρομείου.\n\nΔεν υπάρχουν διακομιστές Delta Chat, τα δεδομένα σας παραμένει στη συσκευή σας.</string>
     <string name="login_certificate_checks">Έλεγχοι Πιστοποιητικών</string>
@@ -695,11 +689,6 @@
     <string name="autocrypt_bad_setup_code">Εσφαλμένος κωδικός εγκατάστασης. Δοκιμάστε ξανά.\n\nΕάν δεν θυμάστε τον κωδικό ρύθμισης, στείλτε ένα νέο μήνυμα ρύθμισης αυτόματης κρυπτογράφησης από την άλλη συσκευή.</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Το μήνυμα ανοίχτηκε</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Το μήνυμα \"%1$s\" που στείλατε εμφανίστηκε στην οθόνη του παραλήπτη.\n\nΑυτό δεν αποτελεί εγγύηση για την ανάγνωση του περιεχομένου.</string>
     <string name="systemmsg_unknown_sender_for_chat">Άγνωστος αποστολέας για αυτήν τη συνομιλία. Δείτε \"πληροφορίες\" για περισσότερες λεπτομέρειες.</string>
     <string name="systemmsg_subject_for_new_contact">Μήνυμα από τον/την %1$s</string>
     <string name="systemmsg_failed_sending_to">Αποτυχία αποστολής μηνύματος σε %1$s.</string>
@@ -788,9 +777,7 @@
     <string name="withdraw_verifycontact_explain">Αυτός ο κωδικός QR μπορεί να σαρωθεί από άλλους για να επικοινωνήσουν μαζί σας.\n\nΜπορείτε να απενεργοποιήσετε τον κωδικό QR εδώ και να τον ξαναενεργοποιήσετε ξανασαρώνοντάς τον.</string>
     <string name="withdraw_verifygroup_explain">Αυτός ο κωδικός QR μπορεί να σαρωθεί από άλλους για να συμμετάσχουν στην ομάδα \"%1$s\".\n\nΜπορείτε να απενεργοποιήσετε τον κωδικό QR εδώ και να τον ξαναενεργοποιήσετε ξανασαρώνοντάς τον.</string>
     <string name="withdraw_qr_code">Απενεργοποίηση του κωδικού QR</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Αυτός ο κωδικός QR θα μπορούσε να σαρωθεί από άλλους για να επικοινωνήσουν μαζί σας.\n\nΟ κωδικός QR δεν είναι ενεργός σε αυτήν τη συσκευή.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Αυτός ο κωδικός QR θα μπορούσε να σαρωθεί από άλλους για να συμμετάσχουν στην ομάδα \"%1$s\".\n\nΟ κωδικός QR δεν είναι ενεργός σε αυτήν τη συσκευή.</string>
     <string name="revive_qr_code">Ενεργοποίηση του κωδικού QR</string>
     <string name="qrshow_title">Κωδικός Πρόσκλησης QR</string>
@@ -872,10 +859,6 @@
     <string name="global_menu_view_developer_desktop">Προγραμματιστής</string>
     <string name="global_menu_view_developer_tools_desktop">Εργαλεία Προγραμματιστή</string>
     <string name="global_menu_help_desktop">Βοήθεια</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Μάθετε περισσότερα για το Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Συνεισφέρετε στο GitHub</string>
     <string name="global_menu_help_report_desktop">Αναφέρετε ένα πρόβλημα</string>
     <string name="global_menu_help_about_desktop">Για το Delta Chat</string>
     <string name="global_menu_file_open_desktop">Ανοίξτε το Delta Chat</string>
@@ -947,8 +930,6 @@
     <string name="notifications_avg_minutes">Κατά μέσο όρο κάθε %1$d λεπτά</string>
     <string name="notifications_avg_hours">Κατά μέσο όρο κάθε %1$d ώρες</string>
     <string name="last_check_at">Έλεγχος στις %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Οι ιδιωτικές εφαρμογές που λαμβάνονται ή αποστέλλονται σε οποιαδήποτε συνομιλία θα εμφανίζονται εδώ. Το \"Αρχεία\" εμφανίζει ιδιωτικές εφαρμογές που μόλις κατεβάσατε.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Το Delta Chat χρησιμοποιεί την κάμερά σας για λήψη και αποστολή φωτογραφιών και βίντεο και για σάρωση κωδικών QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Το Delta Chat χρησιμοποιεί τις επαφές σας για να εμφανίσει μια λίστα με διευθύνσεις e-mail στις οποίες μπορείτε να γράψετε. Το Delta Chat δεν έχει διακομιστή, οι επαφές σας δεν αποστέλλονται πουθενά.</string>

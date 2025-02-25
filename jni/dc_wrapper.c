@@ -231,12 +231,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcAccounts_backgroundFetch(JNIEnv *en
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_addAccount(JNIEnv *env, jobject obj)
-{
-    return dc_accounts_add_account(get_dc_accounts(env, obj));
-}
-
-
 JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_migrateAccount(JNIEnv *env, jobject obj, jstring dbfile)
 {
     CHAR_REF(dbfile);
@@ -691,6 +685,13 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_forwardMsgs(JNIEnv *env, jobjec
     free(msg_ids_ptr);
 }
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_saveMsgs(JNIEnv *env, jobject obj, jintArray msg_ids)
+{
+    int msg_ids_cnt = 0;
+    uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
+        dc_save_msgs(get_dc_context(env, obj), msg_ids_ptr, msg_ids_cnt);
+    free(msg_ids_ptr);
+}
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_resendMsgs(JNIEnv *env, jobject obj, jintArray msg_ids)
 {
@@ -1622,16 +1623,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcMsg_setText(JNIEnv *env, jobject obj, j
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcMsg_setFile(JNIEnv *env, jobject obj, jstring file, jstring filemime)
-{
-    CHAR_REF(file);
-    CHAR_REF(filemime);
-        dc_msg_set_file(get_dc_msg(env, obj), filePtr, filemimePtr);
-    CHAR_UNREF(filemime);
-    CHAR_UNREF(file);
-}
-
-
 JNIEXPORT void Java_com_b44t_messenger_DcMsg_setFileAndDeduplicate(JNIEnv *env, jobject obj, jstring file, jstring name, jstring filemime)
 {
     CHAR_REF(file);
@@ -1688,6 +1679,15 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getParentCPtr(JNIEnv *env, jobject
     return (jlong)dc_msg_get_parent(get_dc_msg(env, obj));
 }
 
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getOriginalMsgId(JNIEnv *env, jobject obj)
+{
+    return (jint)dc_msg_get_original_msg_id(get_dc_msg(env, obj));
+}
+
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getSavedMsgId(JNIEnv *env, jobject obj)
+{
+    return (jint)dc_msg_get_saved_msg_id(get_dc_msg(env, obj));
+}
 
 JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getError(JNIEnv *env, jobject obj)
 {

@@ -1,6 +1,21 @@
 # Delta Chat Android Changelog
 
-## v1.52.1 Testrun
+## v1.54.0
+2025-02
+
+* enhanced "Saved Messages" feature, now when forwarding a message to "Saved Messages" chat, it retains the sender information and a button to jump to the original message
+* Saved messages are marked by a bookmark sign
+* improve explanation when blocking a contact
+* improve wording in empty "apps" and "files" tabs in chat media screen
+* remove deprecated/legacy built-in "half-camera"
+* UI improvement: keep avatars aligned to message bubble when message has reactions
+* fix problems when opening attachments in external apps
+* fix a bug with some big images appearing as blank/transparent
+* some other small bug fixes
+* update translations
+* update to core 1.155.4
+
+## v1.52.1
 2025-01
 
 * the app now requires less storage on your SD card by deduplicating newly received/sent files

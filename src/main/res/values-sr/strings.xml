@@ -325,6 +325,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Јесте ли сигурни да желите да избришете „%1$s“?</string>
     <string name="ask_delete_message">Да ли желите да избришете ову поруку?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Обриши %d поруку овде и са сервера.</item>
         <item quantity="few">Обриши %d поруке овде и са сервера.</item>
@@ -463,6 +464,7 @@
     <string name="tab_video_empty_hint">Видео записи подељени у овом ћаскању ће се појавити овде.</string>
     <string name="tab_audio_empty_hint">Звучне поруке и записи подељене у овом ћаскању ће се појавити овде.</string>
     <string name="tab_webxdc_empty_hint">Приватне апликације подељене у овом ћаскању ће се појавити овде.</string>
+    <string name="all_apps_empty_hint">Приватне апликације примљене или послате у било ком ћаскању ће се појавити овде.</string>
     <string name="media_preview">Преглед медијума</string>
     <string name="send_message">Пошаљи поруку</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -516,14 +518,6 @@
     <string name="login_smtp_port">СМТП порт</string>
     <string name="login_smtp_security">СМТП безбедност</string>
     <string name="login_auth_method">Начин овлашћења</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Користи SOCKS5</string>
-    <string name="login_socks5_host">SOCKS5 сервер</string>
-    <string name="login_socks5_port">SOCKS5 порт</string>
-    <string name="login_socks5_user">SOCKS5 корисник</string>
-    <string name="login_socks5_password">SOCKS5 лозинка</string>
-
     <string name="login_info_oauth2_title">Наставите са поједностављеним поставкама?</string>
     <string name="login_info_oauth2_text">Унета е-адреса подржава поједностављено подешавање (OAuth 2.0).\n\nУ следећем кораку, дозволите Delta Chat-у да  да дејствује као ваша апликација за ћаскање преко е-поште.\n\nDelta Chat нема сервере и ваши подаци остају на вашем уређају.</string>
     <string name="login_certificate_checks">Провери сертификате</string>
@@ -721,11 +715,6 @@
     <string name="autocrypt_bad_setup_code">Погрешан кôд за подешавање. Покушајте поново.\n\nАко се не сећате кôда за подешавање, пошаљите нову поруку за подешавање аутоматског шифровања са другог уређаја.</string>
 
 
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Порука је отворена</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Порука „%1$s“ коју сте послали била је приказана на екрану примаоца.\n\nОво није гаранција да је садржај прочитан.</string>
     <string name="systemmsg_unknown_sender_for_chat">Непознати пошиљалац за ово ћаскање. Погледајте „информације“ за више детаља.</string>
     <string name="systemmsg_subject_for_new_contact">Поруке од %1$s</string>
     <string name="systemmsg_failed_sending_to">Слање поруке %1$s је било неуспешно.</string>
@@ -814,9 +803,7 @@
     <string name="withdraw_verifycontact_explain">Други могу да очитају овај бар-кôд да би вас контактирали.\n\nОвде можете да деактивирате бар-кôд и поново га активирате тако што ћете га поново oчитати.</string>
     <string name="withdraw_verifygroup_explain">Други могу да очитају овај бар-кôд да би приступили групи „%1$s“.\n\nОвде можете да деактивирате бар-кôд и поново га активирате тако што ћете га поново oчитати.</string>
     <string name="withdraw_qr_code">Деактивирај бар-кôд</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifycontact_explain">Други могу да очитају овај бар-кôд да би вас контактирали.\n\nОвај бар-кôд није активан на овом уређају.</string>
-    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">Други могу да очитају овај бар-кôд да би приступили групи „%1$s“.\n\nОвај бар-кôд није активан на овом уређају.</string>
     <string name="revive_qr_code">Активирај бар-кôд</string>
     <string name="qrshow_title">Бар-кôд за потврду</string>
@@ -900,10 +887,6 @@
     <string name="global_menu_view_developer_desktop">Програмер</string>
     <string name="global_menu_view_developer_tools_desktop">Алати за развој</string>
     <string name="global_menu_help_desktop">Помоћ</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Научите више о Delta Chat</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Допринесите развоју на Гитхабу</string>
     <string name="global_menu_help_report_desktop">Пријавите проблем</string>
     <string name="global_menu_help_about_desktop">О Delta Chat</string>
     <string name="global_menu_file_open_desktop">Отвори Delta Chat</string>
@@ -975,8 +958,6 @@
     <string name="notifications_avg_minutes">У просеку сваких %1$dминута</string>
     <string name="notifications_avg_hours">У просеку сваких %1$dсати</string>
     <string name="last_check_at">Проверено у %1$s</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Приватне апликације примљене или послате у било ком ћаскању ће се појавити овде. „Фајлови“ приказује приватне апликације које су управо преузете.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat користи вашу камеру за снимање и слање фотографија и видео записа и за очитавање бар-кôда.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat користи ваше контакте да прикаже листу е-адреса на које можете слати поруке. Delta Chat нема сервер и ваши контакти се не шаљу нигде.</string>

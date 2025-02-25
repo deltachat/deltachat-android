@@ -328,6 +328,7 @@
         <item quantity="other">Vymazat %d hovorů? Pak už je neuvidíte v seznamu hovorů, ale jejich zprávy zůstanou na serveru.</item>
     </plurals>
     <string name="ask_delete_named_chat">Skutečně úplně vymazat \"%1$s\"?</string>
+    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
         <item quantity="one">Vymaž %d zprávu zde i ze serveru?</item>
         <item quantity="few">Vymaž %d zprávy zde i ze serveru?</item>
@@ -444,6 +445,7 @@
     <string name="tab_audio_empty_hint">Zde se zobrazí zvukové soubory a hlasové zprávy sdílené v tomto chatu.</string>
     <string name="tab_webxdc_empty_hint">Zde se zobrazí aplikace sdílené v tomto chatu.</string>
     <string name="tab_all_media_empty_hint">Zde se zobrazí média sdílená v jakémkoli chatu.</string>
+    <string name="all_apps_empty_hint">Zde se zobrazí aplikace přijaté nebo odeslané v libovolném chatu.</string>
     <string name="media_preview">Náhled multimedia</string>
     <string name="send_message">Pošli zprávu</string>
     <string name="multidevice_install_dc_on_other_device">Nainstalujte si Delta Chat do druhého zařízení (https://get.delta.chat)</string>
@@ -648,10 +650,6 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Zpráva otevřena</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Odeslaná zpráva \"%1$s\" byla příjemci zobrazena na jeho přístroji.\n\nNicméně přečtení obsahu není zaručeno.</string>
     <string name="systemmsg_cannot_decrypt">Tuto zprávu nelze dešifrovat.\n\n• Už teď by mohlo pomoci jednoduše odpovědět na tuto zprávu a požádat odesílatele, aby zprávu poslal znovu.\n\n• Pokud jste právě přeinstalovali Delta Chat, bude nejlepší, když znovu nastavíte Delta Chat a zvolíte \"Přidat jako druhé zařízení\" nebo importujete zálohu. </string>
     <string name="systemmsg_unknown_sender_for_chat">Neznámý odesílatel tohoto chatu. Další podrobnosti naleznete v části „informace“. </string>
     <string name="systemmsg_subject_for_new_contact">Zpráva od %1$s</string>
@@ -790,10 +788,6 @@
     <string name="global_menu_view_developer_desktop">Vývojář</string>
     <string name="global_menu_view_developer_tools_desktop">Nástroje pro vývojáře</string>
     <string name="global_menu_help_desktop">Nápověda</string>
-    <!-- deprecated, use delta_chat_homepage instead -->
-    <string name="global_menu_help_learn_desktop">Víc podrobností o Delta Chatu</string>
-    <!-- deprecated, use contribute instead -->
-    <string name="global_menu_help_contribute_desktop">Přispěj na GitHubu</string>
     <string name="global_menu_help_report_desktop">Nahlaš problém</string>
     <string name="global_menu_help_about_desktop">O aplikaci Delta Chat</string>
     <string name="global_menu_file_open_desktop">Otevřít Delta Chat</string>
@@ -829,8 +823,6 @@
     <string name="a11y_disappearing_messages_activated">Samomazací zprávy jsou zapnuty</string>
 
     <string name="import_device_contacts_hint">Chcete-li chatovat s kontakty ze svého zařízení, otevřete Nastavení a povolte „Kontakty“.</string>
-    <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Zde se zobrazí aplikace přijaté nebo odeslané v libovolném chatu. „Soubory“ zobrazuje právě stažené aplikace. </string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat využívá kameru k focení, filmování a snímání QR kódů.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat používá tvé kontakty k zobrazení e-mailů na které můžeš psát. Delta Chat nemá žádné vlastní servery - tvé kontakty se nikam noposílají.</string>
