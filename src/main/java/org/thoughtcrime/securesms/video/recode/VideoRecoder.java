@@ -23,7 +23,6 @@ import com.googlecode.mp4parser.util.Path;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.io.File;
 import java.nio.ByteBuffer;

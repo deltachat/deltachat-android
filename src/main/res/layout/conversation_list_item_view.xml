@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <org.thoughtcrime.securesms.ConversationListItem
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:background="?attr/conversation_list_item_background"
         android:layout_width="match_parent"

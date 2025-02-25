@@ -1,14 +1,14 @@
 package org.thoughtcrime.securesms.contacts;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcContact;
 

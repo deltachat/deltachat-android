@@ -32,7 +32,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.pm.ShortcutManagerCompat;
 
 import com.b44t.messenger.DcContext;
 

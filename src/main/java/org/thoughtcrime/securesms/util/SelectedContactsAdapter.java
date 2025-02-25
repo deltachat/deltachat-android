@@ -1,11 +1,10 @@
 package org.thoughtcrime.securesms.util;
 
+import static com.b44t.messenger.DcContact.DC_CONTACT_ID_ADD_MEMBER;
+import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
+
 import android.content.Context;
 import android.graphics.Color;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatTextView;
-
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -28,9 +31,6 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-
-import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
-import static com.b44t.messenger.DcContact.DC_CONTACT_ID_ADD_MEMBER;
 
 public class SelectedContactsAdapter extends BaseAdapter {
   @NonNull  private final Context                context;

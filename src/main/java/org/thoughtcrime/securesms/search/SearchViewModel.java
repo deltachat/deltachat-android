@@ -4,11 +4,11 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;

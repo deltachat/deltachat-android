@@ -7,9 +7,6 @@ import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.webkit.MimeTypeMap;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.util.MediaUtil;

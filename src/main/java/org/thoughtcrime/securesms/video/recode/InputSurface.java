@@ -18,10 +18,10 @@ package org.thoughtcrime.securesms.video.recode;
 
 import android.annotation.TargetApi;
 import android.opengl.EGL14;
-import android.opengl.EGLExt;
 import android.opengl.EGLConfig;
 import android.opengl.EGLContext;
 import android.opengl.EGLDisplay;
+import android.opengl.EGLExt;
 import android.opengl.EGLSurface;
 import android.view.Surface;
 

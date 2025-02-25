@@ -4,15 +4,16 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Rect;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatEditText;
 import android.text.InputType;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
 
 import org.thoughtcrime.securesms.imageeditor.model.EditorElement;
 import org.thoughtcrime.securesms.imageeditor.renderers.MultiLineTextRenderer;

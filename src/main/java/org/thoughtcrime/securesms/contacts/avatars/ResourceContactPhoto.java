@@ -3,9 +3,10 @@ package org.thoughtcrime.securesms.contacts.avatars;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.widget.ImageView;
+
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.content.res.AppCompatResources;
-import android.widget.ImageView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.makeramen.roundedimageview.RoundedDrawable;

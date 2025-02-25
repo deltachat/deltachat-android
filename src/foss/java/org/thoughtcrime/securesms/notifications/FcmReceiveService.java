@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.notifications;
 
 import android.content.Context;
+
 import androidx.annotation.Nullable;
 
 /*

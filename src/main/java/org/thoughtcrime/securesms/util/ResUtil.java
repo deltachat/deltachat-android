@@ -21,10 +21,10 @@ import android.content.Context;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.util.TypedValue;
 
 import androidx.annotation.AttrRes;
 import androidx.core.content.ContextCompat;
-import android.util.TypedValue;
 
 public class ResUtil {
 

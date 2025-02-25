@@ -1,5 +1,11 @@
 package com.b44t.messenger;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
+
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -22,12 +28,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
-
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.typeText;
-import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
-import static androidx.test.espresso.matcher.ViewMatchers.withHint;
-import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 public class TestUtils {
   private static int createdAccountId = 0;

@@ -19,13 +19,14 @@ package org.thoughtcrime.securesms.database;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DataSetObserver;
+import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
 
 /**
  * RecyclerView.Adapter that manages a Cursor, comparable to the CursorAdapter usable in ListView/GridView.
