@@ -285,16 +285,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case R.id.menu_add_to_home_screen:
-        addToHomeScreen(this, dcAppMsg.getId());
-        return true;
-      case R.id.source_code:
-        IntentUtils.showInBrowser(this, sourceCodeUrl);
-        return true;
-      case R.id.show_in_chat:
-        showInChat();
-        return true;
+    int itemId = item.getItemId();
+    if (itemId == R.id.menu_add_to_home_screen) {
+      addToHomeScreen(this, dcAppMsg.getId());
+      return true;
+    } else if (itemId == R.id.source_code) {
+      IntentUtils.showInBrowser(this, sourceCodeUrl);
+      return true;
+    } else if (itemId == R.id.show_in_chat) {
+      showInChat();
+      return true;
     }
     return false;
   }

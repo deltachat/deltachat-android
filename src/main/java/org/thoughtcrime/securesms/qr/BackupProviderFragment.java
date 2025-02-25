@@ -143,14 +143,13 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
       super.onOptionsItemSelected(item);
 
-      switch (item.getItemId()) {
-        case R.id.copy:
-          if (dcBackupProvider != null) {
-              Util.writeTextToClipboard(getActivity(), dcBackupProvider.getQr());
-              Toast.makeText(getActivity(), getString(R.string.done), Toast.LENGTH_SHORT).show();
-              getTransferActivity().warnAboutCopiedQrCodeOnAbort = true;
-          }
-          return true;
+      if (item.getItemId() == R.id.copy) {
+        if (dcBackupProvider != null) {
+          Util.writeTextToClipboard(getActivity(), dcBackupProvider.getQr());
+          Toast.makeText(getActivity(), getString(R.string.done), Toast.LENGTH_SHORT).show();
+          getTransferActivity().warnAboutCopiedQrCodeOnAbort = true;
+        }
+        return true;
       }
 
       return false;

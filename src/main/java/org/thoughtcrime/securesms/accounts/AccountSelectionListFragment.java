@@ -108,16 +108,13 @@ public class AccountSelectionListFragment extends DialogFragment
   }
 
   private void onContextItemSelected(MenuItem item, int accountId) {
-    switch (item.getItemId()) {
-    case R.id.delete:
+    int itemId = item.getItemId();
+    if (itemId == R.id.delete) {
       onDeleteAccount(accountId);
-      break;
-    case R.id.menu_mute_notifications:
+    } else if (itemId == R.id.menu_mute_notifications) {
       onToggleMute(accountId);
-      break;
-    case R.id.menu_set_tag:
+    } else if (itemId == R.id.menu_set_tag) {
       onSetTag(accountId);
-      break;
     }
   }
 
