@@ -2,7 +2,7 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.TypedArray;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -11,7 +11,6 @@ import android.util.AttributeSet;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.ProfileActivity;
-import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.GeneratedContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideRequests;
@@ -30,11 +29,6 @@ public class AvatarImageView extends AppCompatImageView {
   public AvatarImageView(Context context, AttributeSet attrs) {
     super(context, attrs);
     setScaleType(ScaleType.CENTER_CROP);
-
-    if (attrs != null) {
-      TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.AvatarImageView, 0, 0);
-      typedArray.recycle();
-    }
   }
 
   @Override
@@ -52,7 +46,7 @@ public class AvatarImageView extends AppCompatImageView {
                     .circleCrop()
                     .into(this);
       if(quickContactEnabled) {
-        setAvatarClickHandler(recipient, quickContactEnabled);
+        setAvatarClickHandler(recipient);
       }
     } else {
       setImageDrawable(new GeneratedContactPhoto("+").asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
@@ -64,8 +58,8 @@ public class AvatarImageView extends AppCompatImageView {
     glideRequests.clear(this);
   }
 
-  private void setAvatarClickHandler(final Recipient recipient, boolean quickContactEnabled) {
-    if (!recipient.isMultiUserRecipient() && quickContactEnabled) {
+  private void setAvatarClickHandler(final Recipient recipient) {
+    if (!recipient.isMultiUserRecipient()) {
       super.setOnClickListener(v -> {
         if(recipient.getAddress().isDcContact()) {
           Intent intent = new Intent(getContext(), ProfileActivity.class);
