@@ -375,8 +375,8 @@
         <item quantity="other">Delete %d messages here and on the server?</item>
     </plurals>
     <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Delete %d message?</item>
-        <item quantity="other">Delete %d messages?</item>
+        <item quantity="one">Delete %d message on all devices?</item>
+        <item quantity="other">Delete %d messages on all devices?</item>
     </plurals>
     <string name="ask_forward">Forward messages to %1$s?</string>
     <string name="ask_forward_multiple">Forward messages to %1$d chats?</string>
