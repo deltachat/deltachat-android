@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.database.loaders;
 
 
 import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.loader.content.AsyncTaskLoader;
 

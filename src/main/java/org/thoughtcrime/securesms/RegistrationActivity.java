@@ -6,13 +6,13 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PORT;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_SECURITY;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_SERVER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_USER;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PASSWORD;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PORT;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SECURITY;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SERVER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 import static org.thoughtcrime.securesms.service.IPCAddAccountsService.ACCOUNT_DATA;
 

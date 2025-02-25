@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.database;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 
 public class Address implements Parcelable, Comparable<Address> {

@@ -1,11 +1,10 @@
 package org.thoughtcrime.securesms.mms;
 
 import android.content.Context;
-
-import androidx.annotation.NonNull;
-
 import android.graphics.drawable.Drawable;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
