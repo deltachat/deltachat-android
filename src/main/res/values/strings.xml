@@ -369,14 +369,14 @@
     </plurals>
     <string name="ask_delete_named_chat">Delete chat \"%1$s\"?</string>
     <string name="ask_delete_message">Are you sure you want to delete this message?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
-        <item quantity="one">Delete %d message here and on the server?</item>
-        <item quantity="other">Delete %d messages here and on the server?</item>
+        <item quantity="one">Delete %d message on all your devices?</item>
+        <item quantity="other">Delete %d messages on all your devices?</item>
     </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Delete %d message on all devices?</item>
-        <item quantity="other">Delete %d messages on all devices?</item>
+        <item quantity="one">Delete %d message?</item>
+        <item quantity="other">Delete %d messages?</item>
     </plurals>
     <string name="ask_forward">Forward messages to %1$s?</string>
     <string name="ask_forward_multiple">Forward messages to %1$d chats?</string>
