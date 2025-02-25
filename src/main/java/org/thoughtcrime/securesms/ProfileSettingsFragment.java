@@ -281,29 +281,28 @@ public class ProfileSettingsFragment extends Fragment
 
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem menuItem) {
-      switch (menuItem.getItemId()) {
-        case R.id.delete:
-          final Collection<Integer> toDelIds = adapter.getSelectedMembers();
-          StringBuilder readableToDelList = new StringBuilder();
-          for (Integer toDelId : toDelIds) {
-            if(readableToDelList.length()>0) {
-              readableToDelList.append(", ");
-            }
-            readableToDelList.append(dcContext.getContact(toDelId).getDisplayName());
+      if (menuItem.getItemId() == R.id.delete) {
+        final Collection<Integer> toDelIds = adapter.getSelectedMembers();
+        StringBuilder readableToDelList = new StringBuilder();
+        for (Integer toDelId : toDelIds) {
+          if (readableToDelList.length() > 0) {
+            readableToDelList.append(", ");
           }
-          DcChat dcChat = dcContext.getChat(chatId);
-          AlertDialog dialog = new AlertDialog.Builder(getContext())
-              .setPositiveButton(R.string.remove_desktop, (d, which) -> {
-                for (Integer toDelId : toDelIds) {
-                  dcContext.removeContactFromChat(chatId, toDelId);
-                }
-                mode.finish();
-              })
-              .setNegativeButton(android.R.string.cancel, null)
-              .setMessage(getString(dcChat.isBroadcast()? R.string.ask_remove_from_broadcast : R.string.ask_remove_members, readableToDelList))
-              .show();
-          Util.redPositiveButton(dialog);
-          return true;
+          readableToDelList.append(dcContext.getContact(toDelId).getDisplayName());
+        }
+        DcChat dcChat = dcContext.getChat(chatId);
+        AlertDialog dialog = new AlertDialog.Builder(getContext())
+          .setPositiveButton(R.string.remove_desktop, (d, which) -> {
+            for (Integer toDelId : toDelIds) {
+              dcContext.removeContactFromChat(chatId, toDelId);
+            }
+            mode.finish();
+          })
+          .setNegativeButton(android.R.string.cancel, null)
+          .setMessage(getString(dcChat.isBroadcast() ? R.string.ask_remove_from_broadcast : R.string.ask_remove_members, readableToDelList))
+          .show();
+        Util.redPositiveButton(dialog);
+        return true;
       }
       return false;
     }

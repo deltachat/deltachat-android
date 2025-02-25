@@ -97,13 +97,12 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        onBackPressed();
-        return true;
-      case R.id.menu_create_profile:
-        updateProfile();
-        break;
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
+      onBackPressed();
+      return true;
+    } else if (itemId == R.id.menu_create_profile) {
+      updateProfile();
     }
 
     return false;

@@ -928,43 +928,43 @@ public class ConversationFragment extends MessageSelectorFragment
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             hideAddReactionView();
-            switch(item.getItemId()) {
-                case R.id.menu_context_copy:
-                    handleCopyMessage(getListAdapter().getSelectedItems());
-                    actionMode.finish();
-                    return true;
-                case R.id.menu_context_delete_message:
-                    handleDeleteMessages((int) chatId, getListAdapter().getSelectedItems());
-                    return true;
-                case R.id.menu_context_share:
-                    DcHelper.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
-                    return true;
-                case R.id.menu_context_details:
-                    handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
-                    actionMode.finish();
-                    return true;
-                case R.id.menu_context_forward:
-                    handleForwardMessage(getListAdapter().getSelectedItems());
-                    actionMode.finish();
-                    return true;
-                case R.id.menu_add_to_home_screen:
-                    WebxdcActivity.addToHomeScreen(getActivity(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId());
-                    actionMode.finish();
-                    return true;
-                case R.id.menu_context_save_attachment:
-                    handleSaveAttachment(getListAdapter().getSelectedItems());
-                    return true;
-                case R.id.menu_context_reply:
-                    handleReplyMessage(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
-                    actionMode.finish();
-                    return true;
-                case R.id.menu_context_reply_privately:
-                    handleReplyMessagePrivately(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
-                    return true;
-                case R.id.menu_resend:
-                    handleResendMessage(getListAdapter().getSelectedItems());
-                    return true;
-            }
+          int itemId = item.getItemId();
+          if (itemId == R.id.menu_context_copy) {
+            handleCopyMessage(getListAdapter().getSelectedItems());
+            actionMode.finish();
+            return true;
+          } else if (itemId == R.id.menu_context_delete_message) {
+            handleDeleteMessages((int) chatId, getListAdapter().getSelectedItems());
+            return true;
+          } else if (itemId == R.id.menu_context_share) {
+            DcHelper.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
+            return true;
+          } else if (itemId == R.id.menu_context_details) {
+            handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+            actionMode.finish();
+            return true;
+          } else if (itemId == R.id.menu_context_forward) {
+            handleForwardMessage(getListAdapter().getSelectedItems());
+            actionMode.finish();
+            return true;
+          } else if (itemId == R.id.menu_add_to_home_screen) {
+            WebxdcActivity.addToHomeScreen(getActivity(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId());
+            actionMode.finish();
+            return true;
+          } else if (itemId == R.id.menu_context_save_attachment) {
+            handleSaveAttachment(getListAdapter().getSelectedItems());
+            return true;
+          } else if (itemId == R.id.menu_context_reply) {
+            handleReplyMessage(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+            actionMode.finish();
+            return true;
+          } else if (itemId == R.id.menu_context_reply_privately) {
+            handleReplyMessagePrivately(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+            return true;
+          } else if (itemId == R.id.menu_resend) {
+            handleResendMessage(getListAdapter().getSelectedItems());
+            return true;
+          }
 
             return false;
         }

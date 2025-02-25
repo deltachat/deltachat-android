@@ -54,42 +54,42 @@ public class LogViewActivity extends BaseActionBarActivity {
     super.onOptionsItemSelected(item);
     Float newSize;
 
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        finish();
-        return true;
-      case R.id.save_log:
-        Permissions.with(this)
-            .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            .alwaysGrantOnSdk30()
-            .ifNecessary()
-            .onAllGranted(() -> {
-              File outputDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-              boolean success = logViewFragment.saveLogFile(outputDir) != null;
-              new AlertDialog.Builder(this)
-                  .setMessage(success? R.string.pref_saved_log : R.string.pref_save_log_failed)
-                  .setPositiveButton(android.R.string.ok, null)
-                  .show();
-            })
-            .execute();
-        return true;
-      case R.id.share_log:
-        shareLog();
-        return true;
-      case R.id.log_zoom_in:
-        newSize = logViewFragment.getLogTextSize() + 2.0f;
-        logViewFragment.setLogTextSize(newSize);
-        return false;
-      case R.id.log_zoom_out:
-        newSize = logViewFragment.getLogTextSize() - 2.0f;
-        logViewFragment.setLogTextSize(newSize);
-        return false;
-      case R.id.log_scroll_down:
-        logViewFragment.scrollDownLog();
-        return false;
-      case R.id.log_scroll_up:
-        logViewFragment.scrollUpLog();
-        return false;
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
+      finish();
+      return true;
+    } else if (itemId == R.id.save_log) {
+      Permissions.with(this)
+        .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        .alwaysGrantOnSdk30()
+        .ifNecessary()
+        .onAllGranted(() -> {
+          File outputDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+          boolean success = logViewFragment.saveLogFile(outputDir) != null;
+          new AlertDialog.Builder(this)
+            .setMessage(success ? R.string.pref_saved_log : R.string.pref_save_log_failed)
+            .setPositiveButton(android.R.string.ok, null)
+            .show();
+        })
+        .execute();
+      return true;
+    } else if (itemId == R.id.share_log) {
+      shareLog();
+      return true;
+    } else if (itemId == R.id.log_zoom_in) {
+      newSize = logViewFragment.getLogTextSize() + 2.0f;
+      logViewFragment.setLogTextSize(newSize);
+      return false;
+    } else if (itemId == R.id.log_zoom_out) {
+      newSize = logViewFragment.getLogTextSize() - 2.0f;
+      logViewFragment.setLogTextSize(newSize);
+      return false;
+    } else if (itemId == R.id.log_scroll_down) {
+      logViewFragment.scrollDownLog();
+      return false;
+    } else if (itemId == R.id.log_scroll_up) {
+      logViewFragment.scrollUpLog();
+      return false;
     }
 
     return false;

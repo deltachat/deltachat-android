@@ -112,17 +112,17 @@ public class BackupTransferActivity extends BaseActionBarActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finishOrAskToFinish();
-                return true;
-            case R.id.troubleshooting:
-                DcHelper.openHelp(this, "#multiclient");
-                return true;
-            case R.id.view_log_button:
-                startActivity(new Intent(this, LogViewActivity.class));
-                return true;
-        }
+      int itemId = item.getItemId();
+      if (itemId == android.R.id.home) {
+        finishOrAskToFinish();
+        return true;
+      } else if (itemId == R.id.troubleshooting) {
+        DcHelper.openHelp(this, "#multiclient");
+        return true;
+      } else if (itemId == R.id.view_log_button) {
+        startActivity(new Intent(this, LogViewActivity.class));
+        return true;
+      }
 
         return false;
     }

@@ -254,24 +254,24 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        finish();
-        return true;
-      case R.id.menu_search_up:
-        if (lastQuery.isEmpty()) {
-          webView.scrollTo(0, 0);
-        } else {
-          webView.findNext(false);
-        }
-        return true;
-      case R.id.menu_search_down:
-        if (lastQuery.isEmpty()) {
-          webView.scrollTo(0, 1000000000);
-        } else {
-          webView.findNext(true);
-        }
-        return true;
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
+      finish();
+      return true;
+    } else if (itemId == R.id.menu_search_up) {
+      if (lastQuery.isEmpty()) {
+        webView.scrollTo(0, 0);
+      } else {
+        webView.findNext(false);
+      }
+      return true;
+    } else if (itemId == R.id.menu_search_down) {
+      if (lastQuery.isEmpty()) {
+        webView.scrollTo(0, 1000000000);
+      } else {
+        webView.findNext(true);
+      }
+      return true;
     }
     return false;
   }

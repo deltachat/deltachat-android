@@ -77,20 +77,20 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
 
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-            case R.id.troubleshooting:
-                DcHelper.openHelp(this, "#multiclient");
-                return true;
-            case R.id.menu_paste:
-                Intent intent = new Intent();
-                intent.putExtra(QRDATA_EXTRA, Util.getTextFromClipboard(this));
-                setResult(Activity.RESULT_OK, intent);
-                finish();
-                return true;
-        }
+      int itemId = item.getItemId();
+      if (itemId == android.R.id.home) {
+        finish();
+        return true;
+      } else if (itemId == R.id.troubleshooting) {
+        DcHelper.openHelp(this, "#multiclient");
+        return true;
+      } else if (itemId == R.id.menu_paste) {
+        Intent intent = new Intent();
+        intent.putExtra(QRDATA_EXTRA, Util.getTextFromClipboard(this));
+        setResult(Activity.RESULT_OK, intent);
+        finish();
+        return true;
+      }
 
         return false;
     }

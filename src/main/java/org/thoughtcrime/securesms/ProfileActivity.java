@@ -416,35 +416,27 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
 
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        backPressed = true;
-        finish();
-        return true;
-      case R.id.menu_mute_notifications:
-        onNotifyOnOff();
-        break;
-      case R.id.menu_sound:
-        onSoundSettings();
-        break;
-      case R.id.menu_vibrate:
-        onVibrateSettings();
-        break;
-      case R.id.edit_name:
-        onEditName();
-        break;
-      case R.id.share:
-        onShare();
-        break;
-      case R.id.show_encr_info:
-        onEncrInfo();
-        break;
-      case R.id.block_contact:
-        onBlockContact();
-        break;
-      case R.id.menu_clone:
-        onClone();
-        break;
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
+      backPressed = true;
+      finish();
+      return true;
+    } else if (itemId == R.id.menu_mute_notifications) {
+      onNotifyOnOff();
+    } else if (itemId == R.id.menu_sound) {
+      onSoundSettings();
+    } else if (itemId == R.id.menu_vibrate) {
+      onVibrateSettings();
+    } else if (itemId == R.id.edit_name) {
+      onEditName();
+    } else if (itemId == R.id.share) {
+      onShare();
+    } else if (itemId == R.id.show_encr_info) {
+      onEncrInfo();
+    } else if (itemId == R.id.block_contact) {
+      onBlockContact();
+    } else if (itemId == R.id.menu_clone) {
+      onClone();
     }
 
     return false;
@@ -453,10 +445,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   @Override
   public boolean onContextItemSelected(MenuItem item) {
     super.onContextItemSelected(item);
-    switch (item.getItemId()) {
-      case R.id.copy_addr_to_clipboard:
-        onCopyAddrToClipboard();
-        break;
+    if (item.getItemId() == R.id.copy_addr_to_clipboard) {
+      onCopyAddrToClipboard();
     }
     return false;
   }

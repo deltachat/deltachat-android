@@ -156,14 +156,14 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     super.onOptionsItemSelected(item);
 
-    switch (item.getItemId()) {
-    case android.R.id.home:
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
       getOnBackPressedDispatcher().onBackPressed();
       return true;
-    case R.id.menu_proxy_settings:
+    } else if (itemId == R.id.menu_proxy_settings) {
       startActivity(new Intent(this, ProxySettingsActivity.class));
       return true;
-    case R.id.menu_view_log:
+    } else if (itemId == R.id.menu_view_log) {
       startActivity(new Intent(this, LogViewActivity.class));
       return true;
     }
