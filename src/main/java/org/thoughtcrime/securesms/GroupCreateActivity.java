@@ -207,22 +207,22 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   @Override
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        finish();
-        return true;
-      case R.id.menu_create_group:
-        String groupName = getGroupName();
-        if (showGroupNameEmptyToast(groupName)) return true;
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
+      finish();
+      return true;
+    } else if (itemId == R.id.menu_create_group) {
+      String groupName = getGroupName();
+      if (showGroupNameEmptyToast(groupName)) return true;
 
-        if (groupChatId!=0) {
-          updateGroup(groupName);
-        } else {
-          verified = !broadcast && allMembersVerified();
-          createGroup(groupName);
-        }
+      if (groupChatId != 0) {
+        updateGroup(groupName);
+      } else {
+        verified = !broadcast && allMembersVerified();
+        createGroup(groupName);
+      }
 
-        return true;
+      return true;
     }
 
     return false;

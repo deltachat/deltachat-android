@@ -60,14 +60,13 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
 
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        onBackPressed();
-        return true;
-
-      case R.id.mark_as_read:
-        DcHelper.getContext(this).marknoticedChat(DcChat.DC_CHAT_ID_ARCHIVED_LINK);
-        return true;
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
+      onBackPressed();
+      return true;
+    } else if (itemId == R.id.mark_as_read) {
+      DcHelper.getContext(this).marknoticedChat(DcChat.DC_CHAT_ID_ARCHIVED_LINK);
+      return true;
     }
 
     return false;

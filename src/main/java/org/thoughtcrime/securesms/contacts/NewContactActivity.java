@@ -68,31 +68,31 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
   @Override
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        finish();
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
+      finish();
+      return true;
+    } else if (itemId == R.id.menu_create_contact) {
+      String addr = addrInput.getText() == null ? "" : addrInput.getText().toString();
+      String name = nameInput.getText() == null ? "" : nameInput.getText().toString();
+      if (name.isEmpty()) name = null;
+      int contactId = dcContext.mayBeValidAddr(addr) ? dcContext.createContact(name, addr) : 0;
+      if (contactId == 0) {
+        Toast.makeText(this, getString(R.string.login_error_mail), Toast.LENGTH_LONG).show();
         return true;
-      case R.id.menu_create_contact:
-        String addr = addrInput.getText() == null? "" : addrInput.getText().toString();
-        String name = nameInput.getText() == null? "" : nameInput.getText().toString();
-        if (name.isEmpty()) name = null;
-        int contactId = dcContext.mayBeValidAddr(addr)? dcContext.createContact(name, addr): 0;
-        if (contactId == 0) {
-          Toast.makeText(this, getString(R.string.login_error_mail), Toast.LENGTH_LONG).show();
-          return true;
-        }
-        if (getCallingActivity() != null) { // called for result
-          Intent intent = new Intent();
-          intent.putExtra(ADDR_EXTRA, addr);
-          setResult(RESULT_OK, intent);
-        } else {
-          int chatId = dcContext.createChatByContactId(contactId);
-          Intent intent = new Intent(this, ConversationActivity.class);
-          intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-          startActivity(intent);
-        }
-        finish();
-        return true;
+      }
+      if (getCallingActivity() != null) { // called for result
+        Intent intent = new Intent();
+        intent.putExtra(ADDR_EXTRA, addr);
+        setResult(RESULT_OK, intent);
+      } else {
+        int chatId = dcContext.createChatByContactId(contactId);
+        Intent intent = new Intent(this, ConversationActivity.class);
+        intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+        startActivity(intent);
+      }
+      finish();
+      return true;
     }
     return false;
   }

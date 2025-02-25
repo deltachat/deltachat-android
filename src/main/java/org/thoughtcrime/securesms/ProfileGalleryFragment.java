@@ -233,31 +233,31 @@ public class ProfileGalleryFragment
 
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem menuItem) {
-      switch (menuItem.getItemId()) {
-        case R.id.details:
-          handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
-          mode.finish();
-          return true;
-        case R.id.delete:
-          handleDeleteMessages(chatId, getListAdapter().getSelectedMedia());
-          mode.finish();
-          return true;
-        case R.id.share:
-          handleShare(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
-          return true;
-        case R.id.show_in_chat:
-          handleShowInChat(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
-          return true;
-        case R.id.save:
-          handleSaveAttachment(getListAdapter().getSelectedMedia());
-          return true;
-        case R.id.menu_resend:
-          handleResendMessage(getListAdapter().getSelectedMedia());
-          return true;
-        case R.id.menu_select_all:
-          getListAdapter().selectAll();
-          updateActionModeBar();
-          return true;
+      int itemId = menuItem.getItemId();
+      if (itemId == R.id.details) {
+        handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
+        mode.finish();
+        return true;
+      } else if (itemId == R.id.delete) {
+        handleDeleteMessages(chatId, getListAdapter().getSelectedMedia());
+        mode.finish();
+        return true;
+      } else if (itemId == R.id.share) {
+        handleShare(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
+        return true;
+      } else if (itemId == R.id.show_in_chat) {
+        handleShowInChat(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
+        return true;
+      } else if (itemId == R.id.save) {
+        handleSaveAttachment(getListAdapter().getSelectedMedia());
+        return true;
+      } else if (itemId == R.id.menu_resend) {
+        handleResendMessage(getListAdapter().getSelectedMedia());
+        return true;
+      } else if (itemId == R.id.menu_select_all) {
+        getListAdapter().selectAll();
+        updateActionModeBar();
+        return true;
       }
       return false;
     }

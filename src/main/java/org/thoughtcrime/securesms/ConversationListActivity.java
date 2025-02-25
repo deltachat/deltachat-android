@@ -421,31 +421,31 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
 
-    switch (item.getItemId()) {
-      case R.id.menu_new_chat:
-        createChat();
-        return true;
-      case R.id.menu_invite_friends:
-        shareInvite();
-        return true;
-      case R.id.menu_settings:
-        startActivity(new Intent(this, ApplicationPreferencesActivity.class));
-        return true;
-      case R.id.menu_qr:
-        new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
-        return true;
-      case R.id.menu_global_map:
-        WebxdcActivity.openMaps(this, 0);
-        return true;
-      case R.id.menu_proxy_settings:
-        startActivity(new Intent(this, ProxySettingsActivity.class));
-        return true;
-      case android.R.id.home:
-        onBackPressed();
-        return true;
-      case R.id.menu_all_media:
-        startActivity(new Intent(this, ProfileActivity.class));
-        return true;
+    int itemId = item.getItemId();
+    if (itemId == R.id.menu_new_chat) {
+      createChat();
+      return true;
+    } else if (itemId == R.id.menu_invite_friends) {
+      shareInvite();
+      return true;
+    } else if (itemId == R.id.menu_settings) {
+      startActivity(new Intent(this, ApplicationPreferencesActivity.class));
+      return true;
+    } else if (itemId == R.id.menu_qr) {
+      new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
+      return true;
+    } else if (itemId == R.id.menu_global_map) {
+      WebxdcActivity.openMaps(this, 0);
+      return true;
+    } else if (itemId == R.id.menu_proxy_settings) {
+      startActivity(new Intent(this, ProxySettingsActivity.class));
+      return true;
+    } else if (itemId == android.R.id.home) {
+      onBackPressed();
+      return true;
+    } else if (itemId == R.id.menu_all_media) {
+      startActivity(new Intent(this, ProfileActivity.class));
+      return true;
     }
 
     return false;

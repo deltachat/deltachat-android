@@ -503,18 +503,40 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case R.id.menu_add_attachment:        handleAddAttachment();             return true;
-      case R.id.menu_leave:                 handleLeaveGroup();                return true;
-      case R.id.menu_archive_chat:          handleArchiveChat();               return true;
-      case R.id.menu_clear_chat:            fragment.handleClearChat();        return true;
-      case R.id.menu_delete_chat:           handleDeleteChat();                return true;
-      case R.id.menu_mute_notifications:    handleMuteNotifications();         return true;
-      case R.id.menu_show_map:              WebxdcActivity.openMaps(this, chatId); return true;
-      case R.id.menu_search_up:             handleMenuSearchNext(false);       return true;
-      case R.id.menu_search_down:           handleMenuSearchNext(true);        return true;
-      case android.R.id.home:               handleReturnToConversationList();  return true;
-      case R.id.menu_ephemeral_messages:    handleEphemeralMessages();         return true;
+    int itemId = item.getItemId();
+    if (itemId == R.id.menu_add_attachment) {
+      handleAddAttachment();
+      return true;
+    } else if (itemId == R.id.menu_leave) {
+      handleLeaveGroup();
+      return true;
+    } else if (itemId == R.id.menu_archive_chat) {
+      handleArchiveChat();
+      return true;
+    } else if (itemId == R.id.menu_clear_chat) {
+      fragment.handleClearChat();
+      return true;
+    } else if (itemId == R.id.menu_delete_chat) {
+      handleDeleteChat();
+      return true;
+    } else if (itemId == R.id.menu_mute_notifications) {
+      handleMuteNotifications();
+      return true;
+    } else if (itemId == R.id.menu_show_map) {
+      WebxdcActivity.openMaps(this, chatId);
+      return true;
+    } else if (itemId == R.id.menu_search_up) {
+      handleMenuSearchNext(false);
+      return true;
+    } else if (itemId == R.id.menu_search_down) {
+      handleMenuSearchNext(true);
+      return true;
+    } else if (itemId == android.R.id.home) {
+      handleReturnToConversationList();
+      return true;
+    } else if (itemId == R.id.menu_ephemeral_messages) {
+      handleEphemeralMessages();
+      return true;
     }
 
     return false;

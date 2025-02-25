@@ -83,14 +83,13 @@ public class QrShowActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
 
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-            case R.id.withdraw:
-                fragment.withdrawQr();
-                break;
-        }
+      int itemId = item.getItemId();
+      if (itemId == android.R.id.home) {
+        finish();
+        return true;
+      } else if (itemId == R.id.withdraw) {
+        fragment.withdrawQr();
+      }
 
         return false;
     }

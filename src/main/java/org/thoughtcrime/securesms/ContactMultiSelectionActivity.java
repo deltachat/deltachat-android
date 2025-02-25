@@ -57,11 +57,10 @@ public class ContactMultiSelectionActivity extends ContactSelectionActivity {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case R.id.menu_add_members:
-        saveSelection();
-        finish();
-        return true;
+    if (item.getItemId() == R.id.menu_add_members) {
+      saveSelection();
+      finish();
+      return true;
     }
 
     return false;
