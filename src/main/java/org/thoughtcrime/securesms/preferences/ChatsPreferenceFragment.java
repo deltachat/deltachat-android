@@ -40,34 +40,46 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     super.onCreate(paramBundle);
 
     mediaQuality = (ListPreference) this.findPreference("pref_compression");
-    mediaQuality.setOnPreferenceChangeListener((preference, newValue) -> {
-      updateListSummary(preference, newValue);
-      dcContext.setConfigInt(DcHelper.CONFIG_MEDIA_QUALITY, Util.objectToInt(newValue));
-      return true;
-    });
+    if (mediaQuality != null) {
+      mediaQuality.setOnPreferenceChangeListener((preference, newValue) -> {
+        updateListSummary(preference, newValue);
+        dcContext.setConfigInt(DcHelper.CONFIG_MEDIA_QUALITY, Util.objectToInt(newValue));
+        return true;
+      });
+    }
 
 
     autoDownload = findPreference("auto_download");
-    autoDownload.setOnPreferenceChangeListener((preference, newValue) -> {
-      updateListSummary(preference, newValue);
-      dcContext.setConfigInt("download_limit", Util.objectToInt(newValue));
-      return true;
-    });
+    if (autoDownload != null) {
+      autoDownload.setOnPreferenceChangeListener((preference, newValue) -> {
+        updateListSummary(preference, newValue);
+        dcContext.setConfigInt("download_limit", Util.objectToInt(newValue));
+        return true;
+      });
+    }
     nicerAutoDownloadNames();
 
     readReceiptsCheckbox = (CheckBoxPreference) this.findPreference("pref_read_receipts");
-    readReceiptsCheckbox.setOnPreferenceChangeListener(new ReadReceiptToggleListener());
+    if (readReceiptsCheckbox != null) {
+      readReceiptsCheckbox.setOnPreferenceChangeListener(new ReadReceiptToggleListener());
+    }
 
     this.findPreference("preference_category_blocked").setOnPreferenceClickListener(new BlockedContactsClickListener());
 
     Preference backup = this.findPreference("pref_backup");
-    backup.setOnPreferenceClickListener(new BackupListener());
+    if (backup != null) {
+      backup.setOnPreferenceClickListener(new BackupListener());
+    }
 
     autoDelDevice = findPreference("autodel_device");
-    autoDelDevice.setOnPreferenceChangeListener(new AutodelChangeListener("delete_device_after"));
+    if (autoDelDevice != null) {
+      autoDelDevice.setOnPreferenceChangeListener(new AutodelChangeListener("delete_device_after"));
+    }
 
     autoDelServer = findPreference("autodel_server");
-    autoDelServer.setOnPreferenceChangeListener(new AutodelChangeListener("delete_server_after"));
+    if (autoDelServer != null) {
+      autoDelServer.setOnPreferenceChangeListener(new AutodelChangeListener("delete_server_after"));
+    }
     if (dcContext.isChatmail()) {
       autoDelServer.setEntries(new CharSequence[]{getString(R.string.automatic), getString(R.string.autodel_at_once)});
       autoDelServer.setEntryValues(new CharSequence[]{"0", "1"});
@@ -161,7 +173,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
   private class BlockedContactsClickListener implements Preference.OnPreferenceClickListener {
     @Override
-    public boolean onPreferenceClick(Preference preference) {
+    public boolean onPreferenceClick(@NonNull Preference preference) {
       Intent intent = new Intent(getActivity(), BlockedContactsActivity.class);
       startActivity(intent);
       return true;
@@ -170,7 +182,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
   private class ReadReceiptToggleListener implements Preference.OnPreferenceChangeListener {
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
+    public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
       boolean enabled = (boolean) newValue;
       dcContext.setConfigInt("mdns_enabled", enabled ? 1 : 0);
       return true;
@@ -244,8 +256,8 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
   private class BackupListener implements Preference.OnPreferenceClickListener {
     @Override
-    public boolean onPreferenceClick(Preference preference) {
-      boolean result = ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.pref_backup), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP);
+    public boolean onPreferenceClick(@NonNull Preference preference) {
+      boolean result = ScreenLockUtil.applyScreenLock(requireActivity(), getString(R.string.pref_backup), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP);
       if (!result) {
         performBackup();
       }
@@ -254,21 +266,21 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   }
 
   private void performBackup() {
-    Permissions.with(getActivity())
+    Permissions.with(requireActivity())
             .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE) // READ_EXTERNAL_STORAGE required to read folder contents and to generate backup names
             .alwaysGrantOnSdk30()
             .ifNecessary()
             .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
             .onAllGranted(() -> {
               final String addr = DcHelper.get(getActivity(), DcHelper.CONFIG_CONFIGURED_ADDRESS);
-              AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
+              AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity())
                       .setTitle(R.string.pref_backup)
                       .setMessage(R.string.pref_backup_export_explain)
                       .setNeutralButton(android.R.string.cancel, null)
-                      .setPositiveButton(getActivity().getString(R.string.pref_backup_export_x, addr), (dialogInterface, i) -> startImexOne(DcContext.DC_IMEX_EXPORT_BACKUP));
-              int[] allAccounts = DcHelper.getAccounts(getActivity()).getAll();
+                      .setPositiveButton(requireActivity().getString(R.string.pref_backup_export_x, addr), (dialogInterface, i) -> startImexOne(DcContext.DC_IMEX_EXPORT_BACKUP));
+              int[] allAccounts = DcHelper.getAccounts(requireActivity()).getAll();
               if (allAccounts.length > 1) {
-                String exportAllString = getActivity().getString(R.string.pref_backup_export_all, allAccounts.length);
+                String exportAllString = requireActivity().getString(R.string.pref_backup_export_all, allAccounts.length);
                 builder.setNegativeButton(exportAllString, (dialogInterface, i) -> startImexAll(DcContext.DC_IMEX_EXPORT_BACKUP));
               }
               builder.show();
