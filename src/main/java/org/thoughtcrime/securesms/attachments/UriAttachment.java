@@ -33,7 +33,7 @@ public class UriAttachment extends Attachment {
 
   @Override
   public boolean equals(Object other) {
-    return other != null && other instanceof UriAttachment && ((UriAttachment) other).dataUri.equals(this.dataUri);
+    return other instanceof UriAttachment && ((UriAttachment) other).dataUri.equals(this.dataUri);
   }
 
   @Override

@@ -3,7 +3,8 @@ package org.thoughtcrime.securesms.components;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageButton;
+
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import org.thoughtcrime.securesms.TransportOption;
 import org.thoughtcrime.securesms.TransportOptions;
@@ -12,7 +13,7 @@ import org.thoughtcrime.securesms.TransportOptionsPopup;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
-public class SendButton extends ImageButton
+public class SendButton extends AppCompatImageButton
     implements TransportOptions.OnTransportChangedListener,
                TransportOptionsPopup.SelectedListener,
                View.OnLongClickListener

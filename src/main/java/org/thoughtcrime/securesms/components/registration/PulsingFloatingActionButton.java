@@ -6,6 +6,8 @@ import android.content.Context;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.util.AttributeSet;
 
+import androidx.annotation.NonNull;
+
 import org.thoughtcrime.securesms.animation.AnimationCompleteListener;
 
 public class PulsingFloatingActionButton extends FloatingActionButton {
@@ -40,11 +42,11 @@ public class PulsingFloatingActionButton extends FloatingActionButton {
 
     this.animate().scaleX(1.2f).scaleY(1.2f).setDuration(150).setListener(new AnimationCompleteListener() {
       @Override
-      public void onAnimationEnd(Animator animation) {
+      public void onAnimationEnd(@NonNull Animator animation) {
         clearAnimation();
         animate().scaleX(1.0f).scaleY(1.0f).setDuration(150).setListener(new AnimationCompleteListener() {
           @Override
-          public void onAnimationEnd(Animator animation) {
+          public void onAnimationEnd(@NonNull Animator animation) {
             PulsingFloatingActionButton.this.postDelayed(() -> pulse(periodMillis), periodMillis);
           }
         }).start();

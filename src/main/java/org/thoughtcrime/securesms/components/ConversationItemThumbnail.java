@@ -30,8 +30,6 @@ import java.util.concurrent.ExecutionException;
 
 public class ConversationItemThumbnail extends FrameLayout {
 
-  private static final String TAG = ConversationItemThumbnail.class.getSimpleName();
-
   private static final Paint LIGHT_THEME_OUTLINE_PAINT = new Paint();
   private static final Paint DARK_THEME_OUTLINE_PAINT = new Paint();
   public static final double IMAGE_ASPECT_RATIO = 1.0;
@@ -62,20 +60,20 @@ public class ConversationItemThumbnail extends FrameLayout {
 
   public ConversationItemThumbnail(Context context) {
     super(context);
-    init(null);
+    init();
   }
 
   public ConversationItemThumbnail(Context context, AttributeSet attrs) {
     super(context, attrs);
-    init(attrs);
+    init();
   }
 
   public ConversationItemThumbnail(final Context context, AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
-    init(attrs);
+    init();
   }
 
-  private void init(@Nullable AttributeSet attrs) {
+  private void init() {
     inflate(getContext(), R.layout.conversation_item_thumbnail, this);
 
     this.thumbnail    = findViewById(R.id.conversation_thumbnail_image);
@@ -119,7 +117,7 @@ public class ConversationItemThumbnail extends FrameLayout {
 
   @SuppressWarnings("SuspiciousNameCombination")
   @Override
-  protected void dispatchDraw(Canvas canvas) {
+  protected void dispatchDraw(@NonNull Canvas canvas) {
 
     super.dispatchDraw(canvas);
 

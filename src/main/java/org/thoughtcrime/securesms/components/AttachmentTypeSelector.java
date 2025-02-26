@@ -1,12 +1,11 @@
 package org.thoughtcrime.securesms.components;
 
 import android.animation.Animator;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.loader.app.LoaderManager;
@@ -186,13 +185,6 @@ public class AttachmentTypeSelector extends PopupWindow {
     animator.start();
   }
 
-  private void animateWindowInTranslate(@NonNull View contentView) {
-    Animation animation = new TranslateAnimation(0, 0, contentView.getHeight(), 0);
-    animation.setDuration(ANIMATION_DURATION);
-
-    getContentView().startAnimation(animation);
-  }
-
   private void animateWindowOutCircular(@Nullable View anchor, @NonNull View contentView) {
     Pair<Integer, Integer> coordinates = getClickOrigin(anchor, contentView);
     Animator               animator    = ViewAnimationUtils.createCircularReveal(getContentView(),
@@ -204,20 +196,20 @@ public class AttachmentTypeSelector extends PopupWindow {
     animator.setDuration(ANIMATION_DURATION);
     animator.addListener(new Animator.AnimatorListener() {
       @Override
-      public void onAnimationStart(Animator animation) {
+      public void onAnimationStart(@NonNull Animator animation) {
       }
 
       @Override
-      public void onAnimationEnd(Animator animation) {
+      public void onAnimationEnd(@NonNull Animator animation) {
         AttachmentTypeSelector.super.dismiss();
       }
 
       @Override
-      public void onAnimationCancel(Animator animation) {
+      public void onAnimationCancel(@NonNull Animator animation) {
       }
 
       @Override
-      public void onAnimationRepeat(Animator animation) {
+      public void onAnimationRepeat(@NonNull Animator animation) {
       }
     });
 

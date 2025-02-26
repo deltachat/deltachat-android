@@ -12,6 +12,8 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import org.thoughtcrime.securesms.R;
 
 public class ShapeScrim extends View {
@@ -39,16 +41,15 @@ public class ShapeScrim extends View {
     super(context, attrs, defStyleAttr);
 
     if (attrs != null) {
-      TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ShapeScrim, 0, 0);
-      String     shapeName  = typedArray.getString(R.styleable.ShapeScrim_shape);
+      try (TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ShapeScrim, 0, 0)) {
+        String shapeName = typedArray.getString(R.styleable.ShapeScrim_shape);
 
-      if      ("square".equalsIgnoreCase(shapeName)) this.shape = ShapeType.SQUARE;
-      else if ("circle".equalsIgnoreCase(shapeName)) this.shape = ShapeType.CIRCLE;
-      else                                           this.shape = ShapeType.SQUARE;
+        if ("square".equalsIgnoreCase(shapeName)) this.shape = ShapeType.SQUARE;
+        else if ("circle".equalsIgnoreCase(shapeName)) this.shape = ShapeType.CIRCLE;
+        else this.shape = ShapeType.SQUARE;
 
-      this.radius = typedArray.getFloat(R.styleable.ShapeScrim_radius, 0.4f);
-
-      typedArray.recycle();
+        this.radius = typedArray.getFloat(R.styleable.ShapeScrim_radius, 0.4f);
+      }
     } else {
       this.shape  = ShapeType.SQUARE;
       this.radius = 0.4f;
@@ -60,10 +61,10 @@ public class ShapeScrim extends View {
   }
 
   @Override
-  public void onDraw(Canvas canvas) {
+  public void onDraw(@NonNull Canvas canvas) {
     super.onDraw(canvas);
 
-    int   shortDimension = getWidth() < getHeight() ? getWidth() : getHeight();
+    int   shortDimension = Math.min(getWidth(), getHeight());
     float drawRadius     = shortDimension * radius;
 
     if (scrimCanvas == null) {

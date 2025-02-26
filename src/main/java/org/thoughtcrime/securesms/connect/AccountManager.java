@@ -5,10 +5,11 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_VERIFIED_ONE_ON
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.preference.PreferenceManager;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
+import androidx.preference.PreferenceManager;
 
 import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
@@ -31,7 +32,7 @@ public class AccountManager {
 
     private void resetDcContext(Context context) {
         ApplicationContext appContext = (ApplicationContext)context.getApplicationContext();
-        appContext.dcContext = appContext.dcAccounts.getSelectedAccount();
+        appContext.dcContext = ApplicationContext.dcAccounts.getSelectedAccount();
         DcHelper.setStockTranslations(context);
         DcHelper.getContext(context).setConfig(CONFIG_VERIFIED_ONE_ON_ONE_CHATS, "1");
         DirectShareUtil.resetAllShortcuts(appContext);
@@ -52,10 +53,11 @@ public class AccountManager {
             int selectAccountId = 0;
 
             File[] files = context.getFilesDir().listFiles();
+          if (files != null) {
             for (File file : files) {
                 // old accounts have the pattern "messenger*.db"
                 if (!file.isDirectory() && file.getName().startsWith("messenger") && file.getName().endsWith(".db")) {
-                    int accountId = context.dcAccounts.migrateAccount(file.getAbsolutePath());
+                    int accountId = ApplicationContext.dcAccounts.migrateAccount(file.getAbsolutePath());
                     if (accountId != 0) {
                         String selName = PreferenceManager.getDefaultSharedPreferences(context)
                                 .getString("curr_account_db_name", "messenger.db");
@@ -67,12 +69,13 @@ public class AccountManager {
                     }
                 }
             }
+          }
 
             if (selectAccountId != 0) {
-                context.dcAccounts.selectAccount(selectAccountId);
+                ApplicationContext.dcAccounts.selectAccount(selectAccountId);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error in migrateToDcAccounts()", e);
         }
     }
 
@@ -96,7 +99,7 @@ public class AccountManager {
       try {
         id = rpc.addAccount();
       } catch (RpcException e) {
-        e.printStackTrace();
+        Log.e(TAG, "Error calling rpc.addAccount()", e);
       }
       resetDcContext(context);
       return id;
