@@ -73,7 +73,7 @@ public class ThreadRecord {
   }
 
   public @NonNull String getBody() {
-    return body == null ? "" : body;
+    return body;
   }
 
   public Recipient getRecipient() {

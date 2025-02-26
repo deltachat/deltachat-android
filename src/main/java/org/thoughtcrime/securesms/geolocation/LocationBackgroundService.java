@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 public class LocationBackgroundService extends Service {
 
     private static final int INITIAL_TIMEOUT = 1000 * 60 * 2;
@@ -111,7 +113,7 @@ public class LocationBackgroundService extends Service {
     private class ServiceLocationListener implements LocationListener {
 
         @Override
-        public void onLocationChanged(Location location) {
+        public void onLocationChanged(@NonNull Location location) {
             Log.d(TAG, "onLocationChanged: " + location);
             if (location == null) {
                 return;
@@ -120,12 +122,12 @@ public class LocationBackgroundService extends Service {
         }
 
         @Override
-        public void onProviderDisabled(String provider) {
+        public void onProviderDisabled(@NonNull String provider) {
             Log.e(TAG, "onProviderDisabled: " + provider);
         }
 
         @Override
-        public void onProviderEnabled(String provider) {
+        public void onProviderEnabled(@NonNull String provider) {
             Log.e(TAG, "onProviderEnabled: " + provider);
         }
 

@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
@@ -50,7 +51,7 @@ public class ProfilePreference extends Preference {
   }
 
   @Override
-  public void onBindViewHolder(PreferenceViewHolder viewHolder) {
+  public void onBindViewHolder(@NonNull PreferenceViewHolder viewHolder) {
     super.onBindViewHolder(viewHolder);
     avatarView        = (ImageView)viewHolder.findViewById(R.id.avatar);
     profileNameView   = (TextView)viewHolder.findViewById(R.id.profile_name);
