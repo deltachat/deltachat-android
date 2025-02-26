@@ -115,7 +115,7 @@ public class ComposeText extends AppCompatEditText {
   }
 
   @Override
-  public InputConnection onCreateInputConnection(EditorInfo editorInfo) {
+  public InputConnection onCreateInputConnection(@NonNull EditorInfo editorInfo) {
     InputConnection inputConnection = super.onCreateInputConnection(editorInfo);
 
     if(Prefs.isEnterSendsEnabled(getContext())) {
@@ -143,7 +143,6 @@ public class ComposeText extends AppCompatEditText {
     }
   }
 
-  @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB_MR2)
   private static class CommitContentListener implements InputConnectionCompat.OnCommitContentListener {
 
     private static final String TAG = CommitContentListener.class.getName();
@@ -155,7 +154,7 @@ public class ComposeText extends AppCompatEditText {
     }
 
     @Override
-    public boolean onCommitContent(InputContentInfoCompat inputContentInfo, int flags, Bundle opts) {
+    public boolean onCommitContent(@NonNull InputContentInfoCompat inputContentInfo, int flags, Bundle opts) {
       if (BuildCompat.isAtLeastNMR1() && (flags & InputConnectionCompat.INPUT_CONTENT_GRANT_READ_URI_PERMISSION) != 0) {
         try {
           inputContentInfo.requestPermission();

@@ -150,7 +150,7 @@ public class InputPanel extends ConstraintLayout
 
     quoteAnimator = createHeightAnimator(quoteView, quoteView.getMeasuredHeight(), 0, new AnimationCompleteListener() {
       @Override
-      public void onAnimationEnd(Animator animation) {
+      public void onAnimationEnd(@NonNull Animator animation) {
         quoteView.dismiss();
       }
     });

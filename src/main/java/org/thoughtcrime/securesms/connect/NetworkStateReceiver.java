@@ -10,6 +10,7 @@ import android.util.Log;
 
 public class NetworkStateReceiver extends BroadcastReceiver {
 
+    private static final String TAG = NetworkStateReceiver.class.getSimpleName();
     private int debugConnectedCount;
 
     @Override
@@ -35,7 +36,7 @@ public class NetworkStateReceiver extends BroadcastReceiver {
             }
         }
         catch (Exception e) {
-            e.printStackTrace();
+            Log.i(TAG, "Error in onReceive()", e);
         }
     }
 }

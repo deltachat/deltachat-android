@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.components;
 
-
 import android.content.Context;
 
 import androidx.annotation.AttrRes;
@@ -19,9 +18,6 @@ import org.thoughtcrime.securesms.util.guava.Optional;
 
 public class DocumentView extends FrameLayout {
 
-  private static final String TAG = DocumentView.class.getSimpleName();
-
-  private final @NonNull View            container;
   private final @NonNull TextView        fileName;
   private final @NonNull TextView        fileSize;
 
@@ -39,7 +35,6 @@ public class DocumentView extends FrameLayout {
     super(context, attrs, defStyleAttr);
     inflate(context, R.layout.document_view, this);
 
-    this.container        = findViewById(R.id.document_container);
     this.fileName         = findViewById(R.id.file_name);
     this.fileSize         = findViewById(R.id.file_size);
   }

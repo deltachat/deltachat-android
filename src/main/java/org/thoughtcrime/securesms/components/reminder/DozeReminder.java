@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.util.Log;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
@@ -26,6 +27,8 @@ import org.thoughtcrime.securesms.util.Prefs;
 
 @SuppressLint("BatteryLife")
 public class DozeReminder {
+  private static final String TAG = DozeReminder.class.getSimpleName();
+
   public static boolean isEligible(Context context) {
     if(context==null) {
       return false;
@@ -58,14 +61,10 @@ public class DozeReminder {
       }
     }
     catch(Exception e) {
-      e.printStackTrace();
+      Log.e(TAG, "Error calling getChatlist()", e);
     }
 
-    if (isPushAvailableAndSufficient()) {
-      return false;
-    }
-
-    return true; // yip, asking for disabling battery optimisations makes sense
+    return !isPushAvailableAndSufficient(); // yip, asking for disabling battery optimisations makes sense
   }
 
   public static void addDozeReminderDeviceMsg(Context context) {
@@ -150,7 +149,7 @@ public class DozeReminder {
       // and no device message will be added.
       Prefs.setBooleanPreference(context, Prefs.DOZE_ASKED_DIRECTLY, true);
     } catch(Exception e) {
-      e.printStackTrace();
+      Log.e(TAG, "Error in maybeAskDirectly()", e);
     }
   }
 }

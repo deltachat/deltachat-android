@@ -39,14 +39,12 @@ public class CustomDefaultPreference extends DialogPreference {
     super(context, attrs);
 
     int[]      attributeNames = new int[]{android.R.attr.inputType, R.attr.custom_pref_toggle};
-    TypedArray attributes     = context.obtainStyledAttributes(attrs, attributeNames);
-
-    this.inputType        = attributes.getInt(0, 0);
-    this.customPreference = getKey();
-    this.customToggle     = attributes.getString(1);
-    this.validator        = new CustomDefaultPreferenceDialogFragmentCompat.NullValidator();
-
-    attributes.recycle();
+    try (TypedArray attributes = context.obtainStyledAttributes(attrs, attributeNames)) {
+      this.inputType = attributes.getInt(0, 0);
+      this.customPreference = getKey();
+      this.customToggle = attributes.getString(1);
+      this.validator = new CustomDefaultPreferenceDialogFragmentCompat.NullValidator();
+    }
 
     setPersistent(false);
     setDialogLayoutResource(R.layout.custom_default_preference_dialog);
@@ -130,6 +128,7 @@ public class CustomDefaultPreference extends DialogPreference {
     }
 
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle instanceState) {
       Dialog dialog = super.onCreateDialog(instanceState);

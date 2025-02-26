@@ -23,6 +23,8 @@ import org.thoughtcrime.securesms.util.Prefs;
 
 public class KeepAliveService extends Service {
 
+    private static final String TAG = KeepAliveService.class.getSimpleName();
+
     static KeepAliveService s_this = null;
 
     public static void maybeStartSelf(Context context) {
@@ -40,7 +42,7 @@ public class KeepAliveService extends Service {
             ContextCompat.startForegroundService(context, new Intent(context, KeepAliveService.class));
         }
         catch(Exception e) {
-            e.printStackTrace();
+            Log.i(TAG, "Error calling ContextCompat.startForegroundService()", e);
         }
     }
 
@@ -57,7 +59,7 @@ public class KeepAliveService extends Service {
             startForeground(NotificationCenter.ID_PERMANENT, createNotification());
         }
         catch (Exception e) {
-            e.printStackTrace();
+            Log.i(TAG, "Error in onCreate()", e);
         }
     }
 

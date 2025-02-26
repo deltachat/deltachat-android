@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,7 +24,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 
 import org.thoughtcrime.securesms.components.AvatarSelector;
@@ -74,7 +75,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     setContentView(R.layout.group_create_activity);
     verified = false;
     broadcast = getIntent().getBooleanExtra(CREATE_BROADCAST, false);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
     groupChatId = getIntent().getIntExtra(EDIT_GROUP_CHAT_ID, 0);
@@ -354,11 +355,14 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .centerCrop()
             .override(AVATAR_SIZE, AVATAR_SIZE)
-            .into(new SimpleTarget<Bitmap>() {
+            .into(new CustomTarget<Bitmap>() {
               @Override
               public void onResourceReady(@NonNull Bitmap resource, Transition<? super Bitmap> transition) {
                 setAvatar(output, resource);
               }
+
+              @Override
+              public void onLoadCleared(@Nullable Drawable placeholder) {}
             });
   }
 

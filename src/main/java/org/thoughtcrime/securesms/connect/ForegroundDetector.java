@@ -6,6 +6,8 @@ import android.app.Application;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import org.thoughtcrime.securesms.ApplicationContext;
 
 @SuppressLint("NewApi")
@@ -34,7 +36,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
     }
 
     @Override
-    public void onActivityStarted(Activity activity) {
+    public void onActivityStarted(@NonNull Activity activity) {
         if (refs == 0) {
             Log.i("DeltaChat", "++++++++++++++++++ first ForegroundDetector.onActivityStarted() ++++++++++++++++++");
             DcHelper.getAccounts(application).startIo();
@@ -52,7 +54,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
 
     @Override
-    public void onActivityStopped(Activity activity) {
+    public void onActivityStopped(@NonNull Activity activity) {
         if( refs <= 0 ) {
             Log.w("DeltaChat", "invalid call to ForegroundDetector.onActivityStopped()");
             return;
@@ -66,23 +68,23 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
     }
 
     @Override
-    public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+    public void onActivityCreated(@NonNull Activity activity, Bundle savedInstanceState) {
     }
 
     @Override
-    public void onActivityResumed(Activity activity) {
+    public void onActivityResumed(@NonNull Activity activity) {
     }
 
     @Override
-    public void onActivityPaused(Activity activity) {
+    public void onActivityPaused(@NonNull Activity activity) {
         // pause/resume will also be called when the app is partially covered by a dialog
     }
 
     @Override
-    public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+    public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle outState) {
     }
 
     @Override
-    public void onActivityDestroyed(Activity activity) {
+    public void onActivityDestroyed(@NonNull Activity activity) {
     }
 }
