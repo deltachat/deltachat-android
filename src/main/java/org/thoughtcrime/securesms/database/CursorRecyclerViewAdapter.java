@@ -115,7 +115,7 @@ public abstract class CursorRecyclerViewAdapter<VH extends RecyclerView.ViewHold
 
   @SuppressWarnings("unchecked")
   @Override
-  public final void onViewRecycled(ViewHolder holder) {
+  public final void onViewRecycled(@NonNull ViewHolder holder) {
     if (!(holder instanceof HeaderFooterViewHolder)) {
       onItemViewRecycled((VH)holder);
     }
@@ -123,8 +123,9 @@ public abstract class CursorRecyclerViewAdapter<VH extends RecyclerView.ViewHold
 
   public void onItemViewRecycled(VH holder) {}
 
+  @NonNull
   @Override
-  public final ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  public final ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     switch (viewType) {
     case HEADER_TYPE: return new HeaderFooterViewHolder(header);
     case FOOTER_TYPE: return new HeaderFooterViewHolder(footer);
@@ -136,7 +137,7 @@ public abstract class CursorRecyclerViewAdapter<VH extends RecyclerView.ViewHold
 
   @SuppressWarnings("unchecked")
   @Override
-  public final void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+  public final void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
     if (!isHeaderPosition(position) && !isFooterPosition(position)) {
       if (isFastAccessPosition(position)) onBindFastAccessItemViewHolder((VH)viewHolder, position);
       else                                onBindItemViewHolder((VH)viewHolder, getCursorAtPositionOrThrow(position));

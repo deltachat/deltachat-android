@@ -134,11 +134,7 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
                     .get();
             FileOutputStream outStream = new FileOutputStream(destinationPath);
             scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 85, outStream);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            Prefs.setBackgroundImagePath(context, accountId, "");
-            showBackgroundSaveError();
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
             Prefs.setBackgroundImagePath(context, accountId, "");
             showBackgroundSaveError();

@@ -4,6 +4,7 @@ package org.thoughtcrime.securesms.preferences;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -26,7 +27,7 @@ public abstract class CorrectedPreferenceFragment extends PreferenceFragmentComp
   }
 
   @Override
-  public void onDisplayPreferenceDialog(Preference preference) {
+  public void onDisplayPreferenceDialog(@NonNull Preference preference) {
     DialogFragment dialogFragment = null;
 
     if (preference instanceof CustomDefaultPreference) {

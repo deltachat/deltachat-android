@@ -66,18 +66,18 @@ class PermissionsRequest {
       }
     }
 
-    if (allGrantedListener != null && granted.size() > 0 && (denied.size() == 0 && permanentlyDenied.size() == 0)) {
+    if (allGrantedListener != null && !granted.isEmpty() && (denied.isEmpty() && permanentlyDenied.isEmpty())) {
       allGrantedListener.run();
-    } else if (someGrantedListener != null && granted.size() > 0) {
+    } else if (someGrantedListener != null && !granted.isEmpty()) {
       someGrantedListener.accept(granted);
     }
 
-    if (denied.size() > 0) {
+    if (!denied.isEmpty()) {
       if (anyDeniedListener != null)  anyDeniedListener.run();
       if (someDeniedListener != null) someDeniedListener.accept(denied);
     }
 
-    if (permanentlyDenied.size() > 0) {
+    if (!permanentlyDenied.isEmpty()) {
       if (anyPermanentlyDeniedListener != null)  anyPermanentlyDeniedListener.run();
       if (somePermanentlyDeniedListener != null) somePermanentlyDeniedListener.accept(permanentlyDenied);
     }

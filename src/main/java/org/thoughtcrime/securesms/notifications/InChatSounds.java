@@ -1,7 +1,7 @@
 package org.thoughtcrime.securesms.notifications;
 
 import android.content.Context;
-import android.media.AudioManager;
+import android.media.AudioAttributes;
 import android.media.SoundPool;
 import android.util.Log;
 
@@ -28,7 +28,11 @@ public class InChatSounds {
 
     private InChatSounds(Context context) {
         try {
-            soundPool = new SoundPool(3, AudioManager.STREAM_SYSTEM, 0);
+            AudioAttributes audioAttrs = new AudioAttributes.Builder()
+              .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+              .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+              .build();
+            soundPool = new SoundPool.Builder().setMaxStreams(3).setAudioAttributes(audioAttrs).build();
             soundIn = soundPool.load(context, R.raw.sound_in, 1);
             soundOut = soundPool.load(context, R.raw.sound_out, 1);
         } catch(Exception e) {
