@@ -358,10 +358,7 @@
     </plurals>
     <string name="ask_delete_named_chat">删除聊天“%1$s”？它将不再显示在聊天列表中，其消息将保留在服务器上。</string>
     <string name="ask_delete_message">您确定要删除这条消息吗？</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="other">在此处和服务器上删除 %d 条消息？</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">删除 %d 条消息吗？</item>
     </plurals>

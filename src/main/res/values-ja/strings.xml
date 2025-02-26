@@ -256,10 +256,6 @@
     </plurals>
     <string name="ask_delete_named_chat">%1$sを削除してよろしいですか？</string>
     <string name="ask_delete_message">メッセージを削除してもよろしいですか？</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="other">こことサーバー上の%dつのメッセージを削除しますか？</item>
-    </plurals>
     <string name="ask_forward">%1$sにメッセージを転送しますか？</string>
     <string name="ask_forward_multiple">%1$dチャットにメッセージを転送しますか？</string>
     <string name="ask_export_attachment">添付ファイルをエクスポートしますか？添付ファイルをエクスポートすると、他のアプリからもアクセスできるようになります。\n\nよろしいですか？</string>

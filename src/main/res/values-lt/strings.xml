@@ -315,13 +315,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Ar tikrai norite ištrinti „%1$s“?</string>
     <string name="ask_delete_message">Ar tikrai norite ištrinti šią žinutę?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Ištrinti %d žinutę čia ir serveryje?</item>
-        <item quantity="few">Ištrinti %d žinutes čia ir serveryje?</item>
-        <item quantity="many">Ištrinti %d žinučių čia ir serveryje?</item>
-        <item quantity="other">Ištrinti %d žinutę čia ir serveryje?</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ištrinti %d žinutę?</item>
         <item quantity="few">Ištrinti %d žinutes?</item>

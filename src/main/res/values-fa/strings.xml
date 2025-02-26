@@ -359,11 +359,7 @@ https://meet.jit.si/$ROOM
     </plurals>
     <string name="ask_delete_named_chat">اطمینان دارید می‌خواهید «%1$s» را پاک کنید؟</string>
     <string name="ask_delete_message">مطمئن هستید می‌خواهید این پیام را پاک کنید؟</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="one">پاک کردن %d گپ از اینجا و سرور؟</item>
-        <item quantity="other">پاک کردن %d گپ از این‌جا و از روی کارساز؟</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">می‌خواهید %dپیام پاک شود؟</item>
         <item quantity="other">می‌خواهید %d پیام پاک شود؟</item>

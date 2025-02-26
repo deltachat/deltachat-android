@@ -273,10 +273,7 @@
     </plurals>
     <string name="ask_delete_named_chat">តើអ្នកប្រាកដហើយថាចង់លុប \"%1$s\"?</string>
     <string name="ask_delete_message">តើអ្នកប្រាកដថា ចង់លុបសារនេះ?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="other">លុបសារទាំង %d នេះ នៅទីនេះ និងនៅលើម៉ាសុីននេ</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">លុបសារ %d</item>
     </plurals>

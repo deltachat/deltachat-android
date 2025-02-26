@@ -365,11 +365,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Jeni i sigurt se doni të fshihet “%1$s”?</string>
     <string name="ask_delete_message">Jeni i sigurt se doni të fshihet ky mesazh?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Të fshihet %d mesazh këtu dhe te shërbyesi?</item>
-        <item quantity="other">Të fshihen %d mesazhe këtu dhe te shërbyesi?</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Të fshihet %d mesazh?</item>
         <item quantity="other">Të fshihen %d mesazhe?</item>

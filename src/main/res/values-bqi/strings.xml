@@ -242,6 +242,7 @@
 
     <string name="videochat">گوفت ۉ لوفت ویدیویی</string>
     <string name="videochat_invitation">موکش و گوفت ۉ لوفت ویدیویی</string>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">êxuy %d payom pāk bu?</item>
         <item quantity="other">اخۊی %d پیوم پاک بۊ؟</item>

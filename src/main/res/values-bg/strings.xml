@@ -334,11 +334,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Сигурни ли сте, че искате да изтриете %1$s?</string>
     <string name="ask_delete_message">Сигурни ли сте, че искате да изтриете това съобщение?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Да бъде ли изтрито%dсъобщение тук и на сървъра?</item>
-        <item quantity="other">Да бъдат ли изтрити %d съобщения тук и на сървъра?</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Да бъде ли изтрито %d съобщение?</item>
         <item quantity="other">Да бъдат ли изтрити %d съобщения?</item>
