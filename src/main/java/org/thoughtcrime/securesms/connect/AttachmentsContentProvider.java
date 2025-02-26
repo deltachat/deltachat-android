@@ -7,12 +7,15 @@ import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.webkit.MimeTypeMap;
 
+import androidx.annotation.NonNull;
+
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.util.MediaUtil;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Objects;
 
 public class AttachmentsContentProvider extends ContentProvider {
 
@@ -29,8 +32,8 @@ public class AttachmentsContentProvider extends ContentProvider {
     if the user or another app deletes these files) */
 
     @Override
-    public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
-        DcContext dcContext = DcHelper.getContext(getContext());
+    public ParcelFileDescriptor openFile(Uri uri, @NonNull String mode) throws FileNotFoundException {
+        DcContext dcContext = DcHelper.getContext(Objects.requireNonNull(getContext()));
 
         // `uri` originally comes from DcHelper.openForViewOrShare() and
         // looks like `content://chat.delta.attachments/ef39a39/text.txt`
@@ -47,7 +50,7 @@ public class AttachmentsContentProvider extends ContentProvider {
     }
 
     @Override
-    public int delete(Uri arg0, String arg1, String[] arg2) {
+    public int delete(@NonNull Uri arg0, String arg1, String[] arg2) {
         return 0;
     }
 
@@ -66,7 +69,7 @@ public class AttachmentsContentProvider extends ContentProvider {
     }
 
     @Override
-    public Uri insert(Uri arg0, ContentValues arg1) {
+    public Uri insert(@NonNull Uri arg0, ContentValues arg1) {
         return null;
     }
 
@@ -76,13 +79,13 @@ public class AttachmentsContentProvider extends ContentProvider {
     }
 
     @Override
-    public Cursor query(Uri arg0, String[] arg1, String arg2, String[] arg3,
+    public Cursor query(@NonNull Uri arg0, String[] arg1, String arg2, String[] arg3,
                         String arg4) {
         return null;
     }
 
     @Override
-    public int update(Uri arg0, ContentValues arg1, String arg2, String[] arg3) {
+    public int update(@NonNull Uri arg0, ContentValues arg1, String arg2, String[] arg3) {
         return 0;
     }
 }

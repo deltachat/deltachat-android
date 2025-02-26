@@ -337,7 +337,7 @@ public class AudioSlidePlayer {
     }
 
     @Override
-    public void handleMessage(Message msg) {
+    public void handleMessage(@NonNull Message msg) {
       AudioSlidePlayer player = playerReference.get();
 
       if (player == null || player.mediaPlayer == null || !isPlayerActive(player.mediaPlayer)) {

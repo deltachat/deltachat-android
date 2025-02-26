@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class DcEventCenter {
+    private static final String TAG = DcEventCenter.class.getSimpleName();
     private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> currentAccountObservers = new Hashtable<>();
     private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> multiAccountObservers = new Hashtable<>();
     private final Object LOCK = new Object();
@@ -104,7 +105,7 @@ public class DcEventCenter {
                                 observer.handleEvent(event);
                             }
                             catch(Exception e) {
-                                e.printStackTrace();
+                                Log.e(TAG, "Error calling observer.handleEvent()", e);
                             }
                         });
                     } else {
@@ -113,7 +114,7 @@ public class DcEventCenter {
                                 observer.handleEvent(event);
                             }
                             catch (Exception e) {
-                                e.printStackTrace();
+                                Log.e(TAG, "Error calling observer.handleEvent()", e);
                             }
                         });
                     }
@@ -216,9 +217,6 @@ public class DcEventCenter {
 
     switch (id) {
       case DcContext.DC_EVENT_ERROR:
-        handleError(id, event.getData2Str());
-        break;
-
       case DcContext.DC_EVENT_ERROR_SELF_NOT_IN_GROUP:
         handleError(id, event.getData2Str());
         break;

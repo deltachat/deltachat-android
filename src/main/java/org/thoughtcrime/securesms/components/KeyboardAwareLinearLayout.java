@@ -19,7 +19,6 @@ package org.thoughtcrime.securesms.components;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.DisplayMetrics;
@@ -27,8 +26,8 @@ import android.view.Surface;
 import android.view.View;
 import android.view.WindowInsets;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.preference.PreferenceManager;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.ServiceUtil;
@@ -58,7 +57,6 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
   private final int defaultCustomKeyboardSize;
   private final int minCustomKeyboardTopMarginPortrait;
   private final int minCustomKeyboardTopMarginLandscape;
-  private final int minCustomKeyboardTopMarginLandscapeBubble;
   private final int statusBarHeight;
 
   private int viewInset;
@@ -82,7 +80,6 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
     defaultCustomKeyboardSize                 = getResources().getDimensionPixelSize(R.dimen.default_custom_keyboard_size);
     minCustomKeyboardTopMarginPortrait        = getResources().getDimensionPixelSize(R.dimen.min_custom_keyboard_top_margin_portrait);
     minCustomKeyboardTopMarginLandscape       = getResources().getDimensionPixelSize(R.dimen.min_custom_keyboard_top_margin_portrait);
-    minCustomKeyboardTopMarginLandscapeBubble = getResources().getDimensionPixelSize(R.dimen.min_custom_keyboard_top_margin_landscape_bubble);
     statusBarHeight                           = ViewUtil.getStatusBarHeight(this);
     viewInset                                 = getViewInset();
   }

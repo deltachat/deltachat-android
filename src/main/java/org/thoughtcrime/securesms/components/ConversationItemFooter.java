@@ -51,10 +51,10 @@ public class ConversationItemFooter extends LinearLayout {
     deliveryStatusView    = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
 
     if (attrs != null) {
-      TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemFooter, 0, 0);
-      textColor = typedArray.getInt(R.styleable.ConversationItemFooter_footer_text_color, getResources().getColor(R.color.core_white));
-      setTextColor(textColor);
-      typedArray.recycle();
+      try (TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemFooter, 0, 0)) {
+        textColor = typedArray.getInt(R.styleable.ConversationItemFooter_footer_text_color, getResources().getColor(R.color.core_white));
+        setTextColor(textColor);
+      }
     }
   }
 

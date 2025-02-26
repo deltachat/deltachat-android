@@ -46,7 +46,7 @@ public class AudioRecorder {
           throw new AssertionError("We can only record once at a time.");
         }
 
-        ParcelFileDescriptor fds[] = ParcelFileDescriptor.createPipe();
+        ParcelFileDescriptor[] fds = ParcelFileDescriptor.createPipe();
 
         captureUri  = blobProvider.create(context, new ParcelFileDescriptor.AutoCloseInputStream(fds[0]),
                                           MediaUtil.AUDIO_AAC, "voice.aac", null);
