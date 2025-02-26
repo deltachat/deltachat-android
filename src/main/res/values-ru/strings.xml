@@ -384,20 +384,14 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Вы уверены, что хотите покинуть эту группу?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Удалить %d чат? Он больше не будет виден в списке чатов, его сообщения останутся на сервере.</item>
-        <item quantity="few">Удалить %d чата? Они больше не будут видны в списке чатов, их сообщения останутся на сервере.</item>
-        <item quantity="many">Удалить %d чатов? Они больше не будут видны в списке чатов, их сообщения останутся на сервере.</item>
-        <item quantity="other">Удалить %d чатов? Они больше не будут видны в списке чатов, их сообщения останутся на сервере.</item>
+        <item quantity="one">Удалить %d чат?</item>
+        <item quantity="few">Удалить %d чата?</item>
+        <item quantity="many">Удалить %d чатов?</item>
+        <item quantity="other">Удалить %d чатов?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Удалить чат \"%1$s\"?? Он больше не будет виден в списке чатов, его сообщения останутся на сервере.</string>
+    <string name="ask_delete_named_chat">Удалить чат \"%1$s\"?</string>
     <string name="ask_delete_message">Вы уверены, что хотите удалить это сообщение?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Удалить %d сообщение локально и на сервере?</item>
-        <item quantity="few">Удалить %d сообщения локально и на сервере?</item>
-        <item quantity="many">Удалить %d сообщений локально и на сервере?</item>
-        <item quantity="other">Удалить %d сообщений локально и на сервере?</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Удалить %d сообщение?</item>
         <item quantity="few">Удалить %d сообщения?</item>

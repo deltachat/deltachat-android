@@ -41,6 +41,8 @@
     <string name="later">Później</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Wyślij ponownie</string>
+    <string name="edited">Edytowana</string>
+    <string name="edit_message">Edytuj wiadomość</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archiwizuj</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -389,13 +391,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Usunąć czat „%1$s”? Nie będzie on już wyświetlany na liście czatów. Jego wiadomości pozostaną na serwerze.</string>
     <string name="ask_delete_message">Czy na pewno chcesz usunąć tę wiadomość?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Usunąć %d wiadomość tutaj i na serwerze?</item>
-        <item quantity="few">Usunąć %d wiadomości tutaj i na serwerze?</item>
-        <item quantity="many">Usunąć %d wiadomości tutaj i na serwerze?</item>
-        <item quantity="other">Usunąć %d wiadomości tutaj i na serwerze?</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Usunąć %d wiadomość?</item>
         <item quantity="few">Usunąć %d wiadomości?</item>

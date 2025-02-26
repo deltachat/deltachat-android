@@ -325,12 +325,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Јесте ли сигурни да желите да избришете „%1$s“?</string>
     <string name="ask_delete_message">Да ли желите да избришете ову поруку?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Обриши %d поруку овде и са сервера.</item>
-        <item quantity="few">Обриши %d поруке овде и са сервера.</item>
-        <item quantity="other">Обриши %d порука овде и са сервера.</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Да ли желите да избришите %d поруку?</item>
         <item quantity="few">Да ли желите да избришите %d поруке?</item>

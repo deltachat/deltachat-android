@@ -376,16 +376,11 @@
     <plurals name="ask_delete_chat">
         <item quantity="one">Eliminare %d chat? Essa non verrà più mostrata nella lista delle chat; i suoi messaggi rimarranno sul server.</item>
         <item quantity="many">Eliminare %d chats? Esse non verranno più mostrate nella lista delle chat; i loro messaggi rimarranno sul server.</item>
-        <item quantity="other">Eliminare %d chats? Esse non verranno più mostrate nella lista delle chat; i loro messaggi rimarranno sul server.</item>
+        <item quantity="other">Eliminare %d chats?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Elimina chat \"%1$s\"? Essa non verrà più mostrata nell\'elenco delle chat; i suoi messaggi rimarranno sul server.</string>
+    <string name="ask_delete_named_chat">Elimina chat \"%1$s\"?</string>
     <string name="ask_delete_message">Sei sicuro di voler eliminare questo messaggio?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Eliminare %d messaggio qui e sul sever?</item>
-        <item quantity="many">Eliminare %d messaggi qui e sul sever?</item>
-        <item quantity="other">Eliminare %d messaggi qui e sul sever?</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Eliminare %d messaggio?</item>
         <item quantity="many">Eliminare %d messaggi?</item>
@@ -790,7 +785,7 @@
     <string name="pref_imap_folder_handling">Gestione Cartella IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se modifichi questa opzione, assicurati che il tuo server e gli altri client siano configurati di conseguenza.\n\nAltrimenti le cose potrebbero non funzionare affatto.</string>
     <string name="pref_watch_sent_folder">Controlla Cartella Inviata</string>
-    <string name="pref_send_copy_to_self">Invia Copia a Me</string>
+    <string name="pref_send_copy_to_self">Invia Copia a Te Stesso</string>
     <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Richiesto quando si utilizza questo profilo su più dispositivi.</string>
     <string name="pref_auto_folder_moves">Sposta nella Cartella DeltaChat</string>

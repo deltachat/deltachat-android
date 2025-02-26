@@ -321,10 +321,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Bạn có chắc chắn muốn xóa \"%1$s\" không?</string>
     <string name="ask_delete_message">Bạn có chắc chắn muốn xóa tin nhắn này?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="other">Xóa %d tin nhắn ở đây và trên máy chủ?</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">Xóa %d tin nhắn?</item>
     </plurals>

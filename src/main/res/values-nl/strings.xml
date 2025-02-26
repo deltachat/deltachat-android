@@ -28,6 +28,8 @@
     <string name="join">Deelnemen</string>
     <string name="rejoin">Opnieuw deelnemen</string>
     <string name="delete">Verwijderen</string>
+    <string name="delete_for_me">Verwijderen voor mij</string>
+    <string name="delete_for_everyone">Verwijderen voor iedereen</string>
     <string name="info">Informatie</string>
     <string name="update">Bijwerken</string>
     <string name="emoji">Emoji</string>
@@ -364,16 +366,16 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Weet je zeker dat je deze groep wilt verlaten?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Wil je %d gesprek verwijderen? Het gesprek wordt niet langer getoond in de gesprekslijst, maar de berichten blijven bewaard op de server.</item>
-        <item quantity="other">Wil je %d gesprekken verwijderen? Ze worden niet langer getoond in de gesprekslijst, maar de berichten blijven bewaard op de server.</item>
+        <item quantity="one">Wil je %d gesprek verwijderen?</item>
+        <item quantity="other">Wil je %d gesprekken verwijderen?</item>
     </plurals>
     <string name="ask_delete_named_chat">Weet je zeker dat je ‘%1$s’ wilt verwijderen?</string>
     <string name="ask_delete_message">Weet je zeker dat je dit bericht wilt verwijderen?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
-        <item quantity="one">Wil je %d bericht verwijderen, zowel hier als op de server?</item>
-        <item quantity="other">Wil je %d berichten verwijderen, zowel hier als op de server?</item>
+        <item quantity="one">Wil je %d bericht verwijderen van al je apparaten?</item>
+        <item quantity="other">Wil je alle %d berichten verwijderen van al je apparaten?</item>
     </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Wil je %d bericht verwijderen?</item>
         <item quantity="other">Wil je %d berichten verwijderen?</item>
