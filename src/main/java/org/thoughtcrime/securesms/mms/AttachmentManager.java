@@ -273,7 +273,7 @@ public class AttachmentManager {
         if (slide == null) {
           setAttachmentPresent(false);
           result.set(false);
-        } else if (slide.getFileSize()>1*1024*1024*1024) {
+        } else if (slide.getFileSize() > 1024 * 1024 * 1024) {
           // this is only a rough check, videos and images may be recoded
           // and the core checks more carefully later.
           setAttachmentPresent(false);
@@ -333,28 +333,24 @@ public class AttachmentManager {
       }
 
       private @Nullable Slide getContentResolverSlideInfo(Uri uri, int width, int height, int chatId) {
-        Cursor cursor = null;
-        long   start  = System.currentTimeMillis();
 
-        try {
-          cursor = context.getContentResolver().query(uri, null, null, null, null);
+        long   start  = System.currentTimeMillis();
+        try (Cursor cursor = context.getContentResolver().query(uri, null, null, null, null)) {
 
           if (cursor != null && cursor.moveToFirst()) {
             String fileName = cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME));
-            long   fileSize = cursor.getLong(cursor.getColumnIndexOrThrow(OpenableColumns.SIZE));
+            long fileSize = cursor.getLong(cursor.getColumnIndexOrThrow(OpenableColumns.SIZE));
             String mimeType = context.getContentResolver().getType(uri);
 
             if (width == 0 || height == 0) {
               Pair<Integer, Integer> dimens = MediaUtil.getDimensions(context, mimeType, uri);
-              width  = dimens.first;
+              width = dimens.first;
               height = dimens.second;
             }
 
             Log.w(TAG, "remote slide with size " + fileSize + " took " + (System.currentTimeMillis() - start) + "ms");
             return mediaType.createSlide(context, uri, fileName, mimeType, fileSize, width, height, chatId);
           }
-        } finally {
-          if (cursor != null) cursor.close();
         }
 
         return null;
@@ -395,7 +391,7 @@ public class AttachmentManager {
           try {
             fileName = new File(uri.getPath()).getName();
           } catch(Exception e) {
-            Log.w(TAG, "Could not get file name from uri: " + e.toString());
+            Log.w(TAG, "Could not get file name from uri: " + e);
           }
         }
 
@@ -431,14 +427,11 @@ public class AttachmentManager {
 
   public static @Nullable String getFileName(Context context, Uri uri) {
     String result = null;
-    if (uri.getScheme().equals("content")) {
-      Cursor cursor = context.getContentResolver().query(uri, new String[]{OpenableColumns.DISPLAY_NAME}, null, null, null);
-      try {
+    if ("content".equals(uri.getScheme())) {
+      try (Cursor cursor = context.getContentResolver().query(uri, new String[]{OpenableColumns.DISPLAY_NAME}, null, null, null)) {
         if (cursor != null && cursor.moveToFirst()) {
           result = cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME));
         }
-      } finally {
-        if (cursor != null) cursor.close();
       }
     }
     if (result == null) {
@@ -495,11 +488,10 @@ public class AttachmentManager {
             .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_location_denied))
             .onAllGranted(() -> {
               ShareLocationDialog.show(activity, durationInSeconds -> {
-                switch (durationInSeconds) {
-                  case 1: dcLocationManager.shareLastLocation(chatId); break;
-                  default:
-                    dcLocationManager.shareLocation(durationInSeconds, chatId);
-                    break;
+                if (durationInSeconds == 1) {
+                  dcLocationManager.shareLastLocation(chatId);
+                } else {
+                  dcLocationManager.shareLocation(durationInSeconds, chatId);
                 }
               });
             });
@@ -704,7 +696,7 @@ public class AttachmentManager {
               return slide;
             }
           } catch (RpcException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error in call to rpc.parseVcard()", e);
           }
         }
 
