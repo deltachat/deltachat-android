@@ -15,6 +15,7 @@ import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
@@ -73,38 +74,46 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     initializeRingtoneSummary(findPreference(Prefs.RINGTONE_PREF));
 
     ignoreBattery = this.findPreference("pref_ignore_battery_optimizations");
-    ignoreBattery.setVisible(needsIgnoreBatteryOptimizations());
-    ignoreBattery.setOnPreferenceChangeListener((preference, newValue) -> {
-      requestToggleIgnoreBatteryOptimizations();
-      return true;
-    });
+    if (ignoreBattery != null) {
+      ignoreBattery.setVisible(needsIgnoreBatteryOptimizations());
+      ignoreBattery.setOnPreferenceChangeListener((preference, newValue) -> {
+        requestToggleIgnoreBatteryOptimizations();
+        return true;
+      });
+    }
 
 
     CheckBoxPreference reliableService =  this.findPreference("pref_reliable_service");
-    reliableService.setOnPreferenceChangeListener((preference, newValue) -> {
-      Context context = getContext();
-      boolean enabled = (Boolean) newValue; // Prefs.reliableService() still has the old value
-      if (enabled) {
-          KeepAliveService.startSelf(context);
-      } else {
-        context.stopService(new Intent(context, KeepAliveService.class));
-      }
-      return true;
-    });
+    if (reliableService != null) {
+      reliableService.setOnPreferenceChangeListener((preference, newValue) -> {
+        Context context = getContext();
+        boolean enabled = (Boolean) newValue; // Prefs.reliableService() still has the old value
+        if (enabled) {
+            KeepAliveService.startSelf(context);
+        } else {
+          context.stopService(new Intent(context, KeepAliveService.class));
+        }
+        return true;
+      });
+    }
 
     notificationsEnabled = this.findPreference("pref_enable_notifications");
-    notificationsEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
-      boolean enabled = (Boolean) newValue;
-      dcContext.setMuted(!enabled);
-      return true;
-    });
+    if (notificationsEnabled != null) {
+      notificationsEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
+        boolean enabled = (Boolean) newValue;
+        dcContext.setMuted(!enabled);
+        return true;
+      });
+    }
 
     mentionNotifEnabled = this.findPreference("pref_enable_mention_notifications");
-    mentionNotifEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
-      boolean enabled = (Boolean) newValue;
-      dcContext.setMentionsEnabled(enabled);
-      return true;
-    });
+    if (mentionNotifEnabled != null) {
+      mentionNotifEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
+        boolean enabled = (Boolean) newValue;
+        dcContext.setMentionsEnabled(enabled);
+        return true;
+      });
+    }
   }
 
   @Override
@@ -141,7 +150,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
   private class RingtoneSummaryListener implements Preference.OnPreferenceChangeListener {
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
+    public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
       Uri value = (Uri) newValue;
 
       if (value == null || TextUtils.isEmpty(value.toString())) {
