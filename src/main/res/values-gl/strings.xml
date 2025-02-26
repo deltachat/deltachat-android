@@ -310,11 +310,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Tes a certeza de querer eliminar \"%1$s\"?</string>
     <string name="ask_delete_message">Tes a certeza de querer eliminar esta mensaxe?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Eliminar %d mensaxe aquí e no servidor?</item>
-        <item quantity="other">Eliminar %d mensaxes aquí e no servidor?</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Borrar %d mensaxe?</item>
         <item quantity="other">Borrar %d mensaxes?</item>

@@ -334,11 +334,7 @@
     </plurals>
     <string name="ask_delete_named_chat">Haluatko varmasti poistaa \"%1$s\"?</string>
     <string name="ask_delete_message">Haluatko varmasti poistaa tämän viestin?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Poista %d viesti täältä ja palvelimelta?</item>
-        <item quantity="other">Poista %d viestiä täältä ja palvelimelta?</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Poista %d viesti?</item>
         <item quantity="other">Poista %d viestiä?</item>

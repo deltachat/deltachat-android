@@ -342,10 +342,7 @@
     </plurals>
     <string name="ask_delete_named_chat">你確定你要刪除「%1$s」？</string>
     <string name="ask_delete_message">你確定要刪除這則訊息？</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="other">刪除本地及伺服器上的%d個訊息？</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">刪除%d則訊息？</item>
     </plurals>

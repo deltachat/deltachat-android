@@ -290,10 +290,7 @@
         <item quantity="other">Hapus %d obrolan? Obrolan ini akan menghilang dari daftar tetapi pesan-pesannya akan tetap tersimpan di server.</item>
     </plurals>
     <string name="ask_delete_named_chat">Apakah anda yakin ingin menghapus \"%1$s\"?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="other">Hapus %d pesan disini dan di server?</item>
-    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">Menghapus pesan %d?</item>
     </plurals>

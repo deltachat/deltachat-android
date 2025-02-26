@@ -223,11 +223,6 @@
         <item quantity="other">Cheres iscantzellare %d tzarradas? No ant a èssere prus ammustradas in sa lista de sas tzarradas, ma sos messàgios ant a abarrare in su servidore.</item>
     </plurals>
     <string name="ask_delete_named_chat">Ses seguru de chèrrere iscantzellare \"%1$s\"?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Iscantzellare %d messàgiu inoghe e in su servidore?</item>
-        <item quantity="other">Iscantzellare %d messàgios inoghe e in su servidore?</item>
-    </plurals>
     <string name="ask_forward">Inoltrare su messàgiu a %1$s?</string>
     <string name="ask_forward_multiple">Inoltrare messàgios a %1$d tzarradas?</string>
     <string name="ask_export_attachment">Esportare sos allegados? S\'esportatzione de sos allegados at a permìtere a cale si siat àtera aplicatzione in su dispositivu tuo de b\'atzèdere.\n\nSighire?</string>

@@ -28,6 +28,8 @@
     <string name="join">Katıl</string>
     <string name="rejoin">Yeniden Katıl</string>
     <string name="delete">Sil</string>
+    <string name="delete_for_me">Benim için Sil</string>
+    <string name="delete_for_everyone">Herkes için Sil</string>
     <string name="info">Bilgi</string>
     <string name="update">Güncelleştir</string>
     <string name="emoji">Emoji</string>
@@ -158,7 +160,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Çıkartma</string>
     <string name="add_to_sticker_collection">Çıkartma Toplamasına Ekle</string>
-    <string name="add_stickers_instructions">Çıkartmalar eklemek için \"Çıkartma Klasörünü Aç\"a dokunun, çıkartma paketiniz için bir alt klasör oluşturun ve görseli ve çıkartma dosyalarını oraya sürükleyin</string>
+    <string name="add_stickers_instructions">Çıkartmalar eklemek için “Çıkartma Klasörünü Aç”a dokunun, çıkartma paketiniz için bir alt klasör oluşturun ve görseli ve çıkartma dosyalarını oraya sürükleyin</string>
     <string name="open_sticker_folder">Çıkartma Klasörünü Aç</string>
     <string name="images">Görseller</string>
     <string name="audio">Ses</string>
@@ -262,7 +264,7 @@
     <string name="menu_copy_image_to_clipboard">Görseli Kopyala</string>
     <string name="menu_copy_email_to_clipboard">E-Postayı Kopyala</string>
     <string name="paste_from_clipboard">Panodan Yapıştır</string>
-    <string name="ask_copy_unopenable_link_to_clipboard">\"%1$d\" bağlantısı web tarayıcısında açılamıyor. Bunun yerine bağlantıyı panoya kopyalamak istiyor musunuz?</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">“%1$d” bağlantısı web tarayıcısında açılamıyor. Bunun yerine bağlantıyı panoya kopyalamak istiyor musunuz?</string>
     <string name="menu_forward">İletiyi İlet</string>
     <string name="menu_reply">İletiye Yanıt Ver</string>
     <string name="menu_mute">Bildirimleri Sessize Al</string>
@@ -291,9 +293,9 @@
     <string name="select_more">Daha fazlasını seç</string>
     <string name="menu_edit_name">Adı Düzenle</string>
     <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
-    <string name="edit_name_explain">\"%1$s\" yerine size gösterilecek bir takma ad ayarlayın. Kişinin seçilen adını kullanmak için boş bırakın.</string>
+    <string name="edit_name_explain">“%1$s” yerine size gösterilecek bir takma ad ayarlayın. Kişinin seçilen adını kullanmak için boş bırakın.</string>
     <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
-    <string name="edit_name_placeholder">\"%1$s\" için Takma Ad</string>
+    <string name="edit_name_placeholder">“%1$s” için Takma Ad</string>
     <string name="menu_settings">Ayarlar</string>
     <string name="menu_advanced">Gelişmiş</string>
     <string name="menu_view_profile">Profili Görüntüle</string>
@@ -310,7 +312,7 @@
     <string name="device_talk">Aygıt İletileri</string>
     <string name="device_talk_subtitle">Yerel olarak oluşturulan iletiler</string>
     <string name="device_talk_explain">Bu sohbetteki iletiler, uygulama güncelleştirmeleri ve kullanım sırasındaki sorunlar hakkında bilgilendirmek için aygıtınızda oluşturulur.</string>
-    <string name="device_talk_welcome_message2">İletişime geçin!\n\n🙌 Her iki aygıtın ana ekranındaki \"QR Kodu\"na dokunun. Bir aygıtta \"QR Kodunu Tara\"yı seçin ve onu diğerine doğrultun\n\n🌍 Aynı odada değilse, video araması aracılığıyla tarayın ya da \"QR Kodu\"ndan bir çağırma bağlantısı paylaşın\n\nDaha sonra: Şimdiye kadar varolan en büyük merkezi olmayan ağ üzerinden ulak deneyiminizin keyfini çıkarın: E-posta. Ve diğer yaygın uygulamaların tersine, merkezi denetim ya da izleme olmadan ya da sizi, arkadaşlarınızı, iş arkadaşlarınızı ya da ailenizi büyük kuruluşlara satmadan.</string>
+    <string name="device_talk_welcome_message2">İletişime geçin!\n\n🙌 Her iki aygıtın ana ekranındaki “QR Kodu”na dokunun. Bir aygıtta “QR Kodunu Tara”yı seçin ve onu diğerine doğrultun\n\n🌍 Aynı odada değilse, video araması aracılığıyla tarayın ya da “QR Kodu”ndan bir çağırma bağlantısı paylaşın\n\nDaha sonra: Şimdiye kadar varolan en büyük merkezi olmayan ağ üzerinden ulak deneyiminizin keyfini çıkarın: E-posta. Ve diğer yaygın uygulamaların tersine, merkezi denetim ya da izleme olmayan ya da sizi, arkadaşlarınızı, iş arkadaşlarınızı ya da ailenizi büyük kuruluşlara satmayan.</string>
     <string name="edit_contact">Kişiyi Düzenle</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Sohbeti Sabitle</string>
@@ -343,7 +345,7 @@
         <item quantity="one">Aşağıdaki dosya %s kişisine gönderilsin mi?</item>
         <item quantity="other">Aşağıdaki %d dosya %s kişisine gönderilsin mi?</item>
     </plurals>
-    <string name="file_saved_to">Dosya \"%1$s\" üzerine kaydedildi.</string>
+    <string name="file_saved_to">Dosya “%1$s” üzerine kaydedildi.</string>
 
     <string name="videochat">Video Sohbeti</string>
     <string name="videochat_invite_user_to_videochat">%1$s bir video sohbetine çağrılsın mı?</string>
@@ -357,23 +359,23 @@
     <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
     <string name="videochat_instance_example">Örnek: https://your-server.org/$ROOM</string>
     <string name="videochat_instance_explain_2">Etkinleştirilirse, her sohbetten video sohbeti başlatabilirsiniz. Her iki uçta da uyumlu bir uygulama ya da bir tarayıcı gerektirir.</string>
-    <string name="videochat_instance_from_qr">\"%1$s\" diğerlerini video sohbetlerine çağırmak için kullanılsın mı?\n\nBir kez ayarlandığında, her sohbetten video sohbeti başlatabilirsiniz. Bu, video sohbetleri için herhangi bir önceki ayarın yerini alır.</string>
+    <string name="videochat_instance_from_qr">“%1$s” diğerlerini video sohbetlerine çağırmak için kullanılsın mı?\n\nBir kez ayarlandığında, her sohbetten video sohbeti başlatabilirsiniz. Bu, video sohbetleri için herhangi bir önceki ayarın yerini alır.</string>
     <string name="videochat_invitation">Video sohbeti çağrısı</string>
     <string name="videochat_invitation_body">Bir video sohbetine çağrıldınız; katılmak için %1$s öğesini tıklayın.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu öbekten ayrılmak istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">%d sohbet silinsin mi? O artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
-        <item quantity="other">%d sohbet silinsin mi? Onlar artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
+        <item quantity="one">%d sohbet silinsin mi?</item>
+        <item quantity="other">%d sohbet silinsin mi?</item>
     </plurals>
-    <string name="ask_delete_named_chat">\"%1$s\" sohbeti silinsin mi? O artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</string>
+    <string name="ask_delete_named_chat">“%1$s” sohbeti silinsin mi?</string>
     <string name="ask_delete_message">Bu iletiyi silmek istediğinizden emin misiniz?</string>
-    <!-- deprecated, use ask_delete_messages_simple -->
     <plurals name="ask_delete_messages">
-        <item quantity="one">%d ileti buradan ve sunucudan silinsin mi?</item>
-        <item quantity="other">%d ileti buradan ve sunucudan silinsin mi?</item>
+        <item quantity="one">Tüm aygıtlarınızdaki %d ileti silinsin mi?</item>
+        <item quantity="other">Tüm aygıtlarınızdaki %d ileti silinsin mi?</item>
     </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">%d ileti silinsin mi?</item>
         <item quantity="other">%d ileti silinsin mi?</item>
@@ -425,8 +427,8 @@
     <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu öbeği görecek.</string>
     <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
     <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve basılı tutun, göndermek için bırakın</string>
-    <string name="chat_no_chats_yet_title">Sohbet yok.\nYeni bir sohbet başlatmak için \"+\" simgesine basın.</string>
-    <string name="chat_all_archived">Tüm sohbetler arşivlendi.\nYeni bir sohbet başlatmak için \"+\" simgesine basın.</string>
+    <string name="chat_no_chats_yet_title">Sohbet yok.\nYeni bir sohbet başlatmak için “+” simgesine basın.</string>
+    <string name="chat_all_archived">Tüm sohbetler arşivlendi.\nYeni bir sohbet başlatmak için “+” simgesine basın.</string>
     <string name="chat_share_with_title">Paylaş</string>
     <string name="chat_input_placeholder">İleti</string>
     <string name="chat_archived_label">Arşivlenen</string>
@@ -458,7 +460,7 @@
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Lütfen önce sohbet isteğini kabul edin.</string>
     <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
-    <string name="send_file_to">\"%1$s\" dosyasını gönder…</string>
+    <string name="send_file_to">“%1$s” dosyasını gönder…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">İletiyi gönder…</string>
     <string name="enable_realtime">Gerçek Zamanlı Uygulamalar</string>
@@ -489,7 +491,7 @@
     <string name="search_in_chat">Sohbette Ara</string>
     <string name="search_files">Dosyalar Ara</string>
     <string name="search_explain">Sohbetleri, kişileri ve iletileri ara</string>
-    <string name="search_no_result_for_x">\"%s\" için sonuç bulunamadı</string>
+    <string name="search_no_result_for_x">“%s” için sonuç bulunamadı</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Okunmayan</string>
 
@@ -602,13 +604,13 @@
     <string name="instant_onboarding_show_more_instances">Diğer Sunucuyu Kullan</string>
     <string name="instant_onboarding_other_server">Chatmail Sunucularını Listele</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
-    <string name="instant_onboarding_group_info">\"%1$s\" öbeğine katılmak için bir profil oluşturun.</string>
+    <string name="instant_onboarding_group_info">“%1$s” öbeğine katılmak için bir profil oluşturun.</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
     <string name="instant_onboarding_contact_info">%1$s ile sohbet etmek için bir profil oluşturun.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">Yeni bir profil oluşturmak ve %1$s ile sohbet başlatmak istiyor musunuz?</string>
     <!-- Question shown when group's QR code is scanned from onboarding screen -->
-    <string name="instant_onboarding_confirm_group">Yeni bir profil oluşturmak ve \"%1$s\" sohbet öbeğine katılmak istiyor musunuz?</string>
+    <string name="instant_onboarding_confirm_group">Yeni bir profil oluşturmak ve “%1$s” sohbet öbeğine katılmak istiyor musunuz?</string>
 
     <string name="welcome_chat_over_email">Güvenli Merkezi Olmayan Sohbet</string>
     <string name="scan_invitation_code">Çağrı Kodunu Tara</string>
@@ -640,8 +642,8 @@
     <string name="proxy_invalid">Geçersiz ya da desteklenmeyen proxy</string>
     <string name="proxy_list_header">Kaydedilen Proxy\'ler</string>
     <string name="proxy_delete">Proxy\'yi Sil</string>
-    <string name="proxy_delete_explain">\"%1$s\" proxy\'sini silmek istediğinizden emin misiniz?</string>
-    <string name="proxy_use_proxy_confirm">\"%1$s\" proxy\'sini kullanmak istiyor musunuz?</string>
+    <string name="proxy_delete_explain">“%1$s” proxy\'sini silmek istediğinizden emin misiniz?</string>
+    <string name="proxy_use_proxy_confirm">“%1$s” proxy\'sini kullanmak istiyor musunuz?</string>
     <string name="proxy_share_explain">Arkadaşlarınız, QR kodunu tarayarak bu proxy\'yi ekleyebilir.</string>
     <string name="proxy_share_link">Bağlantı Paylaş</string>
 
@@ -653,10 +655,10 @@
     <string name="login_error_port">Lütfen geçerli bir bağlantı noktası (1–65535) girin</string>
     <string name="login_error_required_fields">Lütfen geçerli bir e-posta adresi ve bir parola girin</string>
     <string name="import_backup_title">Yedekten Geri Yükle</string>
-    <string name="import_backup_ask">\"%1$s\" üzerinde yedek bulundu.\n\nİçe aktarmak ve ondan gelen tüm verileri ve ayarları kullanmak istiyor musunuz?</string>
-    <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği \"%1$s\" üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemiyle sürdürmek için \"İletileşmeye başla\"ya basın.</string>
+    <string name="import_backup_ask">“%1$s” üzerinde yedek bulundu.\n\nİçe aktarmak ve ondan gelen tüm verileri ve ayarları kullanmak istiyor musunuz?</string>
+    <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği “%1$s” üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemiyle sürdürmek için “İletileşmeye başla”ya basın.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
-    <string name="login_error_cannot_login">\"%1$s\" olarak giriş yapılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
+    <string name="login_error_cannot_login">“%1$s” olarak giriş yapılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Geçersiz sertifikaları kabul et</string>
     <string name="switch_account">Profili Değiştir</string>
@@ -668,7 +670,7 @@
     <string name="move_to_top">En Üste Taşı</string>
     <string name="delete_account">Profili Sil</string>
     <string name="delete_account_ask">Profil verilerinizi silmek istediğinizden emin misiniz?</string>
-    <string name="delete_account_explain_with_name">Uçtan uca şifreleme ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak \"%s\" profilinin bu aygıttaki verilerinin tümü silinecek. Bu eylem geri alınamaz.</string>
+    <string name="delete_account_explain_with_name">Uçtan uca şifreleme ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak “%s” profilinin bu aygıttaki verilerinin tümü silinecek. Bu eylem geri alınamaz.</string>
     <string name="unconfigured_account">Yapılandırılmayan profil</string>
     <string name="unconfigured_account_hint">Yapılandırmak için profili açın.</string>
     <string name="try_connect_now">Şimdi bağlanmayı dene</string>
@@ -680,10 +682,10 @@
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">İlet…</string>
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
-    <string name="ask_send_files_to_chat">%1$d dosya \"%2$s\" sohbetine gönderilsin mi?</string>
+    <string name="ask_send_files_to_chat">%1$d dosya “%2$s” sohbetine gönderilsin mi?</string>
     <string name="ask_send_files_to_selected_chats">%1$d dosya %2$d sohbete gönderilsin mi?</string>
     <string name="videos_sent_without_recoding">(Videolar özgün, büyük dosyalar olarak gönderilir. Videoları daha küçük dosyalar olarak göndermek için onları ayrı ayrı iliştirin)</string>
-    <string name="share_text_multiple_chats">Bu metin %1$d sohbete gönderilsin mi?\n\n\"%2$s\"</string>
+    <string name="share_text_multiple_chats">Bu metin %1$d sohbete gönderilsin mi?\n\n“%2$s”</string>
     <string name="share_abort">Eksik izinlerden dolayı paylaşımdan vazgeçildi.</string>
 
 
@@ -747,7 +749,7 @@
     <string name="pref_chats">Sohbetler</string>
     <string name="pref_in_chat_sounds">Sohbet İçi Sesler</string>
     <string name="pref_view_log">Günlüğü Görüntüle</string>
-    <string name="pref_saved_log">Günlüğü \"İndirilenler\" klasörüne kaydet</string>
+    <string name="pref_saved_log">Günlüğü “İndirilenler” klasörüne kaydet</string>
     <string name="pref_save_log_failed">Günlüğü kaydetme başarısız</string>
     <string name="pref_log_header">Günlük</string>
     <string name="pref_other">Diğer</string>
@@ -759,14 +761,14 @@
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Tüm %1$d profili dışa aktar</string>
     <string name="pref_backup_export_start_button">Yedeklemeyi Başlat</string>
-    <string name="pref_backup_written_to_x">Yedek \"%1$s\" üzerine başarıyla yazıldı.</string>
+    <string name="pref_backup_written_to_x">Yedek “%1$s” üzerine başarıyla yazıldı.</string>
     <string name="pref_managekeys_menu_title">Anahtarları Yönet</string>
     <string name="pref_managekeys_export_secret_keys">Sır Anahtarları Dışa Aktar</string>
-    <string name="pref_managekeys_export_explain">Sır anahtarlar \"%1$s\" üzerinde dışa aktarılsın mı?</string>
+    <string name="pref_managekeys_export_explain">Sır anahtarlar “%1$s” üzerinde dışa aktarılsın mı?</string>
     <string name="pref_managekeys_import_secret_keys">Sır Anahtarları İçe Aktar</string>
-    <string name="pref_managekeys_import_explain">Sır anahtarlar \"%1$s\" üzerinden içe aktarılsın mı?\n\n• Varolan sır anahtarlar silinmeyecek\n\n• Son içe aktarılan anahtar, dosya adında \"legacy\" sözcüğü olmadıkça yeni varsayılan anahtar olarak kullanılacak.</string>
-    <string name="pref_managekeys_secret_keys_exported_to_x">Sır anahtarlar \"%1$s\" üzerine başarıyla yazıldı.</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Sır anahtarlar \"%1$s\" üzerinden içe aktarıldı.</string>
+    <string name="pref_managekeys_import_explain">Sır anahtarlar “%1$s” üzerinden içe aktarılsın mı?\n\n• Varolan sır anahtarlar silinmeyecek\n\n• Son içe aktarılan anahtar, dosya adında “legacy” sözcüğü olmadıkça yeni varsayılan anahtar olarak kullanılacak.</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">Sır anahtarlar “%1$s” üzerine başarıyla yazıldı.</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">Sır anahtarlar “%1$s” üzerinden içe aktarıldı.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Duvar Kâğıdı</string>
     <string name="pref_background_btn_default">Varsayılan Görseli Kullan</string>
@@ -832,20 +834,20 @@
     <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
     <string name="react">Tepki Ver</string>
     <!-- %1$s will be replaced by an emoji. %2$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %2$s will often not being visible). Eg. 'You reacted 👍 to "Found my suitcase"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer and work as well. -->
-    <string name="reaction_by_you">\"%2$s\" öğesine %1$s ile tepki verdiniz</string>
+    <string name="reaction_by_you">“%2$s” öğesine %1$s tepkisi verdiniz</string>
     <!-- %1$s will be replaced a name. %2$s will be replaced by an emoji. %3$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %3$s will often not being visible). Eg. 'Alice reacted 👍 to "Nice photos"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer work as well. -->
-    <string name="reaction_by_other">%1$s, \"%3$s\" öğesine %2$s ile tepki verdi</string>
+    <string name="reaction_by_other">%1$s, “%3$s” öğesine %2$s tepkisi verdi</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Eski İletileri Sil</string>
     <string name="autodel_device_title">İletileri Aygıttan Sil</string>
     <string name="autodel_server_title">İletileri Sunucudan Sil</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_device_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri \"%2$s\" silmek istiyor musunuz?\n\n• Bu, tüm ortamları kapsar\n\n• İletiler görülse de görülmese de silinecek\n\n• \"Kaydedilen iletiler\" yerel silmeden atlanacak</string>
+    <string name="autodel_device_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri “%2$s” silmek istiyor musunuz?\n\n• Bu, tüm ortamları kapsar\n\n• İletiler görülse de görülmese de silinecek\n\n• “Kaydedilen İletiler” yerel silmeden atlanacak</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri \"%2$s\" silmek istiyor musunuz?\n\n⚠️ Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve \"Kaydedilen iletileri\" kapsar\n\n⚠️ Verileri sunucuda tutmak istiyorsanız bu işlevi kullanmayın\n\n⚠️ Delta Chat\'ten başka diğer e-posta istemcilerini kullanıyorsanız bu işlevi kullanmayın</string>
+    <string name="autodel_server_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri “%2$s” silmek istiyor musunuz?\n\n⚠️ Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve “Kaydedilen İletiler”i kapsar\n\n⚠️ Verileri sunucuda tutmak istiyorsanız bu işlevi kullanmayın\n\n⚠️ Delta Chat\'ten başka diğer e-posta istemcilerini kullanıyorsanız bu işlevi kullanmayın</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve \"Kaydedilen iletileri\" kapsar. Verileri sunucuda tutmak istiyorsanız ya da Delta Chat\'ten başka diğer e-posta istemcilerini kullanıyorsanız bu işlevi kullanmayın.</string>
+    <string name="autodel_server_enabled_hint">Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve “Kaydedilen İletiler”i kapsar. Verileri sunucuda tutmak istiyorsanız ya da Delta Chat\'ten başka diğer e-posta istemcilerini kullanıyorsanız bu işlevi kullanmayın.</string>
     <string name="autodel_server_warn_multi_device_title">Bir kerede silmeyi aç</string>
     <string name="autodel_server_warn_multi_device">Bir kerede silmeyi etkinleştirirseniz, bu profilde çoklu aygıtları kullanamazsınız.</string>
     <string name="autodel_confirm">Anladım, tüm bu iletileri sil</string>
@@ -878,14 +880,14 @@
 
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">Bu ileti şifresi çözülemiyor.\n\n• Bu iletiye basitçe yanıt vermek ve gönderenden iletiyi yeniden göndermesini istemek zaten yardımcı olabilir.\n\n• Delta Chat\'i yeni kurduysanız, Delta Chat\'i şimdi yeniden ayarlayıp \"İkinci aygıt olarak ekle\"yi seçmeniz ya da bir yedeği içe aktarmanız en iyisidir.</string>
+    <string name="systemmsg_cannot_decrypt">Bu ileti şifresi çözülemiyor.\n\n• Bu iletiye basitçe yanıt vermek ve gönderenden iletiyi yeniden göndermesini istemek zaten yardımcı olabilir.\n\n• Delta Chat\'i yeni kurduysanız, Delta Chat\'i şimdi yeniden ayarlayıp “İkinci Aygıt Olarak Ekle”yi seçmeniz ya da bir yedeği içe aktarmanız en iyisidir.</string>
     <string name="systemmsg_unknown_sender_for_chat">Bu sohbet için bilinmeyen gönderen. Daha fazla ayrıntı için \'bilgi\'ye bakın.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s kişisinden gelen ileti</string>
     <string name="systemmsg_failed_sending_to">%1$s kişisine ileti gönderme başarısız.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
-    <string name="group_name_changed_by_you">\"%1$s\" öbek adını \"%2$s\" olarak değiştirdiniz.</string>
+    <string name="group_name_changed_by_you">“%1$s” öbek adını “%2$s” olarak değiştirdiniz.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
-    <string name="group_name_changed_by_other">%3$s tarafından \"%1$s\" öbek adı \"%2$s\" olarak değiştirildi.</string>
+    <string name="group_name_changed_by_other">%3$s tarafından “%1$s” öbek adı “%2$s” olarak değiştirildi.</string>
     <string name="group_image_changed_by_you">Öbek görselini değiştirdiniz.</string>
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s tarafından öbek görseli değiştirildi.</string>
@@ -954,9 +956,9 @@
     <string name="invalid_unencrypted_explanation">Uçtan uca şifrelemeyi kurmak için kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
     <string name="learn_more">Daha Fazlasını Öğrenin</string>
 
-    <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
+    <string name="devicemsg_self_deleted">“Kaydedilen İletiler” sohbetini sildiniz.\n\nℹ️ “Kaydedilen İletiler” özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolaması dolmak üzere: %1$s%% zaten kullanımda.\n\nDepolama tam dolduğunda iletileri alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve \"Ayarlar / Sohbetler ve Ortamlar / Eski İletileri Sil\"i etkinleştirmeyi düşünün. Herhangi bir zamanda şu anki depolama kullanımınızı \"Ayarlar / Bağlanabilirlik\"ten denetleyebilirsiniz.</string>
+    <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolaması dolmak üzere: %1$s%% zaten kullanımda.\n\nDepolama tam dolduğunda iletileri alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve “Ayarlar / Sohbetler ve Ortamlar / Eski İletileri Sil”i etkinleştirmeyi düşünün. Herhangi bir zamanda şu anki depolama kullanımınızı “Ayarlar / Bağlanabilirlik”ten denetleyebilirsiniz.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Aygıtınızdaki tarih ya da saat yanlış görünüyor (%1$s).\n\nİletilerinizin doğru şekilde alınmasını sağlamak için saatinizi ⏰🔧 ayarlayın.</string>
     <string name="devicemsg_update_reminder">⚠️ Delta Chat sürümünüz eski olabilir.\n\nBu, sorunlara neden olabilir; çünkü sohbet ortaklarınız daha yeni sürümleri kullanıyor - ve en yeni özellikleri kaybediyorsunuz 😳\nGüncelleştirmeler için lütfen https://get.delta.chat ya da uygulama mağazanızı denetleyin.</string>
@@ -971,17 +973,17 @@
     <string name="qrscan_hint">Kameranızı QR kodunun üzerinde tutun</string>
     <string name="qrscan_hint_desktop">QR kodunu kameraya taşıyın</string>
     <string name="qrscan_failed">QR kodu çözülemedi</string>
-    <string name="qrscan_ask_join_group">\"%1$s\" öbeğine katılmak istiyor musunuz?</string>
+    <string name="qrscan_ask_join_group">“%1$s” öbeğine katılmak istiyor musunuz?</string>
     <string name="qrscan_fingerprint_mismatch">Taranan parmak izi, %1$s için son görülenle eşleşmiyor.</string>
     <string name="qrscan_no_addr_found">Bu QR kodu, bir parmak izi içeriyor; ama e-posta adresi yok.\n\nBir bant dışı doğrulama için lütfen önce alıcıya şifrelenen bir bağlantı kurun.</string>
     <string name="qrscan_contains_text">Taranan QR kodu metni:\n\n%1$s</string>
     <string name="qrscan_contains_url">Taranan QR kodu URL\'si:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Parmak izi</string>
     <string name="withdraw_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
-    <string name="withdraw_verifygroup_explain">Bu QR kodu, \"%1$s\" öbeğine katılmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
+    <string name="withdraw_verifygroup_explain">Bu QR kodu, “%1$s” öbeğine katılmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
     <string name="withdraw_qr_code">QR Kodunu Sıfırla</string>
     <string name="revive_verifycontact_explain">Bu QR kodu sıfırlandı ve artık etkin değil.</string>
-    <string name="revive_verifygroup_explain">\"%1$s\" öbeğine katılmak için taranan bu QR kodu sıfırlandı ve artık etkin değil.</string>
+    <string name="revive_verifygroup_explain">“%1$s” öbeğine katılmak için taranan bu QR kodu sıfırlandı ve artık etkin değil.</string>
     <string name="revive_qr_code">QR Kodunu Etkinleştir</string>
     <string name="qrshow_title">QR Çağrı Kodu</string>
     <string name="qrshow_x_joining">%1$s katılıyor.</string>
@@ -989,20 +991,20 @@
     <string name="qrshow_x_has_joined_group">%1$s öbeğe katıldı.</string>
     <string name="qrshow_join_group_title">QR Çağrı Kodu</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
-    <string name="qrshow_join_group_hint">\"%1$s\" öbeğine katılmak için bunu tarayın</string>
+    <string name="qrshow_join_group_hint">“%1$s” öbeğine katılmak için bunu tarayın</string>
     <string name="qrshow_join_contact_title">QR Çağrı Kodu</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">%1$s ile sohbet etmek için bunu tarayın</string>
     <string name="qrshow_join_contact_no_connection_toast">Internet bağlantısı yok; QR kodu ayarlaması gerçekleştirilemiyor.</string>
-    <string name="qraccount_ask_create_and_login">\"%1$s\" üzerinde yeni profil oluşturulsun ve orada giriş yapılsın mı?</string>
-    <string name="qraccount_ask_create_and_login_another">\"%1$s\" üzerinde yeni profil oluşturulsun ve orada giriş yapılsın mı?\n\nVarolan profiliniz silinmeyecek. Profilleriniz arasında geçiş yapmak için \"Profili Değiştir\" öğesini kullanın.</string>
+    <string name="qraccount_ask_create_and_login">“%1$s” üzerinde yeni profil oluşturulsun ve orada giriş yapılsın mı?</string>
+    <string name="qraccount_ask_create_and_login_another">“%1$s” üzerinde yeni profil oluşturulsun ve orada giriş yapılsın mı?\n\nVarolan profiliniz silinmeyecek. Profilleriniz arasında geçiş yapmak için “Profili Değiştir” öğesini kullanın.</string>
     <string name="set_name_and_avatar_explain">Kişilerinizin tanıyacağı bir ad ayarlayın. Bir profil görseli de ayarlayabilirsiniz.</string>
     <string name="please_enter_name">Lütfen bir ad girin.</string>
     <string name="qraccount_qr_code_cannot_be_used">Taranan QR kodu, yeni bir profil ayarlamak için kullanılamıyor.</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
-    <string name="qrlogin_ask_login">\"%1$s\" adresine giriş yapılsın mı?</string>
+    <string name="qrlogin_ask_login">“%1$s” adresine giriş yapılsın mı?</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
-    <string name="qrlogin_ask_login_another">\"%1$s\" adresine giriş yapılsın mı?\n\nVarolan profiliniz silinmeyecek. Profilleriniz arasında geçiş yapmak için \"Profili Değiştir\" öğesini kullanın.</string>
+    <string name="qrlogin_ask_login_another">“%1$s” adresine giriş yapılsın mı?\n\nVarolan profiliniz silinmeyecek. Profilleriniz arasında geçiş yapmak için “Profili Değiştir” öğesini kullanın.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s sizi bu öbeğe katılmaya çağırdı.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -1042,11 +1044,11 @@
     <!-- permissions -->
     <string name="perm_required_title">İzin gerekli</string>
     <string name="perm_continue">Sürdür</string>
-    <string name="perm_explain_access_to_camera_denied">Fotoğraflar çekmek ya da videolar yakalamak için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Kamera\"yı etkinleştirin.</string>
-    <string name="perm_explain_access_to_mic_denied">Sesli iletiler göndermek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Mikrofon\"u etkinleştirin.</string>
-    <string name="perm_explain_access_to_storage_denied">Dosyalar almak ya da göndermek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
-    <string name="perm_explain_access_to_location_denied">Bir konum iliştirmek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
-    <string name="perm_explain_access_to_notifications_denied">Bildirimler almak için \"Sistem Ayarları / Uygulamalar / Delta Chat\"e gidin ve \"Bildirimler\"i etkinleştirin.</string>
+    <string name="perm_explain_access_to_camera_denied">Fotoğraflar çekmek ya da videolar yakalamak için uygulama ayarlarına gidin, “İzinler”i seçin ve “Kamera”yı etkinleştirin.</string>
+    <string name="perm_explain_access_to_mic_denied">Sesli iletiler göndermek için uygulama ayarlarına gidin, “İzinler”i seçin ve “Mikrofon”u etkinleştirin.</string>
+    <string name="perm_explain_access_to_storage_denied">Dosyalar almak ya da göndermek için uygulama ayarlarına gidin, “İzinler”i seçin ve “Depolama”yı etkinleştirin.</string>
+    <string name="perm_explain_access_to_location_denied">Bir konum iliştirmek için uygulama ayarlarına gidin, “İzinler”i seçin ve “Konum”u etkinleştirin.</string>
+    <string name="perm_explain_access_to_notifications_denied">Bildirimler almak için “Sistem Ayarları / Uygulamalar / Delta Chat”e gidin ve “Bildirimler”i etkinleştirin.</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Bulanıklaştırmak için herhangi bir yere çizin</string>
@@ -1140,15 +1142,15 @@
     <string name="share_account_not_configured">Profil yapılandırılmadı.</string>
     <string name="cannot_play_audio_file">Ses dosyası oynatılamıyor.</string>
     <!-- iOS camera permission alert -->
-    <string name="perm_ios_explain_access_to_camera_denied">Fotoğraflar çekmek, videolar yakalamak ya da QR Kodu tarayıcısını kullanmak için sistem ayarlarını açın ve \"Kamera\"yı etkinleştirin.</string>
+    <string name="perm_ios_explain_access_to_camera_denied">Fotoğraflar çekmek, videolar yakalamak ya da QR Kodu tarayıcısını kullanmak için sistem ayarlarını açın ve “Kamera”yı etkinleştirin.</string>
     <string name="open_settings">Ayarlar\'ı Aç</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">Aygıt kişilerini içe aktar</string>
-    <string name="import_device_contacts_hint">Aygıtınızdan gelen kişilerle sohbet etmek için Ayarlar\'ı açın ve \"Kişiler\"i etkinleştirin.</string>
+    <string name="import_device_contacts_hint">Aygıtınızdan gelen kişilerle sohbet etmek için Ayarlar\'ı açın ve “Kişiler”i etkinleştirin.</string>
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Delta Chat\'ten etkisizleştirildi</string>
     <string name="disabled_in_system_settings">Sistem ayarlarından etkisizleştirildi</string>
-    <string name="bg_app_refresh_disabled">\"Arka Planda Uygulama Yenileme\" sistem ayarlarından etkisizleştirildi</string>
+    <string name="bg_app_refresh_disabled">“Arka Planda Uygulama Yenileme” sistem ayarlarından etkisizleştirildi</string>
     <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
     <string name="delayed">Gecikmeli</string>
     <string name="notifications_avg_minutes">Ortalama olarak her %1$d dakikada bir</string>
@@ -1161,7 +1163,7 @@
     <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
     <string name="shortcuts_widget_title">Kısayollar</string>
     <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
-    <string name="shortcuts_widget_description">Öğeleri eklemek için Delta Chat\'in \"Widget\'a Ekle\" öğesini kullanın</string>
+    <string name="shortcuts_widget_description">Öğeleri eklemek için Delta Chat\'in “Widget\'a Ekle” öğesini kullanın</string>
     <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
     <string name="remove_from_widget">Widget\'tan Kaldır</string>
     <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
@@ -1191,5 +1193,5 @@
 
     <!-- device messages for updates -->
     <string name="update_1_50_android">Ne yeni?\n\n❤️‍🔥 Daha fazla emojiyle yeni emoji seçicisi\n\n🎮 Geliştirilen sohbet içi uygulamalar: Bildirimler alın ve destekleyen uygulamaları bağlamda açın, yani eklenen bir takvim girdisini doğrudan açın\n\n👍 İletilerinize verilen tepkiler hakkında bildirimler alın\n\n... 🛠️ DÜZELTMELER ve HATTA DAHA FAZLASI için %1$s</string>
-    <string name="update_switch_profile_placement">ℹ️ \"Profili Değiştir\" seçeneği taşındı: Yeni profil eklemek ya da profilleri değiştirmek için ana ekranın üst köşesindeki profil görselinize dokunun 💡</string>
+    <string name="update_switch_profile_placement">ℹ️ “Profili Değiştir” seçeneği taşındı: Yeni profil eklemek ya da profilleri değiştirmek için ana ekranın üst köşesindeki profil görselinize dokunun 💡</string>
 </resources>
