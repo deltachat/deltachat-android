@@ -248,6 +248,7 @@
     <string name="menu_delete_chat">Delete Chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Clear Chat</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Delete Messages</string>
     <string name="delete_contact">Delete Contact</string>
     <string name="menu_delete_location">Delete this Location?</string>
@@ -370,7 +371,7 @@
         <item quantity="other">Delete %d chats?</item>
     </plurals>
     <string name="ask_delete_named_chat">Delete chat \"%1$s\"?</string>
-    <string name="ask_delete_message">Are you sure you want to delete this message?</string>
+    <string name="ask_delete_message">Delete this message on all your devices?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Delete %d message on all your devices?</item>
         <item quantity="other">Delete %d messages on all your devices?</item>
@@ -389,6 +390,7 @@
     <string name="ask_delete_contact">Delete contact %1$s?\n\nContacts with ongoing chats or from the system address book cannot be deleted permanently.</string>
     <string name="cannot_delete_contacts_in_use">Cannot delete contacts with ongoing chats.</string>
     <string name="ask_start_chat_with">Chat with %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Delete %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
