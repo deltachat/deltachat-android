@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8" /><meta name="viewport" content="initial-scale=1.0" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
+<html lang="it"><head><meta charset="UTF-8" /><meta name="viewport" content="initial-scale=1.0" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
   <li><a href="#cosè-delta-chat">Cos’è Delta Chat?</a>
     <ul>
       <li><a href="#come-posso-trovare-persone-con-cui-messaggiare">Come posso trovare persone con cui messaggiare?</a></li>
@@ -874,14 +874,13 @@ se l’intero messaggio è crittografato e firmato correttamente.
 Ad esempio, le “Firme distaccate” non sono considerate sicure.</p>
 
 <p>OpenPGP non è insicuro di per sé.
-I problemi di sicurezza di OpenPGP più discussi pubblicamente
-in realtà derivano da una cattiva usabilità o da cattive implementazioni di strumenti o app (o entrambi).
+La maggior parte dei problemi di sicurezza di OpenPGP discussi pubblicamentederivano in realtà da una cattiva usabilità o da cattive implementazioni di strumenti o app (o entrambi).
 È particolarmente importante distinguere tra OpenPGP, lo standard di crittografia IETF,
 e GnuPG (GPG), uno strumento da riga di comando che implementa OpenPGP.
 Molte critiche pubbliche di OpenPGP in realtà discutono di GnuPG che Delta Chat non ha mai utilizzato.
-Delta Chat utilizza piuttosto l’implementazione OpenPGP Rust <a href="https://github.com/rpgp/rpgp">rPGP</a>,
+Delta Chat utilizza piuttosto l’implementazione Rust di OpenPGP <a href="https://github.com/rpgp/rpgp">rPGP</a>,
 disponibile come <a href="https://crates.io/crates/pgp">un pacchetto “pgp” indipendente</a>,
-e <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">controllato sulla sicurezza nel 2019</a>.</p>
+e <a href="#security-audits">verificato per la sicurezza nel 2019 e nel 2024</a>.</p>
 
 <p>Puntiamo, insieme ad altri implementatori di OpenPGP,
 per migliorare ulteriormente le caratteristiche di sicurezza implementando il
@@ -1190,24 +1189,25 @@ Per altri programmi, dovresti essere in grado di trovare una soluzione online.</
         
       </h3>
 
-<p>Yes, multiple times. 
-The Delta Chat project continuously undergoes independent security audits and analysis,
-from most recent to older:</p>
+<p>Sì, più volte.
+Il progetto Delta Chat è sottoposto costantemente a verifiche e analisi di sicurezza indipendenti,
+dal più recente al più vecchio:</p>
 
 <ul>
   <li>
-    <p>2024 December, an <a href="https://github.com/rpgp/docs/blob/main/audits/NGI%20Core%20rPGP%20penetration%20test%20report%202024%201.0.pdf">NLNET-commissioned Evaluation of
-rPGP</a> by <a href="https://www.radicallyopensecurity.com/">Radically Open Security</a> took place.
+    <p>Dicembre 2024, un <a href="https://github.com/rpgp/docs/blob/main/audits/NGI%20Core%20rPGP%20penetration%20test%20report%202024%201.0.pdf">Valutazione commissionata da NLNET di
+rPGP</a> di <a href="https://www.radicallyopensecurity.com/">Radically Open Security</a> ha preso parte.
 rPGP serves as the end-to-end encyption <a href="https://openpgp.org">OpenPGP</a> engine of Delta Chat. 
-Two advisories were released related to the findings of this audit:</p>
+Sono stati rilasciati due avvisi relativi ai risultati di questa verifica:</p>
 
     <ul>
-      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-9rmp-2568-59rv">“Panics on Malformed Untrusted Input”</a> CVE-2024-53856</li>
-      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-4grw-m28r-q285">“Potential Resource Exhaustion when handling Untrusted Messages”</a> CVE-2024-53857</li>
+      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-9rmp-2568-59rv">“Panico per Input non Attendibili e Malformati”</a> CVE-2024-53856</li>
+      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-4grw-m28r-q285">“Potenziale Esaurimento delle Risorse durante la gestione di Messaggi non Attendibili”</a> CVE-2024-53857</li>
     </ul>
 
-    <p>The issues outlined in these advisories have been fixed and are part of Delta Chat 
-releases on all appstores since December 2024.</p>
+    <p>I problemi descritti in questi avvisi sono stati risolti e fanno
+parte delle versioni di Delta Chat
+su tutti gli appstore da Dicembre 2024.</p>
   </li>
   <li>
     <p>Marzo 2024, abbiamo ricevuto un’analisi approfondita della sicurezza dalla Crittografia Applicata
