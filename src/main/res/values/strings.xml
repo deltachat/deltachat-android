@@ -550,6 +550,7 @@
     <string name="multidevice_receiver_title">Add as Second Device</string>
     <string name="multidevice_open_settings_on_other_device">On the first device, go to “Settings / Add Second Device“ and scan the code shown there</string>
     <string name="multidevice_receiver_scanning_ask">Copy the profile from the other device to this device?</string>
+    <string name="multidevice_receiver_needs_update">The profile you want to import is from a newer Delta Chat version.\n\nTo continue setting up second device, please update this device to the latest version of Delta Chat.</string>
     <string name="multidevice_abort">Abort setting up second device?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">This will invalidate the QR code copied to clipboard.</string>
     <string name="multidevice_experimental_hint">(experimental, version 1.36 required)</string>
