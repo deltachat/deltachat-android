@@ -43,6 +43,7 @@ import androidx.loader.content.Loader;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMediaGalleryElement;
 import com.b44t.messenger.DcMsg;
@@ -340,26 +341,34 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       return;
     }
 
+    DcMsg dcMsg = dcContext.getMsg(mediaItem.msgId);
+    DcChat dcChat = dcContext.getChat(dcMsg.getChatId());
+
     String text = getResources().getQuantityString(R.plurals.ask_delete_messages, 1, 1);
+    int positiveBtnLabel = dcChat.isSelfTalk() ? R.string.delete : R.string.delete_for_me;
+    final int[] messageIds = new int[]{mediaItem.msgId};
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setMessage(text);
     builder.setCancelable(true);
-
-    builder.setPositiveButton(R.string.delete, (dialogInterface, which) -> {
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... voids) {
-          dcContext.deleteMsgs(new int[]{mediaItem.msgId});
-          return null;
-        }
-      }.execute();
-
+    builder.setNeutralButton(android.R.string.cancel, null);
+    builder.setPositiveButton(positiveBtnLabel, (dialogInterface, which) -> {
+      Util.runOnAnyBackgroundThread(() -> dcContext.deleteMsgs(messageIds));
       finish();
     });
-    builder.setNegativeButton(android.R.string.cancel, null);
-    AlertDialog dialog = builder.show();
-    Util.redPositiveButton(dialog);
+
+    if(dcChat.canSend() && !dcChat.isSelfTalk() && dcMsg.isOutgoing()) {
+      builder.setNegativeButton(R.string.delete_for_everyone, (d, which) -> {
+        Util.runOnAnyBackgroundThread(() -> dcContext.sendDeleteRequest(messageIds));
+        finish();
+      });
+      AlertDialog dialog = builder.show();
+      Util.redButton(dialog, AlertDialog.BUTTON_NEGATIVE);
+      Util.redPositiveButton(dialog);
+    } else {
+      AlertDialog dialog = builder.show();
+      Util.redPositiveButton(dialog);
+    }
   }
 
   @Override
