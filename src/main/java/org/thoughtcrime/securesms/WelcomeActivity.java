@@ -349,7 +349,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             }
             DcLot qrParsed = dcContext.checkQr(qrRaw);
             switch (qrParsed.getState()) {
-                case DcContext.DC_QR_BACKUP:
                 case DcContext.DC_QR_BACKUP2:
                   final String finalQrRaw = qrRaw;
                   new AlertDialog.Builder(this)
@@ -358,6 +357,14 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                             .setPositiveButton(R.string.perm_continue, (dialog, which) -> startBackupTransfer(finalQrRaw))
                             .setNegativeButton(R.string.cancel, null)
                             .setCancelable(false)
+                            .show();
+                    break;
+
+                case DcContext.DC_QR_BACKUP_TOO_NEW:
+                    new AlertDialog.Builder(this)
+                            .setTitle(R.string.multidevice_receiver_title)
+                            .setMessage(R.string.multidevice_receiver_needs_update)
+                            .setPositiveButton(R.string.ok, null)
                             .show();
                     break;
 
