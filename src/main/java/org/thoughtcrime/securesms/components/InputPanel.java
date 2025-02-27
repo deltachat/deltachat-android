@@ -120,9 +120,10 @@ public class InputPanel extends ConstraintLayout
                        long id,
                        @NonNull Recipient author,
                        @NonNull CharSequence body,
-                       @NonNull SlideDeck attachments)
+                       @NonNull SlideDeck attachments,
+                       @NonNull boolean isEdit)
   {
-    this.quoteView.setQuote(glideRequests, msg, author, body, attachments, false);
+   this.quoteView.setQuote(glideRequests, msg, author, body, attachments, false, isEdit);
 
     int originalHeight = this.quoteView.getVisibility() == VISIBLE ? this.quoteView.getMeasuredHeight()
             : 0;
@@ -141,6 +142,7 @@ public class InputPanel extends ConstraintLayout
 
   public void clearQuoteWithoutAnimation() {
     quoteView.dismiss();
+    if (listener != null) listener.onQuoteDismissed();
   }
 
   public void clearQuote() {
@@ -152,6 +154,7 @@ public class InputPanel extends ConstraintLayout
       @Override
       public void onAnimationEnd(@NonNull Animator animation) {
         quoteView.dismiss();
+        if (listener != null) listener.onQuoteDismissed();
       }
     });
 
@@ -329,6 +332,7 @@ public class InputPanel extends ConstraintLayout
     void onRecorderCanceled();
     void onRecorderPermissionRequired();
     void onEmojiToggle();
+    void onQuoteDismissed();
   }
 
   private static class SlideToCancel {
