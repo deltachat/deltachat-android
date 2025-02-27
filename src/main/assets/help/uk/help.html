@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8" /><meta name="viewport" content="initial-scale=1.0" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
+<html lang="uk"><head><meta charset="UTF-8" /><meta name="viewport" content="initial-scale=1.0" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
   <li><a href="#що-таке-delta-chat">Що таке Delta Chat?</a>
     <ul>
       <li><a href="#як-мені-знайти-людей-для-спілкування">Як мені знайти людей для спілкування?</a></li>
@@ -676,7 +676,10 @@ Autocrypt використовує обмежену і <a href="#openpgp-secure"
 
 <p>Так, Delta Chat використовує безпечну підмножину OpenPGP і відображає індикатор безпеки у вигляді замка в повідомленні лише тоді, коли все повідомлення належним чином зашифровано і підписано. Наприклад, “Відокремлені підписи” не вважаються безпечними.</p>
 
-<p>OpenPGP не є небезпечним сам по собі. Більшість публічно обговорюваних проблем безпеки OpenPGP насправді виникають через погане використання або погану реалізацію інструментів або програм (або і те, і інше). Особливо важливо розрізняти OpenPGP, стандарт шифрування IETF, і GnuPG (GPG), інструментом командного рядка, що реалізує OpenPGP. Багато публічних критиків OpenPGP насправді обговорюють GnuPG, який Delta Chat ніколи не використовував. Натомість Delta Chat використовує реалізацію OpenPGP на Rust <a href="https://github.com/rpgp/rpgp">rPGP</a>, доступну як <a href="https://crates.io/crates/pgp">незалежний пакет “pgp”</a>, і <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">пройшов аудит безпеки у 2019 році</a>.</p>
+<p>OpenPGP сам по собі не є небезпечним. Більшість публічно обговорюваних проблем безпеки OpenPGP насправді виникають через недостатню зручність використання або погану реалізацію інструментів чи програм (або обох). 
+Особливо важливо розрізняти OpenPGP, стандарт шифрування IETF, і GnuPG (GPG), інструмент командного рядка, що реалізує OpenPGP. 
+Багато публічних критиків OpenPGP насправді обговорюють GnuPG, який Delta Chat ніколи не використовував. 
+Delta Chat скоріше використовує реалізацію OpenPGP Rust <a href="https://github.com/rpgp/rpgp">rPGP</a>, доступну як <a href="https://crates.io/crates/pgp">незалежний пакет «pgp»</a> і <a href="#security-audits">перевірку безпеки в 2019 і 2024 роках</a>.</p>
 
 <p>Ми прагнемо, разом з іншими розробниками OpenPGP, подальше покращення характеристик безпеки шляхом впровадження <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-crypto-refresh/">нового IETF OpenPGP Crypto-Refresh</a> який, на щастя, був прийнятий влітку 2023 року.</p>
     
@@ -872,25 +875,19 @@ Look for something like <strong>Start Autocrypt Setup Transfer</strong> in the s
         
       </h3>
 
-<p>Yes, multiple times. 
-The Delta Chat project continuously undergoes independent security audits and analysis,
-from most recent to older:</p>
+<p>Так, багаторазово. Проект Delta Chat постійно проходить незалежні перевірки та аналіз безпеки, а саме, від останніх і закінчуючи старішими:</p>
 
 <ul>
   <li>
-    <p>2024 December, an <a href="https://github.com/rpgp/docs/blob/main/audits/NGI%20Core%20rPGP%20penetration%20test%20report%202024%201.0.pdf">NLNET-commissioned Evaluation of
-rPGP</a> by <a href="https://www.radicallyopensecurity.com/">Radically Open Security</a> took place.
-rPGP serves as the end-to-end encyption <a href="https://openpgp.org">OpenPGP</a> engine of Delta Chat. 
-Two advisories were released related to the findings of this audit:</p>
-
-    <ul>
-      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-9rmp-2568-59rv">“Panics on Malformed Untrusted Input”</a> CVE-2024-53856</li>
-      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-4grw-m28r-q285">“Potential Resource Exhaustion when handling Untrusted Messages”</a> CVE-2024-53857</li>
-    </ul>
-
-    <p>The issues outlined in these advisories have been fixed and are part of Delta Chat 
-releases on all appstores since December 2024.</p>
+    <p>2024 грудня відбулася <a href="https://github.com/rpgp/docs/blob/main/audits/NGI%20Core%20rPGP%20penetration%20test%20report%202024%201.0.pdf">оцінка rPGP на замовлення NLNET</a> від <a href="https://www.radicallyopensecurity.com/">Radically Open Security</a>. rPGP слугує рушієм наскрізного шифрування <a href="https://openpgp.org">OpenPGP</a> для Delta Chat. За результатами цього аудиту було випущено дві рекомендації:</p>
   </li>
+  <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-9rmp-2568-59rv">“Паніка через неправильне ненадійне введення”</a> CVE-2024-53856</li>
+  <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-4grw-m28r-q285">“Потенційне виснаження ресурсів під час обробки ненадійних повідомлень”</a> CVE-2024-53857</li>
+</ul>
+
+<p>Проблеми, описані в цих рекомендаціях, виправлено, і вони є частиною випусків Delta Chat у всіх магазинах додатків з грудня 2024 року.</p>
+
+<ul>
   <li>
     <p>2024 березня ми отримали глибокий аналіз безпеки від дослідницької групи Applied Cryptography дослідницької групи з прикладної криптографії в ETH Zuerich і вирішили всі порушені питання. Більш детальну інформацію можна знайти в нашому блозі в статті <a href="https://delta.chat/en/2024-03-25-crypto-analysis-securejoin">Hardening Guaranteed End-to-end encryption</a>, а також в дослідженні <a href="https://eprint.iacr.org/2024/918.pdf">Cryptographic Analysis of Delta Chat</a>, опублікованому пізніше.</p>
   </li>
