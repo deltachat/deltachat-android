@@ -541,7 +541,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">İkinci Aygıt Ekle</string>
     <string name="multidevice_same_network_hint">Her iki aygıtın da aynı Wi-Fi\'da ya da ağda olduğundan emin olun</string>
-    <string name="multidevice_this_creates_a_qr_code">Bu, ikinci aygıtın profili kopyalamak için tarayabileceği bir QR kodu oluşturur.</string>
+    <string name="multidevice_this_creates_a_qr_code">Bu, ikinci aygıtın profili kopyalamak için tarayabileceği bir QR kodu oluşturur.\n\nİstenmeyen gözlemcinin ya da kameranın aşağıdaki ekranı göremediğinden emin olun.</string>
     <string name="multidevice_install_dc_on_other_device">Delta Chat\'i diğer aygıtınıza kurun (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Delta Chat\'i başlatın, “Zaten Bir Profilim Var / İkinci Aygıt Olarak Ekle”ye dokunun ve burada gösterilen kodu tarayın</string>

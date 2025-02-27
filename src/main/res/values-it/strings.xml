@@ -28,6 +28,8 @@
     <string name="join">Partecipa</string>
     <string name="rejoin">Ripartecipa</string>
     <string name="delete">Elimina</string>
+    <string name="delete_for_me">Cancella per Me</string>
+    <string name="delete_for_everyone">Cancella per Tutti</string>
     <string name="info">Informazioni</string>
     <string name="update">Aggiorna</string>
     <string name="emoji">Emoji</string>
@@ -380,6 +382,11 @@
     </plurals>
     <string name="ask_delete_named_chat">Elimina chat \"%1$s\"?</string>
     <string name="ask_delete_message">Sei sicuro di voler eliminare questo messaggio?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Cancella %d messaggio su tutti i tuoi dispositivi?</item>
+        <item quantity="many">Cancella %d messaggi su tutti i tuoi dispositivi?</item>
+        <item quantity="other">Cancella %d messaggi su tutti i tuoi dispositivi?</item>
+    </plurals>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Eliminare %d messaggio?</item>
@@ -550,7 +557,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Aggiungi Secondo Dispositivo</string>
     <string name="multidevice_same_network_hint">Assicurati che entrambi i dispositivi siano sulla stessa rete o Wi-Fi.</string>
-    <string name="multidevice_this_creates_a_qr_code">Questo crea un codice QR che il secondo dispositivo può scansionare per copiare il profilo.</string>
+    <string name="multidevice_this_creates_a_qr_code">Questo crea un codice QR che il secondo dispositivo può scansionare per copiare il profilo.\n\nAssicurati che nessun osservatore o telecamera indesiderata possa vedere la schermata seguente.</string>
     <string name="multidevice_install_dc_on_other_device">Installa Delta Chat sull\'altro tuo dispositivo (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Avvia Delta Chat, tocca \"Ho già un Profilo / Aggiungi come Secondo Dispositivo\" e scansiona il codice mostrato qui</string>

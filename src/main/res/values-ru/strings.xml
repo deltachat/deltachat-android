@@ -28,6 +28,8 @@
     <string name="join">Присоединиться</string>
     <string name="rejoin">Присоединиться снова</string>
     <string name="delete">Удалить</string>
+    <string name="delete_for_me">Удалить для меня</string>
+    <string name="delete_for_everyone">Удалить для всех</string>
     <string name="info">Информация</string>
     <string name="update">Обновить</string>
     <string name="emoji">Эмодзи</string>
@@ -391,6 +393,12 @@
     </plurals>
     <string name="ask_delete_named_chat">Удалить чат \"%1$s\"?</string>
     <string name="ask_delete_message">Вы уверены, что хотите удалить это сообщение?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Удалить %d сообщение на всех ваших устройствах?</item>
+        <item quantity="few">Удалить %d сообщения на всех ваших устройствах?</item>
+        <item quantity="many">Удалить %d сообщений на всех ваших устройствах?</item>
+        <item quantity="other">Удалить %d сообщений на всех ваших устройствах?</item>
+    </plurals>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Удалить %d сообщение?</item>
@@ -565,7 +573,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Добавить второе устройство</string>
     <string name="multidevice_same_network_hint">Убедитесь, что оба устройства подключены к одной и той же локальной или Wi-Fi сети.</string>
-    <string name="multidevice_this_creates_a_qr_code">Это создает QR-код, который можно отсканировать на втором устройстве, чтобы скопировать профиль.</string>
+    <string name="multidevice_this_creates_a_qr_code">Это позволяет создать QR-код, который можно отсканировать на втором устройстве, чтобы скопировать профиль.\n\nУбедитесь, что посторонние люди или камера не видят следующий экран.</string>
     <string name="multidevice_install_dc_on_other_device">Установите Delta Chat на другом устройстве (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Запустите Delta Chat, выберите \"У меня уже есть профиль / Добавить как второе устройство\" и отсканируйте код, показанный здесь</string>

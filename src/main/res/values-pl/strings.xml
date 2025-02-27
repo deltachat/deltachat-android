@@ -28,6 +28,8 @@
     <string name="join">Dołącz</string>
     <string name="rejoin">Dołącz ponownie</string>
     <string name="delete">Usuń</string>
+    <string name="delete_for_me">Usuń u mnie</string>
+    <string name="delete_for_everyone">Usuń u wszystkich</string>
     <string name="info">Informacje</string>
     <string name="update">Aktualizacja</string>
     <string name="emoji">Emoji</string>
@@ -391,6 +393,12 @@
     </plurals>
     <string name="ask_delete_named_chat">Usunąć czat „%1$s”? Nie będzie on już wyświetlany na liście czatów. Jego wiadomości pozostaną na serwerze.</string>
     <string name="ask_delete_message">Czy na pewno chcesz usunąć tę wiadomość?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Usunąć %d wiadomość ze wszystkich urządzeń?</item>
+        <item quantity="few">Usunąć %d wiadomości ze wszystkich urządzeń?</item>
+        <item quantity="many">Usunąć %d wiadomości ze wszystkich urządzeń?</item>
+        <item quantity="other">Usunąć %d wiadomości ze wszystkich urządzeń?</item>
+    </plurals>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Usunąć %d wiadomość?</item>
