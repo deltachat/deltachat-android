@@ -28,6 +28,8 @@
     <string name="join">加入</string>
     <string name="rejoin">重新加入</string>
     <string name="delete">删除</string>
+    <string name="delete_for_me">为我删除</string>
+    <string name="delete_for_everyone">为所有人删除</string>
     <string name="info">信息</string>
     <string name="update">更新</string>
     <string name="emoji">Emoji</string>
@@ -358,6 +360,9 @@
     </plurals>
     <string name="ask_delete_named_chat">删除聊天“%1$s”？它将不再显示在聊天列表中，其消息将保留在服务器上。</string>
     <string name="ask_delete_message">您确定要删除这条消息吗？</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="other">是否删除所有设备上的 %d 条消息？</item>
+    </plurals>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">删除 %d 条消息吗？</item>

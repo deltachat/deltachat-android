@@ -7,6 +7,8 @@
     <string name="clear_search">Effacer la recherche</string>
     <!-- a noun, used on a button, short for "show link" -->
     <string name="link">Lien</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Scanner</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="select">Sélectionner</string>
@@ -26,6 +28,8 @@
     <string name="join">Rejoindre</string>
     <string name="rejoin">Réintégrer</string>
     <string name="delete">Supprimer</string>
+    <string name="delete_for_me">Supprimer pour moi</string>
+    <string name="delete_for_everyone">Supprimer pour tout le monde</string>
     <string name="info">Info</string>
     <string name="update">Mise à jour</string>
     <string name="emoji">Émoji</string>
@@ -35,9 +39,12 @@
     <string name="close_window">Fermer la fenêtre</string>
     <string name="forward">Faire suivre</string>
     <string name="create">Créer</string>
+    <string name="reset">Réinitialiser</string>
     <string name="later">Plus tard</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Renvoyer</string>
+    <string name="edited">Modifié</string>
+    <string name="edit_message">Modifier le message</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archiver</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -193,6 +200,7 @@
     <string name="games">Jeux</string>
     <string name="tools">Outils</string>
     <string name="app_size">Taille</string>
+    <string name="app_date_published">Publié</string>
     <string name="add_to_chat">Ajouter à la discussion</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Explorer</string>
@@ -291,6 +299,8 @@
     <string name="select_more">Sélectionner plus</string>
     <string name="menu_edit_name">Modifier le nom</string>
     <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <string name="edit_name_explain">Choisir un surnom qui s\'affichera à la place de « %1$s ». Laisser cet espace vide pour utiliser le nom choisi par le contact.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
     <string name="edit_name_placeholder">Surnom de \"%1$s\"</string>
     <string name="menu_settings">Paramètres</string>
     <string name="menu_advanced">Avancé</string>
@@ -308,6 +318,7 @@
     <string name="device_talk">Messages de l\'appareil</string>
     <string name="device_talk_subtitle">Messages générés localement</string>
     <string name="device_talk_explain">Les messages dans cette discussion sont générés localement par votre application Delta Chat. Cela vous permet de recevoir des informations concernant les mises à jour et problèmes rencontrés à l\'utilisation.</string>
+    <string name="device_talk_welcome_message2">Gardez contact !\n\n🙌 Cliquez sur « code QR » sur la page d\'accueil des deux appareils. Sélectionnez « Scanner le code QR » sur un des appareils et positionnez les deux appareils l\'un vers l\'autre\n\n🌍 Si vous n\'êtes pas dans la même pièce, vous pouvez scanner le code QR pendant un appel vidéo ou partager un lien d\'invitation à partir de « Scanner le code QR »\n\n Profitez ensuite de votre expérience de messagerie sur le plus grand réseau décentralisé du monde : les emails. Contrairement aux autres applications populaires, tout cela se fait sans contrôle centralisé, suivi ou revente de vos données, celles de vos amis, collègues ou famille à de grandes entreprises.</string>
     <string name="edit_contact">Mettre à jour le contact</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Épingler la discussion</string>
@@ -368,6 +379,11 @@
     </plurals>
     <string name="ask_delete_named_chat">Voulez-vous vraiment supprimer « %1$s » ?</string>
     <string name="ask_delete_message">Voulez-vous vraiment supprimer ce message ?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Effacer %d message ici et sur le serveur ?</item>
+        <item quantity="many">Effacer %d messages ici et sur le serveur ?</item>
+        <item quantity="other">Effacer %d messages ici et sur le serveur  ?</item>
+    </plurals>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Supprimer %d message ?</item>
@@ -460,6 +476,9 @@
     <string name="send_file_to">Envoyer \"%1$s\" à</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Envoyer un message à</string>
+    <string name="enable_realtime">Applications temps réel</string>
+    <string name="enable_realtime_explain">Activez les connexions temps réel pour les applications partagées dans les discussions. Les interlocuteurs pourront voir votre adresse IP lorsque vous lancerez l\'app. </string>
+
     <!-- map -->
     <string name="filter_map_on_time">Afficher les positions pour une période</string>
     <string name="show_location_traces">Afficher les traces</string>
@@ -636,6 +655,7 @@
     <string name="proxy_invalid">Proxy invalide ou non supporté</string>
     <string name="proxy_list_header">Sauver les proxy</string>
     <string name="proxy_delete">Effacer le proxy</string>
+    <string name="proxy_delete_explain">Voulez-vous vraiment supprimer « %1$s » ?</string>
     <string name="proxy_share_explain">Vos amis peuvent ajouter ce proxy en scannant le code QR.</string>
     <string name="proxy_share_link">Partager le lien</string>
 
@@ -658,6 +678,8 @@
     <string name="profile_tag">Tag privé</string>
     <string name="profile_tag_hint">Travail ou famille par exemple</string>
     <string name="profile_tag_explain">Tag seulement visible par vous pour vous aider à différencier les profils.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">Remonter l\'élément</string>
     <string name="delete_account">Supprimer le compte</string>
     <string name="delete_account_ask">Voulez-vous vraiment supprimer les données de votre compte ?</string>
     <string name="delete_account_explain_with_name">Toutes les données de compte de « %s » sur cet appareil seront effacées, y compris votre configuration de chiffrement de bout en bout, vos contacts, discussions, messages et médias. Cette action est irrévocable.</string>
@@ -671,6 +693,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Transférer à …</string>
+    <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
+    <string name="ask_send_files_to_chat">Envoyer %1$d fichiers à « %2$s » ?</string>
     <string name="ask_send_files_to_selected_chats">Envoyer %1$d fichier(s) à %2$d discussions ?</string>
     <string name="share_text_multiple_chats">Envoyer ce texte à %1$d discussions ?\n\n« %2$s »</string>
     <string name="share_abort">Partage annulé en raison de permissions manquantes.</string>
@@ -701,6 +725,7 @@
     <string name="pref_screen_security_please_restart_hint">Pour appliquer les paramètres de sécurité de l\'écran, veuillez redémarrer l\'application.</string>
     <string name="pref_notifications">Notifications</string>
     <string name="pref_mention_notifications">Mentions</string>
+    <string name="pref_mention_notifications_explain">Dans les groupes passés en muet, des notifications vous sont envoyées, comme des réponses ou des réactions</string>
     <string name="pref_notifications_show">Afficher</string>
     <string name="pref_notifications_priority">Priorité</string>
     <string name="pref_notifications_explain">Activer les notifications système pour les nouveaux messages</string>
@@ -718,6 +743,7 @@
     <string name="pref_appearance">Apparence</string>
     <string name="pref_theme">Thème</string>
     <string name="pref_language">Langue</string>
+    <string name="pref_use_system_ui_font">Utiliser la police système</string>
     <string name="pref_incognito_keyboard">Clavier anonyme</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Demander que le clavier désactive l\'apprentissage personnalisé</string>
@@ -728,6 +754,8 @@
     <string name="pref_manage_keys">Gérer les clés</string>
     <string name="pref_use_system_emoji">Utiliser les émojis système</string>
     <string name="pref_use_system_emoji_explain">Désactiver la prise en charge des émojis intégrés de Delta Chat</string>
+    <string name="pref_show_system_contacts">Lire le carnet d\'adresses du système</string>
+    <string name="pref_show_system_contacts_explain">Permet de créer des conversations avec des contacts du carnet d\'adresse. Certains fournisseurs doivent d\'abord mettre en place un chiffrement de bout-en-bout.</string>
     <string name="pref_app_access">Accès à l\'application</string>
     <string name="pref_chats">Discussions</string>
     <string name="pref_in_chat_sounds">Sons de messages entrants</string>
@@ -816,6 +844,9 @@
     <string name="reactions">Réactions</string>
     <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
     <string name="react">Réagir</string>
+    <!-- %1$s will be replaced a name. %2$s will be replaced by an emoji. %3$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %3$s will often not being visible). Eg. 'Alice reacted 👍 to "Nice photos"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer work as well. -->
+    <string name="reaction_by_other">%1$s a réagi %2$s à « %3$s »</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Supprimer les anciens messages</string>
     <string name="autodel_device_title">Supprimer les messages de l\'appareil</string>
@@ -826,6 +857,8 @@
     <string name="autodel_server_ask">Voulez-vous supprimer %1$d messages maintenant ainsi que tous les futurs nouveaux messages reçus « %2$s » ?\n\n⚠️ Cela inclut les courriels, les fichiers multimédia et les « Messages sauvegardés » dans tous les répertoires du serveur\n\n⚠️ N\'utilisez pas cette fonction si vous utilisez d\'autres clients de messagerie électronique en plus de Delta Chat</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Cela inclus les courriels, médias et les « Messages sauvegardés » dans tous les répertoires du serveur. N\'utilisez pas cette fonction si vous voulez garder les données sur le serveur ou si vous utilisez d\'autres clients de messagerie électronique en plus de Delta Chat.</string>
+    <string name="autodel_server_warn_multi_device_title">Activer la suppression immédiate</string>
+    <string name="autodel_server_warn_multi_device">Si vous activez la suppression immédiate, vous ne pourrez pas utiliser plusieurs appareils sur ce profil.</string>
     <string name="autodel_confirm">J\'ai compris, supprimer tous ces messages</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Immédiatement</string>
@@ -928,6 +961,7 @@
     <string name="chat_protection_enabled_explanation">Il n\'est pas garanti que tous les messages de cette discussion sont chiffrés de bout en bout.\n\nLe chiffrement de bout en bout assure la confidentialité des messages échangés par les membres d\'une discussion. Même votre fournisseur de courriel ne peut pas les lire. </string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s a envoyé un message depuis un nouvel appareil. Appuyez pour en savoir plus.</string>
     <string name="chat_protection_broken_explanation">Le chiffrement de bout en bout ne peut plus être garanti, probablement parce que %1$s a réinstallé Delta Chat ou envoyé un message depuis un nouvel appareil.\n\nVous pouvez convenir d\'une rencontre physique afin de scanner à nouveau son code QR pour ré-instaurer la garantie du chiffrement de bout en bout.</string>
+    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s nécessite un chiffrement de bout en bout qui n\'est pas encore configuré sur cette discussion. Appuyez pour en savoir plus.</string>
     <string name="invalid_unencrypted_explanation">Pour établir un chiffrement de bout en bout vous pouvez rencontrer vos contacts en personne et scanner leur code QR.</string>
     <string name="learn_more">En savoir plus</string>
 
@@ -1070,6 +1104,8 @@
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">Retirer</string>
     <string name="save_desktop">Sauvegardez</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">Annuler la sauvegarde</string>
     <string name="name_desktop">Nom</string>
     <string name="select_group_image_desktop">Choisir l\'image de groupe</string>
     <string name="export_backup_desktop">Exporter la sauvegarde</string>
