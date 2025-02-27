@@ -74,7 +74,6 @@ public class QrCodeHandler {
                 builder.setCancelable(false);
                 break;
 
-            case DcContext.DC_QR_BACKUP:
             case DcContext.DC_QR_BACKUP2:
                 builder.setTitle(R.string.multidevice_receiver_title);
                 builder.setMessage(activity.getString(R.string.multidevice_receiver_scanning_ask) + "\n\n" + activity.getString(R.string.multidevice_same_network_hint));
@@ -88,6 +87,12 @@ public class QrCodeHandler {
                 alertDialog.show();
                 BackupTransferActivity.appendSSID(activity, alertDialog.findViewById(android.R.id.message));
                 return;
+
+            case DcContext.DC_QR_BACKUP_TOO_NEW:
+                builder.setTitle(R.string.multidevice_receiver_title);
+                builder.setMessage(activity.getString(R.string.multidevice_receiver_needs_update));
+                builder.setNegativeButton(R.string.ok, null);
+                break;
 
             case DcContext.DC_QR_PROXY:
                 builder.setTitle(R.string.proxy_use_proxy);
