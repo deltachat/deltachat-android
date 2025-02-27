@@ -28,6 +28,8 @@
     <string name="join">Hyni</string>
     <string name="rejoin">Rihyni</string>
     <string name="delete">Fshije</string>
+    <string name="delete_for_me">Fshije për Mua</string>
+    <string name="delete_for_everyone">Fshije për Gjithkënd</string>
     <string name="info">Hollësi</string>
     <string name="update">Përditësoje</string>
     <string name="emoji">Emoji</string>
@@ -365,6 +367,10 @@
     </plurals>
     <string name="ask_delete_named_chat">Jeni i sigurt se doni të fshihet “%1$s”?</string>
     <string name="ask_delete_message">Jeni i sigurt se doni të fshihet ky mesazh?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Të fshihet %d mesazh në krejt pajisjet tuaja?</item>
+        <item quantity="other">Të fshihen %d mesazhe në krejt pajisjet tuaja?</item>
+    </plurals>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Të fshihet %d mesazh?</item>
