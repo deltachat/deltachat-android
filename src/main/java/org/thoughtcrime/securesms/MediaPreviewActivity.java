@@ -340,7 +340,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       return;
     }
 
-    String text = getResources().getQuantityString(R.plurals.ask_delete_messages_simple, 1, 1);
+    String text = getResources().getQuantityString(R.plurals.ask_delete_messages, 1, 1);
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setMessage(text);
