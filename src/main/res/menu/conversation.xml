@@ -41,9 +41,6 @@
 
     <item android:title="@string/menu_more_options">
         <menu>
-            <item android:title="@string/menu_add_attachment"
-                android:id="@+id/menu_add_attachment" />
-
             <item android:id="@+id/menu_leave"
                 android:visible="false"
                 android:title="@string/menu_leave_group"/>
