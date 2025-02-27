@@ -212,16 +212,9 @@ public class ContactSelectionListFragment extends    Fragment
           ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
           final SparseIntArray actionModeSelection = adapter.getActionModeSelection().clone();
           new Thread(() -> {
-            boolean failed = false;
             for (int index = 0; index < actionModeSelection.size(); index++) {
               int contactId = actionModeSelection.valueAt(index);
-              boolean currentFailed = !dcContext.deleteContact(contactId);
-              failed = currentFailed || failed;
-            }
-            if (failed) {
-              Util.runOnMain(()-> {
-                Toast.makeText(getActivity(), R.string.cannot_delete_contacts_in_use, Toast.LENGTH_LONG).show();
-              });
+              dcContext.deleteContact(contactId);
             }
           }).start();
           adapter.resetActionModeSelection();
