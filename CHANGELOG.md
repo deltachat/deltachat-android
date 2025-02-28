@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v1.54.1
+## v1.54.2
 2025-02
 
 * allow to add any chat to the home screen
@@ -16,7 +16,7 @@
 * prepare the app for receiving message deletion requests
 * do some small bug fixes
 * update translations
-* update to core 1.156.0
+* update to core 1.156.1
 
 ## v1.54.0
 2025-02
