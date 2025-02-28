@@ -264,6 +264,7 @@
     <string name="menu_delete_chat">Видалити чат</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Очистити чат</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Видалити повідомлення</string>
     <string name="delete_contact">Видалити контакт</string>
     <string name="menu_delete_location">Видалити це місце?</string>
@@ -390,7 +391,6 @@
         <item quantity="other">Видалити %d чатів? Вони більше не будуть відображатися у списку чатів, їх повідомлення залишаться на сервері.</item>
     </plurals>
     <string name="ask_delete_named_chat">Видалити чат \"%1$s\"? Він більше не буде відображатися у списку чату, але його повідомлення залишаться на сервері.</string>
-    <string name="ask_delete_message">Ви впевнені, що хочете видалити це повідомлення?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Видалити %d повідомлення?</item>
@@ -405,8 +405,10 @@
     <string name="ask_unblock_contact">Розблокувати цей контакт?</string>
     <string name="ask_delete_contacts">Видалити контакти?\n\nКонтакти з поточними чатами або з системної адресної книги неможливо видалити остаточно.</string>
     <string name="ask_delete_contact">Видалити %1$s?\n\nКонтакти з діючих чатів та з адресної книги системи не можна видалити назавжди.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Неможливо видалити контакти, з якими є активні чати.</string>
     <string name="ask_start_chat_with">Створити чат з %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Видалити %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Видалити %1$s із групи?</string>

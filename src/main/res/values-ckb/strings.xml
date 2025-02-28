@@ -153,6 +153,7 @@
     <string name="menu_add_attachment">زیاد کردنی پێوەلکاو</string>
     <string name="menu_leave_group">بەجێهێشتنی کۆڕ</string>
     <string name="menu_delete_chat">سڕینەوەی وتووێژ</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">سڕینەوەی پەیامەکان</string>
     <string name="delete_contact">سڕینەوەی بەردەنگ</string>
     <string name="menu_delete_location">ئەم شوێنە دەسڕیتەوە؟</string>
@@ -248,8 +249,10 @@
     <string name="ask_unblock_contact">ئاستەنگ لەسەر ئەم بەردەنگە لادەبەیت؟ دیسان پەیامەکانی ئەم بەردەنگەت پێ دەگات.</string>
     <string name="ask_delete_contacts">بەردەنگەکان دەسڕیتەوە؟\n\n ئەو بەردەنگانەی هێشتا وتووێژی چالاکتان پێکەوە هەیە و ئەو بەردەنگانەی کە لەنێو تێنووسی سیستەمدان، بۆ هەتاهەتایی ناسڕدرێنەوە.</string>
     <string name="ask_delete_contact">%1$s لە بەردەنگەکانت دەسڕیتەوە؟ \n\n ئەو بەردەنگانەی هێشتا وتووێژی چالاکتان پێکەوە هەیە و ئەو بەردەنگانەی کە لەنێو تێنووسی سیستەمدان، بۆ هەتاهەتایی ناسڕدرێنەوە.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">ناتوانیت ئەو بەردەنگانەی وتووێژی چالاکتان هەیە بسڕیتەوە.</string>
     <string name="ask_start_chat_with">وتووێژ لەگەڵ %1$s؟</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">%sدەسڕیتەوە؟</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$sلە کۆڕ دەخەیتەدەر؟</string>

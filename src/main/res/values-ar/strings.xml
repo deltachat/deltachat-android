@@ -95,6 +95,7 @@
     <string name="menu_add_attachment">إضافة مرفقات</string>
     <string name="menu_leave_group">غادر الفريق</string>
     <string name="menu_delete_chat">احدف المحادثة</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">احذف الرسائل</string>
     <string name="menu_message_details">تفاصيل الرسالة</string>
     <string name="menu_copy_to_clipboard">انسخ إلى الحافظة</string>

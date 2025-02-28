@@ -142,6 +142,7 @@
     <string name="menu_add_attachment">Legg ved filer</string>
     <string name="menu_leave_group">Forlat gruppe</string>
     <string name="menu_delete_chat">Slett sludring</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Slett meldinger</string>
     <string name="menu_delete_location">Slett på dette stedet?</string>
     <string name="menu_message_details">Meldingsdetaljer</string>
@@ -221,6 +222,7 @@
     <string name="ask_unblock_contact">Fjern blokkering av denne kontakten? Du vil igjen kunne motta meldinger fra kontakten.</string>
     <string name="ask_delete_contacts">Slett kontakter?\n\nKontakter med pågående chatter og kontakter fra systemet adressebok kan ikke bli slettet permanent.</string>
     <string name="ask_delete_contact">Slett kontakter %1$s?\n\nKontakter med pågående chatter og kontakter fra systemets adressebok, kan ikke slettes permanent.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Kan ikke slette kontakter med pågående chatter.</string>
     <string name="ask_start_chat_with">Begynn å sludre med %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->

@@ -239,6 +239,7 @@
     <string name="menu_delete_chat">删除聊天</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">清空聊天记录</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">删除消息</string>
     <string name="delete_contact">删除联系人</string>
     <string name="menu_delete_location">删除此位置？</string>
@@ -359,7 +360,7 @@
         <item quantity="other">删除 %d 个聊天？被删除的聊天不会再显示在聊天列表中；聊天消息仍将保留于服务器。</item>
     </plurals>
     <string name="ask_delete_named_chat">删除聊天“%1$s”？它将不再显示在聊天列表中，其消息将保留在服务器上。</string>
-    <string name="ask_delete_message">您确定要删除这条消息吗？</string>
+    <string name="ask_delete_message">在所有设备上删除此消息吗？</string>
     <plurals name="ask_delete_messages">
         <item quantity="other">是否删除所有设备上的 %d 条消息？</item>
     </plurals>
@@ -374,8 +375,10 @@
     <string name="ask_unblock_contact">取消屏蔽此联系人？您将再次能收到此联系人的消息。</string>
     <string name="ask_delete_contacts">删除联系人？\n\n仍有在进行中的聊天的联系人和在系统通讯录中的联系人无法被永久删除。</string>
     <string name="ask_delete_contact">删除联系人 %1$s?\n\n仍有在进行中的聊天的联系人和在系统通讯录中的联系人无法被永久删除。</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">无法删除仍有在进行中的聊天的联系人。</string>
     <string name="ask_start_chat_with">与 %1$s 聊天？</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">删除 %s？</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">将 %1$s 从群组中移除？</string>
@@ -534,6 +537,7 @@
     <string name="multidevice_receiver_title">添加为第二台设备</string>
     <string name="multidevice_open_settings_on_other_device">在第一台设备上，转到“设置/添加第二台设备”并扫描显示的二维码</string>
     <string name="multidevice_receiver_scanning_ask">是否将账号从其他设备复制到此设备？</string>
+    <string name="multidevice_receiver_needs_update">你想导入的配置文件来自较新的 Delta Chat 版本。\n\n要继续设置第二台设备，请更新此设备上的 Delta Chat 到最新版。</string>
     <string name="multidevice_abort">中止第二台设备的设置吗？</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">这会让复制到剪贴板的二维码失效。</string>
     <string name="multidevice_experimental_hint">（实验性，需要 1.36 版本）</string>

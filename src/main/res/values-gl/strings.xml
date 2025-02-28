@@ -203,6 +203,7 @@
     <string name="menu_delete_chat">Eliminar conversa</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Limpar Chat</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Eliminar mensaxes</string>
     <string name="delete_contact">Eliminar contacto</string>
     <string name="menu_delete_location">Eliminar esta localización?</string>
@@ -309,7 +310,6 @@
         <item quantity="other">Eliminar %d conversas? Non se mostrarán máis na listas de conversas, as mensaxes permanecerán no servidor.</item>
     </plurals>
     <string name="ask_delete_named_chat">Tes a certeza de querer eliminar \"%1$s\"?</string>
-    <string name="ask_delete_message">Tes a certeza de querer eliminar esta mensaxe?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Borrar %d mensaxe?</item>
@@ -322,8 +322,10 @@
     <string name="ask_unblock_contact">Desbloquear contacto? Voltarás a poder recibir mensaxes de este contacto.</string>
     <string name="ask_delete_contacts">Eliminar contactos?\n\nOs contactos con conversas activas e os contactos da libreta de enderezos do sistema non se poden eliminar de xeito definitivo.</string>
     <string name="ask_delete_contact">Eliminar contacto %1$s?\n\nOs contactos con conversas activas e os contactos da libreta de enderezos do sistema non se poden eliminar de xeito definitivo.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Non podes eliminar contactos con conversas activas.</string>
     <string name="ask_start_chat_with">Conversa con %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Eliminar %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Eliminar  %1$s do grupo?</string>

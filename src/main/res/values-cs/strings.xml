@@ -220,6 +220,7 @@
     <string name="menu_delete_chat">Vymaž chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Vyčisti chat</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Vymaž zprávy</string>
     <string name="delete_contact">Vymaž kontakt</string>
     <string name="menu_delete_location">Smazat tuto polohu?</string>
@@ -344,8 +345,10 @@
     <string name="ask_unblock_contact">Odblokovat tento kontakt? Zprávy od tohoto kontaktu budete opět přijímat.</string>
     <string name="ask_delete_contacts">Vymazat kontakty?\n\nKontakty v nastavených chatech a kontakty ze systémového adresáře nelze nadobro vymazat.</string>
     <string name="ask_delete_contact">Vymazat kontakt %1$s?\n\nKontakty v nastavených chatech a kontakty ze systémového adresáře nelze nadobro vymazat.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Kontakty v nastavených chatech nelze vymazat</string>
     <string name="ask_start_chat_with">Chat s %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Vymazat %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Odstranit %1$s ze skupiny?</string>

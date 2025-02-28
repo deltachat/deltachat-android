@@ -221,6 +221,7 @@
     <string name="menu_delete_chat">刪除對話</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">清除對話</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">刪除訊息</string>
     <string name="delete_contact">刪除聯絡人</string>
     <string name="menu_delete_location">刪除這個地點？</string>
@@ -341,7 +342,6 @@
         <item quantity="other">確定刪除%d個對話嗎？將會從對話紀錄中刪除，然而伺服器中仍會保留對話。</item>
     </plurals>
     <string name="ask_delete_named_chat">你確定你要刪除「%1$s」？</string>
-    <string name="ask_delete_message">你確定要刪除這則訊息？</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">刪除%d則訊息？</item>
@@ -353,8 +353,10 @@
     <string name="ask_unblock_contact">要解除封鎖嗎？你之後可以繼續收到這個人的訊息。</string>
     <string name="ask_delete_contacts">要刪除聯絡人嗎？選定的聯絡人將被永久刪除。\n\n正在進行對話的聯絡人、以及系統通訊錄中的聯絡人，無法被永久刪除。</string>
     <string name="ask_delete_contact">要刪除%1$s聯絡人嗎？\n\n聊天室中的聯絡人和系統聯絡人將不會被永久刪除。</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">無法刪除聊天室內的聯絡人。</string>
     <string name="ask_start_chat_with">要和%1$s開始對話嗎？</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">刪除%s？</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">要把%1$s移出群組嗎？</string>
