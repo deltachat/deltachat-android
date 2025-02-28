@@ -246,6 +246,7 @@
     <string name="menu_delete_chat">Csevegés törlése</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Csevegés kiürítése</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Üzenetek törlése</string>
     <string name="delete_contact">Névjegy törlése</string>
     <string name="menu_delete_location">Biztosan törli ezt a helyszínt?</string>
@@ -368,7 +369,6 @@
         <item quantity="other">Biztosan töröl %d csevegést? Többé nem jelennek meg a csevegőlistában; az üzeneteik viszont a kiszolgálón maradnak.</item>
     </plurals>
     <string name="ask_delete_named_chat">Biztosan törli a következőt: „%1$s”? Többé nem fog megjelenni a csevegőlistában; üzenetei a kiszolgálón maradnak.</string>
-    <string name="ask_delete_message">Biztosan törölni szeretné ezt az üzenetet?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">%d üzenet törlése?</item>
@@ -381,8 +381,10 @@
     <string name="ask_unblock_contact">Feloldja ennek a partnerének a letiltását? Ezután képes lesz üzeneteket fogadni tőle.</string>
     <string name="ask_delete_contacts">Névjegy törlése?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó névjegyek nem törölhetők véglegesen.</string>
     <string name="ask_delete_contact">Törli a(z) %1$s nevű partnerét?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó partnerek nem törölhetők véglegesen.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">A folyamatban lévő csevegésekkel rendelkező névjegyek nem törölhetők.</string>
     <string name="ask_start_chat_with">Csevegés vele: %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">%s törlése?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Eltávolítja a csoportból őt: %1$s?</string>

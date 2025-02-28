@@ -220,6 +220,7 @@
     <string name="menu_delete_chat">Изтриване на чата</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Изчистване на чата</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Изтриване на съобщения</string>
     <string name="delete_contact">Изтриване на контакт</string>
     <string name="menu_delete_location">Да бъде ли изтрито това местоположение?</string>
@@ -333,7 +334,6 @@
         <item quantity="other">Да бъдат ли изтрити%d чата? Те повече няма да се показват в списъка с чатове; техните съобщения ще останат на сървъра.</item>
     </plurals>
     <string name="ask_delete_named_chat">Сигурни ли сте, че искате да изтриете %1$s?</string>
-    <string name="ask_delete_message">Сигурни ли сте, че искате да изтриете това съобщение?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Да бъде ли изтрито %d съобщение?</item>
@@ -346,8 +346,10 @@
     <string name="ask_unblock_contact">Да бъде ли отблокиран този контакт? Ще можете отново да получавате съобщения от него.</string>
     <string name="ask_delete_contacts">Да бъдат ли изтрити контактите?\n\nКонтактите с текущо провеждани чатове и контактите от системната адресна книга не могат да бъдат изтрити за постоянно.</string>
     <string name="ask_delete_contact">Да бъде ли изтрит контактът %1$s? Контактите с текущо провеждани чатове и контактите от системната адресна книга не могат да бъдат изтрити за постоянно.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Контактите с текущо провеждани чатове не могат да бъдат изтривани.</string>
     <string name="ask_start_chat_with">Чат с %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Да бъде ли изтрит %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Премахване на %1$s от групата?</string>

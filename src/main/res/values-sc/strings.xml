@@ -150,6 +150,7 @@
     <string name="menu_add_attachment">Annanghe un\'allegadu</string>
     <string name="menu_leave_group">Lassa su grupu</string>
     <string name="menu_delete_chat">Iscantzella sa tzarrada</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Iscantzella sos messàgios</string>
     <string name="menu_delete_location">Iscantzellare custa positzione?</string>
     <string name="menu_message_details">Detàllios de su messàgiu</string>
@@ -230,6 +231,7 @@
     <string name="ask_unblock_contact">Isblocare custu cuntatu? As a torrare a pòdere retzire messàgios dae custu cuntatu.</string>
     <string name="ask_delete_contacts">Iscantzellare sos cuntatos?\n\nSos cuntatos cun tzarradas ativas e cussos de sa rubrica de su dispositivu non podent èssere iscantzellados definitivamente.</string>
     <string name="ask_delete_contact">Cheres iscantzellare a %1$s pro semper?\n\nSos cuntatos cun tzarradas ativas e cussos de sa rubrica de su dispositivu non podent èssere iscantzellados definitivamente.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Non podes iscantzellare cuntatos cun tzarradas ativas.</string>
     <string name="ask_start_chat_with">Cheres tzarrare cun %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->

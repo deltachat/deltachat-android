@@ -175,6 +175,7 @@
     <string name="menu_add_attachment">បន្ថែមឯកសារភ្ជាប់</string>
     <string name="menu_leave_group">ចាកចេញពីក្រុម</string>
     <string name="menu_delete_chat">លុបសារសន្ទនា</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">លុបសារ</string>
     <string name="delete_contact">លុបទំនាក់ទំនង</string>
     <string name="menu_delete_location">លុបទីតាំងនេះ?</string>
@@ -272,7 +273,6 @@
         <item quantity="other">លុបសារសន្ទនាទាំង %d  នេះ? ពួកគេនឹងមិនត្រូវបានបង្ហាញនៅក្នុងបញ្ជីសន្ទនាទៀតទេ។ សាររបស់ពួកគេនឹងនៅមានលើម៉ាសុីនមេ</item>
     </plurals>
     <string name="ask_delete_named_chat">តើអ្នកប្រាកដហើយថាចង់លុប \"%1$s\"?</string>
-    <string name="ask_delete_message">តើអ្នកប្រាកដថា ចង់លុបសារនេះ?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">លុបសារ %d</item>
@@ -284,8 +284,10 @@
     <string name="ask_unblock_contact">ដកបង្ខាំងទំនាក់ទំនងនេះ? អ្នកនឹងអាចទទួលសារពីទំនាក់ទំនងនេះម្តងទៀត។</string>
     <string name="ask_delete_contacts">លុបការទំនាក់ទំនង?\n\nទំនាក់ទំនងដែលកំពុងបន្ត និងទំនាក់ទំនង ពីសៀវភៅអសយដ្ឋានពីម៉ាសុីន មិនអាចលុបចេញបានដាច់ខាត។</string>
     <string name="ask_delete_contact">លុបទំនាក់ទំនង %1$s?\n\nទំនាក់ទំនងដែលកំពុងបន្ត និងទំនាក់ទំនង ពីសៀវភៅអសយដ្ឋានពីម៉ាសុីន មិនអាចលុបចេញបានដាច់ខាត។</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">មិនអាចលុបទំនាក់ទំនងដែលកំពុងបន្តសន្ទនា</string>
     <string name="ask_start_chat_with">សន្ទនាជាមួយ %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">លុប %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">លុប %1$s ពីក្រុមសន្ទនានេះ?</string>

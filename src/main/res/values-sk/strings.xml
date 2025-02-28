@@ -213,6 +213,7 @@
     <string name="menu_add_attachment">Pridať prílohu</string>
     <string name="menu_leave_group">Opustiť skupinu</string>
     <string name="menu_delete_chat">Odstrániť konverzáciu</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Odstrániť správy</string>
     <string name="delete_contact">Odstrániť kontakt</string>
     <string name="menu_delete_location">Odstrániť toto miesto?</string>
@@ -323,7 +324,6 @@
         <item quantity="other">Odstrániť %d konverzácií? Už sa nebudú zobrazovať v zozname konverzácií, ich správy zostanú na serveri.</item>
     </plurals>
     <string name="ask_delete_named_chat">Naozaj chcete položku odstrániť  \"%1$s\" ?</string>
-    <string name="ask_delete_message">Naozaj chcete odstrániť túto správu?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Odstrániť %d správu?</item>
@@ -338,8 +338,10 @@
     <string name="ask_unblock_contact">Odblokovať tento kontakt? Z tohto kontaktu budete opäť môcť dostávať správy.</string>
     <string name="ask_delete_contacts">Odstrániť kontakty?\n\nKontakty s prebiehajúcimi rozhovormi a kontakty z adresára systému nemožno natrvalo odstrániť.</string>
     <string name="ask_delete_contact">Odstrániť kontakt %1$s?\n\nKontakty s prebiehajúcimi chatmi a kontakty z adresára systému nemožno natrvalo odstrániť.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Nie je možné odstrániť kontakty s prebiehajúcimi rozhovormi.</string>
     <string name="ask_start_chat_with">Písať si s %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Odstrániť %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Odstrániť %1$s zo skupiny?</string>

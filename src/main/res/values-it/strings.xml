@@ -257,6 +257,7 @@
     <string name="menu_delete_chat">Elimina Chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Cancella Messaggi</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Elimina Messaggi</string>
     <string name="delete_contact">Elimina Contatto</string>
     <string name="menu_delete_location">Elimino questa Posizione?</string>
@@ -381,7 +382,6 @@
         <item quantity="other">Eliminare %d chats?</item>
     </plurals>
     <string name="ask_delete_named_chat">Elimina chat \"%1$s\"?</string>
-    <string name="ask_delete_message">Sei sicuro di voler eliminare questo messaggio?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Cancella %d messaggio su tutti i tuoi dispositivi?</item>
         <item quantity="many">Cancella %d messaggi su tutti i tuoi dispositivi?</item>
@@ -400,8 +400,10 @@
     <string name="ask_unblock_contact">Sbloccare questo contatto?</string>
     <string name="ask_delete_contacts">Eliminare contatti?\n\nI contatti con chat in corso o in rubrica di sistema non possono essere eliminati definitivamente.</string>
     <string name="ask_delete_contact">Eliminare il contatto %1$s?\n\nI contatti con chat in corso o in rubrica di sistema non possono essere eliminati definitivamente.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Impossibile eliminare contatti con chat in corso.</string>
     <string name="ask_start_chat_with">Chattare con %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Elimina %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Rimuovere %1$s dal gruppo?</string>
