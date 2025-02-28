@@ -136,6 +136,7 @@
     <string name="menu_add_attachment">Gehitu eranskina</string>
     <string name="menu_leave_group">Atera taldetik</string>
     <string name="menu_delete_chat">Ezabatu txata</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Ezabatu mezuak</string>
     <string name="menu_delete_location">Ezabatu kokaleku hau?</string>
     <string name="menu_message_details">Mezuaren xehetasunak</string>
@@ -201,6 +202,7 @@
     <string name="ask_unblock_contact">Desblokeatu kontaktu hau? Berriro jaso ahal izango dituzu kontaktu honen mezuak.</string>
     <string name="ask_delete_contacts">Ezabatu kontaktuak? Honek behin betiko ezabatuko ditu hautatutako kontaktuak.\n\nTxaten bat abian duten eta sistemako helbide liburuan dauden kontaktuak ezin dira behin betiko ezabatu.</string>
     <string name="ask_delete_contact">Ezabatu %1$s kontaktua behin betiko?\n\nAbian dauden txatak dituzten kontaktuak eta sistemaren helbide liburuan dauden kontaktuak ezin dira behin betiko ezabatu.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Ezin dira txatak abian dituzten kontaktuak ezabatu</string>
     <string name="ask_start_chat_with">Txateatu %1$s erabiltzailearekin?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->

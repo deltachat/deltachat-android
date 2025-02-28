@@ -215,6 +215,7 @@
     <string name="menu_delete_chat">Обриши ћаскање</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Обриши ћаскање</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Избришите поруке</string>
     <string name="delete_contact">Избриши контакт</string>
     <string name="menu_delete_location">Избриши овај положај?</string>
@@ -324,7 +325,6 @@
         <item quantity="other">Избриши %d ћаскањa? Они више неће бити приказани на листи ћаскања; али поруке ће остати на серверу.</item>
     </plurals>
     <string name="ask_delete_named_chat">Јесте ли сигурни да желите да избришете „%1$s“?</string>
-    <string name="ask_delete_message">Да ли желите да избришете ову поруку?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Да ли желите да избришите %d поруку?</item>
@@ -338,8 +338,10 @@
     <string name="ask_unblock_contact">Да ли желите да деблокирате овај контакт? Биће вам омогућено да опет примате поруке од њих.</string>
     <string name="ask_delete_contacts">Да ли желите да избришете контакте?\n\nКонтакти са ћаскањима у току или из системског адресара се не могу трајно избрисати.</string>
     <string name="ask_delete_contact">Да ли желите да избришете %1$s контакт?\n\nКонтакти са ћаскањима у току или из системског адресара се не могу трајно избрисати.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Немогу ће је избрисати контакте са којима је ћаскање у току.</string>
     <string name="ask_start_chat_with">Да ли желите да ћаскате са %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Да ли желите да избришете %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Да ли желите да уклонитите %1$s из групе?</string>

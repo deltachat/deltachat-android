@@ -194,6 +194,7 @@
     <string name="menu_delete_chat">Hapus obrolan</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Hapus Obrolan</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Hapus pesan</string>
     <string name="delete_contact">Hapus kontak</string>
     <string name="menu_delete_location">Hapus lokasi ini?</string>
@@ -300,8 +301,10 @@
     <string name="ask_unblock_contact">Buka blokir kontak ini? Anda akan bisa kembali menerima pesan dari kontak ini.</string>
     <string name="ask_delete_contacts">Hapus kontak?\n\nKontak dengan obrolan yang sedang berlangsung dan dari buku alamat pada sistem tak bisa dihapus secara permanen.</string>
     <string name="ask_delete_contact">Hapus kontak %1$s?\n\nKontak dengan obrolan yang sedang berlangsung dan dari buku alamat pada sistem tak bisa dihapus secara permanen.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Tak bisa menghapus kontak yang sedang dalam obrolan.</string>
     <string name="ask_start_chat_with">Ngobrol dengan %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Hapus %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Hapus %1$s dari grup?</string>

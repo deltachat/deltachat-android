@@ -213,6 +213,7 @@
     <string name="menu_delete_chat">Ištrinti pokalbį</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Išvalyti pokalbį</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Ištrinti žinutes</string>
     <string name="delete_contact">Ištrinti adresatą</string>
     <string name="menu_delete_location">Ištrinti šią vietą?</string>
@@ -314,7 +315,6 @@
         <item quantity="other">Ištrinti %d pokalbį? Jis daugiau nebebus rodomas pokalbių sąraše, jo žinutės liks serveryje.</item>
     </plurals>
     <string name="ask_delete_named_chat">Ar tikrai norite ištrinti „%1$s“?</string>
-    <string name="ask_delete_message">Ar tikrai norite ištrinti šią žinutę?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ištrinti %d žinutę?</item>
@@ -327,6 +327,7 @@
     <string name="ask_block_contact">Užblokuoti šį adresatą? Jūs daugiau nebegausite žinučių nuo šio adresato.</string>
     <string name="ask_unblock_contact">Atblokuoti šį adresatą? Jūs ir vėl galėsite gauti žinutes nuo šio adresato.</string>
     <string name="ask_start_chat_with">Pradėti pokalbį su %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Ištrinti %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Pašalinti %1$s iš grupės?</string>
