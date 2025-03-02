@@ -368,10 +368,10 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Are you sure you want to leave this group?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Delete %d chat?</item>
-        <item quantity="other">Delete %d chats?</item>
+        <item quantity="one">Delete %d chat on all your devices?</item>
+        <item quantity="other">Delete %d chats on all your devices?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Delete chat \"%1$s\"?</string>
+    <string name="ask_delete_named_chat">Delete chat \"%1$s\" on all your devices?</string>
     <string name="ask_delete_message">Delete this message on all your devices?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Delete %d message on all your devices?</item>
