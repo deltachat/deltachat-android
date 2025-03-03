@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+
+  <application>
+    <service
+        android:name=".notifications.FcmReceiveService"
+        android:foregroundServiceType="dataSync"
+        android:exported="false">
+      <intent-filter>
+        <action android:name="com.huawei.push.action.MESSAGING_EVENT" />
+      </intent-filter>
+    </service>
+
+    <provider
+        android:name="com.google.firebase.provider.FirebaseInitProvider"
+        android:authorities="${applicationId}.firebaseinitprovider"
+        tools:node="remove">
+    </provider>
+  </application>
+
+</manifest>

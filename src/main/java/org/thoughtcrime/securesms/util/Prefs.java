@@ -152,7 +152,7 @@ public class Prefs {
   }
 
   public static boolean isPushEnabled(Context context) {
-      return BuildConfig.USE_PLAY_SERVICES;
+      return BuildConfig.USE_PUSH_SERVICES;
   }
 
   public static boolean isHardCompressionEnabled(Context context) {
