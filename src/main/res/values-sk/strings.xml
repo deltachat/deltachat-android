@@ -317,13 +317,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Naozaj chcete opustiť túto skupinu?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Odstrániť %d chat? Už sa nebude zobrazovať v zozname chatu, jeho správy zostanú na serveri.</item>
-        <item quantity="few">Odstrániť %d chaty? Už sa nebudú zobrazovať v zozname chatu, ich správy zostanú na serveri.</item>
-        <item quantity="many">Odstrániť %d chaty? Už sa nebudú zobrazovať v zozname chatu, ich správy zostanú na serveri.</item>
-        <item quantity="other">Odstrániť %d konverzácií? Už sa nebudú zobrazovať v zozname konverzácií, ich správy zostanú na serveri.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Naozaj chcete položku odstrániť  \"%1$s\" ?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Odstrániť %d správu?</item>

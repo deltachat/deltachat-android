@@ -28,6 +28,8 @@
     <string name="join">Uneix-te</string>
     <string name="rejoin">Torna a unir-te</string>
     <string name="delete">Esborra</string>
+    <string name="delete_for_me">Esborra per a Mi</string>
+    <string name="delete_for_everyone">Esborra per a Tothom</string>
     <string name="info">Info</string>
     <string name="update">Actualitza</string>
     <string name="emoji">Emojis</string>
@@ -305,6 +307,7 @@
     <string name="menu_learn_spelling">Aprèn l\'ortografia</string>
     <string name="menu_chat_audit_log">Registre de l\'auditoria de xat</string>
     <string name="jump_to_message">Ves al missatge</string>
+    <string name="jump_to_original_message">Vés al Missatge Original</string>
     <string name="copy_json">Copia el JSON</string>
     <string name="replace_draft">Substitueix l\'esborrany</string>
     <string name="title_share_location">Comparteix la ubicació amb tots els membres del grup</string>
@@ -365,10 +368,15 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Segur que voleu deixar aquest grup?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Esborra %d xat? Ja no es mostrarà al llistat de xats, i els seus missatges no romandran al servidor.</item>
-        <item quantity="other">Voleu esborrar %d xats? Ja no es mostraran al llistat de xats però els missatges es conservaran al servidor.</item>
+        <item quantity="one">¿Esborrar %d xat de tots els teus dispositius?</item>
+        <item quantity="other">¿Esborrar %d xats de tots els teus dispositius?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Voleu esborrar el xat «%1$s»? Ja no es mostrarà més en el llistat de xats i els missatges romandran al servidor.</string>
+    <string name="ask_delete_named_chat">¿Esborrar xat \"%1$s\" de tots els teus dispositius?</string>
+    <string name="ask_delete_message">¿Esborra aquest missatge de tots els teus dispositius?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">¿Esborra %d missatge de tots els teus dispositius?</item>
+        <item quantity="other">¿Esborra %d missatges de tots els teus dispositius?</item>
+    </plurals>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Vols esborrar %d missatge?</item>
@@ -546,6 +554,7 @@
     <string name="multidevice_receiver_title">Afegeix com a segon dispositiu</string>
     <string name="multidevice_open_settings_on_other_device">En el primer dispositiu, aneu a «Configuració / Afegeix un segon dispositiu» i escanegeu el codi que es mostra allà.</string>
     <string name="multidevice_receiver_scanning_ask">Voleu copiar el perfil de l\'altre dispositiu en aquest?</string>
+    <string name="multidevice_receiver_needs_update">El perfil que vols importar prové d\'una versió més recent de Delta Chat.\n\nPer continuar configurant el segon dispositiu, actualitza aquest dispositiu a l\'última versió de Delta Chat.</string>
     <string name="multidevice_abort">Voleu cancel·lar la configuració d\'un segon dispositiu?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Això invalidarà el codi QR copiat al porta-retalls.</string>
     <string name="multidevice_experimental_hint">(experimental, es requereix la versió 1.36)</string>

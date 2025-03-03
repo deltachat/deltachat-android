@@ -282,11 +282,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ĉu vi estas certa, ke vi volas forlasi tiun ĉi grupon?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Ĉu forigi %d babilon? Ĝi ne plu troveblos en la babilaro, tamen ĝiaj mesaĝoj plurestos en la servilo.</item>
-        <item quantity="other">Ĉu forigi %d babilojn? Ili ne plu troveblos en la babilaro, tamen iliaj mesaĝoj plurestos en la servilo.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Ĉu vi certas, ke vi deziras forigi \"%1$s\"?</string>
     <string name="ask_forward">Plusendi mesaĝojn al %1$s?</string>
     <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Ne eblas forigi kontaktojn kun aktualaj babiloj.</string>

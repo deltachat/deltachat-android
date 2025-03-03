@@ -338,10 +338,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">確定要離開本群組？</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="other">確定刪除%d個對話嗎？將會從對話紀錄中刪除，然而伺服器中仍會保留對話。</item>
-    </plurals>
-    <string name="ask_delete_named_chat">你確定你要刪除「%1$s」？</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">刪除%d則訊息？</item>

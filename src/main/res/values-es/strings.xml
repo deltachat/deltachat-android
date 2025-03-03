@@ -370,12 +370,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">¿Seguro que deseas abandonar este grupo? </string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">¿Eliminar %d chat? No volverá a ser mostrado en la lista de chats, pero sus mensajes permanecerán en el servidor.</item>
-        <item quantity="many">¿Eliminar %d chats? No volverán a ser mostrados en la lista de chats, pero sus mensajes permanecerán en el servidor.</item>
-        <item quantity="other">¿Eliminar %d chats? No volverán a ser mostrados en la lista de chats, pero sus mensajes permanecerán en el servidor.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">¿Estás seguro de que deseas eliminar \"%1$s\"?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">¿Eliminar %d mensaje?</item>

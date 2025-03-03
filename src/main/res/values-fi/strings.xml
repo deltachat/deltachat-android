@@ -329,11 +329,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Haluatko varmasti poistua tästä ryhmästä?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Poista %d keskustelu? Se ei enää näy keskustelulistauksessa, mutta sen viestit jäävät palvelimelle.</item>
-        <item quantity="other">Poista %d keskustelua? Ne eivät enää näy keskustelulistauksessa, mutta niiden viestit jäävät palvelimelle.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Haluatko varmasti poistaa \"%1$s\"?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Poista %d viesti?</item>

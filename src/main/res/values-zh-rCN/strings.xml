@@ -298,6 +298,7 @@
     <string name="menu_learn_spelling">学习拼写</string>
     <string name="menu_chat_audit_log">聊天审计日志</string>
     <string name="jump_to_message">跳转到消息</string>
+    <string name="jump_to_original_message">跳转到原始消息</string>
     <string name="copy_json">复制 JSON</string>
     <string name="replace_draft">替换草稿</string>
     <string name="title_share_location">与所有群组成员共享位置</string>
@@ -357,10 +358,10 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">您确定要离开此群组吗？</string>
     <plurals name="ask_delete_chat">
-        <item quantity="other">删除 %d 个聊天？被删除的聊天不会再显示在聊天列表中；聊天消息仍将保留于服务器。</item>
+        <item quantity="other">是否删除所有设备上的 %d 个聊天？</item>
     </plurals>
-    <string name="ask_delete_named_chat">删除聊天“%1$s”？它将不再显示在聊天列表中，其消息将保留在服务器上。</string>
-    <string name="ask_delete_message">在所有设备上删除此消息吗？</string>
+    <string name="ask_delete_named_chat">是否删除所有设备上的聊天“%1$s”？</string>
+    <string name="ask_delete_message">是否在所有设备上删除此消息？</string>
     <plurals name="ask_delete_messages">
         <item quantity="other">是否删除所有设备上的 %d 条消息？</item>
     </plurals>

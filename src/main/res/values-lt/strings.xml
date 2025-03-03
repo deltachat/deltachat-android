@@ -308,13 +308,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ar tikrai norite išeiti iš šios grupės?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Ištrinti %d pokalbį? Jis daugiau nebebus rodomas pokalbių sąraše, jo žinutės liks serveryje.</item>
-        <item quantity="few">Ištrinti %d pokalbius? Jie daugiau nebebus rodomi pokalbių sąraše, jų žinutės liks serveryje.</item>
-        <item quantity="many">Ištrinti %d pokalbių? Jie daugiau nebebus rodomi pokalbių sąraše, jų žinutės liks serveryje.</item>
-        <item quantity="other">Ištrinti %d pokalbį? Jis daugiau nebebus rodomas pokalbių sąraše, jo žinutės liks serveryje.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Ar tikrai norite ištrinti „%1$s“?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ištrinti %d žinutę?</item>

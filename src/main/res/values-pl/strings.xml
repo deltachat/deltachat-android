@@ -325,6 +325,7 @@
     <string name="menu_learn_spelling">Naucz się pisowni</string>
     <string name="menu_chat_audit_log">Dziennik audytu czatu</string>
     <string name="jump_to_message">Przejdź do wiadomości</string>
+    <string name="jump_to_original_message">Przejdź do oryginalnej wiadomości</string>
     <string name="copy_json">Kopiuj JSON</string>
     <string name="replace_draft">Zastąp szkic</string>
     <string name="title_share_location">Udostępnij lokalizację dla wszystki czlonków grup</string>
@@ -386,13 +387,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Czy na pewno chcesz opuścić tę grupę?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Usunąć %d czat? Nie będzie już wyświetlany na liście czatów, wiadomość pozostanie na serwerze.</item>
-        <item quantity="few">Usunąć %d czatów? Nie będą już wyświetlane na liście czatów, ich wiadomości pozostaną na serwerze.</item>
-        <item quantity="many">Usunąć %d czaty? Nie będą już wyświetlane na liście czatów, ich wiadomości pozostaną na serwerze.</item>
-        <item quantity="other">Usunąć %d czatów? Nie będą już wyświetlane na liście czatów, ich wiadomości pozostaną na serwerze.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Usunąć czat „%1$s”? Nie będzie on już wyświetlany na liście czatów. Jego wiadomości pozostaną na serwerze.</string>
+    <string name="ask_delete_message">Usunąć tę wiadomość ze wszystkich urządzeń?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Usunąć %d wiadomość ze wszystkich urządzeń?</item>
         <item quantity="few">Usunąć %d wiadomości ze wszystkich urządzeń?</item>
@@ -584,6 +579,7 @@
     <string name="multidevice_receiver_title">Dodaj jako kolejne urządzenie</string>
     <string name="multidevice_open_settings_on_other_device">Na pierwszym urządzeniu przejdź do „Ustawienia » Dodaj kolejne urządzenie” i zeskanuj wyświetlony tam kod</string>
     <string name="multidevice_receiver_scanning_ask">Skopiować konto z innego urządzenia na to urządzenie?</string>
+    <string name="multidevice_receiver_needs_update">Profil, który chcesz zaimportować, pochodzi z nowszej wersji aplikacji Delta Chat.\n\nAby kontynuować konfigurowanie drugiego urządzenia, zaktualizuj to urządzenie do najnowszej wersji aplikacji Delta Chat.</string>
     <string name="multidevice_abort">Przerwać konfigurowanie kolejnego urządzenia?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Spowoduje to unieważnienie kodu QR skopiowanego do schowka.</string>
     <string name="multidevice_experimental_hint">(eksperymentalna, wymagana wersja 1.36)</string>

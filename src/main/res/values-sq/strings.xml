@@ -303,6 +303,7 @@
     <string name="menu_learn_spelling">Mëso Drejtshkrim</string>
     <string name="menu_chat_audit_log">Regjistër Auditimi Fjalosjeje</string>
     <string name="jump_to_message">Hidhu te Mesazh</string>
+    <string name="jump_to_original_message">Hidhu te Mesazhi Origjinal</string>
     <string name="copy_json">Kopjo JSON</string>
     <string name="replace_draft">Zëvendëso Skicë</string>
     <string name="title_share_location">Tregojua vendndodhjen krejt anëtarëve të grupit</string>
@@ -363,10 +364,11 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Jeni i sigurt se doni ta braktisni këtë grup?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Të fshihet %d fjalosje? S’do të duket më te lista e bisedave; mesazhet e saj do të mbeten te shërbyesi.</item>
-        <item quantity="other">Të fshihen %d fjalosje? S\’do të duken më te lista e fjalosjeve; mesazhet e tyre do të mbeten te shërbyesi.</item>
+        <item quantity="one">Të fshihet %d fjalosje në krejt pajisjet tuaja?</item>
+        <item quantity="other">Të fshihen %d fjalosje në krejt pajisjet tuaja?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Jeni i sigurt se doni të fshihet “%1$s”?</string>
+    <string name="ask_delete_named_chat">Të fshihet fjalosja “%1$s” në krejt pajisjet tuaja?</string>
+    <string name="ask_delete_message">Të fshihet ky mesazh në krejt pajisjet tuaja?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Të fshihet %d mesazh në krejt pajisjet tuaja?</item>
         <item quantity="other">Të fshihen %d mesazhe në krejt pajisjet tuaja?</item>

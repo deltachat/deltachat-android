@@ -172,10 +172,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu qrupu tərk etmək istədiyinizə əminsiniz?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">%d çat silmək? Artıq chat siyahısında göstərilməyəcək, mesajlar serverdə qalacaq.</item>
-        <item quantity="other">%d çat silmək? Artıq chat siyahısında göstərilməyəcək, mesajlar serverdə qalacaq.</item>
-    </plurals>
     <string name="ask_forward">Mesajları yönləndirin %1$sə-?</string>
     <string name="ask_export_attachment">Faylı ixrac etmək? Faylların ixracı cihazınızdakı hər hansı digər tətbiqlərə daxil olmağa imkan verəcəkdir. \n\n Razısan?</string>
     <string name="ask_block_contact">Bu kontaktı bloklamaq? Bu kontaktdan artıq mesaj qəbul etməyəcəksiniz.</string>

@@ -373,12 +373,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Voulez-vous vraiment quitter ce groupe ?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Supprimer %d discussion ? Elle n\'apparaîtra plus dans la liste des discussions, mais les messages échangés resteront sur le serveur.</item>
-        <item quantity="many">Supprimer %d discussions ? Elles n\'apparaîtront plus dans la liste des discussions, mais les messages qu\'elles contiennent resteront sur le serveur.</item>
-        <item quantity="other">Supprimer %d discussions ? Elles n\'apparaîtront plus dans la liste des discussions, mais les messages qu\'elles contiennent resteront sur le serveur.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Voulez-vous vraiment supprimer « %1$s » ?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Effacer %d message ici et sur le serveur ?</item>
         <item quantity="many">Effacer %d messages ici et sur le serveur ?</item>
