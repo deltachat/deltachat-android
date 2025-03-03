@@ -326,12 +326,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Quer mesmo sair do grupo?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Delete %d chat? It will no longer be shown in the chat list, its messages will remain on the server.</item>
-        <item quantity="many">Apagar %d conversas? Elas não mais serão exibidas na lista, mas ficarão no servidor.</item>
-        <item quantity="other">Apagar %d conversas? Elas não mais serão exibidas na lista, mas ficarão no servidor.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Você tem certeza que quer apagar \"%1$s\"?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Apagar %d mensagem?</item>

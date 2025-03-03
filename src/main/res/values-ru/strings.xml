@@ -325,6 +325,7 @@
     <string name="menu_learn_spelling">Запоминать правописание</string>
     <string name="menu_chat_audit_log">Журнал аудита чата</string>
     <string name="jump_to_message">Перейти к сообщению</string>
+    <string name="jump_to_original_message">Перейти к исходному сообщению</string>
     <string name="copy_json">Копировать JSON</string>
     <string name="replace_draft">Заменить черновик</string>
     <string name="title_share_location">Делиться местоположением со всеми участниками группы</string>
@@ -387,12 +388,12 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Вы уверены, что хотите покинуть эту группу?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Удалить %d чат?</item>
-        <item quantity="few">Удалить %d чата?</item>
-        <item quantity="many">Удалить %d чатов?</item>
-        <item quantity="other">Удалить %d чатов?</item>
+        <item quantity="one">Удалить %d чат на всех ваших устройствах?</item>
+        <item quantity="few">Удалить %d чата на всех ваших устройствах?</item>
+        <item quantity="many">Удалить %d чатов на всех ваших устройствах?</item>
+        <item quantity="other">Удалить %d чатов на всех ваших устройствах?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Удалить чат \"%1$s\"?</string>
+    <string name="ask_delete_named_chat">Удалить чат \"%1$s\" на всех ваших устройствах?</string>
     <string name="ask_delete_message">Удалить это сообщение на всех ваших устройствах?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Удалить %d сообщение на всех ваших устройствах?</item>

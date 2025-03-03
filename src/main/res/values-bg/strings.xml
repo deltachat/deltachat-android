@@ -329,11 +329,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Сигурни ли сте, че искате да напуснете тази група?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Да бъде ли изтрит %d чат? Той повече няма да се показва в списъка с чатове, неговите съобщения ще останат на сървъра.</item>
-        <item quantity="other">Да бъдат ли изтрити%d чата? Те повече няма да се показват в списъка с чатове; техните съобщения ще останат на сървъра.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Сигурни ли сте, че искате да изтриете %1$s?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Да бъде ли изтрито %d съобщение?</item>

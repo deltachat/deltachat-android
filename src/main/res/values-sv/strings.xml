@@ -335,11 +335,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Är du säker på att du vill lämna den här gruppen?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Radera %d chatt? Det kommer inte längre synas i chattlistan, meddelanden kommer att finnas kvar på servern.</item>
-        <item quantity="other">Radera %d chattar? De kommer inte att visas i chattlistan, deras meddelanden kommer finnas kvar på servern.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Är du säker på att du vill ta bort \"%1$s\"?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Vill du ta bort %d meddelande?</item>

@@ -305,11 +305,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Seguro que desexa abandonar o grupo?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Eliminar %d conversa? Non se mostrará na lista de conversas, as súas mensaxes permanecerán no servidor.</item>
-        <item quantity="other">Eliminar %d conversas? Non se mostrarán máis na listas de conversas, as mensaxes permanecerán no servidor.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Tes a certeza de querer eliminar \"%1$s\"?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Borrar %d mensaxe?</item>

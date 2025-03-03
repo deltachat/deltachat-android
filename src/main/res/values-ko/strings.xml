@@ -289,10 +289,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">이 그룹에서 나가시겠습니까?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="other">채팅 %d을/를 삭제하시겠습니까? 대화 상대의 메시지는 더 이상 대화 목록에 표시되지 않고 서버에 남아 있습니다.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">메시지 \"%1$s\"을 지우려는 것이 확실한가요?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">%d개의 메시지를 삭제하시겠습니까?</item>

@@ -316,12 +316,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ești sigur că vrei să părăsești acest grup?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Ștergeți %d chat-ul? Acestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
-        <item quantity="few">Ștergeți %d chat-uri? Acestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
-        <item quantity="other">Ștergeți %d de chat-urilAcestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Sunteți sigur că vreți să ștergeți \"%1$s\"?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ștergeți %d mesaj?</item>
