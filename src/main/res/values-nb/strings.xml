@@ -211,10 +211,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Er du sikker på at du vil forlate denne gruppen?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Slett %d chat? Den vil ikke lenger vises</item>
-        <item quantity="other">Slett %d chatter? De vil ikke lenger vises i chattelisten, meldingene vil fortsatt være lagret tjeneren.</item>
-    </plurals>
     <string name="ask_forward">Videresend meldinger til %1$s?</string>
     <string name="ask_forward_multiple">Videresend meldinger til %1$d chatter?</string>
     <string name="ask_export_attachment">Eksporter vedlegg? Eksport av vedlegg vil gi andre apper på din enhet tilgang til dem\n\nFortsett?</string>

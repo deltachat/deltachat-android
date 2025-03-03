@@ -256,11 +256,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Forlad denne gruppe?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Slette %d samtale? Den vil ikke længere blive vist i samtale listen, dens beskeder vil forblive på serveren.</item>
-        <item quantity="other">Slet %d samtaler? De vil ikke længere blive vist i samtale listen, deres beskeder vil forblive på serveren.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Er du sikker på at du vil slette \"%1$s\"?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Slet %d besked?</item>

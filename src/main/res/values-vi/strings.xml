@@ -317,10 +317,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Bạn có chắc chắn muốn rời khỏi nhóm này không?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="other">Xóa cuộc trò chuyện %d? Nó sẽ không còn được hiển thị trong danh sách trò chuyện nữa; tin nhắn của nó sẽ vẫn còn trên máy chủ.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Bạn có chắc chắn muốn xóa \"%1$s\" không?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">Xóa %d tin nhắn?</item>

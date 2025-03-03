@@ -319,12 +319,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Да ли заиста желите да напустите ову групу?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Избриши %d ћаскање? Више неће бити приказано на листи ћаскања; али поруке ће остати на серверу.</item>
-        <item quantity="few">Избриши %d ћаскањa? Они више неће бити приказани на листи ћаскања; али поруке ће остати на серверу.</item>
-        <item quantity="other">Избриши %d ћаскањa? Они више неће бити приказани на листи ћаскања; али поруке ће остати на серверу.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Јесте ли сигурни да желите да избришете „%1$s“?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Да ли желите да избришите %d поруку?</item>

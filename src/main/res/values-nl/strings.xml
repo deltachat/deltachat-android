@@ -307,6 +307,7 @@
     <string name="menu_learn_spelling">Spelling leren</string>
     <string name="menu_chat_audit_log">Gesprekslogboek</string>
     <string name="jump_to_message">Ga naar bericht</string>
+    <string name="jump_to_original_message">Ga naar oorspronkelijk bericht</string>
     <string name="copy_json">Json-gegevens kopiëren</string>
     <string name="replace_draft">Concept vervangen</string>
     <string name="title_share_location">Locatie delen met alle groepsleden</string>
@@ -367,14 +368,14 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Weet je zeker dat je deze groep wilt verlaten?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Wil je %d gesprek verwijderen?</item>
-        <item quantity="other">Wil je %d gesprekken verwijderen?</item>
+        <item quantity="one">Wil je %d gesprek verwijderen van al je apparaten?</item>
+        <item quantity="other">Wil je %d gesprekken verwijderen van al je apparaten?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Weet je zeker dat je ‘%1$s’ wilt verwijderen?</string>
+    <string name="ask_delete_named_chat">Wil je ‘%1$s’ verwijderen van al je apparaten?</string>
     <string name="ask_delete_message">Wil je dit bericht verwijderen van al je apparaten?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Wil je %d bericht verwijderen van al je apparaten?</item>
-        <item quantity="other">Wil je alle %d berichten verwijderen van al je apparaten?</item>
+        <item quantity="other">Wil je %d berichten verwijderen van al je apparaten?</item>
     </plurals>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">

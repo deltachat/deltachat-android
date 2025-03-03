@@ -307,6 +307,7 @@
     <string name="menu_learn_spelling">Yazımı Öğrenin</string>
     <string name="menu_chat_audit_log">Sohbet Denetim Günlüğü</string>
     <string name="jump_to_message">İletiye Atla</string>
+    <string name="jump_to_original_message">Özgün İletiye Atla</string>
     <string name="copy_json">JSON kopyala</string>
     <string name="replace_draft">Taslağı Değiştir</string>
     <string name="title_share_location">Tüm öbek üyeleriyle konum paylaş</string>
@@ -366,11 +367,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu öbekten ayrılmak istediğinizden emin misiniz?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">%d sohbet silinsin mi?</item>
-        <item quantity="other">%d sohbet silinsin mi?</item>
-    </plurals>
-    <string name="ask_delete_named_chat">“%1$s” sohbeti silinsin mi?</string>
     <string name="ask_delete_message">Tüm aygıtlarınızdaki bu ileti silinsin mi?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Tüm aygıtlarınızdaki %d ileti silinsin mi?</item>

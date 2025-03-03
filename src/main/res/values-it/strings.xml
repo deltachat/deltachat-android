@@ -316,6 +316,7 @@
     <string name="menu_learn_spelling">Impara l\'Ortografia</string>
     <string name="menu_chat_audit_log">Registro Controllo Chat</string>
     <string name="jump_to_message">Vai al Messaggio</string>
+    <string name="jump_to_original_message">Vai al Messaggio Originale</string>
     <string name="copy_json">Copia JSON</string>
     <string name="replace_draft">Sostituisci Bozza</string>
     <string name="title_share_location">Condividi posizione con tutti i membri del guppo</string>
@@ -376,12 +377,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Sei sicuro di voler abbandonare questo gruppo?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Eliminare %d chat? Essa non verrà più mostrata nella lista delle chat; i suoi messaggi rimarranno sul server.</item>
-        <item quantity="many">Eliminare %d chats? Esse non verranno più mostrate nella lista delle chat; i loro messaggi rimarranno sul server.</item>
-        <item quantity="other">Eliminare %d chats?</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Elimina chat \"%1$s\"?</string>
+    <string name="ask_delete_message">Vuoi eliminare questo messaggio da tutti i tuoi dispositivi?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Cancella %d messaggio su tutti i tuoi dispositivi?</item>
         <item quantity="many">Cancella %d messaggi su tutti i tuoi dispositivi?</item>
@@ -568,6 +564,7 @@
     <string name="multidevice_receiver_title">Aggiungi come Secondo Dispositivo</string>
     <string name="multidevice_open_settings_on_other_device">Sul primo dispositivo, andare su \"Impostazioni/Aggiungi Secondo Dispositivo\" e scansionare il codice mostrato qui</string>
     <string name="multidevice_receiver_scanning_ask">Copiare il profilo dall\'altro dispositivo su questo dispositivo?</string>
+    <string name="multidevice_receiver_needs_update">Il profilo che vuoi importare proviene da una versione più recente di Delta Chat.\n\nPer continuare a configurare il secondo dispositivo, aggiorna questo dispositivo all\'ultima versione di Delta Chat.</string>
     <string name="multidevice_abort">Interrompere l\'impostazione del secondo dispositivo?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Questo invaliderà il codice QR copiato negli appunti.</string>
     <string name="multidevice_experimental_hint">(sperimentale, è richiesta la versione 1.36)</string>
