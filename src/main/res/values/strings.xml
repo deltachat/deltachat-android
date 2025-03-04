@@ -668,9 +668,10 @@
     <string name="accept_invalid_certificates">Accept invalid certificates</string>
     <string name="switch_account">Switch Profile</string>
     <string name="add_account">Add Profile</string>
-    <string name="profile_tag">Profile Description</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Profile Label</string>
     <string name="profile_tag_hint">eg. Work, Family</string>
-    <string name="profile_tag_explain">Set a description that is visible only for you; helping you to differ between your profiles.</string>
+    <string name="profile_tag_explain">Set a label that is visible only for you; helping you to differ between your profiles.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Move to Top</string>
     <string name="delete_account">Delete Profile</string>
