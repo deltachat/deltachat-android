@@ -490,6 +490,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       Log.e(TAG, "cannot set up in-chat-search: ", e);
     }
 
+    if (!dcChat.canSend() || isEditing) {
+      MenuItem attachItem =  menu.findItem(R.id.menu_add_attachment);
+      if (attachItem!=null) {
+        attachItem.setVisible(false);
+      }
+    }
+
     super.onPrepareOptionsMenu(menu);
     return true;
   }
@@ -498,7 +505,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
     int itemId = item.getItemId();
-    if (itemId == R.id.menu_leave) {
+    if (itemId == R.id.menu_add_attachment) {
+      handleAddAttachment();
+      return true;
+    } else if (itemId == R.id.menu_leave) {
       handleLeaveGroup();
       return true;
     } else if (itemId == R.id.menu_archive_chat) {
