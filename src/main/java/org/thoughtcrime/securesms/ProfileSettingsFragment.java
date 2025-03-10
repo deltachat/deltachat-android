@@ -319,12 +319,15 @@ public class ProfileSettingsFragment extends Fragment
     super.onActivityResult(requestCode, resultCode, data);
     if (requestCode==REQUEST_CODE_PICK_CONTACT && resultCode==Activity.RESULT_OK && data!=null) {
       List<String> selected = data.getStringArrayListExtra("contacts");
-      for (String addr : selected) {
-        if (addr!=null) {
-          int toAddId = dcContext.createContact(null, addr);
-          dcContext.addContactToChat(chatId, toAddId);
+      if(selected == null) return;
+      Util.runOnAnyBackgroundThread(() -> {
+        for (String addr : selected) {
+          if (addr!=null) {
+            int toAddId = dcContext.createContact(null, addr);
+            dcContext.addContactToChat(chatId, toAddId);
+          }
         }
-      }
+      });
     }
   }
 }
