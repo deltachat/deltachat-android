@@ -88,6 +88,7 @@ public class ApplicationContext extends MultiDexApplication {
 
     dcAccounts = new DcAccounts(new File(getFilesDir(), "accounts").getAbsolutePath());
     rpc = new Rpc(dcAccounts.getJsonrpcInstance());
+    rpc.start();
     AccountManager.getInstance().migrateToDcAccounts(this);
     int[] allAccounts = dcAccounts.getAll();
     for (int accountId : allAccounts) {
@@ -125,8 +126,6 @@ public class ApplicationContext extends MultiDexApplication {
       }
       Log.i("DeltaChat", "shutting down event handler");
     }, "eventThread").start();
-
-    rpc.start();
 
     // migrating global notifications pref. to per-account config, added  10/July/24
     final String NOTIFICATION_PREF = "pref_key_enable_notifications";
