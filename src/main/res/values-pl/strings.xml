@@ -387,6 +387,13 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Czy na pewno chcesz opuścić tę grupę?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Usunąć %d czat ze wszystkich urządzeń?</item>
+        <item quantity="few">Usunąć %d czaty ze wszystkich urządzeń?</item>
+        <item quantity="many">Usunąć %d czatów ze wszystkich urządzeń?</item>
+        <item quantity="other">Usunąć %d czatu ze wszystkich urządzeń?</item>
+    </plurals>
+    <string name="ask_delete_named_chat">Usunąć czat „%1$s” ze wszystkich urządzeń?</string>
     <string name="ask_delete_message">Usunąć tę wiadomość ze wszystkich urządzeń?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Usunąć %d wiadomość ze wszystkich urządzeń?</item>
@@ -693,9 +700,10 @@
     <string name="accept_invalid_certificates">Zaakceptuj nieprawidłowe certyfikaty</string>
     <string name="switch_account">Przełącz konto</string>
     <string name="add_account">Dodaj konto</string>
-    <string name="profile_tag">Prywatna etykieta</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Etykieta profilu</string>
     <string name="profile_tag_hint">np. Praca, Rodzina</string>
-    <string name="profile_tag_explain">Etykieta jest widoczna tylko dla ciebie; pomaga odróżnić twoje profile.</string>
+    <string name="profile_tag_explain">Ustaw etykietę widoczną tylko dla ciebie; pomoże ci to odróżnić twoje profile.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Przenieś na górę</string>
     <string name="delete_account">Usuń konto</string>

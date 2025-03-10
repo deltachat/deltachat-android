@@ -367,6 +367,11 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu öbekten ayrılmak istediğinizden emin misiniz?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Tüm aygıtlarınızdaki %d sohbet silinsin mi?</item>
+        <item quantity="other">Tüm aygıtlarınızdaki %d sohbet silinsin mi?</item>
+    </plurals>
+    <string name="ask_delete_named_chat">Tüm aygıtlarınızdaki “%1$s” sohbeti silinsin mi?</string>
     <string name="ask_delete_message">Tüm aygıtlarınızdaki bu ileti silinsin mi?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Tüm aygıtlarınızdaki %d ileti silinsin mi?</item>
@@ -663,9 +668,10 @@
     <string name="accept_invalid_certificates">Geçersiz sertifikaları kabul et</string>
     <string name="switch_account">Profili Değiştir</string>
     <string name="add_account">Profil Ekle</string>
-    <string name="profile_tag">Özel Etiket</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Profil Etiketi</string>
     <string name="profile_tag_hint">ör. İş, Aile</string>
-    <string name="profile_tag_explain">Yalnızca sizin için görünür etiket; profilleriniz arasında farklılığa yardımcı olur.</string>
+    <string name="profile_tag_explain">Yalnızca sizin için görünebilir bir etiket ayarlayın; profilleriniz arasındaki farkı anlamanıza yardımcı olur.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">En Üste Taşı</string>
     <string name="delete_account">Profili Sil</string>

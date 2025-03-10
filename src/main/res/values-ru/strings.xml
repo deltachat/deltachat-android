@@ -700,9 +700,10 @@
     <string name="accept_invalid_certificates">Принимать недействительные сертификаты</string>
     <string name="switch_account">Сменить профиль</string>
     <string name="add_account">Добавить профиль</string>
-    <string name="profile_tag">Личный тег</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Метка профиля</string>
     <string name="profile_tag_hint">Например: Работа, Семья</string>
-    <string name="profile_tag_explain">Тег, видимый только вам, помогает различать ваши профили.</string>
+    <string name="profile_tag_explain">Установите метку, видимую только вам, которая поможет различать ваши профили.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Переместить вверх</string>
     <string name="delete_account">Удалить профиль</string>

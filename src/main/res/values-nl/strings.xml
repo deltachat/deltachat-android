@@ -668,9 +668,10 @@
     <string name="accept_invalid_certificates">Ongeldige certificaten accepteren</string>
     <string name="switch_account">Ander account kiezen</string>
     <string name="add_account">Account toevoegen</string>
-    <string name="profile_tag">Privélabel</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Profielbeschrijving</string>
     <string name="profile_tag_hint">bijv. werk, familie</string>
-    <string name="profile_tag_explain">Een label dat alleen jij kan zien, om profielen van elkaar te onderscheiden.</string>
+    <string name="profile_tag_explain">Een beschrijving die alleen jij kan zien, om profielen van elkaar te onderscheiden.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Bovenaan tonen</string>
     <string name="delete_account">Account verwijderen</string>

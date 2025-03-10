@@ -377,6 +377,12 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Sei sicuro di voler abbandonare questo gruppo?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Eliminare %d chat su tutti i tuoi dispositivi?</item>
+        <item quantity="many">Eliminare %d chats su tutti i tuoi dispositivi?</item>
+        <item quantity="other">Eliminare %d chats su tutti i tuoi dispositivi?</item>
+    </plurals>
+    <string name="ask_delete_named_chat">Eliminare la chat \"%1$s\" su tutti i tuoi dispositivi?</string>
     <string name="ask_delete_message">Vuoi eliminare questo messaggio da tutti i tuoi dispositivi?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Cancella %d messaggio su tutti i tuoi dispositivi?</item>
@@ -678,9 +684,10 @@
     <string name="accept_invalid_certificates">Accetta certificati non validi</string>
     <string name="switch_account">Cambia Profilo</string>
     <string name="add_account">Aggiungi Profilo</string>
-    <string name="profile_tag">Etichetta Privata</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Etichetta Profilo</string>
     <string name="profile_tag_hint">es. Lavoro, Famiglia</string>
-    <string name="profile_tag_explain">Etichetta che è visibile solo a te; ti aiuta a distinguere i tuoi profili.</string>
+    <string name="profile_tag_explain">Imposta un\'etichetta visibile solo a te, utile per distinguere i tuoi profili.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Sposta in Alto</string>
     <string name="delete_account">Elimina Profilo</string>
