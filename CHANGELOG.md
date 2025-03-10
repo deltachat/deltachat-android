@@ -1,5 +1,16 @@
 # Delta Chat Android Changelog
 
+## v1.54.4
+2025-03
+
+* allow better avatar (profile picture) quality
+* remove notifications from chat that was deleted from other device
+* when a chat is deleted, also delete its messages from server
+* avoid freezing when opening the app for the first time after install
+* avoid crash when adding chat shortcut to home screen
+* some small bug fixes and updated translations
+* update to core 1.156.3
+
 ## v1.54.3
 2025-03
 
