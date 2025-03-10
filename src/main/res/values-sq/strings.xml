@@ -663,9 +663,10 @@
     <string name="accept_invalid_certificates">Prano dëshmi të pavlefshme</string>
     <string name="switch_account">Ndërroni Llogari</string>
     <string name="add_account">Shtoni Llogari</string>
-    <string name="profile_tag">Etiketë Private</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Etiketë Profili</string>
     <string name="profile_tag_hint">p.sh., Pune, Familjeje</string>
-    <string name="profile_tag_explain">Ajo etiketë është e dukshme vetëm për ju; për t’ju ndihmuar ju të bëni dallimin mes profileve tuaja.</string>
+    <string name="profile_tag_explain">Caktoni një etiketë që është e dukshme vetëm për ju, për të ndihmuar veten të bëni dallimin mes profileve tuaja.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Shpjere Në Krye</string>
     <string name="delete_account">Fshije Llogarinë</string>

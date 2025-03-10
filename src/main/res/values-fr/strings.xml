@@ -671,9 +671,7 @@
     <string name="accept_invalid_certificates">Accepter les certificats non valides</string>
     <string name="switch_account">Changer de compte</string>
     <string name="add_account">Ajouter un compte</string>
-    <string name="profile_tag">Tag privé</string>
     <string name="profile_tag_hint">Travail ou famille par exemple</string>
-    <string name="profile_tag_explain">Tag seulement visible par vous pour vous aider à différencier les profils.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Remonter l\'élément</string>
     <string name="delete_account">Supprimer le compte</string>

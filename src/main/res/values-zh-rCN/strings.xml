@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
-    <string name="app_name">Delta Chat</string>
+    <string name="app_name">德尔塔聊</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
     <string name="clear_search">清除搜索</string>
@@ -46,9 +46,9 @@
     <string name="edited">已编辑</string>
     <string name="edit_message">编辑消息</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
-    <string name="archive">存档</string>
+    <string name="archive">归档</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
-    <string name="unarchive">取消存档</string>
+    <string name="unarchive">取消归档</string>
     <string name="mute">静音</string>
     <string name="muted">已静音</string>
     <string name="ephemeral_messages">消息定时销毁</string>
@@ -150,9 +150,9 @@
     <string name="gif">Gif</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">贴纸</string>
-    <string name="add_to_sticker_collection">添加到表情集</string>
-    <string name="add_stickers_instructions">要添加表情包，轻按“打开表情包文件夹”为你的表情包新建一个子文件夹，并把图片和表情符号拖动至此</string>
-    <string name="open_sticker_folder">打开表情包文件夹</string>
+    <string name="add_to_sticker_collection">添加到贴纸收藏集</string>
+    <string name="add_stickers_instructions">要添加贴纸，请点击“打开贴纸文件夹”，为贴纸包创建一个子文件夹，然后将图片和贴纸文件拖动到那里</string>
+    <string name="open_sticker_folder">打开贴纸文件夹</string>
     <string name="images">图像</string>
     <string name="audio">音频</string>
     <string name="voice_message">语音消息</string>
@@ -232,8 +232,8 @@
     <string name="menu_edit_group">编辑群组</string>
     <string name="menu_group_name_and_image">群组名称和图像</string>
     <string name="menu_show_global_map">显示所有位置</string>
-    <string name="menu_archive_chat">存档聊天</string>
-    <string name="menu_unarchive_chat">取消存档聊天</string>
+    <string name="menu_archive_chat">归档聊天</string>
+    <string name="menu_unarchive_chat">取消归档聊天</string>
     <string name="menu_add_attachment">添加附件</string>
     <string name="menu_leave_group">离开群组</string>
     <string name="menu_delete_chat">删除聊天</string>
@@ -397,12 +397,12 @@
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
-        <item quantity="other">%d 个聊天已存档</item>
+        <item quantity="other">已归档 %d 个聊天</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="other">%d 个聊天已取消存档</item>
+        <item quantity="other">已取消归档 %d 个聊天</item>
     </plurals>
-    <string name="chat_archived_chats_title">已存档聊天</string>
+    <string name="chat_archived_chats_title">已归档聊天</string>
     <string name="chat_please_enter_message">请输入消息。</string>
     <string name="chat_camera_unavailable">相机不可用。</string>
     <string name="chat_unable_to_record_audio">无法录制音频。</string>
@@ -416,14 +416,14 @@
     <string name="chat_record_slide_to_cancel">滑动来取消</string>
     <string name="chat_record_explain">按住来录制语音消息，松开来发送</string>
     <string name="chat_no_chats_yet_title">收件箱为空。\n按“+”来开始新聊天。</string>
-    <string name="chat_all_archived">所有聊天已存档。\n按“+”来开始新聊天。</string>
+    <string name="chat_all_archived">所有聊天已归档。\n按“+”来开始新聊天。</string>
     <string name="chat_share_with_title">分享给</string>
     <string name="chat_input_placeholder">输入消息…</string>
-    <string name="chat_archived_label">已存档</string>
+    <string name="chat_archived_label">已归档</string>
     <string name="chat_request_label">请求</string>
     <string name="chat_no_messages">没有消息。</string>
     <string name="chat_self_talk_subtitle">发给自己的消息</string>
-    <string name="archive_empty_hint">已存档的聊天将显示在此处。</string>
+    <string name="archive_empty_hint">已归档的聊天将显示在此处。</string>
     <string name="saved_messages">保存的消息</string>
     <string name="saved_messages_explain">• 转发消息于此以便于访问\n\n• 做笔记或语音备忘录\n\n• 附加媒体以保存它们</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -490,7 +490,7 @@
     <string name="remove_group_image">移除群组图像</string>
     <string name="change_group_image">更改群组图像</string>
     <string name="group_create_button">创建群组</string>
-    <string name="group_please_enter_group_name">请为群组输入一个名称。</string>
+    <string name="group_please_enter_group_name">请输入群组名称。</string>
     <string name="group_add_members">添加成员</string>
     <string name="group_self_not_in_group">为了执行此操作，您必须是群组成员。</string>
     <string name="profile_encryption">加密</string>
@@ -566,7 +566,7 @@
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">已连接</string>
     <string name="sending">发送中…</string>
-    <string name="last_msg_sent_successfully">上一条消息发送成功。</string>
+    <string name="last_msg_sent_successfully">最后一条消息已成功发送。</string>
     <string name="not_supported_by_provider">不被您的邮件提供商支持。</string>
     <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">消息</string>
@@ -645,16 +645,17 @@
     <string name="login_error_required_fields">请输入有效的电子邮件地址和密码</string>
     <string name="import_backup_title">从备份恢复</string>
     <string name="import_backup_ask">在“%1$s”找到备份。\n\n您要导入并使用其中的全部数据与设置吗？</string>
-    <string name="import_backup_no_backup_found">没有找到备份。\n\n将备份复制到“%1$s”然后再试一次。或者按“开始发送消息”来进行常规设置流程。</string>
+    <string name="import_backup_no_backup_found">未找到备份。\n\n将备份复制到“%1$s”，然后重试。或者按“开始发送消息”来进行常规设置流程。</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">无法作为“%1$s”登录。请检查电子邮件地址和密码是否正确。</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">接受无效的证书</string>
     <string name="switch_account">切换账号</string>
     <string name="add_account">添加账号</string>
-    <string name="profile_tag">私密标签</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">账号标签</string>
     <string name="profile_tag_hint">如工作、家庭</string>
-    <string name="profile_tag_explain">仅对你可见的标签；帮助你区分不同的配置文件</string>
+    <string name="profile_tag_explain">设置仅对您可见的标签，帮助区分您的账号。</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">移到顶部</string>
     <string name="delete_account">删除账号</string>
@@ -987,8 +988,8 @@
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
     <string name="qraccount_ask_create_and_login">在“%1$s”创建新的电子邮件地址并登录？</string>
     <string name="qraccount_ask_create_and_login_another">在“%1$s”创建新账号并登录？\n\n不会删除您现有的账号。使用“切换账号”在账号之间切换。</string>
-    <string name="set_name_and_avatar_explain">设置一个你的联系人认得出的名字。你还可以设置头像图片</string>
-    <string name="please_enter_name">请输入名字</string>
+    <string name="set_name_and_avatar_explain">设置联系人可以识别的名称，您还可以设置个人资料图片。</string>
+    <string name="please_enter_name">请输入名称。</string>
     <string name="qraccount_qr_code_cannot_be_used">扫描的二维码不能用于创建新账号。</string>
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">登录 \"%1$s\"吗？</string>
@@ -1072,11 +1073,11 @@
     <string name="global_menu_help_desktop">帮助</string>
     <string name="delta_chat_homepage">Delta Chat 主页</string>
     <string name="contribute">贡献</string>
-    <string name="global_menu_help_report_desktop">报告一个问题</string>
+    <string name="global_menu_help_report_desktop">报告问题</string>
     <string name="global_menu_help_about_desktop">关于 Delta Chat</string>
     <string name="global_menu_file_open_desktop">打开 Delta Chat</string>
     <string name="global_menu_minimize_to_tray">最小化</string>
-    <string name="no_chat_selected_suggestion_desktop">选择一个聊天或创建新聊天</string>
+    <string name="no_chat_selected_suggestion_desktop">选择聊天或创建新聊天</string>
     <string name="write_message_desktop">输入消息…</string>
     <string name="encryption_info_title_desktop">加密信息</string>
     <string name="delete_message_desktop">删除消息</string>

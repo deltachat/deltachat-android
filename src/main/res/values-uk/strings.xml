@@ -682,9 +682,7 @@
     <string name="accept_invalid_certificates">Приймати недійсні сертифікати</string>
     <string name="switch_account">Перемкнути обліковий запис</string>
     <string name="add_account">Додати обліковий запис</string>
-    <string name="profile_tag">Особистий тег</string>
     <string name="profile_tag_hint">наприклад \"Робота\", \"Сім\'я\"</string>
-    <string name="profile_tag_explain">Тег, видимий тільки для вас; допомагає розрізняти ваші профілі.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Перемістити на початок</string>
     <string name="delete_account">Видалити обліковий запис</string>

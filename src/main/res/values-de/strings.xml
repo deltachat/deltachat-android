@@ -668,9 +668,10 @@
     <string name="accept_invalid_certificates">Ungültige Zertifikate akzeptieren</string>
     <string name="switch_account">Profil wechseln</string>
     <string name="add_account">Profil hinzufügen</string>
-    <string name="profile_tag">Private Bezeichnung</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Profilbeschreibung</string>
     <string name="profile_tag_hint">z.B. Familie, Arbeit, Freunde</string>
-    <string name="profile_tag_explain">Die Bezeichnung ist nur für Sie sichtbar um zwischen Profilen zu unterscheiden.</string>
+    <string name="profile_tag_explain">Die Beschreibung ist nur für Sie sichtbar um zwischen Profilen zu unterscheiden.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Nach oben</string>
     <string name="delete_account">Profil löschen</string>

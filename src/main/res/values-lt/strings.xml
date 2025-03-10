@@ -505,7 +505,6 @@
     <string name="accept_invalid_certificates">Priimti negaliojančius liudijimus</string>
     <string name="switch_account">Perjungti paskyrą</string>
     <string name="add_account">Pridėti paskyrą</string>
-    <string name="profile_tag">Privati žymė</string>
     <string name="delete_account">Ištrinti paskyrą</string>
     <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
     <string name="delete_account_explain_with_name">Visi „%s“ paskyros duomenys šiame įrenginyje bus ištrinti, įskaitant jūsų ištisinio šifravimo sąranką, adresatus, pokalbius, žinutes ir mediją. Šį veiksmą nebeįmanoma bus atšaukti.</string>
