@@ -1099,6 +1099,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           boolean doSend = true;
           if (recompress==DcMsg.DC_MSG_VIDEO) {
             Util.runOnMain(() -> {
+              if (isFinishing()) return;
               progressDialog = ProgressDialog.show(
                                                    ConversationActivity.this,
                                                    "",
