@@ -61,20 +61,44 @@ public abstract class MessageSelectorFragment
   }
 
   protected void handleDeleteMessages(int chatId, final int[] messageIds) {
-    DcChat dcChat = DcHelper.getContext(getActivity()).getChat(chatId);
+    DcChat dcChat = dcContext.getChat(chatId);
+    boolean canDeleteForAll = true;
+    if (dcChat.canSend() && !dcChat.isSelfTalk()) {
+      for(int msgId : messageIds) {
+        DcMsg msg = dcContext.getMsg(msgId);
+        if (!msg.isOutgoing() || msg.isInfo()) {
+          canDeleteForAll = false;
+          break;
+        }
+      }
+    } else {
+      canDeleteForAll = false;
+    }
 
-    String text = getActivity().getResources().getQuantityString(R.plurals.ask_delete_messages, messageIds.length, messageIds.length);
+    String text = requireActivity().getResources().getQuantityString(R.plurals.ask_delete_messages, messageIds.length, messageIds.length);
+    int positiveBtnLabel = dcChat.isSelfTalk() ? R.string.delete : R.string.delete_for_me;
 
-    AlertDialog dialog = new AlertDialog.Builder(getActivity())
-            .setMessage(text)
-            .setCancelable(true)
-            .setPositiveButton(R.string.delete, (d, which) -> {
-                dcContext.deleteMsgs(messageIds);
-                if (actionMode != null) actionMode.finish();
-            })
-            .setNegativeButton(android.R.string.cancel, null)
-            .show();
-    Util.redPositiveButton(dialog);
+    AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity())
+      .setMessage(text)
+      .setCancelable(true)
+      .setNeutralButton(android.R.string.cancel, null)
+      .setPositiveButton(positiveBtnLabel, (d, which) -> {
+        dcContext.deleteMsgs(messageIds);
+        if (actionMode != null) actionMode.finish();
+      });
+
+    if(canDeleteForAll) {
+      builder.setNegativeButton(R.string.delete_for_everyone, (d, which) -> {
+        dcContext.sendDeleteRequest(messageIds);
+        if (actionMode != null) actionMode.finish();
+      });
+      AlertDialog dialog = builder.show();
+      Util.redButton(dialog, AlertDialog.BUTTON_NEGATIVE);
+      Util.redPositiveButton(dialog);
+    } else {
+      AlertDialog dialog = builder.show();
+      Util.redPositiveButton(dialog);
+    }
   }
 
   protected void handleSaveAttachment(final Set<DcMsg> messageRecords) {

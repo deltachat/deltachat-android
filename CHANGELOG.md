@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* allow to edit messages
+* allow to delete messages for everyone
 * add menu option to easily save/unsave selected message
 
 ## v1.54.4
