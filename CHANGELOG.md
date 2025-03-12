@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* add menu option to easily save/unsave selected message
+
 ## v1.54.4
 2025-03
 
