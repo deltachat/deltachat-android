@@ -341,8 +341,11 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
             menu.findItem(R.id.menu_add_to_home_screen).setVisible(messageRecord.getType() == DcMsg.DC_MSG_WEBXDC);
 
-            menu.findItem(R.id.menu_toggle_save).setVisible(messageRecord.canSave() && !chat.isSelfTalk());
-            menu.findItem(R.id.menu_toggle_save).setIcon(messageRecord.getSavedMsgId() == 0 ? R.drawable.baseline_bookmark_24 : R.drawable.baseline_bookmark_border_24);
+            boolean saved = messageRecord.getSavedMsgId() != 0;
+            MenuItem toggleSave = menu.findItem(R.id.menu_toggle_save);
+            toggleSave.setVisible(messageRecord.canSave() && !chat.isSelfTalk());
+            toggleSave.setIcon(saved? R.drawable.baseline_bookmark_border_24 : R.drawable.baseline_bookmark_24);
+            toggleSave.setTitle(saved? R.string.unsave : R.string.save);
         }
 
         // if one of the selected items cannot be saved, disable saving.
