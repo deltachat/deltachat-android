@@ -137,6 +137,10 @@ public class Rpc {
         return getResult("add_account").getAsInt();
     }
 
+    public void addTransportFromQr(String qrCode) throws RpcException {
+        getResult("add_transport_from_qr", qrCode);
+    }
+
     private static class Request {
         private final String jsonrpc = "2.0";
         public final String method;

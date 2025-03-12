@@ -46,6 +46,8 @@ import androidx.constraintlayout.widget.Group;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcProvider;
+import com.b44t.messenger.rpc.EnteredLoginParam;
+import com.b44t.messenger.rpc.EnteredServerLoginParam;
 import com.b44t.messenger.util.concurrent.ListenableFuture;
 import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.google.android.material.textfield.TextInputEditText;
@@ -618,6 +620,26 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
         DcHelper.getAccounts(this).stopIo();
         DcHelper.getEventCenter(this).captureNextError();
+
+        EnteredServerLoginParam imapParam = new EnteredServerLoginParam(
+                getParam(R.id.imap_server_text, true),
+                Util.objectToInt(getParam(R.id.imap_port_text, true)),
+                EnteredServerLoginParam.SocketSecurity.values()[imapSecurity.getSelectedItemPosition()],
+                getParam(R.id.imap_login_text, false),
+                getParam(R.id.password_text, false)
+        );
+        EnteredServerLoginParam smtpParam = new EnteredServerLoginParam(
+                getParam(R.id.imap_server_text, true),
+                Util.objectToInt(getParam(R.id.imap_port_text, true)),
+                EnteredServerLoginParam.SocketSecurity.values()[imapSecurity.getSelectedItemPosition()],
+                getParam(R.id.imap_login_text, false),
+                getParam(R.id.password_text, false)
+        );
+        EnteredLoginParam param = new EnteredLoginParam(
+            getParam(R.id.email_text, true),
+            imapParam,
+        )
+
         DcHelper.getContext(this).configure();
     }
 
@@ -628,6 +650,15 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             value = value.trim();
         }
         DcHelper.getContext(this).setConfig(configTarget, value.isEmpty()? null : value);
+    }
+
+    private String getParam(@IdRes int viewId, boolean doTrim) {
+        TextInputEditText view = findViewById(viewId);
+        String value = view.getText().toString();
+        if(doTrim) {
+            value = value.trim();
+        }
+        return value.isEmpty()? null : value;
     }
 
     private void stopLoginProcess() {
