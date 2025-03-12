@@ -248,6 +248,7 @@
     <string name="menu_delete_chat">Chat löschen</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Chat leeren</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Nachrichten löschen</string>
     <string name="delete_contact">Kontakt löschen</string>
     <string name="menu_delete_location">Diesen Standort löschen?</string>
@@ -306,6 +307,7 @@
     <string name="menu_learn_spelling">Schreibweise lernen</string>
     <string name="menu_chat_audit_log">Chat-Ereignisprotokoll</string>
     <string name="jump_to_message">Zur Nachricht springen</string>
+    <string name="jump_to_original_message">Zur Originalnachricht springen</string>
     <string name="copy_json">JSON kopieren</string>
     <string name="replace_draft">Entwurf ersetzen</string>
     <string name="title_share_location">Standort mit allen Gruppenmitgliedern teilen</string>
@@ -366,11 +368,11 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Diese Gruppe verlassen?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">%d Chat löschen? Gelöschte Chats werden nicht länger in der Chat-Liste angezeigt, die Nachrichten verbleiben auf dem Server.</item>
-        <item quantity="other">%d Chats löschen?</item>
+        <item quantity="one">%d Chat von allen Geräten löschen?</item>
+        <item quantity="other">%d Chats von allen Geräten löschen?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Chat \"%1$s\" löschen?</string>
-    <string name="ask_delete_message">Möchten Sie diese Nachricht wirklich löschen?</string>
+    <string name="ask_delete_named_chat">Chat \"%1$s\" von allen Geräten löschen?</string>
+    <string name="ask_delete_message">Diese Nachricht von allen Geräten löschen?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">%d Nachricht von allen Geräten löschen?</item>
         <item quantity="other">%d Nachrichten von allen Geräten löschen?</item>
@@ -387,8 +389,10 @@
     <string name="ask_unblock_contact">Diesen Kontakt nicht mehr blockieren?</string>
     <string name="ask_delete_contacts">Kontakte dauerhaft löschen?\n\nKontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
     <string name="ask_delete_contact">Kontakt %1$s dauerhaft löschen?\n\nKontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Kontakte mit laufenden Chats können nicht gelöscht werden.</string>
     <string name="ask_start_chat_with">Chat mit %1$s starten?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">%s löschen?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$s aus der Gruppe löschen?</string>
@@ -664,9 +668,10 @@
     <string name="accept_invalid_certificates">Ungültige Zertifikate akzeptieren</string>
     <string name="switch_account">Profil wechseln</string>
     <string name="add_account">Profil hinzufügen</string>
-    <string name="profile_tag">Private Bezeichnung</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Profilbeschreibung</string>
     <string name="profile_tag_hint">z.B. Familie, Arbeit, Freunde</string>
-    <string name="profile_tag_explain">Die Bezeichnung ist nur für Sie sichtbar um zwischen Profilen zu unterscheiden.</string>
+    <string name="profile_tag_explain">Die Beschreibung ist nur für Sie sichtbar um zwischen Profilen zu unterscheiden.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Nach oben</string>
     <string name="delete_account">Profil löschen</string>

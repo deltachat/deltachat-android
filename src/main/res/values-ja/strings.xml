@@ -164,6 +164,7 @@
     <string name="menu_add_attachment">ファイルを添付する</string>
     <string name="menu_leave_group">退室する</string>
     <string name="menu_delete_chat">チャットを削除</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">メッセージを削除</string>
     <string name="delete_contact">連絡先を解除する</string>
     <string name="menu_delete_location">この位置情報を削除しますか</string>
@@ -251,11 +252,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">本当に退室しますか</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="other">%d個のチャットを削除しますか？チャットリストには表示されなくなりますが、メッセージはサーバーに残ります。</item>
-    </plurals>
-    <string name="ask_delete_named_chat">%1$sを削除してよろしいですか？</string>
-    <string name="ask_delete_message">メッセージを削除してもよろしいですか？</string>
     <string name="ask_forward">%1$sにメッセージを転送しますか？</string>
     <string name="ask_forward_multiple">%1$dチャットにメッセージを転送しますか？</string>
     <string name="ask_export_attachment">添付ファイルをエクスポートしますか？添付ファイルをエクスポートすると、他のアプリからもアクセスできるようになります。\n\nよろしいですか？</string>
@@ -263,8 +259,10 @@
     <string name="ask_unblock_contact">この連絡先の拒否設定を解除しますか</string>
     <string name="ask_delete_contacts">連絡先を削除しますか？\n\nチャット中の連絡先やシステムのアドレス帳の連絡先は削除できません。</string>
     <string name="ask_delete_contact">%1$s件の連絡先を削除しますか？\n\nチャット中の連絡先やシステムのアドレス帳の連絡先は削除できません。</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">チャット中の連絡先は削除できません。</string>
     <string name="ask_start_chat_with">%1$sとチャットしますか</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">%sを削除しますか？</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$sをグループから排除しますか</string>

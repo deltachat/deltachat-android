@@ -1,13 +1,30 @@
 # Delta Chat Android Changelog
 
-## v1.54.1
-2025-02
+## Unreleased
+
+* add menu option to easily save/unsave selected message
+
+## v1.54.4
+2025-03
+
+* allow better avatar (profile picture) quality
+* remove notifications from chat that was deleted from other device
+* when a chat is deleted, also delete its messages from server
+* avoid freezing when opening the app for the first time after install
+* avoid crash when adding chat shortcut to home screen
+* some small bug fixes and updated translations
+* update to core 1.156.3
+
+## v1.54.3
+2025-03
 
 * allow to add any chat to the home screen
 * update "forward message" icon and organize the messages actions bar
 * do not allow non-members to change ephemeral timer settings of groups
 * properly display padlock when the message is not sent over the network
 * sync message deletion to other devices
+* sync chat deletion across devices
+* Show sender in "Saved Messages"
 * allow scanning multiple QR-invitation codes without needing to wait for completion to scan the next one
 * when reactions are seen in one device, remove notification from your other devices
 * don't disturb with notification when someone leave a group
@@ -16,7 +33,7 @@
 * prepare the app for receiving message deletion requests
 * do some small bug fixes
 * update translations
-* update to core 1.156.0
+* update to core 1.156.2
 
 ## v1.54.0
 2025-02

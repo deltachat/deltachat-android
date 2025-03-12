@@ -25,7 +25,7 @@ the "update-core-and-stuff-DATE" PR can be merged without review
 the following steps are done in a PR called `prep-VERSION` (no leading "v"):
 
 3. a) update `CHANGELOG.md`
-      from <https://github.com/deltachat/deltachat-core-rust/blob/main/CHANGELOG.md>
+      from <https://github.com/chatmail/core/blob/main/CHANGELOG.md>
       and <https://github.com/deltachat/deltachat-android/pulls?q=is%3Apr+is%3Aclosed+sort%3Aupdated-desc>.
       do not just copy and avoid technical terms.
       the changelog is for the end user and shall show impacts form that angle.
@@ -114,7 +114,7 @@ This may take some days.
 
 on <https://developer.amazon.com/dashboard>:
 
-12. a) for "Delta Chat", select "Add upcoming version" on the left
+12. a) click "App List", for "Delta Chat", select "Add upcoming version" on the left
     b) at "Step 1 / Existing file(s)" hit "Replace", upload the APK from above
     c) on the "Step 1" page, add "Release notes" from CHANGELOG.md, hit "Next"
     d) on "Step 2" and "Step 3" pages, hit "Next"

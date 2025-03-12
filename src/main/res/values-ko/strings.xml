@@ -189,6 +189,7 @@
     <string name="menu_add_attachment">첨부 파일 추가</string>
     <string name="menu_leave_group">그룹 나가기</string>
     <string name="menu_delete_chat">채팅 삭제</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">메시지 삭제</string>
     <string name="delete_contact">연락처 삭제</string>
     <string name="menu_delete_location">이 위치를 삭제하시겠습니까?</string>
@@ -288,11 +289,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">이 그룹에서 나가시겠습니까?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="other">채팅 %d을/를 삭제하시겠습니까? 대화 상대의 메시지는 더 이상 대화 목록에 표시되지 않고 서버에 남아 있습니다.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">메시지 \"%1$s\"을 지우려는 것이 확실한가요?</string>
-    <string name="ask_delete_message">이 메시지를 삭제하시겠습니까?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">%d개의 메시지를 삭제하시겠습니까?</item>
@@ -304,8 +300,10 @@
     <string name="ask_unblock_contact">연락처 차단을 해제하시겠습니까? 이 연락처로부터 다시 메시지를 받을 수 있습니다.</string>
     <string name="ask_delete_contacts">연락처를 삭제하시겠습니까?\n\n시스템 주소록에서 진행 중인 채팅 및 연락처가 있는 연락처는 영구적으로 삭제할 수 없습니다.</string>
     <string name="ask_delete_contact">%1$s 연락처를 삭제하시겠습니까?\n\n시스템 주소록에서 진행 중인 채팅 및 연락처가 있는 연락처는 영구적으로 삭제할 수 없습니다.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">대화가 진행 중인 대화 상대를 삭제할 수 없습니다.</string>
     <string name="ask_start_chat_with">%1$s와 채팅하시겠습니까?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">%s를 삭제하시겠습니까?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">그룹에서 %1$s을/를 제거하시겠습니까?</string>

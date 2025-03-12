@@ -197,6 +197,7 @@
     <string name="menu_add_attachment">Προσθήκη συνημμένου</string>
     <string name="menu_leave_group">Αποχώρηση απ\' την ομάδα</string>
     <string name="menu_delete_chat">Διαγραφή Συνομιλίας</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Διαγραφή Μηνυμάτων</string>
     <string name="delete_contact">Διαγραφή Επαφής</string>
     <string name="menu_delete_location">Διαγραφή αυτής της τοποθεσίας;</string>
@@ -298,12 +299,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Είστε σίγουρος/-η ότι θέλετε να βγείτε από αυτή την ομάδα;</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Διαγραφή %d συνομιλίας; Δεν θα εμφανίζετε πλέον στη λίστα συνομιλιών, αλλά τα μηνύματά της θα παραμείνουν στον διακομιστή.</item>
-        <item quantity="other">Διαγραφή %d συνομιλιών; Δεν θα εμφανίζονται πλέον στη λίστα συνομιλιών, αλλά τα μηνύματά τους θα παραμείνουν στον διακομιστή.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Είστε σίγουρος ότι θέλετε να διαγράψετε \"%1$s\";</string>
-    <string name="ask_delete_message">Είστε σίγουρος/-η ότι θέλετε να διαγράψετε αυτό το μήνυμα;</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Διαγραφή %d μηνύματος;</item>
@@ -316,8 +311,10 @@
     <string name="ask_unblock_contact">Κατάργηση αποκλεισμού αυτής της επαφής; Θα μπορείτε να λαμβάνετε μηνύματα από αυτούς.</string>
     <string name="ask_delete_contacts">Διαγραφή επαφών;\n\nΟι επαφές με συνομιλίες που βρίσκονται σε εξέλιξη ή από το βιβλίο διευθύνσεων του συστήματος δεν μπορούν να διαγραφούν οριστικά.</string>
     <string name="ask_delete_contact">Διαγραφή επαφής %1$s;\n\nΟι επαφές με συνομιλίες που βρίσκονται σε εξέλιξη ή από το βιβλίο διευθύνσεων του συστήματος δεν μπορούν να διαγραφούν οριστικά.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Δεν μπορούν αν διαγραφούν επαφές με συνομιλίες που βρίσκονται σε εξέλιξη.</string>
     <string name="ask_start_chat_with">Συνομιλία με %1$s;</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Διαφραφή %s;</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Αφαίρεση του/της %1$s από την ομάδα;</string>

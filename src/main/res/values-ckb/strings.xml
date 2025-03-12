@@ -153,6 +153,7 @@
     <string name="menu_add_attachment">زیاد کردنی پێوەلکاو</string>
     <string name="menu_leave_group">بەجێهێشتنی کۆڕ</string>
     <string name="menu_delete_chat">سڕینەوەی وتووێژ</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">سڕینەوەی پەیامەکان</string>
     <string name="delete_contact">سڕینەوەی بەردەنگ</string>
     <string name="menu_delete_location">ئەم شوێنە دەسڕیتەوە؟</string>
@@ -236,11 +237,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">دڵنیای دەتەوێت ئەم کۆڕە بەجێ بێڵیت؟</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">%d وتووێژ دەسڕیتەوە؟ ئیدی لە نیو لیستەی وتووێژەکاندا دیار نامێنن، بەڵام پەیامەکانیان لەسەر سێرڤەر دەمێنێتەوە.</item>
-        <item quantity="other">%d وتووێژ دەسڕیتەوە؟ ئیدی لە نێو لیستەی وتووێژەکاندا دیار نامێنن، بەڵام پەیامەکانیان لەسەر سێرڤەر دەمێنێتەوە.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">دڵنیای دەتەوێت \"%1$s\" بسڕیتەوە؟</string>
     <string name="ask_forward">ئەو پەیامانە دەنێریت بۆ %1$s؟</string>
     <string name="ask_forward_multiple">ئەو پەیامانە دەنێریت بۆ نێو %1$dوتووێژ؟</string>
     <string name="ask_export_attachment">پێوەلکاوەکە هەناردە دەکەیت؟ هەناردەکردنی پێوەلکاوەکان وادەکات نەرمامێرەکانی دیکەی سەر مۆبایلەکەت بتوانن دەستیان بەو بەڵگە هەناردەکراوە بگات.\n\n بەردەوام دەبیت؟</string>
@@ -248,8 +244,10 @@
     <string name="ask_unblock_contact">ئاستەنگ لەسەر ئەم بەردەنگە لادەبەیت؟ دیسان پەیامەکانی ئەم بەردەنگەت پێ دەگات.</string>
     <string name="ask_delete_contacts">بەردەنگەکان دەسڕیتەوە؟\n\n ئەو بەردەنگانەی هێشتا وتووێژی چالاکتان پێکەوە هەیە و ئەو بەردەنگانەی کە لەنێو تێنووسی سیستەمدان، بۆ هەتاهەتایی ناسڕدرێنەوە.</string>
     <string name="ask_delete_contact">%1$s لە بەردەنگەکانت دەسڕیتەوە؟ \n\n ئەو بەردەنگانەی هێشتا وتووێژی چالاکتان پێکەوە هەیە و ئەو بەردەنگانەی کە لەنێو تێنووسی سیستەمدان، بۆ هەتاهەتایی ناسڕدرێنەوە.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">ناتوانیت ئەو بەردەنگانەی وتووێژی چالاکتان هەیە بسڕیتەوە.</string>
     <string name="ask_start_chat_with">وتووێژ لەگەڵ %1$s؟</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">%sدەسڕیتەوە؟</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$sلە کۆڕ دەخەیتەدەر؟</string>

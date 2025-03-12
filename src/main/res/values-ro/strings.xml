@@ -213,6 +213,7 @@
     <string name="menu_delete_chat">Ștergeți Chat-ul</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Curăță Chat-ul</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Ștergeți mesajele</string>
     <string name="delete_contact">Ștergeți Contactul</string>
     <string name="menu_delete_location">Ștergeți această locație?</string>
@@ -315,13 +316,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ești sigur că vrei să părăsești acest grup?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Ștergeți %d chat-ul? Acestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
-        <item quantity="few">Ștergeți %d chat-uri? Acestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
-        <item quantity="other">Ștergeți %d de chat-urilAcestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Sunteți sigur că vreți să ștergeți \"%1$s\"?</string>
-    <string name="ask_delete_message">Sunteți sigur că doriți să ștergeți acest mesaj?</string>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ștergeți %d mesaj?</item>
@@ -335,8 +329,10 @@
     <string name="ask_unblock_contact">Deblocați acest contact? Astfel, veți putea primi mesaje de la această persoană.</string>
     <string name="ask_delete_contacts">Ștergerea contacts?\n\nContacts cu discuții în curs sau din agenda de adrese a sistemului nu pot fi șterse definitiv.</string>
     <string name="ask_delete_contact">Ștergerea contactului %1$s?\n\nContacts cu discuții în curs sau din agenda de adrese a sistemului nu pot fi șterse definitiv.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Nu se pot șterge contactele cu discuții în curs.</string>
     <string name="ask_start_chat_with">Chat cu %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Ștergeți %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Scoateți  %1$s din grup?</string>

@@ -27,6 +27,7 @@ public class ConversationAdaptiveActionsToolbar extends Toolbar {
   private static final int ID_ACTION_2 = R.id.menu_context_copy;
   private static final int ID_ACTION_3 = R.id.menu_context_share;
   private static final int ID_ACTION_4 = R.id.menu_context_forward;
+  private static final int ID_ACTION_5 = R.id.menu_toggle_save;
 
   private final int   maxShown;
 
@@ -79,7 +80,8 @@ public class ConversationAdaptiveActionsToolbar extends Toolbar {
       boolean showAsAction = item.getItemId() == ID_ACTION_1
                           || item.getItemId() == ID_ACTION_2
                           || item.getItemId() == ID_ACTION_3
-                          || item.getItemId() == ID_ACTION_4;
+                          || item.getItemId() == ID_ACTION_4
+                          || item.getItemId() == ID_ACTION_5;
 
       if (showAsAction && item.isVisible() && nItemsToShow > 0) {
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);

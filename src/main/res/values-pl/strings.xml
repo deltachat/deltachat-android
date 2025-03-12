@@ -266,6 +266,7 @@
     <string name="menu_delete_chat">Usuń czat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Wyczyść czat</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Usuń wiadomości</string>
     <string name="delete_contact">Usuń kontakt</string>
     <string name="menu_delete_location">Usunąć tę lokalizację?</string>
@@ -324,6 +325,7 @@
     <string name="menu_learn_spelling">Naucz się pisowni</string>
     <string name="menu_chat_audit_log">Dziennik audytu czatu</string>
     <string name="jump_to_message">Przejdź do wiadomości</string>
+    <string name="jump_to_original_message">Przejdź do oryginalnej wiadomości</string>
     <string name="copy_json">Kopiuj JSON</string>
     <string name="replace_draft">Zastąp szkic</string>
     <string name="title_share_location">Udostępnij lokalizację dla wszystki czlonków grup</string>
@@ -386,13 +388,13 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Czy na pewno chcesz opuścić tę grupę?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Usunąć %d czat? Nie będzie już wyświetlany na liście czatów, wiadomość pozostanie na serwerze.</item>
-        <item quantity="few">Usunąć %d czatów? Nie będą już wyświetlane na liście czatów, ich wiadomości pozostaną na serwerze.</item>
-        <item quantity="many">Usunąć %d czaty? Nie będą już wyświetlane na liście czatów, ich wiadomości pozostaną na serwerze.</item>
-        <item quantity="other">Usunąć %d czatów? Nie będą już wyświetlane na liście czatów, ich wiadomości pozostaną na serwerze.</item>
+        <item quantity="one">Usunąć %d czat ze wszystkich urządzeń?</item>
+        <item quantity="few">Usunąć %d czaty ze wszystkich urządzeń?</item>
+        <item quantity="many">Usunąć %d czatów ze wszystkich urządzeń?</item>
+        <item quantity="other">Usunąć %d czatu ze wszystkich urządzeń?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Usunąć czat „%1$s”? Nie będzie on już wyświetlany na liście czatów. Jego wiadomości pozostaną na serwerze.</string>
-    <string name="ask_delete_message">Czy na pewno chcesz usunąć tę wiadomość?</string>
+    <string name="ask_delete_named_chat">Usunąć czat „%1$s” ze wszystkich urządzeń?</string>
+    <string name="ask_delete_message">Usunąć tę wiadomość ze wszystkich urządzeń?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Usunąć %d wiadomość ze wszystkich urządzeń?</item>
         <item quantity="few">Usunąć %d wiadomości ze wszystkich urządzeń?</item>
@@ -413,8 +415,10 @@
     <string name="ask_unblock_contact">Odblokować ten kontakt? Ponownie będzie można odbierać wiadomości od tego kontaktu.</string>
     <string name="ask_delete_contacts">Usunąć kontakty? Spowoduje to trwałe usunięcie wybranych kontaktów.\n\nKontaktów z trwającymi rozmowami i kontaktów z książki adresowej systemu nie można trwale usunąć.</string>
     <string name="ask_delete_contact">Usunąć trwale kontakt %1$s?\n\nKontaktów z trwającymi czatami i kontaktów z książki adresowej systemu nie można trwale usunąć.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Nie można usunąć kontaktów z trwającymi czatami.</string>
     <string name="ask_start_chat_with">Rozpocząć czat z %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Usunąć %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Usunąć %1$s z grupy?</string>
@@ -582,6 +586,7 @@
     <string name="multidevice_receiver_title">Dodaj jako kolejne urządzenie</string>
     <string name="multidevice_open_settings_on_other_device">Na pierwszym urządzeniu przejdź do „Ustawienia » Dodaj kolejne urządzenie” i zeskanuj wyświetlony tam kod</string>
     <string name="multidevice_receiver_scanning_ask">Skopiować konto z innego urządzenia na to urządzenie?</string>
+    <string name="multidevice_receiver_needs_update">Profil, który chcesz zaimportować, pochodzi z nowszej wersji aplikacji Delta Chat.\n\nAby kontynuować konfigurowanie drugiego urządzenia, zaktualizuj to urządzenie do najnowszej wersji aplikacji Delta Chat.</string>
     <string name="multidevice_abort">Przerwać konfigurowanie kolejnego urządzenia?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Spowoduje to unieważnienie kodu QR skopiowanego do schowka.</string>
     <string name="multidevice_experimental_hint">(eksperymentalna, wymagana wersja 1.36)</string>
@@ -695,9 +700,10 @@
     <string name="accept_invalid_certificates">Zaakceptuj nieprawidłowe certyfikaty</string>
     <string name="switch_account">Przełącz konto</string>
     <string name="add_account">Dodaj konto</string>
-    <string name="profile_tag">Prywatna etykieta</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Etykieta profilu</string>
     <string name="profile_tag_hint">np. Praca, Rodzina</string>
-    <string name="profile_tag_explain">Etykieta jest widoczna tylko dla ciebie; pomaga odróżnić twoje profile.</string>
+    <string name="profile_tag_explain">Ustaw etykietę widoczną tylko dla ciebie; pomoże ci to odróżnić twoje profile.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Przenieś na górę</string>
     <string name="delete_account">Usuń konto</string>

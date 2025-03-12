@@ -109,6 +109,7 @@
     <string name="menu_add_attachment">Juntar anexo</string>
     <string name="menu_leave_group">Deixar grupo</string>
     <string name="menu_delete_chat">Apagar convesa</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Apagar mensagem</string>
     <string name="menu_message_details">Detalhe da mensagem</string>
     <string name="menu_copy_to_clipboard">Copiar para área de transferência</string>
@@ -142,16 +143,12 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Tem certeza que deseja deixar este grupo?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Apagar %d conversas? Elas não serão mais mostrados na lista, mas permanecerão no servidor.</item>
-        <item quantity="many">Apagar %d conversas? Elas não serão mais mostrados na lista, mas permanecerão no servidor.</item>
-        <item quantity="other">Apagar %d conversas? Elas não serão mais mostrados na lista, mas permanecerão no servidor.</item>
-    </plurals>
     <string name="ask_forward">Reencaminhar mensages para %1$s?</string>
     <string name="ask_export_attachment">Exportar anexo? A exportação de anexos permitirá o seu acesso a qualquer outra aplicação no seu dispositivo.\n\nContinuar?</string>
     <string name="ask_block_contact">Bloquear este contacto? Não receberá mais mensagens deste contacto.</string>
     <string name="ask_unblock_contact">Desbloquear esse contacto? Poderá mais uma vez receber mensagens deste contacto.</string>
     <string name="ask_delete_contacts">Remover contactos? Assim removerá permanentemente os contactos selecionados.\n\nContactos com chats a decorrer e contactos com  endereços do sistema não podem ser removidos permanentemente.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Não é possível excluir contactos com chats a decorrer.</string>
     <string name="ask_start_chat_with">Conversar com %1$s?</string>
     <!-- contact list -->

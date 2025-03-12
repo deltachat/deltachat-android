@@ -28,6 +28,8 @@
     <string name="join">Csatlakozás</string>
     <string name="rejoin">Újracsatlakozás</string>
     <string name="delete">Törlés</string>
+    <string name="delete_for_me">Törlés számomra</string>
+    <string name="delete_for_everyone">Törlés mindenki számára</string>
     <string name="info">Infó</string>
     <string name="update">Frissítés</string>
     <string name="emoji">Emodzsi</string>
@@ -60,9 +62,9 @@
     <string name="show_full_message">Teljes üzenet megjelenítése…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Összes megjelölése olvasottként</string>
-    <string name="mark_as_read">Olvasottnak jelölés</string>
+    <string name="mark_as_read">Megjelölés olvasottként</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
-    <string name="mark_as_read_short">Olvasottnak jelölés</string>
+    <string name="mark_as_read_short">Megjelölés olvasottként</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Betöltés…</string>
     <string name="hide">Elrejtés</string>
@@ -186,8 +188,8 @@
     <string name="webxdc_app">Alkalmazás</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Alkalmazások</string>
-    <string name="webxdc_store_url">Alkalmazás-választó-webcím</string>
-    <string name="webxdc_store_url_explain">Ha be van állítva, akkor a webcím lesz használva mint alkalmazás-választó az alapértelmezett helyett</string>
+    <string name="webxdc_store_url">Alkalmazásválasztó webcíme</string>
+    <string name="webxdc_store_url_explain">Ha be van állítva, akkor a webcím lesz használva mint alkalmazásválasztó az alapértelmezett helyett</string>
     <string name="home">Főoldal</string>
     <string name="games">Játékok</string>
     <string name="tools">Eszközök</string>
@@ -246,6 +248,7 @@
     <string name="menu_delete_chat">Csevegés törlése</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Csevegés kiürítése</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Üzenetek törlése</string>
     <string name="delete_contact">Névjegy törlése</string>
     <string name="menu_delete_location">Biztosan törli ezt a helyszínt?</string>
@@ -304,6 +307,7 @@
     <string name="menu_learn_spelling">Helyesírás tanulása</string>
     <string name="menu_chat_audit_log">Csevegésellenőrzési-naplófájl</string>
     <string name="jump_to_message">Ugrás az üzenetre</string>
+    <string name="jump_to_original_message">Ugrás az eredeti üzenetre</string>
     <string name="copy_json">JSON másolása</string>
     <string name="replace_draft">Piszkozat cseréje</string>
     <string name="title_share_location">Helyszín megosztása a csoport összes tagjával</string>
@@ -364,11 +368,15 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Biztosan ki akar lépni a csoportból?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Biztosan töröl %d csevegést? Többé nem jelenik meg a csevegőlistában; az üzenetek viszont a szerveren maradnak.</item>
-        <item quantity="other">Biztosan töröl %d csevegést? Többé nem jelennek meg a csevegőlistában; az üzeneteik viszont a kiszolgálón maradnak.</item>
+        <item quantity="one">Töröl %d csevegést az összes eszközén?</item>
+        <item quantity="other">Töröl %d csevegést az összes eszközén?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Biztosan törli a következőt: „%1$s”? Többé nem fog megjelenni a csevegőlistában; üzenetei a kiszolgálón maradnak.</string>
-    <string name="ask_delete_message">Biztosan törölni szeretné ezt az üzenetet?</string>
+    <string name="ask_delete_named_chat">Törli a(z) „%1$s” nevű csevegést az összes eszközén?</string>
+    <string name="ask_delete_message">Törli ezt az üzenetet az összes eszközén?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Töröl %d üzenetet az összes eszközén?</item>
+        <item quantity="other">Töröl %d üzenetet az összes eszközén?</item>
+    </plurals>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">%d üzenet törlése?</item>
@@ -381,8 +389,10 @@
     <string name="ask_unblock_contact">Feloldja ennek a partnerének a letiltását? Ezután képes lesz üzeneteket fogadni tőle.</string>
     <string name="ask_delete_contacts">Névjegy törlése?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó névjegyek nem törölhetők véglegesen.</string>
     <string name="ask_delete_contact">Törli a(z) %1$s nevű partnerét?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó partnerek nem törölhetők véglegesen.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">A folyamatban lévő csevegésekkel rendelkező névjegyek nem törölhetők.</string>
     <string name="ask_start_chat_with">Csevegés vele: %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">%s törlése?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Eltávolítja a csoportból őt: %1$s?</string>
@@ -503,7 +513,7 @@
     <string name="profile_shared_chats">Megosztott csevegések</string>
     <string name="related_chats">Kapcsolódó csevegések</string>
     <!-- Separator between the list of actual members and past members -->
-    <string name="past_members">Volt tagok</string>
+    <string name="past_members">Már nem tagok</string>
     <string name="tab_contact">Névjegy</string>
     <string name="tab_group">Csoport</string>
     <string name="tab_gallery">Galéria</string>
@@ -544,6 +554,7 @@
     <string name="multidevice_receiver_title">Hozzáadás második eszközként</string>
     <string name="multidevice_open_settings_on_other_device">Az első eszközön lépjen a „Beállítások / Második eszköz hozzáadása” menüpontra, és olvassa be az ott megjelenő QR-kódot.</string>
     <string name="multidevice_receiver_scanning_ask">Átmásolja a profilt a másik eszközről erre az eszközre?</string>
+    <string name="multidevice_receiver_needs_update">Az importálni kívánt profil egy újabb Delta Chat verzióból származik.\n\nA második eszköz beállításának folytatásához frissítse ezt az eszközt a Delta Chat legújabb verziójára.</string>
     <string name="multidevice_abort">A második eszköz beállításának megszakítása?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Ez érvényteleníti a vágólapra másolt QR-kódot.</string>
     <string name="multidevice_experimental_hint">(kísérleti, 1.36-os verzió szükséges)</string>
@@ -657,11 +668,12 @@
     <string name="accept_invalid_certificates">Érvénytelen tanúsítványok elfogadása</string>
     <string name="switch_account">Profilváltás</string>
     <string name="add_account">Profil hozzáadása</string>
-    <string name="profile_tag">Privát címke</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Profil címke</string>
     <string name="profile_tag_hint">Például: „Munka”, „Család”</string>
-    <string name="profile_tag_explain">A címke csak az Ön számára jelenik meg; segít megkülönböztetni a profiljait.</string>
+    <string name="profile_tag_explain">Állítson be egy olyan címkét, amely csak az Ön számára látható; segít megkülönböztetni a profiljait.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
-    <string name="move_to_top">Felülre helyezés</string>
+    <string name="move_to_top">Feljebb mozgatás</string>
     <string name="delete_account">Profil törlése</string>
     <string name="delete_account_ask">Biztosan törölni szeretné a profiladatait?</string>
     <string name="delete_account_explain_with_name">A(z) „%s” nevű profilhoz tartozó mindet adat ezen az eszközön törölve lesz,  beleértve a végpontok közötti titkosítás beállításait, a névjegyeket, a csevegéseket, az üzeneteket és a médiát. Ez a művelet nem vonható vissza. </string>

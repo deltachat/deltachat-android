@@ -266,6 +266,7 @@
     <string name="menu_delete_chat">Удалить чат</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Очистить чат</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Удалить сообщения</string>
     <string name="delete_contact">Удалить контакт</string>
     <string name="menu_delete_location">Удалить местоположение?</string>
@@ -324,6 +325,7 @@
     <string name="menu_learn_spelling">Запоминать правописание</string>
     <string name="menu_chat_audit_log">Журнал аудита чата</string>
     <string name="jump_to_message">Перейти к сообщению</string>
+    <string name="jump_to_original_message">Перейти к исходному сообщению</string>
     <string name="copy_json">Копировать JSON</string>
     <string name="replace_draft">Заменить черновик</string>
     <string name="title_share_location">Делиться местоположением со всеми участниками группы</string>
@@ -386,13 +388,13 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Вы уверены, что хотите покинуть эту группу?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Удалить %d чат?</item>
-        <item quantity="few">Удалить %d чата?</item>
-        <item quantity="many">Удалить %d чатов?</item>
-        <item quantity="other">Удалить %d чатов?</item>
+        <item quantity="one">Удалить %d чат на всех ваших устройствах?</item>
+        <item quantity="few">Удалить %d чата на всех ваших устройствах?</item>
+        <item quantity="many">Удалить %d чатов на всех ваших устройствах?</item>
+        <item quantity="other">Удалить %d чатов на всех ваших устройствах?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Удалить чат \"%1$s\"?</string>
-    <string name="ask_delete_message">Вы уверены, что хотите удалить это сообщение?</string>
+    <string name="ask_delete_named_chat">Удалить чат \"%1$s\" на всех ваших устройствах?</string>
+    <string name="ask_delete_message">Удалить это сообщение на всех ваших устройствах?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Удалить %d сообщение на всех ваших устройствах?</item>
         <item quantity="few">Удалить %d сообщения на всех ваших устройствах?</item>
@@ -413,8 +415,10 @@
     <string name="ask_unblock_contact">Разблокировать этот контакт?</string>
     <string name="ask_delete_contacts">Удалить контакты?\n\nКонтакты из действующих чатов или из системной адресной книги не могут быть удалены навсегда.</string>
     <string name="ask_delete_contact">Удалить контакт %1$s?\n\nКонтакты из действующих чатов или из системной адресной книги не могут быть удалены навсегда.</string>
+    <!-- deprecated -->
     <string name="cannot_delete_contacts_in_use">Невозможно удалить контакты, с которыми имеются действующие чаты.</string>
     <string name="ask_start_chat_with">Создать чат с %1$s?</string>
+    <!-- deprecated -->
     <string name="ask_delete_value">Удалить %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Удалить %1$s из группы?</string>
@@ -582,6 +586,7 @@
     <string name="multidevice_receiver_title">Добавить как второе устройство</string>
     <string name="multidevice_open_settings_on_other_device">На первом устройстве, откройте \"Настройки / Добавить второе устройство\" и отсканируйте код, показанный там</string>
     <string name="multidevice_receiver_scanning_ask">Скопировать профиль с другого устройства на это устройство?</string>
+    <string name="multidevice_receiver_needs_update">Профиль, который вы хотите импортировать, создан в более новой версии Delta Chat. Чтобы продолжить настройку второго устройства, пожалуйста, обновите это устройство до последней версии Delta Chat.</string>
     <string name="multidevice_abort">Прервать настройку второго устройства?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Это сделает недействительным QR-код, скопированный в буфер обмена.</string>
     <string name="multidevice_experimental_hint">(экспериментально, требуется версия 1.36)</string>
@@ -695,9 +700,10 @@
     <string name="accept_invalid_certificates">Принимать недействительные сертификаты</string>
     <string name="switch_account">Сменить профиль</string>
     <string name="add_account">Добавить профиль</string>
-    <string name="profile_tag">Личный тег</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Метка профиля</string>
     <string name="profile_tag_hint">Например: Работа, Семья</string>
-    <string name="profile_tag_explain">Тег, видимый только вам, помогает различать ваши профили.</string>
+    <string name="profile_tag_explain">Установите метку, видимую только вам, которая поможет различать ваши профили.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Переместить вверх</string>
     <string name="delete_account">Удалить профиль</string>

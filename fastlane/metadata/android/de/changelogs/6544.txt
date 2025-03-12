@@ -1,0 +1,4 @@
+* Verwenden Sie SOCKS5-Konfiguration auch zum Laden von Remote-Bildern in HTML-Mails
+* Bugfixes
+* Übersetzungen und lokale Hilfe aktualisieren
+* Update auf core112.8

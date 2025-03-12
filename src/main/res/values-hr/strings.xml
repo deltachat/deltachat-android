@@ -117,6 +117,7 @@
     <string name="menu_show_global_map">Prikaži sve lokacije</string>
     <string name="menu_add_attachment">Dodaj privitak</string>
     <string name="menu_leave_group">Napusti grupu</string>
+    <!-- deprecated -->
     <string name="menu_delete_messages">Obriši poruke</string>
     <string name="menu_delete_location">Obrisati ovu lokaciju?</string>
     <string name="menu_message_details">Detalji poruke</string>

@@ -17,6 +17,7 @@ public class Rpc {
     private final Map<Integer, SettableFuture<JsonElement>> requestFutures = new ConcurrentHashMap<>();
     private final DcJsonrpcInstance dcJsonrpcInstance;
     private int requestId = 0;
+    private boolean started = false;
     private final Gson gson = new GsonBuilder().serializeNulls().create();
 
     public Rpc(DcJsonrpcInstance dcJsonrpcInstance) {
@@ -46,6 +47,7 @@ public class Rpc {
     }
 
     public void start() {
+        started = true;
         new Thread(() -> {
             while (true) {
                 try {
@@ -57,7 +59,9 @@ public class Rpc {
         }, "jsonrpcThread").start();
     }
 
-    public SettableFuture<JsonElement> call(String method, Object... params) {
+    public SettableFuture<JsonElement> call(String method, Object... params) throws RpcException {
+        if (!started) throw new RpcException("RPC not started yet.");
+
         int id;
         synchronized (this) {
             id = ++requestId;
