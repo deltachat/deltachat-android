@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item android:title="@string/save"
+        android:id="@+id/menu_toggle_save"
+        android:icon="@drawable/baseline_bookmark_border_24"
+        app:showAsAction="ifRoom" />
+
   <item android:title="@string/edit_message"
         android:id="@+id/menu_context_edit"
         android:icon="@drawable/ic_create_white_24dp"
-        app:showAsAction="ifRoom" />
-
-  <item android:title="@string/save"
-        android:id="@+id/menu_toggle_save"
-        android:icon="@drawable/baseline_bookmark_24"
         app:showAsAction="ifRoom" />
 
   <item android:title="@string/menu_copy_text_to_clipboard"

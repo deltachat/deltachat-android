@@ -344,7 +344,7 @@ public class ConversationFragment extends MessageSelectorFragment
             boolean saved = messageRecord.getSavedMsgId() != 0;
             MenuItem toggleSave = menu.findItem(R.id.menu_toggle_save);
             toggleSave.setVisible(messageRecord.canSave() && !chat.isSelfTalk());
-            toggleSave.setIcon(saved? R.drawable.baseline_bookmark_border_24 : R.drawable.baseline_bookmark_24);
+            toggleSave.setIcon(saved? R.drawable.baseline_bookmark_remove_24 : R.drawable.baseline_bookmark_border_24);
             toggleSave.setTitle(saved? R.string.unsave : R.string.save);
         }
 
