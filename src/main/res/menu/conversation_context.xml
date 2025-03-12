@@ -5,6 +5,11 @@
         android:icon="@drawable/ic_create_white_24dp"
         app:showAsAction="ifRoom" />
 
+  <item android:title="@string/save"
+        android:id="@+id/menu_toggle_save"
+        android:icon="@drawable/baseline_bookmark_24"
+        app:showAsAction="ifRoom" />
+
   <item android:title="@string/menu_copy_text_to_clipboard"
         android:id="@+id/menu_context_copy"
         android:icon="?menu_copy_icon"
