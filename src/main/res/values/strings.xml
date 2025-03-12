@@ -377,7 +377,7 @@
         <item quantity="one">Delete %d message on all your devices?</item>
         <item quantity="other">Delete %d messages on all your devices?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Delete %d message?</item>
         <item quantity="other">Delete %d messages?</item>
