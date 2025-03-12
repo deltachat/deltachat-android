@@ -66,7 +66,7 @@ public abstract class MessageSelectorFragment
     if (dcChat.canSend() && !dcChat.isSelfTalk()) {
       for(int msgId : messageIds) {
         DcMsg msg = dcContext.getMsg(msgId);
-        if (!msg.isOutgoing()) {
+        if (!msg.isOutgoing() || msg.isInfo()) {
           canDeleteForAll = false;
           break;
         }
