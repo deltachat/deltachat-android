@@ -23,7 +23,10 @@
           ]);
         rust-version = pkgs.lib.removeSuffix "\n"
           (builtins.readFile ./scripts/rust-toolchain);
-      in {
+      in
+      {
+        formatter = pkgs.nixpkgs-fmt;
+
         devShells.default = pkgs.mkShell {
           ANDROID_SDK_ROOT = "${android-sdk}/share/android-sdk";
           ANDROID_NDK_ROOT =
