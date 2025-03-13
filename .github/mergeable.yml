@@ -1,0 +1,22 @@
+version: 2
+mergeable:
+  - when: pull_request.*
+    name: "Changelog check"
+    validate:
+      - do: or
+        validate:
+        - do: description
+          must_include:
+            regex: '#skip-changelog'
+        - do: and
+          validate:
+            - do: dependent
+              changed:
+                file: '**/*.java'
+                required: ['CHANGELOG.md']
+    fail:
+      - do: checks
+        status: 'action_required'
+        payload:
+          title: CHANGELOG.md might need an update
+          summary: "Please update CHANGELOG.md or add #skip-changelog to the description"

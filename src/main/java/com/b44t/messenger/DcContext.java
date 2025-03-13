@@ -194,6 +194,7 @@ public class DcContext {
     public native int          getFreshMsgCount     (int chat_id);
     public native int          estimateDeletionCount(boolean from_server, long seconds);
     public native void         deleteMsgs           (int msg_ids[]);
+    public native void         sendDeleteRequest    (int msg_ids[]);
     public native void         forwardMsgs          (int msg_ids[], int chat_id);
     public native void         saveMsgs             (int msg_ids[]);
     public native boolean      resendMsgs           (int msg_ids[]);
