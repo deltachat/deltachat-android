@@ -25,8 +25,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,12 +35,10 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -725,80 +721,6 @@ public class ConversationFragment extends MessageSelectorFragment
         Util.runOnAnyBackgroundThread(() -> dcContext.markseenMsgs(ids));
     }
 
-
-    void querySetupCode(final DcMsg dcMsg, String[] preload)
-    {
-        if( !dcMsg.isSetupMessage()) {
-            return;
-        }
-
-        View gl = View.inflate(getActivity(), R.layout.setup_code_grid, null);
-        final EditText[] editTexts = {
-                gl.findViewById(R.id.setupCode0),  gl.findViewById(R.id.setupCode1),  gl.findViewById(R.id.setupCode2),
-                gl.findViewById(R.id.setupCode3),  gl.findViewById(R.id.setupCode4),  gl.findViewById(R.id.setupCode5),
-                gl.findViewById(R.id.setupCode6),  gl.findViewById(R.id.setupCode7),  gl.findViewById(R.id.setupCode8)
-        };
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
-        builder1.setView(gl);
-        editTexts[0].setText(dcMsg.getSetupCodeBegin());
-        editTexts[0].setSelection(editTexts[0].getText().length());
-
-        for( int i = 0; i < 9; i++ ) {
-            if( preload != null && i < preload.length ) {
-                editTexts[i].setText(preload[i]);
-                editTexts[i].setSelection(editTexts[i].getText().length());
-            }
-            editTexts[i].addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if( s.length()==4 ) {
-                        for ( int i = 0; i < 8; i++ ) {
-                            if( editTexts[i].hasFocus() && editTexts[i+1].getText().length()<4 ) {
-                                editTexts[i+1].requestFocus();
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                }
-            });
-        }
-
-        builder1.setTitle(getActivity().getString(R.string.autocrypt_continue_transfer_title));
-        builder1.setMessage(getActivity().getString(R.string.autocrypt_continue_transfer_please_enter_code));
-        builder1.setNegativeButton(android.R.string.cancel, null);
-        builder1.setCancelable(false); // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
-        builder1.setPositiveButton(android.R.string.ok, (dialog, which) -> {
-            String setup_code = "";
-            final String[] preload1 = new String[9];
-            for ( int i = 0; i < 9; i++ ) {
-                preload1[i] = editTexts[i].getText().toString();
-                setup_code += preload1[i];
-            }
-            boolean success = dcContext.continueKeyTransfer(dcMsg.getId(), setup_code);
-
-            AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
-            builder2.setTitle(getActivity().getString(R.string.autocrypt_continue_transfer_title));
-            builder2.setMessage(getActivity().getString(success? R.string.autocrypt_continue_transfer_succeeded : R.string.autocrypt_bad_setup_code));
-            if( success ) {
-                builder2.setPositiveButton(android.R.string.ok, null);
-            }
-            else {
-                builder2.setNegativeButton(android.R.string.cancel, null);
-                builder2.setPositiveButton(R.string.autocrypt_continue_transfer_retry, (dialog1, which1) -> querySetupCode(dcMsg, preload1));
-            }
-            builder2.show();
-        });
-        builder1.show();
-    }
-
     private class ConversationFragmentItemClickListener implements ItemClickListener {
 
         @Override
@@ -817,9 +739,6 @@ public class ConversationFragment extends MessageSelectorFragment
                     actionMode.setTitle(String.valueOf(getListAdapter().getSelectedItems().size()));
                     actionMode.setTitleOptionalHint(false); // the title represents important information, also indicating implicitly, more items can be selected
                 }
-            }
-            else if(messageRecord.isSetupMessage()) {
-                querySetupCode(messageRecord,null);
             }
             else if (messageRecord.getType()==DcMsg.DC_MSG_VIDEOCHAT_INVITATION) {
                 new VideochatUtil().join(getActivity(), messageRecord.getId());
