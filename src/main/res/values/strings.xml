@@ -332,7 +332,9 @@
     <string name="donate">Donate</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Mute for 2 hours</string>
+    <string name="mute_for_eight_hours">Mute for 8 hours</string>
     <string name="mute_for_one_day">Mute for 1 day</string>
     <string name="mute_for_seven_days">Mute for 7 days</string>
     <string name="mute_forever">Mute forever</string>
