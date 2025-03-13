@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms;
 
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_URL;
+import static org.thoughtcrime.securesms.connect.DcHelper.getRpc;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -32,9 +33,12 @@ import androidx.loader.app.LoaderManager;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcLot;
+import com.b44t.messenger.rpc.RpcException;
+import com.b44t.messenger.util.concurrent.ListenableFuture;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.google.gson.JsonElement;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -60,6 +64,7 @@ import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 public class InstantOnboardingActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
@@ -505,8 +510,11 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
         });
         return;
       }
-      DcHelper.getAccounts(this).stopIo();
-      dcContext.configure();
+      try {
+          getRpc(this).addTransport(dcContext.getAccountId(), "TODO! JSON goes in here");
+      } catch (RpcException e) {
+          throw new RuntimeException(e);
+      }
     }).start();
   }
 

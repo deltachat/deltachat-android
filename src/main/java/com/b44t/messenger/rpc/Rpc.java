@@ -133,6 +133,10 @@ public class Rpc {
         return getResult("add_account").getAsInt();
     }
 
+    public void addTransport(int accountId, String param) throws RpcException {
+        getResult("add_transport", accountId, param);
+    }
+
     private static class Request {
         private final String jsonrpc = "2.0";
         public final String method;
