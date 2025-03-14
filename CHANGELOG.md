@@ -7,6 +7,7 @@
 * add mute option "8 hours"
 * add menu option to easily save/unsave selected message
 * improve deletion confirmation for "Device Messages"
+* always paste as plain text in message draft area
 
 ## v1.54.4
 2025-03
