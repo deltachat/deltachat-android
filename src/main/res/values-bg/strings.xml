@@ -294,6 +294,7 @@
     <string name="donate">Дарение</string>
 
     <string name="mute_for_one_hour">Спиране на звука за 1 час</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Спиране на звука за 2 часа</string>
     <string name="mute_for_one_day">Спиране на звука за 1 ден</string>
     <string name="mute_for_seven_days">Спиране на звука за 7 дни</string>
@@ -329,7 +330,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Сигурни ли сте, че искате да напуснете тази група?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Да бъде ли изтрито %d съобщение?</item>
         <item quantity="other">Да бъдат ли изтрити %d съобщения?</item>

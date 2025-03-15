@@ -316,6 +316,7 @@
     <string name="donate">حمایت مالی</string>
 
     <string name="mute_for_one_hour">ساکت کردن به مدت۱ ساعت</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">ساکت کردن به مدت ۲ ساعت</string>
     <string name="mute_for_one_day">ساکت کردن به مدت ۱ روز</string>
     <string name="mute_for_seven_days">ساکت کردن به مدت۷ روز</string>
@@ -354,7 +355,7 @@ https://meet.jit.si/$ROOM
 
     <!-- get confirmations -->
     <string name="ask_leave_group">مطمئن هستید می‌خواهید این گروه را ترک کنید؟</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">می‌خواهید %dپیام پاک شود؟</item>
         <item quantity="other">می‌خواهید %d پیام پاک شود؟</item>

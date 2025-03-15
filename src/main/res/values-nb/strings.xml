@@ -183,6 +183,7 @@
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Løsn</string>
     <string name="mute_for_one_hour">Demp i 1 time</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Demp i 2 timer</string>
     <string name="mute_for_one_day">Demp i 1 dag</string>
     <string name="mute_for_seven_days">Demp i 7 dager</string>

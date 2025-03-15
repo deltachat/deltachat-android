@@ -132,6 +132,7 @@
     <string name="menu_advanced">Avançado</string>
     <string name="menu_view_profile">Ver perfil</string>
     <string name="mute_for_one_hour">Calado por 1 hora</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Calado por 2 horas</string>
     <string name="mute_for_one_day">Calado por 1 dia</string>
     <string name="mute_for_seven_days">Calado por 7 dias</string>

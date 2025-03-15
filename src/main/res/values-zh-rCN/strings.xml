@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
-    <string name="app_name">德尔塔聊</string>
+    <string name="app_name">Delta Chat</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
     <string name="clear_search">清除搜索</string>
@@ -323,7 +323,9 @@
     <string name="donate">捐赠</string>
 
     <string name="mute_for_one_hour">静音 1 小时</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">静音 2 小时</string>
+    <string name="mute_for_eight_hours">静音 8 小时</string>
     <string name="mute_for_one_day">静音 1 天</string>
     <string name="mute_for_seven_days">静音 7 天</string>
     <string name="mute_forever">永久静音</string>
@@ -365,7 +367,7 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">是否删除所有设备上的 %d 条消息？</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">删除 %d 条消息吗？</item>
     </plurals>

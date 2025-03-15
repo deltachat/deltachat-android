@@ -283,6 +283,7 @@
     <string name="donate">Quyên tặng</string>
 
     <string name="mute_for_one_hour">Tắt tiếng trong 1 giờ</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Tắt tiếng trong 2 giờ</string>
     <string name="mute_for_one_day">Tắt tiếng trong 1 ngày</string>
     <string name="mute_for_seven_days">Tắt tiếng trong 7 ngày</string>
@@ -317,7 +318,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Bạn có chắc chắn muốn rời khỏi nhóm này không?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">Xóa %d tin nhắn?</item>
     </plurals>
