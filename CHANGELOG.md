@@ -8,6 +8,8 @@
 * add menu option to easily save/unsave selected message
 * improve deletion confirmation for "Device Messages"
 * always paste as plain text in message draft area
+* some small bug fixes and updated translations
+* update to core 1.157.2
 
 ## v1.54.4
 2025-03

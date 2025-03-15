@@ -294,6 +294,7 @@
     <string name="donate">Lahjoita</string>
 
     <string name="mute_for_one_hour">Mykistä 1 tunniksi</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Mykistä 2 tunniksi</string>
     <string name="mute_for_one_day">Mykistä 1 päiväksi</string>
     <string name="mute_for_seven_days">Mykistä 7 päiväksi</string>
@@ -329,7 +330,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Haluatko varmasti poistua tästä ryhmästä?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Poista %d viesti?</item>
         <item quantity="other">Poista %d viestiä?</item>

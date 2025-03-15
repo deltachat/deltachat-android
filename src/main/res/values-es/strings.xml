@@ -341,6 +341,7 @@
     <string name="donate">Donar</string>
 
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>
     <string name="mute_for_seven_days">Silenciar por 7 días</string>
@@ -389,7 +390,7 @@
         <item quantity="many">¿Eliminar %d mensajes de todos tus dispositivos?</item>
         <item quantity="other">¿Eliminar %d mensajes de todos tus dispositivos?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">¿Eliminar %d mensaje?</item>
         <item quantity="many">¿Eliminar %d mensajes?</item>

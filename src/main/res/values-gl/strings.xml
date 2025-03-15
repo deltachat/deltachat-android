@@ -270,6 +270,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Engadir á pantalla de Inicio</string>
     <string name="mute_for_one_hour">Acalar durante 1 h.</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Acalar durante 2 h.</string>
     <string name="mute_for_one_day">Acalar durante 1 día</string>
     <string name="mute_for_seven_days">Acalar durante 7 días</string>
@@ -305,7 +306,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Seguro que desexa abandonar o grupo?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Borrar %d mensaxe?</item>
         <item quantity="other">Borrar %d mensaxes?</item>

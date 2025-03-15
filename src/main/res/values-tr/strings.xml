@@ -332,6 +332,7 @@
     <string name="donate">Bağış</string>
 
     <string name="mute_for_one_hour">1 saatliğine sessize al</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">2 saatliğine sessize al</string>
     <string name="mute_for_one_day">1 günlüğüne sessize al</string>
     <string name="mute_for_seven_days">7 günlüğüne sessize al</string>
@@ -377,7 +378,7 @@
         <item quantity="one">Tüm aygıtlarınızdaki %d ileti silinsin mi?</item>
         <item quantity="other">Tüm aygıtlarınızdaki %d ileti silinsin mi?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">%d ileti silinsin mi?</item>
         <item quantity="other">%d ileti silinsin mi?</item>

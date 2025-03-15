@@ -177,6 +177,7 @@
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Desfinkatu</string>
     <string name="mute_for_one_hour">Mututu ordubete</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Mututu 2 ordu</string>
     <string name="mute_for_one_day">Mututu egun bat</string>
     <string name="mute_for_seven_days">Mututu 7 egun</string>

@@ -332,6 +332,7 @@
     <string name="donate">Feu un donatiu</string>
 
     <string name="mute_for_one_hour">Silencia 1 hora</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Silencia 2 hores</string>
     <string name="mute_for_one_day">Silencia 1 dia</string>
     <string name="mute_for_seven_days">Silencia 7 dies</string>
@@ -377,7 +378,7 @@
         <item quantity="one">¿Esborra %d missatge de tots els teus dispositius?</item>
         <item quantity="other">¿Esborra %d missatges de tots els teus dispositius?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Vols esborrar %d missatge?</item>
         <item quantity="other">Voleu esborrar %d missatges?</item>

@@ -133,6 +133,7 @@
     <string name="menu_settings">Postavke</string>
     <string name="menu_advanced">Napredno</string>
     <string name="mute_for_one_hour">Utišaj na 1 sat</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Utišaj na 2 sata</string>
     <string name="mute_for_one_day">Utišaj na 1 dan</string>
     <string name="mute_for_seven_days">Utišaj na 7 dana</string>

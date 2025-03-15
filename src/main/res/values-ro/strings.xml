@@ -280,6 +280,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Adăugați la ecranul principal</string>
     <string name="mute_for_one_hour">Silențios timp de 1 oră</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Silențios timp de 2 ore</string>
     <string name="mute_for_one_day">Silențios pentru 1 zi</string>
     <string name="mute_for_seven_days">Silențios timp de 7 zile</string>
@@ -316,7 +317,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ești sigur că vrei să părăsești acest grup?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ștergeți %d mesaj?</item>
         <item quantity="few">Ștergeți %d mesaje?</item>
