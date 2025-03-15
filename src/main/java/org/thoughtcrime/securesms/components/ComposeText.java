@@ -1,13 +1,16 @@
 package org.thoughtcrime.securesms.components;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.core.view.ContentInfoCompat;
+import androidx.core.view.ViewCompat;
 import androidx.core.view.inputmethod.EditorInfoCompat;
 import androidx.core.view.inputmethod.InputConnectionCompat;
 import androidx.core.view.inputmethod.InputContentInfoCompat;
@@ -48,6 +51,28 @@ public class ComposeText extends AppCompatEditText {
   public ComposeText(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
     initialize();
+  }
+
+  @Override
+  public boolean onTextContextMenuItem(int id) {
+    if (id == android.R.id.paste) {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        id = android.R.id.pasteAsPlainText;
+      } else if (ViewCompat.getOnReceiveContentMimeTypes(this) != null) {
+        // older device, manually paste as plain text
+        ClipboardManager cm = (ClipboardManager) getContext().getSystemService(
+          Context.CLIPBOARD_SERVICE);
+        ClipData clip = (cm == null) ? null : cm.getPrimaryClip();
+        if (clip != null && clip.getItemCount() > 0) {
+          ContentInfoCompat payload = new ContentInfoCompat.Builder(clip, ContentInfoCompat.SOURCE_CLIPBOARD)
+            .setFlags(ContentInfoCompat.FLAG_CONVERT_TO_PLAIN_TEXT)
+            .build();
+          ViewCompat.performReceiveContent(this, payload);
+        }
+        return true;
+      }
+    }
+    return super.onTextContextMenuItem(id);
   }
 
   public String getTextTrimmed(){
