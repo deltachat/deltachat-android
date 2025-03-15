@@ -238,6 +238,7 @@
     <string name="ConversationFragment_quoted_message_not_found">រកមិនឃើញសារដើម</string>
     <string name="reply_privately">ឆ្លើយតបដោយឯកជន</string>
     <string name="mute_for_one_hour">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល១ម៉ោង</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល២ម៉ោង</string>
     <string name="mute_for_one_day">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល១ថ្ងៃ</string>
     <string name="mute_for_seven_days">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល៧ថ្ងៃ</string>
@@ -269,7 +270,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">តើអ្នកប្រាកដហើយថាចង់ចាកចេញពីក្រុមនេះ?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">លុបសារ %d</item>
     </plurals>

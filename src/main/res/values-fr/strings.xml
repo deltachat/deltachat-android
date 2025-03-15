@@ -337,6 +337,7 @@
     <string name="donate">Faire un don</string>
 
     <string name="mute_for_one_hour">Désactiver pour 1 heure</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Désactiver pour 2 heures</string>
     <string name="mute_for_one_day">Désactiver pour 1 jour</string>
     <string name="mute_for_seven_days">Désactiver pour 7 jours</string>
@@ -378,7 +379,7 @@
         <item quantity="many">Effacer %d messages ici et sur le serveur ?</item>
         <item quantity="other">Effacer %d messages ici et sur le serveur  ?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Supprimer %d message ?</item>
         <item quantity="many">Supprimer %d messages ?</item>

@@ -279,6 +279,7 @@
     <string name="donate">Paaukoti</string>
 
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Išjungti 2 valandoms</string>
     <string name="mute_for_one_day">Išjungti 1 dienai</string>
     <string name="mute_for_seven_days">Išjungti 7 dienoms</string>
@@ -308,7 +309,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ar tikrai norite išeiti iš šios grupės?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ištrinti %d žinutę?</item>
         <item quantity="few">Ištrinti %d žinutes?</item>

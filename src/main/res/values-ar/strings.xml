@@ -118,6 +118,7 @@
     <string name="menu_zoom_in">تقريب</string>
     <string name="menu_zoom_out">تصغير</string>
     <string name="mute_for_one_hour">أكتم لمدة ساعة</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">أكتم لمدة ساعتين</string>
     <string name="mute_for_one_day">أكتم لمدة يوم</string>
     <string name="mute_for_seven_days">أكتم لمدة أسبوع</string>

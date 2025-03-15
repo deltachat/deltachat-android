@@ -328,7 +328,9 @@
     <string name="donate">Dhuroni</string>
 
     <string name="mute_for_one_hour">Heshtoji për 1 orë</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Heshtoji për 2 orë</string>
+    <string name="mute_for_eight_hours">Heshtoje për 8 orë</string>
     <string name="mute_for_one_day">Heshtoji për 1 ditë</string>
     <string name="mute_for_seven_days">Heshtoji për 7 ditë</string>
     <string name="mute_forever">Heshtoje përgjithmonë</string>
@@ -373,7 +375,7 @@
         <item quantity="one">Të fshihet %d mesazh në krejt pajisjet tuaja?</item>
         <item quantity="other">Të fshihen %d mesazhe në krejt pajisjet tuaja?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Të fshihet %d mesazh?</item>
         <item quantity="other">Të fshihen %d mesazhe?</item>

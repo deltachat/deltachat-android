@@ -257,6 +257,7 @@
     <string name="ConversationFragment_quoted_message_not_found">Pesan orisinil tidak ditemukan</string>
     <string name="reply_privately">Balas secara privat</string>
     <string name="mute_for_one_hour">Diamkan untuk 1 jam</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Diamkan untuk 2 jam</string>
     <string name="mute_for_one_day">Diamkan untuk 1 hari</string>
     <string name="mute_for_seven_days">Diamkan untuk 7 hari</string>
@@ -287,7 +288,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Apakah anda yakin untuk keluar dari grup ini?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">Menghapus pesan %d?</item>
     </plurals>

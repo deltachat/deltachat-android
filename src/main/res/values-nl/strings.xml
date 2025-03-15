@@ -332,7 +332,9 @@
     <string name="donate">Doneren</string>
 
     <string name="mute_for_one_hour">1 uur lang uitschakelen</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">2 uur lang uitschakelen</string>
+    <string name="mute_for_eight_hours">8 uur lang uitschakelen</string>
     <string name="mute_for_one_day">1 dag lang uitschakelen</string>
     <string name="mute_for_seven_days">7 dagen lang uitschakelen</string>
     <string name="mute_forever">Permanent uitschakelen</string>
@@ -377,7 +379,7 @@
         <item quantity="one">Wil je %d bericht verwijderen van al je apparaten?</item>
         <item quantity="other">Wil je %d berichten verwijderen van al je apparaten?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Wil je %d bericht verwijderen?</item>
         <item quantity="other">Wil je %d berichten verwijderen?</item>

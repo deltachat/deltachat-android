@@ -323,6 +323,7 @@
     <string name="donate">捐贈</string>
 
     <string name="mute_for_one_hour">靜音1小時</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">靜音2小時</string>
     <string name="mute_for_one_day">靜音1天</string>
     <string name="mute_for_seven_days">靜音7天</string>
@@ -365,7 +366,7 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">是否刪除所有裝置上的%d條訊息？</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">刪除%d則訊息？</item>
     </plurals>

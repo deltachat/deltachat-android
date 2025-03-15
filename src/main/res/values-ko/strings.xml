@@ -256,6 +256,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">홈 스크린에 추가</string>
     <string name="mute_for_one_hour">1시간 동안 알림 끄기</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">2시간 동안 알림 끄기</string>
     <string name="mute_for_one_day">1일 동안 알림 끄기</string>
     <string name="mute_for_seven_days">7일 동안 알림 끄기</string>
@@ -289,7 +290,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">이 그룹에서 나가시겠습니까?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">%d개의 메시지를 삭제하시겠습니까?</item>
     </plurals>

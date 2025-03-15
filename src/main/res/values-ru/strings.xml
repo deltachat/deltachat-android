@@ -350,7 +350,9 @@
     <string name="donate">Пожертвовать</string>
 
     <string name="mute_for_one_hour">На 1 час</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">На 2 часа</string>
+    <string name="mute_for_eight_hours">На 8 часов</string>
     <string name="mute_for_one_day">На 1 день</string>
     <string name="mute_for_seven_days">На 7 дней</string>
     <string name="mute_forever">Постоянно</string>
@@ -401,7 +403,7 @@
         <item quantity="many">Удалить %d сообщений на всех ваших устройствах?</item>
         <item quantity="other">Удалить %d сообщений на всех ваших устройствах?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Удалить %d сообщение?</item>
         <item quantity="few">Удалить %d сообщения?</item>
