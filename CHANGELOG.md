@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v1.56.0
+2025-03
 
 * allow to edit messages
 * allow to delete messages for everyone
