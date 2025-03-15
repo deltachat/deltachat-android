@@ -133,6 +133,7 @@
     <string name="menu_advanced">மேம்பட்ட அமைப்புகள்</string>
     <string name="menu_view_profile">சுயவிவரத்தை காண்பி</string>
     <string name="mute_for_one_hour">1 மணி இதற்காக ஊமையாக்கு</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">2 மணிகள் இதற்காக ஊமையாக்கு</string>
     <string name="mute_for_one_day">1 நாள் இதற்காக ஊமையாக்கு</string>
     <string name="mute_for_seven_days">7 நாட்கள் இதற்காக ஊமையாக்கு</string>

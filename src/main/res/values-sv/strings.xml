@@ -300,6 +300,7 @@
     <string name="donate">Donera</string>
 
     <string name="mute_for_one_hour">Tysta 1 timma</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Tysta 2 timmar</string>
     <string name="mute_for_one_day">Tysta 1 dag</string>
     <string name="mute_for_seven_days">Tysta 7 dagar</string>
@@ -335,7 +336,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Är du säker på att du vill lämna den här gruppen?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Vill du ta bort %d meddelande?</item>
         <item quantity="other">Vill du ta bort %d meddelanden?</item>

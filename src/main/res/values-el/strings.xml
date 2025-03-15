@@ -264,6 +264,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Προσθήκη στην κεντρική οθόνη</string>
     <string name="mute_for_one_hour">Σίγαση για 1 ώρα</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Σίγαση για 2 ώρες</string>
     <string name="mute_for_one_day">Σίγαση για 1 ημέρα</string>
     <string name="mute_for_seven_days">Σίγαση για 7 ημέρες</string>
@@ -299,7 +300,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Είστε σίγουρος/-η ότι θέλετε να βγείτε από αυτή την ομάδα;</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Διαγραφή %d μηνύματος;</item>
         <item quantity="other">Διαγραφή %d μηνυμάτων;</item>

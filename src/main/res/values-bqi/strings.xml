@@ -228,6 +228,7 @@
     <string name="pin">دیسنیڌن</string>
     <string name="source_code">کود بونچک</string>
     <string name="mute_for_one_hour">بؽ دونگ کردن سی 1 ساعت</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">بؽ دونگ کردن سی 2 ساعت</string>
     <string name="mute_for_one_day">بؽ دونگ کردن سی 1 رۊ</string>
     <string name="mute_for_seven_days">بؽ دونگ کردن سی 7 رۊ</string>
@@ -243,7 +244,7 @@
 
     <string name="videochat">گوفت ۉ لوفت ویدیویی</string>
     <string name="videochat_invitation">موکش و گوفت ۉ لوفت ویدیویی</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">êxuy %d payom pāk bu?</item>
         <item quantity="other">اخۊی %d پیوم پاک بۊ؟</item>

@@ -347,6 +347,7 @@
     <string name="donate">Пожертвувати</string>
 
     <string name="mute_for_one_hour">Відключити сповіщення на 1 годину</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Відключити сповіщення на 2 години</string>
     <string name="mute_for_one_day">Відключити сповіщення на 1 день</string>
     <string name="mute_for_seven_days">Відключити сповіщення на 7 днів</string>
@@ -384,7 +385,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ви впевнені, що хочете залишити цю групу?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Видалити %d повідомлення?</item>
         <item quantity="few">Видалити %d повідомлення?</item>

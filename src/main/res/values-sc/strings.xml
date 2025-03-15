@@ -191,6 +191,7 @@
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Isbloca</string>
     <string name="mute_for_one_hour">A sa muda pro 1 ora</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">A sa muda pro 2 oras</string>
     <string name="mute_for_one_day">A sa muda pro 1 die</string>
     <string name="mute_for_seven_days">A sa muda pro 7 dies</string>

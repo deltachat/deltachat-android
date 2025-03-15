@@ -290,6 +290,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Adicionar à Tela Inicial</string>
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 dia</string>
     <string name="mute_for_seven_days">Silenciar por 7 dias</string>
@@ -326,7 +327,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Quer mesmo sair do grupo?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Apagar %d mensagem?</item>
         <item quantity="many">Apagar %d mensagens?</item>

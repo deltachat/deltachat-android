@@ -327,7 +327,7 @@
     <string name="jump_to_message">Přejít na zprávu</string>
     <string name="jump_to_original_message">Přejít na původní zprávu</string>
     <string name="copy_json">Kopírovat JSON</string>
-    <string name="replace_draft">Přepsat rozepsané</string>
+    <string name="replace_draft">Nahradit rozepsanou zprávu</string>
     <string name="title_share_location">Sdílet polohu se všemi členy skupiny</string>
     <string name="device_talk">Zprávy v zařízení</string>
     <string name="device_talk_subtitle">Lokálně vygenerované zprávy</string>
@@ -350,6 +350,7 @@
     <string name="donate">Darovat</string>
 
     <string name="mute_for_one_hour">Ztlumit na 1 hodinu</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Ztlumit na 2 hodiny</string>
     <string name="mute_for_one_day">Ztlumit na 1 den</string>
     <string name="mute_for_seven_days">Ztlumit na 7 dní</string>
@@ -401,7 +402,7 @@
         <item quantity="many">Smazat %d zpráv ze všech Vašich zařízení?</item>
         <item quantity="other">Smazat %d zpráv ze všech vašich zařízení?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Smazat %d zprávu?</item>
         <item quantity="few">Smazat %d zprávy?</item>
@@ -410,7 +411,7 @@
     </plurals>
     <string name="ask_forward">Přejete si přeposlat zprávy do chatu %1$s?</string>
     <string name="ask_forward_multiple">Přejete si přeposlat zprávy do %1$d chatů?</string>
-    <string name="ask_export_attachment">Uložením příloh je zpřístupníte ostatním aplikacím na tomto přístroji.\n\nPřejete si pokračovat?</string>
+    <string name="ask_export_attachment">Uložením příloh je zpřístupníte ostatním aplikacím na tomto zařízení.\n\nPřejete si pokračovat?</string>
     <string name="ask_block_contact">Přejete si zablokovat tento kontakt?\n\nSoukromé zprávy a skupiny vytvořené zablokovanými kontakty budou skryty.\n\nV ostatních skupinách, ve kterých se zablokované kontakty nacházejí, se jejich zprávy budou zobrazovat i nadále.</string>
     <string name="ask_unblock_contact">Přejete si odblokovat tento kontakt?</string>
     <string name="ask_delete_contacts">Přejete si smazat kontakty?\n\nKontakty s probíhajícími chaty a kontakty ze systémového adresáře nelze smazat permanentně.</string>
@@ -462,7 +463,7 @@
     <string name="chat_new_broadcast_hint">Seznam vysílání slouží k posílání zpráv příjemcům v chatu, který je pro ně pouze pro čtení.</string>
     <string name="chat_new_group_hint">Ostatní tuto skupinu uvidí až poté, co odešlete první zprávu.</string>
     <string name="chat_record_slide_to_cancel">Zrušit tahem</string>
-    <string name="chat_record_explain">K nahrání hlasové zprávy stiskněte a držte mikrofon, uvolněte pro odeslání.</string>
+    <string name="chat_record_explain">Pro nahrání hlasové zprávy stiskněte a držte ikonu mikrofonu; uvolněte pro odeslání.</string>
     <string name="chat_no_chats_yet_title">Žádné chaty.\nStiskem \"+\" založte nový chat.</string>
     <string name="chat_all_archived">Všechny chaty jsou archivovány.\nStiskem \"+\" založte nový chat.</string>
     <string name="chat_share_with_title">Sdílet s</string>
@@ -473,7 +474,7 @@
     <string name="chat_self_talk_subtitle">Zprávy poslané sobě</string>
     <string name="archive_empty_hint">Zde se zobrazí archivované chaty.</string>
     <string name="saved_messages">Uložené zprávy</string>
-    <string name="saved_messages_explain">• Přepošlete si sem zprávy pro rychlý přístup\n\n• Tvořte si poznámky textové i hlasové\n\n• Uložte si sem multimédia</string>
+    <string name="saved_messages_explain">Sem si můžete:\n\n• přeposílat zprávy pro rychlý přístup,\n\n• zapisovat textové i hlasové poznámky,\n\n• ukládat multimédia</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Uložené</string>
     <string name="save_as">Uložit jako</string>
@@ -657,7 +658,7 @@
     <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Přihlásit se se stávajícím účtem pro e-mail.</string>
     <string name="login_subheader">Pro standardní poskytovatele jsou nastavení dopněna automaticky. Někdy je potřeba povolit IMAP ve webovém rozhraní. Potřebujete-li pomoc, obraťte se na svého poskytovatele e-mailu nebo přátele.</string>
-    <string name="login_no_servers_hint">Delta Chat nemá žádné vlastní servery, všechna data zůstávají na vašem přístroji.</string>
+    <string name="login_no_servers_hint">Delta Chat nesbírá uživatelská data, vše zůstává na vašem zařízení.</string>
     <string name="login_inbox">Příchozí</string>
     <string name="login_imap_login">IMAP uživatelské jméno</string>
     <string name="login_imap_server">IMAP server</string>
@@ -685,7 +686,7 @@
     <string name="proxy_share_link">Sdílet odkaz</string>
 
     <string name="login_info_oauth2_title">Pokračovat se zjednodušeným nastavením?</string>
-    <string name="login_info_oauth2_text">Zadaný e-mail podporuje zjednodušené nastavení (OAuth 2.0).\n\nV příštím kroku dej prosím Delta Chatu povolení chovat se jako chat přes e-mail. \n\nŽádné servery Delta Chat nemá, tvá data zůstávají na tvém přístroji.</string>
+    <string name="login_info_oauth2_text">Zadaný e-mail podporuje zjednodušené nastavení (OAuth 2.0).\n\nV následujícím kroku, prosíme, povolte Delta Chatu chovat se jako aplikace typu Chat přes e-mail.\n\nDelta Chat nesbírá uživatelská data, vše zůstává na vašem zařízení.</string>
     <string name="login_certificate_checks">Kontroly certifikátu</string>
     <string name="login_error_mail">Prosím, zadejte platnou e-mailovou adresu</string>
     <string name="login_error_server">Prosím, zadejte platný server / IP adresu</string>
@@ -878,7 +879,7 @@
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Mazat staré zprávy</string>
-    <string name="autodel_device_title">Mazat zprávy z přístroje</string>
+    <string name="autodel_device_title">Mazat zprávy ze zařízení</string>
     <string name="autodel_server_title">Mazat zprávy ze serveru</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Skutečně smazat %1$d zpráv a všechny v budoucnu stažené zprávy \"%2$s\"?\n\n• Toto zahrnuje všechna multimédia\n\n• Zprávy budou smazány bez ohledu na jejich přečtení\n\n• \"Uložené zprávy\" budou ponechány</string>
@@ -928,7 +929,7 @@
     <string name="group_name_changed_by_other">Uživatel %3$s změnil název skupiny z \"%1$s\" na \"%2$s\".</string>
     <string name="group_image_changed_by_you">Změnili jste obrázek skupiny.</string>
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
-    <string name="group_image_changed_by_other">Uživatel %1$s změnil název skupiny.</string>
+    <string name="group_image_changed_by_other">Uživatel %1$s změnil obrázek skupiny.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
     <string name="member_x_added">Člen %1$s byl přidán.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->

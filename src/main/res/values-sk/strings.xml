@@ -280,6 +280,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Pridať na domovskú obrazovku</string>
     <string name="mute_for_one_hour">Stíšiť na 1 hodinu</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Stíšiť na 2 hodiny</string>
     <string name="mute_for_one_day">Stíšiť na 1 deň</string>
     <string name="mute_for_seven_days">Stíšiť na 7 dní</string>
@@ -317,7 +318,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Naozaj chcete opustiť túto skupinu?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Odstrániť %d správu?</item>
         <item quantity="few">Odstrániť %d správy?</item>

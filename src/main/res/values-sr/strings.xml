@@ -283,6 +283,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Додај на главни екран</string>
     <string name="mute_for_one_hour">Утишај на 1 сат</string>
+    <!-- deprecated -->
     <string name="mute_for_two_hours">Утишај на 2 сата</string>
     <string name="mute_for_one_day">Утишај на 1 дан</string>
     <string name="mute_for_seven_days">Утишај на 7 дана</string>
@@ -319,7 +320,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Да ли заиста желите да напустите ову групу?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Да ли желите да избришите %d поруку?</item>
         <item quantity="few">Да ли желите да избришите %d поруке?</item>
