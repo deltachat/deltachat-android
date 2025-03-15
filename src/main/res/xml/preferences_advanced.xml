@@ -70,16 +70,9 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/pref_encryption">
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="true"
-            android:key="pref_prefer_e2ee"
-            android:title="@string/autocrypt_prefer_e2ee"/>
-
-
-        <Preference android:key="pref_manage_keys"
-            android:title="@string/pref_manage_keys"/>
+    <PreferenceCategory
+        android:key="pref_category_encryption"
+        android:title="@string/pref_encryption">
 
         <Preference android:key="pref_send_autocrypt_setup_message"
             android:title="@string/autocrypt_send_asm_title"/>

@@ -7,6 +7,7 @@
 * add mute option "8 hours"
 * add menu option to easily save/unsave selected message
 * improve deletion confirmation for "Device Messages"
+* remove dangerous encryption options
 * always paste as plain text in message draft area
 * some small bug fixes and updated translations
 * update to core 1.157.2
