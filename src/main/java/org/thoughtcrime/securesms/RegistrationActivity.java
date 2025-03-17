@@ -629,16 +629,19 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 getParam(R.id.password_text, false)
         );
         EnteredServerLoginParam smtpParam = new EnteredServerLoginParam(
-                getParam(R.id.imap_server_text, true),
-                Util.objectToInt(getParam(R.id.imap_port_text, true)),
-                EnteredServerLoginParam.SocketSecurity.values()[imapSecurity.getSelectedItemPosition()],
-                getParam(R.id.imap_login_text, false),
-                getParam(R.id.password_text, false)
+                getParam(R.id.smtp_server_text, true),
+                Util.objectToInt(getParam(R.id.smtp_port_text, true)),
+                EnteredServerLoginParam.SocketSecurity.values()[smtpSecurity.getSelectedItemPosition()],
+                getParam(R.id.smtp_login_text, false),
+                getParam(R.id.smtp_password_text, false)
         );
         EnteredLoginParam param = new EnteredLoginParam(
             getParam(R.id.email_text, true),
             imapParam,
-        )
+            smtpParam,
+            EnteredLoginParam.getCertificateChecks(certCheck.getSelectedItemPosition()),
+            authMethod.getSelectedItemPosition()==1
+        );
 
         DcHelper.getContext(this).configure();
     }
