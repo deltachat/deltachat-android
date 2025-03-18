@@ -63,7 +63,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
   private final LayoutInflater                li;
   private final ItemClickListener             clickListener;
   private final GlideRequests                 glideRequests;
-  private final Set<String>                   selectedContacts = new HashSet<>(); // TODO: maybe better use contact-id here
+  private final Set<Integer>                  selectedContacts = new HashSet<>(); // TODO: maybe better use contact-id here
   private final SparseIntArray                actionModeSelection = new SparseIntArray();
 
   @Override
@@ -292,7 +292,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
       enabled = !(dcContact.getId() == DcContact.DC_CONTACT_ID_SELF && itemMultiSelect);
     }
     viewHolder.bind(glideRequests, id, dcContact, name, addr, null, itemMultiSelect, enabled);
-    viewHolder.setChecked(selectedContacts.contains(addr));
+    viewHolder.setChecked(selectedContacts.contains(id));
   }
 
   @Override
@@ -300,7 +300,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
     return VIEW_TYPE_CONTACT;
   }
 
-  public Set<String> getSelectedContacts() {
+  public Set<Integer> getSelectedContacts() {
     return selectedContacts;
   }
 

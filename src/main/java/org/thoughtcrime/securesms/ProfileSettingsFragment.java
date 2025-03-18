@@ -207,10 +207,9 @@ public class ProfileSettingsFragment extends Fragment
     DcChat dcChat = dcContext.getChat(chatId);
     Intent intent = new Intent(getContext(), ContactMultiSelectionActivity.class);
     intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, dcChat.isProtected());
-    ArrayList<String> preselectedContacts = new ArrayList<>();
-    int[] memberIds = dcContext.getChatContacts(chatId);
-    for (int memberId : memberIds) {
-      preselectedContacts.add(dcContext.getContact(memberId).getAddr());
+    ArrayList<Integer> preselectedContacts = new ArrayList<>();
+    for (int memberId : dcContext.getChatContacts(chatId)) {
+      preselectedContacts.add(memberId);
     }
     intent.putExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselectedContacts);
     startActivityForResult(intent, REQUEST_CODE_PICK_CONTACT);
@@ -318,13 +317,12 @@ public class ProfileSettingsFragment extends Fragment
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
     if (requestCode==REQUEST_CODE_PICK_CONTACT && resultCode==Activity.RESULT_OK && data!=null) {
-      List<String> selected = data.getStringArrayListExtra("contacts");
+      List<Integer> selected = data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA);
       if(selected == null) return;
       Util.runOnAnyBackgroundThread(() -> {
-        for (String addr : selected) {
-          if (addr!=null) {
-            int toAddId = dcContext.createContact(null, addr);
-            dcContext.addContactToChat(chatId, toAddId);
+        for (Integer contactId : selected) {
+          if (contactId!=null) {
+            dcContext.addContactToChat(chatId, contactId);
           }
         }
       });

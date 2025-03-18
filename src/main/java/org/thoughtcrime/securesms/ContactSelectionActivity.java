@@ -89,8 +89,8 @@ public abstract class ContactSelectionActivity extends PassphraseRequiredActionB
   }
 
   @Override
-  public void onContactSelected(int specialId, String number) {}
+  public void onContactSelected(int contactId) {}
 
   @Override
-  public void onContactDeselected(int specialId, String number) {}
+  public void onContactDeselected(int contactId) {}
 }
