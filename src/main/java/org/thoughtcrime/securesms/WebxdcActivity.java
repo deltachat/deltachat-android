@@ -106,7 +106,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     openWebxdcActivity(context, instance, "");
   }
 
-  public static void openWebxdcActivity(Context context, DcMsg instance, String href) {
+  public static void openWebxdcActivity(Context context, @NonNull DcMsg instance, String href) {
     openWebxdcActivity(context, instance.getId(), false, href);
   }
 
