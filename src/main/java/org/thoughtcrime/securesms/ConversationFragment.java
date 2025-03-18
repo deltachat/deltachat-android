@@ -747,7 +747,10 @@ public class ConversationFragment extends MessageSelectorFragment
                 DozeReminder.dozeReminderTapped(getContext());
             }
             else if(messageRecord.getInfoType() == DcMsg.DC_INFO_WEBXDC_INFO_MESSAGE) {
-                WebxdcActivity.openWebxdcActivity(getContext(), messageRecord.getParent(), messageRecord.getWebxdcHref());
+                if (messageRecord.getParent() != null) {
+                    // if the parent webxdc message still exists
+                    WebxdcActivity.openWebxdcActivity(getContext(), messageRecord.getParent(), messageRecord.getWebxdcHref());
+                }
             }
             else {
                 String self_mail = dcContext.getConfig("configured_mail_user");
