@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* ignore click in info-messages from deleted in-chat apps
+
 ## v1.56.0
 2025-03
 
