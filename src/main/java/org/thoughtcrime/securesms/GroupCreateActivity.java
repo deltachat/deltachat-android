@@ -244,10 +244,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
       Intent intent = new Intent(this, ContactMultiSelectionActivity.class);
       intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, verified);
-      ArrayList<String> preselectedContacts = new ArrayList<>();
-      for (int id : getAdapter().getContacts()) {
-        preselectedContacts.add(dcContext.getContact(id).getAddr());
-      }
+      ArrayList<Integer> preselectedContacts = new ArrayList<>(getAdapter().getContacts());
       intent.putExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselectedContacts);
       startActivityForResult(intent, PICK_CONTACT);
     }
@@ -333,9 +330,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
       case PICK_CONTACT:
         ArrayList<Integer> contactIds = new ArrayList<>();
-        for (String addr : Objects.requireNonNull(data.getStringArrayListExtra("contacts"))) {
-          if(addr != null) {
-            contactIds.add(dcContext.createContact(null, addr));
+        for (Integer contactId : Objects.requireNonNull(data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA))) {
+          if(contactId != null) {
+            contactIds.add(contactId);
           }
         }
         getAdapter().changeData(contactIds);
