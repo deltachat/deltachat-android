@@ -129,8 +129,6 @@
     <string name="menu_add_attachment">Fayl əlavə et</string>
     <string name="menu_leave_group">Qrupu tərk et</string>
     <string name="menu_delete_chat">Çatı sil</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Mesajları sil</string>
     <string name="menu_delete_location">Bu yerləşməni silmək? </string>
     <string name="menu_message_details">Mesaj məlumatları</string>
     <string name="menu_copy_to_clipboard">Panoya kopyalamaq</string>
@@ -158,11 +156,10 @@
     <string name="menu_save_log">Loqu saxlamaq</string>
     <string name="title_share_location">Qrup üzvlərinə yerləşdiyin yerini göndər</string>
     <string name="edit_contact">Kontakta dəyişiklik</string>
-    <string name="mute_for_one_hour">1 saatlıq söndür</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">2 saatlıq söndür</string>
-    <string name="mute_for_one_day">1 günlük söndür</string>
-    <string name="mute_for_seven_days">7 günlük söndür</string>
+    <string name="mute_for_one_hour">1 saatlıq söndür</string>
+    <string name="mute_for_eight_hours">8 saatlıq söndür</string>
+    <string name="mute_for_one_day">1 günlük söndür</string>
+    <string name="mute_for_seven_days">7 günlük söndür</string>
     <string name="mute_forever">Həmişə səssiz</string>
 
     <string name="share_location_for_5_minutes">5 dəqiqə üçün</string>
@@ -178,8 +175,6 @@
     <string name="ask_block_contact">Bu kontaktı bloklamaq? Bu kontaktdan artıq mesaj qəbul etməyəcəksiniz.</string>
     <string name="ask_unblock_contact">Bu kontaktı blokdan çıxarmaq istəyirsiniz? Nəticədə kontaktdan mesajlar ala bilərsiniz.</string>
     <string name="ask_delete_contacts">Kontaktları silmək? Bu əməliyyat seçilmiş kontaktları daimi olaraq silməyəcək. \n\n Sistem kontakt kitabından davam edən söhbətlər və kontaktlar ilə əlaqə saxlanıla bilməz.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Davam edən çatlarla kontakt silinmir.</string>
     <string name="ask_start_chat_with">%1$s ilə çat? </string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$s qrupdan silmək? </string>
@@ -366,14 +361,17 @@
     <string name="autocrypt_send_asm_explain_before">Autocrypt Setup Message digər Autocrypt-uyğun proqramlarla təhlükəsiz şəkildə bölüşür. \n\nSizin buradakı quraşdırma koduyla şifrələnir və digər qurğuda yazılmalıdır.</string>
     <string name="autocrypt_send_asm_button">Autocrypt Setup Message-ı göndər</string>
     <string name="autocrypt_send_asm_explain_after">Sizin açarınız sizə göndərildi. Başqa bir cihaza keçin və mesajın ayarını açın. Siz quraşdırma kodu daxil etməlisiniz. Orada aşağıdakı rəqəmləri daxil edin. Bitirən zaman, başqa bir cihazda Autocrypt istifadə üçün hazır olacaq.</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Ucdan-uca şifrələmə üstünlük təşkil edir</string>
     <string name="autocrypt_asm_subject">Autocrypt mesaj ayarı</string>
     <string name="autocrypt_asm_general_body">Bu, müvəqqəti quraşdırma üçün müştərilər arasında köçürmək üçün istifadə edilən Autocrypt Setup Mesajıdır. \n\nSenfikanızı çözmək və istifadə etmək üçün autocrypt uyğun müştəri içərisində mesajı açın və yaradan cihazda göstərilən quraşdırma kodunu daxil edin.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Bu, müvəqqəti quraşdırma üçün müştərilər arasında köçürmək üçün istifadə olunan Autocrypt Setup Mesajıdır. \n\nSenfikanızı çözmək və istifadə etmək üçün vurun və ya bu mesajı basın.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Autocrypt mesaj ayarı</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Digər cihazda göstərilən quraşdırma kodunu daxil edin.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Ucdan uca qurma köçürüldü. Bu cihaz artıq Autocrypt-lə digər cihazla eyni quraşdırma ilə istifadə etməyə hazırdır.</string>
-    <string name="autocrypt_continue_transfer_retry">Təkrar cəhd et</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Yanlış quraşdırma kodu. Yenidən cəhd edin.\n\nƏgər quraşdırma kodunu xatırlamırsınız, başqa bir cihazdan başqa bir Autocrypt quraşdırma mesajı göndərin.</string>
 
 

@@ -257,8 +257,6 @@
     <string name="menu_delete_chat">Elimina Chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Cancella Messaggi</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Elimina Messaggi</string>
     <string name="delete_contact">Elimina Contatto</string>
     <string name="menu_delete_location">Elimino questa Posizione?</string>
     <string name="menu_message_details">Informazioni Messaggio</string>
@@ -341,8 +339,7 @@
     <string name="donate">Dona</string>
 
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Silenzia per 2 ore</string>
+    <string name="mute_for_eight_hours">Silenzia per 8 ore</string>
     <string name="mute_for_one_day">Silenzia per 1 giorno</string>
     <string name="mute_for_seven_days">Silenzia per 7 giorni</string>
     <string name="mute_forever">Silenzia per sempre</string>
@@ -403,11 +400,7 @@
     <string name="ask_unblock_contact">Sbloccare questo contatto?</string>
     <string name="ask_delete_contacts">Eliminare contatti?\n\nI contatti con chat in corso o in rubrica di sistema non possono essere eliminati definitivamente.</string>
     <string name="ask_delete_contact">Eliminare il contatto %1$s?\n\nI contatti con chat in corso o in rubrica di sistema non possono essere eliminati definitivamente.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Impossibile eliminare contatti con chat in corso.</string>
     <string name="ask_start_chat_with">Chattare con %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Elimina %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Rimuovere %1$s dal gruppo?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -574,7 +567,6 @@
     <string name="multidevice_receiver_needs_update">Il profilo che vuoi importare proviene da una versione più recente di Delta Chat.\n\nPer continuare a configurare il secondo dispositivo, aggiorna questo dispositivo all\'ultima versione di Delta Chat.</string>
     <string name="multidevice_abort">Interrompere l\'impostazione del secondo dispositivo?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Questo invaliderà il codice QR copiato negli appunti.</string>
-    <string name="multidevice_experimental_hint">(sperimentale, è richiesta la versione 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profilo trasferito sul tuo secondo dispositivo.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Preparazione profilo…</string>
@@ -891,14 +883,17 @@
     <string name="autocrypt_send_asm_explain_before">Un Messaggio Configurazione Autocrypt condivide in modo sicuro la configurazione end-to-end con altre app compatibili con Autocrypt.\n\nLa configurazione verrà crittografata tramite un codice di configurazione visualizzato qui e dovrà essere digitato sull\'altro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Invia Messaggio Configurazione Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">La tua configurazione ti è stata inviata. Passa all\'altro dispositivo e apri il messaggio. Dovrebbe venirti richiesto un codice. Inserisci il seguente codice:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferisci Cifratura End-To-End</string>
     <string name="autocrypt_asm_subject">Messaggio Configurazione Autocrypt</string>
     <string name="autocrypt_asm_general_body">Questo è il Messaggio Configurazione Autocrypt utilizzato per trasferire la configurazione end-to-end tra i client.\n\nPer decifrare e utilizzare la configurazione, aprire il messaggio in un client compatibile con Autocrypt e immettere il codice di configurazione presentato sul dispositivo di generazione.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Questo è il Messaggio Configurazione Autocrypt utilizzato per trasferire la configurazione end-to-end tra i client.\n\nPer decriptare e utilizzare la configurazione, tocca o fai clic su questo messaggio.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Messaggio Configurazione Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Per piacere inserisci il codice mostrato nell\'altro dispositivo</string>
-    <string name="autocrypt_continue_transfer_succeeded">Configurazione end-to-end trasferita. Questo dispositivo può ora usare Autocrypt con la stessa configurazione dell\'altro dispositivo.</string>
-    <string name="autocrypt_continue_transfer_retry">Riprova</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Codice configurazione non valido. Per piacere riprova ancora.\n\nSe non ricordi il codice di configurazione invia un altro Messaggio Configurazione Autocrypt dall\'altro dispositivo.</string>
 
 
@@ -1132,7 +1127,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">L\'icona nella barra delle applicazioni non può essere disabilitata poiché Delta Chat è stato avviato con l\'opzione --minimizzato.</string>
     <string name="no_spellcheck_suggestions_found">Nessun suggerimento ortografico trovato.</string>
     <string name="show_window">Mostra Finestra</string>
-    <string name="login_socks5_experimental_warning">Il supporto SOCKS5 è attualmente sperimentale. Per piacere usatelo a vostro rischio e pericolo. Se si digita un indirizzo nel campo e-mail, ci sarà una ricerca DNS che non verrà trasferita tramite SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Associazioni tasti</string>

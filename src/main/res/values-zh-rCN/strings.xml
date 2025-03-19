@@ -239,8 +239,6 @@
     <string name="menu_delete_chat">删除聊天</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">清空聊天记录</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">删除消息</string>
     <string name="delete_contact">删除联系人</string>
     <string name="menu_delete_location">删除此位置？</string>
     <string name="menu_message_details">消息详情</string>
@@ -323,8 +321,6 @@
     <string name="donate">捐赠</string>
 
     <string name="mute_for_one_hour">静音 1 小时</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">静音 2 小时</string>
     <string name="mute_for_eight_hours">静音 8 小时</string>
     <string name="mute_for_one_day">静音 1 天</string>
     <string name="mute_for_seven_days">静音 7 天</string>
@@ -378,11 +374,7 @@
     <string name="ask_unblock_contact">取消屏蔽此联系人？您将再次能收到此联系人的消息。</string>
     <string name="ask_delete_contacts">删除联系人？\n\n仍有在进行中的聊天的联系人和在系统通讯录中的联系人无法被永久删除。</string>
     <string name="ask_delete_contact">删除联系人 %1$s?\n\n仍有在进行中的聊天的联系人和在系统通讯录中的联系人无法被永久删除。</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">无法删除仍有在进行中的聊天的联系人。</string>
     <string name="ask_start_chat_with">与 %1$s 聊天？</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">删除 %s？</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">将 %1$s 从群组中移除？</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -543,7 +535,6 @@
     <string name="multidevice_receiver_needs_update">你想导入的配置文件来自较新的 Delta Chat 版本。\n\n要继续设置第二台设备，请更新此设备上的 Delta Chat 到最新版。</string>
     <string name="multidevice_abort">中止第二台设备的设置吗？</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">这会让复制到剪贴板的二维码失效。</string>
-    <string name="multidevice_experimental_hint">（实验性，需要 1.36 版本）</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ 账号已传输到您的第二台设备。</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">正在准备账号…</string>
@@ -860,14 +851,17 @@
     <string name="autocrypt_send_asm_explain_before">Autocrypt 设置消息安全地共享您的端到端设置至其他兼容 Autocrypt 的应用程序。\n\n该设置将通过在此显示的、必须在另一台设备上输入的设置码进行加密。</string>
     <string name="autocrypt_send_asm_button">发送 Autocrypt 设置消息</string>
     <string name="autocrypt_send_asm_explain_after">您的设置已发送给您自己。切换到另一台设备并打开该设置消息。 您将被要求输入设置码。 输入以下数字：</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">优先使用端到端加密</string>
     <string name="autocrypt_asm_subject">Autocrypt 设置消息</string>
     <string name="autocrypt_asm_general_body">这是用于在客户端之间传输端到端设置的 Autocrypt 设置消息。\n\n要解密并使用您的设置，请在兼容 Autocrypt 的客户端中打开本消息，然后输入生成设备上显示的设置码。</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">这是用于在客户端之间传输端到端设置的 Autocrypt 设置消息。\n\n要解密并使用您的设置，请点击本消息。</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Autocrypt 设置消息</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">请输入另一台设备上显示的设置码。</string>
-    <string name="autocrypt_continue_transfer_succeeded">端到端设置已传输。此设备已准备好用与另一台设备相同的设置来使用 Autocrypt 了。</string>
-    <string name="autocrypt_continue_transfer_retry">重试</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">错误的设置码，请重试。\n\n如果您忘记了设置码，从另一台设备发送一个新的 Autocrypt 设置消息即可。</string>
 
 
@@ -1101,7 +1095,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">在 Delta Chat 带 --minimized 参数启动时，无法禁用托盘图标。</string>
     <string name="no_spellcheck_suggestions_found">未找到拼写建议</string>
     <string name="show_window">显示窗口</string>
-    <string name="login_socks5_experimental_warning">SOCKS5 支持目前还处于试验阶段。请自行承担使用风险。如果您在电子邮件字段中输入一个地址，会有不流经 SOCKS5 隧道的 DNS 查找流量。</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">按键绑定</string>

@@ -213,8 +213,6 @@
     <string name="menu_delete_chat">Ištrinti pokalbį</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Išvalyti pokalbį</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Ištrinti žinutes</string>
     <string name="delete_contact">Ištrinti adresatą</string>
     <string name="menu_delete_location">Ištrinti šią vietą?</string>
     <string name="menu_message_details">Išsamesnė žinutės informacija</string>
@@ -279,8 +277,7 @@
     <string name="donate">Paaukoti</string>
 
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Išjungti 2 valandoms</string>
+    <string name="mute_for_eight_hours">Išjungti 8 valandoms</string>
     <string name="mute_for_one_day">Išjungti 1 dienai</string>
     <string name="mute_for_seven_days">Išjungti 7 dienoms</string>
     <string name="mute_forever">Išjungti visam laikui</string>
@@ -321,8 +318,6 @@
     <string name="ask_block_contact">Užblokuoti šį adresatą? Jūs daugiau nebegausite žinučių nuo šio adresato.</string>
     <string name="ask_unblock_contact">Atblokuoti šį adresatą? Jūs ir vėl galėsite gauti žinutes nuo šio adresato.</string>
     <string name="ask_start_chat_with">Pradėti pokalbį su %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Ištrinti %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Pašalinti %1$s iš grupės?</string>
     <string name="open_url_confirmation">Ar norite atverti šią nuorodą?</string>
@@ -667,14 +662,17 @@
     <string name="autocrypt_send_asm_explain_before">\"Autocrypt sąrankos žinutė\" saugiai bendrina jūsų ištisinę sąranką su kitomis su Autocrypt suderinamomis programomis.\n\nSąranka bus užšifruota sąrankos kodu, kuris yra rodomas čia ir privalės būti įvestas kitame įrenginyje.</string>
     <string name="autocrypt_send_asm_button">Siųsti Autocrypt sąrankos žinutę</string>
     <string name="autocrypt_send_asm_explain_after">Jūsų sąranka buvo išsiųsta jums. Persijukite į kitą įrenginį ir atverkite sąrankos žinutę. Jūsų turėtų būti paprašyta sąrankos kodo. Į užklausą įrašykite šiuos skaitmenis.\n\nJums užbaigus, kitas įrenginys bus paruoštas naudoti Autocrypt.</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Teikti pirmenybę ištisiniam šifravimui</string>
     <string name="autocrypt_asm_subject">Autocrypt sąrankos žinutė</string>
     <string name="autocrypt_asm_general_body">Tai yra Autocrypt sąrankos žinutė, kuri yra naudojama perduoti jūsų ištisinę sąranką tarp klientų.\n\nNorėdami iššifruoti ir naudoti savo sąranką, atverkite žinutę su Autocrypt suderinamame kliente ir įveskite generuojančiame įrenginyje rodomą sąrankos kodą.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Tai yra Autocrypt sąrankos žinutė, kuri yra naudojama perduoti jūsų ištisinę sąranką tarp klientų.\n\nNorėdami iššifruoti ir naudoti savo sąranką, bakstelėkite ar spustelėkite ant šios žinutės.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Autocrypt sąrankos žinutė</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Įveskite kitame įrenginyje rodomą sąrankos kodą.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Ištisinė sąranka perduota. Dabar, šis įrenginys yra paruoštas naudoti Autocrypt su tokia pačia sąranka kaip ir kitas įrenginys.</string>
-    <string name="autocrypt_continue_transfer_retry">Bandyti dar kartą</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Blogas sąrankos kodas. Bandykite dar kartą.\n\nJeigu neprisimenate sąrankos kodo, tiesiog, išsiųskite dar vieną Autocrypt sąrankos žinutę iš kito  įrenginio.</string>
 
 
@@ -837,6 +835,7 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Dėklo piktograma negali būti išjungta, nes Delta Chat buvo paleista naudojant --minimized parinktį.</string>
     <string name="no_spellcheck_suggestions_found">Nerasta jokių rašybos pasiūlymų.</string>
     <string name="show_window">Rodyti langą</string>
+
     <string name="switch_between_chats">Perjungti tarp pokalbių</string>
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Pristatymo būsena: Klaida</string>

@@ -210,8 +210,6 @@
     <string name="menu_delete_chat">Xóa cuộc trò chuyện</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Xóa cuộc trò chuyện</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Xóa tin nhắn</string>
     <string name="delete_contact">Xóa liên hệ</string>
     <string name="menu_delete_location">Xóa vị trí này?</string>
     <string name="menu_message_details">Chi tiết tin nhắn</string>
@@ -283,8 +281,7 @@
     <string name="donate">Quyên tặng</string>
 
     <string name="mute_for_one_hour">Tắt tiếng trong 1 giờ</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Tắt tiếng trong 2 giờ</string>
+    <string name="mute_for_eight_hours">Tắt tiếng trong 8 giờ</string>
     <string name="mute_for_one_day">Tắt tiếng trong 1 ngày</string>
     <string name="mute_for_seven_days">Tắt tiếng trong 7 ngày</string>
     <string name="mute_forever">Tắt tiếng vĩnh viễn</string>
@@ -329,11 +326,7 @@
     <string name="ask_unblock_contact">Bỏ chặn liên hệ này? Sau đó bạn sẽ có thể nhận tin nhắn từ họ.</string>
     <string name="ask_delete_contacts">Xóa liên hệ?\n\nKhông thể xóa vĩnh viễn các liên hệ đang trò chuyện hoặc khỏi sổ địa chỉ hệ thống.</string>
     <string name="ask_delete_contact">Xóa liên hệ %1$s?\n\nKhông thể xóa vĩnh viễn các liên hệ đang trò chuyện hoặc khỏi sổ địa chỉ hệ thống.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Không thể xóa liên hệ với các cuộc trò chuyện đang diễn ra.</string>
     <string name="ask_start_chat_with">Trò chuyện với %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Xóa %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Loại %1$s khỏi nhóm?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -483,7 +476,6 @@
     <string name="multidevice_receiver_scanning_ask">Sao chép tài khoản từ thiết bị kia sang thiết bị này?</string>
     <string name="multidevice_abort">Hủy thiết lập thiết bị thứ hai?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Điều này sẽ làm mất hiệu lực mã QR được sao chép vào clipboard.</string>
-    <string name="multidevice_experimental_hint">(thử nghiệm, yêu cầu phiên bản 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Tài khoản đã được chuyển sang thiết bị thứ hai của bạn.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Đang chuẩn bị tài khoản…</string>
@@ -730,14 +722,17 @@
     <string name="autocrypt_send_asm_explain_before">Thông báo thiết lập Autocrypt chia sẻ an toàn thiết lập end-to-end của bạn với các ứng dụng tương thích Autocrypt khác.\n\nThiết lập sẽ được mã hóa bằng mã thiết lập được hiển thị ở đây và phải được nhập trên thiết bị kia.</string>
     <string name="autocrypt_send_asm_button">Gửi tin nhắn thiết lập Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Thiết lập của bạn đã được gửi cho chính bạn. Chuyển sang thiết bị khác và mở thông báo thiết lập. Bạn sẽ được yêu cầu nhập mã thiết lập. Nhập các chữ số sau:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Ưu tiên mã hóa đầu cuối</string>
     <string name="autocrypt_asm_subject">Thông báo thiết lập Autocrypt</string>
     <string name="autocrypt_asm_general_body">Đây là Thông báo Thiết lập Autocrypt được sử dụng để truyền thiết lập hai đầu của bạn giữa các máy khách.\n\nĐể giải mã và sử dụng thiết lập của bạn, hãy mở tin nhắn trong một ứng dụng khách tương thích với Autocrypt và nhập mã thiết lập được trình bày trên thiết bị tạo.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Đây là Thông báo Thiết lập Autocrypt được sử dụng để chuyển thiết lập hai đầu của bạn giữa các máy khách.\n\nĐể giải mã và sử dụng thiết lập của bạn, hãy nhấn hoặc nhấp vào thông báo này.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Thông báo thiết lập tự động mã hóa</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Vui lòng nhập mã thiết lập được hiển thị trên thiết bị kia.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Đã chuyển thiết lập end-to-end. Thiết bị này hiện đã sẵn sàng sử dụng Autocrypt với cùng thiết lập như thiết bị kia.</string>
-    <string name="autocrypt_continue_transfer_retry">Thử lại</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Mã thiết lập sai. Vui lòng thử lại.\n\nNếu bạn không nhớ mã thiết lập, hãy gửi Tin nhắn thiết lập Autocrypt mới từ thiết bị kia.</string>
 
 
@@ -958,7 +953,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Không thể tắt biểu tượng khay vì Delta Chat đã được bắt đầu bằng tùy chọn --giảm-thiểu.</string>
     <string name="no_spellcheck_suggestions_found">Không tìm thấy gợi ý chính tả.</string>
     <string name="show_window">Hiển thị cửa sổ</string>
-    <string name="login_socks5_experimental_warning">Hỗ trợ SOCKS5 hiện đang thử nghiệm. Vui lòng sử dụng có nguy cơ của riêng bạn. Nếu bạn nhập một địa chỉ vào trường e-mail, việc tra cứu DNS sẽ không được chuyển qua SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Tổ hợp phím</string>

@@ -189,8 +189,6 @@
     <string name="menu_add_attachment">첨부 파일 추가</string>
     <string name="menu_leave_group">그룹 나가기</string>
     <string name="menu_delete_chat">채팅 삭제</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">메시지 삭제</string>
     <string name="delete_contact">연락처 삭제</string>
     <string name="menu_delete_location">이 위치를 삭제하시겠습니까?</string>
     <string name="menu_message_details">메시지 세부정보</string>
@@ -256,8 +254,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">홈 스크린에 추가</string>
     <string name="mute_for_one_hour">1시간 동안 알림 끄기</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">2시간 동안 알림 끄기</string>
+    <string name="mute_for_eight_hours">8시간 동안 알림 끄기</string>
     <string name="mute_for_one_day">1일 동안 알림 끄기</string>
     <string name="mute_for_seven_days">7일 동안 알림 끄기</string>
     <string name="mute_forever">영구히 음소거</string>
@@ -301,11 +298,7 @@
     <string name="ask_unblock_contact">연락처 차단을 해제하시겠습니까? 이 연락처로부터 다시 메시지를 받을 수 있습니다.</string>
     <string name="ask_delete_contacts">연락처를 삭제하시겠습니까?\n\n시스템 주소록에서 진행 중인 채팅 및 연락처가 있는 연락처는 영구적으로 삭제할 수 없습니다.</string>
     <string name="ask_delete_contact">%1$s 연락처를 삭제하시겠습니까?\n\n시스템 주소록에서 진행 중인 채팅 및 연락처가 있는 연락처는 영구적으로 삭제할 수 없습니다.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">대화가 진행 중인 대화 상대를 삭제할 수 없습니다.</string>
     <string name="ask_start_chat_with">%1$s와 채팅하시겠습니까?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">%s를 삭제하시겠습니까?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">그룹에서 %1$s을/를 제거하시겠습니까?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -642,10 +635,13 @@
     <string name="autocrypt_send_asm_explain_after">설정이 사용자 자신에게 전송되었습니다. 다른 장치로 전환하고 설정 메시지를 엽니다. 설정 코드를 입력하라는 메시지가 표시됩니다. 다음 숫자를 입력합니다.</string>
     <string name="autocrypt_asm_subject">자동 암호화 설정 메시지</string>
     <string name="autocrypt_asm_general_body">클라이언트 간에 종단 간 설정을 전송하는 데 사용되는 자동 암호화 설정 메시지입니다.\n\n설치를 해독하고 사용하려면 자동 암호화 호환 클라이언트에서 메시지를 열고 생성 장치에 표시된 설치 코드를 입력하십시오.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">클라이언트 간에 종단 간 설정을 전송하는 데 사용되는 자동 암호화 설정 메시지입니다.\n\n설치를 해독하고 사용하려면 이 메시지를 누르거나 클릭하십시오.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">자동 암호화 설정 메시지</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">다른 장치에 표시된 설정 코드를 입력하십시오.</string>
-    <string name="autocrypt_continue_transfer_retry">재시도</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">잘못된 설정 코드입니다. 다시 시도하십시오.\n\n설정 코드가 기억나지 않으면 다른 장치에서 새 자동 암호화 설치 메시지를 보냅니다.</string>
 
 
@@ -838,6 +834,7 @@
     <string name="menu.view.developer.open.current.log.file">현재 로그 파일 열기</string>
     <string name="no_spellcheck_suggestions_found">맞춤법 제안을 찾을 수 없습니다.</string>
     <string name="show_window">창 보이기</string>
+
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">키 바인딩</string>
     <string name="switch_between_chats">채팅 간 전환</string>

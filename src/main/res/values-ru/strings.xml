@@ -266,8 +266,6 @@
     <string name="menu_delete_chat">Удалить чат</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Очистить чат</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Удалить сообщения</string>
     <string name="delete_contact">Удалить контакт</string>
     <string name="menu_delete_location">Удалить местоположение?</string>
     <string name="menu_message_details">Информация о сообщении</string>
@@ -350,8 +348,6 @@
     <string name="donate">Пожертвовать</string>
 
     <string name="mute_for_one_hour">На 1 час</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">На 2 часа</string>
     <string name="mute_for_eight_hours">На 8 часов</string>
     <string name="mute_for_one_day">На 1 день</string>
     <string name="mute_for_seven_days">На 7 дней</string>
@@ -417,11 +413,7 @@
     <string name="ask_unblock_contact">Разблокировать этот контакт?</string>
     <string name="ask_delete_contacts">Удалить контакты?\n\nКонтакты из действующих чатов или из системной адресной книги не могут быть удалены навсегда.</string>
     <string name="ask_delete_contact">Удалить контакт %1$s?\n\nКонтакты из действующих чатов или из системной адресной книги не могут быть удалены навсегда.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Невозможно удалить контакты, с которыми имеются действующие чаты.</string>
     <string name="ask_start_chat_with">Создать чат с %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Удалить %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Удалить %1$s из группы?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -570,9 +562,9 @@
     <string name="square_grid">Сетка квадратов</string>
     <string name="send_message">Отправить сообщение</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
-    <string name="aeap_addr_changed">%1$s изменил свой адрес с %2$s на %3$s</string>
+    <string name="aeap_addr_changed">%1$s меняет адрес с %2$s на %3$s</string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
-    <string name="aeap_explanation">Вы сменили свой адрес электронной почты с %1$s на %2$s.\n\nЕсли вы отправите сообщение в подтвержденную группу, контакты в ней автоматически обновят ваш старый адрес на новый.\n\nНастоятельно рекомендуется настроить старого поставщика электронной почты на пересылку всех писем на новый адрес. Иначе вы можете пропустить сообщения от контактов, которые еще не получили ваш новый адрес.</string>
+    <string name="aeap_explanation">Вы изменили свой адрес электронной почты с %1$s на %2$s.\n\nЕсли вы отправите сообщение в подтвержденную группу, контакты в ней автоматически обновят ваш старый адрес на новый.\n\nНастоятельно рекомендуется настроить старого поставщика электронной почты на пересылку всех писем на новый адрес. Иначе вы можете пропустить сообщения от контактов, которые еще не получили ваш новый адрес.</string>
 
 
     <!-- Multi Device -->
@@ -591,7 +583,6 @@
     <string name="multidevice_receiver_needs_update">Профиль, который вы хотите импортировать, создан в более новой версии Delta Chat. Чтобы продолжить настройку второго устройства, пожалуйста, обновите это устройство до последней версии Delta Chat.</string>
     <string name="multidevice_abort">Прервать настройку второго устройства?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Это сделает недействительным QR-код, скопированный в буфер обмена.</string>
-    <string name="multidevice_experimental_hint">(экспериментально, требуется версия 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Профиль перенесен на ваше второе устройство.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Подготовка профиля...</string>
@@ -872,11 +863,11 @@
     <!-- Reactions -->
     <string name="reactions">Реакции</string>
     <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
-    <string name="react">Реагировать</string>
+    <string name="react">Реакции</string>
     <!-- %1$s will be replaced by an emoji. %2$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %2$s will often not being visible). Eg. 'You reacted 👍 to "Found my suitcase"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer and work as well. -->
-    <string name="reaction_by_you">Вы отреагировали %1$s на \"%2$s\"</string>
+    <string name="reaction_by_you">Вы реагируете %1$s на \"%2$s\"</string>
     <!-- %1$s will be replaced a name. %2$s will be replaced by an emoji. %3$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %3$s will often not being visible). Eg. 'Alice reacted 👍 to "Nice photos"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer work as well. -->
-    <string name="reaction_by_other">%1$s отреагировал %2$s на \"%3$s\"</string>
+    <string name="reaction_by_other">%1$s реагирует %2$s на \"%3$s\"</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Удалить старые сообщения</string>
@@ -908,14 +899,17 @@
     <string name="autocrypt_send_asm_explain_before">\"Сообщение с параметрами Autocrypt\" служит для передачи параметров сквозного шифрования между приложениями, поддерживающими протокол Autocrypt.\n\nЭти параметры шифруются с использованием кода настройки, который показан здесь и должен быть введён в настраиваемом приложении.</string>
     <string name="autocrypt_send_asm_button">Сообщение с параметрами Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Ваши настройки были оправлены вам. Переключитесь на другое устройство и откройте сообщение с настройкой. Вам будет предложено ввести код настройки. Введите следующие цифры:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Предпочитать сквозное шифрование</string>
     <string name="autocrypt_asm_subject">Сообщение с параметрами Autocrypt</string>
     <string name="autocrypt_asm_general_body">\"Сообщение с параметрами Autocrypt\" служит для передачи параметров сквозного шифрования между клиентами.\n\nЧтобы расшифровать и использовать параметры откройте это сообщение в приложении, поддерживающем Autocrypt и введите код настройки, показанный на исходном устройстве.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">\"Сообщение с параметрами Autocrypt\" служит для передачи параметров сквозного шифрования между клиентами.\n\nЧтобы расшифровать и использовать параметры, нажмите на это сообщение.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Сообщение с параметрами Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Введите код настройки, который показан на другом устройстве.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Параметры сквозного шифрования переданы. Теперь это устройство готово к использованию Autocrypt с теми же настройками, как и на другом устройстве.</string>
-    <string name="autocrypt_continue_transfer_retry">Повторить</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Неверный код настройки. Пожалуйста, попробуйте ещё раз.\n\nЕсли вы не помните код настройки, отправьте новое \"Сообщение с параметрами Autocrypt\" с другого устройства.</string>
 
 
@@ -927,33 +921,33 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Вы изменили название группы с \"%1$s\" на \"%2$s\".</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
-    <string name="group_name_changed_by_other">%3$s изменил(а) название группы с \"%1$s\" на \"%2$s\".</string>
+    <string name="group_name_changed_by_other">%3$s меняет название группы с \"%1$s\" на \"%2$s\".</string>
     <string name="group_image_changed_by_you">Вы изменили изображение группы.</string>
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
-    <string name="group_image_changed_by_other">%1$s изменил(а) изображение группы.</string>
+    <string name="group_image_changed_by_other">%1$s меняет изображение группы.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
     <string name="member_x_added">Добавлен участник %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
     <string name="add_member_by_you">Вы добавили участника %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
-    <string name="add_member_by_other">%2$s добавил(а) участника %1$s.</string>
+    <string name="add_member_by_other">%2$s добавляет участника %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group -->
     <string name="remove_member_by_you">Вы удалили участника %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
-    <string name="remove_member_by_other">%2$s удалил(а) участника %1$s.</string>
+    <string name="remove_member_by_other">%2$s удаляет участника %1$s.</string>
     <!-- "left" in the meaning of "exited" -->
     <string name="group_left_by_you">Вы покинули группу.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
-    <string name="group_left_by_other">%1$s покинул(а) группу.</string>
+    <string name="group_left_by_other">%1$s покидает группу.</string>
     <string name="group_image_deleted_by_you">Вы удалили изображение группы.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="group_image_deleted_by_other">%1$s удалил(а) изображение группы.</string>
+    <string name="group_image_deleted_by_other">%1$s удаляет изображение группы.</string>
     <string name="location_enabled_by_you">Вы включили трансляцию местоположения.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="location_enabled_by_other">%1$s включил(а) трансляцию местоположения.</string>
     <string name="ephemeral_timer_disabled_by_you">Вы отключили удаление сообщений по таймеру.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_disabled_by_other">%1$s отключил(а) удаление сообщений по таймеру.</string>
+    <string name="ephemeral_timer_disabled_by_other">%1$s отключает удаление сообщений по таймеру.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Вы включили автоудаление сообщений через %1$s сек</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
@@ -1149,7 +1143,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Значок в системном трее нельзя отключить, поскольку Delta Chat был запущен с параметром --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Не найдены варианты исправления орфографии.</string>
     <string name="show_window">Показать окно</string>
-    <string name="login_socks5_experimental_warning">Поддержка SOCKS5 в настоящее время экспериментальна. Используйте на свой страх и риск. Если вы введете адрес в поле электронной почты, будет выполнен поиск DNS, который не будет туннелироваться через SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Горячие клавиши</string>

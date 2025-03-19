@@ -213,8 +213,6 @@
     <string name="menu_delete_chat">Ștergeți Chat-ul</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Curăță Chat-ul</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Ștergeți mesajele</string>
     <string name="delete_contact">Ștergeți Contactul</string>
     <string name="menu_delete_location">Ștergeți această locație?</string>
     <string name="menu_message_details">Detalii Mesaj</string>
@@ -280,8 +278,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Adăugați la ecranul principal</string>
     <string name="mute_for_one_hour">Silențios timp de 1 oră</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Silențios timp de 2 ore</string>
+    <string name="mute_for_eight_hours">Silențios timp de 8 ore</string>
     <string name="mute_for_one_day">Silențios pentru 1 zi</string>
     <string name="mute_for_seven_days">Silențios timp de 7 zile</string>
     <string name="mute_forever">Silențios pentru totdeauna</string>
@@ -330,11 +327,7 @@
     <string name="ask_unblock_contact">Deblocați acest contact? Astfel, veți putea primi mesaje de la această persoană.</string>
     <string name="ask_delete_contacts">Ștergerea contacts?\n\nContacts cu discuții în curs sau din agenda de adrese a sistemului nu pot fi șterse definitiv.</string>
     <string name="ask_delete_contact">Ștergerea contactului %1$s?\n\nContacts cu discuții în curs sau din agenda de adrese a sistemului nu pot fi șterse definitiv.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Nu se pot șterge contactele cu discuții în curs.</string>
     <string name="ask_start_chat_with">Chat cu %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Ștergeți %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Scoateți  %1$s din grup?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -477,7 +470,6 @@
     <string name="multidevice_receiver_scanning_ask">Copiați contul de pe celălalt dispozitiv pe acest dispozitiv?</string>
     <string name="multidevice_abort">Abandonați configurarea celui de-al doilea dispozitiv?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Acest lucru va invalida codul QR copiat în clipboard.</string>
-    <string name="multidevice_experimental_hint">(experimental, este necesară versiunea 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Contul a fost transferat pe dispozitivul secundar.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Pregătirea contului...</string>

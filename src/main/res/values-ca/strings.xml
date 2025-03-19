@@ -248,8 +248,6 @@
     <string name="menu_delete_chat">Esborra el xat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Buida el xat</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Esborra els missatges</string>
     <string name="delete_contact">Esborra el contacte</string>
     <string name="menu_delete_location">Voleu esborrar aquesta ubicació?</string>
     <string name="menu_message_details">Informació del missatge</string>
@@ -332,8 +330,7 @@
     <string name="donate">Feu un donatiu</string>
 
     <string name="mute_for_one_hour">Silencia 1 hora</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Silencia 2 hores</string>
+    <string name="mute_for_eight_hours">Silencia 8 hores</string>
     <string name="mute_for_one_day">Silencia 1 dia</string>
     <string name="mute_for_seven_days">Silencia 7 dies</string>
     <string name="mute_forever">Sempre silenciat</string>
@@ -390,11 +387,7 @@
     <string name="ask_unblock_contact">Voleu desblocar aquest contacte?</string>
     <string name="ask_delete_contacts">Voleu esborrar els contactes?\n\nEls contactes amb xats actius i els que estiguin al vostre directori d\'adreces no es poden eliminar definitivament. </string>
     <string name="ask_delete_contact">Voleu esborrar el contacte %1$s?\n\nEls contactes dels xats actius o de la llibreta d\'adreces del sistema no es poden esborrar permanentment.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">No es poden esborrar els contactes amb xats actius.</string>
     <string name="ask_start_chat_with">Voleu xatejar amb %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Voleu esborrar %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Voleu eliminar %1$s del grup?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -558,7 +551,6 @@
     <string name="multidevice_receiver_needs_update">El perfil que vols importar prové d\'una versió més recent de Delta Chat.\n\nPer continuar configurant el segon dispositiu, actualitza aquest dispositiu a l\'última versió de Delta Chat.</string>
     <string name="multidevice_abort">Voleu cancel·lar la configuració d\'un segon dispositiu?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Això invalidarà el codi QR copiat al porta-retalls.</string>
-    <string name="multidevice_experimental_hint">(experimental, es requereix la versió 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ El perfil s\'ha transferit al segon dispositiu.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">S\'està preparant el perfil...</string>
@@ -669,7 +661,10 @@
     <string name="accept_invalid_certificates">Accepta certificats no vàlids</string>
     <string name="switch_account">Canvia el perfil</string>
     <string name="add_account">Afegeix un compte</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Etiqueta de Perfil</string>
     <string name="profile_tag_hint">p.ex. treball, família</string>
+    <string name="profile_tag_explain">Configureu una etiqueta visible només per a vosaltres; ajudant-vos a diferir entre els vostres perfils.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Desplaçat a l\'inici</string>
     <string name="delete_account">Esborra el perfil</string>
@@ -872,14 +867,17 @@
     <string name="autocrypt_send_asm_explain_before">Un \"missatge de configuració Autocrypt\" comparteix de forma segura la vostra configuració d\'extrem a extrem amb altres aplicacions compatibles amb Autocrypt.\n\nLa configuració es xifrarà amb un codi de configuració que es mostrarà aquí i que haureu d\'escriure a l’altre dispositiu.</string>
     <string name="autocrypt_send_asm_button">Envia el missatge de configuració Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Se us ha enviat la vostra configuració. Canvieu a l\'altre dispositiu i obriu el missatge de configuració. Se us demanarà un codi de configuració. Introduïu els dígits següents a l\'indicador.\n\nUn cop fet, l\'altre dispositiu estarà llest per utilitzar Autocrypt.</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Prefereix l\'encriptació d\'extrem a extrem</string>
     <string name="autocrypt_asm_subject">Missatge de configuració Autocrypt</string>
     <string name="autocrypt_asm_general_body">Aquest és el missatge de configuració Autocrypt que s’usa per a transferir la vostra configuració d\'extrem a extrem entre dispositius.\n\nPer a desxifrar i usar aquesta configuració, obriu el missatge en un dispositiu compatible amb Autocript i introduïu el codi de configuració que apareix al dispositiu primari.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Aquest és el missatge de configuració Autocrypt que s’usa per a transferir la vostra configuració d\'extrem a extrem entre clients.\n\nPer a desxifrar i usar la vostra configuració, toqueu o feu clic en aquest missatge.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Missatge de configuració Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Si us plau introduïu el codi d\'instal·lació que es mostra a l\'altre dispositiu.</string>
-    <string name="autocrypt_continue_transfer_succeeded">S\'ha transferit la configuració d\'extrem a extrem. Aquest dispositiu ja està preparat per a usar Autocrypt amb la mateixa configuració que l’altre dispositiu.</string>
-    <string name="autocrypt_continue_transfer_retry">Torna-ho a provar</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Codi de configuració incorrecte. Siusplau torneu-ho a provar.\n\nSi no recordeu el codi de configuració Autocrypt, envieu-ne un de nou des de l’altre dispositiu.</string>
 
 
@@ -1113,7 +1111,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">La icona de la safata no es pot desactivar perquè Delta Chat s\'ha iniciat amb l\'opció --minimized</string>
     <string name="no_spellcheck_suggestions_found">No s\'ha trobat cap suggeriment ortogràfic.</string>
     <string name="show_window">Mostra la finestra</string>
-    <string name="login_socks5_experimental_warning">El suport de SOCKS5 és experimental. Utilitzeu-lo sota la vostra responsabilitat. Si poseu una adreça de correu electrònic en el camp de correu, es produirà una cerca de DNS que no passarà pel túnel SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Dreceres de teclat</string>

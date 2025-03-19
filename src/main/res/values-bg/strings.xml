@@ -220,8 +220,6 @@
     <string name="menu_delete_chat">Изтриване на чата</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Изчистване на чата</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Изтриване на съобщения</string>
     <string name="delete_contact">Изтриване на контакт</string>
     <string name="menu_delete_location">Да бъде ли изтрито това местоположение?</string>
     <string name="menu_message_details">Детайли на съобщение</string>
@@ -294,8 +292,7 @@
     <string name="donate">Дарение</string>
 
     <string name="mute_for_one_hour">Спиране на звука за 1 час</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Спиране на звука за 2 часа</string>
+    <string name="mute_for_eight_hours">Спиране на звука за 8 часа</string>
     <string name="mute_for_one_day">Спиране на звука за 1 ден</string>
     <string name="mute_for_seven_days">Спиране на звука за 7 дни</string>
     <string name="mute_forever">Спиране на звука за постоянно</string>
@@ -342,11 +339,7 @@
     <string name="ask_unblock_contact">Да бъде ли отблокиран този контакт? Ще можете отново да получавате съобщения от него.</string>
     <string name="ask_delete_contacts">Да бъдат ли изтрити контактите?\n\nКонтактите с текущо провеждани чатове и контактите от системната адресна книга не могат да бъдат изтрити за постоянно.</string>
     <string name="ask_delete_contact">Да бъде ли изтрит контактът %1$s? Контактите с текущо провеждани чатове и контактите от системната адресна книга не могат да бъдат изтрити за постоянно.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Контактите с текущо провеждани чатове не могат да бъдат изтривани.</string>
     <string name="ask_start_chat_with">Чат с %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Да бъде ли изтрит %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Премахване на %1$s от групата?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -499,7 +492,6 @@
     <string name="multidevice_receiver_scanning_ask">Да бъде ли копиран акаунтът от другото устройство в настоящото?</string>
     <string name="multidevice_abort">Да бъде ли прекъснато добавянето на второ устройство?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">QR кодът, копиран в клипборда, ще стане невалиден.</string>
-    <string name="multidevice_experimental_hint">(експериментална възможност, изисква се версия 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Акаунтът е прехвърлен на второто Ви устройство.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Акаунтът се подготвя...</string>
@@ -788,14 +780,17 @@
     <string name="autocrypt_send_asm_explain_before">Съобщението за настройка на Autocrypt споделя по сигурен начин Вашата настройка за криптиране \"от край до край\" с други съвместими с Autorcypt приложения.\n\nНастройката се криптира с код, който се показва тук и трябва да бъде въведен на другото устройство.</string>
     <string name="autocrypt_send_asm_button">Изпращане на съобщението за настройка на Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Изпратихте Вашата настройка до себе си. Отворете съобщението за настройка в другото устройство. Би трябвало да Ви бъде поискан код за настройка. Въведете следните цифри:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Да се предпочита криптиране \"от край до край\"</string>
     <string name="autocrypt_asm_subject">Съобщение за настройка на Autocrypt</string>
     <string name="autocrypt_asm_general_body">Това е съобщението за настройка на Autocrypt, чрез което се прехвърля Вашата настройка за криптиране \"от край до край\" между различни клиенти.\n\nЗа да декриптирате и използвате Вашата настройка, отворете съобщението в клиент, съвместим с Autocrypt, и въведете кода за настройка, представен на генериращото устройство.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Това е съобщението за настройка на Autocrypt, чрез което се прехвърля Вашата настройка за криптиране \"от край до край\" между различни клиенти.\n\nЗа да декриптирате и използвате своята настройка, докоснете или щракнете върху това съобщение.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Съобщение за настройка на Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Моля, въведете кода за настройка, показан на другото устройство.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Настройката за криптиране \"от край до край\" е прехвърлена. Устройството е готово да използва Autocrypt със същата настройка като другото.</string>
-    <string name="autocrypt_continue_transfer_retry">Да се опита отново</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Невалиден код за настройка. Моля, опитайте отново.\n\nАко не си спомняте кода за настройка, изпратете ново съобщение за настройка на Autocrypt от другото устройство.</string>
 
 
@@ -1025,7 +1020,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Показването на икона в системната лента не може да бъде забранено, тъй като Delta Chat е стартиран с опцията --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Няма открити предложения за правопис.</string>
     <string name="show_window">Показване на прозореца</string>
-    <string name="login_socks5_experimental_warning">Понастоящем поддръжката за SOCKS5 е експериментална. Използвайте на собствен риск. Ако въведете адрес в полето \"Електронна поща\", ще бъде осъществено DNS търсене извън SOCKS5 тунела.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Обвързвания на клавиши към команди</string>

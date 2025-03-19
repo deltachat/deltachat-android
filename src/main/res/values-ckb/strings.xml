@@ -153,8 +153,6 @@
     <string name="menu_add_attachment">زیاد کردنی پێوەلکاو</string>
     <string name="menu_leave_group">بەجێهێشتنی کۆڕ</string>
     <string name="menu_delete_chat">سڕینەوەی وتووێژ</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">سڕینەوەی پەیامەکان</string>
     <string name="delete_contact">سڕینەوەی بەردەنگ</string>
     <string name="menu_delete_location">ئەم شوێنە دەسڕیتەوە؟</string>
     <string name="menu_message_details">وردەکارییەکانی پەیامەکە</string>
@@ -205,8 +203,7 @@
     <string name="ConversationFragment_quoted_message_not_found">پەیامە ڕەسەنەکە نەدۆزرایەوە</string>
     <string name="reply_privately">وەڵامدانەوەی نهێنی</string>
     <string name="mute_for_one_hour">بێدەنگ کردن بۆ ماوەی 1 کاتژمێر</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">بێدەنگ کردن بۆ ماوەی 2 کاتژمێر</string>
+    <string name="mute_for_eight_hours">بێدەنگ کردن بۆ ماوەی 8 کاتژمێر</string>
     <string name="mute_for_one_day">بێدەنگ کردن بۆ ماوەی 1 ڕۆژ</string>
     <string name="mute_for_seven_days">بێدەنگ کردن بۆ ماوەی 7 ڕۆژ</string>
     <string name="mute_forever">بێدەنگ کردن بۆ هەمیشە</string>
@@ -245,11 +242,7 @@
     <string name="ask_unblock_contact">ئاستەنگ لەسەر ئەم بەردەنگە لادەبەیت؟ دیسان پەیامەکانی ئەم بەردەنگەت پێ دەگات.</string>
     <string name="ask_delete_contacts">بەردەنگەکان دەسڕیتەوە؟\n\n ئەو بەردەنگانەی هێشتا وتووێژی چالاکتان پێکەوە هەیە و ئەو بەردەنگانەی کە لەنێو تێنووسی سیستەمدان، بۆ هەتاهەتایی ناسڕدرێنەوە.</string>
     <string name="ask_delete_contact">%1$s لە بەردەنگەکانت دەسڕیتەوە؟ \n\n ئەو بەردەنگانەی هێشتا وتووێژی چالاکتان پێکەوە هەیە و ئەو بەردەنگانەی کە لەنێو تێنووسی سیستەمدان، بۆ هەتاهەتایی ناسڕدرێنەوە.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">ناتوانیت ئەو بەردەنگانەی وتووێژی چالاکتان هەیە بسڕیتەوە.</string>
     <string name="ask_start_chat_with">وتووێژ لەگەڵ %1$s؟</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">%sدەسڕیتەوە؟</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$sلە کۆڕ دەخەیتەدەر؟</string>
     <string name="open_url_confirmation">دەتەوێت ئەم بەستەرە بکەیتەوە؟</string>
@@ -479,10 +472,11 @@
 
     <!-- autocrypt -->
     <string name="autocrypt_send_asm_title">هەناردنی پەیامی ڕێکخستنی ئۆتۆکریپت</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">هەڵبژاردنی شفرەکردنی ئەمسەر-ئەوسەر</string>
     <string name="autocrypt_asm_subject">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
-    <string name="autocrypt_continue_transfer_retry">دیسان هەوڵدانەوە</string>
     <string name="systemmsg_unknown_sender_for_chat">پەیامنێری ئەم وتووێژە نەناسراوە. بۆ وردەکاری زۆرتر سەیری \'زانیارییەکان\' بکە.</string>
     <string name="systemmsg_subject_for_new_contact">پەیام لەلایەن %1$s</string>
     <string name="systemmsg_failed_sending_to">هەناردنی پەیام بۆ %1$s سەرنەکەوت</string>
