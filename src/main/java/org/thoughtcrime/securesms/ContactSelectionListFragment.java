@@ -89,7 +89,7 @@ public class ContactSelectionListFragment extends    Fragment
 
   private DcContext dcContext;
 
-  private Set<String>               selectedContacts;
+  private Set<Integer>              selectedContacts;
   private OnContactSelectedListener onContactSelectedListener;
   private String                    cursorFilter;
   private RecyclerView              recyclerView;
@@ -234,8 +234,8 @@ public class ContactSelectionListFragment extends    Fragment
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 
-  public @NonNull List<String> getSelectedContacts() {
-    List<String> selected = new LinkedList<>();
+  public @NonNull List<Integer> getSelectedContacts() {
+    List<Integer> selected = new LinkedList<>();
     if (selectedContacts != null) {
       selected.addAll(selectedContacts);
     }
@@ -258,7 +258,7 @@ public class ContactSelectionListFragment extends    Fragment
             isMulti(),
             true);
     selectedContacts = adapter.getSelectedContacts();
-    ArrayList<String> preselectedContacts = getActivity().getIntent().getStringArrayListExtra(PRESELECTED_CONTACTS);
+    ArrayList<Integer> preselectedContacts = getActivity().getIntent().getIntegerArrayListExtra(PRESELECTED_CONTACTS);
     if(preselectedContacts!=null) {
       selectedContacts.addAll(preselectedContacts);
     }
@@ -336,10 +336,9 @@ public class ContactSelectionListFragment extends    Fragment
         }
         return;
       }
-      int    specialId = contact.getSpecialId();
-      String addr      = contact.getNumber();
-      if (!isMulti() || !selectedContacts.contains(addr)) {
-        if (specialId == DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT) {
+      int    contactId = contact.getSpecialId();
+      if (!isMulti() || !selectedContacts.contains(contactId)) {
+        if (contactId == DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT) {
           Intent intent = new Intent(getContext(), NewContactActivity.class);
           if (dcContext.mayBeValidAddr(cursorFilter)) {
             intent.putExtra(NewContactActivity.ADDR_EXTRA, cursorFilter);
@@ -363,16 +362,16 @@ public class ContactSelectionListFragment extends    Fragment
             return;
         }
 
-        selectedContacts.add(addr);
+        selectedContacts.add(contactId);
         contact.setChecked(true);
         if (onContactSelectedListener != null) {
-          onContactSelectedListener.onContactSelected(specialId, addr);
+          onContactSelectedListener.onContactSelected(contactId);
         }
       } else {
-        selectedContacts.remove(addr);
+        selectedContacts.remove(contactId);
         contact.setChecked(false);
         if (onContactSelectedListener != null) {
-          onContactSelectedListener.onContactDeselected(specialId, addr);
+          onContactSelectedListener.onContactDeselected(contactId);
         }
       }
     }
@@ -398,8 +397,8 @@ public class ContactSelectionListFragment extends    Fragment
   }
 
   public interface OnContactSelectedListener {
-    void onContactSelected(int specialId, String number);
-    void onContactDeselected(int specialId, String number);
+    void onContactSelected(int contactId);
+    void onContactDeselected(int contactId);
   }
 
   @Override
@@ -413,7 +412,10 @@ public class ContactSelectionListFragment extends    Fragment
   public void onActivityResult(int reqCode, int resultCode, final Intent data) {
     super.onActivityResult(reqCode, resultCode, data);
     if (resultCode == Activity.RESULT_OK && reqCode == CONTACT_ADDR_RESULT_CODE) {
-      selectedContacts.add(data.getStringExtra(NewContactActivity.ADDR_EXTRA));
+      int contactId = data.getIntExtra(NewContactActivity.CONTACT_ID_EXTRA, 0);
+      if (contactId != 0) {
+        selectedContacts.add(contactId);
+      }
       getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);
     }
   }
