@@ -175,8 +175,6 @@
     <string name="menu_add_attachment">បន្ថែមឯកសារភ្ជាប់</string>
     <string name="menu_leave_group">ចាកចេញពីក្រុម</string>
     <string name="menu_delete_chat">លុបសារសន្ទនា</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">លុបសារ</string>
     <string name="delete_contact">លុបទំនាក់ទំនង</string>
     <string name="menu_delete_location">លុបទីតាំងនេះ?</string>
     <string name="menu_message_details">លំអិតសារ</string>
@@ -238,8 +236,6 @@
     <string name="ConversationFragment_quoted_message_not_found">រកមិនឃើញសារដើម</string>
     <string name="reply_privately">ឆ្លើយតបដោយឯកជន</string>
     <string name="mute_for_one_hour">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល១ម៉ោង</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល២ម៉ោង</string>
     <string name="mute_for_one_day">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល១ថ្ងៃ</string>
     <string name="mute_for_seven_days">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល៧ថ្ងៃ</string>
     <string name="mute_forever">ធ្វើឲ្យមិនឃើញមិនលឺរយៈរហូត</string>
@@ -281,11 +277,7 @@
     <string name="ask_unblock_contact">ដកបង្ខាំងទំនាក់ទំនងនេះ? អ្នកនឹងអាចទទួលសារពីទំនាក់ទំនងនេះម្តងទៀត។</string>
     <string name="ask_delete_contacts">លុបការទំនាក់ទំនង?\n\nទំនាក់ទំនងដែលកំពុងបន្ត និងទំនាក់ទំនង ពីសៀវភៅអសយដ្ឋានពីម៉ាសុីន មិនអាចលុបចេញបានដាច់ខាត។</string>
     <string name="ask_delete_contact">លុបទំនាក់ទំនង %1$s?\n\nទំនាក់ទំនងដែលកំពុងបន្ត និងទំនាក់ទំនង ពីសៀវភៅអសយដ្ឋានពីម៉ាសុីន មិនអាចលុបចេញបានដាច់ខាត។</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">មិនអាចលុបទំនាក់ទំនងដែលកំពុងបន្តសន្ទនា</string>
     <string name="ask_start_chat_with">សន្ទនាជាមួយ %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">លុប %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">លុប %1$s ពីក្រុមសន្ទនានេះ?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -611,14 +603,17 @@
     <string name="autocrypt_send_asm_explain_before">សារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំចែកចាយចាត់របសឧបករណ៍ដល់ឧបករណ៍ជាមួយកម្មវិធីដែលមានអ៊ិនគ្រីបស្វ័យប្រវត្តិផ្សេងទៀត។\n\n ការចាត់នឹងបានអ៊ិនគ្រីប (ការធ្វើឲ្យការផ្ញើសារជាសារដាយសញ្ញាសម្ងាត់) នៅទីនេះ នឹងត្រូវតែបានវាយបញ្ចូលនៅលើឧបករណ៍ផ្សេង។</string>
     <string name="autocrypt_send_asm_button">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
     <string name="autocrypt_send_asm_explain_after">ការរៀបចំរបស់អ្នកត្រូវបានផ្ញើទៅខ្លួនឯងហើយ។ ប្តូរឆ្លាស់ឧបករណ៍ផ្សេង និងបើកសារការរៀបចំ។ អ្នកនឹងទទួលសំណួរពីកូដរៀបចំ។ បញ្ចូលលេខដូចខាងក្រោម:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">ចូលចិត្តការអ៊ិនគ្រីបច្រើនជាង</string>
     <string name="autocrypt_asm_subject">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
     <string name="autocrypt_asm_general_body">នេះជាសាររៀបចំចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ចែកចាយចាត់ការរៀបចំចាក់ឧបករណ៍ដល់ឧបករណ៍ជាមួយឧបករណ៍ផ្សេងទៀត។\n\nដើម្បីឌិគ្រីប (ការទទួលសារដែលបានធ្វើជាសារសញ្ញាសម្ងាត់ដល់អាចអានបានវិញ) និងប្រើប្រាសការរៀបចំចាក់របសអ្នក បើកសារនៅក្នុងកម្មវិធីដែលស្គាល់អ៊ិនគ្រីបស្វ័យប្រវត្តិ និងកូដការរៀបចំដែលបានអំណោយពីឧបករណ៍បានបង្កើតវា។</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">នេះជាសាររៀបចំចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ចែកចាយចាត់ការរៀបចំចាក់ឧបករណ៍ដល់ឧបករណ៍ជាមួយឧបករណ៍ផ្សេងទៀត។\n\nដើម្បីឌិគ្រីបវា ប្រើការតម្លងរបស់អ្មក ប៉ៈ ឬចុចលើសារនេះ។</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">សូមបញ្ចូលកូដតម្លើង ដែលបានបង្ហាញនៅលើឧបករណ៍ផ្សេងទៀត។</string>
-    <string name="autocrypt_continue_transfer_succeeded">ការតម្លើងឧបករណ៍ដល់ឧបករណ៍បានផ្ទេរហើយ។ ឧបករណ៍នេះរួចរាល់ហើយដើម្បីប្រើប្រាស់ អ៊ិនគ្រីបស្វ័យប្រវត្តិ មានតម្លើងដូចគ្នាឧបករណ៍ផ្សេងទៀត។</string>
-    <string name="autocrypt_continue_transfer_retry">ព្យាយាមម្តងទៀត</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">កូដតម្លើងមិនត្រឹមត្រូវ។ សូមព្យាយាមម្តងទៀត\n\nប្រសិនបើអ្នកមិនចងចាំកូដតម្លើង ចូរផ្ញើសារតម្លើងចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិថ្មីមួយពីឧបករណ៍ផ្សេងទៀត។</string>
 
 
@@ -799,6 +794,7 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">រូបតំណាងថាស មិនអាចបិទបានទេដោយសារ Delta Chat ត្រូវបានចាប់ផ្តើមជាមួយជម្រើសបង្រួមអប្បបរមា។</string>
     <string name="no_spellcheck_suggestions_found">រកមិនឃើញការណែនាំអក្ខរាវិរុទ្ធទេ។</string>
     <string name="show_window">បង្ហាញក្របខ័ណ្ឌ</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">ស្ថានភាពចែកចាយ៖ មានកំហុស</string>
     <string name="a11y_encryption_padlock">សោត្រដោកការអ៊ិនគ្រីប</string>

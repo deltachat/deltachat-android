@@ -133,8 +133,7 @@
     <string name="menu_advanced">மேம்பட்ட அமைப்புகள்</string>
     <string name="menu_view_profile">சுயவிவரத்தை காண்பி</string>
     <string name="mute_for_one_hour">1 மணி இதற்காக ஊமையாக்கு</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">2 மணிகள் இதற்காக ஊமையாக்கு</string>
+    <string name="mute_for_eight_hours">8 மணிகள் இதற்காக ஊமையாக்கு</string>
     <string name="mute_for_one_day">1 நாள் இதற்காக ஊமையாக்கு</string>
     <string name="mute_for_seven_days">7 நாட்கள் இதற்காக ஊமையாக்கு</string>
     <string name="mute_forever">எப்போதுமே ஊமையாக்கு</string>
@@ -219,8 +218,8 @@
     <string name="pref_backup">காப்பு நகல்</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">அரட்டை பின்புலம்</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">மற்ற சாதனத்தில் காணப்படும் அமைப்பு குறியீடை தயவு செய்து உள்ளீடவும்</string>
-    <string name="autocrypt_continue_transfer_retry">மீண்டும் முயற்சி செய்யவும்</string>
     <string name="qrscan_fingerprint_label">கைரேகைகள்</string>
     <!-- notifications  -->
     <string name="notify_reply_button">மறுமொழி</string>

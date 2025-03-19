@@ -266,8 +266,6 @@
     <string name="menu_delete_chat">Smazat chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Vyprázdnit chat</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Smazat zprávy</string>
     <string name="delete_contact">Smazat kontakt</string>
     <string name="menu_delete_location">Přejete si smazat tuto polohu?</string>
     <string name="menu_message_details">Informace o zprávě</string>
@@ -350,8 +348,7 @@
     <string name="donate">Darovat</string>
 
     <string name="mute_for_one_hour">Ztlumit na 1 hodinu</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Ztlumit na 2 hodiny</string>
+    <string name="mute_for_eight_hours">Ztlumit na 8 hodin</string>
     <string name="mute_for_one_day">Ztlumit na 1 den</string>
     <string name="mute_for_seven_days">Ztlumit na 7 dní</string>
     <string name="mute_forever">Ztlumit navždy</string>
@@ -416,11 +413,7 @@
     <string name="ask_unblock_contact">Přejete si odblokovat tento kontakt?</string>
     <string name="ask_delete_contacts">Přejete si smazat kontakty?\n\nKontakty s probíhajícími chaty a kontakty ze systémového adresáře nelze smazat permanentně.</string>
     <string name="ask_delete_contact">Přejete si smazat kontakt %1$s?\n\nKontakty s probíhajícími chaty a kontakty ze systémového adresáře nelze smazat permanentně.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Kontakty s probíhajícími chaty není možné smazat.</string>
     <string name="ask_start_chat_with">Přejete si chatovat s uživatelem %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Přejete si smazat %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Přejete si odstranit uživatele %1$s ze skupiny?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -590,7 +583,6 @@
     <string name="multidevice_receiver_needs_update">Profil, který se chystáte importovat, je z novější verze aplikace Delta Chat.\n\nAby bylo možné pokračovat v nastavování tohoto zařízení, aktualizujte na něm prosím Delta Chat na nejnovější verzi.</string>
     <string name="multidevice_abort">Přerušit nastavování dalšího zařízení?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Tímto bude zneplatněn QR kód zkopírovaný ve schránce.</string>
-    <string name="multidevice_experimental_hint">(experimentální, vyžaduje verzi 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profil byl přenesen na další zařízení.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Připravování profilu...</string>
@@ -907,14 +899,17 @@
     <string name="autocrypt_send_asm_explain_before">Pomocí zprávy s nastavením Autocryptu lze sdílet Vaše nastavení koncového šifrování s dalšími aplikacemi využívajícími Autocrypt.\n\nNastavení je zašifrované zobrazeným kódem, který musí být zadán na zařízení, na které si přejete nastavení přenést.</string>
     <string name="autocrypt_send_asm_button">Odeslat nastavení Autocryptu</string>
     <string name="autocrypt_send_asm_explain_after">Vaše nastavení se odeslalo. Vezměte si zařízení, kam si přejete nastavení přenést, a zprávu v něm otevřete. Mělo by se objevit pole pro zadání kódu. Do něj vložte následující číslice:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Upřednostňovat koncové šifrování</string>
     <string name="autocrypt_asm_subject">Zpráva s nastavením Autocryptu</string>
     <string name="autocrypt_asm_general_body">Tato zpráva obsahuje nastavení Autocryptu. S její pomocí lze přenést nastavení koncového šifrování mezi klienty.\n\nK dešifrování a použití nastavení otevřete klient podporující Autocrypt a zadejte do něj kód zobrazený na zařízení, které zprávu vygenerovalo.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Tato zpráva obsahuje nastavení Autocryptu. S její pomocí lze přenést nastavení koncového šifrování mezi klienty.\n\nK dešifrování a použití tohoto nastavení zprávu stiskněte.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Zpráva s nastavením Autocryptu</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Prosím, zadejte kód zobrazený na hlavním zařízení.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Nastavení koncového šifrování bylo přeneseno. Toto zařízení je nyní připraveno k používání Autocryptu se stejným nastavením jako u předchozího zařízení.</string>
-    <string name="autocrypt_continue_transfer_retry">Zkusit znovu</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Neplatný kód. Prosím, zkuste to znovu.\n\nPokud si kód nepamatujete, zkuste z hlavního zařízení poslat zprávu s nastavením Autocryptu znovu.</string>
 
 
@@ -1130,7 +1125,7 @@
     <string name="write_message_desktop">Napište zprávu</string>
     <string name="encryption_info_title_desktop">Informace o šifrování</string>
     <string name="delete_message_desktop">Smazat zprávu</string>
-    <string name="more_info_desktop">Více podrobností</string>
+    <string name="more_info_desktop">Podrobnosti</string>
     <string name="timestamp_format_m_desktop">D MMM</string>
     <string name="remove_desktop">Odstranit</string>
     <string name="save_desktop">Uložit</string>
@@ -1148,7 +1143,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Ikonu na panelu nelze deaktivovat, protože Delta Chat byl spuštěn s volbou --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Žádné pravopisné návrhy.</string>
     <string name="show_window">Zobrazit okno</string>
-    <string name="login_socks5_experimental_warning">Podpora SOCKS5 je momentálně experimentální. Používejte na vlastní nebezpečí. Pokud zadáte adresu do políčka E-mail, dojde k vyhledání domény v DNS, které proběhne mimo SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Klávesové zkratky</string>

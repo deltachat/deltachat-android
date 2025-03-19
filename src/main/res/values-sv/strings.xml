@@ -222,8 +222,6 @@
     <string name="menu_delete_chat">Ta bort chatt</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Rensa chatt</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Ta bort meddelanden</string>
     <string name="delete_contact">Ta bort kontakt</string>
     <string name="menu_delete_location">Ta bort denna plats?</string>
     <string name="menu_message_details">Meddelandedetaljer</string>
@@ -300,8 +298,7 @@
     <string name="donate">Donera</string>
 
     <string name="mute_for_one_hour">Tysta 1 timma</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Tysta 2 timmar</string>
+    <string name="mute_for_eight_hours">Tysta 8 timmar</string>
     <string name="mute_for_one_day">Tysta 1 dag</string>
     <string name="mute_for_seven_days">Tysta 7 dagar</string>
     <string name="mute_forever">Tysta för evigt</string>
@@ -348,11 +345,7 @@
     <string name="ask_unblock_contact">Avblockera den här kontakten? Du kommer återigen att kunna ta emot meddelanden från den här kontakten.</string>
     <string name="ask_delete_contacts">Ta bort kontakter? Detta kommer att ta bort de valda kontakterna permanent.\n\nKontakter med pågående chattar och kontakter från systemets adressbok kan inte tas bort permanent.</string>
     <string name="ask_delete_contact">Ta bort kontakten %1$s?\n\nKontakter med pågående chattar och kontakter från systemets adressbok kan inte tas bort permanent. </string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Det går inte att ta bort kontakter med pågående chattar.</string>
     <string name="ask_start_chat_with">Chatta med %1$s ?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Ta bort %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Ta bort %1$s från gruppen?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -505,7 +498,6 @@
     <string name="multidevice_receiver_scanning_ask">Vill du kopiera profilen från den andra enheten till den här enheten?</string>
     <string name="multidevice_abort">Vill du avbryta konfigurationen av den andra enheten?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Detta kommer att ogiltigförklara QR-koden som kopierats till urklipp.</string>
-    <string name="multidevice_experimental_hint">(experimentell, version 1.36 krävs)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profilen överförd till din andra enhet.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Förbereder profil...</string>
@@ -796,14 +788,17 @@
     <string name="autocrypt_send_asm_explain_before">Ett meddelande för att ställa in Autocrypt, delar den informationen med andra Autocrypt-anpassade program på ett säkert sätt. Informationen krypteras med en kod som visas här och som måste matas in på den mottagande enheten.</string>
     <string name="autocrypt_send_asm_button">Skicka Autocrypt inställningsmeddelande</string>
     <string name="autocrypt_send_asm_explain_after">Dina inställningar har skickats till dig själv. Byt till den andra enheten och öppna inställningsmeddelandet. Du kommer att tillfrågas om en inställningskod. Ange följande siffror:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Föredra slutpunkt-till-slutpunkt-kryptering</string>
     <string name="autocrypt_asm_subject">Inställningsmeddelande för Autocrypt</string>
     <string name="autocrypt_asm_general_body">Detta är inställningsmeddelandet för Autocrypt som används för att skicka nycklar mellan klienter.\n\nFör att kunna avkryptera och använda din nyckel, öppnar du meddelandet i en Autocrypt-kompatibel klient och skriver in inställningskoden som visats på den genererande enheten.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Detta är inställningsmeddelandet för Autocrypt, som används för att överföra slutpunkt-till-slutpunkt-inställningar mellan klienter. Tryck eller klicka på det här meddelandet för att avkryptera och använda dina inställningar.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Autocrypt inställningsmeddelande</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Ange inställningskoden som visas på den andra enheten.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Slutpunkt-till-slutpunkt-inställningar överförda. Enheten är nu redo att använda Autocrypt med samma inställningar som den andra enheten.</string>
-    <string name="autocrypt_continue_transfer_retry">Försök igen</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Felaktig inställningskod. Försök igen.\n\nOm du inte kommer ihåg inställningskoden, kan du skicka ett nytt Autocrypt inställningsmeddelande från den andra enheten.</string>
 
 
@@ -1033,7 +1028,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Systemfältsikonen kan inte inaktiveras eftersom Delta Chat startades med alternativet --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Inga stavningsförslag hittades.</string>
     <string name="show_window">Visa fönster</string>
-    <string name="login_socks5_experimental_warning">SOCKS5-stöd är för närvarande experimentellt. Använd det på egen risk. Om du skriver in en adress i e-postfältet kommer det att ske en DNS-uppslagning som inte tunnlas genom SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Tangentbindningar</string>

@@ -164,8 +164,6 @@
     <string name="menu_add_attachment">ファイルを添付する</string>
     <string name="menu_leave_group">退室する</string>
     <string name="menu_delete_chat">チャットを削除</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">メッセージを削除</string>
     <string name="delete_contact">連絡先を解除する</string>
     <string name="menu_delete_location">この位置情報を削除しますか</string>
     <string name="menu_message_details">メッセージの詳細</string>
@@ -221,8 +219,7 @@
     <string name="ConversationFragment_quoted_message_not_found">メッセージが見つかりません</string>
     <string name="reply_privately">個別に返信する</string>
     <string name="mute_for_one_hour">1時間停止する</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">2時間停止する</string>
+    <string name="mute_for_eight_hours">8時間停止する</string>
     <string name="mute_for_one_day">24時間停止する</string>
     <string name="mute_for_seven_days">7日間停止する</string>
     <string name="mute_forever">無効</string>
@@ -260,11 +257,7 @@
     <string name="ask_unblock_contact">この連絡先の拒否設定を解除しますか</string>
     <string name="ask_delete_contacts">連絡先を削除しますか？\n\nチャット中の連絡先やシステムのアドレス帳の連絡先は削除できません。</string>
     <string name="ask_delete_contact">%1$s件の連絡先を削除しますか？\n\nチャット中の連絡先やシステムのアドレス帳の連絡先は削除できません。</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">チャット中の連絡先は削除できません。</string>
     <string name="ask_start_chat_with">%1$sとチャットしますか</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">%sを削除しますか？</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$sをグループから排除しますか</string>
     <string name="open_url_confirmation">このリンクを開きますか？</string>
@@ -529,10 +522,11 @@
     <string name="autocrypt_send_asm_title">自動暗号化設定用ﾒｯｾｰｼﾞを送信する</string>
     <string name="autocrypt_send_asm_explain_before">｢自動暗号化設定用メッセージ｣は安全に一対一暗号化設定を対応するアプリケーションとの間に設定します｡\n \n 受信側は設定時に表示されるパスコードを入力する必要が有ります｡</string>
     <string name="autocrypt_send_asm_button">自動暗号化設定用ﾒｯｾｰｼﾞを送信する</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">エンドツーエンド暗号化を好む</string>
     <string name="autocrypt_asm_subject">自動暗号化設定用ﾒｯｾｰｼﾞ</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">自動暗号化設定用ﾒｯｾｰｼﾞ</string>
-    <string name="autocrypt_continue_transfer_retry">再試行</string>
     <string name="systemmsg_subject_for_new_contact">%1$sさんからのメッセージ</string>
     <string name="systemmsg_failed_sending_to">%1$sさんへのメッセージ送信に失敗しました。</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->

@@ -184,8 +184,6 @@
     <string name="menu_delete_chat">پاک کردن گوفت ۉ لوفت</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">روفتن ویرگار گوفت ۉ لوفت</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">پاک کردن پیوما</string>
     <string name="delete_contact">پاک کردن هومدنگ</string>
     <string name="menu_delete_location">ای جاگه پاک بۊ؟</string>
     <string name="menu_copy_to_clipboard">لف گیری من ویرگه</string>
@@ -228,8 +226,7 @@
     <string name="pin">دیسنیڌن</string>
     <string name="source_code">کود بونچک</string>
     <string name="mute_for_one_hour">بؽ دونگ کردن سی 1 ساعت</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">بؽ دونگ کردن سی 2 ساعت</string>
+    <string name="mute_for_eight_hours">بؽ دونگ کردن سی 8 ساعت</string>
     <string name="mute_for_one_day">بؽ دونگ کردن سی 1 رۊ</string>
     <string name="mute_for_seven_days">بؽ دونگ کردن سی 7 رۊ</string>
     <string name="mute_forever">بؽ دونگ کردن سی همیشه</string>
@@ -250,8 +247,6 @@
         <item quantity="other">اخۊی %d پیوم پاک بۊ؟</item>
     </plurals>
     <string name="ask_start_chat_with">گوفت ۉ لوفت وا %1$s؟</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">پاک کردن %s؟</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">پاک کردن %1$s ز جرگه؟</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -380,5 +375,6 @@
     <string name="message_detail_sent_desktop">فشناڌ</string>
     <string name="message_detail_received_desktop">گرؽڌه وابی</string>
     <string name="show_window">نشۉ داڌن نیمدری</string>
+
     <string name="open_settings">گۊشیڌن سامووا</string>
     </resources>

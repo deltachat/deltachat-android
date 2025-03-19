@@ -257,8 +257,6 @@
     <string name="menu_delete_chat">Eliminar chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Vaciar chat</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Eliminar mensajes</string>
     <string name="delete_contact">Eliminar contacto</string>
     <string name="menu_delete_location">¿Eliminar esta ubicación?</string>
     <string name="menu_message_details">Detalles del mensaje</string>
@@ -341,8 +339,7 @@
     <string name="donate">Donar</string>
 
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Silenciar por 2 horas</string>
+    <string name="mute_for_eight_hours">Silenciar por 8 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>
     <string name="mute_for_seven_days">Silenciar por 7 días</string>
     <string name="mute_forever">Silenciar por siempre</string>
@@ -403,11 +400,7 @@
     <string name="ask_unblock_contact">¿Desbloquear este contacto? Una vez más podrá recibir mensajes de este contacto.</string>
     <string name="ask_delete_contacts">¿Eliminar contactos?\n\nContactos con un chat en curso y contactos de la libreta de direcciones del sistema no pueden ser eliminados de forma permanente.</string>
     <string name="ask_delete_contact">¿Eliminar contacto %1$s?\n\nContactos con chats en curso o de la libreta de direcciones del sistema no pueden ser eliminados.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">No se puede eliminar contactos con chats en curso.</string>
     <string name="ask_start_chat_with">¿Chatear con %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">¿Borrar %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">¿Eliminar a %1$s del grupo?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -574,7 +567,6 @@
     <string name="multidevice_receiver_needs_update">El perfil que quieres importar es de una versión de Delta Chat más reciente.\n\nPara continuar configurando el segundo dispositivo, actualice este dispositivo a la última versión de Delta Chat.</string>
     <string name="multidevice_abort">¿Cancelar la configuración del nuevo dispositivo?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Esto invalidará el código QR copiado al portapapeles </string>
-    <string name="multidevice_experimental_hint">(experimental, requiere versión 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Cuenta transferida a tu otro dispositivo.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Preparando cuenta…</string>
@@ -891,14 +883,17 @@
     <string name="autocrypt_send_asm_explain_before">Un \"Mensaje de Configuración de Autocrypt\" comparte de forma segura su configuración de extremo a extremo con otras aplicaciones compatibles con Autocrypt.\n\nLa configuración se cifrará mediante un código de configuración que se muestra aquí y debe escribirse en el otro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Enviar Mensaje de Configuración de Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Se le ha enviado su configuración. Cambie al otro dispositivo y abra el mensaje de configuración. Se le debe solicitar un código de configuración. Escriba los siguientes dígitos:.\n\nUna vez que haya terminado, su otro dispositivo estará listo para usar Autocrypt.</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferir el cifrado de extremo a extremo</string>
     <string name="autocrypt_asm_subject">Mensaje de Configuración de Autocrypt</string>
     <string name="autocrypt_asm_general_body">Este es el Mensaje de Configuración de Autocrypt utilizado para transferir su configuración de extremo a extremo entre clientes.\n\nPara descifrar y usar su configuración, abra el mensaje en un cliente compatible con Autocrypt e ingrese el código de configuración presentado en el dispositivo que lo generó.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Este es el Mensaje de Configuración de Autocrypt utilizado para transferir su configuración de extremo a extremo entre clientes.\n\nPara descifrar y usar su configuración, toque o haga clic en este mensaje.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Mensaje de Configuración de Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Por favor, introduzca el código de configuración que se muestra en el otro dispositivo. </string>
-    <string name="autocrypt_continue_transfer_succeeded">Configuración de extremo a extremo transferida. Este dispositivo ahora está listo para usar Autocrypt con la misma configuración que el otro dispositivo.</string>
-    <string name="autocrypt_continue_transfer_retry">Reintentar</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Código de configuración incorrecto. Inténtelo de nuevo.\n\nSi no recuerda el código de configuración, solo envíe otro Mensaje de Configuración de Autocrypt desde el otro dispositivo.</string>
 
 
@@ -1132,7 +1127,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">El icono de la bandeja no se puede desactivar ya que Delta Chat se inició con la opción --minimized.</string>
     <string name="no_spellcheck_suggestions_found">No se encontraron sugerencias ortográficas.</string>
     <string name="show_window">Mostrar ventana</string>
-    <string name="login_socks5_experimental_warning">La compatibilidad con SOCKS5 es experimental actualmente. Por favor, use bajo su propio riesgo. Si escribe una dirección en el campo de correo electrónico, habrá una búsqueda de DNS que no se canalizará a través de SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Atajos de tecla</string>

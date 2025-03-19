@@ -206,8 +206,6 @@
     <string name="menu_delete_chat">Forigi babilon</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Viŝi la babilejon</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Forigi mesaĝojn</string>
     <string name="delete_contact">Forviŝi Kontakton</string>
     <string name="menu_delete_location">Ĉu forigi tiun ĉi lokon?</string>
     <string name="menu_message_details">Mesaĝ-detaloj</string>
@@ -267,8 +265,7 @@
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Depingli</string>
     <string name="mute_for_one_hour">Silentigi por 1 horo</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Silentigi por 2 horoj</string>
+    <string name="mute_for_eight_hours">Silentigi por 8 horoj</string>
     <string name="mute_for_one_day">Silentigi por 1 tago</string>
     <string name="mute_for_seven_days">Silentigi por 7 tagoj</string>
     <string name="mute_forever">Silentigi por ĉiam</string>
@@ -284,8 +281,6 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Ĉu vi estas certa, ke vi volas forlasi tiun ĉi grupon?</string>
     <string name="ask_forward">Plusendi mesaĝojn al %1$s?</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Ne eblas forigi kontaktojn kun aktualaj babiloj.</string>
     <string name="ask_start_chat_with">Babili kun %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
@@ -437,6 +432,7 @@
     <string name="pref_watch_sent_folder">Kontroli senditujon</string>
     <string name="pref_send_copy_to_self">Sendi kopion al mi mem</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferi tutvojan ĉifradon</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Respondi</string>

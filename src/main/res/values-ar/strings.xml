@@ -95,8 +95,6 @@
     <string name="menu_add_attachment">إضافة مرفقات</string>
     <string name="menu_leave_group">غادر الفريق</string>
     <string name="menu_delete_chat">احدف المحادثة</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">احذف الرسائل</string>
     <string name="menu_message_details">تفاصيل الرسالة</string>
     <string name="menu_copy_to_clipboard">انسخ إلى الحافظة</string>
     <string name="menu_forward">إعادة توجيه الرسالة</string>
@@ -118,8 +116,6 @@
     <string name="menu_zoom_in">تقريب</string>
     <string name="menu_zoom_out">تصغير</string>
     <string name="mute_for_one_hour">أكتم لمدة ساعة</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">أكتم لمدة ساعتين</string>
     <string name="mute_for_one_day">أكتم لمدة يوم</string>
     <string name="mute_for_seven_days">أكتم لمدة أسبوع</string>
     <!-- contact list -->
@@ -200,7 +196,6 @@
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">الخلفية</string>
     <string name="pref_show_emails_all">كلها</string>
-    <string name="autocrypt_continue_transfer_retry">أعد المحاولة</string>
     <string name="qrscan_fingerprint_label">البصمة</string>
     <!-- notifications  -->
     <string name="notify_reply_button">رد</string>

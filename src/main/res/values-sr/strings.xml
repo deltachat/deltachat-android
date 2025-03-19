@@ -215,8 +215,6 @@
     <string name="menu_delete_chat">Обриши ћаскање</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Обриши ћаскање</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Избришите поруке</string>
     <string name="delete_contact">Избриши контакт</string>
     <string name="menu_delete_location">Избриши овај положај?</string>
     <string name="menu_message_details">Детаљи поруке</string>
@@ -283,8 +281,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Додај на главни екран</string>
     <string name="mute_for_one_hour">Утишај на 1 сат</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Утишај на 2 сата</string>
+    <string name="mute_for_eight_hours">Утишај на 8 сата</string>
     <string name="mute_for_one_day">Утишај на 1 дан</string>
     <string name="mute_for_seven_days">Утишај на 7 дана</string>
     <string name="mute_forever">Утишај заувек</string>
@@ -333,11 +330,7 @@
     <string name="ask_unblock_contact">Да ли желите да деблокирате овај контакт? Биће вам омогућено да опет примате поруке од њих.</string>
     <string name="ask_delete_contacts">Да ли желите да избришете контакте?\n\nКонтакти са ћаскањима у току или из системског адресара се не могу трајно избрисати.</string>
     <string name="ask_delete_contact">Да ли желите да избришете %1$s контакт?\n\nКонтакти са ћаскањима у току или из системског адресара се не могу трајно избрисати.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Немогу ће је избрисати контакте са којима је ћаскање у току.</string>
     <string name="ask_start_chat_with">Да ли желите да ћаскате са %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Да ли желите да избришете %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Да ли желите да уклонитите %1$s из групе?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -696,14 +689,17 @@
     <string name="autocrypt_send_asm_explain_before">Порука о подешавању аутоматског шифровања безбедно дели ваше комплетно подешавање са другим апликацијама које су компатибилне са аутоматским шифровањем.\n\nПодешавање ће бити шифровано кодом за подешавање приказаним овде и мора се унети на другом уређају.</string>
     <string name="autocrypt_send_asm_button">Пошаљите поруку поставки за аутошифровање</string>
     <string name="autocrypt_send_asm_explain_after">Ваше подешавање вам је послато. Пређите на други уређај и отворите поруку за подешавање. На другом уређају од се вас очекује да унесете код за подешавање. Унесите следеће цифре:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Преферирај с-краја-на-крај шифровање</string>
     <string name="autocrypt_asm_subject">Порука поставки за аутошфровање</string>
     <string name="autocrypt_asm_general_body">Ово је порука подешавања аутоматског шифровања која се користи за пренос вашег с-краја-на-крај подешавања између клијената.\n\nДа бисте дешифровали и користили своје подешавање, отворите поруку на клијенту који је компатибилан са аутоматским шифровањем и унесите кôд за подешавање приказан на уређају који га је генерисао.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Ово је порука о подешавању аутоматског шифровања која се користи за пренос вашег комплетног подешавања између клијената.\n\nДа бисте дешифровали и користили своје подешавање, додирните или кликните на ову поруку.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Порука поставки за аутошфровање</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Унесите кôд за подешавање који је приказан на другом уређају.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Подешавање с-краја-на-крај је пренето. Овај уређај је сада спреман за коришћење аутоматског шифровања са истим подешавањем као и други уређај.</string>
-    <string name="autocrypt_continue_transfer_retry">Покушај поново</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Погрешан кôд за подешавање. Покушајте поново.\n\nАко се не сећате кôда за подешавање, пошаљите нову поруку за подешавање аутоматског шифровања са другог уређаја.</string>
 
 
@@ -903,7 +899,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Иконица на системској касети не може да се онемогући јер је Delta Chat покренут са --minimized опцијом.</string>
     <string name="no_spellcheck_suggestions_found">Нема предлога за исправке правописа.</string>
     <string name="show_window">Прикажи прозор</string>
-    <string name="login_socks5_experimental_warning">SOCKS5 подршка је тренутно у експерименталној фази. Користе је на личну одговорност. Ако унесете е-адресу у поље за е-адресу, следи захтев за ДНС претрагу која неће ићи кроз SOCKS5 тунел.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Комбинације тастера</string>

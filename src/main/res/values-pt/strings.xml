@@ -109,8 +109,6 @@
     <string name="menu_add_attachment">Juntar anexo</string>
     <string name="menu_leave_group">Deixar grupo</string>
     <string name="menu_delete_chat">Apagar convesa</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Apagar mensagem</string>
     <string name="menu_message_details">Detalhe da mensagem</string>
     <string name="menu_copy_to_clipboard">Copiar para área de transferência</string>
     <string name="menu_forward">Reencaminhar mensagem</string>
@@ -132,8 +130,7 @@
     <string name="menu_advanced">Avançado</string>
     <string name="menu_view_profile">Ver perfil</string>
     <string name="mute_for_one_hour">Calado por 1 hora</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Calado por 2 horas</string>
+    <string name="mute_for_eight_hours">Calado por 8 horas</string>
     <string name="mute_for_one_day">Calado por 1 dia</string>
     <string name="mute_for_seven_days">Calado por 7 dias</string>
     <string name="share_location_for_5_minutes">por 5 min</string>
@@ -149,8 +146,6 @@
     <string name="ask_block_contact">Bloquear este contacto? Não receberá mais mensagens deste contacto.</string>
     <string name="ask_unblock_contact">Desbloquear esse contacto? Poderá mais uma vez receber mensagens deste contacto.</string>
     <string name="ask_delete_contacts">Remover contactos? Assim removerá permanentemente os contactos selecionados.\n\nContactos com chats a decorrer e contactos com  endereços do sistema não podem ser removidos permanentemente.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Não é possível excluir contactos com chats a decorrer.</string>
     <string name="ask_start_chat_with">Conversar com %1$s?</string>
     <!-- contact list -->
     <string name="contacts_title">Contactos</string>
@@ -299,14 +294,17 @@
     <string name="autocrypt_send_asm_explain_before">A \"Mensagem de Configuração Autocrypt\" compartilha com segurança a sua configuração de ponta a ponta com outros aplicativos compatíveis com Autocrypt. \n\nA configuração será encriptada por um código de configuração que é exibido aqui e deve ser digitado no outro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Enviar mensagem com a definição da encriptação automática</string>
     <string name="autocrypt_send_asm_explain_after">A sua configuração foi-lhe enviada. Entre no outro dispositivo e abra a mensagem de configuração. Deve ser solicitado a fornecer um código de configuração. Digite os seguintes dígitos no prompt.\n\n Assim que estiver concluido, o outro dispositivo estará pronto para usar o Autocrypt.</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferir encriptação ponta a ponta</string>
     <string name="autocrypt_asm_subject">Mensagem de configuração do Autocrypt</string>
     <string name="autocrypt_asm_general_body">Esta é a Mensagem de Configuração de Autocrypt usada para transferir sua configuração de ponta a ponta entre clientes (dispositivos). \n\nPara descriptar e usar, abra a mensagem em um cliente compatível com Autocrypt e insira o código de configuração apresentado no dispositivo de geração.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Esta é a Mensagem de Configuração de Autocrypt usada para transferir sua configuração de ponta a ponta entre clientes. \n\nPara descriptar e usar sua configuração, toque ou clique nesta mensagem.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Mensagem de configuração do Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Por favor, insira o código de configuração exibido no outro dispositivo.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Configuração de ponta a ponta transferida. Este dispositivo está agora pronto para usar Autocrypt com a mesma configuração que o outro dispositivo.</string>
-    <string name="autocrypt_continue_transfer_retry">Tentar novamente</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Código de configuração inválido Por favor, tente novamente.\n\nSe não se lembrar do código de configuração, basta re-enviar outra Mensagem de Configuração de Autocrypt do outro dispositivo.</string>
 
 

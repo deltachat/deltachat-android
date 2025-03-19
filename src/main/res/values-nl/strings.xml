@@ -248,8 +248,6 @@
     <string name="menu_delete_chat">Gesprek verwijderen</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Ale berichten wissen</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Berichten verwijderen</string>
     <string name="delete_contact">Contactpersoon verwijderen</string>
     <string name="menu_delete_location">Wil je deze locatie verwijderen?</string>
     <string name="menu_message_details">Berichtinformatie</string>
@@ -332,8 +330,6 @@
     <string name="donate">Doneren</string>
 
     <string name="mute_for_one_hour">1 uur lang uitschakelen</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">2 uur lang uitschakelen</string>
     <string name="mute_for_eight_hours">8 uur lang uitschakelen</string>
     <string name="mute_for_one_day">1 dag lang uitschakelen</string>
     <string name="mute_for_seven_days">7 dagen lang uitschakelen</string>
@@ -391,11 +387,7 @@
     <string name="ask_unblock_contact">Wil je deze contactpersoon deblokkeren? Hij/zij kan je wederom berichten sturen.</string>
     <string name="ask_delete_contacts">Wil je de geselecteerde contactpersonen permanent verwijderen?\n\nPersonen met actieve gesprekken en personen afkomstig uit je adresboek kunnen niet permanent worden verwijderd.</string>
     <string name="ask_delete_contact">Wil je de contactpersoon %1$s permanent verwijderen?\n\nPersonen met actieve gesprekken en personen afkomstig uit je adresboek kunnen niet permanent worden verwijderd.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Contactpersonen waarmee je nog gesprekken voert kunnen niet worden verwijderd.</string>
     <string name="ask_start_chat_with">Wil je een gesprek voeren met %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Wil je %s verwijderen?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Wil je %1$s verwijderen uit de groep?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -559,7 +551,6 @@
     <string name="multidevice_receiver_needs_update">Het te importeren profiel is afkomstig uit een nieuwere Delta Chat-versie.\n\nAls je het tweede apparaat wilt instellen, installeer dan de nieuwste versie van Delta Chat.</string>
     <string name="multidevice_abort">Wil je het instellen afbreken?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Hierdoor wordt de gekopieerde QR-code onbruikbaar gemaakt.</string>
-    <string name="multidevice_experimental_hint">(experimenteel - versie 1.36 vereist)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Het account is overgezet naar je tweede apparaat.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Bezig met voorbereiden…</string>
@@ -876,14 +867,17 @@
     <string name="autocrypt_send_asm_explain_before">Een ‘Autocrypt-instelbericht’ deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps.\n\nDe instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
     <string name="autocrypt_send_asm_button">Autocrypt-instelbericht versturen</string>
     <string name="autocrypt_send_asm_explain_after">Je instellingen zijn aan jezelf verstuurd. Schakel over naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Voorkeur voor eind-tot-eindversleuteling</string>
     <string name="autocrypt_asm_subject">Autocrypt-instelbericht</string>
     <string name="autocrypt_asm_general_body">Dit is het Autocrypt-instelbericht dat wordt gebruikt om je instellingen over te zetten.\n\nOm te ontsleutelen en te gebruiken, open je het bericht in een met Autocrypt compatibele app en voer je de code in die wordt getoond op het apparaat dat de code heeft gegenereerd.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Dit is het Autocrypt-instelbericht dat wordt gebruikt om je eind-tot-eindinstellingen over te zetten.\n\nDruk op dit bericht om je instellingen te ontsleutelen en gebruiken.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Autocrypt-instelbericht</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Voer de code die wordt getoond op het andere apparaat.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Je eind-tot-eindinstellingen zijn overgezet. Dit apparaat kan nu worden gebruikt i.c.m. Autocrypt, met dezelfde instellingen als het andere apparaat.</string>
-    <string name="autocrypt_continue_transfer_retry">Opnieuw</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Onjuist; probeer het opnieuw.\n\nAls je je code niet meer weet, verstuur dan nóg een Autocrypt-instelbericht vanaf het andere apparaat.</string>
 
 
@@ -1117,7 +1111,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Het systeemvakpictogram is uitgeschakeld omdat Delta Chat is gestart met de optie --minimized</string>
     <string name="no_spellcheck_suggestions_found">Geen suggesties gevonden.</string>
     <string name="show_window">Venster tonen</string>
-    <string name="login_socks5_experimental_warning">De SOCKS5-ondersteuning is momenteel nog experimenteel - gebruik hiervan is op eigen risico. Als je een e-mailadres invoert, dan vindt er een dns-opzoeking plaats die niet wordt doorgesluisd via SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Sneltoetsen</string>

@@ -248,8 +248,6 @@
     <string name="menu_delete_chat">Sohbeti Sil</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Sohbeti Temizle</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">İletileri Sil</string>
     <string name="delete_contact">Kişiyi Sil</string>
     <string name="menu_delete_location">Bu Konumu Sil</string>
     <string name="menu_message_details">İleti Bilgisi</string>
@@ -332,8 +330,7 @@
     <string name="donate">Bağış</string>
 
     <string name="mute_for_one_hour">1 saatliğine sessize al</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">2 saatliğine sessize al</string>
+    <string name="mute_for_eight_hours">8 saatliğine sessize al</string>
     <string name="mute_for_one_day">1 günlüğüne sessize al</string>
     <string name="mute_for_seven_days">7 günlüğüne sessize al</string>
     <string name="mute_forever">Sonsuza dek sessize al</string>
@@ -390,11 +387,7 @@
     <string name="ask_unblock_contact">Bu kişi engellenmesin mi?</string>
     <string name="ask_delete_contacts">Kişiler silinsin mi?\n\nSohbetlerin sürdüğü ya da sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="ask_delete_contact">%1$s kişisi silinsin mi?\n\nSohbetlerin sürdüğü ya da sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Sohbetlerin sürdüğü kişiler silinemez.</string>
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">%s silinsin mi?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$s öbekten kaldırılsın mı?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -558,7 +551,6 @@
     <string name="multidevice_receiver_needs_update">İçe aktarmak istediğiniz profil daha yeni bir Delta Chat sürümünden geliyor.\n\nİkinci aygıtı ayarlamayı sürdürmek için lütfen bu aygıtı Delta Chat\'in en son sürümüne güncelleştirin.</string>
     <string name="multidevice_abort">İkinci aygıtı ayarlamadan vazgeçilsin mi?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Bu, panoya kopyalanan QR kodunu geçersizleştirecek.</string>
-    <string name="multidevice_experimental_hint">(deneysel, sürüm 1.36 gerekli)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profil, ikinci aygıtınıza aktarıldı.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Profil hazırlanıyor…</string>
@@ -875,14 +867,17 @@
     <string name="autocrypt_send_asm_explain_before">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır.\n\nAyarlama, burada görüntülenen ve diğer aygıtta yazılması gereken bir ayarlama kodu tarafından şifrelenecek.</string>
     <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi Gönder</string>
     <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Uçtan Uca Şifrelemeyi Yeğle</string>
     <string name="autocrypt_asm_subject">Autocrypt Ayarlama İletisi</string>
     <string name="autocrypt_asm_general_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi\'dir.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için iletiyi Autocrypt uyumlu bir istemcide açın ve oluşturan aygıtta sunulan ayarlama kodunu girin.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi\'dir.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için bu iletiye dokunun ya da tıklayın.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Autocrypt Ayarlama İletisi</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Lütfen diğer aygıtta görüntülenen ayarlama kodunu girin.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Uçtan uca ayarlaması aktarıldı. Bu aygıt artık aynı ayarlamayla diğer aygıt gibi Autocrypt kullanmaya hazır.</string>
-    <string name="autocrypt_continue_transfer_retry">Yeniden Dene</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Yanlış ayarlama kodu. Lütfen yeniden deneyin.\n\nAyarlama kodunu anımsamıyorsanız, diğer aygıttan yeni bir Autocrypt Ayarlama İletisi gönderin.</string>
 
 
@@ -1116,7 +1111,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Delta Chat --minimized seçeneğiyle başlatıldığından tepsi simgesi etkisizleştirilemez.</string>
     <string name="no_spellcheck_suggestions_found">Yazım önerileri bulunamadı.</string>
     <string name="show_window">Pencereyi Göster</string>
-    <string name="login_socks5_experimental_warning">SOCKS5 desteği şu anda deneysel. Lütfen riski size ait olarak kullanın. E-posta alanına bir adres yazarsanız, SOCKS5 üzerinden tünellenmeyen DNS araması olacak.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Tuş Bağları</string>

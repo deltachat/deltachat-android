@@ -136,8 +136,6 @@
     <string name="menu_add_attachment">Gehitu eranskina</string>
     <string name="menu_leave_group">Atera taldetik</string>
     <string name="menu_delete_chat">Ezabatu txata</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Ezabatu mezuak</string>
     <string name="menu_delete_location">Ezabatu kokaleku hau?</string>
     <string name="menu_message_details">Mezuaren xehetasunak</string>
     <string name="menu_copy_to_clipboard">Kopiatu arbelera</string>
@@ -177,8 +175,7 @@
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Desfinkatu</string>
     <string name="mute_for_one_hour">Mututu ordubete</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Mututu 2 ordu</string>
+    <string name="mute_for_eight_hours">Mututu 8 ordu</string>
     <string name="mute_for_one_day">Mututu egun bat</string>
     <string name="mute_for_seven_days">Mututu 7 egun</string>
     <string name="mute_forever">Mututu betirako</string>
@@ -199,8 +196,6 @@
     <string name="ask_unblock_contact">Desblokeatu kontaktu hau? Berriro jaso ahal izango dituzu kontaktu honen mezuak.</string>
     <string name="ask_delete_contacts">Ezabatu kontaktuak? Honek behin betiko ezabatuko ditu hautatutako kontaktuak.\n\nTxaten bat abian duten eta sistemako helbide liburuan dauden kontaktuak ezin dira behin betiko ezabatu.</string>
     <string name="ask_delete_contact">Ezabatu %1$s kontaktua behin betiko?\n\nAbian dauden txatak dituzten kontaktuak eta sistemaren helbide liburuan dauden kontaktuak ezin dira behin betiko ezabatu.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Ezin dira txatak abian dituzten kontaktuak ezabatu</string>
     <string name="ask_start_chat_with">Txateatu %1$s erabiltzailearekin?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Kendu %1$s taldetik?</string>
@@ -414,14 +409,17 @@
     <string name="autocrypt_send_asm_explain_before">\"Autocrypt ezarpen mezua\" batek modu seguruan partekatzen du zure muturretik muturrerako ezarpena Autocryptekin bateragarriak diren beste aplikazioekin. Ezarpena hemen bistaratutako ezarpen kodearekin zifratuko  da, eta beste gailuan kode hau sartu beharko da.</string>
     <string name="autocrypt_send_asm_button">Bidali Autocrypt ezarpen mezua</string>
     <string name="autocrypt_send_asm_explain_after">Zure ezarpena zuri bidali zaizu. Aldatu beste gailura eta ireki ezarpen mezua. Ezarpen kode bat eskatuko zaizu, Idatzi honako zenbaki hauek han.\n\nBehin bukatuta, zure beste gailua Autocrypt erabiltzeko prest egongo da.</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Hobetsi muturretik muturrerako zifratzea</string>
     <string name="autocrypt_asm_subject">Autocrypt ezarpen mezua</string>
     <string name="autocrypt_asm_general_body">Hau Autocrypt ezarpen mezua da, zure muturretik muturrerako ezarpena bezeroen artean pasatzeko erabilia.\n\n Zure ezarpena deszifratu eta erabiltzeko, ireki mezua Autocrypt onartzen duen bezero batean eta sartu gailu sortzailean agertutako ezarpen kodea.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Hau Autocrypt ezarpen mezua da, zure muturretik muturrerako ezarpena bezeroen artean pasatzeko erabilia.\n\n Zure ezarpena deszifratu eta erabiltzeko, sakatu edo egin klik mezu honetan.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Autocrypt ezarpen mezua</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Sartu hemen beste gailuan erakusten den ezarpen kodea.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Muturretik muturrerako ezarpena transferituta. Gailu hau Autocrypt erabiltzeko prest dago orain, beste gailuaren ezarpen berdinarekin.</string>
-    <string name="autocrypt_continue_transfer_retry">Saiatu berriro</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Ezarpen kode okerra. Saiatu berriro mesedez.\n\nEz baduzu ezarpen kodea gogoratzen, bidali beste Autocrypt ezarpen mezu bat beste gailutik.</string>
 
 
