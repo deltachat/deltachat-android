@@ -63,7 +63,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
   private final LayoutInflater                li;
   private final ItemClickListener             clickListener;
   private final GlideRequests                 glideRequests;
-  private final Set<Integer>                  selectedContacts = new HashSet<>(); // TODO: maybe better use contact-id here
+  private final Set<Integer>                  selectedContacts = new HashSet<>();
   private final SparseIntArray                actionModeSelection = new SparseIntArray();
 
   @Override
