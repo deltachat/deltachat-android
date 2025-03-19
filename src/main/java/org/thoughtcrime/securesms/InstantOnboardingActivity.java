@@ -62,7 +62,6 @@ import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 
 public class InstantOnboardingActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
@@ -497,7 +496,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     new Thread(() -> {
       Rpc rpc = DcHelper.getRpc(this);
         try {
-          rpc.addTransportFromQr(qrCode);
+          rpc.addTransportFromQr(dcContext.getAccountId(), qrCode);
           progressSuccess();
         } catch (RpcException e) {
           Util.runOnMain(() -> progressError(e.toString()));

@@ -48,6 +48,8 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcProvider;
 import com.b44t.messenger.rpc.EnteredLoginParam;
 import com.b44t.messenger.rpc.EnteredServerLoginParam;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 import com.b44t.messenger.util.concurrent.ListenableFuture;
 import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.google.android.material.textfield.TextInputEditText;
@@ -618,7 +620,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         // calling configure() results in
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
-        DcHelper.getAccounts(this).stopIo();
         DcHelper.getEventCenter(this).captureNextError();
 
         EnteredServerLoginParam imapParam = new EnteredServerLoginParam(
@@ -640,10 +641,28 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             imapParam,
             smtpParam,
             EnteredLoginParam.getCertificateChecks(certCheck.getSelectedItemPosition()),
-            authMethod.getSelectedItemPosition()==1
+            authMethod.getSelectedItemPosition() == 1
         );
 
-        DcHelper.getContext(this).configure();
+        new Thread(() -> {
+            Rpc rpc = DcHelper.getRpc(this);
+            try {
+                rpc.addTransport(DcHelper.getContext(this).getAccountId(), param);
+                DcHelper.getAccounts(this).startIo();
+                DcHelper.getEventCenter(this).endCaptureNextError();
+                progressDialog.dismiss();
+                Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
+                startActivity(conversationList);
+                finish();
+            } catch (RpcException e) {
+                Util.runOnMain(() -> {
+                    DcHelper.getEventCenter(this).endCaptureNextError();
+                    progressDialog.dismiss();
+                    WelcomeActivity.maybeShowConfigurationError(this, e.getMessage());
+                });
+                // TODO test error reporting
+            }
+        }).start();
     }
 
     private void setConfig(@IdRes int viewId, String configTarget, boolean doTrim) {
@@ -671,25 +690,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     @Override
     public void handleEvent(@NonNull DcEvent event) {
         if (event.getId()==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
-            long progress = event.getData1Int();
-            if (progress==0/*error/aborted*/) {
-                DcHelper.getAccounts(this).startIo(); // start-io is also needed on errors to make previous config work in case of changes
-                DcHelper.getEventCenter(this).endCaptureNextError();
-                progressDialog.dismiss();
-                WelcomeActivity.maybeShowConfigurationError(this, event.getData2Str());
-            }
-            else if (progress<1000/*progress in permille*/) {
-                int percent = (int)progress / 10;
-                progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
-            }
-            else if (progress==1000/*done*/) {
-                DcHelper.getAccounts(this).startIo();
-                DcHelper.getEventCenter(this).endCaptureNextError();
-                progressDialog.dismiss();
-                Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
-                startActivity(conversationList);
-                finish();
-            }
+            long progress = event.getData1Int(); // progress in permille
+            int percent = (int)progress / 10;
+            progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
         }
     }
 }
