@@ -197,8 +197,6 @@
     <string name="menu_add_attachment">Προσθήκη συνημμένου</string>
     <string name="menu_leave_group">Αποχώρηση απ\' την ομάδα</string>
     <string name="menu_delete_chat">Διαγραφή Συνομιλίας</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Διαγραφή Μηνυμάτων</string>
     <string name="delete_contact">Διαγραφή Επαφής</string>
     <string name="menu_delete_location">Διαγραφή αυτής της τοποθεσίας;</string>
     <string name="menu_message_details">Στοιχεία μηνύματος</string>
@@ -264,8 +262,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Προσθήκη στην κεντρική οθόνη</string>
     <string name="mute_for_one_hour">Σίγαση για 1 ώρα</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Σίγαση για 2 ώρες</string>
+    <string name="mute_for_eight_hours">Σίγαση για 8 ώρες</string>
     <string name="mute_for_one_day">Σίγαση για 1 ημέρα</string>
     <string name="mute_for_seven_days">Σίγαση για 7 ημέρες</string>
     <string name="mute_forever">Μόνιμη Σίγαση</string>
@@ -312,11 +309,7 @@
     <string name="ask_unblock_contact">Κατάργηση αποκλεισμού αυτής της επαφής; Θα μπορείτε να λαμβάνετε μηνύματα από αυτούς.</string>
     <string name="ask_delete_contacts">Διαγραφή επαφών;\n\nΟι επαφές με συνομιλίες που βρίσκονται σε εξέλιξη ή από το βιβλίο διευθύνσεων του συστήματος δεν μπορούν να διαγραφούν οριστικά.</string>
     <string name="ask_delete_contact">Διαγραφή επαφής %1$s;\n\nΟι επαφές με συνομιλίες που βρίσκονται σε εξέλιξη ή από το βιβλίο διευθύνσεων του συστήματος δεν μπορούν να διαγραφούν οριστικά.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Δεν μπορούν αν διαγραφούν επαφές με συνομιλίες που βρίσκονται σε εξέλιξη.</string>
     <string name="ask_start_chat_with">Συνομιλία με %1$s;</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Διαφραφή %s;</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Αφαίρεση του/της %1$s από την ομάδα;</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -672,14 +665,17 @@
     <string name="autocrypt_send_asm_explain_before">Ένα μήνυμα ρύθμισης αυτόματης κρυπτογράφησης κοινοποιεί με ασφάλεια τη ρύθμισή σας από άκρο σε άκρο με άλλες εφαρμογές συμβατές με την Αυτόματη κρυπτογράφηση.\n\nΗ ρύθμιση θα κρυπτογραφηθεί από έναν κωδικό ρύθμισης που εμφανίζεται εδώ και θα πρέπει να πληκτρολογηθεί στην άλλη συσκευή.</string>
     <string name="autocrypt_send_asm_button">Αποστολή μηνύματος ρύθμισης αυτόματης κρυπτογράφησης</string>
     <string name="autocrypt_send_asm_explain_after">Η ρύθμισή σας έχει σταλεί στον εαυτό σας. Μεταβείτε στην άλλη συσκευή και ανοίξτε το μήνυμα ρύθμισης. Θα πρέπει να σας ζητηθεί κωδικός ρύθμισης. Εισαγάγετε τα ακόλουθα ψηφία:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Προτιμήστε την κρυπτογράφηση από άκρο σε άκρο</string>
     <string name="autocrypt_asm_subject">Μήνυμα ρύθμισης αυτόματης κρυπτογράφησης</string>
     <string name="autocrypt_asm_general_body">Αυτό είναι το μήνυμα ρύθμισης αυτόματης κρυπτογράφησης που χρησιμοποιείται για τη μεταφορά της ρύθμισής σας από άκρο σε άκρο μεταξύ πελατών.\n\nΓια να αποκρυπτογραφήσετε και να χρησιμοποιήσετε τη ρύθμισή σας, ανοίξτε το μήνυμα σε ένα πρόγραμμα-πελάτη συμβατό με Αυτόματη κρυπτογράφηση και εισαγάγετε τον κωδικό ρύθμισης που παρουσιάζεται στη συσκευή δημιουργίας.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Αυτό είναι το μήνυμα ρύθμισης αυτόματης κρυπτογράφησης που χρησιμοποιείται για τη μεταφορά της ρύθμισής σας από άκρο σε άκρο μεταξύ πελατών.\n\nΓια να αποκρυπτογραφήσετε και να χρησιμοποιήσετε τη ρύθμισή σας, πατήστε ή κάντε κλικ σε αυτό το μήνυμα.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Μήνυμα ρύθμισης αυτόματης κρυπτογράφησης</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Εισαγάγετε τον κωδικό ρύθμισης που εμφανίζεται στην άλλη συσκευή.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Η ρύθμιση από άκρο σε άκρο μεταφέρθηκε. Αυτή η συσκευή είναι τώρα έτοιμη να χρησιμοποιήσει την Αυτόματη κρυπτογράφηση με την ίδια ρύθμιση με την άλλη συσκευή.</string>
-    <string name="autocrypt_continue_transfer_retry">Επανάληψη</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Εσφαλμένος κωδικός εγκατάστασης. Δοκιμάστε ξανά.\n\nΕάν δεν θυμάστε τον κωδικό ρύθμισης, στείλτε ένα νέο μήνυμα ρύθμισης αυτόματης κρυπτογράφησης από την άλλη συσκευή.</string>
 
 
@@ -877,7 +873,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Το εικονίδιο του δίσκου δεν μπορεί να απενεργοποιηθεί καθώς το Delta Chat ξεκίνησε με την επιλογή --ελαχιστοποιημένη.</string>
     <string name="no_spellcheck_suggestions_found">Δεν βρέθηκαν προτάσεις ορθογραφίας.</string>
     <string name="show_window">Εμφάνιση παραθύρου</string>
-    <string name="login_socks5_experimental_warning">Η SOCKS5 υποστήριξη είναι αυτή τη στιγμή πειραματική. Παρακαλούμε χρησιμοποιήστε με δική σας ευθύνη. Εάν πληκτρολογήσετε μια διεύθυνση στο πεδίο ηλεκτρονικού ταχυδρομείου, θα υπάρξει αναζήτηση DNS που δεν θα περάσει στο SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Keybindings</string>

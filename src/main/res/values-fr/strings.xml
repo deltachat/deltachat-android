@@ -254,8 +254,6 @@
     <string name="menu_delete_chat">Supprimer la discussion</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Vider la discussion</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Supprimer les messages</string>
     <string name="delete_contact">Supprimer le contact</string>
     <string name="menu_delete_location">Supprimer cette position ?</string>
     <string name="menu_message_details">Détails du message</string>
@@ -337,8 +335,7 @@
     <string name="donate">Faire un don</string>
 
     <string name="mute_for_one_hour">Désactiver pour 1 heure</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Désactiver pour 2 heures</string>
+    <string name="mute_for_eight_hours">Désactiver pour 8 heures</string>
     <string name="mute_for_one_day">Désactiver pour 1 jour</string>
     <string name="mute_for_seven_days">Désactiver pour 7 jours</string>
     <string name="mute_forever">Désactiver pour toujours</string>
@@ -392,11 +389,7 @@
     <string name="ask_unblock_contact">Débloquer ce contact ? Vous recevrez à nouveau ses messages.</string>
     <string name="ask_delete_contacts">Supprimer les contacts ?\n\nLes contacts avec qui vous avez des discussions en cours et ceux issus du carnet d\'adresses du système ne peuvent pas être supprimés définitivement.</string>
     <string name="ask_delete_contact">Supprimer le contact %1$s ?\n\nLes contacts avec qui vous avez des discussions en cours et ceux issus du carnet d\'adresses du système ne peuvent pas être supprimés définitivement.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Impossible de supprimer les contacts avec qui vous avez une discussion en cours.</string>
     <string name="ask_start_chat_with">Discuter avec %1$s ?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Supprimer %s ?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Retirer %1$s du groupe ?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -562,7 +555,6 @@
     <string name="multidevice_receiver_scanning_ask">Copier le compte de l\'autre appareil sur celui-ci ?</string>
     <string name="multidevice_abort">Abandonner la configuration du deuxième appareil ?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Révoque le code QR copié dans le presse-papiers.</string>
-    <string name="multidevice_experimental_hint">(expérimental, version 1.36 requise)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Compte transféré sur votre deuxième appareil.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Préparation du compte...</string>
@@ -872,14 +864,17 @@
     <string name="autocrypt_send_asm_explain_before">Un \"Message de configuration d\'Autocrypt\" partages en toute sécurité vos paramètres de bout-en-bout avec les autres applications conformes à Autocrypt.\n\nLa configuration sera chiffrée par un code d\'installation affiché ici et doit être saisi sur l\'autre appareil.</string>
     <string name="autocrypt_send_asm_button">Envoyer le message de configuration Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Votre configuration vous a été envoyée. Passez à l\'autre appareil et ouvrez le message de configuration. Un code de configuration devrait vous être demandé. Tapez les chiffres suivants :</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Préférez le chiffrement de bout en bout</string>
     <string name="autocrypt_asm_subject">Message de configuration Autocrypt</string>
     <string name="autocrypt_asm_general_body">Ceci est le message de configuration Autocrypt utilisé pour transférer votre configuration de bout en bout entre clients. Pour déchiffrer et utiliser votre configuration, ouvrez le message dans un client compatible Autocrypt et entrez le code de configuration présenté sur le périphérique de génération.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Ceci est le message de configuration Autocrypt utilisé pour transférer votre configuration de bout-en-bout entre clients. Pour déchiffrer et utiliser votre configuration, tapez ou cliquez sur ce message.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Message de configuration Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Veuillez entrer le code de configuration affiché sur l\'autre appareil.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Configuration de bout en bout transférée. Cet appareil est maintenant prêt à utiliser Autocrypt avec la même configuration que l\'autre appareil.</string>
-    <string name="autocrypt_continue_transfer_retry">Ré-essayer</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Mauvais code d\'installation. Veuillez réessayer. Si vous ne vous souvenez pas du code d\'installation, envoyez simplement un autre message d\'installation Autocrypt depuis l\'autre appareil.</string>
 
 
@@ -1113,7 +1108,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">L\'icône système ne peut pas être enlevé car Delta Chat a été démarré avec l\'option --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Aucune propositions de correction trouvées.</string>
     <string name="show_window">Afficher la fenêtre</string>
-    <string name="login_socks5_experimental_warning">Le support de SOCK5 est actuellement expérimental. Utilisez le à vos risques et périls. Si vous saisissez une adresse de courriel, une requête DNS sera effectuée sans passer par SOCK5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Raccourcis clavier</string>

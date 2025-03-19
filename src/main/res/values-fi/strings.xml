@@ -220,8 +220,6 @@
     <string name="menu_delete_chat">Poista keskustelu</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Tyhjennä keskustelu</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Poista viestit</string>
     <string name="delete_contact">Poista yhteystieto</string>
     <string name="menu_delete_location">Poista tämä sijainti?</string>
     <string name="menu_message_details">Viestin tiedot</string>
@@ -294,8 +292,7 @@
     <string name="donate">Lahjoita</string>
 
     <string name="mute_for_one_hour">Mykistä 1 tunniksi</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Mykistä 2 tunniksi</string>
+    <string name="mute_for_eight_hours">Mykistä 8 tunniksi</string>
     <string name="mute_for_one_day">Mykistä 1 päiväksi</string>
     <string name="mute_for_seven_days">Mykistä 7 päiväksi</string>
     <string name="mute_forever">Mykistä ikuisesti</string>
@@ -342,11 +339,7 @@
     <string name="ask_unblock_contact">Poista yhteystiedon esto? Saat taas viestejä tältä yhteystiedolta.</string>
     <string name="ask_delete_contacts">Poista yhteystiedot?\n\nEt voi poistaa yhteystietoja, joiden kanssa sinulla on aktiivinen keskustelu tai jotka on noudettu laitteen osoitekirjasta.</string>
     <string name="ask_delete_contact">Poista yhteystieto %1$s?\n\nEt voi poistaa yhteystietoja, joiden kanssa sinulla on aktiivinen keskustelu tai jotka on noudettu laitteen osoitekirjasta.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Aktiivisten keskustelujen yhteystietoja ei voi poistaa.</string>
     <string name="ask_start_chat_with">Aloita keskustelu yhteystiedon %1$s kanssa?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Poista %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Poista %1$s ryhmästä?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -499,7 +492,6 @@
     <string name="multidevice_receiver_scanning_ask">Kopioidaanko profiili toiselta laitteelta tälle laitteelle?</string>
     <string name="multidevice_abort">Hylätäänkö toisen laitteen käyttöönotto?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Tämä mitätöi QR koodin joka on kopioituna leikepöydälle.</string>
-    <string name="multidevice_experimental_hint">(kokeellinen, versio 1.36 vaaditaan)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profiili siirretty toiselle laitteellesi.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Valmistellaan profiilia...</string>
@@ -788,14 +780,17 @@
     <string name="autocrypt_send_asm_explain_before">Autocrypt -käyttöönottoviesti jakaa turvallisesti päästä-päähän -salauksen asetukset toisten Autocrypt-yhteensopivien sovellusten kanssa.\n\nMäärittely salataan tässä näytettävällä käyttöönottokoodilla, joka on syötettävä toisella laittella.</string>
     <string name="autocrypt_send_asm_button">Lähetä Autocrypt -käyttöönottoviesti</string>
     <string name="autocrypt_send_asm_explain_after">Käyttöönottoviesti on lähetetty sinulle itsellesi. Avaa viesti toisella laitteella. Sinulta pyydetään käyttöönottokoodia. Anna seuraavat numerot:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Suosi päästä-päähän -salausta</string>
     <string name="autocrypt_asm_subject">Autocrypt -käyttöönottoviesti</string>
     <string name="autocrypt_asm_general_body">Tätä Autocrypt -käyttöönottoviestiä käytetään päästä-päähän -salauksen asetusten siirtämiseksi toiselle laitteelle.\n\nSaat purettua salauksia ja käytettyä määrittelyä avaamalla viestin Autocrypt -yhteensopivassa päätesovelluksessa, generoivalla laitteella näytetyn pin koodin syöttämisen jälkeen.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Tätä Autocrypt -käyttöönottoviestiä käytetään päästä-päähän-salauksen asetusten siirtämiseksi laitteiden välillä.\n\nSalauksen purkamiseksi ja asetusten käyttöön ottamiseksi, napauta tai klikkaa tätä viestiä.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Autocrypt -käyttöönottoviesti</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Anna toisella laitteella näkyvä käyttöönottokoodi.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Päästä-päähän -salauksen asetuksen siirretty. Autocrypt toimii nyt tässä laitteessa samoilla asetuksilla kuin toisessa laitteessa.</string>
-    <string name="autocrypt_continue_transfer_retry">Yritä uudelleen</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Virheellinen käyttöönottokoodi. Yritä uudelleen.\n\nJos et muista käyttöönottokoodia, lähetä uusi Autocrypt -käyttöönottoviesti toisella laitteella.</string>
 
 
@@ -1025,7 +1020,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Työkalupalkin kuvaketta ei voida poistaa, koska Delta Chat käynnistettiin \"Käynnistä pienennettynä\" -valinnalla.</string>
     <string name="no_spellcheck_suggestions_found">Oikeinkirjoitusehdotusta ei löydy.</string>
     <string name="show_window">Näytä ikkuna</string>
-    <string name="login_socks5_experimental_warning">SOCKS5-tuki on kokeellinen. Käytä omalla vastuulla. Jos annat osoitteen sähköpostikenttään, DNS-etsintää ei tunneloida SOCKS5 läpi.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Näppäinkomennot</string>

@@ -117,8 +117,6 @@
     <string name="menu_show_global_map">Prikaži sve lokacije</string>
     <string name="menu_add_attachment">Dodaj privitak</string>
     <string name="menu_leave_group">Napusti grupu</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Obriši poruke</string>
     <string name="menu_delete_location">Obrisati ovu lokaciju?</string>
     <string name="menu_message_details">Detalji poruke</string>
     <string name="menu_copy_to_clipboard">Kopiraj u međuspremnik</string>
@@ -133,8 +131,7 @@
     <string name="menu_settings">Postavke</string>
     <string name="menu_advanced">Napredno</string>
     <string name="mute_for_one_hour">Utišaj na 1 sat</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Utišaj na 2 sata</string>
+    <string name="mute_for_eight_hours">Utišaj na 8 sata</string>
     <string name="mute_for_one_day">Utišaj na 1 dan</string>
     <string name="mute_for_seven_days">Utišaj na 7 dana</string>
     <!-- contact list -->

@@ -150,8 +150,6 @@
     <string name="menu_add_attachment">Annanghe un\'allegadu</string>
     <string name="menu_leave_group">Lassa su grupu</string>
     <string name="menu_delete_chat">Iscantzella sa tzarrada</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Iscantzella sos messàgios</string>
     <string name="menu_delete_location">Iscantzellare custa positzione?</string>
     <string name="menu_message_details">Detàllios de su messàgiu</string>
     <string name="menu_copy_to_clipboard">Còpia in punta de billete</string>
@@ -191,8 +189,7 @@
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Isbloca</string>
     <string name="mute_for_one_hour">A sa muda pro 1 ora</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">A sa muda pro 2 oras</string>
+    <string name="mute_for_eight_hours">A sa muda pro 8 oras</string>
     <string name="mute_for_one_day">A sa muda pro 1 die</string>
     <string name="mute_for_seven_days">A sa muda pro 7 dies</string>
     <string name="mute_forever">A sa muda pro semper</string>
@@ -227,8 +224,6 @@
     <string name="ask_unblock_contact">Isblocare custu cuntatu? As a torrare a pòdere retzire messàgios dae custu cuntatu.</string>
     <string name="ask_delete_contacts">Iscantzellare sos cuntatos?\n\nSos cuntatos cun tzarradas ativas e cussos de sa rubrica de su dispositivu non podent èssere iscantzellados definitivamente.</string>
     <string name="ask_delete_contact">Cheres iscantzellare a %1$s pro semper?\n\nSos cuntatos cun tzarradas ativas e cussos de sa rubrica de su dispositivu non podent èssere iscantzellados definitivamente.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Non podes iscantzellare cuntatos cun tzarradas ativas.</string>
     <string name="ask_start_chat_with">Cheres tzarrare cun %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Cheres bogare %1$sdae su grupu?</string>
@@ -472,6 +467,7 @@
     <string name="autocrypt_send_asm_explain_before">Unu \'Messàgiu de configuratzione Autocrypt\' cumpartzit sa configuratzione a nodu terminale (end-to-end) cun àteras aplicatziones cumpatìbiles cun Autocrypt.\n\nSa configuratzione ant a èssere tzifradas cun unu còdighe ammustradu inoghe chi depet èssere insertadu in s\'àteru dispositivu. </string>
     <string name="autocrypt_send_asm_button">Imbia unu messàgiu de impostatzione de Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Ti ses imbiadu sa configuratzione tua. Cola a s\'àteru dispositivu e aberi su messàgiu de configuratzione. Ti diat dèpere èssere pedidu unu còdighe de configuratzione. Inserta custas tzifras:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferi sa tzifradura a nodu terminale (end-to-end)</string>
     <string name="autocrypt_asm_subject">Messàgiu de configuratzione de Autocrypt</string>
     <string name="write_message_desktop">Iscrie unu messàgiu</string>

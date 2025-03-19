@@ -248,8 +248,6 @@
     <string name="menu_delete_chat">Csevegés törlése</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Csevegés kiürítése</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Üzenetek törlése</string>
     <string name="delete_contact">Névjegy törlése</string>
     <string name="menu_delete_location">Biztosan törli ezt a helyszínt?</string>
     <string name="menu_message_details">Üzenet részletei</string>
@@ -332,8 +330,7 @@
     <string name="donate">Adományozás</string>
 
     <string name="mute_for_one_hour">Némítás 1 órára</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Némítás 2 órára</string>
+    <string name="mute_for_eight_hours">Némítás 8 órára</string>
     <string name="mute_for_one_day">Némítás 1 napra</string>
     <string name="mute_for_seven_days">Némítás 7 napra</string>
     <string name="mute_forever">Némítás örökre</string>
@@ -390,11 +387,7 @@
     <string name="ask_unblock_contact">Feloldja ennek a partnerének a letiltását? Ezután képes lesz üzeneteket fogadni tőle.</string>
     <string name="ask_delete_contacts">Névjegy törlése?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó névjegyek nem törölhetők véglegesen.</string>
     <string name="ask_delete_contact">Törli a(z) %1$s nevű partnerét?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó partnerek nem törölhetők véglegesen.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">A folyamatban lévő csevegésekkel rendelkező névjegyek nem törölhetők.</string>
     <string name="ask_start_chat_with">Csevegés vele: %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">%s törlése?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Eltávolítja a csoportból őt: %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -558,7 +551,6 @@
     <string name="multidevice_receiver_needs_update">Az importálni kívánt profil egy újabb Delta Chat verzióból származik.\n\nA második eszköz beállításának folytatásához frissítse ezt az eszközt a Delta Chat legújabb verziójára.</string>
     <string name="multidevice_abort">A második eszköz beállításának megszakítása?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Ez érvényteleníti a vágólapra másolt QR-kódot.</string>
-    <string name="multidevice_experimental_hint">(kísérleti, 1.36-os verzió szükséges)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ A profil átkerül az Ön második eszközére.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Profil készítése…</string>
@@ -875,14 +867,17 @@
     <string name="autocrypt_send_asm_explain_before">Egy autocryptbeállító-üzenet biztonságosan megosztja az ön végpontok közötti beállításait más autocrypt-kompatibilis alkalmazásokkal.\n\nA beállítás titkosítása egy, itt megjelenő beállítási kóddal történik, amelyet a másik eszközön kell begépelni.</string>
     <string name="autocrypt_send_asm_button">Autocryptbeállító-üzenet küldése</string>
     <string name="autocrypt_send_asm_explain_after">A beállításokat elküldtük önnek. Váltson a másik eszközre, és nyissa meg a beállítási üzenetet. Meg kell adnia a beállítási kódot. Írja be a következő számjegyeket:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Végpontok közötti titkosítás előnyben részesítése</string>
     <string name="autocrypt_asm_subject">Autocryptbeállító-üzenet</string>
     <string name="autocrypt_asm_general_body">Ez az autocryptbeállító-üzenet a végpontok közötti beállítások kliensek közötti átvitelére szolgál.\n\nA beállítások visszafejtéséhez és használatához nyissa meg az üzenetet egy autocrypt-kompatibilis kliensben, és írja be az előállító eszközön megjelenő beállítási kódot.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Ez az Autocryptbeállító-üzenet, amelyet a végpontok közötti titkosítási beállítások átvitelére használnak a kliensek között.\n\n\nA beállítások visszafejtéséhez és használatához koppintson vagy kattintson erre az üzenetre.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Autocryptbeállító-üzenet</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code"> Adja meg a másik eszközön megjelenő beállítási kódot.</string>
-    <string name="autocrypt_continue_transfer_succeeded">A végpontok közötti beállítások átvitele megtörtént. Ez az eszköz most már készen áll az autocrypt használatára a másik eszközzel megegyező beállításokkal.</string>
-    <string name="autocrypt_continue_transfer_retry">Újra</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Rossz beállítási kód. Próbálja újra.\n\nHa nem emlékszik a beállítási kódra, küldjön új Autocryptbeállító-üzenetet a másik eszközről.</string>
 
 
@@ -1116,7 +1111,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">A tálca ikonja nem kapcsolható ki, mivel a Delta Chat a --minimized kapcsolóval indult.</string>
     <string name="no_spellcheck_suggestions_found">Nem találhatók helyesírási javaslatok.</string>
     <string name="show_window">Ablak megjelenítése</string>
-    <string name="login_socks5_experimental_warning">A SOCKS5-támogatás jelenleg kísérleti jellegű. Használja saját felelősségére. Ha beír egy címet az e-mail-mezőbe, akkor lesz olyan DNS lekérés, ami nem fog átjutni a SOCKS5 csatornán.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Billentyűkötések</string>

@@ -28,6 +28,7 @@
     <string name="join">Приєднатися</string>
     <string name="rejoin">Заново приєднатися</string>
     <string name="delete">Видалити</string>
+    <string name="delete_for_me">Видалити для мене</string>
     <string name="info">Інформація</string>
     <string name="update">Оновити</string>
     <string name="emoji">Емодзі</string>
@@ -264,8 +265,6 @@
     <string name="menu_delete_chat">Видалити чат</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Очистити чат</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Видалити повідомлення</string>
     <string name="delete_contact">Видалити контакт</string>
     <string name="menu_delete_location">Видалити це місце?</string>
     <string name="menu_message_details">Інформація про повідомлення</string>
@@ -347,8 +346,7 @@
     <string name="donate">Пожертвувати</string>
 
     <string name="mute_for_one_hour">Відключити сповіщення на 1 годину</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">Відключити сповіщення на 2 години</string>
+    <string name="mute_for_eight_hours">Відключити сповіщення на 8 годин</string>
     <string name="mute_for_one_day">Відключити сповіщення на 1 день</string>
     <string name="mute_for_seven_days">Відключити сповіщення на 7 днів</string>
     <string name="mute_forever">Вимкнути сповіщення назавжди</string>
@@ -385,6 +383,20 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ви впевнені, що хочете залишити цю групу?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Видалити %d чат на всіх ваших пристроях?</item>
+        <item quantity="few">Видалити %d чата на всіх ваших пристроях?</item>
+        <item quantity="many">Видалити %d чатів на всіх ваших пристроях?</item>
+        <item quantity="other">Видалити %d чатів на всіх ваших пристроях?</item>
+    </plurals>
+    <string name="ask_delete_named_chat">Видалити чат \"%1$s\" на всіх ваших пристроях?</string>
+    <string name="ask_delete_message">Видалити повідомлення на всіх ваших пристроях?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Видалити %d повідомлення на всіх ваших пристроях?</item>
+        <item quantity="few">Видалити %d повідомлення на всіх ваших пристроях?</item>
+        <item quantity="many">Видалити %d повідомлень на всіх ваших пристроях?</item>
+        <item quantity="other">Видалити %d повідомлення на всіх ваших пристроях?</item>
+    </plurals>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Видалити %d повідомлення?</item>
@@ -399,11 +411,7 @@
     <string name="ask_unblock_contact">Розблокувати цей контакт?</string>
     <string name="ask_delete_contacts">Видалити контакти?\n\nКонтакти з поточними чатами або з системної адресної книги неможливо видалити остаточно.</string>
     <string name="ask_delete_contact">Видалити %1$s?\n\nКонтакти з діючих чатів та з адресної книги системи не можна видалити назавжди.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Неможливо видалити контакти, з якими є активні чати.</string>
     <string name="ask_start_chat_with">Створити чат з %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Видалити %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Видалити %1$s із групи?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -572,7 +580,6 @@
     <string name="multidevice_receiver_scanning_ask">Скопіювати обліковий запис з іншого пристрою на цей?</string>
     <string name="multidevice_abort">Скасувати налаштування другого пристрою?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Це зробить недійсним QR-код, скопійований у буфер обміну.</string>
-    <string name="multidevice_experimental_hint">(експериментальний, потрібна версія 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Обліковий запис перенесено на ваш другий пристрій.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Підготовка облікового запису…</string>
@@ -886,14 +893,17 @@
     <string name="autocrypt_send_asm_explain_before">Повідомлення з налаштуваннямм Autocrypt слугує безпечній передачі параметрів наскрізного шифрування між власними додатками для роботи з електронною поштою, що підтримують протокол Autocrypt.\n\nЦі параметри шифруються з використанням спеціального інсталяційного коду, що показаний тут і має бути введений на іншому пристрої.</string>
     <string name="autocrypt_send_asm_button">Надіслати повідомлення з налаштуваннями Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Налаштування було Вам надіслано. Перейдіть на інший пристрій і відкрийте повідомлення про налаштування. У Вас має з\'явитися запит на введення коду налаштування. Введіть наступні цифри:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Віддавати перевагу наскрізному шифруванню</string>
     <string name="autocrypt_asm_subject">Повідомлення з налаштуваннями Autocrypt</string>
     <string name="autocrypt_asm_general_body">Це повідомлення з налаштуваннями Autocrypt, що слугує для передачі параметрів наскрізного шифрування між пристроями.\n\nДля розшифрування параметрів відкрийте це повідомлення в додатку, що підтримує Autocrypt і введіть інсталяційний код, показаний на початковому пристрої.</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_click_body">Це повідомлення з налаштуваннями Autocrypt, що слугує для передавання параметрів наскрізного шифрування між пристроями.\n\nДля розшифрування й використання параметрів відкрийте це повідомлення.</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_title">Повідомлення з налаштуваннями Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_continue_transfer_please_enter_code">Введіть інсталяційний код, що показаний на іншому пристрої.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Параметри наскрізного шифрування успішно передані. Цей пристрій буде використовувати такі ж параметри Autocrypt, як і інший.</string>
-    <string name="autocrypt_continue_transfer_retry">Повторити</string>
+    <!-- deprecated -->
     <string name="autocrypt_bad_setup_code">Неправильний інсталяційний код. Спробуйте ще раз.\n\nЯкщо інсталяційний код загублений, надішліть з іншого пристрою ще одне повідомлення з налаштуваннями Autocrypt.</string>
 
 
@@ -1127,7 +1137,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Іконку в треї не можна вимкнути, оскільки Delta Chat було запущено за допомогою параметра --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Пропозицій щодо написання не знайдено.</string>
     <string name="show_window">Показати вікно</string>
-    <string name="login_socks5_experimental_warning">Підтримка SOCKS5 наразі експериментальна. Використовуйте її на власний ризик. Якщо Ви введете адресу в поле \"e-mail\", буде здійснено запит до DNS, який не буде тунельовано через SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Сполучення клавіш</string>

@@ -117,8 +117,7 @@
     <string name="menu_zoom_in">పెద్దదిగా చూపు</string>
     <string name="menu_zoom_out">పెద్దది చెయ్యి</string>
     <string name="mute_for_one_hour">1 గంట నిశబ్దంగా ఉంచు</string>
-    <!-- deprecated -->
-    <string name="mute_for_two_hours">2 గంటలు నిశబ్దంగా ఉంచు</string>
+    <string name="mute_for_eight_hours">8 గంటలు నిశబ్దంగా ఉంచు</string>
     <string name="mute_for_one_day">1 రోజు నిశబ్దంగా ఉంచు</string>
     <string name="mute_for_seven_days">7 రోజులు నిశబ్దంగా ఉంచు</string>
     <!-- get confirmations -->
