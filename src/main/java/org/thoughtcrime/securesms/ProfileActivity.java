@@ -29,6 +29,8 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 import com.google.android.material.tabs.TabLayout;
 
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -63,6 +65,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private static final int REQUEST_CODE_PICK_RINGTONE = 1;
 
   private DcContext            dcContext;
+  private Rpc rpc;
   private int                  chatId;
   private boolean              chatIsMultiUser;
   private boolean              chatIsDeviceTalk;
@@ -82,6 +85,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     dynamicTheme = new DynamicNoActionBarTheme();
     super.onPreCreate();
     dcContext = DcHelper.getContext(this);
+    rpc = DcHelper.getRpc(this);
   }
 
   @Override
@@ -536,6 +540,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       }
     }
     else {
+      int accountId = dcContext.getAccountId();
       DcContact dcContact = dcContext.getContact(contactId);
 
       String authName = dcContact.getAuthName();
@@ -555,7 +560,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           .setView(gl)
           .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
             String newName = inputField.getText().toString();
-            dcContext.createContact(newName, dcContact.getAddr());
+            try {
+              rpc.createContact(accountId, dcContact.getAddr(), newName);
+            } catch (RpcException e) {
+              e.printStackTrace();
+            }
           })
           .setNegativeButton(android.R.string.cancel, null)
           .setCancelable(false)
