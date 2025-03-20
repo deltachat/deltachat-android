@@ -561,7 +561,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
             String newName = inputField.getText().toString();
             try {
-              rpc.createContact(accountId, dcContact.getAddr(), newName);
+              rpc.changeContactName(accountId, contactId, newName);
             } catch (RpcException e) {
               e.printStackTrace();
             }

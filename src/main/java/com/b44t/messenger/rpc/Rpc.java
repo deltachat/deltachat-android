@@ -129,8 +129,8 @@ public class Rpc {
         return getResult("get_account_file_size", accountId).getAsInt();
     }
 
-    public int createContact(int accountId, String email, String name) throws RpcException {
-        return getResult("create_contact", accountId, email, name).getAsInt();
+    public void changeContactName(int accountId, int contactId, String name) throws RpcException {
+        getResult("change_contact_name", accountId, contactId, name);
     }
 
     public int addAccount() throws RpcException {
