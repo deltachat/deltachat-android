@@ -922,15 +922,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_initiateKeyTransfer(JNIEnv *
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_continueKeyTransfer(JNIEnv *env, jobject obj, jint msg_id, jstring setupCode)
-{
-    CHAR_REF(setupCode);
-        jboolean ret = dc_continue_key_transfer(get_dc_context(env, obj), msg_id, setupCodePtr);
-    CHAR_UNREF(setupCode);
-    return ret;
-}
-
-
 JNIEXPORT void Java_com_b44t_messenger_DcContext_imex(JNIEnv *env, jobject obj, jint what, jstring dir)
 {
     CHAR_REF(dir);
@@ -1593,12 +1584,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isForwarded(JNIEnv *env, jobjec
 JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isInfo(JNIEnv *env, jobject obj)
 {
     return dc_msg_is_info(get_dc_msg(env, obj))!=0;
-}
-
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isSetupMessage(JNIEnv *env, jobject obj)
-{
-    return dc_msg_is_setupmessage(get_dc_msg(env, obj));
 }
 
 
