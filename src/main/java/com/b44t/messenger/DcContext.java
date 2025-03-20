@@ -143,7 +143,6 @@ public class DcContext {
     public native String       getConnectivityHtml  ();
     public native String       getOauth2Url         (String addr, String redirectUrl);
     public native String       initiateKeyTransfer  ();
-    public native boolean      continueKeyTransfer  (int msg_id, String setup_code);
     public native void         imex                 (int what, String dir);
     public native String       imexHasBackup        (String dir);
     public DcBackupProvider    newBackupProvider    () { return new DcBackupProvider(newBackupProviderCPtr()); }
