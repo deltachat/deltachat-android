@@ -129,6 +129,10 @@ public class Rpc {
         return getResult("get_account_file_size", accountId).getAsInt();
     }
 
+    public void changeContactName(int accountId, int contactId, String name) throws RpcException {
+        getResult("change_contact_name", accountId, contactId, name);
+    }
+
     public int addAccount() throws RpcException {
         return getResult("add_account").getAsInt();
     }
