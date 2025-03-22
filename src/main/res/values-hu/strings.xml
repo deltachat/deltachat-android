@@ -867,18 +867,9 @@
     <string name="autocrypt_send_asm_explain_before">Egy autocryptbeállító-üzenet biztonságosan megosztja az ön végpontok közötti beállításait más autocrypt-kompatibilis alkalmazásokkal.\n\nA beállítás titkosítása egy, itt megjelenő beállítási kóddal történik, amelyet a másik eszközön kell begépelni.</string>
     <string name="autocrypt_send_asm_button">Autocryptbeállító-üzenet küldése</string>
     <string name="autocrypt_send_asm_explain_after">A beállításokat elküldtük önnek. Váltson a másik eszközre, és nyissa meg a beállítási üzenetet. Meg kell adnia a beállítási kódot. Írja be a következő számjegyeket:</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Végpontok közötti titkosítás előnyben részesítése</string>
     <string name="autocrypt_asm_subject">Autocryptbeállító-üzenet</string>
     <string name="autocrypt_asm_general_body">Ez az autocryptbeállító-üzenet a végpontok közötti beállítások kliensek közötti átvitelére szolgál.\n\nA beállítások visszafejtéséhez és használatához nyissa meg az üzenetet egy autocrypt-kompatibilis kliensben, és írja be az előállító eszközön megjelenő beállítási kódot.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Ez az Autocryptbeállító-üzenet, amelyet a végpontok közötti titkosítási beállítások átvitelére használnak a kliensek között.\n\n\nA beállítások visszafejtéséhez és használatához koppintson vagy kattintson erre az üzenetre.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Autocryptbeállító-üzenet</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code"> Adja meg a másik eszközön megjelenő beállítási kódot.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Rossz beállítási kód. Próbálja újra.\n\nHa nem emlékszik a beállítási kódra, küldjön új Autocryptbeállító-üzenetet a másik eszközről.</string>
 
 
     <!-- system messages -->

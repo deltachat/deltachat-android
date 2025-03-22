@@ -883,18 +883,9 @@
     <string name="autocrypt_send_asm_explain_before">Un Messaggio Configurazione Autocrypt condivide in modo sicuro la configurazione end-to-end con altre app compatibili con Autocrypt.\n\nLa configurazione verrà crittografata tramite un codice di configurazione visualizzato qui e dovrà essere digitato sull\'altro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Invia Messaggio Configurazione Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">La tua configurazione ti è stata inviata. Passa all\'altro dispositivo e apri il messaggio. Dovrebbe venirti richiesto un codice. Inserisci il seguente codice:</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferisci Cifratura End-To-End</string>
     <string name="autocrypt_asm_subject">Messaggio Configurazione Autocrypt</string>
     <string name="autocrypt_asm_general_body">Questo è il Messaggio Configurazione Autocrypt utilizzato per trasferire la configurazione end-to-end tra i client.\n\nPer decifrare e utilizzare la configurazione, aprire il messaggio in un client compatibile con Autocrypt e immettere il codice di configurazione presentato sul dispositivo di generazione.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Questo è il Messaggio Configurazione Autocrypt utilizzato per trasferire la configurazione end-to-end tra i client.\n\nPer decriptare e utilizzare la configurazione, tocca o fai clic su questo messaggio.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Messaggio Configurazione Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Per piacere inserisci il codice mostrato nell\'altro dispositivo</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Codice configurazione non valido. Per piacere riprova ancora.\n\nSe non ricordi il codice di configurazione invia un altro Messaggio Configurazione Autocrypt dall\'altro dispositivo.</string>
 
 
     <!-- system messages -->

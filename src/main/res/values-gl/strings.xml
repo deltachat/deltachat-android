@@ -823,18 +823,9 @@
     <string name="autocrypt_send_asm_explain_before">Unha Mensaxe de Configuración Autocrypt comparte de xeito seguro o teu cifrado extremo-a-extremo con outras apps compatibles con Autocrypt.\n\nO axuste realízase cifrado e protexido cun código que se debe escribir no outro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Enviar Mensaxe de Configuración Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Os axustes envíanse a ti mesma. Vaite ao outro dispositivo e abre a mensaxe de configuración. Debería solicitarche un código. Introduce os seguintes díxitos:</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferir cifrado extremo-a-extremo</string>
     <string name="autocrypt_asm_subject">Mensaxe de Configuración Autocrypt</string>
     <string name="autocrypt_asm_general_body">Esta é a Mensaxe de Configuración Autocrypt utilizado para transferir os teus axustes de cifrado de extremo-a-extremo entre clientes.\n\nPara descifrar e utilizar os axustes abre a mensaxe nun cliente compatible con Autocrypt e introduce o código mostrado no dispositivo de orixe.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Esta é a Mensaxe de Configuración Autocrypt utilizado para transferir os teus axustes de cifrado extremo-a-extremo entre clientes.\n\nPara descifrar e utilizar os axustes, toca ou preme en esta mensaxe.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Mensaxe de Configuración Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Por favor, introduce o código de protección mostrado no outro dispositivo.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Código incorrecto. Inténtao outra vez.\n\nSe non lembras o código, envía unha nova Mensaxe de Configuración Autocrypt desde o outro dispositivo.</string>
 
 
     <string name="systemmsg_unknown_sender_for_chat">Remitente descoñecido para esta convers. Mira en \'info\' para saber máis.</string>

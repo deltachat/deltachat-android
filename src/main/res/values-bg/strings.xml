@@ -780,18 +780,9 @@
     <string name="autocrypt_send_asm_explain_before">Съобщението за настройка на Autocrypt споделя по сигурен начин Вашата настройка за криптиране \"от край до край\" с други съвместими с Autorcypt приложения.\n\nНастройката се криптира с код, който се показва тук и трябва да бъде въведен на другото устройство.</string>
     <string name="autocrypt_send_asm_button">Изпращане на съобщението за настройка на Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Изпратихте Вашата настройка до себе си. Отворете съобщението за настройка в другото устройство. Би трябвало да Ви бъде поискан код за настройка. Въведете следните цифри:</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Да се предпочита криптиране \"от край до край\"</string>
     <string name="autocrypt_asm_subject">Съобщение за настройка на Autocrypt</string>
     <string name="autocrypt_asm_general_body">Това е съобщението за настройка на Autocrypt, чрез което се прехвърля Вашата настройка за криптиране \"от край до край\" между различни клиенти.\n\nЗа да декриптирате и използвате Вашата настройка, отворете съобщението в клиент, съвместим с Autocrypt, и въведете кода за настройка, представен на генериращото устройство.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Това е съобщението за настройка на Autocrypt, чрез което се прехвърля Вашата настройка за криптиране \"от край до край\" между различни клиенти.\n\nЗа да декриптирате и използвате своята настройка, докоснете или щракнете върху това съобщение.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Съобщение за настройка на Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Моля, въведете кода за настройка, показан на другото устройство.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Невалиден код за настройка. Моля, опитайте отново.\n\nАко не си спомняте кода за настройка, изпратете ново съобщение за настройка на Autocrypt от другото устройство.</string>
 
 
     <!-- system messages -->

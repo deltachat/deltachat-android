@@ -780,18 +780,9 @@
     <string name="autocrypt_send_asm_explain_before">Autocrypt -käyttöönottoviesti jakaa turvallisesti päästä-päähän -salauksen asetukset toisten Autocrypt-yhteensopivien sovellusten kanssa.\n\nMäärittely salataan tässä näytettävällä käyttöönottokoodilla, joka on syötettävä toisella laittella.</string>
     <string name="autocrypt_send_asm_button">Lähetä Autocrypt -käyttöönottoviesti</string>
     <string name="autocrypt_send_asm_explain_after">Käyttöönottoviesti on lähetetty sinulle itsellesi. Avaa viesti toisella laitteella. Sinulta pyydetään käyttöönottokoodia. Anna seuraavat numerot:</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Suosi päästä-päähän -salausta</string>
     <string name="autocrypt_asm_subject">Autocrypt -käyttöönottoviesti</string>
     <string name="autocrypt_asm_general_body">Tätä Autocrypt -käyttöönottoviestiä käytetään päästä-päähän -salauksen asetusten siirtämiseksi toiselle laitteelle.\n\nSaat purettua salauksia ja käytettyä määrittelyä avaamalla viestin Autocrypt -yhteensopivassa päätesovelluksessa, generoivalla laitteella näytetyn pin koodin syöttämisen jälkeen.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Tätä Autocrypt -käyttöönottoviestiä käytetään päästä-päähän-salauksen asetusten siirtämiseksi laitteiden välillä.\n\nSalauksen purkamiseksi ja asetusten käyttöön ottamiseksi, napauta tai klikkaa tätä viestiä.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Autocrypt -käyttöönottoviesti</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Anna toisella laitteella näkyvä käyttöönottokoodi.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Virheellinen käyttöönottokoodi. Yritä uudelleen.\n\nJos et muista käyttöönottokoodia, lähetä uusi Autocrypt -käyttöönottoviesti toisella laitteella.</string>
 
 
     <!-- system messages -->

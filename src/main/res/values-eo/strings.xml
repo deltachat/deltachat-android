@@ -432,7 +432,6 @@
     <string name="pref_watch_sent_folder">Kontroli senditujon</string>
     <string name="pref_send_copy_to_self">Sendi kopion al mi mem</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferi tutvojan ĉifradon</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Respondi</string>

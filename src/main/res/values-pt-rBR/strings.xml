@@ -723,18 +723,9 @@
     <string name="autocrypt_send_asm_explain_before">A \"mensagem de configuração do Autocrypt\" compartilha com segurança a sua configuração de ponta a ponta com outros aplicativos compatíveis. \n\nA configuração será criptografada por um código de configuração que será exibido aqui e deverá ser digitado no outro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Enviar \"mensagem de configuração do Autocrypt\"?</string>
     <string name="autocrypt_send_asm_explain_after">Sua chave foi enviada para você mesmo. Abra a mensagem de configuração no seu outro dispositivo. Lá será exibido uma solicitação de código. Digite-o lá.\n\nDepois disso, seu dispositivo estará pronto para usar o Autocrypt.</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferir criptografia ponta a ponta</string>
     <string name="autocrypt_asm_subject">Mensagem de configuração do Autocrypt</string>
     <string name="autocrypt_asm_general_body">Esta é uma \"mensagem de configuração do Autocrypt\" que serve para transferir suas chaves entre dispositivos diferentes.\n\nPara descriptografar sua chave abra esta mensagem num cliente compatível e digite o código exibido no dispositivo de origem.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Esta é uma \"mensagem de configuração do Autocrypt\" que serve para a transferência de chaves.\n\nPara completá-la toque nesta mensagem.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Mensagem de configuração do Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Por favor, digite o código exibido no outro dispositivo.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Código errado. Tente novamente.\n\nSe você não se lembra do código recomece a transferência de chaves no dispositivo original.</string>
 
 
     <string name="systemmsg_unknown_sender_for_chat">Remetente desconhecido para esta conversa. Veja \'informações\' para mais detalhes.</string>

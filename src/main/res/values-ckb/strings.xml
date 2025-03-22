@@ -472,11 +472,8 @@
 
     <!-- autocrypt -->
     <string name="autocrypt_send_asm_title">هەناردنی پەیامی ڕێکخستنی ئۆتۆکریپت</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">هەڵبژاردنی شفرەکردنی ئەمسەر-ئەوسەر</string>
     <string name="autocrypt_asm_subject">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
     <string name="systemmsg_unknown_sender_for_chat">پەیامنێری ئەم وتووێژە نەناسراوە. بۆ وردەکاری زۆرتر سەیری \'زانیارییەکان\' بکە.</string>
     <string name="systemmsg_subject_for_new_contact">پەیام لەلایەن %1$s</string>
     <string name="systemmsg_failed_sending_to">هەناردنی پەیام بۆ %1$s سەرنەکەوت</string>

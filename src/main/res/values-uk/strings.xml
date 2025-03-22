@@ -893,18 +893,9 @@
     <string name="autocrypt_send_asm_explain_before">Повідомлення з налаштуваннямм Autocrypt слугує безпечній передачі параметрів наскрізного шифрування між власними додатками для роботи з електронною поштою, що підтримують протокол Autocrypt.\n\nЦі параметри шифруються з використанням спеціального інсталяційного коду, що показаний тут і має бути введений на іншому пристрої.</string>
     <string name="autocrypt_send_asm_button">Надіслати повідомлення з налаштуваннями Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Налаштування було Вам надіслано. Перейдіть на інший пристрій і відкрийте повідомлення про налаштування. У Вас має з\'явитися запит на введення коду налаштування. Введіть наступні цифри:</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Віддавати перевагу наскрізному шифруванню</string>
     <string name="autocrypt_asm_subject">Повідомлення з налаштуваннями Autocrypt</string>
     <string name="autocrypt_asm_general_body">Це повідомлення з налаштуваннями Autocrypt, що слугує для передачі параметрів наскрізного шифрування між пристроями.\n\nДля розшифрування параметрів відкрийте це повідомлення в додатку, що підтримує Autocrypt і введіть інсталяційний код, показаний на початковому пристрої.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Це повідомлення з налаштуваннями Autocrypt, що слугує для передавання параметрів наскрізного шифрування між пристроями.\n\nДля розшифрування й використання параметрів відкрийте це повідомлення.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Повідомлення з налаштуваннями Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Введіть інсталяційний код, що показаний на іншому пристрої.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Неправильний інсталяційний код. Спробуйте ще раз.\n\nЯкщо інсталяційний код загублений, надішліть з іншого пристрою ще одне повідомлення з налаштуваннями Autocrypt.</string>
 
 
     <!-- system messages -->

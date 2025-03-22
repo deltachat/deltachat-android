@@ -662,18 +662,9 @@
     <string name="autocrypt_send_asm_explain_before">\"Autocrypt sąrankos žinutė\" saugiai bendrina jūsų ištisinę sąranką su kitomis su Autocrypt suderinamomis programomis.\n\nSąranka bus užšifruota sąrankos kodu, kuris yra rodomas čia ir privalės būti įvestas kitame įrenginyje.</string>
     <string name="autocrypt_send_asm_button">Siųsti Autocrypt sąrankos žinutę</string>
     <string name="autocrypt_send_asm_explain_after">Jūsų sąranka buvo išsiųsta jums. Persijukite į kitą įrenginį ir atverkite sąrankos žinutę. Jūsų turėtų būti paprašyta sąrankos kodo. Į užklausą įrašykite šiuos skaitmenis.\n\nJums užbaigus, kitas įrenginys bus paruoštas naudoti Autocrypt.</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Teikti pirmenybę ištisiniam šifravimui</string>
     <string name="autocrypt_asm_subject">Autocrypt sąrankos žinutė</string>
     <string name="autocrypt_asm_general_body">Tai yra Autocrypt sąrankos žinutė, kuri yra naudojama perduoti jūsų ištisinę sąranką tarp klientų.\n\nNorėdami iššifruoti ir naudoti savo sąranką, atverkite žinutę su Autocrypt suderinamame kliente ir įveskite generuojančiame įrenginyje rodomą sąrankos kodą.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Tai yra Autocrypt sąrankos žinutė, kuri yra naudojama perduoti jūsų ištisinę sąranką tarp klientų.\n\nNorėdami iššifruoti ir naudoti savo sąranką, bakstelėkite ar spustelėkite ant šios žinutės.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Autocrypt sąrankos žinutė</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Įveskite kitame įrenginyje rodomą sąrankos kodą.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Blogas sąrankos kodas. Bandykite dar kartą.\n\nJeigu neprisimenate sąrankos kodo, tiesiog, išsiųskite dar vieną Autocrypt sąrankos žinutę iš kito  įrenginio.</string>
 
 
     <string name="systemmsg_subject_for_new_contact">Žinutė nuo %1$s</string>

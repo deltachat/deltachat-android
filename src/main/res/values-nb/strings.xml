@@ -340,18 +340,9 @@
     <string name="autocrypt_send_asm_explain_before">The Autocrypt-nøkkeloverføring krever at e-postklienten på den andre enheten er Autocrypt-kompatibel.\n\nDu kan så sende din hemmelige nøkkel til deg selv. Nøkkelen vil bli kryptert av en oppsettskode som vises her og må skrives inn på den andre enheten.</string>
     <string name="autocrypt_send_asm_button">Igangsett Autocrypt-nøkkeloverføring</string>
     <string name="autocrypt_send_asm_explain_after">Nøkkelen din har blitt sendt til deg selv. Bytt til den andre enheten og åpne oppsettsmeldingen. Du bør bli forespurt om å oppgi en oppsettskode. Skriv in følgende siffer.\n\nNår du er ferdig, vil din andre enhet også kunne bruke Autocrypt.</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Foretrekk ende-til-ende -kryptering</string>
     <string name="autocrypt_asm_subject">Autocrypt-nøkkeloverføring</string>
     <string name="autocrypt_asm_general_body">Dette er Autocrypt-oppsettsmeldingen brukt til å overføre nøkkelen din mellom klienter.\n\nFor å dekryptere å bruke din nøkkel, åpne meldingen i en Autocrypt-kompatibel klient og skriv inn oppsettskoden som vises på enheten som genererer den.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Dette er Autocrypt-oppsettsmeldingen brukt til å overføre nøkkelen din mellom klienter.\n\nFor å dekryptere å bruke din nøkkel, trykk på denne meldingen.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Autocrypt-nøkkeloverføring</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Skriv inn oppsettskoden som vises på den andre enheten.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Feil oppsettskode. Prøv igjen.\n\nHvis du ikke husker den, sett igang nøkkeloverføringen på en andre enheten igjen.</string>
 
 
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->

@@ -867,18 +867,9 @@
     <string name="autocrypt_send_asm_explain_before">Un \"missatge de configuració Autocrypt\" comparteix de forma segura la vostra configuració d\'extrem a extrem amb altres aplicacions compatibles amb Autocrypt.\n\nLa configuració es xifrarà amb un codi de configuració que es mostrarà aquí i que haureu d\'escriure a l’altre dispositiu.</string>
     <string name="autocrypt_send_asm_button">Envia el missatge de configuració Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Se us ha enviat la vostra configuració. Canvieu a l\'altre dispositiu i obriu el missatge de configuració. Se us demanarà un codi de configuració. Introduïu els dígits següents a l\'indicador.\n\nUn cop fet, l\'altre dispositiu estarà llest per utilitzar Autocrypt.</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Prefereix l\'encriptació d\'extrem a extrem</string>
     <string name="autocrypt_asm_subject">Missatge de configuració Autocrypt</string>
     <string name="autocrypt_asm_general_body">Aquest és el missatge de configuració Autocrypt que s’usa per a transferir la vostra configuració d\'extrem a extrem entre dispositius.\n\nPer a desxifrar i usar aquesta configuració, obriu el missatge en un dispositiu compatible amb Autocript i introduïu el codi de configuració que apareix al dispositiu primari.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Aquest és el missatge de configuració Autocrypt que s’usa per a transferir la vostra configuració d\'extrem a extrem entre clients.\n\nPer a desxifrar i usar la vostra configuració, toqueu o feu clic en aquest missatge.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Missatge de configuració Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Si us plau introduïu el codi d\'instal·lació que es mostra a l\'altre dispositiu.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Codi de configuració incorrecte. Siusplau torneu-ho a provar.\n\nSi no recordeu el codi de configuració Autocrypt, envieu-ne un de nou des de l’altre dispositiu.</string>
 
 
     <!-- system messages -->
