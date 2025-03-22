@@ -867,18 +867,9 @@
     <string name="autocrypt_send_asm_explain_before">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır.\n\nAyarlama, burada görüntülenen ve diğer aygıtta yazılması gereken bir ayarlama kodu tarafından şifrelenecek.</string>
     <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi Gönder</string>
     <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Uçtan Uca Şifrelemeyi Yeğle</string>
     <string name="autocrypt_asm_subject">Autocrypt Ayarlama İletisi</string>
     <string name="autocrypt_asm_general_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi\'dir.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için iletiyi Autocrypt uyumlu bir istemcide açın ve oluşturan aygıtta sunulan ayarlama kodunu girin.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi\'dir.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için bu iletiye dokunun ya da tıklayın.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Autocrypt Ayarlama İletisi</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Lütfen diğer aygıtta görüntülenen ayarlama kodunu girin.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Yanlış ayarlama kodu. Lütfen yeniden deneyin.\n\nAyarlama kodunu anımsamıyorsanız, diğer aygıttan yeni bir Autocrypt Ayarlama İletisi gönderin.</string>
 
 
     <!-- system messages -->

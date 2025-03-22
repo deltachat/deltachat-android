@@ -899,18 +899,9 @@
     <string name="autocrypt_send_asm_explain_before">\"Сообщение с параметрами Autocrypt\" служит для передачи параметров сквозного шифрования между приложениями, поддерживающими протокол Autocrypt.\n\nЭти параметры шифруются с использованием кода настройки, который показан здесь и должен быть введён в настраиваемом приложении.</string>
     <string name="autocrypt_send_asm_button">Сообщение с параметрами Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Ваши настройки были оправлены вам. Переключитесь на другое устройство и откройте сообщение с настройкой. Вам будет предложено ввести код настройки. Введите следующие цифры:</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Предпочитать сквозное шифрование</string>
     <string name="autocrypt_asm_subject">Сообщение с параметрами Autocrypt</string>
     <string name="autocrypt_asm_general_body">\"Сообщение с параметрами Autocrypt\" служит для передачи параметров сквозного шифрования между клиентами.\n\nЧтобы расшифровать и использовать параметры откройте это сообщение в приложении, поддерживающем Autocrypt и введите код настройки, показанный на исходном устройстве.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">\"Сообщение с параметрами Autocrypt\" служит для передачи параметров сквозного шифрования между клиентами.\n\nЧтобы расшифровать и использовать параметры, нажмите на это сообщение.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Сообщение с параметрами Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Введите код настройки, который показан на другом устройстве.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Неверный код настройки. Пожалуйста, попробуйте ещё раз.\n\nЕсли вы не помните код настройки, отправьте новое \"Сообщение с параметрами Autocrypt\" с другого устройства.</string>
 
 
     <!-- system messages -->
@@ -944,7 +935,7 @@
     <string name="group_image_deleted_by_other">%1$s удаляет изображение группы.</string>
     <string name="location_enabled_by_you">Вы включили трансляцию местоположения.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="location_enabled_by_other">%1$s включил(а) трансляцию местоположения.</string>
+    <string name="location_enabled_by_other">%1$s включает трансляцию местоположения.</string>
     <string name="ephemeral_timer_disabled_by_you">Вы отключили удаление сообщений по таймеру.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s отключает удаление сообщений по таймеру.</string>
@@ -1022,7 +1013,7 @@
     <string name="qrshow_title">QR-код приглашения</string>
     <string name="qrshow_x_joining">%1$s присоединяется.</string>
     <string name="qrshow_x_verified">%1$s подтверждён.</string>
-    <string name="qrshow_x_has_joined_group">%1$s присоединился к группе.</string>
+    <string name="qrshow_x_has_joined_group">%1$s присоединяется к группе.</string>
     <string name="qrshow_join_group_title">QR-код приглашения</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Сканируйте QR-код, чтобы присоединиться к группе \"%1$s\"</string>
@@ -1040,9 +1031,9 @@
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login_another">Авторизоваться в \"%1$s\"?\n\nВаш существующий профиль не будет удалён. Используйте меню \"Сменить профиль\", чтобы переключаться между профилями.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">%1$s пригласил вас в группу.\n\nОжидаем ответ от %2$s…</string>
+    <string name="secure_join_started">%1$s приглашает вас в группу.\n\nОжидаем ответ от %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_replies">%1$s ответил, ожидаем добавления в группу…</string>
+    <string name="secure_join_replies">%1$s ответил(а), ожидаем добавления в группу…</string>
     <string name="secure_join_wait">Устанавливается гарантированное сквозное шифрование, пожалуйста, подождите...</string>
     <string name="secure_join_wait_timeout">Не удалось установить гарантированное сквозное шифрование, но вы уже можете отправить сообщение.</string>
     <string name="contact_verified">%1$s подтверждён.</string>

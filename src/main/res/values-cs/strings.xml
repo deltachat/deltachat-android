@@ -899,18 +899,9 @@
     <string name="autocrypt_send_asm_explain_before">Pomocí zprávy s nastavením Autocryptu lze sdílet Vaše nastavení koncového šifrování s dalšími aplikacemi využívajícími Autocrypt.\n\nNastavení je zašifrované zobrazeným kódem, který musí být zadán na zařízení, na které si přejete nastavení přenést.</string>
     <string name="autocrypt_send_asm_button">Odeslat nastavení Autocryptu</string>
     <string name="autocrypt_send_asm_explain_after">Vaše nastavení se odeslalo. Vezměte si zařízení, kam si přejete nastavení přenést, a zprávu v něm otevřete. Mělo by se objevit pole pro zadání kódu. Do něj vložte následující číslice:</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Upřednostňovat koncové šifrování</string>
     <string name="autocrypt_asm_subject">Zpráva s nastavením Autocryptu</string>
     <string name="autocrypt_asm_general_body">Tato zpráva obsahuje nastavení Autocryptu. S její pomocí lze přenést nastavení koncového šifrování mezi klienty.\n\nK dešifrování a použití nastavení otevřete klient podporující Autocrypt a zadejte do něj kód zobrazený na zařízení, které zprávu vygenerovalo.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Tato zpráva obsahuje nastavení Autocryptu. S její pomocí lze přenést nastavení koncového šifrování mezi klienty.\n\nK dešifrování a použití tohoto nastavení zprávu stiskněte.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Zpráva s nastavením Autocryptu</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Prosím, zadejte kód zobrazený na hlavním zařízení.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Neplatný kód. Prosím, zkuste to znovu.\n\nPokud si kód nepamatujete, zkuste z hlavního zařízení poslat zprávu s nastavením Autocryptu znovu.</string>
 
 
     <!-- system messages -->
