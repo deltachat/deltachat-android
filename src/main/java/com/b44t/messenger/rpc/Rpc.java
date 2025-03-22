@@ -1,5 +1,7 @@
 package com.b44t.messenger.rpc;
 
+import android.util.Log;
+
 import com.b44t.messenger.DcJsonrpcInstance;
 import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.google.gson.Gson;
@@ -8,12 +10,16 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
+import org.thoughtcrime.securesms.qr.QrShowFragment;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 
 public class Rpc {
+    private final static String TAG = Rpc.class.getSimpleName();
+
     private final Map<Integer, SettableFuture<JsonElement>> requestFutures = new ConcurrentHashMap<>();
     private final DcJsonrpcInstance dcJsonrpcInstance;
     private int requestId = 0;
@@ -38,7 +44,14 @@ public class Rpc {
         }
 
         if (response.error != null) {
-            future.setException(new RpcException(response.error.toString()));
+            String message;
+            try {
+                message = response.error.getAsJsonObject().get("message").getAsString();
+            } catch (Exception e) {
+                Log.e(TAG, "Can't get response error message: " + e);
+                message = response.error.toString();
+            }
+            future.setException(new RpcException(message));
         } else if (response.result != null) {
             future.set(response.result);
         } else {
@@ -135,6 +148,14 @@ public class Rpc {
 
     public int addAccount() throws RpcException {
         return getResult("add_account").getAsInt();
+    }
+
+    public void addTransportFromQr(int accountId, String qrCode) throws RpcException {
+        getResult("add_transport_from_qr", accountId, qrCode);
+    }
+
+    public void addTransport(int accountId, EnteredLoginParam param) throws RpcException {
+        getResult("add_transport", accountId, param);
     }
 
     private static class Request {
