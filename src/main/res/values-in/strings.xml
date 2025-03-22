@@ -526,18 +526,9 @@
     <string name="autocrypt_send_asm_explain_before">Pengaturan Pesan Autocrypt membagi pengaturan ujung ke ujung Anda secara aman dengan aplikasi Autocrypt-compliant lain.\n\nPengaturan ini akan dienkripsi oleh kode pengaturan yang ditampilkan disini dan harus diketik di perangkat lainnya.</string>
     <string name="autocrypt_send_asm_button">Kirim Pengaturan Pesan Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Pengaturan Anda sudah dikirim ke Anda sendiri. Lihat pesan pengaturan di perangkat yang lain. Seharusnya Anda akan diminta kode pengaturan. Masukkan angka berikut:</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Lebih baik enkripsi ujung ke ujung</string>
     <string name="autocrypt_asm_subject">Pengaturan Pesan Autocrypt</string>
     <string name="autocrypt_asm_general_body">Inilah Autocrypt Setup Message yang digunakan utuk mentransfer pengaturan ujung ke ujung Anda antar pelanggan.\n\nUntuk membuka enkirpsi dan menggunakan pengaturan Anda, bukan pesan di Autocrypt-compliant pelanggan dan masukkan kode pengaturan yang ditampikan untuk perangkat terkait.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Inilah Autocrypt Setup Message yang digunakan untuk mentransfer pengaturan ujung ke ujung antar pelanggan.\n\nUntuk membuka enkripsi dan membuka pengaturan Anda, ketuk atau klik pesan ini.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Pengaturan Pesan Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Masukkan kode pengaturan yang ditampilkan di perangkat lain.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Kode pengaturan jelek. Ayo cakepan lagi.\n\nKalau Anda lupa kode pengaturan, kirim lagi Autocrypt Setup Message dari perangkat lainnya.</string>
 
 
     <string name="systemmsg_unknown_sender_for_chat">Pengirim tidak dikenal untuk obrolan ini. Lihat \'info\' untuk lebih jelasnya.</string>

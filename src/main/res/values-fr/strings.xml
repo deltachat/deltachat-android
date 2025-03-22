@@ -864,18 +864,9 @@
     <string name="autocrypt_send_asm_explain_before">Un \"Message de configuration d\'Autocrypt\" partages en toute sécurité vos paramètres de bout-en-bout avec les autres applications conformes à Autocrypt.\n\nLa configuration sera chiffrée par un code d\'installation affiché ici et doit être saisi sur l\'autre appareil.</string>
     <string name="autocrypt_send_asm_button">Envoyer le message de configuration Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Votre configuration vous a été envoyée. Passez à l\'autre appareil et ouvrez le message de configuration. Un code de configuration devrait vous être demandé. Tapez les chiffres suivants :</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Préférez le chiffrement de bout en bout</string>
     <string name="autocrypt_asm_subject">Message de configuration Autocrypt</string>
     <string name="autocrypt_asm_general_body">Ceci est le message de configuration Autocrypt utilisé pour transférer votre configuration de bout en bout entre clients. Pour déchiffrer et utiliser votre configuration, ouvrez le message dans un client compatible Autocrypt et entrez le code de configuration présenté sur le périphérique de génération.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Ceci est le message de configuration Autocrypt utilisé pour transférer votre configuration de bout-en-bout entre clients. Pour déchiffrer et utiliser votre configuration, tapez ou cliquez sur ce message.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Message de configuration Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Veuillez entrer le code de configuration affiché sur l\'autre appareil.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Mauvais code d\'installation. Veuillez réessayer. Si vous ne vous souvenez pas du code d\'installation, envoyez simplement un autre message d\'installation Autocrypt depuis l\'autre appareil.</string>
 
 
     <!-- system messages -->

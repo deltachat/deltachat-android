@@ -860,18 +860,9 @@
     <string name="autocrypt_send_asm_explain_before">Një “Mesazh Rregullimi Autocrypt-i“ ua jep, në mënyrë të parrezik, rregullimin tuaj për fshehtëzimin skaj-më-skaj pajisjeve të tjera që përdorin Autocrypt-in.\n\nRregullimi do të fshehtëzohet përmes një kodi rregullimi i cili shfaqet këtu dhe duhet dhënë te pajisja tjetër.</string>
     <string name="autocrypt_send_asm_button">Dërgo Mesazh Rregullimi Autocrypt-i</string>
     <string name="autocrypt_send_asm_explain_after">Rregullimi juaj u dërgua te ju. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do t\’ju kërkohet një kod rregullimi. Shtypni atje shifrat vijuese.\n\nPasi të keni mbaruar, pajisja juaj tjetër do të jetë gati të përdorë Autocrypt-in.</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Parapëlqe Fshehtëzim Skaj-Më-Skaj</string>
     <string name="autocrypt_asm_subject">Mesazh Rregullimi Autocrypt-i</string>
     <string name="autocrypt_asm_general_body">Ky është Mesazhi i Rregullimit të Autocrypt-it i përdorur për të shpërngulur rregullimin tuaj skaj-më-skaj në klientë të tjerë.\n\nQë ta shfshehtëzoni rregullimin tuaj, hapeni mesazhin te një klient që mund të përdorë Autocrypt-in dhe jepni kodin e rregullimit të treguar te pajisja që e prodhoi.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Ky është mesazhi i Rregullimit të Autocrypt-it i përdorur për të shpërngulur mes klientësh rregullimin tuaj skaj-më-skaj.\n\nPër ta fshehtëzuar dhe përdorur rregullimin tuaj, prekni ose klikoni mbi këtë mesazh.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Mesazh Rregullimi Autocrypt-i</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Ju lutemi, jepni kodin e rregullimit që është shfaqur te pajisja tjetër.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Kod i gabuar rregullimi. Ju lutemi, riprovoni.\n\nNëse s\’e mbani mend kodin e rregullimit, thjesht dërgoni një tjetër Mesazh Rregullimi Autocrypt-i prej pajisjes tjetër.</string>
 
 
     <!-- system messages -->

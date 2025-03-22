@@ -409,18 +409,9 @@
     <string name="autocrypt_send_asm_explain_before">\"Autocrypt ezarpen mezua\" batek modu seguruan partekatzen du zure muturretik muturrerako ezarpena Autocryptekin bateragarriak diren beste aplikazioekin. Ezarpena hemen bistaratutako ezarpen kodearekin zifratuko  da, eta beste gailuan kode hau sartu beharko da.</string>
     <string name="autocrypt_send_asm_button">Bidali Autocrypt ezarpen mezua</string>
     <string name="autocrypt_send_asm_explain_after">Zure ezarpena zuri bidali zaizu. Aldatu beste gailura eta ireki ezarpen mezua. Ezarpen kode bat eskatuko zaizu, Idatzi honako zenbaki hauek han.\n\nBehin bukatuta, zure beste gailua Autocrypt erabiltzeko prest egongo da.</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Hobetsi muturretik muturrerako zifratzea</string>
     <string name="autocrypt_asm_subject">Autocrypt ezarpen mezua</string>
     <string name="autocrypt_asm_general_body">Hau Autocrypt ezarpen mezua da, zure muturretik muturrerako ezarpena bezeroen artean pasatzeko erabilia.\n\n Zure ezarpena deszifratu eta erabiltzeko, ireki mezua Autocrypt onartzen duen bezero batean eta sartu gailu sortzailean agertutako ezarpen kodea.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Hau Autocrypt ezarpen mezua da, zure muturretik muturrerako ezarpena bezeroen artean pasatzeko erabilia.\n\n Zure ezarpena deszifratu eta erabiltzeko, sakatu edo egin klik mezu honetan.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Autocrypt ezarpen mezua</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Sartu hemen beste gailuan erakusten den ezarpen kodea.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Ezarpen kode okerra. Saiatu berriro mesedez.\n\nEz baduzu ezarpen kodea gogoratzen, bidali beste Autocrypt ezarpen mezu bat beste gailutik.</string>
 
 
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->

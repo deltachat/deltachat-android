@@ -899,18 +899,9 @@
     <string name="autocrypt_send_asm_explain_before">Wiadomość konfiguracyjna automatycznego szyfrowania” bezpiecznie udostępnia twoją konfigurację end-to-end innym aplikacjom zgodnym z Autocrypt. Klucz zostanie zaszyfrowany za pomocą wyświetlonego tutaj kodu konfiguracyjnego, który należy wpisać na drugim urządzeniu.</string>
     <string name="autocrypt_send_asm_button">Wyślij wiadomość konfiguracyjną Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Klucz został wysłany do ciebie. Przejdź do innego urządzenia i otwórz wiadomość konfiguracyjną. Zostanie wyświetlona prośba o podanie kodu konfiguracyjnego. Wpisz następujące cyfry w podpowiedzi.\n\nGdy skończysz, drugie urządzenie będzie gotowe do użycia funkcji automatycznego szyfrowania.</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferuj szyfrowanie typu end-to-end</string>
     <string name="autocrypt_asm_subject">Wiadomość konfiguracyjna automatycznego szyfrowania</string>
     <string name="autocrypt_asm_general_body">Jest to wiadomość konfiguracyjna automatycznego szyfrowania typu end-to-end służąca do przesyłania klucza między klientami.\n\nAby odszyfrować i użyć klucza, otwórz wiadomość w kliencie zgodnym z automatycznym szyfrowaniem i wprowadź kod konfiguracyjny przedstawiony na urządzeniu generującym.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Jest to wiadomość konfiguracyjna automatycznego szyfrowania typu end-to-end służąca do przesyłania klucza między klientami.\n\nAby odszyfrować i użyć klucza, dotknij lub kliknij tą wiadomość.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Wiadomość konfiguracyjna automatycznego szyfrowania</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Wprowadź kod konfiguracyjny wyświetlany na drugim urządzeniu.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Zły kod konfiguracyjny. Spróbuj ponownie.\n\nJeśli nie pamiętasz kodu konfiguracji, po prostu uruchom ponownie transfer klucza na drugim urządzeniu.</string>
 
 
     <!-- system messages -->

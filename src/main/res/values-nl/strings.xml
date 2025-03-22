@@ -867,18 +867,9 @@
     <string name="autocrypt_send_asm_explain_before">Een ‘Autocrypt-instelbericht’ deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps.\n\nDe instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
     <string name="autocrypt_send_asm_button">Autocrypt-instelbericht versturen</string>
     <string name="autocrypt_send_asm_explain_after">Je instellingen zijn aan jezelf verstuurd. Schakel over naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Voorkeur voor eind-tot-eindversleuteling</string>
     <string name="autocrypt_asm_subject">Autocrypt-instelbericht</string>
     <string name="autocrypt_asm_general_body">Dit is het Autocrypt-instelbericht dat wordt gebruikt om je instellingen over te zetten.\n\nOm te ontsleutelen en te gebruiken, open je het bericht in een met Autocrypt compatibele app en voer je de code in die wordt getoond op het apparaat dat de code heeft gegenereerd.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Dit is het Autocrypt-instelbericht dat wordt gebruikt om je eind-tot-eindinstellingen over te zetten.\n\nDruk op dit bericht om je instellingen te ontsleutelen en gebruiken.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Autocrypt-instelbericht</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Voer de code die wordt getoond op het andere apparaat.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Onjuist; probeer het opnieuw.\n\nAls je je code niet meer weet, verstuur dan nóg een Autocrypt-instelbericht vanaf het andere apparaat.</string>
 
 
     <!-- system messages -->

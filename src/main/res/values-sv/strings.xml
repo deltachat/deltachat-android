@@ -788,18 +788,9 @@
     <string name="autocrypt_send_asm_explain_before">Ett meddelande för att ställa in Autocrypt, delar den informationen med andra Autocrypt-anpassade program på ett säkert sätt. Informationen krypteras med en kod som visas här och som måste matas in på den mottagande enheten.</string>
     <string name="autocrypt_send_asm_button">Skicka Autocrypt inställningsmeddelande</string>
     <string name="autocrypt_send_asm_explain_after">Dina inställningar har skickats till dig själv. Byt till den andra enheten och öppna inställningsmeddelandet. Du kommer att tillfrågas om en inställningskod. Ange följande siffror:</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Föredra slutpunkt-till-slutpunkt-kryptering</string>
     <string name="autocrypt_asm_subject">Inställningsmeddelande för Autocrypt</string>
     <string name="autocrypt_asm_general_body">Detta är inställningsmeddelandet för Autocrypt som används för att skicka nycklar mellan klienter.\n\nFör att kunna avkryptera och använda din nyckel, öppnar du meddelandet i en Autocrypt-kompatibel klient och skriver in inställningskoden som visats på den genererande enheten.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Detta är inställningsmeddelandet för Autocrypt, som används för att överföra slutpunkt-till-slutpunkt-inställningar mellan klienter. Tryck eller klicka på det här meddelandet för att avkryptera och använda dina inställningar.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Autocrypt inställningsmeddelande</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Ange inställningskoden som visas på den andra enheten.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Felaktig inställningskod. Försök igen.\n\nOm du inte kommer ihåg inställningskoden, kan du skicka ett nytt Autocrypt inställningsmeddelande från den andra enheten.</string>
 
 
     <!-- system messages -->

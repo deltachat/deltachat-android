@@ -722,18 +722,9 @@
     <string name="autocrypt_send_asm_explain_before">Thông báo thiết lập Autocrypt chia sẻ an toàn thiết lập end-to-end của bạn với các ứng dụng tương thích Autocrypt khác.\n\nThiết lập sẽ được mã hóa bằng mã thiết lập được hiển thị ở đây và phải được nhập trên thiết bị kia.</string>
     <string name="autocrypt_send_asm_button">Gửi tin nhắn thiết lập Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Thiết lập của bạn đã được gửi cho chính bạn. Chuyển sang thiết bị khác và mở thông báo thiết lập. Bạn sẽ được yêu cầu nhập mã thiết lập. Nhập các chữ số sau:</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Ưu tiên mã hóa đầu cuối</string>
     <string name="autocrypt_asm_subject">Thông báo thiết lập Autocrypt</string>
     <string name="autocrypt_asm_general_body">Đây là Thông báo Thiết lập Autocrypt được sử dụng để truyền thiết lập hai đầu của bạn giữa các máy khách.\n\nĐể giải mã và sử dụng thiết lập của bạn, hãy mở tin nhắn trong một ứng dụng khách tương thích với Autocrypt và nhập mã thiết lập được trình bày trên thiết bị tạo.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">Đây là Thông báo Thiết lập Autocrypt được sử dụng để chuyển thiết lập hai đầu của bạn giữa các máy khách.\n\nĐể giải mã và sử dụng thiết lập của bạn, hãy nhấn hoặc nhấp vào thông báo này.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">Thông báo thiết lập tự động mã hóa</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">Vui lòng nhập mã thiết lập được hiển thị trên thiết bị kia.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">Mã thiết lập sai. Vui lòng thử lại.\n\nNếu bạn không nhớ mã thiết lập, hãy gửi Tin nhắn thiết lập Autocrypt mới từ thiết bị kia.</string>
 
 
     <!-- system messages -->

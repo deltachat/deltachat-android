@@ -828,18 +828,9 @@ https://meet.jit.si/$ROOM
     <string name="autocrypt_send_asm_explain_before">پیام برپاسازی اتوکریپت تنظیم‌های رمزگذاری سرتاسر شما را به شکلی امن با دیگر برنامه‌ها به اشتراک می‌گذارد.\n\n تنظیم‌ها با یک کد برپاسازی که در اینجا نمایش داده می‌شود رمزگذاری می‌شوند و باید در دستگاه دیگر تایپ شود. </string>
     <string name="autocrypt_send_asm_button">ارسال پیام برپاسازی اتوکریپت</string>
     <string name="autocrypt_send_asm_explain_after">تنظیم‌های شما برای خودتان ارسال شدند. پیام تنظیم‌ها را در دستگاه دیگر باز کنید. یک کد نصب از شما خواسته می‌شود. این ارقام را وارد کنید</string>
-    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">ترجیح رمزگذاری گیرنده به گیرنده</string>
     <string name="autocrypt_asm_subject">پیام برپاسازی اتوکریپت</string>
     <string name="autocrypt_asm_general_body">این پیام برپاسازی اتوکریپت است و تنظیم‌های مربوط به رمزگذاری سرتاسر شما را بین دستگاه‌ها جابه‌جا می‌کند.\n\n برای رمزگشایی و استفاده از آن، پیام را در یک سامانه که با اتوکریپت همخوانی دارد باز کنید و کد برپاسازی که در دستگاه تولیدکنندهٔ پیام، به شما داده می‌شود را وارد نمایید. </string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_click_body">این پیام برپاسازی اتوکریپت است که تنظیم‌های مربوط به رمزگذاری سرتاسر شما را بین دستگاه‌ها جابه‌جا می‌کند.\n\n برای رمزگشایی و استفاده، روی این پیام بزنید یا کلیک کنید. </string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_title">پیام برپاسازی اتوکریپت</string>
-    <!-- deprecated -->
-    <string name="autocrypt_continue_transfer_please_enter_code">لطفا کد نصب نمایش داده شده در دستگاه دیگر را وارد کنید. </string>
-    <!-- deprecated -->
-    <string name="autocrypt_bad_setup_code">کد برپاسازی نادرست. لطفاً دوباره تلاش کنید. \n\n اگر کد برپاسازی را فراموش کرده‌اید یک پیام برپاسازی اتوکریپت جدید را از دستگاه دیگر ارسال کنید. </string>
 
 
     <string name="systemmsg_unknown_sender_for_chat">فرستنده در این گفت و گو ناشناس است. برای جزئیات بیشتر به \"اطلاعات\" مراجعه کنید.</string>
