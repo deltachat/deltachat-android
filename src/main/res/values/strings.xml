@@ -1012,7 +1012,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Changed setup for %1$s.</string>
     <string name="verified_contact_required_explain">To guarantee end-to-end-encryption, you can only add contacts with a green checkmark to this group.\n\nYou may meet contacts in person and scan their QR Code to introduce them.</string>
-    <string name="copy_qr_data_success">Copied QR url to clipboard</string>
+    <string name="copy_qr_data_success">QR code copied to clipboard</string>
     <string name="mailto_dialog_header_select_chat">Select chat to send the message to</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s already has a draft message, do you want to replace it?</string>
