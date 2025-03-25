@@ -653,7 +653,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                     progressDialog.dismiss();
                     WelcomeActivity.maybeShowConfigurationError(this, e.getMessage());
                 });
-                // TODO test error reporting
             }
         }).start();
     }

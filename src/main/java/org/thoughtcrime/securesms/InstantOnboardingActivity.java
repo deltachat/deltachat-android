@@ -499,8 +499,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
           rpc.addTransportFromQr(dcContext.getAccountId(), qrCode);
           progressSuccess();
         } catch (RpcException e) {
-          Util.runOnMain(() -> progressError(e.toString()));
-          // TODO test error reporting
+          Util.runOnMain(() -> progressError(e.getMessage()));
         }
     }).start();
   }
