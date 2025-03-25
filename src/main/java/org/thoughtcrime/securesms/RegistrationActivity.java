@@ -47,7 +47,6 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcProvider;
 import com.b44t.messenger.rpc.EnteredLoginParam;
-import com.b44t.messenger.rpc.EnteredServerLoginParam;
 import com.b44t.messenger.rpc.Rpc;
 import com.b44t.messenger.rpc.RpcException;
 import com.b44t.messenger.util.concurrent.ListenableFuture;
@@ -622,26 +621,20 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
         DcHelper.getEventCenter(this).captureNextError();
 
-        EnteredServerLoginParam imapParam = new EnteredServerLoginParam(
+        EnteredLoginParam param = new EnteredLoginParam(
+                getParam(R.id.email_text, true),
+                getParam(R.id.password_text, false),
                 getParam(R.id.imap_server_text, true),
                 Util.objectToInt(getParam(R.id.imap_port_text, true)),
-                EnteredServerLoginParam.SocketSecurity.values()[imapSecurity.getSelectedItemPosition()],
+                EnteredLoginParam.socketSecurityFromInt(imapSecurity.getSelectedItemPosition()),
                 getParam(R.id.imap_login_text, false),
-                getParam(R.id.password_text, false)
-        );
-        EnteredServerLoginParam smtpParam = new EnteredServerLoginParam(
                 getParam(R.id.smtp_server_text, true),
                 Util.objectToInt(getParam(R.id.smtp_port_text, true)),
-                EnteredServerLoginParam.SocketSecurity.values()[smtpSecurity.getSelectedItemPosition()],
+                EnteredLoginParam.socketSecurityFromInt(smtpSecurity.getSelectedItemPosition()),
                 getParam(R.id.smtp_login_text, false),
-                getParam(R.id.smtp_password_text, false)
-        );
-        EnteredLoginParam param = new EnteredLoginParam(
-            getParam(R.id.email_text, true),
-            imapParam,
-            smtpParam,
-            EnteredLoginParam.getCertificateChecks(certCheck.getSelectedItemPosition()),
-            authMethod.getSelectedItemPosition() == 1
+                getParam(R.id.smtp_password_text, false),
+                EnteredLoginParam.certificateChecksFromInt(certCheck.getSelectedItemPosition()),
+                authMethod.getSelectedItemPosition() == 1
         );
 
         new Thread(() -> {
