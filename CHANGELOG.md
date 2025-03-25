@@ -3,6 +3,7 @@
 ## Unreleased
 
 * ignore click in info-messages from deleted in-chat apps
+* Disable AEAP to enable us to overhaul some things - there are big changes underway in this area, which will come in a few months
 
 ## v1.56.0
 2025-03
