@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v1.56.1
+2025-03
 
 * ignore click in info-messages from deleted in-chat apps
 * data saving: do not send messages to the server if user is the only member of the chat in single-device usage
