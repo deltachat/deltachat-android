@@ -28,6 +28,8 @@
     <string name="join">پیوستن</string>
     <string name="rejoin">پیوستن مجدد</string>
     <string name="delete">حذف</string>
+    <string name="delete_for_me">حذف برای من</string>
+    <string name="delete_for_everyone">حذف برای همه</string>
     <string name="info">درباره</string>
     <string name="update">به‌‌روزرسانی</string>
     <string name="emoji">شکلک</string>
@@ -40,11 +42,14 @@
     <string name="later">بعدا</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">ارسال مجدد</string>
+    <string name="edited">ویرایش‌شده</string>
+    <string name="edit_message">ویرایش پیام</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">بایگانی</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">خروج از بایگانی</string>
     <string name="mute">سکوت</string>
+    <string name="muted">بی‌صدا</string>
     <string name="ephemeral_messages">پیام‌های ناپدید شونده</string>
     <string name="ephemeral_messages_hint">روی تمام اعضای این گپ، اگر از دلتاچت استفاده کنند، اعمال می‌شود؛ ولی همچنان می‌توانند پیام‌ها را رونوشت، ذخیره و هدایت کنند یا از کارخواه‌های رایانامهٔ دیگر استفاده کنند.</string>
     <string name="save">ذخیره</string>
@@ -182,6 +187,14 @@
     <string name="webxdc_app">برنامه</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">برنامه‌ها</string>
+    <string name="home">خانه</string>
+    <string name="games">بازی‌ها</string>
+    <string name="tools">ابزار</string>
+    <string name="app_size">اندازه</string>
+    <string name="app_date_published">انتشار</string>
+    <string name="add_to_chat">افزودن به گفتگو</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">جستجو</string>
     <string name="unknown">ناشناس</string>
 
     <string name="green">سبز</string>
@@ -210,6 +223,8 @@
  استفاده شوند و رمزگذاری سراسری برای آن‌ها تضمین نمی‌شود.</string>
     <string name="menu_new_chat">گپ جدید</string>
     <string name="menu_new_group">گروه جدید</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">شروع گفتگو با...</string>
     <string name="clone_chat">درست کردن گپ جدید از این گپ</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">لیست Broadcast</string>
@@ -314,6 +329,7 @@
     <string name="donate">حمایت مالی</string>
 
     <string name="mute_for_one_hour">ساکت کردن به مدت۱ ساعت</string>
+    <string name="mute_for_eight_hours">بی‌صدا کردن به مدت ۸ ساعت</string>
     <string name="mute_for_one_day">ساکت کردن به مدت ۱ روز</string>
     <string name="mute_for_seven_days">ساکت کردن به مدت۷ روز</string>
     <string name="mute_forever">ساکت کردن دائمی</string>
@@ -351,6 +367,8 @@ https://meet.jit.si/$ROOM
 
     <!-- get confirmations -->
     <string name="ask_leave_group">مطمئن هستید می‌خواهید این گروه را ترک کنید؟</string>
+    <string name="ask_delete_named_chat">حذف گفتگو «%1$s» از همه‌ی دستگاه‌های شما؟</string>
+    <string name="ask_delete_message">می‌خواهید این پیام را از همه‌ی دستگاه‌هایتان حذف کنید؟</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">می‌خواهید %dپیام پاک شود؟</item>
@@ -495,6 +513,7 @@ https://meet.jit.si/$ROOM
     <string name="tab_audio_empty_hint">پرونده‌های صوتی و پیام‌های صوتی هم‌رسانده در این گپ اینجا نمایش داده می‌شوند.</string>
     <string name="tab_webxdc_empty_hint">برنامه‌هایی که در این چت به اشتراک گذاشته شده‌اند، این‌جا نمایش داده خواهند شد.</string>
     <string name="tab_all_media_empty_hint">رسانه‌های به اشتراک گذاشته شده همه چت‌ها در اینجا ظاهر می‌شود.</string>
+    <string name="all_apps_empty_hint">برنامه‌هایی که در هر گفتگویی ارسال شده باشند در اینجا ظاهر خواهند شد.</string>
     <string name="media_preview">نمایش رسانه</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">حفظ مقیاس تصویر</string>
@@ -697,6 +716,7 @@ https://meet.jit.si/$ROOM
     <string name="pref_appearance">ظاهر</string>
     <string name="pref_theme">قالب</string>
     <string name="pref_language">زبان</string>
+    <string name="pref_use_system_ui_font">استفاده از فونت سیستم</string>
     <string name="pref_incognito_keyboard">صفحه کلید ناشناس</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">درخواست دهید که صفحه کلید رفتارهای شخصی شما را یاد نگیرد</string>
@@ -833,6 +853,10 @@ https://meet.jit.si/$ROOM
     <string name="autocrypt_asm_general_body">این پیام برپاسازی اتوکریپت است و تنظیم‌های مربوط به رمزگذاری سرتاسر شما را بین دستگاه‌ها جابه‌جا می‌کند.\n\n برای رمزگشایی و استفاده از آن، پیام را در یک سامانه که با اتوکریپت همخوانی دارد باز کنید و کد برپاسازی که در دستگاه تولیدکنندهٔ پیام، به شما داده می‌شود را وارد نمایید. </string>
 
 
+    <!-- system messages -->
+    <string name="systemmsg_cannot_decrypt">این پیام قابل رمزگشایی نیست.
+می‌توانید با پاسخ به این پیام از فرستنده درخواست کنید پیام را مجدد ارسال کند.
+اگر دلتاچت را به تازگی دوباره نصب کرده‌اید بهتر است آن را مجدد راه‌اندازی کرده و از گزینه‌ی «افزودن به عنوان دستگاه دوم» استفاده کنید یا از نسخه‌ی پشتیبان بازیابی کنید.</string>
     <string name="systemmsg_unknown_sender_for_chat">فرستنده در این گفت و گو ناشناس است. برای جزئیات بیشتر به \"اطلاعات\" مراجعه کنید.</string>
     <string name="systemmsg_subject_for_new_contact">پیام از%1$s</string>
     <string name="systemmsg_failed_sending_to">ارسال ناموفق پیام به %1$s.</string>
@@ -1123,6 +1147,9 @@ GNU GPL ورژن ۳
     <string name="notifications_avg_minutes">به صورت متوسط هر%1$d دقیقه</string>
     <string name="notifications_avg_hours">به صورت متوسط هر %1$d ساعت</string>
     <string name="last_check_at">بررسی شده در %1$s</string>
+    <!-- iOS shortcut widget -->
+    <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
+    <string name="shortcuts_widget_title">میانبرها</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">دلتاچت برای گرفتن و ارسال عکس و فیلم و برای اسکن کردن کیوآر کد از دوربین شما استفاده می‌کند. </string>
     <string name="InfoPlist_NSContactsUsageDescription">دلتاچت از مخاطبین شما برای نمایش فهرست رایانامه‌هایی که می‌توانید برایشان پیام ارسال کنید استفاده می‌کند. دلتاچت کارساز ندارد، مخاطبین شما به جایی ارسال نمی‌شوند. </string>

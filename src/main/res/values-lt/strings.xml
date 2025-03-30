@@ -23,6 +23,8 @@
     <string name="join">Prisijungti</string>
     <string name="rejoin">Prisijungti iš naujo</string>
     <string name="delete">Ištrinti</string>
+    <string name="delete_for_me">Ištrinti man</string>
+    <string name="delete_for_everyone">Ištrinti visiems</string>
     <string name="info">Informacija</string>
     <string name="update">Atnaujinti</string>
     <string name="attachment">Priedas</string>
@@ -501,6 +503,9 @@
     <string name="accept_invalid_certificates">Priimti negaliojančius liudijimus</string>
     <string name="switch_account">Perjungti paskyrą</string>
     <string name="add_account">Pridėti paskyrą</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Profilio etiketė</string>
+    <string name="profile_tag_hint">pvz., Darbas, Šeima</string>
     <string name="delete_account">Ištrinti paskyrą</string>
     <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
     <string name="delete_account_explain_with_name">Visi „%s“ paskyros duomenys šiame įrenginyje bus ištrinti, įskaitant jūsų ištisinio šifravimo sąranką, adresatus, pokalbius, žinutes ir mediją. Šį veiksmą nebeįmanoma bus atšaukti.</string>
