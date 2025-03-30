@@ -130,7 +130,7 @@ on <https://developer.huawei.com/consumer/en/appgallery>:
     d) Hit "Submit"; on the next page, confirm version and language
 
 
-## Releases on Apklis, Passkoocheh
+## Releases on other stores (ex. Passkoocheh)
 
 These stores are not under our control.
 On important updates **ping store maintainers** and ask to update.
