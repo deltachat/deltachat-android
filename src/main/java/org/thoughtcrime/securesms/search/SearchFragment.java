@@ -166,7 +166,7 @@ public class SearchFragment extends BaseConversationListFragment
       int chatId = dcContext.getChatIdByContactId(contact.getId());
       if(chatId==0) {
         new AlertDialog.Builder(requireContext())
-            .setMessage(getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
+            .setMessage(getString(R.string.ask_start_chat_with, contact.getDisplayName()))
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok, (dialog, which) -> {
