@@ -92,7 +92,7 @@ public abstract class MessageSelectorFragment
 
     if(canDeleteForAll) {
       builder.setNegativeButton(R.string.delete_for_everyone, (d, which) -> {
-        dcContext.sendDeleteRequest(messageIds);
+        Util.runOnAnyBackgroundThread(() -> dcContext.sendDeleteRequest(messageIds));
         if (actionMode != null) actionMode.finish();
       });
       AlertDialog dialog = builder.show();
