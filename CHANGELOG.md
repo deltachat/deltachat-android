@@ -3,6 +3,8 @@
 ## Unreleased
 
 * ignore click in info-messages from deleted in-chat apps
+* remove mostly nontelling transport addresses when referring to a contact;
+  the contact's profile gives a much better overview
 
 ## v1.56.0
 2025-03
