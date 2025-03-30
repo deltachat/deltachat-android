@@ -25,8 +25,7 @@ the "update-core-and-stuff-DATE" PR can be merged without review
 the following steps are done in a PR called `prep-VERSION` (no leading "v"):
 
 3. a) update `CHANGELOG.md`
-      from <https://github.com/chatmail/core/blob/main/CHANGELOG.md>
-      and <https://github.com/deltachat/deltachat-android/pulls?q=is%3Apr+is%3Aclosed+sort%3Aupdated-desc>.
+      from <https://github.com/chatmail/core/blob/main/CHANGELOG.md>,
       do not just copy and avoid technical terms.
       the changelog is for the end user and shall show impacts form that angle.
    b) update changelog date as `YYYY-MM`
