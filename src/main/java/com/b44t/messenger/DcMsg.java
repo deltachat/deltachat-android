@@ -168,7 +168,7 @@ public class DcMsg {
     public String getSenderName(DcContact dcContact) {
         String overrideName = getOverrideSenderName();
         if (overrideName != null) {
-            return "~" + overrideName;
+            return overrideName;
         } else {
             return dcContact.getDisplayName();
         }
