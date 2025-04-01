@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* hide superfluous "Show Classic E-mails" advanced setting for chatmail
+
 ## v1.56.1
 2025-03
 
