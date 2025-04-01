@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* tapping info messages with contacts open the contact's profile
 * hide superfluous "Show Classic E-mails" advanced setting for chatmail
 
 ## v1.56.1
