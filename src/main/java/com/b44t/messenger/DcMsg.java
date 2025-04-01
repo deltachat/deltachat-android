@@ -122,6 +122,7 @@ public class DcMsg {
     public native boolean hasLocation        ();
     public native int     getType            ();
     public native int     getInfoType        ();
+    public native int     getInfoContactId   ();
     public native int     getState           ();
     public native int     getDownloadState   ();
     public native int     getChatId          ();
