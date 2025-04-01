@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-* 'Show all email' is the default for chatmail, no need for an option
+* hide superfluous "Show Classic E-mails" advanced setting for chatmail
 
 ## v1.56.1
 2025-03
