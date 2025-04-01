@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* 'Show all email' is the default for chatmail, no need for an option
+
 ## v1.56.1
 2025-03
 

@@ -250,6 +250,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     }
 
     if (dcContext.isChatmail()) {
+      showEmails.setVisible(false);
       showSystemContacts.setVisible(false);
       sentboxWatchCheckbox.setVisible(false);
       bccSelfCheckbox.setVisible(false);
