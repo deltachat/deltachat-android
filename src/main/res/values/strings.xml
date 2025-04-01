@@ -644,7 +644,7 @@
     <string name="proxy_share_link">Share Link</string>
 
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
-    <string name="login_info_oauth2_text">The entered address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to act on your behalf.\n\nDelta Chat does not collect user data, everything stays on your device.</string>
+    <string name="login_info_oauth2_text">The entered address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to send and receive messages.\n\nDelta Chat does not collect user data, everything stays on your device.</string>
     <string name="login_certificate_checks">Certificate Checks</string>
     <string name="login_error_mail">Please enter a valid e-mail address</string>
     <string name="login_error_server">Please enter a valid server / IP address</string>
