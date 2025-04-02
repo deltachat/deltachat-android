@@ -10,7 +10,9 @@
       <li><a href="#kush-e-sheh-profilin-tim">Kush e sheh profilin tim?</a></li>
       <li><a href="#signature">Can I set a Bio/Signature/Status/Motto with Delta Chat?</a></li>
       <li><a href="#çdo-të-thotë-fiksim-heshtim-arkivim">Ç’do të thotë Fiksim, Heshtim, Arkivim?</a></li>
+      <li><a href="#save">How do “Saved Messages” work?</a></li>
       <li><a href="#çdo-të-thotë-pika-e-gjelbër">Ç’do të thotë pika e gjelbër?</a></li>
+      <li><a href="#edit">Correct typos and delete messages after sending</a></li>
       <li><a href="#ephemeralmsgs">How do disappearing messages work?</a></li>
     </ul>
   </li>
@@ -56,7 +58,6 @@
       <li><a href="#pfs">Does Delta Chat support Perfect Forward Secrecy?</a></li>
       <li><a href="#is-end-to-end-encryption-of-delta-chat-as-safe-as-signal">Is end-to-end encryption of Delta Chat as safe as Signal?</a></li>
       <li><a href="#importkey">A mund të ripërdor kyçin tim ekzistues privat?</a></li>
-      <li><a href="#seksportoj-dot-kyçet-e-mi-ekzistues-pgp-në-delta-chat">S’eksportoj dot kyçet e mi ekzistues PGP në Delta Chat.</a></li>
       <li><a href="#security-audits">A është bërë auditim i pavarur i Delta Chat-it për cenueshmëri sigurie?</a></li>
     </ul>
   </li>
@@ -65,6 +66,7 @@
       <li><a href="#a-mund-ta-përdor-delta-chat-in-në-shumë-pajisje-njëherësh-në-të-njëjtën-kohë">A mund ta përdor Delta Chat-in në shumë pajisje njëherësh në të njëjtën kohë?</a></li>
       <li><a href="#diagnostikim">Diagnostikim</a></li>
       <li><a href="#backup">Manual Transfer</a></li>
+      <li><a href="#is-deletion-pinning-archiving-saving-muting-etc-synced-to-all-devices">Is Deletion, Pinning, Archiving, Saving, Muting etc. synced to all devices?</a></li>
       <li><a href="#a-ka-ndonjë-plan-për-të-sjellë-një-klient-web-delta-chat">A ka ndonjë plan për të sjellë një Klient Web Delta Chat?</a></li>
     </ul>
   </li>
@@ -182,15 +184,20 @@ Built on <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/s
         
       </h3>
 
+<p>Nëse një mesazh vjen prej një kontakti të panjohur, shfaqet si <strong>kërkesë</strong>.</p>
+
 <ul>
-  <li>Nëse një mesazh vjen prej një kontakti të panjohur, shfaqet si <strong>kërkesë</strong>.
-Duhet të pranoni kërkesën, para se të mund të përgjigjeni.</li>
-  <li>Mundeni edhe ta “fshini”, nëse s’doni të bisedoni me të tani. Kjo <strong>nuk</strong>
-fshin mesazhin te shërbyesi, vetëm te pajisja juaj. Kështu, mundeni
-të merreni me mesazhin që nga një tjetër aplikacion email-esh.</li>
-  <li>Nëse fshini një kërkesë, mesazhet e ardhshëm prej atij kontakti do të shfaqen
+  <li>
+    <p>Duhet të <strong>pranoni</strong> kërkesën, para se të mund të përgjigjeni.</p>
+  </li>
+  <li>
+    <p>Mundeni edhe ta <strong>fshini</strong>, nëse s’doni të bisedoni me të tani.</p>
+  </li>
+  <li>
+    <p>Nëse fshini një kërkesë, mesazhet e ardhshëm prej atij kontakti do të shfaqen
 ende si kërkesë për mesazh, që të mund të ndërroni mendje. Nëse vërtet
-s’doni të merrni mesazhe prej këtij personi, shihni mundësinë e <em>bllokimit</em> të tij.</li>
+s’doni të merrni mesazhe prej këtij personi, shihni mundësinë e <strong>bllokimit</strong> të tij.</p>
+  </li>
 </ul>
     
       <h3 id="a-mbulon-delta-chat-i-figura-video-dhe-bashkëngjitje-të-tjera">
@@ -305,6 +312,41 @@ Fjalosjet e arkivuara mbesin të përdorshme mbi listën e fjalosjeve, ose përm
 <p>Që të arkivoni ose fiksoni një fjalosje, prekeni gjatë (në Android), përdorni menunë e fjalosjes (në Android/Desktop), ose fërkojeni për majtas (në iOS);
 që të heshtoni një fjalosje, përdorni menunë e fjalosjes (në Android/Desktop), ose profilin e fjalosjes (në iOS).</p>
     
+      <h3 id="save">
+        
+        
+          How do “Saved Messages” work? <a href="#save" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><strong>Saved Messages</strong> is a chat that you can use to easily remember and find messages.</p>
+
+<ul>
+  <li>
+    <p>In any chat, long tap or right click a message and select <strong>Save</strong></p>
+  </li>
+  <li>
+    <p>Saved messages are marked by the symbol
+<img style="vertical-align:middle; width:1.2em; margin:1px" src="../saved-icon.png" alt="Saved icon" />
+next to the timestamp</p>
+  </li>
+  <li>
+    <p>Later, open the “Saved Messages” chat - and you will see the saved messages there.
+By tapping <img style="vertical-align:middle; width:1.2em; margin:1px" src="../go-to-original.png" alt="Arrow-right icon" />,
+you can go back to the original message in the original chat</p>
+  </li>
+  <li>
+    <p>Finally, you can also use “Save Messages” to take <strong>personal notes</strong> - open the chat, type something, add a photo or a voice message etc.</p>
+  </li>
+  <li>
+    <p>As “Saved Message” are synced, they can become very handy for transferring data between devices</p>
+  </li>
+</ul>
+
+<p>Messages stay saved even if they are edited or deleted -
+may it be by <a href="#edit">sender</a>, by <a href="#delold">device cleanup</a> or by <a href="#ephemeralmsgs">disappearing messages of other chats</a>.</p>
+    
       <h3 id="çdo-të-thotë-pika-e-gjelbër">
         
         
@@ -313,25 +355,49 @@ që të heshtoni një fjalosje, përdorni menunë e fjalosjes (në Android/Deskt
         
       </h3>
 
+<p>Këtej mundeni të shihni ndonjëherë një <strong>pikë të gjelbër</strong> <img style="vertical-align:middle; width:1.2em; margin:1px" src="../green-dot.png" alt="" /> në krah të avatarit të një kontakti. Hollësisht: do të thotë se, në 10 minutat e fundit, Delta Chat-i i ka parë:</p>
+
 <ul>
-  <li>Nga Delta Chat 1.34 e këtej mundeni të shihni ndonjëherë një “pikë të gjelbër”
-në krah të avatarit të një kontakti. Ajo do të thotë se është “parë së fundi”.</li>
-  <li>Hollësisht: do të thotë se, në 10 minutat e fundit, Delta Chat-i i ka parë:
-    <ul>
-      <li>ose pse ju dërguan mesazh drejtpërsëdrejti,</li>
-      <li>ngaqë shkruan diçka te një grup ku jeni pjesë të dy palët,</li>
-      <li>ngaqë ju dërguan një dëftesë leximi për një mesazh që shkruat,</li>
-      <li>ose ngaqë dërguan të dhëna te aplikacioni juaj Delta Chat përmes një
-<a href="#webxdc">aplikacioni webxdc</a>.</li>
-    </ul>
-  </li>
-  <li>Pra, kjo s’është gjendje e njëmendtë aty për aty për qenie në linjë - dhe
-nëse dikush nuk përgjigjet menjëherë, edhe pse duket të jetë në linjë, mos
-u merakosni dhe lëruni ca kohë ;-)</li>
-  <li>Më anë tjetër, të tjerët jo përherë “do të shohin se jeni në linjë”. Nëse keni
-çaktivizuar dëftesa leximesh, s’do të shohin pikën e gjelbër para se ju
-t’u dërgoni një mesazh, ose të shkruani te një grup ku bëjnë pjesë edhe ata.</li>
+  <li>ose pse ju dërguan mesazh drejtpërsëdrejti,</li>
+  <li>ngaqë shkruan diçka te një grup ku jeni pjesë të dy palët,</li>
+  <li>ngaqë ju dërguan një dëftesë leximi për një mesazh që shkruat,</li>
+  <li>ose ngaqë dërguan të dhëna te aplikacioni juaj Delta Chat përmes një <a href="#webxdc">aplikacioni webxdc</a>.</li>
 </ul>
+
+<p>Pra, kjo s’është gjendje e njëmendtë aty për aty për qenie në linjë - dhe
+nëse dikush nuk përgjigjet menjëherë, edhe pse duket të jetë në linjë, mos
+u merakosni dhe lëruni ca kohë :)</p>
+
+<p>Më anë tjetër, të tjerët jo përherë “do të shohin se jeni në linjë”. Nëse keni
+çaktivizuar dëftesa leximesh, s’do të shohin pikën e gjelbër para se ju
+t’u dërgoni një mesazh, ose të shkruani te një grup ku bëjnë pjesë edhe ata.</p>
+    
+      <h3 id="edit">
+        
+        
+          Correct typos and delete messages after sending <a href="#edit" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>You can edit the text of your messages after sending.
+For that, long tap or right click the message and select <strong>Edit</strong>
+or <img style="vertical-align:middle; width:1.2em; margin:1px" src="../edit-icon.png" alt="Edit icon" />.</p>
+  </li>
+  <li>
+    <p>If you have sent a message accidentally,
+from the same menu, select <strong>Delete</strong> and then <strong>Delete for Everyone</strong>.</p>
+  </li>
+</ul>
+
+<p>While edited messages will have the word “Edited” next to the timestamp,
+deleted messages will be removed without a marker in the chat.
+Notifications are not sent and there is no time limit.</p>
+
+<p>Note, that the original message may still be received by chat members
+who could have already replied, forwarded, saved, screenshotted or otherwise copied the message.</p>
     
       <h3 id="ephemeralmsgs">
         
@@ -650,7 +716,7 @@ would not reveal private information that Push services do not already have.</p>
 
 <p>Delta Chat is a free and open source decentralized messenger with free server choice,
 but we want users to reliably experience “instant delivery” of messages,
-like they experience from Whatsapp, Signal or Telegram apps,
+like they experience from WhatsApp, Signal or Telegram apps,
 without asking questions up-front that are more suited to expert users or developers.</p>
 
 <p>Note that Delta Chat has a <a href="#privacy-notifications">small and privacy-preserving Push Notification system</a>
@@ -889,7 +955,7 @@ if the whole message is properly encrypted and signed.
 For example, “Detached signatures” are not treated as secure.</p>
 
 <p>OpenPGP is not insecure by itself.
-Most publically discussed OpenPGP security problems
+Most publicly discussed OpenPGP security problems
 actually stem from bad usability or bad implementations of tools or apps (or both).
 It is particularly important to distinguish between OpenPGP, the IETF encryption standard, 
 and GnuPG (GPG), a command line tool implementing OpenPGP. 
@@ -1145,7 +1211,7 @@ but it provides <a href="#e2eeguarantee">guaranteed end-to-end encrypted chats</
 that are safe against compromised servers or corrupted networks. 
 Signal and most other PFS-supporting messengers do not provide 
 a practical scheme for protecting chat groups from network attacks
-which are arguably more worrysome 
+which are arguably more worrisome 
 than a potential attacker who seizes your phone and private encryption setup
 but somehow not your messages, yet has a full record of all 
 past encrypted messages.</p>
@@ -1161,42 +1227,14 @@ which has been <a href="https://delta.chat/assets/blog/2019-first-security-revie
         
       </h3>
 
-<p>Po
-The best way is to send an Autocrypt Setup Message from the other e-mail client.
-Look for something like <strong>Start Autocrypt Setup Transfer</strong> in the settings of the other client and follow the instructions shown there.</p>
+<p>No.</p>
 
-<p>Ndryshe, mund ta importoni kyçin dorazi te “Rregullime -&gt; Rregullime të mëtejshme -&gt; Importoni kyçe të fshehtë”.
-Kujdes: Sigurohuni se kyçi s’është i mbrojtur me fjalëkalim, ose hiqeni fjalëkalimin që më parë.</p>
+<p>Delta Chat generates secure OpenPGP keys according to the Autocrypt specification 1.1. 
+You can export your private key but you can not import additional private keys.</p>
 
-<p>Nëse s’keni kyç, ose as që e dinit se mund t’ju duhej një i tillë… mos u bëni merak: Delta Chat-i prodhon një të tillë, kur duhet dhe s’ju duhet të shtypni një buton për këtë.</p>
-    
-      <h3 id="seksportoj-dot-kyçet-e-mi-ekzistues-pgp-në-delta-chat">
-        
-        
-          S’eksportoj dot kyçet e mi ekzistues PGP në Delta Chat. <a href="#seksportoj-dot-kyçet-e-mi-ekzistues-pgp-në-delta-chat" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Ka shumë mundësi që problemi të jetë se kyçi juaj është i fshehtëzuar dhe/ose
-përdor një fjalëkalim. Kyçe të tillë nuk mbulohen nga Delta Chat. Ju lutemi,
-hiqeni fshehtëzimin dhe fjalëkalimin dhe riprovoni importimin.</p>
-
-<p>Another common error is having the wrong file ending.
-Use the ASCII armored format and an <code class="language-plaintext highlighter-rouge">.asc</code> file ending.</p>
-
-<p>Për sa u takon formateve, Delta Chat-i mbulon formate të rëndomtë OpenPGP
-kyçesh private, megjithatë, ka pak gjasa që të mbulojmë 100% të krejt kyçeve
-private të çfarëdo burimi. Kjo gjithashtu s’është fokusi kryesor i Delta Chat-it
-(në fakt, shumica dërrmuese e përdoruesve të Delta Chat-it s’do të kenë ndonjë
-kyç përpara se të zënë të përdorin Delta-n). Sidofoqtë, përpiqemi të mbulojmë
-kyçe private prej burimesh të tjera sa më mirë që të mundet.</p>
-
-<p>Heqja e fjalëkalimi nga kyçi privat do të jetë e ndryshme, varet nga software-i
-që ju përdorni për administrim kyçesh PGP. Me Enigmail-in, mund t’i jepni
-fjalëkalimit tuaj një vlerë të zbrazët, që nga dritarja Administrim Kyçesh. Me
-GnuPG-në mund ta bëni <a href="https://github.com/deltachat/deltachat-android/issues/98#issuecomment-378383429">përmes rreshti urdhrash</a>.
-Për programe të tjera, mund të gjeni një zgjidhje në internet.</p>
+<p>In general, we do not recommend or offer users to perform manual key management. 
+We want to ensure that security audits can focus on a few proven cryptographic algorithms 
+instead of the full breadth of possible algorithms allowed with OpenPGP.</p>
     
       <h3 id="security-audits">
         
@@ -1289,7 +1327,7 @@ Mund të lexoni <a href="https://delta.chat/assets/blog/2019-first-security-revi
         
       </h3>
 
-<p>Po Delta Chat 1.36 comes with a new, experimental function for using the same profile on different devices:</p>
+<p>Po You can use the same profile on different devices:</p>
 
 <ul>
   <li>
@@ -1348,6 +1386,10 @@ që dihet se shkakton probleme (veçanërisht në Windows).
 If possible, use a non-guest network.</p>
   </li>
   <li>
+    <p>If you still have troubles using the same network,
+try to open <strong>Mobile Hotspot</strong> on one device and join that Wi-Fi from the other one</p>
+  </li>
+  <li>
     <p>Garantoni se ka <strong>depozitë të mjaftueshme</strong> te pajisja vendmbërritje</p>
   </li>
   <li>
@@ -1392,6 +1434,23 @@ help you.</li>
   <li>You are now synchronized, and can use both devices for sending and receiving
 end-to-end encrypted messages with your communication partners.</li>
 </ul>
+    
+      <h3 id="is-deletion-pinning-archiving-saving-muting-etc-synced-to-all-devices">
+        
+        
+          Is Deletion, Pinning, Archiving, Saving, Muting etc. synced to all devices? <a href="#is-deletion-pinning-archiving-saving-muting-etc-synced-to-all-devices" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Po</p>
+
+<p>If you e.g. delete a chat or a message from your phone,
+it will be deleted on your desktop as soon as it comes online again.</p>
+
+<p>Notable exceptions are <a href="#delold">Delete old messages from Device</a>,
+as different devices may have different storage capacities,
+and system specific settings as notification sounds.</p>
     
       <h3 id="a-ka-ndonjë-plan-për-të-sjellë-një-klient-web-delta-chat">
         
@@ -1514,7 +1573,7 @@ will not get interrupted by a video chat invite.</li>
 link in the settings.</li>
   <li>For example, to use the flagship Jitsi Meet instance, you could enter
 <code class="language-plaintext highlighter-rouge">https://meet.jit.si/$ROOM</code>. The <code class="language-plaintext highlighter-rouge">$ROOM</code> variable will be a random value;
-this way, you will have a new random jitsi room every time you call someone.</li>
+this way, you will have a new random Jitsi room every time you call someone.</li>
 </ul>
     
       <h3 id="çjanë-listat-e-transmetimeve-dhe-si-mund-ti-përdor">
@@ -1856,16 +1915,16 @@ shumë pajisje mund të mos punojë si duhet.</p>
       </h3>
 
 <ul>
-  <li>Yes and No.</li>
-  <li>No, you can not use your Protonmail, Tutanota, or Criptext account with Delta
-Chat; they do not offer receiving mails via IMAP.</li>
-  <li>In any case you can use Delta Chat to send Messages to people who use
-Protonmail, Tutanota, or Criptext. Those messages will not be end-to-end
-encrypted, though. The end-to-end encryption those providers offer is not
-compatible with <a href="https://autocrypt.org/">Autocrypt</a>, the standard Delta Chat
-uses.</li>
-  <li>Delta Chat can end-to-end-encrypt through any e-mail provider with any
-<a href="https://autocrypt.org/dev-status.html">Autocrypt-enabled e-mail app</a>.</li>
+  <li>Po dhe Jo.</li>
+  <li>Jo, me Delta Chat-in s’mund të përdorni llogarinë tuaj Protonmail, Tutanota,
+ose Criptext; ato nuk ofrojnë marrje email-esh përmes IMAP-it.</li>
+  <li>Sidoqoftë, mund të përdorni Delta Chat-in të dërgoni Mesazhe për persona që
+përdorin Protonmail, Tutanota, ose Criptext. Këto mesazhe ama s’do të jenë
+të fshehtëzuara Skaj-më-Skaj. Fshehtëzimi Skaj-më-Skaj që japin këto shërbime
+s’është i përputhshëm me <a href="https://autocrypt.org/">Autocrypt-in</a>, standardin që
+përdor Delta Chat-i.</li>
+  <li>Delta Chat-i mund të kryejë fshehtëzim skaj-më-skaj përmes cilitdo shërbim
+email-i me çfarëdo <a href="https://autocrypt.org/dev-status.html">aplikacioni email që punon me Autocrypt</a>.</li>
 </ul>
     
       <h3 id="remove-account">

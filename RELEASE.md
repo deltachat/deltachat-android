@@ -13,25 +13,24 @@ on the command-line, in a PR called "update-core-and-stuff-DATE":
    ./scripts/ndk-make.sh
    ```
 
+a) Update `CHANGELOG.md`
+      from <https://github.com/chatmail/core/blob/main/CHANGELOG.md>,
+      do not just copy and avoid technical terms.
+      The changelog is for the end user and shall show impacts form that angle.
+      Add used core version to end of changelog entry
+      as `update to core 1.2.3` or `using core 1.2.3`
+
+
 2. update translations and local help:
    ```
    ./scripts/tx-pull-translations.sh
    ./scripts/create-local-help.sh  # requires deltachat-pages checked out at ../deltachat-pages
    ```
 
-the "update-core-and-stuff-DATE" PR can be merged without review
-(as everything was already reviewed in their repos).
-
 the following steps are done in a PR called `prep-VERSION` (no leading "v"):
 
-3. a) update `CHANGELOG.md`
-      from <https://github.com/chatmail/core/blob/main/CHANGELOG.md>
-      and <https://github.com/deltachat/deltachat-android/pulls?q=is%3Apr+is%3Aclosed+sort%3Aupdated-desc>.
-      do not just copy and avoid technical terms.
-      the changelog is for the end user and shall show impacts form that angle.
-   b) update changelog date as `YYYY-MM`
-   c) add used core version to end of changelog entry
-      as `update to core 1.2.3` or `using core 1.2.3`
+3. Update `CHANGELOG.md`:
+   Rename header with version number and add date as `YYYY-MM`
 
    in case previous entries of the changelog refer to betas or to not officially released versions,
    the entries can be summarized.
@@ -131,7 +130,7 @@ on <https://developer.huawei.com/consumer/en/appgallery>:
     d) Hit "Submit"; on the next page, confirm version and language
 
 
-## Releases on Apklis, Passkoocheh
+## Releases on other stores (ex. Passkoocheh)
 
 These stores are not under our control.
 On important updates **ping store maintainers** and ask to update.

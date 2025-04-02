@@ -2,9 +2,22 @@
 
 ## Unreleased
 
-* ignore click in info-messages from deleted in-chat apps
+* hide superfluous "Show Classic E-mails" advanced setting for chatmail
 * remove mostly nontelling transport addresses when referring to a contact;
   the contact's profile gives a much better overview
+
+## v1.56.1
+2025-03
+
+* ignore click in info-messages from deleted in-chat apps
+* data saving: do not send messages to the server if user is the only member of the chat in single-device usage
+* protect metadata: encrypt message's sent date
+* do not fail to send messages in groups if some encryption keys are missing
+* synchronize contact name changes across devices
+* fix changing group names that was not working in some situations
+* fix: do not show outdated message text in "Message Info" of an edited message
+* some more small bug fixes and updated translations
+* update to core 1.158.0
 
 ## v1.56.0
 2025-03

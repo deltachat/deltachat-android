@@ -10,7 +10,9 @@
       <li><a href="#wie-kan-mijn-profielfoto-zien">Wie kan mijn profielfoto zien?</a></li>
       <li><a href="#signature">Can I set a Bio/Signature/Status/Motto with Delta Chat?</a></li>
       <li><a href="#wat-is-vastmaken-negeren-en-archiveren">Wat is vastmaken, negeren en archiveren?</a></li>
+      <li><a href="#save">How do “Saved Messages” work?</a></li>
       <li><a href="#wat-betekent-die-groene-stip">Wat betekent die groene stip?</a></li>
+      <li><a href="#edit">Correct typos and delete messages after sending</a></li>
       <li><a href="#ephemeralmsgs">How do disappearing messages work?</a></li>
     </ul>
   </li>
@@ -56,7 +58,6 @@
       <li><a href="#pfs">Does Delta Chat support Perfect Forward Secrecy?</a></li>
       <li><a href="#is-end-to-end-encryption-of-delta-chat-as-safe-as-signal">Is end-to-end encryption of Delta Chat as safe as Signal?</a></li>
       <li><a href="#importkey">Kan ik mijn bestaande privésleutel hergebruiken?</a></li>
-      <li><a href="#ik-kan-mijn-bestaande-pgp-sleutel-niet-importeren">Ik kan mijn bestaande PGP-sleutel niet importeren</a></li>
       <li><a href="#security-audits">Heeft Delta Chat ooit onafhankelijke beveiligingscontroles ondergaan?</a></li>
     </ul>
   </li>
@@ -65,6 +66,7 @@
       <li><a href="#kan-ik-delta-chat-op-meerdere-apparaten-tegelijk-gebruiken">Kan ik Delta Chat op meerdere apparaten tegelijk gebruiken?</a></li>
       <li><a href="#probleemoplossing">Probleemoplossing</a></li>
       <li><a href="#backup">Manual Transfer</a></li>
+      <li><a href="#is-deletion-pinning-archiving-saving-muting-etc-synced-to-all-devices">Is Deletion, Pinning, Archiving, Saving, Muting etc. synced to all devices?</a></li>
       <li><a href="#bestaan-er-plannen-om-een-delta-chat-webclient-te-maken">Bestaan er plannen om een Delta Chat-webclient te maken?</a></li>
     </ul>
   </li>
@@ -96,7 +98,7 @@
       <li><a href="#waarvoor-dient-de-optie-kopie-versturen-aan-mijzelf">Waarvoor dient de optie ‘Kopie versturen aan mijzelf’?</a></li>
       <li><a href="#waarom-kan-ik-kiezen-om-de-map-verzonden-te-controleren">Waarom kan ik kiezen om de map ‘Verzonden’ te controleren?</a></li>
       <li><a href="#waarom-kan-ik-kiezen-om-de-deltachat-map-te-negeren">Waarom kan ik kiezen om de DeltaChat-map te negeren?</a></li>
-      <li><a href="#is-delta-chat-compatibel-met-protonmailtutanotacriptext">Is Delta Chat compatibel met Protonmail/Tutanota/Criptext?</a></li>
+      <li><a href="#is-delta-chat-compatible-with-proton-mail--tutanota--criptext">Is Delta Chat compatible with Proton Mail / Tutanota / Criptext?</a></li>
       <li><a href="#remove-account">Hoe kan ik mijn account verwijderen?</a></li>
       <li><a href="#ik-wil-graag-meer-weten-over-de-gebruikte-technieken-waar-kan-ik-meer-informatie-vinden">Ik wil graag meer weten over de gebruikte technieken. Waar kan ik meer informatie vinden?</a></li>
       <li><a href="#where-can-my-friends-find-delta-chat">Where can my friends find Delta Chat?</a></li>
@@ -182,14 +184,20 @@ Built on <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/s
         
       </h3>
 
+<p>Als een bericht afkomstig is van een onbekende contactpersoon, dan wordt er een <strong>verzoek</strong> getoond.</p>
+
 <ul>
-  <li>Als een bericht afkomstig is van een onbekende contactpersoon, dan wordt er een <strong>verzoek</strong> getoond.
- Accepteer het verzoek om te kunnen antwoorden.</li>
-  <li>Ook kun je het verzoek verwijderen als je op dat moment geen gesprek met ze wilt voeren.
- Hierdoor wordt het bericht in kwestie niet op de server verwijderd, maar alleen op je apparaat, zodat je in een andere app kunt antwoorden.</li>
-  <li>Als je een verzoek verwijderd, dan worden toekomstige berichten nog steeds als verzoek getoond,
- zodat je te allen tijde kunt bepalen of je het alsnog wilt accepteren. Als je écht geen contact wilt leggen, overweeg dan
- om de persoon in kwestie te <strong>blokkeren</strong>.</li>
+  <li>
+    <p><strong>Accepteer</strong> het verzoek om te kunnen antwoorden.</p>
+  </li>
+  <li>
+    <p>Ook kun je het verzoek <strong>verwijderen</strong> als je op dat moment geen gesprek met ze wilt voeren.</p>
+  </li>
+  <li>
+    <p>Als je een verzoek verwijderd, dan worden toekomstige berichten nog steeds als verzoek getoond,
+zodat je te allen tijde kunt bepalen of je het alsnog wilt accepteren. Als je écht geen contact wilt leggen, overweeg dan
+om de persoon in kwestie te <strong>blokkeren</strong>.</p>
+  </li>
 </ul>
     
       <h3 id="ondersteunt-delta-chat-afbeeldingen-videos-en-ander-soort-bijlagen">
@@ -303,6 +311,41 @@ Gearchiveerde gesprekken zijn te allen tijde te bekijken boven de lijst of via e
 <p>Archiveer of maak een gesprek vast door het gesprek in kwestie lang ingedrukt te houden (Android), via het gespreksmenu (Android/computer) of door het naar links te vegen (iOS).
 Negeer een gesprek via het gespreksmenu (Android/computer) of het gespreksprofiel (iOS).</p>
     
+      <h3 id="save">
+        
+        
+          How do “Saved Messages” work? <a href="#save" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><strong>Saved Messages</strong> is a chat that you can use to easily remember and find messages.</p>
+
+<ul>
+  <li>
+    <p>In any chat, long tap or right click a message and select <strong>Save</strong></p>
+  </li>
+  <li>
+    <p>Saved messages are marked by the symbol
+<img style="vertical-align:middle; width:1.2em; margin:1px" src="../saved-icon.png" alt="Saved icon" />
+next to the timestamp</p>
+  </li>
+  <li>
+    <p>Later, open the “Saved Messages” chat - and you will see the saved messages there.
+By tapping <img style="vertical-align:middle; width:1.2em; margin:1px" src="../go-to-original.png" alt="Arrow-right icon" />,
+you can go back to the original message in the original chat</p>
+  </li>
+  <li>
+    <p>Finally, you can also use “Save Messages” to take <strong>personal notes</strong> - open the chat, type something, add a photo or a voice message etc.</p>
+  </li>
+  <li>
+    <p>As “Saved Message” are synced, they can become very handy for transferring data between devices</p>
+  </li>
+</ul>
+
+<p>Messages stay saved even if they are edited or deleted -
+may it be by <a href="#edit">sender</a>, by <a href="#delold">device cleanup</a> or by <a href="#ephemeralmsgs">disappearing messages of other chats</a>.</p>
+    
       <h3 id="wat-betekent-die-groene-stip">
         
         
@@ -311,23 +354,49 @@ Negeer een gesprek via het gespreksmenu (Android/computer) of het gespreksprofie
         
       </h3>
 
-<ul>
-  <li>Sinds Delta Chat 1.34 wordt er soms een groen stipje naast een profielfoto van een
+<p>Wordt er soms een <strong>groen stipje</strong> <img style="vertical-align:middle; width:1.2em; margin:1px" src="../green-dot.png" alt="" /> naast een profielfoto van een
 contactpersoon getoond. Dit betekent dat ze onlangs actief waren,
-dat wil zeggen: in de afgelopen 10 minuten. Dit komt omdat ze
-    <ul>
-      <li>je een bericht hebben gestuurd;</li>
-      <li>iets in een van je groepen hebben geplaatst;</li>
-      <li>een leesbevestiging hebben verstuurd;</li>
-      <li>gegevens naar je Delta Chat-app middels een zogeheten
-<a href="#webxdc">privé-app</a> hebben verstuurd.</li>
-    </ul>
-  </li>
-  <li>De online-status is dus <strong>niet</strong> realtime. Geef ze dus even de tijd om te antwoorden. ;-)</li>
-  <li>Anderen kunnen ook niet altijd zien dat je actief was. Als je
-leesbevestigingen hebt uitgeschakeld, dan wordt er geen groen stipje getoond totdat je
-iemand benaderd of iets in een groep plaatst..</li>
+dat wil zeggen: in de afgelopen 10 minuten. Dit komt omdat ze</p>
+
+<ul>
+  <li>je een bericht hebben gestuurd;</li>
+  <li>iets in een van je groepen hebben geplaatst;</li>
+  <li>een leesbevestiging hebben verstuurd;</li>
+  <li>gegevens naar je Delta Chat-app middels een zogeheten <a href="#webxdc">privé-app</a> hebben verstuurd.</li>
 </ul>
+
+<p>De online-status is dus <strong>niet</strong> realtime. Geef ze dus even de tijd om te antwoorden :)</p>
+
+<p>Anderen kunnen ook niet altijd zien dat je actief was. Als je
+leesbevestigingen hebt uitgeschakeld, dan wordt er geen groen stipje getoond totdat je
+iemand benaderd of iets in een groep plaatst..</p>
+    
+      <h3 id="edit">
+        
+        
+          Correct typos and delete messages after sending <a href="#edit" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>You can edit the text of your messages after sending.
+For that, long tap or right click the message and select <strong>Edit</strong>
+or <img style="vertical-align:middle; width:1.2em; margin:1px" src="../edit-icon.png" alt="Edit icon" />.</p>
+  </li>
+  <li>
+    <p>If you have sent a message accidentally,
+from the same menu, select <strong>Delete</strong> and then <strong>Delete for Everyone</strong>.</p>
+  </li>
+</ul>
+
+<p>While edited messages will have the word “Edited” next to the timestamp,
+deleted messages will be removed without a marker in the chat.
+Notifications are not sent and there is no time limit.</p>
+
+<p>Note, that the original message may still be received by chat members
+who could have already replied, forwarded, saved, screenshotted or otherwise copied the message.</p>
     
       <h3 id="ephemeralmsgs">
         
@@ -642,7 +711,7 @@ would not reveal private information that Push services do not already have.</p>
 
 <p>Delta Chat is a free and open source decentralized messenger with free server choice,
 but we want users to reliably experience “instant delivery” of messages,
-like they experience from Whatsapp, Signal or Telegram apps,
+like they experience from WhatsApp, Signal or Telegram apps,
 without asking questions up-front that are more suited to expert users or developers.</p>
 
 <p>Note that Delta Chat has a <a href="#privacy-notifications">small and privacy-preserving Push Notification system</a>
@@ -881,7 +950,7 @@ if the whole message is properly encrypted and signed.
 For example, “Detached signatures” are not treated as secure.</p>
 
 <p>OpenPGP is not insecure by itself.
-Most publically discussed OpenPGP security problems
+Most publicly discussed OpenPGP security problems
 actually stem from bad usability or bad implementations of tools or apps (or both).
 It is particularly important to distinguish between OpenPGP, the IETF encryption standard, 
 and GnuPG (GPG), a command line tool implementing OpenPGP. 
@@ -1137,7 +1206,7 @@ but it provides <a href="#e2eeguarantee">guaranteed end-to-end encrypted chats</
 that are safe against compromised servers or corrupted networks. 
 Signal and most other PFS-supporting messengers do not provide 
 a practical scheme for protecting chat groups from network attacks
-which are arguably more worrysome 
+which are arguably more worrisome 
 than a potential attacker who seizes your phone and private encryption setup
 but somehow not your messages, yet has a full record of all 
 past encrypted messages.</p>
@@ -1153,41 +1222,14 @@ which has been <a href="https://delta.chat/assets/blog/2019-first-security-revie
         
       </h3>
 
-<p>Yes.
-The best way is to send an Autocrypt Setup Message from the other e-mail client.
-Look for something like <strong>Start Autocrypt Setup Transfer</strong> in the settings of the other client and follow the instructions shown there.</p>
+<p>No.</p>
 
-<p>Alternatively, you can import the key manually in “Settings -&gt; Advanced settings -&gt; Import secret keys”.
-Caution: Make sure the key is not protected by a password, or remove the password beforehand.</p>
+<p>Delta Chat generates secure OpenPGP keys according to the Autocrypt specification 1.1. 
+You can export your private key but you can not import additional private keys.</p>
 
-<p>If you don’t have a key or don’t even know you would need one - don’t worry: Delta Chat generates keys as needed, you don’t have to hit a button for it.</p>
-    
-      <h3 id="ik-kan-mijn-bestaande-pgp-sleutel-niet-importeren">
-        
-        
-          Ik kan mijn bestaande PGP-sleutel niet importeren <a href="#ik-kan-mijn-bestaande-pgp-sleutel-niet-importeren" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Het is goed mogelijk dat je sleutel versleuteld is en/of een wachtwoord
-vereist. Zulke sleutels worden niet ondersteund. Verwijder de versleuteling
-en het wachtwoord en probeer het opnieuw.</p>
-
-<p>Another common error is having the wrong file ending.
-Use the ASCII armored format and an <code class="language-plaintext highlighter-rouge">.asc</code> file ending.</p>
-
-<p>Delta Chat heeft ondersteuning voor alle veelvoorkomende OpenPGP-privésleutelformaten. Echter,
-het in onmogelijk om álle soorten sleutels te ondersteunen. Onze
-aandacht gaat hier dan ook niet naar uit. Sterker nog: de meeste gebruikers hebben
-(nog) geen sleutel. We doen ons best om zo veel mogelijk sleutels te ondersteunen.</p>
-
-<p>Door het verwijderen van het wachtwoord kan de sleutels afhankelijk
-van de gebruikte software, veranderd zijn. In Enigmail kun je je wachtwoord
-leeglaten in het sleutelbeheervenster. Met GnuPG kun je het
-instellen <a href="https://github.com/deltachat/deltachat-android/issues/98#issuecomment-378383429">middels de opdracht-
-regel</a>.
-Voor andere programma’s kun je zélf een oplossing zoeken op internet.</p>
+<p>In general, we do not recommend or offer users to perform manual key management. 
+We want to ensure that security audits can focus on a few proven cryptographic algorithms 
+instead of the full breadth of possible algorithms allowed with OpenPGP.</p>
     
       <h3 id="security-audits">
         
@@ -1281,7 +1323,7 @@ Het <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">voll
         
       </h3>
 
-<p>Ja, Delta Chat 1.36 bevat een nieuwe, experimentele functie om hetzelfde account op meerdere apparaten te gebruiken:</p>
+<p>Yes. You can use the same profile on different devices:</p>
 
 <ul>
   <li>
@@ -1339,6 +1381,10 @@ welke problemen kan veroorzaken (met name op Windows).
 If possible, use a non-guest network.</p>
   </li>
   <li>
+    <p>If you still have troubles using the same network,
+try to open <strong>Mobile Hotspot</strong> on one device and join that Wi-Fi from the other one</p>
+  </li>
+  <li>
     <p>Zorg voor <strong>voldoende ruimte</strong> op het bestemmingsapparaat</p>
   </li>
   <li>
@@ -1383,6 +1429,23 @@ help you.</li>
   <li>You are now synchronized, and can use both devices for sending and receiving
 end-to-end encrypted messages with your communication partners.</li>
 </ul>
+    
+      <h3 id="is-deletion-pinning-archiving-saving-muting-etc-synced-to-all-devices">
+        
+        
+          Is Deletion, Pinning, Archiving, Saving, Muting etc. synced to all devices? <a href="#is-deletion-pinning-archiving-saving-muting-etc-synced-to-all-devices" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Yes.</p>
+
+<p>If you e.g. delete a chat or a message from your phone,
+it will be deleted on your desktop as soon as it comes online again.</p>
+
+<p>Notable exceptions are <a href="#delold">Delete old messages from Device</a>,
+as different devices may have different storage capacities,
+and system specific settings as notification sounds.</p>
     
       <h3 id="bestaan-er-plannen-om-een-delta-chat-webclient-te-maken">
         
@@ -1494,18 +1557,18 @@ another rather stable experiment we run on the side (sic!).</p>
       </h3>
 
 <ul>
-  <li>To turn on audio/video calls, go to the “experimental features” section in
-the advanced settings and choose a “Video Chat Instance”.</li>
-  <li>When you invite others to a video chat, it is opened in your browser/app at
-once. The others receive an e-mail with a link to the video chat. 
-This way, it is also compatible if your chat partners don’t use Delta Chat.</li>
-  <li>Note that there is no ring tone on the other side, and your chat partners
-will not get interrupted by a video chat invite.</li>
-  <li>You can use any video chat service which allows joining by link. Just add the
-link in the settings.</li>
-  <li>For example, to use the flagship Jitsi Meet instance, you could enter
-<code class="language-plaintext highlighter-rouge">https://meet.jit.si/$ROOM</code>. The <code class="language-plaintext highlighter-rouge">$ROOM</code> variable will be a random value;
-this way, you will have a new random jitsi room every time you call someone.</li>
+  <li>Audio-/Videogesprekken kunnen worden ingeschakeld in de sectie ‘experimentele functies’ in de
+geavanceerde instellingen. Kies daar een ‘instantie’.</li>
+  <li>Als je anderen uitnodigt, dan wordt het gesprek meteen in je webbrowser of een app
+geopend. Anderen ontvangen een e-mail met een link naar de jitsi-/BBB-kamer. Op deze
+manier is het gesprek compatibel met gesprekspartners die geen gebruikmaken van Delta Chat.</li>
+  <li>Let op: de ander hoort geen beltoon en je gesprekspartners
+worden niet gestoord door de uitnodiging.</li>
+  <li>Je kunt kiezen uit verschillende videogespreksdiensten die op basis van links werken. Voeg hiervoor de
+link toe in de instellingen.</li>
+  <li>Voorbeeld: als je gebruik wilt maken van Jitsi Meet, dan kun je
+<code class="language-plaintext highlighter-rouge">https://meet.jit.si/$KAMER</code> invoeren. <code class="language-plaintext highlighter-rouge">$KAMER</code> is hierbij een willekeurige waarde,
+zodat er telkens een nieuwe jitsi-kamer als je iemand belt.</li>
 </ul>
     
       <h3 id="wat-zijn-verzendlijsten-en-hoe-gebruik-ik-deze">
@@ -1826,17 +1889,17 @@ gebruiken voor hun e-mail in plaats van de DeltaChat-map. Als je deze optie uits
 schakel dan ook de optie ‘Berichten verplaatsen naar de DeltaChat-map’ uit.
 Anders kun je mogelijk geen berichten verwijderen of problemen ervaren op andere apparaten.</p>
     
-      <h3 id="is-delta-chat-compatibel-met-protonmailtutanotacriptext">
+      <h3 id="is-delta-chat-compatible-with-proton-mail--tutanota--criptext">
         
         
-          Is Delta Chat compatibel met Protonmail/Tutanota/Criptext? <a href="#is-delta-chat-compatibel-met-protonmailtutanotacriptext" class="anchor"></a>
+          Is Delta Chat compatible with Proton Mail / Tutanota / Criptext? <a href="#is-delta-chat-compatible-with-proton-mail--tutanota--criptext" class="anchor"></a>
         
         
       </h3>
 
 <ul>
   <li>Yes and No.</li>
-  <li>No, you can not use your Protonmail, Tutanota, or Criptext account with Delta
+  <li>No, you can not use your Proton Mail, Tutanota, or Criptext account with Delta
 Chat; they do not offer receiving mails via IMAP.</li>
   <li>In any case you can use Delta Chat to send Messages to people who use
 Protonmail, Tutanota, or Criptext. Those messages will not be end-to-end

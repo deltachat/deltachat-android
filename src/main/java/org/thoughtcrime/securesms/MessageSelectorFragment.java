@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -91,7 +92,7 @@ public abstract class MessageSelectorFragment
 
     if(canDeleteForAll) {
       builder.setNegativeButton(R.string.delete_for_everyone, (d, which) -> {
-        dcContext.sendDeleteRequest(messageIds);
+        Util.runOnAnyBackgroundThread(() -> dcContext.sendDeleteRequest(messageIds));
         if (actionMode != null) actionMode.finish();
       });
       AlertDialog dialog = builder.show();
@@ -146,15 +147,22 @@ public abstract class MessageSelectorFragment
 
   protected void handleResendMessage(final Set<DcMsg> dcMsgsSet) {
     int[] ids = DcMsg.msgSetToIds(dcMsgsSet);
-    if (dcContext.resendMsgs(ids)) {
-      actionMode.finish();
-      Toast.makeText(getContext(), R.string.sending, Toast.LENGTH_SHORT).show();
-    } else {
-      new AlertDialog.Builder(getContext())
-        .setMessage(dcContext.getLastError())
-        .setCancelable(false)
-        .setPositiveButton(android.R.string.ok, null)
-        .show();
-    }
+    Util.runOnAnyBackgroundThread(() -> {
+      boolean success = dcContext.resendMsgs(ids);
+      Util.runOnMain(() -> {
+        Activity activity = getActivity();
+        if (activity == null || activity.isFinishing()) return;
+        if (success) {
+          actionMode.finish();
+          Toast.makeText(getContext(), R.string.sending, Toast.LENGTH_SHORT).show();
+        } else {
+          new AlertDialog.Builder(activity)
+            .setMessage(dcContext.getLastError())
+            .setCancelable(false)
+            .setPositiveButton(android.R.string.ok, null)
+            .show();
+        }
+      });
+    });
   }
 }

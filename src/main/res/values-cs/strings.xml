@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
-    <string name="ok">Potvrdit</string>
+    <string name="ok">OK</string>
     <string name="cancel">Zrušit</string>
     <string name="clear_search">Zrušit vyhledávání</string>
     <!-- a noun, used on a button, short for "show link" -->
@@ -69,9 +69,9 @@
     <string name="loading">Načítání...</string>
     <string name="hide">Skrýt</string>
     <string name="activate">Aktivovat</string>
-    <string name="load_remote_content">Načítat vzdálené obrázky</string>
+    <string name="load_remote_content">Načíst vzdálené obrázky</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">Vzdálené obrázky Vás mohou sledovat.\n\nTato volba povolí i stahování dalšího obsahu, jako jsou například písma. Obrázky z vyrovnávací paměti nebo ty, které jsou součástí zprávy, se zobrazí, i když je tato volba vypnuta.\n\nPřejete si načítat vzdálené obrázky?</string>
+    <string name="load_remote_content_ask">Vzdálené obrázky vás mohou sledovat.\n\nTato volba povolí i stahování dalšího obsahu, jako jsou například písma. Obrázky z vyrovnávací paměti nebo ty, které jsou součástí zprávy, se zobrazí, i když je tato volba vypnuta.\n\nPřejete si načíst vzdálené obrázky?</string>
     <string name="always">Vždy</string>
     <string name="always_load_remote_images">Vždy načítat vzdálené obrázky</string>
     <string name="once">Jednou</string>
@@ -185,7 +185,7 @@
     <string name="voice_message">Hlasová zpráva</string>
     <string name="forwarded">Přeposlané</string>
     <string name="forwarded_message">Přeposlaná zpráva</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Přeposláno uživatelem %1$s</string>
     <string name="video">Videa</string>
     <string name="documents">Dokumenty</string>
@@ -309,9 +309,9 @@
     <string name="select_chat">Vybrat chat</string>
     <string name="select_more">Vybrat další</string>
     <string name="menu_edit_name">Upravit jméno</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Nastavte přezdívku, která se vám bude zobrazovat místo \"%1$s\". Chcete-li použít původní jméno kontaktu, ponechte prázdné.</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Přezdívka pro \"%1$s\"</string>
     <string name="menu_settings">Nastavení</string>
     <string name="menu_advanced">Pokročilé</string>
@@ -462,7 +462,7 @@
     <string name="chat_share_with_title">Sdílet s</string>
     <string name="chat_input_placeholder">Zpráva</string>
     <string name="chat_archived_label">Archivováno</string>
-    <string name="chat_request_label">Požadavek</string>
+    <string name="chat_request_label">Žádost</string>
     <string name="chat_no_messages">Žádné zprávy.</string>
     <string name="chat_self_talk_subtitle">Zprávy poslané sobě</string>
     <string name="archive_empty_hint">Zde se zobrazí archivované chaty.</string>
@@ -473,7 +473,7 @@
     <string name="save_as">Uložit jako</string>
     <string name="retry_send">Opakovat pokus o zaslání zprávy</string>
     <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Abyste mohli poslat zprávu, musíte být členem této skupiny. Požádejte jiného člena, aby Vás přidal.</string>
+    <string name="messaging_disabled_not_in_group">Abyste mohli poslat zprávu, musíte být členem této skupiny. Požádejte jiného člena, aby vás přidal.</string>
     <string name="messaging_disabled_mailing_list">Posílání zpráv do e-mailových seznamů zatím není podporováno</string>
     <string name="cannot_display_unsuported_file_type">Nelze zobrazit tento typ souboru: %s</string>
     <string name="attachment_failed_to_load">Načtení přílohy se nezdařilo</string>
@@ -513,7 +513,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Opravdu si přejete navštívit stránku %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Tento odkaz může obsahovat znaky zaměněné za podobně vypadající znaky z cizích abeced. Odkaz označený jako %1$s Vás navede na stránku %2$s, což je normální pro znaky mimo anglickou latinku. Pokud neočekáváte adresu s takovýmito znaky, odkaz může být škodlivý.</string>
+    <string name="puny_code_warning_description">Tento odkaz může obsahovat znaky zaměněné za podobně vypadající znaky z cizích abeced. Odkaz označený jako %1$s vás navede na stránku %2$s, což je normální pro znaky mimo anglickou latinku. Pokud neočekáváte adresu s takovýmito znaky, odkaz může být škodlivý.</string>
 
 
     <!-- search -->
@@ -561,7 +561,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Mřížka čtverců</string>
     <string name="send_message">Odeslat zprávu</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">Uživatel %1$s změnil svou adresu z %2$s na %3$s</string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">Změnili jste svou e-mailovou adresu z %1$s na %2$s.\n\nPokud nyní pošlete zprávu ověřené skupině, všem kontaktům v ní se vaše adresa aktualizuje na novou.\n\nJe důrazně doporučeno, abyste u svého starého poskytovatele nastavili přesměrování všech e-mailů na novou adresu, jinak byste mohli přijít o zprávy od kontaktů, které vaši novou adresu dosud nedostaly. </string>
@@ -595,9 +595,9 @@
     <string name="incoming_messages">Příchozí zprávy</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Odchozí zprávy</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Úložiště na %1$s</string>
-    <string name="connectivity">Spojení</string>
+    <string name="connectivity">Připojení</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Nepřipojeno</string>
     <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
@@ -645,9 +645,7 @@
     <string name="welcome_chat_over_email">Zabezpečený decentralizovaný chat</string>
     <string name="scan_invitation_code">Naskenovat kód pozvánky</string>
     <string name="login_title">Přihlaš se</string>
-    <!-- for classic email, we use the classical term "Account" -->
-    <string name="login_header">Přihlaš se na váš server</string>
-    <!-- for classic email, we use the classical term "Account" -->
+    <string name="login_header">Přihlašte se ke svému e-mailovému účtu</string>
     <string name="login_explain">Přihlásit se se stávajícím účtem pro e-mail.</string>
     <string name="login_subheader">Pro standardní poskytovatele jsou nastavení dopněna automaticky. Někdy je potřeba povolit IMAP ve webovém rozhraní. Potřebujete-li pomoc, obraťte se na svého poskytovatele e-mailu nebo přátele.</string>
     <string name="login_no_servers_hint">Delta Chat nesbírá uživatelská data, vše zůstává na vašem zařízení.</string>
@@ -663,7 +661,7 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP zabezpečení</string>
     <string name="login_auth_method">Metoda autorizace</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy server</string>
     <string name="proxy_use_proxy">Použít proxy server</string>
     <string name="proxy_add">Přidat proxy server</string>
@@ -687,7 +685,7 @@
     <string name="import_backup_title">Obnovit ze zálohy</string>
     <string name="import_backup_ask">Záloha nalezena v \"%1$s\"\n\nPřejete si soubor načíst a použít všechna jeho data a nastavení?</string>
     <string name="import_backup_no_backup_found">Žádná záloha nebyla nalezena. \n\nZkopírujte zálohu do \"%1$s\" a zkuste to znovu. Můžete také stisknout \"Začít...\"  a pokračovat běžným postupem pro nastavení aplikace.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Přihlášení jako \"%1$s\" selhalo. Zkontrolujte si prosím ještě jednou e-mail a heslo.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Přijmout neplatné certifikáty</string>
@@ -696,11 +694,11 @@
     <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
     <string name="profile_tag">Značka profilu</string>
     <string name="profile_tag_hint">např. práce, nebo rodina</string>
-    <string name="profile_tag_explain">Nastavení značky viditelné pouze pro Vás pro usnadnění rozlišování mezi Vašimi profily.</string>
+    <string name="profile_tag_explain">Nastavte si značku, kterou uvidíte pouze vy; pro snazší rozlišování mezi vašimi profily.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Přesunout nahoru</string>
     <string name="delete_account">Smazat účet</string>
-    <string name="delete_account_ask">Opravdu si přejete smazat data Vašeho účtu?</string>
+    <string name="delete_account_ask">Opravdu si přejete smazat data svého účtu?</string>
     <string name="delete_account_explain_with_name">Všechna data účtu \"%s\" budou z tohoto zařízení smazána, včetně nastavení koncového šifrování, kontaktů, hovorů, zpráv a multimédií. Tuto akci nelze vrátit zpět.</string>
     <string name="unconfigured_account">Nenakonfigurovaný profil</string>
     <string name="unconfigured_account_hint">Otevřete profil, abyste jej mohli nakonfigurovat.</string>
@@ -727,11 +725,10 @@
     <string name="pref_profile_photo">Profilový obrázek</string>
     <string name="pref_blocked_contacts">Blokované kontakty</string>
     <string name="blocked_empty_hint">Zablokované kontakty se zobrazí zde.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Heslo a účet</string>
-    <string name="pref_who_can_see_profile_explain">Váš profilový obrázek, jméno a bio budou zobrazeny u Vašich zpráv poslaných ostatním uživatelům.</string>
+    <string name="pref_who_can_see_profile_explain">Váš profilový obrázek, jméno a bio budou odeslány společně s vašimi zprávami ostatním uživatelům.</string>
     <string name="pref_your_name">Vaše jméno</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Bio</string>
     <string name="pref_enter_sends">Enter odesílá</string>
     <string name="pref_enter_sends_explain">Stisk klávesy Enter odešle zprávu</string>
@@ -741,11 +738,11 @@
     <string name="pref_vibrate">Vibrace</string>
     <string name="pref_screen_security">Zabezpečení obrazovky</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
-    <string name="pref_screen_security_explain">Vyžádat blokování snímků obrazovky v seznamu nedávných aplikací a uvnitř aplikace</string>
+    <string name="pref_screen_security_explain">Požádat systém o blokování snímků obrazovky v seznamu nedávných aplikací a uvnitř aplikace</string>
     <string name="pref_screen_security_please_restart_hint">Aby se volba zabezpečení obrazovky projevila, restartujte prosím aplikaci.</string>
     <string name="pref_notifications">Oznámení</string>
     <string name="pref_mention_notifications">Zmínky</string>
-    <string name="pref_mention_notifications_explain">Ve ztlumených skupinách oznamovat zprávy směřované na Vás, např. odpovědi či reakce</string>
+    <string name="pref_mention_notifications_explain">Ve ztlumených skupinách oznamovat zprávy směřované na vás, např. odpovědi či reakce</string>
     <string name="pref_notifications_show">Zobrazit</string>
     <string name="pref_notifications_priority">Priorita</string>
     <string name="pref_notifications_explain">Povolit systémová oznámení nových zpráv</string>
@@ -766,7 +763,7 @@
     <string name="pref_use_system_ui_font">Použít systémové písmo</string>
     <string name="pref_incognito_keyboard">Chráněná klávesnice</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
-    <string name="pref_incognito_keyboard_explain">Vyžádat klávesnici s vypnutým učením slov</string>
+    <string name="pref_incognito_keyboard_explain">Požádat systém o použití klávesnice s vypnutým učením slov</string>
     <string name="pref_read_receipts">Potvrzení o přečtení</string>
     <string name="pref_read_receipts_explain">Při vypnutém čtení potvrzení se nezobrazí potvrzení o příjetí od ostatních.</string>
     <string name="pref_server">Server</string>
@@ -776,6 +773,7 @@
     <string name="pref_use_system_emoji_explain">Vypnout vestavěná emoji Data Chatu</string>
     <string name="pref_show_system_contacts">Čtení systémových kontaktů</string>
     <string name="pref_show_system_contacts_explain">Nabízet vytváření chatů s kontakty z adresáře. Pro některé poskytovatele je nejprve nutné nastavit koncové šifrování.</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Přístup aplikace</string>
     <string name="pref_chats">Chaty</string>
     <string name="pref_in_chat_sounds">Zvuky v rámci chatu</string>
@@ -787,7 +785,7 @@
     <string name="pref_backup">Záloha</string>
     <string name="pref_backup_explain">Zálohovat chaty na externí úložiště</string>
     <string name="pref_backup_export_explain">Záloha vám pomůže s novou instalací na tomto či jiném zařízení.\n\nZáloha bude obsahovat všechny zprávy, kontakty a chaty, a nastavení automatického koncového šifrování. Soubor se zálohou uchovávejte na bezpečném místě, nebo jej co nejdříve smažte.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">Exportovat %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportovat všech %1$d profilů</string>
@@ -808,7 +806,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Při změně této volby se ujistěte, že váš server a ostatní klientské aplikace mají odpovídající nastavení.\n\nJinak může vše přestat fungovat.</string>
     <string name="pref_watch_sent_folder">Sledovat složku Odeslané</string>
     <string name="pref_send_copy_to_self">Posílat si kopie</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Tato volba je potřebná, pokud je tento účet používán na více zařízeních.</string>
     <string name="pref_auto_folder_moves">Automaticky přesouvat do složky DeltaChat </string>
     <string name="pref_auto_folder_moves_explain">Zprávy chatů jsou přesouvány, aby nezahlcovaly složku Doručené</string>
@@ -896,9 +893,9 @@
 
     <!-- autocrypt -->
     <string name="autocrypt_send_asm_title">Odeslat zprávu s nastavením Autocryptu</string>
-    <string name="autocrypt_send_asm_explain_before">Pomocí zprávy s nastavením Autocryptu lze sdílet Vaše nastavení koncového šifrování s dalšími aplikacemi využívajícími Autocrypt.\n\nNastavení je zašifrované zobrazeným kódem, který musí být zadán na zařízení, na které si přejete nastavení přenést.</string>
+    <string name="autocrypt_send_asm_explain_before">Pomocí zprávy s nastavením Autocryptu lze sdílet vaše nastavení koncového šifrování s dalšími aplikacemi využívajícími Autocrypt.\n\nNastavení je zašifrované zobrazeným kódem, který musí být zadán na zařízení, na které si přejete nastavení přenést.</string>
     <string name="autocrypt_send_asm_button">Odeslat nastavení Autocryptu</string>
-    <string name="autocrypt_send_asm_explain_after">Vaše nastavení se odeslalo. Vezměte si zařízení, kam si přejete nastavení přenést, a zprávu v něm otevřete. Mělo by se objevit pole pro zadání kódu. Do něj vložte následující číslice:</string>
+    <string name="autocrypt_send_asm_explain_after">Vaše nastavení bylo odesláno. Vezměte si zařízení, kam si přejete nastavení přenést, a zprávu na něm otevřete. Mělo by se objevit pole pro zadání kódu. Do něj vložte následující číslice:</string>
     <string name="autocrypt_prefer_e2ee">Upřednostňovat koncové šifrování</string>
     <string name="autocrypt_asm_subject">Zpráva s nastavením Autocryptu</string>
     <string name="autocrypt_asm_general_body">Tato zpráva obsahuje nastavení Autocryptu. S její pomocí lze přenést nastavení koncového šifrování mezi klienty.\n\nK dešifrování a použití nastavení otevřete klient podporující Autocrypt a zadejte do něj kód zobrazený na zařízení, které zprávu vygenerovalo.</string>
@@ -973,8 +970,8 @@
     <string name="ephemeral_timer_weeks_by_other">Uživatel %2$s změnil časovač mizejících zpráv na %1$s týdnů.</string>
     <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
     <string name="chat_protection_broken">Uživatel %1$s odeslal zprávu z jiného zařízení.</string>
-    <string name="chat_protection_enabled_tap_to_learn_more">Nyní je garantováno koncové šifrování Vašich zpráv. Stiskněte pro více informací.</string>
-    <string name="chat_protection_enabled_explanation">Nyní je garantováno, že všechny zprávy v tomto chatu jsou koncově šifrovány.\n\nKoncové šifrování zajišťuje soukromí mezi vámi a vašimi kontakty. Nedokáže je přečíst ani Váš poskytovatel e-mailu.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">Nyní je garantováno koncové šifrování vašich zpráv. Stiskněte pro více informací.</string>
+    <string name="chat_protection_enabled_explanation">Nyní je garantováno, že všechny zprávy v tomto chatu jsou koncově šifrovány.\n\nKoncové šifrování zajišťuje soukromí mezi vámi a vašimi kontakty. Nedokáže je přečíst ani váš poskytovatel e-mailu.</string>
     <string name="chat_protection_broken_tap_to_learn_more">Uživatel %1$s odeslal zprávu z jiného zařízení. Stiskněte pro více informací.</string>
     <string name="chat_protection_broken_explanation">Koncové šifrování již nemůže být garantováno, pravděpodobně protože uživatel %1$s přeinstaloval Delta Chat nebo odeslal zprávu z jiného zařízení.\n\nPro obnovení garantovaného koncového šifrování se sejděte osobně a naskenujte si své QR kódy.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️%1$s vyžaduje koncové šifrování, které pro tento chat ještě není nastaveno. Stiskněte pro více informací. </string>
@@ -983,9 +980,9 @@
 
     <string name="devicemsg_self_deleted">Smazali jste chat „Uložené zprávy“.\n\nℹ️ Chcete-li znovu použít funkci „Uložené zprávy“, založte nový chat sami se sebou.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Úložiště u Vašeho poskytovatele je téměř vyčerpané: %1$s %% je již využito.\n\nPokud se úložiště zaplní, nebudete moci přijímat zprávy.\n\n👉 Zkuste smazat stará data ve webovém prostředí poskytovatele a zvažte povolení volby \"Nastavení / Chaty a multimédia / Mazat staré zprávy\". Aktuální využití úložiště můžete kdykoliv zkontrolovat v \"Nastavení / Spojení\".</string>
+    <string name="devicemsg_storage_exceeding">⚠️ Úložiště u vašeho poskytovatele je téměř vyčerpané: %1$s %% je již využito.\n\nPokud se úložiště zaplní, nebudete moci přijímat zprávy.\n\n👉 Zkuste smazat stará data ve webovém prostředí poskytovatele a zvažte povolení volby \"Nastavení / Chaty a multimédia / Mazat staré zprávy\". Aktuální využití úložiště můžete kdykoliv zkontrolovat v \"Nastavení / Připojení\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
-    <string name="devicemsg_bad_time">⚠️ Datum a čas na Vašem zařízení se zdají být nepřesné (%1$s).\n\nUpravte si čas ⏰🔧, abyste mohli přijímat své zprávy.</string>
+    <string name="devicemsg_bad_time">⚠️ Datum a čas na vašem zařízení se zdají být nepřesné (%1$s).\n\nUpravte si čas ⏰🔧, abyste mohli přijímat své zprávy.</string>
     <string name="devicemsg_update_reminder">⚠️ Vaše verze Delta Chatu může být zastaralá.\n\nTo může způsobit problémy, protože vaši partneři v chatu používají novější verze – a vám chybí nejnovější funkce 😳\nAktualizace najdete na https://get.delta.chat nebo v obchodě s aplikacemi.</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
@@ -1022,19 +1019,20 @@
     <string name="qrshow_join_contact_hint">Naskenujte k navázání spojení s uživatelem %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Žádné připojení k Internetu. Zprovoznění QR kódem nelze provést.</string>
     <string name="qraccount_ask_create_and_login">Přejete si vytvořit nový profil na \"%1$s\" a připojit se k němu?</string>
-    <string name="qraccount_ask_create_and_login_another">Přejete si vytvořit nový profil na \"%1$s\" a připojit se k němu?\n\nVáš stávající profil nebude smazán. K přepínání mezi profily můžete využít volbu \"Přepnout profil\".</string>
-    <string name="set_name_and_avatar_explain">Nastavte si jméno, podle kterého Vás Vaše kontakty poznají. Můžete si také nastavit profilový obrázek.</string>
+    <string name="qraccount_ask_create_and_login_another">Přejete si vytvořit nový profil na \"%1$s\" a přihlásit se k němu?\n\nVáš stávající profil nebude smazán. K přepínání mezi profily můžete využít volbu \"Přepnout profil\".</string>
+    <string name="set_name_and_avatar_explain">Nastavte si jméno, podle kterého vás ostatní poznají. Můžete si také nastavit profilový obrázek.</string>
     <string name="please_enter_name">Prosím, zadejte jméno.</string>
     <string name="qraccount_qr_code_cannot_be_used">Tento QR kód neumožňuje nastavení nového účtu.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Přejete si přihlásit k \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Přejete si přihlásit k \"%1$s\"?\n\nVáš stávající profil nebude smazán. K přepínání mezi profily můžete využít volbu \"Přepnout profil\".</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">Uživatel %1$s Vás pozval do této skupiny.\n\nČekání na odpověď od zařízení uživatele %2$s...</string>
+    <string name="secure_join_started">Uživatel %1$s vás pozval do této skupiny.\n\nČekání na odpověď od zařízení uživatele %2$s...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">Uživatel %1$s odpověděl, čekání na přidání do skupiny...</string>
     <string name="secure_join_wait">Navazování koncově šifrovaného spojení, prosím, čekejte...</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">Zatím nebylo navázáno koncově šifrované spojení, ale již nyní můžete posílat zprávy.</string>
     <string name="contact_verified">Uživatel %1$s ověřen.</string>
     <string name="contact_not_verified">Navázání garantovaného koncově šifrovaného spojení s uživatelem %1$s selhalo.</string>
@@ -1044,6 +1042,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Nastavení pro uživatele %1$s změněno.</string>
     <string name="verified_contact_required_explain">Aby mohlo být garantováno koncové šifrování, můžete do této skupiny přidávat pouze uživatele se zeleným zaškrtávátkem.\n\nSe svými kontakty se můžete setkat osobně a naskenovat jejich QR kód, abyste je ověřili.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">Adresa URL z QR kódu zkopírována do schránky</string>
     <string name="mailto_dialog_header_select_chat">Vyberte chat, do kterého chcete zprávu poslat</string>
     <!-- first placeholder is the name of the chat -->
@@ -1161,7 +1160,7 @@
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Přestat sdílet polohu</string>
     <string name="a11y_voice_message_hint_ios">Po ukončení nahrávání stiskněte dvakrát pro odeslání. Pro zahození nahrané zprávy, přejeďte dvěma prsty.</string>
-    <string name="a11y_connectivity_hint">Stiskněte dvakrát pro zobrazení detailů spojení.</string>
+    <string name="a11y_connectivity_hint">Stiskněte dvakrát pro zobrazení detailů připojení.</string>
     <string name="login_error_no_internet_connection">Žádné připojení k internetu, přihlášení selhalo.</string>
     <string name="share_account_not_configured">Profil není nakonfigurovaný.</string>
     <string name="cannot_play_audio_file">Zvukový soubor nemohl být přehrán.</string>
