@@ -88,7 +88,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
   private AttachmentManager attachmentManager;
   private Bitmap avatarBmp;
-  private ProgressDialog progressDialog;
+  private @Nullable ProgressDialog progressDialog;
   private DcContext dcContext;
 
   @Override
@@ -416,17 +416,23 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
   private void progressUpdate(int progress) {
     int percent = progress / 10;
-    progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
+    if (progressDialog != null) {
+      progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
+    }
   }
 
   private void progressError(String data2) {
-    progressDialog.dismiss();
+    if (progressDialog != null) {
+      progressDialog.dismiss();
+    }
     WelcomeActivity.maybeShowConfigurationError(this, data2);
   }
 
   private void progressSuccess() {
     DcHelper.getEventCenter(this).endCaptureNextError();
-    progressDialog.dismiss();
+    if (progressDialog != null) {
+      progressDialog.dismiss();
+    }
 
     Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
     intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
