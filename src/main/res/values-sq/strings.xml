@@ -996,6 +996,7 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s u përgjigj, po pritet që të shtohet te grupi…</string>
     <string name="secure_join_wait">Po vendoset fshehtëzim skaj-më-skaj i garantuar, ju lutemi, pritni…</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">S’u vendos dot fshehtëzim skaj-më-skaj i garantuar, por mundeni tashmë të dërgoni një mesazh.</string>
     <string name="contact_verified">%1$s u verifikua.</string>
     <string name="contact_not_verified">S’vendoset dot fshehtëzim i garantuar skaj-më-skaj me %1$s.</string>
@@ -1005,6 +1006,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">U ndryshua udjisja për %1$s</string>
     <string name="verified_contact_required_explain">Që të garantohet fshehtëzim skaj-më-skaj, mund të shtoni në këtë grup vetëm kontakte me shenjën e gjelbër të verifikimit.\n\nMund të takoheni drejtpërsëdrejti me kontakte të paverifikuar dhe të skanoni kodin e tyre QR për t’i verifikuar ata.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">URL-ja QR u kopjua në të papastër</string>
     <string name="mailto_dialog_header_select_chat">Përzgjidhni fjalosje ku të dërgohet mesazhi</string>
     <!-- first placeholder is the name of the chat -->

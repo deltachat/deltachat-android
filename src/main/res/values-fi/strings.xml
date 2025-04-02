@@ -916,6 +916,7 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">Vastaus saatu käyttäjältä %1$s, odotetaan lisäystä ryhmään...</string>
     <string name="secure_join_wait">Otetaan taattua päästä-päähän salausta käyttöön, odota...</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">Taattua päästä päähän salausta ei vielä voitu ottaa käyttöön, mutta voit jo lähettää viestin.</string>
     <string name="contact_verified">%1$s varmistettu.</string>
     <string name="contact_not_verified">Keskustelun päästä-päähän -salausta ei voida taata henkilön %1$s kanssa.</string>
@@ -925,6 +926,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Asetukset muutettu kohteessa %1$s.</string>
     <string name="verified_contact_required_explain">Päästä-päähän -salauksen takaamiseksi, voit lisätä ryhmään ainoastaan yhteystietoja joilla on vihreä \"oikein\" -merkki.\n\nVoit tavata yhteystietoja kasvotusten ja skannata heidän QR -koodinsa niin saat lisättyä salauksen käyttöön</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">QR -osoite kopioitu leikepöydälle</string>
     <string name="mailto_dialog_header_select_chat">Valitse keskustelu viestien lähettämiseen</string>
     <!-- first placeholder is the name of the chat -->

@@ -1019,6 +1019,7 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s respondió, esperando ser agregado al grupo…</string>
     <string name="secure_join_wait">Estableciendo cifrado de extremo a extremo garantizado, por favor, espere...</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">No se pudo aún establecer el cifrado de extremo a extremo garantizado, pero ya puede enviar mensajes.</string>
     <string name="contact_verified">%1$s verificado.</string>
     <string name="contact_not_verified">No se pudo verificar %1$s.</string>
@@ -1028,6 +1029,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuración cambiada para %1$s.</string>
     <string name="verified_contact_required_explain">Para garantizar el cifrado de extremo a extremo, solo puedes añadir contactos con una marca de verificación verde</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">URL del código QR copiado al portapapeles</string>
     <string name="mailto_dialog_header_select_chat">Seleccione el chat para enviar el mensaje</string>
     <!-- first placeholder is the name of the chat -->

@@ -987,6 +987,7 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s已回覆，等待被添加到群組中...</string>
     <string name="secure_join_wait">正在建立有保證的端到端加密，請稍候...</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">尚無法建立有保證的端到端加密，但您可能已經送出了一條訊息。</string>
     <string name="contact_verified">%1$s已介紹。</string>
     <string name="contact_not_verified">無法與%1$s建立有保證的端到端加密。</string>
@@ -996,6 +997,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">已爲%1$s更改設定。</string>
     <string name="verified_contact_required_explain">為了保證端到端加密，您只能將帶有綠色驗證標識的聯絡人添加到此群組。\n\n您可以當面掃描聯絡人的QR碼以介紹他們。</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">已將 QR碼的URL複製到剪貼簿</string>
     <string name="mailto_dialog_header_select_chat">選擇要將消息發送到的聊天</string>
     <!-- first placeholder is the name of the chat -->
