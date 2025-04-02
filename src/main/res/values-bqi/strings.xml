@@ -299,7 +299,7 @@
     <string name="tab_map">نقشه</string>
     <string name="media_preview">نشۉ داڌن وارسگر</string>
     <string name="send_message">فشناڌن پیوم</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">زفت کردن من %1$s</string>
     <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">هونی منپیز ابۊ...</string>

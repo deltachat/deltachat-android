@@ -119,7 +119,7 @@
     <string name="voice_message">Tale besked</string>
     <string name="forwarded">Videresendt</string>
     <string name="forwarded_message">Videresendt besked</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Videresendt af %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumenter</string>
@@ -366,9 +366,7 @@
 
 
     <string name="login_title">Login</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Login til server</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Login med en eksisterende e-mailkonto</string>
     <string name="login_subheader">For kendte e-mailudbydere opsættes yderligere indstillinger automatisk. Nogle gange skal IMAP aktiveres i brugerfladen. Kontakt din e-mailudbyder eller venner for at få hjælp.</string>
     <string name="login_no_servers_hint">Der er ingen Delta Chat server, data forbliver på enhed!</string>
@@ -394,7 +392,7 @@
     <string name="import_backup_title">Importer sikkerhedskopi</string>
     <string name="import_backup_ask">Sikkerhedskopi fundet hos \"%1$s\".\n\nVil du Importere og bruge al data og opsætning fra den?</string>
     <string name="import_backup_no_backup_found">Ingen sikkerhedskopi fundet.\n\nKopier sikkerhedskopi til \"%1$s\" og prøv igen. Alternativt, klik \"Start samtale\" for at følge normal opsætning proces.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Kan ikke logge ind som  \"%1$s\". Kontroller om e-mailadresse og adgangskode er korrekt.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptér ugyldige certifikater</string>
@@ -423,11 +421,10 @@
     <string name="pref_profile_photo">Profilbillede</string>
     <string name="pref_blocked_contacts">Blokerede kontakter</string>
     <string name="blocked_empty_hint">Hvis du blokerer kontakter, bliver de vist her.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Adgangskode og konto</string>
     <string name="pref_who_can_see_profile_explain">Profilbillede og navn vises sammen med beskeder, når der kommunikeres med andre brugere. Allerede sendt information kan ikke slettes eller fjernes.</string>
     <string name="pref_your_name">Dit navn</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Underskrift tekst</string>
     <string name="pref_enter_sends">Enter tast sender</string>
     <string name="pref_enter_sends_explain">Tryk på enter tast vil sende tekst beskeden</string>
@@ -465,6 +462,7 @@
     <string name="pref_manage_keys">Håndtér nøgler</string>
     <string name="pref_use_system_emoji">Brug system emoji</string>
     <string name="pref_use_system_emoji_explain">Deaktiver Delta Chat\'s indbygget emoji understøttelse</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Programadgang</string>
     <string name="pref_chats">Samtaler</string>
     <string name="pref_in_chat_sounds">In-chat-lyde</string>

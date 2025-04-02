@@ -167,7 +167,7 @@
     <string name="voice_message">Spraakbericht</string>
     <string name="forwarded">Doorgestuurd</string>
     <string name="forwarded_message">Bericht doorgestuurd</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Doorgestuurd door %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documenten</string>
@@ -291,9 +291,9 @@
     <string name="select_chat">Kies een gesprek</string>
     <string name="select_more">Meer selecteren</string>
     <string name="menu_edit_name">Naam wijzigen</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Geef deze persoon een bijnaam, ter vervanging van “%1$s”. Laat leeg om de standaardnaam te gebruiken.</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Bijnaam van %1$s</string>
     <string name="menu_settings">Instellingen</string>
     <string name="menu_advanced">Geavanceerd</string>
@@ -529,7 +529,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Vierkant rooster</string>
     <string name="send_message">Bericht versturen</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s heeft zijn/haar adres veranderd van %2$s naar %3$s</string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">Je hebt je e-mailadres veranderd van %1$s naar %2$s.\n\nAls je een bericht stuurt aan een goedgekeurde groep, dan zien contactpersonen in de groep je nieuwe adres.\n\nWel raden we aan om bij je oude provider in te stellen dat je e-mails wilt doorsturen naar je nieuwe adres, anders missen sommige contactpersonen mogelijk je berichten.</string>
@@ -563,7 +563,7 @@
     <string name="incoming_messages">Inkomende berichten</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Uitgaande berichten</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Opslag op %1$s</string>
     <string name="connectivity">Verbindingen</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -613,9 +613,7 @@
     <string name="welcome_chat_over_email">Veilige, gedecentraliseerde gesprekken</string>
     <string name="scan_invitation_code">Uitnodigingscode scannen</string>
     <string name="login_title">Inloggen</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Inloggen op je server</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Log in met een bestaand e-mailaccount.</string>
     <string name="login_subheader">Bij bekende e-mailproviders gaat het instellen vrijwel geheel automatisch. Soms moet je imap inschakelen in de webversie van je e-mailclient. Vraag je e-mailprovider of vrienden om hulp.</string>
     <string name="login_no_servers_hint">Er is geen Delta Chat-server; jóuw gegevens blijven op jóuw apparaat.</string>
@@ -631,7 +629,7 @@
     <string name="login_smtp_port">SMTP-poort</string>
     <string name="login_smtp_security">SMTP-beveiliging</string>
     <string name="login_auth_method">Autorisatiemethode</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Proxy gebruiken</string>
     <string name="proxy_add">Proxy toevoegen</string>
@@ -655,7 +653,7 @@
     <string name="import_backup_title">Reservekopie importeren</string>
     <string name="import_backup_ask">Er is een reservekopie aangetroffen in ‘%1$s’.\n\nWil je de instellingen en gegevens daaruit importeren?</string>
     <string name="import_backup_no_backup_found">Er zijn geen reservekopieën aangetroffen.\n\nKopieer de reservekopie naar ‘%1$s’ en probeer het opnieuw of druk op ‘Aan de slag’ om het instelproces te doorlopen.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Het inloggen als ‘%1$s’ is mislukt. Controleer je e-mailadres en wachtwoord.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Ongeldige certificaten accepteren</string>
@@ -695,11 +693,10 @@
     <string name="pref_profile_photo">Profielfoto</string>
     <string name="pref_blocked_contacts">Geblokkeerde contactpersonen</string>
     <string name="blocked_empty_hint">Geblokkeerde contactpersonen worden hier getoond.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Wachtwoord en account</string>
     <string name="pref_who_can_see_profile_explain">Je profielfoto, -naam en handtekening worden naast je gespreksberichten getoond.</string>
     <string name="pref_your_name">Je naam</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Handtekeningtekst</string>
     <string name="pref_enter_sends">Versturen met enter</string>
     <string name="pref_enter_sends_explain">Druk op de entertoets om tekstberichten te versturen</string>
@@ -744,6 +741,7 @@
     <string name="pref_use_system_emoji_explain">Schakel Delta Chats ingebouwde emojiondersteuning uit</string>
     <string name="pref_show_system_contacts">Adresboek uitlezen</string>
     <string name="pref_show_system_contacts_explain">Bied aan om gesprekken te beginnen met contactpersonen uit het adresboek. Let op: voor sommige providers is eind-tot-eindversleuteling benodigd.</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Apptoegang</string>
     <string name="pref_chats">Gesprekken</string>
     <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
@@ -755,7 +753,7 @@
     <string name="pref_backup">Reservekopie</string>
     <string name="pref_backup_explain">Gesprekken bewaren op externe opslag</string>
     <string name="pref_backup_export_explain">Met een reservekopie kun je een nieuwe installatie instellen op dit of een ander apparaat.\n\nEen reservekopie bevat alle berichten, contactpersonen, gesprekken en je eind-tot-eindversleuteling. Bewaar het reservekopiebestand op een veilige plaats of verwijder het zo snel mogelijk.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">‘%1$s’ exporteren</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">%1$d accounts exporteren</string>
@@ -776,7 +774,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Als je deze optie uitschakelt, zorg er dan voor dat je server en overige clients goed ingesteld zijn.\n\nAls dat niet zo is, dan werkt het misschien helemaal niet.</string>
     <string name="pref_watch_sent_folder">Map ‘Verzonden’ controleren op nieuwe berichten</string>
     <string name="pref_send_copy_to_self">Kopie versturen naar mijzelf</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Vereist bij gebruik van dit account op meerdere apparaten.</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
     <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om je postvak netjes te houden</string>
@@ -994,9 +991,9 @@
     <string name="set_name_and_avatar_explain">Kies een naam die herkenbaar is voor je contactpersonen en, desgewenst, een profielfoto.</string>
     <string name="please_enter_name">Voer een naam in.</string>
     <string name="qraccount_qr_code_cannot_be_used">De gescande QR-code kan niet worden gebruikt om een nieuw account in te stellen.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Inloggen als ‘%1$s’?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Wil je inloggen als ‘%1$s’?\n\nJe reeds aanwezige account wordt niet verwijderd. Druk op de knop ‘Ander account kiezen’ om tussen accounts te schakelen.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s heeft je uitgenodigd voor deze groep.\n\nEr wordt gewacht op antwoord van het apparaat van %2$s…</string>
