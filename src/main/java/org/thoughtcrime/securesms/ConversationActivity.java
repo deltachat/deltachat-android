@@ -680,7 +680,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       if (!dcChat.isMultiUser()) {
         int[] contactIds = dcContext.getChatContacts(chatId);
         if (contactIds.length == 1 || contactIds.length == 2) {
-          name = dcContext.getContact(contactIds[0]).getNameNAddr();
+          name = dcContext.getContact(contactIds[0]).getDisplayName();
         }
       }
       new AlertDialog.Builder(this)

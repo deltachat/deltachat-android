@@ -114,9 +114,9 @@ public class NewConversationActivity extends ContactSelectionActivity {
       if (dcContext.getChatIdByContactId(contactId)!=0) {
         openConversation(dcContext.getChatIdByContactId(contactId));
       } else {
-        String nameNAddr = dcContext.getContact(contactId).getNameNAddr();
+        String name = dcContext.getContact(contactId).getDisplayName();
         new AlertDialog.Builder(this)
-                .setMessage(getString(R.string.ask_start_chat_with, nameNAddr))
+                .setMessage(getString(R.string.ask_start_chat_with, name))
                 .setCancelable(true)
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
