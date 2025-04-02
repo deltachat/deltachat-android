@@ -283,19 +283,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         int id = item.getItemId();
 
         if (id == R.id.do_register) {
-            String oldAddr = DcHelper.getSelfAddr(this);
-            String newAddr = emailInput.getText().toString();
-            if (!TextUtils.isEmpty(oldAddr)
-                    && !TextUtils.equals(oldAddr.toLowerCase(Locale.ROOT), newAddr.toLowerCase(Locale.ROOT))) {
-                // Tell the user about AEAP if they are about to change their address
-                new AlertDialog.Builder(this)
-                        .setMessage(getString(R.string.aeap_explanation, oldAddr, newAddr))
-                        .setNegativeButton(R.string.cancel, (d, w) -> {})
-                        .setPositiveButton(R.string.perm_continue, (d, w) -> do_register())
-                        .show();
-            } else {
-                do_register();
-            }
+            do_register();
             return true;
         } else if (id == android.R.id.home) {
             // handle close button click here
