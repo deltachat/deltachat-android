@@ -606,7 +606,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             Rpc rpc = DcHelper.getRpc(this);
             try {
                 rpc.addTransport(DcHelper.getContext(this).getAccountId(), param);
-                DcHelper.getAccounts(this).startIo();
                 DcHelper.getEventCenter(this).endCaptureNextError();
                 progressDialog.dismiss();
                 Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
