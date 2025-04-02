@@ -1003,6 +1003,7 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s ha respost, espereu per a ser afegit al grup...</string>
     <string name="secure_join_wait">S\'està establint el xifratge d\'extrem a extrem garantit, espereu...</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">Encara no es pot garantir el xifrat punt-a-punt, però ja podeu enviar un missatge.</string>
     <string name="contact_verified">%1$s verificat.</string>
     <string name="contact_not_verified">No es pot verificar%1$s</string>
@@ -1012,6 +1013,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuració canviada per %1$s</string>
     <string name="verified_contact_required_explain">Per a garantir el xifrat extrem a extrem, només podeu afegir a aquest grup contactes que tinguin la marca verda.\n\nPodeu trobar-vos en persona amb els contactes per a escanejar els seus codis QR i poder-los afegir. </string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">S\'ha copiat l\'URL del codi QR al porta-retalls</string>
     <string name="mailto_dialog_header_select_chat">Trieu el xat on enviar el missatge</string>
     <!-- first placeholder is the name of the chat -->

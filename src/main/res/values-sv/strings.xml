@@ -924,6 +924,7 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s svarade och väntar på att bli tillagd i gruppen...</string>
     <string name="secure_join_wait">Upprättar garanterad totalsträckskryptering, vänligen vänta...</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">Kunde ännu inte upprätta garanterad totalsträckskryptering, men du kan redan skicka ett meddelande.</string>
     <string name="contact_verified">%1$s verifierad.</string>
     <string name="contact_not_verified">Kan inte verifiera %1$s.</string>
@@ -933,6 +934,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ändrade inställningarna för %1$s.</string>
     <string name="verified_contact_required_explain">För att garantera totalsträckskryptering  kan du bara lägga till kontakter med en grön bock i den här gruppen.\n\nDu kan träffa kontakter personligen och skanna deras QR-kod för att introducera dem.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">Kopierade QR-URL till urklipp.</string>
     <string name="mailto_dialog_header_select_chat">Välj chatt för att skicka meddelandet till</string>
     <!-- first placeholder is the name of the chat -->
