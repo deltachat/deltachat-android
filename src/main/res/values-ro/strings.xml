@@ -152,7 +152,7 @@
     <string name="voice_message">Mesaj vocal</string>
     <string name="forwarded">Redirecționat</string>
     <string name="forwarded_message">Mesaj redirecționat</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Redirecționat de %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documente</string>
@@ -449,7 +449,7 @@
     <string name="tab_all_media_empty_hint">Materialele media partajate în orice chat vor apărea aici.</string>
     <string name="media_preview">Previzualizare Media</string>
     <string name="send_message">Trimiteți Mesaj</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s și-au schimbat adresa de la %2$s la %3$s</string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">V-ați schimbat adresa de e-mail de la %1$s la %2$s.\n\nDacă trimiteți acum un mesaj către un grup verificat, contactele de acolo vor înlocui automat vechea adresă cu noua dumneavoastră adresă.\n\nSe recomandă să vă configurați vechiul furnizor de e-mail pentru a redirecționa toate e-mailurile către noua dumneavoastră adresă de e-mail. În caz contrar, s-ar putea să pierdeți mesaje ale contactelor care nu au primit încă noua dumneavoastră adresă.</string>
@@ -482,7 +482,7 @@
     <string name="incoming_messages">Mesaje primite</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mesaje de ieșire</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Depozitarea pe %1$s</string>
     <string name="connectivity">Conectivitate</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -504,9 +504,7 @@
 
     <string name="scan_invitation_code">Scanați Codul Invitației</string>
     <string name="login_title">Autentificare</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Autentificați-vă în contul dumneavoastră de e-mail</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Conectați-vă cu un cont de e-mail existent</string>
     <string name="login_subheader">În cazul furnizorilor de e-mail cunoscuți, setările suplimentare sunt configurate automat. Uneori, IMAP trebuie să fie activat în setările web. Consultați furnizorul dumneavoastră de e-mail sau prietenii pentru ajutor.</string>
     <string name="login_no_servers_hint">Nu există servere Delta Chat, datele tale rămân pe dispozitivul tău.</string>
@@ -532,7 +530,7 @@
     <string name="import_backup_title">Restaurarea din copia de rezervă</string>
     <string name="import_backup_ask">Backup găsit la \"%1$s\".\n\nDoriți să importați și să utilizați toate datele și setările din acesta?</string>
     <string name="import_backup_no_backup_found">Nu s-au găsit copii de rezervă.\n\nCopiază copia de rezervă pe \"%1$s\" și încercați din nou. Alternativ, apăsați \"Start messaging\" pentru a continua procesul normal de configurare.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Nu se poate autentifica ca \"%1$s\". Vă rugăm să verificați dacă adresa de e-mail și parola sunt corecte.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptarea certificatelor nevalabile</string>
@@ -563,11 +561,10 @@
     <string name="pref_profile_photo">Imagine de profil</string>
     <string name="pref_blocked_contacts">Contacte blocate</string>
     <string name="blocked_empty_hint">Contactele blocate vor apărea aici.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Parolă și cont</string>
     <string name="pref_who_can_see_profile_explain">Imaginea de profil, numele și semnătura dumneavoastră vor fi trimise împreună cu mesajele dumneavoastră atunci când comunicați cu alți utilizatori.</string>
     <string name="pref_your_name">Numele dumneavoastră</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Semnătură Text</string>
     <string name="pref_enter_sends">Tasta Enter trimite</string>
     <string name="pref_enter_sends_explain">Apăsarea tastei Enter va trimite mesaje text</string>

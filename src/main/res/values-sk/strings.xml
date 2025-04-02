@@ -154,7 +154,7 @@
     <string name="voice_message">Hlasová správa</string>
     <string name="forwarded">Preposlané</string>
     <string name="forwarded_message">Preposlaná správa</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Preposlal %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumenty</string>
@@ -453,14 +453,14 @@
     <string name="tab_webxdc_empty_hint">Tu sú zobrazené súkromné aplikácie zdieľané v rámci tejto konverzácie.</string>
     <string name="media_preview">Ukážka pre médiá</string>
     <string name="send_message">Odoslanie správy</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s zmenil(a) svoju adresu z %2$s na %3$s</string>
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Prichádzajúce Správy</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Odchádzajúce Správy</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Dáta o %1$s</string>
     <string name="connectivity">Pripojenie</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -482,9 +482,7 @@
 
     <string name="scan_invitation_code">Skenovať kód pozvánky</string>
     <string name="login_title">Prihlásiť sa</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Prihláste sa na server</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Prihláste sa pomocou existujúceho e-mailového účtu</string>
     <string name="login_subheader">Pre známych poskytovateľov e-mailov sa automaticky nastavujú ďalšie nastavenia. Niekedy je potrebné v nastaveniach webu povoliť protokol IMAP. Požiadajte o pomoc svojho poskytovateľa e-mailu alebo priateľov</string>
     <string name="login_no_servers_hint">Neexistujú žiadne servery Delta Chat, vaše dáta zostanú vo vašom zariadení.</string>
@@ -510,7 +508,7 @@
     <string name="import_backup_title">Importovať zálohu</string>
     <string name="import_backup_ask">Záloha sa našla na „%1$s“.\n\nChcete z nej importovať a použiť všetky dáta a nastavenia?</string>
     <string name="import_backup_no_backup_found">Neboli nájdené žiadne zálohy.\n\nSkopírujte zálohu na „%1$s“ a skúste to znova. Prípadne stlačte tlačidlo „Spustiť zasielanie správ“ a pokračujte v bežnom procese nastavenia.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Nie je možné prihlásiť sa ako „%1$s“. Skontrolujte správnosť e-mailovej adresy a hesla.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Prijmite neplatné certifikáty</string>
@@ -541,11 +539,10 @@
     <string name="pref_profile_photo">Profilový obrázok</string>
     <string name="pref_blocked_contacts">Blokované kontakty</string>
     <string name="blocked_empty_hint">Ak zablokujete kontakty, zobrazia sa tu.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Heslo a účet</string>
     <string name="pref_who_can_see_profile_explain">Pri komunikácii s ostatnými používateľmi sa vedľa vašich správ zobrazí váš profilový obrázok a meno. Už odoslané informácie nemožno vymazať ani odstrániť.</string>
     <string name="pref_your_name">Vaše meno</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Text v podpise</string>
     <string name="pref_enter_sends">Zadajte odoslanie kľúča</string>
     <string name="pref_enter_sends_explain">Textové správy sa odošlú po stlačení Enteru</string>
@@ -583,6 +580,7 @@
     <string name="pref_manage_keys">Správa kľúčov</string>
     <string name="pref_use_system_emoji">Používajte systémové emodži</string>
     <string name="pref_use_system_emoji_explain">Vypnite vstavanú podporu emodži v aplikácii Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Prístup k aplikácii</string>
     <string name="pref_chats">Konverzácie</string>
     <string name="pref_in_chat_sounds">Zvuky v konverzáciách</string>
@@ -611,7 +609,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Ak túto možnosť zakážete, uistite sa, že váš server a ostatní klienti sú zodpovedajúcim spôsobom nakonfigurovaní.\n\nV opačnom prípade nemusí fungovať vôbec.</string>
     <string name="pref_watch_sent_folder">Pozrieť priečinok Odoslané</string>
     <string name="pref_send_copy_to_self">Odoslať kópiu sebe</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Vyžaduje sa, ak používate tento účet na viacerých zariadeniach.</string>
     <string name="pref_auto_folder_moves">Automaticky presúvať do priečinka DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Konverzácie sa presunú, aby sa predišlo preplneniu doručenej pošty</string>
@@ -796,7 +793,7 @@
     <string name="qraccount_ask_create_and_login">Vytvoriť novú e-mailovú adresu na „%1$s“ a prihlásiť sa tam?</string>
     <string name="qraccount_ask_create_and_login_another">Vytvorte novú e-mailovú adresu na „%1$s“ a prihláste sa tam?\n\nVáš existujúci účet nebude odstránený. Medzi položkami môžete prepínať pomocou položky „Prepnúť účet“.</string>
     <string name="qraccount_qr_code_cannot_be_used">Naskenovaný QR kód nie je možné použiť na založenie nového účtu.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Prihlásiť sa na \"%1$s\"?</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s vás pozval, aby ste sa pripojili k tejto skupine.\n\nČaká sa na odpoveď zo zariadenia používateľa %2$s...</string>

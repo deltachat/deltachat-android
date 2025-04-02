@@ -167,7 +167,7 @@
     <string name="voice_message">Mensaxe de voz</string>
     <string name="forwarded">Reenviada</string>
     <string name="forwarded_message">Mensaxe reenviado</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Reenviado por %1$s</string>
     <string name="video">Vídeo</string>
     <string name="documents">Documentos</string>
@@ -288,9 +288,9 @@
     <string name="select_chat">Elixir conversa</string>
     <string name="select_more">Elexir máis</string>
     <string name="menu_edit_name">Editar nome</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Establece un alcume que se che mostrará no lugar de \"%1$s\". Deixa baleiro para usar o nome elixido polo contacto.</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Alcume para \"%1$s\"</string>
     <string name="menu_settings">Axustes</string>
     <string name="menu_advanced">Avanzado</string>
@@ -524,7 +524,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Grella cadrada</string>
     <string name="send_message">Enviar mensaxe</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s cambiou o seu enderezo de %2$s a %3$s</string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">Cambiaches o teu enderezo de email de %1$s a %2$s.\n\nSe envías unha mensaxe a un grupo verificado os contactos cambiarán automáticamente o enderezo antigo polo novo.\n\nÉ moi recomendable que configures o email antigo para que che reenvíe todo o correo ao novo enderezo. De non facelo poderías perder mensaxes de contactos que aínda non coñezan o teu novo enderezo.</string>
@@ -558,7 +558,7 @@
     <string name="incoming_messages">Mensaxes entrantes</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mensaxes saíntes</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Almacenar en %1$s</string>
     <string name="connectivity">Conectividade</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -608,9 +608,7 @@
     <string name="welcome_chat_over_email">Conversas Seguras e Descentralizadas</string>
     <string name="scan_invitation_code">Escanear código de convite</string>
     <string name="login_title">Acceder</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Accede ao teu servidor</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Accede cunha conta de correo existente</string>
     <string name="login_subheader">Para os provedores de correo máis frecuentes os axustes establécense automaticamente. Porén poderías ter que activar IMAP nos seus axustes. Consulta o teu provedor de correo ou aos amigos se tes dúbidas.</string>
     <string name="login_no_servers_hint">Non hai servidores Delta Chat, os teus datos permanecen no dispositivo.</string>
@@ -626,7 +624,7 @@
     <string name="login_smtp_port">Porto SMTP</string>
     <string name="login_smtp_security">Seguridade SMTP</string>
     <string name="login_auth_method">Método de autorización</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Usar Proxy</string>
     <string name="proxy_add">Engadir Proxy</string>
@@ -647,7 +645,7 @@
     <string name="import_backup_title">Importar respaldo</string>
     <string name="import_backup_ask">Atopouse un respaldo en \"%1$s\".\n\nQueres importar e utilizar os seus datos e axustes?</string>
     <string name="import_backup_no_backup_found">Non se atoparon respaldos.\n\nCopia o respaldo a \"%1$s\" e inténtao outra vez. Alternativamente, podes premer \"Comezar conversa\" e continuar co proceso normal de axustes.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Non se puido acceder como \"%1$s\". Comproba o enderezo de correo e o contrasinal.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Aceptar certificados non válidos</string>
@@ -678,11 +676,10 @@
     <string name="pref_profile_photo">Imaxe de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
     <string name="blocked_empty_hint">Móstranse aquí os contactos que bloqueas.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Contrasinal e conta</string>
     <string name="pref_who_can_see_profile_explain">A túa foto de perfil e nome móstranse xunto coas túas mensaxes ao comunicarte con outras persoas. A información xa enviada non se pode agochar o borrar.</string>
     <string name="pref_your_name">O teu nome</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Texto de firma</string>
     <string name="pref_enter_sends">A tecla Enter envía</string>
     <string name="pref_enter_sends_explain">Ao premer Enter enviarás a mensaxe</string>
@@ -720,6 +717,7 @@
     <string name="pref_manage_keys">Xestión das chaves</string>
     <string name="pref_use_system_emoji">Utilizar emoji do sistema</string>
     <string name="pref_use_system_emoji_explain">Desactivar o soporte interno para emoji de Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Acceso a app</string>
     <string name="pref_chats">Conversas</string>
     <string name="pref_in_chat_sounds">Sons na conversa</string>
@@ -748,7 +746,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Se desactivas esta opción, asegúrate de que o servidor e os teus outros clientes están configurados de xeito acorde.\n\nSe non, algo podería fallar.</string>
     <string name="pref_watch_sent_folder">Vixiar cartafol Enviados</string>
     <string name="pref_send_copy_to_self">Enviar copia a ti mesmo</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Requerido se utilizas esta conta en varios dispositivos.</string>
     <string name="pref_auto_folder_moves">Mover automáticamente ao cartafol DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">As conversas móvense do cartafol de Entrada para evitar saturalo.</string>

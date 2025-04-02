@@ -167,7 +167,7 @@
     <string name="voice_message">Hangüzenet</string>
     <string name="forwarded">Továbbított</string>
     <string name="forwarded_message">Továbbított üzenet</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Továbbítva %1$s által</string>
     <string name="video">Videó</string>
     <string name="documents">Dokumentumok</string>
@@ -291,9 +291,9 @@
     <string name="select_chat">Csevegés kiválasztása</string>
     <string name="select_more">Továbbiak kiválasztása</string>
     <string name="menu_edit_name">Név szerkesztése</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Állítson be egy becenevet a(z) „%1$s” nevű partnerének. Hagyja üresen a partnere által választott név megjelenítéséhez.</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Becenév megadása „%1$s“ számára</string>
     <string name="menu_settings">Beállítások</string>
     <string name="menu_advanced">Speciális beállítások</string>
@@ -529,7 +529,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Négyzetrács</string>
     <string name="send_message">Üzenet küldése</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s megváltoztatta a címét következőről: %2$s, erre: %3$s </string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">Ön megváltoztatta a saját e-mail-címét erről: %1$s erre: %2$s.\n\nHa most üzenetet küld egy hitelesített csoportba, az ottani partnerei automatikusan lecserélik az Ön régi címét az új címére.\n\nEzért nagyon ajánlott beállítani, hogy a régi e-mail-szolgáltatója továbbítsa-e az összes e-mailt az e-mail-címére. Ellenkező esetben lemaradhat azoknak a partnereinek az üzeneteiről, akik még nem kapták meg az új címét.</string>
@@ -563,7 +563,7 @@
     <string name="incoming_messages">Beérkező üzenetek</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Kimenő üzenetek</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Tárhely mérete itt: %1$s</string>
     <string name="connectivity">Tárhely</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -613,9 +613,7 @@
     <string name="welcome_chat_over_email">Biztonságos decentralizált csevegés</string>
     <string name="scan_invitation_code">QR-kód-meghívó beolvasása</string>
     <string name="login_title">Bejelentkezés</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Jelentkezzen be az e-mail-fiókjába</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Bejelentkezés meglévő e-mail-fiókkal</string>
     <string name="login_subheader">Az ismert e-mail-szolgáltatók esetében a rendszer automatikus beállításokat hoz létre. Kivételes esetekben az IMAP-ot engedélyezni kell az e-mail-szolgáltatójának webes beállításaiban. Forduljon az e-mail-szolgáltatójához vagy partnereihez további segítségért.</string>
     <string name="login_no_servers_hint">A Delta Chat nem gyűjt felhasználói adatokat, az Ön összes adata az eszközén van tárolva.</string>
@@ -631,7 +629,7 @@
     <string name="login_smtp_port">SMTP-port</string>
     <string name="login_smtp_security">SMTP-biztonság</string>
     <string name="login_auth_method">Azonosítási eljárás</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Proxy használata</string>
     <string name="proxy_add">Proxy hozzáadása</string>
@@ -655,7 +653,7 @@
     <string name="import_backup_title">Biztonsági mentés visszaállítása</string>
     <string name="import_backup_ask">A biztonsági mentés itt található: „%1$s”.\n\nAz összes adatot és beállítást szeretné importálni és használni belőle?</string>
     <string name="import_backup_no_backup_found">A biztonsági mentés nem található.\n\nMásolja a biztonsági mentést ide: „%1$s” és próbálja újra. Másik lehetőségként nyomja meg az „Üzenetküldés indítása” gombot a normál beállítási folyamat folytatásához.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Nem lehetett bejelentkezni ide: „%1$s”. Ellenőrizze, hogy a megadott e-mail-cím és a jelszó helyes-e.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Érvénytelen tanúsítványok elfogadása</string>
@@ -695,11 +693,10 @@
     <string name="pref_profile_photo">Profilkép</string>
     <string name="pref_blocked_contacts">Letiltott névjegyek</string>
     <string name="blocked_empty_hint">A letiltott névjegyek itt fognak megjelenni</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Fiók és jelszó</string>
     <string name="pref_who_can_see_profile_explain">A profilképe, neve és életrajza az üzenetekkel együtt kerül elküldésre, amikor más felhasználókkal kommunikál.</string>
     <string name="pref_your_name">Név</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Életrajz</string>
     <string name="pref_enter_sends">Küldés „Enterrel”</string>
     <string name="pref_enter_sends_explain">Az „Enter” billentyű megnyomásával szöveges üzeneteket küldhet</string>
@@ -744,6 +741,7 @@
     <string name="pref_use_system_emoji_explain">A Delta Chat beépített emodzsi-támogatásának letiltása</string>
     <string name="pref_show_system_contacts">A rendszer névjegyzékének olvasása</string>
     <string name="pref_show_system_contacts_explain">Csevegések létrehozása a névjegyzékéből származó partnereivel. Egyes szolgáltatóknál először a végpontok közötti titkosítás beállítására van szükség.</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Alkalmazás-hozzáférés</string>
     <string name="pref_chats">Csevegések</string>
     <string name="pref_in_chat_sounds">Csevegésen belüli hangok</string>
@@ -755,7 +753,7 @@
     <string name="pref_backup">Biztonsági mentés</string>
     <string name="pref_backup_explain">Csevegések biztonsági mentése külső tárhelyre</string>
     <string name="pref_backup_export_explain">A biztonsági mentés segít egy új telepítés beállításában ezen vagy egy másik eszközön.\n\nA biztonsági mentés tartalmazza az összes üzenetet, névjegyet és csevegést, valamint a végpontok közötti autocrypt beállításokat. Tartsa a biztonsági mentést biztonságos helyen, vagy törölje, amint lehetséges.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">%1$s exportálása</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Mind a(z) %1$d profil exportálása</string>
@@ -776,7 +774,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Ha megváltoztatja ezt a beállítást, győződjön meg arról, hogy a kiszolgálója és a többi kliense is ennek megfelelően van beállítva.\n\nMáskülönben előfordulhat, hogy a dolgok egyáltalán nem fognak működni.</string>
     <string name="pref_watch_sent_folder">Elküldött üzenetek mappájának figyelése</string>
     <string name="pref_send_copy_to_self">Másolat küldése Önmagának</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Szükséges, ha ezt a fiókot több eszközön is használja.</string>
     <string name="pref_auto_folder_moves">Automatikus áthelyezés a DeltaChat nevű mappába</string>
     <string name="pref_auto_folder_moves_explain">A csevegések áthelyezésre kerülnek, hogy elkerüljék a bejövő üzenetek mappa zűrzavarát.</string>
@@ -994,9 +991,9 @@
     <string name="set_name_and_avatar_explain">Adjon meg egy olyan nevet, amelyet a partnerei felismernek. Beállíthat egy profilképet is.</string>
     <string name="please_enter_name">Adjon meg egy nevet.</string>
     <string name="qraccount_qr_code_cannot_be_used">A beolvasott QR-kód nem használható új profil beállítására.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Bejelentkezés ide: „%1$s”?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Bejelentkezés ide: „%1$s”?\n\nA meglévő profilját nem töröljük. A „Profilváltás” elemmel válthat a profiljai között.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s meghívta önt, hogy csatlakozzon ehhez a csoporthoz.\n\n%2$s eszközére várakozás a válaszhoz…</string>

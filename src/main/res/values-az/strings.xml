@@ -242,9 +242,7 @@
     <string name="tab_docs_empty_hint">Bu söhbətdə paylaşılan sənədlər, musiqi və digər fayllar burada göstəriləcək.</string>
     <string name="media_preview">Fayllara baxmaq</string>
     <string name="login_title">Daxil ol</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Serverinə daxil ol</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Mövcud e-mail hesabı ilə daxil olun</string>
     <string name="login_subheader">Məlum elektron poçt provayderləri üçün əlavə parametrlər avtomatik olaraq quraşdırılır. Bəzən IMAP-ın web məkanında aktiv olması lazımdır. Yardım üçün e-poçt provayderinizə və ya dostlarınıza müraciət edin.</string>
     <string name="login_no_servers_hint">Delta Chat serverləri yoxdur, məlumatlarınız cihazınızda qalır!</string>
@@ -269,7 +267,7 @@
     <string name="login_error_required_fields">Xahiş edirik düzgün bir e-poçt ünvanı və parol daxil et</string>
     <string name="import_backup_title">Nüsxənin importu</string>
     <string name="import_backup_ask">\"%1$s\" - də ehtiyat nüsxəsi tapıldı.\n\nİndi bütün məlumatları və parametrləri idxal etmək və istifadə etmək istəyirsiniz?</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login"> \"%1$s\" kimi giriş alınmadı. E-poçt ünvanı və parolun düzgün olub olmadığını yoxlayın.</string>
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
@@ -285,7 +283,7 @@
     <string name="pref_blocked_contacts">Bloklanmış kontaktlar</string>
     <string name="pref_who_can_see_profile_explain">Digər istifadəçilərlə ünsiyyət qurarkən profil şəkliniz və adınız mesajlarınızla birlikdə göstərilir. Zatən göndərilən məlumat silinməyəcək. </string>
     <string name="pref_your_name">Adın</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Yazını mətni</string>
     <string name="pref_enter_sends">Enter açarı ilə göndərmək</string>
     <string name="pref_enter_sends_explain">Enter düyməsini basaraq mətn mesajları göndərəcək</string>
@@ -319,6 +317,7 @@
     <string name="pref_manage_keys">Açar edarəetməsi</string>
     <string name="pref_use_system_emoji">Sistem emojisini istifadə edin</string>
     <string name="pref_use_system_emoji_explain">Emoji Delta chat üçün daxili dəstəyi bağlayın. </string>
+    <!-- deprecated -->
     <string name="pref_app_access">Daxil oldu</string>
     <string name="pref_chats">Çatlar</string>
     <string name="pref_in_chat_sounds">Çatda olan səslər</string>

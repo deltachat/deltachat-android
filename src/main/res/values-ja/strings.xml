@@ -114,7 +114,7 @@
     <string name="voice_message">音声メッセージ</string>
     <string name="forwarded">転送された</string>
     <string name="forwarded_message">転送されたメッセージ</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">%1$sが転送しました</string>
     <string name="video">動画</string>
     <string name="documents">文章</string>
@@ -347,9 +347,7 @@
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">接続済み</string>
     <string name="login_title">ログイン</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">自分のメールサーバーにログインする</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">既存のメールアカウントにログインする</string>
     <string name="login_subheader">主なメールサーバーは自動で設定されます｡一般にIMAPはサーバー側で有効に設定する必要が有ります｡サーバー提供者や詳しい人に確認しましょう｡</string>
     <string name="login_no_servers_hint">Delta Chatには専用サーバーが有りません｡つまりあなたのデータ･個人情報はこの端末内に保存されています｡</string>
@@ -375,7 +373,7 @@
     <string name="import_backup_title">バックアップをインポート</string>
     <string name="import_backup_ask">%1$sでバックアップがあります。\n\nすべての設定やデータを取り込んで使用しましょうか？</string>
     <string name="import_backup_no_backup_found">バックアップが見つかりません。\n\n%1$sにバックアップをコピーして、再試行してください。又は、「メッセージの開始」を押して通常のセットアップを続行します。</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">%1$sとしてログインできません。メールアドレスとパスワードを確認してください。</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">無効な証明書を受け入れます</string>
@@ -403,11 +401,10 @@
     <string name="pref_profile_photo">アイコン画像</string>
     <string name="pref_blocked_contacts">ブロックされた人</string>
     <string name="blocked_empty_hint">ブロックされた連絡先がここに表示されます。</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">パスワードとアカウント</string>
     <string name="pref_who_can_see_profile_explain">アイコン画像や名前は他のユーザーに連絡するとメッセージとともに表示されます。既に送信された情報を削除することができます。</string>
     <string name="pref_your_name">あなたの名前</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">署名</string>
     <string name="pref_enter_sends">エンターキーで送信</string>
     <string name="pref_enter_sends_explain">エンターキーを押すとテキストメッセージが送信されます</string>
@@ -445,6 +442,7 @@
     <string name="pref_manage_keys">暗号鍵の管理</string>
     <string name="pref_use_system_emoji">システムの絵文字を使う</string>
     <string name="pref_use_system_emoji_explain">Delta Chat独自の絵文字機能を無効にする</string>
+    <!-- deprecated -->
     <string name="pref_app_access">アプリのアクセス</string>
     <string name="pref_chats">チャット</string>
     <string name="pref_in_chat_sounds">着信音</string>

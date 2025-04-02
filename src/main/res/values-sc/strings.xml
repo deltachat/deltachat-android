@@ -303,9 +303,7 @@
     <string name="media_preview">Anteprima de su documentu multimediale</string>
     <string name="send_message">Imbia messàgiu</string>
     <string name="login_title">Intra</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Intra in su servidore tuo</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Intra cun un\'indiritzu de posta eletrònica chi esistat</string>
     <string name="login_subheader">Pro sos frunidores de posta eletrònica connotos sas impostatziones additzionales benint impostadas in automàticu. Cada tantu s\'IMAP cheret abilitadu in sas impostatziones web. Si ti serbit agiudu pedi a su frunidore de posta eletrònica tuo o a sos amigos tuos.</string>
     <string name="login_no_servers_hint">No esistint serbidores de Delta Chat, sos datos tuos abarrant in su dispositivu tuo.</string>
@@ -331,7 +329,7 @@
     <string name="import_backup_title">Importa una còpia de seguresa</string>
     <string name="import_backup_ask">Còpia de seguresa agatada in \"%1$s\".\n\nCheres a l\'importare e a impreare totu sos datos e sas impostatziones dae cue?</string>
     <string name="import_backup_no_backup_found">Peruna còpia de seguresa agatada.\n\nCòpia sa còpia de seguresa in \"%1$s\" e torra a proare. Si nono, incarca. Asinuncas, incarca \"Incumintza a messagiare\" pro sighire cun su protzessu de impostatzione normale.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Impossìbile atzèdere comente \"%1$s\". pro paghere verìfica si s\'indiritzu de posta eletrònica e sa crae de intrada sunt curretos.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Atzetat tzertificados non vàlidos</string>
@@ -358,11 +356,10 @@
     <string name="pref_profile_photo">Fotografia de profilu</string>
     <string name="pref_blocked_contacts">Cuntatos blocados</string>
     <string name="blocked_empty_hint">Si as a blocare cuntatos ant a èssere allistados inoghe.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Crae de intrada e contu</string>
     <string name="pref_who_can_see_profile_explain">S\'immàgine de profilu tua e su nùmene tuo ant a èssere ammustrados in paris cun sos messàgios tuos cando ses comunichende cun àteros impreadores. Sas informatziones giai imbiadas non podent èssere iscantzelladas o bogadas.</string>
     <string name="pref_your_name">Su nùmene tuo</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Firma</string>
     <string name="pref_enter_sends">Imbia cun \"Imbiu\"</string>
     <string name="pref_enter_sends_explain">Incarchende sa tecla Imbiu as a imbiare sos messàgios</string>
@@ -399,6 +396,7 @@
     <string name="pref_manage_keys">Amministra sas craes</string>
     <string name="pref_use_system_emoji">Imprea sas emoji de sistema</string>
     <string name="pref_use_system_emoji_explain">Istuda su suportu de sas emoji incorporadu in Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Atzessu a s\'aplicatzione</string>
     <string name="pref_chats">Tzarradas</string>
     <string name="pref_in_chat_sounds">Sonos in sa tzarrada</string>

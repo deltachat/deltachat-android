@@ -176,7 +176,7 @@
     <string name="voice_message">Mensaje de voz</string>
     <string name="forwarded">Reenviado</string>
     <string name="forwarded_message">Mensaje reenviado</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Reenviado por %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documentos</string>
@@ -300,9 +300,9 @@
     <string name="select_chat">Seleccionar chat</string>
     <string name="select_more">Seleccionar más</string>
     <string name="menu_edit_name">Editar nombre</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Establece un apodo que se te mostrará en lugar de \"%1$s\". Déjalo en blanco para utilizar el nombre elegido por el contacto.</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Apodo para \"%1$s\"</string>
     <string name="menu_settings">Ajustes</string>
     <string name="menu_advanced">Avanzado</string>
@@ -545,7 +545,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Cuadrícula cuadrada</string>
     <string name="send_message">Enviar mensaje</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s cambió su dirección de %2$s a %3$s</string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">Has cambiado tu dirección de correo electrónico de %1$s a %2$s.\n\nSi ahora envías un mensaje a un grupo verificado, los contactos de éste sustituirán automáticamente la antigua por tu nueva dirección.\n\nEs muy recomendable que configures tu antiguo proveedor de correo electrónico para que reenvíe todos los mensajes a tu nueva dirección. De lo contrario, podrías perderte los mensajes de los contactos que aún no han recibido tu nueva dirección.</string>
@@ -579,7 +579,7 @@
     <string name="incoming_messages">Mensajes entrantes</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mensajes salientes</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Almacenamiento en %1$s</string>
     <string name="connectivity">Conectividad</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -629,9 +629,7 @@
     <string name="welcome_chat_over_email">Chat seguro y descentralizado</string>
     <string name="scan_invitation_code">Escanear código de invitación</string>
     <string name="login_title">Iniciar sesión</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Inicie sesión en su servidor</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Iniciar sesión con una cuenta de correo existente</string>
     <string name="login_subheader">Para los proveedores de correo conocidos, la configuración es realizada automáticamente. A veces, IMAP debe estar habilitado en la interfaz web. Consulte a su proveedor de correo o amigos para obtener ayuda.</string>
     <string name="login_no_servers_hint">No hay servidores de Delta Chat, tus datos permanecen en tu dispositivo!</string>
@@ -647,7 +645,7 @@
     <string name="login_smtp_port">Puerto SMTP</string>
     <string name="login_smtp_security">Seguridad SMTP</string>
     <string name="login_auth_method">Método de autorización</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Usar proxy</string>
     <string name="proxy_add">Añadir proxy</string>
@@ -671,7 +669,7 @@
     <string name="import_backup_title">Importar copia de respaldo</string>
     <string name="import_backup_ask">Copia de respaldo encontrada en \"%1$s\".\n\n¿Desea importar y utilizar todos los datos y configuraciones de ella?</string>
     <string name="import_backup_no_backup_found">No se encontraron copias de seguridad.\n\nCopie el archivo de respaldo en \"%1$s\" e inténtelo de nuevo. Alternativamente, presione \"Empezar a Chatear\" para continuar con el proceso de configuración normal.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">No se puede iniciar sesión como \"%1$s\". Por favor, compruebe si la dirección de correo y la contraseña son correctas.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Aceptar certificados no válidos</string>
@@ -711,11 +709,10 @@
     <string name="pref_profile_photo">Foto de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
     <string name="blocked_empty_hint">Si bloqueas contactos, se mostrarán aquí.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Contraseña y cuenta</string>
     <string name="pref_who_can_see_profile_explain">La imagen y el nombre de su perfil se mostrarán junto con sus mensajes cuando se comunique con otros usuarios. La información ya enviada no puede ser borrada o eliminada.</string>
     <string name="pref_your_name">Tu nombre</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Texto de firma</string>
     <string name="pref_enter_sends">Tecla Intro envía</string>
     <string name="pref_enter_sends_explain">La tecla Intro enviará tu mensaje</string>
@@ -760,6 +757,7 @@
     <string name="pref_use_system_emoji_explain">Deshabilitar el soporte de emoji integrado de Delta Chat</string>
     <string name="pref_show_system_contacts">Leer la libreta de direcciones del sistema</string>
     <string name="pref_show_system_contacts_explain">Ofrecer crear chats con contactos de la libreta de direcciones. Algunos proveedores necesitan primero una configuración de cifrado de extremo a extremo.</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Acceso a la aplicación</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">Sonidos en el chat</string>
@@ -771,7 +769,7 @@
     <string name="pref_backup">Copia de respaldo</string>
     <string name="pref_backup_explain">Hacer copias de respaldo de chats en almacenamiento externo</string>
     <string name="pref_backup_export_explain">Una copia de respaldo lo ayuda a configurar una nueva instalación en este u otro dispositivo.\n\nLa copia de respaldo contendrá todos los mensajes, contactos y chats, y su configuración Autocrypt de extremo a extremo. Guarde el archivo de respaldo en un lugar seguro o elimínelo lo antes posible.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">Exportar %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportar todo (%1$d cuentas)</string>
@@ -792,7 +790,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Si deshabilita esta opción, asegúrese de que su servidor y sus otros clientes estén configurados en consecuencia.\n\nDe lo contrario, las cosas pueden no funcionar en absoluto.</string>
     <string name="pref_watch_sent_folder">Monitorear carpeta Enviados</string>
     <string name="pref_send_copy_to_self">Enviar autocopia</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Necesario cuando utilizando esta cuenta en varios dispositivos.</string>
     <string name="pref_auto_folder_moves">Mover automáticamente a la carpeta DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Las conversaciones son movidas para evitar saturar la Bandeja de entrada</string>
@@ -1010,9 +1007,9 @@
     <string name="set_name_and_avatar_explain">Establece un nombre que tus contactos puedan reconocer. También puedes establecer una foto de perfil.</string>
     <string name="please_enter_name">Por favor, introduce un nombre.</string>
     <string name="qraccount_qr_code_cannot_be_used">El código QR escaneado no puede ser usado para configurar una nueva cuenta.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">¿Iniciar sesión en \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">¿Iniciar sesión en \"%1$s\"?\n\nTu cuenta existente no será eliminada. Usa la opción \"Cambiar cuenta\" para cambiar entre tus cuentas.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s te invitó a unirte a este grupo.\n\nEsperando que el dispositivo de %2$s responda…</string>

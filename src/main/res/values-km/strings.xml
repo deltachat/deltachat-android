@@ -120,7 +120,7 @@
     <string name="voice_message">សារជាសម្លេង</string>
     <string name="forwarded">បានបញ្ជូនបន្ត</string>
     <string name="forwarded_message">សារដែលបានបញ្ជូនបន្ត</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">បញ្ជូនបន្តពី %1$s</string>
     <string name="video">វីដេអូ</string>
     <string name="documents">ឯកសារ</string>
@@ -385,7 +385,7 @@
     <string name="incoming_messages">សារចូល</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">សារចេញ</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">ទំហំផ្ទុកនៅលើ %1$s</string>
     <string name="connectivity">ការតភ្ជាប់និងសេវាកម្ម</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -406,9 +406,7 @@
 
 
     <string name="login_title">កត់ចូល</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">កត់ចូលទៅម៉ាសុីនមេរបស់អ្នក</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">កត់ចូលជាមួយគណនីយដែលមានស្រាប់</string>
     <string name="login_subheader">សម្រាប់លក្ខខណ្ឌអុីម៉េលដែលស្គាល់ស្រាប់ នឹងត្រួវបានដំឡើងដោយស្វ័យប្រវត្តិខ្លួនឯង។ ពេលខ្លះ IMAP ត្រូវការបើកដំណើរការនៅក្នុងការកំណត់គេហទំព័រ។ ពិគ្រោះជាមួយអ្នកផ្តល់អុីម៉េលរបស់អ្មក ឬ មិត្តរបស់អ្នកសម្រាប់ជួយ។</string>
     <string name="login_no_servers_hint">គ្មានម៉ាសុីនមេពី សាហារីសង្ឃទេ ទិន្ន័យរបស់អ្នកស្ថិតនៅលើឧបករណ៍របស់អ្នក។</string>
@@ -434,7 +432,7 @@
     <string name="import_backup_title">នាំចូលពត៌មានចម្លងទុក</string>
     <string name="import_backup_ask">រកឃើញពត៌មានចម្លងទុកនៅ \"%1s\".\n\nតើអ្នកចង់នាំចូល និងប្រើប្រាស់ទិន្នន័យទាំងអស់ និងការកំណត់ពីវា?</string>
     <string name="import_backup_no_backup_found">រក​មិន​ឃើញពត៌មានចម្លងទុកទេ\n\nចម្លង ពត៌មានចម្លងទុកទៅ \"%1$s\" និងសាកល្បងម្តងទៀត\n\nចុច \"ចាប់ផ្តើមផ្ញើសារ\" ដើម្បីបន្តជាមួយដំណើរការរៀបចំធម្មតា។</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">មិនអាចកត់ចូលជា \"%1$s\" ។ សូមផ្ទៀតផ្ទាត់មើលអស័យដ្ឋានអុីម៉េល និងពាក្យសម្ងាត់ឲ្យបានត្រឹមត្រូវ។</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">ទទួលយកលិខិតបញ្ជាក់មិនត្រឹមត្រូវ</string>
@@ -465,11 +463,10 @@
     <string name="pref_profile_photo">រូបភាពទិន្ន័យផ្ទាល់ខ្លួន</string>
     <string name="pref_blocked_contacts">ទំនាក់ទំនងដែលបានរារាំង</string>
     <string name="blocked_empty_hint">ប្រសិនបើអ្នករារាំងទំនាក់ទំ នងពួកទំនាក់ទំនងនេះនឹងត្រូវបានដាកបង្ហាញនៅទីនេះ។</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">ពាក្យសម្ងាត់ និងគណនី</string>
     <string name="pref_who_can_see_profile_explain">រូបភាពទិន្ន័យផ្ទាល់ខ្លួនរបស់អ្នក និងឈ្មោះនឹងត្រូវបានបង្ហាញនៅក្បែរសាររបស់អ្នក នៅពេល ទនំាក់ទំនងជាមួយអ្នកប្រើប្រាស់ផ្សេងទៀត។ ដំណឹងដែលបានផ្ញើរួចមិនអាចលុបចោល ឬដកចេញបានទេ។</string>
     <string name="pref_your_name">ឈ្មោះរបស់អ្នក</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">ហត្ថលេខាជាអក្សរ</string>
     <string name="pref_enter_sends">គ្រាប់​ចុច​ បញ្ចូលធ្វើឱ្យផ្ញើសារ</string>
     <string name="pref_enter_sends_explain">ចុច គ្រាប់​ចុច​ បញ្ចូល (Enter key) នឹងផ្ញើអត្ថបទសារ។</string>
@@ -507,6 +504,7 @@
     <string name="pref_manage_keys">កាន់កាប់គ្រាប់​ចុច</string>
     <string name="pref_use_system_emoji">ប្រើប្រាស់រូបសញ្ញាអារម្មណ៍របសប្រពន្ធ័</string>
     <string name="pref_use_system_emoji_explain">បិទការប្រើប្រាស់រូបសញ្ញាអារម្មណ៍ ពិសា Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_app_access">ចូលដំណើរការកម្មវិធី</string>
     <string name="pref_chats">សន្ទនា</string>
     <string name="pref_in_chat_sounds">សម្លេងនៅក្នុងសន្ទនា</string>
