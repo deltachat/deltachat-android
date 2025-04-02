@@ -787,6 +787,7 @@
     <string name="contact_not_verified">Αδυναμία επαλήθευσης %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Άλλαξε η ρύθμιση για %1$s.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">Αντιγράφηκε το QR url στο πρόχειρο</string>
     <string name="mailto_dialog_header_select_chat">Επιλέξτε συνομιλία για να στείλετε το μήνυμα</string>
     <!-- first placeholder is the name of the chat -->

@@ -1035,6 +1035,7 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">Uživatel %1$s odpověděl, čekání na přidání do skupiny...</string>
     <string name="secure_join_wait">Navazování koncově šifrovaného spojení, prosím, čekejte...</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">Zatím nebylo navázáno koncově šifrované spojení, ale již nyní můžete posílat zprávy.</string>
     <string name="contact_verified">Uživatel %1$s ověřen.</string>
     <string name="contact_not_verified">Navázání garantovaného koncově šifrovaného spojení s uživatelem %1$s selhalo.</string>
@@ -1044,6 +1045,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Nastavení pro uživatele %1$s změněno.</string>
     <string name="verified_contact_required_explain">Aby mohlo být garantováno koncové šifrování, můžete do této skupiny přidávat pouze uživatele se zeleným zaškrtávátkem.\n\nSe svými kontakty se můžete setkat osobně a naskenovat jejich QR kód, abyste je ověřili.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">Adresa URL z QR kódu zkopírována do schránky</string>
     <string name="mailto_dialog_header_select_chat">Vyberte chat, do kterého chcete zprávu poslat</string>
     <!-- first placeholder is the name of the chat -->

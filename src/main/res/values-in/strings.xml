@@ -579,6 +579,7 @@
     <string name="contact_not_verified">Tidak bisa memverifikasi %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ubah pengaturan untuk %1$s.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">Salin QR url ke papan klip</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Balasan</string>

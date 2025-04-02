@@ -504,6 +504,7 @@
     <string name="contact_not_verified">%1$s پشتڕاست ناکرێتەوە.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">ڕێکخستن بۆ %1$s گۆڕا.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">ناونیشانی وێبی QRەکە ڕوونووس کرا.</string>
     <!-- notifications  -->
     <string name="notify_reply_button">وەڵام دانەوە</string>

@@ -643,6 +643,7 @@
     <string name="contact_not_verified">Kan ikke bekræfte %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ændret opsætning for %1$s</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">Kopieret QR url til udklipsholder</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Svar</string>
