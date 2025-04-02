@@ -144,7 +144,7 @@
     <string name="voice_message">Voĉmesaĝo</string>
     <string name="forwarded">Plusendita</string>
     <string name="forwarded_message">Plusendita mesaĝo</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Plusendita de %1$s</string>
     <string name="video">Filmo</string>
     <string name="documents">Dokumentoj</string>
@@ -343,7 +343,6 @@
     <string name="media_preview">Aŭdvida antaŭrigardo</string>
     <string name="send_message">Sendi mesaĝon</string>
     <string name="login_title">Ensaluti</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Ensaluti al via servilo</string>
     <string name="login_inbox">Ricevujo</string>
     <string name="login_imap_login">IMAP salutnomo</string>
@@ -376,7 +375,6 @@
 
     <string name="pref_profile_photo">Profilbildo</string>
     <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Pasvorto kaj konto</string>
     <string name="pref_your_name">Via nomo</string>
     <string name="pref_enter_sends">La Eniga klavo kaŭzas sendon</string>
@@ -408,6 +406,7 @@
     <string name="pref_manage_keys">Administri ŝlosilojn</string>
     <string name="pref_use_system_emoji">Uzi sisteman emoĝiaron</string>
     <string name="pref_use_system_emoji_explain">Malebligi emoĝiaron de Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Aliro al aplikaĵo</string>
     <string name="pref_chats">Interparoloj</string>
     <string name="pref_in_chat_sounds">Sonoj dum interparolado</string>

@@ -108,7 +108,7 @@
     <string name="audio">دەنگ</string>
     <string name="voice_message">پەیامی دەنگی</string>
     <string name="forwarded_message">پەیامی هاوبەشکراو</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">هاوبەشکراو لە لایەن%1$s</string>
     <string name="video">ڤیدیۆ</string>
     <string name="documents">بەڵگەکان</string>
@@ -322,9 +322,7 @@
     <string name="media_preview">پێشدیتنی ڕەنگاڵە</string>
     <string name="send_message">پەیام بنێرە</string>
     <string name="login_title">بچۆ ژوورەوە</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">بچۆ ژوورەوە بۆ سێرڤێرەکەی خۆت</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">بچۆ ژوورەوە بە ناونیشانی ئیمەیلێکەوە</string>
     <string name="login_subheader">بۆ دابینکەرە ناسراوەکانی ئیمەیلەکان، ڕێکخستنە زیادییەکان خۆکارانە ڕێکدەخرێن. هەندێجار دەبێت IMAP لەنێو ڕێکخستنەکانی وێبدا چالاک بکرێنەوە. بۆ ڕێنمایی وەرگرتن، لەگەڵ دابینکەری ئیمەیلەکەتان یان هاوڕێکانتان ڕاوێژ بکەن.</string>
     <string name="login_no_servers_hint">دێڵتاچات هیچ سێرڤەرێکی نییە، داتاکانتان لەسەر ئامرێکەتان دەمێنێتەوە.</string>
@@ -348,7 +346,7 @@
     <string name="import_backup_title">هاوردەکردنی یەدەک</string>
     <string name="import_backup_ask">یەدەکەکە لە \"%1$s\"دا دۆزرایەوە.\n\n دەتەوێت هەموو داتا و ڕێکخستنەکانی هاوردە بکەیت و بەکاریان بێنیت؟</string>
     <string name="import_backup_no_backup_found">هیچ یەدەکێک نەدۆزرایەوە.\n\n یەدەکەکە کۆپی بکە بۆ\"%1$s\" و دیسان هەوڵبدەوە. یان بۆ بەردەوامبوون لەسەر پرۆسەی ئاسایی دامەزراندنەکە، دەستبنە بە \"دەستپێکی نامەنووسین\"دا .</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">\"%1$s\" ناتوانێت بچێتە ژوورەوە. سەرنج بدە بزانە ئیمەیل و تێپەڕوشەکە درووستە.</string>
     <string name="switch_account">گۆڕینی هەژمار</string>
     <string name="add_account">زیادکردنی هەژمار</string>
@@ -367,10 +365,9 @@
     <string name="pref_profile_photo">وێنەی لادیمەن</string>
     <string name="pref_blocked_contacts">هەژمارە ئاستەنگکراوەکان</string>
     <string name="blocked_empty_hint">ئەگەر هەژمارێک ئاستەنگ بکەیت، لێرەدا پیشان دەدرێت.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">هەژمار و تێپەڕوشە</string>
     <string name="pref_your_name">ناو</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">دەقی واژۆ</string>
     <string name="pref_enter_sends">کلیلی \"ئینتەر\" بنێرێت</string>
     <string name="pref_enter_sends_explain">دەستنان بە کلیلی \"ئینتەر\"دا، پەیامەکان دەنێرێت.</string>
@@ -405,6 +402,7 @@
     <string name="pref_manage_keys">بەڕێوەبردنی کلیلەکان</string>
     <string name="pref_use_system_emoji">بەکارهێنانی وێنۆچکەکانی سیستەم</string>
     <string name="pref_use_system_emoji_explain">ئیمۆجییە ناوخۆییەکانی دێڵتا چات، ناچالاک دەبێتەوە.</string>
+    <!-- deprecated -->
     <string name="pref_app_access">ڕێگەپێدان</string>
     <string name="pref_chats">وتووێژەکان</string>
     <string name="pref_in_chat_sounds">دەنگەکانی نێو-وتووێژی</string>
