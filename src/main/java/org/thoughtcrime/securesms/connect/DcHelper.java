@@ -252,7 +252,7 @@ public class DcHelper {
     dcContext.setStockTranslation(176, context.getString(R.string.reaction_by_you));
     dcContext.setStockTranslation(177, context.getString(R.string.reaction_by_other));
     dcContext.setStockTranslation(190, context.getString(R.string.secure_join_wait));
-    dcContext.setStockTranslation(191, context.getString(R.string.secure_join_wait_timeout));
+    dcContext.setStockTranslation(192, context.getString(R.string.secure_join_takes_longer));
   }
 
   public static File getImexDir() {
