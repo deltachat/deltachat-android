@@ -167,7 +167,7 @@
     <string name="voice_message">Sesli İleti</string>
     <string name="forwarded">İletildi</string>
     <string name="forwarded_message">İletilen İleti</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">%1$s tarafından iletildi</string>
     <string name="video">Video</string>
     <string name="documents">Belgeler</string>
@@ -291,9 +291,9 @@
     <string name="select_chat">Sohbet Seç</string>
     <string name="select_more">Daha fazlasını seç</string>
     <string name="menu_edit_name">Adı Düzenle</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">“%1$s” yerine size gösterilecek bir takma ad ayarlayın. Kişinin seçilen adını kullanmak için boş bırakın.</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">“%1$s” için Takma Ad</string>
     <string name="menu_settings">Ayarlar</string>
     <string name="menu_advanced">Gelişmiş</string>
@@ -529,7 +529,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Kare Izgara</string>
     <string name="send_message">İleti Gönder</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s, %2$s adresini %3$s olarak değiştirdi</string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">%1$s e-posta adresinizi %2$s olarak değiştirdiniz.\n\nŞimdi bir doğrulanan öbeğe ileti gönderirseniz, oradaki kişiler yeni adresinizle eskisini otomatik olarak değiştirecek.\n\nTüm e-postaları yeni e-posta adresinize iletmek için eski e-posta sağlayıcınızı ayarlamanız önemle önerilir. Yoksa henüz yeni adresinizi almamış olan kişilerin iletilerini kaçırabilirsiniz.</string>
@@ -563,7 +563,7 @@
     <string name="incoming_messages">Gelen İletiler</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Giden İletiler</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">%1$s Üzerinde Depolama</string>
     <string name="connectivity">Bağlanabilirlik</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -613,9 +613,7 @@
     <string name="welcome_chat_over_email">Güvenli Merkezi Olmayan Sohbet</string>
     <string name="scan_invitation_code">Çağrı Kodunu Tara</string>
     <string name="login_title">Giriş Yap</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">E-Posta Hesabınıza Giriş Yapın</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Varolan bir e-posta hesabıyla giriş yapın</string>
     <string name="login_subheader">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak ayarlanır. Bazen IMAP\'in web ayarlarından etkinleştirilmesi gerekir. Yardım için e-posta sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
     <string name="login_no_servers_hint">Delta Chat kullanıcı verisi toplamaz; her şey aygıtınızda kalır.</string>
@@ -631,7 +629,7 @@
     <string name="login_smtp_port">SMTP Bağlantı Noktası</string>
     <string name="login_smtp_security">SMTP Güvenliği</string>
     <string name="login_auth_method">Yetkilendirme Yöntemi</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Proxy Kullan</string>
     <string name="proxy_add">Proxy Ekle</string>
@@ -655,7 +653,7 @@
     <string name="import_backup_title">Yedekten Geri Yükle</string>
     <string name="import_backup_ask">“%1$s” üzerinde yedek bulundu.\n\nİçe aktarmak ve ondan gelen tüm verileri ve ayarları kullanmak istiyor musunuz?</string>
     <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği “%1$s” üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemiyle sürdürmek için “İletileşmeye başla”ya basın.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">“%1$s” olarak giriş yapılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Geçersiz sertifikaları kabul et</string>
@@ -695,11 +693,10 @@
     <string name="pref_profile_photo">Profil Görseli</string>
     <string name="pref_blocked_contacts">Engellenen Kişiler</string>
     <string name="blocked_empty_hint">Engellenen kişiler burada görünecek.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Parola ve Hesap</string>
     <string name="pref_who_can_see_profile_explain">Profil görseliniz, adınız ve biyografiniz diğer kullanıcılarla iletişim kurulurken iletilerinizle birlikte gönderilecek.</string>
     <string name="pref_your_name">Adınız</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Biyografi</string>
     <string name="pref_enter_sends">Enter Tuşu Göndersin</string>
     <string name="pref_enter_sends_explain">Enter tuşuna basma, metin iletileri gönderecek</string>
@@ -744,6 +741,7 @@
     <string name="pref_use_system_emoji_explain">Delta Chat\'in gömülü emoji desteğini kapat</string>
     <string name="pref_show_system_contacts">Sistem Adres Defterini Oku</string>
     <string name="pref_show_system_contacts_explain">Adres defterinden gelen kişilerle sohbet oluşturmayı teklif edin. Bazı sağlayıcılara önce uçtan uca şifreleme ayarlaması gerekir.</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Uygulama Erişimi</string>
     <string name="pref_chats">Sohbetler</string>
     <string name="pref_in_chat_sounds">Sohbet İçi Sesler</string>
@@ -755,7 +753,7 @@
     <string name="pref_backup">Yedekleme</string>
     <string name="pref_backup_explain">Sohbetleri Dış Depolamaya Yedekle</string>
     <string name="pref_backup_export_explain">Bir yedek, bu ya da başka bir aygıtta yeni bir kurulum ayarlamanıza yardımcı olur.\n\nYedek; tüm iletileri, kişileri ve sohbetleri ve uçtan uca Autocrypt ayarlamanızı içerecek. Yedek dosyasını güvenli bir yerde tutun ya da olanaklıysa en kısa sürede silin.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">%1$s hesabını dışa aktar</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Tüm %1$d profili dışa aktar</string>
@@ -776,7 +774,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçeneği değiştirirseniz, sunucunuzun ve diğer istemcilerinizin uygun olarak yapılandırıldığından emin olun.\n\nDeğilse özellikler hiç çalışmayabilir.</string>
     <string name="pref_watch_sent_folder">Gönderilen Klasörünü İzle</string>
     <string name="pref_send_copy_to_self">Kendime Kopya Gönder</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Bu hesap çoklu aygıtlarda kullanılırken gereklidir.</string>
     <string name="pref_auto_folder_moves">DeltaChat Klasörüne Otomatik Olarak Taşı</string>
     <string name="pref_auto_folder_moves_explain">Sohbet görüşmeleri, Gelen Kutusu\'ndaki dağınıklığı önlemek için taşınır</string>
@@ -994,15 +991,16 @@
     <string name="set_name_and_avatar_explain">Kişilerinizin tanıyacağı bir ad ayarlayın. Bir profil görseli de ayarlayabilirsiniz.</string>
     <string name="please_enter_name">Lütfen bir ad girin.</string>
     <string name="qraccount_qr_code_cannot_be_used">Taranan QR kodu, yeni bir profil ayarlamak için kullanılamıyor.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">“%1$s” adresine giriş yapılsın mı?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">“%1$s” adresine giriş yapılsın mı?\n\nVarolan profiliniz silinmeyecek. Profilleriniz arasında geçiş yapmak için “Profili Değiştir” öğesini kullanın.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s sizi bu öbeğe katılmaya çağırdı.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s yanıtladı; öbeğe eklenmesi bekleniyor…</string>
     <string name="secure_join_wait">Güvencelenen uçtan uca şifreleme kuruluyor, lütfen bekleyin…</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">Henüz güvencelenen uçtan uca şifreleme kurulamadı; ama zaten bir ileti gönderebilirsiniz.</string>
     <string name="contact_verified">%1$s tanıtıldı.</string>
     <string name="contact_not_verified">%1$s ile güvencelenen uçtan uca şifreleme kurulamıyor.</string>
@@ -1012,6 +1010,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$s için ayarlama değiştirildi.</string>
     <string name="verified_contact_required_explain">Uçtan uca şifrelemeyi güvencelemek için bu öbeğe yalnızca yeşil bir onay imi olan kişileri ekleyebilirsiniz.\n\nDoğrulanmayan kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">QR URL\'si panoya kopyalandı</string>
     <string name="mailto_dialog_header_select_chat">İletiyi göndermek için sohbet seçin</string>
     <!-- first placeholder is the name of the chat -->

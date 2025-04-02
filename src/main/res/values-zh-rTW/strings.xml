@@ -158,7 +158,7 @@
     <string name="voice_message">語音訊息</string>
     <string name="forwarded">已轉發</string>
     <string name="forwarded_message">轉發的訊息</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">由%1$s轉發</string>
     <string name="video">影片</string>
     <string name="documents">文件</string>
@@ -282,9 +282,9 @@
     <string name="select_chat">選取聊天</string>
     <string name="select_more">多選</string>
     <string name="menu_edit_name">編輯名稱</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">設置一個昵稱，而不是 「%1$s 」留空以使用聯繫人選擇的姓名。</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">「%1$s」的昵稱</string>
     <string name="menu_settings">設定</string>
     <string name="menu_advanced">進階</string>
@@ -513,7 +513,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">方形網格</string>
     <string name="send_message">傳送訊息</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s 已將他的位址從 %2$s更改 為 %3$s</string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">您已將電子郵件位址從%1$s更改為%2$s 。\n\n如果您現在向已驗證的群組發送消息，那裡的聯絡人會自動將舊位址替換為您的新位址。\n\n強烈建議您將舊電子郵件供應商設置為將所有電子郵件轉發到您的新電子郵件位址。否則，您可能會錯過尚未獲得新地址的聯絡人的消息。</string>
@@ -547,7 +547,7 @@
     <string name="incoming_messages">傳入訊息</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">傳出訊息</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">%1$s上的存儲空間</string>
     <string name="connectivity">連接狀態</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -597,9 +597,7 @@
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
     <string name="scan_invitation_code">掃描邀請碼</string>
     <string name="login_title">登入</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">登入你的電子郵件帳戶</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">使用現有的電子郵件帳戶登入</string>
     <string name="login_subheader">我們能自動處理大多數常見的郵件伺服器設定。有時候你需要在 web 界面上手動打開 IMAP 服務，請詢問郵件服務商或請朋友幫忙。</string>
     <string name="login_no_servers_hint">Delta Chat 沒有伺服器，你的資料只會存在你自己的裝置上!</string>
@@ -615,7 +613,7 @@
     <string name="login_smtp_port">SMTP 埠</string>
     <string name="login_smtp_security">SMTP 安全</string>
     <string name="login_auth_method">授權方式</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">代理伺服器</string>
     <string name="proxy_use_proxy">使用代理伺服器</string>
     <string name="proxy_add">添加代理伺服器</string>
@@ -639,7 +637,7 @@
     <string name="import_backup_title">匯入備份</string>
     <string name="import_backup_ask">在 「%1$s 」找到備份\n\n你要匯入備份，並使用原來的資料和設定嗎?</string>
     <string name="import_backup_no_backup_found">找不到備份\n\n請把備份複製到「%1$s」然後再試一次，或是按「開始傳送訊息」進行標準設定。</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">無法登入 %1$s。請確定 email 帳號和密碼是否正確。 </string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">接受無效證書</string>
@@ -679,11 +677,10 @@
     <string name="pref_profile_photo">大頭照</string>
     <string name="pref_blocked_contacts">已封鎖的聯絡人</string>
     <string name="blocked_empty_hint">被封鎖的聯絡人將在此處顯示。</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">密碼和帳戶</string>
     <string name="pref_who_can_see_profile_explain">你的名字和大頭照在通訊的過程中，會提供給對方看到。已傳送的資訊無法被刪除或移除。</string>
     <string name="pref_your_name">你的名字</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">簽名檔</string>
     <string name="pref_enter_sends">換行鍵送出訊息</string>
     <string name="pref_enter_sends_explain">按下換行鍵就送出訊息</string>
@@ -728,6 +725,7 @@
     <string name="pref_use_system_emoji_explain">停用 Delta Chat 內建的表情符號</string>
     <string name="pref_show_system_contacts">讀取系統通訊錄</string>
     <string name="pref_show_system_contacts_explain">建議與通訊錄中的聯絡人建立聊天。一些供應商需要先進行端到端加密設置。</string>
+    <!-- deprecated -->
     <string name="pref_app_access">App 存取</string>
     <string name="pref_chats">對話</string>
     <string name="pref_in_chat_sounds">對話內的音效</string>
@@ -739,7 +737,7 @@
     <string name="pref_backup">備份</string>
     <string name="pref_backup_explain">將備份另存至外部儲存媒體</string>
     <string name="pref_backup_export_explain">備份可以讓你把設定及對話紀錄轉移到這台或其它裝置上。\n\n備份內容包括所有的訊息、聯絡人、對話、端到端AutoCrypt設定。請務必將備份檔存放在安全的地方，並在轉移後儘快刪除。</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">匯出 %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">匯出全部%1$d個賬戶</string>
@@ -760,7 +758,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">如果關閉本選項的話，請務必確定你的伺服器和其它客戶端應用程式都使用相同的設定，否則很可能不能運作。</string>
     <string name="pref_watch_sent_folder">監看送件匣</string>
     <string name="pref_send_copy_to_self">將副本發送給自己</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">在多個裝置上使用此帳戶時，這是必需的。</string>
     <string name="pref_auto_folder_moves">自動搬移到 DeltaChat 資料夾</string>
     <string name="pref_auto_folder_moves_explain">搬移對話以避免塞爆收件匣</string>
@@ -978,15 +975,16 @@
     <string name="set_name_and_avatar_explain">設置聯絡人可以識別的名稱。您還可以設置大頭貼。</string>
     <string name="please_enter_name">請輸入名稱。</string>
     <string name="qraccount_qr_code_cannot_be_used">掃描的 QR 碼不能用於建立新賬戶。</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">登入「%1$s」？</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">登入「%1$s」？\n\n您現有的賬戶不會被刪除。使用「切換賬戶」項在您的賬戶之間切換。</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s邀請您加入此群組。\n\n正在等待%2$s裝置的回覆...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s已回覆，等待被添加到群組中...</string>
     <string name="secure_join_wait">正在建立有保證的端到端加密，請稍候...</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">尚無法建立有保證的端到端加密，但您可能已經送出了一條訊息。</string>
     <string name="contact_verified">%1$s已介紹。</string>
     <string name="contact_not_verified">無法與%1$s建立有保證的端到端加密。</string>
@@ -996,6 +994,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">已爲%1$s更改設定。</string>
     <string name="verified_contact_required_explain">為了保證端到端加密，您只能將帶有綠色驗證標識的聯絡人添加到此群組。\n\n您可以當面掃描聯絡人的QR碼以介紹他們。</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">已將 QR碼的URL複製到剪貼簿</string>
     <string name="mailto_dialog_header_select_chat">選擇要將消息發送到的聊天</string>
     <!-- first placeholder is the name of the chat -->

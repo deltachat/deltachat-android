@@ -136,7 +136,7 @@
     <string name="voice_message">Pesan suara</string>
     <string name="forwarded">Diteruskan</string>
     <string name="forwarded_message">Pesan yang diteruskan</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Diteruskan oleh %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumen</string>
@@ -370,9 +370,7 @@
     <string name="media_preview">Tampilan media</string>
     <string name="send_message">Kirim pesan</string>
     <string name="login_title">Masuk</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Masuk ke server Anda</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Masuk dengan akun surel yang ada</string>
     <string name="login_subheader">Pengaturan surel penyedia tambahan yang sudah diketahui dipasang secara otomatis. Terkadang IMAP perlu daktifkan di pengaturan aplikasi. Hubungi surel penyedia Anda atau minta tolong teman.</string>
     <string name="login_no_servers_hint">Tidak ada server Delta Chat, data Anda tetap di perangkat Anda.</string>
@@ -398,7 +396,7 @@
     <string name="import_backup_title">Impor cadangan</string>
     <string name="import_backup_ask">Cadangan ditemukan di \"%1$s\".\n\n Apakah Anda ingin mengimpor dan menggunakan semua data dan pengaturan darinya?</string>
     <string name="import_backup_no_backup_found">Cadangan tidak ketemu.\n\nKopi cadangan ke \"%1$s\" dan coba lagi. Cara lain, tekan \"Mulai obrolan\" untuk melanjutkan proses pengaturan normal.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Tidak bisa login sebagai \"%1$s\". Mohon cek apakah alamat surel dan kata sandi benar.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Terima sertifikat yang tidak sah</string>
@@ -422,11 +420,10 @@
     <string name="pref_profile_info_headline">Info profil Anda</string>
     <string name="pref_profile_photo">Gambar profil</string>
     <string name="pref_blocked_contacts">Kontak yang diblokir</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Kata sandi dan akun</string>
     <string name="pref_who_can_see_profile_explain">Foto dan nama profil Anda akan tampak bersama dengan pesan-pesan ketika berkomunikasi dengan pengguna lain. Informasi yang telah dikirimkan tidak dapat dihapus atau dipindah.</string>
     <string name="pref_your_name">Nama Anda</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Signature text</string>
     <string name="pref_enter_sends">Tombol Enter mengirim</string>
     <string name="pref_enter_sends_explain">Menekan tombol Enter akan mengirimkan teks pesan</string>
@@ -459,6 +456,7 @@
     <string name="pref_manage_keys">Kelola kunci</string>
     <string name="pref_use_system_emoji">Gunakan emoji sistem</string>
     <string name="pref_use_system_emoji_explain">Matikan dukungan emoji Delta Chat yang ada</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Akes Aplikasi</string>
     <string name="pref_chats">Obrolan</string>
     <string name="pref_in_chat_sounds">Suara dalam obrolan</string>
@@ -579,6 +577,7 @@
     <string name="contact_not_verified">Tidak bisa memverifikasi %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ubah pengaturan untuk %1$s.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">Salin QR url ke papan klip</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Balasan</string>

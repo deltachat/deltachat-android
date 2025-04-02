@@ -42,7 +42,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/pref_app_access">
+    <PreferenceCategory>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"

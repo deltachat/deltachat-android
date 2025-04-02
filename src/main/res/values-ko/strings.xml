@@ -130,7 +130,7 @@
     <string name="voice_message">음성 메시지</string>
     <string name="forwarded">전달됨</string>
     <string name="forwarded_message">전달된 메시지</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">%1$s에 의해 전달됨</string>
     <string name="video">동영상</string>
     <string name="documents">문서</string>
@@ -409,7 +409,7 @@
     <string name="all_apps_empty_hint">채팅에서 보내거나 받은 개인 앱들이 여기에 나타납니다.</string>
     <string name="media_preview">미디어 미리보기</string>
     <string name="send_message">메시지 전송</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s의 주소가 %2$s에서 %3$s로 변경됨.</string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">이메일 주소를 %1$s에서 %2$s로 바꿨습니다.\n\n확인된 그룹으로 메시지를 보내면 해당 그룹의 연락처가 자동으로 이전 주소를 새 주소로 대체합니다.\n\n모든 이메일을 새 이메일 주소로 전달하도록 이전 이메일 공급자를 설정하는 것이 좋습니다. 그렇지 않으면 새 주소를 받지 못한 연락처의 메시지를 놓칠 수 있습니다.</string>
@@ -420,7 +420,7 @@
     <string name="incoming_messages">수신 메시지</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">발신 메시지</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">%1$s에 저장됨</string>
     <string name="connectivity">연결</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -442,9 +442,7 @@
 
     <string name="scan_invitation_code">초대 코드 스캔</string>
     <string name="login_title">로그인</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">이메일 계정으로 로그인하시오</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">존재하는 이메일 계정으로 로그인하시오</string>
     <string name="login_subheader">알려진 이메일 공급자의 경우 추가 설정이 자동으로 설정됩니다. 웹 설정에서 IMAP을 사용 가능으로 설정해야 하는 경우가 있습니다. 도움이 필요하면 전자 메일 공급자나 친구에게 문의하십시오.</string>
     <string name="login_no_servers_hint">Delta Chat은 서버가 없고, 당신의 데이터는 장치에 남아 있습니다.</string>
@@ -470,7 +468,7 @@
     <string name="import_backup_title">백업 불러오기</string>
     <string name="import_backup_ask">\"%1$s\"에서 백업을 찾았습니다.\n\n모든 데이터와 설정을 가져오시겠습니까?</string>
     <string name="import_backup_no_backup_found">백업을 찾을 수 없습니다.\n\n\"%1$s\"에 백업을 복사하고 다시 시도하십시오. 또는 \"메시징 시작\"을 눌러 일반 설정을 계속하십시오.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">\"%1$s\"에 로그인 할 수 없음. 이메일 주소와 비밀번호가 맞는지 확인하시오.</string>
     <string name="switch_account">계정 전환</string>
     <string name="add_account">계정 추가</string>
@@ -499,11 +497,10 @@
     <string name="pref_profile_photo">프로필 사진</string>
     <string name="pref_blocked_contacts">차단 목록</string>
     <string name="blocked_empty_hint">차단된 연락처가 여기에 나타납니다.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">계정 설정</string>
     <string name="pref_who_can_see_profile_explain">다른 사용자와 통신할 때 프로필 이미지, 이름 및 서명이 메시지와 함께 전송됩니다.</string>
     <string name="pref_your_name">내 이름</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">서명 텍스트</string>
     <string name="pref_enter_sends">엔터키로 메시지 전송</string>
     <string name="pref_enter_sends_explain">Enter 키를 누르면 문자 메시지가 전송됩니다.</string>
@@ -540,6 +537,7 @@
     <string name="pref_manage_keys">키 관리</string>
     <string name="pref_use_system_emoji">시스템 이모티콘 사용</string>
     <string name="pref_use_system_emoji_explain">Delta Chat 이모티콘 사용 중지</string>
+    <!-- deprecated -->
     <string name="pref_app_access">앱 접근</string>
     <string name="pref_chats">채팅</string>
     <string name="pref_in_chat_sounds">앱 내 알림</string>
@@ -568,7 +566,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">이 선택사항을 변경할 경우, 서버와 다른 클라이언트가 적절하게 구성되어 있는지 확인하십시오.\n\n그렇지 않으면 상황이 전혀 작동하지 않을 수 있습니다.</string>
     <string name="pref_watch_sent_folder">보낸 폴더 보기</string>
     <string name="pref_send_copy_to_self">복사본 내게 보내기</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">여러 장치에서 이 계정을 사용할 때 필요합니다.</string>
     <string name="pref_auto_folder_moves">DeltaChat 폴더로 자동 이동</string>
     <string name="pref_auto_folder_moves_explain">받은 문서가 복잡해지지 않도록 대화 내용이 이동됩니다.</string>
@@ -740,9 +737,9 @@
     <string name="qraccount_ask_create_and_login">\"%1$s\"에서 새 이메일 주소를 만들고 로그인하시겠습니까?</string>
     <string name="qraccount_ask_create_and_login_another">\"%1$s\"에서 새 이메일 주소를 만들고 로그인하시겠습니까?\n\n기존 계정은 삭제되지 않습니다. 계정 전환 항목을 사용하여 계정 간을 전환합니다.</string>
     <string name="qraccount_qr_code_cannot_be_used">스캔한 QR 코드를 사용하여 새 계정을 설정할 수 없습니다.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">\"%1$s\"에 로그인하시겠습니까?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">\"%1$s\"에 로그인하시겠습니까?\n\n기존 계정은 삭제되지 않습니다. 계정 전환 항목을 사용하여 계정 간을 전환합니다.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s이 그룹에 가입하도록 초대했습니다.\n\n%2$s의 장치가 응답하기를 기다리는 중입니다...</string>
@@ -752,6 +749,7 @@
     <string name="contact_not_verified">%1$s 확인할 수 없음</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$s에 대한 설정이 변경되었습니다.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">QR url을 클립보드에 복사했습니다</string>
     <string name="mailto_dialog_header_select_chat">메시지를 보내려면 채팅을 선택하십시오</string>
     <!-- first placeholder is the name of the chat -->

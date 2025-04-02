@@ -52,7 +52,7 @@
     <string name="mute">Mute</string>
     <string name="muted">Muted</string>
     <string name="ephemeral_messages">Disappearing Messages</string>
-    <string name="ephemeral_messages_hint">Applies to all members of this chat if they use Delta Chat; they can still copy, save, and forward messages or use other e-mail clients.</string>
+    <string name="ephemeral_messages_hint">Applies to all members of this chat; they can still copy, save, and forward messages.</string>
     <string name="save">Save</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
@@ -167,7 +167,7 @@
     <string name="voice_message">Voice Message</string>
     <string name="forwarded">Forwarded</string>
     <string name="forwarded_message">Forwarded Message</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Forwarded by %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documents</string>
@@ -291,9 +291,9 @@
     <string name="select_chat">Select Chat</string>
     <string name="select_more">Select more</string>
     <string name="menu_edit_name">Edit Name</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Set a nickname that will be shown to you instead of \"%1$s\". Leave empty to use the contact\'s chosen name.</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Nickname for \"%1$s\"</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_advanced">Advanced</string>
@@ -529,7 +529,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Square Grid</string>
     <string name="send_message">Send Message</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s changed their address from %2$s to %3$s</string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">You changed your email address from %1$s to %2$s.\n\nIf you now send a message to a verified group, contacts there will automatically replace the old with your new address.\n\nIt\'s highly advised to set up your old email provider to forward all emails to your new email address. Otherwise you might miss messages of contacts who did not get your new address yet.</string>
@@ -563,7 +563,7 @@
     <string name="incoming_messages">Incoming Messages</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Outgoing Messages</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Storage on %1$s</string>
     <string name="connectivity">Connectivity</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -613,9 +613,7 @@
     <string name="welcome_chat_over_email">Secure Decentralized Chat</string>
     <string name="scan_invitation_code">Scan Invitation Code</string>
     <string name="login_title">Log In</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Log into your E-Mail Account</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Log in with an existing e-mail account</string>
     <string name="login_subheader">For known e-mail providers additional settings are set up automatically. Sometimes IMAP needs to be enabled in the web settings. Consult your e-mail provider or friends for help.</string>
     <string name="login_no_servers_hint">Delta Chat does not collect user data, everything stays on your device.</string>
@@ -631,7 +629,7 @@
     <string name="login_smtp_port">SMTP Port</string>
     <string name="login_smtp_security">SMTP Security</string>
     <string name="login_auth_method">Authorization Method</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Use Proxy</string>
     <string name="proxy_add">Add Proxy</string>
@@ -646,7 +644,7 @@
     <string name="proxy_share_link">Share Link</string>
 
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
-    <string name="login_info_oauth2_text">The entered e-mail address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to act as your Chat over E-mail app.\n\nDelta Chat does not collect user data, everything stays on your device.</string>
+    <string name="login_info_oauth2_text">The entered address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to send and receive messages.\n\nDelta Chat does not collect user data, everything stays on your device.</string>
     <string name="login_certificate_checks">Certificate Checks</string>
     <string name="login_error_mail">Please enter a valid e-mail address</string>
     <string name="login_error_server">Please enter a valid server / IP address</string>
@@ -655,8 +653,8 @@
     <string name="import_backup_title">Restore from Backup</string>
     <string name="import_backup_ask">Backup found at \"%1$s\".\n\nDo you want to import and use all data and settings from it?</string>
     <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again. Alternatively, press \"Start messaging\" to continue with the normal setup process.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
-    <string name="login_error_cannot_login">Cannot login as \"%1$s\". Please check if the e-mail address and the password are correct.</string>
+    <!-- %1$s will be replaced by the failing address -->
+    <string name="login_error_cannot_login">Cannot login as \"%1$s\". Please check if the address and the password are correct.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accept invalid certificates</string>
     <string name="switch_account">Switch Profile</string>
@@ -695,11 +693,10 @@
     <string name="pref_profile_photo">Profile Image</string>
     <string name="pref_blocked_contacts">Blocked Contacts</string>
     <string name="blocked_empty_hint">Blocked contacts will appear here.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Password and Account</string>
     <string name="pref_who_can_see_profile_explain">Your profile image, name and bio will be sent together with your messages when communicating with other users.</string>
     <string name="pref_your_name">Your Name</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Bio</string>
     <string name="pref_enter_sends">Enter Key Sends</string>
     <string name="pref_enter_sends_explain">Pressing the Enter key will send text messages</string>
@@ -743,7 +740,8 @@
     <string name="pref_use_system_emoji">Use System Emoji</string>
     <string name="pref_use_system_emoji_explain">Turn off Delta Chat\'s built-in emoji support</string>
     <string name="pref_show_system_contacts">Read System Address Book</string>
-    <string name="pref_show_system_contacts_explain">Offer to create chats with contacts from the address book. Some providers need end-to-end encryption setup first.</string>
+    <string name="pref_show_system_contacts_explain">Offer to create chats with contacts from the address book.</string>
+    <!-- deprecated -->
     <string name="pref_app_access">App Access</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">In-Chat Sounds</string>
@@ -755,7 +753,7 @@
     <string name="pref_backup">Backup</string>
     <string name="pref_backup_explain">Back Up Chats to External Storage</string>
     <string name="pref_backup_export_explain">A backup helps you to set up a new installation on this or on another device.\n\nThe backup will contain all messages, contacts and chats and your end-to-end Autocrypt setup. Keep the backup file in a safe place or delete it as soon as possible.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">Export %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Export all %1$d profiles</string>
@@ -776,7 +774,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">If you change this option, make sure, your server and your other clients are configured accordingly.\n\nOtherwise things may not work at all.</string>
     <string name="pref_watch_sent_folder">Watch Sent Folder</string>
     <string name="pref_send_copy_to_self">Send Copy to Self</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Required when using this account on multiple devices.</string>
     <string name="pref_auto_folder_moves">Move automatically to DeltaChat Folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
@@ -844,9 +841,9 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Do you want to delete %1$d messages now and all newly fetched messages \"%2$s\" in the future?\n\n• This includes all media\n\n• Messages will be deleted whether they were seen or not\n\n• \"Saved messages\" will be skipped from local deletion</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Do you want to delete %1$d messages now and all newly fetched messages \"%2$s\" in the future?\n\n⚠️ This includes e-mails, media and \"Saved messages\" in all server folders\n\n⚠️ Do not use this function if you want to keep data on the server\n\n⚠️ Do not use this function if you are using other e-mail clients besides Delta Chat</string>
+    <string name="autodel_server_ask">Do you want to delete %1$d messages now and all newly fetched messages \"%2$s\" in the future?\n\n⚠️ This includes e-mails, media and \"Saved messages\" in all server folders\n\n⚠️ Do not use this function if you want to keep data on the server or if you use classic e-mail clients as well</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">This includes e-mails, media and \"Saved messages\" in all server folders. Do not use this function if you want to keep data on the server or if you are using other e-mail clients besides Delta Chat.</string>
+    <string name="autodel_server_enabled_hint">This includes e-mails, media and \"Saved messages\" in all server folders. Do not use this function if you want to keep data on the server or if you use classic e-mail clients as well</string>
     <string name="autodel_server_warn_multi_device_title">Turn on at-once deletion</string>
     <string name="autodel_server_warn_multi_device">If you enable at-once deletion you cannot use multiple devices on this profile.</string>
     <string name="autodel_confirm">I understand, delete all these messages</string>
@@ -942,7 +939,7 @@
     <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
     <string name="chat_protection_broken">%1$s sent a message from another device.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Messages are guaranteed to be end-to-end encrypted from now on. Tap to learn more.</string>
-    <string name="chat_protection_enabled_explanation">It is now guaranteed that all messages in this chat are end-to-end encrypted.\n\nEnd-to-end encryption keeps messages private between you and your chat partners. Not even your email provider can read them.</string>
+    <string name="chat_protection_enabled_explanation">It is now guaranteed that all messages in this chat are end-to-end encrypted.\n\nEnd-to-end encryption keeps messages private between you and your chat partners. Not even servers, providers or relays can read them.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s sent a message from another device. Tap to learn more.</string>
     <string name="chat_protection_broken_explanation">End-to-end encryption cannot be guaranteed anymore, likely because %1$s reinstalled Delta Chat or sent a message from another device.\n\nYou may meet them in person and scan their QR code again to reestablish guaranteed end-to-end encryption.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s requires end-to-end encryption which is not setup for this chat yet. Tap to learn more.</string>
@@ -968,7 +965,7 @@
     <string name="qrscan_failed">QR code could not be decoded</string>
     <string name="qrscan_ask_join_group">Do you want to join the group \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">The scanned fingerprint does not match the last seen for %1$s.</string>
-    <string name="qrscan_no_addr_found">This QR code contains a fingerprint but no e-mail address.\n\nFor an out-of-band-verification, please establish an encrypted connection to the recipient first.</string>
+    <string name="qrscan_no_addr_found">This QR code contains a fingerprint but no address.\n\nFor an out-of-band-verification, please establish an encrypted connection to the recipient first.</string>
     <string name="qrscan_contains_text">Scanned QR code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Scanned QR code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerprint</string>
@@ -994,16 +991,18 @@
     <string name="set_name_and_avatar_explain">Set a name that your contacts will recognize. You can also set a profile image.</string>
     <string name="please_enter_name">Please enter a name.</string>
     <string name="qraccount_qr_code_cannot_be_used">The scanned QR code cannot be used to set up a new profile.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Log into \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Log into \"%1$s\"?\n\nYour existing profile will not be deleted. Use the \"Switch Profile\" item to switch between your profiles.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s invited you to join this group.\n\nWaiting for the device of %2$s to reply…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s replied, waiting for being added to the group…</string>
     <string name="secure_join_wait">Establishing guaranteed end-to-end encryption, please wait…</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">Could not yet establish guaranteed end-to-end encryption, but you may already send a message.</string>
+    <string name="secure_join_takes_longer">That seems to take longer, maybe the contact or you are offline.\n\nHowever, the process continues in background, you can do something else…</string>
     <string name="contact_verified">%1$s introduced.</string>
     <string name="contact_not_verified">Cannot establish guaranteed end-to-end encryption with %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
@@ -1163,7 +1162,7 @@
     <string name="add_to_widget">Add to Widget</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat uses your camera to take and send photos and videos and to scan QR codes.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat uses your contacts to show a list of e-mail addresses you can write to. Delta Chat has no server, your contacts are not sent anywhere.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat uses your contacts to show a list of addresses you can write to. Delta Chat has no server, your contacts are not sent anywhere.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat needs permission to share your location for the timespan you have enabled location sharing.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat needs permission to share your location for the timespan you have enabled location sharing.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat uses your microphone to record and send voice messages and videos with sound.</string>
@@ -1179,7 +1178,7 @@
     <string name="pref_reliable_service">Force Background Connection</string>
     <string name="pref_reliable_service_explain">Causes a permanent notification</string>
 
-    <string name="pref_background_notifications_rationale">To maintain connection to your e-mail server and receive messages in the background, ignore battery optimizations in the next step.\n\nDelta Chat uses few resources and takes care not to drain your battery.</string>
+    <string name="pref_background_notifications_rationale">To maintain connection and receive messages in the background, ignore battery optimizations in the next step.\n\nDelta Chat uses few resources and takes care not to drain your battery.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in the background.</string>
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>

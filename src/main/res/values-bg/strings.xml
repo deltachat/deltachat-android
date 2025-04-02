@@ -152,7 +152,7 @@
     <string name="voice_message">Гласово съобщение</string>
     <string name="forwarded">Препратено</string>
     <string name="forwarded_message">Препратено съобщение</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Препратен от %1$s</string>
     <string name="video">Видео</string>
     <string name="documents">Документи</string>
@@ -471,7 +471,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Мрежа от квадрати</string>
     <string name="send_message">Изпращане на съобщение</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s промени своя адрес от %2$s на %3$s</string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">Променихте своя email адрес от %1$s на %2$s.\n\nАко от тук нататък изпратите съобщение до проверена група, контактите в нея автоматично ще заменят стария с новия Ви адрес.\n\nСилно се препоръчва да извършите настройка в предишния си доставчик на електронна поща така, че всички email съобщения да се препращат към новия Ви email адрес. В противен случай е възможно да не получавате съобщения от контакти, които все още не са получили новия Ви адрес.</string>
@@ -504,7 +504,7 @@
     <string name="incoming_messages">Входящи съобщения</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Изходящи съобщения</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Съхранение върху %1$s</string>
     <string name="connectivity">Свързаност</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -554,9 +554,7 @@
     <string name="welcome_chat_over_email">Защитен децентрализиран чат</string>
     <string name="scan_invitation_code">Сканиране на код за покана</string>
     <string name="login_title">Влизане</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Влизане във Вашия акаунт за електронна поща</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Влизане със съществуващ акаунт за електронна поща</string>
     <string name="login_subheader">За известните доставчици на електронна поща допълнителните настройки се попълват автоматично. Понякога е необходимо да се разреши IMAP в уеб настройките. Потърсете помощ от Вашия доставчик на електронна поща или приятели.</string>
     <string name="login_no_servers_hint">Delta Chat няма сървъри, Вашите данни стоят на Вашето устройство.</string>
@@ -582,7 +580,7 @@
     <string name="import_backup_title">Възстановяване от резервно копие</string>
     <string name="import_backup_ask">Открито е резервно копие в \"%1$s\".\n\n Искате ли да импортирате и използвате всички данни и настройки от него?</string>
     <string name="import_backup_no_backup_found">Не са открити резервни копия.\n\nКопирайте резервното копие в \"%1$s\" и опитайте отново. Като алтернатива натиснете \"Започване на обмен на съобщения\", за да продължите с нормалния процес на настройка.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Не можете да влезете като \"%1$s\". Моля, проверете дали адресът за електронна поща и паролата са правилни. </string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Да бъдат приемани невалидните сертификати</string>
@@ -613,11 +611,10 @@
     <string name="pref_profile_photo">Изображение на профила</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
     <string name="blocked_empty_hint">Блокираните контакти ще се появяват тук.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Парола и акаунт</string>
     <string name="pref_who_can_see_profile_explain">Изображението, името и подписът от Вашия профил ще бъдат изпратени заедно с Вашите съобщения, когато общувате с други потребители.</string>
     <string name="pref_your_name">Вашето име</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Текст на подписа</string>
     <string name="pref_enter_sends">Клавишът Enter изпраща</string>
     <string name="pref_enter_sends_explain">Натискането на клавиша Enter ще изпраща текстовите съобщения</string>
@@ -659,6 +656,7 @@
     <string name="pref_use_system_emoji_explain">Изключване на вградената поддръжка за Emoji на Delta Chat</string>
     <string name="pref_show_system_contacts">Прочитане на системната адресна книга</string>
     <string name="pref_show_system_contacts_explain">Да се предлага създаване на чатове с контакти от адресната книга. За някои доставчици е необходимо първо да се настрои криптиране от край до край.</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Достъп до приложението</string>
     <string name="pref_chats">Чатове</string>
     <string name="pref_in_chat_sounds">Звуци в чата</string>
@@ -670,7 +668,7 @@
     <string name="pref_backup">Резервно копие</string>
     <string name="pref_backup_explain">Резервните копия на чатовете да се създават във външно място за съхранение</string>
     <string name="pref_backup_export_explain">Резервното копие помага да установите нова инсталация на това или друго устройство.\n\nТо ще съдържа всички съобщения, контакти и чатове и Вашата настройка \"от край до край\" на Autocrypt. Пазете файла на резервното копие на сигурно място или го изтрийте колкото е възможно по-скоро.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">Експортиране на %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Експортиране на всички %1$d профила</string>
@@ -691,7 +689,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Ако промение тази опция, се уверете, че Вашият сървър и другите Ви клиенти са конфигурирани по съответен начин.\n\nВ противен случай е възможно нещата въобще да не работят.</string>
     <string name="pref_watch_sent_folder">Да бъде наблюдавана папката \"Изпратени\"</string>
     <string name="pref_send_copy_to_self">Изпращане на копие до себе си</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Изисква се, когато този акант се използва на повече от едно устройство.</string>
     <string name="pref_auto_folder_moves">Автоматично преместване в папката DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Разговорите са преместени, за да се избегне претрупване на папката \"Входящи\"</string>
@@ -907,15 +904,16 @@
     <string name="set_name_and_avatar_explain">Задайте име, което Вашите контакти ще разпознават.  Можете също да установите изображение за профил.</string>
     <string name="please_enter_name">Моля, въведете име.</string>
     <string name="qraccount_qr_code_cannot_be_used">Не може да бъде създаден нов акаунт със сканирания QR код.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Желаете ли да влезете в \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Желаете ли да влезете в \"%1$s\"?\n\nСъщестуващият Ви акаунт няма да бъде изтрит. Превключвайте между акаунтите си чрез \"Превключване към друг акаунт\".</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s Ви покани да се присъедините към тази група.\n\nИзчаква се устройството на %2$s да отговори…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s отговори, изчаква се да бъдете добавени към групата…</string>
     <string name="secure_join_wait">Установява се гарантирано криптиране от край до край, моля изчакайте…</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">Все още не може да бъде установено гарантирано криптиране от край до край, но вече можете да пратите съобщение.</string>
     <string name="contact_verified">%1$s е проверен.</string>
     <string name="contact_not_verified">Не може да бъде проверен %1$s.</string>
@@ -925,6 +923,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Настройката за %1$s е сменена.</string>
     <string name="verified_contact_required_explain">За да се гарантира криптирането от край до край, можете да добавяте в тази група само контакти, отбелязани със зелена отметка.\n\nБихте могли да се срещнете с лицата, с които желаете да контактувате, лично и да сканирате техните QR кодове, за да ги въведете.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">URL адресът от QR кода е копиран в клипборда</string>
     <string name="mailto_dialog_header_select_chat">Изберете чат, към който да бъде пратено съобщението</string>
     <!-- first placeholder is the name of the chat -->
