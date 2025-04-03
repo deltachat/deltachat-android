@@ -64,7 +64,6 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.lang.ref.WeakReference;
-import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
@@ -585,28 +584,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void setupConfig() {
-        setConfig(R.id.email_text, CONFIG_ADDRESS, true);
-        setConfig(R.id.password_text, CONFIG_MAIL_PASSWORD, false);
-        setConfig(R.id.imap_server_text, CONFIG_MAIL_SERVER, true);
-        setConfig(R.id.imap_port_text, CONFIG_MAIL_PORT, true);
-        setConfig(R.id.imap_login_text, CONFIG_MAIL_USER, false);
-        setConfig(R.id.smtp_server_text, CONFIG_SEND_SERVER, true);
-        setConfig(R.id.smtp_port_text, CONFIG_SEND_PORT, true);
-        setConfig(R.id.smtp_login_text, CONFIG_SEND_USER, false);
-        setConfig(R.id.smtp_password_text, CONFIG_SEND_PASSWORD, false);
-
-        DcHelper.getContext(this).setConfigInt(CONFIG_MAIL_SECURITY, imapSecurity.getSelectedItemPosition());
-        DcHelper.getContext(this).setConfigInt(CONFIG_SEND_SECURITY, smtpSecurity.getSelectedItemPosition());
-
-        int server_flags = 0;
-        if(authMethod.getSelectedItemPosition()==1)   server_flags |= DcContext.DC_LP_AUTH_OAUTH2;
-        DcHelper.getContext(this).setConfigInt(CONFIG_SERVER_FLAGS, server_flags);
-
-        DcHelper.getContext(this).setConfigInt("smtp_certificate_checks", certCheck.getSelectedItemPosition());
-        DcHelper.getContext(this).setConfigInt("imap_certificate_checks", certCheck.getSelectedItemPosition());
-
-        // calling configure() results in
-        // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
         DcHelper.getEventCenter(this).captureNextError();
 
         EnteredLoginParam param = new EnteredLoginParam(
@@ -629,7 +606,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             Rpc rpc = DcHelper.getRpc(this);
             try {
                 rpc.addTransport(DcHelper.getContext(this).getAccountId(), param);
-                DcHelper.getAccounts(this).startIo();
                 DcHelper.getEventCenter(this).endCaptureNextError();
                 progressDialog.dismiss();
                 Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
@@ -643,15 +619,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 });
             }
         }).start();
-    }
-
-    private void setConfig(@IdRes int viewId, String configTarget, boolean doTrim) {
-        TextInputEditText view = findViewById(viewId);
-        String value = view.getText().toString();
-        if(doTrim) {
-            value = value.trim();
-        }
-        DcHelper.getContext(this).setConfig(configTarget, value.isEmpty()? null : value);
     }
 
     private String getParam(@IdRes int viewId, boolean doTrim) {
