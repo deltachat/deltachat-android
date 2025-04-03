@@ -1428,6 +1428,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getInfoType(JNIEnv *env, jobject ob
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getInfoContactId(JNIEnv *env, jobject obj)
+{
+    return dc_msg_get_info_contact_id(get_dc_msg(env, obj));
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getState(JNIEnv *env, jobject obj)
 {
     return dc_msg_get_state(get_dc_msg(env, obj));

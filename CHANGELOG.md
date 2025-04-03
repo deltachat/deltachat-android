@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* tapping info messages with contacts open the contact's profile
 * hide superfluous "Show Classic E-mails" advanced setting for chatmail
 * remove mostly non-telling transport addresses when referring to a contact;
   the contact's profile gives a much better overview
