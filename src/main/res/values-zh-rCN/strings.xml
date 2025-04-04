@@ -986,6 +986,7 @@
     <string name="secure_join_wait">正在建立有保证的端到端加密，请稍候…</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">无法建立有保证的端到端加密，但您可能已经发送了一条消息。</string>
+    <string name="secure_join_takes_longer">这可能需要较长时间，可能是对方或您已离线。\n\n但该过程仍在后台继续，您可以先做其他事情…</string>
     <string name="contact_verified">%1$s 已验证。</string>
     <string name="contact_not_verified">无法与 %1$s 建立有保证的端到端加密。</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
