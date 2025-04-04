@@ -52,7 +52,7 @@
     <string name="mute">Sessize Al</string>
     <string name="muted">Sessize alındı</string>
     <string name="ephemeral_messages">Kaybolan İletiler</string>
-    <string name="ephemeral_messages_hint">Bu sohbetin tüm üyelerine onlar Delta Chat\'i kullanıyorsa uygulanır; onlar hâlâ iletileri kopyalayabilir, kaydedebilir ve iletebilir ya da diğer e-posta istemcilerini kullanabilir.</string>
+    <string name="ephemeral_messages_hint">Bu sohbetin tüm üyelerine uygulanır; onlar hâlâ iletileri kopyalayabilir, kaydedebilir ve iletebilir.</string>
     <string name="save">Kaydet</string>
     <string name="chat">Sohbet</string>
     <string name="media">Ortam</string>
@@ -644,7 +644,7 @@
     <string name="proxy_share_link">Bağlantı Paylaş</string>
 
     <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
-    <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth 2.0) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'in E-posta Üzerinden Sohbet uygulamanız olarak davranmasına izin verin.\n\nDelta Chat kullanıcı verisi toplamaz; her şey aygıtınızda kalır.</string>
+    <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth 2.0) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'e iletiler gönderme ve alma izni verin.\n\nDelta Chat kullanıcı verisi toplamaz; her şey aygıtınızda kalır.</string>
     <string name="login_certificate_checks">Sertifika Denetimleri</string>
     <string name="login_error_mail">Lütfen geçerli bir e-posta adresi girin</string>
     <string name="login_error_server">Lütfen geçerli bir sunucu / IP adresi girin</string>
@@ -654,7 +654,7 @@
     <string name="import_backup_ask">“%1$s” üzerinde yedek bulundu.\n\nİçe aktarmak ve ondan gelen tüm verileri ve ayarları kullanmak istiyor musunuz?</string>
     <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği “%1$s” üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemiyle sürdürmek için “İletileşmeye başla”ya basın.</string>
     <!-- %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">“%1$s” olarak giriş yapılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
+    <string name="login_error_cannot_login">“%1$s” olarak giriş yapılamıyor. Lütfen adresin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Geçersiz sertifikaları kabul et</string>
     <string name="switch_account">Profili Değiştir</string>
@@ -740,7 +740,7 @@
     <string name="pref_use_system_emoji">Sistem Emojisini Kullan</string>
     <string name="pref_use_system_emoji_explain">Delta Chat\'in gömülü emoji desteğini kapat</string>
     <string name="pref_show_system_contacts">Sistem Adres Defterini Oku</string>
-    <string name="pref_show_system_contacts_explain">Adres defterinden gelen kişilerle sohbet oluşturmayı teklif edin. Bazı sağlayıcılara önce uçtan uca şifreleme ayarlaması gerekir.</string>
+    <string name="pref_show_system_contacts_explain">Adres defterinden gelen kişilerle sohbetler oluşturmayı teklif edin.</string>
     <!-- deprecated -->
     <string name="pref_app_access">Uygulama Erişimi</string>
     <string name="pref_chats">Sohbetler</string>
@@ -841,9 +841,9 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri “%2$s” silmek istiyor musunuz?\n\n• Bu, tüm ortamları kapsar\n\n• İletiler görülse de görülmese de silinecek\n\n• “Kaydedilen İletiler” yerel silmeden atlanacak</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri “%2$s” silmek istiyor musunuz?\n\n⚠️ Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve “Kaydedilen İletiler”i kapsar\n\n⚠️ Verileri sunucuda tutmak istiyorsanız bu işlevi kullanmayın\n\n⚠️ Delta Chat\'ten başka diğer e-posta istemcilerini kullanıyorsanız bu işlevi kullanmayın</string>
+    <string name="autodel_server_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri “%2$s” silmek istiyor musunuz?\n\n⚠️ Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve “Kaydedilen İletiler”i kapsar\n\n⚠️ Verileri sunucuda tutmak istiyorsanız ya da klasik e-posta istemcilerini de kullanıyorsanız bu işlevi kullanmayın</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve “Kaydedilen İletiler”i kapsar. Verileri sunucuda tutmak istiyorsanız ya da Delta Chat\'ten başka diğer e-posta istemcilerini kullanıyorsanız bu işlevi kullanmayın.</string>
+    <string name="autodel_server_enabled_hint">Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve “Kaydedilen İletiler”i kapsar. Verileri sunucuda tutmak istiyorsanız ya da klasik e-posta istemcilerini de kullanıyorsanız bu işlevi kullanmayın</string>
     <string name="autodel_server_warn_multi_device_title">Bir kerede silmeyi aç</string>
     <string name="autodel_server_warn_multi_device">Bir kerede silmeyi etkinleştirirseniz, bu profilde çoklu aygıtları kullanamazsınız.</string>
     <string name="autodel_confirm">Anladım, tüm bu iletileri sil</string>
@@ -939,7 +939,7 @@
     <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
     <string name="chat_protection_broken">%1$s başka bir aygıttan bir ileti gönderdi.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Bundan böyle iletiler uçtan uca şifreleme güvencelidir. Daha fazlasını öğrenmek için dokunun.</string>
-    <string name="chat_protection_enabled_explanation">Artık bu sohbetteki tüm iletiler uçtan uca şifreleme güvencelidir.\n\nUçtan uca şifreleme, iletilerinizi sizin ve sohbet ortaklarınızın arasında özel tutar. E-posta sağlayıcınız bile onları okuyamaz.</string>
+    <string name="chat_protection_enabled_explanation">Artık bu sohbetteki tüm iletiler uçtan uca şifreleme güvencelidir.\n\nUçtan uca şifreleme, iletilerinizi sizin ve sohbet ortaklarınızın arasında özel tutar. Sunucular, sağlayıcılar ya da aktarıcılar bile onları okuyamaz.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s başka bir aygıttan bir ileti gönderdi. Daha fazlasını öğrenmek için dokunun.</string>
     <string name="chat_protection_broken_explanation">Uçtan uca şifreleme artık güvencelenemiyor; çünkü büyük olasılıkla %1$s Delta Chat\'i yeniden yükledi ya da başka bir aygıttan ileti gönderdi.\n\nOnlarla kişisel olarak tanışabilir ve güvenceli uçtan uca şifrelemeyi yeniden kurmak için onların QR kodunu yeniden tarayabilirsiniz.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s, bu sohbet için henüz ayarlanmayan uçtan uca şifrelemeyi gerektirir. Daha fazlasını öğrenmek için dokunun.</string>
@@ -965,7 +965,7 @@
     <string name="qrscan_failed">QR kodu çözülemedi</string>
     <string name="qrscan_ask_join_group">“%1$s” öbeğine katılmak istiyor musunuz?</string>
     <string name="qrscan_fingerprint_mismatch">Taranan parmak izi, %1$s için son görülenle eşleşmiyor.</string>
-    <string name="qrscan_no_addr_found">Bu QR kodu, bir parmak izi içeriyor; ama e-posta adresi yok.\n\nBir bant dışı doğrulama için lütfen önce alıcıya şifrelenen bir bağlantı kurun.</string>
+    <string name="qrscan_no_addr_found">Bu QR kodu bir parmak izi içeriyor ama adres yok.\n\nBir bant dışı doğrulama için lütfen önce alıcıya şifrelenen bir bağlantı kurun.</string>
     <string name="qrscan_contains_text">Taranan QR kodu metni:\n\n%1$s</string>
     <string name="qrscan_contains_url">Taranan QR kodu URL\'si:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Parmak izi</string>
@@ -1002,6 +1002,7 @@
     <string name="secure_join_wait">Güvencelenen uçtan uca şifreleme kuruluyor, lütfen bekleyin…</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Henüz güvencelenen uçtan uca şifreleme kurulamadı; ama zaten bir ileti gönderebilirsiniz.</string>
+    <string name="secure_join_takes_longer">Bu daha uzun sürüyor gibi görünüyor, belki kişi ya da siz çevrimdışısınız.\n\nAncak işlem arka planda sürüyor, başka bir şey yapabilirsiniz…</string>
     <string name="contact_verified">%1$s tanıtıldı.</string>
     <string name="contact_not_verified">%1$s ile güvencelenen uçtan uca şifreleme kurulamıyor.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
@@ -1161,7 +1162,7 @@
     <string name="add_to_widget">Widget\'a Ekle</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat, fotoğraflar ve videolar çekmek ve göndermek için ve QR kodlarını taramak için kameranızı kullanır.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat, yazabileceğiniz e-posta adreslerinin bir listesini göstermek için kişilerinizi kullanır. Delta Chat sunucusu yoktur; kişileriniz herhangi bir yere gönderilmez.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat, yazabileceğiniz adreslerin bir listesini göstermek için kişilerinizi kullanır. Delta Chat\'in sunucusu yoktur; kişileriniz herhangi bir yere gönderilmez.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Konum paylaşımını etkinleştirdiğiniz zaman aralığında konumunuzu paylaşmak için Delta Chat\'e izin gerekir.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Konum paylaşımını etkinleştirdiğiniz zaman aralığında konumunuzu paylaşmak için Delta Chat\'e izin gerekir.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat, sesli iletiler ve sesli videolar kaydetmek ve göndermek için mikrofonunuzu kullanır.</string>
@@ -1177,7 +1178,7 @@
     <string name="pref_reliable_service">Arka Plan Bağlantısını Zorla</string>
     <string name="pref_reliable_service_explain">Kalıcı bir bildirime neden olur</string>
 
-    <string name="pref_background_notifications_rationale">E-posta sunucunuza bağlantıyı sürdürmek ve arka planda iletileri almak için sonraki adımda pil iyileştirmelerini yok sayın.\n\nDelta Chat, az kaynak kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
+    <string name="pref_background_notifications_rationale">Bağlantıyı sürdürmek ve arka planda iletileri almak için sonraki adımda pil iyileştirmelerini yok sayın.\n\nDelta Chat, az kaynak kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Delta Chat arka plandayken iletileri almak için buraya dokunun.</string>
     <string name="perm_enable_bg_already_done">Delta Chat\'in arka planda iletileri almasına zaten izin verdiniz.\n\nİletiler arka planda hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
