@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +32,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 
 public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment {
 
+  private static final String TAG = NotificationsPreferenceFragment.class.getSimpleName();
   private static final int REQUEST_CODE_NOTIFICATION_SELECTED = 1;
 
   private CheckBoxPreference ignoreBattery;
@@ -159,7 +161,17 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
         Ringtone tone = RingtoneManager.getRingtone(getActivity(), value);
 
         if (tone != null) {
-          preference.setSummary(tone.getTitle(getActivity()));
+          String summary;
+          try {
+            summary = tone.getTitle(getActivity());
+          } catch (SecurityException e) {
+            // this could happen in some phones when user selects ringtone from
+            // external storage and later removes the read from external storage permission
+            // and later this method is called from initializeRingtoneSummary()
+            summary = "???";
+            Log.w(TAG, e);
+          }
+          preference.setSummary(summary);
         }
       }
 
