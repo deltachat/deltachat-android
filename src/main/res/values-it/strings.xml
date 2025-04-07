@@ -126,7 +126,7 @@
     <plurals name="n_chats">
         <item quantity="one">%d chat</item>
         <item quantity="many">%d chats</item>
-        <item quantity="other">%d chats</item>
+        <item quantity="other">%d chat</item>
     </plurals>
     <plurals name="n_contacts">
         <item quantity="one">%d contatto</item>
@@ -324,9 +324,9 @@
     <string name="device_talk_welcome_message2">Mettiti in contatto!\n\n🙌 Tocca \"Codice QR\" sulla schermata principale di entrambi i dispositivi. Scegli \"Scansiona codice QR\" su un dispositivo e puntalo verso l\'altro\n\n🌍 Se non siete nella stessa stanza, esegui la scansione tramite videochiamata o condividi un collegamento di invito da \"Scansiona codice QR\"\n\nQuindi: goditi la ​​tua esperienza di messaggistica sulla più grande rete decentralizzata mai esistita: l\'E-mail. E a differenza di altre app popolari, senza controllo centrale né monitoraggio o vendita dei tuoi dati, ne dei tuoi amici, colleghi o familiari a grandi organizzazioni.</string>
     <string name="edit_contact">Modifica Contatto</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
-    <string name="pin_chat">Blocca Chat</string>
+    <string name="pin_chat">Fissa in alto</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
-    <string name="unpin_chat">Sblocca Chat</string>
+    <string name="unpin_chat">Non fissare</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Blocca</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
@@ -394,7 +394,7 @@
         <item quantity="other">Eliminare %d messaggi?</item>
     </plurals>
     <string name="ask_forward">Inoltrare messaggi a %1$s?</string>
-    <string name="ask_forward_multiple">Inoltra messaggi a %1$d chats?</string>
+    <string name="ask_forward_multiple">Inoltra messaggi a %1$d chat?</string>
     <string name="ask_export_attachment">Esportare allegati permetterà ad ogni altra app sul tuo dispositivo di accedervi.\n\nContinuare?</string>
     <string name="ask_block_contact">Vuoi bloccare questo contatto?\n\nI messaggi diretti o i gruppi creati dai contatti bloccati non verranno visualizzati.\n\nGli altri gruppi con contatti bloccati continueranno a visualizzare i loro messaggi.</string>
     <string name="ask_unblock_contact">Sbloccare questo contatto?</string>
@@ -419,14 +419,14 @@
     <plurals name="chat_archived">
         <item quantity="one">%d chat archiviata</item>
         <item quantity="many">%d chats archiviate</item>
-        <item quantity="other">%d chats archiviate</item>
+        <item quantity="other">%d chat archiviate</item>
     </plurals>
     <plurals name="chat_unarchived">
         <item quantity="one">%d chat ripristinata</item>
         <item quantity="many">%d chats ripristinate</item>
-        <item quantity="other">%d chats ripristinate</item>
+        <item quantity="other">%d chat ripristinate</item>
     </plurals>
-    <string name="chat_archived_chats_title">Chats Archiviate</string>
+    <string name="chat_archived_chats_title">Chat Archiviate</string>
     <string name="chat_please_enter_message">Per piacere scrivi un messaggio.</string>
     <string name="chat_camera_unavailable">Fotocamera non disponibile.</string>
     <string name="chat_unable_to_record_audio">Impossibile registrare audio.</string>
@@ -441,15 +441,15 @@
     <string name="chat_new_group_hint">Gli altri vedranno questo gruppo solo dopo che avrai inviato un primo messaggio.</string>
     <string name="chat_record_slide_to_cancel">Scorri per annullare</string>
     <string name="chat_record_explain">Tocca e mantieni per registrare un messaggio vocale, rilascia per inviare </string>
-    <string name="chat_no_chats_yet_title">Nessuna Chats.\nPremi \"+\" per iniziare una nuova chat.</string>
-    <string name="chat_all_archived">Tutte le chats archiviate.\nPremi \"+\" per iniziare una nuova chat.</string>
+    <string name="chat_no_chats_yet_title">Nessuna Chat.\nPremi \"+\" per iniziare una nuova chat.</string>
+    <string name="chat_all_archived">Tutte le chat archiviate.\nPremi \"+\" per iniziare una nuova chat.</string>
     <string name="chat_share_with_title">Condividi con</string>
     <string name="chat_input_placeholder">Messaggio</string>
     <string name="chat_archived_label">Archiviato</string>
     <string name="chat_request_label">Richiesta</string>
     <string name="chat_no_messages">Nessun messaggio.</string>
     <string name="chat_self_talk_subtitle">Messaggi a Me</string>
-    <string name="archive_empty_hint">Le chats archiviate verranno mostrate qui.</string>
+    <string name="archive_empty_hint">Le chat archiviate verranno mostrate qui.</string>
     <string name="saved_messages">Messaggi Salvati</string>
     <string name="saved_messages_explain">• Inoltra i messaggi qui per un facile accesso\n\n• Prendi appunti o promemoria vocali\n\n• Allega file multimediali per salvarli</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -520,8 +520,8 @@
     <string name="group_add_members">Aggiungi Membri</string>
     <string name="group_self_not_in_group">Devi essere un membro del gruppo per fare questa azione.</string>
     <string name="profile_encryption">Crittografia</string>
-    <string name="profile_shared_chats">Chats Condivise</string>
-    <string name="related_chats">Chats Correlate</string>
+    <string name="profile_shared_chats">Chat Condivise</string>
+    <string name="related_chats">Chat Correlate</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Membri Passati</string>
     <string name="tab_contact">Contatto</string>
@@ -547,7 +547,7 @@
     <string name="send_message">Invia Messaggio</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s ha cambiato il suo indirizzo da %2$s a %3$s</string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">Hai cambiato il tuo indirizzo email da %1$s a %2$s.\n\nSe ora invii un messaggio a un gruppo verificato, i contatti sostituiranno automaticamente il vecchio indirizzo con il tuo nuovo indirizzo.\n\nSi consiglia vivamente di impostare il tuo vecchio fornitore email per inoltrare tutte le email al tuo nuovo indirizzo. Altrimenti potresti perdere i messaggi di contatti che non hanno ancora ricevuto il tuo nuovo indirizzo.</string>
 
 
@@ -696,9 +696,9 @@
     <string name="forward_to">Inoltra a…</string>
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Inviare %1$d files a \"%2$s\"?</string>
-    <string name="ask_send_files_to_selected_chats">Invia %1$d file(s) a %2$d chats?</string>
+    <string name="ask_send_files_to_selected_chats">Invia %1$d file(s) a %2$d chat?</string>
     <string name="videos_sent_without_recoding">(I video vengono inviati come file originali, di grandi dimensioni. Per inviare i video come file più piccoli, allegali separatamente)</string>
-    <string name="share_text_multiple_chats">Invia questo testo a %1$d chats?\n\n\"%2$s\"</string>
+    <string name="share_text_multiple_chats">Invia questo testo a %1$d chat?\n\n\"%2$s\"</string>
     <string name="share_abort">Condivisione annullata per permessi mancanti.</string>
 
 
@@ -751,12 +751,12 @@
     <string name="pref_read_receipts">Ricevute di Lettura</string>
     <string name="pref_read_receipts_explain">Se le conferme di lettura sono disattivate, non potrai vedere le conferme di lettura degli altri.</string>
     <string name="pref_server">Server</string>
-    <string name="pref_encryption">Criptazione</string>
+    <string name="pref_encryption">Crittografia</string>
     <string name="pref_manage_keys">Gestisci Chiavi</string>
     <string name="pref_use_system_emoji">Usa Emoji di Sistema</string>
     <string name="pref_use_system_emoji_explain">Disattiva il supporto delle emoji integrato in Delta Chat</string>
     <string name="pref_show_system_contacts">Leggi Rubrica di Sistema</string>
-    <string name="pref_show_system_contacts_explain">Offri la possibilità di creare chats con i contatti della rubrica. Alcuni provider necessitano prima della configurazione della crittografia end-to-end.</string>
+    <string name="pref_show_system_contacts_explain">Offri la possibilità di creare chat con i contatti della rubrica. Alcuni provider necessitano prima della configurazione della crittografia end-to-end.</string>
     <!-- deprecated -->
     <string name="pref_app_access">Accesso App</string>
     <string name="pref_chats">Chats</string>
@@ -767,7 +767,7 @@
     <string name="pref_log_header">Registro</string>
     <string name="pref_other">Altro</string>
     <string name="pref_backup">Backup</string>
-    <string name="pref_backup_explain">Backup Chats su Memoria Esterna</string>
+    <string name="pref_backup_explain">Backup Chat su Memoria Esterna</string>
     <string name="pref_backup_export_explain">Un backup ti aiuta a impostare una nuova installazione su questo o un altro dispositivo.\n\nIl backup conterrà tutti i messaggi, i contatti, le chat e le impostazioni end-to-end Autocrypt. Tieni il file di backup in un luogo sicuro oppure eliminarlo il prima possibile.</string>
     <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">Esporta %1$s</string>
@@ -881,7 +881,9 @@
     <string name="autocrypt_send_asm_button">Invia Messaggio Configurazione Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">La tua configurazione ti è stata inviata. Passa all\'altro dispositivo e apri il messaggio. Dovrebbe venirti richiesto un codice. Inserisci il seguente codice:</string>
     <string name="autocrypt_prefer_e2ee">Preferisci Cifratura End-To-End</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Messaggio Configurazione Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">Questo è il Messaggio Configurazione Autocrypt utilizzato per trasferire la configurazione end-to-end tra i client.\n\nPer decifrare e utilizzare la configurazione, aprire il messaggio in un client compatibile con Autocrypt e immettere il codice di configurazione presentato sul dispositivo di generazione.</string>
 
 
@@ -1070,7 +1072,7 @@
     <string name="ImageEditorHud_rotate">Ruota</string>
 
     <!-- dc_str_* resources -->
-    <string name="encrypted_message">Messaggio crittato</string>
+    <string name="encrypted_message">Messaggio cifrato</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Questa è l\'app Desktop Delta Chat ufficiale.</string>
@@ -1132,7 +1134,7 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Stato consegna: Errore</string>
-    <string name="a11y_encryption_padlock">Lucchetto crittazione</string>
+    <string name="a11y_encryption_padlock">Lucchetto di cifratura</string>
     <string name="a11y_delivery_status_sending">Stato consegna: In uscita</string>
     <string name="a11y_delivery_status_draft">Stato consegna: Bozza</string>
     <string name="a11y_delivery_status_delivered">Stato consegna: Consegnato</string>

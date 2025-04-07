@@ -295,7 +295,9 @@
     <string name="autocrypt_send_asm_button">Enviar mensagem com a definição da encriptação automática</string>
     <string name="autocrypt_send_asm_explain_after">A sua configuração foi-lhe enviada. Entre no outro dispositivo e abra a mensagem de configuração. Deve ser solicitado a fornecer um código de configuração. Digite os seguintes dígitos no prompt.\n\n Assim que estiver concluido, o outro dispositivo estará pronto para usar o Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Preferir encriptação ponta a ponta</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Mensagem de configuração do Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">Esta é a Mensagem de Configuração de Autocrypt usada para transferir sua configuração de ponta a ponta entre clientes (dispositivos). \n\nPara descriptar e usar, abra a mensagem em um cliente compatível com Autocrypt e insira o código de configuração apresentado no dispositivo de geração.</string>
 
 
