@@ -479,7 +479,7 @@
     <string name="send_message">Skicka meddelande</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s ändrade sin adress från %2$s till %3$s</string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">Du har ändrat din e-postadress från %1$s till %2$s.\n\nOm du nu skickar ett meddelande till en verifierad grupp kommer kontakterna där automatiskt att ersätta den gamla med din nya adress. Vi rekommenderar starkt att du ställer in din gamla e-postleverantör så att den vidarebefordrar alla e-postmeddelanden till din nya e-postadress. Annars kan du missa meddelanden från kontakter som inte har fått din nya adress ännu.</string>
 
 
@@ -786,7 +786,9 @@
     <string name="autocrypt_send_asm_button">Skicka Autocrypt inställningsmeddelande</string>
     <string name="autocrypt_send_asm_explain_after">Dina inställningar har skickats till dig själv. Byt till den andra enheten och öppna inställningsmeddelandet. Du kommer att tillfrågas om en inställningskod. Ange följande siffror:</string>
     <string name="autocrypt_prefer_e2ee">Föredra slutpunkt-till-slutpunkt-kryptering</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Inställningsmeddelande för Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">Detta är inställningsmeddelandet för Autocrypt som används för att skicka nycklar mellan klienter.\n\nFör att kunna avkryptera och använda din nyckel, öppnar du meddelandet i en Autocrypt-kompatibel klient och skriver in inställningskoden som visats på den genererande enheten.</string>
 
 
