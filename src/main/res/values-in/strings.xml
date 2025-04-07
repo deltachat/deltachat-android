@@ -525,7 +525,9 @@
     <string name="autocrypt_send_asm_button">Kirim Pengaturan Pesan Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Pengaturan Anda sudah dikirim ke Anda sendiri. Lihat pesan pengaturan di perangkat yang lain. Seharusnya Anda akan diminta kode pengaturan. Masukkan angka berikut:</string>
     <string name="autocrypt_prefer_e2ee">Lebih baik enkripsi ujung ke ujung</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Pengaturan Pesan Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">Inilah Autocrypt Setup Message yang digunakan utuk mentransfer pengaturan ujung ke ujung Anda antar pelanggan.\n\nUntuk membuka enkirpsi dan menggunakan pengaturan Anda, bukan pesan di Autocrypt-compliant pelanggan dan masukkan kode pengaturan yang ditampikan untuk perangkat terkait.</string>
 
 

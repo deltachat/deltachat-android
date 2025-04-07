@@ -341,7 +341,9 @@
     <string name="autocrypt_send_asm_button">Igangsett Autocrypt-nøkkeloverføring</string>
     <string name="autocrypt_send_asm_explain_after">Nøkkelen din har blitt sendt til deg selv. Bytt til den andre enheten og åpne oppsettsmeldingen. Du bør bli forespurt om å oppgi en oppsettskode. Skriv in følgende siffer.\n\nNår du er ferdig, vil din andre enhet også kunne bruke Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Foretrekk ende-til-ende -kryptering</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Autocrypt-nøkkeloverføring</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">Dette er Autocrypt-oppsettsmeldingen brukt til å overføre nøkkelen din mellom klienter.\n\nFor å dekryptere å bruke din nøkkel, åpne meldingen i en Autocrypt-kompatibel klient og skriv inn oppsettskoden som vises på enheten som genererer den.</string>
 
 

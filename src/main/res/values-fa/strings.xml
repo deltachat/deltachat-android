@@ -522,7 +522,7 @@ https://meet.jit.si/$ROOM
     <string name="send_message">ارسال پیام</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">مخاطب %1$s نشانی خود را از %2$s به %3$s تغییر داده است.  </string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">شما نشانی رایانامهٔ خود را از %1$s به %2$s تغییر دادید.\n\nاگر به یک گروه تأیید شده پیام بفرستید، مخاطبان آن به صورت خودکار نشانی جدید را جایگزین نشانی پیشین می‌کنند.\n\nبه شدت توصیه می‌شود که نشانی رایانامهٔ پیشین خود را به نحوی تنظیم کنید که تمام رایانامه‌ها را به نشانی جدید شما هدایت کند؛ در غیر این صورت ممکن است پیام‌های مخاطبانی که از تغییر نشانی شما مطلع نشده‌اند را از دست بدهید. </string>
 
 
@@ -846,7 +846,9 @@ https://meet.jit.si/$ROOM
     <string name="autocrypt_send_asm_button">ارسال پیام برپاسازی اتوکریپت</string>
     <string name="autocrypt_send_asm_explain_after">تنظیم‌های شما برای خودتان ارسال شدند. پیام تنظیم‌ها را در دستگاه دیگر باز کنید. یک کد نصب از شما خواسته می‌شود. این ارقام را وارد کنید</string>
     <string name="autocrypt_prefer_e2ee">ترجیح رمزگذاری گیرنده به گیرنده</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">پیام برپاسازی اتوکریپت</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">این پیام برپاسازی اتوکریپت است و تنظیم‌های مربوط به رمزگذاری سرتاسر شما را بین دستگاه‌ها جابه‌جا می‌کند.\n\n برای رمزگشایی و استفاده از آن، پیام را در یک سامانه که با اتوکریپت همخوانی دارد باز کنید و کد برپاسازی که در دستگاه تولیدکنندهٔ پیام، به شما داده می‌شود را وارد نمایید. </string>
 
 

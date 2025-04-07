@@ -549,7 +549,9 @@
     <string name="autocrypt_send_asm_button">Send autocrypt-opsætningsbesked</string>
     <string name="autocrypt_send_asm_explain_after">Opsætning er sendt til dig selv. Skift til den anden enhed og åben opsætning beskeden. Der skulle blive spurgt til opsætning kode. Indtast følgende cifre i prompt.\n\nNår færdig vil den anden enhed være klar til at bruge Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Foretræk end-to-end kryptering</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Autocrypt opsætningsbesked</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">Dette er Autocrypt opsætning besked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at af kryptere og bruge opsætning åben beskeden i en Autocrypt kompatibel klient og indtast opsæt koden vist på den genererende enhed.</string>
 
 

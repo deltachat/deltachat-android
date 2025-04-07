@@ -561,7 +561,7 @@
     <string name="send_message">Надіслати повідомлення</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s змінили їх адресу з %2$s на %3$s</string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">Ви змінили електронну адресу з %1$s на %2$s.\n\nЯкщо зараз Ви відправите повідомлення в підтверджену групу, контакти в ній автоматично замінять Вашу стару адресу на нову.\n\nРекомендується налаштувати старий обліковий запис електронної пошти на пересилання всіх електронних листів на Вашу нову електронну адресу. Інакше Ви можете пропустити повідомлення контактів, які ще не отримали Вашу нову адресу.</string>
 
 
@@ -891,7 +891,9 @@
     <string name="autocrypt_send_asm_button">Надіслати повідомлення з налаштуваннями Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Налаштування було Вам надіслано. Перейдіть на інший пристрій і відкрийте повідомлення про налаштування. У Вас має з\'явитися запит на введення коду налаштування. Введіть наступні цифри:</string>
     <string name="autocrypt_prefer_e2ee">Віддавати перевагу наскрізному шифруванню</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Повідомлення з налаштуваннями Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">Це повідомлення з налаштуваннями Autocrypt, що слугує для передачі параметрів наскрізного шифрування між пристроями.\n\nДля розшифрування параметрів відкрийте це повідомлення в додатку, що підтримує Autocrypt і введіть інсталяційний код, показаний на початковому пристрої.</string>
 
 
