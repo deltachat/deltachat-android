@@ -24,7 +24,6 @@ public class ProfilePreference extends Preference {
 
   private ImageView avatarView;
   private TextView  profileNameView;
-  private TextView profileAddressView;
 
   public ProfilePreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
@@ -55,20 +54,15 @@ public class ProfilePreference extends Preference {
     super.onBindViewHolder(viewHolder);
     avatarView        = (ImageView)viewHolder.findViewById(R.id.avatar);
     profileNameView   = (TextView)viewHolder.findViewById(R.id.profile_name);
-    profileAddressView = (TextView)viewHolder.findViewById(R.id.number);
 
     refresh();
   }
 
   public void refresh() {
-    if (profileAddressView == null) return;
+    if (profileNameView == null) return;
 
     final String address = DcHelper.get(getContext(), DcHelper.CONFIG_CONFIGURED_ADDRESS);
-    String profileName  = DcHelper.get(getContext(), DcHelper.CONFIG_DISPLAY_NAME);
-
-    if(profileName==null || profileName.isEmpty()) {
-      profileName = getContext().getString(R.string.pref_profile_info_headline);
-    }
+    final String profileName  = DcHelper.get(getContext(), DcHelper.CONFIG_DISPLAY_NAME);
 
     final MyProfileContactPhoto profileImage = new MyProfileContactPhoto(address, String.valueOf(Prefs.getProfileAvatarId(getContext())));
 
@@ -81,8 +75,8 @@ public class ProfilePreference extends Preference {
 
     if (!TextUtils.isEmpty(profileName)) {
       profileNameView.setText(profileName);
+    } else {
+      profileNameView.setText(getContext().getString(R.string.pref_profile_info_headline));
     }
-
-    profileAddressView.setText(address);
   }
 }
