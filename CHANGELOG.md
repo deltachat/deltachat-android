@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* display "Last Seen" information instead of email address in contact list for contacts with green-checkmark, like in other popular messengers
 * hide superfluous "Show Classic E-mails" advanced setting for chatmail
 * remove mostly non-telling transport addresses when referring to a contact;
   the contact's profile gives a much better overview

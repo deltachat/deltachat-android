@@ -18,6 +18,7 @@ import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
+import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -108,6 +109,19 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   private void setText(String name, String number, String label, DcContact contact) {
     this.nameView.setEnabled(true);
     this.nameView.setText(name==null? "#" : name);
+
+    if (contact != null && contact.isVerified()) {
+      if (contact.isBot()) {
+        number = getContext().getString(R.string.bot);
+      } else {
+        long timestamp = contact.getLastSeen();
+        if (timestamp != 0) {
+          number = getContext().getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(getContext(), timestamp));
+        } else {
+          number = null;
+        }
+      }
+    }
 
     if(number!=null) {
       this.numberView.setText(number);
