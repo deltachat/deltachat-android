@@ -423,7 +423,12 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
   private void progressError(String data2) {
     if (progressDialog != null) {
-      progressDialog.dismiss();
+      try {
+        progressDialog.dismiss();
+      } catch (IllegalArgumentException e) {
+        // see https://stackoverflow.com/a/5102572/4557005
+        Log.w(TAG, e);
+      }
     }
     WelcomeActivity.maybeShowConfigurationError(this, data2);
   }
