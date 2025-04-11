@@ -13,14 +13,31 @@
                android:contentDescription="@string/pref_profile_info_headline"
                android:transitionName="avatar"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/profile_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:gravity="start"
-            android:textAlignment="viewStart"
-            android:textSize="20sp"
-            tools:text="Voltarine DeClyre"/>
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginRight="16dp"
+                  android:layout_marginEnd="16dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="start"
+                android:textAlignment="viewStart"
+                android:textSize="20sp"
+                tools:text="Voltarine DeClyre"/>
+
+        <TextView android:id="@+id/profile_status"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="start"
+                  android:textAlignment="viewStart"
+                  android:singleLine="true"
+                  android:ellipsize="marquee"
+                  tools:text="I use Delta Chat :)"/>
+
+    </LinearLayout>
 
 </LinearLayout>

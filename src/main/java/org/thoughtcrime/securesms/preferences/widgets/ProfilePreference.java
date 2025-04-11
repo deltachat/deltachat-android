@@ -24,6 +24,7 @@ public class ProfilePreference extends Preference {
 
   private ImageView avatarView;
   private TextView  profileNameView;
+  private TextView  profileStatusView;
 
   public ProfilePreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
@@ -54,6 +55,7 @@ public class ProfilePreference extends Preference {
     super.onBindViewHolder(viewHolder);
     avatarView        = (ImageView)viewHolder.findViewById(R.id.avatar);
     profileNameView   = (TextView)viewHolder.findViewById(R.id.profile_name);
+    profileStatusView = (TextView)viewHolder.findViewById(R.id.profile_status);
 
     refresh();
   }
@@ -62,8 +64,6 @@ public class ProfilePreference extends Preference {
     if (profileNameView == null) return;
 
     final String address = DcHelper.get(getContext(), DcHelper.CONFIG_CONFIGURED_ADDRESS);
-    final String profileName  = DcHelper.get(getContext(), DcHelper.CONFIG_DISPLAY_NAME);
-
     final MyProfileContactPhoto profileImage = new MyProfileContactPhoto(address, String.valueOf(Prefs.getProfileAvatarId(getContext())));
 
     GlideApp.with(getContext().getApplicationContext())
@@ -73,10 +73,18 @@ public class ProfilePreference extends Preference {
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .into(avatarView);
 
+    final String profileName  = DcHelper.get(getContext(), DcHelper.CONFIG_DISPLAY_NAME);
     if (!TextUtils.isEmpty(profileName)) {
       profileNameView.setText(profileName);
     } else {
       profileNameView.setText(getContext().getString(R.string.pref_profile_info_headline));
+    }
+
+    final String status = DcHelper.get(getContext(), DcHelper.CONFIG_SELF_STATUS);
+    if (!TextUtils.isEmpty(status)) {
+      profileStatusView.setText(status);
+    } else {
+      profileStatusView.setText(getContext().getString(R.string.pref_default_status_label));
     }
   }
 }
