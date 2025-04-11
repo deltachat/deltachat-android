@@ -3,6 +3,7 @@
 ## Unreleased
 
 * hide superfluous "Show Classic E-mails" advanced setting for chatmail
+* show profile bio/status under name in main settings screen
 * remove mostly non-telling transport addresses when referring to a contact;
   the contact's profile gives a much better overview
 * Disable AEAP to enable us to overhaul some things - there are big changes underway in this area, which will come in a few months
