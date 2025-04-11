@@ -32,6 +32,8 @@ import androidx.loader.app.LoaderManager;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcLot;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -86,7 +88,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
   private AttachmentManager attachmentManager;
   private Bitmap avatarBmp;
-  private ProgressDialog progressDialog;
+  private @Nullable ProgressDialog progressDialog;
   private DcContext dcContext;
 
   @Override
@@ -408,30 +410,34 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     if (eventId == DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
       long progress = event.getData1Int();
-      if (progress==0/*error/aborted*/) {
-        progressError(event.getData2Str());
-      } else if (progress<1000/*progress in permille*/) {
-        progressUpdate((int)progress);
-      } else if (progress==1000/*done*/) {
-        DcHelper.getAccounts(this).startIo();
-        progressSuccess();
-      }
+      progressUpdate((int)progress);
     }
   }
 
   private void progressUpdate(int progress) {
     int percent = progress / 10;
-    progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
+    if (progressDialog != null) {
+      progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
+    }
   }
 
   private void progressError(String data2) {
-    progressDialog.dismiss();
+    if (progressDialog != null) {
+      try {
+        progressDialog.dismiss();
+      } catch (IllegalArgumentException e) {
+        // see https://stackoverflow.com/a/5102572/4557005
+        Log.w(TAG, e);
+      }
+    }
     WelcomeActivity.maybeShowConfigurationError(this, data2);
   }
 
   private void progressSuccess() {
     DcHelper.getEventCenter(this).endCaptureNextError();
-    progressDialog.dismiss();
+    if (progressDialog != null) {
+      progressDialog.dismiss();
+    }
 
     Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
     intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
@@ -499,14 +505,13 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     DcHelper.getEventCenter(this).captureNextError();
 
     new Thread(() -> {
-      if (!dcContext.setConfigFromQr(qrCode)) {
-        Util.runOnMain(() -> {
-          progressError(dcContext.getLastError());
-        });
-        return;
-      }
-      DcHelper.getAccounts(this).stopIo();
-      dcContext.configure();
+      Rpc rpc = DcHelper.getRpc(this);
+        try {
+          rpc.addTransportFromQr(dcContext.getAccountId(), qrCode);
+          progressSuccess();
+        } catch (RpcException e) {
+          Util.runOnMain(() -> progressError(e.getMessage()));
+        }
     }).start();
   }
 

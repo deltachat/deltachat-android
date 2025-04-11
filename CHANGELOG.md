@@ -4,6 +4,17 @@
 
 * tapping info messages with contacts open the contact's profile
 * hide superfluous "Show Classic E-mails" advanced setting for chatmail
+* show profile bio/status under name in main settings screen
+* remove mostly non-telling transport addresses when referring to a contact;
+  the contact's profile gives a much better overview
+* Disable AEAP to enable us to overhaul some things - there are big changes underway in this area, which will come in a few months
+* don't display email address in contact list and member list for contacts with green-checkmark
+* avoid crash in Notifications preferences if ringtone title can't be read
+* don't display forwarded messages as "edited" if original message was edited
+* support importing contact from ProtonMail vCard attachments received in chats
+* send encrypted in the experimental broadcast lists feature
+* wait for QR scan (or invite link click) process to complete before allowing to send messages
+* update to core 1.159.0
 
 ## v1.56.1
 2025-03

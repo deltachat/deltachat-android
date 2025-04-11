@@ -156,8 +156,6 @@ public class DcHelper {
     dcContext.setStockTranslation(36, context.getString(R.string.contact_not_verified));
     dcContext.setStockTranslation(37, context.getString(R.string.contact_setup_changed));
     dcContext.setStockTranslation(40, context.getString(R.string.chat_archived_label));
-    dcContext.setStockTranslation(42, context.getString(R.string.autocrypt_asm_subject));
-    dcContext.setStockTranslation(43, context.getString(R.string.autocrypt_asm_general_body));
     dcContext.setStockTranslation(60, context.getString(R.string.login_error_cannot_login));
     dcContext.setStockTranslation(66, context.getString(R.string.location));
     dcContext.setStockTranslation(67, context.getString(R.string.sticker));
@@ -237,7 +235,6 @@ public class DcHelper {
     dcContext.setStockTranslation(120, context.getString(R.string.qrshow_join_group_hint).replace("\"", ""));
     dcContext.setStockTranslation(121, context.getString(R.string.connectivity_not_connected));
     dcContext.setStockTranslation(122, context.getString(R.string.aeap_addr_changed));
-    dcContext.setStockTranslation(123, context.getString(R.string.aeap_explanation));
     dcContext.setStockTranslation(162, context.getString(R.string.multidevice_qr_subtitle));
     dcContext.setStockTranslation(163, context.getString(R.string.multidevice_transfer_done_devicemsg));
 

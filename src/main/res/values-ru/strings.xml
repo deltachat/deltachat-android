@@ -52,7 +52,7 @@
     <string name="mute">Отключить уведомления</string>
     <string name="muted">Беззвучный</string>
     <string name="ephemeral_messages">Исчезающие сообщения</string>
-    <string name="ephemeral_messages_hint">Эти настройки применяются ко всем участникам, использующим Delta Chat. Тем не менее, они могут копировать, сохранять и пересылать сообщения или использовать другие почтовые клиенты.</string>
+    <string name="ephemeral_messages_hint">Применяется ко всем участникам этого чата, но они по-прежнему могут копировать, сохранять и пересылать сообщения.</string>
     <string name="save">Сохранить</string>
     <string name="chat">Чат</string>
     <string name="media">Медиафайлы</string>
@@ -563,7 +563,7 @@
     <string name="send_message">Отправить сообщение</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s меняет адрес с %2$s на %3$s</string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">Вы изменили свой адрес электронной почты с %1$s на %2$s.\n\nЕсли вы отправите сообщение в подтвержденную группу, контакты в ней автоматически обновят ваш старый адрес на новый.\n\nНастоятельно рекомендуется настроить старого поставщика электронной почты на пересылку всех писем на новый адрес. Иначе вы можете пропустить сообщения от контактов, которые еще не получили ваш новый адрес.</string>
 
 
@@ -676,7 +676,7 @@
     <string name="proxy_share_link">Поделиться ссылкой</string>
 
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
-    <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth 2.0).\n\nНа следующем шаге разрешите Delta Chat действовать как ваше приложение для чата по электронной почте.\n\nDelta Chat не собирает данные пользователей, все данные остаются на вашем устройстве.</string>
+    <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth 2.0).\n\nНа следующем шаге, разрешите Delta Chat отправлять и получать сообщения.\n\nDelta Chat не собирает ваши данные, они все остаются на вашем устройстве.</string>
     <string name="login_certificate_checks">Проверки сертификатов</string>
     <string name="login_error_mail">Введите правильный адрес электронной почты</string>
     <string name="login_error_server">Введите действительный адрес сервера / IP-адрес</string>
@@ -772,7 +772,7 @@
     <string name="pref_use_system_emoji">Использовать системные эмодзи</string>
     <string name="pref_use_system_emoji_explain">Отключить поддержку встроенных эмодзи Delta Chat</string>
     <string name="pref_show_system_contacts">Чтение системной адресной книги</string>
-    <string name="pref_show_system_contacts_explain">Предлагать создать чаты с контактами из адресной книги. Некоторые провайдеры требуют предварительной настройки сквозного шифрования.</string>
+    <string name="pref_show_system_contacts_explain">Предлагать создать чаты с контактами из адресной книги.</string>
     <!-- deprecated -->
     <string name="pref_app_access">Доступ приложения</string>
     <string name="pref_chats">Чаты</string>
@@ -873,9 +873,9 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Вы хотите удалить %1$d сообщений сейчас и все новые сообщения \"%2$s\" в дальнейшем?\n\n• Это относится ко всем медиафайлам\n\n• Сообщения будут удалены, независимо от того, были ли они просмотрены или нет.\n\n• \"Сохранённые сообщения\" будут пропущены при локальном удалении</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все новые сообщения \"%2$s\" в дальнейшем?\n\n⚠️ Это относится ко всем электронным письмам, медиафайлам и \"Сохранённым сообщениям\" во всех папках на сервере.\n\n⚠️ Не используйте эту функцию, если вы хотите сохранить данные на сервере.\n\n⚠️ Не используйте эту функцию, если вы используете другие почтовые клиенты помимо Delta Chat</string>
+    <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все новые сообщения \"%2$s\" в дальнейшем?\n\n⚠️ Это относится ко всем электронным письмам, медиафайлам и \"Сохранённым сообщениям\" во всех папках на сервере.\n\n⚠️ Не используйте эту функцию, если хотите сохранить данные на сервере или если вы используете классические клиенты электронной почты</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Это относится ко всем электронным письмам, медиафайлам и \"Сохранённым сообщениям\" во всех папках на сервере. Не используйте эту функцию, если вы хотите сохранить данные на сервере или если вы используете другие почтовые клиенты помимо Delta Chat</string>
+    <string name="autodel_server_enabled_hint">Это относится ко всем электронным письмам, медиафайлам и \"Сохранённым сообщениям\" во всех папках на сервере. Не используйте эту функцию, если хотите сохранить данные на сервере или если вы используете классические клиенты электронной почты</string>
     <string name="autodel_server_warn_multi_device_title">Включить удаление без запроса</string>
     <string name="autodel_server_warn_multi_device">Если включить удаление без запроса, вы не сможете использовать этот профиль на нескольких устройствах.</string>
     <string name="autodel_confirm">Я понимаю, удалить все эти сообщения</string>
@@ -893,11 +893,13 @@
 
     <!-- autocrypt -->
     <string name="autocrypt_send_asm_title">Сообщение с параметрами Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_before">\"Сообщение с параметрами Autocrypt\" служит для передачи параметров сквозного шифрования между приложениями, поддерживающими протокол Autocrypt.\n\nЭти параметры шифруются с использованием кода настройки, который показан здесь и должен быть введён в настраиваемом приложении.</string>
+    <string name="autocrypt_send_asm_explain_before">\"Сообщение с параметрами Autocrypt\" служит для передачи параметров сквозного шифрования между приложениями, поддерживающими протокол Autocrypt.\n\nЕсли вы используете Delta Chat на другом устройстве, воспользуйтесь меню \"Настройки / Добавить второе устройство\"</string>
     <string name="autocrypt_send_asm_button">Сообщение с параметрами Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Ваши настройки были оправлены вам. Переключитесь на другое устройство и откройте сообщение с настройкой. Вам будет предложено ввести код настройки. Введите следующие цифры:</string>
     <string name="autocrypt_prefer_e2ee">Предпочитать сквозное шифрование</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Сообщение с параметрами Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">\"Сообщение с параметрами Autocrypt\" служит для передачи параметров сквозного шифрования между клиентами.\n\nЧтобы расшифровать и использовать параметры откройте это сообщение в приложении, поддерживающем Autocrypt и введите код настройки, показанный на исходном устройстве.</string>
 
 
@@ -932,7 +934,7 @@
     <string name="group_image_deleted_by_other">%1$s удаляет изображение группы.</string>
     <string name="location_enabled_by_you">Вы включили трансляцию местоположения.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="location_enabled_by_other">%1$s включает трансляцию местоположения.</string>
+    <string name="location_enabled_by_other">%1$s включил трансляцию местоположения.</string>
     <string name="ephemeral_timer_disabled_by_you">Вы отключили удаление сообщений по таймеру.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s отключает удаление сообщений по таймеру.</string>
@@ -1034,6 +1036,7 @@
     <string name="secure_join_wait">Устанавливается гарантированное сквозное шифрование, пожалуйста, подождите...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Не удалось установить гарантированное сквозное шифрование, но вы уже можете отправить сообщение.</string>
+    <string name="secure_join_takes_longer">Похоже, это длится дольше, чем ожидалось, возможно, из-за проблем с подключением или того, что один из вас сейчас офлайн.\n\nПри этом процесс будет продолжен в фоновом режиме, поэтому вы можете заняться другими делами…</string>
     <string name="contact_verified">%1$s подтверждён.</string>
     <string name="contact_not_verified">Невозможно установить гарантированное сквозное шифрование с %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->

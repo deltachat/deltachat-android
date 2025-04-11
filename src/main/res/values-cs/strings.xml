@@ -563,7 +563,7 @@
     <string name="send_message">Odeslat zprávu</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">Uživatel %1$s změnil svou adresu z %2$s na %3$s</string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">Změnili jste svou e-mailovou adresu z %1$s na %2$s.\n\nPokud nyní pošlete zprávu ověřené skupině, všem kontaktům v ní se vaše adresa aktualizuje na novou.\n\nJe důrazně doporučeno, abyste u svého starého poskytovatele nastavili přesměrování všech e-mailů na novou adresu, jinak byste mohli přijít o zprávy od kontaktů, které vaši novou adresu dosud nedostaly. </string>
 
 
@@ -897,7 +897,9 @@
     <string name="autocrypt_send_asm_button">Odeslat nastavení Autocryptu</string>
     <string name="autocrypt_send_asm_explain_after">Vaše nastavení bylo odesláno. Vezměte si zařízení, kam si přejete nastavení přenést, a zprávu na něm otevřete. Mělo by se objevit pole pro zadání kódu. Do něj vložte následující číslice:</string>
     <string name="autocrypt_prefer_e2ee">Upřednostňovat koncové šifrování</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Zpráva s nastavením Autocryptu</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">Tato zpráva obsahuje nastavení Autocryptu. S její pomocí lze přenést nastavení koncového šifrování mezi klienty.\n\nK dešifrování a použití nastavení otevřete klient podporující Autocrypt a zadejte do něj kód zobrazený na zařízení, které zprávu vygenerovalo.</string>
 
 
@@ -1034,6 +1036,7 @@
     <string name="secure_join_wait">Navazování koncově šifrovaného spojení, prosím, čekejte...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Zatím nebylo navázáno koncově šifrované spojení, ale již nyní můžete posílat zprávy.</string>
+    <string name="secure_join_takes_longer">Vypadá to, že to trvá trochu déle. Možná jste vy nebo váš kontakt offline.\n\nProces však pokračuje na pozadí. Zatím můžete dělat něco jiného...</string>
     <string name="contact_verified">Uživatel %1$s ověřen.</string>
     <string name="contact_not_verified">Navázání garantovaného koncově šifrovaného spojení s uživatelem %1$s selhalo.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->

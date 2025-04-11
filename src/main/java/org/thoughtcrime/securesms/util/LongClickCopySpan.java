@@ -63,7 +63,7 @@ public class LongClickCopySpan extends ClickableSpan {
           openChat(activity, contact);
         } else {
           new AlertDialog.Builder(activity)
-                  .setMessage(activity.getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
+                  .setMessage(activity.getString(R.string.ask_start_chat_with, contact.getDisplayName()))
                   .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                     openChat(activity, contact);
                   })

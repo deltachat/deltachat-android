@@ -187,12 +187,12 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             long progress = event.getData2Int();
             String msg = null;
             if (progress == 300) {
-                msg = String.format(getString(R.string.qrshow_x_joining), dcContext.getContact(contact_id).getNameNAddr());
+                msg = String.format(getString(R.string.qrshow_x_joining), dcContext.getContact(contact_id).getDisplayName());
                 numJoiners++;
             } else if (progress == 600) {
-                msg = String.format(getString(R.string.qrshow_x_verified), dcContext.getContact(contact_id).getNameNAddr());
+                msg = String.format(getString(R.string.qrshow_x_verified), dcContext.getContact(contact_id).getDisplayName());
             } else if (progress == 800) {
-                msg = String.format(getString(R.string.qrshow_x_has_joined_group), dcContext.getContact(contact_id).getNameNAddr());
+                msg = String.format(getString(R.string.qrshow_x_has_joined_group), dcContext.getContact(contact_id).getDisplayName());
             }
 
             if (msg != null) {
