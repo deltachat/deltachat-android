@@ -111,16 +111,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.nameView.setText(name==null? "#" : name);
 
     if (contact != null && contact.isVerified()) {
-      if (contact.isBot()) {
-        number = getContext().getString(R.string.bot);
-      } else {
-        long timestamp = contact.getLastSeen();
-        if (timestamp != 0) {
-          number = getContext().getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(getContext(), timestamp));
-        } else {
-          number = null;
-        }
-      }
+      number = null;
     }
 
     if(number!=null) {
