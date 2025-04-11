@@ -303,7 +303,7 @@ final class UriGlideRenderer implements Renderer {
 
   @Override
   public void writeToParcel(Parcel dest, int flags) {
-    dest.writeString(imageUri.toString());
+    dest.writeString(imageUri!=null? imageUri.toString() : "");
     dest.writeInt(decryptable ? 1 : 0);
     dest.writeInt(maxWidth);
     dest.writeInt(maxHeight);
