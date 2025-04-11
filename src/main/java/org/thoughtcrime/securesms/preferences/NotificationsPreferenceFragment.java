@@ -168,7 +168,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
             // this could happen in some phones when user selects ringtone from
             // external storage and later removes the read from external storage permission
             // and later this method is called from initializeRingtoneSummary()
-            summary = "???";
+            summary = "<no access>";
             Log.w(TAG, e);
           }
           preference.setSummary(summary);
