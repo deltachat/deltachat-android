@@ -2,11 +2,11 @@
 
 ## Unreleased
 
-* display "Last Seen" information instead of email address in contact list for contacts with green-checkmark, like in other popular messengers
 * hide superfluous "Show Classic E-mails" advanced setting for chatmail
 * remove mostly non-telling transport addresses when referring to a contact;
   the contact's profile gives a much better overview
 * Disable AEAP to enable us to overhaul some things - there are big changes underway in this area, which will come in a few months
+* don't display email address in contact list and member list for contacts with green-checkmark
 
 ## v1.56.1
 2025-03
