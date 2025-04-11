@@ -1036,6 +1036,7 @@
     <string name="secure_join_wait">Navazování koncově šifrovaného spojení, prosím, čekejte...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Zatím nebylo navázáno koncově šifrované spojení, ale již nyní můžete posílat zprávy.</string>
+    <string name="secure_join_takes_longer">Vypadá to, že to trvá trochu déle. Možná jste vy nebo váš kontakt offline.\n\nProces však pokračuje na pozadí. Zatím můžete dělat něco jiného...</string>
     <string name="contact_verified">Uživatel %1$s ověřen.</string>
     <string name="contact_not_verified">Navázání garantovaného koncově šifrovaného spojení s uživatelem %1$s selhalo.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
