@@ -753,12 +753,20 @@ public class ConversationFragment extends MessageSelectorFragment
                 }
             }
             else {
-                String self_mail = dcContext.getConfig("configured_mail_user");
-                if (self_mail != null && !self_mail.isEmpty()
-                        && messageRecord.getText().contains(self_mail)
-                        && getListAdapter().getChat().isDeviceTalk()) {
-                    // This is a device message informing the user that the password is wrong
-                    startActivity(new Intent(getActivity(), RegistrationActivity.class));
+                int infoContactId = messageRecord.getInfoContactId();
+                if (infoContactId != 0 && infoContactId != DC_CONTACT_ID_SELF) {
+                    Intent intent = new Intent(getContext(), ProfileActivity.class);
+                    intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, infoContactId);
+                    startActivity(intent);
+                }
+                else {
+                    String self_mail = dcContext.getConfig("configured_mail_user");
+                    if (self_mail != null && !self_mail.isEmpty()
+                      && messageRecord.getText().contains(self_mail)
+                      && getListAdapter().getChat().isDeviceTalk()) {
+                      // This is a device message informing the user that the password is wrong
+                      startActivity(new Intent(getActivity(), RegistrationActivity.class));
+                    }
                 }
             }
         }
