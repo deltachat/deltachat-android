@@ -934,7 +934,7 @@
     <string name="group_image_deleted_by_other">%1$s удаляет изображение группы.</string>
     <string name="location_enabled_by_you">Вы включили трансляцию местоположения.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="location_enabled_by_other">%1$s включает трансляцию местоположения.</string>
+    <string name="location_enabled_by_other">%1$s включил трансляцию местоположения.</string>
     <string name="ephemeral_timer_disabled_by_you">Вы отключили удаление сообщений по таймеру.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s отключает удаление сообщений по таймеру.</string>
