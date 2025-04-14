@@ -336,7 +336,7 @@ public class ContactSelectionListFragment extends    Fragment
         }
         return;
       }
-      int    contactId = contact.getSpecialId();
+      int    contactId = contact.getContactId();
       if (!isMulti() || !selectedContacts.contains(contactId)) {
         if (contactId == DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT) {
           Intent intent = new Intent(getContext(), NewContactActivity.class);
@@ -351,7 +351,7 @@ public class ContactSelectionListFragment extends    Fragment
           return;
         }
 
-        if (isSelectVerfied() && !contact.getDcContact().isVerified()) {
+        if (isSelectVerfied() && !contact.getContact().isVerified) {
           new AlertDialog.Builder(getActivity())
             .setMessage(R.string.verified_contact_required_explain)
             .setNeutralButton(R.string.learn_more, (d, w) -> DcHelper.openHelp(getActivity(), "#howtoe2ee"))

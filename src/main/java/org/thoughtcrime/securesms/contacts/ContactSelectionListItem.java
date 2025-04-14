@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.contacts;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
@@ -11,19 +12,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.rpc.Contact;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarView;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
 import org.thoughtcrime.securesms.util.ThemeUtil;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-public class ContactSelectionListItem extends LinearLayout implements RecipientModifiedListener {
+public class ContactSelectionListItem extends LinearLayout {
 
+  private static final String TAG = ContactSelectionListItem.class.getSimpleName();
   private AvatarView      avatar;
   private View            numberContainer;
   private TextView        numberView;
@@ -31,18 +35,21 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   private TextView        labelView;
   private CheckBox        checkBox;
 
-  private int           specialId;
+  private int           contactId;
+  private Contact       contact;
   private String        name;
   private String        number;
-  private Recipient     recipient;
-  private GlideRequests glideRequests;
+
+  private final Rpc rpc;
 
   public ContactSelectionListItem(Context context) {
     super(context);
+    this.rpc = DcHelper.getRpc(context);
   }
 
   public ContactSelectionListItem(Context context, AttributeSet attrs) {
     super(context, attrs);
+    this.rpc = DcHelper.getRpc(context);
   }
 
   @Override
@@ -58,32 +65,31 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void set(@NonNull GlideRequests glideRequests, int specialId, DcContact contact, String name, String number, String label, boolean multiSelect, boolean enabled) {
-    this.glideRequests = glideRequests;
-    this.specialId     = specialId;
+  public void set(@NonNull GlideRequests glideRequests, int accountId, int contactId, String name, String number, String label, boolean multiSelect, boolean enabled) {
+    this.contactId     = contactId;
     this.name          = name;
     this.number        = number;
+    this.contact = null;
 
-    if (specialId==DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP
-     || specialId==DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST
-     || specialId==DcContact.DC_CONTACT_ID_ADD_MEMBER || specialId==DcContact.DC_CONTACT_ID_QR_INVITE) {
-      this.recipient = null;
+    if (contactId==DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT || contactId==DcContact.DC_CONTACT_ID_NEW_GROUP
+     || contactId==DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST
+     || contactId==DcContact.DC_CONTACT_ID_ADD_MEMBER || contactId==DcContact.DC_CONTACT_ID_QR_INVITE) {
       this.nameView.setTypeface(null, Typeface.BOLD);
     }
     else {
-      this.recipient = new Recipient(getContext(), contact);
-      this.recipient.addListener(this);
-      if (this.recipient.getName() != null) {
-        name = this.recipient.getName();
+      try {
+        contact = rpc.getContact(accountId, contactId);
+      } catch (RpcException e) {
+        Log.e(TAG, "failed to load contact:", e);
       }
       this.nameView.setTypeface(null, Typeface.NORMAL);
     }
-    if (specialId == DcContact.DC_CONTACT_ID_QR_INVITE) {
+    if (contactId == DcContact.DC_CONTACT_ID_QR_INVITE) {
       this.avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.baseline_qr_code_24).asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
     } else {
-      this.avatar.setAvatar(glideRequests, recipient, false);
+      this.avatar.setAvatar(glideRequests, contact!=null? new Recipient(getContext(), contact) : null, false);
     }
-    this.avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
+    this.avatar.setSeenRecently(contact != null && contact.wasSeenRecently);
 
     setText(name, number, label, contact);
     setEnabled(enabled);
@@ -97,19 +103,14 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   }
 
   public void unbind(GlideRequests glideRequests) {
-    if (recipient != null) {
-      recipient.removeListener(this);
-      recipient = null;
-    }
-
     avatar.clear(glideRequests);
   }
 
-  private void setText(String name, String number, String label, DcContact contact) {
+  private void setText(String name, String number, String label, Contact contact) {
     this.nameView.setEnabled(true);
     this.nameView.setText(name==null? "#" : name);
 
-    if (contact != null && contact.isVerified()) {
+    if (contact != null && contact.isVerified) {
       number = null;
     }
 
@@ -121,15 +122,11 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     else {
       this.numberContainer.setVisibility(View.GONE);
     }
-    if (contact != null && contact.isVerified()) {
+    if (contact != null && contact.isVerified) {
       nameView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_verified,0);
     } else {
       nameView.setCompoundDrawablesWithIntrinsicBounds(0,0, 0,0);
     }
-  }
-
-  public int getSpecialId() {
-    return specialId;
   }
 
   public String getName() {
@@ -140,28 +137,12 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     return number;
   }
 
-  public DcContact getDcContact() {
-    return recipient.getDcContact();
+  public Contact getContact() {
+    return contact;
   }
 
   public int getContactId() {
-    if (recipient.getAddress().isDcContact()) {
-      return recipient.getAddress().getDcContactId();
-    } else {
-      return -1;
-    }
-  }
-
-  @Override
-  public void onModified(final Recipient recipient) {
-    if (this.recipient == recipient) {
-      Util.runOnMain(() -> {
-        avatar.setAvatar(glideRequests, recipient, false);
-        DcContact contact = recipient.getDcContact();
-        avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
-        nameView.setText(recipient.toShortString());
-      });
-    }
+    return contactId;
   }
 
   public void setNoHeaderPadding() {
