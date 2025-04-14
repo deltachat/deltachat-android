@@ -72,7 +72,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
 
   protected class ListSummaryListener implements Preference.OnPreferenceChangeListener {
     @Override
-    public boolean onPreferenceChange(Preference preference, Object value) {
+    public boolean onPreferenceChange(@NonNull Preference preference, Object value) {
       updateListSummary(preference, value);
       return true;
     }

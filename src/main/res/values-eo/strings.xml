@@ -144,7 +144,7 @@
     <string name="voice_message">Voĉmesaĝo</string>
     <string name="forwarded">Plusendita</string>
     <string name="forwarded_message">Plusendita mesaĝo</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Plusendita de %1$s</string>
     <string name="video">Filmo</string>
     <string name="documents">Dokumentoj</string>
@@ -206,7 +206,6 @@
     <string name="menu_delete_chat">Forigi babilon</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Viŝi la babilejon</string>
-    <string name="menu_delete_messages">Forigi mesaĝojn</string>
     <string name="delete_contact">Forviŝi Kontakton</string>
     <string name="menu_delete_location">Ĉu forigi tiun ĉi lokon?</string>
     <string name="menu_message_details">Mesaĝ-detaloj</string>
@@ -266,7 +265,7 @@
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Depingli</string>
     <string name="mute_for_one_hour">Silentigi por 1 horo</string>
-    <string name="mute_for_two_hours">Silentigi por 2 horoj</string>
+    <string name="mute_for_eight_hours">Silentigi por 8 horoj</string>
     <string name="mute_for_one_day">Silentigi por 1 tago</string>
     <string name="mute_for_seven_days">Silentigi por 7 tagoj</string>
     <string name="mute_forever">Silentigi por ĉiam</string>
@@ -281,17 +280,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ĉu vi estas certa, ke vi volas forlasi tiun ĉi grupon?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Ĉu forigi %d babilon? Ĝi ne plu troveblos en la babilaro, tamen ĝiaj mesaĝoj plurestos en la servilo.</item>
-        <item quantity="other">Ĉu forigi %d babilojn? Ili ne plu troveblos en la babilaro, tamen iliaj mesaĝoj plurestos en la servilo.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Ĉu vi certas, ke vi deziras forigi \"%1$s\"?</string>
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Ĉu forigi %d mesaĝon kaj ĉi tie kaj en la servilo?</item>
-        <item quantity="other">Ĉu forigi %d mesaĝojn kaj ĉi tie kaj en la servilo?</item>
-    </plurals>
     <string name="ask_forward">Plusendi mesaĝojn al %1$s?</string>
-    <string name="cannot_delete_contacts_in_use">Ne eblas forigi kontaktojn kun aktualaj babiloj.</string>
     <string name="ask_start_chat_with">Babili kun %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
@@ -354,7 +343,6 @@
     <string name="media_preview">Aŭdvida antaŭrigardo</string>
     <string name="send_message">Sendi mesaĝon</string>
     <string name="login_title">Ensaluti</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Ensaluti al via servilo</string>
     <string name="login_inbox">Ricevujo</string>
     <string name="login_imap_login">IMAP salutnomo</string>
@@ -387,7 +375,6 @@
 
     <string name="pref_profile_photo">Profilbildo</string>
     <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Pasvorto kaj konto</string>
     <string name="pref_your_name">Via nomo</string>
     <string name="pref_enter_sends">La Eniga klavo kaŭzas sendon</string>
@@ -419,6 +406,7 @@
     <string name="pref_manage_keys">Administri ŝlosilojn</string>
     <string name="pref_use_system_emoji">Uzi sisteman emoĝiaron</string>
     <string name="pref_use_system_emoji_explain">Malebligi emoĝiaron de Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Aliro al aplikaĵo</string>
     <string name="pref_chats">Interparoloj</string>
     <string name="pref_in_chat_sounds">Sonoj dum interparolado</string>

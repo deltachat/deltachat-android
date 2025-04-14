@@ -16,7 +16,6 @@
  */
 package org.thoughtcrime.securesms.util;
 
-import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.ClipData;
 import android.content.ClipDescription;
@@ -27,8 +26,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.Spannable;
@@ -45,7 +42,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.os.ConfigurationCompat;
-import androidx.core.view.ViewCompat;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.ComposeText;

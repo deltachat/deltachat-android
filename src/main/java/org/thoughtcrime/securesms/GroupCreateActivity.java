@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,7 +24,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 
 import org.thoughtcrime.securesms.components.AvatarSelector;
@@ -74,7 +75,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     setContentView(R.layout.group_create_activity);
     verified = false;
     broadcast = getIntent().getBooleanExtra(CREATE_BROADCAST, false);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
     groupChatId = getIntent().getIntExtra(EDIT_GROUP_CHAT_ID, 0);
@@ -207,22 +208,22 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   @Override
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        finish();
-        return true;
-      case R.id.menu_create_group:
-        String groupName = getGroupName();
-        if (showGroupNameEmptyToast(groupName)) return true;
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
+      finish();
+      return true;
+    } else if (itemId == R.id.menu_create_group) {
+      String groupName = getGroupName();
+      if (showGroupNameEmptyToast(groupName)) return true;
 
-        if (groupChatId!=0) {
-          updateGroup(groupName);
-        } else {
-          verified = !broadcast && allMembersVerified();
-          createGroup(groupName);
-        }
+      if (groupChatId != 0) {
+        updateGroup(groupName);
+      } else {
+        verified = !broadcast && allMembersVerified();
+        createGroup(groupName);
+      }
 
-        return true;
+      return true;
     }
 
     return false;
@@ -243,10 +244,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
       Intent intent = new Intent(this, ContactMultiSelectionActivity.class);
       intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, verified);
-      ArrayList<String> preselectedContacts = new ArrayList<>();
-      for (int id : getAdapter().getContacts()) {
-        preselectedContacts.add(dcContext.getContact(id).getAddr());
-      }
+      ArrayList<Integer> preselectedContacts = new ArrayList<>(getAdapter().getContacts());
       intent.putExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselectedContacts);
       startActivityForResult(intent, PICK_CONTACT);
     }
@@ -332,9 +330,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
       case PICK_CONTACT:
         ArrayList<Integer> contactIds = new ArrayList<>();
-        for (String addr : Objects.requireNonNull(data.getStringArrayListExtra("contacts"))) {
-          if(addr != null) {
-            contactIds.add(dcContext.createContact(null, addr));
+        for (Integer contactId : Objects.requireNonNull(data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA))) {
+          if(contactId != null) {
+            contactIds.add(contactId);
           }
         }
         getAdapter().changeData(contactIds);
@@ -354,11 +352,14 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .centerCrop()
             .override(AVATAR_SIZE, AVATAR_SIZE)
-            .into(new SimpleTarget<Bitmap>() {
+            .into(new CustomTarget<Bitmap>() {
               @Override
               public void onResourceReady(@NonNull Bitmap resource, Transition<? super Bitmap> transition) {
                 setAvatar(output, resource);
               }
+
+              @Override
+              public void onLoadCleared(@Nullable Drawable placeholder) {}
             });
   }
 

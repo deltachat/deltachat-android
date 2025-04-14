@@ -28,7 +28,9 @@
     <string name="join">Csatlakozás</string>
     <string name="rejoin">Újracsatlakozás</string>
     <string name="delete">Törlés</string>
-    <string name="info">Infó</string>
+    <string name="delete_for_me">Törlés számomra</string>
+    <string name="delete_for_everyone">Törlés mindenki számára</string>
+    <string name="info">Információk</string>
     <string name="update">Frissítés</string>
     <string name="emoji">Emodzsi</string>
     <string name="attachment">Csatolmány</string>
@@ -41,6 +43,8 @@
     <string name="later">Később</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Újraküldés</string>
+    <string name="edited">Szerkesztve</string>
+    <string name="edit_message">Üzenet szerkesztése</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archiválás</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -58,9 +62,9 @@
     <string name="show_full_message">Teljes üzenet megjelenítése…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Összes megjelölése olvasottként</string>
-    <string name="mark_as_read">Olvasottnak jelölés</string>
+    <string name="mark_as_read">Megjelölés olvasottként</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
-    <string name="mark_as_read_short">Olvasottnak jelölés</string>
+    <string name="mark_as_read_short">Megjelölés olvasottként</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Betöltés…</string>
     <string name="hide">Elrejtés</string>
@@ -103,7 +107,7 @@
     <string name="last_week">Múlt héten</string>
     <string name="last_month">Múlt hónapban</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
-    <string name="last_seen_at">Utoljára látta ekkor: %1$s</string>
+    <string name="last_seen_at">Utolsó megtekintés ideje: %1$s</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Utoljára látta: %1$s</string>
     <string name="last_seen_unknown">Utoljára látta: - (ismeretlen)</string>
@@ -163,7 +167,7 @@
     <string name="voice_message">Hangüzenet</string>
     <string name="forwarded">Továbbított</string>
     <string name="forwarded_message">Továbbított üzenet</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Továbbítva %1$s által</string>
     <string name="video">Videó</string>
     <string name="documents">Dokumentumok</string>
@@ -184,8 +188,8 @@
     <string name="webxdc_app">Alkalmazás</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Alkalmazások</string>
-    <string name="webxdc_store_url">Alkalmazás-választó-webcím</string>
-    <string name="webxdc_store_url_explain">Ha be van állítva, akkor a webcím lesz használva mint alkalmazás-választó az alapértelmezett helyett</string>
+    <string name="webxdc_store_url">Alkalmazásválasztó webcíme</string>
+    <string name="webxdc_store_url_explain">Ha be van állítva, akkor a webcím lesz használva mint alkalmazásválasztó az alapértelmezett helyett</string>
     <string name="home">Főoldal</string>
     <string name="games">Játékok</string>
     <string name="tools">Eszközök</string>
@@ -221,6 +225,8 @@
     <string name="new_classic_contact_explain">A kézzel hozzáadott névjegyek szöveges üzenetek küldésére használhatók a klasszikus e-mailekhez és nem garantált a végpontok közöttii titkosításuk.</string>
     <string name="menu_new_chat">Új csevegés</string>
     <string name="menu_new_group">Új csoport</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Csevegés vele…</string>
     <string name="clone_chat">Csevegés klónozása</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Adáslista</string>
@@ -242,14 +248,13 @@
     <string name="menu_delete_chat">Csevegés törlése</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Csevegés kiürítése</string>
-    <string name="menu_delete_messages">Üzenetek törlése</string>
     <string name="delete_contact">Névjegy törlése</string>
     <string name="menu_delete_location">Biztosan törli ezt a helyszínt?</string>
     <string name="menu_message_details">Üzenet részletei</string>
     <string name="menu_copy_to_clipboard">Vágólapra másolás</string>
     <string name="share_invite_link">Meghívó-hivatkozás megosztása</string>
     <string name="share_invite_link_explain">Ezen a hivatkozáson keresztül bárki megtekintheti az Ön profilját, és csevegést kezdeményezhet Önnel. Csak olyan emberekkel ossza meg, akikben megbízik.</string>
-    <string name="invite_friends">Ismerősök meghívása</string>
+    <string name="invite_friends">Partnerek meghívása</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Lépjen kapcsolatba velem a Delta Chaten:\n%1$s</string>
     <string name="menu_copy_selection_to_clipboard">Kiválasztott(ak) másolása</string>
@@ -286,9 +291,9 @@
     <string name="select_chat">Csevegés kiválasztása</string>
     <string name="select_more">Továbbiak kiválasztása</string>
     <string name="menu_edit_name">Név szerkesztése</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
-    <string name="edit_name_explain">Állítson be egy becenevet a(z) „%1$s” nevű ismerősének. Hagyja üresen az ismerőse által választott név megjelenítéséhez.</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
+    <string name="edit_name_explain">Állítson be egy becenevet a(z) „%1$s” nevű partnerének. Hagyja üresen a partnere által választott név megjelenítéséhez.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Becenév megadása „%1$s“ számára</string>
     <string name="menu_settings">Beállítások</string>
     <string name="menu_advanced">Speciális beállítások</string>
@@ -300,13 +305,14 @@
     <string name="menu_learn_spelling">Helyesírás tanulása</string>
     <string name="menu_chat_audit_log">Csevegésellenőrzési-naplófájl</string>
     <string name="jump_to_message">Ugrás az üzenetre</string>
+    <string name="jump_to_original_message">Ugrás az eredeti üzenetre</string>
     <string name="copy_json">JSON másolása</string>
     <string name="replace_draft">Piszkozat cseréje</string>
     <string name="title_share_location">Helyszín megosztása a csoport összes tagjával</string>
     <string name="device_talk">Eszközüzenetek</string>
-    <string name="device_talk_subtitle">Helyileg előállított üzenetek</string>
-    <string name="device_talk_explain">Az üzenetek ebben a csevegésben az Ön készülékén kerülnek előállításra, hogy tájoékoztassák Önt az alkalmazás frissítéseiről és a használat közben felmerülő problémákról.</string>
-    <string name="device_talk_welcome_message2">Lépjen kapcsolatba az ismerőseivel!\n\n🙌 Koppintson a „QR-kódra” mind a két eszköz főképernyőjén. Válassza a „QR-kód beolvasása” lehetőséget az egyik eszközön, és irányítsa a másik eszközre\n\n🌍 Ha nem ugyanabban a szobában tartózkodnak az ismerősével, akkor olvassa be a QR-kódját egy videohíváson keresztül, vagy ossza meg a meghívó-hivatkozást a „QR-kód bolvasása”-ból.\n\nMajd: Élvezze az üzenetküldés-élményt a valaha létezett legnagyobb decentralizált hálózaton keresztül, ami az e-mail és - más népszerű alkalmazásokkal ellentétben - központi kiszolgáló vagy nyomon követés nélkül, illetve anélkül, hogy önt, ismerőseit, kollégáit vagy családját nagy szervezeteknek adná el.</string>
+    <string name="device_talk_subtitle">Helyben előállított üzenetek</string>
+    <string name="device_talk_explain">Az üzenetek ebben a csevegésben az Ön készülékén kerülnek előállításra, hogy tájékoztassák Önt az alkalmazás frissítéseiről és a használat közben felmerülő problémákról.</string>
+    <string name="device_talk_welcome_message2">Lépjen kapcsolatba a partnereivel!\n\n🙌 Koppintson a „QR-kódra” mind a két eszköz főképernyőjén. Válassza a „QR-kód beolvasása” lehetőséget az egyik eszközön, és irányítsa a másik eszközre\n\n🌍 Ha nem ugyanabban a szobában tartózkodnak a partnerével, akkor olvassa be a QR-kódját egy videohíváson keresztül, vagy ossza meg a meghívó-hivatkozást a „QR-kód bolvasása”-ból.\n\nMajd: Élvezze az üzenetküldés-élményt a valaha létezett legnagyobb decentralizált hálózaton keresztül, ami az e-mail és - más népszerű alkalmazásokkal ellentétben - központi kiszolgáló vagy nyomon követés nélkül, illetve anélkül, hogy önt, partnereit, kollégáit vagy családját nagy szervezeteknek adná el.</string>
     <string name="edit_contact">Névjegy szerkesztése</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Csevegés kitűzése</string>
@@ -324,7 +330,7 @@
     <string name="donate">Adományozás</string>
 
     <string name="mute_for_one_hour">Némítás 1 órára</string>
-    <string name="mute_for_two_hours">Némítás 2 órára</string>
+    <string name="mute_for_eight_hours">Némítás 8 órára</string>
     <string name="mute_for_one_day">Némítás 1 napra</string>
     <string name="mute_for_seven_days">Némítás 7 napra</string>
     <string name="mute_forever">Némítás örökre</string>
@@ -360,15 +366,16 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Biztosan ki akar lépni a csoportból?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Biztosan töröl %d csevegést? Többé nem jelenik meg a csevegőlistában; az üzenetek viszont a szerveren maradnak.</item>
-        <item quantity="other">Biztosan töröl %d csevegést? Többé nem jelennek meg a csevegőlistában; az üzeneteik viszont a kiszolgálón maradnak.</item>
+        <item quantity="one">Töröl %d csevegést az összes eszközén?</item>
+        <item quantity="other">Töröl %d csevegést az összes eszközén?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Biztosan törli a következőt: „%1$s”? Többé nem fog megjelenni a csevegőlistában; üzenetei a kiszolgálón maradnak.</string>
-    <string name="ask_delete_message">Biztosan törölni szeretné ezt az üzenetet?</string>
+    <string name="ask_delete_named_chat">Törli a(z) „%1$s” nevű csevegést az összes eszközén?</string>
+    <string name="ask_delete_message">Törli ezt az üzenetet az összes eszközén?</string>
     <plurals name="ask_delete_messages">
-        <item quantity="one">%d üzenet törlése innen is és a kiszolgálóról is?</item>
-        <item quantity="other">%d üzenet törlése innen is és a kiszolgálóról is?</item>
+        <item quantity="one">Töröl %d üzenetet az összes eszközén?</item>
+        <item quantity="other">Töröl %d üzenetet az összes eszközén?</item>
     </plurals>
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">%d üzenet törlése?</item>
         <item quantity="other">%d üzenet törlése?</item>
@@ -376,13 +383,11 @@
     <string name="ask_forward">Továbbítja az üzenetet „%1$s” számára?</string>
     <string name="ask_forward_multiple">Továbbítja az üzenetet a következő csevegésbe: %1$d?</string>
     <string name="ask_export_attachment">A mellékletek exportálása lehetővé teszi, hogy más alkalmazások is hozzáférjenek azokhoz az eszközön.\n\nFolytatja?</string>
-    <string name="ask_block_contact">Letiltja ezt az ismerősét? Többé nem fog üzeneteket kapni tőle.</string>
-    <string name="ask_unblock_contact">Feloldja ennek az ismerősének a letiltását? Ezután képes lesz üzeneteket fogadni tőle.</string>
+    <string name="ask_block_contact">Letiltja ezt a partnerét? Többé nem fog üzeneteket kapni tőle.</string>
+    <string name="ask_unblock_contact">Feloldja ennek a partnerének a letiltását? Ezután képes lesz üzeneteket fogadni tőle.</string>
     <string name="ask_delete_contacts">Névjegy törlése?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó névjegyek nem törölhetők véglegesen.</string>
-    <string name="ask_delete_contact">%1$s nevű ismerősének tölése?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó ismerősök nem törölhetők véglegesen.</string>
-    <string name="cannot_delete_contacts_in_use">A folyamatban lévő csevegésekkel rendelkező névjegyek nem törölhetők.</string>
+    <string name="ask_delete_contact">Törli a(z) %1$s nevű partnerét?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó partnerek nem törölhetők véglegesen.</string>
     <string name="ask_start_chat_with">Csevegés vele: %1$s?</string>
-    <string name="ask_delete_value">%s törlése?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Eltávolítja a csoportból őt: %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -457,7 +462,7 @@
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Üzenet küldése…</string>
     <string name="enable_realtime">Valós idejű alkalmazások</string>
-    <string name="enable_realtime_explain">Valós idejű kapcsolatok engedélyezése a csevegésekben megosztott alkalmazásokhoz. Ha engedélyezve van, az ismerősei képesek lehetnek felfedezni az Ön IP-címét, amikor elindít egy alkalmazást.</string>
+    <string name="enable_realtime_explain">Valós idejű kapcsolatok engedélyezése a csevegésekben megosztott alkalmazásokhoz. Ha engedélyezve van, a partnerei képesek lehetnek felfedezni az Ön IP-címét, amikor elindít egy alkalmazást.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Helyszínek megjelenítése időkeretben</string>
@@ -501,6 +506,8 @@
     <string name="profile_encryption">Titkosítás</string>
     <string name="profile_shared_chats">Megosztott csevegések</string>
     <string name="related_chats">Kapcsolódó csevegések</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Már nem tagok</string>
     <string name="tab_contact">Névjegy</string>
     <string name="tab_group">Csoport</string>
     <string name="tab_gallery">Galéria</string>
@@ -514,6 +521,7 @@
     <string name="tab_audio_empty_hint">Az ebben a csevegésben megosztott hangfájlok és hangüzenetek itt fognak megjelenni.</string>
     <string name="tab_webxdc_empty_hint">Az ebben a csevegésben megosztott alkalmazások itt fognak megjelenni.</string>
     <string name="tab_all_media_empty_hint">A bármelyik csevegésben megosztott média itt fog megjelenni.</string>
+    <string name="all_files_empty_hint">A csevegésekben megosztott dokumentumok és egyéb fájlok itt jelennek meg.</string>
     <string name="all_apps_empty_hint">A bármelyik csevegésben kapott vagy küldött alkalmazások itt fognak megjelenni.</string>
     <string name="media_preview">Média előnézete</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
@@ -521,10 +529,10 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Négyzetrács</string>
     <string name="send_message">Üzenet küldése</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s megváltoztatta a címét következőről: %2$s, erre: %3$s </string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
-    <string name="aeap_explanation">Ön megváltoztatta a saját e-mail-címét a következőről: %1$s erre: %2$s.\n\nHa most üzenetet küld egy hitelesített csoportba, az ottani ismerősei automatikusan lecserélik az Ön régi címét az új címére.\n\nEzért nagyon ajánlott beállítani, hogy a régi e-mail szolgáltatója továbbítsa-e az összes e-mailt e-mail-címére. Ellenkező esetben lemaradhat azoknak az ismerőseinek az üzeneteiről, akik még nem kapták meg az új címét.</string>
+    <!-- deprecated -->
+    <string name="aeap_explanation">Ön megváltoztatta a saját e-mail-címét erről: %1$s erre: %2$s.\n\nHa most üzenetet küld egy hitelesített csoportba, az ottani partnerei automatikusan lecserélik az Ön régi címét az új címére.\n\nEzért nagyon ajánlott beállítani, hogy a régi e-mail-szolgáltatója továbbítsa-e az összes e-mailt az e-mail-címére. Ellenkező esetben lemaradhat azoknak a partnereinek az üzeneteiről, akik még nem kapták meg az új címét.</string>
 
 
     <!-- Multi Device -->
@@ -540,9 +548,9 @@
     <string name="multidevice_receiver_title">Hozzáadás második eszközként</string>
     <string name="multidevice_open_settings_on_other_device">Az első eszközön lépjen a „Beállítások / Második eszköz hozzáadása” menüpontra, és olvassa be az ott megjelenő QR-kódot.</string>
     <string name="multidevice_receiver_scanning_ask">Átmásolja a profilt a másik eszközről erre az eszközre?</string>
+    <string name="multidevice_receiver_needs_update">Az importálni kívánt profil egy újabb Delta Chat verzióból származik.\n\nA második eszköz beállításának folytatásához frissítse ezt az eszközt a Delta Chat legújabb verziójára.</string>
     <string name="multidevice_abort">A második eszköz beállításának megszakítása?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Ez érvényteleníti a vágólapra másolt QR-kódot.</string>
-    <string name="multidevice_experimental_hint">(kísérleti, 1.36-os verzió szükséges)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ A profil átkerül az Ön második eszközére.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Profil készítése…</string>
@@ -555,7 +563,7 @@
     <string name="incoming_messages">Beérkező üzenetek</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Kimenő üzenetek</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Tárhely mérete itt: %1$s</string>
     <string name="connectivity">Tárhely</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -605,11 +613,9 @@
     <string name="welcome_chat_over_email">Biztonságos decentralizált csevegés</string>
     <string name="scan_invitation_code">QR-kód-meghívó beolvasása</string>
     <string name="login_title">Bejelentkezés</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Jelentkezzen be az e-mail-fiókjába</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Bejelentkezés meglévő e-mail-fiókkal</string>
-    <string name="login_subheader">Az ismert e-mail szolgáltatók esetében a rendszer automatikus beállításokat hoz létre. Kivételes esetekben az IMAP-ot engedélyezni kell az e-mail szolgáltatójának webes beállításaiban. Forduljon az e-mail szolgáltatójához vagy ismerőseihez további segítségért.</string>
+    <string name="login_subheader">Az ismert e-mail-szolgáltatók esetében a rendszer automatikus beállításokat hoz létre. Kivételes esetekben az IMAP-ot engedélyezni kell az e-mail-szolgáltatójának webes beállításaiban. Forduljon az e-mail-szolgáltatójához vagy partnereihez további segítségért.</string>
     <string name="login_no_servers_hint">A Delta Chat nem gyűjt felhasználói adatokat, az Ön összes adata az eszközén van tárolva.</string>
     <string name="login_inbox">Bejövő</string>
     <string name="login_imap_login">IMAP bejelentkezési név</string>
@@ -623,7 +629,7 @@
     <string name="login_smtp_port">SMTP-port</string>
     <string name="login_smtp_security">SMTP-biztonság</string>
     <string name="login_auth_method">Azonosítási eljárás</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Proxy használata</string>
     <string name="proxy_add">Proxy hozzáadása</string>
@@ -634,7 +640,7 @@
     <string name="proxy_delete">Proxy törlése</string>
     <string name="proxy_delete_explain">Biztosan törli a következőt: „%1$s”?</string>
     <string name="proxy_use_proxy_confirm">Biztosan használni akarja a következő proxyt: „%1$s”?</string>
-    <string name="proxy_share_explain">Az ismerősei a QR-kód beolvasásával hozzáadhatják ezt a proxyt.</string>
+    <string name="proxy_share_explain">A partnerei a QR-kód beolvasásával hozzáadhatják ezt a proxyt.</string>
     <string name="proxy_share_link">Hivatkozás megosztása</string>
 
     <string name="login_info_oauth2_title">Folytatja az egyszerűsített beállítást?</string>
@@ -647,17 +653,18 @@
     <string name="import_backup_title">Biztonsági mentés visszaállítása</string>
     <string name="import_backup_ask">A biztonsági mentés itt található: „%1$s”.\n\nAz összes adatot és beállítást szeretné importálni és használni belőle?</string>
     <string name="import_backup_no_backup_found">A biztonsági mentés nem található.\n\nMásolja a biztonsági mentést ide: „%1$s” és próbálja újra. Másik lehetőségként nyomja meg az „Üzenetküldés indítása” gombot a normál beállítási folyamat folytatásához.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Nem lehetett bejelentkezni ide: „%1$s”. Ellenőrizze, hogy a megadott e-mail-cím és a jelszó helyes-e.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Érvénytelen tanúsítványok elfogadása</string>
     <string name="switch_account">Profilváltás</string>
     <string name="add_account">Profil hozzáadása</string>
-    <string name="profile_tag">Privát címke</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Profil címke</string>
     <string name="profile_tag_hint">Például: „Munka”, „Család”</string>
-    <string name="profile_tag_explain">A címke csak az Ön számára jelenik meg; segít megkülönböztetni a profiljait.</string>
+    <string name="profile_tag_explain">Állítson be egy olyan címkét, amely csak az Ön számára látható; segít megkülönböztetni a profiljait.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
-    <string name="move_to_top">Felülre helyezés</string>
+    <string name="move_to_top">Feljebb mozgatás</string>
     <string name="delete_account">Profil törlése</string>
     <string name="delete_account_ask">Biztosan törölni szeretné a profiladatait?</string>
     <string name="delete_account_explain_with_name">A(z) „%s” nevű profilhoz tartozó mindet adat ezen az eszközön törölve lesz,  beleértve a végpontok közötti titkosítás beállításait, a névjegyeket, a csevegéseket, az üzeneteket és a médiát. Ez a művelet nem vonható vissza. </string>
@@ -686,11 +693,10 @@
     <string name="pref_profile_photo">Profilkép</string>
     <string name="pref_blocked_contacts">Letiltott névjegyek</string>
     <string name="blocked_empty_hint">A letiltott névjegyek itt fognak megjelenni</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Fiók és jelszó</string>
     <string name="pref_who_can_see_profile_explain">A profilképe, neve és életrajza az üzenetekkel együtt kerül elküldésre, amikor más felhasználókkal kommunikál.</string>
     <string name="pref_your_name">Név</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Életrajz</string>
     <string name="pref_enter_sends">Küldés „Enterrel”</string>
     <string name="pref_enter_sends_explain">Az „Enter” billentyű megnyomásával szöveges üzeneteket küldhet</string>
@@ -733,10 +739,9 @@
     <string name="pref_manage_keys">Privát kulcsok kezelése</string>
     <string name="pref_use_system_emoji">Rendszeremodzsik használata</string>
     <string name="pref_use_system_emoji_explain">A Delta Chat beépített emodzsi-támogatásának letiltása</string>
-    <string name="pref_use_inapp_camera">Alkalmazás kamerájának használata</string>
-    <string name="pref_use_inapp_camera_explain">Az alkalmazáson belüli kamera általában kevesebb funkcióval rendelkezik, mint a rendszer kamerája.</string>
     <string name="pref_show_system_contacts">A rendszer névjegyzékének olvasása</string>
-    <string name="pref_show_system_contacts_explain">Csevegések létrehozása a névjegyzékéből származó ismerőseivel. Egyes szolgáltatóknál először a végpontok közötti titkosítás beállítására van szükség.</string>
+    <string name="pref_show_system_contacts_explain">Csevegések létrehozása a névjegyzékéből származó partnereivel. Egyes szolgáltatóknál először a végpontok közötti titkosítás beállítására van szükség.</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Alkalmazás-hozzáférés</string>
     <string name="pref_chats">Csevegések</string>
     <string name="pref_in_chat_sounds">Csevegésen belüli hangok</string>
@@ -748,7 +753,7 @@
     <string name="pref_backup">Biztonsági mentés</string>
     <string name="pref_backup_explain">Csevegések biztonsági mentése külső tárhelyre</string>
     <string name="pref_backup_export_explain">A biztonsági mentés segít egy új telepítés beállításában ezen vagy egy másik eszközön.\n\nA biztonsági mentés tartalmazza az összes üzenetet, névjegyet és csevegést, valamint a végpontok közötti autocrypt beállításokat. Tartsa a biztonsági mentést biztonságos helyen, vagy törölje, amint lehetséges.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">%1$s exportálása</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Mind a(z) %1$d profil exportálása</string>
@@ -769,7 +774,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Ha megváltoztatja ezt a beállítást, győződjön meg arról, hogy a kiszolgálója és a többi kliense is ennek megfelelően van beállítva.\n\nMáskülönben előfordulhat, hogy a dolgok egyáltalán nem fognak működni.</string>
     <string name="pref_watch_sent_folder">Elküldött üzenetek mappájának figyelése</string>
     <string name="pref_send_copy_to_self">Másolat küldése Önmagának</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Szükséges, ha ezt a fiókot több eszközön is használja.</string>
     <string name="pref_auto_folder_moves">Automatikus áthelyezés a DeltaChat nevű mappába</string>
     <string name="pref_auto_folder_moves_explain">A csevegések áthelyezésre kerülnek, hogy elkerüljék a bejövő üzenetek mappa zűrzavarát.</string>
@@ -777,7 +781,7 @@
     <string name="pref_only_fetch_mvbox_explain">Más mappák figyelmen kívül hagyása. A kiszolgálónak a DeltaChat nevű mappába kell áthelyeznie a csevegőüzeneteket.</string>
     <string name="pref_show_emails">Klasszikus e-mailek megjelenítése</string>
     <string name="pref_show_emails_no">Nem, csak csevegések</string>
-    <string name="pref_show_emails_accepted_contacts">Elfogadott ismerősök számára</string>
+    <string name="pref_show_emails_accepted_contacts">Elfogadott partnerek számára</string>
     <string name="pref_show_emails_all">Összes</string>
     <string name="pref_experimental_features">Kísérleti funkciók</string>
     <string name="pref_on_demand_location_streaming">On-Demand folyamatos helyszín megosztás</string>
@@ -861,19 +865,15 @@
     <string name="autocrypt_send_asm_button">Autocryptbeállító-üzenet küldése</string>
     <string name="autocrypt_send_asm_explain_after">A beállításokat elküldtük önnek. Váltson a másik eszközre, és nyissa meg a beállítási üzenetet. Meg kell adnia a beállítási kódot. Írja be a következő számjegyeket:</string>
     <string name="autocrypt_prefer_e2ee">Végpontok közötti titkosítás előnyben részesítése</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Autocryptbeállító-üzenet</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">Ez az autocryptbeállító-üzenet a végpontok közötti beállítások kliensek közötti átvitelére szolgál.\n\nA beállítások visszafejtéséhez és használatához nyissa meg az üzenetet egy autocrypt-kompatibilis kliensben, és írja be az előállító eszközön megjelenő beállítási kódot.</string>
-    <string name="autocrypt_asm_click_body">Ez az Autocryptbeállító-üzenet, amelyet a végpontok közötti titkosítási beállítások átvitelére használnak a kliensek között.\n\n\nA beállítások visszafejtéséhez és használatához koppintson vagy kattintson erre az üzenetre.</string>
-    <string name="autocrypt_continue_transfer_title">Autocryptbeállító-üzenet</string>
-    <string name="autocrypt_continue_transfer_please_enter_code"> Adja meg a másik eszközön megjelenő beállítási kódot.</string>
-    <string name="autocrypt_continue_transfer_succeeded">A végpontok közötti beállítások átvitele megtörtént. Ez az eszköz most már készen áll az autocrypt használatára a másik eszközzel megegyező beállításokkal.</string>
-    <string name="autocrypt_continue_transfer_retry">Újra</string>
-    <string name="autocrypt_bad_setup_code">Rossz beállítási kód. Próbálja újra.\n\nHa nem emlékszik a beállítási kódra, küldjön új Autocryptbeállító-üzenetet a másik eszközről.</string>
 
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">Ez az üzenet nem dekódolható.\n\n• Már az is segíthet, ha egyszerűen válaszol erre az üzenetre, és megkéri a feladóját, hogy küldje el újra az üzenetet.\n\n• Ha most telepítette újra a Delta Chatet, akkor a legjobb, ha most újraindítja a Delta Chatet, és kiválasztja a „Második eszközként való hozzáadás” lehetőséget, vagy importál egy biztonsági mentést.</string>
-    <string name="systemmsg_unknown_sender_for_chat">Az üzenet küldője ismeretlen ebben a csevegésben. További részletekért nézze meg az \'Infót\'.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Az üzenet feladója ismeretlen ebben a csevegésben. További részletekért tekintse meg az „Információkat”.</string>
     <string name="systemmsg_subject_for_new_contact">Üzenet tőle: %1$s</string>
     <string name="systemmsg_failed_sending_to">Nem sikerült elküldeni az üzenetet „%1$s” számára.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -941,19 +941,19 @@
     <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
     <string name="chat_protection_broken">%1$s egy másik eszközről küldött üzenetet.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Az üzenetek mostantól garantáltan titkosítva lesznek a végpontok között. Koppintson, ha többet szeretne tudni.</string>
-    <string name="chat_protection_enabled_explanation">Mostantól garantált, hogy ebben a csevegésben az összes üzenet végpontok közötti titkosítással rendelkezik.\n\nA végpontok közötti titkosítással az üzenetek bizalmasak maradnak Ön és az ismerősei között. Még az e-mail szolgáltatója sem tudja elolvasni őket.</string>
+    <string name="chat_protection_enabled_explanation">Mostantól garantált, hogy ebben a csevegésben az összes üzenet végpontok közötti titkosítással rendelkezik.\n\nA végpontok közötti titkosítással az üzenetek bizalmasak maradnak Ön és a partnerei között. Még az e-mail-szolgáltatója sem tudja elolvasni őket.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s egy másik eszközről küldött üzenetet. Koppintson, ha többet szeretne tudni.</string>
     <string name="chat_protection_broken_explanation">A végpontok közötti titkosítás már nem garantálható, valószínűleg azért, mert %1$s újratelepítette a Delta Chatet, vagy egy másik eszközről küldött üzenetet.\n\n Személyesen találkozhat vele, és újra beolvashatja a QR-kódját a garantált végpontok közötti titkosítás visszaállításához.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ A(z) %1$s végpontok közötti titkosítást igényel, ami még nincs beállítva erre a csevegésre. Koppintson, ha többet szeretne megtudni.</string>
-    <string name="invalid_unencrypted_explanation">A végpontok közötti titkosítás létrehozásához személyesen is találkozhat az ismerőseivel, és a QR-kódjukat beolvasva bemutathatja őket.</string>
+    <string name="invalid_unencrypted_explanation">A végpontok közötti titkosítás létrehozásához személyesen is találkozhat a partnereivel, és a QR-kódjukat beolvasva bemutathatja őket.</string>
     <string name="learn_more">Tudjon meg többet</string>
 
     <string name="devicemsg_self_deleted">Ön törölte a „Mentett üzenetek” csevegést.\n\nℹ️ A „Mentett üzenetek” funkció újbóli használatához hozzon létre egy új csevegést önmagával.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Az e-mail szolgáltatójától kapott tárhelye hamarosan megtelik: %1$s%% már felhasználásra került.\n\n\nElképzelhető, hogy nem tud üzeneteket fogadni, ha a tárhelye megtelt.\n\n👉 Ellenőrizze, hogy a szolgáltatója webes felületén tudja-e törölni a DeltaChat-mappából az üzeneteket, és fontolja meg a „Beállítások / Csevegések és média / Üzenetek törlése a kiszolgálóról” engedélyezését. Az aktuális tárhelyhasználatot bármikor ellenőrizheti a „Beállítások / Tárhely” menüpontban.</string>
+    <string name="devicemsg_storage_exceeding">⚠️ Az e-mail-szolgáltatójától kapott tárhelye hamarosan megtelik: %1$s%% már felhasználásra került.\n\n\nElképzelhető, hogy nem tud üzeneteket fogadni, ha a tárhelye megtelt.\n\n👉 Ellenőrizze, hogy a szolgáltatója webes felületén tudja-e törölni a DeltaChat-mappából az üzeneteket, és fontolja meg a „Beállítások / Csevegések és média / Üzenetek törlése a kiszolgálóról” engedélyezését. Az aktuális tárhelyhasználatot bármikor ellenőrizheti a „Beállítások / Tárhely” menüpontban.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Az eszközén lévő dátum vagy idő pontatlannak tűnik (%1$s).\n\nJavítsa meg az órát ⏰🔧 az üzenetek helyes fogadásának biztosítása érdekében.</string>
-    <string name="devicemsg_update_reminder">⚠️ Lehet, hogy a Delta Chat verziója elavult.\n\nEz problémákat okozhat, mivel az ismerősei újabb verziókat használnak - továbbá hiányoznak a legújabb funkciók 😳\nEllenőrizze a https://get.delta.chat oldalon vagy az alkalmazásboltban a frissítéseket.</string>
+    <string name="devicemsg_update_reminder">⚠️ Lehet, hogy a Delta Chat verziója elavult.\n\nEz problémákat okozhat, mivel a partnerei újabb verziókat használnak - továbbá hiányoznak a legújabb funkciók 😳\nEllenőrizze a https://get.delta.chat oldalon vagy az alkalmazásboltban a frissítéseket.</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">Feloldás a folytatáshoz</string>
@@ -990,19 +990,21 @@
     <string name="qrshow_join_contact_no_connection_toast">Nincs internetkapcsolat, nem lehet elvégezni a QR-kód beállítását.</string>
     <string name="qraccount_ask_create_and_login">Új profil létrehozása a(z) „%1$s” oldalon és bejelentkezés ott?</string>
     <string name="qraccount_ask_create_and_login_another">Új profil létrehozása a(z) „%1$s” oldalon, és bejelentkezés ott?\n\nA meglévő profilja nem törlődik. A „Profilváltás” elemmel válthat a profiljai között.</string>
-    <string name="set_name_and_avatar_explain">Adjon meg egy olyan nevet, amelyet az ismerősei felismernek. Beállíthat egy profilképet is.</string>
+    <string name="set_name_and_avatar_explain">Adjon meg egy olyan nevet, amelyet a partnerei felismernek. Beállíthat egy profilképet is.</string>
     <string name="please_enter_name">Adjon meg egy nevet.</string>
     <string name="qraccount_qr_code_cannot_be_used">A beolvasott QR-kód nem használható új profil beállítására.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Bejelentkezés ide: „%1$s”?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Bejelentkezés ide: „%1$s”?\n\nA meglévő profilját nem töröljük. A „Profilváltás” elemmel válthat a profiljai között.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s meghívta önt, hogy csatlakozzon ehhez a csoporthoz.\n\n%2$s eszközére várakozás a válaszhoz…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s válaszolt, várakozik, hogy fölvegyék a csoportba…</string>
     <string name="secure_join_wait">Garantált végpontok közötti titkosítás létrehozása, várjon…</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">Még nem sikerült a garantált végpontok közötti titkosítást létrehozni, de már küldhet üzenetet.</string>
+    <string name="secure_join_takes_longer">Úgy tűnik, hogy ez tovább tart, mint gondoltuk, talán a partnere vagy Ön offline állapotban van.\n\nMindenesetre a folyamat a háttérben folytatódik, eközben csinálhat valami mást…</string>
     <string name="contact_verified">%1$s bemutatva.</string>
     <string name="contact_not_verified">Nem lehet garantált végpontok közötti titkosítást létrehozni vele: %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
@@ -1010,7 +1012,8 @@
     <string name="verified_by_you">Ön által bemutatva</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Megváltoztatta a beállításokat %1$s számára.</string>
-    <string name="verified_contact_required_explain">A végpontok közötti titkosítás garantálása érdekében csak zöld jelöléssel rendelkező névjegyeket adhat hozzá ehhez a csoporthoz.\n\n Személyesen is találkozhat az ismerőseivel és beolvashatja a QR-kódjukat, hogy bemutassa őket.</string>
+    <string name="verified_contact_required_explain">A végpontok közötti titkosítás garantálása érdekében csak zöld jelöléssel rendelkező névjegyeket adhat hozzá ehhez a csoporthoz.\n\n Személyesen is találkozhat a partnereivel és beolvashatja a QR-kódjukat, hogy bemutassa őket.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">QR-kód-webcím másolása a vágólapra</string>
     <string name="mailto_dialog_header_select_chat">Válassza ki a csevegést az üzenet elküldéséhez</string>
     <!-- first placeholder is the name of the chat -->
@@ -1101,7 +1104,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">A tálca ikonja nem kapcsolható ki, mivel a Delta Chat a --minimized kapcsolóval indult.</string>
     <string name="no_spellcheck_suggestions_found">Nem találhatók helyesírási javaslatok.</string>
     <string name="show_window">Ablak megjelenítése</string>
-    <string name="login_socks5_experimental_warning">A SOCKS5-támogatás jelenleg kísérleti jellegű. Használja saját felelősségére. Ha beír egy címet az e-mail-mezőbe, akkor lesz olyan DNS lekérés, ami nem fog átjutni a SOCKS5 csatornán.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Billentyűkötések</string>
@@ -1147,7 +1149,7 @@
     <string name="delayed">Késleltetve</string>
     <string name="notifications_avg_minutes">Átlagosan %1$d percenként</string>
     <string name="notifications_avg_hours">Átlagosan %1$d óránként</string>
-    <string name="last_check_at">Ellenőrizve ekkor: %1$s</string>
+    <string name="last_check_at">Ellenőrizés ideje: %1$s</string>
     <string name="system_settings">Rendszer-beállítások</string>
     <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
     <string name="system_settings_notify_explain_ios">Típus-, kitűzők-, előnézet- és egyebek szerkesztése</string>

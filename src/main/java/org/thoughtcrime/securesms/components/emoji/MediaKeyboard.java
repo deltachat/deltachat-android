@@ -53,7 +53,7 @@ public class MediaKeyboard extends FrameLayout implements InputView, Consumer<Em
     if (emojiPicker == null) {
       emojiPicker = findViewById(R.id.emoji_picker);
       emojiPicker.setOnEmojiPickedListener(this);
-    };
+    }
     setVisibility(VISIBLE);
     if (keyboardListener != null) keyboardListener.onShown();
   }

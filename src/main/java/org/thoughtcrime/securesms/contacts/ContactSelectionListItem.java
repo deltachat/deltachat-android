@@ -1,14 +1,14 @@
 package org.thoughtcrime.securesms.contacts;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcContact;
 
@@ -83,7 +83,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     } else {
       this.avatar.setAvatar(glideRequests, recipient, false);
     }
-    this.avatar.setSeenRecently(contact!=null? contact.wasSeenRecently() : false);
+    this.avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
 
     setText(name, number, label, contact);
     setEnabled(enabled);
@@ -109,8 +109,12 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.nameView.setEnabled(true);
     this.nameView.setText(name==null? "#" : name);
 
+    if (contact != null && contact.isVerified()) {
+      number = null;
+    }
+
     if(number!=null) {
-      this.numberView.setText(number == null ? "" : number);
+      this.numberView.setText(number);
       this.labelView.setText(label==null? "" : label);
       this.numberContainer.setVisibility(View.VISIBLE);
     }
@@ -154,7 +158,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
       Util.runOnMain(() -> {
         avatar.setAvatar(glideRequests, recipient, false);
         DcContact contact = recipient.getDcContact();
-        avatar.setSeenRecently(contact!=null? contact.wasSeenRecently() : false);
+        avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
         nameView.setText(recipient.toShortString());
       });
     }

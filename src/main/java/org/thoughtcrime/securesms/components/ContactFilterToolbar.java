@@ -45,12 +45,9 @@ public class ContactFilterToolbar extends Toolbar {
 
     searchText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
-    this.clearToggle.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        searchText.setText("");
-        displayTogglingView(null);
-      }
+    this.clearToggle.setOnClickListener(v -> {
+      searchText.setText("");
+      displayTogglingView(null);
     });
 
     this.searchText.addTextChangedListener(new TextWatcher() {
@@ -115,19 +112,16 @@ public class ContactFilterToolbar extends Toolbar {
   private void expandTapArea(final View container, final View child) {
     final int padding = getResources().getDimensionPixelSize(R.dimen.contact_selection_actions_tap_area);
 
-    container.post(new Runnable() {
-      @Override
-      public void run() {
-        Rect rect = new Rect();
-        child.getHitRect(rect);
+    container.post(() -> {
+      Rect rect = new Rect();
+      child.getHitRect(rect);
 
-        rect.top -= padding;
-        rect.left -= padding;
-        rect.right += padding;
-        rect.bottom += padding;
+      rect.top -= padding;
+      rect.left -= padding;
+      rect.right += padding;
+      rect.bottom += padding;
 
-        container.setTouchDelegate(new TouchDelegate(rect, child));
-      }
+      container.setTouchDelegate(new TouchDelegate(rect, child));
     });
   }
 

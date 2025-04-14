@@ -3,13 +3,12 @@ package org.thoughtcrime.securesms.util;
 import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-
-import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.HashMap;
 import java.util.Map;

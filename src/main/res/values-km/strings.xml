@@ -120,7 +120,7 @@
     <string name="voice_message">សារជាសម្លេង</string>
     <string name="forwarded">បានបញ្ជូនបន្ត</string>
     <string name="forwarded_message">សារដែលបានបញ្ជូនបន្ត</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">បញ្ជូនបន្តពី %1$s</string>
     <string name="video">វីដេអូ</string>
     <string name="documents">ឯកសារ</string>
@@ -175,7 +175,6 @@
     <string name="menu_add_attachment">បន្ថែមឯកសារភ្ជាប់</string>
     <string name="menu_leave_group">ចាកចេញពីក្រុម</string>
     <string name="menu_delete_chat">លុបសារសន្ទនា</string>
-    <string name="menu_delete_messages">លុបសារ</string>
     <string name="delete_contact">លុបទំនាក់ទំនង</string>
     <string name="menu_delete_location">លុបទីតាំងនេះ?</string>
     <string name="menu_message_details">លំអិតសារ</string>
@@ -237,7 +236,6 @@
     <string name="ConversationFragment_quoted_message_not_found">រកមិនឃើញសារដើម</string>
     <string name="reply_privately">ឆ្លើយតបដោយឯកជន</string>
     <string name="mute_for_one_hour">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល១ម៉ោង</string>
-    <string name="mute_for_two_hours">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល២ម៉ោង</string>
     <string name="mute_for_one_day">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល១ថ្ងៃ</string>
     <string name="mute_for_seven_days">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល៧ថ្ងៃ</string>
     <string name="mute_forever">ធ្វើឲ្យមិនឃើញមិនលឺរយៈរហូត</string>
@@ -268,14 +266,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">តើអ្នកប្រាកដហើយថាចង់ចាកចេញពីក្រុមនេះ?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="other">លុបសារសន្ទនាទាំង %d  នេះ? ពួកគេនឹងមិនត្រូវបានបង្ហាញនៅក្នុងបញ្ជីសន្ទនាទៀតទេ។ សាររបស់ពួកគេនឹងនៅមានលើម៉ាសុីនមេ</item>
-    </plurals>
-    <string name="ask_delete_named_chat">តើអ្នកប្រាកដហើយថាចង់លុប \"%1$s\"?</string>
-    <string name="ask_delete_message">តើអ្នកប្រាកដថា ចង់លុបសារនេះ?</string>
-    <plurals name="ask_delete_messages">
-        <item quantity="other">លុបសារទាំង %d នេះ នៅទីនេះ និងនៅលើម៉ាសុីននេ</item>
-    </plurals>
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">លុបសារ %d</item>
     </plurals>
@@ -286,9 +277,7 @@
     <string name="ask_unblock_contact">ដកបង្ខាំងទំនាក់ទំនងនេះ? អ្នកនឹងអាចទទួលសារពីទំនាក់ទំនងនេះម្តងទៀត។</string>
     <string name="ask_delete_contacts">លុបការទំនាក់ទំនង?\n\nទំនាក់ទំនងដែលកំពុងបន្ត និងទំនាក់ទំនង ពីសៀវភៅអសយដ្ឋានពីម៉ាសុីន មិនអាចលុបចេញបានដាច់ខាត។</string>
     <string name="ask_delete_contact">លុបទំនាក់ទំនង %1$s?\n\nទំនាក់ទំនងដែលកំពុងបន្ត និងទំនាក់ទំនង ពីសៀវភៅអសយដ្ឋានពីម៉ាសុីន មិនអាចលុបចេញបានដាច់ខាត។</string>
-    <string name="cannot_delete_contacts_in_use">មិនអាចលុបទំនាក់ទំនងដែលកំពុងបន្តសន្ទនា</string>
     <string name="ask_start_chat_with">សន្ទនាជាមួយ %1$s?</string>
-    <string name="ask_delete_value">លុប %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">លុប %1$s ពីក្រុមសន្ទនានេះ?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -396,7 +385,7 @@
     <string name="incoming_messages">សារចូល</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">សារចេញ</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">ទំហំផ្ទុកនៅលើ %1$s</string>
     <string name="connectivity">ការតភ្ជាប់និងសេវាកម្ម</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -417,9 +406,7 @@
 
 
     <string name="login_title">កត់ចូល</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">កត់ចូលទៅម៉ាសុីនមេរបស់អ្នក</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">កត់ចូលជាមួយគណនីយដែលមានស្រាប់</string>
     <string name="login_subheader">សម្រាប់លក្ខខណ្ឌអុីម៉េលដែលស្គាល់ស្រាប់ នឹងត្រួវបានដំឡើងដោយស្វ័យប្រវត្តិខ្លួនឯង។ ពេលខ្លះ IMAP ត្រូវការបើកដំណើរការនៅក្នុងការកំណត់គេហទំព័រ។ ពិគ្រោះជាមួយអ្នកផ្តល់អុីម៉េលរបស់អ្មក ឬ មិត្តរបស់អ្នកសម្រាប់ជួយ។</string>
     <string name="login_no_servers_hint">គ្មានម៉ាសុីនមេពី សាហារីសង្ឃទេ ទិន្ន័យរបស់អ្នកស្ថិតនៅលើឧបករណ៍របស់អ្នក។</string>
@@ -445,7 +432,7 @@
     <string name="import_backup_title">នាំចូលពត៌មានចម្លងទុក</string>
     <string name="import_backup_ask">រកឃើញពត៌មានចម្លងទុកនៅ \"%1s\".\n\nតើអ្នកចង់នាំចូល និងប្រើប្រាស់ទិន្នន័យទាំងអស់ និងការកំណត់ពីវា?</string>
     <string name="import_backup_no_backup_found">រក​មិន​ឃើញពត៌មានចម្លងទុកទេ\n\nចម្លង ពត៌មានចម្លងទុកទៅ \"%1$s\" និងសាកល្បងម្តងទៀត\n\nចុច \"ចាប់ផ្តើមផ្ញើសារ\" ដើម្បីបន្តជាមួយដំណើរការរៀបចំធម្មតា។</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">មិនអាចកត់ចូលជា \"%1$s\" ។ សូមផ្ទៀតផ្ទាត់មើលអស័យដ្ឋានអុីម៉េល និងពាក្យសម្ងាត់ឲ្យបានត្រឹមត្រូវ។</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">ទទួលយកលិខិតបញ្ជាក់មិនត្រឹមត្រូវ</string>
@@ -476,11 +463,10 @@
     <string name="pref_profile_photo">រូបភាពទិន្ន័យផ្ទាល់ខ្លួន</string>
     <string name="pref_blocked_contacts">ទំនាក់ទំនងដែលបានរារាំង</string>
     <string name="blocked_empty_hint">ប្រសិនបើអ្នករារាំងទំនាក់ទំ នងពួកទំនាក់ទំនងនេះនឹងត្រូវបានដាកបង្ហាញនៅទីនេះ។</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">ពាក្យសម្ងាត់ និងគណនី</string>
     <string name="pref_who_can_see_profile_explain">រូបភាពទិន្ន័យផ្ទាល់ខ្លួនរបស់អ្នក និងឈ្មោះនឹងត្រូវបានបង្ហាញនៅក្បែរសាររបស់អ្នក នៅពេល ទនំាក់ទំនងជាមួយអ្នកប្រើប្រាស់ផ្សេងទៀត។ ដំណឹងដែលបានផ្ញើរួចមិនអាចលុបចោល ឬដកចេញបានទេ។</string>
     <string name="pref_your_name">ឈ្មោះរបស់អ្នក</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">ហត្ថលេខាជាអក្សរ</string>
     <string name="pref_enter_sends">គ្រាប់​ចុច​ បញ្ចូលធ្វើឱ្យផ្ញើសារ</string>
     <string name="pref_enter_sends_explain">ចុច គ្រាប់​ចុច​ បញ្ចូល (Enter key) នឹងផ្ញើអត្ថបទសារ។</string>
@@ -518,6 +504,7 @@
     <string name="pref_manage_keys">កាន់កាប់គ្រាប់​ចុច</string>
     <string name="pref_use_system_emoji">ប្រើប្រាស់រូបសញ្ញាអារម្មណ៍របសប្រពន្ធ័</string>
     <string name="pref_use_system_emoji_explain">បិទការប្រើប្រាស់រូបសញ្ញាអារម្មណ៍ ពិសា Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_app_access">ចូលដំណើរការកម្មវិធី</string>
     <string name="pref_chats">សន្ទនា</string>
     <string name="pref_in_chat_sounds">សម្លេងនៅក្នុងសន្ទនា</string>
@@ -615,14 +602,10 @@
     <string name="autocrypt_send_asm_button">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
     <string name="autocrypt_send_asm_explain_after">ការរៀបចំរបស់អ្នកត្រូវបានផ្ញើទៅខ្លួនឯងហើយ។ ប្តូរឆ្លាស់ឧបករណ៍ផ្សេង និងបើកសារការរៀបចំ។ អ្នកនឹងទទួលសំណួរពីកូដរៀបចំ។ បញ្ចូលលេខដូចខាងក្រោម:</string>
     <string name="autocrypt_prefer_e2ee">ចូលចិត្តការអ៊ិនគ្រីបច្រើនជាង</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">នេះជាសាររៀបចំចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ចែកចាយចាត់ការរៀបចំចាក់ឧបករណ៍ដល់ឧបករណ៍ជាមួយឧបករណ៍ផ្សេងទៀត។\n\nដើម្បីឌិគ្រីប (ការទទួលសារដែលបានធ្វើជាសារសញ្ញាសម្ងាត់ដល់អាចអានបានវិញ) និងប្រើប្រាសការរៀបចំចាក់របសអ្នក បើកសារនៅក្នុងកម្មវិធីដែលស្គាល់អ៊ិនគ្រីបស្វ័យប្រវត្តិ និងកូដការរៀបចំដែលបានអំណោយពីឧបករណ៍បានបង្កើតវា។</string>
-    <string name="autocrypt_asm_click_body">នេះជាសាររៀបចំចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ចែកចាយចាត់ការរៀបចំចាក់ឧបករណ៍ដល់ឧបករណ៍ជាមួយឧបករណ៍ផ្សេងទៀត។\n\nដើម្បីឌិគ្រីបវា ប្រើការតម្លងរបស់អ្មក ប៉ៈ ឬចុចលើសារនេះ។</string>
-    <string name="autocrypt_continue_transfer_title">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">សូមបញ្ចូលកូដតម្លើង ដែលបានបង្ហាញនៅលើឧបករណ៍ផ្សេងទៀត។</string>
-    <string name="autocrypt_continue_transfer_succeeded">ការតម្លើងឧបករណ៍ដល់ឧបករណ៍បានផ្ទេរហើយ។ ឧបករណ៍នេះរួចរាល់ហើយដើម្បីប្រើប្រាស់ អ៊ិនគ្រីបស្វ័យប្រវត្តិ មានតម្លើងដូចគ្នាឧបករណ៍ផ្សេងទៀត។</string>
-    <string name="autocrypt_continue_transfer_retry">ព្យាយាមម្តងទៀត</string>
-    <string name="autocrypt_bad_setup_code">កូដតម្លើងមិនត្រឹមត្រូវ។ សូមព្យាយាមម្តងទៀត\n\nប្រសិនបើអ្នកមិនចងចាំកូដតម្លើង ចូរផ្ញើសារតម្លើងចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិថ្មីមួយពីឧបករណ៍ផ្សេងទៀត។</string>
 
 
     <string name="systemmsg_unknown_sender_for_chat">មិនស្គាល់អ្នកផ្ញើការសន្ទនានេះ។ មើល \'ពត៌មាន\' សម្រាប់ពត៌មានលំអិត</string>
@@ -727,6 +710,7 @@
     <string name="contact_not_verified">មិនអាចផ្ទៀងផ្ទាត់ %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">បានដូរការរៀបចំសម្រាប់ %1$s</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">បានចម្លង QR-url ទៅក្តារខ្ទាស់</string>
     <string name="mailto_dialog_header_select_chat">ជ្រើសរើសការជជែក ដើម្បីផ្ញើសារទៅកាន់</string>
     <string name="mailto_link_could_not_be_decoded">សំបុត្រទៅតំណភ្ជាប់ មិនអាចឌិកូដទេ: %1$s</string>
@@ -802,6 +786,7 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">រូបតំណាងថាស មិនអាចបិទបានទេដោយសារ Delta Chat ត្រូវបានចាប់ផ្តើមជាមួយជម្រើសបង្រួមអប្បបរមា។</string>
     <string name="no_spellcheck_suggestions_found">រកមិនឃើញការណែនាំអក្ខរាវិរុទ្ធទេ។</string>
     <string name="show_window">បង្ហាញក្របខ័ណ្ឌ</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">ស្ថានភាពចែកចាយ៖ មានកំហុស</string>
     <string name="a11y_encryption_padlock">សោត្រដោកការអ៊ិនគ្រីប</string>

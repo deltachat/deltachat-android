@@ -58,10 +58,6 @@ public class AvatarView extends ConstraintLayout {
     avatarImage.setOnClickListener(listener);
   }
 
-  public void setAvatarLongClickListener(OnLongClickListener listener) {
-    avatarImage.setOnLongClickListener(listener);
-  }
-
   public void setSeenRecently(boolean enabled) {
     seenRecentlyIndicator.setVisibility(enabled? View.VISIBLE : View.GONE);
   }

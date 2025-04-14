@@ -1,5 +1,94 @@
 # Delta Chat Android Changelog
 
+## v1.58.0
+2025-04
+
+* tapping info messages with contacts open the contact's profile
+* hide superfluous "Show Classic E-mails" advanced setting for chatmail
+* show profile bio/status under name in main settings screen
+* remove mostly non-telling transport addresses when referring to a contact;
+  the contact's profile gives a much better overview
+* Disable AEAP to enable us to overhaul some things - there are big changes underway in this area, which will come in a few months
+* don't display email address in contact list and member list for contacts with green-checkmark
+* avoid crash in Notifications preferences if ringtone title can't be read
+* don't display forwarded messages as "edited" if original message was edited
+* support importing contact from ProtonMail vCard attachments received in chats
+* send encrypted in the experimental broadcast lists feature
+* wait for QR scan (or invite link click) process to complete before allowing to send messages
+* update to core 1.159.0
+
+## v1.56.1
+2025-03
+
+* ignore click in info-messages from deleted in-chat apps
+* data saving: do not send messages to the server if user is the only member of the chat in single-device usage
+* protect metadata: encrypt message's sent date
+* do not fail to send messages in groups if some encryption keys are missing
+* synchronize contact name changes across devices
+* fix changing group names that was not working in some situations
+* fix: do not show outdated message text in "Message Info" of an edited message
+* some more small bug fixes and updated translations
+* update to core 1.158.0
+
+## v1.56.0
+2025-03
+
+* allow to edit messages
+* allow to delete messages for everyone
+* add mute option "8 hours"
+* add menu option to easily save/unsave selected message
+* improve deletion confirmation for "Device Messages"
+* remove dangerous encryption options
+* always paste as plain text in message draft area
+* some small bug fixes and updated translations
+* update to core 1.157.2
+
+## v1.54.4
+2025-03
+
+* allow better avatar (profile picture) quality
+* remove notifications from chat that was deleted from other device
+* when a chat is deleted, also delete its messages from server
+* avoid freezing when opening the app for the first time after install
+* avoid crash when adding chat shortcut to home screen
+* some small bug fixes and updated translations
+* update to core 1.156.3
+
+## v1.54.3
+2025-03
+
+* allow to add any chat to the home screen
+* update "forward message" icon and organize the messages actions bar
+* do not allow non-members to change ephemeral timer settings of groups
+* properly display padlock when the message is not sent over the network
+* sync message deletion to other devices
+* sync chat deletion across devices
+* Show sender in "Saved Messages"
+* allow scanning multiple QR-invitation codes without needing to wait for completion to scan the next one
+* when reactions are seen in one device, remove notification from your other devices
+* don't disturb with notification when someone leave a group
+* detect incompatible profiles from newer app version when importing them
+* prepare the app for receiving edited messages
+* prepare the app for receiving message deletion requests
+* do some small bug fixes
+* update translations
+* update to core 1.156.2
+
+## v1.54.0
+2025-02
+
+* enhanced "Saved Messages" feature, now when forwarding a message to "Saved Messages" chat, it retains the sender information and a button to jump to the original message
+* Saved messages are marked by a bookmark sign
+* improve explanation when blocking a contact
+* improve wording in empty "apps" and "files" tabs in chat media screen
+* remove deprecated/legacy built-in "half-camera"
+* UI improvement: keep avatars aligned to message bubble when message has reactions
+* fix problems when opening attachments in external apps
+* fix a bug with some big images appearing as blank/transparent
+* some other small bug fixes
+* update translations
+* update to core 1.155.4
+
 ## v1.52.1
 2025-01
 

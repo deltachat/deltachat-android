@@ -16,9 +16,9 @@
  */
 package org.thoughtcrime.securesms;
 
-import android.app.Activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -345,27 +345,32 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     DcChat dcChat = dcContext.getChat(dcMsg.getChatId());
 
     String text = getResources().getQuantityString(
-      dcChat.isDeviceTalk()? R.plurals.ask_delete_messages_simple : R.plurals.ask_delete_messages,
+      dcChat.isDeviceTalk() ? R.plurals.ask_delete_messages_simple : R.plurals.ask_delete_messages,
       1, 1);
+    int positiveBtnLabel = dcChat.isSelfTalk() ? R.string.delete : R.string.delete_for_me;
+    final int[] messageIds = new int[]{mediaItem.msgId};
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setMessage(text);
     builder.setCancelable(true);
-
-    builder.setPositiveButton(R.string.delete, (dialogInterface, which) -> {
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... voids) {
-          dcContext.deleteMsgs(new int[]{mediaItem.msgId});
-          return null;
-        }
-      }.execute();
-
+    builder.setNeutralButton(android.R.string.cancel, null);
+    builder.setPositiveButton(positiveBtnLabel, (dialogInterface, which) -> {
+      Util.runOnAnyBackgroundThread(() -> dcContext.deleteMsgs(messageIds));
       finish();
     });
-    builder.setNegativeButton(android.R.string.cancel, null);
-    AlertDialog dialog = builder.show();
-    Util.redPositiveButton(dialog);
+
+    if(dcChat.canSend() && !dcChat.isSelfTalk() && dcMsg.isOutgoing()) {
+      builder.setNegativeButton(R.string.delete_for_everyone, (d, which) -> {
+        Util.runOnAnyBackgroundThread(() -> dcContext.sendDeleteRequest(messageIds));
+        finish();
+      });
+      AlertDialog dialog = builder.show();
+      Util.redButton(dialog, AlertDialog.BUTTON_NEGATIVE);
+      Util.redPositiveButton(dialog);
+    } else {
+      AlertDialog dialog = builder.show();
+      Util.redPositiveButton(dialog);
+    }
   }
 
   @Override
@@ -395,14 +400,28 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
 
-    switch (item.getItemId()) {
-      case R.id.media_preview__edit:     editAvatar();   return true;
-      case R.id.media_preview__overview: showOverview(); return true;
-      case R.id.media_preview__share:    share();        return true;
-      case R.id.save:                    saveToDisk();   return true;
-      case R.id.delete:                  deleteMedia();  return true;
-      case R.id.show_in_chat:            showInChat();   return true;
-      case android.R.id.home:            finish();       return true;
+    int itemId = item.getItemId();
+    if (itemId == R.id.media_preview__edit) {
+      editAvatar();
+      return true;
+    } else if (itemId == R.id.media_preview__overview) {
+      showOverview();
+      return true;
+    } else if (itemId == R.id.media_preview__share) {
+      share();
+      return true;
+    } else if (itemId == R.id.save) {
+      saveToDisk();
+      return true;
+    } else if (itemId == R.id.delete) {
+      deleteMedia();
+      return true;
+    } else if (itemId == R.id.show_in_chat) {
+      showInChat();
+      return true;
+    } else if (itemId == android.R.id.home) {
+      finish();
+      return true;
     }
 
     return false;

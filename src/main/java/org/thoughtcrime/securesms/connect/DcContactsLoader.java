@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.connect;
 
 import android.content.Context;
+
 import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcContact;
@@ -11,8 +12,6 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
-
-    private static final String TAG = DcContactsLoader.class.getName();
 
     private final int     listflags;
     private final String  query;
@@ -37,7 +36,7 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
         DcContext dcContext = DcHelper.getContext(getContext());
         if (blockedContacts) {
             int[] blocked_ids = dcContext.getBlockedContacts();
-            return new DcContactsLoader.Ret(blocked_ids);
+            return new Ret(blocked_ids);
         }
 
         int[] contact_ids = dcContext.getContacts(listflags, query);
@@ -55,13 +54,13 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
             final boolean broadcastsEnabled = Prefs.isNewBroadcastListAvailable(getContext());
             if (broadcastsEnabled) additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST);
         }
-        int all_ids[] = new int[contact_ids.length + additional_items.length];
+        int[] all_ids = new int[contact_ids.length + additional_items.length];
         System.arraycopy(additional_items, 0, all_ids, 0, additional_items.length);
         System.arraycopy(contact_ids, 0, all_ids, additional_items.length, contact_ids.length);
-        return new DcContactsLoader.Ret(all_ids);
+        return new Ret(all_ids);
     }
 
-    public class Ret {
+    public static class Ret {
         public final int[]  ids;
 
         Ret(int[] ids) {

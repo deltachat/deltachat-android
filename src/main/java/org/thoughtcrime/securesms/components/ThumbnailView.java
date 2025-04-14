@@ -71,13 +71,13 @@ public class ThumbnailView extends FrameLayout {
     super.setOnClickListener(new ThumbnailClickDispatcher());
 
     if (attrs != null) {
-      TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ThumbnailView, 0, 0);
-      bounds[MIN_WIDTH]  = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_minWidth, 0);
-      bounds[MAX_WIDTH]  = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_maxWidth, 0);
-      bounds[MIN_HEIGHT] = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_minHeight, 0);
-      bounds[MAX_HEIGHT] = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_maxHeight, 0);
-      // int radius = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_thumbnail_radius, getResources().getDimensionPixelSize(R.dimen.gallery_thumbnail_radius));
-      typedArray.recycle();
+      try (TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ThumbnailView, 0, 0)) {
+        bounds[MIN_WIDTH] = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_minWidth, 0);
+        bounds[MAX_WIDTH] = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_maxWidth, 0);
+        bounds[MIN_HEIGHT] = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_minHeight, 0);
+        bounds[MAX_HEIGHT] = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_maxHeight, 0);
+        // int radius = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_thumbnail_radius, getResources().getDimensionPixelSize(R.dimen.gallery_thumbnail_radius));
+      }
     }
 
   }

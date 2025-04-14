@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms.util;
 import android.net.MailTo;
 import android.net.Uri;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;

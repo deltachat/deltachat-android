@@ -28,6 +28,8 @@
     <string name="join">Deelnemen</string>
     <string name="rejoin">Opnieuw deelnemen</string>
     <string name="delete">Verwijderen</string>
+    <string name="delete_for_me">Verwijderen voor mij</string>
+    <string name="delete_for_everyone">Verwijderen voor iedereen</string>
     <string name="info">Informatie</string>
     <string name="update">Bijwerken</string>
     <string name="emoji">Emoji</string>
@@ -41,6 +43,8 @@
     <string name="later">Later</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Opnieuw versturen</string>
+    <string name="edited">Bewerkt</string>
+    <string name="edit_message">Bericht bewerken</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archiveren</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -163,7 +167,7 @@
     <string name="voice_message">Spraakbericht</string>
     <string name="forwarded">Doorgestuurd</string>
     <string name="forwarded_message">Bericht doorgestuurd</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Doorgestuurd door %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documenten</string>
@@ -221,6 +225,8 @@
     <string name="new_classic_contact_explain">Handmatig toegevoegde contactpersonen zijn bedoeld voor traditionele e-mailcommunicatie - eind-tot-endversleuteling is daarom niet gegarandeerd.</string>
     <string name="menu_new_chat">Nieuw gesprek</string>
     <string name="menu_new_group">Nieuwe groep</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Gesprek voeren met…</string>
     <string name="clone_chat">Gesprek klonen</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Verzendlijst</string>
@@ -242,7 +248,6 @@
     <string name="menu_delete_chat">Gesprek verwijderen</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Ale berichten wissen</string>
-    <string name="menu_delete_messages">Berichten verwijderen</string>
     <string name="delete_contact">Contactpersoon verwijderen</string>
     <string name="menu_delete_location">Wil je deze locatie verwijderen?</string>
     <string name="menu_message_details">Berichtinformatie</string>
@@ -286,9 +291,9 @@
     <string name="select_chat">Kies een gesprek</string>
     <string name="select_more">Meer selecteren</string>
     <string name="menu_edit_name">Naam wijzigen</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Geef deze persoon een bijnaam, ter vervanging van “%1$s”. Laat leeg om de standaardnaam te gebruiken.</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Bijnaam van %1$s</string>
     <string name="menu_settings">Instellingen</string>
     <string name="menu_advanced">Geavanceerd</string>
@@ -300,6 +305,7 @@
     <string name="menu_learn_spelling">Spelling leren</string>
     <string name="menu_chat_audit_log">Gesprekslogboek</string>
     <string name="jump_to_message">Ga naar bericht</string>
+    <string name="jump_to_original_message">Ga naar oorspronkelijk bericht</string>
     <string name="copy_json">Json-gegevens kopiëren</string>
     <string name="replace_draft">Concept vervangen</string>
     <string name="title_share_location">Locatie delen met alle groepsleden</string>
@@ -324,7 +330,7 @@
     <string name="donate">Doneren</string>
 
     <string name="mute_for_one_hour">1 uur lang uitschakelen</string>
-    <string name="mute_for_two_hours">2 uur lang uitschakelen</string>
+    <string name="mute_for_eight_hours">8 uur lang uitschakelen</string>
     <string name="mute_for_one_day">1 dag lang uitschakelen</string>
     <string name="mute_for_seven_days">7 dagen lang uitschakelen</string>
     <string name="mute_forever">Permanent uitschakelen</string>
@@ -360,15 +366,16 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Weet je zeker dat je deze groep wilt verlaten?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Wil je %d gesprek verwijderen? Het gesprek wordt niet langer getoond in de gesprekslijst, maar de berichten blijven bewaard op de server.</item>
-        <item quantity="other">Wil je %d gesprekken verwijderen? Ze worden niet langer getoond in de gesprekslijst, maar de berichten blijven bewaard op de server.</item>
+        <item quantity="one">Wil je %d gesprek verwijderen van al je apparaten?</item>
+        <item quantity="other">Wil je %d gesprekken verwijderen van al je apparaten?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Weet je zeker dat je ‘%1$s’ wilt verwijderen?</string>
-    <string name="ask_delete_message">Weet je zeker dat je dit bericht wilt verwijderen?</string>
+    <string name="ask_delete_named_chat">Wil je ‘%1$s’ verwijderen van al je apparaten?</string>
+    <string name="ask_delete_message">Wil je dit bericht verwijderen van al je apparaten?</string>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Wil je %d bericht verwijderen, zowel hier als op de server?</item>
-        <item quantity="other">Wil je %d berichten verwijderen, zowel hier als op de server?</item>
+        <item quantity="one">Wil je %d bericht verwijderen van al je apparaten?</item>
+        <item quantity="other">Wil je %d berichten verwijderen van al je apparaten?</item>
     </plurals>
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Wil je %d bericht verwijderen?</item>
         <item quantity="other">Wil je %d berichten verwijderen?</item>
@@ -380,9 +387,7 @@
     <string name="ask_unblock_contact">Wil je deze contactpersoon deblokkeren? Hij/zij kan je wederom berichten sturen.</string>
     <string name="ask_delete_contacts">Wil je de geselecteerde contactpersonen permanent verwijderen?\n\nPersonen met actieve gesprekken en personen afkomstig uit je adresboek kunnen niet permanent worden verwijderd.</string>
     <string name="ask_delete_contact">Wil je de contactpersoon %1$s permanent verwijderen?\n\nPersonen met actieve gesprekken en personen afkomstig uit je adresboek kunnen niet permanent worden verwijderd.</string>
-    <string name="cannot_delete_contacts_in_use">Contactpersonen waarmee je nog gesprekken voert kunnen niet worden verwijderd.</string>
     <string name="ask_start_chat_with">Wil je een gesprek voeren met %1$s?</string>
-    <string name="ask_delete_value">Wil je %s verwijderen?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Wil je %1$s verwijderen uit de groep?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -501,6 +506,8 @@
     <string name="profile_encryption">Versleuteling</string>
     <string name="profile_shared_chats">Gedeelde gesprekken</string>
     <string name="related_chats">Verwante gesprekken</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Voormalige deelnemers</string>
     <string name="tab_contact">Contactpersoon</string>
     <string name="tab_group">Groep</string>
     <string name="tab_gallery">Galerij</string>
@@ -522,9 +529,9 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Vierkant rooster</string>
     <string name="send_message">Bericht versturen</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s heeft zijn/haar adres veranderd van %2$s naar %3$s</string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">Je hebt je e-mailadres veranderd van %1$s naar %2$s.\n\nAls je een bericht stuurt aan een goedgekeurde groep, dan zien contactpersonen in de groep je nieuwe adres.\n\nWel raden we aan om bij je oude provider in te stellen dat je e-mails wilt doorsturen naar je nieuwe adres, anders missen sommige contactpersonen mogelijk je berichten.</string>
 
 
@@ -532,7 +539,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Secundair apparaat toevoegen</string>
     <string name="multidevice_same_network_hint">Zorg ervoor dat beide apparaten verbonden zijn met hetzelfde (wifi)netwerk</string>
-    <string name="multidevice_this_creates_a_qr_code">Hiermee wordt een QR-code samengesteld die door het tweede apparaat kan worden gescand om het account te kopiëren.</string>
+    <string name="multidevice_this_creates_a_qr_code">Hiermee wordt een QR-code samengesteld die door het tweede apparaat kan worden gescand om het account te kopiëren.\n\nZorg dat er geen vreemden meekijken, al dan niet door een camera.</string>
     <string name="multidevice_install_dc_on_other_device">Installeer Delta Chat op je andere apparaat (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Start Delta Chat, druk op ‘Ik heb al een profiel → Toevoegen als secundair apparaat’ en scan de hier getoonde code</string>
@@ -541,9 +548,9 @@
     <string name="multidevice_receiver_title">Toevoegen als secundair apparaat</string>
     <string name="multidevice_open_settings_on_other_device">Ga op het eerste apparaat naar ‘Instellingen → Secundair apparaat toevoegen’ en scan de hier getoonde code</string>
     <string name="multidevice_receiver_scanning_ask">Wil je je account van het andere apparaat naar dit apparaat kopiëren?</string>
+    <string name="multidevice_receiver_needs_update">Het te importeren profiel is afkomstig uit een nieuwere Delta Chat-versie.\n\nAls je het tweede apparaat wilt instellen, installeer dan de nieuwste versie van Delta Chat.</string>
     <string name="multidevice_abort">Wil je het instellen afbreken?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Hierdoor wordt de gekopieerde QR-code onbruikbaar gemaakt.</string>
-    <string name="multidevice_experimental_hint">(experimenteel - versie 1.36 vereist)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Het account is overgezet naar je tweede apparaat.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Bezig met voorbereiden…</string>
@@ -556,7 +563,7 @@
     <string name="incoming_messages">Inkomende berichten</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Uitgaande berichten</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Opslag op %1$s</string>
     <string name="connectivity">Verbindingen</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -578,7 +585,7 @@
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
-    <string name="onboarding_create_instant_account">Aan de slag!</string>
+    <string name="onboarding_create_instant_account">Account aanmaken</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Ik heb al een account</string>
     <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
@@ -606,9 +613,7 @@
     <string name="welcome_chat_over_email">Veilige, gedecentraliseerde gesprekken</string>
     <string name="scan_invitation_code">Uitnodigingscode scannen</string>
     <string name="login_title">Inloggen</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Inloggen op je server</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Log in met een bestaand e-mailaccount.</string>
     <string name="login_subheader">Bij bekende e-mailproviders gaat het instellen vrijwel geheel automatisch. Soms moet je imap inschakelen in de webversie van je e-mailclient. Vraag je e-mailprovider of vrienden om hulp.</string>
     <string name="login_no_servers_hint">Er is geen Delta Chat-server; jóuw gegevens blijven op jóuw apparaat.</string>
@@ -624,7 +629,7 @@
     <string name="login_smtp_port">SMTP-poort</string>
     <string name="login_smtp_security">SMTP-beveiliging</string>
     <string name="login_auth_method">Autorisatiemethode</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Proxy gebruiken</string>
     <string name="proxy_add">Proxy toevoegen</string>
@@ -648,15 +653,16 @@
     <string name="import_backup_title">Reservekopie importeren</string>
     <string name="import_backup_ask">Er is een reservekopie aangetroffen in ‘%1$s’.\n\nWil je de instellingen en gegevens daaruit importeren?</string>
     <string name="import_backup_no_backup_found">Er zijn geen reservekopieën aangetroffen.\n\nKopieer de reservekopie naar ‘%1$s’ en probeer het opnieuw of druk op ‘Aan de slag’ om het instelproces te doorlopen.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Het inloggen als ‘%1$s’ is mislukt. Controleer je e-mailadres en wachtwoord.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Ongeldige certificaten accepteren</string>
     <string name="switch_account">Ander account kiezen</string>
     <string name="add_account">Account toevoegen</string>
-    <string name="profile_tag">Privélabel</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Profielbeschrijving</string>
     <string name="profile_tag_hint">bijv. werk, familie</string>
-    <string name="profile_tag_explain">Een label dat alleen jij kan zien, om profielen van elkaar te onderscheiden.</string>
+    <string name="profile_tag_explain">Een beschrijving die alleen jij kan zien, om profielen van elkaar te onderscheiden.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Bovenaan tonen</string>
     <string name="delete_account">Account verwijderen</string>
@@ -687,11 +693,10 @@
     <string name="pref_profile_photo">Profielfoto</string>
     <string name="pref_blocked_contacts">Geblokkeerde contactpersonen</string>
     <string name="blocked_empty_hint">Geblokkeerde contactpersonen worden hier getoond.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Wachtwoord en account</string>
     <string name="pref_who_can_see_profile_explain">Je profielfoto, -naam en handtekening worden naast je gespreksberichten getoond.</string>
     <string name="pref_your_name">Je naam</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Handtekeningtekst</string>
     <string name="pref_enter_sends">Versturen met enter</string>
     <string name="pref_enter_sends_explain">Druk op de entertoets om tekstberichten te versturen</string>
@@ -734,10 +739,9 @@
     <string name="pref_manage_keys">Sleutels beheren</string>
     <string name="pref_use_system_emoji">Systeememoji gebruiken</string>
     <string name="pref_use_system_emoji_explain">Schakel Delta Chats ingebouwde emojiondersteuning uit</string>
-    <string name="pref_use_inapp_camera">Ingebouwde camera gebruiken</string>
-    <string name="pref_use_inapp_camera_explain">Let op: de ingebouwde camera beschikt over minder functies dan de systeemcamera</string>
     <string name="pref_show_system_contacts">Adresboek uitlezen</string>
     <string name="pref_show_system_contacts_explain">Bied aan om gesprekken te beginnen met contactpersonen uit het adresboek. Let op: voor sommige providers is eind-tot-eindversleuteling benodigd.</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Apptoegang</string>
     <string name="pref_chats">Gesprekken</string>
     <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
@@ -749,7 +753,7 @@
     <string name="pref_backup">Reservekopie</string>
     <string name="pref_backup_explain">Gesprekken bewaren op externe opslag</string>
     <string name="pref_backup_export_explain">Met een reservekopie kun je een nieuwe installatie instellen op dit of een ander apparaat.\n\nEen reservekopie bevat alle berichten, contactpersonen, gesprekken en je eind-tot-eindversleuteling. Bewaar het reservekopiebestand op een veilige plaats of verwijder het zo snel mogelijk.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">‘%1$s’ exporteren</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">%1$d accounts exporteren</string>
@@ -770,7 +774,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Als je deze optie uitschakelt, zorg er dan voor dat je server en overige clients goed ingesteld zijn.\n\nAls dat niet zo is, dan werkt het misschien helemaal niet.</string>
     <string name="pref_watch_sent_folder">Map ‘Verzonden’ controleren op nieuwe berichten</string>
     <string name="pref_send_copy_to_self">Kopie versturen naar mijzelf</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Vereist bij gebruik van dit account op meerdere apparaten.</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
     <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om je postvak netjes te houden</string>
@@ -789,7 +792,7 @@
     <string name="pref_background_custom_image">Eigen afbeelding</string>
     <string name="pref_background_custom_color">Eigen kleur</string>
     <string name="export_aborted">Het exporteren is afgebroken.</string>
-    <string name="auto_download_messages">Berichten automatisch downloaden</string>
+    <string name="auto_download_messages">Berichten automatisch ophalen</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">Tot %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Tot %1$s - lage afbeeldingskwaliteit</string>
@@ -858,18 +861,14 @@
 
     <!-- autocrypt -->
     <string name="autocrypt_send_asm_title">Autocrypt-instelbericht versturen</string>
-    <string name="autocrypt_send_asm_explain_before">Een ‘Autocrypt-instelbericht’ deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps.\n\nDe instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
+    <string name="autocrypt_send_asm_explain_before">Een ‘Autocrypt-instelbericht’ deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps.\n\nAls je Delta Chat ook op het andere apparaat gebruikt, voeg het dan als tweede apparaat toe.</string>
     <string name="autocrypt_send_asm_button">Autocrypt-instelbericht versturen</string>
     <string name="autocrypt_send_asm_explain_after">Je instellingen zijn aan jezelf verstuurd. Schakel over naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:</string>
     <string name="autocrypt_prefer_e2ee">Voorkeur voor eind-tot-eindversleuteling</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Autocrypt-instelbericht</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">Dit is het Autocrypt-instelbericht dat wordt gebruikt om je instellingen over te zetten.\n\nOm te ontsleutelen en te gebruiken, open je het bericht in een met Autocrypt compatibele app en voer je de code in die wordt getoond op het apparaat dat de code heeft gegenereerd.</string>
-    <string name="autocrypt_asm_click_body">Dit is het Autocrypt-instelbericht dat wordt gebruikt om je eind-tot-eindinstellingen over te zetten.\n\nDruk op dit bericht om je instellingen te ontsleutelen en gebruiken.</string>
-    <string name="autocrypt_continue_transfer_title">Autocrypt-instelbericht</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">Voer de code die wordt getoond op het andere apparaat.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Je eind-tot-eindinstellingen zijn overgezet. Dit apparaat kan nu worden gebruikt i.c.m. Autocrypt, met dezelfde instellingen als het andere apparaat.</string>
-    <string name="autocrypt_continue_transfer_retry">Opnieuw</string>
-    <string name="autocrypt_bad_setup_code">Onjuist; probeer het opnieuw.\n\nAls je je code niet meer weet, verstuur dan nóg een Autocrypt-instelbericht vanaf het andere apparaat.</string>
 
 
     <!-- system messages -->
@@ -994,16 +993,18 @@
     <string name="set_name_and_avatar_explain">Kies een naam die herkenbaar is voor je contactpersonen en, desgewenst, een profielfoto.</string>
     <string name="please_enter_name">Voer een naam in.</string>
     <string name="qraccount_qr_code_cannot_be_used">De gescande QR-code kan niet worden gebruikt om een nieuw account in te stellen.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Inloggen als ‘%1$s’?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Wil je inloggen als ‘%1$s’?\n\nJe reeds aanwezige account wordt niet verwijderd. Druk op de knop ‘Ander account kiezen’ om tussen accounts te schakelen.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s heeft je uitgenodigd voor deze groep.\n\nEr wordt gewacht op antwoord van het apparaat van %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s heeft geantwoord en wacht op toelating tot de groep…</string>
     <string name="secure_join_wait">Bezig met opzetten van eind-tot-eindversleuteling…</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">Er kan nog geen eind-tot-eindversleuteling worden gegarandeerd, maar je kunt wel alvast een bericht sturen.</string>
+    <string name="secure_join_takes_longer">Het lijkt langer te duren dan verwacht - wellicht is een van jullie offline.\n\nHet proces wordt echter op de achtergrond voortgezet, dus je kunt gerust iets anders gaan doen…</string>
     <string name="contact_verified">%1$s is goedgekeurd.</string>
     <string name="contact_not_verified">Er kan geen eind-tot-eindversleuteling met %1$s worden gegarandeerd.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
@@ -1012,6 +1013,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Gewijzigde instellingen voor %1$s</string>
     <string name="verified_contact_required_explain">Om de eind-tot-eindversleuteling te garanderen, kun je alleen contactpersonen met een groen vinkje toevoegen aan deze groep.\n\nVan niet-goedgekeurde contactpersonen kun je de QR-code scannen om ze goed te keuren.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">De QR-url is gekopieerd naar het klembord</string>
     <string name="mailto_dialog_header_select_chat">Kies in welk gesprek je dit bericht wilt delen</string>
     <!-- first placeholder is the name of the chat -->
@@ -1102,7 +1104,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Het systeemvakpictogram is uitgeschakeld omdat Delta Chat is gestart met de optie --minimized</string>
     <string name="no_spellcheck_suggestions_found">Geen suggesties gevonden.</string>
     <string name="show_window">Venster tonen</string>
-    <string name="login_socks5_experimental_warning">De SOCKS5-ondersteuning is momenteel nog experimenteel - gebruik hiervan is op eigen risico. Als je een e-mailadres invoert, dan vindt er een dns-opzoeking plaats die niet wordt doorgesluisd via SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Sneltoetsen</string>

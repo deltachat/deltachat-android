@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.contacts.avatars;
 
 import android.content.Context;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -54,7 +55,7 @@ public abstract class LocalFileContactPhoto implements ContactPhoto {
 
     @Override
     public boolean equals(Object other) {
-        if (other == null || !(other instanceof LocalFileContactPhoto)) return false;
+        if (!(other instanceof LocalFileContactPhoto)) return false;
 
         LocalFileContactPhoto that = (LocalFileContactPhoto) other;
         return this.address.equals(that.address) && this.id == that.id && this.path.equals(that.path);

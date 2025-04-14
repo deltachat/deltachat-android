@@ -6,13 +6,13 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PORT;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_SECURITY;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_SERVER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_USER;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PASSWORD;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PORT;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SECURITY;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SERVER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 import static org.thoughtcrime.securesms.service.IPCAddAccountsService.ACCOUNT_DATA;
 
@@ -46,6 +46,9 @@ import androidx.constraintlayout.widget.Group;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcProvider;
+import com.b44t.messenger.rpc.EnteredLoginParam;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 import com.b44t.messenger.util.concurrent.ListenableFuture;
 import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.google.android.material.textfield.TextInputEditText;
@@ -61,7 +64,6 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.lang.ref.WeakReference;
-import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
@@ -280,19 +282,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         int id = item.getItemId();
 
         if (id == R.id.do_register) {
-            String oldAddr = DcHelper.getSelfAddr(this);
-            String newAddr = emailInput.getText().toString();
-            if (!TextUtils.isEmpty(oldAddr)
-                    && !TextUtils.equals(oldAddr.toLowerCase(Locale.ROOT), newAddr.toLowerCase(Locale.ROOT))) {
-                // Tell the user about AEAP if they are about to change their address
-                new AlertDialog.Builder(this)
-                        .setMessage(getString(R.string.aeap_explanation, oldAddr, newAddr))
-                        .setNegativeButton(R.string.cancel, (d, w) -> {})
-                        .setPositiveButton(R.string.perm_continue, (d, w) -> do_register())
-                        .show();
-            } else {
-                do_register();
-            }
+            do_register();
             return true;
         } else if (id == android.R.id.home) {
             // handle close button click here
@@ -594,40 +584,50 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void setupConfig() {
-        setConfig(R.id.email_text, CONFIG_ADDRESS, true);
-        setConfig(R.id.password_text, CONFIG_MAIL_PASSWORD, false);
-        setConfig(R.id.imap_server_text, CONFIG_MAIL_SERVER, true);
-        setConfig(R.id.imap_port_text, CONFIG_MAIL_PORT, true);
-        setConfig(R.id.imap_login_text, CONFIG_MAIL_USER, false);
-        setConfig(R.id.smtp_server_text, CONFIG_SEND_SERVER, true);
-        setConfig(R.id.smtp_port_text, CONFIG_SEND_PORT, true);
-        setConfig(R.id.smtp_login_text, CONFIG_SEND_USER, false);
-        setConfig(R.id.smtp_password_text, CONFIG_SEND_PASSWORD, false);
-
-        DcHelper.getContext(this).setConfigInt(CONFIG_MAIL_SECURITY, imapSecurity.getSelectedItemPosition());
-        DcHelper.getContext(this).setConfigInt(CONFIG_SEND_SECURITY, smtpSecurity.getSelectedItemPosition());
-
-        int server_flags = 0;
-        if(authMethod.getSelectedItemPosition()==1)   server_flags |= DcContext.DC_LP_AUTH_OAUTH2;
-        DcHelper.getContext(this).setConfigInt(CONFIG_SERVER_FLAGS, server_flags);
-
-        DcHelper.getContext(this).setConfigInt("smtp_certificate_checks", certCheck.getSelectedItemPosition());
-        DcHelper.getContext(this).setConfigInt("imap_certificate_checks", certCheck.getSelectedItemPosition());
-
-        // calling configure() results in
-        // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
-        DcHelper.getAccounts(this).stopIo();
         DcHelper.getEventCenter(this).captureNextError();
-        DcHelper.getContext(this).configure();
+
+        EnteredLoginParam param = new EnteredLoginParam(
+                getParam(R.id.email_text, true),
+                getParam(R.id.password_text, false),
+                getParam(R.id.imap_server_text, true),
+                Util.objectToInt(getParam(R.id.imap_port_text, true)),
+                EnteredLoginParam.socketSecurityFromInt(imapSecurity.getSelectedItemPosition()),
+                getParam(R.id.imap_login_text, false),
+                getParam(R.id.smtp_server_text, true),
+                Util.objectToInt(getParam(R.id.smtp_port_text, true)),
+                EnteredLoginParam.socketSecurityFromInt(smtpSecurity.getSelectedItemPosition()),
+                getParam(R.id.smtp_login_text, false),
+                getParam(R.id.smtp_password_text, false),
+                EnteredLoginParam.certificateChecksFromInt(certCheck.getSelectedItemPosition()),
+                authMethod.getSelectedItemPosition() == 1
+        );
+
+        new Thread(() -> {
+            Rpc rpc = DcHelper.getRpc(this);
+            try {
+                rpc.addTransport(DcHelper.getContext(this).getAccountId(), param);
+                DcHelper.getEventCenter(this).endCaptureNextError();
+                progressDialog.dismiss();
+                Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
+                startActivity(conversationList);
+                finish();
+            } catch (RpcException e) {
+                Util.runOnMain(() -> {
+                    DcHelper.getEventCenter(this).endCaptureNextError();
+                    progressDialog.dismiss();
+                    WelcomeActivity.maybeShowConfigurationError(this, e.getMessage());
+                });
+            }
+        }).start();
     }
 
-    private void setConfig(@IdRes int viewId, String configTarget, boolean doTrim) {
+    private String getParam(@IdRes int viewId, boolean doTrim) {
         TextInputEditText view = findViewById(viewId);
         String value = view.getText().toString();
         if(doTrim) {
             value = value.trim();
         }
-        DcHelper.getContext(this).setConfig(configTarget, value.isEmpty()? null : value);
+        return value.isEmpty()? null : value;
     }
 
     private void stopLoginProcess() {
@@ -637,25 +637,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     @Override
     public void handleEvent(@NonNull DcEvent event) {
         if (event.getId()==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
-            long progress = event.getData1Int();
-            if (progress==0/*error/aborted*/) {
-                DcHelper.getAccounts(this).startIo(); // start-io is also needed on errors to make previous config work in case of changes
-                DcHelper.getEventCenter(this).endCaptureNextError();
-                progressDialog.dismiss();
-                WelcomeActivity.maybeShowConfigurationError(this, event.getData2Str());
-            }
-            else if (progress<1000/*progress in permille*/) {
-                int percent = (int)progress / 10;
-                progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
-            }
-            else if (progress==1000/*done*/) {
-                DcHelper.getAccounts(this).startIo();
-                DcHelper.getEventCenter(this).endCaptureNextError();
-                progressDialog.dismiss();
-                Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
-                startActivity(conversationList);
-                finish();
-            }
+            long progress = event.getData1Int(); // progress in permille
+            int percent = (int)progress / 10;
+            progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
         }
     }
 }

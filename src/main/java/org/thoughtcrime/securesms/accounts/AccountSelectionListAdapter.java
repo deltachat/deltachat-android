@@ -16,10 +16,9 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 
-public class AccountSelectionListAdapter extends RecyclerView.Adapter
+public class AccountSelectionListAdapter extends RecyclerView.Adapter<AccountSelectionListAdapter.AccountViewHolder>
 {
   private final @NonNull AccountSelectionListFragment fragment;
-  private final @NonNull Context              context;
   private final @NonNull DcAccounts           accounts;
   private @NonNull int[]                      accountList = new int[0];
   private int                                 selectedAccountId;
@@ -32,18 +31,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
     return accountList.length;
   }
 
-  public abstract static class ViewHolder extends RecyclerView.ViewHolder {
-
-    public ViewHolder(View itemView) {
-      super(itemView);
-    }
-
-    public abstract void bind(@NonNull GlideRequests glideRequests, int accountId, DcContext dcContext, boolean selected, AccountSelectionListFragment fragment);
-    public abstract void unbind(@NonNull GlideRequests glideRequests);
-  }
-
-  public static class AccountViewHolder extends ViewHolder {
-
+  public static class AccountViewHolder extends RecyclerView.ViewHolder {
     AccountViewHolder(@NonNull  final View itemView,
                       @Nullable final ItemClickListener clickListener) {
       super(itemView);
@@ -62,7 +50,6 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
       getView().bind(glideRequests, accountId, dcContext, selected, fragment);
     }
 
-    @Override
     public void unbind(@NonNull GlideRequests glideRequests) {
       getView().unbind(glideRequests);
     }
@@ -73,8 +60,8 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
                                      @Nullable ItemClickListener clickListener)
   {
     super();
+    Context context    = fragment.requireActivity();
     this.fragment      = fragment;
-    this.context       = fragment.getActivity();
     this.accounts      = DcHelper.getAccounts(context);
     this.li            = LayoutInflater.from(context);
     this.glideRequests = glideRequests;
@@ -83,16 +70,15 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
 
   @NonNull
   @Override
-  public AccountSelectionListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+  public AccountViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     return new AccountViewHolder(li.inflate(R.layout.account_selection_list_item, parent, false), clickListener);
   }
 
   @Override
-  public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+  public void onBindViewHolder(@NonNull AccountViewHolder holder, int i) {
     int id = accountList[i];
     DcContext dcContext = accounts.getAccount(id);
 
-    ViewHolder holder = (ViewHolder) viewHolder;
     holder.unbind(glideRequests);
     holder.bind(glideRequests, id, dcContext, id == selectedAccountId, fragment);
   }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -208,10 +207,9 @@ public class ProfileSettingsFragment extends Fragment
     DcChat dcChat = dcContext.getChat(chatId);
     Intent intent = new Intent(getContext(), ContactMultiSelectionActivity.class);
     intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, dcChat.isProtected());
-    ArrayList<String> preselectedContacts = new ArrayList<>();
-    int[] memberIds = dcContext.getChatContacts(chatId);
-    for (int memberId : memberIds) {
-      preselectedContacts.add(dcContext.getContact(memberId).getAddr());
+    ArrayList<Integer> preselectedContacts = new ArrayList<>();
+    for (int memberId : dcContext.getChatContacts(chatId)) {
+      preselectedContacts.add(memberId);
     }
     intent.putExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselectedContacts);
     startActivityForResult(intent, REQUEST_CODE_PICK_CONTACT);
@@ -281,29 +279,28 @@ public class ProfileSettingsFragment extends Fragment
 
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem menuItem) {
-      switch (menuItem.getItemId()) {
-        case R.id.delete:
-          final Collection<Integer> toDelIds = adapter.getSelectedMembers();
-          StringBuilder readableToDelList = new StringBuilder();
-          for (Integer toDelId : toDelIds) {
-            if(readableToDelList.length()>0) {
-              readableToDelList.append(", ");
-            }
-            readableToDelList.append(dcContext.getContact(toDelId).getDisplayName());
+      if (menuItem.getItemId() == R.id.delete) {
+        final Collection<Integer> toDelIds = adapter.getSelectedMembers();
+        StringBuilder readableToDelList = new StringBuilder();
+        for (Integer toDelId : toDelIds) {
+          if (readableToDelList.length() > 0) {
+            readableToDelList.append(", ");
           }
-          DcChat dcChat = dcContext.getChat(chatId);
-          AlertDialog dialog = new AlertDialog.Builder(getContext())
-              .setPositiveButton(R.string.remove_desktop, (d, which) -> {
-                for (Integer toDelId : toDelIds) {
-                  dcContext.removeContactFromChat(chatId, toDelId);
-                }
-                mode.finish();
-              })
-              .setNegativeButton(android.R.string.cancel, null)
-              .setMessage(getString(dcChat.isBroadcast()? R.string.ask_remove_from_broadcast : R.string.ask_remove_members, readableToDelList))
-              .show();
-          Util.redPositiveButton(dialog);
-          return true;
+          readableToDelList.append(dcContext.getContact(toDelId).getDisplayName());
+        }
+        DcChat dcChat = dcContext.getChat(chatId);
+        AlertDialog dialog = new AlertDialog.Builder(getContext())
+          .setPositiveButton(R.string.remove_desktop, (d, which) -> {
+            for (Integer toDelId : toDelIds) {
+              dcContext.removeContactFromChat(chatId, toDelId);
+            }
+            mode.finish();
+          })
+          .setNegativeButton(android.R.string.cancel, null)
+          .setMessage(getString(dcChat.isBroadcast() ? R.string.ask_remove_from_broadcast : R.string.ask_remove_members, readableToDelList))
+          .show();
+        Util.redPositiveButton(dialog);
+        return true;
       }
       return false;
     }
@@ -320,13 +317,15 @@ public class ProfileSettingsFragment extends Fragment
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
     if (requestCode==REQUEST_CODE_PICK_CONTACT && resultCode==Activity.RESULT_OK && data!=null) {
-      List<String> selected = data.getStringArrayListExtra("contacts");
-      for (String addr : selected) {
-        if (addr!=null) {
-          int toAddId = dcContext.createContact(null, addr);
-          dcContext.addContactToChat(chatId, toAddId);
+      List<Integer> selected = data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA);
+      if(selected == null) return;
+      Util.runOnAnyBackgroundThread(() -> {
+        for (Integer contactId : selected) {
+          if (contactId!=null) {
+            dcContext.addContactToChat(chatId, contactId);
+          }
         }
-      }
+      });
     }
   }
 }

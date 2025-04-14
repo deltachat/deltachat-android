@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms.preferences;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -11,27 +13,26 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.text.TextUtils;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import android.text.TextUtils;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
-import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
-import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.util.Prefs;
-
-import static android.app.Activity.RESULT_OK;
 
 public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment {
 
+  private static final String TAG = NotificationsPreferenceFragment.class.getSimpleName();
   private static final int REQUEST_CODE_NOTIFICATION_SELECTED = 1;
 
   private CheckBoxPreference ignoreBattery;
@@ -75,38 +76,46 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     initializeRingtoneSummary(findPreference(Prefs.RINGTONE_PREF));
 
     ignoreBattery = this.findPreference("pref_ignore_battery_optimizations");
-    ignoreBattery.setVisible(needsIgnoreBatteryOptimizations());
-    ignoreBattery.setOnPreferenceChangeListener((preference, newValue) -> {
-      requestToggleIgnoreBatteryOptimizations();
-      return true;
-    });
+    if (ignoreBattery != null) {
+      ignoreBattery.setVisible(needsIgnoreBatteryOptimizations());
+      ignoreBattery.setOnPreferenceChangeListener((preference, newValue) -> {
+        requestToggleIgnoreBatteryOptimizations();
+        return true;
+      });
+    }
 
 
     CheckBoxPreference reliableService =  this.findPreference("pref_reliable_service");
-    reliableService.setOnPreferenceChangeListener((preference, newValue) -> {
-      Context context = getContext();
-      boolean enabled = (Boolean) newValue; // Prefs.reliableService() still has the old value
-      if (enabled) {
-          KeepAliveService.startSelf(context);
-      } else {
-        context.stopService(new Intent(context, KeepAliveService.class));
-      }
-      return true;
-    });
+    if (reliableService != null) {
+      reliableService.setOnPreferenceChangeListener((preference, newValue) -> {
+        Context context = getContext();
+        boolean enabled = (Boolean) newValue; // Prefs.reliableService() still has the old value
+        if (enabled) {
+            KeepAliveService.startSelf(context);
+        } else {
+          context.stopService(new Intent(context, KeepAliveService.class));
+        }
+        return true;
+      });
+    }
 
     notificationsEnabled = this.findPreference("pref_enable_notifications");
-    notificationsEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
-      boolean enabled = (Boolean) newValue;
-      dcContext.setMuted(!enabled);
-      return true;
-    });
+    if (notificationsEnabled != null) {
+      notificationsEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
+        boolean enabled = (Boolean) newValue;
+        dcContext.setMuted(!enabled);
+        return true;
+      });
+    }
 
     mentionNotifEnabled = this.findPreference("pref_enable_mention_notifications");
-    mentionNotifEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
-      boolean enabled = (Boolean) newValue;
-      dcContext.setMentionsEnabled(enabled);
-      return true;
-    });
+    if (mentionNotifEnabled != null) {
+      mentionNotifEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
+        boolean enabled = (Boolean) newValue;
+        dcContext.setMentionsEnabled(enabled);
+        return true;
+      });
+    }
   }
 
   @Override
@@ -143,7 +152,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
   private class RingtoneSummaryListener implements Preference.OnPreferenceChangeListener {
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
+    public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
       Uri value = (Uri) newValue;
 
       if (value == null || TextUtils.isEmpty(value.toString())) {
@@ -152,7 +161,17 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
         Ringtone tone = RingtoneManager.getRingtone(getActivity(), value);
 
         if (tone != null) {
-          preference.setSummary(tone.getTitle(getActivity()));
+          String summary;
+          try {
+            summary = tone.getTitle(getActivity());
+          } catch (SecurityException e) {
+            // this could happen in some phones when user selects ringtone from
+            // external storage and later removes the read from external storage permission
+            // and later this method is called from initializeRingtoneSummary()
+            summary = "<no access>";
+            Log.w(TAG, e);
+          }
+          preference.setSummary(summary);
         }
       }
 

@@ -29,7 +29,7 @@ public class DcLocation extends Observable {
 
 
     public boolean isValid() {
-        return !lastLocation.getProvider().equals("?");
+        return !"?".equals(lastLocation.getProvider());
     }
 
     void updateLocation(Location location) {
@@ -47,8 +47,7 @@ public class DcLocation extends Observable {
     }
 
     private Location getDefault() {
-        Location location = new Location("?");
-        return location;
+        return new Location("?");
     }
 
     /** https://developer.android.com/guide/topics/location/strategies

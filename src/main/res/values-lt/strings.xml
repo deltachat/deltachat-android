@@ -23,6 +23,8 @@
     <string name="join">Prisijungti</string>
     <string name="rejoin">Prisijungti iš naujo</string>
     <string name="delete">Ištrinti</string>
+    <string name="delete_for_me">Ištrinti man</string>
+    <string name="delete_for_everyone">Ištrinti visiems</string>
     <string name="info">Informacija</string>
     <string name="update">Atnaujinti</string>
     <string name="attachment">Priedas</string>
@@ -31,6 +33,7 @@
     <string name="close_window">Užverti langą</string>
     <string name="forward">Persiųsti</string>
     <string name="create">Sukurti</string>
+    <string name="reset">Atstatyti</string>
     <string name="later">Vėliau</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Siųsti iš naujo</string>
@@ -151,7 +154,7 @@
     <string name="audio">Garso įrašai</string>
     <string name="voice_message">Balso žinutė</string>
     <string name="forwarded_message">Persiųsta žinutė</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Persiuntė %1$s</string>
     <string name="video">Vaizdo įrašai</string>
     <string name="documents">Dokumentai</string>
@@ -169,6 +172,10 @@
     <string name="webxdc_app">Privati programėlė</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Privačios programėlės</string>
+    <string name="games">Žaidimai</string>
+    <string name="app_size">Dydis</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Naršyti</string>
     <string name="unknown">Nežinoma</string>
 
     <string name="green">Žalia</string>
@@ -208,7 +215,6 @@
     <string name="menu_delete_chat">Ištrinti pokalbį</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Išvalyti pokalbį</string>
-    <string name="menu_delete_messages">Ištrinti žinutes</string>
     <string name="delete_contact">Ištrinti adresatą</string>
     <string name="menu_delete_location">Ištrinti šią vietą?</string>
     <string name="menu_message_details">Išsamesnė žinutės informacija</string>
@@ -273,7 +279,7 @@
     <string name="donate">Paaukoti</string>
 
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
-    <string name="mute_for_two_hours">Išjungti 2 valandoms</string>
+    <string name="mute_for_eight_hours">Išjungti 8 valandoms</string>
     <string name="mute_for_one_day">Išjungti 1 dienai</string>
     <string name="mute_for_seven_days">Išjungti 7 dienoms</string>
     <string name="mute_forever">Išjungti visam laikui</string>
@@ -302,20 +308,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ar tikrai norite išeiti iš šios grupės?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Ištrinti %d pokalbį? Jis daugiau nebebus rodomas pokalbių sąraše, jo žinutės liks serveryje.</item>
-        <item quantity="few">Ištrinti %d pokalbius? Jie daugiau nebebus rodomi pokalbių sąraše, jų žinutės liks serveryje.</item>
-        <item quantity="many">Ištrinti %d pokalbių? Jie daugiau nebebus rodomi pokalbių sąraše, jų žinutės liks serveryje.</item>
-        <item quantity="other">Ištrinti %d pokalbį? Jis daugiau nebebus rodomas pokalbių sąraše, jo žinutės liks serveryje.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Ar tikrai norite ištrinti „%1$s“?</string>
-    <string name="ask_delete_message">Ar tikrai norite ištrinti šią žinutę?</string>
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Ištrinti %d žinutę čia ir serveryje?</item>
-        <item quantity="few">Ištrinti %d žinutes čia ir serveryje?</item>
-        <item quantity="many">Ištrinti %d žinučių čia ir serveryje?</item>
-        <item quantity="other">Ištrinti %d žinutę čia ir serveryje?</item>
-    </plurals>
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ištrinti %d žinutę?</item>
         <item quantity="few">Ištrinti %d žinutes?</item>
@@ -327,7 +320,6 @@
     <string name="ask_block_contact">Užblokuoti šį adresatą? Jūs daugiau nebegausite žinučių nuo šio adresato.</string>
     <string name="ask_unblock_contact">Atblokuoti šį adresatą? Jūs ir vėl galėsite gauti žinutes nuo šio adresato.</string>
     <string name="ask_start_chat_with">Pradėti pokalbį su %1$s?</string>
-    <string name="ask_delete_value">Ištrinti %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Pašalinti %1$s iš grupės?</string>
     <string name="open_url_confirmation">Ar norite atverti šią nuorodą?</string>
@@ -426,7 +418,7 @@
     <string name="tab_all_media_empty_hint">Čia bus rodoma bet kuriame pokalbyje bendrinama medija.</string>
     <string name="media_preview">Medijos peržiūra</string>
     <string name="send_message">Siųsti žinutę</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s pasikeitė adresą iš %2$s į %3$s</string>
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -469,9 +461,7 @@
     <string name="instant_onboarding_show_more_instances">Naudoti kitą serverį</string>
     <string name="scan_invitation_code">Skenuoti pakvietimo kodą</string>
     <string name="login_title">Prisijungti</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Prisijungti prie savo serverio</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Prisijungti naudojant esamą el. pašto paskyrą</string>
     <string name="login_subheader">Žinomiems el. pašto teikėjams papildomi nustatymai yra nustatomi automatiškai. Kartais, IMAP turi būti įjungtas prisijungus per naršyklę. Išsamesnės pagalbos teiraukitės savo el. pašto teikėjo ar draugų.</string>
     <string name="login_no_servers_hint">Nėra jokių Delta Chat serverių, jūsų duomenys išlieka jūsų įrenginyje!</string>
@@ -487,7 +477,7 @@
     <string name="login_smtp_port">SMTP prievadas</string>
     <string name="login_smtp_security">SMTP saugumas</string>
     <string name="login_auth_method">Įgaliojimų suteikimo metodas</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Įgaliotasis serveris</string>
     <string name="proxy_use_proxy">Naudoti įgaliotąjį serverį</string>
     <string name="proxy_add">Pridėti įgaliotąjį serverį</string>
@@ -505,13 +495,15 @@
     <string name="import_backup_title">Importuoti atsarginę kopiją</string>
     <string name="import_backup_ask">Atsarginė kopija rasta ties \"%1$s\".\n\nAr norite iš jos importuoti ir naudoti visus duomenis ir nustatymus?</string>
     <string name="import_backup_no_backup_found">Nerasta jokių atsarginių kopijų.\n\nNukopijuokite atsarginę kopiją į \"%1$s\" ir bandykite dar kartą. Priešingu atveju, paspauskite \"Pradėti susirašinėjimą\", kad pereitumėte į įprastą sąrankos procesą.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Nepavyksta prisijungti kaip \"%1$s\". Patikrinkite ar el. pašto adresas ir slaptažodis yra teisingi.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Priimti negaliojančius liudijimus</string>
     <string name="switch_account">Perjungti paskyrą</string>
     <string name="add_account">Pridėti paskyrą</string>
-    <string name="profile_tag">Privati žymė</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Profilio etiketė</string>
+    <string name="profile_tag_hint">pvz., Darbas, Šeima</string>
     <string name="delete_account">Ištrinti paskyrą</string>
     <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
     <string name="delete_account_explain_with_name">Visi „%s“ paskyros duomenys šiame įrenginyje bus ištrinti, įskaitant jūsų ištisinio šifravimo sąranką, adresatus, pokalbius, žinutes ir mediją. Šį veiksmą nebeįmanoma bus atšaukti.</string>
@@ -531,11 +523,10 @@
     <string name="pref_profile_photo">Profilio nuotrauka</string>
     <string name="pref_blocked_contacts">Užblokuoti adresatai</string>
     <string name="blocked_empty_hint">Jei užblokuosite adresatus, jie bus rodomi čia.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Slaptažodis ir paskyra</string>
     <string name="pref_who_can_see_profile_explain">Bendraujant su kitais naudotojais, jūsų profilio paveikslas ir vardas bus rodomi kartu su jūsų žinutėmis. Jau išsiųsta informacija negalės būti ištrinta ar pašalinta.</string>
     <string name="pref_your_name">Jūsų vardas</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Parašo tekstas</string>
     <string name="pref_enter_sends">Įvedimo (Enter) klavišas išsiunčia</string>
     <string name="pref_enter_sends_explain">Paspaudus įvedimo (Enter) klavišą, bus išsiunčiamos tekstinės žinutės</string>
@@ -574,6 +565,7 @@
     <string name="pref_manage_keys">Tvarkyti raktus</string>
     <string name="pref_use_system_emoji">Naudoti sistemos šypsniukus</string>
     <string name="pref_use_system_emoji_explain">Išjungti Delta Chat įtaisytąjį šypsniukų palaikymą</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Prieiga prie programėlės</string>
     <string name="pref_chats">Pokalbiai</string>
     <string name="pref_in_chat_sounds">Garsai pokalbiuose</string>
@@ -585,7 +577,7 @@
     <string name="pref_backup">Atsarginė kopija</string>
     <string name="pref_backup_explain">Padaro atsarginę pokalbių kopiją į išorinę saugyklą</string>
     <string name="pref_backup_export_explain">Atsarginė kopija padeda jums nusistatyti naują diegimą šiame ar kitame įrenginyje.\n\nAtsarginėje kopijoje bus visos žinutės, adresatai ir pokalbiai bei jūsų ištisinė Autocrypt sąranka. Atsarginės kopijos failą laikykite saugioje vietoje arba kaip įmanoma greičiau jį ištrinkite.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">Eksportuoti %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Eksportuoti visas %1$d paskyras</string>
@@ -674,14 +666,10 @@
     <string name="autocrypt_send_asm_button">Siųsti Autocrypt sąrankos žinutę</string>
     <string name="autocrypt_send_asm_explain_after">Jūsų sąranka buvo išsiųsta jums. Persijukite į kitą įrenginį ir atverkite sąrankos žinutę. Jūsų turėtų būti paprašyta sąrankos kodo. Į užklausą įrašykite šiuos skaitmenis.\n\nJums užbaigus, kitas įrenginys bus paruoštas naudoti Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Teikti pirmenybę ištisiniam šifravimui</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Autocrypt sąrankos žinutė</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">Tai yra Autocrypt sąrankos žinutė, kuri yra naudojama perduoti jūsų ištisinę sąranką tarp klientų.\n\nNorėdami iššifruoti ir naudoti savo sąranką, atverkite žinutę su Autocrypt suderinamame kliente ir įveskite generuojančiame įrenginyje rodomą sąrankos kodą.</string>
-    <string name="autocrypt_asm_click_body">Tai yra Autocrypt sąrankos žinutė, kuri yra naudojama perduoti jūsų ištisinę sąranką tarp klientų.\n\nNorėdami iššifruoti ir naudoti savo sąranką, bakstelėkite ar spustelėkite ant šios žinutės.</string>
-    <string name="autocrypt_continue_transfer_title">Autocrypt sąrankos žinutė</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">Įveskite kitame įrenginyje rodomą sąrankos kodą.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Ištisinė sąranka perduota. Dabar, šis įrenginys yra paruoštas naudoti Autocrypt su tokia pačia sąranka kaip ir kitas įrenginys.</string>
-    <string name="autocrypt_continue_transfer_retry">Bandyti dar kartą</string>
-    <string name="autocrypt_bad_setup_code">Blogas sąrankos kodas. Bandykite dar kartą.\n\nJeigu neprisimenate sąrankos kodo, tiesiog, išsiųskite dar vieną Autocrypt sąrankos žinutę iš kito  įrenginio.</string>
 
 
     <string name="systemmsg_subject_for_new_contact">Žinutė nuo %1$s</string>
@@ -766,12 +754,13 @@
     <string name="qraccount_ask_create_and_login">Sukurti naują el. pašto adresą ties „%1$s“ ir prisijungti ten?</string>
     <string name="please_enter_name">Įrašykite vardą.</string>
     <string name="qraccount_qr_code_cannot_be_used">Nuskenuotas QR kodas negali būti naudojamas naujos paskyros nustatymui.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Prisijungti prie „%1$s“?</string>
     <string name="contact_verified">%1$s patvirtintas.</string>
     <string name="contact_not_verified">Nepavyksta patvirtinti %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Pakeista sąranka, skirta %1$s.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">QR kodo URL adresas nukopijuotas į iškarpinę</string>
     <string name="mailto_dialog_header_select_chat">Pasirinkite pokalbį, į kurį siųsti žinutę</string>
     <string name="mailto_link_could_not_be_decoded">nepavyko dekoduoti mailto nuorodos: %1$s</string>
@@ -843,6 +832,7 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Dėklo piktograma negali būti išjungta, nes Delta Chat buvo paleista naudojant --minimized parinktį.</string>
     <string name="no_spellcheck_suggestions_found">Nerasta jokių rašybos pasiūlymų.</string>
     <string name="show_window">Rodyti langą</string>
+
     <string name="switch_between_chats">Perjungti tarp pokalbių</string>
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Pristatymo būsena: Klaida</string>

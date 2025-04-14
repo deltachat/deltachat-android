@@ -3,10 +3,6 @@ package org.thoughtcrime.securesms.proxy;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 
 import android.content.Context;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;

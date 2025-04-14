@@ -153,7 +153,7 @@
     <string name="voice_message">Röstmeddelande</string>
     <string name="forwarded">Vidarebefodrat</string>
     <string name="forwarded_message">Vidarebefordrat meddelande</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Vidarebefordrad av %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokument</string>
@@ -222,7 +222,6 @@
     <string name="menu_delete_chat">Ta bort chatt</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Rensa chatt</string>
-    <string name="menu_delete_messages">Ta bort meddelanden</string>
     <string name="delete_contact">Ta bort kontakt</string>
     <string name="menu_delete_location">Ta bort denna plats?</string>
     <string name="menu_message_details">Meddelandedetaljer</string>
@@ -299,7 +298,7 @@
     <string name="donate">Donera</string>
 
     <string name="mute_for_one_hour">Tysta 1 timma</string>
-    <string name="mute_for_two_hours">Tysta 2 timmar</string>
+    <string name="mute_for_eight_hours">Tysta 8 timmar</string>
     <string name="mute_for_one_day">Tysta 1 dag</string>
     <string name="mute_for_seven_days">Tysta 7 dagar</string>
     <string name="mute_forever">Tysta för evigt</string>
@@ -334,16 +333,7 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Är du säker på att du vill lämna den här gruppen?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Radera %d chatt? Det kommer inte längre synas i chattlistan, meddelanden kommer att finnas kvar på servern.</item>
-        <item quantity="other">Radera %d chattar? De kommer inte att visas i chattlistan, deras meddelanden kommer finnas kvar på servern.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Är du säker på att du vill ta bort \"%1$s\"?</string>
-    <string name="ask_delete_message">Är du säker på att du vill radera detta meddelande?</string>
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Radera %d meddelande här och på servern.</item>
-        <item quantity="other">Radera %d meddelanden här och på servern?</item>
-    </plurals>
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Vill du ta bort %d meddelande?</item>
         <item quantity="other">Vill du ta bort %d meddelanden?</item>
@@ -355,9 +345,7 @@
     <string name="ask_unblock_contact">Avblockera den här kontakten? Du kommer återigen att kunna ta emot meddelanden från den här kontakten.</string>
     <string name="ask_delete_contacts">Ta bort kontakter? Detta kommer att ta bort de valda kontakterna permanent.\n\nKontakter med pågående chattar och kontakter från systemets adressbok kan inte tas bort permanent.</string>
     <string name="ask_delete_contact">Ta bort kontakten %1$s?\n\nKontakter med pågående chattar och kontakter från systemets adressbok kan inte tas bort permanent. </string>
-    <string name="cannot_delete_contacts_in_use">Det går inte att ta bort kontakter med pågående chattar.</string>
     <string name="ask_start_chat_with">Chatta med %1$s ?</string>
-    <string name="ask_delete_value">Ta bort %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Ta bort %1$s från gruppen?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -489,9 +477,9 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Kvadratiskt rutnät</string>
     <string name="send_message">Skicka meddelande</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s ändrade sin adress från %2$s till %3$s</string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">Du har ändrat din e-postadress från %1$s till %2$s.\n\nOm du nu skickar ett meddelande till en verifierad grupp kommer kontakterna där automatiskt att ersätta den gamla med din nya adress. Vi rekommenderar starkt att du ställer in din gamla e-postleverantör så att den vidarebefordrar alla e-postmeddelanden till din nya e-postadress. Annars kan du missa meddelanden från kontakter som inte har fått din nya adress ännu.</string>
 
 
@@ -510,7 +498,6 @@
     <string name="multidevice_receiver_scanning_ask">Vill du kopiera profilen från den andra enheten till den här enheten?</string>
     <string name="multidevice_abort">Vill du avbryta konfigurationen av den andra enheten?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Detta kommer att ogiltigförklara QR-koden som kopierats till urklipp.</string>
-    <string name="multidevice_experimental_hint">(experimentell, version 1.36 krävs)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profilen överförd till din andra enhet.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Förbereder profil...</string>
@@ -523,7 +510,7 @@
     <string name="incoming_messages">Inkommande meddelanden</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Utgående meddelanden</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Lagring på %1$s</string>
     <string name="connectivity">Anslutning</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -573,9 +560,7 @@
     <string name="welcome_chat_over_email">Säker decentraliserad chatt</string>
     <string name="scan_invitation_code">Skanna inbjudningskod</string>
     <string name="login_title">Logga in</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Logga in på din server</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Logga in med ett befintligt e-postkonto</string>
     <string name="login_subheader">För kända e-postleverantörer installeras ytterligare inställningar automatiskt. Ibland måste IMAP aktiveras i webbinställningarna. Kontakta din e-postleverantör eller vänner för hjälp.</string>
     <string name="login_no_servers_hint">Det finns ingen Delta Chat-server, din data stannar på din enhet.</string>
@@ -601,7 +586,7 @@
     <string name="import_backup_title">Importera säkerhetskopia</string>
     <string name="import_backup_ask">Säkerhetskopia hittades på %1$s.\n\n Vill du importera och använda all data och alla inställningar från den?</string>
     <string name="import_backup_no_backup_found">Inga säkerhetskopior hittades.\n\nKopiera säkerhetskopian till \"%1$s\" och försök igen. Alternativt, tryck \"Börja chatta\" för att fortsätta den normala inställningsprocessen.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". Kontrollera om e-postadressen och lösenordet är korrekt.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptera ogiltiga certifikat</string>
@@ -632,11 +617,10 @@
     <string name="pref_profile_photo">Profilbild</string>
     <string name="pref_blocked_contacts">Blockerade kontakter</string>
     <string name="blocked_empty_hint">Blockerade kontakter kommer att visas här.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Lösenord och konto</string>
     <string name="pref_who_can_see_profile_explain">Din profilbild och ditt namn visas tillsammans med dina meddelanden när du kommunicerar med andra användare. Information som redan skickats kan inte tas bort eller flyttas.</string>
     <string name="pref_your_name">Ditt namn</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Signaturtext</string>
     <string name="pref_enter_sends">Returtangenten skickar</string>
     <string name="pref_enter_sends_explain">Tryck på returtangenten för att skicka textmeddelanden</string>
@@ -676,10 +660,9 @@
     <string name="pref_manage_keys">Hantera nycklar</string>
     <string name="pref_use_system_emoji">Använd systemets emojier</string>
     <string name="pref_use_system_emoji_explain">Inaktivera Delta Chat\'s inbyggda emojier</string>
-    <string name="pref_use_inapp_camera">Använd kameran i appen</string>
-    <string name="pref_use_inapp_camera_explain">Kameran i appen har vanligtvis färre funktioner än systemkameran</string>
     <string name="pref_show_system_contacts">Läs systemets adressbok</string>
     <string name="pref_show_system_contacts_explain">Erbjud att skapa chattar med kontakter från adressboken. Vissa leverantörer behöver först konfigureras för totalsträckskryptering.</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Programåtkomst</string>
     <string name="pref_chats">Chattar</string>
     <string name="pref_in_chat_sounds">Ljud i konversationer</string>
@@ -691,7 +674,7 @@
     <string name="pref_backup">Säkerhetskopiering</string>
     <string name="pref_backup_explain">Säkerhetskopiera chattar till extern lagring</string>
     <string name="pref_backup_export_explain">En säkerhetskopia hjälper dig att ställa in en ny installation på denna eller någon annan enhet.\n\nSäkerhetskopian innehåller alla meddelanden, kontakter och chattar, liksom din autokrypterade slutpunkt-till-slutpunkt-inställning. Förvara säkerhetskopian på ett säkert ställe eller ta bort den så fort som möjligt.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">Exportera %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportera all %1$d profiler</string>
@@ -712,7 +695,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Om du inaktiverar det här alternativet, tillse att servern och dina andra klienter är konfigurerade i enlighet med detta.\n\nAnnars kanske saker och ting inte fungerar alls.</string>
     <string name="pref_watch_sent_folder">Övervaka mappen \"Skickat\"</string>
     <string name="pref_send_copy_to_self">Skicka kopia till mig själv</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Krävs när du använder detta konto på flera enheter.</string>
     <string name="pref_auto_folder_moves">Flyttas automatiskt till DeltaChat-mappen</string>
     <string name="pref_auto_folder_moves_explain">Chattkonversationer flyttas automatiskt för att undvika att inkorgen belamras</string>
@@ -804,14 +786,10 @@
     <string name="autocrypt_send_asm_button">Skicka Autocrypt inställningsmeddelande</string>
     <string name="autocrypt_send_asm_explain_after">Dina inställningar har skickats till dig själv. Byt till den andra enheten och öppna inställningsmeddelandet. Du kommer att tillfrågas om en inställningskod. Ange följande siffror:</string>
     <string name="autocrypt_prefer_e2ee">Föredra slutpunkt-till-slutpunkt-kryptering</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Inställningsmeddelande för Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">Detta är inställningsmeddelandet för Autocrypt som används för att skicka nycklar mellan klienter.\n\nFör att kunna avkryptera och använda din nyckel, öppnar du meddelandet i en Autocrypt-kompatibel klient och skriver in inställningskoden som visats på den genererande enheten.</string>
-    <string name="autocrypt_asm_click_body">Detta är inställningsmeddelandet för Autocrypt, som används för att överföra slutpunkt-till-slutpunkt-inställningar mellan klienter. Tryck eller klicka på det här meddelandet för att avkryptera och använda dina inställningar.</string>
-    <string name="autocrypt_continue_transfer_title">Autocrypt inställningsmeddelande</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">Ange inställningskoden som visas på den andra enheten.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Slutpunkt-till-slutpunkt-inställningar överförda. Enheten är nu redo att använda Autocrypt med samma inställningar som den andra enheten.</string>
-    <string name="autocrypt_continue_transfer_retry">Försök igen</string>
-    <string name="autocrypt_bad_setup_code">Felaktig inställningskod. Försök igen.\n\nOm du inte kommer ihåg inställningskoden, kan du skicka ett nytt Autocrypt inställningsmeddelande från den andra enheten.</string>
 
 
     <!-- system messages -->
@@ -936,15 +914,16 @@
     <string name="set_name_and_avatar_explain">Ange ett namn som dina kontakter kommer att känna igen. Du kan också ange en profilbild.</string>
     <string name="please_enter_name">Ange ett namn.</string>
     <string name="qraccount_qr_code_cannot_be_used">Den skannade QR-koden kan inte användas för att konfigurera ett nytt konto.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Vill du logga in på \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Vill du logga in på \"%1$s\"?\n\nDin befintliga profil kommer inte att raderas. Använd alternativet \"Byt profil\" för att växla mellan dina profiler.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s bjöd in dig att gå med i den här gruppen.\n\nVäntar på att enheten hos %2$s ska svara...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s svarade och väntar på att bli tillagd i gruppen...</string>
     <string name="secure_join_wait">Upprättar garanterad totalsträckskryptering, vänligen vänta...</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">Kunde ännu inte upprätta garanterad totalsträckskryptering, men du kan redan skicka ett meddelande.</string>
     <string name="contact_verified">%1$s verifierad.</string>
     <string name="contact_not_verified">Kan inte verifiera %1$s.</string>
@@ -954,6 +933,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ändrade inställningarna för %1$s.</string>
     <string name="verified_contact_required_explain">För att garantera totalsträckskryptering  kan du bara lägga till kontakter med en grön bock i den här gruppen.\n\nDu kan träffa kontakter personligen och skanna deras QR-kod för att introducera dem.</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">Kopierade QR-URL till urklipp.</string>
     <string name="mailto_dialog_header_select_chat">Välj chatt för att skicka meddelandet till</string>
     <!-- first placeholder is the name of the chat -->
@@ -1040,7 +1020,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Systemfältsikonen kan inte inaktiveras eftersom Delta Chat startades med alternativet --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Inga stavningsförslag hittades.</string>
     <string name="show_window">Visa fönster</string>
-    <string name="login_socks5_experimental_warning">SOCKS5-stöd är för närvarande experimentellt. Använd det på egen risk. Om du skriver in en adress i e-postfältet kommer det att ske en DNS-uppslagning som inte tunnlas genom SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Tangentbindningar</string>

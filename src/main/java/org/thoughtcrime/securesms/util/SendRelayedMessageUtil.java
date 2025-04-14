@@ -1,5 +1,12 @@
 package org.thoughtcrime.securesms.util;
 
+import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
+import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
+import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
+
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -20,13 +27,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
-import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
-import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
-import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
-
 public class SendRelayedMessageUtil {
 
   public static void immediatelyRelay(Activity activity, int chatId) {
@@ -38,9 +38,24 @@ public class SendRelayedMessageUtil {
     if (isForwarding(activity)) {
       int[] forwardedMessageIDs = getForwardedMessageIDs(activity);
       resetRelayingMessageContent(activity);
+      if (forwardedMessageIDs == null) return;
+
       Util.runOnAnyBackgroundThread(() -> {
-        for (long chatId : chatIds) {
-          handleForwarding(activity, (int) chatId, forwardedMessageIDs);
+        DcContext dcContext = DcHelper.getContext(activity);
+        for (long longChatId : chatIds) {
+          int chatId = (int) longChatId;
+          if (dcContext.getChat(chatId).isSelfTalk()) {
+            for (int msgId : forwardedMessageIDs) {
+              DcMsg msg = dcContext.getMsg(msgId);
+              if (msg.canSave() && msg.getSavedMsgId() == 0 && msg.getChatId() != chatId) {
+                dcContext.saveMsgs(new int[]{msgId});
+              } else {
+                handleForwarding(activity, chatId, new int[]{msgId});
+              }
+            }
+          } else {
+            handleForwarding(activity, chatId, forwardedMessageIDs);
+          }
         }
 
       });

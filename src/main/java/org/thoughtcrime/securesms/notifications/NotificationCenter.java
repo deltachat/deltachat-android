@@ -241,7 +241,7 @@ public class NotificationCenter {
                     return new ChatData(accountId, chatId);
                 }
             }
-        } catch(Exception e) { }
+        } catch(Exception ignored) { }
         return null;
     }
 
@@ -326,7 +326,7 @@ public class NotificationCenter {
                 }
             }
             catch(Exception e) {
-                e.printStackTrace();
+                Log.e(TAG, "Error in getNotificationChannel()", e);
             }
         }
 
@@ -604,7 +604,7 @@ public class NotificationCenter {
                     .setGroup(GRP_MSG + "." + accountId)
                     .setGroupSummary(true)
                     .setSmallIcon(R.drawable.icon_notification)
-                    .setColor(context.getResources().getColor(R.color.delta_primary))
+                    .setColor(context.getResources().getColor(R.color.delta_primary, null))
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                     .setContentTitle("Delta Chat") // content title would only be used on SDK <24
                     .setContentText("New messages") // content text would only be used on SDK <24
@@ -692,7 +692,7 @@ public class NotificationCenter {
         }
     }
 
-  private class ChatData {
+  private static class ChatData {
     public final int accountId;
     public final int chatId;
 

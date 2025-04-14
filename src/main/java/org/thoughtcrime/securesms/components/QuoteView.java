@@ -60,6 +60,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private SlideDeck     attachments;
   private int           messageType;
   private boolean       hasSticker;
+  private boolean       isEdit;
 
   public QuoteView(Context context) {
     super(context);
@@ -114,13 +115,15 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
                        @Nullable Recipient author,
                        @Nullable CharSequence body,
                        @NonNull SlideDeck attachments,
-                       boolean hasSticker)
+                       boolean hasSticker,
+                       boolean isEdit)
   {
     quotedMsg        = msg;
     this.author      = author != null ? author.getDcContact() : null;
     this.body        = body;
     this.attachments = attachments;
     this.hasSticker  = hasSticker;
+    this.isEdit = isEdit;
 
     if (hasSticker) {
       this.setBackgroundResource(R.drawable.conversation_item_update_background);
@@ -144,7 +147,12 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   }
 
   private void setQuoteAuthor(@Nullable Recipient author) {
-    if (author == null) {
+    if (isEdit) {
+      authorView.setVisibility(VISIBLE);
+      authorView.setTextColor(getEditColor());
+      quoteBarView.setBackgroundColor(getEditColor());
+      authorView.setText(getContext().getString(R.string.edit_message));
+    } else if (author == null) {
       authorView.setVisibility(GONE);
       quoteBarView.setBackgroundColor(getForwardedColor());
     } else if (quotedMsg.isForwarded()) {
@@ -271,5 +279,9 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
   private int getForwardedColor() {
     return getResources().getColor(hasSticker? R.color.core_dark_05 : R.color.unknown_sender);
+  }
+
+  private int getEditColor() {
+    return getResources().getColor(R.color.delta_accent);
   }
 }

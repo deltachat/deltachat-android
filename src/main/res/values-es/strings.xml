@@ -28,6 +28,8 @@
     <string name="join">Unirse</string>
     <string name="rejoin">Volver a unirse</string>
     <string name="delete">Eliminar</string>
+    <string name="delete_for_me">Eliminar solo para mí</string>
+    <string name="delete_for_everyone">Eliminar para todos</string>
     <string name="info">Información</string>
     <string name="update">Actualización</string>
     <string name="emoji">Emoji</string>
@@ -41,6 +43,8 @@
     <string name="later">Luego</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Volver a enviar</string>
+    <string name="edited">Editado</string>
+    <string name="edit_message">Editar mensaje</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archivar</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -172,7 +176,7 @@
     <string name="voice_message">Mensaje de voz</string>
     <string name="forwarded">Reenviado</string>
     <string name="forwarded_message">Mensaje reenviado</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Reenviado por %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documentos</string>
@@ -230,6 +234,8 @@
     <string name="new_classic_contact_explain">Los contactos añadidos manualmente se pueden utilizar para enviar mensajes  a contactos que usan clientes de correo electrónico clásico y no se garantiza que estén cifrados de extremo a extremo.</string>
     <string name="menu_new_chat">Nuevo chat</string>
     <string name="menu_new_group">Nuevo grupo</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Chatear con...</string>
     <string name="clone_chat">Clonar chat</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Difusión</string>
@@ -251,7 +257,6 @@
     <string name="menu_delete_chat">Eliminar chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Vaciar chat</string>
-    <string name="menu_delete_messages">Eliminar mensajes</string>
     <string name="delete_contact">Eliminar contacto</string>
     <string name="menu_delete_location">¿Eliminar esta ubicación?</string>
     <string name="menu_message_details">Detalles del mensaje</string>
@@ -295,9 +300,9 @@
     <string name="select_chat">Seleccionar chat</string>
     <string name="select_more">Seleccionar más</string>
     <string name="menu_edit_name">Editar nombre</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Establece un apodo que se te mostrará en lugar de \"%1$s\". Déjalo en blanco para utilizar el nombre elegido por el contacto.</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Apodo para \"%1$s\"</string>
     <string name="menu_settings">Ajustes</string>
     <string name="menu_advanced">Avanzado</string>
@@ -309,6 +314,7 @@
     <string name="menu_learn_spelling">Aprender ortografía</string>
     <string name="menu_chat_audit_log">Registro de auditoría de chat</string>
     <string name="jump_to_message">Saltar al mensaje</string>
+    <string name="jump_to_original_message">Saltar al mensaje original</string>
     <string name="copy_json">Copiar JSON</string>
     <string name="replace_draft">Reemplazar borrador</string>
     <string name="title_share_location">Compartir ubicación con todos los miembros del grupo</string>
@@ -333,7 +339,7 @@
     <string name="donate">Donar</string>
 
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
-    <string name="mute_for_two_hours">Silenciar por 2 horas</string>
+    <string name="mute_for_eight_hours">Silenciar por 8 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>
     <string name="mute_for_seven_days">Silenciar por 7 días</string>
     <string name="mute_forever">Silenciar por siempre</string>
@@ -370,17 +376,18 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">¿Seguro que deseas abandonar este grupo? </string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">¿Eliminar %d chat? No volverá a ser mostrado en la lista de chats, pero sus mensajes permanecerán en el servidor.</item>
-        <item quantity="many">¿Eliminar %d chats? No volverán a ser mostrados en la lista de chats, pero sus mensajes permanecerán en el servidor.</item>
-        <item quantity="other">¿Eliminar %d chats? No volverán a ser mostrados en la lista de chats, pero sus mensajes permanecerán en el servidor.</item>
+        <item quantity="one">¿Eliminar %d chat de todos tus dispositivos?</item>
+        <item quantity="many">¿Eliminar %d chats de todos tus dispositivos?</item>
+        <item quantity="other">¿Eliminar %d chats de todos tus dispositivos?</item>
     </plurals>
-    <string name="ask_delete_named_chat">¿Estás seguro de que deseas eliminar \"%1$s\"?</string>
-    <string name="ask_delete_message">¿Seguro que quieres eliminar este mensaje?</string>
+    <string name="ask_delete_named_chat">¿Eliminar chat \"%1$s\" de todos tus dispositivos?</string>
+    <string name="ask_delete_message">¿Eliminar este mensaje de todos tus dispositivos?</string>
     <plurals name="ask_delete_messages">
-        <item quantity="one">¿Eliminar %d mensaje aquí y en el servidor?</item>
-        <item quantity="many">¿Eliminar %d mensajes aquí y en el servidor?</item>
-        <item quantity="other">¿Eliminar %d mensajes aquí y en el servidor?</item>
+        <item quantity="one">¿Eliminar %d mensaje de todos tus dispositivos?</item>
+        <item quantity="many">¿Eliminar %d mensajes de todos tus dispositivos?</item>
+        <item quantity="other">¿Eliminar %d mensajes de todos tus dispositivos?</item>
     </plurals>
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">¿Eliminar %d mensaje?</item>
         <item quantity="many">¿Eliminar %d mensajes?</item>
@@ -393,9 +400,7 @@
     <string name="ask_unblock_contact">¿Desbloquear este contacto? Una vez más podrá recibir mensajes de este contacto.</string>
     <string name="ask_delete_contacts">¿Eliminar contactos?\n\nContactos con un chat en curso y contactos de la libreta de direcciones del sistema no pueden ser eliminados de forma permanente.</string>
     <string name="ask_delete_contact">¿Eliminar contacto %1$s?\n\nContactos con chats en curso o de la libreta de direcciones del sistema no pueden ser eliminados.</string>
-    <string name="cannot_delete_contacts_in_use">No se puede eliminar contactos con chats en curso.</string>
     <string name="ask_start_chat_with">¿Chatear con %1$s?</string>
-    <string name="ask_delete_value">¿Borrar %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">¿Eliminar a %1$s del grupo?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -517,6 +522,8 @@
     <string name="profile_encryption">Cifrado</string>
     <string name="profile_shared_chats">Chats compartidos</string>
     <string name="related_chats">Chats similares</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Miembros anteriores</string>
     <string name="tab_contact">Contacto</string>
     <string name="tab_group">Grupo</string>
     <string name="tab_gallery">Galería</string>
@@ -530,6 +537,7 @@
     <string name="tab_audio_empty_hint">Los archivos de audio y los mensajes de voz compartidos en este chat se mostrarán aquí.</string>
     <string name="tab_webxdc_empty_hint">Aplicaciones privadas compartidas en este chat se mostrarán aquí</string>
     <string name="tab_all_media_empty_hint">La multimedia compartida en cualquier chat aparecerá aquí</string>
+    <string name="all_files_empty_hint">Documentos y otros archivos compartidos en cualquier chat se mostrarán aquí.</string>
     <string name="all_apps_empty_hint">Aplicaciones privadas recibidas o enviadas en cualquier chat aparecerán aquí.</string>
     <string name="media_preview">Vista previa de multimedia</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
@@ -537,9 +545,9 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Cuadrícula cuadrada</string>
     <string name="send_message">Enviar mensaje</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s cambió su dirección de %2$s a %3$s</string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">Has cambiado tu dirección de correo electrónico de %1$s a %2$s.\n\nSi ahora envías un mensaje a un grupo verificado, los contactos de éste sustituirán automáticamente la antigua por tu nueva dirección.\n\nEs muy recomendable que configures tu antiguo proveedor de correo electrónico para que reenvíe todos los mensajes a tu nueva dirección. De lo contrario, podrías perderte los mensajes de los contactos que aún no han recibido tu nueva dirección.</string>
 
 
@@ -556,9 +564,9 @@
     <string name="multidevice_receiver_title">Añadir desde otro dispositivo</string>
     <string name="multidevice_open_settings_on_other_device">En el primer dispositivo, ve a \"Ajustes / Añadir otro dispositivo\" y escanea el código mostrado allí</string>
     <string name="multidevice_receiver_scanning_ask">¿Copiar la cuenta del otro dispositivo a este dispositivo?</string>
+    <string name="multidevice_receiver_needs_update">El perfil que quieres importar es de una versión de Delta Chat más reciente.\n\nPara continuar configurando el segundo dispositivo, actualice este dispositivo a la última versión de Delta Chat.</string>
     <string name="multidevice_abort">¿Cancelar la configuración del nuevo dispositivo?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Esto invalidará el código QR copiado al portapapeles </string>
-    <string name="multidevice_experimental_hint">(experimental, requiere versión 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Cuenta transferida a tu otro dispositivo.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Preparando cuenta…</string>
@@ -571,7 +579,7 @@
     <string name="incoming_messages">Mensajes entrantes</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mensajes salientes</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Almacenamiento en %1$s</string>
     <string name="connectivity">Conectividad</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -621,9 +629,7 @@
     <string name="welcome_chat_over_email">Chat seguro y descentralizado</string>
     <string name="scan_invitation_code">Escanear código de invitación</string>
     <string name="login_title">Iniciar sesión</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Inicie sesión en su servidor</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Iniciar sesión con una cuenta de correo existente</string>
     <string name="login_subheader">Para los proveedores de correo conocidos, la configuración es realizada automáticamente. A veces, IMAP debe estar habilitado en la interfaz web. Consulte a su proveedor de correo o amigos para obtener ayuda.</string>
     <string name="login_no_servers_hint">No hay servidores de Delta Chat, tus datos permanecen en tu dispositivo!</string>
@@ -639,7 +645,7 @@
     <string name="login_smtp_port">Puerto SMTP</string>
     <string name="login_smtp_security">Seguridad SMTP</string>
     <string name="login_auth_method">Método de autorización</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Usar proxy</string>
     <string name="proxy_add">Añadir proxy</string>
@@ -663,13 +669,14 @@
     <string name="import_backup_title">Importar copia de respaldo</string>
     <string name="import_backup_ask">Copia de respaldo encontrada en \"%1$s\".\n\n¿Desea importar y utilizar todos los datos y configuraciones de ella?</string>
     <string name="import_backup_no_backup_found">No se encontraron copias de seguridad.\n\nCopie el archivo de respaldo en \"%1$s\" e inténtelo de nuevo. Alternativamente, presione \"Empezar a Chatear\" para continuar con el proceso de configuración normal.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">No se puede iniciar sesión como \"%1$s\". Por favor, compruebe si la dirección de correo y la contraseña son correctas.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Aceptar certificados no válidos</string>
     <string name="switch_account">Cambiar cuenta</string>
     <string name="add_account">Agregar cuenta</string>
-    <string name="profile_tag">Etiqueta privada</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Etiqueta de perfil</string>
     <string name="profile_tag_hint">ej. Trabajo, Familia</string>
     <string name="profile_tag_explain">Etiqueta que es visible sólo para ti; útil para diferenciar tus perfiles.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
@@ -702,11 +709,10 @@
     <string name="pref_profile_photo">Foto de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
     <string name="blocked_empty_hint">Si bloqueas contactos, se mostrarán aquí.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Contraseña y cuenta</string>
     <string name="pref_who_can_see_profile_explain">La imagen y el nombre de su perfil se mostrarán junto con sus mensajes cuando se comunique con otros usuarios. La información ya enviada no puede ser borrada o eliminada.</string>
     <string name="pref_your_name">Tu nombre</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Texto de firma</string>
     <string name="pref_enter_sends">Tecla Intro envía</string>
     <string name="pref_enter_sends_explain">La tecla Intro enviará tu mensaje</string>
@@ -749,10 +755,9 @@
     <string name="pref_manage_keys">Administrar claves</string>
     <string name="pref_use_system_emoji">Usar emoji del sistema</string>
     <string name="pref_use_system_emoji_explain">Deshabilitar el soporte de emoji integrado de Delta Chat</string>
-    <string name="pref_use_inapp_camera">Usar cámara interna</string>
-    <string name="pref_use_inapp_camera_explain">La cámara interna suele tener menos funcionalidades que la cámara del sistema</string>
     <string name="pref_show_system_contacts">Leer la libreta de direcciones del sistema</string>
     <string name="pref_show_system_contacts_explain">Ofrecer crear chats con contactos de la libreta de direcciones. Algunos proveedores necesitan primero una configuración de cifrado de extremo a extremo.</string>
+    <!-- deprecated -->
     <string name="pref_app_access">Acceso a la aplicación</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">Sonidos en el chat</string>
@@ -764,7 +769,7 @@
     <string name="pref_backup">Copia de respaldo</string>
     <string name="pref_backup_explain">Hacer copias de respaldo de chats en almacenamiento externo</string>
     <string name="pref_backup_export_explain">Una copia de respaldo lo ayuda a configurar una nueva instalación en este u otro dispositivo.\n\nLa copia de respaldo contendrá todos los mensajes, contactos y chats, y su configuración Autocrypt de extremo a extremo. Guarde el archivo de respaldo en un lugar seguro o elimínelo lo antes posible.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">Exportar %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportar todo (%1$d cuentas)</string>
@@ -785,7 +790,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Si deshabilita esta opción, asegúrese de que su servidor y sus otros clientes estén configurados en consecuencia.\n\nDe lo contrario, las cosas pueden no funcionar en absoluto.</string>
     <string name="pref_watch_sent_folder">Monitorear carpeta Enviados</string>
     <string name="pref_send_copy_to_self">Enviar autocopia</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Necesario cuando utilizando esta cuenta en varios dispositivos.</string>
     <string name="pref_auto_folder_moves">Mover automáticamente a la carpeta DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Las conversaciones son movidas para evitar saturar la Bandeja de entrada</string>
@@ -853,7 +857,7 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">¿Desea borrar %1$d mensajes ahora y todos los mensajes recientemente alcanzados \"%2$s\" en el futuro?\n\n• Esto incluye toda la multimedia\n\n• Los mensajes serán eliminados siendo vistos o no\n\n• \"Mensajes guardados\" serán saltados de este proceso local</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">¿Deseas borrar %1$d mensajes ahora y todos los mensajes recibidos en \"%2$s\"  al futuro?\n\n⚠️ Esto incluye correos, multimedia y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función sis quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de Delta Chat\n\n⚠️ No uses esta función si deseas mantener tus datos en el servidor\n\n⚠️ No uses esta función si estás usando otros clientes de correo más allá de Delta Chat</string>
+    <string name="autodel_server_ask">¿Deseas borrar %1$d mensajes ahora y todos los mensajes recibidos en \"%2$s\"  al futuro?\n\n⚠️ Esto incluye correos, multimedia y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función si quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de Delta Chat\n\n⚠️ No uses esta función si deseas mantener tus datos en el servidor\n\n⚠️ No uses esta función si estás usando otros clientes de correo más allá de Delta Chat</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Esto incluye correos, multimedia  y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función si quieres mantener tus datos en el servidor o si estas usando otros clientes de correo además de Delta Chat</string>
     <string name="autodel_server_warn_multi_device_title">Activar la eliminación inmediata</string>
@@ -877,14 +881,10 @@
     <string name="autocrypt_send_asm_button">Enviar Mensaje de Configuración de Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Se le ha enviado su configuración. Cambie al otro dispositivo y abra el mensaje de configuración. Se le debe solicitar un código de configuración. Escriba los siguientes dígitos:.\n\nUna vez que haya terminado, su otro dispositivo estará listo para usar Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Preferir el cifrado de extremo a extremo</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Mensaje de Configuración de Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">Este es el Mensaje de Configuración de Autocrypt utilizado para transferir su configuración de extremo a extremo entre clientes.\n\nPara descifrar y usar su configuración, abra el mensaje en un cliente compatible con Autocrypt e ingrese el código de configuración presentado en el dispositivo que lo generó.</string>
-    <string name="autocrypt_asm_click_body">Este es el Mensaje de Configuración de Autocrypt utilizado para transferir su configuración de extremo a extremo entre clientes.\n\nPara descifrar y usar su configuración, toque o haga clic en este mensaje.</string>
-    <string name="autocrypt_continue_transfer_title">Mensaje de Configuración de Autocrypt</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">Por favor, introduzca el código de configuración que se muestra en el otro dispositivo. </string>
-    <string name="autocrypt_continue_transfer_succeeded">Configuración de extremo a extremo transferida. Este dispositivo ahora está listo para usar Autocrypt con la misma configuración que el otro dispositivo.</string>
-    <string name="autocrypt_continue_transfer_retry">Reintentar</string>
-    <string name="autocrypt_bad_setup_code">Código de configuración incorrecto. Inténtelo de nuevo.\n\nSi no recuerda el código de configuración, solo envíe otro Mensaje de Configuración de Autocrypt desde el otro dispositivo.</string>
 
 
     <!-- system messages -->
@@ -1009,15 +1009,16 @@
     <string name="set_name_and_avatar_explain">Establece un nombre que tus contactos puedan reconocer. También puedes establecer una foto de perfil.</string>
     <string name="please_enter_name">Por favor, introduce un nombre.</string>
     <string name="qraccount_qr_code_cannot_be_used">El código QR escaneado no puede ser usado para configurar una nueva cuenta.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">¿Iniciar sesión en \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">¿Iniciar sesión en \"%1$s\"?\n\nTu cuenta existente no será eliminada. Usa la opción \"Cambiar cuenta\" para cambiar entre tus cuentas.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s te invitó a unirte a este grupo.\n\nEsperando que el dispositivo de %2$s responda…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s respondió, esperando ser agregado al grupo…</string>
     <string name="secure_join_wait">Estableciendo cifrado de extremo a extremo garantizado, por favor, espere...</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">No se pudo aún establecer el cifrado de extremo a extremo garantizado, pero ya puede enviar mensajes.</string>
     <string name="contact_verified">%1$s verificado.</string>
     <string name="contact_not_verified">No se pudo verificar %1$s.</string>
@@ -1027,6 +1028,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuración cambiada para %1$s.</string>
     <string name="verified_contact_required_explain">Para garantizar el cifrado de extremo a extremo, solo puedes añadir contactos con una marca de verificación verde</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">URL del código QR copiado al portapapeles</string>
     <string name="mailto_dialog_header_select_chat">Seleccione el chat para enviar el mensaje</string>
     <!-- first placeholder is the name of the chat -->
@@ -1117,7 +1119,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">El icono de la bandeja no se puede desactivar ya que Delta Chat se inició con la opción --minimized.</string>
     <string name="no_spellcheck_suggestions_found">No se encontraron sugerencias ortográficas.</string>
     <string name="show_window">Mostrar ventana</string>
-    <string name="login_socks5_experimental_warning">La compatibilidad con SOCKS5 es experimental actualmente. Por favor, use bajo su propio riesgo. Si escribe una dirección en el campo de correo electrónico, habrá una búsqueda de DNS que no se canalizará a través de SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Atajos de tecla</string>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8" /><meta name="viewport" content="initial-scale=1.0" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
+<html lang="sk"><head><meta charset="UTF-8" /><meta name="viewport" content="initial-scale=1.0" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
   <li><a href="#čo-je-to-delta-chat">Čo je to Delta Chat?</a>
     <ul>
       <li><a href="#ako-nájdem-ľudí-s-ktorými-môžem-chatovať">Ako nájdem ľudí s ktorými môžem chatovať?</a></li>
@@ -10,7 +10,9 @@
       <li><a href="#kto-vidí-moju-profilovú-fotku">Kto vidí moju profilovú fotku?</a></li>
       <li><a href="#signature">Can I set a Bio/Signature/Status/Motto with Delta Chat?</a></li>
       <li><a href="#what-do-pinning-muting-and-archiving-mean">What do Pinning, Muting and Archiving mean?</a></li>
+      <li><a href="#save">How do “Saved Messages” work?</a></li>
       <li><a href="#what-does-the-green-dot-mean">What does the green dot mean?</a></li>
+      <li><a href="#edit">Correct typos and delete messages after sending</a></li>
       <li><a href="#ephemeralmsgs">How do disappearing messages work?</a></li>
     </ul>
   </li>
@@ -56,7 +58,6 @@
       <li><a href="#pfs">Does Delta Chat support Perfect Forward Secrecy?</a></li>
       <li><a href="#is-end-to-end-encryption-of-delta-chat-as-safe-as-signal">Is end-to-end encryption of Delta Chat as safe as Signal?</a></li>
       <li><a href="#importkey">Môžem znova použiť svoj existujúci súkromný kľúč?</a></li>
-      <li><a href="#nemôžem-importovať-môj-existujúci-pgp-kľúč-do-delta-chat">Nemôžem importovať môj existujúci PGP kľúč do Delta Chat.</a></li>
       <li><a href="#security-audits">Was Delta Chat independently audited for security vulnerabilities?</a></li>
     </ul>
   </li>
@@ -65,6 +66,7 @@
       <li><a href="#môžem-používať-delta-chat-na-viacerých-zariadeniach-súčasne">Môžem používať Delta Chat na viacerých zariadeniach súčasne?</a></li>
       <li><a href="#troubleshooting">Troubleshooting</a></li>
       <li><a href="#backup">Manual Transfer</a></li>
+      <li><a href="#is-deletion-pinning-archiving-saving-muting-etc-synced-to-all-devices">Is Deletion, Pinning, Archiving, Saving, Muting etc. synced to all devices?</a></li>
       <li><a href="#máte-nejaké-plány-na-zavedenie-webového-klienta-delta-chat">Máte nejaké plány na zavedenie webového klienta Delta Chat?</a></li>
     </ul>
   </li>
@@ -96,7 +98,7 @@
       <li><a href="#na-čo-je-dobré-nastavenie-odoslať-kópiu-sebe">Na čo je dobré nastavenie „Odoslať kópiu sebe“?</a></li>
       <li><a href="#prečo-si-môžem-vybrať-sledovanie-priečinka-odoslané">Prečo si môžem vybrať sledovanie priečinka „Odoslané“?</a></li>
       <li><a href="#prečo-sa-môžem-rozhodnúť-nesledovať-priečinok-deltachat">Prečo sa môžem rozhodnúť nesledovať priečinok DeltaChat?</a></li>
-      <li><a href="#je-delta-chat-kompatibilný-s-protonmail--tutanota--criptext">Je Delta Chat kompatibilný s Protonmail / Tutanota / Criptext?</a></li>
+      <li><a href="#je-delta-chat-kompatibilný-s-proton-mail--tutanota--criptext">Je Delta Chat kompatibilný s Proton Mail / Tutanota / Criptext?</a></li>
       <li><a href="#remove-account">How can I delete my account?</a></li>
       <li><a href="#zaujímajú-ma-technické-detaily-môžete-mi-povedať-viac">Zaujímajú ma technické detaily. Môžete mi povedať viac?</a></li>
       <li><a href="#where-can-my-friends-find-delta-chat">Where can my friends find Delta Chat?</a></li>
@@ -182,15 +184,20 @@ Built on <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/s
         
       </h3>
 
+<p>If a message comes from an unknown contact, it appears as a <strong>request</strong>.</p>
+
 <ul>
-  <li>If a message comes from an unknown contact, it appears as a <strong>request</strong>. You
-need to accept the request before you can reply.</li>
-  <li>You can also “delete” it if you don’t want to chat with them for now. This
-does <em>not</em> delete the message on the server, only on your device. So you can
-still deal with the message in a different mail app.</li>
-  <li>If you delete a request, future messages from that contact will still appear
+  <li>
+    <p>You need to <strong>accept</strong> the request before you can reply.</p>
+  </li>
+  <li>
+    <p>You can also <strong>delete</strong> it if you don’t want to chat with them for now.</p>
+  </li>
+  <li>
+    <p>If you delete a request, future messages from that contact will still appear
 as message request, so you can change your mind. If you really don’t want to
-receive messages from this person, consider <em>blocking</em> them.</li>
+receive messages from this person, consider <strong>blocking</strong> them.</p>
+  </li>
 </ul>
     
       <h3 id="podporuje-delta-chat-obrázky-videá-a-iné-prílohy">
@@ -201,13 +208,10 @@ receive messages from this person, consider <em>blocking</em> them.</li>
         
       </h3>
 
+<p>Áno. Okrem čistého textu sa všetky prílohy e-mailov zobrazujú ako samostatné správy. Odchádzajúce správy dostávajú prílohy podľa potreby automaticky.</p>
+
 <ul>
-  <li>
-    <p>Áno. Okrem čistého textu sa všetky prílohy e-mailov zobrazujú ako samostatné správy. Odchádzajúce správy dostávajú prílohy podľa potreby automaticky.</p>
-  </li>
-  <li>
-    <p>For performance, images are optimized and sent at a smaller size by default, but you can send it as a “file” to preserve the original.</p>
-  </li>
+  <li>For performance, images are optimized and sent at a smaller size by default, but you can send it as a “file” to preserve the original.</li>
 </ul>
     
       <h3 id="multiple-accounts">
@@ -304,6 +308,41 @@ Archived chats remain accessible above the chat list or via search.</p>
 
 <p>To use the functions, long tap or right click a chat in the chat list.</p>
     
+      <h3 id="save">
+        
+        
+          How do “Saved Messages” work? <a href="#save" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><strong>Saved Messages</strong> is a chat that you can use to easily remember and find messages.</p>
+
+<ul>
+  <li>
+    <p>In any chat, long tap or right click a message and select <strong>Save</strong></p>
+  </li>
+  <li>
+    <p>Saved messages are marked by the symbol
+<img style="vertical-align:middle; width:1.2em; margin:1px" src="../saved-icon.png" alt="Saved icon" />
+next to the timestamp</p>
+  </li>
+  <li>
+    <p>Later, open the “Saved Messages” chat - and you will see the saved messages there.
+By tapping <img style="vertical-align:middle; width:1.2em; margin:1px" src="../go-to-original.png" alt="Arrow-right icon" />,
+you can go back to the original message in the original chat</p>
+  </li>
+  <li>
+    <p>Finally, you can also use “Save Messages” to take <strong>personal notes</strong> - open the chat, type something, add a photo or a voice message etc.</p>
+  </li>
+  <li>
+    <p>As “Saved Message” are synced, they can become very handy for transferring data between devices</p>
+  </li>
+</ul>
+
+<p>Messages stay saved even if they are edited or deleted -
+may it be by <a href="#edit">sender</a>, by <a href="#delold">device cleanup</a> or by <a href="#ephemeralmsgs">disappearing messages of other chats</a>.</p>
+    
       <h3 id="what-does-the-green-dot-mean">
         
         
@@ -312,25 +351,53 @@ Archived chats remain accessible above the chat list or via search.</p>
         
       </h3>
 
+<p>You can sometimes see a <strong>green dot</strong> <img style="vertical-align:middle; width:1.2em; margin:1px" src="../green-dot.png" alt="" />
+next to the avatar of a contact.
+It means they were <strong>recently seen</strong> in the last 10 minutes:</p>
+
 <ul>
-  <li>Since Delta Chat 1.34 you can sometimes see a “green dot” next to the avatar
-of a contact. It means they were “recently seen”.</li>
-  <li>In detail: it means, that in the last 10 minutes, Delta Chat has seen them:
-    <ul>
-      <li>either because they messaged you directly,</li>
-      <li>because they wrote something to a group you are both a member of,</li>
-      <li>because they sent you a read receipt for a message you wrote,</li>
-      <li>or because they sent data to your Delta Chat app by using a
-<a href="#webxdc">webxdc app</a>.</li>
-    </ul>
-  </li>
-  <li>So this is not a real time online status - and if someone doesn’t answer
-right away even though they seem to be online, don’t worry and give them some
-space ;-)</li>
-  <li>On the other hand, others will not always “see that you are online”. If you
-have turned off read receipts, they will not see the green dot until you
-message them or write to a group they’re in as well.</li>
+  <li>either because they messaged you directly,</li>
+  <li>because they wrote something to a group you are both a member of,</li>
+  <li>because they sent you a read receipt for a message you wrote,</li>
+  <li>because they edit or delete a message in a chat shared with you,</li>
+  <li>or because they use an <a href="#webxdc">app</a> in a chat shared with you.</li>
 </ul>
+
+<p>So this is not a real time online status -
+and if someone doesn’t answer right away even though they seem to be online,
+don’t worry and give them some space :)</p>
+
+<p>On the other hand, others will not always “see that you are online”.
+If you have turned off read receipts,
+they will not see the green dot
+until one of the above conditions are met.</p>
+    
+      <h3 id="edit">
+        
+        
+          Correct typos and delete messages after sending <a href="#edit" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>You can edit the text of your messages after sending.
+For that, long tap or right click the message and select <strong>Edit</strong>
+or <img style="vertical-align:middle; width:1.2em; margin:1px" src="../edit-icon.png" alt="Edit icon" />.</p>
+  </li>
+  <li>
+    <p>If you have sent a message accidentally,
+from the same menu, select <strong>Delete</strong> and then <strong>Delete for Everyone</strong>.</p>
+  </li>
+</ul>
+
+<p>While edited messages will have the word “Edited” next to the timestamp,
+deleted messages will be removed without a marker in the chat.
+Notifications are not sent and there is no time limit.</p>
+
+<p>Note, that the original message may still be received by chat members
+who could have already replied, forwarded, saved, screenshotted or otherwise copied the message.</p>
     
       <h3 id="ephemeralmsgs">
         
@@ -648,7 +715,7 @@ would not reveal private information that Push services do not already have.</p>
 
 <p>Delta Chat is a free and open source decentralized messenger with free server choice,
 but we want users to reliably experience “instant delivery” of messages,
-like they experience from Whatsapp, Signal or Telegram apps,
+like they experience from WhatsApp, Signal or Telegram apps,
 without asking questions up-front that are more suited to expert users or developers.</p>
 
 <p>Note that Delta Chat has a <a href="#privacy-notifications">small and privacy-preserving Push Notification system</a>
@@ -887,14 +954,14 @@ if the whole message is properly encrypted and signed.
 For example, “Detached signatures” are not treated as secure.</p>
 
 <p>OpenPGP is not insecure by itself.
-Most publically discussed OpenPGP security problems
+Most publicly discussed OpenPGP security problems
 actually stem from bad usability or bad implementations of tools or apps (or both).
 It is particularly important to distinguish between OpenPGP, the IETF encryption standard, 
 and GnuPG (GPG), a command line tool implementing OpenPGP. 
 Many public critiques of OpenPGP actually discuss GnuPG which Delta Chat has never used. 
 Delta Chat rather uses the OpenPGP Rust implementation <a href="https://github.com/rpgp/rpgp">rPGP</a>,
 available as <a href="https://crates.io/crates/pgp">an independent “pgp” package</a>,
-and <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">security-audited in 2019</a>.</p>
+and <a href="#security-audits">security-audited in 2019 and 2024</a>.</p>
 
 <p>We aim, along with other OpenPGP implementors, 
 to further improve security characteristics by implementing the
@@ -1143,7 +1210,7 @@ but it provides <a href="#e2eeguarantee">guaranteed end-to-end encrypted chats</
 that are safe against compromised servers or corrupted networks. 
 Signal and most other PFS-supporting messengers do not provide 
 a practical scheme for protecting chat groups from network attacks
-which are arguably more worrysome 
+which are arguably more worrisome 
 than a potential attacker who seizes your phone and private encryption setup
 but somehow not your messages, yet has a full record of all 
 past encrypted messages.</p>
@@ -1159,42 +1226,14 @@ which has been <a href="https://delta.chat/assets/blog/2019-first-security-revie
         
       </h3>
 
-<p>Yes.
-The best way is to send an Autocrypt Setup Message from the other e-mail client.
-Look for something like <strong>Start Autocrypt Setup Transfer</strong> in the settings of the other client and follow the instructions shown there.</p>
+<p>No.</p>
 
-<p>Alternatively, you can import the key manually in “Settings -&gt; Advanced settings -&gt; Import secret keys”.
-Caution: Make sure the key is not protected by a password, or remove the password beforehand.</p>
+<p>Delta Chat generates secure OpenPGP keys according to the Autocrypt specification 1.1. 
+You can export your private key but you can not import additional private keys.</p>
 
-<p>If you don’t have a key or don’t even know you would need one - don’t worry: Delta Chat generates keys as needed, you don’t have to hit a button for it.</p>
-    
-      <h3 id="nemôžem-importovať-môj-existujúci-pgp-kľúč-do-delta-chat">
-        
-        
-          Nemôžem importovať môj existujúci PGP kľúč do Delta Chat. <a href="#nemôžem-importovať-môj-existujúci-pgp-kľúč-do-delta-chat" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Najpravdepodobnejšou príčinou je, že váš kľúč je zašifrovaný a/alebo používa
-heslo. Delta Chat takéto kľúče nepodporuje. Mohli by ste odstrániť
-zašifrovanie prístupovej frázy a heslo a skúsiť import znova.</p>
-
-<p>Another common error is having the wrong file ending.
-Use the ASCII armored format and an <code class="language-plaintext highlighter-rouge">.asc</code> file ending.</p>
-
-<p>Delta Chat podporuje bežné formáty súkromných kľúčov OpenPGP
-avšak je nepravdepodobné, že budú plne podporované súkromné kľúče zo všetkých zdrojov. Toto
-nie je hlavným cieľom Delta Chat. V skutočnosti väčšina nových používateľov
-nebude mať pred použitím Delta Chat žiadny kľúč.
-Snažíme sa však podporovať súkromné kľúče z čo najväčšieho počtu zdrojov.</p>
-
-<p>Odstránenie hesla zo súkromného kľúča bude závisieť od
-softvéru, ktorý používate na správu kľúčov PGP. S Enigmailom si môžete nastaviť svoje
-heslo na prázdnu hodnotu v okne Key Management. Pomocou GnuPG to môžete nastaviť
-<a href="https://github.com/deltachat/deltachat-android/issues/98#issuecomment-378383429">prostredníctvom príkazu
-riadok</a>.
-Pre iné programy by ste mali vedieť nájsť riešenie online.</p>
+<p>In general, we do not recommend or offer users to perform manual key management. 
+We want to ensure that security audits can focus on a few proven cryptographic algorithms 
+instead of the full breadth of possible algorithms allowed with OpenPGP.</p>
     
       <h3 id="security-audits">
         
@@ -1204,10 +1243,25 @@ Pre iné programy by ste mali vedieť nájsť riešenie online.</p>
         
       </h3>
 
-<p>The Delta Chat project underwent four independent security audits and one
-independent security analysis, from most recent to older:</p>
+<p>Yes, multiple times. 
+The Delta Chat project continuously undergoes independent security audits and analysis,
+from most recent to older:</p>
 
 <ul>
+  <li>
+    <p>2024 December, an <a href="https://github.com/rpgp/docs/blob/main/audits/NGI%20Core%20rPGP%20penetration%20test%20report%202024%201.0.pdf">NLNET-commissioned Evaluation of
+rPGP</a> by <a href="https://www.radicallyopensecurity.com/">Radically Open Security</a> took place.
+rPGP serves as the end-to-end encyption <a href="https://openpgp.org">OpenPGP</a> engine of Delta Chat. 
+Two advisories were released related to the findings of this audit:</p>
+
+    <ul>
+      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-9rmp-2568-59rv">“Panics on Malformed Untrusted Input”</a> CVE-2024-53856</li>
+      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-4grw-m28r-q285">“Potential Resource Exhaustion when handling Untrusted Messages”</a> CVE-2024-53857</li>
+    </ul>
+
+    <p>The issues outlined in these advisories have been fixed and are part of Delta Chat 
+releases on all appstores since December 2024.</p>
+  </li>
   <li>
     <p>2024 March, we received a deep security analysis from the Applied Cryptography
 research group at ETH Zuerich and addressed all raised issues. 
@@ -1273,7 +1327,7 @@ You can read the <a href="https://delta.chat/assets/blog/2019-first-security-rev
         
       </h3>
 
-<p>Yes. Delta Chat 1.36 comes with a new, experimental function for using the same profile on different devices:</p>
+<p>Yes. You can use the same profile on different devices:</p>
 
 <ul>
   <li>
@@ -1332,6 +1386,10 @@ which is known to cause problems (especially on Windows).
 If possible, use a non-guest network.</p>
   </li>
   <li>
+    <p>If you still have troubles using the same network,
+try to open <strong>Mobile Hotspot</strong> on one device and join that Wi-Fi from the other one</p>
+  </li>
+  <li>
     <p>Ensure there is <strong>enough storage</strong> on the destination device</p>
   </li>
   <li>
@@ -1376,6 +1434,23 @@ help you.</li>
   <li>You are now synchronized, and can use both devices for sending and receiving
 end-to-end encrypted messages with your communication partners.</li>
 </ul>
+    
+      <h3 id="is-deletion-pinning-archiving-saving-muting-etc-synced-to-all-devices">
+        
+        
+          Is Deletion, Pinning, Archiving, Saving, Muting etc. synced to all devices? <a href="#is-deletion-pinning-archiving-saving-muting-etc-synced-to-all-devices" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Yes.</p>
+
+<p>If you e.g. delete a chat or a message from your phone,
+it will be deleted on your desktop as soon as it comes online again.</p>
+
+<p>Notable exceptions are <a href="#delold">Delete old messages from Device</a>,
+as different devices may have different storage capacities,
+and system specific settings as notification sounds.</p>
     
       <h3 id="máte-nejaké-plány-na-zavedenie-webového-klienta-delta-chat">
         
@@ -1498,7 +1573,7 @@ will not get interrupted by a video chat invite.</li>
 link in the settings.</li>
   <li>For example, to use the flagship Jitsi Meet instance, you could enter
 <code class="language-plaintext highlighter-rouge">https://meet.jit.si/$ROOM</code>. The <code class="language-plaintext highlighter-rouge">$ROOM</code> variable will be a random value;
-this way, you will have a new random jitsi room every time you call someone.</li>
+this way, you will have a new random Jitsi room every time you call someone.</li>
 </ul>
     
       <h3 id="what-are-broadcast-lists-and-how-can-i-use-them">
@@ -1510,7 +1585,7 @@ this way, you will have a new random jitsi room every time you call someone.</li
       </h3>
 
 <ul>
-  <li>With a Broadcast List you can send a message to many recipents at once; when
+  <li>With a Broadcast List you can send a message to many recipients at once; when
 they reply to you, you get the reply in your direct 1:1 chat with them. The
 recipients can’t see each other.</li>
   <li>Technically, it is an E-Mail with many recipients in BCC.</li>
@@ -1821,25 +1896,24 @@ pre ich mail, namiesto priečinku DeltaChat. Ak zakážete „Sledovať
 priečinok DeltaChat“, mali by ste tiež zakázať „presunúť chatové správy do DeltaChat“.
 V opačnom prípade nemusí odstraňovanie správ alebo nastavenia viacerých zariadení fungovať správne.</p>
     
-      <h3 id="je-delta-chat-kompatibilný-s-protonmail--tutanota--criptext">
+      <h3 id="je-delta-chat-kompatibilný-s-proton-mail--tutanota--criptext">
         
         
-          Je Delta Chat kompatibilný s Protonmail / Tutanota / Criptext? <a href="#je-delta-chat-kompatibilný-s-protonmail--tutanota--criptext" class="anchor"></a>
+          Je Delta Chat kompatibilný s Proton Mail / Tutanota / Criptext? <a href="#je-delta-chat-kompatibilný-s-proton-mail--tutanota--criptext" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>Yes and No.</li>
-  <li>No, you can not use your Protonmail, Tutanota, or Criptext account with Delta
-Chat; they do not offer receiving mails via IMAP.</li>
-  <li>In any case you can use Delta Chat to send Messages to people who use
-Protonmail, Tutanota, or Criptext. Those messages will not be end-to-end
-encrypted, though. The end-to-end encryption those providers offer is not
-compatible with <a href="https://autocrypt.org/">Autocrypt</a>, the standard Delta Chat
-uses.</li>
-  <li>Delta Chat can end-to-end-encrypt through any e-mail provider with any
-<a href="https://autocrypt.org/dev-status.html">Autocrypt-enabled e-mail app</a>.</li>
+  <li>Áno a nie.</li>
+  <li>Nie, nemôžete používať svoj účet Proton Mail, Tutanota alebo Criptext s Delta
+Chat; neponúkajú prijímanie pošty cez IMAP.</li>
+  <li>V každom prípade môžete použiť Delta Chat na odosielanie správ ľuďom, ktorí to používajú
+Protonmail, Tutanota alebo Criptext. Avšak tieto správy nebudú End-to-End
+zašifrované. Šifrovanie typu End-to-End, ktoré títo poskytovatelia                                ponúkajú, funguje iba <br />
+na ich platformách a nie sú kompatibilné s nikým mimo.</li>
+  <li>Delta Chat môže e2e šifrovať prostredníctvom akéhokoľvek poskytovateľa e-mailu s ktoroukoľvek
+<a href="https://autocrypt.org/dev-status.html">E-mailovou aplikáciou s povoleným automatickým šifrovaním</a>.</li>
 </ul>
     
       <h3 id="remove-account">
@@ -2006,7 +2080,7 @@ as a contributor community.</p>
 Freiburg (Germany), and is distributed to more than a dozen contributors world-wide.</p>
 
 <p>Please see <a href="https://delta.chat/sk/contribute">Delta Chat Contribution channels</a>
-for both monetary and and other contribution possibilities.</p>
+for both monetary and other contribution possibilities.</p>
 
 
 

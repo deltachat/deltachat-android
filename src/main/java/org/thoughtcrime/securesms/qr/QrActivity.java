@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,8 +24,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.NotFoundException;
-import com.google.zxing.Result;
 import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
@@ -126,24 +125,20 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
 
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-            case R.id.new_classic_contact:
-                this.startActivity(new Intent(this, NewContactActivity.class));
-                break;
-            case R.id.withdraw:
-                qrShowFragment.withdrawQr();
-                break;
-            case R.id.load_from_image:
-                AttachmentManager.selectImage(this, REQUEST_CODE_IMAGE);
-                break;
-            case R.id.paste:
-                QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-                qrCodeHandler.handleQrData(Util.getTextFromClipboard(this));
-                break;
-        }
+      int itemId = item.getItemId();
+      if (itemId == android.R.id.home) {
+        finish();
+        return true;
+      } else if (itemId == R.id.new_classic_contact) {
+        this.startActivity(new Intent(this, NewContactActivity.class));
+      } else if (itemId == R.id.withdraw) {
+        qrShowFragment.withdrawQr();
+      } else if (itemId == R.id.load_from_image) {
+        AttachmentManager.selectImage(this, REQUEST_CODE_IMAGE);
+      } else if (itemId == R.id.paste) {
+        QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+        qrCodeHandler.handleQrData(Util.getTextFromClipboard(this));
+      }
 
         return false;
     }

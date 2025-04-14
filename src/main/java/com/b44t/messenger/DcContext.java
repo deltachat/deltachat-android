@@ -17,6 +17,7 @@ public class DcContext {
     public final static int DC_EVENT_MSG_READ                    = 2015;
     public final static int DC_EVENT_CHAT_MODIFIED               = 2020;
     public final static int DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED = 2021;
+    public final static int DC_EVENT_CHAT_DELETED                = 2023;
     public final static int DC_EVENT_CONTACTS_CHANGED            = 2030;
     public final static int DC_EVENT_LOCATION_CHANGED            = 2035;
     public final static int DC_EVENT_CONFIGURE_PROGRESS          = 2041;
@@ -51,8 +52,8 @@ public class DcContext {
     public final static int DC_QR_FPR_MISMATCH      = 220;
     public final static int DC_QR_FPR_WITHOUT_ADDR  = 230;
     public final static int DC_QR_ACCOUNT           = 250;
-    public final static int DC_QR_BACKUP            = 251;
     public final static int DC_QR_BACKUP2           = 252;
+    public final static int DC_QR_BACKUP_TOO_NEW    = 255;
     public final static int DC_QR_WEBRTC            = 260;
     public final static int DC_QR_PROXY             = 271;
     public final static int DC_QR_ADDR              = 320;
@@ -87,7 +88,7 @@ public class DcContext {
 
     private static final String CONFIG_MUTE_MENTIONS_IF_MUTED = "ui.mute_mentions_if_muted";
 
-    // when using DcAccounts, use DcAccounts.addAccount() instead
+    // when using DcAccounts, use Rpc.addAccount() instead
     public DcContext(String osName, String dbfile) {
         contextCPtr = createContextCPtr(osName, dbfile);
     }
@@ -117,7 +118,6 @@ public class DcContext {
     public native void         setStockTranslation  (int stockId, String translation);
     public native String       getBlobdir           ();
     public native String       getLastError         ();
-    public native void         configure            ();
     public native void         stopOngoingProcess   ();
     public native int          isConfigured         ();
     public native boolean      open                 (String passphrase);
@@ -142,7 +142,6 @@ public class DcContext {
     public native String       getConnectivityHtml  ();
     public native String       getOauth2Url         (String addr, String redirectUrl);
     public native String       initiateKeyTransfer  ();
-    public native boolean      continueKeyTransfer  (int msg_id, String setup_code);
     public native void         imex                 (int what, String dir);
     public native String       imexHasBackup        (String dir);
     public DcBackupProvider    newBackupProvider    () { return new DcBackupProvider(newBackupProviderCPtr()); }
@@ -186,13 +185,16 @@ public class DcContext {
     public native void         blockChat            (int chat_id);
     public native void         acceptChat           (int chat_id);
     public DcMsg               getMsg               (int msg_id) { return new DcMsg(getMsgCPtr(msg_id)); }
+    public native void         sendEditRequest      (int msg_id, String text);
     public native String       getMsgInfo           (int id);
     public native String       getMsgHtml           (int msg_id);
     public native void         downloadFullMsg      (int msg_id);
     public native int          getFreshMsgCount     (int chat_id);
     public native int          estimateDeletionCount(boolean from_server, long seconds);
     public native void         deleteMsgs           (int msg_ids[]);
+    public native void         sendDeleteRequest    (int msg_ids[]);
     public native void         forwardMsgs          (int msg_ids[], int chat_id);
+    public native void         saveMsgs             (int msg_ids[]);
     public native boolean      resendMsgs           (int msg_ids[]);
     public native int          sendMsg              (int chat_id, DcMsg msg);
     public native int          sendTextMsg          (int chat_id, String text);

@@ -25,8 +25,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,12 +35,10 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -62,8 +58,8 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.reactions.AddReactionView;
-import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.reactions.ReactionsDetailsFragment;
+import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
@@ -324,8 +320,10 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_details).setVisible(false);
             menu.findItem(R.id.menu_context_share).setVisible(false);
             menu.findItem(R.id.menu_context_reply).setVisible(false);
+            menu.findItem(R.id.menu_context_edit).setVisible(false);
             menu.findItem(R.id.menu_context_reply_privately).setVisible(false);
             menu.findItem(R.id.menu_add_to_home_screen).setVisible(false);
+            menu.findItem(R.id.menu_toggle_save).setVisible(false);
         } else {
             DcMsg messageRecord = messageRecords.iterator().next();
             DcChat chat = getListAdapter().getChat();
@@ -333,9 +331,17 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_share).setVisible(messageRecord.hasFile());
             boolean canReply = canReplyToMsg(messageRecord);
             menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
+            boolean canEdit = canEditMsg(messageRecord);
+            menu.findItem(R.id.menu_context_edit).setVisible(chat.canSend() && canEdit);
             boolean showReplyPrivately = chat.isMultiUser() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
             menu.findItem(R.id.menu_add_to_home_screen).setVisible(messageRecord.getType() == DcMsg.DC_MSG_WEBXDC);
+
+            boolean saved = messageRecord.getSavedMsgId() != 0;
+            MenuItem toggleSave = menu.findItem(R.id.menu_toggle_save);
+            toggleSave.setVisible(messageRecord.canSave() && !chat.isSelfTalk());
+            toggleSave.setIcon(saved? R.drawable.baseline_bookmark_remove_24 : R.drawable.baseline_bookmark_border_24);
+            toggleSave.setTitle(saved? R.string.unsave : R.string.save);
         }
 
         // if one of the selected items cannot be saved, disable saving.
@@ -359,6 +365,10 @@ public class ConversationFragment extends MessageSelectorFragment
 
     static boolean canReplyToMsg(DcMsg dcMsg) {
         return !dcMsg.isInfo() && dcMsg.getType() != DcMsg.DC_MSG_VIDEOCHAT_INVITATION;
+    }
+
+    static boolean canEditMsg(DcMsg dcMsg) {
+        return dcMsg.isOutgoing() && !dcMsg.isInfo() && dcMsg.getType() != DcMsg.DC_MSG_VIDEOCHAT_INVITATION && !dcMsg.hasHtml() && !dcMsg.getText().isEmpty();
     }
 
     public void handleClearChat() {
@@ -461,6 +471,16 @@ public class ConversationFragment extends MessageSelectorFragment
         listener.handleReplyMessage(message);
     }
 
+    @SuppressLint("RestrictedApi")
+    private void handleEditMessage(final DcMsg message) {
+        if (getActivity() != null) {
+            //noinspection ConstantConditions
+            ((AppCompatActivity) getActivity()).getSupportActionBar().collapseActionView();
+        }
+
+        listener.handleEditMessage(message);
+    }
+
     private void handleReplyMessagePrivately(final DcMsg msg) {
 
         if (getActivity() != null) {
@@ -475,6 +495,15 @@ public class ConversationFragment extends MessageSelectorFragment
             getActivity().startActivity(intent);
         } else {
             Log.e(TAG, "Activity was null");
+        }
+    }
+
+    private void handleToggleSave(final Set<DcMsg> messageRecords) {
+        DcMsg msg = getSelectedMessageRecord(messageRecords);
+        if (msg.getSavedMsgId() != 0) {
+          dcContext.deleteMsgs(new int[]{msg.getSavedMsgId()});
+        } else {
+          dcContext.saveMsgs(new int[]{msg.getId()});
         }
     }
 
@@ -591,6 +620,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
     public interface ConversationFragmentListener {
         void handleReplyMessage(DcMsg messageRecord);
+        void handleEditMessage(DcMsg messageRecord);
     }
 
     private class ConversationScrollListener extends OnScrollListener {
@@ -691,80 +721,6 @@ public class ConversationFragment extends MessageSelectorFragment
         Util.runOnAnyBackgroundThread(() -> dcContext.markseenMsgs(ids));
     }
 
-
-    void querySetupCode(final DcMsg dcMsg, String[] preload)
-    {
-        if( !dcMsg.isSetupMessage()) {
-            return;
-        }
-
-        View gl = View.inflate(getActivity(), R.layout.setup_code_grid, null);
-        final EditText[] editTexts = {
-                gl.findViewById(R.id.setupCode0),  gl.findViewById(R.id.setupCode1),  gl.findViewById(R.id.setupCode2),
-                gl.findViewById(R.id.setupCode3),  gl.findViewById(R.id.setupCode4),  gl.findViewById(R.id.setupCode5),
-                gl.findViewById(R.id.setupCode6),  gl.findViewById(R.id.setupCode7),  gl.findViewById(R.id.setupCode8)
-        };
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
-        builder1.setView(gl);
-        editTexts[0].setText(dcMsg.getSetupCodeBegin());
-        editTexts[0].setSelection(editTexts[0].getText().length());
-
-        for( int i = 0; i < 9; i++ ) {
-            if( preload != null && i < preload.length ) {
-                editTexts[i].setText(preload[i]);
-                editTexts[i].setSelection(editTexts[i].getText().length());
-            }
-            editTexts[i].addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if( s.length()==4 ) {
-                        for ( int i = 0; i < 8; i++ ) {
-                            if( editTexts[i].hasFocus() && editTexts[i+1].getText().length()<4 ) {
-                                editTexts[i+1].requestFocus();
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                }
-            });
-        }
-
-        builder1.setTitle(getActivity().getString(R.string.autocrypt_continue_transfer_title));
-        builder1.setMessage(getActivity().getString(R.string.autocrypt_continue_transfer_please_enter_code));
-        builder1.setNegativeButton(android.R.string.cancel, null);
-        builder1.setCancelable(false); // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
-        builder1.setPositiveButton(android.R.string.ok, (dialog, which) -> {
-            String setup_code = "";
-            final String[] preload1 = new String[9];
-            for ( int i = 0; i < 9; i++ ) {
-                preload1[i] = editTexts[i].getText().toString();
-                setup_code += preload1[i];
-            }
-            boolean success = dcContext.continueKeyTransfer(dcMsg.getId(), setup_code);
-
-            AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
-            builder2.setTitle(getActivity().getString(R.string.autocrypt_continue_transfer_title));
-            builder2.setMessage(getActivity().getString(success? R.string.autocrypt_continue_transfer_succeeded : R.string.autocrypt_bad_setup_code));
-            if( success ) {
-                builder2.setPositiveButton(android.R.string.ok, null);
-            }
-            else {
-                builder2.setNegativeButton(android.R.string.cancel, null);
-                builder2.setPositiveButton(R.string.autocrypt_continue_transfer_retry, (dialog1, which1) -> querySetupCode(dcMsg, preload1));
-            }
-            builder2.show();
-        });
-        builder1.show();
-    }
-
     private class ConversationFragmentItemClickListener implements ItemClickListener {
 
         @Override
@@ -784,9 +740,6 @@ public class ConversationFragment extends MessageSelectorFragment
                     actionMode.setTitleOptionalHint(false); // the title represents important information, also indicating implicitly, more items can be selected
                 }
             }
-            else if(messageRecord.isSetupMessage()) {
-                querySetupCode(messageRecord,null);
-            }
             else if (messageRecord.getType()==DcMsg.DC_MSG_VIDEOCHAT_INVITATION) {
                 new VideochatUtil().join(getActivity(), messageRecord.getId());
             }
@@ -794,15 +747,26 @@ public class ConversationFragment extends MessageSelectorFragment
                 DozeReminder.dozeReminderTapped(getContext());
             }
             else if(messageRecord.getInfoType() == DcMsg.DC_INFO_WEBXDC_INFO_MESSAGE) {
-                WebxdcActivity.openWebxdcActivity(getContext(), messageRecord.getParent(), messageRecord.getWebxdcHref());
+                if (messageRecord.getParent() != null) {
+                    // if the parent webxdc message still exists
+                    WebxdcActivity.openWebxdcActivity(getContext(), messageRecord.getParent(), messageRecord.getWebxdcHref());
+                }
             }
             else {
-                String self_mail = dcContext.getConfig("configured_mail_user");
-                if (self_mail != null && !self_mail.isEmpty()
-                        && messageRecord.getText().contains(self_mail)
-                        && getListAdapter().getChat().isDeviceTalk()) {
-                    // This is a device message informing the user that the password is wrong
-                    startActivity(new Intent(getActivity(), RegistrationActivity.class));
+                int infoContactId = messageRecord.getInfoContactId();
+                if (infoContactId != 0 && infoContactId != DC_CONTACT_ID_SELF) {
+                    Intent intent = new Intent(getContext(), ProfileActivity.class);
+                    intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, infoContactId);
+                    startActivity(intent);
+                }
+                else {
+                    String self_mail = dcContext.getConfig("configured_mail_user");
+                    if (self_mail != null && !self_mail.isEmpty()
+                      && messageRecord.getText().contains(self_mail)
+                      && getListAdapter().getChat().isDeviceTalk()) {
+                      // This is a device message informing the user that the password is wrong
+                      startActivity(new Intent(getActivity(), RegistrationActivity.class));
+                    }
                 }
             }
         }
@@ -822,20 +786,18 @@ public class ConversationFragment extends MessageSelectorFragment
             }
         }
 
-        @Override
-        public void onQuoteClicked(DcMsg messageRecord) {
-            DcMsg quoted = messageRecord.getQuotedMsg();
-            if (quoted == null) {
-                Log.i(TAG, "Clicked on a quote whose original message we never had.");
+        private void jumpToOriginal(DcMsg original) {
+            if (original == null) {
+                Log.i(TAG, "Clicked on a quote or jump-to-original whose original message was deleted/non-existing.");
                 Toast.makeText(getContext(), R.string.ConversationFragment_quoted_message_not_found, Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            int foreignChatId = quoted.getChatId();
+            int foreignChatId = original.getChatId();
             if (foreignChatId != 0 && foreignChatId != chatId) {
                 Intent intent = new Intent(getActivity(), ConversationActivity.class);
                 intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, foreignChatId);
-                int start = DcMsg.getMessagePosition(quoted, dcContext);
+                int start = DcMsg.getMessagePosition(original, dcContext);
                 intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, start);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 ((ConversationActivity) getActivity()).hideSoftKeyboard();
@@ -845,8 +807,18 @@ public class ConversationFragment extends MessageSelectorFragment
                     Log.e(TAG, "Activity was null");
                 }
             } else {
-                scrollMaybeSmoothToMsgId(quoted.getId());
+                scrollMaybeSmoothToMsgId(original.getId());
             }
+        }
+
+        @Override
+        public void onJumpToOriginalClicked(DcMsg messageRecord) {
+            jumpToOriginal(dcContext.getMsg(messageRecord.getOriginalMsgId()));
+        }
+
+        @Override
+        public void onQuoteClicked(DcMsg messageRecord) {
+            jumpToOriginal(messageRecord.getQuotedMsg());
         }
 
       @Override
@@ -896,6 +868,7 @@ public class ConversationFragment extends MessageSelectorFragment
             statusBarColor = window.getStatusBarColor();
             window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
 
+            Util.redMenuItem(menu, R.id.menu_context_delete_message);
             setCorrectMenuVisibility(menu);
             ConversationAdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
             return true;
@@ -920,45 +893,52 @@ public class ConversationFragment extends MessageSelectorFragment
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             hideAddReactionView();
-            switch(item.getItemId()) {
-                case R.id.menu_context_copy:
-                    handleCopyMessage(getListAdapter().getSelectedItems());
-                    actionMode.finish();
-                    return true;
-                case R.id.menu_context_delete_message:
-                    handleDeleteMessages((int) chatId, getListAdapter().getSelectedItems());
-                    return true;
-                case R.id.menu_context_share:
-                    DcHelper.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
-                    return true;
-                case R.id.menu_context_details:
-                    handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
-                    actionMode.finish();
-                    return true;
-                case R.id.menu_context_forward:
-                    handleForwardMessage(getListAdapter().getSelectedItems());
-                    actionMode.finish();
-                    return true;
-                case R.id.menu_add_to_home_screen:
-                    WebxdcActivity.addToHomeScreen(getActivity(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId());
-                    actionMode.finish();
-                    return true;
-                case R.id.menu_context_save_attachment:
-                    handleSaveAttachment(getListAdapter().getSelectedItems());
-                    return true;
-                case R.id.menu_context_reply:
-                    handleReplyMessage(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
-                    actionMode.finish();
-                    return true;
-                case R.id.menu_context_reply_privately:
-                    handleReplyMessagePrivately(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
-                    return true;
-                case R.id.menu_resend:
-                    handleResendMessage(getListAdapter().getSelectedItems());
-                    return true;
-            }
-
-            return false;
+          int itemId = item.getItemId();
+          if (itemId == R.id.menu_context_copy) {
+            handleCopyMessage(getListAdapter().getSelectedItems());
+            actionMode.finish();
+            return true;
+          } else if (itemId == R.id.menu_context_delete_message) {
+            handleDeleteMessages((int) chatId, getListAdapter().getSelectedItems());
+            return true;
+          } else if (itemId == R.id.menu_context_share) {
+            DcHelper.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
+            return true;
+          } else if (itemId == R.id.menu_context_details) {
+            handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+            actionMode.finish();
+            return true;
+          } else if (itemId == R.id.menu_context_forward) {
+            handleForwardMessage(getListAdapter().getSelectedItems());
+            actionMode.finish();
+            return true;
+          } else if (itemId == R.id.menu_add_to_home_screen) {
+            WebxdcActivity.addToHomeScreen(getActivity(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId());
+            actionMode.finish();
+            return true;
+          } else if (itemId == R.id.menu_context_save_attachment) {
+            handleSaveAttachment(getListAdapter().getSelectedItems());
+            return true;
+          } else if (itemId == R.id.menu_context_reply) {
+            handleReplyMessage(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+            actionMode.finish();
+            return true;
+          } else if (itemId == R.id.menu_context_edit) {
+            handleEditMessage(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+            actionMode.finish();
+            return true;
+          } else if (itemId == R.id.menu_context_reply_privately) {
+            handleReplyMessagePrivately(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+            return true;
+          } else if (itemId == R.id.menu_resend) {
+            handleResendMessage(getListAdapter().getSelectedItems());
+            return true;
+          } else if (itemId == R.id.menu_toggle_save) {
+            handleToggleSave(getListAdapter().getSelectedItems());
+            actionMode.finish();
+            return true;
+          }
+          return false;
         }
     }
 

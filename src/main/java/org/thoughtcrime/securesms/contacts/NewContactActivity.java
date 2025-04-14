@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,7 +19,6 @@ import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -28,6 +26,7 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
 {
 
   public static final String ADDR_EXTRA = "contact_addr";
+  public static final String CONTACT_ID_EXTRA = "contact_id";
 
   private TextInputEditText nameInput;
   private TextInputEditText addrInput;
@@ -68,31 +67,31 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
   @Override
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        finish();
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
+      finish();
+      return true;
+    } else if (itemId == R.id.menu_create_contact) {
+      String addr = addrInput.getText() == null ? "" : addrInput.getText().toString();
+      String name = nameInput.getText() == null ? "" : nameInput.getText().toString();
+      if (name.isEmpty()) name = null;
+      int contactId = dcContext.mayBeValidAddr(addr) ? dcContext.createContact(name, addr) : 0;
+      if (contactId == 0) {
+        Toast.makeText(this, getString(R.string.login_error_mail), Toast.LENGTH_LONG).show();
         return true;
-      case R.id.menu_create_contact:
-        String addr = addrInput.getText() == null? "" : addrInput.getText().toString();
-        String name = nameInput.getText() == null? "" : nameInput.getText().toString();
-        if (name.isEmpty()) name = null;
-        int contactId = dcContext.mayBeValidAddr(addr)? dcContext.createContact(name, addr): 0;
-        if (contactId == 0) {
-          Toast.makeText(this, getString(R.string.login_error_mail), Toast.LENGTH_LONG).show();
-          return true;
-        }
-        if (getCallingActivity() != null) { // called for result
-          Intent intent = new Intent();
-          intent.putExtra(ADDR_EXTRA, addr);
-          setResult(RESULT_OK, intent);
-        } else {
-          int chatId = dcContext.createChatByContactId(contactId);
-          Intent intent = new Intent(this, ConversationActivity.class);
-          intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-          startActivity(intent);
-        }
-        finish();
-        return true;
+      }
+      if (getCallingActivity() != null) { // called for result
+        Intent intent = new Intent();
+        intent.putExtra(CONTACT_ID_EXTRA, contactId);
+        setResult(RESULT_OK, intent);
+      } else {
+        int chatId = dcContext.createChatByContactId(contactId);
+        Intent intent = new Intent(this, ConversationActivity.class);
+        intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+        startActivity(intent);
+      }
+      finish();
+      return true;
     }
     return false;
   }

@@ -1,9 +1,5 @@
 package org.thoughtcrime.securesms;
 
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,10 +16,10 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.SearchView;
+import androidx.webkit.ProxyConfig;
+import androidx.webkit.ProxyController;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
-import androidx.webkit.ProxyController;
-import androidx.webkit.ProxyConfig;
 
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
@@ -254,24 +250,24 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        finish();
-        return true;
-      case R.id.menu_search_up:
-        if (lastQuery.isEmpty()) {
-          webView.scrollTo(0, 0);
-        } else {
-          webView.findNext(false);
-        }
-        return true;
-      case R.id.menu_search_down:
-        if (lastQuery.isEmpty()) {
-          webView.scrollTo(0, 1000000000);
-        } else {
-          webView.findNext(true);
-        }
-        return true;
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
+      finish();
+      return true;
+    } else if (itemId == R.id.menu_search_up) {
+      if (lastQuery.isEmpty()) {
+        webView.scrollTo(0, 0);
+      } else {
+        webView.findNext(false);
+      }
+      return true;
+    } else if (itemId == R.id.menu_search_down) {
+      if (lastQuery.isEmpty()) {
+        webView.scrollTo(0, 1000000000);
+      } else {
+        webView.findNext(true);
+      }
+      return true;
     }
     return false;
   }

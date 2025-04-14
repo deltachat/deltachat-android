@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.components;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;

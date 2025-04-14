@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8" /><meta name="viewport" content="initial-scale=1.0" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
+<html lang="pl"><head><meta charset="UTF-8" /><meta name="viewport" content="initial-scale=1.0" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
   <li><a href="#czym-jest-delta-chat">Czym jest Delta Chat?</a>
     <ul>
       <li><a href="#jak-mogę-znaleźć-ludzi-z-którymi-mogę-czatować">Jak mogę znaleźć ludzi, z którymi mogę czatować?</a></li>
@@ -10,7 +10,9 @@
       <li><a href="#kto-widzi-moje-zdjęcie-profilowe">Kto widzi moje zdjęcie profilowe?</a></li>
       <li><a href="#signature">Czy w Delta Chat mogę ustawić Biografię/Podpis/Status/Motto?</a></li>
       <li><a href="#co-oznacza-przypinanie-wyciszanie-i-archiwizowanie">Co oznacza przypinanie, wyciszanie i archiwizowanie?</a></li>
+      <li><a href="#save">Jak działają „Zapisane wiadomości”?</a></li>
       <li><a href="#co-oznacza-zielona-kropka">Co oznacza zielona kropka?</a></li>
+      <li><a href="#edit">Poprawianie literówek i usuwanie wiadomości po wysłaniu</a></li>
       <li><a href="#ephemeralmsgs">Jak działają znikające wiadomości?</a></li>
     </ul>
   </li>
@@ -56,7 +58,6 @@
       <li><a href="#pfs">Czy Delta Chat obsługuje funkcję Perfect Forward Secrecy?</a></li>
       <li><a href="#czy-szyfrowanie-end-to-end-delta-chat-jest-tak-samo-bezpieczne-jak-signal">Czy szyfrowanie end-to-end Delta Chat jest tak samo bezpieczne jak Signal?</a></li>
       <li><a href="#importkey">Czy mogę ponownie wykorzystać mój istniejący klucz prywatny?</a></li>
-      <li><a href="#nie-mogę-zaimportować-istniejącego-klucza-pgp-do-delta-chat">Nie mogę zaimportować istniejącego klucza PGP do Delta Chat.</a></li>
       <li><a href="#security-audits">Czy Delta Chat był niezależnie kontrolowany pod kątem luk w zabezpieczeniach?</a></li>
     </ul>
   </li>
@@ -65,6 +66,7 @@
       <li><a href="#czy-mogę-korzystać-z-delta-chat-na-wielu-urządzeniach-w-tym-samym-czasie">Czy mogę korzystać z Delta Chat na wielu urządzeniach w tym samym czasie?</a></li>
       <li><a href="#rozwiązywanie-problemów">Rozwiązywanie problemów</a></li>
       <li><a href="#backup">Ręczny transfer</a></li>
+      <li><a href="#czy-usuwanie-przypinanie-archiwizowanie-zapisywanie-wyciszanie-itp-jest-synchronizowane-ze-wszystkimi-urządzeniami">Czy usuwanie, przypinanie, archiwizowanie, zapisywanie, wyciszanie itp. jest synchronizowane ze wszystkimi urządzeniami?</a></li>
       <li><a href="#czy-są-jakieś-plany-wprowadzenia-klienta-web-delta-chat">Czy są jakieś plany wprowadzenia klienta Web Delta Chat?</a></li>
     </ul>
   </li>
@@ -96,7 +98,7 @@
       <li><a href="#do-czego-służy-ustawienie-wyślij-kopię-do-siebie">Do czego służy ustawienie „Wyślij kopię do siebie”?</a></li>
       <li><a href="#po-co-mam-wybrać-opcję-oglądania-folderu-wysłane">Po co mam wybrać opcję oglądania folderu „Wysłane”?</a></li>
       <li><a href="#dlaczego-mogę-nie-widzieć-folderu-deltachat">Dlaczego mogę nie widzieć folderu DeltaChat?</a></li>
-      <li><a href="#czy-delta-chat-jest-kompatybilny-z-protonmail--tutanota--criptext">Czy Delta Chat jest kompatybilny z Protonmail / Tutanota / Criptext?</a></li>
+      <li><a href="#czy-delta-chat-jest-kompatybilny-z-proton-mail--tutanota--criptext">Czy Delta Chat jest kompatybilny z Proton Mail / Tutanota / Criptext?</a></li>
       <li><a href="#remove-account">Jak mogę usunąć swoje konto?</a></li>
       <li><a href="#interesują-mnie-szczegóły-techniczne-możesz-powiedzieć-mi-coś-więcej">Interesują mnie szczegóły techniczne. Możesz powiedzieć mi coś więcej?</a></li>
       <li><a href="#gdzie-moi-znajomi-mogą-znaleźć-delta-chat">Gdzie moi znajomi mogą znaleźć Delta Chat?</a></li>
@@ -166,10 +168,18 @@
         
       </h3>
 
+<p>Jeśli wiadomość pochodzi od nieznanego kontaktu, wyświetla się jako <strong>prośba</strong>.</p>
+
 <ul>
-  <li>Jeśli wiadomość przychodzi od nieznanego kontaktu, pojawia się jako <strong>prośba</strong>. Musisz zaakceptować prośbę, zanim będziesz mógł odpowiedzieć.</li>
-  <li>Możesz również „usunąć” ją, jeśli nie chcesz na razie z nią rozmawiać. To <em>nie</em> usuwa wiadomości na serwerze, tylko na Twoim urządzeniu. Możesz więc nadal zajmować się tą wiadomością w innej aplikacji pocztowej.</li>
-  <li>Jeśli usuniesz prośbę, przyszłe wiadomości od tego kontaktu będą nadal wyświetlane jako prośba o wiadomość, więc możesz zmienić zdanie. Jeśli naprawdę nie chcesz otrzymywać wiadomości od tej osoby, rozważ <em>zablokowanie</em> jej.</li>
+  <li>
+    <p>Musisz <strong>zaakceptować</strong> prośbę, zanim będziesz mógł odpowiedzieć.</p>
+  </li>
+  <li>
+    <p>Możesz także <strong>usunąć</strong> wiadomość, jeśli nie chcesz w tej chwili z nią rozmawiać.</p>
+  </li>
+  <li>
+    <p>Jeśli usuniesz prośbę, przyszłe wiadomości od tego kontaktu nadal będą wyświetlane jako prośba o wiadomość, więc możesz zmienić zdanie. Jeśli naprawdę nie chcesz otrzymywać wiadomości od tej osoby, rozważ <strong>zablokowanie</strong> jej.</p>
+  </li>
 </ul>
     
       <h3 id="czy-delta-chat-obsługuje-obrazy-filmy-i-inne-załączniki">
@@ -182,7 +192,7 @@
 
 <ul>
   <li>
-    <p>Tak. Oprócz zwykłego tekstu wszystkie załączniki wiadomości e-mail są wyświetlane jako oddzielne wiadomości. Wiadomości wychodzące automatycznie otrzymują załączniki w razie potrzeby.</p>
+    <p>Tak. Obrazy, filmy, pliki, wiadomości głosowe itp. są obsługiwane jak zwykle.</p>
   </li>
   <li>
     <p>Ze względu na wydajność obrazy są domyślnie optymalizowane i wysyłane w mniejszym rozmiarze, ale można je wysłać jako „plik”, aby zachować oryginał.</p>
@@ -268,6 +278,36 @@
 
 <p>Aby skorzystać z tych funkcji, przytrzymaj dłużej lub kliknij prawym przyciskiem myszy czat na liście czatów.</p>
     
+      <h3 id="save">
+        
+        
+          Jak działają „Zapisane wiadomości”? <a href="#save" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><strong>Zapisane wiadomości</strong> to czat, którego możesz użyć, aby łatwo zapisać i znaleźć wiadomości.</p>
+
+<ul>
+  <li>
+    <p>W dowolnym czacie naciśnij i przytrzymaj lub kliknij prawym przyciskiem myszy wiadomość i wybierz <strong>Zapisz</strong></p>
+  </li>
+  <li>
+    <p>Zapisane wiadomości są oznaczone symbolem <img style="vertical-align:middle; width:1.2em; margin:1px" src="../saved-icon.png" alt="ikona Zapisz" /> obok znacznika czasu</p>
+  </li>
+  <li>
+    <p>Później otwórz czat „Zapisane wiadomości” — zobaczysz tam zapisane wiadomości. Naciskając <img style="vertical-align:middle; width:1.2em; margin:1px" src="../go-to-original.png" alt="ikona strzałki w prawo" />, możesz wrócić do oryginalnej wiadomości w oryginalnym czacie</p>
+  </li>
+  <li>
+    <p>Na koniec możesz również użyć „Zapisz wiadomości”, aby robić <strong>osobiste notatki</strong> — otwórz czat, wpisz coś, dodaj zdjęcie lub wiadomość głosową itp.</p>
+  </li>
+  <li>
+    <p>Ponieważ „Zapisane wiadomości” są zsynchronizowane, mogą być bardzo przydatne do przesyłania danych między urządzeniami</p>
+  </li>
+</ul>
+
+<p>Wiadomości pozostają zapisane, nawet jeśli zostaną edytowane lub usunięte — może to być przez <a href="#edit">nadawcę</a>, <a href="#delold">czyszczenie urządzenia</a> lub <a href="#ephemeralmsgs">znikające wiadomości z innych czatów</a>.</p>
+    
       <h3 id="co-oznacza-zielona-kropka">
         
         
@@ -276,16 +316,40 @@
         
       </h3>
 
+<p>Czasami można zobaczyć <strong>zieloną kropkę</strong> <img style="vertical-align:middle; width:1.2em; margin:1px" src="../green-dot.png" alt="" /> obok awatara kontaktu. Oznacza to, że był on „niedawno widziany” w ciągu ostatnich 10 minut:</p>
+
 <ul>
-  <li>Od wersji Delta Chat 1.34 czasami można zobaczyć „zieloną kropkę” obok awatara kontaktu. Oznacza to, że był on „niedawno widziany”.</li>
-  <li>Dokładnie oznacza to, że w ciągu ostatnich 10 minut Delta Chat widział go:</li>
   <li>dlatego, że wysłał Ci bezpośrednio wiadomość,</li>
   <li>ponieważ napisał coś do grupy, której oboje jesteście członkami,</li>
   <li>ponieważ wysłał Ci potwierdzenie przeczytania napisanej przez Ciebie wiadomości,</li>
-  <li>lub dlatego, że wysłał dane do Twojej aplikacji Delta Chat za pomocą <a href="#webxdc">Webxdc aplikacji</a>.</li>
-  <li>Nie jest to więc status online w czasie rzeczywistym – a jeśli ktoś nie odpowie od razu, mimo że wydaje się, że jest online, nie martw się i daj mu trochę miejsca ;-)</li>
-  <li>Z drugiej strony inni nie zawsze „zobaczą, że jesteś online”. Jeśli wyłączyłeś potwierdzenia odczytu, nie zobaczą oni zielonej kropki, dopóki nie wyślesz do nich wiadomości lub nie napiszesz do grupy, w której również się znajdują.</li>
+  <li>ponieważ edytował lub usunął wiadomość w udostępnionym Tobie czacie,</li>
+  <li>lub dlatego, że używał <a href="#webxdc">aplikacji</a> w udostępnionym Tobie czacie.</li>
 </ul>
+
+<p>Nie jest to więc status online w czasie rzeczywistym – a jeśli ktoś nie odpowie od razu, mimo że wydaje się, że jest online, nie martw się i daj mu trochę czasu :)</p>
+
+<p>Z drugiej strony, inni nie zawsze „zauważą, że jesteś online”. Jeśli wyłączyłeś potwierdzenia odczytu, nie zobaczą zielonej kropki, dopóki nie zostanie spełniony jeden z powyższych warunków.</p>
+    
+      <h3 id="edit">
+        
+        
+          Poprawianie literówek i usuwanie wiadomości po wysłaniu <a href="#edit" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Możesz edytować tekst wiadomości po wysłaniu. W tym celu naciśnij i przytrzymaj lub kliknij prawym przyciskiem myszy wiadomość i wybierz Edytuj, lub<img style="vertical-align:middle; width:1.2em; margin:1px" src="../edit-icon.png" alt="ikona Edytuj" />.</p>
+  </li>
+  <li>
+    <p>Jeśli wysłałeś wiadomość przypadkowo, z tego samego menu wybierz <strong>Usuń</strong>, a następnie <strong>Usuń u wszystkich</strong>.</p>
+  </li>
+</ul>
+
+<p>Podczas gdy edytowane wiadomości będą miały słowo „Edytowana” obok znacznika czasu, usunięte wiadomości zostaną usunięte bez znacznika na czacie. Powiadomienia nie są wysyłane i nie ma limitu czasowego.</p>
+
+<p>Pamiętaj, że oryginalną wiadomość nadal mogą otrzymać członkowie czatu, którzy mogli już odpowiedzieć, przesłać dalej, zapisać, wykonać zrzut ekranu lub w inny sposób skopiować wiadomość.</p>
     
       <h3 id="ephemeralmsgs">
         
@@ -669,7 +733,7 @@ nadal będziesz mógł pisać, ale nie będziesz już powiadamiany o żadnych no
 
 <p>Tak, Delta Chat korzysta z bezpiecznego podzbioru OpenPGP i wyświetla wskaźnik bezpieczeństwa kłódki na wiadomości tylko wtedy, gdy cała wiadomość jest prawidłowo zaszyfrowana i podpisana. Na przykład „Odłączone podpisy” nie są traktowane jako bezpieczne.</p>
 
-<p>OpenPGP samo w sobie nie jest niebezpieczne. Większość publicznie omawianych problemów związanych z bezpieczeństwem OpenPGP tak naprawdę wynika ze złej użyteczności lub złej implementacji narzędzi, lub aplikacji (lub obu). Szczególnie ważne jest rozróżnienie pomiędzy OpenPGP, standardem szyfrowania IETF, a GnuPG (GPG), narzędziem wiersza poleceń implementującym OpenPGP. Wiele publicznych komentarzy krytycznych na temat OpenPGP tak naprawdę omawia GnuPG, którego Delta Chat nigdy nie używał. Delta Chat korzysta raczej z implementacji OpenPGP Rust <a href="https://github.com/rpgp/rpgp">rPGP</a>, dostępnej jako <a href="https://crates.io/crates/pgp">niezależny pakiet „pgp”</a> i poddanej <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">audytowi bezpieczeństwa w 2019 roku</a>.</p>
+<p>OpenPGP samo w sobie nie jest niebezpieczne. Większość publicznie omawianych problemów związanych z bezpieczeństwem OpenPGP tak naprawdę wynika ze złej użyteczności lub złej implementacji narzędzi, lub aplikacji (lub obu). Szczególnie ważne jest rozróżnienie pomiędzy OpenPGP, standardem szyfrowania IETF, a GnuPG (GPG), narzędziem wiersza poleceń implementującym OpenPGP. Wiele publicznych komentarzy krytycznych na temat OpenPGP tak naprawdę omawia GnuPG, którego Delta Chat nigdy nie używał. Delta Chat korzysta raczej z implementacji OpenPGP Rust <a href="https://github.com/rpgp/rpgp">rPGP</a>, dostępnej jako <a href="https://crates.io/crates/pgp">niezależny pakiet „pgp”</a> i poddanej <a href="#security-audits">audytowi bezpieczeństwa w 2019 i 2024 roku</a>.</p>
 
 <p>Naszym celem, wraz z innymi wdrażającymi OpenPGP, jest dalsza poprawa parametrów bezpieczeństwa poprzez wdrożenie <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-crypto-refresh/">nowego IETF OpenPGP Crypto-Refresh</a>, który na szczęście został przyjęty latem 2023 roku.</p>
     
@@ -832,33 +896,11 @@ nadal będziesz mógł pisać, ale nie będziesz już powiadamiany o żadnych no
         
       </h3>
 
-<p>Tak.
-The best way is to send an Autocrypt Setup Message from the other e-mail client.
-Look for something like <strong>Start Autocrypt Setup Transfer</strong> in the settings of the other client and follow the instructions shown there.</p>
+<p>Nie.</p>
 
-<p>Alternatywnie możesz zaimportować klucz ręcznie w „Ustawienia » Zaawansowane » Importuj tajne klucze”. Uwaga: Upewnij się, że klucz nie jest chroniony hasłem lub wcześniej usuń hasło.</p>
+<p>Delta Chat generuje bezpieczne klucze OpenPGP zgodnie ze specyfikacją Autocrypt 1.1. Możesz wyeksportować swój prywatny klucz, ale nie możesz zaimportować dodatkowych kluczy prywatnych.</p>
 
-<p>Jeśli nie masz klucza lub nawet nie wiesz, że go potrzebujesz  nie przejmuj się: Delta Chat generuje go w razie potrzeby, nie trzeba naciskać przycisku, aby to zrobić.</p>
-    
-      <h3 id="nie-mogę-zaimportować-istniejącego-klucza-pgp-do-delta-chat">
-        
-        
-          Nie mogę zaimportować istniejącego klucza PGP do Delta Chat. <a href="#nie-mogę-zaimportować-istniejącego-klucza-pgp-do-delta-chat" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Jest wielce prawdopodobne, że problemem jest klucz, który jest zaszyfrowany i/lub używa hasła. Takie klucze nie są obsługiwane przez Delta Chat. Usuń szyfrowanie i hasło i spróbować ponownie zaimportować klucz.</p>
-
-<p>Innym częstym błędem jest nieprawidłowe zakończenie pliku.
-Użyj opancerzonego formatu ASCII i końcówki pliku <code class="language-plaintext highlighter-rouge">.asc</code>.</p>
-
-<p>Rozsądny format, Delta Chat obsługuje popularne formaty kluczy prywatnych OpenPGP, jednak jest mało prawdopodobne, że będziemy obsługiwać 100% wszystkich kluczy prywatnych z dowolnych źródeł. To również nie jest głównym celem Delta Chat (w rzeczywistości, znaczna większość użytkowników Delta Chat nie będzie miała żadnego klucza przed rozpoczęciem korzystania z Delta). Jednak staramy się wspierać klucze prywatne z innych źródeł tak dobrze jak to tylko możliwe.</p>
-
-<p>Usunięcie hasła z klucza prywatnego będzie się różnić w zależności od 
-oprogramowania używanego do zarządzania kluczami PGP. Za pomocą programu Enigmail można ustawić 
-hasło na pustą wartość w oknie zarządzania kluczami. Z GnuPG możesz ustawić je <a href="https://github.com/deltachat/deltachat-android/issues/98#issuecomment-378383429">z linii poleceń</a>. 
-W przypadku innych programów można znaleźć rozwiązanie online.</p>
+<p>Generalnie nie zalecamy ani nie oferujemy użytkownikom wykonywania ręcznego zarządzania kluczami. Chcemy się upewnić, że audyty bezpieczeństwa mogą skupić się na kilku sprawdzonych algorytmach kryptograficznych, a nie na pełnym zakresie możliwych algorytmów dozwolonych w OpenPGP.</p>
     
       <h3 id="security-audits">
         
@@ -868,7 +910,18 @@ W przypadku innych programów można znaleźć rozwiązanie online.</p>
         
       </h3>
 
-<p>Projekt Delta Chat przeszedł cztery niezależne audyty bezpieczeństwa i jedną niezależną analizę bezpieczeństwa, od najnowszego do najstarszego:</p>
+<p>Tak, wielokrotnie.
+Projekt Delta Chat stale przechodzi niezależne audyty bezpieczeństwa i analizy,
+od najnowszych do najstarszych:</p>
+
+<p>W grudniu 2024 r. <a href="https://github.com/rpgp/docs/blob/main/audits/NGI%20Core%20rPGP%20penetration%20test%20report%202024%201.0.pdf">NLNET</a> wykonała ocenę rPGP zleconą przez <a href="https://www.radicallyopensecurity.com/">Radically Open Security</a>. rPGP służy jako kompleksowy silnik szyfrowania <a href="https://openpgp.org">OpenPGP</a> w Delta Chat. Wydano dwa ostrzeżenia związane z wynikami tego audytu:</p>
+
+<ul>
+  <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-9rmp-2568-59rv">„Paniki przy nieprawidłowym wprowadzaniu niezaufanych danych wejściowych”</a> CVE-2024-53856</li>
+  <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-4grw-m28r-q285">„Potencjalne wyczerpanie zasobów podczas obsługi niezaufanych wiadomości”</a> CVE-2024-53857</li>
+</ul>
+
+<p>Problemy opisane w tych ostrzeżeniach zostały naprawione i są częścią wydań Delta Chat we wszystkich sklepach z aplikacjami od grudnia 2024 r.</p>
 
 <ul>
   <li>
@@ -904,7 +957,7 @@ W przypadku innych programów można znaleźć rozwiązanie online.</p>
         
       </h3>
 
-<p>Tak. Delta Chat 1.36 comes with a new, experimental function for using the same profile on different devices:</p>
+<p>Tak. You can use the same profile on different devices:</p>
 
 <ul>
   <li>
@@ -955,6 +1008,9 @@ W przypadku innych programów można znaleźć rozwiązanie online.</p>
     <p><strong>Sieci dla gości</strong> mogą nie pozwalać urządzeniom na komunikację między sobą. Jeśli to możliwe, korzystaj z sieci innej niż gość.</p>
   </li>
   <li>
+    <p>Jeśli nadal masz problemy z korzystaniem z tej samej sieci, spróbuj otworzyć <strong>Hotspot</strong> na jednym urządzeniu i połączyć się z tą siecią Wi-Fi z drugiego urządzenia</p>
+  </li>
+  <li>
     <p>Upewnij się, że na urządzeniu docelowym jest <strong>wystarczająca ilość miejsca</strong></p>
   </li>
   <li>
@@ -987,6 +1043,20 @@ W przypadku innych programów można znaleźć rozwiązanie online.</p>
   </li>
   <li>Jesteś teraz zsynchronizowany i możesz używać obu urządzeń do wysyłania i odbierania wiadomości zaszyfrowanych end-to-end w komunikacji ze swoimi partnerami.</li>
 </ul>
+    
+      <h3 id="czy-usuwanie-przypinanie-archiwizowanie-zapisywanie-wyciszanie-itp-jest-synchronizowane-ze-wszystkimi-urządzeniami">
+        
+        
+          Czy usuwanie, przypinanie, archiwizowanie, zapisywanie, wyciszanie itp. jest synchronizowane ze wszystkimi urządzeniami? <a href="#czy-usuwanie-przypinanie-archiwizowanie-zapisywanie-wyciszanie-itp-jest-synchronizowane-ze-wszystkimi-urządzeniami" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Tak.</p>
+
+<p>Jeśli np. usuniesz czat lub wiadomość z telefonu, zostaną one usunięte z aplikacji na komputer, gdy tylko ponownie będą online.</p>
+
+<p>Wyjątkiem jest <a href="#delold">usuwanie starych wiadomości z urządzenia</a>, ponieważ różne urządzenia mogą mieć różne pojemności pamięci i ustawienia specyficzne dla systemu, takie jak dźwięki powiadomień.</p>
     
       <h3 id="czy-są-jakieś-plany-wprowadzenia-klienta-web-delta-chat">
         
@@ -1318,17 +1388,17 @@ jeśli chcesz sprawdzić, czy Twoje poświadczenia są przetwarzane w bezpieczny
 
 <p>Niektórzy używają Delta Chat jako zwykłego klienta poczty e-mail i chcą używać folderu Skrzynka odbiorcza dla swojej poczty zamiast folderu DeltaChat. Jeśli wyłączysz opcję „Oglądaj folder DeltaChat”, powinieneś również wyłączyć opcję „Automatyczne przenoszenie do folderu DeltaChat”. W przeciwnym razie usuwanie wiadomości lub konfiguracja wielu urządzeń może nie działać poprawnie.</p>
     
-      <h3 id="czy-delta-chat-jest-kompatybilny-z-protonmail--tutanota--criptext">
+      <h3 id="czy-delta-chat-jest-kompatybilny-z-proton-mail--tutanota--criptext">
         
         
-          Czy Delta Chat jest kompatybilny z Protonmail / Tutanota / Criptext? <a href="#czy-delta-chat-jest-kompatybilny-z-protonmail--tutanota--criptext" class="anchor"></a>
+          Czy Delta Chat jest kompatybilny z Proton Mail / Tutanota / Criptext? <a href="#czy-delta-chat-jest-kompatybilny-z-proton-mail--tutanota--criptext" class="anchor"></a>
         
         
       </h3>
 
 <ul>
   <li>I tak i nie.</li>
-  <li>Nie, nie możesz używać swojego konta Protonmail, Tutanota lub Criptext z Delta Chat; nie oferują one odbierania poczty przez IMAP.</li>
+  <li>Nie, nie możesz używać swojego konta Proton Mail, Tutanota lub Criptext z Delta Chat; nie oferują one odbierania poczty przez IMAP.</li>
   <li>W każdym przypadku możesz użyć Delta Chat do wysyłania wiadomości do osób, które używają Protonmail, Tutanota lub Criptext. Te wiadomości nie będą jednak szyfrowane metodą end-to-end. Szyfrowanie typu end-to-end, które oferują ci dostawcy, nie jest kompatybilne z <a href="https://autocrypt.org/">Autocrypt</a> stosowanym standardowo w Delta Chat.</li>
   <li>Delta Chat może zaszyfrować metodą end-to-end za pośrednictwem dowolnego dostawcy poczty e-mail z dowolną <a href="https://autocrypt.org/dev-status.html">aplikacją e-mail z włączoną funkcją Autocrypt</a>.</li>
 </ul>

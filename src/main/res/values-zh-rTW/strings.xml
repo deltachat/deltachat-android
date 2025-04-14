@@ -28,6 +28,8 @@
     <string name="join">加入</string>
     <string name="rejoin">重新加入</string>
     <string name="delete">刪除</string>
+    <string name="delete_for_me">為我刪除</string>
+    <string name="delete_for_everyone">為所有人刪除</string>
     <string name="info">資訊</string>
     <string name="update">更新</string>
     <string name="emoji">表情符號</string>
@@ -37,14 +39,18 @@
     <string name="close_window">關閉視窗</string>
     <string name="forward">轉發</string>
     <string name="create">建立</string>
+    <string name="reset">重置</string>
     <string name="later">稍後</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">重新傳送</string>
+    <string name="edited">已編輯</string>
+    <string name="edit_message">編輯訊息</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">封存</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">取消封存</string>
     <string name="mute">靜音</string>
+    <string name="muted">勿擾</string>
     <string name="ephemeral_messages">自動銷毀訊息</string>
     <string name="ephemeral_messages_hint">這些設定將會套用在所有使用 Delta Chat 的聊天成員上。但他們依然可以複製、儲存和轉發訊息，或使用其他的電子郵件客戶端。</string>
     <string name="save">儲存</string>
@@ -152,7 +158,7 @@
     <string name="voice_message">語音訊息</string>
     <string name="forwarded">已轉發</string>
     <string name="forwarded_message">轉發的訊息</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">由%1$s轉發</string>
     <string name="video">影片</string>
     <string name="documents">文件</string>
@@ -173,6 +179,16 @@
     <string name="webxdc_app">小程式</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">小程式</string>
+    <string name="webxdc_store_url">應用選取器連結</string>
+    <string name="webxdc_store_url_explain">如果設定，該連接將用作應用選擇器而不是預設連結</string>
+    <string name="home">主頁</string>
+    <string name="games">游戲</string>
+    <string name="tools">工具</string>
+    <string name="app_size">尺寸大小</string>
+    <string name="app_date_published">已發佈</string>
+    <string name="add_to_chat">添加到聊天</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">瀏覽</string>
     <string name="unknown">未知</string>
 
     <string name="green">綠色</string>
@@ -200,6 +216,8 @@
     <string name="new_classic_contact_explain">手動添加的聯絡人可用於向傳統電子郵件發送文本，並且不能保證端到端加密。</string>
     <string name="menu_new_chat">新增聊天</string>
     <string name="menu_new_group">新增群組</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">與……聊天</string>
     <string name="clone_chat">克隆聊天</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">廣播列表</string>
@@ -221,7 +239,6 @@
     <string name="menu_delete_chat">刪除對話</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">清除對話</string>
-    <string name="menu_delete_messages">刪除訊息</string>
     <string name="delete_contact">刪除聯絡人</string>
     <string name="menu_delete_location">刪除這個地點？</string>
     <string name="menu_message_details">訊息詳細內容</string>
@@ -265,9 +282,9 @@
     <string name="select_chat">選取聊天</string>
     <string name="select_more">多選</string>
     <string name="menu_edit_name">編輯名稱</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">設置一個昵稱，而不是 「%1$s 」留空以使用聯繫人選擇的姓名。</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">「%1$s」的昵稱</string>
     <string name="menu_settings">設定</string>
     <string name="menu_advanced">進階</string>
@@ -279,6 +296,7 @@
     <string name="menu_learn_spelling">學習拼寫</string>
     <string name="menu_chat_audit_log">對話審查紀錄</string>
     <string name="jump_to_message">移動至訊息</string>
+    <string name="jump_to_original_message">跳轉到原始訊息</string>
     <string name="copy_json">複製 JSON 內容</string>
     <string name="replace_draft">取代草稿</string>
     <string name="title_share_location">分享所在地給所有群組成員</string>
@@ -303,7 +321,7 @@
     <string name="donate">捐贈</string>
 
     <string name="mute_for_one_hour">靜音1小時</string>
-    <string name="mute_for_two_hours">靜音2小時</string>
+    <string name="mute_for_eight_hours">靜音8小時</string>
     <string name="mute_for_one_day">靜音1天</string>
     <string name="mute_for_seven_days">靜音7天</string>
     <string name="mute_forever">永遠靜音</string>
@@ -338,13 +356,14 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">確定要離開本群組？</string>
     <plurals name="ask_delete_chat">
-        <item quantity="other">確定刪除%d個對話嗎？將會從對話紀錄中刪除，然而伺服器中仍會保留對話。</item>
+        <item quantity="other">刪除您所有裝置上的%d個聊天記錄？</item>
     </plurals>
-    <string name="ask_delete_named_chat">你確定你要刪除「%1$s」？</string>
-    <string name="ask_delete_message">你確定要刪除這則訊息？</string>
+    <string name="ask_delete_named_chat">刪除您所有設備上的“%1$s”聊天 ？</string>
+    <string name="ask_delete_message">在您的所有裝置上刪除此訊息？</string>
     <plurals name="ask_delete_messages">
-        <item quantity="other">刪除本地及伺服器上的%d個訊息？</item>
+        <item quantity="other">是否刪除所有裝置上的%d條訊息？</item>
     </plurals>
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">刪除%d則訊息？</item>
     </plurals>
@@ -355,9 +374,7 @@
     <string name="ask_unblock_contact">要解除封鎖嗎？你之後可以繼續收到這個人的訊息。</string>
     <string name="ask_delete_contacts">要刪除聯絡人嗎？選定的聯絡人將被永久刪除。\n\n正在進行對話的聯絡人、以及系統通訊錄中的聯絡人，無法被永久刪除。</string>
     <string name="ask_delete_contact">要刪除%1$s聯絡人嗎？\n\n聊天室中的聯絡人和系統聯絡人將不會被永久刪除。</string>
-    <string name="cannot_delete_contacts_in_use">無法刪除聊天室內的聯絡人。</string>
     <string name="ask_start_chat_with">要和%1$s開始對話嗎？</string>
-    <string name="ask_delete_value">刪除%s？</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">要把%1$s移出群組嗎？</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -473,6 +490,8 @@
     <string name="profile_encryption">加密</string>
     <string name="profile_shared_chats">共享的對話</string>
     <string name="related_chats">相關對話</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">以前成員</string>
     <string name="tab_contact">聯絡人</string>
     <string name="tab_group">群組</string>
     <string name="tab_gallery">相簿</string>
@@ -486,6 +505,7 @@
     <string name="tab_audio_empty_hint">在此聊天中分享的音訊檔和語音消息將顯示在此處。</string>
     <string name="tab_webxdc_empty_hint">在此聊天中分享的應用程式將在此處顯示。</string>
     <string name="tab_all_media_empty_hint">在任何聊天中分享的媒體都會顯示在此處。</string>
+    <string name="all_files_empty_hint">在任何聊天中共用的檔案和其他檔案都會顯示在此處。</string>
     <string name="all_apps_empty_hint">在任何聊天中接收或發送的應用程式都會顯示在此處。</string>
     <string name="media_preview">媒體預覽</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
@@ -493,9 +513,9 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">方形網格</string>
     <string name="send_message">傳送訊息</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
     <string name="aeap_addr_changed">%1$s 已將他的位址從 %2$s更改 為 %3$s</string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">您已將電子郵件位址從%1$s更改為%2$s 。\n\n如果您現在向已驗證的群組發送消息，那裡的聯絡人會自動將舊位址替換為您的新位址。\n\n強烈建議您將舊電子郵件供應商設置為將所有電子郵件轉發到您的新電子郵件位址。否則，您可能會錯過尚未獲得新地址的聯絡人的消息。</string>
 
 
@@ -512,9 +532,9 @@
     <string name="multidevice_receiver_title">新增為第二個裝置</string>
     <string name="multidevice_open_settings_on_other_device">在第一台裝置上，轉到「設定/新增第二台裝置」並掃描那裡顯示的QR碼</string>
     <string name="multidevice_receiver_scanning_ask">將賬戶檔從其他裝置複製到此裝置？</string>
+    <string name="multidevice_receiver_needs_update">您要導入的配置檔來自較新的 Delta Chat 版本。\n\n要繼續設定第二台裝置，請將此裝置更新到最新版本的 Delta Chat。</string>
     <string name="multidevice_abort">中止設定第二個裝置？</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">這將使複製到剪貼板的 QR 碼失效。</string>
-    <string name="multidevice_experimental_hint">（實驗性，需要版本 1.36）</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️已將賬戶傳輸到您的第二台裝置。</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">準備個人檔案中…</string>
@@ -527,7 +547,7 @@
     <string name="incoming_messages">傳入訊息</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">傳出訊息</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">%1$s上的存儲空間</string>
     <string name="connectivity">連接狀態</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -577,9 +597,7 @@
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
     <string name="scan_invitation_code">掃描邀請碼</string>
     <string name="login_title">登入</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">登入你的電子郵件帳戶</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">使用現有的電子郵件帳戶登入</string>
     <string name="login_subheader">我們能自動處理大多數常見的郵件伺服器設定。有時候你需要在 web 界面上手動打開 IMAP 服務，請詢問郵件服務商或請朋友幫忙。</string>
     <string name="login_no_servers_hint">Delta Chat 沒有伺服器，你的資料只會存在你自己的裝置上!</string>
@@ -595,7 +613,7 @@
     <string name="login_smtp_port">SMTP 埠</string>
     <string name="login_smtp_security">SMTP 安全</string>
     <string name="login_auth_method">授權方式</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">代理伺服器</string>
     <string name="proxy_use_proxy">使用代理伺服器</string>
     <string name="proxy_add">添加代理伺服器</string>
@@ -619,15 +637,18 @@
     <string name="import_backup_title">匯入備份</string>
     <string name="import_backup_ask">在 「%1$s 」找到備份\n\n你要匯入備份，並使用原來的資料和設定嗎?</string>
     <string name="import_backup_no_backup_found">找不到備份\n\n請把備份複製到「%1$s」然後再試一次，或是按「開始傳送訊息」進行標準設定。</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">無法登入 %1$s。請確定 email 帳號和密碼是否正確。 </string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">接受無效證書</string>
     <string name="switch_account">切換個人檔案</string>
     <string name="add_account">新增個人檔案</string>
-    <string name="profile_tag">私有標籤</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">賬戶標籤</string>
     <string name="profile_tag_hint">例如工作、 家庭</string>
-    <string name="profile_tag_explain">僅對您可見的標籤；幫助您區分您的個人資料。</string>
+    <string name="profile_tag_explain">設置僅對您可見的標籤；幫助您區分您的賬戶。</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">移至頁首</string>
     <string name="delete_account">刪除個人檔案</string>
     <string name="delete_account_ask">您確定要刪除您的賬戶數據嗎？</string>
     <string name="delete_account_explain_with_name">此裝置上 「%s」 的所有賬戶資料都將被刪除，包括您的端到端加密設置、聯絡人、聊天、消息和媒體。此操作無法復原。</string>
@@ -656,11 +677,10 @@
     <string name="pref_profile_photo">大頭照</string>
     <string name="pref_blocked_contacts">已封鎖的聯絡人</string>
     <string name="blocked_empty_hint">被封鎖的聯絡人將在此處顯示。</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">密碼和帳戶</string>
     <string name="pref_who_can_see_profile_explain">你的名字和大頭照在通訊的過程中，會提供給對方看到。已傳送的資訊無法被刪除或移除。</string>
     <string name="pref_your_name">你的名字</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">簽名檔</string>
     <string name="pref_enter_sends">換行鍵送出訊息</string>
     <string name="pref_enter_sends_explain">按下換行鍵就送出訊息</string>
@@ -673,6 +693,8 @@
     <string name="pref_screen_security_explain">要求系統在本通訊軟體中及應用程式列表中禁止擷圖</string>
     <string name="pref_screen_security_please_restart_hint">請重新啟動本 app 以啟用螢幕安全設定。</string>
     <string name="pref_notifications">通知設定</string>
+    <string name="pref_mention_notifications">提到</string>
+    <string name="pref_mention_notifications_explain">在勿擾的群組中，通知傳送給您的訊息，例如回復或回應</string>
     <string name="pref_notifications_show">顯示通知</string>
     <string name="pref_notifications_priority">通知優先權</string>
     <string name="pref_notifications_explain">為新訊息啟用系統通知</string>
@@ -690,6 +712,7 @@
     <string name="pref_appearance">外觀</string>
     <string name="pref_theme">佈景主題</string>
     <string name="pref_language">語言</string>
+    <string name="pref_use_system_ui_font">使用系統字體</string>
     <string name="pref_incognito_keyboard">保密鍵盤</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">要求系統關閉鍵盤的個人化學習設定</string>
@@ -700,10 +723,9 @@
     <string name="pref_manage_keys">管理金鑰</string>
     <string name="pref_use_system_emoji">使用系統的表情符號</string>
     <string name="pref_use_system_emoji_explain">停用 Delta Chat 內建的表情符號</string>
-    <string name="pref_use_inapp_camera">使用應用程式內的相機</string>
-    <string name="pref_use_inapp_camera_explain">應用內相機的功能通常比系統相機少</string>
     <string name="pref_show_system_contacts">讀取系統通訊錄</string>
     <string name="pref_show_system_contacts_explain">建議與通訊錄中的聯絡人建立聊天。一些供應商需要先進行端到端加密設置。</string>
+    <!-- deprecated -->
     <string name="pref_app_access">App 存取</string>
     <string name="pref_chats">對話</string>
     <string name="pref_in_chat_sounds">對話內的音效</string>
@@ -715,7 +737,7 @@
     <string name="pref_backup">備份</string>
     <string name="pref_backup_explain">將備份另存至外部儲存媒體</string>
     <string name="pref_backup_export_explain">備份可以讓你把設定及對話紀錄轉移到這台或其它裝置上。\n\n備份內容包括所有的訊息、聯絡人、對話、端到端AutoCrypt設定。請務必將備份檔存放在安全的地方，並在轉移後儘快刪除。</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">匯出 %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">匯出全部%1$d個賬戶</string>
@@ -736,7 +758,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">如果關閉本選項的話，請務必確定你的伺服器和其它客戶端應用程式都使用相同的設定，否則很可能不能運作。</string>
     <string name="pref_watch_sent_folder">監看送件匣</string>
     <string name="pref_send_copy_to_self">將副本發送給自己</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">在多個裝置上使用此帳戶時，這是必需的。</string>
     <string name="pref_auto_folder_moves">自動搬移到 DeltaChat 資料夾</string>
     <string name="pref_auto_folder_moves_explain">搬移對話以避免塞爆收件匣</string>
@@ -828,14 +849,10 @@
     <string name="autocrypt_send_asm_button">傳送AutoCrypt設定訊息</string>
     <string name="autocrypt_send_asm_explain_after">你的設定已經傳送給你自己了。請到其它支援自動加密設定的裝置，開啟設定訊息，並輸入以下的設定碼\n\n輸入完之後，你的其它裝置就可以使用AutoCrypt了。</string>
     <string name="autocrypt_prefer_e2ee">偏好端到端加密</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_subject">Autocrypt Setup Message</string>
+    <!-- deprecated -->
     <string name="autocrypt_asm_general_body">本信件包含AutoCrypt設定訊息。\n\n請使用其它裝置上支援AutoCrypt設定的應用程式開啟本訊息，並輸入設定碼，以便匯入自動加密設定。</string>
-    <string name="autocrypt_asm_click_body">本訊息是AutoCrypt設定訊息。\n\n要解密並套用自動加密設定，請點一下本訊息。</string>
-    <string name="autocrypt_continue_transfer_title">AutoCrypt設定訊息</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">請輸入另一台裝置上顯示的設定碼。</string>
-    <string name="autocrypt_continue_transfer_succeeded">已傳送端到端加密設定，本裝置已套用和其它裝置相同的AutoCrypt設定。</string>
-    <string name="autocrypt_continue_transfer_retry">重試一次</string>
-    <string name="autocrypt_bad_setup_code">錯誤的設定碼，請再試一次。\n\n如果你忘記設定碼的話，只要在另一台裝置重新發送一次AutoCrypt設定訊息即可。</string>
 
 
     <!-- system messages -->
@@ -960,15 +977,16 @@
     <string name="set_name_and_avatar_explain">設置聯絡人可以識別的名稱。您還可以設置大頭貼。</string>
     <string name="please_enter_name">請輸入名稱。</string>
     <string name="qraccount_qr_code_cannot_be_used">掃描的 QR 碼不能用於建立新賬戶。</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">登入「%1$s」？</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">登入「%1$s」？\n\n您現有的賬戶不會被刪除。使用「切換賬戶」項在您的賬戶之間切換。</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s邀請您加入此群組。\n\n正在等待%2$s裝置的回覆...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s已回覆，等待被添加到群組中...</string>
     <string name="secure_join_wait">正在建立有保證的端到端加密，請稍候...</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">尚無法建立有保證的端到端加密，但您可能已經送出了一條訊息。</string>
     <string name="contact_verified">%1$s已介紹。</string>
     <string name="contact_not_verified">無法與%1$s建立有保證的端到端加密。</string>
@@ -978,6 +996,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">已爲%1$s更改設定。</string>
     <string name="verified_contact_required_explain">為了保證端到端加密，您只能將帶有綠色驗證標識的聯絡人添加到此群組。\n\n您可以當面掃描聯絡人的QR碼以介紹他們。</string>
+    <!-- deprecated -->
     <string name="copy_qr_data_success">已將 QR碼的URL複製到剪貼簿</string>
     <string name="mailto_dialog_header_select_chat">選擇要將消息發送到的聊天</string>
     <!-- first placeholder is the name of the chat -->
@@ -1040,6 +1059,8 @@
     <string name="global_menu_view_developer_desktop">開發者</string>
     <string name="global_menu_view_developer_tools_desktop">開發者工具</string>
     <string name="global_menu_help_desktop">幫助</string>
+    <string name="delta_chat_homepage">Delta Chat 主頁</string>
+    <string name="contribute">貢獻</string>
     <string name="global_menu_help_report_desktop">報告問題</string>
     <string name="global_menu_help_about_desktop">關於 Delta Chat</string>
     <string name="global_menu_file_open_desktop">開啟 Delta Chat</string>
@@ -1052,6 +1073,8 @@
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">移除</string>
     <string name="save_desktop">儲存</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">取消保存</string>
     <string name="name_desktop">名稱</string>
     <string name="select_group_image_desktop">選擇群組圖片</string>
     <string name="export_backup_desktop">匯出備份</string>
@@ -1064,7 +1087,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">無法禁用托盤圖示，因為 Delta Chat 是使用 --minimized 選項啟動的。</string>
     <string name="no_spellcheck_suggestions_found">未找到拼寫建議。</string>
     <string name="show_window">顯示視窗</string>
-    <string name="login_socks5_experimental_warning">SOCKS5 支援目前處於試驗階段。請自行承擔風險。如果您在電子郵件欄位中鍵入位址，將會有 DNS 查找，但 DNS 查找不會透過 SOCKS5 進行隧道傳輸。</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">按鍵綁定</string>
@@ -1111,6 +1133,18 @@
     <string name="notifications_avg_minutes">平均每%1$d分鐘一次</string>
     <string name="notifications_avg_hours">平均每%1$d小時一次</string>
     <string name="last_check_at">在%1$s檢查</string>
+    <string name="system_settings">系統設定</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">編輯類型、徽章、預覽等</string>
+    <!-- iOS shortcut widget -->
+    <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
+    <string name="shortcuts_widget_title">捷徑</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="shortcuts_widget_description">使用 Delta Chat 的“添加到小工具”添加項目</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="remove_from_widget">從小工具中移除</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="add_to_widget">添加到小工具</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用您的相機拍攝和傳送照片和影片，以及掃描QR碼。</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的聯絡人來顯示您可以寫入的電子郵件位址清單。Delta Chat 沒有伺服器，您的聯絡人不會發送到任何地方。</string>
@@ -1119,6 +1153,9 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用您的麥克風錄製和發送音訊和帶聲音的視頻。</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 將讓您從圖庫中選擇要傳送的照片。</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 希望將圖像保存到您的照片庫。</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat 可以使用 Face ID 保護您的本地賬戶、備份創建和第二台裝置設定。</string>
+
+
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">即時傳送</string>
     <string name="pref_background_notifications">使用背景連接</string>
@@ -1131,5 +1168,7 @@
     <string name="perm_enable_bg_reminder_title">點擊此處可在 Delta Chat 處於後台時接收訊息。</string>
     <string name="perm_enable_bg_already_done">您已經允許 Delta Chat 在後台接收訊息。\n\n如果消息仍未在後台到達，請同時檢查您的系統設定。</string>
 
+    <!-- device messages for updates -->
+    <string name="update_1_50_android">新功能\n\n❤️ 🔥 新的表情符號選擇器，包含更多表情符號\n\n🎮 增強的聊天應用程式：在上下文中獲取通知並打開支援應用程式，即直接打開添加的日曆條目\n\n👍獲取有關對您的消訊息的回應的通知\n\n...🛠️ 修復以及更多在%1$s</string>
     <string name="update_switch_profile_placement">ℹ️「切換賬戶」選項已移動：點擊主螢幕右上角的賬戶大頭貼以添加或切換賬戶 💡</string>
 </resources>

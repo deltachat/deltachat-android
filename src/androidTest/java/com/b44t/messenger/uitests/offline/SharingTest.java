@@ -1,5 +1,16 @@
 package com.b44t.messenger.uitests.offline;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.pressBack;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
+import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
+
 import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
@@ -24,17 +35,6 @@ import org.thoughtcrime.securesms.ShareActivity;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 import java.io.File;
-
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.pressBack;
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
-import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
-import static androidx.test.espresso.matcher.ViewMatchers.withHint;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -93,7 +93,7 @@ public class SharingTest {
       }
     }
     Uri uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + Uri.encode(pngImage));
-    DcHelper.sharedFiles.put(pngImage, 1);
+    DcHelper.sharedFiles.put(pngImage, "image/png");
 
     Intent i = new Intent(Intent.ACTION_SEND);
     i.setType("image/png");

@@ -1,11 +1,8 @@
 package org.thoughtcrime.securesms.permissions;
 
 
-import androidx.appcompat.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.ViewUtil;

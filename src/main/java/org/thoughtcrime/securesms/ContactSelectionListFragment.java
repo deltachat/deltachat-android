@@ -26,7 +26,6 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseIntArray;
@@ -90,7 +89,7 @@ public class ContactSelectionListFragment extends    Fragment
 
   private DcContext dcContext;
 
-  private Set<String>               selectedContacts;
+  private Set<Integer>              selectedContacts;
   private OnContactSelectedListener onContactSelectedListener;
   private String                    cursorFilter;
   private RecyclerView              recyclerView;
@@ -149,16 +148,16 @@ public class ContactSelectionListFragment extends    Fragment
 
       @Override
       public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-          case R.id.menu_select_all:
-            handleSelectAll();
-            return true;
-          case R.id.menu_view_profile:
-            handleViewProfile();
-            return true;
-          case R.id.menu_delete_selected:
-            handleDeleteSelected();
-            return true;
+        int itemId = menuItem.getItemId();
+        if (itemId == R.id.menu_select_all) {
+          handleSelectAll();
+          return true;
+        } else if (itemId == R.id.menu_view_profile) {
+          handleViewProfile();
+          return true;
+        } else if (itemId == R.id.menu_delete_selected) {
+          handleDeleteSelected();
+          return true;
         }
         return false;
       }
@@ -213,16 +212,9 @@ public class ContactSelectionListFragment extends    Fragment
           ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
           final SparseIntArray actionModeSelection = adapter.getActionModeSelection().clone();
           new Thread(() -> {
-            boolean failed = false;
             for (int index = 0; index < actionModeSelection.size(); index++) {
               int contactId = actionModeSelection.valueAt(index);
-              boolean currentFailed = !dcContext.deleteContact(contactId);
-              failed = currentFailed || failed;
-            }
-            if (failed) {
-              Util.runOnMain(()-> {
-                Toast.makeText(getActivity(), R.string.cannot_delete_contacts_in_use, Toast.LENGTH_LONG).show();
-              });
+              dcContext.deleteContact(contactId);
             }
           }).start();
           adapter.resetActionModeSelection();
@@ -242,8 +234,8 @@ public class ContactSelectionListFragment extends    Fragment
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 
-  public @NonNull List<String> getSelectedContacts() {
-    List<String> selected = new LinkedList<>();
+  public @NonNull List<Integer> getSelectedContacts() {
+    List<Integer> selected = new LinkedList<>();
     if (selectedContacts != null) {
       selected.addAll(selectedContacts);
     }
@@ -266,7 +258,7 @@ public class ContactSelectionListFragment extends    Fragment
             isMulti(),
             true);
     selectedContacts = adapter.getSelectedContacts();
-    ArrayList<String> preselectedContacts = getActivity().getIntent().getStringArrayListExtra(PRESELECTED_CONTACTS);
+    ArrayList<Integer> preselectedContacts = getActivity().getIntent().getIntegerArrayListExtra(PRESELECTED_CONTACTS);
     if(preselectedContacts!=null) {
       selectedContacts.addAll(preselectedContacts);
     }
@@ -344,10 +336,9 @@ public class ContactSelectionListFragment extends    Fragment
         }
         return;
       }
-      int    specialId = contact.getSpecialId();
-      String addr      = contact.getNumber();
-      if (!isMulti() || !selectedContacts.contains(addr)) {
-        if (specialId == DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT) {
+      int    contactId = contact.getSpecialId();
+      if (!isMulti() || !selectedContacts.contains(contactId)) {
+        if (contactId == DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT) {
           Intent intent = new Intent(getContext(), NewContactActivity.class);
           if (dcContext.mayBeValidAddr(cursorFilter)) {
             intent.putExtra(NewContactActivity.ADDR_EXTRA, cursorFilter);
@@ -371,16 +362,16 @@ public class ContactSelectionListFragment extends    Fragment
             return;
         }
 
-        selectedContacts.add(addr);
+        selectedContacts.add(contactId);
         contact.setChecked(true);
         if (onContactSelectedListener != null) {
-          onContactSelectedListener.onContactSelected(specialId, addr);
+          onContactSelectedListener.onContactSelected(contactId);
         }
       } else {
-        selectedContacts.remove(addr);
+        selectedContacts.remove(contactId);
         contact.setChecked(false);
         if (onContactSelectedListener != null) {
-          onContactSelectedListener.onContactDeselected(specialId, addr);
+          onContactSelectedListener.onContactDeselected(contactId);
         }
       }
     }
@@ -406,8 +397,8 @@ public class ContactSelectionListFragment extends    Fragment
   }
 
   public interface OnContactSelectedListener {
-    void onContactSelected(int specialId, String number);
-    void onContactDeselected(int specialId, String number);
+    void onContactSelected(int contactId);
+    void onContactDeselected(int contactId);
   }
 
   @Override
@@ -421,7 +412,10 @@ public class ContactSelectionListFragment extends    Fragment
   public void onActivityResult(int reqCode, int resultCode, final Intent data) {
     super.onActivityResult(reqCode, resultCode, data);
     if (resultCode == Activity.RESULT_OK && reqCode == CONTACT_ADDR_RESULT_CODE) {
-      selectedContacts.add(data.getStringExtra(NewContactActivity.ADDR_EXTRA));
+      int contactId = data.getIntExtra(NewContactActivity.CONTACT_ID_EXTRA, 0);
+      if (contactId != 0) {
+        selectedContacts.add(contactId);
+      }
       getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);
     }
   }

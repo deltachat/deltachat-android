@@ -43,7 +43,7 @@ import java.util.HashMap;
 
 public class DcHelper {
 
-  private static final String TAG = DcHelper.class.getSimpleName();
+    private static final String TAG = DcHelper.class.getSimpleName();
 
     public static final String CONFIG_ADDRESS = "addr";
     public static final String CONFIG_CONFIGURED_ADDRESS = "configured_addr";
@@ -61,11 +61,7 @@ public class DcHelper {
     public static final String CONFIG_DISPLAY_NAME = "displayname";
     public static final String CONFIG_SELF_STATUS = "selfstatus";
     public static final String CONFIG_SELF_AVATAR = "selfavatar";
-    public static final String CONFIG_E2EE_ENABLED = "e2ee_enabled";
-    public static final String CONFIG_QR_OVERLAY_LOGO = "qr_overlay_logo";
-    public static final String CONFIG_INBOX_WATCH = "inbox_watch";
     public static final String CONFIG_SENTBOX_WATCH = "sentbox_watch";
-    public static final String CONFIG_MVBOX_WATCH = "mvbox_watch";
     public static final String CONFIG_MVBOX_MOVE = "mvbox_move";
     public static final String CONFIG_ONLY_FETCH_MVBOX = "only_fetch_mvbox";
     public static final String CONFIG_BCC_SELF = "bcc_self";
@@ -160,8 +156,6 @@ public class DcHelper {
     dcContext.setStockTranslation(36, context.getString(R.string.contact_not_verified));
     dcContext.setStockTranslation(37, context.getString(R.string.contact_setup_changed));
     dcContext.setStockTranslation(40, context.getString(R.string.chat_archived_label));
-    dcContext.setStockTranslation(42, context.getString(R.string.autocrypt_asm_subject));
-    dcContext.setStockTranslation(43, context.getString(R.string.autocrypt_asm_general_body));
     dcContext.setStockTranslation(60, context.getString(R.string.login_error_cannot_login));
     dcContext.setStockTranslation(66, context.getString(R.string.location));
     dcContext.setStockTranslation(67, context.getString(R.string.sticker));
@@ -241,7 +235,6 @@ public class DcHelper {
     dcContext.setStockTranslation(120, context.getString(R.string.qrshow_join_group_hint).replace("\"", ""));
     dcContext.setStockTranslation(121, context.getString(R.string.connectivity_not_connected));
     dcContext.setStockTranslation(122, context.getString(R.string.aeap_addr_changed));
-    dcContext.setStockTranslation(123, context.getString(R.string.aeap_explanation));
     dcContext.setStockTranslation(162, context.getString(R.string.multidevice_qr_subtitle));
     dcContext.setStockTranslation(163, context.getString(R.string.multidevice_transfer_done_devicemsg));
 
@@ -256,7 +249,7 @@ public class DcHelper {
     dcContext.setStockTranslation(176, context.getString(R.string.reaction_by_you));
     dcContext.setStockTranslation(177, context.getString(R.string.reaction_by_other));
     dcContext.setStockTranslation(190, context.getString(R.string.secure_join_wait));
-    dcContext.setStockTranslation(191, context.getString(R.string.secure_join_wait_timeout));
+    dcContext.setStockTranslation(192, context.getString(R.string.secure_join_takes_longer));
   }
 
   public static File getImexDir() {
@@ -266,7 +259,9 @@ public class DcHelper {
     return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
   }
 
-  public static final HashMap<String, Integer> sharedFiles = new HashMap<>();
+  // When the user shares a file to another app or opens a file in another app, it is added here.
+  // `HashMap<file, mimetype>` where `file` is the name of the file in the blobdir (not the user-visible filename).
+  public static final HashMap<String, String> sharedFiles = new HashMap<>();
 
   public static void openForViewOrShare(Context activity, int msg_id, String cmd) {
     DcContext dcContext = getContext(activity);
@@ -291,12 +286,17 @@ public class DcHelper {
       }
 
       Uri uri;
+      mimeType = checkMime(filename, mimeType);
       if (path.startsWith(dcContext.getBlobdir())) {
         // Build a Uri that will later be passed to AttachmentsContentProvider.openFile().
         // The last part needs to be `filename`, i.e. the original, user-visible name of the file,
         // so that the external apps show the name of the file correctly.
         uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + Uri.encode(file.getName()) + "/" + Uri.encode(filename));
-        sharedFiles.put(file.getName(), 1); // as different Android version handle uris in putExtra differently, we also check them on our own
+
+        // As different Android version handle uris in putExtra differently,
+        // we also check on our own that the file was actually shared.
+        // The check happens in AttachmentsContentProvider.openFile().
+        sharedFiles.put(file.getName(), mimeType);
       } else {
         if (Build.VERSION.SDK_INT >= 24) {
           uri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".fileprovider", file);
@@ -306,7 +306,6 @@ public class DcHelper {
       }
 
       if (cmd.equals(Intent.ACTION_VIEW)) {
-        mimeType = checkMime(filename, mimeType);
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(uri, mimeType);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -357,7 +356,7 @@ public class DcHelper {
     activity.startActivity(intent);
   }
 
-  private static String checkMime(String path, String mimeType) {
+  public static String checkMime(String path, String mimeType) {
     if(mimeType == null || mimeType.equals("application/octet-stream")) {
       path = path.replaceAll(" ", "");
       String extension = MediaUtil.getFileExtensionFromUrl(path);
@@ -436,7 +435,7 @@ public class DcHelper {
         return true;
       }
 
-    } catch (Exception e) {
+    } catch (Exception ignored) {
     }
     return false;
   }

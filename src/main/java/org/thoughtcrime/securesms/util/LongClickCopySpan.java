@@ -3,12 +3,13 @@ package org.thoughtcrime.securesms.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import androidx.annotation.ColorInt;
-import androidx.appcompat.app.AlertDialog;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.ColorInt;
+import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -17,7 +18,6 @@ import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
-import org.thoughtcrime.securesms.util.Util;
 
 public class LongClickCopySpan extends ClickableSpan {
   private static final String PREFIX_MAILTO = "mailto:";
@@ -63,7 +63,7 @@ public class LongClickCopySpan extends ClickableSpan {
           openChat(activity, contact);
         } else {
           new AlertDialog.Builder(activity)
-                  .setMessage(activity.getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
+                  .setMessage(activity.getString(R.string.ask_start_chat_with, contact.getDisplayName()))
                   .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                     openChat(activity, contact);
                   })

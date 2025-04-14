@@ -1,8 +1,7 @@
 package org.thoughtcrime.securesms.components;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
+
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.animation.AlphaAnimation;
@@ -21,7 +20,6 @@ public class HidingLinearLayout extends LinearLayout {
     super(context, attrs);
   }
 
-  @TargetApi(Build.VERSION_CODES.HONEYCOMB)
   public HidingLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
   }
