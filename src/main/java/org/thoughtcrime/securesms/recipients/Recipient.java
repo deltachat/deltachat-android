@@ -29,6 +29,7 @@ import androidx.annotation.Nullable;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.rpc.Contact;
 import com.b44t.messenger.rpc.VcardContact;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -66,6 +67,7 @@ public class Recipient {
 
   private final @Nullable DcChat dcChat;
   private @Nullable DcContact dcContact;
+  private @Nullable Contact contact;
   private final @Nullable VcardContact vContact;
 
   public static @NonNull Recipient fromChat(@NonNull Context context, int dcMsgId) {
@@ -92,24 +94,29 @@ public class Recipient {
   }
 
   public Recipient(@NonNull Context context, @NonNull DcChat dcChat) {
-    this(context, dcChat, null, null, null);
+    this(context, dcChat, null, null, null, null);
   }
 
   public Recipient(@NonNull Context context, @NonNull VcardContact vContact) {
-    this(context, null, null, null, vContact);
+    this(context, null, null, null, null, vContact);
+  }
+
+  public Recipient(@NonNull Context context, @NonNull Contact contact) {
+      this(context, null, contact, null, null, null);
   }
 
   public Recipient(@NonNull Context context, @NonNull DcContact dcContact) {
-    this(context, null, dcContact, null, null);
+    this(context, null, null, dcContact, null, null);
   }
 
   public Recipient(@NonNull Context context, @NonNull DcContact dcContact, @NonNull String profileName) {
-    this(context, null, dcContact, profileName, null);
+      this(context, null, null, dcContact, profileName, null);
   }
 
-  private Recipient(@NonNull Context context, @Nullable DcChat dcChat, @Nullable DcContact dcContact, @Nullable String profileName, @Nullable VcardContact vContact) {
+  private Recipient(@NonNull Context context, @Nullable DcChat dcChat, @Nullable Contact contact, @Nullable DcContact dcContact, @Nullable String profileName, @Nullable VcardContact vContact) {
     this.dcChat                = dcChat;
     this.dcContact             = dcContact;
+    this.contact               = contact;
     this.profileName           = profileName;
     this.vContact              = vContact;
     this.contactUri            = null;
@@ -117,9 +124,16 @@ public class Recipient {
     this.customLabel           = null;
     this.profileAvatar         = null;
 
-    if(dcContact!=null) {
+    if(contact!=null) {
+      this.address = Address.fromContact(contact.id);
+      maybeSetSystemContactPhoto(context, contact.displayName, contact.address);
+      if (contact.id == DcContact.DC_CONTACT_ID_SELF) {
+        setProfileAvatar("SELF");
+      }
+    }
+    else if(dcContact!=null) {
       this.address = Address.fromContact(dcContact.getId());
-      maybeSetSystemContactPhoto(context, dcContact);
+      maybeSetSystemContactPhoto(context, dcContact.getDisplayName(), dcContact.getAddr());
       if (dcContact.getId() == DcContact.DC_CONTACT_ID_SELF) {
         setProfileAvatar("SELF");
       }
@@ -132,7 +146,7 @@ public class Recipient {
         int[] contacts = dcContext.getChatContacts(chatId);
         if( contacts.length>=1 ) {
           this.dcContact = dcContext.getContact(contacts[0]);
-          maybeSetSystemContactPhoto(context, this.dcContact);
+          maybeSetSystemContactPhoto(context, this.dcContact.getDisplayName(), this.dcContact.getAddr());
         }
       }
     }
@@ -144,6 +158,9 @@ public class Recipient {
   public @Nullable String getName() {
     if(dcChat!=null) {
       return dcChat.getName();
+    }
+    else if(contact!=null) {
+      return contact.displayName;
     }
     else if(dcContact!=null) {
       return dcContact.getDisplayName();
@@ -195,6 +212,9 @@ public class Recipient {
     if(dcChat!=null) {
       rgb = dcChat.getColor();
     }
+    else if(contact!=null) {
+      rgb = Color.parseColor(contact.color);
+    }
     else if(dcContact!=null) {
       rgb = dcContact.getColor();
     }
@@ -222,14 +242,17 @@ public class Recipient {
   public synchronized @Nullable ContactPhoto getContactPhoto(Context context) {
     LocalFileContactPhoto contactPhoto = null;
     if (dcChat!=null) {
-      contactPhoto = new GroupRecordContactPhoto(context, address, dcChat);
+      contactPhoto = new GroupRecordContactPhoto(context, address, dcChat.getProfileImage());
+    }
+    else if (contact!=null) {
+       contactPhoto = new ProfileContactPhoto(context, address, contact.profileImage);
     }
     else if (dcContact!=null) {
-       contactPhoto = new ProfileContactPhoto(context, address, dcContact);
+       contactPhoto = new ProfileContactPhoto(context, address, dcContact.getProfileImage());
     }
 
     if (contactPhoto!=null) {
-      String path = contactPhoto.getPath(context);
+      String path = contactPhoto.getPath();
       if (path != null && !path.isEmpty()) {
         return contactPhoto;
       }
@@ -246,8 +269,8 @@ public class Recipient {
     return null;
   }
 
-  private void maybeSetSystemContactPhoto(@NonNull Context context, DcContact contact) {
-    String identifier = Hash.sha256(contact.getDisplayName() + contact.getAddr());
+  private void maybeSetSystemContactPhoto(@NonNull Context context, String displayName, String address) {
+    String identifier = Hash.sha256(displayName + address);
     Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
     if (systemContactPhoto != null) {
       setSystemContactPhoto(systemContactPhoto);

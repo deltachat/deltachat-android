@@ -115,7 +115,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
       super(itemView);
     }
 
-    public abstract void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, boolean multiSelect, boolean enabled);
+    public abstract void bind(@NonNull GlideRequests glideRequests, int accountId, int type, String name, String number, String label, boolean multiSelect, boolean enabled);
     public abstract void unbind(@NonNull GlideRequests glideRequests);
     public abstract void setChecked(boolean checked);
     public abstract void setSelected(boolean enabled);
@@ -173,8 +173,8 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
       return (ContactSelectionListItem) itemView;
     }
 
-    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String addr, String label, boolean multiSelect, boolean enabled) {
-      getView().set(glideRequests, type, contact, name, addr, label, multiSelect, enabled);
+    public void bind(@NonNull GlideRequests glideRequests, int accountId, int type, String name, String addr, String label, boolean multiSelect, boolean enabled) {
+      getView().set(glideRequests, accountId, type, name, addr, label, multiSelect, enabled);
     }
 
     @Override
@@ -208,7 +208,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
     }
 
     @Override
-    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, boolean multiSelect, boolean enabled) {
+    public void bind(@NonNull GlideRequests glideRequests, int accountId, int type, String name, String number, String label, boolean multiSelect, boolean enabled) {
       this.label.setText(name);
     }
 
@@ -291,7 +291,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
       viewHolder.setSelected(selected);
       enabled = !(dcContact.getId() == DcContact.DC_CONTACT_ID_SELF && itemMultiSelect);
     }
-    viewHolder.bind(glideRequests, id, dcContact, name, addr, null, itemMultiSelect, enabled);
+    viewHolder.bind(glideRequests, dcContext.getAccountId(), id, name, addr, null, itemMultiSelect, enabled);
     viewHolder.setChecked(selectedContacts.contains(id));
   }
 

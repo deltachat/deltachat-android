@@ -8,24 +8,12 @@ import org.thoughtcrime.securesms.database.Address;
 
 public class ProfileContactPhoto extends LocalFileContactPhoto {
 
-    public ProfileContactPhoto(Context context, Address address, DcContact dcContact) {
-        super(context, address, null, dcContact);
+    public ProfileContactPhoto(Context context, Address address, String path) {
+        super(context, address, address.getDcContactId(), path);
     }
 
     @Override
     public boolean isProfilePhoto() {
         return true;
     }
-
-    @Override
-    int getId() {
-        return address.getDcContactId();
-    }
-
-    @Override
-    public String getPath(Context context) {
-        String profileImage = dcContact.getProfileImage();
-        return profileImage != null ? profileImage : "";
-    }
-
 }
