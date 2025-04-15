@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.contacts;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -124,6 +125,9 @@ public class ContactSelectionListItem extends LinearLayout {
     }
     if (contact != null && contact.isVerified) {
       nameView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_verified,0);
+    } else if (contact != null && !contact.isPgpContact) {
+      nameView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_outline_email_24,0);
+      nameView.getCompoundDrawables()[2].setColorFilter(nameView.getCurrentTextColor(), PorterDuff.Mode.SRC_IN);
     } else {
       nameView.setCompoundDrawablesWithIntrinsicBounds(0,0, 0,0);
     }

@@ -11,6 +11,7 @@ public class Contact {
     public final String profileImage;
     public final String nameAndAddr;
     public final boolean isBlocked;
+    public final boolean isPgpContact;
     public final boolean e2eeAvail;
 
     /// True if the contact can be added to verified groups.
@@ -54,6 +55,7 @@ public class Contact {
                    String profileImage,
                    String nameAndAddr,
                    boolean isBlocked,
+                   boolean isPgpContact,
                    boolean e2eeAvail,
                    boolean isVerified,
                    boolean isProfileVerified,
@@ -72,6 +74,7 @@ public class Contact {
         this.profileImage = profileImage;
         this.nameAndAddr = nameAndAddr;
         this.isBlocked = isBlocked;
+        this.isPgpContact = isPgpContact;
         this.e2eeAvail = e2eeAvail;
         this.isVerified = isVerified;
         this.isProfileVerified = isProfileVerified;
