@@ -828,7 +828,8 @@
     <string name="disable_imap_idle">Disable IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Do not use IMAP IDLE extension even if the server supports it. Enabling this option will delay message retrieval, enable it only for testing.</string>
     <string name="send_stats_to_devs">Send statistics to Delta Chat\'s developers</string>
-
+    <string name="send_stats_to_devs_explanation">Send statistics about how you are using Delta Chat. They help us improve the security of Delta Chat. You can see exactly what data is being sent.</string>
+    <string name="send_stats_thanks">Thank you for sending statistics about your Delta Chat usage!</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Search Results</string>
