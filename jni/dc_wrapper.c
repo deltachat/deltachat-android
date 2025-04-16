@@ -1237,6 +1237,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcChat_getColor(JNIEnv *env, jobject obj)
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isEncrypted(JNIEnv *env, jobject obj)
+{
+    return dc_chat_is_encrypted(get_dc_chat(env, obj))!=0;
+}
+
+
 JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isUnpromoted(JNIEnv *env, jobject obj)
 {
     return dc_chat_is_unpromoted(get_dc_chat(env, obj))!=0;

@@ -19,6 +19,7 @@ package org.thoughtcrime.securesms;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -161,11 +162,15 @@ public class ConversationListItem extends RelativeLayout
     DcContact contact = recipient.getDcContact();
     avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
 
+    int iconRight = thread.isProtected()? R.drawable.ic_verified : thread.isEmailThread()? R.drawable.ic_outline_email_24 : 0;
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
         0,
-        thread.isProtected()? R.drawable.ic_verified : 0,
+        iconRight,
         0);
+    if (thread.isEmailThread()) {
+        fromView.getCompoundDrawables()[2].setColorFilter(fromView.getCurrentTextColor(), PorterDuff.Mode.SRC_IN);
+    }
   }
 
   public void bind(@NonNull  DcContact     contact,
