@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.search;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,9 @@ import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
+import com.b44t.messenger.rpc.Contact;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.BaseConversationListAdapter;
 import org.thoughtcrime.securesms.ConversationListItem;
@@ -29,6 +33,8 @@ import java.util.Set;
 class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.SearchResultViewHolder>
                         implements StickyHeaderDecoration.StickyHeaderAdapter<SearchListAdapter.HeaderViewHolder>
 {
+  private static final String TAG = SearchListAdapter.class.getSimpleName();
+
   private static final int TYPE_CHATS         = 1;
   private static final int TYPE_CONTACTS      = 2;
   private static final int TYPE_MESSAGES      = 3;
@@ -41,6 +47,7 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
 
   final Context              context;
   final DcContext            dcContext; // reset on account switching is not needed because SearchFragment and SearchListAdapter are recreated in every search start
+  final Rpc rpc;
 
   SearchListAdapter(Context                context,
                     @NonNull GlideRequests glideRequests,
@@ -50,6 +57,7 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
     this.eventListener = eventListener;
     this.context       = context;
     this.dcContext     = DcHelper.getContext(context);
+    this.rpc     = DcHelper.getRpc(context);
   }
 
   @NonNull
@@ -68,7 +76,7 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
       return;
     }
 
-    DcContact contactResult = getContactResult(position);
+    Contact contactResult = getContactResult(position);
 
     if (contactResult != null) {
       holder.bind(contactResult, glideRequests, eventListener, searchResult.getQuery());
@@ -161,9 +169,13 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
   }
 
   @Nullable
-  private DcContact getContactResult(int position) {
+  private Contact getContactResult(int position) {
     if (position >= getFirstContactIndex() && position < getFirstMessageIndex()) {
-      return dcContext.getContact(searchResult.getContacts()[position - getFirstContactIndex()]);
+      try {
+        return rpc.getContact(dcContext.getAccountId(), searchResult.getContacts()[position - getFirstContactIndex()]);
+      } catch (RpcException e) {
+        Log.e(TAG, "error in Rpc.getContact", e);
+      }
     }
     return null;
   }
@@ -187,7 +199,7 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
   public interface EventListener {
     void onConversationClicked(@NonNull DcChatlist.Item chatlistItem);
     void onConversationLongClicked(@NonNull DcChatlist.Item chatlistItem);
-    void onContactClicked(@NonNull DcContact contact);
+    void onContactClicked(@NonNull Contact contact);
     void onMessageClicked(@NonNull DcMsg message);
   }
 
@@ -218,7 +230,7 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
       });
     }
 
-    void bind(@NonNull  DcContact     contactResult,
+    void bind(@NonNull  Contact     contactResult,
               @NonNull  GlideRequests glideRequests,
               @NonNull  EventListener eventListener,
               @Nullable String        query)
