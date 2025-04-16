@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -13,8 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.rpc.Contact;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -23,6 +26,7 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ConversationTitleView extends RelativeLayout {
+  private static final String TAG = ConversationTitleView.class.getSimpleName();
 
   private View            content;
   private ImageView       back;
@@ -63,6 +67,7 @@ public class ConversationTitleView extends RelativeLayout {
     final int chatId = dcChat.getId();
     final Context context = getContext();
     final DcContext dcContext = DcHelper.getContext(context);
+    final Rpc rpc = DcHelper.getRpc(context);
 
     // set title and subtitle texts
     title.setText(dcChat.getName());
@@ -103,13 +108,20 @@ public class ConversationTitleView extends RelativeLayout {
         subtitleStr = context.getString(R.string.device_talk_subtitle);
       }
       else {
-        DcContact dcContact = dcContext.getContact(chatContacts[0]);
-        if (!profileView && dcContact.isBot()) {
-          subtitleStr = context.getString(R.string.bot);
-        } else if (profileView) {
-          subtitleStr = dcContact.getAddr();
+        try {
+          Contact contact = rpc.getContact(dcContext.getAccountId(), chatContacts[0]);
+          if (profileView) {
+            subtitleStr = contact.address;
+          } else if (contact.isBot) {
+            subtitleStr = context.getString(R.string.bot);
+          }
+          if (!contact.isPgpContact) {
+            imgRight = R.drawable.ic_outline_email_24;
+          }
+          isOnline = contact.wasSeenRecently;
+        } catch (RpcException e) {
+          Log.e(TAG, "Error in Rpc.getContact", e);
         }
-        isOnline = dcContact.wasSeenRecently();
       }
     }
 
@@ -126,21 +138,23 @@ public class ConversationTitleView extends RelativeLayout {
     ephemeralIcon.setVisibility(isEphemeral? View.VISIBLE : View.GONE);
   }
 
-  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcContact contact) {
+  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull Contact contact) {
     // This function is only called for contacts without a corresponding 1:1 chat.
     // If there is a 1:1 chat, then the overloaded function
     // setTitle(GlideRequests, DcChat, boolean) is called.
     avatar.setAvatar(glideRequests, new Recipient(getContext(), contact), false);
-    avatar.setSeenRecently(contact.wasSeenRecently());
+    avatar.setSeenRecently(contact.wasSeenRecently);
 
     int imgRight = 0;
-    if (contact.isVerified()) {
+    if (contact.isVerified) {
       imgRight = R.drawable.ic_verified;
+    } else if (!contact.isPgpContact) {
+      imgRight = R.drawable.ic_outline_email_24;
     }
 
-    title.setText(contact.getDisplayName());
+    title.setText(contact.displayName);
     title.setCompoundDrawablesWithIntrinsicBounds(0, 0, imgRight, 0);
-    subtitle.setText(contact.getAddr());
+    subtitle.setText(contact.address);
     subtitle.setVisibility(View.VISIBLE);
   }
 

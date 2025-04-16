@@ -29,6 +29,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.rpc.Contact;
 import com.b44t.messenger.rpc.Rpc;
 import com.b44t.messenger.rpc.RpcException;
 import com.google.android.material.tabs.TabLayout;
@@ -281,7 +282,12 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       titleView.setTitle(GlideApp.with(this), dcChat, true);
     }
     else if (isContactProfile()){
-      titleView.setTitle(GlideApp.with(this), dcContext.getContact(contactId));
+      try {
+        Contact contact = rpc.getContact(dcContext.getAccountId(), contactId);
+        titleView.setTitle(GlideApp.with(this), contact);
+      } catch (RpcException e) {
+        e.printStackTrace();
+      }
     }
   }
 
