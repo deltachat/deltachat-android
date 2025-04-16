@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
@@ -14,12 +13,9 @@ import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.rpc.Contact;
-import com.b44t.messenger.rpc.Rpc;
-import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarView;
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -28,7 +24,6 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ContactSelectionListItem extends LinearLayout {
 
-  private static final String TAG = ContactSelectionListItem.class.getSimpleName();
   private AvatarView      avatar;
   private View            numberContainer;
   private TextView        numberView;
@@ -41,16 +36,12 @@ public class ContactSelectionListItem extends LinearLayout {
   private String        name;
   private String        number;
 
-  private final Rpc rpc;
-
   public ContactSelectionListItem(Context context) {
     super(context);
-    this.rpc = DcHelper.getRpc(context);
   }
 
   public ContactSelectionListItem(Context context, AttributeSet attrs) {
     super(context, attrs);
-    this.rpc = DcHelper.getRpc(context);
   }
 
   @Override
@@ -66,11 +57,11 @@ public class ContactSelectionListItem extends LinearLayout {
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void set(@NonNull GlideRequests glideRequests, int accountId, int contactId, String name, String number, String label, boolean multiSelect, boolean enabled) {
+  public void set(@NonNull GlideRequests glideRequests, int contactId, Contact contact, String name, String number, String label, boolean multiSelect, boolean enabled) {
     this.contactId     = contactId;
+    this.contact       = contact;
     this.name          = name;
     this.number        = number;
-    this.contact = null;
 
     if (contactId==DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT || contactId==DcContact.DC_CONTACT_ID_NEW_GROUP
      || contactId==DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST
@@ -78,11 +69,6 @@ public class ContactSelectionListItem extends LinearLayout {
       this.nameView.setTypeface(null, Typeface.BOLD);
     }
     else {
-      try {
-        contact = rpc.getContact(accountId, contactId);
-      } catch (RpcException e) {
-        Log.e(TAG, "failed to load contact:", e);
-      }
       this.nameView.setTypeface(null, Typeface.NORMAL);
     }
     if (contactId == DcContact.DC_CONTACT_ID_QR_INVITE) {

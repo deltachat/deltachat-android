@@ -15,6 +15,9 @@ import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
+import com.b44t.messenger.rpc.Contact;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
@@ -37,6 +40,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   private final @NonNull Context              context;
   private final @NonNull DcContext            dcContext;
+  private final @NonNull Rpc rpc;
 
   private final @NonNull ArrayList<ItemData>  itemData = new ArrayList<>();
   private int                                 itemDataMemberCount;
@@ -92,6 +96,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     this.glideRequests  = glideRequests;
     this.clickListener  = clickListener;
     this.dcContext      = DcHelper.getContext(context);
+    this.rpc            = DcHelper.getRpc(context);
     this.layoutInflater = LayoutInflater.from(context);
     this.selectedMembers= new HashSet<>();
   }
@@ -144,8 +149,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       ContactSelectionListItem contactItem = (ContactSelectionListItem) holder.itemView;
 
       int contactId = itemData.get(i).contactId;
+      Contact contact = null;
       String label = null;
-      String name;
+      String name = null;
       String addr = null;
 
       if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
@@ -159,13 +165,17 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
         name = context.getString(R.string.qrshow_title);
       }
       else {
-        DcContact dcContact = dcContext.getContact(contactId);
-        name = dcContact.getDisplayName();
-        addr = dcContact.getAddr();
+        try {
+          contact = rpc.getContact(dcContext.getAccountId(), contactId);
+          name = contact.displayName;
+          addr = contact.address;
+        } catch (RpcException e) {
+          e.printStackTrace();
+        }
       }
 
       contactItem.unbind(glideRequests);
-      contactItem.set(glideRequests, dcContext.getAccountId(), contactId, name, addr, label, false, true);
+      contactItem.set(glideRequests, contactId, contact, name, addr, label, false, true);
       contactItem.setSelected(selectedMembers.contains(contactId));
       contactItem.setOnClickListener(view -> clickListener.onMemberClicked(contactId));
       contactItem.setOnLongClickListener(view -> {clickListener.onMemberLongClicked(contactId); return true;});
