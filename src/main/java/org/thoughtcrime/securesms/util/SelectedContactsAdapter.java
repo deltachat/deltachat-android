@@ -5,7 +5,9 @@ import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +19,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
-import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.rpc.Contact;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarImageView;
@@ -33,11 +37,13 @@ import java.util.List;
 import java.util.Set;
 
 public class SelectedContactsAdapter extends BaseAdapter {
+  private static final String TAG = SelectedContactsAdapter.class.getSimpleName();
   @NonNull  private final Context                context;
   @Nullable private ItemClickListener            itemClickListener;
   @NonNull  private final List<Integer>          contacts = new LinkedList<>();
   private final boolean                          isBroadcast;
   @NonNull  private final DcContext              dcContext;
+  @NonNull  private final Rpc rpc;
   @NonNull  private final GlideRequests          glideRequests;
 
   public SelectedContactsAdapter(@NonNull Context context,
@@ -48,6 +54,7 @@ public class SelectedContactsAdapter extends BaseAdapter {
     this.glideRequests = glideRequests;
     this.isBroadcast   = isBroadcast;
     this.dcContext     = DcHelper.getContext(context);
+    this.rpc           = DcHelper.getRpc(context);
   }
 
   public void changeData(Collection<Integer> contactIds) {
@@ -108,26 +115,36 @@ public class SelectedContactsAdapter extends BaseAdapter {
 
     final int contactId = (int)getItem(position);
     final boolean modifiable = contactId != DC_CONTACT_ID_ADD_MEMBER && contactId != DC_CONTACT_ID_SELF;
-    Recipient recipient = null;
-    boolean verified = false;
+    Contact contact = null;
 
-    if(contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
+    if(contactId == DC_CONTACT_ID_ADD_MEMBER) {
       name.setText(context.getString(isBroadcast? R.string.add_recipients : R.string.group_add_members));
       name.setTypeface(null, Typeface.BOLD);
       phone.setVisibility(View.GONE);
     } else {
-      DcContact dcContact = dcContext.getContact(contactId);
-      recipient = new Recipient(context, dcContact);
-      name.setText(dcContact.getDisplayName());
-      name.setTypeface(null, Typeface.NORMAL);
-      phone.setText(dcContact.getAddr());
-      phone.setVisibility(View.VISIBLE);
-      verified = dcContact.isVerified();
+      try {
+        contact = rpc.getContact(dcContext.getAccountId(), contactId);
+        name.setText(contact.displayName);
+        name.setTypeface(null, Typeface.NORMAL);
+        phone.setText(contact.address);
+        phone.setVisibility(View.VISIBLE);
+      } catch (RpcException e) {
+        Log.e(TAG, "unexpected error in Rpc.getContact", e);
+      }
     }
 
     avatar.clear(glideRequests);
-    avatar.setAvatar(glideRequests, recipient, false);
-    name.setCompoundDrawablesWithIntrinsicBounds(0, 0, verified? R.drawable.ic_verified : 0, 0);
+    avatar.setAvatar(glideRequests, contact!=null? new Recipient(context, contact) : null, false);
+
+    if (contact != null && contact.isVerified) {
+      name.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_verified, 0);
+    } else if (contact != null && !contact.isPgpContact) {
+      name.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_outline_email_24,0);
+      name.getCompoundDrawables()[2].setColorFilter(name.getCurrentTextColor(), PorterDuff.Mode.SRC_IN);
+    } else {
+      name.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    }
+
     delete.setVisibility(modifiable ? View.VISIBLE : View.GONE);
     delete.setColorFilter(DynamicTheme.isDarkTheme(context)? Color.WHITE : Color.BLACK);
     delete.setOnClickListener(view -> {
