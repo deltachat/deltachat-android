@@ -29,6 +29,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.rpc.Contact;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcContactsLoader;
@@ -36,7 +39,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.LRUCache;
 
-import java.lang.ref.SoftReference;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
@@ -52,11 +54,11 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
   private static final int VIEW_TYPE_CONTACT = 0;
   private static final int MAX_CACHE_SIZE = 100;
 
-  private final Map<Integer,SoftReference<DcContact>> recordCache =
-          Collections.synchronizedMap(new LRUCache<Integer,SoftReference<DcContact>>(MAX_CACHE_SIZE));
+  private final Map<Integer,Contact> recordCache = Collections.synchronizedMap(new LRUCache<>(MAX_CACHE_SIZE));
 
   private final @NonNull Context              context;
   private final @NonNull DcContext            dcContext;
+  private final @NonNull Rpc rpc;
   private @NonNull int[]                      dcContactList = new int[0];
   private final boolean                       multiSelect;
   private final boolean                       longPressSelect;
@@ -71,22 +73,24 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
     return dcContactList.length;
   }
 
-  private @NonNull DcContact getContact(int position) {
+  private @Nullable Contact getContact(int position) {
     if(position<0 || position>=dcContactList.length) {
-      return new DcContact(0);
+      return null;
     }
 
-    final SoftReference<DcContact> reference = recordCache.get(position);
-    if (reference != null) {
-      final DcContact fromCache = reference.get();
-      if (fromCache != null) {
+    final Contact fromCache = recordCache.get(position);
+    if (fromCache != null) {
         return fromCache;
-      }
     }
 
-    final DcContact fromDb = dcContext.getContact(dcContactList[position]);
-    recordCache.put(position, new SoftReference<>(fromDb));
-    return fromDb;
+    try {
+      Contact fromDb = rpc.getContact(dcContext.getAccountId(), dcContactList[position]);
+      recordCache.put(position, fromDb);
+      return fromDb;
+    } catch (RpcException e) {
+      e.printStackTrace();
+      return null;
+    }
   }
 
     public void resetActionModeSelection() {
@@ -115,7 +119,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
       super(itemView);
     }
 
-    public abstract void bind(@NonNull GlideRequests glideRequests, int accountId, int type, String name, String number, String label, boolean multiSelect, boolean enabled);
+    public abstract void bind(@NonNull GlideRequests glideRequests, int type, Contact contact, String name, String number, String label, boolean multiSelect, boolean enabled);
     public abstract void unbind(@NonNull GlideRequests glideRequests);
     public abstract void setChecked(boolean checked);
     public abstract void setSelected(boolean enabled);
@@ -173,8 +177,8 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
       return (ContactSelectionListItem) itemView;
     }
 
-    public void bind(@NonNull GlideRequests glideRequests, int accountId, int type, String name, String addr, String label, boolean multiSelect, boolean enabled) {
-      getView().set(glideRequests, accountId, type, name, addr, label, multiSelect, enabled);
+    public void bind(@NonNull GlideRequests glideRequests, int type, Contact contact, String name, String addr, String label, boolean multiSelect, boolean enabled) {
+      getView().set(glideRequests, type, contact, name, addr, label, multiSelect, enabled);
     }
 
     @Override
@@ -208,7 +212,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
     }
 
     @Override
-    public void bind(@NonNull GlideRequests glideRequests, int accountId, int type, String name, String number, String label, boolean multiSelect, boolean enabled) {
+    public void bind(@NonNull GlideRequests glideRequests, int type, Contact contact, String name, String number, String label, boolean multiSelect, boolean enabled) {
       this.label.setText(name);
     }
 
@@ -237,6 +241,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
     super();
     this.context       = context;
     this.dcContext     = DcHelper.getContext(context);
+    this.rpc           = DcHelper.getRpc(context);
     this.li            = LayoutInflater.from(context);
     this.glideRequests = glideRequests;
     this.multiSelect   = multiSelect;
@@ -258,8 +263,8 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
   public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
     int id = dcContactList[i];
-    DcContact dcContact = null;
-    String name;
+    Contact contact = null;
+    String name = null;
     String addr = null;
     boolean itemMultiSelect = multiSelect;
 
@@ -273,14 +278,16 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
     } else if (id == DcContact.DC_CONTACT_ID_QR_INVITE) {
       name = context.getString(R.string.menu_new_contact);
     } else {
-      dcContact = getContact(i);
-      name = dcContact.getDisplayName();
-      addr = dcContact.getAddr();
+      contact = getContact(i);
+      if (contact != null) {
+        name = contact.displayName;
+        addr = contact.address;
+      }
     }
 
     viewHolder.unbind(glideRequests);
     boolean enabled = true;
-    if (dcContact == null) {
+    if (contact == null) {
       viewHolder.setSelected(false);
       viewHolder.setEnabled(!isActionModeEnabled());
       if (isActionModeEnabled()) {
@@ -289,9 +296,9 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
     } else {
       boolean selected = actionModeSelection.indexOfValue(id) > -1;
       viewHolder.setSelected(selected);
-      enabled = !(dcContact.getId() == DcContact.DC_CONTACT_ID_SELF && itemMultiSelect);
+      enabled = !(contact.id == DcContact.DC_CONTACT_ID_SELF && itemMultiSelect);
     }
-    viewHolder.bind(glideRequests, dcContext.getAccountId(), id, name, addr, null, itemMultiSelect, enabled);
+    viewHolder.bind(glideRequests, id, contact, name, addr, null, itemMultiSelect, enabled);
     viewHolder.setChecked(selectedContacts.contains(id));
   }
 
