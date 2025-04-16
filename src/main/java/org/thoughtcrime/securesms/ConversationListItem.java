@@ -19,6 +19,7 @@ package org.thoughtcrime.securesms;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -64,11 +65,9 @@ public class ConversationListItem extends RelativeLayout
   private final static Typeface  BOLD_TYPEFACE  = Typeface.create("sans-serif-medium", Typeface.NORMAL);
   private final static Typeface  LIGHT_TYPEFACE = Typeface.create("sans-serif", Typeface.NORMAL);
 
-  private DcLot              dcSummary;
   private Set<Long>          selectedThreads;
   private long               chatId;
   private int                msgId;
-  private GlideRequests      glideRequests;
   private TextView           subjectView;
   private FromTextView       fromView;
   private TextView           dateView;
@@ -122,12 +121,10 @@ public class ConversationListItem extends RelativeLayout
                    boolean batchMode,
                    @Nullable String highlightSubstring)
   {
-    this.dcSummary        = dcSummary;
     this.selectedThreads  = selectedThreads;
     Recipient recipient   = thread.getRecipient();
     this.chatId           = thread.getThreadId();
     this.msgId            = msgId;
-    this.glideRequests    = glideRequests;
 
     int state       = dcSummary.getState();
     int unreadCount = thread.getUnreadCount();
@@ -165,11 +162,15 @@ public class ConversationListItem extends RelativeLayout
     DcContact contact = recipient.getDcContact();
     avatar.setSeenRecently(contact!=null? contact.wasSeenRecently() : false);
 
+    int iconRight = thread.isProtected()? R.drawable.ic_verified : thread.isEmailThread()? R.drawable.ic_outline_email_24 : 0;
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
         0,
-        thread.isProtected()? R.drawable.ic_verified : 0,
+        iconRight,
         0);
+    if (thread.isEmailThread()) {
+        fromView.getCompoundDrawables()[2].setColorFilter(fromView.getCurrentTextColor(), PorterDuff.Mode.SRC_IN);
+    }
   }
 
   public void bind(@NonNull  DcContact     contact,
@@ -178,7 +179,6 @@ public class ConversationListItem extends RelativeLayout
   {
     this.selectedThreads = Collections.emptySet();
     Recipient recipient  = new Recipient(getContext(), contact);
-    this.glideRequests   = glideRequests;
 
     fromView.setText(getHighlightedSpan(contact.getDisplayName(), highlightSubstring));
     fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
@@ -203,7 +203,6 @@ public class ConversationListItem extends RelativeLayout
     DcContact sender = dcContext.getContact(messageResult.getFromId());
     this.selectedThreads = Collections.emptySet();
     Recipient recipient  = new Recipient(getContext(), sender);
-    this.glideRequests   = glideRequests;
 
     fromView.setText(recipient, true);
     fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);

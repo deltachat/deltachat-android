@@ -38,6 +38,7 @@ public class DcChat {
     public native String  getMailinglistAddr();
     public native String  getProfileImage   ();
     public native int     getColor          ();
+    public native boolean isEncrypted       ();
     public native boolean isUnpromoted      ();
     public native boolean isSelfTalk        ();
     public native boolean isDeviceTalk      ();

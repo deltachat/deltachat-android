@@ -422,9 +422,10 @@ public class DcHelper {
     long date = summary.getTimestamp();
     int unreadCount = getContext(context).getFreshMsgCount(chatId);
 
+    boolean isEmailThread = chatId > DcChat.DC_CHAT_ID_LAST_SPECIAL && !chat.isDeviceTalk() && !chat.isEncrypted();
     return new ThreadRecord(body, recipient, date,
       unreadCount, chatId,
-      chat.getVisibility(), chat.isProtected(), chat.isSendingLocations(), chat.isMuted(), chat.isContactRequest(), summary);
+      chat.getVisibility(), chat.isProtected(), isEmailThread, chat.isSendingLocations(), chat.isMuted(), chat.isContactRequest(), summary);
   }
 
   public static boolean isNetworkConnected(Context context) {

@@ -44,6 +44,7 @@ public class ThreadRecord {
   private           final int     unreadCount;
   private           final int     visibility;
   private           final boolean isProtected;
+  private           final boolean isEmailThread;
   private           final boolean isSendingLocations;
   private           final boolean isMuted;
   private           final boolean isContactRequest;
@@ -54,6 +55,7 @@ public class ThreadRecord {
                       long threadId,
                       int visibility,
                       boolean isProtected,
+                      boolean isEmailThread,
                       boolean isSendingLocations,
                       boolean isMuted,
                       boolean isContactRequest,
@@ -66,6 +68,7 @@ public class ThreadRecord {
     this.unreadCount      = unreadCount;
     this.visibility       = visibility;
     this.isProtected      = isProtected;
+    this.isEmailThread    = isEmailThread;
     this.isSendingLocations = isSendingLocations;
     this.isMuted          = isMuted;
     this.isContactRequest = isContactRequest;
@@ -118,6 +121,10 @@ public class ThreadRecord {
 
   public boolean isProtected() {
     return isProtected;
+  }
+
+  public boolean isEmailThread() {
+    return isEmailThread;
   }
 
   public boolean isSendingLocations() {
