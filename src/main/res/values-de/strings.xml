@@ -1004,7 +1004,7 @@
     <string name="secure_join_wait">Garantierte Ende-zu-Ende-Verschlüsselung wird aufgebaut, bitte warten...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Noch konnte keine garantierte Ende-zu-Ende-Verschlüsselung aufgebaut werden, aber Sie können bereits eine Nachricht senden.</string>
-    <string name="secure_join_takes_longer">Das scheint länger zu dauern, vielleicht ist der Kontakt oder Sie offline.\n\nDer Prozess läuft jedoch im Hintergrund weiter, Sie können etwas anderes tun...</string>
+    <string name="secure_join_takes_longer">Der Kontakt muss online sein, um fortzufahren.\n\nDieser Vorgang wird automatisch im Hintergrund fortgesetzt.</string>
     <string name="contact_verified">%1$s eingeführt.</string>
     <string name="contact_not_verified">Kann keine garantierte Ende-zu-Ende-Verschlüsselung mit %1$s herstellen.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
