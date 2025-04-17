@@ -14,6 +14,7 @@ public class DcJsonrpcInstance {
 
     public native void request(String request);
     public native String getNextResponse();
+    public native String blockingCall(String request);
 
     // working with raw c-data
     private long        jsonrpcInstanceCPtr;    // CAVE: the name is referenced in the JNI

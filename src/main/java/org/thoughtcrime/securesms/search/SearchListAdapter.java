@@ -104,7 +104,7 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
   public long getHeaderId(int position) {
     if (getConversationResult(position) != null) {
       return TYPE_CHATS;
-    } else if (getContactResult(position) != null) {
+    } else if (position >= getFirstContactIndex() && position < getFirstMessageIndex()) {
       return TYPE_CONTACTS;
     } else {
       return TYPE_MESSAGES;
@@ -172,6 +172,7 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
   private Contact getContactResult(int position) {
     if (position >= getFirstContactIndex() && position < getFirstMessageIndex()) {
       try {
+        dcContext.getContact(searchResult.getContacts()[position - getFirstContactIndex()]);
         return rpc.getContact(dcContext.getAccountId(), searchResult.getContacts()[position - getFirstContactIndex()]);
       } catch (RpcException e) {
         Log.e(TAG, "error in Rpc.getContact", e);

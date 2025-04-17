@@ -21,6 +21,7 @@ public class Rpc {
     private final static String TAG = Rpc.class.getSimpleName();
 
     private final Map<Integer, SettableFuture<JsonElement>> requestFutures = new ConcurrentHashMap<>();
+    private final Map<Integer, Long> requestTimes = new ConcurrentHashMap<>();
     private final DcJsonrpcInstance dcJsonrpcInstance;
     private int requestId = 0;
     private boolean started = false;
@@ -32,6 +33,7 @@ public class Rpc {
 
     private void processResponse() throws JsonSyntaxException {
         String jsonResponse = dcJsonrpcInstance.getNextResponse();
+        long responseTime = System.nanoTime();
         Response response = gson.fromJson(jsonResponse, Response.class);
 
         if (response.id == 0) { // Got JSON-RPC notification/event, ignore
@@ -39,6 +41,8 @@ public class Rpc {
         }
 
         SettableFuture<JsonElement> future = requestFutures.remove(response.id);
+        long requestTime = requestTimes.remove(response.id);
+        Log.e("HOCURI", "Core response took " + (responseTime - requestTime)/1000 + "micros, since response " + (System.nanoTime() - responseTime)/1000 + "micros has elapsed.");
         if (future == null) { // Got a response with unknown ID, ignore
             return;
         }
@@ -82,6 +86,7 @@ public class Rpc {
         String jsonRequest = gson.toJson(new Request(method, params, id));
         SettableFuture<JsonElement> future = new SettableFuture<>();
         requestFutures.put(id, future);
+        requestTimes.put(id, System.nanoTime());
         dcJsonrpcInstance.request(jsonRequest);
         return future;
     }
@@ -159,7 +164,40 @@ public class Rpc {
     }
 
     public Contact getContact(int accountId, int contactId) throws RpcException {
-        return gson.fromJson(getResult("get_contact", accountId, contactId), Contact.class);
+        long start = System.nanoTime();
+
+        if (!started) throw new RpcException("RPC not started yet.");
+
+        String jsonRequest = gson.toJson(new Request("get_contact", new Object[] {accountId, contactId}, 0));
+        Log.e("HOCURI", "["+contactId+"]toJson, now " + (System.nanoTime() - start)/1000 + "micros");
+        String jsonResponse = dcJsonrpcInstance.blockingCall(jsonRequest);
+        Log.e("HOCURI", "["+contactId+"]blockingCall, now " + (System.nanoTime() - start)/1000 + "micros");
+        Response response = gson.fromJson(jsonResponse, Response.class);
+        Log.e("HOCURI", "["+contactId+"]fromJson#1, now " + (System.nanoTime() - start)/1000 + "micros");
+
+        if (response.error != null) {
+            String message;
+            try {
+                message = response.error.getAsJsonObject().get("message").getAsString();
+            } catch (Exception e) {
+                Log.e(TAG, "Can't get response error message: " + e);
+                message = response.error.toString();
+            }
+            throw new RpcException(message);
+        } else if (response.result != null) {
+            Contact contact = gson.fromJson(response.result, Contact.class);
+            Log.e("HOCURI", "["+contactId+"]fromJson#2, now " + (System.nanoTime() - start)/1000 + "micros");
+            return contact;
+        } else {
+            throw new RpcException("Got JSON-RPC response without result or error: " + jsonResponse);
+        }
+
+        /*        long start = System.nanoTime();
+        JsonElement getContact1 = getResult("get_contact", accountId, contactId);
+        Log.e("HOCURI", "["+contactId+"]getResult took " + (System.nanoTime() - start)/1000 + "micros");
+        Contact getContact = gson.fromJson(getContact1, Contact.class);
+        Log.e("HOCURI", "["+contactId+"]getContact took " + (System.nanoTime() - start)/1000 + "micros");
+        return getContact;*/
     }
 
     private static class Request {
