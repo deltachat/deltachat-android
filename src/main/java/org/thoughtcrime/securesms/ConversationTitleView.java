@@ -82,6 +82,8 @@ public class ConversationTitleView extends RelativeLayout {
     }
     if (dcChat.isProtected()) {
       imgRight = R.drawable.ic_verified;
+    } else  if (!dcChat.isEncrypted()) {
+      imgRight = R.drawable.ic_outline_email_24;
     }
 
     boolean isOnline = false;
