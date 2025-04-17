@@ -102,9 +102,9 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
 
   @Override
   public long getHeaderId(int position) {
-    if (getConversationResult(position) != null) {
+    if (position < getFirstContactIndex()) {
       return TYPE_CHATS;
-    } else if (getContactResult(position) != null) {
+    } else if (position < getFirstMessageIndex()) {
       return TYPE_CONTACTS;
     } else {
       return TYPE_MESSAGES;
