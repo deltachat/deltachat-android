@@ -163,7 +163,7 @@ public class ConversationListItem extends RelativeLayout
     DcContact contact = recipient.getDcContact();
     avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
 
-    int iconRight = thread.isProtected()? R.drawable.ic_verified : thread.isEmailThread()? R.drawable.ic_outline_email_24 : 0;
+    int iconRight = thread.isProtected()? R.drawable.ic_verified : thread.isEmailThread()? R.drawable.ic_outline_email_20 : 0;
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
         0,
@@ -182,7 +182,7 @@ public class ConversationListItem extends RelativeLayout
     Recipient recipient  = new Recipient(getContext(), contact);
 
     fromView.setText(getHighlightedSpan(contact.displayName, highlightSubstring));
-    int iconRight = contact.isVerified? R.drawable.ic_verified : !contact.isPgpContact? R.drawable.ic_outline_email_24 : 0;
+    int iconRight = contact.isVerified? R.drawable.ic_verified : !contact.isPgpContact? R.drawable.ic_outline_email_20 : 0;
     fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, iconRight, 0);
     if (!contact.isPgpContact) {
         fromView.getCompoundDrawables()[2].setColorFilter(fromView.getCurrentTextColor(), PorterDuff.Mode.SRC_IN);

@@ -112,7 +112,7 @@ public class ContactSelectionListItem extends LinearLayout {
     if (contact != null && contact.isVerified) {
       nameView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_verified,0);
     } else if (contact != null && !contact.isPgpContact) {
-      nameView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_outline_email_24,0);
+      nameView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_outline_email_20,0);
       nameView.getCompoundDrawables()[2].setColorFilter(nameView.getCurrentTextColor(), PorterDuff.Mode.SRC_IN);
     } else {
       nameView.setCompoundDrawablesWithIntrinsicBounds(0,0, 0,0);

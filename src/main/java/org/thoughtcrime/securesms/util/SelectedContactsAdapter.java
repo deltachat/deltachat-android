@@ -139,7 +139,7 @@ public class SelectedContactsAdapter extends BaseAdapter {
     if (contact != null && contact.isVerified) {
       name.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_verified, 0);
     } else if (contact != null && !contact.isPgpContact) {
-      name.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_outline_email_24,0);
+      name.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_outline_email_20,0);
       name.getCompoundDrawables()[2].setColorFilter(name.getCurrentTextColor(), PorterDuff.Mode.SRC_IN);
     } else {
       name.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
