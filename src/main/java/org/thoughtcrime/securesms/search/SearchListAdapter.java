@@ -26,8 +26,11 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.search.model.SearchResult;
+import org.thoughtcrime.securesms.util.LRUCache;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 
+import java.util.Collections;
+import java.util.Map;
 import java.util.Set;
 
 class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.SearchResultViewHolder>
@@ -41,6 +44,7 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
 
   private final GlideRequests glideRequests;
   private final EventListener eventListener;
+  private final Map<Integer,Contact> contactsCache = Collections.synchronizedMap(new LRUCache<>(100));
 
   @NonNull
   private SearchResult searchResult = SearchResult.EMPTY;
@@ -149,6 +153,7 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
 
   void updateResults(@NonNull SearchResult result) {
     this.searchResult = result;
+    contactsCache.clear();
     notifyDataSetChanged();
   }
 
@@ -171,8 +176,15 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
   @Nullable
   private Contact getContactResult(int position) {
     if (position >= getFirstContactIndex() && position < getFirstMessageIndex()) {
+      final Contact fromCache = contactsCache.get(position);
+      if (fromCache != null) {
+        return fromCache;
+      }
+
       try {
-        return rpc.getContact(dcContext.getAccountId(), searchResult.getContacts()[position - getFirstContactIndex()]);
+        Contact fromDb = rpc.getContact(dcContext.getAccountId(), searchResult.getContacts()[position - getFirstContactIndex()]);
+        contactsCache.put(position, fromDb);
+        return fromDb;
       } catch (RpcException e) {
         Log.e(TAG, "error in Rpc.getContact", e);
       }
