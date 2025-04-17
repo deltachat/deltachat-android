@@ -1,3 +1,11 @@
+buildscript {
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.5.2'
+        // Add the AppGallery Connect plugin configuration.
+        classpath 'com.huawei.agconnect:agcp:1.9.1.301'
+    }
+}
+
 plugins {
     id 'com.android.application' version '8.5.2'
     id 'com.google.gms.google-services' version '4.4.1'
@@ -10,6 +18,7 @@ repositories {
         url "https://www.jitpack.io"
         name 'JitPack Github wrapper'
     }
+    maven { url 'https://developer.huawei.com/repo/' }
 }
 
 android {
@@ -109,13 +118,19 @@ android {
     productFlavors {
         foss {
             dimension "none"
-            buildConfigField "boolean", "USE_PLAY_SERVICES", "false"
+            buildConfigField "boolean", "USE_PUSH_SERVICES", "false"
         }
         gplay {
             dimension "none"
             applicationId "chat.delta"
             apply plugin: "com.google.gms.google-services"
-            buildConfigField "boolean", "USE_PLAY_SERVICES", "true"
+            buildConfigField "boolean", "USE_PUSH_SERVICES", "true"
+        }
+        huawei {
+            dimension "none"
+            applicationId "chat.delta"
+            apply plugin: "com.huawei.agconnect"
+            buildConfigField "boolean", "USE_PUSH_SERVICES", "true"
         }
     }
 
@@ -202,6 +217,8 @@ dependencies {
         exclude group: 'com.google.firebase', module: 'firebase-analytics'
         exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
     }
+
+    huaweiImplementation 'com.huawei.hms:push:6.13.0.300'
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.assertj:assertj-core:1.7.1'
