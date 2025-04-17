@@ -83,7 +83,7 @@ public class ConversationTitleView extends RelativeLayout {
     if (dcChat.isProtected()) {
       imgRight = R.drawable.ic_verified;
     } else  if (!dcChat.isEncrypted()) {
-      imgRight = R.drawable.ic_outline_email_24;
+      imgRight = R.drawable.ic_outline_email_20;
     }
 
     boolean isOnline = false;
@@ -118,7 +118,7 @@ public class ConversationTitleView extends RelativeLayout {
             subtitleStr = context.getString(R.string.bot);
           }
           if (!contact.isPgpContact) {
-            imgRight = R.drawable.ic_outline_email_24;
+            imgRight = R.drawable.ic_outline_email_20;
           }
           isOnline = contact.wasSeenRecently;
         } catch (RpcException e) {
@@ -151,7 +151,7 @@ public class ConversationTitleView extends RelativeLayout {
     if (contact.isVerified) {
       imgRight = R.drawable.ic_verified;
     } else if (!contact.isPgpContact) {
-      imgRight = R.drawable.ic_outline_email_24;
+      imgRight = R.drawable.ic_outline_email_20;
     }
 
     title.setText(contact.displayName);
