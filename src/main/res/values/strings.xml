@@ -1004,7 +1004,7 @@
     <string name="secure_join_wait">Establishing guaranteed end-to-end encryption, please wait…</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Could not yet establish guaranteed end-to-end encryption, but you may already send a message.</string>
-    <string name="secure_join_takes_longer">That seems to take longer, maybe the contact or you are offline.\n\nHowever, the process continues in background, you can do something else…</string>
+    <string name="secure_join_takes_longer">The contact must be online to proceed.\n\nThis process will continue automatically in background.</string>
     <string name="contact_verified">%1$s introduced.</string>
     <string name="contact_not_verified">Cannot establish guaranteed end-to-end encryption with %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
