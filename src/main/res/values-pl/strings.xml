@@ -1036,7 +1036,7 @@
     <string name="secure_join_wait">Ustanawiam gwarantowane szyfrowanie typu end-to-end, proszę czekać…</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Nie można jeszcze ustanowić gwarantowanego szyfrowania typu end-to-end, ale być może już wysłałeś wiadomość.</string>
-    <string name="secure_join_takes_longer">Wydaje się, że to trwa dłużej, może kontakt lub ty jesteś offline.\n\nJednak proces trwa w tle, możesz zrobić coś innego…</string>
+    <string name="secure_join_takes_longer">Aby kontynuować, kontakt musi być online.\n\nTen proces będzie kontynuowany automatycznie w tle.</string>
     <string name="contact_verified">Kontakt %1$s zweryfikowany.</string>
     <string name="contact_not_verified">Nie można zweryfikować szyfrowania typu end-to-end %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
