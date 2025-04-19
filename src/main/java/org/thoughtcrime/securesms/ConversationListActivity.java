@@ -58,7 +58,7 @@ import com.b44t.messenger.DcMsg;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import org.thoughtcrime.securesms.components.AvatarImageView;
+import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -89,7 +89,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   private ConversationListFragment conversationListFragment;
   public TextView                  title;
-  private AvatarImageView          selfAvatar;
+  private AvatarView               selfAvatar;
   private ImageView                unreadIndicator;
   private SearchFragment           searchFragment;
   private SearchToolbar            searchToolbar;
@@ -300,6 +300,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       boolean multiProfile = DcHelper.getAccounts(this).getAll().length > 1;
       String defText = multiProfile? DcHelper.getContext(this).getName() : getString(R.string.app_name);
       title.setText(DcHelper.getConnectivitySummary(this, defText));
+      // refreshTitle is called by ConversationListFragment when connectivity changes so update connectivity dot here
+      selfAvatar.setConnectivity(DcHelper.getContext(this).getConnectivity());
       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
   }
@@ -352,6 +354,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   @Override
   public void onResume() {
     super.onResume();
+    refreshTitle();
     invalidateOptionsMenu();
     DirectShareUtil.triggerRefreshDirectShare(this);
   }
