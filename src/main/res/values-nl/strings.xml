@@ -1004,7 +1004,7 @@
     <string name="secure_join_wait">Bezig met opzetten van eind-tot-eindversleuteling…</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Er kan nog geen eind-tot-eindversleuteling worden gegarandeerd, maar je kunt wel alvast een bericht sturen.</string>
-    <string name="secure_join_takes_longer">Het lijkt langer te duren dan verwacht - wellicht is een van jullie offline.\n\nHet proces wordt echter op de achtergrond voortgezet, dus je kunt gerust iets anders gaan doen…</string>
+    <string name="secure_join_takes_longer">Het lijkt langer te duren dan verwacht - wellicht is een van jullie offline.\n\nHet proces wordt echter op de achtergrond voortgezet.</string>
     <string name="contact_verified">%1$s is goedgekeurd.</string>
     <string name="contact_not_verified">Er kan geen eind-tot-eindversleuteling met %1$s worden gegarandeerd.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->

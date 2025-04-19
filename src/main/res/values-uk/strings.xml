@@ -1036,7 +1036,7 @@
     <string name="secure_join_wait">Встановлення гарантованого наскрізного шифрування, будь ласка, зачекайте...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Ще не вдалося встановити гарантоване наскрізне шифрування, але ви вже можете надсилати повідомлення.</string>
-    <string name="secure_join_takes_longer">Здається, це займає більше часу, можливо, контакт або ви не в мережі.\n\nОднак процес триває у фоновому режимі, тож ви можете робити щось інше...</string>
+    <string name="secure_join_takes_longer">Щоб продовжити, контакт повинен бути онлайн.\n\nЦей процес продовжиться автоматично у фоновому режимі.</string>
     <string name="contact_verified">%1$s представив (-ла).</string>
     <string name="contact_not_verified">Не вдається встановити гарантоване наскрізне шифрування з %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
