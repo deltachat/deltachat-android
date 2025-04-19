@@ -25,6 +25,7 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
+import com.b44t.messenger.rpc.Contact;
 
 import org.thoughtcrime.securesms.BaseConversationListAdapter;
 import org.thoughtcrime.securesms.BaseConversationListFragment;
@@ -155,7 +156,7 @@ public class SearchFragment extends BaseConversationListFragment
   }
 
   @Override
-  public void onContactClicked(@NonNull DcContact contact) {
+  public void onContactClicked(@NonNull Contact contact) {
     if (actionMode != null) {
       return;
     }
@@ -163,14 +164,14 @@ public class SearchFragment extends BaseConversationListFragment
     ConversationListActivity conversationList = (ConversationListActivity) getActivity();
     if (conversationList != null) {
       DcContext dcContext = DcHelper.getContext(requireContext());
-      int chatId = dcContext.getChatIdByContactId(contact.getId());
+      int chatId = dcContext.getChatIdByContactId(contact.id);
       if(chatId==0) {
         new AlertDialog.Builder(requireContext())
-            .setMessage(getString(R.string.ask_start_chat_with, contact.getDisplayName()))
+            .setMessage(getString(R.string.ask_start_chat_with, contact.displayName))
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-              int chatId1 = dcContext.createChatByContactId(contact.getId());
+              int chatId1 = dcContext.createChatByContactId(contact.id);
               conversationList.onCreateConversation(chatId1);
             }).show();
       }

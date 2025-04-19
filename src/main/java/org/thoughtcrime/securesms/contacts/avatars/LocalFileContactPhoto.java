@@ -20,20 +20,14 @@ import java.security.MessageDigest;
 
 public abstract class LocalFileContactPhoto implements ContactPhoto {
 
-    final Address address;
-    final DcChat dcChat;
-    final DcContact dcContact;
-
+    private final Address address;
     private final int id;
-
     private final String path;
 
-    LocalFileContactPhoto(Context context, Address address, DcChat dcChat, DcContact dcContact) {
+    LocalFileContactPhoto(Context context, Address address, int id, String path) {
         this.address = address;
-        this.dcChat = dcChat;
-        this.dcContact = dcContact;
-        id = getId();
-        path = getPath(context);
+        this.id = id;
+        this.path = path != null ? path : "";
     }
 
     @Override
@@ -66,8 +60,7 @@ public abstract class LocalFileContactPhoto implements ContactPhoto {
         return this.address.hashCode() ^ id;
     }
 
-    abstract int getId();
-
-    abstract public String getPath(Context context);
-
+    public String getPath() {
+        return path;
+    }
 }
