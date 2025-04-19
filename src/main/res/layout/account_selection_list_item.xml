@@ -18,16 +18,13 @@
         android:layout_width="45dp"
         android:layout_height="50dp">
 
-        <org.thoughtcrime.securesms.components.AvatarImageView
+        <org.thoughtcrime.securesms.components.AvatarView
                 android:id="@+id/contact_photo_image"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:foreground="@drawable/contact_photo_background"
-                android:cropToPadding="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@color/blue_600"
                 android:contentDescription="@null" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

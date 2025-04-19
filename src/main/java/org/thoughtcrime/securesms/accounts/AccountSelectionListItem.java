@@ -20,7 +20,7 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.components.AvatarImageView;
+import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.ThemeUtil;
@@ -28,7 +28,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class AccountSelectionListItem extends LinearLayout {
 
-  private AvatarImageView contactPhotoImage;
+  private AvatarView      contactPhotoImage;
   private View            addrContainer;
   private TextView        addrOrTagView;
   private TextView        nameView;
@@ -64,8 +64,11 @@ public class AccountSelectionListItem extends LinearLayout {
     int unreadCount = 0;
     boolean isMuted = dcContext.isMuted();
 
+    Recipient recipient;
     if (accountId == DcContact.DC_CONTACT_ID_ADD_ACCOUNT) {
       name = getContext().getString(R.string.add_account);
+      recipient = null;
+      this.contactPhotoImage.setSeenRecently(false); // hide connectivity dot
     } else {
       self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
       name = dcContext.getConfig(CONFIG_DISPLAY_NAME);
@@ -77,13 +80,8 @@ public class AccountSelectionListItem extends LinearLayout {
         addrOrTag = self.getAddr();
       }
       unreadCount = dcContext.getFreshMsgs().length;
-    }
-
-    Recipient recipient;
-    if (accountId != DcContact.DC_CONTACT_ID_ADD_ACCOUNT) {
       recipient = new Recipient(getContext(), self, name);
-    } else {
-      recipient = null;
+      this.contactPhotoImage.setConnectivity(dcContext.getConnectivity());
     }
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
 

@@ -26,7 +26,7 @@
          app:layout_constraintTop_toTopOf="@+id/top_guideline"
          app:layout_constraintBottom_toBottomOf="parent"
 
-        android:src="@drawable/ic_circle_status"
+        android:src="@drawable/ic_circle_status_online"
         android:contentDescription="@null"
         android:visibility="gone" />
 
