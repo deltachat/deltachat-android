@@ -3,6 +3,8 @@
 ## Unreleased
 
 * show connectivity status dot when profile is connecting or not connected
+* never send Autocrypt-Gossip in broadcast lists.
+* update to core 1.159.1
 
 ## v1.58.0
 2025-04
