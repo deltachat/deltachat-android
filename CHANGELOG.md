@@ -1,12 +1,6 @@
 # Delta Chat Android Changelog
 
-## Unreleased
-
-* show connectivity status dot when profile is connecting or not connected
-* never send Autocrypt-Gossip in broadcast lists.
-* update to core 1.159.1
-
-## v1.58.0
+## v1.58.1
 2025-04
 
 * tapping info messages with contacts open the contact's profile
@@ -21,7 +15,9 @@
 * support importing contact from ProtonMail vCard attachments received in chats
 * send encrypted in the experimental broadcast lists feature
 * wait for QR scan (or invite link click) process to complete before allowing to send messages
-* update to core 1.159.0
+* show connectivity status dot when profile is connecting or not connected
+* never send Autocrypt-Gossip in broadcast lists.
+* update to core 1.159.1
 
 ## v1.56.1
 2025-03
