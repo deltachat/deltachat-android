@@ -64,11 +64,9 @@ public class ConversationListItem extends RelativeLayout
   private final static Typeface  BOLD_TYPEFACE  = Typeface.create("sans-serif-medium", Typeface.NORMAL);
   private final static Typeface  LIGHT_TYPEFACE = Typeface.create("sans-serif", Typeface.NORMAL);
 
-  private DcLot              dcSummary;
   private Set<Long>          selectedThreads;
   private long               chatId;
   private int                msgId;
-  private GlideRequests      glideRequests;
   private TextView           subjectView;
   private FromTextView       fromView;
   private TextView           dateView;
@@ -122,12 +120,10 @@ public class ConversationListItem extends RelativeLayout
                    boolean batchMode,
                    @Nullable String highlightSubstring)
   {
-    this.dcSummary        = dcSummary;
     this.selectedThreads  = selectedThreads;
     Recipient recipient   = thread.getRecipient();
     this.chatId           = thread.getThreadId();
     this.msgId            = msgId;
-    this.glideRequests    = glideRequests;
 
     int state       = dcSummary.getState();
     int unreadCount = thread.getUnreadCount();
@@ -163,7 +159,7 @@ public class ConversationListItem extends RelativeLayout
     this.avatar.setAvatar(glideRequests, recipient, false);
 
     DcContact contact = recipient.getDcContact();
-    avatar.setSeenRecently(contact!=null? contact.wasSeenRecently() : false);
+    avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
 
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
@@ -178,7 +174,6 @@ public class ConversationListItem extends RelativeLayout
   {
     this.selectedThreads = Collections.emptySet();
     Recipient recipient  = new Recipient(getContext(), contact);
-    this.glideRequests   = glideRequests;
 
     fromView.setText(getHighlightedSpan(contact.getDisplayName(), highlightSubstring));
     fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
@@ -203,7 +198,6 @@ public class ConversationListItem extends RelativeLayout
     DcContact sender = dcContext.getContact(messageResult.getFromId());
     this.selectedThreads = Collections.emptySet();
     Recipient recipient  = new Recipient(getContext(), sender);
-    this.glideRequests   = glideRequests;
 
     fromView.setText(recipient, true);
     fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
@@ -302,9 +296,9 @@ public class ConversationListItem extends RelativeLayout
     if (thread!=null && thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_PINNED) {
         bg = R.attr.pinned_list_item_background;
     }
-    TypedArray ta = getContext().obtainStyledAttributes(new int[] { bg });
-    ViewUtil.setBackground(this, ta.getDrawable(0));
-    ta.recycle();
+    try (TypedArray ta = getContext().obtainStyledAttributes(new int[]{bg})) {
+      ViewUtil.setBackground(this, ta.getDrawable(0));
+    }
   }
 
   private Spanned getHighlightedSpan(@Nullable String value,
@@ -322,7 +316,10 @@ public class ConversationListItem extends RelativeLayout
 
     String       normalizedValue  = value.toLowerCase(Util.getLocale());
     String       normalizedTest   = highlight.toLowerCase(Util.getLocale());
-    List<String> testTokens       = Stream.of(normalizedTest.split(" ")).filter(s -> s.trim().length() > 0).toList();
+    List<String> testTokens;
+    try (Stream<String> stream = Stream.of(normalizedTest.split(" "))) {
+      testTokens = stream.filter(s -> !s.trim().isEmpty()).toList();
+    }
 
     Spannable spanned          = new SpannableString(value);
     int       searchStartIndex = 0;
