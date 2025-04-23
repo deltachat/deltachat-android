@@ -47,7 +47,6 @@ public class ProfileSettingsFragment extends Fragment
 
   private static final int REQUEST_CODE_PICK_CONTACT = 2;
 
-  private RecyclerView           list;
   private StickyHeaderDecoration listDecoration;
   private ProfileSettingsAdapter adapter;
   private ActionMode             actionMode;
@@ -66,17 +65,17 @@ public class ProfileSettingsFragment extends Fragment
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
 
-    chatId = getArguments().getInt(CHAT_ID_EXTRA, -1);
+    chatId = getArguments() != null ? getArguments().getInt(CHAT_ID_EXTRA, -1) : -1;
     contactId = getArguments().getInt(CONTACT_ID_EXTRA, -1);
-    dcContext = DcHelper.getContext(getContext());
+    dcContext = DcHelper.getContext(requireContext());
   }
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.profile_settings_fragment, container, false);
-    adapter = new ProfileSettingsAdapter(getContext(), GlideApp.with(this), this);
+    adapter = new ProfileSettingsAdapter(requireContext(), GlideApp.with(this), this);
 
-    list  = ViewUtil.findById(view, R.id.recycler_view);
+    RecyclerView list = ViewUtil.findById(view, R.id.recycler_view);
     list.setAdapter(adapter);
     list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     listDecoration = new StickyHeaderDecoration(adapter, false, true);
@@ -84,7 +83,7 @@ public class ProfileSettingsFragment extends Fragment
 
     update();
 
-    DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
+    DcEventCenter eventCenter = DcHelper.getEventCenter(requireContext());
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
@@ -94,12 +93,12 @@ public class ProfileSettingsFragment extends Fragment
 
   @Override
   public void onDestroyView() {
-    DcHelper.getEventCenter(getContext()).removeObservers(this);
+    DcHelper.getEventCenter(requireContext()).removeObservers(this);
     super.onDestroyView();
   }
 
   @Override
-  public void onConfigurationChanged(Configuration newConfig) {
+  public void onConfigurationChanged(@NonNull Configuration newConfig) {
     super.onConfigurationChanged(newConfig);
     listDecoration.onConfigurationChanged(newConfig);
   }
@@ -148,7 +147,7 @@ public class ProfileSettingsFragment extends Fragment
 
   @Override
   public void onStatusLongClicked() {
-      Context context = getContext();
+      Context context = requireContext();
       new AlertDialog.Builder(context)
         .setTitle(R.string.pref_default_status_label)
         .setItems(new CharSequence[]{
@@ -169,7 +168,7 @@ public class ProfileSettingsFragment extends Fragment
         DcChat dcChat = dcContext.getChat(chatId);
         if (dcChat.canSend()) {
           adapter.toggleMemberSelection(contactId);
-          actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
+          actionMode = ((AppCompatActivity) requireActivity()).startSupportActionMode(actionModeCallback);
         }
       } else {
         onMemberClicked(contactId);
@@ -225,8 +224,8 @@ public class ProfileSettingsFragment extends Fragment
   public void onSharedChatClicked(int chatId) {
     Intent intent = new Intent(getContext(), ConversationActivity.class);
     intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-    getContext().startActivity(intent);
-    getActivity().finish();
+    requireContext().startActivity(intent);
+    requireActivity().finish();
   }
 
   private void onVerifiedByClicked() {
@@ -245,8 +244,8 @@ public class ProfileSettingsFragment extends Fragment
     if (chatId != 0) {
       Intent intent = new Intent(getActivity(), ConversationActivity.class);
       intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-      getActivity().startActivity(intent);
-      getActivity().finish();
+      requireActivity().startActivity(intent);
+      requireActivity().finish();
     }
   }
 
@@ -266,7 +265,7 @@ public class ProfileSettingsFragment extends Fragment
       menu.findItem(R.id.menu_select_all).setVisible(false);
       mode.setTitle("1");
 
-      Window window = getActivity().getWindow();
+      Window window = requireActivity().getWindow();
       originalStatusBarColor = window.getStatusBarColor();
       window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
       return true;
@@ -289,7 +288,7 @@ public class ProfileSettingsFragment extends Fragment
           readableToDelList.append(dcContext.getContact(toDelId).getDisplayName());
         }
         DcChat dcChat = dcContext.getChat(chatId);
-        AlertDialog dialog = new AlertDialog.Builder(getContext())
+        AlertDialog dialog = new AlertDialog.Builder(requireContext())
           .setPositiveButton(R.string.remove_desktop, (d, which) -> {
             for (Integer toDelId : toDelIds) {
               dcContext.removeContactFromChat(chatId, toDelId);
@@ -309,7 +308,7 @@ public class ProfileSettingsFragment extends Fragment
     public void onDestroyActionMode(ActionMode mode) {
       actionMode = null;
       adapter.clearSelection();
-      getActivity().getWindow().setStatusBarColor(originalStatusBarColor);
+      requireActivity().getWindow().setStatusBarColor(originalStatusBarColor);
     }
   }
 
