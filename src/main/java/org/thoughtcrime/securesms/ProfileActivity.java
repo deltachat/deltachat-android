@@ -96,23 +96,25 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     setSupportActionBar(this.toolbar);
     ActionBar supportActionBar = getSupportActionBar();
-    if (isGlobalProfile()) {
-      supportActionBar.setDisplayHomeAsUpEnabled(true);
-      supportActionBar.setHomeActionContentDescription(getString(R.string.back));
-    } else {
-      supportActionBar.setDisplayHomeAsUpEnabled(false);
-      supportActionBar.setCustomView(R.layout.conversation_title_view);
-      supportActionBar.setDisplayShowCustomEnabled(true);
-      supportActionBar.setDisplayShowTitleEnabled(false);
-      Toolbar parent = (Toolbar) supportActionBar.getCustomView().getParent();
-      parent.setPadding(0,0,0,0);
-      parent.setContentInsetsAbsolute(0,0);
+    if (supportActionBar != null) {
+      if (isGlobalProfile()) {
+        supportActionBar.setDisplayHomeAsUpEnabled(true);
+        supportActionBar.setHomeActionContentDescription(getString(R.string.back));
+      } else {
+        supportActionBar.setDisplayHomeAsUpEnabled(false);
+        supportActionBar.setCustomView(R.layout.conversation_title_view);
+        supportActionBar.setDisplayShowCustomEnabled(true);
+        supportActionBar.setDisplayShowTitleEnabled(false);
+        Toolbar parent = (Toolbar) supportActionBar.getCustomView().getParent();
+        parent.setPadding(0,0,0,0);
+        parent.setContentInsetsAbsolute(0,0);
 
-      titleView = (ConversationTitleView) supportActionBar.getCustomView();
-      titleView.setOnBackClickedListener(view -> onBackPressed());
-      titleView.setOnClickListener(view -> onEnlargeAvatar());
-      if (isContactProfile() && !isSelfProfile() && !chatIsDeviceTalk) {
-        titleView.registerForContextMenu(this);
+        titleView = (ConversationTitleView) supportActionBar.getCustomView();
+        titleView.setOnBackClickedListener(view -> onBackPressed());
+        titleView.setOnClickListener(view -> onEnlargeAvatar());
+        if (isContactProfile() && !isSelfProfile() && !chatIsDeviceTalk) {
+          titleView.registerForContextMenu(this);
+        }
       }
     }
 
@@ -304,7 +306,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
 
     @Override
-    public void setPrimaryItem(ViewGroup container, int position, Object object) {
+    public void setPrimaryItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
       super.setPrimaryItem(container, position, object);
       if (currentFragment != null && currentFragment != object) {
         ActionMode action = null;
@@ -320,6 +322,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       currentFragment = object;
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
       int tabId = tabs.get(position);
@@ -417,7 +420,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   // =========================================================================
 
   @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
+  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     super.onOptionsItemSelected(item);
 
     int itemId = item.getItemId();
@@ -447,7 +450,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public boolean onContextItemSelected(MenuItem item) {
+  public boolean onContextItemSelected(@NonNull MenuItem item) {
     super.onContextItemSelected(item);
     if (item.getItemId() == R.id.copy_addr_to_clipboard) {
       onCopyAddrToClipboard();
@@ -460,7 +463,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       setMuted(0);
     }
     else {
-      MuteDialog.show(this, duration -> setMuted(duration));
+      MuteDialog.show(this, this::setMuted);
     }
   }
 

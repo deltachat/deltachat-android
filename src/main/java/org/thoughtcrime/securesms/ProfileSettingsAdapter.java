@@ -41,7 +41,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   private final @NonNull ArrayList<ItemData>  itemData = new ArrayList<>();
   private int                                 itemDataMemberCount;
   private DcChatlist                          itemDataSharedChats;
-  private DcContact                           itemDataContact;
   private String                              itemDataStatusText;
   private boolean                             isMailingList;
   private boolean                             isBroadcast;
@@ -115,8 +114,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     }
   }
 
+  @NonNull
   @Override
-  public ProfileSettingsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  public ProfileSettingsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     if (viewType == ItemData.CATEGORY_MEMBERS) {
       final ContactSelectionListItem item = (ContactSelectionListItem)layoutInflater.inflate(R.layout.contact_selection_list_item, parent, false);
       item.setNoHeaderPadding();
@@ -138,7 +138,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   }
 
   @Override
-  public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+  public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
     ViewHolder holder = (ViewHolder) viewHolder;
     if (holder.itemView instanceof ContactSelectionListItem) {
       ContactSelectionListItem contactItem = (ContactSelectionListItem) holder.itemView;
@@ -279,23 +279,24 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     itemData.clear();
     itemDataMemberCount = 0;
     itemDataSharedChats = null;
-    itemDataContact = null;
     itemDataStatusText = "";
     isMailingList = false;
     isBroadcast = false;
 
     if (memberList!=null) {
       itemDataMemberCount = memberList.length;
-      if (dcChat.isBroadcast()) {
-        isBroadcast = true;
-      }
+      if (dcChat != null) {
+        if (dcChat.isBroadcast()) {
+          isBroadcast = true;
+        }
 
-      if (dcChat.isMailingList()) {
-        isMailingList = true;
-      } else if (dcChat.canSend()) {
-        itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
-        if (!isBroadcast) {
-          itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
+        if (dcChat.isMailingList()) {
+          isMailingList = true;
+        } else if (dcChat.canSend()) {
+          itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
+          if (!isBroadcast) {
+            itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
+          }
         }
       }
 
@@ -306,7 +307,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     else if (sharedChats!=null && dcContact!=null) {
       boolean chatIsDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
 
-      itemDataContact = dcContact;
       if (!chatIsDeviceTalk) {
         int verifierId = dcContact.getVerifierId();
         if (verifierId != 0) {
@@ -319,7 +319,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_VERIFIED, verifiedInfo, 0, R.drawable.ic_verified));
         }
 
-        long lastSeenTimestamp = (itemDataContact!=null? itemDataContact.getLastSeen() : 0);
+        long lastSeenTimestamp = dcContact.getLastSeen();
         String lastSeenTxt;
         if (lastSeenTimestamp == 0) {
           lastSeenTxt = context.getString(R.string.last_seen_unknown);
