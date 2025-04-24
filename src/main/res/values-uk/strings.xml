@@ -690,7 +690,7 @@
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Приймати недійсні сертифікати</string>
     <string name="switch_account">Перемкнути профіль</string>
-    <string name="add_account">Додати обліковий запис</string>
+    <string name="add_account">Додати профіль</string>
     <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
     <string name="profile_tag">Опис профілю</string>
     <string name="profile_tag_hint">наприклад \"Робота\", \"Сім\'я\"</string>
@@ -701,7 +701,7 @@
     <string name="delete_account_ask">Ви впевнені, що хочете видалити дані вашого профілю?</string>
     <string name="delete_account_explain_with_name">Дані профілю \"%s\" на цьому пристрої будуть видалені, включаючи налаштування наскрізного шифрування, контакти, чати, повідомлення та медіа. Ця дія не може бути скасована.</string>
     <string name="unconfigured_account">Неналаштований профіль</string>
-    <string name="unconfigured_account_hint">Відкрити обліковий запис для налаштування.</string>
+    <string name="unconfigured_account_hint">Відкрити профіль для налаштування.</string>
     <string name="try_connect_now">Спробувати підключитися негайно</string>
     <string name="sync_all">Синхронізувати все</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
@@ -893,7 +893,7 @@
 
     <!-- autocrypt -->
     <string name="autocrypt_send_asm_title">Надіслати повідомлення з налаштуваннями Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_before">Повідомлення з налаштуваннямм Autocrypt слугує безпечній передачі параметрів наскрізного шифрування між власними додатками для роботи з електронною поштою, що підтримують протокол Autocrypt.\n\nЦі параметри шифруються з використанням спеціального інсталяційного коду, що показаний тут і має бути введений на іншому пристрої.</string>
+    <string name="autocrypt_send_asm_explain_before">Повідомлення про налаштування Autocrypt безпечно передає ваші налаштування наскрізного шифрування іншим програмам, що підтримують Autocrypt.\n\nЯкщо ви використовуєте Delta Chat і на іншому пристрої, скористайтеся \"Налаштування / Додати другий пристрій\" замість цього.</string>
     <string name="autocrypt_send_asm_button">Надіслати повідомлення з налаштуваннями Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Налаштування було Вам надіслано. Перейдіть на інший пристрій і відкрийте повідомлення про налаштування. У Вас має з\'явитися запит на введення коду налаштування. Введіть наступні цифри:</string>
     <string name="autocrypt_prefer_e2ee">Віддавати перевагу наскрізному шифруванню</string>
