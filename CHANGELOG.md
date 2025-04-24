@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v1.58.2
+2025-04
 
 * fix draft writing area disappearing for some chats
 * update to core 1.159.2
