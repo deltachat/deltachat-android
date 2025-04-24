@@ -861,7 +861,7 @@
 
     <!-- autocrypt -->
     <string name="autocrypt_send_asm_title">Autocrypt Ayarlama İletisi Gönder</string>
-    <string name="autocrypt_send_asm_explain_before">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır.\n\nAyarlama, burada görüntülenen ve diğer aygıtta yazılması gereken bir ayarlama kodu tarafından şifrelenecek.</string>
+    <string name="autocrypt_send_asm_explain_before">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır.\n\nDelta Chat\'i diğer aygıtta da kullanmak istiyorsanız, bunun yerine “Ayarlar / İkinci Aygıt Ekle”yi kullanın.</string>
     <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi Gönder</string>
     <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:</string>
     <string name="autocrypt_prefer_e2ee">Uçtan Uca Şifrelemeyi Yeğle</string>
@@ -1004,7 +1004,7 @@
     <string name="secure_join_wait">Güvencelenen uçtan uca şifreleme kuruluyor, lütfen bekleyin…</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Henüz güvencelenen uçtan uca şifreleme kurulamadı; ama zaten bir ileti gönderebilirsiniz.</string>
-    <string name="secure_join_takes_longer">Bu daha uzun sürüyor gibi görünüyor, belki kişi ya da siz çevrimdışısınız.\n\nAncak işlem arka planda sürüyor, başka bir şey yapabilirsiniz…</string>
+    <string name="secure_join_takes_longer">Sürdürmek için kişi çevrimiçi olmalıdır.\n\nBu işlem, arka planda otomatik olarak sürecek.</string>
     <string name="contact_verified">%1$s tanıtıldı.</string>
     <string name="contact_not_verified">%1$s ile güvencelenen uçtan uca şifreleme kurulamıyor.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->

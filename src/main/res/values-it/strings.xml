@@ -52,7 +52,7 @@
     <string name="mute">Silenzia</string>
     <string name="muted">Disattivato</string>
     <string name="ephemeral_messages">Messaggi a Scomparsa</string>
-    <string name="ephemeral_messages_hint">Si applica a tutti i membri di questa chat se utilizzano Delta Chat; possono comunque copiare, salvare e inoltrare messaggi o utilizzare altri client e-mail.</string>
+    <string name="ephemeral_messages_hint">Si applica a tutti i membri di questa chat; possono comunque copiare, salvare e inoltrare i messaggi.</string>
     <string name="save">Salva</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
@@ -478,7 +478,7 @@
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Invia Messaggio a...</string>
     <string name="enable_realtime">Apps in Tempo Reale</string>
-    <string name="enable_realtime_explain">Abilitando connessioni in tempo reale per app condivise nelle chat. Se abilitato, i partner della chat potrebbero essere in grado di scoprire il tuo indirizzo IP quando avvii un\'app.</string>
+    <string name="enable_realtime_explain">Abilita connessioni in tempo reale per app condivise nelle chat. Se abilitato, i partner della chat potrebbero essere in grado di scoprire il tuo indirizzo IP quando avvii un\'app.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Mostra le posizioni nell\'intervallo di tempo</string>
@@ -660,7 +660,7 @@
     <string name="proxy_share_link">Condividi Collegamento</string>
 
     <string name="login_info_oauth2_title">Continuare con la configurazione semplificata?</string>
-    <string name="login_info_oauth2_text">L\'indirizzo e-mail inserito supporta una configurazione semplificata (OAuth 2.0).\n\nNel passaggio successivo, per piacere consenti a Delta Chat di fungere da app Chat tramite e-mail.\n\nDelta Chat non raccoglie dati utente, tutto rimane sul tuo dispositivo.</string>
+    <string name="login_info_oauth2_text">L\'indirizzo e-mail inserito supporta una configurazione semplificata (OAuth 2.0).\n\nNel passaggio successivo, per favore consenti a Delta Chat di inviare e ricevere messaggi.\n\nDelta Chat non raccoglie dati utente, tutto rimane sul tuo dispositivo.</string>
     <string name="login_certificate_checks">Controlli Certificato</string>
     <string name="login_error_mail">Per piacere Inserisci un indirizzo e-mail valido</string>
     <string name="login_error_server">Per piacere inserisci un server / indirizzo IP valido</string>
@@ -670,7 +670,7 @@
     <string name="import_backup_ask">Backup trovato in \"%1$s\".\n\nVuoi importarlo e usare tutti i dati e le impostazioni salvate?</string>
     <string name="import_backup_no_backup_found">Nessun backup trovato\n\nCopia il backup in \"%1$s\" e riprova ancora. Altimenti premi \"Inizia a messaggiare\" per procedere con le impostazioni normali.</string>
     <!-- %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">Impossibile accedere come \"%1$s\". Per piacere verifica che l\'indirizzo e-mail e la password siano corretti.</string>
+    <string name="login_error_cannot_login">Impossibile accedere come \"%1$s\". Per favore verifica che l\'indirizzo e-mail e la password siano corretti.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accetta certificati non validi</string>
     <string name="switch_account">Cambia Profilo</string>
@@ -756,7 +756,7 @@
     <string name="pref_use_system_emoji">Usa Emoji di Sistema</string>
     <string name="pref_use_system_emoji_explain">Disattiva il supporto delle emoji integrato in Delta Chat</string>
     <string name="pref_show_system_contacts">Leggi Rubrica di Sistema</string>
-    <string name="pref_show_system_contacts_explain">Offri la possibilità di creare chat con i contatti della rubrica. Alcuni provider necessitano prima della configurazione della crittografia end-to-end.</string>
+    <string name="pref_show_system_contacts_explain">Offri la possibilità di creare chat con i contatti della rubrica.</string>
     <!-- deprecated -->
     <string name="pref_app_access">Accesso App</string>
     <string name="pref_chats">Chats</string>
@@ -857,9 +857,9 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Vuoi eliminare %1$d messaggi ora e tutti i nuovi messaggi recuperati \"%2$s\" d\'ora in poi?\n\n• Questo include tutti i media\n\n• I messaggi verranno eliminati anche se non sono stati letti\n\n• I \"Messaggi salvati\" vengono preservati dalla cancellazione locale.</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Vuoi eliminare %1$d messaggi ora e tutti i messaggi appena recuperati \"%2$s\" d\'ora in poi?\n\n⚠️ Ciò include e-mails, contenuti multimediali e \"Messaggi salvati\" in tutte le cartelle del server\n\n⚠️ Non utilizzare questa funzione se vuoi mantenere i dati sul server\n\n⚠️ Non utilizzare questa funzione se stai utilizzando altri client e-mail oltre a Delta Chat</string>
+    <string name="autodel_server_ask">Vuoi eliminare %1$d messaggi ora e tutti i messaggi non appena recuperati \"%2$s\" d\'ora in poi?\n\n⚠️ Ciò include e-mails, contenuti multimediali e \"Messaggi salvati\" in tutte le cartelle del server\n\n⚠️ Non utilizzare questa funzione se vuoi mantenere i dati sul server o se stai utilizzando anche altri client e-mail</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Questo include e-mail, media e \"Messaggi salvati\" in tutte le cartelle del server. Non utilizzare questa funzione se desideri mantenere i dati sul server o se stai utilizzando altri client e-mail oltre a Delta Chat.</string>
+    <string name="autodel_server_enabled_hint">Questo include e-mail, media e \"Messaggi salvati\" in tutte le cartelle del server. Non utilizzare questa funzione se desideri mantenere i dati sul server o se stai utilizzando anche altri client e-mail</string>
     <string name="autodel_server_warn_multi_device_title">Attiva l\'eliminazione immediata</string>
     <string name="autodel_server_warn_multi_device">Se abiliti l\'eliminazione immediata non potrai utilizzare questo profilo su più dispositivi.</string>
     <string name="autodel_confirm">Ho capito, elimina tutti questi messaggi</string>
@@ -877,7 +877,7 @@
 
     <!-- autocrypt -->
     <string name="autocrypt_send_asm_title">Invia Messaggio Configurazione Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_before">Un Messaggio Configurazione Autocrypt condivide in modo sicuro la configurazione end-to-end con altre app compatibili con Autocrypt.\n\nLa configurazione verrà crittografata tramite un codice di configurazione visualizzato qui e dovrà essere digitato sull\'altro dispositivo.</string>
+    <string name="autocrypt_send_asm_explain_before">Un Messaggio Configurazione Autocrypt condivide in modo sicuro la configurazione end-to-end con altre app compatibili con Autocrypt.\n\nSe usi Delta Chat anche su altri dispositivi usa invece \"Impostazioni / Aggiungi Secondo Dispositivo\".</string>
     <string name="autocrypt_send_asm_button">Invia Messaggio Configurazione Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">La tua configurazione ti è stata inviata. Passa all\'altro dispositivo e apri il messaggio. Dovrebbe venirti richiesto un codice. Inserisci il seguente codice:</string>
     <string name="autocrypt_prefer_e2ee">Preferisci Cifratura End-To-End</string>
@@ -957,7 +957,7 @@
     <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
     <string name="chat_protection_broken">%1$s ha inviato un messaggio da un altro dispositivo.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">D\'ora in poi i messaggi saranno garantiti crittografati end-to-end.  Tocca per saperne di più.</string>
-    <string name="chat_protection_enabled_explanation">Ora è garantito che tutti i messaggi in questa chat siano cifrati end-to-end.\n\nLa crittografia end-to-end mantiene i messaggi privati ​​tra te e i tuoi partner di chat. Nemmeno il tuo provider email può leggerli.</string>
+    <string name="chat_protection_enabled_explanation">Ora è garantito che tutti i messaggi in questa chat siano cifrati end-to-end.\n\nLa crittografia end-to-end mantiene privati i messaggi ​​tra te e i tuoi partner di chat. Nemmeno il server, il fornitore o il trasmettitore di e-mail può leggerli.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s ha inviato un messaggio da un altro dispositivo. Tocca per saperne di più.</string>
     <string name="chat_protection_broken_explanation">La crittografia end-to-end non può più essere garantita, probabilmente perché %1$s ha reinstallato Delta Chat o inviato un messaggio da un altro dispositivo.\n\nPuoi incontrarlo di persona e scansionare nuovamente il suo Codice QR per ristabilire la crittografia end-to-end garantita.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s richiede la crittografia end-to-end che non è ancora configurata per questa chat. Tocca per saperne di più.</string>
@@ -983,7 +983,7 @@
     <string name="qrscan_failed">Impossibile decodificare il codice QR</string>
     <string name="qrscan_ask_join_group">Vuoi entrare nel gruppo \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">L\'impronta digitale scansionata non corrisponde all\'ultima visualizzata per %1$s.</string>
-    <string name="qrscan_no_addr_found">Questo codice QR contiene un\'impronta digitale, ma non un indirizzo email.\n\nPer una verifica a due fattori efficace, per piacere prima stabilisci una connessione cifrata col destinatario.</string>
+    <string name="qrscan_no_addr_found">Questo codice QR contiene un\'impronta ma non un indirizzo email.\n\nPer una verifica efficace, per favore prima stabilisci una connessione cifrata col destinatario.</string>
     <string name="qrscan_contains_text">Testo codice QR scansionato:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL del codice QR scansionato:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Impronta digitale</string>
@@ -1020,7 +1020,7 @@
     <string name="secure_join_wait">Creazione della crittografia end-to-end garantita, per piacere attendere...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Non è ancora possibile stabilire la crittografia end-to-end garantita, ma potresti già inviare un messaggio.</string>
-    <string name="secure_join_takes_longer">Sembra metterci molto, forse tu o il contatto non siete in linea.\n\nComunque, il processo continua in sottofondo, puoi fare qualcos\'altro...</string>
+    <string name="secure_join_takes_longer">Il contatto deve essere in linea per proseguire.\n\nQuesto processo continuerà automaticamente in sottofondo.</string>
     <string name="contact_verified">%1$s verificato.</string>
     <string name="contact_not_verified">Impossibile stabilire una crittografia end-to-end garantita con %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
@@ -1180,7 +1180,7 @@
     <string name="add_to_widget">Aggiungi al Widget</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilizza la tua fotocamera per scattare e inviare foto e video e per scansionare i codici QR.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat usa i tuoi contatti per mostrare una lista di indirizzi e-mail a cui puoi scrivere. Delta Chat non ha un server, i tuoi contatti non vengono inviati da nessuna parte.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat usa i tuoi contatti per mostrare una lista di indirizzi e-mail a cui puoi scrivere. Delta Chat non ha alcun server, i tuoi contatti non vengono inviati da nessuna parte.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat necessita dell\'autorizzazione per condividere la tua posizione per il periodo di tempo in cui hai abilitato la condivisione della posizione.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat ha bisogno dell\'autorizzazione di localizzazione per condividere la vostra posizione per il periodo di tempo in cui avete abilitato la condivisione della posizione.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat utilizza il tuo microfono per registrare e inviare messaggi vocali e video con audio.</string>
@@ -1196,7 +1196,7 @@
     <string name="pref_reliable_service">Forza Connessione Secondo Piano</string>
     <string name="pref_reliable_service_explain">Provoca una notifica permanente</string>
 
-    <string name="pref_background_notifications_rationale">Per mantenere la connessione al tuo server e-mail e ricevere messaggi in secondo piano, ignora le ottimizzazioni della batteria nel passaggio successivo.\n\nDelta Chat utilizza poche risorse e fa attenzione a non consumare la tua batteria.</string>
+    <string name="pref_background_notifications_rationale">Per mantenere la connessione in sottofondo e ricevere messaggi, ignora le ottimizzazioni della batteria nel prossimo passaggio.\n\nDelta Chat utilizza poche risorse e fa in modo di non prosciugarti la batteria.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Tocca qui per ricevere messaggi mentre Delta Chat è in secondo piano.</string>
     <string name="perm_enable_bg_already_done">Hai già autorizzato Delta Chat a ricevere messaggi in secondo piano.\n\nSe i messaggi non arrivano in secondo piano, per piacere controlla anche le impostazioni di sistema.</string>
