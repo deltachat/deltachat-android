@@ -1040,7 +1040,8 @@
     <string name="perm_required_title">Permission required</string>
     <string name="perm_continue">Continue</string>
     <string name="perm_explain_access_to_camera_denied">To take photos or capture videos, go to the app settings, select \"Permissions\", and enable \"Camera\".</string>
-    <string name="perm_explain_access_to_mic_denied">To send audio messages, go to the app settings, select \"Permissions\", and enable \"Microphone\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
+    <string name="perm_explain_access_to_mic_denied">To send audio messages, go to system or app settings, select "Permissions" or "Privacy &amp; Security", and enable \"Microphone\".</string>
     <string name="perm_explain_access_to_storage_denied">To receive or send files, go to the app settings, select \"Permissions\", and enable \"Storage\".</string>
     <string name="perm_explain_access_to_location_denied">To attach a location, go to the app settings, select \"Permissions\", and enable \"Location\".</string>
     <string name="perm_explain_access_to_notifications_denied">To receive notifications, go to \"System Settings / Apps / Delta Chat\" and enable \"Notifications\".</string>
