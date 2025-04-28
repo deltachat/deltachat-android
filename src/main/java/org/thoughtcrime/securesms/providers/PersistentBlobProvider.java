@@ -27,7 +27,7 @@ import java.util.concurrent.Executors;
 
 public class PersistentBlobProvider {
 
-  private static final String TAG = PersistentBlobProvider.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + PersistentBlobProvider.class.getSimpleName();
 
   private static final String     URI_STRING            = "content://org.thoughtcrime.securesms/capture-new";
   public  static final Uri        CONTENT_URI           = Uri.parse(URI_STRING);

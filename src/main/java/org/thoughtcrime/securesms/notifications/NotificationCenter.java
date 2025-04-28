@@ -56,7 +56,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class NotificationCenter {
-    private static final String TAG = NotificationCenter.class.getSimpleName();
+    private static final String TAG = "DeltaChatUI." + NotificationCenter.class.getSimpleName();
     @NonNull private final ApplicationContext context;
     private volatile ChatData visibleChat = null;
     private volatile Pair<Integer, Integer> visibleWebxdc = null;

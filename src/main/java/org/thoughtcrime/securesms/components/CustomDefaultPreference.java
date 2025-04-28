@@ -26,7 +26,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 
 public class CustomDefaultPreference extends DialogPreference {
 
-  private static final String TAG = CustomDefaultPreference.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + CustomDefaultPreference.class.getSimpleName();
 
   private final int    inputType;
   private final String customPreference;

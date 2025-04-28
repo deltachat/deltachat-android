@@ -48,7 +48,7 @@ import java.security.SecureRandom;
 @SuppressLint("StaticFieldLeak")
 public class CreateProfileActivity extends BaseActionBarActivity {
 
-  private static final String TAG = CreateProfileActivity.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + CreateProfileActivity.class.getSimpleName();
 
   public static final String FROM_WELCOME   = "from_welcome";
 

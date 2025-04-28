@@ -18,7 +18,7 @@ import static android.content.Context.BIND_AUTO_CREATE;
 
 public class DcLocationManager implements Observer {
 
-    private static final String TAG = DcLocationManager.class.getSimpleName();
+    private static final String TAG = "DeltaChatUI." + DcLocationManager.class.getSimpleName();
     private LocationBackgroundService.LocationBackgroundServiceBinder serviceBinder;
     private final Context context;
     private DcLocation dcLocation = DcLocation.getInstance();

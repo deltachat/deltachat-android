@@ -21,7 +21,7 @@ import org.thoughtcrime.securesms.service.FetchForegroundService;
 import org.thoughtcrime.securesms.util.Util;
 
 public class FcmReceiveService extends FirebaseMessagingService {
-  private static final String TAG = FcmReceiveService.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + FcmReceiveService.class.getSimpleName();
   private static final Object INIT_LOCK = new Object();
   private static boolean initialized;
   private static volatile boolean triedRegistering;

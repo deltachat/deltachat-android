@@ -142,7 +142,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
                InputPanel.Listener,
                InputPanel.MediaListener
 {
-  private static final String TAG = ConversationActivity.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + ConversationActivity.class.getSimpleName();
 
   public static final String ACCOUNT_ID_EXTRA        = "account_id";
   public static final String CHAT_ID_EXTRA           = "chat_id";

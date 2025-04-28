@@ -32,7 +32,7 @@ import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 
 public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
-  private static final String TAG = WebxdcStoreActivity.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + WebxdcStoreActivity.class.getSimpleName();
 
   private DcContext dcContext;
   private Rpc rpc;

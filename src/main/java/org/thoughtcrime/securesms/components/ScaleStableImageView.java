@@ -34,7 +34,7 @@ public class ScaleStableImageView
     extends AppCompatImageView
     implements KeyboardAwareLinearLayout.OnKeyboardShownListener, KeyboardAwareLinearLayout.OnKeyboardHiddenListener {
 
-    private static final String TAG = ScaleStableImageView.class.getSimpleName();
+    private static final String TAG = "DeltaChatUI." + ScaleStableImageView.class.getSimpleName();
 
     private Drawable defaultDrawable;
     private Drawable currentDrawable;

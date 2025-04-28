@@ -43,7 +43,7 @@ import java.util.Set;
  */
 
 public class ContactAccessor {
-  private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + ContactSelectionListFragment.class.getSimpleName();
 
   private static final int CONTACT_CURSOR_NAME = 0;
 

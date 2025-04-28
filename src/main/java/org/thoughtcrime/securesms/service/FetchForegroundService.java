@@ -19,7 +19,7 @@ import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.Util;
 
 public final class FetchForegroundService extends Service {
-  private static final String TAG = FcmReceiveService.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + FcmReceiveService.class.getSimpleName();
   private static final Object SERVICE_LOCK = new Object();
   private static final Object STOP_NOTIFIER = new Object();
   private static volatile boolean fetchingSynchronously = false;

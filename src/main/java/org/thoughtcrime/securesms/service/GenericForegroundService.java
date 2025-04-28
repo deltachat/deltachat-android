@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class GenericForegroundService extends Service {
 
-  private static final String TAG = GenericForegroundService.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + GenericForegroundService.class.getSimpleName();
 
   private final IBinder binder = new LocalBinder();
 

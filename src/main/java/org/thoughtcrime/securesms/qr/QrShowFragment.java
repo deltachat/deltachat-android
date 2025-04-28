@@ -32,7 +32,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDelegate {
 
-    private final static String TAG = QrShowFragment.class.getSimpleName();
+    private final static String TAG = "DeltaChatUI." + QrShowFragment.class.getSimpleName();
     public final static int WHITE = 0xFFFFFFFF;
     private final static int BLACK = 0xFF000000;
     private final static int WIDTH = 400;

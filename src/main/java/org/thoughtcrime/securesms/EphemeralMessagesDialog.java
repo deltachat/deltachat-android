@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 public class EphemeralMessagesDialog {
 
-    private final static String TAG = EphemeralMessagesDialog.class.getSimpleName();
+    private final static String TAG = "DeltaChatUI." + EphemeralMessagesDialog.class.getSimpleName();
 
     public static void show(final Context context, int currentSelectedTime, final @NonNull EphemeralMessagesInterface listener) {
         CharSequence[] choices = context.getResources().getStringArray(R.array.ephemeral_message_durations);

@@ -40,7 +40,7 @@ import java.lang.ref.WeakReference;
 
 public class AudioSlidePlayer {
 
-  private static final String TAG = AudioSlidePlayer.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + AudioSlidePlayer.class.getSimpleName();
 
   private static @NonNull Optional<AudioSlidePlayer> playing = Optional.absent();
 

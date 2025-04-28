@@ -80,7 +80,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
 {
-  private static final String TAG = ConversationListActivity.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + ConversationListActivity.class.getSimpleName();
   private static final String OPENPGP4FPR = "openpgp4fpr";
   private static final String NDK_ARCH_WARNED = "ndk_arch_warned";
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";

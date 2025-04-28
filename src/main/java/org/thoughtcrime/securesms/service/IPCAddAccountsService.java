@@ -36,7 +36,7 @@ public class IPCAddAccountsService extends Service {
   public final static int ADD_ACCOUNT = 1;
   public final static String ACCOUNT_DATA = "ACCOUNT_DATA";
 
-  private static final String TAG = IPCAddAccountsService.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + IPCAddAccountsService.class.getSimpleName();
 
   private static class IncomingHandler extends Handler {
     final WeakReference<Context> contextRef;

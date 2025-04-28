@@ -6,7 +6,7 @@ import android.util.Log;
 import java.util.Observable;
 
 public class DcLocation extends Observable {
-    private static final String TAG = DcLocation.class.getSimpleName();
+    private static final String TAG = "DeltaChatUI." + DcLocation.class.getSimpleName();
     private Location lastLocation;
     private static DcLocation instance;
     private static final int TIMEOUT = 1000 * 15;

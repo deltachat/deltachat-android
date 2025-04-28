@@ -51,7 +51,7 @@ import com.b44t.messenger.util.concurrent.SettableFuture;
 import org.thoughtcrime.securesms.util.views.Stub;
 
 public class ViewUtil {
-  private final static String TAG = ViewUtil.class.getSimpleName();
+  private final static String TAG = "DeltaChatUI." + ViewUtil.class.getSimpleName();
 
   @SuppressWarnings("deprecation")
   public static void setBackground(final @NonNull View v, final @Nullable Drawable drawable) {

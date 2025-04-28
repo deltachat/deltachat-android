@@ -8,7 +8,7 @@ import android.util.Log;
 import org.thoughtcrime.securesms.R;
 
 public class InChatSounds {
-    private static final String TAG = InChatSounds.class.getSimpleName();
+    private static final String TAG = "DeltaChatUI." + InChatSounds.class.getSimpleName();
     private static volatile InChatSounds instance;
 
     private SoundPool soundPool = null;

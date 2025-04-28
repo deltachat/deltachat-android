@@ -8,7 +8,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 
 public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarActivity {
-  private static final String TAG = PassphraseRequiredActionBarActivity.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + PassphraseRequiredActionBarActivity.class.getSimpleName();
 
   @Override
   protected final void onCreate(Bundle savedInstanceState) {

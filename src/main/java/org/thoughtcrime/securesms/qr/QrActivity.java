@@ -43,7 +43,7 @@ import java.io.InputStream;
 
 public class QrActivity extends BaseActionBarActivity implements View.OnClickListener {
 
-    private final static String TAG = QrActivity.class.getSimpleName();
+    private final static String TAG = "DeltaChatUI." + QrActivity.class.getSimpleName();
     private final static int REQUEST_CODE_IMAGE = 46243;
     private final static int TAB_SHOW = 0;
     private final static int TAB_SCAN = 1;

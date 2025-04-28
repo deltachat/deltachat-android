@@ -40,7 +40,7 @@ import static android.app.Activity.RESULT_OK;
 public final class ImageEditorFragment extends Fragment implements ImageEditorHud.EventListener,
                                                                    VerticalSlideColorPicker.OnColorChangeListener{
 
-  private static final String TAG = ImageEditorFragment.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + ImageEditorFragment.class.getSimpleName();
 
   private static final String KEY_IMAGE_URI = "image_uri";
 

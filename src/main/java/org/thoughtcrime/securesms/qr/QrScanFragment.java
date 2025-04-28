@@ -21,7 +21,7 @@ import org.thoughtcrime.securesms.R;
 
 public class QrScanFragment extends Fragment {
 
-    private static final String TAG = QrScanFragment.class.getSimpleName();
+    private static final String TAG = "DeltaChatUI." + QrScanFragment.class.getSimpleName();
 
     private CompoundBarcodeView barcodeScannerView;
     private MyCaptureManager capture;

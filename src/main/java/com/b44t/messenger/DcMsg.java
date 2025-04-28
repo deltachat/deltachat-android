@@ -61,7 +61,7 @@ public class DcMsg {
     public final static int DC_VIDEOCHATTYPE_UNKNOWN = 0;
     public final static int DC_VIDEOCHATTYPE_BASICWEBRTC = 1;
 
-    private static final String TAG = DcMsg.class.getSimpleName();
+    private static final String TAG = "DeltaChatUI." + DcMsg.class.getSimpleName();
 
     public DcMsg(DcContext context, int viewtype) {
         msgCPtr = context.createMsgCPtr(viewtype);

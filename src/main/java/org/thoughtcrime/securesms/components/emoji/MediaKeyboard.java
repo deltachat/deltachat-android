@@ -17,7 +17,7 @@ import org.thoughtcrime.securesms.components.InputAwareLayout.InputView;
 
 public class MediaKeyboard extends FrameLayout implements InputView, Consumer<EmojiViewItem> {
 
-  private static final String TAG = MediaKeyboard.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + MediaKeyboard.class.getSimpleName();
 
   @Nullable private MediaKeyboardListener   keyboardListener;
   private EmojiPickerView emojiPicker;

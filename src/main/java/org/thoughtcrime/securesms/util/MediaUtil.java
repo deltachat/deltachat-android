@@ -39,7 +39,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MediaUtil {
 
-  private static final String TAG = MediaUtil.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + MediaUtil.class.getSimpleName();
 
   public static final String IMAGE_WEBP        = "image/webp";
   public static final String IMAGE_JPEG        = "image/jpeg";

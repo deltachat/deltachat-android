@@ -30,7 +30,7 @@ import java.util.List;
 
 public class VideoRecoder {
 
-  private static final String TAG = VideoRecoder.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + VideoRecoder.class.getSimpleName();
 
   private final static String MIME_TYPE = "video/avc";
   private final boolean cancelCurrentVideoConversion = false;

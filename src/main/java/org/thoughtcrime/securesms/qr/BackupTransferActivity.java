@@ -27,7 +27,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class BackupTransferActivity extends BaseActionBarActivity {
 
-    private final static String TAG = BackupTransferActivity.class.getSimpleName();
+    private final static String TAG = "DeltaChatUI." + BackupTransferActivity.class.getSimpleName();
 
     public enum TransferMode {
         INVALID(0),

@@ -49,7 +49,7 @@ import java.io.OutputStream;
 public class WelcomeActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
     public static final String BACKUP_QR_EXTRA = "backup_qr_extra";
     public static final int PICK_BACKUP = 20574;
-    private final static String TAG = WelcomeActivity.class.getSimpleName();
+    private final static String TAG = "DeltaChatUI." + WelcomeActivity.class.getSimpleName();
     public static final String TMP_BACKUP_FILE = "tmp-backup-file";
     public static final String DC_REQUEST_ACCOUNT_DATA = "chat.delta.DC_REQUEST_ACCOUNT_DATA";
 

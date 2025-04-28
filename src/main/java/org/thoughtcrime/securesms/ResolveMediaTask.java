@@ -20,7 +20,7 @@ import de.cketti.safecontentresolver.SafeContentResolver;
 
 public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
 
-    private static final String TAG = ResolveMediaTask.class.getSimpleName();
+    private static final String TAG = "DeltaChatUI." + ResolveMediaTask.class.getSimpleName();
 
     interface OnMediaResolvedListener {
             void onMediaResolved(Uri uri);

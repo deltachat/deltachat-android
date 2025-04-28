@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public abstract class StickyHeaderGridAdapter extends RecyclerView.Adapter<StickyHeaderGridAdapter.ViewHolder> {
-   public static final String TAG = "StickyHeaderGridAdapter";
+   public static final String TAG = "DeltaChatUI.StickyHeaderGridAdapter";
 
    public static final int TYPE_HEADER = 0;
    public static final int TYPE_ITEM = 1;

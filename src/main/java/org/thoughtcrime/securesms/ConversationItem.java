@@ -86,7 +86,7 @@ import java.util.Set;
 
 public class ConversationItem extends BaseConversationItem
 {
-  private static final String TAG = ConversationItem.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + ConversationItem.class.getSimpleName();
 
   private static final Rect SWIPE_RECT = new Rect();
 

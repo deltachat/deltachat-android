@@ -27,7 +27,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 
 @SuppressLint("BatteryLife")
 public class DozeReminder {
-  private static final String TAG = DozeReminder.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + DozeReminder.class.getSimpleName();
 
   public static boolean isEligible(Context context) {
     if(context==null) {

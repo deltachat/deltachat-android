@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 
 public class Rpc {
-    private final static String TAG = Rpc.class.getSimpleName();
+    private final static String TAG = "DeltaChatUI." + Rpc.class.getSimpleName();
 
     private final Map<Integer, SettableFuture<JsonElement>> requestFutures = new ConcurrentHashMap<>();
     private final DcJsonrpcInstance dcJsonrpcInstance;

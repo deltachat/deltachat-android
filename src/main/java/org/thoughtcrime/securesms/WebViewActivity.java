@@ -28,7 +28,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
                                implements SearchView.OnQueryTextListener,
                                           WebView.FindListener
 {
-  private static final String TAG = WebViewActivity.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + WebViewActivity.class.getSimpleName();
 
   protected WebView webView;
 

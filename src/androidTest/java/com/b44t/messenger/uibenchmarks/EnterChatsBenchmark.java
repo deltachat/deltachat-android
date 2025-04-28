@@ -42,7 +42,7 @@ public class EnterChatsBenchmark {
   // PLEASE BACKUP YOUR ACCOUNT BEFORE RUNNING THIS!
   // ==============================================================================================
 
-  private final static String TAG = EnterChatsBenchmark.class.getSimpleName();
+  private final static String TAG = "DeltaChatUI." + EnterChatsBenchmark.class.getSimpleName();
 
   @Rule
   public ActivityScenarioRule<ConversationListActivity> activityRule = TestUtils.getOfflineActivityRule(USE_EXISTING_CHATS);

@@ -29,7 +29,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class BackupProviderFragment extends Fragment implements DcEventCenter.DcEventDelegate {
 
-    private final static String TAG = BackupProviderFragment.class.getSimpleName();
+    private final static String TAG = "DeltaChatUI." + BackupProviderFragment.class.getSimpleName();
 
     private DcContext        dcContext;
     private DcBackupProvider dcBackupProvider;

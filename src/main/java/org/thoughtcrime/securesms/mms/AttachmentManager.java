@@ -81,7 +81,7 @@ import java.util.concurrent.ExecutionException;
 
 public class AttachmentManager {
 
-  private final static String TAG = AttachmentManager.class.getSimpleName();
+  private final static String TAG = "DeltaChatUI." + AttachmentManager.class.getSimpleName();
 
   private final @NonNull Context                    context;
   private final @NonNull Stub<View>                 attachmentViewStub;

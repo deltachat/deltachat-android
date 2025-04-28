@@ -10,7 +10,7 @@ import android.util.Log;
 
 public class NetworkStateReceiver extends BroadcastReceiver {
 
-    private static final String TAG = NetworkStateReceiver.class.getSimpleName();
+    private static final String TAG = "DeltaChatUI." + NetworkStateReceiver.class.getSimpleName();
     private int debugConnectedCount;
 
     @Override

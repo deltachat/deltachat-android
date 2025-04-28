@@ -43,7 +43,7 @@ import java.util.Set;
  * has been opened and what its height would be.
  */
 public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
-  private static final String TAG = KeyboardAwareLinearLayout.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + KeyboardAwareLinearLayout.class.getSimpleName();
 
   private static final long KEYBOARD_DEBOUNCE = 150;
 

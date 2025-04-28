@@ -21,7 +21,7 @@ import android.util.Log;
 
 class JobConsumer extends Thread {
 
-  private static final String TAG = JobConsumer.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + JobConsumer.class.getSimpleName();
 
   enum JobResult {
     SUCCESS,

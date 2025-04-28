@@ -170,7 +170,7 @@ public class ComposeText extends AppCompatEditText {
 
   private static class CommitContentListener implements InputConnectionCompat.OnCommitContentListener {
 
-    private static final String TAG = CommitContentListener.class.getName();
+    private static final String TAG = "DeltaChatUI." + CommitContentListener.class.getName();
 
     private final InputPanel.MediaListener mediaListener;
 

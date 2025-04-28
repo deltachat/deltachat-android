@@ -43,7 +43,7 @@ import java.util.HashMap;
 
 public class DcHelper {
 
-    private static final String TAG = DcHelper.class.getSimpleName();
+    private static final String TAG = "DeltaChatUI." + DcHelper.class.getSimpleName();
 
     public static final String CONFIG_ADDRESS = "addr";
     public static final String CONFIG_CONFIGURED_ADDRESS = "configured_addr";

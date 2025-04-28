@@ -47,7 +47,7 @@ import org.thoughtcrime.securesms.util.MailtoUtil;
  */
 public class NewConversationActivity extends ContactSelectionActivity {
 
-  private static final String TAG = NewConversationActivity.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + NewConversationActivity.class.getSimpleName();
 
   @Override
   public void onCreate(Bundle bundle, boolean ready) {

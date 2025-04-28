@@ -21,7 +21,7 @@ import java.util.concurrent.ExecutorService;
 
 public class AudioRecorder {
 
-  private static final String TAG = AudioRecorder.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + AudioRecorder.class.getSimpleName();
 
   private static final ExecutorService executor = ThreadUtil.newDynamicSingleThreadedExecutor();
 

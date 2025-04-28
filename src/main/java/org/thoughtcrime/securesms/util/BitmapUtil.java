@@ -29,7 +29,7 @@ import javax.microedition.khronos.egl.EGLDisplay;
 
 public class BitmapUtil {
 
-  private static final String TAG = BitmapUtil.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + BitmapUtil.class.getSimpleName();
 
   @WorkerThread
   public static Bitmap createScaledBitmap(Bitmap bitmap, int maxWidth, int maxHeight) {

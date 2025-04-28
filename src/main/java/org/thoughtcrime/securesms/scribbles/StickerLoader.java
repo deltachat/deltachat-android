@@ -27,7 +27,7 @@ import java.io.IOException;
 
 class StickerLoader extends AsyncLoader<String[]> {
 
-  private static final String TAG = StickerLoader.class.getName();
+  private static final String TAG = "DeltaChatUI." + StickerLoader.class.getName();
 
   private final String assetDirectory;
 

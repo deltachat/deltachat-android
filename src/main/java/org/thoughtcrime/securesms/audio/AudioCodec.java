@@ -18,7 +18,7 @@ import java.nio.ByteBuffer;
 
 public class AudioCodec {
 
-  private static final String TAG = AudioCodec.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + AudioCodec.class.getSimpleName();
 
   private static final int    SAMPLE_RATE       = 44100;
   private static final int    SAMPLE_RATE_INDEX = 4;

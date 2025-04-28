@@ -26,7 +26,7 @@ import java.io.File;
 
 public class AccountManager {
 
-    private static final String TAG = AccountManager.class.getSimpleName();
+    private static final String TAG = "DeltaChatUI." + AccountManager.class.getSimpleName();
     private static final String LAST_ACCOUNT_ID = "last_account_id";
     private static AccountManager self;
 

@@ -30,7 +30,7 @@ import java.io.IOException;
 
 public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener {
 
-  private static final String TAG = AudioView.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + AudioView.class.getSimpleName();
 
   private final @NonNull AnimatingToggle controlToggle;
   private final @NonNull ImageView       playButton;

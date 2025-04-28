@@ -43,7 +43,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class AccountSelectionListFragment extends DialogFragment implements DcEventCenter.DcEventDelegate
 {
-  private static final String TAG = AccountSelectionListFragment.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + AccountSelectionListFragment.class.getSimpleName();
   private RecyclerView recyclerView;
   private AccountSelectionListAdapter adapter;
 

@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class ReactionsDetailsFragment extends DialogFragment implements DcEventCenter.DcEventDelegate {
-  private static final String TAG = ReactionsDetailsFragment.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + ReactionsDetailsFragment.class.getSimpleName();
 
   private RecyclerView recyclerView;
   private ReactionRecipientsAdapter adapter;

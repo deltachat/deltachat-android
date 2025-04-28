@@ -48,7 +48,7 @@ public class InputPanel extends ConstraintLayout
              MediaKeyboard.MediaKeyboardListener
 {
 
-  private static final String TAG = InputPanel.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + InputPanel.class.getSimpleName();
 
   private static final int FADE_TIME = 150;
 

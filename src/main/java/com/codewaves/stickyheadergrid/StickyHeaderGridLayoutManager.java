@@ -26,7 +26,7 @@ import java.util.Arrays;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class StickyHeaderGridLayoutManager extends RecyclerView.LayoutManager implements RecyclerView.SmoothScroller.ScrollVectorProvider {
-   public static final String TAG = "StickyLayoutManager";
+   public static final String TAG = "DeltaChatUI.StickyLayoutManager";
 
    private static final int DEFAULT_ROW_COUNT = 16;
 

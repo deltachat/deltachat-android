@@ -61,7 +61,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate  {
-  private static final String TAG = WebxdcActivity.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + WebxdcActivity.class.getSimpleName();
   private static final String EXTRA_ACCOUNT_ID = "accountId";
   private static final String EXTRA_APP_MSG_ID = "appMessageId";
   private static final String EXTRA_HIDE_ACTION_BAR = "hideActionBar";

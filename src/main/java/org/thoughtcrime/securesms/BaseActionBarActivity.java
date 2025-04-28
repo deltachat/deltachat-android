@@ -21,7 +21,7 @@ import java.lang.reflect.Field;
 
 public abstract class BaseActionBarActivity extends AppCompatActivity {
 
-  private static final String TAG = BaseActionBarActivity.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + BaseActionBarActivity.class.getSimpleName();
   protected DynamicTheme dynamicTheme = new DynamicTheme();
 
   protected void onPreCreate() {

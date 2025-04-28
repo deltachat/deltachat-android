@@ -53,7 +53,7 @@ import java.util.List;
  */
 public class ShareActivity extends PassphraseRequiredActionBarActivity implements ResolveMediaTask.OnMediaResolvedListener
 {
-  private static final String TAG = ShareActivity.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + ShareActivity.class.getSimpleName();
 
   public static final String EXTRA_ACC_ID = "acc_id";
   public static final String EXTRA_CHAT_ID = "chat_id";

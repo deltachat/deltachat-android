@@ -65,7 +65,7 @@ import java.util.Objects;
 
 public class InstantOnboardingActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
-  private static final String TAG = InstantOnboardingActivity.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + InstantOnboardingActivity.class.getSimpleName();
   private static final String DCACCOUNT = "dcaccount";
   private static final String DCLOGIN = "dclogin";
   private static final String INSTANCES_URL = "https://delta.chat/chatmail";

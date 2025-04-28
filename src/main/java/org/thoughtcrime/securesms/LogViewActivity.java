@@ -21,7 +21,7 @@ import java.io.File;
 
 public class LogViewActivity extends BaseActionBarActivity {
 
-  private static final String TAG = LogViewActivity.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + LogViewActivity.class.getSimpleName();
 
   LogViewFragment logViewFragment;
 

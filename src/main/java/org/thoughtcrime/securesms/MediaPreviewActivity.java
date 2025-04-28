@@ -75,7 +75,7 @@ import java.util.WeakHashMap;
 public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     implements RecipientModifiedListener, LoaderManager.LoaderCallbacks<DcMediaGalleryElement> {
 
-  private final static String TAG = MediaPreviewActivity.class.getSimpleName();
+  private final static String TAG = "DeltaChatUI." + MediaPreviewActivity.class.getSimpleName();
 
   public static final String ACTIVITY_TITLE_EXTRA = "activity_title";
   public static final String EDIT_AVATAR_CHAT_ID  = "avatar_for_chat_id";

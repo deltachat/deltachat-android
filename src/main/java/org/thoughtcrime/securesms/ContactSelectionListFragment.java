@@ -79,7 +79,7 @@ public class ContactSelectionListFragment extends    Fragment
                                           implements LoaderManager.LoaderCallbacks<DcContactsLoader.Ret>,
                                                      DcEventCenter.DcEventDelegate
 {
-  private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + ContactSelectionListFragment.class.getSimpleName();
 
   public static final String MULTI_SELECT          = "multi_select";
   public static final String SELECT_VERIFIED_EXTRA = "select_verified";

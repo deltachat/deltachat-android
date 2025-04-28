@@ -52,7 +52,7 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationContext extends MultiDexApplication {
-  private static final String TAG = ApplicationContext.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + ApplicationContext.class.getSimpleName();
 
   public static DcAccounts      dcAccounts;
   public Rpc                    rpc;

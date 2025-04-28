@@ -41,7 +41,7 @@ import java.util.List;
 
 public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
-  private static final String TAG = QuoteView.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + QuoteView.class.getSimpleName();
 
   private static final int MESSAGE_TYPE_PREVIEW  = 0;
 

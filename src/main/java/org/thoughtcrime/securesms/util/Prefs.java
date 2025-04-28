@@ -26,7 +26,7 @@ import java.util.Set;
 
 public class Prefs {
 
-  private static final String TAG = Prefs.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + Prefs.class.getSimpleName();
 
   public  static final String DISABLE_PASSPHRASE_PREF          = "pref_disable_passphrase";
   public  static final String THEME_PREF                       = "pref_theme";

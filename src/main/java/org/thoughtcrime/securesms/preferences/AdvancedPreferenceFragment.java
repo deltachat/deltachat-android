@@ -55,7 +55,7 @@ import java.util.Objects;
 public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                                         implements DcEventCenter.DcEventDelegate
 {
-  private static final String TAG = AdvancedPreferenceFragment.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + AdvancedPreferenceFragment.class.getSimpleName();
 
   private ListPreference showEmails;
   CheckBoxPreference sentboxWatchCheckbox;

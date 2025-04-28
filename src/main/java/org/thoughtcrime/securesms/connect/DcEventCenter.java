@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class DcEventCenter {
-    private static final String TAG = DcEventCenter.class.getSimpleName();
+    private static final String TAG = "DeltaChatUI." + DcEventCenter.class.getSimpleName();
     private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> currentAccountObservers = new Hashtable<>();
     private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> multiAccountObservers = new Hashtable<>();
     private final Object LOCK = new Object();

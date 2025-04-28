@@ -21,7 +21,7 @@ import android.view.MotionEvent;
  */
 public class HackyViewPager extends ViewPager {
 
-  private static final String TAG = HackyViewPager.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + HackyViewPager.class.getSimpleName();
 
   public HackyViewPager(Context context) {
     super(context);

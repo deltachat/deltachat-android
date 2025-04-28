@@ -16,7 +16,7 @@ import org.thoughtcrime.securesms.util.AsyncLoader;
 
 public class PagingMediaLoader extends AsyncLoader<DcMediaGalleryElement> {
 
-  private static final String TAG = PagingMediaLoader.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + PagingMediaLoader.class.getSimpleName();
 
   private final DcMsg     msg;
   private final boolean   leftIsRecent;

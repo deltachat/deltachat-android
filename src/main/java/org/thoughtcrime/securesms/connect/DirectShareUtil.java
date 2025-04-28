@@ -44,7 +44,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class DirectShareUtil {
 
-  private static final String TAG = DirectShareUtil.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + DirectShareUtil.class.getSimpleName();
   private static final String SHORTCUT_CATEGORY = "android.shortcut.conversation";
 
   public static void clearShortcut(@NonNull Context context, int chatId) {

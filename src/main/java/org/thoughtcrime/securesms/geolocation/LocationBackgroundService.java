@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 public class LocationBackgroundService extends Service {
 
     private static final int INITIAL_TIMEOUT = 1000 * 60 * 2;
-    private static final String TAG = LocationBackgroundService.class.getSimpleName();
+    private static final String TAG = "DeltaChatUI." + LocationBackgroundService.class.getSimpleName();
     private LocationManager locationManager = null;
     private static final int LOCATION_INTERVAL = 1000;
     private static final float LOCATION_DISTANCE = 25F;

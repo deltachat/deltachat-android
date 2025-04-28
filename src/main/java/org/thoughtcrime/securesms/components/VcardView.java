@@ -20,7 +20,7 @@ import org.thoughtcrime.securesms.mms.VcardSlide;
 import org.thoughtcrime.securesms.recipients.Recipient;
 
 public class VcardView extends FrameLayout {
-  private static final String TAG = VcardView.class.getSimpleName();
+  private static final String TAG = "DeltaChatUI." + VcardView.class.getSimpleName();
 
   private final @NonNull AvatarView avatar;
   private final @NonNull TextView name;
