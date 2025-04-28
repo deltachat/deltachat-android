@@ -164,6 +164,10 @@ public class Rpc {
         return gson.fromJson(getResult("get_contact", accountId, contactId), Contact.class);
     }
 
+    public String getMigrationError(int accountId) throws RpcException {
+        return gson.fromJson(getResult("get_migration_error", accountId), String.class);
+    }
+
     private static class Request {
         private final String jsonrpc = "2.0";
         public final String method;

@@ -23,6 +23,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
@@ -36,6 +37,7 @@ import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.FileUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
 import java.util.Date;
@@ -496,4 +498,62 @@ public class DcHelper {
     if (section != null) { intent.putExtra(LocalHelpActivity.SECTION_EXTRA, section); }
     context.startActivity(intent);
   }
+
+    /**
+     * For the PGP-Contacts migration, things can go wrong.
+     * The migration happens when the account is setup, at which point no events can be sent yet.
+     * So, instead, if something goes wrong, it's returned by getLastError().
+     * This function shows the error message to the user.
+     * <p>
+     * A few releases after the PGP-contacts migration (which happened in 2025-05),
+     * we can remove this function again.
+     */
+    public static void maybeShowLastError(Context context) {
+        try {
+            String lastError = DcHelper.getRpc(context).getMigrationError(DcHelper.getContext(context).getAccountId());
+
+            if (lastError != null && !lastError.isEmpty()) {
+                Log.w(TAG, "Opening account failed, trying to share error: " + lastError);
+
+                String subject = "Delta Chat failed to update";
+                String email = "delta@merlinux.eu";
+
+                new AlertDialog.Builder(context)
+                        .setMessage(context.getString(R.string.error_x, lastError))
+                        .setNeutralButton(R.string.global_menu_edit_copy_desktop, (d, which) -> {
+                            Util.writeTextToClipboard(context, lastError);
+                        })
+                        .setPositiveButton(R.string.menu_send, (d, which) -> {
+                            Intent sharingIntent = new Intent(
+                                    Intent.ACTION_SENDTO, Uri.fromParts(
+                                    "mailto", email, null
+                            )
+                            );
+                            sharingIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+                            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                            sharingIntent.putExtra(Intent.EXTRA_TEXT, lastError);
+
+                            if (sharingIntent.resolveActivity(context.getPackageManager()) == null) {
+                                Log.w(TAG, "No email client found to send crash report");
+                                sharingIntent = new Intent(Intent.ACTION_SEND);
+                                sharingIntent.setType("text/plain");
+                                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                                sharingIntent.putExtra(Intent.EXTRA_TEXT, lastError);
+                                sharingIntent.putExtra(Intent.EXTRA_EMAIL, email);
+                            }
+
+                            Intent chooser =
+                                    Intent.createChooser(sharingIntent, "Send using...");
+                            chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            chooser.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+
+                            context.startActivity(chooser);
+                        })
+                        .setCancelable(false)
+                        .show();
+            }
+        } catch (RpcException e) {
+            e.printStackTrace();
+        }
+    }
 }
