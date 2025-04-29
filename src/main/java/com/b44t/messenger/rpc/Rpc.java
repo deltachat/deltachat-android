@@ -10,8 +10,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
-import org.thoughtcrime.securesms.qr.QrShowFragment;
-
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -154,8 +152,8 @@ public class Rpc {
         getResult("add_transport_from_qr", accountId, qrCode);
     }
 
-    public void addTransport(int accountId, EnteredLoginParam param) throws RpcException {
-        getResult("add_transport", accountId, param);
+    public void addOrUpdateTransport(int accountId, EnteredLoginParam param) throws RpcException {
+        getResult("add_or_update_transport", accountId, param);
     }
 
     private static class Request {
