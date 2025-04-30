@@ -38,7 +38,7 @@ public class Contact {
     public final int verifierId;
 
     /// the contact's last seen timestamp
-    public final float lastSeen;
+    public final long lastSeen;
     public final boolean wasSeenRecently;
 
     /// If the contact is a bot.
@@ -60,7 +60,7 @@ public class Contact {
                    boolean isVerified,
                    boolean isProfileVerified,
                    int verifierId,
-                   float lastSeen,
+                   long lastSeen,
                    boolean wasSeenRecently,
                    boolean isBot
                    ) {
