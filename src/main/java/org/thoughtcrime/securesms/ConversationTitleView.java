@@ -117,9 +117,6 @@ public class ConversationTitleView extends RelativeLayout {
           } else if (contact.isBot) {
             subtitleStr = context.getString(R.string.bot);
           }
-          if (!contact.isPgpContact) {
-            imgRight = R.drawable.ic_outline_email;
-          }
           isOnline = contact.wasSeenRecently;
         } catch (RpcException e) {
           Log.e(TAG, "Error in Rpc.getContact", e);
