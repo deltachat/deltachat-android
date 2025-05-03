@@ -32,7 +32,7 @@ public class Rpc {
         String jsonResponse = dcJsonrpcInstance.getNextResponse();
         Response response = gson.fromJson(jsonResponse, Response.class);
 
-        if (response.id == 0) { // Got JSON-RPC notification/event, ignore
+        if (response == null || response.id == 0) { // Got JSON-RPC notification/event, ignore
             return;
         }
 
@@ -63,7 +63,7 @@ public class Rpc {
             while (true) {
                 try {
                     processResponse();
-                } catch (JsonSyntaxException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
