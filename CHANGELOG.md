@@ -3,6 +3,7 @@
 ## Unreleased
 
 * fix: webxdc.selfName uses the name otherwise displayed
+* fix potential crash on startup
 
 ## v1.58.2
 2025-04
