@@ -4,6 +4,7 @@
 
 * fix: webxdc.selfName uses the name otherwise displayed
 * fix potential crash on startup
+* add donation link to app settings
 
 ## v1.58.2
 2025-04
