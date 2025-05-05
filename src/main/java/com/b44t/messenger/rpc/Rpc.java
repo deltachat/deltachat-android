@@ -30,9 +30,13 @@ public class Rpc {
 
     private void processResponse() throws JsonSyntaxException {
         String jsonResponse = dcJsonrpcInstance.getNextResponse();
-        Response response = gson.fromJson(jsonResponse, Response.class);
 
-        if (response.id == 0) { // Got JSON-RPC notification/event, ignore
+        Response response = gson.fromJson(jsonResponse, Response.class);
+        if (response == null) {
+            Log.e(TAG, "Error parsing JSON: " + jsonResponse);
+            return;
+        } else if (response.id == 0) {
+            // Got JSON-RPC notification/event, ignore
             return;
         }
 
@@ -63,7 +67,7 @@ public class Rpc {
             while (true) {
                 try {
                     processResponse();
-                } catch (JsonSyntaxException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
