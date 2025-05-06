@@ -52,7 +52,7 @@
     <string name="mute">静音</string>
     <string name="muted">已静音</string>
     <string name="ephemeral_messages">消息定时销毁</string>
-    <string name="ephemeral_messages_hint">适用于此聊天内使用 Delta Chat 的所有成员；这些成员仍然可以复制、保存和转发消息，或使用其他电子邮件客户端。</string>
+    <string name="ephemeral_messages_hint">适用于此聊天的所有成员；他们仍然可以复制、保存和转发消息。</string>
     <string name="save">保存</string>
     <string name="chat">聊天</string>
     <string name="media">媒体</string>
@@ -184,7 +184,7 @@
     <string name="home">首页</string>
     <string name="games">游戏</string>
     <string name="tools">工具</string>
-    <string name="app_size">尺寸</string>
+    <string name="app_size">大小</string>
     <string name="app_date_published">已发布</string>
     <string name="add_to_chat">添加到聊天</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -370,8 +370,8 @@
     <string name="ask_forward">将消息转发给 %1$s？</string>
     <string name="ask_forward_multiple">转发消息到 %1$d 个聊天？</string>
     <string name="ask_export_attachment">导出附件将允许您设备上的其他应用程序访问这些附件。\n\n是否继续？</string>
-    <string name="ask_block_contact">屏蔽此联系人？您将不再收到此联系人的消息。</string>
-    <string name="ask_unblock_contact">取消屏蔽此联系人？您将再次能收到此联系人的消息。</string>
+    <string name="ask_block_contact">屏蔽此联系人？\n\n被屏蔽的联系人所创建的直接消息或群组将不会显示。\n\n被屏蔽的联系人所创建的其他群组仍将显示他们的消息。</string>
+    <string name="ask_unblock_contact">取消屏蔽此联系人？</string>
     <string name="ask_delete_contacts">删除联系人？\n\n仍有在进行中的聊天的联系人和在系统通讯录中的联系人无法被永久删除。</string>
     <string name="ask_delete_contact">删除联系人 %1$s?\n\n仍有在进行中的聊天的联系人和在系统通讯录中的联系人无法被永久删除。</string>
     <string name="ask_start_chat_with">与 %1$s 聊天？</string>
@@ -506,7 +506,7 @@
     <string name="tab_webxdc_empty_hint">在此聊天中分享的私人应用会出现在这里</string>
     <string name="tab_all_media_empty_hint">任何聊天中分享的媒体文件都将出现在这里</string>
     <string name="all_files_empty_hint">在任何聊天中分享的文档和其他文件会出现在这里。</string>
-    <string name="all_apps_empty_hint">任何聊天中接收或发送的私人应用都会出现在这里。</string>
+    <string name="all_apps_empty_hint">任何聊天中共享的应用都会出现在此处。</string>
     <string name="media_preview">媒体预览</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">宽高比网格</string>
@@ -523,7 +523,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">添加第二台设备</string>
     <string name="multidevice_same_network_hint">让两台设备连接相同的 Wi-Fi 或网络</string>
-    <string name="multidevice_this_creates_a_qr_code">这将创建第二台设备可以扫描用于复制此账号的二维码。</string>
+    <string name="multidevice_this_creates_a_qr_code">这将创建一个二维码，第二台设备可以扫描该二维码来复制配置文件。\n\n请确保没有不必要的观察者或摄像机可以看到以下屏幕。</string>
     <string name="multidevice_install_dc_on_other_device">在你的其他设备上安装 Delta Chat (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">启动 Delta Chat，点击“我已有账号/添加为第二台设备”，扫描此处显示的二维码</string>
@@ -628,7 +628,7 @@
     <string name="proxy_share_link">分享链接</string>
 
     <string name="login_info_oauth2_title">使用简易设置继续？</string>
-    <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n在下一步中，请允许 Delta Chat 充当您的“通过电子邮件聊天”应用程序。\n\n不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
+    <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n下一步，请允许 Delta Chat 发送和接收消息。\n\nDelta Chat 不会收集用户数据，所有内容都保留在您的设备上。</string>
     <string name="login_certificate_checks">证书检查</string>
     <string name="login_error_mail">请输入有效的电子邮件地址</string>
     <string name="login_error_server">请输入有效的服务器 / IP 地址</string>
@@ -724,9 +724,7 @@
     <string name="pref_use_system_emoji">使用系统 emoji</string>
     <string name="pref_use_system_emoji_explain">关闭 Delta Chat 内置 emoji 支持</string>
     <string name="pref_show_system_contacts">读取系统通讯录</string>
-    <string name="pref_show_system_contacts_explain">从通讯录建立和联系人的聊天。一些邮件服务商需要先行设置才能进行端到端加密的聊天。</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">应用程序访问</string>
+    <string name="pref_show_system_contacts_explain">提供与通讯录中的联系人创建聊天的功能。</string>
     <string name="pref_chats">聊天</string>
     <string name="pref_in_chat_sounds">聊天音</string>
     <string name="pref_view_log">查看日志</string>
@@ -825,11 +823,11 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">您是否要立即删除 %1$d 条消息，并在之后于消息收到 %2$s 删除它们？\n\n• 这包括所有媒体文件\n\n• 无论消息是否被浏览过，它们都将被删除\n\n• 在本地删除中，“保存的消息”将被跳过</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">您是否要立即删除 %1$d 条消息，并在之后于消息收到 %2$s 删除它们？\n\n⚠️ 这包括服务器所有文件夹中的电子邮件、媒体和“保存的消息”\n\n⚠️ 如果您想在服务器上保留数据，请不要使用此功能\n\n⚠️ 如果您正在使用 Delta Chat 之外的电子邮件客户端，请不要使用此功能</string>
+    <string name="autodel_server_ask">您是否要立即删除 %1$d 条消息，并在之后于消息收到 %2$s 删除它们？\n\n⚠️ 这包括服务器所有文件夹中的电子邮件、媒体和“保存的消息”\n\n⚠️ 如果您想在服务器上保留数据或使用传统电子邮件客户端，请勿使用此功能</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">这包括所有服务器文件夹中的电子邮件、媒体和\"保存的消息\"。如果您想在服务器上保存数据，或者您正在使用除 Delta Chat 之外的其他电子邮件客户端，请不要使用此功能。</string>
+    <string name="autodel_server_enabled_hint">这包括所有服务器文件夹中的电子邮件、媒体和“保存的消息”。如果您想在服务器上保留数据，或者也使用传统电子邮件客户端，请勿使用此功能</string>
     <string name="autodel_server_warn_multi_device_title">开启一次性删除</string>
-    <string name="autodel_server_warn_multi_device">如果您启用一次删除，则无法在此配置文件中使用多个设备。</string>
+    <string name="autodel_server_warn_multi_device">如果您启用一次删除，则无法在此配置文件中使用多台设备。</string>
     <string name="autodel_confirm">我了解，将这些消息全部删除</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">下载后立即</string>
@@ -845,15 +843,10 @@
 
     <!-- autocrypt -->
     <string name="autocrypt_send_asm_title">发送 Autocrypt 设置消息</string>
-    <string name="autocrypt_send_asm_explain_before">Autocrypt 设置消息安全地共享您的端到端设置至其他兼容 Autocrypt 的应用程序。\n\n该设置将通过在此显示的、必须在另一台设备上输入的设置码进行加密。</string>
+    <string name="autocrypt_send_asm_explain_before">Autocrypt 设置消息可与其他兼容 Autocrypt 的应用安全地共享您的端到端设置。\n\n如果您也在其他设备上使用 Delta Chat，请改用“设置/添加第二台设备”。</string>
     <string name="autocrypt_send_asm_button">发送 Autocrypt 设置消息</string>
     <string name="autocrypt_send_asm_explain_after">您的设置已发送给您自己。切换到另一台设备并打开该设置消息。 您将被要求输入设置码。 输入以下数字：</string>
     <string name="autocrypt_prefer_e2ee">优先使用端到端加密</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Autocrypt 设置消息</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">这是用于在客户端之间传输端到端设置的 Autocrypt 设置消息。\n\n要解密并使用您的设置，请在兼容 Autocrypt 的客户端中打开本消息，然后输入生成设备上显示的设置码。</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">无法解密此消息。\n\n• 简化对此消息的回复并请求发送方再次发送消息可能会有帮助。\n\n•  如果你刚重新安装 Delta Chat，你最好立即重新设置 Delta Chat 并选择“添加为第二台设备”或导入备份文件。</string>
@@ -925,7 +918,7 @@
     <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
     <string name="chat_protection_broken">%1$s 从另一台设备发送了消息</string>
     <string name="chat_protection_enabled_tap_to_learn_more">从现在起，消息保证都是端到端加密。轻按了解更多。</string>
-    <string name="chat_protection_enabled_explanation">现在此聊天中的所有消息保证都是端到端加密的。\n\n端到端加密使消息保持私密状态，只有你和你的聊天伙伴知道内容。即便是你的电子邮件服务提供商也无法读取它们。</string>
+    <string name="chat_protection_enabled_explanation">现在可以保证此聊天中的所有消息都是端到端加密的。\n\n端到端加密可确保您和您的聊天伙伴之间的消息私密性。即使是服务器、提供者或中继也无法读取它们。</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s 从另一台设备发送了一则消息。轻按了解更多。</string>
     <string name="chat_protection_broken_explanation">无法再确保端到端加密，可能的原因是 %1$s 重新安装了 Delta Chat 或从其他设备发送了一则消息。\n\n你可以和联系人线下见面并再次扫描联系人的二维码重新建立端到端加密的通信。</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s要求端到端加密，而此聊天尚未建立端到端加密。轻按了解更多。</string>
@@ -951,15 +944,15 @@
     <string name="qrscan_failed">二维码无法被解码</string>
     <string name="qrscan_ask_join_group">您要加入群组“%1$s”吗？</string>
     <string name="qrscan_fingerprint_mismatch">扫描到的指纹与上次见到的 %1$s 的指纹不匹配。</string>
-    <string name="qrscan_no_addr_found">此二维码包含指纹但没有电子邮件地址。\n\n对于带外验证，请先与接收者建立加密连接。</string>
+    <string name="qrscan_no_addr_found">此二维码包含指纹，但没有电子邮件地址。\n\n对于带外验证，请先与接收者建立加密连接。</string>
     <string name="qrscan_contains_text">已扫描到的二维码文本：\n\n%1$s</string>
     <string name="qrscan_contains_url">已扫描到的二维码 URL：\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">指纹</string>
-    <string name="withdraw_verifycontact_explain">其他人可以扫描此二维码与您联系。\n\n您可以在此处停用二维码并通过再次扫描来重新激活它。</string>
-    <string name="withdraw_verifygroup_explain">其他人可以扫描此二维码加入群组 “%1$s”。\n\n您可以在此处停用二维码并通过再次扫描来重新激活它。</string>
+    <string name="withdraw_verifycontact_explain">其他人可以扫描此二维码与您联系。\n\n您可以重置它，这样现有的二维码或邀请链接将不再有效。</string>
+    <string name="withdraw_verifygroup_explain">其他人可以扫描此二维码以加入群组“%1$s”。\n\n您可以重置它，这样现有的二维码或邀请链接将不再有效。</string>
     <string name="withdraw_qr_code">重置二维码</string>
-    <string name="revive_verifycontact_explain">其他人可扫描此二维码以与您联系。\n\n此设备上的二维码未激活。</string>
-    <string name="revive_verifygroup_explain">其他人可扫描此二维码加入群组“%1$s”。\n\n此设备上的二维码未激活。</string>
+    <string name="revive_verifycontact_explain">此二维码已重置，不再有效。</string>
+    <string name="revive_verifygroup_explain">加入群组“%1$s”的二维码已重置，不再有效。</string>
     <string name="revive_qr_code">激活二维码</string>
     <string name="qrshow_title">邀请二维码</string>
     <string name="qrshow_x_joining">添加 %1$s。</string>
@@ -988,7 +981,7 @@
     <string name="secure_join_wait">正在建立有保证的端到端加密，请稍候…</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">无法建立有保证的端到端加密，但您可能已经发送了一条消息。</string>
-    <string name="secure_join_takes_longer">这可能需要较长时间，可能是对方或您已离线。\n\n但该过程仍在后台继续，您可以先做其他事情…</string>
+    <string name="secure_join_takes_longer">联系人必须在线才能继续。\n\n此过程将在后台自动继续。</string>
     <string name="contact_verified">%1$s 已验证。</string>
     <string name="contact_not_verified">无法与 %1$s 建立有保证的端到端加密。</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
@@ -997,8 +990,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$s 的加密设置已更改。</string>
     <string name="verified_contact_required_explain">要确保端到端加密，你只能将带有绿色验证标识的联系人到此群中。\n\n你可以亲自和未验证联系人线下碰面并扫描联系人二维码来验证。</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">已复制二维码链接到剪贴板</string>
     <string name="mailto_dialog_header_select_chat">选择要发送消息的聊天</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s 已经有一条草稿信息，要替换它吗？</string>
@@ -1024,7 +1015,8 @@
     <string name="perm_required_title">需要权限</string>
     <string name="perm_continue">继续</string>
     <string name="perm_explain_access_to_camera_denied">要拍照或录像，请转至应用设置，选择“权限”，然后启用“相机”。</string>
-    <string name="perm_explain_access_to_mic_denied">要发送音频消息，请转至应用设置，选择“权限”，然后启用“麦克风”。</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
+    <string name="perm_explain_access_to_mic_denied">要发送音频消息，请转到系统或应用设置，选择“权限”或“隐私和安全”，然后启用“麦克风”。</string>
     <string name="perm_explain_access_to_storage_denied">要发送或接收文件，请转至应用设置，选择“权限”，然后启用“存储”。</string>
     <string name="perm_explain_access_to_location_denied">要附加位置，请转至应用设置，选择“权限”，然后启用“位置”。</string>
     <string name="perm_explain_access_to_notifications_denied">要接收通知，请转到“系统设置/应用/Delta Chat\"并开启”通知“。</string>
@@ -1148,7 +1140,7 @@
     <string name="add_to_widget">添加到微件</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用相机来拍摄、发送照片和视频以及扫描二维码。</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人列表来显示您可以发送消息的电子邮件地址。Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat 需要位置权限，以便在你启用位置共享的时间范围内共享你的位置。</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat 需要位置权限，以便在你启用位置共享的时间范围内共享你的位置。</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用麦克风来录制、发送语音消息和带有声音的视频。</string>
@@ -1164,7 +1156,7 @@
     <string name="pref_reliable_service">强制后台连接</string>
     <string name="pref_reliable_service_explain">会形成永久通知</string>
 
-    <string name="pref_background_notifications_rationale">要保持到电子邮件服务器的连接并在后台接收消息，请在下一步中忽略电池优化。\n\nDelta Chat 仅使用少量的资源并且会注意不去耗尽电池电量。</string>
+    <string name="pref_background_notifications_rationale">为了保持连接并在后台接收消息，请在下一步中忽略电池优化。\n\nDelta Chat 使用的资源很少，并且会注意不去耗尽电池电量。</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">点击此处以在 Delta Chat 处于后台时接收消息。</string>
     <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n若 Delta Chat 在后台时消息仍未到达，请检查系统设置。</string>

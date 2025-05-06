@@ -773,8 +773,6 @@
     <string name="pref_use_system_emoji_explain">Отключить поддержку встроенных эмодзи Delta Chat</string>
     <string name="pref_show_system_contacts">Чтение системной адресной книги</string>
     <string name="pref_show_system_contacts_explain">Предлагать создать чаты с контактами из адресной книги.</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Доступ приложения</string>
     <string name="pref_chats">Чаты</string>
     <string name="pref_in_chat_sounds">Звуки в чате</string>
     <string name="pref_view_log">Открыть журнал</string>
@@ -897,11 +895,6 @@
     <string name="autocrypt_send_asm_button">Сообщение с параметрами Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Ваши настройки были оправлены вам. Переключитесь на другое устройство и откройте сообщение с настройкой. Вам будет предложено ввести код настройки. Введите следующие цифры:</string>
     <string name="autocrypt_prefer_e2ee">Предпочитать сквозное шифрование</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Сообщение с параметрами Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">\"Сообщение с параметрами Autocrypt\" служит для передачи параметров сквозного шифрования между клиентами.\n\nЧтобы расшифровать и использовать параметры откройте это сообщение в приложении, поддерживающем Autocrypt и введите код настройки, показанный на исходном устройстве.</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">Это сообщение не может быть расшифровано.\n\n• Попробуйте просто ответить на это сообщение и попросить отправителя отправить его снова.\n\n• Если вы только что переустановили Delta Chat, то лучше сейчас заново настроить Delta Chat и выбрать \"Добавить как второе устройство\" или импортировать резервную копию.</string>
@@ -1036,7 +1029,7 @@
     <string name="secure_join_wait">Устанавливается гарантированное сквозное шифрование, пожалуйста, подождите...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Не удалось установить гарантированное сквозное шифрование, но вы уже можете отправить сообщение.</string>
-    <string name="secure_join_takes_longer">Похоже, это длится дольше, чем ожидалось, возможно, из-за проблем с подключением или того, что один из вас сейчас офлайн.\n\nПри этом процесс будет продолжен в фоновом режиме, поэтому вы можете заняться другими делами…</string>
+    <string name="secure_join_takes_longer">Контакт должен быть в режиме онлайн, чтобы продолжить.\n\nЭтот процесс будет автоматически продолжен в фоновом режиме.</string>
     <string name="contact_verified">%1$s подтверждён.</string>
     <string name="contact_not_verified">Невозможно установить гарантированное сквозное шифрование с %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
@@ -1045,8 +1038,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Изменены настройки для %1$s</string>
     <string name="verified_contact_required_explain">Чтобы обеспечить сквозное шифрование, вы можете добавлять в эту группу только контакты с зеленой галочкой.\n\nВы можете встретиться с контактами лично и отсканировать их QR-код, чтобы подтвердить их личность.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">Ссылка из QR-кода скопирована в буфер обмена</string>
     <string name="mailto_dialog_header_select_chat">Выберите чат, чтобы отправить сообщение</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s уже имеет черновик, вы хотите его заменить?</string>
@@ -1072,7 +1063,8 @@
     <string name="perm_required_title">Требуется разрешение</string>
     <string name="perm_continue">Продолжить</string>
     <string name="perm_explain_access_to_camera_denied">Чтобы делать фотографии, снимать видео, откройте настройки приложения, выберите \"Разрешения\" и включите \"Камера\".</string>
-    <string name="perm_explain_access_to_mic_denied">Чтобы отправлять аудиосообщения, откройте настройки приложения, выберите \"Разрешения\" и включите \"Микрофон\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
+    <string name="perm_explain_access_to_mic_denied">Чтобы отправлять аудиосообщения, откройте настройки приложения, выберите \"Разрешения\" или \"Конфиденциальность и безопасность\" и включите \"Микрофон\".</string>
     <string name="perm_explain_access_to_storage_denied">Чтобы получать или отправлять файлы, откройте настройки приложения, выберите \"Разрешения\" и включите \"Хранилище\".</string>
     <string name="perm_explain_access_to_location_denied">Чтобы прикрепить местоположение, откройте настройки приложения, выберите \"Разрешения\" и включите \"Местоположение\".</string>
     <string name="perm_explain_access_to_notifications_denied">Для получения уведомлений, перейдите в \"Настройки системы / Приложения / Delta Chat\" и включите \"Уведомления\".</string>

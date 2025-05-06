@@ -396,8 +396,6 @@
     <string name="pref_manage_keys">Amministra sas craes</string>
     <string name="pref_use_system_emoji">Imprea sas emoji de sistema</string>
     <string name="pref_use_system_emoji_explain">Istuda su suportu de sas emoji incorporadu in Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Atzessu a s\'aplicatzione</string>
     <string name="pref_chats">Tzarradas</string>
     <string name="pref_in_chat_sounds">Sonos in sa tzarrada</string>
     <string name="pref_view_log">Pòmpia su registru</string>
@@ -466,8 +464,7 @@
     <string name="autocrypt_send_asm_button">Imbia unu messàgiu de impostatzione de Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Ti ses imbiadu sa configuratzione tua. Cola a s\'àteru dispositivu e aberi su messàgiu de configuratzione. Ti diat dèpere èssere pedidu unu còdighe de configuratzione. Inserta custas tzifras:</string>
     <string name="autocrypt_prefer_e2ee">Preferi sa tzifradura a nodu terminale (end-to-end)</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Messàgiu de configuratzione de Autocrypt</string>
+
     <string name="write_message_desktop">Iscrie unu messàgiu</string>
     <string name="encryption_info_title_desktop">Informatziones de tzifradura</string>
     <string name="more_info_desktop">Àteras informatziones</string>

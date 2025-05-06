@@ -773,8 +773,6 @@
     <string name="pref_use_system_emoji_explain">Vypnout vestavěná emoji Data Chatu</string>
     <string name="pref_show_system_contacts">Čtení systémových kontaktů</string>
     <string name="pref_show_system_contacts_explain">Nabízet vytváření chatů s kontakty z adresáře. Pro některé poskytovatele je nejprve nutné nastavit koncové šifrování.</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Přístup aplikace</string>
     <string name="pref_chats">Chaty</string>
     <string name="pref_in_chat_sounds">Zvuky v rámci chatu</string>
     <string name="pref_view_log">Zobrazit protokol</string>
@@ -897,11 +895,6 @@
     <string name="autocrypt_send_asm_button">Odeslat nastavení Autocryptu</string>
     <string name="autocrypt_send_asm_explain_after">Vaše nastavení bylo odesláno. Vezměte si zařízení, kam si přejete nastavení přenést, a zprávu na něm otevřete. Mělo by se objevit pole pro zadání kódu. Do něj vložte následující číslice:</string>
     <string name="autocrypt_prefer_e2ee">Upřednostňovat koncové šifrování</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Zpráva s nastavením Autocryptu</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Tato zpráva obsahuje nastavení Autocryptu. S její pomocí lze přenést nastavení koncového šifrování mezi klienty.\n\nK dešifrování a použití nastavení otevřete klient podporující Autocrypt a zadejte do něj kód zobrazený na zařízení, které zprávu vygenerovalo.</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">Tuto zprávu nelze dešifrovat.\n\n• Již nyní by mohlo pomoci jednoduše odpovědět na tuto zprávu a požádat odesílatele, aby ji odeslal znovu.\n\n• Pokud jste právě přeinstalovali Delta Chat, bude nejlepší, když jej znovu nastavíte a zvolíte \"Přidat jako další zařízení\" nebo importujete zálohu.</string>
@@ -1045,8 +1038,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Nastavení pro uživatele %1$s změněno.</string>
     <string name="verified_contact_required_explain">Aby mohlo být garantováno koncové šifrování, můžete do této skupiny přidávat pouze uživatele se zeleným zaškrtávátkem.\n\nSe svými kontakty se můžete setkat osobně a naskenovat jejich QR kód, abyste je ověřili.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">Adresa URL z QR kódu zkopírována do schránky</string>
     <string name="mailto_dialog_header_select_chat">Vyberte chat, do kterého chcete zprávu poslat</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s již obsahuje rozepsanou zprávu, přejete si ji přepsat?</string>
@@ -1072,6 +1063,7 @@
     <string name="perm_required_title">Oprávnění vyžadováno</string>
     <string name="perm_continue">Pokračovat</string>
     <string name="perm_explain_access_to_camera_denied">Pro focení a natáčení přejděte do nastavení aplikace, vyberte \"Oprávnění\" a povolte oprávnění \"Fotoaparát\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Pro posílání zvukových zpráv přejděte do nastavení aplikace, vyberte \"Oprávnění\" a povolte oprávnění \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Pro příjem a posílání souborů přejděte do nastavení aplikace, vyberte \"Oprávnění\" a povolte oprávnění \"Fotky a videa\".</string>
     <string name="perm_explain_access_to_location_denied">Pro posílání polohy přejděte do nastavení aplikace, vyberte \"Oprávnění\" a povolte oprávnění \"Poloha\".</string>

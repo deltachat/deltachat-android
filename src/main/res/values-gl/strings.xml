@@ -717,8 +717,6 @@
     <string name="pref_manage_keys">Xestión das chaves</string>
     <string name="pref_use_system_emoji">Utilizar emoji do sistema</string>
     <string name="pref_use_system_emoji_explain">Desactivar o soporte interno para emoji de Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Acceso a app</string>
     <string name="pref_chats">Conversas</string>
     <string name="pref_in_chat_sounds">Sons na conversa</string>
     <string name="pref_view_log">Ver rexistro</string>
@@ -821,11 +819,6 @@
     <string name="autocrypt_send_asm_button">Enviar Mensaxe de Configuración Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Os axustes envíanse a ti mesma. Vaite ao outro dispositivo e abre a mensaxe de configuración. Debería solicitarche un código. Introduce os seguintes díxitos:</string>
     <string name="autocrypt_prefer_e2ee">Preferir cifrado extremo-a-extremo</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Mensaxe de Configuración Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Esta é a Mensaxe de Configuración Autocrypt utilizado para transferir os teus axustes de cifrado de extremo-a-extremo entre clientes.\n\nPara descifrar e utilizar os axustes abre a mensaxe nun cliente compatible con Autocrypt e introduce o código mostrado no dispositivo de orixe.</string>
-
 
     <string name="systemmsg_unknown_sender_for_chat">Remitente descoñecido para esta convers. Mira en \'info\' para saber máis.</string>
     <string name="systemmsg_subject_for_new_contact">Mensaxe de %1$s</string>
@@ -913,8 +906,6 @@
     <string name="contact_not_verified">Non se puido verificar %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Cambiaron os axustes para %1$s.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">Copiado o url do QR ao portapapeis</string>
     <string name="mailto_dialog_header_select_chat">Elexir chat ao que enviar a mensaxe</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s xa ten un borrador, queres susbstituílo?</string>
@@ -933,6 +924,7 @@
     <string name="perm_required_title">Permiso requerido</string>
     <string name="perm_continue">Continuar</string>
     <string name="perm_explain_access_to_camera_denied">Para facer fotos ou vídeos, vaite aos axustes da app, escolle \"Permisos\", e activa \"Cámara\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Para enviar mensaxes de voz, vaite aos axustes da app, escolle \"Permisos\" e activa \"Micrófono\".</string>
     <string name="perm_explain_access_to_storage_denied">Para recibir ou enviar ficheiros, vaite aos axustes da app, escolle \"Permisos\" e activa \"Almacenaxe\".</string>
     <string name="perm_explain_access_to_location_denied">Para engadir a localización, vaite aos axustes da app, escolle \"Permisos\" e activa \"Localización\".</string>

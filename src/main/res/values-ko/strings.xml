@@ -537,8 +537,6 @@
     <string name="pref_manage_keys">키 관리</string>
     <string name="pref_use_system_emoji">시스템 이모티콘 사용</string>
     <string name="pref_use_system_emoji_explain">Delta Chat 이모티콘 사용 중지</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">앱 접근</string>
     <string name="pref_chats">채팅</string>
     <string name="pref_in_chat_sounds">앱 내 알림</string>
     <string name="pref_view_log">로그 보기</string>
@@ -630,12 +628,6 @@
     <string name="autocrypt_send_asm_explain_before">자동 암호화 설치 메시지는 사용자의 설정을 다른 자동 암호화 호환 앱과 안전하게 공유합니다.\n\n설치는 여기에 표시된 설치 코드에 의해 암호화되며 다른 장치에 입력해야 합니다.</string>
     <string name="autocrypt_send_asm_button">자동 암호화 설정된 메시지 전송</string>
     <string name="autocrypt_send_asm_explain_after">설정이 사용자 자신에게 전송되었습니다. 다른 장치로 전환하고 설정 메시지를 엽니다. 설정 코드를 입력하라는 메시지가 표시됩니다. 다음 숫자를 입력합니다.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">자동 암호화 설정 메시지</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">클라이언트 간에 종단 간 설정을 전송하는 데 사용되는 자동 암호화 설정 메시지입니다.\n\n설치를 해독하고 사용하려면 자동 암호화 호환 클라이언트에서 메시지를 열고 생성 장치에 표시된 설치 코드를 입력하십시오.</string>
-
-
     <string name="systemmsg_unknown_sender_for_chat">이 채팅의 발신자를 알 수 없습니다. 자세한 내용은 \'info\'를 확인하세요.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s가 보낸 메시지</string>
     <string name="systemmsg_failed_sending_to">%1$s에게 메시지를 보내지 못했습니다.</string>
@@ -751,8 +743,6 @@
     <string name="contact_not_verified">%1$s 확인할 수 없음</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$s에 대한 설정이 변경되었습니다.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">QR url을 클립보드에 복사했습니다</string>
     <string name="mailto_dialog_header_select_chat">메시지를 보내려면 채팅을 선택하십시오</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s에 이미 임시 저장된 메시지가 있습니다. 바꾸시겠습니까?</string>
@@ -771,6 +761,7 @@
     <string name="perm_required_title">권한 필요</string>
     <string name="perm_continue">계속</string>
     <string name="perm_explain_access_to_camera_denied">사진을 찍거나 동영상을 캡처하려면 앱 설정으로 이동하여 \"권한\"을 선택하고 \"카메라\"를 활성화하십시오.</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">오디오 메시지를 보내려면 앱 설정으로 이동하여 \"권한\"을 선택하고 \"마이크\"를 활성화하십시오.</string>
     <string name="perm_explain_access_to_storage_denied">파일을 수신하거나 보내려면 앱 설정으로 이동하여 \"사용 권한\"을 선택하고 \"스토리지\"를 활성화하십시오.</string>
     <string name="perm_explain_access_to_location_denied">위치를 첨부하려면 앱 설정으로 이동하여 \"권한\"을 선택하고 \"위치\"를 활성화하십시오.</string>

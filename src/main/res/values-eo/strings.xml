@@ -406,8 +406,6 @@
     <string name="pref_manage_keys">Administri ŝlosilojn</string>
     <string name="pref_use_system_emoji">Uzi sisteman emoĝiaron</string>
     <string name="pref_use_system_emoji_explain">Malebligi emoĝiaron de Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Aliro al aplikaĵo</string>
     <string name="pref_chats">Interparoloj</string>
     <string name="pref_in_chat_sounds">Sonoj dum interparolado</string>
     <string name="pref_view_log">Vidi protokolon</string>
@@ -432,6 +430,7 @@
     <string name="pref_send_copy_to_self">Sendi kopion al mi mem</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
     <string name="autocrypt_prefer_e2ee">Preferi tutvojan ĉifradon</string>
+
     <!-- notifications  -->
     <string name="notify_reply_button">Respondi</string>
     <string name="notify_new_message">Nova mesaĝo</string>

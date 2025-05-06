@@ -565,8 +565,6 @@
     <string name="pref_manage_keys">Tvarkyti raktus</string>
     <string name="pref_use_system_emoji">Naudoti sistemos šypsniukus</string>
     <string name="pref_use_system_emoji_explain">Išjungti Delta Chat įtaisytąjį šypsniukų palaikymą</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Prieiga prie programėlės</string>
     <string name="pref_chats">Pokalbiai</string>
     <string name="pref_in_chat_sounds">Garsai pokalbiuose</string>
     <string name="pref_view_log">Rodyti žurnalą</string>
@@ -666,11 +664,6 @@
     <string name="autocrypt_send_asm_button">Siųsti Autocrypt sąrankos žinutę</string>
     <string name="autocrypt_send_asm_explain_after">Jūsų sąranka buvo išsiųsta jums. Persijukite į kitą įrenginį ir atverkite sąrankos žinutę. Jūsų turėtų būti paprašyta sąrankos kodo. Į užklausą įrašykite šiuos skaitmenis.\n\nJums užbaigus, kitas įrenginys bus paruoštas naudoti Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Teikti pirmenybę ištisiniam šifravimui</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Autocrypt sąrankos žinutė</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Tai yra Autocrypt sąrankos žinutė, kuri yra naudojama perduoti jūsų ištisinę sąranką tarp klientų.\n\nNorėdami iššifruoti ir naudoti savo sąranką, atverkite žinutę su Autocrypt suderinamame kliente ir įveskite generuojančiame įrenginyje rodomą sąrankos kodą.</string>
-
 
     <string name="systemmsg_subject_for_new_contact">Žinutė nuo %1$s</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -760,8 +753,6 @@
     <string name="contact_not_verified">Nepavyksta patvirtinti %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Pakeista sąranka, skirta %1$s.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">QR kodo URL adresas nukopijuotas į iškarpinę</string>
     <string name="mailto_dialog_header_select_chat">Pasirinkite pokalbį, į kurį siųsti žinutę</string>
     <string name="mailto_link_could_not_be_decoded">nepavyko dekoduoti mailto nuorodos: %1$s</string>
 
