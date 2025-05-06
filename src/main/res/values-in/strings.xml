@@ -456,8 +456,6 @@
     <string name="pref_manage_keys">Kelola kunci</string>
     <string name="pref_use_system_emoji">Gunakan emoji sistem</string>
     <string name="pref_use_system_emoji_explain">Matikan dukungan emoji Delta Chat yang ada</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Akes Aplikasi</string>
     <string name="pref_chats">Obrolan</string>
     <string name="pref_in_chat_sounds">Suara dalam obrolan</string>
     <string name="pref_view_log">Lihat catatan</string>
@@ -525,11 +523,6 @@
     <string name="autocrypt_send_asm_button">Kirim Pengaturan Pesan Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Pengaturan Anda sudah dikirim ke Anda sendiri. Lihat pesan pengaturan di perangkat yang lain. Seharusnya Anda akan diminta kode pengaturan. Masukkan angka berikut:</string>
     <string name="autocrypt_prefer_e2ee">Lebih baik enkripsi ujung ke ujung</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Pengaturan Pesan Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Inilah Autocrypt Setup Message yang digunakan utuk mentransfer pengaturan ujung ke ujung Anda antar pelanggan.\n\nUntuk membuka enkirpsi dan menggunakan pengaturan Anda, bukan pesan di Autocrypt-compliant pelanggan dan masukkan kode pengaturan yang ditampikan untuk perangkat terkait.</string>
-
 
     <string name="systemmsg_unknown_sender_for_chat">Pengirim tidak dikenal untuk obrolan ini. Lihat \'info\' untuk lebih jelasnya.</string>
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>
@@ -579,8 +572,6 @@
     <string name="contact_not_verified">Tidak bisa memverifikasi %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ubah pengaturan untuk %1$s.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">Salin QR url ke papan klip</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Balasan</string>
     <string name="notify_new_message">Pesan baru</string>
@@ -594,6 +585,7 @@
     <string name="perm_required_title">Perlu izin</string>
     <string name="perm_continue">Lanjutkan</string>
     <string name="perm_explain_access_to_camera_denied">Untuk mengambil foto atau merekam video, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Kamera\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Untuk mengirim pesan audio, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Untuk menerima atau mengirim berkas, pergi ke pengaturan aplikasi, pilih \"Perizinan\", dan fungsikan \"Penyimpanan\".</string>
     <string name="perm_explain_access_to_location_denied">Untuk melampirkan lokasi, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Lokasi\".</string>

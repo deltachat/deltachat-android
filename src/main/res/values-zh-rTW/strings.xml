@@ -725,8 +725,6 @@
     <string name="pref_use_system_emoji_explain">停用 Delta Chat 內建的表情符號</string>
     <string name="pref_show_system_contacts">讀取系統通訊錄</string>
     <string name="pref_show_system_contacts_explain">建議與通訊錄中的聯絡人建立聊天。一些供應商需要先進行端到端加密設置。</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">App 存取</string>
     <string name="pref_chats">對話</string>
     <string name="pref_in_chat_sounds">對話內的音效</string>
     <string name="pref_view_log">觀看系統紀錄</string>
@@ -849,11 +847,6 @@
     <string name="autocrypt_send_asm_button">傳送AutoCrypt設定訊息</string>
     <string name="autocrypt_send_asm_explain_after">你的設定已經傳送給你自己了。請到其它支援自動加密設定的裝置，開啟設定訊息，並輸入以下的設定碼\n\n輸入完之後，你的其它裝置就可以使用AutoCrypt了。</string>
     <string name="autocrypt_prefer_e2ee">偏好端到端加密</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Autocrypt Setup Message</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">本信件包含AutoCrypt設定訊息。\n\n請使用其它裝置上支援AutoCrypt設定的應用程式開啟本訊息，並輸入設定碼，以便匯入自動加密設定。</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">此消息無法解密。\n\n• 簡要回覆此消息並要求發件者再次發送消息可能已有所幫助。\n\n• 如果您剛剛重新安裝了 Delta Chat，那麼最好立即重新設置 Delta Chat，然後選擇「添加為第二台裝置」或導入備份。</string>
@@ -996,8 +989,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">已爲%1$s更改設定。</string>
     <string name="verified_contact_required_explain">為了保證端到端加密，您只能將帶有綠色驗證標識的聯絡人添加到此群組。\n\n您可以當面掃描聯絡人的QR碼以介紹他們。</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">已將 QR碼的URL複製到剪貼簿</string>
     <string name="mailto_dialog_header_select_chat">選擇要將消息發送到的聊天</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s已有草稿消息，是否要替換它？</string>
@@ -1023,6 +1014,7 @@
     <string name="perm_required_title">需要權限</string>
     <string name="perm_continue">繼續</string>
     <string name="perm_explain_access_to_camera_denied">要拍照或攝錄影片，請轉到應用程式設定，選擇「存取權」，然後啟用「相機」。</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">要傳送音訊消息，請轉到應用程式設定，選擇「存取權」，然後啟用「麥克風」。</string>
     <string name="perm_explain_access_to_storage_denied">要接收或發送文件，請轉到應用程式設定，選擇「存取權」，然後啟用「存儲」。</string>
     <string name="perm_explain_access_to_location_denied">要附加位置，請轉到應用程式設定，選擇「存取權」，然後啟用「位置」。</string>

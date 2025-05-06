@@ -773,8 +773,6 @@
     <string name="pref_use_system_emoji_explain">Вимкнути вбудовану підтримку емодзі</string>
     <string name="pref_show_system_contacts">Прочитати адресну книгу системи</string>
     <string name="pref_show_system_contacts_explain">Пропонувати створювати чати з контактами з адресної книги.</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Доступ додатку</string>
     <string name="pref_chats">Чати</string>
     <string name="pref_in_chat_sounds">Звуки в чаті</string>
     <string name="pref_view_log">Переглянути журнал</string>
@@ -897,11 +895,6 @@
     <string name="autocrypt_send_asm_button">Надіслати повідомлення з налаштуваннями Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Налаштування було Вам надіслано. Перейдіть на інший пристрій і відкрийте повідомлення про налаштування. У Вас має з\'явитися запит на введення коду налаштування. Введіть наступні цифри:</string>
     <string name="autocrypt_prefer_e2ee">Віддавати перевагу наскрізному шифруванню</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Повідомлення з налаштуваннями Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Це повідомлення з налаштуваннями Autocrypt, що слугує для передачі параметрів наскрізного шифрування між пристроями.\n\nДля розшифрування параметрів відкрийте це повідомлення в додатку, що підтримує Autocrypt і введіть інсталяційний код, показаний на початковому пристрої.</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">Це повідомлення неможливо розшифрувати.\n\n- Можливо, допоможе просто відповісти на це повідомлення і попросити відправника надіслати повідомлення ще раз.\n\n- Якщо ви щойно переінсталювали Delta Chat, то краще за все переналаштувати Delta Chat зараз і вибрати \"Додати як другий пристрій\" або імпортувати резервну копію.</string>
@@ -1045,8 +1038,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Змінені параметри для %1$s</string>
     <string name="verified_contact_required_explain">Щоб гарантувати наскрізне шифрування, Ви можете додавати до цієї групи лише контакти із зеленою галочкою.\n\nВи можете зустрітися з контактами особисто та відсканувати їхній QR-код, щоб представити їх.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">URL з QR-коду скопійовано в буфер</string>
     <string name="mailto_dialog_header_select_chat">Виберіть чат, куди потрібно надіслати повідомлення</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s уже містить чернетку повідомлення, бажаєте її замінити?</string>
@@ -1072,7 +1063,8 @@
     <string name="perm_required_title">Потрібен дозвіл</string>
     <string name="perm_continue">Продовжити</string>
     <string name="perm_explain_access_to_camera_denied">Для зйомки фотографій або відео додатку потрібен дозвіл на використання камери, але зараз його не надано. Для надання дозволу перейдіть у системне меню налаштувань, у розділі \"Додатки\" знайдіть Delta Chat і надайте доступ до камери.</string>
-    <string name="perm_explain_access_to_mic_denied">Для надсилання голосових повідомлень додатку потрібен дозвіл на використання мікрофону, але зараз його не надано. Для надання дозволу перейдіть у системне меню налаштувань, у розділі \"Додатки\" знайдіть Delta Chat і надайте доступ до мікрофону.</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
+    <string name="perm_explain_access_to_mic_denied">Щоб надсилати аудіоповідомлення, перейдіть до налаштувань системи або програми, виберіть \"Дозволи\" або \"Конфіденційність і Безпека\" та увімкніть \"Мікрофон\".</string>
     <string name="perm_explain_access_to_storage_denied">Для збереження або передавання фотографій перейдіть до налаштувань додатку, оберіть \"Дозволи\" та ввімкніть \"Сховище\"</string>
     <string name="perm_explain_access_to_location_denied">Щоб передати місцезнаходження, додатку потрібен доступ до геоданих пристрою, але зараз його не надано. Для надання доступу перейдіть у системне меню налаштувань, у розділі \"Додатки\" знайдіть Delta Chat, оберіть \"Дозволи\" і надайте доступ до місцезнаходження пристрою.</string>
     <string name="perm_explain_access_to_notifications_denied">Щоб отримувати сповіщення зайдіть у \"Налаштування системи / Застосунки / Delta Chat\" і увімкніть \"Сповіщення\"</string>

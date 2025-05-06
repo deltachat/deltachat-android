@@ -608,8 +608,6 @@
     <string name="pref_manage_keys">Quản lý khóa</string>
     <string name="pref_use_system_emoji">Sử dụng Emoji hệ thống</string>
     <string name="pref_use_system_emoji_explain">Tắt tính năng hỗ trợ emoji tích hợp của Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Quyền truy cập ứng dụng</string>
     <string name="pref_chats">Trò chuyện</string>
     <string name="pref_in_chat_sounds">Âm thanh trong cuộc trò chuyện</string>
     <string name="pref_view_log">Xem nhật ký</string>
@@ -720,11 +718,6 @@
     <string name="autocrypt_send_asm_button">Gửi tin nhắn thiết lập Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Thiết lập của bạn đã được gửi cho chính bạn. Chuyển sang thiết bị khác và mở thông báo thiết lập. Bạn sẽ được yêu cầu nhập mã thiết lập. Nhập các chữ số sau:</string>
     <string name="autocrypt_prefer_e2ee">Ưu tiên mã hóa đầu cuối</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Thông báo thiết lập Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Đây là Thông báo Thiết lập Autocrypt được sử dụng để truyền thiết lập hai đầu của bạn giữa các máy khách.\n\nĐể giải mã và sử dụng thiết lập của bạn, hãy mở tin nhắn trong một ứng dụng khách tương thích với Autocrypt và nhập mã thiết lập được trình bày trên thiết bị tạo.</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">Không thể giải mã tin nhắn này.\n\n• Bạn chỉ cần trả lời tin nhắn này và yêu cầu người gửi gửi lại tin nhắn là đủ.\n\n• Nếu bạn vừa cài đặt lại Delta Chat thì tốt nhất bạn nên cài đặt lại thiết lập lại Delta Chat ngay bây giờ và chọn "Thêm làm thiết bị thứ hai" hoặc nhập bản sao lưu.</string>
@@ -859,8 +852,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Đã thay đổi thiết lập cho %1$s.</string>
     <string name="verified_contact_required_explain">Để đảm bảo mã hóa hai đầu, bạn chỉ có thể thêm những người liên hệ có dấu kiểm màu xanh lục vào nhóm này.\n\nBạn có thể gặp trực tiếp những người liên hệ và quét Mã QR của họ để giới thiệu họ.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">Đã sao chép url QR vào clipboard</string>
     <string name="mailto_dialog_header_select_chat">Chọn trò chuyện để gửi tin nhắn tới</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s đã có tin nhắn nháp, bạn có muốn thay thế nó không?</string>
@@ -884,6 +875,7 @@
     <string name="perm_required_title">Cần có sự cho phép</string>
     <string name="perm_continue">Tiếp tục</string>
     <string name="perm_explain_access_to_camera_denied">Để chụp ảnh hoặc quay video, hãy chuyển tới cài đặt ứng dụng, chọn \"Quyền\" và bật \"Máy ảnh\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Để gửi tin nhắn âm thanh, hãy chuyển tới cài đặt ứng dụng, chọn \"Quyền\" và bật \"Micrô\".</string>
     <string name="perm_explain_access_to_storage_denied">Để nhận hoặc gửi tệp, hãy đi tới cài đặt ứng dụng, chọn \"Quyền\" và bật \"Bộ nhớ\".</string>
     <string name="perm_explain_access_to_location_denied">Để đính kèm một vị trí, hãy đi tới cài đặt ứng dụng, chọn \"Quyền\" và bật \"Vị trí\".</string>

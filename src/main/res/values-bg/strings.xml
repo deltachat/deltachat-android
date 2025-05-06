@@ -656,8 +656,6 @@
     <string name="pref_use_system_emoji_explain">Изключване на вградената поддръжка за Emoji на Delta Chat</string>
     <string name="pref_show_system_contacts">Прочитане на системната адресна книга</string>
     <string name="pref_show_system_contacts_explain">Да се предлага създаване на чатове с контакти от адресната книга. За някои доставчици е необходимо първо да се настрои криптиране от край до край.</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Достъп до приложението</string>
     <string name="pref_chats">Чатове</string>
     <string name="pref_in_chat_sounds">Звуци в чата</string>
     <string name="pref_view_log">Разглеждане на дневника</string>
@@ -778,11 +776,6 @@
     <string name="autocrypt_send_asm_button">Изпращане на съобщението за настройка на Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Изпратихте Вашата настройка до себе си. Отворете съобщението за настройка в другото устройство. Би трябвало да Ви бъде поискан код за настройка. Въведете следните цифри:</string>
     <string name="autocrypt_prefer_e2ee">Да се предпочита криптиране \"от край до край\"</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Съобщение за настройка на Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Това е съобщението за настройка на Autocrypt, чрез което се прехвърля Вашата настройка за криптиране \"от край до край\" между различни клиенти.\n\nЗа да декриптирате и използвате Вашата настройка, отворете съобщението в клиент, съвместим с Autocrypt, и въведете кода за настройка, представен на генериращото устройство.</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">Това съобщение не може да бъде декриптирано.\n\n• Бихте могли просто да му отговорите и да помолите подателя да го изпрати отново.\n\n• Ако току-що сте преинсталирали Delta Chat, е най-добре да настроите приложението отново сега и да изберете \"Добавяне като второ устройство\" или да импортирате от архив.</string>
@@ -925,8 +918,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Настройката за %1$s е сменена.</string>
     <string name="verified_contact_required_explain">За да се гарантира криптирането от край до край, можете да добавяте в тази група само контакти, отбелязани със зелена отметка.\n\nБихте могли да се срещнете с лицата, с които желаете да контактувате, лично и да сканирате техните QR кодове, за да ги въведете.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">URL адресът от QR кода е копиран в клипборда</string>
     <string name="mailto_dialog_header_select_chat">Изберете чат, към който да бъде пратено съобщението</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s вече има съобщение чернова, искате ли да го замените?</string>
@@ -952,6 +943,7 @@
     <string name="perm_required_title">Изисква се позволение</string>
     <string name="perm_continue">Продължаване</string>
     <string name="perm_explain_access_to_camera_denied">За да правите снимки или заснемате видеоклипове, отидете в настройките на приложението, изберете \"Позволения\" и разрешете \"Камера\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">За да изпращате аудиосъобщения, отидете в настройките на приложението, изберете \"Позволения\" и разрешете \"Микрофон\".</string>
     <string name="perm_explain_access_to_storage_denied">За да получавате или изпращате файлове, отидете в настройките на приложението, изберете \"Позволения\" и разрешете \"Съхранение\".</string>
     <string name="perm_explain_access_to_location_denied">За да прикрепите информация за местоположението, отидете в настройките на приложението, изберете \"Позволения\" и разрешете \"Местоположение\".</string>

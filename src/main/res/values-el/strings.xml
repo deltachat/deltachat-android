@@ -559,8 +559,6 @@
     <string name="pref_manage_keys">Διαχείριση Κλειδιών</string>
     <string name="pref_use_system_emoji">Χρήση emoji συστήματος</string>
     <string name="pref_use_system_emoji_explain">Απενεργοποίηση της ενσωματωμένης υποστήριξης για emoji του Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Πρόσβαση εφαρμογής</string>
     <string name="pref_chats">Συνομιλίες</string>
     <string name="pref_in_chat_sounds">Ήχοι μέσα στη συνομιλία</string>
     <string name="pref_view_log">Προβολή Αρχείου Καταγραφής</string>
@@ -663,11 +661,6 @@
     <string name="autocrypt_send_asm_button">Αποστολή μηνύματος ρύθμισης αυτόματης κρυπτογράφησης</string>
     <string name="autocrypt_send_asm_explain_after">Η ρύθμισή σας έχει σταλεί στον εαυτό σας. Μεταβείτε στην άλλη συσκευή και ανοίξτε το μήνυμα ρύθμισης. Θα πρέπει να σας ζητηθεί κωδικός ρύθμισης. Εισαγάγετε τα ακόλουθα ψηφία:</string>
     <string name="autocrypt_prefer_e2ee">Προτιμήστε την κρυπτογράφηση από άκρο σε άκρο</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Μήνυμα ρύθμισης αυτόματης κρυπτογράφησης</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Αυτό είναι το μήνυμα ρύθμισης αυτόματης κρυπτογράφησης που χρησιμοποιείται για τη μεταφορά της ρύθμισής σας από άκρο σε άκρο μεταξύ πελατών.\n\nΓια να αποκρυπτογραφήσετε και να χρησιμοποιήσετε τη ρύθμισή σας, ανοίξτε το μήνυμα σε ένα πρόγραμμα-πελάτη συμβατό με Αυτόματη κρυπτογράφηση και εισαγάγετε τον κωδικό ρύθμισης που παρουσιάζεται στη συσκευή δημιουργίας.</string>
-
 
     <string name="systemmsg_unknown_sender_for_chat">Άγνωστος αποστολέας για αυτήν τη συνομιλία. Δείτε \"πληροφορίες\" για περισσότερες λεπτομέρειες.</string>
     <string name="systemmsg_subject_for_new_contact">Μήνυμα από τον/την %1$s</string>
@@ -786,8 +779,6 @@
     <string name="contact_not_verified">Αδυναμία επαλήθευσης %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Άλλαξε η ρύθμιση για %1$s.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">Αντιγράφηκε το QR url στο πρόχειρο</string>
     <string name="mailto_dialog_header_select_chat">Επιλέξτε συνομιλία για να στείλετε το μήνυμα</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s έχει ήδη ένα πρόχειρο μήνυμα, θέλετε να το αντικαταστήσετε;</string>
@@ -806,6 +797,7 @@
     <string name="perm_required_title">Χρειάζονται δικαιώματα πρόσβασης</string>
     <string name="perm_continue">Συνέχεια</string>
     <string name="perm_explain_access_to_camera_denied">Για να τραβήξετε φωτογραφίες ή να τραβήξετε βίντεο, μεταβείτε στις ρυθμίσεις της εφαρμογής, επιλέξτε \"Άδειες\" και ενεργοποιήστε την \"Κάμερα\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Για να στείλετε μηνύματα ήχου, μεταβείτε στις ρυθμίσεις της εφαρμογής, επιλέξτε \"Άδειες\" και ενεργοποιήστε το \"Μικρόφωνο\".</string>
     <string name="perm_explain_access_to_storage_denied">Για να λάβετε ή να στείλετε αρχεία, μεταβείτε στις ρυθμίσεις της εφαρμογής, επιλέξτε \"Άδειες\" και ενεργοποιήστε την \"Αποθήκευση\".</string>
     <string name="perm_explain_access_to_location_denied">Για να επισυνάψετε μια τοποθεσία, μεταβείτε στις ρυθμίσεις της εφαρμογής, επιλέξτε \"Άδειες\" και ενεργοποιήστε την \"Τοποθεσία\".</string>

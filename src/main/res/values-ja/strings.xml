@@ -442,8 +442,6 @@
     <string name="pref_manage_keys">暗号鍵の管理</string>
     <string name="pref_use_system_emoji">システムの絵文字を使う</string>
     <string name="pref_use_system_emoji_explain">Delta Chat独自の絵文字機能を無効にする</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">アプリのアクセス</string>
     <string name="pref_chats">チャット</string>
     <string name="pref_in_chat_sounds">着信音</string>
     <string name="pref_view_log">ログの表示</string>
@@ -521,8 +519,7 @@
     <string name="autocrypt_send_asm_explain_before">｢自動暗号化設定用メッセージ｣は安全に一対一暗号化設定を対応するアプリケーションとの間に設定します｡\n \n 受信側は設定時に表示されるパスコードを入力する必要が有ります｡</string>
     <string name="autocrypt_send_asm_button">自動暗号化設定用ﾒｯｾｰｼﾞを送信する</string>
     <string name="autocrypt_prefer_e2ee">エンドツーエンド暗号化を好む</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">自動暗号化設定用ﾒｯｾｰｼﾞ</string>
+
     <string name="systemmsg_subject_for_new_contact">%1$sさんからのメッセージ</string>
     <string name="systemmsg_failed_sending_to">%1$sさんへのメッセージ送信に失敗しました。</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->

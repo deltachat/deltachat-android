@@ -617,8 +617,6 @@
     <string name="pref_manage_keys">Gerenciar chaves</string>
     <string name="pref_use_system_emoji">Usar emojis do sistema</string>
     <string name="pref_use_system_emoji_explain">Desabilitar emojis do Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Acesso do aplicativo</string>
     <string name="pref_chats">Conversas</string>
     <string name="pref_in_chat_sounds">Sons da conversa</string>
     <string name="pref_view_log">Ver relatório</string>
@@ -721,11 +719,6 @@
     <string name="autocrypt_send_asm_button">Enviar \"mensagem de configuração do Autocrypt\"?</string>
     <string name="autocrypt_send_asm_explain_after">Sua chave foi enviada para você mesmo. Abra a mensagem de configuração no seu outro dispositivo. Lá será exibido uma solicitação de código. Digite-o lá.\n\nDepois disso, seu dispositivo estará pronto para usar o Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Preferir criptografia ponta a ponta</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Mensagem de configuração do Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Esta é uma \"mensagem de configuração do Autocrypt\" que serve para transferir suas chaves entre dispositivos diferentes.\n\nPara descriptografar sua chave abra esta mensagem num cliente compatível e digite o código exibido no dispositivo de origem.</string>
-
 
     <string name="systemmsg_unknown_sender_for_chat">Remetente desconhecido para esta conversa. Veja \'informações\' para mais detalhes.</string>
     <string name="systemmsg_subject_for_new_contact">Mensagem de %1$s</string>
@@ -846,8 +839,6 @@
     <string name="verified_by">Verificado por %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">A configuração Autocrypt mudou para %1$s</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">Endereço do código QR copiado para a área de transferência</string>
     <string name="mailto_dialog_header_select_chat">Selecione o bate-papo para enviar a mensagem</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s já tem um rascunho de mensagem, deseja substituí-lo?</string>
@@ -866,6 +857,7 @@
     <string name="perm_required_title">Permissão necessária</string>
     <string name="perm_continue">Continuar</string>
     <string name="perm_explain_access_to_camera_denied">O Delta Chat precisa acessar sua câmera para tirar fotos e gravar vídeos, mas o acesso foi negado. Por favor, habilite a câmera nas configurações de permissões do aplicativo.</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">O Delta Chat precisa acessar seu microfone para que você possa enviar mensagens de voz, mas o acesso foi negado. Por favor, habilite o microfone nas configurações de permissões do aplicativo.</string>
     <string name="perm_explain_access_to_storage_denied">Para receber o enviar arquivos, vai nas configurações do aplicativo, escolhe \"Permissões\", e ativar \"Armazenamento\".</string>
     <string name="perm_explain_access_to_location_denied">O Delta Chat precisa acessar sua localização para que você possa enviá-la, mas o acesso foi negado. Por favor, habilite o seu acesso nas configurações de permissões do aplicativo.</string>
