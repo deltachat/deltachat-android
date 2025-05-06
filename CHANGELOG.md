@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v1.58.3
+2025-05
 
 * fix: webxdc.selfName uses the name otherwise displayed
 * fix potential crash on startup
