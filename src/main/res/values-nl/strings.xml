@@ -184,6 +184,10 @@
     <string name="images_and_videos">Foto\'s en video\'s</string>
     <string name="file">Bestand</string>
     <string name="files">Bestanden</string>
+    <string name="files_attach_hint">Bestanden en foto\'s in oorspronkelijke kwaliteit versturen</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Kiezen uit bestanden</string>
+    <string name="choose_from_gallery">Kiezen uit galerij</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Privé-app</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
