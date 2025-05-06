@@ -184,6 +184,10 @@
     <string name="images_and_videos">Images and Videos</string>
     <string name="file">File</string>
     <string name="files">Files</string>
+    <string name="files_attach_hint">Send original files and uncompressed images</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Choose from Files</string>
+    <string name="choose_from_gallery">Choose from Gallery</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">App</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
