@@ -745,8 +745,6 @@
     <string name="pref_use_system_emoji_explain">Turn off Delta Chat\'s built-in emoji support</string>
     <string name="pref_show_system_contacts">Read System Address Book</string>
     <string name="pref_show_system_contacts_explain">Offer to create chats with contacts from the address book.</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">App Access</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">In-Chat Sounds</string>
     <string name="pref_view_log">View Log</string>
@@ -869,11 +867,6 @@
     <string name="autocrypt_send_asm_button">Send Autocrypt Setup Message</string>
     <string name="autocrypt_send_asm_explain_after">Your setup has been sent to yourself. Switch to the other device and open the setup message. You should be asked for a setup code. Enter the following digits:</string>
     <string name="autocrypt_prefer_e2ee">Prefer End-To-End Encryption</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Autocrypt Setup Message</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nTo decrypt and use your setup, open the message in an Autocrypt-compliant client and enter the setup code presented on the generating device.</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• If you just re-installed Delta Chat then it is best if you re-setup Delta Chat now and choose "Add as second device" or import a backup.</string>
@@ -1017,8 +1010,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Changed setup for %1$s.</string>
     <string name="verified_contact_required_explain">To guarantee end-to-end-encryption, you can only add contacts with a green checkmark to this group.\n\nYou may meet contacts in person and scan their QR Code to introduce them.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">Copied QR url to clipboard</string>
     <string name="mailto_dialog_header_select_chat">Select chat to send the message to</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s already has a draft message, do you want to replace it?</string>
