@@ -740,8 +740,6 @@
     <string name="pref_use_system_emoji_explain">Désactiver la prise en charge des émojis intégrés de Delta Chat</string>
     <string name="pref_show_system_contacts">Lire le carnet d\'adresses du système</string>
     <string name="pref_show_system_contacts_explain">Permet de créer des conversations avec des contacts du carnet d\'adresse. Certains fournisseurs doivent d\'abord mettre en place un chiffrement de bout-en-bout.</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Accès à l\'application</string>
     <string name="pref_chats">Discussions</string>
     <string name="pref_in_chat_sounds">Sons de messages entrants</string>
     <string name="pref_view_log">Voir le journal</string>
@@ -862,11 +860,6 @@
     <string name="autocrypt_send_asm_button">Envoyer le message de configuration Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Votre configuration vous a été envoyée. Passez à l\'autre appareil et ouvrez le message de configuration. Un code de configuration devrait vous être demandé. Tapez les chiffres suivants :</string>
     <string name="autocrypt_prefer_e2ee">Préférez le chiffrement de bout en bout</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Message de configuration Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Ceci est le message de configuration Autocrypt utilisé pour transférer votre configuration de bout en bout entre clients. Pour déchiffrer et utiliser votre configuration, ouvrez le message dans un client compatible Autocrypt et entrez le code de configuration présenté sur le périphérique de génération.</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">Ce message ne peut pas être déchiffré.\n\n• Essayez de demander à l\'expéditeur de vous l\'envoyer à nouveaux.\n\n• Si vous venez de réinstaller Delta Chat il serait bien de le reconfigurer en sélectionnant \"Ajouter un deuxième appareil\" ou d\'importer une sauvegarde.</string>
@@ -1009,8 +1002,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuration modifiée pour %1$s</string>
     <string name="verified_contact_required_explain">Pour garantir le chiffrement de bout en bout, vous pouvez ajouter à ce groupe uniquement les contacts avec un badge vert.\n\nVous pouvez rencontrer ces contacts en personne pour scanner leur code QR et les ajouter à votre liste de contacts connus.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">L\'URL du code QR a été copié dans le presse-papiers</string>
     <string name="mailto_dialog_header_select_chat">Sélectionnez une discussion à qui envoyer le message</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$sa déjà un message en brouillon, voulez-vous le remplacer?</string>
@@ -1036,6 +1027,7 @@
     <string name="perm_required_title">Autorisation requise</string>
     <string name="perm_continue">Continuez</string>
     <string name="perm_explain_access_to_camera_denied">Pour prendre des photos ou filmer des vidéos, aller au menu Paramètres de l\'application, sélectionnez \"Autorisations\" et autorisez \"Appareil photo\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Pour envoyer des messages audio, aller dans les paramètres de l\'application, sélectionner \"Autorisations\" et autoriser \"Microphone\".</string>
     <string name="perm_explain_access_to_storage_denied">Pour recevoir ou envoyer des fichiers, aller dans les Paramètres de l\'application, sélectionner \"Autorisations\" et autoriser \"Stockage\".</string>
     <string name="perm_explain_access_to_location_denied">Pour joindre une position, aller au menu paramètres de l\'application, sélectionnez \"Autorisations\" et activez \"Position\".</string>

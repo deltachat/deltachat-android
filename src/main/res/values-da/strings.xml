@@ -462,8 +462,6 @@
     <string name="pref_manage_keys">Håndtér nøgler</string>
     <string name="pref_use_system_emoji">Brug system emoji</string>
     <string name="pref_use_system_emoji_explain">Deaktiver Delta Chat\'s indbygget emoji understøttelse</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Programadgang</string>
     <string name="pref_chats">Samtaler</string>
     <string name="pref_in_chat_sounds">In-chat-lyde</string>
     <string name="pref_view_log">Visningslog</string>
@@ -549,11 +547,6 @@
     <string name="autocrypt_send_asm_button">Send autocrypt-opsætningsbesked</string>
     <string name="autocrypt_send_asm_explain_after">Opsætning er sendt til dig selv. Skift til den anden enhed og åben opsætning beskeden. Der skulle blive spurgt til opsætning kode. Indtast følgende cifre i prompt.\n\nNår færdig vil den anden enhed være klar til at bruge Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Foretræk end-to-end kryptering</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Autocrypt opsætningsbesked</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Dette er Autocrypt opsætning besked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at af kryptere og bruge opsætning åben beskeden i en Autocrypt kompatibel klient og indtast opsæt koden vist på den genererende enhed.</string>
-
 
     <string name="systemmsg_unknown_sender_for_chat">Ukent afsender af denne chat. Se \'info\' for flere detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Besked fra %1$s</string>
@@ -643,8 +636,6 @@
     <string name="contact_not_verified">Kan ikke bekræfte %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ændret opsætning for %1$s</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">Kopieret QR url til udklipsholder</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Svar</string>
     <string name="notify_new_message">Ny besked</string>
@@ -658,6 +649,7 @@
     <string name="perm_required_title">Tilladelse påkrævet</string>
     <string name="perm_continue">Fortsæt</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat kræver kamera tilladelse for at tage billeder eller video men det er blevet afvist permanent. Fortsæt til program opsætning menu og vælg \"Tilladelser\" og aktivere \"Kamera\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Delta Chat kræver mikrofon tilladelse for at sende lydbeskeder, men den er blevet nægtet permanent. Fortsæt til program indstillinger, vælg \"Tilladelser\" og aktiver \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat kræver lagring tilladelse for at vedhæfte eller eksportere billeder, video eller lyd, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Lagring\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat kræver placering tilladelse for at kunne vedhæfte placering, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Placering\".</string>

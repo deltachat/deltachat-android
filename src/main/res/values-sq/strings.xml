@@ -857,11 +857,6 @@
     <string name="autocrypt_send_asm_button">Dërgo Mesazh Rregullimi Autocrypt-i</string>
     <string name="autocrypt_send_asm_explain_after">Rregullimi juaj u dërgua te ju. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do t\’ju kërkohet një kod rregullimi. Shtypni atje shifrat vijuese.\n\nPasi të keni mbaruar, pajisja juaj tjetër do të jetë gati të përdorë Autocrypt-in.</string>
     <string name="autocrypt_prefer_e2ee">Parapëlqe Fshehtëzim Skaj-Më-Skaj</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Mesazh Rregullimi Autocrypt-i</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Ky është Mesazhi i Rregullimit të Autocrypt-it i përdorur për të shpërngulur rregullimin tuaj skaj-më-skaj në klientë të tjerë.\n\nQë ta shfshehtëzoni rregullimin tuaj, hapeni mesazhin te një klient që mund të përdorë Autocrypt-in dhe jepni kodin e rregullimit të treguar te pajisja që e prodhoi.</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">Ky mesazh s’mund të shfshehtëzohet.\n\n• Mundet t’ju ndihë thjesht t’i përgjigjeni këtij mesazhi dhe t’i kërkoni dërguesit ta ridërgojë mesazhin.\n\n• Nëse sapo riinstaluat Delta Chat-in, atëherë më e mira është të riujdisni Delta Chat-in tani dhe të zgjidhni “Shtoje si pajisje të dytë”, ose të importoni një kopjeruajtje.</string>
@@ -1005,8 +1000,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">U ndryshua udjisja për %1$s</string>
     <string name="verified_contact_required_explain">Që të garantohet fshehtëzim skaj-më-skaj, mund të shtoni në këtë grup vetëm kontakte me shenjën e gjelbër të verifikimit.\n\nMund të takoheni drejtpërsëdrejti me kontakte të paverifikuar dhe të skanoni kodin e tyre QR për t’i verifikuar ata.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">URL-ja QR u kopjua në të papastër</string>
     <string name="mailto_dialog_header_select_chat">Përzgjidhni fjalosje ku të dërgohet mesazhi</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s përmban tashmë një skicë mesazhi, doni të zëvendësohet?</string>
@@ -1032,6 +1025,7 @@
     <string name="perm_required_title">Lypset leje</string>
     <string name="perm_continue">Vazhdo</string>
     <string name="perm_explain_access_to_camera_denied">Që të mund të bëhen foto apo video, kaloni te rregullimet e aplikacionit, përzgjidhni “Leje” dhe aktivizoni “Kamerën”.</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Që të mund të dërgohen mesazhe audio, kaloni te rregullime aplikacioni, përzgjidhni “Leje” dhe aktivizoni “Mikrofonin”.</string>
     <string name="perm_explain_access_to_storage_denied">Që të merren apo dërgohen kartela, kaloni te rregullime aplikacioni, përzgjidhni “Leje” dhe aktivizoni “Depozitimin”.</string>
     <string name="perm_explain_access_to_location_denied">Që të mund të bashkëngjitet një vendndodhje, kaloni te rregullimet e aplikacionit, përzgjidhni “Leje” dhe aktivizoni “Vendndodhjen”.</string>

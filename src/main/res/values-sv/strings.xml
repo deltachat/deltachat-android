@@ -662,8 +662,6 @@
     <string name="pref_use_system_emoji_explain">Inaktivera Delta Chat\'s inbyggda emojier</string>
     <string name="pref_show_system_contacts">Läs systemets adressbok</string>
     <string name="pref_show_system_contacts_explain">Erbjud att skapa chattar med kontakter från adressboken. Vissa leverantörer behöver först konfigureras för totalsträckskryptering.</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Programåtkomst</string>
     <string name="pref_chats">Chattar</string>
     <string name="pref_in_chat_sounds">Ljud i konversationer</string>
     <string name="pref_view_log">Visa logg</string>
@@ -786,11 +784,6 @@
     <string name="autocrypt_send_asm_button">Skicka Autocrypt inställningsmeddelande</string>
     <string name="autocrypt_send_asm_explain_after">Dina inställningar har skickats till dig själv. Byt till den andra enheten och öppna inställningsmeddelandet. Du kommer att tillfrågas om en inställningskod. Ange följande siffror:</string>
     <string name="autocrypt_prefer_e2ee">Föredra slutpunkt-till-slutpunkt-kryptering</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Inställningsmeddelande för Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Detta är inställningsmeddelandet för Autocrypt som används för att skicka nycklar mellan klienter.\n\nFör att kunna avkryptera och använda din nyckel, öppnar du meddelandet i en Autocrypt-kompatibel klient och skriver in inställningskoden som visats på den genererande enheten.</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">Det här meddelandet kan inte dekrypteras.\n\n- Det kan hjälpa att helt enkelt svara på det här meddelandet och be avsändaren att skicka meddelandet igen.\n\n- Om du just har installerat om Delta Chat är det bäst om du konfigurerar om Delta Chat nu och väljer \"Lägg till som en andra enhet\" eller importerar en säkerhetskopia.</string>
@@ -933,8 +926,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ändrade inställningarna för %1$s.</string>
     <string name="verified_contact_required_explain">För att garantera totalsträckskryptering  kan du bara lägga till kontakter med en grön bock i den här gruppen.\n\nDu kan träffa kontakter personligen och skanna deras QR-kod för att introducera dem.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">Kopierade QR-URL till urklipp.</string>
     <string name="mailto_dialog_header_select_chat">Välj chatt för att skicka meddelandet till</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s redan har ett utkast till meddelande, vill du ersätta det?</string>
@@ -960,6 +951,7 @@
     <string name="perm_required_title">Behörighet krävs</string>
     <string name="perm_continue">Fortsätt</string>
     <string name="perm_explain_access_to_camera_denied">Gå till programinställningarna och aktivera \"Kamera\" under \"Behörighet\", för att ta foton eller filma.</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Gå till programinställningarna och aktivera \"Mikrofon\" under \"Behörighet\", för att skicka röstmeddelanden.</string>
     <string name="perm_explain_access_to_storage_denied">Gå till programinställningarna och aktivera \"Lagring\" under \"Behörighet\", för att ta emot eller skicka filer.</string>
     <string name="perm_explain_access_to_location_denied">Gå till programinställningarna och aktivera \"Plats\" under \"Behörighet\", för att bifoga en plats.</string>

@@ -725,8 +725,6 @@ https://meet.jit.si/$ROOM
     <string name="pref_use_system_emoji">استفاده از شکلک‌های سیستم</string>
     <string name="pref_use_system_emoji_explain">غیرفعال کردن شکلک‌های داخلی دلتاچت</string>
     <string name="pref_show_system_contacts">خواندن دفترچه آدرس دستگاه</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">دسترسی نرم‌افزار</string>
     <string name="pref_chats">گپ‌ها</string>
     <string name="pref_in_chat_sounds">صداهای درون‌گپی</string>
     <string name="pref_view_log">نمایش گزارش</string>
@@ -846,11 +844,6 @@ https://meet.jit.si/$ROOM
     <string name="autocrypt_send_asm_button">ارسال پیام برپاسازی اتوکریپت</string>
     <string name="autocrypt_send_asm_explain_after">تنظیم‌های شما برای خودتان ارسال شدند. پیام تنظیم‌ها را در دستگاه دیگر باز کنید. یک کد نصب از شما خواسته می‌شود. این ارقام را وارد کنید</string>
     <string name="autocrypt_prefer_e2ee">ترجیح رمزگذاری گیرنده به گیرنده</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">پیام برپاسازی اتوکریپت</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">این پیام برپاسازی اتوکریپت است و تنظیم‌های مربوط به رمزگذاری سرتاسر شما را بین دستگاه‌ها جابه‌جا می‌کند.\n\n برای رمزگشایی و استفاده از آن، پیام را در یک سامانه که با اتوکریپت همخوانی دارد باز کنید و کد برپاسازی که در دستگاه تولیدکنندهٔ پیام، به شما داده می‌شود را وارد نمایید. </string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">این پیام قابل رمزگشایی نیست.
@@ -999,8 +992,6 @@ https://meet.jit.si/$ROOM
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">تنظیم‌ها برای %1$s تغییر کرد. </string>
     <string name="verified_contact_required_explain">برای تضمین رمزنگاری سراسری شما تنها می‌توانید مخاطب‌هایی که یک تیک سبز دارند به این گروه اضافه کنید.\n\nمی‌توانید با مخاطب‌هایتان حضوری ملاقات کنید و برای معرفی، کد QR آن‌ها را اسکن کنید.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">آدرس کیوآر در حافظه ذخیر شد</string>
     <string name="mailto_dialog_header_select_chat">گپ را برای ارسال پیام انتخاب کنید</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s هم‌اکنون هم یک پیام پیش‌نویس دارد؛ آیا می‌خواهید آن را جایگزین کنید؟</string>
@@ -1032,6 +1023,7 @@ https://meet.jit.si/$ROOM
 را انتخاب کرده و 
 \"Camera\" 
 را فعال کنید.  </string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">برای ارسال پیام صوتی به تنظیم‌های نرم‌افزار رفته و پس از انتخاب «دسترسی‌ها»
  گزینه «میکروفن»
  را فعال نمایید. </string>

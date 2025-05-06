@@ -580,8 +580,6 @@
     <string name="pref_manage_keys">Správa kľúčov</string>
     <string name="pref_use_system_emoji">Používajte systémové emodži</string>
     <string name="pref_use_system_emoji_explain">Vypnite vstavanú podporu emodži v aplikácii Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Prístup k aplikácii</string>
     <string name="pref_chats">Konverzácie</string>
     <string name="pref_in_chat_sounds">Zvuky v konverzáciách</string>
     <string name="pref_view_log">Prezrieť záznam</string>
@@ -684,11 +682,6 @@
     <string name="autocrypt_send_asm_button">Pošlite správu s nastavením autokryptovania</string>
     <string name="autocrypt_send_asm_explain_after">Vaše nastavenie bolo odoslané vám. Prepnite na druhé zariadenie a otvorte správu o nastavení. Mali by ste byť požiadaní o nastavovací kód. Zadajte nasledujúce číslice:</string>
     <string name="autocrypt_prefer_e2ee">Preferovať šifrovanie typu end-to-end</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Správa o nastavení automatického šifrovania</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Toto je správa o nastavení automatického šifrovania, ktorá sa používa na prenos komplexného nastavenia medzi klientmi.\n\nAk chcete dešifrovať a použiť svoje nastavenie, otvorte správu v klientovi kompatibilnom s automatickým šifrovaním a zadajte inštalačný kód uvedený na generujúcom zariadení.</string>
-
 
     <string name="systemmsg_unknown_sender_for_chat">Neznámy odosielateľ pre túto konverzáciu. Ďalšie informácie nájdete v časti „Informácie“.</string>
     <string name="systemmsg_subject_for_new_contact">Správa od %1$s</string>
@@ -805,8 +798,6 @@
     <string name="contact_not_verified">Cannot verify %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Zmena nastavenia pre %1$s.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">Skopírovaná adresa URL QR do schránky</string>
     <string name="mailto_dialog_header_select_chat">Vyberte konverzáciu, kam bude správa odoslaná</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s už má koncept správy, chcete ho nahradiť?</string>
@@ -825,6 +816,7 @@
     <string name="perm_required_title">Vyžaduje sa povolenie</string>
     <string name="perm_continue">ďalej</string>
     <string name="perm_explain_access_to_camera_denied">Ak chcete fotografovať alebo snímať videá, prejdite do nastavení aplikácie, vyberte možnosť „Povolenia“ a povoľte možnosť „Fotoaparát“.</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Ak chcete odosielať zvukové správy, prejdite do nastavení aplikácie, vyberte možnosť „Povolenia“ a povoľte možnosť „Mikrofón“.</string>
     <string name="perm_explain_access_to_storage_denied">Ak chcete prijímať alebo odosielať súbory, prejdite do nastavení aplikácie, vyberte možnosť „Povolenia“ a povoľte možnosť „Úložisko“.</string>
     <string name="perm_explain_access_to_location_denied">Ak chcete pripojiť miesto, prejdite do nastavení aplikácie, vyberte možnosť Povolenia a povoľte možnosť Poloha.</string>

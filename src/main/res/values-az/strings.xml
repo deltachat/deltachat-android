@@ -317,8 +317,6 @@
     <string name="pref_manage_keys">Açar edarəetməsi</string>
     <string name="pref_use_system_emoji">Sistem emojisini istifadə edin</string>
     <string name="pref_use_system_emoji_explain">Emoji Delta chat üçün daxili dəstəyi bağlayın. </string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Daxil oldu</string>
     <string name="pref_chats">Çatlar</string>
     <string name="pref_in_chat_sounds">Çatda olan səslər</string>
     <string name="pref_view_log">Log-a bax</string>
@@ -361,11 +359,6 @@
     <string name="autocrypt_send_asm_button">Autocrypt Setup Message-ı göndər</string>
     <string name="autocrypt_send_asm_explain_after">Sizin açarınız sizə göndərildi. Başqa bir cihaza keçin və mesajın ayarını açın. Siz quraşdırma kodu daxil etməlisiniz. Orada aşağıdakı rəqəmləri daxil edin. Bitirən zaman, başqa bir cihazda Autocrypt istifadə üçün hazır olacaq.</string>
     <string name="autocrypt_prefer_e2ee">Ucdan-uca şifrələmə üstünlük təşkil edir</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Autocrypt mesaj ayarı</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Bu, müvəqqəti quraşdırma üçün müştərilər arasında köçürmək üçün istifadə edilən Autocrypt Setup Mesajıdır. \n\nSenfikanızı çözmək və istifadə etmək üçün autocrypt uyğun müştəri içərisində mesajı açın və yaradan cihazda göstərilən quraşdırma kodunu daxil edin.</string>
-
 
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Qrupun adı \"%1$s\" - dən \"%2$s\" - yə deyişildi məndən. </string>
@@ -421,6 +414,7 @@
     <string name="perm_required_title">İzin tələb olunur</string>
     <string name="perm_continue">Davam edin</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat şəkillər və ya video çəkmək üçün kamera icazə tələb edir, lakin bu, əbədi imtina edilmişdir. Proqramın sistem ayarlarına gedib \"İcazələr\"-i seçin və \"kamera\" izni verin.</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin. </string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat, fotoşəkilləri, videoları və ya səsləri əlavə etmək və ya ixrac etmək üçün saxlama icazəsini tələb edir, lakin bu daimi olaraq rədd edildi. Xahiş edirik tətbiq ayarları menyusuna davam edin, \"İzinlər\" seçin və \"Yaddaş\" funksiyasını aktivləşdirin.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin. </string>

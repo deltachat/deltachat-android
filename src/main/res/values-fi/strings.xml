@@ -656,8 +656,6 @@
     <string name="pref_use_system_emoji_explain">Poista Delta Chatin sisäänrakennettu emoji -tuki käytöstä</string>
     <string name="pref_show_system_contacts">Lue laitteen osoitekirja</string>
     <string name="pref_show_system_contacts_explain">Tarjoa keskustelujen avaamista yhteystietojen perusteella. Jotkin palveluntarjoajat vaativat ensin päästä-päähän salauksen käyttöönottoa. </string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Sovelluksen pääsy</string>
     <string name="pref_chats">Keskustelut</string>
     <string name="pref_in_chat_sounds">Keskustelunaikaiset äänet</string>
     <string name="pref_view_log">Näytä loki</string>
@@ -778,11 +776,6 @@
     <string name="autocrypt_send_asm_button">Lähetä Autocrypt -käyttöönottoviesti</string>
     <string name="autocrypt_send_asm_explain_after">Käyttöönottoviesti on lähetetty sinulle itsellesi. Avaa viesti toisella laitteella. Sinulta pyydetään käyttöönottokoodia. Anna seuraavat numerot:</string>
     <string name="autocrypt_prefer_e2ee">Suosi päästä-päähän -salausta</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Autocrypt -käyttöönottoviesti</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Tätä Autocrypt -käyttöönottoviestiä käytetään päästä-päähän -salauksen asetusten siirtämiseksi toiselle laitteelle.\n\nSaat purettua salauksia ja käytettyä määrittelyä avaamalla viestin Autocrypt -yhteensopivassa päätesovelluksessa, generoivalla laitteella näytetyn pin koodin syöttämisen jälkeen.</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">Viestin salausta ei voitu purkaa.\n\n• Voi olla että vastaamalla tähän ja pyytämällä lähettäjää lähettämään viesti uudelleen ongelma ratkeaa.\n\n• Jos juuri uudelleenasensit Delta Chatin, lienee parasta että otat sovelluksen uudelleen käyttöön ja valitset \"Lisää toisena laitteena\" tai palauta varmuuskopiosta.</string>
@@ -925,8 +918,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Asetukset muutettu kohteessa %1$s.</string>
     <string name="verified_contact_required_explain">Päästä-päähän -salauksen takaamiseksi, voit lisätä ryhmään ainoastaan yhteystietoja joilla on vihreä \"oikein\" -merkki.\n\nVoit tavata yhteystietoja kasvotusten ja skannata heidän QR -koodinsa niin saat lisättyä salauksen käyttöön</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">QR -osoite kopioitu leikepöydälle</string>
     <string name="mailto_dialog_header_select_chat">Valitse keskustelu viestien lähettämiseen</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">Keskustelussa %1$s on jo luonnos. Haluatko korvata sen?</string>
@@ -952,6 +943,7 @@
     <string name="perm_required_title">Pääsylupa vaaditaan</string>
     <string name="perm_continue">Jatka</string>
     <string name="perm_explain_access_to_camera_denied">Ottaaksesi kuvia tai videoita mene sovelluksen asetuksiin, valitse \"Käyttöluvat\" ja kytke päälle \"Kamera\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Lähettääksesi ääniviestin mene sovelluksen asetuksiin, valitse \"Käyttöluvat\" ja kytke päälle \"Mikrofoni\".</string>
     <string name="perm_explain_access_to_storage_denied">Lähettääksesi tai vastaanottaaksesi tiedostoja mene sovelluksen asetuksiin, valitse \"Käyttöluvat\" ja kytke päälle \"Tallennustila\".</string>
     <string name="perm_explain_access_to_location_denied">Jakaaksesi sijaintisi mene sovelluksen asetuksiin, valitse \"Käyttöluvat\" ja kytke päälle \"Sijainti\".</string>

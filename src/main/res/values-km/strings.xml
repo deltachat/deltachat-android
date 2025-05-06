@@ -504,8 +504,6 @@
     <string name="pref_manage_keys">កាន់កាប់គ្រាប់​ចុច</string>
     <string name="pref_use_system_emoji">ប្រើប្រាស់រូបសញ្ញាអារម្មណ៍របសប្រពន្ធ័</string>
     <string name="pref_use_system_emoji_explain">បិទការប្រើប្រាស់រូបសញ្ញាអារម្មណ៍ ពិសា Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">ចូលដំណើរការកម្មវិធី</string>
     <string name="pref_chats">សន្ទនា</string>
     <string name="pref_in_chat_sounds">សម្លេងនៅក្នុងសន្ទនា</string>
     <string name="pref_view_log">មើលកំណត់ហេតុ</string>
@@ -602,11 +600,6 @@
     <string name="autocrypt_send_asm_button">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
     <string name="autocrypt_send_asm_explain_after">ការរៀបចំរបស់អ្នកត្រូវបានផ្ញើទៅខ្លួនឯងហើយ។ ប្តូរឆ្លាស់ឧបករណ៍ផ្សេង និងបើកសារការរៀបចំ។ អ្នកនឹងទទួលសំណួរពីកូដរៀបចំ។ បញ្ចូលលេខដូចខាងក្រោម:</string>
     <string name="autocrypt_prefer_e2ee">ចូលចិត្តការអ៊ិនគ្រីបច្រើនជាង</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">នេះជាសាររៀបចំចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ចែកចាយចាត់ការរៀបចំចាក់ឧបករណ៍ដល់ឧបករណ៍ជាមួយឧបករណ៍ផ្សេងទៀត។\n\nដើម្បីឌិគ្រីប (ការទទួលសារដែលបានធ្វើជាសារសញ្ញាសម្ងាត់ដល់អាចអានបានវិញ) និងប្រើប្រាសការរៀបចំចាក់របសអ្នក បើកសារនៅក្នុងកម្មវិធីដែលស្គាល់អ៊ិនគ្រីបស្វ័យប្រវត្តិ និងកូដការរៀបចំដែលបានអំណោយពីឧបករណ៍បានបង្កើតវា។</string>
-
 
     <string name="systemmsg_unknown_sender_for_chat">មិនស្គាល់អ្នកផ្ញើការសន្ទនានេះ។ មើល \'ពត៌មាន\' សម្រាប់ពត៌មានលំអិត</string>
     <string name="systemmsg_subject_for_new_contact">សារពី %1$s</string>
@@ -710,8 +703,6 @@
     <string name="contact_not_verified">មិនអាចផ្ទៀងផ្ទាត់ %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">បានដូរការរៀបចំសម្រាប់ %1$s</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">បានចម្លង QR-url ទៅក្តារខ្ទាស់</string>
     <string name="mailto_dialog_header_select_chat">ជ្រើសរើសការជជែក ដើម្បីផ្ញើសារទៅកាន់</string>
     <string name="mailto_link_could_not_be_decoded">សំបុត្រទៅតំណភ្ជាប់ មិនអាចឌិកូដទេ: %1$s</string>
 
@@ -728,6 +719,7 @@
     <string name="perm_required_title">ត្រូវបានការអនុញ្ញាត</string>
     <string name="perm_continue">បន្ត</string>
     <string name="perm_explain_access_to_camera_denied">ដើម្បីថតរូប រឺថតវីដេអូ ចូលទៅកាន់ការកំណត់កម្មវិធី ជ្រើសរើស \" ការអនុញ្ញាត\" និងបើកដំណើរការ \"ម៉ាសុីនថត\"។</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">ដើម្បីផ្ញើ សារសំឡេង ចូលទៅកាន់ការកំណត់កម្មវិធី ជ្រើសរើស \"ការអនុញ្ញាត\" និងបើកដំណើរការ \"មីក្រូហ្វូន\"។</string>
     <string name="perm_explain_access_to_storage_denied">ដើម្បីទទួល រឺផ្ញើឯកសារ ចូលទៅកាន់ការកំណត់កម្មវិធី ជ្រើសរើស \"ការអនុញ្ញាត\" និងបើកដំណើរការ \"ការផ្ទុក\"។</string>
     <string name="perm_explain_access_to_location_denied">ដើម្បីភ្ជាប់ទីតាំង ចូលទៅកាន់ការកំណត់កម្មវិធី ជ្រើសរើស\"ការកំណត់\" និងបើកដំណើរការ \"ទីតាំង\"។</string>

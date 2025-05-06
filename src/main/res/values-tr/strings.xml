@@ -741,8 +741,6 @@
     <string name="pref_use_system_emoji_explain">Delta Chat\'in gömülü emoji desteğini kapat</string>
     <string name="pref_show_system_contacts">Sistem Adres Defterini Oku</string>
     <string name="pref_show_system_contacts_explain">Adres defterinden gelen kişilerle sohbetler oluşturmayı teklif edin.</string>
-    <!-- deprecated -->
-    <string name="pref_app_access">Uygulama Erişimi</string>
     <string name="pref_chats">Sohbetler</string>
     <string name="pref_in_chat_sounds">Sohbet İçi Sesler</string>
     <string name="pref_view_log">Günlüğü Görüntüle</string>
@@ -778,7 +776,7 @@
     <string name="pref_auto_folder_moves">DeltaChat Klasörüne Otomatik Olarak Taşı</string>
     <string name="pref_auto_folder_moves_explain">Sohbet görüşmeleri, Gelen Kutusu\'ndaki dağınıklığı önlemek için taşınır</string>
     <string name="pref_only_fetch_mvbox_title">Yalnızca DeltaChat Klasöründen Getir</string>
-    <string name="pref_only_fetch_mvbox_explain">Diğer klasörleri yok sayar. Sunucunuzun sohbet iletilerini DeltaChat klasörüne taşımasını gerektirir.</string>
+    <string name="pref_only_fetch_mvbox_explain">Diğer klasörleri yoksayar. Sunucunuzun sohbet iletilerini DeltaChat klasörüne taşımasını gerektirir.</string>
     <string name="pref_show_emails">Klasik E-Postaları Göster</string>
     <string name="pref_show_emails_no">Hayır, yalnızca sohbetler</string>
     <string name="pref_show_emails_accepted_contacts">Kabul edilen kişiler için</string>
@@ -865,11 +863,6 @@
     <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi Gönder</string>
     <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:</string>
     <string name="autocrypt_prefer_e2ee">Uçtan Uca Şifrelemeyi Yeğle</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_subject">Autocrypt Ayarlama İletisi</string>
-    <!-- deprecated -->
-    <string name="autocrypt_asm_general_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi\'dir.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için iletiyi Autocrypt uyumlu bir istemcide açın ve oluşturan aygıtta sunulan ayarlama kodunu girin.</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">Bu ileti şifresi çözülemiyor.\n\n• Bu iletiye basitçe yanıt vermek ve gönderenden iletiyi yeniden göndermesini istemek zaten yardımcı olabilir.\n\n• Delta Chat\'i yeni kurduysanız, Delta Chat\'i şimdi yeniden ayarlayıp “İkinci Aygıt Olarak Ekle”yi seçmeniz ya da bir yedeği içe aktarmanız en iyisidir.</string>
@@ -1013,8 +1006,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$s için ayarlama değiştirildi.</string>
     <string name="verified_contact_required_explain">Uçtan uca şifrelemeyi güvencelemek için bu öbeğe yalnızca yeşil bir onay imi olan kişileri ekleyebilirsiniz.\n\nDoğrulanmayan kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
-    <!-- deprecated -->
-    <string name="copy_qr_data_success">QR URL\'si panoya kopyalandı</string>
     <string name="mailto_dialog_header_select_chat">İletiyi göndermek için sohbet seçin</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s zaten bir taslak ileti; onu değiştirmek istiyor musunuz?</string>
@@ -1040,7 +1031,8 @@
     <string name="perm_required_title">İzin gerekli</string>
     <string name="perm_continue">Sürdür</string>
     <string name="perm_explain_access_to_camera_denied">Fotoğraflar çekmek ya da videolar yakalamak için uygulama ayarlarına gidin, “İzinler”i seçin ve “Kamera”yı etkinleştirin.</string>
-    <string name="perm_explain_access_to_mic_denied">Sesli iletiler göndermek için uygulama ayarlarına gidin, “İzinler”i seçin ve “Mikrofon”u etkinleştirin.</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
+    <string name="perm_explain_access_to_mic_denied">Sesli iletiler göndermek için sistem ya da uygulama ayarlarına gidin, “İzinler”i ya da “Gizlilik ve Güvenlik”i seçin ve “Mikrofon”u etkinleştirin.</string>
     <string name="perm_explain_access_to_storage_denied">Dosyalar almak ya da göndermek için uygulama ayarlarına gidin, “İzinler”i seçin ve “Depolama”yı etkinleştirin.</string>
     <string name="perm_explain_access_to_location_denied">Bir konum iliştirmek için uygulama ayarlarına gidin, “İzinler”i seçin ve “Konum”u etkinleştirin.</string>
     <string name="perm_explain_access_to_notifications_denied">Bildirimler almak için “Sistem Ayarları / Uygulamalar / Delta Chat”e gidin ve “Bildirimler”i etkinleştirin.</string>
@@ -1176,11 +1168,11 @@
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Anında Teslimat</string>
     <string name="pref_background_notifications">Arka Plan Bağlantısı Kullan</string>
-    <string name="pref_background_notifications_explain">Pil iyileştirmelerinin yok sayılmasını gerektirir, bildirimler zamanında gelmezse kullanın</string>
+    <string name="pref_background_notifications_explain">Pil iyileştirmelerinin yoksayılmasını gerektirir, bildirimler zamanında gelmezse kullanın</string>
     <string name="pref_reliable_service">Arka Plan Bağlantısını Zorla</string>
     <string name="pref_reliable_service_explain">Kalıcı bir bildirime neden olur</string>
 
-    <string name="pref_background_notifications_rationale">Bağlantıyı sürdürmek ve arka planda iletileri almak için sonraki adımda pil iyileştirmelerini yok sayın.\n\nDelta Chat, az kaynak kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
+    <string name="pref_background_notifications_rationale">Bağlantıyı sürdürmek ve arka planda iletileri almak için sonraki adımda pil iyileştirmelerini yoksayın.\n\nDelta Chat, az kaynak kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Delta Chat arka plandayken iletileri almak için buraya dokunun.</string>
     <string name="perm_enable_bg_already_done">Delta Chat\'in arka planda iletileri almasına zaten izin verdiniz.\n\nİletiler arka planda hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
