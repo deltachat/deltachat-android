@@ -193,6 +193,10 @@
     <string name="images_and_videos">Imágenes y videos</string>
     <string name="file">Archivo</string>
     <string name="files">Archivos</string>
+    <string name="files_attach_hint">Enviar archivos originales e imágenes sin comprimir</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Elejir de Archivos</string>
+    <string name="choose_from_gallery">Elejir de Galería</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Aplicación</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
@@ -1013,6 +1017,7 @@
     <string name="secure_join_wait">Estableciendo cifrado de extremo a extremo garantizado, por favor, espere...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">No se pudo aún establecer el cifrado de extremo a extremo garantizado, pero ya puede enviar mensajes.</string>
+    <string name="secure_join_takes_longer">El contacto debe estar en línea para continuar.\n\nEste proceso continuará automáticamente en segundo plano.</string>
     <string name="contact_verified">%1$s verificado.</string>
     <string name="contact_not_verified">No se pudo verificar %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->

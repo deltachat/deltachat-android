@@ -144,7 +144,7 @@
 
     <string name="self">我</string>
     <string name="draft">草稿</string>
-    <string name="image">图像</string>
+    <string name="image">图片</string>
     <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">回复</string>
     <string name="gif">Gif</string>
@@ -153,7 +153,7 @@
     <string name="add_to_sticker_collection">添加到贴纸收藏集</string>
     <string name="add_stickers_instructions">要添加贴纸，请点击“打开贴纸文件夹”，为贴纸包创建一个子文件夹，然后将图片和贴纸文件拖动到那里</string>
     <string name="open_sticker_folder">打开贴纸文件夹</string>
-    <string name="images">图像</string>
+    <string name="images">图片</string>
     <string name="audio">音频</string>
     <string name="voice_message">语音消息</string>
     <string name="forwarded">转发了</string>
@@ -172,14 +172,18 @@
     <string name="location">位置</string>
     <string name="locations">位置</string>
     <string name="gallery">图库</string>
-    <string name="images_and_videos">图像和视频</string>
+    <string name="images_and_videos">图片和视频</string>
     <string name="file">文件</string>
     <string name="files">文件</string>
+    <string name="files_attach_hint">发送原始文件和未压缩的图片</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">从文件中选择</string>
+    <string name="choose_from_gallery">从图库中选择</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">私人应用</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">私人应用</string>
-    <string name="webxdc_store_url">\"应用选择器“ URL</string>
+    <string name="webxdc_store_url">应用选择器 URL</string>
     <string name="webxdc_store_url_explain">设置后，该 URL 而不是默认的 URL 将被用作“应用选择器”</string>
     <string name="home">首页</string>
     <string name="games">游戏</string>
@@ -194,10 +198,10 @@
     <string name="green">绿色</string>
     <string name="red">红色</string>
     <string name="blue">蓝色</string>
-    <string name="orange">橘黄色</string>
-    <string name="cyan">蓝绿色</string>
+    <string name="orange">橙色</string>
+    <string name="cyan">青色</string>
     <string name="purple">紫色</string>
-    <string name="magenta">洋红色</string>
+    <string name="magenta">紫红色</string>
     <string name="white">白色</string>
 
     <string name="zoom">缩放</string>
