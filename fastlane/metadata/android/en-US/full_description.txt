@@ -8,7 +8,7 @@ Features at a glance:
 
 • Extensible. Add tools like shopping lists, calendars or gaming apps to any chat.
 
-• Reliable. Works under bad and adverserial network conditions.
+• Reliable. Works under bad and adversarial network conditions.
 
 • Secure. Audited End-to-End encryption safe against network and server attacks.
 
