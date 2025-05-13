@@ -19,6 +19,7 @@ package org.thoughtcrime.securesms;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -41,6 +42,7 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
+import com.b44t.messenger.rpc.Contact;
 
 import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.components.DeliveryStatusView;
@@ -161,23 +163,31 @@ public class ConversationListItem extends RelativeLayout
     DcContact contact = recipient.getDcContact();
     avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
 
+    int iconRight = thread.isProtected()? R.drawable.ic_verified : thread.isEmailThread()? R.drawable.ic_outline_email : 0;
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
         0,
-        thread.isProtected()? R.drawable.ic_verified : 0,
+        iconRight,
         0);
+    if (thread.isEmailThread()) {
+        fromView.getCompoundDrawables()[2].setColorFilter(fromView.getCurrentTextColor(), PorterDuff.Mode.SRC_IN);
+    }
   }
 
-  public void bind(@NonNull  DcContact     contact,
+  public void bind(@NonNull Contact contact,
                    @NonNull  GlideRequests glideRequests,
                    @Nullable String        highlightSubstring)
   {
     this.selectedThreads = Collections.emptySet();
     Recipient recipient  = new Recipient(getContext(), contact);
 
-    fromView.setText(getHighlightedSpan(contact.getDisplayName(), highlightSubstring));
-    fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    subjectView.setText(getHighlightedSpan(contact.getAddr(), highlightSubstring));
+    fromView.setText(getHighlightedSpan(contact.displayName, highlightSubstring));
+    int iconRight = contact.isVerified? R.drawable.ic_verified : !contact.isPgpContact? R.drawable.ic_outline_email : 0;
+    fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, iconRight, 0);
+    if (!contact.isPgpContact) {
+        fromView.getCompoundDrawables()[2].setColorFilter(fromView.getCurrentTextColor(), PorterDuff.Mode.SRC_IN);
+    }
+    subjectView.setText(getHighlightedSpan(contact.address, highlightSubstring));
     dateView.setText("");
     dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     archivedBadgeView.setVisibility(GONE);
@@ -187,7 +197,7 @@ public class ConversationListItem extends RelativeLayout
 
     setBatchState(false);
     avatar.setAvatar(glideRequests, recipient, false);
-    avatar.setSeenRecently(contact.wasSeenRecently());
+    avatar.setSeenRecently(contact.wasSeenRecently);
   }
 
   public void bind(@NonNull  DcMsg         messageResult,
