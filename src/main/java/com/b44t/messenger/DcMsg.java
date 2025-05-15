@@ -142,11 +142,12 @@ public class DcMsg {
     public native byte[]  getWebxdcBlob      (String filename);
     public JSONObject     getWebxdcInfo      () {
       try {
-        return new JSONObject(getWebxdcInfoJson());
+        String json = getWebxdcInfoJson();
+        if (json != null && !json.isEmpty()) return new JSONObject(json);
       } catch(Exception e) {
         e.printStackTrace();
-        return new JSONObject();
       }
+      return new JSONObject();
     }
     public native String  getWebxdcHref      ();
     public native boolean isForwarded        ();
