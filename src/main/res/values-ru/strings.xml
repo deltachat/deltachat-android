@@ -202,6 +202,10 @@
     <string name="images_and_videos">Изображения и видео</string>
     <string name="file">Файл</string>
     <string name="files">Файлы</string>
+    <string name="files_attach_hint">Отправить оригинальные файлы и несжатые изображения</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Выбрать из файлов</string>
+    <string name="choose_from_gallery">Выбрать из галереи</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Приложение</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->

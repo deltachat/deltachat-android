@@ -184,6 +184,10 @@
     <string name="images_and_videos">Görseller ve Videolar</string>
     <string name="file">Dosya</string>
     <string name="files">Dosyalar</string>
+    <string name="files_attach_hint">Özgün dosyalar ve sıkıştırılmayan görseller gönder</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Dosyalardan Seç</string>
+    <string name="choose_from_gallery">Galeriden Seç</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Uygulama</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->

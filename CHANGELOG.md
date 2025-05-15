@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* make in-chat apps properly work when they are not sent yet, in draft mode
+* better avatar quality
+* some more bug fixes and updated translations
+* update to core 1.159.5
+
 ## v1.58.3
 2025-05
 
