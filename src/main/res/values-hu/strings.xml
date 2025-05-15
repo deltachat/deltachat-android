@@ -184,6 +184,10 @@
     <string name="images_and_videos">Képek és videók</string>
     <string name="file">Fájl</string>
     <string name="files">Fájlok</string>
+    <string name="files_attach_hint">Eredeti fájlok és tömörítetlen képek küldése</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Kiválasztás a „Fájlokból”</string>
+    <string name="choose_from_gallery">Kiválasztás a „Galériából”</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Alkalmazás</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
