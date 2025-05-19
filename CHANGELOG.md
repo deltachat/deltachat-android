@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## 1.58.4
+## v1.58.4
 2025-05
 
 * make in-chat apps properly work when they are not sent yet, in draft mode
