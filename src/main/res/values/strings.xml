@@ -466,7 +466,7 @@
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Send Message to…</string>
     <string name="enable_realtime">Real-Time Apps</string>
-    <string name="enable_realtime_explain">Enable real-time connections for apps shared in chats. If enabled, chat partners may be able to discover your IP address when you start an app.</string>
+    <string name="enable_realtime_explain">Enable real-time connections for apps attached to chats. If enabled, chat partners may be able to discover your IP address when you start an app.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Show locations in time frame</string>
@@ -518,15 +518,15 @@
     <string name="tab_docs">Docs</string>
     <string name="tab_links">Links</string>
     <string name="tab_map">Map</string>
-    <string name="tab_gallery_empty_hint">Images and videos shared in this chat will appear here.</string>
-    <string name="tab_docs_empty_hint">Documents and other files shared in this chat will appear here.</string>
-    <string name="tab_image_empty_hint">Images shared in this chat will appear here.</string>
-    <string name="tab_video_empty_hint">Videos shared in this chat will appear here.</string>
-    <string name="tab_audio_empty_hint">Audio files and voice messages shared in this chat will appear here.</string>
-    <string name="tab_webxdc_empty_hint">Apps shared in this chat will appear here.</string>
-    <string name="tab_all_media_empty_hint">Media shared in any chat will appear here.</string>
-    <string name="all_files_empty_hint">Documents and other files shared in any chat will appear here.</string>
-    <string name="all_apps_empty_hint">Apps shared in any chat will appear here.</string>
+    <string name="tab_gallery_empty_hint">Images and videos attached to this chat will appear here.</string>
+    <string name="tab_docs_empty_hint">Documents and other files attached to this chat will appear here.</string>
+    <string name="tab_image_empty_hint">Images attached to this chat will appear here.</string>
+    <string name="tab_video_empty_hint">Videos attached to this chat will appear here.</string>
+    <string name="tab_audio_empty_hint">Audio files and voice messages attached to this chat will appear here.</string>
+    <string name="tab_webxdc_empty_hint">Apps attached to this chat will appear here.</string>
+    <string name="tab_all_media_empty_hint">Media attached to any chat will appear here.</string>
+    <string name="all_files_empty_hint">Documents and other files attached to any chat will appear here.</string>
+    <string name="all_apps_empty_hint">Apps attached to any chat will appear here.</string>
     <string name="media_preview">Media Preview</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Aspect Ratio Grid</string>
