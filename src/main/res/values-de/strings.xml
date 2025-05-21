@@ -56,6 +56,7 @@
     <string name="save">Speichern</string>
     <string name="chat">Chat</string>
     <string name="media">Medien</string>
+    <string name="apps_and_media">Apps &amp; Medien</string>
     <string name="profile">Profil</string>
     <string name="main_menu">Hauptmenü</string>
     <string name="start_chat">Chat starten</string>
@@ -275,6 +276,7 @@
     <string name="menu_export_attachment">Datei exportieren</string>
     <string name="menu_export_attachments">Dateien exportieren</string>
     <string name="menu_all_media">Alle Medien</string>
+    <string name="all_apps_and_media">Alle Apps &amp; Medien</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Im Chat zeigen</string>
     <string name="show_app_in_chat">App im Chat zeigen</string>
@@ -466,7 +468,7 @@
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Nachricht senden an…</string>
     <string name="enable_realtime">Echtzeit-Apps</string>
-    <string name="enable_realtime_explain">Aktiviert Echtzeitverbindungen für in Chats verwendeten Apps. Wenn aktiviert, können Chat-Partner möglicherweise Ihre IP-Adresse ermitteln, wenn Sie eine App starten.</string>
+    <string name="enable_realtime_explain">Aktiviert Echtzeitverbindungen für an Chats angehängte Apps. Wenn aktiviert, können Chat-Partner möglicherweise Ihre IP-Adresse ermitteln, wenn Sie eine App starten.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Standorte im Zeitrahmen anzeigen</string>
@@ -518,12 +520,12 @@
     <string name="tab_docs">Dokumente</string>
     <string name="tab_links">Links</string>
     <string name="tab_map">Karte</string>
-    <string name="tab_gallery_empty_hint">In diesem Chat geteilte Bilder und Videos werden hier angezeigt.</string>
-    <string name="tab_docs_empty_hint">In diesem Chat geteilte Dokumente und Dateien werden hier angezeigt.</string>
-    <string name="tab_image_empty_hint">In diesem Chat geteilte Bilder werden hier angezeigt.</string>
-    <string name="tab_video_empty_hint">In diesem Chat geteilte Videos werden hier angezeigt.</string>
-    <string name="tab_audio_empty_hint">In diesem Chat geteilte Audiodateien und Sprachnachrichten werden hier angezeigt.</string>
-    <string name="tab_webxdc_empty_hint">In diesem Chat geteilte Apps werden hier angezeigt.</string>
+    <string name="tab_gallery_empty_hint">Diesem Chat angehängte Bilder und Videos werden hier angezeigt.</string>
+    <string name="tab_docs_empty_hint">Diesem Chat angehängte Dokumente und Dateien werden hier angezeigt.</string>
+    <string name="tab_image_empty_hint">Diesem Chat angehängte Bilder werden hier angezeigt.</string>
+    <string name="tab_video_empty_hint">Diesem Chat angehängte Videos werden hier angezeigt.</string>
+    <string name="tab_audio_empty_hint">Diesem Chat angehängte Audiodateien und Sprachnachrichten werden hier angezeigt.</string>
+    <string name="tab_webxdc_empty_hint">Diesem Chat angehängte Apps werden hier angezeigt.</string>
     <string name="tab_all_media_empty_hint">Medien aus allen Chats werden hier angezeigt.</string>
     <string name="all_files_empty_hint">Dokumente und Dateien aus allen Chats werden hier angezeigt.</string>
     <string name="all_apps_empty_hint">Apps aus allen Chats werden hier angezeigt.</string>
@@ -1036,7 +1038,7 @@
     <string name="perm_continue">Weiter</string>
     <string name="perm_explain_access_to_camera_denied">Um Fotos oder Videos aufzunehmen, bitte in den System-Einstellungen DeltaChat den Zugriff auf die Kamera erlauben. </string>
     <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
-    <string name="perm_explain_access_to_mic_denied">Um Audio-Nachrichten zu senden, bitte in den System-Einstellungen DeltaChat den Zugriff auf das Mikrophon erlauben.</string>
+    <string name="perm_explain_access_to_mic_denied">Um Audio-Nachrichten zu senden, bitte in den System- oder App-Einstellungen den Zugriff auf das Mikrophon erlauben.</string>
     <string name="perm_explain_access_to_storage_denied">Um Dateien zu empfangen oder zu versenden, bitte in den System-Einstellungen Delta Chat den Zugriff auf den Speicher erlauben.</string>
     <string name="perm_explain_access_to_location_denied">Um einen Standort anzuhängen, bitte in den Systemeinstellungen DeltaChat den Zugriff auf \"Standort\" erlauben.</string>
     <string name="perm_explain_access_to_notifications_denied">Um Benachrichtigungen zu erhalten, öffnen Sie \"Systemeinstellungen / Apps / Delta Chat\" und aktivieren Sie \"Benachrichtigungen\".</string>

@@ -202,6 +202,10 @@
     <string name="images_and_videos">Зображення та відео</string>
     <string name="file">Файл</string>
     <string name="files">Файли</string>
+    <string name="files_attach_hint">Надсилати оригінальні файли та нестиснуті зображення</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Вибрати з Файлів</string>
+    <string name="choose_from_gallery">Вибрати з Галереї</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Застосунок</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->

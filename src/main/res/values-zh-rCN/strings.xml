@@ -450,7 +450,7 @@
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">发送消息到...</string>
     <string name="enable_realtime">实时应用</string>
-    <string name="enable_realtime_explain">为聊天中共享的应用启用实时连接。如果启用，聊天伙伴可能能够在您启动应用时发现您的 IP 地址。</string>
+    <string name="enable_realtime_explain">为聊天中附加的应用启用实时连接。如果启用，聊天伙伴可能会在您启动应用时发现您的 IP 地址。</string>
 
     <!-- map -->
     <string name="filter_map_on_time">显示时间范围内的位置</string>
@@ -502,15 +502,15 @@
     <string name="tab_docs">文档</string>
     <string name="tab_links">链接</string>
     <string name="tab_map">地图</string>
-    <string name="tab_gallery_empty_hint">在此聊天中分享的图像和视频将显示于此。</string>
-    <string name="tab_docs_empty_hint">在此聊天中分享的文档、音乐和其他文件将显示于此。</string>
-    <string name="tab_image_empty_hint">此聊天中分享的图片将显示在这里</string>
-    <string name="tab_video_empty_hint">此聊天中分享的视频将显示在这里</string>
-    <string name="tab_audio_empty_hint">此聊天中分享的音频文件和语音消息将显示在这里。</string>
-    <string name="tab_webxdc_empty_hint">在此聊天中分享的私人应用会出现在这里</string>
-    <string name="tab_all_media_empty_hint">任何聊天中分享的媒体文件都将出现在这里</string>
-    <string name="all_files_empty_hint">在任何聊天中分享的文档和其他文件会出现在这里。</string>
-    <string name="all_apps_empty_hint">任何聊天中共享的应用都会出现在此处。</string>
+    <string name="tab_gallery_empty_hint">此聊天附加的图片和视频将显示在此处。</string>
+    <string name="tab_docs_empty_hint">此聊天附加的文档和其他文件将显示在此处。</string>
+    <string name="tab_image_empty_hint">此聊天附加的图片将显示在此处。</string>
+    <string name="tab_video_empty_hint">此聊天附加的视频将显示在此处。</string>
+    <string name="tab_audio_empty_hint">此聊天附加的音频文件和语音消息将显示在此处。</string>
+    <string name="tab_webxdc_empty_hint">此聊天附加的应用将显示在此处。</string>
+    <string name="tab_all_media_empty_hint">任何聊天附加的媒体都将显示在此处。</string>
+    <string name="all_files_empty_hint">任何聊天附加的文档和其他文件都将显示在此处。</string>
+    <string name="all_apps_empty_hint">任何聊天附加的应用都将显示在此处。</string>
     <string name="media_preview">媒体预览</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">宽高比网格</string>
