@@ -202,6 +202,10 @@
     <string name="images_and_videos">Obrázky a videa</string>
     <string name="file">Soubor</string>
     <string name="files">Soubory</string>
+    <string name="files_attach_hint">Odeslat původní soubory a nekomprimované obrázky</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Vybrat ze Souborů</string>
+    <string name="choose_from_gallery">Vybrat z Galerie</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Aplikace</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->

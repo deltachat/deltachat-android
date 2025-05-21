@@ -550,15 +550,15 @@
     <string name="tab_docs">Документы</string>
     <string name="tab_links">Ссылки</string>
     <string name="tab_map">Карта</string>
-    <string name="tab_gallery_empty_hint">Здесь можно просмотреть изображения и видео, отправленные в этом чате.</string>
-    <string name="tab_docs_empty_hint">Здесь можно просмотреть документы и другие файлы, отправленные в этом чате.</string>
-    <string name="tab_image_empty_hint">Здесь можно просмотреть изображения, отправленные в этом чате.</string>
-    <string name="tab_video_empty_hint">Здесь можно просмотреть видео, отправленные в этом чате.</string>
-    <string name="tab_audio_empty_hint">Здесь можно просмотреть аудиофайлы и голосовые сообщения, отправленные в этом чате.</string>
-    <string name="tab_webxdc_empty_hint">Здесь можно просмотреть приложения, отправленные в этом чате.</string>
-    <string name="tab_all_media_empty_hint">Здесь можно просмотреть медиафайлы, отправленные в любом чате.</string>
-    <string name="all_files_empty_hint">Здесь можно просмотреть документы и другие файлы, отправленные в любом чате.</string>
-    <string name="all_apps_empty_hint">Здесь можно просмотреть приложения, полученные или отправленные в любом чате.</string>
+    <string name="tab_gallery_empty_hint">Изображения и видео, прикреплённые к этому чату, будут показаны здесь.</string>
+    <string name="tab_docs_empty_hint">Документы и прочие файлы, прикреплённые к этому чату, будут показаны здесь.</string>
+    <string name="tab_image_empty_hint">Изображения, прикреплённые к этому чату, будут показаны здесь.</string>
+    <string name="tab_video_empty_hint">Видео, прикреплённые к этому чату, будут показаны здесь.</string>
+    <string name="tab_audio_empty_hint">Аудиофайлы и голосовые сообщения, прикреплённые к этому чату, будут показаны здесь.</string>
+    <string name="tab_webxdc_empty_hint">Приложения, прикреплённые к этому чату, будут показаны здесь.</string>
+    <string name="tab_all_media_empty_hint">Медиафайлы, из всех ваших чатов, будут показаны здесь.</string>
+    <string name="all_files_empty_hint">Документы и прочие вложения, из всех ваших чатов, будут показаны здесь.</string>
+    <string name="all_apps_empty_hint">Приложения, из всех ваших чатов, будут показаны здесь.</string>
     <string name="media_preview">Предпросмотр медиафайлов</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Сетка с соотношением сторон</string>

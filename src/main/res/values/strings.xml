@@ -56,6 +56,7 @@
     <string name="save">Save</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
+    <string name="apps_and_media">Apps &amp; Media</string>
     <string name="profile">Profile</string>
     <string name="main_menu">Main Menu</string>
     <string name="start_chat">Start Chat</string>
@@ -275,6 +276,7 @@
     <string name="menu_export_attachment">Export Attachment</string>
     <string name="menu_export_attachments">Export Attachments</string>
     <string name="menu_all_media">All Media</string>
+    <string name="all_apps_and_media">All Apps &amp; Media</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Show in Chat</string>
     <string name="show_app_in_chat">Show App in Chat</string>
