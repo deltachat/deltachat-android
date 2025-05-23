@@ -102,6 +102,7 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
       viewHolder.audioView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
       viewHolder.audioView.disablePlayer(!selected.isEmpty());
       viewHolder.itemView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
+      viewHolder.date.setVisibility(View.VISIBLE);
     }
     else if (slide != null && slide.isWebxdcDocument()) {
       viewHolder.audioView.setVisibility(View.GONE);
@@ -112,6 +113,7 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
       viewHolder.webxdcView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
       viewHolder.webxdcView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
       viewHolder.itemView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
+      viewHolder.date.setVisibility(View.GONE);
     }
     else if (slide != null && slide.hasDocument()) {
       viewHolder.audioView.setVisibility(View.GONE);
@@ -122,11 +124,13 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
       viewHolder.documentView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
       viewHolder.documentView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
       viewHolder.itemView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
+      viewHolder.date.setVisibility(View.VISIBLE);
     }
     else {
       viewHolder.documentView.setVisibility(View.GONE);
       viewHolder.audioView.setVisibility(View.GONE);
       viewHolder.webxdcView.setVisibility(View.GONE);
+      viewHolder.date.setVisibility(View.GONE);
     }
 
     viewHolder.itemView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
