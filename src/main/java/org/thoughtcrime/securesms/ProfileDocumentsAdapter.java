@@ -108,7 +108,7 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
       viewHolder.documentView.setVisibility(View.GONE);
 
       viewHolder.webxdcView.setVisibility(View.VISIBLE);
-      viewHolder.webxdcView.setWebxdc(dcMsg, context.getString(R.string.webxdc_app));
+      viewHolder.webxdcView.setWebxdc(dcMsg, "");
       viewHolder.webxdcView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
       viewHolder.webxdcView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
       viewHolder.itemView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
