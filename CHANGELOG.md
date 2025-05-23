@@ -3,6 +3,8 @@
 ## Unreleased
 
 * Clearer app lists by removing redundant "App" subtitle
+* New button for quick access to the apps sent in current chat
+* New icon for the in-chat apps button
 
 ## v1.58.4
 2025-05
