@@ -27,7 +27,7 @@
 
     <item android:id="@+id/menu_show_apps"
         android:title="@string/webxdc_apps"
-        android:icon="@drawable/baseline_apps_24"
+        android:icon="@drawable/ic_apps_24"
         app:showAsAction="ifRoom" />
 
     <item android:id="@+id/menu_ephemeral_messages"
