@@ -25,6 +25,11 @@
         android:visible="false"
         app:showAsAction="always"/>
 
+    <item android:id="@+id/menu_show_apps"
+        android:title="@string/webxdc_apps"
+        android:icon="@drawable/ic_apps_24"
+        app:showAsAction="ifRoom" />
+
     <item android:id="@+id/menu_ephemeral_messages"
         android:title="@string/ephemeral_messages" />
 
@@ -34,7 +39,7 @@
     <item android:id="@+id/menu_show_map"
         android:title="@string/tab_map"
         android:icon="@drawable/ic_map_white_24dp"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 
     <item android:title="@string/menu_archive_chat"
         android:id="@+id/menu_archive_chat"/>
