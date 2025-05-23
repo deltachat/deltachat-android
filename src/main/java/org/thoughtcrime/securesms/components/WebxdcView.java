@@ -86,7 +86,12 @@ public class WebxdcView extends FrameLayout {
     if (summary.isEmpty()) {
       summary = defaultSummary;
     }
-    appSubtitle.setText(summary);
+    if (summary.isEmpty()) {
+      appSubtitle.setVisibility(View.GONE);
+    } else {
+      appSubtitle.setVisibility(View.VISIBLE);
+      appSubtitle.setText(summary);
+    }
   }
 
   public String getDescription() {
