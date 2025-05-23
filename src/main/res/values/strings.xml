@@ -195,6 +195,7 @@
     <string name="webxdc_apps">Apps</string>
     <string name="webxdc_store_url">App Picker URL</string>
     <string name="webxdc_store_url_explain">If set, the URL will be used as the App Picker instead of the default one</string>
+    <string name="webxdc_draft_hint">Tap \"Send\" to share</string>
     <string name="home">Home</string>
     <string name="games">Games</string>
     <string name="tools">Tools</string>
