@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Clearer app lists by removing redundant "App" subtitle
+
 ## v1.58.4
 2025-05
 
