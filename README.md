@@ -245,6 +245,8 @@ Android metadata and changelogs are translated using [Weblate](https://hosted.we
 <img src="https://hosted.weblate.org/widget/deltachat/android-metadata/svg-badge.svg" alt="Translation status" />
 </a>
 
+App strings and website are translated using [Transifex](https://app.transifex.com/delta-chat/).
+
 # Credits
 
 Many of the user interface classes were based on the Android Signal messenger when we ported it from the former Telegram-UI base in 2019. 
