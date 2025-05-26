@@ -1,4 +1,23 @@
 window.webxdc = (() => {
+  // TTS
+  window.speechSynthesis = {
+    speak: (utterance) => {
+      InternalJSApi.ttsSpeak(utterance.text, utterance.lang);
+    },
+    getVoices: () => {
+      return [];
+    },
+  };
+  window.SpeechSynthesisUtterance = function (text) {
+    return {
+      text: text,
+      lang: "",
+      volume: 1,
+      rate: 1,
+      pitch: 1,
+    };
+  };
+
   let setUpdateListenerPromise = null;
   let update_listener = () => {};
   let last_serial = 0;
