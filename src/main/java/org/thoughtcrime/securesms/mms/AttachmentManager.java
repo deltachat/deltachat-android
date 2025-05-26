@@ -312,7 +312,7 @@ public class AttachmentManager {
           } else if (slide.hasDocument()) {
             if (slide.isWebxdcDocument()) {
               DcMsg instance = msg != null ? msg : DcHelper.getContext(context).getMsg(slide.dcMsgId);
-              webxdcView.setWebxdc(instance, context.getString(R.string.videochat_tap_to_open));
+              webxdcView.setWebxdc(instance, context.getString(R.string.webxdc_draft_hint));
               webxdcView.setWebxdcClickListener((v, s) -> {
                 WebxdcActivity.openWebxdcActivity(context, instance);
               });
@@ -409,7 +409,7 @@ public class AttachmentManager {
     if (slide.isPresent()) {
       if (slide.get().isWebxdcDocument()) {
         if (webxdcView != null) {
-          webxdcView.setWebxdc(DcHelper.getContext(context).getMsg(slide.get().dcMsgId), context.getString(R.string.videochat_tap_to_open));
+          webxdcView.setWebxdc(DcHelper.getContext(context).getMsg(slide.get().dcMsgId), context.getString(R.string.webxdc_draft_hint));
         }
       }
     }
