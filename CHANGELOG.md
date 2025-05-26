@@ -1,5 +1,20 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Clearer app lists by removing redundant "App" subtitle
+* New button for quick access to the apps sent in current chat
+* New icon for the in-chat apps button
+* Improve hint for app drafts
+
+## v1.58.4
+2025-05
+
+* make in-chat apps properly work when they are not sent yet, in draft mode
+* better avatar quality
+* some more bug fixes and updated translations
+* update to core 1.159.5
+
 ## v1.58.3
 2025-05
 

@@ -181,6 +181,10 @@
     <string name="images_and_videos">Figura dhe Video</string>
     <string name="file">Kartelë</string>
     <string name="files">Kartela</string>
+    <string name="files_attach_hint">Dërgo kartela origjinale dhe figura të pangjeshura</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Zgjidhni prej Kartelash</string>
+    <string name="choose_from_gallery">Zgjidhni prej Galerie</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Aplikacion</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
