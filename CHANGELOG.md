@@ -3,7 +3,7 @@
 ## Unreleased
 
 * Clearer app lists by removing redundant "App" subtitle
-* Add Text-to-Speech support for in-chat apps
+* Add Text-To-Speech (TTS) support for in-chat apps
 
 ## v1.58.4
 2025-05
