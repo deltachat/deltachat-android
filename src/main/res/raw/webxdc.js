@@ -12,9 +12,6 @@ window.webxdc = (() => {
     return {
       text: text,
       lang: "",
-      volume: 1,
-      rate: 1,
-      pitch: 1,
     };
   };
 
