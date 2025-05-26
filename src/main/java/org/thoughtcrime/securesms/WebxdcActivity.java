@@ -630,7 +630,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
     @JavascriptInterface
     public void ttsSpeak(String text, String lang) {
-      tts.setLanguage(Locale.forLanguageTag(lang));
+      if (lang != null && !lang.isEmpty()) tts.setLanguage(Locale.forLanguageTag(lang));
       tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
     }
 
