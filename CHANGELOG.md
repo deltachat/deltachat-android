@@ -6,6 +6,7 @@
 * New button for quick access to the apps sent in current chat
 * New icon for the in-chat apps button
 * Improve hint for app drafts
+* Add Text-To-Speech (TTS) support for in-chat apps
 
 ## v1.58.4
 2025-05
