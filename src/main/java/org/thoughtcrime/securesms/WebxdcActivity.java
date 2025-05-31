@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -58,6 +59,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate  {
@@ -80,6 +82,8 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private int sendUpdateInterval;
   private boolean internetAccess = false;
   private boolean hideActionBar = false;
+
+  private TextToSpeech tts;
 
   public static void openMaps(Context context, int chatId) {
     DcContext dcContext = DcHelper.getContext(context);
@@ -149,6 +153,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
     rpc = DcHelper.getRpc(this);
+    initTTS();
 
     Bundle b = getIntent().getExtras();
     hideActionBar = b.getBoolean(EXTRA_HIDE_ACTION_BAR, false);
@@ -270,6 +275,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     lastOpenTime = System.currentTimeMillis();
     DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
     leaveRealtimeChannel();
+    tts.shutdown();
     super.onDestroy();
   }
 
@@ -307,6 +313,14 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     setScreenMode(newConfig);
   }
 
+  private void initTTS() {
+    tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+      @Override
+      public void onInit(int status) {
+        Log.i(TAG, "TTS Init Status: " + status);
+      }
+    });
+  }
   private void setScreenMode(Configuration config) {
     // enter/exit fullscreen mode depending on orientation (landscape/portrait),
     // on tablets there is enough height so fullscreen mode is never enabled there
@@ -613,5 +627,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         e.printStackTrace();
       }
     }
+
+    @JavascriptInterface
+    public void ttsSpeak(String text, String lang) {
+      if (lang != null && !lang.isEmpty()) tts.setLanguage(Locale.forLanguageTag(lang));
+      tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+    }
+
   }
 }
