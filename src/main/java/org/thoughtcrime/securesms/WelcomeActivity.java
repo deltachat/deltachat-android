@@ -97,7 +97,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
           sendBroadcast(intent);
         }
 
-        DcHelper.maybeShowLastError(this);
+        DcHelper.maybeShowMigrationError(this);
     }
 
     protected void initializeActionBar() {

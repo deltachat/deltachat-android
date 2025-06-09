@@ -79,8 +79,8 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
 
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
-                // If too many people contact us because of this message, we can just revert it to "Receiving Error"
-                getTransferActivity().setTransferError("Sorry, this shouldn't have happened. Please send this message to the Delta Chat developers, either at delta@merlinux.eu or at https://support.delta.chat.\n\n");
+                DcHelper.maybeShowMigrationError(getTransferActivity());
+                getTransferActivity().setTransferError("Receiving error");
             } else if (permille < 1000) {
                 percent = permille/10;
                 percentMax = 100;

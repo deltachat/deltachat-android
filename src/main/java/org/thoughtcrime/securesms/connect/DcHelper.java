@@ -508,7 +508,7 @@ public class DcHelper {
      * A few releases after the PGP-contacts migration (which happened in 2025-05),
      * we can remove this function again.
      */
-    public static void maybeShowLastError(Context context) {
+    public static void maybeShowMigrationError(Context context) {
         try {
             String lastError = DcHelper.getRpc(context).getMigrationError(DcHelper.getContext(context).getAccountId());
 
