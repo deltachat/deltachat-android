@@ -14,6 +14,10 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 public class VideochatUtil {
 
   public void invite(Activity activity, int chatId) {
@@ -52,10 +56,19 @@ public class VideochatUtil {
       .onAllGranted(() -> {
           DcContext dcContext = DcHelper.getContext(activity);
           DcMsg dcMsg = dcContext.getMsg(msgId);
+          String url = dcMsg.getVideochatUrl();
+          if (url.startsWith(DcHelper.DEFAULT_VIDEOCHAT_URL_PREFIX) && url.contains("#")) {
+            String name = dcContext.getName();
+            try {
+              name = URLEncoder.encode(dcContext.getName(), StandardCharsets.UTF_8.toString());
+            } catch (UnsupportedEncodingException ignored) {}
+            url += "&userInfo.displayName=%22" + name +"%22";
+          }
+
           Intent intent = new Intent(activity, VideochatActivity.class);
           intent.setAction(Intent.ACTION_VIEW);
           intent.putExtra(VideochatActivity.EXTRA_CHAT_ID, dcMsg.getChatId());
-          intent.putExtra(VideochatActivity.EXTRA_URL, dcMsg.getVideochatUrl());
+          intent.putExtra(VideochatActivity.EXTRA_URL, url);
           activity.startActivity(intent);
         })
       .execute();
