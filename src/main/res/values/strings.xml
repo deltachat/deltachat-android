@@ -234,14 +234,27 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Chat with…</string>
     <string name="clone_chat">Clone Chat</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Broadcast List</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Broadcast Lists</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">New Broadcast List</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Channel</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Channels</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">New Channel</string>
     <string name="add_recipients">Add Recipients</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">Edit Broadcast List</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">Broadcast List Name</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Please enter a name for the broadcast list.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Channel Name</string>
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Toggle Emoji Keyboard</string>
     <string name="menu_edit_group">Edit Group</string>
@@ -397,8 +410,10 @@
     <string name="ask_start_chat_with">Chat with %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Remove %1$s from broadcast list?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Remove %1$s from channel?</string>
     <string name="open_url_confirmation">Do you want to open this link?</string>
 
 
@@ -428,7 +443,10 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Send a message to %1$s.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">In a broadcast list, recipients will receive messages in a read-only chat with you.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">In a channel, recipients don\'t see who else is part of the channel.</string>
     <string name="chat_new_group_hint">Others will only see this group after you sent a first message.</string>
     <string name="chat_record_slide_to_cancel">Slide to cancel</string>
     <string name="chat_record_explain">Tap and hold to record a voice message, release to send</string>

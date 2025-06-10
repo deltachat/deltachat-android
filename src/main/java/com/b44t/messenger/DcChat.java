@@ -61,7 +61,7 @@ public class DcChat {
         return getType() == DC_CHAT_TYPE_MAILINGLIST;
     }
 
-    public boolean isBroadcast() {
+    public boolean isBroadcastChannel() {
       return getType() == DC_CHAT_TYPE_BROADCAST;
     }
 

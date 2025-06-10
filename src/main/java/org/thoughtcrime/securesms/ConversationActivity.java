@@ -431,7 +431,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     getMenuInflater().inflate(R.menu.conversation, menu);
 
-    if (dcChat.isSelfTalk() || dcChat.isBroadcast()) {
+    if (dcChat.isSelfTalk() || dcChat.isBroadcastChannel()) {
       menu.findItem(R.id.menu_mute_notifications).setVisible(false);
     } else if(dcChat.isMuted()) {
       menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);
@@ -441,12 +441,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_show_map).setVisible(false);
     }
 
-    if (!dcChat.canSend() || dcChat.isBroadcast() || dcChat.isMailingList()) {
+    if (!dcChat.canSend() || dcChat.isBroadcastChannel() || dcChat.isMailingList()) {
       menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
     }
 
     if (isMultiUser()) {
-      if (dcChat.canSend() && !dcChat.isBroadcast() && !dcChat.isMailingList()) {
+      if (dcChat.canSend() && !dcChat.isBroadcastChannel() && !dcChat.isMailingList()) {
         menu.findItem(R.id.menu_leave).setVisible(true);
       }
     }

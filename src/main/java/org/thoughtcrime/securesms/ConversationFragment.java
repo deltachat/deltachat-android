@@ -168,8 +168,8 @@ public class ConversationFragment extends MessageSelectorFragment
     private void setNoMessageText() {
         DcChat dcChat = getListAdapter().getChat();
         if(dcChat.isMultiUser()){
-            if (dcChat.isBroadcast()) {
-              noMessageTextView.setText(R.string.chat_new_broadcast_hint);
+            if (dcChat.isBroadcastChannel()) {
+              noMessageTextView.setText(R.string.chat_new_channel_hint);
             } else if (dcChat.isUnpromoted()) {
                 noMessageTextView.setText(R.string.chat_new_group_hint);
             }
