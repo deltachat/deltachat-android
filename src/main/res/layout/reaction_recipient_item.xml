@@ -50,8 +50,9 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/reaction"
+        style="@style/ButtonSecondary"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:gravity="center"
         android:textSize="22dp"
         android:fontFamily="sans-serif"
