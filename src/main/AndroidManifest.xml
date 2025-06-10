@@ -367,6 +367,13 @@
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
     </activity>
 
+    <activity android:name=".videochat.VideochatActivity"
+              android:label=""
+              android:theme="@style/TextSecure.LightTheme"
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode"
+              android:exported="true">
+    </activity>
+
     <activity android:name=".WebxdcActivity"
               android:label=""
               android:theme="@style/TextSecure.LightTheme"

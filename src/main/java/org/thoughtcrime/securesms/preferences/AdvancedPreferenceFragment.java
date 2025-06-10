@@ -338,7 +338,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       View gl = View.inflate(requireActivity(), R.layout.single_line_input, null);
       EditText inputField = gl.findViewById(R.id.input_field);
       inputField.setHint(R.string.videochat_instance_placeholder);
-      inputField.setText(dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE));
+      inputField.setText(DcHelper.getVideochatURL(dcContext));
       inputField.setSelection(inputField.getText().length());
       inputField.setInputType(TYPE_TEXT_VARIATION_URI);
       new AlertDialog.Builder(requireActivity())
@@ -381,8 +381,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   private void updateWebrtcSummary() {
     Preference webrtcInstance = this.findPreference("pref_webrtc_instance");
     if (webrtcInstance != null) {
-      webrtcInstance.setSummary(DcHelper.isWebrtcConfigOk(dcContext)?
-              dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE) : getString(R.string.none));
+      webrtcInstance.setSummary(DcHelper.getVideochatURL(dcContext));
     }
   }
 
