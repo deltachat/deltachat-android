@@ -444,7 +444,7 @@
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archived</string>
     <string name="chat_request_label">Request</string>
-    <string name="chat_request_label_explain">Include requests in counters and notification</string>
+    <string name="chat_request_label_explain">Include requests in counters and notifications</string>
     <string name="chat_no_messages">No messages.</string>
     <string name="chat_self_talk_subtitle">Messages to Self</string>
     <string name="archive_empty_hint">Archived chats will appear here.</string>
