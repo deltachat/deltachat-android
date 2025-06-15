@@ -56,7 +56,6 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
             boolean res = dcContext.receiveBackup(qrCode);
             Log.i(TAG, "##### receiveBackup() done with result: "+res);
         }).start();
-
         BackupTransferActivity.appendSSID(getActivity(), sameNetworkHint);
 
         return view;
@@ -80,7 +79,8 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
 
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
-                getTransferActivity().setTransferError("Receiving Error");
+                DcHelper.maybeShowMigrationError(getTransferActivity());
+                getTransferActivity().setTransferError("Receiving error");
             } else if (permille < 1000) {
                 percent = permille/10;
                 percentMax = 100;
