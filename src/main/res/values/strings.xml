@@ -34,6 +34,8 @@
     <string name="update">Update</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Attachment</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">Attach \"%1$s\"?</string>
     <string name="back">Back</string>
     <string name="close">Close</string>
     <string name="close_window">Close Window</string>
@@ -58,6 +60,8 @@
     <string name="media">Media</string>
     <string name="apps_and_media">Apps &amp; Media</string>
     <string name="profile">Profile</string>
+    <string name="all_profiles">All Profiles</string>
+    <string name="current_profile">Current Profile</string>
     <string name="main_menu">Main Menu</string>
     <string name="start_chat">Start Chat</string>
     <string name="show_full_message">Show Full Message…</string>
@@ -92,6 +96,8 @@
     <string name="no_app_to_handle_data">Can\'t find an app to handle this type of data.</string>
     <string name="no_browser_installed">No browser installed.</string>
     <string name="file_not_found">Could not find %1$s.</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">Cannot save %1$s.</string>
     <string name="copied_to_clipboard">Copied to clipboard.</string>
     <string name="contacts_headline">Contacts</string>
     <string name="email_address">E-Mail Address</string>
@@ -151,7 +157,7 @@
         <item quantity="one">%d Selected</item>
         <item quantity="other">%d Selected</item>
     </plurals>
-
+    <string name="selected_colon">Selected:</string>
     <string name="self">Me</string>
     <string name="draft">Draft</string>
     <string name="image">Image</string>
@@ -438,6 +444,7 @@
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archived</string>
     <string name="chat_request_label">Request</string>
+    <string name="chat_request_label_explain">Include requests in counters and notifications</string>
     <string name="chat_no_messages">No messages.</string>
     <string name="chat_self_talk_subtitle">Messages to Self</string>
     <string name="archive_empty_hint">Archived chats will appear here.</string>
@@ -511,7 +518,7 @@
     <string name="group_add_members">Add Members</string>
     <string name="group_self_not_in_group">You must be a member of the group to perform this action.</string>
     <string name="profile_encryption">Encryption</string>
-    <string name="profile_shared_chats">Shared Chats</string>
+    <string name="profile_shared_chats">Chats in Common</string>
     <string name="related_chats">Related Chats</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Past Members</string>
@@ -807,6 +814,7 @@
     <string name="n_bytes_message">%1$s message</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Download maximum available until %1$s</string>
+    <string name="select_profile">Select Profile</string>
     <string name="profile_image_select">Select Profile Image</string>
     <string name="select_your_new_profile_image">Select your new profile image</string>
     <string name="profile_image_delete">Delete Profile Image</string>
