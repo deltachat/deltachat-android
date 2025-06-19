@@ -18,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.MimeTypeMap;
-import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceResponse;
@@ -35,7 +34,6 @@ import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
 
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
@@ -166,13 +164,6 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
     webView.setWebChromeClient(new WebChromeClient() {
       @Override
-      public void onPermissionRequest(PermissionRequest request) {
-      Util.runOnMain(() -> {
-        request.grant(request.getResources());
-      });
-      }
-
-      @Override
       @RequiresApi(21)
       public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, WebChromeClient.FileChooserParams fileChooserParams) {
         if (WebxdcActivity.this.filePathCallback != null) {
@@ -215,7 +206,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     this.baseURL = "https://acc" + dcContext.getAccountId() + "-msg" + appMessageId + ".localhost";
 
     final JSONObject info = this.dcAppMsg.getWebxdcInfo();
-    internetAccess = true; //JsonUtils.optBoolean(info, "internet_access");
+    internetAccess = JsonUtils.optBoolean(info, "internet_access");
     selfAddr = info.optString("self_addr");
     sendUpdateMaxSize = info.optInt("send_update_max_size");
     sendUpdateInterval = info.optInt("send_update_interval");
@@ -238,10 +229,6 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     String extraHref = b.getString(EXTRA_HREF, "");
     if (TextUtils.isEmpty(extraHref)) {
       extraHref = "index.html";
-      if (this.dcAppMsg.getFromId() == DcContact.DC_CONTACT_ID_SELF) {
-          extraHref += "#call";
-      }
-
     }
 
     String href = baseURL + "/" + extraHref;

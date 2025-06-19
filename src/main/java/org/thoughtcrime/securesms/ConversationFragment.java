@@ -741,7 +741,7 @@ public class ConversationFragment extends MessageSelectorFragment
                 }
             }
             else if (messageRecord.getType()==DcMsg.DC_MSG_VIDEOCHAT_INVITATION) {
-                new VideochatUtil().join(getActivity(), messageRecord.getId());
+                VideochatUtil.joinMeeting(getActivity(), messageRecord.getId());
             }
             else if(DozeReminder.isDozeReminderMsg(getContext(), messageRecord)) {
                 DozeReminder.dozeReminderTapped(getContext());

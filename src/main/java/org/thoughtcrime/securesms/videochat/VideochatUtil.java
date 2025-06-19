@@ -20,7 +20,7 @@ import java.nio.charset.StandardCharsets;
 
 public class VideochatUtil {
 
-  public void invite(Activity activity, int chatId) {
+  public static void startMeeting(Activity activity, int chatId) {
     DcContext dcContext = DcHelper.getContext(activity);
     DcChat dcChat = dcContext.getChat(chatId);
 
@@ -29,18 +29,7 @@ public class VideochatUtil {
             .setMessage(R.string.videochat_invite_user_hint)
             .setNegativeButton(R.string.cancel, null)
             .setPositiveButton(R.string.ok, (dialog, which) -> {
-                String instance = dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE);
-                boolean unset = instance == null || instance.isEmpty();
-                if (unset) {
-                  dcContext.setConfig(DcHelper.CONFIG_WEBRTC_INSTANCE, DcHelper.DEFAULT_VIDEOCHAT_URL);
-                }
-
                 int msgId = dcContext.sendVideochatInvitation(dcChat.getId());
-
-                if (unset) {
-                  dcContext.setConfig(DcHelper.CONFIG_WEBRTC_INSTANCE, null);
-                }
-
                 if (msgId != 0) {
                   join(activity, msgId);
                 }
@@ -48,27 +37,40 @@ public class VideochatUtil {
             .show();
   }
 
-  public void join(Activity activity, int msgId) {
+  public static void joinMeeting(Activity activity, int msgId) {
+    DcContext dcContext = DcHelper.getContext(activity);
+    DcMsg dcMsg = dcContext.getMsg(msgId);
+    String videochatUrl = dcMsg.getVideochatUrl();
+    IntentUtils.showInBrowser(activity, videochatUrl);
+  }
+
+  public static void startCall(Activity activity, int chatId) {
+    DcContext dcContext = DcHelper.getContext(activity);
+    DcChat dcChat = dcContext.getChat(chatId);
+
+    new AlertDialog.Builder(activity)
+            .setTitle(activity.getString(R.string.videochat_invite_user_to_videochat, dcChat.getName()))
+            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(R.string.ok, (dialog, which) -> {
+                joinCall(activity, chatId, "#call");
+            })
+            .show();
+  }
+
+  public static void joinCall(Activity activity, int chatId) {
+    joinCall(activity, chatId, "");
+  }
+
+  private static void joinCall(Activity activity, int chatId, String hash) {
     Permissions.with(activity)
       .request(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
       .ifNecessary()
       .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_camera_denied))
       .onAllGranted(() -> {
-          DcContext dcContext = DcHelper.getContext(activity);
-          DcMsg dcMsg = dcContext.getMsg(msgId);
-          String url = dcMsg.getVideochatUrl();
-          if (url.startsWith(DcHelper.DEFAULT_VIDEOCHAT_URL_PREFIX) && url.contains("#")) {
-            String name = dcContext.getName();
-            try {
-              name = URLEncoder.encode(dcContext.getName(), StandardCharsets.UTF_8.toString());
-            } catch (UnsupportedEncodingException ignored) {}
-            url += "&userInfo.displayName=%22" + name +"%22";
-          }
-
           Intent intent = new Intent(activity, VideochatActivity.class);
           intent.setAction(Intent.ACTION_VIEW);
-          intent.putExtra(VideochatActivity.EXTRA_CHAT_ID, dcMsg.getChatId());
-          intent.putExtra(VideochatActivity.EXTRA_URL, url);
+          intent.putExtra(VideochatActivity.EXTRA_CHAT_ID, chatId);
+          intent.putExtra(VideochatActivity.EXTRA_HASH, hash);
           activity.startActivity(intent);
         })
       .execute();

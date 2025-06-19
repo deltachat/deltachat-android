@@ -17,10 +17,10 @@ public class VideochatActivity extends WebViewActivity {
   private static final String TAG = VideochatActivity.class.getSimpleName();
 
   public static final String EXTRA_CHAT_ID = "chat_id";
-  public static final String EXTRA_URL = "url";
+  public static final String EXTRA_HASH = "hash";
 
   private DcContext dcContext;
-  private String url = "";
+  private String url = "file:///android_asset/call.html";
 
   @Override
   protected void onCreate(Bundle state, boolean ready) {
@@ -28,12 +28,12 @@ public class VideochatActivity extends WebViewActivity {
     this.dcContext = DcHelper.getContext(getApplicationContext());
 
     Bundle b = getIntent().getExtras();
-    url = b.getString(EXTRA_URL, "");
+    String hash = b.getString(EXTRA_HASH, "");
     int chatId = b.getInt(EXTRA_CHAT_ID, 0);
 
     WebSettings webSettings = webView.getSettings();
     webSettings.setJavaScriptEnabled(true);
-    webSettings.setUserAgentString("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36");
+    webSettings.setMediaPlaybackRequiresUserGesture(false);
 
     webView.setWebChromeClient(new WebChromeClient() {
       @Override
@@ -51,7 +51,7 @@ public class VideochatActivity extends WebViewActivity {
       });
     });
 
-    webView.loadUrl(url);
+    webView.loadUrl(url+hash);
   }
 
   @Override
