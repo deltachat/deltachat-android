@@ -13,6 +13,7 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.IntentUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -31,7 +32,7 @@ public class VideochatUtil {
             .setPositiveButton(R.string.ok, (dialog, which) -> {
                 int msgId = dcContext.sendVideochatInvitation(dcChat.getId());
                 if (msgId != 0) {
-                  join(activity, msgId);
+                  joinMeeting(activity, msgId);
                 }
             })
             .show();
