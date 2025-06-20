@@ -74,9 +74,6 @@ public class DcHelper {
     public static final String CONFIG_WEBXDC_REALTIME_ENABLED = "webxdc_realtime_enabled";
     public static final String CONFIG_PRIVATE_TAG = "private_tag";
 
-    public static final String DEFAULT_VIDEOCHAT_URL_PREFIX = "https://meet.systemli.org/";
-    public static final String DEFAULT_VIDEOCHAT_URL = DEFAULT_VIDEOCHAT_URL_PREFIX + "$ROOM#config.prejoinConfig.enabled=false&config.notifications=[]&config.toolbarButtons=[%22microphone%22,%22camera%22,%22hangup%22]";
-
     public static DcContext getContext(@NonNull Context context) {
         return ApplicationContext.getInstance(context).dcContext;
     }
@@ -406,12 +403,9 @@ public class DcHelper {
 
   }
 
-  public static String getVideochatURL(DcContext dcContext) {
+  public static boolean isWebrtcConfigOk(DcContext dcContext) {
     String instance = dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE);
-    if (instance != null && !instance.isEmpty()) {
-      return instance;
-    }
-    return DEFAULT_VIDEOCHAT_URL;
+    return (instance != null && !instance.isEmpty());
   }
 
   @NonNull
