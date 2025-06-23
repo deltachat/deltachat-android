@@ -6,6 +6,8 @@
 * New button for quick access to the apps sent in current chat
 * New icon for the in-chat apps button
 * Improve hint for app drafts
+* Start rebuilding the experimental broadcast lists
+  into proper channels - note that this is work-in-progress
 
 ## v1.58.4
 2025-05

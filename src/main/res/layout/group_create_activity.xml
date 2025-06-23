@@ -44,7 +44,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:textSize="18sp"
-        android:text="@string/chat_new_broadcast_hint" />
+        android:text="@string/chat_new_channel_hint" />
 
     <ListView android:id="@+id/selected_contacts_list"
         android:layout_marginTop="16dp"

@@ -102,9 +102,9 @@ public class NewConversationActivity extends ContactSelectionActivity {
   public void onContactSelected(int contactId) {
     if(contactId == DcContact.DC_CONTACT_ID_NEW_GROUP) {
       startActivity(new Intent(this, GroupCreateActivity.class));
-    } else if(contactId == DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST) {
+    } else if(contactId == DcContact.DC_CONTACT_ID_NEW_BROADCAST_CHANNEL) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
-      intent.putExtra(GroupCreateActivity.CREATE_BROADCAST, true);
+      intent.putExtra(GroupCreateActivity.CREATE_BROADCAST_CHANNEL, true);
       startActivity(intent);
     } else if (contactId == DcContact.DC_CONTACT_ID_QR_INVITE) {
       new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
