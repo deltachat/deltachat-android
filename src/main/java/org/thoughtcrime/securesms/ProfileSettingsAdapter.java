@@ -292,7 +292,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
         if (dcChat.isMailingList()) {
           isMailingList = true;
-        } else if (dcChat.canSend()) {
+        } else if (dcChat.canSend() && dcChat.isEncrypted()) {
           itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
           if (!isBroadcast) {
             itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, DcContact.DC_CONTACT_ID_QR_INVITE, 0));

@@ -19,10 +19,10 @@
         />
 
     <ImageView
-        android:id="@+id/footer_secure_indicator"
+        android:id="@+id/footer_email_indicator"
         android:layout_width="12sp"
         android:layout_height="11sp"
-        android:src="@drawable/msg_encr_out"
+        android:src="@drawable/ic_outline_email"
         android:visibility="gone"
         android:layout_gravity="center_vertical|end"
         android:importantForAccessibility="no"
