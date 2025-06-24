@@ -620,10 +620,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void handleAllMedia() {
     Intent intent = new Intent(this, AllMediaActivity.class);
     intent.putExtra(AllMediaActivity.CHAT_ID_EXTRA, chatId);
-    intent.putExtra(AllMediaActivity.FROM_CHAT, true);
-    intent.putExtra(AllMediaActivity.FORCE_TAB_EXTRA, AllMediaActivity.TAB_WEBXDC);
     startActivity(intent);
-    overridePendingTransition(0, 0);
   }
 
   private void handleLeaveGroup() {
