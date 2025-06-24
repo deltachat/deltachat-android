@@ -1,0 +1,642 @@
+package org.thoughtcrime.securesms;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.Settings;
+import android.text.TextUtils;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.view.ActionMode;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
+import com.google.android.material.tabs.TabLayout;
+
+import org.thoughtcrime.securesms.connect.DcEventCenter;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
+import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.RelayUtil;
+import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
+
+import java.io.File;
+import java.util.ArrayList;
+
+public class AllMediaActivity extends PassphraseRequiredActionBarActivity
+                             implements DcEventCenter.DcEventDelegate
+{
+
+  public static final String CHAT_ID_EXTRA    = "chat_id";
+  public static final String CONTACT_ID_EXTRA = "contact_id";
+  public static final String FORCE_TAB_EXTRA  = "force_tab";
+  public static final String FROM_CHAT        = "from_chat";
+
+  public static final int TAB_SETTINGS = 10;
+  public static final int TAB_GALLERY  = 20;
+  public static final int TAB_AUDIO    = 25;
+  public static final int TAB_DOCS     = 30;
+  public static final int TAB_WEBXDC   = 35;
+  public static final int TAB_LINKS    = 40;
+  public static final int TAB_MAP      = 50;
+
+  private static final int REQUEST_CODE_PICK_RINGTONE = 1;
+
+  private DcContext            dcContext;
+  private Rpc rpc;
+  private int                  chatId;
+  private boolean              chatIsMultiUser;
+  private boolean              chatIsDeviceTalk;
+  private boolean              chatIsMailingList;
+  private boolean              chatIsBroadcast;
+  private int                  contactId;
+  private boolean              fromChat;
+
+  private final ArrayList<Integer> tabs = new ArrayList<>();
+  private Toolbar            toolbar;
+  private ConversationTitleView titleView;
+  private TabLayout          tabLayout;
+  private ViewPager          viewPager;
+
+  @Override
+  protected void onPreCreate() {
+    dynamicTheme = new DynamicNoActionBarTheme();
+    super.onPreCreate();
+    dcContext = DcHelper.getContext(this);
+    rpc = DcHelper.getRpc(this);
+  }
+
+  @Override
+  protected void onCreate(Bundle bundle, boolean ready) {
+    setContentView(R.layout.all_media_activity);
+
+    initializeResources();
+
+    setSupportActionBar(this.toolbar);
+    ActionBar supportActionBar = getSupportActionBar();
+    if (supportActionBar != null) {
+      if (isGlobalProfile()) {
+        supportActionBar.setDisplayHomeAsUpEnabled(true);
+        supportActionBar.setHomeActionContentDescription(getString(R.string.back));
+      } else {
+        supportActionBar.setDisplayHomeAsUpEnabled(false);
+        supportActionBar.setCustomView(R.layout.conversation_title_view);
+        supportActionBar.setDisplayShowCustomEnabled(true);
+        supportActionBar.setDisplayShowTitleEnabled(false);
+        Toolbar parent = (Toolbar) supportActionBar.getCustomView().getParent();
+        parent.setPadding(0,0,0,0);
+        parent.setContentInsetsAbsolute(0,0);
+
+        titleView = (ConversationTitleView) supportActionBar.getCustomView();
+        titleView.setOnBackClickedListener(view -> onBackPressed());
+        titleView.setOnClickListener(view -> onEnlargeAvatar());
+        if (isContactProfile() && !isSelfProfile() && !chatIsDeviceTalk) {
+          titleView.registerForContextMenu(this);
+        }
+      }
+    }
+
+    updateToolbar();
+
+    this.tabLayout.setupWithViewPager(viewPager);
+    this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
+    int forceTab = getIntent().getIntExtra(FORCE_TAB_EXTRA, -1);
+    if (forceTab != -1) {
+      int forceIndex = tabs.indexOf(forceTab);
+      if (forceIndex != -1) {
+        this.viewPager.setCurrentItem(forceIndex);
+      }
+    }
+
+    DcEventCenter eventCenter = DcHelper.getEventCenter(this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    if (!isSelfProfile() && !isGlobalProfile()) {
+      getMenuInflater().inflate(R.menu.profile_common, menu);
+      boolean canReceive = true;
+
+      if (chatId != 0) {
+        menu.findItem(R.id.menu_clone).setVisible(chatIsMultiUser && !chatIsMailingList);
+        if (chatIsDeviceTalk) {
+          menu.findItem(R.id.edit_name).setVisible(false);
+          menu.findItem(R.id.show_encr_info).setVisible(false);
+          menu.findItem(R.id.share).setVisible(false);
+        } else if (chatIsMultiUser) {
+          if (chatIsBroadcast) {
+            canReceive = false;
+          } else {
+            DcChat dcChat = dcContext.getChat(chatId);
+            if (!chatIsMailingList && !dcChat.canSend()) {
+              menu.findItem(R.id.edit_name).setVisible(false);
+            }
+          }
+          menu.findItem(R.id.share).setVisible(false);
+        }
+      } else {
+        menu.findItem(R.id.menu_clone).setVisible(false);
+        canReceive = false;
+      }
+
+      if (!canReceive) {
+        menu.findItem(R.id.menu_mute_notifications).setVisible(false);
+        menu.findItem(R.id.menu_sound).setVisible(false);
+        menu.findItem(R.id.menu_vibrate).setVisible(false);
+      }
+
+      if (isContactProfile()) {
+        menu.findItem(R.id.edit_name).setTitle(R.string.menu_edit_name);
+      }
+
+      if (!isContactProfile() || chatIsDeviceTalk) {
+        menu.findItem(R.id.block_contact).setVisible(false);
+      }
+    }
+
+    super.onCreateOptionsMenu(menu);
+    return true;
+  }
+
+  @Override
+  public boolean onPrepareOptionsMenu(Menu menu) {
+    MenuItem item = menu.findItem(R.id.block_contact);
+    if(item!=null) {
+      item.setTitle(dcContext.getContact(contactId).isBlocked()? R.string.menu_unblock_contact : R.string.menu_block_contact);
+      Util.redMenuItem(menu, R.id.block_contact);
+    }
+
+    item = menu.findItem(R.id.menu_mute_notifications);
+    if(item!=null) {
+      item.setTitle(dcContext.getChat(chatId).isMuted()? R.string.menu_unmute : R.string.menu_mute);
+    }
+
+    super.onPrepareOptionsMenu(menu);
+    return true;
+  }
+
+  @Override
+  public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+    super.onCreateContextMenu(menu, v, menuInfo);
+    getMenuInflater().inflate(R.menu.profile_title_context, menu);
+  }
+
+  boolean backPressed = false;
+  @Override
+  public void onBackPressed() {
+    backPressed = true;
+    super.onBackPressed();
+  }
+
+  @Override
+  protected void onPause() {
+    super.onPause();
+    if (backPressed && fromChat) {
+      overridePendingTransition(0, 0);
+    }
+  }
+
+  @Override
+  public void onDestroy() {
+    DcHelper.getEventCenter(this).removeObservers(this);
+    super.onDestroy();
+  }
+
+  @Override
+  public void handleEvent(@NonNull DcEvent event) {
+    updateToolbar();
+  }
+
+  private void initializeResources() {
+    chatId           = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
+    contactId        = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
+    chatIsMultiUser  = false;
+    chatIsDeviceTalk = false;
+    chatIsMailingList= false;
+    chatIsBroadcast  = false;
+    fromChat         = getIntent().getBooleanExtra(FROM_CHAT, false);
+
+    if (contactId!=0) {
+      chatId = dcContext.getChatIdByContactId(contactId);
+    }
+    else if(chatId!=0) {
+      DcChat dcChat = dcContext.getChat(chatId);
+      chatIsMultiUser = dcChat.isMultiUser();
+      chatIsDeviceTalk = dcChat.isDeviceTalk();
+      chatIsMailingList = dcChat.isMailingList();
+      chatIsBroadcast = dcChat.isBroadcast();
+      if(!chatIsMultiUser) {
+        final int[] members = dcContext.getChatContacts(chatId);
+        contactId = members.length>=1? members[0] : 0;
+      }
+    }
+
+    if(!isGlobalProfile() && !isSelfProfile() && !chatIsMailingList) {
+      tabs.add(TAB_SETTINGS);
+    }
+    tabs.add(TAB_GALLERY);
+    tabs.add(TAB_AUDIO);
+    tabs.add(TAB_DOCS);
+    tabs.add(TAB_WEBXDC);
+    //tabs.add(TAB_LINKS);
+    //if(Prefs.isLocationStreamingEnabled(this)) {
+    //  tabs.add(TAB_MAP);
+    //}
+
+    this.viewPager = ViewUtil.findById(this, R.id.pager);
+    this.toolbar   = ViewUtil.findById(this, R.id.toolbar);
+    this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
+  }
+
+  private void updateToolbar() {
+    if (isGlobalProfile()){
+      getSupportActionBar().setTitle(R.string.menu_all_media);
+    }
+    else if (chatId > 0) {
+      DcChat dcChat  = dcContext.getChat(chatId);
+      titleView.setTitle(GlideApp.with(this), dcChat, true);
+    }
+    else if (isContactProfile()){
+      titleView.setTitle(GlideApp.with(this), dcContext.getContact(contactId));
+    }
+  }
+
+  private boolean isGlobalProfile() {
+    return contactId==0 && chatId==0;
+  }
+
+  private boolean isContactProfile() {
+    // contact-profiles are profiles without a chat or with a one-to-one chat
+    return contactId!=0 && (chatId==0 || !chatIsMultiUser);
+  }
+
+  private boolean isSelfProfile() {
+    return isContactProfile() && contactId==DcContact.DC_CONTACT_ID_SELF;
+  }
+
+  private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
+    private Object currentFragment = null;
+
+    ProfilePagerAdapter(FragmentManager fragmentManager) {
+      super(fragmentManager);
+    }
+
+    @Override
+    public void setPrimaryItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+      super.setPrimaryItem(container, position, object);
+      if (currentFragment != null && currentFragment != object) {
+        ActionMode action = null;
+        if (currentFragment instanceof MessageSelectorFragment) {
+          action = ((MessageSelectorFragment) currentFragment).getActionMode();
+        } else if (currentFragment instanceof ProfileSettingsFragment) {
+          action = ((ProfileSettingsFragment) currentFragment).getActionMode();
+        }
+        if (action != null) {
+          action.finish();
+        }
+      }
+      currentFragment = object;
+    }
+
+    @NonNull
+    @Override
+    public Fragment getItem(int position) {
+      int tabId = tabs.get(position);
+      Fragment fragment;
+      Bundle args = new Bundle();
+
+      switch(tabId) {
+        case TAB_SETTINGS:
+          fragment = new ProfileSettingsFragment();
+          args.putInt(ProfileSettingsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
+          args.putInt(ProfileSettingsFragment.CONTACT_ID_EXTRA, (contactId==0&&!isGlobalProfile())? -1 : contactId);
+          break;
+
+        case TAB_GALLERY:
+          fragment = new ProfileGalleryFragment();
+          args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
+          break;
+
+        case TAB_AUDIO:
+          fragment = new ProfileDocumentsFragment();
+          args.putInt(ProfileDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
+          args.putBoolean(ProfileDocumentsFragment.SHOW_AUDIO_EXTRA, true);
+          break;
+
+        case TAB_WEBXDC:
+          fragment = new ProfileDocumentsFragment();
+          args.putInt(ProfileDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
+          args.putBoolean(ProfileDocumentsFragment.SHOW_WEBXDC_EXTRA, true);
+          break;
+
+        default:
+          fragment = new ProfileDocumentsFragment();
+          args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
+          break;
+      }
+
+      fragment.setArguments(args);
+      return fragment;
+    }
+
+    @Override
+    public int getCount() {
+      return tabs.size();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+      int tabId = tabs.get(position);
+      switch(tabId) {
+        case TAB_SETTINGS:
+          if (chatIsDeviceTalk) {
+            return getString(R.string.profile);
+          } else if(isContactProfile()) {
+            if (dcContext.getContact(contactId).isBot()) {
+              return getString(R.string.bot);
+            } else {
+              return getString(R.string.tab_contact);
+            }
+          }
+          else if (chatIsBroadcast) {
+            return getString(R.string.broadcast_list);
+          }
+          else if (chatIsMailingList) {
+            return getString(R.string.mailing_list);
+          } else {
+            return getString(R.string.tab_group);
+          }
+
+        case TAB_GALLERY:
+          return getString(R.string.tab_gallery);
+
+        case TAB_AUDIO:
+          return getString(R.string.audio);
+
+        case TAB_DOCS:
+          return getString(R.string.files);
+
+        case TAB_WEBXDC:
+          return getString(R.string.webxdc_apps);
+
+        case TAB_LINKS:
+          return getString(R.string.tab_links);
+
+        case TAB_MAP:
+          return getString(R.string.tab_map);
+
+        default:
+          throw new AssertionError();
+      }
+    }
+  }
+
+
+  // handle events
+  // =========================================================================
+
+  @Override
+  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    super.onOptionsItemSelected(item);
+
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
+      backPressed = true;
+      finish();
+      return true;
+    } else if (itemId == R.id.menu_mute_notifications) {
+      onNotifyOnOff();
+    } else if (itemId == R.id.menu_sound) {
+      onSoundSettings();
+    } else if (itemId == R.id.menu_vibrate) {
+      onVibrateSettings();
+    } else if (itemId == R.id.edit_name) {
+      onEditName();
+    } else if (itemId == R.id.share) {
+      onShare();
+    } else if (itemId == R.id.show_encr_info) {
+      onEncrInfo();
+    } else if (itemId == R.id.block_contact) {
+      onBlockContact();
+    } else if (itemId == R.id.menu_clone) {
+      onClone();
+    }
+
+    return false;
+  }
+
+  @Override
+  public boolean onContextItemSelected(@NonNull MenuItem item) {
+    super.onContextItemSelected(item);
+    if (item.getItemId() == R.id.copy_addr_to_clipboard) {
+      onCopyAddrToClipboard();
+    }
+    return false;
+  }
+
+  private void onNotifyOnOff() {
+    if (dcContext.getChat(chatId).isMuted()) {
+      setMuted(0);
+    }
+    else {
+      MuteDialog.show(this, this::setMuted);
+    }
+  }
+
+  private void setMuted(final long duration) {
+    if (chatId != 0) {
+      dcContext.setChatMuteDuration(chatId, duration);
+    }
+  }
+
+  private void onSoundSettings() {
+    Uri current = Prefs.getChatRingtone(this, dcContext.getAccountId(), chatId);
+    Uri defaultUri = Prefs.getNotificationRingtone(this);
+
+    if      (current == null)              current = Settings.System.DEFAULT_NOTIFICATION_URI;
+    else if (current.toString().isEmpty()) current = null;
+
+    Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true);
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true);
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI, defaultUri);
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, current);
+
+    startActivityForResult(intent, REQUEST_CODE_PICK_RINGTONE);
+  }
+
+  private void onVibrateSettings() {
+    int checkedItem = Prefs.getChatVibrate(this, dcContext.getAccountId(), chatId).getId();
+    int[] selectedChoice = new int[]{checkedItem};
+    new AlertDialog.Builder(this)
+            .setTitle(R.string.pref_vibrate)
+            .setSingleChoiceItems(R.array.recipient_vibrate_entries, checkedItem,
+                    (dialog, which) -> selectedChoice[0] = which)
+            .setPositiveButton(R.string.ok,
+                    (dialog, which) -> Prefs.setChatVibrate(this, dcContext.getAccountId(), chatId, Prefs.VibrateState.fromId(selectedChoice[0])))
+            .setNegativeButton(R.string.cancel, null)
+            .show();
+  }
+
+  private void onEnlargeAvatar() {
+    String profileImagePath;
+    String title;
+    Uri profileImageUri;
+    if(chatId!=0) {
+      DcChat dcChat = dcContext.getChat(chatId);
+      profileImagePath = dcChat.getProfileImage();
+      title = dcChat.getName();
+    } else {
+      DcContact dcContact = dcContext.getContact(contactId);
+      profileImagePath = dcContact.getProfileImage();
+      title = dcContact.getDisplayName();
+    }
+
+    File file = new File(profileImagePath);
+
+    if (file.exists()) {
+      profileImageUri = Uri.fromFile(file);
+      String type = "image/" + profileImagePath.substring(profileImagePath.lastIndexOf(".") + 1);
+
+      Intent intent = new Intent(this, MediaPreviewActivity.class);
+      intent.setDataAndType(profileImageUri, type);
+      intent.putExtra(MediaPreviewActivity.ACTIVITY_TITLE_EXTRA, title);
+      intent.putExtra(MediaPreviewActivity.EDIT_AVATAR_CHAT_ID, chatIsMultiUser ? chatId : 0); // shows edit-button, might be 0 for a contact-profile
+      startActivity(intent);
+    } else {
+      onEditName();
+    }
+  }
+
+  private void onEditName() {
+    if (chatIsMultiUser) {
+      DcChat dcChat = dcContext.getChat(chatId);
+      if (chatIsMailingList || dcChat.canSend()) {
+        Intent intent = new Intent(this, GroupCreateActivity.class);
+        intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
+        startActivity(intent);
+      }
+    }
+    else {
+      int accountId = dcContext.getAccountId();
+      DcContact dcContact = dcContext.getContact(contactId);
+
+      String authName = dcContact.getAuthName();
+      if (TextUtils.isEmpty(authName)) {
+        authName = dcContact.getAddr();
+      }
+
+      View gl = View.inflate(this, R.layout.single_line_input, null);
+      EditText inputField = gl.findViewById(R.id.input_field);
+      inputField.setText(dcContact.getName());
+      inputField.setSelection(inputField.getText().length());
+      inputField.setHint(getString(R.string.edit_name_placeholder, authName));
+
+      new AlertDialog.Builder(this)
+          .setTitle(R.string.menu_edit_name)
+          .setMessage(getString(R.string.edit_name_explain, authName))
+          .setView(gl)
+          .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
+            String newName = inputField.getText().toString();
+            try {
+              rpc.changeContactName(accountId, contactId, newName);
+            } catch (RpcException e) {
+              e.printStackTrace();
+            }
+          })
+          .setNegativeButton(android.R.string.cancel, null)
+          .setCancelable(false)
+          .show();
+    }
+  }
+
+  private void onShare() {
+    Intent composeIntent = new Intent();
+    RelayUtil.setSharedContactId(composeIntent, contactId);
+    ConversationListRelayingActivity.start(this, composeIntent);
+  }
+
+  private void onCopyAddrToClipboard() {
+    DcContact dcContact = dcContext.getContact(contactId);
+    Util.writeTextToClipboard(this, dcContact.getAddr());
+    Toast.makeText(this, getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+  }
+
+  private void onEncrInfo() {
+    String infoStr = isContactProfile() ?
+      dcContext.getContactEncrInfo(contactId) : dcContext.getChatEncrInfo(chatId);
+    new AlertDialog.Builder(this)
+        .setMessage(infoStr)
+        .setPositiveButton(android.R.string.ok, null)
+        .show();
+  }
+
+  private void onBlockContact() {
+    DcContact dcContact = dcContext.getContact(contactId);
+    if(dcContact.isBlocked()) {
+      new AlertDialog.Builder(this)
+          .setMessage(R.string.ask_unblock_contact)
+          .setCancelable(true)
+          .setNegativeButton(android.R.string.cancel, null)
+          .setPositiveButton(R.string.menu_unblock_contact, (dialog, which) -> {
+            dcContext.blockContact(contactId, 0);
+          }).show();
+    }
+    else {
+      AlertDialog dialog = new AlertDialog.Builder(this)
+          .setMessage(R.string.ask_block_contact)
+          .setCancelable(true)
+          .setNegativeButton(android.R.string.cancel, null)
+          .setPositiveButton(R.string.menu_block_contact, (d, which) -> {
+            dcContext.blockContact(contactId, 1);
+          }).show();
+      Util.redPositiveButton(dialog);
+    }
+  }
+
+  private void onClone() {
+    Intent intent = new Intent(this, GroupCreateActivity.class);
+    intent.putExtra(GroupCreateActivity.CLONE_CHAT_EXTRA, chatId);
+    startActivity(intent);
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode==REQUEST_CODE_PICK_RINGTONE && resultCode== Activity.RESULT_OK && data!=null) {
+      Uri value = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+      Uri defaultValue = Prefs.getNotificationRingtone(this);
+
+      if (defaultValue.equals(value)) value = null;
+      else if (value == null)         value = Uri.EMPTY;
+
+      Prefs.setChatRingtone(this, dcContext.getAccountId(), chatId, value);
+    }
+  }
+
+}

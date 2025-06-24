@@ -526,8 +526,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     } else if (itemId == R.id.menu_show_map) {
       WebxdcActivity.openMaps(this, chatId);
       return true;
-    } else if (itemId == R.id.menu_show_apps) {
-      handleProfile(true);
+    } else if (itemId == R.id.menu_all_media) {
+      handleAllMedia();
       return true;
     } else if (itemId == R.id.menu_search_up) {
       handleMenuSearchNext(false);
@@ -609,13 +609,19 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  private void handleProfile(boolean showApps) {
+  private void handleProfile() {
     Intent intent = new Intent(this, ProfileActivity.class);
     intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, chatId);
     intent.putExtra(ProfileActivity.FROM_CHAT, true);
-    if (showApps) {
-      intent.putExtra(ProfileActivity.FORCE_TAB_EXTRA, ProfileActivity.TAB_WEBXDC);
-    }
+    startActivity(intent);
+    overridePendingTransition(0, 0);
+  }
+
+  private void handleAllMedia() {
+    Intent intent = new Intent(this, AllMediaActivity.class);
+    intent.putExtra(AllMediaActivity.CHAT_ID_EXTRA, chatId);
+    intent.putExtra(AllMediaActivity.FROM_CHAT, true);
+    intent.putExtra(AllMediaActivity.FORCE_TAB_EXTRA, AllMediaActivity.TAB_WEBXDC);
     startActivity(intent);
     overridePendingTransition(0, 0);
   }
@@ -869,7 +875,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       buttonToggle.getBackground().invalidateSelf();
     });
 
-    titleView.setOnClickListener(v -> handleProfile(false));
+    titleView.setOnClickListener(v -> handleProfile());
     titleView.setOnBackClickedListener(view -> handleReturnToConversationList());
 
     composeText.setOnKeyListener(composeKeyPressedListener);
