@@ -65,7 +65,14 @@ public class ConversationItemFooter extends LinearLayout {
     boolean bookmark = messageRecord.getOriginalMsgId() != 0 || messageRecord.getSavedMsgId() != 0;
     bookmarkIndicatorView.setVisibility(bookmark ? View.VISIBLE : View.GONE);
     editedView.setVisibility(messageRecord.isEdited() ? View.VISIBLE : View.GONE);
-    emailIndicatorView.setVisibility(messageRecord.isSecure() ? View.GONE : View.VISIBLE);
+
+    int downloadState = messageRecord.getDownloadState();
+    if (messageRecord.isSecure() || downloadState == DcMsg.DC_DOWNLOAD_AVAILABLE || downloadState == DcMsg.DC_DOWNLOAD_FAILURE || downloadState == DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
+      emailIndicatorView.setVisibility(View.GONE);
+    } else {
+      emailIndicatorView.setVisibility(View.VISIBLE);
+    }
+
     locationIndicatorView.setVisibility(messageRecord.hasLocation() ? View.VISIBLE : View.GONE);
     presentDeliveryStatus(messageRecord);
   }
