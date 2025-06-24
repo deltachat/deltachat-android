@@ -121,7 +121,7 @@ public class ProfileSettingsFragment extends Fragment
     if(dcChat!=null && dcChat.isMultiUser()) {
       memberList = dcContext.getChatContacts(chatId);
     }
-    else if(contactId>0) {
+    else if(contactId>0 && contactId!=DcContact.DC_CONTACT_ID_SELF) {
       sharedChats = dcContext.getChatlist(0, null, contactId);
     }
 

@@ -612,9 +612,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void handleProfile() {
     Intent intent = new Intent(this, ProfileActivity.class);
     intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, chatId);
-    intent.putExtra(ProfileActivity.FROM_CHAT, true);
     startActivity(intent);
-    overridePendingTransition(0, 0);
   }
 
   private void handleAllMedia() {

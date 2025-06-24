@@ -304,10 +304,11 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
         itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, value, 0));
       }
     }
-    else if (sharedChats!=null && dcContact!=null) {
+    else if (dcContact!=null) {
       boolean chatIsDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
+      boolean chatIsSelfTalk = dcChat != null && dcChat.isSelfTalk();
 
-      if (!chatIsDeviceTalk) {
+      if (!chatIsDeviceTalk && !chatIsSelfTalk) {
         int verifierId = dcContact.getVerifierId();
         if (verifierId != 0) {
           String verifiedInfo;
@@ -329,17 +330,21 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
         }
         itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_LAST_SEEN, lastSeenTxt, 0, 0));
 
-
         itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_SEND_MESSAGE_BUTTON, context.getString(R.string.send_message), R.color.delta_accent, 0));
       }
 
-      itemDataStatusText = dcContact.getStatus();
+      if (chatIsSelfTalk) {
+        itemDataStatusText = context.getString(R.string.saved_messages_explain);
+      } else {
+        itemDataStatusText = dcContact.getStatus();
+      }
+
       if (!itemDataStatusText.isEmpty()) {
         itemData.add(new ItemData(ItemData.CATEGORY_SIGNATURE, 0, itemDataStatusText, 0, 0));
       }
 
       itemDataSharedChats = sharedChats;
-      if (!chatIsDeviceTalk) {
+      if (!chatIsDeviceTalk && sharedChats != null) {
         int sharedChatsCnt = sharedChats.getCnt();
         for (int i = 0; i < sharedChatsCnt; i++) {
           itemData.add(new ItemData(ItemData.CATEGORY_SHARED_CHATS, 0, i));
