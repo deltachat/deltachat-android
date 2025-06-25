@@ -152,7 +152,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           if (chatIsBroadcast) {
             canReceive = false;
           } else {
-            if (!dcChat.canSend() || !dcChat.isEncrypted()) {
+            if (!dcChat.isEncrypted()
+                || !dcChat.canSend()
+                || chatIsMailingList) {
               menu.findItem(R.id.edit_name).setVisible(false);
             }
           }
