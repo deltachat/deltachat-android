@@ -57,10 +57,6 @@ public class ProfileSettingsFragment extends Fragment
   protected int                chatId;
   private int                  contactId;
 
-  protected ActionMode getActionMode() {
-    return actionMode;
-  }
-
   @Override
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);

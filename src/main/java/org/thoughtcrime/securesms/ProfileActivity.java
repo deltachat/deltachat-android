@@ -11,19 +11,13 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -31,7 +25,6 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.rpc.Rpc;
 import com.b44t.messenger.rpc.RpcException;
-import com.google.android.material.tabs.TabLayout;
 
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -43,7 +36,6 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.File;
-import java.util.ArrayList;
 
 public class ProfileActivity extends PassphraseRequiredActionBarActivity
                              implements DcEventCenter.DcEventDelegate
@@ -51,8 +43,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   public static final String CHAT_ID_EXTRA    = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
-
-  public static final int TAB_SETTINGS = 10;
 
   private static final int REQUEST_CODE_PICK_RINGTONE = 1;
 
@@ -65,11 +55,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private boolean              chatIsBroadcast;
   private int                  contactId;
 
-  private final ArrayList<Integer> tabs = new ArrayList<>();
   private Toolbar            toolbar;
   private ConversationTitleView titleView;
-  private TabLayout          tabLayout;
-  private ViewPager          viewPager;
 
   @Override
   protected void onPreCreate() {
@@ -106,8 +93,10 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     updateToolbar();
 
-    this.tabLayout.setupWithViewPager(viewPager);
-    this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
+    Bundle args = new Bundle();
+    args.putInt(ProfileSettingsFragment.CHAT_ID_EXTRA, (chatId == 0) ? -1 : chatId);
+    args.putInt(ProfileSettingsFragment.CONTACT_ID_EXTRA, (contactId == 0) ? -1 : contactId);
+    initFragment(R.id.fragment_container, new ProfileSettingsFragment(), args);
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(this);
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
@@ -218,11 +207,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       }
     }
 
-    tabs.add(TAB_SETTINGS);
-
-    this.viewPager = ViewUtil.findById(this, R.id.pager);
     this.toolbar   = ViewUtil.findById(this, R.id.toolbar);
-    this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
   }
 
   private void updateToolbar() {
@@ -243,82 +228,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private boolean isSelfProfile() {
     return isContactProfile() && contactId==DcContact.DC_CONTACT_ID_SELF;
   }
-
-  private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
-    private Object currentFragment = null;
-
-    ProfilePagerAdapter(FragmentManager fragmentManager) {
-      super(fragmentManager);
-    }
-
-    @Override
-    public void setPrimaryItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-      super.setPrimaryItem(container, position, object);
-      if (currentFragment != null && currentFragment != object) {
-        ActionMode action = null;
-        if (currentFragment instanceof ProfileSettingsFragment) {
-          action = ((ProfileSettingsFragment) currentFragment).getActionMode();
-        }
-        if (action != null) {
-          action.finish();
-        }
-      }
-      currentFragment = object;
-    }
-
-    @NonNull
-    @Override
-    public Fragment getItem(int position) {
-      int tabId = tabs.get(position);
-      Fragment fragment;
-      Bundle args = new Bundle();
-
-      switch(tabId) {
-        default:
-          fragment = new ProfileSettingsFragment();
-          args.putInt(ProfileSettingsFragment.CHAT_ID_EXTRA, (chatId == 0)? -1 : chatId);
-          args.putInt(ProfileSettingsFragment.CONTACT_ID_EXTRA, (contactId == 0)? -1 : contactId);
-          break;
-      }
-
-      fragment.setArguments(args);
-      return fragment;
-    }
-
-    @Override
-    public int getCount() {
-      return tabs.size();
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
-      int tabId = tabs.get(position);
-      switch(tabId) {
-        case TAB_SETTINGS:
-          if (chatIsDeviceTalk) {
-            return getString(R.string.profile);
-          } else if(isContactProfile()) {
-            if (dcContext.getContact(contactId).isBot()) {
-              return getString(R.string.bot);
-            } else {
-              return getString(R.string.tab_contact);
-            }
-          }
-          else if (chatIsBroadcast) {
-            return getString(R.string.broadcast_list);
-          }
-          else if (chatIsMailingList) {
-            return getString(R.string.mailing_list);
-          } else {
-            return getString(R.string.tab_group);
-          }
-
-        default:
-          throw new AssertionError();
-      }
-    }
-  }
-
 
   // handle events
   // =========================================================================
