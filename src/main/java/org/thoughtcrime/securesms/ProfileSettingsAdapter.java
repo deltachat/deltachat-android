@@ -295,7 +295,11 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
     itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_AVATAR, "avatar", 0, 0));
 
-    itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_TITLE, "title", 0, 0));
+    if (dcChat != null) {
+      itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_TITLE, dcChat.getName(), 0, dcChat.isProtected() ? R.drawable.ic_verified : 0));
+    } else if (dcContact != null) {
+      itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_TITLE, dcContact.getName(), 0, dcContact.isVerified() ? R.drawable.ic_verified : 0));
+    }
 
     if (isGroup || isBroadcast) {
       itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_SUBTITLE, "subtitle", 0, 0));
