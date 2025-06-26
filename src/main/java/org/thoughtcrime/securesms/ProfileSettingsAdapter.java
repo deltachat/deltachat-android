@@ -55,7 +55,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     static final int CATEGORY_SIGNATURE = 2;
     static final int CATEGORY_MEMBERS = 3;
     static final int CATEGORY_SHARED_CHATS = 4;
-    final int type;
+    final int viewType;
     final int contactId;
     final int chatlistIndex;
     final int settingsId;
@@ -63,16 +63,16 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     final int labelColor;
     final int iconLeft;
 
-    ItemData(int type, int settingsId, String label, int labelColor, int iconLeft) {
-      this(type, 0, 0, settingsId, label, labelColor, iconLeft);
+    ItemData(int viewType, int settingsId, String label, int labelColor, int iconLeft) {
+      this(viewType, 0, 0, settingsId, label, labelColor, iconLeft);
     }
 
-    ItemData(int type, int contactId, int chatlistIndex) {
-      this(type, contactId, chatlistIndex, 0, null, 0, 0);
+    ItemData(int viewType, int contactId, int chatlistIndex) {
+      this(viewType, contactId, chatlistIndex, 0, null, 0, 0);
     }
 
-    ItemData(int type, int contactId, int chatlistIndex, int settingsId, @Nullable String label, int labelColor, int iconLeft) {
-      this.type          = type;
+    ItemData(int viewType, int contactId, int chatlistIndex, int settingsId, @Nullable String label, int labelColor, int iconLeft) {
+      this.viewType      = viewType;
       this.contactId     = contactId;
       this.chatlistIndex = chatlistIndex;
       this.settingsId    = settingsId;
@@ -199,7 +199,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   @Override
   public int getItemViewType(int i) {
-    return itemData.get(i).type;
+    return itemData.get(i).viewType;
   }
 
   public interface ItemClickListener {
@@ -211,8 +211,13 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   }
 
   @Override
-  public long getHeaderId(int position) {
-    return getItemViewType(position);
+  public long getHeaderId(int i) {
+    int viewType = getItemViewType(i);
+    if (viewType == ItemData.CATEGORY_MEMBERS || viewType == ItemData.CATEGORY_SHARED_CHATS) {
+      return viewType;
+    } else {
+      return ItemData.CATEGORY_INFO;
+    }
   }
 
   @Override
@@ -223,7 +228,10 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   @Override
   public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
     String txt = "";
-    switch(getItemViewType(position)) {
+    switch((int)getHeaderId(position)) {
+      case ItemData.CATEGORY_INFO:
+        txt = context.getString(R.string.info);
+        break;
       case ItemData.CATEGORY_MEMBERS:
         if (isMailingList) {
           txt = context.getString(R.string.contacts_headline);
@@ -236,14 +244,8 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       case ItemData.CATEGORY_SHARED_CHATS:
         txt = context.getString(R.string.profile_shared_chats);
         break;
-      case ItemData.CATEGORY_INFO:
-        txt = context.getString(R.string.info);
-        break;
-      case ItemData.CATEGORY_SIGNATURE:
-        txt = context.getString(R.string.pref_default_status_label);
-        break;
       default:
-        txt = context.getString(R.string.menu_settings);
+        txt = "ErrHeader";
         break;
     }
     viewHolder.textView.setText(txt);
@@ -308,7 +310,18 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       boolean chatIsDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
       boolean chatIsSelfTalk = dcChat != null && dcChat.isSelfTalk();
 
+      if (chatIsSelfTalk) {
+        itemDataStatusText = context.getString(R.string.saved_messages_explain);
+      } else {
+        itemDataStatusText = dcContact.getStatus();
+      }
+      if (!itemDataStatusText.isEmpty()) {
+        itemData.add(new ItemData(ItemData.CATEGORY_SIGNATURE, 0, itemDataStatusText, 0, 0));
+      }
+
       if (!chatIsDeviceTalk && !chatIsSelfTalk) {
+        itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_SEND_MESSAGE_BUTTON, context.getString(R.string.send_message), R.color.delta_accent, 0));
+
         int verifierId = dcContact.getVerifierId();
         if (verifierId != 0) {
           String verifiedInfo;
@@ -317,7 +330,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           } else {
             verifiedInfo = context.getString(R.string.verified_by, dcContext.getContact(verifierId).getDisplayName());
           }
-          itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_VERIFIED, verifiedInfo, 0, R.drawable.ic_verified));
+          itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_VERIFIED, verifiedInfo, 0, 0));
         }
 
         long lastSeenTimestamp = dcContact.getLastSeen();
@@ -329,18 +342,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           lastSeenTxt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, lastSeenTimestamp));
         }
         itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_LAST_SEEN, lastSeenTxt, 0, 0));
-
-        itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_SEND_MESSAGE_BUTTON, context.getString(R.string.send_message), R.color.delta_accent, 0));
-      }
-
-      if (chatIsSelfTalk) {
-        itemDataStatusText = context.getString(R.string.saved_messages_explain);
-      } else {
-        itemDataStatusText = dcContact.getStatus();
-      }
-
-      if (!itemDataStatusText.isEmpty()) {
-        itemData.add(new ItemData(ItemData.CATEGORY_SIGNATURE, 0, itemDataStatusText, 0, 0));
       }
 
       itemDataSharedChats = sharedChats;
