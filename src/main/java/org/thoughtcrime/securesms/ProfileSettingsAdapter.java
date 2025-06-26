@@ -286,6 +286,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     isMailingList = false;
     isBroadcast = false;
     boolean isSelfTalk = dcChat != null && dcChat.isSelfTalk();
+    boolean isDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
 
     if (isSelfTalk || dcContact != null && !dcContact.getStatus().isEmpty()) {
       itemDataStatusText = isSelfTalk ? context.getString(R.string.saved_messages_explain) : dcContact.getStatus();
@@ -294,7 +295,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
     itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_ALL_MEDIA, context.getString(R.string.apps_and_media), R.color.delta_accent, 0));
 
-
+    if (dcContact != null && !isDeviceTalk && !isSelfTalk) {
+      itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_SEND_MESSAGE_BUTTON, context.getString(R.string.send_message), R.color.delta_accent, 0));
+    }
 
 
 
@@ -321,11 +324,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       }
     }
     else if (dcContact!=null) {
-      boolean chatIsDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
-
-      if (!chatIsDeviceTalk && !isSelfTalk) {
-        itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_SEND_MESSAGE_BUTTON, context.getString(R.string.send_message), R.color.delta_accent, 0));
-
+      if (!isDeviceTalk && !isSelfTalk) {
         int verifierId = dcContact.getVerifierId();
         if (verifierId != 0) {
           String verifiedInfo;
@@ -349,7 +348,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       }
 
       itemDataSharedChats = sharedChats;
-      if (!chatIsDeviceTalk && sharedChats != null) {
+      if (!isDeviceTalk && sharedChats != null) {
         int sharedChatsCnt = sharedChats.getCnt();
         for (int i = 0; i < sharedChatsCnt; i++) {
           itemData.add(new ItemData(ItemData.CATEGORY_SHARED_CHATS, 0, i));
