@@ -31,10 +31,14 @@ import java.util.Set;
 public class ProfileSettingsAdapter extends RecyclerView.Adapter
                                     implements StickyHeaderAdapter<ProfileSettingsAdapter.HeaderViewHolder>
 {
+  public static final int INFO_AVATAR = 110;
+  public static final int INFO_TITLE = 110;
+  public static final int INFO_SUBTITLE = 112;
+  public static final int INFO_ALL_MEDIA = 114;
+  public static final int INFO_SEND_MESSAGE_BUTTON = 116;
   public static final int INFO_VERIFIED = 118;
   public static final int INFO_LAST_SEEN = 119;
-  public static final int INFO_SEND_MESSAGE_BUTTON = 120;
-  public static final int INFO_ALL_MEDIA = 121;
+
 
   private final @NonNull Context              context;
   private final @NonNull DcContext            dcContext;
@@ -284,9 +288,18 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     itemDataSharedChats = null;
     itemDataStatusText = "";
     isMailingList = false;
-    isBroadcast = false;
+    isBroadcast = dcChat != null && dcChat.isBroadcast();
+    boolean isGroup = dcChat != null && dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP;
     boolean isSelfTalk = dcChat != null && dcChat.isSelfTalk();
     boolean isDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
+
+    itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_AVATAR, "avatar", 0, 0));
+
+    itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_TITLE, "title", 0, 0));
+
+    if (isGroup || isBroadcast) {
+      itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_SUBTITLE, "subtitle", 0, 0));
+    }
 
     if (isSelfTalk || dcContact != null && !dcContact.getStatus().isEmpty()) {
       itemDataStatusText = isSelfTalk ? context.getString(R.string.saved_messages_explain) : dcContact.getStatus();
@@ -300,15 +313,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     }
 
 
-
-
     if (memberList!=null) {
       itemDataMemberCount = memberList.length;
       if (dcChat != null) {
-        if (dcChat.isBroadcast()) {
-          isBroadcast = true;
-        }
-
         if (dcChat.isMailingList()) {
           isMailingList = true;
         } else if (dcChat.canSend()) {
