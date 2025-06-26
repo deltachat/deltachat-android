@@ -34,6 +34,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   public static final int INFO_VERIFIED = 118;
   public static final int INFO_LAST_SEEN = 119;
   public static final int INFO_SEND_MESSAGE_BUTTON = 120;
+  public static final int INFO_ALL_MEDIA = 121;
 
   private final @NonNull Context              context;
   private final @NonNull DcContext            dcContext;
@@ -284,6 +285,8 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     itemDataStatusText = "";
     isMailingList = false;
     isBroadcast = false;
+
+    itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_ALL_MEDIA, context.getString(R.string.apps_and_media), R.color.delta_accent, 0));
 
     if (memberList!=null) {
       itemDataMemberCount = memberList.length;
