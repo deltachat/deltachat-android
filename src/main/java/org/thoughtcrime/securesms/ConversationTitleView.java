@@ -106,7 +106,7 @@ public class ConversationTitleView extends RelativeLayout {
         DcContact dcContact = dcContext.getContact(chatContacts[0]);
         if (!profileView && dcContact.isBot()) {
           subtitleStr = context.getString(R.string.bot);
-        } else if (profileView) {
+        } else if (profileView || !dcChat.isEncrypted()) {
           subtitleStr = dcContact.getAddr();
         }
         isOnline = dcContact.wasSeenRecently();

@@ -80,6 +80,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
 
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
+                DcHelper.maybeShowMigrationError(getTransferActivity());
                 getTransferActivity().setTransferError("Receiving Error");
             } else if (permille < 1000) {
                 percent = permille/10;

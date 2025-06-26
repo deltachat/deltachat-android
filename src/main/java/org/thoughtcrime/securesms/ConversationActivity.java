@@ -446,7 +446,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     if (isMultiUser()) {
-      if (dcChat.canSend() && !dcChat.isBroadcast() && !dcChat.isMailingList()) {
+      if (dcChat.isEncrypted()
+          && dcChat.canSend()
+          && !dcChat.isBroadcast()
+          && !dcChat.isMailingList()) {
         menu.findItem(R.id.menu_leave).setVisible(true);
       }
     }
