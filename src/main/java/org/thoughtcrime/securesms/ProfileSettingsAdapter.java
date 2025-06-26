@@ -285,8 +285,19 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     itemDataStatusText = "";
     isMailingList = false;
     isBroadcast = false;
+    boolean isSelfTalk = dcChat != null && dcChat.isSelfTalk();
+
+    if (isSelfTalk || dcContact != null && !dcContact.getStatus().isEmpty()) {
+      itemDataStatusText = isSelfTalk ? context.getString(R.string.saved_messages_explain) : dcContact.getStatus();
+      itemData.add(new ItemData(ItemData.CATEGORY_SIGNATURE, 0, itemDataStatusText, 0, 0));
+    }
 
     itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_ALL_MEDIA, context.getString(R.string.apps_and_media), R.color.delta_accent, 0));
+
+
+
+
+
 
     if (memberList!=null) {
       itemDataMemberCount = memberList.length;
@@ -311,18 +322,8 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     }
     else if (dcContact!=null) {
       boolean chatIsDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
-      boolean chatIsSelfTalk = dcChat != null && dcChat.isSelfTalk();
 
-      if (chatIsSelfTalk) {
-        itemDataStatusText = context.getString(R.string.saved_messages_explain);
-      } else {
-        itemDataStatusText = dcContact.getStatus();
-      }
-      if (!itemDataStatusText.isEmpty()) {
-        itemData.add(new ItemData(ItemData.CATEGORY_SIGNATURE, 0, itemDataStatusText, 0, 0));
-      }
-
-      if (!chatIsDeviceTalk && !chatIsSelfTalk) {
+      if (!chatIsDeviceTalk && !isSelfTalk) {
         itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_SEND_MESSAGE_BUTTON, context.getString(R.string.send_message), R.color.delta_accent, 0));
 
         int verifierId = dcContact.getVerifierId();
