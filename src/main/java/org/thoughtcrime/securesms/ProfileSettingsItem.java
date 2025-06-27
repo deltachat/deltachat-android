@@ -27,9 +27,9 @@ public class ProfileSettingsItem extends LinearLayout {
     labelView = findViewById(R.id.label);
   }
 
-  public void set(String label, int labelColor, int iconLeft) {
+  public void set(String label, int labelColor, int iconRight) {
     labelView.setText(label==null? "" : label);
-    labelView.setCompoundDrawablesWithIntrinsicBounds(iconLeft, 0,0,0);
+    labelView.setCompoundDrawablesWithIntrinsicBounds(0, 0,iconRight,0);
 
     // we need different color getters as `labelColor` is `R.color.name` while default is `R.attr.name`
     if (labelColor != 0) {

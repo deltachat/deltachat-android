@@ -233,25 +233,8 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   @Override
   public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
     String txt = "";
-    switch((int)getHeaderId(position)) {
-      case ItemData.CATEGORY_INFO:
-        txt = context.getString(R.string.info);
-        break;
-      case ItemData.CATEGORY_MEMBERS:
-        if (isMailingList) {
-          txt = context.getString(R.string.contacts_headline);
-        } else if (isBroadcast) {
-          txt = context.getResources().getQuantityString(R.plurals.n_recipients, (int) itemDataMemberCount, (int) itemDataMemberCount);
-        } else {
-          txt = context.getResources().getQuantityString(R.plurals.n_members, (int) itemDataMemberCount, (int) itemDataMemberCount);
-        }
-        break;
-      case ItemData.CATEGORY_SHARED_CHATS:
-        txt = context.getString(R.string.profile_shared_chats);
-        break;
-      default:
-        txt = "ErrHeader";
-        break;
+    if((int)getHeaderId(position) == ItemData.CATEGORY_SHARED_CHATS) {
+      txt = context.getString(R.string.profile_shared_chats);
     }
     viewHolder.textView.setText(txt);
   }
@@ -284,10 +267,10 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   public void changeData(@Nullable int[] memberList, @Nullable DcContact dcContact, @Nullable DcChatlist sharedChats, @Nullable DcChat dcChat) {
     itemData.clear();
-    itemDataMemberCount = 0;
+    itemDataMemberCount = memberList!=null ? memberList.length : 0;
     itemDataSharedChats = null;
     itemDataStatusText = "";
-    isMailingList = false;
+    isMailingList = dcChat != null && dcChat.isMailingList();
     isBroadcast = dcChat != null && dcChat.isBroadcast();
     boolean isGroup = dcChat != null && dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP;
     boolean isSelfTalk = dcChat != null && dcChat.isSelfTalk();
@@ -302,7 +285,15 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     }
 
     if (isGroup || isBroadcast) {
-      itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_SUBTITLE, "subtitle", 0, 0));
+      String subtitle = "";
+      if (isMailingList) {
+        subtitle = context.getString(R.string.contacts_headline);
+      } else if (isBroadcast) {
+        subtitle = context.getResources().getQuantityString(R.plurals.n_recipients, (int) itemDataMemberCount, (int) itemDataMemberCount);
+      } else {
+        subtitle = context.getResources().getQuantityString(R.plurals.n_members, (int) itemDataMemberCount, (int) itemDataMemberCount);
+      }
+      itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_SUBTITLE, subtitle, 0, 0));
     }
 
     if (isSelfTalk || dcContact != null && !dcContact.getStatus().isEmpty()) {
@@ -318,11 +309,8 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
 
     if (memberList!=null) {
-      itemDataMemberCount = memberList.length;
       if (dcChat != null) {
-        if (dcChat.isMailingList()) {
-          isMailingList = true;
-        } else if (dcChat.canSend()) {
+        if (!isMailingList && dcChat.canSend()) {
           itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
           if (!isBroadcast) {
             itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
