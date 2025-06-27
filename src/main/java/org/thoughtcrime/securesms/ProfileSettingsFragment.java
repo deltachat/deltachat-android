@@ -132,17 +132,17 @@ public class ProfileSettingsFragment extends Fragment
   @Override
   public void onSettingsClicked(int settingsId) {
     switch(settingsId) {
-      case ProfileSettingsAdapter.INFO_ALL_MEDIA:
+      case ProfileSettingsAdapter.ITEM_ALL_MEDIA:
         if (chatId > 0) {
           Intent intent = new Intent(getActivity(), AllMediaActivity.class);
           intent.putExtra(AllMediaActivity.CHAT_ID_EXTRA, chatId);
           startActivity(intent);
         }
         break;
-      case ProfileSettingsAdapter.INFO_SEND_MESSAGE_BUTTON:
+      case ProfileSettingsAdapter.ITEM_SEND_MESSAGE_BUTTON:
         onSendMessage();
         break;
-      case ProfileSettingsAdapter.INFO_VERIFIED:
+      case ProfileSettingsAdapter.ITEM_VERIFIED:
         onVerifiedByClicked();
         break;
     }
