@@ -32,7 +32,6 @@ public class ProfileAdapter extends RecyclerView.Adapter
                             implements StickyHeaderAdapter<ProfileAdapter.HeaderViewHolder>
 {
   public static final int ITEM_AVATAR = 10;
-  public static final int ITEM_TITLE = 15;
   public static final int ITEM_SUBTITLE = 20;
   public static final int ITEM_SIGNATURE = 25;
   public static final int ITEM_ALL_MEDIA = 30;
@@ -45,6 +44,8 @@ public class ProfileAdapter extends RecyclerView.Adapter
 
   private final @NonNull Context              context;
   private final @NonNull DcContext            dcContext;
+  private @Nullable DcChat                    dcChat;
+  private @Nullable DcContact                 dcContact;
 
   private final @NonNull ArrayList<ItemData>  itemData = new ArrayList<>();
   private DcChatlist                          itemDataSharedChats;
@@ -111,7 +112,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     if (viewType == ITEM_MEMBERS || viewType == ITEM_SHARED_CHATS) {
       return viewType;
     } else {
-      return ITEM_TITLE;
+      return ITEM_AVATAR;
     }
   }
 
@@ -136,6 +137,10 @@ public class ProfileAdapter extends RecyclerView.Adapter
     }
     else if (viewType == ITEM_SIGNATURE) {
       final ProfileStatusItem item = (ProfileStatusItem)layoutInflater.inflate(R.layout.profile_status_item, parent, false);
+      return new ViewHolder(item);
+    }
+    else if (viewType == ITEM_AVATAR) {
+      final ProfileAvatarItem item = (ProfileAvatarItem)layoutInflater.inflate(R.layout.profile_avatar_item, parent, false);
       return new ViewHolder(item);
     }
     else {
@@ -195,6 +200,10 @@ public class ProfileAdapter extends RecyclerView.Adapter
       ProfileStatusItem item = (ProfileStatusItem) holder.itemView;
       item.setOnLongClickListener(view -> {clickListener.onStatusLongClicked(); return true;});
       item.set(itemData.get(i).label);
+    }
+    else if(holder.itemView instanceof ProfileAvatarItem) {
+      ProfileAvatarItem item = (ProfileAvatarItem) holder.itemView;
+      item.set(glideRequests, dcChat, dcContact);
     }
     else if(holder.itemView instanceof ProfileTextItem) {
       ProfileTextItem item = (ProfileTextItem) holder.itemView;
@@ -260,6 +269,8 @@ public class ProfileAdapter extends RecyclerView.Adapter
   }
 
   public void changeData(@Nullable int[] memberList, @Nullable DcContact dcContact, @Nullable DcChatlist sharedChats, @Nullable DcChat dcChat) {
+    this.dcChat = dcChat;
+    this.dcContact = dcContact;
     itemData.clear();
     itemDataSharedChats = sharedChats;
     itemDataStatusText = "";
@@ -270,13 +281,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     boolean isDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
     int memberCount = memberList!=null ? memberList.length : 0;
 
-    itemData.add(new ItemData(ITEM_AVATAR, "avatar", 0, 0));
-
-    if (dcChat != null) {
-      itemData.add(new ItemData(ITEM_TITLE, dcChat.getName(), 0, dcChat.isProtected() ? R.drawable.ic_verified : 0));
-    } else if (dcContact != null) {
-      itemData.add(new ItemData(ITEM_TITLE, dcContact.getName(), 0, dcContact.isVerified() ? R.drawable.ic_verified : 0));
-    }
+    itemData.add(new ItemData(ITEM_AVATAR, null, 0, 0));
 
     if (isGroup || isBroadcast) {
       String subtitle = "";
