@@ -28,8 +28,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ProfileSettingsAdapter extends RecyclerView.Adapter
-                                    implements StickyHeaderAdapter<ProfileSettingsAdapter.HeaderViewHolder>
+public class ProfileAdapter extends RecyclerView.Adapter
+                            implements StickyHeaderAdapter<ProfileAdapter.HeaderViewHolder>
 {
   public static final int ITEM_AVATAR = 10;
   public static final int ITEM_TITLE = 15;
@@ -82,9 +82,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     }
   };
 
-  public ProfileSettingsAdapter(@NonNull  Context context,
-                                @NonNull  GlideRequests glideRequests,
-                                @Nullable ItemClickListener clickListener)
+  public ProfileAdapter(@NonNull  Context context,
+                        @NonNull  GlideRequests glideRequests,
+                        @Nullable ItemClickListener clickListener)
   {
     super();
     this.context        = context;
@@ -123,7 +123,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   @NonNull
   @Override
-  public ProfileSettingsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+  public ProfileAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     if (viewType == ITEM_MEMBERS) {
       final ContactSelectionListItem item = (ContactSelectionListItem)layoutInflater.inflate(R.layout.contact_selection_list_item, parent, false);
       item.setNoHeaderPadding();
@@ -139,7 +139,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       return new ViewHolder(item);
     }
     else {
-      final ProfileSettingsItem item = (ProfileSettingsItem)layoutInflater.inflate(R.layout.profile_settings_item, parent, false);
+      final ProfileTextItem item = (ProfileTextItem)layoutInflater.inflate(R.layout.profile_text_item, parent, false);
       return new ViewHolder(item);
     }
   }
@@ -196,10 +196,10 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       item.setOnLongClickListener(view -> {clickListener.onStatusLongClicked(); return true;});
       item.set(itemData.get(i).label);
     }
-    else if(holder.itemView instanceof ProfileSettingsItem) {
-      ProfileSettingsItem profileSettingsItem = (ProfileSettingsItem) holder.itemView;
-      profileSettingsItem.setOnClickListener(view -> clickListener.onSettingsClicked(itemData.get(i).viewType));
-      profileSettingsItem.set(itemData.get(i).label, itemData.get(i).labelColor, itemData.get(i).icon);
+    else if(holder.itemView instanceof ProfileTextItem) {
+      ProfileTextItem item = (ProfileTextItem) holder.itemView;
+      item.setOnClickListener(view -> clickListener.onSettingsClicked(itemData.get(i).viewType));
+      item.set(itemData.get(i).label, itemData.get(i).labelColor, itemData.get(i).icon);
     }
   }
 

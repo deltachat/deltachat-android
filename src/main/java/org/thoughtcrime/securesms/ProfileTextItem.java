@@ -9,15 +9,15 @@ import androidx.core.content.ContextCompat;
 
 import org.thoughtcrime.securesms.util.ResUtil;
 
-public class ProfileSettingsItem extends LinearLayout {
+public class ProfileTextItem extends LinearLayout {
 
   private TextView labelView;
 
-  public ProfileSettingsItem(Context context) {
+  public ProfileTextItem(Context context) {
     super(context);
   }
 
-  public ProfileSettingsItem(Context context, AttributeSet attrs) {
+  public ProfileTextItem(Context context, AttributeSet attrs) {
     super(context, attrs);
   }
 

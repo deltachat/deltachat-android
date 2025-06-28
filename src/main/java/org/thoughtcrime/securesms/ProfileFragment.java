@@ -39,8 +39,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class ProfileSettingsFragment extends Fragment
-             implements ProfileSettingsAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
+public class ProfileFragment extends Fragment
+             implements ProfileAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
 
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
@@ -48,7 +48,7 @@ public class ProfileSettingsFragment extends Fragment
   private static final int REQUEST_CODE_PICK_CONTACT = 2;
 
   private StickyHeaderDecoration listDecoration;
-  private ProfileSettingsAdapter adapter;
+  private ProfileAdapter adapter;
   private ActionMode             actionMode;
   private final ActionModeCallback actionModeCallback = new ActionModeCallback();
 
@@ -68,8 +68,8 @@ public class ProfileSettingsFragment extends Fragment
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.profile_settings_fragment, container, false);
-    adapter = new ProfileSettingsAdapter(requireContext(), GlideApp.with(this), this);
+    View view = inflater.inflate(R.layout.profile_fragment, container, false);
+    adapter = new ProfileAdapter(requireContext(), GlideApp.with(this), this);
 
     RecyclerView list = ViewUtil.findById(view, R.id.recycler_view);
     list.setAdapter(adapter);
@@ -132,17 +132,17 @@ public class ProfileSettingsFragment extends Fragment
   @Override
   public void onSettingsClicked(int settingsId) {
     switch(settingsId) {
-      case ProfileSettingsAdapter.ITEM_ALL_MEDIA:
+      case ProfileAdapter.ITEM_ALL_MEDIA:
         if (chatId > 0) {
           Intent intent = new Intent(getActivity(), AllMediaActivity.class);
           intent.putExtra(AllMediaActivity.CHAT_ID_EXTRA, chatId);
           startActivity(intent);
         }
         break;
-      case ProfileSettingsAdapter.ITEM_SEND_MESSAGE_BUTTON:
+      case ProfileAdapter.ITEM_SEND_MESSAGE_BUTTON:
         onSendMessage();
         break;
-      case ProfileSettingsAdapter.ITEM_VERIFIED:
+      case ProfileAdapter.ITEM_VERIFIED:
         onVerifiedByClicked();
         break;
     }

@@ -94,9 +94,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     updateToolbar();
 
     Bundle args = new Bundle();
-    args.putInt(ProfileSettingsFragment.CHAT_ID_EXTRA, (chatId == 0) ? -1 : chatId);
-    args.putInt(ProfileSettingsFragment.CONTACT_ID_EXTRA, (contactId == 0) ? -1 : contactId);
-    initFragment(R.id.fragment_container, new ProfileSettingsFragment(), args);
+    args.putInt(ProfileFragment.CHAT_ID_EXTRA, (chatId == 0) ? -1 : chatId);
+    args.putInt(ProfileFragment.CONTACT_ID_EXTRA, (contactId == 0) ? -1 : contactId);
+    initFragment(R.id.fragment_container, new ProfileFragment(), args);
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(this);
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
