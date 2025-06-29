@@ -39,11 +39,11 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
   @Override
   protected void onFinishInflate() {
     super.onFinishInflate();
-    this.avatar            = findViewById(R.id.avatar);
-    this.nameView          = findViewById(R.id.name);
-    this.subtitleView      = findViewById(R.id.subtitle);
+    avatar            = findViewById(R.id.avatar);
+    nameView          = findViewById(R.id.name);
+    subtitleView      = findViewById(R.id.subtitle);
 
-    ViewUtil.setTextViewGravityStart(this.nameView, getContext());
+    ViewUtil.setTextViewGravityStart(nameView, getContext());
   }
 
   public void set(@NonNull GlideRequests glideRequests, @Nullable DcChat dcChat, @Nullable DcContact dcContact, int memberCount) {
@@ -53,7 +53,7 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
     boolean greenCheckmark = false;
     String subtitle = null;
     if (dcChat != null) {
-      this.recipient = new Recipient(getContext(), dcChat);
+      recipient = new Recipient(getContext(), dcChat);
       name = dcChat.getName();
       greenCheckmark = dcChat.isProtected();
 
@@ -65,17 +65,17 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
         subtitle = getContext().getResources().getQuantityString(R.plurals.n_members, memberCount, memberCount);
       }
     } else if (dcContact != null) {
-      this.recipient = new Recipient(getContext(), dcContact);
+      recipient = new Recipient(getContext(), dcContact);
       name = dcContact.getDisplayName();
       greenCheckmark = dcContact.isVerified();
     }
 
-    this.recipient.addListener(this);
-    this.avatar.setAvatar(glideRequests, recipient, false);
-    this.avatar.setSeenRecently(dcContact != null && dcContact.wasSeenRecently());
+    recipient.addListener(this);
+    avatar.setAvatar(glideRequests, recipient, false);
+    avatar.setSeenRecently(dcContact != null && dcContact.wasSeenRecently());
 
-    this.nameView.setText(name);
-    this.nameView.setCompoundDrawablesWithIntrinsicBounds(0,0, greenCheckmark ? R.drawable.ic_verified : 0, 0);
+    nameView.setText(name);
+    nameView.setCompoundDrawablesWithIntrinsicBounds(0,0, greenCheckmark ? R.drawable.ic_verified : 0, 0);
 
     if (subtitle != null) {
       subtitleView.setVisibility(View.VISIBLE);
