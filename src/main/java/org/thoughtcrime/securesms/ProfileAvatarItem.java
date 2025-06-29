@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -22,14 +21,12 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ProfileAvatarItem extends LinearLayout implements RecipientModifiedListener {
 
-  private AvatarView      avatar;
-  private View            numberContainer;
-  private TextView        numberView;
+  private AvatarView      avatar;;
   private TextView        nameView;
-  private TextView        labelView;
+  private TextView        subtitleView;
 
-  private Recipient     recipient;
-  private GlideRequests glideRequests;
+  private Recipient       recipient;
+  private GlideRequests   glideRequests;
 
   public ProfileAvatarItem(Context context) {
     super(context);
@@ -43,23 +40,30 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
   protected void onFinishInflate() {
     super.onFinishInflate();
     this.avatar            = findViewById(R.id.avatar);
-    this.numberContainer   = findViewById(R.id.number_container);
-    this.numberView        = findViewById(R.id.number);
-    this.labelView         = findViewById(R.id.label);
     this.nameView          = findViewById(R.id.name);
+    this.subtitleView      = findViewById(R.id.subtitle);
 
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void set(@NonNull GlideRequests glideRequests, @Nullable DcChat dcChat, @Nullable DcContact dcContact) {
+  public void set(@NonNull GlideRequests glideRequests, @Nullable DcChat dcChat, @Nullable DcContact dcContact, int memberCount) {
     this.glideRequests = glideRequests;
 
     String name = "";
     boolean greenCheckmark = false;
+    String subtitle = null;
     if (dcChat != null) {
       this.recipient = new Recipient(getContext(), dcChat);
       name = dcChat.getName();
       greenCheckmark = dcChat.isProtected();
+
+      if (dcChat.isMailingList()) {
+        subtitle = getContext().getString(R.string.contacts_headline);
+      } else if (dcChat.isBroadcast()) {
+        subtitle = getContext().getResources().getQuantityString(R.plurals.n_recipients, memberCount, memberCount);
+      } else if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
+        subtitle = getContext().getResources().getQuantityString(R.plurals.n_members, memberCount, memberCount);
+      }
     } else if (dcContact != null) {
       this.recipient = new Recipient(getContext(), dcContact);
       name = dcContact.getDisplayName();
@@ -73,8 +77,12 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
     this.nameView.setText(name);
     this.nameView.setCompoundDrawablesWithIntrinsicBounds(0,0, greenCheckmark ? R.drawable.ic_verified : 0, 0);
 
-    this.numberView.setText("number");
-    this.labelView.setText("label");
+    if (subtitle != null) {
+      subtitleView.setVisibility(View.VISIBLE);
+      subtitleView.setText(subtitle);
+    } else {
+      subtitleView.setVisibility(View.GONE);
+    }
   }
 
   public void unbind(GlideRequests glideRequests) {

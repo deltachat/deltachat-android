@@ -32,7 +32,6 @@ public class ProfileAdapter extends RecyclerView.Adapter
                             implements StickyHeaderAdapter<ProfileAdapter.HeaderViewHolder>
 {
   public static final int ITEM_AVATAR = 10;
-  public static final int ITEM_SUBTITLE = 20;
   public static final int ITEM_SIGNATURE = 25;
   public static final int ITEM_ALL_MEDIA = 30;
   public static final int ITEM_SEND_MESSAGE_BUTTON = 35;
@@ -51,6 +50,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
   private DcChatlist                          itemDataSharedChats;
   private String                              itemDataStatusText;
   private boolean                             isBroadcast;
+  private int                                 memberCount;
   private final Set<Integer>                  selectedMembers;
 
   private final LayoutInflater                layoutInflater;
@@ -203,7 +203,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     }
     else if(holder.itemView instanceof ProfileAvatarItem) {
       ProfileAvatarItem item = (ProfileAvatarItem) holder.itemView;
-      item.set(glideRequests, dcChat, dcContact);
+      item.set(glideRequests, dcChat, dcContact, memberCount);
     }
     else if(holder.itemView instanceof ProfileTextItem) {
       ProfileTextItem item = (ProfileTextItem) holder.itemView;
@@ -279,21 +279,9 @@ public class ProfileAdapter extends RecyclerView.Adapter
     boolean isGroup = dcChat != null && dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP;
     boolean isSelfTalk = dcChat != null && dcChat.isSelfTalk();
     boolean isDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
-    int memberCount = memberList!=null ? memberList.length : 0;
+    memberCount = memberList!=null ? memberList.length : 0;
 
     itemData.add(new ItemData(ITEM_AVATAR, null, 0, 0));
-
-    if (isGroup || isBroadcast) {
-      String subtitle = "";
-      if (isMailingList) {
-        subtitle = context.getString(R.string.contacts_headline);
-      } else if (isBroadcast) {
-        subtitle = context.getResources().getQuantityString(R.plurals.n_recipients, memberCount, memberCount);
-      } else {
-        subtitle = context.getResources().getQuantityString(R.plurals.n_members, memberCount, memberCount);
-      }
-      itemData.add(new ItemData(ITEM_SUBTITLE, subtitle, 0, 0));
-    }
 
     if (isSelfTalk || dcContact != null && !dcContact.getStatus().isEmpty()) {
       itemDataStatusText = isSelfTalk ? context.getString(R.string.saved_messages_explain) : dcContact.getStatus();
