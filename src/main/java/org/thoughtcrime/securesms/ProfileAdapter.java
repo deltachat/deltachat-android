@@ -1,0 +1,350 @@
+package org.thoughtcrime.securesms;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcChatlist;
+import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcLot;
+
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
+import org.thoughtcrime.securesms.mms.GlideRequests;
+import org.thoughtcrime.securesms.util.DateUtils;
+import org.thoughtcrime.securesms.util.StickyHeaderDecoration.StickyHeaderAdapter;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
+public class ProfileAdapter extends RecyclerView.Adapter
+                            implements StickyHeaderAdapter<ProfileAdapter.HeaderViewHolder>
+{
+  public static final int ITEM_AVATAR = 10;
+  public static final int ITEM_SIGNATURE = 25;
+  public static final int ITEM_ALL_MEDIA = 30;
+  public static final int ITEM_SEND_MESSAGE_BUTTON = 35;
+  public static final int ITEM_VERIFIED = 40;
+  public static final int ITEM_LAST_SEEN = 45;
+  public static final int ITEM_ADDRESS = 50;
+  public static final int ITEM_MEMBERS = 55;
+  public static final int ITEM_SHARED_CHATS = 60;
+
+  private final @NonNull Context              context;
+  private final @NonNull DcContext            dcContext;
+  private @Nullable DcChat                    dcChat;
+  private @Nullable DcContact                 dcContact;
+
+  private final @NonNull ArrayList<ItemData>  itemData = new ArrayList<>();
+  private DcChatlist                          itemDataSharedChats;
+  private String                              itemDataStatusText;
+  private boolean                             isBroadcast;
+  private int                                 memberCount;
+  private final Set<Integer>                  selectedMembers;
+
+  private final LayoutInflater                layoutInflater;
+  private final ItemClickListener             clickListener;
+  private final GlideRequests                 glideRequests;
+
+  static class ItemData {
+    final int viewType;
+    final int contactId;
+    final int chatlistIndex;
+    final String label;
+    final int labelColor;
+    final int icon;
+
+    ItemData(int viewType, String label, int labelColor, int icon) {
+      this(viewType, 0, 0, label, labelColor, icon);
+    }
+
+    ItemData(int viewType, int contactId, int chatlistIndex) {
+      this(viewType, contactId, chatlistIndex, null, 0, 0);
+    }
+
+    ItemData(int viewType, int contactId, int chatlistIndex, @Nullable String label, int labelColor, int icon) {
+      this.viewType      = viewType;
+      this.contactId     = contactId;
+      this.chatlistIndex = chatlistIndex;
+      this.label         = label;
+      this.labelColor    = labelColor;
+      this.icon          = icon;
+    }
+  };
+
+  public ProfileAdapter(@NonNull  Context context,
+                        @NonNull  GlideRequests glideRequests,
+                        @Nullable ItemClickListener clickListener)
+  {
+    super();
+    this.context        = context;
+    this.glideRequests  = glideRequests;
+    this.clickListener  = clickListener;
+    this.dcContext      = DcHelper.getContext(context);
+    this.layoutInflater = LayoutInflater.from(context);
+    this.selectedMembers= new HashSet<>();
+  }
+
+  @Override
+  public int getItemCount() {
+    return itemData.size();
+  }
+
+  @Override
+  public int getItemViewType(int i) {
+    return itemData.get(i).viewType;
+  }
+
+  @Override
+  public long getHeaderId(int i) {
+    int viewType = getItemViewType(i);
+    if (viewType == ITEM_MEMBERS || viewType == ITEM_SHARED_CHATS) {
+      return viewType;
+    } else {
+      return ITEM_AVATAR;
+    }
+  }
+
+  public static class ViewHolder extends RecyclerView.ViewHolder {
+    public ViewHolder(View itemView) {
+      super(itemView);
+    }
+  }
+
+  @NonNull
+  @Override
+  public ProfileAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    if (viewType == ITEM_MEMBERS) {
+      final ContactSelectionListItem item = (ContactSelectionListItem)layoutInflater.inflate(R.layout.contact_selection_list_item, parent, false);
+      item.setNoHeaderPadding();
+      return new ViewHolder(item);
+    }
+    else if (viewType == ITEM_SHARED_CHATS) {
+      final ConversationListItem item = (ConversationListItem)layoutInflater.inflate(R.layout.conversation_list_item_view, parent, false);
+      item.hideItemDivider();
+      return new ViewHolder(item);
+    }
+    else if (viewType == ITEM_SIGNATURE) {
+      final ProfileStatusItem item = (ProfileStatusItem)layoutInflater.inflate(R.layout.profile_status_item, parent, false);
+      return new ViewHolder(item);
+    }
+    else if (viewType == ITEM_AVATAR) {
+      final ProfileAvatarItem item = (ProfileAvatarItem)layoutInflater.inflate(R.layout.profile_avatar_item, parent, false);
+      return new ViewHolder(item);
+    }
+    else {
+      final ProfileTextItem item = (ProfileTextItem)layoutInflater.inflate(R.layout.profile_text_item, parent, false);
+      return new ViewHolder(item);
+    }
+  }
+
+  @Override
+  public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+    ViewHolder holder = (ViewHolder) viewHolder;
+    if (holder.itemView instanceof ContactSelectionListItem) {
+      ContactSelectionListItem contactItem = (ContactSelectionListItem) holder.itemView;
+
+      int contactId = itemData.get(i).contactId;
+      DcContact dcContact = null;
+      String label = null;
+      String name;
+      String addr = null;
+
+      if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
+        if (isBroadcast) {
+          name = context.getString(R.string.add_recipients);
+        } else {
+          name = context.getString(R.string.group_add_members);
+        }
+      }
+      else if (contactId == DcContact.DC_CONTACT_ID_QR_INVITE) {
+        name = context.getString(R.string.qrshow_title);
+      }
+      else {
+        dcContact = dcContext.getContact(contactId);
+        name = dcContact.getDisplayName();
+        addr = dcContact.getAddr();
+      }
+
+      contactItem.unbind(glideRequests);
+      contactItem.set(glideRequests, contactId, dcContact, name, addr, label, false, true);
+      contactItem.setSelected(selectedMembers.contains(contactId));
+      contactItem.setOnClickListener(view -> clickListener.onMemberClicked(contactId));
+      contactItem.setOnLongClickListener(view -> {clickListener.onMemberLongClicked(contactId); return true;});
+    }
+    else if (holder.itemView instanceof ConversationListItem) {
+      ConversationListItem conversationListItem = (ConversationListItem) holder.itemView;
+      int chatlistIndex = itemData.get(i).chatlistIndex;
+
+      int chatId = itemDataSharedChats.getChatId(chatlistIndex);
+      DcChat chat = dcContext.getChat(chatId);
+      DcLot summary = itemDataSharedChats.getSummary(chatlistIndex, chat);
+
+      conversationListItem.bind(DcHelper.getThreadRecord(context, summary, chat),
+        itemDataSharedChats.getMsgId(chatlistIndex), summary, glideRequests,
+        Collections.emptySet(), false);
+      conversationListItem.setOnClickListener(view -> clickListener.onSharedChatClicked(chatId));
+    }
+    else if(holder.itemView instanceof ProfileStatusItem) {
+      ProfileStatusItem item = (ProfileStatusItem) holder.itemView;
+      item.setOnLongClickListener(view -> {clickListener.onStatusLongClicked(); return true;});
+      item.set(itemData.get(i).label);
+    }
+    else if(holder.itemView instanceof ProfileAvatarItem) {
+      ProfileAvatarItem item = (ProfileAvatarItem) holder.itemView;
+      item.setAvatarClickListener(view -> clickListener.onAvatarClicked());
+      item.set(glideRequests, dcChat, dcContact, memberCount);
+    }
+    else if(holder.itemView instanceof ProfileTextItem) {
+      ProfileTextItem item = (ProfileTextItem) holder.itemView;
+      item.setOnClickListener(view -> clickListener.onSettingsClicked(itemData.get(i).viewType));
+      item.set(itemData.get(i).label, itemData.get(i).labelColor, itemData.get(i).icon);
+    }
+  }
+
+  static class HeaderViewHolder extends RecyclerView.ViewHolder {
+    final TextView textView;
+    HeaderViewHolder(View itemView) {
+      super(itemView);
+      textView = itemView.findViewById(R.id.label);
+    }
+  }
+
+  @Override
+  public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
+    return new HeaderViewHolder(LayoutInflater.from(context).inflate(R.layout.contact_selection_list_divider, parent, false));
+  }
+
+  @Override
+  public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
+    String txt = "";
+    if((int)getHeaderId(position) == ITEM_SHARED_CHATS) {
+      txt = context.getString(R.string.profile_shared_chats);
+    }
+    viewHolder.textView.setText(txt);
+  }
+
+  public interface ItemClickListener {
+    void onSettingsClicked(int settingsId);
+    void onStatusLongClicked();
+    void onSharedChatClicked(int chatId);
+    void onMemberClicked(int contactId);
+    void onMemberLongClicked(int contactId);
+    void onAvatarClicked();
+  }
+
+  public void toggleMemberSelection(int contactId) {
+    if (!selectedMembers.remove(contactId)) {
+      selectedMembers.add(contactId);
+    }
+    notifyDataSetChanged();
+  }
+
+  @NonNull
+  public Collection<Integer> getSelectedMembers() {
+    return new HashSet<>(selectedMembers);
+  }
+
+  public int getSelectedMembersCount() {
+    return selectedMembers.size();
+  }
+
+  @NonNull
+  public String getStatusText() {
+    return itemDataStatusText;
+  }
+
+  public void clearSelection() {
+    selectedMembers.clear();
+    notifyDataSetChanged();
+  }
+
+  public void changeData(@Nullable int[] memberList, @Nullable DcContact dcContact, @Nullable DcChatlist sharedChats, @Nullable DcChat dcChat) {
+    this.dcChat = dcChat;
+    this.dcContact = dcContact;
+    itemData.clear();
+    itemDataSharedChats = sharedChats;
+    itemDataStatusText = "";
+    isBroadcast = dcChat != null && dcChat.isBroadcast();
+    boolean isMailingList = dcChat != null && dcChat.isMailingList();
+    boolean isGroup = dcChat != null && dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP;
+    boolean isSelfTalk = dcChat != null && dcChat.isSelfTalk();
+    boolean isDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
+    memberCount = memberList!=null ? memberList.length : 0;
+
+    itemData.add(new ItemData(ITEM_AVATAR, null, 0, 0));
+
+    if (isSelfTalk || dcContact != null && !dcContact.getStatus().isEmpty()) {
+      itemDataStatusText = isSelfTalk ? context.getString(R.string.saved_messages_explain) : dcContact.getStatus();
+      itemData.add(new ItemData(ITEM_SIGNATURE, itemDataStatusText, 0, 0));
+    }
+
+    itemData.add(new ItemData(ITEM_ALL_MEDIA, context.getString(R.string.apps_and_media), R.color.delta_accent, 0));
+
+    if (dcContact != null && !isDeviceTalk && !isSelfTalk) {
+      itemData.add(new ItemData(ITEM_SEND_MESSAGE_BUTTON, context.getString(R.string.send_message), R.color.delta_accent, 0));
+    }
+
+    if (dcContact != null && !isDeviceTalk && !isSelfTalk) {
+      int verifierId = dcContact.getVerifierId();
+      if (verifierId != 0) {
+        String verifiedInfo;
+        if (verifierId == DcContact.DC_CONTACT_ID_SELF) {
+          verifiedInfo = context.getString(R.string.verified_by_you);
+        } else {
+          verifiedInfo = context.getString(R.string.verified_by, dcContext.getContact(verifierId).getDisplayName());
+        }
+        itemData.add(new ItemData(ITEM_VERIFIED, verifiedInfo, 0, 0));
+      }
+
+      long lastSeenTimestamp = dcContact.getLastSeen();
+      String lastSeenTxt;
+      if (lastSeenTimestamp == 0) {
+        lastSeenTxt = context.getString(R.string.last_seen_unknown);
+      }
+      else {
+        lastSeenTxt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, lastSeenTimestamp));
+      }
+      itemData.add(new ItemData(ITEM_LAST_SEEN, lastSeenTxt, 0, 0));
+    }
+
+    if (dcContact != null) {
+      itemData.add(new ItemData(ITEM_ADDRESS, dcContact.getAddr(), 0, 0));
+    } else if (isMailingList) {
+      itemData.add(new ItemData(ITEM_ADDRESS, dcChat.getMailinglistAddr(), 0, 0));
+    }
+
+    if (memberList!=null) {
+      if (dcChat != null) {
+        if (!isMailingList && dcChat.canSend()) {
+          itemData.add(new ItemData(ITEM_MEMBERS, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
+          if (!isBroadcast) {
+            itemData.add(new ItemData(ITEM_MEMBERS, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
+          }
+        }
+      }
+      for (int value : memberList) {
+        itemData.add(new ItemData(ITEM_MEMBERS, value, 0));
+      }
+    }
+
+    if (sharedChats != null && !isDeviceTalk) {
+      for (int i = 0; i < sharedChats.getCnt(); i++) {
+        itemData.add(new ItemData(ITEM_SHARED_CHATS, 0, i));
+      }
+    }
+
+    notifyDataSetChanged();
+  }
+}

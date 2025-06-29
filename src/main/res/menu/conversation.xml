@@ -25,10 +25,10 @@
         android:visible="false"
         app:showAsAction="always"/>
 
-    <item android:id="@+id/menu_show_apps"
-        android:title="@string/webxdc_apps"
+    <item android:id="@+id/menu_all_media"
+        android:title="@string/apps_and_media"
         android:icon="@drawable/ic_apps_24"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item android:id="@+id/menu_ephemeral_messages"
         android:title="@string/ephemeral_messages" />
