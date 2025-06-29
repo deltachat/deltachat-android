@@ -203,6 +203,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     }
     else if(holder.itemView instanceof ProfileAvatarItem) {
       ProfileAvatarItem item = (ProfileAvatarItem) holder.itemView;
+      item.setAvatarClickListener(view -> clickListener.onAvatarClicked());
       item.set(glideRequests, dcChat, dcContact, memberCount);
     }
     else if(holder.itemView instanceof ProfileTextItem) {
@@ -240,6 +241,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     void onSharedChatClicked(int chatId);
     void onMemberClicked(int contactId);
     void onMemberLongClicked(int contactId);
+    void onAvatarClicked();
   }
 
   public void toggleMemberSelection(int contactId) {

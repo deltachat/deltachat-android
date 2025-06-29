@@ -316,7 +316,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
             .show();
   }
 
-  private void onEnlargeAvatar() {
+  public void onEnlargeAvatar() {
     String profileImagePath;
     String title;
     Uri profileImageUri;

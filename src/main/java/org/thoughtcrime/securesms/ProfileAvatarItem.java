@@ -21,7 +21,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ProfileAvatarItem extends LinearLayout implements RecipientModifiedListener {
 
-  private AvatarView      avatar;;
+  private AvatarView      avatarView;
   private TextView        nameView;
   private TextView        subtitleView;
 
@@ -39,7 +39,7 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
   @Override
   protected void onFinishInflate() {
     super.onFinishInflate();
-    avatar            = findViewById(R.id.avatar);
+    avatarView        = findViewById(R.id.avatar);
     nameView          = findViewById(R.id.name);
     subtitleView      = findViewById(R.id.subtitle);
 
@@ -71,8 +71,8 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
     }
 
     recipient.addListener(this);
-    avatar.setAvatar(glideRequests, recipient, false);
-    avatar.setSeenRecently(dcContact != null && dcContact.wasSeenRecently());
+    avatarView.setAvatar(glideRequests, recipient, false);
+    avatarView.setSeenRecently(dcContact != null && dcContact.wasSeenRecently());
 
     nameView.setText(name);
     nameView.setCompoundDrawablesWithIntrinsicBounds(0,0, greenCheckmark ? R.drawable.ic_verified : 0, 0);
@@ -85,22 +85,26 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
     }
   }
 
+  public void setAvatarClickListener(OnClickListener listener) {
+    avatarView.setAvatarClickListener(listener);
+  }
+
   public void unbind(GlideRequests glideRequests) {
     if (recipient != null) {
       recipient.removeListener(this);
       recipient = null;
     }
 
-    avatar.clear(glideRequests);
+    avatarView.clear(glideRequests);
   }
 
   @Override
   public void onModified(final Recipient recipient) {
     if (this.recipient == recipient) {
       Util.runOnMain(() -> {
-        avatar.setAvatar(glideRequests, recipient, false);
+        avatarView.setAvatar(glideRequests, recipient, false);
         DcContact contact = recipient.getDcContact();
-        avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
+        avatarView.setSeenRecently(contact != null && contact.wasSeenRecently());
         nameView.setText(recipient.toShortString());
       });
     }
