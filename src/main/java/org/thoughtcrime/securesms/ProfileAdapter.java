@@ -50,6 +50,8 @@ public class ProfileAdapter extends RecyclerView.Adapter
   private DcChatlist                          itemDataSharedChats;
   private String                              itemDataStatusText;
   private boolean                             isBroadcast;
+  private boolean                             isSelfTalk;
+  private boolean                             isDeviceTalk;
   private int                                 memberCount;
   private final Set<Integer>                  selectedMembers;
 
@@ -204,6 +206,9 @@ public class ProfileAdapter extends RecyclerView.Adapter
     else if(holder.itemView instanceof ProfileAvatarItem) {
       ProfileAvatarItem item = (ProfileAvatarItem) holder.itemView;
       item.setAvatarClickListener(view -> clickListener.onAvatarClicked());
+      if (dcContact != null && !isSelfTalk && !isDeviceTalk) {
+        item.setNameClickListener(view -> clickListener.onNameClicked());
+      }
       item.set(glideRequests, dcChat, dcContact, memberCount);
     }
     else if(holder.itemView instanceof ProfileTextItem) {
@@ -242,6 +247,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     void onMemberClicked(int contactId);
     void onMemberLongClicked(int contactId);
     void onAvatarClicked();
+    void onNameClicked();
   }
 
   public void toggleMemberSelection(int contactId) {
@@ -278,9 +284,8 @@ public class ProfileAdapter extends RecyclerView.Adapter
     itemDataStatusText = "";
     isBroadcast = dcChat != null && dcChat.isBroadcast();
     boolean isMailingList = dcChat != null && dcChat.isMailingList();
-    boolean isGroup = dcChat != null && dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP;
-    boolean isSelfTalk = dcChat != null && dcChat.isSelfTalk();
-    boolean isDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
+    isSelfTalk = dcChat != null && dcChat.isSelfTalk();
+    isDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
     memberCount = memberList!=null ? memberList.length : 0;
 
     itemData.add(new ItemData(ITEM_AVATAR, null, 0, 0));

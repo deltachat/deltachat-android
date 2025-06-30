@@ -211,6 +211,12 @@ public class ProfileFragment extends Fragment
     activity.onEnlargeAvatar();
   }
 
+  @Override
+  public void onNameClicked() {
+    ProfileActivity activity = (ProfileActivity)getActivity();
+    activity.onEditName();
+  }
+
   public void onAddMember() {
     DcChat dcChat = dcContext.getChat(chatId);
     Intent intent = new Intent(getContext(), ContactMultiSelectionActivity.class);
