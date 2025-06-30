@@ -70,7 +70,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private boolean              chatIsMultiUser;
   private boolean              chatIsDeviceTalk;
   private boolean              chatIsMailingList;
-  private boolean              chatIsChannel;
+  private boolean              chatIsOutBroadcastChannel;
+  private boolean              chatIsInBroadcastChannel;
   private int                  contactId;
   private boolean              fromChat;
 
@@ -149,7 +150,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           menu.findItem(R.id.show_encr_info).setVisible(false);
           menu.findItem(R.id.share).setVisible(false);
         } else if (chatIsMultiUser) {
-          if (chatIsChannel) {
+          if (chatIsOutBroadcastChannel) {
             canReceive = false;
           } else {
             if (!dcChat.isEncrypted()
@@ -239,7 +240,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     chatIsMultiUser  = false;
     chatIsDeviceTalk = false;
     chatIsMailingList= false;
-    chatIsChannel    = false;
+    chatIsInBroadcastChannel = false;
+    chatIsOutBroadcastChannel = false;
     fromChat         = getIntent().getBooleanExtra(FROM_CHAT, false);
 
     if (contactId!=0) {
@@ -250,7 +252,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       chatIsMultiUser = dcChat.isMultiUser();
       chatIsDeviceTalk = dcChat.isDeviceTalk();
       chatIsMailingList = dcChat.isMailingList();
-      chatIsChannel = dcChat.isBroadcastChannel();
+      chatIsInBroadcastChannel = dcChat.isInBroadcastChannel();
+      chatIsOutBroadcastChannel = dcChat.isOutBroadcastChannel();
       if(!chatIsMultiUser) {
         final int[] members = dcContext.getChatContacts(chatId);
         contactId = members.length>=1? members[0] : 0;
@@ -384,7 +387,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
               return getString(R.string.tab_contact);
             }
           }
-          else if (chatIsChannel) {
+          else if (chatIsOutBroadcastChannel || chatIsInBroadcastChannel) {
             return getString(R.string.channel);
           }
           else if (chatIsMailingList) {
