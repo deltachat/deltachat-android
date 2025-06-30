@@ -54,9 +54,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private boolean              chatIsMailingList;
   private boolean              chatIsBroadcast;
   private int                  contactId;
-
-  private Toolbar            toolbar;
-  private ConversationTitleView titleView;
+  private boolean              contactIsBot;
+  private Toolbar              toolbar;
 
   @Override
   protected void onPreCreate() {
@@ -75,23 +74,22 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     setSupportActionBar(this.toolbar);
     ActionBar supportActionBar = getSupportActionBar();
     if (supportActionBar != null) {
-      supportActionBar.setDisplayHomeAsUpEnabled(false);
-      supportActionBar.setCustomView(R.layout.conversation_title_view);
-      supportActionBar.setDisplayShowCustomEnabled(true);
-      supportActionBar.setDisplayShowTitleEnabled(false);
-      Toolbar parent = (Toolbar) supportActionBar.getCustomView().getParent();
-      parent.setPadding(0,0,0,0);
-      parent.setContentInsetsAbsolute(0,0);
-
-      titleView = (ConversationTitleView) supportActionBar.getCustomView();
-      titleView.setOnBackClickedListener(view -> onBackPressed());
-      titleView.setOnClickListener(view -> onEnlargeAvatar());
-      if (isContactProfile() && !isSelfProfile() && !chatIsDeviceTalk) {
-        titleView.registerForContextMenu(this);
+      String title = getString(R.string.profile);
+      if (chatIsMailingList) {
+        title = getString(R.string.mailing_list);
+      } else if (chatIsBroadcast) {
+        title = getString(R.string.broadcast_list);
+      } else if (chatIsMultiUser) {
+        title = getString(R.string.tab_group);
+      } else if (contactIsBot) {
+        title = getString(R.string.bot);
+      } else if (!chatIsDeviceTalk && !isSelfProfile()) {
+        title = getString(R.string.tab_contact);
       }
-    }
 
-    updateToolbar();
+      supportActionBar.setDisplayHomeAsUpEnabled(true);
+      supportActionBar.setTitle(title);
+    }
 
     Bundle args = new Bundle();
     args.putInt(ProfileFragment.CHAT_ID_EXTRA, (chatId == 0) ? -1 : chatId);
@@ -182,21 +180,24 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void handleEvent(@NonNull DcEvent event) {
-    updateToolbar();
   }
 
   private void initializeResources() {
     chatId           = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
     contactId        = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
+    contactIsBot     = false;
     chatIsMultiUser  = false;
     chatIsDeviceTalk = false;
     chatIsMailingList= false;
     chatIsBroadcast  = false;
 
     if (contactId!=0) {
+      DcContact dcContact = dcContext.getContact(contactId);
       chatId = dcContext.getChatIdByContactId(contactId);
+      contactIsBot = dcContact.isBot();
     }
-    else if(chatId!=0) {
+
+    if(chatId!=0) {
       DcChat dcChat = dcContext.getChat(chatId);
       chatIsMultiUser = dcChat.isMultiUser();
       chatIsDeviceTalk = dcChat.isDeviceTalk();
@@ -209,16 +210,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
 
     this.toolbar   = ViewUtil.findById(this, R.id.toolbar);
-  }
-
-  private void updateToolbar() {
-    if (chatId > 0) {
-      DcChat dcChat  = dcContext.getChat(chatId);
-      titleView.setTitle(GlideApp.with(this), dcChat, true);
-    }
-    else if (isContactProfile()){
-      titleView.setTitle(GlideApp.with(this), dcContext.getContact(contactId));
-    }
   }
 
   private boolean isContactProfile() {

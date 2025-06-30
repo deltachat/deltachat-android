@@ -99,7 +99,8 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     if (contactId!=0) {
       chatId = dcContext.getChatIdByContactId(contactId);
     }
-    else if(chatId!=0) {
+
+    if(chatId!=0) {
       DcChat dcChat = dcContext.getChat(chatId);
       if(!dcChat.isMultiUser()) {
         final int[] members = dcContext.getChatContacts(chatId);
