@@ -89,10 +89,6 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
     avatarView.setAvatarClickListener(listener);
   }
 
-  public void setNameClickListener(OnClickListener listener) {
-    nameView.setOnClickListener(listener);
-  }
-
   public void unbind(GlideRequests glideRequests) {
     if (recipient != null) {
       recipient.removeListener(this);

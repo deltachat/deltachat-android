@@ -336,7 +336,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  public void onEditName() {
+  private void onEditName() {
     if (chatIsMultiUser) {
       DcChat dcChat = dcContext.getChat(chatId);
       if (chatIsMailingList || dcChat.canSend()) {
