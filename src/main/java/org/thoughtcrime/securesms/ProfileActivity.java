@@ -70,8 +70,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private boolean              chatIsMultiUser;
   private boolean              chatIsDeviceTalk;
   private boolean              chatIsMailingList;
-  private boolean              chatIsOutBroadcastChannel;
-  private boolean              chatIsInBroadcastChannel;
+  private boolean              chatIsOutBroadcast;
+  private boolean              chatIsInBroadcast;
   private int                  contactId;
   private boolean              fromChat;
 
@@ -150,7 +150,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           menu.findItem(R.id.show_encr_info).setVisible(false);
           menu.findItem(R.id.share).setVisible(false);
         } else if (chatIsMultiUser) {
-          if (chatIsOutBroadcastChannel) {
+          if (chatIsOutBroadcast) {
             canReceive = false;
           } else {
             if (!dcChat.isEncrypted()
@@ -240,8 +240,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     chatIsMultiUser  = false;
     chatIsDeviceTalk = false;
     chatIsMailingList= false;
-    chatIsInBroadcastChannel = false;
-    chatIsOutBroadcastChannel = false;
+    chatIsInBroadcast = false;
+    chatIsOutBroadcast = false;
     fromChat         = getIntent().getBooleanExtra(FROM_CHAT, false);
 
     if (contactId!=0) {
@@ -252,8 +252,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       chatIsMultiUser = dcChat.isMultiUser();
       chatIsDeviceTalk = dcChat.isDeviceTalk();
       chatIsMailingList = dcChat.isMailingList();
-      chatIsInBroadcastChannel = dcChat.isInBroadcastChannel();
-      chatIsOutBroadcastChannel = dcChat.isOutBroadcastChannel();
+      chatIsInBroadcast = dcChat.isInBroadcast();
+      chatIsOutBroadcast = dcChat.isOutBroadcast();
       if(!chatIsMultiUser) {
         final int[] members = dcContext.getChatContacts(chatId);
         contactId = members.length>=1? members[0] : 0;
@@ -387,7 +387,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
               return getString(R.string.tab_contact);
             }
           }
-          else if (chatIsOutBroadcastChannel || chatIsInBroadcastChannel) {
+          else if (chatIsOutBroadcast || chatIsInBroadcast) {
             return getString(R.string.channel);
           }
           else if (chatIsMailingList) {

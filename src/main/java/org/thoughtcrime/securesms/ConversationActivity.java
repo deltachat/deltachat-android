@@ -431,7 +431,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     getMenuInflater().inflate(R.menu.conversation, menu);
 
-    if (dcChat.isSelfTalk() || dcChat.isOutBroadcastChannel()) {
+    if (dcChat.isSelfTalk() || dcChat.isOutBroadcast()) {
       menu.findItem(R.id.menu_mute_notifications).setVisible(false);
     } else if(dcChat.isMuted()) {
       menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);

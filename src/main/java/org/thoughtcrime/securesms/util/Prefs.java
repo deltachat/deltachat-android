@@ -172,7 +172,7 @@ public class Prefs {
     return getBooleanPreference(context, "pref_developer_mode_enabled", false);
   }
 
-  public static boolean isNewBroadcastChannelAvailable(Context context) {
+  public static boolean isNewBroadcastAvailable(Context context) {
     return getBooleanPreference(context, "pref_new_broadcast_list", false);
   }
 

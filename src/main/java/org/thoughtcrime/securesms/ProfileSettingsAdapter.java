@@ -43,8 +43,8 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   private DcChatlist                          itemDataSharedChats;
   private String                              itemDataStatusText;
   private boolean                             isMailingList;
-  private boolean                             isOutBroadcastChannel;
-  private boolean                             isInBroadcastChannel;
+  private boolean                             isOutBroadcast;
+  private boolean                             isInBroadcast;
   private final Set<Integer>                  selectedMembers;
 
   private final LayoutInflater                layoutInflater;
@@ -151,7 +151,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       String addr = null;
 
       if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
-        if (isOutBroadcastChannel) {
+        if (isOutBroadcast) {
           name = context.getString(R.string.add_recipients);
         } else {
           name = context.getString(R.string.group_add_members);
@@ -228,9 +228,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       case ItemData.CATEGORY_MEMBERS:
         if (isMailingList) {
           txt = context.getString(R.string.contacts_headline);
-        } else if (isInBroadcastChannel) {
+        } else if (isInBroadcast) {
           txt = context.getString(R.string.contact);
-        } else if (isOutBroadcastChannel) {
+        } else if (isOutBroadcast) {
           txt = context.getResources().getQuantityString(R.plurals.n_recipients, (int) itemDataMemberCount, (int) itemDataMemberCount);
         } else {
           txt = context.getResources().getQuantityString(R.plurals.n_members, (int) itemDataMemberCount, (int) itemDataMemberCount);
@@ -284,23 +284,23 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     itemDataSharedChats = null;
     itemDataStatusText = "";
     isMailingList = false;
-    isOutBroadcastChannel = false;
-    isInBroadcastChannel = false;
+    isOutBroadcast = false;
+    isInBroadcast = false;
 
     if (memberList!=null) {
       itemDataMemberCount = memberList.length;
       if (dcChat != null) {
-        if (dcChat.isOutBroadcastChannel()) {
-          isOutBroadcastChannel = true;
+        if (dcChat.isOutBroadcast()) {
+          isOutBroadcast = true;
         }
 
         if (dcChat.isMailingList()) {
           isMailingList = true;
-        } else if (dcChat.isInBroadcastChannel()) {
-          isInBroadcastChannel = true;
+        } else if (dcChat.isInBroadcast()) {
+          isInBroadcast = true;
         } else if (dcChat.canSend() && dcChat.isEncrypted()) {
           itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
-          if (!isOutBroadcastChannel) {
+          if (!isOutBroadcast) {
             itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
           }
         }

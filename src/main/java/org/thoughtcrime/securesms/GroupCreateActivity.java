@@ -49,7 +49,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 {
 
   public static final String EDIT_GROUP_CHAT_ID = "edit_group_chat_id";
-  public static final String CREATE_BROADCAST_CHANNEL = "group_create_channel";
+  public static final String CREATE_BROADCAST = "create_broadcast";
   public static final String CLONE_CHAT_EXTRA = "clone_chat";
 
   private static final int PICK_CONTACT = 1;
@@ -59,7 +59,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private DcContext dcContext;
 
   private boolean verified;
-  private boolean channel;
+  private boolean broadcast;
   private EditText     groupName;
   private ListView     lv;
   private ImageView    avatar;
@@ -75,7 +75,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     dcContext = DcHelper.getContext(this);
     setContentView(R.layout.group_create_activity);
     verified = false;
-    channel = getIntent().getBooleanExtra(CREATE_BROADCAST_CHANNEL, false);
+    broadcast = getIntent().getBooleanExtra(CREATE_BROADCAST, false);
     Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
@@ -89,12 +89,12 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       isEdit = true;
       DcChat dcChat = dcContext.getChat(groupChatId);
       verified = dcChat.isProtected();
-      channel = dcChat.isOutBroadcastChannel();
+      broadcast = dcChat.isOutBroadcast();
     }
 
     int chatId = getIntent().getIntExtra(CLONE_CHAT_EXTRA, 0);
     if (chatId != 0) {
-      channel = dcContext.getChat(chatId).isOutBroadcastChannel();
+      broadcast = dcContext.getChat(chatId).isOutBroadcast();
     }
 
     initializeResources();
@@ -120,7 +120,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if(isEdit()) {
       title = getString(R.string.global_menu_edit_desktop);
     }
-    else if(channel) {
+    else if(broadcast) {
       title = getString(R.string.new_channel);
     }
     else {
@@ -137,7 +137,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
     initializeAvatarView();
 
-    SelectedContactsAdapter adapter = new SelectedContactsAdapter(this, GlideApp.with(this), channel);
+    SelectedContactsAdapter adapter = new SelectedContactsAdapter(this, GlideApp.with(this), broadcast);
     adapter.setItemClickListener(this);
     lv.setAdapter(adapter);
 
@@ -160,7 +160,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       adapter.changeData(null);
     }
 
-    if (channel) {
+    if (broadcast) {
       groupName.setHint(R.string.channel_name);
       chatHints.setVisibility(View.VISIBLE);
     } else {
@@ -219,7 +219,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       if (groupChatId != 0) {
         updateGroup(groupName);
       } else {
-        verified = !channel && allMembersVerified();
+        verified = !broadcast && allMembersVerified();
         createGroup(groupName);
       }
 
@@ -256,9 +256,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void createGroup(String groupName) {
-    if (channel) {
+    if (broadcast) {
       try {
-        groupChatId = DcHelper.getRpc(this).createBroadcastChannel(dcContext.getAccountId(), groupName);
+        groupChatId = DcHelper.getRpc(this).createBroadcast(dcContext.getAccountId(), groupName);
       } catch (RpcException e) {
         e.printStackTrace();
         return;

@@ -160,8 +160,8 @@ public class Rpc {
         getResult("add_or_update_transport", accountId, param);
     }
 
-    public int createBroadcastChannel(int accountId, String chatName) throws RpcException {
-        return gson.fromJson(getResult("create_broadcast_channel", accountId, chatName), Integer.class);
+    public int createBroadcast(int accountId, String chatName) throws RpcException {
+        return gson.fromJson(getResult("create_broadcast", accountId, chatName), Integer.class);
     }
 
     private static class Request {

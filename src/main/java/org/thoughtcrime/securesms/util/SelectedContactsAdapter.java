@@ -36,17 +36,17 @@ public class SelectedContactsAdapter extends BaseAdapter {
   @NonNull  private final Context                context;
   @Nullable private ItemClickListener            itemClickListener;
   @NonNull  private final List<Integer>          contacts = new LinkedList<>();
-  private final boolean isChannel;
+  private final boolean isBroadcast;
   @NonNull  private final DcContext              dcContext;
   @NonNull  private final GlideRequests          glideRequests;
 
   public SelectedContactsAdapter(@NonNull Context context,
                                    @NonNull  GlideRequests glideRequests,
-                                   boolean isChannel)
+                                   boolean isBroadcast)
   {
     this.context       = context;
     this.glideRequests = glideRequests;
-    this.isChannel     = isChannel;
+    this.isBroadcast   = isBroadcast;
     this.dcContext     = DcHelper.getContext(context);
   }
 
@@ -60,7 +60,7 @@ public class SelectedContactsAdapter extends BaseAdapter {
         }
       }
     }
-    if (!isChannel) {
+    if (!isBroadcast) {
       contacts.add(DC_CONTACT_ID_SELF);
     }
     notifyDataSetChanged();

@@ -6,8 +6,8 @@ public class DcChat {
     public static final int DC_CHAT_TYPE_SINGLE      = 100;
     public static final int DC_CHAT_TYPE_GROUP       = 120;
     public static final int DC_CHAT_TYPE_MAILINGLIST = 140;
-    public static final int DC_CHAT_TYPE_OUT_BROADCAST_CHANNEL = 160;
-    public static final int DC_CHAT_TYPE_IN_BROADCAST_CHANNEL = 165;
+    public static final int DC_CHAT_TYPE_OUT_BROADCAST = 160;
+    public static final int DC_CHAT_TYPE_IN_BROADCAST = 165;
 
     public static final int DC_CHAT_NO_CHAT          = 0;
     public final static int DC_CHAT_ID_ARCHIVED_LINK = 6;
@@ -62,11 +62,11 @@ public class DcChat {
         return getType() == DC_CHAT_TYPE_MAILINGLIST;
     }
 
-    public boolean isInBroadcastChannel() {
-        return getType() == DC_CHAT_TYPE_IN_BROADCAST_CHANNEL;
+    public boolean isInBroadcast() {
+        return getType() == DC_CHAT_TYPE_IN_BROADCAST;
     }
-    public boolean isOutBroadcastChannel() {
-        return getType() == DC_CHAT_TYPE_OUT_BROADCAST_CHANNEL;
+    public boolean isOutBroadcast() {
+        return getType() == DC_CHAT_TYPE_OUT_BROADCAST;
     }
 
     public boolean isHalfBlocked() {
