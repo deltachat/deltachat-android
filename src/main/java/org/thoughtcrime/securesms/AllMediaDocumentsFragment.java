@@ -33,10 +33,10 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Set;
 
-public class ProfileDocumentsFragment
+public class AllMediaDocumentsFragment
     extends MessageSelectorFragment
     implements LoaderManager.LoaderCallbacks<BucketedThreadMediaLoader.BucketedThreadMedia>,
-               ProfileDocumentsAdapter.ItemClickListener
+               AllMediaDocumentsAdapter.ItemClickListener
 {
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String SHOW_AUDIO_EXTRA = "show_audio";
@@ -71,7 +71,7 @@ public class ProfileDocumentsFragment
     this.noMedia      = ViewUtil.findById(view, R.id.no_documents);
     this.gridManager  = new StickyHeaderGridLayoutManager(1);
 
-    this.recyclerView.setAdapter(new ProfileDocumentsAdapter(getContext(),
+    this.recyclerView.setAdapter(new AllMediaDocumentsAdapter(getContext(),
         new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()),
         this));
     this.recyclerView.setLayoutManager(gridManager);
@@ -116,8 +116,8 @@ public class ProfileDocumentsFragment
 
   @Override
   public void onLoadFinished(Loader<BucketedThreadMediaLoader.BucketedThreadMedia> loader, BucketedThreadMediaLoader.BucketedThreadMedia bucketedThreadMedia) {
-    ((ProfileDocumentsAdapter) recyclerView.getAdapter()).setMedia(bucketedThreadMedia);
-    ((ProfileDocumentsAdapter) recyclerView.getAdapter()).notifyAllSectionsDataSetChanged();
+    ((AllMediaDocumentsAdapter) recyclerView.getAdapter()).setMedia(bucketedThreadMedia);
+    ((AllMediaDocumentsAdapter) recyclerView.getAdapter()).notifyAllSectionsDataSetChanged();
 
     noMedia.setVisibility(recyclerView.getAdapter().getItemCount() > 0 ? View.GONE : View.VISIBLE);
     if (chatId == DC_CHAT_NO_CHAT) {
@@ -138,7 +138,7 @@ public class ProfileDocumentsFragment
 
   @Override
   public void onLoaderReset(Loader<BucketedThreadMediaLoader.BucketedThreadMedia> cursorLoader) {
-    ((ProfileDocumentsAdapter) recyclerView.getAdapter()).setMedia(new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()));
+    ((AllMediaDocumentsAdapter) recyclerView.getAdapter()).setMedia(new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()));
   }
 
   @Override
@@ -156,7 +156,7 @@ public class ProfileDocumentsFragment
   }
 
   private void handleMediaMultiSelectClick(@NonNull DcMsg mediaRecord) {
-    ProfileDocumentsAdapter adapter = getListAdapter();
+    AllMediaDocumentsAdapter adapter = getListAdapter();
 
     adapter.toggleSelection(mediaRecord);
     if (adapter.getSelectedMediaCount() == 0) {
@@ -188,7 +188,7 @@ public class ProfileDocumentsFragment
   @Override
   public void onMediaLongClicked(DcMsg mediaRecord) {
     if (actionMode == null) {
-      ((ProfileDocumentsAdapter) recyclerView.getAdapter()).toggleSelection(mediaRecord);
+      ((AllMediaDocumentsAdapter) recyclerView.getAdapter()).toggleSelection(mediaRecord);
 
       actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
     }
@@ -221,8 +221,8 @@ public class ProfileDocumentsFragment
     menu.findItem(R.id.menu_add_to_home_screen).setVisible(webxdcApp);
   }
 
-  private ProfileDocumentsAdapter getListAdapter() {
-    return (ProfileDocumentsAdapter) recyclerView.getAdapter();
+  private AllMediaDocumentsAdapter getListAdapter() {
+    return (AllMediaDocumentsAdapter) recyclerView.getAdapter();
   }
 
   private class ActionModeCallback implements ActionMode.Callback {

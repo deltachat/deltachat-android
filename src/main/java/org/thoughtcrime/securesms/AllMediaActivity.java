@@ -152,25 +152,25 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
 
       switch(tabId) {
         case TAB_WEBXDC:
-          fragment = new ProfileDocumentsFragment();
-          args.putInt(ProfileDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
-          args.putBoolean(ProfileDocumentsFragment.SHOW_WEBXDC_EXTRA, true);
+          fragment = new AllMediaDocumentsFragment();
+          args.putInt(AllMediaDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
+          args.putBoolean(AllMediaDocumentsFragment.SHOW_WEBXDC_EXTRA, true);
           break;
 
         case TAB_GALLERY:
-          fragment = new ProfileGalleryFragment();
-          args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
+          fragment = new AllMediaGalleryFragment();
+          args.putInt(AllMediaGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
           break;
 
         case TAB_AUDIO:
-          fragment = new ProfileDocumentsFragment();
-          args.putInt(ProfileDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
-          args.putBoolean(ProfileDocumentsFragment.SHOW_AUDIO_EXTRA, true);
+          fragment = new AllMediaDocumentsFragment();
+          args.putInt(AllMediaDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
+          args.putBoolean(AllMediaDocumentsFragment.SHOW_AUDIO_EXTRA, true);
           break;
 
         default:
-          fragment = new ProfileDocumentsFragment();
-          args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
+          fragment = new AllMediaDocumentsFragment();
+          args.putInt(AllMediaGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
           break;
       }
 
