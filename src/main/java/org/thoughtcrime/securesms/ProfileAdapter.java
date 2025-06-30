@@ -35,8 +35,8 @@ public class ProfileAdapter extends RecyclerView.Adapter
   public static final int ITEM_SIGNATURE = 25;
   public static final int ITEM_ALL_MEDIA = 30;
   public static final int ITEM_SEND_MESSAGE_BUTTON = 35;
-  public static final int ITEM_VERIFIED = 40;
-  public static final int ITEM_LAST_SEEN = 45;
+  public static final int ITEM_LAST_SEEN = 40;
+  public static final int ITEM_VERIFIED = 45;
   public static final int ITEM_ADDRESS = 50;
   public static final int ITEM_MEMBERS = 55;
   public static final int ITEM_SHARED_CHATS = 60;
@@ -297,6 +297,16 @@ public class ProfileAdapter extends RecyclerView.Adapter
     }
 
     if (dcContact != null && !isDeviceTalk && !isSelfTalk) {
+      long lastSeenTimestamp = dcContact.getLastSeen();
+      String lastSeenTxt;
+      if (lastSeenTimestamp == 0) {
+        lastSeenTxt = context.getString(R.string.last_seen_unknown);
+      }
+      else {
+        lastSeenTxt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, lastSeenTimestamp));
+      }
+      itemData.add(new ItemData(ITEM_LAST_SEEN, lastSeenTxt, 0, 0));
+
       int verifierId = dcContact.getVerifierId();
       if (verifierId != 0) {
         String verifiedInfo;
@@ -307,16 +317,6 @@ public class ProfileAdapter extends RecyclerView.Adapter
         }
         itemData.add(new ItemData(ITEM_VERIFIED, verifiedInfo, 0, 0));
       }
-
-      long lastSeenTimestamp = dcContact.getLastSeen();
-      String lastSeenTxt;
-      if (lastSeenTimestamp == 0) {
-        lastSeenTxt = context.getString(R.string.last_seen_unknown);
-      }
-      else {
-        lastSeenTxt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, lastSeenTimestamp));
-      }
-      itemData.add(new ItemData(ITEM_LAST_SEEN, lastSeenTxt, 0, 0));
     }
 
     if (dcContact != null) {
