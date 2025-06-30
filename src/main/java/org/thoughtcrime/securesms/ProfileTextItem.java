@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,6 +13,7 @@ import org.thoughtcrime.securesms.util.ResUtil;
 public class ProfileTextItem extends LinearLayout {
 
   private TextView labelView;
+  private TextView valueView;
 
   public ProfileTextItem(Context context) {
     super(context);
@@ -25,6 +27,7 @@ public class ProfileTextItem extends LinearLayout {
   protected void onFinishInflate() {
     super.onFinishInflate();
     labelView = findViewById(R.id.label);
+    valueView = findViewById(R.id.value);
   }
 
   public void set(String label, int labelColor, int iconRight) {
@@ -37,5 +40,10 @@ public class ProfileTextItem extends LinearLayout {
     } else {
       labelView.setTextColor(ResUtil.getColor(getContext(), R.attr.emoji_text_color));
     }
+  }
+
+  public void setValue(String value) {
+    valueView.setText(value);
+    valueView.setVisibility(View.VISIBLE);
   }
 }

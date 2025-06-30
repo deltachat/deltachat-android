@@ -15,12 +15,14 @@ import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration.StickyHeaderAdapter;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -208,8 +210,17 @@ public class ProfileAdapter extends RecyclerView.Adapter
     }
     else if(holder.itemView instanceof ProfileTextItem) {
       ProfileTextItem item = (ProfileTextItem) holder.itemView;
-      item.setOnClickListener(view -> clickListener.onSettingsClicked(itemData.get(i).viewType));
-      item.set(itemData.get(i).label, itemData.get(i).labelColor, itemData.get(i).icon);
+      ItemData data = itemData.get(i);
+      item.setOnClickListener(view -> clickListener.onSettingsClicked(data.viewType));
+      item.set(data.label, data.labelColor, data.icon);
+      if (data.viewType == ITEM_ALL_MEDIA && dcChat != null) {
+        Util.runOnAnyBackgroundThread(() -> {
+          String c = getAllMediaCountString(dcChat.getId());
+          Util.runOnMain(() -> {
+            item.setValue(c);
+          });
+        });
+      }
     }
   }
 
@@ -346,5 +357,28 @@ public class ProfileAdapter extends RecyclerView.Adapter
     }
 
     notifyDataSetChanged();
+  }
+
+  public int ALL_MEDIA_COUNT_MAX = 500;
+  public int getAllMediaCount(int chatId) {
+    int c = dcContext.getChatMedia(chatId, DcMsg.DC_MSG_IMAGE, DcMsg.DC_MSG_GIF, DcMsg.DC_MSG_VIDEO).length;
+    if (c < ALL_MEDIA_COUNT_MAX) {
+      c += dcContext.getChatMedia(chatId, DcMsg.DC_MSG_AUDIO, DcMsg.DC_MSG_VOICE, 0).length;
+    }
+    if (c < ALL_MEDIA_COUNT_MAX) {
+      c += dcContext.getChatMedia(chatId, DcMsg.DC_MSG_FILE, DcMsg.DC_MSG_WEBXDC, 0).length;
+    }
+    return c;
+  }
+
+  public String getAllMediaCountString(int chatId) {
+    final int c = getAllMediaCount(chatId);
+    if (c == 0) {
+      return context.getString(R.string.none);
+    } else if (c >= ALL_MEDIA_COUNT_MAX) {
+      return ALL_MEDIA_COUNT_MAX + "+";
+    } else {
+      return c + "";
+    }
   }
 }
