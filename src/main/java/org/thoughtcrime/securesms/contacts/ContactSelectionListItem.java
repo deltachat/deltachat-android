@@ -109,7 +109,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.nameView.setEnabled(true);
     this.nameView.setText(name==null? "#" : name);
 
-    if (contact != null && contact.isVerified()) {
+    if (contact != null && contact.isKeyContact()) {
       number = null;
     }
 

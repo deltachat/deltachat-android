@@ -1832,6 +1832,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isVerified(JNIEnv *env, job
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isKeyContact(JNIEnv *env, jobject obj)
+{
+    return dc_contact_is_key_contact(get_dc_contact(env, obj))==1;
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcContact_getVerifierId(JNIEnv *env, jobject obj)
 {
     return dc_contact_get_verifier_id(get_dc_contact(env, obj));
