@@ -55,8 +55,7 @@ public class DcChat {
 
     public boolean isMultiUser() {
       int type = getType();
-      return type == DC_CHAT_TYPE_GROUP || type == DC_CHAT_TYPE_MAILINGLIST
-              || type == DC_CHAT_TYPE_IN_BROADCAST_CHANNEL || type == DC_CHAT_TYPE_OUT_BROADCAST_CHANNEL;
+      return type != DC_CHAT_TYPE_SINGLE;
     }
 
     public boolean isMailingList() {
