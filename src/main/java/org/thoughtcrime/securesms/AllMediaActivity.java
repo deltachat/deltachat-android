@@ -5,6 +5,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.Toolbar;
@@ -16,6 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.DcMsg;
 import com.google.android.material.tabs.TabLayout;
 
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -31,18 +33,26 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
 
   public static final String CHAT_ID_EXTRA    = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
-  public static final String FORCE_TAB_EXTRA  = "force_tab";
+  public static final String FORCE_GALLERY    = "force_gallery";
 
-  public static final int TAB_WEBXDC   = 10;
-  public static final int TAB_GALLERY  = 20;
-  public static final int TAB_DOCS     = 30;
-  public static final int TAB_AUDIO    = 40;
+  static class TabData {
+    final int title;
+    final int type1;
+    final int type2;
+    final int type3;
+    TabData(int title, int type1, int type2, int type3) {
+      this.title = title;
+      this.type1 = type1;
+      this.type2 = type2;
+      this.type3 = type3;
+    }
+  };
 
   private DcContext            dcContext;
   private int                  chatId;
   private int                  contactId;
 
-  private final ArrayList<Integer> tabs = new ArrayList<>();
+  private final ArrayList<TabData> tabs = new ArrayList<>();
   private Toolbar            toolbar;
   private TabLayout          tabLayout;
   private ViewPager          viewPager;
@@ -56,6 +66,11 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   protected void onCreate(Bundle bundle, boolean ready) {
+    tabs.add(new TabData(R.string.webxdc_apps, DcMsg.DC_MSG_WEBXDC, 0, 0));
+    tabs.add(new TabData(R.string.tab_gallery, DcMsg.DC_MSG_IMAGE, DcMsg.DC_MSG_GIF, DcMsg.DC_MSG_VIDEO));
+    tabs.add(new TabData(R.string.files, DcMsg.DC_MSG_FILE, 0, 0));
+    tabs.add(new TabData(R.string.audio, DcMsg.DC_MSG_AUDIO, DcMsg.DC_MSG_VOICE, 0));
+
     setContentView(R.layout.all_media_activity);
 
     initializeResources();
@@ -69,12 +84,8 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
 
     this.tabLayout.setupWithViewPager(viewPager);
     this.viewPager.setAdapter(new AllMediaPagerAdapter(getSupportFragmentManager()));
-    int forceTab = getIntent().getIntExtra(FORCE_TAB_EXTRA, -1);
-    if (forceTab != -1) {
-      int forceIndex = tabs.indexOf(forceTab);
-      if (forceIndex != -1) {
-        this.viewPager.setCurrentItem(forceIndex);
-      }
+    if (getIntent().getBooleanExtra(FORCE_GALLERY, false)) {
+      this.viewPager.setCurrentItem(1);
     }
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(this);
@@ -107,11 +118,6 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
         contactId = members.length>=1? members[0] : 0;
       }
     }
-
-    tabs.add(TAB_WEBXDC);
-    tabs.add(TAB_GALLERY);
-    tabs.add(TAB_DOCS);
-    tabs.add(TAB_AUDIO);
 
     this.viewPager = ViewUtil.findById(this, R.id.pager);
     this.toolbar   = ViewUtil.findById(this, R.id.toolbar);
@@ -147,34 +153,19 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     @NonNull
     @Override
     public Fragment getItem(int position) {
-      int tabId = tabs.get(position);
+      TabData data = tabs.get(position);
       Fragment fragment;
       Bundle args = new Bundle();
 
-      switch(tabId) {
-        case TAB_WEBXDC:
-          fragment = new AllMediaDocumentsFragment();
-          args.putInt(AllMediaDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
-          args.putBoolean(AllMediaDocumentsFragment.SHOW_WEBXDC_EXTRA, true);
-          break;
-
-        case TAB_GALLERY:
-          fragment = new AllMediaGalleryFragment();
-          args.putInt(AllMediaGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
-          break;
-
-        case TAB_AUDIO:
-          fragment = new AllMediaDocumentsFragment();
-          args.putInt(AllMediaDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
-          args.putBoolean(AllMediaDocumentsFragment.SHOW_AUDIO_EXTRA, true);
-          break;
-
-        default:
-          fragment = new AllMediaDocumentsFragment();
-          args.putInt(AllMediaGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
-          break;
+      if (data.type1 == DcMsg.DC_MSG_IMAGE) {
+        fragment = new AllMediaGalleryFragment();
+        args.putInt(AllMediaGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
+      } else {
+        fragment = new AllMediaDocumentsFragment();
+        args.putInt(AllMediaDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
+        args.putInt(AllMediaDocumentsFragment.VIEWTYPE1, data.type1);
+        args.putInt(AllMediaDocumentsFragment.VIEWTYPE2, data.type2);
       }
-
       fragment.setArguments(args);
       return fragment;
     }
@@ -186,12 +177,7 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
 
     @Override
     public CharSequence getPageTitle(int position) {
-      switch(tabs.get(position)) {
-        case TAB_WEBXDC: return getString(R.string.webxdc_apps);
-        case TAB_GALLERY: return getString(R.string.tab_gallery);
-        case TAB_AUDIO: return getString(R.string.audio);
-        default: return getString(R.string.files);
-      }
+      return getString(tabs.get(position).title);
     }
   }
 

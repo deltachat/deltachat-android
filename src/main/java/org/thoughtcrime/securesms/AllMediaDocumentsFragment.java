@@ -39,15 +39,15 @@ public class AllMediaDocumentsFragment
                AllMediaDocumentsAdapter.ItemClickListener
 {
   public static final String CHAT_ID_EXTRA = "chat_id";
-  public static final String SHOW_AUDIO_EXTRA = "show_audio";
-  public static final String SHOW_WEBXDC_EXTRA = "show_webxdc";
+  public static final String VIEWTYPE1 = "viewtype1";
+  public static final String VIEWTYPE2 = "viewtype2";
 
   protected TextView noMedia;
   protected RecyclerView recyclerView;
   private StickyHeaderGridLayoutManager gridManager;
   private final ActionModeCallback actionModeCallback = new ActionModeCallback();
-  private boolean showAudio;
-  private boolean showWebxdc;
+  private int viewtype1;
+  private int viewtype2;
 
   protected int                chatId;
 
@@ -57,8 +57,8 @@ public class AllMediaDocumentsFragment
 
     dcContext = DcHelper.getContext(getContext());
     chatId = getArguments().getInt(CHAT_ID_EXTRA, -1);
-    showAudio = getArguments().getBoolean(SHOW_AUDIO_EXTRA, false);
-    showWebxdc = getArguments().getBoolean(SHOW_WEBXDC_EXTRA, false);
+    viewtype1 = getArguments().getInt(VIEWTYPE1, 0);
+    viewtype2 = getArguments().getInt(VIEWTYPE2, 0);
 
     getLoaderManager().initLoader(0, null, this);
   }
@@ -105,13 +105,7 @@ public class AllMediaDocumentsFragment
 
   @Override
   public Loader<BucketedThreadMediaLoader.BucketedThreadMedia> onCreateLoader(int i, Bundle bundle) {
-    if (showAudio) {
-      return new BucketedThreadMediaLoader(getContext(), chatId, DcMsg.DC_MSG_AUDIO, DcMsg.DC_MSG_VOICE, 0);
-    } else if (showWebxdc) {
-      return new BucketedThreadMediaLoader(getContext(), chatId, DcMsg.DC_MSG_WEBXDC, 0, 0);
-    } else {
-      return new BucketedThreadMediaLoader(getContext(), chatId, DcMsg.DC_MSG_FILE, 0, 0);
-    }
+    return new BucketedThreadMediaLoader(getContext(), chatId, viewtype1, viewtype2, 0);
   }
 
   @Override
@@ -121,16 +115,16 @@ public class AllMediaDocumentsFragment
 
     noMedia.setVisibility(recyclerView.getAdapter().getItemCount() > 0 ? View.GONE : View.VISIBLE);
     if (chatId == DC_CHAT_NO_CHAT) {
-      if (showWebxdc) {
+      if (viewtype1 == DcMsg.DC_MSG_WEBXDC) {
         noMedia.setText(R.string.all_apps_empty_hint);
-      } else if (!showAudio){
+      } else if (viewtype1 == DcMsg.DC_MSG_FILE){
         noMedia.setText(R.string.all_files_empty_hint);
       } else {
         noMedia.setText(R.string.tab_all_media_empty_hint);
       }
-    } else if (showAudio) {
+    } else if (viewtype1 == DcMsg.DC_MSG_AUDIO) {
       noMedia.setText(R.string.tab_audio_empty_hint);
-    } else if (showWebxdc) {
+    } else if (viewtype1 == DcMsg.DC_MSG_WEBXDC) {
       noMedia.setText(R.string.tab_webxdc_empty_hint);
     }
     getActivity().invalidateOptionsMenu();
