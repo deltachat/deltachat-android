@@ -5,7 +5,6 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.Toolbar;
@@ -23,6 +22,7 @@ import com.google.android.material.tabs.TabLayout;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.ArrayList;
@@ -86,6 +86,22 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     this.viewPager.setAdapter(new AllMediaPagerAdapter(getSupportFragmentManager()));
     if (getIntent().getBooleanExtra(FORCE_GALLERY, false)) {
       this.viewPager.setCurrentItem(1);
+    } else {
+      // select the first tab that has content
+      Util.runOnAnyBackgroundThread(() -> {
+        int selectedIndex = 0;
+        for (int i = 0; i < tabs.size(); i++) {
+          TabData data = tabs.get(i);
+          if (dcContext.getChatMedia(chatId, data.type1, data.type2, data.type3).length > 0) {
+            selectedIndex = i;
+            break;
+          }
+        }
+        final int finalSelectedIndex = selectedIndex;
+        Util.runOnMain(() -> {
+          this.viewPager.setCurrentItem(finalSelectedIndex);
+        });
+      });
     }
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(this);
