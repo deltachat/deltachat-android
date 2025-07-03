@@ -64,9 +64,9 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.name          = name;
     this.number        = number;
 
-    if (contactId==DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT || contactId==DcContact.DC_CONTACT_ID_NEW_GROUP
-     || contactId==DcContact.DC_CONTACT_ID_NEW_BROADCAST
-     || contactId==DcContact.DC_CONTACT_ID_ADD_MEMBER || contactId==DcContact.DC_CONTACT_ID_QR_INVITE) {
+    if (specialId==DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP
+     || specialId==DcContact.DC_CONTACT_ID_NEW_BROADCAST
+     || specialId==DcContact.DC_CONTACT_ID_ADD_MEMBER || specialId==DcContact.DC_CONTACT_ID_QR_INVITE) {
       this.nameView.setTypeface(null, Typeface.BOLD);
     }
     else {
