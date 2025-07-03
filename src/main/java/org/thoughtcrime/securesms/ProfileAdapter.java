@@ -209,7 +209,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
       item.setOnClickListener(view -> clickListener.onSettingsClicked(data.viewType));
       item.set(data.label, data.icon);
       if (data.viewType == ITEM_ADDRESS) {
-        int padding = context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding) * 2;
+        int padding = context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding) * 3 / 2;
         item.setPadding(item.getPaddingLeft(), item.getPaddingTop(), item.getPaddingRight(), padding);
       }
       else if (data.viewType == ITEM_ALL_MEDIA_BUTTON && dcChat != null) {
