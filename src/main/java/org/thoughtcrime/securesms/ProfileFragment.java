@@ -31,7 +31,6 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.qr.QrShowActivity;
-import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -47,7 +46,6 @@ public class ProfileFragment extends Fragment
 
   private static final int REQUEST_CODE_PICK_CONTACT = 2;
 
-  private StickyHeaderDecoration listDecoration;
   private ProfileAdapter adapter;
   private ActionMode             actionMode;
   private final ActionModeCallback actionModeCallback = new ActionModeCallback();
@@ -74,8 +72,6 @@ public class ProfileFragment extends Fragment
     RecyclerView list = ViewUtil.findById(view, R.id.recycler_view);
     list.setAdapter(adapter);
     list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-    listDecoration = new StickyHeaderDecoration(adapter, false, true);
-    list.addItemDecoration(listDecoration);
 
     update();
 
@@ -91,12 +87,6 @@ public class ProfileFragment extends Fragment
   public void onDestroyView() {
     DcHelper.getEventCenter(requireContext()).removeObservers(this);
     super.onDestroyView();
-  }
-
-  @Override
-  public void onConfigurationChanged(@NonNull Configuration newConfig) {
-    super.onConfigurationChanged(newConfig);
-    listDecoration.onConfigurationChanged(newConfig);
   }
 
   @Override
@@ -122,7 +112,6 @@ public class ProfileFragment extends Fragment
     }
 
     adapter.changeData(memberList, dcContact, sharedChats, dcChat);
-    listDecoration.invalidateLayouts();
   }
 
 

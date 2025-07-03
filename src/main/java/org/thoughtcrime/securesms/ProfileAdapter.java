@@ -21,7 +21,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.DateUtils;
-import org.thoughtcrime.securesms.util.StickyHeaderDecoration.StickyHeaderAdapter;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.ArrayList;
@@ -31,7 +30,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ProfileAdapter extends RecyclerView.Adapter
-                            implements StickyHeaderAdapter<ProfileAdapter.HeaderViewHolder>
 {
   public static final int ITEM_AVATAR = 10;
   public static final int ITEM_SIGNATURE = 25;
@@ -40,6 +38,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
   public static final int ITEM_LAST_SEEN = 40;
   public static final int ITEM_INTRODUCED_BY = 45;
   public static final int ITEM_ADDRESS = 50;
+  public static final int ITEM_HEADER = 53;
   public static final int ITEM_MEMBERS = 55;
   public static final int ITEM_SHARED_CHATS = 60;
 
@@ -106,16 +105,6 @@ public class ProfileAdapter extends RecyclerView.Adapter
     return itemData.get(i).viewType;
   }
 
-  @Override
-  public long getHeaderId(int i) {
-    int viewType = getItemViewType(i);
-    if (viewType == ITEM_MEMBERS || viewType == ITEM_SHARED_CHATS) {
-      return viewType;
-    } else {
-      return ITEM_AVATAR;
-    }
-  }
-
   public static class ViewHolder extends RecyclerView.ViewHolder {
     public ViewHolder(View itemView) {
       super(itemView);
@@ -125,9 +114,11 @@ public class ProfileAdapter extends RecyclerView.Adapter
   @NonNull
   @Override
   public ProfileAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-    if (viewType == ITEM_MEMBERS) {
+    if (viewType == ITEM_HEADER) {
+      final View item = LayoutInflater.from(context).inflate(R.layout.contact_selection_list_divider, parent, false);
+      return new ViewHolder(item);
+    } else if (viewType == ITEM_MEMBERS) {
       final ContactSelectionListItem item = (ContactSelectionListItem)layoutInflater.inflate(R.layout.contact_selection_list_item, parent, false);
-      item.setNoHeaderPadding();
       return new ViewHolder(item);
     } else if (viewType == ITEM_SHARED_CHATS) {
       final ConversationListItem item = (ConversationListItem)layoutInflater.inflate(R.layout.conversation_list_item_view, parent, false);
@@ -154,10 +145,11 @@ public class ProfileAdapter extends RecyclerView.Adapter
   @Override
   public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
     ViewHolder holder = (ViewHolder) viewHolder;
+    ItemData data = itemData.get(i);
     if (holder.itemView instanceof ContactSelectionListItem) {
       ContactSelectionListItem contactItem = (ContactSelectionListItem) holder.itemView;
 
-      int contactId = itemData.get(i).contactId;
+      int contactId = data.contactId;
       DcContact dcContact = null;
       String label = null;
       String name;
@@ -187,7 +179,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     }
     else if (holder.itemView instanceof ConversationListItem) {
       ConversationListItem conversationListItem = (ConversationListItem) holder.itemView;
-      int chatlistIndex = itemData.get(i).chatlistIndex;
+      int chatlistIndex = data.chatlistIndex;
 
       int chatId = itemDataSharedChats.getChatId(chatlistIndex);
       DcChat chat = dcContext.getChat(chatId);
@@ -201,7 +193,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     else if(holder.itemView instanceof ProfileStatusItem) {
       ProfileStatusItem item = (ProfileStatusItem) holder.itemView;
       item.setOnLongClickListener(view -> {clickListener.onStatusLongClicked(); return true;});
-      item.set(itemData.get(i).label);
+      item.set(data.label);
     }
     else if(holder.itemView instanceof ProfileAvatarItem) {
       ProfileAvatarItem item = (ProfileAvatarItem) holder.itemView;
@@ -210,7 +202,6 @@ public class ProfileAdapter extends RecyclerView.Adapter
     }
     else if(holder.itemView instanceof ProfileTextItem) {
       ProfileTextItem item = (ProfileTextItem) holder.itemView;
-      ItemData data = itemData.get(i);
       item.setOnClickListener(view -> clickListener.onSettingsClicked(data.viewType));
       item.set(data.label, data.icon);
       if (data.viewType == ITEM_ALL_MEDIA_BUTTON && dcChat != null) {
@@ -221,29 +212,10 @@ public class ProfileAdapter extends RecyclerView.Adapter
           });
         });
       }
+    } else if (data.viewType == ITEM_HEADER) {
+      TextView textView = holder.itemView.findViewById(R.id.label);
+      textView.setText(data.label);
     }
-  }
-
-  static class HeaderViewHolder extends RecyclerView.ViewHolder {
-    final TextView textView;
-    HeaderViewHolder(View itemView) {
-      super(itemView);
-      textView = itemView.findViewById(R.id.label);
-    }
-  }
-
-  @Override
-  public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-    return new HeaderViewHolder(LayoutInflater.from(context).inflate(R.layout.contact_selection_list_divider, parent, false));
-  }
-
-  @Override
-  public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
-    String txt = "";
-    if((int)getHeaderId(position) == ITEM_SHARED_CHATS) {
-      txt = context.getString(R.string.profile_shared_chats);
-    }
-    viewHolder.textView.setText(txt);
   }
 
   public interface ItemClickListener {
@@ -351,6 +323,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     }
 
     if (sharedChats != null && !isDeviceTalk) {
+      itemData.add(new ItemData(ITEM_HEADER, context.getString(R.string.profile_shared_chats), 0));
       for (int i = 0; i < sharedChats.getCnt(); i++) {
         itemData.add(new ItemData(ITEM_SHARED_CHATS, 0, i));
       }
