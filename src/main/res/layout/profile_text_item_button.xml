@@ -13,21 +13,20 @@
 
         <TextView
             android:id="@+id/label"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="start|center_vertical"
             android:textColor="@color/delta_accent"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/value"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="end|center_vertical"
             style="@style/Signal.Text.Caption"
             android:textColor="?attr/conversation_list_item_date_color"
-            android:singleLine="true"
             android:visibility="gone" />
 
     </LinearLayout>
