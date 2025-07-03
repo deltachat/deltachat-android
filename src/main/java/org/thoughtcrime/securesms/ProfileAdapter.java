@@ -32,6 +32,7 @@ import java.util.Set;
 public class ProfileAdapter extends RecyclerView.Adapter
 {
   public static final int ITEM_AVATAR = 10;
+  public static final int ITEM_DIVIDER = 20;
   public static final int ITEM_SIGNATURE = 25;
   public static final int ITEM_ALL_MEDIA_BUTTON = 30;
   public static final int ITEM_SEND_MESSAGE_BUTTON = 35;
@@ -116,6 +117,9 @@ public class ProfileAdapter extends RecyclerView.Adapter
   public ProfileAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     if (viewType == ITEM_HEADER) {
       final View item = LayoutInflater.from(context).inflate(R.layout.contact_selection_list_divider, parent, false);
+      return new ViewHolder(item);
+    } else if (viewType == ITEM_DIVIDER) {
+      final View item = LayoutInflater.from(context).inflate(R.layout.profile_divider, parent, false);
       return new ViewHolder(item);
     } else if (viewType == ITEM_MEMBERS) {
       final ContactSelectionListItem item = (ContactSelectionListItem)layoutInflater.inflate(R.layout.contact_selection_list_item, parent, false);
@@ -271,10 +275,12 @@ public class ProfileAdapter extends RecyclerView.Adapter
     memberCount = memberList!=null ? memberList.length : 0;
 
     itemData.add(new ItemData(ITEM_AVATAR, null, 0));
+    itemData.add(new ItemData(ITEM_DIVIDER, null, 0));
 
     if (isSelfTalk || dcContact != null && !dcContact.getStatus().isEmpty()) {
       itemDataStatusText = isSelfTalk ? context.getString(R.string.saved_messages_explain) : dcContact.getStatus();
       itemData.add(new ItemData(ITEM_SIGNATURE, itemDataStatusText, 0));
+      itemData.add(new ItemData(ITEM_DIVIDER, null, 0));
     }
 
     itemData.add(new ItemData(ITEM_ALL_MEDIA_BUTTON, context.getString(R.string.apps_and_media), 0));
@@ -313,6 +319,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     }
 
     if (memberList!=null) {
+      itemData.add(new ItemData(ITEM_DIVIDER, null, 0));
       if (dcChat != null) {
         if (!isMailingList && dcChat.canSend()) {
           itemData.add(new ItemData(ITEM_MEMBERS, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
