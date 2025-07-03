@@ -132,7 +132,7 @@ public class ProfileFragment extends Fragment
   @Override
   public void onSettingsClicked(int settingsId) {
     switch(settingsId) {
-      case ProfileAdapter.ITEM_ALL_MEDIA:
+      case ProfileAdapter.ITEM_ALL_MEDIA_BUTTON:
         if (chatId > 0) {
           Intent intent = new Intent(getActivity(), AllMediaActivity.class);
           intent.putExtra(AllMediaActivity.CHAT_ID_EXTRA, chatId);
@@ -142,7 +142,7 @@ public class ProfileFragment extends Fragment
       case ProfileAdapter.ITEM_SEND_MESSAGE_BUTTON:
         onSendMessage();
         break;
-      case ProfileAdapter.ITEM_VERIFIED:
+      case ProfileAdapter.ITEM_INTRODUCED_BY:
         onVerifiedByClicked();
         break;
     }

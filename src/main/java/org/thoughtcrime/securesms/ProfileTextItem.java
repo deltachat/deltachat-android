@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
 import org.thoughtcrime.securesms.util.ResUtil;
@@ -13,7 +14,7 @@ import org.thoughtcrime.securesms.util.ResUtil;
 public class ProfileTextItem extends LinearLayout {
 
   private TextView labelView;
-  private TextView valueView;
+  private @Nullable TextView valueView;
 
   public ProfileTextItem(Context context) {
     super(context);
@@ -30,20 +31,15 @@ public class ProfileTextItem extends LinearLayout {
     valueView = findViewById(R.id.value);
   }
 
-  public void set(String label, int labelColor, int iconRight) {
-    labelView.setText(label==null? "" : label);
+  public void set(String label, int iconRight) {
+    labelView.setText(label);
     labelView.setCompoundDrawablesWithIntrinsicBounds(0, 0,iconRight,0);
-
-    // we need different color getters as `labelColor` is `R.color.name` while default is `R.attr.name`
-    if (labelColor != 0) {
-      labelView.setTextColor(ContextCompat.getColor(getContext(), labelColor));
-    } else {
-      labelView.setTextColor(ResUtil.getColor(getContext(), R.attr.emoji_text_color));
-    }
   }
 
   public void setValue(String value) {
-    valueView.setText(value);
-    valueView.setVisibility(View.VISIBLE);
+    if (valueView != null) {
+      valueView.setText(value);
+      valueView.setVisibility(View.VISIBLE);
+    }
   }
 }
