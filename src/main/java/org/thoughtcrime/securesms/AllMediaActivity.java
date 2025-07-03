@@ -85,7 +85,7 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     this.tabLayout.setupWithViewPager(viewPager);
     this.viewPager.setAdapter(new AllMediaPagerAdapter(getSupportFragmentManager()));
     if (getIntent().getBooleanExtra(FORCE_GALLERY, false)) {
-      this.viewPager.setCurrentItem(1);
+      this.viewPager.setCurrentItem(1, false);
     } else {
       // select the first tab that has content
       Util.runOnAnyBackgroundThread(() -> {
@@ -99,7 +99,7 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
         }
         final int finalSelectedIndex = selectedIndex;
         Util.runOnMain(() -> {
-          this.viewPager.setCurrentItem(finalSelectedIndex);
+          this.viewPager.setCurrentItem(finalSelectedIndex, false);
         });
       });
     }
