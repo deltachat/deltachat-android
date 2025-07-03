@@ -331,7 +331,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       intent.putExtra(MediaPreviewActivity.ACTIVITY_TITLE_EXTRA, title);
       intent.putExtra(MediaPreviewActivity.EDIT_AVATAR_CHAT_ID, chatIsMultiUser ? chatId : 0); // shows edit-button, might be 0 for a contact-profile
       startActivity(intent);
-    } else {
+    } else if (chatIsMultiUser){
       onEditName();
     }
   }
