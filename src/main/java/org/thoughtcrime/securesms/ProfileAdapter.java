@@ -275,11 +275,11 @@ public class ProfileAdapter extends RecyclerView.Adapter
     memberCount = memberList!=null ? memberList.length : 0;
 
     itemData.add(new ItemData(ITEM_AVATAR, null, 0));
-    itemData.add(new ItemData(ITEM_DIVIDER, null, 0));
 
     if (isSelfTalk || dcContact != null && !dcContact.getStatus().isEmpty()) {
       itemDataStatusText = isSelfTalk ? context.getString(R.string.saved_messages_explain) : dcContact.getStatus();
       itemData.add(new ItemData(ITEM_SIGNATURE, itemDataStatusText, 0));
+    } else {
       itemData.add(new ItemData(ITEM_DIVIDER, null, 0));
     }
 
