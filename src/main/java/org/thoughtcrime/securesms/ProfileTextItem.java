@@ -38,10 +38,13 @@ public class ProfileTextItem extends LinearLayout {
     labelView.setText(label);
 
     if (icon != 0) {
-      Drawable drawable = ContextCompat.getDrawable(getContext(), icon);
-      drawable = DrawableCompat.wrap(drawable);
-      DrawableCompat.setTint(drawable, getResources().getColor(R.color.delta_accent));
-      labelView.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+      Drawable orgDrawable = ContextCompat.getDrawable(getContext(), icon);
+      if (orgDrawable != null) {
+        Drawable drawable = orgDrawable.mutate(); // avoid global state modification and showing eg. app-icon tinted also elsewhere
+        drawable = DrawableCompat.wrap(drawable);
+        DrawableCompat.setTint(drawable, getResources().getColor(R.color.delta_accent));
+        labelView.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+      }
     }
   }
 
