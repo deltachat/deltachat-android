@@ -1,6 +1,8 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -8,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import org.thoughtcrime.securesms.util.ResUtil;
 
@@ -31,9 +34,15 @@ public class ProfileTextItem extends LinearLayout {
     valueView = findViewById(R.id.value);
   }
 
-  public void set(String label, int iconRight) {
+  public void set(String label, int icon) {
     labelView.setText(label);
-    labelView.setCompoundDrawablesWithIntrinsicBounds(0, 0,iconRight,0);
+
+    if (icon != 0) {
+      Drawable drawable = ContextCompat.getDrawable(getContext(), icon);
+      drawable = DrawableCompat.wrap(drawable);
+      DrawableCompat.setTint(drawable, getResources().getColor(R.color.delta_accent));
+      labelView.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+    }
   }
 
   public void setValue(String value) {

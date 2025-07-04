@@ -74,7 +74,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
       this(viewType, contactId, chatlistIndex, null, 0);
     }
 
-    ItemData(int viewType, int contactId, int chatlistIndex, @Nullable String label, int icon) {
+    private ItemData(int viewType, int contactId, int chatlistIndex, @Nullable String label, int icon) {
       this.viewType      = viewType;
       this.contactId     = contactId;
       this.chatlistIndex = chatlistIndex;
@@ -283,10 +283,10 @@ public class ProfileAdapter extends RecyclerView.Adapter
       itemData.add(new ItemData(ITEM_DIVIDER, null, 0));
     }
 
-    itemData.add(new ItemData(ITEM_ALL_MEDIA_BUTTON, context.getString(R.string.apps_and_media), 0));
+    itemData.add(new ItemData(ITEM_ALL_MEDIA_BUTTON, context.getString(R.string.apps_and_media), R.drawable.ic_apps_24));
 
     if (dcContact != null && !isDeviceTalk && !isSelfTalk) {
-      itemData.add(new ItemData(ITEM_SEND_MESSAGE_BUTTON, context.getString(R.string.send_message), 0));
+      itemData.add(new ItemData(ITEM_SEND_MESSAGE_BUTTON, context.getString(R.string.send_message), R.drawable.ic_send_sms_white_24dp));
     }
 
     if (dcContact != null && !isDeviceTalk && !isSelfTalk) {
