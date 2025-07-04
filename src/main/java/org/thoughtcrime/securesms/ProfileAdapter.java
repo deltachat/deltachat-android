@@ -310,12 +310,12 @@ public class ProfileAdapter extends RecyclerView.Adapter
         }
         itemData.add(new ItemData(ITEM_INTRODUCED_BY, introducedBy, 0));
       }
-    }
 
-    if (dcContact != null) {
-      itemData.add(new ItemData(ITEM_ADDRESS, dcContact.getAddr(), 0));
-    } else if (isMailingList) {
-      itemData.add(new ItemData(ITEM_ADDRESS, dcChat.getMailinglistAddr(), 0));
+      if (dcContact != null) {
+        itemData.add(new ItemData(ITEM_ADDRESS, dcContact.getAddr(), 0));
+      } else if (isMailingList) {
+        itemData.add(new ItemData(ITEM_ADDRESS, dcChat.getMailinglistAddr(), 0));
+      }
     }
 
     if (memberList!=null) {
