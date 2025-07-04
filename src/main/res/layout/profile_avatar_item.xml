@@ -20,8 +20,8 @@
 
         <org.thoughtcrime.securesms.components.AvatarView
             android:id="@+id/avatar"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="152dp"
+            android:layout_height="152dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="5dp"/>
 
@@ -34,7 +34,7 @@
             android:singleLine="true"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
-            android:textSize="26sp"
+            android:textSize="24sp"
             android:textColor="?attr/conversation_list_item_contact_color"
             tools:text="Some Group" />
             <!-- Attention: Using android:maxLines="1", if the name is an emoji followed by a
@@ -44,6 +44,7 @@
         <TextView android:id="@+id/subtitle"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
+                  android:layout_marginTop="4dp"
                   android:singleLine="true"
                   android:fontFamily="sans-serif"
                   android:ellipsize="end"
