@@ -208,11 +208,13 @@ public class ProfileAdapter extends RecyclerView.Adapter
       ProfileTextItem item = (ProfileTextItem) holder.itemView;
       item.setOnClickListener(view -> clickListener.onSettingsClicked(data.viewType));
       item.set(data.label, data.icon);
-      if (data.viewType == ITEM_ADDRESS) {
-        int padding = context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding) * 3 / 2;
+      if (data.viewType == ITEM_LAST_SEEN) {
+        int padding = context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding) * 2;
         item.setPadding(item.getPaddingLeft(), item.getPaddingTop(), item.getPaddingRight(), padding);
-      }
-      else if (data.viewType == ITEM_ALL_MEDIA_BUTTON && dcChat != null) {
+      } else if (data.viewType == ITEM_INTRODUCED_BY) {
+        int padding = context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding);
+        item.setPadding(item.getPaddingLeft(), padding, item.getPaddingRight(), item.getPaddingBottom());
+      } else if (data.viewType == ITEM_ALL_MEDIA_BUTTON && dcChat != null) {
         Util.runOnAnyBackgroundThread(() -> {
           String c = getAllMediaCountString(dcChat.getId());
           Util.runOnMain(() -> {
@@ -299,23 +301,6 @@ public class ProfileAdapter extends RecyclerView.Adapter
         lastSeenTxt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, lastSeenTimestamp));
       }
       itemData.add(new ItemData(ITEM_LAST_SEEN, lastSeenTxt, 0));
-
-      int verifierId = dcContact.getVerifierId();
-      if (verifierId != 0) {
-        String introducedBy;
-        if (verifierId == DcContact.DC_CONTACT_ID_SELF) {
-          introducedBy = context.getString(R.string.verified_by_you);
-        } else {
-          introducedBy = context.getString(R.string.verified_by, dcContext.getContact(verifierId).getDisplayName());
-        }
-        itemData.add(new ItemData(ITEM_INTRODUCED_BY, introducedBy, 0));
-      }
-
-      if (dcContact != null) {
-        itemData.add(new ItemData(ITEM_ADDRESS, dcContact.getAddr(), 0));
-      } else if (isMailingList) {
-        itemData.add(new ItemData(ITEM_ADDRESS, dcChat.getMailinglistAddr(), 0));
-      }
     }
 
     if (memberList!=null) {
@@ -337,6 +322,25 @@ public class ProfileAdapter extends RecyclerView.Adapter
       itemData.add(new ItemData(ITEM_HEADER, context.getString(R.string.profile_shared_chats), 0));
       for (int i = 0; i < sharedChats.getCnt(); i++) {
         itemData.add(new ItemData(ITEM_SHARED_CHATS, 0, i));
+      }
+    }
+
+    if (dcContact != null && !isDeviceTalk && !isSelfTalk) {
+      int verifierId = dcContact.getVerifierId();
+      if (verifierId != 0) {
+        String introducedBy;
+        if (verifierId == DcContact.DC_CONTACT_ID_SELF) {
+          introducedBy = context.getString(R.string.verified_by_you);
+        } else {
+          introducedBy = context.getString(R.string.verified_by, dcContext.getContact(verifierId).getDisplayName());
+        }
+        itemData.add(new ItemData(ITEM_INTRODUCED_BY, introducedBy, 0));
+      }
+
+      if (dcContact != null) {
+        itemData.add(new ItemData(ITEM_ADDRESS, dcContact.getAddr(), 0));
+      } else if (isMailingList) {
+        itemData.add(new ItemData(ITEM_ADDRESS, dcChat.getMailinglistAddr(), 0));
       }
     }
 

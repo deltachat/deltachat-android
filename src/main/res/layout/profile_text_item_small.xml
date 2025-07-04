@@ -7,8 +7,8 @@
              android:focusable="true"
              android:paddingLeft="16dp"
              android:paddingRight="16dp"
-             android:paddingTop="2dp"
-             android:paddingBottom="2dp">
+             android:paddingTop="6dp"
+             android:paddingBottom="6dp">
 
         <TextView
             android:id="@+id/label"
