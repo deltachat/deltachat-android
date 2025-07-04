@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -32,6 +33,8 @@ import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.pm.ShortcutInfoCompat;
 import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
+import androidx.webkit.WebViewCompat;
+import androidx.webkit.WebViewFeature;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
@@ -51,13 +54,17 @@ import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -239,10 +246,35 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       e.printStackTrace();
     }
 
+    boolean isDocumentStartScriptEnabled = false;
+
+    if (WebViewFeature.isFeatureSupported(WebViewFeature.DOCUMENT_START_SCRIPT)) {
+      isDocumentStartScriptEnabled = true;
+      try {
+        // read script text file to string
+        // TODO: find a way to do this with less lines of code?
+        InputStream inputStream = getResources().openRawResource(R.raw.webxdc_init_script);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        StringBuilder stringBuilder = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+          stringBuilder.append(line);
+          stringBuilder.append('\n');
+        }
+        reader.close();
+        String script = stringBuilder.toString();
+
+        WebViewCompat.addDocumentStartJavaScript(this.webView, script, Collections.singleton("*"));
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
+    }
+
     long timeDelta = System.currentTimeMillis() - lastOpenTime;
-    final String url = this.baseURL + "/webxdc_bootstrap324567869.html?i=" + (internetAccess? "1" : "0") + "&href=" + encodedHref;
+    final String url = this.baseURL + "/webxdc_bootstrap324567869.html?i=" + (internetAccess? "1" : "0") + "&DSS="+ (isDocumentStartScriptEnabled? "1":"0") + "&href=" + encodedHref;
+    final boolean isDocumentStartScriptEnabledForLambda = isDocumentStartScriptEnabled;
     Util.runOnAnyBackgroundThread(() -> {
-      if (timeDelta < 2000) {
+      if (timeDelta < 2000 && !isDocumentStartScriptEnabledForLambda) {
         // this is to avoid getting stuck in the FILL500 in some devices if the
         // previous webview was not destroyed yet and a new app is opened too soon
         Util.sleep(1000);

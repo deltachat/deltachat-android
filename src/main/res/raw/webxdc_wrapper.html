@@ -45,13 +45,14 @@
       const loadingDiv = document.getElementById("loading");
       const iframe = document.getElementById("frame");
 
-      let fill500 = async (href) => {
+      let fill500 = async (href, skipAndOnlyTest) => {
         const connections = [];
         const loadingProgress = document.getElementById("progress");
         const isolatedContextTest = document.getElementById(
           "test-isolated-sandbox-context"
         );
 
+        if (!skipAndOnlyTest) {
         const cert = {
           certificates: [
             await RTCPeerConnection.generateCertificate({
@@ -78,12 +79,13 @@
           }
         }
         console.log("WEBRTC-WG: done");
+        }
 
         try {
           connections.push(new RTCPeerConnection());
           console.log("Error: was able to create more than 500 connections");
           loadingDiv.innerText =
-            "Error: was not able to block webrtc ERROR_A";
+            `Error: was not able to block webrtc ${skipAndOnlyTest ? "ERROR_B" : "ERROR_A"}`;
         } catch (error) {
           /** @type {Promise<boolean>} */
           const sandboxedIframeCheckIsGoodPromise = new Promise(resolve => {
@@ -145,6 +147,7 @@
 
      const params = new URLSearchParams(document.location.search);
      const internetAccess = (params.get("i") || "0") === "1";
+     const documentStartScriptExecuted = (params.get("DSS") || "0") === "1";
      const href = params.get("href");
 
      if (internetAccess) {  // fill500 not needed, just load the frame
@@ -155,7 +158,7 @@
          }
      }
 
-     const thisUnchangable = fill500(href)
+     const thisUnchangable = fill500(href, documentStartScriptExecuted)
     </script>
   </body>
 </html>
