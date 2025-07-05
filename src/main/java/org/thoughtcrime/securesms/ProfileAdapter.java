@@ -208,8 +208,8 @@ public class ProfileAdapter extends RecyclerView.Adapter
       ProfileTextItem item = (ProfileTextItem) holder.itemView;
       item.setOnClickListener(view -> clickListener.onSettingsClicked(data.viewType));
       item.set(data.label, data.icon);
-      if (data.viewType == ITEM_LAST_SEEN) {
-        int padding = context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding) * 2;
+      if (data.viewType == ITEM_LAST_SEEN || data.viewType == ITEM_ADDRESS) {
+        int padding = (int)((float)context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding) * 1.2);
         item.setPadding(item.getPaddingLeft(), item.getPaddingTop(), item.getPaddingRight(), padding);
       } else if (data.viewType == ITEM_INTRODUCED_BY) {
         int padding = context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding);
