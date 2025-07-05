@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.thoughtcrime.securesms.ProfileTextItem
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="?attr/conversation_list_item_background"
+             android:focusable="true"
+             android:padding="16dp">
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="start|center_vertical"
+        android:textColor="?attr/emoji_text_color"
+        android:textSize="16sp" />
+
+</org.thoughtcrime.securesms.ProfileTextItem>

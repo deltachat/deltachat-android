@@ -11,19 +11,13 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -31,11 +25,9 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.rpc.Rpc;
 import com.b44t.messenger.rpc.RpcException;
-import com.google.android.material.tabs.TabLayout;
 
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.RelayUtil;
@@ -43,7 +35,6 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.File;
-import java.util.ArrayList;
 
 public class ProfileActivity extends PassphraseRequiredActionBarActivity
                              implements DcEventCenter.DcEventDelegate
@@ -51,16 +42,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   public static final String CHAT_ID_EXTRA    = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
-  public static final String FORCE_TAB_EXTRA  = "force_tab";
-  public static final String FROM_CHAT        = "from_chat";
-
-  public static final int TAB_SETTINGS = 10;
-  public static final int TAB_GALLERY  = 20;
-  public static final int TAB_AUDIO    = 25;
-  public static final int TAB_DOCS     = 30;
-  public static final int TAB_WEBXDC   = 35;
-  public static final int TAB_LINKS    = 40;
-  public static final int TAB_MAP      = 50;
 
   private static final int REQUEST_CODE_PICK_RINGTONE = 1;
 
@@ -72,13 +53,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private boolean              chatIsMailingList;
   private boolean              chatIsBroadcast;
   private int                  contactId;
-  private boolean              fromChat;
-
-  private final ArrayList<Integer> tabs = new ArrayList<>();
-  private Toolbar            toolbar;
-  private ConversationTitleView titleView;
-  private TabLayout          tabLayout;
-  private ViewPager          viewPager;
+  private boolean              contactIsBot;
+  private Toolbar              toolbar;
 
   @Override
   protected void onPreCreate() {
@@ -97,38 +73,27 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     setSupportActionBar(this.toolbar);
     ActionBar supportActionBar = getSupportActionBar();
     if (supportActionBar != null) {
-      if (isGlobalProfile()) {
-        supportActionBar.setDisplayHomeAsUpEnabled(true);
-        supportActionBar.setHomeActionContentDescription(getString(R.string.back));
-      } else {
-        supportActionBar.setDisplayHomeAsUpEnabled(false);
-        supportActionBar.setCustomView(R.layout.conversation_title_view);
-        supportActionBar.setDisplayShowCustomEnabled(true);
-        supportActionBar.setDisplayShowTitleEnabled(false);
-        Toolbar parent = (Toolbar) supportActionBar.getCustomView().getParent();
-        parent.setPadding(0,0,0,0);
-        parent.setContentInsetsAbsolute(0,0);
-
-        titleView = (ConversationTitleView) supportActionBar.getCustomView();
-        titleView.setOnBackClickedListener(view -> onBackPressed());
-        titleView.setOnClickListener(view -> onEnlargeAvatar());
-        if (isContactProfile() && !isSelfProfile() && !chatIsDeviceTalk) {
-          titleView.registerForContextMenu(this);
-        }
+      String title = getString(R.string.profile);
+      if (chatIsMailingList) {
+        title = getString(R.string.mailing_list);
+      } else if (chatIsBroadcast) {
+        title = getString(R.string.broadcast_list);
+      } else if (chatIsMultiUser) {
+        title = getString(R.string.tab_group);
+      } else if (contactIsBot) {
+        title = getString(R.string.bot);
+      } else if (!chatIsDeviceTalk && !isSelfProfile()) {
+        title = getString(R.string.tab_contact);
       }
+
+      supportActionBar.setDisplayHomeAsUpEnabled(true);
+      supportActionBar.setTitle(title);
     }
 
-    updateToolbar();
-
-    this.tabLayout.setupWithViewPager(viewPager);
-    this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
-    int forceTab = getIntent().getIntExtra(FORCE_TAB_EXTRA, -1);
-    if (forceTab != -1) {
-      int forceIndex = tabs.indexOf(forceTab);
-      if (forceIndex != -1) {
-        this.viewPager.setCurrentItem(forceIndex);
-      }
-    }
+    Bundle args = new Bundle();
+    args.putInt(ProfileFragment.CHAT_ID_EXTRA, (chatId == 0) ? -1 : chatId);
+    args.putInt(ProfileFragment.CONTACT_ID_EXTRA, (contactId == 0) ? -1 : contactId);
+    initFragment(R.id.fragment_container, new ProfileFragment(), args);
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(this);
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
@@ -137,7 +102,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    if (!isSelfProfile() && !isGlobalProfile()) {
+    if (!isSelfProfile()) {
       getMenuInflater().inflate(R.menu.profile_common, menu);
       boolean canReceive = true;
 
@@ -148,6 +113,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           menu.findItem(R.id.show_encr_info).setVisible(false);
           menu.findItem(R.id.share).setVisible(false);
         } else if (chatIsMultiUser) {
+          menu.findItem(R.id.edit_name).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
           if (chatIsBroadcast) {
             canReceive = false;
           } else {
@@ -205,21 +171,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     getMenuInflater().inflate(R.menu.profile_title_context, menu);
   }
 
-  boolean backPressed = false;
-  @Override
-  public void onBackPressed() {
-    backPressed = true;
-    super.onBackPressed();
-  }
-
-  @Override
-  protected void onPause() {
-    super.onPause();
-    if (backPressed && fromChat) {
-      overridePendingTransition(0, 0);
-    }
-  }
-
   @Override
   public void onDestroy() {
     DcHelper.getEventCenter(this).removeObservers(this);
@@ -228,22 +179,24 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void handleEvent(@NonNull DcEvent event) {
-    updateToolbar();
   }
 
   private void initializeResources() {
     chatId           = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
     contactId        = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
+    contactIsBot     = false;
     chatIsMultiUser  = false;
     chatIsDeviceTalk = false;
     chatIsMailingList= false;
     chatIsBroadcast  = false;
-    fromChat         = getIntent().getBooleanExtra(FROM_CHAT, false);
 
     if (contactId!=0) {
+      DcContact dcContact = dcContext.getContact(contactId);
       chatId = dcContext.getChatIdByContactId(contactId);
+      contactIsBot = dcContact.isBot();
     }
-    else if(chatId!=0) {
+
+    if(chatId!=0) {
       DcChat dcChat = dcContext.getChat(chatId);
       chatIsMultiUser = dcChat.isMultiUser();
       chatIsDeviceTalk = dcChat.isDeviceTalk();
@@ -255,38 +208,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       }
     }
 
-    if(!isGlobalProfile() && !isSelfProfile() && !chatIsMailingList) {
-      tabs.add(TAB_SETTINGS);
-    }
-    tabs.add(TAB_GALLERY);
-    tabs.add(TAB_AUDIO);
-    tabs.add(TAB_DOCS);
-    tabs.add(TAB_WEBXDC);
-    //tabs.add(TAB_LINKS);
-    //if(Prefs.isLocationStreamingEnabled(this)) {
-    //  tabs.add(TAB_MAP);
-    //}
-
-    this.viewPager = ViewUtil.findById(this, R.id.pager);
     this.toolbar   = ViewUtil.findById(this, R.id.toolbar);
-    this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
-  }
-
-  private void updateToolbar() {
-    if (isGlobalProfile()){
-      getSupportActionBar().setTitle(R.string.menu_all_media);
-    }
-    else if (chatId > 0) {
-      DcChat dcChat  = dcContext.getChat(chatId);
-      titleView.setTitle(GlideApp.with(this), dcChat, true);
-    }
-    else if (isContactProfile()){
-      titleView.setTitle(GlideApp.with(this), dcContext.getContact(contactId));
-    }
-  }
-
-  private boolean isGlobalProfile() {
-    return contactId==0 && chatId==0;
   }
 
   private boolean isContactProfile() {
@@ -298,124 +220,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     return isContactProfile() && contactId==DcContact.DC_CONTACT_ID_SELF;
   }
 
-  private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
-    private Object currentFragment = null;
-
-    ProfilePagerAdapter(FragmentManager fragmentManager) {
-      super(fragmentManager);
-    }
-
-    @Override
-    public void setPrimaryItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-      super.setPrimaryItem(container, position, object);
-      if (currentFragment != null && currentFragment != object) {
-        ActionMode action = null;
-        if (currentFragment instanceof MessageSelectorFragment) {
-          action = ((MessageSelectorFragment) currentFragment).getActionMode();
-        } else if (currentFragment instanceof ProfileSettingsFragment) {
-          action = ((ProfileSettingsFragment) currentFragment).getActionMode();
-        }
-        if (action != null) {
-          action.finish();
-        }
-      }
-      currentFragment = object;
-    }
-
-    @NonNull
-    @Override
-    public Fragment getItem(int position) {
-      int tabId = tabs.get(position);
-      Fragment fragment;
-      Bundle args = new Bundle();
-
-      switch(tabId) {
-        case TAB_SETTINGS:
-          fragment = new ProfileSettingsFragment();
-          args.putInt(ProfileSettingsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
-          args.putInt(ProfileSettingsFragment.CONTACT_ID_EXTRA, (contactId==0&&!isGlobalProfile())? -1 : contactId);
-          break;
-
-        case TAB_GALLERY:
-          fragment = new ProfileGalleryFragment();
-          args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
-          break;
-
-        case TAB_AUDIO:
-          fragment = new ProfileDocumentsFragment();
-          args.putInt(ProfileDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
-          args.putBoolean(ProfileDocumentsFragment.SHOW_AUDIO_EXTRA, true);
-          break;
-
-        case TAB_WEBXDC:
-          fragment = new ProfileDocumentsFragment();
-          args.putInt(ProfileDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
-          args.putBoolean(ProfileDocumentsFragment.SHOW_WEBXDC_EXTRA, true);
-          break;
-
-        default:
-          fragment = new ProfileDocumentsFragment();
-          args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
-          break;
-      }
-
-      fragment.setArguments(args);
-      return fragment;
-    }
-
-    @Override
-    public int getCount() {
-      return tabs.size();
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
-      int tabId = tabs.get(position);
-      switch(tabId) {
-        case TAB_SETTINGS:
-          if (chatIsDeviceTalk) {
-            return getString(R.string.profile);
-          } else if(isContactProfile()) {
-            if (dcContext.getContact(contactId).isBot()) {
-              return getString(R.string.bot);
-            } else {
-              return getString(R.string.tab_contact);
-            }
-          }
-          else if (chatIsBroadcast) {
-            return getString(R.string.broadcast_list);
-          }
-          else if (chatIsMailingList) {
-            return getString(R.string.mailing_list);
-          } else {
-            return getString(R.string.tab_group);
-          }
-
-        case TAB_GALLERY:
-          return getString(R.string.tab_gallery);
-
-        case TAB_AUDIO:
-          return getString(R.string.audio);
-
-        case TAB_DOCS:
-          return getString(R.string.files);
-
-        case TAB_WEBXDC:
-          return getString(R.string.webxdc_apps);
-
-        case TAB_LINKS:
-          return getString(R.string.tab_links);
-
-        case TAB_MAP:
-          return getString(R.string.tab_map);
-
-        default:
-          throw new AssertionError();
-      }
-    }
-  }
-
-
   // handle events
   // =========================================================================
 
@@ -425,7 +229,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     int itemId = item.getItemId();
     if (itemId == android.R.id.home) {
-      backPressed = true;
       finish();
       return true;
     } else if (itemId == R.id.menu_mute_notifications) {
@@ -503,7 +306,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
             .show();
   }
 
-  private void onEnlargeAvatar() {
+  public void onEnlargeAvatar() {
     String profileImagePath;
     String title;
     Uri profileImageUri;
@@ -528,7 +331,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       intent.putExtra(MediaPreviewActivity.ACTIVITY_TITLE_EXTRA, title);
       intent.putExtra(MediaPreviewActivity.EDIT_AVATAR_CHAT_ID, chatIsMultiUser ? chatId : 0); // shows edit-button, might be 0 for a contact-profile
       startActivity(intent);
-    } else {
+    } else if (chatIsMultiUser){
       onEditName();
     }
   }
