@@ -1,6 +1,8 @@
 package org.thoughtcrime.securesms.videochat;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -10,11 +12,12 @@ import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.IntentUtils;
 
 public class VideochatUtil {
 
-  public void invite(Activity activity, int chatId) {
+  public static void startMeeting(Activity activity, int chatId) {
     DcContext dcContext = DcHelper.getContext(activity);
     DcChat dcChat = dcContext.getChat(chatId);
 
@@ -25,17 +28,53 @@ public class VideochatUtil {
             .setPositiveButton(R.string.ok, (dialog, which) -> {
                 int msgId = dcContext.sendVideochatInvitation(dcChat.getId());
                 if (msgId != 0) {
-                  join(activity, msgId);
+                  joinMeeting(activity, msgId);
                 }
             })
             .show();
   }
 
-  public void join(Activity activity, int msgId) {
+  public static void joinMeeting(Activity activity, int msgId) {
     DcContext dcContext = DcHelper.getContext(activity);
     DcMsg dcMsg = dcContext.getMsg(msgId);
     String videochatUrl = dcMsg.getVideochatUrl();
     IntentUtils.showInBrowser(activity, videochatUrl);
+  }
+
+  public static void startCall(Activity activity, int chatId) {
+    DcContext dcContext = DcHelper.getContext(activity);
+    DcChat dcChat = dcContext.getChat(chatId);
+
+    new AlertDialog.Builder(activity)
+            .setTitle(activity.getString(R.string.videochat_invite_user_to_videochat, dcChat.getName()))
+            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(R.string.ok, (dialog, which) -> {
+              openCall(activity, chatId, 0, "#call");
+            })
+            .show();
+  }
+
+  public static void joinCall(Activity activity, int callId, String payload) {
+    DcContext dcContext = DcHelper.getContext(activity);
+    DcMsg dcMsg = dcContext.getMsg(callId);
+    String hash = "#offer=" + payload;
+    openCall(activity, dcMsg.getChatId(), callId, hash);
+  }
+
+  private static void openCall(Activity activity, int chatId, int callId, String hash) {
+    Permissions.with(activity)
+      .request(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
+      .ifNecessary()
+      .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_camera_denied))
+      .onAllGranted(() -> {
+          Intent intent = new Intent(activity, VideochatActivity.class);
+          intent.setAction(Intent.ACTION_VIEW);
+          intent.putExtra(VideochatActivity.EXTRA_CHAT_ID, chatId);
+          intent.putExtra(VideochatActivity.EXTRA_CALL_ID, callId);
+          intent.putExtra(VideochatActivity.EXTRA_HASH, hash);
+          activity.startActivity(intent);
+        })
+      .execute();
   }
 
 }
