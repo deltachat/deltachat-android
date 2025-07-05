@@ -154,6 +154,23 @@ public class ProfileFragment extends Fragment
   }
 
   @Override
+  public void onAddressLongClicked() {
+    Context context = requireContext();
+    String address = dcContext.getContact(contactId).getAddr();
+    new AlertDialog.Builder(context)
+      .setTitle(address)
+      .setItems(new CharSequence[]{
+          context.getString(R.string.menu_copy_to_clipboard)
+        },
+        (dialogInterface, i) -> {
+          Util.writeTextToClipboard(context, address);
+          Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+        })
+      .setNegativeButton(R.string.cancel, null)
+      .show();
+  }
+
+  @Override
   public void onMemberLongClicked(int contactId) {
     if (contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL || contactId==DcContact.DC_CONTACT_ID_SELF) {
       if (actionMode==null) {

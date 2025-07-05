@@ -18,6 +18,7 @@ public class ProfileTextItem extends LinearLayout {
 
   private TextView labelView;
   private @Nullable TextView valueView;
+  private final ProfileTextItem.PassthroughClickListener passthroughClickListener   = new ProfileTextItem.PassthroughClickListener();
 
   public ProfileTextItem(Context context) {
     super(context);
@@ -31,6 +32,8 @@ public class ProfileTextItem extends LinearLayout {
   protected void onFinishInflate() {
     super.onFinishInflate();
     labelView = findViewById(R.id.label);
+    labelView.setOnLongClickListener(passthroughClickListener);
+    labelView.setOnClickListener(passthroughClickListener);
     valueView = findViewById(R.id.value);
   }
 
@@ -52,6 +55,20 @@ public class ProfileTextItem extends LinearLayout {
     if (valueView != null) {
       valueView.setText(value);
       valueView.setVisibility(View.VISIBLE);
+    }
+  }
+
+  private class PassthroughClickListener implements View.OnLongClickListener, View.OnClickListener {
+
+    @Override
+    public boolean onLongClick(View v) {
+      performLongClick();
+      return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+      performClick();
     }
   }
 }

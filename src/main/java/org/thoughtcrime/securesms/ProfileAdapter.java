@@ -211,6 +211,9 @@ public class ProfileAdapter extends RecyclerView.Adapter
       if (data.viewType == ITEM_LAST_SEEN || data.viewType == ITEM_ADDRESS) {
         int padding = (int)((float)context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding) * 1.2);
         item.setPadding(item.getPaddingLeft(), item.getPaddingTop(), item.getPaddingRight(), padding);
+        if (data.viewType == ITEM_ADDRESS) {
+          item.setOnLongClickListener(view -> {clickListener.onAddressLongClicked(); return true;});
+        }
       } else if (data.viewType == ITEM_INTRODUCED_BY) {
         int padding = context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding);
         item.setPadding(item.getPaddingLeft(), padding, item.getPaddingRight(), item.getPaddingBottom());
@@ -235,6 +238,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     void onMemberClicked(int contactId);
     void onMemberLongClicked(int contactId);
     void onAvatarClicked();
+    void onAddressLongClicked();
   }
 
   public void toggleMemberSelection(int contactId) {
