@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.thoughtcrime.securesms.ProfileAvatarItem
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:focusable="true"
+        android:background="?attr/conversation_list_item_background"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginBottom="16dp">
+
+    <LinearLayout android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <org.thoughtcrime.securesms.components.AvatarView
+            android:id="@+id/avatar"
+            android:layout_width="152dp"
+            android:layout_height="152dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="5dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="?attr/conversation_list_item_contact_color"
+            tools:text="Some Group" />
+            <!-- Attention: Using android:maxLines="1", if the name is an emoji followed by a
+            long word and the chat is muted, then the long word is not shown at all
+            (instead of using `…`). That's why we use android:singleLine="true" -->
+
+        <TextView android:id="@+id/subtitle"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="4dp"
+                  android:singleLine="true"
+                  android:fontFamily="sans-serif"
+                  android:ellipsize="end"
+                  android:textSize="16sp"
+                  android:textColor="?attr/conversation_list_item_contact_color"
+                  tools:text="3 members" />
+
+    </LinearLayout>
+
+</org.thoughtcrime.securesms.ProfileAvatarItem>

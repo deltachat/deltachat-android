@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Profiles focus on recognizing contacts
+* See the number of media directly in the profile, no need to tap around
 * Clearer app lists by removing redundant "App" subtitle
 * New button for quick access to the apps sent in current chat
 * New icon for the in-chat apps button

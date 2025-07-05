@@ -35,10 +35,10 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Set;
 
-public class ProfileGalleryFragment
+public class AllMediaGalleryFragment
     extends MessageSelectorFragment
     implements LoaderManager.LoaderCallbacks<BucketedThreadMediaLoader.BucketedThreadMedia>,
-               ProfileGalleryAdapter.ItemClickListener
+               AllMediaGalleryAdapter.ItemClickListener
 {
   public static final String CHAT_ID_EXTRA = "chat_id";
 
@@ -67,7 +67,7 @@ public class ProfileGalleryFragment
     this.noMedia      = ViewUtil.findById(view, R.id.no_images);
     this.gridManager  = new StickyHeaderGridLayoutManager(getCols());
 
-    this.recyclerView.setAdapter(new ProfileGalleryAdapter(getContext(),
+    this.recyclerView.setAdapter(new AllMediaGalleryAdapter(getContext(),
                                                          GlideApp.with(this),
                                                          new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()),
                                                          this));
@@ -112,8 +112,8 @@ public class ProfileGalleryFragment
 
   @Override
   public void onLoadFinished(Loader<BucketedThreadMediaLoader.BucketedThreadMedia> loader, BucketedThreadMediaLoader.BucketedThreadMedia bucketedThreadMedia) {
-    ((ProfileGalleryAdapter) recyclerView.getAdapter()).setMedia(bucketedThreadMedia);
-    ((ProfileGalleryAdapter) recyclerView.getAdapter()).notifyAllSectionsDataSetChanged();
+    ((AllMediaGalleryAdapter) recyclerView.getAdapter()).setMedia(bucketedThreadMedia);
+    ((AllMediaGalleryAdapter) recyclerView.getAdapter()).notifyAllSectionsDataSetChanged();
 
     noMedia.setVisibility(recyclerView.getAdapter().getItemCount() > 0 ? View.GONE : View.VISIBLE);
     if (chatId == DC_CHAT_NO_CHAT) {
@@ -124,7 +124,7 @@ public class ProfileGalleryFragment
 
   @Override
   public void onLoaderReset(Loader<BucketedThreadMediaLoader.BucketedThreadMedia> cursorLoader) {
-    ((ProfileGalleryAdapter) recyclerView.getAdapter()).setMedia(new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()));
+    ((AllMediaGalleryAdapter) recyclerView.getAdapter()).setMedia(new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()));
   }
 
   @Override
@@ -142,7 +142,7 @@ public class ProfileGalleryFragment
   }
 
   private void handleMediaMultiSelectClick(@NonNull DcMsg mediaRecord) {
-    ProfileGalleryAdapter adapter = getListAdapter();
+    AllMediaGalleryAdapter adapter = getListAdapter();
 
     adapter.toggleSelection(mediaRecord);
     if (adapter.getSelectedMediaCount() == 0) {
@@ -175,7 +175,7 @@ public class ProfileGalleryFragment
   @Override
   public void onMediaLongClicked(DcMsg mediaRecord) {
     if (actionMode == null) {
-      ((ProfileGalleryAdapter) recyclerView.getAdapter()).toggleSelection(mediaRecord);
+      ((AllMediaGalleryAdapter) recyclerView.getAdapter()).toggleSelection(mediaRecord);
       recyclerView.getAdapter().notifyDataSetChanged();
 
       actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
@@ -206,8 +206,8 @@ public class ProfileGalleryFragment
     menu.findItem(R.id.menu_resend).setVisible(canResend);
   }
 
-  private ProfileGalleryAdapter getListAdapter() {
-    return (ProfileGalleryAdapter) recyclerView.getAdapter();
+  private AllMediaGalleryAdapter getListAdapter() {
+    return (AllMediaGalleryAdapter) recyclerView.getAdapter();
   }
 
   private class ActionModeCallback implements ActionMode.Callback {
