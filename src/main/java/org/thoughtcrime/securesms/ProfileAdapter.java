@@ -318,7 +318,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
       }
     }
 
-    if (sharedChats != null && !isDeviceTalk) {
+    if (!isDeviceTalk && sharedChats != null && sharedChats.getCnt() > 0) {
       itemData.add(new ItemData(ITEM_HEADER, context.getString(R.string.profile_shared_chats), 0));
       for (int i = 0; i < sharedChats.getCnt(); i++) {
         itemData.add(new ItemData(ITEM_SHARED_CHATS, 0, i));
