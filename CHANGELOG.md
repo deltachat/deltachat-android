@@ -9,6 +9,7 @@
 * New icon for the in-chat apps button
 * Improve hint for app drafts
 * Add Text-To-Speech (TTS) support for in-chat apps
+* New icon for the QR icon
 * Start rebuilding the experimental broadcast lists
   into proper channels - note that this is work-in-progress
 

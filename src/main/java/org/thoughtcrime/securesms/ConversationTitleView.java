@@ -159,8 +159,4 @@ public class ConversationTitleView extends RelativeLayout {
   public void setOnBackClickedListener(@Nullable OnClickListener listener) {
     this.back.setOnClickListener(listener);
   }
-
-  public void registerForContextMenu(Activity activity) {
-    activity.registerForContextMenu(content);
-  }
 }
