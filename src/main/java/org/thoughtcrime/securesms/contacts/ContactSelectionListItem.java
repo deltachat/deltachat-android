@@ -163,9 +163,4 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
       });
     }
   }
-
-  public void setNoHeaderPadding() {
-    int paddinglr = getContext().getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding);
-    setPadding(paddinglr, 0, paddinglr, 0);
-  }
 }
