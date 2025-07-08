@@ -59,6 +59,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
@@ -446,9 +447,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     if (isMultiUser()) {
-      if (dcChat.isEncrypted()
+      if (dcChat.isInBroadcast() && !dcChat.isContactRequest()) {
+        menu.findItem(R.id.menu_leave).setTitle(R.string.menu_leave_channel).setVisible(true);
+      } else if (dcChat.isEncrypted()
           && dcChat.canSend()
-          && !dcChat.isInBroadcast()
           && !dcChat.isOutBroadcast()
           && !dcChat.isMailingList()) {
         menu.findItem(R.id.menu_leave).setVisible(true);
@@ -625,9 +627,16 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleLeaveGroup() {
+    @StringRes int leaveLabel;
+    if (dcChat.isInBroadcast()) {
+      leaveLabel = R.string.menu_leave_channel;
+    } else {
+      leaveLabel = R.string.menu_leave_group;
+    }
+
     AlertDialog dialog = new AlertDialog.Builder(this)
       .setMessage(getString(R.string.ask_leave_group))
-      .setPositiveButton(R.string.menu_leave_group, (d, which) -> {
+      .setPositiveButton(leaveLabel, (d, which) -> {
         dcContext.removeContactFromChat(chatId, DcContact.DC_CONTACT_ID_SELF);
         Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
       })
