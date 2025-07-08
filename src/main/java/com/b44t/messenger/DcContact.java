@@ -57,6 +57,7 @@ public class DcContact {
     public native boolean wasSeenRecently();
     public native boolean isBlocked      ();
     public native boolean isVerified     ();
+    public native boolean isKeyContact   ();
     public native int     getVerifierId  ();
     public native boolean isBot          ();
 

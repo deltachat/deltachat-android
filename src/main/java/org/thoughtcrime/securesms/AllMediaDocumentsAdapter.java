@@ -25,7 +25,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
+class AllMediaDocumentsAdapter extends StickyHeaderGridAdapter {
 
   private final Context             context;
   private final ItemClickListener   itemClickListener;
@@ -57,9 +57,9 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
     }
   }
 
-  ProfileDocumentsAdapter(@NonNull Context context,
-                        BucketedThreadMedia media,
-                        ItemClickListener clickListener)
+  AllMediaDocumentsAdapter(@NonNull Context context,
+                           BucketedThreadMedia media,
+                           ItemClickListener clickListener)
   {
     this.context           = context;
     this.media             = media;

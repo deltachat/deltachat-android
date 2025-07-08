@@ -108,7 +108,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.nameView.setEnabled(true);
     this.nameView.setText(name==null? "#" : name);
 
-    if (contact != null && contact.isVerified()) {
+    if (contact != null && contact.isKeyContact()) {
       number = null;
     }
 
@@ -161,10 +161,5 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
         nameView.setText(recipient.toShortString());
       });
     }
-  }
-
-  public void setNoHeaderPadding() {
-    int paddinglr = getContext().getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding);
-    setPadding(paddinglr, 0, paddinglr, 0);
   }
 }

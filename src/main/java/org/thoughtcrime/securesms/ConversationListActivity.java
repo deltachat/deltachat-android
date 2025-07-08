@@ -449,7 +449,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       onBackPressed();
       return true;
     } else if (itemId == R.id.menu_all_media) {
-      startActivity(new Intent(this, ProfileActivity.class));
+      startActivity(new Intent(this, AllMediaActivity.class));
       return true;
     }
 

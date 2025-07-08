@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-class ProfileGalleryAdapter extends StickyHeaderGridAdapter {
+class AllMediaGalleryAdapter extends StickyHeaderGridAdapter {
 
   private final Context             context;
   private final GlideRequests       glideRequests;
@@ -50,10 +50,10 @@ class ProfileGalleryAdapter extends StickyHeaderGridAdapter {
     }
   }
 
-  ProfileGalleryAdapter(@NonNull Context context,
-                        @NonNull GlideRequests glideRequests,
-                        BucketedThreadMedia media,
-                        ItemClickListener clickListener)
+  AllMediaGalleryAdapter(@NonNull Context context,
+                         @NonNull GlideRequests glideRequests,
+                         BucketedThreadMedia media,
+                         ItemClickListener clickListener)
   {
     this.context           = context;
     this.glideRequests     = glideRequests;
