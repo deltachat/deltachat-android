@@ -9,6 +9,7 @@
 * New icon for the in-chat apps button
 * Improve hint for app drafts
 * Add Text-To-Speech (TTS) support for in-chat apps
+* New icon for the QR icon
 
 ## v1.58.4
 2025-05
