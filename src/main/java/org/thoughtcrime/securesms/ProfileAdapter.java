@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcChat;
@@ -44,6 +45,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
   public static final int ITEM_SHARED_CHATS = 60;
 
   private final @NonNull Context              context;
+  private final @NonNull Fragment             fragment;
   private final @NonNull DcContext            dcContext;
   private @Nullable DcChat                    dcChat;
   private @Nullable DcContact                 dcContact;
@@ -83,12 +85,13 @@ public class ProfileAdapter extends RecyclerView.Adapter
     }
   };
 
-  public ProfileAdapter(@NonNull  Context context,
+  public ProfileAdapter(@NonNull  Fragment fragment,
                         @NonNull  GlideRequests glideRequests,
                         @Nullable ItemClickListener clickListener)
   {
     super();
-    this.context        = context;
+    this.fragment       = fragment;
+    this.context        = fragment.requireContext();
     this.glideRequests  = glideRequests;
     this.clickListener  = clickListener;
     this.dcContext      = DcHelper.getContext(context);
@@ -211,6 +214,9 @@ public class ProfileAdapter extends RecyclerView.Adapter
       if (data.viewType == ITEM_LAST_SEEN || data.viewType == ITEM_ADDRESS) {
         int padding = (int)((float)context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding) * 1.2);
         item.setPadding(item.getPaddingLeft(), item.getPaddingTop(), item.getPaddingRight(), padding);
+        if (data.viewType == ITEM_ADDRESS) {
+          fragment.registerForContextMenu(item);
+        }
       } else if (data.viewType == ITEM_INTRODUCED_BY) {
         int padding = context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding);
         item.setPadding(item.getPaddingLeft(), padding, item.getPaddingRight(), item.getPaddingBottom());
@@ -318,7 +324,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
       }
     }
 
-    if (sharedChats != null && !isDeviceTalk) {
+    if (!isDeviceTalk && sharedChats != null && sharedChats.getCnt() > 0) {
       itemData.add(new ItemData(ITEM_HEADER, context.getString(R.string.profile_shared_chats), 0));
       for (int i = 0; i < sharedChats.getCnt(); i++) {
         itemData.add(new ItemData(ITEM_SHARED_CHATS, 0, i));
