@@ -4,7 +4,7 @@
 
     <item android:title="@string/qr_code"
           android:id="@+id/menu_qr"
-          android:icon="@drawable/baseline_qr_code_24"
+          android:icon="@drawable/ic_qr_code_24"
           app:showAsAction="ifRoom"/>
 
     <item android:title="@string/invite_friends"

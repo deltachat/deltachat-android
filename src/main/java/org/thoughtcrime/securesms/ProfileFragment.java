@@ -67,7 +67,7 @@ public class ProfileFragment extends Fragment
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.profile_fragment, container, false);
-    adapter = new ProfileAdapter(requireContext(), GlideApp.with(this), this);
+    adapter = new ProfileAdapter(this, GlideApp.with(this), this);
 
     RecyclerView list = ViewUtil.findById(view, R.id.recycler_view);
     list.setAdapter(adapter);
