@@ -5,6 +5,7 @@ import static android.text.InputType.TYPE_TEXT_VARIATION_URI;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_BCC_SELF;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SELF_REPORTING;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SENTBOX_WATCH;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SHOW_EMAILS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_WEBXDC_REALTIME_ENABLED;
@@ -20,6 +21,7 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,6 +41,7 @@ import org.thoughtcrime.securesms.RegistrationActivity;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.StreamUtil;
@@ -59,6 +62,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
 
   private ListPreference showEmails;
   CheckBoxPreference sentboxWatchCheckbox;
+  CheckBoxPreference selfReportingCheckbox;
   CheckBoxPreference bccSelfCheckbox;
   CheckBoxPreference mvboxMoveCheckbox;
   CheckBoxPreference onlyFetchMvboxCheckbox;
@@ -212,22 +216,21 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       });
     }
 
-    Preference selfReporting = this.findPreference("pref_self_reporting");
-    if (selfReporting != null) {
-      selfReporting.setOnPreferenceClickListener(((preference) -> {
-        try {
-          int chatId = getRpc(requireActivity()).draftSelfReport(dcContext.getAccountId());
+    selfReportingCheckbox = this.findPreference("pref_self_reporting");
+    if (selfReportingCheckbox != null) {
+      selfReportingCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
+        boolean enabled = (Boolean) newValue;
+        dcContext.setConfigInt(CONFIG_SELF_REPORTING, enabled? 1 : 0);
 
-          Intent intent = new Intent(requireActivity(), ConversationActivity.class);
-          intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-          intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-          requireActivity().startActivity(intent);
-        } catch (RpcException e) {
-          Log.e(TAG, "Error calling rpc.draftSelfReport()", e);
+        if (enabled) {
+          new AlertDialog.Builder(getActivity())
+                  .setMessage(R.string.send_stats_thanks)
+                  .setPositiveButton(android.R.string.ok, null)
+                  .setNegativeButton(R.string.more_info_desktop, (_d, _w) -> IntentUtils.showInBrowser(getContext(), "TODO[blog post]"))
+                  .show();
         }
-
         return true;
-      }));
+      });
     }
 
     Preference proxySettings = this.findPreference("proxy_settings_button");
@@ -274,6 +277,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     updateListSummary(showEmails, value);
 
     sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_SENTBOX_WATCH));
+    selfReportingCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_SELF_REPORTING));
     bccSelfCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_BCC_SELF));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
     onlyFetchMvboxCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_ONLY_FETCH_MVBOX));
