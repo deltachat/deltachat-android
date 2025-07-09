@@ -10,6 +10,10 @@
 * Improve hint for app drafts
 * Add Text-To-Speech (TTS) support for in-chat apps
 * New icon for the QR icon
+* Improved separation between unencryted chats/contacts and encrypted ones, avoiding mixing of encrypted and unencrypted messages in the same chat
+* Removed padlocks, as encrypted is the default "normal" state. Instead, unencrypted email is marked with a small email / letter  (✉️) icon
+* Classic email chats/threads get a big email / letter icon making it easy to recognize
+* Update to core 2.0.0
 
 ## v1.58.4
 2025-05

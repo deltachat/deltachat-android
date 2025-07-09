@@ -22,7 +22,7 @@ public class ConversationItemFooter extends LinearLayout {
   private TextView            dateView;
   private TextView            editedView;
   private ImageView           bookmarkIndicatorView;
-  private ImageView           secureIndicatorView;
+  private ImageView           emailIndicatorView;
   private ImageView           locationIndicatorView;
   private DeliveryStatusView  deliveryStatusView;
   private Integer             textColor = null;
@@ -48,7 +48,7 @@ public class ConversationItemFooter extends LinearLayout {
     dateView              = findViewById(R.id.footer_date);
     editedView            = findViewById(R.id.footer_edited);
     bookmarkIndicatorView = findViewById(R.id.footer_bookmark_indicator);
-    secureIndicatorView   = findViewById(R.id.footer_secure_indicator);
+    emailIndicatorView   = findViewById(R.id.footer_email_indicator);
     locationIndicatorView = findViewById(R.id.footer_location_indicator);
     deliveryStatusView    = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
 
@@ -65,7 +65,14 @@ public class ConversationItemFooter extends LinearLayout {
     boolean bookmark = messageRecord.getOriginalMsgId() != 0 || messageRecord.getSavedMsgId() != 0;
     bookmarkIndicatorView.setVisibility(bookmark ? View.VISIBLE : View.GONE);
     editedView.setVisibility(messageRecord.isEdited() ? View.VISIBLE : View.GONE);
-    secureIndicatorView.setVisibility(messageRecord.isSecure() ? View.VISIBLE : View.GONE);
+
+    int downloadState = messageRecord.getDownloadState();
+    if (messageRecord.isSecure() || downloadState == DcMsg.DC_DOWNLOAD_AVAILABLE || downloadState == DcMsg.DC_DOWNLOAD_FAILURE || downloadState == DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
+      emailIndicatorView.setVisibility(View.GONE);
+    } else {
+      emailIndicatorView.setVisibility(View.VISIBLE);
+    }
+
     locationIndicatorView.setVisibility(messageRecord.hasLocation() ? View.VISIBLE : View.GONE);
     presentDeliveryStatus(messageRecord);
   }
@@ -74,7 +81,7 @@ public class ConversationItemFooter extends LinearLayout {
     dateView.setTextColor(color);
     editedView.setTextColor(color);
     bookmarkIndicatorView.setColorFilter(color);
-    secureIndicatorView.setColorFilter(color);
+    emailIndicatorView.setColorFilter(color);
     locationIndicatorView.setColorFilter(color);
     deliveryStatusView.setTint(color);
   }

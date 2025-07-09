@@ -107,7 +107,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       boolean canReceive = true;
 
       if (chatId != 0) {
-        menu.findItem(R.id.menu_clone).setVisible(chatIsMultiUser && !chatIsMailingList);
+        DcChat dcChat = dcContext.getChat(chatId);
+        menu.findItem(R.id.menu_clone).setVisible(chatIsMultiUser && !chatIsMailingList && dcChat.isEncrypted());
         if (chatIsDeviceTalk) {
           menu.findItem(R.id.edit_name).setVisible(false);
           menu.findItem(R.id.show_encr_info).setVisible(false);
@@ -117,8 +118,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           if (chatIsBroadcast) {
             canReceive = false;
           } else {
-            DcChat dcChat = dcContext.getChat(chatId);
-            if (!chatIsMailingList && !dcChat.canSend()) {
+            if (!dcChat.isEncrypted()
+                || !dcChat.canSend()
+                || chatIsMailingList) {
               menu.findItem(R.id.edit_name).setVisible(false);
             }
           }

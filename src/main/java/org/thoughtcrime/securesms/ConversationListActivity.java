@@ -194,6 +194,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     refresh();
 
     if (BuildConfig.DEBUG) checkNdkArchitecture();
+
+    DcHelper.maybeShowMigrationError(this);
   }
 
   /**

@@ -311,7 +311,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     if (memberList!=null && !isMailingList) {
       itemData.add(new ItemData(ITEM_DIVIDER, null, 0));
       if (dcChat != null) {
-        if (dcChat.canSend()) {
+        if (dcChat.canSend() && dcChat.isEncrypted()) {
           itemData.add(new ItemData(ITEM_MEMBERS, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
           if (!isBroadcast) {
             itemData.add(new ItemData(ITEM_MEMBERS, DcContact.DC_CONTACT_ID_QR_INVITE, 0));

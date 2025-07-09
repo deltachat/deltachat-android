@@ -173,6 +173,10 @@ public class Rpc {
         }
     }
 
+    public String getMigrationError(int accountId) throws RpcException {
+        return gson.fromJson(getResult("get_migration_error", accountId), String.class);
+    }
+
     private static class Response {
         public final int id;
         public final JsonElement result;
