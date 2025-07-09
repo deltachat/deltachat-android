@@ -158,7 +158,7 @@ public class ProfileFragment extends Fragment
     if (contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL || contactId==DcContact.DC_CONTACT_ID_SELF) {
       if (actionMode==null) {
         DcChat dcChat = dcContext.getChat(chatId);
-        if (dcChat.canSend()) {
+        if (dcChat.canSend() && dcChat.isEncrypted()) {
           adapter.toggleMemberSelection(contactId);
           actionMode = ((AppCompatActivity) requireActivity()).startSupportActionMode(actionModeCallback);
         }
