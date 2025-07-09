@@ -58,7 +58,7 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
       greenCheckmark = dcChat.isProtected();
 
       if (dcChat.isMailingList()) {
-        subtitle = getContext().getString(R.string.contacts_headline);
+        subtitle = dcChat.getMailinglistAddr();
       } else if (dcChat.isOutBroadcast()) {
         subtitle = getContext().getResources().getQuantityString(R.plurals.n_recipients, memberCount, memberCount);
       } else if (dcChat.isInBroadcast()) {

@@ -277,7 +277,6 @@ public class ProfileAdapter extends RecyclerView.Adapter
     itemDataStatusText = "";
     isOutBroadcast = dcChat != null && dcChat.isOutBroadcast();
     boolean isMailingList = dcChat != null && dcChat.isMailingList();
-    boolean isGroup = dcChat != null && dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP;
     boolean isSelfTalk = dcChat != null && dcChat.isSelfTalk();
     boolean isDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
     memberCount = memberList!=null ? memberList.length : 0;
@@ -309,10 +308,10 @@ public class ProfileAdapter extends RecyclerView.Adapter
       itemData.add(new ItemData(ITEM_LAST_SEEN, lastSeenTxt, 0));
     }
 
-    if (memberList!=null) {
+    if (memberList!=null && !isMailingList) {
       itemData.add(new ItemData(ITEM_DIVIDER, null, 0));
       if (dcChat != null) {
-        if (!isMailingList && dcChat.canSend() && dcChat.isEncrypted()) {
+        if (dcChat.canSend() && dcChat.isEncrypted()) {
           itemData.add(new ItemData(ITEM_MEMBERS, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
           if (!isOutBroadcast) {
             itemData.add(new ItemData(ITEM_MEMBERS, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
@@ -345,8 +344,6 @@ public class ProfileAdapter extends RecyclerView.Adapter
 
       if (dcContact != null) {
         itemData.add(new ItemData(ITEM_ADDRESS, dcContact.getAddr(), 0));
-      } else if (isMailingList) {
-        itemData.add(new ItemData(ITEM_ADDRESS, dcChat.getMailinglistAddr(), 0));
       }
     }
 
