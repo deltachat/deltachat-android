@@ -294,7 +294,7 @@ public class ProfileFragment extends Fragment
             mode.finish();
           })
           .setNegativeButton(android.R.string.cancel, null)
-          .setMessage(getString(dcChat.isBroadcast() ? R.string.ask_remove_from_broadcast : R.string.ask_remove_members, readableToDelList))
+          .setMessage(getString(dcChat.isOutBroadcast() ? R.string.ask_remove_from_channel : R.string.ask_remove_members, readableToDelList))
           .show();
         Util.redPositiveButton(dialog);
         return true;

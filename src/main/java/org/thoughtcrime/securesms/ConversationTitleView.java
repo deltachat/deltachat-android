@@ -87,7 +87,9 @@ public class ConversationTitleView extends RelativeLayout {
       } else {
         subtitleStr = context.getString(R.string.mailing_list);
       }
-    } else if (dcChat.isBroadcast()) {
+    } else if (dcChat.isInBroadcast()) {
+      subtitleStr = context.getString(R.string.channel);
+    } else if (dcChat.isOutBroadcast()) {
       if (!profileView) {
         subtitleStr = context.getResources().getQuantityString(R.plurals.n_recipients, chatContacts.length, chatContacts.length);
       }

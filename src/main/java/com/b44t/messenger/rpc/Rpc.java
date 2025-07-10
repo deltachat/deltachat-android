@@ -160,6 +160,10 @@ public class Rpc {
         getResult("add_or_update_transport", accountId, param);
     }
 
+    public int createBroadcast(int accountId, String chatName) throws RpcException {
+        return gson.fromJson(getResult("create_broadcast", accountId, chatName), Integer.class);
+    }
+
     private static class Request {
         private final String jsonrpc = "2.0";
         public final String method;
