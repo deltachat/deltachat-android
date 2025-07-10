@@ -115,6 +115,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           menu.findItem(R.id.show_encr_info).setVisible(false);
           menu.findItem(R.id.share).setVisible(false);
         } else if (chatIsMultiUser) {
+          menu.findItem(R.id.edit_name).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
           if (chatIsOutBroadcast) {
             canReceive = false;
           } else {
