@@ -453,7 +453,7 @@
     <!-- deprecated -->
     <string name="chat_new_broadcast_hint">In a broadcast list, recipients will receive messages in a read-only chat with you.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
-    <string name="chat_new_channel_hint">In a channel, recipients don\'t see who else is part of the channel.</string>
+    <string name="chat_new_channel_hint">Channels are a one-to-many tool for broadcasting your messages.</string>
     <string name="chat_new_group_hint">Others will only see this group after you sent a first message.</string>
     <string name="chat_record_slide_to_cancel">Slide to cancel</string>
     <string name="chat_record_explain">Tap and hold to record a voice message, release to send</string>
