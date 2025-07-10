@@ -90,7 +90,7 @@
     <ul>
       <li><a href="#яких-дозволів-потребує-delta-chat">Яких дозволів потребує Delta Chat?</a></li>
       <li><a href="#чи-підтримує-delta-chat-роботу-з-моїм-провайдером-електронної-пошти">Чи підтримує Delta Chat роботу з <em>моїм</em> провайдером електронної пошти?</a></li>
-      <li><a href="#я-хочу-керувати-власним-сервером-електронної-пошти-для-delta-chat-що-ви-порадите">Я хочу керувати власним сервером електронної пошти для Delta Chat. Що ви порадите?</a></li>
+      <li><a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">I want to manage my own server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#чому-я-маю-вводити-пароль-до-моєї-електронної-пошти-у-delta-chat-чи-це-безпечно">Чому я маю вводити пароль до моєї електронної пошти у Delta Chat? Чи це безпечно?</a></li>
       <li><a href="#які-повідомлення-відображаються-у-delta-chat">Які повідомлення відображаються у Delta Chat?</a></li>
       <li><a href="#чи-підтримує-delta-chat-html-листи">Чи підтримує Delta Chat HTML-листи?</a></li>
@@ -1097,10 +1097,16 @@ Delta Chat скоріше використовує реалізацію OpenPGP 
       </h3>
 
 <ul>
-  <li>Додатки webxdc не можуть надсилати дані в Інтернет або завантажувати щось.</li>
-  <li>Програма webxdc може обмінюватися даними лише в межах чату Delta Chat з її копіями на пристроях ваших партнерів по чату. В іншому, вони повністю ізольовані від Інтернету.</li>
-  <li>Конфіденційність, яку пропонує додаток webxdc, є конфіденційністю вашого чату - доки ви довіряєте людям, з якими ви спілкуєтеся, ви можете довіряти і додатку webxdc.</li>
-  <li>Це також означає, що відкриття додатків webxdc в чатах, де ви не довіряєте учасникам, як ви знаєте з вкладень в електронній пошті, де ви відкриваєте вкладення тільки від відправників, яким довіряєте, а не від спамерів.</li>
+  <li>webxdc apps can not send data to the Internet, or download anything.</li>
+  <li>A webxdc app can only exchange data within a Delta Chat chat, with its
+copies on the devices of your chat partners. Other than that, it’s completely
+isolated from the Internet.</li>
+  <li>The privacy a webxdc app offers is the privacy of your chat - as long as you
+trust the people you chat with, you can trust the webxdc app as well.</li>
+  <li>This also means: it can be a privacy risk to open apps in chats with untrusted members.
+Just like with e-mail attachments, video calls or plain links:
+open them only from senders you trust, and not from spammers.
+Spammers can get to know any data you send to them, as well as your IP address.</li>
 </ul>
     
       <h3 id="де-я-можу-отримати-webxdc-додатки">
@@ -1168,13 +1174,10 @@ Delta Chat скоріше використовує реалізацію OpenPGP 
         
       </h3>
 
-<ul>
-  <li>За допомогою списку розсилки ви можете надіслати повідомлення багатьом одержувачам одночасно; коли вони відповідають вам, ви отримуєте відповідь у своєму прямому чаті 1:1 з ними. Одержувачі не бачать один одного.</li>
-  <li>Технічно це електронний лист із багатьма одержувачами в BCC.</li>
-  <li>Ви можете ввімкнути функцію в розділі «експериментальні функції» в розширених налаштуваннях. Потім ви можете створити список трансляцій у діалоговому вікні «Новий чат».</li>
-  <li>Якщо ви використовуєте більше ніж один пристрій, списки трансляцій наразі не синхронізуються між ними.</li>
-  <li>Повідомлення, надіслані до списків розсилки, не шифруються. Шифрування порушило б анонімність, оскільки тоді всі одержувачі знали б, хто ще його отримав (надсилання окремих листів усім було б гіршим через обмеження швидкості та споживання мережі).</li>
-</ul>
+<p>With a Broadcast List you can send a message to many recipients at once;
+the recipients cannot reply in that list.
+Broadcast lists are still highly experimental
+and will very probably be replaced by something else, stay tuned :)</p>
     
       <h3 id="як-я-можу-поділитися-своїм-місцезнаходженням-зі-своїми-співрозмовниками-в-чаті">
         
@@ -1309,17 +1312,19 @@ Delta Chat скоріше використовує реалізацію OpenPGP 
 Проте для коректної роботи деяких провайдерів потрібні специфічні налаштування. Дивіться наш <a href="https://providers.delta.chat">огляд провайдерів</a></li>
 </ul>
     
-      <h3 id="я-хочу-керувати-власним-сервером-електронної-пошти-для-delta-chat-що-ви-порадите">
+      <h3 id="i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">
         
         
-          Я хочу керувати власним сервером електронної пошти для Delta Chat. Що ви порадите? <a href="#я-хочу-керувати-власним-сервером-електронної-пошти-для-delta-chat-що-ви-порадите" class="anchor"></a>
+          I want to manage my own server for Delta Chat. What do you recommend? <a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>Більшість поштових серверів працюватимуть добре. Але ми особисто рекомендуємо поєднання mailcow і mailadm, як описано <a href="https://delta.chat/en/2023-01-27-upcoming-mail-server-workshops">у цьому пості</a>.</li>
-  <li>Ви можете знайти <a href="https://delta.chat/uk/serverguide">посібник із встановлення на нашому веб-сайті</a>.</li>
+  <li>Most mail servers will work well. But what we personally recommend is a
+chatmail relay server, as described <a href="https://delta.chat/en/2023-12-13-chatmail">in this
+blogpost</a>.</li>
+  <li>You can find an <a href="https://github.com/chatmail/relay">installation guide on GitHub</a>.</li>
 </ul>
     
       <h3 id="чому-я-маю-вводити-пароль-до-моєї-електронної-пошти-у-delta-chat-чи-це-безпечно">

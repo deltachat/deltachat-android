@@ -90,7 +90,7 @@
     <ul>
       <li><a href="#jakich-uprawnień-potrzebuje-delta-chat">Jakich uprawnień potrzebuje Delta Chat?</a></li>
       <li><a href="#czy-delta-chat-działa-z-moim-dostawcą-poczty-e-mail">Czy Delta Chat działa z <em>moim</em> dostawcą poczty e-mail?</a></li>
-      <li><a href="#chcę-zarządzać-własnym-serwerem-e-mail-dla-delta-chat-co-polecacie">Chcę zarządzać własnym serwerem e-mail dla Delta Chat. Co polecacie?</a></li>
+      <li><a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">I want to manage my own server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#dlaczego-muszę-wpisać-moje-hasło-e-mail-do-delta-chat-czy-to-jest-bezpieczne">Dlaczego muszę wpisać moje hasło e-mail do Delta Chat? Czy to jest bezpieczne?</a></li>
       <li><a href="#jakie-wiadomości-pojawiają-się-w-delta-chat">Jakie wiadomości pojawiają się w Delta Chat?</a></li>
       <li><a href="#czy-delta-chat-obsługuje-wiadomości-e-mail-w-formacie-html">Czy Delta Chat obsługuje wiadomości e-mail w formacie HTML?</a></li>
@@ -707,7 +707,7 @@ nadal będziesz mógł pisać, ale nie będziesz już powiadamiany o żadnych no
 
 <p>Czasami utrzymanie kontaktu jest ważniejsze niż szyfrowanie end-to-end. <a href="#tls">„Szyfrowanie warstwy transportowej” (TLS)</a> może w dalszym ciągu w znaczący sposób chronić poufność wiadomości przesyłanych między urządzeniem a serwerem poczty e-mail. Jednak bez kompleksowego szyfrowania Ty i Twój kontakt ufacie swojemu serwerowi poczty e-mail, że nie będzie czytać ani manipulować waszymi wiadomościami i nie będzie przekazywać ich osobom trzecim.</p>
 
-<p>W każdym razie nie możesz zrobić nic innego, jak zaakceptować ostrzeżenie. Usuń także kontakt z aktywnej grupy oznaczonej zielonym znacznikiem, którą znajdziesz w sekcji „Współdzielone czaty” w profilu kontaktu. Dzięki temu twój kontakt nie otrzyma „nieczytelnych” wiadomości.</p>
+<p>W każdym razie nie możesz zrobić nic innego, jak zaakceptować ostrzeżenie. Usuń także kontakt z aktywnej grupy oznaczonej zielonym znacznikiem, którą znajdziesz w sekcji „Wspólne czaty” w profilu kontaktu. Dzięki temu twój kontakt nie otrzyma „nieczytelnych” wiadomości.</p>
 
 <p>Jeśli kontakt usunął Delta Chat z powodu błędów lub niepożądanego zachowania, rozważ opublikowanie postu na naszym <a href="https://support.delta.chat">forum pomocy</a>, aby pomóc nam zidentyfikować i rozwiązać typowe problemy. Dzięki!</p>
     
@@ -1094,7 +1094,7 @@ od najnowszych do najstarszych:</p>
   <li>Aplikacje webxdc nie mogą wysyłać danych do Internetu ani niczego pobierać.</li>
   <li>Aplikacja webxdc może wymieniać dane wyłącznie w ramach czatu Delta Chat, a ich kopie znajdują się na urządzeniach twoich partnerów czatu. Poza tym jest całkowicie odizolowana od Internetu.</li>
   <li>Prywatność, jaką oferuje aplikacja webxdc, to prywatność twojego czatu – jeśli ufasz osobom, z którymi rozmawiasz, możesz ufać także aplikacji webxdc.</li>
-  <li>Oznacza to również: otwieranie aplikacji webxdc na czatach, w przypadku których nie ufa się członkom, może stanowić ryzyko dla prywatności – tak jak załączniki do wiadomości e-mail, gdzie otwiera się tylko załączniki od nadawców, którym ufasz, a nie od spamerów.</li>
+  <li>Oznacza to również: otwieranie aplikacji w czatach z niezaufanymi członkami, co może stanowić ryzyko dla prywatności. Podobnie jak w przypadku załączników do wiadomości e-mail, połączeń wideo lub zwykłych linków: otwieraj je tylko od nadawców, którym ufasz, a nie od spamerów. Spamerzy mogą poznać wszelkie dane, które im wysyłasz, a także twój adres IP.</li>
 </ul>
     
       <h3 id="gdzie-mogę-zdobyć-aplikacje-webxdc">
@@ -1161,13 +1161,8 @@ od najnowszych do najstarszych:</p>
         
       </h3>
 
-<ul>
-  <li>Dzięki liście rozgłoszeniowej możesz wysłać wiadomość do wielu odbiorców jednocześnie; kiedy ci odpowiedzą, otrzymasz odpowiedź w bezpośrednim czacie 1: 1 z nimi. Odbiorcy nie widzą siebie nawzajem.</li>
-  <li>Technicznie, jest to e-mail z wieloma odbiorcami w „ukrytej kopii”.</li>
-  <li>Możesz włączyć tę funkcję w sekcji „Funkcje eksperymentalne” w ustawieniach zaawansowanych. Następnie możesz utworzyć listę rozgłoszeniową z okna dialogowego „Nowy czat”.</li>
-  <li>Jeśli używasz więcej niż jednego urządzenia, listy rozgłoszeniowe nie są obecnie synchronizowane między nimi.</li>
-  <li>Wiadomości wysyłane do list rozgłoszeniowych nie są szyfrowane. Szyfrowanie złamałoby anonimowość, ponieważ wtedy wszyscy odbiorcy wiedzieliby, kto jeszcze je otrzymał (wysyłanie indywidualnych wiadomości do wszystkich byłoby gorsze z powodu limitu prędkości i zużycia sieci).</li>
-</ul>
+<p>Za pomocą listy rozgłoszeniowej możesz wysłać wiadomość do wielu odbiorców naraz; odbiorcy nie mogą odpowiedzieć na tej liście.
+Listy rozgłoszeniowe są nadal wysoce eksperymentalne i bardzo prawdopodobne, że zostaną zastąpione czymś innym, bądźcie czujni :)</p>
     
       <h3 id="jak-mogę-udostępnić-swoją-lokalizację-moim-rozmówcom">
         
@@ -1286,17 +1281,19 @@ Oto, co robi Delta Chat z tymi uprawnieniami:</p>
 Jednak niektórzy dostawcy potrzebują specjalnych opcji, aby działać poprawnie, zobacz <a href="https://providers.delta.chat">Przegląd dostawców</a></li>
 </ul>
     
-      <h3 id="chcę-zarządzać-własnym-serwerem-e-mail-dla-delta-chat-co-polecacie">
+      <h3 id="i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">
         
         
-          Chcę zarządzać własnym serwerem e-mail dla Delta Chat. Co polecacie? <a href="#chcę-zarządzać-własnym-serwerem-e-mail-dla-delta-chat-co-polecacie" class="anchor"></a>
+          I want to manage my own server for Delta Chat. What do you recommend? <a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>Większość serwerów pocztowych będzie działać dobrze. Ale to, co osobiście polecamy, to połączenie mailcow i mailadm, jak opisano <a href="https://delta.chat/en/2023-01-27-upcoming-mail-server-workshops">w tym poście na blogu</a>.</li>
-  <li>Instrukcję instalacji można znaleźć <a href="https://delta.chat/pl/serverguide">na naszej stronie internetowej</a>.</li>
+  <li>Most mail servers will work well. But what we personally recommend is a
+chatmail relay server, as described <a href="https://delta.chat/en/2023-12-13-chatmail">in this
+blogpost</a>.</li>
+  <li>You can find an <a href="https://github.com/chatmail/relay">installation guide on GitHub</a>.</li>
 </ul>
     
       <h3 id="dlaczego-muszę-wpisać-moje-hasło-e-mail-do-delta-chat-czy-to-jest-bezpieczne">

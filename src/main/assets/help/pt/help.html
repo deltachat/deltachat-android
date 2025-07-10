@@ -90,7 +90,7 @@
     <ul>
       <li><a href="#quais-permissões-o-delta-chat-precisa">Quais permissões o Delta Chat precisa?</a></li>
       <li><a href="#o-delta-chat-funciona-com-meu-provedor-de-e-mail">O Delta Chat funciona com <em>meu</em> provedor de e-mail?</a></li>
-      <li><a href="#i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend">I want to manage my own e-mail server for Delta Chat. What do you recommend?</a></li>
+      <li><a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">I want to manage my own server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#por-que-preciso-entrar-com-a-senha-do-meu-email-no-delta-chat-isso-é-seguro">Por que preciso entrar com a senha do meu email no Delta Chat? Isso é seguro?</a></li>
       <li><a href="#quais-mensagens-aparecem-no-delta-chat">Quais mensagens aparecem no Delta Chat?</a></li>
       <li><a href="#o-delta-chat-suporta-emails-html">O Delta Chat suporta emails HTML?</a></li>
@@ -915,7 +915,7 @@ to not read or manipulate your messages, and to not hand them to third parties.<
 
 <p>In any case, you can not do much else than accept the warning.
 Please also remove the contact from any active green-checkmarked group 
-which you can find in “Shared chats” in the Contact profile. 
+which you can find in “Chats in Common” in the Contact profile.
 This spares your contact from getting “unreadable” messages.</p>
 
 <p>If the contact removed Delta Chat because of buggy or undesirable behaviour, 
@@ -1495,9 +1495,10 @@ copies on the devices of your chat partners. Other than that, it’s completely
 isolated from the Internet.</li>
   <li>The privacy a webxdc app offers is the privacy of your chat - as long as you
 trust the people you chat with, you can trust the webxdc app as well.</li>
-  <li>This also means: it can be a privacy risk to open webxdc apps in chats where
-you don’t trust the members - as you know it from e-mail attachments, where 
-you only open attachments from senders you trust, and not from spammers.</li>
+  <li>This also means: it can be a privacy risk to open apps in chats with untrusted members.
+Just like with e-mail attachments, video calls or plain links:
+open them only from senders you trust, and not from spammers.
+Spammers can get to know any data you send to them, as well as your IP address.</li>
 </ul>
     
       <h3 id="where-can-i-get-webxdc-apps">
@@ -1581,21 +1582,10 @@ this way, you will have a new random Jitsi room every time you call someone.</li
         
       </h3>
 
-<ul>
-  <li>With a Broadcast List you can send a message to many recipients at once; when
-they reply to you, you get the reply in your direct 1:1 chat with them. The
-recipients can’t see each other.</li>
-  <li>Technically, it is an E-Mail with many recipients in BCC.</li>
-  <li>You can turn on the feature in the “experimental features” section in the
-advanced settings. Then you can create a Broadcast List from the “New Chat”
-dialog.</li>
-  <li>In case you are using more than one device, Broadcast Lists are currently not
-synced between them.</li>
-  <li>Messages sent to broadcast lists are not encrypted. Encryption would break
-anonymity, because then all recipients would know who else received it
-(Sending individual mails to everyone would be worse for rate limit and network
-consumption reason).</li>
-</ul>
+<p>With a Broadcast List you can send a message to many recipients at once;
+the recipients cannot reply in that list.
+Broadcast lists are still highly experimental
+and will very probably be replaced by something else, stay tuned :)</p>
     
       <h3 id="how-can-i-share-my-location-with-my-chat-partners">
         
@@ -1752,19 +1742,19 @@ No entanto, alguns provedores precisam de opções especiais para funcionar corr
 ver <a href="https://providers.delta.chat">Visão Geral dos Provedores</a></li>
 </ul>
     
-      <h3 id="i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend">
+      <h3 id="i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">
         
         
-          I want to manage my own e-mail server for Delta Chat. What do you recommend? <a href="#i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend" class="anchor"></a>
+          I want to manage my own server for Delta Chat. What do you recommend? <a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend" class="anchor"></a>
         
         
       </h3>
 
 <ul>
   <li>Most mail servers will work well. But what we personally recommend is a
-combination of mailcow and mailadm, as described <a href="https://delta.chat/en/2023-01-27-upcoming-mail-server-workshops">in this
+chatmail relay server, as described <a href="https://delta.chat/en/2023-12-13-chatmail">in this
 blogpost</a>.</li>
-  <li>You can find an <a href="https://delta.chat/pt/serverguide">installation guide on our website</a>.</li>
+  <li>You can find an <a href="https://github.com/chatmail/relay">installation guide on GitHub</a>.</li>
 </ul>
     
       <h3 id="por-que-preciso-entrar-com-a-senha-do-meu-email-no-delta-chat-isso-é-seguro">

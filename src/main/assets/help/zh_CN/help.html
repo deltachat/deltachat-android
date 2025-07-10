@@ -90,7 +90,7 @@
     <ul>
       <li><a href="#delta-chat-需要哪些权限">Delta Chat 需要哪些权限？</a></li>
       <li><a href="#delta-chat-可用于-我的-电子邮件提供商吗">Delta Chat 可用于 <em>我的</em> 电子邮件提供商吗？</a></li>
-      <li><a href="#我想管理自己的-delta-chat-电子邮件服务器-你有什么建议">我想管理自己的 Delta Chat 电子邮件服务器。 你有什么建议？</a></li>
+      <li><a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">I want to manage my own server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#为什么我必须在-delta-chat-中输入我的电子邮件密码-这样安全吗">为什么我必须在 Delta Chat 中输入我的电子邮件密码？ 这样安全吗？</a></li>
       <li><a href="#哪些消息会在-delta-chat-中出现">哪些消息会在 Delta Chat 中出现？</a></li>
       <li><a href="#delta-chat-支持-html-电子邮件吗">Delta Chat 支持 HTML 电子邮件吗？</a></li>
@@ -1426,12 +1426,16 @@ Chat 的 <a href="https://github.com/rpgp/rpgp">PGP</a> 和
       </h3>
 
 <ul>
-  <li>Webxdc 应用无法向互联网发送数据或下载任何内容。</li>
-  <li>Webxdc 应用只能在 Delta Chat 聊天中与其聊天伙伴设备上的副本交换数据。 除此之外，它与互联网完全隔离。</li>
-  <li>Webxdc 应用提供的隐私性就是你的聊天的隐私性 - 只要你
-信任与你聊天的人，你也可以信任 Webxdc 应用。</li>
-  <li>这也意味着：在你不信任成员的聊天中打开 WebXDC 应用可能存在隐私风险 - 正如你从电子邮件附件中了解到的那样，你
-只打开来自你信任的发件人的附件，而不是来自垃圾邮件发送者的附件。</li>
+  <li>webxdc apps can not send data to the Internet, or download anything.</li>
+  <li>A webxdc app can only exchange data within a Delta Chat chat, with its
+copies on the devices of your chat partners. Other than that, it’s completely
+isolated from the Internet.</li>
+  <li>The privacy a webxdc app offers is the privacy of your chat - as long as you
+trust the people you chat with, you can trust the webxdc app as well.</li>
+  <li>This also means: it can be a privacy risk to open apps in chats with untrusted members.
+Just like with e-mail attachments, video calls or plain links:
+open them only from senders you trust, and not from spammers.
+Spammers can get to know any data you send to them, as well as your IP address.</li>
 </ul>
     
       <h3 id="我在哪里可以获得-webxdc-应用">
@@ -1513,13 +1517,10 @@ Chat 的 <a href="https://github.com/rpgp/rpgp">PGP</a> 和
         
       </h3>
 
-<ul>
-  <li>使用广播列表，您可以一次性将一条消息发送给多个接收者；当他们回复您时，回复会出现在您与他们的直接 1 对 1 聊天中。 接收者之间无法相互看到。</li>
-  <li>从技术上讲，它是密件抄送了许多收件人的电子邮件。</li>
-  <li>您可以在高级设置的“实验性功能”部分启用该功能。启用后，您便能在“新建聊天”对话框中新建广播列表了。</li>
-  <li>在使用多台设备的情况下，目前广播列表不会在它们之间同步。</li>
-  <li>发送到广播列表的消息不会被加密。加密会使接收者们知道还有谁收到了消息，进而破坏了匿名性（出于发送速率限制和网络消耗的原因，向每个人发送单独的邮件会更糟）。</li>
-</ul>
+<p>With a Broadcast List you can send a message to many recipients at once;
+the recipients cannot reply in that list.
+Broadcast lists are still highly experimental
+and will very probably be replaced by something else, stay tuned :)</p>
     
       <h3 id="如何与聊天伙伴分享位置">
         
@@ -1651,19 +1652,19 @@ Chat 的 <a href="https://github.com/rpgp/rpgp">PGP</a> 和
 不过，某些提供商需要一些特殊设置才能正常工作，请参阅<a href="https://providers.delta.chat">提供商概览</a></li>
 </ul>
     
-      <h3 id="我想管理自己的-delta-chat-电子邮件服务器-你有什么建议">
+      <h3 id="i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">
         
         
-          我想管理自己的 Delta Chat 电子邮件服务器。 你有什么建议？ <a href="#我想管理自己的-delta-chat-电子邮件服务器-你有什么建议" class="anchor"></a>
+          I want to manage my own server for Delta Chat. What do you recommend? <a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>大多数邮件服务器都能很好地工作。 但我们个人推荐的是
-mailcow 和 mailadm 的组合，如 <a href="https://delta.chat/en/2023-01-27-upcoming-mail-server-workshops">本
-博客文章</a> 中所述。</li>
-  <li>你可以在我们的 <a href="https://delta.chat/zh_CN/serverguide">网站上找到安装指南</a>。</li>
+  <li>Most mail servers will work well. But what we personally recommend is a
+chatmail relay server, as described <a href="https://delta.chat/en/2023-12-13-chatmail">in this
+blogpost</a>.</li>
+  <li>You can find an <a href="https://github.com/chatmail/relay">installation guide on GitHub</a>.</li>
 </ul>
     
       <h3 id="为什么我必须在-delta-chat-中输入我的电子邮件密码-这样安全吗">
