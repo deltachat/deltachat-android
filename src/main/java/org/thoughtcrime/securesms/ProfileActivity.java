@@ -334,7 +334,10 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       Intent intent = new Intent(this, MediaPreviewActivity.class);
       intent.setDataAndType(profileImageUri, type);
       intent.putExtra(MediaPreviewActivity.ACTIVITY_TITLE_EXTRA, title);
-      intent.putExtra(MediaPreviewActivity.EDIT_AVATAR_CHAT_ID, chatIsMultiUser ? chatId : 0); // shows edit-button, might be 0 for a contact-profile
+      intent.putExtra( // show edit-button, if the user is allowed to edit the name/avatar
+              MediaPreviewActivity.EDIT_AVATAR_CHAT_ID,
+              (chatIsMultiUser && !chatIsInBroadcast && !chatIsMailingList) ? chatId : 0
+      );
       startActivity(intent);
     } else if (chatIsMultiUser){
       onEditName();
