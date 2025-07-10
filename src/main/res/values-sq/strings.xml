@@ -34,6 +34,8 @@
     <string name="update">Përditësoje</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Bashkëngjitje</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">Të bashkëngjitet “%1$s”?</string>
     <string name="back">Mbrapsht</string>
     <string name="close">Mbylle</string>
     <string name="close_window">Mbylle Dritaren</string>
@@ -55,7 +57,10 @@
     <string name="save">Ruaje</string>
     <string name="chat">Fjalosje</string>
     <string name="media">Media</string>
+    <string name="apps_and_media">Aplikacione &amp; Media</string>
     <string name="profile">Profil</string>
+    <string name="all_profiles">Krejt Profilet</string>
+    <string name="current_profile">Profili i Tanishëm</string>
     <string name="main_menu">Menuja Kryesore</string>
     <string name="start_chat">Nisni Fjalosje</string>
     <string name="show_full_message">Shfaq Mesazhin e Plotë…</string>
@@ -90,6 +95,8 @@
     <string name="no_app_to_handle_data">S\’gjendet dot një aplikacion për trajtimin e këtij lloji të dhënash.</string>
     <string name="no_browser_installed">S\’ka shfletues të instaluar.</string>
     <string name="file_not_found">S\’u gjet dot %1$s.</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">S’ruhet dot %1$s.</string>
     <string name="copied_to_clipboard">U kopjua në të papastër.</string>
     <string name="contacts_headline">Kontakte</string>
     <string name="email_address">Adresë Email</string>
@@ -149,7 +156,7 @@
         <item quantity="one">%d e Përzgjedhur</item>
         <item quantity="other">%d të Përzgjedhur</item>
     </plurals>
-
+    <string name="selected_colon">Të përzgjedhur:</string>
     <string name="self">Unë</string>
     <string name="draft">Skicë</string>
     <string name="image">Figurë</string>
@@ -191,6 +198,7 @@
     <string name="webxdc_apps">Aplikacione</string>
     <string name="webxdc_store_url">URL Marrësi Aplikacioni</string>
     <string name="webxdc_store_url_explain">Në u ujdistë, URL-ja do të përdoret si Marrës Aplikacioni, në vend të atij parazgjedhje</string>
+    <string name="webxdc_draft_hint">Për ta ndarë me të tjerë, prekni “Dërgoje”</string>
     <string name="home">Kreu</string>
     <string name="games">Lojëra</string>
     <string name="tools">Mjete</string>
@@ -228,13 +236,18 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Bisedoni me… </string>
     <string name="clone_chat">Klononi Fjalosjen</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Listë Transmetimi</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Lista Transmetimi</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Listë e Re Transmetimi</string>
     <string name="add_recipients">Shtoni Marrës</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">Përpunoni Listë Transmetimesh</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">Emër Liste Transmetimesh</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Ju lutemi, jepni një emër për listën e transmetimeve</string>
     <string name="menu_send">Dërgoje</string>
     <string name="menu_toggle_keyboard">Shfaq/fshih Tastierë Emoji-sh</string>
@@ -271,6 +284,7 @@
     <string name="menu_export_attachment">Eksporto Bashkëngjitje</string>
     <string name="menu_export_attachments">Eksporto Bashkëngjitje</string>
     <string name="menu_all_media">Krejt Mediat</string>
+    <string name="all_apps_and_media">Krejt Aplikacionet &amp; Mediat</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Shfaqe në Fjalosje</string>
     <string name="show_app_in_chat">Shfaqe Aplikacionin në Fjalosje</string>
@@ -363,8 +377,6 @@
     <string name="videochat_invitation">Ftesë për fjalosje me video</string>
     <string name="videochat_invitation_body">Jeni ftuar në një fjalosje video, klikoni mbi %1$s që të hyni në të.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Jeni i sigurt se doni ta braktisni këtë grup?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Të fshihet %d fjalosje në krejt pajisjet tuaja?</item>
         <item quantity="other">Të fshihen %d fjalosje në krejt pajisjet tuaja?</item>
@@ -390,7 +402,7 @@
     <string name="ask_start_chat_with">Të bisedohet me %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Të hiqet %1$s nga grupi?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Të hiqen %1$s prej liste transmetimi?</string>
     <string name="open_url_confirmation">Doni të hapet kjo lidhje?</string>
 
@@ -421,6 +433,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Dërgoni një mesazh për %1$s.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">Në një listë transmetimesh, marrësit do të marrin mesazhe në një fjalosje të llojit “vetëm lexim” me ju.</string>
     <string name="chat_new_group_hint">Të tjerët do ta shohin këtë grup pasi të keni dërguar një mesazh të parë.</string>
     <string name="chat_record_slide_to_cancel">Rrëshqiteni që të anulohet</string>
@@ -431,6 +444,7 @@
     <string name="chat_input_placeholder">Mesazh</string>
     <string name="chat_archived_label">Arkivuar</string>
     <string name="chat_request_label">Kërkesë</string>
+    <string name="chat_request_label_explain">Përfshi kërkesa në numëratorë dhe njoftime</string>
     <string name="chat_no_messages">S\’ka mesazhe.</string>
     <string name="chat_self_talk_subtitle">Mesazhe Vetes</string>
     <string name="archive_empty_hint">Nëse arkivoni fjalosje, ato do të shfaqen këtu.</string>
@@ -798,6 +812,7 @@
     <string name="n_bytes_message">Mesazh %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Shkarko maksimumin e mundshëm deri më %1$s</string>
+    <string name="select_profile">Përzgjidhni Profil</string>
     <string name="profile_image_select">Përzgjidhni Figurë Profili</string>
     <string name="select_your_new_profile_image">Përzgjidhni figurën tuaj të re të profilit</string>
     <string name="profile_image_delete">Fshini Figurën e Profilit</string>
@@ -884,8 +899,6 @@
     <string name="remove_member_by_you">Hoqët anëtarin %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Anëtari %1$s u hoq nga %2$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">E braktisët grupin.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Grupi u braktis nga %1$s.</string>
     <string name="group_image_deleted_by_you">Fshitë figurën e grupit.</string>

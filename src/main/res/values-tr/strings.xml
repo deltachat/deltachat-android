@@ -34,6 +34,8 @@
     <string name="update">Güncelleştir</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">İlişik</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">“%1$s” iliştirilsin mi?</string>
     <string name="back">Geri</string>
     <string name="close">Kapat</string>
     <string name="close_window">Pencereyi Kapat</string>
@@ -56,7 +58,10 @@
     <string name="save">Kaydet</string>
     <string name="chat">Sohbet</string>
     <string name="media">Ortam</string>
+    <string name="apps_and_media">Uygulamalar ve Ortamlar</string>
     <string name="profile">Profil</string>
+    <string name="all_profiles">Tüm Profiller</string>
+    <string name="current_profile">Şu Anki Profil</string>
     <string name="main_menu">Ana Menü</string>
     <string name="start_chat">Sohbet Başlat</string>
     <string name="show_full_message">Tam İletiyi Göster…</string>
@@ -91,6 +96,8 @@
     <string name="no_app_to_handle_data">Bu veri türünü işleyen bir uygulama bulunamıyor.</string>
     <string name="no_browser_installed">Kurulu tarayıcı yok.</string>
     <string name="file_not_found">%1$s bulunamadı.</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">%1$s kaydedilemiyor.</string>
     <string name="copied_to_clipboard">Panoya kopyalandı.</string>
     <string name="contacts_headline">Kişiler</string>
     <string name="email_address">E-Posta Adresi</string>
@@ -150,7 +157,7 @@
         <item quantity="one">%d Seçildi</item>
         <item quantity="other">%d Seçildi</item>
     </plurals>
-
+    <string name="selected_colon">Seçilen:</string>
     <string name="self">Ben</string>
     <string name="draft">Taslak</string>
     <string name="image">Görsel</string>
@@ -194,6 +201,7 @@
     <string name="webxdc_apps">Uygulamalar</string>
     <string name="webxdc_store_url">Uygulama Seçici URL\'si</string>
     <string name="webxdc_store_url_explain">Ayarlanırsa URL, varsayılan birinin yerine Uygulama Seçici olarak kullanılacak</string>
+    <string name="webxdc_draft_hint">Paylaşmak için “Gönder”e dokunun</string>
     <string name="home">Ana Sayfa</string>
     <string name="games">Oyunlar</string>
     <string name="tools">Araçlar</string>
@@ -232,13 +240,18 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Sohbet et…</string>
     <string name="clone_chat">Sohbeti Çoğalt</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Yayın Listesi</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Yayın Listeleri</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Yeni Yayın Listesi</string>
     <string name="add_recipients">Alıcılar Ekle</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">Yayın Listesini Düzenle</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">Yayın Listesi Adı</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Lütfen yayın listesi için bir ad girin.</string>
     <string name="menu_send">Gönder</string>
     <string name="menu_toggle_keyboard">Emoji Klavyesine Geç</string>
@@ -275,6 +288,7 @@
     <string name="menu_export_attachment">İlişiği Dışa Aktar</string>
     <string name="menu_export_attachments">İlişikleri Dışa Aktar</string>
     <string name="menu_all_media">Tüm Ortamlar</string>
+    <string name="all_apps_and_media">Tüm Uygulamalar ve Ortamlar</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Sohbette Göster</string>
     <string name="show_app_in_chat">Uygulamayı Sohbette Göster</string>
@@ -367,8 +381,6 @@
     <string name="videochat_invitation">Video sohbeti çağrısı</string>
     <string name="videochat_invitation_body">Bir video sohbetine çağrıldınız; katılmak için %1$s öğesini tıklayın.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Bu öbekten ayrılmak istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Tüm aygıtlarınızdaki %d sohbet silinsin mi?</item>
         <item quantity="other">Tüm aygıtlarınızdaki %d sohbet silinsin mi?</item>
@@ -394,7 +406,7 @@
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$s öbekten kaldırılsın mı?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">%1$s yayın listesinden kaldırılsın mı?</string>
     <string name="open_url_confirmation">Bu bağlantıyı açmak istiyor musunuz?</string>
 
@@ -425,6 +437,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">%1$s kişisine bir ileti gönderin.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">Bir yayın listesinde, alıcılar sizinle salt okunur bir sohbette iletiler alacak.</string>
     <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu öbeği görecek.</string>
     <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
@@ -435,6 +448,7 @@
     <string name="chat_input_placeholder">İleti</string>
     <string name="chat_archived_label">Arşivlenen</string>
     <string name="chat_request_label">İstek</string>
+    <string name="chat_request_label_explain">Sayaçlarda ve bildirimlerde istekleri kapsa</string>
     <string name="chat_no_messages">İleti yok.</string>
     <string name="chat_self_talk_subtitle">Kendime İletiler</string>
     <string name="archive_empty_hint">Arşivlenen sohbetler burada görünecek.</string>
@@ -466,7 +480,7 @@
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">İletiyi gönder…</string>
     <string name="enable_realtime">Gerçek Zamanlı Uygulamalar</string>
-    <string name="enable_realtime_explain">Sohbetlerde paylaşılan uygulamalar için gerçek zamanlı bağlantıları etkinleştirin. Etkinleştirilirse, bir uygulama başlattığınızda sohbet ortakları IP adresinizi bulabilir.</string>
+    <string name="enable_realtime_explain">Sohbetlere iliştirilen uygulamalar için gerçek zamanlı bağlantıları etkinleştirin. Etkinleştirilirse, bir uygulamayı başlattığınızda sohbet ortakları IP adresinizi keşfedebilir.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Konumları zaman çerçevesinde göster</string>
@@ -508,7 +522,7 @@
     <string name="group_add_members">Üyeler Ekle</string>
     <string name="group_self_not_in_group">Bu eylemi gerçekleştirmek için öbeğin bir üyesi olmalısınız.</string>
     <string name="profile_encryption">Şifreleme</string>
-    <string name="profile_shared_chats">Paylaşılan Sohbetler</string>
+    <string name="profile_shared_chats">Ortak\'taki Sohbetler</string>
     <string name="related_chats">İlgili Sohbetler</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Geçmişteki Üyeler</string>
@@ -518,15 +532,15 @@
     <string name="tab_docs">Belgeler</string>
     <string name="tab_links">Bağlantılar</string>
     <string name="tab_map">Harita</string>
-    <string name="tab_gallery_empty_hint">Bu sohbette paylaşılan görseller ve videolar burada görünecek.</string>
-    <string name="tab_docs_empty_hint">Bu sohbette paylaşılan belgeler ve diğer dosyalar burada görünecek.</string>
-    <string name="tab_image_empty_hint">Bu sohbette paylaşılan görseller burada görünecek.</string>
-    <string name="tab_video_empty_hint">Bu sohbette paylaşılan videolar burada görünecek.</string>
-    <string name="tab_audio_empty_hint">Bu sohbette paylaşılan ses dosyaları ve sesli iletiler burada görünecek.</string>
-    <string name="tab_webxdc_empty_hint">Bu sohbette paylaşılan uygulamalar burada görünecek.</string>
-    <string name="tab_all_media_empty_hint">Herhangi bir sohbette paylaşılan ortamlar burada görünecek.</string>
-    <string name="all_files_empty_hint">Herhangi bir sohbette paylaşılan belgeler ve diğer dosyalar burada görünecek.</string>
-    <string name="all_apps_empty_hint">Herhangi bir sohbette paylaşılan uygulamalar burada görünecek.</string>
+    <string name="tab_gallery_empty_hint">Bu sohbete iliştirilen görseller ve videolar burada görünecek.</string>
+    <string name="tab_docs_empty_hint">Bu sohbete iliştirilen belgeler ve diğer dosyalar burada görünecek.</string>
+    <string name="tab_image_empty_hint">Bu sohbete iliştirilen görseller burada görünecek.</string>
+    <string name="tab_video_empty_hint">Bu sohbete iliştirilen videolar burada görünecek.</string>
+    <string name="tab_audio_empty_hint">Bu sohbete iliştirilen ses dosyaları ve sesli iletiler burada görünecek.</string>
+    <string name="tab_webxdc_empty_hint">Bu sohbete iliştirilen uygulamalar burada görünecek.</string>
+    <string name="tab_all_media_empty_hint">Herhangi bir sohbete iliştirilen ortamlar burada görünecek.</string>
+    <string name="all_files_empty_hint">Herhangi bir sohbete iliştirilen belgeler ve diğer dosyalar burada görünecek.</string>
+    <string name="all_apps_empty_hint">Herhangi bir sohbete iliştirilen uygulamalar burada görünecek.</string>
     <string name="media_preview">Ortam Önizlemesi</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">En Boy Oranı Izgarası</string>
@@ -804,6 +818,7 @@
     <string name="n_bytes_message">%1$s ileti</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">İndirme en fazla %1$s zamanına kadar kullanılabilir</string>
+    <string name="select_profile">Profil Seç</string>
     <string name="profile_image_select">Profil Görseli Seç</string>
     <string name="select_your_new_profile_image">Yeni profil görselinizi seçin</string>
     <string name="profile_image_delete">Profil Görselini Sil</string>
@@ -890,8 +905,6 @@
     <string name="remove_member_by_you">%1$s üyesini kaldırdınız.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s tarafından %1$s üyesi kaldırıldı.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Öbekten ayrıldınız.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s tarafından öbekten ayrılındı.</string>
     <string name="group_image_deleted_by_you">Öbek görselini sildiniz.</string>

@@ -34,6 +34,8 @@
     <string name="update">Actualización</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Adjunto</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">¿Adjunta \"%1$s\"?</string>
     <string name="back">Atrás</string>
     <string name="close">Cerrar</string>
     <string name="close_window">Cerrar ventana</string>
@@ -56,7 +58,10 @@
     <string name="save">Guardar</string>
     <string name="chat">Chat</string>
     <string name="media">Multimedia</string>
+    <string name="apps_and_media">Apps y medias</string>
     <string name="profile">Perfil</string>
+    <string name="all_profiles">Todos perfiles</string>
+    <string name="current_profile">Perfil actual</string>
     <string name="main_menu">Menú principal</string>
     <string name="start_chat">Comenzar chat</string>
     <string name="show_full_message">Mostrar mensaje completo…</string>
@@ -91,6 +96,8 @@
     <string name="no_app_to_handle_data">No se puede encontrar una aplicación compatible con este tipo de contenido</string>
     <string name="no_browser_installed">No hay ningún navegador instalado.</string>
     <string name="file_not_found">No se pudo encontrar %1$s.</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">No se puede guardar %1$s.</string>
     <string name="copied_to_clipboard">Copiado al portapapeles.</string>
     <string name="contacts_headline">Contactos</string>
     <string name="email_address">Dirección de correo</string>
@@ -159,7 +166,7 @@
         <item quantity="many">%d seleccionados</item>
         <item quantity="other">%d seleccionados</item>
     </plurals>
-
+    <string name="selected_colon">Seleccionado:</string>
     <string name="self">Yo</string>
     <string name="draft">Borrador</string>
     <string name="image">Imagen</string>
@@ -203,6 +210,7 @@
     <string name="webxdc_apps">Aplicaciones</string>
     <string name="webxdc_store_url">App Picker URL</string>
     <string name="webxdc_store_url_explain">Si se establece, la URL se utilizará como App Picker en lugar de la predeterminada</string>
+    <string name="webxdc_draft_hint">Pulsa \"Enviar\" para compartir</string>
     <string name="home">Inicio</string>
     <string name="games">Juegos</string>
     <string name="tools">Herramientas</string>
@@ -241,13 +249,18 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Chatear con...</string>
     <string name="clone_chat">Clonar chat</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Difusión</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Difusiones</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Nueva difusión</string>
     <string name="add_recipients">Agregar destinatarios</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">Editar difusión</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">Nombre de difusión</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Por favor, introduce un nombre para la difusión.</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
@@ -284,6 +297,7 @@
     <string name="menu_export_attachment">Exportar adjunto</string>
     <string name="menu_export_attachments">Exportar adjuntos</string>
     <string name="menu_all_media">Toda la multimedia</string>
+    <string name="all_apps_and_media">Todas apps y medias</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Mostrar en el chat</string>
     <string name="show_app_in_chat">Mostrar en el chat</string>
@@ -377,8 +391,6 @@
     <string name="videochat_invitation">Invitación a videollamada</string>
     <string name="videochat_invitation_body">Fuiste invitado a una videollamada, click en %1$s para unirse.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">¿Seguro que deseas abandonar este grupo? </string>
     <plurals name="ask_delete_chat">
         <item quantity="one">¿Eliminar %d chat de todos tus dispositivos?</item>
         <item quantity="many">¿Eliminar %d chats de todos tus dispositivos?</item>
@@ -407,7 +419,7 @@
     <string name="ask_start_chat_with">¿Chatear con %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">¿Eliminar a %1$s del grupo?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">¿Eliminar %1$s de la lista de difusión?</string>
     <string name="open_url_confirmation">¿Quieres abrir este enlace?</string>
 
@@ -441,6 +453,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Envíe un mensaje a %1$s.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">En una difusión, los destinatarios recibirán mensajes en un chat de solo lectura contigo.</string>
     <string name="chat_new_group_hint">Los demás sólo verán este grupo después de que hayas enviado un primer mensaje.</string>
     <string name="chat_record_slide_to_cancel">Deslice para cancelar</string>
@@ -451,6 +464,7 @@
     <string name="chat_input_placeholder">Mensaje</string>
     <string name="chat_archived_label">Archivado</string>
     <string name="chat_request_label">Solicitud</string>
+    <string name="chat_request_label_explain">Incluir solicitudes en contadores y notificaciones</string>
     <string name="chat_no_messages">No hay mensajes.</string>
     <string name="chat_self_talk_subtitle">Mensajes que envié a mí mismo</string>
     <string name="archive_empty_hint">Chats arquivados se mostrarán aquí.</string>
@@ -820,6 +834,7 @@
     <string name="n_bytes_message">Mensaje de %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Descarga disponible hasta %1$s</string>
+    <string name="select_profile">Seleccionar perfil</string>
     <string name="profile_image_select">Seleccionar imagen de perfil</string>
     <string name="select_your_new_profile_image">Seleccionar tu nueva imagen de perfil</string>
     <string name="profile_image_delete">Borrar imagen de perfil</string>
@@ -906,8 +921,6 @@
     <string name="remove_member_by_you">Eliminaste al miembro %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Miembro %1$s eliminado por %2$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Abandonaste el grupo.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Grupo abandonado por %1$s.</string>
     <string name="group_image_deleted_by_you">Eliminaste la imagen del grupo.</string>

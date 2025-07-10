@@ -168,8 +168,6 @@
     <string name="share_location_for_two_hours">2 saat üçün </string>
     <string name="share_location_for_six_hours">6 saat üçün</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Bu qrupu tərk etmək istədiyinizə əminsiniz?</string>
     <string name="ask_forward">Mesajları yönləndirin %1$sə-?</string>
     <string name="ask_export_attachment">Faylı ixrac etmək? Faylların ixracı cihazınızdakı hər hansı digər tətbiqlərə daxil olmağa imkan verəcəkdir. \n\n Razısan?</string>
     <string name="ask_block_contact">Bu kontaktı bloklamaq? Bu kontaktdan artıq mesaj qəbul etməyəcəksiniz.</string>

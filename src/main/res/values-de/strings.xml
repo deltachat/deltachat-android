@@ -34,6 +34,8 @@
     <string name="update">Aktualisieren</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Anhang</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">\"%1$s\" anhängen?</string>
     <string name="back">Zurück</string>
     <string name="close">Schließen</string>
     <string name="close_window">Fenster schließen</string>
@@ -58,6 +60,8 @@
     <string name="media">Medien</string>
     <string name="apps_and_media">Apps &amp; Medien</string>
     <string name="profile">Profil</string>
+    <string name="all_profiles">Alle Profile</string>
+    <string name="current_profile">Aktuelles Profil</string>
     <string name="main_menu">Hauptmenü</string>
     <string name="start_chat">Chat starten</string>
     <string name="show_full_message">Ganze Nachricht anzeigen…</string>
@@ -92,6 +96,8 @@
     <string name="no_app_to_handle_data">Keine passende App zum Öffnen dieses Dateityps gefunden</string>
     <string name="no_browser_installed">Kein Internetbrowser installiert.</string>
     <string name="file_not_found">Kann %1$s nicht finden</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">Kann \"%1$s\" nicht speichern.</string>
     <string name="copied_to_clipboard">In Zwischenablage kopiert.</string>
     <string name="contacts_headline">Kontakte</string>
     <string name="email_address">E-Mail-Adresse</string>
@@ -151,7 +157,7 @@
         <item quantity="one">%d ausgewählt</item>
         <item quantity="other">%d ausgewählt</item>
     </plurals>
-
+    <string name="selected_colon">Ausgewählt:</string>
     <string name="self">Ich</string>
     <string name="draft">Entwurf</string>
     <string name="image">Bild</string>
@@ -195,6 +201,7 @@
     <string name="webxdc_apps">Apps</string>
     <string name="webxdc_store_url">App-Picker-URL</string>
     <string name="webxdc_store_url_explain">Wenn gesetzt, wird diese URL als App-Picker anstelle der Voreinstellung verwendet.</string>
+    <string name="webxdc_draft_hint">Zum Teilen auf \"Senden\" klicken</string>
     <string name="home">Start</string>
     <string name="games">Spiele</string>
     <string name="tools">Tools</string>
@@ -233,14 +240,27 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Chatte mit…</string>
     <string name="clone_chat">Chat klonen</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Broadcast-Liste</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Broadcast-Listen</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Neue Broadcast-Liste</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Kanal</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Kanäle</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Neuer Kanal</string>
     <string name="add_recipients">Empfänger hinzufügen</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">Broadcast-Liste bearbeiten</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">Broadcast-Listen-Name</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Bitten einen Namen für die Broadcast-Liste eingeben.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Name des Kanals</string>
     <string name="menu_send">Senden</string>
     <string name="menu_toggle_keyboard">Emojis einblenden</string>
     <string name="menu_edit_group">Gruppe bearbeiten</string>
@@ -250,6 +270,7 @@
     <string name="menu_unarchive_chat">Archivieren rückgängig</string>
     <string name="menu_add_attachment">Dateien anhängen</string>
     <string name="menu_leave_group">Gruppe verlassen</string>
+    <string name="menu_leave_channel">Kanal verlassen</string>
     <string name="menu_delete_chat">Chat löschen</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Chat leeren</string>
@@ -370,7 +391,8 @@
     <string name="videochat_invitation_body">Sie sind zu einem Videochat eingeladen, klicken Sie auf %1$s , um teilzunehmen.</string>
 
     <!-- get confirmations -->
-    <string name="ask_leave_group">Diese Gruppe verlassen?</string>
+    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Diesen Chat verlassen?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">%d Chat von allen Geräten löschen?</item>
         <item quantity="other">%d Chats von allen Geräten löschen?</item>
@@ -396,8 +418,10 @@
     <string name="ask_start_chat_with">Chat mit %1$s starten?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$s aus der Gruppe löschen?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">%1$s von der Broadcast-Liste entfernen?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">%1$s vom Kanal entfernen?</string>
     <string name="open_url_confirmation">Diesen Link öffnen?</string>
 
 
@@ -427,7 +451,10 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Senden Sie eine Nachricht an %1$s.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">In Broadcast-Listen erhalten die Empfänger die Nachrichten in einem Nur-Lesen-Chat.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">Kanäle dienen der Verbreitung von Nachrichten an viele Empfänger.</string>
     <string name="chat_new_group_hint">Andere sehen diese Gruppe erst, nachdem Sie eine erste Nachricht gesendet haben.</string>
     <string name="chat_record_slide_to_cancel">Schieben, um abzubrechen</string>
     <string name="chat_record_explain">Tippen und halten, um eine Sprachnachricht aufzunehmen, loslassen um zu senden. </string>
@@ -437,6 +464,7 @@
     <string name="chat_input_placeholder">Nachricht</string>
     <string name="chat_archived_label">Archiviert</string>
     <string name="chat_request_label">Anfrage</string>
+    <string name="chat_request_label_explain">Anfragen in Zählern und Notifications anzeigen</string>
     <string name="chat_no_messages">Keine Nachrichten.</string>
     <string name="chat_self_talk_subtitle">Nachrichten an mich selbst</string>
     <string name="archive_empty_hint">Archivierte Chats werden hier angezeigt.</string>
@@ -806,6 +834,7 @@
     <string name="n_bytes_message">%1$s Nachricht</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Download max. verfügbar bis %1$s</string>
+    <string name="select_profile">Profil auswählen</string>
     <string name="profile_image_select">Profilbild auswählen</string>
     <string name="select_your_new_profile_image">Wählen Sie Ihr Profilbild aus</string>
     <string name="profile_image_delete">Profilbild löschen</string>
@@ -892,8 +921,8 @@
     <string name="remove_member_by_you">Sie haben %1$s entfernt.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%1$s entfernt von %2$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Sie haben die Gruppe verlassen.</string>
+    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
+    <string name="group_left_by_you">Sie haben den Chat verlassen.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Gruppe verlassen von %1$s.</string>
     <string name="group_image_deleted_by_you">Sie haben das Gruppenbild gelöscht.</string>
