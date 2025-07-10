@@ -32,8 +32,10 @@
     <string name="delete_for_everyone">为所有人删除</string>
     <string name="info">信息</string>
     <string name="update">更新</string>
-    <string name="emoji">Emoji</string>
+    <string name="emoji">表情符号</string>
     <string name="attachment">附件</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">附加“%1$s”？</string>
     <string name="back">返回</string>
     <string name="close">关闭</string>
     <string name="close_window">关闭窗口</string>
@@ -56,7 +58,10 @@
     <string name="save">保存</string>
     <string name="chat">聊天</string>
     <string name="media">媒体</string>
+    <string name="apps_and_media">应用和媒体</string>
     <string name="profile">账号</string>
+    <string name="all_profiles">所有账号</string>
+    <string name="current_profile">当前账号</string>
     <string name="main_menu">主菜单</string>
     <string name="start_chat">开始聊天</string>
     <string name="show_full_message">显示完整消息…</string>
@@ -91,6 +96,8 @@
     <string name="no_app_to_handle_data">找不到用于处理此类数据的应用。</string>
     <string name="no_browser_installed">没有安装浏览器。</string>
     <string name="file_not_found">无法找到 %1$s。</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">无法保存 %1$s。</string>
     <string name="copied_to_clipboard">已复制到剪贴板。</string>
     <string name="contacts_headline">联系人</string>
     <string name="email_address">电子邮件地址</string>
@@ -141,7 +148,7 @@
     <plurals name="n_selected">
         <item quantity="other">%d 已选择</item>
     </plurals>
-
+    <string name="selected_colon">已选择：</string>
     <string name="self">我</string>
     <string name="draft">草稿</string>
     <string name="image">图片</string>
@@ -185,6 +192,7 @@
     <string name="webxdc_apps">私人应用</string>
     <string name="webxdc_store_url">应用选择器 URL</string>
     <string name="webxdc_store_url_explain">设置后，该 URL 而不是默认的 URL 将被用作“应用选择器”</string>
+    <string name="webxdc_draft_hint">轻按“发送”分享</string>
     <string name="home">首页</string>
     <string name="games">游戏</string>
     <string name="tools">工具</string>
@@ -223,16 +231,21 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">聊天…</string>
     <string name="clone_chat">克隆聊天</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">广播列表</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">广播列表</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">新建广播列表</string>
     <string name="add_recipients">添加接收者</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">编辑广播列表</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">广播列表名称</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">请属于广播列表的名称</string>
     <string name="menu_send">发送</string>
-    <string name="menu_toggle_keyboard">切换 emoji 键盘</string>
+    <string name="menu_toggle_keyboard">切换表情符号键盘</string>
     <string name="menu_edit_group">编辑群组</string>
     <string name="menu_group_name_and_image">群组名称和图像</string>
     <string name="menu_show_global_map">显示所有位置</string>
@@ -266,6 +279,7 @@
     <string name="menu_export_attachment">导出附件</string>
     <string name="menu_export_attachments">导出附件</string>
     <string name="menu_all_media">所有媒体</string>
+    <string name="all_apps_and_media">所有应用和媒体</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">在聊天中显示</string>
     <string name="show_app_in_chat">在聊天中显示应用</string>
@@ -357,8 +371,6 @@
     <string name="videochat_invitation">视频聊天邀请</string>
     <string name="videochat_invitation_body">您被邀请参加视频聊天，点击 %1$s 来加入。</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">您确定要离开此群组吗？</string>
     <plurals name="ask_delete_chat">
         <item quantity="other">是否删除所有设备上的 %d 个聊天？</item>
     </plurals>
@@ -381,7 +393,7 @@
     <string name="ask_start_chat_with">与 %1$s 聊天？</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">将 %1$s 从群组中移除？</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">从广播列表中移除 %1$s？</string>
     <string name="open_url_confirmation">您要打开此链接吗？</string>
 
@@ -409,6 +421,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">发一条消息给 %1$s。</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">在广播列表中，收件人会在和你进行的只读聊天中收到消息</string>
     <string name="chat_new_group_hint">在您发出第一条消息后，其他人才会看到此群组。</string>
     <string name="chat_record_slide_to_cancel">滑动来取消</string>
@@ -419,6 +432,7 @@
     <string name="chat_input_placeholder">输入消息…</string>
     <string name="chat_archived_label">已归档</string>
     <string name="chat_request_label">请求</string>
+    <string name="chat_request_label_explain">在计数器和通知中包含请求</string>
     <string name="chat_no_messages">没有消息。</string>
     <string name="chat_self_talk_subtitle">发给自己的消息</string>
     <string name="archive_empty_hint">已归档的聊天将显示在此处。</string>
@@ -725,8 +739,8 @@
     <string name="pref_server">服务器</string>
     <string name="pref_encryption">加密</string>
     <string name="pref_manage_keys">管理密钥</string>
-    <string name="pref_use_system_emoji">使用系统 emoji</string>
-    <string name="pref_use_system_emoji_explain">关闭 Delta Chat 内置 emoji 支持</string>
+    <string name="pref_use_system_emoji">使用系统表情符号</string>
+    <string name="pref_use_system_emoji_explain">关闭 Delta Chat 内置的表情符号支持</string>
     <string name="pref_show_system_contacts">读取系统通讯录</string>
     <string name="pref_show_system_contacts_explain">提供与通讯录中的联系人创建聊天的功能。</string>
     <string name="pref_chats">聊天</string>
@@ -788,6 +802,7 @@
     <string name="n_bytes_message">%1$s 消息</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">下载最晚于 %1$s 前可用</string>
+    <string name="select_profile">选择账号</string>
     <string name="profile_image_select">选择个人资料图片</string>
     <string name="select_your_new_profile_image">选择新的个人资料图片</string>
     <string name="profile_image_delete">删除个人资料图片</string>
@@ -800,8 +815,8 @@
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">搜索结果</string>
-    <string name="emoji_not_found">未找到 emoji</string>
-    <string name="emoji_recent">最近使用</string>
+    <string name="emoji_not_found">未找到表情符号</string>
+    <string name="emoji_recent">最近用过</string>
     <string name="emoji_people">人物与身体</string>
     <string name="emoji_nature">动物与自然</string>
     <string name="emoji_foods">食品与饮料</string>
@@ -874,8 +889,6 @@
     <string name="remove_member_by_you">你移除了成员 %1$s</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s 移除了成员 %1$s</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">你退出了群组</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s 退出了群组</string>
     <string name="group_image_deleted_by_you">你删除了群组图像</string>

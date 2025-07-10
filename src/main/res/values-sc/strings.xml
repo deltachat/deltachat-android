@@ -215,8 +215,6 @@
     <string name="videochat_invitation">Invitu a sa vìdeu-tzarrada</string>
     <string name="videochat_invitation_body">Ses invitadu a una vìdeu-tzarrada. Incarca %1$s pro bi pigare parte.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Ses seguru de chèrrere lassare custu grupu?</string>
     <string name="ask_forward">Inoltrare su messàgiu a %1$s?</string>
     <string name="ask_forward_multiple">Inoltrare messàgios a %1$d tzarradas?</string>
     <string name="ask_export_attachment">Esportare sos allegados? S\'esportatzione de sos allegados at a permìtere a cale si siat àtera aplicatzione in su dispositivu tuo de b\'atzèdere.\n\nSighire?</string>

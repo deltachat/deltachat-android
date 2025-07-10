@@ -252,8 +252,6 @@
     <string name="videochat_invitation">Videochat-invitation</string>
     <string name="videochat_invitation_body">Du er inviteret til en videochat, klik %1$s for at tilslutte dig.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Forlad denne gruppe?</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Slet %d besked?</item>

@@ -34,6 +34,8 @@
     <string name="update">Обновить</string>
     <string name="emoji">Эмодзи</string>
     <string name="attachment">Вложение</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">Прикрепить \"%1$s\"?</string>
     <string name="back">Назад</string>
     <string name="close">Закрыть</string>
     <string name="close_window">Закрыть окно</string>
@@ -56,7 +58,10 @@
     <string name="save">Сохранить</string>
     <string name="chat">Чат</string>
     <string name="media">Медиафайлы</string>
+    <string name="apps_and_media">Приложения и медиафайлы</string>
     <string name="profile">Профиль</string>
+    <string name="all_profiles">Все профили</string>
+    <string name="current_profile">Текущий профиль</string>
     <string name="main_menu">Главное меню</string>
     <string name="start_chat">Начать чат</string>
     <string name="show_full_message">Показать сообщение полностью…</string>
@@ -91,6 +96,8 @@
     <string name="no_app_to_handle_data">Не удалось найти приложение для обработки этого типа данных.</string>
     <string name="no_browser_installed">Браузер не установлен.</string>
     <string name="file_not_found">Не удалось найти %1$s.</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">Невозможно сохранить %1$s.</string>
     <string name="copied_to_clipboard">Скопировано в буфер обмена.</string>
     <string name="contacts_headline">Контакты</string>
     <string name="email_address">Адрес электронной почты</string>
@@ -168,7 +175,7 @@
         <item quantity="many">%d выбрано</item>
         <item quantity="other">%d выбрано</item>
     </plurals>
-
+    <string name="selected_colon">Выбрано:</string>
     <string name="self">Я</string>
     <string name="draft">Черновик</string>
     <string name="image">Изображение</string>
@@ -212,6 +219,7 @@
     <string name="webxdc_apps">Приложения</string>
     <string name="webxdc_store_url">URL селектора приложений</string>
     <string name="webxdc_store_url_explain">Если установлено, URL будет использоваться в качестве селектора приложений вместо стандартного</string>
+    <string name="webxdc_draft_hint">Нажмите \"Отправить\", чтобы поделиться</string>
     <string name="home">Домой</string>
     <string name="games">Игры</string>
     <string name="tools">Инструменты</string>
@@ -250,13 +258,18 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Начать чат с…</string>
     <string name="clone_chat">Клонировать чат</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Список рассылки</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Списки рассылки</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Новый список рассылки</string>
     <string name="add_recipients">Добавить получателей</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">Редактировать список рассылки</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">Название списка рассылки</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Введите название списка рассылки.</string>
     <string name="menu_send">Отправить</string>
     <string name="menu_toggle_keyboard">Эмодзи клавиатура</string>
@@ -293,6 +306,7 @@
     <string name="menu_export_attachment">Экспорт вложения</string>
     <string name="menu_export_attachments">Экспорт вложений</string>
     <string name="menu_all_media">Все медиафайлы</string>
+    <string name="all_apps_and_media">Все приложения и медиафайлы</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Показать в чате</string>
     <string name="show_app_in_chat">Показать приложение в чате</string>
@@ -387,8 +401,6 @@
     <string name="videochat_invitation">Приглашение в видеочат</string>
     <string name="videochat_invitation_body">Вы приглашены в видеочат, нажмите %1$s, чтобы присоединиться.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Вы уверены, что хотите покинуть эту группу?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Удалить %d чат на всех ваших устройствах?</item>
         <item quantity="few">Удалить %d чата на всех ваших устройствах?</item>
@@ -420,7 +432,7 @@
     <string name="ask_start_chat_with">Создать чат с %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Удалить %1$s из группы?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Удалить %1$s из списка рассылки?</string>
     <string name="open_url_confirmation">Вы хотите открыть эту ссылку?</string>
 
@@ -457,6 +469,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Отправьте сообщение %1$s.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">В списке рассылки получатели будут получать сообщения в чате с вами, доступном только для чтения.</string>
     <string name="chat_new_group_hint">Другие пользователи увидят эту группу только после того, как вы отправите первое сообщение.</string>
     <string name="chat_record_slide_to_cancel">Смахните для отмены</string>
@@ -467,6 +480,7 @@
     <string name="chat_input_placeholder">Сообщение</string>
     <string name="chat_archived_label">Архивировано</string>
     <string name="chat_request_label">Запрос</string>
+    <string name="chat_request_label_explain">Включать запросы в счётчики и уведомления</string>
     <string name="chat_no_messages">Нет сообщений.</string>
     <string name="chat_self_talk_subtitle">Сообщения, отправленные себе</string>
     <string name="archive_empty_hint">Здесь можно просмотреть архивные чаты.</string>
@@ -836,6 +850,7 @@
     <string name="n_bytes_message">%1$s сообщение</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Максимальная загрузка доступна до %1$s</string>
+    <string name="select_profile">Выбрать профиль</string>
     <string name="profile_image_select">Выбрать изображение профиля</string>
     <string name="select_your_new_profile_image">Выбрать новое изображение профиля</string>
     <string name="profile_image_delete">Удалить изображение профиля</string>
@@ -922,8 +937,6 @@
     <string name="remove_member_by_you">Вы удалили участника %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s удаляет участника %1$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Вы покинули группу.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s покидает группу.</string>
     <string name="group_image_deleted_by_you">Вы удалили изображение группы.</string>
