@@ -90,7 +90,7 @@
     <ul>
       <li><a href="#welche-app-berechtigungen-benötigt-delta-chat">Welche App-Berechtigungen benötigt Delta Chat?</a></li>
       <li><a href="#funktioniert-delta-chat-mit-meinem-e-mail-anbieter">Funktioniert Delta Chat mit <em>meinem</em> E-Mail-Anbieter?</a></li>
-      <li><a href="#ich-möchte-meinen-eigenen-e-mail-server-für-delta-chat-verwalten-gibt-es-empfehlungen">Ich möchte meinen eigenen E-Mail-Server für Delta Chat verwalten. Gibt es Empfehlungen?</a></li>
+      <li><a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">I want to manage my own server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#weshalb-muss-ich-mein-e-mail-kennwort-in-delta-chat-eingeben-ist-das-sicher">Weshalb muss ich mein E-Mail-Kennwort in Delta Chat eingeben? Ist das sicher?</a></li>
       <li><a href="#welche-nachrichten-erscheinen-in-delta-chat">Welche Nachrichten erscheinen in Delta Chat?</a></li>
       <li><a href="#unterstützt-delta-chat-html-e-mails">Unterstützt Delta Chat HTML-E-Mails?</a></li>
@@ -1374,7 +1374,7 @@ und systemspezifische Einstellungen wie Benachrichtigungstöne.</p>
   <li>Webxdc Apps können keine Daten ins Internet senden oder etwas herunterladen.</li>
   <li>Eine Webxdc App kann Daten nur innerhalb eines Delta-Chat-Chats mit ihren Kopien auf den Geräten Ihrer Chat-Partner austauschen. Ansonsten ist sie komplett vom Internet isoliert.</li>
   <li>Die Privatsphäre, die eine Webxdc App bietet, ist die Privatsphäre Ihres Chats - solange Sie den Personen vertrauen, mit denen Sie chatten, können Sie auch der Webxdc App vertrauen.</li>
-  <li>Das bedeutet auch: Es kann ein Datenschutzrisiko darstellen, Webxdc Apps in Chats zu öffnen, in denen man den Mitgliedern nicht vertraut - so wie man es von E-Mail-Anhängen kennt, wo man nur Anhänge von Absendern öffnet, denen man vertraut, und nicht von Spammern.</li>
+  <li>Das bedeutet auch: Es kann ein Datenschutzrisiko darstellen, Webxdc Apps in Chats zu öffnen, in denen man den Mitgliedern nicht vertraut - so wie man es von E-Mail-Anhängen kennt, wo man nur Anhänge von Absendern öffnet, denen man vertraut, und nicht von Spammern. Spammer erhalten alle Daten, die Sie Ihnen senden zusammen mit Ihrer IP-Adresse.</li>
 </ul>
     
       <h3 id="wo-bekomme-ich-webxdc-apps">
@@ -1444,13 +1444,7 @@ forum</a> veröffentlicht und diskutiert.</li>
         
       </h3>
 
-<ul>
-  <li>Mit einer Broadcast-Liste können Sie eine Nachricht an viele Empfänger gleichzeitig senden; wenn sie Ihnen antworten, erhalten Sie die Antwort im Direktchat mit ihnen. Die Empfänger können einander nicht sehen.</li>
-  <li>Technisch gesehen handelt es sich um eine E-Mail mit vielen Empfängern in BCC.</li>
-  <li>Sie können die Funktion im Abschnitt “Experimentelle Features” in den erweiterten Einstellungen aktivieren. Dann können Sie im Dialogfeld “Neuer Chat” eine Broadcast-Liste erstellen.</li>
-  <li>Falls Sie mehr als ein Gerät verwenden, werden Broadcast-Listen derzeit nicht zwischen ihnen synchronisiert.</li>
-  <li>An Broadcast-Listen gesendete Nachrichten werden nicht verschlüsselt. Eine Verschlüsselung würde die Anonymität brechen, denn dann wüssten alle Empfänger, wer sie sonst noch erhalten hat. (Das Senden einzelner E-Mails an alle wäre aus Gründen der Ratenbegrenzung und des Netzwerkverbrauchs schlechter.)</li>
-</ul>
+<p>Mit einer Broadcast-Liste können Sie eine Nachricht an viele Empfänger auf einmal senden; die Empfänger können in dieser Liste nicht antworten. Broadcast-Listen sind experimentell und werden sehr wahrscheinlich durch etwas anderes ersetzt werden, bleiben Sie dran :)</p>
     
       <h3 id="wie-kann-ich-meinen-standort-mit-meinen-chat-partnern-teilen">
         
@@ -1594,17 +1588,19 @@ gesendet haben, Nachrichten an Ihre neue Adresse senden.</p>
 Allerdings benötigen einige Anbieter besondere Einstellungen, um ordnungsgemäß zu funktionieren; eine von NutzerInnen erstellte Sammlung zu einigen Optionen findet sich unter <a href="https://providers.delta.chat">Provider Overview</a>.</li>
 </ul>
     
-      <h3 id="ich-möchte-meinen-eigenen-e-mail-server-für-delta-chat-verwalten-gibt-es-empfehlungen">
+      <h3 id="i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">
         
         
-          Ich möchte meinen eigenen E-Mail-Server für Delta Chat verwalten. Gibt es Empfehlungen? <a href="#ich-möchte-meinen-eigenen-e-mail-server-für-delta-chat-verwalten-gibt-es-empfehlungen" class="anchor"></a>
+          I want to manage my own server for Delta Chat. What do you recommend? <a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>Die meisten Mailserver werden gut funktionieren. Was wir persönlich jedoch empfehlen, ist eine Kombination aus mailcow und mailadm, wie <a href="https://delta.chat/en/2023-01-27-upcoming-mail-server-workshops">in diesem Blogpost</a> beschrieben.</li>
-  <li>Auf unserer Webseite finden Sie eine <a href="https://delta.chat/de/serverguide">Installationsanleitung</a>.</li>
+  <li>Most mail servers will work well. But what we personally recommend is a
+chatmail relay server, as described <a href="https://delta.chat/en/2023-12-13-chatmail">in this
+blogpost</a>.</li>
+  <li>You can find an <a href="https://github.com/chatmail/relay">installation guide on GitHub</a>.</li>
 </ul>
     
       <h3 id="weshalb-muss-ich-mein-e-mail-kennwort-in-delta-chat-eingeben-ist-das-sicher">

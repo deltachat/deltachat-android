@@ -90,7 +90,7 @@
     <ul>
       <li><a href="#di-quali-autorizzazioni-ha-bisogno-delta-chat">Di quali autorizzazioni ha bisogno Delta Chat?</a></li>
       <li><a href="#delta-chat-funziona-con-il-mio-fornitore-e-mail">Delta Chat funziona con il <em>mio</em> fornitore e-mail?</a></li>
-      <li><a href="#voglio-gestire-il-mio-server-di-posta-elettronica-per-delta-chat-che-cosa-mi-consigliate">Voglio gestire il mio server di posta elettronica per Delta Chat. Che cosa mi consigliate?</a></li>
+      <li><a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">I want to manage my own server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#perché-devo-inserire-la-mia-password-e-mail-in-delta-chat-è-sicuro">Perché devo inserire la mia password E-Mail in Delta Chat? È sicuro?</a></li>
       <li><a href="#quali-messaggi-vengono-mostrati-in-delta-chat">Quali messaggi vengono mostrati in Delta Chat?</a></li>
       <li><a href="#delta-chat-supporta-le-e-mail-html">Delta Chat supporta le e-mail HTML?</a></li>
@@ -1479,15 +1479,16 @@ un messenger estensibile.</p>
       </h3>
 
 <ul>
-  <li>Le apps webxdc non possono inviare dati a Internet o scaricare nulla.</li>
-  <li>Un’app webxdc può scambiare dati solo all’interno di una chat Delta Chat, con la sua
-copia sui dispositivi dei tuoi partner di chat. A parte questo, è completamente
-isolato da Internet.</li>
-  <li>La privacy offerta da un’app webxdc è la privacy della tua chat, purché tu
-ti fidi delle persone con cui chatti e quindi puoi fidarti anche dell’app webxdc.</li>
-  <li>Ciò significa anche: può essere un rischio per la privacy aprire le app webxdc nelle chat dove
-non ti fidi dei membri, come sai dagli allegati di posta elettronica, dove
-apri solo gli allegati provenienti dai mittenti di cui ti fidi e non da spammer.</li>
+  <li>Le app webxdc non possono inviare dati in internet, o scaricare niente.</li>
+  <li>Un’app webxdc può solo scambiare dati all’interno di una chat di Delta Chat, con le sue
+copie sui dispositivi dei tuoi corrispondenti. Oltre a questo, è completamente
+isolata da internet.</li>
+  <li>La privacy che un’app webxdc offre è la privacy della tua chat - fino a che ti
+fidi delle persone con cui ti scrivi, ti puoi fidare dell’app webxdc allo stesso modo.</li>
+  <li>Questo inoltre significa: può esserci un rischio per la privacy ad usare le app in chat con utenti non fidati.
+Esattamente come per gli allegati delle e-mail, le videochiamate o i collegamenti in chiaro:
+aprile solo da mittenti di cui ti fidi e non dagli spammer.
+Gli spammer possono riuscire ad ottenere qualunque dato tu mandi loro, come il tuo indirizzo IP.</li>
 </ul>
     
       <h3 id="dove-posso-trovare-le-apps-webxdc">
@@ -1570,18 +1571,10 @@ in questo modo, avrai una nuova stanza jitsi casuale ogni volta che chiami qualc
         
       </h3>
 
-<ul>
-  <li>Con una Lista di Trasmissione è possibile inviare un messaggio a molti destinatari contemporaneamente; quando questi vi rispondono, ricevete la risposta nella vostra chat diretta 1:1 con loro.
-I destinatari non possono vedersi a vicenda.</li>
-  <li>Tecnicamente, si tratta di un messaggio di posta elettronica con molti destinatari in BCC.</li>
-  <li>È possibile attivare questa funzione nella sezione “Funzionalità Sperimentali” delle impostazioni avanzate.
-Quindi è possibile creare una Lista di Trasmissione dalla finestra di dialogo “Nuova chat”.</li>
-  <li>Nel caso in cui si utilizzi più di un dispositivo, le Liste di Trasmissione non sono attualmente sincronizzate tra loro.</li>
-  <li>I messaggi inviati alle Liste di Trasmissione non sono crittografate. La crittografia romperebbe l’anonimato, perché
-tutti i destinatari saprebbero chi altro ha ricevuto il messaggio.
-(l’invio di singoli messaggi di posta elettronica a tutti sarebbe peggiore per il limite di velocità e il
-consumo di rete).</li>
-</ul>
+<p>Con le Liste Trasmissioni puoi inviare un messaggio a più indirizzi contemporaneamente;
+i destinatari non possono rispondere in quella chat.
+Le Liste Trasmissioni sono ancora altamente sperimentali
+e saranno molto probabilmente rimpiazzate con qualcos’altro, restate sintonizzati :)</p>
     
       <h3 id="come-posso-condividere-la-mia-posizione-con-i-miei-partner-di-chat">
         
@@ -1722,19 +1715,19 @@ Tuttavia, alcuni provider necessitano di opzioni speciali per funzionare corrett
 vedi <a href="https://providers.delta.chat">Panoramica fornitore</a></li>
 </ul>
     
-      <h3 id="voglio-gestire-il-mio-server-di-posta-elettronica-per-delta-chat-che-cosa-mi-consigliate">
+      <h3 id="i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">
         
         
-          Voglio gestire il mio server di posta elettronica per Delta Chat. Che cosa mi consigliate? <a href="#voglio-gestire-il-mio-server-di-posta-elettronica-per-delta-chat-che-cosa-mi-consigliate" class="anchor"></a>
+          I want to manage my own server for Delta Chat. What do you recommend? <a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>La maggior parte dei server di posta funzionerà bene. Ma quello che raccomandiamo personalmente è una
-combinazione di mailcow e mailadm, come descritto <a href="https://delta.chat/en/2023-01-27-upcoming-mail-server-workshops">in questo
+  <li>Most mail servers will work well. But what we personally recommend is a
+chatmail relay server, as described <a href="https://delta.chat/en/2023-12-13-chatmail">in this
 blogpost</a>.</li>
-  <li>È possibile trovare una <a href="https://delta.chat/it/serverguide">guida all’installazione sul nostro sito Web</a>.</li>
+  <li>You can find an <a href="https://github.com/chatmail/relay">installation guide on GitHub</a>.</li>
 </ul>
     
       <h3 id="perché-devo-inserire-la-mia-password-e-mail-in-delta-chat-è-sicuro">
