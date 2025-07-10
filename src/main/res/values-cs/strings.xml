@@ -56,6 +56,7 @@
     <string name="save">Uložit</string>
     <string name="chat">Chat</string>
     <string name="media">Multimédia</string>
+    <string name="apps_and_media">Aplikace a multimédia</string>
     <string name="profile">Profil</string>
     <string name="main_menu">Hlavní nabídka</string>
     <string name="start_chat">Chatovat</string>
@@ -168,7 +169,6 @@
         <item quantity="many">%d vybráno</item>
         <item quantity="other">%d vybráno</item>
     </plurals>
-
     <string name="self">Já</string>
     <string name="draft">Rozepsané</string>
     <string name="image">Obrázek</string>
@@ -212,6 +212,7 @@
     <string name="webxdc_apps">Aplikace</string>
     <string name="webxdc_store_url">Adresa URL výběru aplikací</string>
     <string name="webxdc_store_url_explain">Pokud je nastavena, tato URL adresa bude použita pro výběr aplikací namísto té výchozí</string>
+    <string name="webxdc_draft_hint">Pro sdílení stiskněte „Odeslat”</string>
     <string name="home">Domů</string>
     <string name="games">Hry</string>
     <string name="tools">Nástroje</string>
@@ -293,6 +294,7 @@
     <string name="menu_export_attachment">Exportovat přílohu</string>
     <string name="menu_export_attachments">Exportovat přílohy</string>
     <string name="menu_all_media">Všechna multimédia</string>
+    <string name="all_apps_and_media">Všechny aplikace a multimédia</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Ukázat v chatu</string>
     <string name="show_app_in_chat">Zobrazit aplikaci v chatu</string>

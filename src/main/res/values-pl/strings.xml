@@ -34,6 +34,8 @@
     <string name="update">Aktualizacja</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Załącznik</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">Załączyć „%1$s”?</string>
     <string name="back">Wróć</string>
     <string name="close">Zamknij</string>
     <string name="close_window">Zamknij okno</string>
@@ -56,7 +58,10 @@
     <string name="save">Zapisz</string>
     <string name="chat">Czat</string>
     <string name="media">Multimedia</string>
+    <string name="apps_and_media">Aplikacje i multimedia</string>
     <string name="profile">Profil</string>
+    <string name="all_profiles">Wszystkie profile</string>
+    <string name="current_profile">Aktualny profil</string>
     <string name="main_menu">Menu główne</string>
     <string name="start_chat">Rozpocznij czat</string>
     <string name="show_full_message">Pokaż całą wiadomość…</string>
@@ -91,6 +96,8 @@
     <string name="no_app_to_handle_data">Nie można znaleźć aplikacji do obsługi tego typu danych.</string>
     <string name="no_browser_installed">Nie zainstalowano przeglądarki.</string>
     <string name="file_not_found">Nie znaleziono pliku %1$s.</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">Nie można zapisać %1$s.</string>
     <string name="copied_to_clipboard">Skopiowano do schowka</string>
     <string name="contacts_headline">Kontakty</string>
     <string name="email_address">Adres e-mail</string>
@@ -168,7 +175,7 @@
         <item quantity="many">Wybrano %d</item>
         <item quantity="other">Wybrano %d</item>
     </plurals>
-
+    <string name="selected_colon">Wybrane:</string>
     <string name="self">Ja</string>
     <string name="draft">Szkic</string>
     <string name="image">Obraz</string>
@@ -212,6 +219,7 @@
     <string name="webxdc_apps">Prywatne aplikacje</string>
     <string name="webxdc_store_url">Adres URL selektora aplikacji</string>
     <string name="webxdc_store_url_explain">Jeśli ustawiony, adres URL będzie używany jako selektor aplikacji zamiast domyślnego</string>
+    <string name="webxdc_draft_hint">Dotknij „Wyślij”, aby udostępnić</string>
     <string name="home">Główna</string>
     <string name="games">Gry</string>
     <string name="tools">Narzędzia</string>
@@ -293,6 +301,7 @@
     <string name="menu_export_attachment">Eksportuj załącznik</string>
     <string name="menu_export_attachments">Eksportuj załączniki</string>
     <string name="menu_all_media">Wszystkie multimedia</string>
+    <string name="all_apps_and_media">Wszystkie aplikacje i multimedia</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Pokaż w czacie</string>
     <string name="show_app_in_chat">Pokaż aplikację w czacie</string>
@@ -467,6 +476,7 @@
     <string name="chat_input_placeholder">Wiadomość</string>
     <string name="chat_archived_label">Zarchiwizowane</string>
     <string name="chat_request_label">Prośba</string>
+    <string name="chat_request_label_explain">Uwzględnij żądania w licznikach i powiadomieniach</string>
     <string name="chat_no_messages">Brak wiadomości.</string>
     <string name="chat_self_talk_subtitle">Wiadomości wysłane do siebie</string>
     <string name="archive_empty_hint">Jeśli zarchiwizujesz czaty, zostaną one pokazane tutaj.</string>
@@ -498,7 +508,7 @@
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Wyślij wiadomość do…</string>
     <string name="enable_realtime">Aplikacje w czasie rzeczywistym</string>
-    <string name="enable_realtime_explain">Włącz połączenia w czasie rzeczywistym dla aplikacji udostępnianych na czatach. Jeśli ta opcja jest włączona, partnerzy czatu mogą być w stanie wykryć twój adres IP, gdy uruchamiasz aplikację.</string>
+    <string name="enable_realtime_explain">Włącz połączenia w czasie rzeczywistym dla aplikacji dołączonych do tego czatu. Jeśli ta opcja jest włączona, partnerzy czatu mogą być w stanie wykryć twój adres IP, gdy uruchamiasz aplikację.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Pokaż lokalizacje w ramach czasowych</string>
@@ -550,15 +560,15 @@
     <string name="tab_docs">Dokumenty</string>
     <string name="tab_links">Linki</string>
     <string name="tab_map">Mapa</string>
-    <string name="tab_gallery_empty_hint">Tutaj pojawią się zdjęcia i filmy udostępnione na tym czacie.</string>
-    <string name="tab_docs_empty_hint">Tutaj pojawią się dokumenty, muzyka i inne pliki udostępnione na tym czacie.</string>
-    <string name="tab_image_empty_hint">Tutaj pojawią się zdjęcia udostępnione w tym czacie.</string>
-    <string name="tab_video_empty_hint">Tutaj pojawią się filmy udostępnione w tym czacie.</string>
-    <string name="tab_audio_empty_hint">Tutaj pojawią się pliki dźwiękowe i wiadomości głosowe udostępnione w tym czacie.</string>
-    <string name="tab_webxdc_empty_hint">Tutaj pojawią się prywatne aplikacje udostępnione na tym czacie.</string>
-    <string name="tab_all_media_empty_hint">Tutaj pojawią się multimedia udostępnione w dowolnym czacie.</string>
-    <string name="all_files_empty_hint">Tutaj pojawią się dokumenty, muzyka i inne pliki udostępnione w dowolnym czacie.</string>
-    <string name="all_apps_empty_hint">Tutaj pojawią się prywatne aplikacje otrzymane lub wysłane w dowolnym czacie.</string>
+    <string name="tab_gallery_empty_hint">Tutaj pojawią się zdjęcia i filmy dołączone do tego czatu.</string>
+    <string name="tab_docs_empty_hint">Tutaj pojawią się dokumenty, muzyka i inne pliki dołączone do tego czatu.</string>
+    <string name="tab_image_empty_hint">Tutaj pojawią się zdjęcia dołączone do tego czatu.</string>
+    <string name="tab_video_empty_hint">Tutaj pojawią się filmy dołączone do tego czatu.</string>
+    <string name="tab_audio_empty_hint">Tutaj pojawią się pliki dźwiękowe i wiadomości głosowe dołączone do tego czatu.</string>
+    <string name="tab_webxdc_empty_hint">Tutaj pojawią się aplikacje dołączone do tego czatu.</string>
+    <string name="tab_all_media_empty_hint">Tutaj pojawią się multimedia dołączone do tego czatu.</string>
+    <string name="all_files_empty_hint">Tutaj pojawią się dokumenty, muzyka i inne pliki dołączone do tego czatu.</string>
+    <string name="all_apps_empty_hint">Tutaj pojawią się aplikacje dołączone w dowolnym czacie.</string>
     <string name="media_preview">Podgląd multimediów</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Siatka proporcjonalna</string>
@@ -694,7 +704,7 @@
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Zaakceptuj nieprawidłowe certyfikaty</string>
     <string name="switch_account">Przełącz konto</string>
-    <string name="add_account">Dodaj konto</string>
+    <string name="add_account">Dodaj profil</string>
     <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
     <string name="profile_tag">Etykieta profilu</string>
     <string name="profile_tag_hint">np. Praca, Rodzina</string>
@@ -836,6 +846,7 @@
     <string name="n_bytes_message">Wiadomość %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Maksymalna ilość do pobrania dostępna do %1$s</string>
+    <string name="select_profile">Wybierz profil</string>
     <string name="profile_image_select">Wybierz zdjęcie profilowe</string>
     <string name="select_your_new_profile_image">Wybierz nowe zdjęcie profilowe</string>
     <string name="profile_image_delete">Usuń zdjęcie profilowe</string>

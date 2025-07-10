@@ -136,7 +136,6 @@
         <item quantity="one">%dmarkerade</item>
         <item quantity="other">%d markerad</item>
     </plurals>
-
     <string name="self">Jag</string>
     <string name="draft">Utkast</string>
     <string name="image">Bild</string>

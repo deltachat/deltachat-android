@@ -34,6 +34,8 @@
     <string name="update">Actualización</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Adjunto</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">¿Adjunta \"%1$s\"?</string>
     <string name="back">Atrás</string>
     <string name="close">Cerrar</string>
     <string name="close_window">Cerrar ventana</string>
@@ -56,7 +58,10 @@
     <string name="save">Guardar</string>
     <string name="chat">Chat</string>
     <string name="media">Multimedia</string>
+    <string name="apps_and_media">Apps y medias</string>
     <string name="profile">Perfil</string>
+    <string name="all_profiles">Todos perfiles</string>
+    <string name="current_profile">Perfil actual</string>
     <string name="main_menu">Menú principal</string>
     <string name="start_chat">Comenzar chat</string>
     <string name="show_full_message">Mostrar mensaje completo…</string>
@@ -91,6 +96,8 @@
     <string name="no_app_to_handle_data">No se puede encontrar una aplicación compatible con este tipo de contenido</string>
     <string name="no_browser_installed">No hay ningún navegador instalado.</string>
     <string name="file_not_found">No se pudo encontrar %1$s.</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">No se puede guardar %1$s.</string>
     <string name="copied_to_clipboard">Copiado al portapapeles.</string>
     <string name="contacts_headline">Contactos</string>
     <string name="email_address">Dirección de correo</string>
@@ -159,7 +166,7 @@
         <item quantity="many">%d seleccionados</item>
         <item quantity="other">%d seleccionados</item>
     </plurals>
-
+    <string name="selected_colon">Seleccionado:</string>
     <string name="self">Yo</string>
     <string name="draft">Borrador</string>
     <string name="image">Imagen</string>
@@ -203,6 +210,7 @@
     <string name="webxdc_apps">Aplicaciones</string>
     <string name="webxdc_store_url">App Picker URL</string>
     <string name="webxdc_store_url_explain">Si se establece, la URL se utilizará como App Picker en lugar de la predeterminada</string>
+    <string name="webxdc_draft_hint">Pulsa \"Enviar\" para compartir</string>
     <string name="home">Inicio</string>
     <string name="games">Juegos</string>
     <string name="tools">Herramientas</string>
@@ -284,6 +292,7 @@
     <string name="menu_export_attachment">Exportar adjunto</string>
     <string name="menu_export_attachments">Exportar adjuntos</string>
     <string name="menu_all_media">Toda la multimedia</string>
+    <string name="all_apps_and_media">Todas apps y medias</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Mostrar en el chat</string>
     <string name="show_app_in_chat">Mostrar en el chat</string>
@@ -451,6 +460,7 @@
     <string name="chat_input_placeholder">Mensaje</string>
     <string name="chat_archived_label">Archivado</string>
     <string name="chat_request_label">Solicitud</string>
+    <string name="chat_request_label_explain">Incluir solicitudes en contadores y notificaciones</string>
     <string name="chat_no_messages">No hay mensajes.</string>
     <string name="chat_self_talk_subtitle">Mensajes que envié a mí mismo</string>
     <string name="archive_empty_hint">Chats arquivados se mostrarán aquí.</string>
@@ -820,6 +830,7 @@
     <string name="n_bytes_message">Mensaje de %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Descarga disponible hasta %1$s</string>
+    <string name="select_profile">Seleccionar perfil</string>
     <string name="profile_image_select">Seleccionar imagen de perfil</string>
     <string name="select_your_new_profile_image">Seleccionar tu nueva imagen de perfil</string>
     <string name="profile_image_delete">Borrar imagen de perfil</string>

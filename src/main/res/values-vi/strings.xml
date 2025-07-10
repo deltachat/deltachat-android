@@ -127,7 +127,6 @@
     <plurals name="n_selected">
         <item quantity="other">%d đã chọn</item>
     </plurals>
-
     <string name="self">Tôi</string>
     <string name="draft">Bản nháp</string>
     <string name="image">Hình ảnh</string>

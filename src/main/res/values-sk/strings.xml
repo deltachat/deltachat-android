@@ -140,7 +140,6 @@
         <item quantity="many">%d vybraných</item>
         <item quantity="other">%d vybraných</item>
     </plurals>
-
     <string name="self">Ja</string>
     <string name="draft">Návrh</string>
     <string name="image">Obrázok</string>

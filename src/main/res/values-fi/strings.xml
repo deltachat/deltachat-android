@@ -135,7 +135,6 @@
         <item quantity="one">%d valittu</item>
         <item quantity="other">%d valittu</item>
     </plurals>
-
     <string name="self">Minä</string>
     <string name="draft">Luonnos</string>
     <string name="image">Kuva</string>

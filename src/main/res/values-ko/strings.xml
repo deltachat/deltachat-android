@@ -116,7 +116,6 @@
     <plurals name="n_selected">
         <item quantity="other">%d 선택됨</item>
     </plurals>
-
     <string name="self">나</string>
     <string name="draft">임시 저장</string>
     <string name="image">이미지</string>

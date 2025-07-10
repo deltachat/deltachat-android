@@ -150,7 +150,6 @@
         <item quantity="one">%d Seleccionados</item>
         <item quantity="other">%d Seleccionado</item>
     </plurals>
-
     <string name="self">Eu</string>
     <string name="draft">Borrador</string>
     <string name="image">Imaxe</string>

@@ -139,7 +139,6 @@
         <item quantity="few">означено: %d</item>
         <item quantity="other">означено: %d</item>
     </plurals>
-
     <string name="self">Ја</string>
     <string name="draft">Нацрт</string>
     <string name="image">Слика</string>

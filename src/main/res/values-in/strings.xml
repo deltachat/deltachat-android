@@ -122,7 +122,6 @@
     <plurals name="n_selected">
         <item quantity="other">%d Dipilih</item>
     </plurals>
-
     <string name="self">Saya</string>
     <string name="draft">Draf</string>
     <string name="image">Gambar</string>

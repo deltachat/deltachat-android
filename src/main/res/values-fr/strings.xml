@@ -159,7 +159,6 @@
         <item quantity="many">%d Sélectionnés</item>
         <item quantity="other">%d Sélectionnés</item>
     </plurals>
-
     <string name="self">Moi</string>
     <string name="draft">Brouillon</string>
     <string name="image">Image</string>

@@ -34,6 +34,8 @@
     <string name="update">Обновить</string>
     <string name="emoji">Эмодзи</string>
     <string name="attachment">Вложение</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">Прикрепить \"%1$s\"?</string>
     <string name="back">Назад</string>
     <string name="close">Закрыть</string>
     <string name="close_window">Закрыть окно</string>
@@ -56,7 +58,10 @@
     <string name="save">Сохранить</string>
     <string name="chat">Чат</string>
     <string name="media">Медиафайлы</string>
+    <string name="apps_and_media">Приложения и медиафайлы</string>
     <string name="profile">Профиль</string>
+    <string name="all_profiles">Все профили</string>
+    <string name="current_profile">Текущий профиль</string>
     <string name="main_menu">Главное меню</string>
     <string name="start_chat">Начать чат</string>
     <string name="show_full_message">Показать сообщение полностью…</string>
@@ -91,6 +96,8 @@
     <string name="no_app_to_handle_data">Не удалось найти приложение для обработки этого типа данных.</string>
     <string name="no_browser_installed">Браузер не установлен.</string>
     <string name="file_not_found">Не удалось найти %1$s.</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">Невозможно сохранить %1$s.</string>
     <string name="copied_to_clipboard">Скопировано в буфер обмена.</string>
     <string name="contacts_headline">Контакты</string>
     <string name="email_address">Адрес электронной почты</string>
@@ -168,7 +175,7 @@
         <item quantity="many">%d выбрано</item>
         <item quantity="other">%d выбрано</item>
     </plurals>
-
+    <string name="selected_colon">Выбрано:</string>
     <string name="self">Я</string>
     <string name="draft">Черновик</string>
     <string name="image">Изображение</string>
@@ -212,6 +219,7 @@
     <string name="webxdc_apps">Приложения</string>
     <string name="webxdc_store_url">URL селектора приложений</string>
     <string name="webxdc_store_url_explain">Если установлено, URL будет использоваться в качестве селектора приложений вместо стандартного</string>
+    <string name="webxdc_draft_hint">Нажмите \"Отправить\", чтобы поделиться</string>
     <string name="home">Домой</string>
     <string name="games">Игры</string>
     <string name="tools">Инструменты</string>
@@ -293,6 +301,7 @@
     <string name="menu_export_attachment">Экспорт вложения</string>
     <string name="menu_export_attachments">Экспорт вложений</string>
     <string name="menu_all_media">Все медиафайлы</string>
+    <string name="all_apps_and_media">Все приложения и медиафайлы</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Показать в чате</string>
     <string name="show_app_in_chat">Показать приложение в чате</string>
@@ -467,6 +476,7 @@
     <string name="chat_input_placeholder">Сообщение</string>
     <string name="chat_archived_label">Архивировано</string>
     <string name="chat_request_label">Запрос</string>
+    <string name="chat_request_label_explain">Включать запросы в счётчики и уведомления</string>
     <string name="chat_no_messages">Нет сообщений.</string>
     <string name="chat_self_talk_subtitle">Сообщения, отправленные себе</string>
     <string name="archive_empty_hint">Здесь можно просмотреть архивные чаты.</string>
@@ -836,6 +846,7 @@
     <string name="n_bytes_message">%1$s сообщение</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Максимальная загрузка доступна до %1$s</string>
+    <string name="select_profile">Выбрать профиль</string>
     <string name="profile_image_select">Выбрать изображение профиля</string>
     <string name="select_your_new_profile_image">Выбрать новое изображение профиля</string>
     <string name="profile_image_delete">Удалить изображение профиля</string>

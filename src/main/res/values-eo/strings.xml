@@ -130,7 +130,6 @@
         <item quantity="one">%delektitaj</item>
         <item quantity="other">%delektita</item>
     </plurals>
-
     <string name="self">Mi</string>
     <string name="draft">Malneto</string>
     <string name="image">Bildo</string>

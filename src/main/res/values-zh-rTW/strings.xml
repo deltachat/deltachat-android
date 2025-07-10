@@ -34,6 +34,8 @@
     <string name="update">更新</string>
     <string name="emoji">表情符號</string>
     <string name="attachment">附件</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">附加“%1$s”？</string>
     <string name="back">返回</string>
     <string name="close">關閉</string>
     <string name="close_window">關閉視窗</string>
@@ -56,7 +58,10 @@
     <string name="save">儲存</string>
     <string name="chat">聊天</string>
     <string name="media">多媒體</string>
+    <string name="apps_and_media">應用程式和媒體</string>
     <string name="profile">賬戶</string>
+    <string name="all_profiles">所有賬戶</string>
+    <string name="current_profile">當前賬戶</string>
     <string name="main_menu">主選單</string>
     <string name="start_chat">開始聊天</string>
     <string name="show_full_message">顯示完整訊息⋯</string>
@@ -91,6 +96,8 @@
     <string name="no_app_to_handle_data">沒有可以處理這種資料的應用程式.</string>
     <string name="no_browser_installed">沒有安裝瀏覽器。</string>
     <string name="file_not_found">找不到 %1$s</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">無法儲存 %1$s。</string>
     <string name="copied_to_clipboard">已複製至剪貼簿</string>
     <string name="contacts_headline">聯絡人</string>
     <string name="email_address">電子郵件位址</string>
@@ -141,7 +148,7 @@
     <plurals name="n_selected">
         <item quantity="other">已選取 %d 個</item>
     </plurals>
-
+    <string name="selected_colon">已選擇：</string>
     <string name="self">我</string>
     <string name="draft">草稿</string>
     <string name="image">圖片</string>
@@ -175,12 +182,17 @@
     <string name="images_and_videos">圖片和影片</string>
     <string name="file">檔案</string>
     <string name="files">檔案</string>
+    <string name="files_attach_hint">傳送原始檔和未壓縮的圖像</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">從檔案中選擇</string>
+    <string name="choose_from_gallery">從圖庫中選擇</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">小程式</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">小程式</string>
     <string name="webxdc_store_url">應用選取器連結</string>
     <string name="webxdc_store_url_explain">如果設定，該連接將用作應用選擇器而不是預設連結</string>
+    <string name="webxdc_draft_hint">點擊「傳送」進行共享</string>
     <string name="home">主頁</string>
     <string name="games">游戲</string>
     <string name="tools">工具</string>
@@ -262,6 +274,7 @@
     <string name="menu_export_attachment">另存附件</string>
     <string name="menu_export_attachments">另存附件</string>
     <string name="menu_all_media">所有媒體</string>
+    <string name="all_apps_and_media">所有應用程式和媒體</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">在對話中顯示</string>
     <string name="show_app_in_chat">在對話中顯示應用程式</string>
@@ -415,6 +428,7 @@
     <string name="chat_input_placeholder">訊息</string>
     <string name="chat_archived_label">封存</string>
     <string name="chat_request_label">請求</string>
+    <string name="chat_request_label_explain">在計數器和通知中包含請求</string>
     <string name="chat_no_messages">沒有訊息。</string>
     <string name="chat_self_talk_subtitle">傳送給自己的訊息</string>
     <string name="archive_empty_hint">存檔的聊天記錄將在此處顯示。</string>
@@ -784,6 +798,7 @@
     <string name="n_bytes_message">%1$s 訊息</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">下載有效期至%1$s</string>
+    <string name="select_profile">選擇賬戶</string>
     <string name="profile_image_select">選擇大頭貼</string>
     <string name="select_your_new_profile_image">選擇新的大頭貼</string>
     <string name="profile_image_delete">刪除大頭貼</string>
@@ -981,6 +996,7 @@
     <string name="secure_join_wait">正在建立有保證的端到端加密，請稍候...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">尚無法建立有保證的端到端加密，但您可能已經送出了一條訊息。</string>
+    <string name="secure_join_takes_longer">聯繫人必須處於連線狀態才能繼續。\n\n此過程將在後台自動繼續。</string>
     <string name="contact_verified">%1$s已介紹。</string>
     <string name="contact_not_verified">無法與%1$s建立有保證的端到端加密。</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->

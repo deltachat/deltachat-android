@@ -150,7 +150,6 @@
         <item quantity="one">%d triat</item>
         <item quantity="other">%d seleccionats</item>
     </plurals>
-
     <string name="self">Jo</string>
     <string name="draft">Esborrany</string>
     <string name="image">Imatge</string>

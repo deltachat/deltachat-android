@@ -138,7 +138,6 @@
         <item quantity="few">%d Selectate</item>
         <item quantity="other">%d De Selecții</item>
     </plurals>
-
     <string name="self">Eu</string>
     <string name="draft">Schiță</string>
     <string name="image">Imagine</string>

@@ -34,6 +34,8 @@
     <string name="update">Bijwerken</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Bijlage</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">Wil je ‘%1$s’ bijvoegen?</string>
     <string name="back">Terug</string>
     <string name="close">Sluiten</string>
     <string name="close_window">Venster sluiten</string>
@@ -56,7 +58,10 @@
     <string name="save">Opslaan</string>
     <string name="chat">Gesprek</string>
     <string name="media">Media</string>
+    <string name="apps_and_media">Apps en media</string>
     <string name="profile">Profiel</string>
+    <string name="all_profiles">Alle profielen</string>
+    <string name="current_profile">Huidig profiel</string>
     <string name="main_menu">Hoofdmenu</string>
     <string name="start_chat">Gesprek beginnen</string>
     <string name="show_full_message">Volledig bericht tonen…</string>
@@ -91,6 +96,8 @@
     <string name="no_app_to_handle_data">Er is geen app die deze inhoud kan openen.</string>
     <string name="no_browser_installed">Er is geen webbrowser geïnstalleerd.</string>
     <string name="file_not_found">‘%1$s’ kan niet worden gevonden.</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">“%1$s” kan niet worden opgeslagen.</string>
     <string name="copied_to_clipboard">Gekopieerd naar het klembord.</string>
     <string name="contacts_headline">Contactpersonen</string>
     <string name="email_address">E-mailadres</string>
@@ -150,7 +157,7 @@
         <item quantity="one">%d geselecteerd</item>
         <item quantity="other">%d geselecteerd</item>
     </plurals>
-
+    <string name="selected_colon">Gekozen:</string>
     <string name="self">Ik</string>
     <string name="draft">Concept</string>
     <string name="image">Afbeelding</string>
@@ -194,6 +201,7 @@
     <string name="webxdc_apps">Privé-apps</string>
     <string name="webxdc_store_url">Appkiezer-url</string>
     <string name="webxdc_store_url_explain">Stel in om apps te kiezen vanaf een url in plaats van de standaard appkiezer</string>
+    <string name="webxdc_draft_hint">Druk op ‘versturen’ om te delen</string>
     <string name="home">Overzicht</string>
     <string name="games">Games</string>
     <string name="tools">Hulpmiddelen</string>
@@ -275,6 +283,7 @@
     <string name="menu_export_attachment">Bijlage exporteren</string>
     <string name="menu_export_attachments">Bijlagen exporteren</string>
     <string name="menu_all_media">Alle media</string>
+    <string name="all_apps_and_media">Alle apps en media</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Tonen in bijbehorend gesprek</string>
     <string name="show_app_in_chat">App tonen in gesprek</string>
@@ -435,6 +444,7 @@
     <string name="chat_input_placeholder">Bericht</string>
     <string name="chat_archived_label">Gearchiveerd</string>
     <string name="chat_request_label">Verzoek</string>
+    <string name="chat_request_label_explain">Gespreksverzoeken tonen op meldingen en emblemen</string>
     <string name="chat_no_messages">Er zijn geen berichten.</string>
     <string name="chat_self_talk_subtitle">Aan mijzelf gestuurde berichten</string>
     <string name="archive_empty_hint">Gearchiveerde gesprekken worden hier getoond.</string>
@@ -508,7 +518,7 @@
     <string name="group_add_members">Deelnemers toevoegen</string>
     <string name="group_self_not_in_group">Om deze actie uit te kunnen voeren moet je deelnemen aan de groep.</string>
     <string name="profile_encryption">Versleuteling</string>
-    <string name="profile_shared_chats">Gedeelde gesprekken</string>
+    <string name="profile_shared_chats">Gemeenschappelijke gesprekken</string>
     <string name="related_chats">Verwante gesprekken</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Voormalige deelnemers</string>
@@ -804,6 +814,7 @@
     <string name="n_bytes_message">%1$s bericht</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Maximaal downloaden tot en met een aantal van %1$s</string>
+    <string name="select_profile">Kies een profiel</string>
     <string name="profile_image_select">Profielfoto kiezen</string>
     <string name="select_your_new_profile_image">Kies een nieuwe profielfoto</string>
     <string name="profile_image_delete">Profielfoto verwijderen</string>

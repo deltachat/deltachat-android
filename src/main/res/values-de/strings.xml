@@ -34,6 +34,8 @@
     <string name="update">Aktualisieren</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Anhang</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">\"%1$s\" anhängen?</string>
     <string name="back">Zurück</string>
     <string name="close">Schließen</string>
     <string name="close_window">Fenster schließen</string>
@@ -58,6 +60,8 @@
     <string name="media">Medien</string>
     <string name="apps_and_media">Apps &amp; Medien</string>
     <string name="profile">Profil</string>
+    <string name="all_profiles">Alle Profile</string>
+    <string name="current_profile">Aktuelles Profil</string>
     <string name="main_menu">Hauptmenü</string>
     <string name="start_chat">Chat starten</string>
     <string name="show_full_message">Ganze Nachricht anzeigen…</string>
@@ -92,6 +96,8 @@
     <string name="no_app_to_handle_data">Keine passende App zum Öffnen dieses Dateityps gefunden</string>
     <string name="no_browser_installed">Kein Internetbrowser installiert.</string>
     <string name="file_not_found">Kann %1$s nicht finden</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">Kann \"%1$s\" nicht speichern.</string>
     <string name="copied_to_clipboard">In Zwischenablage kopiert.</string>
     <string name="contacts_headline">Kontakte</string>
     <string name="email_address">E-Mail-Adresse</string>
@@ -151,7 +157,7 @@
         <item quantity="one">%d ausgewählt</item>
         <item quantity="other">%d ausgewählt</item>
     </plurals>
-
+    <string name="selected_colon">Ausgewählt:</string>
     <string name="self">Ich</string>
     <string name="draft">Entwurf</string>
     <string name="image">Bild</string>
@@ -195,6 +201,7 @@
     <string name="webxdc_apps">Apps</string>
     <string name="webxdc_store_url">App-Picker-URL</string>
     <string name="webxdc_store_url_explain">Wenn gesetzt, wird diese URL als App-Picker anstelle der Voreinstellung verwendet.</string>
+    <string name="webxdc_draft_hint">Zum Teilen auf \"Senden\" klicken</string>
     <string name="home">Start</string>
     <string name="games">Spiele</string>
     <string name="tools">Tools</string>
@@ -437,6 +444,7 @@
     <string name="chat_input_placeholder">Nachricht</string>
     <string name="chat_archived_label">Archiviert</string>
     <string name="chat_request_label">Anfrage</string>
+    <string name="chat_request_label_explain">Anfragen in Zählern und Notifications anzeigen</string>
     <string name="chat_no_messages">Keine Nachrichten.</string>
     <string name="chat_self_talk_subtitle">Nachrichten an mich selbst</string>
     <string name="archive_empty_hint">Archivierte Chats werden hier angezeigt.</string>
@@ -806,6 +814,7 @@
     <string name="n_bytes_message">%1$s Nachricht</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Download max. verfügbar bis %1$s</string>
+    <string name="select_profile">Profil auswählen</string>
     <string name="profile_image_select">Profilbild auswählen</string>
     <string name="select_your_new_profile_image">Wählen Sie Ihr Profilbild aus</string>
     <string name="profile_image_delete">Profilbild löschen</string>
