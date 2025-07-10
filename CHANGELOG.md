@@ -10,6 +10,8 @@
 * Improve hint for app drafts
 * Add Text-To-Speech (TTS) support for in-chat apps
 * New icon for the QR icon
+* Start rebuilding the experimental broadcast lists
+  into proper channels - note that this is work-in-progress
 * Improved separation between unencryted chats/contacts and encrypted ones, avoiding mixing of encrypted and unencrypted messages in the same chat
 * Removed padlocks, as encrypted is the default "normal" state. Instead, unencrypted email is marked with a small email / letter  (✉️) icon
 * Classic email chats/threads get a big email / letter icon making it easy to recognize

@@ -36,7 +36,7 @@ public class SelectedContactsAdapter extends BaseAdapter {
   @NonNull  private final Context                context;
   @Nullable private ItemClickListener            itemClickListener;
   @NonNull  private final List<Integer>          contacts = new LinkedList<>();
-  private final boolean                          isBroadcast;
+  private final boolean isBroadcast;
   @NonNull  private final DcContext              dcContext;
   @NonNull  private final GlideRequests          glideRequests;
 

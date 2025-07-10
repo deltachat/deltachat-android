@@ -53,7 +53,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
   private final @NonNull ArrayList<ItemData>  itemData = new ArrayList<>();
   private DcChatlist                          itemDataSharedChats;
   private String                              itemDataStatusText;
-  private boolean                             isBroadcast;
+  private boolean                             isOutBroadcast;
   private int                                 memberCount;
   private final Set<Integer>                  selectedMembers;
 
@@ -163,7 +163,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
       String addr = null;
 
       if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
-        if (isBroadcast) {
+        if (isOutBroadcast) {
           name = context.getString(R.string.add_recipients);
         } else {
           name = context.getString(R.string.group_add_members);
@@ -275,7 +275,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     itemData.clear();
     itemDataSharedChats = sharedChats;
     itemDataStatusText = "";
-    isBroadcast = dcChat != null && dcChat.isBroadcast();
+    isOutBroadcast = dcChat != null && dcChat.isOutBroadcast();
     boolean isMailingList = dcChat != null && dcChat.isMailingList();
     boolean isSelfTalk = dcChat != null && dcChat.isSelfTalk();
     boolean isDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
@@ -313,7 +313,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
       if (dcChat != null) {
         if (dcChat.canSend() && dcChat.isEncrypted()) {
           itemData.add(new ItemData(ITEM_MEMBERS, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
-          if (!isBroadcast) {
+          if (!isOutBroadcast) {
             itemData.add(new ItemData(ITEM_MEMBERS, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
           }
         }
