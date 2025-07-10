@@ -246,6 +246,12 @@
     <string name="broadcast_lists">Verzendlijsten</string>
     <!-- deprecated -->
     <string name="new_broadcast_list">Nieuwe verzendlijst</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Kanaal</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Kanalen</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Nieuw kanaal</string>
     <string name="add_recipients">Ontvangers toevoegen</string>
     <!-- deprecated -->
     <string name="edit_broadcast_list">Verzendlijst bewerken</string>
@@ -253,6 +259,8 @@
     <string name="broadcast_list_name">Naam van verzendlijst</string>
     <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Geef de verzendlijst een naam.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Kanaalnaam</string>
     <string name="menu_send">Versturen</string>
     <string name="menu_toggle_keyboard">Emojitoetsenbord tonen/verbergen</string>
     <string name="menu_edit_group">Groep aanpassen</string>
@@ -262,6 +270,7 @@
     <string name="menu_unarchive_chat">Gesprek de-archiveren</string>
     <string name="menu_add_attachment">Bijlage toevoegen</string>
     <string name="menu_leave_group">Groep verlaten</string>
+    <string name="menu_leave_channel">Kanaal verlaten</string>
     <string name="menu_delete_chat">Gesprek verwijderen</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Ale berichten wissen</string>
@@ -381,6 +390,9 @@
     <string name="videochat_invitation">Uitnodiging voor videogesprek</string>
     <string name="videochat_invitation_body">Je bent uitgenodigd voor een videogesprek. Druk op %1$s om deel te nemen.</string>
 
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Weet je zeker dat je dit kanaal wilt verlaten?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Wil je %d gesprek verwijderen van al je apparaten?</item>
         <item quantity="other">Wil je %d gesprekken verwijderen van al je apparaten?</item>
@@ -408,6 +420,8 @@
     <string name="ask_remove_members">Wil je %1$s verwijderen uit de groep?</string>
     <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Wil je %1$s verwijderen van de verzendlijst?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Weet je zeker dat je %1$s van het kanaal wilt verwijderen?</string>
     <string name="open_url_confirmation">Weet je zeker dat je deze link wilt openen?</string>
 
 
@@ -439,6 +453,8 @@
     <string name="chat_new_one_to_one_hint">Stuur een bericht aan %1$s .</string>
     <!-- deprecated -->
     <string name="chat_new_broadcast_hint">Op een verzendlijst hebben ontvangers niet de mogelijkheid om te reageren op je berichten.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">Kanalen zijn bedoeld om te gebruiken als verzendlijsten.</string>
     <string name="chat_new_group_hint">Stel het eerste bericht op zodat anderen binnen deze groep kunnen reageren.</string>
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
     <string name="chat_record_explain">Houd ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
@@ -905,6 +921,8 @@
     <string name="remove_member_by_you">Je hebt ‘%1$s’ verwijderd.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">‘%1$s’ is verwijderd door %2$s.</string>
+    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
+    <string name="group_left_by_you">Je hebt het kanaal verlaten.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">De groep is verlaten door %1$s.</string>
     <string name="group_image_deleted_by_you">Je hebt de groepsfoto verwijderd.</string>

@@ -90,7 +90,7 @@
     <ul>
       <li><a href="#welke-android-rechten-heeft-delta-chat-nodig">Welke Android-rechten heeft Delta Chat nodig?</a></li>
       <li><a href="#wordt-mijn-e-mailprovider-ondersteund-door-delta-chat">Wordt <em>mijn</em> e-mailprovider ondersteund door Delta Chat?</a></li>
-      <li><a href="#ik-wil-mijn-eigen-e-mailserver-opzetten-hoe-kan-ik-dat-het-beste-doen">Ik wil mijn eigen e-mailserver opzetten. Hoe kan ik dat het beste doen?</a></li>
+      <li><a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">I want to manage my own server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#waarom-moet-ik-mijn-e-mailwachtwoord-invoeren-in-delta-chat-is-dat-wel-veilig">Waarom moet ik mijn e-mailwachtwoord invoeren in Delta Chat? Is dat wel veilig?</a></li>
       <li><a href="#welke-berichten-vind-ik-terug-in-delta-chat">Welke berichten vind ik terug in Delta Chat?</a></li>
       <li><a href="#ondersteunt-delta-chat-html-e-mails">Ondersteunt Delta Chat HTML-e-mails?</a></li>
@@ -914,7 +914,7 @@ to not read or manipulate your messages, and to not hand them to third parties.<
 
 <p>In any case, you can not do much else than accept the warning.
 Please also remove the contact from any active green-checkmarked group 
-which you can find in “Shared chats” in the Contact profile. 
+which you can find in “Chats in Common” in the Contact profile.
 This spares your contact from getting “unreadable” messages.</p>
 
 <p>If the contact removed Delta Chat because of buggy or undesirable behaviour, 
@@ -1493,9 +1493,10 @@ copies on the devices of your chat partners. Other than that, it’s completely
 isolated from the Internet.</li>
   <li>The privacy a webxdc app offers is the privacy of your chat - as long as you
 trust the people you chat with, you can trust the webxdc app as well.</li>
-  <li>This also means: it can be a privacy risk to open webxdc apps in chats where
-you don’t trust the members - as you know it from e-mail attachments, where 
-you only open attachments from senders you trust, and not from spammers.</li>
+  <li>This also means: it can be a privacy risk to open apps in chats with untrusted members.
+Just like with e-mail attachments, video calls or plain links:
+open them only from senders you trust, and not from spammers.
+Spammers can get to know any data you send to them, as well as your IP address.</li>
 </ul>
     
       <h3 id="where-can-i-get-webxdc-apps">
@@ -1579,21 +1580,10 @@ zodat er telkens een nieuwe jitsi-kamer als je iemand belt.</li>
         
       </h3>
 
-<ul>
-  <li>Met behulp van verzendlijsten kun je berichten naar meerdere ontvangers tegelijk versturen. Als zij vervolgens
-antwoorden, dan wordt het antwoord in het een-op-eengesprek getoond. De
-ontvangers kunnen elkaar niet zien.</li>
-  <li>Technisch gezien is een verzendlijst een e-mail met meerdere ontvangers in de bcc.</li>
-  <li>Schakel deze functie in in de sectie ‘experimentele functies ’in de
-geavanceerde instellingen. Vervolgens kun je in het venster ‘Nieuw gesprek’ een verzendlijst
-samenstellen.</li>
-  <li>Let op: als je gebruikmaakt van meer dan één apparaat, dan worden verzendlijsten momenteel
-niet gesynchroniseerd.</li>
-  <li>Ook zijn zulke berichten niet versleuteld. Versleuteling zou immers de
-anonimiteit doorbreken omdat iedereen van elkaar kan zien wie de berichten ontvangt.
-(En het versturen van meerdere individuele e-mails tegelijk zou funest zijn voor de beperkingen van sommige e-maildiensten en het
-netwerkverbruik).</li>
-</ul>
+<p>With a Broadcast List you can send a message to many recipients at once;
+the recipients cannot reply in that list.
+Broadcast lists are still highly experimental
+and will very probably be replaced by something else, stay tuned :)</p>
     
       <h3 id="hoe-kan-ik-mijn-locatie-delen-met-anderen">
         
@@ -1751,19 +1741,19 @@ Delta Chat doet het volgende met deze rechten:</p>
 Sommige providers verwachten echter bepaalde opties. Bekijk hiervoor het <a href="https://providers.delta.chat">provideroverzicht</a></li>
 </ul>
     
-      <h3 id="ik-wil-mijn-eigen-e-mailserver-opzetten-hoe-kan-ik-dat-het-beste-doen">
+      <h3 id="i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">
         
         
-          Ik wil mijn eigen e-mailserver opzetten. Hoe kan ik dat het beste doen? <a href="#ik-wil-mijn-eigen-e-mailserver-opzetten-hoe-kan-ik-dat-het-beste-doen" class="anchor"></a>
+          I want to manage my own server for Delta Chat. What do you recommend? <a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>De meeste e-mailservers werken prima, maar wij raden een
-combinatie van mailcow en mailadm aan, zoals uitgelegd op <a href="https://delta.chat/en/2023-01-27-upcoming-mail-server-workshops">ons
-blog</a>.</li>
-  <li>In de <a href="https://delta.chat/nl/serverguide">installatiehandleiding op onze website</a> lees je hoe je dit opzet.</li>
+  <li>Most mail servers will work well. But what we personally recommend is a
+chatmail relay server, as described <a href="https://delta.chat/en/2023-12-13-chatmail">in this
+blogpost</a>.</li>
+  <li>You can find an <a href="https://github.com/chatmail/relay">installation guide on GitHub</a>.</li>
 </ul>
     
       <h3 id="waarom-moet-ik-mijn-e-mailwachtwoord-invoeren-in-delta-chat-is-dat-wel-veilig">

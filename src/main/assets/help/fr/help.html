@@ -90,7 +90,7 @@
     <ul>
       <li><a href="#de-quelles-autorisations-delta-chat-a-t-il-besoin">De quelles autorisations Delta Chat a-t-il besoin?</a></li>
       <li><a href="#est-ce-que-delta-chat-fonctionne-avec-mon-fournisseur-de-courriel-">Est-ce que Delta Chat fonctionne avec <em>mon</em> fournisseur de courriel ?</a></li>
-      <li><a href="#je-veux-administrer-mon-propre-serveur-courriel-pour-delta-chat--que-me-conseillez-vous-">Je veux administrer mon propre serveur courriel pour Delta Chat : que me conseillez-vous ?</a></li>
+      <li><a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">I want to manage my own server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#pourquoi-dois-je-entrer-le-mot-de-passe-de-mon-compte-de-courriel-dans-delta-chat--est-ce-sécurisé-">Pourquoi dois-je entrer le mot de passe de mon compte de courriel dans Delta Chat ? Est-ce sécurisé ?</a></li>
       <li><a href="#quels-sont-les-messages-qui-apparaissent-dans-delta-chat-">Quels sont les messages qui apparaissent dans Delta Chat ?</a></li>
       <li><a href="#est-ce-que-delta-chat-gère-les-courriels-en-html-">Est-ce que Delta Chat gère les courriels en HTML ?</a></li>
@@ -895,7 +895,7 @@ to not read or manipulate your messages, and to not hand them to third parties.<
 
 <p>In any case, you can not do much else than accept the warning.
 Please also remove the contact from any active green-checkmarked group 
-which you can find in “Shared chats” in the Contact profile. 
+which you can find in “Chats in Common” in the Contact profile.
 This spares your contact from getting “unreadable” messages.</p>
 
 <p>If the contact removed Delta Chat because of buggy or undesirable behaviour, 
@@ -1452,9 +1452,10 @@ copies on the devices of your chat partners. Other than that, it’s completely
 isolated from the Internet.</li>
   <li>The privacy a webxdc app offers is the privacy of your chat - as long as you
 trust the people you chat with, you can trust the webxdc app as well.</li>
-  <li>This also means: it can be a privacy risk to open webxdc apps in chats where
-you don’t trust the members - as you know it from e-mail attachments, where 
-you only open attachments from senders you trust, and not from spammers.</li>
+  <li>This also means: it can be a privacy risk to open apps in chats with untrusted members.
+Just like with e-mail attachments, video calls or plain links:
+open them only from senders you trust, and not from spammers.
+Spammers can get to know any data you send to them, as well as your IP address.</li>
 </ul>
     
       <h3 id="where-can-i-get-webxdc-apps">
@@ -1531,14 +1532,10 @@ another rather stable experiment we run on the side (sic!).</p>
         
       </h3>
 
-<ul>
-  <li>Une liste de diffusion vous permet d’envoyer un message à plusieurs destinataires en même temps sans qu’ils puissent se voir mutuellement. Vous recevez leurs réponses respectives dans les discussions privées que vous avez avec chacun d’eux.</li>
-  <li>Concrètement, c’est un courriel avec plusieurs destinataires en copie cachée.</li>
-  <li>Vous pouvez activer cette option dans la section “Fonctionnalités expérimentales” des paramètres avancés. Vous pourrez ensuite créer une liste de diffusion à partir du bouton “Nouvelle discussion”.</li>
-  <li>Si vous utilisez plusieurs appareils, veuillez noter qu’il n’est pas possible, pour l’instant, de synchroniser les listes de diffusion.</li>
-  <li>Les messages envoyés à des listes de diffusion ne sont pas chiffrés, parce que le chiffrement romprait l’anonymat puisque tous les destinataires pourraient alors voir qui d’autre a reçu le message.
-(Mais envoyer des courriels individuels à tout le monde serait encore pire à cause de la consommation du réseau requise et des limites d’envoi).</li>
-</ul>
+<p>With a Broadcast List you can send a message to many recipients at once;
+the recipients cannot reply in that list.
+Broadcast lists are still highly experimental
+and will very probably be replaced by something else, stay tuned :)</p>
     
       <h3 id="comment-partager-ma-géolocalisation-avec-mes-contacts-">
         
@@ -1693,17 +1690,19 @@ Voici ce que fait Delta Chat avec ces autorisations:</p>
 Cependant, il faut activer des options spéciales pour que cela fonctionne correctement avec certains fournisseurs… Voir <a href="https://providers.delta.chat">la liste des fournisseurs</a>.</li>
 </ul>
     
-      <h3 id="je-veux-administrer-mon-propre-serveur-courriel-pour-delta-chat--que-me-conseillez-vous-">
+      <h3 id="i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">
         
         
-          Je veux administrer mon propre serveur courriel pour Delta Chat : que me conseillez-vous ? <a href="#je-veux-administrer-mon-propre-serveur-courriel-pour-delta-chat--que-me-conseillez-vous-" class="anchor"></a>
+          I want to manage my own server for Delta Chat. What do you recommend? <a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>La plupart des serveurs courriel fonctionneront très bien. Mais nous conseillons de combiner mailcow et mailadm, ainsi que nous le décrivons <a href="https://delta.chat/en/2023-01-27-upcoming-mail-server-workshops">sur notre blog</a>.</li>
-  <li>Vous trouverez un <a href="https://delta.chat/fr/serverguide">guide d’installation sur notre site internet</a>.</li>
+  <li>Most mail servers will work well. But what we personally recommend is a
+chatmail relay server, as described <a href="https://delta.chat/en/2023-12-13-chatmail">in this
+blogpost</a>.</li>
+  <li>You can find an <a href="https://github.com/chatmail/relay">installation guide on GitHub</a>.</li>
 </ul>
     
       <h3 id="pourquoi-dois-je-entrer-le-mot-de-passe-de-mon-compte-de-courriel-dans-delta-chat--est-ce-sécurisé-">
