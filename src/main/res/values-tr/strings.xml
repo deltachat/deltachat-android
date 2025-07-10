@@ -240,13 +240,18 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Sohbet et…</string>
     <string name="clone_chat">Sohbeti Çoğalt</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Yayın Listesi</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Yayın Listeleri</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Yeni Yayın Listesi</string>
     <string name="add_recipients">Alıcılar Ekle</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">Yayın Listesini Düzenle</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">Yayın Listesi Adı</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Lütfen yayın listesi için bir ad girin.</string>
     <string name="menu_send">Gönder</string>
     <string name="menu_toggle_keyboard">Emoji Klavyesine Geç</string>
@@ -376,8 +381,6 @@
     <string name="videochat_invitation">Video sohbeti çağrısı</string>
     <string name="videochat_invitation_body">Bir video sohbetine çağrıldınız; katılmak için %1$s öğesini tıklayın.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Bu öbekten ayrılmak istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Tüm aygıtlarınızdaki %d sohbet silinsin mi?</item>
         <item quantity="other">Tüm aygıtlarınızdaki %d sohbet silinsin mi?</item>
@@ -403,7 +406,7 @@
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$s öbekten kaldırılsın mı?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">%1$s yayın listesinden kaldırılsın mı?</string>
     <string name="open_url_confirmation">Bu bağlantıyı açmak istiyor musunuz?</string>
 
@@ -434,6 +437,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">%1$s kişisine bir ileti gönderin.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">Bir yayın listesinde, alıcılar sizinle salt okunur bir sohbette iletiler alacak.</string>
     <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu öbeği görecek.</string>
     <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
@@ -901,8 +905,6 @@
     <string name="remove_member_by_you">%1$s üyesini kaldırdınız.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s tarafından %1$s üyesi kaldırıldı.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Öbekten ayrıldınız.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s tarafından öbekten ayrılındı.</string>
     <string name="group_image_deleted_by_you">Öbek görselini sildiniz.</string>

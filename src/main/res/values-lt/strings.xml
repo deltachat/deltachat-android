@@ -306,8 +306,6 @@
     <string name="videochat_invitation">Pakvietimas į vaizdo pokalbį</string>
     <string name="videochat_invitation_body">Jūs esate kviečiami į vaizdo pokalbį. Spustelėkite %1$s jei norite prisijungti.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Ar tikrai norite išeiti iš šios grupės?</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ištrinti %d žinutę?</item>
@@ -670,8 +668,6 @@
     <string name="group_name_changed_by_you">Jūs pakeitėte grupės pavadinimą iš „%1$s“ į „%2$s“.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s pakeitė grupės pavadinimą iš „%1$s“ į „%2$s“.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Jūs išėjote iš grupės.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s išėjo iš grupės.</string>
     <string name="group_image_deleted_by_you">Jūs ištrynėte grupės paveikslą.</string>

@@ -232,10 +232,13 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">ناڌن پا گوفت ۉ لوفت وا...</string>
     <string name="clone_chat">وورکل گوفت ۉ لوفت نۊ ز ای گوفت ۉ لوفت</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">نومگه Broadcast</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">نومگه یل Broadcast</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">نومگه Broadcast نۊ</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">آلشت نومگه Broadcast</string>
     <string name="menu_send">فشناڌن</string>
     <string name="menu_edit_group">آلشت جرگه</string>
@@ -312,7 +315,7 @@
     <string name="ask_start_chat_with">گوفت ۉ لوفت وا %1$s؟</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">پاک کردن %1$s ز جرگه؟</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">%1$s ز نومگه Broadcast پاک بۊ؟</string>
     <string name="open_url_confirmation">اخۊی ای لینگن بۊگۊشی؟</string>
 

@@ -173,9 +173,11 @@
     <string name="menu_new_contact">대화상대 추가</string>
     <string name="menu_new_chat">채팅 시작</string>
     <string name="menu_new_group">새 그룹</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">방송 목록</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">방송 목록</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">새 방송 목록</string>
     <string name="add_recipients">수신자 추가</string>
     <string name="menu_send">보내기</string>
@@ -284,8 +286,6 @@
     <string name="videochat_invitation">비디오 채팅 초대</string>
     <string name="videochat_invitation_body">당신은 비디오 채팅에 초대되었습니다. 참여를 위해 %1$s를 클릭하세요.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">이 그룹에서 나가시겠습니까?</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">%d개의 메시지를 삭제하시겠습니까?</item>
@@ -300,7 +300,7 @@
     <string name="ask_start_chat_with">%1$s와 채팅하시겠습니까?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">그룹에서 %1$s을/를 제거하시겠습니까?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">브로드 캐스트 목록에서 %1$s을/를 제거하시겠습니까?</string>
     <string name="open_url_confirmation">이 링크를 여시겠습니까?</string>
 
@@ -645,8 +645,6 @@
     <string name="remove_member_by_you">%1$s를 멤버에서 제거함.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s가 %1$s를 멤버에서 제거함.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">그룹을 나갔습니다.</string>
     <string name="group_image_deleted_by_you">그룹 이미지를 지움.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="group_image_deleted_by_other">%1$s이 그룹 이미지를 지움.</string>

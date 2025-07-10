@@ -282,8 +282,6 @@
     <string name="videochat_invitation">Undangan obrolan video</string>
     <string name="videochat_invitation_body">Anda diundang ke obrolan video, klik %1$s untuk bergabung.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Apakah anda yakin untuk keluar dari grup ini?</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">Menghapus pesan %d?</item>

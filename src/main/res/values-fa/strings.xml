@@ -232,13 +232,18 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">شروع گفتگو با...</string>
     <string name="clone_chat">درست کردن گپ جدید از این گپ</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">لیست Broadcast</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">لیست‌های Broadcast</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">لیست Broadcast جدید</string>
     <string name="add_recipients">افزودن گیرنده</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">ویرایش فهرست Broadcast</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">نام فهرست BroadCast</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">وارد کردن نام برای فهرست Broadcast.</string>
     <string name="menu_send">ارسال</string>
     <string name="menu_toggle_keyboard">تعییر صفحه کلید شکلک‌ها</string>
@@ -373,8 +378,6 @@ https://meet.jit.si/$ROOM
     <string name="videochat_invitation">دعوت به مکالمه تصویری.</string>
     <string name="videochat_invitation_body">شما به مکالمه تصویری دعوت شده اید برای پیوستن%1$s را بزنید.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">مطمئن هستید می‌خواهید این گروه را ترک کنید؟</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">آیا می‌خواهید از روی همهٔ دستگاه‌هایتان %d گپ را حذف کنید؟</item>
         <item quantity="other">آیا می‌خواهید از روی همهٔ دستگاه‌هایتان %d گپ را حذف کنید؟</item>
@@ -402,7 +405,7 @@ https://meet.jit.si/$ROOM
     <string name="ask_start_chat_with">گپ زدن با %1$s؟</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">حذف %1$s از گروه؟</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">آيا%1$s از لیست Broadcast پاک شود؟ </string>
     <string name="open_url_confirmation">آیا می‌خواهید این لینک را باز کنید؟</string>
 
@@ -433,6 +436,7 @@ https://meet.jit.si/$ROOM
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">ارسال پیام. مشکلی نیست اگر %1$s از دلتاچت استفاده نمی‌کند.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">در یک فهرست Broadcast گیرنده‌ها در یک گپ فقط خواندنی با شما، پیام‌ها را دریافت می‌کنند.</string>
     <string name="chat_new_group_hint">نوشتن اولین پیام به دیگران امکان می‌دهد در این گروه پاسخ دهند. \n\n• مشکلی نیست اگر همه اعضا از دلتاچت استفاده نکنند\n\n• دریافت اولین پیام ممکن است به زمان بیشتری نیاز داشته باشد. </string>
     <string name="chat_record_slide_to_cancel">برای لغو بکشید.</string>
@@ -893,8 +897,6 @@ https://meet.jit.si/$ROOM
     <string name="remove_member_by_you">شما عضو گروه، %1$s، را حذف کردید.  </string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">عضو گروه، %1$s، توسط %2$s حذف شد. </string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">شما گروه را ترک کردید.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">ترک گروه توسط %1$s.</string>
     <string name="group_image_deleted_by_you">شما تصویر گروه را حذف کردید.</string>

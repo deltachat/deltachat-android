@@ -258,13 +258,18 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Повідомлення до...</string>
     <string name="clone_chat">Клонувати чат</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Список трансляцій</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Списки трансляцій</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Новий Список трансляцій</string>
     <string name="add_recipients">Додати одержувачів</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">Редагувати список трансляцій</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">Назва списку трансляцій</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Будь ласка, введіть назву для списку трансляцій.</string>
     <string name="menu_send">Послати</string>
     <string name="menu_toggle_keyboard">Увімкнути емодзі-клавіатуру</string>
@@ -396,8 +401,6 @@
     <string name="videochat_invitation">Запрошення до відео чату</string>
     <string name="videochat_invitation_body">Вас запрошено у відео-чат, клікніть %1$s аби приєднатися.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Ви впевнені, що хочете залишити цю групу?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">¿Видалити %d чат на всіх Ваших пристроях?</item>
         <item quantity="few">¿Видалити %d чати на всіх Ваших пристроях?</item>
@@ -429,7 +432,7 @@
     <string name="ask_start_chat_with">Створити чат з %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Видалити %1$s із групи?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Видалити %1$s зі списку трансляцій?</string>
     <string name="open_url_confirmation">Ви впевнені, що хочете відкрити це посилання?</string>
 
@@ -466,6 +469,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Відправити повідомлення → %1$s.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">У списку трансляцій одержувачі будуть отримувати повідомлення в чаті з Вами в режимі тільки-для-читання.</string>
     <string name="chat_new_group_hint">Інші побачать цю групу лише після того, як ви надішлете перше повідомлення.</string>
     <string name="chat_record_slide_to_cancel">Рухайте для скасування</string>
@@ -932,8 +936,6 @@
     <string name="remove_member_by_you">Ви видалили учасника %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s видалив (-ла) учасника %1$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Ви залишили групу.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s залишив (-ла) групу.</string>
     <string name="group_image_deleted_by_you">Ви видалили емблему групи.</string>

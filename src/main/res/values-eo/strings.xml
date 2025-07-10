@@ -188,9 +188,11 @@
     <string name="menu_new_contact">Nova kontakto</string>
     <string name="menu_new_chat">Nova babilo</string>
     <string name="menu_new_group">Nova grupo</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Elsenda Listo</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Elsendaj Listoj</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Nova Elsenda Listo</string>
     <string name="add_recipients">Aldoni Ricevantojn</string>
     <string name="menu_send">Sendi</string>
@@ -277,8 +279,6 @@
 
     <string name="file_saved_to">Dosiero konservita kiel \"%1$s\".</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Ĉu vi estas certa, ke vi volas forlasi tiun ĉi grupon?</string>
     <string name="ask_forward">Plusendi mesaĝojn al %1$s?</string>
     <string name="ask_start_chat_with">Babili kun %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->

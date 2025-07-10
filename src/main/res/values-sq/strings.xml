@@ -236,13 +236,18 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Bisedoni me… </string>
     <string name="clone_chat">Klononi Fjalosjen</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Listë Transmetimi</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Lista Transmetimi</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Listë e Re Transmetimi</string>
     <string name="add_recipients">Shtoni Marrës</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">Përpunoni Listë Transmetimesh</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">Emër Liste Transmetimesh</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Ju lutemi, jepni një emër për listën e transmetimeve</string>
     <string name="menu_send">Dërgoje</string>
     <string name="menu_toggle_keyboard">Shfaq/fshih Tastierë Emoji-sh</string>
@@ -372,8 +377,6 @@
     <string name="videochat_invitation">Ftesë për fjalosje me video</string>
     <string name="videochat_invitation_body">Jeni ftuar në një fjalosje video, klikoni mbi %1$s që të hyni në të.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Jeni i sigurt se doni ta braktisni këtë grup?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Të fshihet %d fjalosje në krejt pajisjet tuaja?</item>
         <item quantity="other">Të fshihen %d fjalosje në krejt pajisjet tuaja?</item>
@@ -399,7 +402,7 @@
     <string name="ask_start_chat_with">Të bisedohet me %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Të hiqet %1$s nga grupi?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Të hiqen %1$s prej liste transmetimi?</string>
     <string name="open_url_confirmation">Doni të hapet kjo lidhje?</string>
 
@@ -430,6 +433,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Dërgoni një mesazh për %1$s.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">Në një listë transmetimesh, marrësit do të marrin mesazhe në një fjalosje të llojit “vetëm lexim” me ju.</string>
     <string name="chat_new_group_hint">Të tjerët do ta shohin këtë grup pasi të keni dërguar një mesazh të parë.</string>
     <string name="chat_record_slide_to_cancel">Rrëshqiteni që të anulohet</string>
@@ -895,8 +899,6 @@
     <string name="remove_member_by_you">Hoqët anëtarin %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Anëtari %1$s u hoq nga %2$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">E braktisët grupin.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Grupi u braktis nga %1$s.</string>
     <string name="group_image_deleted_by_you">Fshitë figurën e grupit.</string>

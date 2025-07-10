@@ -188,8 +188,6 @@
 
     <string name="file_saved_to">Fitxategia \"%1$s\" helbidean gordeta</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Ziur talde honetatik atera nahi duzula?</string>
     <string name="ask_forward">Birbidali mezuak %1$s erabiltzaileari?</string>
     <string name="ask_export_attachment">Esportatu eranskina? Eranskinak esportatzeak zure beste gailuko beste aplikazioek atzitzea ahalbidetuko du.\n\nJarraitu?</string>
     <string name="ask_block_contact">Blokeatu kontaktu hau? Ez dituzu kontaktu honen mezu gehiago jasoko.</string>

@@ -195,9 +195,11 @@
     <string name="menu_new_contact">Contact Nou</string>
     <string name="menu_new_chat">Chat Nou</string>
     <string name="menu_new_group">Grup Nou</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Listă de difuzare</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Liste de difuzare</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Noua Listă de Difuzare</string>
     <string name="add_recipients">Adăugați Destinatari</string>
     <string name="menu_send">Trimiteți</string>
@@ -311,8 +313,6 @@
     <string name="videochat_invitation">Invitație la chat video</string>
     <string name="videochat_invitation_body">Sunteți invitat la un chat video, faceți clic %1$s pentru a vă alătura.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Ești sigur că vrei să părăsești acest grup?</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ștergeți %d mesaj?</item>
@@ -329,7 +329,7 @@
     <string name="ask_start_chat_with">Chat cu %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Scoateți  %1$s din grup?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Eliminați %1$s din lista de difuzare?</string>
     <string name="open_url_confirmation">Doriți să deschideți acest link?</string>
 

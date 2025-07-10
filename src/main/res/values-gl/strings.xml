@@ -227,9 +227,11 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Conversar con…</string>
     <string name="clone_chat">Clonar conversa</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Lista de difusión</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Listas de difusión</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Nova lista de difusión</string>
     <string name="add_recipients">Engadir correspondentes</string>
     <string name="menu_send">Enviar</string>
@@ -358,8 +360,6 @@
     <string name="videochat_invitation">Convite a chat de vídeo</string>
     <string name="videochat_invitation_body">Convidáronte a un chat de vídeo, preme %1$s para unirte.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Seguro que desexa abandonar o grupo?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Eliminar %d conversa en todos os teus dispositivos?</item>
         <item quantity="other">Eliminar %d conversas en todos os teus dispositivos?</item>
@@ -385,7 +385,7 @@
     <string name="ask_start_chat_with">Conversa con %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Eliminar  %1$s do grupo?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Eliminar %1$s da lista de difusión?</string>
     <string name="open_url_confirmation">Queres abrir esta ligazón?</string>
 
@@ -837,8 +837,6 @@
     <string name="remove_member_by_you">Eliminaches a %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%1$s eliminado por %2$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Saíches do grupo</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s deixou o grupo.</string>
     <string name="group_image_deleted_by_you">Eliminaches a imaxe do grupo</string>

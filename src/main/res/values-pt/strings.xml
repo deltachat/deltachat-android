@@ -139,8 +139,6 @@
     <string name="share_location_for_two_hours">por 2 horas</string>
     <string name="share_location_for_six_hours">por 6 horas</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Tem certeza que deseja deixar este grupo?</string>
     <string name="ask_forward">Reencaminhar mensages para %1$s?</string>
     <string name="ask_export_attachment">Exportar anexo? A exportação de anexos permitirá o seu acesso a qualquer outra aplicação no seu dispositivo.\n\nContinuar?</string>
     <string name="ask_block_contact">Bloquear este contacto? Não receberá mais mensagens deste contacto.</string>

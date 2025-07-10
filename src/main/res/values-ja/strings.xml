@@ -248,8 +248,6 @@
     <string name="videochat_invitation">ビデオ通話に招待</string>
     <string name="videochat_invitation_body">ビデオ通話に招待されて、%1$sで参加</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">本当に退室しますか</string>
     <string name="ask_forward">%1$sにメッセージを転送しますか？</string>
     <string name="ask_forward_multiple">%1$dチャットにメッセージを転送しますか？</string>
     <string name="ask_export_attachment">添付ファイルをエクスポートしますか？添付ファイルをエクスポートすると、他のアプリからもアクセスできるようになります。\n\nよろしいですか？</string>
