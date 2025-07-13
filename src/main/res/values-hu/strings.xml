@@ -97,7 +97,7 @@
     <string name="no_browser_installed">Nincs telepítve böngésző.</string>
     <string name="file_not_found">%1$s nem található.</string>
     <!-- the placeholder will be replaced by the name of a file -->
-    <string name="cannot_save_file">Nem lehet elmenteni a következőt: %1$s.</string>
+    <string name="cannot_save_file">Nem lehet menteni a következőt: %1$s.</string>
     <string name="copied_to_clipboard">Vágólapra másolva.</string>
     <string name="contacts_headline">Névjegyek</string>
     <string name="email_address">E-mail-cím</string>
@@ -246,6 +246,12 @@
     <string name="broadcast_lists">Adásliták</string>
     <!-- deprecated -->
     <string name="new_broadcast_list">Új adáslista</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Csatorna</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Csatornák</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Új csatorna</string>
     <string name="add_recipients">Címzettek hozzáadása</string>
     <!-- deprecated -->
     <string name="edit_broadcast_list">Adáslista szerkesztése</string>
@@ -253,6 +259,8 @@
     <string name="broadcast_list_name">Adáslista neve</string>
     <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Adjon meg egy nevet az adáslistának</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Csatorna neve</string>
     <string name="menu_send">Küldés</string>
     <string name="menu_toggle_keyboard">Váltás emodzsibillentyűzetre</string>
     <string name="menu_edit_group">Csoport szerkesztése</string>
@@ -262,6 +270,7 @@
     <string name="menu_unarchive_chat">Archiválás visszavonása</string>
     <string name="menu_add_attachment">Fájl mellékelése</string>
     <string name="menu_leave_group">Csoport elhagyása</string>
+    <string name="menu_leave_channel">Csatorna elhagyása</string>
     <string name="menu_delete_chat">Csevegés törlése</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Csevegés kiürítése</string>
@@ -363,7 +372,7 @@
         <item quantity="one">A következő fájl elküldése neki: %s?</item>
         <item quantity="other">A következő %d fájl elküldése „%s” számára?</item>
     </plurals>
-    <string name="file_saved_to">A fájl elmentve ide: „%1$s”.</string>
+    <string name="file_saved_to">Fájl mentve ide: „%1$s”.</string>
 
     <string name="videochat">Videócsevegés</string>
     <string name="videochat_invite_user_to_videochat">Meghívja egy videócsevegésbe őt: %1$s?</string>
@@ -381,6 +390,9 @@
     <string name="videochat_invitation">Videócsevegési meghívó</string>
     <string name="videochat_invitation_body">Ön meg lett híva egy videócsevegésbe, kattintson ide: %1$s a csatlakozáshoz.</string>
 
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Biztosan elhagyja a csatornát?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Töröl %d csevegést az összes eszközén?</item>
         <item quantity="other">Töröl %d csevegést az összes eszközén?</item>
@@ -408,6 +420,8 @@
     <string name="ask_remove_members">Eltávolítja a csoportból őt: %1$s?</string>
     <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Eltávolítja az adáslistából őt: %1$s?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Eltávolítja a csatornából a következőt: %1$s?</string>
     <string name="open_url_confirmation">Biztosan megnyitja ezt a hivatkozást?</string>
 
 
@@ -439,6 +453,8 @@
     <string name="chat_new_one_to_one_hint">Üzenet küldése „%1$s” számára.</string>
     <!-- deprecated -->
     <string name="chat_new_broadcast_hint">Az adáslistán a címzettek csak olvasható módban kapják meg az üzeneteket öntől.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">A csatornák egy blogszerű eszköz az üzenetek megosztására a közönséggel.</string>
     <string name="chat_new_group_hint">Mások csak az első üzenet elküldése után fogják látni ezt a csoportot.</string>
     <string name="chat_record_slide_to_cancel">Visszavonás csúsztatással</string>
     <string name="chat_record_explain">Hangüzenet rögzítéséhez koppintson és tartsa lenyomva; Az elküldéshez engedje el.</string>
@@ -762,8 +778,8 @@
     <string name="pref_chats">Csevegések</string>
     <string name="pref_in_chat_sounds">Csevegésen belüli hangok</string>
     <string name="pref_view_log">Naplófájl megtekintése</string>
-    <string name="pref_saved_log">A naplófájl elmentve a „Letöltések” nevű mappába</string>
-    <string name="pref_save_log_failed">Nem sikerült elmenteni a naplófájlt</string>
+    <string name="pref_saved_log">A naplófájl mentve a „Letöltések” nevű mappába</string>
+    <string name="pref_save_log_failed">Nem sikerült menteni a naplófájlt</string>
     <string name="pref_log_header">Naplófájl</string>
     <string name="pref_other">Egyéb</string>
     <string name="pref_backup">Biztonsági mentés</string>
@@ -905,6 +921,8 @@
     <string name="remove_member_by_you">Ön eltávolította őt: %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s eltávolította őt: %1$s.</string>
+    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
+    <string name="group_left_by_you">Ön elhagyta a csevegést.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s elhagyta a csoportot.</string>
     <string name="group_image_deleted_by_you">Ön törölte a csoport profilképét.</string>
