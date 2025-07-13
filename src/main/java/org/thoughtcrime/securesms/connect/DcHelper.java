@@ -252,6 +252,7 @@ public class DcHelper {
     dcContext.setStockTranslation(177, context.getString(R.string.reaction_by_other));
     dcContext.setStockTranslation(190, context.getString(R.string.secure_join_wait));
     dcContext.setStockTranslation(192, context.getString(R.string.secure_join_takes_longer));
+    dcContext.setStockTranslation(193, context.getString(R.string.donate_device_msg));
   }
 
   public static File getImexDir() {
