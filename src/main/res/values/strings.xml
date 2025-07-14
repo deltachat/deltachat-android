@@ -359,7 +359,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Add to Home Screen</string>
     <string name="donate">Donate</string>
-    <string name="donate_device_msg">❤️ Seems you\'re enjoying Delta Chat!\n\nPlease consider donating to help that Delta Chat stays free for everyone.\n\nWhile Delta Chat is free to use and open source, development costs money. Help keeping us to keep Delta Chat independent and make it more awesome in the future.\n\nhttps://delta.chat/donate</string>
+    <string name="donate_device_msg">❤️ Seems you\'re enjoying Delta Chat!\n\nPlease consider donating to help ensure that Delta Chat stays free for everyone.\n\nWhile Delta Chat is free to use and open source, development costs money. Help us to keep Delta Chat independent and make it even more awesome in the future.\n\nhttps://delta.chat/donate</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
     <string name="mute_for_eight_hours">Mute for 8 hours</string>
