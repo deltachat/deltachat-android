@@ -16,7 +16,8 @@
 * Removed padlocks, as encrypted is the default "normal" state. Instead, unencrypted email is marked with a small email / letter  (✉️) icon
 * Classic email chats/threads get a big email / letter icon making it easy to recognize
 * After some time, add a device message asking to donate. Can't wait? Donate today at https://delta.chat/donate
-* Update to core 2.0.0
+* Allow to sort profiles up in the profile switcher
+* Update to core 2.1.0
 
 ## v1.58.4
 2025-05
