@@ -261,6 +261,10 @@
     <string name="please_enter_broadcast_list_name">Please enter a name for the broadcast list.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Channel Name</string>
+    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">New E-Mail</string>
+    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <string name="subject">Subject</string>
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Toggle Emoji Keyboard</string>
     <string name="menu_edit_group">Edit Group</string>
@@ -355,6 +359,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Add to Home Screen</string>
     <string name="donate">Donate</string>
+    <string name="donate_device_msg">❤️ Seems you\'re enjoying Delta Chat!\n\nPlease consider donating to help ensure that Delta Chat stays free for everyone.\n\nWhile Delta Chat is free to use and open source, development costs money. Help us to keep Delta Chat independent and make it even more awesome in the future.\n\nhttps://delta.chat/donate</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
     <string name="mute_for_eight_hours">Mute for 8 hours</string>

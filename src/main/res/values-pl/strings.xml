@@ -264,6 +264,12 @@
     <string name="broadcast_lists">Lista rozgłoszeniowa</string>
     <!-- deprecated -->
     <string name="new_broadcast_list">Nowa lista rozgłoszeniowa</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Kanał</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Kanały</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Nowy kanał</string>
     <string name="add_recipients">Dodaj odbiorców</string>
     <!-- deprecated -->
     <string name="edit_broadcast_list">Edytuj listę rozgłoszeniową</string>
@@ -271,6 +277,8 @@
     <string name="broadcast_list_name">Nazwa listy rozgłoszeniowej</string>
     <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Wpisz nazwę listy rozgłoszeniowej</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Nazwa kanału</string>
     <string name="menu_send">Wyślij</string>
     <string name="menu_toggle_keyboard">Przełącz klawiaturę emoji</string>
     <string name="menu_edit_group">Edytuj grupę</string>
@@ -280,6 +288,7 @@
     <string name="menu_unarchive_chat">Przywróć czat z archiwum</string>
     <string name="menu_add_attachment">Dodaj załącznik</string>
     <string name="menu_leave_group">Opuść grupę</string>
+    <string name="menu_leave_channel">Opuść kanał</string>
     <string name="menu_delete_chat">Usuń czat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Wyczyść czat</string>
@@ -401,6 +410,9 @@
     <string name="videochat_invitation">Zaproszenie do czatu wideo</string>
     <string name="videochat_invitation_body">Masz zaproszenie do czatu wideo, naciśnij %1$s, aby dołączyć.</string>
 
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Na pewno chcesz opuścić?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Usunąć %d czat ze wszystkich urządzeń?</item>
         <item quantity="few">Usunąć %d czaty ze wszystkich urządzeń?</item>
@@ -434,6 +446,8 @@
     <string name="ask_remove_members">Usunąć %1$s z grupy?</string>
     <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Usunąć odbiorcę %1$s z listy rozgłoszeniowej?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Usunąć %1$s z kanału?</string>
     <string name="open_url_confirmation">Czy chcesz otworzyć ten link?</string>
 
 
@@ -471,6 +485,8 @@
     <string name="chat_new_one_to_one_hint">Wyślij wiadomość do %1$s.</string>
     <!-- deprecated -->
     <string name="chat_new_broadcast_hint">Na liście rozgłoszeniowej odbiorcy będą otrzymywać wiadomości w czacie tylko do odczytu.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">Kanały są narzędziem typu „jeden do wielu” do nadawania wiadomości.</string>
     <string name="chat_new_group_hint">Napisz pierwszą wiadomość, by inni mogli odpowiedzieć w tej grupie.\n\n• Nie ma problemu, jeśli nie wszyscy członkowie korzystają z Delta Chat.\n\n• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
     <string name="chat_record_slide_to_cancel">PRZESUŃ, BY ANULOWAĆ</string>
     <string name="chat_record_explain">Dotknij i przytrzymaj, aby nagrać wiadomość głosową, zwolnij, aby wysłać</string>
@@ -529,7 +545,7 @@
     <string name="open_external_url_trust_domain">Nie pytaj ponownie dla %1$s</string>
     <string name="puny_code_warning_header">Wykryto podejrzany link</string>
     <!-- placeholder contains the hostname converted to ascii -->
-    <string name="puny_code_warning_question">Czy na pewno chcesz odwiedzić %1$s?</string>
+    <string name="puny_code_warning_question">Na pewno chcesz odwiedzić %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Wybrano link, który może przekłamywać znaki poprzez użycie podobnie wyglądających znaków z różnych alfabetów. Podążanie za linkiem oznaczonym %1$s doprowadzi do %2$s, co jest normalne dla znaków niełacińskich. Jeśli nie spodziewałeś się takich znaków, ten link może być szkodliwy.</string>
 
@@ -716,7 +732,7 @@
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Przenieś na górę</string>
     <string name="delete_account">Usuń konto</string>
-    <string name="delete_account_ask">Czy na pewno chcesz usunąć dane swojego konta?</string>
+    <string name="delete_account_ask">Na pewno chcesz usunąć dane swojego konta?</string>
     <string name="delete_account_explain_with_name">Wszystkie dane konta „%s” na tym urządzeniu zostaną usunięte, w tym konfiguracja szyfrowania end-to-end, kontakty, czaty, wiadomości i multimedia. Tej operacji nie można cofnąć.</string>
     <string name="unconfigured_account">Nieskonfigurowane konto</string>
     <string name="unconfigured_account_hint">Otwórz konto, aby je skonfigurować</string>
@@ -937,6 +953,8 @@
     <string name="remove_member_by_you">Usunięto członka %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Użytkownik %2$s usunął członka %1$s.</string>
+    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
+    <string name="group_left_by_you">Opuszczono</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Grupa opuszczona przez %1$s.</string>
     <string name="group_image_deleted_by_you">Usunięto obraz grupy.</string>
