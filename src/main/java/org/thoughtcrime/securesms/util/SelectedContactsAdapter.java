@@ -37,16 +37,18 @@ public class SelectedContactsAdapter extends BaseAdapter {
   @Nullable private ItemClickListener            itemClickListener;
   @NonNull  private final List<Integer>          contacts = new LinkedList<>();
   private final boolean isBroadcast;
+  private final boolean isUnencrypted;
   @NonNull  private final DcContext              dcContext;
   @NonNull  private final GlideRequests          glideRequests;
 
   public SelectedContactsAdapter(@NonNull Context context,
                                    @NonNull  GlideRequests glideRequests,
-                                   boolean isBroadcast)
+                                   boolean isBroadcast, boolean isUnencrypted)
   {
     this.context       = context;
     this.glideRequests = glideRequests;
     this.isBroadcast   = isBroadcast;
+    this.isUnencrypted   = isUnencrypted;
     this.dcContext     = DcHelper.getContext(context);
   }
 
@@ -112,7 +114,7 @@ public class SelectedContactsAdapter extends BaseAdapter {
     boolean verified = false;
 
     if(contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
-      name.setText(context.getString(isBroadcast? R.string.add_recipients : R.string.group_add_members));
+      name.setText(context.getString(isBroadcast || isUnencrypted? R.string.add_recipients : R.string.group_add_members));
       name.setTypeface(null, Typeface.BOLD);
       phone.setVisibility(View.GONE);
     } else {

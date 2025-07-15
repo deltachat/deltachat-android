@@ -17,7 +17,8 @@
 * Classic email chats/threads get a big email / letter icon making it easy to recognize
 * After some time, add a device message asking to donate. Can't wait? Donate today at https://delta.chat/donate
 * Allow to sort profiles up in the profile switcher
-* Update to core 2.1.0
+* Add new option to create unencrypted email thread
+* Update to core 2.2.0
 
 ## v1.58.4
 2025-05
