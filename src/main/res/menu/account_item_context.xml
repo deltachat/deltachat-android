@@ -8,6 +8,9 @@
   <item android:title="@string/profile_tag"
       android:id="@+id/menu_set_tag"/>
 
+  <item android:title="@string/move_to_top"
+        android:id="@+id/menu_move_to_top"/>
+
   <item android:title="@string/delete"
         android:id="@+id/delete"/>
 
