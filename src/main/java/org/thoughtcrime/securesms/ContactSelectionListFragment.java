@@ -278,7 +278,7 @@ public class ContactSelectionListFragment extends    Fragment
   @Override
   public Loader<DcContactsLoader.Ret> onCreateLoader(int id, Bundle args) {
     final boolean allowCreation = getActivity().getIntent().getBooleanExtra(ALLOW_CREATION, true);
-    final boolean addCreateContactLink = allowCreation && !isSelectVerfied();
+    final boolean addCreateContactLink = allowCreation && isUnencrypted();
     final boolean addCreateGroupLinks = allowCreation && !isRelayingMessageContent(getActivity()) && !isMulti();
     final boolean addScanQRLink = allowCreation && !isMulti();
 
