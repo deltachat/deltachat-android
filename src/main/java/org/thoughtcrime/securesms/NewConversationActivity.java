@@ -102,6 +102,10 @@ public class NewConversationActivity extends ContactSelectionActivity {
   public void onContactSelected(int contactId) {
     if(contactId == DcContact.DC_CONTACT_ID_NEW_GROUP) {
       startActivity(new Intent(this, GroupCreateActivity.class));
+    } else if(contactId == DcContact.DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP) {
+      Intent intent = new Intent(this, GroupCreateActivity.class);
+      intent.putExtra(GroupCreateActivity.UNENCRYPTED, true);
+      startActivity(intent);
     } else if(contactId == DcContact.DC_CONTACT_ID_NEW_BROADCAST) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.CREATE_BROADCAST, true);

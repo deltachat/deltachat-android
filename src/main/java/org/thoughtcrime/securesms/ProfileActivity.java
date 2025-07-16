@@ -315,10 +315,12 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     String profileImagePath;
     String title;
     Uri profileImageUri;
+    boolean chatIsEncrypted = true;
     if(chatId!=0) {
       DcChat dcChat = dcContext.getChat(chatId);
       profileImagePath = dcChat.getProfileImage();
       title = dcChat.getName();
+      chatIsEncrypted = dcChat.isEncrypted();
     } else {
       DcContact dcContact = dcContext.getContact(contactId);
       profileImagePath = dcContact.getProfileImage();
@@ -336,7 +338,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       intent.putExtra(MediaPreviewActivity.ACTIVITY_TITLE_EXTRA, title);
       intent.putExtra( // show edit-button, if the user is allowed to edit the name/avatar
               MediaPreviewActivity.EDIT_AVATAR_CHAT_ID,
-              (chatIsMultiUser && !chatIsInBroadcast && !chatIsMailingList) ? chatId : 0
+              (chatIsMultiUser && chatIsEncrypted && !chatIsInBroadcast && !chatIsMailingList) ? chatId : 0
       );
       startActivity(intent);
     } else if (chatIsMultiUser){
