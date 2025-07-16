@@ -973,9 +973,11 @@
     <string name="ephemeral_timer_weeks_by_other">Disappearing messages timer set to %1$s weeks by %2$s.</string>
     <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
     <string name="chat_protection_broken">%1$s sent a message from another device.</string>
-    <string name="chat_protection_enabled_tap_to_learn_more">Messages are guaranteed to be end-to-end encrypted from now on. Tap to learn more.</string>
-    <string name="chat_protection_enabled_explanation">It is now guaranteed that all messages in this chat are end-to-end encrypted.\n\nEnd-to-end encryption keeps messages private between you and your chat partners. Not even servers, providers or relays can read them.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">Messages are end-to-end encrypted. Tap to learn more.</string>
+    <string name="chat_protection_enabled_explanation">All messages in this chat are end-to-end encrypted.\n\nEnd-to-end encryption keeps messages private between you and your chat partners. Not even servers, providers or relays can read them.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s sent a message from another device. Tap to learn more.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">End-to-end encryption cannot be guaranteed anymore, likely because %1$s reinstalled Delta Chat or sent a message from another device.\n\nYou may meet them in person and scan their QR code again to reestablish guaranteed end-to-end encryption.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s requires end-to-end encryption which is not setup for this chat yet. Tap to learn more.</string>
     <string name="invalid_unencrypted_explanation">To establish end-to-end-encryption, you may meet contacts in person and scan their QR Code to introduce them.</string>
@@ -1034,12 +1036,12 @@
     <string name="secure_join_started">%1$s invited you to join this group.\n\nWaiting for the device of %2$s to reply…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s replied, waiting for being added to the group…</string>
-    <string name="secure_join_wait">Establishing guaranteed end-to-end encryption, please wait…</string>
+    <string name="secure_join_wait">Establishing end-to-end encryption, please wait…</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Could not yet establish guaranteed end-to-end encryption, but you may already send a message.</string>
     <string name="secure_join_takes_longer">The contact must be online to proceed.\n\nThis process will continue automatically in background.</string>
     <string name="contact_verified">%1$s introduced.</string>
-    <string name="contact_not_verified">Cannot establish guaranteed end-to-end encryption with %1$s.</string>
+    <string name="contact_not_verified">Cannot establish end-to-end encryption with %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Introduced by %1$s</string>
     <string name="verified_by_you">Introduced by me</string>
