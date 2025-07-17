@@ -1220,6 +1220,8 @@
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
 
     <!-- device messages for updates -->
+    <string name="update_2_0_android">What\'s new?\n\n🔒 Enhanced security: encryption is the norm and communication can\'t never drop to unencrypted in a chat, hence the small padlock icon in the messages are not needed anymore. Using the app to read your unencrypted E-Mail account is still supported, such messages and chats will have a mail letter icon marker\n\n🪪 New enhanced profile screen\n\n🎮 New shortcut button for quick access to the apps sent in the current chat\n\n\n❤️ Help us keep the app independent and make it even more awesome in the future: %1$s</string>
+
     <string name="update_1_50_android">What\'s new?\n\n❤️‍🔥 New emojis picker with more emoji\n\n🎮 Enhanced in-chat apps: Get notifications and open supporting apps in context, i.e. open an added calendar entry directly\n\n👍 Get notified about reactions to your messages\n\n... 🛠️ FIXES and EVEN MORE at %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ \"Switch Profile\" option moved: Tap your profile image in the upper corner of the main screen to add or switch profiles 💡</string>
 </resources>
