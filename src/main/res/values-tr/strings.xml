@@ -246,6 +246,12 @@
     <string name="broadcast_lists">Yayın Listeleri</string>
     <!-- deprecated -->
     <string name="new_broadcast_list">Yeni Yayın Listesi</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Kanal</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Kanallar</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Yeni Kanal</string>
     <string name="add_recipients">Alıcılar Ekle</string>
     <!-- deprecated -->
     <string name="edit_broadcast_list">Yayın Listesini Düzenle</string>
@@ -253,6 +259,12 @@
     <string name="broadcast_list_name">Yayın Listesi Adı</string>
     <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Lütfen yayın listesi için bir ad girin.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Kanal Adı</string>
+    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">Yeni E-Posta</string>
+    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <string name="subject">Konu</string>
     <string name="menu_send">Gönder</string>
     <string name="menu_toggle_keyboard">Emoji Klavyesine Geç</string>
     <string name="menu_edit_group">Öbeği Düzenle</string>
@@ -262,6 +274,7 @@
     <string name="menu_unarchive_chat">Sohbeti Arşivleme</string>
     <string name="menu_add_attachment">İlişik Ekle</string>
     <string name="menu_leave_group">Öbekten Ayrıl</string>
+    <string name="menu_leave_channel">Kanaldan Ayrıl</string>
     <string name="menu_delete_chat">Sohbeti Sil</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Sohbeti Temizle</string>
@@ -346,6 +359,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Ana Ekrana Ekle</string>
     <string name="donate">Bağış</string>
+    <string name="donate_device_msg">❤️ Delta Chat\'in tadını çıkarıyor gibisiniz!\n\nDelta Chat\'in herkes için ücretsiz kalmasını sağlamak için lütfen bağış yapmayı düşünün.\n\nDelta Chat, kullanımı ücretsiz ve açık kaynaklıdır, geliştirme paraya mâl olur. Delta Chat\'in bağımsızlığını korumak ve onu gelecekte daha da harika yapmak için bize yardımcı olun.\n\nhttps://delta.chat/donate</string>
 
     <string name="mute_for_one_hour">1 saatliğine sessize al</string>
     <string name="mute_for_eight_hours">8 saatliğine sessize al</string>
@@ -381,6 +395,9 @@
     <string name="videochat_invitation">Video sohbeti çağrısı</string>
     <string name="videochat_invitation_body">Bir video sohbetine çağrıldınız; katılmak için %1$s öğesini tıklayın.</string>
 
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Ayrılmak istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Tüm aygıtlarınızdaki %d sohbet silinsin mi?</item>
         <item quantity="other">Tüm aygıtlarınızdaki %d sohbet silinsin mi?</item>
@@ -408,6 +425,8 @@
     <string name="ask_remove_members">%1$s öbekten kaldırılsın mı?</string>
     <!-- deprecated -->
     <string name="ask_remove_from_broadcast">%1$s yayın listesinden kaldırılsın mı?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">%1$s kanaldan kaldırılsın mı?</string>
     <string name="open_url_confirmation">Bu bağlantıyı açmak istiyor musunuz?</string>
 
 
@@ -439,6 +458,8 @@
     <string name="chat_new_one_to_one_hint">%1$s kişisine bir ileti gönderin.</string>
     <!-- deprecated -->
     <string name="chat_new_broadcast_hint">Bir yayın listesinde, alıcılar sizinle salt okunur bir sohbette iletiler alacak.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">Kanallar, iletilerinizi yayınlamak için birden çoğa bir araçtır.</string>
     <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu öbeği görecek.</string>
     <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
     <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve basılı tutun, göndermek için bırakın</string>
@@ -905,6 +926,8 @@
     <string name="remove_member_by_you">%1$s üyesini kaldırdınız.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s tarafından %1$s üyesi kaldırıldı.</string>
+    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
+    <string name="group_left_by_you">Ayrıldınız.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s tarafından öbekten ayrılındı.</string>
     <string name="group_image_deleted_by_you">Öbek görselini sildiniz.</string>
@@ -950,9 +973,11 @@
     <string name="ephemeral_timer_weeks_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s hafta olarak ayarlandı.</string>
     <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
     <string name="chat_protection_broken">%1$s başka bir aygıttan bir ileti gönderdi.</string>
-    <string name="chat_protection_enabled_tap_to_learn_more">Bundan böyle iletiler uçtan uca şifreleme güvencelidir. Daha fazlasını öğrenmek için dokunun.</string>
-    <string name="chat_protection_enabled_explanation">Artık bu sohbetteki tüm iletiler uçtan uca şifreleme güvencelidir.\n\nUçtan uca şifreleme, iletilerinizi sizin ve sohbet ortaklarınızın arasında özel tutar. Sunucular, sağlayıcılar ya da aktarıcılar bile onları okuyamaz.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">İletiler uçtan uca şifreleniyor. Daha fazlasını öğrenmek için dokunun.</string>
+    <string name="chat_protection_enabled_explanation">Bu sohbetteki tüm iletiler uçtan uca şifreleniyor.\n\nUçtan uca şifreleme, iletilerinizi sizin ve sohbet ortaklarınızın arasında özel tutar. Sunucular, sağlayıcılar ya da aktarıcılar bile onları okuyamaz.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s başka bir aygıttan bir ileti gönderdi. Daha fazlasını öğrenmek için dokunun.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">Uçtan uca şifreleme artık güvencelenemiyor; çünkü büyük olasılıkla %1$s Delta Chat\'i yeniden yükledi ya da başka bir aygıttan ileti gönderdi.\n\nOnlarla kişisel olarak tanışabilir ve güvenceli uçtan uca şifrelemeyi yeniden kurmak için onların QR kodunu yeniden tarayabilirsiniz.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s, bu sohbet için henüz ayarlanmayan uçtan uca şifrelemeyi gerektirir. Daha fazlasını öğrenmek için dokunun.</string>
     <string name="invalid_unencrypted_explanation">Uçtan uca şifrelemeyi kurmak için kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
@@ -1011,12 +1036,12 @@
     <string name="secure_join_started">%1$s sizi bu öbeğe katılmaya çağırdı.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s yanıtladı; öbeğe eklenmesi bekleniyor…</string>
-    <string name="secure_join_wait">Güvencelenen uçtan uca şifreleme kuruluyor, lütfen bekleyin…</string>
+    <string name="secure_join_wait">Uçtan uca şifreleme kuruluyor, lütfen bekleyin…</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Henüz güvencelenen uçtan uca şifreleme kurulamadı; ama zaten bir ileti gönderebilirsiniz.</string>
     <string name="secure_join_takes_longer">Sürdürmek için kişi çevrimiçi olmalıdır.\n\nBu işlem, arka planda otomatik olarak sürecek.</string>
     <string name="contact_verified">%1$s tanıtıldı.</string>
-    <string name="contact_not_verified">%1$s ile güvencelenen uçtan uca şifreleme kurulamıyor.</string>
+    <string name="contact_not_verified">%1$s ile uçtan uca şifreleme kurulamıyor.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">%1$s tarafından tanıtıldı</string>
     <string name="verified_by_you">Benim tarafımdan tanıtıldı</string>

@@ -279,6 +279,10 @@
     <string name="please_enter_broadcast_list_name">Введите название списка рассылки.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Название канала</string>
+    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">Новое письмо</string>
+    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <string name="subject">Тема</string>
     <string name="menu_send">Отправить</string>
     <string name="menu_toggle_keyboard">Эмодзи клавиатура</string>
     <string name="menu_edit_group">Редактировать группу</string>
@@ -373,6 +377,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Добавить на главный экран</string>
     <string name="donate">Пожертвовать</string>
+    <string name="donate_device_msg">❤️ Кажется, вам нравится Delta Chat!\n\nРассмотрите возможность сделать пожертвование, чтобы Delta Chat и дальше оставался бесплатным для всех пользователей.\n\nDelta Chat — это бесплатное приложение с открытым исходным кодом, но его разработка требует денег. Поддержите нас, чтобы сохранить независимость Delta Chat и сделать его ещё более крутым в будущем.\n\nhttps://delta.chat/donate</string>
 
     <string name="mute_for_one_hour">На 1 час</string>
     <string name="mute_for_eight_hours">На 8 часов</string>
@@ -969,40 +974,42 @@
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Вы включили автоудаление сообщений через %1$s сек</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_seconds_by_other">%2$s включил(а) автоудаление сообщений через %1$s сек</string>
+    <string name="ephemeral_timer_seconds_by_other">%2$s включает автоудаление сообщений через %1$s сек</string>
     <string name="ephemeral_timer_1_minute_by_you">Вы включили автоудаление сообщений через 1 минуту.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s включил(а) автоудаление сообщений через 1 минуту.</string>
+    <string name="ephemeral_timer_1_minute_by_other">%1$s включает автоудаление сообщений через 1 минуту.</string>
     <string name="ephemeral_timer_1_hour_by_you">Вы включили автоудаление сообщений через 1 час.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_hour_by_other">%1$s включил(а) автоудаление сообщений через 1 час.</string>
+    <string name="ephemeral_timer_1_hour_by_other">%1$s включает автоудаление сообщений через 1 час.</string>
     <string name="ephemeral_timer_1_day_by_you">Вы включили автоудаление сообщений через 1 день.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_day_by_other">%1$s включил(а) автоудаление сообщений через 1 день.</string>
+    <string name="ephemeral_timer_1_day_by_other">%1$s включает автоудаление сообщений через 1 день.</string>
     <string name="ephemeral_timer_1_week_by_you">Вы включили автоудаление сообщений через 1 неделю.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_week_by_other">%1$s включил(а) автоудаление сообщений через 1 неделю.</string>
+    <string name="ephemeral_timer_1_week_by_other">%1$s включает автоудаление сообщений через 1 неделю.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Вы включили автоудаление сообщений через %1$s минут.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_minutes_by_other">%2$s включил(а) автоудаление сообщений через %1$s минут.</string>
+    <string name="ephemeral_timer_minutes_by_other">%2$s включает автоудаление сообщений через %1$s минут.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Вы включили автоудаление сообщений через %1$s часов.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_hours_by_other">%2$s включил(а) автоудаление сообщений через %1$s часов.</string>
+    <string name="ephemeral_timer_hours_by_other">%2$s включает автоудаление сообщений через %1$s часов.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Вы включили автоудаление сообщений через %1$s дней.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_days_by_other">%2$s включил(а) автоудаление сообщений через %1$s дней.</string>
+    <string name="ephemeral_timer_days_by_other">%2$s включает автоудаление сообщений через %1$s дней.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Вы включили автоудаление сообщений через %1$s недель.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_weeks_by_other">%2$s включил(а) автоудаление сообщений через %1$s недель.</string>
+    <string name="ephemeral_timer_weeks_by_other">%2$s включает автоудаление сообщений через %1$s недель.</string>
     <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
     <string name="chat_protection_broken">%1$s отправил сообщение с другого устройства.</string>
-    <string name="chat_protection_enabled_tap_to_learn_more">Теперь сообщения гарантированно шифруются сквозным шифрованием. Нажмите, чтобы узнать больше.</string>
-    <string name="chat_protection_enabled_explanation">Теперь сообщения в этом чате гарантированно шифруются сквозным шифрованием.\n\nСквозное шифрование гарантирует, что сообщения остаются конфиденциальными между вами и вашими собеседниками. Даже ваш провайдер электронной почты не имеет доступа к ним.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">Сообщения защищены сквозным шифрованием. Нажмите, чтобы узнать больше.</string>
+    <string name="chat_protection_enabled_explanation">Все сообщения в этом чате защищены сквозным шифрованием.\n\nСквозное шифрование гарантирует, что сообщения остаются конфиденциальными между вами и вашими собеседниками. Ни серверы, ни провайдеры, ни ретрансляторы не смогут их прочитать.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s отправил сообщение с другого устройства. Нажмите, чтобы узнать больше.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">Сквозное шифрование больше не может быть гарантировано, вероятно, потому что %1$s переустановил Delta Chat или отправил сообщение с другого устройства.\n\nВы можете встретиться с ним лично и отсканировать QR-код снова чтобы восстановить гарантированное сквозное шифрование.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s требуется сквозное шифрование, которое ещё не настроено для данного чата. Нажмите, чтобы узнать больше.</string>
     <string name="invalid_unencrypted_explanation">Чтобы установить сквозное шифрование, вы можете встретиться с контактами лично и отсканировать их QR-код, чтобы подтвердить их личность.</string>
@@ -1061,12 +1068,12 @@
     <string name="secure_join_started">%1$s приглашает вас в группу.\n\nОжидаем ответ от %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s ответил(а), ожидаем добавления в группу…</string>
-    <string name="secure_join_wait">Устанавливается гарантированное сквозное шифрование, пожалуйста, подождите...</string>
+    <string name="secure_join_wait">Устанавливается сквозное шифрование, пожалуйста, подождите…</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Не удалось установить гарантированное сквозное шифрование, но вы уже можете отправить сообщение.</string>
     <string name="secure_join_takes_longer">Контакт должен быть в режиме онлайн, чтобы продолжить.\n\nЭтот процесс будет автоматически продолжен в фоновом режиме.</string>
     <string name="contact_verified">%1$s подтверждён.</string>
-    <string name="contact_not_verified">Невозможно установить гарантированное сквозное шифрование с %1$s.</string>
+    <string name="contact_not_verified">Невозможно установить сквозное шифрование с %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Подтверждён: %1$s</string>
     <string name="verified_by_you">Подтверждён: Лично</string>

@@ -294,7 +294,6 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Добавяне към началния екран</string>
     <string name="donate">Дарение</string>
-
     <string name="mute_for_one_hour">Спиране на звука за 1 час</string>
     <string name="mute_for_eight_hours">Спиране на звука за 8 часа</string>
     <string name="mute_for_one_day">Спиране на звука за 1 ден</string>
@@ -849,7 +848,9 @@
     <string name="chat_protection_broken">%1$s изпрати съобщение от друго устройство.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">От тук нататък е гарантирано, че съобщенията ще бъдат криптирани от край до край. Докоснете, за да научите повече.</string>
     <string name="chat_protection_enabled_explanation">От тук нататък е гарантирано, че всички съобщения в този чат са криптирани от край до край.\n\nКриптирането от край до край запазва поверителността на съобщенията между вас и вашите партньори в чата. Дори Вашият e-mail доставчик не може да ги прочете.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s изпрати съобщение от друго съобщение. Докоснете, за да научите повече.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">Криптирането от край до край повече не може да бъде гарантирано, вероятно защото %1$s преинсталира Delta Chat или изпрати съобщение от друго устройство.\n\nБихте могли да се срещнете с него/нея лично, да сканирате неговия/нейния QR код отново и отново да установите гарантирано криптиране от край до край.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️%1$s изисква криптиране от край до край, което все още не е установено за този чат. Докоснете, за да научите повече.</string>
     <string name="invalid_unencrypted_explanation">За да установите криптиране от край до край, бихте могли да се срещате с лицата, с които желаете да контактувате, лично и да сканирате техните QR кодове, за да ги въведете.</string>

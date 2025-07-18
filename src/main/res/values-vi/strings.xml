@@ -283,7 +283,6 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Thêm vào Màn hình chính</string>
     <string name="donate">Quyên tặng</string>
-
     <string name="mute_for_one_hour">Tắt tiếng trong 1 giờ</string>
     <string name="mute_for_eight_hours">Tắt tiếng trong 8 giờ</string>
     <string name="mute_for_one_day">Tắt tiếng trong 1 ngày</string>
@@ -791,7 +790,9 @@
     <string name="chat_protection_broken">%1$s đã gửi tin nhắn từ một thiết bị khác.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Tin nhắn được đảm bảo sẽ được mã hóa hai đầu kể từ bây giờ. Nhấn để tìm hiểu thêm.</string>
     <string name="chat_protection_enabled_explanation">Hiện tại, chúng tôi đảm bảo rằng tất cả tin nhắn trong cuộc trò chuyện này đều được mã hóa hai đầu.\n\nMã hóa hai đầu giúp giữ tin nhắn giữa bạn và đối tác trò chuyện của bạn ở chế độ riêng tư. Ngay cả nhà cung cấp email của bạn cũng không thể đọc được chúng.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s đã gửi tin nhắn từ một thiết bị khác. Nhấn để tìm hiểu thêm.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">Mã hóa hai đầu không còn được đảm bảo nữa, có thể vì %1$s đã cài đặt lại Delta Chat hoặc đã gửi tin nhắn từ một thiết bị khác.\n\nBạn có thể gặp trực tiếp họ và quét lại mã QR của họ để thiết lập lại tính năng mã hóa hai đầu được đảm bảo kết thúc mã hóa.</string>
     <string name="learn_more">Tìm hiểu thêm</string>
 
