@@ -357,7 +357,6 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Přidat na domovskou obrazovku</string>
     <string name="donate">Darovat</string>
-
     <string name="mute_for_one_hour">Ztlumit na 1 hodinu</string>
     <string name="mute_for_eight_hours">Ztlumit na 8 hodin</string>
     <string name="mute_for_one_day">Ztlumit na 1 den</string>
@@ -975,7 +974,9 @@
     <string name="chat_protection_broken">Uživatel %1$s odeslal zprávu z jiného zařízení.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Nyní je garantováno koncové šifrování vašich zpráv. Stiskněte pro více informací.</string>
     <string name="chat_protection_enabled_explanation">Nyní je garantováno, že všechny zprávy v tomto chatu jsou koncově šifrovány.\n\nKoncové šifrování zajišťuje soukromí mezi vámi a vašimi kontakty. Nedokáže je přečíst ani váš poskytovatel e-mailu.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">Uživatel %1$s odeslal zprávu z jiného zařízení. Stiskněte pro více informací.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">Koncové šifrování již nemůže být garantováno, pravděpodobně protože uživatel %1$s přeinstaloval Delta Chat nebo odeslal zprávu z jiného zařízení.\n\nPro obnovení garantovaného koncového šifrování se sejděte osobně a naskenujte si své QR kódy.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️%1$s vyžaduje koncové šifrování, které pro tento chat ještě není nastaveno. Stiskněte pro více informací. </string>
     <string name="invalid_unencrypted_explanation">Pro navázání koncově šifrovaného spojení se můžete se svými kontakty setkat osobně a naskenovat jejich QR kódy.</string>

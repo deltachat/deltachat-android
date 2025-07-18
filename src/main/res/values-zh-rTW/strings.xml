@@ -337,7 +337,6 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">新增至主畫面</string>
     <string name="donate">捐贈</string>
-
     <string name="mute_for_one_hour">靜音1小時</string>
     <string name="mute_for_eight_hours">靜音8小時</string>
     <string name="mute_for_one_day">靜音1天</string>
@@ -936,7 +935,9 @@
     <string name="chat_protection_broken">%1$s從另一台裝置傳送了一條訊息。</string>
     <string name="chat_protection_enabled_tap_to_learn_more">從現在開始，保證消息進行端到端加密。輕觸以瞭解更多資訊。</string>
     <string name="chat_protection_enabled_explanation">現在可以保證此聊天中的所有消息都是端到端加密的。\n\n端到端加密使您和您的聊天夥伴之間的消息保持私密。甚至您的電子郵件供應商也無法讀取它們。</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s從另一台裝置傳送了一條訊息。輕觸以瞭解更多資訊。</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">無法再保證端到端加密，可能是因為%1$s重新安裝了 Delta Chat 或從其他裝置傳送了訊息\n\n您可以再次當面掃描他們的QR碼，以重新建立有保證的端到端加密。</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s需要端到端加密，但尚未為此聊天設置。輕觸以瞭解更多資訊。</string>
     <string name="invalid_unencrypted_explanation">要建立端到端加密，您可以當面掃描聯絡人的QR碼。</string>

@@ -300,7 +300,6 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Lägg till på hemskärmen</string>
     <string name="donate">Donera</string>
-
     <string name="mute_for_one_hour">Tysta 1 timma</string>
     <string name="mute_for_eight_hours">Tysta 8 timmar</string>
     <string name="mute_for_one_day">Tysta 1 dag</string>
@@ -857,7 +856,9 @@
     <string name="chat_protection_broken">%1$s skickade ett meddelande från en annan enhet.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Meddelanden är garanterat totalsträckskrypterade från och med nu. Tryck för att få veta mer.</string>
     <string name="chat_protection_enabled_explanation">Det är nu garanterat att alla meddelanden i den här chatten är totalsträckskrypterade.\n\nTotalsträckskryptering håller meddelanden privata mellan dig och dina chattpartners. Inte ens din e-postleverantör kan läsa dem.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s skickade ett meddelande från en annan enhet. Tryck för att läsa mer.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">Totalsträckskryptering kan inte garanteras längre, troligen för att %1$s installerade om Delta Chat eller skickade ett meddelande från en annan enhet.\n\nDu kan träffa dem personligen och skanna deras QR-kod igen för att återupprätta garanterad totalsträckskryptering.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s kräver totalsträckskryptering som inte är kofigurerad för den här chatten ännu. Tryck för att lära dig mer.</string>
     <string name="invalid_unencrypted_explanation">För att skapa totalsträckskryptering kan du träffa kontakter personligen och skanna deras QR-kod för att introducera dem.</string>
