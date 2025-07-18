@@ -261,6 +261,7 @@
     <string name="please_enter_broadcast_list_name">Please enter a name for the broadcast list.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Channel Name</string>
+    <string name="email">E-Mail</string>
     <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">New E-Mail</string>
     <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
@@ -1089,7 +1090,7 @@
     <string name="ImageEditorHud_flip">Flip</string>
     <string name="ImageEditorHud_rotate">Rotate</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Encrypted message</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
