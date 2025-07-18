@@ -10,8 +10,8 @@ Delta Chat on hajutatud ja turvaline sõnumirakendus, mis sobib kasutamiseks per
 
 • Töökindel - toimib ka kehvades võrguoludes ja vaenulike võrgutegevuse korral.
 
-• Turvaline - auditeeritud läbiv krüptimine, mis on turvaline võrgu- ja serverirünnete vastu.
+• Turvaline - auditeeritud läbiv krüptimine, mis tagab turvalisuse võrgu- ja serverirünnete vastu.
 
-• Iseseisev - võid kasutada ka oam serverit ja/või e-posti aadressi.
+• Iseseisev - võid kasutada ka oma serverit ja/või e-posti aadressi.
 
 • Vaba ja tasuta - internetistandarditel põhinev avatud lähtekoodiga vaba tarkvara.
