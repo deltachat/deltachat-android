@@ -332,7 +332,6 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Afegeix a la pantalla d\'inici</string>
     <string name="donate">Feu un donatiu</string>
-
     <string name="mute_for_one_hour">Silencia 1 hora</string>
     <string name="mute_for_eight_hours">Silencia 8 hores</string>
     <string name="mute_for_one_day">Silencia 1 dia</string>
@@ -936,7 +935,9 @@
     <string name="chat_protection_broken">%1$s ha enviat un missatge des d\'un altre dispositiu.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Us garantim que a partir d\'ara els missatges són xifrats d\'extrem a extrem. Toqueu per a obtenir més informació.</string>
     <string name="chat_protection_enabled_explanation">Ara es garanteix que tots els missatges d\'aquest xat són xifrats d\'extrem a extrem.\n\nEl xifratge d\'extrem a extrem manté privats els missatges entre vós i els companys de xat. Ni tan sols el vostre proveïdor de correu electrònic pot llegir-los.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s ha enviat un missatge des d\'un altre dispositiu. Toqueu per a obtenir més informació.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">No es pot garantir el xifrat d\'extrem a extrem, probablement perquè %1$s ha reinstal·lat Delta Chat o ha enviat un missatge des d\'un altre dispositiu.\n\n Podeu trobar-vos físicament amb la persona i tornar a escanejar el seu codi QR per tomar-hi a tenir xifrat d\'extrem a extrem.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">%1$srequereix xifratge d\'extrem a extrem, que encara no s\'ha configurat per a aquest xat. Toqueu per a obtenir més informació.</string>
     <string name="invalid_unencrypted_explanation">Per a establir xifratge d\'extrem a extrem, heu de trobar-vos amb els contactes en persona i escanejar el seu codi QR per a poder afegir-los.</string>

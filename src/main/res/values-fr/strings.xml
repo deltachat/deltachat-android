@@ -337,7 +337,6 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Ajouter à l\'écran d\'accueil</string>
     <string name="donate">Faire un don</string>
-
     <string name="mute_for_one_hour">Désactiver pour 1 heure</string>
     <string name="mute_for_eight_hours">Désactiver pour 8 heures</string>
     <string name="mute_for_one_day">Désactiver pour 1 jour</string>
@@ -933,7 +932,9 @@
     <string name="chat_protection_broken">%1$s a envoyé un message depuis un nouvel appareil.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Les messages sont désormais garantis chiffrés de bout en bout. Appuyer pour en savoir plus.</string>
     <string name="chat_protection_enabled_explanation">Il n\'est pas garanti que tous les messages de cette discussion sont chiffrés de bout en bout.\n\nLe chiffrement de bout en bout assure la confidentialité des messages échangés par les membres d\'une discussion. Même votre fournisseur de courriel ne peut pas les lire. </string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s a envoyé un message depuis un nouvel appareil. Appuyez pour en savoir plus.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">Le chiffrement de bout en bout ne peut plus être garanti, probablement parce que %1$s a réinstallé Delta Chat ou envoyé un message depuis un nouvel appareil.\n\nVous pouvez convenir d\'une rencontre physique afin de scanner à nouveau son code QR pour ré-instaurer la garantie du chiffrement de bout en bout.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s nécessite un chiffrement de bout en bout qui n\'est pas encore configuré sur cette discussion. Appuyez pour en savoir plus.</string>
     <string name="invalid_unencrypted_explanation">Pour établir un chiffrement de bout en bout vous pouvez rencontrer vos contacts en personne et scanner leur code QR.</string>

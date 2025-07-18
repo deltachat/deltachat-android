@@ -255,6 +255,12 @@
     <string name="broadcast_lists">Liste Trasmissioni</string>
     <!-- deprecated -->
     <string name="new_broadcast_list">Nuova Lista Trasmissione</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Canale</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Canali</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Nuovo Canale</string>
     <string name="add_recipients">Aggiungi Destinatari</string>
     <!-- deprecated -->
     <string name="edit_broadcast_list">Modifica Lista Trasmissione</string>
@@ -262,6 +268,12 @@
     <string name="broadcast_list_name">Nome Lista Trasmissione</string>
     <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Per piacere inserisci un nome per la lista trasmissione.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Nome Canale</string>
+    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">Nuova E-Mail</string>
+    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <string name="subject">Oggetto</string>
     <string name="menu_send">Invia</string>
     <string name="menu_toggle_keyboard">Attiva/Disattiva Tastiera Emoji</string>
     <string name="menu_edit_group">Modifica Gruppo</string>
@@ -271,6 +283,7 @@
     <string name="menu_unarchive_chat">Ripristina Chat</string>
     <string name="menu_add_attachment">Aggiungi Allegato</string>
     <string name="menu_leave_group">Abbandona Gruppo</string>
+    <string name="menu_leave_channel">Abbandona Canale</string>
     <string name="menu_delete_chat">Elimina Chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Cancella Messaggi</string>
@@ -355,6 +368,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Aggiungi alla Schermata Iniziale</string>
     <string name="donate">Dona</string>
+    <string name="donate_device_msg">❤️ Sembra che Delta Chat ti piaccia!\n\nConsidera una donazione per contribuire a garantire che Delta Chat rimanga gratuita per tutti.\n\nSebbene Delta Chat sia gratuita e open source, lo sviluppo richiede soldi. Aiutaci a mantenere Delta Chat indipendente e a renderla ancora più fantastica in futuro.\n\nhttps://delta.chat/donate</string>
 
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
     <string name="mute_for_eight_hours">Silenzia per 8 ore</string>
@@ -391,6 +405,9 @@
     <string name="videochat_invitation">Invito alla chat video</string>
     <string name="videochat_invitation_body">Sei invitato a una chat video, fai clic %1$s per partecipare.</string>
 
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Sei sicuro di voler uscire?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Eliminare %d chat su tutti i tuoi dispositivi?</item>
         <item quantity="many">Eliminare %d chats su tutti i tuoi dispositivi?</item>
@@ -421,6 +438,8 @@
     <string name="ask_remove_members">Rimuovere %1$s dal gruppo?</string>
     <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Rimuovere %1$s dalla lista di trasmissione?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Rimuovere %1$s dal canale?</string>
     <string name="open_url_confirmation">Vuoi aprire questo collegamento?</string>
 
 
@@ -455,6 +474,8 @@
     <string name="chat_new_one_to_one_hint">Invia un messaggio a %1$s.</string>
     <!-- deprecated -->
     <string name="chat_new_broadcast_hint">In una lista di trasmissione, i destinatari riceveranno i messaggi in una chat di sola lettura con te.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">I canali sono uno strumento uno-a-molti per trasmettere i tuoi messaggi.</string>
     <string name="chat_new_group_hint">Gli altri vedranno questo gruppo solo dopo che avrai inviato un primo messaggio.</string>
     <string name="chat_record_slide_to_cancel">Scorri per annullare</string>
     <string name="chat_record_explain">Tocca e mantieni per registrare un messaggio vocale, rilascia per inviare </string>
@@ -921,6 +942,8 @@
     <string name="remove_member_by_you">Hai rimosso il membro %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Membro %1$s rimosso da %2$s.</string>
+    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
+    <string name="group_left_by_you">Sei uscito.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Gruppo lasciato da %1$s.</string>
     <string name="group_image_deleted_by_you">Hai eliminato l\'immagine del gruppo.</string>
@@ -968,7 +991,9 @@
     <string name="chat_protection_broken">%1$s ha inviato un messaggio da un altro dispositivo.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">D\'ora in poi i messaggi saranno garantiti crittografati end-to-end.  Tocca per saperne di più.</string>
     <string name="chat_protection_enabled_explanation">Ora è garantito che tutti i messaggi in questa chat siano cifrati end-to-end.\n\nLa crittografia end-to-end mantiene privati i messaggi ​​tra te e i tuoi partner di chat. Nemmeno il server, il fornitore o il trasmettitore di e-mail può leggerli.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s ha inviato un messaggio da un altro dispositivo. Tocca per saperne di più.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">La crittografia end-to-end non può più essere garantita, probabilmente perché %1$s ha reinstallato Delta Chat o inviato un messaggio da un altro dispositivo.\n\nPuoi incontrarlo di persona e scansionare nuovamente il suo Codice QR per ristabilire la crittografia end-to-end garantita.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s richiede la crittografia end-to-end che non è ancora configurata per questa chat. Tocca per saperne di più.</string>
     <string name="invalid_unencrypted_explanation">Per stabilire la crittografia end-to-end, potresti incontrare i contatti di persona e scansionare il loro Codice QR per verificarli.</string>
