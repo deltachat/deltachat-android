@@ -45,7 +45,6 @@ public class DcChat {
     public native boolean isDeviceTalk      ();
     public native boolean canSend           ();
     public native boolean isProtected       ();
-    public native boolean isProtectionBroken();
     public native boolean isSendingLocations();
     public native boolean isMuted           ();
     public native boolean isContactRequest  ();
@@ -67,10 +66,6 @@ public class DcChat {
     }
     public boolean isOutBroadcast() {
         return getType() == DC_CHAT_TYPE_OUT_BROADCAST;
-    }
-
-    public boolean isHalfBlocked() {
-      return isProtectionBroken() || isContactRequest();
     }
 
     // working with raw c-data
