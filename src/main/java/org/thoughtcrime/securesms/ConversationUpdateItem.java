@@ -116,9 +116,6 @@ public class ConversationUpdateItem extends BaseConversationItem
     if (infoType == DcMsg.DC_INFO_PROTECTION_ENABLED) {
       verifiedIcon.setVisibility(VISIBLE);
       verifiedIcon.setImageResource(R.drawable.ic_verified);
-    } else if (infoType == DcMsg.DC_INFO_PROTECTION_DISABLED) {
-      verifiedIcon.setVisibility(VISIBLE);
-      verifiedIcon.setImageResource(R.drawable.ic_verified_broken);
     } else {
       verifiedIcon.setVisibility(GONE);
     }
