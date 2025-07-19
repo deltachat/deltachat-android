@@ -270,6 +270,7 @@
     <string name="please_enter_broadcast_list_name">Per piacere inserisci un nome per la lista trasmissione.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nome Canale</string>
+    <string name="email">E-Mail</string>
     <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Nuova E-Mail</string>
     <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
@@ -1105,7 +1106,7 @@
     <string name="ImageEditorHud_flip">Capovolgi</string>
     <string name="ImageEditorHud_rotate">Ruota</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Messaggio cifrato</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
@@ -1235,7 +1236,6 @@
     <string name="perm_enable_bg_reminder_title">Tocca qui per ricevere messaggi mentre Delta Chat è in secondo piano.</string>
     <string name="perm_enable_bg_already_done">Hai già autorizzato Delta Chat a ricevere messaggi in secondo piano.\n\nSe i messaggi non arrivano in secondo piano, per piacere controlla anche le impostazioni di sistema.</string>
 
-    <!-- device messages for updates -->
     <string name="update_1_50_android">Novità?\n\n❤️‍🔥 Nuovo selettore di emoji con più emoji\n\n🎮 App in chat migliorate: ricevi notifiche e apri le app supportate nel contesto, es. apri una voce del calendario cliccando direttamente sul messaggio\n\n👍 Ricevi notifiche sulle reazioni ai tuoi messaggi...\n\n🛠️ CORREZIONI e ANCORA DI PIÙ su %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ Opzione \"Cambia Profilo\" spostata: Tocca l\'immagine del tuo profilo nell\'angolo superiore della schermata principale per aggiungere o cambiare profili 💡</string>
 </resources>

@@ -1045,7 +1045,7 @@
     <string name="ImageEditorHud_flip">Tourner</string>
     <string name="ImageEditorHud_rotate">Pivoter</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Message chiffré</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->

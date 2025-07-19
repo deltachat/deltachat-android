@@ -615,7 +615,7 @@
     <string name="ImageEditorHud_flip">反転</string>
     <string name="ImageEditorHud_rotate">回転</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">暗号化されたメッセージ</string>
 
     <string name="welcome_desktop">Delta Chatにようこそ</string>

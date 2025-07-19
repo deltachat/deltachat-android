@@ -776,7 +776,7 @@
     <string name="ImageEditorHud_flip">Apversti</string>
     <string name="ImageEditorHud_rotate">Pasukti</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Šifruota žinutė</string>
 
     <string name="about_licensed_under_desktop">Ši programinė įranga yra licencijuota pagal GNU GPL versiją 3, o pirminis kodas yra prieinamas „GitHub“ internetinėje svetainėje.</string>

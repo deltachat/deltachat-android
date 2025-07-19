@@ -279,6 +279,7 @@
     <string name="please_enter_broadcast_list_name">Wpisz nazwę listy rozgłoszeniowej</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nazwa kanału</string>
+    <string name="email">E-mail</string>
     <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Nowy e-mail</string>
     <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
@@ -1121,7 +1122,7 @@
     <string name="ImageEditorHud_flip">Przełącz</string>
     <string name="ImageEditorHud_rotate">Obróć</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Zaszyfrowana wiadomość</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
@@ -1251,7 +1252,6 @@
     <string name="perm_enable_bg_reminder_title">Dotknij tutaj, aby odbierać wiadomości, podczas gdy Delta Chat działa w tle.</string>
     <string name="perm_enable_bg_already_done">Pozwolono już Delta Chat na odbieranie wiadomości w tle.\n\nJeśli wiadomości nadal nie docierają w tle, sprawdź też ustawienia systemu.</string>
 
-    <!-- device messages for updates -->
     <string name="update_1_50_android">Co nowego?\n\n❤️‍🔥 Nowy selektor emoji z większą liczbą emoji\n\n🎮 Ulepszone aplikacje czatu: Otrzymuj powiadomienia i otwieraj aplikacje pomocnicze w kontekście, np. otwieraj dodany wpis kalendarza bezpośrednio\n\n👍 Otrzymuj powiadomienia o reakcjach na swoje wiadomości\n\n... 🛠️ POPRAWKI i JESZCZE WIĘCEJ na %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ Opcja „Przełącz profil” została przeniesiona: Dotknij swojego zdjęcia profilowego w górnym rogu ekranu głównego, aby dodać lub przełączyć profile 💡</string>
 </resources>

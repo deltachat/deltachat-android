@@ -1112,7 +1112,7 @@ https://meet.jit.si/$ROOM
     <string name="ImageEditorHud_flip">برعکس کردن</string>
     <string name="ImageEditorHud_rotate">چرخاندن</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">پیام رمزگذاری شده</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->

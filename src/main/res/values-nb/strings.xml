@@ -386,7 +386,7 @@
     <!-- permissions -->
     <string name="perm_required_title">Tillatelse kreves</string>
     <string name="perm_continue">Fortsett</string>
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Kryptert melding</string>
 
     <string name="welcome_desktop">Velkommen til Delta Chat</string>
