@@ -68,10 +68,6 @@ public class DcChat {
         return getType() == DC_CHAT_TYPE_OUT_BROADCAST;
     }
 
-    public boolean isHalfBlocked() {
-      return isContactRequest();
-    }
-
     // working with raw c-data
 
     private long        chatCPtr;    // CAVE: the name is referenced in the JNI

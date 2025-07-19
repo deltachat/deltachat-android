@@ -1610,7 +1610,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   public void initializeContactRequest() {
-    if (!dcChat.isHalfBlocked()) {
+    if (!dcChat.isContactRequest()) {
       messageRequestBottomView.setVisibility(View.GONE);
       return;
     }
