@@ -464,16 +464,6 @@ public class DcHelper {
       }
   }
 
-  public static void showVerificationBrokenDialog(Context context, String name) {
-    new AlertDialog.Builder(context)
-      .setMessage(context.getString(R.string.chat_protection_broken_explanation, name))
-      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#nocryptanymore"))
-      .setNegativeButton(R.string.qrscan_title, (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
-      .setPositiveButton(R.string.ok, null)
-      .setCancelable(true)
-      .show();
-  }
-
   public static void showProtectionEnabledDialog(Context context) {
     new AlertDialog.Builder(context)
       .setMessage(context.getString(R.string.chat_protection_enabled_explanation))
