@@ -1088,7 +1088,7 @@
     <string name="ImageEditorHud_flip">Zrcadlení</string>
     <string name="ImageEditorHud_rotate">Otočení</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Šifrovaná zpráva</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
@@ -1218,7 +1218,6 @@
     <string name="perm_enable_bg_reminder_title">Stiskem nastavíte přijímání zpráv, když je aplikace Delta Chat na pozadí.</string>
     <string name="perm_enable_bg_already_done">Přijímání zpráv na pozadí jste již aplikaci Delta Chat povolili.\n\nV případě, že vám zprávy na pozadí stále nechodí, prosím zkontrolujte svá systémová nastavení.</string>
 
-    <!-- device messages for updates -->
     <string name="update_1_50_android">Co je nového?\n\n❤️‍🔥 Nová nabídka emoji s více druhy emoji\n\n🎮 Vylepšené aplikace v chatu: Oznámení a podpůrné aplikace přímo v kontextu chatu, např. odkaz na novou nové položky z kalendáři\n\n👍 Oznámení o reakcích na zprávy\n\n... 🛠️ OPRAVY a DALŠÍ na %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ Volba \"Přepnout profil\" byla přesunuta: Pro přidávání či přepínání profilů stiskněte svůj profilový obrázek v horním rohu hlavní obrazovky.</string>
 </resources>

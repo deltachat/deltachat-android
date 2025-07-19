@@ -969,7 +969,7 @@
     <string name="ImageEditorHud_flip">Vänd</string>
     <string name="ImageEditorHud_rotate">Rotera</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Krypterat meddelande</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->

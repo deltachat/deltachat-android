@@ -205,7 +205,7 @@
     <!-- permissions -->
     <string name="perm_required_title">منح إحدى الأذونات مطلو</string>
     <string name="perm_continue">استمر</string>
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">رسالة مشفرة</string>
 
     <string name="global_menu_preferences_language_desktop">اختر اللغة…</string>
