@@ -772,7 +772,7 @@
     <string name="ImageEditorHud_flip">뒤집기</string>
     <string name="ImageEditorHud_rotate">돌리기</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">암호화된 메시지</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->

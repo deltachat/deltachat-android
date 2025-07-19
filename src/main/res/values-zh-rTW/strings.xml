@@ -1049,7 +1049,7 @@
     <string name="ImageEditorHud_flip">翻轉</string>
     <string name="ImageEditorHud_rotate">旋轉</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">已加密的訊息</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
@@ -1179,7 +1179,6 @@
     <string name="perm_enable_bg_reminder_title">點擊此處可在 Delta Chat 處於後台時接收訊息。</string>
     <string name="perm_enable_bg_already_done">您已經允許 Delta Chat 在後台接收訊息。\n\n如果消息仍未在後台到達，請同時檢查您的系統設定。</string>
 
-    <!-- device messages for updates -->
     <string name="update_1_50_android">新功能\n\n❤️ 🔥 新的表情符號選擇器，包含更多表情符號\n\n🎮 增強的聊天應用程式：在上下文中獲取通知並打開支援應用程式，即直接打開添加的日曆條目\n\n👍獲取有關對您的消訊息的回應的通知\n\n...🛠️ 修復以及更多在%1$s</string>
     <string name="update_switch_profile_placement">ℹ️「切換賬戶」選項已移動：點擊主螢幕右上角的賬戶大頭貼以添加或切換賬戶 💡</string>
 </resources>

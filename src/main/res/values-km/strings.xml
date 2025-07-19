@@ -733,7 +733,7 @@
     <string name="ImageEditorHud_flip">ត្រឡប់</string>
     <string name="ImageEditorHud_rotate">បង្វិល</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">សារដែលបានធ្វើឲ្យសម្ងាត់</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
