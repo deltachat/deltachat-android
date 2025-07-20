@@ -1204,6 +1204,8 @@
     <string name="perm_enable_bg_reminder_title">点按此处即可在 Delta Chat 处于后台时接收消息。</string>
     <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n若 Delta Chat 在后台时消息仍未到达，请检查系统设置。</string>
 
+    <!-- device messages for updates -->
+    <string name="update_2_0">新版变化?\n\n💯 端到端加密现在可靠且永久。挂锁图标 🔒 没有了!\n\n✉️ 没有端到端加密的经典电子邮件用字母符号标记l\n\n😻 所有联系人的新的增强的个人资料屏\n\n🔲 新增快速访问聊天中所用应用的按钮\n\n❤️ 请捐赠帮助我们保持独立并继续带来改进: %1$s</string>
     <string name="update_1_50_android">有什么新功能？\n\n❤️‍🔥 新的表情符号选择器，包含更多表情符号\n\n🎮 增强的聊天应用：获取通知并在上下文中打开支持应用，即直接打开添加的日历条目\n\n👍 收到有关对您的消息的回应的通知\n\n…🛠️ %1$s 上的修复和更多内容</string>
     <string name="update_switch_profile_placement">ℹ️ “切换账号”选项已移动：点击主屏幕上角的个人资料图片以添加或切换账号 💡</string>
 </resources>

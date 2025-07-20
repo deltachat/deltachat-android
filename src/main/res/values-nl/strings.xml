@@ -1220,6 +1220,8 @@
     <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen als Delta Chat niet geopend is.</string>
     <string name="perm_enable_bg_already_done">Je hebt al toestemming gegeven voor het ophalen van berichten op de achtergrond.\n\nAls het nog steeds niet werkt, controleer dan de systeeminstellingen.</string>
 
+    <!-- device messages for updates -->
+    <string name="update_2_0">Wijzigingslog:\n\n💯 Eind-tot-eindversleuteling is voortaan betrouwbaarder én standaard. Slotjes 🔒 zijn verleden tijd!\n\n✉️ Klassieke e-mails zonder eind-tot-eindversleuteling worden voortaan gemarkeerd met een letter\n\n😻 Nieuwe, mooiere profielpagina\'s van al je contactpersonen\n\n🔲 Nieuwe knop voor snelle toegang tot apps in gesprekken\n\n❤️ Overweeg een donatie, zodat we onafhankelijk kunnen blijven en verbeteringen kunnen blijven aanbrengen: %1$s</string>
     <string name="update_1_50_android">Wijzigingslog:\n\n❤️‍🔥 Nieuwe emojikiezer met veel meer emojis\n\n🎮 Verbeterde apps in gesprekken: ontvang meldingen open ondersteunde apps met links, bijv. een agenda-uitnodiging\n\n👍 Ontvang meldingen bij reacties op berichten\n\n… 🛠️ Opgeloste fouten en VEEL MEER op %1$s</string>
     <string name="update_switch_profile_placement">ℹ️ De optie om een ander profiel te kiezen is verplaatst: druk op je profielfoto op het hoofdscherm om het profielmenu te openen.💡</string>
 </resources>
