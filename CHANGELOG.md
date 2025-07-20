@@ -18,7 +18,7 @@
 * After some time, add a device message asking to donate. Can't wait? Donate today at https://delta.chat/donate
 * Allow to sort profiles up in the profile switcher
 * Add new option to create unencrypted email thread
-* Update to core 2.2.0
+* Update to core 2.3.0
 
 ## v1.58.4
 2025-05
