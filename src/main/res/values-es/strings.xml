@@ -58,7 +58,7 @@
     <string name="save">Guardar</string>
     <string name="chat">Chat</string>
     <string name="media">Multimedia</string>
-    <string name="apps_and_media">Apps y medias</string>
+    <string name="apps_and_media">Apps y multimedia</string>
     <string name="profile">Perfil</string>
     <string name="all_profiles">Todos perfiles</string>
     <string name="current_profile">Perfil actual</string>
@@ -310,7 +310,7 @@
     <string name="menu_export_attachment">Exportar adjunto</string>
     <string name="menu_export_attachments">Exportar adjuntos</string>
     <string name="menu_all_media">Toda la multimedia</string>
-    <string name="all_apps_and_media">Todas apps y medias</string>
+    <string name="all_apps_and_media">Todas las apps y multimedia</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Mostrar en el chat</string>
     <string name="show_app_in_chat">Mostrar en el chat</string>
