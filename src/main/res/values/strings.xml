@@ -569,7 +569,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Square Grid</string>
     <string name="send_message">Send Message</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$s changed their address from %2$s to %3$s</string>
     <!-- deprecated -->
     <string name="aeap_explanation">You changed your email address from %1$s to %2$s.\n\nIf you now send a message to a verified group, contacts there will automatically replace the old with your new address.\n\nIt\'s highly advised to set up your old email provider to forward all emails to your new email address. Otherwise you might miss messages of contacts who did not get your new address yet.</string>
@@ -1040,13 +1040,15 @@
     <string name="secure_join_wait">Establishing end-to-end encryption, please wait…</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Could not yet establish guaranteed end-to-end encryption, but you may already send a message.</string>
+    <!-- deprecated, was stock string -->
     <string name="secure_join_takes_longer">The contact must be online to proceed.\n\nThis process will continue automatically in background.</string>
     <string name="contact_verified">%1$s introduced.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Cannot establish end-to-end encryption with %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Introduced by %1$s</string>
     <string name="verified_by_you">Introduced by me</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Changed setup for %1$s.</string>
     <string name="verified_contact_required_explain">To guarantee end-to-end-encryption, you can only add contacts with a green checkmark to this group.\n\nYou may meet contacts in person and scan their QR Code to introduce them.</string>
     <string name="mailto_dialog_header_select_chat">Select chat to send the message to</string>
