@@ -111,7 +111,6 @@ public class SelectedContactsAdapter extends BaseAdapter {
     final int contactId = (int)getItem(position);
     final boolean modifiable = contactId != DC_CONTACT_ID_ADD_MEMBER && contactId != DC_CONTACT_ID_SELF;
     Recipient recipient = null;
-    boolean verified = false;
 
     if(contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
       name.setText(context.getString(isBroadcast || isUnencrypted? R.string.add_recipients : R.string.group_add_members));
@@ -124,12 +123,10 @@ public class SelectedContactsAdapter extends BaseAdapter {
       name.setTypeface(null, Typeface.NORMAL);
       phone.setText(dcContact.getAddr());
       phone.setVisibility(View.VISIBLE);
-      verified = dcContact.isVerified();
     }
 
     avatar.clear(glideRequests);
     avatar.setAvatar(glideRequests, recipient, false);
-    name.setCompoundDrawablesWithIntrinsicBounds(0, 0, verified? R.drawable.ic_verified : 0, 0);
     delete.setVisibility(modifiable ? View.VISIBLE : View.GONE);
     delete.setColorFilter(DynamicTheme.isDarkTheme(context)? Color.WHITE : Color.BLACK);
     delete.setOnClickListener(view -> {
