@@ -18,7 +18,7 @@
 * After some time, add a device message asking to donate. Can't wait? Donate today at https://delta.chat/donate
 * Allow to sort profiles up in the profile switcher
 * Add new option to create unencrypted email thread
-* Tune down green checkmarks that are often confused with "contact verification"
+* Tune down green checkmarks that were often confused with Twitter's/WhatsApp's "verified" badges
 * Update to core 2.3.0
 
 ## v1.58.4
