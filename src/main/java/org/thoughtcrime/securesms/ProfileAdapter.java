@@ -341,6 +341,9 @@ public class ProfileAdapter extends RecyclerView.Adapter
           introducedBy = context.getString(R.string.verified_by, dcContext.getContact(verifierId).getDisplayName());
         }
         itemData.add(new ItemData(ITEM_INTRODUCED_BY, introducedBy, dcContact.isVerified()? R.drawable.ic_verified : 0));
+      } else if (dcContact.isVerified()) {
+        String introducedBy = context.getString(R.string.verified_by_unknown);
+        itemData.add(new ItemData(ITEM_INTRODUCED_BY, introducedBy, R.drawable.ic_verified));
       }
 
       if (dcContact != null) {
