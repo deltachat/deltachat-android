@@ -64,7 +64,7 @@ public abstract class MessageSelectorFragment
   protected void handleDeleteMessages(int chatId, final int[] messageIds) {
     DcChat dcChat = dcContext.getChat(chatId);
     boolean canDeleteForAll = true;
-    if (dcChat.canSend() && !dcChat.isSelfTalk()) {
+    if (dcChat.isEncrypted() && dcChat.canSend() && !dcChat.isSelfTalk()) {
       for(int msgId : messageIds) {
         DcMsg msg = dcContext.getMsg(msgId);
         if (!msg.isOutgoing() || msg.isInfo()) {
