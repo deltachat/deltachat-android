@@ -329,8 +329,9 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Digitalize para configurar um contato com %1$s</string>
     <string name="contact_verified">%1$s verificado.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Não é possível verificar %1$s</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Configuração alterada para %1$s</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Responder</string>
