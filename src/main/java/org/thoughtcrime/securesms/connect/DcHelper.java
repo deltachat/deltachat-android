@@ -462,7 +462,7 @@ public class DcHelper {
   public static void showProtectionEnabledDialog(Context context) {
     new AlertDialog.Builder(context)
       .setMessage(context.getString(R.string.chat_protection_enabled_explanation))
-      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#e2eeguarantee"))
+      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#e2ee"))
       .setPositiveButton(R.string.ok, null)
       .setCancelable(true)
       .show();

@@ -210,7 +210,8 @@ public class ProfileAdapter extends RecyclerView.Adapter
     else if(holder.itemView instanceof ProfileTextItem) {
       ProfileTextItem item = (ProfileTextItem) holder.itemView;
       item.setOnClickListener(view -> clickListener.onSettingsClicked(data.viewType));
-      item.set(data.label, data.icon);
+      boolean tintIcon = data.viewType != ITEM_INTRODUCED_BY;
+      item.set(data.label, data.icon, tintIcon);
       if (data.viewType == ITEM_LAST_SEEN || data.viewType == ITEM_ADDRESS) {
         int padding = (int)((float)context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding) * 1.2);
         item.setPadding(item.getPaddingLeft(), item.getPaddingTop(), item.getPaddingRight(), padding);
@@ -339,7 +340,10 @@ public class ProfileAdapter extends RecyclerView.Adapter
         } else {
           introducedBy = context.getString(R.string.verified_by, dcContext.getContact(verifierId).getDisplayName());
         }
-        itemData.add(new ItemData(ITEM_INTRODUCED_BY, introducedBy, 0));
+        itemData.add(new ItemData(ITEM_INTRODUCED_BY, introducedBy, dcContact.isVerified()? R.drawable.ic_verified : 0));
+      } else if (dcContact.isVerified()) {
+        String introducedBy = context.getString(R.string.verified_by_unknown);
+        itemData.add(new ItemData(ITEM_INTRODUCED_BY, introducedBy, R.drawable.ic_verified));
       }
 
       if (dcContact != null) {

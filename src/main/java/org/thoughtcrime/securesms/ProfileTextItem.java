@@ -34,7 +34,7 @@ public class ProfileTextItem extends LinearLayout {
     valueView = findViewById(R.id.value);
   }
 
-  public void set(String label, int icon) {
+  public void set(String label, int icon, boolean tint) {
     labelView.setText(label);
 
     if (icon != 0) {
@@ -42,7 +42,9 @@ public class ProfileTextItem extends LinearLayout {
       if (orgDrawable != null) {
         Drawable drawable = orgDrawable.mutate(); // avoid global state modification and showing eg. app-icon tinted also elsewhere
         drawable = DrawableCompat.wrap(drawable);
-        DrawableCompat.setTint(drawable, getResources().getColor(R.color.delta_accent));
+        if (tint) {
+          DrawableCompat.setTint(drawable, getResources().getColor(R.color.delta_accent));
+        }
         labelView.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
       }
     }
