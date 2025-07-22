@@ -408,7 +408,7 @@
     <string name="all_apps_empty_hint">채팅에서 보내거나 받은 개인 앱들이 여기에 나타납니다.</string>
     <string name="media_preview">미디어 미리보기</string>
     <string name="send_message">메시지 전송</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$s의 주소가 %2$s에서 %3$s로 변경됨.</string>
     <!-- deprecated -->
     <string name="aeap_explanation">이메일 주소를 %1$s에서 %2$s로 바꿨습니다.\n\n확인된 그룹으로 메시지를 보내면 해당 그룹의 연락처가 자동으로 이전 주소를 새 주소로 대체합니다.\n\n모든 이메일을 새 이메일 주소로 전달하도록 이전 이메일 공급자를 설정하는 것이 좋습니다. 그렇지 않으면 새 주소를 받지 못한 연락처의 메시지를 놓칠 수 있습니다.</string>
@@ -737,8 +737,9 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s이 응하여, 그룹에 추가되기를 기다리는 중입니다...</string>
     <string name="contact_verified">%1$s이 확인됨</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">%1$s 확인할 수 없음</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">%1$s에 대한 설정이 변경되었습니다.</string>
     <string name="mailto_dialog_header_select_chat">메시지를 보내려면 채팅을 선택하십시오</string>
     <!-- first placeholder is the name of the chat -->

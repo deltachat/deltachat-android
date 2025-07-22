@@ -270,6 +270,7 @@
     <string name="please_enter_broadcast_list_name">Por favor, introduce un nombre para la difusión.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nombre del canal</string>
+    <string name="email">Correo electrónico</string>
     <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Nuevo correo electrónico</string>
     <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
@@ -368,6 +369,8 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Añadir a la pantalla principal</string>
     <string name="donate">Donar</string>
+    <string name="donate_device_msg">❤️ ¡Parece que disfrutas de Delta Chat!\n\nPor favor, considera donar para ayudar a garantizar que Delta Chat siga siendo gratuito para todos.\n\nAunque Delta Chat es gratuito y de código abierto, su desarrollo cuesta dinero. Ayúdanos a mantener la independencia de Delta Chat y a hacerlo aún mejor en el futuro.\n\nhttps://delta.chat/donate</string>
+
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_eight_hours">Silenciar por 8 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>
@@ -557,7 +560,7 @@
     <string name="group_add_members">Añadir miembros</string>
     <string name="group_self_not_in_group">Debes ser un miembro del grupo para realizar esta acción.</string>
     <string name="profile_encryption">Cifrado</string>
-    <string name="profile_shared_chats">Chats compartidos</string>
+    <string name="profile_shared_chats">Chats en común</string>
     <string name="related_chats">Chats similares</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Miembros anteriores</string>
@@ -582,7 +585,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Cuadrícula cuadrada</string>
     <string name="send_message">Enviar mensaje</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$s cambió su dirección de %2$s a %3$s</string>
     <!-- deprecated -->
     <string name="aeap_explanation">Has cambiado tu dirección de correo electrónico de %1$s a %2$s.\n\nSi ahora envías un mensaje a un grupo verificado, los contactos de éste sustituirán automáticamente la antigua por tu nueva dirección.\n\nEs muy recomendable que configures tu antiguo proveedor de correo electrónico para que reenvíe todos los mensajes a tu nueva dirección. De lo contrario, podrías perderte los mensajes de los contactos que aún no han recibido tu nueva dirección.</string>
@@ -985,7 +988,7 @@
     <string name="ephemeral_timer_weeks_by_you">Estableciste el temporizador de la desaparición de mensajes en %1$s semanas.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Temporizador de la desaparición de mensajes establecido en %1$s semanas por %2$s.</string>
-    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <!-- deprecated -->
     <string name="chat_protection_broken">%1$s envió un mensaje desde otro dispositivo.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">A partir de ahora se garantiza que los mensajes están cifrados de extremo a extremo . Toca para obtener más información.</string>
     <string name="chat_protection_enabled_explanation">Ahora se garantiza que todos los mensajes en este chat están cifrados de extremo a extremo.\n\nEl cifrado de extremo a extremo mantiene los mensajes privados entre tú y tus compañeros de chat. Ni siquiera tu proveedor de correo electrónico puede leerlos.</string>
@@ -1053,13 +1056,16 @@
     <string name="secure_join_wait">Estableciendo cifrado de extremo a extremo garantizado, por favor, espere...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">No se pudo aún establecer el cifrado de extremo a extremo garantizado, pero ya puede enviar mensajes.</string>
+    <!-- deprecated, was stock string -->
     <string name="secure_join_takes_longer">El contacto debe estar en línea para continuar.\n\nEste proceso continuará automáticamente en segundo plano.</string>
     <string name="contact_verified">%1$s verificado.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">No se pudo verificar %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Verificado por %1$s</string>
     <string name="verified_by_you">Verificado por ti</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="verified_by_unknown">Introducido</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Configuración cambiada para %1$s.</string>
     <string name="verified_contact_required_explain">Para garantizar el cifrado de extremo a extremo, solo puedes añadir contactos con una marca de verificación verde</string>
     <string name="mailto_dialog_header_select_chat">Seleccione el chat para enviar el mensaje</string>
@@ -1233,6 +1239,10 @@
     <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras Delta Chat está en segundo plano.</string>
     <string name="perm_enable_bg_already_done">Ya has permitido que Delta Chat reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
 
+    <!-- device messages for updates -->
+    <string name="update_2_0">¿Qué hay de nuevo?\n\n💯 El cifrado de extremo a extremo es fiable y para siempre. ¡Se acabaron los candados 🔒!\n\n✉️ El correo electrónico clásico sin cifrado de extremo a extremo es marcado con un símbolo de carta.\n\n😻 Nueva pantalla de perfil mejorada para todos tus contactos.\n\n🔲 Nuevo botón para acceder rápidamente a las apps usadas en el chat.\n\n❤️ Dona para ayudarnos a mantener nuestra independencia y seguir mejorando: %1$s</string>
+    <!-- deprecated -->
     <string name="update_1_50_android">¿Qué hay de nuevo?\n\n❤️‍🔥 Nuevo selector de emojis con más emojis\n\n🎮 Aplicaciones de chat mejoradas: recibe notificaciones y abre aplicaciones en contexto, por ejemplo, abre una entrada de calendario agregada directamente\n\n👍 Recibe notificaciones sobre las reacciones a tus mensajes\n\n... 🛠️ CORRECCIONES y AÚN MÁS en %1$s</string>
+    <!-- deprecated -->
     <string name="update_switch_profile_placement">ℹ️ Se movió la opción \"Cambiar perfil\": toca tu imagen de perfil en la esquina superior de la pantalla principal para agregar o cambiar perfiles 💡</string>
 </resources>

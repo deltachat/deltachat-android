@@ -447,8 +447,9 @@
     <string name="qraccount_ask_create_and_login">Sortu kontu berria \"%1$s\" zerbitzarian eta saioa han hasi?</string>
     <string name="qraccount_qr_code_cannot_be_used">Eskaneatutako QR kodea ezin da kontu berri bat ezartzeko erabili.</string>
     <string name="contact_verified">%1$s egiaztatuta.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Ezin da %1$s egiaztatu</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Aldatu %1$s(r)en ezarpena</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Erantzun</string>

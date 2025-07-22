@@ -595,8 +595,9 @@
     <string name="qrshow_join_contact_no_connection_toast">インターネットに接続されていないので、QRコードの設定ができません。</string>
     <string name="qraccount_ask_create_and_login">%1$sに新しいメールアドレスを作ってログしますか。</string>
     <string name="contact_verified">%1$sを確認しました。</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">%1$sを確認できません。</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">設定が%1$sに変わりました。</string>
     <!-- notifications  -->
     <string name="notify_reply_button">返信</string>

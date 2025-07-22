@@ -473,7 +473,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Мрежа от квадрати</string>
     <string name="send_message">Изпращане на съобщение</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$s промени своя адрес от %2$s на %3$s</string>
     <!-- deprecated -->
     <string name="aeap_explanation">Променихте своя email адрес от %1$s на %2$s.\n\nАко от тук нататък изпратите съобщение до проверена група, контактите в нея автоматично ще заменят стария с новия Ви адрес.\n\nСилно се препоръчва да извършите настройка в предишния си доставчик на електронна поща така, че всички email съобщения да се препращат към новия Ви email адрес. В противен случай е възможно да не получавате съобщения от контакти, които все още не са получили новия Ви адрес.</string>
@@ -844,7 +844,7 @@
     <string name="ephemeral_timer_weeks_by_you">Установихте таймера на изчезващите съобщения на %1$s седмици.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Таймерът на изчезващите съобщения е установен на %1$s седмици от %2$s.</string>
-    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <!-- deprecated -->
     <string name="chat_protection_broken">%1$s изпрати съобщение от друго устройство.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">От тук нататък е гарантирано, че съобщенията ще бъдат криптирани от край до край. Докоснете, за да научите повече.</string>
     <string name="chat_protection_enabled_explanation">От тук нататък е гарантирано, че всички съобщения в този чат са криптирани от край до край.\n\nКриптирането от край до край запазва поверителността на съобщенията между вас и вашите партньори в чата. Дори Вашият e-mail доставчик не може да ги прочете.</string>
@@ -913,11 +913,12 @@
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Все още не може да бъде установено гарантирано криптиране от край до край, но вече можете да пратите съобщение.</string>
     <string name="contact_verified">%1$s е проверен.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Не може да бъде проверен %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Проверен от%1$s</string>
     <string name="verified_by_you">Представен от мен</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Настройката за %1$s е сменена.</string>
     <string name="verified_contact_required_explain">За да се гарантира криптирането от край до край, можете да добавяте в тази група само контакти, отбелязани със зелена отметка.\n\nБихте могли да се срещнете с лицата, с които желаете да контактувате, лично и да сканирате техните QR кодове, за да ги въведете.</string>
     <string name="mailto_dialog_header_select_chat">Изберете чат, към който да бъде пратено съобщението</string>
