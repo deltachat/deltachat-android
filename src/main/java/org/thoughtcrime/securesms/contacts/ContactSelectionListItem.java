@@ -123,11 +123,6 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     else {
       this.numberContainer.setVisibility(View.GONE);
     }
-    if (contact != null && contact.isVerified()) {
-      nameView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_verified,0);
-    } else {
-      nameView.setCompoundDrawablesWithIntrinsicBounds(0,0, 0,0);
-    }
   }
 
   public int getSpecialId() {
