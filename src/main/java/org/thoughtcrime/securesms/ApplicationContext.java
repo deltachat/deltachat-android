@@ -197,30 +197,30 @@ public class ApplicationContext extends MultiDexApplication {
         }
     }, filter);
 
-    // MAYBE TODO: i think the ApplicationContext is also created
-    // when the app is stated by FetchWorker timeouts.
-    // in this case, the normal threads shall not be started.
-    Constraints constraints = new Constraints.Builder()
-            .setRequiredNetworkType(NetworkType.CONNECTED)
-            .build();
-    PeriodicWorkRequest fetchWorkRequest = new PeriodicWorkRequest.Builder(
-            FetchWorker.class,
-            PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, // usually 15 minutes
-            TimeUnit.MILLISECONDS,
-            PeriodicWorkRequest.MIN_PERIODIC_FLEX_MILLIS, // the start may be preferred by up to 5 minutes, so we run every 10-15 minutes
-            TimeUnit.MILLISECONDS)
-            .setConstraints(constraints)
-            .build();
-    WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-            "FetchWorker",
-            ExistingPeriodicWorkPolicy.KEEP,
-            fetchWorkRequest);
     AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
     if (Prefs.isPushEnabled(this)) {
       FcmReceiveService.register(this);
     } else {
       Log.i(TAG, "FCM disabled at build time");
+      // MAYBE TODO: i think the ApplicationContext is also created
+      // when the app is stated by FetchWorker timeouts.
+      // in this case, the normal threads shall not be started.
+      Constraints constraints = new Constraints.Builder()
+              .setRequiredNetworkType(NetworkType.CONNECTED)
+              .build();
+      PeriodicWorkRequest fetchWorkRequest = new PeriodicWorkRequest.Builder(
+              FetchWorker.class,
+              PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, // usually 15 minutes
+              TimeUnit.MILLISECONDS,
+              PeriodicWorkRequest.MIN_PERIODIC_FLEX_MILLIS, // the start may be preferred by up to 5 minutes, so we run every 10-15 minutes
+              TimeUnit.MILLISECONDS)
+              .setConstraints(constraints)
+              .build();
+      WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+              "FetchWorker",
+              ExistingPeriodicWorkPolicy.KEEP,
+              fetchWorkRequest);
     }
   }
 
