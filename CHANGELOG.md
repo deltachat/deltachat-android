@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.5.0
 
 * Profiles focus on recognizing contacts
 * See the number of media directly in the profile, no need to tap around
