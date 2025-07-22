@@ -495,8 +495,9 @@
     <string name="qraccount_ask_create_and_login">دەتەوێت ناونیشانی ئیمەیلێکی نوێ لەسەر \"%1$s\" درووست بکەیت و لەوێ بچیتە ژوورەوە؟</string>
     <string name="qraccount_qr_code_cannot_be_used">ناتوانی لە کۆدی QRە سکان کراوەکە کەڵک بگریت بۆ پێکهێنانی هەژمارێکی نوێ.</string>
     <string name="contact_verified">%1$s پشتڕاست کرایەوە</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">%1$s پشتڕاست ناکرێتەوە.</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">ڕێکخستن بۆ %1$s گۆڕا.</string>
     <!-- notifications  -->
     <string name="notify_reply_button">وەڵام دانەوە</string>

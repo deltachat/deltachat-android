@@ -396,8 +396,9 @@
     <string name="qrshow_join_contact_hint">%1$silə əlaqə qurmaq üçün bunu skan edin</string>
     <string name="qrshow_join_contact_no_connection_toast">İnternet bağlantısı yoxdur, QR kodunu qura bilmir.</string>
     <string name="contact_verified">%1$s yoxlanıldı.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">%1$sDoğrula bilmir</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">%1$süçün quraşdırma dəyişdirildi</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Cavab ver</string>

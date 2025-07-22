@@ -570,7 +570,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Mřížka čtverců</string>
     <string name="send_message">Odeslat zprávu</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">Uživatel %1$s změnil svou adresu z %2$s na %3$s</string>
     <!-- deprecated -->
     <string name="aeap_explanation">Změnili jste svou e-mailovou adresu z %1$s na %2$s.\n\nPokud nyní pošlete zprávu ověřené skupině, všem kontaktům v ní se vaše adresa aktualizuje na novou.\n\nJe důrazně doporučeno, abyste u svého starého poskytovatele nastavili přesměrování všech e-mailů na novou adresu, jinak byste mohli přijít o zprávy od kontaktů, které vaši novou adresu dosud nedostaly. </string>
@@ -970,7 +970,7 @@
     <string name="ephemeral_timer_weeks_by_you">Samomazací zprávy vyprší po %1$s týdnech ode mě.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Uživatel %2$s změnil časovač mizejících zpráv na %1$s týdnů.</string>
-    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <!-- deprecated -->
     <string name="chat_protection_broken">Uživatel %1$s odeslal zprávu z jiného zařízení.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Nyní je garantováno koncové šifrování vašich zpráv. Stiskněte pro více informací.</string>
     <string name="chat_protection_enabled_explanation">Nyní je garantováno, že všechny zprávy v tomto chatu jsou koncově šifrovány.\n\nKoncové šifrování zajišťuje soukromí mezi vámi a vašimi kontakty. Nedokáže je přečíst ani váš poskytovatel e-mailu.</string>
@@ -1038,13 +1038,15 @@
     <string name="secure_join_wait">Navazování koncově šifrovaného spojení, prosím, čekejte...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Zatím nebylo navázáno koncově šifrované spojení, ale již nyní můžete posílat zprávy.</string>
+    <!-- deprecated, was stock string -->
     <string name="secure_join_takes_longer">Vypadá to, že to trvá trochu déle. Možná jste vy nebo váš kontakt offline.\n\nProces však pokračuje na pozadí. Zatím můžete dělat něco jiného...</string>
     <string name="contact_verified">Uživatel %1$s ověřen.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Navázání garantovaného koncově šifrovaného spojení s uživatelem %1$s selhalo.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Ověřeni uživatelem %1$s.</string>
     <string name="verified_by_you">Ověřeni mnou</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Nastavení pro uživatele %1$s změněno.</string>
     <string name="verified_contact_required_explain">Aby mohlo být garantováno koncové šifrování, můžete do této skupiny přidávat pouze uživatele se zeleným zaškrtávátkem.\n\nSe svými kontakty se můžete setkat osobně a naskenovat jejich QR kód, abyste je ověřili.</string>
     <string name="mailto_dialog_header_select_chat">Vyberte chat, do kterého chcete zprávu poslat</string>
@@ -1218,6 +1220,8 @@
     <string name="perm_enable_bg_reminder_title">Stiskem nastavíte přijímání zpráv, když je aplikace Delta Chat na pozadí.</string>
     <string name="perm_enable_bg_already_done">Přijímání zpráv na pozadí jste již aplikaci Delta Chat povolili.\n\nV případě, že vám zprávy na pozadí stále nechodí, prosím zkontrolujte svá systémová nastavení.</string>
 
+    <!-- deprecated -->
     <string name="update_1_50_android">Co je nového?\n\n❤️‍🔥 Nová nabídka emoji s více druhy emoji\n\n🎮 Vylepšené aplikace v chatu: Oznámení a podpůrné aplikace přímo v kontextu chatu, např. odkaz na novou nové položky z kalendáři\n\n👍 Oznámení o reakcích na zprávy\n\n... 🛠️ OPRAVY a DALŠÍ na %1$s</string>
+    <!-- deprecated -->
     <string name="update_switch_profile_placement">ℹ️ Volba \"Přepnout profil\" byla přesunuta: Pro přidávání či přepínání profilů stiskněte svůj profilový obrázek v horním rohu hlavní obrazovky.</string>
 </resources>

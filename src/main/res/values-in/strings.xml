@@ -566,8 +566,9 @@
     <string name="qraccount_ask_create_and_login_another">Buat alamat email baru di\"%1$s\" dan masuk ke sana?\n\nAkun yang sudah ada tidak akan di hapus. Gunakankan item \"Ganti akun\" untuk mengganti akun anda</string>
     <string name="qraccount_qr_code_cannot_be_used">Kode QR yang dipindai tidak dapat digunakan untuk mengatur akun baru.</string>
     <string name="contact_verified">%1$sdiverifikasi.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Tidak bisa memverifikasi %1$s.</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Ubah pengaturan untuk %1$s.</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Balasan</string>
