@@ -1013,7 +1013,7 @@
     <!-- deprecated -->
     <string name="chat_protection_broken_explanation">Nie można już zagwarantować szyfrowania end-to-end, prawdopodobnie z powodu ponownej instalacji Delta Chat przez %1$s lub wysłania wiadomości z innego urządzenia.\n\nMożesz spotkać się z tą osobą osobiście i ponownie zeskanować jej kod QR, aby przywrócić gwarantowane szyfrowanie end-to-end.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s wymaga szyfrowania end-to-end, które nie zostało jeszcze skonfigurowane dla tego czatu. Dotknij, aby dowiedzieć się więcej.</string>
-    <string name="invalid_unencrypted_explanation">Aby ustanowić szyfrowanie end-to-end, możesz spotkać się z kontaktami osobiście i zeskanować ich kod QR, żeby ich wprowadzić.</string>
+    <string name="invalid_unencrypted_explanation">Aby ustanowić szyfrowanie end-to-end, możesz spotkać się z kontaktami osobiście i zeskanować ich kod QR, żeby ich zweryfikować.</string>
     <string name="learn_more">Czytaj więcej</string>
 
     <string name="devicemsg_self_deleted">Usunięto czat „Zapisane wiadomości”.\n\nℹ️ Aby ponownie użyć funkcji „Zapisane wiadomości”, utwórz nowy czat ze sobą.</string>
@@ -1078,11 +1078,12 @@
     <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Nie można ustanowić szyfrowania typu end-to-end z %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
-    <string name="verified_by">Zweryfikowano przez %1$s</string>
-    <string name="verified_by_you">Zweryfikowane przez ciebie</string>
+    <string name="verified_by">Kontakt zweryfikowany przez %1$s</string>
+    <string name="verified_by_you">Kontakt zweryfikowany przez ciebie</string>
+    <string name="verified_by_unknown">Zweryfikowano</string>
     <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Zmieniono konfigurację dla %1$s</string>
-    <string name="verified_contact_required_explain">Aby zagwarantować szyfrowanie end-to-end, do tej grupy możesz dodawać wyłącznie kontakty oznaczone zielonym znacznikiem wyboru.\n\nMożesz spotkać się z kontaktami osobiście i zeskanować ich kod QR, aby je przedstawić.</string>
+    <string name="verified_contact_required_explain">Aby zagwarantować szyfrowanie end-to-end, do tej grupy możesz dodawać wyłącznie kontakty oznaczone zielonym znacznikiem wyboru.\n\nMożesz spotkać się z kontaktami osobiście i zeskanować ich kod QR, aby je zweryfikować.</string>
     <string name="mailto_dialog_header_select_chat">Wybierz czat, do którego chcesz wysłać wiadomość</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">Na czacie %1$s jest już wersja robocza wiadomości, czy chcesz ją zastąpić?</string>
