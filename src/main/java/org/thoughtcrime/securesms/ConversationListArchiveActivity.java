@@ -21,6 +21,7 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
 {
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
+    setContentView(R.layout.activity_conversation_list_archive);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     if (isRelayingMessageContent(this)) {
       getSupportActionBar().setTitle(isSharing(this) ? R.string.chat_share_with_title : R.string.forward_to);
@@ -31,7 +32,7 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
 
     Bundle bundle = new Bundle();
     bundle.putBoolean(ConversationListFragment.ARCHIVE, true);
-    initFragment(android.R.id.content, new ConversationListFragment(), bundle);
+    initFragment(R.id.fragment, new ConversationListFragment(), bundle);
   }
 
   @Override
