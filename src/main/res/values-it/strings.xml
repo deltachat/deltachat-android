@@ -1064,6 +1064,7 @@
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Verificato da %1$s</string>
     <string name="verified_by_you">Verificato da me</string>
+    <string name="verified_by_unknown">Presentato</string>
     <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Impostazioni modificate per %1$s</string>
     <string name="verified_contact_required_explain">Per garantire la crittografia end-to-end, puoi aggiungere a questo gruppo solo i contatti con un segno di spunta verde.\n\nPuoi incontrare i contatti di persona e scansionare il loro Codice QR per verificarli.</string>

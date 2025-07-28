@@ -264,6 +264,12 @@
     <string name="broadcast_lists">Списки трансляцій</string>
     <!-- deprecated -->
     <string name="new_broadcast_list">Новий Список трансляцій</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Канал</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Канали</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Новий Канал</string>
     <string name="add_recipients">Додати одержувачів</string>
     <!-- deprecated -->
     <string name="edit_broadcast_list">Редагувати список трансляцій</string>
@@ -271,6 +277,13 @@
     <string name="broadcast_list_name">Назва списку трансляцій</string>
     <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Будь ласка, введіть назву для списку трансляцій.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Назва Каналу</string>
+    <string name="email">E-Mail</string>
+    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">Новий E-Mail</string>
+    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <string name="subject">Тема</string>
     <string name="menu_send">Послати</string>
     <string name="menu_toggle_keyboard">Увімкнути емодзі-клавіатуру</string>
     <string name="menu_edit_group">Редагувати групу</string>
@@ -280,6 +293,7 @@
     <string name="menu_unarchive_chat">Розархівувати чат</string>
     <string name="menu_add_attachment">Додати вкладення</string>
     <string name="menu_leave_group">Залишити групу</string>
+    <string name="menu_leave_channel">Покинути Канал</string>
     <string name="menu_delete_chat">Видалити чат</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Очистити чат</string>
@@ -364,6 +378,8 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Додати на стартовий екран</string>
     <string name="donate">Задонатити</string>
+    <string name="donate_device_msg">❤️ Здається, вам подобається Delta Chat!\n\nПодумайте про пожертвування, щоб допомогти забезпечити безкоштовність Delta Chat для всіх.\n\nХоча Delta Chat є безкоштовним у використанні та з відкритим вихідним кодом, розробка коштує грошей. Допоможіть нам зберегти незалежність Delta Chat і зробити його ще більш чудовим у майбутньому.\n\nhttps://delta.chat/donate</string>
+
     <string name="mute_for_one_hour">Вимкнути сповіщення на годину</string>
     <string name="mute_for_eight_hours">Вимкнути сповіщення на 8 годин</string>
     <string name="mute_for_one_day">Вимкнути сповіщення на добу</string>
@@ -400,6 +416,9 @@
     <string name="videochat_invitation">Запрошення до відео чату</string>
     <string name="videochat_invitation_body">Вас запрошено у відео-чат, клікніть %1$s аби приєднатися.</string>
 
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Ви впевнені, що хочете піти?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">¿Видалити %d чат на всіх Ваших пристроях?</item>
         <item quantity="few">¿Видалити %d чати на всіх Ваших пристроях?</item>
@@ -433,6 +452,8 @@
     <string name="ask_remove_members">Видалити %1$s із групи?</string>
     <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Видалити %1$s зі списку трансляцій?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Видалити %1$s з каналу?</string>
     <string name="open_url_confirmation">Ви впевнені, що хочете відкрити це посилання?</string>
 
 
@@ -470,6 +491,8 @@
     <string name="chat_new_one_to_one_hint">Відправити повідомлення → %1$s.</string>
     <!-- deprecated -->
     <string name="chat_new_broadcast_hint">У списку трансляцій одержувачі будуть отримувати повідомлення в чаті з Вами в режимі тільки-для-читання.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">Канали - це інструмент \"один до багатьох\" для трансляції ваших повідомлень.</string>
     <string name="chat_new_group_hint">Інші побачать цю групу лише після того, як ви надішлете перше повідомлення.</string>
     <string name="chat_record_slide_to_cancel">Рухайте для скасування</string>
     <string name="chat_record_explain">Натиснувши втримуйте, щоби записати голосове повідомлення, а для відправки відпустіть</string>
@@ -479,6 +502,7 @@
     <string name="chat_input_placeholder">Повідомлення</string>
     <string name="chat_archived_label">Заархівовано</string>
     <string name="chat_request_label">Запит</string>
+    <string name="chat_request_label_explain">Включайте запити в лічильники та сповіщення</string>
     <string name="chat_no_messages">Немає повідомлень.</string>
     <string name="chat_self_talk_subtitle">Повідомлення, відправлені самому собі</string>
     <string name="archive_empty_hint">Заархівовані Вами чати будуть відображені тут.</string>
@@ -935,6 +959,8 @@
     <string name="remove_member_by_you">Ви видалили учасника %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s видалив (-ла) учасника %1$s.</string>
+    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
+    <string name="group_left_by_you">Ви пішли</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s залишив (-ла) групу.</string>
     <string name="group_image_deleted_by_you">Ви видалили емблему групи.</string>
@@ -1054,6 +1080,7 @@
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Представни·ця: %1$s</string>
     <string name="verified_by_you">Представлено мною</string>
+    <string name="verified_by_unknown">Представлено</string>
     <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Змінені параметри для %1$s</string>
     <string name="verified_contact_required_explain">Аби наскрізне шифрування лишалося ґарантованим, у цю групу можна додавати лише контактних осіб із зеленою галочкою.\n\nМожна зустрітись із контактною особою та відсканувати баркод із її пристрою, щоби представити її.</string>
@@ -1228,6 +1255,8 @@
     <string name="perm_enable_bg_reminder_title">Натисніть тут, щоб отримувати повідомлення, коли Delta Chat знаходиться у фоновому режимі.</string>
     <string name="perm_enable_bg_already_done">Ви вже дозволили Delta Chat отримувати повідомлення у фоновому режимі.\n\nЯкщо повідомлення досі не приходять у фоновому режимі, перевірте налаштування системи.</string>
 
+    <!-- device messages for updates -->
+    <string name="update_2_0">Що нового?\n\n💯 Наскрізне шифрування тепер надійне і завжди. Навісні замки 🔒 зникли!\n\n✉️ Класична електронна пошта без наскрізного шифрування позначається символом листа\n\n😻 Новий покращений екран профілю для всіх ваших контактів\n\n🔲 Нова кнопка для швидкого доступу до додатків, що використовуються в чаті\n\n❤️ Будь ласка, пожертвуйте, щоб допомогти нам залишатися незалежними та продовжувати вдосконалюватися: %1$s</string>
     <!-- deprecated -->
     <string name="update_1_50_android">Що нового? \n\n❤️‍🔥 Новий вибірник емодзі з більшою кількістю смайликів \n\n🎮 Покращені програми в чаті: отримуйте сповіщення та відкривайте додатки безпосередньо в контексті, наприклад, доданий запис у календарі \n\n👍 Отримуйте сповіщення про реакції на ваші повідомлення \n\n... 🛠️ ВИПРАВЛЕННЯ та ЩЕ БІЛЬШЕ на %1$s</string>
     <!-- deprecated -->
