@@ -50,9 +50,10 @@
       <li><a href="#tls">Are messages marked with the mail icon exposed on the Internet?</a></li>
       <li><a href="#message-metadata">Delta Chat 如何保护消息中的元数据？</a></li>
       <li><a href="#device-seizure">当设备被查封时，如何保护元数据和联系人？</a></li>
-      <li><a href="#如何检查加密信息">如何检查加密信息？</a></li>
+      <li><a href="#sealedsender">Does Delta Chat support “Sealed Sender”?</a></li>
       <li><a href="#pfs">Delta Chat 是否支持完美前向保密？</a></li>
-      <li><a href="#will-delta-chat-support-forward-secrecy">Will Delta Chat support Forward Secrecy?</a></li>
+      <li><a href="#pqc">Does Delta Chat support Post-Quantum-Cryptography?</a></li>
+      <li><a href="#how-can-i-manually-check-encryption-information">How can I manually check encryption information?</a></li>
       <li><a href="#importkey">我可以重复使用现有的私钥吗？</a></li>
       <li><a href="#security-audits">Delta Chat 是否已进行独立的安全漏洞审计？</a></li>
     </ul>
@@ -933,24 +934,25 @@ Delta Chat 的所有 TLS 处理都经过了独立的 <a href="#security-audits">
         
       </h3>
 
-<p>Delta Chat 通过将以下信息放入消息的端到端加密部分来保护大多数消息元数据：</p>
+<p>Unlike most other messengers, 
+Delta Chat apps do not store any metadata about contacts or groups on servers, also not in encrypted form. 
+Instead, all group metadata is end-to-end encrypted and stored on end-user devices, only.</p>
+
+<p>E-mail Servers can therefore only see</p>
 
 <ul>
-  <li>主题行</li>
-  <li>群组头像和名称</li>
-  <li>MDN（已读回执）请求 (<code class="language-plaintext highlighter-rouge">Chat-Disposition-Notification-To</code>)</li>
-  <li>阅后即焚消息计时器 (<code class="language-plaintext highlighter-rouge">Ephemeral-Timer</code>)</li>
-  <li><code class="language-plaintext highlighter-rouge">Chat-Group-Member-Removed</code>, <code class="language-plaintext highlighter-rouge">Chat-Group-Member-Added</code></li>
-  <li>包含安全加入命令的 <code class="language-plaintext highlighter-rouge">Secure-Join</code> 标头</li>
-  <li>关于启用位置流式传输的通知</li>
-  <li>WebRTC 房间 URL</li>
+  <li>
+    <p>the message date,</p>
+  </li>
+  <li>
+    <p>sender and receiver addresses</p>
+  </li>
+  <li>
+    <p>and message size.</p>
+  </li>
 </ul>
 
-<p>电子邮件服务器无法访问此受保护的元数据，
-但它们可以看到消息日期以及消息大小，
-更重要的是，可以看到发件人和收件人地址。
-电子邮件服务器需要收件人地址来路由和
-将消息传递到接收者的设备。</p>
+<p>All other message, contact and group metadata resides in the end-to-end encrypted part of messages.</p>
     
       <h3 id="device-seizure">
         
@@ -960,30 +962,36 @@ Delta Chat 的所有 TLS 处理都经过了独立的 <a href="#security-audits">
         
       </h3>
 
-<p>为了防止收集元数据的电子邮件服务器
-以及设备查封的威胁，
-我们建议使用 <a href="https://delta.chat/chatmail">Chatmail 服务器</a>
-通过二维码扫描创建匿名临时配置文件。
-请注意，所有平台上的 Delta Chat 应用都支持多配置文件，
-因此你可以轻松地在你“主要”配置文件旁边使用特定于情况的配置文件，
-并且知道它们的所有数据以及所有元数据都将被删除。
-此外，如果设备被查封，则与使用临时配置文件的联系人
-相比，无法轻易识别，因为即时通讯应用会在聊天群组中显示
-电话号码，而电话号码通常与合法身份相关联。</p>
+<p>Both for protecting against metadata-collecting e-mail servers 
+as well as against the threat of device seizure
+we recommend to use a <a href="https://chatmail.at/relays">chatmail relay</a>
+to create chat profiles using random e-mail addresses for transport. 
+Note that Delta Chat apps on all platforms support multiple profiles
+so you can easily use situation-specific profiles next to your “main” profile
+with the knowledge that all their data, along with all metadata, will be deleted.
+Moreover, if a device is seized then chat contacts using short-lived profiles
+can not be identified easily.</p>
     
-      <h3 id="如何检查加密信息">
+      <h3 id="sealedsender">
         
         
-          如何检查加密信息？ <a href="#如何检查加密信息" class="anchor"></a>
+          Does Delta Chat support “Sealed Sender”? <a href="#sealedsender" class="anchor"></a>
         
         
       </h3>
 
-<p>你可以在“加密”对话框中手动检查端到端加密状态
-（Android/iOS 上的用户配置文件或桌面上的用户聊天列表项上右键单击）。
-Delta Chat 在此处显示两个指纹。
-如果相同的指纹出现在你自己的设备和你联系人的设备上，
-则连接是安全的。</p>
+<p>No, not yet.</p>
+
+<p>The Signal messenger introduced <a href="https://signal.org/blog/sealed-sender/">“Sealed Sender” in 2018</a>
+to keep their server infrastructure ignorant of who is sending a message to a set of recipients. 
+It is particularly important because the Signal server knows the mobile number of each account,
+which is usually associated with a passport identity.</p>
+
+<p>Even if <a href="https://chatmail.at/relays">chatmail relays</a> 
+do not ask for any private data (including no phone numbers), 
+it might still be worthwhile to protect relational metadata between addresses. 
+We don’t foresee bigger problems in using random throw-away e-mail addresses for sealed sending
+but an implementation has not been agreed as a priority yet.</p>
     
       <h3 id="pfs">
         
@@ -996,32 +1004,49 @@ Delta Chat 在此处显示两个指纹。
 <p>No, not yet.</p>
 
 <p>Delta Chat today doesn’t support Perfect Forward Secrecy (PFS).
-This means that if your Delta Chat private decryption key is leaked,
+This means that if your private decryption key is leaked,
 and someone has collected your prior in-transit messages,
-they will be able to decrypt and read them using the leaked decryption key.</p>
+they will be able to decrypt and read them using the leaked decryption key.
+Note that Forward Secrecy only increases security if you delete messages. 
+Otherwise, someone obtaining your decryption keys
+is typically also able to get all your non-deleted messages
+and doesn’t even need to decrypt any previously collected messages.</p>
 
-<p>Note however, that Forward Secrecy only increases your security
-if you delete messages or use ephemeral deletion timers.
-Otherwise, if anyone obtains your decryption keys, 
-they are typically also able to get all your non-deleted messages
-and don’t need to decrypt any previously collected messages.</p>
-
-<p>The typical real-world situation for leaked decryption keys is device seizure
-which we also discuss in our answer <a href="#device-seizure">on metadata and device seizure</a>.</p>
+<p>We designed a Forward Secrecy approach that withstood 
+initial examination from some cryptographers and implementation experts 
+but is pending a more formal write up 
+to ascertain it reliably works in federated messaging and with multi-device usage,
+before it could be implemented in <a href="https://github.com/chatmail/core">chatmail core</a>,
+which would make it available in all <a href="https://chatmail.at/clients">chatmail clients</a>.</p>
     
-      <h3 id="will-delta-chat-support-forward-secrecy">
+      <h3 id="pqc">
         
         
-          Will Delta Chat support Forward Secrecy? <a href="#will-delta-chat-support-forward-secrecy" class="anchor"></a>
+          Does Delta Chat support Post-Quantum-Cryptography? <a href="#pqc" class="anchor"></a>
         
         
       </h3>
 
-<p>是的。</p>
+<p>No, not yet.</p>
 
-<p>We devised a forward secrecy scheme that withstood initial scrutiny from cryptographers and usable security experts. 
-Our tentative scheme is designed to reliably work in federated messaging networks and with multi-device usage. 
-However, an implementation has not been scheduled yet (as of Mid 2025).</p>
+<p>Delta Chat uses the Rust OpenPGP library <a href="https://github.com/rpgp/rpgp">rPGP</a>
+which supports the latest <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-pqc/">IETF Post-Quantum-Cryptography OpenPGP draft</a>. 
+We aim to add PQC support in <a href="https://github.com/chatmail/core">chatmail core</a>  after the draft is finalized at the IETF
+in collaboration with other OpenPGP implementers.</p>
+    
+      <h3 id="how-can-i-manually-check-encryption-information">
+        
+        
+          How can I manually check encryption information? <a href="#how-can-i-manually-check-encryption-information" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>你可以在“加密”对话框中手动检查端到端加密状态
+（Android/iOS 上的用户配置文件或桌面上的用户聊天列表项上右键单击）。
+Delta Chat 在此处显示两个指纹。
+如果相同的指纹出现在你自己的设备和你联系人的设备上，
+则连接是安全的。</p>
     
       <h3 id="importkey">
         

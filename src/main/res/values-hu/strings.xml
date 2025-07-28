@@ -1048,6 +1048,7 @@
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">%1$s által bemutatva</string>
     <string name="verified_by_you">Ön által bemutatva</string>
+    <string name="verified_by_unknown">Bemutatva</string>
     <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Megváltoztatta a beállításokat %1$s számára.</string>
     <string name="verified_contact_required_explain">A végpontok közötti titkosítás garantálása érdekében csak zöld jelöléssel rendelkező névjegyeket adhat hozzá ehhez a csoporthoz.\n\n Személyesen is találkozhat a partnereivel és beolvashatja a QR-kódjukat, hogy bemutassa őket.</string>
@@ -1222,6 +1223,8 @@
     <string name="perm_enable_bg_reminder_title">Koppintson ide az üzenetek fogadásához, miközben a Delta Chat a háttérben fut.</string>
     <string name="perm_enable_bg_already_done">Már engedélyezve van a Delta Chat számára, hogy a háttérben üzeneteket fogadjon.\n\nHa az üzenetek még mindig nem érkeznek meg a háttérben, ellenőrizze a rendszerbeállításokat is.</string>
 
+    <!-- device messages for updates -->
+    <string name="update_2_0">Újdonságok:\n\n💯 A végpontok közötti titkosítás most már megbízható és örökre megmarad. A lakatok 🔒 eltűntek!\n\n✉️ A végpontok közötti titkosítás nélküli klasszikus e-mailek betűszimbólummal vannak jelölve\n\n😻 Új, továbbfejlesztett profilképernyő az összes névjegyhez\n\n🔲 Új gomb a csevegésben használt alkalmazások gyors eléréséhez\n\n❤️ Ha teheti, adományozzon nekünk, hogy függetlenek maradhassunk és továbbra is fejlesztéseket tudjunk végrehajtani: %1$s</string>
     <!-- deprecated -->
     <string name="update_1_50_android">Mik az újdonságok?\n\n❤️‍🔥 Új emodzsi-választó még több emodzsival\n\n🎮 Továbbfejlesztett, a csevegésben használható alkalmazások: Értesítéseket kaphat és megnyithatja az azokat támogató alkalmazásokban, azaz közvetlenül megnyithat egy hozzáadott naptárbejegyzést\n\n👍 Értesítést kaphat az üzeneteire adott reakciókról\n\n… 🛠️ Egyéb javítások, tudjon meg többet itt: %1$s</string>
     <!-- deprecated -->
