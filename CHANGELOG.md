@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v2.6.0
+## v2.8.0
 
 * Profiles focus on recognizing contacts
 * See the number of media directly in the profile, no need to tap around
@@ -19,7 +19,7 @@
 * Allow to sort profiles up in the profile switcher
 * Add new option to create unencrypted email thread
 * Green checkmarks are removed where they mostly refer to guaranteed encryption, which is the default now. They are still used for profile's "Introduced by"
-* Update to core 2.6.0
+* Update to core 2.8.0
 
 ## v1.58.4
 2025-05
