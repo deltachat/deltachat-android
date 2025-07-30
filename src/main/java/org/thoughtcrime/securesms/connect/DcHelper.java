@@ -152,7 +152,6 @@ public class DcHelper {
     dcContext.setStockTranslation(11, context.getString(R.string.audio));
     dcContext.setStockTranslation(12, context.getString(R.string.file));
     dcContext.setStockTranslation(23, context.getString(R.string.gif));
-    dcContext.setStockTranslation(24, context.getString(R.string.encrypted_message));
     dcContext.setStockTranslation(29, context.getString(R.string.systemmsg_cannot_decrypt));
     dcContext.setStockTranslation(35, context.getString(R.string.contact_verified));
     dcContext.setStockTranslation(40, context.getString(R.string.chat_archived_label));
@@ -235,12 +234,7 @@ public class DcHelper {
     dcContext.setStockTranslation(121, context.getString(R.string.connectivity_not_connected));
     dcContext.setStockTranslation(162, context.getString(R.string.multidevice_qr_subtitle));
     dcContext.setStockTranslation(163, context.getString(R.string.multidevice_transfer_done_devicemsg));
-
-    // The next two strings should only be set if the UI actually shows more info when the user clicks on the
-    // DC_INFO_PROTECTION_{EN|DIS}ABLED info message
     dcContext.setStockTranslation(170, context.getString(R.string.chat_protection_enabled_tap_to_learn_more));
-    dcContext.setStockTranslation(171, context.getString(R.string.chat_protection_broken_tap_to_learn_more));
-
     dcContext.setStockTranslation(172, context.getString(R.string.chat_new_group_hint));
     dcContext.setStockTranslation(173, context.getString(R.string.member_x_added));
     dcContext.setStockTranslation(174, context.getString(R.string.invalid_unencrypted_tap_to_learn_more));
