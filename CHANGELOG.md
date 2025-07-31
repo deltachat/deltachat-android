@@ -3,6 +3,7 @@
 ## Unreleased
 
 * hide contact email addresses in search results
+* disable non-functional message editing and ephemeral messages timer settings in classic email thread chat
 
 ## v2.8.0
 
