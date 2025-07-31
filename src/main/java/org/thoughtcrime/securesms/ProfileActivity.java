@@ -329,7 +329,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     File file = new File(profileImagePath);
 
-    if (file.exists()) {
+    if (chatIsEncrypted && file.exists()) {
       profileImageUri = Uri.fromFile(file);
       String type = "image/" + profileImagePath.substring(profileImagePath.lastIndexOf(".") + 1);
 
@@ -338,7 +338,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       intent.putExtra(MediaPreviewActivity.ACTIVITY_TITLE_EXTRA, title);
       intent.putExtra( // show edit-button, if the user is allowed to edit the name/avatar
               MediaPreviewActivity.EDIT_AVATAR_CHAT_ID,
-              (chatIsMultiUser && chatIsEncrypted && !chatIsInBroadcast && !chatIsMailingList) ? chatId : 0
+              (chatIsMultiUser && !chatIsInBroadcast && !chatIsMailingList) ? chatId : 0
       );
       startActivity(intent);
     } else if (chatIsMultiUser){
