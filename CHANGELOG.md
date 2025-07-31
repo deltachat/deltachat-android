@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* hide contact email addresses in search results
+
 ## v2.8.0
 
 * Profiles focus on recognizing contacts
