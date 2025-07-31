@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.9.0
 
 * hide contact email addresses in search results
 * disable non-functional message editing and ephemeral messages timer settings in classic email thread chat
