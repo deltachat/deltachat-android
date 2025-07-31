@@ -6,6 +6,8 @@
 * disable non-functional message editing and ephemeral messages timer settings in classic email thread chat
 * don't enlage email chats avatar placeholder
 * improve message date/status footer layout, also in RTL languages
+* display correct text when receiving a "Disapearing messages enabled" system message
+* Update to core 2.9.0
 
 ## v2.8.0
 
