@@ -28,8 +28,8 @@
     <string name="join">Долучитися</string>
     <string name="rejoin">Передолучитися</string>
     <string name="delete">Видалити</string>
-    <string name="delete_for_me">Видалить у мене</string>
-    <string name="delete_for_everyone">Видалити в усіх</string>
+    <string name="delete_for_me">Видалити для мене</string>
+    <string name="delete_for_everyone">Видалити для всіх</string>
     <string name="info">Відомості</string>
     <string name="update">Оновити</string>
     <string name="emoji">Емодзі</string>
