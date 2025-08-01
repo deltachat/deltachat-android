@@ -134,7 +134,7 @@ public class ConversationListItem extends RelativeLayout
       this.fromView.setText(recipient, state!=DcMsg.DC_STATE_IN_FRESH);
     }
 
-    subjectView.setVisibility(VISIBLE);
+    subjectView.setVisibility(chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK? GONE : VISIBLE);
     this.subjectView.setText(thread.getDisplayBody());
     this.subjectView.setTypeface(state==DcMsg.DC_STATE_IN_FRESH ? BOLD_TYPEFACE : LIGHT_TYPEFACE);
     this.subjectView.setTextColor(state==DcMsg.DC_STATE_IN_FRESH ? ThemeUtil.getThemedColor(getContext(), R.attr.conversation_list_item_unread_color)
