@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* fix "Archived" item's layout in chatlit
+
 ## v2.9.0
 
 * hide contact email addresses in search results
