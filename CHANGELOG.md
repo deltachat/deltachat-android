@@ -3,6 +3,7 @@
 ## Unreleased
 
 * fix "Archived" item's layout in chatlit
+* don't enlarge "Saved Messages" and "Devices Messages" avatars on click
 
 ## v2.9.0
 
