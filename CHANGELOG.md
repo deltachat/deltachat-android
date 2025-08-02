@@ -4,6 +4,7 @@
 
 * fix "Archived" item's layout in chat-list
 * don't enlarge "Saved Messages" and "Devices Messages" avatars on click
+* share email address for email contacts instead of vCard
 
 ## v2.9.0
 
