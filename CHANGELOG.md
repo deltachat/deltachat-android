@@ -2,15 +2,15 @@
 
 ## Unreleased
 
-* fix "Archived" item's layout in chatlit
+* fix "Archived" item's layout in chat-list
 
 ## v2.9.0
 
 * hide contact email addresses in search results
 * disable non-functional message editing and ephemeral messages timer settings in classic email thread chat
-* don't enlage email chats avatar placeholder
+* don't enlarge email chats avatar placeholder
 * improve message date/status footer layout, also in RTL languages
-* display correct text when receiving a "Disapearing messages enabled" system message
+* display correct text when receiving a "Disappearing messages enabled" system message
 * Update to core 2.9.0
 
 ## v2.8.0
@@ -25,7 +25,7 @@
 * New icon for the QR icon
 * Start rebuilding the experimental broadcast lists
   into proper channels - note that this is work-in-progress
-* Improved separation between unencryted chats/contacts and encrypted ones, avoiding mixing of encrypted and unencrypted messages in the same chat
+* Improved separation between unencrypted chats/contacts and encrypted ones, avoiding mixing of encrypted and unencrypted messages in the same chat
 * Removed padlocks, as encrypted is the default "normal" state. Instead, unencrypted email is marked with a small email / letter  (✉️) icon
 * Classic email chats/threads get a big email / letter icon making it easy to recognize
 * After some time, add a device message asking to donate. Can't wait? Donate today at https://delta.chat/donate
