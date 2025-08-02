@@ -315,12 +315,12 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     String profileImagePath;
     String title;
     Uri profileImageUri;
-    boolean chatIsEncrypted = true;
+    boolean enlargeAvatar = true;
     if(chatId!=0) {
       DcChat dcChat = dcContext.getChat(chatId);
       profileImagePath = dcChat.getProfileImage();
       title = dcChat.getName();
-      chatIsEncrypted = dcChat.isEncrypted();
+      enlargeAvatar = dcChat.isEncrypted() && !dcChat.isSelfTalk() && !dcChat.isDeviceTalk();
     } else {
       DcContact dcContact = dcContext.getContact(contactId);
       profileImagePath = dcContact.getProfileImage();
@@ -329,7 +329,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     File file = new File(profileImagePath);
 
-    if (chatIsEncrypted && file.exists()) {
+    if (enlargeAvatar && file.exists()) {
       profileImageUri = Uri.fromFile(file);
       String type = "image/" + profileImagePath.substring(profileImagePath.lastIndexOf(".") + 1);
 
