@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.10.0
+2025-08
 
 * fix "Archived" item's layout in chat-list
 * don't enlarge "Saved Messages" and "Devices Messages" avatars on click
@@ -9,6 +10,7 @@
 * update to core 2.10.0
 
 ## v2.9.0
+2025-07
 
 * hide contact email addresses in search results
 * disable non-functional message editing and ephemeral messages timer settings in classic email thread chat
@@ -18,6 +20,7 @@
 * Update to core 2.9.0
 
 ## v2.8.0
+2025-07
 
 * Profiles focus on recognizing contacts
 * See the number of media directly in the profile, no need to tap around
