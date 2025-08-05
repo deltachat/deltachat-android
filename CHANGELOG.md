@@ -5,6 +5,8 @@
 * fix "Archived" item's layout in chat-list
 * don't enlarge "Saved Messages" and "Devices Messages" avatars on click
 * share email address for email contacts instead of vCard
+* open existing encrypted chat when opening a mailto link or clicking an email address in a message bubble
+* update to core 2.10.0
 
 ## v2.9.0
 
