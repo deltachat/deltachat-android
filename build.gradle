@@ -180,7 +180,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.16.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
     annotationProcessor 'androidx.annotation:annotation:1.9.1'
-    implementation 'com.pnikosis:materialish-progress:1.5' // used only in the "Progress Wheel" in Share Activity.
     implementation 'com.makeramen:roundedimageview:2.3.0' // crops the avatars to circles
     implementation 'com.github.amulyakhare:TextDrawable:558677ea31'  // number of unread messages,
     // the one-letter circle for the contacts (when there is not avatar) and a white background.

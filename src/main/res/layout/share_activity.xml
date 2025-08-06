@@ -33,10 +33,10 @@
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <com.pnikosis.materialishprogress.ProgressWheel android:id="@+id/progress_wheel"
-                                                    android:layout_width="70dp"
-                                                    android:layout_height="70dp"
-                                                    android:layout_centerInParent="true"
-                                                    wheel:matProg_progressIndeterminate="true"
-                                                    android:visibility="visible" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        android:text="@string/one_moment" />
 </RelativeLayout>
