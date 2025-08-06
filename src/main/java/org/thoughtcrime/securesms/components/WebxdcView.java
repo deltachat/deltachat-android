@@ -27,8 +27,6 @@ import java.io.ByteArrayInputStream;
 
 public class WebxdcView extends FrameLayout {
 
-  private static final String TAG = WebxdcView.class.getSimpleName();
-
   private final @NonNull AppCompatImageView icon;
   private final @NonNull TextView           appName;
   private final @NonNull TextView           appSubtitle;
@@ -46,8 +44,10 @@ public class WebxdcView extends FrameLayout {
   public WebxdcView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
     super(context, attrs, defStyleAttr);
 
-    TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.WebxdcView, 0, 0);
-    boolean compact = a.getBoolean(R.styleable.WebxdcView_compact, false);
+    boolean compact;
+    try (TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.WebxdcView, 0, 0)) {
+      compact = a.getBoolean(R.styleable.WebxdcView_compact, false);
+    }
     if (compact) {
       inflate(context, R.layout.webxdc_compact_view, this);
     } else {
@@ -86,13 +86,18 @@ public class WebxdcView extends FrameLayout {
     if (summary.isEmpty()) {
       summary = defaultSummary;
     }
-    appSubtitle.setText(summary);
+    if (summary.isEmpty()) {
+      appSubtitle.setVisibility(View.GONE);
+    } else {
+      appSubtitle.setVisibility(View.VISIBLE);
+      appSubtitle.setText(summary);
+    }
   }
 
   public String getDescription() {
     String desc = getContext().getString(R.string.webxdc_app);
     desc += "\n" + appName.getText();
-    if (appSubtitle.getText() != null && !appSubtitle.getText().toString().equals("") && !appSubtitle.getText().toString().equals(getContext().getString(R.string.webxdc_app))) {
+    if (appSubtitle.getText() != null && !appSubtitle.getText().toString().isEmpty() && !appSubtitle.getText().toString().equals(getContext().getString(R.string.webxdc_app))) {
       desc += "\n" + appSubtitle.getText();
     }
     return desc;

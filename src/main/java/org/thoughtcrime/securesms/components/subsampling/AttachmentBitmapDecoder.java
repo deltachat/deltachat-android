@@ -23,9 +23,7 @@ public class AttachmentBitmapDecoder implements ImageDecoder{
       return new SkiaImageDecoder().decode(context, uri);
     }
 
-    InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
-
-    try {
+    try (InputStream inputStream = PartAuthority.getAttachmentStream(context, uri)) {
       BitmapFactory.Options options = new BitmapFactory.Options();
       options.inPreferredConfig = Bitmap.Config.ARGB_8888;
 
@@ -36,8 +34,6 @@ public class AttachmentBitmapDecoder implements ImageDecoder{
       }
 
       return bitmap;
-    } finally {
-      if (inputStream != null) inputStream.close();
     }
   }
 

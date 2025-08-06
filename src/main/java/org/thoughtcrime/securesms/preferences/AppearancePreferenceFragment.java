@@ -3,6 +3,8 @@ package org.thoughtcrime.securesms.preferences;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -81,9 +83,9 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
 
   private class BackgroundClickListener implements Preference.OnPreferenceClickListener {
     @Override
-    public boolean onPreferenceClick(Preference preference) {
+    public boolean onPreferenceClick(@NonNull Preference preference) {
       Intent intent = new Intent(getContext(), ChatBackgroundActivity.class);
-      getActivity().startActivity(intent);
+      requireActivity().startActivity(intent);
       return true;
     }
   }

@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
-import android.util.AttributeSet;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
@@ -26,7 +26,6 @@ public class ConversationUpdateItem extends BaseConversationItem
 {
   private DeliveryStatusView  deliveryStatusView;
   private AppCompatImageView  appIcon;
-  private AppCompatImageView  verifiedIcon;
   private int                 textColor;
 
   public ConversationUpdateItem(Context context) {
@@ -46,7 +45,6 @@ public class ConversationUpdateItem extends BaseConversationItem
     bodyText           = findViewById(R.id.conversation_update_body);
     deliveryStatusView = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
     appIcon            = findViewById(R.id.app_icon);
-    verifiedIcon       = findViewById(R.id.verified_icon);
 
 
     bodyText.setOnLongClickListener(passthroughClickListener);
@@ -111,16 +109,6 @@ public class ConversationUpdateItem extends BaseConversationItem
       }
     } else {
       appIcon.setVisibility(GONE);
-    }
-
-    if (infoType == DcMsg.DC_INFO_PROTECTION_ENABLED) {
-      verifiedIcon.setVisibility(VISIBLE);
-      verifiedIcon.setImageResource(R.drawable.ic_verified);
-    } else if (infoType == DcMsg.DC_INFO_PROTECTION_DISABLED) {
-      verifiedIcon.setVisibility(VISIBLE);
-      verifiedIcon.setImageResource(R.drawable.ic_verified_broken);
-    } else {
-      verifiedIcon.setVisibility(GONE);
     }
 
     bodyText.setText(messageRecord.getDisplayBody());

@@ -47,7 +47,6 @@ public class SearchFragment extends BaseConversationListFragment
   public static final String TAG          = "SearchFragment";
 
   private TextView               noResultsView;
-  private RecyclerView           listView;
   private StickyHeaderDecoration listDecoration;
 
   private SearchViewModel   viewModel;
@@ -93,7 +92,7 @@ public class SearchFragment extends BaseConversationListFragment
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     noResultsView = view.findViewById(R.id.search_no_results);
-    listView      = view.findViewById(R.id.search_list);
+    RecyclerView listView = view.findViewById(R.id.search_list);
     fab           = view.findViewById(R.id.fab);
 
     listAdapter    = new SearchListAdapter(getContext(), GlideApp.with(this), this);
@@ -166,7 +165,7 @@ public class SearchFragment extends BaseConversationListFragment
       int chatId = dcContext.getChatIdByContactId(contact.getId());
       if(chatId==0) {
         new AlertDialog.Builder(requireContext())
-            .setMessage(getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
+            .setMessage(getString(R.string.ask_start_chat_with, contact.getDisplayName()))
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok, (dialog, which) -> {

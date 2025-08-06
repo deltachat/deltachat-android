@@ -19,9 +19,8 @@ import androidx.fragment.app.Fragment;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-
-import com.caverock.androidsvg.SVGImageView;
 import com.caverock.androidsvg.SVG;
+import com.caverock.androidsvg.SVGImageView;
 import com.caverock.androidsvg.SVGParseException;
 
 import org.thoughtcrime.securesms.R;
@@ -138,15 +137,19 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
     public void withdrawQr() {
         Activity activity = getActivity();
+        String message = chatId == 0 ? activity.getString(R.string.withdraw_verifycontact_explain)
+                          : activity.getString(R.string.withdraw_verifygroup_explain, dcContext.getChat(chatId).getName());
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setMessage(activity.getString(R.string.withdraw_verifycontact_explain));
-        builder.setPositiveButton(R.string.withdraw_qr_code, (dialog, which) -> {
+        builder.setTitle(R.string.withdraw_qr_code);
+        builder.setMessage(message);
+        builder.setPositiveButton(R.string.reset, (dialog, which) -> {
                 DcContext dcContext = DcHelper.getContext(activity);
                 dcContext.setConfigFromQr(dcContext.getSecurejoinQr(chatId));
                 activity.finish();
         });
         builder.setNegativeButton(R.string.cancel, null);
-        builder.create().show();
+        AlertDialog dialog = builder.show();
+        Util.redPositiveButton(dialog);
     }
 
     public void showInviteLinkDialog() {
@@ -184,12 +187,12 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             long progress = event.getData2Int();
             String msg = null;
             if (progress == 300) {
-                msg = String.format(getString(R.string.qrshow_x_joining), dcContext.getContact(contact_id).getNameNAddr());
+                msg = String.format(getString(R.string.qrshow_x_joining), dcContext.getContact(contact_id).getDisplayName());
                 numJoiners++;
             } else if (progress == 600) {
-                msg = String.format(getString(R.string.qrshow_x_verified), dcContext.getContact(contact_id).getNameNAddr());
+                msg = String.format(getString(R.string.qrshow_x_verified), dcContext.getContact(contact_id).getDisplayName());
             } else if (progress == 800) {
-                msg = String.format(getString(R.string.qrshow_x_has_joined_group), dcContext.getContact(contact_id).getNameNAddr());
+                msg = String.format(getString(R.string.qrshow_x_has_joined_group), dcContext.getContact(contact_id).getDisplayName());
             }
 
             if (msg != null) {

@@ -26,6 +26,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventEmitter;
 import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -87,6 +88,7 @@ public class ApplicationContext extends MultiDexApplication {
 
     dcAccounts = new DcAccounts(new File(getFilesDir(), "accounts").getAbsolutePath());
     rpc = new Rpc(dcAccounts.getJsonrpcInstance());
+    rpc.start();
     AccountManager.getInstance().migrateToDcAccounts(this);
     int[] allAccounts = dcAccounts.getAll();
     for (int accountId : allAccounts) {
@@ -104,7 +106,11 @@ public class ApplicationContext extends MultiDexApplication {
       }
     }
     if (allAccounts.length == 0) {
-      dcAccounts.addAccount();
+      try {
+        rpc.addAccount();
+      } catch (RpcException e) {
+        e.printStackTrace();
+      }
     }
     dcContext = dcAccounts.getSelectedAccount();
     notificationCenter = new NotificationCenter(this);
@@ -120,8 +126,6 @@ public class ApplicationContext extends MultiDexApplication {
       }
       Log.i("DeltaChat", "shutting down event handler");
     }, "eventThread").start();
-
-    rpc.start();
 
     // migrating global notifications pref. to per-account config, added  10/July/24
     final String NOTIFICATION_PREF = "pref_key_enable_notifications";
@@ -193,30 +197,30 @@ public class ApplicationContext extends MultiDexApplication {
         }
     }, filter);
 
-    // MAYBE TODO: i think the ApplicationContext is also created
-    // when the app is stated by FetchWorker timeouts.
-    // in this case, the normal threads shall not be started.
-    Constraints constraints = new Constraints.Builder()
-            .setRequiredNetworkType(NetworkType.CONNECTED)
-            .build();
-    PeriodicWorkRequest fetchWorkRequest = new PeriodicWorkRequest.Builder(
-            FetchWorker.class,
-            PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, // usually 15 minutes
-            TimeUnit.MILLISECONDS,
-            PeriodicWorkRequest.MIN_PERIODIC_FLEX_MILLIS, // the start may be preferred by up to 5 minutes, so we run every 10-15 minutes
-            TimeUnit.MILLISECONDS)
-            .setConstraints(constraints)
-            .build();
-    WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-            "FetchWorker",
-            ExistingPeriodicWorkPolicy.KEEP,
-            fetchWorkRequest);
     AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
     if (Prefs.isPushEnabled(this)) {
       FcmReceiveService.register(this);
     } else {
       Log.i(TAG, "FCM disabled at build time");
+      // MAYBE TODO: i think the ApplicationContext is also created
+      // when the app is stated by FetchWorker timeouts.
+      // in this case, the normal threads shall not be started.
+      Constraints constraints = new Constraints.Builder()
+              .setRequiredNetworkType(NetworkType.CONNECTED)
+              .build();
+      PeriodicWorkRequest fetchWorkRequest = new PeriodicWorkRequest.Builder(
+              FetchWorker.class,
+              PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, // usually 15 minutes
+              TimeUnit.MILLISECONDS,
+              PeriodicWorkRequest.MIN_PERIODIC_FLEX_MILLIS, // the start may be preferred by up to 5 minutes, so we run every 10-15 minutes
+              TimeUnit.MILLISECONDS)
+              .setConstraints(constraints)
+              .build();
+      WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+              "FetchWorker",
+              ExistingPeriodicWorkPolicy.KEEP,
+              fetchWorkRequest);
     }
   }
 

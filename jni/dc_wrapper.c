@@ -231,12 +231,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcAccounts_backgroundFetch(JNIEnv *en
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_addAccount(JNIEnv *env, jobject obj)
-{
-    return dc_accounts_add_account(get_dc_accounts(env, obj));
-}
-
-
 JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_migrateAccount(JNIEnv *env, jobject obj, jstring dbfile)
 {
     CHAR_REF(dbfile);
@@ -659,6 +653,14 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getMsgInfo(JNIEnv *env, jobj
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_sendEditRequest(JNIEnv *env, jobject obj, jint msg_id, jstring text)
+{
+    CHAR_REF(text);
+        dc_send_edit_request(get_dc_context(env, obj), msg_id, textPtr);
+    CHAR_UNREF(text);
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getMsgHtml(JNIEnv *env, jobject obj, jint msg_id)
 {
     char* temp = dc_get_msg_html(get_dc_context(env, obj), msg_id);
@@ -683,6 +685,15 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_deleteMsgs(JNIEnv *env, jobject
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_sendDeleteRequest(JNIEnv *env, jobject obj, jintArray msg_ids)
+{
+    int msg_ids_cnt = 0;
+    uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
+        dc_send_delete_request(get_dc_context(env, obj), msg_ids_ptr, msg_ids_cnt);
+    free(msg_ids_ptr);
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_DcContext_forwardMsgs(JNIEnv *env, jobject obj, jintArray msg_ids, jint chat_id)
 {
     int msg_ids_cnt = 0;
@@ -691,6 +702,13 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_forwardMsgs(JNIEnv *env, jobjec
     free(msg_ids_ptr);
 }
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_saveMsgs(JNIEnv *env, jobject obj, jintArray msg_ids)
+{
+    int msg_ids_cnt = 0;
+    uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
+        dc_save_msgs(get_dc_context(env, obj), msg_ids_ptr, msg_ids_cnt);
+    free(msg_ids_ptr);
+}
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_resendMsgs(JNIEnv *env, jobject obj, jintArray msg_ids)
 {
@@ -699,12 +717,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_resendMsgs(JNIEnv *env, job
         jboolean ret = dc_resend_msgs(get_dc_context(env, obj), msg_ids_ptr, msg_ids_cnt) != 0;
     free(msg_ids_ptr);
     return ret;
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_prepareMsg(JNIEnv *env, jobject obj, jint chat_id, jobject msg)
-{
-    return dc_prepare_msg(get_dc_context(env, obj), chat_id, get_dc_msg(env, msg));
 }
 
 
@@ -907,15 +919,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_initiateKeyTransfer(JNIEnv *
         dc_str_unref(temp);
     }
     return setup_code;
-}
-
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_continueKeyTransfer(JNIEnv *env, jobject obj, jint msg_id, jstring setupCode)
-{
-    CHAR_REF(setupCode);
-        jboolean ret = dc_continue_key_transfer(get_dc_context(env, obj), msg_id, setupCodePtr);
-    CHAR_UNREF(setupCode);
-    return ret;
 }
 
 
@@ -1234,6 +1237,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcChat_getColor(JNIEnv *env, jobject obj)
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isEncrypted(JNIEnv *env, jobject obj)
+{
+    return dc_chat_is_encrypted(get_dc_chat(env, obj))!=0;
+}
+
+
 JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isUnpromoted(JNIEnv *env, jobject obj)
 {
     return dc_chat_is_unpromoted(get_dc_chat(env, obj))!=0;
@@ -1261,11 +1270,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_canSend(JNIEnv *env, jobject o
 JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isProtected(JNIEnv *env, jobject obj)
 {
     return dc_chat_is_protected(get_dc_chat(env, obj))!=0;
-}
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isProtectionBroken(JNIEnv *env, jobject obj)
-{
-    return dc_chat_is_protection_broken(get_dc_chat(env, obj))!=0;
 }
 
 
@@ -1425,6 +1429,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getInfoType(JNIEnv *env, jobject ob
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getInfoContactId(JNIEnv *env, jobject obj)
+{
+    return dc_msg_get_info_contact_id(get_dc_msg(env, obj));
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getState(JNIEnv *env, jobject obj)
 {
     return dc_msg_get_state(get_dc_msg(env, obj));
@@ -1578,21 +1588,9 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isForwarded(JNIEnv *env, jobjec
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isIncreation(JNIEnv *env, jobject obj)
-{
-    return dc_msg_is_increation(get_dc_msg(env, obj))!=0;
-}
-
-
 JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isInfo(JNIEnv *env, jobject obj)
 {
     return dc_msg_is_info(get_dc_msg(env, obj))!=0;
-}
-
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isSetupMessage(JNIEnv *env, jobject obj)
-{
-    return dc_msg_is_setupmessage(get_dc_msg(env, obj));
 }
 
 
@@ -1634,12 +1632,20 @@ JNIEXPORT void Java_com_b44t_messenger_DcMsg_setText(JNIEnv *env, jobject obj, j
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcMsg_setFile(JNIEnv *env, jobject obj, jstring file, jstring filemime)
+JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isEdited(JNIEnv *env, jobject obj)
+{
+    return dc_msg_is_edited(get_dc_msg(env, obj));
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcMsg_setFileAndDeduplicate(JNIEnv *env, jobject obj, jstring file, jstring name, jstring filemime)
 {
     CHAR_REF(file);
+    CHAR_REF(name);
     CHAR_REF(filemime);
-        dc_msg_set_file(get_dc_msg(env, obj), filePtr, filemimePtr);
+    dc_msg_set_file_and_deduplicate(get_dc_msg(env, obj), filePtr, namePtr, filemimePtr);
     CHAR_UNREF(filemime);
+    CHAR_UNREF(name);
     CHAR_UNREF(file);
 }
 
@@ -1688,6 +1694,15 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getParentCPtr(JNIEnv *env, jobject
     return (jlong)dc_msg_get_parent(get_dc_msg(env, obj));
 }
 
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getOriginalMsgId(JNIEnv *env, jobject obj)
+{
+    return (jint)dc_msg_get_original_msg_id(get_dc_msg(env, obj));
+}
+
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getSavedMsgId(JNIEnv *env, jobject obj)
+{
+    return (jint)dc_msg_get_saved_msg_id(get_dc_msg(env, obj));
+}
 
 JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getError(JNIEnv *env, jobject obj)
 {
@@ -1765,15 +1780,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getAddr(JNIEnv *env, jobject
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getNameNAddr(JNIEnv *env, jobject obj)
-{
-    char* temp = dc_contact_get_name_n_addr(get_dc_contact(env, obj));
-        jstring ret = JSTRING_NEW(temp);
-    dc_str_unref(temp);
-    return ret;
-}
-
-
 JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getProfileImage(JNIEnv *env, jobject obj)
 {
     char* temp = dc_contact_get_profile_image(get_dc_contact(env, obj));
@@ -1818,6 +1824,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isBlocked(JNIEnv *env, jobj
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isVerified(JNIEnv *env, jobject obj)
 {
     return dc_contact_is_verified(get_dc_contact(env, obj))==2;
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isKeyContact(JNIEnv *env, jobject obj)
+{
+    return dc_contact_is_key_contact(get_dc_contact(env, obj))==1;
 }
 
 

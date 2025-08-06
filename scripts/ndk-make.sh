@@ -65,6 +65,10 @@ if test -z "$NDK_HOST_TAG"; then
     NDK_HOST_TAG="$KERNEL-$ARCH"
 fi
 
+if test -z "$CARGO_TARGET_DIR"; then
+    CARGO_TARGET_DIR=target
+fi
+
 unset RUSTFLAGS
 
 TOOLCHAIN="$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/$NDK_HOST_TAG"
@@ -119,8 +123,8 @@ if test -z $1 || test $1 = armeabi-v7a; then
     TARGET_CC="$TOOLCHAIN/bin/armv7a-linux-androideabi21-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
-    cargo build $RELEASEFLAG --target armv7-linux-androideabi -p deltachat_ffi --features jsonrpc
-    cp target/armv7-linux-androideabi/$RELEASE/libdeltachat.a $jnidir/armeabi-v7a
+    cargo build $RELEASEFLAG --target armv7-linux-androideabi -p deltachat_ffi
+    cp "$CARGO_TARGET_DIR/armv7-linux-androideabi/$RELEASE/libdeltachat.a" "$jnidir/armeabi-v7a"
 fi
 
 if test -z $1 || test $1 = arm64-v8a; then
@@ -128,8 +132,8 @@ if test -z $1 || test $1 = arm64-v8a; then
     TARGET_CC="$TOOLCHAIN/bin/aarch64-linux-android21-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
-    cargo build $RELEASEFLAG --target aarch64-linux-android -p deltachat_ffi --features jsonrpc
-    cp target/aarch64-linux-android/$RELEASE/libdeltachat.a $jnidir/arm64-v8a
+    cargo build $RELEASEFLAG --target aarch64-linux-android -p deltachat_ffi
+    cp "$CARGO_TARGET_DIR/aarch64-linux-android/$RELEASE/libdeltachat.a" "$jnidir/arm64-v8a"
 fi
 
 if test -z $1 || test $1 = x86; then
@@ -137,8 +141,8 @@ if test -z $1 || test $1 = x86; then
     TARGET_CC="$TOOLCHAIN/bin/i686-linux-android21-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
-    cargo build $RELEASEFLAG --target i686-linux-android -p deltachat_ffi --features jsonrpc
-    cp target/i686-linux-android/$RELEASE/libdeltachat.a $jnidir/x86
+    cargo build $RELEASEFLAG --target i686-linux-android -p deltachat_ffi
+    cp "$CARGO_TARGET_DIR/i686-linux-android/$RELEASE/libdeltachat.a" "$jnidir/x86"
 fi
 
 if test -z $1 || test $1 = x86_64; then
@@ -146,8 +150,8 @@ if test -z $1 || test $1 = x86_64; then
     TARGET_CC="$TOOLCHAIN/bin/x86_64-linux-android21-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
-    cargo build $RELEASEFLAG --target x86_64-linux-android -p deltachat_ffi --features jsonrpc
-    cp target/x86_64-linux-android/$RELEASE/libdeltachat.a $jnidir/x86_64
+    cargo build $RELEASEFLAG --target x86_64-linux-android -p deltachat_ffi
+    cp "$CARGO_TARGET_DIR/x86_64-linux-android/$RELEASE/libdeltachat.a" "$jnidir/x86_64"
 fi
 
 rm -fr "$TMPLIB"

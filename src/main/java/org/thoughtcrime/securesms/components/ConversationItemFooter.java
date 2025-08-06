@@ -20,7 +20,9 @@ import org.thoughtcrime.securesms.util.DateUtils;
 public class ConversationItemFooter extends LinearLayout {
 
   private TextView            dateView;
-  private ImageView           secureIndicatorView;
+  private TextView            editedView;
+  private ImageView           bookmarkIndicatorView;
+  private ImageView           emailIndicatorView;
   private ImageView           locationIndicatorView;
   private DeliveryStatusView  deliveryStatusView;
   private Integer             textColor = null;
@@ -44,28 +46,42 @@ public class ConversationItemFooter extends LinearLayout {
     inflate(getContext(), R.layout.conversation_item_footer, this);
 
     dateView              = findViewById(R.id.footer_date);
-    secureIndicatorView   = findViewById(R.id.footer_secure_indicator);
+    editedView            = findViewById(R.id.footer_edited);
+    bookmarkIndicatorView = findViewById(R.id.footer_bookmark_indicator);
+    emailIndicatorView   = findViewById(R.id.footer_email_indicator);
     locationIndicatorView = findViewById(R.id.footer_location_indicator);
     deliveryStatusView    = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
 
     if (attrs != null) {
-      TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemFooter, 0, 0);
-      textColor = typedArray.getInt(R.styleable.ConversationItemFooter_footer_text_color, getResources().getColor(R.color.core_white));
-      setTextColor(textColor);
-      typedArray.recycle();
+      try (TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemFooter, 0, 0)) {
+        textColor = typedArray.getInt(R.styleable.ConversationItemFooter_footer_text_color, getResources().getColor(R.color.core_white));
+        setTextColor(textColor);
+      }
     }
   }
 
   public void setMessageRecord(@NonNull DcMsg messageRecord) {
     presentDate(messageRecord);
-    secureIndicatorView.setVisibility(messageRecord.isSecure() ? View.VISIBLE : View.GONE);
+    boolean bookmark = messageRecord.getOriginalMsgId() != 0 || messageRecord.getSavedMsgId() != 0;
+    bookmarkIndicatorView.setVisibility(bookmark ? View.VISIBLE : View.GONE);
+    editedView.setVisibility(messageRecord.isEdited() ? View.VISIBLE : View.GONE);
+
+    int downloadState = messageRecord.getDownloadState();
+    if (messageRecord.isSecure() || downloadState == DcMsg.DC_DOWNLOAD_AVAILABLE || downloadState == DcMsg.DC_DOWNLOAD_FAILURE || downloadState == DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
+      emailIndicatorView.setVisibility(View.GONE);
+    } else {
+      emailIndicatorView.setVisibility(View.VISIBLE);
+    }
+
     locationIndicatorView.setVisibility(messageRecord.hasLocation() ? View.VISIBLE : View.GONE);
     presentDeliveryStatus(messageRecord);
   }
 
   private void setTextColor(int color) {
     dateView.setTextColor(color);
-    secureIndicatorView.setColorFilter(color);
+    editedView.setTextColor(color);
+    bookmarkIndicatorView.setColorFilter(color);
+    emailIndicatorView.setColorFilter(color);
     locationIndicatorView.setColorFilter(color);
     deliveryStatusView.setTint(color);
   }

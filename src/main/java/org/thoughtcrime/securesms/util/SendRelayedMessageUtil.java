@@ -1,5 +1,12 @@
 package org.thoughtcrime.securesms.util;
 
+import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
+import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
+import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
+
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -20,13 +27,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
-import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
-import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
-import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
-
 public class SendRelayedMessageUtil {
 
   public static void immediatelyRelay(Activity activity, int chatId) {
@@ -38,9 +38,24 @@ public class SendRelayedMessageUtil {
     if (isForwarding(activity)) {
       int[] forwardedMessageIDs = getForwardedMessageIDs(activity);
       resetRelayingMessageContent(activity);
+      if (forwardedMessageIDs == null) return;
+
       Util.runOnAnyBackgroundThread(() -> {
-        for (long chatId : chatIds) {
-          handleForwarding(activity, (int) chatId, forwardedMessageIDs);
+        DcContext dcContext = DcHelper.getContext(activity);
+        for (long longChatId : chatIds) {
+          int chatId = (int) longChatId;
+          if (dcContext.getChat(chatId).isSelfTalk()) {
+            for (int msgId : forwardedMessageIDs) {
+              DcMsg msg = dcContext.getMsg(msgId);
+              if (msg.canSave() && msg.getSavedMsgId() == 0 && msg.getChatId() != chatId) {
+                dcContext.saveMsgs(new int[]{msgId});
+              } else {
+                handleForwarding(activity, chatId, new int[]{msgId});
+              }
+            }
+          } else {
+            handleForwarding(activity, chatId, forwardedMessageIDs);
+          }
         }
 
       });
@@ -105,7 +120,7 @@ public class SendRelayedMessageUtil {
     }
 
     if (uri != null) {
-      message.setFile(getRealPathFromUri(context, uri), mimeType);
+      setFileFromUri(context, uri, message, mimeType);
     }
     if (text != null) {
       message.setText(text);
@@ -113,11 +128,12 @@ public class SendRelayedMessageUtil {
     return message;
   }
 
-  private static String getRealPathFromUri(Context context, Uri uri) throws NullPointerException {
+  private static void setFileFromUri(Context context, Uri uri, DcMsg message, String mimeType) {
+    String path;
     DcContext dcContext = DcHelper.getContext(context);
+    String filename = "cannot-resolve.jpg"; // best guess, this still leads to most images being workable if OS does weird things
     try {
 
-      String filename = "cannot-resolve.jpg"; // best guess, this still leads to most images being workable if OS does weird things
       if (PartAuthority.isLocalUri(uri)) {
         filename = uri.getPathSegments().get(PersistentBlobProvider.FILENAME_PATH_SEGMENT);
       } else if (uri.getScheme().equals("content")) {
@@ -135,14 +151,7 @@ public class SendRelayedMessageUtil {
         }
       }
 
-      String ext = "";
-      int i = filename.lastIndexOf(".");
-      if (i >= 0) {
-        ext = filename.substring(i);
-        filename = filename.substring(0, i);
-      }
-
-      String path = DcHelper.getBlobdirFile(dcContext, filename, ext);
+      path = DcHelper.getBlobdirFile(dcContext, filename, "temp");
 
       // copy content to this file
       if (path != null) {
@@ -150,11 +159,11 @@ public class SendRelayedMessageUtil {
         OutputStream outputStream = new FileOutputStream(path);
         Util.copy(inputStream, outputStream);
       }
-
-      return path;
     } catch (Exception e) {
       e.printStackTrace();
-      return null;
+      path = null;
     }
+    message.setFileAndDeduplicate(path, filename, mimeType);
   }
+
 }

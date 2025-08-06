@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
@@ -16,10 +15,9 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
-        <org.thoughtcrime.securesms.components.ImageDivet android:id="@+id/avatar"
+        <androidx.appcompat.widget.AppCompatImageView android:id="@+id/avatar"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            position="bottom_right"
             android:layout_marginEnd="10dp"
             android:contentDescription="@string/group_avatar" />
 
@@ -46,7 +44,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:textSize="18sp"
-        android:text="@string/chat_new_broadcast_hint" />
+        android:text="@string/chat_new_channel_hint" />
 
     <ListView android:id="@+id/selected_contacts_list"
         android:layout_marginTop="16dp"

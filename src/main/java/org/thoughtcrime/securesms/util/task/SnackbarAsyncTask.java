@@ -1,12 +1,14 @@
 package org.thoughtcrime.securesms.util.task;
 
-import org.thoughtcrime.securesms.util.views.ProgressDialog;
 import android.os.AsyncTask;
-import androidx.annotation.Nullable;
-import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
+import com.google.android.material.snackbar.Snackbar;
+
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 public abstract class SnackbarAsyncTask<Params>
     extends AsyncTask<Params, Void, Void>

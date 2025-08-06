@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.core.view.ViewCompat;
+
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -14,6 +14,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.text.style.TypefaceSpan;
 import android.util.AttributeSet;
+import android.view.View;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -21,8 +22,6 @@ import org.thoughtcrime.securesms.util.ResUtil;
 import org.thoughtcrime.securesms.util.spans.CenterAlignedRelativeSizeSpan;
 
 public class FromTextView extends AppCompatTextView {
-
-  private static final String TAG = FromTextView.class.getSimpleName();
 
   public FromTextView(Context context) {
     super(context);
@@ -59,7 +58,7 @@ public class FromTextView extends AppCompatTextView {
       profileName.setSpan(new TypefaceSpan("sans-serif-light"), 0, profileName.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
       profileName.setSpan(new ForegroundColorSpan(ResUtil.getColor(getContext(), R.attr.conversation_list_item_subject_color)), 0, profileName.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-      if (ViewCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL){
+      if (this.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
         builder.append(profileName);
         builder.append(fromSpan);
       } else {

@@ -3,9 +3,10 @@ package org.thoughtcrime.securesms.audio;
 import android.content.Context;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
-import androidx.annotation.NonNull;
 import android.util.Log;
 import android.util.Pair;
+
+import androidx.annotation.NonNull;
 
 import com.b44t.messenger.util.concurrent.ListenableFuture;
 import com.b44t.messenger.util.concurrent.SettableFuture;
@@ -45,10 +46,10 @@ public class AudioRecorder {
           throw new AssertionError("We can only record once at a time.");
         }
 
-        ParcelFileDescriptor fds[] = ParcelFileDescriptor.createPipe();
+        ParcelFileDescriptor[] fds = ParcelFileDescriptor.createPipe();
 
         captureUri  = blobProvider.create(context, new ParcelFileDescriptor.AutoCloseInputStream(fds[0]),
-                                          MediaUtil.AUDIO_AAC, null, null);
+                                          MediaUtil.AUDIO_AAC, "voice.aac", null);
         audioCodec  = new AudioCodec(context);
 
         audioCodec.start(new ParcelFileDescriptor.AutoCloseOutputStream(fds[1]));

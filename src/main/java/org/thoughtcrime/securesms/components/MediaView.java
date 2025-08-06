@@ -3,10 +3,8 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
 import android.net.Uri;
-import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.Window;
@@ -55,6 +53,7 @@ public class MediaView extends FrameLayout {
   public void set(@NonNull GlideRequests glideRequests,
                   @NonNull Window window,
                   @NonNull Uri source,
+                  @Nullable String fileName,
                   @NonNull String mediaType,
                   long size,
                   boolean autoplay)
@@ -68,7 +67,7 @@ public class MediaView extends FrameLayout {
       imageView.setVisibility(View.GONE);
       videoView.get().setVisibility(View.VISIBLE);
       videoView.get().setWindow(window);
-      videoView.get().setVideoSource(new VideoSlide(getContext(), source, size), autoplay);
+      videoView.get().setVideoSource(new VideoSlide(getContext(), source, fileName, size), autoplay);
     } else {
       throw new IOException("Unsupported media type: " + mediaType);
     }

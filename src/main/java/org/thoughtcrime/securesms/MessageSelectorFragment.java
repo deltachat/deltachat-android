@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -61,22 +62,46 @@ public abstract class MessageSelectorFragment
   }
 
   protected void handleDeleteMessages(int chatId, final int[] messageIds) {
-    DcChat dcChat = DcHelper.getContext(getActivity()).getChat(chatId);
+    DcChat dcChat = dcContext.getChat(chatId);
+    boolean canDeleteForAll = true;
+    if (dcChat.isEncrypted() && dcChat.canSend() && !dcChat.isSelfTalk()) {
+      for(int msgId : messageIds) {
+        DcMsg msg = dcContext.getMsg(msgId);
+        if (!msg.isOutgoing() || msg.isInfo()) {
+          canDeleteForAll = false;
+          break;
+        }
+      }
+    } else {
+      canDeleteForAll = false;
+    }
 
     String text = getActivity().getResources().getQuantityString(
-      dcChat.isDeviceTalk()? R.plurals.ask_delete_messages_simple : R.plurals.ask_delete_messages,
+      dcChat.isDeviceTalk() ? R.plurals.ask_delete_messages_simple : R.plurals.ask_delete_messages,
       messageIds.length, messageIds.length);
+    int positiveBtnLabel = dcChat.isSelfTalk() ? R.string.delete : R.string.delete_for_me;
 
-    AlertDialog dialog = new AlertDialog.Builder(getActivity())
-            .setMessage(text)
-            .setCancelable(true)
-            .setPositiveButton(R.string.delete, (d, which) -> {
-                dcContext.deleteMsgs(messageIds);
-                if (actionMode != null) actionMode.finish();
-            })
-            .setNegativeButton(android.R.string.cancel, null)
-            .show();
-    Util.redPositiveButton(dialog);
+    AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity())
+      .setMessage(text)
+      .setCancelable(true)
+      .setNeutralButton(android.R.string.cancel, null)
+      .setPositiveButton(positiveBtnLabel, (d, which) -> {
+        dcContext.deleteMsgs(messageIds);
+        if (actionMode != null) actionMode.finish();
+      });
+
+    if(canDeleteForAll) {
+      builder.setNegativeButton(R.string.delete_for_everyone, (d, which) -> {
+        Util.runOnAnyBackgroundThread(() -> dcContext.sendDeleteRequest(messageIds));
+        if (actionMode != null) actionMode.finish();
+      });
+      AlertDialog dialog = builder.show();
+      Util.redButton(dialog, AlertDialog.BUTTON_NEGATIVE);
+      Util.redPositiveButton(dialog);
+    } else {
+      AlertDialog dialog = builder.show();
+      Util.redPositiveButton(dialog);
+    }
   }
 
   protected void handleSaveAttachment(final Set<DcMsg> messageRecords) {
@@ -122,15 +147,22 @@ public abstract class MessageSelectorFragment
 
   protected void handleResendMessage(final Set<DcMsg> dcMsgsSet) {
     int[] ids = DcMsg.msgSetToIds(dcMsgsSet);
-    if (dcContext.resendMsgs(ids)) {
-      actionMode.finish();
-      Toast.makeText(getContext(), R.string.sending, Toast.LENGTH_SHORT).show();
-    } else {
-      new AlertDialog.Builder(getContext())
-        .setMessage(dcContext.getLastError())
-        .setCancelable(false)
-        .setPositiveButton(android.R.string.ok, null)
-        .show();
-    }
+    Util.runOnAnyBackgroundThread(() -> {
+      boolean success = dcContext.resendMsgs(ids);
+      Util.runOnMain(() -> {
+        Activity activity = getActivity();
+        if (activity == null || activity.isFinishing()) return;
+        if (success) {
+          actionMode.finish();
+          Toast.makeText(getContext(), R.string.sending, Toast.LENGTH_SHORT).show();
+        } else {
+          new AlertDialog.Builder(activity)
+            .setMessage(dcContext.getLastError())
+            .setCancelable(false)
+            .setPositiveButton(android.R.string.ok, null)
+            .show();
+        }
+      });
+    });
   }
 }

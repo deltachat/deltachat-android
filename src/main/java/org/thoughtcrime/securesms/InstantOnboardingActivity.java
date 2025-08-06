@@ -4,7 +4,6 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_URL;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,7 +13,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,12 +32,13 @@ import androidx.loader.app.LoaderManager;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcLot;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.AvatarSelector;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -54,6 +53,7 @@ import org.thoughtcrime.securesms.profiles.ProfileMediaConstraints;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
@@ -88,7 +88,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
   private AttachmentManager attachmentManager;
   private Bitmap avatarBmp;
-  private ProgressDialog progressDialog;
+  private @Nullable ProgressDialog progressDialog;
   private DcContext dcContext;
 
   @Override
@@ -156,14 +156,14 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     super.onOptionsItemSelected(item);
 
-    switch (item.getItemId()) {
-    case android.R.id.home:
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
       getOnBackPressedDispatcher().onBackPressed();
       return true;
-    case R.id.menu_proxy_settings:
+    } else if (itemId == R.id.menu_proxy_settings) {
       startActivity(new Intent(this, ProxySettingsActivity.class));
       return true;
-    case R.id.menu_view_log:
+    } else if (itemId == R.id.menu_view_log) {
       startActivity(new Intent(this, LogViewActivity.class));
       return true;
     }
@@ -187,10 +187,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
       case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
         setAvatarView(data.getData());
-        break;
-
-      case Crop.REQUEST_CROP:
-        setAvatarView(Crop.getOutput(data));
         break;
 
       case IntentIntegrator.REQUEST_CODE:
@@ -331,7 +327,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     privacyPolicyBtn.setOnClickListener(view -> {
       if (!isDcLogin) {
-        WebViewActivity.openUrlInBrowser(this, "https://" + providerHost + "/privacy.html");
+        IntentUtils.showInBrowser(this, "https://" + providerHost + "/privacy.html");
       }
     });
 
@@ -350,7 +346,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       .create();
 
     view.findViewById(R.id.use_other_server).setOnClickListener((v) -> {
-      WebViewActivity.openUrlInBrowser(this, INSTANCES_URL);
+      IntentUtils.showInBrowser(this, INSTANCES_URL);
       signUpDialog.dismiss();
     });
     view.findViewById(R.id.login_button).setOnClickListener((v) -> {
@@ -414,30 +410,34 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     if (eventId == DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
       long progress = event.getData1Int();
-      if (progress==0/*error/aborted*/) {
-        progressError(event.getData2Str());
-      } else if (progress<1000/*progress in permille*/) {
-        progressUpdate((int)progress);
-      } else if (progress==1000/*done*/) {
-        DcHelper.getAccounts(this).startIo();
-        progressSuccess();
-      }
+      progressUpdate((int)progress);
     }
   }
 
   private void progressUpdate(int progress) {
     int percent = progress / 10;
-    progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
+    if (progressDialog != null) {
+      progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
+    }
   }
 
   private void progressError(String data2) {
-    progressDialog.dismiss();
+    if (progressDialog != null) {
+      try {
+        progressDialog.dismiss();
+      } catch (IllegalArgumentException e) {
+        // see https://stackoverflow.com/a/5102572/4557005
+        Log.w(TAG, e);
+      }
+    }
     WelcomeActivity.maybeShowConfigurationError(this, data2);
   }
 
   private void progressSuccess() {
     DcHelper.getEventCenter(this).endCaptureNextError();
-    progressDialog.dismiss();
+    if (progressDialog != null) {
+      progressDialog.dismiss();
+    }
 
     Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
     intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
@@ -505,14 +505,13 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     DcHelper.getEventCenter(this).captureNextError();
 
     new Thread(() -> {
-      if (!dcContext.setConfigFromQr(qrCode)) {
-        Util.runOnMain(() -> {
-          progressError(dcContext.getLastError());
-        });
-        return;
-      }
-      DcHelper.getAccounts(this).stopIo();
-      dcContext.configure();
+      Rpc rpc = DcHelper.getRpc(this);
+        try {
+          rpc.addTransportFromQr(dcContext.getAccountId(), qrCode);
+          progressSuccess();
+        } catch (RpcException e) {
+          Util.runOnMain(() -> progressError(e.getMessage()));
+        }
     }).start();
   }
 

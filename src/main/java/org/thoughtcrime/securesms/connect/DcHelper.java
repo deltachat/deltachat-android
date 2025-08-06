@@ -23,6 +23,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
@@ -36,6 +37,7 @@ import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.FileUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
 import java.util.Date;
@@ -43,7 +45,7 @@ import java.util.HashMap;
 
 public class DcHelper {
 
-  private static final String TAG = DcHelper.class.getSimpleName();
+    private static final String TAG = DcHelper.class.getSimpleName();
 
     public static final String CONFIG_ADDRESS = "addr";
     public static final String CONFIG_CONFIGURED_ADDRESS = "configured_addr";
@@ -61,11 +63,7 @@ public class DcHelper {
     public static final String CONFIG_DISPLAY_NAME = "displayname";
     public static final String CONFIG_SELF_STATUS = "selfstatus";
     public static final String CONFIG_SELF_AVATAR = "selfavatar";
-    public static final String CONFIG_E2EE_ENABLED = "e2ee_enabled";
-    public static final String CONFIG_QR_OVERLAY_LOGO = "qr_overlay_logo";
-    public static final String CONFIG_INBOX_WATCH = "inbox_watch";
     public static final String CONFIG_SENTBOX_WATCH = "sentbox_watch";
-    public static final String CONFIG_MVBOX_WATCH = "mvbox_watch";
     public static final String CONFIG_MVBOX_MOVE = "mvbox_move";
     public static final String CONFIG_ONLY_FETCH_MVBOX = "only_fetch_mvbox";
     public static final String CONFIG_BCC_SELF = "bcc_self";
@@ -154,14 +152,9 @@ public class DcHelper {
     dcContext.setStockTranslation(11, context.getString(R.string.audio));
     dcContext.setStockTranslation(12, context.getString(R.string.file));
     dcContext.setStockTranslation(23, context.getString(R.string.gif));
-    dcContext.setStockTranslation(24, context.getString(R.string.encrypted_message));
     dcContext.setStockTranslation(29, context.getString(R.string.systemmsg_cannot_decrypt));
     dcContext.setStockTranslation(35, context.getString(R.string.contact_verified));
-    dcContext.setStockTranslation(36, context.getString(R.string.contact_not_verified));
-    dcContext.setStockTranslation(37, context.getString(R.string.contact_setup_changed));
     dcContext.setStockTranslation(40, context.getString(R.string.chat_archived_label));
-    dcContext.setStockTranslation(42, context.getString(R.string.autocrypt_asm_subject));
-    dcContext.setStockTranslation(43, context.getString(R.string.autocrypt_asm_general_body));
     dcContext.setStockTranslation(60, context.getString(R.string.login_error_cannot_login));
     dcContext.setStockTranslation(66, context.getString(R.string.location));
     dcContext.setStockTranslation(67, context.getString(R.string.sticker));
@@ -194,7 +187,6 @@ public class DcHelper {
     dcContext.setStockTranslation(112, context.getString(R.string.error_x));
     dcContext.setStockTranslation(113, context.getString(R.string.not_supported_by_provider));
     dcContext.setStockTranslation(114, context.getString(R.string.messages));
-    dcContext.setStockTranslation(115, context.getString(R.string.broadcast_list));
     dcContext.setStockTranslation(116, context.getString(R.string.part_of_total_used));
     dcContext.setStockTranslation(117, context.getString(R.string.secure_join_started));
     dcContext.setStockTranslation(118, context.getString(R.string.secure_join_replies));
@@ -240,23 +232,16 @@ public class DcHelper {
     // cmp. https://github.com/deltachat/deltachat-android/issues/2187
     dcContext.setStockTranslation(120, context.getString(R.string.qrshow_join_group_hint).replace("\"", ""));
     dcContext.setStockTranslation(121, context.getString(R.string.connectivity_not_connected));
-    dcContext.setStockTranslation(122, context.getString(R.string.aeap_addr_changed));
-    dcContext.setStockTranslation(123, context.getString(R.string.aeap_explanation));
     dcContext.setStockTranslation(162, context.getString(R.string.multidevice_qr_subtitle));
     dcContext.setStockTranslation(163, context.getString(R.string.multidevice_transfer_done_devicemsg));
-
-    // The next two strings should only be set if the UI actually shows more info when the user clicks on the
-    // DC_INFO_PROTECTION_{EN|DIS}ABLED info message
     dcContext.setStockTranslation(170, context.getString(R.string.chat_protection_enabled_tap_to_learn_more));
-    dcContext.setStockTranslation(171, context.getString(R.string.chat_protection_broken_tap_to_learn_more));
-
     dcContext.setStockTranslation(172, context.getString(R.string.chat_new_group_hint));
     dcContext.setStockTranslation(173, context.getString(R.string.member_x_added));
     dcContext.setStockTranslation(174, context.getString(R.string.invalid_unencrypted_tap_to_learn_more));
     dcContext.setStockTranslation(176, context.getString(R.string.reaction_by_you));
     dcContext.setStockTranslation(177, context.getString(R.string.reaction_by_other));
     dcContext.setStockTranslation(190, context.getString(R.string.secure_join_wait));
-    dcContext.setStockTranslation(191, context.getString(R.string.secure_join_wait_timeout));
+    dcContext.setStockTranslation(193, context.getString(R.string.donate_device_msg));
   }
 
   public static File getImexDir() {
@@ -266,7 +251,9 @@ public class DcHelper {
     return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
   }
 
-  public static final HashMap<String, Integer> sharedFiles = new HashMap<>();
+  // When the user shares a file to another app or opens a file in another app, it is added here.
+  // `HashMap<file, mimetype>` where `file` is the name of the file in the blobdir (not the user-visible filename).
+  public static final HashMap<String, String> sharedFiles = new HashMap<>();
 
   public static void openForViewOrShare(Context activity, int msg_id, String cmd) {
     DcContext dcContext = getContext(activity);
@@ -281,6 +268,7 @@ public class DcHelper {
 
     DcMsg msg = dcContext.getMsg(msg_id);
     String path = msg.getFile();
+    String filename = msg.getFilename();
     String mimeType = msg.getFilemime();
     try {
       File file = new File(path);
@@ -290,9 +278,17 @@ public class DcHelper {
       }
 
       Uri uri;
+      mimeType = checkMime(filename, mimeType);
       if (path.startsWith(dcContext.getBlobdir())) {
-        uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + Uri.encode(file.getName()));
-        sharedFiles.put("/" + file.getName(), 1); // as different Android version handle uris in putExtra differently, we also check them on our own
+        // Build a Uri that will later be passed to AttachmentsContentProvider.openFile().
+        // The last part needs to be `filename`, i.e. the original, user-visible name of the file,
+        // so that the external apps show the name of the file correctly.
+        uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + Uri.encode(file.getName()) + "/" + Uri.encode(filename));
+
+        // As different Android version handle uris in putExtra differently,
+        // we also check on our own that the file was actually shared.
+        // The check happens in AttachmentsContentProvider.openFile().
+        sharedFiles.put(file.getName(), mimeType);
       } else {
         if (Build.VERSION.SDK_INT >= 24) {
           uri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".fileprovider", file);
@@ -302,7 +298,6 @@ public class DcHelper {
       }
 
       if (cmd.equals(Intent.ACTION_VIEW)) {
-        mimeType = checkMime(path, mimeType);
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(uri, mimeType);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -353,7 +348,7 @@ public class DcHelper {
     activity.startActivity(intent);
   }
 
-  private static String checkMime(String path, String mimeType) {
+  public static String checkMime(String path, String mimeType) {
     if(mimeType == null || mimeType.equals("application/octet-stream")) {
       path = path.replaceAll(" ", "");
       String extension = MediaUtil.getFileExtensionFromUrl(path);
@@ -363,6 +358,13 @@ public class DcHelper {
     return mimeType;
   }
 
+  /**
+   * Return the path of a not-yet-existing file in the blobdir with roughly the given filename
+   * and the given extension.
+   * In many cases, since we're using setFileAndDeduplicate now, this wouldn't be necessary anymore
+   * and we could just create a file with a random filename,
+   * but there are a few usages that still need the current behavior (like `openMaps()`).
+   */
   public static String getBlobdirFile(DcContext dcContext, String filename, String ext) {
     filename = FileUtils.sanitizeFilename(filename);
     ext = FileUtils.sanitizeFilename(ext);
@@ -425,7 +427,7 @@ public class DcHelper {
         return true;
       }
 
-    } catch (Exception e) {
+    } catch (Exception ignored) {
     }
     return false;
   }
@@ -451,20 +453,10 @@ public class DcHelper {
       }
   }
 
-  public static void showVerificationBrokenDialog(Context context, String name) {
-    new AlertDialog.Builder(context)
-      .setMessage(context.getString(R.string.chat_protection_broken_explanation, name))
-      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#nocryptanymore"))
-      .setNegativeButton(R.string.qrscan_title, (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
-      .setPositiveButton(R.string.ok, null)
-      .setCancelable(true)
-      .show();
-  }
-
   public static void showProtectionEnabledDialog(Context context) {
     new AlertDialog.Builder(context)
       .setMessage(context.getString(R.string.chat_protection_enabled_explanation))
-      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#e2eeguarantee"))
+      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#e2ee"))
       .setPositiveButton(R.string.ok, null)
       .setCancelable(true)
       .show();
@@ -480,19 +472,67 @@ public class DcHelper {
       .show();
   }
 
-  public static void showEncryptionRequiredDialog(Context context, String addr) {
-    new AlertDialog.Builder(context)
-      .setMessage(context.getString(R.string.encryption_required_for_new_contact, addr))
-      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#howtoe2ee"))
-      .setNegativeButton(R.string.qrscan_title, (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
-      .setPositiveButton(R.string.ok, null)
-      .setCancelable(true)
-      .show();
-  }
-
   public static void openHelp(Context context, String section) {
     Intent intent = new Intent(context, LocalHelpActivity.class);
     if (section != null) { intent.putExtra(LocalHelpActivity.SECTION_EXTRA, section); }
     context.startActivity(intent);
   }
+
+    /**
+     * For the PGP-Contacts migration, things can go wrong.
+     * The migration happens when the account is setup, at which point no events can be sent yet.
+     * So, instead, if something goes wrong, it's returned by getLastError().
+     * This function shows the error message to the user.
+     * <p>
+     * A few releases after the PGP-contacts migration (which happened in 2025-05),
+     * we can remove this function again.
+     */
+    public static void maybeShowMigrationError(Context context) {
+        try {
+            String lastError = DcHelper.getRpc(context).getMigrationError(DcHelper.getContext(context).getAccountId());
+
+            if (lastError != null && !lastError.isEmpty()) {
+                Log.w(TAG, "Opening account failed, trying to share error: " + lastError);
+
+                String subject = "Delta Chat failed to update";
+                String email = "delta@merlinux.eu";
+
+                new AlertDialog.Builder(context)
+                        .setMessage(context.getString(R.string.error_x, lastError))
+                        .setNeutralButton(R.string.global_menu_edit_copy_desktop, (d, which) -> {
+                            Util.writeTextToClipboard(context, lastError);
+                        })
+                        .setPositiveButton(R.string.menu_send, (d, which) -> {
+                            Intent sharingIntent = new Intent(
+                                    Intent.ACTION_SENDTO, Uri.fromParts(
+                                    "mailto", email, null
+                            )
+                            );
+                            sharingIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+                            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                            sharingIntent.putExtra(Intent.EXTRA_TEXT, lastError);
+
+                            if (sharingIntent.resolveActivity(context.getPackageManager()) == null) {
+                                Log.w(TAG, "No email client found to send crash report");
+                                sharingIntent = new Intent(Intent.ACTION_SEND);
+                                sharingIntent.setType("text/plain");
+                                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                                sharingIntent.putExtra(Intent.EXTRA_TEXT, lastError);
+                                sharingIntent.putExtra(Intent.EXTRA_EMAIL, email);
+                            }
+
+                            Intent chooser =
+                                    Intent.createChooser(sharingIntent, "Send using...");
+                            chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            chooser.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+
+                            context.startActivity(chooser);
+                        })
+                        .setCancelable(false)
+                        .show();
+            }
+        } catch (RpcException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms.util;
 
 import android.content.Context;
-import android.os.Build;
 import android.provider.Settings;
 import android.util.Log;
 

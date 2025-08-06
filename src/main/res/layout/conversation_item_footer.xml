@@ -1,22 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     tools:parentTag="org.thoughtcrime.securesms.components.ConversationItemFooter">
 
     <ImageView
-        android:id="@+id/footer_secure_indicator"
+        android:id="@+id/footer_bookmark_indicator"
         android:layout_width="12sp"
         android:layout_height="11sp"
-        android:src="@drawable/msg_encr_out"
-        android:visibility="gone"
+        android:src="@drawable/baseline_bookmark_24"
         android:layout_gravity="center_vertical|end"
         android:importantForAccessibility="no"
-        tools:visibility="visible"/>
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/footer_email_indicator"
+        android:layout_width="12sp"
+        android:layout_height="11sp"
+        android:src="@drawable/ic_outline_email"
+        android:visibility="gone"
+        android:layout_marginEnd="5dp"
+        android:layout_gravity="center_vertical|end"
+        android:importantForAccessibility="no"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/footer_edited"
+        android:autoLink="none"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:linksClickable="false"
+        style="@style/Signal.Text.Caption.MessageSent"
+        android:textColor="?conversation_item_outgoing_text_secondary_color"
+        android:text="@string/edited"
+        android:layout_marginEnd="5dp"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/footer_date"
@@ -26,7 +50,7 @@
         android:linksClickable="false"
         style="@style/Signal.Text.Caption.MessageSent"
         android:textColor="?conversation_item_outgoing_text_secondary_color"
-        tools:text="30 mins"/>
+        tools:text="30 mins" />
 
     <ImageView
         android:id="@+id/footer_location_indicator"
@@ -36,14 +60,16 @@
         android:visibility="gone"
         android:layout_gravity="center_vertical|end"
         android:contentDescription="@string/location"
-        tools:visibility="gone"/>
+        tools:visibility="gone" />
 
-    <ImageView android:id="@+id/delivery_indicator"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_gravity="center_vertical|end"
-               android:layout_marginLeft="6dp"
-               android:tint="?attr/conversation_item_outgoing_text_secondary_color"
-               android:visibility="gone" />
+    <ImageView
+        android:id="@+id/delivery_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginStart="6dp"
+        android:contentDescription="@null"
+        android:visibility="gone"
+        app:tint="?attr/conversation_item_outgoing_text_secondary_color" />
 
 </merge>

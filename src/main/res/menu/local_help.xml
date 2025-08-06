@@ -5,7 +5,7 @@
     <item android:title="@string/menu_scroll_to_top"
         android:id="@+id/log_scroll_up" />
 
-    <item android:title="@string/global_menu_help_learn_desktop"
+    <item android:title="@string/delta_chat_homepage"
         android:id="@+id/learn_more"
         app:showAsAction="never"/>
 
@@ -13,7 +13,7 @@
         android:id="@+id/privacy_policy"
         app:showAsAction="never"/>
 
-    <item android:title="@string/global_menu_help_contribute_desktop"
+    <item android:title="@string/contribute"
         android:id="@+id/contribute"
         app:showAsAction="never"/>
 

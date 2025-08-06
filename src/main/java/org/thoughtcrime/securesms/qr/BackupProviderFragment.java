@@ -18,9 +18,8 @@ import androidx.fragment.app.Fragment;
 import com.b44t.messenger.DcBackupProvider;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-
-import com.caverock.androidsvg.SVGImageView;
 import com.caverock.androidsvg.SVG;
+import com.caverock.androidsvg.SVGImageView;
 import com.caverock.androidsvg.SVGParseException;
 
 import org.thoughtcrime.securesms.R;
@@ -39,7 +38,6 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     private ProgressBar      progressBar;
     private View             topText;
     private SVGImageView     qrImageView;
-    private View             bottomText;
     private boolean          isFinishing;
     private  Thread          prepareThread;
     private  Thread          waitThread;
@@ -57,7 +55,6 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
         progressBar = view.findViewById(R.id.progress_bar);
         topText = view.findViewById(R.id.top_text);
         qrImageView = view.findViewById(R.id.qrImage);
-        bottomText = view.findViewById(R.id.bottom_text);
         setHasOptionsMenu(true);
 
         statusLine.setText(R.string.preparing_account);
@@ -89,7 +86,6 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 } catch (SVGParseException e) {
                     e.printStackTrace();
                 }
-                bottomText.setVisibility(View.VISIBLE);
                 waitThread = new Thread(() -> {
                     Log.i(TAG, "##### waitForReceiver() with qr: "+dcBackupProvider.getQr());
                     dcBackupProvider.waitForReceiver();
@@ -143,14 +139,13 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
       super.onOptionsItemSelected(item);
 
-      switch (item.getItemId()) {
-        case R.id.copy:
-          if (dcBackupProvider != null) {
-              Util.writeTextToClipboard(getActivity(), dcBackupProvider.getQr());
-              Toast.makeText(getActivity(), getString(R.string.done), Toast.LENGTH_SHORT).show();
-              getTransferActivity().warnAboutCopiedQrCodeOnAbort = true;
-          }
-          return true;
+      if (item.getItemId() == R.id.copy) {
+        if (dcBackupProvider != null) {
+          Util.writeTextToClipboard(getActivity(), dcBackupProvider.getQr());
+          Toast.makeText(getActivity(), getString(R.string.done), Toast.LENGTH_SHORT).show();
+          getTransferActivity().warnAboutCopiedQrCodeOnAbort = true;
+        }
+        return true;
       }
 
       return false;
@@ -198,7 +193,6 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             if (hideQrCode && qrImageView.getVisibility() != View.GONE) {
                 qrImageView.setVisibility(View.GONE);
                 topText.setVisibility(View.GONE);
-                bottomText.setVisibility(View.GONE);
                 statusLine.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(permille == 1000 ? View.GONE : View.VISIBLE);
             }

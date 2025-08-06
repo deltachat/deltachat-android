@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/conversation_item_background"
@@ -13,9 +13,13 @@
     android:clipToPadding="false"
     android:clipChildren="false">
 
+  <androidx.constraintlayout.widget.ConstraintLayout
+	  android:layout_width="match_parent"
+	  android:layout_height="match_parent">
+
     <RelativeLayout
         android:id="@+id/container"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/conversation_individual_right_gutter"
         android:layout_marginEnd="@dimen/conversation_individual_right_gutter"
@@ -23,7 +27,12 @@
         android:paddingLeft="6dp"
         android:paddingStart="6dp"
         android:clipToPadding="false"
-        android:clipChildren="false">
+        android:clipChildren="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/jumpto_icon"
+        >
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/reply_icon"
@@ -43,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true">
+            android:layout_alignBottom="@id/body_bubble">
 
             <org.thoughtcrime.securesms.components.AvatarImageView
                 android:id="@+id/contact_photo"
@@ -239,4 +248,20 @@
             app:message_type="incoming" />
 
     </RelativeLayout>
+
+  <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/jumpto_icon"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:layout_marginEnd="@dimen/conversation_individual_right_gutter"
+      android:padding="5dp"
+      android:src="@drawable/rounded_arrow_forward_24"
+      android:background="@drawable/jumpto_btn_bg"
+      android:contentDescription="@string/show_in_chat"
+      android:visibility="gone"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      />
+</androidx.constraintlayout.widget.ConstraintLayout>
 </org.thoughtcrime.securesms.ConversationItem>

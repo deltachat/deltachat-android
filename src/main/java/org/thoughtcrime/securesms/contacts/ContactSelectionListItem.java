@@ -1,14 +1,14 @@
 package org.thoughtcrime.securesms.contacts;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcContact;
 
@@ -64,10 +64,12 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.name          = name;
     this.number        = number;
 
-    if (specialId==DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP
-     || specialId==DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST
-     || specialId==DcContact.DC_CONTACT_ID_ADD_MEMBER || specialId==DcContact.DC_CONTACT_ID_QR_INVITE) {
-      this.recipient = null;
+    if (specialId==DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT
+     || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP
+     || specialId==DcContact.DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP
+     || specialId==DcContact.DC_CONTACT_ID_NEW_BROADCAST
+     || specialId==DcContact.DC_CONTACT_ID_ADD_MEMBER
+     || specialId==DcContact.DC_CONTACT_ID_QR_INVITE) {
       this.nameView.setTypeface(null, Typeface.BOLD);
     }
     else {
@@ -79,11 +81,11 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
       this.nameView.setTypeface(null, Typeface.NORMAL);
     }
     if (specialId == DcContact.DC_CONTACT_ID_QR_INVITE) {
-      this.avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.baseline_qr_code_24).asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
+      this.avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_qr_code_24).asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
     } else {
       this.avatar.setAvatar(glideRequests, recipient, false);
     }
-    this.avatar.setSeenRecently(contact!=null? contact.wasSeenRecently() : false);
+    this.avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
 
     setText(name, number, label, contact);
     setEnabled(enabled);
@@ -109,18 +111,17 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.nameView.setEnabled(true);
     this.nameView.setText(name==null? "#" : name);
 
+    if (contact != null && contact.isKeyContact()) {
+      number = null;
+    }
+
     if(number!=null) {
-      this.numberView.setText(number == null ? "" : number);
+      this.numberView.setText(number);
       this.labelView.setText(label==null? "" : label);
       this.numberContainer.setVisibility(View.VISIBLE);
     }
     else {
       this.numberContainer.setVisibility(View.GONE);
-    }
-    if (contact != null && contact.isVerified()) {
-      nameView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_verified,0);
-    } else {
-      nameView.setCompoundDrawablesWithIntrinsicBounds(0,0, 0,0);
     }
   }
 
@@ -154,14 +155,9 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
       Util.runOnMain(() -> {
         avatar.setAvatar(glideRequests, recipient, false);
         DcContact contact = recipient.getDcContact();
-        avatar.setSeenRecently(contact!=null? contact.wasSeenRecently() : false);
+        avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
         nameView.setText(recipient.toShortString());
       });
     }
-  }
-
-  public void setNoHeaderPadding() {
-    int paddinglr = getContext().getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding);
-    setPadding(paddinglr, 0, paddinglr, 0);
   }
 }

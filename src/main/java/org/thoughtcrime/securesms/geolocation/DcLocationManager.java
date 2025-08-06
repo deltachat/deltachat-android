@@ -28,7 +28,7 @@ public class DcLocationManager implements Observer {
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.d(TAG, "background service connected");
             serviceBinder = (LocationBackgroundService.LocationBackgroundServiceBinder) service;
-            while (pendingShareLastLocation.size() > 0) {
+            while (!pendingShareLastLocation.isEmpty()) {
                 shareLastLocation(pendingShareLastLocation.pop());
             }
         }

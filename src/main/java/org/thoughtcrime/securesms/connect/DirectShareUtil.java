@@ -53,8 +53,7 @@ public class DirectShareUtil {
         try {
           ShortcutManagerCompat.removeDynamicShortcuts(context, Collections.singletonList(Integer.toString(chatId)));
         } catch (Exception e) {
-          Log.e(TAG, "Clearing shortcut failed: " + e);
-          e.printStackTrace();
+          Log.e(TAG, "Clearing shortcut failed", e);
         }
       });
     }
@@ -66,8 +65,7 @@ public class DirectShareUtil {
         ShortcutManagerCompat.removeAllDynamicShortcuts(context);
         triggerRefreshDirectShare(context);
       } catch (Exception e) {
-        Log.e(TAG, "Resetting shortcuts failed: " + e);
-        e.printStackTrace();
+        Log.e(TAG, "Resetting shortcuts failed", e);
       }
     });
   }
@@ -125,6 +123,7 @@ public class DirectShareUtil {
 
       Intent intent = new Intent(context, ShareActivity.class);
       intent.setAction(Intent.ACTION_SEND);
+      intent.putExtra(ShareActivity.EXTRA_ACC_ID, dcContext.getAccountId());
       intent.putExtra(ShareActivity.EXTRA_CHAT_ID, chat.getId());
 
       Recipient recipient = new Recipient(context, chat);
@@ -143,7 +142,7 @@ public class DirectShareUtil {
     return results;
   }
 
-  private static Bitmap getIconForShortcut(@NonNull Context context, @NonNull Recipient recipient) {
+  public static Bitmap getIconForShortcut(@NonNull Context context, @NonNull Recipient recipient) {
     try {
       return getShortcutInfoBitmap(context, recipient);
     } catch (ExecutionException | InterruptedException | NullPointerException e) {
@@ -152,7 +151,7 @@ public class DirectShareUtil {
   }
 
   private static @NonNull Bitmap getShortcutInfoBitmap(@NonNull Context context, @NonNull Recipient recipient) throws ExecutionException, InterruptedException {
-    return DrawableUtil.wrapBitmapForShortcutInfo(request(GlideApp.with(context).asBitmap(), context, recipient, false).circleCrop().submit().get());
+    return DrawableUtil.wrapBitmapForShortcutInfo(request(GlideApp.with(context).asBitmap(), context, recipient).circleCrop().submit().get());
   }
 
   private static Bitmap getFallbackDrawable(Context context, @NonNull Recipient recipient) {
@@ -161,7 +160,7 @@ public class DirectShareUtil {
             context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height));
   }
 
-  private static <T> GlideRequest<T> request(@NonNull GlideRequest<T> glideRequest, @NonNull Context context, @NonNull Recipient recipient, boolean loadSelf) {
+  private static <T> GlideRequest<T> request(@NonNull GlideRequest<T> glideRequest, @NonNull Context context, @NonNull Recipient recipient) {
     final ContactPhoto photo;
     photo = recipient.getContactPhoto(context);
 

@@ -8,8 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -45,6 +45,7 @@ import org.json.JSONObject;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -58,6 +59,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate  {
@@ -67,6 +69,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private static final String EXTRA_HIDE_ACTION_BAR = "hideActionBar";
   private static final String EXTRA_HREF = "href";
   private static final int REQUEST_CODE_FILE_PICKER = 51426;
+  private static long lastOpenTime = 0;
 
   private ValueCallback<Uri[]> filePathCallback;
   private DcContext dcContext;
@@ -74,9 +77,13 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private DcMsg dcAppMsg;
   private String baseURL;
   private String sourceCodeUrl = "";
-  private String selfAddr = "";
+  private String selfAddr;
+  private int sendUpdateMaxSize;
+  private int sendUpdateInterval;
   private boolean internetAccess = false;
   private boolean hideActionBar = false;
+
+  private TextToSpeech tts;
 
   public static void openMaps(Context context, int chatId) {
     DcContext dcContext = DcHelper.getContext(context);
@@ -103,7 +110,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     openWebxdcActivity(context, instance, "");
   }
 
-  public static void openWebxdcActivity(Context context, DcMsg instance, String href) {
+  public static void openWebxdcActivity(Context context, @NonNull DcMsg instance, String href) {
     openWebxdcActivity(context, instance.getId(), false, href);
   }
 
@@ -146,6 +153,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
     rpc = DcHelper.getRpc(this);
+    initTTS();
 
     Bundle b = getIntent().getExtras();
     hideActionBar = b.getBoolean(EXTRA_HIDE_ACTION_BAR, false);
@@ -199,7 +207,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
     final JSONObject info = this.dcAppMsg.getWebxdcInfo();
     internetAccess = JsonUtils.optBoolean(info, "internet_access");
-    selfAddr = JsonUtils.optString(info, "self_addr");
+    selfAddr = info.optString("self_addr");
+    sendUpdateMaxSize = info.optInt("send_update_max_size");
+    sendUpdateInterval = info.optInt("send_update_interval");
 
     toggleFakeProxy(!internetAccess);
 
@@ -216,7 +226,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webView.setNetworkAvailable(internetAccess); // this does not block network but sets `window.navigator.isOnline` in js land
     webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
 
-    String href = baseURL + "/" + b.getString(EXTRA_HREF, "index.html");
+    String extraHref = b.getString(EXTRA_HREF, "");
+    if (TextUtils.isEmpty(extraHref)) {
+      extraHref = "index.html";
+    }
+
+    String href = baseURL + "/" + extraHref;
     String encodedHref = "";
     try {
       encodedHref = URLEncoder.encode(href, Charsets.UTF_8.name());
@@ -224,7 +239,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       e.printStackTrace();
     }
 
-    webView.loadUrl(this.baseURL + "/webxdc_bootstrap324567869.html?i=" + (internetAccess? "1" : "0") + "&href=" + encodedHref);
+    long timeDelta = System.currentTimeMillis() - lastOpenTime;
+    final String url = this.baseURL + "/webxdc_bootstrap324567869.html?i=" + (internetAccess? "1" : "0") + "&href=" + encodedHref;
+    Util.runOnAnyBackgroundThread(() -> {
+      if (timeDelta < 2000) {
+        // this is to avoid getting stuck in the FILL500 in some devices if the
+        // previous webview was not destroyed yet and a new app is opened too soon
+        Util.sleep(1000);
+      }
+      Util.runOnMain(() -> webView.loadUrl(url));
+    });
 
     Util.runOnAnyBackgroundThread(() -> {
       final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
@@ -248,8 +272,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   @Override
   protected void onDestroy() {
+    lastOpenTime = System.currentTimeMillis();
     DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
     leaveRealtimeChannel();
+    tts.shutdown();
     super.onDestroy();
   }
 
@@ -265,16 +291,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case R.id.menu_add_to_home_screen:
-        addToHomeScreen(this, dcAppMsg.getId());
-        return true;
-      case R.id.source_code:
-        openUrlInBrowser(this, sourceCodeUrl);
-        return true;
-      case R.id.show_in_chat:
-        showInChat();
-        return true;
+    int itemId = item.getItemId();
+    if (itemId == R.id.menu_add_to_home_screen) {
+      addToHomeScreen(this, dcAppMsg.getId());
+      return true;
+    } else if (itemId == R.id.source_code) {
+      IntentUtils.showInBrowser(this, sourceCodeUrl);
+      return true;
+    } else if (itemId == R.id.show_in_chat) {
+      showInChat();
+      return true;
     }
     return false;
   }
@@ -287,6 +313,14 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     setScreenMode(newConfig);
   }
 
+  private void initTTS() {
+    tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+      @Override
+      public void onInit(int status) {
+        Log.i(TAG, "TTS Init Status: " + status);
+      }
+    });
+  }
   private void setScreenMode(Configuration config) {
     // enter/exit fullscreen mode depending on orientation (landscape/portrait),
     // on tablets there is enough height so fullscreen mode is never enabled there
@@ -490,6 +524,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   class InternalJSApi {
     @JavascriptInterface
+    public int sendUpdateMaxSize() {
+      return WebxdcActivity.this.sendUpdateMaxSize;
+    }
+
+    @JavascriptInterface
+    public int sendUpdateInterval() {
+      return WebxdcActivity.this.sendUpdateInterval;
+    }
+
+    @JavascriptInterface
     public String selfAddr() {
       return WebxdcActivity.this.selfAddr;
     }
@@ -497,11 +541,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     /** @noinspection unused*/
     @JavascriptInterface
     public String selfName() {
-      String name = WebxdcActivity.this.dcContext.getConfig("displayname");
-      if (TextUtils.isEmpty(name)) {
-        name = selfAddr();
-      }
-      return name;
+      return WebxdcActivity.this.dcContext.getName();
     }
 
     /** @noinspection unused*/
@@ -587,5 +627,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         e.printStackTrace();
       }
     }
+
+    @JavascriptInterface
+    public void ttsSpeak(String text, String lang) {
+      if (lang != null && !lang.isEmpty()) tts.setLanguage(Locale.forLanguageTag(lang));
+      tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+    }
+
   }
 }

@@ -57,22 +57,22 @@ public class LocalHelpActivity extends WebViewActivity
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case R.id.log_scroll_up:
-        webView.scrollTo(0, 0);
-        return true;
-      case R.id.learn_more:
-        openOnlineUrl("https://delta.chat");
-        return true;
-      case R.id.privacy_policy:
-        openOnlineUrl("https://delta.chat/gdpr");
-        return true;
-      case R.id.contribute:
-        openOnlineUrl("https://github.com/deltachat/deltachat-android");
-        return true;
-      case R.id.report_issue:
-        openOnlineUrl("https://github.com/deltachat/deltachat-android/issues");
-        return true;
+    int itemId = item.getItemId();
+    if (itemId == R.id.log_scroll_up) {
+      webView.scrollTo(0, 0);
+      return true;
+    } else if (itemId == R.id.learn_more) {
+      openOnlineUrl("https://delta.chat");
+      return true;
+    } else if (itemId == R.id.privacy_policy) {
+      openOnlineUrl("https://delta.chat/gdpr");
+      return true;
+    } else if (itemId == R.id.contribute) {
+      openOnlineUrl("https://delta.chat/contribute");
+      return true;
+    } else if (itemId == R.id.report_issue) {
+      openOnlineUrl("https://github.com/deltachat/deltachat-android/issues");
+      return true;
     }
     return false;
   }

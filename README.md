@@ -227,6 +227,16 @@ You have 2 ways to do this:
 
 2. Or set them via environment variables.
 
+# Decoding Symbols in Crash Reports
+
+```
+$ANDROID_NDK_ROOT/ndk-stack --sym obj/local/armeabi-v7a --dump crash.txt > decoded.txt
+```
+
+`obj/local/armeabi-v7a` is the extracted path from `deltachat-gplay-release-X.X.X.apk-symbols.zip` file from https://download.delta.chat/android/symbols/
+
+Replace `armeabi-v7a` by the correct architecture the logs come from (can be guessed by trial and error)
+
 # Translations
 
 Android metadata and changelogs are translated using [Weblate](https://hosted.weblate.org/projects/deltachat/android-metadata/).
@@ -234,6 +244,8 @@ Android metadata and changelogs are translated using [Weblate](https://hosted.we
 <a href="https://hosted.weblate.org/engage/deltachat/">
 <img src="https://hosted.weblate.org/widget/deltachat/android-metadata/svg-badge.svg" alt="Translation status" />
 </a>
+
+App strings and website are translated using [Transifex](https://app.transifex.com/delta-chat/).
 
 # Credits
 
@@ -245,4 +257,4 @@ Meanwhile, development has diverged in many areas.
 
 Licensed GPLv3+, see the LICENSE file for details.
 
-Copyright © 2022 Delta Chat contributors.
+Copyright © Delta Chat contributors.

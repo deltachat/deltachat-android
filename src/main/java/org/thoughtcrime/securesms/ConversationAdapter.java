@@ -16,16 +16,18 @@
  */
 package org.thoughtcrime.securesms;
 
-import android.content.Context;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
+import static org.thoughtcrime.securesms.ConversationItem.PULSE_HIGHLIGHT_MILLIS;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
@@ -48,8 +50,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import static org.thoughtcrime.securesms.ConversationItem.PULSE_HIGHLIGHT_MILLIS;
 
 /**
  * A DC adapter for a conversation thread.  Ultimately
@@ -294,7 +294,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     else if (type==DcMsg.DC_MSG_AUDIO || type==DcMsg.DC_MSG_VOICE) {
       return dcMsg.isOutgoing()? MESSAGE_TYPE_AUDIO_OUTGOING : MESSAGE_TYPE_AUDIO_INCOMING;
     }
-    else if (type==DcMsg.DC_MSG_FILE && !dcMsg.isSetupMessage()) {
+    else if (type==DcMsg.DC_MSG_FILE) {
       return dcMsg.isOutgoing()? MESSAGE_TYPE_DOCUMENT_OUTGOING : MESSAGE_TYPE_DOCUMENT_INCOMING;
     }
     else if (type==DcMsg.DC_MSG_IMAGE || type==DcMsg.DC_MSG_GIF || type==DcMsg.DC_MSG_VIDEO) {

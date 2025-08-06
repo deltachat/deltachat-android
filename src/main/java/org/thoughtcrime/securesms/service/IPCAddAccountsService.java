@@ -2,6 +2,8 @@ package org.thoughtcrime.securesms.service;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_CONFIGURED_ADDRESS;
 
 import android.app.Service;
 import android.content.Context;
@@ -16,18 +18,15 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.b44t.messenger.DcAccounts;
+import com.b44t.messenger.DcContext;
+
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.RegistrationActivity;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 import java.lang.ref.WeakReference;
-
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_CONFIGURED_ADDRESS;
-
-import com.b44t.messenger.DcAccounts;
-import com.b44t.messenger.DcContext;
 
 /**
  * This (interprocess communication) service is invoked by companion apps aiming to add a new account to Delta Chat

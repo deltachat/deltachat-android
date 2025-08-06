@@ -26,9 +26,9 @@ public class CircleColorImageView extends AppCompatImageView {
     int circleColor = Color.WHITE;
 
     if (attrs != null) {
-      TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CircleColorImageView, 0, 0);
-      circleColor = typedArray.getColor(R.styleable.CircleColorImageView_circleColor, Color.WHITE);
-      typedArray.recycle();
+      try (TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CircleColorImageView, 0, 0)) {
+        circleColor = typedArray.getColor(R.styleable.CircleColorImageView_circleColor, Color.WHITE);
+      }
     }
 
     Drawable circle = context.getResources().getDrawable(R.drawable.circle_tintable);

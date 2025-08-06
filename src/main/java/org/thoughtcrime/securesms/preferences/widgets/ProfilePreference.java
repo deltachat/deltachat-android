@@ -2,14 +2,14 @@ package org.thoughtcrime.securesms.preferences.widgets;
 
 
 import android.content.Context;
-import android.os.Build;
-import androidx.annotation.RequiresApi;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceViewHolder;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceViewHolder;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -24,7 +24,7 @@ public class ProfilePreference extends Preference {
 
   private ImageView avatarView;
   private TextView  profileNameView;
-  private TextView profileAddressView;
+  private TextView  profileStatusView;
 
   public ProfilePreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
@@ -51,25 +51,19 @@ public class ProfilePreference extends Preference {
   }
 
   @Override
-  public void onBindViewHolder(PreferenceViewHolder viewHolder) {
+  public void onBindViewHolder(@NonNull PreferenceViewHolder viewHolder) {
     super.onBindViewHolder(viewHolder);
     avatarView        = (ImageView)viewHolder.findViewById(R.id.avatar);
     profileNameView   = (TextView)viewHolder.findViewById(R.id.profile_name);
-    profileAddressView = (TextView)viewHolder.findViewById(R.id.number);
+    profileStatusView = (TextView)viewHolder.findViewById(R.id.profile_status);
 
     refresh();
   }
 
   public void refresh() {
-    if (profileAddressView == null) return;
+    if (profileNameView == null) return;
 
     final String address = DcHelper.get(getContext(), DcHelper.CONFIG_CONFIGURED_ADDRESS);
-    String profileName  = DcHelper.get(getContext(), DcHelper.CONFIG_DISPLAY_NAME);
-
-    if(profileName==null || profileName.isEmpty()) {
-      profileName = getContext().getString(R.string.pref_profile_info_headline);
-    }
-
     final MyProfileContactPhoto profileImage = new MyProfileContactPhoto(address, String.valueOf(Prefs.getProfileAvatarId(getContext())));
 
     GlideApp.with(getContext().getApplicationContext())
@@ -79,10 +73,18 @@ public class ProfilePreference extends Preference {
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .into(avatarView);
 
+    final String profileName  = DcHelper.get(getContext(), DcHelper.CONFIG_DISPLAY_NAME);
     if (!TextUtils.isEmpty(profileName)) {
       profileNameView.setText(profileName);
+    } else {
+      profileNameView.setText(getContext().getString(R.string.pref_profile_info_headline));
     }
 
-    profileAddressView.setText(address);
+    final String status = DcHelper.get(getContext(), DcHelper.CONFIG_SELF_STATUS);
+    if (!TextUtils.isEmpty(status)) {
+      profileStatusView.setText(status);
+    } else {
+      profileStatusView.setText(getContext().getString(R.string.pref_default_status_label));
+    }
   }
 }

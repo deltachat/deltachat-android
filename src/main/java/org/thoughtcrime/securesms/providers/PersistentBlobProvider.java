@@ -5,10 +5,11 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.thoughtcrime.securesms.util.FileProviderUtil;
 import org.thoughtcrime.securesms.util.MediaUtil;
@@ -72,6 +73,9 @@ public class PersistentBlobProvider {
                     @Nullable String fileName)
   {
     final long id = System.currentTimeMillis();
+    if (fileName == null) {
+      fileName = "file." + MediaUtil.getExtensionFromMimeType(mimeType);
+    }
     return create(context, new ByteArrayInputStream(blobBytes), id, mimeType, fileName, (long) blobBytes.length);
   }
 
@@ -81,6 +85,9 @@ public class PersistentBlobProvider {
                     @Nullable String fileName,
                     @Nullable Long   fileSize)
   {
+    if (fileName == null) {
+      fileName = "file." + MediaUtil.getExtensionFromMimeType(mimeType);
+    }
     return create(context, input, System.currentTimeMillis(), mimeType, fileName, fileSize);
   }
 

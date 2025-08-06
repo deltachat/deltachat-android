@@ -3,12 +3,13 @@ package org.thoughtcrime.securesms.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import androidx.annotation.ColorInt;
-import androidx.appcompat.app.AlertDialog;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.ColorInt;
+import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -17,7 +18,6 @@ import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
-import org.thoughtcrime.securesms.util.Util;
 
 public class LongClickCopySpan extends ClickableSpan {
   private static final String PREFIX_MAILTO = "mailto:";
@@ -58,18 +58,19 @@ public class LongClickCopySpan extends ClickableSpan {
         String addr = prepareUrl(url);
         Activity activity = (Activity) widget.getContext();
         DcContext dcContext = DcHelper.getContext(activity);
+
         int contactId = dcContext.lookupContactIdByAddr(addr);
-        DcContact contact = (contactId != 0)? dcContext.getContact(contactId) : null;
-        if (contact != null && !contact.isBlocked() && dcContext.getChatIdByContactId(contactId) != 0) {
+        if (contactId == 0 && dcContext.mayBeValidAddr(addr)) {
+          contactId = dcContext.createContact(null, addr);
+        }
+        DcContact contact = dcContext.getContact(contactId);
+        if (contact.getId() != 0 && !contact.isBlocked() && dcContext.getChatIdByContactId(contact.getId()) != 0) {
           openChat(activity, contact);
-        } else if (contact == null && dcContext.isChatmail()) {
-          DcHelper.showEncryptionRequiredDialog(activity, addr);
         } else {
-          String nameNAddr = contact != null ? contact.getNameNAddr() : addr;
           new AlertDialog.Builder(activity)
-                  .setMessage(activity.getString(R.string.ask_start_chat_with, nameNAddr))
+                  .setMessage(activity.getString(R.string.ask_start_chat_with, contact.getDisplayName()))
                   .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                    openChat(activity, contact == null? dcContext.getContact(dcContext.createContact(null, addr)) : contact);
+                    openChat(activity, contact);
                   })
                   .setNegativeButton(R.string.cancel, null)
                   .show();
@@ -87,7 +88,7 @@ public class LongClickCopySpan extends ClickableSpan {
         QrCodeHandler qrCodeHandler = new QrCodeHandler(activity);
         qrCodeHandler.handleQrData(url);
       } else {
-        IntentUtils.showBrowserIntent(widget.getContext(), url);
+        IntentUtils.showInBrowser(widget.getContext(), url);
       }
     }
   }

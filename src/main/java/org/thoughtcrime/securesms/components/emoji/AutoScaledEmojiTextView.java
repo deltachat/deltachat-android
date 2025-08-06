@@ -35,12 +35,12 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
 
   public AutoScaledEmojiTextView(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
-    TypedArray typedArray = context.obtainStyledAttributes(attrs, new int[]{android.R.attr.textSize});
-    originalFontSize = ViewUtil.pxToSp(context, typedArray.getDimensionPixelSize(0, 0));
-    if (originalFontSize == 0) {
-      originalFontSize = 16f;
+    try (TypedArray typedArray = context.obtainStyledAttributes(attrs, new int[]{android.R.attr.textSize})) {
+      originalFontSize = ViewUtil.pxToSp(context, typedArray.getDimensionPixelSize(0, 0));
+      if (originalFontSize == 0) {
+        originalFontSize = 16f;
+      }
     }
-    typedArray.recycle();
   }
 
   @Override

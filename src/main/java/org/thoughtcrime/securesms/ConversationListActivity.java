@@ -20,8 +20,8 @@ import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_URL;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.getDirectSharingChatId;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedTitle;
@@ -58,7 +58,7 @@ import com.b44t.messenger.DcMsg;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import org.thoughtcrime.securesms.components.AvatarImageView;
+import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -86,11 +86,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
   public static final String ACCOUNT_ID_EXTRA = "account_id";
   public static final String FROM_WELCOME   = "from_welcome";
-  public static final String WARN_CANNOT_ENCRYPT = "warn_cannot_encrypt";
 
   private ConversationListFragment conversationListFragment;
   public TextView                  title;
-  private AvatarImageView          selfAvatar;
+  private AvatarView               selfAvatar;
   private ImageView                unreadIndicator;
   private SearchFragment           searchFragment;
   private SearchToolbar            searchToolbar;
@@ -110,7 +109,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
     try {
       DcContext dcContext = DcHelper.getContext(this);
-      final String deviceMsgLabel = "update_1_50_0_android";
+      final String deviceMsgLabel = "update_2_0_0_android-h";
       if (!dcContext.wasDeviceMsgEverAdded(deviceMsgLabel)) {
         DcMsg msg = null;
         if (!getIntent().getBooleanExtra(FROM_WELCOME, false)) {
@@ -121,7 +120,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
           // Util.copy(inputStream, new FileOutputStream(outputFile));
           // msg.setFile(outputFile, "image/jpeg");
 
-          msg.setText(getString(R.string.update_1_50_android, "https://get.delta.chat/#changelogs"));
+          msg.setText(getString(R.string.update_2_0, "https://delta.chat/donate"));
         }
         dcContext.addDeviceMsg(deviceMsgLabel, msg);
 
@@ -133,19 +132,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         }
         Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, deviceMsgLabel);
       }
-
-      // add info about moved "switch profile" option; added 2024-08, can be removed after ~3 months
-      if (!Prefs.getBooleanPreference(this, "info_about_switch_profile_added", false)) {
-        final DcAccounts dcAccounts = DcHelper.getAccounts(this);
-        if (dcAccounts.getAll().length >= 2) {
-          DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-          msg.setText(getString(R.string.update_switch_profile_placement));
-          dcContext.addDeviceMsg("info_about_switch_profile", msg);
-        }
-        Prefs.setBooleanPreference(this, "info_about_switch_profile_added", true);
-      }
-      // /add info
-
 
       // remove gmail oauth2
       final int serverFlags = dcContext.getConfigInt(CONFIG_SERVER_FLAGS);
@@ -195,6 +181,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     refresh();
 
     if (BuildConfig.DEBUG) checkNdkArchitecture();
+
+    DcHelper.maybeShowMigrationError(this);
   }
 
   /**
@@ -254,6 +242,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   @Override
   protected void onNewIntent(Intent intent) {
+    if (isFinishing()) {
+      Log.w(TAG, "Activity is finishing, aborting onNewIntent()");
+      return;
+    }
     super.onNewIntent(intent);
     setIntent(intent);
     refresh();
@@ -269,11 +261,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     }
     if (accountId != dcContext.getAccountId()) {
       AccountManager.getInstance().switchAccountAndStartActivity(this, accountId);
-    }
-
-    String warnAddr = getIntent().getStringExtra(WARN_CANNOT_ENCRYPT);
-    if (!TextUtils.isEmpty(warnAddr)) {
-      DcHelper.showEncryptionRequiredDialog(this, warnAddr);
     }
 
     refreshAvatar();
@@ -302,6 +289,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       boolean multiProfile = DcHelper.getAccounts(this).getAll().length > 1;
       String defText = multiProfile? DcHelper.getContext(this).getName() : getString(R.string.app_name);
       title.setText(DcHelper.getConnectivitySummary(this, defText));
+      // refreshTitle is called by ConversationListFragment when connectivity changes so update connectivity dot here
+      selfAvatar.setConnectivity(DcHelper.getContext(this).getConnectivity());
       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
   }
@@ -354,6 +343,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   @Override
   public void onResume() {
     super.onResume();
+    refreshTitle();
     invalidateOptionsMenu();
     DirectShareUtil.triggerRefreshDirectShare(this);
   }
@@ -423,31 +413,31 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
 
-    switch (item.getItemId()) {
-      case R.id.menu_new_chat:
-        createChat();
-        return true;
-      case R.id.menu_invite_friends:
-        shareInvite();
-        return true;
-      case R.id.menu_settings:
-        startActivity(new Intent(this, ApplicationPreferencesActivity.class));
-        return true;
-      case R.id.menu_qr:
-        new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
-        return true;
-      case R.id.menu_global_map:
-        WebxdcActivity.openMaps(this, 0);
-        return true;
-      case R.id.menu_proxy_settings:
-        startActivity(new Intent(this, ProxySettingsActivity.class));
-        return true;
-      case android.R.id.home:
-        onBackPressed();
-        return true;
-      case R.id.menu_all_media:
-        startActivity(new Intent(this, ProfileActivity.class));
-        return true;
+    int itemId = item.getItemId();
+    if (itemId == R.id.menu_new_chat) {
+      createChat();
+      return true;
+    } else if (itemId == R.id.menu_invite_friends) {
+      shareInvite();
+      return true;
+    } else if (itemId == R.id.menu_settings) {
+      startActivity(new Intent(this, ApplicationPreferencesActivity.class));
+      return true;
+    } else if (itemId == R.id.menu_qr) {
+      new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
+      return true;
+    } else if (itemId == R.id.menu_global_map) {
+      WebxdcActivity.openMaps(this, 0);
+      return true;
+    } else if (itemId == R.id.menu_proxy_settings) {
+      startActivity(new Intent(this, ProxySettingsActivity.class));
+      return true;
+    } else if (itemId == android.R.id.home) {
+      onBackPressed();
+      return true;
+    } else if (itemId == R.id.menu_all_media) {
+      startActivity(new Intent(this, AllMediaActivity.class));
+      return true;
     }
 
     return false;

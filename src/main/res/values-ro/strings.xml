@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Anulați</string>
-   <string name="clear_search">Stergere Căutare</string>
+    <string name="clear_search">Stergere Căutare</string>
     <string name="yes">Da</string>
     <string name="no">Nu</string>
     <string name="select">Selectați</string>
@@ -138,7 +138,6 @@
         <item quantity="few">%d Selectate</item>
         <item quantity="other">%d De Selecții</item>
     </plurals>
-
     <string name="self">Eu</string>
     <string name="draft">Schiță</string>
     <string name="image">Imagine</string>
@@ -152,7 +151,7 @@
     <string name="voice_message">Mesaj vocal</string>
     <string name="forwarded">Redirecționat</string>
     <string name="forwarded_message">Mesaj redirecționat</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Redirecționat de %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documente</string>
@@ -196,9 +195,11 @@
     <string name="menu_new_contact">Contact Nou</string>
     <string name="menu_new_chat">Chat Nou</string>
     <string name="menu_new_group">Grup Nou</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Listă de difuzare</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Liste de difuzare</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Noua Listă de Difuzare</string>
     <string name="add_recipients">Adăugați Destinatari</string>
     <string name="menu_send">Trimiteți</string>
@@ -213,7 +214,6 @@
     <string name="menu_delete_chat">Ștergeți Chat-ul</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Curăță Chat-ul</string>
-    <string name="menu_delete_messages">Ștergeți mesajele</string>
     <string name="delete_contact">Ștergeți Contactul</string>
     <string name="menu_delete_location">Ștergeți această locație?</string>
     <string name="menu_message_details">Detalii Mesaj</string>
@@ -279,7 +279,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Adăugați la ecranul principal</string>
     <string name="mute_for_one_hour">Silențios timp de 1 oră</string>
-    <string name="mute_for_two_hours">Silențios timp de 2 ore</string>
+    <string name="mute_for_eight_hours">Silențios timp de 8 ore</string>
     <string name="mute_for_one_day">Silențios pentru 1 zi</string>
     <string name="mute_for_seven_days">Silențios timp de 7 zile</string>
     <string name="mute_forever">Silențios pentru totdeauna</string>
@@ -313,20 +313,7 @@
     <string name="videochat_invitation">Invitație la chat video</string>
     <string name="videochat_invitation_body">Sunteți invitat la un chat video, faceți clic %1$s pentru a vă alătura.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Ești sigur că vrei să părăsești acest grup?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Ștergeți %d chat-ul? Acestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
-        <item quantity="few">Ștergeți %d chat-uri? Acestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
-        <item quantity="other">Ștergeți %d de chat-urilAcestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Sunteți sigur că vreți să ștergeți \"%1$s\"?</string>
-    <string name="ask_delete_message">Sunteți sigur că doriți să ștergeți acest mesaj?</string>
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Ștergeți %d mesajul aici și pe server?</item>
-        <item quantity="few">Ștergeți %d mesajele de aici și de pe server?</item>
-        <item quantity="other">Ștergeți %d de mesaje de aici și de pe server?</item>
-    </plurals>
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ștergeți %d mesaj?</item>
         <item quantity="few">Ștergeți %d mesaje?</item>
@@ -339,12 +326,10 @@
     <string name="ask_unblock_contact">Deblocați acest contact? Astfel, veți putea primi mesaje de la această persoană.</string>
     <string name="ask_delete_contacts">Ștergerea contacts?\n\nContacts cu discuții în curs sau din agenda de adrese a sistemului nu pot fi șterse definitiv.</string>
     <string name="ask_delete_contact">Ștergerea contactului %1$s?\n\nContacts cu discuții în curs sau din agenda de adrese a sistemului nu pot fi șterse definitiv.</string>
-    <string name="cannot_delete_contacts_in_use">Nu se pot șterge contactele cu discuții în curs.</string>
     <string name="ask_start_chat_with">Chat cu %1$s?</string>
-    <string name="ask_delete_value">Ștergeți %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Scoateți  %1$s din grup?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Eliminați %1$s din lista de difuzare?</string>
     <string name="open_url_confirmation">Doriți să deschideți acest link?</string>
 
@@ -463,9 +448,9 @@
     <string name="tab_all_media_empty_hint">Materialele media partajate în orice chat vor apărea aici.</string>
     <string name="media_preview">Previzualizare Media</string>
     <string name="send_message">Trimiteți Mesaj</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$s și-au schimbat adresa de la %2$s la %3$s</string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">V-ați schimbat adresa de e-mail de la %1$s la %2$s.\n\nDacă trimiteți acum un mesaj către un grup verificat, contactele de acolo vor înlocui automat vechea adresă cu noua dumneavoastră adresă.\n\nSe recomandă să vă configurați vechiul furnizor de e-mail pentru a redirecționa toate e-mailurile către noua dumneavoastră adresă de e-mail. În caz contrar, s-ar putea să pierdeți mesaje ale contactelor care nu au primit încă noua dumneavoastră adresă.</string>
 
 
@@ -484,14 +469,9 @@
     <string name="multidevice_receiver_scanning_ask">Copiați contul de pe celălalt dispozitiv pe acest dispozitiv?</string>
     <string name="multidevice_abort">Abandonați configurarea celui de-al doilea dispozitiv?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Acest lucru va invalida codul QR copiat în clipboard.</string>
-    <string name="multidevice_experimental_hint">(experimental, este necesară versiunea 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Contul a fost transferat pe dispozitivul secundar.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Pregătirea contului...</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="waiting_for_receiver">În așteptare pentru receptor...</string>
-    <!-- deprecated, shown beside progress bar, stay short -->
-    <string name="receiver_connected">Receptorul conectat...</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Transferul...</string>
     <string name="troubleshooting">Depanare</string>
@@ -501,7 +481,7 @@
     <string name="incoming_messages">Mesaje primite</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mesaje de ieșire</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Depozitarea pe %1$s</string>
     <string name="connectivity">Conectivitate</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -523,9 +503,7 @@
 
     <string name="scan_invitation_code">Scanați Codul Invitației</string>
     <string name="login_title">Autentificare</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Autentificați-vă în contul dumneavoastră de e-mail</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Conectați-vă cu un cont de e-mail existent</string>
     <string name="login_subheader">În cazul furnizorilor de e-mail cunoscuți, setările suplimentare sunt configurate automat. Uneori, IMAP trebuie să fie activat în setările web. Consultați furnizorul dumneavoastră de e-mail sau prietenii pentru ajutor.</string>
     <string name="login_no_servers_hint">Nu există servere Delta Chat, datele tale rămân pe dispozitivul tău.</string>
@@ -541,14 +519,6 @@
     <string name="login_smtp_port">Portul SMTP </string>
     <string name="login_smtp_security">Securitate SMTP</string>
     <string name="login_auth_method">Metoda de autorizare</string>
-    <!-- deprecated -->
-    <string name="login_socks5">SOCKS5</string>
-    <string name="login_socks5_use_socks5">Utilizați SOCKS5</string>
-    <string name="login_socks5_host">Gazdă SOCKS5</string>
-    <string name="login_socks5_port">Portul SOCKS5</string>
-    <string name="login_socks5_user">Utilizator SOCKS5</string>
-    <string name="login_socks5_password">Parolă SOCKS5</string>
-
     <string name="login_info_oauth2_title">Continuați cu configurația simplificată?</string>
     <string name="login_info_oauth2_text">Adresa de e-mail introdusă suportă o configurare simplificată (OAuth 2.0).\n\nÎn pasul următor, vă rugăm să permiteți ca Delta Chat să acționeze ca aplicație de chat prin e-mail.\n\nNu există servere Delta Chat, datele voastre rămân pe dispozitivul dumneavoastră.</string>
     <string name="login_certificate_checks">Verificări de certificate</string>
@@ -559,7 +529,7 @@
     <string name="import_backup_title">Restaurarea din copia de rezervă</string>
     <string name="import_backup_ask">Backup găsit la \"%1$s\".\n\nDoriți să importați și să utilizați toate datele și setările din acesta?</string>
     <string name="import_backup_no_backup_found">Nu s-au găsit copii de rezervă.\n\nCopiază copia de rezervă pe \"%1$s\" și încercați din nou. Alternativ, apăsați \"Start messaging\" pentru a continua procesul normal de configurare.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Nu se poate autentifica ca \"%1$s\". Vă rugăm să verificați dacă adresa de e-mail și parola sunt corecte.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptarea certificatelor nevalabile</string>
@@ -590,11 +560,10 @@
     <string name="pref_profile_photo">Imagine de profil</string>
     <string name="pref_blocked_contacts">Contacte blocate</string>
     <string name="blocked_empty_hint">Contactele blocate vor apărea aici.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Parolă și cont</string>
     <string name="pref_who_can_see_profile_explain">Imaginea de profil, numele și semnătura dumneavoastră vor fi trimise împreună cu mesajele dumneavoastră atunci când comunicați cu alți utilizatori.</string>
     <string name="pref_your_name">Numele dumneavoastră</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Semnătură Text</string>
     <string name="pref_enter_sends">Tasta Enter trimite</string>
     <string name="pref_enter_sends_explain">Apăsarea tastei Enter va trimite mesaje text</string>

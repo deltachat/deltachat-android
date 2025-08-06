@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms.util;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.hardware.Camera.CameraInfo;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
@@ -51,8 +50,6 @@ public class Prefs {
   public  static final String NOTIFICATION_PRIVACY_PREF        = "pref_notification_privacy";
   public  static final String NOTIFICATION_PRIORITY_PREF       = "pref_notification_priority";
 
-  public  static final String BUILTIN_CAMERA_PREF              = "pref_builtin_camera";
-  public  static final String DIRECT_CAPTURE_CAMERA_ID         = "pref_direct_capture_camera_id";
   private static final String PROFILE_AVATAR_ID_PREF           = "pref_profile_avatar_id";
   public  static final String INCOGNITO_KEYBORAD_PREF          = "pref_incognito_keyboard";
 
@@ -62,6 +59,8 @@ public class Prefs {
   public  static final boolean ALWAYS_LOAD_REMOTE_CONTENT_DEFAULT = false;
 
   public  static final String LAST_DEVICE_MSG_LABEL            = "pref_last_device_msg_id";
+  public  static final String WEBXDC_STORE_URL_PREF            = "pref_webxdc_store_url";
+  public  static final String DEFAULT_WEBXDC_STORE_URL         = "https://webxdc.org/apps/";
 
   public enum VibrateState {
     DEFAULT(0), ENABLED(1), DISABLED(2);
@@ -103,15 +102,6 @@ public class Prefs {
     return Integer.valueOf(getStringPreference(context, NOTIFICATION_PRIORITY_PREF, String.valueOf(NotificationCompat.PRIORITY_HIGH)));
   }
 
-  public static void setDirectCaptureCameraId(Context context, int value) {
-    setIntegerPreference(context, DIRECT_CAPTURE_CAMERA_ID, value);
-  }
-
-  @SuppressWarnings("deprecation")
-  public static int getDirectCaptureCameraId(Context context) {
-    return getIntegerPreference(context, DIRECT_CAPTURE_CAMERA_ID, CameraInfo.CAMERA_FACING_FRONT);
-  }
-
   public static NotificationPrivacyPreference getNotificationPrivacy(Context context) {
     return new NotificationPrivacyPreference(getStringPreference(context, NOTIFICATION_PRIVACY_PREF, "all"));
   }
@@ -144,6 +134,15 @@ public class Prefs {
     return getStringPreference(context, THEME_PREF, DynamicTheme.systemThemeAvailable() ? DynamicTheme.SYSTEM : DynamicTheme.LIGHT);
   }
 
+  public static String getWebxdcStoreUrl(Context context) {
+    return getStringPreference(context, WEBXDC_STORE_URL_PREF, DEFAULT_WEBXDC_STORE_URL);
+  }
+
+  public static void setWebxdcStoreUrl(Context context, String url) {
+    if (url == null || url.trim().isEmpty() || DEFAULT_WEBXDC_STORE_URL.equals(url)) url = null;
+    setStringPreference(context, WEBXDC_STORE_URL_PREF, url);
+  }
+
   public static void setPromptedDozeMsgId(Context context, int msg_id) {
     setIntegerPreference(context, PROMPTED_DOZE_MSG_ID_PREF, msg_id);
   }
@@ -173,7 +172,7 @@ public class Prefs {
     return getBooleanPreference(context, "pref_developer_mode_enabled", false);
   }
 
-  public static boolean isNewBroadcastListAvailable(Context context) {
+  public static boolean isNewBroadcastAvailable(Context context) {
     return getBooleanPreference(context, "pref_new_broadcast_list", false);
   }
 
@@ -257,10 +256,6 @@ public class Prefs {
 
   public static void setBackgroundImagePath(Context context, int accountId, String path) {
     setStringPreference(context, BACKGROUND_PREF+accountId, path);
-  }
-
-  public static boolean isBuiltInCameraPreferred(Context context) {
-    return getBooleanPreference(context, BUILTIN_CAMERA_PREF, false);
   }
 
   public static boolean getAlwaysLoadRemoteContent(Context context) {

@@ -49,7 +49,7 @@ jobs:
         run: ./gradlew --no-daemon assembleGplayDebug
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: app-preview.apk
           path: 'build/outputs/apk/gplay/debug/*.apk'

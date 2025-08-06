@@ -87,11 +87,14 @@ public class AudioSlidePlayer {
         public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
           if (playbackState == Player.STATE_READY) {
               Util.runOnMain(() -> {
-                Log.d(TAG, "request duration " + durationCalculator.getDuration());
-                getListener().onReceivedDuration(Long.valueOf(durationCalculator.getDuration()).intValue());
-                durationCalculator.release();
-                durationCalculator.removeListener(this);
-                durationCalculator = null;
+                synchronized (AudioSlidePlayer.this) {
+                  if (durationCalculator == null) return;
+                  Log.d(TAG, "request duration " + durationCalculator.getDuration());
+                  getListener().onReceivedDuration(Long.valueOf(durationCalculator.getDuration()).intValue());
+                  durationCalculator.release();
+                  durationCalculator.removeListener(this);
+                  durationCalculator = null;
+                }
               });
           }
         }
@@ -334,7 +337,7 @@ public class AudioSlidePlayer {
     }
 
     @Override
-    public void handleMessage(Message msg) {
+    public void handleMessage(@NonNull Message msg) {
       AudioSlidePlayer player = playerReference.get();
 
       if (player == null || player.mediaPlayer == null || !isPlayerActive(player.mediaPlayer)) {

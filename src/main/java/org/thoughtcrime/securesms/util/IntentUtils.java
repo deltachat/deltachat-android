@@ -2,13 +2,17 @@ package org.thoughtcrime.securesms.util;
 
 
 import android.app.PendingIntent;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
+import org.thoughtcrime.securesms.R;
 
 import java.util.List;
 
@@ -19,9 +23,13 @@ public class IntentUtils {
     return resolveInfoList != null && resolveInfoList.size() > 1;
   }
 
-  public static void showBrowserIntent(Context context, String url) {
+  public static void showInBrowser(Context context, String url) {
     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-    context.startActivity(browserIntent);
+    try {
+      context.startActivity(browserIntent);
+    } catch (ActivityNotFoundException e) {
+      Toast.makeText(context, R.string.no_browser_installed, Toast.LENGTH_LONG).show();
+    }
   }
 
   public static int FLAG_MUTABLE() {

@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">సరే</string>
     <string name="cancel">రద్దు</string>
-   <string name="yes">అవును</string>
+    <string name="yes">అవును</string>
     <string name="no">కాదు</string>
     <string name="on">ఆన్</string>
     <string name="off">ఆఫ్</string>
@@ -117,11 +117,9 @@
     <string name="menu_zoom_in">పెద్దదిగా చూపు</string>
     <string name="menu_zoom_out">పెద్దది చెయ్యి</string>
     <string name="mute_for_one_hour">1 గంట నిశబ్దంగా ఉంచు</string>
-    <string name="mute_for_two_hours">2 గంటలు నిశబ్దంగా ఉంచు</string>
+    <string name="mute_for_eight_hours">8 గంటలు నిశబ్దంగా ఉంచు</string>
     <string name="mute_for_one_day">1 రోజు నిశబ్దంగా ఉంచు</string>
     <string name="mute_for_seven_days">7 రోజులు నిశబ్దంగా ఉంచు</string>
-    <!-- get confirmations -->
-    <string name="ask_leave_group">మీరు ఈ సమూహాన్ని వదిలిపెట్టాలనుకుంటున్నారా?</string>
     <string name="ask_forward">సందేశాలు %1$s ఫార్వర్డ్ చేయాలా?</string>
     <string name="ask_block_contact">మీరు ఈ పరిచయాన్ని రద్దుచేయాలని నిర్ణయించుకున్నారా?</string>
     <!-- contact list -->
@@ -150,7 +148,6 @@
     <string name="pref_profile_info_headline">మీ రూప సమాచారం</string>
     <string name="pref_profile_photo">రూపచిత్రం</string>
     <string name="pref_blocked_contacts">నిరోధించిన పరిచయాలు</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">ఖాతా సెట్టింగులు</string>
     <string name="pref_your_name">మీ పేరు</string>
     <string name="pref_enter_sends">\"ఎంటర్\" నొక్కితే పంపు</string>
@@ -179,16 +176,15 @@
     <string name="pref_read_receipts_explain">చదివే రసీదులను నిలిపివేస్తే, మీరు ఇతరుల నుండి చదివే రసీదులను చూడలేరు.</string>
     <string name="pref_use_system_emoji">యంత్రము యొక్క  ఎమొజిలను  ఉపయొగించు</string>
     <string name="pref_use_system_emoji_explain">Delta Chat యొక్క అంతర్నిర్మిత ఎమోజి మద్దతును నిలిపివేయి</string>
-    <string name="pref_app_access">అనువర్తన ప్రాప్యత</string>
     <string name="pref_chats">చాట్లు</string>
     <string name="pref_in_chat_sounds">యాప్-లోపల నోటిఫికేషన్లు</string>
-    <string name="pref_message_text_size">సందేశం ఫాంట్ పరిమాణం</string>
     <string name="pref_other">ఇతర</string>
     <string name="pref_backup">బ్యాకప్</string>
     <string name="pref_managekeys_export_secret_keys">రహస్య కీలను ఎగుమతి చెయి</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">చాట్ నేపధ్యం</string>
     <string name="qrscan_fingerprint_label">ఫింగర్‌ప్రింట్స్</string>
+    <!-- notifications  -->
     <string name="notify_reply_button">జవాబు</string>
     <string name="notify_new_message">కొత్త సందేశం</string>
     <string name="notify_priority_high">అధికం</string>
@@ -199,7 +195,7 @@
     <!-- permissions -->
     <string name="perm_required_title">అనుమతి అవసరం</string>
     <string name="perm_continue">కొనసాగించు</string>
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">ఎంక్రిప్ట్ చెసిన సందేశం</string>
 
     <string name="welcome_desktop">Delta Chat కి స్వాగతం.</string>

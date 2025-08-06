@@ -17,22 +17,15 @@
  */
 package org.thoughtcrime.securesms;
 
-import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -50,9 +43,10 @@ import org.thoughtcrime.securesms.preferences.ChatsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.CorrectedPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.NotificationsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.widgets.ProfilePreference;
-import org.thoughtcrime.securesms.util.DynamicTheme;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.qr.BackupTransferActivity;
+import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.IntentUtils;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 
 /**
@@ -72,6 +66,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   private static final String PREFERENCE_CATEGORY_MULTIDEVICE    = "preference_category_multidevice";
   private static final String PREFERENCE_CATEGORY_ADVANCED       = "preference_category_advanced";
   private static final String PREFERENCE_CATEGORY_CONNECTIVITY   = "preference_category_connectivity";
+  private static final String PREFERENCE_CATEGORY_DONATE         = "preference_category_donate";
   private static final String PREFERENCE_CATEGORY_HELP           = "preference_category_help";
 
   public static final int REQUEST_CODE_SET_BACKGROUND            = 11;
@@ -149,6 +144,9 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       this.findPreference(PREFERENCE_CATEGORY_ADVANCED)
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_ADVANCED));
 
+      this.findPreference(PREFERENCE_CATEGORY_DONATE)
+          .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_DONATE));
+
       this.findPreference(PREFERENCE_CATEGORY_HELP)
           .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_HELP));
 
@@ -195,35 +193,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           .setSummary(DcHelper.getConnectivitySummary(getActivity(), getString(R.string.connectivity_connected)));
       this.findPreference(PREFERENCE_CATEGORY_HELP)
           .setSummary(AdvancedPreferenceFragment.getVersion(getActivity()));
-    }
-
-    @TargetApi(11)
-    private void tintIcons(Context context) {
-      Drawable notifications = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_notifications_white_24dp));
-      Drawable swap          = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_swap_vert_white_24dp));
-      Drawable appearance    = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_brightness_6_white_24dp));
-      Drawable chats         = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_forum_white_24dp));
-      Drawable advanced      = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_advanced_white_24dp));
-      Drawable help          = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_help_white_24dp));
-
-      int[]      tintAttr   = new int[]{R.attr.pref_icon_tint};
-      TypedArray typedArray = context.obtainStyledAttributes(tintAttr);
-      int        color      = typedArray.getColor(0, 0x0);
-      typedArray.recycle();
-
-      DrawableCompat.setTint(notifications, color);
-      DrawableCompat.setTint(swap, color);
-      DrawableCompat.setTint(appearance, color);
-      DrawableCompat.setTint(chats, color);
-      DrawableCompat.setTint(advanced, color);
-      DrawableCompat.setTint(help, color);
-
-      this.findPreference(PREFERENCE_CATEGORY_NOTIFICATIONS).setIcon(notifications);
-      this.findPreference(PREFERENCE_CATEGORY_CONNECTIVITY).setIcon(swap);
-      this.findPreference(PREFERENCE_CATEGORY_APPEARANCE).setIcon(appearance);
-      this.findPreference(PREFERENCE_CATEGORY_CHATS).setIcon(chats);
-      this.findPreference(PREFERENCE_CATEGORY_ADVANCED).setIcon(advanced);
-      this.findPreference(PREFERENCE_CATEGORY_HELP).setIcon(help);
     }
 
     private class CategoryClickListener implements Preference.OnPreferenceClickListener {
@@ -276,6 +245,9 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           break;
         case PREFERENCE_CATEGORY_ADVANCED:
           fragment = new AdvancedPreferenceFragment();
+          break;
+        case PREFERENCE_CATEGORY_DONATE:
+          IntentUtils.showInBrowser(requireActivity(), "https://delta.chat/donate");
           break;
         case PREFERENCE_CATEGORY_HELP:
           startActivity(new Intent(getActivity(), LocalHelpActivity.class));

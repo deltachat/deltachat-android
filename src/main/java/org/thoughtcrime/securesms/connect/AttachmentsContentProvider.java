@@ -5,11 +5,17 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
+import android.webkit.MimeTypeMap;
+
+import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcContext;
 
+import org.thoughtcrime.securesms.util.MediaUtil;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Objects;
 
 public class AttachmentsContentProvider extends ContentProvider {
 
@@ -26,30 +32,44 @@ public class AttachmentsContentProvider extends ContentProvider {
     if the user or another app deletes these files) */
 
     @Override
-    public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
-        DcContext dcContext = DcHelper.getContext(getContext());
+    public ParcelFileDescriptor openFile(Uri uri, @NonNull String mode) throws FileNotFoundException {
+        DcContext dcContext = DcHelper.getContext(Objects.requireNonNull(getContext()));
 
-        String path = uri.getPath();
-        if (!DcHelper.sharedFiles.containsKey(path)) {
+        // `uri` originally comes from DcHelper.openForViewOrShare() and
+        // looks like `content://chat.delta.attachments/ef39a39/text.txt`
+        // where ef39a39 is the file in the blob directory
+        // and text.txt is the original name of the file, as returned by `msg.getFilename()`.
+        // `uri.getPathSegments()` returns ["ef39a39", "text.txt"] in this example.
+        String file = uri.getPathSegments().get(0);
+        if (!DcHelper.sharedFiles.containsKey(file)) {
             throw new FileNotFoundException("File was not shared before.");
         }
 
-        File privateFile = new File(dcContext.getBlobdir(), path);
+        File privateFile = new File(dcContext.getBlobdir(), file);
         return ParcelFileDescriptor.open(privateFile, ParcelFileDescriptor.MODE_READ_ONLY);
     }
 
     @Override
-    public int delete(Uri arg0, String arg1, String[] arg2) {
+    public int delete(@NonNull Uri arg0, String arg1, String[] arg2) {
         return 0;
     }
 
     @Override
-    public String getType(Uri arg0) {
-        return null;
+    public String getType(Uri uri) {
+        String file = uri.getPathSegments().get(0);
+        String mimeType = DcHelper.sharedFiles.get(file);
+
+        return DcHelper.checkMime(uri.toString(), mimeType);
     }
 
     @Override
-    public Uri insert(Uri arg0, ContentValues arg1) {
+    public String getTypeAnonymous(Uri uri) {
+        String ext = MediaUtil.getFileExtensionFromUrl(uri.toString());
+        return MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext);
+    }
+
+    @Override
+    public Uri insert(@NonNull Uri arg0, ContentValues arg1) {
         return null;
     }
 
@@ -59,13 +79,13 @@ public class AttachmentsContentProvider extends ContentProvider {
     }
 
     @Override
-    public Cursor query(Uri arg0, String[] arg1, String arg2, String[] arg3,
+    public Cursor query(@NonNull Uri arg0, String[] arg1, String arg2, String[] arg3,
                         String arg4) {
         return null;
     }
 
     @Override
-    public int update(Uri arg0, ContentValues arg1, String arg2, String[] arg3) {
+    public int update(@NonNull Uri arg0, ContentValues arg1, String arg2, String[] arg3) {
         return 0;
     }
 }

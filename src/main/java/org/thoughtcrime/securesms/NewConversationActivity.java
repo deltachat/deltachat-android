@@ -16,12 +16,15 @@
  */
 package org.thoughtcrime.securesms;
 
+import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
+import static org.thoughtcrime.securesms.ConversationActivity.TEXT_EXTRA;
+import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -35,11 +38,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.MailtoUtil;
-
-import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
-import static org.thoughtcrime.securesms.ConversationActivity.TEXT_EXTRA;
-import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
-import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 
 /**
  * Activity container for starting a new conversation.
@@ -74,7 +72,17 @@ public class NewConversationActivity extends ContactSelectionActivity {
               if (!textToShare.isEmpty()) {
                 getIntent().putExtra(TEXT_EXTRA, textToShare);
               }
-              onContactSelected(DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT, recipientsArray[0]);
+              final String addr = recipientsArray[0];
+              final DcContext dcContext = DcHelper.getContext(this);
+              int contactId = dcContext.lookupContactIdByAddr(addr);
+              if (contactId == 0 && dcContext.mayBeValidAddr(addr)) {
+                contactId = dcContext.createContact(null, recipientsArray[0]);
+              }
+              if (contactId == 0) {
+                Toast.makeText(this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
+              } else {
+                onContactSelected(contactId);
+              }
             } else {
               Intent shareIntent = new Intent(this, ShareActivity.class);
               shareIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
@@ -91,39 +99,32 @@ public class NewConversationActivity extends ContactSelectionActivity {
   }
 
   @Override
-  public void onContactSelected(int specialId, String addr) {
-    final DcContext dcContext = DcHelper.getContext(this);
-    if(specialId == DcContact.DC_CONTACT_ID_NEW_GROUP) {
+  public void onContactSelected(int contactId) {
+    if(contactId == DcContact.DC_CONTACT_ID_NEW_GROUP) {
       startActivity(new Intent(this, GroupCreateActivity.class));
-    } else if(specialId == DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST) {
+    } else if(contactId == DcContact.DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP) {
+      Intent intent = new Intent(this, GroupCreateActivity.class);
+      intent.putExtra(GroupCreateActivity.UNENCRYPTED, true);
+      startActivity(intent);
+    } else if(contactId == DcContact.DC_CONTACT_ID_NEW_BROADCAST) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.CREATE_BROADCAST, true);
       startActivity(intent);
-    } else if (specialId == DcContact.DC_CONTACT_ID_QR_INVITE) {
+    } else if (contactId == DcContact.DC_CONTACT_ID_QR_INVITE) {
       new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
     }
     else {
-      int contactId = dcContext.lookupContactIdByAddr(addr);
-      if (contactId!=0 && dcContext.getChatIdByContactId(contactId)!=0) {
+      final DcContext dcContext = DcHelper.getContext(this);
+      if (dcContext.getChatIdByContactId(contactId)!=0) {
         openConversation(dcContext.getChatIdByContactId(contactId));
-      } else if (contactId == 0 && dcContext.isChatmail()) {
-        DcHelper.showEncryptionRequiredDialog(this, addr);
       } else {
-        String nameNAddr = contactId == 0 ? addr : dcContext.getContact(contactId).getNameNAddr();
+        String name = dcContext.getContact(contactId).getDisplayName();
         new AlertDialog.Builder(this)
-                .setMessage(getString(R.string.ask_start_chat_with, nameNAddr))
+                .setMessage(getString(R.string.ask_start_chat_with, name))
                 .setCancelable(true)
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                  int contactId1 = dcContext.lookupContactIdByAddr(addr);
-                  if (contactId1 == 0) {
-                    contactId1 = dcContext.createContact(null, addr);
-                    if (contactId1 == 0) {
-                      Toast.makeText(NewConversationActivity.this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
-                      return;
-                    }
-                  }
-                  openConversation(dcContext.createChatByContactId(contactId1));
+                  openConversation(dcContext.createChatByContactId(contactId));
                 }).show();
       }
     }

@@ -1,4 +1,20 @@
 window.webxdc = (() => {
+  // TTS
+  window.speechSynthesis = {
+    speak: (utterance) => {
+      InternalJSApi.ttsSpeak(utterance.text, utterance.lang);
+    },
+    getVoices: () => {
+      return [];
+    },
+  };
+  window.SpeechSynthesisUtterance = function (text) {
+    return {
+      text: text,
+      lang: "",
+    };
+  };
+
   let setUpdateListenerPromise = null;
   let update_listener = () => {};
   let last_serial = 0;
@@ -42,6 +58,10 @@ window.webxdc = (() => {
   }
 
   return {
+    sendUpdateMaxSize: InternalJSApi.sendUpdateMaxSize(),
+
+    sendUpdateInterval: InternalJSApi.sendUpdateInterval(),
+
     selfAddr: InternalJSApi.selfAddr(),
 
     selfName: InternalJSApi.selfName(),

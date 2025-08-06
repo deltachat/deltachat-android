@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,10 +23,10 @@ import androidx.loader.app.LoaderManager;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.rpc.RpcException;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.AvatarSelector;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -48,7 +49,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 {
 
   public static final String EDIT_GROUP_CHAT_ID = "edit_group_chat_id";
-  public static final String CREATE_BROADCAST  = "group_create_broadcast";
+  public static final String CREATE_BROADCAST = "create_broadcast";
+  public static final String UNENCRYPTED = "unencrypted";
   public static final String CLONE_CHAT_EXTRA = "clone_chat";
 
   private static final int PICK_CONTACT = 1;
@@ -58,7 +60,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private DcContext dcContext;
 
   private boolean verified;
-  private boolean      broadcast;
+  private boolean unencrypted;
+  private boolean broadcast;
   private EditText     groupName;
   private ListView     lv;
   private ImageView    avatar;
@@ -75,7 +78,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     setContentView(R.layout.group_create_activity);
     verified = false;
     broadcast = getIntent().getBooleanExtra(CREATE_BROADCAST, false);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    unencrypted = getIntent().getBooleanExtra(UNENCRYPTED, false);
+    Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
     groupChatId = getIntent().getIntExtra(EDIT_GROUP_CHAT_ID, 0);
@@ -88,12 +92,15 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       isEdit = true;
       DcChat dcChat = dcContext.getChat(groupChatId);
       verified = dcChat.isProtected();
-      broadcast = dcChat.isBroadcast();
+      broadcast = dcChat.isOutBroadcast();
+      unencrypted = !dcChat.isEncrypted();
     }
 
     int chatId = getIntent().getIntExtra(CLONE_CHAT_EXTRA, 0);
     if (chatId != 0) {
-      broadcast = dcContext.getChat(chatId).isBroadcast();
+      DcChat dcChat  = dcContext.getChat(chatId);
+      broadcast = dcChat.isOutBroadcast();
+      unencrypted = !dcChat.isEncrypted();
     }
 
     initializeResources();
@@ -120,7 +127,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       title = getString(R.string.global_menu_edit_desktop);
     }
     else if(broadcast) {
-      title = getString(R.string.new_broadcast_list);
+      title = getString(R.string.new_channel);
+    }
+    else if(unencrypted) {
+      title = getString(R.string.new_email);
     }
     else {
       title = getString(R.string.menu_new_group);
@@ -136,7 +146,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
     initializeAvatarView();
 
-    SelectedContactsAdapter adapter = new SelectedContactsAdapter(this, GlideApp.with(this), broadcast);
+    SelectedContactsAdapter adapter = new SelectedContactsAdapter(this, GlideApp.with(this), broadcast, unencrypted);
     adapter.setItemClickListener(this);
     lv.setAdapter(adapter);
 
@@ -160,9 +170,12 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     }
 
     if (broadcast) {
+      groupName.setHint(R.string.channel_name);
+      chatHints.setVisibility(View.VISIBLE);
+    } else if (unencrypted) {
       avatar.setVisibility(View.GONE);
-      groupName.setHint(R.string.broadcast_list_name);
-      chatHints.setVisibility(isEdit()? View.GONE : View.VISIBLE);
+      groupName.setHint(R.string.subject);
+      chatHints.setVisibility(View.GONE);
     } else {
       chatHints.setVisibility(View.GONE);
     }
@@ -208,22 +221,22 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   @Override
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        finish();
-        return true;
-      case R.id.menu_create_group:
-        String groupName = getGroupName();
-        if (showGroupNameEmptyToast(groupName)) return true;
+    int itemId = item.getItemId();
+    if (itemId == android.R.id.home) {
+      finish();
+      return true;
+    } else if (itemId == R.id.menu_create_group) {
+      String groupName = getGroupName();
+      if (showGroupNameEmptyToast(groupName)) return true;
 
-        if (groupChatId!=0) {
-          updateGroup(groupName);
-        } else {
-          verified = !broadcast && allMembersVerified();
-          createGroup(groupName);
-        }
+      if (groupChatId != 0) {
+        updateGroup(groupName);
+      } else {
+        verified = !unencrypted && !broadcast && allMembersVerified();
+        createGroup(groupName);
+      }
 
-        return true;
+      return true;
     }
 
     return false;
@@ -244,10 +257,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
       Intent intent = new Intent(this, ContactMultiSelectionActivity.class);
       intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, verified);
-      ArrayList<String> preselectedContacts = new ArrayList<>();
-      for (int id : getAdapter().getContacts()) {
-        preselectedContacts.add(dcContext.getContact(id).getAddr());
-      }
+      intent.putExtra(ContactSelectionListFragment.SELECT_UNENCRYPTED_EXTRA, unencrypted);
+      ArrayList<Integer> preselectedContacts = new ArrayList<>(getAdapter().getContacts());
       intent.putExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselectedContacts);
       startActivityForResult(intent, PICK_CONTACT);
     }
@@ -260,8 +271,19 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private void createGroup(String groupName) {
     if (broadcast) {
-      groupChatId = dcContext.createBroadcastList();
-      dcContext.setChatName(groupChatId, groupName);
+      try {
+        groupChatId = DcHelper.getRpc(this).createBroadcast(dcContext.getAccountId(), groupName);
+      } catch (RpcException e) {
+        e.printStackTrace();
+        return;
+      }
+    } else if (unencrypted) {
+      try {
+        groupChatId = DcHelper.getRpc(this).createGroupChatUnencrypted(dcContext.getAccountId(), groupName);
+      } catch (RpcException e) {
+        e.printStackTrace();
+        return;
+      }
     } else {
       groupChatId = dcContext.createGroupChat(verified, groupName);
     }
@@ -333,9 +355,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
       case PICK_CONTACT:
         ArrayList<Integer> contactIds = new ArrayList<>();
-        for (String addr : Objects.requireNonNull(data.getStringArrayListExtra("contacts"))) {
-          if(addr != null) {
-            contactIds.add(dcContext.createContact(null, addr));
+        for (Integer contactId : Objects.requireNonNull(data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA))) {
+          if(contactId != null) {
+            contactIds.add(contactId);
           }
         }
         getAdapter().changeData(contactIds);
@@ -343,10 +365,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
       case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
         setAvatarView(data.getData());
-        break;
-
-      case Crop.REQUEST_CROP:
-        setAvatarView(Crop.getOutput(data));
         break;
     }
   }
@@ -359,11 +377,14 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .centerCrop()
             .override(AVATAR_SIZE, AVATAR_SIZE)
-            .into(new SimpleTarget<Bitmap>() {
+            .into(new CustomTarget<Bitmap>() {
               @Override
               public void onResourceReady(@NonNull Bitmap resource, Transition<? super Bitmap> transition) {
                 setAvatar(output, resource);
               }
+
+              @Override
+              public void onLoadCleared(@Nullable Drawable placeholder) {}
             });
   }
 

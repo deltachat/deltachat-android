@@ -15,12 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-    <org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer
-            android:id="@+id/quick_attachment_drawer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
         <LinearLayout android:id="@+id/conversation_container"
                       android:layout_width="match_parent"
                       android:layout_height="match_parent"
@@ -57,14 +51,12 @@
 
             <include layout="@layout/conversation_input_panel"/>
 
-            <ViewStub
-                android:id="@+id/emoji_drawer_stub"
+            <FrameLayout
+                android:id="@+id/emoji_picker_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inflatedId="@+id/emoji_drawer"
-                android:layout="@layout/conversation_activity_emojidrawer_stub" />
+                />
 
         </LinearLayout>
-    </org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer>
     </org.thoughtcrime.securesms.components.InputAwareLayout>
 </RelativeLayout>

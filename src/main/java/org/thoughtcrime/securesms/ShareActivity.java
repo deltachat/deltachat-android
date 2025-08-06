@@ -32,7 +32,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.pm.ShortcutManagerCompat;
 
 import com.b44t.messenger.DcContext;
 
@@ -56,6 +55,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
 {
   private static final String TAG = ShareActivity.class.getSimpleName();
 
+  public static final String EXTRA_ACC_ID = "acc_id";
   public static final String EXTRA_CHAT_ID = "chat_id";
   public static final String EXTRA_TITLE = "extra_title";
 
@@ -206,12 +206,8 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
   }
 
   private void handleResolvedMedia(Intent intent) {
+    int       accId            = intent.getIntExtra(EXTRA_ACC_ID, -1);
     int       chatId           = intent.getIntExtra(EXTRA_CHAT_ID, -1);
-
-    String shortcutId = intent.getStringExtra(ShortcutManagerCompat.EXTRA_SHORTCUT_ID);
-    if (chatId == -1 && shortcutId != null) {
-      chatId = Integer.parseInt(shortcutId);
-    }
 
     String[] extraEmail = getIntent().getStringArrayExtra(Intent.EXTRA_EMAIL);
     /*
@@ -251,28 +247,21 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
     }
   */
 
-    String addr = null;
     if(chatId == -1 && extraEmail != null && extraEmail.length > 0) {
-      addr = extraEmail[0];
+      final String addr = extraEmail[0];
       int contactId = dcContext.lookupContactIdByAddr(addr);
 
-      if(contactId != 0 || !dcContext.isChatmail()) {
-        if(contactId == 0) {
-          contactId = dcContext.createContact(null, addr);
-        }
-
-        chatId = dcContext.createChatByContactId(contactId);
-        addr = null;
+      if(contactId == 0) {
+        contactId = dcContext.createContact(null, addr);
       }
+
+      chatId = dcContext.createChatByContactId(contactId);
     }
     Intent composeIntent;
-    if (addr != null) {
-      composeIntent = new Intent(this, ConversationListActivity.class);
-      composeIntent.putExtra(ConversationListActivity.WARN_CANNOT_ENCRYPT, addr);
-      startActivity(composeIntent);
-    } else if (chatId != -1) {
+    if (accId != -1 && chatId != -1) {
       composeIntent = getBaseShareIntent(ConversationActivity.class);
       composeIntent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+      composeIntent.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, accId);
       RelayUtil.setSharedUris(composeIntent, resolvedExtras);
       startActivity(composeIntent);
     } else {

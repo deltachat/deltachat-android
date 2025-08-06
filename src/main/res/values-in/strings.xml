@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Batalkan</string>
-   <string name="clear_search">Hapus pencarian</string>
+    <string name="clear_search">Hapus pencarian</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="select">Pilih</string>
@@ -122,7 +122,6 @@
     <plurals name="n_selected">
         <item quantity="other">%d Dipilih</item>
     </plurals>
-
     <string name="self">Saya</string>
     <string name="draft">Draf</string>
     <string name="image">Gambar</string>
@@ -136,7 +135,7 @@
     <string name="voice_message">Pesan suara</string>
     <string name="forwarded">Diteruskan</string>
     <string name="forwarded_message">Pesan yang diteruskan</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Diteruskan oleh %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumen</string>
@@ -194,7 +193,6 @@
     <string name="menu_delete_chat">Hapus obrolan</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Hapus Obrolan</string>
-    <string name="menu_delete_messages">Hapus pesan</string>
     <string name="delete_contact">Hapus kontak</string>
     <string name="menu_delete_location">Hapus lokasi ini?</string>
     <string name="menu_message_details">Detail pesan</string>
@@ -256,7 +254,7 @@
     <string name="ConversationFragment_quoted_message_not_found">Pesan orisinil tidak ditemukan</string>
     <string name="reply_privately">Balas secara privat</string>
     <string name="mute_for_one_hour">Diamkan untuk 1 jam</string>
-    <string name="mute_for_two_hours">Diamkan untuk 2 jam</string>
+    <string name="mute_for_eight_hours">Diamkan untuk 8 jam</string>
     <string name="mute_for_one_day">Diamkan untuk 1 hari</string>
     <string name="mute_for_seven_days">Diamkan untuk 7 hari</string>
     <string name="mute_forever">Diamkan seterusnya</string>
@@ -284,15 +282,7 @@
     <string name="videochat_invitation">Undangan obrolan video</string>
     <string name="videochat_invitation_body">Anda diundang ke obrolan video, klik %1$s untuk bergabung.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Apakah anda yakin untuk keluar dari grup ini?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="other">Hapus %d obrolan? Obrolan ini akan menghilang dari daftar tetapi pesan-pesannya akan tetap tersimpan di server.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Apakah anda yakin ingin menghapus \"%1$s\"?</string>
-    <plurals name="ask_delete_messages">
-        <item quantity="other">Hapus %d pesan disini dan di server?</item>
-    </plurals>
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">Menghapus pesan %d?</item>
     </plurals>
@@ -302,9 +292,7 @@
     <string name="ask_unblock_contact">Buka blokir kontak ini? Anda akan bisa kembali menerima pesan dari kontak ini.</string>
     <string name="ask_delete_contacts">Hapus kontak?\n\nKontak dengan obrolan yang sedang berlangsung dan dari buku alamat pada sistem tak bisa dihapus secara permanen.</string>
     <string name="ask_delete_contact">Hapus kontak %1$s?\n\nKontak dengan obrolan yang sedang berlangsung dan dari buku alamat pada sistem tak bisa dihapus secara permanen.</string>
-    <string name="cannot_delete_contacts_in_use">Tak bisa menghapus kontak yang sedang dalam obrolan.</string>
     <string name="ask_start_chat_with">Ngobrol dengan %1$s?</string>
-    <string name="ask_delete_value">Hapus %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Hapus %1$s dari grup?</string>
     <string name="open_url_confirmation">Apakah anda ingin membuka pranala ini?</string>
@@ -379,9 +367,7 @@
     <string name="media_preview">Tampilan media</string>
     <string name="send_message">Kirim pesan</string>
     <string name="login_title">Masuk</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Masuk ke server Anda</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Masuk dengan akun surel yang ada</string>
     <string name="login_subheader">Pengaturan surel penyedia tambahan yang sudah diketahui dipasang secara otomatis. Terkadang IMAP perlu daktifkan di pengaturan aplikasi. Hubungi surel penyedia Anda atau minta tolong teman.</string>
     <string name="login_no_servers_hint">Tidak ada server Delta Chat, data Anda tetap di perangkat Anda.</string>
@@ -407,7 +393,7 @@
     <string name="import_backup_title">Impor cadangan</string>
     <string name="import_backup_ask">Cadangan ditemukan di \"%1$s\".\n\n Apakah Anda ingin mengimpor dan menggunakan semua data dan pengaturan darinya?</string>
     <string name="import_backup_no_backup_found">Cadangan tidak ketemu.\n\nKopi cadangan ke \"%1$s\" dan coba lagi. Cara lain, tekan \"Mulai obrolan\" untuk melanjutkan proses pengaturan normal.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Tidak bisa login sebagai \"%1$s\". Mohon cek apakah alamat surel dan kata sandi benar.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Terima sertifikat yang tidak sah</string>
@@ -431,11 +417,10 @@
     <string name="pref_profile_info_headline">Info profil Anda</string>
     <string name="pref_profile_photo">Gambar profil</string>
     <string name="pref_blocked_contacts">Kontak yang diblokir</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Kata sandi dan akun</string>
     <string name="pref_who_can_see_profile_explain">Foto dan nama profil Anda akan tampak bersama dengan pesan-pesan ketika berkomunikasi dengan pengguna lain. Informasi yang telah dikirimkan tidak dapat dihapus atau dipindah.</string>
     <string name="pref_your_name">Nama Anda</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Signature text</string>
     <string name="pref_enter_sends">Tombol Enter mengirim</string>
     <string name="pref_enter_sends_explain">Menekan tombol Enter akan mengirimkan teks pesan</string>
@@ -468,10 +453,8 @@
     <string name="pref_manage_keys">Kelola kunci</string>
     <string name="pref_use_system_emoji">Gunakan emoji sistem</string>
     <string name="pref_use_system_emoji_explain">Matikan dukungan emoji Delta Chat yang ada</string>
-    <string name="pref_app_access">Akes Aplikasi</string>
     <string name="pref_chats">Obrolan</string>
     <string name="pref_in_chat_sounds">Suara dalam obrolan</string>
-    <string name="pref_message_text_size">Ukuran huruf pesan</string>
     <string name="pref_view_log">Lihat catatan</string>
     <string name="pref_saved_log">Menyimpan log ke folder \"Unduhan\"</string>
     <string name="pref_save_log_failed">Gagal menyimpan log</string>
@@ -537,21 +520,7 @@
     <string name="autocrypt_send_asm_button">Kirim Pengaturan Pesan Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Pengaturan Anda sudah dikirim ke Anda sendiri. Lihat pesan pengaturan di perangkat yang lain. Seharusnya Anda akan diminta kode pengaturan. Masukkan angka berikut:</string>
     <string name="autocrypt_prefer_e2ee">Lebih baik enkripsi ujung ke ujung</string>
-    <string name="autocrypt_asm_subject">Pengaturan Pesan Autocrypt</string>
-    <string name="autocrypt_asm_general_body">Inilah Autocrypt Setup Message yang digunakan utuk mentransfer pengaturan ujung ke ujung Anda antar pelanggan.\n\nUntuk membuka enkirpsi dan menggunakan pengaturan Anda, bukan pesan di Autocrypt-compliant pelanggan dan masukkan kode pengaturan yang ditampikan untuk perangkat terkait.</string>
-    <string name="autocrypt_asm_click_body">Inilah Autocrypt Setup Message yang digunakan untuk mentransfer pengaturan ujung ke ujung antar pelanggan.\n\nUntuk membuka enkripsi dan membuka pengaturan Anda, ketuk atau klik pesan ini.</string>
-    <string name="autocrypt_continue_transfer_title">Pengaturan Pesan Autocrypt</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">Masukkan kode pengaturan yang ditampilkan di perangkat lain.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Pengaturan ujung ke ujung sudah ditransfer. Sekarang perangkat ini sudah siap dengan pengaturan Autocrypt yang sama dengan perangkat lain.</string>
-    <string name="autocrypt_continue_transfer_retry">Ulangi</string>
-    <string name="autocrypt_bad_setup_code">Kode pengaturan jelek. Ayo cakepan lagi.\n\nKalau Anda lupa kode pengaturan, kirim lagi Autocrypt Setup Message dari perangkat lainnya.</string>
 
-
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_subject">Pesan dibuka</string>
-    <!-- deprecated -->
-    <string name="systemmsg_read_receipt_body">Pesan \"%1$s\" yang Anda kirimkan tampak di layar penerima.\n\nIni bukan jaminan kalau isinya dibaca.</string>
     <string name="systemmsg_unknown_sender_for_chat">Pengirim tidak dikenal untuk obrolan ini. Lihat \'info\' untuk lebih jelasnya.</string>
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>
     <string name="systemmsg_failed_sending_to">Gagal mengirim pesan ke %1$s.</string>
@@ -597,10 +566,11 @@
     <string name="qraccount_ask_create_and_login_another">Buat alamat email baru di\"%1$s\" dan masuk ke sana?\n\nAkun yang sudah ada tidak akan di hapus. Gunakankan item \"Ganti akun\" untuk mengganti akun anda</string>
     <string name="qraccount_qr_code_cannot_be_used">Kode QR yang dipindai tidak dapat digunakan untuk mengatur akun baru.</string>
     <string name="contact_verified">%1$sdiverifikasi.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Tidak bisa memverifikasi %1$s.</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Ubah pengaturan untuk %1$s.</string>
-    <string name="copy_qr_data_success">Salin QR url ke papan klip</string>
+    <!-- notifications  -->
     <string name="notify_reply_button">Balasan</string>
     <string name="notify_new_message">Pesan baru</string>
     <string name="notify_background_connection_enabled">Koneksi latar diaktifkan</string>
@@ -613,12 +583,13 @@
     <string name="perm_required_title">Perlu izin</string>
     <string name="perm_continue">Lanjutkan</string>
     <string name="perm_explain_access_to_camera_denied">Untuk mengambil foto atau merekam video, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Kamera\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Untuk mengirim pesan audio, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Untuk menerima atau mengirim berkas, pergi ke pengaturan aplikasi, pilih \"Perizinan\", dan fungsikan \"Penyimpanan\".</string>
     <string name="perm_explain_access_to_location_denied">Untuk melampirkan lokasi, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Lokasi\".</string>
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Gambar di mana saja untuk diburamkan</string>
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Pesan terenkripsi</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
@@ -638,8 +609,6 @@
     <string name="global_menu_view_developer_desktop">Pengembang</string>
     <string name="global_menu_view_developer_tools_desktop">Alat pengembang</string>
     <string name="global_menu_help_desktop">Bantuan</string>
-    <string name="global_menu_help_learn_desktop">Pelajari lebih lanjut Delta Chat</string>
-    <string name="global_menu_help_contribute_desktop">Kontribusi di GitHub</string>
     <string name="global_menu_help_report_desktop">Laporkan masalah</string>
     <string name="global_menu_help_about_desktop">Tentang Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Pilih obrolan atau buat sebuah obrolan baru</string>
@@ -669,6 +638,4 @@
     <string name="a11y_background_preview_label">Pratampil latar belakang</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat akan memungkinkan Anda memilih foto dari perpustakaan Anda untuk dikirim.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat ingin menyimpan gambar ke kumpulan foto anda.</string>
-
-
     </resources>

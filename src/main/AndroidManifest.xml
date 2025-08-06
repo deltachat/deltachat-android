@@ -288,6 +288,10 @@
               android:theme="@style/TextSecure.LightNoActionBar"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
+    <activity android:name=".AllMediaActivity"
+        android:theme="@style/TextSecure.LightNoActionBar"
+        android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
+
     <activity android:name=".DummyActivity"
               android:theme="@android:style/Theme.NoDisplay"
               android:enabled="true"
@@ -315,8 +319,6 @@
     <activity android:name=".scribbles.StickerSelectActivity"
               android:theme="@style/TextSecure.ScribbleTheme"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
 
     <activity android:name=".InstantOnboardingActivity"
               android:theme="@style/TextSecure.LightTheme"
@@ -374,6 +376,11 @@
               android:theme="@style/TextSecure.LightTheme"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode"
               android:exported="true">
+    </activity>
+
+    <activity android:name=".WebxdcStoreActivity"
+              android:theme="@style/TextSecure.LightTheme"
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode">
     </activity>
 
     <activity android:name=".FullMsgActivity"
@@ -495,6 +502,9 @@
 <queries>
     <intent>
         <action android:name="android.media.action.IMAGE_CAPTURE" />
+    </intent>
+    <intent>
+      <action android:name="android.intent.action.TTS_SERVICE" />
     </intent>
 </queries>
 </manifest>

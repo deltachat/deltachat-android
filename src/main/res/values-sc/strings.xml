@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">AB</string>
     <string name="cancel">Annulla</string>
-   <string name="yes">Eja</string>
+    <string name="yes">Eja</string>
     <string name="no">Nono</string>
     <string name="select">Ischerta</string>
     <string name="on">Allutu</string>
@@ -150,7 +150,6 @@
     <string name="menu_add_attachment">Annanghe un\'allegadu</string>
     <string name="menu_leave_group">Lassa su grupu</string>
     <string name="menu_delete_chat">Iscantzella sa tzarrada</string>
-    <string name="menu_delete_messages">Iscantzella sos messàgios</string>
     <string name="menu_delete_location">Iscantzellare custa positzione?</string>
     <string name="menu_message_details">Detàllios de su messàgiu</string>
     <string name="menu_copy_to_clipboard">Còpia in punta de billete</string>
@@ -190,7 +189,7 @@
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Isbloca</string>
     <string name="mute_for_one_hour">A sa muda pro 1 ora</string>
-    <string name="mute_for_two_hours">A sa muda pro 2 oras</string>
+    <string name="mute_for_eight_hours">A sa muda pro 8 oras</string>
     <string name="mute_for_one_day">A sa muda pro 1 die</string>
     <string name="mute_for_seven_days">A sa muda pro 7 dies</string>
     <string name="mute_forever">A sa muda pro semper</string>
@@ -216,17 +215,6 @@
     <string name="videochat_invitation">Invitu a sa vìdeu-tzarrada</string>
     <string name="videochat_invitation_body">Ses invitadu a una vìdeu-tzarrada. Incarca %1$s pro bi pigare parte.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Ses seguru de chèrrere lassare custu grupu?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Cheres iscantzellare %d tzarrada? No at a èssere prus ammustrada in sa lista de sas tzarradas, ma sos messàgios ant a abarrare in su servidore.</item>
-        <item quantity="other">Cheres iscantzellare %d tzarradas? No ant a èssere prus ammustradas in sa lista de sas tzarradas, ma sos messàgios ant a abarrare in su servidore.</item>
-    </plurals>
-    <string name="ask_delete_named_chat">Ses seguru de chèrrere iscantzellare \"%1$s\"?</string>
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Iscantzellare %d messàgiu inoghe e in su servidore?</item>
-        <item quantity="other">Iscantzellare %d messàgios inoghe e in su servidore?</item>
-    </plurals>
     <string name="ask_forward">Inoltrare su messàgiu a %1$s?</string>
     <string name="ask_forward_multiple">Inoltrare messàgios a %1$d tzarradas?</string>
     <string name="ask_export_attachment">Esportare sos allegados? S\'esportatzione de sos allegados at a permìtere a cale si siat àtera aplicatzione in su dispositivu tuo de b\'atzèdere.\n\nSighire?</string>
@@ -234,7 +222,6 @@
     <string name="ask_unblock_contact">Isblocare custu cuntatu? As a torrare a pòdere retzire messàgios dae custu cuntatu.</string>
     <string name="ask_delete_contacts">Iscantzellare sos cuntatos?\n\nSos cuntatos cun tzarradas ativas e cussos de sa rubrica de su dispositivu non podent èssere iscantzellados definitivamente.</string>
     <string name="ask_delete_contact">Cheres iscantzellare a %1$s pro semper?\n\nSos cuntatos cun tzarradas ativas e cussos de sa rubrica de su dispositivu non podent èssere iscantzellados definitivamente.</string>
-    <string name="cannot_delete_contacts_in_use">Non podes iscantzellare cuntatos cun tzarradas ativas.</string>
     <string name="ask_start_chat_with">Cheres tzarrare cun %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Cheres bogare %1$sdae su grupu?</string>
@@ -314,9 +301,7 @@
     <string name="media_preview">Anteprima de su documentu multimediale</string>
     <string name="send_message">Imbia messàgiu</string>
     <string name="login_title">Intra</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Intra in su servidore tuo</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Intra cun un\'indiritzu de posta eletrònica chi esistat</string>
     <string name="login_subheader">Pro sos frunidores de posta eletrònica connotos sas impostatziones additzionales benint impostadas in automàticu. Cada tantu s\'IMAP cheret abilitadu in sas impostatziones web. Si ti serbit agiudu pedi a su frunidore de posta eletrònica tuo o a sos amigos tuos.</string>
     <string name="login_no_servers_hint">No esistint serbidores de Delta Chat, sos datos tuos abarrant in su dispositivu tuo.</string>
@@ -342,7 +327,7 @@
     <string name="import_backup_title">Importa una còpia de seguresa</string>
     <string name="import_backup_ask">Còpia de seguresa agatada in \"%1$s\".\n\nCheres a l\'importare e a impreare totu sos datos e sas impostatziones dae cue?</string>
     <string name="import_backup_no_backup_found">Peruna còpia de seguresa agatada.\n\nCòpia sa còpia de seguresa in \"%1$s\" e torra a proare. Si nono, incarca. Asinuncas, incarca \"Incumintza a messagiare\" pro sighire cun su protzessu de impostatzione normale.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Impossìbile atzèdere comente \"%1$s\". pro paghere verìfica si s\'indiritzu de posta eletrònica e sa crae de intrada sunt curretos.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Atzetat tzertificados non vàlidos</string>
@@ -369,11 +354,10 @@
     <string name="pref_profile_photo">Fotografia de profilu</string>
     <string name="pref_blocked_contacts">Cuntatos blocados</string>
     <string name="blocked_empty_hint">Si as a blocare cuntatos ant a èssere allistados inoghe.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Crae de intrada e contu</string>
     <string name="pref_who_can_see_profile_explain">S\'immàgine de profilu tua e su nùmene tuo ant a èssere ammustrados in paris cun sos messàgios tuos cando ses comunichende cun àteros impreadores. Sas informatziones giai imbiadas non podent èssere iscantzelladas o bogadas.</string>
     <string name="pref_your_name">Su nùmene tuo</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Firma</string>
     <string name="pref_enter_sends">Imbia cun \"Imbiu\"</string>
     <string name="pref_enter_sends_explain">Incarchende sa tecla Imbiu as a imbiare sos messàgios</string>
@@ -410,10 +394,8 @@
     <string name="pref_manage_keys">Amministra sas craes</string>
     <string name="pref_use_system_emoji">Imprea sas emoji de sistema</string>
     <string name="pref_use_system_emoji_explain">Istuda su suportu de sas emoji incorporadu in Delta Chat</string>
-    <string name="pref_app_access">Atzessu a s\'aplicatzione</string>
     <string name="pref_chats">Tzarradas</string>
     <string name="pref_in_chat_sounds">Sonos in sa tzarrada</string>
-    <string name="pref_message_text_size">Mannària de sos caràteres in sos messàgios</string>
     <string name="pref_view_log">Pòmpia su registru</string>
     <string name="pref_saved_log">Registru sarvadu in sa cartella \"Iscarrigamentos\"</string>
     <string name="pref_save_log_failed">Sarvatàgiu de su registru fallidu</string>
@@ -480,7 +462,7 @@
     <string name="autocrypt_send_asm_button">Imbia unu messàgiu de impostatzione de Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Ti ses imbiadu sa configuratzione tua. Cola a s\'àteru dispositivu e aberi su messàgiu de configuratzione. Ti diat dèpere èssere pedidu unu còdighe de configuratzione. Inserta custas tzifras:</string>
     <string name="autocrypt_prefer_e2ee">Preferi sa tzifradura a nodu terminale (end-to-end)</string>
-    <string name="autocrypt_asm_subject">Messàgiu de configuratzione de Autocrypt</string>
+
     <string name="write_message_desktop">Iscrie unu messàgiu</string>
     <string name="encryption_info_title_desktop">Informatziones de tzifradura</string>
     <string name="more_info_desktop">Àteras informatziones</string>

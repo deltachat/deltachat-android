@@ -33,6 +33,8 @@ import java.util.List;
  */
 public class ContactMultiSelectionActivity extends ContactSelectionActivity {
 
+  public static final String CONTACTS_EXTRA = "contacts_extra";
+
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
     getIntent().putExtra(ContactSelectionListFragment.MULTI_SELECT, true);
@@ -57,11 +59,10 @@ public class ContactMultiSelectionActivity extends ContactSelectionActivity {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case R.id.menu_add_members:
-        saveSelection();
-        finish();
-        return true;
+    if (item.getItemId() == R.id.menu_add_members) {
+      saveSelection();
+      finish();
+      return true;
     }
 
     return false;
@@ -69,12 +70,8 @@ public class ContactMultiSelectionActivity extends ContactSelectionActivity {
 
   private void saveSelection() {
     Intent resultIntent = getIntent();
-    List<String> selectedContacts = contactsFragment.getSelectedContacts();
-
-    if (selectedContacts != null) {
-      resultIntent.putStringArrayListExtra("contacts", new ArrayList<>(selectedContacts));
-    }
-
+    List<Integer> selectedContacts = contactsFragment.getSelectedContacts();
+    resultIntent.putIntegerArrayListExtra(CONTACTS_EXTRA, new ArrayList<>(selectedContacts));
     setResult(RESULT_OK, resultIntent);
   }
 }

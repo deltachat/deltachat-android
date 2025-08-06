@@ -23,7 +23,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -51,6 +50,7 @@ import org.thoughtcrime.securesms.MediaPreviewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareLocationDialog;
 import org.thoughtcrime.securesms.WebxdcActivity;
+import org.thoughtcrime.securesms.WebxdcStoreActivity;
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
@@ -67,7 +67,6 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.MediaUtil;
-import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.Stub;
@@ -125,11 +124,6 @@ public class AttachmentManager {
       removableMediaView.setRemoveClickListener(new RemoveButtonListener());
       removableMediaView.setEditClickListener(new EditButtonListener());
       thumbnail.setOnClickListener(new ThumbnailClickListener());
-      int incomingBubbleColor = ThemeUtil.getThemedColor(context, R.attr.conversation_item_incoming_bubble_color);
-      audioView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
-      documentView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
-      webxdcView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
-      vcardView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
     }
 
   }
@@ -261,11 +255,11 @@ public class AttachmentManager {
             return new DocumentSlide(context, msg);
           }
           else if (PartAuthority.isLocalUri(uri)) {
-            return getManuallyCalculatedSlideInfo(uri, width, height);
+            return getManuallyCalculatedSlideInfo(uri, width, height, msg);
           } else {
             Slide result = getContentResolverSlideInfo(uri, width, height, chatId);
 
-            if (result == null) return getManuallyCalculatedSlideInfo(uri, width, height);
+            if (result == null) return getManuallyCalculatedSlideInfo(uri, width, height, msg);
             else                return result;
           }
         } catch (IOException e) {
@@ -279,7 +273,7 @@ public class AttachmentManager {
         if (slide == null) {
           setAttachmentPresent(false);
           result.set(false);
-        } else if (slide.getFileSize()>1*1024*1024*1024) {
+        } else if (slide.getFileSize() > 1024 * 1024 * 1024) {
           // this is only a rough check, videos and images may be recoded
           // and the core checks more carefully later.
           setAttachmentPresent(false);
@@ -318,7 +312,7 @@ public class AttachmentManager {
           } else if (slide.hasDocument()) {
             if (slide.isWebxdcDocument()) {
               DcMsg instance = msg != null ? msg : DcHelper.getContext(context).getMsg(slide.dcMsgId);
-              webxdcView.setWebxdc(instance, context.getString(R.string.videochat_tap_to_open));
+              webxdcView.setWebxdc(instance, context.getString(R.string.webxdc_draft_hint));
               webxdcView.setWebxdcClickListener((v, s) -> {
                 WebxdcActivity.openWebxdcActivity(context, instance);
               });
@@ -339,43 +333,44 @@ public class AttachmentManager {
       }
 
       private @Nullable Slide getContentResolverSlideInfo(Uri uri, int width, int height, int chatId) {
-        Cursor cursor = null;
-        long   start  = System.currentTimeMillis();
 
-        try {
-          cursor = context.getContentResolver().query(uri, null, null, null, null);
+        long   start  = System.currentTimeMillis();
+        try (Cursor cursor = context.getContentResolver().query(uri, null, null, null, null)) {
 
           if (cursor != null && cursor.moveToFirst()) {
             String fileName = cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME));
-            long   fileSize = cursor.getLong(cursor.getColumnIndexOrThrow(OpenableColumns.SIZE));
+            long fileSize = cursor.getLong(cursor.getColumnIndexOrThrow(OpenableColumns.SIZE));
             String mimeType = context.getContentResolver().getType(uri);
 
             if (width == 0 || height == 0) {
               Pair<Integer, Integer> dimens = MediaUtil.getDimensions(context, mimeType, uri);
-              width  = dimens.first;
+              width = dimens.first;
               height = dimens.second;
             }
 
             Log.w(TAG, "remote slide with size " + fileSize + " took " + (System.currentTimeMillis() - start) + "ms");
             return mediaType.createSlide(context, uri, fileName, mimeType, fileSize, width, height, chatId);
           }
-        } finally {
-          if (cursor != null) cursor.close();
         }
 
         return null;
       }
 
-      private @NonNull Slide getManuallyCalculatedSlideInfo(Uri uri, int width, int height) throws IOException {
+      private @NonNull Slide getManuallyCalculatedSlideInfo(Uri uri, int width, int height, @Nullable DcMsg msg) throws IOException {
         long start      = System.currentTimeMillis();
         Long mediaSize  = null;
         String fileName = null;
         String mimeType = null;
 
+        if (msg != null) {
+          fileName = msg.getFilename();
+          mimeType = msg.getFilemime();
+        }
+
         if (PartAuthority.isLocalUri(uri)) {
           mediaSize = PartAuthority.getAttachmentSize(context, uri);
-          fileName  = PartAuthority.getAttachmentFileName(context, uri);
-          mimeType  = PartAuthority.getAttachmentContentType(context, uri);
+          if (fileName == null) fileName = PartAuthority.getAttachmentFileName(context, uri);
+          if (mimeType == null) mimeType = PartAuthority.getAttachmentContentType(context, uri);
         }
 
         if (mediaSize == null) {
@@ -396,7 +391,7 @@ public class AttachmentManager {
           try {
             fileName = new File(uri.getPath()).getName();
           } catch(Exception e) {
-            Log.w(TAG, "Could not get file name from uri: " + e.toString());
+            Log.w(TAG, "Could not get file name from uri: " + e);
           }
         }
 
@@ -414,7 +409,7 @@ public class AttachmentManager {
     if (slide.isPresent()) {
       if (slide.get().isWebxdcDocument()) {
         if (webxdcView != null) {
-          webxdcView.setWebxdc(DcHelper.getContext(context).getMsg(slide.get().dcMsgId), context.getString(R.string.videochat_tap_to_open));
+          webxdcView.setWebxdc(DcHelper.getContext(context).getMsg(slide.get().dcMsgId), context.getString(R.string.webxdc_draft_hint));
         }
       }
     }
@@ -432,14 +427,11 @@ public class AttachmentManager {
 
   public static @Nullable String getFileName(Context context, Uri uri) {
     String result = null;
-    if (uri.getScheme().equals("content")) {
-      Cursor cursor = context.getContentResolver().query(uri, new String[]{OpenableColumns.DISPLAY_NAME}, null, null, null);
-      try {
+    if ("content".equals(uri.getScheme())) {
+      try (Cursor cursor = context.getContentResolver().query(uri, new String[]{OpenableColumns.DISPLAY_NAME}, null, null, null)) {
         if (cursor != null && cursor.moveToFirst()) {
           result = cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME));
         }
-      } finally {
-        if (cursor != null) cursor.close();
       }
     }
     if (result == null) {
@@ -450,6 +442,11 @@ public class AttachmentManager {
 
   public static void selectDocument(Activity activity, int requestCode) {
     selectMediaType(activity, "*/*", null, requestCode);
+  }
+
+  public static void selectWebxdc(Activity activity, int requestCode) {
+    Intent intent = new Intent(activity, WebxdcStoreActivity.class);
+    activity.startActivityForResult(intent, requestCode);
   }
 
   public static void selectGallery(Activity activity, int requestCode) {
@@ -491,11 +488,10 @@ public class AttachmentManager {
             .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_location_denied))
             .onAllGranted(() -> {
               ShareLocationDialog.show(activity, durationInSeconds -> {
-                switch (durationInSeconds) {
-                  case 1: dcLocationManager.shareLastLocation(chatId); break;
-                  default:
-                    dcLocationManager.shareLocation(durationInSeconds, chatId);
-                    break;
+                if (durationInSeconds == 1) {
+                  dcLocationManager.shareLastLocation(chatId);
+                } else {
+                  dcLocationManager.shareLocation(durationInSeconds, chatId);
                 }
               });
             });
@@ -675,10 +671,10 @@ public class AttachmentManager {
       }
 
       switch (this) {
-      case IMAGE:    return new ImageSlide(context, uri, dataSize, width, height);
-      case GIF:      return new GifSlide(context, uri, dataSize, width, height);
+      case IMAGE:    return new ImageSlide(context, uri, fileName, dataSize, width, height);
+      case GIF:      return new GifSlide(context, uri, fileName, dataSize, width, height);
       case AUDIO:    return new AudioSlide(context, uri, dataSize, false, fileName);
-      case VIDEO:    return new VideoSlide(context, uri, dataSize);
+      case VIDEO:    return new VideoSlide(context, uri, fileName, dataSize);
       case DOCUMENT:
         // We have to special-case Webxdc slides: The user can interact with them as soon as a draft
         // is set. Therefore we need to create a DcMsg already now.
@@ -687,7 +683,7 @@ public class AttachmentManager {
           DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_WEBXDC);
           Attachment attachment = new UriAttachment(uri, null, MediaUtil.WEBXDC, AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, fileName, null, false);
           String path = attachment.getRealPath(context);
-          msg.setFile(path, MediaUtil.WEBXDC);
+          msg.setFileAndDeduplicate(path, fileName, MediaUtil.WEBXDC);
           dcContext.setDraft(chatId, msg);
           return new DocumentSlide(context, msg);
         }
@@ -700,7 +696,7 @@ public class AttachmentManager {
               return slide;
             }
           } catch (RpcException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error in call to rpc.parseVcard()", e);
           }
         }
 

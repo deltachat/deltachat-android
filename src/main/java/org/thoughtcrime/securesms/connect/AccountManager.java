@@ -5,22 +5,22 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_VERIFIED_ONE_ON
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
+import androidx.preference.PreferenceManager;
 
 import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.InstantOnboardingActivity;
 import org.thoughtcrime.securesms.WelcomeActivity;
 import org.thoughtcrime.securesms.accounts.AccountSelectionListFragment;
-import org.thoughtcrime.securesms.crypto.DatabaseSecret;
-import org.thoughtcrime.securesms.crypto.DatabaseSecretProvider;
 
 import java.io.File;
 
@@ -32,7 +32,7 @@ public class AccountManager {
 
     private void resetDcContext(Context context) {
         ApplicationContext appContext = (ApplicationContext)context.getApplicationContext();
-        appContext.dcContext = appContext.dcAccounts.getSelectedAccount();
+        appContext.dcContext = ApplicationContext.dcAccounts.getSelectedAccount();
         DcHelper.setStockTranslations(context);
         DcHelper.getContext(context).setConfig(CONFIG_VERIFIED_ONE_ON_ONE_CHATS, "1");
         DirectShareUtil.resetAllShortcuts(appContext);
@@ -53,10 +53,11 @@ public class AccountManager {
             int selectAccountId = 0;
 
             File[] files = context.getFilesDir().listFiles();
+          if (files != null) {
             for (File file : files) {
                 // old accounts have the pattern "messenger*.db"
                 if (!file.isDirectory() && file.getName().startsWith("messenger") && file.getName().endsWith(".db")) {
-                    int accountId = context.dcAccounts.migrateAccount(file.getAbsolutePath());
+                    int accountId = ApplicationContext.dcAccounts.migrateAccount(file.getAbsolutePath());
                     if (accountId != 0) {
                         String selName = PreferenceManager.getDefaultSharedPreferences(context)
                                 .getString("curr_account_db_name", "messenger.db");
@@ -68,12 +69,13 @@ public class AccountManager {
                     }
                 }
             }
+          }
 
             if (selectAccountId != 0) {
-                context.dcAccounts.selectAccount(selectAccountId);
+                ApplicationContext.dcAccounts.selectAccount(selectAccountId);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error in migrateToDcAccounts()", e);
         }
     }
 
@@ -86,15 +88,21 @@ public class AccountManager {
     // add accounts
 
     public int beginAccountCreation(Context context) {
+        Rpc rpc = DcHelper.getRpc(context);
         DcAccounts accounts = DcHelper.getAccounts(context);
         DcContext selectedAccount = accounts.getSelectedAccount();
         if (selectedAccount.isOk()) {
           PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(LAST_ACCOUNT_ID, selectedAccount.getAccountId()).apply();
         }
 
-        int id = accounts.addAccount();
-        resetDcContext(context);
-        return id;
+      int id = 0;
+      try {
+        id = rpc.addAccount();
+      } catch (RpcException e) {
+        Log.e(TAG, "Error calling rpc.addAccount()", e);
+      }
+      resetDcContext(context);
+      return id;
     }
 
     public boolean canRollbackAccountCreation(Context context) {

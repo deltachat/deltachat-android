@@ -6,7 +6,8 @@ public class DcChat {
     public static final int DC_CHAT_TYPE_SINGLE      = 100;
     public static final int DC_CHAT_TYPE_GROUP       = 120;
     public static final int DC_CHAT_TYPE_MAILINGLIST = 140;
-    public static final int DC_CHAT_TYPE_BROADCAST   = 160;
+    public static final int DC_CHAT_TYPE_OUT_BROADCAST = 160;
+    public static final int DC_CHAT_TYPE_IN_BROADCAST = 165;
 
     public static final int DC_CHAT_NO_CHAT          = 0;
     public final static int DC_CHAT_ID_ARCHIVED_LINK = 6;
@@ -38,12 +39,12 @@ public class DcChat {
     public native String  getMailinglistAddr();
     public native String  getProfileImage   ();
     public native int     getColor          ();
+    public native boolean isEncrypted       ();
     public native boolean isUnpromoted      ();
     public native boolean isSelfTalk        ();
     public native boolean isDeviceTalk      ();
     public native boolean canSend           ();
     public native boolean isProtected       ();
-    public native boolean isProtectionBroken();
     public native boolean isSendingLocations();
     public native boolean isMuted           ();
     public native boolean isContactRequest  ();
@@ -53,19 +54,18 @@ public class DcChat {
 
     public boolean isMultiUser() {
       int type = getType();
-      return type == DC_CHAT_TYPE_GROUP || type == DC_CHAT_TYPE_MAILINGLIST || type == DC_CHAT_TYPE_BROADCAST;
+      return type != DC_CHAT_TYPE_SINGLE;
     }
 
     public boolean isMailingList() {
         return getType() == DC_CHAT_TYPE_MAILINGLIST;
     }
 
-    public boolean isBroadcast() {
-      return getType() == DC_CHAT_TYPE_BROADCAST;
+    public boolean isInBroadcast() {
+        return getType() == DC_CHAT_TYPE_IN_BROADCAST;
     }
-
-    public boolean isHalfBlocked() {
-      return isProtectionBroken() || isContactRequest();
+    public boolean isOutBroadcast() {
+        return getType() == DC_CHAT_TYPE_OUT_BROADCAST;
     }
 
     // working with raw c-data
