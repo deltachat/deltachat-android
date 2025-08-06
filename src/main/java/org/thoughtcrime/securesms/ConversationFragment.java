@@ -331,8 +331,7 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_share).setVisible(messageRecord.hasFile());
             boolean canReply = canReplyToMsg(messageRecord);
             menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
-            boolean canEdit = canEditMsg(messageRecord);
-            menu.findItem(R.id.menu_context_edit).setVisible(chat.canSend() && canEdit);
+            menu.findItem(R.id.menu_context_edit).setVisible(chat.isEncrypted() && chat.canSend() && canEditMsg(messageRecord));
             boolean showReplyPrivately = chat.isMultiUser() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
             menu.findItem(R.id.menu_add_to_home_screen).setVisible(messageRecord.getType() == DcMsg.DC_MSG_WEBXDC);
@@ -825,7 +824,7 @@ public class ConversationFragment extends MessageSelectorFragment
       public void onShowFullClicked(DcMsg messageRecord) {
         Intent intent = new Intent(getActivity(), FullMsgActivity.class);
         intent.putExtra(FullMsgActivity.MSG_ID_EXTRA, messageRecord.getId());
-        intent.putExtra(FullMsgActivity.BLOCK_LOADING_REMOTE, getListAdapter().getChat().isHalfBlocked());
+        intent.putExtra(FullMsgActivity.BLOCK_LOADING_REMOTE, getListAdapter().getChat().isContactRequest());
         startActivity(intent);
         getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
       }

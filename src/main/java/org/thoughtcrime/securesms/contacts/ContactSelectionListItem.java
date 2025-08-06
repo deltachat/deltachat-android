@@ -64,9 +64,12 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.name          = name;
     this.number        = number;
 
-    if (specialId==DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP
+    if (specialId==DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT
+     || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP
+     || specialId==DcContact.DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP
      || specialId==DcContact.DC_CONTACT_ID_NEW_BROADCAST
-     || specialId==DcContact.DC_CONTACT_ID_ADD_MEMBER || specialId==DcContact.DC_CONTACT_ID_QR_INVITE) {
+     || specialId==DcContact.DC_CONTACT_ID_ADD_MEMBER
+     || specialId==DcContact.DC_CONTACT_ID_QR_INVITE) {
       this.nameView.setTypeface(null, Typeface.BOLD);
     }
     else {
@@ -119,11 +122,6 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     }
     else {
       this.numberContainer.setVisibility(View.GONE);
-    }
-    if (contact != null && contact.isVerified()) {
-      nameView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_verified,0);
-    } else {
-      nameView.setCompoundDrawablesWithIntrinsicBounds(0,0, 0,0);
     }
   }
 

@@ -39,6 +39,7 @@ public class DcContext {
 
     public final static int DC_GCL_VERIFIED_ONLY    = 1;
     public final static int DC_GCL_ADD_SELF         = 2;
+    public final static int DC_GCL_ADDRESS          = 0x04;
     public final static int DC_GCL_ARCHIVED_ONLY    = 0x01;
     public final static int DC_GCL_NO_SPECIALS      = 0x02;
     public final static int DC_GCL_ADD_ALLDONE_HINT = 0x04;

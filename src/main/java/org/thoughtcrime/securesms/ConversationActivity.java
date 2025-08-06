@@ -442,7 +442,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_show_map).setVisible(false);
     }
 
-    if (!dcChat.canSend() || dcChat.isMailingList() ) {
+    if (!dcChat.isEncrypted() || !dcChat.canSend() || dcChat.isMailingList() ) {
       menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
     }
 
@@ -1610,7 +1610,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   public void initializeContactRequest() {
-    if (!dcChat.isHalfBlocked()) {
+    if (!dcChat.isContactRequest()) {
       messageRequestBottomView.setVisibility(View.GONE);
       return;
     }
@@ -1623,15 +1623,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     });
 
 
-    if (dcChat.isProtectionBroken()) {
-      messageRequestBottomView.setBlockText(R.string.more_info_desktop);
-      String name = dcContext.getContact(recipient.getDcContact().getId()).getDisplayName();
-      messageRequestBottomView.setBlockOnClickListener(v -> DcHelper.showVerificationBrokenDialog(this, name));
-
-      messageRequestBottomView.setQuestion(getString(R.string.chat_protection_broken, name));
-      messageRequestBottomView.setAcceptText(R.string.ok);
-
-    } else if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
+    if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
       // We don't support blocking groups yet, so offer to delete it instead
       messageRequestBottomView.setBlockText(R.string.delete);
       messageRequestBottomView.setBlockOnClickListener(v -> handleDeleteChat());

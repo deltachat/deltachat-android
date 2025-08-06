@@ -152,11 +152,8 @@ public class DcHelper {
     dcContext.setStockTranslation(11, context.getString(R.string.audio));
     dcContext.setStockTranslation(12, context.getString(R.string.file));
     dcContext.setStockTranslation(23, context.getString(R.string.gif));
-    dcContext.setStockTranslation(24, context.getString(R.string.encrypted_message));
     dcContext.setStockTranslation(29, context.getString(R.string.systemmsg_cannot_decrypt));
     dcContext.setStockTranslation(35, context.getString(R.string.contact_verified));
-    dcContext.setStockTranslation(36, context.getString(R.string.contact_not_verified));
-    dcContext.setStockTranslation(37, context.getString(R.string.contact_setup_changed));
     dcContext.setStockTranslation(40, context.getString(R.string.chat_archived_label));
     dcContext.setStockTranslation(60, context.getString(R.string.login_error_cannot_login));
     dcContext.setStockTranslation(66, context.getString(R.string.location));
@@ -190,7 +187,6 @@ public class DcHelper {
     dcContext.setStockTranslation(112, context.getString(R.string.error_x));
     dcContext.setStockTranslation(113, context.getString(R.string.not_supported_by_provider));
     dcContext.setStockTranslation(114, context.getString(R.string.messages));
-    dcContext.setStockTranslation(115, context.getString(R.string.channel));
     dcContext.setStockTranslation(116, context.getString(R.string.part_of_total_used));
     dcContext.setStockTranslation(117, context.getString(R.string.secure_join_started));
     dcContext.setStockTranslation(118, context.getString(R.string.secure_join_replies));
@@ -236,22 +232,15 @@ public class DcHelper {
     // cmp. https://github.com/deltachat/deltachat-android/issues/2187
     dcContext.setStockTranslation(120, context.getString(R.string.qrshow_join_group_hint).replace("\"", ""));
     dcContext.setStockTranslation(121, context.getString(R.string.connectivity_not_connected));
-    dcContext.setStockTranslation(122, context.getString(R.string.aeap_addr_changed));
     dcContext.setStockTranslation(162, context.getString(R.string.multidevice_qr_subtitle));
     dcContext.setStockTranslation(163, context.getString(R.string.multidevice_transfer_done_devicemsg));
-
-    // The next two strings should only be set if the UI actually shows more info when the user clicks on the
-    // DC_INFO_PROTECTION_{EN|DIS}ABLED info message
     dcContext.setStockTranslation(170, context.getString(R.string.chat_protection_enabled_tap_to_learn_more));
-    dcContext.setStockTranslation(171, context.getString(R.string.chat_protection_broken_tap_to_learn_more));
-
     dcContext.setStockTranslation(172, context.getString(R.string.chat_new_group_hint));
     dcContext.setStockTranslation(173, context.getString(R.string.member_x_added));
     dcContext.setStockTranslation(174, context.getString(R.string.invalid_unencrypted_tap_to_learn_more));
     dcContext.setStockTranslation(176, context.getString(R.string.reaction_by_you));
     dcContext.setStockTranslation(177, context.getString(R.string.reaction_by_other));
     dcContext.setStockTranslation(190, context.getString(R.string.secure_join_wait));
-    dcContext.setStockTranslation(192, context.getString(R.string.secure_join_takes_longer));
     dcContext.setStockTranslation(193, context.getString(R.string.donate_device_msg));
   }
 
@@ -464,20 +453,10 @@ public class DcHelper {
       }
   }
 
-  public static void showVerificationBrokenDialog(Context context, String name) {
-    new AlertDialog.Builder(context)
-      .setMessage(context.getString(R.string.chat_protection_broken_explanation, name))
-      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#nocryptanymore"))
-      .setNegativeButton(R.string.qrscan_title, (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
-      .setPositiveButton(R.string.ok, null)
-      .setCancelable(true)
-      .show();
-  }
-
   public static void showProtectionEnabledDialog(Context context) {
     new AlertDialog.Builder(context)
       .setMessage(context.getString(R.string.chat_protection_enabled_explanation))
-      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#e2eeguarantee"))
+      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#e2ee"))
       .setPositiveButton(R.string.ok, null)
       .setCancelable(true)
       .show();

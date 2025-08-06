@@ -315,10 +315,12 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     String profileImagePath;
     String title;
     Uri profileImageUri;
+    boolean enlargeAvatar = true;
     if(chatId!=0) {
       DcChat dcChat = dcContext.getChat(chatId);
       profileImagePath = dcChat.getProfileImage();
       title = dcChat.getName();
+      enlargeAvatar = dcChat.isEncrypted() && !dcChat.isSelfTalk() && !dcChat.isDeviceTalk();
     } else {
       DcContact dcContact = dcContext.getContact(contactId);
       profileImagePath = dcContact.getProfileImage();
@@ -327,7 +329,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     File file = new File(profileImagePath);
 
-    if (file.exists()) {
+    if (enlargeAvatar && file.exists()) {
       profileImageUri = Uri.fromFile(file);
       String type = "image/" + profileImagePath.substring(profileImagePath.lastIndexOf(".") + 1);
 
@@ -388,7 +390,12 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   private void onShare() {
     Intent composeIntent = new Intent();
-    RelayUtil.setSharedContactId(composeIntent, contactId);
+    DcContact dcContact = dcContext.getContact(contactId);
+    if (dcContact.isKeyContact()) {
+      RelayUtil.setSharedContactId(composeIntent, contactId);
+    } else {
+      RelayUtil.setSharedText(composeIntent, dcContact.getAddr());
+    }
     ConversationListRelayingActivity.start(this, composeIntent);
   }
 

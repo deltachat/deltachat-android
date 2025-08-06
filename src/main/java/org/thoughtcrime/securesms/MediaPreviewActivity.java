@@ -359,7 +359,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       finish();
     });
 
-    if(dcChat.canSend() && !dcChat.isSelfTalk() && dcMsg.isOutgoing()) {
+    if(dcChat.isEncrypted() && dcChat.canSend() && !dcChat.isSelfTalk() && dcMsg.isOutgoing()) {
       builder.setNegativeButton(R.string.delete_for_everyone, (d, which) -> {
         Util.runOnAnyBackgroundThread(() -> dcContext.sendDeleteRequest(messageIds));
         finish();

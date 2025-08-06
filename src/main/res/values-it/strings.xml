@@ -255,6 +255,12 @@
     <string name="broadcast_lists">Liste Trasmissioni</string>
     <!-- deprecated -->
     <string name="new_broadcast_list">Nuova Lista Trasmissione</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Canale</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Canali</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Nuovo Canale</string>
     <string name="add_recipients">Aggiungi Destinatari</string>
     <!-- deprecated -->
     <string name="edit_broadcast_list">Modifica Lista Trasmissione</string>
@@ -262,6 +268,13 @@
     <string name="broadcast_list_name">Nome Lista Trasmissione</string>
     <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Per piacere inserisci un nome per la lista trasmissione.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Nome Canale</string>
+    <string name="email">E-Mail</string>
+    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">Nuova E-Mail</string>
+    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <string name="subject">Oggetto</string>
     <string name="menu_send">Invia</string>
     <string name="menu_toggle_keyboard">Attiva/Disattiva Tastiera Emoji</string>
     <string name="menu_edit_group">Modifica Gruppo</string>
@@ -271,6 +284,7 @@
     <string name="menu_unarchive_chat">Ripristina Chat</string>
     <string name="menu_add_attachment">Aggiungi Allegato</string>
     <string name="menu_leave_group">Abbandona Gruppo</string>
+    <string name="menu_leave_channel">Abbandona Canale</string>
     <string name="menu_delete_chat">Elimina Chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Cancella Messaggi</string>
@@ -355,6 +369,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Aggiungi alla Schermata Iniziale</string>
     <string name="donate">Dona</string>
+    <string name="donate_device_msg">❤️ Sembra che Delta Chat ti piaccia!\n\nConsidera una donazione per contribuire a garantire che Delta Chat rimanga gratuita per tutti.\n\nSebbene Delta Chat sia gratuita e open source, lo sviluppo richiede soldi. Aiutaci a mantenere Delta Chat indipendente e a renderla ancora più fantastica in futuro.\n\nhttps://delta.chat/donate</string>
 
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
     <string name="mute_for_eight_hours">Silenzia per 8 ore</string>
@@ -391,6 +406,9 @@
     <string name="videochat_invitation">Invito alla chat video</string>
     <string name="videochat_invitation_body">Sei invitato a una chat video, fai clic %1$s per partecipare.</string>
 
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Sei sicuro di voler uscire?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Eliminare %d chat su tutti i tuoi dispositivi?</item>
         <item quantity="many">Eliminare %d chats su tutti i tuoi dispositivi?</item>
@@ -421,6 +439,8 @@
     <string name="ask_remove_members">Rimuovere %1$s dal gruppo?</string>
     <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Rimuovere %1$s dalla lista di trasmissione?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Rimuovere %1$s dal canale?</string>
     <string name="open_url_confirmation">Vuoi aprire questo collegamento?</string>
 
 
@@ -455,6 +475,8 @@
     <string name="chat_new_one_to_one_hint">Invia un messaggio a %1$s.</string>
     <!-- deprecated -->
     <string name="chat_new_broadcast_hint">In una lista di trasmissione, i destinatari riceveranno i messaggi in una chat di sola lettura con te.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">I canali sono uno strumento uno-a-molti per trasmettere i tuoi messaggi.</string>
     <string name="chat_new_group_hint">Gli altri vedranno questo gruppo solo dopo che avrai inviato un primo messaggio.</string>
     <string name="chat_record_slide_to_cancel">Scorri per annullare</string>
     <string name="chat_record_explain">Tocca e mantieni per registrare un messaggio vocale, rilascia per inviare </string>
@@ -563,7 +585,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Griglia Quadrata</string>
     <string name="send_message">Invia Messaggio</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$s ha cambiato il suo indirizzo da %2$s a %3$s</string>
     <!-- deprecated -->
     <string name="aeap_explanation">Hai cambiato il tuo indirizzo email da %1$s a %2$s.\n\nSe ora invii un messaggio a un gruppo verificato, i contatti sostituiranno automaticamente il vecchio indirizzo con il tuo nuovo indirizzo.\n\nSi consiglia vivamente di impostare il tuo vecchio fornitore email per inoltrare tutte le email al tuo nuovo indirizzo. Altrimenti potresti perdere i messaggi di contatti che non hanno ancora ricevuto il tuo nuovo indirizzo.</string>
@@ -921,6 +943,8 @@
     <string name="remove_member_by_you">Hai rimosso il membro %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Membro %1$s rimosso da %2$s.</string>
+    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
+    <string name="group_left_by_you">Sei uscito.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Gruppo lasciato da %1$s.</string>
     <string name="group_image_deleted_by_you">Hai eliminato l\'immagine del gruppo.</string>
@@ -964,11 +988,13 @@
     <string name="ephemeral_timer_weeks_by_you">Hai impostato il timer dei messaggi a scomparsa su %1$s settimane.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Timer messaggi a scomparsa impostato su %1$s settimane da %2$s.</string>
-    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <!-- deprecated -->
     <string name="chat_protection_broken">%1$s ha inviato un messaggio da un altro dispositivo.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">D\'ora in poi i messaggi saranno garantiti crittografati end-to-end.  Tocca per saperne di più.</string>
     <string name="chat_protection_enabled_explanation">Ora è garantito che tutti i messaggi in questa chat siano cifrati end-to-end.\n\nLa crittografia end-to-end mantiene privati i messaggi ​​tra te e i tuoi partner di chat. Nemmeno il server, il fornitore o il trasmettitore di e-mail può leggerli.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s ha inviato un messaggio da un altro dispositivo. Tocca per saperne di più.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">La crittografia end-to-end non può più essere garantita, probabilmente perché %1$s ha reinstallato Delta Chat o inviato un messaggio da un altro dispositivo.\n\nPuoi incontrarlo di persona e scansionare nuovamente il suo Codice QR per ristabilire la crittografia end-to-end garantita.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s richiede la crittografia end-to-end che non è ancora configurata per questa chat. Tocca per saperne di più.</string>
     <string name="invalid_unencrypted_explanation">Per stabilire la crittografia end-to-end, potresti incontrare i contatti di persona e scansionare il loro Codice QR per verificarli.</string>
@@ -1030,13 +1056,16 @@
     <string name="secure_join_wait">Creazione della crittografia end-to-end garantita, per piacere attendere...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Non è ancora possibile stabilire la crittografia end-to-end garantita, ma potresti già inviare un messaggio.</string>
+    <!-- deprecated, was stock string -->
     <string name="secure_join_takes_longer">Il contatto deve essere in linea per proseguire.\n\nQuesto processo continuerà automaticamente in sottofondo.</string>
     <string name="contact_verified">%1$s verificato.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Impossibile stabilire una crittografia end-to-end garantita con %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Verificato da %1$s</string>
     <string name="verified_by_you">Verificato da me</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="verified_by_unknown">Presentato</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Impostazioni modificate per %1$s</string>
     <string name="verified_contact_required_explain">Per garantire la crittografia end-to-end, puoi aggiungere a questo gruppo solo i contatti con un segno di spunta verde.\n\nPuoi incontrare i contatti di persona e scansionare il loro Codice QR per verificarli.</string>
     <string name="mailto_dialog_header_select_chat">Seleziona la chat a cui inviare il messaggio</string>
@@ -1080,7 +1109,7 @@
     <string name="ImageEditorHud_flip">Capovolgi</string>
     <string name="ImageEditorHud_rotate">Ruota</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Messaggio cifrato</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
@@ -1211,6 +1240,9 @@
     <string name="perm_enable_bg_already_done">Hai già autorizzato Delta Chat a ricevere messaggi in secondo piano.\n\nSe i messaggi non arrivano in secondo piano, per piacere controlla anche le impostazioni di sistema.</string>
 
     <!-- device messages for updates -->
+    <string name="update_2_0">Novità?\n\n💯 La crittografia end-to-end è ora affidabile e definitiva. I lucchetti 🔒 sono spariti!\n\n✉️ Le email classiche senza crittografia end-to-end sono contrassegnate dal simbolo di una lettera\n\n😻 Nuova schermata del profilo migliorata per tutti i tuoi contatti\n\n🔲 Nuovo pulsante per l\'accesso rapido alle app utilizzate in una chat\n\n❤️ Dona per aiutarci a rimanere indipendenti e continuare a migliorare: %1$s</string>
+    <!-- deprecated -->
     <string name="update_1_50_android">Novità?\n\n❤️‍🔥 Nuovo selettore di emoji con più emoji\n\n🎮 App in chat migliorate: ricevi notifiche e apri le app supportate nel contesto, es. apri una voce del calendario cliccando direttamente sul messaggio\n\n👍 Ricevi notifiche sulle reazioni ai tuoi messaggi...\n\n🛠️ CORREZIONI e ANCORA DI PIÙ su %1$s</string>
+    <!-- deprecated -->
     <string name="update_switch_profile_placement">ℹ️ Opzione \"Cambia Profilo\" spostata: Tocca l\'immagine del tuo profilo nell\'angolo superiore della schermata principale per aggiungere o cambiare profili 💡</string>
 </resources>

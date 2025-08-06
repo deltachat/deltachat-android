@@ -109,7 +109,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
     try {
       DcContext dcContext = DcHelper.getContext(this);
-      final String deviceMsgLabel = "update_1_50_0_android";
+      final String deviceMsgLabel = "update_2_0_0_android-h";
       if (!dcContext.wasDeviceMsgEverAdded(deviceMsgLabel)) {
         DcMsg msg = null;
         if (!getIntent().getBooleanExtra(FROM_WELCOME, false)) {
@@ -120,7 +120,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
           // Util.copy(inputStream, new FileOutputStream(outputFile));
           // msg.setFile(outputFile, "image/jpeg");
 
-          msg.setText(getString(R.string.update_1_50_android, "https://get.delta.chat/#changelogs"));
+          msg.setText(getString(R.string.update_2_0, "https://delta.chat/donate"));
         }
         dcContext.addDeviceMsg(deviceMsgLabel, msg);
 
@@ -132,19 +132,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         }
         Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, deviceMsgLabel);
       }
-
-      // add info about moved "switch profile" option; added 2024-08, can be removed after ~3 months
-      if (!Prefs.getBooleanPreference(this, "info_about_switch_profile_added", false)) {
-        final DcAccounts dcAccounts = DcHelper.getAccounts(this);
-        if (dcAccounts.getAll().length >= 2) {
-          DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-          msg.setText(getString(R.string.update_switch_profile_placement));
-          dcContext.addDeviceMsg("info_about_switch_profile", msg);
-        }
-        Prefs.setBooleanPreference(this, "info_about_switch_profile_added", true);
-      }
-      // /add info
-
 
       // remove gmail oauth2
       final int serverFlags = dcContext.getConfigInt(CONFIG_SERVER_FLAGS);

@@ -1,6 +1,26 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.10.0
+2025-08
+
+* fix "Archived" item's layout in chat-list
+* don't enlarge "Saved Messages" and "Devices Messages" avatars on click
+* share email address for email contacts instead of vCard
+* open existing encrypted chat when opening a mailto link or clicking an email address in a message bubble
+* update to core 2.10.0
+
+## v2.9.0
+2025-07
+
+* hide contact email addresses in search results
+* disable non-functional message editing and ephemeral messages timer settings in classic email thread chat
+* don't enlarge email chats avatar placeholder
+* improve message date/status footer layout, also in RTL languages
+* display correct text when receiving a "Disappearing messages enabled" system message
+* Update to core 2.9.0
+
+## v2.8.0
+2025-07
 
 * Profiles focus on recognizing contacts
 * See the number of media directly in the profile, no need to tap around
@@ -12,12 +32,14 @@
 * New icon for the QR icon
 * Start rebuilding the experimental broadcast lists
   into proper channels - note that this is work-in-progress
-* Improved separation between unencryted chats/contacts and encrypted ones, avoiding mixing of encrypted and unencrypted messages in the same chat
+* Improved separation between unencrypted chats/contacts and encrypted ones, avoiding mixing of encrypted and unencrypted messages in the same chat
 * Removed padlocks, as encrypted is the default "normal" state. Instead, unencrypted email is marked with a small email / letter  (✉️) icon
 * Classic email chats/threads get a big email / letter icon making it easy to recognize
 * After some time, add a device message asking to donate. Can't wait? Donate today at https://delta.chat/donate
 * Allow to sort profiles up in the profile switcher
-* Update to core 2.1.0
+* Add new option to create unencrypted email thread
+* Green checkmarks are removed where they mostly refer to guaranteed encryption, which is the default now. They are still used for profile's "Introduced by"
+* Update to core 2.8.0
 
 ## v1.58.4
 2025-05

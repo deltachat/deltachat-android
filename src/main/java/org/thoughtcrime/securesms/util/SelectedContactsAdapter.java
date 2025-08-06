@@ -37,16 +37,18 @@ public class SelectedContactsAdapter extends BaseAdapter {
   @Nullable private ItemClickListener            itemClickListener;
   @NonNull  private final List<Integer>          contacts = new LinkedList<>();
   private final boolean isBroadcast;
+  private final boolean isUnencrypted;
   @NonNull  private final DcContext              dcContext;
   @NonNull  private final GlideRequests          glideRequests;
 
   public SelectedContactsAdapter(@NonNull Context context,
                                    @NonNull  GlideRequests glideRequests,
-                                   boolean isBroadcast)
+                                   boolean isBroadcast, boolean isUnencrypted)
   {
     this.context       = context;
     this.glideRequests = glideRequests;
     this.isBroadcast   = isBroadcast;
+    this.isUnencrypted   = isUnencrypted;
     this.dcContext     = DcHelper.getContext(context);
   }
 
@@ -109,10 +111,9 @@ public class SelectedContactsAdapter extends BaseAdapter {
     final int contactId = (int)getItem(position);
     final boolean modifiable = contactId != DC_CONTACT_ID_ADD_MEMBER && contactId != DC_CONTACT_ID_SELF;
     Recipient recipient = null;
-    boolean verified = false;
 
     if(contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
-      name.setText(context.getString(isBroadcast? R.string.add_recipients : R.string.group_add_members));
+      name.setText(context.getString(isBroadcast || isUnencrypted? R.string.add_recipients : R.string.group_add_members));
       name.setTypeface(null, Typeface.BOLD);
       phone.setVisibility(View.GONE);
     } else {
@@ -122,12 +123,10 @@ public class SelectedContactsAdapter extends BaseAdapter {
       name.setTypeface(null, Typeface.NORMAL);
       phone.setText(dcContact.getAddr());
       phone.setVisibility(View.VISIBLE);
-      verified = dcContact.isVerified();
     }
 
     avatar.clear(glideRequests);
     avatar.setAvatar(glideRequests, recipient, false);
-    name.setCompoundDrawablesWithIntrinsicBounds(0, 0, verified? R.drawable.ic_verified : 0, 0);
     delete.setVisibility(modifiable ? View.VISIBLE : View.GONE);
     delete.setColorFilter(DynamicTheme.isDarkTheme(context)? Color.WHITE : Color.BLACK);
     delete.setOnClickListener(view -> {
