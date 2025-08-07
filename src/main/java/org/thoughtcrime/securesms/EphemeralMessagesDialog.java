@@ -107,7 +107,7 @@ public class EphemeralMessagesDialog {
         if (timespan < TimeUnit.DAYS.toSeconds(365)) {
             return 7; // 5 weeks
         }
-        return 8; // 5 weeks
+        return 8; // 1 year
     }
 
 }
