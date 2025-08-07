@@ -16,7 +16,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.annimon.stream.Stream;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 import com.b44t.messenger.rpc.RpcException;
@@ -194,18 +193,17 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   }
 
   private void setQuoteAttachment(@NonNull GlideRequests glideRequests, @NonNull SlideDeck slideDeck) {
-    List<Slide> thumbnailSlides = Stream.of(slideDeck.getSlides()).filter(s -> s.hasImage() || s.hasVideo() || s.hasSticker() || s.isWebxdcDocument() || s.isVcard()).limit(1).toList();
-    List<Slide> audioSlides = Stream.of(slideDeck.getSlides()).filter(s -> s.hasAudio()).limit(1).toList();
-    List<Slide> documentSlides = Stream.of(attachments.getSlides()).filter(Slide::hasDocument).limit(1).toList();
+    List<Slide> slides = slideDeck.getSlides();
+    Slide slide = slides.isEmpty()? null : slides.get(0);
 
     attachmentVideoOverlayView.setVisibility(GONE);
 
-    if (!thumbnailSlides.isEmpty() && thumbnailSlides.get(0).getUri() != null) {
+    if (slide != null && slide.hasQuoteThumbnail()) {
       thumbnailView.setVisibility(VISIBLE);
       attachmentContainerView.setVisibility(GONE);
       dismissView.setBackgroundResource(R.drawable.dismiss_background);
 
-      if (thumbnailSlides.get(0).isWebxdcDocument()) {
+      if (slide.isWebxdcDocument()) {
         try {
           JSONObject info = quotedMsg.getWebxdcInfo();
           byte[] blob = quotedMsg.getWebxdcBlob(info.getString("icon"));
@@ -218,7 +216,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
           Log.e(TAG, "failed to get webxdc icon", e);
           thumbnailView.setVisibility(GONE);
         }
-      } else if (thumbnailSlides.get(0).isVcard()) {
+      } else if (slide.isVcard()) {
         try {
           VcardContact vcardContact = DcHelper.getRpc(getContext()).parseVcard(quotedMsg.getFile()).get(0);
           Recipient recipient = new Recipient(getContext(), vcardContact);
@@ -233,11 +231,11 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
           thumbnailView.setVisibility(GONE);
         }
       } else {
-        Uri thumbnailUri = thumbnailSlides.get(0).getUri();
-        if (thumbnailSlides.get(0).hasVideo()) {
+        Uri thumbnailUri = slide.getUri();
+        if (slide.hasVideo()) {
           attachmentVideoOverlayView.setVisibility(VISIBLE);
-          MediaUtil.createVideoThumbnailIfNeeded(getContext(), thumbnailSlides.get(0).getUri(), thumbnailSlides.get(0).getThumbnailUri(), null);
-          thumbnailUri = thumbnailSlides.get(0).getThumbnailUri();
+          MediaUtil.createVideoThumbnailIfNeeded(getContext(), slide.getUri(), slide.getThumbnailUri(), null);
+          thumbnailUri = slide.getThumbnailUri();
         }
         glideRequests.load(new DecryptableUri(thumbnailUri))
                 .centerCrop()
@@ -245,10 +243,10 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .into(thumbnailView);
       }
-    } else if(!audioSlides.isEmpty()) {
+    } else if(slide != null && slide.hasAudio()) {
       thumbnailView.setVisibility(GONE);
       attachmentContainerView.setVisibility(GONE);
-    } else if (!documentSlides.isEmpty()) {
+    } else if (slide != null && slide.hasDocument()) {
       thumbnailView.setVisibility(GONE);
       attachmentContainerView.setVisibility(VISIBLE);
     } else {
