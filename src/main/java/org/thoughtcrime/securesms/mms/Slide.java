@@ -76,6 +76,11 @@ public abstract class Slide {
     return attachment.getSize();
   }
 
+  /* Return true if this slide has a thumbnail when being quoted, false otherwise */
+  public boolean hasQuoteThumbnail() {
+      return (hasImage() || hasVideo() || hasSticker() || isWebxdcDocument() || isVcard()) && getUri() != null;
+  }
+
   public boolean hasImage() {
     return false;
   }

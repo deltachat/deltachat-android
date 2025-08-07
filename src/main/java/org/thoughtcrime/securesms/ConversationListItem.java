@@ -35,7 +35,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.amulyakhare.textdrawable.TextDrawable;
-import com.annimon.stream.Stream;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -55,7 +54,6 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 public class ConversationListItem extends RelativeLayout
@@ -318,15 +316,12 @@ public class ConversationListItem extends RelativeLayout
 
     String       normalizedValue  = value.toLowerCase(Util.getLocale());
     String       normalizedTest   = highlight.toLowerCase(Util.getLocale());
-    List<String> testTokens;
-    try (Stream<String> stream = Stream.of(normalizedTest.split(" "))) {
-      testTokens = stream.filter(s -> !s.trim().isEmpty()).toList();
-    }
 
     Spannable spanned          = new SpannableString(value);
     int       searchStartIndex = 0;
 
-    for (String token : testTokens) {
+    for (String token : normalizedTest.split(" ")) {
+      if (token.trim().isEmpty()) continue;
       if (searchStartIndex >= spanned.length()) {
         break;
       }

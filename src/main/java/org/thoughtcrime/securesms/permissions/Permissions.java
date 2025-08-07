@@ -21,15 +21,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.annimon.stream.Stream;
-import com.annimon.stream.function.Consumer;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.LRUCache;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 
 import java.lang.ref.WeakReference;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -69,10 +67,6 @@ public class Permissions {
     private Runnable anyDeniedListener;
     private Runnable anyPermanentlyDeniedListener;
     private Runnable anyResultListener;
-
-    private Consumer<List<String>> someGrantedListener;
-    private Consumer<List<String>> someDeniedListener;
-    private Consumer<List<String>> somePermanentlyDeniedListener;
 
     private @DrawableRes int[]  rationalDialogHeader;
     private              String rationaleDialogMessage;
@@ -148,29 +142,13 @@ public class Permissions {
       return this;
     }
 
-    public PermissionsBuilder onSomeGranted(Consumer<List<String>> someGrantedListener) {
-      this.someGrantedListener = someGrantedListener;
-      return this;
-    }
-
-    public PermissionsBuilder onSomeDenied(Consumer<List<String>> someDeniedListener) {
-      this.someDeniedListener = someDeniedListener;
-      return this;
-    }
-
-    public PermissionsBuilder onSomePermanentlyDenied(Consumer<List<String>> somePermanentlyDeniedListener) {
-      this.somePermanentlyDeniedListener = somePermanentlyDeniedListener;
-      return this;
-    }
-
     public void execute() {
       if (alwaysGranted) {
         allGrantedListener.run();
         return;
       }
 
-      PermissionsRequest request = new PermissionsRequest(allGrantedListener, anyDeniedListener, anyPermanentlyDeniedListener, anyResultListener,
-                                                          someGrantedListener, someDeniedListener, somePermanentlyDeniedListener);
+      PermissionsRequest request = new PermissionsRequest(allGrantedListener, anyDeniedListener, anyPermanentlyDeniedListener, anyResultListener);
 
       if (ifNecesary && (permissionObject.hasAll(requestedPermissions) || !condition)) {
         executePreGrantedPermissionsRequest(request);
@@ -183,7 +161,7 @@ public class Permissions {
 
     private void executePreGrantedPermissionsRequest(PermissionsRequest request) {
       int[] grantResults = new int[requestedPermissions.length];
-      for (int i=0;i<grantResults.length;i++) grantResults[i] = PackageManager.PERMISSION_GRANTED;
+      Arrays.fill(grantResults, PackageManager.PERMISSION_GRANTED);
 
       request.onResult(requestedPermissions, grantResults, new boolean[requestedPermissions.length]);
     }
@@ -218,7 +196,8 @@ public class Permissions {
       }
 
       String[] permissions  = filterNotGranted(permissionObject.getContext(), requestedPermissions);
-      int[]    grantResults = Stream.of(permissions).mapToInt(permission -> PackageManager.PERMISSION_DENIED).toArray();
+      int[]    grantResults = new int[permissions.length];
+      Arrays.fill(grantResults, PackageManager.PERMISSION_DENIED);
       boolean[] showDialog   = new boolean[permissions.length];
       Arrays.fill(showDialog, true);
 
@@ -236,22 +215,29 @@ public class Permissions {
   }
 
   private static String[] filterNotGranted(@NonNull Context context, String... permissions) {
-    return Stream.of(permissions)
-                 .filter(permission -> ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED)
-                 .toList()
-                 .toArray(new String[0]);
+    List<String> notGranted = new ArrayList<>();
+    for (String permission : permissions) {
+      if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+        notGranted.add(permission);
+      }
+    }
+    return notGranted.toArray(new String[0]);
   }
 
   public static boolean hasAny(@NonNull Context context, String... permissions) {
-    return Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
-        Stream.of(permissions).anyMatch(permission -> ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED);
-
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return true;
+    for (String permission : permissions) {
+      if (ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED) return true;
+    }
+    return  false;
   }
 
   public static boolean hasAll(@NonNull Context context, String... permissions) {
-    return Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
-        Stream.of(permissions).allMatch(permission -> ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED);
-
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return true;
+    for (String permission : permissions) {
+      if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) return false;
+    }
+    return  true;
   }
 
   public static void onRequestPermissionsResult(Fragment fragment, int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
