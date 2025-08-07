@@ -20,6 +20,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class AvatarHelper {
+    /* the maximum width/height an avatar should have */
+    public static final  int AVATAR_SIZE  = 640;
 
     public static void setGroupAvatar(Context context, int chatId, Bitmap bitmap) {
         DcContext dcContext = DcHelper.getContext(context);
