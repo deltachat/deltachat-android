@@ -109,7 +109,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
       if (chatId != 0) {
         DcChat dcChat = dcContext.getChat(chatId);
-        menu.findItem(R.id.menu_clone).setVisible(chatIsMultiUser && !chatIsMailingList && dcChat.isEncrypted());
+        menu.findItem(R.id.menu_clone).setVisible(chatIsMultiUser && !chatIsMailingList);
         if (chatIsDeviceTalk) {
           menu.findItem(R.id.edit_name).setVisible(false);
           menu.findItem(R.id.show_encr_info).setVisible(false);
