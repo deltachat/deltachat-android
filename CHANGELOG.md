@@ -1,5 +1,10 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Allow to clone email chats
+
+
 ## v2.10.0
 2025-08
 
