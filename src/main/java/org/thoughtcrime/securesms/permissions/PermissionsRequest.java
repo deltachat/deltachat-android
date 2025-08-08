@@ -5,8 +5,6 @@ import android.content.pm.PackageManager;
 
 import androidx.annotation.Nullable;
 
-import com.annimon.stream.function.Consumer;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,27 +20,16 @@ class PermissionsRequest {
   private final @Nullable Runnable anyPermanentlyDeniedListener;
   private final @Nullable Runnable anyResultListener;
 
-  private final @Nullable Consumer<List<String>> someGrantedListener;
-  private final @Nullable Consumer<List<String>> someDeniedListener;
-  private final @Nullable Consumer<List<String>> somePermanentlyDeniedListener;
-
   PermissionsRequest(@Nullable Runnable allGrantedListener,
                      @Nullable Runnable anyDeniedListener,
                      @Nullable Runnable anyPermanentlyDeniedListener,
-                     @Nullable Runnable anyResultListener,
-                     @Nullable Consumer<List<String>> someGrantedListener,
-                     @Nullable Consumer<List<String>> someDeniedListener,
-                     @Nullable Consumer<List<String>> somePermanentlyDeniedListener)
+                     @Nullable Runnable anyResultListener)
   {
     this.allGrantedListener            = allGrantedListener;
 
     this.anyDeniedListener             = anyDeniedListener;
     this.anyPermanentlyDeniedListener  = anyPermanentlyDeniedListener;
     this.anyResultListener             = anyResultListener;
-
-    this.someGrantedListener           = someGrantedListener;
-    this.someDeniedListener            = someDeniedListener;
-    this.somePermanentlyDeniedListener = somePermanentlyDeniedListener;
   }
 
   void onResult(String[] permissions, int[] grantResults, boolean[] shouldShowRationaleDialog) {
@@ -56,9 +43,9 @@ class PermissionsRequest {
       } else {
         boolean preRequestShouldShowRationaleDialog = PRE_REQUEST_MAPPING.get(permissions[i]);
 
-        if ((somePermanentlyDeniedListener != null || anyPermanentlyDeniedListener != null) &&
-            !preRequestShouldShowRationaleDialog && !shouldShowRationaleDialog[i])
-        {
+        if (anyPermanentlyDeniedListener != null
+            && !preRequestShouldShowRationaleDialog
+            && !shouldShowRationaleDialog[i]) {
           permanentlyDenied.add(permissions[i]);
         } else {
           denied.add(permissions[i]);
@@ -68,18 +55,14 @@ class PermissionsRequest {
 
     if (allGrantedListener != null && !granted.isEmpty() && (denied.isEmpty() && permanentlyDenied.isEmpty())) {
       allGrantedListener.run();
-    } else if (someGrantedListener != null && !granted.isEmpty()) {
-      someGrantedListener.accept(granted);
     }
 
     if (!denied.isEmpty()) {
       if (anyDeniedListener != null)  anyDeniedListener.run();
-      if (someDeniedListener != null) someDeniedListener.accept(denied);
     }
 
     if (!permanentlyDenied.isEmpty()) {
       if (anyPermanentlyDeniedListener != null)  anyPermanentlyDeniedListener.run();
-      if (somePermanentlyDeniedListener != null) somePermanentlyDeniedListener.accept(permanentlyDenied);
     }
 
     if (anyResultListener != null) {

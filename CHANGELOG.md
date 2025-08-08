@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* improve image quality when setting group avatars
+
 ## v2.10.0
 2025-08
 
