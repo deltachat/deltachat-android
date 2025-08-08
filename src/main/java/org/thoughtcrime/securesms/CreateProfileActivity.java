@@ -35,7 +35,6 @@ import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
-import org.thoughtcrime.securesms.profiles.ProfileMediaConstraints;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -144,14 +143,13 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   }
 
   private void setAvatarView(Uri output) {
-    final ProfileMediaConstraints constraints = new ProfileMediaConstraints();
     GlideApp.with(this)
             .asBitmap()
             .load(output)
             .skipMemoryCache(true)
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .centerCrop()
-            .override(constraints.getImageMaxWidth(this), constraints.getImageMaxHeight(this))
+            .override(AvatarHelper.AVATAR_SIZE, AvatarHelper.AVATAR_SIZE)
         .into(new SimpleTarget<Bitmap>() {
               @Override
               public void onResourceReady(@NonNull Bitmap resource, Transition<? super Bitmap> transition) {
