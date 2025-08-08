@@ -54,7 +54,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   public static final String CLONE_CHAT_EXTRA = "clone_chat";
 
   private static final int PICK_CONTACT = 1;
-  public static final  int AVATAR_SIZE  = 210;
   private static final int REQUEST_CODE_AVATAR = 2759;
 
   private DcContext dcContext;
@@ -376,7 +375,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
             .skipMemoryCache(true)
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .centerCrop()
-            .override(AVATAR_SIZE, AVATAR_SIZE)
+            .override(AvatarHelper.AVATAR_SIZE, AvatarHelper.AVATAR_SIZE)
             .into(new CustomTarget<Bitmap>() {
               @Override
               public void onResourceReady(@NonNull Bitmap resource, Transition<? super Bitmap> transition) {
