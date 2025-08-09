@@ -179,7 +179,7 @@ final class UriGlideRenderer implements Renderer {
                    .diskCacheStrategy(DiskCacheStrategy.NONE)
                    .override(width, height)
                    .centerInside()
-                   .load(decryptable ? new DecryptableStreamUriLoader.DecryptableUri(imageUri) : imageUri);
+                   .load(decryptable && imageUri!=null ? new DecryptableStreamUriLoader.DecryptableUri(imageUri) : imageUri);
   }
 
   @Override

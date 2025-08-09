@@ -237,11 +237,13 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
           MediaUtil.createVideoThumbnailIfNeeded(getContext(), slide.getUri(), slide.getThumbnailUri(), null);
           thumbnailUri = slide.getThumbnailUri();
         }
-        glideRequests.load(new DecryptableUri(thumbnailUri))
-                .centerCrop()
-                .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
-                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                .into(thumbnailView);
+        if (thumbnailUri != null) {
+          glideRequests.load(new DecryptableUri(thumbnailUri))
+                  .centerCrop()
+                  .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
+                  .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                  .into(thumbnailView);
+        }
       }
     } else if(slide != null && slide.hasAudio()) {
       thumbnailView.setVisibility(GONE);
