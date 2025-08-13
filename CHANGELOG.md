@@ -1,5 +1,133 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* add "After 1 year" option to disappearing messages
+* improve image quality when setting group avatars
+* add Estonian translation, update other translations
+* allow to clone email chats
+* fix some small bugs
+* update to core 2.11.0
+
+## v2.10.0
+2025-08
+
+* fix "Archived" item's layout in chat-list
+* don't enlarge "Saved Messages" and "Devices Messages" avatars on click
+* share email address for email contacts instead of vCard
+* open existing encrypted chat when opening a mailto link or clicking an email address in a message bubble
+* update to core 2.10.0
+
+## v2.9.0
+2025-07
+
+* hide contact email addresses in search results
+* disable non-functional message editing and ephemeral messages timer settings in classic email thread chat
+* don't enlarge email chats avatar placeholder
+* improve message date/status footer layout, also in RTL languages
+* display correct text when receiving a "Disappearing messages enabled" system message
+* Update to core 2.9.0
+
+## v2.8.0
+2025-07
+
+* Profiles focus on recognizing contacts
+* See the number of media directly in the profile, no need to tap around
+* Clearer app lists by removing redundant "App" subtitle
+* New button for quick access to the apps sent in current chat
+* New icon for the in-chat apps button
+* Improve hint for app drafts
+* Add Text-To-Speech (TTS) support for in-chat apps
+* New icon for the QR icon
+* Start rebuilding the experimental broadcast lists
+  into proper channels - note that this is work-in-progress
+* Improved separation between unencrypted chats/contacts and encrypted ones, avoiding mixing of encrypted and unencrypted messages in the same chat
+* Removed padlocks, as encrypted is the default "normal" state. Instead, unencrypted email is marked with a small email / letter  (✉️) icon
+* Classic email chats/threads get a big email / letter icon making it easy to recognize
+* After some time, add a device message asking to donate. Can't wait? Donate today at https://delta.chat/donate
+* Allow to sort profiles up in the profile switcher
+* Add new option to create unencrypted email thread
+* Green checkmarks are removed where they mostly refer to guaranteed encryption, which is the default now. They are still used for profile's "Introduced by"
+* Update to core 2.8.0
+
+## v1.58.4
+2025-05
+
+* make in-chat apps properly work when they are not sent yet, in draft mode
+* better avatar quality
+* some more bug fixes and updated translations
+* update to core 1.159.5
+
+## v1.58.3
+2025-05
+
+* fix: webxdc.selfName uses the name otherwise displayed
+* fix potential crash on startup
+* add donation link to app settings
+* update to core 1.159.3
+
+## v1.58.2
+2025-04
+
+* fix draft writing area disappearing for some chats
+* update to core 1.159.2
+
+## v1.58.1
+2025-04
+
+* tapping info messages with contacts open the contact's profile
+* hide superfluous "Show Classic E-mails" advanced setting for chatmail
+* show profile bio/status under name in main settings screen
+* remove mostly non-telling transport addresses when referring to a contact;
+  the contact's profile gives a much better overview
+* Disable AEAP to enable us to overhaul some things - there are big changes underway in this area, which will come in a few months
+* don't display email address in contact list and member list for contacts with green-checkmark
+* avoid crash in Notifications preferences if ringtone title can't be read
+* don't display forwarded messages as "edited" if original message was edited
+* support importing contact from ProtonMail vCard attachments received in chats
+* send encrypted in the experimental broadcast lists feature
+* wait for QR scan (or invite link click) process to complete before allowing to send messages
+* show connectivity status dot when profile is connecting or not connected
+* never send Autocrypt-Gossip in broadcast lists.
+* update to core 1.159.1
+
+## v1.56.1
+2025-03
+
+* ignore click in info-messages from deleted in-chat apps
+* data saving: do not send messages to the server if user is the only member of the chat in single-device usage
+* protect metadata: encrypt message's sent date
+* do not fail to send messages in groups if some encryption keys are missing
+* synchronize contact name changes across devices
+* fix changing group names that was not working in some situations
+* fix: do not show outdated message text in "Message Info" of an edited message
+* some more small bug fixes and updated translations
+* update to core 1.158.0
+
+## v1.56.0
+2025-03
+
+* allow to edit messages
+* allow to delete messages for everyone
+* add mute option "8 hours"
+* add menu option to easily save/unsave selected message
+* improve deletion confirmation for "Device Messages"
+* remove dangerous encryption options
+* always paste as plain text in message draft area
+* some small bug fixes and updated translations
+* update to core 1.157.2
+
+## v1.54.4
+2025-03
+
+* allow better avatar (profile picture) quality
+* remove notifications from chat that was deleted from other device
+* when a chat is deleted, also delete its messages from server
+* avoid freezing when opening the app for the first time after install
+* avoid crash when adding chat shortcut to home screen
+* some small bug fixes and updated translations
+* update to core 1.156.3
+
 ## v1.54.3
 2025-03
 

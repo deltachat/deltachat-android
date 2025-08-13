@@ -1,5 +1,7 @@
 package com.b44t.messenger.rpc;
 
+import android.util.Log;
+
 import com.b44t.messenger.DcJsonrpcInstance;
 import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.google.gson.Gson;
@@ -14,9 +16,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 
 public class Rpc {
+    private final static String TAG = Rpc.class.getSimpleName();
+
     private final Map<Integer, SettableFuture<JsonElement>> requestFutures = new ConcurrentHashMap<>();
     private final DcJsonrpcInstance dcJsonrpcInstance;
     private int requestId = 0;
+    private boolean started = false;
     private final Gson gson = new GsonBuilder().serializeNulls().create();
 
     public Rpc(DcJsonrpcInstance dcJsonrpcInstance) {
@@ -25,9 +30,13 @@ public class Rpc {
 
     private void processResponse() throws JsonSyntaxException {
         String jsonResponse = dcJsonrpcInstance.getNextResponse();
-        Response response = gson.fromJson(jsonResponse, Response.class);
 
-        if (response.id == 0) { // Got JSON-RPC notification/event, ignore
+        Response response = gson.fromJson(jsonResponse, Response.class);
+        if (response == null) {
+            Log.e(TAG, "Error parsing JSON: " + jsonResponse);
+            return;
+        } else if (response.id == 0) {
+            // Got JSON-RPC notification/event, ignore
             return;
         }
 
@@ -37,7 +46,14 @@ public class Rpc {
         }
 
         if (response.error != null) {
-            future.setException(new RpcException(response.error.toString()));
+            String message;
+            try {
+                message = response.error.getAsJsonObject().get("message").getAsString();
+            } catch (Exception e) {
+                Log.e(TAG, "Can't get response error message: " + e);
+                message = response.error.toString();
+            }
+            future.setException(new RpcException(message));
         } else if (response.result != null) {
             future.set(response.result);
         } else {
@@ -46,18 +62,21 @@ public class Rpc {
     }
 
     public void start() {
+        started = true;
         new Thread(() -> {
             while (true) {
                 try {
                     processResponse();
-                } catch (JsonSyntaxException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }, "jsonrpcThread").start();
     }
 
-    public SettableFuture<JsonElement> call(String method, Object... params) {
+    public SettableFuture<JsonElement> call(String method, Object... params) throws RpcException {
+        if (!started) throw new RpcException("RPC not started yet.");
+
         int id;
         synchronized (this) {
             id = ++requestId;
@@ -125,8 +144,32 @@ public class Rpc {
         return getResult("get_account_file_size", accountId).getAsInt();
     }
 
+    public void changeContactName(int accountId, int contactId, String name) throws RpcException {
+        getResult("change_contact_name", accountId, contactId, name);
+    }
+
     public int addAccount() throws RpcException {
         return getResult("add_account").getAsInt();
+    }
+
+    public void addTransportFromQr(int accountId, String qrCode) throws RpcException {
+        getResult("add_transport_from_qr", accountId, qrCode);
+    }
+
+    public void addOrUpdateTransport(int accountId, EnteredLoginParam param) throws RpcException {
+        getResult("add_or_update_transport", accountId, param);
+    }
+
+    public int createBroadcast(int accountId, String chatName) throws RpcException {
+        return gson.fromJson(getResult("create_broadcast", accountId, chatName), Integer.class);
+    }
+
+    public int createGroupChatUnencrypted(int accountId, String chatName) throws RpcException {
+        return gson.fromJson(getResult("create_group_chat_unencrypted", accountId, chatName), Integer.class);
+    }
+
+    public void setAccountsOrder(List<Integer> order) throws RpcException {
+        getResult("set_accounts_order", order);
     }
 
     private static class Request {
@@ -140,6 +183,10 @@ public class Rpc {
             this.params = params;
             this.id = id;
         }
+    }
+
+    public String getMigrationError(int accountId) throws RpcException {
+        return gson.fromJson(getResult("get_migration_error", accountId), String.class);
     }
 
     private static class Response {

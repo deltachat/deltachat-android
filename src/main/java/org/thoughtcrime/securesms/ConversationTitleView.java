@@ -68,17 +68,6 @@ public class ConversationTitleView extends RelativeLayout {
     title.setText(dcChat.getName());
     String subtitleStr = null;
 
-    // set icons etc.
-    int imgLeft = 0;
-    int imgRight = 0;
-
-    if (dcChat.isMuted()) {
-      imgLeft = R.drawable.ic_volume_off_white_18dp;
-    }
-    if (dcChat.isProtected()) {
-      imgRight = R.drawable.ic_verified;
-    }
-
     boolean isOnline = false;
     int[] chatContacts = dcContext.getChatContacts(chatId);
     if (dcChat.isMailingList()) {
@@ -87,7 +76,9 @@ public class ConversationTitleView extends RelativeLayout {
       } else {
         subtitleStr = context.getString(R.string.mailing_list);
       }
-    } else if (dcChat.isBroadcast()) {
+    } else if (dcChat.isInBroadcast()) {
+      subtitleStr = context.getString(R.string.channel);
+    } else if (dcChat.isOutBroadcast()) {
       if (!profileView) {
         subtitleStr = context.getResources().getQuantityString(R.plurals.n_recipients, chatContacts.length, chatContacts.length);
       }
@@ -106,7 +97,7 @@ public class ConversationTitleView extends RelativeLayout {
         DcContact dcContact = dcContext.getContact(chatContacts[0]);
         if (!profileView && dcContact.isBot()) {
           subtitleStr = context.getString(R.string.bot);
-        } else if (profileView) {
+        } else if (profileView || !dcChat.isEncrypted()) {
           subtitleStr = dcContact.getAddr();
         }
         isOnline = dcContact.wasSeenRecently();
@@ -115,7 +106,8 @@ public class ConversationTitleView extends RelativeLayout {
 
     avatar.setAvatar(glideRequests, new Recipient(getContext(), dcChat), false);
     avatar.setSeenRecently(isOnline);
-    title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
+    int imgLeft = dcChat.isMuted()? R.drawable.ic_volume_off_white_18dp : 0;
+    title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, 0, 0);
     if (!TextUtils.isEmpty(subtitleStr)) {
       subtitle.setText(subtitleStr);
       subtitle.setVisibility(View.VISIBLE);
@@ -133,13 +125,7 @@ public class ConversationTitleView extends RelativeLayout {
     avatar.setAvatar(glideRequests, new Recipient(getContext(), contact), false);
     avatar.setSeenRecently(contact.wasSeenRecently());
 
-    int imgRight = 0;
-    if (contact.isVerified()) {
-      imgRight = R.drawable.ic_verified;
-    }
-
     title.setText(contact.getDisplayName());
-    title.setCompoundDrawablesWithIntrinsicBounds(0, 0, imgRight, 0);
     subtitle.setText(contact.getAddr());
     subtitle.setVisibility(View.VISIBLE);
   }
@@ -156,9 +142,5 @@ public class ConversationTitleView extends RelativeLayout {
 
   public void setOnBackClickedListener(@Nullable OnClickListener listener) {
     this.back.setOnClickListener(listener);
-  }
-
-  public void registerForContextMenu(Activity activity) {
-    activity.registerForContextMenu(content);
   }
 }

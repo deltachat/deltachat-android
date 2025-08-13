@@ -39,11 +39,11 @@ public class QrCodeHandler {
     public void handleQrData(String rawString) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         final DcLot qrParsed = dcContext.checkQr(rawString);
-        String nameAndAddress = dcContext.getContact(qrParsed.getId()).getNameNAddr();
+        String name = dcContext.getContact(qrParsed.getId()).getDisplayName();
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ASK_VERIFYCONTACT:
             case DcContext.DC_QR_ASK_VERIFYGROUP:
-                showVerifyContactOrGroup(activity, builder, rawString, qrParsed, nameAndAddress);
+                showVerifyContactOrGroup(activity, builder, rawString, qrParsed, name);
                 break;
 
             case DcContext.DC_QR_FPR_WITHOUT_ADDR:
@@ -51,12 +51,12 @@ public class QrCodeHandler {
                 break;
 
             case DcContext.DC_QR_FPR_MISMATCH:
-                showFingerPrintError(builder, nameAndAddress);
+                showFingerPrintError(builder, name);
                 break;
 
             case DcContext.DC_QR_FPR_OK:
             case DcContext.DC_QR_ADDR:
-                showFingerprintOrQrSuccess(builder, qrParsed, nameAndAddress);
+                showFingerprintOrQrSuccess(builder, qrParsed, name);
                 break;
 
             case DcContext.DC_QR_URL:
@@ -190,9 +190,9 @@ public class QrCodeHandler {
         Toast.makeText(activity, activity.getString(R.string.done), Toast.LENGTH_SHORT).show();
     }
 
-    private void showFingerprintOrQrSuccess(AlertDialog.Builder builder, DcLot qrParsed, String nameAndAddress) {
+    private void showFingerprintOrQrSuccess(AlertDialog.Builder builder, DcLot qrParsed, String name) {
         @StringRes int resId = qrParsed.getState() == DcContext.DC_QR_ADDR ? R.string.ask_start_chat_with : R.string.qrshow_x_verified;
-        builder.setMessage(activity.getString(resId, nameAndAddress));
+        builder.setMessage(activity.getString(resId, name));
         builder.setPositiveButton(R.string.start_chat, (dialogInterface, i) -> {
             int chatId = dcContext.createChatByContactId(qrParsed.getId());
             Intent intent = new Intent(activity, ConversationActivity.class);
@@ -205,8 +205,8 @@ public class QrCodeHandler {
         builder.setNegativeButton(android.R.string.cancel, null);
     }
 
-    private void showFingerPrintError(AlertDialog.Builder builder, String nameAndAddress) {
-        builder.setMessage(activity.getString(R.string.qrscan_fingerprint_mismatch, nameAndAddress));
+    private void showFingerPrintError(AlertDialog.Builder builder, String name) {
+        builder.setMessage(activity.getString(R.string.qrscan_fingerprint_mismatch, name));
         builder.setPositiveButton(android.R.string.ok, null);
     }
 
@@ -219,14 +219,14 @@ public class QrCodeHandler {
         });
     }
 
-    private void showVerifyContactOrGroup(Activity activity, AlertDialog.Builder builder, String qrRawString, DcLot qrParsed, String nameNAddr) {
+    private void showVerifyContactOrGroup(Activity activity, AlertDialog.Builder builder, String qrRawString, DcLot qrParsed, String name) {
         String msg;
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ASK_VERIFYGROUP:
                 msg = activity.getString(R.string.qrscan_ask_join_group, qrParsed.getText1());
                 break;
             default:
-                msg = activity.getString(R.string.ask_start_chat_with, nameNAddr);
+                msg = activity.getString(R.string.ask_start_chat_with, name);
                 break;
         }
         builder.setMessage(msg);

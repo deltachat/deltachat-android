@@ -17,6 +17,7 @@ public class DcContext {
     public final static int DC_EVENT_MSG_READ                    = 2015;
     public final static int DC_EVENT_CHAT_MODIFIED               = 2020;
     public final static int DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED = 2021;
+    public final static int DC_EVENT_CHAT_DELETED                = 2023;
     public final static int DC_EVENT_CONTACTS_CHANGED            = 2030;
     public final static int DC_EVENT_LOCATION_CHANGED            = 2035;
     public final static int DC_EVENT_CONFIGURE_PROGRESS          = 2041;
@@ -38,6 +39,7 @@ public class DcContext {
 
     public final static int DC_GCL_VERIFIED_ONLY    = 1;
     public final static int DC_GCL_ADD_SELF         = 2;
+    public final static int DC_GCL_ADDRESS          = 0x04;
     public final static int DC_GCL_ARCHIVED_ONLY    = 0x01;
     public final static int DC_GCL_NO_SPECIALS      = 0x02;
     public final static int DC_GCL_ADD_ALLDONE_HINT = 0x04;
@@ -117,7 +119,6 @@ public class DcContext {
     public native void         setStockTranslation  (int stockId, String translation);
     public native String       getBlobdir           ();
     public native String       getLastError         ();
-    public native void         configure            ();
     public native void         stopOngoingProcess   ();
     public native int          isConfigured         ();
     public native boolean      open                 (String passphrase);
@@ -142,7 +143,6 @@ public class DcContext {
     public native String       getConnectivityHtml  ();
     public native String       getOauth2Url         (String addr, String redirectUrl);
     public native String       initiateKeyTransfer  ();
-    public native boolean      continueKeyTransfer  (int msg_id, String setup_code);
     public native void         imex                 (int what, String dir);
     public native String       imexHasBackup        (String dir);
     public DcBackupProvider    newBackupProvider    () { return new DcBackupProvider(newBackupProviderCPtr()); }
@@ -193,6 +193,7 @@ public class DcContext {
     public native int          getFreshMsgCount     (int chat_id);
     public native int          estimateDeletionCount(boolean from_server, long seconds);
     public native void         deleteMsgs           (int msg_ids[]);
+    public native void         sendDeleteRequest    (int msg_ids[]);
     public native void         forwardMsgs          (int msg_ids[], int chat_id);
     public native void         saveMsgs             (int msg_ids[]);
     public native boolean      resendMsgs           (int msg_ids[]);

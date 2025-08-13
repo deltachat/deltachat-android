@@ -127,7 +127,6 @@
     <plurals name="n_selected">
         <item quantity="other">%d đã chọn</item>
     </plurals>
-
     <string name="self">Tôi</string>
     <string name="draft">Bản nháp</string>
     <string name="image">Hình ảnh</string>
@@ -144,7 +143,7 @@
     <string name="voice_message">Tin nhắn thoại</string>
     <string name="forwarded">Đã chuyển tiếp</string>
     <string name="forwarded_message">Tin nhắn đã chuyển tiếp</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Được chuyển tiếp bởi %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Tài liệu</string>
@@ -190,13 +189,18 @@
     <string name="menu_new_chat">Trò chuyện mới</string>
     <string name="menu_new_group">Nhóm mới</string>
     <string name="clone_chat">Sao chép cuộc trò chuyện</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Danh sách phát sóng</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Danh sách phát sóng</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Danh sách phát sóng mới</string>
     <string name="add_recipients">Thêm người nhận</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">Chỉnh sửa danh sách phát sóng</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">Tên danh sách phát sóng</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Vui lòng nhập tên cho danh sách phát sóng.</string>
     <string name="menu_send">Gửi</string>
     <string name="menu_toggle_keyboard">Chuyển đổi Bàn phím Emoji</string>
@@ -210,8 +214,6 @@
     <string name="menu_delete_chat">Xóa cuộc trò chuyện</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Xóa cuộc trò chuyện</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Xóa tin nhắn</string>
     <string name="delete_contact">Xóa liên hệ</string>
     <string name="menu_delete_location">Xóa vị trí này?</string>
     <string name="menu_message_details">Chi tiết tin nhắn</string>
@@ -281,9 +283,8 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Thêm vào Màn hình chính</string>
     <string name="donate">Quyên tặng</string>
-
     <string name="mute_for_one_hour">Tắt tiếng trong 1 giờ</string>
-    <string name="mute_for_two_hours">Tắt tiếng trong 2 giờ</string>
+    <string name="mute_for_eight_hours">Tắt tiếng trong 8 giờ</string>
     <string name="mute_for_one_day">Tắt tiếng trong 1 ngày</string>
     <string name="mute_for_seven_days">Tắt tiếng trong 7 ngày</string>
     <string name="mute_forever">Tắt tiếng vĩnh viễn</string>
@@ -315,9 +316,7 @@
     <string name="videochat_invitation">Lời mời trò chuyện video</string>
     <string name="videochat_invitation_body">Bạn được mời tham gia cuộc trò chuyện video, hãy nhấp vào %1$s để tham gia.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Bạn có chắc chắn muốn rời khỏi nhóm này không?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">Xóa %d tin nhắn?</item>
     </plurals>
@@ -328,14 +327,10 @@
     <string name="ask_unblock_contact">Bỏ chặn liên hệ này? Sau đó bạn sẽ có thể nhận tin nhắn từ họ.</string>
     <string name="ask_delete_contacts">Xóa liên hệ?\n\nKhông thể xóa vĩnh viễn các liên hệ đang trò chuyện hoặc khỏi sổ địa chỉ hệ thống.</string>
     <string name="ask_delete_contact">Xóa liên hệ %1$s?\n\nKhông thể xóa vĩnh viễn các liên hệ đang trò chuyện hoặc khỏi sổ địa chỉ hệ thống.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Không thể xóa liên hệ với các cuộc trò chuyện đang diễn ra.</string>
     <string name="ask_start_chat_with">Trò chuyện với %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Xóa %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Loại %1$s khỏi nhóm?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Loại %1$s khỏi danh sách phát sóng?</string>
     <string name="open_url_confirmation">Bạn có muốn mở liên kết này không?</string>
 
@@ -363,6 +358,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Gửi tin nhắn tới %1$s.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">Trong danh sách phát sóng, người nhận sẽ nhận được tin nhắn trong cuộc trò chuyện chỉ đọc với bạn.</string>
     <string name="chat_new_group_hint">Những người khác sẽ chỉ nhìn thấy nhóm này sau khi bạn gửi tin nhắn đầu tiên.</string>
     <string name="chat_record_slide_to_cancel">Trượt để hủy</string>
@@ -461,9 +457,9 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Lưới vuông</string>
     <string name="send_message">Gửi tin nhắn</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$s đã thay đổi địa chỉ của họ từ %2$s thành %3$s</string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">Bạn đã thay đổi địa chỉ email của mình từ %1$s thành %2$s.\n\nNếu bây giờ bạn gửi thư đến một nhóm đã được xác minh, những người liên hệ ở đó sẽ tự động thay thế địa chỉ cũ bằng địa chỉ mới của bạn.\n\nĐiều đó thật tuyệt vời khuyên bạn nên thiết lập nhà cung cấp email cũ để chuyển tiếp tất cả email đến địa chỉ email mới của bạn. Nếu không, bạn có thể bỏ lỡ tin nhắn của những người chưa nhận được địa chỉ mới của bạn.</string>
 
 
@@ -482,7 +478,6 @@
     <string name="multidevice_receiver_scanning_ask">Sao chép tài khoản từ thiết bị kia sang thiết bị này?</string>
     <string name="multidevice_abort">Hủy thiết lập thiết bị thứ hai?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Điều này sẽ làm mất hiệu lực mã QR được sao chép vào clipboard.</string>
-    <string name="multidevice_experimental_hint">(thử nghiệm, yêu cầu phiên bản 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Tài khoản đã được chuyển sang thiết bị thứ hai của bạn.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Đang chuẩn bị tài khoản…</string>
@@ -495,7 +490,7 @@
     <string name="incoming_messages">Tin nhắn đến</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Tin nhắn đi</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Lưu trữ trên %1$s</string>
     <string name="connectivity">Kết nối</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -517,9 +512,7 @@
 
     <string name="scan_invitation_code">Quét mã mời</string>
     <string name="login_title">Đăng nhập</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Đăng nhập vào tài khoản E-Mail của bạn</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Đăng nhập bằng tài khoản e-mail hiện có</string>
     <string name="login_subheader">Đối với các nhà cung cấp e-mail đã biết, cài đặt bổ sung sẽ được thiết lập tự động. Đôi khi IMAP cần được bật trong cài đặt web. Hãy tham khảo nhà cung cấp e-mail hoặc bạn bè của bạn để được trợ giúp.</string>
     <string name="login_no_servers_hint">Không có máy chủ Delta Chat, dữ liệu của bạn vẫn còn trên thiết bị của bạn.</string>
@@ -545,7 +538,7 @@
     <string name="import_backup_title">Khôi phục từ bản sao lưu</string>
     <string name="import_backup_ask">Đã tìm thấy bản sao lưu tại \"%1$s\".\n\nBạn có muốn nhập và sử dụng tất cả dữ liệu cũng như cài đặt từ nó không?</string>
     <string name="import_backup_no_backup_found">Không tìm thấy bản sao lưu nào.\n\nSao chép bản sao lưu vào \"%1$s\" và thử lại. Ngoài ra, hãy nhấn \"Bắt đầu nhắn tin\" để tiếp tục quá trình thiết lập thông thường.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Không thể đăng nhập với tên \"%1$s\". Vui lòng kiểm tra xem địa chỉ e-mail và mật khẩu có đúng không.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Chấp nhận chứng chỉ không hợp lệ</string>
@@ -576,11 +569,10 @@
     <string name="pref_profile_photo">Ảnh hồ sơ</string>
     <string name="pref_blocked_contacts">Liên hệ bị chặn</string>
     <string name="blocked_empty_hint">Các liên hệ bị chặn sẽ xuất hiện ở đây.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Mật khẩu và tài khoản</string>
     <string name="pref_who_can_see_profile_explain">Ảnh hồ sơ, tên và chữ ký của bạn sẽ được gửi cùng với tin nhắn của bạn khi giao tiếp với người dùng khác.</string>
     <string name="pref_your_name">Tên của bạn</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Văn bản chữ ký</string>
     <string name="pref_enter_sends">Nhập khóa gửi</string>
     <string name="pref_enter_sends_explain">Nhấn phím Enter sẽ gửi tin nhắn văn bản</string>
@@ -618,7 +610,6 @@
     <string name="pref_manage_keys">Quản lý khóa</string>
     <string name="pref_use_system_emoji">Sử dụng Emoji hệ thống</string>
     <string name="pref_use_system_emoji_explain">Tắt tính năng hỗ trợ emoji tích hợp của Delta Chat</string>
-    <string name="pref_app_access">Quyền truy cập ứng dụng</string>
     <string name="pref_chats">Trò chuyện</string>
     <string name="pref_in_chat_sounds">Âm thanh trong cuộc trò chuyện</string>
     <string name="pref_view_log">Xem nhật ký</string>
@@ -629,7 +620,7 @@
     <string name="pref_backup">Sao lưu</string>
     <string name="pref_backup_explain">Sao lưu cuộc trò chuyện vào bộ nhớ ngoài</string>
     <string name="pref_backup_export_explain">Bản sao lưu giúp bạn thiết lập cài đặt mới trên thiết bị này hoặc trên thiết bị khác.\n\nBản sao lưu sẽ chứa tất cả tin nhắn, danh bạ và cuộc trò chuyện cũng như thiết lập Autocrypt hai đầu của bạn. Giữ tập tin sao lưu ở nơi an toàn hoặc xóa nó càng sớm càng tốt.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">Xuất %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Xuất tất cả tài khoản %1$d</string>
@@ -650,7 +641,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Nếu bạn thay đổi tùy chọn này, hãy đảm bảo rằng máy chủ và các máy khách khác của bạn được cấu hình tương ứng.\n\nNếu không, mọi thứ có thể không hoạt động.</string>
     <string name="pref_watch_sent_folder">Xem thư mục đã gửi</string>
     <string name="pref_send_copy_to_self">Gửi bản sao cho chính mình</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Bắt buộc khi sử dụng tài khoản này trên nhiều thiết bị.</string>
     <string name="pref_auto_folder_moves">Tự động di chuyển đến Thư mục DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Các cuộc trò chuyện được di chuyển để tránh làm lộn xộn Hộp thư đến</string>
@@ -730,15 +720,6 @@
     <string name="autocrypt_send_asm_button">Gửi tin nhắn thiết lập Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Thiết lập của bạn đã được gửi cho chính bạn. Chuyển sang thiết bị khác và mở thông báo thiết lập. Bạn sẽ được yêu cầu nhập mã thiết lập. Nhập các chữ số sau:</string>
     <string name="autocrypt_prefer_e2ee">Ưu tiên mã hóa đầu cuối</string>
-    <string name="autocrypt_asm_subject">Thông báo thiết lập Autocrypt</string>
-    <string name="autocrypt_asm_general_body">Đây là Thông báo Thiết lập Autocrypt được sử dụng để truyền thiết lập hai đầu của bạn giữa các máy khách.\n\nĐể giải mã và sử dụng thiết lập của bạn, hãy mở tin nhắn trong một ứng dụng khách tương thích với Autocrypt và nhập mã thiết lập được trình bày trên thiết bị tạo.</string>
-    <string name="autocrypt_asm_click_body">Đây là Thông báo Thiết lập Autocrypt được sử dụng để chuyển thiết lập hai đầu của bạn giữa các máy khách.\n\nĐể giải mã và sử dụng thiết lập của bạn, hãy nhấn hoặc nhấp vào thông báo này.</string>
-    <string name="autocrypt_continue_transfer_title">Thông báo thiết lập tự động mã hóa</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">Vui lòng nhập mã thiết lập được hiển thị trên thiết bị kia.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Đã chuyển thiết lập end-to-end. Thiết bị này hiện đã sẵn sàng sử dụng Autocrypt với cùng thiết lập như thiết bị kia.</string>
-    <string name="autocrypt_continue_transfer_retry">Thử lại</string>
-    <string name="autocrypt_bad_setup_code">Mã thiết lập sai. Vui lòng thử lại.\n\nNếu bạn không nhớ mã thiết lập, hãy gửi Tin nhắn thiết lập Autocrypt mới từ thiết bị kia.</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">Không thể giải mã tin nhắn này.\n\n• Bạn chỉ cần trả lời tin nhắn này và yêu cầu người gửi gửi lại tin nhắn là đủ.\n\n• Nếu bạn vừa cài đặt lại Delta Chat thì tốt nhất bạn nên cài đặt lại thiết lập lại Delta Chat ngay bây giờ và chọn "Thêm làm thiết bị thứ hai" hoặc nhập bản sao lưu.</string>
@@ -762,8 +743,6 @@
     <string name="remove_member_by_you">Bạn đã loại bỏ thành viên %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Thành viên %1$s đã bị xóa bởi %2$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Bạn đã rời nhóm.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Nhóm bỏ lại bởi %1$s.</string>
     <string name="group_image_deleted_by_you">Bạn đã xóa hình ảnh nhóm.</string>
@@ -807,11 +786,13 @@
     <string name="ephemeral_timer_weeks_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất thành %1$s tuần.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Bộ hẹn giờ cho tin nhắn biến mất được %2$s đặt thành %1$s tuần.</string>
-    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <!-- deprecated -->
     <string name="chat_protection_broken">%1$s đã gửi tin nhắn từ một thiết bị khác.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Tin nhắn được đảm bảo sẽ được mã hóa hai đầu kể từ bây giờ. Nhấn để tìm hiểu thêm.</string>
     <string name="chat_protection_enabled_explanation">Hiện tại, chúng tôi đảm bảo rằng tất cả tin nhắn trong cuộc trò chuyện này đều được mã hóa hai đầu.\n\nMã hóa hai đầu giúp giữ tin nhắn giữa bạn và đối tác trò chuyện của bạn ở chế độ riêng tư. Ngay cả nhà cung cấp email của bạn cũng không thể đọc được chúng.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s đã gửi tin nhắn từ một thiết bị khác. Nhấn để tìm hiểu thêm.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">Mã hóa hai đầu không còn được đảm bảo nữa, có thể vì %1$s đã cài đặt lại Delta Chat hoặc đã gửi tin nhắn từ một thiết bị khác.\n\nBạn có thể gặp trực tiếp họ và quét lại mã QR của họ để thiết lập lại tính năng mã hóa hai đầu được đảm bảo kết thúc mã hóa.</string>
     <string name="learn_more">Tìm hiểu thêm</string>
 
@@ -857,23 +838,23 @@
     <string name="qraccount_ask_create_and_login">Tạo địa chỉ email mới trên \"%1$s\" và đăng nhập vào đó?</string>
     <string name="qraccount_ask_create_and_login_another">Tạo địa chỉ email mới trên \"%1$s\" và đăng nhập vào đó?\n\nTài khoản hiện tại của bạn sẽ không bị xóa. Sử dụng mục \"Chuyển tài khoản\" để chuyển đổi giữa các tài khoản của bạn.</string>
     <string name="qraccount_qr_code_cannot_be_used">Mã QR được quét không thể được sử dụng để thiết lập tài khoản mới.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Đăng nhập vào \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Đăng nhập vào \"%1$s\"?\n\nTài khoản hiện tại của bạn sẽ không bị xóa. Sử dụng mục \"Chuyển tài khoản\" để chuyển đổi giữa các tài khoản của bạn.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s đã mời bạn tham gia nhóm này.\n\nĐang chờ thiết bị của %2$s trả lời…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s đã trả lời, đang chờ được thêm vào nhóm…</string>
     <string name="contact_verified">%1$s đã được giới thiệu.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Không thể thiết lập mã hóa đầu cuối được đảm bảo với %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Được giới thiệu bởi %1$s</string>
     <string name="verified_by_you">Được tôi giới thiệu</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Đã thay đổi thiết lập cho %1$s.</string>
     <string name="verified_contact_required_explain">Để đảm bảo mã hóa hai đầu, bạn chỉ có thể thêm những người liên hệ có dấu kiểm màu xanh lục vào nhóm này.\n\nBạn có thể gặp trực tiếp những người liên hệ và quét Mã QR của họ để giới thiệu họ.</string>
-    <string name="copy_qr_data_success">Đã sao chép url QR vào clipboard</string>
     <string name="mailto_dialog_header_select_chat">Chọn trò chuyện để gửi tin nhắn tới</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s đã có tin nhắn nháp, bạn có muốn thay thế nó không?</string>
@@ -897,6 +878,7 @@
     <string name="perm_required_title">Cần có sự cho phép</string>
     <string name="perm_continue">Tiếp tục</string>
     <string name="perm_explain_access_to_camera_denied">Để chụp ảnh hoặc quay video, hãy chuyển tới cài đặt ứng dụng, chọn \"Quyền\" và bật \"Máy ảnh\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Để gửi tin nhắn âm thanh, hãy chuyển tới cài đặt ứng dụng, chọn \"Quyền\" và bật \"Micrô\".</string>
     <string name="perm_explain_access_to_storage_denied">Để nhận hoặc gửi tệp, hãy đi tới cài đặt ứng dụng, chọn \"Quyền\" và bật \"Bộ nhớ\".</string>
     <string name="perm_explain_access_to_location_denied">Để đính kèm một vị trí, hãy đi tới cài đặt ứng dụng, chọn \"Quyền\" và bật \"Vị trí\".</string>
@@ -912,7 +894,7 @@
     <string name="ImageEditorHud_flip">Lật</string>
     <string name="ImageEditorHud_rotate">Xoay</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Tin nhắn được mã hóa</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
@@ -957,7 +939,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Không thể tắt biểu tượng khay vì Delta Chat đã được bắt đầu bằng tùy chọn --giảm-thiểu.</string>
     <string name="no_spellcheck_suggestions_found">Không tìm thấy gợi ý chính tả.</string>
     <string name="show_window">Hiển thị cửa sổ</string>
-    <string name="login_socks5_experimental_warning">Hỗ trợ SOCKS5 hiện đang thử nghiệm. Vui lòng sử dụng có nguy cơ của riêng bạn. Nếu bạn nhập một địa chỉ vào trường e-mail, việc tra cứu DNS sẽ không được chuyển qua SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Tổ hợp phím</string>

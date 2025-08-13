@@ -58,7 +58,7 @@ import com.b44t.messenger.DcMsg;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import org.thoughtcrime.securesms.components.AvatarImageView;
+import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -89,7 +89,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   private ConversationListFragment conversationListFragment;
   public TextView                  title;
-  private AvatarImageView          selfAvatar;
+  private AvatarView               selfAvatar;
   private ImageView                unreadIndicator;
   private SearchFragment           searchFragment;
   private SearchToolbar            searchToolbar;
@@ -109,7 +109,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
     try {
       DcContext dcContext = DcHelper.getContext(this);
-      final String deviceMsgLabel = "update_1_50_0_android";
+      final String deviceMsgLabel = "update_2_0_0_android-h";
       if (!dcContext.wasDeviceMsgEverAdded(deviceMsgLabel)) {
         DcMsg msg = null;
         if (!getIntent().getBooleanExtra(FROM_WELCOME, false)) {
@@ -120,7 +120,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
           // Util.copy(inputStream, new FileOutputStream(outputFile));
           // msg.setFile(outputFile, "image/jpeg");
 
-          msg.setText(getString(R.string.update_1_50_android, "https://get.delta.chat/#changelogs"));
+          msg.setText(getString(R.string.update_2_0, "https://delta.chat/donate"));
         }
         dcContext.addDeviceMsg(deviceMsgLabel, msg);
 
@@ -132,19 +132,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         }
         Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, deviceMsgLabel);
       }
-
-      // add info about moved "switch profile" option; added 2024-08, can be removed after ~3 months
-      if (!Prefs.getBooleanPreference(this, "info_about_switch_profile_added", false)) {
-        final DcAccounts dcAccounts = DcHelper.getAccounts(this);
-        if (dcAccounts.getAll().length >= 2) {
-          DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-          msg.setText(getString(R.string.update_switch_profile_placement));
-          dcContext.addDeviceMsg("info_about_switch_profile", msg);
-        }
-        Prefs.setBooleanPreference(this, "info_about_switch_profile_added", true);
-      }
-      // /add info
-
 
       // remove gmail oauth2
       final int serverFlags = dcContext.getConfigInt(CONFIG_SERVER_FLAGS);
@@ -194,6 +181,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     refresh();
 
     if (BuildConfig.DEBUG) checkNdkArchitecture();
+
+    DcHelper.maybeShowMigrationError(this);
   }
 
   /**
@@ -300,6 +289,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       boolean multiProfile = DcHelper.getAccounts(this).getAll().length > 1;
       String defText = multiProfile? DcHelper.getContext(this).getName() : getString(R.string.app_name);
       title.setText(DcHelper.getConnectivitySummary(this, defText));
+      // refreshTitle is called by ConversationListFragment when connectivity changes so update connectivity dot here
+      selfAvatar.setConnectivity(DcHelper.getContext(this).getConnectivity());
       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
   }
@@ -352,6 +343,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   @Override
   public void onResume() {
     super.onResume();
+    refreshTitle();
     invalidateOptionsMenu();
     DirectShareUtil.triggerRefreshDirectShare(this);
   }
@@ -444,7 +436,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       onBackPressed();
       return true;
     } else if (itemId == R.id.menu_all_media) {
-      startActivity(new Intent(this, ProfileActivity.class));
+      startActivity(new Intent(this, AllMediaActivity.class));
       return true;
     }
 

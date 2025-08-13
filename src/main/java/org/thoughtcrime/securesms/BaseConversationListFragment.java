@@ -333,18 +333,22 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     intent.putExtra(ShareActivity.EXTRA_CHAT_ID, chat.getId());
 
     Recipient recipient = new Recipient(activity, chat);
-    Bitmap avatar = DirectShareUtil.getIconForShortcut(activity, recipient);
-    ShortcutInfoCompat shortcutInfoCompat = new ShortcutInfoCompat.Builder(activity, "chat-" + dcContext.getAccountId() + "-" + chat.getId())
+    Util.runOnAnyBackgroundThread(() -> {
+      Bitmap avatar = DirectShareUtil.getIconForShortcut(activity, recipient);
+      ShortcutInfoCompat shortcutInfoCompat = new ShortcutInfoCompat.Builder(activity, "chat-" + dcContext.getAccountId() + "-" + chat.getId())
         .setShortLabel(chat.getName())
         .setIcon(IconCompat.createWithAdaptiveBitmap(avatar))
         .setIntent(intent)
         .build();
-    if (!ShortcutManagerCompat.requestPinShortcut(activity, shortcutInfoCompat, null)) {
-        Toast.makeText(activity, "ErrAddToHomescreen: requestPinShortcut() failed", Toast.LENGTH_LONG).show();
-    } else if (actionMode != null) {
-      actionMode.finish();
-      actionMode = null;
-    }
+      Util.runOnMain(() -> {
+        if (!ShortcutManagerCompat.requestPinShortcut(activity, shortcutInfoCompat, null)) {
+          Toast.makeText(activity, "ErrAddToHomescreen: requestPinShortcut() failed", Toast.LENGTH_LONG).show();
+        } else if (actionMode != null) {
+          actionMode.finish();
+          actionMode = null;
+        }
+      });
+    });
   }
 
   private void updateActionModeItems(Menu menu) {

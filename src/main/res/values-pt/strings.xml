@@ -109,8 +109,6 @@
     <string name="menu_add_attachment">Juntar anexo</string>
     <string name="menu_leave_group">Deixar grupo</string>
     <string name="menu_delete_chat">Apagar convesa</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Apagar mensagem</string>
     <string name="menu_message_details">Detalhe da mensagem</string>
     <string name="menu_copy_to_clipboard">Copiar para área de transferência</string>
     <string name="menu_forward">Reencaminhar mensagem</string>
@@ -132,7 +130,7 @@
     <string name="menu_advanced">Avançado</string>
     <string name="menu_view_profile">Ver perfil</string>
     <string name="mute_for_one_hour">Calado por 1 hora</string>
-    <string name="mute_for_two_hours">Calado por 2 horas</string>
+    <string name="mute_for_eight_hours">Calado por 8 horas</string>
     <string name="mute_for_one_day">Calado por 1 dia</string>
     <string name="mute_for_seven_days">Calado por 7 dias</string>
     <string name="share_location_for_5_minutes">por 5 min</string>
@@ -141,15 +139,11 @@
     <string name="share_location_for_two_hours">por 2 horas</string>
     <string name="share_location_for_six_hours">por 6 horas</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Tem certeza que deseja deixar este grupo?</string>
     <string name="ask_forward">Reencaminhar mensages para %1$s?</string>
     <string name="ask_export_attachment">Exportar anexo? A exportação de anexos permitirá o seu acesso a qualquer outra aplicação no seu dispositivo.\n\nContinuar?</string>
     <string name="ask_block_contact">Bloquear este contacto? Não receberá mais mensagens deste contacto.</string>
     <string name="ask_unblock_contact">Desbloquear esse contacto? Poderá mais uma vez receber mensagens deste contacto.</string>
     <string name="ask_delete_contacts">Remover contactos? Assim removerá permanentemente os contactos selecionados.\n\nContactos com chats a decorrer e contactos com  endereços do sistema não podem ser removidos permanentemente.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Não é possível excluir contactos com chats a decorrer.</string>
     <string name="ask_start_chat_with">Conversar com %1$s?</string>
     <!-- contact list -->
     <string name="contacts_title">Contactos</string>
@@ -196,7 +190,6 @@
     <string name="all_apps_empty_hint">Apps recebidas ou enviadas em qualquer bate-papo aparecerão aqui.</string>
     <string name="media_preview">Visualização de mídia</string>
     <string name="login_title">Login</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Login no seu servidor</string>
     <string name="login_subheader">Para os provedores de e-mail conhecidos as configurações adicionais são configuradas automaticamente. Por vezes, o IMAP precisa estar activado no frontend da web. Consulte seu provedor de e-mail ou amigos para obter ajuda.</string>
     <string name="login_inbox">Caixa de entrada</string>
@@ -220,7 +213,7 @@
     <string name="import_backup_title">Importar backup</string>
     <string name="import_backup_ask">Backup encontrado em \"%1$s\".\n\nQuer importar e usar todos os dados e respectivas configurações?</string>
     <string name="import_backup_no_backup_found">Nenhum backup encontrado. \n\nCopie o backup para \"%1$s\" e tente novamente. Em alternativa, pressione \"Iniciar mensagem\" para prosseguir com o processo de configuração normal.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Não é possível fazer o login como \"%1$s\". Por favor, verifique se o endereço de email e a palavra-chave estão corretos.</string>
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
@@ -234,7 +227,7 @@
     <string name="pref_blocked_contacts">Bloquear contactos</string>
     <string name="pref_who_can_see_profile_explain">A sua foto e nome de perfil serão mostrados ao lado das suas mensagens ao comunicar com outros utilizadores. As informações já enviadas não podem ser excluídas ou removidas</string>
     <string name="pref_your_name">O seu nome</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Informação do estado</string>
     <string name="pref_enter_sends">Tecla ENTER para enviar</string>
     <string name="pref_enter_sends_explain">Pressionar a tecla ENTER enviará mensagens de texto</string>
@@ -266,7 +259,6 @@
     <string name="pref_manage_keys">Gerir teclas</string>
     <string name="pref_use_system_emoji">Utilizar o emoji do sistema</string>
     <string name="pref_use_system_emoji_explain">Desactivar o suporte integrado de emojis no Delta Chat</string>
-    <string name="pref_app_access">Acesso à App</string>
     <string name="pref_chats">chats</string>
     <string name="pref_in_chat_sounds">Sons na chat</string>
     <string name="pref_view_log">Ver o log</string>
@@ -299,15 +291,6 @@
     <string name="autocrypt_send_asm_button">Enviar mensagem com a definição da encriptação automática</string>
     <string name="autocrypt_send_asm_explain_after">A sua configuração foi-lhe enviada. Entre no outro dispositivo e abra a mensagem de configuração. Deve ser solicitado a fornecer um código de configuração. Digite os seguintes dígitos no prompt.\n\n Assim que estiver concluido, o outro dispositivo estará pronto para usar o Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Preferir encriptação ponta a ponta</string>
-    <string name="autocrypt_asm_subject">Mensagem de configuração do Autocrypt</string>
-    <string name="autocrypt_asm_general_body">Esta é a Mensagem de Configuração de Autocrypt usada para transferir sua configuração de ponta a ponta entre clientes (dispositivos). \n\nPara descriptar e usar, abra a mensagem em um cliente compatível com Autocrypt e insira o código de configuração apresentado no dispositivo de geração.</string>
-    <string name="autocrypt_asm_click_body">Esta é a Mensagem de Configuração de Autocrypt usada para transferir sua configuração de ponta a ponta entre clientes. \n\nPara descriptar e usar sua configuração, toque ou clique nesta mensagem.</string>
-    <string name="autocrypt_continue_transfer_title">Mensagem de configuração do Autocrypt</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">Por favor, insira o código de configuração exibido no outro dispositivo.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Configuração de ponta a ponta transferida. Este dispositivo está agora pronto para usar Autocrypt com a mesma configuração que o outro dispositivo.</string>
-    <string name="autocrypt_continue_transfer_retry">Tentar novamente</string>
-    <string name="autocrypt_bad_setup_code">Código de configuração inválido Por favor, tente novamente.\n\nSe não se lembrar do código de configuração, basta re-enviar outra Mensagem de Configuração de Autocrypt do outro dispositivo.</string>
-
 
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">O nome do grupo mudou de \"%1$s\" para \"%2$s\" por mim.</string>
@@ -346,8 +329,9 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Digitalize para configurar um contato com %1$s</string>
     <string name="contact_verified">%1$s verificado.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Não é possível verificar %1$s</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Configuração alterada para %1$s</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Responder</string>
@@ -362,10 +346,11 @@
     <string name="perm_required_title">Permissão necessária</string>
     <string name="perm_continue">Continuar</string>
     <string name="perm_explain_access_to_camera_denied">O Delta Chat necessita de permissão de acesso à Câmera para tirar fotos ou vídeos, mas o acesso foi negado permanentemente. Por favor, continue no menu de configurações do aplicativo, selecione \"Permissões\" e active \"Câmera\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">O Delta Chat necessita de permissão de  acesso ao microfone para enviar mensagens de áudio, mas foi negado. Por favor, continue com as configurações do aplicativo, selecione \"Permissões\" e active \"Microfone\".</string>
     <string name="perm_explain_access_to_storage_denied">O Delta Chat necessita da permissão de armazenamento para anexar ou exportar fotos, vídeos ou áudio, mas foi negado. Por favor, continue no menu de configurações do aplicativo, seleccione \"Permissões\" e active \"Armazenamento\".</string>
     <string name="perm_explain_access_to_location_denied">O Delta Chat necessita permissão de acesso à localização para anexar um local, mas ele negado. Por favor, continue no menu de configurações do aplicativo, selecione \"Permissões \"e ative \"Localização\".</string>
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Mensagem encriptada</string>
 
     <string name="global_menu_preferences_language_desktop">Escolha o seu idioma...</string>

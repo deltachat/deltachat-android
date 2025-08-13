@@ -4,15 +4,18 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:focusable="true"
-             android:padding="16dp">
+             android:paddingTop="8dp"
+             android:paddingBottom="8dp">
 
     <androidx.appcompat.widget.AppCompatTextView
+              android:padding="16dp"
               android:id="@+id/status_text"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:gravity="start|center_vertical"
               style="@style/Signal.Text.Body"
               android:textColor="?attr/emoji_text_color"
-              android:textColorLink="?attr/emoji_text_color"/>
+              android:textColorLink="?attr/emoji_text_color"
+              android:background="?attr/contact_list_divider"/>
 
 </org.thoughtcrime.securesms.ProfileStatusItem>

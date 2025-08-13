@@ -46,7 +46,9 @@
     <color name="MediaOverview_Media_selected_overlay">#88000000</color>
 
     <color name="dummy_avatar_color">#505050</color>
-    <color name="recently_seen_dot">#34c759</color>
+    <color name="status_dot_online">#34c759</color>
+    <color name="status_dot_connecting">#ffcc00</color>
+    <color name="status_dot_offline">#ff0c16</color>
     <color name="slidearrow_color">#999999</color>
 
     <color name="universal_overlay">#55444444</color>

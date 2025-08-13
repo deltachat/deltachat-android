@@ -45,6 +45,7 @@ import org.thoughtcrime.securesms.preferences.NotificationsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.widgets.ProfilePreference;
 import org.thoughtcrime.securesms.qr.BackupTransferActivity;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 
@@ -65,17 +66,20 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   private static final String PREFERENCE_CATEGORY_MULTIDEVICE    = "preference_category_multidevice";
   private static final String PREFERENCE_CATEGORY_ADVANCED       = "preference_category_advanced";
   private static final String PREFERENCE_CATEGORY_CONNECTIVITY   = "preference_category_connectivity";
+  private static final String PREFERENCE_CATEGORY_DONATE         = "preference_category_donate";
   private static final String PREFERENCE_CATEGORY_HELP           = "preference_category_help";
 
   public static final int REQUEST_CODE_SET_BACKGROUND            = 11;
 
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
+    setContentView(R.layout.activity_application_preferences);
+
     //noinspection ConstantConditions
     this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     if (icicle == null) {
-      initFragment(android.R.id.content, new ApplicationPreferenceFragment());
+      initFragment(R.id.fragment, new ApplicationPreferenceFragment());
     }
   }
 
@@ -87,7 +91,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       showBackupProvider();
       return;
     }
-    Fragment fragment = getSupportFragmentManager().findFragmentById(android.R.id.content);
+    Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment);
     fragment.onActivityResult(requestCode, resultCode, data);
   }
 
@@ -141,6 +145,9 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_MULTIDEVICE));
       this.findPreference(PREFERENCE_CATEGORY_ADVANCED)
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_ADVANCED));
+
+      this.findPreference(PREFERENCE_CATEGORY_DONATE)
+          .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_DONATE));
 
       this.findPreference(PREFERENCE_CATEGORY_HELP)
           .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_HELP));
@@ -241,6 +248,9 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
         case PREFERENCE_CATEGORY_ADVANCED:
           fragment = new AdvancedPreferenceFragment();
           break;
+        case PREFERENCE_CATEGORY_DONATE:
+          IntentUtils.showInBrowser(requireActivity(), "https://delta.chat/donate");
+          break;
         case PREFERENCE_CATEGORY_HELP:
           startActivity(new Intent(getActivity(), LocalHelpActivity.class));
           break;
@@ -254,7 +264,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
 
           FragmentManager     fragmentManager     = getActivity().getSupportFragmentManager();
           FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-          fragmentTransaction.replace(android.R.id.content, fragment);
+          fragmentTransaction.replace(R.id.fragment, fragment);
           fragmentTransaction.addToBackStack(null);
           fragmentTransaction.commit();
         }

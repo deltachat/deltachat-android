@@ -1,0 +1,6 @@
+* neue webxdc APIs: importFiles() und sendToChat()
+* die obere Größengrenze der Anbaugeräte entfernen
+* speichern Verkehr und Speicher: Recodieren Sie große PNG und andere unterstützte Bildformate (große JPEG wurden immer recodiert; Bilder, die als "Datei" gesendet werden, werden noch nicht aufgenommen oder anders geändert)
+* Speicherort speichern: HTML-E-Mails in der Datenbank komprimieren
+* Verbesserung der Gruppenmitgliedschaft Konsistenz
+* viele Fehlerbehebungen

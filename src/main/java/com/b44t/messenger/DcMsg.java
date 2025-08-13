@@ -33,9 +33,9 @@ public class DcMsg {
     public final static int DC_INFO_LOCATION_ONLY             = 9;
     public final static int DC_INFO_EPHEMERAL_TIMER_CHANGED   = 10;
     public final static int DC_INFO_PROTECTION_ENABLED        = 11;
-    public final static int DC_INFO_PROTECTION_DISABLED       = 12;
     public final static int DC_INFO_INVALID_UNENCRYPTED_MAIL  = 13;
     public final static int DC_INFO_WEBXDC_INFO_MESSAGE       = 32;
+    public final static int DC_INFO_CHAT_E2EE                 = 50;
 
     public final static int DC_STATE_UNDEFINED =  0;
     public final static int DC_STATE_IN_FRESH = 10;
@@ -122,6 +122,7 @@ public class DcMsg {
     public native boolean hasLocation        ();
     public native int     getType            ();
     public native int     getInfoType        ();
+    public native int     getInfoContactId   ();
     public native int     getState           ();
     public native int     getDownloadState   ();
     public native int     getChatId          ();
@@ -141,16 +142,16 @@ public class DcMsg {
     public native byte[]  getWebxdcBlob      (String filename);
     public JSONObject     getWebxdcInfo      () {
       try {
-        return new JSONObject(getWebxdcInfoJson());
+        String json = getWebxdcInfoJson();
+        if (json != null && !json.isEmpty()) return new JSONObject(json);
       } catch(Exception e) {
         e.printStackTrace();
-        return new JSONObject();
       }
+      return new JSONObject();
     }
     public native String  getWebxdcHref      ();
     public native boolean isForwarded        ();
     public native boolean isInfo             ();
-    public native boolean isSetupMessage     ();
     public native boolean hasHtml            ();
     public native String  getSetupCodeBegin  ();
     public native String  getVideochatUrl    ();

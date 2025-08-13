@@ -269,11 +269,10 @@ public class ConversationItem extends BaseConversationItem
         R.attr.conversation_item_incoming_bubble_color,
         R.attr.conversation_item_outgoing_bubble_color,
     };
-    final TypedArray attrs      = context.obtainStyledAttributes(attributes);
-
-    incomingBubbleColor = attrs.getColor(0, Color.WHITE);
-    outgoingBubbleColor = attrs.getColor(1, Color.WHITE);
-    attrs.recycle();
+    try (TypedArray attrs = context.obtainStyledAttributes(attributes)) {
+      incomingBubbleColor = attrs.getColor(0, Color.WHITE);
+      outgoingBubbleColor = attrs.getColor(1, Color.WHITE);
+    }
   }
 
   @Override
@@ -390,7 +389,7 @@ public class ConversationItem extends BaseConversationItem
   }
 
   private boolean hasDocument(DcMsg dcMsg) {
-    return dcMsg.getType()==DcMsg.DC_MSG_FILE && !dcMsg.isSetupMessage();
+    return dcMsg.getType()==DcMsg.DC_MSG_FILE;
   }
 
   private void setBodyText(DcMsg messageRecord) {
@@ -399,11 +398,7 @@ public class ConversationItem extends BaseConversationItem
 
     String text = messageRecord.getText();
 
-    if (messageRecord.isSetupMessage()) {
-      bodyText.setText(context.getString(R.string.autocrypt_asm_click_body));
-      bodyText.setVisibility(View.VISIBLE);
-    }
-    else if (text.isEmpty()) {
+    if (text.isEmpty()) {
       bodyText.setVisibility(View.GONE);
     }
     else {
@@ -904,7 +899,7 @@ public class ConversationItem extends BaseConversationItem
             .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                 try {
                   List<Integer> contactIds = rpc.importVcard(dcContext.getAccountId(), path);
-                  if (contactIds.size() > 0) {
+                  if (!contactIds.isEmpty()) {
                     int chatId = dcContext.createChatByContactId(contactIds.get(0));
                     if (chatId != 0) {
                       Intent intent = new Intent(context, ConversationActivity.class);

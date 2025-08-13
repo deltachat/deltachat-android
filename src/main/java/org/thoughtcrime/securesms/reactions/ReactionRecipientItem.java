@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.reactions;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class ReactionRecipientItem extends LinearLayout {
   private TextView        reactionView;
 
   private int             contactId;
+  private String          reaction;
 
   public ReactionRecipientItem(Context context) {
     super(context);
@@ -44,6 +46,7 @@ public class ReactionRecipientItem extends LinearLayout {
 
   public void bind(@NonNull GlideRequests glideRequests, int contactId, String reaction) {
     this.contactId      = contactId;
+    this.reaction       = reaction;
     DcContact dcContact = DcHelper.getContext(getContext()).getContact(contactId);
     Recipient recipient = new Recipient(getContext(), dcContact);
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
@@ -57,5 +60,13 @@ public class ReactionRecipientItem extends LinearLayout {
 
   public int getContactId() {
     return contactId;
+  }
+
+  public String getReaction() {
+    return reaction;
+  }
+
+  public View getReactionView() {
+    return reactionView;
   }
 }

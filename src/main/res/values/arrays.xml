@@ -56,11 +56,12 @@
         <!-- 5 --> <item>@string/autodel_after_1_day</item>
         <!-- 6 --> <item>@string/autodel_after_1_week</item>
         <!-- 7 --> <item>@string/after_5_weeks</item>
+        <!-- 8 --> <item>@string/autodel_after_1_year</item>
     </string-array>
 
     <string-array name="mute_durations">
       <item>@string/mute_for_one_hour</item>
-      <item>@string/mute_for_two_hours</item>
+      <item>@string/mute_for_eight_hours</item>
       <item>@string/mute_for_one_day</item>
       <item>@string/mute_for_seven_days</item>
       <item>@string/mute_forever</item>

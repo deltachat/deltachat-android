@@ -63,7 +63,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
   private final LayoutInflater                li;
   private final ItemClickListener             clickListener;
   private final GlideRequests                 glideRequests;
-  private final Set<String>                   selectedContacts = new HashSet<>(); // TODO: maybe better use contact-id here
+  private final Set<Integer>                  selectedContacts = new HashSet<>();
   private final SparseIntArray                actionModeSelection = new SparseIntArray();
 
   @Override
@@ -268,8 +268,10 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
       itemMultiSelect = false; // the item creates a new contact in the list that will be selected instead
     } else if (id == DcContact.DC_CONTACT_ID_NEW_GROUP) {
       name = context.getString(R.string.menu_new_group);
-    } else if (id == DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST) {
-      name = context.getString(R.string.new_broadcast_list);
+    } else if (id == DcContact.DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP) {
+      name = context.getString(R.string.new_email);
+    } else if (id == DcContact.DC_CONTACT_ID_NEW_BROADCAST) {
+      name = context.getString(R.string.new_channel);
     } else if (id == DcContact.DC_CONTACT_ID_QR_INVITE) {
       name = context.getString(R.string.menu_new_contact);
     } else {
@@ -292,7 +294,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
       enabled = !(dcContact.getId() == DcContact.DC_CONTACT_ID_SELF && itemMultiSelect);
     }
     viewHolder.bind(glideRequests, id, dcContact, name, addr, null, itemMultiSelect, enabled);
-    viewHolder.setChecked(selectedContacts.contains(addr));
+    viewHolder.setChecked(selectedContacts.contains(id));
   }
 
   @Override
@@ -300,7 +302,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
     return VIEW_TYPE_CONTACT;
   }
 
-  public Set<String> getSelectedContacts() {
+  public Set<Integer> getSelectedContacts() {
     return selectedContacts;
   }
 

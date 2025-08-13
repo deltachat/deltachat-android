@@ -67,6 +67,7 @@ public class EphemeralMessagesDialog {
                         case 5:  burnAfter = TimeUnit.DAYS.toSeconds(1);  break;
                         case 6:  burnAfter = TimeUnit.DAYS.toSeconds(7);  break;
                         case 7:  burnAfter = TimeUnit.DAYS.toSeconds(35); break;
+                        case 8:  burnAfter = TimeUnit.DAYS.toSeconds(365); break;
                         default: burnAfter = 0; break;
                     }
                     listener.onTimeSelected(burnAfter);
@@ -103,7 +104,10 @@ public class EphemeralMessagesDialog {
         if (timespan < TimeUnit.DAYS.toSeconds(35)) {
             return 6; // 1 week
         }
-        return 7; // 5 weeks
+        if (timespan < TimeUnit.DAYS.toSeconds(365)) {
+            return 7; // 5 weeks
+        }
+        return 8; // 1 year
     }
 
 }

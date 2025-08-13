@@ -139,7 +139,6 @@
         <item quantity="few">означено: %d</item>
         <item quantity="other">означено: %d</item>
     </plurals>
-
     <string name="self">Ја</string>
     <string name="draft">Нацрт</string>
     <string name="image">Слика</string>
@@ -153,7 +152,7 @@
     <string name="voice_message">Гласовна порука</string>
     <string name="forwarded">Прослеђено</string>
     <string name="forwarded_message">Прослеђена порука</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Проследи %1$s</string>
     <string name="video">Видео</string>
     <string name="documents">Документи</string>
@@ -198,9 +197,11 @@
     <string name="menu_new_contact">Нови контакт</string>
     <string name="menu_new_chat">Ново ћаскање</string>
     <string name="menu_new_group">Нова група</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Листа за емитовање</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Листе за емитовање</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Нова листа за емитовање</string>
     <string name="add_recipients">Додај примаоце</string>
     <string name="menu_send">Пошаљи</string>
@@ -215,8 +216,6 @@
     <string name="menu_delete_chat">Обриши ћаскање</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Обриши ћаскање</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Избришите поруке</string>
     <string name="delete_contact">Избриши контакт</string>
     <string name="menu_delete_location">Избриши овај положај?</string>
     <string name="menu_message_details">Детаљи поруке</string>
@@ -283,7 +282,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Додај на главни екран</string>
     <string name="mute_for_one_hour">Утишај на 1 сат</string>
-    <string name="mute_for_two_hours">Утишај на 2 сата</string>
+    <string name="mute_for_eight_hours">Утишај на 8 сата</string>
     <string name="mute_for_one_day">Утишај на 1 дан</string>
     <string name="mute_for_seven_days">Утишај на 7 дана</string>
     <string name="mute_forever">Утишај заувек</string>
@@ -317,9 +316,7 @@
     <string name="videochat_invitation">Позив за видео ћаскање</string>
     <string name="videochat_invitation_body">Позвани сте у видео ћаскање, кликни %1$sда придружиш.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Да ли заиста желите да напустите ову групу?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Да ли желите да избришите %d поруку?</item>
         <item quantity="few">Да ли желите да избришите %d поруке?</item>
@@ -332,14 +329,10 @@
     <string name="ask_unblock_contact">Да ли желите да деблокирате овај контакт? Биће вам омогућено да опет примате поруке од њих.</string>
     <string name="ask_delete_contacts">Да ли желите да избришете контакте?\n\nКонтакти са ћаскањима у току или из системског адресара се не могу трајно избрисати.</string>
     <string name="ask_delete_contact">Да ли желите да избришете %1$s контакт?\n\nКонтакти са ћаскањима у току или из системског адресара се не могу трајно избрисати.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Немогу ће је избрисати контакте са којима је ћаскање у току.</string>
     <string name="ask_start_chat_with">Да ли желите да ћаскате са %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Да ли желите да избришете %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Да ли желите да уклонитите %1$s из групе?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Да ли желите да уклоните %1$s са листе за емитовање?</string>
     <string name="open_url_confirmation">Да ли желите да отворите ову везу?</string>
 
@@ -458,9 +451,9 @@
     <string name="all_apps_empty_hint">Приватне апликације примљене или послате у било ком ћаскању ће се појавити овде.</string>
     <string name="media_preview">Преглед медијума</string>
     <string name="send_message">Пошаљи поруку</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$sје променио њихову адресу %2$sу %3$s</string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">Ви сте променили вашу имејл адресу %1$sу %2$s.\n\nАко сада пошаљете поруку провереној групи, тамошњи контакти ће аутоматски заменити стару адресу новом.\n\nПрепоручљиво је да подесите свог предходног имејл провајдера да прослеђује све имејл поруке на вашу нову имејл адресу. У супротном бисте могли да пропустите поруке од контаката који још нису добили вашу нову адресу.</string>
 
 
@@ -469,7 +462,7 @@
     <string name="incoming_messages">Долазеће поруке</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Одлазеће поруке</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Складиштење на %1$s</string>
     <string name="connectivity">Повезаност</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -491,9 +484,7 @@
 
     <string name="scan_invitation_code">Скенирај код позива за приступ.</string>
     <string name="login_title">Пријави се</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Пријавите се у ваш налог е-поште</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Пријавите се преко постојећег налога е-поште</string>
     <string name="login_subheader">За познате пружаоце услуге е-поште, додатне поставке се одређују аутоматски. Каткад, морате омогућити ИМАП у поставкама на веб сучељу ваше е-поште.\n\nПосаветујте се са пружаоцем услуге е-поште или пријатељима ако наиђете на проблеме.</string>
     <string name="login_no_servers_hint">Не постоји сервер Делта ћаскања. Апликација користи само сервер ваше е-поште.</string>
@@ -519,7 +510,7 @@
     <string name="import_backup_title">Увези резервну копију</string>
     <string name="import_backup_ask">Резервна копија пронађена у „%1$s“.\n\nЖелите ли да увезете и користите све њене податке и поставке?</string>
     <string name="import_backup_no_backup_found">Нема резервних копија.\n\nКопирајте резервну копију у „%1$s“ и покушајте поново. Ако не желите, тапните „Почни ћаскање“ да бисте почели уобичајени процес поставке.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Не могу да се пријавим као „%1$s“. Проверите да ли су е-адреса и лозинка тачни.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Прихватите и неважеће сертификате</string>
@@ -550,11 +541,10 @@
     <string name="pref_profile_photo">Слика профила</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
     <string name="blocked_empty_hint">Блокирани контакти ће се појавити овде.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Лозинка и налог</string>
     <string name="pref_who_can_see_profile_explain">Слика вашег профила, име и потпис ће бити послан заједно са вашом поруком када комуницирате са другим корисницима.</string>
     <string name="pref_your_name">Ваше име</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Текст потписа</string>
     <string name="pref_enter_sends">Шаљи ЕНТЕР тастером</string>
     <string name="pref_enter_sends_explain">Притиском на ЕНТЕР тастер тексутале поруке ће бити послате</string>
@@ -592,7 +582,6 @@
     <string name="pref_manage_keys">Управљај кључевима</string>
     <string name="pref_use_system_emoji">Користи системски емоџи</string>
     <string name="pref_use_system_emoji_explain">Искључи уграђене Delta Chat-ове емоџије</string>
-    <string name="pref_app_access">Приступ апликацији</string>
     <string name="pref_chats">Ћаскања</string>
     <string name="pref_in_chat_sounds">Звуци ћаскања</string>
     <string name="pref_view_log">Погледај дневник</string>
@@ -620,7 +609,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Ако промените ову опцију, морате проверити да су ваш сервер и ваши други клијенти конфигурисани у складу са тим.\n\nУ супротном апликација можда уопште неће функционисати.</string>
     <string name="pref_watch_sent_folder">Посматрај директоријум са пошиљкама</string>
     <string name="pref_send_copy_to_self">Пошаљи копију поруке себи</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Обавезно када користите овај налог на више уређаја.</string>
     <string name="pref_auto_folder_moves">Аутоматски премести у DeltaChat директоријум</string>
     <string name="pref_auto_folder_moves_explain">Ћаскања се померају да би се избегло затрпавање пријемног сандучета</string>
@@ -696,15 +684,6 @@
     <string name="autocrypt_send_asm_button">Пошаљите поруку поставки за аутошифровање</string>
     <string name="autocrypt_send_asm_explain_after">Ваше подешавање вам је послато. Пређите на други уређај и отворите поруку за подешавање. На другом уређају од се вас очекује да унесете код за подешавање. Унесите следеће цифре:</string>
     <string name="autocrypt_prefer_e2ee">Преферирај с-краја-на-крај шифровање</string>
-    <string name="autocrypt_asm_subject">Порука поставки за аутошфровање</string>
-    <string name="autocrypt_asm_general_body">Ово је порука подешавања аутоматског шифровања која се користи за пренос вашег с-краја-на-крај подешавања између клијената.\n\nДа бисте дешифровали и користили своје подешавање, отворите поруку на клијенту који је компатибилан са аутоматским шифровањем и унесите кôд за подешавање приказан на уређају који га је генерисао.</string>
-    <string name="autocrypt_asm_click_body">Ово је порука о подешавању аутоматског шифровања која се користи за пренос вашег комплетног подешавања између клијената.\n\nДа бисте дешифровали и користили своје подешавање, додирните или кликните на ову поруку.</string>
-    <string name="autocrypt_continue_transfer_title">Порука поставки за аутошфровање</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">Унесите кôд за подешавање који је приказан на другом уређају.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Подешавање с-краја-на-крај је пренето. Овај уређај је сада спреман за коришћење аутоматског шифровања са истим подешавањем као и други уређај.</string>
-    <string name="autocrypt_continue_transfer_retry">Покушај поново</string>
-    <string name="autocrypt_bad_setup_code">Погрешан кôд за подешавање. Покушајте поново.\n\nАко се не сећате кôда за подешавање, пошаљите нову поруку за подешавање аутоматског шифровања са другог уређаја.</string>
-
 
     <string name="systemmsg_unknown_sender_for_chat">Непознати пошиљалац за ово ћаскање. Погледајте „информације“ за више детаља.</string>
     <string name="systemmsg_subject_for_new_contact">Поруке од %1$s</string>
@@ -724,8 +703,6 @@
     <string name="remove_member_by_you">Члан %1$s је уклоњен од мене.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Члан %1$s је уклоњен од стране %2$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Напустили сте групу.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s је напустио групу.</string>
     <string name="group_image_deleted_by_you">Ви сте обрисали слику групе.</string>
@@ -811,21 +788,21 @@
     <string name="qraccount_ask_create_and_login">Направите нову е-адресу на „%1$s“ и приступите јој тамо?</string>
     <string name="qraccount_ask_create_and_login_another">Направите нову е-адресу на „%1$s“ и приступите јој тамо?\n\nВаш постојећи налог неће бити избрисан. Користите „Промени налог“ да пређете са једног налога на други.</string>
     <string name="qraccount_qr_code_cannot_be_used">Очитани бар-кôд не може бити коришћен да подеси нови налог.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Пријави се у „%1$s“?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Пријави се у „%1$s“? Ваш постојећи налог неће бити избрисан. Користите „Промени налог“ опцију да прелазите са једног на други налог.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$sвас је позвао да се придружите групи.\n\nЧекамо да уређај од %2$sодговори...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s је одговорио и чека да буде додат у групу...</string>
     <string name="contact_verified">%1$s потврђен.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Немогуће је проверити %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Проверено од %1$s</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Подешавања су се променила за %1$s.</string>
-    <string name="copy_qr_data_success">Бар-кôд везе је копиран у клипборд</string>
     <string name="mailto_dialog_header_select_chat">Изабери ћаскање у које желите да пошаљете поруку</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s већ има нацрт поруке, да ли желите да је замените?</string>
@@ -844,6 +821,7 @@
     <string name="perm_required_title">Дозвола је потребна</string>
     <string name="perm_continue">Настави</string>
     <string name="perm_explain_access_to_camera_denied">Да бисте снимили фотографије или видео снимке, идите на подешавања апликације, изаберите „Дозволе“ и омогућите „Камеру“.</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Да бисте послали звучне записе, идите на подешавања апликације, изаберите „Дозволе“ и омогућите „Микрофон“.</string>
     <string name="perm_explain_access_to_storage_denied">Да бисте примали или слали датотеке, идите на подешавања апликације, изаберите „Дозволе“ и омогућите „Складиштење“.</string>
     <string name="perm_explain_access_to_location_denied">Да приложите положај, идите у подешавања апликације и изаберите „Дозволе“ и омогућите „Положај/Локацију“.</string>
@@ -857,7 +835,7 @@
     <string name="ImageEditorHud_flip">Окрени</string>
     <string name="ImageEditorHud_rotate">Обрни</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Шифрована порука</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
@@ -902,7 +880,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Иконица на системској касети не може да се онемогући јер је Delta Chat покренут са --minimized опцијом.</string>
     <string name="no_spellcheck_suggestions_found">Нема предлога за исправке правописа.</string>
     <string name="show_window">Прикажи прозор</string>
-    <string name="login_socks5_experimental_warning">SOCKS5 подршка је тренутно у експерименталној фази. Користе је на личну одговорност. Ако унесете е-адресу у поље за е-адресу, следи захтев за ДНС претрагу која неће ићи кроз SOCKS5 тунел.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Комбинације тастера</string>

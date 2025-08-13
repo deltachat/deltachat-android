@@ -119,7 +119,7 @@
     <string name="voice_message">Tale besked</string>
     <string name="forwarded">Videresendt</string>
     <string name="forwarded_message">Videresendt besked</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Videresendt af %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumenter</string>
@@ -166,8 +166,6 @@
     <string name="menu_add_attachment">Tilføj vedhæftning</string>
     <string name="menu_leave_group">Forlad gruppe</string>
     <string name="menu_delete_chat">Slet samtale</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Slet beskeder</string>
     <string name="delete_contact">Slet kontakt</string>
     <string name="menu_delete_location">Slet denne placering?</string>
     <string name="menu_message_details">Beskeddetaljer</string>
@@ -224,7 +222,7 @@
     <string name="ConversationFragment_quoted_message_not_found">Oprindelig besked ikke fundet</string>
     <string name="reply_privately">Svar privat</string>
     <string name="mute_for_one_hour">Dæmp i 1 time</string>
-    <string name="mute_for_two_hours">Dæmp i 2 timer</string>
+    <string name="mute_for_eight_hours">Dæmp i 8 timer</string>
     <string name="mute_for_one_day">Dæmp i 1 dag</string>
     <string name="mute_for_seven_days">Dæmp i 7 dage</string>
     <string name="mute_forever">Stille for altid</string>
@@ -254,9 +252,7 @@
     <string name="videochat_invitation">Videochat-invitation</string>
     <string name="videochat_invitation_body">Du er inviteret til en videochat, klik %1$s for at tilslutte dig.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Forlad denne gruppe?</string>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Slet %d besked?</item>
         <item quantity="other">Slet %d beskeder?</item>
@@ -268,11 +264,7 @@
     <string name="ask_unblock_contact">Fjern blokering af kontakt? Du vil igen kunne modtage beskeder fra denne kontakt.</string>
     <string name="ask_delete_contacts">Slet kontakter? Dette vil slette valgte kontakter permanent.\n\nKontakter med igangværende samtaler og kontakter fra systemets adressebog kan ikke slettes permanent.</string>
     <string name="ask_delete_contact">Slet kontakt %1$s?\n\nKontakter med igangværende samtaler og kontakter fra systemets adressebog kan ikke slettes permanent.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">Kan ikke slette kontakter med igangværende samtaler.</string>
     <string name="ask_start_chat_with">Samtale med %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Slet 1%s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Fjern %1$s fra gruppe?</string>
     <string name="open_url_confirmation">Vil du åbne dette link?</string>
@@ -372,9 +364,7 @@
 
 
     <string name="login_title">Login</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Login til server</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Login med en eksisterende e-mailkonto</string>
     <string name="login_subheader">For kendte e-mailudbydere opsættes yderligere indstillinger automatisk. Nogle gange skal IMAP aktiveres i brugerfladen. Kontakt din e-mailudbyder eller venner for at få hjælp.</string>
     <string name="login_no_servers_hint">Der er ingen Delta Chat server, data forbliver på enhed!</string>
@@ -400,7 +390,7 @@
     <string name="import_backup_title">Importer sikkerhedskopi</string>
     <string name="import_backup_ask">Sikkerhedskopi fundet hos \"%1$s\".\n\nVil du Importere og bruge al data og opsætning fra den?</string>
     <string name="import_backup_no_backup_found">Ingen sikkerhedskopi fundet.\n\nKopier sikkerhedskopi til \"%1$s\" og prøv igen. Alternativt, klik \"Start samtale\" for at følge normal opsætning proces.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Kan ikke logge ind som  \"%1$s\". Kontroller om e-mailadresse og adgangskode er korrekt.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptér ugyldige certifikater</string>
@@ -429,11 +419,10 @@
     <string name="pref_profile_photo">Profilbillede</string>
     <string name="pref_blocked_contacts">Blokerede kontakter</string>
     <string name="blocked_empty_hint">Hvis du blokerer kontakter, bliver de vist her.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Adgangskode og konto</string>
     <string name="pref_who_can_see_profile_explain">Profilbillede og navn vises sammen med beskeder, når der kommunikeres med andre brugere. Allerede sendt information kan ikke slettes eller fjernes.</string>
     <string name="pref_your_name">Dit navn</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Underskrift tekst</string>
     <string name="pref_enter_sends">Enter tast sender</string>
     <string name="pref_enter_sends_explain">Tryk på enter tast vil sende tekst beskeden</string>
@@ -471,7 +460,6 @@
     <string name="pref_manage_keys">Håndtér nøgler</string>
     <string name="pref_use_system_emoji">Brug system emoji</string>
     <string name="pref_use_system_emoji_explain">Deaktiver Delta Chat\'s indbygget emoji understøttelse</string>
-    <string name="pref_app_access">Programadgang</string>
     <string name="pref_chats">Samtaler</string>
     <string name="pref_in_chat_sounds">In-chat-lyde</string>
     <string name="pref_view_log">Visningslog</string>
@@ -557,15 +545,6 @@
     <string name="autocrypt_send_asm_button">Send autocrypt-opsætningsbesked</string>
     <string name="autocrypt_send_asm_explain_after">Opsætning er sendt til dig selv. Skift til den anden enhed og åben opsætning beskeden. Der skulle blive spurgt til opsætning kode. Indtast følgende cifre i prompt.\n\nNår færdig vil den anden enhed være klar til at bruge Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Foretræk end-to-end kryptering</string>
-    <string name="autocrypt_asm_subject">Autocrypt opsætningsbesked</string>
-    <string name="autocrypt_asm_general_body">Dette er Autocrypt opsætning besked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at af kryptere og bruge opsætning åben beskeden i en Autocrypt kompatibel klient og indtast opsæt koden vist på den genererende enhed.</string>
-    <string name="autocrypt_asm_click_body">Dette er Autocrypt opsætning besked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at dekryptere og bruge opsætning, tryk eller klik på denne besked.</string>
-    <string name="autocrypt_continue_transfer_title">Autocrypt-opsætningsbesked</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">Indtast opsætning kode vist på den anden enhed. </string>
-    <string name="autocrypt_continue_transfer_succeeded">Ende-til-ende opsætning overført. Enheden er nu klar til at bruge Autocrypt med samme opsætning som den anden enhed.</string>
-    <string name="autocrypt_continue_transfer_retry">Prøv igen</string>
-    <string name="autocrypt_bad_setup_code">Ugyldig opsætningskode. Prøv igen.\n\nKan opsætningskoden ikke huskes, send blot en anden Autocrypt opsætning besked fra den anden enhed.</string>
-
 
     <string name="systemmsg_unknown_sender_for_chat">Ukent afsender af denne chat. Se \'info\' for flere detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Besked fra %1$s</string>
@@ -652,10 +631,10 @@
     <string name="qraccount_ask_create_and_login_another">Opret ny e-mail adresse på \"%1$s\" og log ind der?\n\nDin eksisterende konto bliver ikke slettet. Brug \"Skift konto\" for at skifte imellem dine konti.</string>
     <string name="qraccount_qr_code_cannot_be_used">Den skannede QR-kode kan ikke bruges til at opsætte en ny konto.</string>
     <string name="contact_verified">%1$s bekræftet.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Kan ikke bekræfte %1$s</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Ændret opsætning for %1$s</string>
-    <string name="copy_qr_data_success">Kopieret QR url til udklipsholder</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Svar</string>
     <string name="notify_new_message">Ny besked</string>
@@ -669,6 +648,7 @@
     <string name="perm_required_title">Tilladelse påkrævet</string>
     <string name="perm_continue">Fortsæt</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat kræver kamera tilladelse for at tage billeder eller video men det er blevet afvist permanent. Fortsæt til program opsætning menu og vælg \"Tilladelser\" og aktivere \"Kamera\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Delta Chat kræver mikrofon tilladelse for at sende lydbeskeder, men den er blevet nægtet permanent. Fortsæt til program indstillinger, vælg \"Tilladelser\" og aktiver \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat kræver lagring tilladelse for at vedhæfte eller eksportere billeder, video eller lyd, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Lagring\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat kræver placering tilladelse for at kunne vedhæfte placering, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Placering\".</string>
@@ -676,7 +656,7 @@
     <string name="ImageEditorHud_draw_anywhere_to_blur">Tegn hvor som helst for at sløre</string>
     <string name="ImageEditorHud_rotate">Roter</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Krypteret besked</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->

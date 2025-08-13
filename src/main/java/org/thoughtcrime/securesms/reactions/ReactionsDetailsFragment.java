@@ -17,6 +17,7 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.rpc.Reactions;
+import com.b44t.messenger.rpc.Rpc;
 import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ProfileActivity;
@@ -114,6 +115,39 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
     requireContext().startActivity(intent);
   }
 
+  private String getSelfReaction(Rpc rpc, int accId) {
+    String result = null;
+    try {
+      final Reactions reactions = rpc.getMsgReactions(accId, msgId);
+      if (reactions != null) {
+        final Map<Integer, String[]> reactionsByContact = reactions.getReactionsByContact();
+        final String [] selfReactions = reactionsByContact.get(DcContact.DC_CONTACT_ID_SELF);
+        if (selfReactions != null && selfReactions.length > 0) {
+          result = selfReactions[0];
+        }
+      }
+    } catch(RpcException e) {
+      e.printStackTrace();
+    }
+    return result;
+  }
+
+  private void sendReaction(final String reaction) {
+    Rpc rpc = DcHelper.getRpc(requireActivity());
+    DcContext dcContext = DcHelper.getContext(requireActivity());
+    int accId = dcContext.getAccountId();
+
+    try {
+      if (reaction == null || reaction.equals(getSelfReaction(rpc, accId))) {
+        rpc.sendReaction(accId, msgId, "");
+      } else {
+        rpc.sendReaction(accId, msgId, reaction);
+      }
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
   private class ListClickListener implements ReactionRecipientsAdapter.ItemClickListener {
 
     @Override
@@ -123,6 +157,12 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
           ReactionsDetailsFragment.this.dismiss();
           openConversation(contactId);
         }
+    }
+
+    @Override
+    public void onReactionClick(ReactionRecipientItem item) {
+      sendReaction(item.getReaction());
+      ReactionsDetailsFragment.this.dismiss();
     }
   }
 

@@ -2,11 +2,8 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ListPreference
-        android:key="pref_show_emails"
-        android:title="@string/pref_show_emails"
-        android:entries="@array/pref_show_emails_entries"
-        android:entryValues="@array/pref_show_emails_values" />
+    <Preference android:key="pref_view_log"
+        android:title="@string/pref_view_log"/>
 
     <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
         android:defaultValue="true"
@@ -16,9 +13,6 @@
 
     <Preference android:key="pref_self_reporting"
         android:title="@string/send_stats_to_devs"/>
-
-    <Preference android:key="pref_view_log"
-        android:title="@string/pref_view_log"/>
 
     <PreferenceCategory android:title="@string/pref_experimental_features">
 
@@ -33,7 +27,7 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_new_broadcast_list"
-            android:title="@string/broadcast_lists"/>
+            android:title="@string/channels"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
@@ -48,7 +42,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/pref_app_access">
+    <PreferenceCategory>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
@@ -70,16 +64,9 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/pref_encryption">
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="true"
-            android:key="pref_prefer_e2ee"
-            android:title="@string/autocrypt_prefer_e2ee"/>
-
-
-        <Preference android:key="pref_manage_keys"
-            android:title="@string/pref_manage_keys"/>
+    <PreferenceCategory
+        android:key="pref_category_encryption"
+        android:title="@string/pref_encryption">
 
         <Preference android:key="pref_send_autocrypt_setup_message"
             android:title="@string/autocrypt_send_asm_title"/>
@@ -93,6 +80,12 @@
 
         <Preference android:key="proxy_settings_button"
             android:title="@string/proxy_settings"/>
+
+        <ListPreference
+            android:key="pref_show_emails"
+            android:title="@string/pref_show_emails"
+            android:entries="@array/pref_show_emails_entries"
+            android:entryValues="@array/pref_show_emails_values" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"

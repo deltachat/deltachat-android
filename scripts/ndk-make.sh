@@ -50,6 +50,14 @@ if test -z "$ANDROID_NDK_ROOT"; then
     exit 1
 fi
 
+# for reproducible build:
+export RUSTFLAGS="-C link-args=-Wl,--build-id=none --remap-path-prefix=$HOME/.cargo= --remap-path-prefix=$(realpath $(dirname $(dirname "$0")))="
+export SOURCE_DATE_EPOCH=1
+# always use the same path to NDK:
+rm -f /tmp/android-ndk-root
+ln -s "$ANDROID_NDK_ROOT" /tmp/android-ndk-root
+ANDROID_NDK_ROOT=/tmp/android-ndk-root
+
 echo Setting CARGO_TARGET environment variables.
 
 if test -z "$NDK_HOST_TAG"; then
@@ -65,7 +73,9 @@ if test -z "$NDK_HOST_TAG"; then
     NDK_HOST_TAG="$KERNEL-$ARCH"
 fi
 
-unset RUSTFLAGS
+if test -z "$CARGO_TARGET_DIR"; then
+    export CARGO_TARGET_DIR=/tmp/deltachat-build
+fi
 
 TOOLCHAIN="$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/$NDK_HOST_TAG"
 export CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER="$TOOLCHAIN/bin/armv7a-linux-androideabi21-clang"
@@ -120,7 +130,7 @@ if test -z $1 || test $1 = armeabi-v7a; then
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
     cargo build $RELEASEFLAG --target armv7-linux-androideabi -p deltachat_ffi
-    cp target/armv7-linux-androideabi/$RELEASE/libdeltachat.a $jnidir/armeabi-v7a
+    cp "$CARGO_TARGET_DIR/armv7-linux-androideabi/$RELEASE/libdeltachat.a" "$jnidir/armeabi-v7a"
 fi
 
 if test -z $1 || test $1 = arm64-v8a; then
@@ -129,7 +139,7 @@ if test -z $1 || test $1 = arm64-v8a; then
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
     cargo build $RELEASEFLAG --target aarch64-linux-android -p deltachat_ffi
-    cp target/aarch64-linux-android/$RELEASE/libdeltachat.a $jnidir/arm64-v8a
+    cp "$CARGO_TARGET_DIR/aarch64-linux-android/$RELEASE/libdeltachat.a" "$jnidir/arm64-v8a"
 fi
 
 if test -z $1 || test $1 = x86; then
@@ -138,7 +148,7 @@ if test -z $1 || test $1 = x86; then
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
     cargo build $RELEASEFLAG --target i686-linux-android -p deltachat_ffi
-    cp target/i686-linux-android/$RELEASE/libdeltachat.a $jnidir/x86
+    cp "$CARGO_TARGET_DIR/i686-linux-android/$RELEASE/libdeltachat.a" "$jnidir/x86"
 fi
 
 if test -z $1 || test $1 = x86_64; then
@@ -147,10 +157,8 @@ if test -z $1 || test $1 = x86_64; then
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
     cargo build $RELEASEFLAG --target x86_64-linux-android -p deltachat_ffi
-    cp target/x86_64-linux-android/$RELEASE/libdeltachat.a $jnidir/x86_64
+    cp "$CARGO_TARGET_DIR/x86_64-linux-android/$RELEASE/libdeltachat.a" "$jnidir/x86_64"
 fi
-
-rm -fr "$TMPLIB"
 
 echo -- ndk-build --
 

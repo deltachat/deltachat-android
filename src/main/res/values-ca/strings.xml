@@ -150,7 +150,6 @@
         <item quantity="one">%d triat</item>
         <item quantity="other">%d seleccionats</item>
     </plurals>
-
     <string name="self">Jo</string>
     <string name="draft">Esborrany</string>
     <string name="image">Imatge</string>
@@ -167,7 +166,7 @@
     <string name="voice_message">Missatge de veu</string>
     <string name="forwarded">Reenviat</string>
     <string name="forwarded_message">Missatge reenviat</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
     <string name="forwarded_by">Reenviat per %1$s</string>
     <string name="video">Vídeo</string>
     <string name="documents">Documents</string>
@@ -228,13 +227,18 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Xateja amb…</string>
     <string name="clone_chat">Clona el xat</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Llista de difusió</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Llistes de difusió</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Llista de difusió nova</string>
     <string name="add_recipients">Afegeix destinataris</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">Edita la llista de difusió</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">Nom de la llista de difusió</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Poseu el nom de la llista de difusió.</string>
     <string name="menu_send">Envia</string>
     <string name="menu_toggle_keyboard">Canvia al teclat d\'emojis</string>
@@ -248,8 +252,6 @@
     <string name="menu_delete_chat">Esborra el xat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Buida el xat</string>
-    <!-- deprecated -->
-    <string name="menu_delete_messages">Esborra els missatges</string>
     <string name="delete_contact">Esborra el contacte</string>
     <string name="menu_delete_location">Voleu esborrar aquesta ubicació?</string>
     <string name="menu_message_details">Informació del missatge</string>
@@ -293,9 +295,9 @@
     <string name="select_chat">Selecciona el xat</string>
     <string name="select_more">Selecciona\'n més</string>
     <string name="menu_edit_name">Edita el nom</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Indiqueu un sobrenom que se us mostrarà en comptes de «%1$s». Deixeu-ho buit per a usar el nom triat pel contacte.</string>
-    <!-- The placeholder will be replaced by the name the contact gave themself (if any) or by an e-mail address. -->
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Sobrenom per a  «%1$s»</string>
     <string name="menu_settings">Preferències</string>
     <string name="menu_advanced">Avançat</string>
@@ -330,9 +332,8 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Afegeix a la pantalla d\'inici</string>
     <string name="donate">Feu un donatiu</string>
-
     <string name="mute_for_one_hour">Silencia 1 hora</string>
-    <string name="mute_for_two_hours">Silencia 2 hores</string>
+    <string name="mute_for_eight_hours">Silencia 8 hores</string>
     <string name="mute_for_one_day">Silencia 1 dia</string>
     <string name="mute_for_seven_days">Silencia 7 dies</string>
     <string name="mute_forever">Sempre silenciat</string>
@@ -365,8 +366,6 @@
     <string name="videochat_invitation">Invitació a un xat de vídeo</string>
     <string name="videochat_invitation_body">Us han convidat a un xat de vídeo, feu clic a %1$s per unir-vos-hi.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Segur que voleu deixar aquest grup?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">¿Esborrar %d xat de tots els teus dispositius?</item>
         <item quantity="other">¿Esborrar %d xats de tots els teus dispositius?</item>
@@ -377,7 +376,7 @@
         <item quantity="one">¿Esborra %d missatge de tots els teus dispositius?</item>
         <item quantity="other">¿Esborra %d missatges de tots els teus dispositius?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
+    <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Vols esborrar %d missatge?</item>
         <item quantity="other">Voleu esborrar %d missatges?</item>
@@ -389,14 +388,10 @@
     <string name="ask_unblock_contact">Voleu desblocar aquest contacte?</string>
     <string name="ask_delete_contacts">Voleu esborrar els contactes?\n\nEls contactes amb xats actius i els que estiguin al vostre directori d\'adreces no es poden eliminar definitivament. </string>
     <string name="ask_delete_contact">Voleu esborrar el contacte %1$s?\n\nEls contactes dels xats actius o de la llibreta d\'adreces del sistema no es poden esborrar permanentment.</string>
-    <!-- deprecated -->
-    <string name="cannot_delete_contacts_in_use">No es poden esborrar els contactes amb xats actius.</string>
     <string name="ask_start_chat_with">Voleu xatejar amb %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_delete_value">Voleu esborrar %s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Voleu eliminar %1$s del grup?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Voleu eliminar %1$s de la llista de difusió?</string>
     <string name="open_url_confirmation">Voleu obrir aquest enllaç?</string>
 
@@ -427,6 +422,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Envia un missatge a %1$s.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">En una llista de difusió, els destinataris rebran missatges en mode de només lectura en un xat amb tu.</string>
     <string name="chat_new_group_hint">Els altres membres només veuran aquest grup després que hi envieu el primer missatge.</string>
     <string name="chat_record_slide_to_cancel">Llisca per cancel·lar</string>
@@ -535,9 +531,9 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Graella quadrada</string>
     <string name="send_message">Envia el missatge</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$s ha canviat la seva adreça de %2$s a %3$s</string>
-    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <!-- deprecated -->
     <string name="aeap_explanation">Heu canviat la vostra adreça de correu electrònic de %1$s a %2$s.\n\nSi ara envieu un missatge a un grup verificat, els contactes del grup canviaran de forma automàtica l\'adreça antiga per la nova.\n\nUs recomanem que configureu el compte antic a fi que us reenvïi els missatges a l\'adreça nova. Si no ho feu, podríeu perdre missatges de contactes que encara no hagin actualitzat la vostra adreça.</string>
 
 
@@ -557,7 +553,6 @@
     <string name="multidevice_receiver_needs_update">El perfil que vols importar prové d\'una versió més recent de Delta Chat.\n\nPer continuar configurant el segon dispositiu, actualitza aquest dispositiu a l\'última versió de Delta Chat.</string>
     <string name="multidevice_abort">Voleu cancel·lar la configuració d\'un segon dispositiu?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Això invalidarà el codi QR copiat al porta-retalls.</string>
-    <string name="multidevice_experimental_hint">(experimental, es requereix la versió 1.36)</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ El perfil s\'ha transferit al segon dispositiu.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">S\'està preparant el perfil...</string>
@@ -570,7 +565,7 @@
     <string name="incoming_messages">Missatges entrants</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Missatges sortints</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">Emmagatzematge a %1$s.</string>
     <string name="connectivity">Connectivitat</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -620,9 +615,7 @@
     <string name="welcome_chat_over_email">Xat segur i descentralitzat</string>
     <string name="scan_invitation_code">Escaneja el Codi d\'Invitació</string>
     <string name="login_title">Identifiqueu-vos</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Identifiqueu-vos al vostre servidor</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Inicia sessió amb un compte de correu electrònic existent</string>
     <string name="login_subheader">Als proveïdors de mail coneguts els paràmetres es configuren automàticament. De vegades l\'IMAP s\'ha d\'activar a la interfície web. Consulta el teu proveïdor de correu electrònic o a un amic perquè t\'ajudi. </string>
     <string name="login_no_servers_hint">No hi ha servidors de Delta Chat: les vostres dades es queden al vostre dispositiu!</string>
@@ -638,7 +631,7 @@
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Seguretat SMTP</string>
     <string name="login_auth_method">Mètode d\'autorització</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the chatmail or email server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Servidor intermediari</string>
     <string name="proxy_use_proxy">Usa un servidor intermediari</string>
     <string name="proxy_add">Afegeix un servidor intermediari</string>
@@ -662,15 +655,16 @@
     <string name="import_backup_title">Importa una còpia de seguretat</string>
     <string name="import_backup_ask">S\'ha trobat una còpia de seguretat a \"%1$s\".\n\nVoleu importar-la i fer-ne servir les dades i els paràmetres de configuració?</string>
     <string name="import_backup_no_backup_found">No s\'han trobat còpies de seguretat.\n\nCopieu la còpia de seguretat a \"%1$s\" i torneu-ho a provar. Com a alternativa, premeu \"Comença a escriure\" per encetar el procés de configuració habitual.</string>
-    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">No es pot iniciar la sessió com a \"%1$s\". Comproveu que l\'adreça electrònica i la contrasenya són correctes.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accepta certificats no vàlids</string>
     <string name="switch_account">Canvia el perfil</string>
     <string name="add_account">Afegeix un compte</string>
-    <string name="profile_tag">Etiqueta privada</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Etiqueta de Perfil</string>
     <string name="profile_tag_hint">p.ex. treball, família</string>
-    <string name="profile_tag_explain">Etiqueteu allò que és visible només per a vós. Això us ajuda a diferenciar els vostres perfils.</string>
+    <string name="profile_tag_explain">Configureu una etiqueta visible només per a vosaltres; ajudant-vos a diferir entre els vostres perfils.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Desplaçat a l\'inici</string>
     <string name="delete_account">Esborra el perfil</string>
@@ -701,11 +695,10 @@
     <string name="pref_profile_photo">Fotografia de perfil</string>
     <string name="pref_blocked_contacts">Contactes bloquejats</string>
     <string name="blocked_empty_hint">Els contactes blocats apareixeran aquí.</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Contrasenya i compte</string>
     <string name="pref_who_can_see_profile_explain">La vostra imatge de perfil, el vostre nom i també la biografia s\'enviaran amb els missatges que envieu als altres usuaris.</string>
     <string name="pref_your_name">El vostre nom</string>
-    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Signatura</string>
     <string name="pref_enter_sends">La tecla «Retorn» envia</string>
     <string name="pref_enter_sends_explain">Els missatges s\'enviaran prement la tecla «Retorn»</string>
@@ -750,7 +743,6 @@
     <string name="pref_use_system_emoji_explain">Desactiva el suport de sèrie per emojis a Delta Chat</string>
     <string name="pref_show_system_contacts">Llegeix la llibreta d\'adreces del sistema</string>
     <string name="pref_show_system_contacts_explain">Ofereix de crear xats amb els contactes de la llibreta d\'adreces. Alguns proveïdors necessiten de configurar abans el xifratge d\'extrem a extrem.</string>
-    <string name="pref_app_access">Accés a l\'aplicació</string>
     <string name="pref_chats">Xats</string>
     <string name="pref_in_chat_sounds">Sons d\'entrada</string>
     <string name="pref_view_log">Mostra el registre</string>
@@ -761,7 +753,7 @@
     <string name="pref_backup">Còpia de seguretat</string>
     <string name="pref_backup_explain">Copia els xats a un magatzem extern</string>
     <string name="pref_backup_export_explain">La còpia de seguretat és útil a l\'hora de reinstal·lar l\'aplicació en aquest dispositiu o en un altre.\n\nLa còpia tindrà tot els missatges, contactes i xats i la configuració d\'extrem a extrem d\'Autocrypt. Conserveu el fitxer de la còpia en un lloc segur o esborreu-lo tan aviat com pugueu.</string>
-    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <!-- the placeholder will be replaced by the profile name -->
     <string name="pref_backup_export_x">Exporta %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exporta tots %1$d perfils</string>
@@ -782,7 +774,6 @@
     <string name="pref_imap_folder_warn_disable_defaults">Si desactiveu aquesta opció, assegureu-vos que el vostre servidor i els altres programes estiguin configurats de la mateixa manera.\n\nAltrament podeu tenir problemes de funcionament.</string>
     <string name="pref_watch_sent_folder">Mostra la safata de sortida</string>
     <string name="pref_send_copy_to_self">Envia\'n una còpia a mi mateix</string>
-    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Imprescindible quan s\'utilitza aquest compte en diversos dispositius.</string>
     <string name="pref_auto_folder_moves">Moure automàticament a la carpeta de Delta Chat</string>
     <string name="pref_auto_folder_moves_explain">Les converses de xat s\'han mogut per no atapeir la safata d’entrada</string>
@@ -841,7 +832,7 @@
     <!-- %1$s will be replaced by an emoji. %2$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %2$s will often not being visible). Eg. 'You reacted 👍 to "Found my suitcase"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer and work as well. -->
     <string name="reaction_by_you">Heu reaccionat amb %1$s a «%2$s»</string>
     <!-- %1$s will be replaced a name. %2$s will be replaced by an emoji. %3$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %3$s will often not being visible). Eg. 'Alice reacted 👍 to "Nice photos"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer work as well. -->
-    <string name="reaction_by_other">%1$sha reaccionat %2$s a «%3$s»</string>
+    <string name="reaction_by_other">%1$s ha reaccionat %2$s a «%3$s»</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Esborra els missatges antics</string>
@@ -874,15 +865,6 @@
     <string name="autocrypt_send_asm_button">Envia el missatge de configuració Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Se us ha enviat la vostra configuració. Canvieu a l\'altre dispositiu i obriu el missatge de configuració. Se us demanarà un codi de configuració. Introduïu els dígits següents a l\'indicador.\n\nUn cop fet, l\'altre dispositiu estarà llest per utilitzar Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Prefereix l\'encriptació d\'extrem a extrem</string>
-    <string name="autocrypt_asm_subject">Missatge de configuració Autocrypt</string>
-    <string name="autocrypt_asm_general_body">Aquest és el missatge de configuració Autocrypt que s’usa per a transferir la vostra configuració d\'extrem a extrem entre dispositius.\n\nPer a desxifrar i usar aquesta configuració, obriu el missatge en un dispositiu compatible amb Autocript i introduïu el codi de configuració que apareix al dispositiu primari.</string>
-    <string name="autocrypt_asm_click_body">Aquest és el missatge de configuració Autocrypt que s’usa per a transferir la vostra configuració d\'extrem a extrem entre clients.\n\nPer a desxifrar i usar la vostra configuració, toqueu o feu clic en aquest missatge.</string>
-    <string name="autocrypt_continue_transfer_title">Missatge de configuració Autocrypt</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">Si us plau introduïu el codi d\'instal·lació que es mostra a l\'altre dispositiu.</string>
-    <string name="autocrypt_continue_transfer_succeeded">S\'ha transferit la configuració d\'extrem a extrem. Aquest dispositiu ja està preparat per a usar Autocrypt amb la mateixa configuració que l’altre dispositiu.</string>
-    <string name="autocrypt_continue_transfer_retry">Torna-ho a provar</string>
-    <string name="autocrypt_bad_setup_code">Codi de configuració incorrecte. Siusplau torneu-ho a provar.\n\nSi no recordeu el codi de configuració Autocrypt, envieu-ne un de nou des de l’altre dispositiu.</string>
-
 
     <!-- system messages -->
     <string name="systemmsg_cannot_decrypt">Aquest missatge no es pot desxifrar.\n\n• Potser pot ajudar de respondre el missatge i demanar a l\'emissor que torni a enviar-lo,\n\n• Si acabeu de reinstal·lar Delta Chat, aleshores és millor de reconfigurar Delta Chat ara i triar «Afegeix un segon dispositiu» o importar una còpia de seguretat.</string>
@@ -906,8 +888,6 @@
     <string name="remove_member_by_you">Heu eliminat el membre %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Membre %1$s eliminat per %2$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Heu abandonat el grup.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$sha abandonat el grup</string>
     <string name="group_image_deleted_by_you">Heu esborrat la imatge de grup.</string>
@@ -951,11 +931,13 @@
     <string name="ephemeral_timer_weeks_by_you">Heu definit el temporitzador dels missatges fonedissos a %1$s setmanes.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s ha definit el temporitzador dels missatges efímers a %1$s setmanes.</string>
-    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <!-- deprecated -->
     <string name="chat_protection_broken">%1$s ha enviat un missatge des d\'un altre dispositiu.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Us garantim que a partir d\'ara els missatges són xifrats d\'extrem a extrem. Toqueu per a obtenir més informació.</string>
     <string name="chat_protection_enabled_explanation">Ara es garanteix que tots els missatges d\'aquest xat són xifrats d\'extrem a extrem.\n\nEl xifratge d\'extrem a extrem manté privats els missatges entre vós i els companys de xat. Ni tan sols el vostre proveïdor de correu electrònic pot llegir-los.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s ha enviat un missatge des d\'un altre dispositiu. Toqueu per a obtenir més informació.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">No es pot garantir el xifrat d\'extrem a extrem, probablement perquè %1$s ha reinstal·lat Delta Chat o ha enviat un missatge des d\'un altre dispositiu.\n\n Podeu trobar-vos físicament amb la persona i tornar a escanejar el seu codi QR per tomar-hi a tenir xifrat d\'extrem a extrem.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">%1$srequereix xifratge d\'extrem a extrem, que encara no s\'ha configurat per a aquest xat. Toqueu per a obtenir més informació.</string>
     <string name="invalid_unencrypted_explanation">Per a establir xifratge d\'extrem a extrem, heu de trobar-vos amb els contactes en persona i escanejar el seu codi QR per a poder afegir-los.</string>
@@ -1006,25 +988,26 @@
     <string name="set_name_and_avatar_explain">Indiqueu un nom que els vostres contactes puguin reconèixer. També podeu establir una imatge de perfil.</string>
     <string name="please_enter_name">Introduïu un nom</string>
     <string name="qraccount_qr_code_cannot_be_used">El codi QR escanejat no es pot usar per a configurar un perfil nou.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Voleu iniciar sessió a «%1$s»?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Voleu iniciar «%1$s»?\n\nNo s\'esborrarà el perfil existent. Useu l\'element «Canvia el perfil» per a canviar entre els vostres perfils.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s us ha convidat a unir-vos a aquest grup.\n\nS\'està esperant el dispositiu de %2$s per a respondre...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s ha respost, espereu per a ser afegit al grup...</string>
     <string name="secure_join_wait">S\'està establint el xifratge d\'extrem a extrem garantit, espereu...</string>
+    <!-- deprecated -->
     <string name="secure_join_wait_timeout">Encara no es pot garantir el xifrat punt-a-punt, però ja podeu enviar un missatge.</string>
     <string name="contact_verified">%1$s verificat.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">No es pot verificar%1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Afegit per %1$s</string>
     <string name="verified_by_you">Afegit per mi</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Configuració canviada per %1$s</string>
     <string name="verified_contact_required_explain">Per a garantir el xifrat extrem a extrem, només podeu afegir a aquest grup contactes que tinguin la marca verda.\n\nPodeu trobar-vos en persona amb els contactes per a escanejar els seus codis QR i poder-los afegir. </string>
-    <string name="copy_qr_data_success">S\'ha copiat l\'URL del codi QR al porta-retalls</string>
     <string name="mailto_dialog_header_select_chat">Trieu el xat on enviar el missatge</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s ja té un missatge d\'esborrany, voleu substituir-lo?</string>
@@ -1050,6 +1033,7 @@
     <string name="perm_required_title">Es requereix permís</string>
     <string name="perm_continue">Continua</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat demana accés a la càmera per poder fer fotos o vídeos, però li ha estat denegat. Sisplau, vés al menú de configuració de l\'app, busca-hi els \"Permisos\" i habilita\'n la \"Càmera\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Delta Chat demana accés al micròfon per poder enviar missatges d\'àudio, però li ha estat denegat. Sisplau, vés al menú de configuració de l\'app, busca-hi els \"Permisos\" i habilita\'n el \"Micròfon\".</string>
     <string name="perm_explain_access_to_storage_denied">Per a rebre o enviar fitxers, aneu a la configuració de l\'aplicació, seleccioneu «Permisos» i activeu «Emmagatzematge».</string>
     <string name="perm_explain_access_to_location_denied">Per a adjuntar la ubicació, aneu a la configuració de l\'aplicació, trieu «Permisos» i activeu la «Ubicació».</string>
@@ -1065,7 +1049,7 @@
     <string name="ImageEditorHud_flip">Capgira</string>
     <string name="ImageEditorHud_rotate">Gira</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Missatge encriptat</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
@@ -1114,7 +1098,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">La icona de la safata no es pot desactivar perquè Delta Chat s\'ha iniciat amb l\'opció --minimized</string>
     <string name="no_spellcheck_suggestions_found">No s\'ha trobat cap suggeriment ortogràfic.</string>
     <string name="show_window">Mostra la finestra</string>
-    <string name="login_socks5_experimental_warning">El suport de SOCKS5 és experimental. Utilitzeu-lo sota la vostra responsabilitat. Si poseu una adreça de correu electrònic en el camp de correu, es produirà una cerca de DNS que no passarà pel túnel SOCKS5.</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Dreceres de teclat</string>
@@ -1196,7 +1179,8 @@
     <string name="perm_enable_bg_reminder_title">Prem aquí per rebre missatges mentre Delta Chat és en segon pla.</string>
     <string name="perm_enable_bg_already_done">Ja heu autoritzat Delta Chat a rebre missatges en segon pla.\n\nSi encara no us arriben els missatge, reviseu els paràmetres de sistema.</string>
 
-    <!-- device messages for updates -->
+    <!-- deprecated -->
     <string name="update_1_50_android">Què hi ha de nou?\n\n❤️‍🔥 Un selector d\'emojis nou amb més emojis\n\n🎮 Aplicacions al xat millorades: rebeu notificacions i obriu les aplicacions suportades segons el context. P. ex. obriu una entrada afegida al calendari directament.\n\n👍 Rebeu notificacions de les reaccions dels vostres missatges\n\n... 🛠️ Correccions i moltes coses més a %1$s</string>
+    <!-- deprecated -->
     <string name="update_switch_profile_placement">ℹ️ S\'ha mogut l\'opció «Canvia el perfil»: toqueu en la vostra imatge de perfil en la cantonada superior de la finestra principal per a afegir o canviar perfils 💡</string>
 </resources>

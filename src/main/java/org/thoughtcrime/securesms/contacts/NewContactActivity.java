@@ -26,6 +26,7 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
 {
 
   public static final String ADDR_EXTRA = "contact_addr";
+  public static final String CONTACT_ID_EXTRA = "contact_id";
 
   private TextInputEditText nameInput;
   private TextInputEditText addrInput;
@@ -81,7 +82,7 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
       }
       if (getCallingActivity() != null) { // called for result
         Intent intent = new Intent();
-        intent.putExtra(ADDR_EXTRA, addr);
+        intent.putExtra(CONTACT_ID_EXTRA, contactId);
         setResult(RESULT_OK, intent);
       } else {
         int chatId = dcContext.createChatByContactId(contactId);

@@ -25,6 +25,11 @@
         android:visible="false"
         app:showAsAction="always"/>
 
+    <item android:id="@+id/menu_all_media"
+        android:title="@string/apps_and_media"
+        android:icon="@drawable/ic_apps_24"
+        app:showAsAction="always" />
+
     <item android:id="@+id/menu_ephemeral_messages"
         android:title="@string/ephemeral_messages" />
 
@@ -34,13 +39,16 @@
     <item android:id="@+id/menu_show_map"
         android:title="@string/tab_map"
         android:icon="@drawable/ic_map_white_24dp"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 
     <item android:title="@string/menu_archive_chat"
         android:id="@+id/menu_archive_chat"/>
 
     <item android:title="@string/menu_more_options">
         <menu>
+            <item android:title="@string/menu_add_attachment"
+                android:id="@+id/menu_add_attachment" />
+
             <item android:id="@+id/menu_leave"
                 android:visible="false"
                 android:title="@string/menu_leave_group"/>

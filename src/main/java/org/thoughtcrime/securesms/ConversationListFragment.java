@@ -80,6 +80,7 @@ public class ConversationListFragment extends BaseConversationListFragment
     DcEventCenter eventCenter = DcHelper.getEventCenter(requireActivity());
     eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
+    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_CHAT_DELETED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
@@ -321,7 +322,10 @@ public class ConversationListFragment extends BaseConversationListFragment
 
   @Override
   public void handleEvent(@NonNull DcEvent event) {
-    if (event.getAccountId() != DcHelper.getContext(requireActivity()).getAccountId()) {
+    final int accId = event.getAccountId();
+    if (event.getId() == DcContext.DC_EVENT_CHAT_DELETED) {
+      DcHelper.getNotificationCenter(requireActivity()).removeNotifications(accId, event.getData1Int());
+    } else if (accId != DcHelper.getContext(requireActivity()).getAccountId()) {
       Activity activity = getActivity();
       if (activity instanceof ConversationListActivity) {
         ((ConversationListActivity) activity).refreshUnreadIndicator();
