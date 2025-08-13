@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.11.0
+2025-08
 
 * add "After 1 year" option to disappearing messages
 * improve image quality when setting group avatars
