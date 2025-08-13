@@ -86,7 +86,7 @@ public abstract class MessageSelectorFragment
       .setCancelable(true)
       .setNeutralButton(android.R.string.cancel, null)
       .setPositiveButton(positiveBtnLabel, (d, which) -> {
-        dcContext.deleteMsgs(messageIds);
+        Util.runOnAnyBackgroundThread(() -> dcContext.deleteMsgs(messageIds));
         if (actionMode != null) actionMode.finish();
       });
 

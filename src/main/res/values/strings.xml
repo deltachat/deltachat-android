@@ -956,6 +956,9 @@
     <string name="ephemeral_timer_1_week_by_you">You set disappearing messages timer to 1 week.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_1_week_by_other">Disappearing messages timer set to 1 week by %1$s.</string>
+    <string name="ephemeral_timer_1_year_by_you">You set disappearing messages timer to 1 year.</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_1_year_by_other">Disappearing messages timer set to 1 year by %1$s.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">You set disappearing messages timer to %1$s minutes.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
