@@ -2,10 +2,11 @@
 
 ## Unreleased
 
-* Allow to clone email chats
+* allow to clone email chats
 * improve image quality when setting group avatars
-* Add Estonian translation, update other translations
-
+* add Estonian translation, update other translations
+* fix some small bugs
+* update to core 2.11.0
 
 ## v2.10.0
 2025-08
