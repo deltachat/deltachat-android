@@ -50,10 +50,10 @@
       <li><a href="#tls">Czy wiadomości oznaczone ikoną poczty są widoczne w internecie?</a></li>
       <li><a href="#message-metadata">W jaki sposób Delta Chat chroni metadane w wiadomościach?</a></li>
       <li><a href="#device-seizure">Jak chronić metadane i kontakty w przypadku przejęcia urządzenia?</a></li>
-      <li><a href="#sealedsender">Does Delta Chat support “Sealed Sender”?</a></li>
+      <li><a href="#sealedsender">Czy Delta Chat obsługuje funkcję „Sealed Sender”?</a></li>
       <li><a href="#pfs">Czy Delta Chat obsługuje funkcję Perfect Forward Secrecy?</a></li>
-      <li><a href="#pqc">Does Delta Chat support Post-Quantum-Cryptography?</a></li>
-      <li><a href="#how-can-i-manually-check-encryption-information">How can I manually check encryption information?</a></li>
+      <li><a href="#pqc">Czy Delta Chat obsługuje kryptografię postkwantową?</a></li>
+      <li><a href="#jak-mogę-ręcznie-sprawdzić-informacje-o-szyfrowaniu">Jak mogę ręcznie sprawdzić informacje o szyfrowaniu?</a></li>
       <li><a href="#importkey">Czy mogę ponownie wykorzystać mój istniejący klucz prywatny?</a></li>
       <li><a href="#security-audits">Czy Delta Chat był niezależnie kontrolowany pod kątem luk w zabezpieczeniach?</a></li>
     </ul>
@@ -782,36 +782,21 @@ nadal będziesz mógł pisać, ale nie będziesz już powiadamiany o żadnych no
         
       </h3>
 
-<p>Both for protecting against metadata-collecting e-mail servers 
-as well as against the threat of device seizure
-we recommend to use a <a href="https://chatmail.at/relays">chatmail relay</a>
-to create chat profiles using random e-mail addresses for transport. 
-Note that Delta Chat apps on all platforms support multiple profiles
-so you can easily use situation-specific profiles next to your “main” profile
-with the knowledge that all their data, along with all metadata, will be deleted.
-Moreover, if a device is seized then chat contacts using short-lived profiles
-can not be identified easily.</p>
+<p>Zarówno w celu ochrony przed serwerami poczty e-mail gromadzącymi metadane, jak i przed zagrożeniem przejęcia urządzenia, zalecamy użycie <a href="https://chatmail.at/relays">przełącznika chatmail</a> do tworzenia profili czatu z losowymi adresami e-mail do przesyłania. Pamiętaj, że aplikacje Delta Chat na wszystkich platformach obsługują wiele kont, dzięki czemu możesz z łatwością korzystać z kont „1-tygodniowych” lub „1-miesięcznych” związanych z konkretnymi działaniami obok konta „głównego”, wiedząc, że wszystkie tymczasowe dane konta wraz ze wszystkimi metadanymi zostaną usunięte. Co więcej, jeśli urządzenie zostanie przejęte, kontakty czatu korzystające z profili krótkotrwałych nie będą mogły zostać łatwo zidentyfikowane.</p>
     
       <h3 id="sealedsender">
         
         
-          Does Delta Chat support “Sealed Sender”? <a href="#sealedsender" class="anchor"></a>
+          Czy Delta Chat obsługuje funkcję „Sealed Sender”? <a href="#sealedsender" class="anchor"></a>
         
         
       </h3>
 
-<p>No, not yet.</p>
+<p>Nie, jeszcze nie.</p>
 
-<p>The Signal messenger introduced <a href="https://signal.org/blog/sealed-sender/">“Sealed Sender” in 2018</a>
-to keep their server infrastructure ignorant of who is sending a message to a set of recipients. 
-It is particularly important because the Signal server knows the mobile number of each account,
-which is usually associated with a passport identity.</p>
+<p>Komunikator Signal wprowadził funkcję <a href="https://signal.org/blog/sealed-sender/">„Sealed Sender”</a> w 2018 roku, aby infrastruktura serwerowa nie wiedziała, kto wysyła wiadomość do grupy odbiorców. Jest to szczególnie ważne, ponieważ serwer Signal zna numer telefonu komórkowego każdego konta, który zazwyczaj jest powiązany z identyfikatorem paszportu.</p>
 
-<p>Even if <a href="https://chatmail.at/relays">chatmail relays</a> 
-do not ask for any private data (including no phone numbers), 
-it might still be worthwhile to protect relational metadata between addresses. 
-We don’t foresee bigger problems in using random throw-away e-mail addresses for sealed sending
-but an implementation has not been agreed as a priority yet.</p>
+<p>Nawet jeśli <a href="https://chatmail.at/relays">przekaźniki chatmail</a> nie proszą o żadne prywatne dane (w tym numery telefonów), warto chronić metadane relacji między adresami. Nie przewidujemy poważniejszych problemów w korzystaniu z losowych, jednorazowych adresów e-mail do wysyłania wiadomości w tajemnicy, ale wdrożenie tej funkcji nie zostało jeszcze uznane za priorytetowe.</p>
     
       <h3 id="pfs">
         
@@ -821,43 +806,28 @@ but an implementation has not been agreed as a priority yet.</p>
         
       </h3>
 
-<p>No, not yet.</p>
+<p>Nie, jeszcze nie.</p>
 
-<p>Delta Chat today doesn’t support Perfect Forward Secrecy (PFS).
-This means that if your private decryption key is leaked,
-and someone has collected your prior in-transit messages,
-they will be able to decrypt and read them using the leaked decryption key.
-Note that Forward Secrecy only increases security if you delete messages. 
-Otherwise, someone obtaining your decryption keys
-is typically also able to get all your non-deleted messages
-and doesn’t even need to decrypt any previously collected messages.</p>
+<p>Delta Chat obecnie nie obsługuje mechanizmu Perfect Forward Secrecy (PFS). Oznacza to, że jeśli twój prywatny klucz deszyfrujący zostanie ujawniony, a ktoś zdobędzie twoje wcześniejsze wiadomości w trakcie transmisji, będzie mógł je odszyfrować i odczytać za pomocą ujawnionego klucza deszyfrującego. Należy pamiętać, że mechanizm Forward Secrecy zwiększa bezpieczeństwo tylko w przypadku usuwania wiadomości. W przeciwnym razie osoba, która uzyska twoje klucze deszyfrujące, zazwyczaj będzie mogła uzyskać dostęp do wszystkich nieusuniętych wiadomości i nie będzie musiała odszyfrowywać żadnych wcześniej zebranych wiadomości.</p>
 
-<p>We designed a Forward Secrecy approach that withstood 
-initial examination from some cryptographers and implementation experts 
-but is pending a more formal write up 
-to ascertain it reliably works in federated messaging and with multi-device usage,
-before it could be implemented in <a href="https://github.com/chatmail/core">chatmail core</a>,
-which would make it available in all <a href="https://chatmail.at/clients">chatmail clients</a>.</p>
+<p>Opracowaliśmy metodę Forward Secrecy, która przeszła wstępną analizę niektórych kryptografów i ekspertów ds. wdrożeń, ale oczekuje na bardziej formalne opracowanie, które potwierdzi jej niezawodne działanie w federacyjnym przesyłaniu wiadomości i w przypadku korzystania z wielu urządzeń, zanim zostanie zaimplementowana w <a href="https://github.com/chatmail/core">rdzeniu chatmail</a>, co uczyniłoby ją dostępną we wszystkich <a href="https://chatmail.at/clients">klientach chatmail</a>.</p>
     
       <h3 id="pqc">
         
         
-          Does Delta Chat support Post-Quantum-Cryptography? <a href="#pqc" class="anchor"></a>
+          Czy Delta Chat obsługuje kryptografię postkwantową? <a href="#pqc" class="anchor"></a>
         
         
       </h3>
 
-<p>No, not yet.</p>
+<p>Nie, jeszcze nie.</p>
 
-<p>Delta Chat uses the Rust OpenPGP library <a href="https://github.com/rpgp/rpgp">rPGP</a>
-which supports the latest <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-pqc/">IETF Post-Quantum-Cryptography OpenPGP draft</a>. 
-We aim to add PQC support in <a href="https://github.com/chatmail/core">chatmail core</a>  after the draft is finalized at the IETF
-in collaboration with other OpenPGP implementers.</p>
+<p>Delta Chat korzysta z biblioteki Rust OpenPGP <a href="https://github.com/rpgp/rpgp">rPGP</a>, która obsługuje najnowszy <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-pqc/">projekt OpenPGP IETF Post-Quantum-Cryptography</a>. Planujemy dodać obsługę PQC do <a href="https://github.com/chatmail/core">rdzenia chatmail</a> po sfinalizowaniu projektu w IETF we współpracy z innymi implementatorami OpenPGP.</p>
     
-      <h3 id="how-can-i-manually-check-encryption-information">
+      <h3 id="jak-mogę-ręcznie-sprawdzić-informacje-o-szyfrowaniu">
         
         
-          How can I manually check encryption information? <a href="#how-can-i-manually-check-encryption-information" class="anchor"></a>
+          Jak mogę ręcznie sprawdzić informacje o szyfrowaniu? <a href="#jak-mogę-ręcznie-sprawdzić-informacje-o-szyfrowaniu" class="anchor"></a>
         
         
       </h3>
@@ -1184,10 +1154,9 @@ Listy rozgłoszeniowe są nadal wysoce eksperymentalne i bardzo prawdopodobne, �
         
       </h3>
 
-<p>Note: 
-Changing email addresses is temporarily disabled
-because of ongoing changes to the DeltaChat core.
-It should be available again in a few months.</p>
+<p>Uwaga: Zmiana adresów e-mail jest tymczasowo wyłączona
+z powodu trwających zmian w rdzeniu DeltaChat.
+Powinna być ponownie dostępna za kilka miesięcy.</p>
 
 <ol>
   <li>
