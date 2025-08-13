@@ -58,7 +58,7 @@
     <string name="save">Salva</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
-    <string name="apps_and_media">App &amp; Media</string>
+    <string name="apps_and_media">Apps &amp; Media</string>
     <string name="profile">Profilo</string>
     <string name="all_profiles">Tutti i Profili</string>
     <string name="current_profile">Profilo Corrente</string>
@@ -311,7 +311,7 @@
     <string name="menu_export_attachment">Esporta Allegato</string>
     <string name="menu_export_attachments">Esporta Allegati</string>
     <string name="menu_all_media">Tutti i Media</string>
-    <string name="all_apps_and_media">Tutte le App &amp; Media</string>
+    <string name="all_apps_and_media">Tutte le Apps &amp; Media</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Mostra in Chat</string>
     <string name="show_app_in_chat">Mostra App in Chat</string>
@@ -408,7 +408,7 @@
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
-    <string name="ask_leave_group">Sei sicuro di voler uscire?</string>
+    <string name="ask_leave_group">Sei sicuro di voler abbandonare?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Eliminare %d chat su tutti i tuoi dispositivi?</item>
         <item quantity="many">Eliminare %d chats su tutti i tuoi dispositivi?</item>
@@ -518,7 +518,7 @@
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Invia Messaggio a...</string>
     <string name="enable_realtime">App in Tempo Reale</string>
-    <string name="enable_realtime_explain">Abilita connessioni in tempo reale per app condivise nelle chat. Se abilitato, i partner della chat potrebbero essere in grado di scoprire il tuo indirizzo IP quando avvii un\'app.</string>
+    <string name="enable_realtime_explain">Abilita connessioni in tempo reale per apps condivise nelle chats. Se abilitato, i partner della chat potrebbero essere in grado di scoprire il tuo indirizzo IP quando avvii un\'app.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Mostra le posizioni nell\'intervallo di tempo</string>
@@ -560,7 +560,7 @@
     <string name="group_add_members">Aggiungi Membri</string>
     <string name="group_self_not_in_group">Devi essere un membro del gruppo per fare questa azione.</string>
     <string name="profile_encryption">Crittografia</string>
-    <string name="profile_shared_chats">Chat Condivise</string>
+    <string name="profile_shared_chats">Chats in Comune</string>
     <string name="related_chats">Chat Correlate</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Membri Passati</string>
@@ -571,14 +571,14 @@
     <string name="tab_links">Collegamenti</string>
     <string name="tab_map">Mappa</string>
     <string name="tab_gallery_empty_hint">Immagini e video condivisi in questa chat verranno mostrate qui.</string>
-    <string name="tab_docs_empty_hint">Documenti e altri file condivisi in questa chat verranno mostrate qui.</string>
-    <string name="tab_image_empty_hint">Le immagini condivise in questa chat verranno mostrate qui.</string>
-    <string name="tab_video_empty_hint">I video condivisi in questa chat verranno mostrate qui.</string>
-    <string name="tab_audio_empty_hint">I file audio e i messaggi vocali condivisi in questa chat verranno mostrati qui.</string>
-    <string name="tab_webxdc_empty_hint">Le app condivise in questa chat verranno mostrate qui.</string>
-    <string name="tab_all_media_empty_hint">I media condivisi in qualsiasi chat verranno mostrate qui.</string>
-    <string name="all_files_empty_hint">Qui verranno visualizzati i documenti e gli altri file condivisi in qualsiasi chat.</string>
-    <string name="all_apps_empty_hint">Le app condivise in qualsiasi chat appariranno qui.</string>
+    <string name="tab_docs_empty_hint">Documenti e altri file allegati in questa chat verranno mostrate qui.</string>
+    <string name="tab_image_empty_hint">Le immagini allegate in questa chat verranno mostrate qui.</string>
+    <string name="tab_video_empty_hint">I video allegati in questa chat verranno mostrati qui.</string>
+    <string name="tab_audio_empty_hint">I files audio e i messaggi vocali allegati in questa chat verranno mostrati qui.</string>
+    <string name="tab_webxdc_empty_hint">Le apps allegate in questa chat verranno mostrate qui.</string>
+    <string name="tab_all_media_empty_hint">I media allegati in qualsiasi chat verranno mostrati qui.</string>
+    <string name="all_files_empty_hint">Qui verranno visualizzati i documenti e gli altri file allegati in qualsiasi chat.</string>
+    <string name="all_apps_empty_hint">Le apps allegate n qualsiasi chat appariranno qui.</string>
     <string name="media_preview">Anteprima Media</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Aspetto Griglia Proporzioni</string>
@@ -944,7 +944,7 @@
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Membro %1$s rimosso da %2$s.</string>
     <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
-    <string name="group_left_by_you">Sei uscito.</string>
+    <string name="group_left_by_you">Hai abbandonato.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Gruppo lasciato da %1$s.</string>
     <string name="group_image_deleted_by_you">Hai eliminato l\'immagine del gruppo.</string>
@@ -990,8 +990,8 @@
     <string name="ephemeral_timer_weeks_by_other">Timer messaggi a scomparsa impostato su %1$s settimane da %2$s.</string>
     <!-- deprecated -->
     <string name="chat_protection_broken">%1$s ha inviato un messaggio da un altro dispositivo.</string>
-    <string name="chat_protection_enabled_tap_to_learn_more">D\'ora in poi i messaggi saranno garantiti crittografati end-to-end.  Tocca per saperne di più.</string>
-    <string name="chat_protection_enabled_explanation">Ora è garantito che tutti i messaggi in questa chat siano cifrati end-to-end.\n\nLa crittografia end-to-end mantiene privati i messaggi ​​tra te e i tuoi partner di chat. Nemmeno il server, il fornitore o il trasmettitore di e-mail può leggerli.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">I messaggi sono crittografati end-to-end. Tocca per saperne di più.</string>
+    <string name="chat_protection_enabled_explanation">Tutti i messaggi in questa chat sono crittografati end-to-end. La crittografia end-to-end mantiene privati i messaggi tra te e i tuoi interlocutori. Nemmeno servers, providers o relays possono leggerli.</string>
     <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s ha inviato un messaggio da un altro dispositivo. Tocca per saperne di più.</string>
     <!-- deprecated -->
@@ -1053,14 +1053,14 @@
     <string name="secure_join_started">%1$s ti ha invitato ad unirti a questo gruppo.\n\nIn attesa che il dispositivo di %2$s risponda…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s ha risposto, in attesa di essere aggiunto al gruppo…</string>
-    <string name="secure_join_wait">Creazione della crittografia end-to-end garantita, per piacere attendere...</string>
+    <string name="secure_join_wait">Impostazione della crittografia end-to-end, attendere...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Non è ancora possibile stabilire la crittografia end-to-end garantita, ma potresti già inviare un messaggio.</string>
     <!-- deprecated, was stock string -->
     <string name="secure_join_takes_longer">Il contatto deve essere in linea per proseguire.\n\nQuesto processo continuerà automaticamente in sottofondo.</string>
     <string name="contact_verified">%1$s verificato.</string>
     <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Impossibile stabilire una crittografia end-to-end garantita con %1$s.</string>
+    <string name="contact_not_verified">Impossibile stabilire una crittografia end-to-end con %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Verificato da %1$s</string>
     <string name="verified_by_you">Verificato da me</string>
@@ -1094,7 +1094,7 @@
     <string name="perm_continue">Continua</string>
     <string name="perm_explain_access_to_camera_denied">Per scattare foto o registrare video, vai alle impostazioni dell\'app, seleziona \"Autorizzazioni\" e abilita \"Fotocamera\".</string>
     <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
-    <string name="perm_explain_access_to_mic_denied">Per inviare messaggi audio, vai alle impostazioni dell\'app, seleziona \"Autorizzazioni\" e abilita \"Microfono\".</string>
+    <string name="perm_explain_access_to_mic_denied">Per inviare messaggi audio, vai nelle impostazioni di sistema o dell\'app, seleziona \"Autorizzazioni\" o \"Privacy  &amp; Sicurezza\" e abilita \"Microfono\".</string>
     <string name="perm_explain_access_to_storage_denied">Per ricevere o inviare file, vai alle impostazioni dell\'app, seleziona \"Autorizzazioni\" e abilita \"Archiviazione\".</string>
     <string name="perm_explain_access_to_location_denied">Per allegare una posizione, vai alle impostazioni dell\'app, seleziona \"Autorizzazioni\" e abilita \"Posizione\".</string>
     <string name="perm_explain_access_to_notifications_denied">Per ricevere le notifiche, vai su \"Impostazioni di Sistema / App / Delta Chat\" e attiva \"Notifiche\".</string>
