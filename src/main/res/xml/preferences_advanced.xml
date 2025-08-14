@@ -13,7 +13,7 @@
 
     <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
         android:defaultValue="false"
-        android:key="pref_self_reporting"
+        android:key="pref_send_statistics"
         android:title="@string/send_stats_to_devs"
         android:summary="@string/send_stats_to_devs_explanation"/>
 
