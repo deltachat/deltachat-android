@@ -144,6 +144,10 @@ public class Rpc {
         return getResult("get_account_file_size", accountId).getAsInt();
     }
 
+    public int secureJoin(int accountId, String qr, int source, int uipath) throws RpcException {
+        return getResult("secure_join", accountId, qr, source, uipath).getAsInt();
+    }
+
     public void changeContactName(int accountId, int contactId, String name) throws RpcException {
         getResult("change_contact_name", accountId, contactId, name);
     }
