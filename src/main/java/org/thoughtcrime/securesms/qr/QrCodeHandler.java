@@ -20,6 +20,15 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class QrCodeHandler {
 
+    public static int SECUREJOIN_SOURCE_EXTERNAL_LINK = 1;
+    public static int SECUREJOIN_SOURCE_INTERNAL_LINK = 2;
+    public static int SECUREJOIN_SOURCE_CLIPBOARD = 3;
+    public static int SECUREJOIN_SOURCE_IMAGE_LOADED = 4;
+    public static int SECUREJOIN_SOURCE_SCAN = 5;
+
+    public static int SECUREJOIN_UIPATH_QR_ICON = 1;
+    public static int SECUREJOIN_UIPATH_NEW_CONTACT = 2;
+
     private final Activity activity;
     private final DcContext dcContext;
 
@@ -28,22 +37,22 @@ public class QrCodeHandler {
         dcContext = DcHelper.getContext(activity);
     }
 
-    public void onScanPerformed(IntentResult scanResult) {
+    public void onScanPerformed(IntentResult scanResult, int uipath) {
         if (scanResult == null || scanResult.getFormatName() == null) {
             return; // aborted
         }
 
-        handleQrData(scanResult.getContents());
+        handleQrData(scanResult.getContents(), QrCodeHandler.SECUREJOIN_SOURCE_SCAN, uipath);
     }
 
-    public void handleQrData(String rawString) {
+    public void handleQrData(String rawString, int source, int uiPath) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         final DcLot qrParsed = dcContext.checkQr(rawString);
         String name = dcContext.getContact(qrParsed.getId()).getDisplayName();
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ASK_VERIFYCONTACT:
             case DcContext.DC_QR_ASK_VERIFYGROUP:
-                showVerifyContactOrGroup(activity, builder, rawString, qrParsed, name);
+                showVerifyContactOrGroup(activity, builder, rawString, qrParsed, name, source, uiPath);
                 break;
 
             case DcContext.DC_QR_FPR_WITHOUT_ADDR:
@@ -219,7 +228,7 @@ public class QrCodeHandler {
         });
     }
 
-    private void showVerifyContactOrGroup(Activity activity, AlertDialog.Builder builder, String qrRawString, DcLot qrParsed, String name) {
+    private void showVerifyContactOrGroup(Activity activity, AlertDialog.Builder builder, String qrRawString, DcLot qrParsed, String name, int source, int uipath) {
         String msg;
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ASK_VERIFYGROUP:
@@ -231,17 +240,17 @@ public class QrCodeHandler {
         }
         builder.setMessage(msg);
         builder.setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
-            DcHelper.getEventCenter(activity).captureNextError();
-            int newChatId = dcContext.joinSecurejoin(qrRawString);
-            DcHelper.getEventCenter(activity).endCaptureNextError();
+            try {
+                int newChatId = DcHelper.getRpc(activity).secureJoin(dcContext.getAccountId(), qrRawString, source, uipath);
+                if (newChatId == 0) throw new Exception("Securejoin failed to create a chat");
 
-            if (newChatId != 0) {
                 Intent intent = new Intent(activity, ConversationActivity.class);
                 intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, newChatId);
                 activity.startActivity(intent);
-            } else {
+            } catch (Exception e) {
+                e.printStackTrace();
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
-                builder1.setMessage(dcContext.getLastError());
+                builder1.setMessage(e.getMessage());
                 builder1.setPositiveButton(android.R.string.ok, null);
                 builder1.create().show();
             }

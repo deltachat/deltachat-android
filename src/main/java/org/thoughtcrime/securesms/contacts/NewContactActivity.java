@@ -103,7 +103,7 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
     if (requestCode == IntentIntegrator.REQUEST_CODE) {
       IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
       QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-      qrCodeHandler.onScanPerformed(scanResult);
+      qrCodeHandler.onScanPerformed(scanResult, QrCodeHandler.SECUREJOIN_UIPATH_NEW_CONTACT);
     }
   }
 }

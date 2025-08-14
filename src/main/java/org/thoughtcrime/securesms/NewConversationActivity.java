@@ -137,7 +137,7 @@ public class NewConversationActivity extends ContactSelectionActivity {
       case IntentIntegrator.REQUEST_CODE:
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.onScanPerformed(scanResult);
+        qrCodeHandler.onScanPerformed(scanResult, QrCodeHandler.SECUREJOIN_UIPATH_NEW_CONTACT);
         break;
       default:
         break;
