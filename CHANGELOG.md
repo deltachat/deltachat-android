@@ -1,11 +1,14 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.11.0
+2025-08
 
-* Allow to clone email chats
+* add "After 1 year" option to disappearing messages
 * improve image quality when setting group avatars
-* Add Estonian translation, update other translations
-
+* add Estonian translation, update other translations
+* allow to clone email chats
+* fix some small bugs
+* update to core 2.11.0
 
 ## v2.10.0
 2025-08
