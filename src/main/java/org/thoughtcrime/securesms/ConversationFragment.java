@@ -866,6 +866,7 @@ public class ConversationFragment extends MessageSelectorFragment
             Window window = getActivity().getWindow();
             statusBarColor = window.getStatusBarColor();
             window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
+
             Util.redMenuItem(menu, R.id.menu_context_delete_message);
             setCorrectMenuVisibility(menu);
             ConversationAdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
