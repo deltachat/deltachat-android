@@ -145,7 +145,7 @@ public class Rpc {
     }
 
     public int secureJoin(int accountId, String qr, int source, int uipath) throws RpcException {
-        return getResult("secure_join", accountId, qr, source, uipath).getAsInt();
+        return getResult("secure_join_with_ux_info", accountId, qr, source, uipath).getAsInt();
     }
 
     public void changeContactName(int accountId, int contactId, String name) throws RpcException {
