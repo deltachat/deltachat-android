@@ -23,11 +23,9 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.Insets;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.Spannable;
@@ -38,8 +36,6 @@ import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowInsets;
 import android.view.accessibility.AccessibilityManager;
 
 import androidx.annotation.NonNull;
@@ -112,23 +108,6 @@ public class Util {
       dialog.getButton(whichButton).setTextColor(redDestructiveColor);
     } catch (Exception e) {
       e.printStackTrace();
-    }
-  }
-
-  public static void setStatusBarColor(Window window, int color) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
-      // Android 15+
-      window.getDecorView().setOnApplyWindowInsetsListener((view, insets) -> {
-          Insets statusBarInsets = insets.getInsets(WindowInsets.Type.statusBars());
-          view.setBackgroundColor(color);
-
-          // Adjust padding to avoid overlap
-          //view.setPadding(0, statusBarInsets.top, 0, 0);
-          return insets;
-      });
-    } else {
-      // Android 14 and below
-      window.setStatusBarColor(color);
     }
   }
 
