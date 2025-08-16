@@ -42,6 +42,7 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
             getSupportActionBar().setTitle(R.string.scan_invitation_code);
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
 
         barcodeScannerView = findViewById(R.id.zxing_barcode_scanner);
         barcodeScannerView.setStatusText(getString(R.string.qrscan_hint) + "\n ");

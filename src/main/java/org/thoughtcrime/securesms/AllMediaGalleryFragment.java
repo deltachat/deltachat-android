@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -212,16 +211,11 @@ public class AllMediaGalleryFragment
 
   private class ActionModeCallback implements ActionMode.Callback {
 
-    private int originalStatusBarColor;
-
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
       mode.getMenuInflater().inflate(R.menu.profile_context, menu);
       mode.setTitle("1");
 
-      Window window = getActivity().getWindow();
-      originalStatusBarColor = window.getStatusBarColor();
-      window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
       setCorrectMenuVisibility(menu);
       return true;
     }
@@ -266,8 +260,6 @@ public class AllMediaGalleryFragment
     public void onDestroyActionMode(ActionMode mode) {
       actionMode = null;
       getListAdapter().clearSelection();
-
-      getActivity().getWindow().setStatusBarColor(originalStatusBarColor);
     }
   }
 }

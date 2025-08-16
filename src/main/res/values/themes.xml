@@ -37,7 +37,7 @@
         <item name="theme_type">light</item>
         <item name="actionBarStyle">@style/TextSecure.LightActionBar</item>
         <item name="actionBarTabBarStyle">@style/TextSecure.LightActionBar.TabBar</item>
-        <item name="actionModeBackground">@color/action_mode_status_bar</item>
+        <item name="actionModeBackground">@color/delta_primary</item>
         <item name="colorPrimary">@color/delta_primary</item>
         <item name="colorPrimaryDark">@color/delta_primary</item>
 
@@ -152,7 +152,7 @@
         <item name="colorPrimary">@color/gray95</item>
         <item name="colorPrimaryDark">@color/gray95</item>
         <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
-        <item name="actionModeBackground">@color/action_mode_status_bar</item>
+        <item name="actionModeBackground">@color/gray95</item>
         <item name="android:textColor">@color/text_color_dark_theme</item>
         <item name="android:textColorSecondary">@color/text_color_secondary_dark_theme</item>
 

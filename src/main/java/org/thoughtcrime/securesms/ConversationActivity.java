@@ -920,6 +920,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     supportActionBar.setCustomView(R.layout.conversation_title_view);
     supportActionBar.setDisplayShowCustomEnabled(true);
     supportActionBar.setDisplayShowTitleEnabled(false);
+    supportActionBar.setElevation(0); // TODO: use custom toolbar instead
 
     Toolbar parent = (Toolbar) supportActionBar.getCustomView().getParent();
     parent.setPadding(0,0,0,0);

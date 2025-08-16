@@ -23,8 +23,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +33,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -136,7 +133,6 @@ public class ContactSelectionListFragment extends    Fragment
       public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         MenuInflater inflater = getActivity().getMenuInflater();
         inflater.inflate(R.menu.contact_list, menu);
-        getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
         setCorrectMenuVisibility(menu);
         actionMode.setTitle("1");
         return true;
@@ -167,10 +163,6 @@ public class ContactSelectionListFragment extends    Fragment
       public void onDestroyActionMode(ActionMode actionMode) {
         ContactSelectionListFragment.this.actionMode = null;
         getContactSelectionListAdapter().resetActionModeSelection();
-
-        TypedArray color = getActivity().getTheme().obtainStyledAttributes(new int[]{android.R.attr.statusBarColor});
-        getActivity().getWindow().setStatusBarColor(color.getColor(0, Color.BLACK));
-        color.recycle();
       }
     };
 
