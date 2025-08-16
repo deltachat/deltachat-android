@@ -189,7 +189,7 @@
         <item name="conversation_item_outgoing_text_secondary_color">@color/light_pink</item>
 
         <item name="conversation_item_update_bg_color">@color/universal_overlay</item>
-        <item name="conversation_item_update_text_color">@color/core_light_35</item>
+        <item name="conversation_item_update_text_color">@color/white</item>
 
         <item name="conversation_item_sent_indicator_text_background">@drawable/conversation_item_sent_indicator_text_shape_dark</item>
         <item name="conversation_item_date_line_color">@color/core_dark_55</item>

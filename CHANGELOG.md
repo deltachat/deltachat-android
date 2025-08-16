@@ -3,6 +3,7 @@
 ## Unreleased
 
 * target Android 15
+* Improve readability of info messages in dark mode
 
 ## v2.11.0
 2025-08
