@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fitsSystemWindows="true"
+    android:background="?attr/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/windowBackground"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    tools:context=".WelcomeActivity">
+    android:gravity="center_horizontal">
 
     <LinearLayout
         android:id="@+id/top_text"
@@ -87,3 +93,5 @@
         android:layout_height="0dp"/>
 
 </LinearLayout>
+
+</RelativeLayout>
