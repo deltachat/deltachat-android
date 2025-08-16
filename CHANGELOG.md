@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* target Android 15
+
 ## v2.11.0
 2025-08
 
