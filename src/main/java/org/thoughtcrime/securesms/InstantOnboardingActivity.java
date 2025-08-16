@@ -98,6 +98,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.onboarding_create_instant_account);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
 
     boolean fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
     if (DcHelper.getContext(this).isConfigured() == 1) {
