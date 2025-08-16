@@ -3,7 +3,8 @@
 ## Unreleased
 
 * target Android 15
-* Improve readability of info messages in dark mode
+* improve readability of info messages in dark mode
+* fix Direct Share shortcuts
 
 ## v2.11.0
 2025-08
