@@ -116,7 +116,6 @@
     <plurals name="n_selected">
         <item quantity="other">%d 선택됨</item>
     </plurals>
-
     <string name="self">나</string>
     <string name="draft">임시 저장</string>
     <string name="image">이미지</string>
@@ -174,9 +173,11 @@
     <string name="menu_new_contact">대화상대 추가</string>
     <string name="menu_new_chat">채팅 시작</string>
     <string name="menu_new_group">새 그룹</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">방송 목록</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">방송 목록</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">새 방송 목록</string>
     <string name="add_recipients">수신자 추가</string>
     <string name="menu_send">보내기</string>
@@ -285,8 +286,6 @@
     <string name="videochat_invitation">비디오 채팅 초대</string>
     <string name="videochat_invitation_body">당신은 비디오 채팅에 초대되었습니다. 참여를 위해 %1$s를 클릭하세요.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">이 그룹에서 나가시겠습니까?</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">%d개의 메시지를 삭제하시겠습니까?</item>
@@ -301,7 +300,7 @@
     <string name="ask_start_chat_with">%1$s와 채팅하시겠습니까?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">그룹에서 %1$s을/를 제거하시겠습니까?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">브로드 캐스트 목록에서 %1$s을/를 제거하시겠습니까?</string>
     <string name="open_url_confirmation">이 링크를 여시겠습니까?</string>
 
@@ -409,7 +408,7 @@
     <string name="all_apps_empty_hint">채팅에서 보내거나 받은 개인 앱들이 여기에 나타납니다.</string>
     <string name="media_preview">미디어 미리보기</string>
     <string name="send_message">메시지 전송</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$s의 주소가 %2$s에서 %3$s로 변경됨.</string>
     <!-- deprecated -->
     <string name="aeap_explanation">이메일 주소를 %1$s에서 %2$s로 바꿨습니다.\n\n확인된 그룹으로 메시지를 보내면 해당 그룹의 연락처가 자동으로 이전 주소를 새 주소로 대체합니다.\n\n모든 이메일을 새 이메일 주소로 전달하도록 이전 이메일 공급자를 설정하는 것이 좋습니다. 그렇지 않으면 새 주소를 받지 못한 연락처의 메시지를 놓칠 수 있습니다.</string>
@@ -646,8 +645,6 @@
     <string name="remove_member_by_you">%1$s를 멤버에서 제거함.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s가 %1$s를 멤버에서 제거함.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">그룹을 나갔습니다.</string>
     <string name="group_image_deleted_by_you">그룹 이미지를 지움.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="group_image_deleted_by_other">%1$s이 그룹 이미지를 지움.</string>
@@ -740,8 +737,9 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s이 응하여, 그룹에 추가되기를 기다리는 중입니다...</string>
     <string name="contact_verified">%1$s이 확인됨</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">%1$s 확인할 수 없음</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">%1$s에 대한 설정이 변경되었습니다.</string>
     <string name="mailto_dialog_header_select_chat">메시지를 보내려면 채팅을 선택하십시오</string>
     <!-- first placeholder is the name of the chat -->
@@ -775,7 +773,7 @@
     <string name="ImageEditorHud_flip">뒤집기</string>
     <string name="ImageEditorHud_rotate">돌리기</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">암호화된 메시지</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->

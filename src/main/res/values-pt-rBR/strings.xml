@@ -146,7 +146,6 @@
         <item quantity="many">%d selecionados</item>
         <item quantity="other">%d selecionados</item>
     </plurals>
-
     <string name="self">Eu</string>
     <string name="draft">Rascunho</string>
     <string name="image">Imagem</string>
@@ -205,9 +204,11 @@
     <string name="menu_new_contact">Novo contato</string>
     <string name="menu_new_chat">Nova conversa</string>
     <string name="menu_new_group">Novo grupo</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Lista de Transmissão</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Listas de Transmissão</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Nova Lista de Transmissão</string>
     <string name="add_recipients">Adicionar Destinatários</string>
     <string name="menu_send">Enviar</string>
@@ -322,8 +323,6 @@
     <string name="videochat_invitation">Convite para conversa de vídeo</string>
     <string name="videochat_invitation_body">Você foi convidado para uma conversa de vídeo, clique %1$s para ingressar.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Quer mesmo sair do grupo?</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Apagar %d mensagem?</item>
@@ -340,7 +339,7 @@
     <string name="ask_start_chat_with">Conversar com %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Remover %1$s do grupo?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Remover %1$s da lista de transmissão?</string>
     <string name="open_url_confirmation">Você quer abrir este link?</string>
 
@@ -464,7 +463,7 @@
     <string name="all_apps_empty_hint">Apps recebidas ou enviadas em qualquer bate-papo aparecerão aqui.</string>
     <string name="media_preview">Pré-visualização.</string>
     <string name="send_message">Enviar mensagem</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$s mudou seu endereço de %2$s para %3$s</string>
     <!-- deprecated -->
     <string name="aeap_explanation">Você mudou seu endereço de e-mail de %1$s para %2$s.\n\nSe você agora enviar uma mensagem para um grupo verificado, os contatos lá substituirão automaticamente o antigo por seu novo endereço.\n\nÉ altamente recomendável configurar seu antigo provedor de e-mail para encaminhar todos os e-mails para seu novo endereço de e-mail. Caso contrário, você pode perder mensagens de contatos que ainda não receberam seu novo endereço.</string>
@@ -738,8 +737,6 @@
     <string name="remove_member_by_you">Você removeu o membro %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Membro %1$s removido por %2$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Você saiu do grupo.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Grupo deixado por %1$s.</string>
     <string name="group_image_deleted_by_you">Você removeu a imagem do grupo.</string>
@@ -834,10 +831,11 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$srespondeu, esperando para ser adicionado ao grupo...</string>
     <string name="contact_verified">%1$s verificado.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Impossível verificar %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Verificado por %1$s</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">A configuração Autocrypt mudou para %1$s</string>
     <string name="mailto_dialog_header_select_chat">Selecione o bate-papo para enviar a mensagem</string>
     <!-- first placeholder is the name of the chat -->
@@ -871,7 +869,7 @@
     <string name="ImageEditorHud_flip">Girar</string>
     <string name="ImageEditorHud_rotate">Rodar</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Mensagem criptografada</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->

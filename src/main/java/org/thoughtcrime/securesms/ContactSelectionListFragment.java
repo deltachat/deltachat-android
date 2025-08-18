@@ -23,8 +23,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +33,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -83,6 +80,7 @@ public class ContactSelectionListFragment extends    Fragment
 
   public static final String MULTI_SELECT          = "multi_select";
   public static final String SELECT_VERIFIED_EXTRA = "select_verified";
+  public static final String SELECT_UNENCRYPTED_EXTRA = "select_unencrypted_extra";
   public static final String ALLOW_CREATION = "allow_creation";
   public static final String PRESELECTED_CONTACTS = "preselected_contacts";
   public static final int CONTACT_ADDR_RESULT_CODE = 61123;
@@ -135,7 +133,6 @@ public class ContactSelectionListFragment extends    Fragment
       public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         MenuInflater inflater = getActivity().getMenuInflater();
         inflater.inflate(R.menu.contact_list, menu);
-        getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
         setCorrectMenuVisibility(menu);
         actionMode.setTitle("1");
         return true;
@@ -166,10 +163,6 @@ public class ContactSelectionListFragment extends    Fragment
       public void onDestroyActionMode(ActionMode actionMode) {
         ContactSelectionListFragment.this.actionMode = null;
         getContactSelectionListAdapter().resetActionModeSelection();
-
-        TypedArray color = getActivity().getTheme().obtainStyledAttributes(new int[]{android.R.attr.statusBarColor});
-        getActivity().getWindow().setStatusBarColor(color.getColor(0, Color.BLACK));
-        color.recycle();
       }
     };
 
@@ -251,6 +244,10 @@ public class ContactSelectionListFragment extends    Fragment
     return getActivity().getIntent().getBooleanExtra(SELECT_VERIFIED_EXTRA, false);
   }
 
+  private boolean isUnencrypted() {
+    return getActivity().getIntent().getBooleanExtra(SELECT_UNENCRYPTED_EXTRA, false);
+  }
+
   private void initializeCursor() {
     ContactSelectionListAdapter adapter = new ContactSelectionListAdapter(getActivity(),
             GlideApp.with(this),
@@ -273,11 +270,11 @@ public class ContactSelectionListFragment extends    Fragment
   @Override
   public Loader<DcContactsLoader.Ret> onCreateLoader(int id, Bundle args) {
     final boolean allowCreation = getActivity().getIntent().getBooleanExtra(ALLOW_CREATION, true);
-    final boolean addCreateContactLink = allowCreation && !isSelectVerfied();
+    final boolean addCreateContactLink = allowCreation && isUnencrypted();
     final boolean addCreateGroupLinks = allowCreation && !isRelayingMessageContent(getActivity()) && !isMulti();
     final boolean addScanQRLink = allowCreation && !isMulti();
 
-    final int listflags = DcContext.DC_GCL_ADD_SELF;
+    final int listflags = DcContext.DC_GCL_ADD_SELF | (isUnencrypted()? DcContext.DC_GCL_ADDRESS : 0);
     return new DcContactsLoader(getActivity(), listflags, cursorFilter, addCreateGroupLinks, addCreateContactLink, addScanQRLink, false);
   }
 

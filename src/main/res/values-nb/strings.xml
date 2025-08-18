@@ -207,8 +207,6 @@
     <string name="videochat_invitation">Videochatinvitasjon</string>
     <string name="videochat_invitation_body">Du er invitert til en videochat, klikk %1$s for å bli med.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Er du sikker på at du vil forlate denne gruppen?</string>
     <string name="ask_forward">Videresend meldinger til %1$s?</string>
     <string name="ask_forward_multiple">Videresend meldinger til %1$d chatter?</string>
     <string name="ask_export_attachment">Eksporter vedlegg? Eksport av vedlegg vil gi andre apper på din enhet tilgang til dem\n\nFortsett?</string>
@@ -388,7 +386,7 @@
     <!-- permissions -->
     <string name="perm_required_title">Tillatelse kreves</string>
     <string name="perm_continue">Fortsett</string>
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Kryptert melding</string>
 
     <string name="welcome_desktop">Velkommen til Delta Chat</string>

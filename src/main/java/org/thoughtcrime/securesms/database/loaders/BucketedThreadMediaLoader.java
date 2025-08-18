@@ -6,7 +6,6 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.loader.content.AsyncTaskLoader;
 
-import com.annimon.stream.Stream;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
@@ -128,28 +127,38 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
     }
 
     public int getSectionCount() {
-      return (int)Stream.of(TIME_SECTIONS)
-                        .filter(timeBucket -> !timeBucket.isEmpty())
-                        .count() +
-             OLDER.getSectionCount();
+      int count = 0;
+      for (TimeBucket section : TIME_SECTIONS) {
+        if (!section.isEmpty()) count++;
+      }
+      return count + OLDER.getSectionCount();
     }
 
     public int getSectionItemCount(int section) {
-      List<TimeBucket> activeTimeBuckets = Stream.of(TIME_SECTIONS).filter(timeBucket -> !timeBucket.isEmpty()).toList();
+      List<TimeBucket> activeTimeBuckets = new ArrayList<>();
+      for (TimeBucket bucket : TIME_SECTIONS) {
+        if (!bucket.isEmpty()) activeTimeBuckets.add(bucket);
+      }
 
       if (section < activeTimeBuckets.size()) return activeTimeBuckets.get(section).getItemCount();
       else                                    return OLDER.getSectionItemCount(section - activeTimeBuckets.size());
     }
 
     public DcMsg get(int section, int item) {
-      List<TimeBucket> activeTimeBuckets = Stream.of(TIME_SECTIONS).filter(timeBucket -> !timeBucket.isEmpty()).toList();
+      List<TimeBucket> activeTimeBuckets = new ArrayList<>();
+      for (TimeBucket bucket : TIME_SECTIONS) {
+        if (!bucket.isEmpty()) activeTimeBuckets.add(bucket);
+      }
 
       if (section < activeTimeBuckets.size()) return activeTimeBuckets.get(section).getItem(item);
       else                                    return OLDER.getItem(section - activeTimeBuckets.size(), item);
     }
 
     public String getName(int section) {
-      List<TimeBucket> activeTimeBuckets = Stream.of(TIME_SECTIONS).filter(timeBucket -> !timeBucket.isEmpty()).toList();
+      List<TimeBucket> activeTimeBuckets = new ArrayList<>();
+      for (TimeBucket bucket : TIME_SECTIONS) {
+        if (!bucket.isEmpty()) activeTimeBuckets.add(bucket);
+      }
 
       if (section < activeTimeBuckets.size()) return activeTimeBuckets.get(section).getName();
       else                                    return OLDER.getName(section - activeTimeBuckets.size());

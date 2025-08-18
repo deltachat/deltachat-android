@@ -56,6 +56,7 @@
     <string name="save">Uložit</string>
     <string name="chat">Chat</string>
     <string name="media">Multimédia</string>
+    <string name="apps_and_media">Aplikace a multimédia</string>
     <string name="profile">Profil</string>
     <string name="main_menu">Hlavní nabídka</string>
     <string name="start_chat">Chatovat</string>
@@ -168,7 +169,6 @@
         <item quantity="many">%d vybráno</item>
         <item quantity="other">%d vybráno</item>
     </plurals>
-
     <string name="self">Já</string>
     <string name="draft">Rozepsané</string>
     <string name="image">Obrázek</string>
@@ -212,6 +212,7 @@
     <string name="webxdc_apps">Aplikace</string>
     <string name="webxdc_store_url">Adresa URL výběru aplikací</string>
     <string name="webxdc_store_url_explain">Pokud je nastavena, tato URL adresa bude použita pro výběr aplikací namísto té výchozí</string>
+    <string name="webxdc_draft_hint">Pro sdílení stiskněte „Odeslat”</string>
     <string name="home">Domů</string>
     <string name="games">Hry</string>
     <string name="tools">Nástroje</string>
@@ -250,13 +251,18 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Chatovat s...</string>
     <string name="clone_chat">Klonovat chat</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Seznam vysílání</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Seznamy vysílání</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Nový seznam vysílání</string>
     <string name="add_recipients">Přidat příjemce</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">Upravit seznam vysílání</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">Název seznamu vysílání</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Prosím, zadejte název seznamu vysílání.</string>
     <string name="menu_send">Odeslat</string>
     <string name="menu_toggle_keyboard">Přepnout emoji klávesnici</string>
@@ -293,6 +299,7 @@
     <string name="menu_export_attachment">Exportovat přílohu</string>
     <string name="menu_export_attachments">Exportovat přílohy</string>
     <string name="menu_all_media">Všechna multimédia</string>
+    <string name="all_apps_and_media">Všechny aplikace a multimédia</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Ukázat v chatu</string>
     <string name="show_app_in_chat">Zobrazit aplikaci v chatu</string>
@@ -350,7 +357,6 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Přidat na domovskou obrazovku</string>
     <string name="donate">Darovat</string>
-
     <string name="mute_for_one_hour">Ztlumit na 1 hodinu</string>
     <string name="mute_for_eight_hours">Ztlumit na 8 hodin</string>
     <string name="mute_for_one_day">Ztlumit na 1 den</string>
@@ -387,8 +393,6 @@
     <string name="videochat_invitation">Pozvánka k videohovoru</string>
     <string name="videochat_invitation_body">Byli jste pozváni k videohovoru, připojte se stisknutím %1$s</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Opravdu si přejete opustit tuto skupinu?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Smazat %d chat ze všech vašich zařízení?</item>
         <item quantity="few">Smazat %d chaty ze všech vašich zařízení?</item>
@@ -420,7 +424,7 @@
     <string name="ask_start_chat_with">Přejete si chatovat s uživatelem %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Přejete si odstranit uživatele %1$s ze skupiny?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Přejete si odstranit uživatele %1$s ze seznamu vysílání?</string>
     <string name="open_url_confirmation">Přejete si otevřít tento odkaz?</string>
 
@@ -457,6 +461,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Poslat zprávu uživateli %1$s.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">Seznam vysílání slouží k posílání zpráv příjemcům v chatu, který je pro ně pouze pro čtení.</string>
     <string name="chat_new_group_hint">Ostatní tuto skupinu uvidí až poté, co odešlete první zprávu.</string>
     <string name="chat_record_slide_to_cancel">Zrušit tahem</string>
@@ -565,7 +570,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Mřížka čtverců</string>
     <string name="send_message">Odeslat zprávu</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">Uživatel %1$s změnil svou adresu z %2$s na %3$s</string>
     <!-- deprecated -->
     <string name="aeap_explanation">Změnili jste svou e-mailovou adresu z %1$s na %2$s.\n\nPokud nyní pošlete zprávu ověřené skupině, všem kontaktům v ní se vaše adresa aktualizuje na novou.\n\nJe důrazně doporučeno, abyste u svého starého poskytovatele nastavili přesměrování všech e-mailů na novou adresu, jinak byste mohli přijít o zprávy od kontaktů, které vaši novou adresu dosud nedostaly. </string>
@@ -922,8 +927,6 @@
     <string name="remove_member_by_you">Odebrali jste člena %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Člen %1$s byl odebrán uživatelem %2$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Opustili jste skupinu.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Uživatel %1$s opustil skupinu.</string>
     <string name="group_image_deleted_by_you">Smazali jste obrázek skupiny.</string>
@@ -967,11 +970,13 @@
     <string name="ephemeral_timer_weeks_by_you">Samomazací zprávy vyprší po %1$s týdnech ode mě.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Uživatel %2$s změnil časovač mizejících zpráv na %1$s týdnů.</string>
-    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <!-- deprecated -->
     <string name="chat_protection_broken">Uživatel %1$s odeslal zprávu z jiného zařízení.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Nyní je garantováno koncové šifrování vašich zpráv. Stiskněte pro více informací.</string>
     <string name="chat_protection_enabled_explanation">Nyní je garantováno, že všechny zprávy v tomto chatu jsou koncově šifrovány.\n\nKoncové šifrování zajišťuje soukromí mezi vámi a vašimi kontakty. Nedokáže je přečíst ani váš poskytovatel e-mailu.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">Uživatel %1$s odeslal zprávu z jiného zařízení. Stiskněte pro více informací.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">Koncové šifrování již nemůže být garantováno, pravděpodobně protože uživatel %1$s přeinstaloval Delta Chat nebo odeslal zprávu z jiného zařízení.\n\nPro obnovení garantovaného koncového šifrování se sejděte osobně a naskenujte si své QR kódy.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️%1$s vyžaduje koncové šifrování, které pro tento chat ještě není nastaveno. Stiskněte pro více informací. </string>
     <string name="invalid_unencrypted_explanation">Pro navázání koncově šifrovaného spojení se můžete se svými kontakty setkat osobně a naskenovat jejich QR kódy.</string>
@@ -1033,13 +1038,15 @@
     <string name="secure_join_wait">Navazování koncově šifrovaného spojení, prosím, čekejte...</string>
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Zatím nebylo navázáno koncově šifrované spojení, ale již nyní můžete posílat zprávy.</string>
+    <!-- deprecated, was stock string -->
     <string name="secure_join_takes_longer">Vypadá to, že to trvá trochu déle. Možná jste vy nebo váš kontakt offline.\n\nProces však pokračuje na pozadí. Zatím můžete dělat něco jiného...</string>
     <string name="contact_verified">Uživatel %1$s ověřen.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Navázání garantovaného koncově šifrovaného spojení s uživatelem %1$s selhalo.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Ověřeni uživatelem %1$s.</string>
     <string name="verified_by_you">Ověřeni mnou</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Nastavení pro uživatele %1$s změněno.</string>
     <string name="verified_contact_required_explain">Aby mohlo být garantováno koncové šifrování, můžete do této skupiny přidávat pouze uživatele se zeleným zaškrtávátkem.\n\nSe svými kontakty se můžete setkat osobně a naskenovat jejich QR kód, abyste je ověřili.</string>
     <string name="mailto_dialog_header_select_chat">Vyberte chat, do kterého chcete zprávu poslat</string>
@@ -1083,7 +1090,7 @@
     <string name="ImageEditorHud_flip">Zrcadlení</string>
     <string name="ImageEditorHud_rotate">Otočení</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Šifrovaná zpráva</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
@@ -1213,7 +1220,8 @@
     <string name="perm_enable_bg_reminder_title">Stiskem nastavíte přijímání zpráv, když je aplikace Delta Chat na pozadí.</string>
     <string name="perm_enable_bg_already_done">Přijímání zpráv na pozadí jste již aplikaci Delta Chat povolili.\n\nV případě, že vám zprávy na pozadí stále nechodí, prosím zkontrolujte svá systémová nastavení.</string>
 
-    <!-- device messages for updates -->
+    <!-- deprecated -->
     <string name="update_1_50_android">Co je nového?\n\n❤️‍🔥 Nová nabídka emoji s více druhy emoji\n\n🎮 Vylepšené aplikace v chatu: Oznámení a podpůrné aplikace přímo v kontextu chatu, např. odkaz na novou nové položky z kalendáři\n\n👍 Oznámení o reakcích na zprávy\n\n... 🛠️ OPRAVY a DALŠÍ na %1$s</string>
+    <!-- deprecated -->
     <string name="update_switch_profile_placement">ℹ️ Volba \"Přepnout profil\" byla přesunuta: Pro přidávání či přepínání profilů stiskněte svůj profilový obrázek v horním rohu hlavní obrazovky.</string>
 </resources>

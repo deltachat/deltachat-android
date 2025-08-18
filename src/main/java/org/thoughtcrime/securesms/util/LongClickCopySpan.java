@@ -58,7 +58,12 @@ public class LongClickCopySpan extends ClickableSpan {
         String addr = prepareUrl(url);
         Activity activity = (Activity) widget.getContext();
         DcContext dcContext = DcHelper.getContext(activity);
-        DcContact contact = dcContext.getContact(dcContext.createContact(null, addr));
+
+        int contactId = dcContext.lookupContactIdByAddr(addr);
+        if (contactId == 0 && dcContext.mayBeValidAddr(addr)) {
+          contactId = dcContext.createContact(null, addr);
+        }
+        DcContact contact = dcContext.getContact(contactId);
         if (contact.getId() != 0 && !contact.isBlocked() && dcContext.getChatIdByContactId(contact.getId()) != 0) {
           openChat(activity, contact);
         } else {

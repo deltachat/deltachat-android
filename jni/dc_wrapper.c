@@ -1261,6 +1261,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcChat_getColor(JNIEnv *env, jobject obj)
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isEncrypted(JNIEnv *env, jobject obj)
+{
+    return dc_chat_is_encrypted(get_dc_chat(env, obj))!=0;
+}
+
+
 JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isUnpromoted(JNIEnv *env, jobject obj)
 {
     return dc_chat_is_unpromoted(get_dc_chat(env, obj))!=0;
@@ -1288,11 +1294,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_canSend(JNIEnv *env, jobject o
 JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isProtected(JNIEnv *env, jobject obj)
 {
     return dc_chat_is_protected(get_dc_chat(env, obj))!=0;
-}
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isProtectionBroken(JNIEnv *env, jobject obj)
-{
-    return dc_chat_is_protection_broken(get_dc_chat(env, obj))!=0;
 }
 
 
@@ -1847,6 +1848,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isBlocked(JNIEnv *env, jobj
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isVerified(JNIEnv *env, jobject obj)
 {
     return dc_contact_is_verified(get_dc_contact(env, obj))==2;
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isKeyContact(JNIEnv *env, jobject obj)
+{
+    return dc_contact_is_key_contact(get_dc_contact(env, obj))==1;
 }
 
 

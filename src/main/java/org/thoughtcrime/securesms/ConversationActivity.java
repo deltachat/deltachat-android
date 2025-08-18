@@ -59,6 +59,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
@@ -431,7 +432,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     getMenuInflater().inflate(R.menu.conversation, menu);
 
-    if (dcChat.isSelfTalk() || dcChat.isBroadcast()) {
+    if (dcChat.isSelfTalk() || dcChat.isOutBroadcast()) {
       menu.findItem(R.id.menu_mute_notifications).setVisible(false);
     } else if(dcChat.isMuted()) {
       menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);
@@ -441,12 +442,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_show_map).setVisible(false);
     }
 
-    if (!dcChat.canSend() || dcChat.isBroadcast() || dcChat.isMailingList()) {
+    if (!dcChat.isEncrypted() || !dcChat.canSend() || dcChat.isMailingList() ) {
       menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
     }
 
     if (isMultiUser()) {
-      if (dcChat.canSend() && !dcChat.isBroadcast() && !dcChat.isMailingList()) {
+      if (dcChat.isInBroadcast() && !dcChat.isContactRequest()) {
+        menu.findItem(R.id.menu_leave).setTitle(R.string.menu_leave_channel).setVisible(true);
+      } else if (dcChat.isEncrypted()
+          && dcChat.canSend()
+          && !dcChat.isOutBroadcast()
+          && !dcChat.isMailingList()) {
         menu.findItem(R.id.menu_leave).setVisible(true);
       }
     }
@@ -526,8 +532,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     } else if (itemId == R.id.menu_show_map) {
       WebxdcActivity.openMaps(this, chatId);
       return true;
-    } else if (itemId == R.id.menu_show_apps) {
-      handleProfile(true);
+    } else if (itemId == R.id.menu_all_media) {
+      handleAllMedia();
       return true;
     } else if (itemId == R.id.menu_search_up) {
       handleMenuSearchNext(false);
@@ -609,21 +615,29 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  private void handleProfile(boolean showApps) {
+  private void handleProfile() {
     Intent intent = new Intent(this, ProfileActivity.class);
     intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, chatId);
-    intent.putExtra(ProfileActivity.FROM_CHAT, true);
-    if (showApps) {
-      intent.putExtra(ProfileActivity.FORCE_TAB_EXTRA, ProfileActivity.TAB_WEBXDC);
-    }
     startActivity(intent);
-    overridePendingTransition(0, 0);
+  }
+
+  private void handleAllMedia() {
+    Intent intent = new Intent(this, AllMediaActivity.class);
+    intent.putExtra(AllMediaActivity.CHAT_ID_EXTRA, chatId);
+    startActivity(intent);
   }
 
   private void handleLeaveGroup() {
+    @StringRes int leaveLabel;
+    if (dcChat.isInBroadcast()) {
+      leaveLabel = R.string.menu_leave_channel;
+    } else {
+      leaveLabel = R.string.menu_leave_group;
+    }
+
     AlertDialog dialog = new AlertDialog.Builder(this)
       .setMessage(getString(R.string.ask_leave_group))
-      .setPositiveButton(R.string.menu_leave_group, (d, which) -> {
+      .setPositiveButton(leaveLabel, (d, which) -> {
         dcContext.removeContactFromChat(chatId, DcContact.DC_CONTACT_ID_SELF);
         Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
       })
@@ -869,7 +883,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       buttonToggle.getBackground().invalidateSelf();
     });
 
-    titleView.setOnClickListener(v -> handleProfile(false));
+    titleView.setOnClickListener(v -> handleProfile());
     titleView.setOnBackClickedListener(view -> handleReturnToConversationList());
 
     composeText.setOnKeyListener(composeKeyPressedListener);
@@ -906,6 +920,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     supportActionBar.setCustomView(R.layout.conversation_title_view);
     supportActionBar.setDisplayShowCustomEnabled(true);
     supportActionBar.setDisplayShowTitleEnabled(false);
+    supportActionBar.setElevation(0); // TODO: use custom toolbar instead
 
     Toolbar parent = (Toolbar) supportActionBar.getCustomView().getParent();
     parent.setPadding(0,0,0,0);
@@ -1601,7 +1616,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   public void initializeContactRequest() {
-    if (!dcChat.isHalfBlocked()) {
+    if (!dcChat.isContactRequest()) {
       messageRequestBottomView.setVisibility(View.GONE);
       return;
     }
@@ -1614,15 +1629,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     });
 
 
-    if (dcChat.isProtectionBroken()) {
-      messageRequestBottomView.setBlockText(R.string.more_info_desktop);
-      String name = dcContext.getContact(recipient.getDcContact().getId()).getDisplayName();
-      messageRequestBottomView.setBlockOnClickListener(v -> DcHelper.showVerificationBrokenDialog(this, name));
-
-      messageRequestBottomView.setQuestion(getString(R.string.chat_protection_broken, name));
-      messageRequestBottomView.setAcceptText(R.string.ok);
-
-    } else if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
+    if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
       // We don't support blocking groups yet, so offer to delete it instead
       messageRequestBottomView.setBlockText(R.string.delete);
       messageRequestBottomView.setBlockOnClickListener(v -> handleDeleteChat());

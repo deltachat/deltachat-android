@@ -20,6 +20,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class AvatarHelper {
+    /* the maximum width/height an avatar should have */
+    public static final  int AVATAR_SIZE  = 640;
 
     public static void setGroupAvatar(Context context, int chatId, Bitmap bitmap) {
         DcContext dcContext = DcHelper.getContext(context);
@@ -30,7 +32,7 @@ public class AvatarHelper {
             try {
                 File avatar = File.createTempFile("groupavatar", ".jpg", context.getCacheDir());
                 FileOutputStream out = new FileOutputStream(avatar);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 85, out);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
                 out.close();
                 dcContext.setChatProfileImage(chatId, avatar.getPath()); // The avatar is copied to the blobs directory here...
                 //noinspection ResultOfMethodCallIgnored

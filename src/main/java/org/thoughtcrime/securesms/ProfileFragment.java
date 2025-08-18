@@ -3,14 +3,12 @@ package org.thoughtcrime.securesms;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,7 +29,6 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.qr.QrShowActivity;
-import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -39,16 +36,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class ProfileSettingsFragment extends Fragment
-             implements ProfileSettingsAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
+public class ProfileFragment extends Fragment
+             implements ProfileAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
 
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
 
   private static final int REQUEST_CODE_PICK_CONTACT = 2;
 
-  private StickyHeaderDecoration listDecoration;
-  private ProfileSettingsAdapter adapter;
+  private ProfileAdapter adapter;
   private ActionMode             actionMode;
   private final ActionModeCallback actionModeCallback = new ActionModeCallback();
 
@@ -56,10 +52,6 @@ public class ProfileSettingsFragment extends Fragment
   private DcContext            dcContext;
   protected int                chatId;
   private int                  contactId;
-
-  protected ActionMode getActionMode() {
-    return actionMode;
-  }
 
   @Override
   public void onCreate(Bundle bundle) {
@@ -72,14 +64,12 @@ public class ProfileSettingsFragment extends Fragment
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.profile_settings_fragment, container, false);
-    adapter = new ProfileSettingsAdapter(requireContext(), GlideApp.with(this), this);
+    View view = inflater.inflate(R.layout.profile_fragment, container, false);
+    adapter = new ProfileAdapter(this, GlideApp.with(this), this);
 
     RecyclerView list = ViewUtil.findById(view, R.id.recycler_view);
     list.setAdapter(adapter);
     list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-    listDecoration = new StickyHeaderDecoration(adapter, false, true);
-    list.addItemDecoration(listDecoration);
 
     update();
 
@@ -95,12 +85,6 @@ public class ProfileSettingsFragment extends Fragment
   public void onDestroyView() {
     DcHelper.getEventCenter(requireContext()).removeObservers(this);
     super.onDestroyView();
-  }
-
-  @Override
-  public void onConfigurationChanged(@NonNull Configuration newConfig) {
-    super.onConfigurationChanged(newConfig);
-    listDecoration.onConfigurationChanged(newConfig);
   }
 
   @Override
@@ -121,12 +105,11 @@ public class ProfileSettingsFragment extends Fragment
     if(dcChat!=null && dcChat.isMultiUser()) {
       memberList = dcContext.getChatContacts(chatId);
     }
-    else if(contactId>0) {
+    else if(contactId>0 && contactId!=DcContact.DC_CONTACT_ID_SELF) {
       sharedChats = dcContext.getChatlist(0, null, contactId);
     }
 
     adapter.changeData(memberList, dcContact, sharedChats, dcChat);
-    listDecoration.invalidateLayouts();
   }
 
 
@@ -136,10 +119,17 @@ public class ProfileSettingsFragment extends Fragment
   @Override
   public void onSettingsClicked(int settingsId) {
     switch(settingsId) {
-      case ProfileSettingsAdapter.INFO_SEND_MESSAGE_BUTTON:
+      case ProfileAdapter.ITEM_ALL_MEDIA_BUTTON:
+        if (chatId > 0) {
+          Intent intent = new Intent(getActivity(), AllMediaActivity.class);
+          intent.putExtra(AllMediaActivity.CHAT_ID_EXTRA, chatId);
+          startActivity(intent);
+        }
+        break;
+      case ProfileAdapter.ITEM_SEND_MESSAGE_BUTTON:
         onSendMessage();
         break;
-      case ProfileSettingsAdapter.INFO_VERIFIED:
+      case ProfileAdapter.ITEM_INTRODUCED_BY:
         onVerifiedByClicked();
         break;
     }
@@ -166,7 +156,7 @@ public class ProfileSettingsFragment extends Fragment
     if (contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL || contactId==DcContact.DC_CONTACT_ID_SELF) {
       if (actionMode==null) {
         DcChat dcChat = dcContext.getChat(chatId);
-        if (dcChat.canSend()) {
+        if (dcChat.canSend() && dcChat.isEncrypted()) {
           adapter.toggleMemberSelection(contactId);
           actionMode = ((AppCompatActivity) requireActivity()).startSupportActionMode(actionModeCallback);
         }
@@ -200,6 +190,12 @@ public class ProfileSettingsFragment extends Fragment
       intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, contactId);
       startActivity(intent);
     }
+  }
+
+  @Override
+  public void onAvatarClicked() {
+    ProfileActivity activity = (ProfileActivity)getActivity();
+    activity.onEnlargeAvatar();
   }
 
   public void onAddMember() {
@@ -251,8 +247,6 @@ public class ProfileSettingsFragment extends Fragment
 
   private class ActionModeCallback implements ActionMode.Callback {
 
-    private int originalStatusBarColor;
-
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
       mode.getMenuInflater().inflate(R.menu.profile_context, menu);
@@ -265,9 +259,6 @@ public class ProfileSettingsFragment extends Fragment
       menu.findItem(R.id.menu_select_all).setVisible(false);
       mode.setTitle("1");
 
-      Window window = requireActivity().getWindow();
-      originalStatusBarColor = window.getStatusBarColor();
-      window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
       return true;
     }
 
@@ -296,7 +287,7 @@ public class ProfileSettingsFragment extends Fragment
             mode.finish();
           })
           .setNegativeButton(android.R.string.cancel, null)
-          .setMessage(getString(dcChat.isBroadcast() ? R.string.ask_remove_from_broadcast : R.string.ask_remove_members, readableToDelList))
+          .setMessage(getString(dcChat.isOutBroadcast() ? R.string.ask_remove_from_channel : R.string.ask_remove_members, readableToDelList))
           .show();
         Util.redPositiveButton(dialog);
         return true;
@@ -308,7 +299,6 @@ public class ProfileSettingsFragment extends Fragment
     public void onDestroyActionMode(ActionMode mode) {
       actionMode = null;
       adapter.clearSelection();
-      requireActivity().getWindow().setStatusBarColor(originalStatusBarColor);
     }
   }
 

@@ -81,7 +81,7 @@ public abstract class BaseConversationItem extends LinearLayout
   protected boolean shouldInterceptClicks(DcMsg messageRecord) {
     return batchSelected.isEmpty()
             && (messageRecord.isFailed()
-                || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_DISABLED
+                || messageRecord.getInfoType() == DcMsg.DC_INFO_CHAT_E2EE
                 || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED
                 || messageRecord.getInfoType() == DcMsg.DC_INFO_INVALID_UNENCRYPTED_MAIL);
   }
@@ -129,9 +129,7 @@ public abstract class BaseConversationItem extends LinearLayout
                 .setPositiveButton(R.string.ok, null)
                 .create();
         d.show();
-      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_DISABLED) {
-        DcHelper.showVerificationBrokenDialog(context, conversationRecipient.getName());
-      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED) {
+      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_CHAT_E2EE || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED) {
         DcHelper.showProtectionEnabledDialog(context);
       } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_INVALID_UNENCRYPTED_MAIL) {
         DcHelper.showInvalidUnencryptedDialog(context);

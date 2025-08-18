@@ -64,7 +64,7 @@ public abstract class MessageSelectorFragment
   protected void handleDeleteMessages(int chatId, final int[] messageIds) {
     DcChat dcChat = dcContext.getChat(chatId);
     boolean canDeleteForAll = true;
-    if (dcChat.canSend() && !dcChat.isSelfTalk()) {
+    if (dcChat.isEncrypted() && dcChat.canSend() && !dcChat.isSelfTalk()) {
       for(int msgId : messageIds) {
         DcMsg msg = dcContext.getMsg(msgId);
         if (!msg.isOutgoing() || msg.isInfo()) {
@@ -86,7 +86,7 @@ public abstract class MessageSelectorFragment
       .setCancelable(true)
       .setNeutralButton(android.R.string.cancel, null)
       .setPositiveButton(positiveBtnLabel, (d, which) -> {
-        dcContext.deleteMsgs(messageIds);
+        Util.runOnAnyBackgroundThread(() -> dcContext.deleteMsgs(messageIds));
         if (actionMode != null) actionMode.finish();
       });
 

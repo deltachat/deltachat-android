@@ -135,6 +135,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             actionBar.setTitle(R.string.login_header);
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+            actionBar.setElevation(0); // TODO: use custom toolbar instead
         }
 
         emailInput.addTextChangedListener(new TextWatcher() {

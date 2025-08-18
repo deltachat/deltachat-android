@@ -50,6 +50,7 @@ public class ProxySettingsActivity extends BaseActionBarActivity
     if (actionBar != null) {
       actionBar.setTitle(R.string.proxy_settings);
       actionBar.setDisplayHomeAsUpEnabled(true);
+      actionBar.setElevation(0); // TODO: use custom toolbar instead
     }
 
     adapter = new ProxyListAdapter(this);
