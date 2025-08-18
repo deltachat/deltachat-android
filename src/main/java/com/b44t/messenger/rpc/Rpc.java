@@ -160,6 +160,18 @@ public class Rpc {
         getResult("add_or_update_transport", accountId, param);
     }
 
+    public int createBroadcast(int accountId, String chatName) throws RpcException {
+        return gson.fromJson(getResult("create_broadcast", accountId, chatName), Integer.class);
+    }
+
+    public int createGroupChatUnencrypted(int accountId, String chatName) throws RpcException {
+        return gson.fromJson(getResult("create_group_chat_unencrypted", accountId, chatName), Integer.class);
+    }
+
+    public void setAccountsOrder(List<Integer> order) throws RpcException {
+        getResult("set_accounts_order", order);
+    }
+
     private static class Request {
         private final String jsonrpc = "2.0";
         public final String method;
@@ -171,6 +183,10 @@ public class Rpc {
             this.params = params;
             this.id = id;
         }
+    }
+
+    public String getMigrationError(int accountId) throws RpcException {
+        return gson.fromJson(getResult("get_migration_error", accountId), String.class);
     }
 
     private static class Response {

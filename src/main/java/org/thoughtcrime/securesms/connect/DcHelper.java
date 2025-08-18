@@ -23,6 +23,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
@@ -36,6 +37,7 @@ import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.FileUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
 import java.util.Date;
@@ -150,11 +152,8 @@ public class DcHelper {
     dcContext.setStockTranslation(11, context.getString(R.string.audio));
     dcContext.setStockTranslation(12, context.getString(R.string.file));
     dcContext.setStockTranslation(23, context.getString(R.string.gif));
-    dcContext.setStockTranslation(24, context.getString(R.string.encrypted_message));
     dcContext.setStockTranslation(29, context.getString(R.string.systemmsg_cannot_decrypt));
     dcContext.setStockTranslation(35, context.getString(R.string.contact_verified));
-    dcContext.setStockTranslation(36, context.getString(R.string.contact_not_verified));
-    dcContext.setStockTranslation(37, context.getString(R.string.contact_setup_changed));
     dcContext.setStockTranslation(40, context.getString(R.string.chat_archived_label));
     dcContext.setStockTranslation(60, context.getString(R.string.login_error_cannot_login));
     dcContext.setStockTranslation(66, context.getString(R.string.location));
@@ -188,7 +187,6 @@ public class DcHelper {
     dcContext.setStockTranslation(112, context.getString(R.string.error_x));
     dcContext.setStockTranslation(113, context.getString(R.string.not_supported_by_provider));
     dcContext.setStockTranslation(114, context.getString(R.string.messages));
-    dcContext.setStockTranslation(115, context.getString(R.string.broadcast_list));
     dcContext.setStockTranslation(116, context.getString(R.string.part_of_total_used));
     dcContext.setStockTranslation(117, context.getString(R.string.secure_join_started));
     dcContext.setStockTranslation(118, context.getString(R.string.secure_join_replies));
@@ -228,28 +226,24 @@ public class DcHelper {
     dcContext.setStockTranslation(155, context.getString(R.string.ephemeral_timer_days_by_other));
     dcContext.setStockTranslation(156, context.getString(R.string.ephemeral_timer_weeks_by_you));
     dcContext.setStockTranslation(157, context.getString(R.string.ephemeral_timer_weeks_by_other));
+    dcContext.setStockTranslation(158, context.getString(R.string.ephemeral_timer_1_year_by_you));
+    dcContext.setStockTranslation(159, context.getString(R.string.ephemeral_timer_1_year_by_other));
 
     // HACK: svg does not handle entities correctly and shows `&quot;` as the text `quot;`.
     // until that is fixed, we fix the most obvious errors (core uses encode_minimal, so this does not affect so many characters)
     // cmp. https://github.com/deltachat/deltachat-android/issues/2187
     dcContext.setStockTranslation(120, context.getString(R.string.qrshow_join_group_hint).replace("\"", ""));
     dcContext.setStockTranslation(121, context.getString(R.string.connectivity_not_connected));
-    dcContext.setStockTranslation(122, context.getString(R.string.aeap_addr_changed));
     dcContext.setStockTranslation(162, context.getString(R.string.multidevice_qr_subtitle));
     dcContext.setStockTranslation(163, context.getString(R.string.multidevice_transfer_done_devicemsg));
-
-    // The next two strings should only be set if the UI actually shows more info when the user clicks on the
-    // DC_INFO_PROTECTION_{EN|DIS}ABLED info message
     dcContext.setStockTranslation(170, context.getString(R.string.chat_protection_enabled_tap_to_learn_more));
-    dcContext.setStockTranslation(171, context.getString(R.string.chat_protection_broken_tap_to_learn_more));
-
     dcContext.setStockTranslation(172, context.getString(R.string.chat_new_group_hint));
     dcContext.setStockTranslation(173, context.getString(R.string.member_x_added));
     dcContext.setStockTranslation(174, context.getString(R.string.invalid_unencrypted_tap_to_learn_more));
     dcContext.setStockTranslation(176, context.getString(R.string.reaction_by_you));
     dcContext.setStockTranslation(177, context.getString(R.string.reaction_by_other));
     dcContext.setStockTranslation(190, context.getString(R.string.secure_join_wait));
-    dcContext.setStockTranslation(192, context.getString(R.string.secure_join_takes_longer));
+    dcContext.setStockTranslation(193, context.getString(R.string.donate_device_msg));
   }
 
   public static File getImexDir() {
@@ -461,20 +455,10 @@ public class DcHelper {
       }
   }
 
-  public static void showVerificationBrokenDialog(Context context, String name) {
-    new AlertDialog.Builder(context)
-      .setMessage(context.getString(R.string.chat_protection_broken_explanation, name))
-      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#nocryptanymore"))
-      .setNegativeButton(R.string.qrscan_title, (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
-      .setPositiveButton(R.string.ok, null)
-      .setCancelable(true)
-      .show();
-  }
-
   public static void showProtectionEnabledDialog(Context context) {
     new AlertDialog.Builder(context)
       .setMessage(context.getString(R.string.chat_protection_enabled_explanation))
-      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#e2eeguarantee"))
+      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#e2ee"))
       .setPositiveButton(R.string.ok, null)
       .setCancelable(true)
       .show();
@@ -495,4 +479,62 @@ public class DcHelper {
     if (section != null) { intent.putExtra(LocalHelpActivity.SECTION_EXTRA, section); }
     context.startActivity(intent);
   }
+
+    /**
+     * For the PGP-Contacts migration, things can go wrong.
+     * The migration happens when the account is setup, at which point no events can be sent yet.
+     * So, instead, if something goes wrong, it's returned by getLastError().
+     * This function shows the error message to the user.
+     * <p>
+     * A few releases after the PGP-contacts migration (which happened in 2025-05),
+     * we can remove this function again.
+     */
+    public static void maybeShowMigrationError(Context context) {
+        try {
+            String lastError = DcHelper.getRpc(context).getMigrationError(DcHelper.getContext(context).getAccountId());
+
+            if (lastError != null && !lastError.isEmpty()) {
+                Log.w(TAG, "Opening account failed, trying to share error: " + lastError);
+
+                String subject = "Delta Chat failed to update";
+                String email = "delta@merlinux.eu";
+
+                new AlertDialog.Builder(context)
+                        .setMessage(context.getString(R.string.error_x, lastError))
+                        .setNeutralButton(R.string.global_menu_edit_copy_desktop, (d, which) -> {
+                            Util.writeTextToClipboard(context, lastError);
+                        })
+                        .setPositiveButton(R.string.menu_send, (d, which) -> {
+                            Intent sharingIntent = new Intent(
+                                    Intent.ACTION_SENDTO, Uri.fromParts(
+                                    "mailto", email, null
+                            )
+                            );
+                            sharingIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+                            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                            sharingIntent.putExtra(Intent.EXTRA_TEXT, lastError);
+
+                            if (sharingIntent.resolveActivity(context.getPackageManager()) == null) {
+                                Log.w(TAG, "No email client found to send crash report");
+                                sharingIntent = new Intent(Intent.ACTION_SEND);
+                                sharingIntent.setType("text/plain");
+                                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                                sharingIntent.putExtra(Intent.EXTRA_TEXT, lastError);
+                                sharingIntent.putExtra(Intent.EXTRA_EMAIL, email);
+                            }
+
+                            Intent chooser =
+                                    Intent.createChooser(sharingIntent, "Send using...");
+                            chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            chooser.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+
+                            context.startActivity(chooser);
+                        })
+                        .setCancelable(false)
+                        .show();
+            }
+        } catch (RpcException e) {
+            e.printStackTrace();
+        }
+    }
 }

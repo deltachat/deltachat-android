@@ -268,8 +268,10 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
       itemMultiSelect = false; // the item creates a new contact in the list that will be selected instead
     } else if (id == DcContact.DC_CONTACT_ID_NEW_GROUP) {
       name = context.getString(R.string.menu_new_group);
-    } else if (id == DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST) {
-      name = context.getString(R.string.new_broadcast_list);
+    } else if (id == DcContact.DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP) {
+      name = context.getString(R.string.new_email);
+    } else if (id == DcContact.DC_CONTACT_ID_NEW_BROADCAST) {
+      name = context.getString(R.string.new_channel);
     } else if (id == DcContact.DC_CONTACT_ID_QR_INVITE) {
       name = context.getString(R.string.menu_new_contact);
     } else {

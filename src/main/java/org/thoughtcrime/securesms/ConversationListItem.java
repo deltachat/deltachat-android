@@ -35,7 +35,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.amulyakhare.textdrawable.TextDrawable;
-import com.annimon.stream.Stream;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -55,7 +54,6 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 public class ConversationListItem extends RelativeLayout
@@ -134,6 +132,7 @@ public class ConversationListItem extends RelativeLayout
       this.fromView.setText(recipient, state!=DcMsg.DC_STATE_IN_FRESH);
     }
 
+    subjectView.setVisibility(chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK? GONE : VISIBLE);
     this.subjectView.setText(thread.getDisplayBody());
     this.subjectView.setTypeface(state==DcMsg.DC_STATE_IN_FRESH ? BOLD_TYPEFACE : LIGHT_TYPEFACE);
     this.subjectView.setTextColor(state==DcMsg.DC_STATE_IN_FRESH ? ThemeUtil.getThemedColor(getContext(), R.attr.conversation_list_item_unread_color)
@@ -164,7 +163,7 @@ public class ConversationListItem extends RelativeLayout
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
         0,
-        thread.isProtected()? R.drawable.ic_verified : 0,
+        0,
         0);
   }
 
@@ -177,7 +176,7 @@ public class ConversationListItem extends RelativeLayout
 
     fromView.setText(getHighlightedSpan(contact.getDisplayName(), highlightSubstring));
     fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    subjectView.setText(getHighlightedSpan(contact.getAddr(), highlightSubstring));
+    subjectView.setVisibility(GONE);
     dateView.setText("");
     dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     archivedBadgeView.setVisibility(GONE);
@@ -201,6 +200,7 @@ public class ConversationListItem extends RelativeLayout
 
     fromView.setText(recipient, true);
     fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    subjectView.setVisibility(VISIBLE);
     subjectView.setText(getHighlightedSpan(messageResult.getSummarytext(512), highlightSubstring));
 
     long timestamp = messageResult.getTimestamp();
@@ -316,15 +316,12 @@ public class ConversationListItem extends RelativeLayout
 
     String       normalizedValue  = value.toLowerCase(Util.getLocale());
     String       normalizedTest   = highlight.toLowerCase(Util.getLocale());
-    List<String> testTokens;
-    try (Stream<String> stream = Stream.of(normalizedTest.split(" "))) {
-      testTokens = stream.filter(s -> !s.trim().isEmpty()).toList();
-    }
 
     Spannable spanned          = new SpannableString(value);
     int       searchStartIndex = 0;
 
-    for (String token : testTokens) {
+    for (String token : normalizedTest.split(" ")) {
+      if (token.trim().isEmpty()) continue;
       if (searchStartIndex >= spanned.length()) {
         break;
       }

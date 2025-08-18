@@ -233,8 +233,6 @@
     <string name="videochat_invitation">بانگهێشتی وتووێژی ڤیدیۆیی</string>
     <string name="videochat_invitation_body">تۆ بانگهێشت کراوی بۆ وتووێژێکی ڤیدیۆیی، بۆ بەشدار بوون لەسەر %1$s کرتە بکە.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">دڵنیای دەتەوێت ئەم کۆڕە بەجێ بێڵیت؟</string>
     <string name="ask_forward">ئەو پەیامانە دەنێریت بۆ %1$s؟</string>
     <string name="ask_forward_multiple">ئەو پەیامانە دەنێریت بۆ نێو %1$dوتووێژ؟</string>
     <string name="ask_export_attachment">پێوەلکاوەکە هەناردە دەکەیت؟ هەناردەکردنی پێوەلکاوەکان وادەکات نەرمامێرەکانی دیکەی سەر مۆبایلەکەت بتوانن دەستیان بەو بەڵگە هەناردەکراوە بگات.\n\n بەردەوام دەبیت؟</string>
@@ -497,8 +495,9 @@
     <string name="qraccount_ask_create_and_login">دەتەوێت ناونیشانی ئیمەیلێکی نوێ لەسەر \"%1$s\" درووست بکەیت و لەوێ بچیتە ژوورەوە؟</string>
     <string name="qraccount_qr_code_cannot_be_used">ناتوانی لە کۆدی QRە سکان کراوەکە کەڵک بگریت بۆ پێکهێنانی هەژمارێکی نوێ.</string>
     <string name="contact_verified">%1$s پشتڕاست کرایەوە</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">%1$s پشتڕاست ناکرێتەوە.</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">ڕێکخستن بۆ %1$s گۆڕا.</string>
     <!-- notifications  -->
     <string name="notify_reply_button">وەڵام دانەوە</string>
@@ -517,7 +516,7 @@
     <string name="perm_explain_access_to_mic_denied">بۆ هەناردنی پەیامی دەنگی، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی \"ڕێگەپێدان\"دا، \"مایک\" چالاک بکەوە.</string>
     <string name="perm_explain_access_to_storage_denied">بۆ هەناردن و وەرگرتنی پەڕگەکان، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی \"ڕێگەپێدان\"دا، \"بیرگە\" چالاک بکەوە.</string>
     <string name="perm_explain_access_to_location_denied">بۆ لکاندنی شوێنێک، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی \"ڕێگەپێدان\"دا، \"شوێن\" چالاک بکەوە.</string>
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">پەیامی شفرەکراو</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->

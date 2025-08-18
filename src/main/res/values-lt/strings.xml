@@ -277,7 +277,6 @@
     <string name="reply_privately">Atsakyti privačiai</string>
     <string name="source_code">Pirminis kodas</string>
     <string name="donate">Paaukoti</string>
-
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
     <string name="mute_for_eight_hours">Išjungti 8 valandoms</string>
     <string name="mute_for_one_day">Išjungti 1 dienai</string>
@@ -306,8 +305,6 @@
     <string name="videochat_invitation">Pakvietimas į vaizdo pokalbį</string>
     <string name="videochat_invitation_body">Jūs esate kviečiami į vaizdo pokalbį. Spustelėkite %1$s jei norite prisijungti.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Ar tikrai norite išeiti iš šios grupės?</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ištrinti %d žinutę?</item>
@@ -418,7 +415,7 @@
     <string name="tab_all_media_empty_hint">Čia bus rodoma bet kuriame pokalbyje bendrinama medija.</string>
     <string name="media_preview">Medijos peržiūra</string>
     <string name="send_message">Siųsti žinutę</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$s pasikeitė adresą iš %2$s į %3$s</string>
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -670,8 +667,6 @@
     <string name="group_name_changed_by_you">Jūs pakeitėte grupės pavadinimą iš „%1$s“ į „%2$s“.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s pakeitė grupės pavadinimą iš „%1$s“ į „%2$s“.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Jūs išėjote iš grupės.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s išėjo iš grupės.</string>
     <string name="group_image_deleted_by_you">Jūs ištrynėte grupės paveikslą.</string>
@@ -712,8 +707,9 @@
     <string name="ephemeral_timer_weeks_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į %1$s sav.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s nustatė išnykstančių žinučių laikmatį į %1$s sav. </string>
-    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <!-- deprecated -->
     <string name="chat_protection_broken">%1$s išsiuntė žinutę iš kito įrenginio.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s išsiuntė žinutę iš kito įrenginio. Bakstelėkite norėdami sužinoti daugiau.</string>
     <string name="learn_more">Sužinoti daugiau</string>
 
@@ -750,8 +746,9 @@
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Prisijungti prie „%1$s“?</string>
     <string name="contact_verified">%1$s patvirtintas.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Nepavyksta patvirtinti %1$s</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Pakeista sąranka, skirta %1$s.</string>
     <string name="mailto_dialog_header_select_chat">Pasirinkite pokalbį, į kurį siųsti žinutę</string>
     <string name="mailto_link_could_not_be_decoded">nepavyko dekoduoti mailto nuorodos: %1$s</string>
@@ -780,7 +777,7 @@
     <string name="ImageEditorHud_flip">Apversti</string>
     <string name="ImageEditorHud_rotate">Pasukti</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Šifruota žinutė</string>
 
     <string name="about_licensed_under_desktop">Ši programinė įranga yra licencijuota pagal GNU GPL versiją 3, o pirminis kodas yra prieinamas „GitHub“ internetinėje svetainėje.</string>

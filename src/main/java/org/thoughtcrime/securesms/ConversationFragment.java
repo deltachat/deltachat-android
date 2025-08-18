@@ -32,7 +32,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
@@ -168,8 +167,8 @@ public class ConversationFragment extends MessageSelectorFragment
     private void setNoMessageText() {
         DcChat dcChat = getListAdapter().getChat();
         if(dcChat.isMultiUser()){
-            if (dcChat.isBroadcast()) {
-              noMessageTextView.setText(R.string.chat_new_broadcast_hint);
+            if (dcChat.isInBroadcast() || dcChat.isOutBroadcast()) {
+              noMessageTextView.setText(R.string.chat_new_channel_hint);
             } else if (dcChat.isUnpromoted()) {
                 noMessageTextView.setText(R.string.chat_new_group_hint);
             }
@@ -331,8 +330,7 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_share).setVisible(messageRecord.hasFile());
             boolean canReply = canReplyToMsg(messageRecord);
             menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
-            boolean canEdit = canEditMsg(messageRecord);
-            menu.findItem(R.id.menu_context_edit).setVisible(chat.canSend() && canEdit);
+            menu.findItem(R.id.menu_context_edit).setVisible(chat.isEncrypted() && chat.canSend() && canEditMsg(messageRecord));
             boolean showReplyPrivately = chat.isMultiUser() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
             menu.findItem(R.id.menu_add_to_home_screen).setVisible(messageRecord.getType() == DcMsg.DC_MSG_WEBXDC);
@@ -825,7 +823,7 @@ public class ConversationFragment extends MessageSelectorFragment
       public void onShowFullClicked(DcMsg messageRecord) {
         Intent intent = new Intent(getActivity(), FullMsgActivity.class);
         intent.putExtra(FullMsgActivity.MSG_ID_EXTRA, messageRecord.getId());
-        intent.putExtra(FullMsgActivity.BLOCK_LOADING_REMOTE, getListAdapter().getChat().isHalfBlocked());
+        intent.putExtra(FullMsgActivity.BLOCK_LOADING_REMOTE, getListAdapter().getChat().isContactRequest());
         startActivity(intent);
         getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
       }
@@ -855,18 +853,12 @@ public class ConversationFragment extends MessageSelectorFragment
 
     private class ActionModeCallback implements ActionMode.Callback {
 
-        private int statusBarColor;
-
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
             MenuInflater inflater = mode.getMenuInflater();
             inflater.inflate(R.menu.conversation_context, menu);
 
             mode.setTitle("1");
-
-            Window window = getActivity().getWindow();
-            statusBarColor = window.getStatusBarColor();
-            window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
 
             Util.redMenuItem(menu, R.id.menu_context_delete_message);
             setCorrectMenuVisibility(menu);
@@ -883,8 +875,6 @@ public class ConversationFragment extends MessageSelectorFragment
         public void onDestroyActionMode(ActionMode mode) {
             ((ConversationAdapter)list.getAdapter()).clearSelection();
             list.getAdapter().notifyDataSetChanged();
-
-            getActivity().getWindow().setStatusBarColor(statusBarColor);
 
             actionMode = null;
             hideAddReactionView();

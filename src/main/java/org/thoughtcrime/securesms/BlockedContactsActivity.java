@@ -30,9 +30,11 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void onCreate(Bundle bundle, boolean ready) {
+    setContentView(R.layout.activity_blocked_contacts);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setTitle(R.string.pref_blocked_contacts);
-    initFragment(android.R.id.content, new BlockedAndShareContactsFragment(), getIntent().getExtras());
+    getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
+    initFragment(R.id.fragment, new BlockedAndShareContactsFragment(), getIntent().getExtras());
   }
 
   @Override

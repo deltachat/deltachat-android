@@ -136,7 +136,6 @@
         <item quantity="one">%dmarkerade</item>
         <item quantity="other">%d markerad</item>
     </plurals>
-
     <string name="self">Jag</string>
     <string name="draft">Utkast</string>
     <string name="image">Bild</string>
@@ -202,13 +201,18 @@
     <string name="menu_new_chat">Ny chatt</string>
     <string name="menu_new_group">Ny grupp</string>
     <string name="clone_chat">Klona chatt</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Sändlista</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Sändlistor</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Ny sändlista</string>
     <string name="add_recipients">Lägg till mottagare</string>
+    <!-- deprecated -->
     <string name="edit_broadcast_list">Redigera sändlista</string>
+    <!-- deprecated -->
     <string name="broadcast_list_name">Sändlistans namn</string>
+    <!-- deprecated -->
     <string name="please_enter_broadcast_list_name">Ange ett namn på sändlistan</string>
     <string name="menu_send">Skicka</string>
     <string name="menu_toggle_keyboard">Byt emoji-tangentbord</string>
@@ -296,7 +300,6 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Lägg till på hemskärmen</string>
     <string name="donate">Donera</string>
-
     <string name="mute_for_one_hour">Tysta 1 timma</string>
     <string name="mute_for_eight_hours">Tysta 8 timmar</string>
     <string name="mute_for_one_day">Tysta 1 dag</string>
@@ -331,8 +334,6 @@
     <string name="videochat_invitation">Videochattinbjudan</string>
     <string name="videochat_invitation_body">Du är inbjuden till en videochatt, klicka på %1$s för att ansluta.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Är du säker på att du vill lämna den här gruppen?</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Vill du ta bort %d meddelande?</item>
@@ -348,7 +349,7 @@
     <string name="ask_start_chat_with">Chatta med %1$s ?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Ta bort %1$s från gruppen?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Vill du ta bort %1$s från sändlistan?</string>
     <string name="open_url_confirmation">Vill du öppna denna länk?</string>
 
@@ -379,6 +380,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Skicka ett meddelande till %1$s.</string>
+    <!-- deprecated -->
     <string name="chat_new_broadcast_hint">I en sändlista kommer mottagarna att få meddelanden i en skrivskyddad chatt med dig.</string>
     <string name="chat_new_group_hint">Komponera det första meddelandet, så att andra kan svara inom denna grupp.\n\n• Det är okej om inte alla medlemmar använder Delta Chat.\n\n• Det kan ta en stund innan det första meddelandet levereras.</string>
     <string name="chat_record_slide_to_cancel">Svep för att avbryta</string>
@@ -477,7 +479,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Kvadratiskt rutnät</string>
     <string name="send_message">Skicka meddelande</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$s ändrade sin adress från %2$s till %3$s</string>
     <!-- deprecated -->
     <string name="aeap_explanation">Du har ändrat din e-postadress från %1$s till %2$s.\n\nOm du nu skickar ett meddelande till en verifierad grupp kommer kontakterna där automatiskt att ersätta den gamla med din nya adress. Vi rekommenderar starkt att du ställer in din gamla e-postleverantör så att den vidarebefordrar alla e-postmeddelanden till din nya e-postadress. Annars kan du missa meddelanden från kontakter som inte har fått din nya adress ännu.</string>
@@ -807,8 +809,6 @@
     <string name="remove_member_by_you">Medlemmen %1$s togs bort av mig.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Medlemmen %1$s togs bort av %2$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Du lämnade gruppen.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Gruppen lämnades av %1$s.</string>
     <string name="group_image_deleted_by_you">Gruppbilden togs bort av mig.</string>
@@ -852,11 +852,13 @@
     <string name="ephemeral_timer_weeks_by_you">Du satte tiduret för meddelandeborttagning till %1$s veckor.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Tiduret för meddelandeborttagning är satt till %1$s veckor av %2$s.</string>
-    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <!-- deprecated -->
     <string name="chat_protection_broken">%1$s skickade ett meddelande från en annan enhet.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Meddelanden är garanterat totalsträckskrypterade från och med nu. Tryck för att få veta mer.</string>
     <string name="chat_protection_enabled_explanation">Det är nu garanterat att alla meddelanden i den här chatten är totalsträckskrypterade.\n\nTotalsträckskryptering håller meddelanden privata mellan dig och dina chattpartners. Inte ens din e-postleverantör kan läsa dem.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_tap_to_learn_more">%1$s skickade ett meddelande från en annan enhet. Tryck för att läsa mer.</string>
+    <!-- deprecated -->
     <string name="chat_protection_broken_explanation">Totalsträckskryptering kan inte garanteras längre, troligen för att %1$s installerade om Delta Chat eller skickade ett meddelande från en annan enhet.\n\nDu kan träffa dem personligen och skanna deras QR-kod igen för att återupprätta garanterad totalsträckskryptering.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s kräver totalsträckskryptering som inte är kofigurerad för den här chatten ännu. Tryck för att lära dig mer.</string>
     <string name="invalid_unencrypted_explanation">För att skapa totalsträckskryptering kan du träffa kontakter personligen och skanna deras QR-kod för att introducera dem.</string>
@@ -919,11 +921,12 @@
     <!-- deprecated -->
     <string name="secure_join_wait_timeout">Kunde ännu inte upprätta garanterad totalsträckskryptering, men du kan redan skicka ett meddelande.</string>
     <string name="contact_verified">%1$s verifierad.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Kan inte verifiera %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Introducerad av %1$s</string>
     <string name="verified_by_you">Introducerad av mig</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Ändrade inställningarna för %1$s.</string>
     <string name="verified_contact_required_explain">För att garantera totalsträckskryptering  kan du bara lägga till kontakter med en grön bock i den här gruppen.\n\nDu kan träffa kontakter personligen och skanna deras QR-kod för att introducera dem.</string>
     <string name="mailto_dialog_header_select_chat">Välj chatt för att skicka meddelandet till</string>
@@ -967,7 +970,7 @@
     <string name="ImageEditorHud_flip">Vänd</string>
     <string name="ImageEditorHud_rotate">Rotera</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Krypterat meddelande</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
@@ -1078,5 +1081,6 @@
     <string name="perm_enable_bg_reminder_title">Tryck här för att ta emot meddelanden medan Delta Chat är i bakgrunden.</string>
     <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
 
+    <!-- deprecated -->
     <string name="update_switch_profile_placement">ℹ️ Alternativet \"Byt profil\" har flyttats: Tryck på din profilbild i det övre hörnet av huvudskärmen för att lägga till eller byta profil 💡</string>
 </resources>

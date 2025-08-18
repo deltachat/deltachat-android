@@ -248,8 +248,6 @@
     <string name="videochat_invitation">ビデオ通話に招待</string>
     <string name="videochat_invitation_body">ビデオ通話に招待されて、%1$sで参加</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">本当に退室しますか</string>
     <string name="ask_forward">%1$sにメッセージを転送しますか？</string>
     <string name="ask_forward_multiple">%1$dチャットにメッセージを転送しますか？</string>
     <string name="ask_export_attachment">添付ファイルをエクスポートしますか？添付ファイルをエクスポートすると、他のアプリからもアクセスできるようになります。\n\nよろしいですか？</string>
@@ -597,8 +595,9 @@
     <string name="qrshow_join_contact_no_connection_toast">インターネットに接続されていないので、QRコードの設定ができません。</string>
     <string name="qraccount_ask_create_and_login">%1$sに新しいメールアドレスを作ってログしますか。</string>
     <string name="contact_verified">%1$sを確認しました。</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">%1$sを確認できません。</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">設定が%1$sに変わりました。</string>
     <!-- notifications  -->
     <string name="notify_reply_button">返信</string>
@@ -617,7 +616,7 @@
     <string name="ImageEditorHud_flip">反転</string>
     <string name="ImageEditorHud_rotate">回転</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">暗号化されたメッセージ</string>
 
     <string name="welcome_desktop">Delta Chatにようこそ</string>

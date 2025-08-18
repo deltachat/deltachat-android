@@ -49,7 +49,6 @@ import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
-import org.thoughtcrime.securesms.profiles.ProfileMediaConstraints;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
@@ -99,6 +98,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.onboarding_create_instant_account);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
 
     boolean fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
     if (DcHelper.getContext(this).isConfigured() == 1) {
@@ -284,14 +284,13 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   }
 
   private void setAvatarView(Uri output) {
-    final ProfileMediaConstraints constraints = new ProfileMediaConstraints();
     GlideApp.with(this)
       .asBitmap()
       .load(output)
       .skipMemoryCache(true)
       .diskCacheStrategy(DiskCacheStrategy.NONE)
       .centerCrop()
-      .override(constraints.getImageMaxWidth(this), constraints.getImageMaxHeight(this))
+      .override(AvatarHelper.AVATAR_SIZE, AvatarHelper.AVATAR_SIZE)
       .into(new CustomTarget<Bitmap>() {
           @Override
           public void onResourceReady(@NonNull Bitmap resource, Transition<? super Bitmap> transition) {

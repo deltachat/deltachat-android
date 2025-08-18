@@ -41,6 +41,8 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import java.util.Arrays;
+
 public class AccountSelectionListFragment extends DialogFragment implements DcEventCenter.DcEventDelegate
 {
   private static final String TAG = AccountSelectionListFragment.class.getSimpleName();
@@ -134,7 +136,33 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
       onToggleMute(accountId);
     } else if (itemId == R.id.menu_set_tag) {
       onSetTag(accountId);
+    } else if (itemId == R.id.menu_move_to_top) {
+      onMoveToTop(accountId);
     }
+  }
+
+  private void onMoveToTop(int accountId) {
+    Activity activity = getActivity();
+    if (activity == null) return;
+
+    int[] accountIds = DcHelper.getAccounts(activity).getAll();
+    Integer[] ids = new Integer[accountIds.length];
+    ids[0] = accountId;
+    int j = 1;
+    for (int accId : accountIds) {
+      if (accId != accountId) {
+        ids[j++] = accId;
+      }
+    }
+
+    Rpc rpc = DcHelper.getRpc(activity);
+    try {
+      rpc.setAccountsOrder(Arrays.asList(ids));
+    } catch (RpcException e) {
+      Log.e(TAG, "Error calling rpc.setAccountsOrder()", e);
+    }
+
+    refreshData();
   }
 
   private void onSetTag(int accountId) {

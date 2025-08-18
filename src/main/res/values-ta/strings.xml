@@ -144,8 +144,6 @@
     <string name="share_location_for_two_hours">2 மணிகள்</string>
     <string name="share_location_for_six_hours">6 மணிகள்</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">இந்த குழுவில் இருந்து வெளியேறவா ?</string>
     <string name="ask_forward">தேர்வு செய்யப்பட்ட செய்திகளை இவற்றுக்கு %1$s முன்னோக்கி அனுப்பவா ?</string>
     <string name="ask_block_contact">இந்த தொடர்பை முடக்கவா ?</string>
     <!-- contact list -->
@@ -228,7 +226,7 @@
     <!-- permissions -->
     <string name="perm_required_title">அனுமதி தேவை</string>
     <string name="perm_continue">தொடர்</string>
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">மறைகுறியாக்கப்பட்ட செய்தி</string>
 
     <string name="welcome_desktop">Delta Chat க்கு வரவேற்கிறது.</string>

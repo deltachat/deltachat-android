@@ -48,6 +48,7 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
     if (actionBar != null) {
       actionBar.setDisplayHomeAsUpEnabled(true);
       actionBar.setTitle(R.string.webxdc_apps);
+      actionBar.setElevation(0); // TODO: use custom toolbar instead
     }
 
     webView.setWebViewClient(new WebViewClient() {

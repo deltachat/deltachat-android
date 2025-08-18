@@ -3,11 +3,14 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="?attr/colorPrimary"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -19,26 +22,11 @@
                 app:contentInsetLeft="14dp"
                 android:elevation="4dp"
                 android:theme="?attr/actionBarStyle"/>
-
-        <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="4dp"
-                android:layout_gravity="top"
-                android:background="?attr/colorPrimary"
-                app:tabMode="scrollable"
-                app:tabPaddingStart="8dp"
-                app:tabPaddingEnd="8dp"
-                app:tabBackground="?attr/colorPrimary"
-                app:tabIndicatorColor="@color/white"
-                app:tabTextColor="@color/gray10"
-                app:tabSelectedTextColor="@color/white"/>
-
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
-            android:id="@+id/pager"
+    <FrameLayout
+            android:id="@+id/fragment_container"
+            android:background="?android:attr/windowBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>

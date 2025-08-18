@@ -150,7 +150,6 @@
         <item quantity="one">%d Seleccionados</item>
         <item quantity="other">%d Seleccionado</item>
     </plurals>
-
     <string name="self">Eu</string>
     <string name="draft">Borrador</string>
     <string name="image">Imaxe</string>
@@ -228,9 +227,11 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Conversar con…</string>
     <string name="clone_chat">Clonar conversa</string>
-    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <!-- deprecated -->
     <string name="broadcast_list">Lista de difusión</string>
+    <!-- deprecated -->
     <string name="broadcast_lists">Listas de difusión</string>
+    <!-- deprecated -->
     <string name="new_broadcast_list">Nova lista de difusión</string>
     <string name="add_recipients">Engadir correspondentes</string>
     <string name="menu_send">Enviar</string>
@@ -324,7 +325,6 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Engadir á pantalla de Inicio</string>
     <string name="donate">Doar</string>
-
     <string name="mute_for_one_hour">Acalar durante 1 h.</string>
     <string name="mute_for_eight_hours">Acalar durante 8 horas</string>
     <string name="mute_for_one_day">Acalar durante 1 día</string>
@@ -359,8 +359,6 @@
     <string name="videochat_invitation">Convite a chat de vídeo</string>
     <string name="videochat_invitation_body">Convidáronte a un chat de vídeo, preme %1$s para unirte.</string>
 
-    <!-- get confirmations -->
-    <string name="ask_leave_group">Seguro que desexa abandonar o grupo?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Eliminar %d conversa en todos os teus dispositivos?</item>
         <item quantity="other">Eliminar %d conversas en todos os teus dispositivos?</item>
@@ -386,7 +384,7 @@
     <string name="ask_start_chat_with">Conversa con %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Eliminar  %1$s do grupo?</string>
-    <!-- %1$s is replaced by a comma-separated list of names -->
+    <!-- deprecated -->
     <string name="ask_remove_from_broadcast">Eliminar %1$s da lista de difusión?</string>
     <string name="open_url_confirmation">Queres abrir esta ligazón?</string>
 
@@ -524,7 +522,7 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Grella cadrada</string>
     <string name="send_message">Enviar mensaxe</string>
-    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new addresses. -->
+    <!-- deprecated, was stock string -->
     <string name="aeap_addr_changed">%1$s cambiou o seu enderezo de %2$s a %3$s</string>
     <!-- deprecated -->
     <string name="aeap_explanation">Cambiaches o teu enderezo de email de %1$s a %2$s.\n\nSe envías unha mensaxe a un grupo verificado os contactos cambiarán automáticamente o enderezo antigo polo novo.\n\nÉ moi recomendable que configures o email antigo para que che reenvíe todo o correo ao novo enderezo. De non facelo poderías perder mensaxes de contactos que aínda non coñezan o teu novo enderezo.</string>
@@ -838,8 +836,6 @@
     <string name="remove_member_by_you">Eliminaches a %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%1$s eliminado por %2$s.</string>
-    <!-- "left" in the meaning of "exited" -->
-    <string name="group_left_by_you">Saíches do grupo</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s deixou o grupo.</string>
     <string name="group_image_deleted_by_you">Eliminaches a imaxe do grupo</string>
@@ -903,8 +899,9 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s respondeu, agardando a que sexa engadido ao grupo...</string>
     <string name="contact_verified">%1$s verificado.</string>
+    <!-- deprecated, was stock string -->
     <string name="contact_not_verified">Non se puido verificar %1$s.</string>
-    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <!-- deprecated, was stock string -->
     <string name="contact_setup_changed">Cambiaron os axustes para %1$s.</string>
     <string name="mailto_dialog_header_select_chat">Elexir chat ao que enviar a mensaxe</string>
     <!-- first placeholder is the name of the chat -->
@@ -938,7 +935,7 @@
     <string name="ImageEditorHud_flip">Voltear</string>
     <string name="ImageEditorHud_rotate">Rotar</string>
 
-    <!-- dc_str_* resources -->
+    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
     <string name="encrypted_message">Mensaxe cifrada</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
