@@ -240,12 +240,6 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Chat with…</string>
     <string name="clone_chat">Clone Chat</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Broadcast List</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Broadcast Lists</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">New Broadcast List</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel">Channel</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -253,12 +247,6 @@
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">New Channel</string>
     <string name="add_recipients">Add Recipients</string>
-    <!-- deprecated -->
-    <string name="edit_broadcast_list">Edit Broadcast List</string>
-    <!-- deprecated -->
-    <string name="broadcast_list_name">Broadcast List Name</string>
-    <!-- deprecated -->
-    <string name="please_enter_broadcast_list_name">Please enter a name for the broadcast list.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Channel Name</string>
     <string name="email">E-Mail</string>
@@ -424,8 +412,6 @@
     <string name="ask_start_chat_with">Chat with %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Remove %1$s from broadcast list?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_channel">Remove %1$s from channel?</string>
     <string name="open_url_confirmation">Do you want to open this link?</string>
@@ -457,8 +443,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Send a message to %1$s.</string>
-    <!-- deprecated -->
-    <string name="chat_new_broadcast_hint">In a broadcast list, recipients will receive messages in a read-only chat with you.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="chat_new_channel_hint">Channels are a one-to-many tool for broadcasting your messages.</string>
     <string name="chat_new_group_hint">Others will only see this group after you sent a first message.</string>
@@ -569,11 +553,6 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Square Grid</string>
     <string name="send_message">Send Message</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s changed their address from %2$s to %3$s</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">You changed your email address from %1$s to %2$s.\n\nIf you now send a message to a verified group, contacts there will automatically replace the old with your new address.\n\nIt\'s highly advised to set up your old email provider to forward all emails to your new email address. Otherwise you might miss messages of contacts who did not get your new address yet.</string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -975,14 +954,8 @@
     <string name="ephemeral_timer_weeks_by_you">You set disappearing messages timer to %1$s weeks.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Disappearing messages timer set to %1$s weeks by %2$s.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken">%1$s sent a message from another device.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Messages are end-to-end encrypted. Tap to learn more.</string>
     <string name="chat_protection_enabled_explanation">All messages in this chat are end-to-end encrypted.\n\nEnd-to-end encryption keeps messages private between you and your chat partners. Not even servers, providers or relays can read them.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_tap_to_learn_more">%1$s sent a message from another device. Tap to learn more.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_explanation">End-to-end encryption cannot be guaranteed anymore, likely because %1$s reinstalled Delta Chat or sent a message from another device.\n\nYou may meet them in person and scan their QR code again to reestablish guaranteed end-to-end encryption.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s requires end-to-end encryption which is not setup for this chat yet. Tap to learn more.</string>
     <string name="invalid_unencrypted_explanation">To establish end-to-end-encryption, you may meet contacts in person and scan their QR Code to introduce them.</string>
     <string name="learn_more">Learn More</string>
@@ -1041,19 +1014,11 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s replied, waiting for being added to the group…</string>
     <string name="secure_join_wait">Establishing end-to-end encryption, please wait…</string>
-    <!-- deprecated -->
-    <string name="secure_join_wait_timeout">Could not yet establish guaranteed end-to-end encryption, but you may already send a message.</string>
-    <!-- deprecated, was stock string -->
-    <string name="secure_join_takes_longer">The contact must be online to proceed.\n\nThis process will continue automatically in background.</string>
     <string name="contact_verified">%1$s introduced.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Cannot establish end-to-end encryption with %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Introduced by %1$s</string>
     <string name="verified_by_you">Introduced by me</string>
     <string name="verified_by_unknown">Introduced</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Changed setup for %1$s.</string>
     <string name="verified_contact_required_explain">To guarantee end-to-end-encryption, you can only add contacts with a green checkmark to this group.\n\nYou may meet contacts in person and scan their QR Code to introduce them.</string>
     <string name="mailto_dialog_header_select_chat">Select chat to send the message to</string>
     <!-- first placeholder is the name of the chat -->
@@ -1095,9 +1060,6 @@
     <string name="ImageEditorHud_crop">Crop</string>
     <string name="ImageEditorHud_flip">Flip</string>
     <string name="ImageEditorHud_rotate">Rotate</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Encrypted message</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">This is the official Delta Chat Desktop app.</string>
@@ -1213,7 +1175,6 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat wants to save images to your photo library.</string>
     <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat can use Face ID to protect your local profile, backup creation and second device setup.</string>
 
-
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Instant Delivery</string>
     <string name="pref_background_notifications">Use Background Connection</string>
@@ -1228,8 +1189,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">What\'s new?\n\n💯 End-to-end encryption is reliable and forever now. Padlocks 🔒 are gone!\n\n✉️ Classic email without end-to-end encryption is marked with a letter symbol\n\n😻 New enhanced profile screen for all your contacts\n\n🔲 New button for quick access to apps used in a chat\n\n❤️ Please donate to help us remain independent and continue to bring improvements: %1$s</string>
-    <!-- deprecated -->
-    <string name="update_1_50_android">What\'s new?\n\n❤️‍🔥 New emojis picker with more emoji\n\n🎮 Enhanced in-chat apps: Get notifications and open supporting apps in context, i.e. open an added calendar entry directly\n\n👍 Get notified about reactions to your messages\n\n... 🛠️ FIXES and EVEN MORE at %1$s</string>
-    <!-- deprecated -->
-    <string name="update_switch_profile_placement">ℹ️ \"Switch Profile\" option moved: Tap your profile image in the upper corner of the main screen to add or switch profiles 💡</string>
 </resources>
