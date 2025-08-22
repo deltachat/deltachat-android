@@ -60,14 +60,12 @@ public class EphemeralMessagesDialog {
                 .setPositiveButton(R.string.ok, (dialog, which) -> {
                     final long burnAfter;
                     switch (selectedChoice[0]) {
-                        case 1:  burnAfter = TimeUnit.MINUTES.toSeconds(1); break;
-                        case 2:  burnAfter = TimeUnit.MINUTES.toSeconds(5); break;
-                        case 3:  burnAfter = TimeUnit.MINUTES.toSeconds(30); break;
-                        case 4:  burnAfter = TimeUnit.HOURS.toSeconds(1); break;
-                        case 5:  burnAfter = TimeUnit.DAYS.toSeconds(1);  break;
-                        case 6:  burnAfter = TimeUnit.DAYS.toSeconds(7);  break;
-                        case 7:  burnAfter = TimeUnit.DAYS.toSeconds(35); break;
-                        case 8:  burnAfter = TimeUnit.DAYS.toSeconds(365); break;
+                        case 1:  burnAfter = TimeUnit.MINUTES.toSeconds(5); break;
+                        case 2:  burnAfter = TimeUnit.HOURS.toSeconds(1); break;
+                        case 3:  burnAfter = TimeUnit.DAYS.toSeconds(1);  break;
+                        case 4:  burnAfter = TimeUnit.DAYS.toSeconds(7);  break;
+                        case 5:  burnAfter = TimeUnit.DAYS.toSeconds(35); break;
+                        case 6:  burnAfter = TimeUnit.DAYS.toSeconds(365); break;
                         default: burnAfter = 0; break;
                     }
                     listener.onTimeSelected(burnAfter);
