@@ -49,14 +49,12 @@
 
     <string-array name="ephemeral_message_durations">
         <!-- 0 --> <item>@string/off</item>
-        <!-- 1 --> <item>@string/after_1_minute</item>
-        <!-- 2 --> <item>@string/after_5_minutes</item>
-        <!-- 3 --> <item>@string/after_30_minutes</item>
-        <!-- 4 --> <item>@string/autodel_after_1_hour</item>
-        <!-- 5 --> <item>@string/autodel_after_1_day</item>
-        <!-- 6 --> <item>@string/autodel_after_1_week</item>
-        <!-- 7 --> <item>@string/after_5_weeks</item>
-        <!-- 8 --> <item>@string/autodel_after_1_year</item>
+        <!-- 1 --> <item>@string/after_5_minutes</item>
+        <!-- 2 --> <item>@string/autodel_after_1_hour</item>
+        <!-- 3 --> <item>@string/autodel_after_1_day</item>
+        <!-- 4 --> <item>@string/autodel_after_1_week</item>
+        <!-- 5 --> <item>@string/after_5_weeks</item>
+        <!-- 6 --> <item>@string/autodel_after_1_year</item>
     </string-array>
 
     <string-array name="mute_durations">
