@@ -38,6 +38,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   private CheckBoxPreference ignoreBattery;
   private CheckBoxPreference notificationsEnabled;
   private CheckBoxPreference mentionNotifEnabled;
+  private CheckBoxPreference reliableService;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -85,7 +86,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     }
 
 
-    CheckBoxPreference reliableService =  this.findPreference("pref_reliable_service");
+    reliableService =  this.findPreference("pref_reliable_service");
     if (reliableService != null) {
       reliableService.setOnPreferenceChangeListener((preference, newValue) -> {
         Context context = getContext();
@@ -132,6 +133,10 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
     notificationsEnabled.setChecked(!dcContext.isMuted());
     mentionNotifEnabled.setChecked(dcContext.isMentionsEnabled());
+    if (Prefs.reliableService(getActivity())) {
+      // only alter the "unset" state of the preference if true
+      reliableService.setChecked(true);
+    }
   }
 
   @Override
