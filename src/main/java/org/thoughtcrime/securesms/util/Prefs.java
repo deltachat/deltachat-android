@@ -12,10 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
 
 import java.util.ArrayList;
@@ -212,13 +214,36 @@ public class Prefs {
     return result==null? null : Uri.parse(result);
   }
 
+  private static boolean isAllChatmail(Context context) {
+    DcAccounts dcAccounts = DcHelper.getAccounts(context);
+    for (int accountId : dcAccounts.getAll()) {
+      DcContext dcContext = dcAccounts.getAccount(accountId);
+      if (!dcContext.isChatmail()) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   public static boolean reliableService(Context context) {
+    final String key = "pref_reliable_service";
+    boolean value = false;
     try {
-      return getBooleanPreference(context, "pref_reliable_service", false);
+      value = getBooleanPreference(context, key, false);
+    } catch(Exception e) {}
+    boolean value2;
+    try {
+      value2 = getBooleanPreference(context, key, !value);
+    } catch(Exception e) {
+      value2 = !value;
     }
-    catch(Exception e) {
-      return false;
+
+    // if the key was unset, then calculate default value
+    if (value != value2) {
+      value = FcmReceiveService.getToken() == null || !isAllChatmail(context);
     }
+
+    return value;
   }
 
   // vibrate
