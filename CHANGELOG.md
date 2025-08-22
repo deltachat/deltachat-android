@@ -4,6 +4,7 @@
 
 * target Android 15
 * improve readability of info messages in dark mode
+* drop too short disappearing messages options
 * fix Direct Share shortcuts
 * fix: don't show error message when cancelling profile creation
 
