@@ -346,7 +346,6 @@ public class ConversationListFragment extends BaseConversationListFragment
       }
 
     } else if (event.getId() == DcContext.DC_EVENT_INCOMING_CALL) {
-      // TODO: show notification
       VideochatUtil.joinCall(getActivity(), event.getData1Int(), event.getData2Str());
     } else {
       loadChatlistAsync();
