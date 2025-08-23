@@ -5,7 +5,7 @@ import static android.text.InputType.TYPE_TEXT_VARIATION_URI;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_BCC_SELF;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_STATISTICS;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_STATS_SENDING;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SENTBOX_WATCH;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SHOW_EMAILS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_WEBXDC_REALTIME_ENABLED;
@@ -215,11 +215,11 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       });
     }
 
-    selfReportingCheckbox = this.findPreference("pref_send_statistics");
+    selfReportingCheckbox = this.findPreference("pref_stats_sending");
     if (selfReportingCheckbox != null) {
       selfReportingCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
         boolean enabled = (Boolean) newValue;
-        dcContext.setConfigInt(CONFIG_SEND_STATISTICS, enabled? 1 : 0);
+        dcContext.setConfigInt(CONFIG_STATS_SENDING, enabled? 1 : 0);
 
         if (enabled) {
           new AlertDialog.Builder(getActivity())
@@ -276,7 +276,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     updateListSummary(showEmails, value);
 
     sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_SENTBOX_WATCH));
-    selfReportingCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_SEND_STATISTICS));
+    selfReportingCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_STATS_SENDING));
     bccSelfCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_BCC_SELF));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
     onlyFetchMvboxCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_ONLY_FETCH_MVBOX));
