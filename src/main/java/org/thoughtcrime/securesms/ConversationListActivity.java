@@ -453,7 +453,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
       if (uri.getScheme().equalsIgnoreCase(OPENPGP4FPR) || Util.isInviteURL(uri)) {
         QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.handleQrData(uri.toString());
+        qrCodeHandler.handleQrData(uri.toString(), QrCodeHandler.SECUREJOIN_SOURCE_EXTERNAL_LINK, 0);
       }
     }
   }
@@ -535,7 +535,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case IntentIntegrator.REQUEST_CODE:
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.onScanPerformed(scanResult);
+        qrCodeHandler.onScanPerformed(scanResult, QrCodeHandler.SECUREJOIN_UIPATH_QR_ICON);
         break;
       default:
         break;

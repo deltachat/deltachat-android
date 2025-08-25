@@ -80,13 +80,13 @@ public class LongClickCopySpan extends ClickableSpan {
       }
     } else if (Util.isInviteURL(url)) {
       QrCodeHandler qrCodeHandler = new QrCodeHandler((Activity) widget.getContext());
-      qrCodeHandler.handleQrData(url);
+      qrCodeHandler.handleQrData(url, QrCodeHandler.SECUREJOIN_SOURCE_INTERNAL_LINK, 0);
     } else {
       Activity activity = (Activity) widget.getContext();
       DcContext dcContext = DcHelper.getContext(activity);
       if (dcContext.checkQr(url).getState() == DcContext.DC_QR_PROXY) {
         QrCodeHandler qrCodeHandler = new QrCodeHandler(activity);
-        qrCodeHandler.handleQrData(url);
+        qrCodeHandler.handleQrData(url, 0, 0);
       } else {
         IntentUtils.showInBrowser(widget.getContext(), url);
       }
