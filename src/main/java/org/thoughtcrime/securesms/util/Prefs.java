@@ -30,6 +30,7 @@ public class Prefs {
 
   private static final String TAG = Prefs.class.getSimpleName();
 
+  public  static final String RELIABLE_SERVICE_PREF         = "pref_reliable_service";
   public  static final String DISABLE_PASSPHRASE_PREF          = "pref_disable_passphrase";
   public  static final String THEME_PREF                       = "pref_theme";
   public  static final String BACKGROUND_PREF                  = "pref_chat_background";
@@ -214,18 +215,20 @@ public class Prefs {
     return result==null? null : Uri.parse(result);
   }
 
+  public static void setReliableService(Context context, boolean value) {
+    setBooleanPreference(context, RELIABLE_SERVICE_PREF, value);
+  }
+
   public static boolean reliableService(Context context) {
-    final String key = "pref_reliable_service";
     final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-    if (prefs.contains(key)) {
+    if (prefs.contains(RELIABLE_SERVICE_PREF)) {
       try {
-        return prefs.getBoolean(key, true);
+        return prefs.getBoolean(RELIABLE_SERVICE_PREF, true);
       } catch(Exception e) {}
     }
 
     // if the key was unset, then calculate default value
-    return FcmReceiveService.getToken() == null
-      || !DcHelper.getAccounts(context).isAllChatmail();
+    return isPushEnabled(context) || !DcHelper.getAccounts(context).isAllChatmail();
   }
 
   // vibrate
