@@ -214,36 +214,18 @@ public class Prefs {
     return result==null? null : Uri.parse(result);
   }
 
-  private static boolean isAllChatmail(Context context) {
-    DcAccounts dcAccounts = DcHelper.getAccounts(context);
-    for (int accountId : dcAccounts.getAll()) {
-      DcContext dcContext = dcAccounts.getAccount(accountId);
-      if (!dcContext.isChatmail()) {
-        return false;
-      }
-    }
-    return true;
-  }
-
   public static boolean reliableService(Context context) {
     final String key = "pref_reliable_service";
-    boolean value = false;
-    try {
-      value = getBooleanPreference(context, key, false);
-    } catch(Exception e) {}
-    boolean value2;
-    try {
-      value2 = getBooleanPreference(context, key, !value);
-    } catch(Exception e) {
-      value2 = !value;
+    final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+    if (prefs.contains(key)) {
+      try {
+        return prefs.getBoolean(key, true);
+      } catch(Exception e) {}
     }
 
     // if the key was unset, then calculate default value
-    if (value != value2) {
-      value = FcmReceiveService.getToken() == null || !isAllChatmail(context);
-    }
-
-    return value;
+    return FcmReceiveService.getToken() == null
+      || !DcHelper.getAccounts(context).isAllChatmail();
   }
 
   // vibrate
