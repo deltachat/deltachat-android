@@ -30,7 +30,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.util.Prefs;
 
-public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment {
+public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
   private static final String TAG = NotificationsPreferenceFragment.class.getSimpleName();
   private static final int REQUEST_CODE_NOTIFICATION_SELECTED = 1;
@@ -38,6 +38,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   private CheckBoxPreference ignoreBattery;
   private CheckBoxPreference notificationsEnabled;
   private CheckBoxPreference mentionNotifEnabled;
+  private CheckBoxPreference reliableService;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -85,18 +86,12 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     }
 
 
-    CheckBoxPreference reliableService =  this.findPreference("pref_reliable_service");
+    // reliableService is just used for displaying the actual value
+    // of the reliable service preference that is managed via
+    // Prefs.setReliableService() and Prefs.reliableService()
+    reliableService =  this.findPreference("pref_reliable_service2");
     if (reliableService != null) {
-      reliableService.setOnPreferenceChangeListener((preference, newValue) -> {
-        Context context = getContext();
-        boolean enabled = (Boolean) newValue; // Prefs.reliableService() still has the old value
-        if (enabled) {
-            KeepAliveService.startSelf(context);
-        } else {
-          context.stopService(new Intent(context, KeepAliveService.class));
-        }
-        return true;
-      });
+      reliableService.setOnPreferenceChangeListener(this);
     }
 
     notificationsEnabled = this.findPreference("pref_enable_notifications");
@@ -132,6 +127,11 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
     notificationsEnabled.setChecked(!dcContext.isMuted());
     mentionNotifEnabled.setChecked(dcContext.isMentionsEnabled());
+
+    // set without altering "unset" state of the preference
+    reliableService.setOnPreferenceChangeListener(null);
+    reliableService.setChecked(Prefs.reliableService(getActivity()));
+    reliableService.setOnPreferenceChangeListener(this);
   }
 
   @Override
@@ -148,6 +148,19 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
       initializeRingtoneSummary(findPreference(Prefs.RINGTONE_PREF));
     }
+  }
+
+  @Override
+  public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
+    Context context = getContext();
+    boolean enabled = (Boolean) newValue;
+    Prefs.setReliableService(context, enabled);
+    if (enabled) {
+      KeepAliveService.startSelf(context);
+    } else {
+      context.stopService(new Intent(context, KeepAliveService.class));
+    }
+    return true;
   }
 
   private class RingtoneSummaryListener implements Preference.OnPreferenceChangeListener {
