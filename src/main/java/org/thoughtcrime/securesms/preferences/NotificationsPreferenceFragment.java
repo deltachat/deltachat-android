@@ -28,6 +28,7 @@ import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
+import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.util.Prefs;
 
 public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment implements Preference.OnPreferenceChangeListener {
@@ -99,6 +100,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       notificationsEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
         boolean enabled = (Boolean) newValue;
         dcContext.setMuted(!enabled);
+        notificationsEnabled.setSummary(getSummary(getContext(), ""));
         return true;
       });
     }
@@ -126,6 +128,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     // update ignoreBattery in onResume() to reflects changes done in the system settings
     ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
     notificationsEnabled.setChecked(!dcContext.isMuted());
+    notificationsEnabled.setSummary(getSummary(getContext(), ""));
     mentionNotifEnabled.setChecked(dcContext.isMentionsEnabled());
 
     // set without altering "unset" state of the preference
@@ -160,6 +163,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     } else {
       context.stopService(new Intent(context, KeepAliveService.class));
     }
+    notificationsEnabled.setSummary(getSummary(context, ""));
     return true;
   }
 
@@ -239,11 +243,21 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   }
 
   public static CharSequence getSummary(Context context) {
+    return getSummary(context, context.getString(R.string.on));
+  }
+
+  public static CharSequence getSummary(Context context, String defaultOnValue) {
     NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || notificationManager.areNotificationsEnabled()) {
-      return context.getString(DcHelper.getContext(context).isMuted() ? R.string.off : R.string.on);
+      if (DcHelper.getContext(context).isMuted()) {
+        return "⚠️ " + context.getString(R.string.notifications_disabled);
+      }
+      if (FcmReceiveService.getToken() == null && !Prefs.reliableService(context)) {
+        return "⚠️ " + context.getString(R.string.unreliable_bg_notifications);
+      }
+      return defaultOnValue;
     } else {
-      return context.getString(R.string.disabled_in_system_settings);
+      return "⚠️ " + context.getString(R.string.disabled_in_system_settings);
     }
   }
 }
