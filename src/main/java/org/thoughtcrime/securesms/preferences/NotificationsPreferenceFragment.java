@@ -100,7 +100,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       notificationsEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
         boolean enabled = (Boolean) newValue;
         dcContext.setMuted(!enabled);
-        notificationsEnabled.setSummary(getSummary(getContext(), ""));
+        notificationsEnabled.setSummary(getSummary(getContext(), false));
         return true;
       });
     }
@@ -128,7 +128,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     // update ignoreBattery in onResume() to reflects changes done in the system settings
     ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
     notificationsEnabled.setChecked(!dcContext.isMuted());
-    notificationsEnabled.setSummary(getSummary(getContext(), ""));
+    notificationsEnabled.setSummary(getSummary(getContext(), false));
     mentionNotifEnabled.setChecked(dcContext.isMentionsEnabled());
 
     // set without altering "unset" state of the preference
@@ -163,7 +163,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     } else {
       context.stopService(new Intent(context, KeepAliveService.class));
     }
-    notificationsEnabled.setSummary(getSummary(context, ""));
+    notificationsEnabled.setSummary(getSummary(context, false));
     return true;
   }
 
@@ -243,19 +243,19 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   }
 
   public static CharSequence getSummary(Context context) {
-    return getSummary(context, context.getString(R.string.on));
+    return getSummary(context, true);
   }
 
-  public static CharSequence getSummary(Context context, String defaultOnValue) {
+  public static CharSequence getSummary(Context context, boolean detailed) {
     NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || notificationManager.areNotificationsEnabled()) {
       if (DcHelper.getContext(context).isMuted()) {
-        return "⚠️ " + context.getString(R.string.notifications_disabled);
+        return detailed? context.getString(R.string.off) : "";
       }
       if (FcmReceiveService.getToken() == null && !Prefs.reliableService(context)) {
         return "⚠️ " + context.getString(R.string.unreliable_bg_notifications);
       }
-      return defaultOnValue;
+      return detailed? context.getString(R.string.on) : "";
     } else {
       return "⚠️ " + context.getString(R.string.disabled_in_system_settings);
     }
