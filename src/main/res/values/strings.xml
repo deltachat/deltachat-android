@@ -1035,7 +1035,7 @@
     <string name="notify_name_only">Name only</string>
     <string name="notify_no_name_or_message">No name or message</string>
     <string name="notifications_disabled">Notifications disabled</string>
-    <string name="unreliable_bg_notifications">Push-notifications unavailable, please enable Force Background Connection for reliable notifications</string>
+    <string name="unreliable_bg_notifications">Enable \"Force Background Connection\" for reliable notifications</string>
     <string name="new_messages">New messages</string>
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">You have new messages</string>
