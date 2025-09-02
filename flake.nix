@@ -18,7 +18,7 @@
             build-tools-35-0-0
             cmdline-tools-latest
             platform-tools
-            platforms-android-34
+            platforms-android-35
             ndk-27-2-12479018
           ]);
         rust-version = pkgs.lib.removeSuffix "\n"
