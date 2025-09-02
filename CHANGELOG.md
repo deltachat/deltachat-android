@@ -8,6 +8,7 @@
 * fix Direct Share shortcuts
 * fix: don't show error message when cancelling profile creation
 * enable permanent notification by default if push notifications are not available
+* hide "clone chat" and member list for incoming channels
 
 ## v2.11.0
 2025-08
