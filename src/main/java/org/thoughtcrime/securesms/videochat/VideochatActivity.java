@@ -64,7 +64,7 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
       Util.runOnMain(() -> Objects.requireNonNull(getSupportActionBar()).setTitle(chat.getName()));
     });
 
-    String url = "file:///android_asset/call.html";
+    String url = "file:///android_asset/calls/index.html";
     webView.loadUrl(url + hash);
   }
 
