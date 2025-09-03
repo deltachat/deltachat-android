@@ -205,6 +205,22 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       });
     }
 
+    Preference callsEnabled = this.findPreference("pref_calls_enabled");
+    if (callsEnabled != null) {
+      callsEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
+        if ((Boolean)newValue) {
+          new AlertDialog.Builder(requireActivity())
+            .setTitle("Thanks for trying out \"Video Calls\"!")
+            .setMessage("• You can now call contacts\n\n"
+              + "• If you want to quit the experimental feature, you can disable it at \"Settings / Advanced\"")
+            .setCancelable(false)
+            .setPositiveButton(R.string.ok, null)
+            .show();
+        }
+        return true;
+      });
+    }
+
     Preference selfReporting = this.findPreference("pref_self_reporting");
     if (selfReporting != null) {
       selfReporting.setOnPreferenceClickListener(((preference) -> {
