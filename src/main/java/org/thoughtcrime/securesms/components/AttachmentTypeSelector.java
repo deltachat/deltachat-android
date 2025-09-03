@@ -35,19 +35,17 @@ public class AttachmentTypeSelector extends PopupWindow {
 
   public static final int ADD_GALLERY       = 1;
   public static final int ADD_DOCUMENT      = 2;
-  public static final int INVITE_VIDEO_CHAT = 3;
-  public static final int ADD_CONTACT_INFO  = 4;
-  public static final int TAKE_PHOTO        = 5;
-  public static final int ADD_LOCATION      = 6;
-  public static final int RECORD_VIDEO      = 7;
-  public static final int ADD_WEBXDC        = 8;
+  public static final int ADD_CONTACT_INFO  = 3;
+  public static final int TAKE_PHOTO        = 4;
+  public static final int ADD_LOCATION      = 5;
+  public static final int RECORD_VIDEO      = 6;
+  public static final int ADD_WEBXDC        = 7;
 
   private static final int ANIMATION_DURATION = 300;
 
   private final @NonNull LoaderManager       loaderManager;
   private final @NonNull RecentPhotoViewRail recentRail;
   private final @NonNull ImageView           imageButton;
-  private final @NonNull ImageView           videoChatButton;
   private final @NonNull ImageView           documentButton;
   private final @NonNull ImageView           contactButton;
   private final @NonNull ImageView           cameraButton;
@@ -70,7 +68,6 @@ public class AttachmentTypeSelector extends PopupWindow {
     this.chatId         = chatId;
     this.recentRail     = ViewUtil.findById(layout, R.id.recent_photos);
     this.imageButton    = ViewUtil.findById(layout, R.id.gallery_button);
-    this.videoChatButton = ViewUtil.findById(layout, R.id.invite_video_chat_button);
     this.documentButton = ViewUtil.findById(layout, R.id.document_button);
     this.contactButton  = ViewUtil.findById(layout, R.id.contact_button);
     this.cameraButton   = ViewUtil.findById(layout, R.id.camera_button);
@@ -79,7 +76,6 @@ public class AttachmentTypeSelector extends PopupWindow {
     this.webxdcButton   = ViewUtil.findById(layout, R.id.webxdc_button);
 
     this.imageButton.setOnClickListener(new PropagatingClickListener(ADD_GALLERY));
-    this.videoChatButton.setOnClickListener(new PropagatingClickListener(INVITE_VIDEO_CHAT));
     this.documentButton.setOnClickListener(new PropagatingClickListener(ADD_DOCUMENT));
     this.contactButton.setOnClickListener(new PropagatingClickListener(ADD_CONTACT_INFO));
     this.cameraButton.setOnClickListener(new PropagatingClickListener(TAKE_PHOTO));
@@ -90,10 +86,6 @@ public class AttachmentTypeSelector extends PopupWindow {
 
     if (!Prefs.isLocationStreamingEnabled(context)) {
       ViewUtil.findById(layout, R.id.location_linear_layout).setVisibility(View.GONE);
-    }
-
-    if (!DcHelper.isWebrtcConfigOk(DcHelper.getContext(context))) {
-      ViewUtil.findById(layout, R.id.invite_video_chat_linear_layout).setVisibility(View.GONE);
     }
 
     setLocationButtonImage(context);
@@ -139,7 +131,6 @@ public class AttachmentTypeSelector extends PopupWindow {
     animateButtonIn(locationButton, ANIMATION_DURATION / 4);
     animateButtonIn(documentButton, ANIMATION_DURATION / 4);
     animateButtonIn(webxdcButton, 0);
-    animateButtonIn(videoChatButton, 0);
   }
 
   @Override

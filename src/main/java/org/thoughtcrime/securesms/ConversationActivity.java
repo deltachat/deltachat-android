@@ -965,13 +965,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       AttachmentManager.selectGallery(this, PICK_GALLERY); break;
     case AttachmentTypeSelector.ADD_DOCUMENT:
       AttachmentManager.selectDocument(this, PICK_DOCUMENT); break;
-    case AttachmentTypeSelector.INVITE_VIDEO_CHAT:
-        if (isMultiUser()) {
-            VideochatUtil.startMeeting(this, chatId);
-        } else {
-            VideochatUtil.startCall(this, chatId);
-        }
-        break;
     case AttachmentTypeSelector.ADD_CONTACT_INFO:
       startContactChooserActivity(); break;
     case AttachmentTypeSelector.ADD_LOCATION:

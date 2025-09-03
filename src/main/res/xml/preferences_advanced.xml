@@ -16,10 +16,6 @@
 
     <PreferenceCategory android:title="@string/pref_experimental_features">
 
-        <Preference android:key="pref_webrtc_instance"
-            android:title="@string/videochat_instance"
-            android:summary="@string/none"/>
-
         <Preference android:key="pref_webxdc_store_url"
             android:title="@string/webxdc_store_url"
             android:summary="@string/none"/>

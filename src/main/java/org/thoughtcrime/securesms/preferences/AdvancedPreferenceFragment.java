@@ -159,12 +159,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       submitDebugLog.setOnPreferenceClickListener(new ViewLogListener());
     }
 
-    Preference webrtcInstance = this.findPreference("pref_webrtc_instance");
-    if (webrtcInstance != null) {
-      webrtcInstance.setOnPreferenceClickListener(new WebrtcInstanceListener());
-    }
-    updateWebrtcSummary();
-
     Preference webxdcStore = this.findPreference(Prefs.WEBXDC_STORE_URL_PREF);
     if (webxdcStore != null) {
       webxdcStore.setOnPreferenceClickListener(new WebxdcStoreUrlListener());
@@ -331,29 +325,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     }
   }
 
-  private class WebrtcInstanceListener implements Preference.OnPreferenceClickListener {
-    @Override
-    public boolean onPreferenceClick(@NonNull Preference preference) {
-      View gl = View.inflate(requireActivity(), R.layout.single_line_input, null);
-      EditText inputField = gl.findViewById(R.id.input_field);
-      inputField.setHint(R.string.videochat_instance_placeholder);
-      inputField.setText(dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE));
-      inputField.setSelection(inputField.getText().length());
-      inputField.setInputType(TYPE_TEXT_VARIATION_URI);
-      new AlertDialog.Builder(requireActivity())
-              .setTitle(R.string.videochat_instance)
-              .setMessage(getString(R.string.videochat_instance_explain_2)+"\n\n"+getString(R.string.videochat_instance_example))
-              .setView(gl)
-              .setNegativeButton(android.R.string.cancel, null)
-              .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                dcContext.setConfig(DcHelper.CONFIG_WEBRTC_INSTANCE, inputField.getText().toString());
-                updateWebrtcSummary();
-              })
-              .show();
-      return true;
-    }
-  }
-
   private class WebxdcStoreUrlListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(@NonNull Preference preference) {
@@ -374,14 +345,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
               })
               .show();
       return true;
-    }
-  }
-
-  private void updateWebrtcSummary() {
-    Preference webrtcInstance = this.findPreference("pref_webrtc_instance");
-    if (webrtcInstance != null) {
-      webrtcInstance.setSummary(DcHelper.isWebrtcConfigOk(dcContext)?
-              dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE) : getString(R.string.none));
     }
   }
 
