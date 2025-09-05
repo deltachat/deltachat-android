@@ -368,6 +368,9 @@
     </plurals>
     <string name="file_saved_to">File saved to \"%1$s\".</string>
 
+    <string name="start_call">Call</string>
+    <string name="video_calls">Video Calls</string>
+
     <!-- deprecated -->
     <string name="videochat">Video Chat</string>
     <!-- deprecated -->
