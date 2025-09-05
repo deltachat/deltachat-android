@@ -30,6 +30,7 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
   private DcContext dcContext;
   private int chatId;
   private int callId;
+  private boolean ended = false;
 
   @SuppressLint("SetJavaScriptEnabled")
   @Override
@@ -69,6 +70,13 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
   }
 
   @Override
+  protected void onDestroy() {
+    DcHelper.getEventCenter(this).removeObservers(this);
+    if (callId != 0 && !ended) dcContext.endCall(callId);
+    super.onDestroy();
+  }
+
+  @Override
   public boolean onPrepareOptionsMenu(Menu menu) {
     // do not call super.onPrepareOptionsMenu() as the default "Search" menu is not needed
     return true;
@@ -91,6 +99,7 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
       break;
     case DcContext.DC_EVENT_CALL_ENDED:
       if (event.getData1Int() == callId) {
+        ended = true;
         finish();
       }
       break;
@@ -111,7 +120,7 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
 
     @JavascriptInterface
     public void endCall() {
-      dcContext.endCall(callId);
+      finish();
     }
   }
 }
