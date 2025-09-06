@@ -26,16 +26,7 @@ public class VideochatUtil {
   }
 
   public static void startCall(Activity activity, int chatId) {
-    DcContext dcContext = DcHelper.getContext(activity);
-    DcChat dcChat = dcContext.getChat(chatId);
-
-    new AlertDialog.Builder(activity)
-            .setTitle(activity.getString(R.string.videochat_invite_user_to_videochat, dcChat.getName()))
-            .setNegativeButton(R.string.cancel, null)
-            .setPositiveButton(R.string.ok, (dialog, which) -> {
-              openCall(activity, chatId, 0, "#call");
-            })
-            .show();
+    openCall(activity, chatId, 0, "#call");
   }
 
   public static void joinCall(Activity activity, int callId, String payload) {
