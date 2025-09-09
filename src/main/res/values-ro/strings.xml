@@ -195,12 +195,6 @@
     <string name="menu_new_contact">Contact Nou</string>
     <string name="menu_new_chat">Chat Nou</string>
     <string name="menu_new_group">Grup Nou</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Listă de difuzare</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Liste de difuzare</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Noua Listă de Difuzare</string>
     <string name="add_recipients">Adăugați Destinatari</string>
     <string name="menu_send">Trimiteți</string>
     <string name="menu_toggle_keyboard">Comutați Tastatura Emoji</string>
@@ -329,8 +323,6 @@
     <string name="ask_start_chat_with">Chat cu %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Scoateți  %1$s din grup?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Eliminați %1$s din lista de difuzare?</string>
     <string name="open_url_confirmation">Doriți să deschideți acest link?</string>
 
 
@@ -448,11 +440,6 @@
     <string name="tab_all_media_empty_hint">Materialele media partajate în orice chat vor apărea aici.</string>
     <string name="media_preview">Previzualizare Media</string>
     <string name="send_message">Trimiteți Mesaj</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s și-au schimbat adresa de la %2$s la %3$s</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">V-ați schimbat adresa de e-mail de la %1$s la %2$s.\n\nDacă trimiteți acum un mesaj către un grup verificat, contactele de acolo vor înlocui automat vechea adresă cu noua dumneavoastră adresă.\n\nSe recomandă să vă configurați vechiul furnizor de e-mail pentru a redirecționa toate e-mailurile către noua dumneavoastră adresă de e-mail. În caz contrar, s-ar putea să pierdeți mesaje ale contactelor care nu au primit încă noua dumneavoastră adresă.</string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
