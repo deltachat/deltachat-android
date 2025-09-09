@@ -36,8 +36,6 @@ public class DcMsg {
     public final static int DC_INFO_INVALID_UNENCRYPTED_MAIL  = 13;
     public final static int DC_INFO_WEBXDC_INFO_MESSAGE       = 32;
     public final static int DC_INFO_CHAT_E2EE                 = 50;
-    public final static int DC_INFO_OUTGOING_CALL             = 60;
-    public final static int DC_INFO_INCOMING_CALL             = 65;
 
     public final static int DC_STATE_UNDEFINED =  0;
     public final static int DC_STATE_IN_FRESH = 10;
