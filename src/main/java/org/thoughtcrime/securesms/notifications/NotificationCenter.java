@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.AudioAttributes;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
@@ -202,6 +203,7 @@ public class NotificationCenter {
     public static final String CH_MSG_VERSION = "5";
     public static final String CH_PERMANENT = "dc_foreground_notification_ch";
     public static final String CH_GENERIC = "ch_generic";
+    public static final String CH_CALLS_PREFIX = "call_chan";
 
     private boolean notificationChannelsSupported() {
         return Build.VERSION.SDK_INT >= 26;
@@ -333,9 +335,92 @@ public class NotificationCenter {
         return channelId;
     }
 
+    private String getCallNotificationChannel(NotificationManagerCompat notificationManager, ChatData chatData, String name) {
+        String channelId = CH_CALLS_PREFIX + "-" + chatData.accountId + "-"+ chatData.chatId;
+
+        if (notificationChannelsSupported()) {
+            try {
+                name = "(calls) " + name;
+
+                // check if there is already a channel with the given name
+                List<NotificationChannel> channels = notificationManager.getNotificationChannels();
+                boolean channelExists = false;
+                for (int i = 0; i < channels.size(); i++) {
+                    String currChannelId = channels.get(i).getId();
+                    if (currChannelId.startsWith(CH_CALLS_PREFIX)) {
+                        // this is one of the calls channels handled here ...
+                        if (currChannelId.equals(channelId)) {
+                            // ... this is the actually required channel, fine :)
+                            // update the name to reflect localize changes and chat renames
+                            channelExists = true;
+                            channels.get(i).setName(name);
+                        }
+                    }
+                }
+
+                // create a the channel
+                if(!channelExists) {
+                    NotificationChannel channel = new NotificationChannel(channelId, name, NotificationManager.IMPORTANCE_HIGH);
+                    channel.setDescription("Informs about incoming calls.");
+                    channel.setShowBadge(true);
+
+                    Uri ringtone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+                    channel.setSound(ringtone,
+                                     new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_UNKNOWN)
+                                     .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
+                                     .build());
+                    notificationManager.createNotificationChannel(channel);
+                }
+            } catch(Exception e) {
+              Log.e(TAG, "Error in getCallNotificationChannel()", e);
+            }
+        }
+
+        return channelId;
+    }
+
 
     // add notifications & co.
     // --------------------------------------------------------------------------------------------
+
+    public void addCallNotification(int accId, int chatId, int callId) {
+      Util.runOnAnyBackgroundThread(() -> {
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        DcContext dcContext = context.dcAccounts.getAccount(accId);
+        DcChat dcChat = dcContext.getChat(chatId);
+        String name = dcChat.getName();
+        ChatData chatData = new ChatData(accId, chatId);
+        String notificationChannel = getCallNotificationChannel(notificationManager, chatData, name);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationChannel)
+          .setSmallIcon(R.drawable.icon_notification)
+          .setColor(context.getResources().getColor(R.color.delta_primary))
+          .setPriority(NotificationCompat.PRIORITY_HIGH)
+          .setCategory(NotificationCompat.CATEGORY_CALL)
+          .setOngoing(true)
+          .setOnlyAlertOnce(false)
+          .setTicker(name)
+          .setContentTitle(name)
+          .setContentText("Incoming Call")
+          ;
+          //                    .setDeleteIntenta(getMarkAsReadIntent(chatData, msgId, false))
+        //                    .setContentIntent(getOpenChatIntent(chatData));
+
+        Bitmap bitmap = getAvatar(dcChat);
+        if (bitmap != null) {
+          builder.setLargeIcon(bitmap);
+        }
+
+        Notification notif = builder.build();
+        notif.flags = notif.flags | Notification.FLAG_INSISTENT;
+        // add notification, we use one notification per chat,
+        // esp. older android are not that great at grouping
+        try {
+          notificationManager.notify(String.valueOf(accId), ID_MSG_OFFSET + chatId, notif);
+        } catch (Exception e) {
+          Log.e(TAG, "cannot add notification", e);
+        }
+      });
+    }
 
     public void notifyMessage(int accountId, int chatId, int msgId) {
       Util.runOnAnyBackgroundThread(() -> {
@@ -495,31 +580,11 @@ public class NotificationCenter {
             }
 
             // set avatar
-            Recipient recipient = new Recipient(context, dcChat);
             if (privacy.isDisplayContact()) {
-                try {
-                    Drawable drawable;
-                    ContactPhoto contactPhoto = recipient.getContactPhoto(context);
-                    if (contactPhoto != null) {
-                        drawable = GlideApp.with(context.getApplicationContext())
-                                .load(contactPhoto)
-                                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                .circleCrop()
-                                .submit(context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width),
-                                        context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height))
-                                .get();
-
-                    } else {
-                        drawable = recipient.getFallbackContactPhoto().asDrawable(context, recipient.getFallbackAvatarColor());
-                    }
-                    if (drawable != null) {
-                        int wh = context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);
-                        Bitmap bitmap = BitmapUtil.createFromDrawable(drawable, wh, wh);
-                        if (bitmap != null) {
-                            builder.setLargeIcon(bitmap);
-                        }
-                    }
-                } catch (Exception e) { Log.w(TAG, e); }
+              Bitmap bitmap = getAvatar(dcChat);
+              if (bitmap != null) {
+                builder.setLargeIcon(bitmap);
+              }
             }
 
             // add buttons that allow some actions without opening Delta Chat.
@@ -617,6 +682,32 @@ public class NotificationCenter {
                   Log.e(TAG, "cannot add notification summary", e);
                 }
             }
+    }
+
+    public Bitmap getAvatar(DcChat dcChat) {
+      Recipient recipient = new Recipient(context, dcChat);
+      try {
+        Drawable drawable;
+        ContactPhoto contactPhoto = recipient.getContactPhoto(context);
+        if (contactPhoto != null) {
+          drawable = GlideApp.with(context.getApplicationContext())
+            .load(contactPhoto)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .circleCrop()
+            .submit(context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width),
+                    context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height))
+            .get();
+
+        } else {
+          drawable = recipient.getFallbackContactPhoto().asDrawable(context, recipient.getFallbackAvatarColor());
+        }
+        if (drawable != null) {
+          int wh = context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);
+          return BitmapUtil.createFromDrawable(drawable, wh, wh);
+        }
+      } catch (Exception e) { Log.w(TAG, e); }
+
+      return null;
     }
 
     public void removeNotifications(int accountId, int chatId) {

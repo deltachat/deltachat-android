@@ -35,10 +35,12 @@ public class VideochatUtil {
     int accId = dcContext.getAccountId();
     int chatId = dcMsg.getChatId();
     String hash = "#offer=" + payload;
+
+    DcHelper.getNotificationCenter(activity).addCallNotification(accId, chatId, callId);
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       CallIntegrationService.addNewIncomingCall(activity, accId, chatId, callId, payload);
     }
-    openCall(activity, dcMsg.getChatId(), callId, hash);
+    //openCall(activity, chatId, callId, hash);
   }
 
   private static void openCall(Activity activity, int chatId, int callId, String hash) {

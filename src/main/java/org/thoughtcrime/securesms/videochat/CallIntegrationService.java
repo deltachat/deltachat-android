@@ -46,6 +46,17 @@ public class CallIntegrationService extends ConnectionService {
     };
   }
 
+  @Override
+  public Connection onCreateIncomingConnection(final PhoneAccountHandle phoneAccountHandle, final ConnectionRequest request) {
+    Log.d(TAG, "onCreateIncomingConnection()");
+    return new Connection() {
+      @Override
+      public void onAnswer() {
+        super.onAnswer();
+      }
+    };
+  }
+
   private static PhoneAccountHandle getHandle(final Context context, int accountId) {
     final ComponentName componentName = new ComponentName(context, CallIntegrationService.class);
     return new PhoneAccountHandle(componentName, accountId+"");
