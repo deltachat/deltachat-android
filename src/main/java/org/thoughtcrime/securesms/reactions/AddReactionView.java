@@ -66,7 +66,6 @@ public class AddReactionView extends LinearLayout {
         init(); // init delayed as needed
 
         if ( msgToReactTo.isInfo()
-          || msgToReactTo.getType() == DcMsg.DC_MSG_VIDEOCHAT_INVITATION
           || !dcContext.getChat(msgToReactTo.getChatId()).canSend()) {
             return;
         }

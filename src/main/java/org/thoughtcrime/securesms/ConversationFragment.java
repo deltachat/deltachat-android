@@ -362,11 +362,11 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     static boolean canReplyToMsg(DcMsg dcMsg) {
-        return !dcMsg.isInfo() && dcMsg.getType() != DcMsg.DC_MSG_VIDEOCHAT_INVITATION;
+        return !dcMsg.isInfo();
     }
 
     static boolean canEditMsg(DcMsg dcMsg) {
-        return dcMsg.isOutgoing() && !dcMsg.isInfo() && dcMsg.getType() != DcMsg.DC_MSG_VIDEOCHAT_INVITATION && !dcMsg.hasHtml() && !dcMsg.getText().isEmpty();
+        return dcMsg.isOutgoing() && !dcMsg.isInfo() && !dcMsg.hasHtml() && !dcMsg.getText().isEmpty();
     }
 
     public void handleClearChat() {
@@ -737,9 +737,6 @@ public class ConversationFragment extends MessageSelectorFragment
                     actionMode.setTitle(String.valueOf(getListAdapter().getSelectedItems().size()));
                     actionMode.setTitleOptionalHint(false); // the title represents important information, also indicating implicitly, more items can be selected
                 }
-            }
-            else if (messageRecord.getType()==DcMsg.DC_MSG_VIDEOCHAT_INVITATION) {
-                VideochatUtil.joinMeeting(getActivity(), messageRecord.getId());
             }
             else if(DozeReminder.isDozeReminderMsg(getContext(), messageRecord)) {
                 DozeReminder.dozeReminderTapped(getContext());

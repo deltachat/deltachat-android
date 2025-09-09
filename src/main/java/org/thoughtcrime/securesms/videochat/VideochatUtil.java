@@ -5,25 +5,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 
-import androidx.appcompat.app.AlertDialog;
-
-import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.IntentUtils;
 
 public class VideochatUtil {
-
-  public static void joinMeeting(Activity activity, int msgId) {
-    DcContext dcContext = DcHelper.getContext(activity);
-    DcMsg dcMsg = dcContext.getMsg(msgId);
-    String videochatUrl = dcMsg.getVideochatUrl();
-    IntentUtils.showInBrowser(activity, videochatUrl);
-  }
 
   public static void startCall(Activity activity, int chatId) {
     openCall(activity, chatId, 0, "#call");

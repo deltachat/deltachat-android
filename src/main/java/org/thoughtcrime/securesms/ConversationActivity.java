@@ -1459,7 +1459,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Recipient author = new Recipient(this, dcContext.getContact(msg.getFromId()));
 
     SlideDeck slideDeck = new SlideDeck();
-    if (msg.getType() != DcMsg.DC_MSG_TEXT) {
+    if (msg.hasFile()) {
       slideDeck.addSlide(MediaUtil.getSlideForMsg(this, msg));
     }
 
