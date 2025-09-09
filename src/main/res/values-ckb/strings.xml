@@ -319,6 +319,7 @@
     <string name="tab_docs_empty_hint">بەڵگە و مۆسیقا و هەموو پەڕگە هاوبەشکراوەکانی نێو ئەم وتووێژە، لێرەدا پیشان دەدرێن.</string>
     <string name="media_preview">پێشدیتنی ڕەنگاڵە</string>
     <string name="send_message">پەیام بنێرە</string>
+
     <string name="login_title">بچۆ ژوورەوە</string>
     <string name="login_header">بچۆ ژوورەوە بۆ سێرڤێرەکەی خۆت</string>
     <string name="login_explain">بچۆ ژوورەوە بە ناونیشانی ئیمەیلێکەوە</string>
@@ -495,10 +496,6 @@
     <string name="qraccount_ask_create_and_login">دەتەوێت ناونیشانی ئیمەیلێکی نوێ لەسەر \"%1$s\" درووست بکەیت و لەوێ بچیتە ژوورەوە؟</string>
     <string name="qraccount_qr_code_cannot_be_used">ناتوانی لە کۆدی QRە سکان کراوەکە کەڵک بگریت بۆ پێکهێنانی هەژمارێکی نوێ.</string>
     <string name="contact_verified">%1$s پشتڕاست کرایەوە</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">%1$s پشتڕاست ناکرێتەوە.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">ڕێکخستن بۆ %1$s گۆڕا.</string>
     <!-- notifications  -->
     <string name="notify_reply_button">وەڵام دانەوە</string>
     <string name="notify_new_message">پەیامی نوێ</string>
@@ -516,9 +513,6 @@
     <string name="perm_explain_access_to_mic_denied">بۆ هەناردنی پەیامی دەنگی، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی \"ڕێگەپێدان\"دا، \"مایک\" چالاک بکەوە.</string>
     <string name="perm_explain_access_to_storage_denied">بۆ هەناردن و وەرگرتنی پەڕگەکان، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی \"ڕێگەپێدان\"دا، \"بیرگە\" چالاک بکەوە.</string>
     <string name="perm_explain_access_to_location_denied">بۆ لکاندنی شوێنێک، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی \"ڕێگەپێدان\"دا، \"شوێن\" چالاک بکەوە.</string>
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">پەیامی شفرەکراو</string>
-
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">ئەمە نەرمامێری فەرمی دێڵتا چاتە بۆ کۆمپووتەری ڕوومێز.</string>
     <string name="welcome_desktop">بەخێر بێن بۆ دێڵتا چات</string>

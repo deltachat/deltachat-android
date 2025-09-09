@@ -231,12 +231,6 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">聊天…</string>
     <string name="clone_chat">克隆聊天</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">广播列表</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">广播列表</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">新建广播列表</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel">频道</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -244,12 +238,6 @@
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">新建频道</string>
     <string name="add_recipients">添加接收者</string>
-    <!-- deprecated -->
-    <string name="edit_broadcast_list">编辑广播列表</string>
-    <!-- deprecated -->
-    <string name="broadcast_list_name">广播列表名称</string>
-    <!-- deprecated -->
-    <string name="please_enter_broadcast_list_name">请输入广播列表的名称。</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">频道名称</string>
     <string name="email">邮件</string>
@@ -411,8 +399,6 @@
     <string name="ask_start_chat_with">与 %1$s 聊天？</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">将 %1$s 从群组中移除？</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">从广播列表中移除 %1$s？</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_channel">从频道中移除 %1$s？</string>
     <string name="open_url_confirmation">您要打开此链接吗？</string>
@@ -441,8 +427,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">发一条消息给 %1$s。</string>
-    <!-- deprecated -->
-    <string name="chat_new_broadcast_hint">在广播列表中，收件人会在和你进行的只读聊天中收到消息</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="chat_new_channel_hint">频道是广播消息的一对多工具。</string>
     <string name="chat_new_group_hint">在您发出第一条消息后，其他人才会看到此群组。</string>
@@ -553,11 +537,6 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">方形网格</string>
     <string name="send_message">发送消息</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s 将邮箱从 %2$s 更改为 %3$s</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">你将邮箱从 %1$s 改为了 %2$s。\n\n如果你现在发送一条消息到已验证群组，那里的联系人将自动用你的新邮箱替换旧邮箱。\n\n我们建议你将旧邮箱配置为转发所有邮件到新邮箱。否则，你可能收不到还不知道你新邮箱的联系人发过来的消息。</string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -940,6 +919,9 @@
     <string name="ephemeral_timer_1_week_by_you">你将消息定时销毁计时器设为 1 周</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s 将消息定时销毁计时器设为 1 天</string>
+    <string name="ephemeral_timer_1_year_by_you">您将消失消息计时器设置为 1 年。</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_1_year_by_other">%1$s 将消失消息计时器设置为 1 年。</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">你将消息定时销毁计时器设为 %1$s 分钟</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
@@ -956,14 +938,8 @@
     <string name="ephemeral_timer_weeks_by_you">你将消息定时销毁计时器设为 %1$s 周</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s 将消息定时销毁计时器设为 %1$s 周</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken">%1$s 从另一台设备发送了消息</string>
     <string name="chat_protection_enabled_tap_to_learn_more">消息是端到端加密的。点按即可了解详情。</string>
     <string name="chat_protection_enabled_explanation">此聊天中的所有消息都经过端到端加密。\n\n端到端加密可确保您与聊天对象之间的消息保持私密。即使是服务器、提供者或中继也无法读取。</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_tap_to_learn_more">%1$s 从另一台设备发送了一条消息。点按即可了解详情。</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_explanation">无法再确保端到端加密，可能的原因是 %1$s 重新安装了 Delta Chat 或从其他设备发送了一则消息。\n\n你可以和联系人线下见面并再次扫描联系人的二维码重新建立端到端加密的通信。</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s 需要端到端加密，但此聊天尚未设置。点按即可了解详情。</string>
     <string name="invalid_unencrypted_explanation">要建立端到端加密，你可以亲自和联系人碰面并扫描联系人的二维码</string>
     <string name="learn_more">了解更多</string>
@@ -1022,19 +998,11 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s 已回复，等待被加入群组…</string>
     <string name="secure_join_wait">正在建立端到端加密，请稍候…</string>
-    <!-- deprecated -->
-    <string name="secure_join_wait_timeout">无法建立有保证的端到端加密，但您可能已经发送了一条消息。</string>
-    <!-- deprecated, was stock string -->
-    <string name="secure_join_takes_longer">联系人必须在线才能继续。\n\n此过程将在后台自动继续。</string>
     <string name="contact_verified">%1$s 已验证。</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">无法与 %1$s 建立端到端加密。</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">验证人 %1$s</string>
     <string name="verified_by_you">由您验证</string>
     <string name="verified_by_unknown">已验证</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">%1$s 的加密设置已更改。</string>
     <string name="verified_contact_required_explain">要确保端到端加密，你只能将带有绿色验证标识的联系人到此群中。\n\n你可以亲自和未验证联系人线下碰面并扫描联系人二维码来验证。</string>
     <string name="mailto_dialog_header_select_chat">选择要发送消息的聊天</string>
     <!-- first placeholder is the name of the chat -->
@@ -1076,9 +1044,6 @@
     <string name="ImageEditorHud_crop">裁剪</string>
     <string name="ImageEditorHud_flip">翻转</string>
     <string name="ImageEditorHud_rotate">旋转</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">加密的消息</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">这是 Delta Chat 官方桌面应用。</string>
@@ -1194,7 +1159,6 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 想将图像保存到图库。</string>
     <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat 可以使用 Face ID 保护你的本地配置文件，备份创建和第二台设备设置。</string>
 
-
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">即时传送</string>
     <string name="pref_background_notifications">使用后台连接</string>
@@ -1209,8 +1173,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">新版变化?\n\n💯 端到端加密现在可靠且永久。挂锁图标 🔒 没有了!\n\n✉️ 没有端到端加密的经典电子邮件用字母符号标记l\n\n😻 所有联系人的新的增强的个人资料屏\n\n🔲 新增快速访问聊天中所用应用的按钮\n\n❤️ 请捐赠帮助我们保持独立并继续带来改进: %1$s</string>
-    <!-- deprecated -->
-    <string name="update_1_50_android">有什么新功能？\n\n❤️‍🔥 新的表情符号选择器，包含更多表情符号\n\n🎮 增强的聊天应用：获取通知并在上下文中打开支持应用，即直接打开添加的日历条目\n\n👍 收到有关对您的消息的回应的通知\n\n…🛠️ %1$s 上的修复和更多内容</string>
-    <!-- deprecated -->
-    <string name="update_switch_profile_placement">ℹ️ “切换账号”选项已移动：点击主屏幕上角的个人资料图片以添加或切换账号 💡</string>
 </resources>

@@ -226,9 +226,6 @@
     <!-- permissions -->
     <string name="perm_required_title">அனுமதி தேவை</string>
     <string name="perm_continue">தொடர்</string>
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">மறைகுறியாக்கப்பட்ட செய்தி</string>
-
     <string name="welcome_desktop">Delta Chat க்கு வரவேற்கிறது.</string>
     <string name="global_menu_preferences_language_desktop">நிறவடிவமைப்பு</string>
     <string name="global_menu_file_desktop">கோப்பு</string>

@@ -343,6 +343,7 @@
     <string name="tab_docs_empty_hint">Dokumenter, musik og andre filer delt i denne samtale vises her.</string>
     <string name="media_preview">Medie forhåndsvisning</string>
     <string name="send_message">Send besked</string>
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Indkommende beskeder</string>
@@ -631,10 +632,6 @@
     <string name="qraccount_ask_create_and_login_another">Opret ny e-mail adresse på \"%1$s\" og log ind der?\n\nDin eksisterende konto bliver ikke slettet. Brug \"Skift konto\" for at skifte imellem dine konti.</string>
     <string name="qraccount_qr_code_cannot_be_used">Den skannede QR-kode kan ikke bruges til at opsætte en ny konto.</string>
     <string name="contact_verified">%1$s bekræftet.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Kan ikke bekræfte %1$s</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Ændret opsætning for %1$s</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Svar</string>
     <string name="notify_new_message">Ny besked</string>
@@ -655,9 +652,6 @@
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Tegn hvor som helst for at sløre</string>
     <string name="ImageEditorHud_rotate">Roter</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Krypteret besked</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Dette er den officielle Delta Chat Desktop app.</string>

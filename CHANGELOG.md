@@ -10,6 +10,11 @@
 * enable permanent notification by default if push notifications are not available
 * hide "clone chat" and member list for incoming channels
 * show warning if background notifications will be unreliable
+* warn if the app has not been updated after 6 months instead of 1 year
+* avoid "unknown sender for this chat" error
+* properly display "Messages are end-to-end encrypted." in all encrypted groups
+* several small fixes and improvements
+* update to core 2.13.0
 
 ## v2.11.0
 2025-08

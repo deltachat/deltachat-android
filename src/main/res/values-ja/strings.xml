@@ -335,6 +335,7 @@
     <string name="tab_docs_empty_hint">このチャットで共有されたドキュメントや音楽などがここに表示されます。</string>
     <string name="media_preview">メディアのプレビュー</string>
     <string name="send_message">送る</string>
+
     <string name="connectivity">接続性</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">未接続</string>
@@ -595,10 +596,6 @@
     <string name="qrshow_join_contact_no_connection_toast">インターネットに接続されていないので、QRコードの設定ができません。</string>
     <string name="qraccount_ask_create_and_login">%1$sに新しいメールアドレスを作ってログしますか。</string>
     <string name="contact_verified">%1$sを確認しました。</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">%1$sを確認できません。</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">設定が%1$sに変わりました。</string>
     <!-- notifications  -->
     <string name="notify_reply_button">返信</string>
     <string name="notify_new_message">新規メッセージ</string>
@@ -615,9 +612,6 @@
     <string name="ImageEditorHud_crop">切り抜き</string>
     <string name="ImageEditorHud_flip">反転</string>
     <string name="ImageEditorHud_rotate">回転</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">暗号化されたメッセージ</string>
 
     <string name="welcome_desktop">Delta Chatにようこそ</string>
     <string name="global_menu_preferences_language_desktop">言語を選択して下さい</string>
