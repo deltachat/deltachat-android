@@ -244,12 +244,6 @@
     <string name="menu_new_chat">Nová konverzácia</string>
     <string name="menu_new_group">Nová skupina</string>
     <string name="clone_chat">Kopírovať konverzáciu</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Zoznam Rozosielania</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Zoznamy Rozosielania</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Nový Zoznam Rozosielania</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel">Kanál</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -423,8 +417,6 @@
     <string name="ask_start_chat_with">Písať si s %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Odstrániť %1$s zo skupiny?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Odstrániť %1$s zo zoznamu rozosielania?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_channel">Odstrániť %1$s z kanálu?</string>
     <string name="open_url_confirmation">Chcete otvoriť tento odkaz?</string>
@@ -556,8 +548,7 @@
     <string name="tab_webxdc_empty_hint">Tu sú zobrazené súkromné aplikácie zdieľané v rámci tejto konverzácie.</string>
     <string name="media_preview">Ukážka pre médiá</string>
     <string name="send_message">Odoslanie správy</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s zmenil(a) svoju adresu z %2$s na %3$s</string>
+
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Pridať ďalšie zariadenie</string>
@@ -986,10 +977,6 @@ Váš existujúci účet nebude odstránený. Medzi účtami môžete prepínať
     <string name="secure_join_replies">%1$sodpovedal a čaká sa na pridanie do skupiny...</string>
     <string name="secure_join_wait">Nadväzovanie šifrovaného spojenia, počkajte prosím...</string>
     <string name="contact_verified">%1$s overené.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Cannot verify %1$s.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Zmena nastavenia pre %1$s.</string>
     <string name="mailto_dialog_header_select_chat">Vyberte konverzáciu, kam bude správa odoslaná</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s už má koncept správy, chcete ho nahradiť?</string>
@@ -1024,9 +1011,6 @@ Váš existujúci účet nebude odstránený. Medzi účtami môžete prepínať
     <string name="ImageEditorHud_crop">Orezať</string>
     <string name="ImageEditorHud_flip">Preklopiť</string>
     <string name="ImageEditorHud_rotate">Otočiť</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Zašifrovaná správa</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Toto je oficiálna aplikácia Delta Chat Desktop.</string>
