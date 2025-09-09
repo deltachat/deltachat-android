@@ -329,10 +329,6 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Digitalize para configurar um contato com %1$s</string>
     <string name="contact_verified">%1$s verificado.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Não é possível verificar %1$s</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Configuração alterada para %1$s</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Responder</string>
     <string name="notify_new_message">Mensagem nova</string>
@@ -350,9 +346,6 @@
     <string name="perm_explain_access_to_mic_denied">O Delta Chat necessita de permissão de  acesso ao microfone para enviar mensagens de áudio, mas foi negado. Por favor, continue com as configurações do aplicativo, selecione \"Permissões\" e active \"Microfone\".</string>
     <string name="perm_explain_access_to_storage_denied">O Delta Chat necessita da permissão de armazenamento para anexar ou exportar fotos, vídeos ou áudio, mas foi negado. Por favor, continue no menu de configurações do aplicativo, seleccione \"Permissões\" e active \"Armazenamento\".</string>
     <string name="perm_explain_access_to_location_denied">O Delta Chat necessita permissão de acesso à localização para anexar um local, mas ele negado. Por favor, continue no menu de configurações do aplicativo, selecione \"Permissões \"e ative \"Localização\".</string>
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Mensagem encriptada</string>
-
     <string name="global_menu_preferences_language_desktop">Escolha o seu idioma...</string>
     <string name="global_menu_file_desktop">Arquivo</string>
     <string name="global_menu_file_quit_desktop">Sair</string>

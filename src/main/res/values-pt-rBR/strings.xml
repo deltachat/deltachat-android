@@ -204,12 +204,6 @@
     <string name="menu_new_contact">Novo contato</string>
     <string name="menu_new_chat">Nova conversa</string>
     <string name="menu_new_group">Novo grupo</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Lista de Transmissão</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Listas de Transmissão</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Nova Lista de Transmissão</string>
     <string name="add_recipients">Adicionar Destinatários</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Ativar teclado de emojis</string>
@@ -339,8 +333,6 @@
     <string name="ask_start_chat_with">Conversar com %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Remover %1$s do grupo?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Remover %1$s da lista de transmissão?</string>
     <string name="open_url_confirmation">Você quer abrir este link?</string>
 
 
@@ -463,11 +455,6 @@
     <string name="all_apps_empty_hint">Apps recebidas ou enviadas em qualquer bate-papo aparecerão aqui.</string>
     <string name="media_preview">Pré-visualização.</string>
     <string name="send_message">Enviar mensagem</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s mudou seu endereço de %2$s para %3$s</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">Você mudou seu endereço de e-mail de %1$s para %2$s.\n\nSe você agora enviar uma mensagem para um grupo verificado, os contatos lá substituirão automaticamente o antigo por seu novo endereço.\n\nÉ altamente recomendável configurar seu antigo provedor de e-mail para encaminhar todos os e-mails para seu novo endereço de e-mail. Caso contrário, você pode perder mensagens de contatos que ainda não receberam seu novo endereço.</string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -831,12 +818,8 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$srespondeu, esperando para ser adicionado ao grupo...</string>
     <string name="contact_verified">%1$s verificado.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Impossível verificar %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Verificado por %1$s</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">A configuração Autocrypt mudou para %1$s</string>
     <string name="mailto_dialog_header_select_chat">Selecione o bate-papo para enviar a mensagem</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s já tem um rascunho de mensagem, deseja substituí-lo?</string>
@@ -868,9 +851,6 @@
     <string name="ImageEditorHud_crop">Cortar</string>
     <string name="ImageEditorHud_flip">Girar</string>
     <string name="ImageEditorHud_rotate">Rodar</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Mensagem criptografada</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Este é o aplicativo oficial Delta Chat Desktop.</string>

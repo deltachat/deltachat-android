@@ -366,6 +366,7 @@
     <string name="tab_docs_empty_hint">Dokumen, musik dan berkas yang dibagikan di obrolan ini akan ditampilkan disini.</string>
     <string name="media_preview">Tampilan media</string>
     <string name="send_message">Kirim pesan</string>
+
     <string name="login_title">Masuk</string>
     <string name="login_header">Masuk ke server Anda</string>
     <string name="login_explain">Masuk dengan akun surel yang ada</string>
@@ -566,10 +567,6 @@
     <string name="qraccount_ask_create_and_login_another">Buat alamat email baru di\"%1$s\" dan masuk ke sana?\n\nAkun yang sudah ada tidak akan di hapus. Gunakankan item \"Ganti akun\" untuk mengganti akun anda</string>
     <string name="qraccount_qr_code_cannot_be_used">Kode QR yang dipindai tidak dapat digunakan untuk mengatur akun baru.</string>
     <string name="contact_verified">%1$sdiverifikasi.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Tidak bisa memverifikasi %1$s.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Ubah pengaturan untuk %1$s.</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Balasan</string>
     <string name="notify_new_message">Pesan baru</string>
@@ -589,9 +586,6 @@
     <string name="perm_explain_access_to_location_denied">Untuk melampirkan lokasi, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Lokasi\".</string>
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Gambar di mana saja untuk diburamkan</string>
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Pesan terenkripsi</string>
-
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Ini adalah aplikasi resmi Delta Chat Desktop.</string>
     <string name="about_licensed_under_desktop">Perangkat lunak ini berlisensi di bawah GNU GPL versi 3 dan kode sumber tersedia di GitHub.</string>

@@ -181,12 +181,6 @@
     <string name="menu_new_contact">Νέα Επαφή</string>
     <string name="menu_new_chat">Νέα Συνομιλία</string>
     <string name="menu_new_group">Νέα ομάδα</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Λίστα Μέσων</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Λίστες Μέσων</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Νέα Λίστα Μέσων</string>
     <string name="add_recipients">Προσθήκη Παραλήπτη</string>
     <string name="menu_send">Αποστολή</string>
     <string name="menu_toggle_keyboard">Εναλλαγή πληκτρολογίου emoji</string>
@@ -311,8 +305,6 @@
     <string name="ask_start_chat_with">Συνομιλία με %1$s;</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Αφαίρεση του/της %1$s από την ομάδα;</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Αφαίρεση %1$s από την λίστα εκπομπών;</string>
     <string name="open_url_confirmation">Θέλετε να ανοίξετε αυτό τον σύνδεσμό;</string>
 
 
@@ -427,11 +419,6 @@
     <string name="all_apps_empty_hint">Οι ιδιωτικές εφαρμογές που λαμβάνονται ή αποστέλλονται σε οποιαδήποτε συνομιλία θα εμφανίζονται εδώ.</string>
     <string name="media_preview">Προεπισκόπιση</string>
     <string name="send_message">Αποστολή μηνύματος</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s άλλαξαν την διεύθυνσή τους από %2$s σε %3$s</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">Αλλάξατε την διεύθυνσή σας από %1$s σε %2$s.\n\nΤώρα, εάν στείλετε ένα μήνυμα σε μια επαληθευμένη ομάδα, οι επαφές εκεί θα αντικαταστήσουν αυτόματα την παλιά με τη νέα σας διεύθυνση.\n\nΣυνιστάται ιδιαίτερα να ρυθμίσετε τον παλιό σας πάροχο email ώστε να προωθεί όλα τα μηνύματα ηλεκτρονικού ταχυδρομείου στη νέα σας διεύθυνση ηλεκτρονικού ταχυδρομείου. Διαφορετικά, ενδέχεται να χάσετε μηνύματα επαφών που δεν έχουν λάβει ακόμη τη νέα σας διεύθυνση.</string>
-
 
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
@@ -773,10 +760,6 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s απάντησε, αναμονή για να προστεθεί στην ομάδα…</string>
     <string name="contact_verified">%1$s επαληθεύτηκε.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Αδυναμία επαλήθευσης %1$s.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Άλλαξε η ρύθμιση για %1$s.</string>
     <string name="mailto_dialog_header_select_chat">Επιλέξτε συνομιλία για να στείλετε το μήνυμα</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s έχει ήδη ένα πρόχειρο μήνυμα, θέλετε να το αντικαταστήσετε;</string>
@@ -808,9 +791,6 @@
     <string name="ImageEditorHud_crop">Περικοπή</string>
     <string name="ImageEditorHud_flip">Εναλλαγή</string>
     <string name="ImageEditorHud_rotate">Περιστροφή</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Κρυπτογραφημένο μήνυμα</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Αυτή είναι η επίσημη εφαρμογή Delta Chat Desktop.</string>
