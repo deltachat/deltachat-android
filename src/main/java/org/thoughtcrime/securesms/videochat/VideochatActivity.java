@@ -23,6 +23,7 @@ import java.util.Objects;
 
 public class VideochatActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate {
 
+  public static final String EXTRA_ACCOUNT_ID = "acc_id";
   public static final String EXTRA_CHAT_ID = "chat_id";
   public static final String EXTRA_CALL_ID = "call_id";
   public static final String EXTRA_HASH = "hash";
@@ -36,13 +37,14 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
   @Override
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
-    this.dcContext = DcHelper.getContext(getApplicationContext());
 
     Bundle bundle = getIntent().getExtras();
     assert bundle != null;
     String hash = bundle.getString(EXTRA_HASH, "");
     chatId = bundle.getInt(EXTRA_CHAT_ID, 0);
     callId = bundle.getInt(EXTRA_CALL_ID, 0);
+    int accId = bundle.getInt(EXTRA_ACCOUNT_ID, -1);
+    this.dcContext = DcHelper.getAccounts(getApplicationContext()).getAccount(accId);
 
     WebSettings webSettings = webView.getSettings();
     webSettings.setJavaScriptEnabled(true);

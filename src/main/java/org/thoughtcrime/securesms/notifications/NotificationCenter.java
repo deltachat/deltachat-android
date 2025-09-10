@@ -48,6 +48,7 @@ import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.Pair;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.videochat.VideochatActivity;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -159,6 +160,19 @@ public class NotificationCenter {
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
+    private PendingIntent getAnswerIntent(ChatData chatData, int callId, String payload) {
+        String hash = "#offer=" + payload;
+        Intent intent = new Intent(context, VideochatActivity.class);
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.putExtra(VideochatActivity.EXTRA_ACCOUNT_ID, chatData.accountId);
+        intent.putExtra(VideochatActivity.EXTRA_CHAT_ID, chatData.chatId);
+        intent.putExtra(VideochatActivity.EXTRA_CALL_ID, callId);
+        intent.putExtra(VideochatActivity.EXTRA_HASH, hash);
+        intent.setPackage(context.getPackageName());
+        return TaskStackBuilder.create(context)
+                .addNextIntentWithParentStack(intent)
+                .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
+    }
 
     // Groups and Notification channel groups
     // --------------------------------------------------------------------------------------------
@@ -383,14 +397,16 @@ public class NotificationCenter {
     // add notifications & co.
     // --------------------------------------------------------------------------------------------
 
-    public void addCallNotification(int accId, int chatId, int callId) {
+    public void notifyCall(int accId, int callId, String payload) {
       Util.runOnAnyBackgroundThread(() -> {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         DcContext dcContext = context.dcAccounts.getAccount(accId);
+        int chatId = dcContext.getMsg(callId).getChatId();
         DcChat dcChat = dcContext.getChat(chatId);
         String name = dcChat.getName();
         ChatData chatData = new ChatData(accId, chatId);
         String notificationChannel = getCallNotificationChannel(notificationManager, chatData, name);
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationChannel)
           .setSmallIcon(R.drawable.icon_notification)
           .setColor(context.getResources().getColor(R.color.delta_primary))
@@ -404,6 +420,12 @@ public class NotificationCenter {
           ;
           //                    .setDeleteIntenta(getMarkAsReadIntent(chatData, msgId, false))
         //                    .setContentIntent(getOpenChatIntent(chatData));
+
+        builder.addAction(
+          new NotificationCompat.Action.Builder(
+            R.drawable.baseline_call_24,
+            context.getString(R.string.answer_call),
+            getAnswerIntent(chatData, callId, payload)).build());
 
         Bitmap bitmap = getAvatar(dcChat);
         if (bitmap != null) {

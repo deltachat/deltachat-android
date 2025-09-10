@@ -370,6 +370,8 @@
 
     <string name="start_call">Call</string>
     <string name="video_calls">Video Calls</string>
+    <string name="answer_call">Answer</string>
+    <string name="end_call">Decline</string>
 
     <!-- deprecated -->
     <string name="videochat">Video Chat</string>

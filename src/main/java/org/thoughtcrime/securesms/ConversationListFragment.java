@@ -51,7 +51,6 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.videochat.VideochatUtil;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -82,7 +81,6 @@ public class ConversationListFragment extends BaseConversationListFragment
     eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
     eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_CHAT_DELETED, this);
-    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_INCOMING_CALL, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
@@ -345,8 +343,6 @@ public class ConversationListFragment extends BaseConversationListFragment
         ((ConversationListActivity) activity).refreshAvatar();
       }
 
-    } else if (event.getId() == DcContext.DC_EVENT_INCOMING_CALL) {
-      VideochatUtil.joinCall(getActivity(), event.getData1Int(), event.getData2Str());
     } else {
       loadChatlistAsync();
     }
