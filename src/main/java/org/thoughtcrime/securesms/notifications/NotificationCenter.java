@@ -161,6 +161,11 @@ public class NotificationCenter {
     }
 
     private PendingIntent getAnswerIntent(ChatData chatData, int callId, String payload) {
+        final Intent chatIntent = new Intent(context, ConversationActivity.class)
+            .putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, chatData.accountId)
+            .putExtra(ConversationActivity.CHAT_ID_EXTRA, chatData.chatId)
+            .setAction(Intent.ACTION_VIEW);
+
         String hash = "#offer=" + payload;
         Intent intent = new Intent(context, VideochatActivity.class);
         intent.setAction(Intent.ACTION_VIEW);
@@ -170,8 +175,9 @@ public class NotificationCenter {
         intent.putExtra(VideochatActivity.EXTRA_HASH, hash);
         intent.setPackage(context.getPackageName());
         return TaskStackBuilder.create(context)
-                .addNextIntentWithParentStack(intent)
-                .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
+            .addNextIntentWithParentStack(chatIntent)
+            .addNextIntent(intent)
+            .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
     private PendingIntent getDeclineCallIntent(ChatData chatData, int callId) {
