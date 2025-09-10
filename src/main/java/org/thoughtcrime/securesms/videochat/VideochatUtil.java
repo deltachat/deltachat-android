@@ -26,9 +26,6 @@ public class VideochatUtil {
     String hash = "#offer=" + payload;
 
     //DcHelper.getNotificationCenter(activity).addCallNotification(accId, chatId, callId);
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      CallIntegrationService.addNewIncomingCall(activity, accId, chatId, callId, payload);
-    }
     openCall(activity, chatId, callId, hash);
   }
 
@@ -41,10 +38,6 @@ public class VideochatUtil {
       .ifNecessary()
       .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_camera_denied))
       .onAllGranted(() -> {
-          if ("#call".equals(hash) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            CallIntegrationService.registerPhoneAccount(activity, accId);
-            CallIntegrationService.placeCall(activity, accId, chatId);
-          }
           Intent intent = new Intent(activity, VideochatActivity.class);
           intent.setAction(Intent.ACTION_VIEW);
           intent.putExtra(VideochatActivity.EXTRA_CHAT_ID, chatId);
