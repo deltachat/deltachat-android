@@ -174,6 +174,15 @@ public class NotificationCenter {
                 .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
+    private PendingIntent getDeclineCallIntent(ChatData chatData, int callId) {
+        Intent intent = new Intent(DeclineCallReceiver.DECLINE_ACTION);
+        intent.setClass(context, DeclineCallReceiver.class);
+        intent.putExtra(DeclineCallReceiver.ACCOUNT_ID_EXTRA, chatData.accountId);
+        intent.putExtra(DeclineCallReceiver.CALL_ID_EXTRA, callId);
+        intent.setPackage(context.getPackageName());
+        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
+    }
+
     // Groups and Notification channel groups
     // --------------------------------------------------------------------------------------------
 
@@ -407,6 +416,8 @@ public class NotificationCenter {
         ChatData chatData = new ChatData(accId, chatId);
         String notificationChannel = getCallNotificationChannel(notificationManager, chatData, name);
 
+        PendingIntent declineCallIntent = getDeclineCallIntent(chatData, callId);
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationChannel)
           .setSmallIcon(R.drawable.icon_notification)
           .setColor(context.getResources().getColor(R.color.delta_primary))
@@ -417,9 +428,13 @@ public class NotificationCenter {
           .setTicker(name)
           .setContentTitle(name)
           .setContentText("Incoming Call")
-          ;
-          //                    .setDeleteIntenta(getMarkAsReadIntent(chatData, msgId, false))
-        //                    .setContentIntent(getOpenChatIntent(chatData));
+          .setDeleteIntent(declineCallIntent);
+
+        builder.addAction(
+          new NotificationCompat.Action.Builder(
+            R.drawable.baseline_call_end_24,
+            context.getString(R.string.end_call),
+            declineCallIntent).build());
 
         builder.addAction(
           new NotificationCompat.Action.Builder(
@@ -437,7 +452,7 @@ public class NotificationCenter {
         // add notification, we use one notification per chat,
         // esp. older android are not that great at grouping
         try {
-          notificationManager.notify(String.valueOf(accId), ID_MSG_OFFSET + chatId, notif);
+          notificationManager.notify("call-" + accId, callId, notif);
         } catch (Exception e) {
           Log.e(TAG, "cannot add notification", e);
         }
@@ -730,6 +745,14 @@ public class NotificationCenter {
       } catch (Exception e) { Log.w(TAG, e); }
 
       return null;
+    }
+
+    public void removeCallNotification(int accountId, int callId) {
+        try {
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+            String tag = "call-" + accountId;
+            notificationManager.cancel(tag, callId);
+        } catch (Exception e) { Log.w(TAG, e); }
     }
 
     public void removeNotifications(int accountId, int chatId) {

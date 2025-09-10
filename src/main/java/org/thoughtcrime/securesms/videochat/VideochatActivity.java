@@ -44,7 +44,9 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
     chatId = bundle.getInt(EXTRA_CHAT_ID, 0);
     callId = bundle.getInt(EXTRA_CALL_ID, 0);
     int accId = bundle.getInt(EXTRA_ACCOUNT_ID, -1);
-    this.dcContext = DcHelper.getAccounts(getApplicationContext()).getAccount(accId);
+    this.dcContext = DcHelper.getAccounts(this).getAccount(accId);
+
+    DcHelper.getNotificationCenter(this).removeCallNotification(accId, callId);
 
     WebSettings webSettings = webView.getSettings();
     webSettings.setJavaScriptEnabled(true);

@@ -447,6 +447,14 @@
         </intent-filter>
     </receiver>
 
+    <receiver android:name=".notifications.DeclineCallReceiver"
+              android:enabled="true"
+              android:exported="false">
+        <intent-filter>
+            <action android:name="org.thoughtcrime.securesms.notifications.DECLINE_CALL_NOTICED"/>
+        </intent-filter>
+    </receiver>
+
     <receiver android:name=".notifications.RemoteReplyReceiver"
               android:enabled="true"
               android:exported="false">
