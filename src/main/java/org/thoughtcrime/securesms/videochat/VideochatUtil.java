@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms.videochat;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
