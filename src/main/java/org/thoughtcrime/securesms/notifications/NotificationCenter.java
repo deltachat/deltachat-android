@@ -389,15 +389,15 @@ public class NotificationCenter {
 
                 // create a the channel
                 if(!channelExists) {
-                    NotificationChannel channel = new NotificationChannel(channelId, name, NotificationManager.IMPORTANCE_HIGH);
+                    NotificationChannel channel = new NotificationChannel(channelId, name, NotificationManager.IMPORTANCE_MAX);
                     channel.setDescription("Informs about incoming calls.");
                     channel.setShowBadge(true);
 
                     Uri ringtone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-                    channel.setSound(ringtone,
-                                     new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_UNKNOWN)
-                                     .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
-                                     .build());
+                    channel.setSound(ringtone, new AudioAttributes.Builder()
+                             .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
+                             .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                             .build());
                     notificationManager.createNotificationChannel(channel);
                 }
             } catch(Exception e) {
