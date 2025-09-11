@@ -187,6 +187,7 @@ public class DcEventCenter {
         DcHelper.getNotificationCenter(context).notifyCall(accountId, event.getData1Int(), event.getData2Str());
         break;
 
+      case DcContext.DC_EVENT_INCOMING_CALL_ACCEPTED:
       case DcContext.DC_EVENT_CALL_ENDED:
         DcHelper.getNotificationCenter(context).removeCallNotification(accountId, event.getData1Int());
         break;
