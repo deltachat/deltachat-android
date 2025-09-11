@@ -1,5 +1,3 @@
-// called when the user click the "clear" or "mark read" button in the system notification
-
 package org.thoughtcrime.securesms.notifications;
 
 import android.content.BroadcastReceiver;

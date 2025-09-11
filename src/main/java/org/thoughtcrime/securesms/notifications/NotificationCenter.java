@@ -160,7 +160,7 @@ public class NotificationCenter {
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
-    private PendingIntent getAnswerIntent(ChatData chatData, int callId, String payload) {
+    public PendingIntent getAnswerIntent(ChatData chatData, int callId, String payload) {
         final Intent chatIntent = new Intent(context, ConversationActivity.class)
             .putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, chatData.accountId)
             .putExtra(ConversationActivity.CHAT_ID_EXTRA, chatData.chatId)
@@ -180,7 +180,7 @@ public class NotificationCenter {
             .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
-    private PendingIntent getDeclineCallIntent(ChatData chatData, int callId) {
+    public PendingIntent getDeclineCallIntent(ChatData chatData, int callId) {
         Intent intent = new Intent(DeclineCallReceiver.DECLINE_ACTION);
         intent.setClass(context, DeclineCallReceiver.class);
         intent.putExtra(DeclineCallReceiver.ACCOUNT_ID_EXTRA, chatData.accountId);
@@ -364,7 +364,7 @@ public class NotificationCenter {
         return channelId;
     }
 
-    private String getCallNotificationChannel(NotificationManagerCompat notificationManager, ChatData chatData, String name) {
+    public String getCallNotificationChannel(NotificationManagerCompat notificationManager, ChatData chatData, String name) {
         String channelId = CH_CALLS_PREFIX + "-" + chatData.accountId + "-"+ chatData.chatId;
 
         if (notificationChannelsSupported()) {
@@ -454,8 +454,6 @@ public class NotificationCenter {
 
         Notification notif = builder.build();
         notif.flags = notif.flags | Notification.FLAG_INSISTENT;
-        // add notification, we use one notification per chat,
-        // esp. older android are not that great at grouping
         try {
           notificationManager.notify("call-" + accId, callId, notif);
         } catch (Exception e) {
@@ -833,7 +831,7 @@ public class NotificationCenter {
         }
     }
 
-  private static class ChatData {
+  public static class ChatData {
     public final int accountId;
     public final int chatId;
 
