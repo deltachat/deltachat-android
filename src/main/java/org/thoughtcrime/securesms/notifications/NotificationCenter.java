@@ -433,8 +433,7 @@ public class NotificationCenter {
           .setOnlyAlertOnce(false)
           .setTicker(name)
           .setContentTitle(name)
-          .setContentText("Incoming Call")
-          .setDeleteIntent(declineCallIntent);
+          .setContentText("Incoming Call");
 
         builder.addAction(
           new NotificationCompat.Action.Builder(
