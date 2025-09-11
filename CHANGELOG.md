@@ -14,6 +14,7 @@
 * avoid "unknown sender for this chat" error
 * properly display "Messages are end-to-end encrypted." in all encrypted groups
 * several small fixes and improvements
+* add experimental built-in calls
 * update to core 2.13.0
 
 ## v2.11.0
