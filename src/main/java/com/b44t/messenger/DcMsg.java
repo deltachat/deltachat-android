@@ -18,7 +18,6 @@ public class DcMsg {
     public final static int DC_MSG_VOICE = 41;
     public final static int DC_MSG_VIDEO = 50;
     public final static int DC_MSG_FILE = 60;
-    public final static int DC_MSG_VIDEOCHAT_INVITATION = 70;
     public final static int DC_MSG_WEBXDC = 80;
     public final static int DC_MSG_VCARD = 90;
 
@@ -191,7 +190,7 @@ public class DcMsg {
 
     public boolean canSave() {
       // saving info-messages out of context results in confusion, see https://github.com/deltachat/deltachat-ios/issues/2567
-      return !isInfo() && getType() != DC_MSG_VIDEOCHAT_INVITATION;
+      return !isInfo();
     }
 
     public File getFileAsFile() {
