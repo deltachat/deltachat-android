@@ -1,7 +1,9 @@
 package org.thoughtcrime.securesms.videochat;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.webkit.JavascriptInterface;
 import android.webkit.PermissionRequest;
@@ -17,6 +19,8 @@ import com.b44t.messenger.DcEvent;
 import org.thoughtcrime.securesms.WebViewActivity;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.AvatarUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.Objects;
@@ -113,6 +117,12 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
 
   class InternalJSApi {
     @JavascriptInterface
+    public String getIceServers() {
+      // TODO: hardcode server for now, should come core
+      return "[{\"urls\": \"turn:c20.testrun.org\",\"username\": \"ohV8aec1\", \"credential\": \"zo3theiY\"}]";
+    }
+
+    @JavascriptInterface
     public void startCall(String payload) {
       callId = dcContext.placeOutgoingCall(chatId, payload);
     }
@@ -125,6 +135,18 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
     @JavascriptInterface
     public void endCall() {
       finish();
+    }
+
+    @JavascriptInterface
+    public String getAvatar() {
+      final Context context = VideochatActivity.this;
+      final DcChat dcChat = dcContext.getChat(chatId);
+      if (!TextUtils.isEmpty(dcChat.getProfileImage())) {
+        return AvatarUtil.asDataUri(dcChat.getProfileImage());
+      } else {
+        final Recipient recipient = new Recipient(context, dcChat);
+        return AvatarUtil.asDataUri(recipient.getFallbackAvatarDrawable(context, false));
+      }
     }
   }
 }
