@@ -17,6 +17,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -50,7 +51,10 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.videochat.VideochatActivity;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -166,7 +170,14 @@ public class NotificationCenter {
             .putExtra(ConversationActivity.CHAT_ID_EXTRA, chatData.chatId)
             .setAction(Intent.ACTION_VIEW);
 
-        String hash = "#offer=" + payload;
+        String base64 = Base64.encodeToString(payload.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
+        String hash = "";
+        try {
+          hash = "#acceptCall=" + URLEncoder.encode(base64, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+          Log.e(TAG, "Error", e);
+        }
+
         Intent intent = new Intent(context, VideochatActivity.class);
         intent.setAction(Intent.ACTION_VIEW);
         intent.putExtra(VideochatActivity.EXTRA_ACCOUNT_ID, chatData.accountId);

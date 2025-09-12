@@ -21,7 +21,7 @@ public class VideochatUtil {
           intent.setAction(Intent.ACTION_VIEW);
           intent.putExtra(VideochatActivity.EXTRA_ACCOUNT_ID, accId);
           intent.putExtra(VideochatActivity.EXTRA_CHAT_ID, chatId);
-          intent.putExtra(VideochatActivity.EXTRA_HASH, "#call");
+          intent.putExtra(VideochatActivity.EXTRA_HASH, "#startCall");
           activity.startActivity(intent);
         })
       .execute();

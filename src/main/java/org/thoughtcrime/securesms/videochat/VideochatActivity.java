@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.webkit.JavascriptInterface;
 import android.webkit.PermissionRequest;
@@ -23,9 +25,13 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.AvatarUtil;
 import org.thoughtcrime.securesms.util.Util;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 public class VideochatActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate {
+  private static final String TAG = VideochatActivity.class.getSimpleName();
 
   public static final String EXTRA_ACCOUNT_ID = "acc_id";
   public static final String EXTRA_CHAT_ID = "chat_id";
@@ -101,8 +107,13 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
     switch (event.getId()) {
     case DcContext.DC_EVENT_OUTGOING_CALL_ACCEPTED:
       if (event.getData1Int() == callId) {
-        String hash = "#answer=" + event.getData2Str();
-        webView.evaluateJavascript("window.location.hash = `"+hash+"`", null);
+        try {
+          String base64 = Base64.encodeToString(event.getData2Str().getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
+          String hash = "#onAnswer=" + URLEncoder.encode(base64, "UTF-8");
+          webView.evaluateJavascript("window.location.hash = `"+hash+"`", null);
+        } catch (UnsupportedEncodingException e) {
+          Log.e(TAG, "Error", e);
+        }
       }
       break;
     case DcContext.DC_EVENT_CALL_ENDED:
