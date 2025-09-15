@@ -87,7 +87,10 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
   private AttachmentManager attachmentManager;
   private Bitmap avatarBmp;
+
   private @Nullable ProgressDialog progressDialog;
+  private boolean cancelled;
+
   private DcContext dcContext;
 
   @Override
@@ -98,6 +101,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.onboarding_create_instant_account);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
 
     boolean fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
     if (DcHelper.getContext(this).isConfigured() == 1) {
@@ -432,7 +436,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   }
 
   private void progressSuccess() {
-    DcHelper.getEventCenter(this).endCaptureNextError();
     if (progressDialog != null) {
       progressDialog.dismiss();
     }
@@ -491,11 +494,14 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       progressDialog = null;
     }
 
+    cancelled = false;
+
     progressDialog = new ProgressDialog(this);
     progressDialog.setMessage(getResources().getString(R.string.one_moment));
     progressDialog.setCanceledOnTouchOutside(false);
     progressDialog.setCancelable(false);
     progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getResources().getString(android.R.string.cancel), (dialog, which) -> {
+        cancelled = true;
         dcContext.stopOngoingProcess();
       });
     progressDialog.show();
@@ -506,9 +512,13 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       Rpc rpc = DcHelper.getRpc(this);
         try {
           rpc.addTransportFromQr(dcContext.getAccountId(), qrCode);
+          DcHelper.getEventCenter(this).endCaptureNextError();
           progressSuccess();
         } catch (RpcException e) {
-          Util.runOnMain(() -> progressError(e.getMessage()));
+          DcHelper.getEventCenter(this).endCaptureNextError();
+          if (!cancelled) {
+            Util.runOnMain(() -> progressError(e.getMessage()));
+          }
         }
     }).start();
   }

@@ -10,9 +10,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.Menu;
@@ -401,8 +399,6 @@ public abstract class BaseConversationListFragment extends Fragment implements A
 
     mode.setTitle("1");
 
-    requireActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
-
     return true;
   }
 
@@ -444,10 +440,6 @@ public abstract class BaseConversationListFragment extends Fragment implements A
   public void onDestroyActionMode(ActionMode mode) {
     actionMode = null;
     getListAdapter().initializeBatchMode(false);
-
-    TypedArray color = requireActivity().getTheme().obtainStyledAttributes(new int[]{android.R.attr.statusBarColor});
-    requireActivity().getWindow().setStatusBarColor(color.getColor(0, Color.BLACK));
-    color.recycle();
 
     Context context = getContext();
     if (context != null) {

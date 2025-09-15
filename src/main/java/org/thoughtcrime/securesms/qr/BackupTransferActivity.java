@@ -85,6 +85,7 @@ public class BackupTransferActivity extends BaseActionBarActivity {
         supportActionBar.setDisplayHomeAsUpEnabled(true);
         supportActionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
         supportActionBar.setTitle(title);
+        supportActionBar.setElevation(0); // TODO: use custom toolbar instead
     }
 
     @Override

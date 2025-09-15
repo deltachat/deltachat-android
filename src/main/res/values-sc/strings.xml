@@ -300,6 +300,7 @@
     <string name="tab_docs_empty_hint">Sos documentos editàbiles, cussos musicales e totu sas àteras castas de documentos cumpartzidos in custa tzarrada ant a èssere ammustrados inoghe.</string>
     <string name="media_preview">Anteprima de su documentu multimediale</string>
     <string name="send_message">Imbia messàgiu</string>
+
     <string name="login_title">Intra</string>
     <string name="login_header">Intra in su servidore tuo</string>
     <string name="login_explain">Intra cun un\'indiritzu de posta eletrònica chi esistat</string>

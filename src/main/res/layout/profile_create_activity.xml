@@ -2,14 +2,17 @@
 
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fitsSystemWindows="true"
+    android:background="?attr/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 <org.thoughtcrime.securesms.components.InputAwareLayout
         android:id="@+id/container"
+        android:background="?android:attr/windowBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
+        android:paddingTop="20dp"
         android:orientation="vertical">
 
     <TextView

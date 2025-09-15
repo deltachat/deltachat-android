@@ -396,10 +396,6 @@
     <string name="qrshow_join_contact_hint">%1$silə əlaqə qurmaq üçün bunu skan edin</string>
     <string name="qrshow_join_contact_no_connection_toast">İnternet bağlantısı yoxdur, QR kodunu qura bilmir.</string>
     <string name="contact_verified">%1$s yoxlanıldı.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">%1$sDoğrula bilmir</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">%1$süçün quraşdırma dəyişdirildi</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Cavab ver</string>
     <string name="notify_new_message">Yeni mesaj</string>
@@ -417,9 +413,6 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin. </string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat, fotoşəkilləri, videoları və ya səsləri əlavə etmək və ya ixrac etmək üçün saxlama icazəsini tələb edir, lakin bu daimi olaraq rədd edildi. Xahiş edirik tətbiq ayarları menyusuna davam edin, \"İzinlər\" seçin və \"Yaddaş\" funksiyasını aktivləşdirin.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin. </string>
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Şifrələnmiş mesaj</string>
-
     <string name="global_menu_preferences_language_desktop">Dil səç</string>
     <string name="global_menu_file_desktop">Fayl</string>
     <string name="global_menu_file_quit_desktop">Çıxış</string>

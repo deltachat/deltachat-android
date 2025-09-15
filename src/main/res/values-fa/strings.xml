@@ -239,12 +239,6 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">شروع گفتگو با...</string>
     <string name="clone_chat">درست کردن گپ جدید از این گپ</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">لیست Broadcast</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">لیست‌های Broadcast</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">لیست Broadcast جدید</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel">کانال</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -252,12 +246,6 @@
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">کانال جدید</string>
     <string name="add_recipients">افزودن گیرنده</string>
-    <!-- deprecated -->
-    <string name="edit_broadcast_list">ویرایش فهرست Broadcast</string>
-    <!-- deprecated -->
-    <string name="broadcast_list_name">نام فهرست BroadCast</string>
-    <!-- deprecated -->
-    <string name="please_enter_broadcast_list_name">وارد کردن نام برای فهرست Broadcast.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">نام کانال</string>
     <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
@@ -429,8 +417,6 @@ https://meet.jit.si/$ROOM
     <string name="ask_start_chat_with">گپ زدن با %1$s؟</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">حذف %1$s از گروه؟</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">آيا%1$s از لیست Broadcast پاک شود؟ </string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_channel">حذف %1$s از کانال؟</string>
     <string name="open_url_confirmation">آیا می‌خواهید این لینک را باز کنید؟</string>
@@ -462,8 +448,6 @@ https://meet.jit.si/$ROOM
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">ارسال پیام. مشکلی نیست اگر %1$s از دلتاچت استفاده نمی‌کند.</string>
-    <!-- deprecated -->
-    <string name="chat_new_broadcast_hint">در یک فهرست Broadcast گیرنده‌ها در یک گپ فقط خواندنی با شما، پیام‌ها را دریافت می‌کنند.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="chat_new_channel_hint">کانال‌ها یک ابزار یک به چند برای اعلام عمومی پیام‌هایتان هستند.</string>
     <string name="chat_new_group_hint">نوشتن اولین پیام به دیگران امکان می‌دهد در این گروه پاسخ دهند. \n\n• مشکلی نیست اگر همه اعضا از دلتاچت استفاده نکنند\n\n• دریافت اولین پیام ممکن است به زمان بیشتری نیاز داشته باشد. </string>
@@ -574,11 +558,6 @@ https://meet.jit.si/$ROOM
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">جدول مربعی</string>
     <string name="send_message">ارسال پیام</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">مخاطب %1$s نشانی خود را از %2$s به %3$s تغییر داده است.  </string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">شما نشانی رایانامهٔ خود را از %1$s به %2$s تغییر دادید.\n\nاگر به یک گروه تأیید شده پیام بفرستید، مخاطبان آن به صورت خودکار نشانی جدید را جایگزین نشانی پیشین می‌کنند.\n\nبه شدت توصیه می‌شود که نشانی رایانامهٔ پیشین خود را به نحوی تنظیم کنید که تمام رایانامه‌ها را به نشانی جدید شما هدایت کند؛ در غیر این صورت ممکن است پیام‌های مخاطبانی که از تغییر نشانی شما مطلع نشده‌اند را از دست بدهید. </string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -977,12 +956,8 @@ https://meet.jit.si/$ROOM
     <string name="ephemeral_timer_weeks_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی %1$s هفته تنظیم کردید.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %2$s روی %1$s هفته تنظیم شد.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken">%1$s پیامی را از دستگاه دیگری ارسال کرد.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">رمزنگاری سرتاسر پیام ها از این به بعد تضمین می شود. برای اطلاعات بیشتر ضربه بزنید.</string>
     <string name="chat_protection_enabled_explanation">رمزنگاری سراسری پیام‌های این گفتگو اکنون تضمین می‌شود. رمزنگاری سراسری باعث می‌شود پیام‌هایتان بین شما و مخاطبین شما محرمانه بماند. حتی ارائه‌دهندهٔ رایانامه شما هم نمی‌تواند آن‌ها را بخواند.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_tap_to_learn_more">%1$s پیامی را از دستگاه دیگری ارسال کرد. برای اطلاعات بیشتر ضربه بزنید.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s به رمزنگاری سراسری نیاز دارد که هنوز برای این گپ پیکره‌بندی نشده است. برای یادگیری بیش‌تر این‌جا بزنید.</string>
     <string name="invalid_unencrypted_explanation">برای برقراری رمزنگاری سراسری، می‌توانید به صورت حضوری با مخاطب‌های خود دیدار کنید و کد کیوآر آن‌ها را برای معرفی اسکن کنید.</string>
     <string name="learn_more">بیشتر بدانید</string>
@@ -1048,18 +1023,10 @@ https://meet.jit.si/$ROOM
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">کاربر %1$s پاسخ داد، در انتظار اضافه شدن به گروه...</string>
     <string name="secure_join_wait">در حال برقراری رمزگذاری سراسری تضمین‌شده، لطفا صبر کنید...</string>
-    <!-- deprecated -->
-    <string name="secure_join_wait_timeout">اکنون نمی توانیم رمزگذاری سراسری تضمین‌شده را برقرار کنیم. با این وجود می‌توانید پیام ارسال کنید.</string>
-    <!-- deprecated, was stock string -->
-    <string name="secure_join_takes_longer">برای ادامه، مخاطب باید برخط باشد.\n\nاین فرآیند به صورت خودکار در پس‌زمینه ادامه خواهد داشت.</string>
     <string name="contact_verified">%1$s تأیید شد.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">امکان تایید رمزگذاری در مبدا، برای %1$sوجود ندارد.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">احراز هویت شده توسط %1$s</string>
     <string name="verified_by_you">تأیید شده توسط من</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">تنظیم‌ها برای %1$s تغییر کرد. </string>
     <string name="verified_contact_required_explain">برای تضمین رمزنگاری سراسری شما تنها می‌توانید مخاطب‌هایی که یک تیک سبز دارند به این گروه اضافه کنید.\n\nمی‌توانید با مخاطب‌هایتان حضوری ملاقات کنید و برای معرفی، کد QR آن‌ها را اسکن کنید.</string>
     <string name="mailto_dialog_header_select_chat">گپ را برای ارسال پیام انتخاب کنید</string>
     <!-- first placeholder is the name of the chat -->
@@ -1113,9 +1080,6 @@ https://meet.jit.si/$ROOM
     <string name="ImageEditorHud_crop">بریدن</string>
     <string name="ImageEditorHud_flip">برعکس کردن</string>
     <string name="ImageEditorHud_rotate">چرخاندن</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">پیام رمزگذاری شده</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">این نرم‌افزار رسمی دلتاچت در محیط رایانه است.</string>
@@ -1224,7 +1188,6 @@ GNU GPL ورژن ۳
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">دلتاچت به شما اجازه می دهد تصویر موردنظر برای ارسال را انتخاب کنید.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">دلتاچت میخواهد تصاویر را در آلبوم شما ذخیره کند.</string>
     <string name="InfoPlist_NSFaceIDUsageDescription">دلتاچت می‌تواند از عکس چهرهٔ شما برای محافظت از نمایهٔ محلی، ساخت نسخهٔ پشتیبان و پیکره‌بندی دستگاه دوم استفاده کند.</string>
-
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">تحویل آنی</string>

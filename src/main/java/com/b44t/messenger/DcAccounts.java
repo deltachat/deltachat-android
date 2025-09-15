@@ -42,4 +42,14 @@ public class DcAccounts {
     private native long  getJsonrpcInstanceCPtr ();
     private native long  getAccountCPtr         (int accountId);
     private native long  getSelectedAccountCPtr ();
+
+    public boolean isAllChatmail() {
+        for (int accountId : getAll()) {
+            DcContext dcContext = getAccount(accountId);
+            if (!dcContext.isChatmail()) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

@@ -64,7 +64,7 @@
                     android:summary="@string/pref_background_notifications_explain"/>
 
                 <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-                    android:key="pref_reliable_service"
+                    android:key="pref_reliable_service2"
                     android:defaultValue="false"
                     android:title="@string/pref_reliable_service"
                     android:summary="@string/pref_reliable_service_explain"/>

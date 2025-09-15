@@ -60,14 +60,12 @@ public class EphemeralMessagesDialog {
                 .setPositiveButton(R.string.ok, (dialog, which) -> {
                     final long burnAfter;
                     switch (selectedChoice[0]) {
-                        case 1:  burnAfter = TimeUnit.MINUTES.toSeconds(1); break;
-                        case 2:  burnAfter = TimeUnit.MINUTES.toSeconds(5); break;
-                        case 3:  burnAfter = TimeUnit.MINUTES.toSeconds(30); break;
-                        case 4:  burnAfter = TimeUnit.HOURS.toSeconds(1); break;
-                        case 5:  burnAfter = TimeUnit.DAYS.toSeconds(1);  break;
-                        case 6:  burnAfter = TimeUnit.DAYS.toSeconds(7);  break;
-                        case 7:  burnAfter = TimeUnit.DAYS.toSeconds(35); break;
-                        case 8:  burnAfter = TimeUnit.DAYS.toSeconds(365); break;
+                        case 1:  burnAfter = TimeUnit.MINUTES.toSeconds(5); break;
+                        case 2:  burnAfter = TimeUnit.HOURS.toSeconds(1); break;
+                        case 3:  burnAfter = TimeUnit.DAYS.toSeconds(1);  break;
+                        case 4:  burnAfter = TimeUnit.DAYS.toSeconds(7);  break;
+                        case 5:  burnAfter = TimeUnit.DAYS.toSeconds(35); break;
+                        case 6:  burnAfter = TimeUnit.DAYS.toSeconds(365); break;
                         default: burnAfter = 0; break;
                     }
                     listener.onTimeSelected(burnAfter);
@@ -84,30 +82,23 @@ public class EphemeralMessagesDialog {
         if (timespan == 0) {
             return 0; // off
         }
-
         // Choose timespan close to the current one out of available options.
-        if (timespan < TimeUnit.MINUTES.toSeconds(5)) {
-            return 1; // 1 minute
-        }
-        if (timespan < TimeUnit.MINUTES.toSeconds(30)) {
-            return 2; // 5 minutes
-        }
         if (timespan < TimeUnit.HOURS.toSeconds(1)) {
-            return 3; // 30 minutes
+            return 1; // 5 minutes
         }
         if (timespan < TimeUnit.DAYS.toSeconds(1)) {
-            return 4; // 1 hour
+            return 2; // 1 hour
         }
         if (timespan < TimeUnit.DAYS.toSeconds(7)) {
-            return 5; // 1 day
+            return 3; // 1 day
         }
         if (timespan < TimeUnit.DAYS.toSeconds(35)) {
-            return 6; // 1 week
+            return 4; // 1 week
         }
         if (timespan < TimeUnit.DAYS.toSeconds(365)) {
-            return 7; // 5 weeks
+            return 5; // 5 weeks
         }
-        return 8; // 1 year
+        return 6; // 1 year
     }
 
 }

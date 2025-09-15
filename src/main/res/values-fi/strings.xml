@@ -199,19 +199,7 @@
     <string name="menu_new_chat">Uusi keskustelu</string>
     <string name="menu_new_group">Uusi ryhmä</string>
     <string name="clone_chat">Kloonaa keskustelu</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Kuulutuslista</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Kuulutuslistat</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Uusi kuulutuslista</string>
     <string name="add_recipients">Lisää vastaanottajia</string>
-    <!-- deprecated -->
-    <string name="edit_broadcast_list">Muokkaa kuulutuslistaa</string>
-    <!-- deprecated -->
-    <string name="broadcast_list_name">Kuulutuslistan nimi</string>
-    <!-- deprecated -->
-    <string name="please_enter_broadcast_list_name">Anna kuulutuslistalle nimi.</string>
     <string name="menu_send">Lähetä</string>
     <string name="menu_toggle_keyboard">Näytä emoji-näppäimistö</string>
     <string name="menu_edit_group">Muokkaa ryhmää</string>
@@ -343,8 +331,6 @@
     <string name="ask_start_chat_with">Aloita keskustelu yhteystiedon %1$s kanssa?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Poista %1$s ryhmästä?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Poista %1$s kuulutuslistalta?</string>
     <string name="open_url_confirmation">Haluatko avata tämän linkin?</string>
 
 
@@ -374,8 +360,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Lähetä viesti. Ei haittaa, vaikka %1$s ei käyttäisi Delta Chatia.</string>
-    <!-- deprecated -->
-    <string name="chat_new_broadcast_hint">Kuulutuslistalla vastaanottajat saavat viestit keskusteluna kanssasi, jossa heillä on vain lukuoikeus.</string>
     <string name="chat_new_group_hint">Muut näkevät ryhmän vasta, kun lähetät ensimmäisen viestin.</string>
     <string name="chat_record_slide_to_cancel">Pyyhkäise peruuttaaksesi</string>
     <string name="chat_record_explain">Pidä painettuna nauhoittaaksesi ääniviestin, irrota lähettääksesi</string>
@@ -473,11 +457,6 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Neliöruudukko</string>
     <string name="send_message">Lähetä viesti</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s vaihtui osoitteesta %2$s osoitteeksi %3$s</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">Vaihdoit sähköpostiosoitteesi osoitteesta %1$s osoitteeksi %2$s.\n\nJos lähetät viestin vahvistettuun ryhmään, ryhmän jäsenet saavat automaattisesti uuden osoitteesi.\n\nOn suositeltavaa asettaa vanha tilisi välittämään kaikki viestit uuteen osoitteeseesi. Muuten et välttämättä saa viestejä niiltä yhteystiedoiltasi, joilla ei ole uutta osoitettasi.</string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -844,14 +823,8 @@
     <string name="ephemeral_timer_weeks_by_you">Katoavien viestien ajastin asetettu %1$s viikkoon minun toimestani.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Katoavien viestien ajastin asetettu %1$s viikkoon käyttäjän %2$s toimesta.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken">%1$s lähetti viestin toiselta laitteelta.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Tästä eteenpäin viestit on taatusti päästä-päähän salattuja. Lisätietoja napauttamalla.</string>
     <string name="chat_protection_enabled_explanation">Kaikki viestit tässä keskustelussa ovat taatusti päästä-päähän salattuja.\n\nPäästä-päähän -salaus pitää viestisi sinun ja keskustelukumppanisi välillä. Edes sähköpostipalveluntarjoaja ei pysty niitä lukemaan.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_tap_to_learn_more">%1$s lähetti viestin toiselta laitteelta. Lue lisää napauttamalla.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_explanation">Päästä päähän salausta ei voida enää taata, todennäköisesti koska %1$s uudelleenasensi Delta Chatin tai lähetti viestin toiselta laitteelta.\n\nTapaamalla hänet voit skannata hänen QR -koodinsa uudelleen päästä-päähän salauksen palauttamiseksi.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s vaatii päästä-päähän -salausta joka ei enää ole käytössä tässä keskustelussa. Lue lisää napauttamalla.</string>
     <string name="invalid_unencrypted_explanation">Päästä-päähän salauksen saat käyttöön tapaamalla yhteystietosi ja skannaamalla hänen QR -koodinsa.</string>
     <string name="learn_more">Lue lisää</string>
@@ -910,16 +883,10 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">Vastaus saatu käyttäjältä %1$s, odotetaan lisäystä ryhmään...</string>
     <string name="secure_join_wait">Otetaan taattua päästä-päähän salausta käyttöön, odota...</string>
-    <!-- deprecated -->
-    <string name="secure_join_wait_timeout">Taattua päästä päähän salausta ei vielä voitu ottaa käyttöön, mutta voit jo lähettää viestin.</string>
     <string name="contact_verified">%1$s varmistettu.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Keskustelun päästä-päähän -salausta ei voida taata henkilön %1$s kanssa.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">%1$s lisäsi</string>
     <string name="verified_by_you">Lisäämäni</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Asetukset muutettu kohteessa %1$s.</string>
     <string name="verified_contact_required_explain">Päästä-päähän -salauksen takaamiseksi, voit lisätä ryhmään ainoastaan yhteystietoja joilla on vihreä \"oikein\" -merkki.\n\nVoit tavata yhteystietoja kasvotusten ja skannata heidän QR -koodinsa niin saat lisättyä salauksen käyttöön</string>
     <string name="mailto_dialog_header_select_chat">Valitse keskustelu viestien lähettämiseen</string>
     <!-- first placeholder is the name of the chat -->
@@ -961,9 +928,6 @@
     <string name="ImageEditorHud_crop">Rajaa</string>
     <string name="ImageEditorHud_flip">Käännä</string>
     <string name="ImageEditorHud_rotate">Pyöritä</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Salattu viesti</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Tämä on virallinen Delta Chat -työpöytäsovellus.</string>

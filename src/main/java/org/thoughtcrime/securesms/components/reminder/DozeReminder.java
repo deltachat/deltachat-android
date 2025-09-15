@@ -109,18 +109,9 @@ public class DozeReminder {
     }
   }
 
-  private static boolean isAllChatmail() {
-    for (int accountId : ApplicationContext.dcAccounts.getAll()) {
-      DcContext context = ApplicationContext.dcAccounts.getAccount(accountId);
-      if (!context.isChatmail()) {
-        return false;
-      }
-    }
-    return true;
-  }
-
   private static boolean isPushAvailableAndSufficient() {
-    return isAllChatmail() && FcmReceiveService.getToken() != null;
+    return ApplicationContext.dcAccounts.isAllChatmail()
+      && FcmReceiveService.getToken() != null;
   }
 
   public static void maybeAskDirectly(Context context) {

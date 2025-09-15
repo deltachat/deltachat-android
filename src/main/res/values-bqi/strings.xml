@@ -24,7 +24,7 @@
     <string name="open">گۊشیڌن</string>
     <string name="download">دانلود</string>
     <string name="downloading">هونی دانلود ابۊ...</string>
-    <string name="open_attachment">گۊشیڌن زمینه</string>
+    <string name="open_attachment">گۊشیڌن پیوست</string>
     <string name="join">ٱووڌن</string>
     <string name="rejoin">ز نۊ ٱووڌن</string>
     <string name="delete">پاک کردن</string>
@@ -33,7 +33,7 @@
     <string name="info">زبار</string>
     <string name="update">ورۊ کردن</string>
     <string name="emoji">ایموجی</string>
-    <string name="attachment">زمینه</string>
+    <string name="attachment">پیوست</string>
     <!-- the placeholder will be replaced by the name of the image or file to attach -->
     <string name="ask_attach">«%1$s» پیوست بۊ؟</string>
     <string name="back">وورگشتن</string>
@@ -54,17 +54,17 @@
     <string name="mute">بؽ دونگ</string>
     <string name="muted">بؽ دونگ</string>
     <string name="ephemeral_messages">پیوما بؽڌارکۊنی</string>
-    <string name="ephemeral_messages_hint">یو ری پوی منتورا ای گوفت ۉ لوفت، ٱر دلتا چت ن و کار بگرن ائمال ابۊ. ولی هنی ترن پیوما ن لف گیری، زفت وو فوروارد کونن.</string>
+    <string name="ephemeral_messages_hint">یو ری پوی منتورا ای گوفت وو لوفت، ٱر دلتا چت ن و کار بگرن ائمال ابۊ. ولی هنی ترن پیوما ن لف گیری، زفت وو فوروارد کونن.</string>
     <string name="save">زفت کردن</string>
-    <string name="chat">گوفت ۉ لوفت</string>
+    <string name="chat">گوفت وو لوفت</string>
     <string name="media">وارسگر</string>
     <string name="apps_and_media">برنومه یل وو وارسگرا</string>
     <string name="profile">پوروفایل</string>
     <string name="all_profiles">پوی پوروفایلا</string>
     <string name="current_profile">پوروفایل هیم سکویی</string>
     <string name="main_menu">نومگه ٱسلی</string>
-    <string name="start_chat">ناڌن پا گوفت ۉ لوفت</string>
-    <string name="show_full_message">نشۉ داڌن پیوم کامل...</string>
+    <string name="start_chat">ناڌن پا گوفت وو لوفت</string>
+    <string name="show_full_message">نشووݩ داڌن پیوم کامل...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">پوی ن خونده بیڌه بزݩ</string>
     <string name="mark_as_read">نشووه ناڌن و عونوان خونده وابیڌه</string>
@@ -78,12 +78,12 @@
     <string name="always">همیشه</string>
     <string name="always_load_remote_images">شؽواتا دیر ز دسرس هی بوگوئشن</string>
     <string name="once">هیم ی کرت</string>
-    <string name="show_warning">نشۉ داڌن هوشدار</string>
-    <string name="show_password">نشۉ داڌن رزم</string>
+    <string name="show_warning">نشووݩ داڌن هوشدار</string>
+    <string name="show_password">نشووݩ داڌن رزم</string>
     <string name="hide_password">بؽڌار کردن رزم</string>
     <string name="not_now">سکو ن</string>
     <string name="never">هیچ</string>
-    <string name="one_moment">ی دمۉ...</string>
+    <string name="one_moment">ی دمووݩ...</string>
     <string name="done">ٱنجوم وابی</string>
     <string name="undo">وورگندن</string>
     <string name="offline">آفلاین</string>
@@ -97,11 +97,11 @@
     <!-- the placeholder will be replaced by the name of a file -->
     <string name="cannot_save_file">نتره %1$s ن زفت کونه.</string>
     <string name="copied_to_clipboard">من ویرگه لف گیری وابی.</string>
-    <string name="contacts_headline">هومدنگۉݩ</string>
+    <string name="contacts_headline">هومدنگووݩ</string>
     <string name="email_address">نشۊوی ایمیل</string>
     <string name="bad_email_address">نشۊوی ایمیل موشکل داره.</string>
     <string name="password">رزم</string>
-    <string name="existing_password">رزم مۉجۊڌ</string>
+    <string name="existing_password">رزم مووجۊد</string>
     <string name="now">سکو</string>
     <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">بپا</string>
@@ -188,6 +188,7 @@
     <string name="files_attach_hint">فشناڌن فایلا ٱسلی وو شؽواتا تپنیڌه نوابیڌه</string>
     <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
     <string name="choose_from_files">پسند ز من فایلا</string>
+    <string name="choose_from_gallery">پسند ز شؽوات مال</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">برنومه</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
@@ -200,7 +201,7 @@
     <string name="tools">ٱوزار</string>
     <string name="app_size">هندا</string>
     <string name="app_date_published">تیجنیڌن</string>
-    <string name="add_to_chat">ٱووردن و گوفت ۉ لوفت</string>
+    <string name="add_to_chat">ٱووردن و گوفت وو لوفت</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">پیتینیڌن</string>
     <string name="unknown">ناشناس</string>
@@ -227,43 +228,56 @@
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">هومدنگ نۊ</string>
     <string name="menu_new_classic_contact">ٱووردن هومدنگ و هالت دستی</string>
-    <string name="menu_new_chat">گوفت ۉ لوفت نۊ</string>
+    <string name="menu_new_chat">گوفت وو لوفت نۊ</string>
     <string name="menu_new_group">جرگه نۊ</string>
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
-    <string name="chat_with">ناڌن پا گوفت ۉ لوفت وا...</string>
-    <string name="clone_chat">وورکل گوفت ۉ لوفت نۊ ز ای گوفت ۉ لوفت</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">نومگه Broadcast</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">نومگه یل Broadcast</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">نومگه Broadcast نۊ</string>
-    <!-- deprecated -->
-    <string name="edit_broadcast_list">آلشت نومگه Broadcast</string>
+    <string name="chat_with">ناڌن پا گوفت وو لوفت وا...</string>
+    <string name="clone_chat">وورکل گوفت وو لوفت نۊ ز ای گوفت وو لوفت</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">تورگه</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">تورگه یل</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">تورگه نۊ</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">نوم تورگه</string>
+    <string name="email">ایمیل</string>
+    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">ایمیل نۊ</string>
+    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <string name="subject">سرتال</string>
     <string name="menu_send">فشناڌن</string>
+    <string name="menu_toggle_keyboard">آلشت تخته کیلیت ایموجی یل</string>
     <string name="menu_edit_group">آلشت جرگه</string>
     <string name="menu_group_name_and_image">نوم وو شؽوات جرگه</string>
-    <string name="menu_archive_chat">بایگۊوی گوفت ۉ لوفت</string>
-    <string name="menu_unarchive_chat">و در زیڌن گوفت ۉ لوفت ز بایگۊوی</string>
-    <string name="menu_add_attachment">ازاف کردن زمینه</string>
+    <string name="menu_show_global_map">نشووݩ داڌن پوی جاگه یل</string>
+    <string name="menu_archive_chat">بایگۊوی گوفت وو لوفت</string>
+    <string name="menu_unarchive_chat">و در زیڌن گوفت وو لوفت ز بایگۊوی</string>
+    <string name="menu_add_attachment">ازاف کردن پیوست</string>
     <string name="menu_leave_group">رئڌن ز جرگه</string>
-    <string name="menu_delete_chat">پاک کردن گوفت ۉ لوفت</string>
+    <string name="menu_leave_channel">رئڌن ز تورگه</string>
+    <string name="menu_delete_chat">پاک کردن گوفت وو لوفت</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
-    <string name="clear_chat">روفتن ویرگار گوفت ۉ لوفت</string>
+    <string name="clear_chat">روفتن ویرگار گوفت وو لوفت</string>
     <string name="delete_contact">پاک کردن هومدنگ</string>
     <string name="menu_delete_location">ای جاگه پاک بۊ؟</string>
+    <string name="menu_message_details">جۊزیات پیوم</string>
     <string name="menu_copy_to_clipboard">لف گیری من ویرگه</string>
+    <string name="share_invite_link">یک رسۊوی لینگ موکش</string>
+    <string name="invite_friends">موکش رفؽقووݩ</string>
+    <string name="menu_copy_selection_to_clipboard">لف گیری ز پسند بیڌه</string>
     <string name="menu_copy_link_to_clipboard">لف گیری لینک</string>
     <string name="menu_copy_text_to_clipboard">لف گیری هؽل</string>
     <string name="menu_copy_image_to_clipboard">لف گیری شؽوات</string>
     <string name="menu_copy_email_to_clipboard">لف گیری ایمیل</string>
     <string name="paste_from_clipboard">جا وندن ز ویرگه</string>
+    <string name="menu_forward">فوروارد پیوم</string>
     <string name="menu_reply">ولوم ب پیوم</string>
     <string name="menu_mute">بؽ دونگ کردن وارسۊویا</string>
     <string name="menu_unmute">وا دونگ کردن</string>
     <string name="menu_all_media">پوی وارسگرا</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
-    <string name="show_in_chat">نشۉ داڌن من گوفت ۉ لوفت</string>
+    <string name="show_in_chat">نشووݩ داڌن من گوفت وو لوفت</string>
     <string name="menu_share">یک رسۊوی</string>
     <string name="accept">قوۊل</string>
     <string name="menu_play">پشک</string>
@@ -272,7 +286,7 @@
     <string name="menu_scroll_to_top">رئڌن ب روء</string>
     <string name="menu_help">هیاری</string>
     <string name="menu_select_all">پسند پوی</string>
-    <string name="select_chat">پسند گوفت ۉ لوفت</string>
+    <string name="select_chat">پسند گوفت وو لوفت</string>
     <string name="select_more">پسند بیشتر</string>
     <string name="menu_edit_name">آلشت نوم</string>
     <string name="menu_settings">سامووا</string>
@@ -287,7 +301,7 @@
     <string name="device_talk_subtitle">پیوما منی</string>
     <string name="edit_contact">آلشت هومدنگ</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
-    <string name="pin_chat">دیسنیڌن گوفت ۉ لوفت</string>
+    <string name="pin_chat">دیسنیڌن گوفت وو لوفت</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">دیسنیڌن</string>
     <string name="source_code">کود بونچک</string>
@@ -305,23 +319,21 @@
 
     <string name="file_saved_to">فایل من «%1$s» زفت وابی.</string>
 
-    <string name="videochat">گوفت ۉ لوفت ویدیویی</string>
-    <string name="videochat_invitation">موکش و گوفت ۉ لوفت ویدیویی</string>
+    <string name="videochat">گوفت وو لوفت ویدیویی</string>
+    <string name="videochat_invitation">موکش و گوفت وو لوفت ویدیویی</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">êxuy %d payom pāk bu?</item>
         <item quantity="other">اخۊی %d پیوم پاک بۊ؟</item>
     </plurals>
-    <string name="ask_start_chat_with">گوفت ۉ لوفت وا %1$s؟</string>
+    <string name="ask_start_chat_with">گوفت وو لوفت وا %1$s؟</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">پاک کردن %1$s ز جرگه؟</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">%1$s ز نومگه Broadcast پاک بۊ؟</string>
     <string name="open_url_confirmation">اخۊی ای لینگن بۊگۊشی؟</string>
 
 
     <!-- contact list -->
-    <string name="contacts_title">هومدنگۉݩ</string>
+    <string name="contacts_title">هومدنگووݩ</string>
     <string name="contacts_empty_hint">بؽ هومدنگ.</string>
 
 
@@ -347,7 +359,7 @@
     <string name="send_file_to">فشناڌن \"%1$s\" و...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">فشناڌن پیوم و...</string>
-    <string name="show_location_traces">نشۉ داڌن جا پا</string>
+    <string name="show_location_traces">نشووݩ داڌن جا پا</string>
     <!-- search -->
     <string name="search">پیتینیڌن</string>
     <!-- create/edit groups, contact/group profile -->
@@ -363,8 +375,9 @@
     <string name="tab_docs">سندا</string>
     <string name="tab_links">لینگا</string>
     <string name="tab_map">نقشه</string>
-    <string name="media_preview">نشۉ داڌن وارسگر</string>
+    <string name="media_preview">نشووݩ داڌن وارسگر</string>
     <string name="send_message">فشناڌن پیوم</string>
+
     <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">زفت کردن من %1$s</string>
     <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
@@ -378,9 +391,13 @@
     <string name="messages">پیوما</string>
     <string name="sync_all">ورۊ کردن پوی</string>
     <string name="pref_your_name">نوم ایسا</string>
-    <string name="pref_notifications_show">نشۉ داڌن</string>
-    <string name="pref_language">زۉݩ</string>
-    <string name="pref_chats">گوفت ۉ لوفتا</string>
+    <string name="pref_notifications_show">نشووݩ داڌن</string>
+    <string name="pref_dark_theme">تاریک</string>
+    <string name="pref_appearance">شؽوات</string>
+    <string name="pref_theme">تم</string>
+    <string name="pref_language">زووݩ</string>
+    <string name="pref_use_system_ui_font">فونت سیستوم ن و کار بگر</string>
+    <string name="pref_chats">گوفت وو لوفتا</string>
     <string name="pref_log_header">گوزارش</string>
     <string name="pref_background_btn_gallery">پسند ز شؽوات مال</string>
     <string name="pref_show_emails_all">پوی</string>
@@ -425,13 +442,14 @@
     <string name="notify_name_and_message">نوم وو پیوم</string>
     <string name="notify_name_only">تینا نوم</string>
     <string name="notify_no_name_or_message">بؽ نوم یا پیوم</string>
-    <string name="global_menu_preferences_language_desktop">زۉݩ</string>
+    <string name="global_menu_preferences_language_desktop">زووݩ</string>
     <string name="global_menu_file_desktop">فایل</string>
     <string name="global_menu_file_quit_desktop">و در زیڌن</string>
     <string name="global_menu_edit_desktop">آلشت</string>
     <string name="global_menu_edit_cut_desktop">جا گورو</string>
     <string name="global_menu_edit_copy_desktop">لف گیری</string>
     <string name="global_menu_edit_paste_desktop">جا وندن</string>
+    <string name="global_menu_help_about_desktop">زبار دلتا چت</string>
     <string name="global_menu_file_open_desktop">گۊشیڌن دلتا چت</string>
     <string name="delete_message_desktop">پاک کردن پیوم</string>
     <string name="remove_desktop">پاک کردن</string>
@@ -440,7 +458,7 @@
     <string name="select_group_image_desktop">پسند شؽوات جرگه</string>
     <string name="message_detail_sent_desktop">فشناڌ</string>
     <string name="message_detail_received_desktop">گرؽڌه وابی</string>
-    <string name="show_window">نشۉ داڌن نیمدری</string>
+    <string name="show_window">نشووݩ داڌن نیمدری</string>
 
     <string name="open_settings">گۊشیڌن سامووا</string>
     </resources>

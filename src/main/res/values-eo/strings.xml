@@ -188,12 +188,6 @@
     <string name="menu_new_contact">Nova kontakto</string>
     <string name="menu_new_chat">Nova babilo</string>
     <string name="menu_new_group">Nova grupo</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Elsenda Listo</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Elsendaj Listoj</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Nova Elsenda Listo</string>
     <string name="add_recipients">Aldoni Ricevantojn</string>
     <string name="menu_send">Sendi</string>
     <string name="menu_toggle_keyboard">Baskuligi emoĝian klavaron</string>
@@ -341,6 +335,7 @@
     <string name="tab_map">Mapo</string>
     <string name="media_preview">Aŭdvida antaŭrigardo</string>
     <string name="send_message">Sendi mesaĝon</string>
+
     <string name="login_title">Ensaluti</string>
     <string name="login_header">Ensaluti al via servilo</string>
     <string name="login_inbox">Ricevujo</string>

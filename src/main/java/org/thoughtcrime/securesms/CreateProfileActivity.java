@@ -76,6 +76,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     getSupportActionBar().setTitle(R.string.pref_profile_info_headline);
     getSupportActionBar().setDisplayHomeAsUpEnabled(!this.fromWelcome);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+    getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
 
     attachmentManager = new AttachmentManager(this, () -> {});
     avatarChanged = false;

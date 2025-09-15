@@ -3,14 +3,12 @@ package org.thoughtcrime.securesms;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -249,8 +247,6 @@ public class ProfileFragment extends Fragment
 
   private class ActionModeCallback implements ActionMode.Callback {
 
-    private int originalStatusBarColor;
-
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
       mode.getMenuInflater().inflate(R.menu.profile_context, menu);
@@ -263,9 +259,6 @@ public class ProfileFragment extends Fragment
       menu.findItem(R.id.menu_select_all).setVisible(false);
       mode.setTitle("1");
 
-      Window window = requireActivity().getWindow();
-      originalStatusBarColor = window.getStatusBarColor();
-      window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
       return true;
     }
 
@@ -306,7 +299,6 @@ public class ProfileFragment extends Fragment
     public void onDestroyActionMode(ActionMode mode) {
       actionMode = null;
       adapter.clearSelection();
-      requireActivity().getWindow().setStatusBarColor(originalStatusBarColor);
     }
   }
 

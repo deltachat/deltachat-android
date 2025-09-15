@@ -195,9 +195,6 @@
     <!-- permissions -->
     <string name="perm_required_title">అనుమతి అవసరం</string>
     <string name="perm_continue">కొనసాగించు</string>
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">ఎంక్రిప్ట్ చెసిన సందేశం</string>
-
     <string name="welcome_desktop">Delta Chat కి స్వాగతం.</string>
     <string name="global_menu_file_desktop">ఫైల్</string>
     <string name="global_menu_edit_desktop">మార్చు</string>

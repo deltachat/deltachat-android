@@ -77,6 +77,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
 
     //noinspection ConstantConditions
     this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
 
     if (icicle == null) {
       initFragment(R.id.fragment, new ApplicationPreferenceFragment());

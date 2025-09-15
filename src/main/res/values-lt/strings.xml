@@ -415,8 +415,7 @@
     <string name="tab_all_media_empty_hint">Čia bus rodoma bet kuriame pokalbyje bendrinama medija.</string>
     <string name="media_preview">Medijos peržiūra</string>
     <string name="send_message">Siųsti žinutę</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s pasikeitė adresą iš %2$s į %3$s</string>
+
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Pridėti antrąjį įrenginį</string>
@@ -707,10 +706,6 @@
     <string name="ephemeral_timer_weeks_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į %1$s sav.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s nustatė išnykstančių žinučių laikmatį į %1$s sav. </string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken">%1$s išsiuntė žinutę iš kito įrenginio.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_tap_to_learn_more">%1$s išsiuntė žinutę iš kito įrenginio. Bakstelėkite norėdami sužinoti daugiau.</string>
     <string name="learn_more">Sužinoti daugiau</string>
 
     <!-- %1%s will be replaced by date and time in some human-readable format -->
@@ -746,10 +741,6 @@
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Prisijungti prie „%1$s“?</string>
     <string name="contact_verified">%1$s patvirtintas.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Nepavyksta patvirtinti %1$s</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Pakeista sąranka, skirta %1$s.</string>
     <string name="mailto_dialog_header_select_chat">Pasirinkite pokalbį, į kurį siųsti žinutę</string>
     <string name="mailto_link_could_not_be_decoded">nepavyko dekoduoti mailto nuorodos: %1$s</string>
 
@@ -776,9 +767,6 @@
     <string name="ImageEditorHud_crop">Apkirpti</string>
     <string name="ImageEditorHud_flip">Apversti</string>
     <string name="ImageEditorHud_rotate">Pasukti</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Šifruota žinutė</string>
 
     <string name="about_licensed_under_desktop">Ši programinė įranga yra licencijuota pagal GNU GPL versiją 3, o pirminis kodas yra prieinamas „GitHub“ internetinėje svetainėje.</string>
     <string name="welcome_desktop">Sveiki atvykę į Delta Chat</string>

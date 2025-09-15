@@ -50,10 +50,10 @@
       <li><a href="#tls">I messaggi contrassegnati dall’icona della posta sono esposti su Internet?</a></li>
       <li><a href="#message-metadata">In che modo Delta Chat protegge i metadati nei messaggi?</a></li>
       <li><a href="#device-seizure">Come proteggere i metadati e contatti quando un dispositivo viene sequestrato?</a></li>
-      <li><a href="#sealedsender">Does Delta Chat support “Sealed Sender”?</a></li>
+      <li><a href="#sealedsender">Delta Chat supporta “Mittente Sigillato”?</a></li>
       <li><a href="#pfs">Delta Chat supporta Perfect Forward Secrecy?</a></li>
-      <li><a href="#pqc">Does Delta Chat support Post-Quantum-Cryptography?</a></li>
-      <li><a href="#how-can-i-manually-check-encryption-information">How can I manually check encryption information?</a></li>
+      <li><a href="#pqc">Delta Chat supporta la Crittografia Post-Quantistica?</a></li>
+      <li><a href="#come-posso-controllare-manualmente-le-informazioni-di-crittografia">Come posso controllare manualmente le informazioni di crittografia?</a></li>
       <li><a href="#importkey">Posso riutilizzare la mia chiave privata esistente?</a></li>
       <li><a href="#security-audits">Delta Chat è stata verificata in modo indipendente per le vulnerabilità di sicurezza?</a></li>
     </ul>
@@ -969,25 +969,25 @@ anche se il messaggio non sarà crittografato end-to-end.</p>
         
       </h3>
 
-<p>Unlike most other messengers, 
-Delta Chat apps do not store any metadata about contacts or groups on servers, also not in encrypted form. 
-Instead, all group metadata is end-to-end encrypted and stored on end-user devices, only.</p>
+<p>A differenza della maggior parte degli altri servizi di messaggistica,
+le apps Delta Chat non memorizzano alcun metadato sui contatti o sui gruppi sui server, né in forma crittografata.
+Tutti i metadati dei gruppi sono invece crittografati end-to-end e memorizzati esclusivamente sui dispositivi degli utenti finali.</p>
 
-<p>E-mail Servers can therefore only see</p>
+<p>I Server E-mail possono quindi vedere solo</p>
 
 <ul>
   <li>
-    <p>the message date,</p>
+    <p>la data del messaggio,</p>
   </li>
   <li>
-    <p>sender and receiver addresses</p>
+    <p>indirizzi del mittente e del destinatario</p>
   </li>
   <li>
-    <p>and message size.</p>
+    <p>e dimensione del messaggio.</p>
   </li>
 </ul>
 
-<p>All other message, contact and group metadata resides in the end-to-end encrypted part of messages.</p>
+<p>Tutti gli altri metadati dei messaggi, dei contatti e dei gruppi risiedono nella parte crittografata end-to-end dei messaggi.</p>
     
       <h3 id="device-seizure">
         
@@ -997,36 +997,36 @@ Instead, all group metadata is end-to-end encrypted and stored on end-user devic
         
       </h3>
 
-<p>Both for protecting against metadata-collecting e-mail servers 
-as well as against the threat of device seizure
-we recommend to use a <a href="https://chatmail.at/relays">chatmail relay</a>
-to create chat profiles using random e-mail addresses for transport. 
-Note that Delta Chat apps on all platforms support multiple profiles
-so you can easily use situation-specific profiles next to your “main” profile
-with the knowledge that all their data, along with all metadata, will be deleted.
-Moreover, if a device is seized then chat contacts using short-lived profiles
-can not be identified easily.</p>
+<p>Sia per proteggersi dai server e-mail che raccolgono metadati
+sia per proteggersi dal rischio di sequestro del dispositivo,
+consigliamo di utilizzare un <a href="https://chatmail.at/relays">chatmail relay</a>
+per creare profili di chat utilizzando indirizzi e-mail casuali per il trasporto.
+Si noti che le apps Delta Chat su tutte le piattaforme supportano più profili,
+quindi è possibile utilizzare facilmente profili specifici per ogni situazione accanto al profilo “principale”,
+con la consapevolezza che tutti i loro dati, insieme a tutti i metadati, verranno eliminati.
+Inoltre, se un dispositivo viene sequestrato, i contatti di chat che utilizzano profili di breve durata
+non possono essere identificati facilmente.</p>
     
       <h3 id="sealedsender">
         
         
-          Does Delta Chat support “Sealed Sender”? <a href="#sealedsender" class="anchor"></a>
+          Delta Chat supporta “Mittente Sigillato”? <a href="#sealedsender" class="anchor"></a>
         
         
       </h3>
 
 <p>No, non ancora.</p>
 
-<p>The Signal messenger introduced <a href="https://signal.org/blog/sealed-sender/">“Sealed Sender” in 2018</a>
-to keep their server infrastructure ignorant of who is sending a message to a set of recipients. 
-It is particularly important because the Signal server knows the mobile number of each account,
-which is usually associated with a passport identity.</p>
+<p>Il messenger Signal ha introdotto <a href="https://signal.org/blog/sealed-sender/">“Mittente Sigillato” nel 2018</a>
+per impedire che la propria infrastruttura server venga a conoscenza di chi sta inviando un messaggio a un insieme di destinatari.
+È particolarmente importante perché il server Signal conosce il numero di cellulare di ciascun profilo,
+che di solito è associato a un’identità tramite passaporto.</p>
 
-<p>Even if <a href="https://chatmail.at/relays">chatmail relays</a> 
-do not ask for any private data (including no phone numbers), 
-it might still be worthwhile to protect relational metadata between addresses. 
-We don’t foresee bigger problems in using random throw-away e-mail addresses for sealed sending
-but an implementation has not been agreed as a priority yet.</p>
+<p>Anche se i <a href="https://chatmail.at/relays">relays di chat</a>
+non richiedono dati privati (inclusi numeri di telefono),
+potrebbe comunque valere la pena proteggere i metadati relazionali tra gli indirizzi.
+Non prevediamo problemi maggiori nell’utilizzo di indirizzi e-mail casuali usa e getta per l’invio sigillato,
+ma un’implementazione non è stata ancora concordata come priorità.</p>
     
       <h3 id="pfs">
         
@@ -1038,41 +1038,41 @@ but an implementation has not been agreed as a priority yet.</p>
 
 <p>No, non ancora.</p>
 
-<p>Delta Chat today doesn’t support Perfect Forward Secrecy (PFS).
-This means that if your private decryption key is leaked,
-and someone has collected your prior in-transit messages,
-they will be able to decrypt and read them using the leaked decryption key.
-Note that Forward Secrecy only increases security if you delete messages. 
-Otherwise, someone obtaining your decryption keys
-is typically also able to get all your non-deleted messages
-and doesn’t even need to decrypt any previously collected messages.</p>
+<p>Delta Chat al momento non supporta la tecnologia Perfect Forward Secrecy (PFS).
+Ciò significa che se la tua chiave di decrittazione privata viene divulgata
+e qualcuno ha raccolto i tuoi messaggi in transito precedenti,
+sarà in grado di decifrarli e leggerli utilizzando la chiave di decrittazione divulgata.
+Tieni presente che la tecnologia Forward Secrecy aumenta la sicurezza solo se elimini i messaggi.
+In caso contrario, chi ottiene le tue chiavi di decrittazione
+in genere è in grado di ottenere anche tutti i tuoi messaggi non eliminati
+e non ha nemmeno bisogno di decifrare i messaggi raccolti in precedenza.</p>
 
-<p>We designed a Forward Secrecy approach that withstood 
-initial examination from some cryptographers and implementation experts 
-but is pending a more formal write up 
-to ascertain it reliably works in federated messaging and with multi-device usage,
-before it could be implemented in <a href="https://github.com/chatmail/core">chatmail core</a>,
-which would make it available in all <a href="https://chatmail.at/clients">chatmail clients</a>.</p>
+<p>Abbiamo progettato un approccio Forward Secrecy che ha superato
+l’esame iniziale di alcuni crittografi ed esperti di implementazione
+ma è in attesa di una stesura più formale
+per accertarne l’affidabilità nella messaggistica federata e nell’utilizzo su più dispositivi,
+prima di poter essere implementato in <a href="https://github.com/chatmail/core">chatmail core</a>,
+che lo renderebbe disponibile in tutti i <a href="https://chatmail.at/clients">clients di chatmail</a>.</p>
     
       <h3 id="pqc">
         
         
-          Does Delta Chat support Post-Quantum-Cryptography? <a href="#pqc" class="anchor"></a>
+          Delta Chat supporta la Crittografia Post-Quantistica? <a href="#pqc" class="anchor"></a>
         
         
       </h3>
 
 <p>No, non ancora.</p>
 
-<p>Delta Chat uses the Rust OpenPGP library <a href="https://github.com/rpgp/rpgp">rPGP</a>
-which supports the latest <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-pqc/">IETF Post-Quantum-Cryptography OpenPGP draft</a>. 
-We aim to add PQC support in <a href="https://github.com/chatmail/core">chatmail core</a>  after the draft is finalized at the IETF
-in collaboration with other OpenPGP implementers.</p>
+<p>Delta Chat utilizza la libreria Rust OpenPGP <a href="https://github.com/rpgp/rpgp">rPGP</a>
+che supporta l’ultima <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-pqc/">bozza IETF Post-Quantum-Cryptography OpenPGP</a>.
+Il nostro obiettivo è aggiungere il supporto PQC nel <a href="https://github.com/chatmail/core">core di chatmail</a> dopo che la bozza sarà stata finalizzata dall’IETF
+in collaborazione con altri implementatori di OpenPGP.</p>
     
-      <h3 id="how-can-i-manually-check-encryption-information">
+      <h3 id="come-posso-controllare-manualmente-le-informazioni-di-crittografia">
         
         
-          How can I manually check encryption information? <a href="#how-can-i-manually-check-encryption-information" class="anchor"></a>
+          Come posso controllare manualmente le informazioni di crittografia? <a href="#come-posso-controllare-manualmente-le-informazioni-di-crittografia" class="anchor"></a>
         
         
       </h3>
@@ -1096,8 +1096,8 @@ la connessione è sicura.</p>
 <p>Delta Chat genera chiavi OpenPGP sicure in conformità alle specifiche di Autocrypt 1.1.
 Puoi esportare le tue chiavi private ma non puoi importare chiavi private aggiuntive.</p>
 
-<p>In generale, non raccomandiamo on proponiamo agli utenti di gestire manualmente le chiavi.
-Noi vogliamo assicurare che gli audit di sicurezza si possano focalizzare su pochi algoritmi crittografici comprovati
+<p>In generale, non raccomandiamo o proponiamo agli utenti di gestire manualmente le chiavi.
+Noi vogliamo assicurare che gli audits di sicurezza si possano focalizzare su pochi algoritmi crittografici comprovati
 invece che sull’intera estensione dei possibili algoritmi consentiti con OpenPGP.</p>
     
       <h3 id="security-audits">

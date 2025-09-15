@@ -240,12 +240,6 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Gesprek voeren met…</string>
     <string name="clone_chat">Gesprek klonen</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Verzendlijst</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Verzendlijsten</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Nieuwe verzendlijst</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel">Kanaal</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -253,12 +247,6 @@
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nieuw kanaal</string>
     <string name="add_recipients">Ontvangers toevoegen</string>
-    <!-- deprecated -->
-    <string name="edit_broadcast_list">Verzendlijst bewerken</string>
-    <!-- deprecated -->
-    <string name="broadcast_list_name">Naam van verzendlijst</string>
-    <!-- deprecated -->
-    <string name="please_enter_broadcast_list_name">Geef de verzendlijst een naam.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Kanaalnaam</string>
     <string name="email">E-mail</string>
@@ -424,8 +412,6 @@
     <string name="ask_start_chat_with">Wil je een gesprek voeren met %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Wil je %1$s verwijderen uit de groep?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Wil je %1$s verwijderen van de verzendlijst?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_channel">Weet je zeker dat je %1$s van het kanaal wilt verwijderen?</string>
     <string name="open_url_confirmation">Weet je zeker dat je deze link wilt openen?</string>
@@ -457,8 +443,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Stuur een bericht aan %1$s .</string>
-    <!-- deprecated -->
-    <string name="chat_new_broadcast_hint">Op een verzendlijst hebben ontvangers niet de mogelijkheid om te reageren op je berichten.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="chat_new_channel_hint">Kanalen zijn bedoeld om te gebruiken als verzendlijsten.</string>
     <string name="chat_new_group_hint">Stel het eerste bericht op zodat anderen binnen deze groep kunnen reageren.</string>
@@ -569,11 +553,6 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Vierkant rooster</string>
     <string name="send_message">Bericht versturen</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s heeft zijn/haar adres veranderd van %2$s naar %3$s</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">Je hebt je e-mailadres veranderd van %1$s naar %2$s.\n\nAls je een bericht stuurt aan een goedgekeurde groep, dan zien contactpersonen in de groep je nieuwe adres.\n\nWel raden we aan om bij je oude provider in te stellen dat je e-mails wilt doorsturen naar je nieuwe adres, anders missen sommige contactpersonen mogelijk je berichten.</string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -956,6 +935,9 @@
     <string name="ephemeral_timer_1_week_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op 1 week.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_1_week_by_other">De tijdklok van verdwijnende berichten is door %1$s ingesteld op 1 week.</string>
+    <string name="ephemeral_timer_1_year_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op 1 jaar.</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_1_year_by_other">De tijdklok van verdwijnende berichten is door %1$s ingesteld op 1 jaar.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op %1$s minuten.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
@@ -972,14 +954,8 @@
     <string name="ephemeral_timer_weeks_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op %1$s weken.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">De tijdklok van verdwijnende berichten is door %2$s ingesteld op %1$s weken.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken">%1$s heeft een bericht verstuurd vanaf een ander apparaat.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Berichten zijn gegarandeerd van eind-tot-eindversleuteling voorzien. Druk hier voor meer informatie.</string>
     <string name="chat_protection_enabled_explanation">Alle berichten in dit gesprek zijn gegarandeerd van eind-tot-eindversleuteling voorzien.\n\nMet behulp van deze versleuteling blijven berichten tussen jou en je gesprekspartners geheim - zelfs je e-mailprovider kan ze niet uitlezen.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_tap_to_learn_more">%1$s heeft een bericht verstuurd vanaf een ander apparaat. Druk hier voor meer informatie.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_explanation">Eind-tot-eindversleuteling kan niet meer worden gegarandeerd, omdat %1$s Delta Chat opnieuw heeft geïnstalleerd of een bericht vanaf een ander apparaat heeft verstuurd.\n\nMaak een afspraak met hem/haar en scan de QR-code opnieuw om eind-tot-eindversleuteling weer in te schakelen.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ Voor %1$s is eind-tot-eindversleuteling vereist, maar dit is nog niet ingesteld in het huidige gesprek. Druk voor meer informatie.</string>
     <string name="invalid_unencrypted_explanation">Spreek met elkaar af en scan elkaars QR-code om eind-tot-eindversleuteling op te zetten.</string>
     <string name="learn_more">Meer informatie</string>
@@ -1038,19 +1014,11 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s heeft geantwoord en wacht op toelating tot de groep…</string>
     <string name="secure_join_wait">Bezig met opzetten van eind-tot-eindversleuteling…</string>
-    <!-- deprecated -->
-    <string name="secure_join_wait_timeout">Er kan nog geen eind-tot-eindversleuteling worden gegarandeerd, maar je kunt wel alvast een bericht sturen.</string>
-    <!-- deprecated, was stock string -->
-    <string name="secure_join_takes_longer">Het lijkt langer te duren dan verwacht - wellicht is een van jullie offline.\n\nHet proces wordt echter op de achtergrond voortgezet.</string>
     <string name="contact_verified">%1$s is goedgekeurd.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Er kan geen eind-tot-eindversleuteling met %1$s worden gegarandeerd.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Geïntroduceerd door %1$s</string>
     <string name="verified_by_you">Geïntroduceerd door mij</string>
     <string name="verified_by_unknown">Geïntroduceerd</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Gewijzigde instellingen voor %1$s</string>
     <string name="verified_contact_required_explain">Om de eind-tot-eindversleuteling te garanderen, kun je alleen contactpersonen met een groen vinkje toevoegen aan deze groep.\n\nVan niet-goedgekeurde contactpersonen kun je de QR-code scannen om ze goed te keuren.</string>
     <string name="mailto_dialog_header_select_chat">Kies in welk gesprek je dit bericht wilt delen</string>
     <!-- first placeholder is the name of the chat -->
@@ -1092,9 +1060,6 @@
     <string name="ImageEditorHud_crop">Bijsnijden</string>
     <string name="ImageEditorHud_flip">Spiegelen</string>
     <string name="ImageEditorHud_rotate">Draaien</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Versleuteld bericht</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Dit is de officiële Delta Chat-computerapp.</string>
@@ -1210,7 +1175,6 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat wil afbeeldingen opslaan in je fotogalerij.</string>
     <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat kan gebruikmaken van Face ID om je account te beveiligen, reservekopieën te maken en secundaire apparaten in te stellen.</string>
 
-
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Onmiddellijke bezorging</string>
     <string name="pref_background_notifications">Achtergrondverbinding gebruiken</string>
@@ -1225,8 +1189,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Wijzigingslog:\n\n💯 Eind-tot-eindversleuteling is voortaan betrouwbaarder én standaard. Slotjes 🔒 zijn verleden tijd!\n\n✉️ Klassieke e-mails zonder eind-tot-eindversleuteling worden voortaan gemarkeerd met een letter\n\n😻 Nieuwe, mooiere profielpagina\'s van al je contactpersonen\n\n🔲 Nieuwe knop voor snelle toegang tot apps in gesprekken\n\n❤️ Overweeg een donatie, zodat we onafhankelijk kunnen blijven en verbeteringen kunnen blijven aanbrengen: %1$s</string>
-    <!-- deprecated -->
-    <string name="update_1_50_android">Wijzigingslog:\n\n❤️‍🔥 Nieuwe emojikiezer met veel meer emojis\n\n🎮 Verbeterde apps in gesprekken: ontvang meldingen open ondersteunde apps met links, bijv. een agenda-uitnodiging\n\n👍 Ontvang meldingen bij reacties op berichten\n\n… 🛠️ Opgeloste fouten en VEEL MEER op %1$s</string>
-    <!-- deprecated -->
-    <string name="update_switch_profile_placement">ℹ️ De optie om een ander profiel te kiezen is verplaatst: druk op je profielfoto op het hoofdscherm om het profielmenu te openen.💡</string>
 </resources>

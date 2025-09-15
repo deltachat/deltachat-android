@@ -258,12 +258,6 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Czat z…</string>
     <string name="clone_chat">Klonuj czat</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Lista rozgłoszeniowa</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Lista rozgłoszeniowa</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Nowa lista rozgłoszeniowa</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel">Kanał</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -271,12 +265,6 @@
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nowy kanał</string>
     <string name="add_recipients">Dodaj odbiorców</string>
-    <!-- deprecated -->
-    <string name="edit_broadcast_list">Edytuj listę rozgłoszeniową</string>
-    <!-- deprecated -->
-    <string name="broadcast_list_name">Nazwa listy rozgłoszeniowej</string>
-    <!-- deprecated -->
-    <string name="please_enter_broadcast_list_name">Wpisz nazwę listy rozgłoszeniowej</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nazwa kanału</string>
     <string name="email">E-mail</string>
@@ -450,8 +438,6 @@
     <string name="ask_start_chat_with">Rozpocząć czat z %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Usunąć %1$s z grupy?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Usunąć odbiorcę %1$s z listy rozgłoszeniowej?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_channel">Usunąć %1$s z kanału?</string>
     <string name="open_url_confirmation">Czy chcesz otworzyć ten link?</string>
@@ -489,8 +475,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Wyślij wiadomość do %1$s.</string>
-    <!-- deprecated -->
-    <string name="chat_new_broadcast_hint">Na liście rozgłoszeniowej odbiorcy będą otrzymywać wiadomości w czacie tylko do odczytu.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="chat_new_channel_hint">Kanały są narzędziem typu „jeden do wielu” do nadawania wiadomości.</string>
     <string name="chat_new_group_hint">Napisz pierwszą wiadomość, by inni mogli odpowiedzieć w tej grupie.\n\n• Nie ma problemu, jeśli nie wszyscy członkowie korzystają z Delta Chat.\n\n• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
@@ -601,11 +585,6 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Siatka kwadratowa</string>
     <string name="send_message">Wyślij wiadomość</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s zmieniła swój adres z %2$s na %3$s</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">Zmieniłeś swój adres e-mail z %1$s na %2$s.\n\nJeśli teraz wyślesz wiadomość do zweryfikowanej grupy, kontakty tam zawarte automatycznie zastąpią stary adres Twoim nowym.\n\nBardzo zalecane jest, aby ustawić swojego starego dostawcę emaila tak, aby przekazywał wszystkie emaile na Twój nowy adres email. W przeciwnym razie możesz przegapić wiadomości od kontaktów, które jeszcze nie dostały Twojego nowego adresu.</string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -988,6 +967,9 @@
     <string name="ephemeral_timer_1_week_by_you">Ustawiono zegar znikających wiadomości na 1 tydzień.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_1_week_by_other">Użytkownik %1$s ustawił zegar znikających wiadomości na 1 tydzień.</string>
+    <string name="ephemeral_timer_1_year_by_you">Ustawiono zegar znikających wiadomości na 1 rok.</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_1_year_by_other">Użytkownik %1$s ustawił zegar znikających wiadomości na 1 rok.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Ustawiono zegar znikających wiadomości na %1$s min.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
@@ -1004,14 +986,8 @@
     <string name="ephemeral_timer_weeks_by_you">Ustawiono zegar znikających wiadomości na %1$s tyg.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other"> Użytkownik %2$s ustawił zegar znikających wiadomości na %1$s tyg.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken">Użytkownik %1$s wysłał wiadomość z innego urządzenia.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Wiadomości będą szyfrowane metodą end-to-end. Dotknij, aby przeczytać więcej.</string>
     <string name="chat_protection_enabled_explanation">Wszystkie wiadomości w tym czacie są szyfrowane metodą end-to-end.\n\nSzyfrowanie end-to-end zapewnia prywatność wiadomości między tobą a twoimi partnerami czatów. Nawet serwery, dostawcy i pośrednicy nie są w stanie ich odczytać.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_tap_to_learn_more">Użytkownik %1$s wysłał wiadomość z innego urządzenia. Dotknij, aby przeczytać więcej.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_explanation">Nie można już zagwarantować szyfrowania end-to-end, prawdopodobnie z powodu ponownej instalacji Delta Chat przez %1$s lub wysłania wiadomości z innego urządzenia.\n\nMożesz spotkać się z tą osobą osobiście i ponownie zeskanować jej kod QR, aby przywrócić gwarantowane szyfrowanie end-to-end.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s wymaga szyfrowania end-to-end, które nie zostało jeszcze skonfigurowane dla tego czatu. Dotknij, aby dowiedzieć się więcej.</string>
     <string name="invalid_unencrypted_explanation">Aby ustanowić szyfrowanie end-to-end, możesz spotkać się z kontaktami osobiście i zeskanować ich kod QR, żeby ich zweryfikować.</string>
     <string name="learn_more">Czytaj więcej</string>
@@ -1070,19 +1046,11 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">Użytkownik %1$s odpowiedział, czekając na dodanie do grupy…</string>
     <string name="secure_join_wait">Ustanawiam szyfrowanie typu end-to-end, proszę czekać…</string>
-    <!-- deprecated -->
-    <string name="secure_join_wait_timeout">Nie można jeszcze ustanowić gwarantowanego szyfrowania typu end-to-end, ale być może już wysłałeś wiadomość.</string>
-    <!-- deprecated, was stock string -->
-    <string name="secure_join_takes_longer">Aby kontynuować, kontakt musi być online.\n\nTen proces będzie kontynuowany automatycznie w tle.</string>
     <string name="contact_verified">Kontakt %1$s zweryfikowany.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Nie można ustanowić szyfrowania typu end-to-end z %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Kontakt zweryfikowany przez %1$s</string>
     <string name="verified_by_you">Kontakt zweryfikowany przez ciebie</string>
     <string name="verified_by_unknown">Zweryfikowano</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Zmieniono konfigurację dla %1$s</string>
     <string name="verified_contact_required_explain">Aby zagwarantować szyfrowanie end-to-end, do tej grupy możesz dodawać wyłącznie kontakty oznaczone zielonym znacznikiem wyboru.\n\nMożesz spotkać się z kontaktami osobiście i zeskanować ich kod QR, aby je zweryfikować.</string>
     <string name="mailto_dialog_header_select_chat">Wybierz czat, do którego chcesz wysłać wiadomość</string>
     <!-- first placeholder is the name of the chat -->
@@ -1124,9 +1092,6 @@
     <string name="ImageEditorHud_crop">Przytnij</string>
     <string name="ImageEditorHud_flip">Przełącz</string>
     <string name="ImageEditorHud_rotate">Obróć</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Zaszyfrowana wiadomość</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">To jest oficjalna aplikacja Delta Chat Desktop.</string>
@@ -1242,7 +1207,6 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat chce zapisać obrazy w twojej bibliotece zdjęć.</string>
     <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat może używać Face ID do ochrony twojego lokalnego profilu, tworzenia kopii zapasowych i konfiguracji drugiego urządzenia.</string>
 
-
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Natychmiastowe dostarczenie</string>
     <string name="pref_background_notifications">Użyj połączenia w tle</string>
@@ -1257,8 +1221,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Co nowego?\n\n💯 Szyfrowanie end-to-end jest niezawodne i na zawsze. Kłódki 🔒 odchodzą w zapomnienie!\n\n✉️ Klasyczna poczta e-mail bez szyfrowania end-to-end jest oznaczona symbolem litery.\n\n😻 Nowy, ulepszony ekran profilu dla wszystkich kontaktów.\n\n🔲 Nowy przycisk szybkiego dostępu do aplikacji używanych na czacie.\n\n❤️ Prosimy o darowizny, które pomogą nam zachować niezależność i stale wprowadzać ulepszenia: %1$s</string>
-    <!-- deprecated -->
-    <string name="update_1_50_android">Co nowego?\n\n❤️‍🔥 Nowy selektor emoji z większą liczbą emoji\n\n🎮 Ulepszone aplikacje czatu: Otrzymuj powiadomienia i otwieraj aplikacje pomocnicze w kontekście, np. otwieraj dodany wpis kalendarza bezpośrednio\n\n👍 Otrzymuj powiadomienia o reakcjach na swoje wiadomości\n\n... 🛠️ POPRAWKI i JESZCZE WIĘCEJ na %1$s</string>
-    <!-- deprecated -->
-    <string name="update_switch_profile_placement">ℹ️ Opcja „Przełącz profil” została przeniesiona: Dotknij swojego zdjęcia profilowego w górnym rogu ekranu głównego, aby dodać lub przełączyć profile 💡</string>
 </resources>

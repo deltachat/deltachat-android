@@ -278,6 +278,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     itemDataStatusText = "";
     isOutBroadcast = dcChat != null && dcChat.isOutBroadcast();
     boolean isMailingList = dcChat != null && dcChat.isMailingList();
+    boolean isInBroadcast = dcChat != null && dcChat.isInBroadcast();
     boolean isSelfTalk = dcChat != null && dcChat.isSelfTalk();
     boolean isDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
     memberCount = memberList!=null ? memberList.length : 0;
@@ -309,7 +310,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
       itemData.add(new ItemData(ITEM_LAST_SEEN, lastSeenTxt, 0));
     }
 
-    if (memberList!=null && !isMailingList) {
+    if (memberList!=null && !isInBroadcast && !isMailingList) {
       itemData.add(new ItemData(ITEM_DIVIDER, null, 0));
       if (dcChat != null) {
         if (dcChat.canSend() && dcChat.isEncrypted()) {

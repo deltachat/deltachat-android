@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="?attr/colorPrimary"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-	android:id="@+id/fragment" />
+    android:layout_height="match_parent">
+
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="?android:attr/windowBackground"
+	  android:id="@+id/fragment" />
+
+</RelativeLayout>

@@ -32,7 +32,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
@@ -854,18 +853,12 @@ public class ConversationFragment extends MessageSelectorFragment
 
     private class ActionModeCallback implements ActionMode.Callback {
 
-        private int statusBarColor;
-
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
             MenuInflater inflater = mode.getMenuInflater();
             inflater.inflate(R.menu.conversation_context, menu);
 
             mode.setTitle("1");
-
-            Window window = getActivity().getWindow();
-            statusBarColor = window.getStatusBarColor();
-            window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
 
             Util.redMenuItem(menu, R.id.menu_context_delete_message);
             setCorrectMenuVisibility(menu);
@@ -882,8 +875,6 @@ public class ConversationFragment extends MessageSelectorFragment
         public void onDestroyActionMode(ActionMode mode) {
             ((ConversationAdapter)list.getAdapter()).clearSelection();
             list.getAdapter().notifyDataSetChanged();
-
-            getActivity().getWindow().setStatusBarColor(statusBarColor);
 
             actionMode = null;
             hideAddReactionView();

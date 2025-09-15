@@ -36,6 +36,7 @@ public class LogViewActivity extends BaseActionBarActivity {
     transaction.commit();
 
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
   }
 
   @Override

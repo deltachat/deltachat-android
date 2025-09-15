@@ -128,7 +128,7 @@ public class DirectShareUtil {
 
       Recipient recipient = new Recipient(context, chat);
       Bitmap avatar = getIconForShortcut(context, recipient);
-      results.add(new ShortcutInfoCompat.Builder(context, Integer.toString(chat.getId()))
+      results.add(new ShortcutInfoCompat.Builder(context, "chat-" + dcContext.getAccountId() + "-" + chat.getId())
               .setShortLabel(chat.getName())
               .setLongLived(true)
               .setRank(i+1)

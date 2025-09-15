@@ -87,6 +87,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     private Group advancedGroup;
     private ImageView advancedIcon;
     private ProgressDialog progressDialog;
+    private boolean cancelled = false;
 
     Spinner imapSecurity;
     Spinner smtpSecurity;
@@ -135,6 +136,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             actionBar.setTitle(R.string.login_header);
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+            actionBar.setElevation(0); // TODO: use custom toolbar instead
         }
 
         emailInput.addTextChangedListener(new TextWatcher() {
@@ -562,6 +564,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             return;
         }
 
+        cancelled = false;
         setupConfig();
 
         if (progressDialog != null) {
@@ -573,7 +576,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         progressDialog.setMessage(getString(R.string.one_moment));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(false);
-        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(android.R.string.cancel), (dialog, which) -> stopLoginProcess());
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(android.R.string.cancel), (dialog, which) -> {
+          cancelled = true;
+          DcHelper.getContext(this).stopOngoingProcess();
+        });
         progressDialog.show();
     }
 
@@ -612,11 +618,13 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 startActivity(conversationList);
                 finish();
             } catch (RpcException e) {
-                Util.runOnMain(() -> {
-                    DcHelper.getEventCenter(this).endCaptureNextError();
-                    progressDialog.dismiss();
-                    WelcomeActivity.maybeShowConfigurationError(this, e.getMessage());
-                });
+                DcHelper.getEventCenter(this).endCaptureNextError();
+                if (!cancelled) {
+                  Util.runOnMain(() -> {
+                      progressDialog.dismiss();
+                      WelcomeActivity.maybeShowConfigurationError(this, e.getMessage());
+                  });
+                }
             }
         }).start();
     }
@@ -628,10 +636,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             value = value.trim();
         }
         return value.isEmpty()? null : value;
-    }
-
-    private void stopLoginProcess() {
-        DcHelper.getContext(this).stopOngoingProcess();
     }
 
     @Override

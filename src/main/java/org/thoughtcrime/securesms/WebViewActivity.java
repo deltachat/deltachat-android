@@ -55,6 +55,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {
       actionBar.setDisplayHomeAsUpEnabled(true);
+      actionBar.setElevation(0); // TODO: use custom toolbar instead
     }
 
     webView = findViewById(R.id.webview);

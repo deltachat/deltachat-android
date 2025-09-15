@@ -258,12 +258,6 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Повідомлення до...</string>
     <string name="clone_chat">Клонувати чат</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Список трансляцій</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Списки трансляцій</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Новий Список трансляцій</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel">Канал</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -271,12 +265,6 @@
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Новий Канал</string>
     <string name="add_recipients">Додати одержувачів</string>
-    <!-- deprecated -->
-    <string name="edit_broadcast_list">Редагувати список трансляцій</string>
-    <!-- deprecated -->
-    <string name="broadcast_list_name">Назва списку трансляцій</string>
-    <!-- deprecated -->
-    <string name="please_enter_broadcast_list_name">Будь ласка, введіть назву для списку трансляцій.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Назва Каналу</string>
     <string name="email">E-Mail</string>
@@ -450,8 +438,6 @@
     <string name="ask_start_chat_with">Створити чат з %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Видалити %1$s із групи?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Видалити %1$s зі списку трансляцій?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_channel">Видалити %1$s з каналу?</string>
     <string name="open_url_confirmation">Ви впевнені, що хочете відкрити це посилання?</string>
@@ -489,8 +475,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Відправити повідомлення → %1$s.</string>
-    <!-- deprecated -->
-    <string name="chat_new_broadcast_hint">У списку трансляцій одержувачі будуть отримувати повідомлення в чаті з Вами в режимі тільки-для-читання.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="chat_new_channel_hint">Канали - це інструмент \"один до багатьох\" для трансляції ваших повідомлень.</string>
     <string name="chat_new_group_hint">Інші побачать цю групу лише після того, як ви надішлете перше повідомлення.</string>
@@ -601,11 +585,6 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Квадратна сітка</string>
     <string name="send_message">Надіслати повідомлення</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s змінили їх адресу з %2$s на %3$s</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">Ви змінили свою електронну поштову адресу з %1$s на %2$s.\n\nЯкщо тепер відправите повідомлення в підтверджену групу, контакти в ній автоматично замінять стару адресу новою.\n\nРекомендується налаштувати стару поштову скриньку на пересилання всіх електронних листів на Вашу нову скриньку. Інакше Ви можете пропустити повідомлення від контактних осіб, які ще не довідалися вашої нової адреси.</string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -1004,14 +983,8 @@
     <string name="ephemeral_timer_weeks_by_you">Ви встановили таймер зникнення повідомлень на %1$s тижнів.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s встановив (-ла) таймер зникнення повідомлень на %1$s тижнів.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken">%1$s тепер шле повідомлення з іншого пристрою.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Відтепер повідомлення гарантовано будуть мати наскрізне шифрування. Торкніться, щоб дізнатися більше.</string>
     <string name="chat_protection_enabled_explanation">Тепер гарантовано, що всі повідомлення в цьому чаті наскрізь зашифровані.\n\nНаскрізне шифрування зберігає конфіденційність повідомлень між вами і вашими партнерами по чату. Навіть сервери, провайдери або ретранслятори не можуть їх прочитати.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_tap_to_learn_more">%1$s відправив (-ла) повідомлення з іншого пристрою. Торкніться, щоб дізнатися більше.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_explanation">Наскрізне шифрування більше не гарантується, імовірно, через те, що %1$s перевстановив (-ла) Delta Chat або надіслав (-ла) повідомлення з іншого пристрою.\n\nВи можете зустрітися з ним (нею) особисто та знову відсканувати його (її) QR-код, щоб відновити гарантоване наскрізне шифрування.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s вимагає наскрізного шифрування, яке ще не налаштоване для цього чату. Натисніть, щоб дізнатися більше.</string>
     <string name="invalid_unencrypted_explanation">Для налагодження наскрізного шифрування можна зустрітись із контактною особою та відсканувати баркод із її пристрою, щоби представити її.</string>
     <string name="learn_more">Дізнатися більше</string>
@@ -1070,19 +1043,11 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s відповіли, очікуємо на додавання до групи…</string>
     <string name="secure_join_wait">Встановлення гарантованого наскрізного шифрування, будь ласка, зачекайте...</string>
-    <!-- deprecated -->
-    <string name="secure_join_wait_timeout">Ще не вдалося встановити гарантоване наскрізне шифрування, але ви вже можете надсилати повідомлення.</string>
-    <!-- deprecated, was stock string -->
-    <string name="secure_join_takes_longer">Щоб продовжити, контакт повинен бути онлайн.\n\nЦей процес продовжиться автоматично у фоновому режимі.</string>
     <string name="contact_verified">%1$s представлено!</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Не вдається встановити гарантоване наскрізне шифрування з %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Представни·ця: %1$s</string>
     <string name="verified_by_you">Представлено мною</string>
     <string name="verified_by_unknown">Представлено</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Змінені параметри для %1$s</string>
     <string name="verified_contact_required_explain">Аби наскрізне шифрування лишалося ґарантованим, у цю групу можна додавати лише контактних осіб із зеленою галочкою.\n\nМожна зустрітись із контактною особою та відсканувати баркод із її пристрою, щоби представити її.</string>
     <string name="mailto_dialog_header_select_chat">Виберіть чат, куди потрібно надіслати повідомлення</string>
     <!-- first placeholder is the name of the chat -->
@@ -1124,9 +1089,6 @@
     <string name="ImageEditorHud_crop">Обрізати</string>
     <string name="ImageEditorHud_flip">Обернути</string>
     <string name="ImageEditorHud_rotate">Обертати</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Зашифроване повідомлення</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Це офіційний додаток Delta Chat для ПК.</string>
@@ -1242,7 +1204,6 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat хоче зберігати зображення до Вашої фото-бібліотеки.</string>
     <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat може використовувати Face ID для захисту вашого локального профілю, створення резервної копії та налаштування другого пристрою.</string>
 
-
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Миттєва доставка</string>
     <string name="pref_background_notifications">Використовувати фонове підключення</string>
@@ -1257,8 +1218,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Що нового?\n\n💯 Наскрізне шифрування тепер надійне і завжди. Навісні замки 🔒 зникли!\n\n✉️ Класична електронна пошта без наскрізного шифрування позначається символом листа\n\n😻 Новий покращений екран профілю для всіх ваших контактів\n\n🔲 Нова кнопка для швидкого доступу до додатків, що використовуються в чаті\n\n❤️ Будь ласка, пожертвуйте, щоб допомогти нам залишатися незалежними та продовжувати вдосконалюватися: %1$s</string>
-    <!-- deprecated -->
-    <string name="update_1_50_android">Що нового? \n\n❤️‍🔥 Новий вибірник емодзі з більшою кількістю смайликів \n\n🎮 Покращені програми в чаті: отримуйте сповіщення та відкривайте додатки безпосередньо в контексті, наприклад, доданий запис у календарі \n\n👍 Отримуйте сповіщення про реакції на ваші повідомлення \n\n... 🛠️ ВИПРАВЛЕННЯ та ЩЕ БІЛЬШЕ на %1$s</string>
-    <!-- deprecated -->
-    <string name="update_switch_profile_placement">ℹ️ Опцію \"Перемкнути профіль\" переміщено: Торкніться зображення свого профілю у верхньому кутку головного екрану, щоб додати або перемкнути профіль 💡.</string>
 </resources>

@@ -236,19 +236,7 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Bisedoni me… </string>
     <string name="clone_chat">Klononi Fjalosjen</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Listë Transmetimi</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Lista Transmetimi</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Listë e Re Transmetimi</string>
     <string name="add_recipients">Shtoni Marrës</string>
-    <!-- deprecated -->
-    <string name="edit_broadcast_list">Përpunoni Listë Transmetimesh</string>
-    <!-- deprecated -->
-    <string name="broadcast_list_name">Emër Liste Transmetimesh</string>
-    <!-- deprecated -->
-    <string name="please_enter_broadcast_list_name">Ju lutemi, jepni një emër për listën e transmetimeve</string>
     <string name="menu_send">Dërgoje</string>
     <string name="menu_toggle_keyboard">Shfaq/fshih Tastierë Emoji-sh</string>
     <string name="menu_edit_group">Përpunoni Grup</string>
@@ -401,8 +389,6 @@
     <string name="ask_start_chat_with">Të bisedohet me %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Të hiqet %1$s nga grupi?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Të hiqen %1$s prej liste transmetimi?</string>
     <string name="open_url_confirmation">Doni të hapet kjo lidhje?</string>
 
 
@@ -432,8 +418,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Dërgoni një mesazh për %1$s.</string>
-    <!-- deprecated -->
-    <string name="chat_new_broadcast_hint">Në një listë transmetimesh, marrësit do të marrin mesazhe në një fjalosje të llojit “vetëm lexim” me ju.</string>
     <string name="chat_new_group_hint">Të tjerët do ta shohin këtë grup pasi të keni dërguar një mesazh të parë.</string>
     <string name="chat_record_slide_to_cancel">Rrëshqiteni që të anulohet</string>
     <string name="chat_record_explain">Prekeni dhe mbajeni të prekur që të incizoni një mesazh zanor; lëshojeni, që të dërgohet</string>
@@ -541,11 +525,6 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Mozaik Katror</string>
     <string name="send_message">Dërgo Mesazh</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s ndryshoi adresën e vet nga %2$s në %3$s</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">Ndryshuat adresën tuaj nga %1$s në %2$s.\n\nNëse dërgoni tani një mesazh te një grup i verifikuar, kontaktet atje do të zëvendësojnë automatikisht adresën tuaj të vjetër me të renë.\n\nËshtë tejet e këshillueshme të ujdisni shërbimin tuaj të vjetër të email-it të përcjellë krejt email-et te adresa juaj e re email. Përndryshe, mund të humbni mesazhe të kontakteve që s’e kanë marrë ende adresën tuaj të re.</string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -941,14 +920,8 @@
     <string name="ephemeral_timer_weeks_by_you">E vutë kohëmatësin e zhdukjes së mesazheve në %1$s javë.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Kohëmatësi i zhdukjes së mesazheve u vu në %1$s javë nga %2$s.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken">%1$s dërgoi një mesazh nga një pajisje tjetër.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Nga sot e tutje për mesazhet garantohet fshehtëzimi skaj-më-skaj. Prekeni, që të mësoni më tepër.</string>
     <string name="chat_protection_enabled_explanation">Tanimë për mesazhet në këtë fjalosje garantohet fshehtëzimi skaj-më-skaj.\n\nFshehtëzimi skaj-më-skaj i mban private mesazhet mes jush dhe partnerëve tuaj të fjalosjes. Ato s’mund t’i lexojë as furnizuesi i shërbimit tuaj email.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_tap_to_learn_more">%1$s dërgoi një mesazh nga një pajisje tjetër. Prekeni, që të mësoni më tepër.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_explanation">Fshehtëzimi skaj-më-skaj s’mund të garantohet më, ngaqë, sipas gjasash, %1$s riinstaloi Delta Chat-in, ose dërgoi një mesazh nga një tjetër pajisje.\n\nMund ta takoni dhe të skanoni sërish KODIN e tij QR, që të rivendoset fshehtëzim skaj-më-skaj i garantuar.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s lyp fshehtëzim, i cili s’është ujdisur ende për këtë fjalosje. Që të mësoni më tepër, prekeni.</string>
     <string name="invalid_unencrypted_explanation">Për të vendosur fshehtëzim skaj-më-skaj, mund të takoheni personalisht me kontaktet dhe të skanoni kodin e tyre QR, për t’i pranuar.</string>
     <string name="learn_more">Mësoni Më Tepër</string>
@@ -1007,18 +980,10 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s u përgjigj, po pritet që të shtohet te grupi…</string>
     <string name="secure_join_wait">Po vendoset fshehtëzim skaj-më-skaj i garantuar, ju lutemi, pritni…</string>
-    <!-- deprecated -->
-    <string name="secure_join_wait_timeout">S’u vendos dot fshehtëzim skaj-më-skaj i garantuar, por mundeni tashmë të dërgoni një mesazh.</string>
-    <!-- deprecated, was stock string -->
-    <string name="secure_join_takes_longer">Duket se po zgjat ca, mos ndoshta kontakti juaj, ose vetë ju s’jeni lidhur në internet.\n\nSidoqoftë, procesi vazhdon në prapaskenë, mund të merreni me diçka tjetër…</string>
     <string name="contact_verified">%1$s u verifikua.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">S’vendoset dot fshehtëzim i garantuar skaj-më-skaj me %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Sjellë nga %1$s</string>
     <string name="verified_by_you">Sjellë nga unë</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">U ndryshua udjisja për %1$s</string>
     <string name="verified_contact_required_explain">Që të garantohet fshehtëzim skaj-më-skaj, mund të shtoni në këtë grup vetëm kontakte me shenjën e gjelbër të verifikimit.\n\nMund të takoheni drejtpërsëdrejti me kontakte të paverifikuar dhe të skanoni kodin e tyre QR për t’i verifikuar ata.</string>
     <string name="mailto_dialog_header_select_chat">Përzgjidhni fjalosje ku të dërgohet mesazhi</string>
     <!-- first placeholder is the name of the chat -->
@@ -1060,9 +1025,6 @@
     <string name="ImageEditorHud_crop">Qethe</string>
     <string name="ImageEditorHud_flip">Ktheje në anë tjetër</string>
     <string name="ImageEditorHud_rotate">Rrotulloje</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Mesazh i fshehtëzuar</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Ky është aplikacioni zyrtar Delta Chat Desktop.</string>
@@ -1174,7 +1136,6 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat dëshiron të ruajë figura në fototekën tuaj.</string>
     <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat mund të përdorë Face ID që të mbrojë profilin tuaj vendor, krijim kopjeruajtjesh dhe ujdisje pajisjeje të dytë.</string>
 
-
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Dërgim i Menjëhershëm</string>
     <string name="pref_background_notifications">Përdor Lidhje Në Prapaskenë</string>
@@ -1187,8 +1148,4 @@
     <string name="perm_enable_bg_reminder_title">Prekeni këtu që të merrni mesazhe, teksa Delta Chat rri në prapaskenë.</string>
     <string name="perm_enable_bg_already_done">E keni lejuar tashmë Delta Chat-in të marrë mesazhe në prapaskenë.\n\nNëse mesazhet prapë nuk mbërrijnë në prapaskenë, ju lutemi, kontrolloni edhe rregullimet e sistemit tuaj.</string>
 
-    <!-- deprecated -->
-    <string name="update_1_50_android">Ç’ka të re?\n\n❤️‍🔥 Zgjedhës i ri emoji-sh, me më shumë të tillë\n\n🎮 Zgjerim aplikacionesh brenda fjalosjesh: Merrni njoftim dhe hapni aplikacionet përkatës sipas kontekstit, p.sh., hapni drejtpërdrejt një zë të saposhtuar kalendari\n\n👍 Merrni njoftim mbi reagime te mesazhet tuaj\n\n… 🛠️ NDREQJE DHE MË TEPËR te %1$s</string>
-    <!-- deprecated -->
-    <string name="update_switch_profile_placement">ℹ️ Mundësia “Ndërroni Profil” u hoq: Që të shtoni, ose ndërroni profile, prekni figurën e profilit tuaj në cepin e sipërm të skenës kryesore 💡</string>
-</resources>
+    </resources>
