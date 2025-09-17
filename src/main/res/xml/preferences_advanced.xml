@@ -23,7 +23,7 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_calls_enabled"
-            android:title="@string/video_calls"/>
+            android:title="@string/calls"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
