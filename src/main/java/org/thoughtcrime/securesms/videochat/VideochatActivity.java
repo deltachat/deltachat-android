@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.videochat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
@@ -18,9 +19,11 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 
+import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.WebViewActivity;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.AvatarUtil;
 import org.thoughtcrime.securesms.util.Util;
@@ -79,8 +82,21 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
       Util.runOnMain(() -> Objects.requireNonNull(getSupportActionBar()).setTitle(chat.getName()));
     });
 
-    String url = "file:///android_asset/calls/index.html";
-    webView.loadUrl(url + hash);
+    Permissions.with(this)
+      .request(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
+      .ifNecessary()
+      .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_camera_denied))
+      .onAllGranted(() -> {
+        String url = "file:///android_asset/calls/index.html";
+        webView.loadUrl(url + hash);
+      }).onAnyDenied(this::finish)
+      .execute();
+  }
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 
   @Override
