@@ -54,8 +54,7 @@ public class ConversationItemFooter extends LinearLayout {
 
     if (attrs != null) {
       try (TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemFooter, 0, 0)) {
-        textColor = typedArray.getInt(R.styleable.ConversationItemFooter_footer_text_color, getResources().getColor(R.color.core_white));
-        setTextColor(textColor);
+        setTextColor(typedArray.getInt(R.styleable.ConversationItemFooter_footer_text_color, getResources().getColor(R.color.core_white)));
       }
     }
   }
@@ -77,7 +76,8 @@ public class ConversationItemFooter extends LinearLayout {
     presentDeliveryStatus(messageRecord);
   }
 
-  private void setTextColor(int color) {
+  public void setTextColor(int color) {
+    textColor = color;
     dateView.setTextColor(color);
     editedView.setTextColor(color);
     bookmarkIndicatorView.setColorFilter(color);
