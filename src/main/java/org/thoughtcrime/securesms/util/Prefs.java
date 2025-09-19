@@ -179,6 +179,11 @@ public class Prefs {
     return getBooleanPreference(context, "pref_new_broadcast_list", false);
   }
 
+
+  public static boolean isCallsEnabled(Context context) {
+    return getBooleanPreference(context, "pref_calls_enabled", false);
+  }
+
   // ringtone
 
   public static @NonNull Uri getNotificationRingtone(Context context) {

@@ -442,6 +442,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_show_map).setVisible(false);
     }
 
+    menu.findItem(R.id.menu_start_call).setVisible(Prefs.isCallsEnabled(this) && dcChat.isEncrypted() && !isMultiUser());
+
     if (!dcChat.isEncrypted() || !dcChat.canSend() || dcChat.isMailingList() ) {
       menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
     }
@@ -531,6 +533,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return true;
     } else if (itemId == R.id.menu_show_map) {
       WebxdcActivity.openMaps(this, chatId);
+      return true;
+    } else if (itemId == R.id.menu_start_call) {
+      VideochatUtil.startCall(this, chatId);
       return true;
     } else if (itemId == R.id.menu_all_media) {
       handleAllMedia();
@@ -965,8 +970,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       AttachmentManager.selectGallery(this, PICK_GALLERY); break;
     case AttachmentTypeSelector.ADD_DOCUMENT:
       AttachmentManager.selectDocument(this, PICK_DOCUMENT); break;
-    case AttachmentTypeSelector.INVITE_VIDEO_CHAT:
-      new VideochatUtil().invite(this, chatId); break;
     case AttachmentTypeSelector.ADD_CONTACT_INFO:
       startContactChooserActivity(); break;
     case AttachmentTypeSelector.ADD_LOCATION:
@@ -1456,7 +1459,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Recipient author = new Recipient(this, dcContext.getContact(msg.getFromId()));
 
     SlideDeck slideDeck = new SlideDeck();
-    if (msg.getType() != DcMsg.DC_MSG_TEXT) {
+    if (msg.hasFile()) {
       slideDeck.addSlide(MediaUtil.getSlideForMsg(this, msg));
     }
 
