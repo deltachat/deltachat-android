@@ -366,7 +366,7 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     static boolean canEditMsg(DcMsg dcMsg) {
-        return dcMsg.isOutgoing() && !dcMsg.isInfo() && !dcMsg.hasHtml() && !dcMsg.getText().isEmpty();
+        return dcMsg.isOutgoing() && !dcMsg.isInfo() && dcMsg.getType() != DcMsg.DC_MSG_CALL && !dcMsg.hasHtml() && !dcMsg.getText().isEmpty();
     }
 
     public void handleClearChat() {

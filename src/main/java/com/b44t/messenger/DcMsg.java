@@ -18,6 +18,7 @@ public class DcMsg {
     public final static int DC_MSG_VOICE = 41;
     public final static int DC_MSG_VIDEO = 50;
     public final static int DC_MSG_FILE = 60;
+    public final static int DC_MSG_CALL = 71;
     public final static int DC_MSG_WEBXDC = 80;
     public final static int DC_MSG_VCARD = 90;
 
