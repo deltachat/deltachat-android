@@ -3,13 +3,16 @@ package org.thoughtcrime.securesms.notifications;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
-import com.b44t.messenger.DcContext;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Util;
 
 public class DeclineCallReceiver extends BroadcastReceiver {
+  private static final String TAG = DeclineCallReceiver.class.getSimpleName();
+
   public static final  String DECLINE_ACTION   = "org.thoughtcrime.securesms.notifications.DECLINE_CALL";
   public static final  String ACCOUNT_ID_EXTRA      = "account_id";
   public static final  String CALL_ID_EXTRA          = "call_id";
@@ -28,8 +31,11 @@ public class DeclineCallReceiver extends BroadcastReceiver {
 
     Util.runOnAnyBackgroundThread(() -> {
       DcHelper.getNotificationCenter(context).removeCallNotification(accountId, callId);
-      DcContext dcContext = DcHelper.getAccounts(context).getAccount(accountId);
-      dcContext.endCall(callId);
+      try {
+        DcHelper.getRpc(context).endCall(accountId, callId);
+      } catch (RpcException e) {
+        Log.e(TAG, "Error", e);
+      }
     });
   }
 }
