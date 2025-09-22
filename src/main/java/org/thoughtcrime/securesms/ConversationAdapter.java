@@ -77,8 +77,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private static final int MESSAGE_TYPE_THUMBNAIL_INCOMING = 6;
   private static final int MESSAGE_TYPE_DOCUMENT_OUTGOING  = 7;
   private static final int MESSAGE_TYPE_DOCUMENT_INCOMING  = 8;
-  private static final int MESSAGE_TYPE_STICKER_INCOMING   = 10;
-  private static final int MESSAGE_TYPE_STICKER_OUTGOING   = 11;
+  private static final int MESSAGE_TYPE_STICKER_INCOMING   = 9;
+  private static final int MESSAGE_TYPE_STICKER_OUTGOING   = 10;
 
   private final Set<DcMsg> batchSelected = Collections.synchronizedSet(new HashSet<DcMsg>());
 
