@@ -172,6 +172,22 @@ public class Rpc {
         getResult("set_accounts_order", order);
     }
 
+    public String iceServers(int accountId) throws RpcException {
+        return gson.fromJson(getResult("ice_servers", accountId), String.class);
+    }
+
+    public int placeOutgoingCall(int accountId, int chatId, String payload) throws RpcException {
+        return gson.fromJson(getResult("place_outgoing_call", accountId, chatId, payload), Integer.class);
+    }
+
+    public void acceptIncomingCall(int accountId, int msgId, String payload) throws RpcException {
+        getResult("accept_incoming_call", accountId, msgId, payload);
+    }
+
+    public void endCall(int accountId, int msgId) throws RpcException {
+        getResult("end_call", accountId, msgId);
+    }
+
     private static class Request {
         private final String jsonrpc = "2.0";
         public final String method;

@@ -18,6 +18,8 @@ import androidx.annotation.NonNull;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.WebViewActivity;
@@ -42,6 +44,8 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
   public static final String EXTRA_HASH = "hash";
 
   private DcContext dcContext;
+  private Rpc rpc;
+  private int accId;
   private int chatId;
   private int callId;
   private boolean ended = false;
@@ -54,10 +58,11 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
     Bundle bundle = getIntent().getExtras();
     assert bundle != null;
     String hash = bundle.getString(EXTRA_HASH, "");
+    accId = bundle.getInt(EXTRA_ACCOUNT_ID, -1);
     chatId = bundle.getInt(EXTRA_CHAT_ID, 0);
     callId = bundle.getInt(EXTRA_CALL_ID, 0);
-    int accId = bundle.getInt(EXTRA_ACCOUNT_ID, -1);
-    this.dcContext = DcHelper.getAccounts(this).getAccount(accId);
+    rpc = DcHelper.getRpc(this);
+    dcContext = DcHelper.getAccounts(this).getAccount(accId);
 
     DcHelper.getNotificationCenter(this).removeCallNotification(accId, callId);
 
@@ -102,7 +107,13 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
   @Override
   protected void onDestroy() {
     DcHelper.getEventCenter(this).removeObservers(this);
-    if (callId != 0 && !ended) dcContext.endCall(callId);
+    if (callId != 0 && !ended) {
+      try {
+        rpc.endCall(accId, callId);
+      } catch (RpcException e) {
+        Log.e(TAG, "Error", e);
+      }
+    }
     super.onDestroy();
   }
 
@@ -145,18 +156,30 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
   class InternalJSApi {
     @JavascriptInterface
     public String getIceServers() {
-      // TODO: hardcode server for now, should come core
-      return "[{\"urls\": \"turn:c20.testrun.org\",\"username\": \"ohV8aec1\", \"credential\": \"zo3theiY\"}]";
+      try {
+        return rpc.iceServers(accId);
+      } catch (RpcException e) {
+        Log.e(TAG, "Error", e);
+        return null;
+      }
     }
 
     @JavascriptInterface
     public void startCall(String payload) {
-      callId = dcContext.placeOutgoingCall(chatId, payload);
+      try {
+        callId = rpc.placeOutgoingCall(accId, chatId, payload);
+      } catch (RpcException e) {
+        Log.e(TAG, "Error", e);
+      }
     }
 
     @JavascriptInterface
     public void acceptCall(String payload) {
-      dcContext.acceptIncomingCall(callId, payload);
+      try {
+        rpc.acceptIncomingCall(accId, callId, payload);
+      } catch (RpcException e) {
+        Log.e(TAG, "Error", e);
+      }
     }
 
     @JavascriptInterface
