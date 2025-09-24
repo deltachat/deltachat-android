@@ -2,27 +2,27 @@ name: Upload Preview APK
 
 on: pull_request
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
   build:
     name: Upload Preview APK
     runs-on: ubuntu-latest
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
         with:
           submodules: recursive
       - uses: Swatinem/rust-cache@v2
         with:
           working-directory: jni/deltachat-core-rust
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v5
         with:
           java-version: 17
           distribution: 'temurin'
       - uses: android-actions/setup-android@v3
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: |
             ~/.gradle/caches
@@ -35,15 +35,15 @@ jobs:
         with:
           ndk-version: r27
 
+      - name: Validate Gradle Wrapper
+        uses: gradle/actions/wrapper-validation@v4
+
       - name: Compile core
         env:
           ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
         run: |
           export PATH="${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/"
           scripts/install-toolchains.sh && scripts/ndk-make.sh
-
-      - name: Validate Gradle Wrapper
-        uses: gradle/wrapper-validation-action@v1
 
       - name: Build APK
         run: ./gradlew --no-daemon assembleGplayDebug
