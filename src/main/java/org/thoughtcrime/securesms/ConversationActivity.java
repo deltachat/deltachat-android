@@ -442,7 +442,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_show_map).setVisible(false);
     }
 
-    menu.findItem(R.id.menu_start_call).setVisible(Prefs.isCallsEnabled(this) && dcChat.isEncrypted() && !isMultiUser());
+    menu.findItem(R.id.menu_start_call).setVisible(
+      Prefs.isCallsEnabled(this)
+      && dcChat.canSend()
+      && dcChat.isEncrypted()
+      && !dcChat.isSelfTalk()
+      && !dcChat.isMultiUser()
+    );
 
     if (!dcChat.isEncrypted() || !dcChat.canSend() || dcChat.isMailingList() ) {
       menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
