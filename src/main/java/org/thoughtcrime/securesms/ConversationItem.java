@@ -40,9 +40,6 @@ import androidx.appcompat.app.AlertDialog;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
-import com.b44t.messenger.rpc.Reactions;
-import com.b44t.messenger.rpc.RpcException;
-import com.b44t.messenger.rpc.VcardContact;
 
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
@@ -76,6 +73,10 @@ import org.thoughtcrime.securesms.util.views.Stub;
 
 import java.util.List;
 import java.util.Set;
+
+import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.Reactions;
+import chat.delta.rpc.types.VcardContact;
 
 /**
  * A view that displays an individual conversation item within a conversation
@@ -790,11 +791,11 @@ public class ConversationItem extends BaseConversationItem
 
   private void setReactions(@NonNull DcMsg current) {
     try {
-      Reactions reactions = rpc.getMsgReactions(dcContext.getAccountId(), current.getId());
+      Reactions reactions = rpc.getMessageReactions(dcContext.getAccountId(), current.getId());
       if (reactions == null) {
         reactionsView.clear();
       } else {
-        reactionsView.setReactions(reactions.getReactions());
+        reactionsView.setReactions(reactions.reactions);
         reactionsView.setOnClickListener(view -> {
           if (eventListener != null && batchSelected.isEmpty()) {
             eventListener.onReactionClicked(current);
@@ -932,7 +933,7 @@ public class ConversationItem extends BaseConversationItem
           String path = slide.asAttachment().getRealPath(context);
           VcardContact vcardContact = rpc.parseVcard(path).get(0);
           new AlertDialog.Builder(context)
-            .setMessage(context.getString(R.string.ask_start_chat_with, vcardContact.getDisplayName()))
+            .setMessage(context.getString(R.string.ask_start_chat_with, vcardContact.displayName))
             .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                 try {
                   List<Integer> contactIds = rpc.importVcard(dcContext.getAccountId(), path);

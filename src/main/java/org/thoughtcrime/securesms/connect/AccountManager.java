@@ -13,8 +13,6 @@ import androidx.preference.PreferenceManager;
 
 import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
-import com.b44t.messenger.rpc.Rpc;
-import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ConversationListActivity;
@@ -23,6 +21,9 @@ import org.thoughtcrime.securesms.WelcomeActivity;
 import org.thoughtcrime.securesms.accounts.AccountSelectionListFragment;
 
 import java.io.File;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 
 public class AccountManager {
 
