@@ -4,17 +4,16 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.R;
+
+import chat.delta.rpc.types.CallInfo;
+import chat.delta.rpc.types.CallState;
 
 public class CallItemView extends FrameLayout {
   private static final String TAG = CallItemView.class.getSimpleName();
@@ -41,9 +40,18 @@ public class CallItemView extends FrameLayout {
     this.footer = findViewById(R.id.footer);
   }
 
-  public void setCallItem(final @NonNull DcMsg dcMsg) {
-    title.setText(dcMsg.getText());
-    if (dcMsg.isOutgoing()) {
+  public void setCallItem(boolean isOutgoing, CallInfo callInfo) {
+    if (callInfo.state instanceof CallState.Missed) {
+      title.setText(R.string.missed_call);
+    } else if (callInfo.state instanceof CallState.Cancelled) {
+      title.setText(R.string.canceled_call);
+    } else if (callInfo.state instanceof CallState.Declined) {
+      title.setText(R.string.declined_call);
+    } else {
+      title.setText(isOutgoing? R.string.outgoing_call : R.string.incoming_call);
+    }
+
+    if (isOutgoing) {
       int[] attrs = new int[]{
         R.attr.conversation_item_outgoing_text_secondary_color,
       };

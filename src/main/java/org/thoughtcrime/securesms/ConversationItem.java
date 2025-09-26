@@ -584,7 +584,11 @@ public class ConversationItem extends BaseConversationItem
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
       if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
 
-      callViewStub.get().setCallItem(messageRecord);
+      try {
+        callViewStub.get().setCallItem(messageRecord.isOutgoing(), rpc.callInfo(dcContext.getAccountId(), messageRecord.getId()));
+      } catch (RpcException e) {
+        Log.e(TAG, "Error in Rpc.callInfo", e);
+      }
       callViewStub.get().setOnClickListener(passthroughClickListener);
       callViewStub.get().setOnLongClickListener(passthroughClickListener);
 
