@@ -5,10 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.b44t.messenger.rpc.RpcException;
-
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Util;
+
+import chat.delta.rpc.RpcException;
 
 public class DeclineCallReceiver extends BroadcastReceiver {
   private static final String TAG = DeclineCallReceiver.class.getSimpleName();

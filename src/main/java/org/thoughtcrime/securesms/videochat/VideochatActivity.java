@@ -18,8 +18,6 @@ import androidx.annotation.NonNull;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.rpc.Rpc;
-import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.WebViewActivity;
@@ -34,6 +32,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 
 public class VideochatActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate {
   private static final String TAG = VideochatActivity.class.getSimpleName();
