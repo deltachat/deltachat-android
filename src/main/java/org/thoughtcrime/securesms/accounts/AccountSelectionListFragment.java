@@ -26,8 +26,6 @@ import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.rpc.Rpc;
-import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ConnectivityActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
@@ -42,6 +40,9 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Arrays;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 
 public class AccountSelectionListFragment extends DialogFragment implements DcEventCenter.DcEventDelegate
 {
