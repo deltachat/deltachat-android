@@ -164,7 +164,7 @@ public class NotificationCenter {
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
-    public PendingIntent getAnswerIntent(ChatData chatData, int callId, String payload) {
+    public PendingIntent getOpenCallIntent(ChatData chatData, int callId, String payload, boolean autoAccept) {
         final Intent chatIntent = new Intent(context, ConversationActivity.class)
             .putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, chatData.accountId)
             .putExtra(ConversationActivity.CHAT_ID_EXTRA, chatData.chatId)
@@ -173,13 +173,13 @@ public class NotificationCenter {
         String base64 = Base64.encodeToString(payload.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
         String hash = "";
         try {
-          hash = "#acceptCall=" + URLEncoder.encode(base64, "UTF-8");
+          hash = (autoAccept? "#acceptCall=" : "#offerIncomingCall=") + URLEncoder.encode(base64, "UTF-8");
         } catch (UnsupportedEncodingException e) {
           Log.e(TAG, "Error", e);
         }
 
         Intent intent = new Intent(context, VideochatActivity.class);
-        intent.setAction(Intent.ACTION_VIEW);
+        intent.setAction(autoAccept? Intent.ACTION_ANSWER : Intent.ACTION_VIEW);
         intent.putExtra(VideochatActivity.EXTRA_ACCOUNT_ID, chatData.accountId);
         intent.putExtra(VideochatActivity.EXTRA_CHAT_ID, chatData.chatId);
         intent.putExtra(VideochatActivity.EXTRA_CALL_ID, callId);
@@ -434,6 +434,7 @@ public class NotificationCenter {
         String notificationChannel = getCallNotificationChannel(notificationManager, chatData, name);
 
         PendingIntent declineCallIntent = getDeclineCallIntent(chatData, callId);
+        PendingIntent openCallIntent = getOpenCallIntent(chatData, callId, payload, false);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationChannel)
           .setSmallIcon(R.drawable.icon_notification)
@@ -444,6 +445,8 @@ public class NotificationCenter {
           .setOnlyAlertOnce(false)
           .setTicker(name)
           .setContentTitle(name)
+          .setFullScreenIntent(openCallIntent, true)
+          .setContentIntent(openCallIntent)
           .setContentText("Incoming Call");
 
         builder.addAction(
@@ -456,7 +459,7 @@ public class NotificationCenter {
           new NotificationCompat.Action.Builder(
             R.drawable.baseline_call_24,
             context.getString(R.string.answer_call),
-            getAnswerIntent(chatData, callId, payload)).build());
+            getOpenCallIntent(chatData, callId, payload, true)).build());
 
         Bitmap bitmap = getAvatar(dcChat);
         if (bitmap != null) {
