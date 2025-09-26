@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
-@JsonTypeInfo(use=Id.MINIMAL_CLASS, include=As.PROPERTY, property="kind")
-@JsonSubTypes({@Type(CallState.Alerting.class), @Type(CallState.Active.class), @Type(CallState.Completed.class), @Type(CallState.Missed.class), @Type(CallState.Declined.class), @Type(CallState.Cancelled.class)})
+@JsonTypeInfo(use=Id.NAME, include=As.PROPERTY, property="kind")
+@JsonSubTypes({@Type(value = CallState.Alerting.class, name="Alerting"), @Type(value = CallState.Active.class, name="Active"), @Type(value = CallState.Completed.class, name="Completed"), @Type(value = CallState.Missed.class, name="Missed"), @Type(value = CallState.Declined.class, name="Declined"), @Type(value = CallState.Cancelled.class, name="Cancelled")})
 public abstract class CallState {
 
 /**
