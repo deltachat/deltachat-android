@@ -70,11 +70,14 @@ import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
+import org.thoughtcrime.securesms.videochat.VideochatUtil;
 
 import java.util.List;
 import java.util.Set;
 
 import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.CallInfo;
+import chat.delta.rpc.types.CallState;
 import chat.delta.rpc.types.Reactions;
 import chat.delta.rpc.types.VcardContact;
 
@@ -589,7 +592,7 @@ public class ConversationItem extends BaseConversationItem
       } catch (RpcException e) {
         Log.e(TAG, "Error in Rpc.callInfo", e);
       }
-      callViewStub.get().setOnClickListener(passthroughClickListener);
+      callViewStub.get().setCallClickListener(new CallClickListener());
       callViewStub.get().setOnLongClickListener(passthroughClickListener);
 
       callViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
@@ -980,6 +983,23 @@ public class ConversationItem extends BaseConversationItem
     public void onClick(final View v, final Slide slide) {
       if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
+      }
+    }
+  }
+
+  private class CallClickListener implements CallItemView.CallClickListener {
+    public void onClick(final View v, final CallInfo callInfo) {
+      if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
+        performClick();
+      } else {
+          int accId = dcContext.getAccountId();
+          int chatId = messageRecord.getChatId();
+          if (!messageRecord.isOutgoing() && callInfo.state instanceof CallState.Alerting) {
+              int callId = messageRecord.getId();
+              VideochatUtil.openCall(getContext(), accId, chatId, callId, callInfo.sdpOffer);
+          } else {
+              VideochatUtil.startCall(getContext(), accId, chatId);
+          }
       }
     }
   }

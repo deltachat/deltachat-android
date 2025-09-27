@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +22,8 @@ public class CallItemView extends FrameLayout {
   private final @NonNull ImageView icon;
   private final @NonNull TextView title;
   private final @NonNull ConversationItemFooter footer;
+  private CallInfo callInfo;
+  private CallClickListener viewListener;
 
   public CallItemView(Context context) {
     this(context, null);
@@ -38,9 +41,20 @@ public class CallItemView extends FrameLayout {
     this.icon = findViewById(R.id.call_icon);
     this.title = findViewById(R.id.title);
     this.footer = findViewById(R.id.footer);
+
+    setOnClickListener(v -> {
+      if (viewListener != null && callInfo != null) {
+        viewListener.onClick(v, callInfo);
+      }
+    });
+  }
+
+  public void setCallClickListener(CallClickListener listener) {
+    viewListener = listener;
   }
 
   public void setCallItem(boolean isOutgoing, CallInfo callInfo) {
+    this.callInfo = callInfo;
     if (callInfo.state instanceof CallState.Missed) {
       title.setText(R.string.missed_call);
     } else if (callInfo.state instanceof CallState.Cancelled) {
@@ -76,5 +90,9 @@ public class CallItemView extends FrameLayout {
 
   public String getDescription() {
     return title.getText() + "\n" + footer.getDescription();
+  }
+
+  public interface CallClickListener {
+    void onClick(View v, CallInfo callInfo);
   }
 }
