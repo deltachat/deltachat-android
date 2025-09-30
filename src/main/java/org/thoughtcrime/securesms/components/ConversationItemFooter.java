@@ -26,6 +26,7 @@ public class ConversationItemFooter extends LinearLayout {
   private ImageView           locationIndicatorView;
   private DeliveryStatusView  deliveryStatusView;
   private Integer             textColor = null;
+  private int                 callDuration = 0;
 
   public ConversationItemFooter(Context context) {
     super(context);
@@ -59,6 +60,11 @@ public class ConversationItemFooter extends LinearLayout {
     }
   }
 
+  /* Call duration in seconds. Only >0 if this is a call message */
+  public void setCallDuration(int duration) {
+    callDuration = duration;
+  }
+
   public void setMessageRecord(@NonNull DcMsg messageRecord) {
     presentDate(messageRecord);
     boolean bookmark = messageRecord.getOriginalMsgId() != 0 || messageRecord.getSavedMsgId() != 0;
@@ -86,9 +92,18 @@ public class ConversationItemFooter extends LinearLayout {
     deliveryStatusView.setTint(color);
   }
 
-  private void presentDate(@NonNull DcMsg messageRecord) {
+  private void presentDate(@NonNull DcMsg dcMsg) {
     dateView.forceLayout();
-    dateView.setText(DateUtils.getExtendedRelativeTimeSpanString(getContext(), messageRecord.getTimestamp()));
+    Context context = getContext();
+    String date = dcMsg.getType() == DcMsg.DC_MSG_CALL?
+      DateUtils.getFormattedCallTime(context, dcMsg.getTimestamp())
+      : DateUtils.getExtendedRelativeTimeSpanString(context, dcMsg.getTimestamp());
+    if (callDuration > 0) {
+      String duration = DateUtils.getFormattedCallDuration(context, callDuration);
+      dateView.setText(context.getString(R.string.call_date_and_duration, date, duration));
+    } else {
+      dateView.setText(date);
+    }
   }
 
   private void presentDeliveryStatus(@NonNull DcMsg messageRecord) {

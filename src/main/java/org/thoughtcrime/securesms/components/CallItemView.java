@@ -55,6 +55,12 @@ public class CallItemView extends FrameLayout {
 
   public void setCallItem(boolean isOutgoing, CallInfo callInfo) {
     this.callInfo = callInfo;
+    if (callInfo.state instanceof CallState.Completed) {
+      footer.setCallDuration(((CallState.Completed) callInfo.state).duration);
+    } else {
+      footer.setCallDuration(0); // reset
+    }
+
     if (callInfo.state instanceof CallState.Missed) {
       title.setText(R.string.missed_call);
     } else if (callInfo.state instanceof CallState.Cancelled) {
