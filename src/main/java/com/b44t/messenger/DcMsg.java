@@ -154,8 +154,6 @@ public class DcMsg {
     public native boolean isInfo             ();
     public native boolean hasHtml            ();
     public native String  getSetupCodeBegin  ();
-    public native String  getVideochatUrl    ();
-    public native int     getVideochatType   ();
     public native void    setText            (String text);
     public native void    setFileAndDeduplicate(String file, String name, String filemime);
     public native void    setDimension       (int width, int height);

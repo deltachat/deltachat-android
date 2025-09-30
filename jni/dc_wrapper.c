@@ -735,12 +735,6 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_sendTextMsg(JNIEnv *env, jobjec
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_sendVideochatInvitation(JNIEnv *env, jobject obj, jint chat_id)
-{
-    return (jint)dc_send_videochat_invitation(get_dc_context(env, obj), chat_id);
-}
-
-
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_sendWebxdcStatusUpdate(JNIEnv *env, jobject obj, jint msg_id, jstring payload)
 {
     CHAR_REF(payload);
@@ -1606,21 +1600,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getSetupCodeBegin(JNIEnv *env, j
         jstring ret =  JSTRING_NEW(temp);
     dc_str_unref(temp);
     return ret;
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getVideochatUrl(JNIEnv *env, jobject obj)
-{
-    char* temp = dc_msg_get_videochat_url(get_dc_msg(env, obj));
-        jstring ret =  JSTRING_NEW(temp);
-    dc_str_unref(temp);
-    return ret;
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getVideochatType(JNIEnv *env, jobject obj)
-{
-    return (jint)dc_msg_get_videochat_type(get_dc_msg(env, obj));
 }
 
 
