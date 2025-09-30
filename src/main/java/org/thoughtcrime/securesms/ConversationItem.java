@@ -412,7 +412,7 @@ public class ConversationItem extends BaseConversationItem
 
     String text = messageRecord.getText();
 
-    if (messageRecord.getType()==DcMsg.DC_MSG_CALL || text.isEmpty()) {
+    if (messageRecord.getType() == DcMsg.DC_MSG_CALL || text.isEmpty()) {
       bodyText.setVisibility(View.GONE);
     }
     else {
@@ -821,7 +821,7 @@ public class ConversationItem extends BaseConversationItem
       return stickerStub.get().getFooter();
     } else if (hasOnlyThumbnail(messageRecord) && TextUtils.isEmpty(messageRecord.getText())) {
       return mediaThumbnailStub.get().getFooter();
-    } else if (messageRecord.getType()==DcMsg.DC_MSG_CALL) {
+    } else if (messageRecord.getType() == DcMsg.DC_MSG_CALL) {
       return callViewStub.get().getFooter();
     } else {
       return footer;
