@@ -1,4 +1,4 @@
-package org.thoughtcrime.securesms.videochat;
+package org.thoughtcrime.securesms.calls;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -36,8 +36,8 @@ import java.util.Objects;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 
-public class VideochatActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate {
-  private static final String TAG = VideochatActivity.class.getSimpleName();
+public class CallActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate {
+  private static final String TAG = CallActivity.class.getSimpleName();
 
   public static final String EXTRA_ACCOUNT_ID = "acc_id";
   public static final String EXTRA_CHAT_ID = "chat_id";
@@ -190,7 +190,7 @@ public class VideochatActivity extends WebViewActivity implements DcEventCenter.
 
     @JavascriptInterface
     public String getAvatar() {
-      final Context context = VideochatActivity.this;
+      final Context context = CallActivity.this;
       final DcChat dcChat = dcContext.getChat(chatId);
       if (!TextUtils.isEmpty(dcChat.getProfileImage())) {
         return AvatarUtil.asDataUri(dcChat.getProfileImage());

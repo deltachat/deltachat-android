@@ -117,7 +117,7 @@ import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 import org.thoughtcrime.securesms.video.recode.VideoRecoder;
-import org.thoughtcrime.securesms.videochat.VideochatUtil;
+import org.thoughtcrime.securesms.calls.CallUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -543,7 +543,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       WebxdcActivity.openMaps(this, chatId);
       return true;
     } else if (itemId == R.id.menu_start_call) {
-      VideochatUtil.startCall(this, chatId);
+      CallUtil.startCall(this, chatId);
       return true;
     } else if (itemId == R.id.menu_all_media) {
       handleAllMedia();

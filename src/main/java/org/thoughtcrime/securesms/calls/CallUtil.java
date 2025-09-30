@@ -1,4 +1,4 @@
-package org.thoughtcrime.securesms.videochat;
+package org.thoughtcrime.securesms.calls;
 
 import android.Manifest;
 import android.app.Activity;
@@ -15,8 +15,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-public class VideochatUtil {
-  private static final String TAG = VideochatUtil.class.getSimpleName();
+public class CallUtil {
+  private static final String TAG = CallUtil.class.getSimpleName();
 
   public static void startCall(Activity activity, int chatId) {
     Permissions.with(activity)
@@ -31,11 +31,11 @@ public class VideochatUtil {
   }
 
   public static void startCall(Context context, int accId, int chatId) {
-    Intent intent = new Intent(context, VideochatActivity.class);
+    Intent intent = new Intent(context, CallActivity.class);
     intent.setAction(Intent.ACTION_VIEW);
-    intent.putExtra(VideochatActivity.EXTRA_ACCOUNT_ID, accId);
-    intent.putExtra(VideochatActivity.EXTRA_CHAT_ID, chatId);
-    intent.putExtra(VideochatActivity.EXTRA_HASH, "#startCall");
+    intent.putExtra(CallActivity.EXTRA_ACCOUNT_ID, accId);
+    intent.putExtra(CallActivity.EXTRA_CHAT_ID, chatId);
+    intent.putExtra(CallActivity.EXTRA_HASH, "#startCall");
     context.startActivity(intent);
   }
 
@@ -48,12 +48,12 @@ public class VideochatUtil {
       Log.e(TAG, "Error", e);
     }
 
-    Intent intent = new Intent(context, VideochatActivity.class);
+    Intent intent = new Intent(context, CallActivity.class);
     intent.setAction(Intent.ACTION_VIEW);
-    intent.putExtra(VideochatActivity.EXTRA_ACCOUNT_ID, accId);
-    intent.putExtra(VideochatActivity.EXTRA_CHAT_ID, chatId);
-    intent.putExtra(VideochatActivity.EXTRA_CALL_ID, callId);
-    intent.putExtra(VideochatActivity.EXTRA_HASH, hash);
+    intent.putExtra(CallActivity.EXTRA_ACCOUNT_ID, accId);
+    intent.putExtra(CallActivity.EXTRA_CHAT_ID, chatId);
+    intent.putExtra(CallActivity.EXTRA_CALL_ID, callId);
+    intent.putExtra(CallActivity.EXTRA_HASH, hash);
     context.startActivity(intent);
   }
 

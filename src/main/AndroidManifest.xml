@@ -371,7 +371,7 @@
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
     </activity>
 
-    <activity android:name=".videochat.VideochatActivity"
+    <activity android:name=".calls.CallActivity"
               android:label=""
               android:theme="@style/TextSecure.LightTheme"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode"

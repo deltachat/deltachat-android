@@ -65,7 +65,7 @@ import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.ConversationAdaptiveActionsToolbar;
-import org.thoughtcrime.securesms.videochat.VideochatUtil;
+import org.thoughtcrime.securesms.calls.CallUtil;
 
 import java.util.Collections;
 import java.util.LinkedList;

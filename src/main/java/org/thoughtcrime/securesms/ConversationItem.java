@@ -70,7 +70,7 @@ import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
-import org.thoughtcrime.securesms.videochat.VideochatUtil;
+import org.thoughtcrime.securesms.calls.CallUtil;
 
 import java.util.List;
 import java.util.Set;
@@ -996,9 +996,9 @@ public class ConversationItem extends BaseConversationItem
           int chatId = messageRecord.getChatId();
           if (!messageRecord.isOutgoing() && callInfo.state instanceof CallState.Alerting) {
               int callId = messageRecord.getId();
-              VideochatUtil.openCall(getContext(), accId, chatId, callId, callInfo.sdpOffer);
+              CallUtil.openCall(getContext(), accId, chatId, callId, callInfo.sdpOffer);
           } else {
-              VideochatUtil.startCall(getContext(), accId, chatId);
+              CallUtil.startCall(getContext(), accId, chatId);
           }
       }
     }

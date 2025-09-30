@@ -49,7 +49,7 @@ import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.Pair;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.videochat.VideochatActivity;
+import org.thoughtcrime.securesms.calls.CallActivity;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -178,12 +178,12 @@ public class NotificationCenter {
           Log.e(TAG, "Error", e);
         }
 
-        Intent intent = new Intent(context, VideochatActivity.class);
+        Intent intent = new Intent(context, CallActivity.class);
         intent.setAction(autoAccept? Intent.ACTION_ANSWER : Intent.ACTION_VIEW);
-        intent.putExtra(VideochatActivity.EXTRA_ACCOUNT_ID, chatData.accountId);
-        intent.putExtra(VideochatActivity.EXTRA_CHAT_ID, chatData.chatId);
-        intent.putExtra(VideochatActivity.EXTRA_CALL_ID, callId);
-        intent.putExtra(VideochatActivity.EXTRA_HASH, hash);
+        intent.putExtra(CallActivity.EXTRA_ACCOUNT_ID, chatData.accountId);
+        intent.putExtra(CallActivity.EXTRA_CHAT_ID, chatData.chatId);
+        intent.putExtra(CallActivity.EXTRA_CALL_ID, callId);
+        intent.putExtra(CallActivity.EXTRA_HASH, hash);
         intent.setPackage(context.getPackageName());
         return TaskStackBuilder.create(context)
             .addNextIntentWithParentStack(chatIntent)
