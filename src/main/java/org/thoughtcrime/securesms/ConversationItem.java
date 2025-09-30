@@ -578,7 +578,7 @@ public class ConversationItem extends BaseConversationItem
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
     }
-    else if (messageRecord.getType()==DcMsg.DC_MSG_CALL) {
+    else if (messageRecord.getType() == DcMsg.DC_MSG_CALL) {
       callViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
