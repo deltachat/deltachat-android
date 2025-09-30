@@ -94,10 +94,12 @@ public class ConversationItemFooter extends LinearLayout {
   private void presentDeliveryStatus(@NonNull DcMsg messageRecord) {
     // isDownloading is temporary and should be checked first.
     boolean isDownloading = messageRecord.getDownloadState() == DcMsg.DC_DOWNLOAD_IN_PROGRESS;
+    boolean isCall = messageRecord.getType() == DcMsg.DC_MSG_CALL;
 
          if (isDownloading)                deliveryStatusView.setDownloading();
+    else if (messageRecord.isPending())    deliveryStatusView.setPending();
     else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
-    else if (!messageRecord.isOutgoing())  deliveryStatusView.setNone();
+    else if (!messageRecord.isOutgoing() || isCall)  deliveryStatusView.setNone();
     else if (messageRecord.isRemoteRead()) deliveryStatusView.setRead();
     else if (messageRecord.isDelivered())  deliveryStatusView.setSent();
     else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
