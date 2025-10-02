@@ -63,7 +63,7 @@ public class CallItemView extends FrameLayout {
 
     if (callInfo.state instanceof CallState.Missed) {
       title.setText(R.string.missed_call);
-    } else if (callInfo.state instanceof CallState.Cancelled) {
+    } else if (callInfo.state instanceof CallState.Canceled) {
       title.setText(R.string.canceled_call);
     } else if (callInfo.state instanceof CallState.Declined) {
       title.setText(R.string.declined_call);
