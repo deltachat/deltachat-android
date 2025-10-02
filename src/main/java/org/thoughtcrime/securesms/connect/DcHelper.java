@@ -244,6 +244,11 @@ public class DcHelper {
     dcContext.setStockTranslation(177, context.getString(R.string.reaction_by_other));
     dcContext.setStockTranslation(190, context.getString(R.string.secure_join_wait));
     dcContext.setStockTranslation(193, context.getString(R.string.donate_device_msg));
+    dcContext.setStockTranslation(194, context.getString(R.string.outgoing_call));
+    dcContext.setStockTranslation(195, context.getString(R.string.incoming_call));
+    dcContext.setStockTranslation(196, context.getString(R.string.declined_call));
+    dcContext.setStockTranslation(197, context.getString(R.string.canceled_call));
+    dcContext.setStockTranslation(198, context.getString(R.string.missed_call));
   }
 
   public static File getImexDir() {
