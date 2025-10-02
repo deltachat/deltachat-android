@@ -13,7 +13,7 @@ public class CallInfo {
   /**
    * Call state.
    * <p>
-   * For example, if the call is accepted, active, cancelled, declined etc.
+   * For example, if the call is accepted, active, canceled, declined etc.
    */
   public CallState state;
 }
