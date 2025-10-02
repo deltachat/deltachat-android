@@ -2,6 +2,8 @@
 package chat.delta.rpc.types;
 
 public class CallInfo {
+  /* True if SDP offer has a video. */
+  public Boolean hasVideo;
   /**
    * SDP offer.
    * <p>
@@ -11,7 +13,7 @@ public class CallInfo {
   /**
    * Call state.
    * <p>
-   * For example, if the call is accepted, active, cancelled, declined etc.
+   * For example, if the call is accepted, active, canceled, declined etc.
    */
   public CallState state;
 }

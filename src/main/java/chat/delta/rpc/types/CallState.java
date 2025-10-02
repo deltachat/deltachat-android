@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
 @JsonTypeInfo(use=Id.NAME, include=As.PROPERTY, property="kind")
-@JsonSubTypes({@Type(value = CallState.Alerting.class, name="Alerting"), @Type(value = CallState.Active.class, name="Active"), @Type(value = CallState.Completed.class, name="Completed"), @Type(value = CallState.Missed.class, name="Missed"), @Type(value = CallState.Declined.class, name="Declined"), @Type(value = CallState.Cancelled.class, name="Cancelled")})
+@JsonSubTypes({@Type(value = CallState.Alerting.class, name="Alerting"), @Type(value = CallState.Active.class, name="Active"), @Type(value = CallState.Completed.class, name="Completed"), @Type(value = CallState.Missed.class, name="Missed"), @Type(value = CallState.Declined.class, name="Declined"), @Type(value = CallState.Canceled.class, name="Canceled")})
 public abstract class CallState {
 
 /**
@@ -38,11 +38,11 @@ public abstract class CallState {
   }
 
 /**
- * Outgoing call that has been cancelled on our side before receiving a response.
+ * Outgoing call that has been canceled on our side before receiving a response.
  * <p>
- * Incoming calls cannot be cancelled, on the receiver side cancelled calls usually result in missed calls.
+ * Incoming calls cannot be canceled, on the receiver side canceled calls usually result in missed calls.
  */
-  public static class Cancelled extends CallState {
+  public static class Canceled extends CallState {
   }
 
 }
