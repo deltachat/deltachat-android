@@ -383,11 +383,11 @@
     <string name="calls">Calls</string>
     <string name="answer_call">Answer</string>
     <string name="end_call">Decline</string>
-    <string name="outgoing_call">Outgoing Call</string>
-    <string name="incoming_call">Incoming Call</string>
-    <string name="declined_call">Declined Call</string>
-    <string name="canceled_call">Canceled Call</string>
-    <string name="missed_call">Missed Call</string>
+    <string name="outgoing_call">Outgoing call</string>
+    <string name="incoming_call">Incoming call</string>
+    <string name="declined_call">Declined call</string>
+    <string name="canceled_call">Canceled call</string>
+    <string name="missed_call">Missed call</string>
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- deprecated -->
