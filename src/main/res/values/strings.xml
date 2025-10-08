@@ -388,6 +388,7 @@
     <string name="declined_call">Declined call</string>
     <string name="canceled_call">Canceled call</string>
     <string name="missed_call">Missed call</string>
+    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- deprecated -->
