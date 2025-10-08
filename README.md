@@ -23,6 +23,28 @@ subproject _deltachat-core-rust_:
   or later by `git submodule update --init --recursive`. If you do this in your
   home directory, this results in the folder `~/deltachat-android` which is just fine.
 
+# Generate JSON-RPC bindings
+
+To generate the JSON-RPC bindings (ex. `chat.delta.rpc.*` package)
+install the [dcrpcgen tool](https://github.com/chatmail/dcrpcgen)
+then generate the `schema.json` file:
+
+```
+# install deltachat-rpc-server program:
+cargo install --path ./jni/deltachat-core-rust/deltachat-rpc-server
+# check the version of core matches:
+deltachat-rpc-server --version
+# generate the schema:
+deltachat-rpc-server --openrpc > schema.json
+```
+
+then pass the schema file to the `dcrpcgen` tool to generate the
+code:
+
+```
+dcrpcgen java --schema schema.json -o ./src/main/java/
+```
+
 # Build Using Nix
 
 The repository contains [Nix](https://nixos.org/) development environment

@@ -6,13 +6,15 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.b44t.messenger.rpc.VcardContact;
+import org.thoughtcrime.securesms.util.JsonUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
+
+import chat.delta.rpc.types.VcardContact;
 
 public class VcardContactPhoto implements ContactPhoto {
   private final VcardContact vContact;
@@ -23,7 +25,7 @@ public class VcardContactPhoto implements ContactPhoto {
 
   @Override
   public InputStream openInputStream(Context context) throws IOException {
-    byte[] blob = vContact.getProfileImage();
+    byte[] blob = JsonUtils.decodeBase64(vContact.profileImage);
     return (blob == null)? null : new ByteArrayInputStream(blob);
   }
 
@@ -39,7 +41,7 @@ public class VcardContactPhoto implements ContactPhoto {
 
   @Override
   public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
-    messageDigest.update(vContact.getAddr().getBytes());
-    messageDigest.update(ByteBuffer.allocate(4).putFloat(vContact.getTimestamp()).array());
+    messageDigest.update(vContact.addr.getBytes());
+    messageDigest.update(ByteBuffer.allocate(4).putFloat(vContact.timestamp).array());
   }
 }

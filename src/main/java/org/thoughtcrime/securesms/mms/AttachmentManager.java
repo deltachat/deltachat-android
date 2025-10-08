@@ -40,7 +40,6 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
-import com.b44t.messenger.rpc.RpcException;
 import com.b44t.messenger.util.concurrent.ListenableFuture;
 import com.b44t.messenger.util.concurrent.ListenableFuture.Listener;
 import com.b44t.messenger.util.concurrent.SettableFuture;
@@ -77,6 +76,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import chat.delta.rpc.RpcException;
 
 
 public class AttachmentManager {
