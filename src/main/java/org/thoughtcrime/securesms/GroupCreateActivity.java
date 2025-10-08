@@ -23,7 +23,6 @@ import androidx.loader.app.LoaderManager;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
-import com.b44t.messenger.rpc.RpcException;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -43,6 +42,8 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
+
+import chat.delta.rpc.RpcException;
 
 public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
                                  implements ItemClickListener

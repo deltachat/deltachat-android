@@ -29,8 +29,6 @@ import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 
-import com.b44t.messenger.rpc.RpcException;
-
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
@@ -50,6 +48,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Objects;
+
+import chat.delta.rpc.RpcException;
 
 
 public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
