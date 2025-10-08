@@ -23,7 +23,7 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_calls_enabled"
-            android:title="@string/calls"/>
+            android:title="Debug Calls"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
