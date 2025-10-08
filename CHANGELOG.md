@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Make it possible to invite members into a channel via a QR code,
+  and make channels more secure
 * target Android 15
 * improve readability of info messages in dark mode
 * drop too short disappearing messages options
