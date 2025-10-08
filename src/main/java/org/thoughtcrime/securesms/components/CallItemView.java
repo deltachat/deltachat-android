@@ -71,22 +71,21 @@ public class CallItemView extends FrameLayout {
       title.setText(isOutgoing? R.string.outgoing_call : R.string.incoming_call);
     }
 
+    int[] attrs;
     if (isOutgoing) {
-      int[] attrs = new int[]{
+      attrs = new int[]{
+        R.attr.conversation_item_outgoing_text_primary_color,
         R.attr.conversation_item_outgoing_text_secondary_color,
       };
-      try (TypedArray ta = getContext().obtainStyledAttributes(attrs)) {
-        footer.setTextColor(ta.getColor(0, Color.BLACK));
-        icon.setColorFilter(ta.getColor(0, Color.BLACK));
-      }
     } else {
-      int[] attrs = new int[]{
+      attrs = new int[]{
+        R.attr.conversation_item_incoming_text_primary_color,
         R.attr.conversation_item_incoming_text_secondary_color,
       };
-      try (TypedArray ta = getContext().obtainStyledAttributes(attrs)) {
-        footer.setTextColor(ta.getColor(0, Color.BLACK));
-      }
-      icon.setColorFilter(getResources().getColor(R.color.delta_accent_darker));
+    }
+    try (TypedArray ta = getContext().obtainStyledAttributes(attrs)) {
+      icon.setColorFilter(ta.getColor(0, Color.BLACK));
+      footer.setTextColor(ta.getColor(1, Color.BLACK));
     }
   }
 
