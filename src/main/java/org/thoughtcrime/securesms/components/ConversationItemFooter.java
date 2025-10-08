@@ -96,7 +96,7 @@ public class ConversationItemFooter extends LinearLayout {
     dateView.forceLayout();
     Context context = getContext();
     String date = dcMsg.getType() == DcMsg.DC_MSG_CALL?
-      DateUtils.getFormattedCallTime(context, dcMsg.getTimestamp())
+      DateUtils.getExtendedTimeSpanString(context, dcMsg.getTimestamp())
       : DateUtils.getExtendedRelativeTimeSpanString(context, dcMsg.getTimestamp());
     if (callDuration > 0) {
       String duration = DateUtils.getFormattedCallDuration(context, callDuration);

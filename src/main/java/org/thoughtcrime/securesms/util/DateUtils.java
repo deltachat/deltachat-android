@@ -128,10 +128,6 @@ public class DateUtils extends android.text.format.DateUtils {
     return c.getResources().getQuantityString(R.plurals.n_minutes_ext, mins, mins);
   }
 
-  public static String getFormattedCallTime(final Context c, final long timestamp) {
-    return getFormattedDateTime(timestamp, DateFormat.is24HourFormat(c)? "HH:mm" : "hh:mm a");
-  }
-
   public static String getFormattedTimespan(Context c, int timestamp) {
     int mins = timestamp / (1000 * 60);
     if (mins / 60 == 0) {
