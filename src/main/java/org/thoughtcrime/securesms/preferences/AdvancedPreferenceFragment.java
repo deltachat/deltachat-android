@@ -211,7 +211,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
         if ((Boolean)newValue) {
           new AlertDialog.Builder(requireActivity())
             .setTitle("Thanks for helping to debug \"Calls\"!")
-            .setMessage("• You can now debug calls using the "phone" icon in one-to-one-chats\n\n"
+            .setMessage("• You can now debug calls using the \"phone\" icon in one-to-one-chats\n\n"
               + "• The experiment is about making decentralised calls work and reliable at all, not about options or UI. We're happy about focused feedback at support.delta.chat\n\n")
             .setCancelable(false)
             .setPositiveButton(R.string.ok, null)
