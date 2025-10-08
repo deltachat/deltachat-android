@@ -379,9 +379,13 @@
     </plurals>
     <string name="file_saved_to">File saved to \"%1$s\".</string>
 
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Call</string>
+    <!-- plural of the noun "Call" -->
     <string name="calls">Calls</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Answer</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Decline</string>
     <string name="outgoing_call">Outgoing call</string>
     <string name="incoming_call">Incoming call</string>
