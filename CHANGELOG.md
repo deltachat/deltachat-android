@@ -15,6 +15,7 @@
 * properly display "Messages are end-to-end encrypted." in all encrypted groups
 * show dialog if user has permanently denied camera permission and tries to take picture for group avatar
 * several small fixes and improvements
+* add experimental built-in calls
 * update to core 2.17.0
 
 ## v2.11.0
