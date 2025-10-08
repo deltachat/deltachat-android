@@ -25,8 +25,7 @@ import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventEmitter;
-import com.b44t.messenger.rpc.Rpc;
-import com.b44t.messenger.rpc.RpcException;
+import com.b44t.messenger.FFITransport;
 
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -50,6 +49,9 @@ import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 
 public class ApplicationContext extends MultiDexApplication {
   private static final String TAG = ApplicationContext.class.getSimpleName();
@@ -87,8 +89,7 @@ public class ApplicationContext extends MultiDexApplication {
     System.loadLibrary("native-utils");
 
     dcAccounts = new DcAccounts(new File(getFilesDir(), "accounts").getAbsolutePath());
-    rpc = new Rpc(dcAccounts.getJsonrpcInstance());
-    rpc.start();
+    rpc = new Rpc(new FFITransport(dcAccounts.getJsonrpcInstance()));
     AccountManager.getInstance().migrateToDcAccounts(this);
     int[] allAccounts = dcAccounts.getAll();
     for (int accountId : allAccounts) {

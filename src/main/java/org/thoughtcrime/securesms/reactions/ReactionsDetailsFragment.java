@@ -16,9 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.rpc.Reactions;
-import com.b44t.messenger.rpc.Rpc;
-import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ProfileActivity;
 import org.thoughtcrime.securesms.R;
@@ -29,7 +26,13 @@ import org.thoughtcrime.securesms.util.Pair;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.Reactions;
 
 public class ReactionsDetailsFragment extends DialogFragment implements DcEventCenter.DcEventDelegate {
   private static final String TAG = ReactionsDetailsFragment.class.getSimpleName();
@@ -87,14 +90,14 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
 
     int accId = DcHelper.getContext(requireActivity()).getAccountId();
     try {
-      final Reactions reactions = DcHelper.getRpc(requireActivity()).getMsgReactions(accId, msgId);
+      final Reactions reactions = DcHelper.getRpc(requireActivity()).getMessageReactions(accId, msgId);
       ArrayList<Pair<Integer, String>> contactsReactions = new ArrayList<>();
       if (reactions != null) {
-        Map<Integer, String[]> reactionsByContact = reactions.getReactionsByContact();
-        String[] selfReactions = reactionsByContact.remove(DcContact.DC_CONTACT_ID_SELF);
-        for (Integer contact: reactionsByContact.keySet()) {
+        Map<String, List<String>> reactionsByContact = reactions.reactionsByContact;
+        List<String> selfReactions = reactionsByContact.remove(String.valueOf(DcContact.DC_CONTACT_ID_SELF));
+        for (String contact: reactionsByContact.keySet()) {
           for (String reaction: reactionsByContact.get(contact)) {
-            contactsReactions.add(new Pair<>(contact, reaction));
+            contactsReactions.add(new Pair<>(Integer.parseInt(contact), reaction));
           }
         }
         if (selfReactions != null) {
@@ -118,12 +121,12 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
   private String getSelfReaction(Rpc rpc, int accId) {
     String result = null;
     try {
-      final Reactions reactions = rpc.getMsgReactions(accId, msgId);
+      final Reactions reactions = rpc.getMessageReactions(accId, msgId);
       if (reactions != null) {
-        final Map<Integer, String[]> reactionsByContact = reactions.getReactionsByContact();
-        final String [] selfReactions = reactionsByContact.get(DcContact.DC_CONTACT_ID_SELF);
-        if (selfReactions != null && selfReactions.length > 0) {
-          result = selfReactions[0];
+        final Map<String, List<String>> reactionsByContact = reactions.reactionsByContact;
+        final List<String> selfReactions = reactionsByContact.get(String.valueOf(DcContact.DC_CONTACT_ID_SELF));
+        if (selfReactions != null && !selfReactions.isEmpty()) {
+          result = selfReactions.get(0);
         }
       }
     } catch(RpcException e) {
@@ -139,9 +142,9 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
 
     try {
       if (reaction == null || reaction.equals(getSelfReaction(rpc, accId))) {
-        rpc.sendReaction(accId, msgId, "");
+        rpc.sendReaction(accId, msgId, Collections.singletonList(""));
       } else {
-        rpc.sendReaction(accId, msgId, reaction);
+        rpc.sendReaction(accId, msgId, Collections.singletonList(reaction));
       }
     } catch(Exception e) {
       e.printStackTrace();

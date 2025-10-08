@@ -17,19 +17,21 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 
 import com.b44t.messenger.DcContext;
-import com.b44t.messenger.rpc.HttpResponse;
-import com.b44t.messenger.rpc.Rpc;
-import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.util.IntentUtils;
+import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.HttpResponse;
 
 public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
   private static final String TAG = WebxdcStoreActivity.class.getSimpleName();
@@ -59,7 +61,8 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
           Util.runOnAnyBackgroundThread(() -> {
             try {
               HttpResponse httpResponse = rpc.getHttpResponse(dcContext.getAccountId(), url);
-              Uri uri = PersistentBlobProvider.getInstance().create(WebxdcStoreActivity.this, httpResponse.getBlob(), "application/octet-stream", "app.xdc");
+              byte[] blob = JsonUtils.decodeBase64(httpResponse.blob);
+              Uri uri = PersistentBlobProvider.getInstance().create(WebxdcStoreActivity.this, blob, "application/octet-stream", "app.xdc");
               Intent intent = new Intent();
               intent.setData(uri);
               setResult(Activity.RESULT_OK, intent);
@@ -108,13 +111,14 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
         throw new Exception("no url specified");
       }
       HttpResponse httpResponse = rpc.getHttpResponse(dcContext.getAccountId(), url);
-      String mimeType = httpResponse.getMimetype();
+      String mimeType = httpResponse.mimetype;
       if (mimeType == null) {
         mimeType = "application/octet-stream";
       }
 
-      ByteArrayInputStream data = new ByteArrayInputStream(httpResponse.getBlob());
-      res = new WebResourceResponse(mimeType, httpResponse.getEncoding(), data);
+      byte[] blob = JsonUtils.decodeBase64(httpResponse.blob);
+      ByteArrayInputStream data = new ByteArrayInputStream(blob);
+      res = new WebResourceResponse(mimeType, httpResponse.encoding, data);
     } catch (Exception e) {
       e.printStackTrace();
       ByteArrayInputStream data = new ByteArrayInputStream(("Could not load apps. Are you online?\n\n" + e.getMessage()).getBytes());

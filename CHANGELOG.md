@@ -15,8 +15,9 @@
 * warn if the app has not been updated after 6 months instead of 1 year
 * avoid "unknown sender for this chat" error
 * properly display "Messages are end-to-end encrypted." in all encrypted groups
+* show dialog if user has permanently denied camera permission and tries to take picture for group avatar
 * several small fixes and improvements
-* update to core 2.13.0
+* update to core 2.17.0
 
 ## v2.11.0
 2025-08
