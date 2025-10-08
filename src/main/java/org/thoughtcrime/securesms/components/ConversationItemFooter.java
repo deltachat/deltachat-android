@@ -26,6 +26,7 @@ public class ConversationItemFooter extends LinearLayout {
   private ImageView           locationIndicatorView;
   private DeliveryStatusView  deliveryStatusView;
   private Integer             textColor = null;
+  private int                 callDuration = 0;
 
   public ConversationItemFooter(Context context) {
     super(context);
@@ -54,10 +55,14 @@ public class ConversationItemFooter extends LinearLayout {
 
     if (attrs != null) {
       try (TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemFooter, 0, 0)) {
-        textColor = typedArray.getInt(R.styleable.ConversationItemFooter_footer_text_color, getResources().getColor(R.color.core_white));
-        setTextColor(textColor);
+        setTextColor(typedArray.getInt(R.styleable.ConversationItemFooter_footer_text_color, getResources().getColor(R.color.core_white)));
       }
     }
+  }
+
+  /* Call duration in seconds. Only >0 if this is a call message */
+  public void setCallDuration(int duration) {
+    callDuration = duration;
   }
 
   public void setMessageRecord(@NonNull DcMsg messageRecord) {
@@ -77,7 +82,8 @@ public class ConversationItemFooter extends LinearLayout {
     presentDeliveryStatus(messageRecord);
   }
 
-  private void setTextColor(int color) {
+  public void setTextColor(int color) {
+    textColor = color;
     dateView.setTextColor(color);
     editedView.setTextColor(color);
     bookmarkIndicatorView.setColorFilter(color);
@@ -86,18 +92,29 @@ public class ConversationItemFooter extends LinearLayout {
     deliveryStatusView.setTint(color);
   }
 
-  private void presentDate(@NonNull DcMsg messageRecord) {
+  private void presentDate(@NonNull DcMsg dcMsg) {
     dateView.forceLayout();
-    dateView.setText(DateUtils.getExtendedRelativeTimeSpanString(getContext(), messageRecord.getTimestamp()));
+    Context context = getContext();
+    String date = dcMsg.getType() == DcMsg.DC_MSG_CALL?
+      DateUtils.getExtendedTimeSpanString(context, dcMsg.getTimestamp())
+      : DateUtils.getExtendedRelativeTimeSpanString(context, dcMsg.getTimestamp());
+    if (callDuration > 0) {
+      String duration = DateUtils.getFormattedCallDuration(context, callDuration);
+      dateView.setText(context.getString(R.string.call_date_and_duration, date, duration));
+    } else {
+      dateView.setText(date);
+    }
   }
 
   private void presentDeliveryStatus(@NonNull DcMsg messageRecord) {
     // isDownloading is temporary and should be checked first.
     boolean isDownloading = messageRecord.getDownloadState() == DcMsg.DC_DOWNLOAD_IN_PROGRESS;
+    boolean isCall = messageRecord.getType() == DcMsg.DC_MSG_CALL;
 
          if (isDownloading)                deliveryStatusView.setDownloading();
+    else if (messageRecord.isPending())    deliveryStatusView.setPending();
     else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
-    else if (!messageRecord.isOutgoing())  deliveryStatusView.setNone();
+    else if (!messageRecord.isOutgoing() || isCall)  deliveryStatusView.setNone();
     else if (messageRecord.isRemoteRead()) deliveryStatusView.setRead();
     else if (messageRecord.isDelivered())  deliveryStatusView.setSent();
     else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();

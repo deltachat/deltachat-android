@@ -31,6 +31,10 @@ public class DcContext {
     public final static int DC_EVENT_WEBXDC_INSTANCE_DELETED     = 2121;
     public final static int DC_EVENT_WEBXDC_REALTIME_DATA        = 2150;
     public final static int DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE = 2200;
+    public final static int DC_EVENT_INCOMING_CALL               = 2550;
+    public final static int DC_EVENT_INCOMING_CALL_ACCEPTED      = 2560;
+    public final static int DC_EVENT_OUTGOING_CALL_ACCEPTED      = 2570;
+    public final static int DC_EVENT_CALL_ENDED                  = 2580;
 
     public final static int DC_IMEX_EXPORT_SELF_KEYS = 1;
     public final static int DC_IMEX_IMPORT_SELF_KEYS = 2;
@@ -199,7 +203,6 @@ public class DcContext {
     public native boolean      resendMsgs           (int msg_ids[]);
     public native int          sendMsg              (int chat_id, DcMsg msg);
     public native int          sendTextMsg          (int chat_id, String text);
-    public native int          sendVideochatInvitation(int chat_id);
     public native boolean      sendWebxdcStatusUpdate(int msg_id, String payload);
     public native String       getWebxdcStatusUpdates(int msg_id, int last_known_serial);
     public native void         setWebxdcIntegration (String file);

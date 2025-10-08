@@ -25,6 +25,11 @@
         android:visible="false"
         app:showAsAction="always"/>
 
+    <item android:id="@+id/menu_start_call"
+        android:title="@string/start_call"
+        android:icon="@drawable/baseline_call_24"
+        app:showAsAction="always" />
+
     <item android:id="@+id/menu_all_media"
         android:title="@string/apps_and_media"
         android:icon="@drawable/ic_apps_24"

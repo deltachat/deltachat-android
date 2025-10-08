@@ -70,7 +70,6 @@ public class DcHelper {
     public static final String CONFIG_BCC_SELF = "bcc_self";
     public static final String CONFIG_SHOW_EMAILS = "show_emails";
     public static final String CONFIG_MEDIA_QUALITY = "media_quality";
-    public static final String CONFIG_WEBRTC_INSTANCE = "webrtc_instance";
     public static final String CONFIG_PROXY_ENABLED = "proxy_enabled";
     public static final String CONFIG_PROXY_URL = "proxy_url";
     public static final String CONFIG_VERIFIED_ONE_ON_ONE_CHATS = "verified_one_on_one_chats";
@@ -245,6 +244,11 @@ public class DcHelper {
     dcContext.setStockTranslation(177, context.getString(R.string.reaction_by_other));
     dcContext.setStockTranslation(190, context.getString(R.string.secure_join_wait));
     dcContext.setStockTranslation(193, context.getString(R.string.donate_device_msg));
+    dcContext.setStockTranslation(194, context.getString(R.string.outgoing_call));
+    dcContext.setStockTranslation(195, context.getString(R.string.incoming_call));
+    dcContext.setStockTranslation(196, context.getString(R.string.declined_call));
+    dcContext.setStockTranslation(197, context.getString(R.string.canceled_call));
+    dcContext.setStockTranslation(198, context.getString(R.string.missed_call));
   }
 
   public static File getImexDir() {
@@ -396,11 +400,6 @@ public class DcHelper {
     }
     return getBlobdirFile(dcContext, filename, ext);
 
-  }
-
-  public static boolean isWebrtcConfigOk(DcContext dcContext) {
-    String instance = dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE);
-    return (instance != null && !instance.isEmpty());
   }
 
   @NonNull
