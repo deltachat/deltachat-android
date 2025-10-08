@@ -12,10 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
 
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class Prefs {
 
   private static final String TAG = Prefs.class.getSimpleName();
 
+  public  static final String RELIABLE_SERVICE_PREF         = "pref_reliable_service";
   public  static final String DISABLE_PASSPHRASE_PREF          = "pref_disable_passphrase";
   public  static final String THEME_PREF                       = "pref_theme";
   public  static final String BACKGROUND_PREF                  = "pref_chat_background";
@@ -176,6 +179,11 @@ public class Prefs {
     return getBooleanPreference(context, "pref_new_broadcast_list", false);
   }
 
+
+  public static boolean isCallsEnabled(Context context) {
+    return getBooleanPreference(context, "pref_calls_enabled", false);
+  }
+
   // ringtone
 
   public static @NonNull Uri getNotificationRingtone(Context context) {
@@ -212,13 +220,20 @@ public class Prefs {
     return result==null? null : Uri.parse(result);
   }
 
+  public static void setReliableService(Context context, boolean value) {
+    setBooleanPreference(context, RELIABLE_SERVICE_PREF, value);
+  }
+
   public static boolean reliableService(Context context) {
-    try {
-      return getBooleanPreference(context, "pref_reliable_service", false);
+    final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+    if (prefs.contains(RELIABLE_SERVICE_PREF)) {
+      try {
+        return prefs.getBoolean(RELIABLE_SERVICE_PREF, true);
+      } catch(Exception e) {}
     }
-    catch(Exception e) {
-      return false;
-    }
+
+    // if the key was unset, then calculate default value
+    return !isPushEnabled(context) || !DcHelper.getAccounts(context).isAllChatmail();
   }
 
   // vibrate

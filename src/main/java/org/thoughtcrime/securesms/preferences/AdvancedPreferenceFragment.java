@@ -31,8 +31,6 @@ import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 
-import com.b44t.messenger.rpc.RpcException;
-
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
@@ -53,6 +51,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Objects;
+
+import chat.delta.rpc.RpcException;
 
 
 public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
@@ -163,12 +163,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       submitDebugLog.setOnPreferenceClickListener(new ViewLogListener());
     }
 
-    Preference webrtcInstance = this.findPreference("pref_webrtc_instance");
-    if (webrtcInstance != null) {
-      webrtcInstance.setOnPreferenceClickListener(new WebrtcInstanceListener());
-    }
-    updateWebrtcSummary();
-
     Preference webxdcStore = this.findPreference(Prefs.WEBXDC_STORE_URL_PREF);
     if (webxdcStore != null) {
       webxdcStore.setOnPreferenceClickListener(new WebxdcStoreUrlListener());
@@ -215,12 +209,27 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       });
     }
 
+    Preference callsEnabled = this.findPreference("pref_calls_enabled");
+    if (callsEnabled != null) {
+      callsEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
+        if ((Boolean)newValue) {
+          new AlertDialog.Builder(requireActivity())
+            .setTitle("Thanks for helping to debug \"Calls\"!")
+            .setMessage("• You can now debug calls using the \"phone\" icon in one-to-one-chats\n\n"
+              + "• The experiment is about making decentralised calls work and reliable at all, not about options or UI. We're happy about focused feedback at support.delta.chat\n\n")
+            .setCancelable(false)
+            .setPositiveButton(R.string.ok, null)
+            .show();
+        }
+        return true;
+      });
+    }
+
     selfReportingCheckbox = this.findPreference("pref_stats_sending");
     if (selfReportingCheckbox != null) {
       selfReportingCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
         boolean enabled = (Boolean) newValue;
         dcContext.setConfigInt(CONFIG_STATS_SENDING, enabled? 1 : 0);
-
         if (enabled) {
           new AlertDialog.Builder(getActivity())
                   .setMessage(R.string.send_stats_thanks)
@@ -335,29 +344,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     }
   }
 
-  private class WebrtcInstanceListener implements Preference.OnPreferenceClickListener {
-    @Override
-    public boolean onPreferenceClick(@NonNull Preference preference) {
-      View gl = View.inflate(requireActivity(), R.layout.single_line_input, null);
-      EditText inputField = gl.findViewById(R.id.input_field);
-      inputField.setHint(R.string.videochat_instance_placeholder);
-      inputField.setText(dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE));
-      inputField.setSelection(inputField.getText().length());
-      inputField.setInputType(TYPE_TEXT_VARIATION_URI);
-      new AlertDialog.Builder(requireActivity())
-              .setTitle(R.string.videochat_instance)
-              .setMessage(getString(R.string.videochat_instance_explain_2)+"\n\n"+getString(R.string.videochat_instance_example))
-              .setView(gl)
-              .setNegativeButton(android.R.string.cancel, null)
-              .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                dcContext.setConfig(DcHelper.CONFIG_WEBRTC_INSTANCE, inputField.getText().toString());
-                updateWebrtcSummary();
-              })
-              .show();
-      return true;
-    }
-  }
-
   private class WebxdcStoreUrlListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(@NonNull Preference preference) {
@@ -378,14 +364,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
               })
               .show();
       return true;
-    }
-  }
-
-  private void updateWebrtcSummary() {
-    Preference webrtcInstance = this.findPreference("pref_webrtc_instance");
-    if (webrtcInstance != null) {
-      webrtcInstance.setSummary(DcHelper.isWebrtcConfigOk(dcContext)?
-              dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE) : getString(R.string.none));
     }
   }
 

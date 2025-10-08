@@ -199,19 +199,7 @@
     <string name="menu_new_chat">Нов чат</string>
     <string name="menu_new_group">Нова група</string>
     <string name="clone_chat">Клониране на чат</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Списък за разпространение</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Списъци за разпространение</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Нов списък за разпространение</string>
     <string name="add_recipients">Добавяне на получатели</string>
-    <!-- deprecated -->
-    <string name="edit_broadcast_list">Редактиране на списък за разпространение</string>
-    <!-- deprecated -->
-    <string name="broadcast_list_name">Име на списък за разпространение</string>
-    <!-- deprecated -->
-    <string name="please_enter_broadcast_list_name">Моля, въведете име за списъка за разпространение</string>
     <string name="menu_send">Изпращане</string>
     <string name="menu_toggle_keyboard">Включване/изключване на Emoji клавиатура</string>
     <string name="menu_edit_group">Редактиране на група</string>
@@ -343,8 +331,6 @@
     <string name="ask_start_chat_with">Чат с %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Премахване на %1$s от групата?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Да бъдат ли премахнати %1$s от списъка за разпространение?</string>
     <string name="open_url_confirmation">Искате ли да отворите тази връзка?</string>
 
 
@@ -374,8 +360,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Изпращане на съобщение до %1$s.</string>
-    <!-- deprecated -->
-    <string name="chat_new_broadcast_hint">Получателите в един списък за разпространение получават съобщения в чат \"само за четене\" с Вас.</string>
     <string name="chat_new_group_hint">Другите ще виждат тази група едва след като изпратите първо съобщение.</string>
     <string name="chat_record_slide_to_cancel">Приплъзнете, за да откажете</string>
     <string name="chat_record_explain">Докоснете и задръжте, за да запишете гласово съобщение, отпуснете, за да го изпратите</string>
@@ -473,11 +457,6 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Мрежа от квадрати</string>
     <string name="send_message">Изпращане на съобщение</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s промени своя адрес от %2$s на %3$s</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">Променихте своя email адрес от %1$s на %2$s.\n\nАко от тук нататък изпратите съобщение до проверена група, контактите в нея автоматично ще заменят стария с новия Ви адрес.\n\nСилно се препоръчва да извършите настройка в предишния си доставчик на електронна поща така, че всички email съобщения да се препращат към новия Ви email адрес. В противен случай е възможно да не получавате съобщения от контакти, които все още не са получили новия Ви адрес.</string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -844,14 +823,8 @@
     <string name="ephemeral_timer_weeks_by_you">Установихте таймера на изчезващите съобщения на %1$s седмици.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Таймерът на изчезващите съобщения е установен на %1$s седмици от %2$s.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken">%1$s изпрати съобщение от друго устройство.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">От тук нататък е гарантирано, че съобщенията ще бъдат криптирани от край до край. Докоснете, за да научите повече.</string>
     <string name="chat_protection_enabled_explanation">От тук нататък е гарантирано, че всички съобщения в този чат са криптирани от край до край.\n\nКриптирането от край до край запазва поверителността на съобщенията между вас и вашите партньори в чата. Дори Вашият e-mail доставчик не може да ги прочете.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_tap_to_learn_more">%1$s изпрати съобщение от друго съобщение. Докоснете, за да научите повече.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_explanation">Криптирането от край до край повече не може да бъде гарантирано, вероятно защото %1$s преинсталира Delta Chat или изпрати съобщение от друго устройство.\n\nБихте могли да се срещнете с него/нея лично, да сканирате неговия/нейния QR код отново и отново да установите гарантирано криптиране от край до край.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️%1$s изисква криптиране от край до край, което все още не е установено за този чат. Докоснете, за да научите повече.</string>
     <string name="invalid_unencrypted_explanation">За да установите криптиране от край до край, бихте могли да се срещате с лицата, с които желаете да контактувате, лично и да сканирате техните QR кодове, за да ги въведете.</string>
     <string name="learn_more">Научете повече</string>
@@ -910,16 +883,10 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s отговори, изчаква се да бъдете добавени към групата…</string>
     <string name="secure_join_wait">Установява се гарантирано криптиране от край до край, моля изчакайте…</string>
-    <!-- deprecated -->
-    <string name="secure_join_wait_timeout">Все още не може да бъде установено гарантирано криптиране от край до край, но вече можете да пратите съобщение.</string>
     <string name="contact_verified">%1$s е проверен.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Не може да бъде проверен %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Проверен от%1$s</string>
     <string name="verified_by_you">Представен от мен</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Настройката за %1$s е сменена.</string>
     <string name="verified_contact_required_explain">За да се гарантира криптирането от край до край, можете да добавяте в тази група само контакти, отбелязани със зелена отметка.\n\nБихте могли да се срещнете с лицата, с които желаете да контактувате, лично и да сканирате техните QR кодове, за да ги въведете.</string>
     <string name="mailto_dialog_header_select_chat">Изберете чат, към който да бъде пратено съобщението</string>
     <!-- first placeholder is the name of the chat -->
@@ -961,9 +928,6 @@
     <string name="ImageEditorHud_crop">Изрязване</string>
     <string name="ImageEditorHud_flip">Обръщане</string>
     <string name="ImageEditorHud_rotate">Завъртане</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Криптирано съобщение</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Това е официалното настолно приложение Delta Chat.</string>

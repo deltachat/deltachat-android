@@ -240,12 +240,6 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Sohbet et…</string>
     <string name="clone_chat">Sohbeti Çoğalt</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Yayın Listesi</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Yayın Listeleri</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Yeni Yayın Listesi</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel">Kanal</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -253,12 +247,6 @@
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Yeni Kanal</string>
     <string name="add_recipients">Alıcılar Ekle</string>
-    <!-- deprecated -->
-    <string name="edit_broadcast_list">Yayın Listesini Düzenle</string>
-    <!-- deprecated -->
-    <string name="broadcast_list_name">Yayın Listesi Adı</string>
-    <!-- deprecated -->
-    <string name="please_enter_broadcast_list_name">Lütfen yayın listesi için bir ad girin.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Kanal Adı</string>
     <string name="email">E-Posta</string>
@@ -424,8 +412,6 @@
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$s öbekten kaldırılsın mı?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">%1$s yayın listesinden kaldırılsın mı?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_channel">%1$s kanaldan kaldırılsın mı?</string>
     <string name="open_url_confirmation">Bu bağlantıyı açmak istiyor musunuz?</string>
@@ -457,8 +443,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">%1$s kişisine bir ileti gönderin.</string>
-    <!-- deprecated -->
-    <string name="chat_new_broadcast_hint">Bir yayın listesinde, alıcılar sizinle salt okunur bir sohbette iletiler alacak.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="chat_new_channel_hint">Kanallar, iletilerinizi yayınlamak için birden çoğa bir araçtır.</string>
     <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu öbeği görecek.</string>
@@ -569,11 +553,6 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Kare Izgara</string>
     <string name="send_message">İleti Gönder</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s, %2$s adresini %3$s olarak değiştirdi</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">%1$s e-posta adresinizi %2$s olarak değiştirdiniz.\n\nŞimdi bir doğrulanan öbeğe ileti gönderirseniz, oradaki kişiler yeni adresinizle eskisini otomatik olarak değiştirecek.\n\nTüm e-postaları yeni e-posta adresinize iletmek için eski e-posta sağlayıcınızı ayarlamanız önemle önerilir. Yoksa henüz yeni adresinizi almamış olan kişilerin iletilerini kaçırabilirsiniz.</string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -956,6 +935,9 @@
     <string name="ephemeral_timer_1_week_by_you">Kaybolan iletiler zamanlayıcısını 1 hafta olarak ayarladınız.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 hafta olarak ayarlandı.</string>
+    <string name="ephemeral_timer_1_year_by_you">Kaybolan iletiler zamanlayıcısını 1 yıl olarak ayarladınız.</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_1_year_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 yıl olarak ayarlandı.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Kaybolan iletiler zamanlayıcısını %1$s dakika olarak ayarladınız.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
@@ -972,14 +954,8 @@
     <string name="ephemeral_timer_weeks_by_you">Kaybolan iletiler zamanlayıcısını %1$s hafta olarak ayarladınız.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s hafta olarak ayarlandı.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken">%1$s başka bir aygıttan bir ileti gönderdi.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">İletiler uçtan uca şifreleniyor. Daha fazlasını öğrenmek için dokunun.</string>
     <string name="chat_protection_enabled_explanation">Bu sohbetteki tüm iletiler uçtan uca şifreleniyor.\n\nUçtan uca şifreleme, iletilerinizi sizin ve sohbet ortaklarınızın arasında özel tutar. Sunucular, sağlayıcılar ya da aktarıcılar bile onları okuyamaz.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_tap_to_learn_more">%1$s başka bir aygıttan bir ileti gönderdi. Daha fazlasını öğrenmek için dokunun.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_explanation">Uçtan uca şifreleme artık güvencelenemiyor; çünkü büyük olasılıkla %1$s Delta Chat\'i yeniden yükledi ya da başka bir aygıttan ileti gönderdi.\n\nOnlarla kişisel olarak tanışabilir ve güvenceli uçtan uca şifrelemeyi yeniden kurmak için onların QR kodunu yeniden tarayabilirsiniz.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s, bu sohbet için henüz ayarlanmayan uçtan uca şifrelemeyi gerektirir. Daha fazlasını öğrenmek için dokunun.</string>
     <string name="invalid_unencrypted_explanation">Uçtan uca şifrelemeyi kurmak için kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
     <string name="learn_more">Daha Fazlasını Öğrenin</string>
@@ -1038,19 +1014,11 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s yanıtladı; öbeğe eklenmesi bekleniyor…</string>
     <string name="secure_join_wait">Uçtan uca şifreleme kuruluyor, lütfen bekleyin…</string>
-    <!-- deprecated -->
-    <string name="secure_join_wait_timeout">Henüz güvencelenen uçtan uca şifreleme kurulamadı; ama zaten bir ileti gönderebilirsiniz.</string>
-    <!-- deprecated, was stock string -->
-    <string name="secure_join_takes_longer">Sürdürmek için kişi çevrimiçi olmalıdır.\n\nBu işlem, arka planda otomatik olarak sürecek.</string>
     <string name="contact_verified">%1$s tanıtıldı.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">%1$s ile uçtan uca şifreleme kurulamıyor.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">%1$s tarafından tanıtıldı</string>
     <string name="verified_by_you">Benim tarafımdan tanıtıldı</string>
     <string name="verified_by_unknown">Tanıtıldı</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">%1$s için ayarlama değiştirildi.</string>
     <string name="verified_contact_required_explain">Uçtan uca şifrelemeyi güvencelemek için bu öbeğe yalnızca yeşil bir onay imi olan kişileri ekleyebilirsiniz.\n\nDoğrulanmayan kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
     <string name="mailto_dialog_header_select_chat">İletiyi göndermek için sohbet seçin</string>
     <!-- first placeholder is the name of the chat -->
@@ -1092,9 +1060,6 @@
     <string name="ImageEditorHud_crop">Kırp</string>
     <string name="ImageEditorHud_flip">Çevir</string>
     <string name="ImageEditorHud_rotate">Döndür</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Şifrelenen ileti</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Bu, resmî Delta Chat Masaüstü uygulamasıdır.</string>
@@ -1210,7 +1175,6 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat, görselleri fotoğraf kitaplığınıza kaydetmek istiyor.</string>
     <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat; yerel profilinizi korumak, yedek oluşturmak ve ikinci aygıt ayarlaması için Face ID\'yi kullanabilir.</string>
 
-
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Anında Teslimat</string>
     <string name="pref_background_notifications">Arka Plan Bağlantısı Kullan</string>
@@ -1225,8 +1189,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Ne yeni?\n\n💯 Uçtan uca şifreleme artık güvenilir ve sonsuza kadar geçerli. Asma kilitlerle 🔒 anlaşılabilir!\n\n✉️ Uçtan uca şifrelemeli olmayan klasik e-posta bir mektup sembolü olarak işaretlenir\n\n😻 Tüm kişileriniz için yeni geliştirilen profil ekranı\n\n🔲 Bir sohbette kullanılan uygulamalara hızlı erişim için yeni düğme\n\n❤️ Bağımsız kalmamız ve yeni geliştirmeler getirmemiz için lütfen bize yardım edin: %1$s</string>
-    <!-- deprecated -->
-    <string name="update_1_50_android">Ne yeni?\n\n❤️‍🔥 Daha fazla emojiyle yeni emoji seçicisi\n\n🎮 Geliştirilen sohbet içi uygulamalar: Bildirimler alın ve destekleyen uygulamaları bağlamda açın, yani eklenen bir takvim girdisini doğrudan açın\n\n👍 İletilerinize verilen tepkiler hakkında bildirimler alın\n\n... 🛠️ DÜZELTMELER ve HATTA DAHA FAZLASI için %1$s</string>
-    <!-- deprecated -->
-    <string name="update_switch_profile_placement">ℹ️ “Profili Değiştir” seçeneği taşındı: Yeni profil eklemek ya da profilleri değiştirmek için ana ekranın üst köşesindeki profil görselinize dokunun 💡</string>
 </resources>

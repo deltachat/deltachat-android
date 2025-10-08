@@ -197,12 +197,6 @@
     <string name="menu_new_contact">Нови контакт</string>
     <string name="menu_new_chat">Ново ћаскање</string>
     <string name="menu_new_group">Нова група</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Листа за емитовање</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Листе за емитовање</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Нова листа за емитовање</string>
     <string name="add_recipients">Додај примаоце</string>
     <string name="menu_send">Пошаљи</string>
     <string name="menu_toggle_keyboard">Емоџи тастатура</string>
@@ -332,8 +326,6 @@
     <string name="ask_start_chat_with">Да ли желите да ћаскате са %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Да ли желите да уклонитите %1$s из групе?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Да ли желите да уклоните %1$s са листе за емитовање?</string>
     <string name="open_url_confirmation">Да ли желите да отворите ову везу?</string>
 
 
@@ -451,11 +443,6 @@
     <string name="all_apps_empty_hint">Приватне апликације примљене или послате у било ком ћаскању ће се појавити овде.</string>
     <string name="media_preview">Преглед медијума</string>
     <string name="send_message">Пошаљи поруку</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$sје променио њихову адресу %2$sу %3$s</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">Ви сте променили вашу имејл адресу %1$sу %2$s.\n\nАко сада пошаљете поруку провереној групи, тамошњи контакти ће аутоматски заменити стару адресу новом.\n\nПрепоручљиво је да подесите свог предходног имејл провајдера да прослеђује све имејл поруке на вашу нову имејл адресу. У супротном бисте могли да пропустите поруке од контаката који још нису добили вашу нову адресу.</string>
-
 
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
@@ -797,12 +784,8 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s је одговорио и чека да буде додат у групу...</string>
     <string name="contact_verified">%1$s потврђен.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Немогуће је проверити %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Проверено од %1$s</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Подешавања су се променила за %1$s.</string>
     <string name="mailto_dialog_header_select_chat">Изабери ћаскање у које желите да пошаљете поруку</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s већ има нацрт поруке, да ли желите да је замените?</string>
@@ -834,9 +817,6 @@
     <string name="ImageEditorHud_crop">Одрежи</string>
     <string name="ImageEditorHud_flip">Окрени</string>
     <string name="ImageEditorHud_rotate">Обрни</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Шифрована порука</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Ово је званична Delta Chat апликација за рачунар.</string>

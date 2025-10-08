@@ -18,8 +18,6 @@ import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
-import com.b44t.messenger.rpc.RpcException;
-import com.b44t.messenger.rpc.VcardContact;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.json.JSONObject;
@@ -37,6 +35,9 @@ import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.List;
+
+import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.VcardContact;
 
 public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 

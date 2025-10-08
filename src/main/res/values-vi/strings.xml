@@ -189,19 +189,7 @@
     <string name="menu_new_chat">Trò chuyện mới</string>
     <string name="menu_new_group">Nhóm mới</string>
     <string name="clone_chat">Sao chép cuộc trò chuyện</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Danh sách phát sóng</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Danh sách phát sóng</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Danh sách phát sóng mới</string>
     <string name="add_recipients">Thêm người nhận</string>
-    <!-- deprecated -->
-    <string name="edit_broadcast_list">Chỉnh sửa danh sách phát sóng</string>
-    <!-- deprecated -->
-    <string name="broadcast_list_name">Tên danh sách phát sóng</string>
-    <!-- deprecated -->
-    <string name="please_enter_broadcast_list_name">Vui lòng nhập tên cho danh sách phát sóng.</string>
     <string name="menu_send">Gửi</string>
     <string name="menu_toggle_keyboard">Chuyển đổi Bàn phím Emoji</string>
     <string name="menu_edit_group">Chỉnh sửa nhóm</string>
@@ -330,8 +318,6 @@
     <string name="ask_start_chat_with">Trò chuyện với %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Loại %1$s khỏi nhóm?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Loại %1$s khỏi danh sách phát sóng?</string>
     <string name="open_url_confirmation">Bạn có muốn mở liên kết này không?</string>
 
 
@@ -358,8 +344,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Gửi tin nhắn tới %1$s.</string>
-    <!-- deprecated -->
-    <string name="chat_new_broadcast_hint">Trong danh sách phát sóng, người nhận sẽ nhận được tin nhắn trong cuộc trò chuyện chỉ đọc với bạn.</string>
     <string name="chat_new_group_hint">Những người khác sẽ chỉ nhìn thấy nhóm này sau khi bạn gửi tin nhắn đầu tiên.</string>
     <string name="chat_record_slide_to_cancel">Trượt để hủy</string>
     <string name="chat_record_explain">Nhấn và giữ để ghi tin nhắn thoại, thả ra để gửi</string>
@@ -457,11 +441,6 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Lưới vuông</string>
     <string name="send_message">Gửi tin nhắn</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s đã thay đổi địa chỉ của họ từ %2$s thành %3$s</string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">Bạn đã thay đổi địa chỉ email của mình từ %1$s thành %2$s.\n\nNếu bây giờ bạn gửi thư đến một nhóm đã được xác minh, những người liên hệ ở đó sẽ tự động thay thế địa chỉ cũ bằng địa chỉ mới của bạn.\n\nĐiều đó thật tuyệt vời khuyên bạn nên thiết lập nhà cung cấp email cũ để chuyển tiếp tất cả email đến địa chỉ email mới của bạn. Nếu không, bạn có thể bỏ lỡ tin nhắn của những người chưa nhận được địa chỉ mới của bạn.</string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -786,14 +765,8 @@
     <string name="ephemeral_timer_weeks_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất thành %1$s tuần.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Bộ hẹn giờ cho tin nhắn biến mất được %2$s đặt thành %1$s tuần.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken">%1$s đã gửi tin nhắn từ một thiết bị khác.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Tin nhắn được đảm bảo sẽ được mã hóa hai đầu kể từ bây giờ. Nhấn để tìm hiểu thêm.</string>
     <string name="chat_protection_enabled_explanation">Hiện tại, chúng tôi đảm bảo rằng tất cả tin nhắn trong cuộc trò chuyện này đều được mã hóa hai đầu.\n\nMã hóa hai đầu giúp giữ tin nhắn giữa bạn và đối tác trò chuyện của bạn ở chế độ riêng tư. Ngay cả nhà cung cấp email của bạn cũng không thể đọc được chúng.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_tap_to_learn_more">%1$s đã gửi tin nhắn từ một thiết bị khác. Nhấn để tìm hiểu thêm.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_explanation">Mã hóa hai đầu không còn được đảm bảo nữa, có thể vì %1$s đã cài đặt lại Delta Chat hoặc đã gửi tin nhắn từ một thiết bị khác.\n\nBạn có thể gặp trực tiếp họ và quét lại mã QR của họ để thiết lập lại tính năng mã hóa hai đầu được đảm bảo kết thúc mã hóa.</string>
     <string name="learn_more">Tìm hiểu thêm</string>
 
     <string name="devicemsg_self_deleted">Bạn đã xóa cuộc trò chuyện \"Tin nhắn đã lưu\".\n\nℹ️ Để sử dụng lại tính năng \"Tin nhắn đã lưu\", hãy tạo một cuộc trò chuyện mới với chính bạn.</string>
@@ -847,13 +820,9 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s đã trả lời, đang chờ được thêm vào nhóm…</string>
     <string name="contact_verified">%1$s đã được giới thiệu.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Không thể thiết lập mã hóa đầu cuối được đảm bảo với %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Được giới thiệu bởi %1$s</string>
     <string name="verified_by_you">Được tôi giới thiệu</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Đã thay đổi thiết lập cho %1$s.</string>
     <string name="verified_contact_required_explain">Để đảm bảo mã hóa hai đầu, bạn chỉ có thể thêm những người liên hệ có dấu kiểm màu xanh lục vào nhóm này.\n\nBạn có thể gặp trực tiếp những người liên hệ và quét Mã QR của họ để giới thiệu họ.</string>
     <string name="mailto_dialog_header_select_chat">Chọn trò chuyện để gửi tin nhắn tới</string>
     <!-- first placeholder is the name of the chat -->
@@ -893,9 +862,6 @@
     <string name="ImageEditorHud_crop">Cắt</string>
     <string name="ImageEditorHud_flip">Lật</string>
     <string name="ImageEditorHud_rotate">Xoay</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Tin nhắn được mã hóa</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Đây là ứng dụng Delta Chat Desktop chính thức.</string>

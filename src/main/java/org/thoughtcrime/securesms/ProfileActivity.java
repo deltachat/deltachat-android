@@ -23,8 +23,6 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.rpc.Rpc;
-import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -35,6 +33,9 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.File;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 
 public class ProfileActivity extends PassphraseRequiredActionBarActivity
                              implements DcEventCenter.DcEventDelegate
@@ -109,7 +110,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
       if (chatId != 0) {
         DcChat dcChat = dcContext.getChat(chatId);
-        menu.findItem(R.id.menu_clone).setVisible(chatIsMultiUser && !chatIsMailingList);
+        menu.findItem(R.id.menu_clone).setVisible(chatIsMultiUser  && !chatIsInBroadcast && !chatIsMailingList);
         if (chatIsDeviceTalk) {
           menu.findItem(R.id.edit_name).setVisible(false);
           menu.findItem(R.id.show_encr_info).setVisible(false);

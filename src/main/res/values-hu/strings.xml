@@ -240,12 +240,6 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Csevegés vele…</string>
     <string name="clone_chat">Csevegés klónozása</string>
-    <!-- deprecated -->
-    <string name="broadcast_list">Adáslista</string>
-    <!-- deprecated -->
-    <string name="broadcast_lists">Adásliták</string>
-    <!-- deprecated -->
-    <string name="new_broadcast_list">Új adáslista</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel">Csatorna</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -253,12 +247,6 @@
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Új csatorna</string>
     <string name="add_recipients">Címzettek hozzáadása</string>
-    <!-- deprecated -->
-    <string name="edit_broadcast_list">Adáslista szerkesztése</string>
-    <!-- deprecated -->
-    <string name="broadcast_list_name">Adáslista neve</string>
-    <!-- deprecated -->
-    <string name="please_enter_broadcast_list_name">Adjon meg egy nevet az adáslistának</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Csatorna neve</string>
     <string name="email">E-mail</string>
@@ -424,8 +412,6 @@
     <string name="ask_start_chat_with">Csevegés vele: %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Eltávolítja a csoportból őt: %1$s?</string>
-    <!-- deprecated -->
-    <string name="ask_remove_from_broadcast">Eltávolítja az adáslistából őt: %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_channel">Eltávolítja a csatornából a következőt: %1$s?</string>
     <string name="open_url_confirmation">Biztosan megnyitja ezt a hivatkozást?</string>
@@ -457,8 +443,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Üzenet küldése „%1$s” számára.</string>
-    <!-- deprecated -->
-    <string name="chat_new_broadcast_hint">Az adáslistán a címzettek csak olvasható módban kapják meg az üzeneteket öntől.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="chat_new_channel_hint">A csatornák egy blogszerű eszköz az üzenetek megosztására a közönséggel.</string>
     <string name="chat_new_group_hint">Mások csak az első üzenet elküldése után fogják látni ezt a csoportot.</string>
@@ -569,11 +553,6 @@
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Négyzetrács</string>
     <string name="send_message">Üzenet küldése</string>
-    <!-- deprecated, was stock string -->
-    <string name="aeap_addr_changed">%1$s megváltoztatta a címét következőről: %2$s, erre: %3$s </string>
-    <!-- deprecated -->
-    <string name="aeap_explanation">Ön megváltoztatta a saját e-mail-címét erről: %1$s erre: %2$s.\n\nHa most üzenetet küld egy hitelesített csoportba, az ottani partnerei automatikusan lecserélik az Ön régi címét az új címére.\n\nEzért nagyon ajánlott beállítani, hogy a régi e-mail-szolgáltatója továbbítsa-e az összes e-mailt az e-mail-címére. Ellenkező esetben lemaradhat azoknak a partnereinek az üzeneteiről, akik még nem kapták meg az új címét.</string>
-
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
@@ -734,10 +713,10 @@
     <string name="pref_blocked_contacts">Letiltott névjegyek</string>
     <string name="blocked_empty_hint">A letiltott névjegyek itt fognak megjelenni</string>
     <string name="pref_password_and_account_settings">Fiók és jelszó</string>
-    <string name="pref_who_can_see_profile_explain">A profilképe, neve és életrajza az üzenetekkel együtt kerül elküldésre, amikor más felhasználókkal kommunikál.</string>
+    <string name="pref_who_can_see_profile_explain">A profilképe, neve és névjegye az üzenetekkel együtt kerül elküldésre, amikor más felhasználókkal kommunikál.</string>
     <string name="pref_your_name">Név</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
-    <string name="pref_default_status_label">Életrajz</string>
+    <string name="pref_default_status_label">Névjegy</string>
     <string name="pref_enter_sends">Küldés „Enterrel”</string>
     <string name="pref_enter_sends_explain">Az „Enter” billentyű megnyomásával szöveges üzeneteket küldhet</string>
     <string name="pref_outgoing_media_quality">Kimenő média minősége</string>
@@ -956,6 +935,9 @@
     <string name="ephemeral_timer_1_week_by_you">Ön az eltűnő üzenetek időzítőjét 1 hétre állította be.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s az eltűnő üzenetek időzítőjét 1 hétre állította be.</string>
+    <string name="ephemeral_timer_1_year_by_you">Ön az eltűnő üzenetek időzítőjét 1 évre állította be.</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_1_year_by_other">%1$s az eltűnő üzenetek időzítőjét 1 évre állította be.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Ön az eltűnő üzenetek időzítőjét %1$s percre állította be.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
@@ -972,14 +954,8 @@
     <string name="ephemeral_timer_weeks_by_you">Ön az eltűnő üzenetek időzítőjét %1$s hétre állította be.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s az eltűnő üzenetek időzítőjét%1$s hétre állította be.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken">%1$s egy másik eszközről küldött üzenetet.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Az üzenetek mostantól garantáltan titkosítva lesznek a végpontok között. Koppintson, ha többet szeretne tudni.</string>
     <string name="chat_protection_enabled_explanation">Mostantól garantált, hogy ebben a csevegésben az összes üzenet végpontok közötti titkosítással rendelkezik.\n\nA végpontok közötti titkosítással az üzenetek bizalmasak maradnak Ön és a partnerei között. Még az e-mail-szolgáltatója sem tudja elolvasni őket.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_tap_to_learn_more">%1$s egy másik eszközről küldött üzenetet. Koppintson, ha többet szeretne tudni.</string>
-    <!-- deprecated -->
-    <string name="chat_protection_broken_explanation">A végpontok közötti titkosítás már nem garantálható, valószínűleg azért, mert %1$s újratelepítette a Delta Chatet, vagy egy másik eszközről küldött üzenetet.\n\n Személyesen találkozhat vele, és újra beolvashatja a QR-kódját a garantált végpontok közötti titkosítás visszaállításához.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ A(z) %1$s végpontok közötti titkosítást igényel, ami még nincs beállítva erre a csevegésre. Koppintson, ha többet szeretne megtudni.</string>
     <string name="invalid_unencrypted_explanation">A végpontok közötti titkosítás létrehozásához személyesen is találkozhat a partnereivel, és a QR-kódjukat beolvasva bemutathatja őket.</string>
     <string name="learn_more">Tudjon meg többet</string>
@@ -1038,19 +1014,11 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s válaszolt, várakozik, hogy fölvegyék a csoportba…</string>
     <string name="secure_join_wait">Garantált végpontok közötti titkosítás létrehozása, várjon…</string>
-    <!-- deprecated -->
-    <string name="secure_join_wait_timeout">Még nem sikerült a garantált végpontok közötti titkosítást létrehozni, de már küldhet üzenetet.</string>
-    <!-- deprecated, was stock string -->
-    <string name="secure_join_takes_longer">Úgy tűnik, hogy ez tovább tart, mint gondoltuk, talán a partnere vagy Ön offline állapotban van.\n\nMindenesetre a folyamat a háttérben folytatódik, eközben csinálhat valami mást…</string>
     <string name="contact_verified">%1$s bemutatva.</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_not_verified">Nem lehet garantált végpontok közötti titkosítást létrehozni vele: %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">%1$s által bemutatva</string>
     <string name="verified_by_you">Ön által bemutatva</string>
     <string name="verified_by_unknown">Bemutatva</string>
-    <!-- deprecated, was stock string -->
-    <string name="contact_setup_changed">Megváltoztatta a beállításokat %1$s számára.</string>
     <string name="verified_contact_required_explain">A végpontok közötti titkosítás garantálása érdekében csak zöld jelöléssel rendelkező névjegyeket adhat hozzá ehhez a csoporthoz.\n\n Személyesen is találkozhat a partnereivel és beolvashatja a QR-kódjukat, hogy bemutassa őket.</string>
     <string name="mailto_dialog_header_select_chat">Válassza ki a csevegést az üzenet elküldéséhez</string>
     <!-- first placeholder is the name of the chat -->
@@ -1092,9 +1060,6 @@
     <string name="ImageEditorHud_crop">Kivágás</string>
     <string name="ImageEditorHud_flip">Tükrözés</string>
     <string name="ImageEditorHud_rotate">Forgatás</string>
-
-    <!-- deprecated, use string "E-Mail" for non-encrypted messages instead -->
-    <string name="encrypted_message">Titkosított üzenet</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Ez a hivatalos Delta Chat Desktop alkalmazás.</string>
@@ -1210,7 +1175,6 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">A Delta Chat el akarja menteni a képeket az eszköze fotótárába.</string>
     <string name="InfoPlist_NSFaceIDUsageDescription">A Delta Chat használhatja az arcfelimerést az Ön helyi profiljának biztonsági mentésének létrehozásához és a második eszköz biztonságos beállításához.</string>
 
-
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Azonnali kézbesítés</string>
     <string name="pref_background_notifications">Háttérkapcsolat használata</string>
@@ -1225,9 +1189,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Újdonságok:\n\n💯 A végpontok közötti titkosítás most már megbízható és örökre megmarad. A lakatok 🔒 eltűntek!\n\n✉️ A végpontok közötti titkosítás nélküli klasszikus e-mailek betűszimbólummal vannak jelölve\n\n😻 Új, továbbfejlesztett profilképernyő az összes névjegyhez\n\n🔲 Új gomb a csevegésben használt alkalmazások gyors eléréséhez\n\n❤️ Ha teheti, adományozzon nekünk, hogy függetlenek maradhassunk és továbbra is fejlesztéseket tudjunk végrehajtani: %1$s</string>
-    <!-- deprecated -->
-    <string name="update_1_50_android">Mik az újdonságok?\n\n❤️‍🔥 Új emodzsi-választó még több emodzsival\n\n🎮 Továbbfejlesztett, a csevegésben használható alkalmazások: Értesítéseket kaphat és megnyithatja az azokat támogató alkalmazásokban, azaz közvetlenül megnyithat egy hozzáadott naptárbejegyzést\n\n👍 Értesítést kaphat az üzeneteire adott reakciókról\n\n… 🛠️ Egyéb javítások, tudjon meg többet itt: %1$s</string>
-    <!-- deprecated -->
-    <string name="update_switch_profile_placement">ℹ️ A „Profilváltás” beállítás át lett helyezve:
-Érintse meg a főképernyő felső sarkában lévő profilképet a profilok hozzáadásához vagy váltásához 💡</string>
 </resources>

@@ -40,14 +40,12 @@ import androidx.appcompat.app.AlertDialog;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
-import com.b44t.messenger.rpc.Reactions;
-import com.b44t.messenger.rpc.RpcException;
-import com.b44t.messenger.rpc.VcardContact;
 
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.BorderlessImageView;
+import org.thoughtcrime.securesms.components.CallItemView;
 import org.thoughtcrime.securesms.components.ConversationItemFooter;
 import org.thoughtcrime.securesms.components.ConversationItemThumbnail;
 import org.thoughtcrime.securesms.components.DocumentView;
@@ -72,9 +70,16 @@ import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
+import org.thoughtcrime.securesms.calls.CallUtil;
 
 import java.util.List;
 import java.util.Set;
+
+import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.CallInfo;
+import chat.delta.rpc.types.CallState;
+import chat.delta.rpc.types.Reactions;
+import chat.delta.rpc.types.VcardContact;
 
 /**
  * A view that displays an individual conversation item within a conversation
@@ -117,6 +122,7 @@ public class ConversationItem extends BaseConversationItem
   private @NonNull  Stub<WebxdcView>                webxdcViewStub;
   private           Stub<BorderlessImageView>       stickerStub;
   private           Stub<VcardView>                 vcardViewStub;
+  private           Stub<CallItemView>              callViewStub;
   private @Nullable EventListener                   eventListener;
 
   private int measureCalls;
@@ -151,6 +157,7 @@ public class ConversationItem extends BaseConversationItem
     this.webxdcViewStub          = new Stub<>(findViewById(R.id.webxdc_view_stub));
     this.stickerStub             = new Stub<>(findViewById(R.id.sticker_view_stub));
     this.vcardViewStub           = new Stub<>(findViewById(R.id.vcard_view_stub));
+    this.callViewStub            = new Stub<>(findViewById(R.id.call_view_stub));
     this.groupSenderHolder       =            findViewById(R.id.group_sender_holder);
     this.quoteView               =            findViewById(R.id.quote_view);
     this.container               =            findViewById(R.id.container);
@@ -321,6 +328,11 @@ public class ConversationItem extends BaseConversationItem
       vcardViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
       vcardViewStub.get().setClickable(batchSelected.isEmpty());
     }
+
+    if (callViewStub.resolved()) {
+      callViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+      callViewStub.get().setClickable(batchSelected.isEmpty());
+    }
   }
 
   private void setContentDescription() {
@@ -337,6 +349,8 @@ public class ConversationItem extends BaseConversationItem
       desc += webxdcViewStub.get().getDescription() + "\n";
     } else if (vcardViewStub.resolved() && vcardViewStub.get().getVisibility() == View.VISIBLE) {
       desc += vcardViewStub.get().getDescription() + "\n";
+    } else if (callViewStub.resolved() && callViewStub.get().getVisibility() == View.VISIBLE) {
+      desc += callViewStub.get().getDescription() + "\n";
     } else if (mediaThumbnailStub.resolved() && mediaThumbnailStub.get().getVisibility() == View.VISIBLE) {
       desc += mediaThumbnailStub.get().getDescription() + "\n";
     } else if (stickerStub.resolved() && stickerStub.get().getVisibility() == View.VISIBLE) {
@@ -398,7 +412,7 @@ public class ConversationItem extends BaseConversationItem
 
     String text = messageRecord.getText();
 
-    if (text.isEmpty()) {
+    if (messageRecord.getType() == DcMsg.DC_MSG_CALL || text.isEmpty()) {
       bodyText.setVisibility(View.GONE);
     }
     else {
@@ -489,6 +503,7 @@ public class ConversationItem extends BaseConversationItem
       if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
       if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
 
       //noinspection ConstantConditions
       int duration = messageRecord.getDuration();
@@ -514,6 +529,7 @@ public class ConversationItem extends BaseConversationItem
       if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
       if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
 
       //noinspection ConstantConditions
       documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord));
@@ -532,6 +548,7 @@ public class ConversationItem extends BaseConversationItem
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
       if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
 
       webxdcViewStub.get().setWebxdc(messageRecord, context.getString(R.string.webxdc_app));
       webxdcViewStub.get().setWebxdcClickListener(new ThumbnailClickListener());
@@ -549,6 +566,7 @@ public class ConversationItem extends BaseConversationItem
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
       if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved())       callViewStub.get().setVisibility(View.GONE);
 
       vcardViewStub.get().setVcard(glideRequests, new VcardSlide(context, messageRecord), rpc);
       vcardViewStub.get().setVcardClickListener(new ThumbnailClickListener());
@@ -560,6 +578,27 @@ public class ConversationItem extends BaseConversationItem
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
     }
+    else if (messageRecord.getType() == DcMsg.DC_MSG_CALL) {
+      callViewStub.get().setVisibility(View.VISIBLE);
+      if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
+      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
+      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
+      if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
+
+      try {
+        callViewStub.get().setCallItem(messageRecord.isOutgoing(), rpc.callInfo(dcContext.getAccountId(), messageRecord.getId()));
+      } catch (RpcException e) {
+        Log.e(TAG, "Error in Rpc.callInfo", e);
+      }
+      callViewStub.get().setCallClickListener(new CallClickListener());
+      callViewStub.get().setOnLongClickListener(passthroughClickListener);
+
+      callViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+
+      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    }
     else if (hasThumbnail(messageRecord)) {
       mediaThumbnailStub.get().setVisibility(View.VISIBLE);
       if (audioViewStub.resolved())    audioViewStub.get().setVisibility(View.GONE);
@@ -567,6 +606,7 @@ public class ConversationItem extends BaseConversationItem
       if (webxdcViewStub.resolved())   webxdcViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
       if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
 
       Slide slide = MediaUtil.getSlideForMsg(context, messageRecord);
 
@@ -606,6 +646,7 @@ public class ConversationItem extends BaseConversationItem
       if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
 
       bodyBubble.setBackgroundColor(Color.TRANSPARENT);
 
@@ -626,6 +667,7 @@ public class ConversationItem extends BaseConversationItem
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
       if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
       if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -756,11 +798,11 @@ public class ConversationItem extends BaseConversationItem
 
   private void setReactions(@NonNull DcMsg current) {
     try {
-      Reactions reactions = rpc.getMsgReactions(dcContext.getAccountId(), current.getId());
+      Reactions reactions = rpc.getMessageReactions(dcContext.getAccountId(), current.getId());
       if (reactions == null) {
         reactionsView.clear();
       } else {
-        reactionsView.setReactions(reactions.getReactions());
+        reactionsView.setReactions(reactions.reactions);
         reactionsView.setOnClickListener(view -> {
           if (eventListener != null && batchSelected.isEmpty()) {
             eventListener.onReactionClicked(current);
@@ -779,6 +821,8 @@ public class ConversationItem extends BaseConversationItem
       return stickerStub.get().getFooter();
     } else if (hasOnlyThumbnail(messageRecord) && TextUtils.isEmpty(messageRecord.getText())) {
       return mediaThumbnailStub.get().getFooter();
+    } else if (messageRecord.getType() == DcMsg.DC_MSG_CALL) {
+      return callViewStub.get().getFooter();
     } else {
       return footer;
     }
@@ -880,6 +924,7 @@ public class ConversationItem extends BaseConversationItem
     else if (documentViewStub.resolved()) documentViewStub.get().performClick();
     else if (webxdcViewStub.resolved())   webxdcViewStub.get().performClick();
     else if (vcardViewStub.resolved())    vcardViewStub.get().performClick();
+    else if (callViewStub.resolved())    callViewStub.get().performClick();
   }
 
   /// Event handlers
@@ -895,7 +940,7 @@ public class ConversationItem extends BaseConversationItem
           String path = slide.asAttachment().getRealPath(context);
           VcardContact vcardContact = rpc.parseVcard(path).get(0);
           new AlertDialog.Builder(context)
-            .setMessage(context.getString(R.string.ask_start_chat_with, vcardContact.getDisplayName()))
+            .setMessage(context.getString(R.string.ask_start_chat_with, vcardContact.displayName))
             .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                 try {
                   List<Integer> contactIds = rpc.importVcard(dcContext.getAccountId(), path);
@@ -938,6 +983,23 @@ public class ConversationItem extends BaseConversationItem
     public void onClick(final View v, final Slide slide) {
       if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
+      }
+    }
+  }
+
+  private class CallClickListener implements CallItemView.CallClickListener {
+    public void onClick(final View v, final CallInfo callInfo) {
+      if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
+        performClick();
+      } else {
+          int accId = dcContext.getAccountId();
+          int chatId = messageRecord.getChatId();
+          if (!messageRecord.isOutgoing() && callInfo.state instanceof CallState.Alerting) {
+              int callId = messageRecord.getId();
+              CallUtil.openCall(getContext(), accId, chatId, callId, callInfo.sdpOffer);
+          } else {
+              CallUtil.startCall(getContext(), accId, chatId);
+          }
       }
     }
   }

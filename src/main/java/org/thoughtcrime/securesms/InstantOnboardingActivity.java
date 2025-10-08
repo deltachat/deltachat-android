@@ -32,8 +32,6 @@ import androidx.loader.app.LoaderManager;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcLot;
-import com.b44t.messenger.rpc.Rpc;
-import com.b44t.messenger.rpc.RpcException;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -61,6 +59,9 @@ import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.Objects;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 
 public class InstantOnboardingActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
