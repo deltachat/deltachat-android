@@ -100,6 +100,7 @@
         <item quantity="one">%d min</item>
         <item quantity="other">%d min</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d horo</item>
@@ -309,6 +310,8 @@
     <string name="chat_archived_label">Enarĥivigitaj</string>
     <string name="chat_no_messages">Neniu mesaĝo.</string>
     <string name="chat_self_talk_subtitle">Mesaĝoj senditaj al mi mem</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Konservi</string>
     <string name="saved_messages">Konservitaj mesaĝoj</string>
     <string name="retry_send">Reprovi sendi mesaĝon</string>
     <string name="show_location_traces">Montri spurojn</string>

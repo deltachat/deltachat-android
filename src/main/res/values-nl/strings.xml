@@ -118,11 +118,22 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Laatst gezien: %1$s</string>
     <string name="last_seen_unknown">Laatst gezien: onbekend</string>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
+    <plurals name="n_seconds_ext">
+        <item quantity="one">%d seconde</item>
+        <item quantity="other">%d seconden</item>
+    </plurals>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
+    <plurals name="n_minutes_ext">
+        <item quantity="one">%d minuut</item>
+        <item quantity="other">%d minuten</item>
+    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d minuut</item>
         <item quantity="other">%d minuten</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d uur</item>
@@ -368,20 +379,47 @@
     </plurals>
     <string name="file_saved_to">Het bestand is opgeslagen in ‘%1$s’.</string>
 
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">Bellen</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">Aanvaarden</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">Weigeren</string>
+    <string name="outgoing_call">Uitgaande oproep</string>
+    <string name="incoming_call">Inkomende oproep</string>
+    <string name="declined_call">Geweigerde oproep</string>
+    <string name="canceled_call">Afgebroken oproep</string>
+    <string name="missed_call">Gemiste oproep</string>
+    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
+    <string name="call_date_and_duration">%1$s %2$s</string>
+
+    <!-- deprecated -->
     <string name="videochat">Videogesprek</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">Wil je %1$s uitnodigen voor een videogesprek?</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">Hiervoor hebben jullie beiden een compatibele app of webbrowser nodig.</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">%1$s is uitgenodigd voor een videogesprek.</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">Je bent uitgenodigd voor een videogesprek.</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">Druk om deel te nemen</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">Druk om te openen</string>
+    <!-- deprecated -->
     <string name="videochat_instance">Videogespreksinstantie</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">Mijn videogespreksinstantie</string>
-    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
+    <!-- deprecated -->
     <string name="videochat_instance_example">Voorbeeld: https://your-server.org/$ROOM</string>
+    <!-- deprecated -->
     <string name="videochat_instance_explain_2">Schakel in om een videogesprek te starten vanuit een een-op-eengesprek. Zowel jij als je gesprekspartner hebben hiervoor een compatibele app of webbrowser nodig.</string>
+    <!-- deprecated -->
     <string name="videochat_instance_from_qr">Wil je ‘%1$s’, gebruiken om anderen uit te nodigen voor videogesprekken?\n\nNa het instellen kun je een videogesprek starten vanuit elk een-op-eengesprek. Deze instelling vervangt de vorige videogespreksinstelling.</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">Uitnodiging voor videogesprek</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">Je bent uitgenodigd voor een videogesprek. Druk op %1$s om deel te nemen.</string>
 
     <!-- get confirmations -->
@@ -458,6 +496,8 @@
     <string name="chat_no_messages">Er zijn geen berichten.</string>
     <string name="chat_self_talk_subtitle">Aan mijzelf gestuurde berichten</string>
     <string name="archive_empty_hint">Gearchiveerde gesprekken worden hier getoond.</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Bericht bewaren</string>
     <string name="saved_messages">Bewaarde berichten</string>
     <string name="saved_messages_explain">• Stuur berichten door naar hier om ze snel terug te kunnen lezen\n\n• Maak aantekeningen of spraakopnamen\n\n• Voeg media toe om deze op te slaan</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -868,8 +908,10 @@
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Direct</string>
     <string name="after_30_seconds">Na 30 seconden</string>
+    <!-- deprecated -->
     <string name="after_1_minute">Na 1 minuut</string>
     <string name="after_5_minutes">Na 5 minuten</string>
+    <!-- deprecated -->
     <string name="after_30_minutes">Na 30 minuten</string>
     <string name="autodel_after_1_hour">Na 1 uur</string>
     <string name="autodel_after_1_day">Na 1 dag</string>
@@ -923,8 +965,9 @@
     <string name="ephemeral_timer_seconds_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op %1$s sec.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_seconds_by_other">De tijdklok van verdwijnende berichten is door %2$s ingesteld op %1$s sec.</string>
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op 1 minuut.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">De tijdklok van verdwijnende berichten is door %1$s ingesteld op 1 minuut.</string>
     <string name="ephemeral_timer_1_hour_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op 1 uur.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
@@ -1035,6 +1078,7 @@
     <string name="notify_name_only">Alleen naam</string>
     <string name="notify_no_name_or_message">Geen naam of bericht</string>
     <string name="notifications_disabled">Meldingen zijn uitgeschakeld</string>
+    <string name="unreliable_bg_notifications">Schakel de gedwongen achtergrondverbinding in om meldingen betrouwbaarder te maken</string>
     <string name="new_messages">Nieuwe berichten</string>
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">Je hebt nieuwe berichten</string>
@@ -1148,7 +1192,7 @@
     <string name="disabled_in_dc">Uitgeschakeld in Delta Chat</string>
     <string name="disabled_in_system_settings">Uitgeschakeld in systeeminstellingen</string>
     <string name="bg_app_refresh_disabled">App op de achtergrond vernieuwen is uitgeschakeld in de systeeminstellingen</string>
-    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
+    <!-- deprecated, was used on iOS only -->
     <string name="delayed">Vertraagd</string>
     <string name="notifications_avg_minutes">Gemiddeld elke %1$d minuten</string>
     <string name="notifications_avg_hours">Gemiddeld elke %1$d uur</string>
