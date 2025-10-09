@@ -121,6 +121,7 @@
         <item quantity="one">%d دؽقه</item>
         <item quantity="other">%d دؽقه</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d ساعت</item>
@@ -319,7 +320,9 @@
 
     <string name="file_saved_to">فایل من «%1$s» زفت وابی.</string>
 
+    <!-- deprecated -->
     <string name="videochat">گوفت وو لوفت ویدیویی</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">موکش و گوفت وو لوفت ویدیویی</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
@@ -348,6 +351,8 @@
     <string name="chat_request_label">درخاست</string>
     <string name="chat_no_messages">پیومؽ نؽ.</string>
     <string name="chat_self_talk_subtitle">پیومایی ک سی خوم فشنام.</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">زفت کردن</string>
     <string name="saved_messages">پیوما زفت بیڌه</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">زفت وابی</string>
@@ -420,8 +425,10 @@
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">ی کرت دیندا دانلود</string>
     <string name="after_30_seconds">دیندا 30 سانیه</string>
+    <!-- deprecated -->
     <string name="after_1_minute">دیندا 1 دؽقه</string>
     <string name="after_5_minutes">دیندا 5 دؽقه</string>
+    <!-- deprecated -->
     <string name="after_30_minutes">دیندا 30 دؽقه</string>
     <string name="autodel_after_1_hour">دیندا 1 ساعت</string>
     <string name="autodel_after_1_day">دیندا 1 رۊ</string>

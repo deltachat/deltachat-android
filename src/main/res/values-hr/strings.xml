@@ -58,6 +58,7 @@
         <item quantity="few">%d min</item>
         <item quantity="other">%d min</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d sat</item>
@@ -152,6 +153,8 @@
     <string name="chat_input_placeholder">Poruka</string>
     <string name="chat_archived_label">Arhivirano</string>
     <string name="chat_no_messages">Nema poruka.</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Spremi</string>
     <string name="saved_messages">Sačuvane poruke</string>
     <!-- search -->
     <string name="search">Traži</string>

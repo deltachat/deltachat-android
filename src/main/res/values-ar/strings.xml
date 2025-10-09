@@ -128,6 +128,8 @@
     <string name="chat_share_with_title">شارك مع</string>
     <string name="chat_input_placeholder">رسالة</string>
     <string name="chat_archived_label">محتفظة</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">حفظ</string>
     <!-- search -->
     <string name="search">بحث</string>
     <!-- create/edit groups, contact/group profile -->

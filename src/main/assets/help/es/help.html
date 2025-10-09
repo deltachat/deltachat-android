@@ -12,7 +12,7 @@
       <li><a href="#qué-significa-fijar-mutear-archivar">¿Qué significa fijar, mutear, archivar?</a></li>
       <li><a href="#save">¿Cómo funcionan los “Mensajes guardados”?</a></li>
       <li><a href="#qué-significa-el-punto-verde">¿Qué significa el punto verde?</a></li>
-      <li><a href="#edit">Correct typos and delete messages after sending</a></li>
+      <li><a href="#edit">Corregir errores y borrar mensajes después de enviar</a></li>
       <li><a href="#ephemeralmsgs">¿Cómo funciona la desaparición de mensajes?</a></li>
     </ul>
   </li>
@@ -27,12 +27,12 @@
       <li><a href="#delold">¿Qué pasa si activo “Borrar mensajes del dispositivo”?</a></li>
     </ul>
   </li>
-  <li><a href="#instant-delivery">Instant message delivery and Push Notifications</a>
+  <li><a href="#instant-delivery">Entrega de mensajes instantáneos y notificaciones Push</a>
     <ul>
-      <li><a href="#what-are-push-notifications-how-can-i-get-instant-message-delivery">What are Push Notifications? How can I get instant message delivery?</a></li>
-      <li><a href="#are-push-notifications-enabled-on-ios-devices-is-there-an-alternative">Are Push Notifications enabled on iOS devices? Is there an alternative?</a></li>
-      <li><a href="#android-push">Are Push notifications enabled / needed on Android devices?</a></li>
-      <li><a href="#privacy-notifications">How private are Delta Chat Push Notifications?</a></li>
+      <li><a href="#qué-son-las-notificaciones-push-cómo-puedo-recibir-mensajes-instantáneos">¿Qué son las Notificaciones Push? ¿Cómo puedo recibir mensajes instantáneos?</a></li>
+      <li><a href="#están-activadas-las-notificaciones-push-en-los-dispositivos-ios-existe-alguna-alternativa">¿Están activadas las notificaciones Push en los dispositivos iOS? ¿Existe alguna alternativa?</a></li>
+      <li><a href="#android-push">¿Están habilitadas / son necesarias las notificaciones Push en los dispositivos Android?</a></li>
+      <li><a href="#privacy-notifications">¿Qué privadas son las notificaciones push de Delta Chat?</a></li>
       <li><a href="#why-does-delta-chat-integrate-with-centralized-proprietary-applegoogle-push-services">Why does Delta Chat integrate with centralized proprietary Apple/Google push services?</a></li>
     </ul>
   </li>
@@ -41,7 +41,7 @@
       <li><a href="#qué-estándares-se-utilizan-para-el-cifrado-de-extremo-a-extremo">¿Qué estándares se utilizan para el cifrado de extremo a extremo?</a></li>
       <li><a href="#whene2e">¿Cómo puedo saber si los mensajes están cifrados de extremo a extremo?</a></li>
       <li><a href="#can-i-still-receive-or-send-mails-without-end-to-end-encryption">Can i still receive or send mails without end-to-end encryption?</a></li>
-      <li><a href="#howtoe2ee">How can I establish a chat with a new contact?</a></li>
+      <li><a href="#howtoe2ee">¿Cómo puedo establecer un chat con un nuevo contacto?</a></li>
       <li><a href="#e2eeguarantee">What does the green checkmark in a contact profile mean?</a></li>
       <li><a href="#los-adjuntos-imágenes-archivos-audio-etc-están-cifrados-de-extremo-a-extremo">¿Los adjuntos (imágenes, archivos, audio, etc.) están cifrados de extremo a extremo?</a></li>
       <li><a href="#openpgp-secure">¿Es OpenPGP seguro?</a></li>
@@ -87,6 +87,7 @@
     <ul>
       <li><a href="#qué-permisos-necesita-delta-chat">¿Qué permisos necesita Delta Chat?</a></li>
       <li><a href="#delta-chat-funciona-con-mi-proveedor-de-correo-electrónico">¿Delta Chat funciona con <em>mi</em> proveedor de correo electrónico?</a></li>
+      <li><a href="#can-i-use-delta-chat-in-parallel-with-other-e-mail-apps">Can I use Delta Chat in parallel with other E-Mail apps?</a></li>
       <li><a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">I want to manage my own server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#por-qué-debo-ingresar-mi-contraseña-de-correo-electrónico-en-delta-chat-es-esto-seguro">¿Por qué debo ingresar mi contraseña de correo electrónico en Delta Chat? ¿Es esto seguro?</a></li>
       <li><a href="#qué-mensajes-se-muestran-en-delta-chat">¿Qué mensajes se muestran en Delta Chat?</a></li>
@@ -215,18 +216,16 @@ Basado en <a href="https://github.com/chatmail/core/blob/main/standards.md#stand
         
       </h3>
 
-<p>A profile is <strong>a name, a picture</strong> and some additional information for encrypting messages.
-A profile lives on your device(s) only
-and uses a chatmail or a classic e-mail server to transport messages.</p>
+<p>Un perfil es <strong>un nombre, una foto</strong> y algunas informaciones adicionales para encriptar los mensajes.
+Un perfil solo existe dentro de tu dispositivo(s)
+y utilice un servidor de chatmail o correo electrónico clásico para el transporte de los mensajes.</p>
 
 <p>En la primera instalación de Delta Chat se crea un primer perfil.</p>
 
 <p>Después, puedes tocar la imagen de tu perfil en la esquina superior izquierda para <strong>Añadir perfiles</strong>
 o para <strong>Cambiar perfiles</strong>.</p>
 
-<p>You may want to use separate profiles for political, family or work related activities,
-or e. g. for a dedicated “spam-profile” with which you register at websites and platforms
-that tend to cause unsolicited messages (“spam”) sooner or later.</p>
+<p>Se podría considerar la utilización de perfiles diferenciados para actividades vinculadas con políticas, familia o trabajo, o para un perfil dedicado a “spam”, que podría ser utilizado para páginas web y plataformas que tendrán la capacidad de generar mensajes no solicitados.</p>
 
 <p>Quizás quieres aprender <a href="#multiclient">cómo se usa el mismo perfil en múltiples dispositivos</a>.</p>
     
@@ -265,11 +264,11 @@ dispositivo.</p>
         
       </h3>
 
-<p>Yes,
-you can do so under <strong>Settings → Profile → Bio</strong>.
-Your contacts who use Delta Chat will see it
-when they view your contact details.
-Moreover, it will appear as a classic e-mail signature.</p>
+<p>Sí,
+es posible hacerlo en “Ajustes → Perfil → Texto de firma”.
+Los contactos que usan Delta Chat podrán ver
+si revisan los detalles de tu perfil.<br />
+Además, se encontrará en la firma de correos electrónicos clásicos.</p>
     
       <h3 id="qué-significa-fijar-mutear-archivar">
         
@@ -326,15 +325,15 @@ Con pulsar a <img style="vertical-align:middle; width:1.2em; margin:1px" src="..
 puedes volver al mensaje original en el chat original</p>
   </li>
   <li>
-    <p>Finally, you can also use “Save Messages” to take <strong>personal notes</strong> - open the chat, type something, add a photo or a voice message etc.</p>
+    <p>Finalmente, también se puede utilizar “Mensajes guardados” para tomar <strong>notas personales</strong> - abre el chat, escribe algo, añade una foto o un mensaje de voz, etc.</p>
   </li>
   <li>
-    <p>As “Saved Message” are synced, they can become very handy for transferring data between devices</p>
+    <p>Como los “mensajes guardados” se sincronizan, pueden ser muy útiles para transferir datos entre dispositivos.</p>
   </li>
 </ul>
 
-<p>Messages stay saved even if they are edited or deleted -
-may it be by <a href="#edit">sender</a>, by <a href="#delold">device cleanup</a> or by <a href="#ephemeralmsgs">disappearing messages of other chats</a>.</p>
+<p>Los mensajes se quedan guardados, también si se han cambiado o están borrados -
+Sea por el <a href="#edit">remitente</a>, por la <a href="#delold">limpieza del dispositivo</a> o por la <a href="#ephemeralmsgs">desaparición de mensajes de otros chats</a>.</p>
     
       <h3 id="qué-significa-el-punto-verde">
         
@@ -349,16 +348,16 @@ junto al avatar de un contacto.
 Significa que ha sido <strong>visto recientemente</strong> en los últimos 10 minutos:</p>
 
 <ul>
-  <li>either because they messaged you directly,</li>
-  <li>because they wrote something to a group you are both a member of,</li>
-  <li>because they sent you a read receipt for a message you wrote,</li>
-  <li>because they edit or delete a message in a chat shared with you,</li>
-  <li>or because they use an <a href="#webxdc">app</a> in a chat shared with you.</li>
+  <li>sea porque te enviaron un mensaje directamente,</li>
+  <li>porque escribieron algo en un grupo en que ambos son miembros,</li>
+  <li>porque te enviaron un acuse de recibo de un mensaje que escribiste,</li>
+  <li>porque editaron o borraron un mensaje en un chat compartido contigo,</li>
+  <li>o porque utilizan una <a href="#webxdc">app</a> en un chat compartido contigo.</li>
 </ul>
 
-<p>So this is not a real time online status -
-and if someone doesn’t answer right away even though they seem to be online,
-don’t worry and give them some space :)</p>
+<p>Así que esto no es un estado de en línea en tiempo real -
+y si alguien no responde de inmediato, aunque parece que estar en línea,
+no te preocupes y dale un poco de espacio :)</p>
 
 <p>On the other hand, others will not always “see that you are online”.
 If you have turned off read receipts,
@@ -368,16 +367,16 @@ until one of the above conditions are met.</p>
       <h3 id="edit">
         
         
-          Correct typos and delete messages after sending <a href="#edit" class="anchor"></a>
+          Corregir errores y borrar mensajes después de enviar <a href="#edit" class="anchor"></a>
         
         
       </h3>
 
 <ul>
   <li>
-    <p>You can edit the text of your messages after sending.
-For that, long tap or right click the message and select <strong>Edit</strong>
-or <img style="vertical-align:middle; width:1.2em; margin:1px" src="../edit-icon.png" alt="Edit icon" />.</p>
+    <p>Se puede editar el texto de los mensajes después de enviarlos.
+Para ello, mantenga pulsado o haz clic con el botón derecho en el mensaje y seleccione <strong>Editar</strong>
+o <img style="vertical-align:middle; width:1.2em; margin:1px" src="../edit-icon.png" alt="Edit icon" />.</p>
   </li>
   <li>
     <p>Si has enviado un mensaje accidentalmente
@@ -400,11 +399,11 @@ who could have already replied, forwarded, saved, screenshotted or otherwise cop
         
       </h3>
 
-<p>Puedes activar “desaparición de mensajes”
-en la configuración de un chat,
-en la parte superior derecha de la ventana de chat,
-seleccionando un lapso de tiempo
-entre 1 minuto y 5 semanas.</p>
+<p>You can turn on “disappearing messages”
+in the settings of a chat,
+at the top right of the chat window,
+by selecting a time span
+between 5 minutes and 1 year.</p>
 
 <p>Hasta que la configuración se desactive nuevamente,
 La aplicación Delta Chat de cada miembro del chat se encarga
@@ -560,15 +559,15 @@ older than that.</li>
       <h2 id="instant-delivery">
         
         
-          Instant message delivery and Push Notifications <a href="#instant-delivery" class="anchor"></a>
+          Entrega de mensajes instantáneos y notificaciones Push <a href="#instant-delivery" class="anchor"></a>
         
         
       </h2>
     
-      <h3 id="what-are-push-notifications-how-can-i-get-instant-message-delivery">
+      <h3 id="qué-son-las-notificaciones-push-cómo-puedo-recibir-mensajes-instantáneos">
         
         
-          What are Push Notifications? How can I get instant message delivery? <a href="#what-are-push-notifications-how-can-i-get-instant-message-delivery" class="anchor"></a>
+          ¿Qué son las Notificaciones Push? ¿Cómo puedo recibir mensajes instantáneos? <a href="#qué-son-las-notificaciones-push-cómo-puedo-recibir-mensajes-instantáneos" class="anchor"></a>
         
         
       </h3>
@@ -577,11 +576,11 @@ older than that.</li>
 so that an inactive Delta Chat app can fetch messages in the background
 and show notifications on a user’s phone if needed.</p>
 
-<p>Push Notifications work with all <a href="https://delta.chat/chatmail">chatmail</a> servers on</p>
+<p>Las notificaciones push funcionan con todos los servidores de <a href="https://delta.chat/chatmail">chatmail</a> en</p>
 
 <ul>
   <li>
-    <p>iOS devices, by integrating with Apple Push services.</p>
+    <p>dispositivos iOS, por la integración de los servicios Push de Apple.</p>
   </li>
   <li>
     <p>Android devices, by integrating with the Google FCM Push service,
@@ -590,13 +589,13 @@ instead of proprietary Google code on the phone.</p>
   </li>
 </ul>
 
-<p>As of May 2024, classic e-mail servers do not support Push Notifications
-for Delta Chat users.</p>
+<p>A partir de mayo de 2024, los servidores de correo electrónico clásicos no admiten notificaciones push
+para los usuarios de Delta Chat.</p>
     
-      <h3 id="are-push-notifications-enabled-on-ios-devices-is-there-an-alternative">
+      <h3 id="están-activadas-las-notificaciones-push-en-los-dispositivos-ios-existe-alguna-alternativa">
         
         
-          Are Push Notifications enabled on iOS devices? Is there an alternative? <a href="#are-push-notifications-enabled-on-ios-devices-is-there-an-alternative" class="anchor"></a>
+          ¿Están activadas las notificaciones Push en los dispositivos iOS? ¿Existe alguna alternativa? <a href="#están-activadas-las-notificaciones-push-en-los-dispositivos-ios-existe-alguna-alternativa" class="anchor"></a>
         
         
       </h3>
@@ -611,7 +610,7 @@ does not expose data to Apple that it doesn’t already have.</p>
       <h3 id="android-push">
         
         
-          Are Push notifications enabled / needed on Android devices? <a href="#android-push" class="anchor"></a>
+          ¿Están habilitadas / son necesarias las notificaciones Push en los dispositivos Android? <a href="#android-push" class="anchor"></a>
         
         
       </h3>
@@ -649,7 +648,7 @@ safe to try if you experience messages arrive only with long delays.</p>
       <h3 id="privacy-notifications">
         
         
-          How private are Delta Chat Push Notifications? <a href="#privacy-notifications" class="anchor"></a>
+          ¿Qué privadas son las notificaciones push de Delta Chat? <a href="#privacy-notifications" class="anchor"></a>
         
         
       </h3>
@@ -658,7 +657,7 @@ safe to try if you experience messages arrive only with long delays.</p>
 It does not leak e-mail, IP address or message content (not even encrypted)
 to any system involved in the delivery of Push Notifications.</p>
 
-<p>Here is how Delta Chat apps perform Push Notification delivery:</p>
+<p>Así es como las aplicaciones Delta Chat realizan la entrega de Notificaciones Push:</p>
 
 <ul>
   <li>
@@ -776,14 +775,14 @@ there are no lock or similar markers on end-to-end encrypted messages, anymore.<
 it is impossible to receive or send messages without end-to-end encryption.</p>
 
 <p>If you instead create a profile using a classic e-mail server,
-you can send and receive messages without end-to-end encryption. 
-Such messages lacking end-to-end encryption are marked with an e-mail icon 
+you can send and receive messages with or without end-to-end encryption.
+Messages lacking end-to-end encryption are marked with an e-mail icon
 <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
     
       <h3 id="howtoe2ee">
         
         
-          How can I establish a chat with a new contact? <a href="#howtoe2ee" class="anchor"></a>
+          ¿Cómo puedo establecer un chat con un nuevo contacto? <a href="#howtoe2ee" class="anchor"></a>
         
         
       </h3>
@@ -1603,6 +1602,29 @@ Esto es lo que hace Delta Chat con esos permisos:</p>
   <li>Es muy probable que sí :)
 Sin embargo, algunos proveedores necesitan opciones especiales para funcionar correctamente, ver <a href="https://providers.delta.chat">Descripción de proveedores</a></li>
 </ul>
+    
+      <h3 id="can-i-use-delta-chat-in-parallel-with-other-e-mail-apps">
+        
+        
+          Can I use Delta Chat in parallel with other E-Mail apps? <a href="#can-i-use-delta-chat-in-parallel-with-other-e-mail-apps" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Yes, but it is not recommended.</p>
+
+<p>Parallel usage with the same E-Mail address might lead to the following inconveniences:</p>
+
+<ul>
+  <li>Next to your Delta Chat notifications,
+you might also get notifications for (encrypted, so unreadable) chat mail messages
+in your other email app</li>
+  <li>If Delta Chat is not running
+or “Advanced &gt; Move automatically to the DeltaChat Folder” is disabled,
+encrypted Delta Chat messages might clutter the Inbox in your other E-Mail apps.</li>
+</ul>
+
+<p><a href="https://support.delta.chat/t/sieve-rule-to-move-deltachat-mails-to-deltachat-folder/288/10">Sieve rules</a> can solve these problems.</p>
     
       <h3 id="i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">
         
