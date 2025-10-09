@@ -174,7 +174,6 @@ dependencies {
     implementation ('com.journeyapps:zxing-android-embedded:4.3.0') { transitive = false } // QR Code scanner
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1' // used as JSON library
     implementation 'com.github.Baseflow:PhotoView:2.3.0' // does the zooming on photos / media
-    implementation 'com.github.penfeizhou.android.animation:awebp:3.0.5' // animated webp support.
     implementation 'com.caverock:androidsvg-aar:1.4' // SVG support.
     implementation 'com.github.bumptech.glide:glide:4.16.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
