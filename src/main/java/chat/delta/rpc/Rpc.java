@@ -246,4 +246,7 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Boolean>(){}, "can_send", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
   }
 
+  public Integer secureJoinWithUxInfo(Integer accountId, String qr, Integer source, Integer uipath) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>() {}, "secure_join_with_ux_info", mapper.valueToTree(accountId), mapper.valueToTree(qr), mapper.valueToTree(source), mapper.valueToTree(uipath));
+  }
 }

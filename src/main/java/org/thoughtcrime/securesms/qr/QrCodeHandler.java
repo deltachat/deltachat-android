@@ -241,7 +241,7 @@ public class QrCodeHandler {
         builder.setMessage(msg);
         builder.setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
             try {
-                int newChatId = DcHelper.getRpc(activity).secureJoin(dcContext.getAccountId(), qrRawString, source, uipath);
+                int newChatId = DcHelper.getRpc(activity).secureJoinWithUxInfo(dcContext.getAccountId(), qrRawString, source, uipath);
                 if (newChatId == 0) throw new Exception("Securejoin failed to create a chat");
 
                 Intent intent = new Intent(activity, ConversationActivity.class);
