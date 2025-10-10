@@ -50,8 +50,8 @@ dcrpcgen java --schema schema.json -o ./src/main/java/
 The repository contains [Nix](https://nixos.org/) development environment
 described in `flake.nix` file.
 If you don't have Nix installed,
-the easiest way is to use [The Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer)
-which installs Nix with [Flakes](https://nixos.wiki/wiki/Flakes) feature enabled out of the box
+the easiest way is to follow the [Lix installation instructions](https://lix.systems/install/)
+as this results in a setup with [Flakes](https://nixos.wiki/wiki/Flakes) feature enabled out of the box
 and can be cleanly uninstalled with `/nix/nix-installer uninstall` once you don't need it anymore.
 
 Once you have Nix with Flakes feature set up start the development environment shell:
