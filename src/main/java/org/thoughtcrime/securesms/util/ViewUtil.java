@@ -45,10 +45,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
-import com.b44t.messenger.util.concurrent.ListenableFuture;
-import com.b44t.messenger.util.concurrent.SettableFuture;
-
 import org.thoughtcrime.securesms.util.views.Stub;
+
+import chat.delta.util.ListenableFuture;
+import chat.delta.util.SettableFuture;
 
 public class ViewUtil {
   private final static String TAG = ViewUtil.class.getSimpleName();
