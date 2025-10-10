@@ -36,6 +36,7 @@ import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.RegistrationActivity;
+import org.thoughtcrime.securesms.StatsSending;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
@@ -229,15 +230,15 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     if (selfReportingCheckbox != null) {
       selfReportingCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
         boolean enabled = (Boolean) newValue;
-        dcContext.setConfigInt(CONFIG_STATS_SENDING, enabled? 1 : 0);
         if (enabled) {
-          new AlertDialog.Builder(getActivity())
-                  .setMessage(R.string.send_stats_thanks)
-                  .setPositiveButton(android.R.string.ok, null)
-                  .setNegativeButton(R.string.more_info_desktop, (_d, _w) -> IntentUtils.showInBrowser(getContext(), "TODO[blog post]"))
-                  .show();
+          StatsSending.showStatsConfirmationDialog(requireActivity(), () -> {
+            ((CheckBoxPreference)preference).setChecked(true);
+          });
+          return false;
+        } else {
+          dcContext.setConfigInt(CONFIG_STATS_SENDING, 0);
+          return true;
         }
-        return true;
       });
     }
 
