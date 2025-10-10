@@ -102,6 +102,7 @@
         <item quantity="few">%d мин</item>
         <item quantity="other">%d мин</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d сат</item>
@@ -294,20 +295,33 @@
     </plurals>
     <string name="file_saved_to">Фајл је снимљен у „%1$s“.</string>
 
+    <!-- deprecated -->
     <string name="videochat">Видео ћаскање</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">Позови %1$sу видео ћаскање?</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">Ово захтева компатибилну апликацију или прегледач на оба краја.</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">%1$sје позван у видео ћаскање.</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">Послали сте позив за видео ћаскање.</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">Додирни да се придружиш</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">Додирни да отвориш</string>
+    <!-- deprecated -->
     <string name="videochat_instance">Инстанца видео ћаскања</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">Ваша инстанца видео ћаскања</string>
-    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
+    <!-- deprecated -->
     <string name="videochat_instance_example">Примери: https://meet.jit.si/$ROOM или basicwebrtc:https://your-server</string>
+    <!-- deprecated -->
     <string name="videochat_instance_explain_2">Ако је омогућено, можете започети видео ћаскање из сваког ћаскања. Ово захтева компатибилну апликацију или прегледач на оба краја.</string>
+    <!-- deprecated -->
     <string name="videochat_instance_from_qr">Да ли желите да користите „%1$s“ да позовете друге у видео ћаскање?\n\nКада ово поставите, можете да започнете видео ћаскање из сваког ћаскања. Ово замењује све претходне поставке за видео ћаскање.</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">Позив за видео ћаскање</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">Позвани сте у видео ћаскање, кликни %1$sда придружиш.</string>
 
     <!-- Used for the deletion of Device messages -->
@@ -370,6 +384,8 @@
     <string name="chat_no_messages">Нема порука.</string>
     <string name="chat_self_talk_subtitle">Поруке које сам слао себи</string>
     <string name="archive_empty_hint">Архивирана ћаскања ће се појавити овде.</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Сачувај</string>
     <string name="saved_messages">Сачуване поруке</string>
     <string name="saved_messages_explain">• Проследи поруке овде за лакши приступ\n\n• Направите текстуалне или звучне белешке\n\n• Приложите медиј  да би га снимили</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -656,8 +672,10 @@
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Одмах</string>
     <string name="after_30_seconds">За 30 секунди</string>
+    <!-- deprecated -->
     <string name="after_1_minute">За 1 минут</string>
     <string name="after_5_minutes">За 5 минута</string>
+    <!-- deprecated -->
     <string name="after_30_minutes">За 30 минута</string>
     <string name="autodel_after_1_hour">За 1 сат</string>
     <string name="autodel_after_1_day">За 1 дан</string>
@@ -705,8 +723,9 @@
     <string name="ephemeral_timer_seconds_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s секунде</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s секунде.</string>
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Ви сте подесили хронометар за нестајуће поруке на 1 минут.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s је подесио хронометар за нестајуће поруке на 1 минут.</string>
     <string name="ephemeral_timer_1_hour_by_you">Ви сте подесили хронометар за нестајуће поруке на 1 сат.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
@@ -901,7 +920,7 @@
     <string name="disabled_in_dc">Онемогућено у Delta Chat</string>
     <string name="disabled_in_system_settings">Онемогућено у поставкама оперативног система</string>
     <string name="bg_app_refresh_disabled">„Освежавање апликације у позадини“ је онемогућено у поставкама оперативног система</string>
-    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
+    <!-- deprecated, was used on iOS only -->
     <string name="delayed">Одложено</string>
     <string name="notifications_avg_minutes">У просеку сваких %1$dминута</string>
     <string name="notifications_avg_hours">У просеку сваких %1$dсати</string>

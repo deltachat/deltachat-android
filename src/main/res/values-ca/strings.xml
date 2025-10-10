@@ -123,6 +123,7 @@
         <item quantity="one">%d min</item>
         <item quantity="other">%d min</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d hora</item>
@@ -368,20 +369,33 @@
     </plurals>
     <string name="file_saved_to">El fitxer s\'ha desat a «%1$s».</string>
 
+    <!-- deprecated -->
     <string name="videochat">Xat de vídeo</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">Voleu convidar %1$s a un xat de vídeo?</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">Això requereix una aplicació o navegador compatible en ambdós extrems.</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">%1$s ha estat convidat a un xat de vídeo.</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">Heu enviat una invitació de xat de video.</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">Toca per a afegir-t\'hi</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">Toca per a obrir-ho</string>
+    <!-- deprecated -->
     <string name="videochat_instance">Instància de xat de vídeo</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">La vostra instància de xat de vídeo</string>
-    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
+    <!-- deprecated -->
     <string name="videochat_instance_example">Exemple: https://el-vostre-servidor.org/$SALA</string>
+    <!-- deprecated -->
     <string name="videochat_instance_explain_2">Si està activada, podeu iniciar un xat de video des de cada xat. Necessita una aplicació o navegador compatible en ambdós extrems.</string>
+    <!-- deprecated -->
     <string name="videochat_instance_from_qr">Voleu usar «%1$s» per a convidar altres participants a xats de video?\n\nUna vegada definit, podeu iniciar un xat de vídeo des de cada xat. Això substitueix la configuració anterior per a xats de video.</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">Invitació a un xat de vídeo</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">Us han convidat a un xat de vídeo, feu clic a %1$s per unir-vos-hi.</string>
 
     <!-- get confirmations -->
@@ -458,6 +472,8 @@
     <string name="chat_no_messages">Cap missatge.</string>
     <string name="chat_self_talk_subtitle">Missatges enviats a mi mateix/a</string>
     <string name="archive_empty_hint">Si arxiveu xats, els voreu aquí.</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Desa</string>
     <string name="saved_messages">Missatges desats</string>
     <string name="saved_messages_explain">• Reenvieu missatges aquí per a un accés ràpid\n\n• Preneu notes de text o de veu\n\n• Adjunteu multimedia per a desar-la</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -868,8 +884,10 @@
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Immediatament després de baixar</string>
     <string name="after_30_seconds">Després de 30 segons</string>
+    <!-- deprecated -->
     <string name="after_1_minute">Després d\'1 minut</string>
     <string name="after_5_minutes">Després de 5 minuts</string>
+    <!-- deprecated -->
     <string name="after_30_minutes">Després de 30 minuts</string>
     <string name="autodel_after_1_hour">Després d\'1 hora</string>
     <string name="autodel_after_1_day">Després d\'1 dia</string>
@@ -923,8 +941,9 @@
     <string name="ephemeral_timer_seconds_by_you">Heu definit el temporitzador dels missatges efímers a %1$s segons.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s ha definit el temporitzador dels missatges efímers a %1$s segons.</string>
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Heu definit el temporitzador dels missatges fonedissos a 1 segon.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s ha definit el temporitzador dels missatges efímers a 1  minut.</string>
     <string name="ephemeral_timer_1_hour_by_you">Heu definit el temporitzador dels missatges fonedissos a 1 hora.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
@@ -1148,7 +1167,7 @@
     <string name="disabled_in_dc">Desactivat a Delta Chat</string>
     <string name="disabled_in_system_settings">Desactivat a la configuració del sistema</string>
     <string name="bg_app_refresh_disabled">El \"Refresc en segon pla d\'aplicacions\" està deshabilitat als paràmetres del sistema</string>
-    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
+    <!-- deprecated, was used on iOS only -->
     <string name="delayed">Ajornat</string>
     <string name="notifications_avg_minutes">De mitjana, cada %1$d minuts</string>
     <string name="notifications_avg_hours">De mitjana, cada %1$d hores</string>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
-    <string name="app_name">德爾塔聊</string>
+    <string name="app_name">Delta Chat</string>
     <string name="ok">確定</string>
     <string name="cancel">取消</string>
     <string name="clear_search">清除搜尋</string>
@@ -122,6 +122,7 @@
     <plurals name="n_minutes">
         <item quantity="other">%d分鐘前</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="other">%d小時前</item>
@@ -342,20 +343,33 @@
     </plurals>
     <string name="file_saved_to">檔案已儲存至「%1$s」。</string>
 
+    <!-- deprecated -->
     <string name="videochat">視訊通話</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">邀請%1$s至視訊通話？</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">這個動作需要雙方有相容的應用程式或瀏覽器。</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">已將%1$s邀請至視訊通話。</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">你已經被邀請至視訊通話。</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">點擊以加入</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">點擊以開啟</string>
+    <!-- deprecated -->
     <string name="videochat_instance">視訊通話服務商</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">你的視訊通話服務商</string>
-    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
+    <!-- deprecated -->
     <string name="videochat_instance_example">範例：https://your-server.org/$ROOM</string>
+    <!-- deprecated -->
     <string name="videochat_instance_explain_2">如果啟用，你可以在每個對話中開始視訊聊天。兩端都需要相容的應用程式或瀏覽器。</string>
+    <!-- deprecated -->
     <string name="videochat_instance_from_qr">要使用「%1$s」來邀請其他人加入視訊通話嗎？\n\n一旦設定完成，你可以在每個聊天室內開啟視訊通話。這將會取代先前的視訊通話設定。</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">視訊通話邀請</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">你被邀請至視訊電話，點擊%1$s以加入。</string>
 
     <plurals name="ask_delete_chat">
@@ -419,6 +433,8 @@
     <string name="chat_no_messages">沒有訊息。</string>
     <string name="chat_self_talk_subtitle">傳送給自己的訊息</string>
     <string name="archive_empty_hint">存檔的聊天記錄將在此處顯示。</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">儲存</string>
     <string name="saved_messages">已儲存的訊息</string>
     <string name="saved_messages_explain">• 在此處轉發消息以便於訪問\n\n• 做筆記或語音備忘錄\n\n• 附加媒體以保存它們</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -829,8 +845,10 @@
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">下載后立即</string>
     <string name="after_30_seconds">30 秒後</string>
+    <!-- deprecated -->
     <string name="after_1_minute">1 分鐘後</string>
     <string name="after_5_minutes">5 分鐘後</string>
+    <!-- deprecated -->
     <string name="after_30_minutes">30 分鐘後</string>
     <string name="autodel_after_1_hour">1 小時後</string>
     <string name="autodel_after_1_day">1 天後</string>
@@ -882,8 +900,9 @@
     <string name="ephemeral_timer_seconds_by_you">您將自動刪除訊息計時器設置為%1$s秒</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s設置自動刪除訊息計時器為%1$s秒。</string>
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">您將自動刪除訊息計時器設置為 1 分鐘。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s將自動刪除訊息計時器設置為 1 分鐘。</string>
     <string name="ephemeral_timer_1_hour_by_you">您將自動刪除訊息計時器設置為 1 小時。</string>
     <!-- %1$s will be replaced by name and address of the contact -->
@@ -1103,7 +1122,7 @@
     <string name="disabled_in_dc">在 Delta Chat 中已禁用</string>
     <string name="disabled_in_system_settings">在系統設定中禁用</string>
     <string name="bg_app_refresh_disabled">在系統設定中已禁用 「後台應用程式刷新」</string>
-    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
+    <!-- deprecated, was used on iOS only -->
     <string name="delayed">已延遲</string>
     <string name="notifications_avg_minutes">平均每%1$d分鐘一次</string>
     <string name="notifications_avg_hours">平均每%1$d小時一次</string>
