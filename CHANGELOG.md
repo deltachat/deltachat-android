@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.20.0
 
 * target Android 15
 * improve readability of info messages in dark mode
