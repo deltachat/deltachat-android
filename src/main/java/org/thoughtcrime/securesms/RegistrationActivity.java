@@ -46,8 +46,6 @@ import androidx.constraintlayout.widget.Group;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcProvider;
-import com.b44t.messenger.util.concurrent.ListenableFuture;
-import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -68,6 +66,8 @@ import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.EnteredCertificateChecks;
 import chat.delta.rpc.types.EnteredLoginParam;
 import chat.delta.rpc.types.Socket;
+import chat.delta.util.ListenableFuture;
+import chat.delta.util.SettableFuture;
 
 public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
