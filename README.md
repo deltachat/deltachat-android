@@ -6,7 +6,7 @@ the [Google Play Store](https://play.google.com/store/apps/details?id=chat.delta
 The APK can also be downloaded from [get.delta.chat](https://get.delta.chat).
 
 For the core library and other common info, please refer to the
-[Delta Chat Core Library](https://github.com/deltachat/deltachat-core-rust).
+[Chatmail Core Library](https://github.com/chatmail/core).
 
 For general contribution hints, please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
 
