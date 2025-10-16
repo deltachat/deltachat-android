@@ -1,9 +1,12 @@
 ## Delta Chat Android Client
 
 This is the Android client for [Delta Chat](https://delta.chat/).
-It is available on [F-Droid](https://f-droid.org/app/com.b44t.messenger) and
-the [Google Play Store](https://play.google.com/store/apps/details?id=chat.delta).
-The APK can also be downloaded from [get.delta.chat](https://get.delta.chat).
+
+[<img src="https://delta.chat/assets/badges/get-it-on-gplay.png" alt="Get it on Google Play" height="48">](https://play.google.com/store/apps/details?id=chat.delta)
+[<img src="https://delta.chat/assets/badges/get-it-on-fdroid.png" alt="Get it on F-Droid" height="48">](https://f-droid.org/app/com.b44t.messenger)
+
+Other download options and downloads for other platforms can be
+found at [get.delta.chat](https://get.delta.chat).
 
 For the core library and other common info, please refer to the
 [Chatmail Core Library](https://github.com/chatmail/core).
