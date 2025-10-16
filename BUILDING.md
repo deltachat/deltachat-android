@@ -5,6 +5,10 @@ build and test the app. Before diving into developing, please
 first read [CONTRIBUTING.md](./CONTRIBUTING.md) for general
 contribution hints and conventions.
 
+Please follow all steps precisely.
+If you run into troubles,
+ask on one of the [communication channels](https://delta.chat/contribute) for help
+
 
 ## Check Out Repository
 
