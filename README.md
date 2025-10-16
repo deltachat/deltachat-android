@@ -12,6 +12,7 @@ For the core library and other common info, please refer to the
 [Chatmail Core Library](https://github.com/chatmail/core).
 
 For general contribution hints, please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
+For building the app, refer to  [BUILDING.md](./BUILDING.md).
 
 <img alt="Screenshot Chat List" src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="298" /> <img alt="Screenshot Chat View" src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="298" />
 
