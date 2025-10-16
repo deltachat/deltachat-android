@@ -122,6 +122,7 @@
         <item quantity="many">%d minút</item>
         <item quantity="other">%d minúty</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d hodina</item>
@@ -370,20 +371,33 @@
     </plurals>
     <string name="file_saved_to">Súbor bol uložený do priečinka %1$s</string>
 
+    <!-- deprecated -->
     <string name="videochat">Videohovor</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">Pozvať %1$s na videohovor?</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">Vyžaduje to kompatibilnú aplikáciu alebo kompatibilný prehliadač na oboch stranách.</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">%1$s pozvaný na videohovor.</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">Pozvali ste na videohovor.</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">Klepnutím sa pripojíte</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">Otvoríte klepnutím</string>
+    <!-- deprecated -->
     <string name="videochat_instance">Inštancia videohovoru</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">Vaša inštancia videohovoru</string>
-    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
+    <!-- deprecated -->
     <string name="videochat_instance_example">Príklady: https://your-server.org/$ROOM</string>
+    <!-- deprecated -->
     <string name="videochat_instance_explain_2">Ak to zapnete, môžete začať video rozhovor z každej konverzácie. Vyžaduje kompatibilnú aplikáciu alebo prehliadač na oboch stranách.</string>
+    <!-- deprecated -->
     <string name="videochat_instance_from_qr">Použiť „%1$s“ na odoslanie pozvánky na videohovor?\n\nPo nastavení môžete začať videohovor z každej jednotlivej konverzácie. Toto nahradí predchádzajúce nastavenie pre videohovory, ak existujú.</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">Pozvánka na videohovor</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">Ste pozvaní na videohovor, kliknutím %1$s sa pripojíte.</string>
 
     <plurals name="ask_delete_chat">
@@ -466,6 +480,8 @@
     <string name="chat_no_messages">Žiadne správy.</string>
     <string name="chat_self_talk_subtitle">Správy, ktoré som posielal(a) sám(a) sebe</string>
     <string name="archive_empty_hint">Po archivovaní konverzácií sa zobrazia tu.</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Uložiť</string>
     <string name="saved_messages">Uložené správy</string>
     <string name="saved_messages_explain">• Preposielajte správy sem, aby ste k nim mali ľahký prístup\n\n• Robte si poznámky alebo hlasové poznámky\n\n• Pripojte médiá, aby ste ich uložili</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -838,8 +854,10 @@ Ak chcete pokračovať, aktualizujte toto zariadenie na najnovšiu verziu Delta 
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Naraz</string>
     <string name="after_30_seconds">Po 30 sekundách</string>
+    <!-- deprecated -->
     <string name="after_1_minute">Po 1 minúte</string>
     <string name="after_5_minutes">Po 5 minútach</string>
+    <!-- deprecated -->
     <string name="after_30_minutes">Po 30 minútach</string>
     <string name="autodel_after_1_hour">Po 1 hodine</string>
     <string name="autodel_after_1_day">Po 1 dni</string>
@@ -889,8 +907,9 @@ Ak chcete pokračovať, aktualizujte toto zariadenie na najnovšiu verziu Delta 
     <string name="ephemeral_timer_seconds_by_you">Časovač zmiznutia správ nastavený na %1$s s mnou.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Časovač zmiznutia správ nastavený na %1$s s od %2$s.</string>
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Časovač zmiznutia správ bol nastavený na 1 minútu mnou.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">Časovač zmiznutia správ bol nastavený na 1 minútu od %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Časovač zmiznutia správ bol nastavený na 1 hodinu mnou.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
@@ -1096,7 +1115,7 @@ Váš existujúci účet nebude odstránený. Medzi účtami môžete prepínať
     <string name="disabled_in_dc">Vypnuté v Delta Chat-e</string>
     <string name="disabled_in_system_settings">Vypnuté v nastaveniach systém</string>
     <string name="bg_app_refresh_disabled">\"Obnovenie aplikácie na pozadí\" vypnuté v nastaveniach systém</string>
-    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
+    <!-- deprecated, was used on iOS only -->
     <string name="delayed">Oneskorené</string>
     <string name="notifications_avg_minutes">V priemere každých %1$d minút</string>
     <string name="notifications_avg_hours">V priemere každých %1$d hodín</string>

@@ -72,7 +72,6 @@ public class DcHelper {
     public static final String CONFIG_MEDIA_QUALITY = "media_quality";
     public static final String CONFIG_PROXY_ENABLED = "proxy_enabled";
     public static final String CONFIG_PROXY_URL = "proxy_url";
-    public static final String CONFIG_VERIFIED_ONE_ON_ONE_CHATS = "verified_one_on_one_chats";
     public static final String CONFIG_WEBXDC_REALTIME_ENABLED = "webxdc_realtime_enabled";
     public static final String CONFIG_PRIVATE_TAG = "private_tag";
     public static final String CONFIG_STATS_SENDING = "stats_sending";
@@ -167,8 +166,6 @@ public class DcHelper {
     dcContext.setStockTranslation(72, context.getString(R.string.systemmsg_unknown_sender_for_chat));
     dcContext.setStockTranslation(73, context.getString(R.string.systemmsg_subject_for_new_contact));
     dcContext.setStockTranslation(74, context.getString(R.string.systemmsg_failed_sending_to));
-    dcContext.setStockTranslation(82, context.getString(R.string.videochat_invitation));
-    dcContext.setStockTranslation(83, context.getString(R.string.videochat_invitation_body));
     dcContext.setStockTranslation(84, context.getString(R.string.configuration_failed_with_error));
     dcContext.setStockTranslation(85, context.getString(R.string.devicemsg_bad_time));
     dcContext.setStockTranslation(86, context.getString(R.string.devicemsg_update_reminder));

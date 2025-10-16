@@ -71,6 +71,7 @@
         <item quantity="one">%d minutt</item>
         <item quantity="other">%d minutter</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d time</item>
@@ -194,17 +195,29 @@
 
     <string name="file_saved_to">Lagre fil til \"%1$s\".</string>
 
+    <!-- deprecated -->
     <string name="videochat">Videochat</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">Inviter %1$s til en videochat?</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">Dette krever en kompatibel app, eller en kompatible nettleser i begge ender.</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">%1$s inviterte til en videochat.</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">Du inviterte til en videochat.</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">Trykk for å bli med</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">Trykk for å åpne</string>
+    <!-- deprecated -->
     <string name="videochat_instance">Videochatteinstans</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">Din videochatteinstans</string>
+    <!-- deprecated -->
     <string name="videochat_instance_from_qr">Bruk \"%1$s\" til å invitere andre til videochatter?\n\nNår satt, kan dere starte videochatter til hverandre en-til-en. Dette vil erstatte, eventuelle, tidligere innstillinger for videochatter.</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">Videochatinvitasjon</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">Du er invitert til en videochat, klikk %1$s for å bli med.</string>
 
     <string name="ask_forward">Videresend meldinger til %1$s?</string>
@@ -251,6 +264,8 @@
     <string name="chat_archived_label">Arkivert</string>
     <string name="chat_no_messages">Ingen meldinger.</string>
     <string name="chat_self_talk_subtitle">Meldinger jeg har sendt til meg selv</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Lagre</string>
     <string name="saved_messages">Lagrede meldinger</string>
     <!-- search -->
     <string name="search">Søk</string>

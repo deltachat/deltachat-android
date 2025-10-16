@@ -120,6 +120,7 @@
         <item quantity="one">min %d</item>
         <item quantity="other">%d min</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">ordu %d</item>
@@ -177,9 +178,29 @@
     <string name="documents">Dokumentuak</string>
     <string name="contact">Kontaktua</string>
     <string name="camera">Kamera</string>
+    <string name="toggle_fullscreen">Aldatu pantaila osoa modua</string>
     <string name="location">Kokalekua</string>
     <string name="gallery">Galeria</string>
+    <string name="images_and_videos">Irudiak eta bideoak</string>
     <string name="file">Fitxategia</string>
+    <string name="files">Fitxategiak</string>
+    <string name="files_attach_hint">Bidali jatorrizko fitxategiak eta konprimatu gabeko irudiak</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Aukeratu fitxategien artean</string>
+    <string name="choose_from_gallery">Aukeratu Galeriatik</string>
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">Aplikazioa</string>
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">Aplikazioak</string>
+    <string name="webxdc_draft_hint">Sakatu \"Bidali\" partekatzeko</string>
+    <string name="home">Hasiera</string>
+    <string name="games">Jokoak</string>
+    <string name="tools">Tresnak</string>
+    <string name="app_size">Tamaina</string>
+    <string name="app_date_published">Argitaratua</string>
+    <string name="add_to_chat">Gehitu txatera</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Arakatu</string>
     <string name="unknown">Ezezaguna</string>
 
     <string name="green">Berdea</string>
@@ -191,6 +212,8 @@
     <string name="magenta">Magenta</string>
     <string name="white">Zuria</string>
 
+    <string name="zoom">Zooma</string>
+    <string name="extra_small">Txiki txikia</string>
     <string name="small">Txikia</string>
     <string name="normal">Arrunta</string>
     <string name="large">Handia</string>
@@ -201,6 +224,7 @@
 
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Kontaktu berria</string>
+    <string name="menu_new_classic_contact">Gehitu kontaktua eskuz</string>
     <string name="menu_new_chat">Txat berria</string>
     <string name="menu_new_group">Talde berria</string>
     <string name="menu_send">Bidali</string>
@@ -308,6 +332,8 @@
     <string name="chat_archived_label">Artxibatuta</string>
     <string name="chat_no_messages">Mezurik ez.</string>
     <string name="chat_self_talk_subtitle">Nire buruari bidalitako mezuak</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Gorde</string>
     <string name="saved_messages">Gordetako mezuak</string>
     <string name="saved_messages_explain">• Birbidali mezuak hona eskura izateko\n\n• Hartu oharrak edo ahots mezuak\n\n• Gehitu multimedia horietara</string>
     <string name="retry_send">Saiatu berriro mezua bidaltzen</string>

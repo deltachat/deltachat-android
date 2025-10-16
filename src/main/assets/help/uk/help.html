@@ -87,6 +87,7 @@
     <ul>
       <li><a href="#яких-дозволів-потребує-delta-chat">Яких дозволів потребує Delta Chat?</a></li>
       <li><a href="#чи-підтримує-delta-chat-роботу-з-моїм-провайдером-електронної-пошти">Чи підтримує Delta Chat роботу з <em>моїм</em> провайдером електронної пошти?</a></li>
+      <li><a href="#can-i-use-delta-chat-in-parallel-with-other-e-mail-apps">Can I use Delta Chat in parallel with other E-Mail apps?</a></li>
       <li><a href="#я-хочу-керувати-власним-сервером-для-delta-chat-що-ви-порекомендуєте">Я хочу керувати власним сервером для Delta Chat. Що ви порекомендуєте?</a></li>
       <li><a href="#чому-я-маю-вводити-пароль-до-моєї-електронної-пошти-у-delta-chat-чи-це-безпечно">Чому я маю вводити пароль до моєї електронної пошти у Delta Chat? Чи це безпечно?</a></li>
       <li><a href="#які-повідомлення-відображаються-у-delta-chat">Які повідомлення відображаються у Delta Chat?</a></li>
@@ -358,7 +359,11 @@
         
       </h3>
 
-<p>Увімкнути “повідомлення, що зникають” можна в налаштуваннях чату, у верхньому правому куті вікна чату, вибравши проміжок часу від 1 хвилини до 5 тижнів.</p>
+<p>You can turn on “disappearing messages”
+in the settings of a chat,
+at the top right of the chat window,
+by selecting a time span
+between 5 minutes and 1 year.</p>
 
 <p>Доки налаштування не буде знову вимкнено, додаток Delta Chat кожного учасника чату піклується про видалення повідомлень через вибраний проміжок часу. Проміжок часу починається коли одержувач вперше побачив повідомлення в Delta Chat. Повідомлення видаляються як з кожної поштової скриньки на сервері, так і в самому додатку.</p>
 
@@ -642,7 +647,10 @@ Push-сповіщення автоматично активуються для �
 
 <p>Якщо ви використовуєте стандартні <a href="https://chatmail.at/relays">ретранслятори чату</a>, неможливо отримувати або надсилати повідомлення без наскрізного шифрування.</p>
 
-<p>Якщо ви створите профіль за допомогою класичного поштового сервера, ви зможете надсилати та отримувати повідомлення без наскрізного шифрування. Такі повідомлення без наскрізного шифрування позначаються значком електронної пошти <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
+<p>If you instead create a profile using a classic e-mail server,
+you can send and receive messages with or without end-to-end encryption.
+Messages lacking end-to-end encryption are marked with an e-mail icon
+<img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
     
       <h3 id="howtoe2ee">
         
@@ -1255,6 +1263,29 @@ Delta Chat скоріше використовує реалізацію OpenPGP 
   <li>У більшості випадків: Так :)
 Проте для коректної роботи деяких провайдерів потрібні специфічні налаштування. Дивіться наш <a href="https://providers.delta.chat">огляд провайдерів</a></li>
 </ul>
+    
+      <h3 id="can-i-use-delta-chat-in-parallel-with-other-e-mail-apps">
+        
+        
+          Can I use Delta Chat in parallel with other E-Mail apps? <a href="#can-i-use-delta-chat-in-parallel-with-other-e-mail-apps" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Yes, but it is not recommended.</p>
+
+<p>Parallel usage with the same E-Mail address might lead to the following inconveniences:</p>
+
+<ul>
+  <li>Next to your Delta Chat notifications,
+you might also get notifications for (encrypted, so unreadable) chat mail messages
+in your other email app</li>
+  <li>If Delta Chat is not running
+or “Advanced &gt; Move automatically to the DeltaChat Folder” is disabled,
+encrypted Delta Chat messages might clutter the Inbox in your other E-Mail apps.</li>
+</ul>
+
+<p><a href="https://support.delta.chat/t/sieve-rule-to-move-deltachat-mails-to-deltachat-folder/288/10">Sieve rules</a> can solve these problems.</p>
     
       <h3 id="я-хочу-керувати-власним-сервером-для-delta-chat-що-ви-порекомендуєте">
         
