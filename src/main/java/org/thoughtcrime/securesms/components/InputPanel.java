@@ -23,8 +23,6 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.b44t.messenger.DcMsg;
-import com.b44t.messenger.util.concurrent.ListenableFuture;
-import com.b44t.messenger.util.concurrent.SettableFuture;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.animation.AnimationCompleteListener;
@@ -41,6 +39,9 @@ import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
+
+import chat.delta.util.ListenableFuture;
+import chat.delta.util.SettableFuture;
 
 public class InputPanel extends ConstraintLayout
   implements MicrophoneRecorderView.Listener,
