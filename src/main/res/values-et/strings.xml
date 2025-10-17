@@ -118,6 +118,16 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Viimati nähtud: %1$s</string>
     <string name="last_seen_unknown">Viimati nähtud: pole teada</string>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
+    <plurals name="n_seconds_ext">
+        <item quantity="one">%d sekund</item>
+        <item quantity="other">%d sekundit</item>
+    </plurals>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
+    <plurals name="n_minutes_ext">
+        <item quantity="one">%d minut</item>
+        <item quantity="other">%d minutit</item>
+    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -240,6 +250,7 @@
     <string name="menu_new_group">Uus grupp</string>
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Saada sõnum…</string>
+    <string name="clone_chat">Tee vestlusest koopia</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel">Kanal</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -366,6 +377,20 @@
     </plurals>
     <string name="file_saved_to">Fail on salvestatud: „%1$s“.</string>
 
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">Helista</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">Vasta</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">Keeldu</string>
+    <string name="outgoing_call">Väljuv kõne</string>
+    <string name="incoming_call">Saabuv kõne</string>
+    <string name="declined_call">Keeldutud kõne</string>
+    <string name="canceled_call">katkestatud kõne</string>
+    <string name="missed_call">Märkamata kõne</string>
+    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
+    <string name="call_date_and_duration">%1$s, %2$s</string>
+
     <!-- deprecated -->
     <string name="videochat">Videovestlus</string>
     <!-- deprecated -->
@@ -404,7 +429,13 @@
         <item quantity="one">Kas kustutad %d sõnumi kõikidest oma seadmetest?</item>
         <item quantity="other">Kas kustutad %d sõnumit kõikidest oma seadmetest?</item>
     </plurals>
+    <!-- Used for the deletion of Device messages -->
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Kas soovid kustutada %d sõnumi?</item>
+        <item quantity="other">Kas soovid kustutada %d sõnumit?</item>
+    </plurals>
     <string name="ask_forward">Kas edastad sõnumi kasutajale %1$s?</string>
+    <string name="ask_forward_multiple">Kas edastad sõnumid %1$d vestlusesse?</string>
     <string name="ask_unblock_contact">Kas lõpetad kontakti blokeerimise?</string>
     <string name="ask_start_chat_with">Kas soovid vestelda kasutajaga %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -452,6 +483,8 @@
     <string name="chat_request_label">Päring</string>
     <string name="chat_request_label_explain">Lisa päringud nii loenduritesse kui teavitustesse</string>
     <string name="chat_no_messages">Sõnumeid pole.</string>
+    <string name="chat_self_talk_subtitle">Sõnumid sulle endale</string>
+    <string name="archive_empty_hint">Arhiveeritud vestlused saavad olema leitavad siin.</string>
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Salvesta sõnum</string>
     <string name="saved_messages">Salvestatud sõnumid</string>
@@ -461,13 +494,29 @@
     <string name="retry_send">Proovi uuesti sõnumit saata</string>
     <string name="cannot_display_unsuported_file_type">Selle failitüübi kuvamine pole võimalik: %s</string>
     <string name="attachment_failed_to_load">Manuse laadimine ei õnnestunud</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Jätka salvestamist</string>
+
     <!-- mailing lists -->
     <string name="mailing_list">Postiloend</string>
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Alusta…</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Esmalt palun nõustu vestluskutsega.</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Saada sõnum…</string>
+    <string name="enable_realtime">Reaalajas toimivad rakendused</string>
+    <string name="enable_realtime_explain">Vestlustega seotud rakendused võivad kasutada reaalajas ühendusi. Kui valik on kasutusel, siis vestluste osapooltel on võimalik peale rakenduse käivitamist tuvastada sinu IP-aadress.</string>
+
     <string name="add_poi">Saada huvipunkti teave</string>
 
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">Sellele vestluse süsteemsed teated saavad olema nähtavad siin.</string>
     <string name="chat_audit_log_title">%1$s vestluse kontroll-logi</string>
+    <!-- punycode warning / labeled links -->
+    <!-- placeholder is domain/hostname that should be trusted -->
+    <string name="open_external_url_trust_domain">Ära enam %1$s puhul küsi</string>
     <string name="puny_code_warning_header">Tuvastasin kahtlase lingi</string>
     <!-- search -->
     <string name="search">Otsi</string>
@@ -509,6 +558,10 @@
     <string name="all_files_empty_hint">Ükspuha mis vestlusele lisatud dokumendid ja muud failid saavad olema nähtavad siin.</string>
     <string name="all_apps_empty_hint">Ükspuha mis vestlusele lisatud rakendused saavad olema nähtavad siin.</string>
     <string name="media_preview">Meediumi eelvaade</string>
+    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <string name="aspect_ratio_grid">Proportsionaalne ruudustikuvaade</string>
+    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <string name="square_grid">Range ruudustikuvaade</string>
     <string name="send_message">Saada sõnum</string>
 
     <!-- Multi Device -->
@@ -624,6 +677,8 @@
     <string name="login_error_port">Palun sisesta korrektne pordi number (1–65535)</string>
     <string name="login_error_required_fields">Palun sisesta kehtiv e-posti aadress ja salasõna</string>
     <string name="import_backup_title">Taasta varukoopiast</string>
+    <string name="import_backup_ask">Asukohas „%1$s“ on olemas varukoopia.\n\nKas sa soovid ta importida ning kasutada kõiki seal leiduvaid andmeid ja seadistusi?</string>
+    <string name="import_backup_no_backup_found">Varukoopiaid ei leidu.\n\nKopeeri varukoopia siia: „%1$s“ ning proovi uuesti. Alternatiivina võid vajutada „Alusta suhtlemist“ ning jätka tavalist seadistamist.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">E-posti aadressiga „%1$s“ ei õnnestu sisse logida. Palun kontrolli, kas aadress ja salasõna on õiged.</string>
     <!-- TLS certificate checks -->
@@ -669,6 +724,7 @@
     <string name="pref_default_status_label">Elulugu/allkiri/moto</string>
     <string name="pref_enter_sends">Sisestusklahv saadab sõnumi</string>
     <string name="pref_outgoing_media_quality">Saadetava meediumi kvaliteet</string>
+    <string name="pref_outgoing_balanced">Tasakaalustatud</string>
     <string name="pref_outgoing_worse">Kõige kehvem kvaliteet, aga väikseim maht</string>
     <string name="pref_vibrate">Väristamine</string>
     <string name="pref_screen_security">Ekraani turvalisus</string>
@@ -735,7 +791,10 @@
     <string name="pref_watch_sent_folder">Välju saadetud sõnumite kausta</string>
     <string name="pref_send_copy_to_self">Saada koopia iseendale</string>
     <string name="pref_send_copy_to_self_explain">Vajalik, kui kasutad seda kontot mitmes seadmes.</string>
+    <string name="pref_auto_folder_moves">Tõsta automaatselt DeltaChati kausta</string>
+    <string name="pref_only_fetch_mvbox_title">Laadi vaid DeltaChati kasutast</string>
     <string name="pref_show_emails">Näita klassikalisi e-kirju</string>
+    <string name="pref_show_emails_all">Kõik</string>
     <string name="pref_experimental_features">Katselised funktsionaalsused</string>
     <string name="pref_developer_mode">Arendaja režiim</string>
     <string name="pref_developer_mode_explain">Lülitab sisse veaotsingu tarvikud ja see võib rakenduse töökindlust vähendada. Sobib arendajatele.</string>
@@ -760,6 +819,7 @@
     <string name="profile_image_delete">Kustuta profiilipilt</string>
     <string name="pref_show_tray_icon">Näita süsteemisalve ikooni</string>
     <string name="pref_edit_profile">Muuda profiili</string>
+    <string name="disable_imap_idle">Lülita IMAP IDLE välja</string>
     <string name="send_stats_to_devs">Saada statistikat Delta Chati kasutajatele</string>
 
 
@@ -1085,6 +1145,8 @@
     <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat võib kasutada Face ID teenust sinu kohaliku profiili kaitsmiseks, varukoopia tegemiseks ja täiendavate seadmete seadistamiseks.</string>
 
     <string name="pref_reliable_service">Kasuta ühendust taustal</string>
+    <string name="pref_reliable_service_explain">Põhjustab püsiteavituse</string>
+
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Kui soovid, et Delta Chat saaks sõnumeid ka taustateenusena toimides, siis klõpsi siin.</string>
     <!-- device messages for updates -->
