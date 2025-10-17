@@ -411,8 +411,8 @@
     <string name="end_call">Отклонить</string>
     <string name="outgoing_call">Исходящий звонок</string>
     <string name="incoming_call">Входящий звонок</string>
-    <string name="declined_call">Отклоненный звонок</string>
-    <string name="canceled_call">Отмененный звонок</string>
+    <string name="declined_call">Отклонённый звонок</string>
+    <string name="canceled_call">Отменённый звонок</string>
     <string name="missed_call">Пропущенный звонок</string>
     <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
     <string name="call_date_and_duration">%1$s, %2$s</string>

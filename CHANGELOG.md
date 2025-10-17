@@ -17,7 +17,7 @@
 * several small fixes and improvements
 * add experimental built-in calls
 * don't show badge counter in app icon for the permanent background notification
-* update to core 2.20.0
+* update to core 2.22.0
 
 ## v2.11.0
 2025-08
