@@ -392,9 +392,9 @@
     <string name="file_saved_to">File salvato su \"%1$s\".</string>
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
-    <string name="start_call">Chiamata</string>
+    <string name="start_call">Chiama</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
-    <string name="answer_call">Risposta</string>
+    <string name="answer_call">Rispondi</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Rifiuta</string>
     <string name="outgoing_call">Chiamata in uscita</string>
@@ -440,7 +440,7 @@
     <plurals name="ask_delete_chat">
         <item quantity="one">Eliminare %d chat su tutti i tuoi dispositivi?</item>
         <item quantity="many">Eliminare %d chats su tutti i tuoi dispositivi?</item>
-        <item quantity="other">Eliminare %d chats su tutti i tuoi dispositivi?</item>
+        <item quantity="other">Eliminare %d chat su tutti i tuoi dispositivi?</item>
     </plurals>
     <string name="ask_delete_named_chat">Eliminare la chat \"%1$s\" su tutti i tuoi dispositivi?</string>
     <string name="ask_delete_message">Vuoi eliminare questo messaggio da tutti i tuoi dispositivi?</string>
@@ -544,7 +544,7 @@
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Invia Messaggio a...</string>
     <string name="enable_realtime">App in Tempo Reale</string>
-    <string name="enable_realtime_explain">Abilita connessioni in tempo reale per apps condivise nelle chats. Se abilitato, i partner della chat potrebbero essere in grado di scoprire il tuo indirizzo IP quando avvii un\'app.</string>
+    <string name="enable_realtime_explain">Abilita connessioni in tempo reale per apps condivise nelle chat. Se abilitato, i partner della chat potrebbero essere in grado di scoprire il tuo indirizzo IP quando avvii un\'app.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Mostra le posizioni nell\'intervallo di tempo</string>
@@ -586,7 +586,7 @@
     <string name="group_add_members">Aggiungi Membri</string>
     <string name="group_self_not_in_group">Devi essere un membro del gruppo per fare questa azione.</string>
     <string name="profile_encryption">Crittografia</string>
-    <string name="profile_shared_chats">Chats in Comune</string>
+    <string name="profile_shared_chats">Chat in Comune</string>
     <string name="related_chats">Chat Correlate</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Membri Passati</string>
@@ -818,7 +818,7 @@
     <string name="pref_use_system_emoji_explain">Disattiva il supporto delle emoji integrato in Delta Chat</string>
     <string name="pref_show_system_contacts">Leggi Rubrica di Sistema</string>
     <string name="pref_show_system_contacts_explain">Offri la possibilità di creare chat con i contatti della rubrica.</string>
-    <string name="pref_chats">Chats</string>
+    <string name="pref_chats">Chat</string>
     <string name="pref_in_chat_sounds">Suoni In-Chat</string>
     <string name="pref_view_log">Vedi Registro</string>
     <string name="pref_saved_log">Registro salvato nella cartella \"Downloads\"</string>
@@ -1100,7 +1100,7 @@
     <string name="new_messages">Nuovi messaggi</string>
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">Hai nuovi messaggi</string>
-    <string name="n_messages_in_m_chats">%1$d messaggi in %2$d chats</string>
+    <string name="n_messages_in_m_chats">%1$d messaggi in %2$d chat</string>
 
 
     <!-- permissions -->
