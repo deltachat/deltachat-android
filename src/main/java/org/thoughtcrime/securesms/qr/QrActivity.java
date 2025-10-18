@@ -44,6 +44,9 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import chat.delta.rpc.types.SecurejoinSource;
+import chat.delta.rpc.types.SecurejoinUiPath;
+
 public class QrActivity extends BaseActionBarActivity implements View.OnClickListener {
 
     private final static String TAG = QrActivity.class.getSimpleName();
@@ -140,7 +143,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
         AttachmentManager.selectImage(this, REQUEST_CODE_IMAGE);
       } else if (itemId == R.id.paste) {
         QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.handleQrData(Util.getTextFromClipboard(this), QrCodeHandler.SECUREJOIN_SOURCE_CLIPBOARD, getUiPath());
+        qrCodeHandler.handleQrData(Util.getTextFromClipboard(this), SecurejoinSource.Clipboard, getUiPath());
       }
 
         return false;
@@ -187,7 +190,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
                         try {
                             Result result = reader.decode(bBitmap);
                             QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-                            qrCodeHandler.handleQrData(result.getText(), QrCodeHandler.SECUREJOIN_SOURCE_IMAGE_LOADED, getUiPath());
+                            qrCodeHandler.handleQrData(result.getText(), SecurejoinSource.ImageLoaded, getUiPath());
                         } catch (NotFoundException e) {
                             Log.e(TAG, "decode exception", e);
                             Toast.makeText(this, getString(R.string.qrscan_failed), Toast.LENGTH_LONG).show();
@@ -200,16 +203,16 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
         }
     }
 
-    private int getUiPath() {
-        int uiPath = 0;
+    private SecurejoinUiPath getUiPath() {
+        SecurejoinUiPath uiPath = null;
         ComponentName caller = this.getCallingActivity();
         if (caller != null) {
             if (caller.getClassName().equals(NewConversationActivity.class.getName())) {
-                uiPath = QrCodeHandler.SECUREJOIN_UIPATH_NEW_CONTACT;
+                uiPath = SecurejoinUiPath.NewContact;
             } else if (caller.getClassName().equals(ConversationListActivity.class.getName())
                     // RoutingActivity is an alias for ConversationListActivity
                     || caller.getClassName().endsWith(".RoutingActivity")) {
-                uiPath = QrCodeHandler.SECUREJOIN_UIPATH_QR_ICON;
+                uiPath = SecurejoinUiPath.QrIcon;
             }
         }
         return uiPath;

@@ -18,6 +18,9 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 
+import chat.delta.rpc.types.SecurejoinSource;
+import chat.delta.rpc.types.SecurejoinUiPath;
+
 public class QrCodeHandler {
 
     public static int SECUREJOIN_SOURCE_EXTERNAL_LINK = 1;
@@ -37,15 +40,15 @@ public class QrCodeHandler {
         dcContext = DcHelper.getContext(activity);
     }
 
-    public void onScanPerformed(IntentResult scanResult, int uipath) {
+    public void onScanPerformed(IntentResult scanResult, SecurejoinUiPath uipath) {
         if (scanResult == null || scanResult.getFormatName() == null) {
             return; // aborted
         }
 
-        handleQrData(scanResult.getContents(), QrCodeHandler.SECUREJOIN_SOURCE_SCAN, uipath);
+        handleQrData(scanResult.getContents(), SecurejoinSource.Scan, uipath);
     }
 
-    public void handleQrData(String rawString, int source, int uiPath) {
+    public void handleQrData(String rawString, SecurejoinSource source, SecurejoinUiPath uiPath) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         final DcLot qrParsed = dcContext.checkQr(rawString);
         String name = dcContext.getContact(qrParsed.getId()).getDisplayName();
@@ -228,7 +231,13 @@ public class QrCodeHandler {
         });
     }
 
-    private void showVerifyContactOrGroup(Activity activity, AlertDialog.Builder builder, String qrRawString, DcLot qrParsed, String name, int source, int uipath) {
+  private void showVerifyContactOrGroup(Activity activity,
+                                        AlertDialog.Builder builder,
+                                        String qrRawString,
+                                        DcLot qrParsed,
+                                        String name,
+                                        SecurejoinSource source,
+                                        SecurejoinUiPath uipath) {
         String msg;
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ASK_VERIFYGROUP:

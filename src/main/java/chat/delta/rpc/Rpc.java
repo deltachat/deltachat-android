@@ -111,6 +111,26 @@ public class Rpc {
   }
 
   /**
+   * Like `secure_join()`, but allows to pass a source and a UI-path.
+   * You only need this if your UI has an option to send statistics
+   * to Delta Chat's developers.
+   * <p>
+   * **source**: The source where the QR code came from.
+   * E.g. a link that was clicked inside or outside Delta Chat,
+   * the "Paste from Clipboard" action,
+   * the "Load QR code as image" action,
+   * or a QR code scan.
+   * <p>
+   * **uipath**: Which UI path did the user use to arrive at the QR code screen.
+   * If the SecurejoinSource was ExternalLink or InternalLink,
+   * pass null here, because the QR code screen wasn't even opened.
+   * ```
+   */
+  public Integer secureJoinWithUxInfo(Integer accountId, String qr, SecurejoinSource source, SecurejoinUiPath uipath) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "secure_join_with_ux_info", mapper.valueToTree(accountId), mapper.valueToTree(qr), mapper.valueToTree(source), mapper.valueToTree(uipath));
+  }
+
+  /**
    * Create a new unencrypted group chat.
    * <p>
    * Same as [`Self::create_group_chat`], but the chat is unencrypted and can only have
@@ -246,7 +266,4 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Boolean>(){}, "can_send", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
   }
 
-  public Integer secureJoinWithUxInfo(Integer accountId, String qr, Integer source, Integer uipath) throws RpcException {
-    return transport.callForResult(new TypeReference<Integer>() {}, "secure_join_with_ux_info", mapper.valueToTree(accountId), mapper.valueToTree(qr), mapper.valueToTree(source), mapper.valueToTree(uipath));
-  }
 }

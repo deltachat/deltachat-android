@@ -22,6 +22,8 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import chat.delta.rpc.types.SecurejoinUiPath;
+
 public class NewContactActivity extends PassphraseRequiredActionBarActivity
 {
 
@@ -103,7 +105,7 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
     if (requestCode == IntentIntegrator.REQUEST_CODE) {
       IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
       QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-      qrCodeHandler.onScanPerformed(scanResult, QrCodeHandler.SECUREJOIN_UIPATH_NEW_CONTACT);
+      qrCodeHandler.onScanPerformed(scanResult, SecurejoinUiPath.NewContact);
     }
   }
 }
