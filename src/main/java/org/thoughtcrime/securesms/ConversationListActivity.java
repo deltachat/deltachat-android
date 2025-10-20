@@ -204,7 +204,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       String archProperty = System.getProperty("os.arch");
       String arch;
 
-      if (archProperty.startsWith("armv7")) arch = "armeabi-v7a";
+      // armv8l is 32 bit mode in 64 bit CPU:
+      if (archProperty.startsWith("armv7") || archProperty.startsWith("armv8l")) arch = "armeabi-v7a";
       else if (archProperty.equals("aarch64")) arch = "arm64-v8a";
       else if (archProperty.equals("i686")) arch = "x86";
       else if (archProperty.equals("x86_64")) arch = "x86_64";
