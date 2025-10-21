@@ -172,6 +172,16 @@
                 android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
                 android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
 
+            <ViewStub
+                android:id="@+id/call_view_stub"
+                android:layout="@layout/conversation_item_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/message_bubble_top_padding"
+                android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
+                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
+
             <org.thoughtcrime.securesms.components.emoji.AutoScaledEmojiTextView
                 android:id="@+id/conversation_item_body"
                 android:layout_width="wrap_content"

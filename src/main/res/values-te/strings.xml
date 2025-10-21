@@ -133,6 +133,8 @@
     <string name="chat_input_placeholder">సందేశం</string>
     <string name="chat_archived_label">ఆర్చివ్ అయినది</string>
     <string name="chat_no_messages">సందేశాలు లేవు</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">భద్రపరుచు</string>
     <!-- search -->
     <string name="search">వెతుకు</string>
     <!-- create/edit groups, contact/group profile -->

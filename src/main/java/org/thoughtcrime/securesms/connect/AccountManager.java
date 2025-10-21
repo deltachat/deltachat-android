@@ -1,7 +1,5 @@
 package org.thoughtcrime.securesms.connect;
 
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_VERIFIED_ONE_ON_ONE_CHATS;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -35,7 +33,6 @@ public class AccountManager {
         ApplicationContext appContext = (ApplicationContext)context.getApplicationContext();
         appContext.dcContext = ApplicationContext.dcAccounts.getSelectedAccount();
         DcHelper.setStockTranslations(context);
-        DcHelper.getContext(context).setConfig(CONFIG_VERIFIED_ONE_ON_ONE_CHATS, "1");
         DirectShareUtil.resetAllShortcuts(appContext);
     }
 

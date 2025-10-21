@@ -13,9 +13,11 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.AudioAttributes;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -47,8 +49,12 @@ import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.Pair;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.calls.CallActivity;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -158,6 +164,41 @@ public class NotificationCenter {
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
+    public PendingIntent getOpenCallIntent(ChatData chatData, int callId, String payload, boolean autoAccept) {
+        final Intent chatIntent = new Intent(context, ConversationActivity.class)
+            .putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, chatData.accountId)
+            .putExtra(ConversationActivity.CHAT_ID_EXTRA, chatData.chatId)
+            .setAction(Intent.ACTION_VIEW);
+
+        String base64 = Base64.encodeToString(payload.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
+        String hash = "";
+        try {
+          hash = (autoAccept? "#acceptCall=" : "#offerIncomingCall=") + URLEncoder.encode(base64, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+          Log.e(TAG, "Error", e);
+        }
+
+        Intent intent = new Intent(context, CallActivity.class);
+        intent.setAction(autoAccept? Intent.ACTION_ANSWER : Intent.ACTION_VIEW);
+        intent.putExtra(CallActivity.EXTRA_ACCOUNT_ID, chatData.accountId);
+        intent.putExtra(CallActivity.EXTRA_CHAT_ID, chatData.chatId);
+        intent.putExtra(CallActivity.EXTRA_CALL_ID, callId);
+        intent.putExtra(CallActivity.EXTRA_HASH, hash);
+        intent.setPackage(context.getPackageName());
+        return TaskStackBuilder.create(context)
+            .addNextIntentWithParentStack(chatIntent)
+            .addNextIntent(intent)
+            .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
+    }
+
+    public PendingIntent getDeclineCallIntent(ChatData chatData, int callId) {
+        Intent intent = new Intent(DeclineCallReceiver.DECLINE_ACTION);
+        intent.setClass(context, DeclineCallReceiver.class);
+        intent.putExtra(DeclineCallReceiver.ACCOUNT_ID_EXTRA, chatData.accountId);
+        intent.putExtra(DeclineCallReceiver.CALL_ID_EXTRA, callId);
+        intent.setPackage(context.getPackageName());
+        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
+    }
 
     // Groups and Notification channel groups
     // --------------------------------------------------------------------------------------------
@@ -202,6 +243,7 @@ public class NotificationCenter {
     public static final String CH_MSG_VERSION = "5";
     public static final String CH_PERMANENT = "dc_foreground_notification_ch";
     public static final String CH_GENERIC = "ch_generic";
+    public static final String CH_CALLS_PREFIX = "call_chan";
 
     private boolean notificationChannelsSupported() {
         return Build.VERSION.SDK_INT >= 26;
@@ -333,9 +375,106 @@ public class NotificationCenter {
         return channelId;
     }
 
+    public String getCallNotificationChannel(NotificationManagerCompat notificationManager, ChatData chatData, String name) {
+        String channelId = CH_CALLS_PREFIX + "-" + chatData.accountId + "-"+ chatData.chatId;
+
+        if (notificationChannelsSupported()) {
+            try {
+                name = "(calls) " + name;
+
+                // check if there is already a channel with the given name
+                List<NotificationChannel> channels = notificationManager.getNotificationChannels();
+                boolean channelExists = false;
+                for (int i = 0; i < channels.size(); i++) {
+                    String currChannelId = channels.get(i).getId();
+                    if (currChannelId.startsWith(CH_CALLS_PREFIX)) {
+                        // this is one of the calls channels handled here ...
+                        if (currChannelId.equals(channelId)) {
+                            // ... this is the actually required channel, fine :)
+                            // update the name to reflect localize changes and chat renames
+                            channelExists = true;
+                            channels.get(i).setName(name);
+                        }
+                    }
+                }
+
+                // create a the channel
+                if(!channelExists) {
+                    NotificationChannel channel = new NotificationChannel(channelId, name, NotificationManager.IMPORTANCE_MAX);
+                    channel.setDescription("Informs about incoming calls.");
+                    channel.setShowBadge(true);
+
+                    Uri ringtone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+                    channel.setSound(ringtone, new AudioAttributes.Builder()
+                             .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
+                             .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                             .build());
+                    notificationManager.createNotificationChannel(channel);
+                }
+            } catch(Exception e) {
+              Log.e(TAG, "Error in getCallNotificationChannel()", e);
+            }
+        }
+
+        return channelId;
+    }
+
 
     // add notifications & co.
     // --------------------------------------------------------------------------------------------
+
+    public void notifyCall(int accId, int callId, String payload) {
+      Util.runOnAnyBackgroundThread(() -> {
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        DcContext dcContext = context.dcAccounts.getAccount(accId);
+        int chatId = dcContext.getMsg(callId).getChatId();
+        DcChat dcChat = dcContext.getChat(chatId);
+        String name = dcChat.getName();
+        ChatData chatData = new ChatData(accId, chatId);
+        String notificationChannel = getCallNotificationChannel(notificationManager, chatData, name);
+
+        PendingIntent declineCallIntent = getDeclineCallIntent(chatData, callId);
+        PendingIntent openCallIntent = getOpenCallIntent(chatData, callId, payload, false);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationChannel)
+          .setSmallIcon(R.drawable.icon_notification)
+          .setColor(context.getResources().getColor(R.color.delta_primary))
+          .setPriority(NotificationCompat.PRIORITY_HIGH)
+          .setCategory(NotificationCompat.CATEGORY_CALL)
+          .setOngoing(true)
+          .setOnlyAlertOnce(false)
+          .setTicker(name)
+          .setContentTitle(name)
+          .setFullScreenIntent(openCallIntent, true)
+          .setContentIntent(openCallIntent)
+          .setContentText("Incoming Call");
+
+        builder.addAction(
+          new NotificationCompat.Action.Builder(
+            R.drawable.baseline_call_end_24,
+            context.getString(R.string.end_call),
+            declineCallIntent).build());
+
+        builder.addAction(
+          new NotificationCompat.Action.Builder(
+            R.drawable.baseline_call_24,
+            context.getString(R.string.answer_call),
+            getOpenCallIntent(chatData, callId, payload, true)).build());
+
+        Bitmap bitmap = getAvatar(dcChat);
+        if (bitmap != null) {
+          builder.setLargeIcon(bitmap);
+        }
+
+        Notification notif = builder.build();
+        notif.flags = notif.flags | Notification.FLAG_INSISTENT;
+        try {
+          notificationManager.notify("call-" + accId, callId, notif);
+        } catch (Exception e) {
+          Log.e(TAG, "cannot add notification", e);
+        }
+      });
+    }
 
     public void notifyMessage(int accountId, int chatId, int msgId) {
       Util.runOnAnyBackgroundThread(() -> {
@@ -495,31 +634,11 @@ public class NotificationCenter {
             }
 
             // set avatar
-            Recipient recipient = new Recipient(context, dcChat);
             if (privacy.isDisplayContact()) {
-                try {
-                    Drawable drawable;
-                    ContactPhoto contactPhoto = recipient.getContactPhoto(context);
-                    if (contactPhoto != null) {
-                        drawable = GlideApp.with(context.getApplicationContext())
-                                .load(contactPhoto)
-                                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                .circleCrop()
-                                .submit(context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width),
-                                        context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height))
-                                .get();
-
-                    } else {
-                        drawable = recipient.getFallbackContactPhoto().asDrawable(context, recipient.getFallbackAvatarColor());
-                    }
-                    if (drawable != null) {
-                        int wh = context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);
-                        Bitmap bitmap = BitmapUtil.createFromDrawable(drawable, wh, wh);
-                        if (bitmap != null) {
-                            builder.setLargeIcon(bitmap);
-                        }
-                    }
-                } catch (Exception e) { Log.w(TAG, e); }
+              Bitmap bitmap = getAvatar(dcChat);
+              if (bitmap != null) {
+                builder.setLargeIcon(bitmap);
+              }
             }
 
             // add buttons that allow some actions without opening Delta Chat.
@@ -619,6 +738,40 @@ public class NotificationCenter {
             }
     }
 
+    public Bitmap getAvatar(DcChat dcChat) {
+      Recipient recipient = new Recipient(context, dcChat);
+      try {
+        Drawable drawable;
+        ContactPhoto contactPhoto = recipient.getContactPhoto(context);
+        if (contactPhoto != null) {
+          drawable = GlideApp.with(context.getApplicationContext())
+            .load(contactPhoto)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .circleCrop()
+            .submit(context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width),
+                    context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height))
+            .get();
+
+        } else {
+          drawable = recipient.getFallbackContactPhoto().asDrawable(context, recipient.getFallbackAvatarColor());
+        }
+        if (drawable != null) {
+          int wh = context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);
+          return BitmapUtil.createFromDrawable(drawable, wh, wh);
+        }
+      } catch (Exception e) { Log.w(TAG, e); }
+
+      return null;
+    }
+
+    public void removeCallNotification(int accountId, int callId) {
+        try {
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+            String tag = "call-" + accountId;
+            notificationManager.cancel(tag, callId);
+        } catch (Exception e) { Log.w(TAG, e); }
+    }
+
     public void removeNotifications(int accountId, int chatId) {
         boolean removeSummary;
         synchronized (inboxes) {
@@ -692,7 +845,7 @@ public class NotificationCenter {
         }
     }
 
-  private static class ChatData {
+  public static class ChatData {
     public final int accountId;
     public final int chatId;
 

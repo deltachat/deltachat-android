@@ -118,11 +118,22 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Utoljára látta: %1$s</string>
     <string name="last_seen_unknown">Utoljára látta: - (ismeretlen)</string>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
+    <plurals name="n_seconds_ext">
+        <item quantity="one">%d másodperc</item>
+        <item quantity="other">%d másodperc</item>
+    </plurals>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
+    <plurals name="n_minutes_ext">
+        <item quantity="one">%d perc</item>
+        <item quantity="other">%d perc</item>
+    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d perce</item>
         <item quantity="other">%d perce</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d órája</item>
@@ -368,20 +379,47 @@
     </plurals>
     <string name="file_saved_to">Fájl mentve ide: „%1$s”.</string>
 
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">Hívás</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">Fogadás</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">Elutasítás</string>
+    <string name="outgoing_call">Kimenő hívás</string>
+    <string name="incoming_call">Bejövő hívás</string>
+    <string name="declined_call">Elutasított hívás</string>
+    <string name="canceled_call">Visszavont hívás</string>
+    <string name="missed_call">Nem fogadott hívás</string>
+    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
+    <string name="call_date_and_duration">%1$s, %2$s</string>
+
+    <!-- deprecated -->
     <string name="videochat">Videócsevegés</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">Meghívja egy videócsevegésbe őt: %1$s?</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">Ehhez mindkét oldalon kompatibilis alkalmazás vagy böngésző szükséges.</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">%1$s meg lett híva egy videócsevegésbe.</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">Ön elküdött egy videócsevegési meghívót.</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">Koppintson ide a csatlakozáshoz.</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">Koppintson ide a megnyitáshoz.</string>
+    <!-- deprecated -->
     <string name="videochat_instance">Videócsevegési példány</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">Az Ön videócsevegési példánya</string>
-    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
+    <!-- deprecated -->
     <string name="videochat_instance_example">Például: https://your-server.org/$ROOM</string>
+    <!-- deprecated -->
     <string name="videochat_instance_explain_2">Ha engedélyezve van, akkor az összes csevegésből indíthat videócsevegést. Kompatibilis alkalmazást vagy böngészőt igényel mindkét oldalon.</string>
+    <!-- deprecated -->
     <string name="videochat_instance_from_qr">„%1$s” használata mások meghívásához a videócsevegésekbe?\n\nAmint beállította, az összes csevegésből indíthat videócsevegést. Ez az összes korábbi beállítás helyébe lép a videócsevegéseknél.</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">Videócsevegési meghívó</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">Ön meg lett híva egy videócsevegésbe, kattintson ide: %1$s a csatlakozáshoz.</string>
 
     <!-- get confirmations -->
@@ -458,6 +496,8 @@
     <string name="chat_no_messages">Nincsenek üzenetek.</string>
     <string name="chat_self_talk_subtitle">Önmagamnak küldött üzenetek</string>
     <string name="archive_empty_hint">Az archivált csevegések itt fognak megjelenni.</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Üzenet mentése</string>
     <string name="saved_messages">Mentett üzenetek</string>
     <string name="saved_messages_explain">• Üzenetek továbbítása az egyszerű hozzáférés érdekében\n\n• Jegyzetek vagy hangjegyzetek készítése\n\n• Médiaanyagok mellékelése a mentéshez</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -505,7 +545,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Biztosan meglátogatja a következőt: %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Ez a hivatkozás félrevezetheti a különböző betűkészletekből származó, hasonló kinézetű karaktereket. Az így %1$s felcímkézett hivatkozást követve eljuthat ide: %2$s, ami a nem latin betűs karakterek esetében normális. Ha nem ilyen karakterekre számított, ez a hivatkozás káros lehet.</string>
+    <string name="puny_code_warning_description">Ez a hivatkozás a hasonló kinézetű karaktereket más betűkészletekből származókkal helyettesítheti. A(z) %1$s hivatkozás a(z) %2$s címre vezet, ami a nem latin betűs karaktereknél normális. Ha nem számított ilyen karakterekre, ez a hivatkozás káros lehet.</string>
 
 
     <!-- search -->
@@ -752,7 +792,7 @@
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Tanulás letiltásának kérése a billentyűzettől</string>
     <string name="pref_read_receipts">Olvasási visszaigazolások</string>
-    <string name="pref_read_receipts_explain">Ha az olvasási visszaigazolások le vannak tiltva, így Ön sem fogja látni mások olvasási visszaigazolásait.</string>
+    <string name="pref_read_receipts_explain">Ha az olvasási visszaigazolásokat letiltja, akkor Ön sem fogja látni mások olvasási visszaigazolásait.</string>
     <string name="pref_server">Kiszolgáló</string>
     <string name="pref_encryption">Titkosítás</string>
     <string name="pref_manage_keys">Kulcsok kezelése</string>
@@ -868,8 +908,10 @@
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">A letöltés után azonnal</string>
     <string name="after_30_seconds">30 másodperc elteltével</string>
+    <!-- deprecated -->
     <string name="after_1_minute">1 perc elteltével</string>
     <string name="after_5_minutes">5 perc elteltével</string>
+    <!-- deprecated -->
     <string name="after_30_minutes">30 perc elteltével</string>
     <string name="autodel_after_1_hour">1 óra elteltével</string>
     <string name="autodel_after_1_day">1 nap elteltével</string>
@@ -923,8 +965,9 @@
     <string name="ephemeral_timer_seconds_by_you">Ön az eltűnő üzenetek időzítőjét %1$s másodpercre állította be.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s az eltűnő üzenetek időzítőjét %1$s másodpercre állította be.</string>
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Ön az eltűnő üzenetek időzítőjét 1 percre állította be.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s az eltűnő üzenetek időzítőjét 1 percre állította be.</string>
     <string name="ephemeral_timer_1_hour_by_you">Ön az eltűnő üzenetek időzítőjét 1 órára állította be.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
@@ -1035,6 +1078,7 @@
     <string name="notify_name_only">Csak név</string>
     <string name="notify_no_name_or_message">Se név, se üzenet</string>
     <string name="notifications_disabled">Értesítések letiltva</string>
+    <string name="unreliable_bg_notifications">Engedélyezze a „Háttérkapcsolat kényszerítése” funkciót a megbízható értesítések érdekében</string>
     <string name="new_messages">Új üzenetek</string>
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">Új olvasatlan üzenetek vannak</string>
@@ -1148,7 +1192,7 @@
     <string name="disabled_in_dc">Letiltva a Delta Chatben</string>
     <string name="disabled_in_system_settings">Letilva a rendszerbeállításokban</string>
     <string name="bg_app_refresh_disabled">„Háttérfrissítések” letiltva a rendszerbeállításokban</string>
-    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
+    <!-- deprecated, was used on iOS only -->
     <string name="delayed">Késleltetve</string>
     <string name="notifications_avg_minutes">Átlagosan %1$d percenként</string>
     <string name="notifications_avg_hours">Átlagosan %1$d óránként</string>

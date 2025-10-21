@@ -24,31 +24,40 @@
     <string name="join">Придружи се</string>
     <string name="rejoin">Придружи се поново</string>
     <string name="delete">Обриши</string>
+    <string name="delete_for_me">Обриши за мене</string>
+    <string name="delete_for_everyone">Обриши свуда</string>
     <string name="info">Инфо</string>
     <string name="update">Ажурирање</string>
     <string name="emoji">Емоџи</string>
     <string name="attachment">Прилог</string>
     <string name="back">Назад</string>
     <string name="close">Затвори</string>
+    <string name="close_window">Затвори прозор</string>
     <string name="forward">Проследи</string>
+    <string name="reset">Поништи</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Пошаљи поново</string>
+    <string name="edited">Измењено</string>
+    <string name="edit_message">Промени поруку</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Архивирај</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Деархивирај</string>
     <string name="mute">Утишај</string>
+    <string name="muted">Утишано</string>
     <string name="ephemeral_messages">Нестајуће поруке</string>
     <string name="ephemeral_messages_hint">Односи се на све чланове овог ћаскања ако користе Delta Chat; и даље могу да копирају, сниме и прослеђују поруке или да користе друге клијенте за е-пошту.</string>
     <string name="save">Сачувај</string>
     <string name="chat">Ћаскање</string>
     <string name="media">Медији</string>
     <string name="profile">Профил</string>
+    <string name="all_profiles">Сви профили</string>
     <string name="main_menu">Главни мени</string>
     <string name="start_chat">Започните ћаскање</string>
     <string name="show_full_message">Прикажи поруку у њеној целости...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Означи све као прочитано</string>
+    <string name="mark_as_read">Означи као прочитано</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Прочитано</string>
     <!-- Placeholder text when something is loading -->
@@ -61,6 +70,7 @@
     <string name="always">Увек</string>
     <string name="always_load_remote_images">Увек учитај слике са сервера</string>
     <string name="once">Само једном</string>
+    <string name="show_warning">Прикажи упозорење</string>
     <string name="show_password">Прикажи лозинку</string>
     <string name="hide_password">Сакри лозинку</string>
     <string name="not_now">Не сада</string>
@@ -102,6 +112,7 @@
         <item quantity="few">%d мин</item>
         <item quantity="other">%d мин</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d сат</item>
@@ -139,6 +150,7 @@
         <item quantity="few">означено: %d</item>
         <item quantity="other">означено: %d</item>
     </plurals>
+    <string name="selected_colon">Изабрано:</string>
     <string name="self">Ја</string>
     <string name="draft">Нацрт</string>
     <string name="image">Слика</string>
@@ -147,6 +159,7 @@
     <string name="gif">ГИФ</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Налепница</string>
+    <string name="add_to_sticker_collection">Додај у колекцију налепница</string>
     <string name="images">Слике</string>
     <string name="audio">Звук</string>
     <string name="voice_message">Гласовна порука</string>
@@ -157,6 +170,7 @@
     <string name="video">Видео</string>
     <string name="documents">Документи</string>
     <string name="contact">Особа</string>
+    <string name="bot">Бот</string>
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Сними</string>
@@ -172,6 +186,10 @@
     <string name="webxdc_app">Приватна апликација</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Приватне апликације</string>
+    <string name="games">Игре</string>
+    <string name="tools">Алати</string>
+    <string name="app_size">Величина</string>
+    <string name="app_date_published">Објављено</string>
     <string name="unknown">Непознато</string>
 
     <string name="green">Зелена</string>
@@ -294,22 +312,44 @@
     </plurals>
     <string name="file_saved_to">Фајл је снимљен у „%1$s“.</string>
 
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">Позови</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">Одговори</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">Одби</string>
+    <!-- deprecated -->
     <string name="videochat">Видео ћаскање</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">Позови %1$sу видео ћаскање?</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">Ово захтева компатибилну апликацију или прегледач на оба краја.</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">%1$sје позван у видео ћаскање.</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">Послали сте позив за видео ћаскање.</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">Додирни да се придружиш</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">Додирни да отвориш</string>
+    <!-- deprecated -->
     <string name="videochat_instance">Инстанца видео ћаскања</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">Ваша инстанца видео ћаскања</string>
-    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
+    <!-- deprecated -->
     <string name="videochat_instance_example">Примери: https://meet.jit.si/$ROOM или basicwebrtc:https://your-server</string>
+    <!-- deprecated -->
     <string name="videochat_instance_explain_2">Ако је омогућено, можете започети видео ћаскање из сваког ћаскања. Ово захтева компатибилну апликацију или прегледач на оба краја.</string>
+    <!-- deprecated -->
     <string name="videochat_instance_from_qr">Да ли желите да користите „%1$s“ да позовете друге у видео ћаскање?\n\nКада ово поставите, можете да започнете видео ћаскање из сваког ћаскања. Ово замењује све претходне поставке за видео ћаскање.</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">Позив за видео ћаскање</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">Позвани сте у видео ћаскање, кликни %1$sда придружиш.</string>
 
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Да ли сте сигурни да желите да напустите?</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Да ли желите да избришите %d поруку?</item>
@@ -326,6 +366,8 @@
     <string name="ask_start_chat_with">Да ли желите да ћаскате са %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Да ли желите да уклонитите %1$s из групе?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Да ли желите да уклоните %1$s са канала?</string>
     <string name="open_url_confirmation">Да ли желите да отворите ову везу?</string>
 
 
@@ -370,6 +412,8 @@
     <string name="chat_no_messages">Нема порука.</string>
     <string name="chat_self_talk_subtitle">Поруке које сам слао себи</string>
     <string name="archive_empty_hint">Архивирана ћаскања ће се појавити овде.</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Сачувај</string>
     <string name="saved_messages">Сачуване поруке</string>
     <string name="saved_messages_explain">• Проследи поруке овде за лакши приступ\n\n• Направите текстуалне или звучне белешке\n\n• Приложите медиј  да би га снимили</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -415,6 +459,8 @@
 
     <!-- search -->
     <string name="search">Претрага</string>
+    <string name="search_in_chat">Претражи ћаскања</string>
+    <string name="search_files">Претражи датотеке</string>
     <string name="search_explain">Претражи ћаскања, контакте и поруке</string>
     <string name="search_no_result_for_x">Нема резултата за „%s“</string>
     <!-- create/edit groups, contact/group profile -->
@@ -656,8 +702,10 @@
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Одмах</string>
     <string name="after_30_seconds">За 30 секунди</string>
+    <!-- deprecated -->
     <string name="after_1_minute">За 1 минут</string>
     <string name="after_5_minutes">За 5 минута</string>
+    <!-- deprecated -->
     <string name="after_30_minutes">За 30 минута</string>
     <string name="autodel_after_1_hour">За 1 сат</string>
     <string name="autodel_after_1_day">За 1 дан</string>
@@ -705,8 +753,9 @@
     <string name="ephemeral_timer_seconds_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s секунде</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s секунде.</string>
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Ви сте подесили хронометар за нестајуће поруке на 1 минут.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s је подесио хронометар за нестајуће поруке на 1 минут.</string>
     <string name="ephemeral_timer_1_hour_by_you">Ви сте подесили хронометар за нестајуће поруке на 1 сат.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
@@ -901,7 +950,7 @@
     <string name="disabled_in_dc">Онемогућено у Delta Chat</string>
     <string name="disabled_in_system_settings">Онемогућено у поставкама оперативног система</string>
     <string name="bg_app_refresh_disabled">„Освежавање апликације у позадини“ је онемогућено у поставкама оперативног система</string>
-    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
+    <!-- deprecated, was used on iOS only -->
     <string name="delayed">Одложено</string>
     <string name="notifications_avg_minutes">У просеку сваких %1$dминута</string>
     <string name="notifications_avg_hours">У просеку сваких %1$dсати</string>

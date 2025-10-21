@@ -101,6 +101,7 @@
         <item quantity="few">%d minute</item>
         <item quantity="other">%d de minute</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d oră</item>
@@ -291,20 +292,33 @@
     </plurals>
     <string name="file_saved_to">Fișier salvat la \"%1$s\".</string>
 
+    <!-- deprecated -->
     <string name="videochat">Chat video</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">Invitați %1$s la un chat video?</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">Acest lucru necesită o aplicație sau un browser compatibil la ambele capete.</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">%1$s invitat la o discuție video.</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">Ați trimis o invitație de videochat.</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">Atingeți pentru a vă alătura</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">Atingeți pentru a deschide</string>
+    <!-- deprecated -->
     <string name="videochat_instance">Instanță de Videochat</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">Instanța Dumneavoastră de Videochat</string>
-    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
+    <!-- deprecated -->
     <string name="videochat_instance_example">Exemple: https://meet.jit.si/$ROOM ori basicwebrtc:https://your-server</string>
+    <!-- deprecated -->
     <string name="videochat_instance_explain_2">Dacă este activată, puteți începe un chat video din fiecare chat. Necesită un app compatibil sau un browser la ambele capete.</string>
+    <!-- deprecated -->
     <string name="videochat_instance_from_qr">Folosiți \"%1$s\" pentru a invita alte persoane la chat-uri video?\n\nOnce setat, puteți începe un chat video din fiecare chat. Acest lucru înlocuiește orice setare anterioară pentru chat-urile video.</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">Invitație la chat video</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">Sunteți invitat la un chat video, faceți clic %1$s pentru a vă alătura.</string>
 
     <!-- Used for the deletion of Device messages -->
@@ -367,6 +381,8 @@
     <string name="chat_no_messages">Nu există mesaje.</string>
     <string name="chat_self_talk_subtitle">Mesaje către sine</string>
     <string name="archive_empty_hint">Chat-urile arhivate vor apărea aici.</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Salvați</string>
     <string name="saved_messages">Mesaje salvate</string>
     <string name="saved_messages_explain">• Redirecționați mesajele aici pentru acces ușor\n\n• Luați notițe sau notițe vocale\n\n\n• Atașați fișiere media pentru a le salva</string>
     <!-- Should match "Saved" from "Saved messages" -->

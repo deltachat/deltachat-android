@@ -45,7 +45,7 @@ Some rough ideas, that may be helpful when thinking about how to enhance things:
 
 ## Contributing Code
 
-The [README](./README.md) explains in detail how to set up the build environment.
+The [BUILDING.md](./BUILDING.md) file explains in detail how to set up the build environment.
 Please follow all steps precisely.
 If you run into troubles,
 ask on one of the [communication channels](https://delta.chat/contribute) for help.

@@ -60,6 +60,7 @@
         <item quantity="one">%d dəqiqə</item>
         <item quantity="other">%d dəqiqə</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d saat</item>
@@ -210,6 +211,8 @@
     <string name="chat_archived_label">Xəzinələndi</string>
     <string name="chat_no_messages">Mesaj yoxdur</string>
     <string name="chat_self_talk_subtitle">Özümə göndərdiyim mesajlar</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Saxla</string>
     <string name="saved_messages">Saxlanılmış mesajlar</string>
     <string name="retry_send">Mesaji yenidən göndərməyə cəht et</string>
     <!-- map -->

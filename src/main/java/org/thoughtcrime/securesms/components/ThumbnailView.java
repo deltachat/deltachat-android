@@ -14,8 +14,6 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.UiThread;
 
-import com.b44t.messenger.util.concurrent.ListenableFuture;
-import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.R;
@@ -31,6 +29,9 @@ import org.thoughtcrime.securesms.util.Util;
 import java.util.Locale;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
+
+import chat.delta.util.ListenableFuture;
+import chat.delta.util.SettableFuture;
 
 public class ThumbnailView extends FrameLayout {
 

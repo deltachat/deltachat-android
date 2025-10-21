@@ -87,6 +87,7 @@
     <ul>
       <li><a href="#какие-разрешения-нужны-delta-chat">Какие разрешения нужны Delta Chat?</a></li>
       <li><a href="#работает-ли-delta-chat-с-моим-провайдером-электронной-почты">Работает ли Delta Chat с <em>моим</em> провайдером электронной почты?</a></li>
+      <li><a href="#can-i-use-delta-chat-in-parallel-with-other-e-mail-apps">Can I use Delta Chat in parallel with other E-Mail apps?</a></li>
       <li><a href="#я-хочу-управлять-своим-собственным-сервером-для-delta-chat-что-вы-посоветуете">Я хочу управлять своим собственным сервером для Delta Chat. Что вы посоветуете?</a></li>
       <li><a href="#почему-я-должен-вводить-свой-пароль-от-электронной-почты-в-delta-chat-это-безопасно">Почему я должен вводить свой пароль от электронной почты в Delta Chat? Это безопасно?</a></li>
       <li><a href="#какие-сообщения-отображаются-в-delta-chat">Какие сообщения отображаются в Delta Chat?</a></li>
@@ -403,11 +404,11 @@
         
       </h3>
 
-<p>Вы можете включить “исчезающие сообщения”
-в настройках чата,
-в правом верхнем углу окна чата,
-выбрав временной интервал
-от 1 минуты до 5 недель.</p>
+<p>You can turn on “disappearing messages”
+in the settings of a chat,
+at the top right of the chat window,
+by selecting a time span
+between 5 minutes and 1 year.</p>
 
 <p>Пока настройка не будет снова отключена,
 приложение Delta Chat каждого участника чата позаботится
@@ -776,9 +777,9 @@ Push-уведомления недоступны.</p>
 <p>Если вы используете стандартные <a href="https://chatmail.at/relays">ретрансляторы chatmail</a>,
 невозможно получать или отправлять сообщения без сквозного шифрования.</p>
 
-<p>Если же вы создаёте профиль с использованием обычного почтового сервера,
-то можете отправлять и получать сообщения без сквозного шифрования. 
-Такие сообщения, не имеющие сквозного шифрования, отмечаются значком электронной почты 
+<p>If you instead create a profile using a classic e-mail server,
+you can send and receive messages with or without end-to-end encryption.
+Messages lacking end-to-end encryption are marked with an e-mail icon
 <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
     
       <h3 id="howtoe2ee">
@@ -1615,6 +1616,29 @@ Delta Chat</a>.</li>
 Однако, некоторые провайдеры требуют специальных настроек для правильной работы,
 см. <a href="https://providers.delta.chat">Обзор провайдеров</a></li>
 </ul>
+    
+      <h3 id="can-i-use-delta-chat-in-parallel-with-other-e-mail-apps">
+        
+        
+          Can I use Delta Chat in parallel with other E-Mail apps? <a href="#can-i-use-delta-chat-in-parallel-with-other-e-mail-apps" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Yes, but it is not recommended.</p>
+
+<p>Parallel usage with the same E-Mail address might lead to the following inconveniences:</p>
+
+<ul>
+  <li>Next to your Delta Chat notifications,
+you might also get notifications for (encrypted, so unreadable) chat mail messages
+in your other email app</li>
+  <li>If Delta Chat is not running
+or “Advanced &gt; Move automatically to the DeltaChat Folder” is disabled,
+encrypted Delta Chat messages might clutter the Inbox in your other E-Mail apps.</li>
+</ul>
+
+<p><a href="https://support.delta.chat/t/sieve-rule-to-move-deltachat-mails-to-deltachat-folder/288/10">Sieve rules</a> can solve these problems.</p>
     
       <h3 id="я-хочу-управлять-своим-собственным-сервером-для-delta-chat-что-вы-посоветуете">
         

@@ -77,9 +77,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private static final int MESSAGE_TYPE_THUMBNAIL_INCOMING = 6;
   private static final int MESSAGE_TYPE_DOCUMENT_OUTGOING  = 7;
   private static final int MESSAGE_TYPE_DOCUMENT_INCOMING  = 8;
-  private static final int MESSAGE_TYPE_VIDEOCHAT_INVITE   = 9;
-  private static final int MESSAGE_TYPE_STICKER_INCOMING   = 10;
-  private static final int MESSAGE_TYPE_STICKER_OUTGOING   = 11;
+  private static final int MESSAGE_TYPE_STICKER_INCOMING   = 9;
+  private static final int MESSAGE_TYPE_STICKER_OUTGOING   = 10;
 
   private final Set<DcMsg> batchSelected = Collections.synchronizedSet(new HashSet<DcMsg>());
 
@@ -279,7 +278,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
       case MESSAGE_TYPE_STICKER_INCOMING:
       case MESSAGE_TYPE_INCOMING:        return R.layout.conversation_item_received;
       case MESSAGE_TYPE_INFO:            return R.layout.conversation_item_update;
-      case MESSAGE_TYPE_VIDEOCHAT_INVITE:return R.layout.conversation_item_videochat;
       default: throw new IllegalArgumentException("unsupported item view type given to ConversationAdapter");
     }
   }
@@ -302,9 +300,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     }
     else if (type == DcMsg.DC_MSG_STICKER) {
       return dcMsg.isOutgoing()? MESSAGE_TYPE_STICKER_OUTGOING : MESSAGE_TYPE_STICKER_INCOMING;
-    }
-    else if (type == DcMsg.DC_MSG_VIDEOCHAT_INVITATION) {
-      return MESSAGE_TYPE_VIDEOCHAT_INVITE;
     }
     else {
       return dcMsg.isOutgoing()? MESSAGE_TYPE_OUTGOING : MESSAGE_TYPE_INCOMING;

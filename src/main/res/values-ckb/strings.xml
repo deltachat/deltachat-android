@@ -77,6 +77,7 @@
         <item quantity="one">%dخولەک</item>
         <item quantity="other">%dخولەک</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%dکاتژمێر</item>
@@ -220,17 +221,29 @@
     </plurals>
     <string name="file_saved_to">پەڕگەکە پاشەکەوت کرا لە \"%1$s\".</string>
 
+    <!-- deprecated -->
     <string name="videochat">وتووێژی ڤیدیۆیی</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">بانگهێشتی %1$s دەکەی بۆ وتووێژی ڤیدیۆیی؟</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">نەرمامێر یان وێبگەڕێکی گونجاو، لەلایەن هەردووکتانەوە، پێویستە.</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">%1$s بانگێشت کرا بۆ وتووێژی ڤیدیۆیی.</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">بانگهێشت کراوی بۆ وتووێژێکی ڤیدیۆیی</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">بۆ بەشدار بوون کرتە بکە.</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">بۆ کردنەوە کرتە بکە.</string>
+    <!-- deprecated -->
     <string name="videochat_instance">نموونەی وتووێژی ڤیدیۆیی</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">نموونەی وتووێژی ڤیدیۆییەکەت</string>
+    <!-- deprecated -->
     <string name="videochat_instance_from_qr">%1$s بەکار دەهێنی بۆ بانگهێشتی کەسانی دیکە بۆ وتووێژی ڤیدیۆیی؟\n\n بەم چەشنە، دەتوانیت لە هەموو وتووێژێکی دووقۆڵیدا وتووێژێکی ڤیدیۆیی دەستپێبکەیت. ئەمە جێگای ڕێکخستنەکانی پێشووتر، لەسەر وتووێژی ڤیدیۆیی، دەگرێتەوە. ئەگەر ڕێکخستنێک بووبێت.</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">بانگهێشتی وتووێژی ڤیدیۆیی</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">تۆ بانگهێشت کراوی بۆ وتووێژێکی ڤیدیۆیی، بۆ بەشدار بوون لەسەر %1$s کرتە بکە.</string>
 
     <string name="ask_forward">ئەو پەیامانە دەنێریت بۆ %1$s؟</string>
@@ -280,6 +293,8 @@
     <string name="chat_archived_label">ئەرشیڤ کرا</string>
     <string name="chat_no_messages">هیچ پەیامێک نییە</string>
     <string name="chat_self_talk_subtitle">ئەو پەیامانەی ناردوومن بۆ خۆم</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">پاشەکەوتی بکە</string>
     <string name="saved_messages">کانگای نامەکان</string>
     <string name="saved_messages_explain">• پەیامەکان بنێرە ئێرە تاکوو بەئاسانی لەبەردەست بن\n\n• ڕەشنووسی دەق یان دەنگی دابنە\n\n• ڕەنگاڵە پەیوەست بکە تاکوو پاشەکەوت بکرێن</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -456,8 +471,10 @@
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">بەیەکجاری</string>
     <string name="after_30_seconds">پاش 30 چرکە</string>
+    <!-- deprecated -->
     <string name="after_1_minute">پاش 1 خولەک</string>
     <string name="after_5_minutes">پاش 5 خولەک</string>
+    <!-- deprecated -->
     <string name="after_30_minutes">پاش 30 خولەک</string>
     <string name="autodel_after_1_hour">پاش 1 کاتژمێر</string>
     <string name="autodel_after_1_day">پاش 1 ڕۆژ</string>

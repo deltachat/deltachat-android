@@ -1,7 +1,5 @@
 package org.thoughtcrime.securesms;
 
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_VERIFIED_ONE_ON_ONE_CHATS;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -127,21 +125,6 @@ public class ApplicationContext extends MultiDexApplication {
       }
       Log.i("DeltaChat", "shutting down event handler");
     }, "eventThread").start();
-
-    // migrating global notifications pref. to per-account config, added  10/July/24
-    final String NOTIFICATION_PREF = "pref_key_enable_notifications";
-    boolean isMuted = !Prefs.getBooleanPreference(this, NOTIFICATION_PREF, true);
-    if (isMuted) {
-      for (int accId : dcAccounts.getAll()) {
-        dcAccounts.getAccount(accId).setMuted(true);
-      }
-      Prefs.removePreference(this, NOTIFICATION_PREF);
-    }
-    // /migrating global notifications
-
-    for (int accountId : allAccounts) {
-      dcAccounts.getAccount(accountId).setConfig(CONFIG_VERIFIED_ONE_ON_ONE_CHATS, "1");
-    }
 
     // set translations before starting I/O to avoid sending untranslated MDNs (issue #2288)
     DcHelper.setStockTranslations(this);

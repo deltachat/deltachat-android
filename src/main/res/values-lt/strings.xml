@@ -96,6 +96,7 @@
         <item quantity="many">%d min.</item>
         <item quantity="other">%d min.</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d val.</item>
@@ -291,18 +292,29 @@
 
     <string name="file_saved_to">Failas įrašytas į „%1$s“.</string>
 
+    <!-- deprecated -->
     <string name="videochat">Vaizdo pokalbis</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">Pakviesti %1$s į vaizdo pokalbį?</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">Tai reikalauja, kad abu pašnekovai turėtų suderinamą programėlę ar suderinamą naršyklę.</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">%1$s pakvietė į vaizdo pokalbį.</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">Jūs pakvietėte į vaizdo pokalbį.</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">Bakstelėkite norėdami prisijungti</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">Bakstelėkite norėdami atverti</string>
+    <!-- deprecated -->
     <string name="videochat_instance">Vaizdo pokalbio egzempliorius</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">Jūsų vaizdo pokalbio egzempliorius</string>
-    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
+    <!-- deprecated -->
     <string name="videochat_instance_example">Pavyzdys: https://jūsų-serveris.org/$KAMBARYS</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">Pakvietimas į vaizdo pokalbį</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">Jūs esate kviečiami į vaizdo pokalbį. Spustelėkite %1$s jei norite prisijungti.</string>
 
     <!-- Used for the deletion of Device messages -->
@@ -362,6 +374,8 @@
     <string name="chat_no_messages">Žinučių nėra.</string>
     <string name="chat_self_talk_subtitle">Žinutės, kurias siunčiu asmeniškai sau</string>
     <string name="archive_empty_hint">Jei archyvuosite pokalbius, jie bus rodomi čia.</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Įrašyti</string>
     <string name="saved_messages">Įrašytos žinutės</string>
     <string name="saved_messages_explain">• Persiųskite žinutes čia, kad lengvai jas pasiektumėte\n\n• Rašykitės pastabas ar įrašinėkite balso žinutes\n\n• Pridėkite mediją, norėdami ją išsaugoti</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -645,8 +659,10 @@
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Iš karto</string>
     <string name="after_30_seconds">Po 30 sekundžių</string>
+    <!-- deprecated -->
     <string name="after_1_minute">Po 1 minutės</string>
     <string name="after_5_minutes">Po 5 minučių</string>
+    <!-- deprecated -->
     <string name="after_30_minutes">Po 30 minučių</string>
     <string name="autodel_after_1_hour">Po 1 valandos</string>
     <string name="autodel_after_1_day">Po 1 dienos</string>
@@ -678,8 +694,9 @@
     <string name="ephemeral_timer_seconds_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į %1$s sek.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s nustatė išnykstančių žinučių laikmatį į %1$s sek.</string>
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į 1 minutę.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s nustatė išnykstančių žinučių laikmatį į 1 minutę. </string>
     <string name="ephemeral_timer_1_hour_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į 1 valandą.</string>
     <!-- %1$s will be replaced by name and address of the contact -->

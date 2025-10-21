@@ -118,10 +118,19 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">最后上线 %1$s</string>
     <string name="last_seen_unknown">最后上线：未知</string>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
+    <plurals name="n_seconds_ext">
+        <item quantity="other">%d 秒</item>
+    </plurals>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
+    <plurals name="n_minutes_ext">
+        <item quantity="other">%d 分钟</item>
+    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="other">%d 分钟</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="other">%d 小时</item>
@@ -358,20 +367,47 @@
     </plurals>
     <string name="file_saved_to">文件已保存到 “%1$s”。</string>
 
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">呼叫</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">接听</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">拒接</string>
+    <string name="outgoing_call">去电</string>
+    <string name="incoming_call">来电</string>
+    <string name="declined_call">已拒接的来电</string>
+    <string name="canceled_call">已取消的通话</string>
+    <string name="missed_call">未接来电</string>
+    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
+    <string name="call_date_and_duration">%1$s %2$s</string>
+
+    <!-- deprecated -->
     <string name="videochat">视频聊天</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">邀请 %1$s 参加视频聊天？</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">需要双方均装有兼容的应用或浏览器。</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">%1$s 发出了视频聊天邀请。</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">您发出了视频聊天邀请。</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">点按即可加入</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">点按即可打开</string>
+    <!-- deprecated -->
     <string name="videochat_instance">视频聊天实例</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">您的视频聊天实例</string>
-    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
+    <!-- deprecated -->
     <string name="videochat_instance_example">示例： https://meet.jit.si/$ROOM 或 basicwebrtc:https://your-server</string>
+    <!-- deprecated -->
     <string name="videochat_instance_explain_2">启用视频聊天后，您便可以在所有聊天中发起视频聊天。需要双方均装有兼容的应用或浏览器。</string>
+    <!-- deprecated -->
     <string name="videochat_instance_from_qr">使用“%1$s”邀请其他人参加视频聊天吗？\n\n设置好后，您就可以在聊天里发起视频聊天了。 这会取代之前的视频聊天设置。</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">视频聊天邀请</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">您被邀请参加视频聊天，点击 %1$s 来加入。</string>
 
     <!-- get confirmations -->
@@ -442,6 +478,8 @@
     <string name="chat_no_messages">没有消息。</string>
     <string name="chat_self_talk_subtitle">发给自己的消息</string>
     <string name="archive_empty_hint">已归档的聊天将显示在此处。</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">保存消息</string>
     <string name="saved_messages">保存的消息</string>
     <string name="saved_messages_explain">• 转发消息于此以便于访问\n\n• 做笔记或语音备忘录\n\n• 附加媒体以保存它们</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -852,8 +890,10 @@
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">下载后立即</string>
     <string name="after_30_seconds">30 秒后</string>
+    <!-- deprecated -->
     <string name="after_1_minute">1 分钟后</string>
     <string name="after_5_minutes">5 分钟后</string>
+    <!-- deprecated -->
     <string name="after_30_minutes">30 分钟后</string>
     <string name="autodel_after_1_hour">1 小时后</string>
     <string name="autodel_after_1_day">1 天后</string>
@@ -907,8 +947,9 @@
     <string name="ephemeral_timer_seconds_by_you">你将消息定时销毁计时器设置为 %1$s 秒</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s 将消息定时销毁计时器设为 %1$s 秒</string>
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">你将消息定时销毁计时器设为 1 分钟</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s 将消息定时销毁计时器设为 1 分钟</string>
     <string name="ephemeral_timer_1_hour_by_you">你将消息定时销毁计时器设为 1 小时</string>
     <!-- %1$s will be replaced by name and address of the contact -->
@@ -1019,6 +1060,7 @@
     <string name="notify_name_only">仅名称</string>
     <string name="notify_no_name_or_message">不显示名称或消息</string>
     <string name="notifications_disabled">已禁用通知</string>
+    <string name="unreliable_bg_notifications">启用“强制后台连接”以获得可靠的通知</string>
     <string name="new_messages">新消息</string>
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">你有新消息</string>
@@ -1132,7 +1174,7 @@
     <string name="disabled_in_dc">在 Delta Chat 中被禁用</string>
     <string name="disabled_in_system_settings">在系统设置中被禁用</string>
     <string name="bg_app_refresh_disabled">“后台应用刷新”在系统设置中被禁用</string>
-    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
+    <!-- deprecated, was used on iOS only -->
     <string name="delayed">延迟</string>
     <string name="notifications_avg_minutes">平均每 %1$d 分钟</string>
     <string name="notifications_avg_hours">平均每 %1$d 小时</string>

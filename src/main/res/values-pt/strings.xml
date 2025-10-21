@@ -4,21 +4,76 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancelar</string>
+    <string name="clear_search">Limpar Pesquisa</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Ligação</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
+    <string name="select">Seleccionar</string>
     <string name="on">Ligado</string>
     <string name="off">Desligado</string>
     <string name="def">Padrão</string>
+    <string name="default_value">Padrão (%1$s)</string>
+    <string name="default_value_as_above">Padrão (igual acima)</string>
     <string name="custom">Personalizado</string>
     <string name="none">Nenhum</string>
+    <string name="automatic">Automático</string>
     <string name="open">Abrir</string>
+    <string name="download">Descarregar</string>
+    <string name="downloading">A descarregar…</string>
+    <string name="open_attachment">Abrir Anexo</string>
+    <string name="join">Entrar</string>
+    <string name="rejoin">Re-entrar</string>
     <string name="delete">Apagar</string>
+    <string name="delete_for_me">Apagar para mim</string>
+    <string name="delete_for_everyone">Apagar para toda a gente</string>
+    <string name="info">Informação</string>
+    <string name="update">Actualizar</string>
+    <string name="emoji">Emoji</string>
+    <string name="attachment">Anexo</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">Anexar \"%1$s\"?</string>
+    <string name="close">Fechar</string>
+    <string name="close_window">Fechar Janela</string>
+    <string name="forward">Reencaminhar</string>
+    <string name="create">Criar</string>
+    <string name="later">Mais tarde</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Re-enviar</string>
+    <string name="edit_message">Editar Mensagem</string>
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
+    <string name="archive">Arquivar</string>
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
+    <string name="unarchive">Desarquivar</string>
+    <string name="mute">Silenciar</string>
     <string name="ephemeral_messages">Destruição de mensagens</string>
+    <string name="save">Guardar</string>
+    <string name="chat">Conversa</string>
+    <string name="profile">Perfil</string>
+    <string name="all_profiles">Todos os Perfis</string>
+    <string name="current_profile">Perfil Actual</string>
+    <string name="main_menu">Menu Principal</string>
+    <string name="show_full_message">Mostrar mensagem completa...</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">Marcar como lidas</string>
+    <string name="mark_as_read">Marcar como lida</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">Marcar lida</string>
+    <!-- Placeholder text when something is loading -->
+    <string name="loading">A carregar...</string>
+    <string name="hide">Ocultar</string>
+    <string name="activate">Activar</string>
+    <string name="always">Sempre</string>
+    <string name="show_password">Mostrar palavra-passe</string>
+    <string name="hide_password">Ocultar palavra-passe</string>
     <string name="not_now">Agora não</string>
     <string name="never">Nunca</string>
     <string name="one_moment">Um momento...</string>
     <string name="done">Feito</string>
     <string name="undo">Desfazer</string>
+    <string name="offline">Offline</string>
+    <!-- For the next view or as "continue". Should be as short as possible. -->
+    <string name="next">Próx.</string>
     <string name="error">Erro</string>
     <string name="error_x">Erro: %1$s</string>
     <string name="no_app_to_handle_data">Não é possível encontrar uma aplicação para lidar com esse tipo de dados.</string>
@@ -42,6 +97,7 @@
         <item quantity="many">%d min</item>
         <item quantity="other">%d min</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d hora</item>
@@ -66,6 +122,8 @@
     <string name="self">Eu</string>
     <string name="draft">Rascunho</string>
     <string name="image">Imagem</string>
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Resposta</string>
     <string name="gif">Gif</string>
     <string name="images">Imagens</string>
     <string name="audio">Áudio</string>
@@ -78,6 +136,13 @@
     <string name="location">Local</string>
     <string name="gallery">Galeria</string>
     <string name="file">Ficheiro</string>
+    <string name="files">ficheiros</string>
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">App</string>
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">Apps</string>
+    <string name="games">Jogos</string>
+    <string name="tools">Ferramentas</string>
     <string name="unknown">Desconhecido</string>
 
     <string name="green">Verde</string>
@@ -101,16 +166,34 @@
     <string name="menu_new_contact">Novo contacto</string>
     <string name="menu_new_chat">Nova chat</string>
     <string name="menu_new_group">Novo grupo</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Conversar com…</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Canal</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Canais</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Novo Canal</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Nome do Canal</string>
+    <string name="email">E-mail</string>
+    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">Novo E-mail</string>
+    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <string name="subject">Assunto</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
     <string name="menu_edit_group">Editar grupo</string>
+    <string name="menu_group_name_and_image">Nome e imagem de grupo</string>
     <string name="menu_archive_chat">Arquivar chat</string>
     <string name="menu_unarchive_chat">Desarquivar chat</string>
     <string name="menu_add_attachment">Juntar anexo</string>
     <string name="menu_leave_group">Deixar grupo</string>
+    <string name="menu_leave_channel">Sair do Canal</string>
     <string name="menu_delete_chat">Apagar convesa</string>
     <string name="menu_message_details">Detalhe da mensagem</string>
     <string name="menu_copy_to_clipboard">Copiar para área de transferência</string>
+    <string name="invite_friends">Convidar amigos</string>
     <string name="menu_forward">Reencaminhar mensagem</string>
     <string name="menu_reply">Responder</string>
     <string name="menu_mute">Silenciar notificações</string>
@@ -118,33 +201,59 @@
     <string name="menu_export_attachment">Exportar anexo</string>
     <string name="menu_all_media">Todos os arquivos de mídia</string>
     <string name="menu_share">Partilhar</string>
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
+    <string name="block">Bloquear</string>
     <string name="menu_block_contact">Bloquear contacto</string>
     <string name="menu_unblock_contact">Desbloquear contacto</string>
+    <string name="accept">Aceitar</string>
     <string name="menu_play">Tocar</string>
     <string name="menu_pause">Pausar</string>
     <string name="menu_scroll_to_bottom">Ir para o fim</string>
+    <string name="menu_scroll_to_top">Ir para o início</string>
     <string name="menu_help">Ajuda</string>
+    <string name="privacy_policy">Política de privacidade</string>
     <string name="menu_select_all">Selecionar tudo</string>
+    <string name="select_chat">Seleccionar Chat</string>
+    <string name="select_more">Seleccionar mais</string>
     <string name="menu_edit_name">Editar nome</string>
     <string name="menu_settings">Definições</string>
     <string name="menu_advanced">Avançado</string>
     <string name="menu_view_profile">Ver perfil</string>
+    <string name="copy_json">Copiar JSON</string>
     <string name="mute_for_one_hour">Calado por 1 hora</string>
     <string name="mute_for_eight_hours">Calado por 8 horas</string>
     <string name="mute_for_one_day">Calado por 1 dia</string>
     <string name="mute_for_seven_days">Calado por 7 dias</string>
+    <string name="mute_forever">Silenciar para sempre</string>
+
     <string name="share_location_for_5_minutes">por 5 min</string>
     <string name="share_location_for_30_minutes">por 30 min</string>
     <string name="share_location_for_one_hour">por 1 hora</string>
     <string name="share_location_for_two_hours">por 2 horas</string>
     <string name="share_location_for_six_hours">por 6 horas</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Enviar o ficheiro para %s?</item>
+        <item quantity="many">Enviar %d ficheiros para %s?</item>
+        <item quantity="other">Enviar %d ficheiros para %s?</item>
+    </plurals>
+    <!-- Used for the deletion of Device messages -->
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Apagar %d mensagem?</item>
+        <item quantity="many">Apagar %d mensagens?</item>
+        <item quantity="other">Apagar %d mensagens?</item>
+    </plurals>
     <string name="ask_forward">Reencaminhar mensages para %1$s?</string>
+    <string name="ask_forward_multiple">Reencaminhar mensagens para %1$d conversas?</string>
     <string name="ask_export_attachment">Exportar anexo? A exportação de anexos permitirá o seu acesso a qualquer outra aplicação no seu dispositivo.\n\nContinuar?</string>
-    <string name="ask_block_contact">Bloquear este contacto? Não receberá mais mensagens deste contacto.</string>
+    <string name="ask_block_contact">Bloquear este contacto?\n\nMensagens directas e grupos criados por contactos bloqueados serão ocultados.\n\nMensagens de contactos bloqueados não serão ocultadas noutros grupos.</string>
     <string name="ask_unblock_contact">Desbloquear esse contacto? Poderá mais uma vez receber mensagens deste contacto.</string>
     <string name="ask_delete_contacts">Remover contactos? Assim removerá permanentemente os contactos selecionados.\n\nContactos com chats a decorrer e contactos com  endereços do sistema não podem ser removidos permanentemente.</string>
     <string name="ask_start_chat_with">Conversar com %1$s?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_members">Remover %1$s do grupo?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Remover %1$s do canal?</string>
     <!-- contact list -->
     <string name="contacts_title">Contactos</string>
     <string name="contacts_enter_name_or_email">Digite o nome ou endereço de e-mail</string>
@@ -167,6 +276,8 @@
     <string name="chat_please_enter_message">Por favor introduza uma mensagem.</string>
     <string name="chat_camera_unavailable">Camera indisponivel.</string>
     <string name="chat_unable_to_record_audio">Não é possível gravar áudio.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">Canais são uma ferramenta de-um-para-muitos para difundir as tuas mensagens.</string>
     <string name="chat_new_group_hint">Componha a primeira mensagem, permitindo que outras pessoas respondam dentro deste grupo.\n\n• Tudo bem se nem todos os membros usarem o Delta Chat.\n\n• A entrega da primeira mensagem pode demorar um pouco.</string>
     <string name="chat_record_slide_to_cancel">Deslize para cancelar</string>
     <string name="chat_record_explain">Toque e segure para gravar uma mensagem de voz, solte para enviar</string>
@@ -175,6 +286,15 @@
     <string name="chat_archived_label">Arquivada</string>
     <string name="chat_no_messages">Sem mensagens</string>
     <string name="chat_self_talk_subtitle">Mensagens que enviei para mim</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Guardar mensagem</string>
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Arrancar…</string>
+    <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
+    <string name="send_file_to">Enviar \"%1$s\" para…</string>
+    <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
+    <string name="send_message_to">Enviar mensagem para…</string>
     <!-- search -->
     <string name="search">Pesquisar</string>
     <string name="search_explain">Pesquisar chats, contactos, emensagens</string>
@@ -185,12 +305,23 @@
     <string name="group_create_button">Criar grupo</string>
     <string name="group_please_enter_group_name">Por favor, introduza um nome para o grupo.</string>
     <string name="group_add_members">Adicionar membros</string>
-    <string name="group_self_not_in_group">Você deve ser um membro do grupo para executar essa ação.</string>
+    <string name="group_self_not_in_group">Tem de ser membro do grupo para realizar a ação.</string>
     <string name="profile_encryption">Encriptação</string>
+    <string name="tab_contact">Contacto</string>
+    <string name="tab_group">Grupo</string>
+    <string name="tab_gallery">Galeria</string>
+    <string name="tab_links">Ligações</string>
     <string name="all_apps_empty_hint">Apps recebidas ou enviadas em qualquer bate-papo aparecerão aqui.</string>
     <string name="media_preview">Visualização de mídia</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">A preparar perfil…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">A transferir…</string>
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <string name="connectivity_updating">A actualizar…</string>
+    <string name="sending">A enviar…</string>
     <string name="login_title">Login</string>
-    <string name="login_header">Login no seu servidor</string>
+    <string name="login_header">Iniciar sessão na sua conta de e-mail</string>
     <string name="login_subheader">Para os provedores de e-mail conhecidos as configurações adicionais são configuradas automaticamente. Por vezes, o IMAP precisa estar activado no frontend da web. Consulte seu provedor de e-mail ou amigos para obter ajuda.</string>
     <string name="login_inbox">Caixa de entrada</string>
     <string name="login_imap_login">IMAP nome de login </string>
@@ -205,7 +336,7 @@
     <string name="login_smtp_security">SMTP segurança</string>
     <string name="login_auth_method">Método de autorização</string>
     <string name="login_info_oauth2_title">Usar configuração simplificada?</string>
-    <string name="login_info_oauth2_text">Seu servidor de e-mail aceita o método de configuração simplificada (OAuth2).\n\n No próximo passo, por favor, permita que o Delta Chat seja seu aplicativo de e-mail.\n\nNão há servidor do Delta Chat. Seus dados ficam no seu aparelho!</string>
+    <string name="login_info_oauth2_text">O endereço inserido pode ser configurado de maneira simples (OAuth 2.0).\n\nNo passo seguinte dê permissão ao Delta Chat para enviar e receber mensagens.\n\nO Delta Chat não recolhe dados de utilizador, permanece tudo no seu dispositivo.</string>
     <string name="login_error_mail">Por favor insira um endereço de e-mail válido</string>
     <string name="login_error_server">Por favor insira um servidor ou endereço IP válido</string>
     <string name="login_error_port">Por favor, insira um porto válido (1-65535)</string>
@@ -328,6 +459,7 @@
     <string name="qrshow_join_contact_title">QR com código de convite</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Digitalize para configurar um contato com %1$s</string>
+    <string name="secure_join_wait">A estabelecer ligação cifrada de ponta-a-ponta, por favor aguarde…</string>
     <string name="contact_verified">%1$s verificado.</string>
     <!-- notifications  -->
     <string name="notify_reply_button">Responder</string>
@@ -346,6 +478,8 @@
     <string name="perm_explain_access_to_mic_denied">O Delta Chat necessita de permissão de  acesso ao microfone para enviar mensagens de áudio, mas foi negado. Por favor, continue com as configurações do aplicativo, selecione \"Permissões\" e active \"Microfone\".</string>
     <string name="perm_explain_access_to_storage_denied">O Delta Chat necessita da permissão de armazenamento para anexar ou exportar fotos, vídeos ou áudio, mas foi negado. Por favor, continue no menu de configurações do aplicativo, seleccione \"Permissões\" e active \"Armazenamento\".</string>
     <string name="perm_explain_access_to_location_denied">O Delta Chat necessita permissão de acesso à localização para anexar um local, mas ele negado. Por favor, continue no menu de configurações do aplicativo, selecione \"Permissões \"e ative \"Localização\".</string>
+    <string name="ImageEditorHud_rotate">Rodar</string>
+
     <string name="global_menu_preferences_language_desktop">Escolha o seu idioma...</string>
     <string name="global_menu_file_desktop">Arquivo</string>
     <string name="global_menu_file_quit_desktop">Sair</string>
@@ -361,6 +495,7 @@
     <string name="global_menu_view_developer_tools_desktop">Ferramentas do programador</string>
     <string name="global_menu_help_desktop">Ajuda</string>
     <string name="global_menu_help_report_desktop">Comunicar um problema</string>
+    <string name="global_menu_minimize_to_tray">Minimizar</string>
     <string name="no_chat_selected_suggestion_desktop">Selecione um CHAT ou crie um novo</string>
     <string name="write_message_desktop">Escreva uma mensagem</string>
     <string name="encryption_info_title_desktop">Informação sobre encriptação</string>

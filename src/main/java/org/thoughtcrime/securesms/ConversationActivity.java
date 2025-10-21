@@ -71,8 +71,6 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
-import com.b44t.messenger.util.concurrent.ListenableFuture;
-import com.b44t.messenger.util.concurrent.SettableFuture;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.UriAttachment;
@@ -117,7 +115,7 @@ import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 import org.thoughtcrime.securesms.video.recode.VideoRecoder;
-import org.thoughtcrime.securesms.videochat.VideochatUtil;
+import org.thoughtcrime.securesms.calls.CallUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -127,6 +125,8 @@ import java.util.concurrent.ExecutionException;
 
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
+import chat.delta.util.ListenableFuture;
+import chat.delta.util.SettableFuture;
 
 /**
  * Activity for displaying a message thread, as well as
@@ -444,6 +444,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_show_map).setVisible(false);
     }
 
+    menu.findItem(R.id.menu_start_call).setVisible(
+      Prefs.isCallsEnabled(this)
+      && dcChat.canSend()
+      && dcChat.isEncrypted()
+      && !dcChat.isSelfTalk()
+      && !dcChat.isMultiUser()
+    );
+
     if (!dcChat.isEncrypted() || !dcChat.canSend() || dcChat.isMailingList() ) {
       menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
     }
@@ -533,6 +541,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return true;
     } else if (itemId == R.id.menu_show_map) {
       WebxdcActivity.openMaps(this, chatId);
+      return true;
+    } else if (itemId == R.id.menu_start_call) {
+      CallUtil.startCall(this, chatId);
       return true;
     } else if (itemId == R.id.menu_all_media) {
       handleAllMedia();
@@ -967,8 +978,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       AttachmentManager.selectGallery(this, PICK_GALLERY); break;
     case AttachmentTypeSelector.ADD_DOCUMENT:
       AttachmentManager.selectDocument(this, PICK_DOCUMENT); break;
-    case AttachmentTypeSelector.INVITE_VIDEO_CHAT:
-      new VideochatUtil().invite(this, chatId); break;
     case AttachmentTypeSelector.ADD_CONTACT_INFO:
       startContactChooserActivity(); break;
     case AttachmentTypeSelector.ADD_LOCATION:
@@ -1458,7 +1467,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Recipient author = new Recipient(this, dcContext.getContact(msg.getFromId()));
 
     SlideDeck slideDeck = new SlideDeck();
-    if (msg.getType() != DcMsg.DC_MSG_TEXT) {
+    if (msg.hasFile()) {
       slideDeck.addSlide(MediaUtil.getSlideForMsg(this, msg));
     }
 

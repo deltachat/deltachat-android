@@ -70,10 +70,8 @@ public class DcHelper {
     public static final String CONFIG_BCC_SELF = "bcc_self";
     public static final String CONFIG_SHOW_EMAILS = "show_emails";
     public static final String CONFIG_MEDIA_QUALITY = "media_quality";
-    public static final String CONFIG_WEBRTC_INSTANCE = "webrtc_instance";
     public static final String CONFIG_PROXY_ENABLED = "proxy_enabled";
     public static final String CONFIG_PROXY_URL = "proxy_url";
-    public static final String CONFIG_VERIFIED_ONE_ON_ONE_CHATS = "verified_one_on_one_chats";
     public static final String CONFIG_WEBXDC_REALTIME_ENABLED = "webxdc_realtime_enabled";
     public static final String CONFIG_PRIVATE_TAG = "private_tag";
 
@@ -153,7 +151,6 @@ public class DcHelper {
     dcContext.setStockTranslation(11, context.getString(R.string.audio));
     dcContext.setStockTranslation(12, context.getString(R.string.file));
     dcContext.setStockTranslation(23, context.getString(R.string.gif));
-    dcContext.setStockTranslation(29, context.getString(R.string.systemmsg_cannot_decrypt));
     dcContext.setStockTranslation(35, context.getString(R.string.contact_verified));
     dcContext.setStockTranslation(40, context.getString(R.string.chat_archived_label));
     dcContext.setStockTranslation(60, context.getString(R.string.login_error_cannot_login));
@@ -166,8 +163,6 @@ public class DcHelper {
     dcContext.setStockTranslation(72, context.getString(R.string.systemmsg_unknown_sender_for_chat));
     dcContext.setStockTranslation(73, context.getString(R.string.systemmsg_subject_for_new_contact));
     dcContext.setStockTranslation(74, context.getString(R.string.systemmsg_failed_sending_to));
-    dcContext.setStockTranslation(82, context.getString(R.string.videochat_invitation));
-    dcContext.setStockTranslation(83, context.getString(R.string.videochat_invitation_body));
     dcContext.setStockTranslation(84, context.getString(R.string.configuration_failed_with_error));
     dcContext.setStockTranslation(85, context.getString(R.string.devicemsg_bad_time));
     dcContext.setStockTranslation(86, context.getString(R.string.devicemsg_update_reminder));
@@ -245,6 +240,11 @@ public class DcHelper {
     dcContext.setStockTranslation(177, context.getString(R.string.reaction_by_other));
     dcContext.setStockTranslation(190, context.getString(R.string.secure_join_wait));
     dcContext.setStockTranslation(193, context.getString(R.string.donate_device_msg));
+    dcContext.setStockTranslation(194, context.getString(R.string.outgoing_call));
+    dcContext.setStockTranslation(195, context.getString(R.string.incoming_call));
+    dcContext.setStockTranslation(196, context.getString(R.string.declined_call));
+    dcContext.setStockTranslation(197, context.getString(R.string.canceled_call));
+    dcContext.setStockTranslation(198, context.getString(R.string.missed_call));
   }
 
   public static File getImexDir() {
@@ -396,11 +396,6 @@ public class DcHelper {
     }
     return getBlobdirFile(dcContext, filename, ext);
 
-  }
-
-  public static boolean isWebrtcConfigOk(DcContext dcContext) {
-    String instance = dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE);
-    return (instance != null && !instance.isEmpty());
   }
 
   @NonNull

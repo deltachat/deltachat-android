@@ -105,6 +105,7 @@
         <item quantity="one">%d minuutti</item>
         <item quantity="other">%d min</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d tunti</item>
@@ -300,20 +301,33 @@
     </plurals>
     <string name="file_saved_to">Tiedosto tallennettu \"%1$s\".</string>
 
+    <!-- deprecated -->
     <string name="videochat">Videokeskustelu</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">Kutsu %1$s videokeskusteluun?</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">Tämä vaatii molemmilta yhteensopivan sovelluksen tai selaimen.</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">%1$s kutsui sinut videokeskusteluun.</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">Lähetit kutsun videokeskusteluun.</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">Napauta liittyäksesi</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">Napauta avataksesi</string>
+    <!-- deprecated -->
     <string name="videochat_instance">Videokeskustelun tarjoaja</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">Videokeskustelusi tarjoaja</string>
-    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
+    <!-- deprecated -->
     <string name="videochat_instance_example">Esimerkkejä: https://meet.jit.si/$ROOM tai basicwebrtc:https://sinun-palvelimesi</string>
+    <!-- deprecated -->
     <string name="videochat_instance_explain_2">Jos videokeskustelu on kytketty päälle, voit aloittaa videokeskustelun mistä tahansa keskustelusta. Videokeskustelu vaatii molemmilta yhteensopivan sovelluksen tai selaimen.</string>
+    <!-- deprecated -->
     <string name="videochat_instance_from_qr">Käytä \"%1$s\" videokeskustelupyyntöihin?\n\nTämän jälkeen voit aloittaa videokeskustelun mistä tahansa keskustelusta. Tämä korvaa edellisen videokeskusteluasetuksen, jos sellainen on.</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">Videokeskustelukutsu</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">Sinut on kutsuttu videokeskusteluun, klikkaa %1$s liittyäksesi.</string>
 
     <!-- Used for the deletion of Device messages -->
@@ -372,6 +386,8 @@
     <string name="chat_no_messages">Ei viestejä</string>
     <string name="chat_self_talk_subtitle">Viestit, jotka lähetin itselleni</string>
     <string name="archive_empty_hint">Arkistoimasi keskustelut näkyvät täällä</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Tallenna</string>
     <string name="saved_messages">Tallennetut viestit</string>
     <string name="saved_messages_explain">• Välitä viestejä tänne helppoa pääsyä varten\n\n• Kirjoita tai äänitä muistiinpanoja\n\n• Liitä mediaa tallentaaksesi ne</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -742,8 +758,10 @@
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Heti</string>
     <string name="after_30_seconds">30 sekunnin päästä</string>
+    <!-- deprecated -->
     <string name="after_1_minute">1 minuutin päästä</string>
     <string name="after_5_minutes">5 minuutin päästä</string>
+    <!-- deprecated -->
     <string name="after_30_minutes">30 minuutin päästä</string>
     <string name="autodel_after_1_hour">1 tunnin päästä</string>
     <string name="autodel_after_1_day">1 päivän päästä</string>
@@ -795,8 +813,9 @@
     <string name="ephemeral_timer_seconds_by_you">Katoavien viestien ajastin asetettu %1$s sekuntiin minun toimestani.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Katoavien viestien ajastin asetettu %1$s sekuntiin käyttäjän %2$s toimesta.</string>
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Katoavien viestien ajastin asetettu 1 minuuttiin minun toimestani.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">Katoavien viestien ajastin asetettu 1 minuuttiin käyttäjän %1$s toimesta.</string>
     <string name="ephemeral_timer_1_hour_by_you">Katoavien viestien ajastin asetettu 1 tuntiin minun toimestani.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
@@ -1012,7 +1031,7 @@
     <string name="disabled_in_dc">Kytketty pois Delta Chatissa</string>
     <string name="disabled_in_system_settings">Kytketty pois järjestelmäasetuksissa</string>
     <string name="bg_app_refresh_disabled">Taustasovelluksen päivitys kytketty pois järjestelmäasetuksissa</string>
-    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
+    <!-- deprecated, was used on iOS only -->
     <string name="delayed">Viivästynyt</string>
     <string name="notifications_avg_minutes">Keskimäärin%1$d minuutin välein</string>
     <string name="notifications_avg_hours">Keskimäärin %1$d tunnin välein</string>

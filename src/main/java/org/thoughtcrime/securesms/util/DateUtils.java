@@ -119,6 +119,15 @@ public class DateUtils extends android.text.format.DateUtils {
             TimeUnit.MILLISECONDS.toSeconds(millis-(TimeUnit.MILLISECONDS.toMinutes(millis)*60000)));
   }
 
+  public static String getFormattedCallDuration(Context c, int seconds) {
+    if (seconds < 60) {
+      return c.getResources().getQuantityString(R.plurals.n_seconds_ext, seconds, seconds);
+    }
+
+    int mins = seconds / 60;
+    return c.getResources().getQuantityString(R.plurals.n_minutes_ext, mins, mins);
+  }
+
   public static String getFormattedTimespan(Context c, int timestamp) {
     int mins = timestamp / (1000 * 60);
     if (mins / 60 == 0) {

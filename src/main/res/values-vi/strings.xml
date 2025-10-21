@@ -104,6 +104,7 @@
     <plurals name="n_minutes">
         <item quantity="other">%d phút</item>
     </plurals>
+
     <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="other">%d giờ</item>
@@ -288,20 +289,33 @@
     </plurals>
     <string name="file_saved_to">Tệp đã được lưu vào \"%1$s\".</string>
 
+    <!-- deprecated -->
     <string name="videochat">Trò chuyện video</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_to_videochat">Mời %1$s trò chuyện video?</string>
+    <!-- deprecated -->
     <string name="videochat_invite_user_hint">Điều này yêu cầu ứng dụng hoặc trình duyệt tương thích ở cả hai đầu.</string>
+    <!-- deprecated -->
     <string name="videochat_contact_invited_hint">%1$s được mời tham gia trò chuyện video.</string>
+    <!-- deprecated -->
     <string name="videochat_you_invited_hint">Bạn đã gửi lời mời trò chuyện video.</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_join">Nhấn để tham gia</string>
+    <!-- deprecated -->
     <string name="videochat_tap_to_open">Nhấn để mở</string>
+    <!-- deprecated -->
     <string name="videochat_instance">Phiên bản trò chuyện video</string>
+    <!-- deprecated -->
     <string name="videochat_instance_placeholder">Phiên bản trò chuyện video của bạn</string>
-    <!-- Do not translate "$ROOM", since it is a fixed token Delta Chat will replace with a generated room ID like "aOclju5eCky" -->
+    <!-- deprecated -->
     <string name="videochat_instance_example">Ví dụ: https://your-server.org/$ROOM</string>
+    <!-- deprecated -->
     <string name="videochat_instance_explain_2">Nếu được bật, bạn có thể bắt đầu trò chuyện video từ mỗi cuộc trò chuyện. Yêu cầu ứng dụng tương thích hoặc trình duyệt ở cả hai đầu.</string>
+    <!-- deprecated -->
     <string name="videochat_instance_from_qr">Sử dụng \"%1$s\" để mời người khác trò chuyện video?\n\nSau khi thiết lập, bạn có thể bắt đầu trò chuyện video từ mỗi cuộc trò chuyện. Điều này sẽ thay thế mọi cài đặt trước đó cho trò chuyện video.</string>
+    <!-- deprecated -->
     <string name="videochat_invitation">Lời mời trò chuyện video</string>
+    <!-- deprecated -->
     <string name="videochat_invitation_body">Bạn được mời tham gia cuộc trò chuyện video, hãy nhấp vào %1$s để tham gia.</string>
 
     <!-- Used for the deletion of Device messages -->
@@ -356,6 +370,8 @@
     <string name="chat_no_messages">Không có tin nhắn.</string>
     <string name="chat_self_talk_subtitle">Tin nhắn cho bản thân</string>
     <string name="archive_empty_hint">Các cuộc trò chuyện đã lưu trữ sẽ xuất hiện ở đây.</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">Lưu</string>
     <string name="saved_messages">Tin nhắn đã lưu</string>
     <string name="saved_messages_explain">• Chuyển tiếp tin nhắn tại đây để dễ dàng truy cập\n\n• Ghi chú hoặc ghi nhớ giọng nói\n\n• Đính kèm phương tiện để lưu chúng</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -684,8 +700,10 @@
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Ngay lập tức</string>
     <string name="after_30_seconds">Sau 30 giây</string>
+    <!-- deprecated -->
     <string name="after_1_minute">Sau 1 phút</string>
     <string name="after_5_minutes">Sau 5 phút</string>
+    <!-- deprecated -->
     <string name="after_30_minutes">Sau 30 phút</string>
     <string name="autodel_after_1_hour">Sau 1 giờ</string>
     <string name="autodel_after_1_day">Sau 1 ngày</string>
@@ -737,8 +755,9 @@
     <string name="ephemeral_timer_seconds_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất thành %1$s giây</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Bộ hẹn giờ tin nhắn biến mất được %2$s đặt thành %1$s giây.</string>
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất thành 1 phút.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">Bộ hẹn giờ cho tin nhắn biến mất được %1$s đặt thành 1 phút.</string>
     <string name="ephemeral_timer_1_hour_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất thành 1 giờ.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
@@ -946,7 +965,7 @@
     <string name="disabled_in_dc">Đã tắt trong Delta Chat</string>
     <string name="disabled_in_system_settings">Đã tắt trong cài đặt hệ thống</string>
     <string name="bg_app_refresh_disabled">\"Làm mới ứng dụng nền\" bị tắt trong cài đặt hệ thống</string>
-    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
+    <!-- deprecated, was used on iOS only -->
     <string name="delayed">Bị trì hoãn</string>
     <string name="notifications_avg_minutes">Trung bình cứ sau %1$d phút</string>
     <string name="notifications_avg_hours">Trung bình cứ sau %1$d giờ</string>
