@@ -153,7 +153,6 @@ public class DcHelper {
     dcContext.setStockTranslation(11, context.getString(R.string.audio));
     dcContext.setStockTranslation(12, context.getString(R.string.file));
     dcContext.setStockTranslation(23, context.getString(R.string.gif));
-    dcContext.setStockTranslation(29, context.getString(R.string.systemmsg_cannot_decrypt));
     dcContext.setStockTranslation(35, context.getString(R.string.contact_verified));
     dcContext.setStockTranslation(40, context.getString(R.string.chat_archived_label));
     dcContext.setStockTranslation(60, context.getString(R.string.login_error_cannot_login));
