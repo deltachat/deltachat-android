@@ -54,7 +54,9 @@ public class SelectedContactsAdapter extends BaseAdapter {
 
   public void changeData(Collection<Integer> contactIds) {
     contacts.clear();
-    contacts.add(DC_CONTACT_ID_ADD_MEMBER);
+    if (!isBroadcast) {
+      contacts.add(DC_CONTACT_ID_ADD_MEMBER);
+    }
     if (contactIds != null) {
       for (int id : contactIds) {
         if (id != DC_CONTACT_ID_SELF) {
@@ -75,7 +77,7 @@ public class SelectedContactsAdapter extends BaseAdapter {
   }
 
   public Set<Integer> getContacts() {
-    final Set<Integer> set = new HashSet<>(contacts.size()-1);
+    final Set<Integer> set = new HashSet<>(contacts.size());
     for (int i = 1; i < contacts.size(); i++) {
       set.add(contacts.get(i));
     }

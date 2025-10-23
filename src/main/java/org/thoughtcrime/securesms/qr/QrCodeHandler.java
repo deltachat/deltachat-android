@@ -43,6 +43,7 @@ public class QrCodeHandler {
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ASK_VERIFYCONTACT:
             case DcContext.DC_QR_ASK_VERIFYGROUP:
+            case DcContext.DC_QR_ASK_JOIN_BROADCAST:
                 showVerifyContactOrGroup(activity, builder, rawString, qrParsed, name);
                 break;
 
@@ -215,6 +216,9 @@ public class QrCodeHandler {
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ASK_VERIFYGROUP:
                 msg = activity.getString(R.string.qrscan_ask_join_group, qrParsed.getText1());
+                break;
+            case DcContext.DC_QR_ASK_JOIN_BROADCAST:
+                msg = activity.getString(R.string.qrscan_ask_join_channel, qrParsed.getText1());
                 break;
             default:
                 msg = activity.getString(R.string.ask_start_chat_with, name);
