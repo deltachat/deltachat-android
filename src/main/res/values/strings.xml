@@ -678,7 +678,7 @@
     <string name="login_error_required_fields">Please enter a valid e-mail address and a password</string>
     <string name="import_backup_title">Restore from Backup</string>
     <string name="import_backup_ask">Backup found at \"%1$s\".\n\nDo you want to import and use all data and settings from it?</string>
-    <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again. Alternatively, press \"Start messaging\" to continue with the normal setup process.</string>
+    <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Cannot login as \"%1$s\". Please check if the address and the password are correct.</string>
     <!-- TLS certificate checks -->
