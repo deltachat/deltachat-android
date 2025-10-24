@@ -210,16 +210,8 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
           notificationController = null;
           progressDialog.dismiss();
           progressDialog = null;
-          String msg = "";
-          if (progressWhat == DcContext.DC_IMEX_EXPORT_BACKUP) {
-            msg = context.getString(R.string.pref_backup_written_to_x, pathAsDisplayedToUser);
-          } else if (progressWhat == DcContext.DC_IMEX_EXPORT_SELF_KEYS) {
-            msg = context.getString(R.string.pref_managekeys_secret_keys_exported_to_x, pathAsDisplayedToUser);
-          } else if (progressWhat == DcContext.DC_IMEX_IMPORT_SELF_KEYS) {
-            msg = context.getString(R.string.pref_managekeys_secret_keys_imported_from_x, pathAsDisplayedToUser);
-          }
           new AlertDialog.Builder(context)
-            .setMessage(msg)
+            .setMessage(context.getString(R.string.pref_backup_written_to_x, pathAsDisplayedToUser))
             .setPositiveButton(android.R.string.ok, null)
             .show();
         }
