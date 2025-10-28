@@ -12,6 +12,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.multidex.MultiDexApplication;
 import androidx.work.Constraints;
 import androidx.work.ExistingPeriodicWorkPolicy;
@@ -89,6 +90,12 @@ public class ApplicationContext extends MultiDexApplication {
     dcAccounts = new DcAccounts(new File(getFilesDir(), "accounts").getAbsolutePath());
     rpc = new Rpc(new FFITransport(dcAccounts.getJsonrpcInstance()));
     AccountManager.getInstance().migrateToDcAccounts(this);
+
+    // October-2025 migration: delete deprecated "permanent channel" id
+    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+    notificationManager.deleteNotificationChannel("dc_foreground_notification_ch");
+    // end October-2025 migration
+
     int[] allAccounts = dcAccounts.getAll();
     for (int accountId : allAccounts) {
       DcContext ac = dcAccounts.getAccount(accountId);
