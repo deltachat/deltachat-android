@@ -393,35 +393,6 @@
     <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Video Chat</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Invite %1$s to a video chat?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">This requires a compatible app or browser on both ends.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s invited to a video chat.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">You sent a video chat invitation.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Tap to Join</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Tap to Open</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Video Chat Instance</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Your Video Chat Instance</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Example: https://your-server.org/$ROOM</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">If enabled, you can start a video chat from each chat. Requires a compatible app or a browser on both ends.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Use \"%1$s\" to invite others to video chats?\n\nOnce set, you can start a video chat from each chat. This replaces any previous setting for video chats.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Video chat invitation</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">You are invited to a video chat, click %1$s to join.</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Are you sure you want to leave?</string>
@@ -459,7 +430,6 @@
     <string name="contacts_title">Contacts</string>
     <string name="contacts_enter_name_or_email">Enter name or e-mail address</string>
     <string name="contacts_type_email_above">Type e-mail address above</string>
-    <string name="contacts_empty_hint">No contacts.</string>
 
 
     <!-- chatlist and chat view -->
@@ -504,9 +474,6 @@
     <string name="saved">Saved</string>
     <string name="save_as">Save As</string>
     <string name="retry_send">Retry to send message</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">You must be in this group to post a message. To join, ask another member.</string>
-    <string name="messaging_disabled_mailing_list">Sending messages in mailing lists is not yet supported</string>
     <string name="cannot_display_unsuported_file_type">Cannot display this file type: %s</string>
     <string name="attachment_failed_to_load">Failed to load attachment</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -711,7 +678,7 @@
     <string name="login_error_required_fields">Please enter a valid e-mail address and a password</string>
     <string name="import_backup_title">Restore from Backup</string>
     <string name="import_backup_ask">Backup found at \"%1$s\".\n\nDo you want to import and use all data and settings from it?</string>
-    <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again. Alternatively, press \"Start messaging\" to continue with the normal setup process.</string>
+    <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Cannot login as \"%1$s\". Please check if the address and the password are correct.</string>
     <!-- TLS certificate checks -->
@@ -796,8 +763,6 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Encryption</string>
     <string name="pref_manage_keys">Manage Keys</string>
-    <string name="pref_use_system_emoji">Use System Emoji</string>
-    <string name="pref_use_system_emoji_explain">Turn off Delta Chat\'s built-in emoji support</string>
     <string name="pref_show_system_contacts">Read System Address Book</string>
     <string name="pref_show_system_contacts_explain">Offer to create chats with contacts from the address book.</string>
     <string name="pref_chats">Chats</string>
@@ -816,18 +781,13 @@
     <string name="pref_backup_export_all">Export all %1$d profiles</string>
     <string name="pref_backup_export_start_button">Start Backup</string>
     <string name="pref_backup_written_to_x">Backup written successfully to \"%1$s\".</string>
-    <string name="pref_managekeys_menu_title">Manage Keys</string>
     <string name="pref_managekeys_export_secret_keys">Export Secret Keys</string>
     <string name="pref_managekeys_export_explain">Export secret keys to \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Import Secret Keys</string>
-    <string name="pref_managekeys_import_explain">Import secret keys from \"%1$s\"?\n\n• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key unless it has the word \"legacy\" in its filename.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Secret keys written successfully to \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Secret keys imported from \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Wallpaper</string>
     <string name="pref_background_btn_default">Use Default Image</string>
     <string name="pref_background_btn_gallery">Select From Gallery</string>
-    <string name="pref_imap_folder_handling">IMAP Folder Handling</string>
     <string name="pref_imap_folder_warn_disable_defaults">If you change this option, make sure, your server and your other clients are configured accordingly.\n\nOtherwise things may not work at all.</string>
     <string name="pref_watch_sent_folder">Watch Sent Folder</string>
     <string name="pref_send_copy_to_self">Send Copy to Self</string>
@@ -907,12 +867,7 @@
     <string name="autodel_confirm">I understand, delete all these messages</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">At once after Download</string>
-    <string name="after_30_seconds">After 30 seconds</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">After 1 minute</string>
     <string name="after_5_minutes">After 5 minutes</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">After 30 minutes</string>
     <string name="autodel_after_1_hour">After 1 hour</string>
     <string name="autodel_after_1_day">After 1 day</string>
     <string name="autodel_after_1_week">After 1 week</string>
@@ -927,7 +882,6 @@
     <string name="autocrypt_prefer_e2ee">Prefer End-To-End Encryption</string>
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• If you just re-installed Delta Chat then it is best if you re-setup Delta Chat now and choose "Add as second device" or import a backup.</string>
     <string name="systemmsg_unknown_sender_for_chat">Unknown sender for this chat. See \'info\' for more details.</string>
     <string name="systemmsg_subject_for_new_contact">Message from %1$s</string>
     <string name="systemmsg_failed_sending_to">Failed to send message to %1$s.</string>
@@ -948,8 +902,11 @@
     <string name="remove_member_by_you">You removed member %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Member %1$s removed by %2$s.</string>
-    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
-    <string name="group_left_by_you">You left.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="group_left_by_you">You left the group.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="channel_left_by_you">You left the channel.</string>
+    <string name="you_joined_the_channel">You joined the channel.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Group left by %1$s.</string>
     <string name="group_image_deleted_by_you">You deleted the group image.</string>
@@ -1039,6 +996,7 @@
     <string name="qrshow_join_group_title">QR Invite Code</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Scan to join group \"%1$s\"</string>
+    <string name="qrshow_join_channel_hint">Scan to join channel \"%1$s\"</string>
     <string name="qrshow_join_contact_title">QR Invite Code</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Scan to chat with %1$s</string>
@@ -1165,7 +1123,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Delivery status: Error</string>
-    <string name="a11y_encryption_padlock">Encryption padlock</string>
     <string name="a11y_delivery_status_sending">Delivery status: Sending</string>
     <string name="a11y_delivery_status_draft">Delivery status: Draft</string>
     <string name="a11y_delivery_status_delivered">Delivery status: Delivered</string>
@@ -1192,8 +1149,6 @@
     <string name="disabled_in_dc">Disabled in Delta Chat</string>
     <string name="disabled_in_system_settings">Disabled in system settings</string>
     <string name="bg_app_refresh_disabled">\"Background App Refresh\" disabled in system settings</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Delayed</string>
     <string name="notifications_avg_minutes">On average every %1$d minutes</string>
     <string name="notifications_avg_hours">On average every %1$d hours</string>
     <string name="last_check_at">Checked at %1$s</string>
