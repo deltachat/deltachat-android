@@ -109,15 +109,6 @@ public class QrCodeHandler {
                 builder.setCancelable(false);
                 break;
 
-            case DcContext.DC_QR_WEBRTC:
-                builder.setMessage(activity.getString(R.string.videochat_instance_from_qr, qrParsed.getText1()));
-                builder.setPositiveButton(R.string.ok, (dialog, which) -> {
-                    dcContext.setConfigFromQr(rawString);
-                });
-                builder.setNegativeButton(R.string.cancel, null);
-                builder.setCancelable(false);
-                break;
-
             case DcContext.DC_QR_WITHDRAW_VERIFYCONTACT:
             case DcContext.DC_QR_WITHDRAW_VERIFYGROUP:
                 String message = qrParsed.getState() == DcContext.DC_QR_WITHDRAW_VERIFYCONTACT ? activity.getString(R.string.withdraw_verifycontact_explain)
