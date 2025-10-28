@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* don't show badge counter in app icon for the permanent background notification
+
 ## v2.22.0
 2025-10
 

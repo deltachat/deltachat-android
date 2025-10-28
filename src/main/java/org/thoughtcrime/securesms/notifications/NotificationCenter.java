@@ -241,7 +241,7 @@ public class NotificationCenter {
     // channelIds: CH_MSG_* are used here, the other ones from outside (defined here to have some overview)
     public static final String CH_MSG_PREFIX = "ch_msg";
     public static final String CH_MSG_VERSION = "5";
-    public static final String CH_PERMANENT = "dc_foreground_notification_ch";
+    public static final String CH_PERMANENT = "dc_fg_notification_ch";
     public static final String CH_GENERIC = "ch_generic";
     public static final String CH_CALLS_PREFIX = "call_chan";
 
