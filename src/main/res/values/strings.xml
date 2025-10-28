@@ -902,8 +902,11 @@
     <string name="remove_member_by_you">You removed member %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Member %1$s removed by %2$s.</string>
-    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
-    <string name="group_left_by_you">You left.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="group_left_by_you">You left the group.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="channel_left_by_you">You left the channel.</string>
+    <string name="you_joined_the_channel">You joined the channel.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Group left by %1$s.</string>
     <string name="group_image_deleted_by_you">You deleted the group image.</string>
@@ -993,6 +996,7 @@
     <string name="qrshow_join_group_title">QR Invite Code</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Scan to join group \"%1$s\"</string>
+    <string name="qrshow_join_channel_hint">Scan to join channel \"%1$s\"</string>
     <string name="qrshow_join_contact_title">QR Invite Code</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Scan to chat with %1$s</string>
