@@ -151,11 +151,11 @@ public class DirectShareUtil {
   }
 
   private static @NonNull Bitmap getShortcutInfoBitmap(@NonNull Context context, @NonNull Recipient recipient) throws ExecutionException, InterruptedException {
-    return DrawableUtil.wrapBitmapForShortcutInfo(request(GlideApp.with(context).asBitmap(), context, recipient).circleCrop().submit().get());
+    return DrawableUtil.wrapBitmapForShortcutInfo(request(GlideApp.with(context).asBitmap(), context, recipient).submit().get());
   }
 
   private static Bitmap getFallbackDrawable(Context context, @NonNull Recipient recipient) {
-    return BitmapUtil.createFromDrawable(recipient.getFallbackAvatarDrawable(context),
+    return BitmapUtil.createFromDrawable(recipient.getFallbackAvatarDrawable(context, false),
             context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width),
             context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height));
   }
