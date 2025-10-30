@@ -238,7 +238,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
 
     private static class MonthBuckets {
 
-      private final Map<Date, List<DcMsg>> months = new HashMap<>();
+      private final Map<Date, LinkedList<DcMsg>> months = new HashMap<>();
 
       void add(DcMsg record) {
         Calendar calendar = Calendar.getInstance();
@@ -249,9 +249,9 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
         Date date  = new Date(year, month, 1);
 
         if (months.containsKey(date)) {
-          months.get(date).add(record);
+          months.get(date).addFirst(record);
         } else {
-          List<DcMsg> list = new LinkedList<>();
+          LinkedList<DcMsg> list = new LinkedList<>();
           list.add(record);
           months.put(date, list);
         }
