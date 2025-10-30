@@ -35,7 +35,7 @@ public class StatsSending {
     }
   }
 
-  public static boolean isStatsSendingDeviceMsg(Context context, DcMsg msg) { // TODO
+  public static boolean isStatsSendingDeviceMsg(Context context, DcMsg msg) {
     return msg != null
       && msg.getFromId() == DcContact.DC_CONTACT_ID_DEVICE
       && msg.getId() == Prefs.getStatsDeviceMsgId(context);
@@ -58,7 +58,7 @@ public class StatsSending {
         onConfigChangedListener.run();
         showStatsThanksDialog(activity);
       })
-      .setNeutralButton(R.string.more_info_desktop, (_d, i) -> openHelp(activity, "")) // TODO
+      .setNeutralButton(R.string.more_info_desktop, (_d, i) -> openHelp(activity, "#statssending"))
       .create();
     d.show();
     try {
@@ -89,7 +89,7 @@ public class StatsSending {
       })
       .setPositiveButton(R.string.stats_keep_sending, (_d, i) -> {
       })
-      .setNeutralButton(R.string.more_info_desktop, (_d, i) -> openHelp(activity, "")) // TODO
+      .setNeutralButton(R.string.more_info_desktop, (_d, i) -> openHelp(activity, "#statssending"))
       .create();
     d.show();
   }
