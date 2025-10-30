@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.qr;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -29,6 +30,8 @@ import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
+import org.thoughtcrime.securesms.ConversationListActivity;
+import org.thoughtcrime.securesms.NewConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.NewContactActivity;
@@ -40,6 +43,9 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+
+import chat.delta.rpc.types.SecurejoinSource;
+import chat.delta.rpc.types.SecurejoinUiPath;
 
 public class QrActivity extends BaseActionBarActivity implements View.OnClickListener {
 
@@ -137,7 +143,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
         AttachmentManager.selectImage(this, REQUEST_CODE_IMAGE);
       } else if (itemId == R.id.paste) {
         QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.handleQrData(Util.getTextFromClipboard(this));
+        qrCodeHandler.handleQrData(Util.getTextFromClipboard(this), SecurejoinSource.Clipboard, getUiPath());
       }
 
         return false;
@@ -184,7 +190,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
                         try {
                             Result result = reader.decode(bBitmap);
                             QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-                            qrCodeHandler.handleQrData(result.getText());
+                            qrCodeHandler.handleQrData(result.getText(), SecurejoinSource.ImageLoaded, getUiPath());
                         } catch (NotFoundException e) {
                             Log.e(TAG, "decode exception", e);
                             Toast.makeText(this, getString(R.string.qrscan_failed), Toast.LENGTH_LONG).show();
@@ -195,6 +201,21 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
                 }
                 break;
         }
+    }
+
+    private SecurejoinUiPath getUiPath() {
+        SecurejoinUiPath uiPath = null;
+        ComponentName caller = this.getCallingActivity();
+        if (caller != null) {
+            if (caller.getClassName().equals(NewConversationActivity.class.getName())) {
+                uiPath = SecurejoinUiPath.NewContact;
+            } else if (caller.getClassName().equals(ConversationListActivity.class.getName())
+                    // RoutingActivity is an alias for ConversationListActivity
+                    || caller.getClassName().endsWith(".RoutingActivity")) {
+                uiPath = SecurejoinUiPath.QrIcon;
+            }
+        }
+        return uiPath;
     }
 
     @Override
