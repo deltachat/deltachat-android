@@ -277,7 +277,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
                       .setTitle(R.string.pref_backup)
                       .setMessage(R.string.pref_backup_export_explain)
                       .setNeutralButton(android.R.string.cancel, null)
-                      .setPositiveButton(requireActivity().getString(R.string.pref_backup_export_x, addr), (dialogInterface, i) -> startImexOne(DcContext.DC_IMEX_EXPORT_BACKUP));
+                      .setPositiveButton(requireActivity().getString(R.string.pref_backup_export_this, addr), (dialogInterface, i) -> startImexOne(DcContext.DC_IMEX_EXPORT_BACKUP));
               int[] allAccounts = DcHelper.getAccounts(requireActivity()).getAll();
               if (allAccounts.length > 1) {
                 String exportAllString = requireActivity().getString(R.string.pref_backup_export_all, allAccounts.length);
