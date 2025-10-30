@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_STATS_SENDING;
+import static org.thoughtcrime.securesms.connect.DcHelper.openHelp;
 
 import android.app.Activity;
 import android.content.Context;
@@ -41,18 +42,23 @@ public class StatsSending {
   }
 
   public static void statsDeviceMsgTapped(Activity activity) {
-    showStatsConfirmationDialog(activity, () -> {});
+    if (DcHelper.getInt(activity, CONFIG_STATS_SENDING) != 0) {
+      showStatsDisableDialog(activity);
+    } else {
+      showStatsConfirmationDialog(activity, () -> {});
+    }
   }
 
   public static void showStatsConfirmationDialog(Activity activity, Runnable onConfigChangedListener) {
     AlertDialog d = new AlertDialog.Builder(activity)
       .setMessage(R.string.stats_confirmation_dialog)
-      .setNeutralButton(R.string.cancel, (_d, i) -> {})
+      .setNegativeButton(R.string.cancel, (_d, i) -> {})
       .setPositiveButton(R.string.yes, (_d, i) -> {
         DcHelper.set(activity, DcHelper.CONFIG_STATS_SENDING, "1");
         onConfigChangedListener.run();
         showStatsThanksDialog(activity);
       })
+      .setNeutralButton(R.string.more_info_desktop, (_d, i) -> openHelp(activity, "")) // TODO
       .create();
     d.show();
     try {
@@ -78,10 +84,12 @@ public class StatsSending {
   public static void showStatsDisableDialog(Activity activity) {
     AlertDialog d = new AlertDialog.Builder(activity)
       .setMessage(R.string.stats_disable_dialog)
-      .setNeutralButton(R.string.disable, (_d, i) -> {})
-      .setPositiveButton(R.string.stats_keep_sending, (_d, i) -> {
+      .setNegativeButton(R.string.disable, (_d, i) -> {
         DcHelper.set(activity, DcHelper.CONFIG_STATS_SENDING, "0");
       })
+      .setPositiveButton(R.string.stats_keep_sending, (_d, i) -> {
+      })
+      .setNeutralButton(R.string.more_info_desktop, (_d, i) -> openHelp(activity, "")) // TODO
       .create();
     d.show();
   }
