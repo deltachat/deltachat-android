@@ -133,19 +133,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, deviceMsgLabel);
       }
 
-      // remove gmail oauth2
-      final int serverFlags = dcContext.getConfigInt(CONFIG_SERVER_FLAGS);
-      if ((serverFlags & DcContext.DC_LP_AUTH_OAUTH2)!=0) {
-        Util.runOnAnyBackgroundThread(() -> {
-          if (dcContext.isGmailOauth2Addr(dcContext.getConfig(CONFIG_ADDRESS))) {
-            final DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-            msg.setText("⚠️ GMail Users: If you have problems using GMail, go to \"Settings / Advanced / Password and Account\".\n\nThere, login again using an \"App Password\".");
-            dcContext.addDeviceMsg("info_about_gmail_oauth2_removal8", msg);
-          }
-        });
-      }
-      // /remove gmail oauth2
-
     } catch(Exception e) {
       e.printStackTrace();
     }
