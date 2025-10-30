@@ -3,6 +3,7 @@
 ## Unreleased
 
 * don't show badge counter in app icon for the permanent background notification
+* fix sorting of old media in gallery
 
 ## v2.22.0
 2025-10
