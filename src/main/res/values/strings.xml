@@ -668,6 +668,8 @@
     <string name="proxy_use_proxy_confirm">Do you want to use proxy \"%1$s\"?</string>
     <string name="proxy_share_explain">Your friends can add this proxy by scanning the QR code.</string>
     <string name="proxy_share_link">Share Link</string>
+    <string name="proxy_enabled">Proxy Enabled</string>
+    <string name="proxy_enabled_hint">You are using a proxy. If you\'re having trouble connecting, try a different proxy.</string>
 
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
     <string name="login_info_oauth2_text">The entered address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to send and receive messages.\n\nDelta Chat does not collect user data, everything stays on your device.</string>
