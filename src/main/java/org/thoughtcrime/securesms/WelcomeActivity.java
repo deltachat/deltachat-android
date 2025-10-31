@@ -51,7 +51,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     public static final int PICK_BACKUP = 20574;
     private final static String TAG = WelcomeActivity.class.getSimpleName();
     public static final String TMP_BACKUP_FILE = "tmp-backup-file";
-    public static final String DC_REQUEST_ACCOUNT_DATA = "chat.delta.DC_REQUEST_ACCOUNT_DATA";
 
     private ProgressDialog progressDialog = null;
     private boolean imexUserAborted;
@@ -86,16 +85,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
         registerForEvents();
         initializeActionBar();
-
-        if (!DcHelper.hasAnyConfiguredContext(this)) {
-          Intent intent = new Intent();
-          // Since android API 26 only explicit broadcasts are allowed for IPC with a few exceptions.
-          // As a result we have to send for each companion app we want to support an intent with a
-          // specified package
-          intent.setPackage("chat.delta.androidyggmail");
-          intent.setAction(DC_REQUEST_ACCOUNT_DATA);
-          sendBroadcast(intent);
-        }
 
         DcHelper.maybeShowMigrationError(this);
     }

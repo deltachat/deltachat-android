@@ -12,15 +12,11 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PORT;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SECURITY;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SERVER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
-import static org.thoughtcrime.securesms.service.IPCAddAccountsService.ACCOUNT_DATA;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -39,7 +35,6 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.Group;
 
@@ -58,16 +53,11 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ExecutionException;
-
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.EnteredCertificateChecks;
 import chat.delta.rpc.types.EnteredLoginParam;
 import chat.delta.rpc.types.Socket;
-import chat.delta.util.ListenableFuture;
-import chat.delta.util.SettableFuture;
 
 public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
@@ -220,21 +210,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             }
             certCheck.setSelection(ViewUtil.checkBounds(imapCertificateChecks, certCheck));
             expandAdvanced = expandAdvanced || imapCertificateChecks != 0;
-        } else if (getIntent() != null && getIntent().getBundleExtra(ACCOUNT_DATA) != null) {
-          // Companion app might have sent account data
-          Bundle b = getIntent().getBundleExtra(ACCOUNT_DATA);
-          String emailAddress = b.getString(CONFIG_ADDRESS);
-          String password = b.getString(CONFIG_MAIL_PASSWORD);
-          if (!TextUtils.isEmpty(emailAddress) && !TextUtils.isEmpty(password)) {
-            emailInput.setText(emailAddress);
-            passwordInput.setText(password);
-            onLogin();
-          } else {
-            String errorText = "Companion app auto-configuration failed.";
-            errorText += TextUtils.isEmpty(emailAddress) ? " Missing emailAddress." : "";
-            errorText += TextUtils.isEmpty(password) ? " Missing password." : "";
-            Toast.makeText(this, errorText, Toast.LENGTH_LONG).show();
-          }
         }
 
         if (expandAdvanced) { onAdvancedSettings(); }
