@@ -795,6 +795,7 @@
     <string name="pref_background_btn_default">Use Default Image</string>
     <string name="pref_background_btn_gallery">Select From Gallery</string>
     <string name="pref_imap_folder_warn_disable_defaults">If you change this option, make sure, your server and your other clients are configured accordingly.\n\nOtherwise things may not work at all.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Watch Sent Folder</string>
     <string name="pref_send_copy_to_self">Send Copy to Self</string>
     <string name="pref_send_copy_to_self_explain">Required when using this account on multiple devices.</string>
