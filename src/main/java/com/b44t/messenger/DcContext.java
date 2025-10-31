@@ -71,9 +71,6 @@ public class DcContext {
     public final static int DC_QR_REVIVE_VERIFYGROUP     = 512;
     public final static int DC_QR_LOGIN             = 520;
 
-    public final static int DC_LP_AUTH_OAUTH2          =     0x2;
-    public final static int DC_LP_AUTH_NORMAL          =     0x4;
-
     public final static int DC_SOCKET_AUTO     = 0;
     public final static int DC_SOCKET_SSL      = 1;
     public final static int DC_SOCKET_STARTTLS = 2;
@@ -145,7 +142,6 @@ public class DcContext {
     public native String       getInfo              ();
     public native int          getConnectivity      ();
     public native String       getConnectivityHtml  ();
-    public native String       getOauth2Url         (String addr, String redirectUrl);
     public native String       initiateKeyTransfer  ();
     public native void         imex                 (int what, String dir);
     public native String       imexHasBackup        (String dir);
@@ -244,15 +240,6 @@ public class DcContext {
 
     public void setMuted(boolean muted) {
       setConfigInt("is_muted", muted? 1 : 0);
-    }
-
-    public boolean isGmailOauth2Addr(String addr) {
-      final String oauth2url = getOauth2Url(addr, "chat.delta:/foo");
-      return isGmailOauth2Url(oauth2url);
-    }
-
-    public boolean isGmailOauth2Url(String oauth2url) {
-      return oauth2url.startsWith("https://accounts.google.com/");
     }
 
     public void restartIo() {

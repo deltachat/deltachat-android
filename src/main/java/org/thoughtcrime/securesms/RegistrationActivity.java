@@ -94,7 +94,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     Spinner imapSecurity;
     Spinner smtpSecurity;
-    Spinner authMethod;
     Spinner certCheck;
 
     private SwitchCompat proxySwitch;
@@ -125,7 +124,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         imapSecurity = findViewById(R.id.imap_security);
         smtpSecurity = findViewById(R.id.smtp_security);
-        authMethod = findViewById(R.id.auth_method);
         certCheck = findViewById(R.id.cert_check);
 
         proxySwitch = findViewById(R.id.proxy_settings);
@@ -216,21 +214,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             smtpSecurity.setSelection(ViewUtil.checkBounds(intVal, smtpSecurity));
             expandAdvanced = expandAdvanced || intVal != 0;
 
-            int serverFlags = DcHelper.getInt(this, CONFIG_SERVER_FLAGS);
-            int sel = 0;
-            if((serverFlags&DcContext.DC_LP_AUTH_OAUTH2)!=0) {
-              sel = 1;
-
-              // remove gmail oauth2
-              if (DcHelper.getContext(this).isGmailOauth2Addr(email)) { // this is a blocking call, not perfect, but as rarely used and temporary, good enough
-                sel = 0;
-                updateProviderInfo(); // we refer to the hints in the device message, show them immediately
-              }
-              // /remove gmail oauth2
-            }
-            authMethod.setSelection(ViewUtil.checkBounds(sel, authMethod));
-            expandAdvanced = expandAdvanced || sel != 0;
-
             int imapCertificateChecks = DcHelper.getInt(this, "imap_certificate_checks");
             if (imapCertificateChecks == 3) {
               imapCertificateChecks = 2; // 3 is a deprecated alias for 2
@@ -287,7 +270,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         int id = item.getItemId();
 
         if (id == R.id.do_register) {
-            do_register();
+            updateProviderInfo();
+            onLogin();
             return true;
         } else if (id == android.R.id.home) {
             // handle close button click here
@@ -295,26 +279,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void do_register() {
-        // "log in" button clicked - even if oauth2DeclinedByUser is true,
-        // we will ask for oauth2 to allow reverting the decision.
-        checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
-            @Override
-            public void onSuccess(Boolean oauth2started) {
-                if(!oauth2started) {
-                    updateProviderInfo();
-                    onLogin();
-                }
-            }
-
-            @Override
-            public void onFailure(ExecutionException e) {
-                updateProviderInfo();
-                onLogin();
-            }
-        });
     }
 
     @Override
@@ -335,23 +299,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             switch (type) {
                 case EMAIL:
                     verifyEmail(inputEditText);
-                    if (!oauth2DeclinedByUser) {
-                        checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
-                            @Override
-                            public void onSuccess(Boolean oauth2started) {
-                                if (!oauth2started) {
-                                    updateProviderInfo();
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(ExecutionException e) {
-                                updateProviderInfo();
-                            }
-                        });
-                    } else {
-                        updateProviderInfo();
-                    }
+                    updateProviderInfo();
                     break;
                 case SERVER:
                     verifyServer(inputEditText);
@@ -359,86 +307,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 case PORT:
                     verifyPort(inputEditText);
                     break;
-            }
-        }
-    }
-
-    private long oauth2Requested = 0;
-
-    // this flag is set, if the user has declined oauth2 at some point;
-    // if so, we won't bother em on focus changes again,
-    // however, to allow reverting the decision, we will always ask on clicking the login button.
-    private boolean oauth2DeclinedByUser = false;
-
-    // this function checks if oauth2 is available for a given email address
-    // and and asks the user if one wants to start oauth2.
-    // the function returns the future "true" if oauth2 was started and "false" otherwise.
-    private ListenableFuture<Boolean> checkOauth2start() {
-        SettableFuture<Boolean> oauth2started = new SettableFuture<>();
-
-        String email = emailInput.getText().toString();
-        if (!TextUtils.isEmpty(email) ) {
-            new PrecheckOauth2AsyncTask(this, email, oauth2started).execute();
-        }
-        else {
-            oauth2started.set(false);
-        }
-
-        return oauth2started;
-    }
-
-    private static class PrecheckOauth2AsyncTask extends AsyncTask<Void, Void, Void> {
-        private final WeakReference<RegistrationActivity> activityWeakReference;
-        private final String email;
-        private final SettableFuture<Boolean> oauth2started;
-        private final DcContext dcContext;
-        private @NonNull String oauth2url = "";
-
-        public PrecheckOauth2AsyncTask(RegistrationActivity activity, String email, SettableFuture<Boolean> oauth2started) {
-            super();
-            this.activityWeakReference = new WeakReference<>(activity);
-            this.email = email;
-            this.oauth2started = oauth2started;
-            this.dcContext = DcHelper.getContext(activity);
-        }
-        @Override
-        protected Void doInBackground(Void... voids) {
-            // the redirect-uri is also used as intent-filter in the manifest
-            // and should be whitelisted by the supported oauth2 services
-            String redirectUrl = "chat.delta:/"+BuildConfig.APPLICATION_ID+"/auth";
-            oauth2url = dcContext.getOauth2Url(email, redirectUrl);
-
-            // remove gmail oauth2
-            if (dcContext.isGmailOauth2Url(oauth2url)) {
-              oauth2url = null;
-            }
-            // /remove gmail oauth2
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
-            RegistrationActivity activity = activityWeakReference.get();
-            if (activity!=null && !TextUtils.isEmpty(oauth2url)) {
-                new AlertDialog.Builder(activity)
-                        .setTitle(R.string.login_info_oauth2_title)
-                        .setMessage(R.string.login_info_oauth2_text)
-                        .setNegativeButton(R.string.cancel, (dialog, which)->{
-                            activity.oauth2DeclinedByUser = true;
-                            oauth2started.set(false);
-                        })
-                        .setPositiveButton(R.string.perm_continue, (dialog, which)-> {
-                            // pass control to browser, we'll be back in business at (**)
-                            activity.oauth2Requested = System.currentTimeMillis();
-                            IntentUtils.showInBrowser(activity, oauth2url);
-                            oauth2started.set(true);
-                        })
-                        .setCancelable(false)
-                        .show();
-            } else {
-                oauth2started.set(false);
             }
         }
     }
@@ -491,27 +359,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             } else {
                 // this should normally not happen
                 Toast.makeText(this, "ErrProviderWithoutUrl", Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        if(Intent.ACTION_VIEW.equals(intent.getAction())) {
-            Uri uri = intent.getData();
-            String path = uri.getPath();
-            if(!(path.startsWith("/"+BuildConfig.APPLICATION_ID)||path.startsWith("/auth"))
-             || System.currentTimeMillis()-oauth2Requested > 3*60*60*1000) {
-                return; // timeout after some hours or a request belonging to a bad path.
-            }
-
-            // back in business after we passed control to the browser in (**)
-            String code = uri.getQueryParameter("code");
-            if(!TextUtils.isEmpty(code)) {
-                passwordInput.setText(code);
-                authMethod.setSelection(1/*OAuth2*/);
-                onLogin();
             }
         }
     }
@@ -634,7 +481,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         param.smtpUser = getParam(R.id.smtp_login_text, false);
         param.smtpPassword = getParam(R.id.smtp_password_text, false);
         param.certificateChecks = certificateChecksFromInt(certCheck.getSelectedItemPosition());
-        param.oauth2 = authMethod.getSelectedItemPosition() == 1;
 
         new Thread(() -> {
             Rpc rpc = DcHelper.getRpc(this);
