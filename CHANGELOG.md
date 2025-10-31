@@ -3,6 +3,7 @@
 ## Unreleased
 
 * don't show badge counter in app icon for the permanent background notification
+* remove deprecated "companion app" code
 * fix sorting of old media in gallery
 
 ## v2.22.0
