@@ -131,7 +131,7 @@
             android:visibility="gone"
             tools:visibility="visible"
             app:constraint_referenced_ids="inbox, imap_login, imap_server, imap_port, imap_security_label, imap_security, outbox_view_spacer_top,
-            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, auth_method_label, auth_method, cert_check_label, cert_check, view_log_button, proxy_settings" />
+            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, cert_check_label, cert_check, view_log_button, proxy_settings" />
 
         <ImageView
             android:id="@+id/advanced_icon"
@@ -358,26 +358,6 @@
             app:layout_constraintTop_toBottomOf="@id/smtp_security_label" />
 
         <TextView
-            android:id="@+id/auth_method_label"
-            style="@style/TextAppearance.AppCompat.Caption"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingTop="16dp"
-            android:text="@string/login_auth_method"
-            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
-            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/smtp_security" />
-
-        <Spinner
-            android:id="@+id/auth_method"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:entries="@array/auth_methods"
-            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
-            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/auth_method_label" />
-
-        <TextView
             android:id="@+id/cert_check_label"
             style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="0dp"
@@ -385,7 +365,7 @@
             android:text="@string/login_certificate_checks"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/auth_method" />
+            app:layout_constraintTop_toBottomOf="@id/smtp_security" />
 
         <Spinner
             android:id="@+id/cert_check"
