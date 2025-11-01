@@ -2,10 +2,16 @@
 
 ## Unreleased
 
+* metadata protection: protect Date header
+* metadata protection: protect Autocrypt header
+* better multi-device: synchronize group creation across devices
+* data saving: do not send Autocrypt header in read receipts
+* improve onboarding speed
 * don't show badge counter in app icon for the permanent background notification
 * remove deprecated "companion app" code
-* remove "Watch Sent Folder" preference
+* remove deprecated "Watch Sent Folder" preference
 * fix sorting of old media in gallery
+* update to core 2.23.0
 
 ## v2.22.0
 2025-10

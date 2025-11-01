@@ -52,7 +52,7 @@ public class SharingTest {
 
   @Before
   public void createGroup() {
-    activityRule.getScenario().onActivity(a -> createdGroupId = DcHelper.getContext(a).createGroupChat(false, "group"));
+    activityRule.getScenario().onActivity(a -> createdGroupId = DcHelper.getContext(a).createGroupChat( "group"));
   }
 
   @Before

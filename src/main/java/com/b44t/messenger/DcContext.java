@@ -165,7 +165,7 @@ public class DcContext {
     public native void         setChatVisibility    (int chat_id, int visibility);
     public native int          getChatIdByContactId (int contact_id);
     public native int          createChatByContactId(int contact_id);
-    public native int          createGroupChat      (boolean verified, String name);
+    public native int          createGroupChat      (String name);
     public native int          createBroadcastList  ();
     public native boolean      isContactInChat      (int chat_id, int contact_id);
     public native int          addContactToChat     (int chat_id, int contact_id);

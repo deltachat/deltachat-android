@@ -396,7 +396,7 @@ public class DcHelper {
 
     return new ThreadRecord(body, recipient, date,
       unreadCount, chatId,
-      chat.getVisibility(), chat.isProtected(), chat.isSendingLocations(), chat.isMuted(), chat.isContactRequest(), summary);
+      chat.getVisibility(), chat.isSendingLocations(), chat.isMuted(), chat.isContactRequest(), summary);
   }
 
   public static boolean isNetworkConnected(Context context) {
