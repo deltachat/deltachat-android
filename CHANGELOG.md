@@ -7,6 +7,7 @@
 * better multi-device: synchronize group creation across devices
 * data saving: do not send Autocrypt header in read receipts
 * improve onboarding speed
+* reduce app size
 * don't show badge counter in app icon for the permanent background notification
 * remove deprecated "companion app" code
 * remove deprecated "Watch Sent Folder" preference
