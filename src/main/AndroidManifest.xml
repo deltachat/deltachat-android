@@ -239,18 +239,6 @@
               android:windowSoftInputMode="stateUnchanged"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
               android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.VIEW" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-
-            <!-- this scheme is used as the redirect_url for getOauth2Url()
-            and should be whitelisted by the supported oauth2 services -->
-            <data android:scheme="chat.delta" android:path="/${applicationId}/auth" tools:ignore="AppLinkUrlError"/>
-            <data android:scheme="chat.delta" android:path="/auth" tools:ignore="AppLinkUrlError"/>
-
-
-        </intent-filter>
     </activity>
 
     <activity android:name=".proxy.ProxySettingsActivity"
@@ -416,17 +404,6 @@
     <service
         android:name=".service.FetchForegroundService"
         android:foregroundServiceType="dataSync" />
-
-    <service
-        android:name=".service.IPCAddAccountsService"
-        android:foregroundServiceType="dataSync"
-        android:enabled="true"
-        android:exported="true"
-        >
-        <intent-filter>
-            <action android:name="chat.delta.addaccount" />
-        </intent-filter>
-    </service>
 
     <receiver android:name=".notifications.MarkReadReceiver"
               android:enabled="true"

@@ -79,7 +79,6 @@ public class ContactSelectionListFragment extends    Fragment
   private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
 
   public static final String MULTI_SELECT          = "multi_select";
-  public static final String SELECT_VERIFIED_EXTRA = "select_verified";
   public static final String SELECT_UNENCRYPTED_EXTRA = "select_unencrypted_extra";
   public static final String ALLOW_CREATION = "allow_creation";
   public static final String PRESELECTED_CONTACTS = "preselected_contacts";
@@ -240,10 +239,6 @@ public class ContactSelectionListFragment extends    Fragment
     return getActivity().getIntent().getBooleanExtra(MULTI_SELECT, false);
   }
 
-  private boolean isSelectVerfied() {
-    return getActivity().getIntent().getBooleanExtra(SELECT_VERIFIED_EXTRA, false);
-  }
-
   private boolean isUnencrypted() {
     return getActivity().getIntent().getBooleanExtra(SELECT_UNENCRYPTED_EXTRA, false);
   }
@@ -346,17 +341,6 @@ public class ContactSelectionListFragment extends    Fragment
             requireContext().startActivity(intent);
           }
           return;
-        }
-
-        if (isSelectVerfied() && !contact.getDcContact().isVerified()) {
-          new AlertDialog.Builder(getActivity())
-            .setMessage(R.string.verified_contact_required_explain)
-            .setNeutralButton(R.string.learn_more, (d, w) -> DcHelper.openHelp(getActivity(), "#howtoe2ee"))
-            .setNegativeButton(R.string.qrscan_title, (d, w) -> getActivity().startActivity(new Intent(getActivity(), QrActivity.class)))
-            .setPositiveButton(R.string.ok, null)
-            .setCancelable(true)
-            .show();
-            return;
         }
 
         selectedContacts.add(contactId);

@@ -5,7 +5,6 @@ import static android.text.InputType.TYPE_TEXT_VARIATION_URI;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_BCC_SELF;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SENTBOX_WATCH;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SHOW_EMAILS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_WEBXDC_REALTIME_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.getRpc;
@@ -58,7 +57,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   private static final String TAG = AdvancedPreferenceFragment.class.getSimpleName();
 
   private ListPreference showEmails;
-  CheckBoxPreference sentboxWatchCheckbox;
   CheckBoxPreference bccSelfCheckbox;
   CheckBoxPreference mvboxMoveCheckbox;
   CheckBoxPreference onlyFetchMvboxCheckbox;
@@ -81,15 +79,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     Preference sendAsm = this.findPreference("pref_send_autocrypt_setup_message");
     if (sendAsm != null) {
       sendAsm.setOnPreferenceClickListener(new SendAsmListener());
-    }
-
-    sentboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_sentbox_watch");
-    if (sentboxWatchCheckbox != null) {
-      sentboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
-        boolean enabled = (Boolean) newValue;
-        dcContext.setConfigInt(CONFIG_SENTBOX_WATCH, enabled? 1 : 0);
-        return true;
-      });
     }
 
     bccSelfCheckbox = (CheckBoxPreference) this.findPreference("pref_bcc_self");
@@ -261,7 +250,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     if (dcContext.isChatmail()) {
       showEmails.setVisible(false);
       showSystemContacts.setVisible(false);
-      sentboxWatchCheckbox.setVisible(false);
       bccSelfCheckbox.setVisible(false);
       mvboxMoveCheckbox.setVisible(false);
       onlyFetchMvboxCheckbox.setVisible(false);
@@ -282,7 +270,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     showEmails.setValue(value);
     updateListSummary(showEmails, value);
 
-    sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_SENTBOX_WATCH));
     bccSelfCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_BCC_SELF));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
     onlyFetchMvboxCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_ONLY_FETCH_MVBOX));

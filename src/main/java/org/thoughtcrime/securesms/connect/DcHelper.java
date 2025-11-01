@@ -64,7 +64,6 @@ public class DcHelper {
     public static final String CONFIG_DISPLAY_NAME = "displayname";
     public static final String CONFIG_SELF_STATUS = "selfstatus";
     public static final String CONFIG_SELF_AVATAR = "selfavatar";
-    public static final String CONFIG_SENTBOX_WATCH = "sentbox_watch";
     public static final String CONFIG_MVBOX_MOVE = "mvbox_move";
     public static final String CONFIG_ONLY_FETCH_MVBOX = "only_fetch_mvbox";
     public static final String CONFIG_BCC_SELF = "bcc_self";
@@ -95,25 +94,9 @@ public class DcHelper {
         return ApplicationContext.getInstance(context).notificationCenter;
     }
 
-    public static boolean hasAnyConfiguredContext(Context context) {
-      DcAccounts accounts = getAccounts(context);
-      int[] accountIds = accounts.getAll();
-      for (int accountId : accountIds) {
-        if (accounts.getAccount(accountId).isConfigured() == 1) {
-          return true;
-        }
-      }
-      return false;
-    }
-
     public static boolean isConfigured(Context context) {
         DcContext dcContext = getContext(context);
         return dcContext.isConfigured() == 1;
-    }
-
-    public static String getSelfAddr(Context context) {
-        DcContext dcContext = getContext(context);
-        return dcContext.getConfig(CONFIG_CONFIGURED_ADDRESS);
     }
 
     public static int getInt(Context context, String key) {
@@ -160,7 +143,6 @@ public class DcHelper {
     dcContext.setStockTranslation(69, context.getString(R.string.saved_messages));
     dcContext.setStockTranslation(70, context.getString(R.string.device_talk_explain));
     dcContext.setStockTranslation(71, context.getString(R.string.device_talk_welcome_message2));
-    dcContext.setStockTranslation(72, context.getString(R.string.systemmsg_unknown_sender_for_chat));
     dcContext.setStockTranslation(73, context.getString(R.string.systemmsg_subject_for_new_contact));
     dcContext.setStockTranslation(74, context.getString(R.string.systemmsg_failed_sending_to));
     dcContext.setStockTranslation(84, context.getString(R.string.configuration_failed_with_error));
@@ -414,7 +396,7 @@ public class DcHelper {
 
     return new ThreadRecord(body, recipient, date,
       unreadCount, chatId,
-      chat.getVisibility(), chat.isProtected(), chat.isSendingLocations(), chat.isMuted(), chat.isContactRequest(), summary);
+      chat.getVisibility(), chat.isSendingLocations(), chat.isMuted(), chat.isContactRequest(), summary);
   }
 
   public static boolean isNetworkConnected(Context context) {

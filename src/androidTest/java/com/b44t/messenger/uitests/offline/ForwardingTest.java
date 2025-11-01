@@ -54,7 +54,7 @@ public class ForwardingTest {
     // The thing is, DC_STATE_OUT_PENDING show a rotating circle animation, and Espresso doesn't work
     // with animations, and the tests would hang and never finish.
     dcContext.setConfig("bcc_self", "0");
-    activityRule.getScenario().onActivity(a -> createdGroupId = DcHelper.getContext(a).createGroupChat(false, "group"));
+    activityRule.getScenario().onActivity(a -> createdGroupId = DcHelper.getContext(a).createGroupChat( "group"));
   }
 
   @After
