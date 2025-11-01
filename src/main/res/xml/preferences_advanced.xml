@@ -90,11 +90,6 @@
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
-            android:key="pref_sentbox_watch"
-            android:title="@string/pref_watch_sent_folder"/>
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="true"
             android:key="pref_bcc_self"
             android:title="@string/pref_send_copy_to_self"/>
 
