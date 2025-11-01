@@ -24,7 +24,6 @@ public class VcardView extends FrameLayout {
 
   private final @NonNull AvatarView avatar;
   private final @NonNull TextView name;
-  private final @NonNull TextView address;
 
   private @Nullable SlideClickListener viewListener;
   private @Nullable VcardSlide slide;
@@ -44,7 +43,6 @@ public class VcardView extends FrameLayout {
 
     this.avatar  = findViewById(R.id.avatar);
     this.name    = findViewById(R.id.name);
-    this.address = findViewById(R.id.addr);
 
     setOnClickListener(v -> {
       if (viewListener != null && slide != null) {
@@ -61,7 +59,6 @@ public class VcardView extends FrameLayout {
     try {
       VcardContact vcardContact = rpc.parseVcard(slide.asAttachment().getRealPath(getContext())).get(0);
       name.setText(vcardContact.displayName);
-      address.setText(vcardContact.addr);
       avatar.setAvatar(glideRequests, new Recipient(getContext(), vcardContact), false);
       this.slide = slide;
     } catch (RpcException e) {
@@ -70,6 +67,6 @@ public class VcardView extends FrameLayout {
   }
 
   public String getDescription() {
-    return name.getText() + "\n" + address.getText();
+    return name.getText().toString();
   }
 }
