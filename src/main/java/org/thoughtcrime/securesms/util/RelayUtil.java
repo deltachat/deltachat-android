@@ -15,6 +15,7 @@ public class RelayUtil {
     private static final String SHARED_URIS             = "shared_uris";
     private static final String SHARED_CONTACT_ID       = "shared_contact_id";
     private static final String IS_SHARING              = "is_sharing";
+    private static final String IS_FROM_WEBXDC          = "is_from_webxdc";
     private static final String SHARED_TITLE           = "shared_title";
     private static final String DIRECT_SHARING_CHAT_ID = "direct_sharing_chat_id";
 
@@ -33,6 +34,14 @@ public class RelayUtil {
     public static boolean isSharing(Activity activity) {
         try {
             return activity.getIntent().getBooleanExtra(IS_SHARING, false);
+        } catch (NullPointerException npe) {
+            return false;
+        }
+    }
+
+    public static boolean isFromWebxdc(Activity activity) {
+        try {
+            return activity.getIntent().getBooleanExtra(IS_FROM_WEBXDC, false);
         } catch (NullPointerException npe) {
             return false;
         }
@@ -135,6 +144,11 @@ public class RelayUtil {
 
     public static void setForwardingMessageIds(Intent composeIntent, int[] messageIds) {
         composeIntent.putExtra(FORWARDED_MESSAGE_IDS, messageIds);
+    }
+
+    public static void setIsFromWebxdc(Intent composeIntent, boolean fromWebxdc) {
+        composeIntent.putExtra(IS_FROM_WEBXDC, fromWebxdc);
+        composeIntent.putExtra(IS_SHARING, true);
     }
 
     public static void setSharedUris(Intent composeIntent, ArrayList<Uri> uris) {
