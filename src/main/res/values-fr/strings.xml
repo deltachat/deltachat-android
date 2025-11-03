@@ -345,35 +345,6 @@
     </plurals>
     <string name="file_saved_to">Fichier enregistré dans \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Discussion vidéo</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Inviter %1$s à une discussion vidéo ?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Cela requiert une application compatible ou un navigateur compatible des deux côtés.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s est invité à une discussion vidéo.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Vous avez envoyé une invitation pour une discussion vidéo.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Appuyer pour rejoindre</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Appuyer pour ouvrir</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Instance de discussion vidéo</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Votre instance de discussion vidéo</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Par exemple : https://your-server.org/$ROOM</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Si vous avez activé les discussions vidéo, vous pouvez démarrer une conversation vidéo dans chacune de vos discussions. Il faut que chaque participant-e ait une application ou un navigateur compatibles pour pouvoir utiliser cette option.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Utiliser « %1$s » pour inviter d\'autres personnes à des discussions vidéo ?\n\nUne fois configuré, vous pouvez discuter en vidéo dans chaque discussion privée. Remplace vos préférences de configurations précédentes pour les discussions vidéos.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Invitation à une discussion vidéo</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Vous êtes invité à une discussion vidéo, cliquez sur %1$s pour la rejoindre.</string>
-
     <plurals name="ask_delete_messages">
         <item quantity="one">Effacer %d message ici et sur le serveur ?</item>
         <item quantity="many">Effacer %d messages ici et sur le serveur ?</item>
@@ -402,7 +373,6 @@
     <string name="contacts_title">Contacts</string>
     <string name="contacts_enter_name_or_email">Entrer le nom ou l\'adresse de courriel</string>
     <string name="contacts_type_email_above">Saisir l\'adresse de courriel au-dessus</string>
-    <string name="contacts_empty_hint">Aucun contact.</string>
 
 
     <!-- chatlist and chat view -->
@@ -447,9 +417,6 @@
     <string name="saved">Sauvegardés</string>
     <string name="save_as">Sauvegarder</string>
     <string name="retry_send">Réessayer d\'envoyer le message</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Vous ne pouvez pas écrire car vous ne faites pas partie de ce groupe. Pour le rejoindre, demandez à un membre.</string>
-    <string name="messaging_disabled_mailing_list">Envoyer des messages dans des listes de diffusion n\'est pas encore possible</string>
     <string name="cannot_display_unsuported_file_type">Impossible d\'afficher ce type de fichier : %s</string>
     <string name="attachment_failed_to_load">Échec du chargement de la pièce jointe</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -642,7 +609,6 @@
     <string name="proxy_delete_explain">Voulez-vous vraiment supprimer « %1$s » ?</string>
     <string name="proxy_share_explain">Vos amis peuvent ajouter ce proxy en scannant le code QR.</string>
     <string name="proxy_share_link">Partager le lien</string>
-
     <string name="login_info_oauth2_title">Continuer avec une configuration simplifiée ?</string>
     <string name="login_info_oauth2_text">L\'adresse de courriel saisie prend en charge une configuration simplifiée (OAuth2.0). \n\nDans l\'étape suivante, autorisez Delta Chat à agir comme votre application de Chat avec courriel . Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
     <string name="login_certificate_checks">Vérification du certificat</string>
@@ -652,7 +618,7 @@
     <string name="login_error_required_fields">Entrez une adresse email et un mot de passe valides</string>
     <string name="import_backup_title">Rétablir une sauvegarde</string>
     <string name="import_backup_ask">Sauvegarde trouvée sur \"%1$s\".\n\nVoulez-vous importer et en utiliser toutes les données et paramètres ?</string>
-    <string name="import_backup_no_backup_found">Aucune sauvegarde trouvée.\n\nCopiez le fichier de sauvegarde vers \"%1$s\" et essayez à nouveau. Ou bien, appuyez sur \"Démarrage communication\" pour suivre le processus normal de configuration.</string>
+    <string name="import_backup_no_backup_found">Aucune sauvegarde trouvée.\n\nCopiez le fichier de sauvegarde vers \"%1$s\" et essayez à nouveau.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Connexion en tant que \"%1$s\" échouée. Vérifiez que votre adresse courriel et votre mot de passe sont corrects.</string>
     <!-- TLS certificate checks -->
@@ -733,8 +699,6 @@
     <string name="pref_server">Serveur</string>
     <string name="pref_encryption">Chiffrement</string>
     <string name="pref_manage_keys">Gérer les clés</string>
-    <string name="pref_use_system_emoji">Utiliser les émojis système</string>
-    <string name="pref_use_system_emoji_explain">Désactiver la prise en charge des émojis intégrés de Delta Chat</string>
     <string name="pref_show_system_contacts">Lire le carnet d\'adresses du système</string>
     <string name="pref_show_system_contacts_explain">Permet de créer des conversations avec des contacts du carnet d\'adresse. Certains fournisseurs doivent d\'abord mettre en place un chiffrement de bout-en-bout.</string>
     <string name="pref_chats">Discussions</string>
@@ -747,24 +711,19 @@
     <string name="pref_backup">Sauvegarde</string>
     <string name="pref_backup_explain">Sauvegarder les discussions sur un stockage externe</string>
     <string name="pref_backup_export_explain">Une sauvegarde vous aide à configurer une nouvelle installation sur cet appareil ou sur un autre.\n\nLa sauvegarde contiendra tous vos messages, tous vos contacts et toutes vos discussions, ainsi que vos paramètres de chiffrement de bout en bout Autocrypt. Conservez le fichier de sauvegarde dans un endroit sûr, ou supprimez-le aussitôt utilisé.</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <!-- deprecated -->
     <string name="pref_backup_export_x">Exporter %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exporter les %1$d comptes</string>
     <string name="pref_backup_export_start_button">Démarrer la sauvegarde</string>
     <string name="pref_backup_written_to_x">Sauvegarde effectuée avec succès sur %1$s</string>
-    <string name="pref_managekeys_menu_title">Gérer les clés</string>
     <string name="pref_managekeys_export_secret_keys">Exporter les clés secrètes</string>
     <string name="pref_managekeys_export_explain">Exporter les clés secrètes vers \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Importer des clés secrètes</string>
-    <string name="pref_managekeys_import_explain">Importer les clés secrètes depuis \"%1$s\" ?\n\n• Les clés secrètes existantes ne seront pas détruites\n\n• La dernière clé importée sera utilisée comme nouvelle clé par défaut à moins qu\'il y ait le mot \"legacy\" dans son nom de fichier.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Les clés secrètes ont été écrites avec succès vers \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Les clés secrètes ont été importées depuis \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Arrière-plan</string>
     <string name="pref_background_btn_default">Utilisez l\'image par défaut</string>
     <string name="pref_background_btn_gallery">Sélectionner depuis la galerie</string>
-    <string name="pref_imap_folder_handling">Gestion de dossier IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si vous désactivez cette option, assurez-vous que votre serveur et vos autres clients sont configurés en conséquence.\n\nSinon des choses pourraient ne pas fonctionner du tout.</string>
     <string name="pref_watch_sent_folder">Regarder le dossier Messages envoyés</string>
     <string name="pref_send_copy_to_self">M\'envoyer une copie</string>
@@ -841,12 +800,7 @@
     <string name="autodel_confirm">J\'ai compris, supprimer tous ces messages</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Immédiatement</string>
-    <string name="after_30_seconds">Après 30 secondes</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">Après 1 minute</string>
     <string name="after_5_minutes">Après 5 minutes</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">Après 30 minutes</string>
     <string name="autodel_after_1_hour">Après 1 heure</string>
     <string name="autodel_after_1_day">Après 1 jour</string>
     <string name="autodel_after_1_week">Après 1 semaine</string>
@@ -861,7 +815,7 @@
     <string name="autocrypt_prefer_e2ee">Préférez le chiffrement de bout en bout</string>
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">Ce message ne peut pas être déchiffré.\n\n• Essayez de demander à l\'expéditeur de vous l\'envoyer à nouveaux.\n\n• Si vous venez de réinstaller Delta Chat il serait bien de le reconfigurer en sélectionnant \"Ajouter un deuxième appareil\" ou d\'importer une sauvegarde.</string>
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Expéditeur inconnu de cette discussion. Voir « Info » pour plus de détails.</string>
     <string name="systemmsg_subject_for_new_contact">Message de %1$s</string>
     <string name="systemmsg_failed_sending_to">Échec de l\'envoi du message à %1$s.</string>
@@ -1092,7 +1046,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">État de la livraison : Erreur</string>
-    <string name="a11y_encryption_padlock">Cadenas de chiffrement</string>
     <string name="a11y_delivery_status_sending">État de la livraison : envoi en cours</string>
     <string name="a11y_delivery_status_draft">État de la livraison : Brouillon</string>
     <string name="a11y_delivery_status_delivered">État de la livraison : Livré</string>
@@ -1119,8 +1072,6 @@
     <string name="disabled_in_dc">Désactivé dans Delta Chat</string>
     <string name="disabled_in_system_settings">Désactivé dans les paramètres système</string>
     <string name="bg_app_refresh_disabled">Le \"rafraîchissement des applications en arrière-plan\" est désactivé dans les paramètres du système.</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Retardé</string>
     <string name="notifications_avg_minutes">Toutes les %1$d minutes en moyenne</string>
     <string name="notifications_avg_hours">Toutes les %1$d heures en moyenne</string>
     <string name="last_check_at">Dernièrement vu à %1$s</string>

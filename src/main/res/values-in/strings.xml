@@ -271,27 +271,6 @@
     </plurals>
     <string name="file_saved_to">Berkas disimpan ke \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Obrolan video</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Undang %1$s ke obrolan video?</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s diundang ke obrolan video.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Anda diundang ke obrolan video.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Ketuk untuk bergabung</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Ketuk untuk membuka</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Contoh: https://your-server.org/$ROOM</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Gunakan \"%1$s\" untuk mengundang orang lain ke obrolan video? Setelah diatur, Anda dapat memulai obrolan video dari setiap obrolan. Ini menggantikan pengaturan sebelumnya untuk obrolan video.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Undangan obrolan video</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Anda diundang ke obrolan video, klik %1$s untuk bergabung.</string>
-
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">Menghapus pesan %d?</item>
@@ -312,7 +291,6 @@
     <string name="contacts_title">Kontak</string>
     <string name="contacts_enter_name_or_email">Masukkan nama atau alamat email</string>
     <string name="contacts_type_email_above">Ketik alamat email di atas</string>
-    <string name="contacts_empty_hint">Tidak ada kontak.</string>
 
 
     <!-- chatlist and chat view -->
@@ -405,7 +383,7 @@
     <string name="login_error_required_fields">Silakan masukkan alamat email dan kata sandi yang sah</string>
     <string name="import_backup_title">Impor cadangan</string>
     <string name="import_backup_ask">Cadangan ditemukan di \"%1$s\".\n\n Apakah Anda ingin mengimpor dan menggunakan semua data dan pengaturan darinya?</string>
-    <string name="import_backup_no_backup_found">Cadangan tidak ketemu.\n\nKopi cadangan ke \"%1$s\" dan coba lagi. Cara lain, tekan \"Mulai obrolan\" untuk melanjutkan proses pengaturan normal.</string>
+    <string name="import_backup_no_backup_found">Cadangan tidak ketemu.\n\nKopi cadangan ke \"%1$s\" dan coba lagi.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Tidak bisa login sebagai \"%1$s\". Mohon cek apakah alamat surel dan kata sandi benar.</string>
     <!-- TLS certificate checks -->
@@ -464,8 +442,6 @@
     <string name="pref_read_receipts">Baca tanda terima</string>
     <string name="pref_read_receipts_explain">Jika tanda terima baca dinonaktifkan, Anda tidak akan dapat melihat tanda terima baca dari orang lain.</string>
     <string name="pref_manage_keys">Kelola kunci</string>
-    <string name="pref_use_system_emoji">Gunakan emoji sistem</string>
-    <string name="pref_use_system_emoji_explain">Matikan dukungan emoji Delta Chat yang ada</string>
     <string name="pref_chats">Obrolan</string>
     <string name="pref_in_chat_sounds">Suara dalam obrolan</string>
     <string name="pref_view_log">Lihat catatan</string>
@@ -478,13 +454,9 @@
     <string name="pref_backup_export_explain">Cadangan membantu Anda untuk membuat instalasi baru di perangkat ini atau perangkat lain.\n\nDalam cadangan terdapat semua pesan, kontak dan obrolan dan pengaturan Autocrypt ujung ke ujung Anda. Simpan berkas cadangan di tempat yang aman atau hapus secepatnya.</string>
     <string name="pref_backup_export_start_button">Mulai Cadangkan</string>
     <string name="pref_backup_written_to_x">Cadangan berhasil ditulis ke \"%1$s\".</string>
-    <string name="pref_managekeys_menu_title">Kelola kunci</string>
     <string name="pref_managekeys_export_secret_keys">Ekspor kunci rahasia</string>
     <string name="pref_managekeys_export_explain">Ekspor kunci rahasia ke \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Impor kunci rahasia</string>
-    <string name="pref_managekeys_import_explain">Impor kunci rahasia dari \"%1$s\"?\n\n• Kunci rahasia sebelumnya tidak akan terhapus\n\n• Kunci terakhir yang diimpo akan digunakan sebagai kunci default baru kecuali ada kata \"legacy\" di nama berkas.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Kunci rahasia berhasil ditulis ke \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Kunci rahasia diimpor dari \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Latar belakang</string>
     <string name="pref_background_btn_default">Menggunakan gambar default</string>
@@ -517,12 +489,7 @@
     <string name="autodel_confirm">Saya mengerti, hapus semua pesan ini</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Segera</string>
-    <string name="after_30_seconds">Setelah 30 detik</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">Setelah 1 menit</string>
     <string name="after_5_minutes">Setelah 5 menit</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">Setelah 30 menit</string>
     <string name="autodel_after_1_hour">Setelah 1 jam</string>
     <string name="autodel_after_1_day">Setelah 1 hari</string>
     <string name="autodel_after_1_week">Setelah 1 minggu</string>
@@ -536,6 +503,8 @@
     <string name="autocrypt_send_asm_explain_after">Pengaturan Anda sudah dikirim ke Anda sendiri. Lihat pesan pengaturan di perangkat yang lain. Seharusnya Anda akan diminta kode pengaturan. Masukkan angka berikut:</string>
     <string name="autocrypt_prefer_e2ee">Lebih baik enkripsi ujung ke ujung</string>
 
+    <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Pengirim tidak dikenal untuk obrolan ini. Lihat \'info\' untuk lebih jelasnya.</string>
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>
     <string name="systemmsg_failed_sending_to">Gagal mengirim pesan ke %1$s.</string>
@@ -637,7 +606,6 @@
     <string name="menu.view.developer.open.current.log.file">Buka log berkas saat ini</string>
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Status pengiriman: Kesalahan</string>
-    <string name="a11y_encryption_padlock">Enkripsi padlock</string>
     <string name="a11y_delivery_status_sending">Status pengiriman: Mengirim</string>
     <string name="a11y_delivery_status_draft">Status pengiriman: Draft</string>
     <string name="a11y_delivery_status_delivered">Status pengiriman: Terkirim</string>

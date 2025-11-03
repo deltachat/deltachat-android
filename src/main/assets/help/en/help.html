@@ -12,8 +12,11 @@
       <li><a href="#what-do-pinning-muting-and-archiving-mean">What do Pinning, Muting and Archiving mean?</a></li>
       <li><a href="#save">How do “Saved Messages” work?</a></li>
       <li><a href="#what-does-the-green-dot-mean">What does the green dot mean?</a></li>
+      <li><a href="#what-do-the-ticks-shown-beside-outgoing-messages-mean">What do the ticks shown beside outgoing messages mean?</a></li>
       <li><a href="#edit">Correct typos and delete messages after sending</a></li>
       <li><a href="#ephemeralmsgs">How do disappearing messages work?</a></li>
+      <li><a href="#what-happens-if-i-turn-on-delete-old-messages-from-server">What happens if I turn on “Delete old messages from server”?</a></li>
+      <li><a href="#delold">What happens if I turn on “Delete old messages from device”?</a></li>
     </ul>
   </li>
   <li><a href="#groups">Groups</a>
@@ -22,9 +25,6 @@
       <li><a href="#add-members-to-a-group">Add members to a group</a></li>
       <li><a href="#i-have-deleted-myself-by-accident">I have deleted myself by accident.</a></li>
       <li><a href="#i-do-not-want-to-receive-the-messages-of-a-group-any-longer">I do not want to receive the messages of a group any longer.</a></li>
-      <li><a href="#what-do-the-ticks-shown-beside-outgoing-messages-mean">What do the ticks shown beside outgoing messages mean?</a></li>
-      <li><a href="#what-happens-if-i-turn-on-delete-old-messages-from-server">What happens if I turn on “Delete old messages from server”?</a></li>
-      <li><a href="#delold">What happens if I turn on “Delete old messages from device”?</a></li>
     </ul>
   </li>
   <li><a href="#instant-delivery">Instant message delivery and Push Notifications</a>
@@ -74,18 +74,8 @@
       <li><a href="#how-can-i-create-my-own-webxdc-apps">How can I create my own webxdc apps?</a></li>
     </ul>
   </li>
-  <li><a href="#experimental-features">Experimental Features</a>
+  <li><a href="#advanced">Advanced</a>
     <ul>
-      <li><a href="#how-can-i-use-audiovideo-calls-with-delta-chat">How can I use audio/video calls with Delta Chat?</a></li>
-      <li><a href="#what-are-broadcast-lists-and-how-can-i-use-them">What are Broadcast Lists and how can I use them?</a></li>
-      <li><a href="#how-can-i-share-my-location-with-my-chat-partners">How can I share my location with my chat partners?</a></li>
-      <li><a href="#why-can-i-choose-to-only-watch-the-deltachat-folder">Why can I choose to only watch the DeltaChat folder?</a></li>
-      <li><a href="#how-can-i-use-a-different-e-mail-address-with-my-profile">How can I use a different e-mail address with my profile?</a></li>
-    </ul>
-  </li>
-  <li><a href="#miscellaneous">Miscellaneous</a>
-    <ul>
-      <li><a href="#which-permissions-does-delta-chat-need">Which permissions does Delta Chat need?</a></li>
       <li><a href="#does-delta-chat-work-with-my-e-mail-provider">Does Delta Chat work with <em>my</em> e-mail-provider?</a></li>
       <li><a href="#can-i-use-delta-chat-in-parallel-with-other-e-mail-apps">Can I use Delta Chat in parallel with other E-Mail apps?</a></li>
       <li><a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">I want to manage my own server for Delta Chat. What do you recommend?</a></li>
@@ -95,10 +85,23 @@
       <li><a href="#can-i-set-the-e-mail-subject-with-delta-chat">Can I set the E-Mail Subject with Delta Chat?</a></li>
       <li><a href="#what-is-the-send-copy-to-self-setting-good-for">What is the “Send Copy to Self” setting good for?</a></li>
       <li><a href="#why-can-i-choose-to-watch-the-sent-folder">Why can I choose to watch the “Sent” folder?</a></li>
-      <li><a href="#why-can-i-choose-not-to-watch-the-deltachat-folder">Why can I choose not to watch the DeltaChat folder?</a></li>
+      <li><a href="#why-can-i-choose-to-only-watch-the-deltachat-folder">Why can I choose to only watch the DeltaChat folder?</a></li>
       <li><a href="#is-delta-chat-compatible-with-proton-mail--tutanota--criptext">Is Delta Chat compatible with Proton Mail / Tutanota / Criptext?</a></li>
-      <li><a href="#remove-account">How can I delete my account?</a></li>
       <li><a href="#im-interested-in-the-technical-details-can-you-tell-me-more">I’m interested in the technical details. Can you tell me more?</a></li>
+    </ul>
+  </li>
+  <li><a href="#experimental-features">Experimental Features</a>
+    <ul>
+      <li><a href="#how-can-i-use-audiovideo-calls-with-delta-chat">How can I use audio/video calls with Delta Chat?</a></li>
+      <li><a href="#what-are-broadcast-lists-and-how-can-i-use-them">What are Broadcast Lists and how can I use them?</a></li>
+      <li><a href="#how-can-i-share-my-location-with-my-chat-partners">How can I share my location with my chat partners?</a></li>
+      <li><a href="#how-can-i-use-a-different-e-mail-address-with-my-profile">How can I use a different e-mail address with my profile?</a></li>
+    </ul>
+  </li>
+  <li><a href="#miscellaneous">Miscellaneous</a>
+    <ul>
+      <li><a href="#which-permissions-does-delta-chat-need">Which permissions does Delta Chat need?</a></li>
+      <li><a href="#remove-account">How can I delete my account?</a></li>
       <li><a href="#where-can-my-friends-find-delta-chat">Where can my friends find Delta Chat?</a></li>
       <li><a href="#how-are-delta-chat-developments-funded">How are Delta Chat developments funded?</a></li>
     </ul>
@@ -373,6 +376,24 @@ If you have turned off read receipts,
 they will not see the green dot
 until one of the above conditions are met.</p>
     
+      <h3 id="what-do-the-ticks-shown-beside-outgoing-messages-mean">
+        
+        
+          What do the ticks shown beside outgoing messages mean? <a href="#what-do-the-ticks-shown-beside-outgoing-messages-mean" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li><strong>One tick</strong> means that the message was sent successfully to your provider.</li>
+  <li><strong>Two ticks</strong> mean that at least one recipient’s device
+reported back to having received the message.</li>
+  <li>Recipients may have disabled read-receipts,
+so even if you see only one tick, the message may have been read.</li>
+  <li>The other way round, two ticks do not automatically mean
+that a human has read or understood the message ;)</li>
+</ul>
+    
       <h3 id="edit">
         
         
@@ -434,6 +455,52 @@ if one chat partner uninstalls Delta Chat,
 the messages will not get deleted from their email account.
 They will most likely also not be decryptable anymore
 (as long as they were encrypted in the first place).</p>
+    
+      <h3 id="what-happens-if-i-turn-on-delete-old-messages-from-server">
+        
+        
+          What happens if I turn on “Delete old messages from server”? <a href="#what-happens-if-i-turn-on-delete-old-messages-from-server" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>By default, Delta Chat stores all messages locally on your device.
+If you  e.g. want to save storage space at your mail provider,
+you can configure  Delta Chat
+to delete old already-received messages on the server automatically.
+They still remain on your device until you delete them there, too.</p>
+  </li>
+  <li>
+    <p>To turn it on, go to <strong>Delete Old Messages → Delete Messages from Server</strong>
+in the “Chats and Media” settings.
+You can set a timeframe between “At once” and “After 1 year”.
+All e-mails received by Delta Chat will be deleted from the server after this timeframe.</p>
+  </li>
+  <li>
+    <p>Note that if you use Delta Chat on more than one device,
+you need to leave the message on the server with a sufficient timeframe
+so that the other device(s) can download them, too.</p>
+  </li>
+</ul>
+    
+      <h3 id="delold">
+        
+        
+          What happens if I turn on “Delete old messages from device”? <a href="#delold" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>If you want to save storage on your device, you can choose to delete old
+messages automatically.</li>
+  <li>To turn it on, go to “delete old messages from device” in the “Chats &amp; Media”
+settings. You can set a timeframe between “after an hour” and “after a year”;
+this way, <em>all</em> messages will be deleted from your device as soon as they are
+older than that.</li>
+</ul>
     
       <h2 id="groups">
         
@@ -500,70 +567,6 @@ If you want to join the group again later on, ask another group member to add yo
     <p>As an alternative, you can also “Mute” a group - doing so means you get all messages and 
 can still write, but are no longer notified of any new messages.</p>
   </li>
-</ul>
-    
-      <h3 id="what-do-the-ticks-shown-beside-outgoing-messages-mean">
-        
-        
-          What do the ticks shown beside outgoing messages mean? <a href="#what-do-the-ticks-shown-beside-outgoing-messages-mean" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li><strong>One tick</strong> means that the message was sent successfully to your provider.</li>
-  <li><strong>Two ticks</strong> mean that at least one recipient’s device
-reported back to having received the message.</li>
-  <li>Recipients may have disabled read-receipts,
-so even if you see only one tick, the message may have been read.</li>
-  <li>The other way round, two ticks do not automatically mean
-that a human has read or understood the message ;)</li>
-</ul>
-    
-      <h3 id="what-happens-if-i-turn-on-delete-old-messages-from-server">
-        
-        
-          What happens if I turn on “Delete old messages from server”? <a href="#what-happens-if-i-turn-on-delete-old-messages-from-server" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>
-    <p>By default, Delta Chat stores all messages locally on your device.
-If you  e.g. want to save storage space at your mail provider,
-you can configure  Delta Chat
-to delete old already-received messages on the server automatically.
-They still remain on your device until you delete them there, too.</p>
-  </li>
-  <li>
-    <p>To turn it on, go to <strong>Delete Old Messages → Delete Messages from Server</strong>
-in the “Chats and Media” settings.
-You can set a timeframe between “At once” and “After 1 year”.
-All e-mails received by Delta Chat will be deleted from the server after this timeframe.</p>
-  </li>
-  <li>
-    <p>Note that if you use Delta Chat on more than one device,
-you need to leave the message on the server with a sufficient timeframe
-so that the other device(s) can download them, too.</p>
-  </li>
-</ul>
-    
-      <h3 id="delold">
-        
-        
-          What happens if I turn on “Delete old messages from device”? <a href="#delold" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>If you want to save storage on your device, you can choose to delete old
-messages automatically.</li>
-  <li>To turn it on, go to “delete old messages from device” in the “Chats &amp; Media”
-settings. You can set a timeframe between “after an hour” and “after a year”;
-this way, <em>all</em> messages will be deleted from your device as soon as they are
-older than that.</li>
 </ul>
     
       <h2 id="instant-delivery">
@@ -1416,202 +1419,13 @@ to get started.</li>
 Forum</a>.</li>
 </ul>
     
-      <h2 id="experimental-features">
+      <h2 id="advanced">
         
         
-          Experimental Features <a href="#experimental-features" class="anchor"></a>
-        
-        
-      </h2>
-
-<p>We are very grateful for feedback on these features - do you want to share
-your ideas? Join the <a href="https://support.delta.chat">Forum</a> to contribute. 
-You may conveniently login via Delta Chat and a QR code scan,
-another rather stable experiment we run on the side (sic!).</p>
-    
-      <h3 id="how-can-i-use-audiovideo-calls-with-delta-chat">
-        
-        
-          How can I use audio/video calls with Delta Chat? <a href="#how-can-i-use-audiovideo-calls-with-delta-chat" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>To turn on audio/video calls, go to the “experimental features” section in
-the advanced settings and choose a “Video Chat Instance”.</li>
-  <li>When you invite others to a video chat, it is opened in your browser/app at
-once. The others receive an e-mail with a link to the video chat. 
-This way, it is also compatible if your chat partners don’t use Delta Chat.</li>
-  <li>Note that there is no ring tone on the other side, and your chat partners
-will not get interrupted by a video chat invite.</li>
-  <li>You can use any video chat service which allows joining by link. Just add the
-link in the settings.</li>
-  <li>For example, to use the flagship Jitsi Meet instance, you could enter
-<code class="language-plaintext highlighter-rouge">https://meet.jit.si/$ROOM</code>. The <code class="language-plaintext highlighter-rouge">$ROOM</code> variable will be a random value;
-this way, you will have a new random Jitsi room every time you call someone.</li>
-</ul>
-    
-      <h3 id="what-are-broadcast-lists-and-how-can-i-use-them">
-        
-        
-          What are Broadcast Lists and how can I use them? <a href="#what-are-broadcast-lists-and-how-can-i-use-them" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>With a Broadcast List you can send a message to many recipients at once;
-the recipients cannot reply in that list.
-Broadcast lists are still highly experimental
-and will very probably be replaced by something else, stay tuned :)</p>
-    
-      <h3 id="how-can-i-share-my-location-with-my-chat-partners">
-        
-        
-          How can I share my location with my chat partners? <a href="#how-can-i-share-my-location-with-my-chat-partners" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>You can turn on location streaming in the “experimental features” section of
-the advanced settings.</li>
-  <li>Now, if you want to share your location in a chat, go to “attach” and select
-“location”. You can now set a time frame in which your location will be
-streamed to your chat partners, between 5 minutes and 6 hours.</li>
-  <li>When your location changes, the others in the chat can view it on a map in
-the chat.</li>
-  <li>To see the map and view locations of others, you need to turn on the feature
-in the advanced settings.</li>
-  <li>This feature will not share your location with anyone except your chat partners.
-Map tiles are downloaded from <a href="https://openstreetmap.org">OpenStreetMap</a>.</li>
-  <li>On desktop, the OS typically can’t determine your location. Instead you can
-right click on the map and describe a location, which is sent to the chat as
-a message, but also appears on the map.</li>
-</ul>
-    
-      <h3 id="why-can-i-choose-to-only-watch-the-deltachat-folder">
-        
-        
-          Why can I choose to only watch the DeltaChat folder? <a href="#why-can-i-choose-to-only-watch-the-deltachat-folder" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>This is an experimental setting for some people who are experimenting with
-server-side rules. Not all providers support this, but with some you can move
-all mails with a “Chat-Version” header to the DeltaChat folder. Normally, this
-would be done by the Delta Chat app.</p>
-
-<p>Enabling “Only Fetch from DeltaChat folder” makes sense if you have <strong>both</strong>:</p>
-
-<ul>
-  <li>enabled a server-side rule to move all messages with Chat-Version header to the DeltaChat folder, and</li>
-  <li>have set the “Show classic emails” setting to “no, chats only”.</li>
-</ul>
-
-<p>In this case, Delta Chat doesn’t need to watch the Inbox, and it’s enough to only watch the DeltaChat folder.</p>
-    
-      <h3 id="how-can-i-use-a-different-e-mail-address-with-my-profile">
-        
-        
-          How can I use a different e-mail address with my profile? <a href="#how-can-i-use-a-different-e-mail-address-with-my-profile" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Note: 
-Changing email addresses is temporarily disabled
-because of ongoing changes to the DeltaChat core.
-It should be available again in a few months.</p>
-
-<ol>
-  <li>
-    <p>Change your address in “Settings → Advanced → Password and Account” and
-enter the password of your new e-mail account (and if necessary, server settings).
-You will get an information notice about the fact that you are moving to a new address. 
-An additional notice will also show up in your “Device messages” chat.</p>
-  </li>
-  <li>
-    <p>If possible, let your old e-mail provider forward all messages to your new address.</p>
-  </li>
-  <li>
-    <p>Tell your contacts that you changed your address. 
-Writing to guaranteed end-to-end encrypted chats and groups,
-will make them notice your move automatically 
-and they will continue chatting with you using your new address.</p>
-  </li>
-</ol>
-
-<p>Note that Delta Chat will not retrieve messages anymore from your old e-mail provider.
-If you didn’t configure your e-mail provider to forward messages (step 2.) 
-only those contacts to whom you sent a message in a guaranteed end-to-end encrypted chat
-will send messages to your new address.</p>
-
-<p>To learn more about this the details behind this, <a href="https://delta.chat/en/2022-09-14-aeap">read our blogpost on
-it</a>.</p>
-    
-      <h2 id="miscellaneous">
-        
-        
-          Miscellaneous <a href="#miscellaneous" class="anchor"></a>
+          Advanced <a href="#advanced" class="anchor"></a>
         
         
       </h2>
-    
-      <h3 id="which-permissions-does-delta-chat-need">
-        
-        
-          Which permissions does Delta Chat need? <a href="#which-permissions-does-delta-chat-need" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Depending on the operating system in use,
-you may be asked to grant permissions to the app.
-This is what Delta Chat does with these permissions:</p>
-
-<ul>
-  <li>Camera <em>(can be disallowed)</em>
-    <ul>
-      <li>take pictures and videos: for sending Photos</li>
-    </ul>
-  </li>
-  <li>Contacts <em>(can be disallowed)</em>
-    <ul>
-      <li>read your contacts: to discover contacts to chat with</li>
-    </ul>
-  </li>
-  <li>Location <em>(can be disallowed)</em>
-    <ul>
-      <li>access approximate location (network location sources): for the location streaming feature</li>
-      <li>access precise location (GPS and network location sources): for the location streaming feature</li>
-    </ul>
-  </li>
-  <li>Microphone <em>(can be disallowed)</em>
-    <ul>
-      <li>record audio: for audio messages</li>
-    </ul>
-  </li>
-  <li>Storage <em>(can be disallowed)</em>
-    <ul>
-      <li>modify or delete the contents of your SD card: to download message attachments</li>
-      <li>read the contents of your SD card: to share files with your contacts</li>
-    </ul>
-  </li>
-  <li>Other app capabilities
-    <ul>
-      <li>change your audio settings: so you can choose ring tones and volume for notifications and audio messages</li>
-      <li>run at startup: so you don’t have to start Delta Chat manually</li>
-      <li>control vibration: for notifications</li>
-      <li>view network connections: to connect to your E-Mail provider</li>
-      <li>prevent phone from sleeping: so you can easier copy the security code during the Autocrypt Setup Message</li>
-      <li>have full network access: to connect to your E-Mail provider</li>
-      <li>view Wi-Fi connections: to connect to your E-Mail provider</li>
-      <li>ask to ignore battery optimisations: for achieving “instant message delivery”</li>
-    </ul>
-  </li>
-</ul>
     
       <h3 id="does-delta-chat-work-with-my-e-mail-provider">
         
@@ -1780,18 +1594,27 @@ on <a href="https://get.delta.chat">get.delta.chat</a>. The option to watch the 
 folder might go away in the future. It was introduced at a time where there was
 no Delta Chat Desktop client available on all platforms.</p>
     
-      <h3 id="why-can-i-choose-not-to-watch-the-deltachat-folder">
+      <h3 id="why-can-i-choose-to-only-watch-the-deltachat-folder">
         
         
-          Why can I choose not to watch the DeltaChat folder? <a href="#why-can-i-choose-not-to-watch-the-deltachat-folder" class="anchor"></a>
+          Why can I choose to only watch the DeltaChat folder? <a href="#why-can-i-choose-to-only-watch-the-deltachat-folder" class="anchor"></a>
         
         
       </h3>
 
-<p>Some people use Delta Chat as a regular email client, and want to use the Inbox
-folder for their mail, instead of the DeltaChat folder. If you disable “Watch
-DeltaChat folder”, you should also disable “move chat messages to DeltaChat”.
-Otherwise, deleting messages or multi-device setups might not work properly.</p>
+<p>This is an experimental setting for some people who are experimenting with
+server-side rules. Not all providers support this, but with some you can move
+all mails with a “Chat-Version” header to the DeltaChat folder. Normally, this
+would be done by the Delta Chat app.</p>
+
+<p>Enabling “Only Fetch from DeltaChat folder” makes sense if you have <strong>both</strong>:</p>
+
+<ul>
+  <li>enabled a server-side rule to move all messages with Chat-Version header to the DeltaChat folder, and</li>
+  <li>have set the “Show classic emails” setting to “no, chats only”.</li>
+</ul>
+
+<p>In this case, Delta Chat doesn’t need to watch the Inbox, and it’s enough to only watch the DeltaChat folder.</p>
     
       <h3 id="is-delta-chat-compatible-with-proton-mail--tutanota--criptext">
         
@@ -1812,6 +1635,193 @@ compatible with <a href="https://autocrypt.org/">Autocrypt</a>, the standard Del
 uses.</li>
   <li>Delta Chat can end-to-end-encrypt through any e-mail provider with any
 <a href="https://autocrypt.org/dev-status.html">Autocrypt-enabled e-mail app</a>.</li>
+</ul>
+    
+      <h3 id="im-interested-in-the-technical-details-can-you-tell-me-more">
+        
+        
+          I’m interested in the technical details. Can you tell me more? <a href="#im-interested-in-the-technical-details-can-you-tell-me-more" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>See <a href="https://github.com/chatmail/core/blob/main/standards.md#standards-used-in-delta-chat">Standards used in Delta Chat</a>.</li>
+</ul>
+    
+      <h2 id="experimental-features">
+        
+        
+          Experimental Features <a href="#experimental-features" class="anchor"></a>
+        
+        
+      </h2>
+
+<p>We are very grateful for feedback on these features - do you want to share
+your ideas? Join the <a href="https://support.delta.chat">Forum</a> to contribute.
+You may conveniently login via Delta Chat and a QR code scan,
+another rather stable experiment we run on the side (sic!).</p>
+    
+      <h3 id="how-can-i-use-audiovideo-calls-with-delta-chat">
+        
+        
+          How can I use audio/video calls with Delta Chat? <a href="#how-can-i-use-audiovideo-calls-with-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>To turn on audio/video calls, go to the “experimental features” section in
+the advanced settings and choose a “Video Chat Instance”.</li>
+  <li>When you invite others to a video chat, it is opened in your browser/app at
+once. The others receive an e-mail with a link to the video chat.
+This way, it is also compatible if your chat partners don’t use Delta Chat.</li>
+  <li>Note that there is no ring tone on the other side, and your chat partners
+will not get interrupted by a video chat invite.</li>
+  <li>You can use any video chat service which allows joining by link. Just add the
+link in the settings.</li>
+  <li>For example, to use the flagship Jitsi Meet instance, you could enter
+<code class="language-plaintext highlighter-rouge">https://meet.jit.si/$ROOM</code>. The <code class="language-plaintext highlighter-rouge">$ROOM</code> variable will be a random value;
+this way, you will have a new random Jitsi room every time you call someone.</li>
+</ul>
+    
+      <h3 id="what-are-broadcast-lists-and-how-can-i-use-them">
+        
+        
+          What are Broadcast Lists and how can I use them? <a href="#what-are-broadcast-lists-and-how-can-i-use-them" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>With a Broadcast List you can send a message to many recipients at once;
+the recipients cannot reply in that list.
+Broadcast lists are still highly experimental
+and will very probably be replaced by something else, stay tuned :)</p>
+    
+      <h3 id="how-can-i-share-my-location-with-my-chat-partners">
+        
+        
+          How can I share my location with my chat partners? <a href="#how-can-i-share-my-location-with-my-chat-partners" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>You can turn on location streaming in the “experimental features” section of
+the advanced settings.</li>
+  <li>Now, if you want to share your location in a chat, go to “attach” and select
+“location”. You can now set a time frame in which your location will be
+streamed to your chat partners, between 5 minutes and 6 hours.</li>
+  <li>When your location changes, the others in the chat can view it on a map in
+the chat.</li>
+  <li>To see the map and view locations of others, you need to turn on the feature
+in the advanced settings.</li>
+  <li>This feature will not share your location with anyone except your chat partners.
+Map tiles are downloaded from <a href="https://openstreetmap.org">OpenStreetMap</a>.</li>
+  <li>On desktop, the OS typically can’t determine your location. Instead you can
+right click on the map and describe a location, which is sent to the chat as
+a message, but also appears on the map.</li>
+</ul>
+    
+      <h3 id="how-can-i-use-a-different-e-mail-address-with-my-profile">
+        
+        
+          How can I use a different e-mail address with my profile? <a href="#how-can-i-use-a-different-e-mail-address-with-my-profile" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Note:
+Changing email addresses is temporarily disabled
+because of ongoing changes to the DeltaChat core.
+It should be available again in a few months.</p>
+
+<ol>
+  <li>
+    <p>Change your address in “Settings → Advanced → Password and Account” and
+enter the password of your new e-mail account (and if necessary, server settings).
+You will get an information notice about the fact that you are moving to a new address.
+An additional notice will also show up in your “Device messages” chat.</p>
+  </li>
+  <li>
+    <p>If possible, let your old e-mail provider forward all messages to your new address.</p>
+  </li>
+  <li>
+    <p>Tell your contacts that you changed your address.
+Writing to guaranteed end-to-end encrypted chats and groups,
+will make them notice your move automatically
+and they will continue chatting with you using your new address.</p>
+  </li>
+</ol>
+
+<p>Note that Delta Chat will not retrieve messages anymore from your old e-mail provider.
+If you didn’t configure your e-mail provider to forward messages (step 2.)
+only those contacts to whom you sent a message in a guaranteed end-to-end encrypted chat
+will send messages to your new address.</p>
+
+<p>To learn more about this the details behind this, <a href="https://delta.chat/en/2022-09-14-aeap">read our blogpost on
+it</a>.</p>
+    
+      <h2 id="miscellaneous">
+        
+        
+          Miscellaneous <a href="#miscellaneous" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="which-permissions-does-delta-chat-need">
+        
+        
+          Which permissions does Delta Chat need? <a href="#which-permissions-does-delta-chat-need" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Depending on the operating system in use,
+you may be asked to grant permissions to the app.
+This is what Delta Chat does with these permissions:</p>
+
+<ul>
+  <li>Camera <em>(can be disallowed)</em>
+    <ul>
+      <li>take pictures and videos: for sending Photos</li>
+    </ul>
+  </li>
+  <li>Contacts <em>(can be disallowed)</em>
+    <ul>
+      <li>read your contacts: to discover contacts to chat with</li>
+    </ul>
+  </li>
+  <li>Location <em>(can be disallowed)</em>
+    <ul>
+      <li>access approximate location (network location sources): for the location streaming feature</li>
+      <li>access precise location (GPS and network location sources): for the location streaming feature</li>
+    </ul>
+  </li>
+  <li>Microphone <em>(can be disallowed)</em>
+    <ul>
+      <li>record audio: for audio messages</li>
+    </ul>
+  </li>
+  <li>Storage <em>(can be disallowed)</em>
+    <ul>
+      <li>modify or delete the contents of your SD card: to download message attachments</li>
+      <li>read the contents of your SD card: to share files with your contacts</li>
+    </ul>
+  </li>
+  <li>Other app capabilities
+    <ul>
+      <li>change your audio settings: so you can choose ring tones and volume for notifications and audio messages</li>
+      <li>run at startup: so you don’t have to start Delta Chat manually</li>
+      <li>control vibration: for notifications</li>
+      <li>view network connections: to connect to your E-Mail provider</li>
+      <li>prevent phone from sleeping: so you can easier copy the security code during the Autocrypt Setup Message</li>
+      <li>have full network access: to connect to your E-Mail provider</li>
+      <li>view Wi-Fi connections: to connect to your E-Mail provider</li>
+      <li>ask to ignore battery optimisations: for achieving “instant message delivery”</li>
+    </ul>
+  </li>
 </ul>
     
       <h3 id="remove-account">
@@ -1846,18 +1856,6 @@ so unfortunately we can’t help you with that.</p>
 but uninstall Delta Chat,
 it is recommended to leave any group chat before uninstalling Delta Chat.
 Otherwise you might receive undecryptable messages from those group chats.</p>
-    
-      <h3 id="im-interested-in-the-technical-details-can-you-tell-me-more">
-        
-        
-          I’m interested in the technical details. Can you tell me more? <a href="#im-interested-in-the-technical-details-can-you-tell-me-more" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>See <a href="https://github.com/chatmail/core/blob/main/standards.md#standards-used-in-delta-chat">Standards used in Delta Chat</a>.</li>
-</ul>
     
       <h3 id="where-can-my-friends-find-delta-chat">
         

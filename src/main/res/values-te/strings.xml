@@ -124,9 +124,6 @@
     <string name="ask_block_contact">మీరు ఈ పరిచయాన్ని రద్దుచేయాలని నిర్ణయించుకున్నారా?</string>
     <!-- contact list -->
     <string name="contacts_title">కాంటాక్ట్స్</string>
-    <string name="contacts_empty_hint">ఇంకా ఏ పరిచయాలూ లేవు.</string>
-
-
     <string name="chat_archived_chats_title">ఆర్కైవ్ చేసిన చాట్స్</string>
     <string name="chat_record_slide_to_cancel">రద్దు చేయడానికి స్లైడ్ చేయి</string>
     <string name="chat_share_with_title">తో పంచు</string>
@@ -176,8 +173,6 @@
     <string name="pref_incognito_keyboard_explain">వ్యక్తిగతీకరించిన అభ్యాసను ఆపివేయడానికి కీబోర్డ్ని అభ్యర్థించండి</string>
     <string name="pref_read_receipts">చదివిన రసీదులు</string>
     <string name="pref_read_receipts_explain">చదివే రసీదులను నిలిపివేస్తే, మీరు ఇతరుల నుండి చదివే రసీదులను చూడలేరు.</string>
-    <string name="pref_use_system_emoji">యంత్రము యొక్క  ఎమొజిలను  ఉపయొగించు</string>
-    <string name="pref_use_system_emoji_explain">Delta Chat యొక్క అంతర్నిర్మిత ఎమోజి మద్దతును నిలిపివేయి</string>
     <string name="pref_chats">చాట్లు</string>
     <string name="pref_in_chat_sounds">యాప్-లోపల నోటిఫికేషన్లు</string>
     <string name="pref_other">ఇతర</string>
