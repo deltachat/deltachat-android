@@ -302,35 +302,6 @@
     </plurals>
     <string name="file_saved_to">Arquivo salvo em \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Vídeo conversa</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Convidar %1$s para uma chamada de vídeo?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Isto requer um app compatível ou um navegador compatível nos dois interlocutores.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s convidou para uma conversa em vídeo.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Você convidou para uma conversa em vídeo.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Clique para entrar</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Clique para abrir</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Instância de conversa de vídeo</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Sua instância de conversa de vídeo</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Exemplos: https://meet.jit.si/$ROOM o basicwebrtc:https://your-server</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Se o video chat estiver habilitado, você pode iniciar uma ligação de video a partir de cada chat. Os bate-papos de vídeo exigem um aplicativo compatível ou um navegador compatível nos dos lados.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Use \"%1$s\" para convidar outros para a conversas de vídeo?\n\nUma vez configurado, você pode iniciar uma conversa de vídeo para cada conversa um-para-um. Isto irá substituir os ajustes prévios para conversas de vídeo, caso existam.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Convite para conversa de vídeo</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Você foi convidado para uma conversa de vídeo, clique %1$s para ingressar.</string>
-
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Apagar %d mensagem?</item>
@@ -354,7 +325,6 @@
     <string name="contacts_title">Contatos</string>
     <string name="contacts_enter_name_or_email">Insira um nome ou e-mail</string>
     <string name="contacts_type_email_above">Digite o e-mail acima</string>
-    <string name="contacts_empty_hint">Sem contatos.</string>
 
 
     <!-- chatlist and chat view -->
@@ -399,9 +369,6 @@
     <string name="saved">Salvo</string>
     <string name="save_as">Guardar como</string>
     <string name="retry_send">Tentar enviar mensagem novamente</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Você não pode escrever porque não está neste grupo. Para entrar, peça a outro membro.</string>
-    <string name="messaging_disabled_mailing_list">O envio de mensagens para lista de e-mails ainda não é suportado </string>
     <string name="cannot_display_unsuported_file_type">Não é possível exibir este tipo de arquivo: %s</string>
     <string name="attachment_failed_to_load">Falha ao carregar anexo</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -546,7 +513,7 @@
     <string name="login_error_required_fields">Por favor, insira e-mail e senha válidos</string>
     <string name="import_backup_title">Importar da Cópia de Segurança</string>
     <string name="import_backup_ask">Becape localizado em \"%1$s\".\n\nVocê quer importá-lo e usar seus dados e configurações?</string>
-    <string name="import_backup_no_backup_found">Becapes não localizados.\n\nCopie o becape para \"%1$s\" e tente de novo. Alternativamente, toque em \"comece a conversar\" para prosseguir normalmente.</string>
+    <string name="import_backup_no_backup_found">Becapes não localizados.\n\nCopie o becape para \"%1$s\" e tente de novo.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Impossível acessar \"%1$s\". Por favor, verifique o e-mail e senha.</string>
     <!-- TLS certificate checks -->
@@ -617,8 +584,6 @@
     <string name="pref_read_receipts">Confirmações de leitura</string>
     <string name="pref_read_receipts_explain">Se sua confirmações de leitura estiverem desativas você não verá as dos demais.</string>
     <string name="pref_manage_keys">Gerenciar chaves</string>
-    <string name="pref_use_system_emoji">Usar emojis do sistema</string>
-    <string name="pref_use_system_emoji_explain">Desabilitar emojis do Delta Chat</string>
     <string name="pref_chats">Conversas</string>
     <string name="pref_in_chat_sounds">Sons da conversa</string>
     <string name="pref_view_log">Ver relatório</string>
@@ -631,18 +596,13 @@
     <string name="pref_backup_export_explain">Um becape ajudará a configurar uma nova instalação neste ou em outro dispositivo. \n\n O becape conterá todas as mensagens, contatos, conversas e a configuração de criptografia. Mantenha o arquivo de becape em um local seguro ou apague-o o mais rápido possível.</string>
     <string name="pref_backup_export_start_button">Fazer becape</string>
     <string name="pref_backup_written_to_x">Becape salvo em %1$s</string>
-    <string name="pref_managekeys_menu_title">Gerenciar chaves</string>
     <string name="pref_managekeys_export_secret_keys">Exportar chaves secretas</string>
     <string name="pref_managekeys_export_explain">Exportar chaves secretas para \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Importar chaves secretas</string>
-    <string name="pref_managekeys_import_explain">Importar chaves secretas de \"%1$s\"?\n\n• As chaves secretas atuais não serão apagadas\n\n• A última chave importada será usada por padrão a não ser que ela tenha a palavra \"legacy\" no seu nome.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Chaves secretas exportadas para \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Chaves secretas importadas de \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Papel de parede</string>
     <string name="pref_background_btn_default">Usar imagem padrão</string>
     <string name="pref_background_btn_gallery">Selecionar da galeria</string>
-    <string name="pref_imap_folder_handling">Gerenciar pastas IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se você mudar esta opção, certifique-se de que seu servidor e demais aplicativos estejam configurados de acordo.\n\nDo contrário, funcionalidades podem não funcionar.</string>
     <string name="pref_watch_sent_folder">Verificar a caixa de saída</string>
     <string name="pref_send_copy_to_self">Enviar cópia para mim</string>
@@ -705,12 +665,7 @@
     <string name="autodel_confirm">Eu entendo, apague todas essas mensagens</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">De uma vez só</string>
-    <string name="after_30_seconds">Após 30 segundos</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">Após 1 minuto</string>
     <string name="after_5_minutes">Após 5 minutos</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">Após 30 minutos</string>
     <string name="autodel_after_1_hour">Após 1 hora</string>
     <string name="autodel_after_1_day">Após 1 dia</string>
     <string name="autodel_after_1_week">Após 1 semana</string>
@@ -724,6 +679,8 @@
     <string name="autocrypt_send_asm_explain_after">Sua chave foi enviada para você mesmo. Abra a mensagem de configuração no seu outro dispositivo. Lá será exibido uma solicitação de código. Digite-o lá.\n\nDepois disso, seu dispositivo estará pronto para usar o Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Preferir criptografia ponta a ponta</string>
 
+    <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Remetente desconhecido para esta conversa. Veja \'informações\' para mais detalhes.</string>
     <string name="systemmsg_subject_for_new_contact">Mensagem de %1$s</string>
     <string name="systemmsg_failed_sending_to">Falha ao enviar mensagem para %1$s.</string>
@@ -927,7 +884,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Status de entrega: Erro</string>
-    <string name="a11y_encryption_padlock">Cadeado de criptografia</string>
     <string name="a11y_delivery_status_sending">Status de entrega: Enviando</string>
     <string name="a11y_delivery_status_draft">Status de entrega: Rascunho</string>
     <string name="a11y_delivery_status_delivered">Status de entrega: Entregue</string>
@@ -954,8 +910,6 @@
     <string name="disabled_in_dc">Desativado no Delta Chat</string>
     <string name="disabled_in_system_settings">Desativado nas configurações do sistema</string>
     <string name="bg_app_refresh_disabled">\"Atualização do Aplicativo em Segundo Plano\" desativada nas configurações do sistema</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Atrasada</string>
     <string name="notifications_avg_minutes">Em média, a cada %1$d minutos</string>
     <string name="notifications_avg_hours">Em média, a cada %1$d horas</string>
     <string name="last_check_at">Verificado em %1$s</string>

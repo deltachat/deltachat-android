@@ -391,31 +391,6 @@
     <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Videovestlus</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Kas kutsud %1$s osalema videovestluses?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">See eeldab, et mõlemal poolel on kasutusel ühilduv rakendus või veebibrauser.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s on kutsutud osalema videovestluses.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Sa saatsid videovestluse kutse.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Liitumiseks klõpsi</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Avamiseks klõpsi</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Videovestluse server</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Sinu videovestluse server</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Näide: https://sinu-server.org/$ROOM</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Kutse videovestlusele</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Oled saanud kutse videovestlusele - liitumiseks klõpsi %1$s.</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Kas oled kindel, et soovid lahkuda?</string>
@@ -436,6 +411,8 @@
     </plurals>
     <string name="ask_forward">Kas edastad sõnumi kasutajale %1$s?</string>
     <string name="ask_forward_multiple">Kas edastad sõnumid %1$d vestlusesse?</string>
+    <string name="ask_export_attachment">Kui ekspordid manused, siis sinu nutiseadme muud rakendused saavad neile ligi.\n\nKas soovid jätkata?</string>
+    <string name="ask_block_contact">Kas soovid selle kontakti blokeerida?\n\nBlokeeritud kontaktide otsesõnumid ja loodud grupid ei saa enam olema nähtavad.\n\nMuude gruppide, kus blokeeritud kontakt on liikmeks, sõnumid saavad jätkuvalt olema nähtavad.</string>
     <string name="ask_unblock_contact">Kas lõpetad kontakti blokeerimise?</string>
     <string name="ask_start_chat_with">Kas soovid vestelda kasutajaga %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -449,7 +426,6 @@
     <string name="contacts_title">Kontaktid</string>
     <string name="contacts_enter_name_or_email">Sisesta nimi või e-posti aadress</string>
     <string name="contacts_type_email_above">Palun sisesta ülale e-posti aadress</string>
-    <string name="contacts_empty_hint">Kontakte pole.</string>
 
 
     <!-- chatlist and chat view -->
@@ -473,6 +449,7 @@
     <string name="chat_new_one_to_one_hint">Saada sõnum kasutajale %1$s.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="chat_new_channel_hint">Kanalid on üks-mitmele suhtlusviisid oma sõnumite levitamiseks.</string>
+    <string name="chat_new_group_hint">Teised näevad seda gruppi vaid siis, kui oled saatnud esimese sõnumi.</string>
     <string name="chat_record_slide_to_cancel">Katkestamiseks viipa</string>
     <string name="chat_record_explain">Häälsõnumi salvestamiseks vajuta nupp alla ja hoia all ning saatmiseks lase nupp lahti</string>
     <string name="chat_no_chats_yet_title">Vestlusi pole.\nUue vestluse loomiseks klõpsi + ikooni.</string>
@@ -504,6 +481,8 @@
     <string name="start_app">Alusta…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Esmalt palun nõustu vestluskutsega.</string>
+    <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
+    <string name="send_file_to">Saada „%1$s“ fail kasutajale…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Saada sõnum…</string>
     <string name="enable_realtime">Reaalajas toimivad rakendused</string>
@@ -518,6 +497,8 @@
     <!-- placeholder is domain/hostname that should be trusted -->
     <string name="open_external_url_trust_domain">Ära enam %1$s puhul küsi</string>
     <string name="puny_code_warning_header">Tuvastasin kahtlase lingi</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">Kas oled kindel, et soovid avada „%1$s“?</string>
     <!-- search -->
     <string name="search">Otsi</string>
     <string name="search_in_chat">Otsi vestlusest</string>
@@ -669,6 +650,8 @@
     <string name="proxy_use_proxy_confirm">Kas soovid kasutada „%1$s“ proksiserverit?</string>
     <string name="proxy_share_explain">Sinu sõbrad saavad selle proksiserveri lisada skaneerides QR-koodi.</string>
     <string name="proxy_share_link">Jaga linki</string>
+    <string name="proxy_enabled">Proksiserver on kasutusel</string>
+    <string name="proxy_enabled_hint">Sa kasutad proksiserverit. Kui võrguühendus ei toimi korralikult, siis proovi teist proksiserverit.</string>
 
     <string name="login_info_oauth2_title">Kas jätkame lihtsustatud seadistamisega?</string>
     <string name="login_certificate_checks">Sertifikaadikontrollid</string>
@@ -678,7 +661,7 @@
     <string name="login_error_required_fields">Palun sisesta kehtiv e-posti aadress ja salasõna</string>
     <string name="import_backup_title">Taasta varukoopiast</string>
     <string name="import_backup_ask">Asukohas „%1$s“ on olemas varukoopia.\n\nKas sa soovid ta importida ning kasutada kõiki seal leiduvaid andmeid ja seadistusi?</string>
-    <string name="import_backup_no_backup_found">Varukoopiaid ei leidu.\n\nKopeeri varukoopia siia: „%1$s“ ning proovi uuesti. Alternatiivina võid vajutada „Alusta suhtlemist“ ning jätka tavalist seadistamist.</string>
+    <string name="import_backup_no_backup_found">Varukoopiaid ei leidu.\n\nKopeeri varukoopia siia: „%1$s“ ning proovi uuesti.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">E-posti aadressiga „%1$s“ ei õnnestu sisse logida. Palun kontrolli, kas aadress ja salasõna on õiged.</string>
     <!-- TLS certificate checks -->
@@ -723,6 +706,7 @@
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Elulugu/allkiri/moto</string>
     <string name="pref_enter_sends">Sisestusklahv saadab sõnumi</string>
+    <string name="pref_enter_sends_explain">Sisestusklahvi vajutamisega saadad sõnumi ära</string>
     <string name="pref_outgoing_media_quality">Saadetava meediumi kvaliteet</string>
     <string name="pref_outgoing_balanced">Tasakaalustatud</string>
     <string name="pref_outgoing_worse">Kõige kehvem kvaliteet, aga väikseim maht</string>
@@ -731,6 +715,7 @@
     <string name="pref_screen_security_please_restart_hint">Ekraaniturvalisusega seotud seadistuste kasutamisele võtmiseks palun käivita rakendus uuesti.</string>
     <string name="pref_notifications">Teavitused</string>
     <string name="pref_mention_notifications">Mainimised</string>
+    <string name="pref_mention_notifications_explain">Summutatud gruppides teavita sinule suunatud sõnumitest, milleks võivad olla vastused või reageerimised</string>
     <string name="pref_notifications_show">Näita</string>
     <string name="pref_notifications_priority">Prioriteet</string>
     <string name="pref_notifications_explain">Kasuta uute sõnumite puhul süsteemi teavitusi</string>
@@ -757,8 +742,6 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Krüptimine</string>
     <string name="pref_manage_keys">Halda võtmeid</string>
-    <string name="pref_use_system_emoji">Kasuta süsteemi emojisid</string>
-    <string name="pref_use_system_emoji_explain">Lülita välja Delta Chati omad emojid</string>
     <string name="pref_show_system_contacts">Kasuta süsteemi aadressiraamatut</string>
     <string name="pref_show_system_contacts_explain">Paku võimalust lisada vestlusi süsteemi aadressiraamatus leiduvate kontaktide alusel.</string>
     <string name="pref_chats">Vestlused</string>
@@ -770,24 +753,20 @@
     <string name="pref_other">Muu</string>
     <string name="pref_backup">Varundus</string>
     <string name="pref_backup_explain">Varunda vestlused välisesse andmeruumi</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <string name="pref_backup_export_this">Ekspordi see profiil</string>
+    <!-- deprecated -->
     <string name="pref_backup_export_x">Ekspordi %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Ekspordi kõik %1$d profiili</string>
     <string name="pref_backup_export_start_button">Alusta varundamist</string>
     <string name="pref_backup_written_to_x">Varukoopia tegemine asukohta „%1$s“ õnnestus.</string>
-    <string name="pref_managekeys_menu_title">Halda võtmeid</string>
     <string name="pref_managekeys_export_secret_keys">Ekspordi salavõtmed</string>
     <string name="pref_managekeys_export_explain">Kas ekspordime salavõtmed siia: %1$s?</string>
-    <string name="pref_managekeys_import_secret_keys">Impordi salavõtmed</string>
-    <string name="pref_managekeys_import_explain">Kas impordime salavõtmed siit: %1$s?\n\n• Olemasolevaid võtmeid ei kustutata\n\n• Kui failinimes pole sõna legacy, siis viimati imporditud võtmeid kasutatakse vaikimisi võtmetena.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Salavõtmete salvestamine asukohta „%1$s“ õnnestus.</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Salavõtmete import asukohast „%1$s“ õnnestus.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Taustapilt</string>
     <string name="pref_background_btn_default">Kasuta vaikimisi pilti</string>
     <string name="pref_background_btn_gallery">Vali galeriist</string>
-    <string name="pref_imap_folder_handling">IMAP-i kaustade kasutamine</string>
     <string name="pref_watch_sent_folder">Välju saadetud sõnumite kausta</string>
     <string name="pref_send_copy_to_self">Saada koopia iseendale</string>
     <string name="pref_send_copy_to_self_explain">Vajalik, kui kasutad seda kontot mitmes seadmes.</string>
@@ -849,12 +828,16 @@
     <string name="delete_old_messages">Kustuta vanad sõnumid</string>
     <string name="autodel_device_title">Kustuta sõnumid seadmest</string>
     <string name="autodel_server_title">Kustuta sõnumid serverist</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_device_ask">Kas soovid kustutada %1$d sõnumit kohe ja kõik uued sõnumid ajavahemikus „%2$s“\n\n• Sealhulgas saavad olema kõik meediafailid\n\n• Sõnumid saavad kustutatud sõltumata sellest, kas oled neid näinud või mitte\n\n• „Salvestatud sõnumid“ ei kuulu kohalikus seadmes kustutamisele</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_server_ask">Kas soovid kustutada %1$d sõnumit kohe ja kõik uued sõnumid ajavahemikus „%2$s“\n\n⚠️ Sealhulgas e-kirjad, meediafailid ja „Salvestatud sõnumid“ kõikides serveri kasutades.\n\n⚠️ Ära kasuta seda võimalust, kui tahad andmeid hoida serveris või pruugid ka klassikalisi e-posti kliente</string>
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <string name="autodel_server_enabled_hint">Sealhulgas e-kirjad, meediafailid ja „Salvestatud sõnumid“ kõikides serveri kasutades. Ära kasuta seda võimalust, kui tahad andmeid hoida serveris või pruugid ka klassikalisi e-posti kliente</string>
     <string name="autodel_confirm">Ma saan aru, kustuta kõik need sõnumid</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Kohe peale allalaadimist</string>
     <string name="after_5_minutes">5 minuti järel</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">30 minuti järel</string>
     <string name="autodel_after_1_hour">5 tunni järel</string>
     <string name="autodel_after_1_day">5 päeva järel</string>
     <string name="autodel_after_1_week">5 nädala järel</string>
@@ -885,8 +868,11 @@
     <string name="remove_member_by_you">Sina eemaldasid liikme: %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s eemaldas liikme: %1$s.</string>
-    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
-    <string name="group_left_by_you">Sa lahkusid.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="group_left_by_you">Sa lahkusid grupist.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="channel_left_by_you">Sa lahkusid kanalilt.</string>
+    <string name="you_joined_the_channel">Sa liitusid kanaliga.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s lahkus grupist.</string>
     <string name="group_image_deleted_by_you">Sina kustutasid grupi tunnuspildi.</string>
@@ -940,6 +926,7 @@
     <string name="invalid_unencrypted_explanation">Läbiva krüptimise kasutuselevõtmiseks oarim viis on omavahel kohtuda ning teise osapoole QR-koodi skaneerimisega lisada ta vestlusesse.</string>
     <string name="learn_more">Lisateave</string>
 
+    <string name="devicemsg_self_deleted">Sa kustutasid vestluse nimega „Salvestatud sõnumid“.\n\nℹ️ Kui tahad uuesti kasutada võimalust „Salvestatud sõnumid“, siis lisa vestlus iseendaga.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Sinu seadme kuupäev või kellaaeg tundub olema ebatäpne (%1$s).\n\nPalun seadista kella ⏰🔧 ja taga, et sõnumivahetus, sh selle krüptimine toimib korrektselt.</string>
     <string name="devicemsg_update_reminder">⚠️ Sinu kasutatav Delta Chati versioon võib olla aegunud.\n\nKuna sinu vestluspartnerid ilmselt kasutavad uuemaid versioone, ja sinu oma ei oska uuemaid funktsionaalsusi, siis võib tekkida probleeme 😳\nUuenduste teavet leiad https://get.delta.chat saidist või oma rakendustepoest.</string>
@@ -973,15 +960,24 @@
     <string name="qrshow_join_group_title">Kutse QR-koodina</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Skaneeri liitumaks „%1$s“ grupiga</string>
+    <string name="qrshow_join_channel_hint">Skaneeri liitumaks „%1$s“ kanaliga</string>
     <string name="qrshow_join_contact_title">Kutse QR-koodina</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Skaneeri vestlemaks kasutajaga „%1$s“</string>
     <string name="qrshow_join_contact_no_connection_toast">Internetiühendus puudub ja QR-koodil põhinevat seadistamist kasutada ei saa.</string>
     <string name="qraccount_ask_create_and_login">Kas lood uue profiili nimega „%1$s“ ja logid sinna sisse?</string>
+    <string name="qraccount_ask_create_and_login_another">Kas soovid lisada uue profiili „%1$s“ serverisse ja sellega sisse logida?\n\nSinu olemasolev profiil jääb alles. Profiile saad vahetada käsuga „Vaheta profiili“.</string>
+    <string name="set_name_and_avatar_explain">Vali nimi, mida sinu kontaktid ära tunnevad. Saad ka lisada profiili tunnuspildi.</string>
     <string name="please_enter_name">Palun sisesta nimi.</string>
     <string name="qraccount_qr_code_cannot_be_used">Selle skaneeritud QR-koodi abil ei saa uut profiili kasutusele võtta.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Kas logid sisse „%1$s“ profiili?</string>
+    <!-- the placeholder will be replaced by the address of the profile -->
+    <string name="qrlogin_ask_login_another">Kas soovid sisse logid oma kontoga „%1$s“ serveris?\n\nSinu olemasolev profiil jääb alles. Profiile saad vahetada käsuga „Vaheta profiili“.</string>
+    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_started">%1$s kutsus sind liituma selle grupiga.\n\nOotan vastust kasutaja %2$s seadmest…</string>
+    <!-- placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_replies">%1$s vastas, ootan gruppi lisamist…</string>
     <string name="secure_join_wait">Panen aluse läbivale krüptimisele…</string>
     <string name="contact_verified">%1$s lisas vestlusesse.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
@@ -1091,7 +1087,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Kohaletoimetamise olek: viga</string>
-    <string name="a11y_encryption_padlock">Krüptimise lukuikoon</string>
     <string name="a11y_delivery_status_sending">Kohaletoimetamise olek: saatmisel</string>
     <string name="a11y_delivery_status_draft">Kohaletoimetamise olek: kavand</string>
     <string name="a11y_delivery_status_delivered">Kohaletoimetamise olek: kohal</string>
@@ -1117,8 +1112,6 @@
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Pole Delta Chatis kasutusel</string>
     <string name="disabled_in_system_settings">On süsteemi seadistustest välja lülitatud</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Edasilükatud</string>
     <string name="notifications_avg_minutes">Keskmiselt iga %1$d minuti järel</string>
     <string name="notifications_avg_hours">Keskmiselt iga %1$d tunni järel</string>
     <string name="last_check_at">Kontrollitud %1$s</string>
@@ -1144,6 +1137,7 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat soovib pilte salvestada sinu fotode kogusse.</string>
     <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat võib kasutada Face ID teenust sinu kohaliku profiili kaitsmiseks, varukoopia tegemiseks ja täiendavate seadmete seadistamiseks.</string>
 
+    <string name="pref_background_notifications">Kasuta ühendust taustal</string>
     <string name="pref_reliable_service">Kasuta ühendust taustal</string>
     <string name="pref_reliable_service_explain">Põhjustab püsiteavituse</string>
 

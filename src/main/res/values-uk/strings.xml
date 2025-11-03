@@ -118,6 +118,20 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Останній раз бачили %1$s</string>
     <string name="last_seen_unknown">Останній раз бачили: Невідомо.</string>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
+    <plurals name="n_seconds_ext">
+        <item quantity="one">%d секунда</item>
+        <item quantity="few">%d секунди</item>
+        <item quantity="many">%d секунд </item>
+        <item quantity="other">%d секунд</item>
+    </plurals>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
+    <plurals name="n_minutes_ext">
+        <item quantity="one">%d хвилина</item>
+        <item quantity="few">%d хвилини</item>
+        <item quantity="many">%d хвилин</item>
+        <item quantity="other">%d хвилин</item>
+    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d хвилину</item>
@@ -389,34 +403,19 @@
     </plurals>
     <string name="file_saved_to">Файл збережено до \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Відеоконференція</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Запросити %1$s у відео чат?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Для цього обидві сторони повинні встановити сумісний додаток або браузер.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s запрошено у відео чат.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Ви надіслали запрошення у відео чат.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Торкніться, щоб приєднатися</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Торкніться, щоб відкрити</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Інстанція відеоконференцій</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Ваш сервер відеочатів</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Приклад: http://jitsi.random-redirect.de/$ROOM</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Якщо ввімкнено, Ви можете почати відеочат із кожного чату. Обидві сторони повинні встановити сумісний додаток або браузер.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Використовувати \"%1$s\" аби запросити інших у відеочат?\n\nПісля встановлення Ви можете розпочати відеочат із кожного індивідуального чату. Це замінить попереднє налаштування для відеочату, якщо воно є.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Запрошення до відео чату</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Вас запрошено у відео-чат, клікніть %1$s аби приєднатися.</string>
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">Дзвонити</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">Відповісти</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">Відхилити</string>
+    <string name="outgoing_call">Вихідний дзвінок</string>
+    <string name="incoming_call">Вхідний дзвінок</string>
+    <string name="declined_call">Відхилений дзвінок</string>
+    <string name="canceled_call">Скасований дзвінок</string>
+    <string name="missed_call">Пропущений дзвінок</string>
+    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
+    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -461,7 +460,6 @@
     <string name="contacts_title">Контактні особи</string>
     <string name="contacts_enter_name_or_email">Введіть ім\'я або адресу електронної пошти</string>
     <string name="contacts_type_email_above">Введіть адресу електронної пошти вище</string>
-    <string name="contacts_empty_hint">Немає контактів.</string>
 
 
     <!-- chatlist and chat view -->
@@ -512,9 +510,6 @@
     <string name="saved">Збережені</string>
     <string name="save_as">Зберегти як</string>
     <string name="retry_send">Спробуйте знову послати повідомлення</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Ви не можете нічого писати, бо Ви не в цій групі. Запитайте іншого члена групи про приєднання.</string>
-    <string name="messaging_disabled_mailing_list">У списах розсилки ще не підтримується надсилання повідомлень</string>
     <string name="cannot_display_unsuported_file_type">Неможливо відобразити цей тип файлів: %s</string>
     <string name="attachment_failed_to_load">Не вдалося завантажити вкладення</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -709,7 +704,6 @@
     <string name="proxy_use_proxy_confirm">Ви хочете використовувати проксі \"%1$s\"?</string>
     <string name="proxy_share_explain">Ваші друзі можуть додати цей проксі, відсканувавши QR-код.</string>
     <string name="proxy_share_link">Поділитися посиланням</string>
-
     <string name="login_info_oauth2_title">Продовжити спрощене налаштування?</string>
     <string name="login_info_oauth2_text">Дана скринька підтримує спрощене налаштовування (OAuth 2.0).\n\nНаступним кроком, будь‐ласка, дозвольте Дельта‐чатові надсилати й одержувати повідомлення.\n\nДельта‐чат не збирає користувацьких даних: усе лишається на вашім пристрої.</string>
     <string name="login_certificate_checks">Перевірки сертифікатів</string>
@@ -719,7 +713,7 @@
     <string name="login_error_required_fields">Вкажіть дійсну адресу електронної пошти та пароль</string>
     <string name="import_backup_title">Відновити з резервної копії</string>
     <string name="import_backup_ask">Знайдена резервна копія \"%1$s\".\n\nВідновити з неї всі дані й параметри?</string>
-    <string name="import_backup_no_backup_found">Резервних копій не знайдено.\n\nПомістіть резервну копію в папку \"%1$s\" та спробуйте знову запустити відновлення. Для встановлення без відновлення параметрів натисніть \"Почати спілкування\".</string>
+    <string name="import_backup_no_backup_found">Резервних копій не знайдено.\n\nПомістіть резервну копію в папку \"%1$s\" та спробуйте знову запустити відновлення.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Не вдалося увійти як \"%1$s\". Будь ласка, перевірте правильність адреси електронної пошти та паролю.</string>
     <!-- TLS certificate checks -->
@@ -804,8 +798,6 @@
     <string name="pref_server">Сервер</string>
     <string name="pref_encryption">Шифрування</string>
     <string name="pref_manage_keys">Розпорядження ключами</string>
-    <string name="pref_use_system_emoji">Використовувати системні емодзі</string>
-    <string name="pref_use_system_emoji_explain">Вимкнути вбудовану підтримку емодзі</string>
     <string name="pref_show_system_contacts">Прочитати адресну книгу системи</string>
     <string name="pref_show_system_contacts_explain">Пропонувати створювати чати з контактами з адресної книги.</string>
     <string name="pref_chats">Чати</string>
@@ -818,24 +810,19 @@
     <string name="pref_backup">Резервне копіювання</string>
     <string name="pref_backup_explain">Зберегти чати на зовнішній носій</string>
     <string name="pref_backup_export_explain">Резервне копіювання дозволяє відновлювати попередні налаштування програми під час нової установки на цьому або іншому пристрої.\n\nРезервна копія містить всі повідомлення, контакти та чати, а також параметри Autocrypt. Після створення резервної копії якомога швидше перенесіть її в надійне місце.</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <!-- deprecated -->
     <string name="pref_backup_export_x">Експортувати %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Експортувати всі %1$d профілі</string>
     <string name="pref_backup_export_start_button">Почати резервне копіювання</string>
     <string name="pref_backup_written_to_x">Резервна копія успішно записана на %1$s</string>
-    <string name="pref_managekeys_menu_title">Розпорядження ключами</string>
     <string name="pref_managekeys_export_secret_keys">Експорт секретних ключів</string>
     <string name="pref_managekeys_export_explain">Експортувати секретні ключі до \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Імпорт секретних ключів</string>
-    <string name="pref_managekeys_import_explain">Імпортувати секретні ключі з \"%1$s\"?\n\n• Існуючі секретні ключі не будуть видалені\n\n• Останній імпортований ключ буде використаний як новий ключ за замовчуванням, якщо він не містить слова legacy у назві файлу.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Секретні ключі успішно збережені в \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Секретні ключі імпортовані з \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Фон</string>
     <string name="pref_background_btn_default">Використовувати тло за замовчуванням</string>
     <string name="pref_background_btn_gallery">Вибрати з галереї</string>
-    <string name="pref_imap_folder_handling">Параметри IMAP-папок</string>
     <string name="pref_imap_folder_warn_disable_defaults">Якщо ви змінюєте цей параметр, переконайтеся, що Ваш сервер та інші Ваші клієнти налаштовані відповідним чином.\n\nІнакше щось може взагалі не працювати.</string>
     <string name="pref_watch_sent_folder">Стежити за папкою «Надіслані»</string>
     <string name="pref_send_copy_to_self">Відправити копію собі</string>
@@ -915,12 +902,7 @@
     <string name="autodel_confirm">Я розумію, видалити всі ці повідомлення</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Відразу після завантаження</string>
-    <string name="after_30_seconds">Через 30 секунд</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">Через 1 хвилину</string>
     <string name="after_5_minutes">Через 5 хвилин</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">Через 30 хвилин</string>
     <string name="autodel_after_1_hour">Через 1 годину</string>
     <string name="autodel_after_1_day">Через 1 день</string>
     <string name="autodel_after_1_week">Через 1 тиждень</string>
@@ -935,7 +917,7 @@
     <string name="autocrypt_prefer_e2ee">Віддавати перевагу наскрізному шифруванню</string>
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">Це повідомлення неможливо розшифрувати.\n\n- Можливо, допоможе просто відповісти на це повідомлення і попросити відправника надіслати повідомлення ще раз.\n\n- Якщо ви щойно переінсталювали Delta Chat, то краще за все переналаштувати Delta Chat зараз і вибрати \"Додати як другий пристрій\" або імпортувати резервну копію.</string>
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Невідомий відправник для цього чату. Дивіться \"Інформацію\" для деталей.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s шле повідомлення</string>
     <string name="systemmsg_failed_sending_to">Неможливо надіслати повідомлення до %1$s.</string>
@@ -956,8 +938,6 @@
     <string name="remove_member_by_you">Ви видалили учасника %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s видалив (-ла) учасника %1$s.</string>
-    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
-    <string name="group_left_by_you">Ви пішли</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s залишив (-ла) групу.</string>
     <string name="group_image_deleted_by_you">Ви видалили емблему групи.</string>
@@ -1173,7 +1153,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Статус доставки: Помилка</string>
-    <string name="a11y_encryption_padlock">Замок шифрування</string>
     <string name="a11y_delivery_status_sending">Статус доставки: Надсилання</string>
     <string name="a11y_delivery_status_draft">Статус доставки: Чернетка</string>
     <string name="a11y_delivery_status_delivered">Статус доставки: Доставлено</string>
@@ -1200,8 +1179,6 @@
     <string name="disabled_in_dc">Вимкнено в Delta Chat</string>
     <string name="disabled_in_system_settings">Вимкнено в налаштуваннях системи</string>
     <string name="bg_app_refresh_disabled">\"Фонова активність додатку\" вимкнена в налаштуваннях системи</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Затримка</string>
     <string name="notifications_avg_minutes">У середньому %1$d хвилин</string>
     <string name="notifications_avg_hours">У середньому %1$d годин</string>
     <string name="last_check_at">Перевірено о %1$s</string>

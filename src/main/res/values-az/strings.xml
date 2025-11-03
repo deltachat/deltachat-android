@@ -181,7 +181,6 @@
     <string name="contacts_title">Kontaktlar</string>
     <string name="contacts_enter_name_or_email">Ad ya e-poçt daxil et</string>
     <string name="contacts_type_email_above">E-poçt ünvanını yazın</string>
-    <string name="contacts_empty_hint">Kontakt yoxdur.</string>
 
 
     <!-- chatlist and chat view -->
@@ -316,8 +315,6 @@
     <string name="pref_read_receipts">Qəbul olunanları oxuyun</string>
     <string name="pref_read_receipts_explain">Bildirişlər aradan qaldırılırsa, başqalarının oxuduğu bildirişləri görə bilməyəcəksiniz.</string>
     <string name="pref_manage_keys">Açar edarəetməsi</string>
-    <string name="pref_use_system_emoji">Sistem emojisini istifadə edin</string>
-    <string name="pref_use_system_emoji_explain">Emoji Delta chat üçün daxili dəstəyi bağlayın. </string>
     <string name="pref_chats">Çatlar</string>
     <string name="pref_in_chat_sounds">Çatda olan səslər</string>
     <string name="pref_view_log">Log-a bax</string>
@@ -330,17 +327,13 @@
     <string name="pref_backup_export_explain">Ehtiyat nüsxəsi bu və ya digər bir cihazda yeni bir quraşdırma qurmağa kömək edir. \n\nNüsxədə bütün mesajlar, kontaktlar, çatlar və son ucdan uca avtoşifrələmə quraşdırmaınız olacaq. Nüsxə faylını təhlükəsiz yerdə saxlayın və ya mümkün qədər tez silin.</string>
     <string name="pref_backup_export_start_button">Nüsxəyə başla</string>
     <string name="pref_backup_written_to_x">Ehtiyat nüsxə %1$s- ə uğurla yazılmışdır</string>
-    <string name="pref_managekeys_menu_title">Açar idarəetməsi</string>
     <string name="pref_managekeys_export_secret_keys">Gizli açar ixracı</string>
     <string name="pref_managekeys_export_explain"> \"%1$s\" - ə gizli açar ixracı?</string>
-    <string name="pref_managekeys_import_secret_keys">Gizli açar idxalı</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Ehtiyat nüsxə %1$s- ə uğurla yazılmışdır</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x"> \"%1$s\" - dən gizli açar idxalı?</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fon</string>
     <string name="pref_background_btn_default">Hal hazırdaki şəkili istifadə edin</string>
     <string name="pref_background_btn_gallery">Fotoalbomdan götürün</string>
-    <string name="pref_imap_folder_handling">IMAP qovluqunun idarə edilməsi</string>
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçimi ləğv etsəniz, serverinizin və digər müştərilərinizin müvafiq olaraq konfiqurasiya olunduğundan əmin olun. \n\nAyrıca şeylər işləməyəcəkdir.</string>
     <string name="pref_watch_sent_folder">Göndərilmişlərin qovluğunu izləyin</string>
     <string name="pref_send_copy_to_self">Özünə kopya göndər</string>

@@ -381,35 +381,6 @@
     <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
     <string name="call_date_and_duration">%1$s %2$s</string>
 
-    <!-- deprecated -->
-    <string name="videochat">视频聊天</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">邀请 %1$s 参加视频聊天？</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">需要双方均装有兼容的应用或浏览器。</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s 发出了视频聊天邀请。</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">您发出了视频聊天邀请。</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">点按即可加入</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">点按即可打开</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">视频聊天实例</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">您的视频聊天实例</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">示例： https://meet.jit.si/$ROOM 或 basicwebrtc:https://your-server</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">启用视频聊天后，您便可以在所有聊天中发起视频聊天。需要双方均装有兼容的应用或浏览器。</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">使用“%1$s”邀请其他人参加视频聊天吗？\n\n设置好后，您就可以在聊天里发起视频聊天了。 这会取代之前的视频聊天设置。</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">视频聊天邀请</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">您被邀请参加视频聊天，点击 %1$s 来加入。</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">是否确定要离开？</string>
@@ -444,7 +415,6 @@
     <string name="contacts_title">联系人</string>
     <string name="contacts_enter_name_or_email">输入名称或电子邮件地址</string>
     <string name="contacts_type_email_above">在上方输入电子邮件地址</string>
-    <string name="contacts_empty_hint">没有联系人。</string>
 
 
     <!-- chatlist and chat view -->
@@ -486,9 +456,6 @@
     <string name="saved">已保存</string>
     <string name="save_as">另存为</string>
     <string name="retry_send">尝试重发消息</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">您必须在此群组之中才能发送消息。要加入，请询问其他成员。</string>
-    <string name="messaging_disabled_mailing_list">尚不支持在邮件列表中发送消息</string>
     <string name="cannot_display_unsuported_file_type">无法显示此类文件：%s</string>
     <string name="attachment_failed_to_load">加载附件失败</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -683,6 +650,8 @@
     <string name="proxy_use_proxy_confirm">你想使用代理“%1$s”吗？</string>
     <string name="proxy_share_explain">你的好友可以扫描二维码添加此代理</string>
     <string name="proxy_share_link">分享链接</string>
+    <string name="proxy_enabled">代理已启用</string>
+    <string name="proxy_enabled_hint">您正在使用代理。如果您在连接时遇到问题，请尝试其他代理。</string>
 
     <string name="login_info_oauth2_title">使用简易设置继续？</string>
     <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n下一步，请允许 Delta Chat 发送和接收消息。\n\nDelta Chat 不会收集用户数据，所有内容都保留在您的设备上。</string>
@@ -693,7 +662,7 @@
     <string name="login_error_required_fields">请输入有效的电子邮件地址和密码</string>
     <string name="import_backup_title">从备份恢复</string>
     <string name="import_backup_ask">在“%1$s”找到备份。\n\n您要导入并使用其中的全部数据与设置吗？</string>
-    <string name="import_backup_no_backup_found">未找到备份。\n\n将备份复制到“%1$s”，然后重试。或者按“开始发送消息”来进行常规设置流程。</string>
+    <string name="import_backup_no_backup_found">未找到备份。\n\n请将备份复制到“%1$s”，然后重试。</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">无法作为“%1$s”登录。请检查电子邮件地址和密码是否正确。</string>
     <!-- TLS certificate checks -->
@@ -778,8 +747,6 @@
     <string name="pref_server">服务器</string>
     <string name="pref_encryption">加密</string>
     <string name="pref_manage_keys">管理密钥</string>
-    <string name="pref_use_system_emoji">使用系统表情符号</string>
-    <string name="pref_use_system_emoji_explain">关闭 Delta Chat 内置的表情符号支持</string>
     <string name="pref_show_system_contacts">读取系统通讯录</string>
     <string name="pref_show_system_contacts_explain">提供与通讯录中的联系人创建聊天的功能。</string>
     <string name="pref_chats">聊天</string>
@@ -792,24 +759,20 @@
     <string name="pref_backup">备份</string>
     <string name="pref_backup_explain">将聊天备份至外部存储</string>
     <string name="pref_backup_export_explain">备份可帮助您在此设备或另一台设备上设置全新安装的本应用。\n\n备份将包含所有消息、联系人、聊天以及端到端的 Autocrypt 设置。请将备份文件保存在安全的地方，或尽快将其删除。</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <string name="pref_backup_export_this">导出此账号</string>
+    <!-- deprecated -->
     <string name="pref_backup_export_x">导出 %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">导出全部 %1$d 个账号</string>
     <string name="pref_backup_export_start_button">开始备份</string>
     <string name="pref_backup_written_to_x">备份已成功写入到“%1$s”。</string>
-    <string name="pref_managekeys_menu_title">管理密钥</string>
     <string name="pref_managekeys_export_secret_keys">导出密钥</string>
     <string name="pref_managekeys_export_explain">导出密钥到“%1$s”？</string>
-    <string name="pref_managekeys_import_secret_keys">导入密钥</string>
-    <string name="pref_managekeys_import_explain">从“%1$s”导入密钥？\n\n• 现有密钥不会被删除。\n\n• 除非最后导入的密钥文件名中带有单词\"legacy\"，否则它将会被用作新的默认密钥。</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">密钥已成功写入至\"%1$s\"。</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">密钥已从\"%1$s\"导入。</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">使用默认图像</string>
     <string name="pref_background_btn_gallery">从图库中选择</string>
-    <string name="pref_imap_folder_handling">IMAP 文件夹处理</string>
     <string name="pref_imap_folder_warn_disable_defaults">若要更改此选项，请您务必调整服务器以及其他客户端的相应设置。\n\n否则软件可能无法正常工作。</string>
     <string name="pref_watch_sent_folder">监视已发送文件夹</string>
     <string name="pref_send_copy_to_self">给自己发送副本</string>
@@ -889,12 +852,7 @@
     <string name="autodel_confirm">我了解，将这些消息全部删除</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">下载后立即</string>
-    <string name="after_30_seconds">30 秒后</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">1 分钟后</string>
     <string name="after_5_minutes">5 分钟后</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">30 分钟后</string>
     <string name="autodel_after_1_hour">1 小时后</string>
     <string name="autodel_after_1_day">1 天后</string>
     <string name="autodel_after_1_week">1 周后</string>
@@ -909,7 +867,7 @@
     <string name="autocrypt_prefer_e2ee">优先使用端到端加密</string>
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">无法解密此消息。\n\n• 简化对此消息的回复并请求发送方再次发送消息可能会有帮助。\n\n•  如果你刚重新安装 Delta Chat，你最好立即重新设置 Delta Chat 并选择“添加为第二台设备”或导入备份文件。</string>
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">此聊天发送者未知。查看“信息”来获取更多详情。</string>
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
     <string name="systemmsg_failed_sending_to">发送消息给 %1$s 失败。</string>
@@ -930,8 +888,11 @@
     <string name="remove_member_by_you">你移除了成员 %1$s</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s 移除了成员 %1$s</string>
-    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
-    <string name="group_left_by_you">您已离开。</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="group_left_by_you">您已离开群组。</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="channel_left_by_you">您已离开频道。</string>
+    <string name="you_joined_the_channel">您已加入频道。</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s 退出了群组</string>
     <string name="group_image_deleted_by_you">你删除了群组图像</string>
@@ -1020,10 +981,11 @@
     <string name="qrshow_x_has_joined_group">%1$s 已加入群组。</string>
     <string name="qrshow_join_group_title">邀请二维码</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
-    <string name="qrshow_join_group_hint">扫描此处来加入群组“%1$s”</string>
+    <string name="qrshow_join_group_hint">扫描即可加入群组“%1$s”</string>
+    <string name="qrshow_join_channel_hint">扫描即可加入频道“%1$s”</string>
     <string name="qrshow_join_contact_title">邀请二维码</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
-    <string name="qrshow_join_contact_hint">扫描此处来与 %1$s 聊天。</string>
+    <string name="qrshow_join_contact_hint">扫描即可与 %1$s 聊天</string>
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
     <string name="qraccount_ask_create_and_login">在“%1$s”创建新的电子邮件地址并登录？</string>
     <string name="qraccount_ask_create_and_login_another">在“%1$s”创建新账号并登录？\n\n不会删除您现有的账号。使用“切换账号”在账号之间切换。</string>
@@ -1147,7 +1109,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">发送状态：错误</string>
-    <string name="a11y_encryption_padlock">加密挂锁</string>
     <string name="a11y_delivery_status_sending">发送状态：发送中</string>
     <string name="a11y_delivery_status_draft">发送状态：草稿</string>
     <string name="a11y_delivery_status_delivered">发送状态：已投递</string>
@@ -1174,8 +1135,6 @@
     <string name="disabled_in_dc">在 Delta Chat 中被禁用</string>
     <string name="disabled_in_system_settings">在系统设置中被禁用</string>
     <string name="bg_app_refresh_disabled">“后台应用刷新”在系统设置中被禁用</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">延迟</string>
     <string name="notifications_avg_minutes">平均每 %1$d 分钟</string>
     <string name="notifications_avg_hours">平均每 %1$d 小时</string>
     <string name="last_check_at">检查于 %1$s</string>

@@ -275,35 +275,6 @@
     </plurals>
     <string name="file_saved_to">Αποθήκευση στο \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Βιντεοκλήση</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Πρόσκληση %1$s σε βιντεοκλήση;</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Αυτό απαιτεί μια συμβατή εφαρμογή ή πρόγραμμα περιήγησης και στις δύο άκρες.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s καλέστηκε σε βινετοκλήση.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Στείλατε πρόσκληση σε βινετοκλήση.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Πατήστε για Συμμετοχή</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Πατήστε για Άνοιγμα</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Παρουσία στη Βιντεοκλήση</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Η παρουσία σας στη βιντεοκλήση</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Παράδειγμα: https://meet.jit.si/$ROOM ή basicwebrtc:https://your-server</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Αν είναι ενεργοποιημένο, μπορείτε να ξεκινήσετε μια συνομιλία μέσω βίντεο από κάθε συνομιλία. Απαιτεί μια συμβατή εφαρμογή ή ένα πρόγραμμα περιήγησης και στα δύο άκρα.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Χρήση \"%1$s\" για να προσκαλέσετε άλλους στη βιντεοκλήση;\n\nΑφού ρυθμιστεί, μπορείτε να ξεκινήσετε μια συνομιλία μέσω βίντεο από κάθε συνομιλία. Αυτό αντικαθιστά οποιαδήποτε προηγούμενη ρύθμιση για συνομιλίες μέσω βίντεο.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Πρόσκληση Βιντεοκλήσης</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Έχετε προσκληθεί σε βινετοκλήση, πατήστε %1$s για να συμμετέχετε</string>
-
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Διαγραφή %d μηνύματος;</item>
@@ -326,7 +297,6 @@
     <string name="contacts_title">Επαφές</string>
     <string name="contacts_enter_name_or_email">Εισάγετε όνομα ή διεύθυνση e-mail</string>
     <string name="contacts_type_email_above">Εισάγετε την διεύθυνση e-mail παραπάνω</string>
-    <string name="contacts_empty_hint">Δεν υπάρχουν επαφές.</string>
 
 
     <!-- chatlist and chat view -->
@@ -368,9 +338,6 @@
     <string name="saved">Αποθηκεύτηκε</string>
     <string name="save_as">Αποθήκευση ως</string>
     <string name="retry_send">Ξαναπροσπαθήστε να στείλετε μήνυμα</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Πρέπει να είστε σε αυτήν την ομάδα για να δημοσιεύσετε ένα μήνυμα. Για να συμμετέχετε, ζητήστε από ένα άλλο μέλος.</string>
-    <string name="messaging_disabled_mailing_list">Η αποστολή μηνυμάτων σε λίστες αλληλογραφίας δεν υποστηρίζεται ακόμη</string>
     <string name="cannot_display_unsuported_file_type">Δεν είναι δυνατή η εμφάνιση αυτού του τύπου αρχείου: %s</string>
     <string name="attachment_failed_to_load">Αποτυχία φόρτωσης συνημμένου</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -488,7 +455,7 @@
     <string name="login_error_required_fields">Εισαγάγετε μια έγκυρη διεύθυνση e-mail και έναν κωδικό πρόσβασης</string>
     <string name="import_backup_title">Επαναφορά από το Aντίγραφο Aσφαλείας</string>
     <string name="import_backup_ask">Το αντίγραφο ασφαλείας βρέθηκε στο \"%1$s\".\n\nΘέλετε να εισαγάγετε και να χρησιμοποιήσετε όλα τα δεδομένα και τις ρυθμίσεις από αυτό;</string>
-    <string name="import_backup_no_backup_found">Δεν βρέθηκαν αντίγραφα ασφαλείας.\n\nΑντιγράψτε το αντίγραφο ασφαλείας στο \"%1$s\" και δοκιμάστε ξανά. Εναλλακτικά, πατήστε \"Έναρξη μηνυμάτων\" για να συνεχίσετε με την κανονική διαδικασία εγκατάστασης.</string>
+    <string name="import_backup_no_backup_found">Δεν βρέθηκαν αντίγραφα ασφαλείας.\n\nΑντιγράψτε το αντίγραφο ασφαλείας στο \"%1$s\" και δοκιμάστε ξανά.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Δεν είναι δυνατή η είσοδος ως \"%1$s\". Ελέγξτε εάν η διεύθυνση e-mail και ο κωδικός πρόσβασης είναι σωστά.</string>
     <!-- TLS certificate checks -->
@@ -559,8 +526,6 @@
     <string name="pref_read_receipts">Αποδεικτικά ανάγνωσης</string>
     <string name="pref_read_receipts_explain">Αν τα αποδεικτικά ανάγνωσης είναι απενεργοποιημένα, δε θα μπορείς να δεις αποδεικτικά ανάγνωσης από άλλους/ες.</string>
     <string name="pref_manage_keys">Διαχείριση Κλειδιών</string>
-    <string name="pref_use_system_emoji">Χρήση emoji συστήματος</string>
-    <string name="pref_use_system_emoji_explain">Απενεργοποίηση της ενσωματωμένης υποστήριξης για emoji του Delta Chat</string>
     <string name="pref_chats">Συνομιλίες</string>
     <string name="pref_in_chat_sounds">Ήχοι μέσα στη συνομιλία</string>
     <string name="pref_view_log">Προβολή Αρχείου Καταγραφής</string>
@@ -573,18 +538,13 @@
     <string name="pref_backup_export_explain">Ένα αντίγραφο ασφαλείας σάς βοηθά να ρυθμίσετε μια νέα εγκατάσταση σε αυτήν ή σε άλλη συσκευή.\n\nΤο αντίγραφο ασφαλείας θα περιέχει όλα τα μηνύματα, τις επαφές και τις συνομιλίες και τη ρύθμιση αυτόματης κρυπτογράφησης από άκρο σε άκρο. Φυλάξτε το αρχείο αντιγράφου ασφαλείας σε ασφαλές μέρος ή διαγράψτε το το συντομότερο δυνατό.</string>
     <string name="pref_backup_export_start_button">Ξεκινήστε τη δημιουργία αντιγράφου ασφαλείας</string>
     <string name="pref_backup_written_to_x">Το αντίγραφο ασφαλείας γράφτηκε με επιτυχία στο \"%1$s\".</string>
-    <string name="pref_managekeys_menu_title">Διαχείριση Κλειδιών</string>
     <string name="pref_managekeys_export_secret_keys">Εξαγωγή Μυστικών Κλειδιών</string>
     <string name="pref_managekeys_export_explain">Εξαγωγή μυστικών κλειδιών στο \"%1$s\";</string>
-    <string name="pref_managekeys_import_secret_keys">Εισαγωγή Μυστικών Κλειδιών</string>
-    <string name="pref_managekeys_import_explain">Εισαγωγή μυστικών κλειδιών από το \"%1$s\";\n\n• Τα υπάρχοντα μυστικά κλειδιά δεν θα διαγραφούν\n\n• Το κλειδί που εισήχθη τελευταία θα χρησιμοποιηθεί ως το νέο προεπιλεγμένο κλειδί, εκτός εάν έχει τη λέξη \"legacy\" στο όνομα του αρχείου του.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Τα μυστικά κλειδιά γράφτηκαν με επιτυχία στο \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Τα μυστικά κλειδιά εισήχθησαν από το \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Ταπετσαρία συνομιλίας</string>
     <string name="pref_background_btn_default">Χρήση προκαθορισμένου</string>
     <string name="pref_background_btn_gallery">Επιλογή</string>
-    <string name="pref_imap_folder_handling">Χειρισμός Φακέλων IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Εάν αλλάξετε αυτήν την επιλογή, βεβαιωθείτε ότι ο διακομιστής σας και οι άλλοι πελάτες σας έχουν διαμορφωθεί ανάλογα.\n\nΔιαφορετικά, τα πράγματα ενδέχεται να μην λειτουργούν καθόλου.</string>
     <string name="pref_watch_sent_folder">Παρακολουθήστε τον Απεσταλμένο Φάκελο</string>
     <string name="pref_send_copy_to_self">Αποστολή Αντιγράφου στον Εαυτό</string>
@@ -647,12 +607,7 @@
     <string name="autodel_confirm">Καταλαβαίνω, διαγράψτε όλα αυτά τα μηνύματα</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Με τη μία</string>
-    <string name="after_30_seconds">Μετά από 30 δευτερόλεπτα</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">Μετά από 1 λεπτό</string>
     <string name="after_5_minutes">Μετά από 5 λεπτά</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">Μετά από 30 λεπτά</string>
     <string name="autodel_after_1_hour">Μετά από 1 ώρα</string>
     <string name="autodel_after_1_day">Μετά από 1 μέρα</string>
     <string name="autodel_after_1_week">Μετά από 1 εβδομάδα</string>
@@ -666,6 +621,8 @@
     <string name="autocrypt_send_asm_explain_after">Η ρύθμισή σας έχει σταλεί στον εαυτό σας. Μεταβείτε στην άλλη συσκευή και ανοίξτε το μήνυμα ρύθμισης. Θα πρέπει να σας ζητηθεί κωδικός ρύθμισης. Εισαγάγετε τα ακόλουθα ψηφία:</string>
     <string name="autocrypt_prefer_e2ee">Προτιμήστε την κρυπτογράφηση από άκρο σε άκρο</string>
 
+    <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Άγνωστος αποστολέας για αυτήν τη συνομιλία. Δείτε \"πληροφορίες\" για περισσότερες λεπτομέρειες.</string>
     <string name="systemmsg_subject_for_new_contact">Μήνυμα από τον/την %1$s</string>
     <string name="systemmsg_failed_sending_to">Αποτυχία αποστολής μηνύματος σε %1$s.</string>
@@ -867,7 +824,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Κατάσταση παράδοσης: Σφάλμα</string>
-    <string name="a11y_encryption_padlock">Λουκέτο κρυπτογράφησης</string>
     <string name="a11y_delivery_status_sending">Κατάσταση παράδοσης: Αποστολή</string>
     <string name="a11y_delivery_status_draft">Κατάσταση παράδοσης: Πρόχειρο</string>
     <string name="a11y_delivery_status_delivered">Κατάσταση παράδοσης: Παραδόθηκε</string>
@@ -894,8 +850,6 @@
     <string name="disabled_in_dc">Απενεργοποιήθηκε στο Delta Chat</string>
     <string name="disabled_in_system_settings">Απενεργοποιήθηκε στις ρυθμίσεις συστήματος</string>
     <string name="bg_app_refresh_disabled">Η \"Ανανέωση εφαρμογών στο παρασκήνιο\" απενεργοποιήθηκε στις ρυθμίσεις συστήματος</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Καθυστέρηση</string>
     <string name="notifications_avg_minutes">Κατά μέσο όρο κάθε %1$d λεπτά</string>
     <string name="notifications_avg_hours">Κατά μέσο όρο κάθε %1$d ώρες</string>
     <string name="last_check_at">Έλεγχος στις %1$s</string>

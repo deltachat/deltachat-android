@@ -148,9 +148,6 @@
     <string name="ask_block_contact">இந்த தொடர்பை முடக்கவா ?</string>
     <!-- contact list -->
     <string name="contacts_title">தொடர்புகள்</string>
-    <string name="contacts_empty_hint">எந்த தொடர்புகளும் இல்லை</string>
-
-
     <plurals name="chat_n_new_messages">
         <item quantity="one">%d புதிய செய்திகள்</item>
         <item quantity="other">%d புதிய செய்திகள்</item>
@@ -208,8 +205,6 @@
     <string name="pref_incognito_keyboard_explain">தனிப்பயனாக்கப்பட்ட கற்றலை முடக்க விசைப்பலகை கோருங்கள்</string>
     <string name="pref_read_receipts">ரசீதுகளைப் படியுங்கள்</string>
     <string name="pref_read_receipts_explain">வாசிப்பு ரசீதுகள் முடக்கப்பட்டிருந்தால், மற்றவர்களிடமிருந்து வாசிப்பு ரசீதுகளை நீங்கள் </string>
-    <string name="pref_use_system_emoji">கணினி ஈமோஜியைப் பயன்படுத்தவும்</string>
-    <string name="pref_use_system_emoji_explain">Delta Chat உள்ளமைக்கப்பட்ட ஈமோஜி ஆதரவை முடக்கு</string>
     <string name="pref_chats">அரட்டைகள்</string>
     <string name="pref_in_chat_sounds">௨ள்ளார்ந்த செயலி அறிவிப்புகள்</string>
     <string name="pref_other">மற்றவை</string>
