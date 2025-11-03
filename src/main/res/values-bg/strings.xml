@@ -301,35 +301,6 @@
     </plurals>
     <string name="file_saved_to">Файлът е записан в \"%1$s\"</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Видеочат</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Да бъде ли поканен%1$s във видеочат?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">За това се изисква съвместимо приложение или браузър от двете страни.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s е поканен във видеочат.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Изпратихте покана за видеочат.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Докоснете, за да се присъедините</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Докоснете, за да отворите</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Сървър за видеочат</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Вашият сървър за видеочат</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Примери: https://meet.jit.si/$ROOM или basicwebrtc:https://вашият-сървър</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Ако настройката е разрешена, можете да започвате видеочат от всеки чат. Изисква съвместимо приложение или браузър и от двете страни.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Да се използва ли \"%1$s\" за поканване на други към видеочатове?\n\nСлед като тази настройка бъде зададена, ще можете да започвате видеочат от всеки чат. Тя ще замени предишната настройка за видеочатове, ако има такава.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Покана за видеочат</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Поканени сте във видеочат, натиснете върху%1$s, за да се присъедините</string>
-
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Да бъде ли изтрито %d съобщение?</item>
@@ -352,7 +323,6 @@
     <string name="contacts_title">Контакти</string>
     <string name="contacts_enter_name_or_email">Въведете име или адрес за електронна поща</string>
     <string name="contacts_type_email_above">Въведете адрес за електронна поща по-горе</string>
-    <string name="contacts_empty_hint">Няма контакти.</string>
 
 
     <!-- chatlist and chat view -->
@@ -394,9 +364,6 @@
     <string name="saved">Запазено</string>
     <string name="save_as">Запазване като</string>
     <string name="retry_send">Нов опит за изпращане на съобщението</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Трябва да сте в тази група, за да изпратите съобщение. За да се присъедините, попитайте друг неин член.</string>
-    <string name="messaging_disabled_mailing_list">Изпращане на съобщения в пощенски списъци все още не се поддържа.</string>
     <string name="cannot_display_unsuported_file_type">Файл от тип %s не може да бъде показан</string>
     <string name="attachment_failed_to_load">Неуспешно зареждане на прикрепен файл</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -576,7 +543,7 @@
     <string name="login_error_required_fields">Моля, въведете валиден адрес за електронна поща и парола</string>
     <string name="import_backup_title">Възстановяване от резервно копие</string>
     <string name="import_backup_ask">Открито е резервно копие в \"%1$s\".\n\n Искате ли да импортирате и използвате всички данни и настройки от него?</string>
-    <string name="import_backup_no_backup_found">Не са открити резервни копия.\n\nКопирайте резервното копие в \"%1$s\" и опитайте отново. Като алтернатива натиснете \"Започване на обмен на съобщения\", за да продължите с нормалния процес на настройка.</string>
+    <string name="import_backup_no_backup_found">Не са открити резервни копия.\n\nКопирайте резервното копие в \"%1$s\" и опитайте отново.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Не можете да влезете като \"%1$s\". Моля, проверете дали адресът за електронна поща и паролата са правилни. </string>
     <!-- TLS certificate checks -->
@@ -649,8 +616,6 @@
     <string name="pref_server">Сървър</string>
     <string name="pref_encryption">Криптиране</string>
     <string name="pref_manage_keys">Управление на ключове</string>
-    <string name="pref_use_system_emoji">Да се използва Emoji на системата</string>
-    <string name="pref_use_system_emoji_explain">Изключване на вградената поддръжка за Emoji на Delta Chat</string>
     <string name="pref_show_system_contacts">Прочитане на системната адресна книга</string>
     <string name="pref_show_system_contacts_explain">Да се предлага създаване на чатове с контакти от адресната книга. За някои доставчици е необходимо първо да се настрои криптиране от край до край.</string>
     <string name="pref_chats">Чатове</string>
@@ -663,24 +628,19 @@
     <string name="pref_backup">Резервно копие</string>
     <string name="pref_backup_explain">Резервните копия на чатовете да се създават във външно място за съхранение</string>
     <string name="pref_backup_export_explain">Резервното копие помага да установите нова инсталация на това или друго устройство.\n\nТо ще съдържа всички съобщения, контакти и чатове и Вашата настройка \"от край до край\" на Autocrypt. Пазете файла на резервното копие на сигурно място или го изтрийте колкото е възможно по-скоро.</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <!-- deprecated -->
     <string name="pref_backup_export_x">Експортиране на %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Експортиране на всички %1$d профила</string>
     <string name="pref_backup_export_start_button">Започване на създаването на резервно копие</string>
     <string name="pref_backup_written_to_x">Резервното копие е успешно записано в \"%1$s\".</string>
-    <string name="pref_managekeys_menu_title">Управление на ключовете</string>
     <string name="pref_managekeys_export_secret_keys">Експорт на тайните ключове</string>
     <string name="pref_managekeys_export_explain">Да бъдат ли експортирани тайните ключове в \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Импорт на тайни ключове</string>
-    <string name="pref_managekeys_import_explain">Да бъдат ли импортирани тайните ключове от \"%1$s\"?\n\n• Съществуващите тайни ключове няма да бъдат изтрити\n\n• Последният импортиран ключ ще стане новият подразбиращ се ключ, освен в случай че съдържа думата \"legacy\" в името на файла си.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Тайните ключове са записани успешно в \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Тайните ключове са импортирани от \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Фон</string>
     <string name="pref_background_btn_default">Да се използва подразбиращото се изображение</string>
     <string name="pref_background_btn_gallery">Избор от галерията</string>
-    <string name="pref_imap_folder_handling">Обработка на папките на IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ако промение тази опция, се уверете, че Вашият сървър и другите Ви клиенти са конфигурирани по съответен начин.\n\nВ противен случай е възможно нещата въобще да не работят.</string>
     <string name="pref_watch_sent_folder">Да бъде наблюдавана папката \"Изпратени\"</string>
     <string name="pref_send_copy_to_self">Изпращане на копие до себе си</string>
@@ -757,12 +717,7 @@
     <string name="autodel_confirm">Разбирам. Всички тези съобщения да бъдат изтрити</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Наведнъж</string>
-    <string name="after_30_seconds">След 30 секунди</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">След 1 минута</string>
     <string name="after_5_minutes">След 5 минути</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">След 30 минути</string>
     <string name="autodel_after_1_hour">След 1 час</string>
     <string name="autodel_after_1_day">След 1 ден</string>
     <string name="autodel_after_1_week">След 1 седмица</string>
@@ -777,7 +732,7 @@
     <string name="autocrypt_prefer_e2ee">Да се предпочита криптиране \"от край до край\"</string>
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">Това съобщение не може да бъде декриптирано.\n\n• Бихте могли просто да му отговорите и да помолите подателя да го изпрати отново.\n\n• Ако току-що сте преинсталирали Delta Chat, е най-добре да настроите приложението отново сега и да изберете \"Добавяне като второ устройство\" или да импортирате от архив.</string>
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Неизвестен подател за този чат. Вижте \"информация\" за повече подробности.</string>
     <string name="systemmsg_subject_for_new_contact">Съобщение от %1$s</string>
     <string name="systemmsg_failed_sending_to">Неуспешно изпращане на съобщение до %1$s.</string>
@@ -1004,7 +959,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Статус на доставката: Грешка</string>
-    <string name="a11y_encryption_padlock">Катинар за криптиране</string>
     <string name="a11y_delivery_status_sending">Статус на доставката: Изпраща се</string>
     <string name="a11y_delivery_status_draft">Статус на доставката: Чернова</string>
     <string name="a11y_delivery_status_delivered">Статус на доставката: Доставено</string>
@@ -1031,8 +985,6 @@
     <string name="disabled_in_dc">Забранено в Delta Chat</string>
     <string name="disabled_in_system_settings">Забранено в системните настройки</string>
     <string name="bg_app_refresh_disabled">\"Опресняване на приложението на заден план\" е забранено в системните настройки</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Отложени</string>
     <string name="notifications_avg_minutes">Средно всеки %1$d минути</string>
     <string name="notifications_avg_hours">Средно всеки %1$d часа</string>
     <string name="last_check_at">Проверено на %1$s</string>

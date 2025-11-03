@@ -282,7 +282,6 @@
     <string name="contacts_title">Kontaktoj</string>
     <string name="contacts_enter_name_or_email">Enigi nomon aŭ retadreson</string>
     <string name="contacts_type_email_above">Enigu retadreson supren</string>
-    <string name="contacts_empty_hint">Neniu kontakto.</string>
 
 
     <!-- chatlist and chat view -->
@@ -401,8 +400,6 @@
     <string name="pref_read_receipts">Legokonfirmoj</string>
     <string name="pref_read_receipts_explain">Se legokonfirmoj ne estas ŝaltitaj, vi ne vidos aliulajn legokonfirmojn.</string>
     <string name="pref_manage_keys">Administri ŝlosilojn</string>
-    <string name="pref_use_system_emoji">Uzi sisteman emoĝiaron</string>
-    <string name="pref_use_system_emoji_explain">Malebligi emoĝiaron de Delta Chat</string>
     <string name="pref_chats">Interparoloj</string>
     <string name="pref_in_chat_sounds">Sonoj dum interparolado</string>
     <string name="pref_view_log">Vidi protokolon</string>
@@ -414,15 +411,12 @@
     <string name="pref_backup_explain">Savkopii babilojn al ekstera memorilo</string>
     <string name="pref_backup_export_start_button">Komenci savkopiadon</string>
     <string name="pref_backup_written_to_x">Savkopio sukcese konservita al \"%1$s\".</string>
-    <string name="pref_managekeys_menu_title">Administri ŝlosilojn</string>
     <string name="pref_managekeys_export_secret_keys">Eksporti sekretajn ŝlosilojn</string>
     <string name="pref_managekeys_export_explain">Ĉu eksporti sekretajn ŝlosilojn al \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Importi sekretajn ŝlosilojn</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fono</string>
     <string name="pref_background_btn_default">Uzi defaŭltan bildon</string>
     <string name="pref_background_btn_gallery">Elekti el galerio</string>
-    <string name="pref_imap_folder_handling">IMAP dosieruja traktado</string>
     <string name="pref_watch_sent_folder">Kontroli senditujon</string>
     <string name="pref_send_copy_to_self">Sendi kopion al mi mem</string>
     <string name="pref_show_emails_all">Ĉiuj</string>

@@ -258,7 +258,6 @@
     <string name="contacts_title">Contactos</string>
     <string name="contacts_enter_name_or_email">Digite o nome ou endereço de e-mail</string>
     <string name="contacts_type_email_above">Digite o endereço de e-mail acima</string>
-    <string name="contacts_empty_hint">Sem contactos</string>
 
 
     <!-- chatlist and chat view -->
@@ -343,7 +342,7 @@
     <string name="login_error_required_fields">Por favor, insira um endereço de e-mail e uma palavra-chave válidos</string>
     <string name="import_backup_title">Importar backup</string>
     <string name="import_backup_ask">Backup encontrado em \"%1$s\".\n\nQuer importar e usar todos os dados e respectivas configurações?</string>
-    <string name="import_backup_no_backup_found">Nenhum backup encontrado. \n\nCopie o backup para \"%1$s\" e tente novamente. Em alternativa, pressione \"Iniciar mensagem\" para prosseguir com o processo de configuração normal.</string>
+    <string name="import_backup_no_backup_found">Nenhum backup encontrado. \n\nCopie o backup para \"%1$s\" e tente novamente.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Não é possível fazer o login como \"%1$s\". Por favor, verifique se o endereço de email e a palavra-chave estão corretos.</string>
     <!-- share and forward messages -->
@@ -388,8 +387,6 @@
     <string name="pref_read_receipts">Ler recibos</string>
     <string name="pref_read_receipts_explain">Se as confirmações de leitura estiverem desactivadas, não poderá ver os recibos de leitura de outras pessoas.</string>
     <string name="pref_manage_keys">Gerir teclas</string>
-    <string name="pref_use_system_emoji">Utilizar o emoji do sistema</string>
-    <string name="pref_use_system_emoji_explain">Desactivar o suporte integrado de emojis no Delta Chat</string>
     <string name="pref_chats">chats</string>
     <string name="pref_in_chat_sounds">Sons na chat</string>
     <string name="pref_view_log">Ver o log</string>
@@ -399,16 +396,11 @@
     <string name="pref_backup_export_explain">Um backup ajuda-o a configurar uma nova instalação neste ou em outro dispositivo. \n\n O backup conterá todas as mensagens, contactos e converas e a configuração de encriptação Mantenha o arquivo de backup em um local seguro ou exclua-o o mais rápido possível.</string>
     <string name="pref_backup_export_start_button">Inicia backup</string>
     <string name="pref_backup_written_to_x">Backup escrito com sucesso em %1$s</string>
-    <string name="pref_managekeys_menu_title">Gerir teclas</string>
     <string name="pref_managekeys_export_secret_keys">Exportar chave secreta</string>
     <string name="pref_managekeys_export_explain">Exportar chave secreta para \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Importar chave secreta</string>
-    <string name="pref_managekeys_import_explain">Importar chaves secretas de \"%1$s\"?\n\n• As chaves secretas existentes não serão apagadas \n\n • A última chave importada será usada como a nova chave padrão, a menos que tenha a palavra \"legacy\" no nome do arquivo</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Chaves secretas escritas com sucesso para "%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Chaves secretas importadas de "%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fundo</string>
-    <string name="pref_imap_folder_handling">Manipulação da pasta do IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se desabilitar esta opção, verifique se seu servidor e seus outros clientes estão configurados adequadamente. \n\ncaso contrário, as coisas podem não funcionar.</string>
     <string name="pref_watch_sent_folder">Ver a pasta de enviados</string>
     <string name="pref_auto_folder_moves">Mover pasta automaticamente para o Delta Chat</string>

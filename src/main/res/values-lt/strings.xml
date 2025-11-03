@@ -28,6 +28,8 @@
     <string name="info">Informacija</string>
     <string name="update">Atnaujinti</string>
     <string name="attachment">Priedas</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">Pridėti „%1$s“?</string>
     <string name="back">Atgal</string>
     <string name="close">Užverti</string>
     <string name="close_window">Užverti langą</string>
@@ -46,6 +48,8 @@
     <string name="save">Įrašyti</string>
     <string name="media">Medija</string>
     <string name="profile">Profilis</string>
+    <string name="all_profiles">Visi profiliai</string>
+    <string name="current_profile">Dabartinis profilis</string>
     <string name="main_menu">Pagrindinis meniu</string>
     <string name="start_chat">Pradėti pokalbį</string>
     <string name="show_full_message">Rodyti visą žinutę…</string>
@@ -74,6 +78,8 @@
     <string name="no_app_to_handle_data">Nepavyksta rasti programėlės, kuri apdorotų šį duomenų tipą.</string>
     <string name="no_browser_installed">Neįdiegta jokia naršyklė.</string>
     <string name="file_not_found">Nepavyko rasti %1$s.</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">Nepavyksta įrašyti %1$s.</string>
     <string name="copied_to_clipboard">Nukopijuota į iškarpinę.</string>
     <string name="contacts_headline">Adresatai</string>
     <string name="email_address">El. pašto adresas</string>
@@ -204,6 +210,8 @@
     <string name="menu_new_chat">Naujas pokalbis</string>
     <string name="menu_new_group">Nauja grupė</string>
     <string name="add_recipients">Pridėti gavėjus</string>
+    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <string name="subject">Tema</string>
     <string name="menu_send">Siųsti</string>
     <string name="menu_toggle_keyboard">Perjungti šypsniukų klaviatūrą</string>
     <string name="menu_edit_group">Taisyti grupę</string>
@@ -292,31 +300,22 @@
 
     <string name="file_saved_to">Failas įrašytas į „%1$s“.</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Vaizdo pokalbis</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Pakviesti %1$s į vaizdo pokalbį?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Tai reikalauja, kad abu pašnekovai turėtų suderinamą programėlę ar suderinamą naršyklę.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s pakvietė į vaizdo pokalbį.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Jūs pakvietėte į vaizdo pokalbį.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Bakstelėkite norėdami prisijungti</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Bakstelėkite norėdami atverti</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Vaizdo pokalbio egzempliorius</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Jūsų vaizdo pokalbio egzempliorius</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Pavyzdys: https://jūsų-serveris.org/$KAMBARYS</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Pakvietimas į vaizdo pokalbį</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Jūs esate kviečiami į vaizdo pokalbį. Spustelėkite %1$s jei norite prisijungti.</string>
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">Skambinti</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">Atsiliepti</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">Atmesti</string>
+    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
+    <string name="call_date_and_duration">%1$s, %2$s</string>
 
+    <string name="ask_delete_message">Ištrinti šią žinutę visuose jūsų įrenginiuose?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Ištrinti %d žinutę visuose jūsų įrenginiuose?</item>
+        <item quantity="few">Ištrinti %d žinutes visuose jūsų įrenginiuose?</item>
+        <item quantity="many">Ištrinti %d žinučių visuose jūsų įrenginiuose?</item>
+        <item quantity="other">Ištrinti %d žinutę visuose jūsų įrenginiuose?</item>
+    </plurals>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ištrinti %d žinutę?</item>
@@ -338,7 +337,6 @@
     <string name="contacts_title">Adresatai</string>
     <string name="contacts_enter_name_or_email">Įveskite vardą ar el. pašto adresą</string>
     <string name="contacts_type_email_above">Aukščiau įrašykite el. pašto adresą</string>
-    <string name="contacts_empty_hint">Adresatų nėra.</string>
 
 
     <!-- chatlist and chat view -->
@@ -381,8 +379,6 @@
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Įrašyta</string>
     <string name="save_as">Įrašyti kaip</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Jūs negalite rašyti, nes nesate šioje grupėje. Norėdami prisijungti, paprašykite kito nario.</string>
     <string name="cannot_display_unsuported_file_type">Nepavyksta atvaizduoti šio failo tipo: %s</string>
     <string name="attachment_failed_to_load">Nepavyko įkelti priedo</string>
     <!-- webxdc -->
@@ -504,7 +500,7 @@
     <string name="login_error_required_fields">Įveskite teisingą el. pašto adresą ir slaptažodį</string>
     <string name="import_backup_title">Importuoti atsarginę kopiją</string>
     <string name="import_backup_ask">Atsarginė kopija rasta ties \"%1$s\".\n\nAr norite iš jos importuoti ir naudoti visus duomenis ir nustatymus?</string>
-    <string name="import_backup_no_backup_found">Nerasta jokių atsarginių kopijų.\n\nNukopijuokite atsarginę kopiją į \"%1$s\" ir bandykite dar kartą. Priešingu atveju, paspauskite \"Pradėti susirašinėjimą\", kad pereitumėte į įprastą sąrankos procesą.</string>
+    <string name="import_backup_no_backup_found">Nerasta jokių atsarginių kopijų.\n\nNukopijuokite atsarginę kopiją į \"%1$s\" ir bandykite dar kartą.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Nepavyksta prisijungti kaip \"%1$s\". Patikrinkite ar el. pašto adresas ir slaptažodis yra teisingi.</string>
     <!-- TLS certificate checks -->
@@ -565,6 +561,7 @@
     <string name="pref_appearance">Išvaizda</string>
     <string name="pref_theme">Apipavidalinimas</string>
     <string name="pref_language">Kalba</string>
+    <string name="pref_use_system_ui_font">Naudoti sistemos šriftą</string>
     <string name="pref_incognito_keyboard">Inkognito klaviatūra</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Prašyti klaviatūros išjungti suasmenintą mokymąsi</string>
@@ -573,8 +570,6 @@
     <string name="pref_server">Serveris</string>
     <string name="pref_encryption">Šifravimas</string>
     <string name="pref_manage_keys">Tvarkyti raktus</string>
-    <string name="pref_use_system_emoji">Naudoti sistemos šypsniukus</string>
-    <string name="pref_use_system_emoji_explain">Išjungti Delta Chat įtaisytąjį šypsniukų palaikymą</string>
     <string name="pref_chats">Pokalbiai</string>
     <string name="pref_in_chat_sounds">Garsai pokalbiuose</string>
     <string name="pref_view_log">Rodyti žurnalą</string>
@@ -585,24 +580,19 @@
     <string name="pref_backup">Atsarginė kopija</string>
     <string name="pref_backup_explain">Padaro atsarginę pokalbių kopiją į išorinę saugyklą</string>
     <string name="pref_backup_export_explain">Atsarginė kopija padeda jums nusistatyti naują diegimą šiame ar kitame įrenginyje.\n\nAtsarginėje kopijoje bus visos žinutės, adresatai ir pokalbiai bei jūsų ištisinė Autocrypt sąranka. Atsarginės kopijos failą laikykite saugioje vietoje arba kaip įmanoma greičiau jį ištrinkite.</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <!-- deprecated -->
     <string name="pref_backup_export_x">Eksportuoti %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Eksportuoti visas %1$d paskyras</string>
     <string name="pref_backup_export_start_button">Pradėti daryti atsarginę kopiją</string>
     <string name="pref_backup_written_to_x">Atsarginė kopija sėkmingai įrašyta į %1$s</string>
-    <string name="pref_managekeys_menu_title">Tvarkykite raktus</string>
     <string name="pref_managekeys_export_secret_keys">Eksportuoti slaptus raktus</string>
     <string name="pref_managekeys_export_explain">Eksportuoti slaptus raktus į \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Importuoti slaptus raktus</string>
-    <string name="pref_managekeys_import_explain">Importuoti slaptus raktus iš \"%1$s\"?\n\n• Esami raktai nebus ištrinti\n\n• Paskutinis importuotas raktas bus naudojamas kaip naujas numatytasis raktas, nebent jo failo pavadinime bus žodis \"legacy\"</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Slapti raktai sėkmingai įrašyti į \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Slapti raktai importuoti iš \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fonas</string>
     <string name="pref_background_btn_default">Naudoti numatytąjį paveikslą</string>
     <string name="pref_background_btn_gallery">Pasirinkti iš galerijos</string>
-    <string name="pref_imap_folder_handling">IMAP aplanko apdorojimas</string>
     <string name="pref_imap_folder_warn_disable_defaults">Jeigu išjungiate šį parametrą, įsitikinkite, kad jūsų serveris ir kiti klientai yra sukonfigūruoti atitinkamai.\n\nPriešingu atveju, tai gali iš viso neveikti.</string>
     <string name="pref_watch_sent_folder">Stebėti išsiųstųjų aplanką</string>
     <string name="pref_send_copy_to_self">Siųsti kopiją sau pačiam</string>
@@ -658,12 +648,7 @@
     <string name="autodel_confirm">Aš suprantu, ištrinti visas šias žinutes</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Iš karto</string>
-    <string name="after_30_seconds">Po 30 sekundžių</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">Po 1 minutės</string>
     <string name="after_5_minutes">Po 5 minučių</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">Po 30 minučių</string>
     <string name="autodel_after_1_hour">Po 1 valandos</string>
     <string name="autodel_after_1_day">Po 1 dienos</string>
     <string name="autodel_after_1_week">Po 1 savaitės</string>
@@ -829,7 +814,6 @@
     <string name="switch_between_chats">Perjungti tarp pokalbių</string>
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Pristatymo būsena: Klaida</string>
-    <string name="a11y_encryption_padlock">Šifravimo spyna</string>
     <string name="a11y_delivery_status_sending">Pristatymo būsena: Siunčiama</string>
     <string name="a11y_delivery_status_draft">Pristatymo būsena: Juodraštis</string>
     <string name="a11y_delivery_status_delivered">Pristatymo būsena: Pristatyta</string>
@@ -848,6 +832,7 @@
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Išjungta Delta Chat programėlėje</string>
     <string name="disabled_in_system_settings">Išjungta sistemos nustatymuose</string>
+    <string name="system_settings">Sistemos nustatymai</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat naudoja mikrofoną, kad įrašytų ir siųstų balso žinutes bei vaizdo įrašus su garsu.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat leis jums pasirinkti, kurias nuotraukas iš savo kolekcijos išsiųsti.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat nori įrašyti paveikslus į jūsų nuotraukų kolekciją.</string>

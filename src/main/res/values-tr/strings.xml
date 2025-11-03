@@ -393,35 +393,6 @@
     <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Video Sohbeti</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">%1$s bir video sohbetine çağrılsın mı?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Bu, her iki uçta da uyumlu bir uygulama ya da tarayıcı gerektirir.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s bir video sohbetine çağrıldı.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Bir video sohbeti çağrısı gönderdiniz.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Katılmak için Dokunun</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Açmak için Dokunun</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Video Sohbeti Örneği</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Video Sohbeti Örneğiniz</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Örnek: https://your-server.org/$ROOM</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Etkinleştirilirse, her sohbetten video sohbeti başlatabilirsiniz. Her iki uçta da uyumlu bir uygulama ya da bir tarayıcı gerektirir.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">“%1$s” diğerlerini video sohbetlerine çağırmak için kullanılsın mı?\n\nBir kez ayarlandığında, her sohbetten video sohbeti başlatabilirsiniz. Bu, video sohbetleri için herhangi bir önceki ayarın yerini alır.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Video sohbeti çağrısı</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Bir video sohbetine çağrıldınız; katılmak için %1$s öğesini tıklayın.</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ayrılmak istediğinizden emin misiniz?</string>
@@ -459,7 +430,6 @@
     <string name="contacts_title">Kişiler</string>
     <string name="contacts_enter_name_or_email">Ad ya da e-posta adresi girin</string>
     <string name="contacts_type_email_above">Yukarıya e-posta adresi yazın</string>
-    <string name="contacts_empty_hint">Kişi yok.</string>
 
 
     <!-- chatlist and chat view -->
@@ -504,9 +474,6 @@
     <string name="saved">Kaydedilen</string>
     <string name="save_as">Farklı Kaydet</string>
     <string name="retry_send">İletiyi göndermeyi yeniden dene</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Bir ileti göndermek için bu öbekte olmalısınız. Katılmak için başka bir üyeye sorun.</string>
-    <string name="messaging_disabled_mailing_list">Posta listelerine iletiler gönderme henüz desteklenmiyor</string>
     <string name="cannot_display_unsuported_file_type">Bu dosya türü görüntülenemiyor: %s</string>
     <string name="attachment_failed_to_load">İlişiği yükleme başarısız</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -701,6 +668,8 @@
     <string name="proxy_use_proxy_confirm">“%1$s” proxy\'sini kullanmak istiyor musunuz?</string>
     <string name="proxy_share_explain">Arkadaşlarınız, QR kodunu tarayarak bu proxy\'yi ekleyebilir.</string>
     <string name="proxy_share_link">Bağlantı Paylaş</string>
+    <string name="proxy_enabled">Proxy Etkinleştirildi</string>
+    <string name="proxy_enabled_hint">Bir proxy kullanıyorsunuz. Bağlanmakta sorun yaşıyorsanız başka bir proxy deneyin.</string>
 
     <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
     <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth 2.0) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'e iletiler gönderme ve alma izni verin.\n\nDelta Chat kullanıcı verisi toplamaz; her şey aygıtınızda kalır.</string>
@@ -711,7 +680,7 @@
     <string name="login_error_required_fields">Lütfen geçerli bir e-posta adresi ve bir parola girin</string>
     <string name="import_backup_title">Yedekten Geri Yükle</string>
     <string name="import_backup_ask">“%1$s” üzerinde yedek bulundu.\n\nİçe aktarmak ve ondan gelen tüm verileri ve ayarları kullanmak istiyor musunuz?</string>
-    <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği “%1$s” üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemiyle sürdürmek için “İletileşmeye başla”ya basın.</string>
+    <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği “%1$s” konumuna kopyalayın ve yeniden deneyin.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">“%1$s” olarak giriş yapılamıyor. Lütfen adresin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- TLS certificate checks -->
@@ -796,8 +765,6 @@
     <string name="pref_server">Sunucu</string>
     <string name="pref_encryption">Şifreleme</string>
     <string name="pref_manage_keys">Anahtarları Yönet</string>
-    <string name="pref_use_system_emoji">Sistem Emojisini Kullan</string>
-    <string name="pref_use_system_emoji_explain">Delta Chat\'in gömülü emoji desteğini kapat</string>
     <string name="pref_show_system_contacts">Sistem Adres Defterini Oku</string>
     <string name="pref_show_system_contacts_explain">Adres defterinden gelen kişilerle sohbetler oluşturmayı teklif edin.</string>
     <string name="pref_chats">Sohbetler</string>
@@ -810,24 +777,20 @@
     <string name="pref_backup">Yedekleme</string>
     <string name="pref_backup_explain">Sohbetleri Dış Depolamaya Yedekle</string>
     <string name="pref_backup_export_explain">Bir yedek, bu ya da başka bir aygıtta yeni bir kurulum ayarlamanıza yardımcı olur.\n\nYedek; tüm iletileri, kişileri ve sohbetleri ve uçtan uca Autocrypt ayarlamanızı içerecek. Yedek dosyasını güvenli bir yerde tutun ya da olanaklıysa en kısa sürede silin.</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <string name="pref_backup_export_this">Bu profili dışa aktar</string>
+    <!-- deprecated -->
     <string name="pref_backup_export_x">%1$s hesabını dışa aktar</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Tüm %1$d profili dışa aktar</string>
     <string name="pref_backup_export_start_button">Yedeklemeyi Başlat</string>
     <string name="pref_backup_written_to_x">Yedek “%1$s” üzerine başarıyla yazıldı.</string>
-    <string name="pref_managekeys_menu_title">Anahtarları Yönet</string>
     <string name="pref_managekeys_export_secret_keys">Sır Anahtarları Dışa Aktar</string>
     <string name="pref_managekeys_export_explain">Sır anahtarlar “%1$s” üzerinde dışa aktarılsın mı?</string>
-    <string name="pref_managekeys_import_secret_keys">Sır Anahtarları İçe Aktar</string>
-    <string name="pref_managekeys_import_explain">Sır anahtarlar “%1$s” üzerinden içe aktarılsın mı?\n\n• Varolan sır anahtarlar silinmeyecek\n\n• Son içe aktarılan anahtar, dosya adında “legacy” sözcüğü olmadıkça yeni varsayılan anahtar olarak kullanılacak.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Sır anahtarlar “%1$s” üzerine başarıyla yazıldı.</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Sır anahtarlar “%1$s” üzerinden içe aktarıldı.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Duvar Kâğıdı</string>
     <string name="pref_background_btn_default">Varsayılan Görseli Kullan</string>
     <string name="pref_background_btn_gallery">Galeriden Seç</string>
-    <string name="pref_imap_folder_handling">IMAP Klasör İşleme</string>
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçeneği değiştirirseniz, sunucunuzun ve diğer istemcilerinizin uygun olarak yapılandırıldığından emin olun.\n\nDeğilse özellikler hiç çalışmayabilir.</string>
     <string name="pref_watch_sent_folder">Gönderilen Klasörünü İzle</string>
     <string name="pref_send_copy_to_self">Kendime Kopya Gönder</string>
@@ -907,12 +870,7 @@
     <string name="autodel_confirm">Anladım, tüm bu iletileri sil</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">İndirdikten sonra bir kerede</string>
-    <string name="after_30_seconds">30 saniye sonra</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">1 dakika sonra</string>
     <string name="after_5_minutes">5 dakika sonra</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">30 dakika sonra</string>
     <string name="autodel_after_1_hour">1 saat sonra</string>
     <string name="autodel_after_1_day">1 gün sonra</string>
     <string name="autodel_after_1_week">1 hafta sonra</string>
@@ -927,7 +885,7 @@
     <string name="autocrypt_prefer_e2ee">Uçtan Uca Şifrelemeyi Yeğle</string>
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">Bu ileti şifresi çözülemiyor.\n\n• Bu iletiye basitçe yanıt vermek ve gönderenden iletiyi yeniden göndermesini istemek zaten yardımcı olabilir.\n\n• Delta Chat\'i yeni kurduysanız, Delta Chat\'i şimdi yeniden ayarlayıp “İkinci Aygıt Olarak Ekle”yi seçmeniz ya da bir yedeği içe aktarmanız en iyisidir.</string>
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Bu sohbet için bilinmeyen gönderen. Daha fazla ayrıntı için \'bilgi\'ye bakın.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s kişisinden gelen ileti</string>
     <string name="systemmsg_failed_sending_to">%1$s kişisine ileti gönderme başarısız.</string>
@@ -948,8 +906,11 @@
     <string name="remove_member_by_you">%1$s üyesini kaldırdınız.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s tarafından %1$s üyesi kaldırıldı.</string>
-    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
-    <string name="group_left_by_you">Ayrıldınız.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="group_left_by_you">Gruptan ayrıldınız.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="channel_left_by_you">Kanaldan ayrıldınız.</string>
+    <string name="you_joined_the_channel">Kanala katıldınız.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s tarafından öbekten ayrılındı.</string>
     <string name="group_image_deleted_by_you">Öbek görselini sildiniz.</string>
@@ -1039,6 +1000,7 @@
     <string name="qrshow_join_group_title">QR Çağrı Kodu</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">“%1$s” öbeğine katılmak için bunu tarayın</string>
+    <string name="qrshow_join_channel_hint">“%1$s” kanalına katılmak için tarayın</string>
     <string name="qrshow_join_contact_title">QR Çağrı Kodu</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">%1$s ile sohbet etmek için bunu tarayın</string>
@@ -1165,7 +1127,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Teslimat durumu: Hata</string>
-    <string name="a11y_encryption_padlock">Şifreleme asma kilidi</string>
     <string name="a11y_delivery_status_sending">Teslimat durumu: Gönderiliyor</string>
     <string name="a11y_delivery_status_draft">Teslimat durumu: Taslak</string>
     <string name="a11y_delivery_status_delivered">Teslimat durumu: Teslim edildi</string>
@@ -1192,8 +1153,6 @@
     <string name="disabled_in_dc">Delta Chat\'ten etkisizleştirildi</string>
     <string name="disabled_in_system_settings">Sistem ayarlarından etkisizleştirildi</string>
     <string name="bg_app_refresh_disabled">“Arka Planda Uygulama Yenileme” sistem ayarlarından etkisizleştirildi</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Gecikmeli</string>
     <string name="notifications_avg_minutes">Ortalama olarak her %1$d dakikada bir</string>
     <string name="notifications_avg_hours">Ortalama olarak her %1$d saatte bir</string>
     <string name="last_check_at">Denetleme %1$s</string>

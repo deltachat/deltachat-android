@@ -986,6 +986,7 @@
     <string name="qrscan_hint_desktop">Move the QR code to the camera</string>
     <string name="qrscan_failed">QR code could not be decoded</string>
     <string name="qrscan_ask_join_group">Do you want to join the group \"%1$s\"?</string>
+    <string name="qrscan_ask_join_channel">Do you want to join the channel \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">The scanned fingerprint does not match the last seen for %1$s.</string>
     <string name="qrscan_no_addr_found">This QR code contains a fingerprint but no address.\n\nFor an out-of-band-verification, please establish an encrypted connection to the recipient first.</string>
     <string name="qrscan_contains_text">Scanned QR code text:\n\n%1$s</string>

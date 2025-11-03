@@ -195,31 +195,6 @@
 
     <string name="file_saved_to">Lagre fil til \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Videochat</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Inviter %1$s til en videochat?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Dette krever en kompatibel app, eller en kompatible nettleser i begge ender.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s inviterte til en videochat.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Du inviterte til en videochat.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Trykk for å bli med</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Trykk for å åpne</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Videochatteinstans</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Din videochatteinstans</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Bruk \"%1$s\" til å invitere andre til videochatter?\n\nNår satt, kan dere starte videochatter til hverandre en-til-en. Dette vil erstatte, eventuelle, tidligere innstillinger for videochatter.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Videochatinvitasjon</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Du er invitert til en videochat, klikk %1$s for å bli med.</string>
-
     <string name="ask_forward">Videresend meldinger til %1$s?</string>
     <string name="ask_forward_multiple">Videresend meldinger til %1$d chatter?</string>
     <string name="ask_export_attachment">Eksporter vedlegg? Eksport av vedlegg vil gi andre apper på din enhet tilgang til dem\n\nFortsett?</string>
@@ -234,7 +209,6 @@
     <string name="contacts_title">Kontakter</string>
     <string name="contacts_enter_name_or_email">Skriv navn eller e-postadresse</string>
     <string name="contacts_type_email_above">Skriv e-postadresse over</string>
-    <string name="contacts_empty_hint">Ingen kontakter.</string>
 
 
     <!-- chatlist and chat view -->
@@ -295,7 +269,7 @@
     <string name="login_auth_method">Autoriseringsmetode</string>
     <string name="login_certificate_checks">Sertifikat sjekker</string>
     <string name="import_backup_title">Importer sikkerhetskopi</string>
-    <string name="import_backup_no_backup_found">Fant ingen sikkerhetskopier.\n\nKopier sikkerhetskopien til %1$s og prøv igjen. Alternativt, trykk \"Start meldingsforsendelse\" for normal oppsettsprosess.</string>
+    <string name="import_backup_no_backup_found">Fant ingen sikkerhetskopier.\n\nKopier sikkerhetskopien til %1$s og prøv igjen.</string>
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Videresend til…</string>
@@ -332,18 +306,13 @@
     <string name="pref_read_receipts">Meldingskvitteringer</string>
     <string name="pref_read_receipts_explain">Hvis du slår av lesebekreftelser, får du heller ikke se lesebekreftelser fra andre.</string>
     <string name="pref_manage_keys">Behandle nøkler</string>
-    <string name="pref_use_system_emoji">Bruk systemets emoji</string>
-    <string name="pref_use_system_emoji_explain">Slå av innebygd emoji-støtte i Delta Chat</string>
     <string name="pref_chats">Sludringer</string>
     <string name="pref_in_chat_sounds">Merknader i programmet</string>
     <string name="pref_view_log">Vis logg</string>
     <string name="pref_log_header">Logg</string>
     <string name="pref_other">Annet</string>
     <string name="pref_backup">Sikkerhetskopi</string>
-    <string name="pref_managekeys_menu_title">Behandle nøkler</string>
     <string name="pref_managekeys_export_secret_keys">Eksporter private nøkler</string>
-    <string name="pref_managekeys_import_secret_keys">Importer private nøkler</string>
-    <string name="pref_managekeys_import_explain">Importer private nøkler fra %1$s?\n\n• Eksisterende private nøkler blir ikke slettet\n\n• Den sist importerte nøkkelen vil bli brukt som ny forvalgt nøkkel</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Sludrebakgrunn</string>
     <!-- autocrypt -->
