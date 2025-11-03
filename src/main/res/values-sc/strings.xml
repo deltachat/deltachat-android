@@ -203,31 +203,6 @@
 
     <string name="file_saved_to">Documentu sarvadu in \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Vìdeu-tzarrada</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Cheres invitare %1$s a una vìdeu-tzarrada?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Custu bisòngiat de un\'aplicatzione cumpatìbile o unu navigadore cumpatìbile dae ambas alas.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s t\'at invitadu a una vìdeu-tzarrada.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">As invitadu a una vìdeu-tzarrada.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Toca pro bi pigare parte</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Toca pro abèrrere</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Istàntzia de vìdeu-tzarrada</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">S\'istàntzia de vìdeu-tzarrada tua</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Cheres impreare \"%1$s\" pro invitare calicun\'àteru a sa vìdeu-tzarrada?\n\nA pustis de s\'impostatzione, podes fàghere incumentzare una vìdeu-tzarrada dae cada tzarrada unu-a-unu. Custu at a remplasare sas impostatziones antepostas pro sas vìdeu-tzarradas, si bi nde fiant.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Invitu a sa vìdeu-tzarrada</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Ses invitadu a una vìdeu-tzarrada. Incarca %1$s pro bi pigare parte.</string>
-
     <string name="ask_forward">Inoltrare su messàgiu a %1$s?</string>
     <string name="ask_forward_multiple">Inoltrare messàgios a %1$d tzarradas?</string>
     <string name="ask_export_attachment">Esportare sos allegados? S\'esportatzione de sos allegados at a permìtere a cale si siat àtera aplicatzione in su dispositivu tuo de b\'atzèdere.\n\nSighire?</string>
@@ -245,7 +220,6 @@
     <string name="contacts_title">Cuntatos</string>
     <string name="contacts_enter_name_or_email">Inserta su nùmene o s\'indiritzu de posta eletrònica</string>
     <string name="contacts_type_email_above">Inserta s\'indiritzu de posta eletrònica inoghe in subra</string>
-    <string name="contacts_empty_hint">Perunu cuntatu.</string>
 
 
     <!-- chatlist and chat view -->
@@ -282,8 +256,6 @@
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Sarvadu</string>
     <string name="retry_send">Torra a proare a imbiare su messàgiu</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Non podes iscrìere ca non ses in custu grupu. Pro b\'intrare pedi a un\'àteru membru.</string>
     <string name="cannot_display_unsuported_file_type">Impossìbile ammustrare custa casta de documentu: %s</string>
     <!-- map -->
     <string name="filter_map_on_time">Ammustra sas positziones in su tempus</string>
@@ -342,7 +314,7 @@
     <string name="login_error_required_fields">Inserta un\'indiritzu de posta eletrònica e una crae de intrada bàlidos</string>
     <string name="import_backup_title">Importa una còpia de seguresa</string>
     <string name="import_backup_ask">Còpia de seguresa agatada in \"%1$s\".\n\nCheres a l\'importare e a impreare totu sos datos e sas impostatziones dae cue?</string>
-    <string name="import_backup_no_backup_found">Peruna còpia de seguresa agatada.\n\nCòpia sa còpia de seguresa in \"%1$s\" e torra a proare. Si nono, incarca. Asinuncas, incarca \"Incumintza a messagiare\" pro sighire cun su protzessu de impostatzione normale.</string>
+    <string name="import_backup_no_backup_found">Peruna còpia de seguresa agatada.\n\nCòpia sa còpia de seguresa in \"%1$s\" e torra a proare. Si nono, incarca.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Impossìbile atzèdere comente \"%1$s\". pro paghere verìfica si s\'indiritzu de posta eletrònica e sa crae de intrada sunt curretos.</string>
     <!-- TLS certificate checks -->
@@ -408,8 +380,6 @@
     <string name="pref_read_receipts">Retzidas de leghidura</string>
     <string name="pref_read_receipts_explain">Si sas retzidas de leghidura sunt disabilitadas, no as a pòdere bìdere sas retzidas de leghidura de àtere.</string>
     <string name="pref_manage_keys">Amministra sas craes</string>
-    <string name="pref_use_system_emoji">Imprea sas emoji de sistema</string>
-    <string name="pref_use_system_emoji_explain">Istuda su suportu de sas emoji incorporadu in Delta Chat</string>
     <string name="pref_chats">Tzarradas</string>
     <string name="pref_in_chat_sounds">Sonos in sa tzarrada</string>
     <string name="pref_view_log">Pòmpia su registru</string>
@@ -422,18 +392,13 @@
     <string name="pref_backup_export_explain">Una còpia de seguresa t\'agiudat a impostare un\'installatzione noa in custu o in un\'àteru dispositivu.\n\nSa còpia de seguresa ant a cuntènnere totu sos messàgios, sos cuntatos, sas tzarradas e s\'impostatzione de sa tzifradura a nodu terminale (end-to-end) de Autocrypt. Mantene su documentu in unu logu seguru o iscantzellalu in su primu momentu chi podes.</string>
     <string name="pref_backup_export_start_button">Incumintza sa còpia de seguresa</string>
     <string name="pref_backup_written_to_x">Còpia de seguresa sarvada in \"%1$s\"chene problemas.</string>
-    <string name="pref_managekeys_menu_title">Amministra sas craes</string>
     <string name="pref_managekeys_export_secret_keys">Esporta sas craes segretas</string>
     <string name="pref_managekeys_export_explain">Esportare sas craes segretas in \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Importa sas craes segretas</string>
-    <string name="pref_managekeys_import_explain">Cheres importare sas craes segretas dae \"%1$s\"?\n\n• Sas craes de como no ant a èssere iscantzelladas\n\n• S\'ùrtima crae importada at a èssere impreada comente crae predefinida francu chi tèngiat sa paràula \"legacy\" in su nùmene de su documentu suo.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Craes segretas sarvadas in \"%1$s\" chene problemas.</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Craes segredas importadas dae \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Isfundu</string>
     <string name="pref_background_btn_default">Imprea s\'immàgine predefinida</string>
     <string name="pref_background_btn_gallery">Ischerta dae sa galleria</string>
-    <string name="pref_imap_folder_handling">Amministratzione de sa cartella IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si disabìlitas custa opztione assegura·ti chi su serbidore tuo e totu sos àteros clientes siant cunfigurados in sa matessi manera\n\nSi nono sas cosas diant pòdere non funtzionare pro nudda.</string>
     <string name="pref_watch_sent_folder">Pòmpia sa cartella de sos imbiados</string>
     <string name="pref_send_copy_to_self">Imbia·ti·nche una còpia</string>
@@ -465,9 +430,6 @@
     <string name="autodel_confirm">Apo cumpresu, iscantzella totu sos messàgios</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Una borta</string>
-    <string name="after_30_seconds">A pustis de 30 segundos</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">A pustis de 1 minutu</string>
     <string name="autodel_after_1_hour">A pustis de 1 ora</string>
     <string name="autodel_after_1_day">A pustis de 1 die</string>
     <string name="autodel_after_1_week">A pustis de 1 chida</string>
@@ -483,5 +445,4 @@
     <string name="write_message_desktop">Iscrie unu messàgiu</string>
     <string name="encryption_info_title_desktop">Informatziones de tzifradura</string>
     <string name="more_info_desktop">Àteras informatziones</string>
-    <string name="a11y_encryption_padlock">Luchete de tzifradura</string>
     </resources>

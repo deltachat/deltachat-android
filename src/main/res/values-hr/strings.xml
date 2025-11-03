@@ -137,9 +137,6 @@
     <string name="mute_for_seven_days">Utišaj na 7 dana</string>
     <!-- contact list -->
     <string name="contacts_title">Kontakti</string>
-    <string name="contacts_empty_hint">Nema kontakata.</string>
-
-
     <string name="chat_please_enter_message">Molimo unesite poruku.</string>
     <string name="chat_camera_unavailable">Kamera nije dostupna.</string>
     <plurals name="chat_n_new_messages">
@@ -207,8 +204,6 @@
     <string name="pref_incognito_keyboard_explain">Zahtijevaj od tipkovnice da onemogući personalizirano učenje</string>
     <string name="pref_read_receipts">Potvrde čitanja</string>
     <string name="pref_read_receipts_explain">Ukoliko ste onemogućili potvrdu čitanja kod sebe, nećete moći vidjeti potvrde čitanja od drugih.</string>
-    <string name="pref_use_system_emoji">Koristi emotikone sustava</string>
-    <string name="pref_use_system_emoji_explain">Onemogući ugrađenu Delta Chat podršku za emotikone</string>
     <string name="pref_chats">Razgovori</string>
     <string name="pref_in_chat_sounds">Zvuk unutar razgovora</string>
     <string name="pref_other">Ostalo</string>

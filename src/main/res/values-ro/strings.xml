@@ -292,35 +292,6 @@
     </plurals>
     <string name="file_saved_to">Fișier salvat la \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Chat video</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Invitați %1$s la un chat video?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Acest lucru necesită o aplicație sau un browser compatibil la ambele capete.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s invitat la o discuție video.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Ați trimis o invitație de videochat.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Atingeți pentru a vă alătura</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Atingeți pentru a deschide</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Instanță de Videochat</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Instanța Dumneavoastră de Videochat</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Exemple: https://meet.jit.si/$ROOM ori basicwebrtc:https://your-server</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Dacă este activată, puteți începe un chat video din fiecare chat. Necesită un app compatibil sau un browser la ambele capete.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Folosiți \"%1$s\" pentru a invita alte persoane la chat-uri video?\n\nOnce setat, puteți începe un chat video din fiecare chat. Acest lucru înlocuiește orice setare anterioară pentru chat-urile video.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Invitație la chat video</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Sunteți invitat la un chat video, faceți clic %1$s pentru a vă alătura.</string>
-
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ștergeți %d mesaj?</item>
@@ -344,7 +315,6 @@
     <string name="contacts_title">Contacte</string>
     <string name="contacts_enter_name_or_email">Introduceți numele sau adresa de e-mail</string>
     <string name="contacts_type_email_above">Introduceți adresa de e-mail de mai sus</string>
-    <string name="contacts_empty_hint">Fără contacte.</string>
 
 
     <!-- chatlist and chat view -->
@@ -389,9 +359,6 @@
     <string name="saved">Salvat</string>
     <string name="save_as">Salvați ca</string>
     <string name="retry_send">Reîncercarea de a trimite mesajul</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Trebuie să fiți în acest grup pentru a posta un mesaj. Pentru a vă alătura, întrebați un alt membru.</string>
-    <string name="messaging_disabled_mailing_list">Trimiterea de mesaje în listele de discuții nu este încă acceptată.</string>
     <string name="cannot_display_unsuported_file_type">Nu se poate afișa acest tip de fișier: %s</string>
     <string name="attachment_failed_to_load">Nu s-a reușit încărcarea atașamentului</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -531,7 +498,7 @@
     <string name="login_error_required_fields">Vă rugăm să introduceți o adresă de e-mail validă și o parolă</string>
     <string name="import_backup_title">Restaurarea din copia de rezervă</string>
     <string name="import_backup_ask">Backup găsit la \"%1$s\".\n\nDoriți să importați și să utilizați toate datele și setările din acesta?</string>
-    <string name="import_backup_no_backup_found">Nu s-au găsit copii de rezervă.\n\nCopiază copia de rezervă pe \"%1$s\" și încercați din nou. Alternativ, apăsați \"Start messaging\" pentru a continua procesul normal de configurare.</string>
+    <string name="import_backup_no_backup_found">Nu s-au găsit copii de rezervă.\n\nCopiază copia de rezervă pe \"%1$s\" și încercați din nou.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Nu se poate autentifica ca \"%1$s\". Vă rugăm să verificați dacă adresa de e-mail și parola sunt corecte.</string>
     <!-- TLS certificate checks -->
@@ -602,6 +569,4 @@
     <string name="pref_read_receipts">Citiți Chitanțele</string>
     <string name="pref_read_receipts_explain">Dacă sunt dezactivate chitanțele de citire, nu veți putea vedea chitanțele de citire de la alte persoane.</string>
     <string name="pref_manage_keys">Gestionați Cheile</string>
-    <string name="pref_use_system_emoji">Utilizați emoji de sistem</string>
-    <string name="pref_use_system_emoji_explain">Dezactivați suportul emoji încorporat în Delta Chat</string>
     </resources>
