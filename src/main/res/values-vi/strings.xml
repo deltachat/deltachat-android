@@ -289,35 +289,6 @@
     </plurals>
     <string name="file_saved_to">Tệp đã được lưu vào \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Trò chuyện video</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Mời %1$s trò chuyện video?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Điều này yêu cầu ứng dụng hoặc trình duyệt tương thích ở cả hai đầu.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s được mời tham gia trò chuyện video.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Bạn đã gửi lời mời trò chuyện video.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Nhấn để tham gia</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Nhấn để mở</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Phiên bản trò chuyện video</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Phiên bản trò chuyện video của bạn</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Ví dụ: https://your-server.org/$ROOM</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Nếu được bật, bạn có thể bắt đầu trò chuyện video từ mỗi cuộc trò chuyện. Yêu cầu ứng dụng tương thích hoặc trình duyệt ở cả hai đầu.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Sử dụng \"%1$s\" để mời người khác trò chuyện video?\n\nSau khi thiết lập, bạn có thể bắt đầu trò chuyện video từ mỗi cuộc trò chuyện. Điều này sẽ thay thế mọi cài đặt trước đó cho trò chuyện video.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Lời mời trò chuyện video</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Bạn được mời tham gia cuộc trò chuyện video, hãy nhấp vào %1$s để tham gia.</string>
-
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">Xóa %d tin nhắn?</item>
@@ -339,7 +310,6 @@
     <string name="contacts_title">Danh bạ</string>
     <string name="contacts_enter_name_or_email">Nhập tên hoặc địa chỉ e-mail</string>
     <string name="contacts_type_email_above">Nhập địa chỉ e-mail ở trên</string>
-    <string name="contacts_empty_hint">Không có liên hệ nào.</string>
 
 
     <!-- chatlist and chat view -->
@@ -378,9 +348,6 @@
     <string name="saved">Đã lưu</string>
     <string name="save_as">Lưu dưới dạng</string>
     <string name="retry_send">Thử gửi lại tin nhắn</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Bạn phải ở trong nhóm này để gửi tin nhắn. Để tham gia, hãy hỏi thành viên khác.</string>
-    <string name="messaging_disabled_mailing_list">Gửi tin nhắn trong danh sách gửi thư chưa được hỗ trợ</string>
     <string name="cannot_display_unsuported_file_type">Không thể hiển thị loại tệp này: %s</string>
     <string name="attachment_failed_to_load">Không tải được tệp đính kèm</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -532,7 +499,7 @@
     <string name="login_error_required_fields">Vui lòng nhập địa chỉ email hợp lệ và mật khẩu</string>
     <string name="import_backup_title">Khôi phục từ bản sao lưu</string>
     <string name="import_backup_ask">Đã tìm thấy bản sao lưu tại \"%1$s\".\n\nBạn có muốn nhập và sử dụng tất cả dữ liệu cũng như cài đặt từ nó không?</string>
-    <string name="import_backup_no_backup_found">Không tìm thấy bản sao lưu nào.\n\nSao chép bản sao lưu vào \"%1$s\" và thử lại. Ngoài ra, hãy nhấn \"Bắt đầu nhắn tin\" để tiếp tục quá trình thiết lập thông thường.</string>
+    <string name="import_backup_no_backup_found">Không tìm thấy bản sao lưu nào.\n\nSao chép bản sao lưu vào \"%1$s\" và thử lại.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Không thể đăng nhập với tên \"%1$s\". Vui lòng kiểm tra xem địa chỉ e-mail và mật khẩu có đúng không.</string>
     <!-- TLS certificate checks -->
@@ -603,8 +570,6 @@
     <string name="pref_read_receipts">Đã đọc Biên lai</string>
     <string name="pref_read_receipts_explain">Nếu thông báo xác nhận đã đọc bị tắt, bạn sẽ không thể xem thông báo xác nhận đã đọc từ người khác.</string>
     <string name="pref_manage_keys">Quản lý khóa</string>
-    <string name="pref_use_system_emoji">Sử dụng Emoji hệ thống</string>
-    <string name="pref_use_system_emoji_explain">Tắt tính năng hỗ trợ emoji tích hợp của Delta Chat</string>
     <string name="pref_chats">Trò chuyện</string>
     <string name="pref_in_chat_sounds">Âm thanh trong cuộc trò chuyện</string>
     <string name="pref_view_log">Xem nhật ký</string>
@@ -615,24 +580,19 @@
     <string name="pref_backup">Sao lưu</string>
     <string name="pref_backup_explain">Sao lưu cuộc trò chuyện vào bộ nhớ ngoài</string>
     <string name="pref_backup_export_explain">Bản sao lưu giúp bạn thiết lập cài đặt mới trên thiết bị này hoặc trên thiết bị khác.\n\nBản sao lưu sẽ chứa tất cả tin nhắn, danh bạ và cuộc trò chuyện cũng như thiết lập Autocrypt hai đầu của bạn. Giữ tập tin sao lưu ở nơi an toàn hoặc xóa nó càng sớm càng tốt.</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <!-- deprecated -->
     <string name="pref_backup_export_x">Xuất %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Xuất tất cả tài khoản %1$d</string>
     <string name="pref_backup_export_start_button">Bắt đầu sao lưu</string>
     <string name="pref_backup_written_to_x">Sao lưu được ghi thành công vào \"%1$s\".</string>
-    <string name="pref_managekeys_menu_title">Quản lý khóa</string>
     <string name="pref_managekeys_export_secret_keys">Xuất khóa bí mật</string>
     <string name="pref_managekeys_export_explain">Xuất khóa bí mật sang \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Nhập khóa bí mật</string>
-    <string name="pref_managekeys_import_explain">Nhập khóa bí mật từ \"%1$s\"?\n\n• Các khóa bí mật hiện có sẽ không bị xóa\n\n• Khóa được nhập cuối cùng sẽ được sử dụng làm khóa mặc định mới trừ khi nó có từ \"cũ \" trong tên tệp của nó.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Khóa bí mật được ghi thành công vào \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Khóa bí mật được nhập từ \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Hình nền</string>
     <string name="pref_background_btn_default">Sử dụng hình ảnh mặc định</string>
     <string name="pref_background_btn_gallery">Chọn từ thư viện</string>
-    <string name="pref_imap_folder_handling">Xử lý thư mục IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Nếu bạn thay đổi tùy chọn này, hãy đảm bảo rằng máy chủ và các máy khách khác của bạn được cấu hình tương ứng.\n\nNếu không, mọi thứ có thể không hoạt động.</string>
     <string name="pref_watch_sent_folder">Xem thư mục đã gửi</string>
     <string name="pref_send_copy_to_self">Gửi bản sao cho chính mình</string>
@@ -699,12 +659,7 @@
     <string name="autodel_confirm">Tôi hiểu, hãy xóa tất cả những tin nhắn này</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Ngay lập tức</string>
-    <string name="after_30_seconds">Sau 30 giây</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">Sau 1 phút</string>
     <string name="after_5_minutes">Sau 5 phút</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">Sau 30 phút</string>
     <string name="autodel_after_1_hour">Sau 1 giờ</string>
     <string name="autodel_after_1_day">Sau 1 ngày</string>
     <string name="autodel_after_1_week">Sau 1 tuần</string>
@@ -719,7 +674,7 @@
     <string name="autocrypt_prefer_e2ee">Ưu tiên mã hóa đầu cuối</string>
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">Không thể giải mã tin nhắn này.\n\n• Bạn chỉ cần trả lời tin nhắn này và yêu cầu người gửi gửi lại tin nhắn là đủ.\n\n• Nếu bạn vừa cài đặt lại Delta Chat thì tốt nhất bạn nên cài đặt lại thiết lập lại Delta Chat ngay bây giờ và chọn "Thêm làm thiết bị thứ hai" hoặc nhập bản sao lưu.</string>
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Người gửi không xác định cho cuộc trò chuyện này. Xem \'thông tin\' để biết thêm chi tiết.</string>
     <string name="systemmsg_subject_for_new_contact">Tin nhắn từ %1$s</string>
     <string name="systemmsg_failed_sending_to">Không gửi được tin nhắn tới %1$s.</string>
@@ -938,7 +893,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Trạng thái vận chuyển: Lỗi</string>
-    <string name="a11y_encryption_padlock">Ổ khóa mã hóa</string>
     <string name="a11y_delivery_status_sending">Trạng thái vận chuyển: Đang gửi</string>
     <string name="a11y_delivery_status_draft">Trạng thái vận chuyển: Bản nháp</string>
     <string name="a11y_delivery_status_delivered">Trạng thái vận chuyển: Đã chuyển xong</string>
@@ -965,8 +919,6 @@
     <string name="disabled_in_dc">Đã tắt trong Delta Chat</string>
     <string name="disabled_in_system_settings">Đã tắt trong cài đặt hệ thống</string>
     <string name="bg_app_refresh_disabled">\"Làm mới ứng dụng nền\" bị tắt trong cài đặt hệ thống</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Bị trì hoãn</string>
     <string name="notifications_avg_minutes">Trung bình cứ sau %1$d phút</string>
     <string name="notifications_avg_hours">Trung bình cứ sau %1$d giờ</string>
     <string name="last_check_at">Đã kiểm tra lúc %1$s</string>

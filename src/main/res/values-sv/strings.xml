@@ -307,35 +307,6 @@
     </plurals>
     <string name="file_saved_to">Filen är sparad i \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Videochatt</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Vill du bjuda in %1$s till en videochatt?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Detta kräver ett kompatibelt program eller en kompatibel webbläsare i bägge ändar.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s bjöd in till en videochatt</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Du bjöd in till en videochatt</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Tryck för att ansluta</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Tryck för att öppna</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Videochattinstans</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Din videochattinstans</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Exempel: https://din-server.org/$RUM</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Om det är aktiverat kan du starta en videochatt från varje chatt. Kräver en kompatibel app eller en webbläsare på båda sidor.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Vill du använda \"%1$s\" för att bjuda in andra till videochattar?\n\nNär det väl är inställt kan du starta en videochatt från vilken en-till-en-chatt som helst. Detta ersätter den tidigare inställningen för eventuella videochattar.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Videochattinbjudan</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Du är inbjuden till en videochatt, klicka på %1$s för att ansluta.</string>
-
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Vill du ta bort %d meddelande?</item>
@@ -358,7 +329,6 @@
     <string name="contacts_title">Kontakter</string>
     <string name="contacts_enter_name_or_email">Ange namn eller e-postadress</string>
     <string name="contacts_type_email_above">Skriv in e-postadressen ovan</string>
-    <string name="contacts_empty_hint">Inga kontakter.</string>
 
 
     <!-- chatlist and chat view -->
@@ -400,9 +370,6 @@
     <string name="saved">Sparad</string>
     <string name="save_as">Spara som</string>
     <string name="retry_send">Skicka om meddelandet</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Du kan inte skriva eftersom du inte är med i denna grupp. Be en medlem bjuda in dig, för att gå med</string>
-    <string name="messaging_disabled_mailing_list">Att skicka meddelande till e-postlistor stöds inte ännu</string>
     <string name="cannot_display_unsuported_file_type">Denna filtyp kan inte visas: %s</string>
     <string name="attachment_failed_to_load">Bilagan kunde inte visas</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -582,7 +549,7 @@
     <string name="login_error_required_fields">Ange en giltig e-postadress och ett lösenord</string>
     <string name="import_backup_title">Importera säkerhetskopia</string>
     <string name="import_backup_ask">Säkerhetskopia hittades på %1$s.\n\n Vill du importera och använda all data och alla inställningar från den?</string>
-    <string name="import_backup_no_backup_found">Inga säkerhetskopior hittades.\n\nKopiera säkerhetskopian till \"%1$s\" och försök igen. Alternativt, tryck \"Börja chatta\" för att fortsätta den normala inställningsprocessen.</string>
+    <string name="import_backup_no_backup_found">Inga säkerhetskopior hittades.\n\nKopiera säkerhetskopian till \"%1$s\" och försök igen.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". Kontrollera om e-postadressen och lösenordet är korrekt.</string>
     <!-- TLS certificate checks -->
@@ -655,8 +622,6 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Kryptering</string>
     <string name="pref_manage_keys">Hantera nycklar</string>
-    <string name="pref_use_system_emoji">Använd systemets emojier</string>
-    <string name="pref_use_system_emoji_explain">Inaktivera Delta Chat\'s inbyggda emojier</string>
     <string name="pref_show_system_contacts">Läs systemets adressbok</string>
     <string name="pref_show_system_contacts_explain">Erbjud att skapa chattar med kontakter från adressboken. Vissa leverantörer behöver först konfigureras för totalsträckskryptering.</string>
     <string name="pref_chats">Chattar</string>
@@ -669,24 +634,19 @@
     <string name="pref_backup">Säkerhetskopiering</string>
     <string name="pref_backup_explain">Säkerhetskopiera chattar till extern lagring</string>
     <string name="pref_backup_export_explain">En säkerhetskopia hjälper dig att ställa in en ny installation på denna eller någon annan enhet.\n\nSäkerhetskopian innehåller alla meddelanden, kontakter och chattar, liksom din autokrypterade slutpunkt-till-slutpunkt-inställning. Förvara säkerhetskopian på ett säkert ställe eller ta bort den så fort som möjligt.</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <!-- deprecated -->
     <string name="pref_backup_export_x">Exportera %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportera all %1$d profiler</string>
     <string name="pref_backup_export_start_button">Starta säkerhetskopiering</string>
     <string name="pref_backup_written_to_x">Säkerhetskopia korrekt skriven till \"%1$s\".</string>
-    <string name="pref_managekeys_menu_title">Hantera nycklar</string>
     <string name="pref_managekeys_export_secret_keys">Exportera säkerhetsnycklar</string>
     <string name="pref_managekeys_export_explain">Exportera säkerhetsnycklar till \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Importera säkerhetsnycklar</string>
-    <string name="pref_managekeys_import_explain">Importera säkerhetsnycklar från \"%1$s\"?\n\n• Befintliga säkerhetsnycklar kommer inte att tas bort\n\n• Den senast importerade nyckeln kommer att användas som ny standardnyckel, om den inte har ordet \"legacy\" i sitt filnamn.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Säkerhetsnycklar korrekt skrivna till \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Säkerhetsnycklar importerade från \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Bakgrund</string>
     <string name="pref_background_btn_default">Använd standardbild</string>
     <string name="pref_background_btn_gallery">Välj från galleriet</string>
-    <string name="pref_imap_folder_handling">IMAP mapphantering</string>
     <string name="pref_imap_folder_warn_disable_defaults">Om du inaktiverar det här alternativet, tillse att servern och dina andra klienter är konfigurerade i enlighet med detta.\n\nAnnars kanske saker och ting inte fungerar alls.</string>
     <string name="pref_watch_sent_folder">Övervaka mappen \"Skickat\"</string>
     <string name="pref_send_copy_to_self">Skicka kopia till mig själv</string>
@@ -765,12 +725,7 @@
     <string name="autodel_confirm">Jag förstår! Ta bort alla dessa meddelanden.</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Nu genast</string>
-    <string name="after_30_seconds">Efter 30 sekunder</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">Efter 1 minut</string>
     <string name="after_5_minutes">Efter 5 minuter</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">Efter 30 minuter</string>
     <string name="autodel_after_1_hour">Efter 1 timma</string>
     <string name="autodel_after_1_day">Efter 1 dag</string>
     <string name="autodel_after_1_week">Efter 1 vecka</string>
@@ -785,7 +740,7 @@
     <string name="autocrypt_prefer_e2ee">Föredra slutpunkt-till-slutpunkt-kryptering</string>
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">Det här meddelandet kan inte dekrypteras.\n\n- Det kan hjälpa att helt enkelt svara på det här meddelandet och be avsändaren att skicka meddelandet igen.\n\n- Om du just har installerat om Delta Chat är det bäst om du konfigurerar om Delta Chat nu och väljer \"Lägg till som en andra enhet\" eller importerar en säkerhetskopia.</string>
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Okänd avsändare för denna chatt. Se info för fler detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Meddelande från %1$s</string>
     <string name="systemmsg_failed_sending_to">Kunde inte skicka meddelande till %1$s.</string>
@@ -1012,7 +967,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Leveransstatus: Fel</string>
-    <string name="a11y_encryption_padlock">Hänglås för kryptering</string>
     <string name="a11y_delivery_status_sending">Leveransstatus: Skickar</string>
     <string name="a11y_delivery_status_draft">Leveransstatus: Utkast</string>
     <string name="a11y_delivery_status_delivered">Leveransstatus: Levererat</string>
@@ -1039,8 +993,6 @@
     <string name="disabled_in_dc">Inaktiverad i Delta Chat</string>
     <string name="disabled_in_system_settings">Inaktiverad i systeminställningarna</string>
     <string name="bg_app_refresh_disabled">\"Appuppdatering i bakgrunden\" inaktiverad i systeminställningarna</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Fördröjd</string>
     <string name="notifications_avg_minutes">I genomsnitt var %1$d minut</string>
     <string name="notifications_avg_hours">I genomsnitt var %1$d:e timma</string>
     <string name="last_check_at">Kontrollerad %1$s</string>

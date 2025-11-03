@@ -318,35 +318,6 @@
     <string name="answer_call">Одговори</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Одби</string>
-    <!-- deprecated -->
-    <string name="videochat">Видео ћаскање</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Позови %1$sу видео ћаскање?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Ово захтева компатибилну апликацију или прегледач на оба краја.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$sје позван у видео ћаскање.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Послали сте позив за видео ћаскање.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Додирни да се придружиш</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Додирни да отвориш</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Инстанца видео ћаскања</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Ваша инстанца видео ћаскања</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Примери: https://meet.jit.si/$ROOM или basicwebrtc:https://your-server</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Ако је омогућено, можете започети видео ћаскање из сваког ћаскања. Ово захтева компатибилну апликацију или прегледач на оба краја.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Да ли желите да користите „%1$s“ да позовете друге у видео ћаскање?\n\nКада ово поставите, можете да започнете видео ћаскање из сваког ћаскања. Ово замењује све претходне поставке за видео ћаскање.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Позив за видео ћаскање</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Позвани сте у видео ћаскање, кликни %1$sда придружиш.</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Да ли сте сигурни да желите да напустите?</string>
@@ -375,7 +346,6 @@
     <string name="contacts_title">Контакти</string>
     <string name="contacts_enter_name_or_email">Унесите име или е-адресу</string>
     <string name="contacts_type_email_above">Унесите е-адресу изнад</string>
-    <string name="contacts_empty_hint">Још нема контаката.</string>
 
 
     <!-- chatlist and chat view -->
@@ -420,9 +390,6 @@
     <string name="saved">Снимљено</string>
     <string name="save_as">Сними као</string>
     <string name="retry_send">Покушај поново да пошаљеш поруку</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Морате бити у овој групи да би сте послали поруку. Да се придружите групи, питајте неког члана групе за позивницу.</string>
-    <string name="messaging_disabled_mailing_list">Слање порука на списак имејл адреса још увек није подржано</string>
     <string name="cannot_display_unsuported_file_type">Тип фајла %sне може бити приказан</string>
     <string name="attachment_failed_to_load">Учитавање прилога је неуспешно</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -542,7 +509,7 @@
     <string name="login_error_required_fields">Унесите важећу е-адресу и лозинку</string>
     <string name="import_backup_title">Увези резервну копију</string>
     <string name="import_backup_ask">Резервна копија пронађена у „%1$s“.\n\nЖелите ли да увезете и користите све њене податке и поставке?</string>
-    <string name="import_backup_no_backup_found">Нема резервних копија.\n\nКопирајте резервну копију у „%1$s“ и покушајте поново. Ако не желите, тапните „Почни ћаскање“ да бисте почели уобичајени процес поставке.</string>
+    <string name="import_backup_no_backup_found">Нема резервних копија.\n\nКопирајте резервну копију у „%1$s“ и покушајте поново.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Не могу да се пријавим као „%1$s“. Проверите да ли су е-адреса и лозинка тачни.</string>
     <!-- TLS certificate checks -->
@@ -613,8 +580,6 @@
     <string name="pref_read_receipts">Примај и шаљи поруке читања</string>
     <string name="pref_read_receipts_explain">Уколико су извештаји читања онемогућени, нећете видети када неко прочита ваше поруке.</string>
     <string name="pref_manage_keys">Управљај кључевима</string>
-    <string name="pref_use_system_emoji">Користи системски емоџи</string>
-    <string name="pref_use_system_emoji_explain">Искључи уграђене Delta Chat-ове емоџије</string>
     <string name="pref_chats">Ћаскања</string>
     <string name="pref_in_chat_sounds">Звуци ћаскања</string>
     <string name="pref_view_log">Погледај дневник</string>
@@ -627,18 +592,13 @@
     <string name="pref_backup_export_explain">Резервна копија вам помаже да подесите нову инсталацију на овом или другом уређају.\n\nРезервна копија ће садржати све поруке, контакте и ћаскања и ваше комплетно подешавање аутоматског шифровања. Чувајте резервну копију на безбедном месту или је избришите што је пре могуће.</string>
     <string name="pref_backup_export_start_button">Покрени складиштење резервне копије</string>
     <string name="pref_backup_written_to_x">Записивање резервне копије је успешно до „%1$s“.</string>
-    <string name="pref_managekeys_menu_title">Управљај кључевима</string>
     <string name="pref_managekeys_export_secret_keys">Извези тајне кључеве</string>
     <string name="pref_managekeys_export_explain">Извези тајне кључеве на „%1$s“?</string>
-    <string name="pref_managekeys_import_secret_keys">Увези тајне кључеве</string>
-    <string name="pref_managekeys_import_explain">Да увезем тајне кључеве из „%1$s“?\n\n• Постојећи тајни кључеви неће бити обрисани\n\n• Последњи увезени кључ ће бити коришћен као нови подразумевани кључ ако у имену фајла не буде имао реч „legacy“.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Записивање тајних кључева је успешно до „%1$s“.</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Тајни кључеви су увезени из „%1$s“.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Позадина</string>
     <string name="pref_background_btn_default">Користи дату слику</string>
     <string name="pref_background_btn_gallery">Изабери из галерије</string>
-    <string name="pref_imap_folder_handling">ИМАП руковање директоријумом</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ако промените ову опцију, морате проверити да су ваш сервер и ваши други клијенти конфигурисани у складу са тим.\n\nУ супротном апликација можда уопште неће функционисати.</string>
     <string name="pref_watch_sent_folder">Посматрај директоријум са пошиљкама</string>
     <string name="pref_send_copy_to_self">Пошаљи копију поруке себи</string>
@@ -701,12 +661,7 @@
     <string name="autodel_confirm">Разумем и желим да избришем све ове поруке</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Одмах</string>
-    <string name="after_30_seconds">За 30 секунди</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">За 1 минут</string>
     <string name="after_5_minutes">За 5 минута</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">За 30 минута</string>
     <string name="autodel_after_1_hour">За 1 сат</string>
     <string name="autodel_after_1_day">За 1 дан</string>
     <string name="autodel_after_1_week">За 1 недељу</string>
@@ -720,6 +675,8 @@
     <string name="autocrypt_send_asm_explain_after">Ваше подешавање вам је послато. Пређите на други уређај и отворите поруку за подешавање. На другом уређају од се вас очекује да унесете код за подешавање. Унесите следеће цифре:</string>
     <string name="autocrypt_prefer_e2ee">Преферирај с-краја-на-крај шифровање</string>
 
+    <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Непознати пошиљалац за ово ћаскање. Погледајте „информације“ за више детаља.</string>
     <string name="systemmsg_subject_for_new_contact">Поруке од %1$s</string>
     <string name="systemmsg_failed_sending_to">Слање поруке %1$s је било неуспешно.</string>
@@ -923,7 +880,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Статус испоруке: Грешка</string>
-    <string name="a11y_encryption_padlock">Катанац за шифровање</string>
     <string name="a11y_delivery_status_sending">Статус испоруке: Шаљем</string>
     <string name="a11y_delivery_status_draft">Статус испоруке: Нацрт</string>
     <string name="a11y_delivery_status_delivered">Статус испоруке: Примљено</string>
@@ -950,8 +906,6 @@
     <string name="disabled_in_dc">Онемогућено у Delta Chat</string>
     <string name="disabled_in_system_settings">Онемогућено у поставкама оперативног система</string>
     <string name="bg_app_refresh_disabled">„Освежавање апликације у позадини“ је онемогућено у поставкама оперативног система</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Одложено</string>
     <string name="notifications_avg_minutes">У просеку сваких %1$dминута</string>
     <string name="notifications_avg_hours">У просеку сваких %1$dсати</string>
     <string name="last_check_at">Проверено у %1$s</string>

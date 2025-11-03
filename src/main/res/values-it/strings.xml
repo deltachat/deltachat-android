@@ -405,35 +405,6 @@
     <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Chat Video</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Invito %1$s a una chat video?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Questo richiede un\'app compatibile o un browser compatibile da entrambe le parti.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s ha invitato a una chat video.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Hai invitato un invito a una chat video.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Tocca per Partecipare</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Tocca per Aprire</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Istanza Chat Video</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">La Tua Istanza Chat Video</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Esempio: https://your-server.org/$ROOM</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Se abilitata, è possibile avviare una chat video da ogni chat. Richiedono un\'applicazione compatibile o un browser compatibile da entrambe le parti.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Utilizza \"%1$s\" per invitare altri alla chat video?\n\nUna volta impostato, è possibile avviare una chat video da ogni chat. Ciò sostituirà l\'eventuale impostazione precedente per le chat video.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Invito alla chat video</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Sei invitato a una chat video, fai clic %1$s per partecipare.</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Sei sicuro di voler abbandonare?</string>
@@ -474,7 +445,6 @@
     <string name="contacts_title">Contatti</string>
     <string name="contacts_enter_name_or_email">Inserisci nome o indirizzo e-mail</string>
     <string name="contacts_type_email_above">Inserisci sopra l\'indirizzo e-mail</string>
-    <string name="contacts_empty_hint">Nessun contatto.</string>
 
 
     <!-- chatlist and chat view -->
@@ -522,9 +492,6 @@
     <string name="saved">Salvato</string>
     <string name="save_as">Salva Come</string>
     <string name="retry_send">Riprova a inviare il messaggio</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Devi essere in questo gruppo per postare un messaggio. Per unirti, chiedi a un altro membro.</string>
-    <string name="messaging_disabled_mailing_list">L\'invio dei messaggi negli elenchi di distribuzione non è ancora supportato</string>
     <string name="cannot_display_unsuported_file_type">Impossibile visualizzare questo tipo di file: %s</string>
     <string name="attachment_failed_to_load">Impossibile caricare l\'allegato</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -719,7 +686,6 @@
     <string name="proxy_use_proxy_confirm">Vuoi usare il proxy \"%1$s\"?</string>
     <string name="proxy_share_explain">I tuoi amici possono aggiungere questo proxy scansionando il codice QR.</string>
     <string name="proxy_share_link">Condividi Collegamento</string>
-
     <string name="login_info_oauth2_title">Continuare con la configurazione semplificata?</string>
     <string name="login_info_oauth2_text">L\'indirizzo e-mail inserito supporta una configurazione semplificata (OAuth 2.0).\n\nNel passaggio successivo, per favore consenti a Delta Chat di inviare e ricevere messaggi.\n\nDelta Chat non raccoglie dati utente, tutto rimane sul tuo dispositivo.</string>
     <string name="login_certificate_checks">Controlli Certificato</string>
@@ -729,7 +695,7 @@
     <string name="login_error_required_fields">Per piacere inserisci un indirizzo e-mail e una password validi</string>
     <string name="import_backup_title">Ripristina da Backup</string>
     <string name="import_backup_ask">Backup trovato in \"%1$s\".\n\nVuoi importarlo e usare tutti i dati e le impostazioni salvate?</string>
-    <string name="import_backup_no_backup_found">Nessun backup trovato\n\nCopia il backup in \"%1$s\" e riprova ancora. Altimenti premi \"Inizia a messaggiare\" per procedere con le impostazioni normali.</string>
+    <string name="import_backup_no_backup_found">Nessun backup trovato\n\nCopia il backup in \"%1$s\" e riprova.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Impossibile accedere come \"%1$s\". Per favore verifica che l\'indirizzo e-mail e la password siano corretti.</string>
     <!-- TLS certificate checks -->
@@ -814,8 +780,6 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Crittografia</string>
     <string name="pref_manage_keys">Gestisci Chiavi</string>
-    <string name="pref_use_system_emoji">Usa Emoji di Sistema</string>
-    <string name="pref_use_system_emoji_explain">Disattiva il supporto delle emoji integrato in Delta Chat</string>
     <string name="pref_show_system_contacts">Leggi Rubrica di Sistema</string>
     <string name="pref_show_system_contacts_explain">Offri la possibilità di creare chat con i contatti della rubrica.</string>
     <string name="pref_chats">Chat</string>
@@ -828,24 +792,19 @@
     <string name="pref_backup">Backup</string>
     <string name="pref_backup_explain">Backup Chat su Memoria Esterna</string>
     <string name="pref_backup_export_explain">Un backup ti aiuta a impostare una nuova installazione su questo o un altro dispositivo.\n\nIl backup conterrà tutti i messaggi, i contatti, le chat e le impostazioni end-to-end Autocrypt. Tieni il file di backup in un luogo sicuro oppure eliminarlo il prima possibile.</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <!-- deprecated -->
     <string name="pref_backup_export_x">Esporta %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Esporta tutti i %1$d profili</string>
     <string name="pref_backup_export_start_button">Avvia Backup</string>
     <string name="pref_backup_written_to_x">Backup scritto con successo in %1$s</string>
-    <string name="pref_managekeys_menu_title">Gestisci Chiavi</string>
     <string name="pref_managekeys_export_secret_keys">Esporta Chiavi Segrete</string>
     <string name="pref_managekeys_export_explain">Esportare chiavi segrete in \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Importa Chiavi Segrete</string>
-    <string name="pref_managekeys_import_explain">Importare le chiavi segrete da \"%1$s\"?\n\n• Le chiavi segrete esistenti non verranno eliminate\n\n• L\'ultima chiave importata verrà utilizzata come nuova chiave predefinita, a meno che non contenga la parola \"legacy\" nel nome file.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Chiavi segrete salvate con successo in \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Chiavi segrete importate da \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Sfondo</string>
     <string name="pref_background_btn_default">Usa Immagine Predefinita</string>
     <string name="pref_background_btn_gallery">Seleziona Dalla Galleria</string>
-    <string name="pref_imap_folder_handling">Gestione Cartella IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se modifichi questa opzione, assicurati che il tuo server e gli altri client siano configurati di conseguenza.\n\nAltrimenti le cose potrebbero non funzionare affatto.</string>
     <string name="pref_watch_sent_folder">Controlla Cartella Inviata</string>
     <string name="pref_send_copy_to_self">Invia Copia a Te Stesso</string>
@@ -925,12 +884,7 @@
     <string name="autodel_confirm">Ho capito, elimina tutti questi messaggi</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Subito dopo Scaricato</string>
-    <string name="after_30_seconds">Dopo 30 secondi</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">Dopo 1 minuto</string>
     <string name="after_5_minutes">Dopo 5 minuti</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">Dopo 30 minuti</string>
     <string name="autodel_after_1_hour">Dopo 1 ora</string>
     <string name="autodel_after_1_day">Dopo 1 giorno</string>
     <string name="autodel_after_1_week">Dopo 1 settimana</string>
@@ -945,7 +899,7 @@
     <string name="autocrypt_prefer_e2ee">Preferisci Cifratura End-To-End</string>
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">Questo messaggio non può essere decrittografato.\n\n• Potrebbe essere già utile rispondere semplicemente a questo messaggio e chiedere al mittente d\'inviare nuovamente il messaggio.\n\n• Se hai appena reinstallato Delta Chat, è meglio se riconfiguri ora Delta Chat e scegli \"Aggiungi come secondo dispositivo\" o importa un backup.</string>
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Mittente sconosciuto per questa chat. Vedi \'info\' per maggiori dettagli.</string>
     <string name="systemmsg_subject_for_new_contact">Messaggio da %1$s</string>
     <string name="systemmsg_failed_sending_to">Impossibile inviare messaggio a %1$s.</string>
@@ -966,8 +920,11 @@
     <string name="remove_member_by_you">Hai rimosso il membro %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Membro %1$s rimosso da %2$s.</string>
-    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
-    <string name="group_left_by_you">Hai abbandonato.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="group_left_by_you">Hai lasciato il gruppo.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="channel_left_by_you">Hai abbandonato il canale.</string>
+    <string name="you_joined_the_channel">Ti sei unito al canale.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Gruppo lasciato da %1$s.</string>
     <string name="group_image_deleted_by_you">Hai eliminato l\'immagine del gruppo.</string>
@@ -1057,6 +1014,7 @@
     <string name="qrshow_join_group_title">Codice QR Invito</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Scansionalo per entrare nel gruppo \"%1$s\"</string>
+    <string name="qrshow_join_channel_hint">Scansiona per unirti al canale \"%1$s\"</string>
     <string name="qrshow_join_contact_title">Codice QR Invito</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Scansionalo per chattare con %1$s</string>
@@ -1183,7 +1141,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Stato consegna: Errore</string>
-    <string name="a11y_encryption_padlock">Lucchetto di cifratura</string>
     <string name="a11y_delivery_status_sending">Stato consegna: In uscita</string>
     <string name="a11y_delivery_status_draft">Stato consegna: Bozza</string>
     <string name="a11y_delivery_status_delivered">Stato consegna: Consegnato</string>
@@ -1210,8 +1167,6 @@
     <string name="disabled_in_dc">Disabilitato in Delta Chat</string>
     <string name="disabled_in_system_settings">Disabilitato nelle impostazioni di sistema</string>
     <string name="bg_app_refresh_disabled">\"Aggiornamento App Secondo Piano\" disabilitato nelle impostazioni di sistema</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Ritardato</string>
     <string name="notifications_avg_minutes">In media ogni %1$d minuti</string>
     <string name="notifications_avg_hours">In media ogni %1$d ore</string>
     <string name="last_check_at">Controllato a %1$s</string>

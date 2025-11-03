@@ -121,9 +121,6 @@
     <!-- contact list -->
     <string name="contacts_title">جهات الإتصا</string>
     <string name="contacts_enter_name_or_email">ادخل الإسم أو البريد الإلكتروني</string>
-    <string name="contacts_empty_hint">لا توجد جهات اتصال.</string>
-
-
     <string name="chat_camera_unavailable">الكاميرا غير متاحة.</string>
     <string name="chat_share_with_title">شارك مع</string>
     <string name="chat_input_placeholder">رسالة</string>
@@ -187,8 +184,6 @@
     <string name="pref_appearance">المظهر</string>
     <string name="pref_theme">السمة</string>
     <string name="pref_language">اللغة</string>
-    <string name="pref_use_system_emoji">استخدام الرموز التعبيرية بالنظام</string>
-    <string name="pref_use_system_emoji_explain"> Delta Chat تعطيل الرموز التعبيرية المدمجة في </string>
     <string name="pref_chats">المحادثات</string>
     <string name="pref_in_chat_sounds">أصوات خلال الدردش</string>
     <string name="pref_other">أخرى</string>

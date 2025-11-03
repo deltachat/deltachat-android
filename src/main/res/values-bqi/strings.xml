@@ -320,10 +320,6 @@
 
     <string name="file_saved_to">فایل من «%1$s» زفت وابی.</string>
 
-    <!-- deprecated -->
-    <string name="videochat">گوفت وو لوفت ویدیویی</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">موکش و گوفت وو لوفت ویدیویی</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">êxuy %d payom pāk bu?</item>
@@ -337,9 +333,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">هومدنگووݩ</string>
-    <string name="contacts_empty_hint">بؽ هومدنگ.</string>
-
-
     <string name="chat_please_enter_message">ی پیوم بزݩ.</string>
     <plurals name="chat_n_new_messages">
         <item quantity="one">%d پیوم نۊ</item>
@@ -424,12 +417,7 @@
     <string name="autodel_server_title">پاک کردن پیوما ز سرور</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">ی کرت دیندا دانلود</string>
-    <string name="after_30_seconds">دیندا 30 سانیه</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">دیندا 1 دؽقه</string>
     <string name="after_5_minutes">دیندا 5 دؽقه</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">دیندا 30 دؽقه</string>
     <string name="autodel_after_1_hour">دیندا 1 ساعت</string>
     <string name="autodel_after_1_day">دیندا 1 رۊ</string>
     <string name="autodel_after_1_week">دیندا 1 هفته</string>

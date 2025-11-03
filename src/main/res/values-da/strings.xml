@@ -240,31 +240,6 @@
     </plurals>
     <string name="file_saved_to">Fil gemt til \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Videochat</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Invitér %1$s til en videochat?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Dette kræver en kompatibel app eller en kompatibel webbrowser hos både afsender og modtager.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s inviterede dig til en videochat.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Du inviterede til en videochat.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Tryk for at forbinde</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Tryk for at åbne</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Videochat instans</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Din videochat instans</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Brug \"%1$s\" til at invitere andre til videochats?\n\nNår det er sat kan du starte en videochat fra hver en-til-en chat. Dette vil erstatte den tidligere indstilling for videochats hvis den findes.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Videochat-invitation</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Du er inviteret til en videochat, klik %1$s for at tilslutte dig.</string>
-
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Slet %d besked?</item>
@@ -287,7 +262,6 @@
     <string name="contacts_title">Kontakter</string>
     <string name="contacts_enter_name_or_email">Indtast navn eller e-mailadresse</string>
     <string name="contacts_type_email_above">Indtast e-mailadresse ovenover</string>
-    <string name="contacts_empty_hint">Ingen kontakter</string>
 
 
     <!-- chatlist and chat view -->
@@ -324,8 +298,6 @@
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Gemt</string>
     <string name="retry_send">Forsøg igen at sende besked</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Du kan ikke skrive, fordi du ikke er medlem af denne gruppe. For at tilslutte dig, spørg et andet medlem.</string>
     <string name="cannot_display_unsuported_file_type">Kan ikke vise denne filtype: 1%s</string>
     <string name="attachment_failed_to_load">Visning af vedhæftede fil mislykkedes</string>
     <!-- map -->
@@ -405,7 +377,7 @@
     <string name="login_error_required_fields">Indtast gyldig e-mailadresse og adgangskode</string>
     <string name="import_backup_title">Importer sikkerhedskopi</string>
     <string name="import_backup_ask">Sikkerhedskopi fundet hos \"%1$s\".\n\nVil du Importere og bruge al data og opsætning fra den?</string>
-    <string name="import_backup_no_backup_found">Ingen sikkerhedskopi fundet.\n\nKopier sikkerhedskopi til \"%1$s\" og prøv igen. Alternativt, klik \"Start samtale\" for at følge normal opsætning proces.</string>
+    <string name="import_backup_no_backup_found">Ingen sikkerhedskopi fundet.\n\nKopier sikkerhedskopi til \"%1$s\" og prøv igen.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Kan ikke logge ind som  \"%1$s\". Kontroller om e-mailadresse og adgangskode er korrekt.</string>
     <!-- TLS certificate checks -->
@@ -474,8 +446,6 @@
     <string name="pref_read_receipts">Kvittering for læsning</string>
     <string name="pref_read_receipts_explain">Hvis læst kvittering er deaktiveret vil læst kvittering fra andre ikke blive vist.</string>
     <string name="pref_manage_keys">Håndtér nøgler</string>
-    <string name="pref_use_system_emoji">Brug system emoji</string>
-    <string name="pref_use_system_emoji_explain">Deaktiver Delta Chat\'s indbygget emoji understøttelse</string>
     <string name="pref_chats">Samtaler</string>
     <string name="pref_in_chat_sounds">In-chat-lyde</string>
     <string name="pref_view_log">Visningslog</string>
@@ -488,18 +458,13 @@
     <string name="pref_backup_export_explain">En sikkerhedskopi hjælper til at opsætte en ny installation på denne eller en anden enhed.\n\nSikkerhedskopien indeholder alle beskeder, kontakter og samtaler og end-to-end krypteringsopsætning. Gem sikkerhedskopien et sikkert sted eller slet den så hurtigt som muligt.</string>
     <string name="pref_backup_export_start_button">Start sikkerhedskopiering</string>
     <string name="pref_backup_written_to_x">Sikkerhedskopi skrevet til %1$s</string>
-    <string name="pref_managekeys_menu_title">Håndter nøgler</string>
     <string name="pref_managekeys_export_secret_keys">Eksporter hemmelige nøgler</string>
     <string name="pref_managekeys_export_explain">Eksporter hemmelige nøgler til \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Importer hemmelige nøgler</string>
-    <string name="pref_managekeys_import_explain">Importer hemmelige nøgler fra \"%1$s\"?\n\n• Eksisterende hemmelige nøgler bliver ikke slettet\n\n• Den seneste importerede nøgle bliver brugt som ny standardnøgle medmindre den har ordet \"legacy\" i dens filnavn</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Hemmelige nøgler skrevet til \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Hemmelige nøgler importeret fra \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Baggrund</string>
     <string name="pref_background_btn_default">Brug standardbillede</string>
     <string name="pref_background_btn_gallery">Vælg fra galleri</string>
-    <string name="pref_imap_folder_handling">IMAP-mappe håndtering</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ved deaktivering af denne indstiiling vær sikker på at server og andre klienter er indstillet tilsvarende.\n\nEllers fungerer det måske slet ikke.</string>
     <string name="pref_watch_sent_folder">Overvåg sendt mappe</string>
     <string name="pref_send_copy_to_self">Send kopi til mig selv</string>
@@ -545,12 +510,7 @@
     <string name="autodel_confirm">Jeg forstår, slet alle disse beskeder</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Med det samme</string>
-    <string name="after_30_seconds">Efter 30 sekunder</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">Efter 1 minut</string>
     <string name="after_5_minutes">Efter 5 minutter</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">Efter 30 minutter</string>
     <string name="autodel_after_1_hour">Efter 1 time</string>
     <string name="autodel_after_1_day">Efter 1 dag</string>
     <string name="autodel_after_1_week">Efter 1 uge</string>
@@ -564,6 +524,8 @@
     <string name="autocrypt_send_asm_explain_after">Opsætning er sendt til dig selv. Skift til den anden enhed og åben opsætning beskeden. Der skulle blive spurgt til opsætning kode. Indtast følgende cifre i prompt.\n\nNår færdig vil den anden enhed være klar til at bruge Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Foretræk end-to-end kryptering</string>
 
+    <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Ukent afsender af denne chat. Se \'info\' for flere detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Besked fra %1$s</string>
     <string name="systemmsg_failed_sending_to">Mislykket forsøg på afsendelse af besked til %1$s.</string>
@@ -711,7 +673,6 @@
     <string name="menu.view.developer.open.current.log.file">Åbn nuværende log fil</string>
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Leveringsstatus: Fejl</string>
-    <string name="a11y_encryption_padlock">Krypteringslås</string>
     <string name="a11y_delivery_status_sending">Leveringsstatus: Sender</string>
     <string name="a11y_delivery_status_draft">Leveringsstatus: Kladde</string>
     <string name="a11y_delivery_status_delivered">Leveringsstatus: Leveret</string>

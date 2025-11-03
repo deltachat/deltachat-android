@@ -301,35 +301,6 @@
     </plurals>
     <string name="file_saved_to">Tiedosto tallennettu \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Videokeskustelu</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Kutsu %1$s videokeskusteluun?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Tämä vaatii molemmilta yhteensopivan sovelluksen tai selaimen.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s kutsui sinut videokeskusteluun.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Lähetit kutsun videokeskusteluun.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Napauta liittyäksesi</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Napauta avataksesi</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Videokeskustelun tarjoaja</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Videokeskustelusi tarjoaja</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Esimerkkejä: https://meet.jit.si/$ROOM tai basicwebrtc:https://sinun-palvelimesi</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Jos videokeskustelu on kytketty päälle, voit aloittaa videokeskustelun mistä tahansa keskustelusta. Videokeskustelu vaatii molemmilta yhteensopivan sovelluksen tai selaimen.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Käytä \"%1$s\" videokeskustelupyyntöihin?\n\nTämän jälkeen voit aloittaa videokeskustelun mistä tahansa keskustelusta. Tämä korvaa edellisen videokeskusteluasetuksen, jos sellainen on.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Videokeskustelukutsu</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Sinut on kutsuttu videokeskusteluun, klikkaa %1$s liittyäksesi.</string>
-
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Poista %d viesti?</item>
@@ -352,7 +323,6 @@
     <string name="contacts_title">Yhteystiedot</string>
     <string name="contacts_enter_name_or_email">Anna nimi tai sähköpostiosoite</string>
     <string name="contacts_type_email_above">Kirjoita sähköpostiosoite ylle</string>
-    <string name="contacts_empty_hint">Ei yhteystietoja</string>
 
 
     <!-- chatlist and chat view -->
@@ -394,9 +364,6 @@
     <string name="saved">Tallennettu</string>
     <string name="save_as">Tallenna nimellä</string>
     <string name="retry_send">Yritä uudelleen lähettääksesi viestin</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Et voi kirjoittaa, koska et ole ryhmän jäsen. Liittyäksesi pyydä, että joku jäsen liittää sinut ryhmään.</string>
-    <string name="messaging_disabled_mailing_list">Sähköpostilistoille vastaamista ei vielä tueta</string>
     <string name="cannot_display_unsuported_file_type">Tiedostotyypin näyttäminen epäonnistui: %s</string>
     <string name="attachment_failed_to_load">Liitteiden lataaminen epäonnistui</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -576,7 +543,7 @@
     <string name="login_error_required_fields">Anna kelvollinen sähköpostiosoite ja salasana</string>
     <string name="import_backup_title">Palauta varmuuskopiosta</string>
     <string name="import_backup_ask">Varmuuskopio löydetty sijainnista \"%1$s\".\n\nHaluatko tuoda sen ja käyttää sen asetuksia?</string>
-    <string name="import_backup_no_backup_found">Varmuuskopioita ei löytynyt.\n\nKopioi varmuuskopio kohteeseen \"%1$s\" ja yritä uudelleen. Voit myös vaihtoehtoisesti jatkaa tavanomaista käyttöönottoa valitsemalla \"Aloita viestittely\".</string>
+    <string name="import_backup_no_backup_found">Varmuuskopioita ei löytynyt.\n\nKopioi varmuuskopio kohteeseen \"%1$s\" ja yritä uudelleen.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Osoitteella \"%1$s\" kirjautuminen epäonnistui. Tarkistathan että sähköpostiosoite ja salasana ovat oikeinkirjoitettuja.</string>
     <!-- TLS certificate checks -->
@@ -649,8 +616,6 @@
     <string name="pref_server">Palvelin</string>
     <string name="pref_encryption">Salaus</string>
     <string name="pref_manage_keys">Hallinnoi avaimia</string>
-    <string name="pref_use_system_emoji">Käytä järjestelmän emojeja</string>
-    <string name="pref_use_system_emoji_explain">Poista Delta Chatin sisäänrakennettu emoji -tuki käytöstä</string>
     <string name="pref_show_system_contacts">Lue laitteen osoitekirja</string>
     <string name="pref_show_system_contacts_explain">Tarjoa keskustelujen avaamista yhteystietojen perusteella. Jotkin palveluntarjoajat vaativat ensin päästä-päähän salauksen käyttöönottoa. </string>
     <string name="pref_chats">Keskustelut</string>
@@ -663,24 +628,19 @@
     <string name="pref_backup">Varmuuskopiointi</string>
     <string name="pref_backup_explain">Varmuuskopioi keskustelut ulkoiseen tallennustilaan</string>
     <string name="pref_backup_export_explain">Varmuuskopio auttaa siirtämään asennuksen tälle tai toiselle laitteelle.\n\nVarmuuskopio sisältää kaikki viestit, yhteystiedot ja keskustelut sekä päästä-päähän salauksen Autocrypt -tiedot. Pidä varmuuskopiotiedosto turvallisessa paikassa tai poista se heti kun mahdollista.</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <!-- deprecated -->
     <string name="pref_backup_export_x">Vie %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Vie kaikki %1$d profiilia</string>
     <string name="pref_backup_export_start_button">Aloita varmuuskopiointi</string>
     <string name="pref_backup_written_to_x">Varmuuskopio kirjoitettu onnistuneesti kohteeseen \"%1$s\".</string>
-    <string name="pref_managekeys_menu_title">Hallinnoi avaimia</string>
     <string name="pref_managekeys_export_secret_keys">Vie salaiset avaimet</string>
     <string name="pref_managekeys_export_explain">Vie salaiset avaimet kohteeseen \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Tuo salaiset avaimet</string>
-    <string name="pref_managekeys_import_explain">Tuo salaiset avaimet kohteesta \"%1$s\"?\n\n• Olemassa olevia salaisia avaimia ei poisteta\n\n• Viimeisimpänä tuotua avainta käytetään oletusavaimena, paitsi jos sen tiedostonimessä on sana \"legacy\".</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Salaiset avaimet kirjoitettu onnistuneesti kohteeseen \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Salaiset avaimet tuotu kohteesta \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Taustakuva</string>
     <string name="pref_background_btn_default">Käytä oletuskuvaa</string>
     <string name="pref_background_btn_gallery">Valitse galleriasta</string>
-    <string name="pref_imap_folder_handling">IMAP -kansioiden käsittely</string>
     <string name="pref_imap_folder_warn_disable_defaults">Jos muutat tätä asetusta, varmista että palvelimesi ja muut päätelaitteesi ovat määritetty vastaavasti.\n\nMuutoin ne eivät ehkä toimi lainkaan.</string>
     <string name="pref_watch_sent_folder">Tarkkaile Lähetetyt -kansiota</string>
     <string name="pref_send_copy_to_self">Lähetä kopio itselle</string>
@@ -757,12 +717,7 @@
     <string name="autodel_confirm">Ymmärrän, poista kaikki nämä viestit</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Heti</string>
-    <string name="after_30_seconds">30 sekunnin päästä</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">1 minuutin päästä</string>
     <string name="after_5_minutes">5 minuutin päästä</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">30 minuutin päästä</string>
     <string name="autodel_after_1_hour">1 tunnin päästä</string>
     <string name="autodel_after_1_day">1 päivän päästä</string>
     <string name="autodel_after_1_week">1 viikon päästä</string>
@@ -777,7 +732,7 @@
     <string name="autocrypt_prefer_e2ee">Suosi päästä-päähän -salausta</string>
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">Viestin salausta ei voitu purkaa.\n\n• Voi olla että vastaamalla tähän ja pyytämällä lähettäjää lähettämään viesti uudelleen ongelma ratkeaa.\n\n• Jos juuri uudelleenasensit Delta Chatin, lienee parasta että otat sovelluksen uudelleen käyttöön ja valitset \"Lisää toisena laitteena\" tai palauta varmuuskopiosta.</string>
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Tuntematon lähettäjä. Katso \"lisätietoja\".</string>
     <string name="systemmsg_subject_for_new_contact">Viesti lähettäjältä %1$s</string>
     <string name="systemmsg_failed_sending_to">Viestin lähettäminen kohteeseen %1$s epäonnistui.</string>
@@ -1004,7 +959,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Toimituksen tila: virhe</string>
-    <string name="a11y_encryption_padlock">Salauksen lukko</string>
     <string name="a11y_delivery_status_sending">Toimituksen tila: lähetetään</string>
     <string name="a11y_delivery_status_draft">Toimituksen tila: luonnos</string>
     <string name="a11y_delivery_status_delivered">Toimituksen tila: toimitettu</string>
@@ -1031,8 +985,6 @@
     <string name="disabled_in_dc">Kytketty pois Delta Chatissa</string>
     <string name="disabled_in_system_settings">Kytketty pois järjestelmäasetuksissa</string>
     <string name="bg_app_refresh_disabled">Taustasovelluksen päivitys kytketty pois järjestelmäasetuksissa</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Viivästynyt</string>
     <string name="notifications_avg_minutes">Keskimäärin%1$d minuutin välein</string>
     <string name="notifications_avg_hours">Keskimäärin %1$d tunnin välein</string>
     <string name="last_check_at">Tarkistettu %1$s</string>
