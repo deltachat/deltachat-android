@@ -124,7 +124,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     isDcLogin = false;
     providerHost = DEFAULT_CHATMAIL_HOST;
-    providerQrData = DCACCOUNT + ":https://" + providerHost + "/new";
+    providerQrData = DCACCOUNT + ":" + providerHost;
     attachmentManager = new AttachmentManager(this, () -> {});
     avatarChanged = false;
     registerForEvents();

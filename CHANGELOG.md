@@ -11,6 +11,7 @@
 * remove deprecated "companion app" code
 * remove deprecated "Watch Sent Folder" preference
 * fix sorting of old media in gallery
+* don't show email address in shared vcard
 * update to core 2.23.0
 
 ## v2.22.0
