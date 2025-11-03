@@ -37,18 +37,6 @@
          long word and the chat is muted, then the long word is not shown at all
          (instead of using `…`). That's why we use android:singleLine="true" -->
 
-
-    <TextView android:id="@+id/addr"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textDirection="ltr"
-              android:singleLine="true"
-              android:ellipsize="marquee"
-              android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textSize="14sp"
-              android:fontFamily="sans-serif-light"
-              tools:text="user@example.com" />
-
   </LinearLayout>
 
 </org.thoughtcrime.securesms.contacts.ContactSelectionListItem>

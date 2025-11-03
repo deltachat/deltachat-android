@@ -210,24 +210,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       });
     }
 
-    Preference selfReporting = this.findPreference("pref_self_reporting");
-    if (selfReporting != null) {
-      selfReporting.setOnPreferenceClickListener(((preference) -> {
-        try {
-          int chatId = getRpc(requireActivity()).draftSelfReport(dcContext.getAccountId());
-
-          Intent intent = new Intent(requireActivity(), ConversationActivity.class);
-          intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-          intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-          requireActivity().startActivity(intent);
-        } catch (RpcException e) {
-          Log.e(TAG, "Error calling rpc.draftSelfReport()", e);
-        }
-
-        return true;
-      }));
-    }
-
     Preference proxySettings = this.findPreference("proxy_settings_button");
     if (proxySettings != null) {
       proxySettings.setOnPreferenceClickListener((preference) -> {
