@@ -11,9 +11,6 @@
         android:summary="@string/enable_realtime_explain"
         android:title="@string/enable_realtime"/>
 
-    <Preference android:key="pref_self_reporting"
-        android:title="@string/send_stats_to_devs"/>
-
     <PreferenceCategory android:title="@string/pref_experimental_features">
 
         <Preference android:key="pref_webxdc_store_url"

@@ -57,10 +57,6 @@ public class Rpc {
     return transport.callForResult(new TypeReference<String>(){}, "get_migration_error", mapper.valueToTree(accountId));
   }
 
-  public Integer draftSelfReport(Integer accountId) throws RpcException {
-    return transport.callForResult(new TypeReference<Integer>(){}, "draft_self_report", mapper.valueToTree(accountId));
-  }
-
   /* Returns configuration value for the given key. */
   public String getConfig(Integer accountId, String key) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "get_config", mapper.valueToTree(accountId), mapper.valueToTree(key));
