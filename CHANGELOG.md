@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Make it possible to invite members into a channel via a QR code,
+  and make channels more secure
 * metadata protection: protect Date header
 * metadata protection: protect Autocrypt header
 * better multi-device: synchronize group creation across devices

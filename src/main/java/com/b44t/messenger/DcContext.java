@@ -53,6 +53,7 @@ public class DcContext {
 
     public final static int DC_QR_ASK_VERIFYCONTACT = 200;
     public final static int DC_QR_ASK_VERIFYGROUP   = 202;
+    public final static int DC_QR_ASK_JOIN_BROADCAST= 204;
     public final static int DC_QR_FPR_OK            = 210;
     public final static int DC_QR_FPR_MISMATCH      = 220;
     public final static int DC_QR_FPR_WITHOUT_ADDR  = 230;
