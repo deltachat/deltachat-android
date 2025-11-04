@@ -17,9 +17,6 @@
 
 package org.thoughtcrime.securesms;
 
-import static org.thoughtcrime.securesms.util.RelayUtil.setSharedText;
-import static org.thoughtcrime.securesms.util.RelayUtil.setSharedTitle;
-
 import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
@@ -58,7 +55,6 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
 
   public static final String EXTRA_ACC_ID = "acc_id";
   public static final String EXTRA_CHAT_ID = "chat_id";
-  public static final String EXTRA_TITLE = "extra_title";
 
   private ArrayList<Uri>               resolvedExtras;
   private DcContext                    dcContext;
@@ -278,6 +274,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
     } else {
       composeIntent = getBaseShareIntent(ConversationListRelayingActivity.class);
       RelayUtil.setSharedUris(composeIntent, resolvedExtras);
+      RelayUtil.setIsFromWebxdc(composeIntent, RelayUtil.isFromWebxdc(this));
       ConversationListRelayingActivity.start(this, composeIntent);
     }
     finish();
@@ -286,9 +283,9 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
   private Intent getBaseShareIntent(final @NonNull Class<?> target) {
     final Intent intent = new Intent(this, target);
 
-    String title = getIntent().getStringExtra(EXTRA_TITLE);
+    String title = RelayUtil.getSharedTitle(this);
     if (title != null) {
-        setSharedTitle(intent, title);
+        RelayUtil.setSharedTitle(intent, title);
     }
 
     String text = getIntent().getStringExtra(Intent.EXTRA_TEXT);
@@ -300,7 +297,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
     }
 
     if (text != null) {
-      setSharedText(intent, text.toString());
+      RelayUtil.setSharedText(intent, text.toString());
     }
     if (resolvedExtras.size() > 0) {
       Uri data = resolvedExtras.get(0);
