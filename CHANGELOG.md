@@ -9,6 +9,7 @@
 * better multi-device: synchronize group creation across devices
 * data saving: do not send Autocrypt header in read receipts
 * improve onboarding speed
+* allow to save to storage files shared from inside in-chat apps
 * reduce app size
 * don't show badge counter in app icon for the permanent background notification
 * fix sorting of old media in gallery

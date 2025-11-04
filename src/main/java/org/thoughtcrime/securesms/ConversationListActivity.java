@@ -18,10 +18,8 @@ package org.thoughtcrime.securesms;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_URL;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.getDirectSharingChatId;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedTitle;
@@ -30,9 +28,11 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -65,6 +65,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DirectShareUtil;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
 import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
@@ -73,9 +74,15 @@ import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.RelayUtil;
+import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
+import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
@@ -341,7 +348,12 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();
 
-    if (!isRelayingMessageContent(this)) {
+    if (isRelayingMessageContent(this)) {
+      inflater.inflate(R.menu.forwarding_menu, menu);
+      menu.findItem(R.id.menu_export_attachment).setVisible(
+        RelayUtil.isFromWebxdc(this) && RelayUtil.getSharedUris(this).size() == 1
+      );
+    } else {
       inflater.inflate(R.menu.text_secure_normal, menu);
       menu.findItem(R.id.menu_global_map).setVisible(Prefs.isLocationStreamingEnabled(this));
       MenuItem proxyItem = menu.findItem(R.id.menu_proxy_settings);
@@ -426,9 +438,42 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     } else if (itemId == R.id.menu_all_media) {
       startActivity(new Intent(this, AllMediaActivity.class));
       return true;
+    } else if (itemId == R.id.menu_export_attachment) {
+      handleSaveAttachment();
+      return true;
     }
 
     return false;
+  }
+
+  private void handleSaveAttachment() {
+    SaveAttachmentTask.showWarningDialog(this, (dialogInterface, i) -> {
+      if (StorageUtil.canWriteToMediaStore(this)) {
+        performSave();
+        return;
+      }
+
+      Permissions.with(this)
+              .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+              .alwaysGrantOnSdk30()
+              .ifNecessary()
+              .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
+              .onAllGranted(this::performSave)
+              .execute();
+    });
+  }
+
+  private void performSave() {
+    ArrayList<Uri> uriList =  RelayUtil.getSharedUris(this);
+    Uri uri = uriList.get(0);
+    String mimeType = PersistentBlobProvider.getMimeType(this, uri);
+    String fileName = PersistentBlobProvider.getFileName(this, uri);
+    SaveAttachmentTask.Attachment[] attachments = new SaveAttachmentTask.Attachment[]{
+      new SaveAttachmentTask.Attachment(uri, mimeType, new Date().getTime(), fileName)
+    };
+    SaveAttachmentTask saveTask = new SaveAttachmentTask(this);
+    saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, attachments);
+    onBackPressed();
   }
 
   private void handleOpenpgp4fpr() {
