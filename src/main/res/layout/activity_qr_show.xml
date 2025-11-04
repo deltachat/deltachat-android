@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    android:name="org.thoughtcrime.securesms.qr.QrShowFragment"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="?attr/colorPrimary"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-	android:id="@+id/qrScannerFragment">
+    android:layout_height="match_parent">
 
+  <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            android:name="org.thoughtcrime.securesms.qr.QrShowFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+	        android:id="@+id/qrScannerFragment" />
 
-</fragment>
+</RelativeLayout>
