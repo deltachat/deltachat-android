@@ -90,7 +90,6 @@
             android:drawablePadding="5dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textDirection="ltr"
             android:textSize="12dp"
             tools:text="jules@example.org" />
 

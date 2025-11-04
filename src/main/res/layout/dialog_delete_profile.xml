@@ -60,7 +60,6 @@
             android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textDirection="ltr"
             android:singleLine="true"
             android:ellipsize="marquee"
 
