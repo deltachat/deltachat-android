@@ -46,7 +46,7 @@ public class QrShowActivity extends AppCompatActivity {
         ActionBar supportActionBar = getSupportActionBar();
         assert supportActionBar != null;
         supportActionBar.setDisplayHomeAsUpEnabled(true);
-      supportActionBar.setElevation(0); // edge-to-edge: avoid top shadow
+        supportActionBar.setElevation(0); // edge-to-edge: avoid top shadow
 
         if (chatId != 0) {
             // verified-group
