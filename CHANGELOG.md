@@ -13,6 +13,7 @@
 * reduce app size
 * don't show badge counter in app icon for the permanent background notification
 * fix sorting of old media in gallery
+* fix text direction in "x members" subtitle for RTL languages
 * remove deprecated "companion app" code
 * remove deprecated "Watch Sent Folder" preference
 * remove deprecated "send self-report" preference
