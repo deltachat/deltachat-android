@@ -182,6 +182,9 @@ public class ConversationFragment extends MessageSelectorFragment
         else if(dcChat.isDeviceTalk()) {
             noMessageTextView.setText(R.string.device_talk_explain);
         }
+        else if(!dcChat.isEncrypted()) {
+            noMessageTextView.setText(R.string.chat_unencrypted_explanation);
+        }
         else {
             String message = getString(R.string.chat_new_one_to_one_hint, dcChat.getName());
             noMessageTextView.setText(message);
