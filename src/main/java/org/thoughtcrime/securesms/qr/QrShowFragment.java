@@ -94,8 +94,12 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
         try {
             SVG svg = SVG.getFromString(fixSVG(dcContext.getSecurejoinQrSvg(chatId)));
             imageView.setSVG(svg);
-        } catch (SVGParseException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            Activity activity = getActivity();
+            if (activity != null) {
+              activity.finish();
+            }
         }
 
         view.findViewById(R.id.share_link_button).setOnClickListener((v) -> showInviteLinkDialog());
