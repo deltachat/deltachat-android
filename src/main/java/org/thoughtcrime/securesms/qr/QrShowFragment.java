@@ -96,6 +96,12 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             imageView.setSVG(svg);
         } catch (SVGParseException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Activity activity = getActivity();
+            if (activity != null) {
+              activity.finish();
+            }
         }
 
         view.findViewById(R.id.share_link_button).setOnClickListener((v) -> showInviteLinkDialog());
