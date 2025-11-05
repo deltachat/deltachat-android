@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:padding="16dp"
-            android:text="@string/login_no_servers_hint"
+            android:text="@string/login_advanced_hint"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/provider_layout" />
 
@@ -390,20 +390,6 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/cert_check" />
-
-        <TextView
-            android:id="@+id/sub_header"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="1dp"
-            android:paddingBottom="16dp"
-            android:text="@string/login_subheader"
-            android:textColor="@color/gray50"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_log_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

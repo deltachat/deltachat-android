@@ -124,7 +124,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setTitle(R.string.login_header);
+            actionBar.setTitle(R.string.manual_account_setup_option);
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
             actionBar.setElevation(0); // TODO: use custom toolbar instead
