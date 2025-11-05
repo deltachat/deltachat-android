@@ -20,7 +20,7 @@
 * remove deprecated "Watch Sent Folder" preference
 * remove deprecated "send self-report" preference
 * don't show email address in shared vcard
-* update to core 2.24.0
+* update to core 2.25.0
 
 ## v2.22.0
 2025-10
