@@ -152,7 +152,7 @@
             android:layout_height="40dp"
             android:padding="8dp"
             android:gravity="start|center_vertical"
-            android:text="@string/menu_advanced"
+            android:text="@string/menu_more_options"
             android:textColor="@color/delta_accent"
             android:textSize="16sp"
             app:layout_constraintHorizontal_chainStyle="packed"
