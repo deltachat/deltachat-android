@@ -639,7 +639,7 @@
     <string name="welcome_chat_over_email">Secure Decentralized Chat</string>
     <string name="scan_invitation_code">Scan Invitation Code</string>
     <string name="login_title">Log In</string>
-    <string name="login_advanced_hint">For advanced users:\n\n• Do not use an account you\'re using in another app.\n\n• Classic e-mail server allow unencrypted chats marked by an envelope icon.</string>
+    <string name="login_advanced_hint">For advanced users:\n\n• Do not use an account you\'re using in another app.\n\n• Classic e-mail server allow chats without end-to-end encryption marked by an envelope icon.</string>
     <!-- deprecated -->
     <string name="login_header">Log into your E-Mail Account</string>
     <!-- deprecated -->
@@ -967,7 +967,7 @@
     <string name="ephemeral_timer_weeks_by_you">You set disappearing messages timer to %1$s weeks.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Disappearing messages timer set to %1$s weeks by %2$s.</string>
-    <string name="chat_unencrypted_explanation">Messages in this chat use classic email and are not encrypted.</string>
+    <string name="chat_unencrypted_explanation">Messages in this chat use classic email and are not end-to-end encrypted.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Messages are end-to-end encrypted. Tap to learn more.</string>
     <string name="chat_protection_enabled_explanation">All messages in this chat are end-to-end encrypted.\n\nEnd-to-end encryption keeps messages private between you and your chat partners. Not even servers, providers or relays can read them.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s requires end-to-end encryption which is not setup for this chat yet. Tap to learn more.</string>
