@@ -639,7 +639,7 @@
     <string name="welcome_chat_over_email">Secure Decentralized Chat</string>
     <string name="scan_invitation_code">Scan Invitation Code</string>
     <string name="login_title">Log In</string>
-    <string name="login_advanced_hint">For advanced users:\n\n• Do not use an account you\'re using in another app.\n\n• Classic e-mail server allow chats without end-to-end encryption marked by an envelope icon.</string>
+    <string name="login_advanced_hint">For advanced users:\n\n• Do not use an account you\'re using in another app.\n\n• Classic e-mail server allow chats without end-to-end encryption marked by a mail icon.</string>
     <!-- deprecated -->
     <string name="login_header">Log into your E-Mail Account</string>
     <!-- deprecated -->
