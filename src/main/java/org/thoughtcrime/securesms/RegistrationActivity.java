@@ -122,20 +122,19 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             startActivity(new Intent(this, ProxySettingsActivity.class));
         });
 
-        boolean isChatmail = DcHelper.getContext(getApplicationContext()).isChatmail();
-
-        findViewById(R.id.no_servers_hint).setVisibility(isChatmail? View.GONE : View.VISIBLE);
+        boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle(
-              isChatmail? R.string.pref_password_and_account_settings : R.string.manual_account_setup_option
+              isConfigured? R.string.pref_password_and_account_settings : R.string.manual_account_setup_option
             );
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
             actionBar.setElevation(0); // TODO: use custom toolbar instead
         }
 
+        if (isConfigured) emailInput.setEnabled(false);
         emailInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -154,7 +153,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         advancedIcon.setRotation(45);
         viewLogText.setOnClickListener((view) -> showLog());
 
-        boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
         boolean expandAdvanced = false;
         String strVal;
         int intVal;

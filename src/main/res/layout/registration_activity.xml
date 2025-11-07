@@ -71,7 +71,7 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/email"
-            app:passwordToggleEnabled="true">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_text"
@@ -291,7 +291,7 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/smtp_login"
-            app:passwordToggleEnabled="true">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/smtp_password_text"
