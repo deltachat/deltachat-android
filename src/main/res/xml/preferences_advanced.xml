@@ -62,15 +62,6 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:key="pref_category_encryption"
-        android:title="@string/pref_encryption">
-
-        <Preference android:key="pref_send_autocrypt_setup_message"
-            android:title="@string/autocrypt_send_asm_title"/>
-
-    </PreferenceCategory>
-
     <PreferenceCategory android:title="@string/pref_server">
 
         <Preference android:key="password_account_settings_button"
