@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.25.0
+2025-11
 
 * Make it possible to invite members into a channel via a QR code,
   and make channels more secure

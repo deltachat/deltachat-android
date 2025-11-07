@@ -160,8 +160,8 @@
         <item quantity="other">%d members</item>
     </plurals>
     <plurals name="n_recipients">
-        <item quantity="one">%d recipient</item>
-        <item quantity="other">%d recipients</item>
+        <item quantity="one">%d subscriber</item>
+        <item quantity="other">%d subscribers</item>
     </plurals>
     <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
@@ -257,7 +257,8 @@
     <string name="channels">Channels</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">New Channel</string>
-    <string name="add_recipients">Add Recipients</string>
+    <!-- deprecated -->
+    <string name="add_recipients">Add Subscribers</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Channel Name</string>
     <string name="email">E-Mail</string>
@@ -394,7 +395,7 @@
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Are you sure you want to leave?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Delete %d chat on all your devices?</item>
