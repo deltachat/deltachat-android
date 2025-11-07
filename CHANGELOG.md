@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Tweak advanced section and wording of some advanced options
+
 ## v2.25.0
 2025-11
 
