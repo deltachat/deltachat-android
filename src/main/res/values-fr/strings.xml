@@ -543,7 +543,7 @@
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Connecté</string>
     <string name="sending">Envoi...</string>
-    <string name="last_msg_sent_successfully">Dernier message envoyé avec succés.</string>
+    <string name="last_msg_sent_successfully">Dernier message envoyé avec succès.</string>
     <string name="not_supported_by_provider">Non pris en charge par votre fournisseur de mail.</string>
     <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messages</string>
@@ -843,7 +843,7 @@
     <string name="group_image_deleted_by_other">Image du groupe supprimée par %1$s.</string>
     <string name="location_enabled_by_you">Vous avez activé l\'envoi de votre position.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="location_enabled_by_other">%1$sa activé l\'envoi de sa position.</string>
+    <string name="location_enabled_by_other">%1$s a activé l\'envoi de sa position.</string>
     <string name="ephemeral_timer_disabled_by_you">Vous avez désactivé la minuterie des messages éphémères.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Minuterie des messages éphémères désactivée par %1$s.</string>
