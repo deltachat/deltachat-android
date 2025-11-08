@@ -543,7 +543,7 @@
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Connecté</string>
     <string name="sending">Envoi...</string>
-    <string name="last_msg_sent_successfully">Dernier message envoyé avec succés.</string>
+    <string name="last_msg_sent_successfully">Dernier message envoyé avec succès.</string>
     <string name="not_supported_by_provider">Non pris en charge par votre fournisseur de mail.</string>
     <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messages</string>
