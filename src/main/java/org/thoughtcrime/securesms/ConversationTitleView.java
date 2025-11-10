@@ -56,10 +56,6 @@ public class ConversationTitleView extends RelativeLayout {
   }
 
   public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcChat dcChat) {
-    setTitle(glideRequests, dcChat, false);
-  }
-
-  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcChat dcChat, boolean profileView) {
     final int chatId = dcChat.getId();
     final Context context = getContext();
     final DcContext dcContext = DcHelper.getContext(context);
@@ -71,20 +67,16 @@ public class ConversationTitleView extends RelativeLayout {
     boolean isOnline = false;
     int[] chatContacts = dcContext.getChatContacts(chatId);
     if (dcChat.isMailingList()) {
-      if (profileView) {
-        subtitleStr = dcChat.getMailinglistAddr();
-      } else {
-        subtitleStr = context.getString(R.string.mailing_list);
-      }
+      subtitleStr = context.getString(R.string.mailing_list);
     } else if (dcChat.isInBroadcast()) {
       subtitleStr = context.getString(R.string.channel);
     } else if (dcChat.isOutBroadcast()) {
-      if (!profileView) {
-        subtitleStr = context.getResources().getQuantityString(R.plurals.n_recipients, chatContacts.length, chatContacts.length);
-      }
+      subtitleStr = context.getResources().getQuantityString(R.plurals.n_recipients, chatContacts.length, chatContacts.length);
     } else if( dcChat.isMultiUser() ) {
-      if (!profileView) {
+      if (dcChat.canSend()) {
         subtitleStr = context.getResources().getQuantityString(R.plurals.n_members, chatContacts.length, chatContacts.length);
+      } else {
+        subtitleStr = "…";
       }
     } else if( chatContacts.length>=1 ) {
       if( dcChat.isSelfTalk() ) {
@@ -95,9 +87,9 @@ public class ConversationTitleView extends RelativeLayout {
       }
       else {
         DcContact dcContact = dcContext.getContact(chatContacts[0]);
-        if (!profileView && dcContact.isBot()) {
+        if (dcContact.isBot()) {
           subtitleStr = context.getString(R.string.bot);
-        } else if (profileView || !dcChat.isEncrypted()) {
+        } else if (!dcChat.isEncrypted()) {
           subtitleStr = dcContact.getAddr();
         }
         isOnline = dcContact.wasSeenRecently();

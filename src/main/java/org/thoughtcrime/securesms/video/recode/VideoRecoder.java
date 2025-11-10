@@ -554,6 +554,8 @@ public class VideoRecoder {
   // the function fills out missing information and also recodes the video as needed.
   // return: true=video might be prepared, can be sent, false=error
   public static boolean prepareVideo(Context context, int chatId, DcMsg msg) {
+    final long MAX_BYTES = DcHelper.getInt(context, "sys.msgsize_max_recommended");
+    final String TOO_BIG_FILE = "Video cannot be compressed to a reasonable size. Try a shorter video or a lower quality.";
     try {
       String inPath = msg.getFile();
       Log.i(TAG, "Preparing video: " + inPath);
@@ -561,9 +563,14 @@ public class VideoRecoder {
       // try to get information from video file
       VideoEditedInfo vei = getVideoEditInfoFromFile(inPath);
       if (vei == null) {
-        alert(context, String.format("Recoding failed for %s: cannot get info", inPath));
-        return false;
+        Log.w(TAG, String.format("Recoding failed for %s: cannot get info", inPath));
+        if (msg.getFilebytes() > MAX_BYTES+MAX_BYTES/4) {
+          alert(context, TOO_BIG_FILE);
+          return false;
+        }
+        return true; // if the file is small, send it without recoding
       }
+
       vei.rotationValue = vei.originalRotationValue;
       vei.startTime = 0;
       vei.endTime = -1;
@@ -579,7 +586,6 @@ public class VideoRecoder {
 
       // check if video bitrate is already reasonable
       final int  MAX_KBPS = 1500000;
-      final long MAX_BYTES = DcHelper.getInt(context, "sys.msgsize_max_recommended");
       long inBytes = new File(inPath).length();
       if (inBytes > 0 && inBytes <= MAX_BYTES && vei.originalVideoBitrate <= MAX_KBPS*2 /*be tolerant as long the file size matches*/) {
         Log.i(TAG, String.format("recoding for %s is not needed, %d bytes and %d kbps are ok", inPath, inBytes, vei.originalVideoBitrate));
@@ -627,7 +633,7 @@ public class VideoRecoder {
           vei.resultVideoBitrate, vei.originalDurationMs, vei.originalAudioBytes);
 
       if (vei.estimatedBytes > MAX_BYTES+MAX_BYTES/4) {
-        alert(context, "Video cannot be compressed to a reasonable size. Try a shorter video or a lower quality.");
+        alert(context, TOO_BIG_FILE);
         return false;
       }
 

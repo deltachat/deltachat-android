@@ -60,7 +60,9 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
       } else if (dcChat.isOutBroadcast()) {
         subtitle = getContext().getResources().getQuantityString(R.plurals.n_recipients, memberCount, memberCount);
       } else if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
-        subtitle = getContext().getResources().getQuantityString(R.plurals.n_members, memberCount, memberCount);
+        if (dcChat.canSend()) {
+          subtitle = getContext().getResources().getQuantityString(R.plurals.n_members, memberCount, memberCount);
+        }
       }
     } else if (dcContact != null) {
       recipient = new Recipient(getContext(), dcContact);
