@@ -34,7 +34,7 @@ public class Linkifier {
     }
 
     // linkyfiy urls etc., this removes all existing URLSpan
-    if (Linkify.addLinks(messageBody, Linkify.EMAIL_ADDRESSES|Linkify.WEB_URLS|Linkify.PHONE_NUMBERS)) {
+    if (Linkify.addLinks(messageBody, Linkify.EMAIL_ADDRESSES|Linkify.WEB_URLS)) {
       replaceURLSpan(messageBody);
     }
 
