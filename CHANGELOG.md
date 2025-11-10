@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Change color of links in text messages
+* Do not show "1 member" when the process of joining the group is not finished
 * Improve handling of video recoding
 * Tweak advanced section and wording of some advanced options
 
