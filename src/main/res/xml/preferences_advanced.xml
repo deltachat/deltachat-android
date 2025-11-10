@@ -65,7 +65,7 @@
     <PreferenceCategory android:title="@string/pref_server">
 
         <Preference android:key="password_account_settings_button"
-            android:title="@string/pref_password_and_account_settings"/>
+            android:title="@string/edit_transport"/>
 
         <Preference android:key="proxy_settings_button"
             android:title="@string/proxy_settings"/>
