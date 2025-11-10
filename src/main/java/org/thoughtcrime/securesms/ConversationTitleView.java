@@ -73,7 +73,11 @@ public class ConversationTitleView extends RelativeLayout {
     } else if (dcChat.isOutBroadcast()) {
       subtitleStr = context.getResources().getQuantityString(R.plurals.n_recipients, chatContacts.length, chatContacts.length);
     } else if( dcChat.isMultiUser() ) {
-      subtitleStr = context.getResources().getQuantityString(R.plurals.n_members, chatContacts.length, chatContacts.length);
+      if (dcChat.canSend()) {
+        subtitleStr = context.getResources().getQuantityString(R.plurals.n_members, chatContacts.length, chatContacts.length);
+      } else {
+        subtitleStr = "…";
+      }
     } else if( chatContacts.length>=1 ) {
       if( dcChat.isSelfTalk() ) {
         subtitleStr = context.getString(R.string.chat_self_talk_subtitle);
