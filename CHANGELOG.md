@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Change color of links in text messages
 * Tweak advanced section and wording of some advanced options
 
 ## v2.25.0
