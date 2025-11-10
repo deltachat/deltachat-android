@@ -459,7 +459,7 @@
     <string name="chat_record_explain">Tap and hold to record a voice message, release to send</string>
     <string name="chat_no_chats_yet_title">No Chats.\nPress \"+\" to start a new chat.</string>
     <string name="chat_all_archived">All chats archived.\nPress \"+\" to start a new chat.</string>
-    <string name="chat_share_with_title">Share with</string>
+    <string name="chat_share_with_title">Share with…</string>
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archived</string>
     <string name="chat_request_label">Request</string>
