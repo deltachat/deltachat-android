@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Change color of links in text messages
+* Improve handling of video recoding
 * Tweak advanced section and wording of some advanced options
 
 ## v2.25.0
