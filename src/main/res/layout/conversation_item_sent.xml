@@ -174,7 +174,7 @@
                 style="@style/Signal.Text.Body"
                 android:paddingTop="@dimen/message_bubble_top_padding"
                 android:textColor="?conversation_item_outgoing_text_primary_color"
-                android:textColorLink="?conversation_item_outgoing_text_primary_color"
+                android:textColorLink="?attr/colorAccent"
                 android:importantForAccessibility="no"
                 tools:text="Mango pickle lorem ipsum"/>
 
