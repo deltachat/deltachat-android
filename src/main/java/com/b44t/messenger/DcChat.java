@@ -67,6 +67,15 @@ public class DcChat {
         return getType() == DC_CHAT_TYPE_OUT_BROADCAST;
     }
 
+    public boolean isSelfInChat(DcContext dcContext) {
+        for (int contactId : dcContext.getChatContacts(getId())) {
+            if (contactId == DcContact.DC_CONTACT_ID_SELF) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // working with raw c-data
 
     private long        chatCPtr;    // CAVE: the name is referenced in the JNI
