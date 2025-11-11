@@ -13,6 +13,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 
 import org.thoughtcrime.securesms.components.AvatarView;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
@@ -60,7 +61,7 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
       } else if (dcChat.isOutBroadcast()) {
         subtitle = getContext().getResources().getQuantityString(R.plurals.n_recipients, memberCount, memberCount);
       } else if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
-        if (dcChat.canSend()) {
+        if (dcChat.isSelfInChat(DcHelper.getContext(getContext()))) {
           subtitle = getContext().getResources().getQuantityString(R.plurals.n_members, memberCount, memberCount);
         }
       }
