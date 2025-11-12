@@ -117,6 +117,7 @@ public final class FetchForegroundService extends Service {
         STOP_NOTIFIER.notifyAll();
       }
     }
+    stopSelf();
   }
 
 }
