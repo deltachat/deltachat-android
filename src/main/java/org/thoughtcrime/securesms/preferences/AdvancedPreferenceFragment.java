@@ -57,7 +57,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   private static final String TAG = AdvancedPreferenceFragment.class.getSimpleName();
 
   private ListPreference showEmails;
-  CheckBoxPreference bccSelfCheckbox;
+  CheckBoxPreference multiDeviceCheckbox;
   CheckBoxPreference mvboxMoveCheckbox;
   CheckBoxPreference onlyFetchMvboxCheckbox;
   CheckBoxPreference webxdcRealtimeCheckbox;
@@ -76,9 +76,9 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       });
     }
 
-    bccSelfCheckbox = (CheckBoxPreference) this.findPreference("pref_bcc_self");
-    if (bccSelfCheckbox != null) {
-      bccSelfCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
+    multiDeviceCheckbox = (CheckBoxPreference) this.findPreference("pref_bcc_self");
+    if (multiDeviceCheckbox != null) {
+      multiDeviceCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
         boolean enabled = (Boolean) newValue;
         dcContext.setConfigInt(CONFIG_BCC_SELF, enabled? 1 : 0);
         return true;
@@ -227,7 +227,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     if (dcContext.isChatmail()) {
       showEmails.setVisible(false);
       showSystemContacts.setVisible(false);
-      bccSelfCheckbox.setVisible(false);
       mvboxMoveCheckbox.setVisible(false);
       onlyFetchMvboxCheckbox.setVisible(false);
     }
@@ -247,7 +246,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     showEmails.setValue(value);
     updateListSummary(showEmails, value);
 
-    bccSelfCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_BCC_SELF));
+    multiDeviceCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_BCC_SELF));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
     onlyFetchMvboxCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_ONLY_FETCH_MVBOX));
     webxdcRealtimeCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_WEBXDC_REALTIME_ENABLED));
