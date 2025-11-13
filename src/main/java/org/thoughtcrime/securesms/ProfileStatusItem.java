@@ -34,7 +34,7 @@ public class ProfileStatusItem extends LinearLayout {
   }
 
   public void set(String status) {
-    statusTextView.setText(Linkifier.linkify(new SpannableString(status)));
+    statusTextView.setText(Linkifier.linkify(new SpannableString(status), getContext()));
   }
 
   private class PassthroughClickListener implements View.OnLongClickListener, View.OnClickListener {

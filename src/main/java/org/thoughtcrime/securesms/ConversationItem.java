@@ -418,7 +418,7 @@ public class ConversationItem extends BaseConversationItem
     else {
       SpannableString spannable = new SpannableString(text);
       if (batchSelected.isEmpty()) {
-        spannable = Linkifier.linkify(spannable);
+        spannable = Linkifier.linkify(spannable, context);
       }
       bodyText.setText(spannable);
       bodyText.setVisibility(View.VISIBLE);
