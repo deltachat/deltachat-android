@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.util;
 
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.text.style.URLSpan;
 import android.text.util.Linkify;
 
@@ -19,6 +20,11 @@ public class Linkifier {
       int end = messageBody.getSpanEnd(urlSpan);
       // LongClickCopySpan must not be derived from URLSpan, otherwise links will be removed on the next addLinks() call
       messageBody.setSpan(new LongClickCopySpan(urlSpan.getURL()), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+      if (urlSpan.getURL().startsWith("tel:")) {
+        int color = 0xFFFF00FF;
+        messageBody.setSpan(new ForegroundColorSpan(color), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+      }
     }
   }
 
