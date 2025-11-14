@@ -6,6 +6,7 @@
 * Do not show "1 member" when the process of joining the group is not finished
 * Improve handling of video recoding
 * Tweak advanced section and wording of some advanced options
+* Fix: avoid crash in push notifications handling
 
 ## v2.25.0
 2025-11
