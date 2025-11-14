@@ -189,8 +189,6 @@ public class DcHelper {
     dcContext.setStockTranslation(139, context.getString(R.string.ephemeral_timer_disabled_by_other));
     dcContext.setStockTranslation(140, context.getString(R.string.ephemeral_timer_seconds_by_you));
     dcContext.setStockTranslation(141, context.getString(R.string.ephemeral_timer_seconds_by_other));
-    dcContext.setStockTranslation(142, context.getString(R.string.ephemeral_timer_1_minute_by_you));
-    dcContext.setStockTranslation(143, context.getString(R.string.ephemeral_timer_1_minute_by_other));
     dcContext.setStockTranslation(144, context.getString(R.string.ephemeral_timer_1_hour_by_you));
     dcContext.setStockTranslation(145, context.getString(R.string.ephemeral_timer_1_hour_by_other));
     dcContext.setStockTranslation(146, context.getString(R.string.ephemeral_timer_1_day_by_you));
