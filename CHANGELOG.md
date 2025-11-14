@@ -4,6 +4,7 @@
 
 * Change color of links in text messages
 * Do not show "1 member" when the process of joining the group is not finished
+* Add the possibility to withdraw channel invite links and QR codes
 * Improve handling of video recoding
 * Tweak advanced section and wording of some advanced options
 
