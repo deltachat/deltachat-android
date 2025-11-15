@@ -814,7 +814,8 @@
     <!-- deprecated -->
     <string name="pref_watch_sent_folder">Watch Sent Folder</string>
     <string name="pref_send_copy_to_self">Multi-device Mode</string>
-    <string name="pref_send_copy_to_self_explain">Required when using this profile on multiple devices.</string>
+    <string name="pref_send_copy_to_self_explain">Send background messages for device synchronization. Automatically enabled on adding a second device</string>
+    <string name="pref_multidevice_change_warn">Multi-device Mode must be enabled when using the same profile on multiple devices. Only disable this setting if you have removed this profile from all your other devices.\n\nDisabling multi-device mode while using the profile on multiple devices will result in missed messages and other problems.</string>
     <string name="pref_auto_folder_moves">Move automatically to DeltaChat Folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
     <string name="pref_only_fetch_mvbox_title">Only Fetch from DeltaChat Folder</string>
