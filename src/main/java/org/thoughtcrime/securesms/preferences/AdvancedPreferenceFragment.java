@@ -80,8 +80,15 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     if (multiDeviceCheckbox != null) {
       multiDeviceCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
         boolean enabled = (Boolean) newValue;
-        dcContext.setConfigInt(CONFIG_BCC_SELF, enabled? 1 : 0);
-        return true;
+        new AlertDialog.Builder(requireContext())
+                .setMessage(R.string.pref_imap_folder_warn_disable_defaults)
+                .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+                  dcContext.setConfigInt(CONFIG_BCC_SELF, enabled? 1 : 0);
+                  ((CheckBoxPreference)preference).setChecked(enabled);
+                })
+                .setNegativeButton(R.string.cancel, null)
+                .show();
+        return false;
       });
     }
 
