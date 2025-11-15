@@ -110,6 +110,11 @@ public class ApplicationContext extends MultiDexApplication {
           e.printStackTrace();
         }
       }
+
+      // 2025.11.12: this is needed until core starts ignoring "delete_server_after" for chatmail
+      if (ac.isChatmail()) {
+        ac.setConfig("delete_server_after", null); // reset
+      }
     }
     if (allAccounts.length == 0) {
       try {
