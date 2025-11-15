@@ -223,7 +223,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     Preference passwordAndAccount = this.findPreference("password_account_settings_button");
     if (passwordAndAccount != null) {
       passwordAndAccount.setOnPreferenceClickListener(((preference) -> {
-        boolean result = ScreenLockUtil.applyScreenLock(requireActivity(), getString(R.string.pref_password_and_account_settings), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_ACCOUNT);
+        boolean result = ScreenLockUtil.applyScreenLock(requireActivity(), getString(R.string.edit_transport), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_ACCOUNT);
         if (!result) {
           openRegistrationActivity();
         }

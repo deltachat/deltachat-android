@@ -127,7 +127,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle(
-              isConfigured? R.string.pref_password_and_account_settings : R.string.manual_account_setup_option
+              isConfigured? R.string.edit_transport : R.string.manual_account_setup_option
             );
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
