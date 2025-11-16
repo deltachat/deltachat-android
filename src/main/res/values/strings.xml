@@ -317,6 +317,7 @@
     <string name="menu_scroll_to_bottom">Scroll to the Bottom</string>
     <string name="menu_scroll_to_top">Scroll to the Top</string>
     <string name="menu_help">Help</string>
+    <!-- deprecated, use "Help" instead, context is clear, the user has an in-app chat on their screen -->
     <string name="what_is_webxdc">What is Webxdc?</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="menu_select_all">Select All</string>
