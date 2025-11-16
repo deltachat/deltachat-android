@@ -242,9 +242,13 @@
     <string name="tab_docs_empty_hint">Bu söhbətdə paylaşılan sənədlər, musiqi və digər fayllar burada göstəriləcək.</string>
     <string name="media_preview">Fayllara baxmaq</string>
     <string name="login_title">Daxil ol</string>
+    <!-- deprecated -->
     <string name="login_header">Serverinə daxil ol</string>
+    <!-- deprecated -->
     <string name="login_explain">Mövcud e-mail hesabı ilə daxil olun</string>
+    <!-- deprecated -->
     <string name="login_subheader">Məlum elektron poçt provayderləri üçün əlavə parametrlər avtomatik olaraq quraşdırılır. Bəzən IMAP-ın web məkanında aktiv olması lazımdır. Yardım üçün e-poçt provayderinizə və ya dostlarınıza müraciət edin.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Delta Chat serverləri yoxdur, məlumatlarınız cihazınızda qalır!</string>
     <string name="login_inbox">Gələn</string>
     <string name="login_imap_login">IMAP logini</string>
@@ -257,8 +261,11 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP təhlükəsizliyi</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Yetkiləndirmə metodu</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Sadələşdirilmiş tənzimləmə ilə davam edirsiniz?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Daxil edilmiş e-poçt ünvanı sadələşdirilmiş bir quraşdırma (OAuth2) dəstəkləyir. \n\nNövbəti addımda Delta Chat e-poçt tətbiqinizlə söhbət etməyə icazə verin. \n\n Delta Chat serverləri, cihazınızda qalır!</string>
     <string name="login_certificate_checks">Sertifikat yoxlanmaları</string>
     <string name="login_error_mail">Xahiş edirik düzgün bir e-poçt ünvanı daxil et</string>
@@ -335,6 +342,7 @@
     <string name="pref_background_btn_default">Hal hazırdaki şəkili istifadə edin</string>
     <string name="pref_background_btn_gallery">Fotoalbomdan götürün</string>
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçimi ləğv etsəniz, serverinizin və digər müştərilərinizin müvafiq olaraq konfiqurasiya olunduğundan əmin olun. \n\nAyrıca şeylər işləməyəcəkdir.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Göndərilmişlərin qovluğunu izləyin</string>
     <string name="pref_send_copy_to_self">Özünə kopya göndər</string>
     <string name="pref_auto_folder_moves">DeltaChat qovluğuna avtomatik keçid</string>

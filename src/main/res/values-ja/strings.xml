@@ -333,9 +333,13 @@
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">接続済み</string>
     <string name="login_title">ログイン</string>
+    <!-- deprecated -->
     <string name="login_header">自分のメールサーバーにログインする</string>
+    <!-- deprecated -->
     <string name="login_explain">既存のメールアカウントにログインする</string>
+    <!-- deprecated -->
     <string name="login_subheader">主なメールサーバーは自動で設定されます｡一般にIMAPはサーバー側で有効に設定する必要が有ります｡サーバー提供者や詳しい人に確認しましょう｡</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Delta Chatには専用サーバーが有りません｡つまりあなたのデータ･個人情報はこの端末内に保存されています｡</string>
     <string name="login_inbox">受信</string>
     <string name="login_imap_login">IMAPログイン名</string>
@@ -348,8 +352,11 @@
     <string name="login_smtp_server">SMTPサーバー</string>
     <string name="login_smtp_port">SMTPポート</string>
     <string name="login_smtp_security">SMTP暗号方式</string>
+    <!-- deprecated -->
     <string name="login_auth_method">認証方法</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">簡単セットアップを使用しましょうか？</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">入力されたメールアドレスは、簡易セットアップ（OAuth 2.0）に対応しています。次に「メールでチャット」を許可してください。Delta Chatにはサーバーがなく、テーダはデバイスにあります。</string>
     <string name="login_certificate_checks">有効な証明書です</string>
     <string name="login_error_mail">有効なメールアドレスを入力してください</string>
@@ -387,6 +394,7 @@
     <string name="pref_profile_photo">アイコン画像</string>
     <string name="pref_blocked_contacts">ブロックされた人</string>
     <string name="blocked_empty_hint">ブロックされた連絡先がここに表示されます。</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">パスワードとアカウント</string>
     <string name="pref_who_can_see_profile_explain">アイコン画像や名前は他のユーザーに連絡するとメッセージとともに表示されます。既に送信された情報を削除することができます。</string>
     <string name="pref_your_name">あなたの名前</string>
@@ -445,6 +453,7 @@
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">デフォルトの画像を使う</string>
     <string name="pref_background_btn_gallery">ギャラリーから選ぶ</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">送信トレイを監視する</string>
     <string name="pref_send_copy_to_self">自分にコピーを送る</string>
     <string name="pref_auto_folder_moves">DeltaChatフォルダに自動で移動する</string>

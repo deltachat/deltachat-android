@@ -22,31 +22,46 @@
     <string name="join">Aliĝi</string>
     <string name="rejoin">Realiĝi</string>
     <string name="delete">Forigi</string>
+    <string name="delete_for_me">Forigi por mi</string>
+    <string name="delete_for_everyone">Forigi por ĉiuj</string>
     <string name="info">Informoj</string>
     <string name="update">Ĝisdatigi</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Aldonaĵo</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">Ĉu alkroĉi \"%1$s\"?</string>
     <string name="back">Reen</string>
     <string name="close">Fermi</string>
+    <string name="close_window">Fermi fenestron</string>
     <string name="forward">Plusendi</string>
+    <string name="create">Krei</string>
+    <string name="reset">Restartigi</string>
+    <string name="later">Poste</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Resendi</string>
+    <string name="edited">Redaktita</string>
+    <string name="edit_message">Redakti mesaĝon</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arĥivi</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Malarĥivi</string>
     <string name="mute">Muta sciigoj</string>
+    <string name="muted">Silentigita</string>
     <string name="ephemeral_messages">Memviŝontaj mesaĝoj</string>
     <string name="ephemeral_messages_hint">Aplikebla al ĉiuj anoj de tiu ĉi babilejo kiuj uzas Delta Chat; ili ankoraŭ povas kopii, konservi kaj plusendi mesaĝojn, kaj uzi aliajn retpoŝtajn klientojn.</string>
     <string name="save">Konservi</string>
     <string name="chat">Babilo</string>
     <string name="media">Aŭdovidaĵoj</string>
+    <string name="apps_and_media">Apoj kaj vidaĵoj</string>
     <string name="profile">Profilo</string>
+    <string name="all_profiles">Ĉiuj profiloj</string>
+    <string name="current_profile">Aktuala profilo</string>
     <string name="main_menu">Ĉefa menuo</string>
     <string name="start_chat">Komenci Babiladon</string>
     <string name="show_full_message">Afiŝu la tutan mesaĝon...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Marki ĉiujn legitaj</string>
+    <string name="mark_as_read">Marki kiel legita</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Legi</string>
     <!-- Placeholder text when something is loading -->
@@ -75,6 +90,8 @@
     <string name="no_app_to_handle_data">Ne povas trovi aplikaĵon por trakti tiun ĉi tipon de datumo.</string>
     <string name="no_browser_installed">Neniu retumilo instalita.</string>
     <string name="file_not_found">Ne povis trovi %1$s.</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">Ne eblas konservi la dosieron %1$s.</string>
     <string name="copied_to_clipboard">Kopiita al tondujo</string>
     <string name="contacts_headline">Kontaktoj</string>
     <string name="email_address">Retadreso</string>
@@ -95,6 +112,16 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Laste vidita %1$s</string>
     <string name="last_seen_unknown">Laste vidita: nedisponebla informo</string>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
+    <plurals name="n_seconds_ext">
+        <item quantity="one">%d sekundo</item>
+        <item quantity="other">%d sekundoj</item>
+    </plurals>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
+    <plurals name="n_minutes_ext">
+        <item quantity="one">%d minuto</item>
+        <item quantity="other">%d minutoj</item>
+    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -117,6 +144,10 @@
     <plurals name="n_messages">
         <item quantity="one">%dmesaĝo</item>
         <item quantity="other">%d mesaĝoj</item>
+    </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d reago</item>
+        <item quantity="other">%d reagoj</item>
     </plurals>
     <plurals name="n_members">
         <item quantity="one">%d ano</item>
@@ -189,6 +220,7 @@
     <string name="menu_new_contact">Nova kontakto</string>
     <string name="menu_new_chat">Nova babilo</string>
     <string name="menu_new_group">Nova grupo</string>
+    <!-- deprecated -->
     <string name="add_recipients">Aldoni Ricevantojn</string>
     <string name="menu_send">Sendi</string>
     <string name="menu_toggle_keyboard">Baskuligi emoĝian klavaron</string>
@@ -339,6 +371,7 @@
     <string name="send_message">Sendi mesaĝon</string>
 
     <string name="login_title">Ensaluti</string>
+    <!-- deprecated -->
     <string name="login_header">Ensaluti al via servilo</string>
     <string name="login_inbox">Ricevujo</string>
     <string name="login_imap_login">IMAP salutnomo</string>
@@ -351,7 +384,9 @@
     <string name="login_smtp_server">SMTP servilo</string>
     <string name="login_smtp_port">SMTP pordo</string>
     <string name="login_smtp_security">SMTP sekureco</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Metodo de rajtigado</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Ĉu daŭri kun faciligitaj agordoj?</string>
     <string name="login_certificate_checks">Atestilaj kontroloj</string>
     <string name="login_error_mail">Bonvolu enigi validan retadreson</string>
@@ -371,6 +406,7 @@
 
     <string name="pref_profile_photo">Profilbildo</string>
     <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Pasvorto kaj konto</string>
     <string name="pref_your_name">Via nomo</string>
     <string name="pref_enter_sends">La Eniga klavo kaŭzas sendon</string>
@@ -417,6 +453,7 @@
     <string name="pref_background">Fono</string>
     <string name="pref_background_btn_default">Uzi defaŭltan bildon</string>
     <string name="pref_background_btn_gallery">Elekti el galerio</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Kontroli senditujon</string>
     <string name="pref_send_copy_to_self">Sendi kopion al mi mem</string>
     <string name="pref_show_emails_all">Ĉiuj</string>

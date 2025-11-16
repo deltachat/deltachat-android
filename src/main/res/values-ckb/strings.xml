@@ -308,9 +308,13 @@
     <string name="send_message">پەیام بنێرە</string>
 
     <string name="login_title">بچۆ ژوورەوە</string>
+    <!-- deprecated -->
     <string name="login_header">بچۆ ژوورەوە بۆ سێرڤێرەکەی خۆت</string>
+    <!-- deprecated -->
     <string name="login_explain">بچۆ ژوورەوە بە ناونیشانی ئیمەیلێکەوە</string>
+    <!-- deprecated -->
     <string name="login_subheader">بۆ دابینکەرە ناسراوەکانی ئیمەیلەکان، ڕێکخستنە زیادییەکان خۆکارانە ڕێکدەخرێن. هەندێجار دەبێت IMAP لەنێو ڕێکخستنەکانی وێبدا چالاک بکرێنەوە. بۆ ڕێنمایی وەرگرتن، لەگەڵ دابینکەری ئیمەیلەکەتان یان هاوڕێکانتان ڕاوێژ بکەن.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">دێڵتاچات هیچ سێرڤەرێکی نییە، داتاکانتان لەسەر ئامرێکەتان دەمێنێتەوە.</string>
     <string name="login_inbox">هاتنگە</string>
     <string name="login_imap_login">ناوی چوونەژوورەوەی IMAP</string>
@@ -323,7 +327,9 @@
     <string name="login_smtp_server">سێرڤەری SMTP</string>
     <string name="login_smtp_port">پۆرتی SMTP</string>
     <string name="login_smtp_security">ئاسایشی SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">شێوازی پشتڕاشتکردنەوە</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">بە ڕێکخستنە ئاسانکراوەکەوە بەردەوام دەبیت؟</string>
     <string name="login_error_mail">تکایە ئیمەیلێکی ڕاست بنووسە</string>
     <string name="login_error_server">تکایە سێرڤەرێکی / شوێنەواری ئای پی ڕەوا بنووسە.</string>
@@ -351,6 +357,7 @@
     <string name="pref_profile_photo">وێنەی لادیمەن</string>
     <string name="pref_blocked_contacts">هەژمارە ئاستەنگکراوەکان</string>
     <string name="blocked_empty_hint">ئەگەر هەژمارێک ئاستەنگ بکەیت، لێرەدا پیشان دەدرێت.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">هەژمار و تێپەڕوشە</string>
     <string name="pref_your_name">ناو</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -401,6 +408,7 @@
     <string name="pref_background">پشتخان</string>
     <string name="pref_background_btn_default">بەکارهێنانی وێنەی بنەڕەتی</string>
     <string name="pref_background_btn_gallery">هەڵبژاردن لە پیشانگا</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">دیتنی بوخچەی هەنێردراوەکان</string>
     <string name="pref_send_copy_to_self">هەناردنی ڕوونووسێک بۆ خۆت</string>
     <string name="pref_auto_folder_moves">هەناردنی خۆکار بۆ بوخچەی دێڵتاچات</string>
