@@ -268,13 +268,14 @@
     <string name="channels">Canales</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nuevo canal</string>
+    <!-- deprecated -->
     <string name="add_recipients">Agregar destinatarios</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nombre del canal</string>
     <string name="email">Correo electrónico</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Nuevo correo electrónico</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Asunto</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
@@ -327,6 +328,7 @@
     <string name="menu_scroll_to_bottom">Desplazarse al final</string>
     <string name="menu_scroll_to_top">Desplazarse al inicio</string>
     <string name="menu_help">Ayuda</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">`¿Qué es Webxdc?</string>
     <string name="privacy_policy">Política de privacidad</string>
     <string name="menu_select_all">Seleccionar todo</string>
@@ -406,7 +408,7 @@
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">¿Seguro que quieres abandonar este canal?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">¿Eliminar %d chat de todos tus dispositivos?</item>
@@ -632,7 +634,7 @@
     <string name="onboarding_create_instant_account">Crear perfil nuevo</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Ya tengo un perfil</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Iniciar sesión con correo electrónico</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Tu perfil</string>
@@ -657,9 +659,13 @@
     <string name="welcome_chat_over_email">Chat seguro y descentralizado</string>
     <string name="scan_invitation_code">Escanear código de invitación</string>
     <string name="login_title">Iniciar sesión</string>
+    <!-- deprecated -->
     <string name="login_header">Inicie sesión en su servidor</string>
+    <!-- deprecated -->
     <string name="login_explain">Iniciar sesión con una cuenta de correo existente</string>
+    <!-- deprecated -->
     <string name="login_subheader">Para los proveedores de correo conocidos, la configuración es realizada automáticamente. A veces, IMAP debe estar habilitado en la interfaz web. Consulte a su proveedor de correo o amigos para obtener ayuda.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">No hay servidores de Delta Chat, tus datos permanecen en tu dispositivo!</string>
     <string name="login_inbox">Bandeja de entrada</string>
     <string name="login_imap_login">Nombre de usuario IMAP</string>
@@ -672,6 +678,7 @@
     <string name="login_smtp_server">Servidor SMTP</string>
     <string name="login_smtp_port">Puerto SMTP</string>
     <string name="login_smtp_security">Seguridad SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Método de autorización</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
@@ -686,7 +693,9 @@
     <string name="proxy_use_proxy_confirm">¿Quieres utilizar el proxy \"%1$s\"?</string>
     <string name="proxy_share_explain">Tus amigos pueden agregar este proxy escaneando el código QR.</string>
     <string name="proxy_share_link">Compartir enlace</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">¿Continuar con la configuración simplificada?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">La dirección de correo electrónico introducida admite una configuración simplificada (OAuth 2.0).\n\nEn el próximo paso, permita que Delta Chat actúe como su aplicación de chat por correo electrónico.\n\nNo hay servidores de Delta Chat, tus datos permanecen en tu dispositivo.</string>
     <string name="login_certificate_checks">Comprobaciones de certificados</string>
     <string name="login_error_mail">Por favor, introduzca una dirección de correo válida</string>
@@ -736,6 +745,7 @@
     <string name="pref_profile_photo">Foto de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
     <string name="blocked_empty_hint">Si bloqueas contactos, se mostrarán aquí.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Contraseña y cuenta</string>
     <string name="pref_who_can_see_profile_explain">La imagen y el nombre de su perfil se mostrarán junto con sus mensajes cuando se comunique con otros usuarios. La información ya enviada no puede ser borrada o eliminada.</string>
     <string name="pref_your_name">Tu nombre</string>
@@ -806,6 +816,7 @@
     <string name="pref_background_btn_default">Usar imagen por defecto</string>
     <string name="pref_background_btn_gallery">Seleccionar de la galería</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si deshabilita esta opción, asegúrese de que su servidor y sus otros clientes estén configurados en consecuencia.\n\nDe lo contrario, las cosas pueden no funcionar en absoluto.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Monitorear carpeta Enviados</string>
     <string name="pref_send_copy_to_self">Enviar autocopia</string>
     <string name="pref_send_copy_to_self_explain">Necesario cuando utilizando esta cuenta en varios dispositivos.</string>
@@ -1032,6 +1043,7 @@
     <string name="verified_by">Verificado por %1$s</string>
     <string name="verified_by_you">Verificado por ti</string>
     <string name="verified_by_unknown">Introducido</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Para garantizar el cifrado de extremo a extremo, solo puedes añadir contactos con una marca de verificación verde</string>
     <string name="mailto_dialog_header_select_chat">Seleccione el chat para enviar el mensaje</string>
     <!-- first placeholder is the name of the chat -->

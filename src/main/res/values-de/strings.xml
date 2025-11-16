@@ -257,13 +257,14 @@
     <string name="channels">Kanäle</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Neuer Kanal</string>
+    <!-- deprecated -->
     <string name="add_recipients">Empfänger hinzufügen</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Name des Kanals</string>
     <string name="email">E-Mail</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Neue E-Mail</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Betreff</string>
     <string name="menu_send">Senden</string>
     <string name="menu_toggle_keyboard">Emojis einblenden</string>
@@ -316,7 +317,8 @@
     <string name="menu_scroll_to_bottom">Zum Ende scrollen</string>
     <string name="menu_scroll_to_top">Zum Anfang scrollen</string>
     <string name="menu_help">Hilfe</string>
-    <string name="what_is_webxdc">Was ist Webxdc?</string>
+    <!-- use the same term for "Apps" as elsewhere -->
+    <string name="what_is_webxdc">Über Apps</string>
     <string name="privacy_policy">Datenschutzerklärung</string>
     <string name="menu_select_all">Alles auswählen</string>
     <string name="select_chat">Chat auswählen</string>
@@ -394,7 +396,7 @@
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Diesen Chat verlassen?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">%d Chat von allen Geräten löschen?</item>
@@ -458,7 +460,7 @@
     <string name="chat_record_explain">Tippen und halten, um eine Sprachnachricht aufzunehmen, loslassen um zu senden. </string>
     <string name="chat_no_chats_yet_title">Keine Chats.\n\"+\" drücken, um einen neuen Chat zu starten.</string>
     <string name="chat_all_archived">Alle Chats archiviert.\n\"+\" drücken, um einen neuen Chat zu starten.</string>
-    <string name="chat_share_with_title">Teilen mit</string>
+    <string name="chat_share_with_title">Teilen mit…</string>
     <string name="chat_input_placeholder">Nachricht</string>
     <string name="chat_archived_label">Archiviert</string>
     <string name="chat_request_label">Anfrage</string>
@@ -614,8 +616,8 @@
     <string name="onboarding_create_instant_account">Neues Profil erstellen</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Ich habe bereits ein Profil</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Klassischer E-Mail-Login</string>
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Klassische E-Mail als Transport</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Dein Profil</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -639,9 +641,14 @@
     <string name="welcome_chat_over_email">Sicherer dezentraler Chat</string>
     <string name="scan_invitation_code">Einladungscode scannen</string>
     <string name="login_title">Login</string>
+    <string name="login_advanced_hint">Für fortgeschrittene Benutzer:\n\n• Verwenden Sie kein Konto, das Sie bereits in einer anderen App nutzen.\n\n• Klassische E-Mail-Server ermöglichen Chats ohne Ende-zu-Ende-Verschlüsselung, gekennzeichnet durch ein E-Mail-Symbol.</string>
+    <!-- deprecated -->
     <string name="login_header">Bei deinem E-Mail-Konto anmelden</string>
+    <!-- deprecated -->
     <string name="login_explain">Mit existierendem E-Mail-Konto einloggen</string>
+    <!-- deprecated -->
     <string name="login_subheader">Für bekannte E-Mail-Anbieter werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP in der Weboberfläche eingeschaltet werden. Bitte deinen Anbieter oder Freunde um Rat, wenn es Probleme gibt.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Delta Chat sammelt keine Benutzerdaten, alles bleibt auf deinem Gerät.</string>
     <string name="login_inbox">Posteingang</string>
     <string name="login_imap_login">IMAP-Anmeldename</string>
@@ -654,6 +661,7 @@
     <string name="login_smtp_server">SMTP-Server</string>
     <string name="login_smtp_port">SMTP-Port</string>
     <string name="login_smtp_security">SMTP-Sicherheit</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Autorisierungsmethode</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
@@ -670,8 +678,19 @@
     <string name="proxy_share_link">Link teilen</string>
     <string name="proxy_enabled">Proxy aktiv</string>
     <string name="proxy_enabled_hint">Sie verwenden einen Proxy. Wenn Sie Probleme mit der Verbindung haben, versuchen Sie es mit einem anderen Proxy.</string>
+    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
+    <string name="transports">Transportserver</string>
+    <string name="add_transport">Transport hinzufügen</string>
+    <string name="remove_transport">Transport entfernen</string>
+    <string name="edit_transport">Transport bearbeiten</string>
+    <!-- shown if a QR code was scanned that can be used as a transport -->
+    <string name="confirm_add_transport">Transport hinzufügen?</string>
+    <string name="invalid_transport_qr">Der gescannte QR-Code enthält keine gültigen Transportserver.</string>
+    <string name="confirm_remove_transport">Transport \"%1$s\" entfernen?\n\nDeine Kontakte können dich nur erreichen, wenn du sie zuvor über einen anderen Transport erreicht hast.\n\nIm Zweifel, entferne den Transport später.</string>
 
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Weiter mit vereinfachter Einrichtung?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Die eingegebene Adresse unterstützt eine vereinfachte Einrichtung (OAuth 2.0).\n\nBitte erlauben Sie Delta Chat im nächsten Schritt, Nachrichten zu Senden und zu Empfangen.\n\nDelta Chat sammelt keine Benutzerdaten, alles bleibt auf deinem Gerät.</string>
     <string name="login_certificate_checks">Zertifikatsüberprüfung</string>
     <string name="login_error_mail">Bitte eine gültige E-Mail-Adresse eingeben</string>
@@ -721,6 +740,7 @@
     <string name="pref_profile_photo">Profilbild</string>
     <string name="pref_blocked_contacts">Blockierte Kontakte</string>
     <string name="blocked_empty_hint">Blockierte Kontakte werden hier angezeigt.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Passwort und E-Mail-Konto</string>
     <string name="pref_who_can_see_profile_explain">Dein Profilbild, dein Name und die Signatur werden beim Chatten zusammen mit deinen Nachrichten gesendet.</string>
     <string name="pref_your_name">Mein Name</string>
@@ -792,6 +812,7 @@
     <string name="pref_background_btn_default">Standard-Bild verwenden</string>
     <string name="pref_background_btn_gallery">Aus Galerie auswählen</string>
     <string name="pref_imap_folder_warn_disable_defaults">Wenn du diese Option änderst, stelle sicher, dass der Server und die anderen Geräte entsprechend konfiguriert sind\n\nAndernfalls funktionieren Dinge möglicherweise nicht wie erwartet.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Gesendet-Ordner beobachten</string>
     <string name="pref_send_copy_to_self">Kopie an mich selbst senden</string>
     <string name="pref_send_copy_to_self_explain">Erforderlich bei Verwendung des E-Mail-Kontos auf mehreren Geräten.</string>
@@ -958,6 +979,7 @@
     <string name="ephemeral_timer_weeks_by_you">Du hast die Ablaufzeit verschwindender Nachrichten auf %1$s Wochen gesetzt.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Ablaufzeit verschwindender Nachrichten auf %1$s Wochen gesetzt von %2$s.</string>
+    <string name="chat_unencrypted_explanation">Dieser Chat verwendet klassische E-Mails und ist nicht Ende-zu-Ende-verschlüsselt.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Nachrichten sind Ende-zu-Ende-verschlüsselt. Tippen, um mehr zu erfahren.</string>
     <string name="chat_protection_enabled_explanation">Alle Nachrichten in diesem Chat sind Ende-zu-Ende verschlüsselt.\n\nDurch die Ende-zu-Ende-Verschlüsselung bleiben die Nachrichten zwischen dir und deinen Chat-Partnern privat. Nicht einmal Server, Provider oder Relays können sie lesen.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s verlangt eine Ende-zu-Ende-Verschlüsselung, die für diesen Chat noch nicht hergestellt wurde. Tippen, um mehr zu erfahren.</string>
@@ -982,6 +1004,7 @@
     <string name="qrscan_hint_desktop">QR-Code zur Kamera führen</string>
     <string name="qrscan_failed">QR-Code kann nicht dekodiert werden.</string>
     <string name="qrscan_ask_join_group">Der Gruppe \"%1$s\" beitreten?</string>
+    <string name="qrscan_ask_join_channel">Dem Kanal \"%1$s\" beitreten?</string>
     <string name="qrscan_fingerprint_mismatch">Der gescannte Fingerabdruck stimmt nicht mit dem zuletzt für %1$s gesehenen Fingerabdruck überein.</string>
     <string name="qrscan_no_addr_found">Dieser QR-Code enthält einen Fingerabdruck, aber keine Adresse.\n\nFür eine Out-of-Band-Verifizierung bitte zuerst eine verschlüsselte Verbindung zur EmpfängerIn herstellen.</string>
     <string name="qrscan_contains_text">Gescannter QR-Code text:\n\n%1$s</string>
@@ -989,9 +1012,11 @@
     <string name="qrscan_fingerprint_label">Fingerabdruck</string>
     <string name="withdraw_verifycontact_explain">Dieser QR-Code kann von anderen gescannt werden, um dich zu kontaktieren.\n\nDu kannst den QR-Code zurücksetzen; der bestehende QR-Code oder Einladungslink wird dann nicht mehr funktionieren.</string>
     <string name="withdraw_verifygroup_explain">Dieser QR-Code kann von anderen gescannt werden, um der Gruppe \"%1$s\" beizutreten.\n\nDu kannst den QR-Code zurücksetzen; der bestehende QR-Code oder Einladungslink wird dann nicht mehr funktionieren.</string>
+    <string name="withdraw_joinbroadcast_explain">Dieser QR-Code kann von anderen gescannt werden, um dem Kanal \"%1$s\" beizutreten.\n\nDu kannst den QR-Code zurücksetzen; der bestehende QR-Code oder Einladungslink wird dann nicht mehr funktionieren.</string>
     <string name="withdraw_qr_code">QR-Code zurücksetzen</string>
     <string name="revive_verifycontact_explain">Dieser QR-Code wurde zurückgesetzt und ist nicht mehr aktiv.</string>
     <string name="revive_verifygroup_explain">Dieser QR-Code für die Gruppe \"%1$s\" wurde zurückgesetzt und ist nicht mehr aktiv.</string>
+    <string name="revive_joinbroadcast_explain">Dieser QR-Code für den Kanal \"%1$s\" wurde zurückgesetzt und ist nicht mehr aktiv.</string>
     <string name="revive_qr_code">QR-Code aktivieren</string>
     <string name="qrshow_title">QR-Einladungscode</string>
     <string name="qrshow_x_joining">%1$s beigetreten.</string>
@@ -1018,12 +1043,13 @@
     <string name="secure_join_started">%1$s hat dich zu dieser Gruppe eingeladen.\n\nWarte auf die Antwort des Gerätes von %2$s...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s antwortet. Warte, zur Gruppe hinzugefügt zu werden...</string>
-    <string name="secure_join_wait">Ende-zu-Ende-Verschlüsselung wird aufgebaut, bitte warten...</string>
+    <string name="secure_join_wait">Verbindungsaufbau, bitte warten...</string>
     <string name="contact_verified">%1$s eingeführt.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Eingeführt von %1$s</string>
     <string name="verified_by_you">Durch mich eingeführt</string>
     <string name="verified_by_unknown">Eingeführt</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Um Ende-zu-Ende-Verschlüsselung zu gewährleisten, können nur Kontakte mit grünem Häkchen zu dieser Gruppe hinzugefügt werden.\n\nDu kannst Kontakte persönlich treffen und ihren QR-Code scannen, um sie einzuführen.</string>
     <string name="mailto_dialog_header_select_chat">Wähle den Chat, an den die Nachricht gesendet werden soll</string>
     <!-- first placeholder is the name of the chat -->

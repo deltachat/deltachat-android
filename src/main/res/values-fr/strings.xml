@@ -234,6 +234,7 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Discuter avec...</string>
     <string name="clone_chat">Cloner la discussion</string>
+    <!-- deprecated -->
     <string name="add_recipients">Ajouter des destinataires</string>
     <string name="menu_send">Envoyer</string>
     <string name="menu_toggle_keyboard">Basculer le clavier emoji</string>
@@ -284,6 +285,7 @@
     <string name="menu_scroll_to_bottom">Faire défiler jusqu\'en bas</string>
     <string name="menu_scroll_to_top">Faire défiler jusqu\'en haut</string>
     <string name="menu_help">Aide</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">Qu\'est-ce qu\'une appli Webxdc ?</string>
     <string name="privacy_policy">Politique de confidentialité</string>
     <string name="menu_select_all">Tout sélectionner</string>
@@ -556,7 +558,7 @@
     <string name="onboarding_create_instant_account">Créer un nouveau compte</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Je possède déjà un compte</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Authentification par email classique</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Votre compte</string>
@@ -581,9 +583,13 @@
     <string name="welcome_chat_over_email">Chat décentralisé et sûr</string>
     <string name="scan_invitation_code">Scanner le code d\'invitation</string>
     <string name="login_title">Connexion</string>
+    <!-- deprecated -->
     <string name="login_header">Se connecter au compte courriel</string>
+    <!-- deprecated -->
     <string name="login_explain">Se connecter avec un compte de courriel existant.</string>
+    <!-- deprecated -->
     <string name="login_subheader">Pour les fournisseurs de courriel connus, des paramètres supplémentaires sont automatiquement configurés. Parfois, IMAP doit être activé dans l\'interface Web. Consultez votre fournisseur de courriel ou vos amis pour obtenir de l\'aide.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
     <string name="login_inbox">Boîte de réception</string>
     <string name="login_imap_login">Utilisateur IMAP</string>
@@ -596,6 +602,7 @@
     <string name="login_smtp_server">Serveur SMTP</string>
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Sécurité SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Méthode d\'autorisation</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
@@ -609,7 +616,9 @@
     <string name="proxy_delete_explain">Voulez-vous vraiment supprimer « %1$s » ?</string>
     <string name="proxy_share_explain">Vos amis peuvent ajouter ce proxy en scannant le code QR.</string>
     <string name="proxy_share_link">Partager le lien</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Continuer avec une configuration simplifiée ?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">L\'adresse de courriel saisie prend en charge une configuration simplifiée (OAuth2.0). \n\nDans l\'étape suivante, autorisez Delta Chat à agir comme votre application de Chat avec courriel . Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
     <string name="login_certificate_checks">Vérification du certificat</string>
     <string name="login_error_mail">Entrez une adresse email valide</string>
@@ -655,6 +664,7 @@
     <string name="pref_profile_photo">Photo de profil</string>
     <string name="pref_blocked_contacts">Contacts bloqués</string>
     <string name="blocked_empty_hint">Si vous bloquez des contacts, ils seront affichés ici.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Mot de passe et compte</string>
     <string name="pref_who_can_see_profile_explain">Votre image de profil, votre nom et votre signature seront envoyés avec vos messages lorsque vous communiquerez avec d\'autres utilisateurs.</string>
     <string name="pref_your_name">Votre nom</string>
@@ -725,6 +735,7 @@
     <string name="pref_background_btn_default">Utilisez l\'image par défaut</string>
     <string name="pref_background_btn_gallery">Sélectionner depuis la galerie</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si vous désactivez cette option, assurez-vous que votre serveur et vos autres clients sont configurés en conséquence.\n\nSinon des choses pourraient ne pas fonctionner du tout.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Regarder le dossier Messages envoyés</string>
     <string name="pref_send_copy_to_self">M\'envoyer une copie</string>
     <string name="pref_send_copy_to_self_explain">Obligatoire pour utiliser ce compte sur plusieurs appareils.</string>
@@ -944,6 +955,7 @@
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Connu par %1$s</string>
     <string name="verified_by_you">Connu par vous</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Pour garantir le chiffrement de bout en bout, vous pouvez ajouter à ce groupe uniquement les contacts avec un badge vert.\n\nVous pouvez rencontrer ces contacts en personne pour scanner leur code QR et les ajouter à votre liste de contacts connus.</string>
     <string name="mailto_dialog_header_select_chat">Sélectionnez une discussion à qui envoyer le message</string>
     <!-- first placeholder is the name of the chat -->
