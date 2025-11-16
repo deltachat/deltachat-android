@@ -3,11 +3,15 @@
 ## Unreleased
 
 * Change color of links in text messages
+* Allow to withdraw channel invite links and QR codes
 * Do not show "1 member" when the process of joining the group is not finished
 * Improve handling of video recoding
+* Send .webm videos as file, they are not supported by all platforms
 * Tweak advanced section and wording of some advanced options
 * Expose new "Multi-device mode" option instead of "Delete from server" for chatmail profiles
 * Opened in-chat apps got a 'About Apps' menu item
+* Avoid gray avatar on profile creation
+* Update to core 2.27.0
 
 ## v2.25.0
 2025-11
