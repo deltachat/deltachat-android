@@ -252,6 +252,7 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Chatovat s...</string>
     <string name="clone_chat">Klonovat chat</string>
+    <!-- deprecated -->
     <string name="add_recipients">Přidat příjemce</string>
     <string name="menu_send">Odeslat</string>
     <string name="menu_toggle_keyboard">Přepnout emoji klávesnici</string>
@@ -303,6 +304,7 @@
     <string name="menu_scroll_to_bottom">Přejet dolů</string>
     <string name="menu_scroll_to_top">Přejet nahoru</string>
     <string name="menu_help">Nápověda</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">Co je Webxdc?</string>
     <string name="privacy_policy">Zásady ochrany osobních údajů</string>
     <string name="menu_select_all">Vybrat vše</string>
@@ -591,7 +593,7 @@
     <string name="onboarding_create_instant_account">Vytvořit nový profil</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Již mám svůj profil</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Přihlášení ke klasickému e-mailu</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Váš profil</string>
@@ -616,9 +618,13 @@
     <string name="welcome_chat_over_email">Zabezpečený decentralizovaný chat</string>
     <string name="scan_invitation_code">Naskenovat kód pozvánky</string>
     <string name="login_title">Přihlaš se</string>
+    <!-- deprecated -->
     <string name="login_header">Přihlašte se ke svému e-mailovému účtu</string>
+    <!-- deprecated -->
     <string name="login_explain">Přihlásit se se stávajícím účtem pro e-mail.</string>
+    <!-- deprecated -->
     <string name="login_subheader">Pro standardní poskytovatele jsou nastavení dopněna automaticky. Někdy je potřeba povolit IMAP ve webovém rozhraní. Potřebujete-li pomoc, obraťte se na svého poskytovatele e-mailu nebo přátele.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Delta Chat nesbírá uživatelská data, vše zůstává na vašem zařízení.</string>
     <string name="login_inbox">Příchozí</string>
     <string name="login_imap_login">IMAP uživatelské jméno</string>
@@ -631,6 +637,7 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP zabezpečení</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Metoda autorizace</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy server</string>
@@ -645,7 +652,9 @@
     <string name="proxy_use_proxy_confirm">Přejete si použít proxy server \"%1$s\"?</string>
     <string name="proxy_share_explain">Vaši přátele si mohou tento proxy server přidat naskenováním tohoto QR kódu.</string>
     <string name="proxy_share_link">Sdílet odkaz</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Pokračovat se zjednodušeným nastavením?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Zadaný e-mail podporuje zjednodušené nastavení (OAuth 2.0).\n\nV následujícím kroku, prosíme, povolte Delta Chatu chovat se jako aplikace typu Chat přes e-mail.\n\nDelta Chat nesbírá uživatelská data, vše zůstává na vašem zařízení.</string>
     <string name="login_certificate_checks">Kontroly certifikátu</string>
     <string name="login_error_mail">Prosím, zadejte platnou e-mailovou adresu</string>
@@ -695,6 +704,7 @@
     <string name="pref_profile_photo">Profilový obrázek</string>
     <string name="pref_blocked_contacts">Blokované kontakty</string>
     <string name="blocked_empty_hint">Zablokované kontakty se zobrazí zde.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Heslo a účet</string>
     <string name="pref_who_can_see_profile_explain">Váš profilový obrázek, jméno a bio budou odeslány společně s vašimi zprávami ostatním uživatelům.</string>
     <string name="pref_your_name">Vaše jméno</string>
@@ -765,6 +775,7 @@
     <string name="pref_background_btn_default">Použít výchozí obrázek</string>
     <string name="pref_background_btn_gallery">Vybrat z galerie</string>
     <string name="pref_imap_folder_warn_disable_defaults">Při změně této volby se ujistěte, že váš server a ostatní klientské aplikace mají odpovídající nastavení.\n\nJinak může vše přestat fungovat.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Sledovat složku Odeslané</string>
     <string name="pref_send_copy_to_self">Posílat si kopie</string>
     <string name="pref_send_copy_to_self_explain">Tato volba je potřebná, pokud je tento účet používán na více zařízeních.</string>
@@ -986,6 +997,7 @@
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Ověřeni uživatelem %1$s.</string>
     <string name="verified_by_you">Ověřeni mnou</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Aby mohlo být garantováno koncové šifrování, můžete do této skupiny přidávat pouze uživatele se zeleným zaškrtávátkem.\n\nSe svými kontakty se můžete setkat osobně a naskenovat jejich QR kód, abyste je ověřili.</string>
     <string name="mailto_dialog_header_select_chat">Vyberte chat, do kterého chcete zprávu poslat</string>
     <!-- first placeholder is the name of the chat -->

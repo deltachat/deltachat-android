@@ -352,9 +352,13 @@
 
 
     <string name="login_title">Login</string>
+    <!-- deprecated -->
     <string name="login_header">Login til server</string>
+    <!-- deprecated -->
     <string name="login_explain">Login med en eksisterende e-mailkonto</string>
+    <!-- deprecated -->
     <string name="login_subheader">For kendte e-mailudbydere opsættes yderligere indstillinger automatisk. Nogle gange skal IMAP aktiveres i brugerfladen. Kontakt din e-mailudbyder eller venner for at få hjælp.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Der er ingen Delta Chat server, data forbliver på enhed!</string>
     <string name="login_inbox">Indbakke</string>
     <string name="login_imap_login">IMAP logind navn</string>
@@ -367,8 +371,11 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP sikkerhed</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Autorisationsmetode</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Fortsæt med forenklet opsætning?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Indtastet e-mail adresse understøtter simple opsætning (OAuth2).\n\nTillad i næste trin at Delta Chat agerer som samtale med e-mail program.\n\nDer er ingen Delta Chat servere, data forbliver på enhed.</string>
     <string name="login_certificate_checks">Certifikationstjek</string>
     <string name="login_error_mail">Indtast gyldig e-mailadresse</string>
@@ -407,6 +414,7 @@
     <string name="pref_profile_photo">Profilbillede</string>
     <string name="pref_blocked_contacts">Blokerede kontakter</string>
     <string name="blocked_empty_hint">Hvis du blokerer kontakter, bliver de vist her.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Adgangskode og konto</string>
     <string name="pref_who_can_see_profile_explain">Profilbillede og navn vises sammen med beskeder, når der kommunikeres med andre brugere. Allerede sendt information kan ikke slettes eller fjernes.</string>
     <string name="pref_your_name">Dit navn</string>
@@ -466,6 +474,7 @@
     <string name="pref_background_btn_default">Brug standardbillede</string>
     <string name="pref_background_btn_gallery">Vælg fra galleri</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ved deaktivering af denne indstiiling vær sikker på at server og andre klienter er indstillet tilsvarende.\n\nEllers fungerer det måske slet ikke.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Overvåg sendt mappe</string>
     <string name="pref_send_copy_to_self">Send kopi til mig selv</string>
     <string name="pref_auto_folder_moves">Flytter automatisk til DeltaChat mappe</string>

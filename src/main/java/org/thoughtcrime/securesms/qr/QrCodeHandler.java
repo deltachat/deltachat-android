@@ -112,8 +112,10 @@ public class QrCodeHandler {
 
             case DcContext.DC_QR_WITHDRAW_VERIFYCONTACT:
             case DcContext.DC_QR_WITHDRAW_VERIFYGROUP:
+            case DcContext.DC_QR_WITHDRAW_JOINBROADCAST:
                 String message = qrParsed.getState() == DcContext.DC_QR_WITHDRAW_VERIFYCONTACT ? activity.getString(R.string.withdraw_verifycontact_explain)
-                                  : activity.getString(R.string.withdraw_verifygroup_explain, qrParsed.getText1());
+                               : qrParsed.getState() == DcContext.DC_QR_WITHDRAW_VERIFYCONTACT ? activity.getString(R.string.withdraw_verifygroup_explain, qrParsed.getText1())
+                               : activity.getString(R.string.withdraw_joinbroadcast_explain, qrParsed.getText1());
                 builder.setTitle(R.string.qrshow_title);
                 builder.setMessage(message);
                 builder.setNeutralButton(R.string.reset, (dialog, which) -> {
@@ -126,6 +128,7 @@ public class QrCodeHandler {
 
             case DcContext.DC_QR_REVIVE_VERIFYCONTACT:
             case DcContext.DC_QR_REVIVE_VERIFYGROUP:
+            case DcContext.DC_QR_REVIVE_JOINBROADCAST:
                 builder.setTitle(R.string.qrshow_title);
                 builder.setMessage(activity.getString(R.string.revive_verifycontact_explain));
                 builder.setNeutralButton(R.string.revive_qr_code, (dialog, which) -> {

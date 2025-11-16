@@ -143,6 +143,7 @@
     <string name="tab_map">الخريطة</string>
     <string name="media_preview">معاينة الصورة</string>
     <string name="login_title">الولوج</string>
+    <!-- deprecated -->
     <string name="login_header">الإتصال بخادومك</string>
     <string name="login_inbox">صندوق الوارد</string>
     <string name="login_imap_login">مستخدم IMAP</string>
@@ -164,6 +165,7 @@
     <string name="pref_profile_info_headline">معلومات ملفك التعريفي</string>
     <string name="pref_profile_photo">صورة الملف التعريفي</string>
     <string name="pref_blocked_contacts">المراسلون المحبوسون</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">الكلمة السرية والحساب</string>
     <string name="pref_your_name">اسمك</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->

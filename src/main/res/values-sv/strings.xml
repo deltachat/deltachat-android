@@ -202,6 +202,7 @@
     <string name="menu_new_chat">Ny chatt</string>
     <string name="menu_new_group">Ny grupp</string>
     <string name="clone_chat">Klona chatt</string>
+    <!-- deprecated -->
     <string name="add_recipients">Lägg till mottagare</string>
     <string name="menu_send">Skicka</string>
     <string name="menu_toggle_keyboard">Byt emoji-tangentbord</string>
@@ -251,6 +252,7 @@
     <string name="menu_scroll_to_bottom">Skrolla till botten</string>
     <string name="menu_scroll_to_top">Bläddra till toppen</string>
     <string name="menu_help">Hjälp</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">Vad är Webxdc?</string>
     <string name="privacy_policy">Integritetspolicy</string>
     <string name="menu_select_all">Markera alla</string>
@@ -499,7 +501,7 @@
     <string name="onboarding_create_instant_account">Skapa ny profil</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Jag har redan en profil</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Klassisk e-postinloggning</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Din profil</string>
@@ -524,9 +526,13 @@
     <string name="welcome_chat_over_email">Säker decentraliserad chatt</string>
     <string name="scan_invitation_code">Skanna inbjudningskod</string>
     <string name="login_title">Logga in</string>
+    <!-- deprecated -->
     <string name="login_header">Logga in på din server</string>
+    <!-- deprecated -->
     <string name="login_explain">Logga in med ett befintligt e-postkonto</string>
+    <!-- deprecated -->
     <string name="login_subheader">För kända e-postleverantörer installeras ytterligare inställningar automatiskt. Ibland måste IMAP aktiveras i webbinställningarna. Kontakta din e-postleverantör eller vänner för hjälp.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Det finns ingen Delta Chat-server, din data stannar på din enhet.</string>
     <string name="login_inbox">Inkorg</string>
     <string name="login_imap_login">IMAP inloggningsnamn</string>
@@ -539,8 +545,11 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP säkerhet</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Auktoriseringsmetod</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Fortsätta med förenklad installation?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Den angivna e-postadressen stödjer förenklad inställning (OAuth 2.0).\n\nLåt Delta Chat agera som ditt chatt-över-epost-program, i nästa steg.\n\nDet finns ingen Delta Chat-server, din data stannar på din enhet.</string>
     <string name="login_certificate_checks">Certifikatkontroller</string>
     <string name="login_error_mail">Ange en giltig e-postadress</string>
@@ -581,6 +590,7 @@
     <string name="pref_profile_photo">Profilbild</string>
     <string name="pref_blocked_contacts">Blockerade kontakter</string>
     <string name="blocked_empty_hint">Blockerade kontakter kommer att visas här.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Lösenord och konto</string>
     <string name="pref_who_can_see_profile_explain">Din profilbild och ditt namn visas tillsammans med dina meddelanden när du kommunicerar med andra användare. Information som redan skickats kan inte tas bort eller flyttas.</string>
     <string name="pref_your_name">Ditt namn</string>
@@ -648,6 +658,7 @@
     <string name="pref_background_btn_default">Använd standardbild</string>
     <string name="pref_background_btn_gallery">Välj från galleriet</string>
     <string name="pref_imap_folder_warn_disable_defaults">Om du inaktiverar det här alternativet, tillse att servern och dina andra klienter är konfigurerade i enlighet med detta.\n\nAnnars kanske saker och ting inte fungerar alls.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Övervaka mappen \"Skickat\"</string>
     <string name="pref_send_copy_to_self">Skicka kopia till mig själv</string>
     <string name="pref_send_copy_to_self_explain">Krävs när du använder detta konto på flera enheter.</string>
@@ -869,6 +880,7 @@
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Introducerad av %1$s</string>
     <string name="verified_by_you">Introducerad av mig</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">För att garantera totalsträckskryptering  kan du bara lägga till kontakter med en grön bock i den här gruppen.\n\nDu kan träffa kontakter personligen och skanna deras QR-kod för att introducera dem.</string>
     <string name="mailto_dialog_header_select_chat">Välj chatt för att skicka meddelandet till</string>
     <!-- first placeholder is the name of the chat -->

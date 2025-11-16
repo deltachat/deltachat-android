@@ -243,9 +243,9 @@
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">نوم تورگه</string>
     <string name="email">ایمیل</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">ایمیل نۊ</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">سرتال</string>
     <string name="menu_send">فشناڌن</string>
     <string name="menu_toggle_keyboard">آلشت تخته کیلیت ایموجی یل</string>

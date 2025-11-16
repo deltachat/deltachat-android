@@ -174,6 +174,7 @@
     <string name="menu_new_contact">대화상대 추가</string>
     <string name="menu_new_chat">채팅 시작</string>
     <string name="menu_new_group">새 그룹</string>
+    <!-- deprecated -->
     <string name="add_recipients">수신자 추가</string>
     <string name="menu_send">보내기</string>
     <string name="menu_toggle_keyboard">이모티콘 키보드 전환</string>
@@ -412,9 +413,13 @@
 
     <string name="scan_invitation_code">초대 코드 스캔</string>
     <string name="login_title">로그인</string>
+    <!-- deprecated -->
     <string name="login_header">이메일 계정으로 로그인하시오</string>
+    <!-- deprecated -->
     <string name="login_explain">존재하는 이메일 계정으로 로그인하시오</string>
+    <!-- deprecated -->
     <string name="login_subheader">알려진 이메일 공급자의 경우 추가 설정이 자동으로 설정됩니다. 웹 설정에서 IMAP을 사용 가능으로 설정해야 하는 경우가 있습니다. 도움이 필요하면 전자 메일 공급자나 친구에게 문의하십시오.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Delta Chat은 서버가 없고, 당신의 데이터는 장치에 남아 있습니다.</string>
     <string name="login_inbox">받은 편지함</string>
     <string name="login_imap_login">IMAP 로그인 이름</string>
@@ -427,8 +432,11 @@
     <string name="login_smtp_server">SMTP 서버</string>
     <string name="login_smtp_port">SMTP 포트</string>
     <string name="login_smtp_security">SMTP 보안</string>
+    <!-- deprecated -->
     <string name="login_auth_method">권한 부여 방법</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">간소화된 설치를 계속하시겠습니까?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">입력한 이메일 주소는 단순화된 설정(OAuth 2.0)을 지원합니다.\n\n다음 단계에서는 Delta Chat 이 이메일을 통한 채팅 앱 역할을 하도록 허용하십시오.\n\nDelta 채팅 서버가 없으며 데이터가 장치에 남아 있습니다.</string>
     <string name="login_certificate_checks">인증서 확인</string>
     <string name="login_error_mail">유효한 이메일 주소를 입력하시오</string>
@@ -467,6 +475,7 @@
     <string name="pref_profile_photo">프로필 사진</string>
     <string name="pref_blocked_contacts">차단 목록</string>
     <string name="blocked_empty_hint">차단된 연락처가 여기에 나타납니다.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">계정 설정</string>
     <string name="pref_who_can_see_profile_explain">다른 사용자와 통신할 때 프로필 이미지, 이름 및 서명이 메시지와 함께 전송됩니다.</string>
     <string name="pref_your_name">내 이름</string>
@@ -525,6 +534,7 @@
     <string name="pref_background_btn_default">기본 이미지 사용</string>
     <string name="pref_background_btn_gallery">갤러리에서 선택됨</string>
     <string name="pref_imap_folder_warn_disable_defaults">이 선택사항을 변경할 경우, 서버와 다른 클라이언트가 적절하게 구성되어 있는지 확인하십시오.\n\n그렇지 않으면 상황이 전혀 작동하지 않을 수 있습니다.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">보낸 폴더 보기</string>
     <string name="pref_send_copy_to_self">복사본 내게 보내기</string>
     <string name="pref_send_copy_to_self_explain">여러 장치에서 이 계정을 사용할 때 필요합니다.</string>

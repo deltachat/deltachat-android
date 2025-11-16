@@ -182,6 +182,7 @@
     <string name="menu_new_contact">Νέα Επαφή</string>
     <string name="menu_new_chat">Νέα Συνομιλία</string>
     <string name="menu_new_group">Νέα ομάδα</string>
+    <!-- deprecated -->
     <string name="add_recipients">Προσθήκη Παραλήπτη</string>
     <string name="menu_send">Αποστολή</string>
     <string name="menu_toggle_keyboard">Εναλλαγή πληκτρολογίου emoji</string>
@@ -430,9 +431,13 @@
 
     <string name="scan_invitation_code">Σάρωση Κωδικού Πρόσκλησης</string>
     <string name="login_title">Σύνδεση</string>
+    <!-- deprecated -->
     <string name="login_header">Συνδεθείτε στον λογαριασμό σας E-Mail</string>
+    <!-- deprecated -->
     <string name="login_explain">Συνδεθείτε με έναν υπάρχοντα λογαριασμό e-mail</string>
+    <!-- deprecated -->
     <string name="login_subheader">Για γνωστούς παρόχους email ρυθμίζονται αυτόματα πρόσθετες ρυθμίσεις. Μερικές φορές το IMAP πρέπει να είναι ενεργοποιημένο στις ρυθμίσεις Ιστού. Συμβουλευτείτε τον πάροχο e-mail ή τους φίλους σας για βοήθεια.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Δεν υπάρχουν διακομιστές Delta Chat, τα δεδομένα σας παραμένουν στη συσκευή σας.</string>
     <string name="login_inbox">Εισερχόμενα</string>
     <string name="login_imap_login">Όνομα Σύνδεσης IMAP</string>
@@ -445,8 +450,11 @@
     <string name="login_smtp_server">Διακομιστής SMTP</string>
     <string name="login_smtp_port">Θύρα SMTP</string>
     <string name="login_smtp_security">Ασφάλεια SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Μέθοδος Πιστοποίησης</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Συνέχεια με την απλοποιημένη ρύθμιση;</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Η εισαγόμενη διεύθυνση e-mail υποστηρίζει μια απλοποιημένη ρύθμιση (OAuth 2.0).\n\nΣτο επόμενο βήμα, επιτρέψτε στο Delta Chat να λειτουργεί ως η εφαρμογή Chat μέσω ηλεκτρονικού ταχυδρομείου.\n\nΔεν υπάρχουν διακομιστές Delta Chat, τα δεδομένα σας παραμένει στη συσκευή σας.</string>
     <string name="login_certificate_checks">Έλεγχοι Πιστοποιητικών</string>
     <string name="login_error_mail">Παρακαλώ εισάγετε μια έγκυρη διεύθυνση e-mail</string>
@@ -487,6 +495,7 @@
     <string name="pref_profile_photo">Εικόνα Προφίλ</string>
     <string name="pref_blocked_contacts">Αποκλεισμένες Επαφές</string>
     <string name="blocked_empty_hint">Οι αποκλεισμένες επαφές θα εμφανίζονται εδώ.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Κωδικός και Λογαριασμός</string>
     <string name="pref_who_can_see_profile_explain">Η εικόνα του προφίλ, το όνομα και η υπογραφή σας θα αποστέλλονται μαζί με τα μηνύματά σας κατά την επικοινωνία με άλλους χρήστες.</string>
     <string name="pref_your_name">Το όνομά σου</string>
@@ -546,6 +555,7 @@
     <string name="pref_background_btn_default">Χρήση προκαθορισμένου</string>
     <string name="pref_background_btn_gallery">Επιλογή</string>
     <string name="pref_imap_folder_warn_disable_defaults">Εάν αλλάξετε αυτήν την επιλογή, βεβαιωθείτε ότι ο διακομιστής σας και οι άλλοι πελάτες σας έχουν διαμορφωθεί ανάλογα.\n\nΔιαφορετικά, τα πράγματα ενδέχεται να μην λειτουργούν καθόλου.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Παρακολουθήστε τον Απεσταλμένο Φάκελο</string>
     <string name="pref_send_copy_to_self">Αποστολή Αντιγράφου στον Εαυτό</string>
     <string name="pref_send_copy_to_self_explain">Απαιτείται κατά τη χρήση αυτού του λογαριασμού σε πολλές συσκευές.</string>

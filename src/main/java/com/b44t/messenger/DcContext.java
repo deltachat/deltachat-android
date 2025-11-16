@@ -68,8 +68,10 @@ public class DcContext {
     public final static int DC_QR_ERROR             = 400;
     public final static int DC_QR_WITHDRAW_VERIFYCONTACT = 500;
     public final static int DC_QR_WITHDRAW_VERIFYGROUP   = 502;
+    public final static int DC_QR_WITHDRAW_JOINBROADCAST = 504;
     public final static int DC_QR_REVIVE_VERIFYCONTACT   = 510;
     public final static int DC_QR_REVIVE_VERIFYGROUP     = 512;
+    public final static int DC_QR_REVIVE_JOINBROADCAST   = 514;
     public final static int DC_QR_LOGIN             = 520;
 
     public final static int DC_SOCKET_AUTO     = 0;

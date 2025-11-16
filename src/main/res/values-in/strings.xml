@@ -181,6 +181,7 @@
     <string name="menu_new_contact">Kontak baru</string>
     <string name="menu_new_chat">Obrolan baru</string>
     <string name="menu_new_group">Grup baru</string>
+    <!-- deprecated -->
     <string name="add_recipients">Tambahkan Penerima</string>
     <string name="menu_send">Terkirim</string>
     <string name="menu_toggle_keyboard">Tekan tombol emoji keyboard</string>
@@ -358,9 +359,13 @@
     <string name="send_message">Kirim pesan</string>
 
     <string name="login_title">Masuk</string>
+    <!-- deprecated -->
     <string name="login_header">Masuk ke server Anda</string>
+    <!-- deprecated -->
     <string name="login_explain">Masuk dengan akun surel yang ada</string>
+    <!-- deprecated -->
     <string name="login_subheader">Pengaturan surel penyedia tambahan yang sudah diketahui dipasang secara otomatis. Terkadang IMAP perlu daktifkan di pengaturan aplikasi. Hubungi surel penyedia Anda atau minta tolong teman.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Tidak ada server Delta Chat, data Anda tetap di perangkat Anda.</string>
     <string name="login_inbox">Surel masuk</string>
     <string name="login_imap_login">Nama login IMAP</string>
@@ -373,8 +378,11 @@
     <string name="login_smtp_server">Server SMTP</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">Keamanan SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Metode otorisasi</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Lanjutkan dengan pengaturan yang disederhanakan?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Bantuan untuk alamat surel yang telah dimasukkan adalah pengaturan yang disederhanakan (OAuth 2.0).\n\nPada langkah selanjutnya, izinkan Delta Chat sebagai Obrolan Anda pada aplikasi Surel.\n\nTidak ada server Delta Chat, obrolan Anda tetap di perangkat Anda.</string>
     <string name="login_certificate_checks">Cek sertifikat</string>
     <string name="login_error_mail">Masukkan alamat surel yang sahih</string>
@@ -408,6 +416,7 @@
     <string name="pref_profile_info_headline">Info profil Anda</string>
     <string name="pref_profile_photo">Gambar profil</string>
     <string name="pref_blocked_contacts">Kontak yang diblokir</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Kata sandi dan akun</string>
     <string name="pref_who_can_see_profile_explain">Foto dan nama profil Anda akan tampak bersama dengan pesan-pesan ketika berkomunikasi dengan pengguna lain. Informasi yang telah dikirimkan tidak dapat dihapus atau dipindah.</string>
     <string name="pref_your_name">Nama Anda</string>
