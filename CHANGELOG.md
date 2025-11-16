@@ -6,8 +6,8 @@
 * Do not show "1 member" when the process of joining the group is not finished
 * Improve handling of video recoding
 * Tweak advanced section and wording of some advanced options
+* Expose new "Multi-device mode" option instead of "Delete from server" for chatmail profiles
 * Opened in-chat apps got a 'About Apps' menu item
-
 
 ## v2.25.0
 2025-11
