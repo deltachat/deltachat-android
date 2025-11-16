@@ -289,9 +289,13 @@
     <string name="send_message">Imbia messàgiu</string>
 
     <string name="login_title">Intra</string>
+    <!-- deprecated -->
     <string name="login_header">Intra in su servidore tuo</string>
+    <!-- deprecated -->
     <string name="login_explain">Intra cun un\'indiritzu de posta eletrònica chi esistat</string>
+    <!-- deprecated -->
     <string name="login_subheader">Pro sos frunidores de posta eletrònica connotos sas impostatziones additzionales benint impostadas in automàticu. Cada tantu s\'IMAP cheret abilitadu in sas impostatziones web. Si ti serbit agiudu pedi a su frunidore de posta eletrònica tuo o a sos amigos tuos.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">No esistint serbidores de Delta Chat, sos datos tuos abarrant in su dispositivu tuo.</string>
     <string name="login_inbox">In arrivu</string>
     <string name="login_imap_login">Nùmene impreadore IMAP</string>
@@ -304,8 +308,11 @@
     <string name="login_smtp_server">Serbidore SMTP</string>
     <string name="login_smtp_port">Ghenna SMTP</string>
     <string name="login_smtp_security">Seguresa SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Manera de autenticatzione</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Cheres sighire cun s\'impostatzione semplificada?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">S\'indiritzu de posta eletrònica insertadu suportat un\'impostztione semplificada (OAuth 2.0).\n\n In su passu chi sighet, pro praghere, permite a Delta Chat de operare che a aplicatzione de tzarrada pro mèdiu de posta eletrònica.\n\nNon bi sunt serbidores de Delta Chat, abarrat totu in su dispositivu tuo.</string>
     <string name="login_certificate_checks">Verìficas de su tzertificadu</string>
     <string name="login_error_mail">Inserta un\'indiritzu de posta eletrònica bàlidu</string>
@@ -342,6 +349,7 @@
     <string name="pref_profile_photo">Fotografia de profilu</string>
     <string name="pref_blocked_contacts">Cuntatos blocados</string>
     <string name="blocked_empty_hint">Si as a blocare cuntatos ant a èssere allistados inoghe.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Crae de intrada e contu</string>
     <string name="pref_who_can_see_profile_explain">S\'immàgine de profilu tua e su nùmene tuo ant a èssere ammustrados in paris cun sos messàgios tuos cando ses comunichende cun àteros impreadores. Sas informatziones giai imbiadas non podent èssere iscantzelladas o bogadas.</string>
     <string name="pref_your_name">Su nùmene tuo</string>
@@ -400,6 +408,7 @@
     <string name="pref_background_btn_default">Imprea s\'immàgine predefinida</string>
     <string name="pref_background_btn_gallery">Ischerta dae sa galleria</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si disabìlitas custa opztione assegura·ti chi su serbidore tuo e totu sos àteros clientes siant cunfigurados in sa matessi manera\n\nSi nono sas cosas diant pòdere non funtzionare pro nudda.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Pòmpia sa cartella de sos imbiados</string>
     <string name="pref_send_copy_to_self">Imbia·ti·nche una còpia</string>
     <string name="pref_auto_folder_moves">Tramudòngios automàticos a sa cartella DeltaChat</string>

@@ -178,10 +178,10 @@
         <item quantity="other">%d участвують</item>
     </plurals>
     <plurals name="n_recipients">
-        <item quantity="one">%d одержувач(ка)</item>
-        <item quantity="few">%d одержувачі й одержувачки</item>
-        <item quantity="many">%d одержувачок і одержувачів</item>
-        <item quantity="other">%d одержувачок і одержувачів</item>
+        <item quantity="one">%d одержувач</item>
+        <item quantity="few">%d одержувачі</item>
+        <item quantity="many">%d одержувачів</item>
+        <item quantity="other">%d одержувачів</item>
     </plurals>
     <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
@@ -279,13 +279,14 @@
     <string name="channels">Канали</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Новий Канал</string>
+    <!-- deprecated -->
     <string name="add_recipients">Додати одержувачів</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Назва Каналу</string>
     <string name="email">E-Mail</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Новий E-Mail</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Тема</string>
     <string name="menu_send">Послати</string>
     <string name="menu_toggle_keyboard">Увімкнути емодзі-клавіатуру</string>
@@ -313,7 +314,7 @@
     <string name="menu_copy_link_to_clipboard">Скопіювати посилання</string>
     <string name="menu_copy_text_to_clipboard">Копіювати текст</string>
     <string name="menu_copy_image_to_clipboard">Копіювати зображення</string>
-    <string name="menu_copy_email_to_clipboard">Копіювати електронну пошту</string>
+    <string name="menu_copy_email_to_clipboard">Копіювати e-mail</string>
     <string name="paste_from_clipboard">Вставити із буферу обміну</string>
     <string name="ask_copy_unopenable_link_to_clipboard">Посилання \"%1$d\" не можна відкрити у веб-браузері. Скопіювати посилання в буфер обміну?</string>
     <string name="menu_forward">Переслати повідомлення</string>
@@ -338,6 +339,7 @@
     <string name="menu_scroll_to_bottom">Перейти в кінець</string>
     <string name="menu_scroll_to_top">Прокрутити на початок</string>
     <string name="menu_help">Допомога</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">Що таке Webxdc?</string>
     <string name="privacy_policy">Політика конфіденційності</string>
     <string name="menu_select_all">Вибрати все</string>
@@ -418,7 +420,7 @@
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ви впевнені, що хочете піти?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">¿Видалити %d чат на всіх Ваших пристроях?</item>
@@ -494,7 +496,7 @@
     <string name="chat_record_explain">Натиснувши втримуйте, щоби записати голосове повідомлення, а для відправки відпустіть</string>
     <string name="chat_no_chats_yet_title">Немає вхідних повідомлень.\nНатисніть \"+\" щоб почати новий чат.</string>
     <string name="chat_all_archived">Всі чати заархівовано.\nНатисніть \"+\", щоб почати новий чат.</string>
-    <string name="chat_share_with_title">Поділитися</string>
+    <string name="chat_share_with_title">Поділитися з...</string>
     <string name="chat_input_placeholder">Повідомлення</string>
     <string name="chat_archived_label">Заархівовано</string>
     <string name="chat_request_label">Запит</string>
@@ -650,8 +652,8 @@
     <string name="onboarding_create_instant_account">Створити новий профіль</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">У мене вже є профіль</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Класичний вхід до електронної пошти</string>
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Транспорт через класичну електронну пошту</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Ваш профіль</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -675,9 +677,14 @@
     <string name="welcome_chat_over_email">Безпечний децентралізований чат</string>
     <string name="scan_invitation_code">Сканувати код запрошення</string>
     <string name="login_title">Увійти</string>
+    <string name="login_advanced_hint">Цей спосіб входу призначений для досвідчених користувачів:\n\n• Не використовуйте обліковий запис, який ви вже використовуєте в іншому застосунку.\n\n• Класичний поштовий сервер дозволяє чати без наскрізного шифрування — вони позначені піктограмою листа.</string>
+    <!-- deprecated -->
     <string name="login_header">Увійдіть до свого облікового запису електронної пошти</string>
+    <!-- deprecated -->
     <string name="login_explain">Увійти з наявним обліковим записом електронної пошти</string>
+    <!-- deprecated -->
     <string name="login_subheader">Для відомих провайдерів електронної пошти додаткові налаштування встановлюються автоматично. Іноді IMAP потрібен дозвіл у веб-інтерфейсі. Проконсультуйтеся з Вашим провайдером електронної пошти або друзями для отримання допомоги.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">У Delta Chat немає серверів, Ваші дані залишаються на Вашому пристрої!</string>
     <string name="login_inbox">Вхідні</string>
     <string name="login_imap_login">IMAP-логін</string>
@@ -690,6 +697,7 @@
     <string name="login_smtp_server">SMTP-сервер</string>
     <string name="login_smtp_port">SMTP-порт</string>
     <string name="login_smtp_security">Налаштування безпеки SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Метод авторизації</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Проксі</string>
@@ -704,7 +712,21 @@
     <string name="proxy_use_proxy_confirm">Ви хочете використовувати проксі \"%1$s\"?</string>
     <string name="proxy_share_explain">Ваші друзі можуть додати цей проксі, відсканувавши QR-код.</string>
     <string name="proxy_share_link">Поділитися посиланням</string>
+    <string name="proxy_enabled">Проксі увімкнено</string>
+    <string name="proxy_enabled_hint">Ви використовуєте проксі-сервер. Якщо у вас проблеми з підключенням, спробуйте інший проксі.</string>
+    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
+    <string name="transports">Транспортні сервери</string>
+    <string name="add_transport">Додати транспортний сервер</string>
+    <string name="remove_transport">Видалити транспортний сервер</string>
+    <string name="edit_transport">Редагувати транспортний сервер</string>
+    <!-- shown if a QR code was scanned that can be used as a transport -->
+    <string name="confirm_add_transport">Додати цей транспортний сервер?</string>
+    <string name="invalid_transport_qr">Відсканований QR-код не містить дійсного транспортного сервера.</string>
+    <string name="confirm_remove_transport">Видаліть транспортний сервер \"%1$s\"?\n\nВаш контакти можуть зв\'язатися з вами, тільки якщо ви раніше зв\'язалися з ними через інший транспортний сервер.\n\nЯкщо ви сумніваєтеся, видаліть транспортний сервер пізніше.</string>
+
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Продовжити спрощене налаштування?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Дана скринька підтримує спрощене налаштовування (OAuth 2.0).\n\nНаступним кроком, будь‐ласка, дозвольте Дельта‐чатові надсилати й одержувати повідомлення.\n\nДельта‐чат не збирає користувацьких даних: усе лишається на вашім пристрої.</string>
     <string name="login_certificate_checks">Перевірки сертифікатів</string>
     <string name="login_error_mail">Вкажіть дійсну адресу електронної пошти</string>
@@ -754,6 +776,7 @@
     <string name="pref_profile_photo">Зображення профілю</string>
     <string name="pref_blocked_contacts">Заблоковані контакти</string>
     <string name="blocked_empty_hint">Заблоковані Вами контакти будуть відображені тут.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Пароль та обліковий запис</string>
     <string name="pref_who_can_see_profile_explain">Ваш аватарка, ім\'я та біографія будуть надіслані разом з вашим повідомлення при спілкуванні з іншими користувачами.</string>
     <string name="pref_your_name">Ваше ім\'я</string>
@@ -810,6 +833,7 @@
     <string name="pref_backup">Резервне копіювання</string>
     <string name="pref_backup_explain">Зберегти чати на зовнішній носій</string>
     <string name="pref_backup_export_explain">Резервне копіювання дозволяє відновлювати попередні налаштування програми під час нової установки на цьому або іншому пристрої.\n\nРезервна копія містить всі повідомлення, контакти та чати, а також параметри Autocrypt. Після створення резервної копії якомога швидше перенесіть її в надійне місце.</string>
+    <string name="pref_backup_export_this">Експортуйте цей профіль</string>
     <!-- deprecated -->
     <string name="pref_backup_export_x">Експортувати %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
@@ -824,6 +848,7 @@
     <string name="pref_background_btn_default">Використовувати тло за замовчуванням</string>
     <string name="pref_background_btn_gallery">Вибрати з галереї</string>
     <string name="pref_imap_folder_warn_disable_defaults">Якщо ви змінюєте цей параметр, переконайтеся, що Ваш сервер та інші Ваші клієнти налаштовані відповідним чином.\n\nІнакше щось може взагалі не працювати.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Стежити за папкою «Надіслані»</string>
     <string name="pref_send_copy_to_self">Відправити копію собі</string>
     <string name="pref_send_copy_to_self_explain">Обов’язково при використанні цього облікового запису на кількох пристроях.</string>
@@ -938,6 +963,11 @@
     <string name="remove_member_by_you">Ви видалили учасника %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s видалив (-ла) учасника %1$s.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="group_left_by_you">Ви покинули групу.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="channel_left_by_you">Ви покинули канал.</string>
+    <string name="you_joined_the_channel">Ви приєдналися до каналу.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s залишив (-ла) групу.</string>
     <string name="group_image_deleted_by_you">Ви видалили емблему групи.</string>
@@ -985,6 +1015,7 @@
     <string name="ephemeral_timer_weeks_by_you">Ви встановили таймер зникнення повідомлень на %1$s тижнів.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s встановив (-ла) таймер зникнення повідомлень на %1$s тижнів.</string>
+    <string name="chat_unencrypted_explanation">Повідомлення в цьому чаті використовують класичну електронну пошту і не мають наскрізного шифрування.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Відтепер повідомлення гарантовано будуть мати наскрізне шифрування. Торкніться, щоб дізнатися більше.</string>
     <string name="chat_protection_enabled_explanation">Тепер гарантовано, що всі повідомлення в цьому чаті наскрізь зашифровані.\n\nНаскрізне шифрування зберігає конфіденційність повідомлень між вами і вашими партнерами по чату. Навіть сервери, провайдери або ретранслятори не можуть їх прочитати.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s вимагає наскрізного шифрування, яке ще не налаштоване для цього чату. Натисніть, щоб дізнатися більше.</string>
@@ -1009,6 +1040,7 @@
     <string name="qrscan_hint_desktop">Піднесіть QR-код до камери</string>
     <string name="qrscan_failed">Неможливо декодувати QR-код</string>
     <string name="qrscan_ask_join_group">Приєднатися до групи «%1$s»?</string>
+    <string name="qrscan_ask_join_channel">Бажаєте приєднатися до каналу \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">Відсканований відбиток не збігається з останнім відомим відбитком %1$s</string>
     <string name="qrscan_no_addr_found">Цей QR-код містить відбиток пальця, але не адресу.\n\nДля позасмугової перевірки, будь ласка, спочатку встановіть зашифроване з\'єднання з одержувачем.</string>
     <string name="qrscan_contains_text">Текст з QR-коду:\n\n%1$s</string>
@@ -1027,6 +1059,7 @@
     <string name="qrshow_join_group_title">Баркод із запрошенням</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Відскануйте код, щоб приєднатися до групи \"%1$s\".</string>
+    <string name="qrshow_join_channel_hint">Відскануйте щоб приєднатися до каналу \"%1$s\"</string>
     <string name="qrshow_join_contact_title">Запрошувальний баркод</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Відскануйте код, щоб спілкуватись з %1$s</string>
@@ -1050,6 +1083,7 @@
     <string name="verified_by">Представни·ця: %1$s</string>
     <string name="verified_by_you">Представлено мною</string>
     <string name="verified_by_unknown">Представлено</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Аби наскрізне шифрування лишалося ґарантованим, у цю групу можна додавати лише контактних осіб із зеленою галочкою.\n\nМожна зустрітись із контактною особою та відсканувати баркод із її пристрою, щоби представити її.</string>
     <string name="mailto_dialog_header_select_chat">Виберіть чат, куди потрібно надіслати повідомлення</string>
     <!-- first placeholder is the name of the chat -->

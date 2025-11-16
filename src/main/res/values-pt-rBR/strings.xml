@@ -205,6 +205,7 @@
     <string name="menu_new_contact">Novo contato</string>
     <string name="menu_new_chat">Nova conversa</string>
     <string name="menu_new_group">Novo grupo</string>
+    <!-- deprecated -->
     <string name="add_recipients">Adicionar Destinatários</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Ativar teclado de emojis</string>
@@ -488,9 +489,13 @@
 
     <string name="scan_invitation_code">Escanear Código De Convite</string>
     <string name="login_title">Acessar</string>
+    <!-- deprecated -->
     <string name="login_header">Acesse seu servidor</string>
+    <!-- deprecated -->
     <string name="login_explain">Acesse com uma conta de email existente</string>
+    <!-- deprecated -->
     <string name="login_subheader">Para os provedores de e-mail mais conhecidos as configurações adicionais são detectadas automaticamente. Por vezes, o IMAP precisa estar ativado nas configurações do servidor. Consulte seu provedor de e-mail ou amigos para obter ajuda.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">O Delta Chat não tem servidores. Seus dados ficam no seu aparelho!</string>
     <string name="login_inbox">Caixa de entrada</string>
     <string name="login_imap_login">Login IMAP</string>
@@ -503,8 +508,11 @@
     <string name="login_smtp_server">Servidor SMTP</string>
     <string name="login_smtp_port">Porta SMTP</string>
     <string name="login_smtp_security">Segurança SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Método de autorização</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Prosseguir pela configuração simplificada?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Seu servidor de e-mail aceita o método de configuração simplificada (OAuth 2.0).\n\n No próximo passo, por favor, permita que o Delta Chat seja seu aplicativo de e-mail.\n\nNão há servidor do Delta Chat. Seus dados ficam no seu aparelho.</string>
     <string name="login_certificate_checks">Verificações de certificado</string>
     <string name="login_error_mail">Por favor, insira um e-mail válido</string>
@@ -545,6 +553,7 @@
     <string name="pref_profile_photo">Foto do perfil</string>
     <string name="pref_blocked_contacts">Contatos bloqueados</string>
     <string name="blocked_empty_hint">Se você bloquear contatos, eles serão mostrados aqui.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Senha e conta</string>
     <string name="pref_who_can_see_profile_explain">Sua foto de perfil e nome serão exibidos com suas mensagens a outros usuários. Informações já enviadas não podem ser apagas ou removidas.</string>
     <string name="pref_your_name">Seu nome</string>
@@ -604,6 +613,7 @@
     <string name="pref_background_btn_default">Usar imagem padrão</string>
     <string name="pref_background_btn_gallery">Selecionar da galeria</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se você mudar esta opção, certifique-se de que seu servidor e demais aplicativos estejam configurados de acordo.\n\nDo contrário, funcionalidades podem não funcionar.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Verificar a caixa de saída</string>
     <string name="pref_send_copy_to_self">Enviar cópia para mim</string>
     <string name="pref_send_copy_to_self_explain">Necessário ao utilizar esta conta em múltiplos dispositivos.</string>

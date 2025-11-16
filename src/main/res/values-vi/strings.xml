@@ -190,6 +190,7 @@
     <string name="menu_new_chat">Trò chuyện mới</string>
     <string name="menu_new_group">Nhóm mới</string>
     <string name="clone_chat">Sao chép cuộc trò chuyện</string>
+    <!-- deprecated -->
     <string name="add_recipients">Thêm người nhận</string>
     <string name="menu_send">Gửi</string>
     <string name="menu_toggle_keyboard">Chuyển đổi Bàn phím Emoji</string>
@@ -235,6 +236,7 @@
     <string name="menu_scroll_to_bottom">Cuộn xuống dưới cùng</string>
     <string name="menu_scroll_to_top">Cuộn lên trên cùng</string>
     <string name="menu_help">Trợ giúp</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">Webxdc là gì?</string>
     <string name="privacy_policy">Chính sách quyền riêng tư</string>
     <string name="menu_select_all">Chọn tất cả</string>
@@ -474,9 +476,13 @@
 
     <string name="scan_invitation_code">Quét mã mời</string>
     <string name="login_title">Đăng nhập</string>
+    <!-- deprecated -->
     <string name="login_header">Đăng nhập vào tài khoản E-Mail của bạn</string>
+    <!-- deprecated -->
     <string name="login_explain">Đăng nhập bằng tài khoản e-mail hiện có</string>
+    <!-- deprecated -->
     <string name="login_subheader">Đối với các nhà cung cấp e-mail đã biết, cài đặt bổ sung sẽ được thiết lập tự động. Đôi khi IMAP cần được bật trong cài đặt web. Hãy tham khảo nhà cung cấp e-mail hoặc bạn bè của bạn để được trợ giúp.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Không có máy chủ Delta Chat, dữ liệu của bạn vẫn còn trên thiết bị của bạn.</string>
     <string name="login_inbox">Hộp thư đến</string>
     <string name="login_imap_login">Tên đăng nhập IMAP</string>
@@ -489,8 +495,11 @@
     <string name="login_smtp_server">Máy chủ SMTP</string>
     <string name="login_smtp_port">Cổng SMTP</string>
     <string name="login_smtp_security">Bảo mật SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Phương thức ủy quyền</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Tiếp tục với thiết lập đơn giản hóa?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Địa chỉ e-mail đã nhập hỗ trợ thiết lập đơn giản hóa (OAuth 2.0).\n\nTrong bước tiếp theo, vui lòng cho phép Delta Chat hoạt động như ứng dụng Trò chuyện qua E-mail của bạn.\n\nKhông có máy chủ Delta Chat, dữ liệu của bạn vẫn ở trên thiết bị của bạn.</string>
     <string name="login_certificate_checks">Kiểm tra chứng chỉ</string>
     <string name="login_error_mail">Vui lòng nhập địa chỉ e-mail hợp lệ</string>
@@ -531,6 +540,7 @@
     <string name="pref_profile_photo">Ảnh hồ sơ</string>
     <string name="pref_blocked_contacts">Liên hệ bị chặn</string>
     <string name="blocked_empty_hint">Các liên hệ bị chặn sẽ xuất hiện ở đây.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Mật khẩu và tài khoản</string>
     <string name="pref_who_can_see_profile_explain">Ảnh hồ sơ, tên và chữ ký của bạn sẽ được gửi cùng với tin nhắn của bạn khi giao tiếp với người dùng khác.</string>
     <string name="pref_your_name">Tên của bạn</string>
@@ -594,6 +604,7 @@
     <string name="pref_background_btn_default">Sử dụng hình ảnh mặc định</string>
     <string name="pref_background_btn_gallery">Chọn từ thư viện</string>
     <string name="pref_imap_folder_warn_disable_defaults">Nếu bạn thay đổi tùy chọn này, hãy đảm bảo rằng máy chủ và các máy khách khác của bạn được cấu hình tương ứng.\n\nNếu không, mọi thứ có thể không hoạt động.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Xem thư mục đã gửi</string>
     <string name="pref_send_copy_to_self">Gửi bản sao cho chính mình</string>
     <string name="pref_send_copy_to_self_explain">Bắt buộc khi sử dụng tài khoản này trên nhiều thiết bị.</string>
@@ -797,6 +808,7 @@
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Được giới thiệu bởi %1$s</string>
     <string name="verified_by_you">Được tôi giới thiệu</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Để đảm bảo mã hóa hai đầu, bạn chỉ có thể thêm những người liên hệ có dấu kiểm màu xanh lục vào nhóm này.\n\nBạn có thể gặp trực tiếp những người liên hệ và quét Mã QR của họ để giới thiệu họ.</string>
     <string name="mailto_dialog_header_select_chat">Chọn trò chuyện để gửi tin nhắn tới</string>
     <!-- first placeholder is the name of the chat -->

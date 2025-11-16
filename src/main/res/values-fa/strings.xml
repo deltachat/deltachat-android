@@ -246,12 +246,13 @@
     <string name="channels">کانال‌ها</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">کانال جدید</string>
+    <!-- deprecated -->
     <string name="add_recipients">افزودن گیرنده</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">نام کانال</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">رایانامه جدید</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">موضوع</string>
     <string name="menu_send">ارسال</string>
     <string name="menu_toggle_keyboard">تعییر صفحه کلید شکلک‌ها</string>
@@ -305,6 +306,7 @@
     <string name="menu_scroll_to_bottom">رفتن به پایین</string>
     <string name="menu_scroll_to_top">رفن تا بالا</string>
     <string name="menu_help">کمک</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">Webxdc چیست؟</string>
     <string name="privacy_policy">خط مشی رازداری</string>
     <string name="menu_select_all">انتخاب همه</string>
@@ -370,7 +372,7 @@
     <string name="file_saved_to">پرونده  در «%1$s» ذخیره شد.</string>
 
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">آیا مطمئنید می‌خواهید بروید؟</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">آیا می‌خواهید از روی همهٔ دستگاه‌هایتان %d گپ را حذف کنید؟</item>
@@ -593,7 +595,7 @@
     <string name="onboarding_create_instant_account">ایجاد حساب کاربری جدید</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">از قبل یک حساب کاربری دارم</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">ساخت حساب کاربری با حساب رایانامه معمولی</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">نمایه شما</string>
@@ -618,9 +620,13 @@
     <string name="welcome_chat_over_email">گفتگو غیرمتمرکز و ایمن</string>
     <string name="scan_invitation_code">اسکن کردن کد دعوت</string>
     <string name="login_title">ورود</string>
+    <!-- deprecated -->
     <string name="login_header">به سرور خود وارد شوید</string>
+    <!-- deprecated -->
     <string name="login_explain">ورود با یک رایانامه موجود</string>
+    <!-- deprecated -->
     <string name="login_subheader">برای ارائه‌دهندگان شناخته شده تنظبمات اضافه به صورت خودکار انجام می‌شود. گاهی اوقات IMAP باید در تنظیم‌ها رایانامهٔ شما فعال شود. از ارائه‌دهندهٔ رایانامه یا دوستانتان در این مورد کمک بگیرید.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">دلتاچت هیچ سروری ندارد، داده‌های شما در دستگاه شما باقی می‌ماند.</string>
     <string name="login_inbox">ورودی</string>
     <string name="login_imap_login">IMAP Login Name</string>
@@ -633,6 +639,7 @@
     <string name="login_smtp_server">SMTP Server</string>
     <string name="login_smtp_port">SMTP Port</string>
     <string name="login_smtp_security">SMTP Security</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Authorization Method</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">پروکسی</string>
@@ -647,7 +654,9 @@
     <string name="proxy_use_proxy_confirm">می‌خواهید از پروکسی «%1$s» استفاده کنید؟</string>
     <string name="proxy_share_explain">دوست‌هایتان می‌توانند با اسکن کردن کد QR این پروکسی را اضافه کنند.</string>
     <string name="proxy_share_link">اشتراک گذاشتن پیوند</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">با تنظیم‌ها ساده‌ شده ادامه می‌دهید؟</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">نشانی رایانامه وارد شده از تنظیم‌های ساده پشتیبانی می‌کند
 (OAuth 2.0).\n\nIn
  لطفا در مرحله بعد، به دلتاچت اجازه دهید که به عنوان نرم‌افزار رایانامه شما عمل نماید\n\n دلتاچت کارساز(سرور) ندارد؛ داده‌های شما در دستگاه خودتان باقی می‌ماند. </string>
@@ -699,6 +708,7 @@
     <string name="pref_profile_photo">تصویر نمایه</string>
     <string name="pref_blocked_contacts">مخاطبین مسدود شده</string>
     <string name="blocked_empty_hint">اگر مخاطبی را مسدود کنید اینجا نمایش داده می‌شود</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">رمزعبور و حساب کاربری</string>
     <string name="pref_who_can_see_profile_explain">وقتی با دیگر کاربران گپ می‌زنید، تصویر نمایه، نام و امضایتان در کنار پیام‌هایتان فرستاده می‌شوند.</string>
     <string name="pref_your_name">اسم شما</string>
@@ -767,6 +777,7 @@
     <string name="pref_background_btn_default">استفاده از تصویر پیش‌فرض</string>
     <string name="pref_background_btn_gallery">انتخاب از گالری</string>
     <string name="pref_imap_folder_warn_disable_defaults">اگر این گزینه را غیر فعال می‌کنید از اینکه سرور شما و حساب‌هایتان هم بر این اساس تنظیم شده باشند.\n\n در غیر این صورت ممکن است هیچ چیز کار نکند. </string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">پوشه ارسال شده‌ها را نگاه کن</string>
     <string name="pref_send_copy_to_self">ارسال رونوشت به خودم</string>
     <string name="pref_send_copy_to_self_explain">درصورت استفاده از این حساب در چند دستگاه مورد نیاز است. </string>
@@ -993,6 +1004,7 @@
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">احراز هویت شده توسط %1$s</string>
     <string name="verified_by_you">تأیید شده توسط من</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">برای تضمین رمزنگاری سراسری شما تنها می‌توانید مخاطب‌هایی که یک تیک سبز دارند به این گروه اضافه کنید.\n\nمی‌توانید با مخاطب‌هایتان حضوری ملاقات کنید و برای معرفی، کد QR آن‌ها را اسکن کنید.</string>
     <string name="mailto_dialog_header_select_chat">گپ را برای ارسال پیام انتخاب کنید</string>
     <!-- first placeholder is the name of the chat -->

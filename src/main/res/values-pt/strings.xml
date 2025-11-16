@@ -177,9 +177,9 @@
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nome do Canal</string>
     <string name="email">E-mail</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Novo E-mail</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Assunto</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
@@ -320,7 +320,9 @@
     <string name="connectivity_updating">A actualizar…</string>
     <string name="sending">A enviar…</string>
     <string name="login_title">Login</string>
+    <!-- deprecated -->
     <string name="login_header">Iniciar sessão na sua conta de e-mail</string>
+    <!-- deprecated -->
     <string name="login_subheader">Para os provedores de e-mail conhecidos as configurações adicionais são configuradas automaticamente. Por vezes, o IMAP precisa estar activado no frontend da web. Consulte seu provedor de e-mail ou amigos para obter ajuda.</string>
     <string name="login_inbox">Caixa de entrada</string>
     <string name="login_imap_login">IMAP nome de login </string>
@@ -333,8 +335,11 @@
     <string name="login_smtp_server">SMTP servidor</string>
     <string name="login_smtp_port">SMTP porto</string>
     <string name="login_smtp_security">SMTP segurança</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Método de autorização</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Usar configuração simplificada?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">O endereço inserido pode ser configurado de maneira simples (OAuth 2.0).\n\nNo passo seguinte dê permissão ao Delta Chat para enviar e receber mensagens.\n\nO Delta Chat não recolhe dados de utilizador, permanece tudo no seu dispositivo.</string>
     <string name="login_error_mail">Por favor insira um endereço de e-mail válido</string>
     <string name="login_error_server">Por favor insira um servidor ou endereço IP válido</string>
@@ -402,6 +407,7 @@
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fundo</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se desabilitar esta opção, verifique se seu servidor e seus outros clientes estão configurados adequadamente. \n\ncaso contrário, as coisas podem não funcionar.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Ver a pasta de enviados</string>
     <string name="pref_auto_folder_moves">Mover pasta automaticamente para o Delta Chat</string>
     <string name="pref_auto_folder_moves_explain">As chats de chat são movidas para evitar atravancar da pasta Inbox</string>

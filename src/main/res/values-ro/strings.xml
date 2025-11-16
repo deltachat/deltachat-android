@@ -196,6 +196,7 @@
     <string name="menu_new_contact">Contact Nou</string>
     <string name="menu_new_chat">Chat Nou</string>
     <string name="menu_new_group">Grup Nou</string>
+    <!-- deprecated -->
     <string name="add_recipients">Adăugați Destinatari</string>
     <string name="menu_send">Trimiteți</string>
     <string name="menu_toggle_keyboard">Comutați Tastatura Emoji</string>
@@ -473,9 +474,13 @@
 
     <string name="scan_invitation_code">Scanați Codul Invitației</string>
     <string name="login_title">Autentificare</string>
+    <!-- deprecated -->
     <string name="login_header">Autentificați-vă în contul dumneavoastră de e-mail</string>
+    <!-- deprecated -->
     <string name="login_explain">Conectați-vă cu un cont de e-mail existent</string>
+    <!-- deprecated -->
     <string name="login_subheader">În cazul furnizorilor de e-mail cunoscuți, setările suplimentare sunt configurate automat. Uneori, IMAP trebuie să fie activat în setările web. Consultați furnizorul dumneavoastră de e-mail sau prietenii pentru ajutor.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Nu există servere Delta Chat, datele tale rămân pe dispozitivul tău.</string>
     <string name="login_inbox">Inbox</string>
     <string name="login_imap_login">Nume de autentificare IMAP</string>
@@ -488,8 +493,11 @@
     <string name="login_smtp_server">Serverul SMTP </string>
     <string name="login_smtp_port">Portul SMTP </string>
     <string name="login_smtp_security">Securitate SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Metoda de autorizare</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Continuați cu configurația simplificată?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Adresa de e-mail introdusă suportă o configurare simplificată (OAuth 2.0).\n\nÎn pasul următor, vă rugăm să permiteți ca Delta Chat să acționeze ca aplicație de chat prin e-mail.\n\nNu există servere Delta Chat, datele voastre rămân pe dispozitivul dumneavoastră.</string>
     <string name="login_certificate_checks">Verificări de certificate</string>
     <string name="login_error_mail">Vă rugăm să introduceți o adresă de e-mail validă</string>
@@ -530,6 +538,7 @@
     <string name="pref_profile_photo">Imagine de profil</string>
     <string name="pref_blocked_contacts">Contacte blocate</string>
     <string name="blocked_empty_hint">Contactele blocate vor apărea aici.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Parolă și cont</string>
     <string name="pref_who_can_see_profile_explain">Imaginea de profil, numele și semnătura dumneavoastră vor fi trimise împreună cu mesajele dumneavoastră atunci când comunicați cu alți utilizatori.</string>
     <string name="pref_your_name">Numele dumneavoastră</string>
