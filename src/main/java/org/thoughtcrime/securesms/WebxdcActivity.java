@@ -296,6 +296,8 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     if (itemId == R.id.menu_add_to_home_screen) {
       addToHomeScreen(this, dcAppMsg.getId());
       return true;
+    } else if (itemId == R.id.webxdc_help) {
+      DcHelper.openHelp(this, "#webxdc");
     } else if (itemId == R.id.source_code) {
       IntentUtils.showInBrowser(this, sourceCodeUrl);
       return true;
