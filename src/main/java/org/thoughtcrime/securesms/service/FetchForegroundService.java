@@ -111,12 +111,7 @@ public final class FetchForegroundService extends Service {
 
   @Override
   public void onTimeout(int startId, int fgsType) {
-    if (fetchingSynchronously) {
-      fetchingSynchronously = false;
-      synchronized (STOP_NOTIFIER) {
-        STOP_NOTIFIER.notifyAll();
-      }
-    }
+    ApplicationContext.dcAccounts.stopBackgroundFetch();
     stopSelf();
   }
 
