@@ -818,7 +818,7 @@
     <string name="pref_watch_sent_folder">Watch Sent Folder</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
     <string name="pref_send_copy_to_self">Multi-Device Mode</string>
-    <string name="pref_send_copy_to_self_explain">Exchange data for device synchronization. Automatically enabled on adding a second device</string>
+    <string name="pref_send_copy_to_self_explain">Synchronize your messages with your other devices. Automatically enabled on adding a second device</string>
     <string name="pref_multidevice_change_warn">Multi-Device Mode must be enabled when using the same profile on multiple devices. Only disable this setting if you have removed this profile from all your other devices.\n\nDisabling Multi-Device Mode while using the profile on multiple devices will result in missed messages and other problems.</string>
     <string name="pref_auto_folder_moves">Move automatically to DeltaChat Folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
