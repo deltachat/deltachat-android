@@ -996,9 +996,11 @@
     <string name="qrscan_fingerprint_label">Shenja gishtash</string>
     <string name="withdraw_verifycontact_explain">Ky kod QR mund të skanohet nga të tjerë për t’u lidhur me ju.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të funksionojnë më.</string>
     <string name="withdraw_verifygroup_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e grupit “%1$s”.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të funksionojnë më.</string>
+    <string name="withdraw_joinbroadcast_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e kanalit “%1$s”.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të funksionojnë më.</string>
     <string name="withdraw_qr_code">Riprodho Kodin QR</string>
     <string name="revive_verifycontact_explain">Ky kod QR është riprodhuar dhe s’është më i vlefshëm.</string>
     <string name="revive_verifygroup_explain">Ky kod QR për pjesëmarrje në grupin “%1$s” është riprodhuar dhe s’është më i vlefshëm.</string>
+    <string name="revive_joinbroadcast_explain">Ky kod QR për pjesëmarrje në kanalin “%1$s” është riprodhuar dhe s’është më i vlefshëm.</string>
     <string name="revive_qr_code">Aktivizoni Kod QR</string>
     <string name="qrshow_title">Kod QR Ftese</string>
     <string name="qrshow_x_joining">%1$s vjen.</string>

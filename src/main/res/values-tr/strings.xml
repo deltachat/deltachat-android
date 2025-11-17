@@ -318,7 +318,7 @@
     <string name="menu_scroll_to_top">En Üste Kaydır</string>
     <string name="menu_help">Yardım</string>
     <!-- use the same term for "Apps" as elsewhere -->
-    <string name="what_is_webxdc">Webxdc nedir?</string>
+    <string name="what_is_webxdc">Uygulamalar Hakkında</string>
     <string name="privacy_policy">Gizlilik İlkesi</string>
     <string name="menu_select_all">Tümünü Seç</string>
     <string name="select_chat">Sohbet Seç</string>
@@ -1012,9 +1012,11 @@
     <string name="qrscan_fingerprint_label">Parmak izi</string>
     <string name="withdraw_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
     <string name="withdraw_verifygroup_explain">Bu QR kodu, “%1$s” grubuna katılmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
+    <string name="withdraw_joinbroadcast_explain">Bu QR kodu, “%1$s” kanalına katılmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz, böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
     <string name="withdraw_qr_code">QR Kodunu Sıfırla</string>
     <string name="revive_verifycontact_explain">Bu QR kodu sıfırlandı ve artık etkin değil.</string>
     <string name="revive_verifygroup_explain">“%1$s” grubuna katılmak için taranan bu QR kodu sıfırlandı ve artık etkin değil.</string>
+    <string name="revive_joinbroadcast_explain">“%1$s” kanalına katılmak için kullanılan bu QR kodu sıfırlandı ve artık etkin değil.</string>
     <string name="revive_qr_code">QR Kodunu Etkinleştir</string>
     <string name="qrshow_title">QR Çağrı Kodu</string>
     <string name="qrshow_x_joining">%1$s katılıyor.</string>

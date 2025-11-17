@@ -307,7 +307,7 @@
     <string name="menu_scroll_to_top">滚动至顶部</string>
     <string name="menu_help">帮助</string>
     <!-- use the same term for "Apps" as elsewhere -->
-    <string name="what_is_webxdc">Webxdc 是什么？</string>
+    <string name="what_is_webxdc">关于应用</string>
     <string name="privacy_policy">隐私政策</string>
     <string name="menu_select_all">全选</string>
     <string name="select_chat">选择聊天</string>
@@ -994,9 +994,11 @@
     <string name="qrscan_fingerprint_label">指纹</string>
     <string name="withdraw_verifycontact_explain">其他人可以扫描此二维码与您联系。\n\n您可以重置它，这样现有的二维码或邀请链接将不再有效。</string>
     <string name="withdraw_verifygroup_explain">其他人可以扫描此二维码以加入群组“%1$s”。\n\n您可以重置它，这样现有的二维码或邀请链接将不再有效。</string>
+    <string name="withdraw_joinbroadcast_explain">其他人可以扫描此二维码加入频道“%1$s”。\n\n您可以重置该二维码，使现有二维码或邀请链接失效。</string>
     <string name="withdraw_qr_code">重置二维码</string>
     <string name="revive_verifycontact_explain">此二维码已重置，不再有效。</string>
     <string name="revive_verifygroup_explain">加入群组“%1$s”的二维码已重置，不再有效。</string>
+    <string name="revive_joinbroadcast_explain">加入频道“%1$s”的二维码已重置，不再有效。</string>
     <string name="revive_qr_code">激活二维码</string>
     <string name="qrshow_title">邀请二维码</string>
     <string name="qrshow_x_joining">添加 %1$s。</string>
