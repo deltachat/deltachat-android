@@ -279,13 +279,14 @@
     <string name="channels">Каналы</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Новый канал</string>
+    <!-- deprecated -->
     <string name="add_recipients">Добавить получателей</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Название канала</string>
     <string name="email">Электронная почта</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Новое письмо</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Тема</string>
     <string name="menu_send">Отправить</string>
     <string name="menu_toggle_keyboard">Эмодзи клавиатура</string>
@@ -338,6 +339,7 @@
     <string name="menu_scroll_to_bottom">Прокрутить вниз</string>
     <string name="menu_scroll_to_top">Прокрутить вверх</string>
     <string name="menu_help">Справка</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">Что такое Webxdc?</string>
     <string name="privacy_policy">Политика конфиденциальности</string>
     <string name="menu_select_all">Выбрать всё</string>
@@ -418,7 +420,7 @@
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Вы действительно хотите выйти?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Удалить %d чат на всех ваших устройствах?</item>
@@ -650,8 +652,8 @@
     <string name="onboarding_create_instant_account">Создать новый профиль</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">У меня уже есть профиль</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Вход в обычную электронную почту</string>
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Использовать электронную почту как транспорт</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Ваш профиль</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -675,9 +677,14 @@
     <string name="welcome_chat_over_email">Безопасный децентрализованный чат</string>
     <string name="scan_invitation_code">Сканировать код приглашения</string>
     <string name="login_title">Войти</string>
+    <string name="login_advanced_hint">Эта авторизация предназначена для опытных пользователей:\n\n• Не используйте учетную запись, которую вы уже используете в другом приложении.\n\n• Обычный почтовый сервер позволяет вести чаты без сквозного шифрования, что отмечается значком письма.</string>
+    <!-- deprecated -->
     <string name="login_header">Вход в аккаунт</string>
+    <!-- deprecated -->
     <string name="login_explain">Вход в аккаунт электронной почты</string>
+    <!-- deprecated -->
     <string name="login_subheader">Для известных провайдеров электронной почты дополнительные настройки устанавливаются автоматически. Иногда необходимо включить IMAP в настройках веб-сайта. Проконсультируйтесь с технической поддержкой вашей почтовой службы или друзьями, для получения помощи.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Delta Chat не собирает данные пользователей, все данные хранятся на вашем устройстве!</string>
     <string name="login_inbox">Входящие</string>
     <string name="login_imap_login">Имя пользователя IMAP</string>
@@ -690,6 +697,7 @@
     <string name="login_smtp_server">Сервер SMTP</string>
     <string name="login_smtp_port">Порт SMTP</string>
     <string name="login_smtp_security">Защита соединения SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Метод авторизации</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Прокси</string>
@@ -706,8 +714,19 @@
     <string name="proxy_share_link">Поделиться ссылкой</string>
     <string name="proxy_enabled">Прокси включен</string>
     <string name="proxy_enabled_hint">Вы используете прокси. При проблемах с подключением, попробуйте другой прокси.</string>
+    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
+    <string name="transports">Транспорты</string>
+    <string name="add_transport">Добавить транспорт</string>
+    <string name="remove_transport">Удалить транспорт</string>
+    <string name="edit_transport">Редактировать транспорт</string>
+    <!-- shown if a QR code was scanned that can be used as a transport -->
+    <string name="confirm_add_transport">Добавить этот транспорт?</string>
+    <string name="invalid_transport_qr">Отсканированный QR-код не содержит корректный транспорт.</string>
+    <string name="confirm_remove_transport">Удалить транспорт \"%1$s\"?\n\nВаши контакты смогут связаться с вами, только если вы ранее связывались с ними через другой транспорт.\n\nЕсли сомневаетесь, удалите транспорт позже.</string>
 
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth 2.0).\n\nНа следующем шаге, разрешите Delta Chat отправлять и получать сообщения.\n\nDelta Chat не собирает ваши данные, они все остаются на вашем устройстве.</string>
     <string name="login_certificate_checks">Проверки сертификатов</string>
     <string name="login_error_mail">Введите правильный адрес электронной почты</string>
@@ -757,6 +776,7 @@
     <string name="pref_profile_photo">Изображение профиля</string>
     <string name="pref_blocked_contacts">Заблокированные контакты</string>
     <string name="blocked_empty_hint">Здесь можно просмотреть заблокированные контакты.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Пароль и аккаунт</string>
     <string name="pref_who_can_see_profile_explain">Изображение вашего профиля, имя и информация о себе будут отправлены вместе с сообщениями при общении с другими пользователями.</string>
     <string name="pref_your_name">Ваше имя</string>
@@ -828,6 +848,7 @@
     <string name="pref_background_btn_default">Использовать изображение по умолчанию</string>
     <string name="pref_background_btn_gallery">Выбрать из галереи</string>
     <string name="pref_imap_folder_warn_disable_defaults">Если вы измените этот параметр, убедитесь, что ваш сервер и другие клиенты настроены соответствующим образом.\n\nВ противном случае, всё может перестать работать.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Следить за папкой \"Исходящие\"</string>
     <string name="pref_send_copy_to_self">Отправлять копию себе</string>
     <string name="pref_send_copy_to_self_explain">Требуется при использовании этого аккаунта на нескольких устройствах.</string>
@@ -898,9 +919,9 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Вы хотите удалить %1$d сообщений сейчас и все новые сообщения \"%2$s\" в дальнейшем?\n\n• Это относится ко всем медиафайлам\n\n• Сообщения будут удалены, независимо от того, были ли они просмотрены или нет.\n\n• \"Сохранённые сообщения\" будут пропущены при локальном удалении</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все новые сообщения \"%2$s\" в дальнейшем?\n\n⚠️ Это относится ко всем электронным письмам, медиафайлам и \"Сохранённым сообщениям\" во всех папках на сервере.\n\n⚠️ Не используйте эту функцию, если хотите сохранить данные на сервере или если вы используете классические клиенты электронной почты</string>
+    <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все новые сообщения \"%2$s\" в дальнейшем?\n\n⚠️ Это относится ко всем электронным письмам, медиафайлам и \"Сохранённым сообщениям\" во всех папках на сервере.\n\n⚠️ Не используйте эту функцию, если хотите сохранить данные на сервере или если вы используете обычные клиенты электронной почты</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Это относится ко всем электронным письмам, медиафайлам и \"Сохранённым сообщениям\" во всех папках на сервере. Не используйте эту функцию, если хотите сохранить данные на сервере или если вы используете классические клиенты электронной почты</string>
+    <string name="autodel_server_enabled_hint">Это относится ко всем электронным письмам, медиафайлам и \"Сохранённым сообщениям\" во всех папках на сервере. Не используйте эту функцию, если хотите сохранить данные на сервере или если вы используете обычные клиенты электронной почты</string>
     <string name="autodel_server_warn_multi_device_title">Включить удаление без запроса</string>
     <string name="autodel_server_warn_multi_device">Если включить удаление без запроса, вы не сможете использовать этот профиль на нескольких устройствах.</string>
     <string name="autodel_confirm">Я понимаю, удалить все эти сообщения</string>
@@ -994,6 +1015,7 @@
     <string name="ephemeral_timer_weeks_by_you">Вы включили автоудаление сообщений через %1$s недель.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s включает автоудаление сообщений через %1$s недель.</string>
+    <string name="chat_unencrypted_explanation">Сообщения в этом чате используют обычную электронную почту и не зашифрованы сквозным шифрованием.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Сообщения защищены сквозным шифрованием. Нажмите, чтобы узнать больше.</string>
     <string name="chat_protection_enabled_explanation">Все сообщения в этом чате защищены сквозным шифрованием.\n\nСквозное шифрование гарантирует, что сообщения остаются конфиденциальными между вами и вашими собеседниками. Ни серверы, ни провайдеры, ни ретрансляторы не смогут их прочитать.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s требуется сквозное шифрование, которое ещё не настроено для данного чата. Нажмите, чтобы узнать больше.</string>
@@ -1018,6 +1040,7 @@
     <string name="qrscan_hint_desktop">Поднесите QR-код к камере</string>
     <string name="qrscan_failed">QR-код не может быть декодирован</string>
     <string name="qrscan_ask_join_group">Вы хотите присоединиться к группе \"%1$s\"?</string>
+    <string name="qrscan_ask_join_channel">Вы хотите присоединиться к каналу \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">Отсканированный отпечаток не совпадает с последним известным отпечатком %1$s.</string>
     <string name="qrscan_no_addr_found">QR-код содержит отпечаток ключа, но не содержит адрес электронной почты.\n\nДля проверки подлинности с использованием альтернативного канала связи следует сначала установить с получателем защищённое соединение.</string>
     <string name="qrscan_contains_text">Текст из QR-кода:\n\n%1$s</string>
@@ -1060,6 +1083,7 @@
     <string name="verified_by">Подтверждён: %1$s</string>
     <string name="verified_by_you">Подтверждён: Лично</string>
     <string name="verified_by_unknown">Подтверждён</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Чтобы обеспечить сквозное шифрование, вы можете добавлять в эту группу только контакты с зеленой галочкой.\n\nВы можете встретиться с контактами лично и отсканировать их QR-код, чтобы подтвердить их личность.</string>
     <string name="mailto_dialog_header_select_chat">Выберите чат, чтобы отправить сообщение</string>
     <!-- first placeholder is the name of the chat -->

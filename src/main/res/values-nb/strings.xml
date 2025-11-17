@@ -4,39 +4,83 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Avbryt</string>
+    <string name="clear_search">Nullstill søk</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Lenke</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Skann</string>
     <string name="yes">Ja</string>
     <string name="no">Nei</string>
     <string name="select">Velg</string>
     <string name="on">På</string>
     <string name="off">Av</string>
     <string name="def">Forvalg</string>
+    <string name="default_value">Standardverdi (%1$s)</string>
+    <string name="default_value_as_above">Standardverdi (som over)</string>
     <string name="custom">Egendefinert</string>
     <string name="none">Ingen</string>
     <string name="automatic">Automatisk</string>
     <string name="strict">Streng</string>
     <string name="open">Åpne</string>
+    <string name="download">Last ned</string>
+    <string name="downloading">Laster ned...</string>
+    <string name="open_attachment">Åpne vedlegg</string>
     <string name="join">Bli med</string>
     <string name="rejoin">Bli med igjen</string>
     <string name="delete">Slett</string>
+    <string name="delete_for_me">Slett for meg</string>
+    <string name="delete_for_everyone">Slett for alle</string>
     <string name="info">Info</string>
     <string name="update">Oppdater</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Vedlegg</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">Legg ved \"%1$s\"?</string>
     <string name="back">Forrige</string>
     <string name="close">Lukk</string>
+    <string name="close_window">Lukk vindu</string>
     <string name="forward">Videresend</string>
+    <string name="create">Opprett</string>
+    <string name="reset">Tilbakestill</string>
+    <string name="later">Senere</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Resend</string>
+    <string name="edited">Redigert</string>
+    <string name="edit_message">Rediger melding</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arkiver</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Fjern fra arkiv</string>
     <string name="mute">Demp</string>
+    <string name="muted">Dempet</string>
     <string name="ephemeral_messages">Forsvinnende meldinger</string>
     <string name="ephemeral_messages_hint">Disse innstillingene gjelder alle deltakerne som bruker Delta Chat. Men de kan kopiere, lagre og videresende meldinger eller bruke annen e-postklient.</string>
     <string name="save">Lagre</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
+    <string name="apps_and_media">Apper &amp; Media</string>
+    <string name="profile">Profil</string>
+    <string name="all_profiles">Alle profiler</string>
+    <string name="current_profile">Gjeldende profil</string>
     <string name="main_menu">Hovedmeny</string>
     <string name="start_chat">Start chat</string>
+    <string name="show_full_message">Vis hele meldingen</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">Merk alt som lest</string>
+    <string name="mark_as_read">Merk som lest</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">Lest</string>
+    <!-- Placeholder text when something is loading -->
+    <string name="loading">Laster...</string>
+    <string name="hide">Skjul</string>
+    <string name="activate">Aktiver</string>
+    <string name="load_remote_content">Last eksternt innhold</string>
+    <!-- Possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Eksterne bilder kan spore deg.\n\nDenne innstillingen kan også laste skrifttyper og annet innhold. Hvis avslått vil innkapslede og mellomlagrede bilder kunne vises.\n\nLast eksternt innhold?</string>
+    <string name="always">Alltid</string>
+    <string name="always_load_remote_images">Last alltid eksterne bilder</string>
+    <string name="once">Én gang</string>
+    <string name="show_warning">Vis advarsel</string>
     <string name="show_password">Vis passord</string>
     <string name="hide_password">Skjul passord</string>
     <string name="not_now">Ikke nå</string>
@@ -44,6 +88,7 @@
     <string name="one_moment">Et øyeblikk…</string>
     <string name="done">Ferdig</string>
     <string name="undo">Angre</string>
+    <string name="offline">Avlogget</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Neste</string>
     <string name="error">Feil</string>
@@ -51,6 +96,8 @@
     <string name="no_app_to_handle_data">Kan ikke finne en app som kan handtere denne typen data.</string>
     <string name="no_browser_installed">Ingen nettleser installert</string>
     <string name="file_not_found">Filen %1$s ble ikke funnet.</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">Kan ikke lagre fil %1$s</string>
     <string name="copied_to_clipboard">Kopiert til utklippstavle</string>
     <string name="contacts_headline">Kontakter</string>
     <string name="email_address">E-postadresse</string>
@@ -66,6 +113,21 @@
     <string name="this_month">Denne måneden</string>
     <string name="last_week">Forrige uken</string>
     <string name="last_month">Forrige måneden</string>
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">Sist sett %1$s</string>
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <string name="last_seen_relative">Sist sett %1$s</string>
+    <string name="last_seen_unknown">Sist sett: uvisst</string>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
+    <plurals name="n_seconds_ext">
+        <item quantity="one">%d sekund</item>
+        <item quantity="other">%d sekunder</item>
+    </plurals>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
+    <plurals name="n_minutes_ext">
+        <item quantity="one">%d minutt</item>
+        <item quantity="other">%d minutter</item>
+    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d minutt</item>
@@ -78,7 +140,7 @@
         <item quantity="other">%d timer</item>
     </plurals>
     <plurals name="n_chats">
-        <item quantity="one">%d sludring</item>
+        <item quantity="one">%d chat</item>
         <item quantity="other">%d chatter</item>
     </plurals>
     <plurals name="n_contacts">
@@ -89,27 +151,76 @@
         <item quantity="one">%d melding</item>
         <item quantity="other">%d meldinger</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d reaksjon</item>
+        <item quantity="other">%d reaksjoner</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d medlem</item>
         <item quantity="other">%d medlemmer</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d mottaker</item>
+        <item quantity="other">%d mottakere</item>
+    </plurals>
+    <!-- Short form for "N Items Selected" -->
+    <plurals name="n_selected">
+        <item quantity="one">%d valgt</item>
+        <item quantity="other">%d valgte</item>
+    </plurals>
+    <string name="selected_colon">Valgt:</string>
     <string name="self">Meg</string>
     <string name="draft">Kladd</string>
     <string name="image">Bilde</string>
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Svar</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
+    <string name="sticker">Merke</string>
+    <string name="add_to_sticker_collection">Legg til merkesamling</string>
+    <string name="add_stickers_instructions">For å legge til merker, trykk på "Åpne merkemappe", lag en undermappe for merkepakken, og dra bilder og merkefiler dit</string>
+    <string name="open_sticker_folder">Åpne merkemappe</string>
     <string name="images">Bilder</string>
     <string name="audio">Lyd</string>
     <string name="voice_message">Stemmemelding</string>
+    <string name="forwarded">Videresendt</string>
     <string name="forwarded_message">Videresendt melding</string>
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
+    <string name="forwarded_by">Videresendt av %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumenter</string>
     <string name="contact">Kontakt</string>
+    <string name="bot">Bot</string>
     <string name="camera">Kamera</string>
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
+    <string name="capture">Ta opp</string>
+    <string name="switch_camera">Bytt kamera</string>
+    <string name="toggle_fullscreen">Vis fullskjerm</string>
     <string name="location">Posisjon</string>
+    <string name="locations">Posisjoner</string>
     <string name="gallery">Galleri</string>
     <string name="images_and_videos">Bilder og videoer</string>
     <string name="file">Fil</string>
     <string name="files">Filer</string>
+    <string name="files_attach_hint">Send originale filer og ukomprimerte bilder</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Velg fra filer</string>
+    <string name="choose_from_gallery">Velg fra galleri</string>
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">App</string>
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">Apper</string>
+    <string name="webxdc_store_url">Appvelger-URL</string>
+    <string name="webxdc_store_url_explain">Hvis satt, vil URL\'en brukes som appvelger i stedet for den forvalgte</string>
+    <string name="webxdc_draft_hint">Trykk "Send" for å dele</string>
+    <string name="home">Hjem</string>
+    <string name="games">Spill</string>
+    <string name="tools">Verktøy</string>
+    <string name="app_size">Størrelse</string>
+    <string name="app_date_published">Publisert</string>
+    <string name="add_to_chat">Legg til Chat</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Utforsk</string>
     <string name="unknown">Ukjent</string>
 
     <string name="green">Grønn</string>
@@ -121,6 +232,8 @@
     <string name="magenta">Magenta</string>
     <string name="white">Hvit</string>
 
+    <string name="zoom">Zoom</string>
+    <string name="extra_small">Ekstra liten</string>
     <string name="small">Liten</string>
     <string name="normal">Normal</string>
     <string name="large">Stor</string>
@@ -131,8 +244,28 @@
 
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Ny kontakt</string>
+    <string name="menu_new_classic_contact">Legg til kontakt manuelt</string>
+    <string name="new_classic_contact_explain">Manuelle kontakter kan brukes til å sende tekst til klassisk e-post og er ikke garantert ende-til-ende-kryptert</string>
     <string name="menu_new_chat">Ny chat</string>
     <string name="menu_new_group">Ny gruppe</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Chat med…</string>
+    <string name="clone_chat">Klon chat</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Kanal</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Kanaler</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Ny kanal</string>
+    <!-- deprecated -->
+    <string name="add_recipients">Legg til mottakere</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Kanalnavn</string>
+    <string name="email">E-post</string>
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">Ny e-post</string>
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
+    <string name="subject">Emne</string>
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Slå på/av emoji-tastatur</string>
     <string name="menu_edit_group">Rediger gruppe</string>
@@ -142,36 +275,77 @@
     <string name="menu_unarchive_chat">Fjern chat fra arkiv</string>
     <string name="menu_add_attachment">Legg ved filer</string>
     <string name="menu_leave_group">Forlat gruppe</string>
-    <string name="menu_delete_chat">Slett sludring</string>
+    <string name="menu_leave_channel">Forlat kanal</string>
+    <string name="menu_delete_chat">Slett chat</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Tøm chat</string>
+    <string name="delete_contact">Slett kontakt</string>
     <string name="menu_delete_location">Slett på dette stedet?</string>
     <string name="menu_message_details">Meldingsdetaljer</string>
     <string name="menu_copy_to_clipboard">Kopier til utklippstavle</string>
+    <string name="share_invite_link">Del invitasjonslenke</string>
+    <string name="share_invite_link_explain">Alle som har denne lenken kan se profilen din og starte en chat med deg. Den bør bare deles med folk du stoler på.</string>
+    <string name="invite_friends">Inviter venner</string>
+    <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
+    <string name="invite_friends_text">Ta kontakt på Delta Chat:\n%1$s</string>
+    <string name="menu_copy_selection_to_clipboard">Kopier utvalg</string>
+    <string name="menu_copy_link_to_clipboard">Kopier lenge</string>
+    <string name="menu_copy_text_to_clipboard">Kopier tekst</string>
+    <string name="menu_copy_image_to_clipboard">Kopier bilde</string>
+    <string name="menu_copy_email_to_clipboard">Kopier e-post</string>
+    <string name="paste_from_clipboard">Lim inn fra utklippstavle</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">Lenken "%1$d" kan ikke åpnes i nettleseren. Vil du heller kopiere den til utklippstavlen?</string>
     <string name="menu_forward">Videresend melding</string>
     <string name="menu_reply">Svar på melding</string>
     <string name="menu_mute">Demp merknader</string>
     <string name="menu_unmute">Fjern demping</string>
     <string name="menu_export_attachment">Eksporter vedlegg</string>
+    <string name="menu_export_attachments">Eksporter vedlegg</string>
     <string name="menu_all_media">Alle medier</string>
+    <string name="all_apps_and_media">Alle apper og media</string>
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
+    <string name="show_in_chat">Vis i chat</string>
+    <string name="show_app_in_chat">Vis app i chat</string>
     <string name="menu_share">Del</string>
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
+    <string name="block">Blokker</string>
     <string name="menu_block_contact">Blokker kontakt</string>
     <string name="menu_unblock_contact">Fjern blokkering av kontakt</string>
+    <string name="accept">Aksepter</string>
     <string name="menu_play">Spill av</string>
     <string name="menu_pause">Pause</string>
     <string name="menu_scroll_to_bottom">Rull til bunnen</string>
     <string name="menu_scroll_to_top">Rull til toppen</string>
     <string name="menu_help">Hjelp</string>
+    <!-- use the same term for "Apps" as elsewhere -->
+    <string name="what_is_webxdc">Hva er Webxdc?</string>
+    <string name="privacy_policy">Personvernerklæring</string>
     <string name="menu_select_all">Velg alle</string>
+    <string name="select_chat">Velg chat</string>
+    <string name="select_more">Velg mer</string>
     <string name="menu_edit_name">Rediger navn</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
+    <string name="edit_name_explain">Sett et kallenavn som vil bli brukt istedenfor \"%1$s\". La det være tomt for å bruke kontaktens valgte navn.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
+    <string name="edit_name_placeholder">Kallenavn for \"%1$s\"</string>
     <string name="menu_settings">Innstillinger</string>
     <string name="menu_advanced">Avanserte innstillinger</string>
     <string name="menu_view_profile">Vis profil</string>
     <string name="menu_zoom_in">Zoome in</string>
     <string name="menu_zoom_out">Zoome ut</string>
     <string name="menu_save_log">Lagre logg</string>
-    <string name="title_share_location">Del beliggenhet med alle gruppemedlemmer</string>
+    <string name="menu_more_options">Flere valg</string>
+    <string name="menu_learn_spelling">Lær staving</string>
+    <string name="menu_chat_audit_log">Kontrollog av chat</string>
+    <string name="jump_to_message">Gå til melding</string>
+    <string name="jump_to_original_message">Gå til opprinnelig melding</string>
+    <string name="copy_json">Kopien JSON</string>
+    <string name="replace_draft">Erstatt kladd</string>
+    <string name="title_share_location">Del posisjon med alle gruppemedlemmer</string>
     <string name="device_talk">Enhetsmeldinger</string>
     <string name="device_talk_subtitle">Lokalt genererte meldinger</string>
     <string name="device_talk_explain">Meldinger i denne chatten blir generert lokalt av Delta Chat-appen. Produsentene bruker den for å informere om appoppdateringer og problemer under bruk.</string>
+    <string name="device_talk_welcome_message2">Ta kontakt!\n\n🙌 Trykk \"QR-kode\" begge enhetenes hovedskjerm. Velg \"Skann QR-kode\" på den ene enheten, og pek med kameraet på den andre\n\n🌍 Hvis enhetene ikke er i samme rom, skann i en videosamtale eller del en invitasjonslenke fra \"Skann QR-kode\"\n\nSå kan du ta del i en meldingstjeneste som er bygget på det største desentraliserte nettverket som noen gang er laget: e-post. Og, i motsetning til andre populære apper, uten sentral kontroll, sporing, og salg av data om deg, dine venner, dine kolleger, eller din familie til store selskaper.</string>
     <string name="edit_contact">Rediger kontakt</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Fest chat</string>
@@ -181,6 +355,14 @@
     <string name="pin">Fest</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Løsn</string>
+    <string name="ConversationFragment_quoted_message_not_found">Fant ikke opprinnelig melding</string>
+    <string name="reply_privately">Svar privat</string>
+    <string name="source_code">Kildekode</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Legg til på hjemmeskjermen</string>
+    <string name="donate">Doner</string>
+    <string name="donate_device_msg">❤️ Det ser ut som du liker Delta Chat!\n\nVurder å donere for å holde Delta Chat gratis for alle.\n\nSelv om Delta Chat er gratis å bruke og åpen kildekode, så koster det penger å utvikle. Hjelp oss å holde Delta Chat uavhengig og gjøre det enda bedre.\n\nhttps://delta.chat/donate</string>
+
     <string name="mute_for_one_hour">Demp i 1 time</string>
     <string name="mute_for_eight_hours">Demp i 8 timer</string>
     <string name="mute_for_one_day">Demp i 1 dag</string>
@@ -193,8 +375,44 @@
     <string name="share_location_for_two_hours">i 2 timer</string>
     <string name="share_location_for_six_hours">i 6 timer</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Sende følgende fil til %s?</item>
+        <item quantity="other">Sende de følgende %d filene til %s?</item>
+    </plurals>
     <string name="file_saved_to">Lagre fil til \"%1$s\".</string>
 
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">Ring</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">Svar</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">Avvis</string>
+    <string name="outgoing_call">Utgående anrop</string>
+    <string name="incoming_call">Innkommende anrop</string>
+    <string name="declined_call">Avvist anrop</string>
+    <string name="canceled_call">Avbrutt anrop</string>
+    <string name="missed_call">Ubesvart anrop</string>
+    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
+    <string name="call_date_and_duration">%1$s, %2$s</string>
+
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Er du sikker på at du vil forlate?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Slett %d chat fra alle dine enheter?</item>
+        <item quantity="other">Slett %d chatter fra alle dine enheter?</item>
+    </plurals>
+    <string name="ask_delete_named_chat">Slett chatten \"%1$s\" fra alle dine enheter?</string>
+    <string name="ask_delete_message">Slett denne meldingen fra alle dine enheter?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Slett %d melding fra alle dine enheter?</item>
+        <item quantity="other">Slett %d meldinger fra alle dine enheter?</item>
+    </plurals>
+    <!-- Used for the deletion of Device messages -->
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Slett %d melding?</item>
+        <item quantity="other">Slett %d meldinger?</item>
+    </plurals>
     <string name="ask_forward">Videresend meldinger til %1$s?</string>
     <string name="ask_forward_multiple">Videresend meldinger til %1$d chatter?</string>
     <string name="ask_export_attachment">Eksporter vedlegg? Eksport av vedlegg vil gi andre apper på din enhet tilgang til dem\n\nFortsett?</string>
@@ -202,9 +420,14 @@
     <string name="ask_unblock_contact">Fjern blokkering av denne kontakten? Du vil igjen kunne motta meldinger fra kontakten.</string>
     <string name="ask_delete_contacts">Slett kontakter?\n\nKontakter med pågående chatter og kontakter fra systemet adressebok kan ikke bli slettet permanent.</string>
     <string name="ask_delete_contact">Slett kontakter %1$s?\n\nKontakter med pågående chatter og kontakter fra systemets adressebok, kan ikke slettes permanent.</string>
-    <string name="ask_start_chat_with">Begynn å sludre med %1$s?</string>
+    <string name="ask_start_chat_with">Begynn å chatte med %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Fjern %1$s fra gruppen?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Fjern %1$s fra kanalen?</string>
+    <string name="open_url_confirmation">Vil du åpne denne lenken?</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
     <string name="contacts_enter_name_or_email">Skriv navn eller e-postadresse</string>
@@ -220,7 +443,7 @@
         <item quantity="one">%d chatter fjernet fra arkivet</item>
         <item quantity="other">%d chatter fjernet fra arkivet</item>
     </plurals>
-    <string name="chat_archived_chats_title">Arkiverte sludringer</string>
+    <string name="chat_archived_chats_title">Arkiverte chatter</string>
     <string name="chat_please_enter_message">Vennligst skiv en melding.</string>
     <string name="chat_camera_unavailable">Kamera ikke tilgjengelig.</string>
     <string name="chat_unable_to_record_audio">Ikke mulig å ta opp lyd.</string>
@@ -228,6 +451,10 @@
         <item quantity="one">%d ny melding</item>
         <item quantity="other">%d nye meldinger</item>
     </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Send en melding til %1$s.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">Kanaler er et en-til-mange-verktøy for å publisere meldingene dine.</string>
     <string name="chat_new_group_hint">Forfatt den første meldingen, noe som lar andre svare i gruppen.\n\n• Det er greit at ikke alle medlemmer bruker Delta Chat.\n\n• Levering av den første meldingen kan ta sin tid.</string>
     <string name="chat_record_slide_to_cancel">Dra for å avbryte</string>
     <string name="chat_record_explain">Trykk og hold for å ta opp en melding, slipp for å sende</string>
@@ -236,11 +463,50 @@
     <string name="chat_share_with_title">Del med</string>
     <string name="chat_input_placeholder">Melding</string>
     <string name="chat_archived_label">Arkivert</string>
+    <string name="chat_request_label">Forespørsel</string>
+    <string name="chat_request_label_explain">Inkluder forespørsler i tellere og varsler</string>
     <string name="chat_no_messages">Ingen meldinger.</string>
     <string name="chat_self_talk_subtitle">Meldinger jeg har sendt til meg selv</string>
+    <string name="archive_empty_hint">Arkiverte chatter vil havne her.</string>
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
-    <string name="save_message">Lagre</string>
+    <string name="save_message">Lagre melding</string>
     <string name="saved_messages">Lagrede meldinger</string>
+    <string name="saved_messages_explain">• Videresend meldinger hit for enkel tilgang\n\n• Ta tekst- eller tale-notater\n\n• Legg ved media for å lagre dem</string>
+    <!-- Should match "Saved" from "Saved messages" -->
+    <string name="saved">Lagret</string>
+    <string name="save_as">Lagre som</string>
+    <string name="retry_send">Forsøk å sende på nytt</string>
+    <string name="cannot_display_unsuported_file_type">Kan ikke vise denne filtypen: %s</string>
+    <string name="attachment_failed_to_load">Kunne ikke laste vedlegg</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Lås opptak</string>
+
+    <!-- mailing lists -->
+    <string name="mailing_list">E-postliste</string>
+    <string name="mailing_list_profile_info">Endringer av e-postlistens navn og bilde gjelder bare for denne enheten.</string>
+
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Start…</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Du må akseptere chatte-forespørselen før du kan sende.</string>
+    <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
+    <string name="send_file_to">Send \"%1$s\" til…</string>
+    <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
+    <string name="send_message_to">Send melding til…</string>
+    <string name="enable_realtime">Sanntidsapper</string>
+    <string name="enable_realtime_explain">Slå på sanntidstilkoblinger for apper tilknyttet chatter. Når det er slått på kan chattepartnere se din IP-adresse når du starter en app.</string>
+
+    <!-- map -->
+    <string name="filter_map_on_time">Vis plasseringer innenfor tidsramme</string>
+    <string name="show_location_traces">Vis bevegelsesspor</string>
+    <string name="add_poi">Send interessepunkt</string>
+
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">Systemmeldinger for denne chatten vises her</string>
+    <string name="chat_audit_log_title">Chat-kontrollog for %1$s</string>
+    <string name="chat_audit_log_description">Viser bare system- og info-meldinger; praktisk for å finne de siste chat-hendelsene uten å bla igjennom mange meldinger.</string>
+
     <!-- search -->
     <string name="search">Søk</string>
     <!-- create/edit groups, contact/group profile -->
@@ -248,7 +514,7 @@
     <string name="group_create_button">Lag gruppe</string>
     <string name="group_add_members">Legg til medlem</string>
     <string name="profile_encryption">Kryptering</string>
-    <string name="profile_shared_chats">Delte sludringer</string>
+    <string name="profile_shared_chats">Delte chatter</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Gruppe</string>
     <string name="tab_gallery">Galleri</string>
@@ -266,6 +532,7 @@
     <string name="login_smtp_server">SMTP-tjener</string>
     <string name="login_smtp_port">SMTP-port</string>
     <string name="login_smtp_security">SMTP-sikkerhet</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Autoriseringsmetode</string>
     <string name="login_certificate_checks">Sertifikat sjekker</string>
     <string name="import_backup_title">Importer sikkerhetskopi</string>
@@ -276,6 +543,7 @@
     <string name="pref_profile_info_headline">Din profilinfo</string>
     <string name="pref_profile_photo">Profilbilde</string>
     <string name="pref_blocked_contacts">Blokkerte kontakter</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Kontoinnstillinger</string>
     <string name="pref_your_name">Mitt navn</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -292,7 +560,7 @@
     <string name="pref_sound">Lyd</string>
     <string name="pref_silent">Stille</string>
     <string name="pref_privacy">Personvern</string>
-    <string name="pref_chats_and_media">Sludringer og medier</string>
+    <string name="pref_chats_and_media">Chatter og medier</string>
     <string name="pref_system_default">System standard</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Lys</string>
@@ -306,7 +574,7 @@
     <string name="pref_read_receipts">Meldingskvitteringer</string>
     <string name="pref_read_receipts_explain">Hvis du slår av lesebekreftelser, får du heller ikke se lesebekreftelser fra andre.</string>
     <string name="pref_manage_keys">Behandle nøkler</string>
-    <string name="pref_chats">Sludringer</string>
+    <string name="pref_chats">Chatter</string>
     <string name="pref_in_chat_sounds">Merknader i programmet</string>
     <string name="pref_view_log">Vis logg</string>
     <string name="pref_log_header">Logg</string>
@@ -314,7 +582,7 @@
     <string name="pref_backup">Sikkerhetskopi</string>
     <string name="pref_managekeys_export_secret_keys">Eksporter private nøkler</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
-    <string name="pref_background">Sludrebakgrunn</string>
+    <string name="pref_background">Chattebakgrunn</string>
     <!-- autocrypt -->
     <string name="autocrypt_send_asm_title">Igangsett Autocrypt-nøkkeloverføring</string>
     <string name="autocrypt_send_asm_explain_before">The Autocrypt-nøkkeloverføring krever at e-postklienten på den andre enheten er Autocrypt-kompatibel.\n\nDu kan så sende din hemmelige nøkkel til deg selv. Nøkkelen vil bli kryptert av en oppsettskode som vises her og må skrives inn på den andre enheten.</string>

@@ -209,8 +209,9 @@
     <string name="menu_new_classic_contact">Pridėti adresatą rankiniu būdu</string>
     <string name="menu_new_chat">Naujas pokalbis</string>
     <string name="menu_new_group">Nauja grupė</string>
+    <!-- deprecated -->
     <string name="add_recipients">Pridėti gavėjus</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Tema</string>
     <string name="menu_send">Siųsti</string>
     <string name="menu_toggle_keyboard">Perjungti šypsniukų klaviatūrą</string>
@@ -255,6 +256,7 @@
     <string name="menu_scroll_to_bottom">Slinkti į apačią</string>
     <string name="menu_scroll_to_top">Slinkti į viršų</string>
     <string name="menu_help">Žinynas</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">Kas yra „Webxdc“?</string>
     <string name="privacy_policy">Privatumo politika</string>
     <string name="menu_select_all">Žymėti viską</string>
@@ -467,9 +469,13 @@
     <string name="instant_onboarding_show_more_instances">Naudoti kitą serverį</string>
     <string name="scan_invitation_code">Skenuoti pakvietimo kodą</string>
     <string name="login_title">Prisijungti</string>
+    <!-- deprecated -->
     <string name="login_header">Prisijungti prie savo serverio</string>
+    <!-- deprecated -->
     <string name="login_explain">Prisijungti naudojant esamą el. pašto paskyrą</string>
+    <!-- deprecated -->
     <string name="login_subheader">Žinomiems el. pašto teikėjams papildomi nustatymai yra nustatomi automatiškai. Kartais, IMAP turi būti įjungtas prisijungus per naršyklę. Išsamesnės pagalbos teiraukitės savo el. pašto teikėjo ar draugų.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Nėra jokių Delta Chat serverių, jūsų duomenys išlieka jūsų įrenginyje!</string>
     <string name="login_inbox">Gauta</string>
     <string name="login_imap_login">IMAP prisijungimo vardas</string>
@@ -482,6 +488,7 @@
     <string name="login_smtp_server">SMTP serveris</string>
     <string name="login_smtp_port">SMTP prievadas</string>
     <string name="login_smtp_security">SMTP saugumas</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Įgaliojimų suteikimo metodas</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Įgaliotasis serveris</string>
@@ -492,6 +499,7 @@
     <string name="proxy_delete">Ištrinti įgaliotąjį serverį</string>
     <string name="proxy_delete_explain">Ar tikrai norite ištrinti „%1$s“?</string>
     <string name="proxy_use_proxy_confirm">Ar norite naudoti įgaliotąjį serverį „%1$s“?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Tęsti naudojant supaprastintą sąranką?</string>
     <string name="login_certificate_checks">Liudijimų patikrinimai</string>
     <string name="login_error_mail">Įveskite teisingą el. pašto adresą.</string>
@@ -529,6 +537,7 @@
     <string name="pref_profile_photo">Profilio nuotrauka</string>
     <string name="pref_blocked_contacts">Užblokuoti adresatai</string>
     <string name="blocked_empty_hint">Jei užblokuosite adresatus, jie bus rodomi čia.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Slaptažodis ir paskyra</string>
     <string name="pref_who_can_see_profile_explain">Bendraujant su kitais naudotojais, jūsų profilio paveikslas ir vardas bus rodomi kartu su jūsų žinutėmis. Jau išsiųsta informacija negalės būti ištrinta ar pašalinta.</string>
     <string name="pref_your_name">Jūsų vardas</string>
@@ -594,6 +603,7 @@
     <string name="pref_background_btn_default">Naudoti numatytąjį paveikslą</string>
     <string name="pref_background_btn_gallery">Pasirinkti iš galerijos</string>
     <string name="pref_imap_folder_warn_disable_defaults">Jeigu išjungiate šį parametrą, įsitikinkite, kad jūsų serveris ir kiti klientai yra sukonfigūruoti atitinkamai.\n\nPriešingu atveju, tai gali iš viso neveikti.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Stebėti išsiųstųjų aplanką</string>
     <string name="pref_send_copy_to_self">Siųsti kopiją sau pačiam</string>
     <string name="pref_auto_folder_moves">Automatiniai perkėlimai į DeltaChat aplanką</string>

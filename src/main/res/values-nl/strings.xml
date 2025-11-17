@@ -257,13 +257,14 @@
     <string name="channels">Kanalen</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nieuw kanaal</string>
+    <!-- deprecated -->
     <string name="add_recipients">Ontvangers toevoegen</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Kanaalnaam</string>
     <string name="email">E-mail</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Nieuwe e-mail</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Onderwerp</string>
     <string name="menu_send">Versturen</string>
     <string name="menu_toggle_keyboard">Emojitoetsenbord tonen/verbergen</string>
@@ -316,6 +317,7 @@
     <string name="menu_scroll_to_bottom">Ga naar het einde</string>
     <string name="menu_scroll_to_top">Ga naar het begin</string>
     <string name="menu_help">Hulp</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">Wat is Webxdc?</string>
     <string name="privacy_policy">Privacybeleid</string>
     <string name="menu_select_all">Alles selecteren</string>
@@ -394,7 +396,7 @@
     <string name="call_date_and_duration">%1$s %2$s</string>
 
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Weet je zeker dat je dit kanaal wilt verlaten?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Wil je %d gesprek verwijderen van al je apparaten?</item>
@@ -458,7 +460,7 @@
     <string name="chat_record_explain">Houd ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
     <string name="chat_no_chats_yet_title">Er zijn nog geen gesprekken.\nDruk op ‘+’ om een gesprek te beginnen.</string>
     <string name="chat_all_archived">Alle gesprekken zijn gearchiveerd.\nDruk op ‘+’ om een gesprek te beginnen.</string>
-    <string name="chat_share_with_title">Delen met</string>
+    <string name="chat_share_with_title">Delen met…</string>
     <string name="chat_input_placeholder">Bericht</string>
     <string name="chat_archived_label">Gearchiveerd</string>
     <string name="chat_request_label">Verzoek</string>
@@ -614,7 +616,7 @@
     <string name="onboarding_create_instant_account">Account aanmaken</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Ik heb al een account</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Inloggen met eigen e-mailadres</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Mijn profiel</string>
@@ -639,9 +641,14 @@
     <string name="welcome_chat_over_email">Veilige, gedecentraliseerde gesprekken</string>
     <string name="scan_invitation_code">Uitnodigingscode scannen</string>
     <string name="login_title">Inloggen</string>
+    <string name="login_advanced_hint">Deze inlogfunctie is bedoeld voor gevorderden:\n\n• Gebruik géén account dat je al in een andere app gebruikt;\n\n• Op klassieke e-mailservers worden gesprekken zonder eind-tot-eindversleuteling aangeduid met een envelopje.</string>
+    <!-- deprecated -->
     <string name="login_header">Inloggen op je server</string>
+    <!-- deprecated -->
     <string name="login_explain">Log in met een bestaand e-mailaccount.</string>
+    <!-- deprecated -->
     <string name="login_subheader">Bij bekende e-mailproviders gaat het instellen vrijwel geheel automatisch. Soms moet je imap inschakelen in de webversie van je e-mailclient. Vraag je e-mailprovider of vrienden om hulp.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Er is geen Delta Chat-server; jóuw gegevens blijven op jóuw apparaat.</string>
     <string name="login_inbox">Postvak in</string>
     <string name="login_imap_login">IMAP-inlognaam</string>
@@ -654,6 +661,7 @@
     <string name="login_smtp_server">SMTP-server</string>
     <string name="login_smtp_port">SMTP-poort</string>
     <string name="login_smtp_security">SMTP-beveiliging</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Autorisatiemethode</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
@@ -670,8 +678,19 @@
     <string name="proxy_share_link">Link delen</string>
     <string name="proxy_enabled">Proxy ingeschakeld</string>
     <string name="proxy_enabled_hint">Je maakt gebruik van een proxyserver. Als je verbindingsproblemen hebt, probeer dan een andere proxy.</string>
+    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
+    <string name="transports">Overdrachtsservers</string>
+    <string name="add_transport">Server toevoegen</string>
+    <string name="remove_transport">Server verwijderen</string>
+    <string name="edit_transport">Server bewerken</string>
+    <!-- shown if a QR code was scanned that can be used as a transport -->
+    <string name="confirm_add_transport">Wil je deze server toevoegen?</string>
+    <string name="invalid_transport_qr">De gescande QR-code bevat geen geldige overdrachtsserver.</string>
+    <string name="confirm_remove_transport">Weet je zeker dat je de overdrachtsserver ‘%1$s’ wilt verwijderen?\n\nJe contactpersonen kunnen dan alleen nog contact met je opnemen als je ze al eerder bericht hebt via een andere server.\n\nStel bij twijfel het verwijderen uit.</string>
 
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Wil je doorgaan met vereenvoudigd instellen?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Het ingevoerde e-mailadres ondersteunt vereenvoudigd instellen (OAuth2).\n\nTijdens de volgende stap moet je Delta Chat toestaan te fungeren als je e-mailapp.\n\nDelta Chat heeft geen eigen servers; jóuw gegevens blijven op jóuw apparaat!</string>
     <string name="login_certificate_checks">Certificaatcontrole</string>
     <string name="login_error_mail">Voer een geldig e-mailadres in</string>
@@ -721,6 +740,7 @@
     <string name="pref_profile_photo">Profielfoto</string>
     <string name="pref_blocked_contacts">Geblokkeerde contactpersonen</string>
     <string name="blocked_empty_hint">Geblokkeerde contactpersonen worden hier getoond.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Wachtwoord en account</string>
     <string name="pref_who_can_see_profile_explain">Je profielfoto, -naam en handtekening worden naast je gespreksberichten getoond.</string>
     <string name="pref_your_name">Je naam</string>
@@ -792,6 +812,7 @@
     <string name="pref_background_btn_default">Standaardafbeelding gebruiken</string>
     <string name="pref_background_btn_gallery">Kiezen uit galerij</string>
     <string name="pref_imap_folder_warn_disable_defaults">Als je deze optie uitschakelt, zorg er dan voor dat je server en overige clients goed ingesteld zijn.\n\nAls dat niet zo is, dan werkt het misschien helemaal niet.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Map ‘Verzonden’ controleren op nieuwe berichten</string>
     <string name="pref_send_copy_to_self">Kopie versturen naar mijzelf</string>
     <string name="pref_send_copy_to_self_explain">Vereist bij gebruik van dit account op meerdere apparaten.</string>
@@ -958,6 +979,7 @@
     <string name="ephemeral_timer_weeks_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op %1$s weken.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">De tijdklok van verdwijnende berichten is door %2$s ingesteld op %1$s weken.</string>
+    <string name="chat_unencrypted_explanation">Berichten in dit gesprek maken gebruik van traditionele e-mailcommunicatie - eind-tot-endversleuteling is daarom niet gegarandeerd.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Berichten zijn gegarandeerd van eind-tot-eindversleuteling voorzien. Druk hier voor meer informatie.</string>
     <string name="chat_protection_enabled_explanation">Alle berichten in dit gesprek zijn gegarandeerd van eind-tot-eindversleuteling voorzien.\n\nMet behulp van deze versleuteling blijven berichten tussen jou en je gesprekspartners geheim - zelfs je e-mailprovider kan ze niet uitlezen.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ Voor %1$s is eind-tot-eindversleuteling vereist, maar dit is nog niet ingesteld in het huidige gesprek. Druk voor meer informatie.</string>
@@ -982,6 +1004,7 @@
     <string name="qrscan_hint_desktop">Houd de QR-code voor de camera</string>
     <string name="qrscan_failed">De QR-code kan niet worden ontcijferd</string>
     <string name="qrscan_ask_join_group">Wil je deelnemen aan de groep ‘%1$s’?</string>
+    <string name="qrscan_ask_join_channel">Wil je deelnemen aan het kanaal ‘%1$s’?</string>
     <string name="qrscan_fingerprint_mismatch">De gescande vingerafdruk komt niet overeen met de vorige voor %1$s</string>
     <string name="qrscan_no_addr_found">Deze QR-code bevat een vingerafdruk, maar geen e-mailadres.\n\nVoor out-of-bandgoedkeuring, moet je eerst een beveiligde verbinding opzetten met de ontvanger.</string>
     <string name="qrscan_contains_text">Gescande QR-codetekst:\n\n %1$s</string>
@@ -989,9 +1012,11 @@
     <string name="qrscan_fingerprint_label">Vingerafdruk</string>
     <string name="withdraw_verifycontact_explain">Deze QR-code kan door anderen worden gescand om contact met je op te nemen.\n\nJe kunt de QR-code hier deactiveren, zodat die niet meer werkt.</string>
     <string name="withdraw_verifygroup_explain">Deze QR-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nJe kunt de QR-code hier deactiveren, zodat die niet meer werkt.</string>
+    <string name="withdraw_joinbroadcast_explain">Deze QR-code kan door anderen worden gescand om deel te nemen aan het kanaal ‘%1$s’.\n\nJe kunt de QR-code hier deactiveren, zodat die niet meer werkt.</string>
     <string name="withdraw_qr_code">QR-code deactiveren</string>
     <string name="revive_verifycontact_explain">Deze QR-code is gedactiveerd en kan niet meer worden gebruikt.</string>
     <string name="revive_verifygroup_explain">Deze QR-code voor de groep ‘%1$s’ is gedeactiveerd en kan niet meer worden gebruikt.</string>
+    <string name="revive_joinbroadcast_explain">Deze QR-code voor het kanaal ‘%1$s’ is gedeactiveerd en kan niet meer worden gebruikt.</string>
     <string name="revive_qr_code">QR-code activeren</string>
     <string name="qrshow_title">QR-uitnodigingscode</string>
     <string name="qrshow_x_joining">%1$s heeft deelgenomen.</string>
@@ -1024,6 +1049,7 @@
     <string name="verified_by">Geïntroduceerd door %1$s</string>
     <string name="verified_by_you">Geïntroduceerd door mij</string>
     <string name="verified_by_unknown">Geïntroduceerd</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Om de eind-tot-eindversleuteling te garanderen, kun je alleen contactpersonen met een groen vinkje toevoegen aan deze groep.\n\nVan niet-goedgekeurde contactpersonen kun je de QR-code scannen om ze goed te keuren.</string>
     <string name="mailto_dialog_header_select_chat">Kies in welk gesprek je dit bericht wilt delen</string>
     <!-- first placeholder is the name of the chat -->

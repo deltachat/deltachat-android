@@ -257,13 +257,14 @@
     <string name="channels">Kanalid</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Uus kanal</string>
+    <!-- deprecated -->
     <string name="add_recipients">Lisa saajaid</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Kanali nimi</string>
     <string name="email">E-post</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Uus e-kiri</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Teema</string>
     <string name="menu_send">Saada</string>
     <string name="menu_toggle_keyboard">Lülita emojide klahvistik sisse/välja</string>
@@ -316,7 +317,8 @@
     <string name="menu_scroll_to_bottom">Keri lõpuni</string>
     <string name="menu_scroll_to_top">Keri algusesse</string>
     <string name="menu_help">Abiteave</string>
-    <string name="what_is_webxdc">Mis on Webxdc?</string>
+    <!-- use the same term for "Apps" as elsewhere -->
+    <string name="what_is_webxdc">Teave rakenduste kohta</string>
     <string name="privacy_policy">Privaatsusreeglid</string>
     <string name="menu_select_all">Vali kõik</string>
     <string name="select_chat">Vali vestlus</string>
@@ -342,6 +344,7 @@
     <string name="title_share_location">Jaga asukohta kõikide grupi liikmetega</string>
     <string name="device_talk">Seadme sõnumid</string>
     <string name="device_talk_subtitle">Kohalikus seadmes loodud sõnumid</string>
+    <string name="device_talk_explain">Selle vestluse sõnumid on koostatud selles nutiseadmes ja nende abil teavitatakse sind rakenduse uuendustest ja märgatud probleemidest.</string>
     <string name="edit_contact">Muuda kontakti</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Tõsta vestlus esile</string>
@@ -392,7 +395,7 @@
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Kas oled kindel, et soovid lahkuda?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Kas kustutad %d vestluse kõikidest oma seadmetest?</item>
@@ -414,6 +417,8 @@
     <string name="ask_export_attachment">Kui ekspordid manused, siis sinu nutiseadme muud rakendused saavad neile ligi.\n\nKas soovid jätkata?</string>
     <string name="ask_block_contact">Kas soovid selle kontakti blokeerida?\n\nBlokeeritud kontaktide otsesõnumid ja loodud grupid ei saa enam olema nähtavad.\n\nMuude gruppide, kus blokeeritud kontakt on liikmeks, sõnumid saavad jätkuvalt olema nähtavad.</string>
     <string name="ask_unblock_contact">Kas lõpetad kontakti blokeerimise?</string>
+    <string name="ask_delete_contacts">Kas soovid kontaktid kustutada?\n\nPooleli vestluste ja süsteemi aadressiraamatu kontakte ei saa jäädavalt kustutada.</string>
+    <string name="ask_delete_contact">Kas soovid %1$s kontakti kustutada?\n\nPooleli vestluste ja süsteemi aadressiraamatu kontakte ei saa jäädavalt kustutada.</string>
     <string name="ask_start_chat_with">Kas soovid vestelda kasutajaga %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Kas eemaldad järgnevad kasutajad grupist: %1$s?</string>
@@ -598,7 +603,7 @@
     <string name="onboarding_create_instant_account">Loo uus profiil</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Mul juba on profiil olemas</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Sisselogimine klassikalise e-postiga</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Sinu profiil</string>
@@ -622,8 +627,14 @@
     <string name="welcome_chat_over_email">Turvaline hajutatud vestluslahendus</string>
     <string name="scan_invitation_code">Skaneeri kutsekoodi</string>
     <string name="login_title">Logi sisse</string>
+    <string name="login_advanced_hint">See sisselogimine sobib  oskuskasutajatele:\n\n• Ära kasuta kontot, mis juba on kasutusel mõnes muus rakenduses.\n\n• Klassikaline e-posti server võimaldab vestlemist vaid ilma läbiva krüptimiseta ja seda märgistab kirja ikoon.</string>
+    <!-- deprecated -->
     <string name="login_header">Logi sisse oma e-postikontoga</string>
+    <!-- deprecated -->
     <string name="login_explain">Logi sisse olemasoleva e-postikontoga</string>
+    <!-- deprecated -->
+    <string name="login_subheader">Teadaolevate e-postiteenuste jaoks vajalikud täiendavad seadistused lisanduvad automaatselt. Mõnel juhul pead IMAP-i veebi seadistustest sisse lülitama. Lisateavet leiad oma e-postiteenuse pakkujalt ja võib-olla oskavad ka sõbrad aidata.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Delta Chat ei  kogu kasutajate andmeid - kogu teave jääb sinu seadmesse.</string>
     <string name="login_inbox">Saabuvad kirjad</string>
     <string name="login_imap_login">IMAP-i kasutajanimi</string>
@@ -636,6 +647,7 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP turvalisus</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Tuvastamise meetod</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proksiserver</string>
@@ -652,7 +664,7 @@
     <string name="proxy_share_link">Jaga linki</string>
     <string name="proxy_enabled">Proksiserver on kasutusel</string>
     <string name="proxy_enabled_hint">Sa kasutad proksiserverit. Kui võrguühendus ei toimi korralikult, siis proovi teist proksiserverit.</string>
-
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Kas jätkame lihtsustatud seadistamisega?</string>
     <string name="login_certificate_checks">Sertifikaadikontrollid</string>
     <string name="login_error_mail">Palun sisesta korrektne e-posti aadress</string>
@@ -701,6 +713,7 @@
     <string name="pref_profile_photo">Profiilipilt</string>
     <string name="pref_blocked_contacts">Blokeeritud kontaktid</string>
     <string name="blocked_empty_hint">Blokeeritud kontaktid saavad olema leitavad siin.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Salasõna ja kasutajakonto</string>
     <string name="pref_your_name">Sinu nimi</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -767,11 +780,14 @@
     <string name="pref_background">Taustapilt</string>
     <string name="pref_background_btn_default">Kasuta vaikimisi pilti</string>
     <string name="pref_background_btn_gallery">Vali galeriist</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Kui sa seda eelistust muudad, siis palun kontrolli, et server ja muud kliendid on vastavalt seadistatud.\n\nVastasel juhul võib minna nii, et mitte miski ei toimi.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Välju saadetud sõnumite kausta</string>
     <string name="pref_send_copy_to_self">Saada koopia iseendale</string>
     <string name="pref_send_copy_to_self_explain">Vajalik, kui kasutad seda kontot mitmes seadmes.</string>
     <string name="pref_auto_folder_moves">Tõsta automaatselt DeltaChati kausta</string>
     <string name="pref_only_fetch_mvbox_title">Laadi vaid DeltaChati kasutast</string>
+    <string name="pref_only_fetch_mvbox_explain">Eira muid kaustu. See eeldab, et sinu server oskab tõsta vestluste sõnumid DeltaChati kausta.</string>
     <string name="pref_show_emails">Näita klassikalisi e-kirju</string>
     <string name="pref_show_emails_all">Kõik</string>
     <string name="pref_experimental_features">Katselised funktsionaalsused</string>
@@ -849,6 +865,9 @@
     <string name="autocrypt_send_asm_button">Saada Autocrypti seadistussõnum</string>
     <string name="autocrypt_prefer_e2ee">Eelista läbivat krüptimist</string>
 
+    <!-- system messages -->
+    <!-- deprecated -->
+    <string name="systemmsg_unknown_sender_for_chat">Tundmatu saatja selle vestluse jaoks. Üksikasju näed infovaatest.</string>
     <string name="systemmsg_subject_for_new_contact">Sõnum kasutajalt %1$s</string>
     <string name="systemmsg_failed_sending_to">Sõnumi saatmine kasutajale %1$s ei õnnestunud.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -920,6 +939,7 @@
     <string name="ephemeral_timer_weeks_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks %1$s nädalat.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s määras isekustuvate sõnumite kehtivuseks %1$s nädalat.</string>
+    <string name="chat_unencrypted_explanation">Sõnumid siin vestluses kasutavad klassikalist e-postiliidestust ja pole läbivalt krüptitud.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Sõnumid on läbivalt krüptitud. Lisateabe ligemiseks klõpsi.</string>
     <string name="chat_protection_enabled_explanation">Kõik selle vestluse sõnumid on läbivalt krüptitud.\n\nSee tagab, et sõnumid on loetavad vaid sinu ja vestluse teis(t)e osapool(t)e poolt. Ei teenusepakkujad, serverihaldajad, ega põrgatajad ei saa neid sõnumeid lugeda.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s eeldab läbiva krüptimise kasutamist, aga see pole veel antud vestluse jaoks seadistatud. Lisateabe ligemiseks klõpsi.</string>
@@ -942,6 +962,7 @@
     <string name="qrscan_hint_desktop">Liiguta QR-kood kaamera poole</string>
     <string name="qrscan_failed">QR-koodi dekodeerimine ei õnnestunud</string>
     <string name="qrscan_ask_join_group">Kas soovid liituda „%1$s“ grupiga?</string>
+    <string name="qrscan_ask_join_channel">Kas sa soovid liituda „%1$s“ kanaliga?</string>
     <string name="qrscan_fingerprint_mismatch">Skaneeritud sõrmejälg ei vasta %1$s viimati nähtud sõrmejäljele.</string>
     <string name="qrscan_no_addr_found">Selles QR-koois on sõrmejälg, kuid pole aadressi.\n\nTavakanalivälise verifitseerimise jaoks palun esmalt loo teise osapoolega krüptitud ühendus.</string>
     <string name="qrscan_contains_text">Skaneeritud QR-koodi tekst:\n\n%1$s</string>
@@ -984,6 +1005,7 @@
     <string name="verified_by">%1$s lisas kontakti vestlusesse</string>
     <string name="verified_by_you">Mina lisasin kontakti vestlusesse</string>
     <string name="verified_by_unknown">Vestlusesse lisatud</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Selleks, et läbiv krüptimine toimiks garanteeritult, sa võid sellesse vestlusesse lisada vaid rohelise linnukesega kontakte.\n\nParim viis on omavahel kohtuda ning teise osapoole QR-koodi skaneerimisega lisada ta vestlusesse.</string>
     <string name="mailto_dialog_header_select_chat">Vali vestlus, kuhu soovid sõnumi saata</string>
     <!-- first placeholder is the name of the chat -->
@@ -1138,9 +1160,11 @@
     <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat võib kasutada Face ID teenust sinu kohaliku profiili kaitsmiseks, varukoopia tegemiseks ja täiendavate seadmete seadistamiseks.</string>
 
     <string name="pref_background_notifications">Kasuta ühendust taustal</string>
+    <string name="pref_background_notifications_explain">Eeldab, et akukasutuse optimeerimine on lülitatud välja. Kasuta siis, kui sõnumid pole õigeaegselt näha.</string>
     <string name="pref_reliable_service">Kasuta ühendust taustal</string>
     <string name="pref_reliable_service_explain">Põhjustab püsiteavituse</string>
 
+    <string name="pref_background_notifications_rationale">Tagamaks, et rakenduse võrguühendus jääb taustal tööle ning sõnumite vastuvõtmine jätkub, siis keela järgmises sammus selle rakenduse jaoks akukasutuse optimeerimine.\n\nDelta Chat kasutab väga vähe nutiseadme ressursse ning oleme eraldi pingutanud, et koormus akule oleks minimaalne.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Kui soovid, et Delta Chat saaks sõnumeid ka taustateenusena toimides, siis klõpsi siin.</string>
     <!-- device messages for updates -->

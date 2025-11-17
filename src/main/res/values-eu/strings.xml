@@ -366,9 +366,13 @@
     <string name="send_message">Bidali mezua</string>
 
     <string name="login_title">Hasi saioa</string>
+    <!-- deprecated -->
     <string name="login_header">Hasi saioa zure zerbitzarian</string>
+    <!-- deprecated -->
     <string name="login_explain">Badagoen e-mail kontu batekin saioa hasten</string>
+    <!-- deprecated -->
     <string name="login_subheader">E-mail hornitzaile ezagunentzat ezarpen gehigarriak automatikoki sortzen dira. Batzuetan IMAP gaitu behar da web interfazearen bidez. Kontsultatu zure e-mail hornitzaileari edo eskatu laguntza lagunei.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Ez dago Delta Chat zerbitzaririk, zure datuak zure gailuan mantentzen dira!</string>
     <string name="login_inbox">Sarrera ontzia</string>
     <string name="login_imap_login">IMAP erabiltzaile-izena</string>
@@ -381,8 +385,11 @@
     <string name="login_smtp_server">SMTP zerbitzaria</string>
     <string name="login_smtp_port">SMTP ataka</string>
     <string name="login_smtp_security">SMTP segurtasuna</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Baimentze metodoa</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Jarraitu ezarpen sinplifikatuarekin</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Sartu duzun e-mail helbideak ezarpen sinplifikatua onartzen du (OAuth2).\n\nHurrengo urratsean, baimendu Detla Chat zure e-mail bidezko txat aplikazio gisa erabili ahal izateko.\n\nEz dago Delta Chat zerbitzaririk, zure datuak zure gailuan mantentzen dira!</string>
     <string name="login_certificate_checks">Ziurtagiri-egiaztaketak</string>
     <string name="login_error_mail">Sartu baliozko e-mail helbide bat</string>
@@ -412,6 +419,7 @@
     <string name="pref_profile_info_headline">Zure profileko informazioa</string>
     <string name="pref_profile_photo">Profileko argazkia</string>
     <string name="pref_blocked_contacts">Blokeatutako kontaktuak</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Pasahitza eta kontua</string>
     <string name="pref_who_can_see_profile_explain">Zure profileko argazkia eta izena zure mezuekin batera erakutsiko dira beste erabiltzaileekin komunikatzen zarenean. Informazioa behin bidalita ezin da ezabatu edo kendu.</string>
     <string name="pref_your_name">Zure izena</string>
@@ -468,6 +476,7 @@
     <string name="pref_background_btn_default">Erabili lehenetsitako irudia</string>
     <string name="pref_background_btn_gallery">Hautatu galeriatik</string>
     <string name="pref_imap_folder_warn_disable_defaults">Aukera hau desaktibatuz gero, egiaztatu zure zerbitzaria eta beste bezeroen konfigurazioa bat datorrela.\n\nBestela agian gauzak ez dabiltza.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Begiztatu bidalitakoak karpeta</string>
     <string name="pref_send_copy_to_self">Bidali kopia norberari</string>
     <string name="pref_auto_folder_moves">Automatikoki mugitzen du DeltaChat karpetara</string>

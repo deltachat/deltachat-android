@@ -94,7 +94,7 @@
     <string name="error">错误</string>
     <string name="error_x">错误：%1$s</string>
     <string name="no_app_to_handle_data">找不到用于处理此类数据的应用。</string>
-    <string name="no_browser_installed">没有安装浏览器。</string>
+    <string name="no_browser_installed">未安装浏览器。</string>
     <string name="file_not_found">无法找到 %1$s。</string>
     <!-- the placeholder will be replaced by the name of a file -->
     <string name="cannot_save_file">无法保存 %1$s。</string>
@@ -114,7 +114,7 @@
     <string name="last_week">上周</string>
     <string name="last_month">上个月</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
-    <string name="last_seen_at">最后上线于：%1$s</string>
+    <string name="last_seen_at">最后上线：%1$s</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">最后上线 %1$s</string>
     <string name="last_seen_unknown">最后上线：未知</string>
@@ -139,7 +139,7 @@
         <item quantity="other">%d 个聊天</item>
     </plurals>
     <plurals name="n_contacts">
-        <item quantity="other">%d 个联系人</item>
+        <item quantity="other">%d 位联系人</item>
     </plurals>
     <plurals name="n_messages">
         <item quantity="other">%d 条消息</item>
@@ -148,10 +148,10 @@
         <item quantity="other">%d 个回应</item>
     </plurals>
     <plurals name="n_members">
-        <item quantity="other">%d 个成员</item>
+        <item quantity="other">%d 位成员</item>
     </plurals>
     <plurals name="n_recipients">
-        <item quantity="other">%d 位接收者</item>
+        <item quantity="other">%d 位订阅者</item>
     </plurals>
     <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
@@ -246,13 +246,14 @@
     <string name="channels">频道</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">新建频道</string>
-    <string name="add_recipients">添加接收者</string>
+    <!-- deprecated -->
+    <string name="add_recipients">添加订阅者</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">频道名称</string>
     <string name="email">邮件</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">新建邮件</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">主题</string>
     <string name="menu_send">发送</string>
     <string name="menu_toggle_keyboard">切换表情符号键盘</string>
@@ -282,7 +283,7 @@
     <string name="menu_copy_image_to_clipboard">复制图像</string>
     <string name="menu_copy_email_to_clipboard">复制电子邮件</string>
     <string name="paste_from_clipboard">从剪贴板粘贴</string>
-    <string name="ask_copy_unopenable_link_to_clipboard">无法在浏览器中打开链接 “%1$d”。你要将链接复制到剪贴板吗？</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">无法在网络浏览器中打开链接“%1$d”。是否要将链接复制到剪贴板？</string>
     <string name="menu_forward">转发消息</string>
     <string name="menu_reply">回复消息</string>
     <string name="menu_mute">通知静音</string>
@@ -305,7 +306,8 @@
     <string name="menu_scroll_to_bottom">滚动至底部</string>
     <string name="menu_scroll_to_top">滚动至顶部</string>
     <string name="menu_help">帮助</string>
-    <string name="what_is_webxdc">Webxdc 是什么？</string>
+    <!-- use the same term for "Apps" as elsewhere -->
+    <string name="what_is_webxdc">关于应用</string>
     <string name="privacy_policy">隐私政策</string>
     <string name="menu_select_all">全选</string>
     <string name="select_chat">选择聊天</string>
@@ -382,7 +384,7 @@
     <string name="call_date_and_duration">%1$s %2$s</string>
 
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">是否确定要离开？</string>
     <plurals name="ask_delete_chat">
         <item quantity="other">是否删除所有设备上的 %d 个聊天？</item>
@@ -408,7 +410,7 @@
     <string name="ask_remove_members">将 %1$s 从群组中移除？</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_channel">从频道中移除 %1$s？</string>
-    <string name="open_url_confirmation">您要打开此链接吗？</string>
+    <string name="open_url_confirmation">是否要打开此链接？</string>
 
 
     <!-- contact list -->
@@ -440,8 +442,8 @@
     <string name="chat_record_explain">按住即可录制语音消息，松开即可发送</string>
     <string name="chat_no_chats_yet_title">收件箱为空。\n按“+”来开始新聊天。</string>
     <string name="chat_all_archived">所有聊天已归档。\n按“+”来开始新聊天。</string>
-    <string name="chat_share_with_title">分享给</string>
-    <string name="chat_input_placeholder">输入消息…</string>
+    <string name="chat_share_with_title">分享…</string>
+    <string name="chat_input_placeholder">消息</string>
     <string name="chat_archived_label">已归档</string>
     <string name="chat_request_label">请求</string>
     <string name="chat_request_label_explain">在计数器和通知中包含请求</string>
@@ -596,8 +598,8 @@
     <string name="onboarding_create_instant_account">创建新账号</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">我已有账号</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">传统电子邮件登录</string>
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">使用传统电子邮件作为传输</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">个人资料</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -621,9 +623,14 @@
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
     <string name="scan_invitation_code">扫描邀请码</string>
     <string name="login_title">登录</string>
+    <string name="login_advanced_hint">此登录适用于高级用户：\n\n• 请勿使用您在其他应用中已使用的账号。\n\n• 传统电子邮件服务器允许进行未端到端加密的聊天，此类聊天以邮件图标标记。</string>
+    <!-- deprecated -->
     <string name="login_header">登录您的电子邮件账号</string>
+    <!-- deprecated -->
     <string name="login_explain">使用现有电子邮件账号登录</string>
+    <!-- deprecated -->
     <string name="login_subheader">对于已知的电子邮件提供商，附加设置会被自动设置。有时 IMAP 需要在网页版设置里启用。 请咨询您的电子邮件提供商或朋友来寻求帮助。</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
     <string name="login_inbox">收件箱</string>
     <string name="login_imap_login">IMAP 登录名</string>
@@ -636,6 +643,7 @@
     <string name="login_smtp_server">SMTP 服务器</string>
     <string name="login_smtp_port">SMTP 端口</string>
     <string name="login_smtp_security">SMTP 安全类型</string>
+    <!-- deprecated -->
     <string name="login_auth_method">认证方法</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">代理</string>
@@ -647,13 +655,24 @@
     <string name="proxy_list_header">已保存的代理</string>
     <string name="proxy_delete">删除代理</string>
     <string name="proxy_delete_explain">是否确定要删除“%1$s”？</string>
-    <string name="proxy_use_proxy_confirm">你想使用代理“%1$s”吗？</string>
+    <string name="proxy_use_proxy_confirm">是否要使用代理“%1$s”？</string>
     <string name="proxy_share_explain">你的好友可以扫描二维码添加此代理</string>
     <string name="proxy_share_link">分享链接</string>
     <string name="proxy_enabled">代理已启用</string>
     <string name="proxy_enabled_hint">您正在使用代理。如果您在连接时遇到问题，请尝试其他代理。</string>
+    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
+    <string name="transports">传输</string>
+    <string name="add_transport">添加传输</string>
+    <string name="remove_transport">移除传输</string>
+    <string name="edit_transport">编辑传输</string>
+    <!-- shown if a QR code was scanned that can be used as a transport -->
+    <string name="confirm_add_transport">添加此传输？</string>
+    <string name="invalid_transport_qr">扫描的二维码不包含有效的传输。</string>
+    <string name="confirm_remove_transport">移除传输“%1$s”？\n\n只有您之前通过其他传输联系过您的联系人，他们才能联系到您。\n\n如有疑问，请稍后移除传输。</string>
 
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">使用简易设置继续？</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n下一步，请允许 Delta Chat 发送和接收消息。\n\nDelta Chat 不会收集用户数据，所有内容都保留在您的设备上。</string>
     <string name="login_certificate_checks">证书检查</string>
     <string name="login_error_mail">请输入有效的电子邮件地址</string>
@@ -661,7 +680,7 @@
     <string name="login_error_port">请输入有效的端口（1-65535）</string>
     <string name="login_error_required_fields">请输入有效的电子邮件地址和密码</string>
     <string name="import_backup_title">从备份恢复</string>
-    <string name="import_backup_ask">在“%1$s”找到备份。\n\n您要导入并使用其中的全部数据与设置吗？</string>
+    <string name="import_backup_ask">在“%1$s”找到备份。\n\n是否要导入并使用其中的所有数据和设置？</string>
     <string name="import_backup_no_backup_found">未找到备份。\n\n请将备份复制到“%1$s”，然后重试。</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">无法作为“%1$s”登录。请检查电子邮件地址和密码是否正确。</string>
@@ -703,6 +722,7 @@
     <string name="pref_profile_photo">个人资料图片</string>
     <string name="pref_blocked_contacts">已屏蔽的联系人</string>
     <string name="blocked_empty_hint">被您屏蔽的联系人将显示于此。</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">密码和账号</string>
     <string name="pref_who_can_see_profile_explain">在与其他用户交流时，您的个人资料图片和名称将与您的消息一起发送。</string>
     <string name="pref_your_name">您的名称</string>
@@ -774,6 +794,7 @@
     <string name="pref_background_btn_default">使用默认图像</string>
     <string name="pref_background_btn_gallery">从图库中选择</string>
     <string name="pref_imap_folder_warn_disable_defaults">若要更改此选项，请您务必调整服务器以及其他客户端的相应设置。\n\n否则软件可能无法正常工作。</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">监视已发送文件夹</string>
     <string name="pref_send_copy_to_self">给自己发送副本</string>
     <string name="pref_send_copy_to_self_explain">在多台设备上使用此账号时，这是必需的。</string>
@@ -940,6 +961,7 @@
     <string name="ephemeral_timer_weeks_by_you">你将消息定时销毁计时器设为 %1$s 周</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s 将消息定时销毁计时器设为 %1$s 周</string>
+    <string name="chat_unencrypted_explanation">此聊天中的消息使用传统电子邮件，未进行端到端加密。</string>
     <string name="chat_protection_enabled_tap_to_learn_more">消息是端到端加密的。点按即可了解详情。</string>
     <string name="chat_protection_enabled_explanation">此聊天中的所有消息都经过端到端加密。\n\n端到端加密可确保您与聊天对象之间的消息保持私密。即使是服务器、提供者或中继也无法读取。</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s 需要端到端加密，但此聊天尚未设置。点按即可了解详情。</string>
@@ -963,7 +985,8 @@
     <string name="qrscan_hint">将摄像头对准二维码。</string>
     <string name="qrscan_hint_desktop">移动二维码到相机</string>
     <string name="qrscan_failed">二维码无法被解码</string>
-    <string name="qrscan_ask_join_group">您要加入群组“%1$s”吗？</string>
+    <string name="qrscan_ask_join_group">是否要加入群组“%1$s”？</string>
+    <string name="qrscan_ask_join_channel">是否要加入频道“%1$s”？</string>
     <string name="qrscan_fingerprint_mismatch">扫描到的指纹与上次见到的 %1$s 的指纹不匹配。</string>
     <string name="qrscan_no_addr_found">此二维码包含指纹，但没有电子邮件地址。\n\n对于带外验证，请先与接收者建立加密连接。</string>
     <string name="qrscan_contains_text">已扫描到的二维码文本：\n\n%1$s</string>
@@ -971,9 +994,11 @@
     <string name="qrscan_fingerprint_label">指纹</string>
     <string name="withdraw_verifycontact_explain">其他人可以扫描此二维码与您联系。\n\n您可以重置它，这样现有的二维码或邀请链接将不再有效。</string>
     <string name="withdraw_verifygroup_explain">其他人可以扫描此二维码以加入群组“%1$s”。\n\n您可以重置它，这样现有的二维码或邀请链接将不再有效。</string>
+    <string name="withdraw_joinbroadcast_explain">其他人可以扫描此二维码加入频道“%1$s”。\n\n您可以重置该二维码，使现有二维码或邀请链接失效。</string>
     <string name="withdraw_qr_code">重置二维码</string>
     <string name="revive_verifycontact_explain">此二维码已重置，不再有效。</string>
     <string name="revive_verifygroup_explain">加入群组“%1$s”的二维码已重置，不再有效。</string>
+    <string name="revive_joinbroadcast_explain">加入频道“%1$s”的二维码已重置，不再有效。</string>
     <string name="revive_qr_code">激活二维码</string>
     <string name="qrshow_title">邀请二维码</string>
     <string name="qrshow_x_joining">添加 %1$s。</string>
@@ -1000,16 +1025,17 @@
     <string name="secure_join_started">%1$s 邀请你加入此群组。\n\n等待 %2$s 的设备回复…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s 已回复，等待被加入群组…</string>
-    <string name="secure_join_wait">正在建立端到端加密，请稍候…</string>
+    <string name="secure_join_wait">正在建立连接，请稍候…</string>
     <string name="contact_verified">%1$s 已验证。</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">验证人 %1$s</string>
     <string name="verified_by_you">由您验证</string>
     <string name="verified_by_unknown">已验证</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">要确保端到端加密，你只能将带有绿色验证标识的联系人到此群中。\n\n你可以亲自和未验证联系人线下碰面并扫描联系人二维码来验证。</string>
     <string name="mailto_dialog_header_select_chat">选择要发送消息的聊天</string>
     <!-- first placeholder is the name of the chat -->
-    <string name="confirm_replace_draft">%1$s 已经有一条草稿信息，要替换它吗？</string>
+    <string name="confirm_replace_draft">%1$s 已经有一条草稿消息，是否要替换？</string>
     <string name="mailto_link_could_not_be_decoded">无法解码 mailto 链接：%1$s</string>
 
     <!-- notifications  -->

@@ -257,13 +257,14 @@
     <string name="channels">Canals</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nou Canal</string>
+    <!-- deprecated -->
     <string name="add_recipients">Afegeix destinataris</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nom del Canal</string>
     <string name="email">Correu electrònic</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Nou correu electrònic</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Assumpte</string>
     <string name="menu_send">Envia</string>
     <string name="menu_toggle_keyboard">Canvia al teclat d\'emojis</string>
@@ -316,6 +317,7 @@
     <string name="menu_scroll_to_bottom">Desplaça\'t al final</string>
     <string name="menu_scroll_to_top">Desplaça\'t a l\'inici</string>
     <string name="menu_help">Ajuda</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">Què és Webxdc?</string>
     <string name="privacy_policy">Política de privadesa</string>
     <string name="menu_select_all">Selecciona-ho tot</string>
@@ -394,7 +396,7 @@
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Segur que vols sortir?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">¿Esborrar %d xat de tots els teus dispositius?</item>
@@ -614,7 +616,7 @@
     <string name="onboarding_create_instant_account">Crea un perfil nou</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Ja tinc un perfil</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Inici de sessió correu-e clàssic</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">El vostre perfil</string>
@@ -639,9 +641,13 @@
     <string name="welcome_chat_over_email">Xat segur i descentralitzat</string>
     <string name="scan_invitation_code">Escaneja el Codi d\'Invitació</string>
     <string name="login_title">Identifiqueu-vos</string>
+    <!-- deprecated -->
     <string name="login_header">Identifiqueu-vos al vostre servidor</string>
+    <!-- deprecated -->
     <string name="login_explain">Inicia sessió amb un compte de correu electrònic existent</string>
+    <!-- deprecated -->
     <string name="login_subheader">Als proveïdors de mail coneguts els paràmetres es configuren automàticament. De vegades l\'IMAP s\'ha d\'activar a la interfície web. Consulta el teu proveïdor de correu electrònic o a un amic perquè t\'ajudi. </string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">No hi ha servidors de Delta Chat: les vostres dades es queden al vostre dispositiu!</string>
     <string name="login_inbox">Safata d\'entrada</string>
     <string name="login_imap_login">Nom d\'identificació IMAP</string>
@@ -654,6 +660,7 @@
     <string name="login_smtp_server">Servidor SMTP</string>
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Seguretat SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Mètode d\'autorització</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Servidor intermediari</string>
@@ -668,7 +675,9 @@
     <string name="proxy_use_proxy_confirm">Voleu utilitzar el proxy \"%1$s\"?</string>
     <string name="proxy_share_explain">Els vostres amics poden afegir aquest servidor intermediari escanejant el codi QR.</string>
     <string name="proxy_share_link">Comparteix l\'enllaç</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Voleu continuar amb la configuració simplificada?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">L’adreça electrònica que heu introduït admet una configuració simplificada. (OAuth2.0).\n\nEn el pas següent, permeteu que Delta Chat actuï com a xat amb l\'aplicació de correu electrònic..\n\nNo hi ha servidors de Delta Chat, les vostres dades romanen al vostre dispositiu!</string>
     <string name="login_certificate_checks">El certificat coincideix</string>
     <string name="login_error_mail">Si us plau poseu una adreça d\'email vàlida</string>
@@ -718,6 +727,7 @@
     <string name="pref_profile_photo">Fotografia de perfil</string>
     <string name="pref_blocked_contacts">Contactes bloquejats</string>
     <string name="blocked_empty_hint">Els contactes blocats apareixeran aquí.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Contrasenya i compte</string>
     <string name="pref_who_can_see_profile_explain">La vostra imatge de perfil, nom i biografia s\'enviaran amb juntament els missatges que escriviu quant us comuniqueu amb altres usuaris.</string>
     <string name="pref_your_name">El vostre nom</string>
@@ -788,6 +798,7 @@
     <string name="pref_background_btn_default">Usa la imatge per defecte</string>
     <string name="pref_background_btn_gallery">Trieu de la galeria</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si desactiveu aquesta opció, assegureu-vos que el vostre servidor i els altres programes estiguin configurats de la mateixa manera.\n\nAltrament podeu tenir problemes de funcionament.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Mostra la safata de sortida</string>
     <string name="pref_send_copy_to_self">Envia\'n una còpia a mi mateix</string>
     <string name="pref_send_copy_to_self_explain">Imprescindible quan s\'utilitza aquest compte en diversos dispositius.</string>
@@ -1020,6 +1031,7 @@
     <string name="verified_by">Afegit per %1$s</string>
     <string name="verified_by_you">Afegit per mi</string>
     <string name="verified_by_unknown">Afegit</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Per a garantir el xifrat extrem a extrem, només podeu afegir a aquest grup contactes que tinguin la marca verda.\n\nPodeu trobar-vos en persona amb els contactes per a escanejar els seus codis QR i poder-los afegir. </string>
     <string name="mailto_dialog_header_select_chat">Trieu el xat on enviar el missatge</string>
     <!-- first placeholder is the name of the chat -->

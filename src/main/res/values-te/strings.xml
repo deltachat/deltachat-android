@@ -147,6 +147,7 @@
     <string name="pref_profile_info_headline">మీ రూప సమాచారం</string>
     <string name="pref_profile_photo">రూపచిత్రం</string>
     <string name="pref_blocked_contacts">నిరోధించిన పరిచయాలు</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">ఖాతా సెట్టింగులు</string>
     <string name="pref_your_name">మీ పేరు</string>
     <string name="pref_enter_sends">\"ఎంటర్\" నొక్కితే పంపు</string>

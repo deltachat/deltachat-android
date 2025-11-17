@@ -160,8 +160,8 @@
         <item quantity="other">%d üye</item>
     </plurals>
     <plurals name="n_recipients">
-        <item quantity="one">%d alıcı</item>
-        <item quantity="other">%d alıcı</item>
+        <item quantity="one">%d abone</item>
+        <item quantity="other">%d abone</item>
     </plurals>
     <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
@@ -247,7 +247,7 @@
     <string name="menu_new_classic_contact">Elle Kişi Ekle</string>
     <string name="new_classic_contact_explain">Elle eklenen kişiler, klasik e-postaya metin göndermede kullanılabilir ve uçtan uca şifreleme güvencelenmez.</string>
     <string name="menu_new_chat">Yeni Sohbet</string>
-    <string name="menu_new_group">Yeni Öbek</string>
+    <string name="menu_new_group">Yeni Grup</string>
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Sohbet et…</string>
     <string name="clone_chat">Sohbeti Çoğalt</string>
@@ -257,23 +257,24 @@
     <string name="channels">Kanallar</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Yeni Kanal</string>
-    <string name="add_recipients">Alıcılar Ekle</string>
+    <!-- deprecated -->
+    <string name="add_recipients">Aboneleri Ekle</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Kanal Adı</string>
     <string name="email">E-Posta</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Yeni E-Posta</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Konu</string>
     <string name="menu_send">Gönder</string>
     <string name="menu_toggle_keyboard">Emoji Klavyesine Geç</string>
-    <string name="menu_edit_group">Öbeği Düzenle</string>
-    <string name="menu_group_name_and_image">Öbek Adı ve Görseli</string>
+    <string name="menu_edit_group">Grubu Düzenle</string>
+    <string name="menu_group_name_and_image">Grup Adı ve Görseli</string>
     <string name="menu_show_global_map">Tüm Konumlar</string>
     <string name="menu_archive_chat">Sohbeti Arşivle</string>
     <string name="menu_unarchive_chat">Sohbeti Arşivleme</string>
     <string name="menu_add_attachment">İlişik Ekle</string>
-    <string name="menu_leave_group">Öbekten Ayrıl</string>
+    <string name="menu_leave_group">Gruptan Ayrıl</string>
     <string name="menu_leave_channel">Kanaldan Ayrıl</string>
     <string name="menu_delete_chat">Sohbeti Sil</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
@@ -316,7 +317,8 @@
     <string name="menu_scroll_to_bottom">En Alta Kaydır</string>
     <string name="menu_scroll_to_top">En Üste Kaydır</string>
     <string name="menu_help">Yardım</string>
-    <string name="what_is_webxdc">Webxdc nedir?</string>
+    <!-- use the same term for "Apps" as elsewhere -->
+    <string name="what_is_webxdc">Uygulamalar Hakkında</string>
     <string name="privacy_policy">Gizlilik İlkesi</string>
     <string name="menu_select_all">Tümünü Seç</string>
     <string name="select_chat">Sohbet Seç</string>
@@ -339,7 +341,7 @@
     <string name="jump_to_original_message">Özgün İletiye Atla</string>
     <string name="copy_json">JSON kopyala</string>
     <string name="replace_draft">Taslağı Değiştir</string>
-    <string name="title_share_location">Tüm öbek üyeleriyle konum paylaş</string>
+    <string name="title_share_location">Tüm grup üyeleriyle konum paylaş</string>
     <string name="device_talk">Aygıt İletileri</string>
     <string name="device_talk_subtitle">Yerel olarak oluşturulan iletiler</string>
     <string name="device_talk_explain">Bu sohbetteki iletiler, uygulama güncelleştirmeleri ve kullanım sırasındaki sorunlar hakkında bilgilendirmek için aygıtınızda oluşturulur.</string>
@@ -394,7 +396,7 @@
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ayrılmak istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Tüm aygıtlarınızdaki %d sohbet silinsin mi?</item>
@@ -414,13 +416,13 @@
     <string name="ask_forward">İletiler %1$s kişisine iletilsin mi?</string>
     <string name="ask_forward_multiple">İletiler %1$d sohbete iletilsin mi?</string>
     <string name="ask_export_attachment">İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
-    <string name="ask_block_contact">Bu kişi engellensin mi?\n\nEngellenen kişiler tarafından oluşturulan doğrudan iletiler ya da öbekler gösterilmeyecek.\n\nEngellenen kişilerle olan diğer öbekler, onların iletilerini gösterecek.</string>
+    <string name="ask_block_contact">Bu kişi engellensin mi?\n\nEngellenen kişiler tarafından oluşturulan doğrudan iletiler ya da gruplar gösterilmeyecek.\n\nEngellenen kişilerle olan diğer gruplar, onların iletilerini gösterecek.</string>
     <string name="ask_unblock_contact">Bu kişi engellenmesin mi?</string>
     <string name="ask_delete_contacts">Kişiler silinsin mi?\n\nSohbetlerin sürdüğü ya da sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="ask_delete_contact">%1$s kişisi silinsin mi?\n\nSohbetlerin sürdüğü ya da sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
-    <string name="ask_remove_members">%1$s öbekten kaldırılsın mı?</string>
+    <string name="ask_remove_members">%1$s gruptan kaldırılsın mı?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_channel">%1$s kanaldan kaldırılsın mı?</string>
     <string name="open_url_confirmation">Bu bağlantıyı açmak istiyor musunuz?</string>
@@ -453,12 +455,12 @@
     <string name="chat_new_one_to_one_hint">%1$s kişisine bir ileti gönderin.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="chat_new_channel_hint">Kanallar, iletilerinizi yayınlamak için birden çoğa bir araçtır.</string>
-    <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu öbeği görecek.</string>
+    <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu grubu görecek.</string>
     <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
     <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve basılı tutun, göndermek için bırakın</string>
     <string name="chat_no_chats_yet_title">Sohbet yok.\nYeni bir sohbet başlatmak için “+” simgesine basın.</string>
     <string name="chat_all_archived">Tüm sohbetler arşivlendi.\nYeni bir sohbet başlatmak için “+” simgesine basın.</string>
-    <string name="chat_share_with_title">Paylaş</string>
+    <string name="chat_share_with_title">Paylaş…</string>
     <string name="chat_input_placeholder">İleti</string>
     <string name="chat_archived_label">Arşivlenen</string>
     <string name="chat_request_label">İstek</string>
@@ -526,21 +528,21 @@
 
 
     <!-- create/edit groups, contact/group profile -->
-    <string name="group_name">Öbek Adı</string>
-    <string name="group_avatar">Öbek Görseli</string>
-    <string name="remove_group_image">Öbek Görselini Kaldır</string>
-    <string name="change_group_image">Öbek Görselini Değiştir</string>
-    <string name="group_create_button">Öbek Oluştur</string>
-    <string name="group_please_enter_group_name">Lütfen öbek için bir ad girin.</string>
+    <string name="group_name">Grup Adı</string>
+    <string name="group_avatar">Grup Görseli</string>
+    <string name="remove_group_image">Grup Görselini Kaldır</string>
+    <string name="change_group_image">Grup Görselini Değiştir</string>
+    <string name="group_create_button">Grup Oluştur</string>
+    <string name="group_please_enter_group_name">Lütfen grup için bir ad girin.</string>
     <string name="group_add_members">Üyeler Ekle</string>
-    <string name="group_self_not_in_group">Bu eylemi gerçekleştirmek için öbeğin bir üyesi olmalısınız.</string>
+    <string name="group_self_not_in_group">Bu eylemi gerçekleştirmek için grubun bir üyesi olmalısınız.</string>
     <string name="profile_encryption">Şifreleme</string>
     <string name="profile_shared_chats">Ortak\'taki Sohbetler</string>
     <string name="related_chats">İlgili Sohbetler</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Geçmişteki Üyeler</string>
     <string name="tab_contact">Kişi</string>
-    <string name="tab_group">Öbek</string>
+    <string name="tab_group">Grup</string>
     <string name="tab_gallery">Galeri</string>
     <string name="tab_docs">Belgeler</string>
     <string name="tab_links">Bağlantılar</string>
@@ -614,8 +616,8 @@
     <string name="onboarding_create_instant_account">Yeni Profil Oluştur</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Zaten Bir Profilim Var</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Klasik E-Posta Girişi</string>
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Taşıma Aracı Olarak Klasik E-Posta Kullan</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profiliniz</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -628,20 +630,25 @@
     <string name="instant_onboarding_show_more_instances">Diğer Sunucuyu Kullan</string>
     <string name="instant_onboarding_other_server">Chatmail Sunucularını Listele</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
-    <string name="instant_onboarding_group_info">“%1$s” öbeğine katılmak için bir profil oluşturun.</string>
+    <string name="instant_onboarding_group_info">“%1$s” grubuna katılmak için bir profil oluşturun.</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
     <string name="instant_onboarding_contact_info">%1$s ile sohbet etmek için bir profil oluşturun.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">Yeni bir profil oluşturmak ve %1$s ile sohbet başlatmak istiyor musunuz?</string>
     <!-- Question shown when group's QR code is scanned from onboarding screen -->
-    <string name="instant_onboarding_confirm_group">Yeni bir profil oluşturmak ve “%1$s” sohbet öbeğine katılmak istiyor musunuz?</string>
+    <string name="instant_onboarding_confirm_group">Yeni bir profil oluşturmak ve “%1$s” sohbet grubuna katılmak istiyor musunuz?</string>
 
     <string name="welcome_chat_over_email">Güvenli Merkezi Olmayan Sohbet</string>
     <string name="scan_invitation_code">Çağrı Kodunu Tara</string>
     <string name="login_title">Giriş Yap</string>
+    <string name="login_advanced_hint">Bu giriş gelişmiş kullanıcılar içindir:\n\n• Başka bir uygulamada kullandığınız bir hesabı kullanmayın.\n\n• Klasik e-posta sunucusu, bir posta simgesiyle işaretlenerek uçtan uca şifreleme olmayan sohbetlere izin verir.</string>
+    <!-- deprecated -->
     <string name="login_header">E-Posta Hesabınıza Giriş Yapın</string>
+    <!-- deprecated -->
     <string name="login_explain">Varolan bir e-posta hesabıyla giriş yapın</string>
+    <!-- deprecated -->
     <string name="login_subheader">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak ayarlanır. Bazen IMAP\'in web ayarlarından etkinleştirilmesi gerekir. Yardım için e-posta sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Delta Chat kullanıcı verisi toplamaz; her şey aygıtınızda kalır.</string>
     <string name="login_inbox">Gelen Kutusu</string>
     <string name="login_imap_login">IMAP Giriş Adı</string>
@@ -654,6 +661,7 @@
     <string name="login_smtp_server">SMTP Sunucusu</string>
     <string name="login_smtp_port">SMTP Bağlantı Noktası</string>
     <string name="login_smtp_security">SMTP Güvenliği</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Yetkilendirme Yöntemi</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
@@ -670,8 +678,19 @@
     <string name="proxy_share_link">Bağlantı Paylaş</string>
     <string name="proxy_enabled">Proxy Etkinleştirildi</string>
     <string name="proxy_enabled_hint">Bir proxy kullanıyorsunuz. Bağlanmakta sorun yaşıyorsanız başka bir proxy deneyin.</string>
+    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
+    <string name="transports">Taşıma Araçları</string>
+    <string name="add_transport">Taşıma Aracı Ekle</string>
+    <string name="remove_transport">Taşıma Aracını Kaldır</string>
+    <string name="edit_transport">Taşıma Aracını Düzenle</string>
+    <!-- shown if a QR code was scanned that can be used as a transport -->
+    <string name="confirm_add_transport">Bu taşıma aracı eklensin mi?</string>
+    <string name="invalid_transport_qr">Taranan QR kodu, geçerli bir taşıma aracı içermiyor.</string>
+    <string name="confirm_remove_transport">“%1$s” taşıma aracı kaldırılsın mı?\n\nKişileriniz yalnızca onlara önceden ulaştığınız başka bir taşıma aracı üzerinden size ulaşabilir.\n\nKuşkuluysanız taşıma aracını daha sonra kaldırın.</string>
 
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth 2.0) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'e iletiler gönderme ve alma izni verin.\n\nDelta Chat kullanıcı verisi toplamaz; her şey aygıtınızda kalır.</string>
     <string name="login_certificate_checks">Sertifika Denetimleri</string>
     <string name="login_error_mail">Lütfen geçerli bir e-posta adresi girin</string>
@@ -721,6 +740,7 @@
     <string name="pref_profile_photo">Profil Görseli</string>
     <string name="pref_blocked_contacts">Engellenen Kişiler</string>
     <string name="blocked_empty_hint">Engellenen kişiler burada görünecek.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Parola ve Hesap</string>
     <string name="pref_who_can_see_profile_explain">Profil görseliniz, adınız ve biyografiniz diğer kullanıcılarla iletişim kurulurken iletilerinizle birlikte gönderilecek.</string>
     <string name="pref_your_name">Adınız</string>
@@ -738,7 +758,7 @@
     <string name="pref_screen_security_please_restart_hint">Ekran güvenliği ayarını uygulamak için lütfen uygulamayı yeniden başlatın.</string>
     <string name="pref_notifications">Bildirimler</string>
     <string name="pref_mention_notifications">Anmalar</string>
-    <string name="pref_mention_notifications_explain">Sessize alınan öbeklerde, yanıtlar ya da tepkiler gibi size yönlendirilen iletileri bildirin</string>
+    <string name="pref_mention_notifications_explain">Sessize alınan gruplarda, yanıtlar ya da tepkiler gibi size yönlendirilen iletileri bildirin</string>
     <string name="pref_notifications_show">Göster</string>
     <string name="pref_notifications_priority">Öncelik</string>
     <string name="pref_notifications_explain">Yeni iletiler için sistem bildirimlerini etkinleştir</string>
@@ -792,6 +812,7 @@
     <string name="pref_background_btn_default">Varsayılan Görseli Kullan</string>
     <string name="pref_background_btn_gallery">Galeriden Seç</string>
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçeneği değiştirirseniz, sunucunuzun ve diğer istemcilerinizin uygun olarak yapılandırıldığından emin olun.\n\nDeğilse özellikler hiç çalışmayabilir.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Gönderilen Klasörünü İzle</string>
     <string name="pref_send_copy_to_self">Kendime Kopya Gönder</string>
     <string name="pref_send_copy_to_self_explain">Bu hesap çoklu aygıtlarda kullanılırken gereklidir.</string>
@@ -890,12 +911,12 @@
     <string name="systemmsg_subject_for_new_contact">%1$s kişisinden gelen ileti</string>
     <string name="systemmsg_failed_sending_to">%1$s kişisine ileti gönderme başarısız.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
-    <string name="group_name_changed_by_you">“%1$s” öbek adını “%2$s” olarak değiştirdiniz.</string>
+    <string name="group_name_changed_by_you">“%1$s” grup adını “%2$s” olarak değiştirdiniz.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
-    <string name="group_name_changed_by_other">%3$s tarafından “%1$s” öbek adı “%2$s” olarak değiştirildi.</string>
-    <string name="group_image_changed_by_you">Öbek görselini değiştirdiniz.</string>
+    <string name="group_name_changed_by_other">%3$s tarafından “%1$s” grup adı “%2$s” olarak değiştirildi.</string>
+    <string name="group_image_changed_by_you">Grup görselini değiştirdiniz.</string>
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
-    <string name="group_image_changed_by_other">%1$s tarafından öbek görseli değiştirildi.</string>
+    <string name="group_image_changed_by_other">%1$s tarafından grup görseli değiştirildi.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
     <string name="member_x_added">%1$s üyesi eklendi.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
@@ -912,10 +933,10 @@
     <string name="channel_left_by_you">Kanaldan ayrıldınız.</string>
     <string name="you_joined_the_channel">Kanala katıldınız.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
-    <string name="group_left_by_other">%1$s tarafından öbekten ayrılındı.</string>
-    <string name="group_image_deleted_by_you">Öbek görselini sildiniz.</string>
+    <string name="group_left_by_other">%1$s tarafından gruptan ayrılındı.</string>
+    <string name="group_image_deleted_by_you">Grup görselini sildiniz.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="group_image_deleted_by_other">%1$s tarafından öbek görseli silindi.</string>
+    <string name="group_image_deleted_by_other">%1$s tarafından grup görseli silindi.</string>
     <string name="location_enabled_by_you">Konum akışını etkinleştirdiniz.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="location_enabled_by_other">%1$s tarafından konum akışı etkinleştirildi.</string>
@@ -958,6 +979,7 @@
     <string name="ephemeral_timer_weeks_by_you">Kaybolan iletiler zamanlayıcısını %1$s hafta olarak ayarladınız.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s hafta olarak ayarlandı.</string>
+    <string name="chat_unencrypted_explanation">Bu sohbetteki iletiler klasik e-posta kullanıyor ve uçtan uca şifreli değil.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">İletiler uçtan uca şifreleniyor. Daha fazlasını öğrenmek için dokunun.</string>
     <string name="chat_protection_enabled_explanation">Bu sohbetteki tüm iletiler uçtan uca şifreleniyor.\n\nUçtan uca şifreleme, iletilerinizi sizin ve sohbet ortaklarınızın arasında özel tutar. Sunucular, sağlayıcılar ya da aktarıcılar bile onları okuyamaz.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s, bu sohbet için henüz ayarlanmayan uçtan uca şifrelemeyi gerektirir. Daha fazlasını öğrenmek için dokunun.</string>
@@ -981,25 +1003,28 @@
     <string name="qrscan_hint">Kameranızı QR kodunun üzerinde tutun</string>
     <string name="qrscan_hint_desktop">QR kodunu kameraya taşıyın</string>
     <string name="qrscan_failed">QR kodu çözülemedi</string>
-    <string name="qrscan_ask_join_group">“%1$s” öbeğine katılmak istiyor musunuz?</string>
+    <string name="qrscan_ask_join_group">“%1$s” grubuna katılmak istiyor musunuz?</string>
+    <string name="qrscan_ask_join_channel">“%1$s” kanalına katılmak istiyor musunuz?</string>
     <string name="qrscan_fingerprint_mismatch">Taranan parmak izi, %1$s için son görülenle eşleşmiyor.</string>
     <string name="qrscan_no_addr_found">Bu QR kodu bir parmak izi içeriyor ama adres yok.\n\nBir bant dışı doğrulama için lütfen önce alıcıya şifrelenen bir bağlantı kurun.</string>
     <string name="qrscan_contains_text">Taranan QR kodu metni:\n\n%1$s</string>
     <string name="qrscan_contains_url">Taranan QR kodu URL\'si:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Parmak izi</string>
     <string name="withdraw_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
-    <string name="withdraw_verifygroup_explain">Bu QR kodu, “%1$s” öbeğine katılmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
+    <string name="withdraw_verifygroup_explain">Bu QR kodu, “%1$s” grubuna katılmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
+    <string name="withdraw_joinbroadcast_explain">Bu QR kodu, “%1$s” kanalına katılmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz, böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
     <string name="withdraw_qr_code">QR Kodunu Sıfırla</string>
     <string name="revive_verifycontact_explain">Bu QR kodu sıfırlandı ve artık etkin değil.</string>
-    <string name="revive_verifygroup_explain">“%1$s” öbeğine katılmak için taranan bu QR kodu sıfırlandı ve artık etkin değil.</string>
+    <string name="revive_verifygroup_explain">“%1$s” grubuna katılmak için taranan bu QR kodu sıfırlandı ve artık etkin değil.</string>
+    <string name="revive_joinbroadcast_explain">“%1$s” kanalına katılmak için kullanılan bu QR kodu sıfırlandı ve artık etkin değil.</string>
     <string name="revive_qr_code">QR Kodunu Etkinleştir</string>
     <string name="qrshow_title">QR Çağrı Kodu</string>
     <string name="qrshow_x_joining">%1$s katılıyor.</string>
     <string name="qrshow_x_verified">%1$s tanıtıldı.</string>
-    <string name="qrshow_x_has_joined_group">%1$s öbeğe katıldı.</string>
+    <string name="qrshow_x_has_joined_group">%1$s gruba katıldı.</string>
     <string name="qrshow_join_group_title">QR Çağrı Kodu</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
-    <string name="qrshow_join_group_hint">“%1$s” öbeğine katılmak için bunu tarayın</string>
+    <string name="qrshow_join_group_hint">“%1$s” grubuna katılmak için bunu tarayın</string>
     <string name="qrshow_join_channel_hint">“%1$s” kanalına katılmak için tarayın</string>
     <string name="qrshow_join_contact_title">QR Çağrı Kodu</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
@@ -1015,16 +1040,17 @@
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">“%1$s” adresine giriş yapılsın mı?\n\nVarolan profiliniz silinmeyecek. Profilleriniz arasında geçiş yapmak için “Profili Değiştir” öğesini kullanın.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">%1$s sizi bu öbeğe katılmaya çağırdı.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
+    <string name="secure_join_started">%1$s sizi bu gruba katılmaya çağırdı.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_replies">%1$s yanıtladı; öbeğe eklenmesi bekleniyor…</string>
-    <string name="secure_join_wait">Uçtan uca şifreleme kuruluyor, lütfen bekleyin…</string>
+    <string name="secure_join_replies">%1$s yanıtladı; gruba eklenmesi bekleniyor…</string>
+    <string name="secure_join_wait">Bağlantı kuruluyor, lütfen bekleyin…</string>
     <string name="contact_verified">%1$s tanıtıldı.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">%1$s tarafından tanıtıldı</string>
     <string name="verified_by_you">Benim tarafımdan tanıtıldı</string>
     <string name="verified_by_unknown">Tanıtıldı</string>
-    <string name="verified_contact_required_explain">Uçtan uca şifrelemeyi güvencelemek için bu öbeğe yalnızca yeşil bir onay imi olan kişileri ekleyebilirsiniz.\n\nDoğrulanmayan kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
+    <!-- deprecated -->
+    <string name="verified_contact_required_explain">Uçtan uca şifrelemeyi güvencelemek için bu gruba yalnızca yeşil bir onay imi olan kişileri ekleyebilirsiniz.\n\nDoğrulanmayan kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
     <string name="mailto_dialog_header_select_chat">İletiyi göndermek için sohbet seçin</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s zaten bir taslak ileti; onu değiştirmek istiyor musunuz?</string>
@@ -1102,7 +1128,7 @@
     <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
     <string name="unsave">Kaydetme</string>
     <string name="name_desktop">Ad</string>
-    <string name="select_group_image_desktop">Öbek Görseli Seç</string>
+    <string name="select_group_image_desktop">Grup Görseli Seç</string>
     <string name="export_backup_desktop">Yedeği Dışa Aktar</string>
     <string name="autocrypt_correct_desktop">Autocrypt ayarlaması aktarıldı.</string>
     <string name="forget_login_confirmation_desktop">Bu profil silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>

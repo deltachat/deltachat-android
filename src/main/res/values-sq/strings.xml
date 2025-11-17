@@ -253,13 +253,14 @@
     <string name="channels">Kanale</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Kanal i Ri</string>
+    <!-- deprecated -->
     <string name="add_recipients">Shtoni Marrës</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Emër Kanali</string>
     <string name="email">Email</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Email i Ri</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Subjekt</string>
     <string name="menu_send">Dërgoje</string>
     <string name="menu_toggle_keyboard">Shfaq/fshih Tastierë Emoji-sh</string>
@@ -312,6 +313,7 @@
     <string name="menu_scroll_to_bottom">Rrëshqit drejt Fundit</string>
     <string name="menu_scroll_to_top">Rrëshqit sipër në Krye</string>
     <string name="menu_help">Ndihmë</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">Ç’është Webxdc?</string>
     <string name="privacy_policy">Rregulla Privatësie</string>
     <string name="menu_select_all">Përzgjidhi Krejt</string>
@@ -390,7 +392,7 @@
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Jeni i sigurt se doni të largoheni?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Të fshihet %d fjalosje në krejt pajisjet tuaja?</item>
@@ -609,7 +611,7 @@
     <string name="onboarding_create_instant_account">Krijoni Profil të Ri</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Kam Tashmë një Profil</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Hyrje Klasike Me Email</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profili Juaj</string>
@@ -634,9 +636,14 @@
     <string name="welcome_chat_over_email">Fjalosje e Decentralizuar, e Parrezik</string>
     <string name="scan_invitation_code">Skanoni Kod Ftese</string>
     <string name="login_title">Hyni</string>
+    <string name="login_advanced_hint">Kjo hyrje është për përdorues të përparuar:\n\n• Mos përdorni një llogari që po e përdorni me një aplikacion tjetër.\n\n• Shërbyesi klasik i email-eve lejon fjalosje pa fshehtëzim skaj-më-skaj, shënuar me një ikonë poste.</string>
+    <!-- deprecated -->
     <string name="login_header">Hyni te Llogaria juaj Email</string>
+    <!-- deprecated -->
     <string name="login_explain">Hyni me një llogari email ekzistuese.</string>
+    <!-- deprecated -->
     <string name="login_subheader">Për shërbime të njohura email-i, rregullimet shtesë ujdisen automatikisht. Ndonjëherë shërbyesi IMAP lyp të aktivizohet te rregullimet për web. Për ndihmë këshillohuni me shërbimin tuaj email, ose shokë tuajt.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Delta Chat s’grumbullon të dhëna përdoruesish, gjithçka rri në pajisjen tuaj.</string>
     <string name="login_inbox">Të marrë</string>
     <string name="login_imap_login">Emër Hyrjeje në IMAP</string>
@@ -649,6 +656,7 @@
     <string name="login_smtp_server">Shërbyes SMTP</string>
     <string name="login_smtp_port">Portë SMTP</string>
     <string name="login_smtp_security">Siguri SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Metodë Autorizimi</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Ndërmjetës</string>
@@ -665,8 +673,9 @@
     <string name="proxy_share_link">Jepeni Lidhjen</string>
     <string name="proxy_enabled">Ndërmjetësi u Aktivizua</string>
     <string name="proxy_enabled_hint">Po përdorni një ndërmjetës. Nëse keni problemi për t’u lidhur, provoni një ndërmjetës tjetër.</string>
-
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Të vazhdohet me rregullimin e thjeshtuar?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Adresa email e dhënë mbulon një ujdisje të thjeshtuar (OAuth 2.0).\n\nNë hapin pasues, ju lutemi, lejojeni Delta Chat-in të dërgojë dhe marrë mesazhe.\n\nDelta Chat s’grumbullon të dhëna përdoruesish, gjithçka rri në pajisjen tuaj.</string>
     <string name="login_certificate_checks">Kontrolle Dëshmish</string>
     <string name="login_error_mail">Ju lutemi, jepni një adresë email të vlefshme</string>
@@ -716,6 +725,7 @@
     <string name="pref_profile_photo">Foto Profili</string>
     <string name="pref_blocked_contacts">Kontakte të Bllokuar</string>
     <string name="blocked_empty_hint">Kontaktet e bllokuara do të shfaqen këtu.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Fjalëkalim dhe Llogari</string>
     <string name="pref_who_can_see_profile_explain">Fotoja juaj e profilit, emri dhe jetëshkrimi do të dërgohen tok me mesazhet tuaj, kur komunikoni me përdorues të tjerë.</string>
     <string name="pref_your_name">Emri Juaj</string>
@@ -787,6 +797,7 @@
     <string name="pref_background_btn_default">Përdor Figurën Parazgjedhje</string>
     <string name="pref_background_btn_gallery">Përzgjidhni Nga Galeri</string>
     <string name="pref_imap_folder_warn_disable_defaults">Nëse e ndryshoni këtë mundësi, garantoni që shërbyesi juaj dhe klientët tuaj të tjerët të jenë formësuar për këtë.\n\nPërndryshe gjërat mund të mos punojnë fare.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Vëzhgo Dosje Të dërguarish</string>
     <string name="pref_send_copy_to_self">Dërgojini Kopje Vetes</string>
     <string name="pref_send_copy_to_self_explain">E domosdoshme kur kjo llogari përdoret në një numër pajisjesh.</string>
@@ -952,6 +963,7 @@
     <string name="ephemeral_timer_weeks_by_you">E vutë kohëmatësin e zhdukjes së mesazheve në %1$s javë.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Kohëmatësi i zhdukjes së mesazheve u vu në %1$s javë nga %2$s.</string>
+    <string name="chat_unencrypted_explanation">Mesazhet në këtë fjalosje përdorin email klasik dhe s’janë të fshehtëzuar skaj-më-skaj.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Mesazhet fshehtëzohen skaj-më-skaj. Prekeni, që të mësoni më tepër.</string>
     <string name="chat_protection_enabled_explanation">Krejt mesazhet në këtë fjalosje janë të fshehtëzuar skaj-më-skaj.\n\nFshehtëzimi skaj-më-skaj i mban private mesazhet mes jush dhe partnerëve tuaj të fjalosjes. Ato s’mund t’i lexojnë as shërbyesit, shërbime apo reletë.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s lyp fshehtëzim, i cili s’është ujdisur ende për këtë fjalosje. Që të mësoni më tepër, prekeni.</string>
@@ -976,6 +988,7 @@
     <string name="qrscan_hint_desktop">Kalojeni kodin QR te kamera</string>
     <string name="qrscan_failed">Kodi QR s’u shkodua dot</string>
     <string name="qrscan_ask_join_group">Doni të bëheni pjesë e grupit “%1$s”?</string>
+    <string name="qrscan_ask_join_channel">Doni të hyni te kanali “%1$s”?</string>
     <string name="qrscan_fingerprint_mismatch">Shenjat e gishtave të skanuar nuk përputhen me shenjat e gishtave parë së fundi për %1$s.</string>
     <string name="qrscan_no_addr_found">Ky kod QR përmban shenja gishtash, por jo adresë.\n\nPër një verifikim “out-of-band”, ju lutemi, së pari vendosni me marrësin një lidhje të fshehtëzuar.</string>
     <string name="qrscan_contains_text">Tekst kodi QR të skanuar:\n\n%1$s</string>
@@ -983,9 +996,11 @@
     <string name="qrscan_fingerprint_label">Shenja gishtash</string>
     <string name="withdraw_verifycontact_explain">Ky kod QR mund të skanohet nga të tjerë për t’u lidhur me ju.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të funksionojnë më.</string>
     <string name="withdraw_verifygroup_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e grupit “%1$s”.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të funksionojnë më.</string>
+    <string name="withdraw_joinbroadcast_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e kanalit “%1$s”.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të funksionojnë më.</string>
     <string name="withdraw_qr_code">Riprodho Kodin QR</string>
     <string name="revive_verifycontact_explain">Ky kod QR është riprodhuar dhe s’është më i vlefshëm.</string>
     <string name="revive_verifygroup_explain">Ky kod QR për pjesëmarrje në grupin “%1$s” është riprodhuar dhe s’është më i vlefshëm.</string>
+    <string name="revive_joinbroadcast_explain">Ky kod QR për pjesëmarrje në kanalin “%1$s” është riprodhuar dhe s’është më i vlefshëm.</string>
     <string name="revive_qr_code">Aktivizoni Kod QR</string>
     <string name="qrshow_title">Kod QR Ftese</string>
     <string name="qrshow_x_joining">%1$s vjen.</string>
@@ -1018,6 +1033,7 @@
     <string name="verified_by">Sjellë nga %1$s</string>
     <string name="verified_by_you">Sjellë nga unë</string>
     <string name="verified_by_unknown">Sjellë nga</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Që të garantohet fshehtëzim skaj-më-skaj, mund të shtoni në këtë grup vetëm kontakte me shenjën e gjelbër të verifikimit.\n\nMund të takoheni drejtpërsëdrejti me kontakte të paverifikuar dhe të skanoni kodin e tyre QR për t’i verifikuar ata.</string>
     <string name="mailto_dialog_header_select_chat">Përzgjidhni fjalosje ku të dërgohet mesazhi</string>
     <!-- first placeholder is the name of the chat -->

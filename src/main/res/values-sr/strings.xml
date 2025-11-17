@@ -215,6 +215,7 @@
     <string name="menu_new_contact">Нови контакт</string>
     <string name="menu_new_chat">Ново ћаскање</string>
     <string name="menu_new_group">Нова група</string>
+    <!-- deprecated -->
     <string name="add_recipients">Додај примаоце</string>
     <string name="menu_send">Пошаљи</string>
     <string name="menu_toggle_keyboard">Емоџи тастатура</string>
@@ -319,7 +320,7 @@
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Одби</string>
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Да ли сте сигурни да желите да напустите?</string>
     <!-- Used for the deletion of Device messages -->
     <plurals name="ask_delete_messages_simple">
@@ -484,9 +485,13 @@
 
     <string name="scan_invitation_code">Скенирај код позива за приступ.</string>
     <string name="login_title">Пријави се</string>
+    <!-- deprecated -->
     <string name="login_header">Пријавите се у ваш налог е-поште</string>
+    <!-- deprecated -->
     <string name="login_explain">Пријавите се преко постојећег налога е-поште</string>
+    <!-- deprecated -->
     <string name="login_subheader">За познате пружаоце услуге е-поште, додатне поставке се одређују аутоматски. Каткад, морате омогућити ИМАП у поставкама на веб сучељу ваше е-поште.\n\nПосаветујте се са пружаоцем услуге е-поште или пријатељима ако наиђете на проблеме.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Не постоји сервер Делта ћаскања. Апликација користи само сервер ваше е-поште.</string>
     <string name="login_inbox">Пријем</string>
     <string name="login_imap_login">Корисничко име за ИМАП</string>
@@ -499,8 +504,11 @@
     <string name="login_smtp_server">СМТП сервер</string>
     <string name="login_smtp_port">СМТП порт</string>
     <string name="login_smtp_security">СМТП безбедност</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Начин овлашћења</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Наставите са поједностављеним поставкама?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Унета е-адреса подржава поједностављено подешавање (OAuth 2.0).\n\nУ следећем кораку, дозволите Delta Chat-у да  да дејствује као ваша апликација за ћаскање преко е-поште.\n\nDelta Chat нема сервере и ваши подаци остају на вашем уређају.</string>
     <string name="login_certificate_checks">Провери сертификате</string>
     <string name="login_error_mail">Унесите важећу е-адресу</string>
@@ -541,6 +549,7 @@
     <string name="pref_profile_photo">Слика профила</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
     <string name="blocked_empty_hint">Блокирани контакти ће се појавити овде.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Лозинка и налог</string>
     <string name="pref_who_can_see_profile_explain">Слика вашег профила, име и потпис ће бити послан заједно са вашом поруком када комуницирате са другим корисницима.</string>
     <string name="pref_your_name">Ваше име</string>
@@ -600,6 +609,7 @@
     <string name="pref_background_btn_default">Користи дату слику</string>
     <string name="pref_background_btn_gallery">Изабери из галерије</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ако промените ову опцију, морате проверити да су ваш сервер и ваши други клијенти конфигурисани у складу са тим.\n\nУ супротном апликација можда уопште неће функционисати.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Посматрај директоријум са пошиљкама</string>
     <string name="pref_send_copy_to_self">Пошаљи копију поруке себи</string>
     <string name="pref_send_copy_to_self_explain">Обавезно када користите овај налог на више уређаја.</string>
