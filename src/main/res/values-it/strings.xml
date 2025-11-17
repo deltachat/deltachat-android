@@ -1030,9 +1030,11 @@
     <string name="qrscan_fingerprint_label">Impronta digitale</string>
     <string name="withdraw_verifycontact_explain">Questo codice QR può essere scansionato da altri per contattarti.\n\nPuoi reimpostarlo, in modo che il codice QR o il link di invito esistente non funzionino più.</string>
     <string name="withdraw_verifygroup_explain">Questo codice QR può essere scansionato da altri per unirsi al gruppo \"%1$s\".\n\nPuoi reimpostarlo, in modo che il codice QR o il link di invito esistente non funzionino più.</string>
+    <string name="withdraw_joinbroadcast_explain">Questo codice QR può essere scansionato da altri per unirsi al canale \"%1$s\".\n\nPuoi reimpostarlo, in modo che il codice QR o il link di invito esistente non funzionino più.</string>
     <string name="withdraw_qr_code">Reimposta Codice QR</string>
     <string name="revive_verifycontact_explain">Questo codice QR è stato reimpostato e non è più attivo.</string>
     <string name="revive_verifygroup_explain">Questo codice QR per unirsi al gruppo \"%1$s\" è stato reimpostato e non è più attivo.</string>
+    <string name="revive_joinbroadcast_explain">Questo codice QR per unirsi al canale \"%1$s\" è stato reimpostato e non è più attivo.</string>
     <string name="revive_qr_code">Attiva Codice QR </string>
     <string name="qrshow_title">Codice QR Invito</string>
     <string name="qrshow_x_joining">%1$s si unisce.</string>

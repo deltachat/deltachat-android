@@ -211,7 +211,7 @@
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Apper</string>
     <string name="webxdc_store_url">Appvelger-URL</string>
-    <string name="webxdc_store_url_explain">Hvis satt, vil URL'en brukes som appvelger i stedet for den forvalgte</string>
+    <string name="webxdc_store_url_explain">Hvis satt, vil URL\'en brukes som appvelger i stedet for den forvalgte</string>
     <string name="webxdc_draft_hint">Trykk "Send" for å dele</string>
     <string name="home">Hjem</string>
     <string name="games">Spill</string>
