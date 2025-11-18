@@ -41,7 +41,7 @@ public class Linkifier {
       replaceURLSpan(messageBody); // replace URLSpan so that it is not removed on the next addLinks() call
     }
 
-    if (Linkify.addLinks(messageBody, PHONE_PATTERN, "tel:", (s, start, end) -> s.subSequence(start, end).toString().replaceAll("[\\- \\.]", "").length() >= 5, null)) {
+    if (Linkify.addLinks(messageBody, PHONE_PATTERN, "tel:", Linkify.sPhoneNumberMatchFilter, Linkify.sPhoneNumberTransformFilter)) {
       replaceURLSpan(messageBody); // replace URLSpan so that it is not removed on the next addLinks() call
     }
 
