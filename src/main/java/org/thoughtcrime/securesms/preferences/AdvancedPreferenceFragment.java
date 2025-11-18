@@ -6,7 +6,6 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_BCC_SELF;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_STATS_SENDING;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SENTBOX_WATCH;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SHOW_EMAILS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_WEBXDC_REALTIME_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.getRpc;
@@ -62,9 +61,8 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   private static final String TAG = AdvancedPreferenceFragment.class.getSimpleName();
 
   private ListPreference showEmails;
-  CheckBoxPreference sentboxWatchCheckbox;
   CheckBoxPreference selfReportingCheckbox;
-  CheckBoxPreference bccSelfCheckbox;
+  CheckBoxPreference multiDeviceCheckbox;
   CheckBoxPreference mvboxMoveCheckbox;
   CheckBoxPreference onlyFetchMvboxCheckbox;
   CheckBoxPreference webxdcRealtimeCheckbox;
@@ -83,26 +81,24 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       });
     }
 
-    Preference sendAsm = this.findPreference("pref_send_autocrypt_setup_message");
-    if (sendAsm != null) {
-      sendAsm.setOnPreferenceClickListener(new SendAsmListener());
-    }
-
-    sentboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_sentbox_watch");
-    if (sentboxWatchCheckbox != null) {
-      sentboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
+    multiDeviceCheckbox = (CheckBoxPreference) this.findPreference("pref_bcc_self");
+    if (multiDeviceCheckbox != null) {
+      multiDeviceCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
         boolean enabled = (Boolean) newValue;
-        dcContext.setConfigInt(CONFIG_SENTBOX_WATCH, enabled? 1 : 0);
-        return true;
-      });
-    }
-
-    bccSelfCheckbox = (CheckBoxPreference) this.findPreference("pref_bcc_self");
-    if (bccSelfCheckbox != null) {
-      bccSelfCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
-        boolean enabled = (Boolean) newValue;
-        dcContext.setConfigInt(CONFIG_BCC_SELF, enabled? 1 : 0);
-        return true;
+        if (enabled) {
+            dcContext.setConfigInt(CONFIG_BCC_SELF, 1);
+            return true;
+        } else {
+          new AlertDialog.Builder(requireContext())
+                  .setMessage(R.string.pref_multidevice_change_warn)
+                  .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+                    dcContext.setConfigInt(CONFIG_BCC_SELF, 0);
+                    ((CheckBoxPreference)preference).setChecked(false);
+                  })
+                  .setNegativeButton(R.string.cancel, null)
+                  .show();
+          return false;
+        }
       });
     }
 
@@ -253,7 +249,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     Preference passwordAndAccount = this.findPreference("password_account_settings_button");
     if (passwordAndAccount != null) {
       passwordAndAccount.setOnPreferenceClickListener(((preference) -> {
-        boolean result = ScreenLockUtil.applyScreenLock(requireActivity(), getString(R.string.pref_password_and_account_settings), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_ACCOUNT);
+        boolean result = ScreenLockUtil.applyScreenLock(requireActivity(), getString(R.string.edit_transport), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_ACCOUNT);
         if (!result) {
           openRegistrationActivity();
         }
@@ -264,8 +260,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     if (dcContext.isChatmail()) {
       showEmails.setVisible(false);
       showSystemContacts.setVisible(false);
-      sentboxWatchCheckbox.setVisible(false);
-      bccSelfCheckbox.setVisible(false);
       mvboxMoveCheckbox.setVisible(false);
       onlyFetchMvboxCheckbox.setVisible(false);
     }
@@ -285,9 +279,8 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     showEmails.setValue(value);
     updateListSummary(showEmails, value);
 
-    sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_SENTBOX_WATCH));
     selfReportingCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_STATS_SENDING));
-    bccSelfCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_BCC_SELF));
+    multiDeviceCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_BCC_SELF));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
     onlyFetchMvboxCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_ONLY_FETCH_MVBOX));
     webxdcRealtimeCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_WEBXDC_REALTIME_ENABLED));
@@ -380,39 +373,4 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     startActivity(intent);
   }
 
-  /***********************************************************************************************
-   * Autocrypt
-   **********************************************************************************************/
-
-  private class SendAsmListener implements Preference.OnPreferenceClickListener {
-    @Override
-    public boolean onPreferenceClick(@NonNull Preference preference) {
-      Activity activity = requireActivity();
-      new AlertDialog.Builder(activity)
-        .setTitle(activity.getString(R.string.autocrypt_send_asm_title))
-        .setMessage(activity.getString(R.string.autocrypt_send_asm_explain_before))
-        .setNegativeButton(android.R.string.cancel, null)
-        .setPositiveButton(R.string.autocrypt_send_asm_button, (dialog, which) -> {
-              final String sc = dcContext.initiateKeyTransfer();
-              if( sc != null ) {
-                String scFormatted = "";
-                try {
-                  scFormatted = sc.substring(0, 4) + "  -  " + sc.substring(5, 9) + "  -  " + sc.substring(10, 14) + "  -\n\n" +
-                      sc.substring(15, 19) + "  -  " + sc.substring(20, 24) + "  -  " + sc.substring(25, 29) + "  -\n\n" +
-                      sc.substring(30, 34) + "  -  " + sc.substring(35, 39) + "  -  " + sc.substring(40, 44);
-                } catch (Exception e) {
-                  Log.e(TAG, "Unexpected exception", e);
-                }
-                new AlertDialog.Builder(activity)
-                  .setTitle(activity.getString(R.string.autocrypt_send_asm_title))
-                  .setMessage(activity.getString(R.string.autocrypt_send_asm_explain_after) + "\n\n" + scFormatted)
-                  .setPositiveButton(android.R.string.ok, null)
-                  .setCancelable(false) // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
-                  .show();
-              }
-        })
-        .show();
-      return true;
-    }
-  }
 }

@@ -60,7 +60,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private DcContext dcContext;
 
-  private boolean verified;
   private boolean unencrypted;
   private boolean broadcast;
   private EditText     groupName;
@@ -77,7 +76,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   protected void onCreate(Bundle state, boolean ready) {
     dcContext = DcHelper.getContext(this);
     setContentView(R.layout.group_create_activity);
-    verified = false;
     broadcast = getIntent().getBooleanExtra(CREATE_BROADCAST, false);
     unencrypted = getIntent().getBooleanExtra(UNENCRYPTED, false);
     Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -93,7 +91,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if(groupChatId !=0) {
       isEdit = true;
       DcChat dcChat = dcContext.getChat(groupChatId);
-      verified = dcChat.isProtected();
       broadcast = dcChat.isOutBroadcast();
       unencrypted = !dcChat.isEncrypted();
     }
@@ -234,7 +231,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       if (groupChatId != 0) {
         updateGroup(groupName);
       } else {
-        verified = !unencrypted && !broadcast && allMembersVerified();
         createGroup(groupName);
       }
 
@@ -244,21 +240,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     return false;
   }
 
-  private boolean allMembersVerified() {
-    for (int id : getAdapter().getContacts()) {
-      DcContact contact = dcContext.getContact(id);
-      if (contact != null && !contact.isVerified()) {
-        return false;
-      }
-    }
-    return true;
-  }
-
   @Override
   public void onItemClick(int contactId) {
     if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
       Intent intent = new Intent(this, ContactMultiSelectionActivity.class);
-      intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, verified);
       intent.putExtra(ContactSelectionListFragment.SELECT_UNENCRYPTED_EXTRA, unencrypted);
       ArrayList<Integer> preselectedContacts = new ArrayList<>(getAdapter().getContacts());
       intent.putExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselectedContacts);
@@ -287,7 +272,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         return;
       }
     } else {
-      groupChatId = dcContext.createGroupChat(verified, groupName);
+      groupChatId = dcContext.createGroupChat(groupName);
     }
 
     for (int contactId : getAdapter().getContacts()) {

@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.caverock.androidsvg.SVG;
@@ -96,6 +97,12 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             imageView.setSVG(svg);
         } catch (SVGParseException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Activity activity = getActivity();
+            if (activity != null) {
+              activity.finish();
+            }
         }
 
         view.findViewById(R.id.share_link_button).setOnClickListener((v) -> showInviteLinkDialog());
@@ -137,8 +144,17 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
     public void withdrawQr() {
         Activity activity = getActivity();
-        String message = chatId == 0 ? activity.getString(R.string.withdraw_verifycontact_explain)
-                          : activity.getString(R.string.withdraw_verifygroup_explain, dcContext.getChat(chatId).getName());
+        String message;
+        if (chatId == 0) {
+            message = activity.getString(R.string.withdraw_verifycontact_explain);
+        } else {
+            DcChat chat = dcContext.getChat(chatId);
+            if (chat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
+                message = activity.getString(R.string.withdraw_verifygroup_explain, chat.getName());
+            } else {
+                message = activity.getString(R.string.withdraw_joinbroadcast_explain, chat.getName());
+            }
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.withdraw_qr_code);
         builder.setMessage(message);

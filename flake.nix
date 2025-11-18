@@ -27,10 +27,11 @@
       {
         formatter = pkgs.nixpkgs-fmt;
 
-        devShells.default = pkgs.mkShell {
+        devShells.default = pkgs.mkShell rec {
           ANDROID_SDK_ROOT = "${android-sdk}/share/android-sdk";
           ANDROID_NDK_ROOT =
             "${android-sdk}/share/android-sdk/ndk/27.2.12479018";
+          GRADLE_OPTS = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${ANDROID_SDK_ROOT}/build-tools/35.0.0/aapt2";
           buildInputs = [
             android-sdk
             pkgs.openjdk17

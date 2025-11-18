@@ -231,6 +231,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcAccounts_backgroundFetch(JNIEnv *en
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcAccounts_stopBackgroundFetch(JNIEnv *env, jobject obj)
+{
+    dc_accounts_stop_background_fetch(get_dc_accounts(env, obj));
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_migrateAccount(JNIEnv *env, jobject obj, jstring dbfile)
 {
     CHAR_REF(dbfile);
@@ -536,10 +542,10 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_createChatByContactId(JNIEnv *e
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_createGroupChat(JNIEnv *env, jobject obj, jboolean verified, jstring name)
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_createGroupChat(JNIEnv *env, jobject obj, jstring name)
 {
     CHAR_REF(name);
-        jint ret = (jint)dc_create_group_chat(get_dc_context(env, obj), verified, namePtr);
+        jint ret = (jint)dc_create_group_chat(get_dc_context(env, obj), 0, namePtr);
     CHAR_UNREF(name);
     return ret;
 }
@@ -1260,11 +1266,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_canSend(JNIEnv *env, jobject o
     return dc_chat_can_send(get_dc_chat(env, obj))!=0;
 }
 
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isProtected(JNIEnv *env, jobject obj)
-{
-    return dc_chat_is_protected(get_dc_chat(env, obj))!=0;
-}
 
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isSendingLocations(JNIEnv *env, jobject obj)

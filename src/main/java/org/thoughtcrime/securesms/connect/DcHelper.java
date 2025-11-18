@@ -35,6 +35,7 @@ import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.FileUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
+import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
@@ -64,7 +65,6 @@ public class DcHelper {
     public static final String CONFIG_DISPLAY_NAME = "displayname";
     public static final String CONFIG_SELF_STATUS = "selfstatus";
     public static final String CONFIG_SELF_AVATAR = "selfavatar";
-    public static final String CONFIG_SENTBOX_WATCH = "sentbox_watch";
     public static final String CONFIG_MVBOX_MOVE = "mvbox_move";
     public static final String CONFIG_ONLY_FETCH_MVBOX = "only_fetch_mvbox";
     public static final String CONFIG_BCC_SELF = "bcc_self";
@@ -97,25 +97,9 @@ public class DcHelper {
         return ApplicationContext.getInstance(context).notificationCenter;
     }
 
-    public static boolean hasAnyConfiguredContext(Context context) {
-      DcAccounts accounts = getAccounts(context);
-      int[] accountIds = accounts.getAll();
-      for (int accountId : accountIds) {
-        if (accounts.getAccount(accountId).isConfigured() == 1) {
-          return true;
-        }
-      }
-      return false;
-    }
-
     public static boolean isConfigured(Context context) {
         DcContext dcContext = getContext(context);
         return dcContext.isConfigured() == 1;
-    }
-
-    public static String getSelfAddr(Context context) {
-        DcContext dcContext = getContext(context);
-        return dcContext.getConfig(CONFIG_CONFIGURED_ADDRESS);
     }
 
     public static int getInt(Context context, String key) {
@@ -162,7 +146,6 @@ public class DcHelper {
     dcContext.setStockTranslation(69, context.getString(R.string.saved_messages));
     dcContext.setStockTranslation(70, context.getString(R.string.device_talk_explain));
     dcContext.setStockTranslation(71, context.getString(R.string.device_talk_welcome_message2));
-    dcContext.setStockTranslation(72, context.getString(R.string.systemmsg_unknown_sender_for_chat));
     dcContext.setStockTranslation(73, context.getString(R.string.systemmsg_subject_for_new_contact));
     dcContext.setStockTranslation(74, context.getString(R.string.systemmsg_failed_sending_to));
     dcContext.setStockTranslation(84, context.getString(R.string.configuration_failed_with_error));
@@ -208,8 +191,6 @@ public class DcHelper {
     dcContext.setStockTranslation(139, context.getString(R.string.ephemeral_timer_disabled_by_other));
     dcContext.setStockTranslation(140, context.getString(R.string.ephemeral_timer_seconds_by_you));
     dcContext.setStockTranslation(141, context.getString(R.string.ephemeral_timer_seconds_by_other));
-    dcContext.setStockTranslation(142, context.getString(R.string.ephemeral_timer_1_minute_by_you));
-    dcContext.setStockTranslation(143, context.getString(R.string.ephemeral_timer_1_minute_by_other));
     dcContext.setStockTranslation(144, context.getString(R.string.ephemeral_timer_1_hour_by_you));
     dcContext.setStockTranslation(145, context.getString(R.string.ephemeral_timer_1_hour_by_other));
     dcContext.setStockTranslation(146, context.getString(R.string.ephemeral_timer_1_day_by_you));
@@ -325,18 +306,19 @@ public class DcHelper {
   public static void sendToChat(Context activity, byte[] data, String mimeType, String fileName, String text) {
       Intent intent = new Intent(activity, ShareActivity.class);
       intent.setAction(Intent.ACTION_SEND);
+      RelayUtil.setIsFromWebxdc(intent, true);
 
       if (data != null) {
           Uri uri = PersistentBlobProvider.getInstance().create(activity, data, mimeType, fileName);
           intent.setType(mimeType);
           intent.putExtra(Intent.EXTRA_STREAM, uri);
-          intent.putExtra(ShareActivity.EXTRA_TITLE, activity.getString(R.string.send_file_to, fileName));
+          RelayUtil.setSharedTitle(intent, activity.getString(R.string.send_file_to, fileName));
       }
 
       if (text != null) {
           intent.putExtra(Intent.EXTRA_TEXT, text);
           if (data == null) {
-              intent.putExtra(ShareActivity.EXTRA_TITLE, activity.getString(R.string.send_message_to));
+              RelayUtil.setSharedTitle(intent, activity.getString(R.string.send_message_to));
           }
       }
 
@@ -417,7 +399,7 @@ public class DcHelper {
 
     return new ThreadRecord(body, recipient, date,
       unreadCount, chatId,
-      chat.getVisibility(), chat.isProtected(), chat.isSendingLocations(), chat.isMuted(), chat.isContactRequest(), summary);
+      chat.getVisibility(), chat.isSendingLocations(), chat.isMuted(), chat.isContactRequest(), summary);
   }
 
   public static boolean isNetworkConnected(Context context) {

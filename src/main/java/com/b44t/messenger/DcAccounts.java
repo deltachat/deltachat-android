@@ -26,6 +26,7 @@ public class DcAccounts {
     public native void            maybeNetwork         ();
     public native void            setPushDeviceToken   (String token);
     public native boolean         backgroundFetch      (int timeoutSeconds);
+    public native void            stopBackgroundFetch  ();
 
     public native int             migrateAccount       (String dbfile);
     public native boolean         removeAccount        (int accountId);

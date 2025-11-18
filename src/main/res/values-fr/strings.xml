@@ -234,6 +234,7 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Discuter avec...</string>
     <string name="clone_chat">Cloner la discussion</string>
+    <!-- deprecated -->
     <string name="add_recipients">Ajouter des destinataires</string>
     <string name="menu_send">Envoyer</string>
     <string name="menu_toggle_keyboard">Basculer le clavier emoji</string>
@@ -284,6 +285,7 @@
     <string name="menu_scroll_to_bottom">Faire défiler jusqu\'en bas</string>
     <string name="menu_scroll_to_top">Faire défiler jusqu\'en haut</string>
     <string name="menu_help">Aide</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">Qu\'est-ce qu\'une appli Webxdc ?</string>
     <string name="privacy_policy">Politique de confidentialité</string>
     <string name="menu_select_all">Tout sélectionner</string>
@@ -345,35 +347,6 @@
     </plurals>
     <string name="file_saved_to">Fichier enregistré dans \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Discussion vidéo</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Inviter %1$s à une discussion vidéo ?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Cela requiert une application compatible ou un navigateur compatible des deux côtés.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s est invité à une discussion vidéo.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Vous avez envoyé une invitation pour une discussion vidéo.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Appuyer pour rejoindre</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Appuyer pour ouvrir</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Instance de discussion vidéo</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Votre instance de discussion vidéo</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Par exemple : https://your-server.org/$ROOM</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Si vous avez activé les discussions vidéo, vous pouvez démarrer une conversation vidéo dans chacune de vos discussions. Il faut que chaque participant-e ait une application ou un navigateur compatibles pour pouvoir utiliser cette option.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Utiliser « %1$s » pour inviter d\'autres personnes à des discussions vidéo ?\n\nUne fois configuré, vous pouvez discuter en vidéo dans chaque discussion privée. Remplace vos préférences de configurations précédentes pour les discussions vidéos.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Invitation à une discussion vidéo</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Vous êtes invité à une discussion vidéo, cliquez sur %1$s pour la rejoindre.</string>
-
     <plurals name="ask_delete_messages">
         <item quantity="one">Effacer %d message ici et sur le serveur ?</item>
         <item quantity="many">Effacer %d messages ici et sur le serveur ?</item>
@@ -402,7 +375,6 @@
     <string name="contacts_title">Contacts</string>
     <string name="contacts_enter_name_or_email">Entrer le nom ou l\'adresse de courriel</string>
     <string name="contacts_type_email_above">Saisir l\'adresse de courriel au-dessus</string>
-    <string name="contacts_empty_hint">Aucun contact.</string>
 
 
     <!-- chatlist and chat view -->
@@ -447,9 +419,6 @@
     <string name="saved">Sauvegardés</string>
     <string name="save_as">Sauvegarder</string>
     <string name="retry_send">Réessayer d\'envoyer le message</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Vous ne pouvez pas écrire car vous ne faites pas partie de ce groupe. Pour le rejoindre, demandez à un membre.</string>
-    <string name="messaging_disabled_mailing_list">Envoyer des messages dans des listes de diffusion n\'est pas encore possible</string>
     <string name="cannot_display_unsuported_file_type">Impossible d\'afficher ce type de fichier : %s</string>
     <string name="attachment_failed_to_load">Échec du chargement de la pièce jointe</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -589,7 +558,7 @@
     <string name="onboarding_create_instant_account">Créer un nouveau compte</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Je possède déjà un compte</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Authentification par email classique</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Votre compte</string>
@@ -614,9 +583,13 @@
     <string name="welcome_chat_over_email">Chat décentralisé et sûr</string>
     <string name="scan_invitation_code">Scanner le code d\'invitation</string>
     <string name="login_title">Connexion</string>
+    <!-- deprecated -->
     <string name="login_header">Se connecter au compte courriel</string>
+    <!-- deprecated -->
     <string name="login_explain">Se connecter avec un compte de courriel existant.</string>
+    <!-- deprecated -->
     <string name="login_subheader">Pour les fournisseurs de courriel connus, des paramètres supplémentaires sont automatiquement configurés. Parfois, IMAP doit être activé dans l\'interface Web. Consultez votre fournisseur de courriel ou vos amis pour obtenir de l\'aide.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
     <string name="login_inbox">Boîte de réception</string>
     <string name="login_imap_login">Utilisateur IMAP</string>
@@ -629,6 +602,7 @@
     <string name="login_smtp_server">Serveur SMTP</string>
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Sécurité SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Méthode d\'autorisation</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
@@ -642,8 +616,9 @@
     <string name="proxy_delete_explain">Voulez-vous vraiment supprimer « %1$s » ?</string>
     <string name="proxy_share_explain">Vos amis peuvent ajouter ce proxy en scannant le code QR.</string>
     <string name="proxy_share_link">Partager le lien</string>
-
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Continuer avec une configuration simplifiée ?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">L\'adresse de courriel saisie prend en charge une configuration simplifiée (OAuth2.0). \n\nDans l\'étape suivante, autorisez Delta Chat à agir comme votre application de Chat avec courriel . Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
     <string name="login_certificate_checks">Vérification du certificat</string>
     <string name="login_error_mail">Entrez une adresse email valide</string>
@@ -652,7 +627,7 @@
     <string name="login_error_required_fields">Entrez une adresse email et un mot de passe valides</string>
     <string name="import_backup_title">Rétablir une sauvegarde</string>
     <string name="import_backup_ask">Sauvegarde trouvée sur \"%1$s\".\n\nVoulez-vous importer et en utiliser toutes les données et paramètres ?</string>
-    <string name="import_backup_no_backup_found">Aucune sauvegarde trouvée.\n\nCopiez le fichier de sauvegarde vers \"%1$s\" et essayez à nouveau. Ou bien, appuyez sur \"Démarrage communication\" pour suivre le processus normal de configuration.</string>
+    <string name="import_backup_no_backup_found">Aucune sauvegarde trouvée.\n\nCopiez le fichier de sauvegarde vers \"%1$s\" et essayez à nouveau.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Connexion en tant que \"%1$s\" échouée. Vérifiez que votre adresse courriel et votre mot de passe sont corrects.</string>
     <!-- TLS certificate checks -->
@@ -689,6 +664,7 @@
     <string name="pref_profile_photo">Photo de profil</string>
     <string name="pref_blocked_contacts">Contacts bloqués</string>
     <string name="blocked_empty_hint">Si vous bloquez des contacts, ils seront affichés ici.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Mot de passe et compte</string>
     <string name="pref_who_can_see_profile_explain">Votre image de profil, votre nom et votre signature seront envoyés avec vos messages lorsque vous communiquerez avec d\'autres utilisateurs.</string>
     <string name="pref_your_name">Votre nom</string>
@@ -733,8 +709,6 @@
     <string name="pref_server">Serveur</string>
     <string name="pref_encryption">Chiffrement</string>
     <string name="pref_manage_keys">Gérer les clés</string>
-    <string name="pref_use_system_emoji">Utiliser les émojis système</string>
-    <string name="pref_use_system_emoji_explain">Désactiver la prise en charge des émojis intégrés de Delta Chat</string>
     <string name="pref_show_system_contacts">Lire le carnet d\'adresses du système</string>
     <string name="pref_show_system_contacts_explain">Permet de créer des conversations avec des contacts du carnet d\'adresse. Certains fournisseurs doivent d\'abord mettre en place un chiffrement de bout-en-bout.</string>
     <string name="pref_chats">Discussions</string>
@@ -747,25 +721,21 @@
     <string name="pref_backup">Sauvegarde</string>
     <string name="pref_backup_explain">Sauvegarder les discussions sur un stockage externe</string>
     <string name="pref_backup_export_explain">Une sauvegarde vous aide à configurer une nouvelle installation sur cet appareil ou sur un autre.\n\nLa sauvegarde contiendra tous vos messages, tous vos contacts et toutes vos discussions, ainsi que vos paramètres de chiffrement de bout en bout Autocrypt. Conservez le fichier de sauvegarde dans un endroit sûr, ou supprimez-le aussitôt utilisé.</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <!-- deprecated -->
     <string name="pref_backup_export_x">Exporter %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exporter les %1$d comptes</string>
     <string name="pref_backup_export_start_button">Démarrer la sauvegarde</string>
     <string name="pref_backup_written_to_x">Sauvegarde effectuée avec succès sur %1$s</string>
-    <string name="pref_managekeys_menu_title">Gérer les clés</string>
     <string name="pref_managekeys_export_secret_keys">Exporter les clés secrètes</string>
     <string name="pref_managekeys_export_explain">Exporter les clés secrètes vers \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Importer des clés secrètes</string>
-    <string name="pref_managekeys_import_explain">Importer les clés secrètes depuis \"%1$s\" ?\n\n• Les clés secrètes existantes ne seront pas détruites\n\n• La dernière clé importée sera utilisée comme nouvelle clé par défaut à moins qu\'il y ait le mot \"legacy\" dans son nom de fichier.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Les clés secrètes ont été écrites avec succès vers \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Les clés secrètes ont été importées depuis \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Arrière-plan</string>
     <string name="pref_background_btn_default">Utilisez l\'image par défaut</string>
     <string name="pref_background_btn_gallery">Sélectionner depuis la galerie</string>
-    <string name="pref_imap_folder_handling">Gestion de dossier IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si vous désactivez cette option, assurez-vous que votre serveur et vos autres clients sont configurés en conséquence.\n\nSinon des choses pourraient ne pas fonctionner du tout.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Regarder le dossier Messages envoyés</string>
     <string name="pref_send_copy_to_self">M\'envoyer une copie</string>
     <string name="pref_send_copy_to_self_explain">Obligatoire pour utiliser ce compte sur plusieurs appareils.</string>
@@ -841,12 +811,7 @@
     <string name="autodel_confirm">J\'ai compris, supprimer tous ces messages</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Immédiatement</string>
-    <string name="after_30_seconds">Après 30 secondes</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">Après 1 minute</string>
     <string name="after_5_minutes">Après 5 minutes</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">Après 30 minutes</string>
     <string name="autodel_after_1_hour">Après 1 heure</string>
     <string name="autodel_after_1_day">Après 1 jour</string>
     <string name="autodel_after_1_week">Après 1 semaine</string>
@@ -861,7 +826,7 @@
     <string name="autocrypt_prefer_e2ee">Préférez le chiffrement de bout en bout</string>
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">Ce message ne peut pas être déchiffré.\n\n• Essayez de demander à l\'expéditeur de vous l\'envoyer à nouveaux.\n\n• Si vous venez de réinstaller Delta Chat il serait bien de le reconfigurer en sélectionnant \"Ajouter un deuxième appareil\" ou d\'importer une sauvegarde.</string>
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Expéditeur inconnu de cette discussion. Voir « Info » pour plus de détails.</string>
     <string name="systemmsg_subject_for_new_contact">Message de %1$s</string>
     <string name="systemmsg_failed_sending_to">Échec de l\'envoi du message à %1$s.</string>
@@ -990,6 +955,7 @@
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Connu par %1$s</string>
     <string name="verified_by_you">Connu par vous</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Pour garantir le chiffrement de bout en bout, vous pouvez ajouter à ce groupe uniquement les contacts avec un badge vert.\n\nVous pouvez rencontrer ces contacts en personne pour scanner leur code QR et les ajouter à votre liste de contacts connus.</string>
     <string name="mailto_dialog_header_select_chat">Sélectionnez une discussion à qui envoyer le message</string>
     <!-- first placeholder is the name of the chat -->
@@ -1092,7 +1058,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">État de la livraison : Erreur</string>
-    <string name="a11y_encryption_padlock">Cadenas de chiffrement</string>
     <string name="a11y_delivery_status_sending">État de la livraison : envoi en cours</string>
     <string name="a11y_delivery_status_draft">État de la livraison : Brouillon</string>
     <string name="a11y_delivery_status_delivered">État de la livraison : Livré</string>
@@ -1119,8 +1084,6 @@
     <string name="disabled_in_dc">Désactivé dans Delta Chat</string>
     <string name="disabled_in_system_settings">Désactivé dans les paramètres système</string>
     <string name="bg_app_refresh_disabled">Le \"rafraîchissement des applications en arrière-plan\" est désactivé dans les paramètres du système.</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Retardé</string>
     <string name="notifications_avg_minutes">Toutes les %1$d minutes en moyenne</string>
     <string name="notifications_avg_hours">Toutes les %1$d heures en moyenne</string>
     <string name="last_check_at">Dernièrement vu à %1$s</string>

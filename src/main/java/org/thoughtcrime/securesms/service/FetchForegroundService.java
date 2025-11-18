@@ -108,4 +108,11 @@ public final class FetchForegroundService extends Service {
   public IBinder onBind(Intent intent) {
     return null;
   }
+
+  @Override
+  public void onTimeout(int startId, int fgsType) {
+    ApplicationContext.dcAccounts.stopBackgroundFetch();
+    stopSelf();
+  }
+
 }

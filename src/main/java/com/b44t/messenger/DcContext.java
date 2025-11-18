@@ -53,6 +53,7 @@ public class DcContext {
 
     public final static int DC_QR_ASK_VERIFYCONTACT = 200;
     public final static int DC_QR_ASK_VERIFYGROUP   = 202;
+    public final static int DC_QR_ASK_JOIN_BROADCAST= 204;
     public final static int DC_QR_FPR_OK            = 210;
     public final static int DC_QR_FPR_MISMATCH      = 220;
     public final static int DC_QR_FPR_WITHOUT_ADDR  = 230;
@@ -67,12 +68,11 @@ public class DcContext {
     public final static int DC_QR_ERROR             = 400;
     public final static int DC_QR_WITHDRAW_VERIFYCONTACT = 500;
     public final static int DC_QR_WITHDRAW_VERIFYGROUP   = 502;
+    public final static int DC_QR_WITHDRAW_JOINBROADCAST = 504;
     public final static int DC_QR_REVIVE_VERIFYCONTACT   = 510;
     public final static int DC_QR_REVIVE_VERIFYGROUP     = 512;
+    public final static int DC_QR_REVIVE_JOINBROADCAST   = 514;
     public final static int DC_QR_LOGIN             = 520;
-
-    public final static int DC_LP_AUTH_OAUTH2          =     0x2;
-    public final static int DC_LP_AUTH_NORMAL          =     0x4;
 
     public final static int DC_SOCKET_AUTO     = 0;
     public final static int DC_SOCKET_SSL      = 1;
@@ -145,7 +145,6 @@ public class DcContext {
     public native String       getInfo              ();
     public native int          getConnectivity      ();
     public native String       getConnectivityHtml  ();
-    public native String       getOauth2Url         (String addr, String redirectUrl);
     public native String       initiateKeyTransfer  ();
     public native void         imex                 (int what, String dir);
     public native String       imexHasBackup        (String dir);
@@ -169,7 +168,7 @@ public class DcContext {
     public native void         setChatVisibility    (int chat_id, int visibility);
     public native int          getChatIdByContactId (int contact_id);
     public native int          createChatByContactId(int contact_id);
-    public native int          createGroupChat      (boolean verified, String name);
+    public native int          createGroupChat      (String name);
     public native int          createBroadcastList  ();
     public native boolean      isContactInChat      (int chat_id, int contact_id);
     public native int          addContactToChat     (int chat_id, int contact_id);
@@ -244,15 +243,6 @@ public class DcContext {
 
     public void setMuted(boolean muted) {
       setConfigInt("is_muted", muted? 1 : 0);
-    }
-
-    public boolean isGmailOauth2Addr(String addr) {
-      final String oauth2url = getOauth2Url(addr, "chat.delta:/foo");
-      return isGmailOauth2Url(oauth2url);
-    }
-
-    public boolean isGmailOauth2Url(String oauth2url) {
-      return oauth2url.startsWith("https://accounts.google.com/");
     }
 
     public void restartIo() {

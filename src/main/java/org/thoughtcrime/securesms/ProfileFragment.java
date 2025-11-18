@@ -201,7 +201,6 @@ public class ProfileFragment extends Fragment
   public void onAddMember() {
     DcChat dcChat = dcContext.getChat(chatId);
     Intent intent = new Intent(getContext(), ContactMultiSelectionActivity.class);
-    intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, dcChat.isProtected());
     ArrayList<Integer> preselectedContacts = new ArrayList<>();
     for (int memberId : dcContext.getChatContacts(chatId)) {
       preselectedContacts.add(memberId);

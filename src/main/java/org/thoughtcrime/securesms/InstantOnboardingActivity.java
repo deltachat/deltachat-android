@@ -68,7 +68,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private static final String TAG = InstantOnboardingActivity.class.getSimpleName();
   private static final String DCACCOUNT = "dcaccount";
   private static final String DCLOGIN = "dclogin";
-  private static final String INSTANCES_URL = "https://delta.chat/chatmail";
+  private static final String INSTANCES_URL = "https://chatmail.at/relays";
   private static final String DEFAULT_CHATMAIL_HOST = "nine.testrun.org";
 
   public static final String QR_ACCOUNT_EXTRA = "qr_account_extra";
@@ -124,7 +124,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     isDcLogin = false;
     providerHost = DEFAULT_CHATMAIL_HOST;
-    providerQrData = DCACCOUNT + ":https://" + providerHost + "/new";
+    providerQrData = DCACCOUNT + ":" + providerHost;
     attachmentManager = new AttachmentManager(this, () -> {});
     avatarChanged = false;
     registerForEvents();

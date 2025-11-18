@@ -46,8 +46,9 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
     ViewUtil.setTextViewGravityStart(nameView, getContext());
   }
 
-  public void set(@NonNull GlideRequests glideRequests, @Nullable DcChat dcChat, @Nullable DcContact dcContact, int memberCount) {
+  public void set(@NonNull GlideRequests glideRequests, @Nullable DcChat dcChat, @Nullable DcContact dcContact, @Nullable int[] members) {
     this.glideRequests = glideRequests;
+    int memberCount = members != null ? members.length : 0;
 
     String name = "";
     String subtitle = null;
@@ -60,7 +61,9 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
       } else if (dcChat.isOutBroadcast()) {
         subtitle = getContext().getResources().getQuantityString(R.plurals.n_recipients, memberCount, memberCount);
       } else if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
-        subtitle = getContext().getResources().getQuantityString(R.plurals.n_members, memberCount, memberCount);
+        if (memberCount > 1 || Util.contains(members, DcContact.DC_CONTACT_ID_SELF)) {
+          subtitle = getContext().getResources().getQuantityString(R.plurals.n_members, memberCount, memberCount);
+        }
       }
     } else if (dcContact != null) {
       recipient = new Recipient(getContext(), dcContact);

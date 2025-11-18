@@ -54,7 +54,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
   private DcChatlist                          itemDataSharedChats;
   private String                              itemDataStatusText;
   private boolean                             isOutBroadcast;
-  private int                                 memberCount;
+  private int[]                               memberList;
   private final Set<Integer>                  selectedMembers;
 
   private final LayoutInflater                layoutInflater;
@@ -205,7 +205,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     else if(holder.itemView instanceof ProfileAvatarItem) {
       ProfileAvatarItem item = (ProfileAvatarItem) holder.itemView;
       item.setAvatarClickListener(view -> clickListener.onAvatarClicked());
-      item.set(glideRequests, dcChat, dcContact, memberCount);
+      item.set(glideRequests, dcChat, dcContact, memberList);
     }
     else if(holder.itemView instanceof ProfileTextItem) {
       ProfileTextItem item = (ProfileTextItem) holder.itemView;
@@ -281,7 +281,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     boolean isInBroadcast = dcChat != null && dcChat.isInBroadcast();
     boolean isSelfTalk = dcChat != null && dcChat.isSelfTalk();
     boolean isDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
-    memberCount = memberList!=null ? memberList.length : 0;
+    this.memberList = memberList;
 
     itemData.add(new ItemData(ITEM_AVATAR, null, 0));
 
@@ -314,10 +314,10 @@ public class ProfileAdapter extends RecyclerView.Adapter
       itemData.add(new ItemData(ITEM_DIVIDER, null, 0));
       if (dcChat != null) {
         if (dcChat.canSend() && dcChat.isEncrypted()) {
-          itemData.add(new ItemData(ITEM_MEMBERS, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
           if (!isOutBroadcast) {
-            itemData.add(new ItemData(ITEM_MEMBERS, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
+            itemData.add(new ItemData(ITEM_MEMBERS, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
           }
+          itemData.add(new ItemData(ITEM_MEMBERS, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
         }
       }
       for (int value : memberList) {

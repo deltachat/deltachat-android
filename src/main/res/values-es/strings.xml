@@ -268,13 +268,14 @@
     <string name="channels">Canales</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nuevo canal</string>
+    <!-- deprecated -->
     <string name="add_recipients">Agregar destinatarios</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nombre del canal</string>
     <string name="email">Correo electrónico</string>
-    <!-- "New" as in "Create New E-Mail"; shown together with "New Group" and "New Channel" -->
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Nuevo correo electrónico</string>
-    <!-- the "Subject" of an e-mail, use the term common in classic e-mail apps -->
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Asunto</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
@@ -327,6 +328,7 @@
     <string name="menu_scroll_to_bottom">Desplazarse al final</string>
     <string name="menu_scroll_to_top">Desplazarse al inicio</string>
     <string name="menu_help">Ayuda</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">`¿Qué es Webxdc?</string>
     <string name="privacy_policy">Política de privacidad</string>
     <string name="menu_select_all">Seleccionar todo</string>
@@ -405,37 +407,8 @@
     <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Video llamada</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">¿Invitar a %1$s a una videollamada?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Esto requiere una app compatible o un navegador compatible en los dos lados.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$s invitado a una videollamada.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Invitaste a una videollamada.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Toca para unirte</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Toca para abrir</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Instancia de videollamada</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Tu instancia de videollamada</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Ejemplo: https://tu-servidor.org/$ROOM</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Si el videochat está activado, puedes iniciar un videochat desde cada chat. Los chats de vídeo necesitan una aplicación o un navegador compatible en los dos lados.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">¿Usa \"%1$s\" para invitar a otros a la videollamada?\n\nUna vez configurado, puedes iniciar una videollamada desde el chat individual. Esto reemplaza la configuración previa de videollamadas. Si la hubiera.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Invitación a videollamada</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Fuiste invitado a una videollamada, click en %1$s para unirse.</string>
-
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups, channels, broadcasts or a mailinglists. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">¿Seguro que quieres abandonar este canal?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">¿Eliminar %d chat de todos tus dispositivos?</item>
@@ -474,7 +447,6 @@
     <string name="contacts_title">Contactos</string>
     <string name="contacts_enter_name_or_email">Nombre o correo electrónico</string>
     <string name="contacts_type_email_above">Escriba la dirección de correo arriba</string>
-    <string name="contacts_empty_hint">Sin contactos.</string>
 
 
     <!-- chatlist and chat view -->
@@ -522,9 +494,6 @@
     <string name="saved">Guardado</string>
     <string name="save_as">Guardar como</string>
     <string name="retry_send">Reintentar enviar mensaje</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">No puedes escribir porque no estás en este grupo. Para unirte, pregúntale a otro miembro.</string>
-    <string name="messaging_disabled_mailing_list">Todavía no se admite el envío de mensajes en listas de correo</string>
     <string name="cannot_display_unsuported_file_type">No se puede mostrar este tipo de archivo: %s</string>
     <string name="attachment_failed_to_load">Fallo al cargar el adjunto</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -665,7 +634,7 @@
     <string name="onboarding_create_instant_account">Crear perfil nuevo</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Ya tengo un perfil</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Iniciar sesión con correo electrónico</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Tu perfil</string>
@@ -690,9 +659,13 @@
     <string name="welcome_chat_over_email">Chat seguro y descentralizado</string>
     <string name="scan_invitation_code">Escanear código de invitación</string>
     <string name="login_title">Iniciar sesión</string>
+    <!-- deprecated -->
     <string name="login_header">Inicie sesión en su servidor</string>
+    <!-- deprecated -->
     <string name="login_explain">Iniciar sesión con una cuenta de correo existente</string>
+    <!-- deprecated -->
     <string name="login_subheader">Para los proveedores de correo conocidos, la configuración es realizada automáticamente. A veces, IMAP debe estar habilitado en la interfaz web. Consulte a su proveedor de correo o amigos para obtener ayuda.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">No hay servidores de Delta Chat, tus datos permanecen en tu dispositivo!</string>
     <string name="login_inbox">Bandeja de entrada</string>
     <string name="login_imap_login">Nombre de usuario IMAP</string>
@@ -705,6 +678,7 @@
     <string name="login_smtp_server">Servidor SMTP</string>
     <string name="login_smtp_port">Puerto SMTP</string>
     <string name="login_smtp_security">Seguridad SMTP</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Método de autorización</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
@@ -719,8 +693,9 @@
     <string name="proxy_use_proxy_confirm">¿Quieres utilizar el proxy \"%1$s\"?</string>
     <string name="proxy_share_explain">Tus amigos pueden agregar este proxy escaneando el código QR.</string>
     <string name="proxy_share_link">Compartir enlace</string>
-
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">¿Continuar con la configuración simplificada?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">La dirección de correo electrónico introducida admite una configuración simplificada (OAuth 2.0).\n\nEn el próximo paso, permita que Delta Chat actúe como su aplicación de chat por correo electrónico.\n\nNo hay servidores de Delta Chat, tus datos permanecen en tu dispositivo.</string>
     <string name="login_certificate_checks">Comprobaciones de certificados</string>
     <string name="login_error_mail">Por favor, introduzca una dirección de correo válida</string>
@@ -729,7 +704,7 @@
     <string name="login_error_required_fields">Por favor, introduzca una dirección de correo válida y una contraseña</string>
     <string name="import_backup_title">Importar copia de respaldo</string>
     <string name="import_backup_ask">Copia de respaldo encontrada en \"%1$s\".\n\n¿Desea importar y utilizar todos los datos y configuraciones de ella?</string>
-    <string name="import_backup_no_backup_found">No se encontraron copias de seguridad.\n\nCopie el archivo de respaldo en \"%1$s\" e inténtelo de nuevo. Alternativamente, presione \"Empezar a Chatear\" para continuar con el proceso de configuración normal.</string>
+    <string name="import_backup_no_backup_found">No se encontraron copias de seguridad.\n\nCopie el archivo de respaldo en \"%1$s\" e inténtelo de nuevo.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">No se puede iniciar sesión como \"%1$s\". Por favor, compruebe si la dirección de correo y la contraseña son correctas.</string>
     <!-- TLS certificate checks -->
@@ -770,6 +745,7 @@
     <string name="pref_profile_photo">Foto de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
     <string name="blocked_empty_hint">Si bloqueas contactos, se mostrarán aquí.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Contraseña y cuenta</string>
     <string name="pref_who_can_see_profile_explain">La imagen y el nombre de su perfil se mostrarán junto con sus mensajes cuando se comunique con otros usuarios. La información ya enviada no puede ser borrada o eliminada.</string>
     <string name="pref_your_name">Tu nombre</string>
@@ -814,8 +790,6 @@
     <string name="pref_server">Servidor</string>
     <string name="pref_encryption">Cifrado</string>
     <string name="pref_manage_keys">Administrar claves</string>
-    <string name="pref_use_system_emoji">Usar emoji del sistema</string>
-    <string name="pref_use_system_emoji_explain">Deshabilitar el soporte de emoji integrado de Delta Chat</string>
     <string name="pref_show_system_contacts">Leer la libreta de direcciones del sistema</string>
     <string name="pref_show_system_contacts_explain">Ofrecer crear chats con contactos de la libreta de direcciones. Algunos proveedores necesitan primero una configuración de cifrado de extremo a extremo.</string>
     <string name="pref_chats">Chats</string>
@@ -828,25 +802,21 @@
     <string name="pref_backup">Copia de respaldo</string>
     <string name="pref_backup_explain">Hacer copias de respaldo de chats en almacenamiento externo</string>
     <string name="pref_backup_export_explain">Una copia de respaldo lo ayuda a configurar una nueva instalación en este u otro dispositivo.\n\nLa copia de respaldo contendrá todos los mensajes, contactos y chats, y su configuración Autocrypt de extremo a extremo. Guarde el archivo de respaldo en un lugar seguro o elimínelo lo antes posible.</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <!-- deprecated -->
     <string name="pref_backup_export_x">Exportar %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportar todo (%1$d cuentas)</string>
     <string name="pref_backup_export_start_button">Iniciar copia de respaldo</string>
     <string name="pref_backup_written_to_x">Copia de respaldo escrita correctamente en %1$s</string>
-    <string name="pref_managekeys_menu_title">Administrar claves</string>
     <string name="pref_managekeys_export_secret_keys">Exportar claves secretas</string>
     <string name="pref_managekeys_export_explain">¿Exportar claves secretas a \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Importar claves secretas</string>
-    <string name="pref_managekeys_import_explain">Importar claves secretas de \"%1$s\"?\n\n• Las claves secretas existentes no se eliminarán\n\n• La última clave importada se usará como la nueva clave predeterminada a menos que tenga la palabra \"legacy\" en su nombre de archivo.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Claves secretas escritas exitosamente a \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Claves secretas importadas de \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fondo</string>
     <string name="pref_background_btn_default">Usar imagen por defecto</string>
     <string name="pref_background_btn_gallery">Seleccionar de la galería</string>
-    <string name="pref_imap_folder_handling">Manejo de carpetas IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si deshabilita esta opción, asegúrese de que su servidor y sus otros clientes estén configurados en consecuencia.\n\nDe lo contrario, las cosas pueden no funcionar en absoluto.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Monitorear carpeta Enviados</string>
     <string name="pref_send_copy_to_self">Enviar autocopia</string>
     <string name="pref_send_copy_to_self_explain">Necesario cuando utilizando esta cuenta en varios dispositivos.</string>
@@ -925,12 +895,7 @@
     <string name="autodel_confirm">Comprendo, borrar todos estos mensajes</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Inmediatamente</string>
-    <string name="after_30_seconds">Luego de 30 segundos</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">Luego de 1 minuto</string>
     <string name="after_5_minutes">Luego de 5 minutos</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">Luego de 30 minutos</string>
     <string name="autodel_after_1_hour">Luego de 1 hora</string>
     <string name="autodel_after_1_day">Luego de 1 día</string>
     <string name="autodel_after_1_week">Luego de 1 semana</string>
@@ -945,7 +910,7 @@
     <string name="autocrypt_prefer_e2ee">Preferir el cifrado de extremo a extremo</string>
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">Este mensaje no se puede descifrar.\n\n• Podría ayudar simplemente responder a este mensaje y pedir al remitente que lo envíe de nuevo.\n\n• Si acabas de reinstalar Delta Chat, es mejor que configures Delta Chat de nuevo y elijas \"Agregar como segundo dispositivo\" o importes una copia de seguridad.</string>
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Remitente desconocido. Mira \"info\" para más detalles.</string>
     <string name="systemmsg_subject_for_new_contact">Mensaje de %1$s</string>
     <string name="systemmsg_failed_sending_to">Falla en enviar el mensaje a %1$s.</string>
@@ -966,8 +931,6 @@
     <string name="remove_member_by_you">Eliminaste al miembro %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Miembro %1$s eliminado por %2$s.</string>
-    <!-- "left" in the meaning of "exited". This string is added to a chat after groups, channels, broadcasts or mailinglists are left. If a subject is needed, "You left the chat." would work as well. -->
-    <string name="group_left_by_you">Abandonaste.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Grupo abandonado por %1$s.</string>
     <string name="group_image_deleted_by_you">Eliminaste la imagen del grupo.</string>
@@ -1080,6 +1043,7 @@
     <string name="verified_by">Verificado por %1$s</string>
     <string name="verified_by_you">Verificado por ti</string>
     <string name="verified_by_unknown">Introducido</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Para garantizar el cifrado de extremo a extremo, solo puedes añadir contactos con una marca de verificación verde</string>
     <string name="mailto_dialog_header_select_chat">Seleccione el chat para enviar el mensaje</string>
     <!-- first placeholder is the name of the chat -->
@@ -1183,7 +1147,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Estado de envío: Error</string>
-    <string name="a11y_encryption_padlock">Candado de cifrado</string>
     <string name="a11y_delivery_status_sending">Estado de envío: Enviando</string>
     <string name="a11y_delivery_status_draft">Estado de envío: Borrador</string>
     <string name="a11y_delivery_status_delivered">Estado de envío: Enviado</string>
@@ -1210,8 +1173,6 @@
     <string name="disabled_in_dc">Deshabilitado en Delta Chat</string>
     <string name="disabled_in_system_settings">Deshabilitado en la configuración del sistema</string>
     <string name="bg_app_refresh_disabled">\"Actualización de aplicaciones en segundo plano\" desactivada en los ajustes del sistema</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Demorado</string>
     <string name="notifications_avg_minutes">Promedio cada %1$d minutos</string>
     <string name="notifications_avg_hours">Promedio cada %1$d horas</string>
     <string name="last_check_at">Comprobado en %1$s</string>

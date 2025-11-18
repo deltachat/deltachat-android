@@ -236,31 +236,6 @@
     </plurals>
     <string name="file_saved_to">%1$sに保存しました。</string>
 
-    <!-- deprecated -->
-    <string name="videochat">ビデオ通話</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">%1$sをビデオ通話に招待しますか？</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">互換性のあるブラウザ又はアプリが必要です。</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">%1$sをビデオ通話に招待しました。</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">ビデオ通話に招待しました。</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">タップして参加</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">タップして開く</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">ビデオ通話サーバー</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">選んだビデオ通話サーバー</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">%1$sで他人をビデオ通話に招待しますか？設定次第に各チャットからビデオ通話を開始することができます。以前の設定も置き換えます。</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">ビデオ通話に招待</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">ビデオ通話に招待されて、%1$sで参加</string>
-
     <string name="ask_forward">%1$sにメッセージを転送しますか？</string>
     <string name="ask_forward_multiple">%1$dチャットにメッセージを転送しますか？</string>
     <string name="ask_export_attachment">添付ファイルをエクスポートしますか？添付ファイルをエクスポートすると、他のアプリからもアクセスできるようになります。\n\nよろしいですか？</string>
@@ -278,7 +253,6 @@
     <string name="contacts_title">連絡先一覧</string>
     <string name="contacts_enter_name_or_email">名前かメールアドレスを入力</string>
     <string name="contacts_type_email_above">上にメールアドレスを入力してください。</string>
-    <string name="contacts_empty_hint">連絡先無し</string>
 
 
     <!-- chatlist and chat view -->
@@ -312,8 +286,6 @@
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">保存しました</string>
     <string name="retry_send">メッセージの配信を再試行します</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">このグループに参加していないので書き込めません。参加するには、他のメンバーに知らせてください。</string>
     <string name="cannot_display_unsuported_file_type">%s形式のファイルは表示できません</string>
     <string name="attachment_failed_to_load">添付ファイルの読み込みに失敗しました</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -361,9 +333,13 @@
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">接続済み</string>
     <string name="login_title">ログイン</string>
+    <!-- deprecated -->
     <string name="login_header">自分のメールサーバーにログインする</string>
+    <!-- deprecated -->
     <string name="login_explain">既存のメールアカウントにログインする</string>
+    <!-- deprecated -->
     <string name="login_subheader">主なメールサーバーは自動で設定されます｡一般にIMAPはサーバー側で有効に設定する必要が有ります｡サーバー提供者や詳しい人に確認しましょう｡</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Delta Chatには専用サーバーが有りません｡つまりあなたのデータ･個人情報はこの端末内に保存されています｡</string>
     <string name="login_inbox">受信</string>
     <string name="login_imap_login">IMAPログイン名</string>
@@ -376,8 +352,11 @@
     <string name="login_smtp_server">SMTPサーバー</string>
     <string name="login_smtp_port">SMTPポート</string>
     <string name="login_smtp_security">SMTP暗号方式</string>
+    <!-- deprecated -->
     <string name="login_auth_method">認証方法</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">簡単セットアップを使用しましょうか？</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">入力されたメールアドレスは、簡易セットアップ（OAuth 2.0）に対応しています。次に「メールでチャット」を許可してください。Delta Chatにはサーバーがなく、テーダはデバイスにあります。</string>
     <string name="login_certificate_checks">有効な証明書です</string>
     <string name="login_error_mail">有効なメールアドレスを入力してください</string>
@@ -415,6 +394,7 @@
     <string name="pref_profile_photo">アイコン画像</string>
     <string name="pref_blocked_contacts">ブロックされた人</string>
     <string name="blocked_empty_hint">ブロックされた連絡先がここに表示されます。</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">パスワードとアカウント</string>
     <string name="pref_who_can_see_profile_explain">アイコン画像や名前は他のユーザーに連絡するとメッセージとともに表示されます。既に送信された情報を削除することができます。</string>
     <string name="pref_your_name">あなたの名前</string>
@@ -454,8 +434,6 @@
     <string name="pref_read_receipts">既読通知</string>
     <string name="pref_read_receipts_explain">既読通知を無効にすると、相手の既読通知も受け取れません。</string>
     <string name="pref_manage_keys">暗号鍵の管理</string>
-    <string name="pref_use_system_emoji">システムの絵文字を使う</string>
-    <string name="pref_use_system_emoji_explain">Delta Chat独自の絵文字機能を無効にする</string>
     <string name="pref_chats">チャット</string>
     <string name="pref_in_chat_sounds">着信音</string>
     <string name="pref_view_log">ログの表示</string>
@@ -468,16 +446,14 @@
     <string name="pref_backup_export_explain">バックアップは、本デバイスまたは別のデバイスに新たにインストールする際に役立ちます。\n\nこのバックアップには、すべてのメッセージ、連絡先、チャット、およびエンドツーエンドの自動暗号化設定が含まれます。バックアップファイルは安全な場所に保管するか、できるだけ早く削除してください。</string>
     <string name="pref_backup_export_start_button">バックアップを開始する</string>
     <string name="pref_backup_written_to_x">バックアップは%1$sに正常に完了しました。</string>
-    <string name="pref_managekeys_menu_title">暗号鍵の管理</string>
     <string name="pref_managekeys_export_secret_keys">秘密鍵のエクスポート</string>
     <string name="pref_managekeys_export_explain">%1$sに秘密鍵をエクスポートしますか？</string>
-    <string name="pref_managekeys_import_secret_keys">秘密鍵のインポート</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">暗号鍵は%1$sに正常に書き込まれました。</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">暗号鍵は%1$sからインポートされました。</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">デフォルトの画像を使う</string>
     <string name="pref_background_btn_gallery">ギャラリーから選ぶ</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">送信トレイを監視する</string>
     <string name="pref_send_copy_to_self">自分にコピーを送る</string>
     <string name="pref_auto_folder_moves">DeltaChatフォルダに自動で移動する</string>
@@ -518,12 +494,7 @@
     <string name="autodel_confirm">分かりました。メッセージを削除していいです。</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">すぐに</string>
-    <string name="after_30_seconds">30秒</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">1分</string>
     <string name="after_5_minutes">5分</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">30分</string>
     <string name="autodel_after_1_hour">1時間</string>
     <string name="autodel_after_1_day">1日後</string>
     <string name="autodel_after_1_week">1週間後</string>

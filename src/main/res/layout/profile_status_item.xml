@@ -15,7 +15,7 @@
               android:gravity="start|center_vertical"
               style="@style/Signal.Text.Body"
               android:textColor="?attr/emoji_text_color"
-              android:textColorLink="?attr/emoji_text_color"
+              android:textColorLink="?attr/colorAccent"
               android:background="?attr/contact_list_divider"/>
 
 </org.thoughtcrime.securesms.ProfileStatusItem>

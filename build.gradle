@@ -27,8 +27,8 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        versionCode 734
-        versionName "2.22.0"
+        versionCode 736
+        versionName "2.25.0"
 
         applicationId "com.b44t.messenger"
         multiDexEnabled true
@@ -88,7 +88,9 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            testProguardFiles 'test-proguard-rules.pro'
             applicationIdSuffix ".beta"
         }
         release {
@@ -101,7 +103,9 @@ android {
             //
             // nb: it is highly recommended to use the same settings in debug+release -
             // otherwise problems might be noticed delayed only
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            testProguardFiles 'test-proguard-rules.pro'
             signingConfig signingConfigs.release
         }
     }

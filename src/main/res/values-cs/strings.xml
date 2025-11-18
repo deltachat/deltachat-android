@@ -252,6 +252,7 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">Chatovat s...</string>
     <string name="clone_chat">Klonovat chat</string>
+    <!-- deprecated -->
     <string name="add_recipients">Přidat příjemce</string>
     <string name="menu_send">Odeslat</string>
     <string name="menu_toggle_keyboard">Přepnout emoji klávesnici</string>
@@ -303,6 +304,7 @@
     <string name="menu_scroll_to_bottom">Přejet dolů</string>
     <string name="menu_scroll_to_top">Přejet nahoru</string>
     <string name="menu_help">Nápověda</string>
+    <!-- use the same term for "Apps" as elsewhere -->
     <string name="what_is_webxdc">Co je Webxdc?</string>
     <string name="privacy_policy">Zásady ochrany osobních údajů</string>
     <string name="menu_select_all">Vybrat vše</string>
@@ -366,35 +368,6 @@
     </plurals>
     <string name="file_saved_to">Soubor uložen do \"%1$s\".</string>
 
-    <!-- deprecated -->
-    <string name="videochat">Videohovor</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_to_videochat">Pozvat uživatele %1$s k videohovoru?</string>
-    <!-- deprecated -->
-    <string name="videochat_invite_user_hint">Toto vyžaduje kompatibilní aplikaci či prohlížeč na obou stranách.</string>
-    <!-- deprecated -->
-    <string name="videochat_contact_invited_hint">Uživatel %1$s pozván k videohovoru.</string>
-    <!-- deprecated -->
-    <string name="videochat_you_invited_hint">Odeslali jste pozvánku k videohovoru.</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_join">Připojit se stisknutím</string>
-    <!-- deprecated -->
-    <string name="videochat_tap_to_open">Otevřít stisknutím</string>
-    <!-- deprecated -->
-    <string name="videochat_instance">Instance pro videohovory</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_placeholder">Vaše instance pro videohovory</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_example">Příklad: https://your-server.org/$ROOM</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_explain_2">Je-li tato volba povolena, můžete ve všech chatech spouštět videohovory. Vyžaduje kompatibilní aplikaci nebo prohlížeč na obou stranách.</string>
-    <!-- deprecated -->
-    <string name="videochat_instance_from_qr">Použít \"%1$s\" ke zvaní na videohovory?\n\nJakmile je volba nastavena, můžete ve všech chatech spouštět videohovory. Předchozí hodnota bude tímto přepsána.</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation">Pozvánka k videohovoru</string>
-    <!-- deprecated -->
-    <string name="videochat_invitation_body">Byli jste pozváni k videohovoru, připojte se stisknutím %1$s</string>
-
     <plurals name="ask_delete_chat">
         <item quantity="one">Smazat %d chat ze všech vašich zařízení?</item>
         <item quantity="few">Smazat %d chaty ze všech vašich zařízení?</item>
@@ -433,7 +406,6 @@
     <string name="contacts_title">Kontakty</string>
     <string name="contacts_enter_name_or_email">Zadejte jméno nebo e-mail</string>
     <string name="contacts_type_email_above">Zadejte e-mail výše</string>
-    <string name="contacts_empty_hint">Žádné kontakty.</string>
 
 
     <!-- chatlist and chat view -->
@@ -481,9 +453,6 @@
     <string name="saved">Uložené</string>
     <string name="save_as">Uložit jako</string>
     <string name="retry_send">Opakovat pokus o zaslání zprávy</string>
-    <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Abyste mohli poslat zprávu, musíte být členem této skupiny. Požádejte jiného člena, aby vás přidal.</string>
-    <string name="messaging_disabled_mailing_list">Posílání zpráv do e-mailových seznamů zatím není podporováno</string>
     <string name="cannot_display_unsuported_file_type">Nelze zobrazit tento typ souboru: %s</string>
     <string name="attachment_failed_to_load">Načtení přílohy se nezdařilo</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -624,7 +593,7 @@
     <string name="onboarding_create_instant_account">Vytvořit nový profil</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Již mám svůj profil</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Přihlášení ke klasickému e-mailu</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Váš profil</string>
@@ -649,9 +618,13 @@
     <string name="welcome_chat_over_email">Zabezpečený decentralizovaný chat</string>
     <string name="scan_invitation_code">Naskenovat kód pozvánky</string>
     <string name="login_title">Přihlaš se</string>
+    <!-- deprecated -->
     <string name="login_header">Přihlašte se ke svému e-mailovému účtu</string>
+    <!-- deprecated -->
     <string name="login_explain">Přihlásit se se stávajícím účtem pro e-mail.</string>
+    <!-- deprecated -->
     <string name="login_subheader">Pro standardní poskytovatele jsou nastavení dopněna automaticky. Někdy je potřeba povolit IMAP ve webovém rozhraní. Potřebujete-li pomoc, obraťte se na svého poskytovatele e-mailu nebo přátele.</string>
+    <!-- deprecated -->
     <string name="login_no_servers_hint">Delta Chat nesbírá uživatelská data, vše zůstává na vašem zařízení.</string>
     <string name="login_inbox">Příchozí</string>
     <string name="login_imap_login">IMAP uživatelské jméno</string>
@@ -664,6 +637,7 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP zabezpečení</string>
+    <!-- deprecated -->
     <string name="login_auth_method">Metoda autorizace</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy server</string>
@@ -678,8 +652,9 @@
     <string name="proxy_use_proxy_confirm">Přejete si použít proxy server \"%1$s\"?</string>
     <string name="proxy_share_explain">Vaši přátele si mohou tento proxy server přidat naskenováním tohoto QR kódu.</string>
     <string name="proxy_share_link">Sdílet odkaz</string>
-
+    <!-- deprecated -->
     <string name="login_info_oauth2_title">Pokračovat se zjednodušeným nastavením?</string>
+    <!-- deprecated -->
     <string name="login_info_oauth2_text">Zadaný e-mail podporuje zjednodušené nastavení (OAuth 2.0).\n\nV následujícím kroku, prosíme, povolte Delta Chatu chovat se jako aplikace typu Chat přes e-mail.\n\nDelta Chat nesbírá uživatelská data, vše zůstává na vašem zařízení.</string>
     <string name="login_certificate_checks">Kontroly certifikátu</string>
     <string name="login_error_mail">Prosím, zadejte platnou e-mailovou adresu</string>
@@ -688,7 +663,7 @@
     <string name="login_error_required_fields">Prosím, zadejte platnou e-mailovou adresu a heslo</string>
     <string name="import_backup_title">Obnovit ze zálohy</string>
     <string name="import_backup_ask">Záloha nalezena v \"%1$s\"\n\nPřejete si soubor načíst a použít všechna jeho data a nastavení?</string>
-    <string name="import_backup_no_backup_found">Žádná záloha nebyla nalezena. \n\nZkopírujte zálohu do \"%1$s\" a zkuste to znovu. Můžete také stisknout \"Začít...\"  a pokračovat běžným postupem pro nastavení aplikace.</string>
+    <string name="import_backup_no_backup_found">Žádná záloha nebyla nalezena. \n\nZkopírujte zálohu do \"%1$s\" a zkuste to znovu.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Přihlášení jako \"%1$s\" selhalo. Zkontrolujte si prosím ještě jednou e-mail a heslo.</string>
     <!-- TLS certificate checks -->
@@ -729,6 +704,7 @@
     <string name="pref_profile_photo">Profilový obrázek</string>
     <string name="pref_blocked_contacts">Blokované kontakty</string>
     <string name="blocked_empty_hint">Zablokované kontakty se zobrazí zde.</string>
+    <!-- deprecated -->
     <string name="pref_password_and_account_settings">Heslo a účet</string>
     <string name="pref_who_can_see_profile_explain">Váš profilový obrázek, jméno a bio budou odeslány společně s vašimi zprávami ostatním uživatelům.</string>
     <string name="pref_your_name">Vaše jméno</string>
@@ -773,8 +749,6 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Šifrování</string>
     <string name="pref_manage_keys">Správa klíčů</string>
-    <string name="pref_use_system_emoji">Používat systémová emoji</string>
-    <string name="pref_use_system_emoji_explain">Vypnout vestavěná emoji Data Chatu</string>
     <string name="pref_show_system_contacts">Čtení systémových kontaktů</string>
     <string name="pref_show_system_contacts_explain">Nabízet vytváření chatů s kontakty z adresáře. Pro některé poskytovatele je nejprve nutné nastavit koncové šifrování.</string>
     <string name="pref_chats">Chaty</string>
@@ -787,25 +761,21 @@
     <string name="pref_backup">Záloha</string>
     <string name="pref_backup_explain">Zálohovat chaty na externí úložiště</string>
     <string name="pref_backup_export_explain">Záloha vám pomůže s novou instalací na tomto či jiném zařízení.\n\nZáloha bude obsahovat všechny zprávy, kontakty a chaty, a nastavení automatického koncového šifrování. Soubor se zálohou uchovávejte na bezpečném místě, nebo jej co nejdříve smažte.</string>
-    <!-- the placeholder will be replaced by the profile name -->
+    <!-- deprecated -->
     <string name="pref_backup_export_x">Exportovat %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportovat všech %1$d profilů</string>
     <string name="pref_backup_export_start_button">Spustit zálohu</string>
     <string name="pref_backup_written_to_x">Záloha úspěšně zapsána v \"%1$s\"</string>
-    <string name="pref_managekeys_menu_title">Správa klíčů</string>
     <string name="pref_managekeys_export_secret_keys">Exportovat tajné klíče</string>
     <string name="pref_managekeys_export_explain">Exportovat tajné klíče do \"%1$s\"?</string>
-    <string name="pref_managekeys_import_secret_keys">Importovat tajné klíče</string>
-    <string name="pref_managekeys_import_explain">Načíst tajné klíče z \"%1$s\"?\n\n• Stávající klíče nebudou smazány\n\n• Klíč načtený jako poslední bude použit jako výchozí, pokud název souboru nebsahuje slovo \"legacy\".</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Tajné klíče úspěšně zapsány v \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Tajné klíče načteny z \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Pozadí</string>
     <string name="pref_background_btn_default">Použít výchozí obrázek</string>
     <string name="pref_background_btn_gallery">Vybrat z galerie</string>
-    <string name="pref_imap_folder_handling">Použití složek z IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Při změně této volby se ujistěte, že váš server a ostatní klientské aplikace mají odpovídající nastavení.\n\nJinak může vše přestat fungovat.</string>
+    <!-- deprecated -->
     <string name="pref_watch_sent_folder">Sledovat složku Odeslané</string>
     <string name="pref_send_copy_to_self">Posílat si kopie</string>
     <string name="pref_send_copy_to_self_explain">Tato volba je potřebná, pokud je tento účet používán na více zařízeních.</string>
@@ -883,12 +853,7 @@
     <string name="autodel_confirm">Rozumím. Smazat všechny tyto zprávy</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Ihned po stažení</string>
-    <string name="after_30_seconds">Po 30 sekundách</string>
-    <!-- deprecated -->
-    <string name="after_1_minute">Po 1 minutě</string>
     <string name="after_5_minutes">Po 5 minutách</string>
-    <!-- deprecated -->
-    <string name="after_30_minutes">Po 30 minutách</string>
     <string name="autodel_after_1_hour">Po 1 hodině</string>
     <string name="autodel_after_1_day">Po 1 dni</string>
     <string name="autodel_after_1_week">Po 1 týdnu</string>
@@ -903,7 +868,7 @@
     <string name="autocrypt_prefer_e2ee">Upřednostňovat koncové šifrování</string>
 
     <!-- system messages -->
-    <string name="systemmsg_cannot_decrypt">Tuto zprávu nelze dešifrovat.\n\n• Již nyní by mohlo pomoci jednoduše odpovědět na tuto zprávu a požádat odesílatele, aby ji odeslal znovu.\n\n• Pokud jste právě přeinstalovali Delta Chat, bude nejlepší, když jej znovu nastavíte a zvolíte \"Přidat jako další zařízení\" nebo importujete zálohu.</string>
+    <!-- deprecated -->
     <string name="systemmsg_unknown_sender_for_chat">Chat má neznámého odesílatele. Podrobnosti naleznete v části „informace“.</string>
     <string name="systemmsg_subject_for_new_contact">Zpráva od uživatele %1$s</string>
     <string name="systemmsg_failed_sending_to">Odeslání zprávy uživateli %1$s selhalo.</string>
@@ -1032,6 +997,7 @@
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Ověřeni uživatelem %1$s.</string>
     <string name="verified_by_you">Ověřeni mnou</string>
+    <!-- deprecated -->
     <string name="verified_contact_required_explain">Aby mohlo být garantováno koncové šifrování, můžete do této skupiny přidávat pouze uživatele se zeleným zaškrtávátkem.\n\nSe svými kontakty se můžete setkat osobně a naskenovat jejich QR kód, abyste je ověřili.</string>
     <string name="mailto_dialog_header_select_chat">Vyberte chat, do kterého chcete zprávu poslat</string>
     <!-- first placeholder is the name of the chat -->
@@ -1134,7 +1100,6 @@
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Stav doručení: Chyba</string>
-    <string name="a11y_encryption_padlock">Zámek šifrování</string>
     <string name="a11y_delivery_status_sending">Stav doručení: Odesílání</string>
     <string name="a11y_delivery_status_draft">Stav doručení: Rozepsané</string>
     <string name="a11y_delivery_status_delivered">Stav doručení: Doručeno</string>
@@ -1161,8 +1126,6 @@
     <string name="disabled_in_dc">Zakázáno aplikací Delta Chat</string>
     <string name="disabled_in_system_settings">Zakázáno v systémovém nastavení</string>
     <string name="bg_app_refresh_disabled">\"Aktualizace aplikací na pozadí\" jsou vypnuty v systémovém nastavení</string>
-    <!-- deprecated, was used on iOS only -->
-    <string name="delayed">Odložené</string>
     <string name="notifications_avg_minutes">Průměrně jednou za %1$d minut</string>
     <string name="notifications_avg_hours">Průměrně jednou za %1$d hodin</string>
     <string name="last_check_at">Naposledy zkontrolováno %1$s</string>

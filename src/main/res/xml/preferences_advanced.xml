@@ -67,19 +67,10 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:key="pref_category_encryption"
-        android:title="@string/pref_encryption">
-
-        <Preference android:key="pref_send_autocrypt_setup_message"
-            android:title="@string/autocrypt_send_asm_title"/>
-
-    </PreferenceCategory>
-
     <PreferenceCategory android:title="@string/pref_server">
 
         <Preference android:key="password_account_settings_button"
-            android:title="@string/pref_password_and_account_settings"/>
+            android:title="@string/edit_transport"/>
 
         <Preference android:key="proxy_settings_button"
             android:title="@string/proxy_settings"/>
@@ -92,13 +83,9 @@
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
-            android:key="pref_sentbox_watch"
-            android:title="@string/pref_watch_sent_folder"/>
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="true"
             android:key="pref_bcc_self"
-            android:title="@string/pref_send_copy_to_self"/>
+            android:title="@string/pref_multidevice"
+            android:summary="@string/pref_multidevice_explain"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
