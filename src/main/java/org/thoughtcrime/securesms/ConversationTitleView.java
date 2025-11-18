@@ -20,6 +20,7 @@ import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ConversationTitleView extends RelativeLayout {
@@ -73,7 +74,7 @@ public class ConversationTitleView extends RelativeLayout {
     } else if (dcChat.isOutBroadcast()) {
       subtitleStr = context.getResources().getQuantityString(R.plurals.n_recipients, chatContacts.length, chatContacts.length);
     } else if( dcChat.isMultiUser() ) {
-      if (dcChat.canSend()) {
+      if (chatContacts.length > 1 || Util.contains(chatContacts, DcContact.DC_CONTACT_ID_SELF)) {
         subtitleStr = context.getResources().getQuantityString(R.plurals.n_members, chatContacts.length, chatContacts.length);
       } else {
         subtitleStr = "…";
