@@ -18,6 +18,8 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 
+import java.util.Locale;
+
 public class StatsSending {
   public static void maybeAddStatsSendingDeviceMsg(Context context) {
     if (Prefs.getStatsDeviceMsgId(context) != 0) {
@@ -76,7 +78,8 @@ public class StatsSending {
       .setMessage(R.string.stats_thanks)
       .setNeutralButton(R.string.no, (d, i) -> {})
       .setPositiveButton(R.string.yes, (d, i) -> {
-        IntentUtils.showInBrowser(activity, "https://example.com/#" + stats_id); // TODO
+        String ln = Locale.getDefault().getLanguage();
+        IntentUtils.showInBrowser(activity, "https://cispa.qualtrics.com/jfe/form/SV_9YmhkpGa48KxfLg?id=" + stats_id + "&ln=" + ln);
       })
       .show();
   }
