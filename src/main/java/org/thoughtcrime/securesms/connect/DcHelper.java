@@ -74,6 +74,8 @@ public class DcHelper {
     public static final String CONFIG_PROXY_URL = "proxy_url";
     public static final String CONFIG_WEBXDC_REALTIME_ENABLED = "webxdc_realtime_enabled";
     public static final String CONFIG_PRIVATE_TAG = "private_tag";
+    public static final String CONFIG_STATS_SENDING = "stats_sending";
+    public static final String CONFIG_STATS_ID = "stats_id";
 
     public static DcContext getContext(@NonNull Context context) {
         return ApplicationContext.getInstance(context).dcContext;
@@ -226,6 +228,7 @@ public class DcHelper {
     dcContext.setStockTranslation(196, context.getString(R.string.declined_call));
     dcContext.setStockTranslation(197, context.getString(R.string.canceled_call));
     dcContext.setStockTranslation(198, context.getString(R.string.missed_call));
+    dcContext.setStockTranslation(210, context.getString(R.string.stats_message_body));
   }
 
   public static File getImexDir() {
