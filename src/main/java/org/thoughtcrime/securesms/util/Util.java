@@ -60,7 +60,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class Util {
   private static final String TAG = Util.class.getSimpleName();
-  private static final String INVITE_DOMAIN = "i.delta.chat";
+  public static final String INVITE_DOMAIN = "i.delta.chat";
 
   public static final Handler handler = new Handler(Looper.getMainLooper());
 
