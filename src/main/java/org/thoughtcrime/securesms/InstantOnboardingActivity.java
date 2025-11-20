@@ -365,7 +365,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   }
 
   private void startRegistrationActivity() {
-    Intent intent = new Intent(this, RegistrationActivity.class);
+    Intent intent = new Intent(this, EditTransportActivity.class);
     startActivity(intent);
   }
 
