@@ -424,14 +424,14 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         if (check == null) return 0;
 
         switch (check) {
-            case automatic:
                 return 0;
             case strict:
                 return 1;
             case acceptInvalidCertificates:
                 return 2;
+            case automatic:
             default:
-                return 0; // impossible situation
+                return 0;
         }
     }
 
@@ -453,16 +453,15 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         if (security == null) return 0;
 
         switch (security) {
-            case automatic:
-                return 0;
             case ssl:
                 return 1;
             case starttls:
                 return 2;
             case plain:
                 return 3;
+            case automatic:
             default:
-                return 0; // impossible situation
+                return 0;
         }
     }
 
