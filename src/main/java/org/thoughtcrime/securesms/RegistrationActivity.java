@@ -424,7 +424,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         if (check == null) return 0;
 
         switch (check) {
-                return 0;
             case strict:
                 return 1;
             case acceptInvalidCertificates:
