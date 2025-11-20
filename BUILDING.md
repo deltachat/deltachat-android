@@ -27,12 +27,10 @@ install the [dcrpcgen tool](https://github.com/chatmail/dcrpcgen)
 then generate the `schema.json` file:
 
 ```
-# install deltachat-rpc-server program:
-cargo install --path ./jni/deltachat-core-rust/deltachat-rpc-server
-# check the version of core matches:
-deltachat-rpc-server --version
-# generate the schema:
-deltachat-rpc-server --openrpc > schema.json
+# in the root of the project:
+cd ./jni/deltachat-core-rust/deltachat-rpc-server
+cargo run -- --openrpc > ../../../schema.json
+cd ../../../
 ```
 
 then pass the schema file to the `dcrpcgen` tool to generate the
