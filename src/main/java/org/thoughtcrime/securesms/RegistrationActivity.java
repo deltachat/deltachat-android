@@ -122,9 +122,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         try {
             List<EnteredLoginParam> relays = rpc.listTransports(accId);
             if (!relays.isEmpty()) config = relays.get(0);
-        } catch (RpcException ignored) {
-            Log.e(TAG, "listTransport failed: ", e);
-        }
+        } catch (RpcException ignored) {}
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
