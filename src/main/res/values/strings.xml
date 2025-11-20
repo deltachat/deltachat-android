@@ -636,9 +636,9 @@
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Create a profile to chat with %1$s.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
-    <string name="instant_onboarding_confirm_contact">Do you want to create a new profile and start chatting with %1$s?</string>
-    <!-- Question shown when group's QR code is scanned from onboarding screen -->
-    <string name="instant_onboarding_confirm_group">Do you want to create a new profile and join the \"%1$s\" chat group?</string>
+    <string name="instant_onboarding_confirm_contact">Create a new profile and start chatting with %1$s?</string>
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_group">Create a new profile and join \"%1$s\"?</string>
 
     <string name="welcome_chat_over_email">Secure Decentralized Chat</string>
     <string name="scan_invitation_code">Scan Invitation Code</string>
