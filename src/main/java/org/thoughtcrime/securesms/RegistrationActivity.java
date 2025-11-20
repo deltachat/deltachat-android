@@ -122,7 +122,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         try {
             List<EnteredLoginParam> relays = rpc.listTransports(accId);
             if (!relays.isEmpty()) config = relays.get(0);
-        } catch (RpcException ignored) {}
+        } catch (RpcException ignored) {
+            Log.e(TAG, "listTransport failed: ", e);
+        }
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -428,8 +430,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 return 1;
             case acceptInvalidCertificates:
                 return 2;
+            default:
+                return 0; // impossible situation
         }
-        throw new IllegalArgumentException("Unknown EnteredCertificateChecks type: " + check);
     }
 
     public static Socket socketSecurityFromInt(int position) {
@@ -450,16 +453,17 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         if (security == null) return 0;
 
         switch (security) {
-        case automatic:
-            return 0;
-        case ssl:
-            return 1;
-        case starttls:
-            return 2;
-        case plain:
-            return 3;
+            case automatic:
+                return 0;
+            case ssl:
+                return 1;
+            case starttls:
+                return 2;
+            case plain:
+                return 3;
+            default:
+                return 0; // impossible situation
         }
-        throw new IllegalArgumentException("Invalid socketSecurity type: " + security);
     }
 
     private void setupConfig() {
