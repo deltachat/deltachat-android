@@ -122,6 +122,18 @@ public class Util {
     return ret;
   }
 
+  public static boolean contains(@Nullable int[] array, int val) {
+    if (array == null) {
+      return false;
+    }
+    for (int element : array) {
+      if (element == val) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public static void wait(Object lock, long timeout) {
     try {
       lock.wait(timeout);

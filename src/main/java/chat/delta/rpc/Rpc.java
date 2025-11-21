@@ -23,8 +23,64 @@ public class Rpc {
     this.mapper = transport.getObjectMapper();
   }
 
+  /* Test function. */
+  public void sleep(Float delay) throws RpcException {
+    transport.call("sleep", mapper.valueToTree(delay));
+  }
+
+  /* Checks if an email address is valid. */
+  public Boolean checkEmailValidity(String email) throws RpcException {
+    return transport.callForResult(new TypeReference<Boolean>(){}, "check_email_validity", mapper.valueToTree(email));
+  }
+
+  /* Returns general system info. */
+  public java.util.Map<String, String> getSystemInfo() throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.Map<String, String>>(){}, "get_system_info");
+  }
+
+  /**
+   * Get the next event, and remove it from the event queue.
+   * <p>
+   * If no events have happened since the last `get_next_event`
+   * (i.e. if the event queue is empty), the response will be returned
+   * only when a new event fires.
+   * <p>
+   * Note that if you are using the `BaseDeltaChat` JavaScript class
+   * or the `Rpc` Python class, this function will be invoked
+   * by those classes internally and should not be used manually.
+   */
+  public Event getNextEvent() throws RpcException {
+    return transport.callForResult(new TypeReference<Event>(){}, "get_next_event");
+  }
+
   public Integer addAccount() throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "add_account");
+  }
+
+  /**
+   * Imports/migrated an existing account from a database path into this account manager.
+   * Returns the ID of new account.
+   */
+  public Integer migrateAccount(String pathToDb) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "migrate_account", mapper.valueToTree(pathToDb));
+  }
+
+  public void removeAccount(Integer accountId) throws RpcException {
+    transport.call("remove_account", mapper.valueToTree(accountId));
+  }
+
+  public java.util.List<Integer> getAllAccountIds() throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_all_account_ids");
+  }
+
+  /* Select account in account manager, this saves the last used account to accounts.toml */
+  public void selectAccount(Integer id) throws RpcException {
+    transport.call("select_account", mapper.valueToTree(id));
+  }
+
+  /* Get the selected account from the account manager (on startup it is read from accounts.toml) */
+  public Integer getSelectedAccountId() throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "get_selected_account_id");
   }
 
   /**
@@ -37,9 +93,86 @@ public class Rpc {
     transport.call("set_accounts_order", mapper.valueToTree(order));
   }
 
+  /* Get a list of all configured accounts. */
+  public java.util.List<Account> getAllAccounts() throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Account>>(){}, "get_all_accounts");
+  }
+
+  /* Starts background tasks for all accounts. */
+  public void startIoForAllAccounts() throws RpcException {
+    transport.call("start_io_for_all_accounts");
+  }
+
+  /* Stops background tasks for all accounts. */
+  public void stopIoForAllAccounts() throws RpcException {
+    transport.call("stop_io_for_all_accounts");
+  }
+
+  /**
+   * Performs a background fetch for all accounts in parallel with a timeout.
+   * <p>
+   * The `AccountsBackgroundFetchDone` event is emitted at the end even in case of timeout.
+   * Process all events until you get this one and you can safely return to the background
+   * without forgetting to create notifications caused by timing race conditions.
+   */
+  public void backgroundFetch(Float timeoutInSeconds) throws RpcException {
+    transport.call("background_fetch", mapper.valueToTree(timeoutInSeconds));
+  }
+
+  public void stopBackgroundFetch() throws RpcException {
+    transport.call("stop_background_fetch");
+  }
+
+  /* Starts background tasks for a single account. */
+  public void startIo(Integer accountId) throws RpcException {
+    transport.call("start_io", mapper.valueToTree(accountId));
+  }
+
+  /* Stops background tasks for a single account. */
+  public void stopIo(Integer accountId) throws RpcException {
+    transport.call("stop_io", mapper.valueToTree(accountId));
+  }
+
+  /* Get top-level info for an account. */
+  public Account getAccountInfo(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<Account>(){}, "get_account_info", mapper.valueToTree(accountId));
+  }
+
+  /* Get the current push notification state. */
+  public NotifyState getPushState(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<NotifyState>(){}, "get_push_state", mapper.valueToTree(accountId));
+  }
+
   /* Get the combined filesize of an account in bytes */
   public Integer getAccountFileSize(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "get_account_file_size", mapper.valueToTree(accountId));
+  }
+
+  /**
+   * Returns provider for the given domain.
+   * <p>
+   * This function looks up domain in offline database.
+   * <p>
+   * For compatibility, email address can be passed to this function
+   * instead of the domain.
+   */
+  public ProviderInfo getProviderInfo(Integer accountId, String email) throws RpcException {
+    return transport.callForResult(new TypeReference<ProviderInfo>(){}, "get_provider_info", mapper.valueToTree(accountId), mapper.valueToTree(email));
+  }
+
+  /* Checks if the context is already configured. */
+  public Boolean isConfigured(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<Boolean>(){}, "is_configured", mapper.valueToTree(accountId));
+  }
+
+  /* Get system info for an account. */
+  public java.util.Map<String, String> getInfo(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.Map<String, String>>(){}, "get_info", mapper.valueToTree(accountId));
+  }
+
+  /* Get the blob dir. */
+  public String getBlobDir(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_blob_dir", mapper.valueToTree(accountId));
   }
 
   /**
@@ -57,9 +190,58 @@ public class Rpc {
     return transport.callForResult(new TypeReference<String>(){}, "get_migration_error", mapper.valueToTree(accountId));
   }
 
+  /* Copy file to blob dir. */
+  public String copyToBlobDir(Integer accountId, String path) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "copy_to_blob_dir", mapper.valueToTree(accountId), mapper.valueToTree(path));
+  }
+
+  /* Sets the given configuration key. */
+  public void setConfig(Integer accountId, String key, String value) throws RpcException {
+    transport.call("set_config", mapper.valueToTree(accountId), mapper.valueToTree(key), mapper.valueToTree(value));
+  }
+
+  /* Updates a batch of configuration values. */
+  public void batchSetConfig(Integer accountId, java.util.Map<String, String> config) throws RpcException {
+    transport.call("batch_set_config", mapper.valueToTree(accountId), mapper.valueToTree(config));
+  }
+
+  /**
+   * Set configuration values from a QR code. (technically from the URI that is stored in the qrcode)
+   * Before this function is called, `checkQr()` should confirm the type of the
+   * QR code is `account` or `webrtcInstance`.
+   * <p>
+   * Internally, the function will call dc_set_config() with the appropriate keys,
+   */
+  public void setConfigFromQr(Integer accountId, String qrContent) throws RpcException {
+    transport.call("set_config_from_qr", mapper.valueToTree(accountId), mapper.valueToTree(qrContent));
+  }
+
+  public Qr checkQr(Integer accountId, String qrContent) throws RpcException {
+    return transport.callForResult(new TypeReference<Qr>(){}, "check_qr", mapper.valueToTree(accountId), mapper.valueToTree(qrContent));
+  }
+
   /* Returns configuration value for the given key. */
   public String getConfig(Integer accountId, String key) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "get_config", mapper.valueToTree(accountId), mapper.valueToTree(key));
+  }
+
+  public java.util.Map<String, String> batchGetConfig(Integer accountId, java.util.List<String> keys) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.Map<String, String>>(){}, "batch_get_config", mapper.valueToTree(accountId), mapper.valueToTree(keys));
+  }
+
+  public void setStockStrings(java.util.Map<String, String> strings) throws RpcException {
+    transport.call("set_stock_strings", mapper.valueToTree(strings));
+  }
+
+  /**
+   * Configures this account with the currently set parameters.
+   * Setup the credential config before calling this.
+   * <p>
+   * Deprecated as of 2025-02; use `add_transport_from_qr()`
+   * or `add_or_update_transport()` instead.
+   */
+  public void configure(Integer accountId) throws RpcException {
+    transport.call("configure", mapper.valueToTree(accountId));
   }
 
   /**
@@ -97,6 +279,11 @@ public class Rpc {
     transport.call("add_or_update_transport", mapper.valueToTree(accountId), mapper.valueToTree(param));
   }
 
+  /* Deprecated 2025-04. Alias for [Self::add_or_update_transport()]. */
+  public void addTransport(Integer accountId, EnteredLoginParam param) throws RpcException {
+    transport.call("add_transport", mapper.valueToTree(accountId), mapper.valueToTree(param));
+  }
+
   /**
    * Adds a new email account as a transport
    * using the server encoded in the QR code.
@@ -104,6 +291,345 @@ public class Rpc {
    */
   public void addTransportFromQr(Integer accountId, String qr) throws RpcException {
     transport.call("add_transport_from_qr", mapper.valueToTree(accountId), mapper.valueToTree(qr));
+  }
+
+  /**
+   * Returns the list of all email accounts that are used as a transport in the current profile.
+   * Use [Self::add_or_update_transport()] to add or change a transport
+   * and [Self::delete_transport()] to delete a transport.
+   */
+  public java.util.List<EnteredLoginParam> listTransports(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<EnteredLoginParam>>(){}, "list_transports", mapper.valueToTree(accountId));
+  }
+
+  /**
+   * Removes the transport with the specified email address
+   * (i.e. [EnteredLoginParam::addr]).
+   */
+  public void deleteTransport(Integer accountId, String addr) throws RpcException {
+    transport.call("delete_transport", mapper.valueToTree(accountId), mapper.valueToTree(addr));
+  }
+
+  /* Signal an ongoing process to stop. */
+  public void stopOngoingProcess(Integer accountId) throws RpcException {
+    transport.call("stop_ongoing_process", mapper.valueToTree(accountId));
+  }
+
+  public void exportSelfKeys(Integer accountId, String path, String passphrase) throws RpcException {
+    transport.call("export_self_keys", mapper.valueToTree(accountId), mapper.valueToTree(path), mapper.valueToTree(passphrase));
+  }
+
+  public void importSelfKeys(Integer accountId, String path, String passphrase) throws RpcException {
+    transport.call("import_self_keys", mapper.valueToTree(accountId), mapper.valueToTree(path), mapper.valueToTree(passphrase));
+  }
+
+  /**
+   * Returns the message IDs of all _fresh_ messages of any chat.
+   * Typically used for implementing notification summaries
+   * or badge counters e.g. on the app icon.
+   * The list is already sorted and starts with the most recent fresh message.
+   * <p>
+   * Messages belonging to muted chats or to the contact requests are not returned;
+   * these messages should not be notified
+   * and also badge counters should not include these messages.
+   * <p>
+   * To get the number of fresh messages for a single chat, muted or not,
+   * use `get_fresh_msg_cnt()`.
+   */
+  public java.util.List<Integer> getFreshMsgs(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_fresh_msgs", mapper.valueToTree(accountId));
+  }
+
+  /**
+   * Get the number of _fresh_ messages in a chat.
+   * Typically used to implement a badge with a number in the chatlist.
+   * <p>
+   * If the specified chat is muted,
+   * the UI should show the badge counter "less obtrusive",
+   * e.g. using "gray" instead of "red" color.
+   */
+  public Integer getFreshMsgCnt(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "get_fresh_msg_cnt", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Gets messages to be processed by the bot and returns their IDs.
+   * <p>
+   * Only messages with database ID higher than `last_msg_id` config value
+   * are returned. After processing the messages, the bot should
+   * update `last_msg_id` by calling [`markseen_msgs`]
+   * or manually updating the value to avoid getting already
+   * processed messages.
+   * <p>
+   * [`markseen_msgs`]: Self::markseen_msgs
+   */
+  public java.util.List<Integer> getNextMsgs(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_next_msgs", mapper.valueToTree(accountId));
+  }
+
+  /**
+   * Waits for messages to be processed by the bot and returns their IDs.
+   * <p>
+   * This function is similar to [`get_next_msgs`],
+   * but waits for internal new message notification before returning.
+   * New message notification is sent when new message is added to the database,
+   * on initialization, when I/O is started and when I/O is stopped.
+   * This allows bots to use `wait_next_msgs` in a loop to process
+   * old messages after initialization and during the bot runtime.
+   * To shutdown the bot, stopping I/O can be used to interrupt
+   * pending or next `wait_next_msgs` call.
+   * <p>
+   * [`get_next_msgs`]: Self::get_next_msgs
+   */
+  public java.util.List<Integer> waitNextMsgs(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "wait_next_msgs", mapper.valueToTree(accountId));
+  }
+
+  /**
+   * Estimate the number of messages that will be deleted
+   * by the set_config()-options `delete_device_after` or `delete_server_after`.
+   * This is typically used to show the estimated impact to the user
+   * before actually enabling deletion of old messages.
+   */
+  public Integer estimateAutoDeletionCount(Integer accountId, Boolean fromServer, Integer seconds) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "estimate_auto_deletion_count", mapper.valueToTree(accountId), mapper.valueToTree(fromServer), mapper.valueToTree(seconds));
+  }
+
+  public String initiateAutocryptKeyTransfer(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "initiate_autocrypt_key_transfer", mapper.valueToTree(accountId));
+  }
+
+  public void continueAutocryptKeyTransfer(Integer accountId, Integer messageId, String setupCode) throws RpcException {
+    transport.call("continue_autocrypt_key_transfer", mapper.valueToTree(accountId), mapper.valueToTree(messageId), mapper.valueToTree(setupCode));
+  }
+
+  public java.util.List<Integer> getChatlistEntries(Integer accountId, Integer listFlags, String queryString, Integer queryContactId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_chatlist_entries", mapper.valueToTree(accountId), mapper.valueToTree(listFlags), mapper.valueToTree(queryString), mapper.valueToTree(queryContactId));
+  }
+
+  /**
+   * Returns chats similar to the given one.
+   * <p>
+   * Experimental API, subject to change without notice.
+   */
+  public java.util.List<Integer> getSimilarChatIds(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_similar_chat_ids", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  public java.util.Map<String, ChatListItemFetchResult> getChatlistItemsByEntries(Integer accountId, java.util.List<Integer> entries) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.Map<String, ChatListItemFetchResult>>(){}, "get_chatlist_items_by_entries", mapper.valueToTree(accountId), mapper.valueToTree(entries));
+  }
+
+  public FullChat getFullChatById(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<FullChat>(){}, "get_full_chat_by_id", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * get basic info about a chat,
+   * use chatlist_get_full_chat_by_id() instead if you need more information
+   */
+  public BasicChat getBasicChatInfo(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<BasicChat>(){}, "get_basic_chat_info", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  public void acceptChat(Integer accountId, Integer chatId) throws RpcException {
+    transport.call("accept_chat", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  public void blockChat(Integer accountId, Integer chatId) throws RpcException {
+    transport.call("block_chat", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Delete a chat.
+   * <p>
+   * Messages are deleted from the device and the chat database entry is deleted.
+   * After that, the event #DC_EVENT_MSGS_CHANGED is posted.
+   * <p>
+   * Things that are _not done_ implicitly:
+   * <p>
+   * - Messages are **not deleted from the server**.
+   * - The chat or the contact is **not blocked**, so new messages from the user/the group may appear as a contact request
+   * and the user may create the chat again.
+   * - **Groups are not left** - this would
+   * be unexpected as (1) deleting a normal chat also does not prevent new mails
+   * from arriving, (2) leaving a group requires sending a message to
+   * all group members - especially for groups not used for a longer time, this is
+   * really unexpected when deletion results in contacting all members again,
+   * (3) only leaving groups is also a valid usecase.
+   * <p>
+   * To leave a chat explicitly, use leave_group()
+   */
+  public void deleteChat(Integer accountId, Integer chatId) throws RpcException {
+    transport.call("delete_chat", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Get encryption info for a chat.
+   * Get a multi-line encryption info, containing encryption preferences of all members.
+   * Can be used to find out why messages sent to group are not encrypted.
+   * <p>
+   * returns Multi-line text
+   */
+  public String getChatEncryptionInfo(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_chat_encryption_info", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Get QR code text that will offer a [SecureJoin](https://securejoin.delta.chat/) invitation.
+   * <p>
+   * If `chat_id` is a group chat ID, SecureJoin QR code for the group is returned.
+   * If `chat_id` is unset, setup contact QR code is returned.
+   */
+  public String getChatSecurejoinQrCode(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_chat_securejoin_qr_code", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Get QR code (text and SVG) that will offer a Setup-Contact or Verified-Group invitation.
+   * The QR code is compatible to the OPENPGP4FPR format
+   * so that a basic fingerprint comparison also works e.g. with OpenKeychain.
+   * <p>
+   * The scanning device will pass the scanned content to `checkQr()` then;
+   * if `checkQr()` returns `askVerifyContact` or `askVerifyGroup`
+   * an out-of-band-verification can be joined using `secure_join()`
+   * <p>
+   * chat_id: If set to a group-chat-id,
+   * the Verified-Group-Invite protocol is offered in the QR code;
+   * works for protected groups as well as for normal groups.
+   * If not set, the Setup-Contact protocol is offered in the QR code.
+   * See https://securejoin.delta.chat/ for details about both protocols.
+   * <p>
+   * return format: `[code, svg]`
+   */
+  public Pair<String, String> getChatSecurejoinQrCodeSvg(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<Pair<String, String>>(){}, "get_chat_securejoin_qr_code_svg", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Continue a Setup-Contact or Verified-Group-Invite protocol
+   * started on another device with `get_chat_securejoin_qr_code_svg()`.
+   * This function is typically called when `check_qr()` returns
+   * type=AskVerifyContact or type=AskVerifyGroup.
+   * <p>
+   * The function returns immediately and the handshake runs in background,
+   * sending and receiving several messages.
+   * During the handshake, info messages are added to the chat,
+   * showing progress, success or errors.
+   * <p>
+   * Subsequent calls of `secure_join()` will abort previous, unfinished handshakes.
+   * <p>
+   * See https://securejoin.delta.chat/ for details about both protocols.
+   * <p>
+   * **qr**: The text of the scanned QR code. Typically, the same string as given
+   * to `check_qr()`.
+   * <p>
+   * **returns**: The chat ID of the joined chat, the UI may redirect to the this chat.
+   * A returned chat ID does not guarantee that the chat is protected or the belonging contact is verified.
+   * <p>
+   */
+  public Integer secureJoin(Integer accountId, String qr) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "secure_join", mapper.valueToTree(accountId), mapper.valueToTree(qr));
+  }
+
+  /**
+   * Like `secure_join()`, but allows to pass a source and a UI-path.
+   * You only need this if your UI has an option to send statistics
+   * to Delta Chat's developers.
+   * <p>
+   * **source**: The source where the QR code came from.
+   * E.g. a link that was clicked inside or outside Delta Chat,
+   * the "Paste from Clipboard" action,
+   * the "Load QR code as image" action,
+   * or a QR code scan.
+   * <p>
+   * **uipath**: Which UI path did the user use to arrive at the QR code screen.
+   * If the SecurejoinSource was ExternalLink or InternalLink,
+   * pass `None` here, because the QR code screen wasn't even opened.
+   * ```
+   */
+  public Integer secureJoinWithUxInfo(Integer accountId, String qr, SecurejoinSource source, SecurejoinUiPath uipath) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "secure_join_with_ux_info", mapper.valueToTree(accountId), mapper.valueToTree(qr), mapper.valueToTree(source), mapper.valueToTree(uipath));
+  }
+
+  public void leaveGroup(Integer accountId, Integer chatId) throws RpcException {
+    transport.call("leave_group", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Remove a member from a group.
+   * <p>
+   * If the group is already _promoted_ (any message was sent to the group),
+   * all group members are informed by a special status message that is sent automatically by this function.
+   * <p>
+   * Sends out #DC_EVENT_CHAT_MODIFIED and #DC_EVENT_MSGS_CHANGED if a status message was sent.
+   */
+  public void removeContactFromChat(Integer accountId, Integer chatId, Integer contactId) throws RpcException {
+    transport.call("remove_contact_from_chat", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(contactId));
+  }
+
+  /**
+   * Add a member to a group.
+   * <p>
+   * If the group is already _promoted_ (any message was sent to the group),
+   * all group members are informed by a special status message that is sent automatically by this function.
+   * <p>
+   * If the group has group protection enabled, only verified contacts can be added to the group.
+   * <p>
+   * Sends out #DC_EVENT_CHAT_MODIFIED and #DC_EVENT_MSGS_CHANGED if a status message was sent.
+   */
+  public void addContactToChat(Integer accountId, Integer chatId, Integer contactId) throws RpcException {
+    transport.call("add_contact_to_chat", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(contactId));
+  }
+
+  /**
+   * Get the contact IDs belonging to a chat.
+   * <p>
+   * - for normal chats, the function always returns exactly one contact,
+   * DC_CONTACT_ID_SELF is returned only for SELF-chats.
+   * <p>
+   * - for group chats all members are returned, DC_CONTACT_ID_SELF is returned
+   * explicitly as it may happen that oneself gets removed from a still existing
+   * group
+   * <p>
+   * - for broadcast channels, all recipients are returned, DC_CONTACT_ID_SELF is not included
+   * <p>
+   * - for mailing lists, the behavior is not documented currently, we will decide on that later.
+   * for now, the UI should not show the list for mailing lists.
+   * (we do not know all members and there is not always a global mailing list address,
+   * so we could return only SELF or the known members; this is not decided yet)
+   */
+  public java.util.List<Integer> getChatContacts(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_chat_contacts", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /* Returns contact IDs of the past chat members. */
+  public java.util.List<Integer> getPastChatContacts(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_past_chat_contacts", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Create a new encrypted group chat (with key-contacts).
+   * <p>
+   * After creation,
+   * the group has one member with the ID DC_CONTACT_ID_SELF
+   * and is in _unpromoted_ state.
+   * This means, you can add or remove members, change the name,
+   * the group image and so on without messages being sent to all group members.
+   * <p>
+   * This changes as soon as the first message is sent to the group members
+   * and the group becomes _promoted_.
+   * After that, all changes are synced with all group members
+   * by sending status message.
+   * <p>
+   * To check, if a chat is still unpromoted, you can look at the `is_unpromoted` property of `BasicChat` or `FullChat`.
+   * This may be useful if you want to show some help for just created groups.
+   * <p>
+   * `protect` argument is deprecated as of 2025-10-22 and is left for compatibility.
+   * Pass `false` here.
+   */
+  public Integer createGroupChat(Integer accountId, String name, Boolean protect) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "create_group_chat", mapper.valueToTree(accountId), mapper.valueToTree(name), mapper.valueToTree(protect));
   }
 
   /**
@@ -116,8 +642,13 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Integer>(){}, "create_group_chat_unencrypted", mapper.valueToTree(accountId), mapper.valueToTree(name));
   }
 
+  /* Deprecated 2025-07 in favor of create_broadcast(). */
+  public Integer createBroadcastList(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "create_broadcast_list", mapper.valueToTree(accountId));
+  }
+
   /**
-   * Create a new **broadcast channel**
+   * Create a new, outgoing **broadcast channel**
    * (called "Channel" in the UI).
    * <p>
    * Broadcast channels are similar to groups on the sending device,
@@ -137,9 +668,333 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Integer>(){}, "create_broadcast", mapper.valueToTree(accountId), mapper.valueToTree(chatName));
   }
 
+  /**
+   * Set group name.
+   * <p>
+   * If the group is already _promoted_ (any message was sent to the group),
+   * all group members are informed by a special status message that is sent automatically by this function.
+   * <p>
+   * Sends out #DC_EVENT_CHAT_MODIFIED and #DC_EVENT_MSGS_CHANGED if a status message was sent.
+   */
+  public void setChatName(Integer accountId, Integer chatId, String newName) throws RpcException {
+    transport.call("set_chat_name", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(newName));
+  }
+
+  /**
+   * Set group profile image.
+   * <p>
+   * If the group is already _promoted_ (any message was sent to the group),
+   * all group members are informed by a special status message that is sent automatically by this function.
+   * <p>
+   * Sends out #DC_EVENT_CHAT_MODIFIED and #DC_EVENT_MSGS_CHANGED if a status message was sent.
+   * <p>
+   * To find out the profile image of a chat, use dc_chat_get_profile_image()
+   * <p>
+   * @param image_path Full path of the image to use as the group image. The image will immediately be copied to the
+   * `blobdir`; the original image will not be needed anymore.
+   * If you pass null here, the group image is deleted (for promoted groups, all members are informed about
+   * this change anyway).
+   */
+  public void setChatProfileImage(Integer accountId, Integer chatId, String imagePath) throws RpcException {
+    transport.call("set_chat_profile_image", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(imagePath));
+  }
+
+  public void setChatVisibility(Integer accountId, Integer chatId, ChatVisibility visibility) throws RpcException {
+    transport.call("set_chat_visibility", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(visibility));
+  }
+
+  public void setChatEphemeralTimer(Integer accountId, Integer chatId, Integer timer) throws RpcException {
+    transport.call("set_chat_ephemeral_timer", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(timer));
+  }
+
+  public Integer getChatEphemeralTimer(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "get_chat_ephemeral_timer", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Add a message to the device-chat.
+   * Device-messages usually contain update information
+   * and some hints that are added during the program runs, multi-device etc.
+   * The device-message may be defined by a label;
+   * if a message with the same label was added or skipped before,
+   * the message is not added again, even if the message was deleted in between.
+   * If needed, the device-chat is created before.
+   * <p>
+   * Sends the `MsgsChanged` event on success.
+   * <p>
+   * Setting msg to None will prevent the device message with this label from being added in the future.
+   */
+  public Integer addDeviceMessage(Integer accountId, String label, MessageData msg) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "add_device_message", mapper.valueToTree(accountId), mapper.valueToTree(label), mapper.valueToTree(msg));
+  }
+
+  /**
+   * Mark all messages in a chat as _noticed_.
+   * _Noticed_ messages are no longer _fresh_ and do not count as being unseen
+   * but are still waiting for being marked as "seen" using markseen_msgs()
+   * (IMAP/MDNs is not done for noticed messages).
+   * <p>
+   * Calling this function usually results in the event #DC_EVENT_MSGS_NOTICED.
+   * See also markseen_msgs().
+   */
+  public void marknoticedChat(Integer accountId, Integer chatId) throws RpcException {
+    transport.call("marknoticed_chat", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Returns the message that is immediately followed by the last seen
+   * message.
+   * From the point of view of the user this is effectively
+   * "first unread", but in reality in the database a seen message
+   * _can_ be followed by a fresh (unseen) message
+   * if that message has not been individually marked as seen.
+   */
+  public Integer getFirstUnreadMessageOfChat(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "get_first_unread_message_of_chat", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Set mute duration of a chat.
+   * <p>
+   * The UI can then call is_chat_muted() when receiving a new message
+   * to decide whether it should trigger an notification.
+   * <p>
+   * Muted chats should not sound or vibrate
+   * and should not show a visual notification in the system area.
+   * Moreover, muted chats should be excluded from global badge counter
+   * (get_fresh_msgs() skips muted chats therefore)
+   * and the in-app, per-chat badge counter should use a less obtrusive color.
+   * <p>
+   * Sends out #DC_EVENT_CHAT_MODIFIED.
+   */
+  public void setChatMuteDuration(Integer accountId, Integer chatId, MuteDuration duration) throws RpcException {
+    transport.call("set_chat_mute_duration", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(duration));
+  }
+
+  /**
+   * Check whether the chat is currently muted (can be changed by set_chat_mute_duration()).
+   * <p>
+   * This is available as a standalone function outside of fullchat, because it might be only needed for notification
+   */
+  public Boolean isChatMuted(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<Boolean>(){}, "is_chat_muted", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Mark messages as presented to the user.
+   * Typically, UIs call this function on scrolling through the message list,
+   * when the messages are presented at least for a little moment.
+   * The concrete action depends on the type of the chat and on the users settings
+   * (dc_msgs_presented() may be a better name therefore, but well. :)
+   * <p>
+   * - For normal chats, the IMAP state is updated, MDN is sent
+   * (if set_config()-options `mdns_enabled` is set)
+   * and the internal state is changed to @ref DC_STATE_IN_SEEN to reflect these actions.
+   * <p>
+   * - For contact requests, no IMAP or MDNs is done
+   * and the internal state is not changed therefore.
+   * See also marknoticed_chat().
+   * <p>
+   * Moreover, timer is started for incoming ephemeral messages.
+   * This also happens for contact requests chats.
+   * <p>
+   * This function updates `last_msg_id` configuration value
+   * to the maximum of the current value and IDs passed to this function.
+   * Bots which mark messages as seen can rely on this side effect
+   * to avoid updating `last_msg_id` value manually.
+   * <p>
+   * One #DC_EVENT_MSGS_NOTICED event is emitted per modified chat.
+   */
+  public void markseenMsgs(Integer accountId, java.util.List<Integer> msgIds) throws RpcException {
+    transport.call("markseen_msgs", mapper.valueToTree(accountId), mapper.valueToTree(msgIds));
+  }
+
+  /**
+   * Returns all messages of a particular chat.
+   * <p>
+   * * `add_daymarker` - If `true`, add day markers as `DC_MSG_ID_DAYMARKER` to the result,
+   * e.g. [1234, 1237, 9, 1239]. The day marker timestamp is the midnight one for the
+   * corresponding (following) day in the local timezone.
+   */
+  public java.util.List<Integer> getMessageIds(Integer accountId, Integer chatId, Boolean infoOnly, Boolean addDaymarker) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_message_ids", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(infoOnly), mapper.valueToTree(addDaymarker));
+  }
+
+  public java.util.List<MessageListItem> getMessageListItems(Integer accountId, Integer chatId, Boolean infoOnly, Boolean addDaymarker) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<MessageListItem>>(){}, "get_message_list_items", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(infoOnly), mapper.valueToTree(addDaymarker));
+  }
+
+  public Message getMessage(Integer accountId, Integer msgId) throws RpcException {
+    return transport.callForResult(new TypeReference<Message>(){}, "get_message", mapper.valueToTree(accountId), mapper.valueToTree(msgId));
+  }
+
+  public String getMessageHtml(Integer accountId, Integer messageId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_message_html", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
+  }
+
+  /**
+   * get multiple messages in one call,
+   * if loading one message fails the error is stored in the result object in it's place.
+   * <p>
+   * this is the batch variant of [get_message]
+   */
+  public java.util.Map<String, MessageLoadResult> getMessages(Integer accountId, java.util.List<Integer> messageIds) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.Map<String, MessageLoadResult>>(){}, "get_messages", mapper.valueToTree(accountId), mapper.valueToTree(messageIds));
+  }
+
+  /* Fetch info desktop needs for creating a notification for a message */
+  public MessageNotificationInfo getMessageNotificationInfo(Integer accountId, Integer messageId) throws RpcException {
+    return transport.callForResult(new TypeReference<MessageNotificationInfo>(){}, "get_message_notification_info", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
+  }
+
+  /**
+   * Delete messages. The messages are deleted on the current device and
+   * on the IMAP server.
+   */
+  public void deleteMessages(Integer accountId, java.util.List<Integer> messageIds) throws RpcException {
+    transport.call("delete_messages", mapper.valueToTree(accountId), mapper.valueToTree(messageIds));
+  }
+
+  /**
+   * Delete messages. The messages are deleted on the current device,
+   * on the IMAP server and also for all chat members
+   */
+  public void deleteMessagesForAll(Integer accountId, java.util.List<Integer> messageIds) throws RpcException {
+    transport.call("delete_messages_for_all", mapper.valueToTree(accountId), mapper.valueToTree(messageIds));
+  }
+
+  /**
+   * Get an informational text for a single message. The text is multiline and may
+   * contain e.g. the raw text of the message.
+   * <p>
+   * The max. text returned is typically longer (about 100000 characters) than the
+   * max. text returned by dc_msg_get_text() (about 30000 characters).
+   */
+  public String getMessageInfo(Integer accountId, Integer messageId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_message_info", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
+  }
+
+  /* Returns additional information for single message. */
+  public MessageInfo getMessageInfoObject(Integer accountId, Integer messageId) throws RpcException {
+    return transport.callForResult(new TypeReference<MessageInfo>(){}, "get_message_info_object", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
+  }
+
+  /* Returns contacts that sent read receipts and the time of reading. */
+  public java.util.List<MessageReadReceipt> getMessageReadReceipts(Integer accountId, Integer messageId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<MessageReadReceipt>>(){}, "get_message_read_receipts", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
+  }
+
+  /**
+   * Asks the core to start downloading a message fully.
+   * This function is typically called when the user hits the "Download" button
+   * that is shown by the UI in case `download_state` is `'Available'` or `'Failure'`
+   * <p>
+   * On success, the @ref DC_MSG "view type of the message" may change
+   * or the message may be replaced completely by one or more messages with other message IDs.
+   * That may happen e.g. in cases where the message was encrypted
+   * and the type could not be determined without fully downloading.
+   * Downloaded content can be accessed as usual after download.
+   * <p>
+   * To reflect these changes a @ref DC_EVENT_MSGS_CHANGED event will be emitted.
+   */
+  public void downloadFullMessage(Integer accountId, Integer messageId) throws RpcException {
+    transport.call("download_full_message", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
+  }
+
+  /**
+   * Search messages containing the given query string.
+   * Searching can be done globally (chat_id=None) or in a specified chat only (chat_id set).
+   * <p>
+   * Global search results are typically displayed using dc_msg_get_summary(), chat
+   * search results may just highlight the corresponding messages and present a
+   * prev/next button.
+   * <p>
+   * For the global search, the result is limited to 1000 messages,
+   * this allows an incremental search done fast.
+   * So, when getting exactly 1000 messages, the result actually may be truncated;
+   * the UIs may display sth. like "1000+ messages found" in this case.
+   * The chat search (if chat_id is set) is not limited.
+   */
+  public java.util.List<Integer> searchMessages(Integer accountId, String query, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "search_messages", mapper.valueToTree(accountId), mapper.valueToTree(query), mapper.valueToTree(chatId));
+  }
+
+  public java.util.Map<String, MessageSearchResult> messageIdsToSearchResults(Integer accountId, java.util.List<Integer> messageIds) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.Map<String, MessageSearchResult>>(){}, "message_ids_to_search_results", mapper.valueToTree(accountId), mapper.valueToTree(messageIds));
+  }
+
+  public void saveMsgs(Integer accountId, java.util.List<Integer> messageIds) throws RpcException {
+    transport.call("save_msgs", mapper.valueToTree(accountId), mapper.valueToTree(messageIds));
+  }
+
+  /* Get a single contact options by ID. */
+  public Contact getContact(Integer accountId, Integer contactId) throws RpcException {
+    return transport.callForResult(new TypeReference<Contact>(){}, "get_contact", mapper.valueToTree(accountId), mapper.valueToTree(contactId));
+  }
+
+  /**
+   * Add a single contact as a result of an explicit user action.
+   * <p>
+   * This will always create or look up an address-contact,
+   * i.e. a contact identified by an email address,
+   * with all messages sent to and from this contact being unencrypted.
+   * If the user just clicked on an email address,
+   * you should first check [`Self::lookup_contact_id_by_addr`]/`lookupContactIdByAddr.`,
+   * and only if there is no contact yet, call this function here.
+   * <p>
+   * Returns contact id of the created or existing contact.
+   */
+  public Integer createContact(Integer accountId, String email, String name) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "create_contact", mapper.valueToTree(accountId), mapper.valueToTree(email), mapper.valueToTree(name));
+  }
+
   /* Returns contact id of the created or existing DM chat with that contact */
   public Integer createChatByContactId(Integer accountId, Integer contactId) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "create_chat_by_contact_id", mapper.valueToTree(accountId), mapper.valueToTree(contactId));
+  }
+
+  public void blockContact(Integer accountId, Integer contactId) throws RpcException {
+    transport.call("block_contact", mapper.valueToTree(accountId), mapper.valueToTree(contactId));
+  }
+
+  public void unblockContact(Integer accountId, Integer contactId) throws RpcException {
+    transport.call("unblock_contact", mapper.valueToTree(accountId), mapper.valueToTree(contactId));
+  }
+
+  public java.util.List<Contact> getBlockedContacts(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Contact>>(){}, "get_blocked_contacts", mapper.valueToTree(accountId));
+  }
+
+  /**
+   * Returns ids of known and unblocked contacts.
+   * <p>
+   * By default, key-contacts are listed.
+   * <p>
+   * * `list_flags` - A combination of flags:
+   * - `DC_GCL_ADD_SELF` - Add SELF unless filtered by other parameters.
+   * - `DC_GCL_ADDRESS` - List address-contacts instead of key-contacts.
+   * * `query` - A string to filter the list.
+   */
+  public java.util.List<Integer> getContactIds(Integer accountId, Integer listFlags, String query) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_contact_ids", mapper.valueToTree(accountId), mapper.valueToTree(listFlags), mapper.valueToTree(query));
+  }
+
+  /**
+   * Returns known and unblocked contacts.
+   * <p>
+   * Formerly called `getContacts2` in Desktop.
+   * See [`Self::get_contact_ids`] for parameters and more info.
+   */
+  public java.util.List<Contact> getContacts(Integer accountId, Integer listFlags, String query) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Contact>>(){}, "get_contacts", mapper.valueToTree(accountId), mapper.valueToTree(listFlags), mapper.valueToTree(query));
+  }
+
+  public java.util.Map<String, Contact> getContactsByIds(Integer accountId, java.util.List<Integer> ids) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.Map<String, Contact>>(){}, "get_contacts_by_ids", mapper.valueToTree(accountId), mapper.valueToTree(ids));
+  }
+
+  public void deleteContact(Integer accountId, Integer contactId) throws RpcException {
+    transport.call("delete_contact", mapper.valueToTree(accountId), mapper.valueToTree(contactId));
   }
 
   /* Sets display name for existing contact. */
@@ -147,6 +1002,35 @@ public class Rpc {
     transport.call("change_contact_name", mapper.valueToTree(accountId), mapper.valueToTree(contactId), mapper.valueToTree(name));
   }
 
+  /**
+   * Get encryption info for a contact.
+   * Get a multi-line encryption info, containing your fingerprint and the
+   * fingerprint of the contact, used e.g. to compare the fingerprints for a simple out-of-band verification.
+   */
+  public String getContactEncryptionInfo(Integer accountId, Integer contactId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_contact_encryption_info", mapper.valueToTree(accountId), mapper.valueToTree(contactId));
+  }
+
+  /**
+   * Looks up a known and unblocked contact with a given e-mail address.
+   * To get a list of all known and unblocked contacts, use contacts_get_contacts().
+   * <p>
+   * **POTENTIAL SECURITY ISSUE**: If there are multiple contacts with this address
+   * (e.g. an address-contact and a key-contact),
+   * this looks up the most recently seen contact,
+   * i.e. which contact is returned depends on which contact last sent a message.
+   * If the user just clicked on a mailto: link, then this is the best thing you can do.
+   * But **DO NOT** internally represent contacts by their email address
+   * and do not use this function to look them up;
+   * otherwise this function will sometimes look up the wrong contact.
+   * Instead, you should internally represent contacts by their ids.
+   * <p>
+   * To validate an e-mail address independently of the contact database
+   * use check_email_validity().
+   */
+  public Integer lookupContactIdByAddr(Integer accountId, String addr) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "lookup_contact_id_by_addr", mapper.valueToTree(accountId), mapper.valueToTree(addr));
+  }
 
   /* Parses a vCard file located at the given path. Returns contacts in their original order. */
   public java.util.List<VcardContact> parseVcard(String path) throws RpcException {
@@ -162,9 +1046,166 @@ public class Rpc {
     return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "import_vcard", mapper.valueToTree(accountId), mapper.valueToTree(path));
   }
 
+  /**
+   * Imports contacts from a vCard.
+   * <p>
+   * Returns the ids of created/modified contacts in the order they appear in the vCard.
+   */
+  public java.util.List<Integer> importVcardContents(Integer accountId, String vcard) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "import_vcard_contents", mapper.valueToTree(accountId), mapper.valueToTree(vcard));
+  }
+
   /* Returns a vCard containing contacts with the given ids. */
   public String makeVcard(Integer accountId, java.util.List<Integer> contacts) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "make_vcard", mapper.valueToTree(accountId), mapper.valueToTree(contacts));
+  }
+
+  /* Sets vCard containing the given contacts to the message draft. */
+  public void setDraftVcard(Integer accountId, Integer msgId, java.util.List<Integer> contacts) throws RpcException {
+    transport.call("set_draft_vcard", mapper.valueToTree(accountId), mapper.valueToTree(msgId), mapper.valueToTree(contacts));
+  }
+
+  /**
+   * Returns the [`ChatId`] for the 1:1 chat with `contact_id` if it exists.
+   * <p>
+   * If it does not exist, `None` is returned.
+   */
+  public Integer getChatIdByContactId(Integer accountId, Integer contactId) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "get_chat_id_by_contact_id", mapper.valueToTree(accountId), mapper.valueToTree(contactId));
+  }
+
+  /**
+   * Returns all message IDs of the given types in a chat.
+   * Typically used to show a gallery.
+   * <p>
+   * The list is already sorted and starts with the oldest message.
+   * Clients should not try to re-sort the list as this would be an expensive action
+   * and would result in inconsistencies between clients.
+   * <p>
+   * Setting `chat_id` to `None` (`null` in typescript) means get messages with media
+   * from any chat of the currently used account.
+   */
+  public java.util.List<Integer> getChatMedia(Integer accountId, Integer chatId, Viewtype messageType, Viewtype orMessageType2, Viewtype orMessageType3) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_chat_media", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(messageType), mapper.valueToTree(orMessageType2), mapper.valueToTree(orMessageType3));
+  }
+
+  public void exportBackup(Integer accountId, String destination, String passphrase) throws RpcException {
+    transport.call("export_backup", mapper.valueToTree(accountId), mapper.valueToTree(destination), mapper.valueToTree(passphrase));
+  }
+
+  public void importBackup(Integer accountId, String path, String passphrase) throws RpcException {
+    transport.call("import_backup", mapper.valueToTree(accountId), mapper.valueToTree(path), mapper.valueToTree(passphrase));
+  }
+
+  /**
+   * Offers a backup for remote devices to retrieve.
+   * <p>
+   * Can be canceled by stopping the ongoing process.  Success or failure can be tracked
+   * via the `ImexProgress` event which should either reach `1000` for success or `0` for
+   * failure.
+   * <p>
+   * This **stops IO** while it is running.
+   * <p>
+   * Returns once a remote device has retrieved the backup, or is canceled.
+   */
+  public void provideBackup(Integer accountId) throws RpcException {
+    transport.call("provide_backup", mapper.valueToTree(accountId));
+  }
+
+  /**
+   * Returns the text of the QR code for the running [`CommandApi::provide_backup`].
+   * <p>
+   * This QR code text can be used in [`CommandApi::get_backup`] on a second device to
+   * retrieve the backup and setup this second device.
+   * <p>
+   * This call will block until the QR code is ready,
+   * even if there is no concurrent call to [`CommandApi::provide_backup`],
+   * but will fail after 60 seconds to avoid deadlocks.
+   */
+  public String getBackupQr(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_backup_qr", mapper.valueToTree(accountId));
+  }
+
+  /**
+   * Returns the rendered QR code for the running [`CommandApi::provide_backup`].
+   * <p>
+   * This QR code can be used in [`CommandApi::get_backup`] on a second device to
+   * retrieve the backup and setup this second device.
+   * <p>
+   * This call will block until the QR code is ready,
+   * even if there is no concurrent call to [`CommandApi::provide_backup`],
+   * but will fail after 60 seconds to avoid deadlocks.
+   * <p>
+   * Returns the QR code rendered as an SVG image.
+   */
+  public String getBackupQrSvg(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_backup_qr_svg", mapper.valueToTree(accountId));
+  }
+
+  /**
+   * Gets a backup from a remote provider.
+   * <p>
+   * This retrieves the backup from a remote device over the network and imports it into
+   * the current device.
+   * <p>
+   * Can be canceled by stopping the ongoing process.
+   * <p>
+   * Do not forget to call start_io on the account after a successful import,
+   * otherwise it will not connect to the email server.
+   */
+  public void getBackup(Integer accountId, String qrText) throws RpcException {
+    transport.call("get_backup", mapper.valueToTree(accountId), mapper.valueToTree(qrText));
+  }
+
+  /**
+   * Indicate that the network likely has come back.
+   * or just that the network conditions might have changed
+   */
+  public void maybeNetwork() throws RpcException {
+    transport.call("maybe_network");
+  }
+
+  /**
+   * Get the current connectivity, i.e. whether the device is connected to the IMAP server.
+   * One of:
+   * - DC_CONNECTIVITY_NOT_CONNECTED (1000-1999): Show e.g. the string "Not connected" or a red dot
+   * - DC_CONNECTIVITY_CONNECTING (2000-2999): Show e.g. the string "Connecting…" or a yellow dot
+   * - DC_CONNECTIVITY_WORKING (3000-3999): Show e.g. the string "Getting new messages" or a spinning wheel
+   * - DC_CONNECTIVITY_CONNECTED (>=4000): Show e.g. the string "Connected" or a green dot
+   * <p>
+   * We don't use exact values but ranges here so that we can split up
+   * states into multiple states in the future.
+   * <p>
+   * Meant as a rough overview that can be shown
+   * e.g. in the title of the main screen.
+   * <p>
+   * If the connectivity changes, a #DC_EVENT_CONNECTIVITY_CHANGED will be emitted.
+   */
+  public Integer getConnectivity(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "get_connectivity", mapper.valueToTree(accountId));
+  }
+
+  /**
+   * Get an overview of the current connectivity, and possibly more statistics.
+   * Meant to give the user more insight about the current status than
+   * the basic connectivity info returned by get_connectivity(); show this
+   * e.g., if the user taps on said basic connectivity info.
+   * <p>
+   * If this page changes, a #DC_EVENT_CONNECTIVITY_CHANGED will be emitted.
+   * <p>
+   * This comes as an HTML from the core so that we can easily improve it
+   * and the improvement instantly reaches all UIs.
+   */
+  public String getConnectivityHtml(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_connectivity_html", mapper.valueToTree(accountId));
+  }
+
+  public java.util.List<Location> getLocations(Integer accountId, Integer chatId, Integer contactId, Integer timestampBegin, Integer timestampEnd) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Location>>(){}, "get_locations", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(contactId), mapper.valueToTree(timestampBegin), mapper.valueToTree(timestampEnd));
+  }
+
+  public void sendWebxdcStatusUpdate(Integer accountId, Integer instanceMsgId, String updateStr, String descr) throws RpcException {
+    transport.call("send_webxdc_status_update", mapper.valueToTree(accountId), mapper.valueToTree(instanceMsgId), mapper.valueToTree(updateStr), mapper.valueToTree(descr));
   }
 
   public void sendWebxdcRealtimeData(Integer accountId, Integer instanceMsgId, java.util.List<Integer> data) throws RpcException {
@@ -184,6 +1225,50 @@ public class Rpc {
    */
   public void leaveWebxdcRealtime(Integer accountId, Integer instanceMessageId) throws RpcException {
     transport.call("leave_webxdc_realtime", mapper.valueToTree(accountId), mapper.valueToTree(instanceMessageId));
+  }
+
+  public String getWebxdcStatusUpdates(Integer accountId, Integer instanceMsgId, Integer lastKnownSerial) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_webxdc_status_updates", mapper.valueToTree(accountId), mapper.valueToTree(instanceMsgId), mapper.valueToTree(lastKnownSerial));
+  }
+
+  /* Get info from a webxdc message */
+  public WebxdcMessageInfo getWebxdcInfo(Integer accountId, Integer instanceMsgId) throws RpcException {
+    return transport.callForResult(new TypeReference<WebxdcMessageInfo>(){}, "get_webxdc_info", mapper.valueToTree(accountId), mapper.valueToTree(instanceMsgId));
+  }
+
+  /**
+   * Get href from a WebxdcInfoMessage which might include a hash holding
+   * information about a specific position or state in a webxdc app (optional)
+   */
+  public String getWebxdcHref(Integer accountId, Integer infoMsgId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_webxdc_href", mapper.valueToTree(accountId), mapper.valueToTree(infoMsgId));
+  }
+
+  /**
+   * Get blob encoded as base64 from a webxdc message
+   * <p>
+   * path is the path of the file within webxdc archive
+   */
+  public String getWebxdcBlob(Integer accountId, Integer instanceMsgId, String path) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_webxdc_blob", mapper.valueToTree(accountId), mapper.valueToTree(instanceMsgId), mapper.valueToTree(path));
+  }
+
+  /**
+   * Sets Webxdc file as integration.
+   * `file` is the .xdc to use as Webxdc integration.
+   */
+  public void setWebxdcIntegration(Integer accountId, String filePath) throws RpcException {
+    transport.call("set_webxdc_integration", mapper.valueToTree(accountId), mapper.valueToTree(filePath));
+  }
+
+  /**
+   * Returns Webxdc instance used for optional integrations.
+   * UI can open the Webxdc as usual.
+   * Returns `None` if there is no integration; the caller can add one using `set_webxdc_integration` then.
+   * `integrate_for` is the chat to get the integration for.
+   */
+  public Integer initWebxdcIntegration(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "init_webxdc_integration", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
   }
 
   /* Starts an outgoing call. */
@@ -221,6 +1306,36 @@ public class Rpc {
   }
 
   /**
+   * Forward messages to another chat.
+   * <p>
+   * All types of messages can be forwarded,
+   * however, they will be flagged as such (dc_msg_is_forwarded() is set).
+   * <p>
+   * Original sender, info-state and webxdc updates are not forwarded on purpose.
+   */
+  public void forwardMessages(Integer accountId, java.util.List<Integer> messageIds, Integer chatId) throws RpcException {
+    transport.call("forward_messages", mapper.valueToTree(accountId), mapper.valueToTree(messageIds), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Resend messages and make information available for newly added chat members.
+   * Resending sends out the original message, however, recipients and webxdc-status may differ.
+   * Clients that already have the original message can still ignore the resent message as
+   * they have tracked the state by dedicated updates.
+   * <p>
+   * Some messages cannot be resent, eg. info-messages, drafts, already pending messages or messages that are not sent by SELF.
+   * <p>
+   * message_ids all message IDs that should be resend. All messages must belong to the same chat.
+   */
+  public void resendMessages(Integer accountId, java.util.List<Integer> messageIds) throws RpcException {
+    transport.call("resend_messages", mapper.valueToTree(accountId), mapper.valueToTree(messageIds));
+  }
+
+  public Integer sendSticker(Integer accountId, Integer chatId, String stickerPath) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "send_sticker", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(stickerPath));
+  }
+
+  /**
    * Send a reaction to message.
    * <p>
    * Reaction is a string of emojis separated by spaces. Reaction to a
@@ -237,9 +1352,102 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Reactions>(){}, "get_message_reactions", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
   }
 
+  public Integer sendMsg(Integer accountId, Integer chatId, MessageData data) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "send_msg", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(data));
+  }
+
+  public void sendEditRequest(Integer accountId, Integer msgId, String newText) throws RpcException {
+    transport.call("send_edit_request", mapper.valueToTree(accountId), mapper.valueToTree(msgId), mapper.valueToTree(newText));
+  }
+
   /* Checks if messages can be sent to a given chat. */
   public Boolean canSend(Integer accountId, Integer chatId) throws RpcException {
     return transport.callForResult(new TypeReference<Boolean>(){}, "can_send", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Saves a file copy at the user-provided path.
+   * <p>
+   * Fails if file already exists at the provided path.
+   */
+  public void saveMsgFile(Integer accountId, Integer msgId, String path) throws RpcException {
+    transport.call("save_msg_file", mapper.valueToTree(accountId), mapper.valueToTree(msgId), mapper.valueToTree(path));
+  }
+
+  public void removeDraft(Integer accountId, Integer chatId) throws RpcException {
+    transport.call("remove_draft", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /* Get draft for a chat, if any. */
+  public Message getDraft(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<Message>(){}, "get_draft", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  public String miscGetStickerFolder(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "misc_get_sticker_folder", mapper.valueToTree(accountId));
+  }
+
+  /* Saves a sticker to a collection/folder in the account's sticker folder. */
+  public void miscSaveSticker(Integer accountId, Integer msgId, String collection) throws RpcException {
+    transport.call("misc_save_sticker", mapper.valueToTree(accountId), mapper.valueToTree(msgId), mapper.valueToTree(collection));
+  }
+
+  /**
+   * for desktop, get stickers from stickers folder,
+   * grouped by the collection/folder they are in.
+   */
+  public java.util.Map<String, java.util.List<String>> miscGetStickers(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.Map<String, java.util.List<String>>>(){}, "misc_get_stickers", mapper.valueToTree(accountId));
+  }
+
+  /* Returns the messageid of the sent message */
+  public Integer miscSendTextMessage(Integer accountId, Integer chatId, String text) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "misc_send_text_message", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(text));
+  }
+
+  /**
+   * Send a message to a chat.
+   * <p>
+   * This function returns after the message has been placed in the sending queue.
+   * This does not imply that the message was really sent out yet.
+   * However, from your view, you're done with the message.
+   * Sooner or later it will find its way.
+   * <p>
+   * **Attaching files:**
+   * <p>
+   * Pass the file path in the `file` parameter.
+   * If `file` is not in the blob directory yet,
+   * it will be copied into the blob directory.
+   * If you want, you can delete the file immediately after this function returns.
+   * <p>
+   * You can also write the attachment directly into the blob directory
+   * and then pass the path as the `file` parameter;
+   * this will prevent an unnecessary copying of the file.
+   * <p>
+   * In `filename`, you can pass the original name of the file,
+   * which will then be shown in the UI.
+   * in this case the current name of `file` on the filesystem will be ignored.
+   * <p>
+   * In order to deduplicate files that contain the same data,
+   * the file will be named `<hash>.<extension>`, e.g. `ce940175885d7b78f7b7e9f1396611f.jpg`.
+   * <p>
+   * NOTE:
+   * - This function will rename the file. To get the new file path, call `get_file()`.
+   * - The file must not be modified after this function was called.
+   * - Images etc. will NOT be recoded.
+   * In order to recode images,
+   * use `misc_set_draft` and pass `Image` as the viewtype.
+   */
+  public Pair<Integer, Message> miscSendMsg(Integer accountId, Integer chatId, String text, String file, String filename, Pair<Float, Float> location, Integer quotedMessageId) throws RpcException {
+    return transport.callForResult(new TypeReference<Pair<Integer, Message>>(){}, "misc_send_msg", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(text), mapper.valueToTree(file), mapper.valueToTree(filename), mapper.valueToTree(location), mapper.valueToTree(quotedMessageId));
+  }
+
+  public void miscSetDraft(Integer accountId, Integer chatId, String text, String file, String filename, Integer quotedMessageId, Viewtype viewType) throws RpcException {
+    transport.call("misc_set_draft", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(text), mapper.valueToTree(file), mapper.valueToTree(filename), mapper.valueToTree(quotedMessageId), mapper.valueToTree(viewType));
+  }
+
+  public Integer miscSendDraft(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "misc_send_draft", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
   }
 
 }

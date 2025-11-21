@@ -49,19 +49,7 @@ public class DcHelper {
 
     private static final String TAG = DcHelper.class.getSimpleName();
 
-    public static final String CONFIG_ADDRESS = "addr";
     public static final String CONFIG_CONFIGURED_ADDRESS = "configured_addr";
-    public static final String CONFIG_MAIL_SERVER = "mail_server";
-    public static final String CONFIG_MAIL_USER = "mail_user";
-    public static final String CONFIG_MAIL_PASSWORD = "mail_pw";
-    public static final String CONFIG_MAIL_PORT = "mail_port";
-    public static final String CONFIG_MAIL_SECURITY = "mail_security";
-    public static final String CONFIG_SEND_SERVER = "send_server";
-    public static final String CONFIG_SEND_USER = "send_user";
-    public static final String CONFIG_SEND_PASSWORD = "send_pw";
-    public static final String CONFIG_SEND_PORT = "send_port";
-    public static final String CONFIG_SEND_SECURITY = "send_security";
-    public static final String CONFIG_SERVER_FLAGS = "server_flags";
     public static final String CONFIG_DISPLAY_NAME = "displayname";
     public static final String CONFIG_SELF_STATUS = "selfstatus";
     public static final String CONFIG_SELF_AVATAR = "selfavatar";
@@ -189,8 +177,6 @@ public class DcHelper {
     dcContext.setStockTranslation(139, context.getString(R.string.ephemeral_timer_disabled_by_other));
     dcContext.setStockTranslation(140, context.getString(R.string.ephemeral_timer_seconds_by_you));
     dcContext.setStockTranslation(141, context.getString(R.string.ephemeral_timer_seconds_by_other));
-    dcContext.setStockTranslation(142, context.getString(R.string.ephemeral_timer_1_minute_by_you));
-    dcContext.setStockTranslation(143, context.getString(R.string.ephemeral_timer_1_minute_by_other));
     dcContext.setStockTranslation(144, context.getString(R.string.ephemeral_timer_1_hour_by_you));
     dcContext.setStockTranslation(145, context.getString(R.string.ephemeral_timer_1_hour_by_other));
     dcContext.setStockTranslation(146, context.getString(R.string.ephemeral_timer_1_day_by_you));
