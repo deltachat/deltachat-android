@@ -159,6 +159,11 @@ public class DcHelper {
     dcContext.setStockTranslation(118, context.getString(R.string.secure_join_replies));
     dcContext.setStockTranslation(119, context.getString(R.string.qrshow_join_contact_hint));
 
+    // HACK: svg does not handle entities correctly and shows `&quot;` as the text `quot;`.
+    // until that is fixed, we fix the most obvious errors (core uses encode_minimal, so this does not affect so many characters)
+    // cmp. https://github.com/deltachat/deltachat-android/issues/2187
+    dcContext.setStockTranslation(120, context.getString(R.string.qrshow_join_group_hint).replace("\"", ""));
+    dcContext.setStockTranslation(121, context.getString(R.string.connectivity_not_connected));
     dcContext.setStockTranslation(124, context.getString(R.string.group_name_changed_by_you));
     dcContext.setStockTranslation(125, context.getString(R.string.group_name_changed_by_other));
     dcContext.setStockTranslation(126, context.getString(R.string.group_image_changed_by_you));
@@ -193,12 +198,6 @@ public class DcHelper {
     dcContext.setStockTranslation(157, context.getString(R.string.ephemeral_timer_weeks_by_other));
     dcContext.setStockTranslation(158, context.getString(R.string.ephemeral_timer_1_year_by_you));
     dcContext.setStockTranslation(159, context.getString(R.string.ephemeral_timer_1_year_by_other));
-
-    // HACK: svg does not handle entities correctly and shows `&quot;` as the text `quot;`.
-    // until that is fixed, we fix the most obvious errors (core uses encode_minimal, so this does not affect so many characters)
-    // cmp. https://github.com/deltachat/deltachat-android/issues/2187
-    dcContext.setStockTranslation(120, context.getString(R.string.qrshow_join_group_hint).replace("\"", ""));
-    dcContext.setStockTranslation(121, context.getString(R.string.connectivity_not_connected));
     dcContext.setStockTranslation(162, context.getString(R.string.multidevice_qr_subtitle));
     dcContext.setStockTranslation(163, context.getString(R.string.multidevice_transfer_done_devicemsg));
     dcContext.setStockTranslation(170, context.getString(R.string.chat_protection_enabled_tap_to_learn_more));
@@ -207,6 +206,7 @@ public class DcHelper {
     dcContext.setStockTranslation(174, context.getString(R.string.invalid_unencrypted_tap_to_learn_more));
     dcContext.setStockTranslation(176, context.getString(R.string.reaction_by_you));
     dcContext.setStockTranslation(177, context.getString(R.string.reaction_by_other));
+    dcContext.setStockTranslation(178, context.getString(R.string.member_x_removed));
     dcContext.setStockTranslation(190, context.getString(R.string.secure_join_wait));
     dcContext.setStockTranslation(193, context.getString(R.string.donate_device_msg));
     dcContext.setStockTranslation(194, context.getString(R.string.outgoing_call));
@@ -214,6 +214,14 @@ public class DcHelper {
     dcContext.setStockTranslation(196, context.getString(R.string.declined_call));
     dcContext.setStockTranslation(197, context.getString(R.string.canceled_call));
     dcContext.setStockTranslation(198, context.getString(R.string.missed_call));
+    dcContext.setStockTranslation(200, context.getString(R.string.channel_left_by_you));
+    dcContext.setStockTranslation(201, context.getString(R.string.qrshow_join_channel_hint));
+    dcContext.setStockTranslation(202, context.getString(R.string.you_joined_the_channel));
+    dcContext.setStockTranslation(203, context.getString(R.string.secure_join_channel_started));
+    dcContext.setStockTranslation(210, context.getString(R.string.stats_msg_body));
+    dcContext.setStockTranslation(220, context.getString(R.string.proxy_enabled));
+    dcContext.setStockTranslation(221, context.getString(R.string.proxy_enabled_hint));
+    dcContext.setStockTranslation(230, context.getString(R.string.chat_unencrypted_explanation));
   }
 
   public static File getImexDir() {
