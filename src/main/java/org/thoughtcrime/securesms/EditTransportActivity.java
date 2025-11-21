@@ -1,17 +1,6 @@
 package org.thoughtcrime.securesms;
 
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PASSWORD;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PORT;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_SECURITY;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_SERVER;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_USER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PASSWORD;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PORT;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SECURITY;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SERVER;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 
 import android.content.DialogInterface;
@@ -53,13 +42,15 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
+import java.util.List;
+
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.EnteredCertificateChecks;
 import chat.delta.rpc.types.EnteredLoginParam;
 import chat.delta.rpc.types.Socket;
 
-public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
+public class EditTransportActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
     private enum VerificationType {
         EMAIL,
@@ -88,12 +79,17 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private SwitchCompat proxySwitch;
 
+    Rpc rpc;
+    int accId;
+
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         dynamicTheme.onCreate(this);
+        rpc = DcHelper.getRpc(this);
+        accId = DcHelper.getContext(this).getAccountId();
 
-        setContentView(R.layout.registration_activity);
+        setContentView(R.layout.activity_edittransport);
 
         emailInput = findViewById(R.id.email_text);
         passwordInput = findViewById(R.id.password_text);
@@ -122,19 +118,23 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             startActivity(new Intent(this, ProxySettingsActivity.class));
         });
 
-        boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
+        EnteredLoginParam config = null;
+        try {
+            List<EnteredLoginParam> relays = rpc.listTransports(accId);
+            if (!relays.isEmpty()) config = relays.get(0);
+        } catch (RpcException ignored) {}
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle(
-              isConfigured? R.string.edit_transport : R.string.manual_account_setup_option
+              config != null? R.string.edit_transport : R.string.manual_account_setup_option
             );
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
             actionBar.setElevation(0); // TODO: use custom toolbar instead
         }
 
-        if (isConfigured) emailInput.setEnabled(false);
+        if (config != null) emailInput.setEnabled(false);
         emailInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -154,66 +154,54 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         viewLogText.setOnClickListener((view) -> showLog());
 
         boolean expandAdvanced = false;
-        String strVal;
         int intVal;
 
         intVal = DcHelper.getInt(this, CONFIG_PROXY_ENABLED);
         proxySwitch.setChecked(intVal == 1);
         expandAdvanced = expandAdvanced || intVal == 1;
 
-        if (isConfigured) {
-            String email = DcHelper.get(this, CONFIG_ADDRESS);
-            emailInput.setText(email);
-            if(!TextUtils.isEmpty(email)) {
-                emailInput.setSelection(email.length(), email.length());
+        if (config != null) { // configured
+            emailInput.setText(config.addr);
+            if(!TextUtils.isEmpty(config.addr)) {
+                emailInput.setSelection(config.addr.length(), config.addr.length());
             }
-            passwordInput.setText(DcHelper.get(this, CONFIG_MAIL_PASSWORD));
+            passwordInput.setText(config.password);
 
             TextInputEditText imapLoginInput = findViewById(R.id.imap_login_text);
-            strVal = DcHelper.get(this, CONFIG_MAIL_USER);
-            imapLoginInput.setText(strVal);
-            expandAdvanced = expandAdvanced || !TextUtils.isEmpty(strVal);
+            imapLoginInput.setText(config.imapUser);
+            expandAdvanced = expandAdvanced || !TextUtils.isEmpty(config.imapUser);
 
-            strVal = DcHelper.get(this, CONFIG_MAIL_SERVER);
-            imapServerInput.setText(strVal);
-            expandAdvanced = expandAdvanced || !TextUtils.isEmpty(strVal);
+            imapServerInput.setText(config.imapServer);
+            expandAdvanced = expandAdvanced || !TextUtils.isEmpty(config.imapServer);
 
-            strVal = DcHelper.get(this, CONFIG_MAIL_PORT);
-            imapPortInput.setText(strVal);
-            expandAdvanced = expandAdvanced || !TextUtils.isEmpty(strVal);
+            if (config.imapPort != null) imapPortInput.setText(config.imapPort.toString());
+            expandAdvanced = expandAdvanced || config.imapPort != null;
 
-            intVal = DcHelper.getInt(this, CONFIG_MAIL_SECURITY);
+            intVal = socketSecurityToInt(config.imapSecurity);
             imapSecurity.setSelection(ViewUtil.checkBounds(intVal, imapSecurity));
             expandAdvanced = expandAdvanced || intVal != 0;
 
             TextInputEditText smtpLoginInput = findViewById(R.id.smtp_login_text);
-            strVal = DcHelper.get(this, CONFIG_SEND_USER);
-            smtpLoginInput.setText(strVal);
-            expandAdvanced = expandAdvanced || !TextUtils.isEmpty(strVal);
+            smtpLoginInput.setText(config.smtpUser);
+            expandAdvanced = expandAdvanced || !TextUtils.isEmpty(config.smtpUser);
 
             TextInputEditText smtpPasswordInput = findViewById(R.id.smtp_password_text);
-            strVal = DcHelper.get(this, CONFIG_SEND_PASSWORD);
-            smtpPasswordInput.setText(strVal);
-            expandAdvanced = expandAdvanced || !TextUtils.isEmpty(strVal);
+            smtpPasswordInput.setText(config.smtpPassword);
+            expandAdvanced = expandAdvanced || !TextUtils.isEmpty(config.smtpPassword);
 
-            strVal = DcHelper.get(this, CONFIG_SEND_SERVER);
-            smtpServerInput.setText(strVal);
-            expandAdvanced = expandAdvanced || !TextUtils.isEmpty(strVal);
+            smtpServerInput.setText(config.smtpServer);
+            expandAdvanced = expandAdvanced || !TextUtils.isEmpty(config.smtpServer);
 
-            strVal = DcHelper.get(this, CONFIG_SEND_PORT);
-            smtpPortInput.setText(strVal);
-            expandAdvanced = expandAdvanced || !TextUtils.isEmpty(strVal);
+            if (config.smtpPort != null) smtpPortInput.setText(config.smtpPort.toString());
+            expandAdvanced = expandAdvanced || config.smtpPort != null;
 
-            intVal = DcHelper.getInt(this, CONFIG_SEND_SECURITY);
+            intVal = socketSecurityToInt(config.smtpSecurity);
             smtpSecurity.setSelection(ViewUtil.checkBounds(intVal, smtpSecurity));
             expandAdvanced = expandAdvanced || intVal != 0;
 
-            int imapCertificateChecks = DcHelper.getInt(this, "imap_certificate_checks");
-            if (imapCertificateChecks == 3) {
-              imapCertificateChecks = 2; // 3 is a deprecated alias for 2
-            }
-            certCheck.setSelection(ViewUtil.checkBounds(imapCertificateChecks, certCheck));
-            expandAdvanced = expandAdvanced || imapCertificateChecks != 0;
+            intVal = certificateChecksToInt(config.certificateChecks);
+            certCheck.setSelection(ViewUtil.checkBounds(intVal, certCheck));
+            expandAdvanced = expandAdvanced || intVal != 0;
         }
 
         if (expandAdvanced) { onAdvancedSettings(); }
@@ -430,6 +418,20 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         throw new IllegalArgumentException("Invalid certificate position: " + position);
     }
 
+    private int certificateChecksToInt(EnteredCertificateChecks check) {
+        if (check == null) return 0;
+
+        switch (check) {
+            case strict:
+                return 1;
+            case acceptInvalidCertificates:
+                return 2;
+            case automatic:
+            default:
+                return 0;
+        }
+    }
+
     public static Socket socketSecurityFromInt(int position) {
         switch (position) {
         case 0:
@@ -442,6 +444,22 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             return Socket.plain;
         }
         throw new IllegalArgumentException("Invalid socketSecurity position: " + position);
+    }
+
+    public static int socketSecurityToInt(Socket security) {
+        if (security == null) return 0;
+
+        switch (security) {
+            case ssl:
+                return 1;
+            case starttls:
+                return 2;
+            case plain:
+                return 3;
+            case automatic:
+            default:
+                return 0;
+        }
     }
 
     private void setupConfig() {
@@ -462,9 +480,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         param.certificateChecks = certificateChecksFromInt(certCheck.getSelectedItemPosition());
 
         new Thread(() -> {
-            Rpc rpc = DcHelper.getRpc(this);
             try {
-                rpc.addOrUpdateTransport(DcHelper.getContext(this).getAccountId(), param);
+                rpc.addOrUpdateTransport(accId, param);
                 DcHelper.getEventCenter(this).endCaptureNextError();
                 progressDialog.dismiss();
                 Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
