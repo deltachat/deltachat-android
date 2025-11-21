@@ -842,6 +842,7 @@
     <string name="disable_imap_idle">Disable IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Do not use IMAP IDLE extension even if the server supports it. Enabling this option will delay message retrieval, enable it only for testing.</string>
     <string name="send_stats_to_devs">Send statistics to Delta Chat\'s developers</string>
+    <string name="stats_msg_body">The attachment contains anonymous usage statistics, which help us improve Delta Chat. Thank you!</string>
 
 
     <!-- Emoji picker and categories -->
@@ -915,6 +916,8 @@
     <string name="remove_member_by_you">You removed member %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Member %1$s removed by %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Member %1$s removed.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">You left the group.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -1029,6 +1032,8 @@
     <string name="qrlogin_ask_login_another">Log into \"%1$s\"?\n\nYour existing profile will not be deleted. Use the \"Switch Profile\" item to switch between your profiles.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s invited you to join this group.\n\nWaiting for the device of %2$s to reply…</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s invited you to join this channel.\n\nWaiting for the device of %2$s to reply…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s replied, waiting for being added to the group…</string>
     <string name="secure_join_wait">Establishing connection, please wait…</string>
