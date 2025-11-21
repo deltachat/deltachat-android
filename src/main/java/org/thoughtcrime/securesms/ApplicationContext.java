@@ -223,6 +223,7 @@ public class ApplicationContext extends MultiDexApplication {
     }
 
     Util.runOnBackground(() -> {
+      Util.sleep(10*1000); // 10s delay to avoid startup bottleneck
       final Pattern WEBXDC_URL_PATTERN =
         Pattern.compile("^https?://acc(\\d+)-msg(\\d+)\\.localhost/?");
       while (true) {
