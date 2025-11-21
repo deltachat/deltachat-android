@@ -763,7 +763,7 @@ public class ConversationFragment extends MessageSelectorFragment
                       && messageRecord.getText().contains(self_mail)
                       && getListAdapter().getChat().isDeviceTalk()) {
                       // This is a device message informing the user that the password is wrong
-                      startActivity(new Intent(getActivity(), RegistrationActivity.class));
+                      startActivity(new Intent(getActivity(), EditTransportActivity.class));
                     }
                 }
             }
