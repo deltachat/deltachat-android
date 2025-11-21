@@ -32,7 +32,7 @@ import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.RegistrationActivity;
+import org.thoughtcrime.securesms.EditTransportActivity;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
@@ -347,7 +347,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   }
 
   private void openRegistrationActivity() {
-    Intent intent = new Intent(requireActivity(), RegistrationActivity.class);
+    Intent intent = new Intent(requireActivity(), EditTransportActivity.class);
     startActivity(intent);
   }
 

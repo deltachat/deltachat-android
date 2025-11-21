@@ -13,7 +13,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="?android:attr/windowBackground"
-    tools:context=".RegistrationActivity">
+    tools:context=".EditTransportActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

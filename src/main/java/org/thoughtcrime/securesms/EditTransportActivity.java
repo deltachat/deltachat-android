@@ -50,7 +50,7 @@ import chat.delta.rpc.types.EnteredCertificateChecks;
 import chat.delta.rpc.types.EnteredLoginParam;
 import chat.delta.rpc.types.Socket;
 
-public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
+public class EditTransportActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
     private enum VerificationType {
         EMAIL,
@@ -89,7 +89,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         rpc = DcHelper.getRpc(this);
         accId = DcHelper.getContext(this).getAccountId();
 
-        setContentView(R.layout.registration_activity);
+        setContentView(R.layout.activity_edittransport);
 
         emailInput = findViewById(R.id.email_text);
         passwordInput = findViewById(R.id.password_text);
