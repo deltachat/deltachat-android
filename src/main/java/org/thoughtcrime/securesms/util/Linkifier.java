@@ -19,17 +19,17 @@ public class Linkifier {
         + "([0-9][0-9\\- \\.]{3,}[0-9])" // <digit><digit|sdd>+<digit> (5 characters min)
         + "(?=$|\\s|\\.|\\))");          // no letter at end
 
-  private static int internalPhoneLinkifier = -1;
+  private static int brokenPhoneLinkifier = -1;
 
   private static boolean internalPhoneLinkifierNeeded() {
-    if (internalPhoneLinkifier == -1) {
+    if (brokenPhoneLinkifier == -1) { // unset
       if(Linkify.addLinks(new SpannableString("a100b"), Linkify.PHONE_NUMBERS)) {
-        internalPhoneLinkifier = 1;
+        brokenPhoneLinkifier = 1; // true
       } else {
-        internalPhoneLinkifier = 0;
+        brokenPhoneLinkifier = 0; // false
       }
     }
-    return internalPhoneLinkifier == 1;
+    return brokenPhoneLinkifier == 1;
   }
 
   private static void replaceURLSpan(SpannableString messageBody) {
