@@ -31,6 +31,7 @@ import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.FetchWorker;
+import org.thoughtcrime.securesms.connect.WebxdcGarbageCollectionWorker;
 import org.thoughtcrime.securesms.connect.ForegroundDetector;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.connect.NetworkStateReceiver;
@@ -222,44 +223,17 @@ public class ApplicationContext extends MultiDexApplication {
               fetchWorkRequest);
     }
 
-    Util.runOnBackground(() -> {
-      Util.sleep(10*1000); // 10s delay to avoid startup bottleneck
-      final Pattern WEBXDC_URL_PATTERN =
-        Pattern.compile("^https?://acc(\\d+)-msg(\\d+)\\.localhost/?");
-      while (true) {
-        Log.i(TAG, "Running Webxdc storage garbage collection...");
-        WebStorage webStorage = WebStorage.getInstance();
-        webStorage.getOrigins((origins) -> {
-          if (origins == null || origins.isEmpty()) {
-            Log.i(TAG, "Done, no WebView origins found.");
-            return;
-          }
-
-          for (Object key : origins.keySet()) {
-            String url = (String)key;
-            Matcher m = WEBXDC_URL_PATTERN.matcher(url);
-            if (m.matches()) {
-              int accId = Integer.parseInt(m.group(1));
-              int msgId = Integer.parseInt(m.group(2));
-              try {
-                rpc.getMessage(accId, msgId);
-                Log.i(TAG, String.format("Existing webxdc origin: %s", url));
-              } catch (RpcException ignore) {
-                // msg doesn't exist anymore, clean storage
-                webStorage.deleteOrigin(url);
-                Log.i(TAG, String.format("Deleted webxdc origin: %s", url));
-              }
-            } else { // old webxdc URL schemes, etc
-              webStorage.deleteOrigin(url);
-              Log.i(TAG, String.format("Deleted unknown origin: %s", url));
-            }
-          }
-
-          Log.i(TAG, "Done running Webxdc storage garbage collection.");
-        });
-        Util.sleep(60*60*1000); // 1h
-      }
-    });
+    PeriodicWorkRequest webxdcGarbageCollectionRequest = new PeriodicWorkRequest.Builder(
+            WebxdcGarbageCollectionWorker.class,
+            PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS,
+            TimeUnit.MILLISECONDS,
+            PeriodicWorkRequest.MIN_PERIODIC_FLEX_MILLIS,
+            TimeUnit.MILLISECONDS)
+            .build();
+    WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "WebxdcGarbageCollectionWorker",
+            ExistingPeriodicWorkPolicy.KEEP,
+            webxdcGarbageCollectionRequest);
   }
 
   public JobManager getJobManager() {
