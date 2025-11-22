@@ -43,6 +43,7 @@ import org.json.JSONObject;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
@@ -345,8 +346,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   @Override
   protected boolean openOnlineUrl(String url) {
     Log.i(TAG, "openOnlineUrl: " + url);
-    if (url.startsWith("mailto:") || url.startsWith("openpgp4fpr:")) {
-      return super.openOnlineUrl(url);
+    String schema = url.split(":")[0].toLowerCase();
+    switch (schema) {
+      case "mailto":
+      case "openpgp4fpr":
+      case "geo":
+        return super.openOnlineUrl(url);
+    }
+    if (url.startsWith("https://" + Util.INVITE_DOMAIN + "/")) {
+        QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+        qrCodeHandler.handleQrData(url);
     }
     return !internetAccess; // returning `false` continues loading in WebView; returning `true` let WebView abort loading
   }
