@@ -1,4 +1,4 @@
-package org.thoughtcrime.securesms.connect;
+package org.thoughtcrime.securesms.webxdc;
 
 import android.content.Context;
 import android.util.Log;
