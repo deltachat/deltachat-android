@@ -10,6 +10,7 @@
 * Send .webm videos as file, they are not supported by all platforms
 * Tweak advanced section and wording of some advanced options
 * Fix: avoid crash in push notifications handling
+* Fix: clean up web storage of deleted in-chat apps
 * Expose new "Multi-device mode" option instead of "Delete from server" for chatmail profiles
 * Opened in-chat apps got a 'About Apps' menu item
 * Avoid gray avatar on profile creation
