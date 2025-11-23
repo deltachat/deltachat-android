@@ -75,7 +75,9 @@
     <string name="always_load_remote_images">Ĉiam ŝargu forajn bildojn</string>
     <string name="once">Unufoje</string>
     <string name="show_warning">Afiŝu averton</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Montri pasvorton</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Kaŝi pasvorton</string>
     <string name="not_now">Ne nun</string>
     <string name="never">Neniam</string>
@@ -384,10 +386,6 @@
     <string name="login_smtp_server">SMTP servilo</string>
     <string name="login_smtp_port">SMTP pordo</string>
     <string name="login_smtp_security">SMTP sekureco</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Metodo de rajtigado</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Ĉu daŭri kun faciligitaj agordoj?</string>
     <string name="login_certificate_checks">Atestilaj kontroloj</string>
     <string name="login_error_mail">Bonvolu enigi validan retadreson</string>
     <string name="login_error_server">Bonvolu enigi validan servilon / IP adreson</string>
@@ -453,9 +451,6 @@
     <string name="pref_background">Fono</string>
     <string name="pref_background_btn_default">Uzi defaŭltan bildon</string>
     <string name="pref_background_btn_gallery">Elekti el galerio</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Kontroli senditujon</string>
-    <string name="pref_send_copy_to_self">Sendi kopion al mi mem</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
     <string name="autocrypt_prefer_e2ee">Preferi tutvojan ĉifradon</string>
 

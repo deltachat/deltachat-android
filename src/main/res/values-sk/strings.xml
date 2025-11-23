@@ -78,7 +78,9 @@
     <string name="always">Vždy</string>
     <string name="once">Raz</string>
     <string name="show_warning">Zobraziť varovanie</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Ukáž heslo</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Skryť heslo</string>
     <string name="not_now">Teraz nie</string>
     <string name="never">Nikdy</string>
@@ -541,7 +543,7 @@
     <string name="multidevice_install_dc_on_other_device">Nainštalujte Delta Chat na vašom ďalšom zariadení (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Otvorte Delta Chat, ťuknite na \"Existujúci účet / Pridať ako ďalšie zariadenie\" a naskenujte zobrazený kód</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Naskenujte pre nastavenie ďalšieho zariadenia pre %1$s</string>
     <string name="multidevice_receiver_title">Pridať ako ďalšie zariadenie</string>
     <string name="multidevice_open_settings_on_other_device">Na pôvodnom zariadení, choďte do \"Nastavenia / Pridať ďalšie zariadenie\" a naskenujte zobrazený kód</string>
@@ -608,10 +610,6 @@ Ak chcete pokračovať, aktualizujte toto zariadenie na najnovšiu verziu Delta 
     <string name="login_header">Prihláste sa na server</string>
     <!-- deprecated -->
     <string name="login_explain">Prihláste sa pomocou existujúceho e-mailového účtu</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Pre známych poskytovateľov e-mailov sa automaticky nastavujú ďalšie nastavenia. Niekedy je potrebné v nastaveniach webu povoliť protokol IMAP. Požiadajte o pomoc svojho poskytovateľa e-mailu alebo priateľov</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Neexistujú žiadne servery Delta Chat, vaše dáta zostanú vo vašom zariadení.</string>
     <string name="login_inbox">Doručená pošta</string>
     <string name="login_imap_login">Prihlasovacie meno IMAP</string>
     <string name="login_imap_server">Server IMAP</string>
@@ -623,8 +621,6 @@ Ak chcete pokračovať, aktualizujte toto zariadenie na najnovšiu verziu Delta 
     <string name="login_smtp_server">Server SMTP</string>
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Zabezpečenie SMTP</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Metóda autorizácie</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Použiť proxy</string>
@@ -638,10 +634,6 @@ Ak chcete pokračovať, aktualizujte toto zariadenie na najnovšiu verziu Delta 
     <string name="proxy_use_proxy_confirm">Chcete použiť proxy \"%1$s\"?</string>
     <string name="proxy_share_explain">Vaši priatelia si môžu pridať túto proxy naskenovaním QR kódu.</string>
     <string name="proxy_share_link">Zdieľať odkaz</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Pokračovať v zjednodušenom nastavovaní?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Zadaná e-mailová adresa podporuje zjednodušené nastavenie (OAuth 2.0).\n\nV ďalšom kroku povoľte aplikácii Delta Chat, aby fungovala ako vaša aplikácia Chat cez e-mail.\n\nNie sú k dispozícii servery Delta Chat, vaše dáta zostanú vo vašom zariadení .</string>
     <string name="login_certificate_checks">Osvedčovacie kontroly</string>
     <string name="login_error_mail">Prosím zadajte platnú emailovú adresu</string>
     <string name="login_error_server">Zadajte platný server / IP adresu</string>
@@ -734,8 +726,6 @@ Ak chcete pokračovať, aktualizujte toto zariadenie na najnovšiu verziu Delta 
     <string name="pref_backup">Zálohovanie</string>
     <string name="pref_backup_explain">Zálohujte konverzácie na externé úložisko</string>
     <string name="pref_backup_export_explain">Záloha vám pomôže nastaviť novú inštaláciu na tomto alebo na inom zariadení.\n\nZáloha bude obsahovať všetky správy, kontakty a konverzácie a vaše úplné nastavenie automatického šifrovania. Uložte záložný súbor na bezpečnom mieste alebo ho čo najskôr odstráňte.</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">Exportovať %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportovať %1$d účty/účtov</string>
     <string name="pref_backup_export_start_button">Spustiť zálohovanie</string>
@@ -748,10 +738,6 @@ Ak chcete pokračovať, aktualizujte toto zariadenie na najnovšiu verziu Delta 
     <string name="pref_background_btn_default">Použiť predvolený obrázok</string>
     <string name="pref_background_btn_gallery">Vyberte z galérie</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ak túto možnosť zakážete, uistite sa, že váš server a ostatní klienti sú zodpovedajúcim spôsobom nakonfigurovaní.\n\nV opačnom prípade nemusí fungovať vôbec.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Pozrieť priečinok Odoslané</string>
-    <string name="pref_send_copy_to_self">Odoslať kópiu sebe</string>
-    <string name="pref_send_copy_to_self_explain">Vyžaduje sa, ak používate tento účet na viacerých zariadeniach.</string>
     <string name="pref_auto_folder_moves">Automaticky presúvať do priečinka DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Konverzácie sa presunú, aby sa predišlo preplneniu doručenej pošty</string>
     <string name="pref_only_fetch_mvbox_title">Prijímať iba z priečinka DeltaChat</string>
@@ -838,8 +824,6 @@ Ak chcete pokračovať, aktualizujte toto zariadenie na najnovšiu verziu Delta 
     <string name="autocrypt_prefer_e2ee">Preferovať šifrovanie typu end-to-end</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Neznámy odosielateľ pre túto konverzáciu. Ďalšie informácie nájdete v časti „Informácie“.</string>
     <string name="systemmsg_subject_for_new_contact">Správa od %1$s</string>
     <string name="systemmsg_failed_sending_to">Správu sa nepodarilo odoslať %1$s .</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -847,59 +831,59 @@ Ak chcete pokračovať, aktualizujte toto zariadenie na najnovšiu verziu Delta 
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Názov skupiny sa zmenil z „%1$s“ na „%2$s“ od %3$s.</string>
     <string name="group_image_changed_by_you">Zmenili ste obrázok skupiny.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Obrázok skupiny zmenil(a) %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Člen %1$s pridaný mnou.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Člen %1$s pridaný od %2$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Člen %1$s bol odstránený mnou.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Člen %1$s bol odstránený od %2$s.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">Skupinu opustil(a) %1$s.</string>
     <string name="group_image_deleted_by_you">Odstránili ste obrázok skupiny.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Obrázok skupiny odstránil(a) %1$s.</string>
     <string name="location_enabled_by_you">Zapli ste vysielanie vašej polohy.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$s povolil(a) vysielanie svojej polohy.</string>
     <string name="ephemeral_timer_disabled_by_you">Časovač zmiznutia správ je deaktivovaný mnou.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Časovač zmiznutia správ je deaktivovaný od %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Časovač zmiznutia správ nastavený na %1$s s mnou.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Časovač zmiznutia správ nastavený na %1$s s od %2$s.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Časovač zmiznutia správ bol nastavený na 1 minútu mnou.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">Časovač zmiznutia správ bol nastavený na 1 minútu od %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Časovač zmiznutia správ bol nastavený na 1 hodinu mnou.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Časovač zmiznutia správ bol nastavený na 1 hodinu od %1$s.</string>
     <string name="ephemeral_timer_1_day_by_you">Časovač zmiznutia správ nastavený na 1 deň mnou.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">Časovač zmiznutia správ nastavený na 1 deň od %1$s.</string>
     <string name="ephemeral_timer_1_week_by_you">Časovač zmiznutia správ nastavený na 1 týždeň mnou.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">Časovač zmiznutia správ nastavený na 1 týždeň od %1$s.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Časovač zmiznutia správ bol nastavený na %1$s minúty mnou.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">Časovač zmiznutia správ bol nastavený na %1$s minúty od %2$s.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Časovač zmiznutia správ bol nastavený na %1$s hodiny mnou.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">Časovač zmiznutia správ bol nastavený na %1$s hodiny od %2$s.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Časovač zmiznutia správ nastavený na %1$s dni mnou.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">Časovač zmiznutia správ nastavený na %1$s dni od %2$s.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Časovač zmiznutia správ nastavený na %1$s týždne mnou.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Časovač zmiznutia správ nastavený na %1$s týždne od %2$s.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Správy sú šifrované. Ťuknite pre viac informácií.</string>
     <string name="learn_more">Zistiť viac</string>
@@ -940,7 +924,7 @@ Ak chcete pokračovať, aktualizujte toto zariadenie na najnovšiu verziu Delta 
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Naskenujte a pripojte sa ku skupine „%1$s“.</string>
     <string name="qrshow_join_contact_title">QR pozývací kód</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Naskenujte a vytvorte kontakt s %1$s .</string>
     <string name="qrshow_join_contact_no_connection_toast">Nie je pripojenie na internet, nedá sa nastaviť kód QR.</string>
     <string name="qraccount_ask_create_and_login">Vytvoriť nový účet na „%1$s“ a prihlásiť sa?</string>
@@ -955,7 +939,7 @@ Váš existujúci účet nebude odstránený. Medzi účtami môžete prepínať
     <string name="qrlogin_ask_login_another">Prihlásiť sa do „%1$s“?
 
 Váš existujúci účet nebude odstránený. Medzi účtami môžete prepínať pomocou „Prepnúť účet“.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s vás pozval, aby ste sa pripojili k tejto skupine.\n\nČaká sa na odpoveď zo zariadenia používateľa %2$s...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$sodpovedal a čaká sa na pridanie do skupiny...</string>

@@ -65,7 +65,9 @@
     <string name="always_load_remote_images">Lataa aina kuvat verkosta</string>
     <string name="once">Kerran</string>
     <string name="show_warning">Näytä varoitus</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Näytä salasana</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Piilota salasana</string>
     <string name="not_now">Ei nyt</string>
     <string name="never">Ei koskaan</string>
@@ -451,7 +453,7 @@
     <string name="multidevice_install_dc_on_other_device">Lataa Delta Chat toiselle laitteellesi (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Avaa Delta Chat, valitse \"Minulla on jo profiili / Lisää toiseksi laitteeksi\" ja skannaa täällä näkyvä koodi</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Lisää toiseksi laitteeksi profiilille %1$s</string>
     <string name="multidevice_receiver_title">Lisää toiseksi laitteeksi</string>
     <string name="multidevice_open_settings_on_other_device">Avaa \"Asetukset / Lisää toinen laite\" ensimmäisellä laitteella ja skannaa tässä oleva koodi</string>
@@ -510,11 +512,11 @@
     <string name="instant_onboarding_other_server">Listaa chatmail -palvelimet</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">Liity ryhmään \"%1$s\" luomalla profiili.</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Keskustele %1$s kanssa luomalla profiili.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">Haluatko luoda uuden profiilin ja aloittaa keskustelun %1$s kanssa?</string>
-    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Haluatko luoda uuden profiilin ja liittyä ryhmään \"%1$s\"?</string>
 
     <string name="welcome_chat_over_email">Turvallinen hajautettu keskustelu</string>
@@ -524,10 +526,6 @@
     <string name="login_header">Kirjaudu sähköpostitilillesi</string>
     <!-- deprecated -->
     <string name="login_explain">Kirjaudu olemassa olevalla sähköpostitilillä</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Sähköpostiasetukset määritetään automaattisesti tunnetuille palvelimille. Joskus verkkoasetuksista täytyy ottaa käyttöön IMAP. Kysy apua palveluntarjoajaltasi tai ystäviltäsi.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Delta Chat ei kerää käyttäjädataa, kaikki tallennetaan vain laitteellesi.</string>
     <string name="login_inbox">Saapuvan postin laatikko</string>
     <string name="login_imap_login">IMAP -kirjautumistunnus</string>
     <string name="login_imap_server">IMAP -palvelin</string>
@@ -539,12 +537,6 @@
     <string name="login_smtp_server">SMTP -palvelin</string>
     <string name="login_smtp_port">SMTP -portti</string>
     <string name="login_smtp_security">SMTP -turvallisuusprotokolla</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Kirjautumismenetelmä</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Jatka yksinkertaistetulla käyttöönotolla?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Annettu sähköpostiosoite tukee yksinkertaista käyttöönottoa (OAuth 2.0).\n\nSeuraavassa vaiheessa sinun tulisi antaa Delta Chatille oikeus toimia keskustelusovelluksena sähköpostia hyödyntäen.\n\nDelta Chat ei kerää käyttäjädataa, kaikki tallennetaan vain laitteellesi.</string>
     <string name="login_certificate_checks">Varmenteiden tarkastus</string>
     <string name="login_error_mail">Anna kelvollinen sähköpostiosoite</string>
     <string name="login_error_server">Anna kelvollinen palvelin tai IP-osoite</string>
@@ -638,8 +630,6 @@
     <string name="pref_backup">Varmuuskopiointi</string>
     <string name="pref_backup_explain">Varmuuskopioi keskustelut ulkoiseen tallennustilaan</string>
     <string name="pref_backup_export_explain">Varmuuskopio auttaa siirtämään asennuksen tälle tai toiselle laitteelle.\n\nVarmuuskopio sisältää kaikki viestit, yhteystiedot ja keskustelut sekä päästä-päähän salauksen Autocrypt -tiedot. Pidä varmuuskopiotiedosto turvallisessa paikassa tai poista se heti kun mahdollista.</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">Vie %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Vie kaikki %1$d profiilia</string>
     <string name="pref_backup_export_start_button">Aloita varmuuskopiointi</string>
@@ -652,10 +642,6 @@
     <string name="pref_background_btn_default">Käytä oletuskuvaa</string>
     <string name="pref_background_btn_gallery">Valitse galleriasta</string>
     <string name="pref_imap_folder_warn_disable_defaults">Jos muutat tätä asetusta, varmista että palvelimesi ja muut päätelaitteesi ovat määritetty vastaavasti.\n\nMuutoin ne eivät ehkä toimi lainkaan.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Tarkkaile Lähetetyt -kansiota</string>
-    <string name="pref_send_copy_to_self">Lähetä kopio itselle</string>
-    <string name="pref_send_copy_to_self_explain">Vaaditaan käytettäessä tiliä usealla laitteella.</string>
     <string name="pref_auto_folder_moves">Siirrä automaattisesti DeltaChat -kansioon</string>
     <string name="pref_auto_folder_moves_explain">Saapuneet -kansion täyttämisen välttämiseksi, pikaviestikeskustelut siirretään </string>
     <string name="pref_only_fetch_mvbox_title">Hae vain DeltaChat -kansiosta</string>
@@ -743,8 +729,6 @@
     <string name="autocrypt_prefer_e2ee">Suosi päästä-päähän -salausta</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Tuntematon lähettäjä. Katso \"lisätietoja\".</string>
     <string name="systemmsg_subject_for_new_contact">Viesti lähettäjältä %1$s</string>
     <string name="systemmsg_failed_sending_to">Viestin lähettäminen kohteeseen %1$s epäonnistui.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -752,61 +736,61 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Ryhmän nimi vaihdettu: \"%1$s\" --> \"%2$s\" käyttäjän %3$s toimesta.</string>
     <string name="group_image_changed_by_you">Ryhmän kuva vaihdettu minun toimestani.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Ryhmän kuva vaihdettu käyttäjän %1$s toimesta.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">%1$s lisätty.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Jäsen %1$s lisätty minun toimestani.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Jäsen %1$s lisätty käyttäjän %2$s toimesta.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Jäsen %1$s poistettu minun toimestani.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Jäsen %1$s poistettu käyttäjän %2$s toimesta.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s poistui ryhmästä.</string>
     <string name="group_image_deleted_by_you">Ryhmän kuva poistettu minun toimestani.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Ryhmän kuva poistettu käyttäjän %1$s toimesta.</string>
     <string name="location_enabled_by_you">Aloitit sijainnin jakamisen.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$s aloitti sijainnin jakamisen.</string>
     <string name="ephemeral_timer_disabled_by_you">Katoavien viestien ajastin poistettiin minun toimestani.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Katoavien viestien ajastin poistettiin käyttäjän %1$s toimesta.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Katoavien viestien ajastin asetettu %1$s sekuntiin minun toimestani.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Katoavien viestien ajastin asetettu %1$s sekuntiin käyttäjän %2$s toimesta.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Katoavien viestien ajastin asetettu 1 minuuttiin minun toimestani.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">Katoavien viestien ajastin asetettu 1 minuuttiin käyttäjän %1$s toimesta.</string>
     <string name="ephemeral_timer_1_hour_by_you">Katoavien viestien ajastin asetettu 1 tuntiin minun toimestani.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Katoavien viestien ajastin asetettu 1 tuntiin käyttäjän %1$s toimesta.</string>
     <string name="ephemeral_timer_1_day_by_you">Katoavien viestien ajastin asetettu 1 päivään minun toimestani.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">Katoavien viestien ajastin asetettu 1 päivään käyttäjän %1$s toimesta.</string>
     <string name="ephemeral_timer_1_week_by_you">Katoavien viestien ajastin asetettu 1 viikkoon minun toimestani.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">Katoavien viestien ajastin asetettu 1 viikkoon käyttäjän %1$s toimesta.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Katoavien viestien ajastin asetettu %1$s minuuttiin minun toimestani.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">Katoavien viestien ajastin asetettu %1$s minuuttiin käyttäjän %2$s toimesta.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Katoavien viestien ajastin asetettu %1$s tuntiin minun toimestani.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">Katoavien viestien ajastin asetettu %1$s tuntiin käyttäjän %2$s toimesta.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Katoavien viestien ajastin asetettu %1$s päivään minun toimestani.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">Katoavien viestien ajastin asetettu %1$s päivään käyttäjän %2$s toimesta.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Katoavien viestien ajastin asetettu %1$s viikkoon minun toimestani.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Katoavien viestien ajastin asetettu %1$s viikkoon käyttäjän %2$s toimesta.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Tästä eteenpäin viestit on taatusti päästä-päähän salattuja. Lisätietoja napauttamalla.</string>
     <string name="chat_protection_enabled_explanation">Kaikki viestit tässä keskustelussa ovat taatusti päästä-päähän salattuja.\n\nPäästä-päähän -salaus pitää viestisi sinun ja keskustelukumppanisi välillä. Edes sähköpostipalveluntarjoaja ei pysty niitä lukemaan.</string>
@@ -851,7 +835,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Skannaa liittyäksesi ryhmään \"%1$s\"</string>
     <string name="qrshow_join_contact_title">QR-kutsukoodi</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Skannaa aloittaaksesi keskustelun käyttäjän %1$s kanssa</string>
     <string name="qrshow_join_contact_no_connection_toast">Ei internetyhteyttä, QR-koodin luominen ei onnistu.</string>
     <string name="qraccount_ask_create_and_login">Luo uusi sähköpostiosoite palvelimella \"%1$s\" ja kirjaudu sisään?</string>
@@ -863,7 +847,7 @@
     <string name="qrlogin_ask_login">Haluatko kirjautua osoitteella \"%1$s\"?</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Haluatko kirjautua osoitteella \"%1$s\"?\n\nNykyistä tiliäsi ei poisteta. Käytä \"Vaihda tiliä\" -kohtaa vaihtaaksesi tiliesi välillä.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s kutsui sinut tähän ryhmään.\n\nOdotetaan vastausta yhteystiedon %2$s laitteelta...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">Vastaus saatu käyttäjältä %1$s, odotetaan lisäystä ryhmään...</string>

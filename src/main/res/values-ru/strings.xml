@@ -81,7 +81,9 @@
     <string name="always_load_remote_images">Всегда загружать изображения из внешних источников</string>
     <string name="once">Только сейчас</string>
     <string name="show_warning">Показать предупреждение</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Показать пароль</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Скрыть пароль</string>
     <string name="not_now">Не сейчас</string>
     <string name="never">Никогда</string>
@@ -340,7 +342,7 @@
     <string name="menu_scroll_to_top">Прокрутить вверх</string>
     <string name="menu_help">Справка</string>
     <!-- use the same term for "Apps" as elsewhere -->
-    <string name="what_is_webxdc">Что такое Webxdc?</string>
+    <string name="what_is_webxdc">О приложениях</string>
     <string name="privacy_policy">Политика конфиденциальности</string>
     <string name="menu_select_all">Выбрать всё</string>
     <string name="select_chat">Выбрать чат</string>
@@ -607,7 +609,7 @@
     <string name="multidevice_install_dc_on_other_device">Установите Delta Chat на другом устройстве (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Запустите Delta Chat, выберите \"У меня уже есть профиль / Добавить как второе устройство\" и отсканируйте код, показанный здесь</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Отсканируйте, чтобы настроить второе устройство для %1$s</string>
     <string name="multidevice_receiver_title">Добавить как второе устройство</string>
     <string name="multidevice_open_settings_on_other_device">На первом устройстве, откройте \"Настройки / Добавить второе устройство\" и отсканируйте код, показанный там</string>
@@ -667,12 +669,12 @@
     <string name="instant_onboarding_other_server">Список серверов Chatmail</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">Создайте профиль, чтобы присоединиться к группе \"%1$s\".</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Создайте профиль для чата с %1$s.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
-    <string name="instant_onboarding_confirm_contact">Вы хотите создать новый профиль и начать чат с %1$s?</string>
-    <!-- Question shown when group's QR code is scanned from onboarding screen -->
-    <string name="instant_onboarding_confirm_group">Вы хотите создать новый профиль и присоединиться к чату группы \"%1$s\"?</string>
+    <string name="instant_onboarding_confirm_contact">Создать новый профиль и начать чат с %1$s?</string>
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_group">Создать новый профиль и присоединиться к \"%1$s\"?</string>
 
     <string name="welcome_chat_over_email">Безопасный децентрализованный чат</string>
     <string name="scan_invitation_code">Сканировать код приглашения</string>
@@ -682,10 +684,6 @@
     <string name="login_header">Вход в аккаунт</string>
     <!-- deprecated -->
     <string name="login_explain">Вход в аккаунт электронной почты</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Для известных провайдеров электронной почты дополнительные настройки устанавливаются автоматически. Иногда необходимо включить IMAP в настройках веб-сайта. Проконсультируйтесь с технической поддержкой вашей почтовой службы или друзьями, для получения помощи.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Delta Chat не собирает данные пользователей, все данные хранятся на вашем устройстве!</string>
     <string name="login_inbox">Входящие</string>
     <string name="login_imap_login">Имя пользователя IMAP</string>
     <string name="login_imap_server">Сервер IMAP</string>
@@ -697,8 +695,6 @@
     <string name="login_smtp_server">Сервер SMTP</string>
     <string name="login_smtp_port">Порт SMTP</string>
     <string name="login_smtp_security">Защита соединения SMTP</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Метод авторизации</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Прокси</string>
     <string name="proxy_use_proxy">Использовать прокси</string>
@@ -724,15 +720,11 @@
     <string name="invalid_transport_qr">Отсканированный QR-код не содержит корректный транспорт.</string>
     <string name="confirm_remove_transport">Удалить транспорт \"%1$s\"?\n\nВаши контакты смогут связаться с вами, только если вы ранее связывались с ними через другой транспорт.\n\nЕсли сомневаетесь, удалите транспорт позже.</string>
 
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth 2.0).\n\nНа следующем шаге, разрешите Delta Chat отправлять и получать сообщения.\n\nDelta Chat не собирает ваши данные, они все остаются на вашем устройстве.</string>
     <string name="login_certificate_checks">Проверки сертификатов</string>
-    <string name="login_error_mail">Введите правильный адрес электронной почты</string>
-    <string name="login_error_server">Введите действительный адрес сервера / IP-адрес</string>
-    <string name="login_error_port">Введите действительный порт (1-65535)</string>
-    <string name="login_error_required_fields">Введите правильный адрес электронной почты и пароль</string>
+    <string name="login_error_mail">Введите корректный адрес электронной почты</string>
+    <string name="login_error_server">Введите корректный адрес сервера / IP-адрес</string>
+    <string name="login_error_port">Введите корректный порт (1-65535)</string>
+    <string name="login_error_required_fields">Введите корректный адрес электронной почты и пароль</string>
     <string name="import_backup_title">Восстановить из резервной копии</string>
     <string name="import_backup_ask">Найдена резервная копия в \"%1$s\".\n\nВы хотите импортировать и использовать все данные и настройки из нее?</string>
     <string name="import_backup_no_backup_found">Резервных копий не найдено.\n\nСкопируйте резервную копию в \"%1$s\" и повторите попытку.</string>
@@ -834,8 +826,6 @@
     <string name="pref_backup_explain">Резервное копирование чатов на внешний носитель</string>
     <string name="pref_backup_export_explain">Резервная копия поможет вам восстановить данные на этом или на другом устройстве.\n\nРезервная копия содержит все сообщения, контакты и чаты, а также параметры сквозного шифрования Autocrypt. Храните файл резервной копии в безопасном месте или удалите его как можно скорее.</string>
     <string name="pref_backup_export_this">Экспортировать профиль</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">Экспорт %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Экспорт всех %1$d профилей</string>
     <string name="pref_backup_export_start_button">Начать резервное копирование</string>
@@ -848,10 +838,10 @@
     <string name="pref_background_btn_default">Использовать изображение по умолчанию</string>
     <string name="pref_background_btn_gallery">Выбрать из галереи</string>
     <string name="pref_imap_folder_warn_disable_defaults">Если вы измените этот параметр, убедитесь, что ваш сервер и другие клиенты настроены соответствующим образом.\n\nВ противном случае, всё может перестать работать.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Следить за папкой \"Исходящие\"</string>
-    <string name="pref_send_copy_to_self">Отправлять копию себе</string>
-    <string name="pref_send_copy_to_self_explain">Требуется при использовании этого аккаунта на нескольких устройствах.</string>
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <string name="pref_multidevice">Режим нескольких устройств</string>
+    <string name="pref_multidevice_explain">Синхронизируйте свои сообщения с другими устройствами. Автоматически включается при добавлении второго устройства</string>
+    <string name="pref_multidevice_change_warn">Режим нескольких устройств должен быть включен при использовании одного и того же профиля на нескольких устройствах. Отключайте эту настройку, только если вы удалили этот профиль со всех остальных устройств.\n\nОтключение режима нескольких устройств при использовании профиля на нескольких устройствах приведет к пропуску сообщений и другим проблемам.</string>
     <string name="pref_auto_folder_moves">Автоперемещение в папку DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Сообщения чатов переносятся, избежать захламления папки \"Входящие\"</string>
     <string name="pref_only_fetch_mvbox_title">Загружать только из папки DeltaChat</string>
@@ -942,8 +932,6 @@
     <string name="autocrypt_prefer_e2ee">Предпочитать сквозное шифрование</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Неизвестный отправитель для данного чата. Смотрите \"информацию\" для подробностей.</string>
     <string name="systemmsg_subject_for_new_contact">Сообщение от %1$s</string>
     <string name="systemmsg_failed_sending_to">Не удалось отправить сообщение %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -951,69 +939,69 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s меняет название группы с \"%1$s\" на \"%2$s\".</string>
     <string name="group_image_changed_by_you">Вы изменили изображение группы.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s меняет изображение группы.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Добавлен участник %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Вы добавили участника %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">%2$s добавляет участника %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Вы удалили участника %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s удаляет участника %1$s.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Вы покинули группу.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="channel_left_by_you">Вы покинули канал.</string>
     <string name="you_joined_the_channel">Вы присоединились к каналу.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s покидает группу.</string>
     <string name="group_image_deleted_by_you">Вы удалили изображение группы.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">%1$s удаляет изображение группы.</string>
     <string name="location_enabled_by_you">Вы включили трансляцию местоположения.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$s включил трансляцию местоположения.</string>
     <string name="ephemeral_timer_disabled_by_you">Вы отключили удаление сообщений по таймеру.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s отключает удаление сообщений по таймеру.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Вы включили автоудаление сообщений через %1$s сек</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s включает автоудаление сообщений через %1$s сек</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Вы включили автоудаление сообщений через 1 минуту.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s включает автоудаление сообщений через 1 минуту.</string>
     <string name="ephemeral_timer_1_hour_by_you">Вы включили автоудаление сообщений через 1 час.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s включает автоудаление сообщений через 1 час.</string>
     <string name="ephemeral_timer_1_day_by_you">Вы включили автоудаление сообщений через 1 день.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">%1$s включает автоудаление сообщений через 1 день.</string>
     <string name="ephemeral_timer_1_week_by_you">Вы включили автоудаление сообщений через 1 неделю.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s включает автоудаление сообщений через 1 неделю.</string>
     <string name="ephemeral_timer_1_year_by_you">Вы включили автоудаление сообщений на 1 год.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_year_by_other">%1$s включает автоудаление сообщений на 1 год.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Вы включили автоудаление сообщений через %1$s минут.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">%2$s включает автоудаление сообщений через %1$s минут.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Вы включили автоудаление сообщений через %1$s часов.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">%2$s включает автоудаление сообщений через %1$s часов.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Вы включили автоудаление сообщений через %1$s дней.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">%2$s включает автоудаление сообщений через %1$s дней.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Вы включили автоудаление сообщений через %1$s недель.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s включает автоудаление сообщений через %1$s недель.</string>
     <string name="chat_unencrypted_explanation">Сообщения в этом чате используют обычную электронную почту и не зашифрованы сквозным шифрованием.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Сообщения защищены сквозным шифрованием. Нажмите, чтобы узнать больше.</string>
@@ -1048,9 +1036,11 @@
     <string name="qrscan_fingerprint_label">Отпечаток</string>
     <string name="withdraw_verifycontact_explain">Этот QR-код могут сканировать другие люди, чтобы связаться с вами.\n\nВы можете сбросить его, чтобы существующий QR-код или ссылка-приглашение больше не работали.</string>
     <string name="withdraw_verifygroup_explain">Этот QR-код могут сканировать другие люди, чтобы присоединиться к группе \"%1$s\".\n\nВы можете сбросить его, чтобы существующий QR-код или ссылка-приглашение больше не работали.</string>
+    <string name="withdraw_joinbroadcast_explain">Этот QR-код могут сканировать другие пользователи для присоединения к каналу \"%1$s\".\n\nВы можете сбросить его, чтобы существующий QR-код или пригласительная ссылка перестали работать.</string>
     <string name="withdraw_qr_code">Сбросить QR-код</string>
     <string name="revive_verifycontact_explain">Этот QR-код был сброшен и больше не работает.</string>
     <string name="revive_verifygroup_explain">Этот QR-код для присоединения к группе \"%1$s\" был сброшен и больше не работает.</string>
+    <string name="revive_joinbroadcast_explain">Этот QR-код для присоединения к каналу \"%1$s\" был сброшен и больше не активен.</string>
     <string name="revive_qr_code">Активировать QR-код</string>
     <string name="qrshow_title">QR-код приглашения</string>
     <string name="qrshow_x_joining">%1$s присоединяется.</string>
@@ -1061,7 +1051,7 @@
     <string name="qrshow_join_group_hint">Сканируйте QR-код, чтобы присоединиться к группе \"%1$s\"</string>
     <string name="qrshow_join_channel_hint">Отсканируйте, чтобы присоединиться к каналу \"%1$s\"</string>
     <string name="qrshow_join_contact_title">QR-код приглашения</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Отсканируйте, чтобы начать чат с %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Нет соединения с интернетом, невозможно выполнить настройку QR-кода.</string>
     <string name="qraccount_ask_create_and_login">Создать новый профиль на \"%1$s\" и авторизоваться?</string>
@@ -1073,11 +1063,11 @@
     <string name="qrlogin_ask_login">Авторизоваться в \"%1$s\"?</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Авторизоваться в \"%1$s\"?\n\nВаш существующий профиль не будет удалён. Используйте меню \"Сменить профиль\", чтобы переключаться между профилями.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s приглашает вас в группу.\n\nОжидаем ответ от %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s ответил(а), ожидаем добавления в группу…</string>
-    <string name="secure_join_wait">Устанавливается сквозное шифрование, пожалуйста, подождите…</string>
+    <string name="secure_join_wait">Устанавливается соединение, пожалуйста, подождите…</string>
     <string name="contact_verified">%1$s подтверждён.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Подтверждён: %1$s</string>

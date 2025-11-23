@@ -56,7 +56,9 @@
     <string name="load_remote_content_ask">원격 이미지는 당신을 추적하기 위해 사용될 수 있습니다.\n\n이 설정은 폰트와 다른 콘텐츠를 불러오는 것도 허용합니다. 만약 비활성화되어도, 내장 또는 캐시된 이미지를 볼 수 있습니다.\n\n원격 이미지를 불러올까요?</string>
     <string name="always">항상</string>
     <string name="once">한 번만</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">비밀번호 보이기</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">비밀번호 숨기기</string>
     <string name="not_now">나중에</string>
     <string name="never">절대</string>
@@ -417,10 +419,6 @@
     <string name="login_header">이메일 계정으로 로그인하시오</string>
     <!-- deprecated -->
     <string name="login_explain">존재하는 이메일 계정으로 로그인하시오</string>
-    <!-- deprecated -->
-    <string name="login_subheader">알려진 이메일 공급자의 경우 추가 설정이 자동으로 설정됩니다. 웹 설정에서 IMAP을 사용 가능으로 설정해야 하는 경우가 있습니다. 도움이 필요하면 전자 메일 공급자나 친구에게 문의하십시오.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Delta Chat은 서버가 없고, 당신의 데이터는 장치에 남아 있습니다.</string>
     <string name="login_inbox">받은 편지함</string>
     <string name="login_imap_login">IMAP 로그인 이름</string>
     <string name="login_imap_server">IMAP 서버</string>
@@ -432,12 +430,6 @@
     <string name="login_smtp_server">SMTP 서버</string>
     <string name="login_smtp_port">SMTP 포트</string>
     <string name="login_smtp_security">SMTP 보안</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">권한 부여 방법</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">간소화된 설치를 계속하시겠습니까?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">입력한 이메일 주소는 단순화된 설정(OAuth 2.0)을 지원합니다.\n\n다음 단계에서는 Delta Chat 이 이메일을 통한 채팅 앱 역할을 하도록 허용하십시오.\n\nDelta 채팅 서버가 없으며 데이터가 장치에 남아 있습니다.</string>
     <string name="login_certificate_checks">인증서 확인</string>
     <string name="login_error_mail">유효한 이메일 주소를 입력하시오</string>
     <string name="login_error_server">유효한 서버 / IP 주소를 입력하시오</string>
@@ -534,10 +526,6 @@
     <string name="pref_background_btn_default">기본 이미지 사용</string>
     <string name="pref_background_btn_gallery">갤러리에서 선택됨</string>
     <string name="pref_imap_folder_warn_disable_defaults">이 선택사항을 변경할 경우, 서버와 다른 클라이언트가 적절하게 구성되어 있는지 확인하십시오.\n\n그렇지 않으면 상황이 전혀 작동하지 않을 수 있습니다.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">보낸 폴더 보기</string>
-    <string name="pref_send_copy_to_self">복사본 내게 보내기</string>
-    <string name="pref_send_copy_to_self_explain">여러 장치에서 이 계정을 사용할 때 필요합니다.</string>
     <string name="pref_auto_folder_moves">DeltaChat 폴더로 자동 이동</string>
     <string name="pref_auto_folder_moves_explain">받은 문서가 복잡해지지 않도록 대화 내용이 이동됩니다.</string>
     <string name="pref_only_fetch_mvbox_title">DeltaChat 폴더에서만 가져오기</string>
@@ -599,8 +587,6 @@
     <string name="autocrypt_send_asm_button">자동 암호화 설정된 메시지 전송</string>
     <string name="autocrypt_send_asm_explain_after">설정이 사용자 자신에게 전송되었습니다. 다른 장치로 전환하고 설정 메시지를 엽니다. 설정 코드를 입력하라는 메시지가 표시됩니다. 다음 숫자를 입력합니다.</string>
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">이 채팅의 발신자를 알 수 없습니다. 자세한 내용은 \'info\'를 확인하세요.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s가 보낸 메시지</string>
     <string name="systemmsg_failed_sending_to">%1$s에게 메시지를 보내지 못했습니다.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -608,57 +594,57 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s이 그룹 이름을 \"%1$s\"에서 \"%2$s\"로 변경함.</string>
     <string name="group_image_changed_by_you">그룹 이미지를 바꿨습니다.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s이 그룹 이미지를 변경함.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">%1$s를 멤버로 추가함.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">%2$s가 %1$s를 멤버로 추가함</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">%1$s를 멤버에서 제거함.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s가 %1$s를 멤버에서 제거함.</string>
     <string name="group_image_deleted_by_you">그룹 이미지를 지움.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">%1$s이 그룹 이미지를 지움.</string>
     <string name="location_enabled_by_you">위치 스트리밍을 활성화했습니다.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$s에 의해 위치 스트리밍이 활성화되었습니다.</string>
     <string name="ephemeral_timer_disabled_by_you">사라지는 메시지 타이머를 비활성화했습니다.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">사라지는 메시지 타이머가 %1$s에 의해 비활성화되었습니다.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">사라지는 메시지 타이머를 %1$s초로 설정함.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s가 사라지는 메시지 타이머를 %1$s초로 설정함.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">사라지는 메시지 타이머를 1분으로 설정함.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s가 사라지는 메시지 타이머를 1분으로 설정함.</string>
     <string name="ephemeral_timer_1_hour_by_you">사라지는 메시지 타이머를 1시간으로 설정함.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s가 사라지는 메시지 타이머를 1시간으로 설정함.</string>
     <string name="ephemeral_timer_1_day_by_you">사라지는 메시지 타이머를 1일로 설정함.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">%1$s가 사라지는 메시지 타이머를 1일로 설정함.</string>
     <string name="ephemeral_timer_1_week_by_you">사라지는 메시지 타이머를 1주로 설정함.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s가 사라지는 메시지 타이머를 1주로 설정함.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">사라지는 메시지 타이머를 %1$s분으로 설정함.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">%2$s가 사라지는 메시지 타이머를 %1$s분으로 설정함.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">사라지는 메시지 타이머를 %1$s시간으로 설정함.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">%2$s가 사라지는 메시지 타이머를 %1$s시간으로 설정함.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">사라지는 메시지 타이머를 %1$s일로 설정함.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">%2$s가 사라지는 메시지 타이머를 %1$s일로 설정함.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">사라지는 메시지 타이머를 %1$s주로 설정함.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s가 사라지는 메시지 타이머를 %1$s주로 설정함.</string>
     <string name="devicemsg_self_deleted">저장된 메시지 대화를 삭제했습니다.\n\nℹ️\"저장된 메시지\" 기능을 다시 사용하려면 자신과의 대화를 새로 만드십시오.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
@@ -696,7 +682,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">\"%1$s\" 그룹 참여를 위해 스캔하시오</string>
     <string name="qrshow_join_contact_title">QR 초대 코드</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">%1$s과 채팅을 하려면 스캔하시오</string>
     <string name="qrshow_join_contact_no_connection_toast">인터넷에 연결되어 있지 않아 QR 코드 설정을 수행할 수 없습니다.</string>
     <string name="qraccount_ask_create_and_login">\"%1$s\"에서 새 이메일 주소를 만들고 로그인하시겠습니까?</string>
@@ -706,7 +692,7 @@
     <string name="qrlogin_ask_login">\"%1$s\"에 로그인하시겠습니까?</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">\"%1$s\"에 로그인하시겠습니까?\n\n기존 계정은 삭제되지 않습니다. 계정 전환 항목을 사용하여 계정 간을 전환합니다.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s이 그룹에 가입하도록 초대했습니다.\n\n%2$s의 장치가 응답하기를 기다리는 중입니다...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s이 응하여, 그룹에 추가되기를 기다리는 중입니다...</string>

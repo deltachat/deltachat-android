@@ -50,7 +50,9 @@
     <string name="load_remote_content">Hent billeder</string>
     <string name="always">Altid</string>
     <string name="once">En gang</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Vis adgangskode</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Vis ikke adgangskode</string>
     <string name="not_now">Ikke nu</string>
     <string name="never">Aldrig</string>
@@ -356,10 +358,6 @@
     <string name="login_header">Login til server</string>
     <!-- deprecated -->
     <string name="login_explain">Login med en eksisterende e-mailkonto</string>
-    <!-- deprecated -->
-    <string name="login_subheader">For kendte e-mailudbydere opsættes yderligere indstillinger automatisk. Nogle gange skal IMAP aktiveres i brugerfladen. Kontakt din e-mailudbyder eller venner for at få hjælp.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Der er ingen Delta Chat server, data forbliver på enhed!</string>
     <string name="login_inbox">Indbakke</string>
     <string name="login_imap_login">IMAP logind navn</string>
     <string name="login_imap_server">IMAP server</string>
@@ -371,12 +369,6 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP sikkerhed</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Autorisationsmetode</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Fortsæt med forenklet opsætning?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Indtastet e-mail adresse understøtter simple opsætning (OAuth2).\n\nTillad i næste trin at Delta Chat agerer som samtale med e-mail program.\n\nDer er ingen Delta Chat servere, data forbliver på enhed.</string>
     <string name="login_certificate_checks">Certifikationstjek</string>
     <string name="login_error_mail">Indtast gyldig e-mailadresse</string>
     <string name="login_error_server">Indtast gyldig server / IP adresse</string>
@@ -474,9 +466,6 @@
     <string name="pref_background_btn_default">Brug standardbillede</string>
     <string name="pref_background_btn_gallery">Vælg fra galleri</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ved deaktivering af denne indstiiling vær sikker på at server og andre klienter er indstillet tilsvarende.\n\nEllers fungerer det måske slet ikke.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Overvåg sendt mappe</string>
-    <string name="pref_send_copy_to_self">Send kopi til mig selv</string>
     <string name="pref_auto_folder_moves">Flytter automatisk til DeltaChat mappe</string>
     <string name="pref_auto_folder_moves_explain">Samtaler er flyttet for at undgå rodet indbakke</string>
     <string name="pref_show_emails">Vis klassisk e-mail</string>
@@ -534,8 +523,6 @@
     <string name="autocrypt_prefer_e2ee">Foretræk end-to-end kryptering</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Ukent afsender af denne chat. Se \'info\' for flere detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Besked fra %1$s</string>
     <string name="systemmsg_failed_sending_to">Mislykket forsøg på afsendelse af besked til %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -543,54 +530,54 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Gruppenavn ændret fra \"%1$s\" til \"%2$s\" af %3$s.</string>
     <string name="group_image_changed_by_you">Gruppebillede ændret af mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Gruppebillede ændret af %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Medlem %1$s tilføjet af mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Medlem %1$s tilføjet af %2$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Medlem %1$s fjernet af mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Medlem %1$s fjernet af %2$s.</string>
     <string name="group_image_deleted_by_you">Gruppebillede slettet af mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Gruppebillede slettet af %1$s.</string>
     <string name="ephemeral_timer_disabled_by_you">Tidsudløb for beskeder er deaktiveret af mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Tidsudløb for beskeder er deaktiveret af %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Tidsudløb for beskeder sat til %1$s s af mig.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Tidsudløb for beskeder sat til %1$s s af %2$s.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Tidsudløb for beskeder sat til 1 minut af mig.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">Tidsudløb for beskeder sat til 1 minut af %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Tidsudløb for beskeder sat til 1 time af mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Tidsudløb for beskeder sat til 1 time af %1$s.</string>
     <string name="ephemeral_timer_1_day_by_you">Tidsudløb for beskeder sat til 1 dag af mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">Tidsudløb for beskeder sat til 1 dag af %1$s.</string>
     <string name="ephemeral_timer_1_week_by_you">Tidsudløb for beskeder sat til 1 uge af mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">Tidsudløb for beskeder sat til 1 uge af %1$s.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Beskeder sat til at udløbe efter %1$s minutter af mig.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">Beskeder sat til at udløbe efter %1$s minutter af %2$s.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Beskeder sat til at udløbe efter %1$s timer af mig.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">Beskeder sat til at udløbe efter %1$s timer af %2$s.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Beskeder sat til at udløbe efter %1$s dage af mig.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">Beskeder sat til at udløbe efter %1$s dage af %2$s.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Beskeder sat til at udløbe efter %1$s uger af mig.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Beskeder sat til at udløbe efter %1$s uger af %2$s.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR kode</string>
@@ -614,7 +601,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Skan dette for at deltage i gruppen \"%1$s\".</string>
     <string name="qrshow_join_contact_title">QR-invitationskode</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Skan dette for at indstille kontakt med %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Ingen internet forbindelse, kan ikke udføre QR kode opsætning.</string>
     <string name="qraccount_ask_create_and_login">Opret ny e-mail adresse på \"%1$s\" og log ind der?</string>
