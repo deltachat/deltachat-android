@@ -4,6 +4,7 @@
 
 * Change color of links in text messages
 * Allow to withdraw channel invite links and QR codes
+* Allow to open externally links clicked inside in-chat apps
 * Do not show "1 member" when the process of joining the group is not finished
 * Improve handling of video recoding
 * Send .webm videos as file, they are not supported by all platforms

@@ -339,16 +339,23 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     }
   }
 
+  @Override
+  protected boolean shouldAskToOpenLink() { return true; }
+
   // This is usually only called when internetAccess == true or for mailto/openpgp4fpr scheme,
   // because when internetAccess == false, the page is loaded inside an iframe,
-  // and WebViewClient.shouldOverrideUrlLoading is not called for HTTP(S) links inside the iframe
+  // and WebViewClient.shouldOverrideUrlLoading is not called for HTTP(S) links inside the iframe unless target=_blank is used
   @Override
   protected boolean openOnlineUrl(String url) {
     Log.i(TAG, "openOnlineUrl: " + url);
-    if (url.startsWith("mailto:") || url.startsWith("openpgp4fpr:")) {
-      return super.openOnlineUrl(url);
+
+    // if there is internet access, allow internal loading of http
+    if (internetAccess && url.startsWith("http")) {
+      // returning `false` continues loading in WebView; returning `true` let WebView abort loading
+      return false;
     }
-    return !internetAccess; // returning `false` continues loading in WebView; returning `true` let WebView abort loading
+
+    return super.openOnlineUrl(url);
   }
 
   @Override
