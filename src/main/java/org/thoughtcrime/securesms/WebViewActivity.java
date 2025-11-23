@@ -278,9 +278,11 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     new AlertDialog.Builder(this)
       .setTitle(R.string.open_url_confirmation)
       .setMessage(url)
-      .setNegativeButton(R.string.cancel, null)
-      .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
-        IntentUtils.showInBrowser(this, url);
+      .setNeutralButton(R.string.cancel, null)
+      .setPositiveButton(R.string.open, (d, w) -> IntentUtils.showInBrowser(this, url))
+      .setNegativeButton(R.string.global_menu_edit_copy_desktop, (d, w) -> {
+        Util.writeTextToClipboard(this, url);
+        Toast.makeText(this, R.string.copied_to_clipboard, Toast.LENGTH_SHORT).show();
       })
       .show();
 
