@@ -77,7 +77,9 @@
     <string name="always_load_remote_images">Vždy načítat vzdálené obrázky</string>
     <string name="once">Jednou</string>
     <string name="show_warning">Zobrazovat varování</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Zobrazit heslo</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Skrýt heslo</string>
     <string name="not_now">Teď ne</string>
     <string name="never">Nikdy</string>
@@ -548,7 +550,7 @@
     <string name="multidevice_install_dc_on_other_device">Nainstalujte si Delta Chat do druhého zařízení (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Spusťte Delta Chat, klepněte na „Již mám svůj profil / Přidat jako další zařízení“ a naskenujte následující kód</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Pro připojení zařízení k %1$s naskenujte</string>
     <string name="multidevice_receiver_title">Přidat jako další zařízení</string>
     <string name="multidevice_open_settings_on_other_device">Na hlavním zařízení, otevřete \"Nastavení / Přidat další zařízení\" a naskenujte kód, který se na něm zobrazí</string>
@@ -608,11 +610,11 @@
     <string name="instant_onboarding_other_server">Seznam chatmail serverů</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">Založit profil k připojení ke skupině \"%1$s\".</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Založit profil k chatování s uživatelem %1$s.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">Přejete si založit nový profil a začít chatovat s uživatelem %1$s?</string>
-    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Přejete si založit nový profil a připojit se k chatovací skupině \"%1$s\"?</string>
 
     <string name="welcome_chat_over_email">Zabezpečený decentralizovaný chat</string>
@@ -622,10 +624,6 @@
     <string name="login_header">Přihlašte se ke svému e-mailovému účtu</string>
     <!-- deprecated -->
     <string name="login_explain">Přihlásit se se stávajícím účtem pro e-mail.</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Pro standardní poskytovatele jsou nastavení dopněna automaticky. Někdy je potřeba povolit IMAP ve webovém rozhraní. Potřebujete-li pomoc, obraťte se na svého poskytovatele e-mailu nebo přátele.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Delta Chat nesbírá uživatelská data, vše zůstává na vašem zařízení.</string>
     <string name="login_inbox">Příchozí</string>
     <string name="login_imap_login">IMAP uživatelské jméno</string>
     <string name="login_imap_server">IMAP server</string>
@@ -637,8 +635,6 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP zabezpečení</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Metoda autorizace</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy server</string>
     <string name="proxy_use_proxy">Použít proxy server</string>
@@ -652,10 +648,6 @@
     <string name="proxy_use_proxy_confirm">Přejete si použít proxy server \"%1$s\"?</string>
     <string name="proxy_share_explain">Vaši přátele si mohou tento proxy server přidat naskenováním tohoto QR kódu.</string>
     <string name="proxy_share_link">Sdílet odkaz</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Pokračovat se zjednodušeným nastavením?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Zadaný e-mail podporuje zjednodušené nastavení (OAuth 2.0).\n\nV následujícím kroku, prosíme, povolte Delta Chatu chovat se jako aplikace typu Chat přes e-mail.\n\nDelta Chat nesbírá uživatelská data, vše zůstává na vašem zařízení.</string>
     <string name="login_certificate_checks">Kontroly certifikátu</string>
     <string name="login_error_mail">Prosím, zadejte platnou e-mailovou adresu</string>
     <string name="login_error_server">Prosím, zadejte platný server / IP adresu</string>
@@ -761,8 +753,6 @@
     <string name="pref_backup">Záloha</string>
     <string name="pref_backup_explain">Zálohovat chaty na externí úložiště</string>
     <string name="pref_backup_export_explain">Záloha vám pomůže s novou instalací na tomto či jiném zařízení.\n\nZáloha bude obsahovat všechny zprávy, kontakty a chaty, a nastavení automatického koncového šifrování. Soubor se zálohou uchovávejte na bezpečném místě, nebo jej co nejdříve smažte.</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">Exportovat %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportovat všech %1$d profilů</string>
     <string name="pref_backup_export_start_button">Spustit zálohu</string>
@@ -775,10 +765,6 @@
     <string name="pref_background_btn_default">Použít výchozí obrázek</string>
     <string name="pref_background_btn_gallery">Vybrat z galerie</string>
     <string name="pref_imap_folder_warn_disable_defaults">Při změně této volby se ujistěte, že váš server a ostatní klientské aplikace mají odpovídající nastavení.\n\nJinak může vše přestat fungovat.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Sledovat složku Odeslané</string>
-    <string name="pref_send_copy_to_self">Posílat si kopie</string>
-    <string name="pref_send_copy_to_self_explain">Tato volba je potřebná, pokud je tento účet používán na více zařízeních.</string>
     <string name="pref_auto_folder_moves">Automaticky přesouvat do složky DeltaChat </string>
     <string name="pref_auto_folder_moves_explain">Zprávy chatů jsou přesouvány, aby nezahlcovaly složku Doručené</string>
     <string name="pref_only_fetch_mvbox_title">Načítat pouze ze složky DeltaChat</string>
@@ -868,8 +854,6 @@
     <string name="autocrypt_prefer_e2ee">Upřednostňovat koncové šifrování</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Chat má neznámého odesílatele. Podrobnosti naleznete v části „informace“.</string>
     <string name="systemmsg_subject_for_new_contact">Zpráva od uživatele %1$s</string>
     <string name="systemmsg_failed_sending_to">Odeslání zprávy uživateli %1$s selhalo.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -877,61 +861,61 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Uživatel %3$s změnil název skupiny z \"%1$s\" na \"%2$s\".</string>
     <string name="group_image_changed_by_you">Změnili jste obrázek skupiny.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Uživatel %1$s změnil obrázek skupiny.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Člen %1$s byl přidán.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Přidali jste člena %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Člen %1$s byl přidán uživatelem %2$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Odebrali jste člena %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Člen %1$s byl odebrán uživatelem %2$s.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">Uživatel %1$s opustil skupinu.</string>
     <string name="group_image_deleted_by_you">Smazali jste obrázek skupiny.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Uživatel %1$s smazal obrázek skupiny.</string>
     <string name="location_enabled_by_you">Spustili jste vysílání polohy.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">Uživatel %1$s spustil vysílání polohy.</string>
     <string name="ephemeral_timer_disabled_by_you">Vypnuli jste časovač mizejících zpráv.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Uživatel %1$s vypnul časovač mizejících zpráv.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Nastavili jste časovač mizejících zpráv na %1$s sekund.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Uživatel %2$s nastavil časovač mizejících zpráv na %1$s sekund.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Nastavili jste časovač mizejících zpráv na 1 minutu.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">Uživatel %1$s změnil časovač mizejících zpráv na 1 minutu.</string>
     <string name="ephemeral_timer_1_hour_by_you">Nastavili jste časovač mizejících zpráv na 1 hodinu.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Uživatel %1$s změnil časovač mizejících zpráv na 1 hodinu.</string>
     <string name="ephemeral_timer_1_day_by_you">Nastavili jste časovač mizejících zpráv na 1 den.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">Uživatel %1$s změnil časovač mizejících zpráv na 1 den.</string>
     <string name="ephemeral_timer_1_week_by_you">Nastavili jste časovač mizejících zpráv na 1 týden.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">Uživatel %1$s změnil časovač mizejících zpráv na 1 týden.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Nastavili jste časovač mizejících zpráv na %1$s minut.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">Uživatel %2$s změnil časovač mizejících zpráv na %1$s minut.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Samomazací zprávy vyprší po %1$s hodinách ode mě.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">Uživatel %2$s změnil časovač mizejících zpráv na %1$s hodin.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Samomazací zprávy vyprší po %1$s dnech ode mě.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">Uživatel %2$s změnil časovač mizejících zpráv na %1$s dní.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Samomazací zprávy vyprší po %1$s týdnech ode mě.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Uživatel %2$s změnil časovač mizejících zpráv na %1$s týdnů.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Nyní je garantováno koncové šifrování vašich zpráv. Stiskněte pro více informací.</string>
     <string name="chat_protection_enabled_explanation">Nyní je garantováno, že všechny zprávy v tomto chatu jsou koncově šifrovány.\n\nKoncové šifrování zajišťuje soukromí mezi vámi a vašimi kontakty. Nedokáže je přečíst ani váš poskytovatel e-mailu.</string>
@@ -976,7 +960,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Naskenujte k připojení ke skupině \"%1$s\"</string>
     <string name="qrshow_join_contact_title">QR kód s pozvánkou</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Naskenujte k navázání spojení s uživatelem %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Žádné připojení k Internetu. Zprovoznění QR kódem nelze provést.</string>
     <string name="qraccount_ask_create_and_login">Přejete si vytvořit nový profil na \"%1$s\" a připojit se k němu?</string>
@@ -988,7 +972,7 @@
     <string name="qrlogin_ask_login">Přejete si přihlásit k \"%1$s\"?</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Přejete si přihlásit k \"%1$s\"?\n\nVáš stávající profil nebude smazán. K přepínání mezi profily můžete využít volbu \"Přepnout profil\".</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">Uživatel %1$s vás pozval do této skupiny.\n\nČekání na odpověď od zařízení uživatele %2$s...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">Uživatel %1$s odpověděl, čekání na přidání do skupiny...</string>

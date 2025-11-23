@@ -81,7 +81,9 @@
     <string name="always_load_remote_images">Last alltid eksterne bilder</string>
     <string name="once">Én gang</string>
     <string name="show_warning">Vis advarsel</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Vis passord</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Skjul passord</string>
     <string name="not_now">Ikke nå</string>
     <string name="never">Aldri</string>
@@ -532,8 +534,6 @@
     <string name="login_smtp_server">SMTP-tjener</string>
     <string name="login_smtp_port">SMTP-port</string>
     <string name="login_smtp_security">SMTP-sikkerhet</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Autoriseringsmetode</string>
     <string name="login_certificate_checks">Sertifikat sjekker</string>
     <string name="import_backup_title">Importer sikkerhetskopi</string>
     <string name="import_backup_no_backup_found">Fant ingen sikkerhetskopier.\n\nKopier sikkerhetskopien til %1$s og prøv igjen.</string>
@@ -595,18 +595,18 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Gruppenavn endret fra \"%1$s\" til \"%2$s\" av %3$s.</string>
     <string name="group_image_changed_by_you">Gruppebilde endret av meg.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Gruppebilde endret av %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Medlem %1$s lagt til av meg.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Medlem %1$s lagt til av %2$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Medlem %1$s fjernet av meg.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Medlem %1$s fjernet av %2$s.</string>
     <string name="group_image_deleted_by_you">Gruppebilde slettet av meg.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Gruppebilde slettet av %1$s.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR-kode</string>
@@ -624,7 +624,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Skann denne for å ta del i den gruppen %1$s.</string>
     <string name="qrshow_join_contact_title">QR-invitasjonskode</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Skann dette for å bekrefte en kontakt med %1$s.</string>
     <string name="contact_verified">%1$s bekreftet.</string>
     <!-- notifications  -->

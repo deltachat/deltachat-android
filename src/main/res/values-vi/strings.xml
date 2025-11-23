@@ -65,7 +65,9 @@
     <string name="always_load_remote_images">Luôn tải hình ảnh từ xa</string>
     <string name="once">Một lần</string>
     <string name="show_warning">Hiển thị cảnh báo</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Hiển thị mật khẩu</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Ẩn mật khẩu</string>
     <string name="not_now">Không phải bây giờ</string>
     <string name="never">Không bao giờ</string>
@@ -435,7 +437,7 @@
     <string name="multidevice_install_dc_on_other_device">Cài đặt Delta Chat trên thiết bị khác của bạn (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Bắt đầu Delta Chat, nhấn vào “Thêm làm thiết bị thứ hai” và quét mã được hiển thị ở đây</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Quét để thiết lập thiết bị thứ hai cho %1$s</string>
     <string name="multidevice_receiver_title">Thêm làm thiết bị thứ hai</string>
     <string name="multidevice_open_settings_on_other_device">Trên thiết bị đầu tiên, hãy đi tới “Cài đặt / Thêm thiết bị thứ hai” và quét mã hiển thị ở đó</string>
@@ -480,10 +482,6 @@
     <string name="login_header">Đăng nhập vào tài khoản E-Mail của bạn</string>
     <!-- deprecated -->
     <string name="login_explain">Đăng nhập bằng tài khoản e-mail hiện có</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Đối với các nhà cung cấp e-mail đã biết, cài đặt bổ sung sẽ được thiết lập tự động. Đôi khi IMAP cần được bật trong cài đặt web. Hãy tham khảo nhà cung cấp e-mail hoặc bạn bè của bạn để được trợ giúp.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Không có máy chủ Delta Chat, dữ liệu của bạn vẫn còn trên thiết bị của bạn.</string>
     <string name="login_inbox">Hộp thư đến</string>
     <string name="login_imap_login">Tên đăng nhập IMAP</string>
     <string name="login_imap_server">Máy chủ IMAP</string>
@@ -495,12 +493,6 @@
     <string name="login_smtp_server">Máy chủ SMTP</string>
     <string name="login_smtp_port">Cổng SMTP</string>
     <string name="login_smtp_security">Bảo mật SMTP</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Phương thức ủy quyền</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Tiếp tục với thiết lập đơn giản hóa?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Địa chỉ e-mail đã nhập hỗ trợ thiết lập đơn giản hóa (OAuth 2.0).\n\nTrong bước tiếp theo, vui lòng cho phép Delta Chat hoạt động như ứng dụng Trò chuyện qua E-mail của bạn.\n\nKhông có máy chủ Delta Chat, dữ liệu của bạn vẫn ở trên thiết bị của bạn.</string>
     <string name="login_certificate_checks">Kiểm tra chứng chỉ</string>
     <string name="login_error_mail">Vui lòng nhập địa chỉ e-mail hợp lệ</string>
     <string name="login_error_server">Vui lòng nhập địa chỉ máy chủ / IP hợp lệ</string>
@@ -590,8 +582,6 @@
     <string name="pref_backup">Sao lưu</string>
     <string name="pref_backup_explain">Sao lưu cuộc trò chuyện vào bộ nhớ ngoài</string>
     <string name="pref_backup_export_explain">Bản sao lưu giúp bạn thiết lập cài đặt mới trên thiết bị này hoặc trên thiết bị khác.\n\nBản sao lưu sẽ chứa tất cả tin nhắn, danh bạ và cuộc trò chuyện cũng như thiết lập Autocrypt hai đầu của bạn. Giữ tập tin sao lưu ở nơi an toàn hoặc xóa nó càng sớm càng tốt.</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">Xuất %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Xuất tất cả tài khoản %1$d</string>
     <string name="pref_backup_export_start_button">Bắt đầu sao lưu</string>
@@ -604,10 +594,6 @@
     <string name="pref_background_btn_default">Sử dụng hình ảnh mặc định</string>
     <string name="pref_background_btn_gallery">Chọn từ thư viện</string>
     <string name="pref_imap_folder_warn_disable_defaults">Nếu bạn thay đổi tùy chọn này, hãy đảm bảo rằng máy chủ và các máy khách khác của bạn được cấu hình tương ứng.\n\nNếu không, mọi thứ có thể không hoạt động.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Xem thư mục đã gửi</string>
-    <string name="pref_send_copy_to_self">Gửi bản sao cho chính mình</string>
-    <string name="pref_send_copy_to_self_explain">Bắt buộc khi sử dụng tài khoản này trên nhiều thiết bị.</string>
     <string name="pref_auto_folder_moves">Tự động di chuyển đến Thư mục DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Các cuộc trò chuyện được di chuyển để tránh làm lộn xộn Hộp thư đến</string>
     <string name="pref_only_fetch_mvbox_title">Chỉ tìm nạp từ thư mục DeltaChat</string>
@@ -685,8 +671,6 @@
     <string name="autocrypt_prefer_e2ee">Ưu tiên mã hóa đầu cuối</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Người gửi không xác định cho cuộc trò chuyện này. Xem \'thông tin\' để biết thêm chi tiết.</string>
     <string name="systemmsg_subject_for_new_contact">Tin nhắn từ %1$s</string>
     <string name="systemmsg_failed_sending_to">Không gửi được tin nhắn tới %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -694,61 +678,61 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Tên nhóm đã thay đổi từ \"%1$s\" thành \"%2$s\" bởi %3$s.</string>
     <string name="group_image_changed_by_you">Bạn đã thay đổi hình ảnh nhóm.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Hình ảnh nhóm đã được thay đổi bởi %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Đã thêm thành viên %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Bạn đã thêm thành viên %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Thành viên %1$s được thêm bởi %2$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Bạn đã loại bỏ thành viên %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Thành viên %1$s đã bị xóa bởi %2$s.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">Nhóm bỏ lại bởi %1$s.</string>
     <string name="group_image_deleted_by_you">Bạn đã xóa hình ảnh nhóm.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Hình ảnh nhóm đã bị xóa bởi %1$s.</string>
     <string name="location_enabled_by_you">Bạn đã bật tính năng truyền phát vị trí.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">Tính năng phát trực tuyến vị trí được bật bởi %1$s.</string>
     <string name="ephemeral_timer_disabled_by_you">Bạn đã tắt tính năng hẹn giờ cho tin nhắn biến mất.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Bộ hẹn giờ tin nhắn biến mất đã bị tắt bởi %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất thành %1$s giây</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Bộ hẹn giờ tin nhắn biến mất được %2$s đặt thành %1$s giây.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất thành 1 phút.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">Bộ hẹn giờ cho tin nhắn biến mất được %1$s đặt thành 1 phút.</string>
     <string name="ephemeral_timer_1_hour_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất thành 1 giờ.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Bộ hẹn giờ cho tin nhắn biến mất được %1$s đặt thành 1 giờ.</string>
     <string name="ephemeral_timer_1_day_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất thành 1 ngày.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">Bộ hẹn giờ cho tin nhắn biến mất được %1$s đặt thành 1 ngày.</string>
     <string name="ephemeral_timer_1_week_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất là 1 tuần.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">Bộ hẹn giờ cho tin nhắn biến mất được %1$s đặt thành 1 tuần.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất thành %1$s phút.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">Bộ hẹn giờ tin nhắn biến mất được đặt thành %1$s phút theo %2$s.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất thành %1$s giờ.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">Bộ hẹn giờ tin nhắn biến mất được đặt thành %1$s giờ theo %2$s.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất thành %1$s ngày.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">Bộ hẹn giờ tin nhắn biến mất được %2$s đặt thành %1$s ngày.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Bạn đặt bộ hẹn giờ cho tin nhắn biến mất thành %1$s tuần.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Bộ hẹn giờ cho tin nhắn biến mất được %2$s đặt thành %1$s tuần.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Tin nhắn được đảm bảo sẽ được mã hóa hai đầu kể từ bây giờ. Nhấn để tìm hiểu thêm.</string>
     <string name="chat_protection_enabled_explanation">Hiện tại, chúng tôi đảm bảo rằng tất cả tin nhắn trong cuộc trò chuyện này đều được mã hóa hai đầu.\n\nMã hóa hai đầu giúp giữ tin nhắn giữa bạn và đối tác trò chuyện của bạn ở chế độ riêng tư. Ngay cả nhà cung cấp email của bạn cũng không thể đọc được chúng.</string>
@@ -790,7 +774,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Quét để tham gia nhóm \"%1$s\"</string>
     <string name="qrshow_join_contact_title">Mã mời QR</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Quét để trò chuyện với %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Không có kết nối internet, không thể thực hiện thiết lập mã QR.</string>
     <string name="qraccount_ask_create_and_login">Tạo địa chỉ email mới trên \"%1$s\" và đăng nhập vào đó?</string>
@@ -800,7 +784,7 @@
     <string name="qrlogin_ask_login">Đăng nhập vào \"%1$s\"?</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Đăng nhập vào \"%1$s\"?\n\nTài khoản hiện tại của bạn sẽ không bị xóa. Sử dụng mục \"Chuyển tài khoản\" để chuyển đổi giữa các tài khoản của bạn.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s đã mời bạn tham gia nhóm này.\n\nĐang chờ thiết bị của %2$s trả lời…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s đã trả lời, đang chờ được thêm vào nhóm…</string>

@@ -56,7 +56,9 @@
     <string name="load_remote_content_ask">Εικόνες μπορούν να σας εντοπίσουν.\n\nΑυτή η ρύθμιση μπορεί να φορτώσει γραμματοσειρές και αλλά περιεχόμενα. Αν απενεργοποιηθεί, ενδέχεται να εμφανιστούν ενσωματωμένες ή προσωρινές εικόνες.\n\nΦόρτωση εικόνων;</string>
     <string name="always">Πάντα</string>
     <string name="once">Μία φορά</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Εμφάνιση Κωδικού</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Απόκριψη Κωδικού</string>
     <string name="not_now">Όχι τώρα</string>
     <string name="never">Ποτέ</string>
@@ -435,10 +437,6 @@
     <string name="login_header">Συνδεθείτε στον λογαριασμό σας E-Mail</string>
     <!-- deprecated -->
     <string name="login_explain">Συνδεθείτε με έναν υπάρχοντα λογαριασμό e-mail</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Για γνωστούς παρόχους email ρυθμίζονται αυτόματα πρόσθετες ρυθμίσεις. Μερικές φορές το IMAP πρέπει να είναι ενεργοποιημένο στις ρυθμίσεις Ιστού. Συμβουλευτείτε τον πάροχο e-mail ή τους φίλους σας για βοήθεια.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Δεν υπάρχουν διακομιστές Delta Chat, τα δεδομένα σας παραμένουν στη συσκευή σας.</string>
     <string name="login_inbox">Εισερχόμενα</string>
     <string name="login_imap_login">Όνομα Σύνδεσης IMAP</string>
     <string name="login_imap_server">Διακομιστής IMAP</string>
@@ -450,12 +448,6 @@
     <string name="login_smtp_server">Διακομιστής SMTP</string>
     <string name="login_smtp_port">Θύρα SMTP</string>
     <string name="login_smtp_security">Ασφάλεια SMTP</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Μέθοδος Πιστοποίησης</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Συνέχεια με την απλοποιημένη ρύθμιση;</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Η εισαγόμενη διεύθυνση e-mail υποστηρίζει μια απλοποιημένη ρύθμιση (OAuth 2.0).\n\nΣτο επόμενο βήμα, επιτρέψτε στο Delta Chat να λειτουργεί ως η εφαρμογή Chat μέσω ηλεκτρονικού ταχυδρομείου.\n\nΔεν υπάρχουν διακομιστές Delta Chat, τα δεδομένα σας παραμένει στη συσκευή σας.</string>
     <string name="login_certificate_checks">Έλεγχοι Πιστοποιητικών</string>
     <string name="login_error_mail">Παρακαλώ εισάγετε μια έγκυρη διεύθυνση e-mail</string>
     <string name="login_error_server">Εισαγάγετε έναν έγκυρο διακομιστή / διεύθυνση IP</string>
@@ -555,10 +547,6 @@
     <string name="pref_background_btn_default">Χρήση προκαθορισμένου</string>
     <string name="pref_background_btn_gallery">Επιλογή</string>
     <string name="pref_imap_folder_warn_disable_defaults">Εάν αλλάξετε αυτήν την επιλογή, βεβαιωθείτε ότι ο διακομιστής σας και οι άλλοι πελάτες σας έχουν διαμορφωθεί ανάλογα.\n\nΔιαφορετικά, τα πράγματα ενδέχεται να μην λειτουργούν καθόλου.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Παρακολουθήστε τον Απεσταλμένο Φάκελο</string>
-    <string name="pref_send_copy_to_self">Αποστολή Αντιγράφου στον Εαυτό</string>
-    <string name="pref_send_copy_to_self_explain">Απαιτείται κατά τη χρήση αυτού του λογαριασμού σε πολλές συσκευές.</string>
     <string name="pref_auto_folder_moves">Μετακίνηση αυτόματα στον φάκελο DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Οι συνομιλίες συνομιλίας μετακινούνται για να αποφευχθεί η ακαταστασία των Εισερχομένων</string>
     <string name="pref_only_fetch_mvbox_title">Λήψη μόνο από τον φάκελο DeltaChat</string>
@@ -632,8 +620,6 @@
     <string name="autocrypt_prefer_e2ee">Προτιμήστε την κρυπτογράφηση από άκρο σε άκρο</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Άγνωστος αποστολέας για αυτήν τη συνομιλία. Δείτε \"πληροφορίες\" για περισσότερες λεπτομέρειες.</string>
     <string name="systemmsg_subject_for_new_contact">Μήνυμα από τον/την %1$s</string>
     <string name="systemmsg_failed_sending_to">Αποτυχία αποστολής μηνύματος σε %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -641,59 +627,59 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Το όνομα της ομάδας άλλαξε από \"%1$s\" σε \"%2$s\" από %3$s.</string>
     <string name="group_image_changed_by_you">Άλλαξες το εικονίδιο της ομάδας.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Ο/Η %1$s άλλαξε το εικονίδιο της ομάδας.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Πρόσθεσες τον/την %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Ο/Η %2$s πρόσθεσε τον/την %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Αφαίρεσες τον/την %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Ο/Η %2$s αφαίρεσε τον/την %1$s.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">Ο/Η %1$s έφυγε απ\' την ομαδα.</string>
     <string name="group_image_deleted_by_you">Διαγράψατε την εικόνα της ομάδας.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Η εικόνα ομάδας διαγράφηκε από %1$s.</string>
     <string name="location_enabled_by_you">Ενεργοποιήσατε την αναμετάδωση τοποθεσίας.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">Η αναμετάδωση τοποθεσίας ενεργοποιήθηκε από %1$s.</string>
     <string name="ephemeral_timer_disabled_by_you">Απενεργοποίησες τα μηνύματα που εξαφανίζονται.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Ο/Η %1$s απενεργοποίησε τα μηνύματα που εξαφανίζονται.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε %1$s δευτερόλεπτα.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Ο/Η %2$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε %1$s δευτερόλεπτα.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε 1 λεπτό.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">Ο/Η %1$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε 1 λεπτό.</string>
     <string name="ephemeral_timer_1_hour_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε 1 ώρα.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Ο/Η %1$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε 1 ώρα.</string>
     <string name="ephemeral_timer_1_day_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε 1 ημέρα.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">Ο/Η %1$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε 1 ημέρα.</string>
     <string name="ephemeral_timer_1_week_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε 1 εβδομάδα.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">Ο/Η %1$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε 1 εβδομάδα.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε %1$s  λεπτά.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">Ο/Η %2$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε %1$s λεπτά.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε %1$s ώρες.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">Ο/Η %2$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε %1$s ώρες.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε %1$s ημέρες.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">Ο/Η %2$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε %1$s ημέρες.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε %1$s εβδομάδες.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Ο/Η %2$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε %1$s εβδομάδες.</string>
     <string name="devicemsg_self_deleted">Διαγράψατε τη συνομιλία \"Αποθηκευμένα μηνύματα\".\n\nℹ️ Για να χρησιμοποιήσετε ξανά τη λειτουργία \"Αποθηκευμένα μηνύματα\", δημιουργήστε μια νέα συνομιλία με τον εαυτό σας.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
@@ -731,7 +717,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Σάρωση για συμμετοχή στην ομάδα \"%1$s\"</string>
     <string name="qrshow_join_contact_title">Κωδικός Πρόσκλησης QR</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Σάρωση για συνομιλία με %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Δεν υπάρχει σύνδεση στο διαδίκτυο, δεν είναι δυνατή η ρύθμιση κωδικού QR.</string>
     <string name="qraccount_ask_create_and_login">Δημιουργήστε νέα διεύθυνση e-mail στο \"%1$s\" και συνδεθείτε εκεί;</string>
@@ -741,7 +727,7 @@
     <string name="qrlogin_ask_login">Σύνδεση στο \"%1$s\";</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Σύνδεση στο \"%1$s\";\n\nΟ υπάρχων λογαριασμός σας δεν θα διαγραφεί. Χρησιμοποιήστε τη λειτουργία \"Εναλλαγή λογαριασμού\" για εναλλαγή μεταξύ των λογαριασμών σας.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s σας προσκάλεσε να συμμετάσχετε σε αυτήν την ομάδα.\n\nΑναμονή για απάντηση από τη συσκευή του %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s απάντησε, αναμονή για να προστεθεί στην ομάδα…</string>

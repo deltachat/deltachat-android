@@ -81,7 +81,9 @@
     <string name="always_load_remote_images">Mindig töltse be a távoli képeket</string>
     <string name="once">Azonnal</string>
     <string name="show_warning">Figyelmeztetés megjelenítése</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Jelszó megjelenítése</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Jelszó elrejtése</string>
     <string name="not_now">Most nem</string>
     <string name="never">Soha</string>
@@ -571,7 +573,7 @@
     <string name="multidevice_install_dc_on_other_device">Telepítse a Delta Chatet a másik eszközére (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Indítsa el a Delta Chatet, koppintson a „Már van profilom / Hozzáadás második eszközként” lehetőségre, és olvassa be az itt megjelenő QR-kódot.</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">QR-kód beolvasása a második eszköz beállításához „%1$s” számára</string>
     <string name="multidevice_receiver_title">Hozzáadás második eszközként</string>
     <string name="multidevice_open_settings_on_other_device">Az első eszközön lépjen a „Beállítások / Második eszköz hozzáadása” menüpontra, és olvassa be az ott megjelenő QR-kódot.</string>
@@ -631,11 +633,11 @@
     <string name="instant_onboarding_other_server">Chatmail-kiszolgálók listája</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">Hozzon létre egy profilt, hogy csatlakozni tudjon a(z) „%1$s” nevű csoporthoz.</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Hozzon létre egy profilt, hogy csevegni tudjon vele: %1$s.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">Szeretne új profilt létrehozni és csevegni vele: %1$s?</string>
-    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Szeretne új profilt létrehozni és csatlakozni a „%1$s” szobához?</string>
 
     <string name="welcome_chat_over_email">Biztonságos decentralizált csevegés</string>
@@ -645,10 +647,6 @@
     <string name="login_header">Jelentkezzen be az e-mail-fiókjába</string>
     <!-- deprecated -->
     <string name="login_explain">Bejelentkezés meglévő e-mail-fiókkal</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Az ismert e-mail-szolgáltatók esetében a rendszer automatikus beállításokat hoz létre. Kivételes esetekben az IMAP-ot engedélyezni kell az e-mail-szolgáltatójának webes beállításaiban. Forduljon az e-mail-szolgáltatójához vagy partnereihez további segítségért.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">A Delta Chat nem gyűjt felhasználói adatokat, az Ön összes adata az eszközén van tárolva.</string>
     <string name="login_inbox">Bejövő</string>
     <string name="login_imap_login">IMAP bejelentkezési név</string>
     <string name="login_imap_server">IMAP-kiszolgáló</string>
@@ -660,8 +658,6 @@
     <string name="login_smtp_server">SMTP-kiszolgáló</string>
     <string name="login_smtp_port">SMTP-port</string>
     <string name="login_smtp_security">SMTP-biztonság</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Azonosítási eljárás</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Proxy használata</string>
@@ -677,10 +673,6 @@
     <string name="proxy_share_link">Hivatkozás megosztása</string>
     <string name="proxy_enabled">Proxy engedélyezve</string>
     <string name="proxy_enabled_hint">Ön jelenleg proxyt használ. Ha problémája van a kapcsolódással, próbáljon ki egy másik proxyt.</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Folytatja az egyszerűsített beállítást?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">A megadott e-mail cím támogatja az egyszerűsített beállítást (OAuth 2.0).\n\nA következő lépésben engedélyezze a Delta Chat számára, hogy e-mailen keresztüli csevegésre szolgáló alkalmazásként működjön.\n\nA Delta Chat nem gyűjt felhasználói adatokat, az Ön összes adata kizárólag az eszközén tárolódik.</string>
     <string name="login_certificate_checks">Tanúsítvány ellenőrzése</string>
     <string name="login_error_mail">Adjon meg egy érvényes e-mail-címet</string>
     <string name="login_error_server">Adjon meg egy érvényes kiszolgáló- vagy IP-címet</string>
@@ -787,8 +779,6 @@
     <string name="pref_backup_explain">Csevegések biztonsági mentése külső tárhelyre</string>
     <string name="pref_backup_export_explain">A biztonsági mentés segít egy új telepítés beállításában ezen vagy egy másik eszközön.\n\nA biztonsági mentés tartalmazza az összes üzenetet, névjegyet és csevegést, valamint a végpontok közötti autocrypt beállításokat. Tartsa a biztonsági mentést biztonságos helyen, vagy törölje, amint lehetséges.</string>
     <string name="pref_backup_export_this">Ezen profil exportálása</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">%1$s exportálása</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Az összes (%1$d) profil exportálása</string>
     <string name="pref_backup_export_start_button">Biztonsági mentés készítése</string>
@@ -801,10 +791,6 @@
     <string name="pref_background_btn_default">Alapértelemezett kép használata</string>
     <string name="pref_background_btn_gallery">Kiválasztás a galériából</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ha megváltoztatja ezt a beállítást, győződjön meg arról, hogy a kiszolgálója és a többi kliense is ennek megfelelően van beállítva.\n\nMáskülönben előfordulhat, hogy a dolgok egyáltalán nem fognak működni.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Elküldött üzenetek mappájának figyelése</string>
-    <string name="pref_send_copy_to_self">Másolat küldése Önmagának</string>
-    <string name="pref_send_copy_to_self_explain">Szükséges, ha ezt a fiókot több eszközön is használja.</string>
     <string name="pref_auto_folder_moves">Automatikus áthelyezés a DeltaChat nevű mappába</string>
     <string name="pref_auto_folder_moves_explain">A csevegések áthelyezésre kerülnek, hogy elkerüljék a bejövő üzenetek mappa zűrzavarát.</string>
     <string name="pref_only_fetch_mvbox_title">Csak a DeltaChat nevű mappából történjen lekérdezés</string>
@@ -895,8 +881,6 @@
     <string name="autocrypt_prefer_e2ee">Végpontok közötti titkosítás előnyben részesítése</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Az üzenet feladója ismeretlen ebben a csevegésben. További részletekért tekintse meg az „Információkat”.</string>
     <string name="systemmsg_subject_for_new_contact">Üzenet tőle: %1$s</string>
     <string name="systemmsg_failed_sending_to">Nem sikerült elküldeni az üzenetet „%1$s” számára.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -904,69 +888,69 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s megváltoztatta a csoport nevét a következőről: „%1$s”, erre: „%2$s”.</string>
     <string name="group_image_changed_by_you">Ön megváltoztatta a csoport profilképét.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s megváltoztatta a csoport profilképét.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">%1$s tag hozzáadva</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Ön hozzáadta őt: %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">%2$s hozzáadta őt: %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Ön eltávolította őt: %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s eltávolította őt: %1$s.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Ön elhagyta a csoportot.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="channel_left_by_you">Ön elhagyta a csatornát.</string>
     <string name="you_joined_the_channel">Ön csatlakozott a csatornához.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s elhagyta a csoportot.</string>
     <string name="group_image_deleted_by_you">Ön törölte a csoport profilképét.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">%1$s törölte a csoport profilképét.</string>
     <string name="location_enabled_by_you">Ön engedélyezte a folyamatos helymegosztást.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$s engedélyezte a folyamatos helymegosztást.</string>
     <string name="ephemeral_timer_disabled_by_you">Ön letiltotta az eltűnő üzenetek időzítőjét.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s letiltotta az eltűnő üzenetek időzítőjét.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Ön az eltűnő üzenetek időzítőjét %1$s másodpercre állította be.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s az eltűnő üzenetek időzítőjét %1$s másodpercre állította be.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Ön az eltűnő üzenetek időzítőjét 1 percre állította be.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s az eltűnő üzenetek időzítőjét 1 percre állította be.</string>
     <string name="ephemeral_timer_1_hour_by_you">Ön az eltűnő üzenetek időzítőjét 1 órára állította be.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s az eltűnő üzenetek időzítőjét 1 órára állította be.</string>
     <string name="ephemeral_timer_1_day_by_you">Ön az eltűnő üzenetek időzítőjét 1 napra állította be.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">%1$s az eltűnő üzenetek időzítőjét 1 napra állította be.</string>
     <string name="ephemeral_timer_1_week_by_you">Ön az eltűnő üzenetek időzítőjét 1 hétre állította be.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s az eltűnő üzenetek időzítőjét 1 hétre állította be.</string>
     <string name="ephemeral_timer_1_year_by_you">Ön az eltűnő üzenetek időzítőjét 1 évre állította be.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_year_by_other">%1$s az eltűnő üzenetek időzítőjét 1 évre állította be.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Ön az eltűnő üzenetek időzítőjét %1$s percre állította be.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">%2$s az eltűnő üzenetek időzítőjét %1$s percre állította be.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Ön az eltűnő üzenetek időzítőjét %1$s órára állította be.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">%2$s az eltűnő üzenetek időzítőjét %1$s órára állította be.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Ön az eltűnő üzenetek időzítőjét %1$s napra állította be.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">%2$s az eltűnő üzenetek időzítőjét %1$s napra állította be.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Ön az eltűnő üzenetek időzítőjét %1$s hétre állította be.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s az eltűnő üzenetek időzítőjét%1$s hétre állította be.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Az üzenetek mostantól garantáltan titkosítva lesznek a végpontok között. Koppintson, ha többet szeretne tudni.</string>
     <string name="chat_protection_enabled_explanation">Mostantól garantált, hogy ebben a csevegésben az összes üzenet végpontok közötti titkosítással rendelkezik.\n\nA végpontok közötti titkosítással az üzenetek bizalmasak maradnak Ön és a partnerei között. Még az e-mail-szolgáltatója sem tudja elolvasni őket.</string>
@@ -1012,7 +996,7 @@
     <string name="qrshow_join_group_hint">QR-kód beolvasás a(z) „%1$s” nevű csoporthoz való csatlakozáshoz</string>
     <string name="qrshow_join_channel_hint">QR-kód beolvasás a(z) „%1$s” nevű csatornához való csatlakozáshoz</string>
     <string name="qrshow_join_contact_title">QR-kód-meghívó</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">QR-kód beolvasása a csevegéshez vele: „%1$s”</string>
     <string name="qrshow_join_contact_no_connection_toast">Nincs internetkapcsolat, nem lehet elvégezni a QR-kód beállítását.</string>
     <string name="qraccount_ask_create_and_login">Új profil létrehozása a(z) „%1$s” oldalon és bejelentkezés ott?</string>
@@ -1024,7 +1008,7 @@
     <string name="qrlogin_ask_login">Bejelentkezés ide: „%1$s”?</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Bejelentkezés ide: „%1$s”?\n\nA meglévő profilját nem töröljük. A „Profilváltás” elemmel válthat a profiljai között.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s meghívta önt, hogy csatlakozzon ehhez a csoporthoz.\n\n%2$s eszközére várakozás a válaszhoz…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s válaszolt, várakozik, hogy fölvegyék a csoportba…</string>

@@ -81,7 +81,9 @@
     <string name="always_load_remote_images">Завжди завантажувати віддалені зображення</string>
     <string name="once">Один раз</string>
     <string name="show_warning">Показати попередження</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Показати пароль</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Приховати пароль</string>
     <string name="not_now">Не зараз</string>
     <string name="never">Ніколи</string>
@@ -607,7 +609,7 @@
     <string name="multidevice_install_dc_on_other_device">Установіть Delta Chat на Ваш інший пристрій (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Запустіть Delta Chat, торкніться \"Я вже маю профіль / Додати як другий пристрій\" і відскануйте код, показаний тут</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Скануйте, щоб налаштувати другий пристрій %1$s</string>
     <string name="multidevice_receiver_title">Додати як другий пристрій</string>
     <string name="multidevice_open_settings_on_other_device">На першому пристрої перейдіть до «Налаштування / Додати другий пристрій» і відскануйте показаний там код</string>
@@ -667,11 +669,11 @@
     <string name="instant_onboarding_other_server">Список серверів Chatmail</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">Створіть профіль, щоб приєднатися до групи \"%1$s\".</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Створіть профіль для спілкування з %1$s.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">Бажаєте створити новий профіль і почати спілкуватися з %1$s?</string>
-    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Ви хочете створити новий профіль і приєднатися до групи чату \"%1$s\"?</string>
 
     <string name="welcome_chat_over_email">Безпечний децентралізований чат</string>
@@ -682,10 +684,6 @@
     <string name="login_header">Увійдіть до свого облікового запису електронної пошти</string>
     <!-- deprecated -->
     <string name="login_explain">Увійти з наявним обліковим записом електронної пошти</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Для відомих провайдерів електронної пошти додаткові налаштування встановлюються автоматично. Іноді IMAP потрібен дозвіл у веб-інтерфейсі. Проконсультуйтеся з Вашим провайдером електронної пошти або друзями для отримання допомоги.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">У Delta Chat немає серверів, Ваші дані залишаються на Вашому пристрої!</string>
     <string name="login_inbox">Вхідні</string>
     <string name="login_imap_login">IMAP-логін</string>
     <string name="login_imap_server">IMAP-сервер</string>
@@ -697,8 +695,6 @@
     <string name="login_smtp_server">SMTP-сервер</string>
     <string name="login_smtp_port">SMTP-порт</string>
     <string name="login_smtp_security">Налаштування безпеки SMTP</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Метод авторизації</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Проксі</string>
     <string name="proxy_use_proxy">Використовувати проксі</string>
@@ -724,10 +720,6 @@
     <string name="invalid_transport_qr">Відсканований QR-код не містить дійсного транспортного сервера.</string>
     <string name="confirm_remove_transport">Видаліть транспортний сервер \"%1$s\"?\n\nВаш контакти можуть зв\'язатися з вами, тільки якщо ви раніше зв\'язалися з ними через інший транспортний сервер.\n\nЯкщо ви сумніваєтеся, видаліть транспортний сервер пізніше.</string>
 
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Продовжити спрощене налаштування?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Дана скринька підтримує спрощене налаштовування (OAuth 2.0).\n\nНаступним кроком, будь‐ласка, дозвольте Дельта‐чатові надсилати й одержувати повідомлення.\n\nДельта‐чат не збирає користувацьких даних: усе лишається на вашім пристрої.</string>
     <string name="login_certificate_checks">Перевірки сертифікатів</string>
     <string name="login_error_mail">Вкажіть дійсну адресу електронної пошти</string>
     <string name="login_error_server">Вкажіть дійсний сервер / IP-адресу</string>
@@ -834,8 +826,6 @@
     <string name="pref_backup_explain">Зберегти чати на зовнішній носій</string>
     <string name="pref_backup_export_explain">Резервне копіювання дозволяє відновлювати попередні налаштування програми під час нової установки на цьому або іншому пристрої.\n\nРезервна копія містить всі повідомлення, контакти та чати, а також параметри Autocrypt. Після створення резервної копії якомога швидше перенесіть її в надійне місце.</string>
     <string name="pref_backup_export_this">Експортуйте цей профіль</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">Експортувати %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Експортувати всі %1$d профілі</string>
     <string name="pref_backup_export_start_button">Почати резервне копіювання</string>
@@ -848,10 +838,6 @@
     <string name="pref_background_btn_default">Використовувати тло за замовчуванням</string>
     <string name="pref_background_btn_gallery">Вибрати з галереї</string>
     <string name="pref_imap_folder_warn_disable_defaults">Якщо ви змінюєте цей параметр, переконайтеся, що Ваш сервер та інші Ваші клієнти налаштовані відповідним чином.\n\nІнакше щось може взагалі не працювати.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Стежити за папкою «Надіслані»</string>
-    <string name="pref_send_copy_to_self">Відправити копію собі</string>
-    <string name="pref_send_copy_to_self_explain">Обов’язково при використанні цього облікового запису на кількох пристроях.</string>
     <string name="pref_auto_folder_moves">Автоматично пересувати до папки DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Чати були переміщені, щоб уникнути плутанини в папці «Вхідні».</string>
     <string name="pref_only_fetch_mvbox_title">Збирати лише з теки DeltaChat.</string>
@@ -942,8 +928,6 @@
     <string name="autocrypt_prefer_e2ee">Віддавати перевагу наскрізному шифруванню</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Невідомий відправник для цього чату. Дивіться \"Інформацію\" для деталей.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s шле повідомлення</string>
     <string name="systemmsg_failed_sending_to">Неможливо надіслати повідомлення до %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -951,69 +935,69 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s змінив (-ла) назву групи з \"%1$s\" на \"%2$s\".</string>
     <string name="group_image_changed_by_you">Ви змінили емблему групи.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Емблему групи %1$s міняє.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Додано учасника %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Ви додали учасника %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">%2$s додав (-ла) учасника %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Ви видалили учасника %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s видалив (-ла) учасника %1$s.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Ви покинули групу.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="channel_left_by_you">Ви покинули канал.</string>
     <string name="you_joined_the_channel">Ви приєдналися до каналу.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s залишив (-ла) групу.</string>
     <string name="group_image_deleted_by_you">Ви видалили емблему групи.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Емблему групи видаляє %1$s.</string>
     <string name="location_enabled_by_you">Ви увімкнули стримінг геоданих.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$s увімкнув (-ла) стримінг геоданих.</string>
     <string name="ephemeral_timer_disabled_by_you">Ви вимкнули таймер зникнення повідомлень.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s вимкнув (-ла) таймер зникнення повідомлень.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Ви встановили таймер зникнення повідомлень на %1$s сек.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s встановив (-ла) таймер повідомлень, що зникають на %1$s сек.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Ви встановили таймер зникнення повідомлень на 1 хвилину.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s встановив (-ла) таймер зникнення повідомлень на 1 хвилину.</string>
     <string name="ephemeral_timer_1_hour_by_you">Ви встановили таймер зникнення повідомлень на 1 годину.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s встановив (-ла) таймер зникнення повідомлень на 1 годину.</string>
     <string name="ephemeral_timer_1_day_by_you">Ви встановили таймер зникнення повідомлень на 1 день.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">%1$s встановив (-ла) таймер зникнення повідомлень на 1 день.</string>
     <string name="ephemeral_timer_1_week_by_you">Ви встановили таймер зникнення повідомлень на 1 тиждень.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s встановив (-ла) таймер зникнення повідомлень на 1 тиждень.</string>
     <string name="ephemeral_timer_1_year_by_you">Ви встановили таймер зникнення повідомлення на 1 рік.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_year_by_other">Таймер повідомлень що зникають встановлено на 1 рік користувачем %1$s.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Ви встановили таймер зникнення повідомлень на %1$s хвилин.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">%2$s встановив (-ла) таймер зникнення повідомлень на %1$s хвилин.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Ви встановили таймер зникнення повідомлень на %1$s годин.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">%2$s встановив (-ла) таймер зникнення повідомлень на %1$s годин.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Ви встановили таймер зникнення повідомлень на %1$s днів.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">%2$s встановив (-ла) таймер зникнення повідомлень на %1$s днів.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Ви встановили таймер зникнення повідомлень на %1$s тижнів.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s встановив (-ла) таймер зникнення повідомлень на %1$s тижнів.</string>
     <string name="chat_unencrypted_explanation">Повідомлення в цьому чаті використовують класичну електронну пошту і не мають наскрізного шифрування.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Відтепер повідомлення гарантовано будуть мати наскрізне шифрування. Торкніться, щоб дізнатися більше.</string>
@@ -1061,7 +1045,7 @@
     <string name="qrshow_join_group_hint">Відскануйте код, щоб приєднатися до групи \"%1$s\".</string>
     <string name="qrshow_join_channel_hint">Відскануйте щоб приєднатися до каналу \"%1$s\"</string>
     <string name="qrshow_join_contact_title">Запрошувальний баркод</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Відскануйте код, щоб спілкуватись з %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Відсутнє інтернет з\'єднання, не вдалося налаштувати QR-код.</string>
     <string name="qraccount_ask_create_and_login">Створити новий профіль на \"%1$s\" і увійти в нього?</string>
@@ -1073,7 +1057,7 @@
     <string name="qrlogin_ask_login">Увійти до \"%1$s\"?</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Увійти до \"%1$s\"?\n\nВаш профіль, що вже існує, не буде видалено. Використовуйте \"Перемкнути профіль\" для переключання між профілями.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s запросив (-ла) Вас приєднатися до цієї групи.\n\nОчікуємо на відповідь від пристрою %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s відповіли, очікуємо на додавання до групи…</string>

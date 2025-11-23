@@ -81,7 +81,9 @@
     <string name="always_load_remote_images">Carrega sempre les imatges remotes</string>
     <string name="once">Una vegada</string>
     <string name="show_warning">Mostra l\'advertiment</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Mostra la contrasenya</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Amaga la contrasenya</string>
     <string name="not_now">Ara no</string>
     <string name="never">Mai</string>
@@ -571,7 +573,7 @@
     <string name="multidevice_install_dc_on_other_device">Instal·leu Delta Chat en el vostre altre dispositiu (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Inicieu Delta Chat, toqueu  «Ja tinc un perfil / Afegeix un segon dispositiu» i escanegeu el codi que es mostra aquí.</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Escanegeu-lo per configurar un segon dispositiu per a %1$s</string>
     <string name="multidevice_receiver_title">Afegeix com a segon dispositiu</string>
     <string name="multidevice_open_settings_on_other_device">En el primer dispositiu, aneu a «Configuració / Afegeix un segon dispositiu» i escanegeu el codi que es mostra allà.</string>
@@ -631,11 +633,11 @@
     <string name="instant_onboarding_other_server">Llista els servidors chatmail</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">Creeu un perfil per unir-vos al grup \"%1$s\".</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Crea un perfil per a xatejar amb %1$s</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">Voleu crear un perfil nou i començar a xatejar amb %1$s?</string>
-    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Voleu crear un perfil nou i unir-vos al grup de xat «%1$s»?</string>
 
     <string name="welcome_chat_over_email">Xat segur i descentralitzat</string>
@@ -645,10 +647,6 @@
     <string name="login_header">Identifiqueu-vos al vostre servidor</string>
     <!-- deprecated -->
     <string name="login_explain">Inicia sessió amb un compte de correu electrònic existent</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Als proveïdors de mail coneguts els paràmetres es configuren automàticament. De vegades l\'IMAP s\'ha d\'activar a la interfície web. Consulta el teu proveïdor de correu electrònic o a un amic perquè t\'ajudi. </string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">No hi ha servidors de Delta Chat: les vostres dades es queden al vostre dispositiu!</string>
     <string name="login_inbox">Safata d\'entrada</string>
     <string name="login_imap_login">Nom d\'identificació IMAP</string>
     <string name="login_imap_server">Servidor IMAP</string>
@@ -660,8 +658,6 @@
     <string name="login_smtp_server">Servidor SMTP</string>
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Seguretat SMTP</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Mètode d\'autorització</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Servidor intermediari</string>
     <string name="proxy_use_proxy">Usa un servidor intermediari</string>
@@ -675,10 +671,6 @@
     <string name="proxy_use_proxy_confirm">Voleu utilitzar el proxy \"%1$s\"?</string>
     <string name="proxy_share_explain">Els vostres amics poden afegir aquest servidor intermediari escanejant el codi QR.</string>
     <string name="proxy_share_link">Comparteix l\'enllaç</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Voleu continuar amb la configuració simplificada?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">L’adreça electrònica que heu introduït admet una configuració simplificada. (OAuth2.0).\n\nEn el pas següent, permeteu que Delta Chat actuï com a xat amb l\'aplicació de correu electrònic..\n\nNo hi ha servidors de Delta Chat, les vostres dades romanen al vostre dispositiu!</string>
     <string name="login_certificate_checks">El certificat coincideix</string>
     <string name="login_error_mail">Si us plau poseu una adreça d\'email vàlida</string>
     <string name="login_error_server">Si us plau poseu un servidor / adreça IP vàlida</string>
@@ -784,8 +776,6 @@
     <string name="pref_backup">Còpia de seguretat</string>
     <string name="pref_backup_explain">Copia els xats a un magatzem extern</string>
     <string name="pref_backup_export_explain">La còpia de seguretat és útil a l\'hora de reinstal·lar l\'aplicació en aquest dispositiu o en un altre.\n\nLa còpia tindrà tot els missatges, contactes i xats i la configuració d\'extrem a extrem d\'Autocrypt. Conserveu el fitxer de la còpia en un lloc segur o esborreu-lo tan aviat com pugueu.</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">Exporta %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exporta tots %1$d perfils</string>
     <string name="pref_backup_export_start_button">Inicia la còpia de seguretat</string>
@@ -798,10 +788,6 @@
     <string name="pref_background_btn_default">Usa la imatge per defecte</string>
     <string name="pref_background_btn_gallery">Trieu de la galeria</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si desactiveu aquesta opció, assegureu-vos que el vostre servidor i els altres programes estiguin configurats de la mateixa manera.\n\nAltrament podeu tenir problemes de funcionament.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Mostra la safata de sortida</string>
-    <string name="pref_send_copy_to_self">Envia\'n una còpia a mi mateix</string>
-    <string name="pref_send_copy_to_self_explain">Imprescindible quan s\'utilitza aquest compte en diversos dispositius.</string>
     <string name="pref_auto_folder_moves">Moure automàticament a la carpeta de Delta Chat</string>
     <string name="pref_auto_folder_moves_explain">Les converses de xat s\'han mogut per no atapeir la safata d’entrada</string>
     <string name="pref_only_fetch_mvbox_title">Agafa només de la carpeta de DeltaChat</string>
@@ -892,8 +878,6 @@
     <string name="autocrypt_prefer_e2ee">Prefereix l\'encriptació d\'extrem a extrem</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Remitent desconegut per a aquest xat. Vegeu «informació» per a més detalls.</string>
     <string name="systemmsg_subject_for_new_contact">Missatge de %1$s</string>
     <string name="systemmsg_failed_sending_to">No s\'ha pogut enviar el missatge a %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -901,69 +885,69 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Nom del grup \"%1$s\" canviat a \"%2$s\" per %3$s.</string>
     <string name="group_image_changed_by_you">Heu canviat la imatge de grup.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Imatge de grup canviada per %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">S\'ha afegit el membre %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Heu afegit el membre %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Membre %1$s afegit per %2$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Heu eliminat el membre %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Membre %1$s eliminat per %2$s.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Heu abandonat el grup.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="channel_left_by_you">Heu abandonat el canal.</string>
     <string name="you_joined_the_channel">Us heu unit al canal</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s ha abandonat el grup</string>
     <string name="group_image_deleted_by_you">Heu esborrat la imatge de grup.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">%1$s ha esborrat la imatge de grup.</string>
     <string name="location_enabled_by_you">Heu habilitat la difusió de la ubicació.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$sha habilitat la difusió de la ubicació.</string>
     <string name="ephemeral_timer_disabled_by_you">Heu desactivat el temporitzador dels missatges efímers.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s ha desactivat el temporitzador dels missatges efímers.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Heu definit el temporitzador dels missatges efímers a %1$s segons.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s ha definit el temporitzador dels missatges efímers a %1$s segons.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Heu definit el temporitzador dels missatges fonedissos a 1 segon.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s ha definit el temporitzador dels missatges efímers a 1  minut.</string>
     <string name="ephemeral_timer_1_hour_by_you">Heu definit el temporitzador dels missatges fonedissos a 1 hora.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s ha definit el temporitzador dels missatges efímers a 1 hora.</string>
     <string name="ephemeral_timer_1_day_by_you">Heu definit el temporitzador dels missatges fonedissos a 1 dia.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">%1$s ha definit el temporitzador dels missatges efímers a 1 dia.</string>
     <string name="ephemeral_timer_1_week_by_you">Heu definit el temporitzador dels missatges fonedissos a 1 setmana</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s ha definit el temporitzador dels missatges efímers a 1 setmana.</string>
     <string name="ephemeral_timer_1_year_by_you">Has establert el temporitzador de missatges efímers a 1 any.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_year_by_other">El temporitzador de missatges efímers s’ha establert a 1 any per %1$s.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Heu definit el temporitzador dels missatges fonedissos a %1$s minuts.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">%2$s ha definit el temporitzador dels missatges efímers a %1$s minuts.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Heu definit el temporitzador dels missatges fonedissos a %1$s hores.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">%2$s ha definit el temporitzador dels missatges efímers a %1$s hores.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Heu definit el temporitzador dels missatges fonedissos a %1$s dies.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">%2$s ha definit el temporitzador dels missatges efímers a %1$s dies.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Heu definit el temporitzador dels missatges fonedissos a %1$s setmanes.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s ha definit el temporitzador dels missatges efímers a %1$s setmanes.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Us garantim que a partir d\'ara els missatges són xifrats d\'extrem a extrem. Toqueu per a obtenir més informació.</string>
     <string name="chat_protection_enabled_explanation">Ara es garanteix que tots els missatges d\'aquest xat són xifrats d\'extrem a extrem.\n\nEl xifratge d\'extrem a extrem manté privats els missatges entre vós i els companys de xat. Ni tan sols el vostre proveïdor de correu electrònic pot llegir-los.</string>
@@ -1009,7 +993,7 @@
     <string name="qrshow_join_group_hint">Escanegeu això per unir-vos al grup \"%1$s\".</string>
     <string name="qrshow_join_channel_hint">Escanegeu per a unir-vos al canal «%1$s»</string>
     <string name="qrshow_join_contact_title">Codi QR d\'invitació</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Escanegeu això per establir contacte amb %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">No hi ha connexió a internet, no es pot fer la configuració amb codi QR.</string>
     <string name="qraccount_ask_create_and_login">Voleu crear un perfil nou a «%1$s» i iniciar sessió allà?</string>
@@ -1021,7 +1005,7 @@
     <string name="qrlogin_ask_login">Voleu iniciar sessió a «%1$s»?</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Voleu iniciar «%1$s»?\n\nNo s\'esborrarà el perfil existent. Useu l\'element «Canvia el perfil» per a canviar entre els vostres perfils.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s us ha convidat a unir-vos a aquest grup.\n\nS\'està esperant el dispositiu de %2$s per a respondre...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s ha respost, espereu per a ser afegit al grup...</string>

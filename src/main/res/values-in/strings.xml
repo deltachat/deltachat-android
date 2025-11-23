@@ -60,7 +60,9 @@
     <string name="always">Selalu</string>
     <string name="once">Sekali</string>
     <string name="show_warning">Tampilkan Peringatan</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Tunjukkan kata kunci</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Sembunyikan kata kunci</string>
     <string name="not_now">Tidak sekarang</string>
     <string name="never">Tidak pernah</string>
@@ -363,10 +365,6 @@
     <string name="login_header">Masuk ke server Anda</string>
     <!-- deprecated -->
     <string name="login_explain">Masuk dengan akun surel yang ada</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Pengaturan surel penyedia tambahan yang sudah diketahui dipasang secara otomatis. Terkadang IMAP perlu daktifkan di pengaturan aplikasi. Hubungi surel penyedia Anda atau minta tolong teman.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Tidak ada server Delta Chat, data Anda tetap di perangkat Anda.</string>
     <string name="login_inbox">Surel masuk</string>
     <string name="login_imap_login">Nama login IMAP</string>
     <string name="login_imap_server">Server IMAP</string>
@@ -378,12 +376,6 @@
     <string name="login_smtp_server">Server SMTP</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">Keamanan SMTP</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Metode otorisasi</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Lanjutkan dengan pengaturan yang disederhanakan?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Bantuan untuk alamat surel yang telah dimasukkan adalah pengaturan yang disederhanakan (OAuth 2.0).\n\nPada langkah selanjutnya, izinkan Delta Chat sebagai Obrolan Anda pada aplikasi Surel.\n\nTidak ada server Delta Chat, obrolan Anda tetap di perangkat Anda.</string>
     <string name="login_certificate_checks">Cek sertifikat</string>
     <string name="login_error_mail">Masukkan alamat surel yang sahih</string>
     <string name="login_error_server">Tolong masukan server / alamat IP yang sah</string>
@@ -470,7 +462,6 @@
     <string name="pref_background">Latar belakang</string>
     <string name="pref_background_btn_default">Menggunakan gambar default</string>
     <string name="pref_background_btn_gallery">Pilih dari galeri</string>
-    <string name="pref_send_copy_to_self">Kirim salinan ke saya</string>
     <string name="pref_auto_folder_moves">Perpindahan otomatis ke berkas DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Percakapan dipindahkan untuk menghindari memenuhi kotak masuk</string>
     <string name="pref_show_emails">Tampilkan email klasik</string>
@@ -513,8 +504,6 @@
     <string name="autocrypt_prefer_e2ee">Lebih baik enkripsi ujung ke ujung</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Pengirim tidak dikenal untuk obrolan ini. Lihat \'info\' untuk lebih jelasnya.</string>
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>
     <string name="systemmsg_failed_sending_to">Gagal mengirim pesan ke %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -522,18 +511,18 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Nama grup diganti dari \"%1$s\" ke \"%2$s\" oleh %3$s.</string>
     <string name="group_image_changed_by_you">Gambar grup telah diubah oleh saya.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Gambar grup telah diubah oleh %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Member %1$s telah ditambahkan oleh saya.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Member %1$s telah ditambahkan oleh %2$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Member %1$s telah dikeluarkan oleh saya.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Member %1$s telah dikeluarkan oleh %2$s.</string>
     <string name="group_image_deleted_by_you">Gambar grup telah dihapus oleh saya.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Gambar grup telah dihapus oleh %1$s.</string>
     <!-- qr code stuff -->
     <string name="qr_code">Kode QR</string>
@@ -552,7 +541,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Pindai ini untuk bergabung dengan grup \"%1$s\".</string>
     <string name="qrshow_join_contact_title">Kode undangan QR</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Pindai ini untuk mengatur kontak dengan%1$s.</string>
     <string name="qrshow_join_contact_no_connection_toast">Tidak ada koneksi internet, tidak bisa menjalankan kode pengaturan QR.</string>
     <string name="qraccount_ask_create_and_login">Buat alamat email baru di \"%1$s\" dan login di sana?</string>

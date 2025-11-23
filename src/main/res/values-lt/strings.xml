@@ -64,7 +64,9 @@
     <string name="always_load_remote_images">Visada įkelti nuotolinius paveikslus</string>
     <string name="once">Vieną kartą</string>
     <string name="show_warning">Rodyti įspėjimą</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Rodyti slaptažodį</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Slėpti slaptažodį</string>
     <string name="not_now">Ne dabar</string>
     <string name="never">Niekada</string>
@@ -473,10 +475,6 @@
     <string name="login_header">Prisijungti prie savo serverio</string>
     <!-- deprecated -->
     <string name="login_explain">Prisijungti naudojant esamą el. pašto paskyrą</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Žinomiems el. pašto teikėjams papildomi nustatymai yra nustatomi automatiškai. Kartais, IMAP turi būti įjungtas prisijungus per naršyklę. Išsamesnės pagalbos teiraukitės savo el. pašto teikėjo ar draugų.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Nėra jokių Delta Chat serverių, jūsų duomenys išlieka jūsų įrenginyje!</string>
     <string name="login_inbox">Gauta</string>
     <string name="login_imap_login">IMAP prisijungimo vardas</string>
     <string name="login_imap_server">IMAP serveris</string>
@@ -488,8 +486,6 @@
     <string name="login_smtp_server">SMTP serveris</string>
     <string name="login_smtp_port">SMTP prievadas</string>
     <string name="login_smtp_security">SMTP saugumas</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Įgaliojimų suteikimo metodas</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Įgaliotasis serveris</string>
     <string name="proxy_use_proxy">Naudoti įgaliotąjį serverį</string>
@@ -499,8 +495,6 @@
     <string name="proxy_delete">Ištrinti įgaliotąjį serverį</string>
     <string name="proxy_delete_explain">Ar tikrai norite ištrinti „%1$s“?</string>
     <string name="proxy_use_proxy_confirm">Ar norite naudoti įgaliotąjį serverį „%1$s“?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Tęsti naudojant supaprastintą sąranką?</string>
     <string name="login_certificate_checks">Liudijimų patikrinimai</string>
     <string name="login_error_mail">Įveskite teisingą el. pašto adresą.</string>
     <string name="login_error_server">Įveskite teisingą serverį / IP adresą</string>
@@ -589,8 +583,6 @@
     <string name="pref_backup">Atsarginė kopija</string>
     <string name="pref_backup_explain">Padaro atsarginę pokalbių kopiją į išorinę saugyklą</string>
     <string name="pref_backup_export_explain">Atsarginė kopija padeda jums nusistatyti naują diegimą šiame ar kitame įrenginyje.\n\nAtsarginėje kopijoje bus visos žinutės, adresatai ir pokalbiai bei jūsų ištisinė Autocrypt sąranka. Atsarginės kopijos failą laikykite saugioje vietoje arba kaip įmanoma greičiau jį ištrinkite.</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">Eksportuoti %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Eksportuoti visas %1$d paskyras</string>
     <string name="pref_backup_export_start_button">Pradėti daryti atsarginę kopiją</string>
@@ -603,9 +595,6 @@
     <string name="pref_background_btn_default">Naudoti numatytąjį paveikslą</string>
     <string name="pref_background_btn_gallery">Pasirinkti iš galerijos</string>
     <string name="pref_imap_folder_warn_disable_defaults">Jeigu išjungiate šį parametrą, įsitikinkite, kad jūsų serveris ir kiti klientai yra sukonfigūruoti atitinkamai.\n\nPriešingu atveju, tai gali iš viso neveikti.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Stebėti išsiųstųjų aplanką</string>
-    <string name="pref_send_copy_to_self">Siųsti kopiją sau pačiam</string>
     <string name="pref_auto_folder_moves">Automatiniai perkėlimai į DeltaChat aplanką</string>
     <string name="pref_auto_folder_moves_explain">Pokalbiai yra perkeliami, kad nebūtų sujauktas Gautųjų aplankas</string>
     <string name="pref_show_emails">Rodyti klasikinius el. laiškus</string>
@@ -672,51 +661,52 @@
     <string name="autocrypt_send_asm_explain_after">Jūsų sąranka buvo išsiųsta jums. Persijukite į kitą įrenginį ir atverkite sąrankos žinutę. Jūsų turėtų būti paprašyta sąrankos kodo. Į užklausą įrašykite šiuos skaitmenis.\n\nJums užbaigus, kitas įrenginys bus paruoštas naudoti Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Teikti pirmenybę ištisiniam šifravimui</string>
 
+    <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Žinutė nuo %1$s</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Jūs pakeitėte grupės pavadinimą iš „%1$s“ į „%2$s“.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s pakeitė grupės pavadinimą iš „%1$s“ į „%2$s“.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s išėjo iš grupės.</string>
     <string name="group_image_deleted_by_you">Jūs ištrynėte grupės paveikslą.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">%1$s ištrynė grupės paveikslą.</string>
     <string name="ephemeral_timer_disabled_by_you">Jūs išjungėte išnykstančių žinučių laikmatį.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s išjungė išnykstančių žinučių laikmatį.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į %1$s sek.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s nustatė išnykstančių žinučių laikmatį į %1$s sek.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į 1 minutę.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s nustatė išnykstančių žinučių laikmatį į 1 minutę. </string>
     <string name="ephemeral_timer_1_hour_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į 1 valandą.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s nustatė išnykstančių žinučių laikmatį į 1 valandą.</string>
     <string name="ephemeral_timer_1_day_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į 1 dieną.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">%1$s nustatė išnykstančių žinučių laikmatį į 1 dieną.</string>
     <string name="ephemeral_timer_1_week_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į 1 savaitę.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s nustatė išnykstančių žinučių laikmatį į 1 savaitę.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į %1$s min.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">%2$s nustatė išnykstančių žinučių laikmatį į %1$s min. </string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į %1$s val.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">%2$s nustatė išnykstančių žinučių laikmatį į %1$s val. </string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į %1$s d.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">%2$s nustatė išnykstančių žinučių laikmatį į %1$s d. </string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į %1$s sav.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s nustatė išnykstančių žinučių laikmatį į %1$s sav. </string>
     <string name="learn_more">Sužinoti daugiau</string>
 
@@ -744,7 +734,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Nuskenuokite tai, norėdami prisijungti prie \"%1$s\" grupės.</string>
     <string name="qrshow_join_contact_title">QR pakvietimo kodas</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Nuskenuokite tai, norėdami užmegzti kontaktą su %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Nėra interneto ryšio, nepavyksta atlikti QR kodo sąrankos.</string>
     <string name="qraccount_ask_create_and_login">Sukurti naują el. pašto adresą ties „%1$s“ ir prisijungti ten?</string>
