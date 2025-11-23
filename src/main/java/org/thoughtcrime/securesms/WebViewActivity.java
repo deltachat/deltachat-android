@@ -27,6 +27,8 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 
+import java.net.IDN;
+
 public class WebViewActivity extends PassphraseRequiredActionBarActivity
                                implements SearchView.OnQueryTextListener,
                                           WebView.FindListener
@@ -277,7 +279,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
     new AlertDialog.Builder(this)
       .setTitle(R.string.open_url_confirmation)
-      .setMessage(url)
+      .setMessage(IDN.toASCII(url))
       .setNeutralButton(R.string.cancel, null)
       .setPositiveButton(R.string.open, (d, w) -> IntentUtils.showInBrowser(this, url))
       .setNegativeButton(R.string.global_menu_edit_copy_desktop, (d, w) -> {
