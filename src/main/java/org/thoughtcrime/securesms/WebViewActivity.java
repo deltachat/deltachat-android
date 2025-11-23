@@ -37,7 +37,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
   protected WebView webView;
 
-  protected boolean shouldAskToOpenLink() { return true; }
+  protected boolean shouldAskToOpenLink() { return false; }
 
   protected void toggleFakeProxy(boolean enable) {
     if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
