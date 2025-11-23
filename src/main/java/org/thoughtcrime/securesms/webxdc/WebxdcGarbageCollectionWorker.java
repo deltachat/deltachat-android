@@ -10,6 +10,8 @@ import androidx.work.WorkerParameters;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import com.google.common.util.concurrent.ListenableFuture;
+
+import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -46,13 +48,17 @@ public class WebxdcGarbageCollectionWorker extends ListenableWorker {
           if (m.matches()) {
             int accId = Integer.parseInt(m.group(1));
             int msgId = Integer.parseInt(m.group(2));
+            boolean delete;
             try {
-              rpc.getMessage(accId, msgId);
-              Log.i(TAG, String.format("Existing webxdc origin: %s", url));
+              delete = rpc.getExistingMsgIds(accId, Collections.singletonList(msgId)).isEmpty();
             } catch (RpcException ignore) {
-              // msg doesn't exist anymore, clean storage
+              delete = true; // account doesn't exist anymore, clean storage
+            }
+            if (delete) {
               webStorage.deleteOrigin(url);
               Log.i(TAG, String.format("Deleted webxdc origin: %s", url));
+            } else {
+              Log.i(TAG, String.format("Existing webxdc origin: %s", url));
             }
           } else { // old webxdc URL schemes, etc
             webStorage.deleteOrigin(url);
