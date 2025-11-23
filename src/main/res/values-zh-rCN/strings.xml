@@ -81,7 +81,9 @@
     <string name="always_load_remote_images">始终加载远程图像</string>
     <string name="once">仅一次</string>
     <string name="show_warning">显示警告</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">显示密码</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">隐藏密码</string>
     <string name="not_now">现在不</string>
     <string name="never">从不</string>
@@ -553,7 +555,7 @@
     <string name="multidevice_install_dc_on_other_device">在你的其他设备上安装 Delta Chat (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">启动 Delta Chat，点按“我已有账号/添加为第二台设备”，然后扫描此处显示的二维码</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">扫描此处为 %1$s 设置第二台设备</string>
     <string name="multidevice_receiver_title">添加为第二台设备</string>
     <string name="multidevice_open_settings_on_other_device">在第一台设备上，转到“设置/添加第二台设备”并扫描显示的二维码</string>
@@ -613,11 +615,11 @@
     <string name="instant_onboarding_other_server">列出聊天邮件服务器</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">创建个人资料加入“%1$s” 群。</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">创建个人资料和 %1$s 聊天</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">你想新建个人资料并开始和 %1$s 聊天吗？</string>
-    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">你想新建个人资料并加入 \"%1$s\" 聊天群吗？</string>
 
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
@@ -628,10 +630,6 @@
     <string name="login_header">登录您的电子邮件账号</string>
     <!-- deprecated -->
     <string name="login_explain">使用现有电子邮件账号登录</string>
-    <!-- deprecated -->
-    <string name="login_subheader">对于已知的电子邮件提供商，附加设置会被自动设置。有时 IMAP 需要在网页版设置里启用。 请咨询您的电子邮件提供商或朋友来寻求帮助。</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
     <string name="login_inbox">收件箱</string>
     <string name="login_imap_login">IMAP 登录名</string>
     <string name="login_imap_server">IMAP 服务器</string>
@@ -643,8 +641,6 @@
     <string name="login_smtp_server">SMTP 服务器</string>
     <string name="login_smtp_port">SMTP 端口</string>
     <string name="login_smtp_security">SMTP 安全类型</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">认证方法</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">代理</string>
     <string name="proxy_use_proxy">使用代理</string>
@@ -670,10 +666,6 @@
     <string name="invalid_transport_qr">扫描的二维码不包含有效的传输。</string>
     <string name="confirm_remove_transport">移除传输“%1$s”？\n\n只有您之前通过其他传输联系过您的联系人，他们才能联系到您。\n\n如有疑问，请稍后移除传输。</string>
 
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">使用简易设置继续？</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n下一步，请允许 Delta Chat 发送和接收消息。\n\nDelta Chat 不会收集用户数据，所有内容都保留在您的设备上。</string>
     <string name="login_certificate_checks">证书检查</string>
     <string name="login_error_mail">请输入有效的电子邮件地址</string>
     <string name="login_error_server">请输入有效的服务器 / IP 地址</string>
@@ -780,8 +772,6 @@
     <string name="pref_backup_explain">将聊天备份至外部存储</string>
     <string name="pref_backup_export_explain">备份可帮助您在此设备或另一台设备上设置全新安装的本应用。\n\n备份将包含所有消息、联系人、聊天以及端到端的 Autocrypt 设置。请将备份文件保存在安全的地方，或尽快将其删除。</string>
     <string name="pref_backup_export_this">导出此账号</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">导出 %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">导出全部 %1$d 个账号</string>
     <string name="pref_backup_export_start_button">开始备份</string>
@@ -794,10 +784,10 @@
     <string name="pref_background_btn_default">使用默认图像</string>
     <string name="pref_background_btn_gallery">从图库中选择</string>
     <string name="pref_imap_folder_warn_disable_defaults">若要更改此选项，请您务必调整服务器以及其他客户端的相应设置。\n\n否则软件可能无法正常工作。</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">监视已发送文件夹</string>
-    <string name="pref_send_copy_to_self">给自己发送副本</string>
-    <string name="pref_send_copy_to_self_explain">在多台设备上使用此账号时，这是必需的。</string>
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <string name="pref_multidevice">多设备模式</string>
+    <string name="pref_multidevice_explain">将您的消息与其他设备同步。添加第二个设备时自动启用。</string>
+    <string name="pref_multidevice_change_warn">在多个设备上使用同一账号时，必须启用多设备模式。仅当您已从所有其他设备中移除此账号后，才能禁用此设置。\n\n在多个设备上使用该账号时禁用多设备模式会导致错过消息和其他问题。</string>
     <string name="pref_auto_folder_moves">自动移动至 DeltaChat 文件夹</string>
     <string name="pref_auto_folder_moves_explain">移动聊天对话以免弄乱收件箱</string>
     <string name="pref_only_fetch_mvbox_title">只从 DeltaChat 文件夹获取</string>
@@ -888,8 +878,6 @@
     <string name="autocrypt_prefer_e2ee">优先使用端到端加密</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">此聊天发送者未知。查看“信息”来获取更多详情。</string>
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
     <string name="systemmsg_failed_sending_to">发送消息给 %1$s 失败。</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -897,69 +885,69 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s已将群组名称从“%1$s”更改为“%2$s”</string>
     <string name="group_image_changed_by_you">你更改了群组图像</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s 更改了群组图像</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">添加了成员 %1$s 。</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">你添加了成员 %1$s</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">%2$s 添加了成员 %1$s</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">你移除了成员 %1$s</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s 移除了成员 %1$s</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">您已离开群组。</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="channel_left_by_you">您已离开频道。</string>
     <string name="you_joined_the_channel">您已加入频道。</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s 退出了群组</string>
     <string name="group_image_deleted_by_you">你删除了群组图像</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">%1$s 删除了群组图像</string>
     <string name="location_enabled_by_you">你开启了位置流</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$s 开启了位置流</string>
     <string name="ephemeral_timer_disabled_by_you">你禁用了消息定时销毁计时器</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s 禁用了消息定时销毁计时器</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">你将消息定时销毁计时器设置为 %1$s 秒</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s 将消息定时销毁计时器设为 %1$s 秒</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">你将消息定时销毁计时器设为 1 分钟</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s 将消息定时销毁计时器设为 1 分钟</string>
     <string name="ephemeral_timer_1_hour_by_you">你将消息定时销毁计时器设为 1 小时</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s 将消息定时销毁计时器设为 1 小时</string>
     <string name="ephemeral_timer_1_day_by_you">你将消息定时销毁计时器设为 1 天</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">%1$s 将消息定时销毁计时器设为 1 天</string>
     <string name="ephemeral_timer_1_week_by_you">你将消息定时销毁计时器设为 1 周</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s 将消息定时销毁计时器设为 1 天</string>
     <string name="ephemeral_timer_1_year_by_you">您将消失消息计时器设置为 1 年。</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_year_by_other">%1$s 将消失消息计时器设置为 1 年。</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">你将消息定时销毁计时器设为 %1$s 分钟</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">%2$s 将消息定时销毁计时器设为 %1$s 分钟</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">你将消息定时销毁计时器设为 %1$s 小时</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">%2$s 将消息定时销毁计时器设为 %1$s 小时。</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">你将消息定时销毁计时器设为 %1$s 天</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">%2$s 将消息定时销毁计时器设为 %1$s 天</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">你将消息定时销毁计时器设为 %1$s 周</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s 将消息定时销毁计时器设为 %1$s 周</string>
     <string name="chat_unencrypted_explanation">此聊天中的消息使用传统电子邮件，未进行端到端加密。</string>
     <string name="chat_protection_enabled_tap_to_learn_more">消息是端到端加密的。点按即可了解详情。</string>
@@ -1009,7 +997,7 @@
     <string name="qrshow_join_group_hint">扫描即可加入群组“%1$s”</string>
     <string name="qrshow_join_channel_hint">扫描即可加入频道“%1$s”</string>
     <string name="qrshow_join_contact_title">邀请二维码</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">扫描即可与 %1$s 聊天</string>
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
     <string name="qraccount_ask_create_and_login">在“%1$s”创建新的电子邮件地址并登录？</string>
@@ -1021,7 +1009,7 @@
     <string name="qrlogin_ask_login">登录 \"%1$s\"吗？</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">是否登录“%1$s”？\n\n不会删除您现有的账号。使用“切换账号”在账号之间切换。</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s 邀请你加入此群组。\n\n等待 %2$s 的设备回复…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s 已回复，等待被加入群组…</string>

@@ -81,7 +81,9 @@
     <string name="always_load_remote_images">تصاویر دوردست همیشه بار شوند</string>
     <string name="once">همین یک بار</string>
     <string name="show_warning">نمایش هشدار</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">نمایش رمزعبور</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">مخفی کردن رمز عبور</string>
     <string name="not_now">اکنون نه</string>
     <string name="never">هرگز</string>
@@ -549,7 +551,7 @@
     <string name="multidevice_install_dc_on_other_device">دلتاچت را روی دستگاه دیگر خود نصب کنید (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">دلتاچت را باز کنید، روی «افزودن به عنوان دستگاه دوم» بزنید و کد نشان داده شده در اینجا را اسکن کنید</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">برای راه اندازی دستگاه دوم برای %1$s اسکن کنید</string>
     <string name="multidevice_receiver_title">افزودن به عنوان دستگاه دوم</string>
     <string name="multidevice_open_settings_on_other_device">در دستگاه اول، به \"تنظیم‌ها / افزودن دستگاه دوم\" بروید و کد نشان داده شده در آنجا را اسکن کنید</string>
@@ -610,11 +612,11 @@
     <string name="instant_onboarding_other_server">فهرست کارسازهای Chatmail</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">ایجاد نمایه برای وارد شدن به گپ «%1$s».</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">برای گفتگو با %1$s یک حساب کاربری ایجاد کنید.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">می‌خواهید یک نمایهٔ جدید درست کنید و با %1$sشروع به گپ زدن کنید؟</string>
-    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">می‌خواهید یک نمایهٔ جدید درست کنید و به گروه «%1$s» ملحق شوید؟</string>
 
     <string name="welcome_chat_over_email">گفتگو غیرمتمرکز و ایمن</string>
@@ -624,10 +626,6 @@
     <string name="login_header">به سرور خود وارد شوید</string>
     <!-- deprecated -->
     <string name="login_explain">ورود با یک رایانامه موجود</string>
-    <!-- deprecated -->
-    <string name="login_subheader">برای ارائه‌دهندگان شناخته شده تنظبمات اضافه به صورت خودکار انجام می‌شود. گاهی اوقات IMAP باید در تنظیم‌ها رایانامهٔ شما فعال شود. از ارائه‌دهندهٔ رایانامه یا دوستانتان در این مورد کمک بگیرید.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">دلتاچت هیچ سروری ندارد، داده‌های شما در دستگاه شما باقی می‌ماند.</string>
     <string name="login_inbox">ورودی</string>
     <string name="login_imap_login">IMAP Login Name</string>
     <string name="login_imap_server">IMAP Server</string>
@@ -639,8 +637,6 @@
     <string name="login_smtp_server">SMTP Server</string>
     <string name="login_smtp_port">SMTP Port</string>
     <string name="login_smtp_security">SMTP Security</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Authorization Method</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">پروکسی</string>
     <string name="proxy_use_proxy">استفاده از پروکسی</string>
@@ -654,12 +650,6 @@
     <string name="proxy_use_proxy_confirm">می‌خواهید از پروکسی «%1$s» استفاده کنید؟</string>
     <string name="proxy_share_explain">دوست‌هایتان می‌توانند با اسکن کردن کد QR این پروکسی را اضافه کنند.</string>
     <string name="proxy_share_link">اشتراک گذاشتن پیوند</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">با تنظیم‌ها ساده‌ شده ادامه می‌دهید؟</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">نشانی رایانامه وارد شده از تنظیم‌های ساده پشتیبانی می‌کند
-(OAuth 2.0).\n\nIn
- لطفا در مرحله بعد، به دلتاچت اجازه دهید که به عنوان نرم‌افزار رایانامه شما عمل نماید\n\n دلتاچت کارساز(سرور) ندارد؛ داده‌های شما در دستگاه خودتان باقی می‌ماند. </string>
     <string name="login_certificate_checks">بررسی‌های گواهینامه</string>
     <string name="login_error_mail">لطفاً یک نشانی رایانامهٔ معتبر وارد کنید</string>
     <string name="login_error_server">لطفا یک کارساز / نشانی آی‌پی صحیح وارد کنید</string>
@@ -763,8 +753,6 @@
     <string name="pref_backup">نسخه پشتیبان</string>
     <string name="pref_backup_explain">تهیهٔ پشتیبان از گپ‌ها در ذخیره‌گاه خارجی</string>
     <string name="pref_backup_export_explain">تهیهٔ پشتیبان به شما  کمک می‌کند روی این دستگاه یا دستگاه دیگر نرم‌افزار را دوباره نصب کنید.\n\nپشتیبان حاوی تمام پیام‌ها، مخاطبین، گپ‌ها و برپاسازی اتوکریپت سرتاسر شما خواهد بود. پروندهٔ پشتیبانی را در یک جای امن نگه دارید و در اسرع وقت آن را پاک کنید.</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">برون‌ریزی%1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">برون‌ریزی همه%1$d حساب ها</string>
     <string name="pref_backup_export_start_button">شروع تهیه نسخه پشتیبان</string>
@@ -777,10 +765,6 @@
     <string name="pref_background_btn_default">استفاده از تصویر پیش‌فرض</string>
     <string name="pref_background_btn_gallery">انتخاب از گالری</string>
     <string name="pref_imap_folder_warn_disable_defaults">اگر این گزینه را غیر فعال می‌کنید از اینکه سرور شما و حساب‌هایتان هم بر این اساس تنظیم شده باشند.\n\n در غیر این صورت ممکن است هیچ چیز کار نکند. </string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">پوشه ارسال شده‌ها را نگاه کن</string>
-    <string name="pref_send_copy_to_self">ارسال رونوشت به خودم</string>
-    <string name="pref_send_copy_to_self_explain">درصورت استفاده از این حساب در چند دستگاه مورد نیاز است. </string>
     <string name="pref_auto_folder_moves">انتقال خودکار به پوشه دلتاچت</string>
     <string name="pref_auto_folder_moves_explain">گپ‌ها برای جلوگیری از پر شدن صندوق ورودی جابه‌جا شدند</string>
     <string name="pref_only_fetch_mvbox_title">فقط پوشه دلتاچت را بررسی کن</string>
@@ -868,8 +852,6 @@
     <string name="autocrypt_prefer_e2ee">ترجیح رمزگذاری گیرنده به گیرنده</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">فرستنده در این گفت و گو ناشناس است. برای جزئیات بیشتر به \"اطلاعات\" مراجعه کنید.</string>
     <string name="systemmsg_subject_for_new_contact">پیام از %1$s</string>
     <string name="systemmsg_failed_sending_to">ارسال ناموفق پیام به %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -877,61 +859,61 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">نام گروه توسط %3$s از «%1$s» به «%2$s » تغییر کرد. </string>
     <string name="group_image_changed_by_you">شما تصویر گروه را تغییر دادید. </string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">تصویر گروه توسط %1$s تغییر کرد. </string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">%1$s عضو شد.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">شما %1$s را به عنوان عضو جدید اضافه کردید. </string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">عضو جدید با نام %1$s توسط %2$s افزوده شد. </string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">شما عضو گروه، %1$s، را حذف کردید.  </string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">عضو گروه، %1$s، توسط %2$s حذف شد. </string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">ترک گروه توسط %1$s.</string>
     <string name="group_image_deleted_by_you">شما تصویر گروه را حذف کردید.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">تصویر گروه توسط %1$s حذف شد.</string>
     <string name="location_enabled_by_you">هم‌رسانی زندهٔ مکان را به کار انداختید.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">هم‌رسانی زندهٔ مکان توسط %1$s به کار افتاد.</string>
     <string name="ephemeral_timer_disabled_by_you">زمان‌سنج ناپدید شدن پیام‌ها را غیرفعال کردید.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %1$s غیرفعال شد.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی %1$s ثانیه تنظیم کردید</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %2$s روی %1$s ثانیه تنظیم شد.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی 1 دقیقه تنظیم کرده‌اید.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %1$s روی 1 دقیقه تنظیم شد.</string>
     <string name="ephemeral_timer_1_hour_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی 1 ساعت تنظیم کرده‌اید.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %1$s روی 1 ساعت تنظیم شد.</string>
     <string name="ephemeral_timer_1_day_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی 1 روز تنظیم کرده‌اید.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %1$s روی 1 روز تنظیم شد.</string>
     <string name="ephemeral_timer_1_week_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی 1 هفته تنظیم کرده‌اید.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %1$s روی 1 هفته تنظیم شد.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی %1$s دقیقه تنظیم کردید.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %2$s روی %1$s دقیقه تنظیم شد.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی %1$s ساعت تنظیم کردید.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %2$s روی %1$s ساعت تنظیم شد.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی %1$s روز تنظیم کردید.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %2$s روی %1$s روز تنظیم شد.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی %1$s هفته تنظیم کردید.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %2$s روی %1$s هفته تنظیم شد.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">رمزنگاری سرتاسر پیام ها از این به بعد تضمین می شود. برای اطلاعات بیشتر ضربه بزنید.</string>
     <string name="chat_protection_enabled_explanation">رمزنگاری سراسری پیام‌های این گفتگو اکنون تضمین می‌شود. رمزنگاری سراسری باعث می‌شود پیام‌هایتان بین شما و مخاطبین شما محرمانه بماند. حتی ارائه‌دهندهٔ رایانامه شما هم نمی‌تواند آن‌ها را بخواند.</string>
@@ -981,7 +963,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">برای عضو شدن در گروه\"%1$s\" این را اسکن کنید.</string>
     <string name="qrshow_join_contact_title">کد دعوت کیوآر</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">برای ارتباط با %1$s این را اسکن کنید.</string>
     <string name="qrshow_join_contact_no_connection_toast">اتصال اینترنت نیست. نمیتوان نصب کد کیوآر را انجام داد. </string>
     <string name="qraccount_ask_create_and_login">ایجاد رایانامهٔ جدید روی «%1$s» و ورود به آنجا؟</string>
@@ -994,7 +976,7 @@
     <string name="qrlogin_ask_login">آیا به \"%1$s\" وارد شوید؟</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">آیا به «%1$s» وارد شوید؟\n\nحساب موجود شما حذف نخواهد شد. برای جابه‌جایی میان حساب‌هایتان از «تغییر حساب» استفاده کنید.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">کاربر %1$s شما را دعوت کرده است تا عضو این گروه شوید.
 در انتظار دستگاه %2$s برای پاسخگویی...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->

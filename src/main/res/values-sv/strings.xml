@@ -66,7 +66,9 @@
     <string name="always_load_remote_images">Läs alltid in fjärrbilder</string>
     <string name="once">en gång</string>
     <string name="show_warning">Visa varning</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Visa lösenord</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Dölj lösenord</string>
     <string name="not_now">Inte nu</string>
     <string name="never">Aldrig</string>
@@ -457,7 +459,7 @@
     <string name="multidevice_install_dc_on_other_device">Installera Delta Chat på din andra enhet (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Starta Delta Chat, tryck på \"Jag har redan en profil / Lägg till som andra enhet\" och skanna koden som visas här.</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Skanna för att ställa in en andra enhet för %1$s</string>
     <string name="multidevice_receiver_title">Lägg till som andra enhet</string>
     <string name="multidevice_open_settings_on_other_device">På den första enheten går du till \"Inställningar / Lägg till en andra enhet\" och skannar koden som visas där</string>
@@ -516,11 +518,11 @@
     <string name="instant_onboarding_other_server">Lista chatmail-servrar</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">Skapa en profil för att ansluta till gruppen \"%1$s\".</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Skapa en profil för att chatta med %1$s.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">Vill du skapa en ny profil och börja chatta med %1$s?</string>
-    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Vill du skapa en ny profil och gå med i chattgruppen \"%1$s\"?</string>
 
     <string name="welcome_chat_over_email">Säker decentraliserad chatt</string>
@@ -530,10 +532,6 @@
     <string name="login_header">Logga in på din server</string>
     <!-- deprecated -->
     <string name="login_explain">Logga in med ett befintligt e-postkonto</string>
-    <!-- deprecated -->
-    <string name="login_subheader">För kända e-postleverantörer installeras ytterligare inställningar automatiskt. Ibland måste IMAP aktiveras i webbinställningarna. Kontakta din e-postleverantör eller vänner för hjälp.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Det finns ingen Delta Chat-server, din data stannar på din enhet.</string>
     <string name="login_inbox">Inkorg</string>
     <string name="login_imap_login">IMAP inloggningsnamn</string>
     <string name="login_imap_server">IMAP server</string>
@@ -545,12 +543,6 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP säkerhet</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Auktoriseringsmetod</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Fortsätta med förenklad installation?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Den angivna e-postadressen stödjer förenklad inställning (OAuth 2.0).\n\nLåt Delta Chat agera som ditt chatt-över-epost-program, i nästa steg.\n\nDet finns ingen Delta Chat-server, din data stannar på din enhet.</string>
     <string name="login_certificate_checks">Certifikatkontroller</string>
     <string name="login_error_mail">Ange en giltig e-postadress</string>
     <string name="login_error_server">Ange en giltig server/IP-adress</string>
@@ -644,8 +636,6 @@
     <string name="pref_backup">Säkerhetskopiering</string>
     <string name="pref_backup_explain">Säkerhetskopiera chattar till extern lagring</string>
     <string name="pref_backup_export_explain">En säkerhetskopia hjälper dig att ställa in en ny installation på denna eller någon annan enhet.\n\nSäkerhetskopian innehåller alla meddelanden, kontakter och chattar, liksom din autokrypterade slutpunkt-till-slutpunkt-inställning. Förvara säkerhetskopian på ett säkert ställe eller ta bort den så fort som möjligt.</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">Exportera %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportera all %1$d profiler</string>
     <string name="pref_backup_export_start_button">Starta säkerhetskopiering</string>
@@ -658,10 +648,6 @@
     <string name="pref_background_btn_default">Använd standardbild</string>
     <string name="pref_background_btn_gallery">Välj från galleriet</string>
     <string name="pref_imap_folder_warn_disable_defaults">Om du inaktiverar det här alternativet, tillse att servern och dina andra klienter är konfigurerade i enlighet med detta.\n\nAnnars kanske saker och ting inte fungerar alls.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Övervaka mappen \"Skickat\"</string>
-    <string name="pref_send_copy_to_self">Skicka kopia till mig själv</string>
-    <string name="pref_send_copy_to_self_explain">Krävs när du använder detta konto på flera enheter.</string>
     <string name="pref_auto_folder_moves">Flyttas automatiskt till DeltaChat-mappen</string>
     <string name="pref_auto_folder_moves_explain">Chattkonversationer flyttas automatiskt för att undvika att inkorgen belamras</string>
     <string name="pref_only_fetch_mvbox_title">Hämta endast från DeltaChat-mappen</string>
@@ -751,8 +737,6 @@
     <string name="autocrypt_prefer_e2ee">Föredra slutpunkt-till-slutpunkt-kryptering</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Okänd avsändare för denna chatt. Se info för fler detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Meddelande från %1$s</string>
     <string name="systemmsg_failed_sending_to">Kunde inte skicka meddelande till %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -760,61 +744,61 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Gruppnamnet ändrades från \"%1$s\" till \"%2$s\" av %3$s.</string>
     <string name="group_image_changed_by_you">Gruppbilden ändrades av mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Gruppbilden ändrades av %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Medlemmen %1$s lades till.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Medlemmen %1$s lades till av mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Medlemmen %1$s lades till av %2$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Medlemmen %1$s togs bort av mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Medlemmen %1$s togs bort av %2$s.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">Gruppen lämnades av %1$s.</string>
     <string name="group_image_deleted_by_you">Gruppbilden togs bort av mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Gruppbilden togs bort av %1$s.</string>
     <string name="location_enabled_by_you">Du aktiverade platsströmning.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">Platsströmning aktiverad av %1$s.</string>
     <string name="ephemeral_timer_disabled_by_you">Tiduret för meddelandeborttagning är inaktiverat av mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Tiduret för meddelandeborttagning är inaktiverat av %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Tiduret för meddelandeborttagning är satt till %1$s s av mig.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Tiduret för meddelandeborttagning är satt till %1$s s av %2$s.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Tiduret för meddelandeborttagning är satt till 1 minut av mig.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">Tiduret för meddelandeborttagning är satt till 1 minut av %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Tiduret för meddelandeborttagning är satt till 1 timma av mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Tiduret för meddelandeborttagning är satt till 1 timma av %1$s.</string>
     <string name="ephemeral_timer_1_day_by_you">Tiduret för meddelandeborttagning är satt till 1 dag av mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">Tiduret för meddelandeborttagning är satt till 1 dag av %1$s.</string>
     <string name="ephemeral_timer_1_week_by_you">Du satte tiduret för meddelandeborttagning till 1 vecka.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">Tiduret för meddelandeborttagning är satt till 1 vecka av %1$s.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Du satte tiduret för meddelandeborttagning till %1$s minuter.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">Tiduret för meddelandeborttagning är satt till %1$s minuter av %2$s.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Du satte tiduret för meddelandeborttagning till %1$s timmar.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">Tiduret för meddelandeborttagning är satt till %1$s timmar av %2$s.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Du satte tiduret för meddelandeborttagning till %1$s dagar.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">Tiduret för meddelandeborttagning är satt till %1$s dagar av %2$s.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Du satte tiduret för meddelandeborttagning till %1$s veckor.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Tiduret för meddelandeborttagning är satt till %1$s veckor av %2$s.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Meddelanden är garanterat totalsträckskrypterade från och med nu. Tryck för att få veta mer.</string>
     <string name="chat_protection_enabled_explanation">Det är nu garanterat att alla meddelanden i den här chatten är totalsträckskrypterade.\n\nTotalsträckskryptering håller meddelanden privata mellan dig och dina chattpartners. Inte ens din e-postleverantör kan läsa dem.</string>
@@ -859,7 +843,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Skanna det här för att ansluta till gruppen \"%1$s\".</string>
     <string name="qrshow_join_contact_title">QR-kod för inbjudan</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Skanna det här för att få kontakt med %1$s.</string>
     <string name="qrshow_join_contact_no_connection_toast">Ingen internetanslutning, kan inte utföra QR-kod-inställning.</string>
     <string name="qraccount_ask_create_and_login">Skapa ny e-postadress på \"%1$s\" och logga in där?</string>
@@ -871,7 +855,7 @@
     <string name="qrlogin_ask_login">Vill du logga in på \"%1$s\"?</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Vill du logga in på \"%1$s\"?\n\nDin befintliga profil kommer inte att raderas. Använd alternativet \"Byt profil\" för att växla mellan dina profiler.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s bjöd in dig att gå med i den här gruppen.\n\nVäntar på att enheten hos %2$s ska svara...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s svarade och väntar på att bli tillagd i gruppen...</string>

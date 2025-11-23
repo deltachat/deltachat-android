@@ -81,7 +81,9 @@
     <string name="always_load_remote_images">Alati laadi kaugseadmes asuvaid pilte</string>
     <string name="once">Vaid see kord</string>
     <string name="show_warning">Näita hoiatust</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Näita salasõna</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Peida salasõna</string>
     <string name="not_now">Mitte praegu</string>
     <string name="never">Mitte kunagi</string>
@@ -481,6 +483,8 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Postiloend</string>
+    <string name="mailing_list_profile_info">Postiloendi nime ja tunnuspildi muudatused kehtivad vaid selles seadmes.</string>
+
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
     <string name="start_app">Alusta…</string>
@@ -498,6 +502,8 @@
     <!-- chat audit log -->
     <string name="chat_audit_log_empty_message">Sellele vestluse süsteemsed teated saavad olema nähtavad siin.</string>
     <string name="chat_audit_log_title">%1$s vestluse kontroll-logi</string>
+    <string name="chat_audit_log_description">Näed vaid süsteemi- ja infosõnumeid. Sobib kasutamiseks viimaste tegevuset tuvastamiseks ilma, et peaksid paljusid sõnumeid läbi lappama.</string>
+
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
     <string name="open_external_url_trust_domain">Ära enam %1$s puhul küsi</string>
@@ -558,7 +564,7 @@
     <string name="multidevice_install_dc_on_other_device">Paigalda teise seadmesse Delta Chat (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Klõpsi valikut „Mul juba on profiil olemas / Lisa täiendava seadmena“ ja skaneeri siin näidatud koodi.</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Skaneeri täiendava seadme lisamiseks kasutajale %1$s</string>
     <string name="multidevice_receiver_title">Lisa täiendava seadmena</string>
     <string name="multidevice_open_settings_on_other_device">Oma esimeses seadmes ava „Seadistused / Lisa täiendav seade“ ja skaneeri siintoodud koodi</string>
@@ -604,7 +610,7 @@
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Mul juba on profiil olemas</string>
     <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Sisselogimine klassikalise e-postiga</string>
+    <string name="manual_account_setup_option">Klassikaline e-post alusühendusena</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Sinu profiil</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -617,11 +623,11 @@
     <string name="instant_onboarding_show_more_instances">Kasuta muud serverid</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">„%1$s“ grupiga liitumiseks loo profiil.</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">„%1$s“ kasutajaga vestlemiseks loo profiil.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">Kas sa soovid luua uue profiili ja alustada vestlemist %1$s kasutajaga?</string>
-    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Kas sa soovid luua uue profiili ja liituda „%1$s“ grupiga?</string>
 
     <string name="welcome_chat_over_email">Turvaline hajutatud vestluslahendus</string>
@@ -632,10 +638,6 @@
     <string name="login_header">Logi sisse oma e-postikontoga</string>
     <!-- deprecated -->
     <string name="login_explain">Logi sisse olemasoleva e-postikontoga</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Teadaolevate e-postiteenuste jaoks vajalikud täiendavad seadistused lisanduvad automaatselt. Mõnel juhul pead IMAP-i veebi seadistustest sisse lülitama. Lisateavet leiad oma e-postiteenuse pakkujalt ja võib-olla oskavad ka sõbrad aidata.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Delta Chat ei  kogu kasutajate andmeid - kogu teave jääb sinu seadmesse.</string>
     <string name="login_inbox">Saabuvad kirjad</string>
     <string name="login_imap_login">IMAP-i kasutajanimi</string>
     <string name="login_imap_server">IMAP-i server</string>
@@ -647,8 +649,6 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP turvalisus</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Tuvastamise meetod</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proksiserver</string>
     <string name="proxy_use_proxy">Kasuta proksiserverit</string>
@@ -664,8 +664,16 @@
     <string name="proxy_share_link">Jaga linki</string>
     <string name="proxy_enabled">Proksiserver on kasutusel</string>
     <string name="proxy_enabled_hint">Sa kasutad proksiserverit. Kui võrguühendus ei toimi korralikult, siis proovi teist proksiserverit.</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Kas jätkame lihtsustatud seadistamisega?</string>
+    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
+    <string name="transports">Alusühendused</string>
+    <string name="add_transport">Lisa alusühendus</string>
+    <string name="remove_transport">Eemalda alusühendus</string>
+    <string name="edit_transport">Muuda alusühendust</string>
+    <!-- shown if a QR code was scanned that can be used as a transport -->
+    <string name="confirm_add_transport">Kas lisad selle alusühenduse?</string>
+    <string name="invalid_transport_qr">Skaneeritud QR-koodis pole korrektset alusühendust</string>
+    <string name="confirm_remove_transport">Kas eemaldad „%1$s“ alusühenduse?\n\nSinu kontaktid saavad sind kätte vaid siis, kui oled selleks kasutanud mõnda muud alusühendust.\n\nKui kahtled, siis eemalda alusühendus hiljem.</string>
+
     <string name="login_certificate_checks">Sertifikaadikontrollid</string>
     <string name="login_error_mail">Palun sisesta korrektne e-posti aadress</string>
     <string name="login_error_server">Palun sisesta korrektne serveri täisnimi või ip-aadress</string>
@@ -715,6 +723,7 @@
     <string name="blocked_empty_hint">Blokeeritud kontaktid saavad olema leitavad siin.</string>
     <!-- deprecated -->
     <string name="pref_password_and_account_settings">Salasõna ja kasutajakonto</string>
+    <string name="pref_who_can_see_profile_explain">Kui suhtled teiste kasutajatega, siis koos sinu sõnumitega edastatakse neile ka sinu tunnuspilt, nimi ja kirjeldus/elulugu.</string>
     <string name="pref_your_name">Sinu nimi</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Elulugu/allkiri/moto</string>
@@ -767,8 +776,6 @@
     <string name="pref_backup">Varundus</string>
     <string name="pref_backup_explain">Varunda vestlused välisesse andmeruumi</string>
     <string name="pref_backup_export_this">Ekspordi see profiil</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">Ekspordi %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Ekspordi kõik %1$d profiili</string>
     <string name="pref_backup_export_start_button">Alusta varundamist</string>
@@ -781,10 +788,10 @@
     <string name="pref_background_btn_default">Kasuta vaikimisi pilti</string>
     <string name="pref_background_btn_gallery">Vali galeriist</string>
     <string name="pref_imap_folder_warn_disable_defaults">Kui sa seda eelistust muudad, siis palun kontrolli, et server ja muud kliendid on vastavalt seadistatud.\n\nVastasel juhul võib minna nii, et mitte miski ei toimi.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Välju saadetud sõnumite kausta</string>
-    <string name="pref_send_copy_to_self">Saada koopia iseendale</string>
-    <string name="pref_send_copy_to_self_explain">Vajalik, kui kasutad seda kontot mitmes seadmes.</string>
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <string name="pref_multidevice">Mitme seadme tugi</string>
+    <string name="pref_multidevice_explain">Sünkrooni oma sõnumid oma muude seadmetega. Teise seadme lisamisel lülitatakse automaatselt sisse.</string>
+    <string name="pref_multidevice_change_warn">Kui kasutad sama profiili mitmes seadmes, siis peab mitme seadme režiimi sisse lülitama. Lülita see seadistus välja vaid siis, kui oled selle profiili eemaldanud kõikidest muudest oma seadmetest.\n\nKui aga lülitad välja siis, kui profiil on kasutusel mitmes seadmes, on tulemuseks kadunud sõnumid ja muud imelikud juhtumised.</string>
     <string name="pref_auto_folder_moves">Tõsta automaatselt DeltaChati kausta</string>
     <string name="pref_only_fetch_mvbox_title">Laadi vaid DeltaChati kasutast</string>
     <string name="pref_only_fetch_mvbox_explain">Eira muid kaustu. See eeldab, et sinu server oskab tõsta vestluste sõnumid DeltaChati kausta.</string>
@@ -815,6 +822,7 @@
     <string name="pref_show_tray_icon">Näita süsteemisalve ikooni</string>
     <string name="pref_edit_profile">Muuda profiili</string>
     <string name="disable_imap_idle">Lülita IMAP IDLE välja</string>
+    <string name="disable_imap_idle_explain">Ära kasuta IMAP IDLE meetodit, seda isegi siis, kui server seda toetab. Sisselülitamisel tekib sõnumite laadimisel viivitusi. Kasuta seda vaid testimiseks.</string>
     <string name="send_stats_to_devs">Saada statistikat Delta Chati kasutajatele</string>
 
 
@@ -850,6 +858,8 @@
     <string name="autodel_server_ask">Kas soovid kustutada %1$d sõnumit kohe ja kõik uued sõnumid ajavahemikus „%2$s“\n\n⚠️ Sealhulgas e-kirjad, meediafailid ja „Salvestatud sõnumid“ kõikides serveri kasutades.\n\n⚠️ Ära kasuta seda võimalust, kui tahad andmeid hoida serveris või pruugid ka klassikalisi e-posti kliente</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Sealhulgas e-kirjad, meediafailid ja „Salvestatud sõnumid“ kõikides serveri kasutades. Ära kasuta seda võimalust, kui tahad andmeid hoida serveris või pruugid ka klassikalisi e-posti kliente</string>
+    <string name="autodel_server_warn_multi_device_title">Lülita kohene kustutamine sisse</string>
+    <string name="autodel_server_warn_multi_device">Kui lülitad kohese kustutamise sisse, siis sa ei saa selles profiilis kasutada mitut seadet.</string>
     <string name="autodel_confirm">Ma saan aru, kustuta kõik need sõnumid</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Kohe peale allalaadimist</string>
@@ -866,8 +876,6 @@
     <string name="autocrypt_prefer_e2ee">Eelista läbivat krüptimist</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Tundmatu saatja selle vestluse jaoks. Üksikasju näed infovaatest.</string>
     <string name="systemmsg_subject_for_new_contact">Sõnum kasutajalt %1$s</string>
     <string name="systemmsg_failed_sending_to">Sõnumi saatmine kasutajale %1$s ei õnnestunud.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -875,69 +883,69 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s muutis grupi nime: „%1$s“ → „%2$s“.</string>
     <string name="group_image_changed_by_you">Sina muutsid grupi tunnuspilti.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s muutis grupi tunnuspilti.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Lisanudus uus liige: %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Sina lisasid uue liikme: %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">%2$s lisas uue liikme: %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Sina eemaldasid liikme: %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s eemaldas liikme: %1$s.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Sa lahkusid grupist.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="channel_left_by_you">Sa lahkusid kanalilt.</string>
     <string name="you_joined_the_channel">Sa liitusid kanaliga.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s lahkus grupist.</string>
     <string name="group_image_deleted_by_you">Sina kustutasid grupi tunnuspildi.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">%1$s kustutas grupi tunnuspildi.</string>
     <string name="location_enabled_by_you">Sina lülitasid sisse oma asukoha jagamise reaalajas.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$s lülitas sisse oma asukoha jagamise reaalajas.</string>
     <string name="ephemeral_timer_disabled_by_you">Sa lülitasid isekustuvate sõnumite taimeri välja.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s lülitas isekustuvate sõnumite taimeri välja.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks %1$s sekundit.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s määras isekustuvate sõnumite kehtivuseks %1$s sekundit.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks 1 minuti.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s määras isekustuvate sõnumite kehtivuseks 1 minuti.</string>
     <string name="ephemeral_timer_1_hour_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks 1 tunni.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s määras isekustuvate sõnumite kehtivuseks 1 tunni.</string>
     <string name="ephemeral_timer_1_day_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks 1 päeva.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">%1$s määras isekustuvate sõnumite kehtivuseks 1 päeva.</string>
     <string name="ephemeral_timer_1_week_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks 1 nädala.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s määras isekustuvate sõnumite kehtivuseks 1 nädala.</string>
     <string name="ephemeral_timer_1_year_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks 1 aasta.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_year_by_other">%1$s määras isekustuvate sõnumite kehtivuseks 1 aasta.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks %1$s minutit.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">%2$s määras isekustuvate sõnumite kehtivuseks %1$s minutit.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks %1$s tundi.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">%2$s määras isekustuvate sõnumite kehtivuseks %1$s tundi.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks %1$s päeva.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">%2$s määras isekustuvate sõnumite kehtivuseks %1$s päeva.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks %1$s nädalat.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s määras isekustuvate sõnumite kehtivuseks %1$s nädalat.</string>
     <string name="chat_unencrypted_explanation">Sõnumid siin vestluses kasutavad klassikalist e-postiliidestust ja pole läbivalt krüptitud.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Sõnumid on läbivalt krüptitud. Lisateabe ligemiseks klõpsi.</string>
@@ -970,9 +978,11 @@
     <string name="qrscan_fingerprint_label">Sõrmejälg</string>
     <string name="withdraw_verifycontact_explain">Seda QR-koodi saavad teised skaneerida nii sinuga suhtlema hakata\n\nKui sa ta lähtestad, siis ei QR-kood ega kutse link pole enam kasutatavad.</string>
     <string name="withdraw_verifygroup_explain">Seda QR-koodi saab kasutada „%1$s“ grupiga liitumiseks.\n\nKui sa ta lähtestad, siis ei QR-kood ega kutse link pole enam kasutatavad.</string>
+    <string name="withdraw_joinbroadcast_explain">Seda QR-koodi saab kasutada „%1$s“ kanaliga liitumiseks.\n\nKui sa ta lähtestad, siis ei QR-kood ega kutse link pole enam kasutatavad.</string>
     <string name="withdraw_qr_code">Lähtesta QR-kood</string>
     <string name="revive_verifycontact_explain">See QR-kood on lähtestatud ega pole enam kasutatav.</string>
     <string name="revive_verifygroup_explain">See QR-kood, mis oli mõeldud „%1$s“ grupiga liitumiseks, on lähtestatud ega pole enam kasutatav.</string>
+    <string name="revive_joinbroadcast_explain">See QR-kood, mis oli mõeldud „%1$s“ kanaliga liitumiseks, on lähtestatud ega pole enam kasutatav.</string>
     <string name="revive_qr_code">Aktiveeri QR-kood</string>
     <string name="qrshow_title">Kutse QR-koodina</string>
     <string name="qrshow_x_joining">%1$s liitus.</string>
@@ -983,7 +993,7 @@
     <string name="qrshow_join_group_hint">Skaneeri liitumaks „%1$s“ grupiga</string>
     <string name="qrshow_join_channel_hint">Skaneeri liitumaks „%1$s“ kanaliga</string>
     <string name="qrshow_join_contact_title">Kutse QR-koodina</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Skaneeri vestlemaks kasutajaga „%1$s“</string>
     <string name="qrshow_join_contact_no_connection_toast">Internetiühendus puudub ja QR-koodil põhinevat seadistamist kasutada ei saa.</string>
     <string name="qraccount_ask_create_and_login">Kas lood uue profiili nimega „%1$s“ ja logid sinna sisse?</string>
@@ -995,7 +1005,7 @@
     <string name="qrlogin_ask_login">Kas logid sisse „%1$s“ profiili?</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Kas soovid sisse logid oma kontoga „%1$s“ serveris?\n\nSinu olemasolev profiil jääb alles. Profiile saad vahetada käsuga „Vaheta profiili“.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s kutsus sind liituma selle grupiga.\n\nOotan vastust kasutaja %2$s seadmest…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s vastas, ootan gruppi lisamist…</string>
@@ -1134,6 +1144,7 @@
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Pole Delta Chatis kasutusel</string>
     <string name="disabled_in_system_settings">On süsteemi seadistustest välja lülitatud</string>
+    <string name="bg_app_refresh_disabled">Rakenduse uuendamine taustal on süsteemi seadistustest välja lülitatud</string>
     <string name="notifications_avg_minutes">Keskmiselt iga %1$d minuti järel</string>
     <string name="notifications_avg_hours">Keskmiselt iga %1$d tunni järel</string>
     <string name="last_check_at">Kontrollitud %1$s</string>
