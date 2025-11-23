@@ -15,14 +15,17 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.webkit.ProxyConfig;
 import androidx.webkit.ProxyController;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
 
+import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
+import org.thoughtcrime.securesms.util.Util;
 
 public class WebViewActivity extends PassphraseRequiredActionBarActivity
                                implements SearchView.OnQueryTextListener,
@@ -60,7 +63,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
     webView = findViewById(R.id.webview);
     webView.setWebViewClient(new WebViewClient() {
-      // IMPORTANT: this is will likely not be called inside iframes.
+      // IMPORTANT: this is will likely not be called inside iframes unless target=_blank is used in the anchor/link tag.
       // `shouldOverrideUrlLoading()` is called when the user clicks a URL,
       // returning `true` causes the WebView to abort loading the URL,
       // returning `false` causes the WebView to continue loading the URL as usual.
@@ -72,21 +75,8 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
       // so, to support all systems, for now, using the old one seems to be the simplest way.
       @Override
       public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        if (url != null) {
-          String schema = url.split(":")[0].toLowerCase();
-          switch (schema) {
-            case "http":
-            case "https":
-            case "mailto":
-            case "openpgp4fpr":
-            case "geo":
-              return openOnlineUrl(url);
-          }
-        }
-        // by returning `true`, we also abort loading other URLs in our WebView;
-        // eg. that might be weird or internal protocols.
-        // if we come over really useful things, we should allow that explicitly.
-        return true;
+        if (url != null) return openOnlineUrl(url);
+        return true; // returning `true` aborts loading
       }
 
       @Override
@@ -278,7 +268,22 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   // the default behavior (close the activity) is just fine eg. for Webxdc, Connectivity, HTML-mails
 
   protected boolean openOnlineUrl(String url) {
-    IntentUtils.showInBrowser(this, url);
+    // invite-links should be handled directly
+    String schema = url.split(":")[0].toLowerCase();
+    if (schema.equals("openpgp4fpr") || url.startsWith("https://" + Util.INVITE_DOMAIN + "/")) {
+      new QrCodeHandler(this).handleQrData(url);
+      return true; // abort internal loading
+    }
+
+    new AlertDialog.Builder(this)
+      .setTitle(R.string.open_url_confirmation)
+      .setMessage(url)
+      .setNegativeButton(R.string.cancel, null)
+      .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+        IntentUtils.showInBrowser(this, url);
+      })
+      .show();
+
     // returning `true` causes the WebView to abort loading
     return true;
   }
