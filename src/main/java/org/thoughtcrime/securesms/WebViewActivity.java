@@ -37,6 +37,8 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
   protected WebView webView;
 
+  protected boolean shouldAskToOpenLink() { return true; }
+
   protected void toggleFakeProxy(boolean enable) {
     if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
       if (enable) {
@@ -277,16 +279,20 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
       return true; // abort internal loading
     }
 
-    new AlertDialog.Builder(this)
-      .setTitle(R.string.open_url_confirmation)
-      .setMessage(IDN.toASCII(url))
-      .setNeutralButton(R.string.cancel, null)
-      .setPositiveButton(R.string.open, (d, w) -> IntentUtils.showInBrowser(this, url))
-      .setNegativeButton(R.string.global_menu_edit_copy_desktop, (d, w) -> {
-        Util.writeTextToClipboard(this, url);
-        Toast.makeText(this, R.string.copied_to_clipboard, Toast.LENGTH_SHORT).show();
-      })
-      .show();
+    if (shouldAskToOpenLink()) {
+      new AlertDialog.Builder(this)
+        .setTitle(R.string.open_url_confirmation)
+        .setMessage(IDN.toASCII(url))
+        .setNeutralButton(R.string.cancel, null)
+        .setPositiveButton(R.string.open, (d, w) -> IntentUtils.showInBrowser(this, url))
+        .setNegativeButton(R.string.global_menu_edit_copy_desktop, (d, w) -> {
+          Util.writeTextToClipboard(this, url);
+          Toast.makeText(this, R.string.copied_to_clipboard, Toast.LENGTH_SHORT).show();
+        })
+        .show();
+    } else {
+      IntentUtils.showInBrowser(this, url);
+    }
 
     // returning `true` causes the WebView to abort loading
     return true;
