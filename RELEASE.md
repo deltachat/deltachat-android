@@ -3,6 +3,8 @@
 
 ## Generate APKs
 
+### Update core and translations
+
 on the command-line, in a PR called "update-core-and-stuff-DATE":
 
 1. update core:
@@ -21,11 +23,18 @@ a) Update `CHANGELOG.md`
       as `update to core 1.2.3` or `using core 1.2.3`
 
 
-2. update translations and local help:
+2. update JSON-RPC bindings:
+   ```
+   ./scripts/update-rpc-bindings.sh
+   ```
+
+3. update translations and local help:
    ```
    ./scripts/tx-pull-translations.sh
    ./scripts/create-local-help.sh  # requires deltachat-pages checked out at ../deltachat-pages
    ```
+
+### Prepare release
 
 the following steps are done in a PR called `prep-VERSION` (no leading "v"):
 
