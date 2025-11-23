@@ -53,7 +53,9 @@
     <string name="load_remote_content_ask">リモート画像で追跡ができる。\n\nこの設定はフォントや他のコンテツを読み込むことも許可する。無効にしても埋め込まれた画像やキャッシュされた画像を表示されます。\n\nリモート画像を読み込む？</string>
     <string name="always">常に</string>
     <string name="once">一回のみ</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">パスワードを表示する</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">パスワードを非表示する</string>
     <string name="not_now">今はしない</string>
     <string name="never">しない</string>
@@ -337,10 +339,6 @@
     <string name="login_header">自分のメールサーバーにログインする</string>
     <!-- deprecated -->
     <string name="login_explain">既存のメールアカウントにログインする</string>
-    <!-- deprecated -->
-    <string name="login_subheader">主なメールサーバーは自動で設定されます｡一般にIMAPはサーバー側で有効に設定する必要が有ります｡サーバー提供者や詳しい人に確認しましょう｡</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Delta Chatには専用サーバーが有りません｡つまりあなたのデータ･個人情報はこの端末内に保存されています｡</string>
     <string name="login_inbox">受信</string>
     <string name="login_imap_login">IMAPログイン名</string>
     <string name="login_imap_server">IMAPサーバー</string>
@@ -352,12 +350,6 @@
     <string name="login_smtp_server">SMTPサーバー</string>
     <string name="login_smtp_port">SMTPポート</string>
     <string name="login_smtp_security">SMTP暗号方式</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">認証方法</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">簡単セットアップを使用しましょうか？</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">入力されたメールアドレスは、簡易セットアップ（OAuth 2.0）に対応しています。次に「メールでチャット」を許可してください。Delta Chatにはサーバーがなく、テーダはデバイスにあります。</string>
     <string name="login_certificate_checks">有効な証明書です</string>
     <string name="login_error_mail">有効なメールアドレスを入力してください</string>
     <string name="login_error_server">有効なサーバー或いはIPアドレスを入力してください</string>
@@ -453,9 +445,6 @@
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">デフォルトの画像を使う</string>
     <string name="pref_background_btn_gallery">ギャラリーから選ぶ</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">送信トレイを監視する</string>
-    <string name="pref_send_copy_to_self">自分にコピーを送る</string>
     <string name="pref_auto_folder_moves">DeltaChatフォルダに自動で移動する</string>
     <string name="pref_auto_folder_moves_explain">チャットは受信箱の邪魔にならないように移動されます。</string>
     <string name="pref_show_emails">一般的なメールを表示する</string>
@@ -507,6 +496,7 @@
     <string name="autocrypt_send_asm_button">自動暗号化設定用ﾒｯｾｰｼﾞを送信する</string>
     <string name="autocrypt_prefer_e2ee">エンドツーエンド暗号化を好む</string>
 
+    <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">%1$sさんからのメッセージ</string>
     <string name="systemmsg_failed_sending_to">%1$sさんへのメッセージ送信に失敗しました。</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -514,54 +504,54 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$sからグループ名を%1$sから%2$sに変更しました。</string>
     <string name="group_image_changed_by_you">自分からグループ画像が変わりました。</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$sからグループ画像が変わりました。</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">自分から%1$sが追加されました。</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">%2$sから%1$sが追加されました。</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">自分から%1$sが退会されました。</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$sから%1$sが退会されました。</string>
     <string name="group_image_deleted_by_you">自分からグループ画像を削除しました。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">%1$sからグループ画像を削除しました。</string>
     <string name="ephemeral_timer_disabled_by_you">自分から消えるメッセージを無効にしました。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$sから消えるメッセージを無効にしました。</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">自分から消えるメッセージを%1$s秒にしました。</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$sから消えるメッセージを%1$s秒にしました。</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">自分から消えるメッセージを1分にしました。</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$sから消えるメッセージを1分にしました。</string>
     <string name="ephemeral_timer_1_hour_by_you">自分から消えるメッセージを1時間にしました。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$sから消えるメッセージを1時間にしました。</string>
     <string name="ephemeral_timer_1_day_by_you">自分から消えるメッセージを1日にしました。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">%1$sから消えるメッセージを1日にしました。</string>
     <string name="ephemeral_timer_1_week_by_you">自分から消えるメッセージを1週間にしました。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$sから消えるメッセージを1週間にしました。</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">自分から消えるメッセージを%1$s分にしました。</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">%2$sから消えるメッセージを%1$s分にしました。</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">自分から消えるメッセージを%1$s時間にしました。</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">%2$sから消えるメッセージを%1$s時間にしました。</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">自分から消えるメッセージを%1$s日にしました。</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">%2$sから消えるメッセージを%1$s日にしました。</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">自分から消えるメッセージを%1$s週間にしました。</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$sから消えるメッセージを%1$s週間にしました。</string>
     <!-- qr code stuff -->
     <string name="qr_code">QRコード</string>
@@ -580,7 +570,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">スキャンして%1$sに参加します</string>
     <string name="qrshow_join_contact_title">自分のQRｺｰﾄﾞ</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">スキャンして%1$sに連絡します。</string>
     <string name="qrshow_join_contact_no_connection_toast">インターネットに接続されていないので、QRコードの設定ができません。</string>
     <string name="qraccount_ask_create_and_login">%1$sに新しいメールアドレスを作ってログしますか。</string>

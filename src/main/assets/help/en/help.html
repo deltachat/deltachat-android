@@ -15,7 +15,6 @@
       <li><a href="#what-do-the-ticks-shown-beside-outgoing-messages-mean">What do the ticks shown beside outgoing messages mean?</a></li>
       <li><a href="#edit">Correct typos and delete messages after sending</a></li>
       <li><a href="#ephemeralmsgs">How do disappearing messages work?</a></li>
-      <li><a href="#how-does-delete-messages-from-server-work">How does “Delete messages from server” work?</a></li>
       <li><a href="#delold">What happens if I turn on “Delete old messages from device”?</a></li>
       <li><a href="#remove-account">How can I delete my chat profile?</a></li>
     </ul>
@@ -27,6 +26,13 @@
       <li><a href="#i-have-deleted-myself-by-accident">I have deleted myself by accident.</a></li>
       <li><a href="#i-do-not-want-to-receive-the-messages-of-a-group-any-longer">I do not want to receive the messages of a group any longer.</a></li>
       <li><a href="#cloning-a-group">Cloning a group</a></li>
+    </ul>
+  </li>
+  <li><a href="#webxdc">In-chat apps</a>
+    <ul>
+      <li><a href="#where-can-i-get-in-chat-apps">Where can I get in-chat apps?</a></li>
+      <li><a href="#how-private-are-in-chat-apps">How private are in-chat apps?</a></li>
+      <li><a href="#create-xdc">How can I create my own in-chat apps?</a></li>
     </ul>
   </li>
   <li><a href="#instant-delivery">Instant message delivery and Push Notifications</a>
@@ -46,16 +52,10 @@
       <li><a href="#are-there-any-plans-for-introducing-a-delta-chat-web-client">Are there any plans for introducing a Delta Chat Web Client?</a></li>
     </ul>
   </li>
-  <li><a href="#webxdc">In-chat apps</a>
-    <ul>
-      <li><a href="#where-can-i-get-in-chat-apps">Where can I get in-chat apps?</a></li>
-      <li><a href="#how-private-are-in-chat-apps">How private are in-chat apps?</a></li>
-      <li><a href="#create-xdc">How can I create my own in-chat apps?</a></li>
-    </ul>
-  </li>
   <li><a href="#advanced">Advanced</a>
     <ul>
       <li><a href="#experimental-features">Experimental Features</a></li>
+      <li><a href="#statssending">What is “Send statistics to Delta Chat’s developers”?</a></li>
       <li><a href="#can-i-use-a-classic-email-address-with-delta-chat">Can I use a classic email address with Delta Chat?</a></li>
       <li><a href="#classic-email">How can I configure a chat profile with a classic email address as transport?</a></li>
       <li><a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">I want to manage my own server for Delta Chat. What do you recommend?</a></li>
@@ -453,30 +453,6 @@ or otherwise save, copy or forward messages before deletion.</p>
 if one chat partner uninstalls Delta Chat,
 the (anyway encrypted) messages may take longer to get deleted from their server.</p>
     
-      <h3 id="how-does-delete-messages-from-server-work">
-        
-        
-          How does “Delete messages from server” work? <a href="#how-does-delete-messages-from-server-work" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>
-    <p>If you are using only one device,
-messages are deleted <strong>At once</strong> from the server.</p>
-  </li>
-  <li>
-    <p>If you are using Multiple devices,
-this option is switched to <strong>Automatic</strong>,
-meaning the server will keep the messages for a while so that all devices have a chance to receive them.</p>
-  </li>
-  <li>
-    <p>If you are no longer using additional devices,
-you can switch the option manually at <strong>Delete Old Messages → Delete Messages from Server</strong>.</p>
-  </li>
-</ul>
-    
       <h3 id="delold">
         
         
@@ -525,7 +501,7 @@ or the respective page from your chosen <a href="https://chatmail.at/relays">3rd
 
 <p>Anyone can
 change the group name or avatar,
-<a href="#addmembers">add or remove members</a> (including the creator),
+<a href="#addmembers">add or remove members</a>,
 set <a href="#ephemeralmsgs">disappearing messages</a>,
 and <a href="#edit">delete their own messages</a> from all member’s devices.</p>
 
@@ -574,7 +550,7 @@ through another private chat to the new member.</p>
   </li>
 </ul>
 
-<p>QR code and invite link can be reused to add several members.
+<p>QR code and invite link can be used to add several members.
 However, since groups are <a href="#groups">meant for trusted people</a>, avoid sharing them publicly.</p>
     
       <h3 id="i-have-deleted-myself-by-accident">
@@ -632,6 +608,86 @@ or right-click the group in the chat list (Desktop).</p>
 
 <p>The new group is <strong>fully independent</strong> from the original,
 which continues to work as before.</p>
+    
+      <h2 id="webxdc">
+        
+        
+          In-chat apps <a href="#webxdc" class="anchor"></a>
+        
+        
+      </h2>
+
+<p>You can send apps to a chat - games, editors, polls and other tools.
+This makes Delta Chat a truly extensible messenger.</p>
+    
+      <h3 id="where-can-i-get-in-chat-apps">
+        
+        
+          Where can I get in-chat apps? <a href="#where-can-i-get-in-chat-apps" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>In a chat, using <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attachment Button → Apps</strong></p>
+  </li>
+  <li>
+    <p>You can also <a href="#create-xdc">create your own app</a> and attach it using <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attachment Button → File</strong></p>
+  </li>
+</ul>
+    
+      <h3 id="how-private-are-in-chat-apps">
+        
+        
+          How private are in-chat apps? <a href="#how-private-are-in-chat-apps" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>In-chat apps can not send data to the Internet, or download anything.</p>
+  </li>
+  <li>
+    <p>An in-chat app can only exchange data within a Delta Chat chat, with its
+copies on the devices of your chat partners. Other than that, it’s completely
+isolated from the Internet.</p>
+  </li>
+  <li>
+    <p>The privacy an in-chat app offers is the privacy of your chat - as long as you
+trust the people you chat with, you can trust the in-chat app as well.</p>
+  </li>
+  <li>
+    <p>This also means: Just like for web links, do not open apps from untrusted contacts.</p>
+  </li>
+</ul>
+    
+      <h3 id="create-xdc">
+        
+        
+          How can I create my own in-chat apps? <a href="#create-xdc" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>In-chat apps are zip files with <code class="language-plaintext highlighter-rouge">.xdc</code> extension containing html, css, and javascript code.</p>
+  </li>
+  <li>
+    <p>You can extend the <a href="https://github.com/webxdc/hello">Hello World example app</a>
+to get started.</p>
+  </li>
+  <li>
+    <p>All else you need to know is written in the
+<a href="https://webxdc.org/docs">Webxdc documentation</a>.</p>
+  </li>
+  <li>
+    <p>If you have question, you can ask others with experience
+in the <a href="https://support.delta.chat/c/webxdc/20">Delta Chat Forum</a>.</p>
+  </li>
+</ul>
     
       <h2 id="instant-delivery">
         
@@ -929,86 +985,6 @@ or the AppImage for Linux. You can find them on
 <a href="https://get.delta.chat">get.delta.chat</a>.</li>
 </ul>
     
-      <h2 id="webxdc">
-        
-        
-          In-chat apps <a href="#webxdc" class="anchor"></a>
-        
-        
-      </h2>
-
-<p>You can send apps to a chat - games, editors, polls and other tools.
-This makes Delta Chat a truly extensible messenger.</p>
-    
-      <h3 id="where-can-i-get-in-chat-apps">
-        
-        
-          Where can I get in-chat apps? <a href="#where-can-i-get-in-chat-apps" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>
-    <p>In a chat, using <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attachment Button → Apps</strong></p>
-  </li>
-  <li>
-    <p>You can also <a href="#create-xdc">create your own app</a> and attach it using <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attachment Button → File</strong></p>
-  </li>
-</ul>
-    
-      <h3 id="how-private-are-in-chat-apps">
-        
-        
-          How private are in-chat apps? <a href="#how-private-are-in-chat-apps" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>
-    <p>In-chat apps can not send data to the Internet, or download anything.</p>
-  </li>
-  <li>
-    <p>An in-chat app can only exchange data within a Delta Chat chat, with its
-copies on the devices of your chat partners. Other than that, it’s completely
-isolated from the Internet.</p>
-  </li>
-  <li>
-    <p>The privacy an in-chat app offers is the privacy of your chat - as long as you
-trust the people you chat with, you can trust the in-chat app as well.</p>
-  </li>
-  <li>
-    <p>This also means: Just like for web links, do not open apps from untrusted contacts.</p>
-  </li>
-</ul>
-    
-      <h3 id="create-xdc">
-        
-        
-          How can I create my own in-chat apps? <a href="#create-xdc" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>
-    <p>In-chat apps are zip files with <code class="language-plaintext highlighter-rouge">.xdc</code> extension containing html, css, and javascript code.</p>
-  </li>
-  <li>
-    <p>You can extend the <a href="https://github.com/webxdc/hello">Hello World example app</a>
-to get started.</p>
-  </li>
-  <li>
-    <p>All else you need to know is written in the
-<a href="https://webxdc.org/docs">Webxdc documentation</a>.</p>
-  </li>
-  <li>
-    <p>If you have question, you can ask others with experience
-in the <a href="https://support.delta.chat/c/webxdc/20">Delta Chat Forum</a>.</p>
-  </li>
-</ul>
-    
       <h2 id="advanced">
         
         
@@ -1032,6 +1008,34 @@ you can try out features we are working on.</p>
 
 <p>You can find more information
 and give feedback in the <a href="https://support.delta.chat">Forum</a>.</p>
+    
+      <h3 id="statssending">
+        
+        
+          What is “Send statistics to Delta Chat’s developers”? <a href="#statssending" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>We would like to improve Delta Chat with your help,
+which is why Delta Chat for Android asks whether you want
+to send anonymous usage statistics.</p>
+
+<p>You can turn it on and off at
+<strong>Settings → Advanced → Send statistics to Delta Chat’s developers</strong>.</p>
+
+<p>When you turn it on,
+weekly statistics will be automatically sent to a bot.</p>
+
+<p>We are interested e.g. in statistics like:</p>
+
+<ul>
+  <li>How many contacts are introduced by personally scanning a QR code?</li>
+  <li>Which versions of Delta Chat are being used?</li>
+  <li>How many messages are unencrypted?</li>
+</ul>
+
+<p>We will <em>not</em> collect any personally identifiable information about you.</p>
     
       <h3 id="can-i-use-a-classic-email-address-with-delta-chat">
         

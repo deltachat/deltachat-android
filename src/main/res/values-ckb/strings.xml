@@ -43,7 +43,9 @@
     <string name="show_full_message">هەموو پەیامەکە پیشان بدە...</string>
     <string name="always">هەمیشە</string>
     <string name="once">یەکجار</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">تێپەڕوشەکە پیشان بدە</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">تێپەڕوشەکە بشارەوە</string>
     <string name="not_now">ئێستا نا</string>
     <string name="never">قەت</string>
@@ -312,10 +314,6 @@
     <string name="login_header">بچۆ ژوورەوە بۆ سێرڤێرەکەی خۆت</string>
     <!-- deprecated -->
     <string name="login_explain">بچۆ ژوورەوە بە ناونیشانی ئیمەیلێکەوە</string>
-    <!-- deprecated -->
-    <string name="login_subheader">بۆ دابینکەرە ناسراوەکانی ئیمەیلەکان، ڕێکخستنە زیادییەکان خۆکارانە ڕێکدەخرێن. هەندێجار دەبێت IMAP لەنێو ڕێکخستنەکانی وێبدا چالاک بکرێنەوە. بۆ ڕێنمایی وەرگرتن، لەگەڵ دابینکەری ئیمەیلەکەتان یان هاوڕێکانتان ڕاوێژ بکەن.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">دێڵتاچات هیچ سێرڤەرێکی نییە، داتاکانتان لەسەر ئامرێکەتان دەمێنێتەوە.</string>
     <string name="login_inbox">هاتنگە</string>
     <string name="login_imap_login">ناوی چوونەژوورەوەی IMAP</string>
     <string name="login_imap_server">سێرڤەری IMAP</string>
@@ -327,10 +325,6 @@
     <string name="login_smtp_server">سێرڤەری SMTP</string>
     <string name="login_smtp_port">پۆرتی SMTP</string>
     <string name="login_smtp_security">ئاسایشی SMTP</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">شێوازی پشتڕاشتکردنەوە</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">بە ڕێکخستنە ئاسانکراوەکەوە بەردەوام دەبیت؟</string>
     <string name="login_error_mail">تکایە ئیمەیلێکی ڕاست بنووسە</string>
     <string name="login_error_server">تکایە سێرڤەرێکی / شوێنەواری ئای پی ڕەوا بنووسە.</string>
     <string name="login_error_port">تکایە پۆرتێکی (1-65535) درووست بنووسە</string>
@@ -408,9 +402,6 @@
     <string name="pref_background">پشتخان</string>
     <string name="pref_background_btn_default">بەکارهێنانی وێنەی بنەڕەتی</string>
     <string name="pref_background_btn_gallery">هەڵبژاردن لە پیشانگا</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">دیتنی بوخچەی هەنێردراوەکان</string>
-    <string name="pref_send_copy_to_self">هەناردنی ڕوونووسێک بۆ خۆت</string>
     <string name="pref_auto_folder_moves">هەناردنی خۆکار بۆ بوخچەی دێڵتاچات</string>
     <string name="pref_show_emails">پیشاندانی ئیمەیلە کلاسیکەکان</string>
     <string name="pref_show_emails_no">نا، بەس چاتەکان</string>
@@ -457,8 +448,6 @@
     <string name="autocrypt_prefer_e2ee">هەڵبژاردنی شفرەکردنی ئەمسەر-ئەوسەر</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">پەیامنێری ئەم وتووێژە نەناسراوە. بۆ وردەکاری زۆرتر سەیری \'زانیارییەکان\' بکە.</string>
     <string name="systemmsg_subject_for_new_contact">پەیام لەلایەن %1$s</string>
     <string name="systemmsg_failed_sending_to">هەناردنی پەیام بۆ %1$s سەرنەکەوت</string>
     <!-- qr code stuff -->
@@ -479,7 +468,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">بۆ بەشداربوون لە کۆڕ ئەمە سکان بکە: \"%1$s\"</string>
     <string name="qrshow_join_contact_title">کۆدی QRی بانگهێشت کردن</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">بۆ ڕێکخستنی پێوەندی لەگەڵ %1$s، ئەم کۆدە سکان بکە. </string>
     <string name="qrshow_join_contact_no_connection_toast">هێڵی ئینتەرنێت بەردەست نییە، ڕێکخستنی کۆدی QR جێبەجێ ناکرێ.</string>
     <string name="qraccount_ask_create_and_login">دەتەوێت ناونیشانی ئیمەیلێکی نوێ لەسەر \"%1$s\" درووست بکەیت و لەوێ بچیتە ژوورەوە؟</string>

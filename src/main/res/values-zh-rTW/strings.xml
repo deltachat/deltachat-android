@@ -81,7 +81,9 @@
     <string name="always_load_remote_images">總是載入遠端圖片</string>
     <string name="once">僅一次</string>
     <string name="show_warning">顯示警告</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">顯示密碼</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">隱藏密碼</string>
     <string name="not_now">現在不要</string>
     <string name="never">永遠不要</string>
@@ -508,7 +510,7 @@
     <string name="multidevice_install_dc_on_other_device">在您的其他裝置上安裝 Delta Chat (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">啟動 Delta Chat，點擊「我已經有一個賬戶/添加為第二台裝置」並掃描此處顯示的QR碼</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">掃描以設置第二個裝置%1$s</string>
     <string name="multidevice_receiver_title">新增為第二個裝置</string>
     <string name="multidevice_open_settings_on_other_device">在第一台裝置上，轉到「設定/新增第二台裝置」並掃描那裡顯示的QR碼</string>
@@ -568,11 +570,11 @@
     <string name="instant_onboarding_other_server">列出 Chatmail 伺服器</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">創建個人資料以加入群組 “%1$s ”</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">創建要與%1$s聊天的個人資料。</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">您想創建新的個人資料並開始與%1$s聊天嗎？</string>
-    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">您想創建新的個人資料並加入 「%1$s」 聊天群組嗎？</string>
 
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
@@ -582,10 +584,6 @@
     <string name="login_header">登入你的電子郵件帳戶</string>
     <!-- deprecated -->
     <string name="login_explain">使用現有的電子郵件帳戶登入</string>
-    <!-- deprecated -->
-    <string name="login_subheader">我們能自動處理大多數常見的郵件伺服器設定。有時候你需要在 web 界面上手動打開 IMAP 服務，請詢問郵件服務商或請朋友幫忙。</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Delta Chat 沒有伺服器，你的資料只會存在你自己的裝置上!</string>
     <string name="login_inbox">收件匣</string>
     <string name="login_imap_login">IMAP 帳號</string>
     <string name="login_imap_server">IMAP 伺服器</string>
@@ -597,8 +595,6 @@
     <string name="login_smtp_server">SMTP 伺服器</string>
     <string name="login_smtp_port">SMTP 埠</string>
     <string name="login_smtp_security">SMTP 安全</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">授權方式</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">代理伺服器</string>
     <string name="proxy_use_proxy">使用代理伺服器</string>
@@ -612,10 +608,6 @@
     <string name="proxy_use_proxy_confirm">是否要使用代理 「%1$s」？</string>
     <string name="proxy_share_explain">您的朋友可以通過掃描QR碼來添加此代理。</string>
     <string name="proxy_share_link">分享連結</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">繼續使用簡易設定?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">輸入的電子郵件位址支援簡化設定（OAuth 2.0）。\n\n在下一步中，請允許 Delta Chat 充當你的電子郵件對話應用程式。\n\nDelta Chat 不會收集使用者資料，所有內容都保留在你的裝置上。</string>
     <string name="login_certificate_checks">憑證檢查</string>
     <string name="login_error_mail">請輸入有效的電子郵件位址</string>
     <string name="login_error_server">請輸入有效的伺服器／IP 位址</string>
@@ -721,8 +713,6 @@
     <string name="pref_backup">備份</string>
     <string name="pref_backup_explain">將備份另存至外部儲存媒體</string>
     <string name="pref_backup_export_explain">備份可以讓你把設定及對話紀錄轉移到這台或其它裝置上。\n\n備份內容包括所有的訊息、聯絡人、對話、端到端AutoCrypt設定。請務必將備份檔存放在安全的地方，並在轉移後儘快刪除。</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">匯出 %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">匯出全部%1$d個賬戶</string>
     <string name="pref_backup_export_start_button">開始備份</string>
@@ -735,10 +725,6 @@
     <string name="pref_background_btn_default">使用預設圖案</string>
     <string name="pref_background_btn_gallery">從相簿中挑選</string>
     <string name="pref_imap_folder_warn_disable_defaults">如果關閉本選項的話，請務必確定你的伺服器和其它客戶端應用程式都使用相同的設定，否則很可能不能運作。</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">監看送件匣</string>
-    <string name="pref_send_copy_to_self">將副本發送給自己</string>
-    <string name="pref_send_copy_to_self_explain">在多個裝置上使用此帳戶時，這是必需的。</string>
     <string name="pref_auto_folder_moves">自動搬移到 DeltaChat 資料夾</string>
     <string name="pref_auto_folder_moves_explain">搬移對話以避免塞爆收件匣</string>
     <string name="pref_only_fetch_mvbox_title">僅從 DeltaChat 資料夾中獲取</string>
@@ -829,8 +815,6 @@
     <string name="autocrypt_prefer_e2ee">偏好端到端加密</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">此聊天未知發送者。有關詳細資訊，請參閱“訊息” 。</string>
     <string name="systemmsg_subject_for_new_contact">來自 %1$s 的訊息</string>
     <string name="systemmsg_failed_sending_to">無法向%1$s發送消息。</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -838,61 +822,61 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s已將群組名稱從「%1$s」更改為「%2$s」。</string>
     <string name="group_image_changed_by_you">我已更改群組圖片。</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s已更改群組圖片。</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">已新增成員 %1$s。</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">我已新增成員 %1$s</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">%2$s已新增成員 %1$s</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">我已移除成員 %1$s</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s已移除成員 %1$s</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s 退出了群組。</string>
     <string name="group_image_deleted_by_you">我已刪除群組圖片。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">%1$s已刪除群組圖片。</string>
     <string name="location_enabled_by_you">您啟用了即時位置共享。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$s發起了即時位置共享。</string>
     <string name="ephemeral_timer_disabled_by_you">你禁用了自動刪除訊息計時器。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s禁用了自動刪除訊息計時器。</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">您將自動刪除訊息計時器設置為%1$s秒</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s設置自動刪除訊息計時器為%1$s秒。</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">您將自動刪除訊息計時器設置為 1 分鐘。</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s將自動刪除訊息計時器設置為 1 分鐘。</string>
     <string name="ephemeral_timer_1_hour_by_you">您將自動刪除訊息計時器設置為 1 小時。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s將自動刪除訊息計時器設置為 1 分鐘。</string>
     <string name="ephemeral_timer_1_day_by_you">您將自動刪除訊息計時器設置為 1 天。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">%1$s將自動刪除訊息計時器設置為 1 天。</string>
     <string name="ephemeral_timer_1_week_by_you">您將自動刪除訊息計時器設置為 1週。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s將自動刪除訊息計時器設置為 1週。</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">您將自動刪除訊息計時器設置為%1$s分鐘。</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">%2$s將自動刪除訊息計時器設置為%1$s分鐘。</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">您將自動刪除訊息計時器設置為%1$s小時。</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">%2$s將自動刪除訊息計時器設置為%1$s小時。</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">您將自動刪除訊息計時器設置為%1$s天。</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">%2$s將自動刪除訊息計時器設置為%1$s小時。</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">您將自動刪除訊息計時器設置為%1$s週。</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s將自動刪除訊息計時器設置為%1$s週。</string>
     <string name="chat_protection_enabled_tap_to_learn_more">從現在開始，保證消息進行端到端加密。輕觸以瞭解更多資訊。</string>
     <string name="chat_protection_enabled_explanation">現在可以保證此聊天中的所有消息都是端到端加密的。\n\n端到端加密使您和您的聊天夥伴之間的消息保持私密。甚至您的電子郵件供應商也無法讀取它們。</string>
@@ -937,7 +921,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">掃描加入群組「%1$s」</string>
     <string name="qrshow_join_contact_title">QR 圖碼邀請碼</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">掃描 QRCode 以新增 %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">沒有互聯網連接，無法執行QR碼設置。</string>
     <string name="qraccount_ask_create_and_login">在 「%1$s」 上建立賬戶並登入？</string>
@@ -949,7 +933,7 @@
     <string name="qrlogin_ask_login">登入「%1$s」？</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">登入「%1$s」？\n\n您現有的賬戶不會被刪除。使用「切換賬戶」項在您的賬戶之間切換。</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s邀請您加入此群組。\n\n正在等待%2$s裝置的回覆...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s已回覆，等待被添加到群組中...</string>

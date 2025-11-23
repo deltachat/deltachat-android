@@ -62,7 +62,9 @@
     <string name="always_load_remote_images">Încărcați întotdeauna imagini la distanță</string>
     <string name="once">Odată ce</string>
     <string name="show_warning">Afișați avertismentul</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Afișați parola</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Ascundeți parola</string>
     <string name="not_now">Nu acum</string>
     <string name="never">Niciodata</string>
@@ -433,7 +435,7 @@
     <string name="multidevice_install_dc_on_other_device">Instalați Delta Chat pe celălalt dispozitiv (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Porniți Delta Chat, atingeți \" Adăugați ca al doilea dispozitiv\" și scanați codul afișat aici</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Scanare pentru a configura un al doilea dispozitiv pentru %1$s</string>
     <string name="multidevice_receiver_title">Adăugați ca Dispozitiv Secundar</string>
     <string name="multidevice_open_settings_on_other_device">Pe primul dispozitiv, mergeți la \" Setări / Adaugă Dispozitivul Secundar \" și scanați codul afișat acolo.</string>
@@ -478,10 +480,6 @@
     <string name="login_header">Autentificați-vă în contul dumneavoastră de e-mail</string>
     <!-- deprecated -->
     <string name="login_explain">Conectați-vă cu un cont de e-mail existent</string>
-    <!-- deprecated -->
-    <string name="login_subheader">În cazul furnizorilor de e-mail cunoscuți, setările suplimentare sunt configurate automat. Uneori, IMAP trebuie să fie activat în setările web. Consultați furnizorul dumneavoastră de e-mail sau prietenii pentru ajutor.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Nu există servere Delta Chat, datele tale rămân pe dispozitivul tău.</string>
     <string name="login_inbox">Inbox</string>
     <string name="login_imap_login">Nume de autentificare IMAP</string>
     <string name="login_imap_server">Serverul IMAP</string>
@@ -493,12 +491,6 @@
     <string name="login_smtp_server">Serverul SMTP </string>
     <string name="login_smtp_port">Portul SMTP </string>
     <string name="login_smtp_security">Securitate SMTP</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Metoda de autorizare</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Continuați cu configurația simplificată?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Adresa de e-mail introdusă suportă o configurare simplificată (OAuth 2.0).\n\nÎn pasul următor, vă rugăm să permiteți ca Delta Chat să acționeze ca aplicație de chat prin e-mail.\n\nNu există servere Delta Chat, datele voastre rămân pe dispozitivul dumneavoastră.</string>
     <string name="login_certificate_checks">Verificări de certificate</string>
     <string name="login_error_mail">Vă rugăm să introduceți o adresă de e-mail validă</string>
     <string name="login_error_server">Vă rugăm să introduceți un server / o adresă IP validă</string>

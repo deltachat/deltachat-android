@@ -13,7 +13,7 @@
 * Expose new "Multi-device mode" option instead of "Delete from server" for chatmail profiles
 * Opened in-chat apps got a 'About Apps' menu item
 * Avoid gray avatar on profile creation
-* Update to core 2.27.0
+* Update to core 2.28.0
 
 ## v2.25.0
 2025-11
