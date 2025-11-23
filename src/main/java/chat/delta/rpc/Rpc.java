@@ -170,6 +170,11 @@ public class Rpc {
     return transport.callForResult(new TypeReference<java.util.Map<String, String>>(){}, "get_info", mapper.valueToTree(accountId));
   }
 
+  /* Get storage usage report as formatted string */
+  public String getStorageUsageReportString(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_storage_usage_report_string", mapper.valueToTree(accountId));
+  }
+
   /* Get the blob dir. */
   public String getBlobDir(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "get_blob_dir", mapper.valueToTree(accountId));
@@ -818,6 +823,15 @@ public class Rpc {
    */
   public java.util.List<Integer> getMessageIds(Integer accountId, Integer chatId, Boolean infoOnly, Boolean addDaymarker) throws RpcException {
     return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_message_ids", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(infoOnly), mapper.valueToTree(addDaymarker));
+  }
+
+  /**
+   * Checks if the messages with given IDs exist.
+   * <p>
+   * Returns IDs of existing messages.
+   */
+  public java.util.List<Integer> getExistingMsgIds(Integer accountId, java.util.List<Integer> msgIds) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_existing_msg_ids", mapper.valueToTree(accountId), mapper.valueToTree(msgIds));
   }
 
   public java.util.List<MessageListItem> getMessageListItems(Integer accountId, Integer chatId, Boolean infoOnly, Boolean addDaymarker) throws RpcException {
