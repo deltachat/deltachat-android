@@ -15,6 +15,9 @@ public class LocalHelpActivity extends WebViewActivity
   public static final String SECTION_EXTRA = "section_extra";
 
   @Override
+  protected boolean shouldAskToOpenLink() { return false; }
+
+  @Override
   protected boolean allowInLockedMode() { return true; }
 
   @Override
