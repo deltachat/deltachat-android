@@ -71,9 +71,7 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
             actionBar.setTitle(R.string.pref_background);
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
-            actionBar.setElevation(0); // TODO: use custom toolbar instead
         }
-
     }
 
     @Override
