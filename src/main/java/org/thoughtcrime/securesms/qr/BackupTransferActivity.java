@@ -24,6 +24,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class BackupTransferActivity extends BaseActionBarActivity {
 
@@ -85,7 +86,9 @@ public class BackupTransferActivity extends BaseActionBarActivity {
         supportActionBar.setDisplayHomeAsUpEnabled(true);
         supportActionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
         supportActionBar.setTitle(title);
-        supportActionBar.setElevation(0); // TODO: use custom toolbar instead
+
+        // add padding to avoid content hidden behind system bars
+        ViewUtil.applyWindowInsets(findViewById(R.id.backup_provider_fragment));
     }
 
     @Override
