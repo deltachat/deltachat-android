@@ -432,6 +432,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contacts</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Enter name or email address</string>
     <string name="contacts_type_email_above">Type email address above</string>
 
@@ -794,8 +795,11 @@
     <string name="pref_backup_export_all">Export all %1$d profiles</string>
     <string name="pref_backup_export_start_button">Start Backup</string>
     <string name="pref_backup_written_to_x">Backup written successfully to \"%1$s\".</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Export Secret Keys</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Export secret keys to \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Secret keys written successfully to \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Wallpaper</string>
@@ -889,11 +893,15 @@
     <string name="after_5_weeks">After 5 weeks</string>
     <string name="autodel_after_1_year">After 1 year</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Send Autocrypt Setup Message</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">An Autocrypt Setup Message securely shares your end-to-end setup with other Autocrypt-compliant apps.\n\nIf you use Delta Chat on the other device as well, use \"Settings / Add Second Device\" instead.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Send Autocrypt Setup Message</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Your setup has been sent to yourself. Switch to the other device and open the setup message. You should be asked for a setup code. Enter the following digits:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Prefer End-To-End Encryption</string>
 
     <!-- system messages -->
@@ -1123,6 +1131,7 @@
     <string name="name_desktop">Name</string>
     <string name="select_group_image_desktop">Select Group Image</string>
     <string name="export_backup_desktop">Export Backup</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Autocrypt setup transferred.</string>
     <string name="forget_login_confirmation_desktop">Delete this profile? Everything will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
     <string name="message_detail_sent_desktop">sent</string>
