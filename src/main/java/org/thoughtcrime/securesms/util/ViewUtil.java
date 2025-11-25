@@ -41,10 +41,12 @@ import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
+import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.views.Stub;
 
 import chat.delta.util.ListenableFuture;
@@ -294,4 +296,91 @@ public class ViewUtil {
     }
     return selection;
   }
+
+  /**
+   * Apply window insets to a view by adding padding to avoid  drawing elements behind system bars.
+   * Convenience method that applies insets to all sides.
+   * 
+   * @param view The view to apply insets to
+   */
+  public static void applyWindowInsets(@NonNull View view) {
+    applyWindowInsets(view, true, true, true, true);
+  }
+
+  /**
+   * Apply window insets to a view by adding padding to avoid drawing elements behind system bars.
+   * 
+   * This method stores the original padding values in view tags to ensure that
+   * padding doesn't accumulate on multiple inset applications.
+   * 
+   * @param view The view to apply insets to
+   * @param left Whether to apply left inset
+   * @param top Whether to apply top inset
+   * @param right Whether to apply right inset
+   * @param bottom Whether to apply bottom inset
+   */
+  public static void applyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+    // Store the original padding as a tag only if not already stored
+    // This prevents losing the true original padding on subsequent calls
+    if (view.getTag(R.id.tag_window_insets_padding_left) == null) {
+      view.setTag(R.id.tag_window_insets_padding_left, view.getPaddingLeft());
+      view.setTag(R.id.tag_window_insets_padding_top, view.getPaddingTop());
+      view.setTag(R.id.tag_window_insets_padding_right, view.getPaddingRight());
+      view.setTag(R.id.tag_window_insets_padding_bottom, view.getPaddingBottom());
+    }
+
+    ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
+      Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+
+      // Retrieve the original padding values from tags with null checks
+      Integer leftTag = (Integer) v.getTag(R.id.tag_window_insets_padding_left);
+      Integer topTag = (Integer) v.getTag(R.id.tag_window_insets_padding_top);
+      Integer rightTag = (Integer) v.getTag(R.id.tag_window_insets_padding_right);
+      Integer bottomTag = (Integer) v.getTag(R.id.tag_window_insets_padding_bottom);
+      int basePaddingLeft = leftTag != null ? leftTag : 0;
+      int basePaddingTop = topTag != null ? topTag : 0;
+      int basePaddingRight = rightTag != null ? rightTag : 0;
+      int basePaddingBottom = bottomTag != null ? bottomTag : 0;
+
+      v.setPadding(
+          left ? basePaddingLeft + insets.left : basePaddingLeft,
+          top ? basePaddingTop + insets.top : basePaddingTop,
+          right ? basePaddingRight + insets.right : basePaddingRight,
+          bottom ? basePaddingBottom + insets.bottom : basePaddingBottom
+      );
+
+      return windowInsets;
+    });
+
+    // Request the initial insets to be dispatched if the view is attached
+    if (view.isAttachedToWindow()) {
+      ViewCompat.requestApplyInsets(view);
+    }
+  }
+
+  /**
+   * Apply the top status bar inset as the height of a view.
+   * This is useful for creating a colored status bar background view.
+   * 
+   * @param view The view whose height should be set to the status bar inset
+   */
+  public static void applyWindowInsetsAsHeight(@NonNull View view) {
+    ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
+      Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+
+      android.view.ViewGroup.LayoutParams params = v.getLayoutParams();
+      if (params != null) {
+        params.height = insets.top;
+        v.setLayoutParams(params);
+      }
+
+      return windowInsets;
+    });
+
+    // Request the initial insets to be dispatched if the view is attached
+    if (view.isAttachedToWindow()) {
+      ViewCompat.requestApplyInsets(view);
+    }
+  }
+
 }

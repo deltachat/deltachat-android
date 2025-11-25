@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
 
@@ -11,12 +12,14 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.fragment.app.Fragment;
 
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.lang.reflect.Field;
 
@@ -33,9 +36,26 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     onPreCreate();
-    EdgeToEdge.enable(this);  // docs says to use: WindowCompat.enableEdgeToEdge(getWindow()); but it is not available
+    EdgeToEdge.enable(this);  // TODO: docs says to use: WindowCompat.enableEdgeToEdge(getWindow()); but it requires dep androidx.core:core:1.17.0 which in turns requires to target SDK 36
     super.onCreate(savedInstanceState);
     WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView()).setAppearanceLightStatusBars(false); // force white text in status bar
+  }
+
+  @Override
+  protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+    super.onPostCreate(savedInstanceState);
+
+    // For activities without a custom toolbar, apply insets to status_bar_background view
+    View statusBarBackground = findViewById(R.id.status_bar_background);
+    if (statusBarBackground != null) {
+      ViewUtil.applyWindowInsetsAsHeight(statusBarBackground);
+      ActionBar actionBar = getSupportActionBar();
+      if (actionBar != null) {
+        // elevation is set via status_bar_background view
+        // otherwise there is a drop-shadow at the top
+        actionBar.setElevation(0);
+      }
+    }
   }
 
   @Override
