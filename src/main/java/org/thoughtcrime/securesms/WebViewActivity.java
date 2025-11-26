@@ -38,6 +38,9 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
   protected WebView webView;
 
+  /** Return true the window content should display fullscreen/edge-to-edge ex. in the integrated maps app */
+  protected boolean immersiveMode() { return false; }
+
   protected boolean shouldAskToOpenLink() { return false; }
 
   protected void toggleFakeProxy(boolean enable) {
@@ -67,8 +70,13 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
     webView = findViewById(R.id.webview);
 
-    // add padding to avoid content hidden behind system bars
-    ViewUtil.applyWindowInsets(findViewById(R.id.content_container));
+    if(immersiveMode()) {
+      // set a shadow in the status bar to make it more readable
+      findViewById(R.id.status_bar_background).setBackgroundResource(R.drawable.search_toolbar_shadow);
+    } else {
+      // add padding to avoid content hidden behind system bars
+      ViewUtil.applyWindowInsets(findViewById(R.id.content_container));
+    }
 
     webView.setWebViewClient(new WebViewClient() {
       // IMPORTANT: this is will likely not be called inside iframes unless target=_blank is used in the anchor/link tag.
