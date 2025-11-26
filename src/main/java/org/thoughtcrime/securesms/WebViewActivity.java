@@ -26,6 +26,7 @@ import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.net.IDN;
 
@@ -62,10 +63,13 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {
       actionBar.setDisplayHomeAsUpEnabled(true);
-      actionBar.setElevation(0); // TODO: use custom toolbar instead
     }
 
     webView = findViewById(R.id.webview);
+
+    // add padding to avoid content hidden behind system bars
+    ViewUtil.applyWindowInsets(findViewById(R.id.content_container));
+
     webView.setWebViewClient(new WebViewClient() {
       // IMPORTANT: this is will likely not be called inside iframes unless target=_blank is used in the anchor/link tag.
       // `shouldOverrideUrlLoading()` is called when the user clicks a URL,
