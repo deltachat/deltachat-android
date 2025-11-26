@@ -33,7 +33,6 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
     setContentView(R.layout.activity_blocked_contacts);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setTitle(R.string.pref_blocked_contacts);
-    getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
     initFragment(R.id.fragment, new BlockedAndShareContactsFragment(), getIntent().getExtras());
   }
 
@@ -60,6 +59,12 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
       View view = inflater.inflate(R.layout.contact_selection_list_fragment, container, false);
       recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
       recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+      // allow content to be drawn behind the navigation bar
+      recyclerView.setClipToPadding(false);
+      // add padding to avoid content hidden behind system bars
+      ViewUtil.applyWindowInsets(recyclerView);
+
       emptyStateView = ViewUtil.findById(view, android.R.id.empty);
       emptyStateView.setText(R.string.blocked_empty_hint);
       return view;
