@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="?attr/colorPrimary"
-    android:fitsSystemWindows="true"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-<RelativeLayout
     android:orientation="vertical"
-    android:background="?android:attr/windowBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,7 +9,7 @@
             android:id="@+id/toolbar"
             android:layout_alignParentTop="true"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:elevation="4dp"
@@ -45,6 +38,4 @@
         android:layout_centerInParent="true"
         android:textSize="20sp"
         android:text="@string/one_moment" />
-</RelativeLayout>
-
 </RelativeLayout>
