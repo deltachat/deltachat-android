@@ -44,6 +44,7 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
       actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
     }
 
+    // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(findViewById(R.id.content_container));
 
     nameInput = ViewUtil.findById(this, R.id.name_text);
