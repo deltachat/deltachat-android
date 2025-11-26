@@ -43,6 +43,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -77,6 +78,10 @@ public class LogViewFragment extends Fragment {
     super.onViewCreated(view, savedInstanceState);
 
     logPreview   = (EditText) getView().findViewById(R.id.log_preview);
+
+    // add padding to avoid content hidden behind system bars
+    ViewUtil.applyWindowInsets(getView().findViewById(R.id.content_container), true, false, true, true);
+
     new PopulateLogcatAsyncTask(this).execute();
   }
 
