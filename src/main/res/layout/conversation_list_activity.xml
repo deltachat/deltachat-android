@@ -4,8 +4,6 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:id="@id/container"
                 android:orientation="vertical"
-                android:background="?attr/colorPrimary"
-                android:fitsSystemWindows="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -13,7 +11,7 @@
             android:id="@+id/toolbar"
             android:layout_alignParentTop="true"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:contentInsetStart="0dp"
@@ -95,9 +93,7 @@
     <FrameLayout android:id="@+id/fragment_container"
                  android:layout_below="@id/toolbar"
                  android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                 android:background="?android:attr/windowBackground"
-                 />
+                 android:layout_height="match_parent"/>
 
     <org.thoughtcrime.securesms.components.SearchToolbar
             android:id="@+id/search_toolbar"

@@ -298,6 +298,18 @@ public class ViewUtil {
   }
 
   /**
+   * Get combined insets from status bar, navigation bar and display cutout areas.
+   * 
+   * @param windowInsets The window insets to extract from
+   * @return Combined insets using the maximum values from system bars and display cutout
+   */
+  private static Insets getCombinedInsets(@NonNull WindowInsetsCompat windowInsets) {
+    Insets systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+    Insets displayCutout = windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout());
+    return Insets.max(systemBars, displayCutout);
+  }
+
+  /**
    * Apply window insets to a view by adding margin to avoid drawing it behind system bars.
    * Convenience method that applies insets to all sides.
    * 
@@ -334,7 +346,7 @@ public class ViewUtil {
     }
 
     ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
-      Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+      Insets insets = getCombinedInsets(windowInsets);
 
       // Retrieve the original margin values from tags with null checks
       Integer leftTag = (Integer) v.getTag(R.id.tag_window_insets_margin_left);
@@ -398,7 +410,7 @@ public class ViewUtil {
     }
 
     ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
-      Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+      Insets insets = getCombinedInsets(windowInsets);
 
       // Retrieve the original padding values from tags with null checks
       Integer leftTag = (Integer) v.getTag(R.id.tag_window_insets_padding_left);
@@ -434,7 +446,7 @@ public class ViewUtil {
    */
   public static void applyWindowInsetsAsHeight(@NonNull View view) {
     ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
-      Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+      Insets insets = getCombinedInsets(windowInsets);
 
       android.view.ViewGroup.LayoutParams params = v.getLayoutParams();
       if (params != null) {

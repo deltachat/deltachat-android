@@ -111,7 +111,7 @@ public class ConversationListFragment extends BaseConversationListFragment
     // allow content to be drawn behind the navigation bar
     list.setClipToPadding(false);
     // add padding to avoid content hidden behind system bars
-    ViewUtil.applyWindowInsets(list);
+    ViewUtil.applyWindowInsets(list, true, archive, true, true);
 
     if (archive) {
       fab.setVisibility(View.GONE);

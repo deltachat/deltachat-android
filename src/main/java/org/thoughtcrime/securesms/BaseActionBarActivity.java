@@ -45,6 +45,19 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   protected void onPostCreate(@Nullable Bundle savedInstanceState) {
     super.onPostCreate(savedInstanceState);
 
+    // Apply window insets for edge-to-edge display
+    // The toolbar/app bar should extend behind the status bar with padding applied
+    View toolbar = findViewById(R.id.toolbar);
+    if (toolbar != null) {
+      // Check if toolbar is inside an AppBarLayout
+      View parent = (View) toolbar.getParent();
+      if (parent instanceof com.google.android.material.appbar.AppBarLayout) {
+        ViewUtil.applyWindowInsets(parent, true, true, true, false);
+      } else {
+        ViewUtil.applyWindowInsets(toolbar, true, true, true, false);
+      }
+    }
+
     // For activities without a custom toolbar, apply insets to status_bar_background view
     View statusBarBackground = findViewById(R.id.status_bar_background);
     if (statusBarBackground != null) {
