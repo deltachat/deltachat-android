@@ -298,6 +298,74 @@ public class ViewUtil {
   }
 
   /**
+   * Apply window insets to a view by adding margin to avoid drawing it behind system bars.
+   * Convenience method that applies insets to all sides.
+   * 
+   * @param view The view to apply insets to
+   */
+  public static void applyWindowInsetsAsMargin(@NonNull View view) {
+    applyWindowInsetsAsMargin(view, true, true, true, true);
+  }
+
+  /**
+   * Apply window insets to a view by adding margin to avoid drawing it behind system bars.
+   * 
+   * This method stores the original margin values in view tags to ensure that
+   * margin doesn't accumulate on multiple inset applications.
+   * 
+   * @param view The view to apply insets to
+   * @param left Whether to apply left inset
+   * @param top Whether to apply top inset
+   * @param right Whether to apply right inset
+   * @param bottom Whether to apply bottom inset
+   */
+  public static void applyWindowInsetsAsMargin(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+    // Store the original margin as a tag only if not already stored
+    // This prevents losing the true original margin on subsequent calls
+    if (view.getTag(R.id.tag_window_insets_margin_left) == null) {
+      ViewGroup.LayoutParams params = view.getLayoutParams();
+      if (params instanceof ViewGroup.MarginLayoutParams) {
+        ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) params;
+        view.setTag(R.id.tag_window_insets_margin_left, marginParams.leftMargin);
+        view.setTag(R.id.tag_window_insets_margin_top, marginParams.topMargin);
+        view.setTag(R.id.tag_window_insets_margin_right, marginParams.rightMargin);
+        view.setTag(R.id.tag_window_insets_margin_bottom, marginParams.bottomMargin);
+      }
+    }
+
+    ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
+      Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+
+      // Retrieve the original margin values from tags with null checks
+      Integer leftTag = (Integer) v.getTag(R.id.tag_window_insets_margin_left);
+      Integer topTag = (Integer) v.getTag(R.id.tag_window_insets_margin_top);
+      Integer rightTag = (Integer) v.getTag(R.id.tag_window_insets_margin_right);
+      Integer bottomTag = (Integer) v.getTag(R.id.tag_window_insets_margin_bottom);
+      int baseMarginLeft = leftTag != null ? leftTag : 0;
+      int baseMarginTop = topTag != null ? topTag : 0;
+      int baseMarginRight = rightTag != null ? rightTag : 0;
+      int baseMarginBottom = bottomTag != null ? bottomTag : 0;
+
+      ViewGroup.LayoutParams layoutParams = v.getLayoutParams();
+      if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
+        ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) layoutParams;
+        marginParams.leftMargin = baseMarginLeft + insets.left;
+        marginParams.topMargin = baseMarginTop + insets.top;
+        marginParams.rightMargin = baseMarginRight + insets.right;
+        marginParams.bottomMargin = baseMarginBottom + insets.bottom;
+        v.setLayoutParams(marginParams);
+      }
+
+      return windowInsets;
+    });
+
+    // Request the initial insets to be dispatched if the view is attached
+    if (view.isAttachedToWindow()) {
+      ViewCompat.requestApplyInsets(view);
+    }
+  }
+
+  /**
    * Apply window insets to a view by adding padding to avoid  drawing elements behind system bars.
    * Convenience method that applies insets to all sides.
    * 

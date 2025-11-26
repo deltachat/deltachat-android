@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="?attr/colorPrimary"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+  <include layout="@layout/status_bar_background"/>
 
   <FrameLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="?android:attr/windowBackground"
 	  android:id="@+id/fragment" />
 
-</RelativeLayout>
+</FrameLayout>
