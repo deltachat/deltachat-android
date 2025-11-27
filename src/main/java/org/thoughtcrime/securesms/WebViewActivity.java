@@ -91,7 +91,20 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
       // so, to support all systems, for now, using the old one seems to be the simplest way.
       @Override
       public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        if (url != null) return openOnlineUrl(url);
+        if (url != null) {
+          String schema = url.split(":")[0].toLowerCase();
+          switch (schema) {
+            case "http":
+            case "https":
+            case "gemini":
+            case "tel":
+            case "sms":
+            case "mailto":
+            case "openpgp4fpr":
+            case "geo":
+              return openOnlineUrl(url);
+          }
+        }
         return true; // returning `true` aborts loading
       }
 
