@@ -1,10 +1,10 @@
 package org.thoughtcrime.securesms;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
 
@@ -12,7 +12,6 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.fragment.app.Fragment;
@@ -36,39 +35,22 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     onPreCreate();
-    EdgeToEdge.enable(this);  // TODO: docs says to use: WindowCompat.enableEdgeToEdge(getWindow()); but it requires dep androidx.core:core:1.17.0 which in turns requires to target SDK 36
     super.onCreate(savedInstanceState);
-    WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView()).setAppearanceLightStatusBars(false); // force white text in status bar
+
+    // Only enable Edge-to-Edge on API 30+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+      EdgeToEdge.enable(this);  // TODO: docs says to use: WindowCompat.enableEdgeToEdge(getWindow()); but it requires dep androidx.core:core:1.17.0 which in turns requires to target SDK 36
+
+      // force white text in status bar so it visible over background color
+      WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView()).setAppearanceLightStatusBars(false);
+    }
   }
 
   @Override
   protected void onPostCreate(@Nullable Bundle savedInstanceState) {
     super.onPostCreate(savedInstanceState);
-
-    // Apply window insets for edge-to-edge display
-    // The toolbar/app bar should extend behind the status bar with padding applied
-    View toolbar = findViewById(R.id.toolbar);
-    if (toolbar != null) {
-      // Check if toolbar is inside an AppBarLayout
-      View parent = (View) toolbar.getParent();
-      if (parent instanceof com.google.android.material.appbar.AppBarLayout) {
-        ViewUtil.applyWindowInsets(parent, true, true, true, false);
-      } else {
-        ViewUtil.applyWindowInsets(toolbar, true, true, true, false);
-      }
-    }
-
-    // For activities without a custom toolbar, apply insets to status_bar_background view
-    View statusBarBackground = findViewById(R.id.status_bar_background);
-    if (statusBarBackground != null) {
-      ViewUtil.applyWindowInsetsAsHeight(statusBarBackground);
-      ActionBar actionBar = getSupportActionBar();
-      if (actionBar != null) {
-        // elevation is set via status_bar_background view
-        // otherwise there is a drop-shadow at the top
-        actionBar.setElevation(0);
-      }
-    }
+    // Apply adjustments to the toolbar for edge-to-edge display
+    ViewUtil.adjustToolbarForE2E(this);
   }
 
   @Override

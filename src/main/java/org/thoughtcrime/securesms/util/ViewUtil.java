@@ -41,6 +41,8 @@ import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -332,6 +334,9 @@ public class ViewUtil {
    * @param bottom Whether to apply bottom inset
    */
   public static void applyWindowInsetsAsMargin(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+    // Only enable on API 30+ where WindowInsets APIs work correctly
+    if (Build.VERSION.SDK_INT < VERSION_CODES.R) return;
+
     // Store the original margin as a tag only if not already stored
     // This prevents losing the true original margin on subsequent calls
     if (view.getTag(R.id.tag_window_insets_margin_left) == null) {
@@ -400,6 +405,9 @@ public class ViewUtil {
    * @param bottom Whether to apply bottom inset
    */
   public static void applyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+    // Only enable on API 30+ where WindowInsets APIs work correctly
+    if (Build.VERSION.SDK_INT < VERSION_CODES.R) return;
+
     // Store the original padding as a tag only if not already stored
     // This prevents losing the true original padding on subsequent calls
     if (view.getTag(R.id.tag_window_insets_padding_left) == null) {
@@ -440,11 +448,8 @@ public class ViewUtil {
 
   /**
    * Apply the top status bar inset as the height of a view.
-   * This is useful for creating a colored status bar background view.
-   * 
-   * @param view The view whose height should be set to the status bar inset
    */
-  public static void applyWindowInsetsAsHeight(@NonNull View view) {
+  private static void applyTopInsetAsHeight(@NonNull View view) {
     ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
       Insets insets = getCombinedInsets(windowInsets);
 
@@ -460,6 +465,40 @@ public class ViewUtil {
     // Request the initial insets to be dispatched if the view is attached
     if (view.isAttachedToWindow()) {
       ViewCompat.requestApplyInsets(view);
+    }
+  }
+
+  /**
+   * Apply adjustments to the activity's custom toolbar or set height of R.id.status_bar_background for proper Edge-to-Edge display.
+   * 
+   * @param activity The activity to apply the adjustments to
+   */
+  public static void adjustToolbarForE2E(@NonNull AppCompatActivity activity) {
+    // Only enable on API 30+ where WindowInsets APIs work correctly
+    if (Build.VERSION.SDK_INT < VERSION_CODES.R) return;
+
+    // The toolbar/app bar should extend behind the status bar with padding applied
+    View toolbar = activity.findViewById(R.id.toolbar);
+    if (toolbar != null) {
+      // Check if toolbar is inside an AppBarLayout
+      View parent = (View) toolbar.getParent();
+      if (parent instanceof com.google.android.material.appbar.AppBarLayout) {
+        ViewUtil.applyWindowInsets(parent, true, true, true, false);
+      } else {
+        ViewUtil.applyWindowInsets(toolbar, true, true, true, false);
+      }
+    }
+
+    // For activities without a custom toolbar, apply insets to status_bar_background view
+    View statusBarBackground = activity.findViewById(R.id.status_bar_background);
+    if (statusBarBackground != null) {
+      ViewUtil.applyTopInsetAsHeight(statusBarBackground);
+      ActionBar actionBar = activity.getSupportActionBar();
+      if (actionBar != null) {
+        // elevation is set via status_bar_background view
+        // otherwise there is a drop-shadow at the top
+        actionBar.setElevation(0);
+      }
     }
   }
 
