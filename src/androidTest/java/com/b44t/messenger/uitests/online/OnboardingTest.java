@@ -41,7 +41,7 @@ public class OnboardingTest {
     }
     onView(withText(R.string.scan_invitation_code)).check(matches(isClickable()));
     onView(withText(R.string.import_backup_title)).check(matches(isClickable()));
-    onView(withText(R.string.login_header)).perform(click());
+    onView(withText(R.string.manual_account_setup_option)).perform(click());
     onView(withHint(R.string.email_address)).perform(replaceText(BuildConfig.TEST_ADDR));
     onView(withHint(R.string.existing_password)).perform(replaceText(BuildConfig.TEST_MAIL_PW));
     onView(withContentDescription(R.string.ok)).perform(click());
