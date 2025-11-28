@@ -12,6 +12,7 @@ import chat.delta.rpc.RpcException;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -42,23 +43,32 @@ public class WebxdcGarbageCollectionWorker extends ListenableWorker {
           return;
         }
 
+        List<Integer> accounts;
+        try {
+          accounts = rpc.getAllAccountIds();
+        } catch (RpcException e) {
+          Log.e(TAG, "error calling rpc.getAllAccountIds()", e);
+          completer.set(Result.failure());
+          return;
+        }
+
         for (Object key : origins.keySet()) {
           String url = (String)key;
           Matcher m = WEBXDC_URL_PATTERN.matcher(url);
-          if (m.matches()) {
-            int accId = Integer.parseInt(m.group(1));
+          int accId = m.matches()? Integer.parseInt(m.group(1)) : 0;
+          if (accId != 0 && accounts.contains(accId)) {
             int msgId = Integer.parseInt(m.group(2));
-            boolean delete;
             try {
-              delete = rpc.getExistingMsgIds(accId, Collections.singletonList(msgId)).isEmpty();
-            } catch (RpcException ignore) {
-              delete = true; // account doesn't exist anymore, clean storage
-            }
-            if (delete) {
-              webStorage.deleteOrigin(url);
-              Log.i(TAG, String.format("Deleted webxdc origin: %s", url));
-            } else {
-              Log.i(TAG, String.format("Existing webxdc origin: %s", url));
+              if (rpc.getExistingMsgIds(accId, Collections.singletonList(msgId)).isEmpty()) {
+                webStorage.deleteOrigin(url);
+                Log.i(TAG, String.format("Deleted webxdc origin: %s", url));
+              } else {
+                Log.i(TAG, String.format("Existing webxdc origin: %s", url));
+              }
+            } catch (RpcException e) {
+              Log.e(TAG, "error calling rpc.getExistingMsgIds()", e);
+              completer.set(Result.failure());
+              return;
             }
           } else { // old webxdc URL schemes, etc
             webStorage.deleteOrigin(url);
