@@ -237,10 +237,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     }
 
     if (dcContext.isChatmail()) {
-      showEmails.setVisible(false);
-      showSystemContacts.setVisible(false);
-      mvboxMoveCheckbox.setVisible(false);
-      onlyFetchMvboxCheckbox.setVisible(false);
+      findPreference("pref_category_legacy").setVisible(false);
     }
   }
 
