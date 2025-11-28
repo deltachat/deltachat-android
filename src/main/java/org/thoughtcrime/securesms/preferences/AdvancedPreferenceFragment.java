@@ -237,7 +237,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     }
 
     if (dcContext.isChatmail()) {
-      findPreference("pref_legacy").setVisible(false);
+      findPreference("pref_category_legacy").setVisible(false);
     }
   }
 

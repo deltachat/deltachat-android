@@ -72,7 +72,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="pref_legacy" android:title="Legacy">
+    <PreferenceCategory android:key="pref_category_legacy" android:title="Legacy">
 
         <ListPreference
             android:key="pref_show_emails"
