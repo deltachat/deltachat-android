@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Target Android 16
 * Change color of links in text messages
 * Improve edge-to-edge support
 * Allow to withdraw channel invite links and QR codes
