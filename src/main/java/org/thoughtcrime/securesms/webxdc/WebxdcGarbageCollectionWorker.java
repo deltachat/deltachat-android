@@ -12,7 +12,6 @@ import chat.delta.rpc.RpcException;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -43,20 +42,11 @@ public class WebxdcGarbageCollectionWorker extends ListenableWorker {
           return;
         }
 
-        List<Integer> accounts;
-        try {
-          accounts = rpc.getAllAccountIds();
-        } catch (RpcException e) {
-          Log.e(TAG, "error calling rpc.getAllAccountIds()", e);
-          completer.set(Result.failure());
-          return;
-        }
-
         for (Object key : origins.keySet()) {
           String url = (String)key;
           Matcher m = WEBXDC_URL_PATTERN.matcher(url);
-          int accId = m.matches()? Integer.parseInt(m.group(1)) : 0;
-          if (accId != 0 && accounts.contains(accId)) {
+          if (m.matches()) {
+            int accId = Integer.parseInt(m.group(1));
             int msgId = Integer.parseInt(m.group(2));
             try {
               if (rpc.getExistingMsgIds(accId, Collections.singletonList(msgId)).isEmpty()) {
