@@ -5,11 +5,21 @@
     <Preference android:key="pref_view_log"
         android:title="@string/pref_view_log"/>
 
-    <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-        android:defaultValue="true"
-        android:key="pref_webxdc_realtime_enabled"
-        android:summary="@string/enable_realtime_explain"
-        android:title="@string/enable_realtime"/>
+    <PreferenceCategory android:title="@string/pref_server">
+
+        <Preference android:key="password_account_settings_button"
+            android:title="@string/edit_transport"/>
+
+        <Preference android:key="proxy_settings_button"
+            android:title="@string/proxy_settings"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="pref_bcc_self"
+            android:title="@string/pref_multidevice"
+            android:summary="@string/pref_multidevice_explain"/>
+
+    </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_experimental_features">
 
@@ -55,32 +65,20 @@
             android:title="@string/pref_incognito_keyboard" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_show_system_contacts"
-            android:title="@string/pref_show_system_contacts"
-            android:summary="@string/pref_show_system_contacts_explain"/>
+            android:defaultValue="true"
+            android:key="pref_webxdc_realtime_enabled"
+            android:summary="@string/enable_realtime_explain"
+            android:title="@string/enable_realtime"/>
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/pref_server">
-
-        <Preference android:key="password_account_settings_button"
-            android:title="@string/edit_transport"/>
-
-        <Preference android:key="proxy_settings_button"
-            android:title="@string/proxy_settings"/>
+    <PreferenceCategory android:key="pref_legacy" android:title="Legacy">
 
         <ListPreference
             android:key="pref_show_emails"
             android:title="@string/pref_show_emails"
             android:entries="@array/pref_show_emails_entries"
             android:entryValues="@array/pref_show_emails_values" />
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="true"
-            android:key="pref_bcc_self"
-            android:title="@string/pref_multidevice"
-            android:summary="@string/pref_multidevice_explain"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
@@ -93,6 +91,12 @@
             android:key="pref_only_fetch_mvbox"
             android:title="@string/pref_only_fetch_mvbox_title"
             android:summary="@string/pref_only_fetch_mvbox_explain" />
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_show_system_contacts"
+            android:title="@string/pref_show_system_contacts"
+            android:summary="@string/pref_show_system_contacts_explain"/>
 
     </PreferenceCategory>
 
