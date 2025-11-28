@@ -48,6 +48,7 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 /**
  * The Activity for application preference display and management.
@@ -77,7 +78,9 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
 
     //noinspection ConstantConditions
     this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
+
+    // add padding to avoid content hidden behind system bars
+    ViewUtil.applyWindowInsets(findViewById(R.id.fragment));
 
     if (icicle == null) {
       initFragment(R.id.fragment, new ApplicationPreferenceFragment());

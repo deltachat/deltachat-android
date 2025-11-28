@@ -18,6 +18,7 @@ import com.journeyapps.barcodescanner.CompoundBarcodeView;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class QrScanFragment extends Fragment {
 
@@ -37,6 +38,9 @@ public class QrScanFragment extends Fragment {
 
         barcodeScannerView = view.findViewById(R.id.zxing_barcode_scanner);
         barcodeScannerView.setStatusText(getString(R.string.qrscan_hint) + "\n ");
+
+        // add padding to avoid content hidden behind system bars
+        ViewUtil.applyWindowInsets(barcodeScannerView.getStatusView());
 
         return view;
     }

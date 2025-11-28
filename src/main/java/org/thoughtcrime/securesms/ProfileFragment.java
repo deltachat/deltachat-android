@@ -68,6 +68,12 @@ public class ProfileFragment extends Fragment
     adapter = new ProfileAdapter(this, GlideApp.with(this), this);
 
     RecyclerView list = ViewUtil.findById(view, R.id.recycler_view);
+
+    // allow content to be drawn behind the navigation bar
+    list.setClipToPadding(false);
+    // add padding to avoid content hidden behind system bars
+    ViewUtil.applyWindowInsets(list);
+
     list.setAdapter(adapter);
     list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 

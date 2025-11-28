@@ -23,7 +23,6 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   protected void onCreate(Bundle icicle, boolean ready) {
     setContentView(R.layout.activity_conversation_list_archive);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
     if (isRelayingMessageContent(this)) {
       getSupportActionBar().setTitle(isSharing(this) ? R.string.chat_share_with_title : R.string.forward_to);
       getSupportActionBar().setSubtitle(R.string.chat_archived_label);

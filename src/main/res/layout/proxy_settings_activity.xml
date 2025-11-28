@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="?attr/colorPrimary"
-    android:fitsSystemWindows="true"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/windowBackground"
     android:orientation="vertical"
     tools:context=".proxy.ProxySettingsActivity">
+
+  <include layout="@layout/status_bar_background"/>
 
   <androidx.appcompat.widget.SwitchCompat
       android:id="@+id/proxy_switch"
@@ -21,12 +16,12 @@
       android:padding="16dp"
       android:text="@string/proxy_use_proxy" />
 
+  <!-- clipToPadding is needed so ViewUtil.applyWindowInsets() works properly -->
   <ListView
       android:id="@+id/proxy_list"
       android:paddingTop="10dp"
+      android:clipToPadding="false"
       android:layout_width="match_parent"
       android:layout_height="wrap_content" />
 
 </LinearLayout>
-
-</RelativeLayout>

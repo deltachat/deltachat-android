@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="?attr/colorPrimary"
-    android:fitsSystemWindows="true"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
 <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/windowBackground"
     android:orientation="vertical"
     android:gravity="center_horizontal">
+
+    <include layout="@layout/status_bar_background"/>
 
     <androidx.legacy.widget.Space
         android:layout_weight="2"
@@ -40,5 +36,3 @@
         android:layout_height="0dp"/>
 
 </LinearLayout>
-
-</RelativeLayout>

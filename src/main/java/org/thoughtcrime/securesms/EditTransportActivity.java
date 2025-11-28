@@ -91,6 +91,10 @@ public class EditTransportActivity extends BaseActionBarActivity implements DcEv
 
         setContentView(R.layout.activity_edittransport);
 
+        // add padding to avoid content hidden behind system bars
+        ViewUtil.applyWindowInsets(findViewById(R.id.content_container));
+
+
         emailInput = findViewById(R.id.email_text);
         passwordInput = findViewById(R.id.password_text);
 
@@ -131,7 +135,6 @@ public class EditTransportActivity extends BaseActionBarActivity implements DcEv
             );
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
-            actionBar.setElevation(0); // TODO: use custom toolbar instead
         }
 
         if (config != null) emailInput.setEnabled(false);
