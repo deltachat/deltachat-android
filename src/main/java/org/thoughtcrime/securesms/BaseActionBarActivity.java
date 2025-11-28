@@ -39,7 +39,9 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
     // Only enable Edge-to-Edge on API 30+
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-      EdgeToEdge.enable(this);  // TODO: docs says to use: WindowCompat.enableEdgeToEdge(getWindow()); but it requires dep androidx.core:core:1.17.0 which in turns requires to target SDK 36
+      // docs says to use: WindowCompat.enableEdgeToEdge(getWindow());
+      // but it actually makes things worse, the next takes care of setting the 3-buttons navigation bar background
+      EdgeToEdge.enable(this);
 
       // force white text in status bar so it visible over background color
       WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView()).setAppearanceLightStatusBars(false);
