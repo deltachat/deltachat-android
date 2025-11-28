@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="?attr/colorPrimary"
-    android:fitsSystemWindows="true"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
 <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
+    android:background="?android:attr/windowBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/windowBackground"
     android:orientation="vertical">
+
+    <include layout="@layout/status_bar_background"/>
 
     <LinearLayout
         android:id="@+id/group_image_holder"
@@ -53,7 +50,9 @@
         android:textSize="18sp"
         android:text="@string/chat_new_channel_hint" />
 
+  <!-- clipToPadding is needed so ViewUtil.applyWindowInsets() works properly -->
     <ListView android:id="@+id/selected_contacts_list"
+        android:clipToPadding="false"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,5 +60,3 @@
         android:divider="@null" />
 
 </LinearLayout>
-
-</RelativeLayout>

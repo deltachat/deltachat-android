@@ -41,10 +41,14 @@ import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
+import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.views.Stub;
 
 import chat.delta.util.ListenableFuture;
@@ -294,4 +298,208 @@ public class ViewUtil {
     }
     return selection;
   }
+
+  /**
+   * Get combined insets from status bar, navigation bar and display cutout areas.
+   * 
+   * @param windowInsets The window insets to extract from
+   * @return Combined insets using the maximum values from system bars and display cutout
+   */
+  private static Insets getCombinedInsets(@NonNull WindowInsetsCompat windowInsets) {
+    Insets systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+    Insets displayCutout = windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout());
+    return Insets.max(systemBars, displayCutout);
+  }
+
+  /**
+   * Apply window insets to a view by adding margin to avoid drawing it behind system bars.
+   * Convenience method that applies insets to all sides.
+   * 
+   * @param view The view to apply insets to
+   */
+  public static void applyWindowInsetsAsMargin(@NonNull View view) {
+    applyWindowInsetsAsMargin(view, true, true, true, true);
+  }
+
+  /**
+   * Apply window insets to a view by adding margin to avoid drawing it behind system bars.
+   * 
+   * This method stores the original margin values in view tags to ensure that
+   * margin doesn't accumulate on multiple inset applications.
+   * 
+   * @param view The view to apply insets to
+   * @param left Whether to apply left inset
+   * @param top Whether to apply top inset
+   * @param right Whether to apply right inset
+   * @param bottom Whether to apply bottom inset
+   */
+  public static void applyWindowInsetsAsMargin(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+    // Only enable on API 30+ where WindowInsets APIs work correctly
+    if (Build.VERSION.SDK_INT < VERSION_CODES.R) return;
+
+    // Store the original margin as a tag only if not already stored
+    // This prevents losing the true original margin on subsequent calls
+    if (view.getTag(R.id.tag_window_insets_margin_left) == null) {
+      ViewGroup.LayoutParams params = view.getLayoutParams();
+      if (params instanceof ViewGroup.MarginLayoutParams) {
+        ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) params;
+        view.setTag(R.id.tag_window_insets_margin_left, marginParams.leftMargin);
+        view.setTag(R.id.tag_window_insets_margin_top, marginParams.topMargin);
+        view.setTag(R.id.tag_window_insets_margin_right, marginParams.rightMargin);
+        view.setTag(R.id.tag_window_insets_margin_bottom, marginParams.bottomMargin);
+      }
+    }
+
+    ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
+      Insets insets = getCombinedInsets(windowInsets);
+
+      // Retrieve the original margin values from tags with null checks
+      Integer leftTag = (Integer) v.getTag(R.id.tag_window_insets_margin_left);
+      Integer topTag = (Integer) v.getTag(R.id.tag_window_insets_margin_top);
+      Integer rightTag = (Integer) v.getTag(R.id.tag_window_insets_margin_right);
+      Integer bottomTag = (Integer) v.getTag(R.id.tag_window_insets_margin_bottom);
+      int baseMarginLeft = leftTag != null ? leftTag : 0;
+      int baseMarginTop = topTag != null ? topTag : 0;
+      int baseMarginRight = rightTag != null ? rightTag : 0;
+      int baseMarginBottom = bottomTag != null ? bottomTag : 0;
+
+      ViewGroup.LayoutParams layoutParams = v.getLayoutParams();
+      if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
+        ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) layoutParams;
+        marginParams.leftMargin = baseMarginLeft + insets.left;
+        marginParams.topMargin = baseMarginTop + insets.top;
+        marginParams.rightMargin = baseMarginRight + insets.right;
+        marginParams.bottomMargin = baseMarginBottom + insets.bottom;
+        v.setLayoutParams(marginParams);
+      }
+
+      return windowInsets;
+    });
+
+    // Request the initial insets to be dispatched if the view is attached
+    if (view.isAttachedToWindow()) {
+      ViewCompat.requestApplyInsets(view);
+    }
+  }
+
+  /**
+   * Apply window insets to a view by adding padding to avoid  drawing elements behind system bars.
+   * Convenience method that applies insets to all sides.
+   * 
+   * @param view The view to apply insets to
+   */
+  public static void applyWindowInsets(@NonNull View view) {
+    applyWindowInsets(view, true, true, true, true);
+  }
+
+  /**
+   * Apply window insets to a view by adding padding to avoid drawing elements behind system bars.
+   * 
+   * This method stores the original padding values in view tags to ensure that
+   * padding doesn't accumulate on multiple inset applications.
+   * 
+   * @param view The view to apply insets to
+   * @param left Whether to apply left inset
+   * @param top Whether to apply top inset
+   * @param right Whether to apply right inset
+   * @param bottom Whether to apply bottom inset
+   */
+  public static void applyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+    // Only enable on API 30+ where WindowInsets APIs work correctly
+    if (Build.VERSION.SDK_INT < VERSION_CODES.R) return;
+
+    // Store the original padding as a tag only if not already stored
+    // This prevents losing the true original padding on subsequent calls
+    if (view.getTag(R.id.tag_window_insets_padding_left) == null) {
+      view.setTag(R.id.tag_window_insets_padding_left, view.getPaddingLeft());
+      view.setTag(R.id.tag_window_insets_padding_top, view.getPaddingTop());
+      view.setTag(R.id.tag_window_insets_padding_right, view.getPaddingRight());
+      view.setTag(R.id.tag_window_insets_padding_bottom, view.getPaddingBottom());
+    }
+
+    ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
+      Insets insets = getCombinedInsets(windowInsets);
+
+      // Retrieve the original padding values from tags with null checks
+      Integer leftTag = (Integer) v.getTag(R.id.tag_window_insets_padding_left);
+      Integer topTag = (Integer) v.getTag(R.id.tag_window_insets_padding_top);
+      Integer rightTag = (Integer) v.getTag(R.id.tag_window_insets_padding_right);
+      Integer bottomTag = (Integer) v.getTag(R.id.tag_window_insets_padding_bottom);
+      int basePaddingLeft = leftTag != null ? leftTag : 0;
+      int basePaddingTop = topTag != null ? topTag : 0;
+      int basePaddingRight = rightTag != null ? rightTag : 0;
+      int basePaddingBottom = bottomTag != null ? bottomTag : 0;
+
+      v.setPadding(
+          left ? basePaddingLeft + insets.left : basePaddingLeft,
+          top ? basePaddingTop + insets.top : basePaddingTop,
+          right ? basePaddingRight + insets.right : basePaddingRight,
+          bottom ? basePaddingBottom + insets.bottom : basePaddingBottom
+      );
+
+      return windowInsets;
+    });
+
+    // Request the initial insets to be dispatched if the view is attached
+    if (view.isAttachedToWindow()) {
+      ViewCompat.requestApplyInsets(view);
+    }
+  }
+
+  /**
+   * Apply the top status bar inset as the height of a view.
+   */
+  private static void applyTopInsetAsHeight(@NonNull View view) {
+    ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
+      Insets insets = getCombinedInsets(windowInsets);
+
+      android.view.ViewGroup.LayoutParams params = v.getLayoutParams();
+      if (params != null) {
+        params.height = insets.top;
+        v.setLayoutParams(params);
+      }
+
+      return windowInsets;
+    });
+
+    // Request the initial insets to be dispatched if the view is attached
+    if (view.isAttachedToWindow()) {
+      ViewCompat.requestApplyInsets(view);
+    }
+  }
+
+  /**
+   * Apply adjustments to the activity's custom toolbar or set height of R.id.status_bar_background for proper Edge-to-Edge display.
+   * 
+   * @param activity The activity to apply the adjustments to
+   */
+  public static void adjustToolbarForE2E(@NonNull AppCompatActivity activity) {
+    // Only enable on API 30+ where WindowInsets APIs work correctly
+    if (Build.VERSION.SDK_INT < VERSION_CODES.R) return;
+
+    // The toolbar/app bar should extend behind the status bar with padding applied
+    View toolbar = activity.findViewById(R.id.toolbar);
+    if (toolbar != null) {
+      // Check if toolbar is inside an AppBarLayout
+      View parent = (View) toolbar.getParent();
+      if (parent instanceof com.google.android.material.appbar.AppBarLayout) {
+        ViewUtil.applyWindowInsets(parent, true, true, true, false);
+      } else {
+        ViewUtil.applyWindowInsets(toolbar, true, true, true, false);
+      }
+    }
+
+    // For activities without a custom toolbar, apply insets to status_bar_background view
+    View statusBarBackground = activity.findViewById(R.id.status_bar_background);
+    if (statusBarBackground != null) {
+      ViewUtil.applyTopInsetAsHeight(statusBarBackground);
+      ActionBar actionBar = activity.getSupportActionBar();
+      if (actionBar != null) {
+        // elevation is set via status_bar_background view
+        // otherwise there is a drop-shadow at the top
+        actionBar.setElevation(0);
+      }
+    }
+  }
+
 }

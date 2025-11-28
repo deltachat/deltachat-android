@@ -42,8 +42,10 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
       actionBar.setTitle(R.string.menu_new_classic_contact);
       actionBar.setDisplayHomeAsUpEnabled(true);
       actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
-      actionBar.setElevation(0); // TODO: use custom toolbar instead
     }
+
+    // add padding to avoid content hidden behind system bars
+    ViewUtil.applyWindowInsets(findViewById(R.id.content_container));
 
     nameInput = ViewUtil.findById(this, R.id.name_text);
     addrInput = ViewUtil.findById(this, R.id.email_text);

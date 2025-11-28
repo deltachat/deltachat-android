@@ -151,13 +151,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   }
 
   @Override
+  protected boolean immersiveMode() { return hideActionBar; }
+
+  @Override
   protected void onCreate(Bundle state, boolean ready) {
+    Bundle b = getIntent().getExtras();
+    hideActionBar = b.getBoolean(EXTRA_HIDE_ACTION_BAR, false);
+
     super.onCreate(state, ready);
     rpc = DcHelper.getRpc(this);
     initTTS();
-
-    Bundle b = getIntent().getExtras();
-    hideActionBar = b.getBoolean(EXTRA_HIDE_ACTION_BAR, false);
 
     // enter fullscreen mode if necessary,
     // this is needed here because if the app is opened while already in landscape mode, onConfigurationChanged() is not triggered

@@ -25,6 +25,7 @@ import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;
@@ -46,11 +47,13 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
     dcContext = DcHelper.getContext(this);
     WebView webView = findViewById(R.id.webview);
 
+    // add padding to avoid content hidden behind system bars
+    ViewUtil.applyWindowInsets(findViewById(R.id.content_container));
+
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {
       actionBar.setDisplayHomeAsUpEnabled(true);
       actionBar.setTitle(R.string.webxdc_apps);
-      actionBar.setElevation(0); // TODO: use custom toolbar instead
     }
 
     webView.setWebViewClient(new WebViewClient() {

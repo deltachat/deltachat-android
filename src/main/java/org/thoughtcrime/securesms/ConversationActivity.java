@@ -873,6 +873,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     ImageButton quickCameraToggle = ViewUtil.findById(this, R.id.quick_camera_toggle);
 
+    // apply padding top to avoid drawing behind top bar
+    ViewUtil.applyWindowInsets(findViewById(R.id.fragment_content), false, true, false, false);
+    // apply padding to root to avoid collision with system bars
+    ViewUtil.applyWindowInsets(findViewById(R.id.root_layout), true, false, true, true);
+
     container.addOnKeyboardShownListener(this);
     container.addOnKeyboardHiddenListener(backgroundView);
     container.addOnKeyboardShownListener(backgroundView);
@@ -933,7 +938,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     supportActionBar.setCustomView(R.layout.conversation_title_view);
     supportActionBar.setDisplayShowCustomEnabled(true);
     supportActionBar.setDisplayShowTitleEnabled(false);
-    supportActionBar.setElevation(0); // TODO: use custom toolbar instead
 
     Toolbar parent = (Toolbar) supportActionBar.getCustomView().getParent();
     parent.setPadding(0,0,0,0);

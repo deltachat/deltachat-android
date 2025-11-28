@@ -19,6 +19,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class RegistrationQrActivity extends BaseActionBarActivity {
 
@@ -42,7 +43,9 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
             getSupportActionBar().setTitle(R.string.scan_invitation_code);
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
+
+        // add padding to avoid content hidden behind system bars
+        ViewUtil.applyWindowInsets(findViewById(R.id.layout_container), true, false, true, true);
 
         barcodeScannerView = findViewById(R.id.zxing_barcode_scanner);
         barcodeScannerView.setStatusText(getString(R.string.qrscan_hint) + "\n ");

@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Tag IDs for storing original padding values when applying window insets -->
+    <item name="tag_window_insets_padding_left" type="id"/>
+    <item name="tag_window_insets_padding_top" type="id"/>
+    <item name="tag_window_insets_padding_right" type="id"/>
+    <item name="tag_window_insets_padding_bottom" type="id"/>
+
+    <!-- Tag ID for storing original margin values when applying window insets -->
+    <item name="tag_window_insets_margin_left" type="id"/>
+    <item name="tag_window_insets_margin_top" type="id"/>
+    <item name="tag_window_insets_margin_right" type="id"/>
+    <item name="tag_window_insets_margin_bottom" type="id"/>
 </resources>

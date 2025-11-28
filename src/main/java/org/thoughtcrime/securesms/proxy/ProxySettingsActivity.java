@@ -30,6 +30,7 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.LinkedList;
 
@@ -50,13 +51,17 @@ public class ProxySettingsActivity extends BaseActionBarActivity
     if (actionBar != null) {
       actionBar.setTitle(R.string.proxy_settings);
       actionBar.setDisplayHomeAsUpEnabled(true);
-      actionBar.setElevation(0); // TODO: use custom toolbar instead
     }
+
+    proxySwitch = findViewById(R.id.proxy_switch);
+    ListView proxyList = findViewById(R.id.proxy_list);
+
+    ViewUtil.applyWindowInsets(proxySwitch, true, false, true, false);
+    ViewUtil.applyWindowInsets(proxyList, true, false, true, true);
 
     adapter = new ProxyListAdapter(this);
     adapter.setItemClickListener(this);
 
-    proxySwitch = findViewById(R.id.proxy_switch);
     proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1);
     proxySwitch.setOnClickListener(l -> {
       if (proxySwitch.isChecked() && adapter.getCount() == 0) {
@@ -67,7 +72,6 @@ public class ProxySettingsActivity extends BaseActionBarActivity
       }
     });
 
-    ListView proxyList = findViewById(R.id.proxy_list);
     proxyList.setAdapter(adapter);
     proxyList.addHeaderView(View.inflate(this, R.layout.proxy_list_header, null), null, false);
     View footer = View.inflate(this, R.layout.proxy_list_footer, null);

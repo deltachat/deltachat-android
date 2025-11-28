@@ -80,7 +80,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     unencrypted = getIntent().getBooleanExtra(UNENCRYPTED, false);
     Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
-    getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
 
     groupChatId = getIntent().getIntExtra(EDIT_GROUP_CHAT_ID, 0);
     attachmentManager = new AttachmentManager(this, () -> {});
@@ -142,6 +141,11 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     avatar              = ViewUtil.findById(this, R.id.avatar);
     groupName           = ViewUtil.findById(this, R.id.group_name);
     TextView chatHints  = ViewUtil.findById(this, R.id.chat_hints);
+
+    // add padding to avoid content hidden behind system bars
+    ViewUtil.applyWindowInsets(lv, false, false, false, true);
+    // apply padding to root to avoid collision with system bars
+    ViewUtil.applyWindowInsets(findViewById(R.id.root_layout), true, false, true, false);
 
     initializeAvatarView();
 

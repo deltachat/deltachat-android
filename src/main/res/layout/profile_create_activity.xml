@@ -2,14 +2,13 @@
 
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fitsSystemWindows="true"
-    android:background="?attr/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+  <include layout="@layout/status_bar_background"/>
+
 <org.thoughtcrime.securesms.components.InputAwareLayout
         android:id="@+id/container"
-        android:background="?android:attr/windowBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="20dp"
