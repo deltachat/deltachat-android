@@ -130,10 +130,7 @@ public class LogViewFragment extends Fragment {
   }
 
   private static String grabLogcat(LogViewFragment fragment) {
-    String command = "logcat -v threadtime -d -t 10000";
-    if (!Prefs.isDeveloperModeEnabled(fragment.getActivity())) {
-      command += " *:I";
-    }
+    String command = "logcat -v threadtime -d -t 10000 *:I";
     try {
       final Process         process        = Runtime.getRuntime().exec(command);
       final BufferedReader  bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
