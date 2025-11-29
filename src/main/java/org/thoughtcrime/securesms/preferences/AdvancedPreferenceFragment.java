@@ -61,7 +61,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   CheckBoxPreference mvboxMoveCheckbox;
   CheckBoxPreference onlyFetchMvboxCheckbox;
   CheckBoxPreference webxdcRealtimeCheckbox;
-  CheckBoxPreference showSystemContacts;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -132,15 +131,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       webxdcRealtimeCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
         boolean enabled = (Boolean) newValue;
         dcContext.setConfigInt(CONFIG_WEBXDC_REALTIME_ENABLED, enabled? 1 : 0);
-        return true;
-      });
-    }
-
-    showSystemContacts = (CheckBoxPreference) this.findPreference("pref_show_system_contacts");
-    if (showSystemContacts != null) {
-      showSystemContacts.setOnPreferenceChangeListener((preference, newValue) -> {
-        boolean enabled = (Boolean) newValue;
-        dcContext.setConfigInt("ui.android.show_system_contacts", enabled? 1 : 0);
         return true;
       });
     }
@@ -251,7 +241,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
     onlyFetchMvboxCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_ONLY_FETCH_MVBOX));
     webxdcRealtimeCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_WEBXDC_REALTIME_ENABLED));
-    showSystemContacts.setChecked(0!=dcContext.getConfigInt("ui.android.show_system_contacts"));
   }
 
   @Override

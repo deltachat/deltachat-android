@@ -19,13 +19,9 @@ package org.thoughtcrime.securesms;
 
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -51,13 +47,11 @@ import com.b44t.messenger.DcEvent;
 import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.contacts.ContactAccessor;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.contacts.NewContactActivity;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -112,13 +106,6 @@ public class ContactSelectionListFragment extends    Fragment
   public void onStart() {
     super.onStart();
     this.getLoaderManager().initLoader(0, null, this);
-    if (dcContext.getConfigInt("ui.android.show_system_contacts") != 0 && !dcContext.isChatmail()) {
-      Permissions.with(this)
-        .request(Manifest.permission.READ_CONTACTS)
-        .ifNecessary()
-        .onAllGranted(this::handleContactPermissionGranted)
-        .execute();
-    }
   }
 
   @Override
@@ -287,38 +274,6 @@ public class ContactSelectionListFragment extends    Fragment
   @Override
   public void onLoaderReset(Loader<DcContactsLoader.Ret> loader) {
     ((ContactSelectionListAdapter) recyclerView.getAdapter()).changeData(null);
-  }
-
-  @SuppressLint("StaticFieldLeak")
-  private void handleContactPermissionGranted() {
-    new AsyncTask<Void, Void, Void>() {
-
-      @Override
-      protected Void doInBackground(Void... voids) {
-        loadSystemContacts();
-        return null;
-      }
-
-    }.execute();
-  }
-
-  private void loadSystemContacts() {
-    Thread thread = new Thread() {
-      @Override
-      public void run() {
-        try {
-          ContactAccessor contactAccessor = ContactAccessor.getInstance();
-          String allSystemContacts = contactAccessor.getAllSystemContactsAsString(getContext());
-          if (!allSystemContacts.isEmpty()) {
-            dcContext.addAddressBook(allSystemContacts);
-          }
-        } catch (SecurityException e) {
-          Log.e(TAG, "Caught a weird bug in the Android OS https://github.com/deltachat/deltachat-android/issues/1639: " + e);
-          e.printStackTrace();
-        }
-      }
-    };
-    thread.start();
   }
 
   private class ListClickListener implements ContactSelectionListAdapter.ItemClickListener {
