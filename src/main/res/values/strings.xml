@@ -421,8 +421,8 @@
     <string name="ask_export_attachment">Exporting attachments will allow other apps on your device to access them.\n\nContinue?</string>
     <string name="ask_block_contact">Block this contact?\n\nDirect messages or groups created by blocked contacts will not show up.\n\nOther groups with blocked contacts will still show their messages.</string>
     <string name="ask_unblock_contact">Unblock this contact?</string>
-    <string name="ask_delete_contacts">Delete contacts?\n\nContacts with ongoing chats or from the system address book cannot be deleted permanently.</string>
-    <string name="ask_delete_contact">Delete contact %1$s?\n\nContacts with ongoing chats or from the system address book cannot be deleted permanently.</string>
+    <string name="ask_delete_contacts">Delete contacts?\n\nContacts with ongoing chats cannot be deleted permanently.</string>
+    <string name="ask_delete_contact">Delete contact %1$s?\n\nContacts with ongoing chats cannot be deleted permanently.</string>
     <string name="ask_start_chat_with">Chat with %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
@@ -782,7 +782,9 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Encryption</string>
     <string name="pref_manage_keys">Manage Keys</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Read System Address Book</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Offer to create chats with contacts from the address book.</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">In-Chat Sounds</string>
@@ -815,8 +817,10 @@
     <string name="pref_multidevice_explain">Synchronize your messages with your other devices. Automatically enabled on adding a second device</string>
     <string name="pref_multidevice_change_warn">Multi-Device Mode must be enabled when using the same profile on multiple devices. Only disable this setting if you have removed this profile from all your other devices.\n\nDisabling Multi-Device Mode while using the profile on multiple devices will result in missed messages and other problems.</string>
     <string name="pref_auto_folder_moves">Move automatically to DeltaChat Folder</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
     <string name="pref_only_fetch_mvbox_title">Only Fetch from DeltaChat Folder</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Ignore other folders. Requires your server to move chat messages to the DeltaChat folder.</string>
     <string name="pref_show_emails">Show Classic Emails</string>
     <string name="pref_show_emails_no">No, chats only</string>
