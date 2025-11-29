@@ -193,14 +193,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       });
     }
 
-    Preference developerModeEnabled = this.findPreference("pref_developer_mode_enabled");
-    if (developerModeEnabled != null) {
-      developerModeEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
-        WebView.setWebContentsDebuggingEnabled((Boolean) newValue);
-        return true;
-      });
-    }
-
     Preference callsEnabled = this.findPreference("pref_calls_enabled");
     if (callsEnabled != null) {
       callsEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
