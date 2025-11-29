@@ -42,12 +42,6 @@
             android:key="pref_location_streaming_enabled"
             android:title="@string/pref_on_demand_location_streaming"/>
 
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_developer_mode_enabled"
-            android:summary="@string/pref_developer_mode_explain"
-            android:title="@string/pref_developer_mode"/>
-
     </PreferenceCategory>
 
     <PreferenceCategory>
@@ -89,11 +83,6 @@
             android:defaultValue="false"
             android:key="pref_only_fetch_mvbox"
             android:title="@string/pref_only_fetch_mvbox_title" />
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_show_system_contacts"
-            android:title="@string/pref_show_system_contacts"/>
 
     </PreferenceCategory>
 

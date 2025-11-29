@@ -117,9 +117,6 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   public static void openWebxdcActivity(Context context, int msgId, boolean hideActionBar, String href) {
     if (!Util.isClickedRecently()) {
-      if (Prefs.isDeveloperModeEnabled(context)) {
-        WebView.setWebContentsDebuggingEnabled(true);
-      }
       context.startActivity(getWebxdcIntent(context, msgId, hideActionBar, href));
     }
   }
