@@ -241,6 +241,10 @@
               android:exported="true">
     </activity>
 
+    <activity android:name=".TransportListActivity"
+              android:windowSoftInputMode="stateHidden"
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
+
     <activity android:name=".proxy.ProxySettingsActivity"
               android:label="@string/proxy_settings"
               android:windowSoftInputMode="stateHidden"
