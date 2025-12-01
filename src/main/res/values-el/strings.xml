@@ -238,6 +238,7 @@
     <string name="menu_save_log">Αποθήκευση</string>
     <string name="menu_more_options">Περισσότερες Επιλογές</string>
     <string name="menu_learn_spelling">Μάθε Ορθογραφία</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Αρχείο Καταγραφής Ελέγχου Συνομιλίας</string>
     <string name="jump_to_message">Μετακίνηση στη Συνομιλία</string>
     <string name="copy_json">Αντιγραφή JSON</string>
@@ -298,6 +299,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Επαφές</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Εισάγετε όνομα ή διεύθυνση e-mail</string>
     <string name="contacts_type_email_above">Εισάγετε την διεύθυνση e-mail παραπάνω</string>
 
@@ -360,9 +362,11 @@
     <string name="show_location_traces">Εμφάνιση ιχνών</string>
     <string name="add_poi">Αποστολή σημείου ενδιαφέροντος</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Τα μηνύματα συστήματος για αυτήν τη συνομιλία εμφανίζονται εδώ</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Καταγραφή ελέγχου συνομιλίας για %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Εμφανίζει μόνο μηνύματα συστήματος και πληροφοριών. Είναι χρήσιμο για την εύρεση των τελευταίων ενεργειών συνομιλίας χωρίς κύλιση σε πολλά μηνύματα.</string>
 
     <!-- punycode warning / labeled links -->
@@ -539,8 +543,11 @@
     <string name="pref_backup_export_explain">Ένα αντίγραφο ασφαλείας σάς βοηθά να ρυθμίσετε μια νέα εγκατάσταση σε αυτήν ή σε άλλη συσκευή.\n\nΤο αντίγραφο ασφαλείας θα περιέχει όλα τα μηνύματα, τις επαφές και τις συνομιλίες και τη ρύθμιση αυτόματης κρυπτογράφησης από άκρο σε άκρο. Φυλάξτε το αρχείο αντιγράφου ασφαλείας σε ασφαλές μέρος ή διαγράψτε το το συντομότερο δυνατό.</string>
     <string name="pref_backup_export_start_button">Ξεκινήστε τη δημιουργία αντιγράφου ασφαλείας</string>
     <string name="pref_backup_written_to_x">Το αντίγραφο ασφαλείας γράφτηκε με επιτυχία στο \"%1$s\".</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Εξαγωγή Μυστικών Κλειδιών</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Εξαγωγή μυστικών κλειδιών στο \"%1$s\";</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Τα μυστικά κλειδιά γράφτηκαν με επιτυχία στο \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Ταπετσαρία συνομιλίας</string>
@@ -548,8 +555,10 @@
     <string name="pref_background_btn_gallery">Επιλογή</string>
     <string name="pref_imap_folder_warn_disable_defaults">Εάν αλλάξετε αυτήν την επιλογή, βεβαιωθείτε ότι ο διακομιστής σας και οι άλλοι πελάτες σας έχουν διαμορφωθεί ανάλογα.\n\nΔιαφορετικά, τα πράγματα ενδέχεται να μην λειτουργούν καθόλου.</string>
     <string name="pref_auto_folder_moves">Μετακίνηση αυτόματα στον φάκελο DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Οι συνομιλίες συνομιλίας μετακινούνται για να αποφευχθεί η ακαταστασία των Εισερχομένων</string>
     <string name="pref_only_fetch_mvbox_title">Λήψη μόνο από τον φάκελο DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Αγνοήστε άλλους φακέλους. Απαιτεί τον διακομιστή σας να μετακινήσει μηνύματα συνομιλίας στο φάκελο DeltaChat.</string>
     <string name="pref_show_emails">Εμφάνιση κλασικών E-Mails</string>
     <string name="pref_show_emails_no">Όχι, μόνο συνομιλίες</string>
@@ -557,7 +566,9 @@
     <string name="pref_show_emails_all">Όλα</string>
     <string name="pref_experimental_features">Πειραματικά Χαρακτηριστικά</string>
     <string name="pref_on_demand_location_streaming">Ροή τοποθεσίας κατ\' απαίτηση</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Λειτουργία για Προγραμματιστές</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Ενεργοποιεί τις επιλογές εντοπισμού σφαλμάτων και μπορεί να κάνει την εφαρμογή λιγότερο σταθερή. Μόνο για προγραμματιστές.</string>
     <string name="pref_background_default">Προεπιλεγμένο φόντο</string>
     <string name="pref_background_default_color">Προεπιλεγμένο χρώμα</string>
@@ -612,11 +623,15 @@
     <string name="after_5_weeks">Μετά από 5 εβδομάδες</string>
     <string name="autodel_after_1_year">Μετά από 1 χρόνο</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Αποστολή μηνύματος ρύθμισης αυτόματης κρυπτογράφησης</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Ένα μήνυμα ρύθμισης αυτόματης κρυπτογράφησης κοινοποιεί με ασφάλεια τη ρύθμισή σας από άκρο σε άκρο με άλλες εφαρμογές συμβατές με την Αυτόματη κρυπτογράφηση.\n\nΗ ρύθμιση θα κρυπτογραφηθεί από έναν κωδικό ρύθμισης που εμφανίζεται εδώ και θα πρέπει να πληκτρολογηθεί στην άλλη συσκευή.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Αποστολή μηνύματος ρύθμισης αυτόματης κρυπτογράφησης</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Η ρύθμισή σας έχει σταλεί στον εαυτό σας. Μεταβείτε στην άλλη συσκευή και ανοίξτε το μήνυμα ρύθμισης. Θα πρέπει να σας ζητηθεί κωδικός ρύθμισης. Εισαγάγετε τα ακόλουθα ψηφία:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Προτιμήστε την κρυπτογράφηση από άκρο σε άκρο</string>
 
     <!-- system messages -->
@@ -797,6 +812,7 @@
     <string name="name_desktop">Όνομα</string>
     <string name="select_group_image_desktop">Επιλέξτε Εικόνας Ομάδας</string>
     <string name="export_backup_desktop">Εξαγωγή Αντιγράφων Ασφαλείας</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Η ρύθμιση αυτόματης κρυπτογράφησης μεταφέρθηκε.</string>
     <string name="forget_login_confirmation_desktop">Διαγραφή αυτής της σύνδεσης; Τα πάντα θα διαγραφούν, συμπεριλαμβανομένων των ρυθμίσεων από άκρο σε άκρο, επαφών, συνομιλιών, μηνυμάτων και πολυμέσων. Αυτή η πράξη δε μπορεί να αναιρεθεί.</string>
     <string name="message_detail_sent_desktop">Στάλθηκε</string>
@@ -851,7 +867,6 @@
     <string name="last_check_at">Έλεγχος στις %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Το Delta Chat χρησιμοποιεί την κάμερά σας για λήψη και αποστολή φωτογραφιών και βίντεο και για σάρωση κωδικών QR.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Το Delta Chat χρησιμοποιεί τις επαφές σας για να εμφανίσει μια λίστα με διευθύνσεις e-mail στις οποίες μπορείτε να γράψετε. Το Delta Chat δεν έχει διακομιστή, οι επαφές σας δεν αποστέλλονται πουθενά.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Το Delta Chat χρειάζεται άδεια για να μοιραστεί την τοποθεσία σας για το χρονικό διάστημα που έχετε ενεργοποιήσει την κοινή χρήση τοποθεσίας.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Το Delta Chat χρειάζεται άδεια για να μοιραστεί την τοποθεσία σας για το χρονικό διάστημα που έχετε ενεργοποιήσει την κοινή χρήση τοποθεσίας.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Το Delta Chat χρησιμοποιεί το μικρόφωνό σας για εγγραφή και αποστολή φωνητικών μηνυμάτων και βίντεο με ήχο.</string>

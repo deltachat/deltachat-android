@@ -254,6 +254,7 @@
     <string name="menu_save_log">Salvați Jurnalul</string>
     <string name="menu_more_options">Mai multe opțiuni</string>
     <string name="menu_learn_spelling">Învățați Ortografia</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Jurnal de Audit pentru Chat</string>
     <string name="jump_to_message">Sari la Mesaj</string>
     <string name="copy_json"> Copiați JSON</string>
@@ -316,6 +317,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contacte</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Introduceți numele sau adresa de e-mail</string>
     <string name="contacts_type_email_above">Introduceți adresa de e-mail de mai sus</string>
 
@@ -381,9 +383,11 @@
     <string name="show_location_traces">Afișați urme</string>
     <string name="add_poi">Trimiteți punctul de interes</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Mesajele de sistem pentru acest chat apar aici</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Jurnal de audit de chat pentru %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Afișează numai mesajele de sistem și cele informative; este util pentru a găsi ultimele acțiuni de chat fără a derula prin multe mesaje. </string>
 
     <!-- punycode warning / labeled links -->

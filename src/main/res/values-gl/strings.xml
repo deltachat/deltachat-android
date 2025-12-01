@@ -322,6 +322,7 @@
     <string name="menu_save_log">Gardar rexistro</string>
     <string name="menu_more_options">Máis opcións</string>
     <string name="menu_learn_spelling">Aprender palabras</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Rexistro de auditoría do chat</string>
     <string name="jump_to_message">Ir á mensaxe</string>
     <string name="jump_to_original_message">Ir á mensaxe orixinal</string>
@@ -399,6 +400,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contactos</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Introducir nome ou enderezo de correo</string>
     <string name="contacts_type_email_above">Escribir arriba o enderezo de correo</string>
 
@@ -470,9 +472,11 @@
     <string name="show_location_traces">Mostrar trazas</string>
     <string name="add_poi">Enviar punto de interese</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">As mensaxes de sistema deste chat aparecerán aquí</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Rexistro de auditoría para %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Esta vista só mostra mensaxes e info do sistema. Resulta útil para atopar as últimas accións sen ter que desprazarse a través das mensaxes normais.</string>
 
     <!-- punycode warning / labeled links -->
@@ -506,6 +510,7 @@
     <string name="group_self_not_in_group">Debes ser membro do grupo para executar esta acción.</string>
     <string name="profile_encryption">Cifrado</string>
     <string name="profile_shared_chats">Conversas compartidas</string>
+    <!-- deprecated -->
     <string name="related_chats">Conversas relacionadas</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Membros anteriores</string>
@@ -735,8 +740,11 @@
     <string name="pref_backup_export_all">Exportar todos os %1$d perfís</string>
     <string name="pref_backup_export_start_button">Inciar respaldo</string>
     <string name="pref_backup_written_to_x">Respaldo gardado en \"%1$s\".</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Exportar chaves segredas</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Exportar chaves segredas a \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Exportación correcta das chaves a \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fondo</string>
@@ -744,8 +752,10 @@
     <string name="pref_background_btn_gallery">Escoller na galería</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se desactivas esta opción, asegúrate de que o servidor e os teus outros clientes están configurados de xeito acorde.\n\nSe non, algo podería fallar.</string>
     <string name="pref_auto_folder_moves">Mover automáticamente ao cartafol DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">As conversas móvense do cartafol de Entrada para evitar saturalo.</string>
     <string name="pref_only_fetch_mvbox_title">Obter só desde cartafol DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Ignorar outros cartafoles. Require que o teu servidor mova as mensaxes de chat ao cartafol DeltaChat.</string>
     <string name="pref_show_emails">Mostrar correos clásicos</string>
     <string name="pref_show_emails_no">Non, só conversas</string>
@@ -753,7 +763,9 @@
     <string name="pref_show_emails_all">Todos</string>
     <string name="pref_experimental_features">Zona de probas</string>
     <string name="pref_on_demand_location_streaming">Difusión da ubicación por solicitude</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Modo Desenvolvemento</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Activa opcións de depuración e pode desestabilizar a app. Só para desenvolvedoras.</string>
     <string name="pref_background_default">Fondo por omisión</string>
     <string name="pref_background_default_color">Cor por omisión</string>
@@ -777,8 +789,6 @@
     <string name="pref_show_tray_icon">Mostrar icona na bandexa</string>
     <string name="pref_edit_profile">Editar perfil</string>
     <string name="send_stats_to_devs">Enviar estatísticas ós desenvolvedores do Delta Chat</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resultados da busca</string>
     <string name="emoji_not_found">Non se atopan emojis</string>
@@ -816,11 +826,15 @@
     <string name="after_5_weeks">Após 5 semanas</string>
     <string name="autodel_after_1_year">Após 1 ano</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Enviar Mensaxe de Configuración Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Unha Mensaxe de Configuración Autocrypt comparte de xeito seguro o teu cifrado extremo-a-extremo con outras apps compatibles con Autocrypt.\n\nO axuste realízase cifrado e protexido cun código que se debe escribir no outro dispositivo.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Enviar Mensaxe de Configuración Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Os axustes envíanse a ti mesma. Vaite ao outro dispositivo e abre a mensaxe de configuración. Debería solicitarche un código. Introduce os seguintes díxitos:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferir cifrado extremo-a-extremo</string>
 
     <!-- system messages -->
@@ -843,6 +857,8 @@
     <string name="remove_member_by_you">Eliminaches a %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%1$s eliminado por %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Eliminouse a %1$s.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s deixou o grupo.</string>
     <string name="group_image_deleted_by_you">Eliminaches a imaxe do grupo</string>
@@ -1021,6 +1037,7 @@
     <string name="name_desktop">Nome</string>
     <string name="select_group_image_desktop">Escoller imaxe do grupo</string>
     <string name="export_backup_desktop">Exportar respaldo</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Axuste Autocrypt transferido.</string>
     <string name="forget_login_confirmation_desktop">Eliminar esta conexión? Borrarase todo, incluíndo os axustes de cifrado, contactos, conversas, mensaxes e ficheiros de medios. Esta acción non ten volta atrás.</string>
     <string name="message_detail_sent_desktop">enviado</string>
@@ -1079,7 +1096,6 @@
     <string name="shortcuts_widget_title">Atallos</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Conceder acceso a cámara permíteche tomar fotos e vídeos.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Permitir o acceso a libreta de enderezos permíteche conversar con contactos do dispositivo.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat precisa o permiso de localización para poder compartir a túa localización durante o tempo indicado na compartición da localización.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat precisa o permiso de localización para poder compartir a túa localización durante o tempo indicado na compartición da localización.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Permitindo o acceso ao micrófono poderás gravar audio.</string>

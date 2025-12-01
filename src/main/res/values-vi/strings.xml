@@ -253,6 +253,7 @@
     <string name="menu_save_log">Lưu nhật ký</string>
     <string name="menu_more_options">Tùy chọn khác</string>
     <string name="menu_learn_spelling">Học đánh vần</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Nhật ký kiểm tra trò chuyện</string>
     <string name="jump_to_message">Chuyển tới tin nhắn</string>
     <string name="copy_json">Sao chép JSON</string>
@@ -312,6 +313,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Danh bạ</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Nhập tên hoặc địa chỉ e-mail</string>
     <string name="contacts_type_email_above">Nhập địa chỉ e-mail ở trên</string>
 
@@ -375,9 +377,11 @@
     <string name="show_location_traces">Hiển thị dấu vết</string>
     <string name="add_poi">Gửi điểm ưa thích</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Tin nhắn hệ thống cho cuộc trò chuyện này xuất hiện ở đây</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Nhật ký kiểm tra trò chuyện cho %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Chỉ hiển thị thông báo hệ thống và thông tin; hữu ích cho việc tìm kiếm các hành động trò chuyện cuối cùng mà không cần phải cuộn qua nhiều tin nhắn.</string>
 
     <!-- punycode warning / labeled links -->
@@ -407,6 +411,7 @@
     <string name="group_self_not_in_group">Bạn phải là thành viên của nhóm để thực hiện hành động này.</string>
     <string name="profile_encryption">Mã hóa</string>
     <string name="profile_shared_chats">Cuộc trò chuyện được chia sẻ</string>
+    <!-- deprecated -->
     <string name="related_chats">Cuộc trò chuyện liên quan</string>
     <string name="tab_contact">Liên hệ</string>
     <string name="tab_group">Nhóm</string>
@@ -586,8 +591,11 @@
     <string name="pref_backup_export_all">Xuất tất cả tài khoản %1$d</string>
     <string name="pref_backup_export_start_button">Bắt đầu sao lưu</string>
     <string name="pref_backup_written_to_x">Sao lưu được ghi thành công vào \"%1$s\".</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Xuất khóa bí mật</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Xuất khóa bí mật sang \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Khóa bí mật được ghi thành công vào \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Hình nền</string>
@@ -595,8 +603,10 @@
     <string name="pref_background_btn_gallery">Chọn từ thư viện</string>
     <string name="pref_imap_folder_warn_disable_defaults">Nếu bạn thay đổi tùy chọn này, hãy đảm bảo rằng máy chủ và các máy khách khác của bạn được cấu hình tương ứng.\n\nNếu không, mọi thứ có thể không hoạt động.</string>
     <string name="pref_auto_folder_moves">Tự động di chuyển đến Thư mục DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Các cuộc trò chuyện được di chuyển để tránh làm lộn xộn Hộp thư đến</string>
     <string name="pref_only_fetch_mvbox_title">Chỉ tìm nạp từ thư mục DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Bỏ qua các thư mục khác. Yêu cầu máy chủ của bạn di chuyển tin nhắn trò chuyện vào thư mục DeltaChat.</string>
     <string name="pref_show_emails">Hiển thị E-mail cổ điển</string>
     <string name="pref_show_emails_no">Không, chỉ trò chuyện</string>
@@ -604,7 +614,9 @@
     <string name="pref_show_emails_all">Tất cả</string>
     <string name="pref_experimental_features">Tính năng thử nghiệm</string>
     <string name="pref_on_demand_location_streaming">Truyền phát vị trí theo yêu cầu</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Chế độ nhà phát triển</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Kích hoạt các tùy chọn gỡ lỗi và có thể làm cho ứng dụng kém ổn định hơn. Chỉ dành cho nhà phát triển.</string>
     <string name="pref_background_default">Hình ảnh mặc định</string>
     <string name="pref_background_default_color">Màu mặc định</string>
@@ -663,11 +675,15 @@
     <string name="after_5_weeks">Sau 5 tuần</string>
     <string name="autodel_after_1_year">Sau 1 năm</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Gửi tin nhắn thiết lập Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Thông báo thiết lập Autocrypt chia sẻ an toàn thiết lập end-to-end của bạn với các ứng dụng tương thích Autocrypt khác.\n\nThiết lập sẽ được mã hóa bằng mã thiết lập được hiển thị ở đây và phải được nhập trên thiết bị kia.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Gửi tin nhắn thiết lập Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Thiết lập của bạn đã được gửi cho chính bạn. Chuyển sang thiết bị khác và mở thông báo thiết lập. Bạn sẽ được yêu cầu nhập mã thiết lập. Nhập các chữ số sau:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Ưu tiên mã hóa đầu cuối</string>
 
     <!-- system messages -->
@@ -866,6 +882,7 @@
     <string name="name_desktop">Tên</string>
     <string name="select_group_image_desktop">Chọn hình ảnh nhóm</string>
     <string name="export_backup_desktop">Xuất bản sao lưu</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Đã chuyển thiết lập Autocrypt.</string>
     <string name="forget_login_confirmation_desktop">Xóa thông tin đăng nhập này? Mọi thứ sẽ bị xóa, bao gồm thiết lập đầu cuối, danh bạ, cuộc trò chuyện, tin nhắn và phương tiện của bạn. Hành động này không thể hoàn tác được.</string>
     <string name="message_detail_sent_desktop">đã gửi</string>
@@ -920,7 +937,6 @@
     <string name="last_check_at">Đã kiểm tra lúc %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat sử dụng máy ảnh của bạn để chụp và gửi ảnh cũng như video cũng như quét mã QR.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat sử dụng danh bạ của bạn để hiển thị danh sách các địa chỉ email mà bạn có thể viết thư vào. Delta Chat không có máy chủ, danh bạ của bạn sẽ không được gửi đi đâu cả.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat cần có quyền chia sẻ vị trí của bạn trong khoảng thời gian bạn đã bật tính năng chia sẻ vị trí.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat cần có quyền chia sẻ vị trí của bạn trong khoảng thời gian bạn đã bật tính năng chia sẻ vị trí.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat sử dụng micrô của bạn để ghi và gửi tin nhắn thoại cũng như video có âm thanh.</string>

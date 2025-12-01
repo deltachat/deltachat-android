@@ -238,6 +238,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">بەردەنگەکان</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">ناو یان ئیمەیل بنووسە</string>
     <string name="contacts_type_email_above">ئیمەیلەکە لە سەرەوە بنووسە</string>
 
@@ -395,8 +396,11 @@
     <string name="pref_backup_export_explain">یەدەک یارمەتیت دەدات تاکوو نەرمامێرەکە لەسەر ئەم ئامێرە یان ئامێرێکی دیکە دەبمەزرێنیتەوە.\n\n یەدەکەکە بریتی دەبێت لە هەموو پەیامەکان و بەردەنگەکان و وتووێژەکان و ڕێکخستنی ئۆتۆکریپتی ئەمسەر-ئەوسەر. پەڕگەی یەدەکەکە لە شوێنێکی قایمدا بپارێزە یان بە زووترین کات بیسڕەوە.</string>
     <string name="pref_backup_export_start_button">دەستپێبکە</string>
     <string name="pref_backup_written_to_x">یەدەک بە سەرکەوتوویی لە \"%1$s\"دا  پاشەکەوت کرا.</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">هەناردەکردنی کلیلە نهێنییەکان</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">کلیلە نهێنییەکان دەنێریت بۆ \"%1$s\"؟</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">کلیلە نهێنییەکان لە \"%1$s\"دا پاشەکەوت کران.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">پشتخان</string>
@@ -443,13 +447,16 @@
     <string name="after_5_weeks">پاش 5 حەوتە</string>
     <string name="autodel_after_1_year">پاش 1 ساڵ</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">هەناردنی پەیامی ڕێکخستنی ئۆتۆکریپت</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">هەڵبژاردنی شفرەکردنی ئەمسەر-ئەوسەر</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">پەیام لەلایەن %1$s</string>
     <string name="systemmsg_failed_sending_to">هەناردنی پەیام بۆ %1$s سەرنەکەوت</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">ئەندامی %1$s سڕدرایەوە.</string>
     <!-- qr code stuff -->
     <string name="qr_code">کۆدی QR</string>
     <string name="load_qr_code_as_image">کۆدی QR وەکوو وێنەیەک بار بکە.</string>
@@ -531,7 +538,6 @@
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">دێڵتا چات بۆ گرتن و هەناردنی وێنە و فلیم و سکان کردنی کۆدی QR، کامێراکەت بەکاردەهێنێت.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">دێڵتا چات لە بەردەنگەکانت کەڵک دەگرێت بۆ ئەوەی لیستەیەک لە ئیمەیلەکانت پیشان بدات کە دەتوانیت نامەیان بۆ بنێریت. دێڵتا چات هیچ سێرڤەرێکی نییە و بەردەنگەکانت بۆ هیچ کوێ نانێردرێن.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">دێڵتا چات بۆ تۆمار کردن و هەناردنی دەنگ و هەروەها ڤیدیۆی دەنگدار، مایکەکەت بەکاردەهێنێت.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">دێڵتا چات ڕێگە دەدات خۆت هەڵیبژێری کە کام وێنە لە پیشانگاکەتەوە بنێردرێت.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">دێڵتا چات دەیەوێت وێنە پاشەکەوت بکاتە نێو پیشانگاکەت.</string>

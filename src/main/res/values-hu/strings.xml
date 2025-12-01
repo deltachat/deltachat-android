@@ -338,6 +338,7 @@
     <string name="menu_save_log">Naplófájl mentése</string>
     <string name="menu_more_options">További beállítások</string>
     <string name="menu_learn_spelling">Helyesírás tanulása</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Csevegésellenőrzési-naplófájl</string>
     <string name="jump_to_message">Ugrás az üzenetre</string>
     <string name="jump_to_original_message">Ugrás az eredeti üzenetre</string>
@@ -432,6 +433,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Névjegyek</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Adjon meg egy nevet vagy egy e-mail-címet</string>
     <string name="contacts_type_email_above">Írja be a fenti e-mail-címet</string>
 
@@ -504,9 +506,11 @@
     <string name="show_location_traces">Nyomvonalak megjelenítése</string>
     <string name="add_poi">Érdekes hely megosztása</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Az ehhez a csevegéshez tartozó rendszerüzenetek itt fognak megjelenni</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Csevegés ellenőrzési naplófájl ehhez: %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Csak a rendszer- és információs üzeneteket jeleníti meg; hasznos a legutóbbi csevegési műveletek megtalálásához anélkül, hogy sok üzenetet görgetne át.</string>
 
     <!-- punycode warning / labeled links -->
@@ -540,6 +544,7 @@
     <string name="group_self_not_in_group">A csoport tagjának kell lennie, ahhoz, hogy ezt megtehesse.</string>
     <string name="profile_encryption">Titkosítás</string>
     <string name="profile_shared_chats">Közös csevegések</string>
+    <!-- deprecated -->
     <string name="related_chats">Kapcsolódó csevegések</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Már nem tagok</string>
@@ -766,7 +771,9 @@
     <string name="pref_server">Kiszolgáló</string>
     <string name="pref_encryption">Titkosítás</string>
     <string name="pref_manage_keys">Kulcsok kezelése</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">A rendszer névjegyzékének olvasása</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Beszélgetések létrehozásának felajánlása az eszköz névjegyzékében lévő partnerekkel.</string>
     <string name="pref_chats">Csevegések</string>
     <string name="pref_in_chat_sounds">Csevegésen belüli hangok</string>
@@ -783,8 +790,11 @@
     <string name="pref_backup_export_all">Az összes (%1$d) profil exportálása</string>
     <string name="pref_backup_export_start_button">Biztonsági mentés készítése</string>
     <string name="pref_backup_written_to_x">A biztonsági mentés sikeresen létrehozva itt: „%1$s”.</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Titkos kulcsok exportálása</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Privát kulcsok exportálása ide: „%1$s”?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">A titkosítási kulcsok sikeresen beíródtak ide: „%1$s”.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Háttérkép</string>
@@ -792,8 +802,10 @@
     <string name="pref_background_btn_gallery">Kiválasztás a galériából</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ha megváltoztatja ezt a beállítást, győződjön meg arról, hogy a kiszolgálója és a többi kliense is ennek megfelelően van beállítva.\n\nMáskülönben előfordulhat, hogy a dolgok egyáltalán nem fognak működni.</string>
     <string name="pref_auto_folder_moves">Automatikus áthelyezés a DeltaChat nevű mappába</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">A csevegések áthelyezésre kerülnek, hogy elkerüljék a bejövő üzenetek mappa zűrzavarát.</string>
     <string name="pref_only_fetch_mvbox_title">Csak a DeltaChat nevű mappából történjen lekérdezés</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Más mappák figyelmen kívül hagyása. A kiszolgálónak a DeltaChat nevű mappába kell áthelyeznie a csevegőüzeneteket.</string>
     <string name="pref_show_emails">Klasszikus e-mailek megjelenítése</string>
     <string name="pref_show_emails_no">Nem, csak csevegések</string>
@@ -801,7 +813,9 @@
     <string name="pref_show_emails_all">Összes</string>
     <string name="pref_experimental_features">Kísérleti funkciók</string>
     <string name="pref_on_demand_location_streaming">On-Demand folyamatos helymegosztás</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Fejlesztői mód</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">A hibakeresési beállítások bekapcsolásával instabillá teheti az alkalmazást. Csak fejlesztőknek ajánlott a bekapcsolása.</string>
     <string name="pref_background_default">Alapértelmezett kép</string>
     <string name="pref_background_default_color">Alapértelmezett szín</string>
@@ -827,8 +841,6 @@
     <string name="disable_imap_idle">IMAP IDLE letiltása</string>
     <string name="disable_imap_idle_explain">Ne használja az IMAP IDLE kiterjesztést, még akkor sem, ha a kiszolgáló támogatja azt. A beállítás engedélyezése késlelteti az üzenetek lekérdezését, csak tesztelés céljából engedélyezze.</string>
     <string name="send_stats_to_devs">Statisztikák küldése a Delta Chat fejlesztőinek</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Keresési eredmények</string>
     <string name="emoji_not_found">Nem található emodzsi</string>
@@ -873,11 +885,15 @@
     <string name="after_5_weeks">5 hét elteltével</string>
     <string name="autodel_after_1_year">1 év elteltével</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Autocrypt-beállítási üzenet küldése</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Az Autocrypt-beállítási üzenet biztonságosan megosztja a végponttól-végpontig titkosított beállításait más Autocrypt-kompatibilis alkalmazásokkal.\n\nHa a másik eszközön is a Delta Chat alkalmazást használja, akkor válassza inkább a „Beállítások / Második eszköz hozzáadása” lehetőséget helyette.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Autocrypt-beállítási üzenet küldése</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">A beállításokat elküldtük önnek. Váltson a másik eszközre, és nyissa meg a beállítási üzenetet. Meg kell adnia a beállítási kódot. Írja be a következő számjegyeket:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Végpontok közötti titkosítás előnyben részesítése</string>
 
     <!-- system messages -->
@@ -900,6 +916,8 @@
     <string name="remove_member_by_you">Ön eltávolította őt: %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s eltávolította őt: %1$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">%1$s eltávolítva a csoportból.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Ön elhagyta a csoportot.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -1099,6 +1117,7 @@
     <string name="name_desktop">Név</string>
     <string name="select_group_image_desktop">Csoport képének kiválasztása</string>
     <string name="export_backup_desktop">Biztonsági mentés exportálása</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Autocrypt-beállítások átvitele.</string>
     <string name="forget_login_confirmation_desktop">Törli ezt a profilt? Az összes adata törlődni fog, beleértve a végpontok közötti titkosítási beállításokat, névjegyeket, csevegéseket, üzeneteket és médiát. Ez a művelet nem vonható vissza.</string>
     <string name="message_detail_sent_desktop">elküldött</string>
@@ -1165,7 +1184,6 @@
     <string name="add_to_widget">Hozzáadás modulhoz</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">A Delta Chat az eszköze kameráját használja fényképek és videók készítésére és küldésére, valamint QR-kódok beolvasására.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">A Delta Chat a névjegyek segítségével megjeleníti azon e-mail-címek listáját, amelyekkel cseveghet. A Delta Chatnek nincs központi kiszolgálója, a névjegyeit nem küldjük el sehova.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">A Delta Chatnek engedélyre van szüksége ahhoz, hogy megoszthassa az ön tartózkodási helyét arra az időtartamra, amelyre engedélyezte a helyadatok megosztását.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">A Delta Chatnek engedélyre van szüksége ahhoz, hogy megoszthassa az ön tartózkodási helyét arra az időtartamra, amelyre engedélyezte a helyadatok megosztását.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">A Delta Chat az eszköze mikrofonját használja a hangüzenetek és a hangos videók rögzítésére, valamint küldésére.</string>

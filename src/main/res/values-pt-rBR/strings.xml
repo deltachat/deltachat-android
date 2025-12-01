@@ -264,6 +264,7 @@
     <string name="menu_save_log">Salvar registro</string>
     <string name="menu_more_options">Mais opções</string>
     <string name="menu_learn_spelling">Aprender ortografia</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Registro de Auditoria do Bate-papo</string>
     <string name="jump_to_message">Pular para a mensagem</string>
     <string name="copy_json">Copiar JSON</string>
@@ -326,6 +327,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contatos</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Insira um nome ou e-mail</string>
     <string name="contacts_type_email_above">Digite o e-mail acima</string>
 
@@ -395,9 +397,11 @@
     <string name="show_location_traces">Exibir pegadas</string>
     <string name="add_poi">Enviar ponto de interesse</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">As mensagens do sistema deste bate-papo apareceriam aqui </string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Registro de Auditoria de Bate-papo para  %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Esta visualização mostra apenas mensagens do sistema e de informações. Útil para localizar as últimas ações do bate-papo sem rolar por muitas mensagens normais. </string>
 
     <!-- punycode warning / labeled links -->
@@ -597,8 +601,11 @@
     <string name="pref_backup_export_explain">Um becape ajudará a configurar uma nova instalação neste ou em outro dispositivo. \n\n O becape conterá todas as mensagens, contatos, conversas e a configuração de criptografia. Mantenha o arquivo de becape em um local seguro ou apague-o o mais rápido possível.</string>
     <string name="pref_backup_export_start_button">Fazer becape</string>
     <string name="pref_backup_written_to_x">Becape salvo em %1$s</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Exportar chaves secretas</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Exportar chaves secretas para \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Chaves secretas exportadas para \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Papel de parede</string>
@@ -606,8 +613,10 @@
     <string name="pref_background_btn_gallery">Selecionar da galeria</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se você mudar esta opção, certifique-se de que seu servidor e demais aplicativos estejam configurados de acordo.\n\nDo contrário, funcionalidades podem não funcionar.</string>
     <string name="pref_auto_folder_moves">Mover automaticamente para a pasta DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Conversas serão movidas para evitar desordem na caixa de entrada</string>
     <string name="pref_only_fetch_mvbox_title">Apenas pegar da pasta DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Ignore outras pastas. Requer que seu servidor mova mensagens de bate-papo para a pasta DeltaChat. </string>
     <string name="pref_show_emails">Exibir e-mails normais</string>
     <string name="pref_show_emails_no">Não, somente conversas</string>
@@ -615,7 +624,9 @@
     <string name="pref_show_emails_all">Todos</string>
     <string name="pref_experimental_features">Recursos experimentais</string>
     <string name="pref_on_demand_location_streaming">Streaming de localização sob demanda</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Modo de Desenvolvedor</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Ativa as opções de depuração e pode tornar o aplicativo menos estável. Apenas para desenvolvedores.</string>
     <string name="pref_background_default">Imagem padrão</string>
     <string name="pref_background_default_color">Cor padrão</string>
@@ -670,11 +681,15 @@
     <string name="after_5_weeks">Após 5 semanas </string>
     <string name="autodel_after_1_year">Após 1 ano</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Enviar \"mensagem de configuração do Autocrypt\"?</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">A \"mensagem de configuração do Autocrypt\" compartilha com segurança a sua configuração de ponta a ponta com outros aplicativos compatíveis. \n\nA configuração será criptografada por um código de configuração que será exibido aqui e deverá ser digitado no outro dispositivo.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Enviar \"mensagem de configuração do Autocrypt\"?</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Sua chave foi enviada para você mesmo. Abra a mensagem de configuração no seu outro dispositivo. Lá será exibido uma solicitação de código. Digite-o lá.\n\nDepois disso, seu dispositivo estará pronto para usar o Autocrypt.</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferir criptografia ponta a ponta</string>
 
     <!-- system messages -->
@@ -695,6 +710,8 @@
     <string name="remove_member_by_you">Você removeu o membro %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Membro %1$s removido por %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Participante %1$s removido.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">Grupo deixado por %1$s.</string>
     <string name="group_image_deleted_by_you">Você removeu a imagem do grupo.</string>
@@ -857,6 +874,7 @@
     <string name="name_desktop">Nome</string>
     <string name="select_group_image_desktop">Selecionar avatar de grupo</string>
     <string name="export_backup_desktop">Exportar becape</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Configuração Autocrypt completada!</string>
     <string name="forget_login_confirmation_desktop">Apagar este login? Tudo será apagado, incluindo sua configuração de criptografia, contatos, conversas, mensagens e mídia. Esta ação é final e irreversível.</string>
     <string name="message_detail_sent_desktop">enviado</string>
@@ -911,7 +929,6 @@
     <string name="last_check_at">Verificado em %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat usa sua câmera para tirar e enviar fotos e vídeos e para escanear códigos QR.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">O Delta Chat usa seus contatos para mostrar uma lista de endereços de e-mail para os quais você pode escrever. O Delta Chat não tem servidor, seus contatos não são enviados a lugar nenhum.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">O Delta Chat precisa da permissão para compartilhar sua localização durante o período de tempo em que você ativou o compartilhamento de localização.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">O Delta Chat precisa de permissão para compartilhar sua localização durante o período em que o compartilhamento de localização estiver ativado.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">O Delta Chat usa seu microfone para gravar e enviar mensagens de voz e vídeos com som.</string>

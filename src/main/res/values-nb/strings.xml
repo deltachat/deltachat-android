@@ -338,6 +338,7 @@
     <string name="menu_save_log">Lagre logg</string>
     <string name="menu_more_options">Flere valg</string>
     <string name="menu_learn_spelling">Lær staving</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Kontrollog av chat</string>
     <string name="jump_to_message">Gå til melding</string>
     <string name="jump_to_original_message">Gå til opprinnelig melding</string>
@@ -432,6 +433,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Skriv navn eller e-postadresse</string>
     <string name="contacts_type_email_above">Skriv e-postadresse over</string>
 
@@ -504,9 +506,11 @@
     <string name="show_location_traces">Vis bevegelsesspor</string>
     <string name="add_poi">Send interessepunkt</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Systemmeldinger for denne chatten vises her</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Chat-kontrollog for %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Viser bare system- og info-meldinger; praktisk for å finne de siste chat-hendelsene uten å bla igjennom mange meldinger.</string>
 
     <!-- search -->
@@ -580,14 +584,19 @@
     <string name="pref_log_header">Logg</string>
     <string name="pref_other">Annet</string>
     <string name="pref_backup">Sikkerhetskopi</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Eksporter private nøkler</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Chattebakgrunn</string>
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Igangsett Autocrypt-nøkkeloverføring</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">The Autocrypt-nøkkeloverføring krever at e-postklienten på den andre enheten er Autocrypt-kompatibel.\n\nDu kan så sende din hemmelige nøkkel til deg selv. Nøkkelen vil bli kryptert av en oppsettskode som vises her og må skrives inn på den andre enheten.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Igangsett Autocrypt-nøkkeloverføring</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Nøkkelen din har blitt sendt til deg selv. Bytt til den andre enheten og åpne oppsettsmeldingen. Du bør bli forespurt om å oppgi en oppsettskode. Skriv in følgende siffer.\n\nNår du er ferdig, vil din andre enhet også kunne bruke Autocrypt.</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Foretrekk ende-til-ende -kryptering</string>
 
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -605,6 +614,8 @@
     <string name="remove_member_by_you">Medlem %1$s fjernet av meg.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Medlem %1$s fjernet av %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Medlem %1$s fjernet.</string>
     <string name="group_image_deleted_by_you">Gruppebilde slettet av meg.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Gruppebilde slettet av %1$s.</string>
