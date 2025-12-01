@@ -217,6 +217,8 @@
     <string name="pref_show_emails_all">Sve</string>
     <string name="pref_background_default">Zadana pozadina</string>
     <string name="pref_background_default_color">Zadana boja</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Član %1$s uklonjen.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR kod</string>
     <string name="qrscan_fingerprint_label">Otisak prsta</string>

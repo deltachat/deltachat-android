@@ -5,6 +5,7 @@
 * Target Android 16
 * Change color of links in text messages
 * Improve edge-to-edge support
+* Metadata protection: protect message recipients
 * Allow to withdraw channel invite links and QR codes
 * Allow to open externally links clicked inside in-chat apps
 * Do not show "1 member" when the process of joining the group is not finished
@@ -17,7 +18,7 @@
 * Opened in-chat apps got a 'About Apps' menu item
 * Avoid gray avatar on profile creation
 * Add disk usage statistics to log
-* Update to core 2.28.0
+* Update to core 2.29.0
 
 ## v2.25.0
 2025-11

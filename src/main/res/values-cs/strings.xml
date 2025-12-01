@@ -325,6 +325,7 @@
     <string name="menu_save_log">Uložit protokol</string>
     <string name="menu_more_options">Další možnosti</string>
     <string name="menu_learn_spelling">Naučte se pravopis</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Auditní protokol chatu</string>
     <string name="jump_to_message">Přejít na zprávu</string>
     <string name="jump_to_original_message">Přejít na původní zprávu</string>
@@ -406,6 +407,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kontakty</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Zadejte jméno nebo e-mail</string>
     <string name="contacts_type_email_above">Zadejte e-mail výše</string>
 
@@ -481,9 +483,11 @@
     <string name="show_location_traces">Zobrazit trasy</string>
     <string name="add_poi">Odeslat bod zájmu</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Zde se zobrazují systémové zprávy pro tento chat</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Auditní protokol pro chat %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Zobrazuje pouze systémové a informační zprávy; užitečné pro nalezení posledních akcí v chatu bez procházení mnoha zpráv.</string>
 
     <!-- punycode warning / labeled links -->
@@ -517,6 +521,7 @@
     <string name="group_self_not_in_group">Pro tuto akci je nutné být členem této skupiny.</string>
     <string name="profile_encryption">Šifrování</string>
     <string name="profile_shared_chats">Sdílené chaty</string>
+    <!-- deprecated -->
     <string name="related_chats">Související chaty</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Bývalí členové</string>
@@ -741,7 +746,9 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Šifrování</string>
     <string name="pref_manage_keys">Správa klíčů</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Čtení systémových kontaktů</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Nabízet vytváření chatů s kontakty z adresáře. Pro některé poskytovatele je nejprve nutné nastavit koncové šifrování.</string>
     <string name="pref_chats">Chaty</string>
     <string name="pref_in_chat_sounds">Zvuky v rámci chatu</string>
@@ -757,8 +764,11 @@
     <string name="pref_backup_export_all">Exportovat všech %1$d profilů</string>
     <string name="pref_backup_export_start_button">Spustit zálohu</string>
     <string name="pref_backup_written_to_x">Záloha úspěšně zapsána v \"%1$s\"</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Exportovat tajné klíče</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Exportovat tajné klíče do \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Tajné klíče úspěšně zapsány v \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Pozadí</string>
@@ -766,8 +776,10 @@
     <string name="pref_background_btn_gallery">Vybrat z galerie</string>
     <string name="pref_imap_folder_warn_disable_defaults">Při změně této volby se ujistěte, že váš server a ostatní klientské aplikace mají odpovídající nastavení.\n\nJinak může vše přestat fungovat.</string>
     <string name="pref_auto_folder_moves">Automaticky přesouvat do složky DeltaChat </string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Zprávy chatů jsou přesouvány, aby nezahlcovaly složku Doručené</string>
     <string name="pref_only_fetch_mvbox_title">Načítat pouze ze složky DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Ignorovat ostatní složky. Vyžaduje, aby váš server přesouval zprávy chatu do složky DeltaChat.</string>
     <string name="pref_show_emails">Zobrazovat běžné e-maily</string>
     <string name="pref_show_emails_no">Ne, pouze chaty</string>
@@ -775,7 +787,9 @@
     <string name="pref_show_emails_all">Vše</string>
     <string name="pref_experimental_features">Experimentální funkce </string>
     <string name="pref_on_demand_location_streaming">Streamování polohy na vyžádání</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Vývojový režim</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Povolí debugovací volby a může aplikaci učinit méně stabilní. Pouze pro vývojáře.</string>
     <string name="pref_background_default">Výchozí obrázek</string>
     <string name="pref_background_default_color">Výchozí barva</string>
@@ -800,8 +814,6 @@
     <string name="disable_imap_idle">Zakázat IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Nepoužívat rozšíření IMAP IDLE ani když jej server podporuje. Zapnutí této volby zvýší prodlevu při získávání zpráv, použijte ji jen pro testování.</string>
     <string name="send_stats_to_devs">Odeslat statistiky vývojářům Delta Chatu</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Výsledky hledání</string>
     <string name="emoji_not_found">Emoji nenalezeno</string>
@@ -846,11 +858,15 @@
     <string name="after_5_weeks">Po 5 týdnech</string>
     <string name="autodel_after_1_year">Po 1 roce</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Odeslat zprávu s nastavením Autocryptu</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Pomocí zprávy s nastavením Autocryptu lze sdílet vaše nastavení koncového šifrování s dalšími aplikacemi využívajícími Autocrypt.\n\nNastavení je zašifrované zobrazeným kódem, který musí být zadán na zařízení, na které si přejete nastavení přenést.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Odeslat nastavení Autocryptu</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Vaše nastavení bylo odesláno. Vezměte si zařízení, kam si přejete nastavení přenést, a zprávu na něm otevřete. Mělo by se objevit pole pro zadání kódu. Do něj vložte následující číslice:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Upřednostňovat koncové šifrování</string>
 
     <!-- system messages -->
@@ -873,6 +889,8 @@
     <string name="remove_member_by_you">Odebrali jste člena %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Člen %1$s byl odebrán uživatelem %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Člen %1$s byl odebrán.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">Uživatel %1$s opustil skupinu.</string>
     <string name="group_image_deleted_by_you">Smazali jste obrázek skupiny.</string>
@@ -1061,6 +1079,7 @@
     <string name="name_desktop">Jméno</string>
     <string name="select_group_image_desktop">Vybrat obrázek skupiny</string>
     <string name="export_backup_desktop">Exportovat zálohu</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Nastavení Autocryptu přeneseno.</string>
     <string name="forget_login_confirmation_desktop">Opravdu si přejete smazat tento profil? Všechna data budou smazána, včetně nastavení koncového šifrování, kontaktů, hovorů, zpráv a multimédií. Tuto akci nelze vrátit zpět.</string>
     <string name="message_detail_sent_desktop">odesláno</string>
@@ -1127,7 +1146,6 @@
     <string name="add_to_widget">Přidat na widget</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat využívá fotoaparát k focení, natáčení videí a snímání QR kódů.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat používá vaše kontakty k zobrazení e-mailů, na které můžete psát. Delta Chat nemá žádné vlastní servery - vaše kontakty se nikam neodesílají.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat potřebuje oprávnění ke sdílení vaší polohy po dobu, po kterou je povoleno sdílení polohy.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat potřebuje oprávnění ke sdílení vaší polohy po dobu, po kterou je povoleno sdílení polohy.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat používá mikrofon k nahrávání hlasových zpráv a natáčení videí se zvukem.</string>

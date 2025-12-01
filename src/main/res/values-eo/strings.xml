@@ -314,6 +314,7 @@
     <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
     <!-- contact list -->
     <string name="contacts_title">Kontaktoj</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Enigi nomon aŭ retadreson</string>
     <string name="contacts_type_email_above">Enigu retadreson supren</string>
 
@@ -445,13 +446,16 @@
     <string name="pref_backup_explain">Savkopii babilojn al ekstera memorilo</string>
     <string name="pref_backup_export_start_button">Komenci savkopiadon</string>
     <string name="pref_backup_written_to_x">Savkopio sukcese konservita al \"%1$s\".</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Eksporti sekretajn ŝlosilojn</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Ĉu eksporti sekretajn ŝlosilojn al \"%1$s\"?</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fono</string>
     <string name="pref_background_btn_default">Uzi defaŭltan bildon</string>
     <string name="pref_background_btn_gallery">Elekti el galerio</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferi tutvojan ĉifradon</string>
 
     <!-- notifications  -->

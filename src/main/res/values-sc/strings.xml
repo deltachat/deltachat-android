@@ -220,6 +220,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Cuntatos</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Inserta su nùmene o s\'indiritzu de posta eletrònica</string>
     <string name="contacts_type_email_above">Inserta s\'indiritzu de posta eletrònica inoghe in subra</string>
 
@@ -392,8 +393,11 @@
     <string name="pref_backup_export_explain">Una còpia de seguresa t\'agiudat a impostare un\'installatzione noa in custu o in un\'àteru dispositivu.\n\nSa còpia de seguresa ant a cuntènnere totu sos messàgios, sos cuntatos, sas tzarradas e s\'impostatzione de sa tzifradura a nodu terminale (end-to-end) de Autocrypt. Mantene su documentu in unu logu seguru o iscantzellalu in su primu momentu chi podes.</string>
     <string name="pref_backup_export_start_button">Incumintza sa còpia de seguresa</string>
     <string name="pref_backup_written_to_x">Còpia de seguresa sarvada in \"%1$s\"chene problemas.</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Esporta sas craes segretas</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Esportare sas craes segretas in \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Craes segretas sarvadas in \"%1$s\" chene problemas.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Isfundu</string>
@@ -401,6 +405,7 @@
     <string name="pref_background_btn_gallery">Ischerta dae sa galleria</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si disabìlitas custa opztione assegura·ti chi su serbidore tuo e totu sos àteros clientes siant cunfigurados in sa matessi manera\n\nSi nono sas cosas diant pòdere non funtzionare pro nudda.</string>
     <string name="pref_auto_folder_moves">Tramudòngios automàticos a sa cartella DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Sos arresonos de sas tzarradas benint tramudados pro evitare su prenamentu de sa cartella de intrada</string>
     <string name="pref_show_emails">Ammustra sas lìteras traditzionales</string>
     <string name="pref_show_emails_no">Nono, tzarradas ebbia</string>
@@ -433,11 +438,15 @@
     <string name="autodel_after_1_week">A pustis de 1 chida</string>
     <string name="autodel_after_1_year">A pustis de 1 annu</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Imbia unu messàgiu de impostatzione de Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Unu \'Messàgiu de configuratzione Autocrypt\' cumpartzit sa configuratzione a nodu terminale (end-to-end) cun àteras aplicatziones cumpatìbiles cun Autocrypt.\n\nSa configuratzione ant a èssere tzifradas cun unu còdighe ammustradu inoghe chi depet èssere insertadu in s\'àteru dispositivu. </string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Imbia unu messàgiu de impostatzione de Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Ti ses imbiadu sa configuratzione tua. Cola a s\'àteru dispositivu e aberi su messàgiu de configuratzione. Ti diat dèpere èssere pedidu unu còdighe de configuratzione. Inserta custas tzifras:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferi sa tzifradura a nodu terminale (end-to-end)</string>
 
     <string name="write_message_desktop">Iscrie unu messàgiu</string>

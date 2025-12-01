@@ -263,6 +263,7 @@
     <string name="menu_save_log">Запис на дневник</string>
     <string name="menu_more_options">Още опции</string>
     <string name="menu_learn_spelling">Запомняне на правописа</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Одитен дневник на чатовете</string>
     <string name="jump_to_message">Към съобщение</string>
     <string name="copy_json">Копиране на JSON</string>
@@ -325,6 +326,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Контакти</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Въведете име или адрес за електронна поща</string>
     <string name="contacts_type_email_above">Въведете адрес за електронна поща по-горе</string>
 
@@ -391,9 +393,11 @@
     <string name="show_location_traces">Показване на съобщенията за проследяване</string>
     <string name="add_poi">Изпращане на място, представляващо интерес</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Системните съобщения за този чат ще се появяват тук</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Одитен дневник на чата за %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Показва само системни и информационни съобщения; това е от полза, ако искаме да намерим последните чат действия, без да преминаваме през много на брой съобщения.</string>
 
     <!-- punycode warning / labeled links -->
@@ -423,6 +427,7 @@
     <string name="group_self_not_in_group">Трябва да сте член на групата, за да изпълните това действие.</string>
     <string name="profile_encryption">Криптиране</string>
     <string name="profile_shared_chats">Споделени чатове</string>
+    <!-- deprecated -->
     <string name="related_chats">Свързани чатове</string>
     <string name="tab_contact">Контакт</string>
     <string name="tab_group">Група</string>
@@ -618,7 +623,9 @@
     <string name="pref_server">Сървър</string>
     <string name="pref_encryption">Криптиране</string>
     <string name="pref_manage_keys">Управление на ключове</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Прочитане на системната адресна книга</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Да се предлага създаване на чатове с контакти от адресната книга. За някои доставчици е необходимо първо да се настрои криптиране от край до край.</string>
     <string name="pref_chats">Чатове</string>
     <string name="pref_in_chat_sounds">Звуци в чата</string>
@@ -634,8 +641,11 @@
     <string name="pref_backup_export_all">Експортиране на всички %1$d профила</string>
     <string name="pref_backup_export_start_button">Започване на създаването на резервно копие</string>
     <string name="pref_backup_written_to_x">Резервното копие е успешно записано в \"%1$s\".</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Експорт на тайните ключове</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Да бъдат ли експортирани тайните ключове в \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Тайните ключове са записани успешно в \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Фон</string>
@@ -643,8 +653,10 @@
     <string name="pref_background_btn_gallery">Избор от галерията</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ако промение тази опция, се уверете, че Вашият сървър и другите Ви клиенти са конфигурирани по съответен начин.\n\nВ противен случай е възможно нещата въобще да не работят.</string>
     <string name="pref_auto_folder_moves">Автоматично преместване в папката DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Разговорите са преместени, за да се избегне претрупване на папката \"Входящи\"</string>
     <string name="pref_only_fetch_mvbox_title">Да се извлича само от папката DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Другите папки да не бъдат взимани под внимание. Изисква Вашият сървър да премества чат съобщенията в папката DeltaChat.</string>
     <string name="pref_show_emails">Да се показват класически e-mail съобщения</string>
     <string name="pref_show_emails_no">Не, само чатове</string>
@@ -652,7 +664,9 @@
     <string name="pref_show_emails_all">Всички</string>
     <string name="pref_experimental_features">Експериментални възможности</string>
     <string name="pref_on_demand_location_streaming">Поточно излъчване на местоположението при поискване</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Режим за разработчици</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Активира опциите за отстраняване на грешки и може да направи приложението по-малко стабилно. Само за разработчици.</string>
     <string name="pref_background_default">Подразбиращо се изображение</string>
     <string name="pref_background_default_color">Подразбиращ се цвят</string>
@@ -677,8 +691,6 @@
     <string name="disable_imap_idle">Деактивиране на IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Да не се използва разширението IMAP IDLE дори ако сървърът го поддържа. Ако тази опция бъде разрешена, извличането на съобщенията ще бъде забавено. Разрешете я само за тестване.</string>
     <string name="send_stats_to_devs">Да се изпраща статистика към разработчиците на Delta Chat</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Резултати от търсенето</string>
     <string name="emoji_not_found">Не е открито Emoji</string>
@@ -721,11 +733,15 @@
     <string name="after_5_weeks">След 5 седмици</string>
     <string name="autodel_after_1_year">След 1 година</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Изпращане на съобщение за настройка на Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Съобщението за настройка на Autocrypt споделя по сигурен начин Вашата настройка за криптиране \"от край до край\" с други съвместими с Autorcypt приложения.\n\nНастройката се криптира с код, който се показва тук и трябва да бъде въведен на другото устройство.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Изпращане на съобщението за настройка на Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Изпратихте Вашата настройка до себе си. Отворете съобщението за настройка в другото устройство. Би трябвало да Ви бъде поискан код за настройка. Въведете следните цифри:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Да се предпочита криптиране \"от край до край\"</string>
 
     <!-- system messages -->
@@ -932,6 +948,7 @@
     <string name="name_desktop">Име</string>
     <string name="select_group_image_desktop">Изберете изображение за групата</string>
     <string name="export_backup_desktop">Експорт на резервно копие</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Найстроката на Autocrypt е прехвърлена.</string>
     <string name="forget_login_confirmation_desktop">Да бъде ли изтрита тази регистрация? Всичко ще бъде изтрито, включително Вашата настройка за криптиране \"от край до край\", контакти, чатове, съобщения и медийни файлове. Това действие не може да бъде отменено.</string>
     <string name="message_detail_sent_desktop">изпратено</string>
@@ -986,7 +1003,6 @@
     <string name="last_check_at">Проверено на %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat използва Вашата камера, за да прави и изпраща снимки и видеоклипове, както и да сканира QR кодове.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat използва Вашите контакти, за да показва списък на e-mail адресите, до които можете да пишете. Delta Chat няма собствен сървър, Вашите контакти не се пращат никъде.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat се нуждае от позволение да споделя Вашето местоположение за периода от време, през който сте разрешили споделяне на местоположението.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat се нуждае от позволение да споделя Вашето местоположение за периода от време, през който сте разрешили споделяне на местоположението.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat използва Вашия микрофон, за да записва и изпраща гласови съобщения и видеоклипове със звук.</string>

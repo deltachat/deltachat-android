@@ -253,6 +253,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">連絡先一覧</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">名前かメールアドレスを入力</string>
     <string name="contacts_type_email_above">上にメールアドレスを入力してください。</string>
 
@@ -438,14 +439,18 @@
     <string name="pref_backup_export_explain">バックアップは、本デバイスまたは別のデバイスに新たにインストールする際に役立ちます。\n\nこのバックアップには、すべてのメッセージ、連絡先、チャット、およびエンドツーエンドの自動暗号化設定が含まれます。バックアップファイルは安全な場所に保管するか、できるだけ早く削除してください。</string>
     <string name="pref_backup_export_start_button">バックアップを開始する</string>
     <string name="pref_backup_written_to_x">バックアップは%1$sに正常に完了しました。</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">秘密鍵のエクスポート</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">%1$sに秘密鍵をエクスポートしますか？</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">暗号鍵は%1$sに正常に書き込まれました。</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">デフォルトの画像を使う</string>
     <string name="pref_background_btn_gallery">ギャラリーから選ぶ</string>
     <string name="pref_auto_folder_moves">DeltaChatフォルダに自動で移動する</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">チャットは受信箱の邪魔にならないように移動されます。</string>
     <string name="pref_show_emails">一般的なメールを表示する</string>
     <string name="pref_show_emails_no">いいえ、チャットのみ</string>
@@ -490,10 +495,13 @@
     <string name="after_5_weeks">5週間後</string>
     <string name="autodel_after_1_year">1年後</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">自動暗号化設定用ﾒｯｾｰｼﾞを送信する</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">｢自動暗号化設定用メッセージ｣は安全に一対一暗号化設定を対応するアプリケーションとの間に設定します｡\n \n 受信側は設定時に表示されるパスコードを入力する必要が有ります｡</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">自動暗号化設定用ﾒｯｾｰｼﾞを送信する</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">エンドツーエンド暗号化を好む</string>
 
     <!-- system messages -->
@@ -514,6 +522,8 @@
     <string name="remove_member_by_you">自分から%1$sが退会されました。</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$sから%1$sが退会されました。</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">%1$sが退会されました。</string>
     <string name="group_image_deleted_by_you">自分からグループ画像を削除しました。</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">%1$sからグループ画像を削除しました。</string>
@@ -619,6 +629,7 @@
     <string name="name_desktop">名前</string>
     <string name="select_group_image_desktop">グループ画像を選択する</string>
     <string name="export_backup_desktop">バックアップをエクスポート</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">自動暗号化設定が転送されました</string>
     <string name="message_detail_sent_desktop">送信済み</string>
     <string name="message_detail_received_desktop">届きました</string>

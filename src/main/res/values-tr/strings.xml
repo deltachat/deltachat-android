@@ -338,6 +338,7 @@
     <string name="menu_save_log">Günlüğü Kaydet</string>
     <string name="menu_more_options">Daha Fazla Seçenek</string>
     <string name="menu_learn_spelling">Yazımı Öğrenin</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Sohbet Denetim Günlüğü</string>
     <string name="jump_to_message">İletiye Atla</string>
     <string name="jump_to_original_message">Özgün İletiye Atla</string>
@@ -420,8 +421,8 @@
     <string name="ask_export_attachment">İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
     <string name="ask_block_contact">Bu kişi engellensin mi?\n\nEngellenen kişiler tarafından oluşturulan doğrudan iletiler ya da gruplar gösterilmeyecek.\n\nEngellenen kişilerle olan diğer gruplar, onların iletilerini gösterecek.</string>
     <string name="ask_unblock_contact">Bu kişi engellenmesin mi?</string>
-    <string name="ask_delete_contacts">Kişiler silinsin mi?\n\nSohbetlerin sürdüğü ya da sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
-    <string name="ask_delete_contact">%1$s kişisi silinsin mi?\n\nSohbetlerin sürdüğü ya da sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
+    <string name="ask_delete_contacts">Kişiler silinsin mi?\n\nSohbetlerin sürdüğü kişiler kalıcı olarak silinemez.</string>
+    <string name="ask_delete_contact">%1$s kişisi silinsin mi?\n\nSohbetlerin sürdüğü kişiler kalıcı olarak silinemez.</string>
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$s gruptan kaldırılsın mı?</string>
@@ -432,6 +433,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kişiler</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Ad ya da e-posta adresi girin</string>
     <string name="contacts_type_email_above">Yukarıya e-posta adresi yazın</string>
 
@@ -504,9 +506,11 @@
     <string name="show_location_traces">İzleri göster</string>
     <string name="add_poi">İlgi çekici noktayı gönder</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Bu sohbet için sistem iletileri burada görünür</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">%1$s için Sohbet Denetim Günlüğü</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Yalnızca sistem ve bilgi iletilerini gösterir; birçok ileti arasında kaydırmadan son sohbet eylemlerini bulmak için kullanışlıdır.</string>
 
     <!-- punycode warning / labeled links -->
@@ -540,6 +544,7 @@
     <string name="group_self_not_in_group">Bu eylemi gerçekleştirmek için grubun bir üyesi olmalısınız.</string>
     <string name="profile_encryption">Şifreleme</string>
     <string name="profile_shared_chats">Ortak\'taki Sohbetler</string>
+    <!-- deprecated -->
     <string name="related_chats">İlgili Sohbetler</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Geçmişteki Üyeler</string>
@@ -777,7 +782,9 @@
     <string name="pref_server">Sunucu</string>
     <string name="pref_encryption">Şifreleme</string>
     <string name="pref_manage_keys">Anahtarları Yönet</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Sistem Adres Defterini Oku</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Adres defterinden gelen kişilerle sohbetler oluşturmayı teklif edin.</string>
     <string name="pref_chats">Sohbetler</string>
     <string name="pref_in_chat_sounds">Sohbet İçi Sesler</string>
@@ -794,8 +801,11 @@
     <string name="pref_backup_export_all">Tüm %1$d profili dışa aktar</string>
     <string name="pref_backup_export_start_button">Yedeklemeyi Başlat</string>
     <string name="pref_backup_written_to_x">Yedek “%1$s” üzerine başarıyla yazıldı.</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Sır Anahtarları Dışa Aktar</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Sır anahtarlar “%1$s” üzerinde dışa aktarılsın mı?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Sır anahtarlar “%1$s” üzerine başarıyla yazıldı.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Duvar Kâğıdı</string>
@@ -807,8 +817,10 @@
     <string name="pref_multidevice_explain">İletilerinizi diğer aygıtlarınızla eşzamanlayın. İkinci bir aygıt eklendiğinde otomatik olarak etkinleştirilir</string>
     <string name="pref_multidevice_change_warn">Aynı profili birden fazla aygıtta kullanırken Çoklu Aygıt Modu etkinleştirilmelidir. Bu ayarı yalnızca bu profili diğer tüm aygıtlarınızdan kaldırdıysanız etkisizleştirin.\n\nProfili birden fazla aygıtta kullanırken Çoklu Aygıt Modu\'nu etkisizleştirmek, iletilerin kaçırılmasına ve diğer sorunlara neden olur.</string>
     <string name="pref_auto_folder_moves">DeltaChat Klasörüne Otomatik Olarak Taşı</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Sohbet görüşmeleri, Gelen Kutusu\'ndaki dağınıklığı önlemek için taşınır</string>
     <string name="pref_only_fetch_mvbox_title">Yalnızca DeltaChat Klasöründen Getir</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Diğer klasörleri yoksayar. Sunucunuzun sohbet iletilerini DeltaChat klasörüne taşımasını gerektirir.</string>
     <string name="pref_show_emails">Klasik E-Postaları Göster</string>
     <string name="pref_show_emails_no">Hayır, yalnızca sohbetler</string>
@@ -816,7 +828,9 @@
     <string name="pref_show_emails_all">Tümü</string>
     <string name="pref_experimental_features">Deneysel Özellikler</string>
     <string name="pref_on_demand_location_streaming">İsteğe Bağlı Konum Akışı</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Geliştirici Modu</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Hata ayıklama seçeneklerini etkinleştirir ve uygulamayı daha az kararlı yapabilir. Yalnızca geliştiriciler içindir.</string>
     <string name="pref_background_default">Varsayılan görsel</string>
     <string name="pref_background_default_color">Varsayılan renk</string>
@@ -842,6 +856,7 @@
     <string name="disable_imap_idle">IMAP IDLE\'ı Etkisizleştir</string>
     <string name="disable_imap_idle_explain">Sunucu desteklese bile IMAP IDLE uzantısını kullanmayın. Bu seçeneği etkinleştirmek ileti getirmeyi geciktirecek; yalnızca sınama için etkinleştirin.</string>
     <string name="send_stats_to_devs">Delta Chat\'in geliştiricilerine istatistikleri gönder</string>
+    <string name="stats_msg_body">İlişik, Delta Chat\'i geliştirmemize yardımcı olan belirsiz kullanım istatistikleri içerir. Teşekkür ederiz!</string>
 
 
     <!-- Emoji picker and categories -->
@@ -888,11 +903,15 @@
     <string name="after_5_weeks">5 hafta sonra</string>
     <string name="autodel_after_1_year">1 yıl sonra</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Autocrypt Ayarlama İletisi Gönder</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır.\n\nDelta Chat\'i diğer aygıtta da kullanmak istiyorsanız, bunun yerine “Ayarlar / İkinci Aygıt Ekle”yi kullanın.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi Gönder</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Uçtan Uca Şifrelemeyi Yeğle</string>
 
     <!-- system messages -->
@@ -915,6 +934,8 @@
     <string name="remove_member_by_you">%1$s üyesini kaldırdınız.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s tarafından %1$s üyesi kaldırıldı.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">%1$s üyesi kaldırıldı.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Gruptan ayrıldınız.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -1029,6 +1050,8 @@
     <string name="qrlogin_ask_login_another">“%1$s” adresine giriş yapılsın mı?\n\nVarolan profiliniz silinmeyecek. Profilleriniz arasında geçiş yapmak için “Profili Değiştir” öğesini kullanın.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s sizi bu gruba katılmaya çağırdı.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s, sizi bu kanala katılmaya çağırdı.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s yanıtladı; gruba eklenmesi bekleniyor…</string>
     <string name="secure_join_wait">Bağlantı kuruluyor, lütfen bekleyin…</string>
@@ -1118,6 +1141,7 @@
     <string name="name_desktop">Ad</string>
     <string name="select_group_image_desktop">Grup Görseli Seç</string>
     <string name="export_backup_desktop">Yedeği Dışa Aktar</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Autocrypt ayarlaması aktarıldı.</string>
     <string name="forget_login_confirmation_desktop">Bu profil silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>
     <string name="message_detail_sent_desktop">gönderilme</string>
@@ -1184,7 +1208,6 @@
     <string name="add_to_widget">Widget\'a Ekle</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat, fotoğraflar ve videolar çekmek ve göndermek için ve QR kodlarını taramak için kameranızı kullanır.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat, yazabileceğiniz adreslerin bir listesini göstermek için kişilerinizi kullanır. Delta Chat\'in sunucusu yoktur; kişileriniz herhangi bir yere gönderilmez.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Konum paylaşımını etkinleştirdiğiniz zaman aralığında konumunuzu paylaşmak için Delta Chat\'e izin gerekir.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Konum paylaşımını etkinleştirdiğiniz zaman aralığında konumunuzu paylaşmak için Delta Chat\'e izin gerekir.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat, sesli iletiler ve sesli videolar kaydetmek ve göndermek için mikrofonunuzu kullanır.</string>

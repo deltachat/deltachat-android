@@ -338,6 +338,7 @@
     <string name="menu_save_log">Logboek opslaan</string>
     <string name="menu_more_options">Meer opties</string>
     <string name="menu_learn_spelling">Spelling leren</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Gesprekslogboek</string>
     <string name="jump_to_message">Ga naar bericht</string>
     <string name="jump_to_original_message">Ga naar oorspronkelijk bericht</string>
@@ -432,6 +433,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contactpersonen</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Voer een naam of e-mailadres in.</string>
     <string name="contacts_type_email_above">Typ hierboven het e-mailadres</string>
 
@@ -504,9 +506,11 @@
     <string name="show_location_traces">Sporen tonen</string>
     <string name="add_poi">Afspraaklocatie versturen</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Systeemberichten uit dit gesprek worden hier getoond</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Gesprekslog van %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">In deze weergave zie je alleen systeem- en informatieberichten - zo kun je in één oogopslag zien welke gespreksacties je hebt uitgevoerd.</string>
 
     <!-- punycode warning / labeled links -->
@@ -540,6 +544,7 @@
     <string name="group_self_not_in_group">Om deze actie uit te kunnen voeren moet je deelnemen aan de groep.</string>
     <string name="profile_encryption">Versleuteling</string>
     <string name="profile_shared_chats">Gemeenschappelijke gesprekken</string>
+    <!-- deprecated -->
     <string name="related_chats">Verwante gesprekken</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Voormalige deelnemers</string>
@@ -777,7 +782,9 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Versleuteling</string>
     <string name="pref_manage_keys">Sleutels beheren</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Adresboek uitlezen</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Bied aan om gesprekken te beginnen met contactpersonen uit het adresboek. Let op: voor sommige providers is eind-tot-eindversleuteling benodigd.</string>
     <string name="pref_chats">Gesprekken</string>
     <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
@@ -794,8 +801,11 @@
     <string name="pref_backup_export_all">%1$d accounts exporteren</string>
     <string name="pref_backup_export_start_button">Reservekopie maken</string>
     <string name="pref_backup_written_to_x">De reservekopie is opgeslagen in ‘%1$s’.</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Geheime sleutels exporteren</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Geheime sleutels exporteren naar ‘%1$s’?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">De geheime sleutels zijn opgeslagen in ‘%1$s’.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Achtergrond</string>
@@ -807,8 +817,10 @@
     <string name="pref_multidevice_explain">Synchroniseer berichten met andere apparaten. Dit wordt automatisch ingeschakeld na het toevoegen van een secundair apparaat.</string>
     <string name="pref_multidevice_change_warn">Let op: deze modus moet op alle apparaten worden ingeschakeld op hetzelfde profiel. Schakel deze instelling alleen uit als je je profiel van alle andere apparaten hebt verwijderd.\n\nDoor deze modus uit te schakelen terwijl het profiel nog gebruikt wordt, gaan er berichten verloren en kunnen er andere problemen ontstaan.</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om je postvak netjes te houden</string>
     <string name="pref_only_fetch_mvbox_title">Alleen DeltaChat-map controleren</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Negeer andere mappen. Hiervoor is vereist dat je server gesprekken kan verplaatsen naar de DeltaChat-map.</string>
     <string name="pref_show_emails">Klassieke e-mails tonen</string>
     <string name="pref_show_emails_no">Nee, alleen gesprekken</string>
@@ -816,7 +828,9 @@
     <string name="pref_show_emails_all">Alles</string>
     <string name="pref_experimental_features">Experimentele functies</string>
     <string name="pref_on_demand_location_streaming">Locatie delen (op verzoek)</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Ontwikkelaarsmodus</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Schakelt foutopsporingspoties in die de app mogelijk minder stabiel maken. Alléén voor ontwikkelaars.</string>
     <string name="pref_background_default">Standaardachtergrond</string>
     <string name="pref_background_default_color">Standaardkleur</string>
@@ -842,6 +856,7 @@
     <string name="disable_imap_idle">IMAP IDLE uitschakelen</string>
     <string name="disable_imap_idle_explain">Maak geen gebruik van IMAP IDLE, zelfs niet als de server het ondersteunt. Schakel deze optie in om het ophalen van berichten te vertragen. Let op: gebruik deze optie alleen voor testdoeleinden.</string>
     <string name="send_stats_to_devs">Statistieken delen met Delta Chat-ontwikkelaars</string>
+    <string name="stats_msg_body">De bijlage bevat anonieme gebruiksstatistieken die ons helpen Delta Chat te verbeteren. Bij voorbaat dank!</string>
 
 
     <!-- Emoji picker and categories -->
@@ -888,11 +903,15 @@
     <string name="after_5_weeks">Na 5 weken</string>
     <string name="autodel_after_1_year">Na 1 jaar</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Autocrypt-instelbericht versturen</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Een ‘Autocrypt-instelbericht’ deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps.\n\nAls je Delta Chat ook op het andere apparaat gebruikt, voeg het dan als tweede apparaat toe.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Autocrypt-instelbericht versturen</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Je instellingen zijn aan jezelf verstuurd. Schakel over naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Voorkeur voor eind-tot-eindversleuteling</string>
 
     <!-- system messages -->
@@ -915,6 +934,8 @@
     <string name="remove_member_by_you">Je hebt ‘%1$s’ verwijderd.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">‘%1$s’ is verwijderd door %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">‘%1$s’ is verwijderd.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Je hebt de groep verlaten.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -1029,6 +1050,8 @@
     <string name="qrlogin_ask_login_another">Wil je inloggen als ‘%1$s’?\n\nJe reeds aanwezige account wordt niet verwijderd. Druk op de knop ‘Ander account kiezen’ om tussen accounts te schakelen.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s heeft je uitgenodigd voor deze groep.\n\nEr wordt gewacht op antwoord van het apparaat van %2$s…</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s heeft je uitgenodigd voor dit groep.\n\nEr wordt gewacht op antwoord van het apparaat van %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s heeft geantwoord en wacht op toelating tot de groep…</string>
     <string name="secure_join_wait">Bezig met opzetten van eind-tot-eindversleuteling…</string>
@@ -1118,6 +1141,7 @@
     <string name="name_desktop">Naam</string>
     <string name="select_group_image_desktop">Kies een groepsafbeelding</string>
     <string name="export_backup_desktop">Reservekopie exporteren</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Autocrypt-instellingen overgedragen!</string>
     <string name="forget_login_confirmation_desktop">Wil je dit account verwijderen? Alles wordt verwijderd: je eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie is onomkeerbaar.</string>
     <string name="message_detail_sent_desktop">verstuurd</string>
@@ -1184,7 +1208,6 @@
     <string name="add_to_widget">Tonen op widget</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken en QR-codes te scannen.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen. Delta Chat heeft geen servers, dus ze worden niet aan ons opgestuurd.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat heeft het locatietoegangsrecht nodig om je locatie te tonen en delen voor de door jou aangegeven duur.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat heeft het locatietoegangsrecht nodig om je locatie te tonen en delen voor de door jou aangegeven duur.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Geef Delta Chat toegang tot je microfoon om audio op te nemen voor spraakberichten en video\'s.</string>
