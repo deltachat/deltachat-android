@@ -28,7 +28,6 @@ import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -37,14 +36,12 @@ import java.util.LinkedList;
 public class ProxySettingsActivity extends BaseActionBarActivity
   implements ProxyListAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
 
-  private final DynamicTheme dynamicTheme = new DynamicTheme();
   private SwitchCompat proxySwitch;
   private ProxyListAdapter adapter;
 
   @Override
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
-    dynamicTheme.onCreate(this);
     setContentView(R.layout.proxy_settings_activity);
 
     ActionBar actionBar = getSupportActionBar();
@@ -87,12 +84,6 @@ public class ProxySettingsActivity extends BaseActionBarActivity
   protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
     handleOpenProxyUrl();
-  }
-
-  @Override
-  public void onResume() {
-    super.onResume();
-    dynamicTheme.onResume(this);
   }
 
   @Override
