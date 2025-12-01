@@ -305,6 +305,7 @@
     <string name="menu_save_log">儲存日誌</string>
     <string name="menu_more_options">更多選項</string>
     <string name="menu_learn_spelling">學習拼寫</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">對話審查紀錄</string>
     <string name="jump_to_message">移動至訊息</string>
     <string name="jump_to_original_message">跳轉到原始訊息</string>
@@ -374,6 +375,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">聯絡人清單</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">輸入名稱或電子郵件位址</string>
     <string name="contacts_type_email_above">在上面輸入電子郵件位址</string>
 
@@ -441,9 +443,11 @@
     <string name="show_location_traces">顯示移動足跡</string>
     <string name="add_poi">傳送興趣點</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">此聊天的系統消息顯示在此處</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">%1$s的聊天審核日誌</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">僅顯示系統和資訊消息;對於查找上次聊天操作而不滾動流覽許多消息非常有用。</string>
 
     <!-- punycode warning / labeled links -->
@@ -477,6 +481,7 @@
     <string name="group_self_not_in_group">你必須先加入群組，才能執行本功能。</string>
     <string name="profile_encryption">加密</string>
     <string name="profile_shared_chats">共享的對話</string>
+    <!-- deprecated -->
     <string name="related_chats">相關對話</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">以前成員</string>
@@ -701,7 +706,9 @@
     <string name="pref_server">伺服器</string>
     <string name="pref_encryption">加密</string>
     <string name="pref_manage_keys">管理金鑰</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">讀取系統通訊錄</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">建議與通訊錄中的聯絡人建立聊天。一些供應商需要先進行端到端加密設置。</string>
     <string name="pref_chats">對話</string>
     <string name="pref_in_chat_sounds">對話內的音效</string>
@@ -717,8 +724,11 @@
     <string name="pref_backup_export_all">匯出全部%1$d個賬戶</string>
     <string name="pref_backup_export_start_button">開始備份</string>
     <string name="pref_backup_written_to_x">成功備份至 「%1$s」</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">匯出金鑰</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">將金鑰匯出至 「%1$s」 ?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">成功匯出金鑰至「%1$s」。</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">背景</string>
@@ -726,8 +736,10 @@
     <string name="pref_background_btn_gallery">從相簿中挑選</string>
     <string name="pref_imap_folder_warn_disable_defaults">如果關閉本選項的話，請務必確定你的伺服器和其它客戶端應用程式都使用相同的設定，否則很可能不能運作。</string>
     <string name="pref_auto_folder_moves">自動搬移到 DeltaChat 資料夾</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">搬移對話以避免塞爆收件匣</string>
     <string name="pref_only_fetch_mvbox_title">僅從 DeltaChat 資料夾中獲取</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">忽略其他資料夾。要求您的伺服器將聊天訊息移動到 DeltaChat 資料夾。</string>
     <string name="pref_show_emails">顯示傳統email</string>
     <string name="pref_show_emails_no">只顯示對話</string>
@@ -735,7 +747,9 @@
     <string name="pref_show_emails_all">所有郵件</string>
     <string name="pref_experimental_features">實驗性功能</string>
     <string name="pref_on_demand_location_streaming">按需要位置串流</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">開發者模式</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">啟動調試選項，可能使應用程式不太穩定。僅供開發人員使用。</string>
     <string name="pref_background_default">預設圖片</string>
     <string name="pref_background_default_color">預設顏色</string>
@@ -761,8 +775,6 @@
     <string name="disable_imap_idle">禁用 IMAP IDLE</string>
     <string name="disable_imap_idle_explain">即使伺服器支援 IMAP IDLE 擴展，也不要使用它。啟用此選項會延遲訊息檢索，僅對測試啟用此選項。</string>
     <string name="send_stats_to_devs">將統計數據發送給 Delta Chat 的開發人員</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">搜尋結果</string>
     <string name="emoji_not_found">找不到表情符號</string>
@@ -807,11 +819,15 @@
     <string name="after_5_weeks">5 週後</string>
     <string name="autodel_after_1_year">1 年後</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">傳送AutoCrypt設定訊息</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">「AutoCrypt設定訊息」可以安全地和你使用的其它支援AutoCrypt的 app 共享端到端加密設定。\n\n本訊息含一組設定碼，請在其它支援的設備中輸入這組設定碼。</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">傳送AutoCrypt設定訊息</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">你的設定已經傳送給你自己了。請到其它支援自動加密設定的裝置，開啟設定訊息，並輸入以下的設定碼\n\n輸入完之後，你的其它裝置就可以使用AutoCrypt了。</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">偏好端到端加密</string>
 
     <!-- system messages -->
@@ -834,6 +850,8 @@
     <string name="remove_member_by_you">我已移除成員 %1$s</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s已移除成員 %1$s</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">已移除成員 %1$s</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s 退出了群組。</string>
     <string name="group_image_deleted_by_you">我已刪除群組圖片。</string>
@@ -1022,6 +1040,7 @@
     <string name="name_desktop">名稱</string>
     <string name="select_group_image_desktop">選擇群組圖片</string>
     <string name="export_backup_desktop">匯出備份</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">已傳輸自動加密設定。</string>
     <string name="forget_login_confirmation_desktop">確定要刪除這裡的登入嗎? 所有的設定都會被刪除，包括端到端加密設定、聯絡人、對話、訊息、媒體檔案等。本動作不能復原。</string>
     <string name="message_detail_sent_desktop">已傳送</string>
@@ -1088,7 +1107,6 @@
     <string name="add_to_widget">添加到小工具</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用您的相機拍攝和傳送照片和影片，以及掃描QR碼。</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的聯絡人來顯示您可以寫入的電子郵件位址清單。Delta Chat 沒有伺服器，您的聯絡人不會發送到任何地方。</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat 需要存取權才能在您啟用位置共用的時間範圍內共用您的位置。</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat 需要存取權才能在您啟用位置共用的時間範圍內共用您的位置。</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用您的麥克風錄製和發送音訊和帶聲音的視頻。</string>

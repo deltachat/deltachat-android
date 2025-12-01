@@ -274,6 +274,7 @@
     <string name="menu_save_log">Сними дневник</string>
     <string name="menu_more_options">Више опција</string>
     <string name="menu_learn_spelling">Научи правопис</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Дневник ревизије ћаскања</string>
     <string name="jump_to_message">Иди на поруку</string>
     <string name="copy_json">Копирај JSON</string>
@@ -347,6 +348,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Контакти</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Унесите име или е-адресу</string>
     <string name="contacts_type_email_above">Унесите е-адресу изнад</string>
 
@@ -412,9 +414,11 @@
     <string name="show_location_traces">Прикажи трагове</string>
     <string name="add_poi">Пошаљи интересантно место</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Поруке оперативног система за ово ћаскање ће се појавити овде.</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Дневник ревизије ћаскања за %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Приказује само информативне и поруке оперативног система; корисно за проналажење последњих радњи ћаскања без листања кроз много порука.</string>
 
     <!-- punycode warning / labeled links -->
@@ -593,8 +597,11 @@
     <string name="pref_backup_export_explain">Резервна копија вам помаже да подесите нову инсталацију на овом или другом уређају.\n\nРезервна копија ће садржати све поруке, контакте и ћаскања и ваше комплетно подешавање аутоматског шифровања. Чувајте резервну копију на безбедном месту или је избришите што је пре могуће.</string>
     <string name="pref_backup_export_start_button">Покрени складиштење резервне копије</string>
     <string name="pref_backup_written_to_x">Записивање резервне копије је успешно до „%1$s“.</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Извези тајне кључеве</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Извези тајне кључеве на „%1$s“?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Записивање тајних кључева је успешно до „%1$s“.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Позадина</string>
@@ -602,8 +609,10 @@
     <string name="pref_background_btn_gallery">Изабери из галерије</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ако промените ову опцију, морате проверити да су ваш сервер и ваши други клијенти конфигурисани у складу са тим.\n\nУ супротном апликација можда уопште неће функционисати.</string>
     <string name="pref_auto_folder_moves">Аутоматски премести у DeltaChat директоријум</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Ћаскања се померају да би се избегло затрпавање пријемног сандучета</string>
     <string name="pref_only_fetch_mvbox_title">Примај поруке само из DeltaChat директоријума</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Игнориши остале директоријуме. Захтева да ваш сервер премести поруке у DeltaChat директоријум.</string>
     <string name="pref_show_emails">Прикажи обичне поруке е-поште</string>
     <string name="pref_show_emails_no">Не, само ћаскања</string>
@@ -611,7 +620,9 @@
     <string name="pref_show_emails_all">Сви</string>
     <string name="pref_experimental_features">Експерименталне могућности</string>
     <string name="pref_on_demand_location_streaming">Проток положаја на захтев</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Режим програмера</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Активира опције за отклањање грешака и може учинити апликацију мање стабилном. Само за програмере.</string>
     <string name="pref_background_default">Подразумевана позадина</string>
     <string name="pref_background_default_color">Подразумевана боја</string>
@@ -666,11 +677,15 @@
     <string name="after_5_weeks">За 5 недеља</string>
     <string name="autodel_after_1_year">За 1 годину</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Пошаљите поруку поставки за аутошифровање</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Порука о подешавању аутоматског шифровања безбедно дели ваше комплетно подешавање са другим апликацијама које су компатибилне са аутоматским шифровањем.\n\nПодешавање ће бити шифровано кодом за подешавање приказаним овде и мора се унети на другом уређају.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Пошаљите поруку поставки за аутошифровање</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Ваше подешавање вам је послато. Пређите на други уређај и отворите поруку за подешавање. На другом уређају од се вас очекује да унесете код за подешавање. Унесите следеће цифре:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Преферирај с-краја-на-крај шифровање</string>
 
     <!-- system messages -->
@@ -691,6 +706,8 @@
     <string name="remove_member_by_you">Члан %1$s је уклоњен од мене.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Члан %1$s је уклоњен од стране %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Члан %1$s је уклоњен.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s је напустио групу.</string>
     <string name="group_image_deleted_by_you">Ви сте обрисали слику групе.</string>
@@ -853,6 +870,7 @@
     <string name="name_desktop">Име</string>
     <string name="select_group_image_desktop">Изабери слику групе</string>
     <string name="export_backup_desktop">Извези резервну копију</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Поставке за аутошифровање су послате.</string>
     <string name="forget_login_confirmation_desktop">Да ли желите да избришете овај налог? Све ће бити избрисано, укључујући и ваше подешавање с-краја-на-крај шифровања, контакти, ћаскања, поруке и медији. Ова радња се не може опозвати.</string>
     <string name="message_detail_sent_desktop">послато</string>
@@ -907,7 +925,6 @@
     <string name="last_check_at">Проверено у %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat користи вашу камеру за снимање и слање фотографија и видео записа и за очитавање бар-кôда.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat користи ваше контакте да прикаже листу е-адреса на које можете слати поруке. Delta Chat нема сервер и ваши контакти се не шаљу нигде.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat захтева дозволу за дељење вашег положаја током периода у коме сте омогућили дељење положаја.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat захтева дозволу за дељење вашег положаја током периода у коме сте омогућили дељење положаја.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat користи микрофон да снима и шаље звучне поруке и видео записе са звуком.</string>

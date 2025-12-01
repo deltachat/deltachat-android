@@ -349,6 +349,7 @@
     <string name="menu_save_log">Salva Registro</string>
     <string name="menu_more_options">Più Opzioni</string>
     <string name="menu_learn_spelling">Impara l\'Ortografia</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Registro Controllo Chat</string>
     <string name="jump_to_message">Vai al Messaggio</string>
     <string name="jump_to_original_message">Vai al Messaggio Originale</string>
@@ -447,6 +448,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contatti</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Inserisci nome o indirizzo e-mail</string>
     <string name="contacts_type_email_above">Inserisci sopra l\'indirizzo e-mail</string>
 
@@ -522,9 +524,11 @@
     <string name="show_location_traces">Mostra tracce</string>
     <string name="add_poi">Invia punto di interesse</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">I messaggi di sistema per questa chat appariranno qui</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Registro di Controllo Chat per %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Mostra solo i messaggi di sistema e informativi; utile per trovare le ultime azioni nella chat senza dover scorrere molti messaggi.</string>
 
     <!-- punycode warning / labeled links -->
@@ -558,6 +562,7 @@
     <string name="group_self_not_in_group">Devi essere un membro del gruppo per fare questa azione.</string>
     <string name="profile_encryption">Crittografia</string>
     <string name="profile_shared_chats">Chat in Comune</string>
+    <!-- deprecated -->
     <string name="related_chats">Chat Correlate</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Membri Passati</string>
@@ -795,7 +800,9 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Crittografia</string>
     <string name="pref_manage_keys">Gestisci Chiavi</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Leggi Rubrica di Sistema</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Offri la possibilità di creare chat con i contatti della rubrica.</string>
     <string name="pref_chats">Chat</string>
     <string name="pref_in_chat_sounds">Suoni In-Chat</string>
@@ -812,8 +819,11 @@
     <string name="pref_backup_export_all">Esporta tutti i %1$d profili</string>
     <string name="pref_backup_export_start_button">Avvia Backup</string>
     <string name="pref_backup_written_to_x">Backup scritto con successo in %1$s</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Esporta Chiavi Segrete</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Esportare chiavi segrete in \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Chiavi segrete salvate con successo in \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Sfondo</string>
@@ -825,8 +835,10 @@
     <string name="pref_multidevice_explain">Sincronizza i tuoi messaggi con gli altri dispositivi. Abilitazione automatica all\'aggiunta di un secondo dispositivo.</string>
     <string name="pref_multidevice_change_warn">La Modalità Multi-Dispositivo deve essere abilitata quando si utilizza lo stesso profilo su più dispositivi. Disattivare questa impostazione solo se si è rimosso il profilo da tutti gli altri dispositivi.\n\nDisattivare la Modalità Multi-Dispositivo mentre si utilizza il profilo su più dispositivi causerà la perdita di messaggi e altri problemi.</string>
     <string name="pref_auto_folder_moves">Sposta nella Cartella DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Le conversazioni chat vengono spostate per evitare di ingombrare la Posta in arrivo</string>
     <string name="pref_only_fetch_mvbox_title">Recupera dalla Cartella DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Ignora altre cartelle. Richiede che il tuo server sposti i messaggi delle chat nella cartella DeltaChat.</string>
     <string name="pref_show_emails">Mostra E-mail Classiche</string>
     <string name="pref_show_emails_no">No, solo chat</string>
@@ -834,7 +846,9 @@
     <string name="pref_show_emails_all">Sì</string>
     <string name="pref_experimental_features">Caratteristiche Sperimentali</string>
     <string name="pref_on_demand_location_streaming">Trasmissione Posizione su Richiesta</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Modalità Sviluppatore</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Attiva le opzioni di debug e può rendere l\'app meno stabile. Solo per sviluppatori.</string>
     <string name="pref_background_default">Sfondo predefinito</string>
     <string name="pref_background_default_color">Colore predefinito</string>
@@ -860,8 +874,6 @@
     <string name="disable_imap_idle">Disabilita IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Non utilizzare l\'estensione IMAP IDLE anche se il server la supporta. L\'abilitazione di questa opzione ritarderà il recupero del messaggio, abilitarla solo a scopo di test.</string>
     <string name="send_stats_to_devs">Invia statistiche agli sviluppatori di Delta Chat</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Risultati Ricerca</string>
     <string name="emoji_not_found">Nessuna emoji trovata</string>
@@ -906,11 +918,15 @@
     <string name="after_5_weeks">Dopo 5 settimane</string>
     <string name="autodel_after_1_year">Dopo 1 anno</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Invia Messaggio Configurazione Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Un Messaggio Configurazione Autocrypt condivide in modo sicuro la configurazione end-to-end con altre app compatibili con Autocrypt.\n\nSe usi Delta Chat anche su altri dispositivi usa invece \"Impostazioni / Aggiungi Secondo Dispositivo\".</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Invia Messaggio Configurazione Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">La tua configurazione ti è stata inviata. Passa all\'altro dispositivo e apri il messaggio. Dovrebbe venirti richiesto un codice. Inserisci il seguente codice:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferisci Cifratura End-To-End</string>
 
     <!-- system messages -->
@@ -933,6 +949,8 @@
     <string name="remove_member_by_you">Hai rimosso il membro %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Membro %1$s rimosso da %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Membro %1$s rimosso.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Hai lasciato il gruppo.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -1136,6 +1154,7 @@
     <string name="name_desktop">Nome</string>
     <string name="select_group_image_desktop">Seleziona Immagine Gruppo</string>
     <string name="export_backup_desktop">Esporta Backup</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Configurazione Autocrypt trasferita.</string>
     <string name="forget_login_confirmation_desktop">Eliminare questo Profilo? Tutto verrà eliminato, inclusa la configurazione end-to-end, contatti, chat, i messaggi e i media. Questa azione non può essere annullata.</string>
     <string name="message_detail_sent_desktop">inviato</string>
@@ -1202,7 +1221,6 @@
     <string name="add_to_widget">Aggiungi al Widget</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilizza la tua fotocamera per scattare e inviare foto e video e per scansionare i codici QR.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat usa i tuoi contatti per mostrare una lista di indirizzi e-mail a cui puoi scrivere. Delta Chat non ha alcun server, i tuoi contatti non vengono inviati da nessuna parte.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat necessita dell\'autorizzazione per condividere la tua posizione per il periodo di tempo in cui hai abilitato la condivisione della posizione.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat ha bisogno dell\'autorizzazione di localizzazione per condividere la vostra posizione per il periodo di tempo in cui avete abilitato la condivisione della posizione.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat utilizza il tuo microfono per registrare e inviare messaggi vocali e video con audio.</string>

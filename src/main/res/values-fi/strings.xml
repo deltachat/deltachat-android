@@ -263,6 +263,7 @@
     <string name="menu_save_log">Tallenna loki</string>
     <string name="menu_more_options">Lisää asetuksia</string>
     <string name="menu_learn_spelling">Opi tavaus</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Keskustelun tarkastusloki</string>
     <string name="jump_to_message">Siirry viestiin</string>
     <string name="copy_json">Kopioi JSON</string>
@@ -325,6 +326,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Yhteystiedot</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Anna nimi tai sähköpostiosoite</string>
     <string name="contacts_type_email_above">Kirjoita sähköpostiosoite ylle</string>
 
@@ -391,9 +393,11 @@
     <string name="show_location_traces">Näytä jäljet</string>
     <string name="add_poi">Lähetä erikseen valittu piste</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Keskustelun järjestelmäviestit näkyvät tässä</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Keskustelun tarkastusloki yhteystiedolle %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Tässä näytetään vain järjestelmä- ja ohjeviestit. Tämä näkymä helpottaa viimeisimpien tapahtumien löytämistä tavallisten viestien joukosta.</string>
 
     <!-- punycode warning / labeled links -->
@@ -423,6 +427,7 @@
     <string name="group_self_not_in_group">Sinun täytyy olla ryhmän jäsen suorittaaksesi tämän toiminnon.</string>
     <string name="profile_encryption">Salaus</string>
     <string name="profile_shared_chats">Jaetut keskustelut</string>
+    <!-- deprecated -->
     <string name="related_chats">Liittyvät keskustelut</string>
     <string name="tab_contact">Yhteystieto</string>
     <string name="tab_group">Ryhmä</string>
@@ -618,7 +623,9 @@
     <string name="pref_server">Palvelin</string>
     <string name="pref_encryption">Salaus</string>
     <string name="pref_manage_keys">Hallinnoi avaimia</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Lue laitteen osoitekirja</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Tarjoa keskustelujen avaamista yhteystietojen perusteella. Jotkin palveluntarjoajat vaativat ensin päästä-päähän salauksen käyttöönottoa. </string>
     <string name="pref_chats">Keskustelut</string>
     <string name="pref_in_chat_sounds">Keskustelunaikaiset äänet</string>
@@ -634,8 +641,11 @@
     <string name="pref_backup_export_all">Vie kaikki %1$d profiilia</string>
     <string name="pref_backup_export_start_button">Aloita varmuuskopiointi</string>
     <string name="pref_backup_written_to_x">Varmuuskopio kirjoitettu onnistuneesti kohteeseen \"%1$s\".</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Vie salaiset avaimet</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Vie salaiset avaimet kohteeseen \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Salaiset avaimet kirjoitettu onnistuneesti kohteeseen \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Taustakuva</string>
@@ -643,8 +653,10 @@
     <string name="pref_background_btn_gallery">Valitse galleriasta</string>
     <string name="pref_imap_folder_warn_disable_defaults">Jos muutat tätä asetusta, varmista että palvelimesi ja muut päätelaitteesi ovat määritetty vastaavasti.\n\nMuutoin ne eivät ehkä toimi lainkaan.</string>
     <string name="pref_auto_folder_moves">Siirrä automaattisesti DeltaChat -kansioon</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Saapuneet -kansion täyttämisen välttämiseksi, pikaviestikeskustelut siirretään </string>
     <string name="pref_only_fetch_mvbox_title">Hae vain DeltaChat -kansiosta</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Älä huomioi muita kansioita. Vaatii että palvelimesi siirtää pikaviestit DeltaChat -kansioon.</string>
     <string name="pref_show_emails">Näytä tavanomaiset sähköpostiviestit</string>
     <string name="pref_show_emails_no">Ei, vain pikaviestit</string>
@@ -652,7 +664,9 @@
     <string name="pref_show_emails_all">Kaikki</string>
     <string name="pref_experimental_features">Kokeelliset ominaisuudet</string>
     <string name="pref_on_demand_location_streaming">Tarvittaessa sijainnin jatkuva jakaminen</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Kehittäjätila</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Kytkee päälle debuggausvaihtoehdot ja saattaa tehdä sovelluksesta epävakaan. Vain kehittäjille.</string>
     <string name="pref_background_default">Oletuskuva</string>
     <string name="pref_background_default_color">Oletusväri</string>
@@ -677,8 +691,6 @@
     <string name="disable_imap_idle">Poista IMAP IDLE käytöstä</string>
     <string name="disable_imap_idle_explain">Älä käytä IMAP IDLE -laajennusta vaikka palvelin tukisi sitä. Toiminnon käyttöönotto hidastaa viestien hakua, käytä vain testaamiseen.</string>
     <string name="send_stats_to_devs">Lähetä tilastotietoja Delta Chatin kehittäjille</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Hakutulokset</string>
     <string name="emoji_not_found">Emojeja ei löytynyt</string>
@@ -721,11 +733,15 @@
     <string name="after_5_weeks">5 viikon päästä</string>
     <string name="autodel_after_1_year">1 vuoden päästä</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Lähetä Autocrypt -käyttöönottoviesti</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Autocrypt -käyttöönottoviesti jakaa turvallisesti päästä-päähän -salauksen asetukset toisten Autocrypt-yhteensopivien sovellusten kanssa.\n\nMäärittely salataan tässä näytettävällä käyttöönottokoodilla, joka on syötettävä toisella laittella.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Lähetä Autocrypt -käyttöönottoviesti</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Käyttöönottoviesti on lähetetty sinulle itsellesi. Avaa viesti toisella laitteella. Sinulta pyydetään käyttöönottokoodia. Anna seuraavat numerot:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Suosi päästä-päähän -salausta</string>
 
     <!-- system messages -->
@@ -748,6 +764,8 @@
     <string name="remove_member_by_you">Jäsen %1$s poistettu minun toimestani.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Jäsen %1$s poistettu käyttäjän %2$s toimesta.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Jäsen %1$s poistettu</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s poistui ryhmästä.</string>
     <string name="group_image_deleted_by_you">Ryhmän kuva poistettu minun toimestani.</string>
@@ -932,6 +950,7 @@
     <string name="name_desktop">Nimi</string>
     <string name="select_group_image_desktop">Valitse ryhmän kuva</string>
     <string name="export_backup_desktop">Vie varmuuskopio</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Autocrypt-asetukset siirretty.</string>
     <string name="forget_login_confirmation_desktop">Poista tämä kirjautuminen? Kaikki tiedot poistetaan, mukaan lukien päästä-päähän-salauksen asetukset, yhteystiedot, keskustelut, viestit ja media. Tämä toiminto on peruuttamaton.</string>
     <string name="message_detail_sent_desktop">lähetetty</string>
@@ -986,7 +1005,6 @@
     <string name="last_check_at">Tarkistettu %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat käyttää kameraa kuvien ja videoiden kuvaamiseen ja lähettämiseen sekä QR-koodien skannaamiseen.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat käyttää yhteystietojasi näyttämään listan sähköpostiosoitteista, joihin voit kirjoittaa. Delta Chatilla ei ole palvelimia, eikä yhteystietojasi lähetetä mihinkään.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat tarvitsee oikeuden sijainnin tarkasteluun jakaakseen sijaintisi sallimallasi aikavälillä.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat tarvitsee oikeuden sijainnin tarkasteluun jakaakseen sijaintisi sallimallasi aikavälillä.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat käyttää mikrofonia ääniviestien ja äänellisten videoiden tallentamiseen ja lähettämiseen.</string>

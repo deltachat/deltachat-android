@@ -360,6 +360,7 @@
     <string name="menu_save_log">Зберегти лог</string>
     <string name="menu_more_options">Більше опцій</string>
     <string name="menu_learn_spelling">Вчити правопис</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Журнал аудиту чату</string>
     <string name="jump_to_message">Перейти до повідомлення</string>
     <string name="jump_to_original_message">Перейти до оригінального повідомлення</string>
@@ -462,6 +463,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Контактні особи</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Введіть ім\'я або адресу електронної пошти</string>
     <string name="contacts_type_email_above">Введіть адресу електронної пошти вище</string>
 
@@ -540,9 +542,11 @@
     <string name="show_location_traces">Показати треки</string>
     <string name="add_poi">Послати географійні координати</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Тут відображатимуться системні повідомлення для цього чату</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Журнал аудиту чату для %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">На цьому екрані відображаються лише системні та інформаційні повідомлення. Корисно для пошуку останніх дій чату без прокрутки багатьох звичайних повідомлень.</string>
 
     <!-- punycode warning / labeled links -->
@@ -576,6 +580,7 @@
     <string name="group_self_not_in_group">Потрібно участвувати в групі, щоби виконати цю дію.</string>
     <string name="profile_encryption">Шифрування</string>
     <string name="profile_shared_chats">Спільні з вами чати</string>
+    <!-- deprecated -->
     <string name="related_chats">Повʼязані чати</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Колишнє учасництво</string>
@@ -813,7 +818,9 @@
     <string name="pref_server">Сервер</string>
     <string name="pref_encryption">Шифрування</string>
     <string name="pref_manage_keys">Розпорядження ключами</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Прочитати адресну книгу системи</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Пропонувати створювати чати з контактами з адресної книги.</string>
     <string name="pref_chats">Чати</string>
     <string name="pref_in_chat_sounds">Звуки в чаті</string>
@@ -830,8 +837,11 @@
     <string name="pref_backup_export_all">Експортувати всі %1$d профілі</string>
     <string name="pref_backup_export_start_button">Почати резервне копіювання</string>
     <string name="pref_backup_written_to_x">Резервна копія успішно записана на %1$s</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Експорт секретних ключів</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Експортувати секретні ключі до \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Секретні ключі успішно збережені в \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Фон</string>
@@ -839,8 +849,10 @@
     <string name="pref_background_btn_gallery">Вибрати з галереї</string>
     <string name="pref_imap_folder_warn_disable_defaults">Якщо ви змінюєте цей параметр, переконайтеся, що Ваш сервер та інші Ваші клієнти налаштовані відповідним чином.\n\nІнакше щось може взагалі не працювати.</string>
     <string name="pref_auto_folder_moves">Автоматично пересувати до папки DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Чати були переміщені, щоб уникнути плутанини в папці «Вхідні».</string>
     <string name="pref_only_fetch_mvbox_title">Збирати лише з теки DeltaChat.</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Ігнорувати інші теки. Вимагає від вашого сервера переміщувати повідомлення чату до теки DeltaChat.</string>
     <string name="pref_show_emails">Показувати звичайну пошту</string>
     <string name="pref_show_emails_no">Ні, лише чати</string>
@@ -848,7 +860,9 @@
     <string name="pref_show_emails_all">Всі</string>
     <string name="pref_experimental_features">Експериментальні функції</string>
     <string name="pref_on_demand_location_streaming">Стримінг геоданих за вимогою</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Режим розробника</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Активує опції режиму налагодження та може зробити програму менш стабільною. Тільки для розробників.</string>
     <string name="pref_background_default">Тло за замовчуванням</string>
     <string name="pref_background_default_color">Колір за замовчуванням</string>
@@ -874,8 +888,6 @@
     <string name="disable_imap_idle">Вимкнути IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Не використовувати розширення IMAP IDLE навіть якщо сервер підтримує його. Увімкнення цієї опції затримає отримання повідомлень, вмикайте її лише для тестування.</string>
     <string name="send_stats_to_devs">Надсилати статистику розробникам Delta Chat</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Результати пошуку</string>
     <string name="emoji_not_found">Емодзі не знайдено</string>
@@ -920,11 +932,15 @@
     <string name="after_5_weeks">Через 5 тижнів</string>
     <string name="autodel_after_1_year">Через 1 рік</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Відправлення повідомлення для налаштування Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Повідомлення про налаштування Autocrypt безпечно передає ваші налаштування наскрізного шифрування іншим програмам, що підтримують Autocrypt.\n\nЯкщо ви використовуєте Delta Chat і на іншому пристрої, скористайтеся \"Налаштування / Додати другий пристрій\" замість цього.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Надіслати повідомлення для налаштування Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Налаштування було Вам надіслано. Перейдіть на інший пристрій і відкрийте повідомлення про налаштування. У Вас має з\'явитися запит на введення коду налаштування. Введіть наступні цифри:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Віддавати перевагу наскрізному шифруванню</string>
 
     <!-- system messages -->
@@ -947,6 +963,8 @@
     <string name="remove_member_by_you">Ви видалили учасника %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s видалив (-ла) учасника %1$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Видалено учасника %1$s.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Ви покинули групу.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -1148,6 +1166,7 @@
     <string name="name_desktop">Імʼя</string>
     <string name="select_group_image_desktop">Вибрати емблему групи</string>
     <string name="export_backup_desktop">Експорт резервної копії</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Налаштування Autocrypt успішно передані!</string>
     <string name="forget_login_confirmation_desktop">Видалити цей профіль? Все буде видалено, включно з усіма вашими налаштуваннями, контактами, чатами, повідомленнями та медіа. Цю дію неможливо скасувати.</string>
     <string name="message_detail_sent_desktop">надіслано</string>
@@ -1214,7 +1233,6 @@
     <string name="add_to_widget">Додати у віджет</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat використовує вашу камеру для знімання та надсилання фото та відео, а також для сканування QR-кодів.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat використовує ваші контакти, щоб показати список адрес, на які ви можете писати. Delta Chat не має сервера, ваші контакти нікуди не надсилаються.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Дельта-чатові потрібно дозволити доступ до місцезнаходження пристрою протягом часу, на який Ви ввімкнули транслювання геолокації.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Дельта-чатові потрібно дозволити доступ до місцезнаходження пристрою протягом часу, на який Ви ввімкнули транслювання геолокації.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat використовує Ваш мікрофон для запису й надсилання голосових повідомлень та відео зі звуком.</string>

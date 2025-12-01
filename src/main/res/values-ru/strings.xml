@@ -360,6 +360,7 @@
     <string name="menu_save_log">Сохранить журнал</string>
     <string name="menu_more_options">Дополнительно</string>
     <string name="menu_learn_spelling">Запоминать правописание</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Журнал аудита чата</string>
     <string name="jump_to_message">Перейти к сообщению</string>
     <string name="jump_to_original_message">Перейти к исходному сообщению</string>
@@ -462,6 +463,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Контакты</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Введите имя или адрес электронной почты</string>
     <string name="contacts_type_email_above">Введите адрес электронной почты выше</string>
 
@@ -540,9 +542,11 @@
     <string name="show_location_traces">Показывать маршруты</string>
     <string name="add_poi">Поделиться точкой на карте</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Здесь можно просмотреть системные сообщения этого чата</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Журнал аудита чата для %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Здесь показаны только системные и информационные сообщения. Полезно для поиска последних действий в чате, минуя длинный список сообщений.</string>
 
     <!-- punycode warning / labeled links -->
@@ -576,6 +580,7 @@
     <string name="group_self_not_in_group">Вы должны быть участником группы, чтобы выполнить это действие.</string>
     <string name="profile_encryption">Шифрование</string>
     <string name="profile_shared_chats">Общие чаты</string>
+    <!-- deprecated -->
     <string name="related_chats">Похожие чаты</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Прошлые участники</string>
@@ -813,7 +818,9 @@
     <string name="pref_server">Сервер</string>
     <string name="pref_encryption">Шифрование</string>
     <string name="pref_manage_keys">Управление ключами</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Чтение системной адресной книги</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Предлагать создать чаты с контактами из адресной книги.</string>
     <string name="pref_chats">Чаты</string>
     <string name="pref_in_chat_sounds">Звуки в чате</string>
@@ -830,8 +837,11 @@
     <string name="pref_backup_export_all">Экспорт всех %1$d профилей</string>
     <string name="pref_backup_export_start_button">Начать резервное копирование</string>
     <string name="pref_backup_written_to_x">Резервная копия успешно записана в \"%1$s\".</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Экспорт секретных ключей</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Экспортировать секретные ключи в \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Секретные ключи успешно сохранены в \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Обои для чатов</string>
@@ -843,8 +853,10 @@
     <string name="pref_multidevice_explain">Синхронизируйте свои сообщения с другими устройствами. Автоматически включается при добавлении второго устройства</string>
     <string name="pref_multidevice_change_warn">Режим нескольких устройств должен быть включен при использовании одного и того же профиля на нескольких устройствах. Отключайте эту настройку, только если вы удалили этот профиль со всех остальных устройств.\n\nОтключение режима нескольких устройств при использовании профиля на нескольких устройствах приведет к пропуску сообщений и другим проблемам.</string>
     <string name="pref_auto_folder_moves">Автоперемещение в папку DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Сообщения чатов переносятся, избежать захламления папки \"Входящие\"</string>
     <string name="pref_only_fetch_mvbox_title">Загружать только из папки DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Игнорировать другие папки. Необходимо чтобы ваш сервер перемещал сообщения чата в папку DeltaChat.</string>
     <string name="pref_show_emails">Показывать обычную почту</string>
     <string name="pref_show_emails_no">Нет, только чаты</string>
@@ -852,7 +864,9 @@
     <string name="pref_show_emails_all">Все</string>
     <string name="pref_experimental_features">Экспериментальные функции</string>
     <string name="pref_on_demand_location_streaming">Трансляция местоположения по запросу</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Режим разработчика</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Включает режим отладки и может снизить стабильность приложения. Только для разработчиков.</string>
     <string name="pref_background_default">Изображение по умолчанию</string>
     <string name="pref_background_default_color">Цвет по умолчанию</string>
@@ -878,8 +892,6 @@
     <string name="disable_imap_idle">Отключить IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Не используйте расширение IMAP IDLE даже если сервер поддерживает его. Включение этой опции замедлит получение сообщений, включайте только для тестирования.</string>
     <string name="send_stats_to_devs">Отправить статистику разработчикам Delta Chat</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Результаты поиска</string>
     <string name="emoji_not_found">Эмодзи не найдены</string>
@@ -924,11 +936,15 @@
     <string name="after_5_weeks">Через 5 недель</string>
     <string name="autodel_after_1_year">Через 1 год</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Сообщение с параметрами Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">\"Сообщение с параметрами Autocrypt\" служит для передачи параметров сквозного шифрования между приложениями, поддерживающими протокол Autocrypt.\n\nЕсли вы используете Delta Chat на другом устройстве, воспользуйтесь меню \"Настройки / Добавить второе устройство\"</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Сообщение с параметрами Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Ваши настройки были оправлены вам. Переключитесь на другое устройство и откройте сообщение с настройкой. Вам будет предложено ввести код настройки. Введите следующие цифры:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Предпочитать сквозное шифрование</string>
 
     <!-- system messages -->
@@ -951,6 +967,8 @@
     <string name="remove_member_by_you">Вы удалили участника %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s удаляет участника %1$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Участник %1$s удалён.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Вы покинули группу.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -1154,6 +1172,7 @@
     <string name="name_desktop">Имя</string>
     <string name="select_group_image_desktop">Выбрать изображение группы</string>
     <string name="export_backup_desktop">Экспорт резервной копии</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Параметры Autocrypt переданы.</string>
     <string name="forget_login_confirmation_desktop">Удалить эту учётную запись? Все данные, включая настройки сквозного шифрования, контакты, чаты, сообщения и медиафайлы, будут удалены. Это действие нельзя будет отменить.</string>
     <string name="message_detail_sent_desktop">Отправлено</string>
@@ -1220,7 +1239,6 @@
     <string name="add_to_widget">Добавить в виджет</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat использует вашу камеру для фото- и видеосъёмки, и сканирования QR-кодов.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat использует ваши контакты для отображения списка адресов электронной почты, которым вы можете написать. Delta Chat не имеет сервера, ваши контакты никуда не будут отправлены.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat требует разрешения на передачу вашего местоположения в течение того времени, на которое вы включили обмен местоположением.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat требует разрешения на передачу вашего местоположения в течение того времени, на которое вы включили обмен местоположением.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat использует микрофон для записи и отправки голосовых сообщений, а также видео со звуком.</string>

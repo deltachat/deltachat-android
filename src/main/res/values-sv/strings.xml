@@ -269,6 +269,7 @@
     <string name="menu_save_log">Spara logg</string>
     <string name="menu_more_options">Mer alternativ</string>
     <string name="menu_learn_spelling">Lär stavning</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Granskningslogg av chatt</string>
     <string name="jump_to_message">Hoppa till meddelande</string>
     <string name="copy_json">Kopiera JSON</string>
@@ -331,6 +332,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Ange namn eller e-postadress</string>
     <string name="contacts_type_email_above">Skriv in e-postadressen ovan</string>
 
@@ -397,9 +399,11 @@
     <string name="show_location_traces">Visa spår</string>
     <string name="add_poi">Skicka intressant plats</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Systemmeddelanden för denna chatt visas här</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Chattgranskningslogg för %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Visar endast system- och informationsmeddelanden; användbart för att hitta de senaste chattåtgärderna utan att skrolla igenom många meddelanden.</string>
 
     <!-- punycode warning / labeled links -->
@@ -429,6 +433,7 @@
     <string name="group_self_not_in_group">Du måste vara medlem i gruppen för att utföra denna åtgärd.</string>
     <string name="profile_encryption">Kryptering</string>
     <string name="profile_shared_chats">Delade chattar</string>
+    <!-- deprecated -->
     <string name="related_chats">Relaterade chattar</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupp</string>
@@ -624,7 +629,9 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Kryptering</string>
     <string name="pref_manage_keys">Hantera nycklar</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Läs systemets adressbok</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Erbjud att skapa chattar med kontakter från adressboken. Vissa leverantörer behöver först konfigureras för totalsträckskryptering.</string>
     <string name="pref_chats">Chattar</string>
     <string name="pref_in_chat_sounds">Ljud i konversationer</string>
@@ -640,8 +647,11 @@
     <string name="pref_backup_export_all">Exportera all %1$d profiler</string>
     <string name="pref_backup_export_start_button">Starta säkerhetskopiering</string>
     <string name="pref_backup_written_to_x">Säkerhetskopia korrekt skriven till \"%1$s\".</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Exportera säkerhetsnycklar</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Exportera säkerhetsnycklar till \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Säkerhetsnycklar korrekt skrivna till \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Bakgrund</string>
@@ -649,8 +659,10 @@
     <string name="pref_background_btn_gallery">Välj från galleriet</string>
     <string name="pref_imap_folder_warn_disable_defaults">Om du inaktiverar det här alternativet, tillse att servern och dina andra klienter är konfigurerade i enlighet med detta.\n\nAnnars kanske saker och ting inte fungerar alls.</string>
     <string name="pref_auto_folder_moves">Flyttas automatiskt till DeltaChat-mappen</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Chattkonversationer flyttas automatiskt för att undvika att inkorgen belamras</string>
     <string name="pref_only_fetch_mvbox_title">Hämta endast från DeltaChat-mappen</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Ignorera andra mappar. Kräver att din server flyttar chattmeddelanden till DeltaChat-mappen.</string>
     <string name="pref_show_emails">Visa vanliga e-postmeddelanden</string>
     <string name="pref_show_emails_no">Nej, bara chattar</string>
@@ -658,7 +670,9 @@
     <string name="pref_show_emails_all">Alla</string>
     <string name="pref_experimental_features">Experimentella funktioner</string>
     <string name="pref_on_demand_location_streaming">På-begäran platsströmning</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Utvecklarläge</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Aktiverar felsökningsalternativ och kan göra appen mindre stabil. Endast för utvecklare.</string>
     <string name="pref_background_default">Standardbakgrund</string>
     <string name="pref_background_default_color">Standardfärg</string>
@@ -683,8 +697,6 @@
     <string name="disable_imap_idle">Avaktivera IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Använd inte IMAP IDLE-tillägget även om servern stöder det. Om du aktiverar det här alternativet kommer hämtningen av meddelanden att fördröjas, aktivera det endast för testning.</string>
     <string name="send_stats_to_devs">Skicka statistik till Delta Chats utvecklare</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Sökresultat</string>
     <string name="emoji_not_found">Inga emoji hittades</string>
@@ -729,11 +741,15 @@
     <string name="after_5_weeks">Efter 5 veckor</string>
     <string name="autodel_after_1_year">Efter 1 år</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Skicka Autocrypt inställningsmeddelande</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Ett meddelande för att ställa in Autocrypt, delar den informationen med andra Autocrypt-anpassade program på ett säkert sätt. Informationen krypteras med en kod som visas här och som måste matas in på den mottagande enheten.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Skicka Autocrypt inställningsmeddelande</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Dina inställningar har skickats till dig själv. Byt till den andra enheten och öppna inställningsmeddelandet. Du kommer att tillfrågas om en inställningskod. Ange följande siffror:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Föredra slutpunkt-till-slutpunkt-kryptering</string>
 
     <!-- system messages -->
@@ -756,6 +772,8 @@
     <string name="remove_member_by_you">Medlemmen %1$s togs bort av mig.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Medlemmen %1$s togs bort av %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Medlemmen %1$s togs bort.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">Gruppen lämnades av %1$s.</string>
     <string name="group_image_deleted_by_you">Gruppbilden togs bort av mig.</string>
@@ -940,6 +958,7 @@
     <string name="name_desktop">Namn</string>
     <string name="select_group_image_desktop">Välj en gruppbild</string>
     <string name="export_backup_desktop">Exportera säkerhetskopia</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Autocrypt-inställning överförd.</string>
     <string name="forget_login_confirmation_desktop">Ta bort den här inloggningen? Allt kommer att raderas, inklusive din slutpunkt-till-slutpunkt-inställning, dina kontakter, media och meddelanden. Denna åtgärd kan inte ångras.</string>
     <string name="message_detail_sent_desktop">skickat</string>
@@ -994,7 +1013,6 @@
     <string name="last_check_at">Kontrollerad %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat använder din kamera för att ta och skicka foton och filmer, och för att skanna QR-koder.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat använder dina kontakter för att visa en lista över e-postadresser som du kan skriva till.m Delta Chat har ingen server, dina kontakter skickas inte någonstans.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat behöver tillstånd för att dela din plats under den tidsperiod som du har aktiverat platsdelning.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat behöver tillstånd för att dela din plats under den tidsperiod som du har aktiverat platsdelning.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat använder din mikrofon för att spela in och skicka röstmeddelanden, och filmer med ljud.</string>

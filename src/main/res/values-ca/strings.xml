@@ -338,6 +338,7 @@
     <string name="menu_save_log">Desa el registre</string>
     <string name="menu_more_options">Més opcions</string>
     <string name="menu_learn_spelling">Aprèn l\'ortografia</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Registre de l\'auditoria de xat</string>
     <string name="jump_to_message">Ves al missatge</string>
     <string name="jump_to_original_message">Vés al Missatge Original</string>
@@ -432,6 +433,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Llista de contactes</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Introduïu el vostre nom o la vostra adreça de correu electrònic</string>
     <string name="contacts_type_email_above">Escriviu l\'adreça d\'email superior</string>
 
@@ -504,9 +506,11 @@
     <string name="show_location_traces">Mostra el rastre</string>
     <string name="add_poi">Envia el punt d\'interès</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Els missatges de sistema d\'aquest xat es mostraran aquí</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Registre de l\'auditoria del xat per %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Només mostra els missatges del sistema i informació. Això és útil per a trobar les últimes accions al xat sense desplaçar-se entre massa missatges.</string>
 
     <!-- punycode warning / labeled links -->
@@ -540,6 +544,7 @@
     <string name="group_self_not_in_group">Has de ser membre del grup per poder fer això.</string>
     <string name="profile_encryption">Encriptació</string>
     <string name="profile_shared_chats">Xats compartits</string>
+    <!-- deprecated -->
     <string name="related_chats">Xats relacionats</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Antics membres</string>
@@ -764,7 +769,9 @@
     <string name="pref_server">Servidor</string>
     <string name="pref_encryption">Xifratge</string>
     <string name="pref_manage_keys">Gestió de les claus</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Llegeix la llibreta d\'adreces del sistema</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Ofereix de crear xats amb els contactes de la llibreta d\'adreces. Alguns proveïdors necessiten de configurar abans el xifratge d\'extrem a extrem.</string>
     <string name="pref_chats">Xats</string>
     <string name="pref_in_chat_sounds">Sons d\'entrada</string>
@@ -780,8 +787,11 @@
     <string name="pref_backup_export_all">Exporta tots %1$d perfils</string>
     <string name="pref_backup_export_start_button">Inicia la còpia de seguretat</string>
     <string name="pref_backup_written_to_x">La còpia de seguretat s\'ha escrit correctament a %1$s</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Exporta les claus secretes</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Exporto les claus secretes a \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Les claus secretes s\'han copiat correctament a \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fons</string>
@@ -789,8 +799,10 @@
     <string name="pref_background_btn_gallery">Trieu de la galeria</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si desactiveu aquesta opció, assegureu-vos que el vostre servidor i els altres programes estiguin configurats de la mateixa manera.\n\nAltrament podeu tenir problemes de funcionament.</string>
     <string name="pref_auto_folder_moves">Moure automàticament a la carpeta de Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Les converses de xat s\'han mogut per no atapeir la safata d’entrada</string>
     <string name="pref_only_fetch_mvbox_title">Agafa només de la carpeta de DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Ignora les altres carpetes. Requereix que el vostre servidor mogui els missatges de xat a la carpeta DeltaChat.</string>
     <string name="pref_show_emails">Mostra els correus clàssics</string>
     <string name="pref_show_emails_no">No, només xats</string>
@@ -798,7 +810,9 @@
     <string name="pref_show_emails_all">Tot</string>
     <string name="pref_experimental_features">Funcionalitats experimentals</string>
     <string name="pref_on_demand_location_streaming">Difusió de la ubicació sota demanda</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Mode de desenvolupador</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Activa les opcions de depuració i pot fer que l\'aplicació sigui menys estable. Només per a desenvolupadors.</string>
     <string name="pref_background_default">Imatge per defecte</string>
     <string name="pref_background_default_color">Color per defecte</string>
@@ -824,8 +838,6 @@
     <string name="disable_imap_idle">Desactiva IMAP IDLE</string>
     <string name="disable_imap_idle_explain">No usis l\'extensió IMAP IDLE encara que el servidor la permeti. Activar aquesta opció endarreria l\'obtenció de missatges, activeu-ho només per a proves.</string>
     <string name="send_stats_to_devs">Envia estadístiques als desenvolupadors del Delta Chat</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resultats de la cerca</string>
     <string name="emoji_not_found">No s\'ha trobat cap emoji</string>
@@ -870,11 +882,15 @@
     <string name="after_5_weeks">Després de 5 setmanes</string>
     <string name="autodel_after_1_year">Després d\'1 any</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Envia el missatge de configuració d\'Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Un \"missatge de configuració Autocrypt\" comparteix de forma segura la vostra configuració d\'extrem a extrem amb altres aplicacions compatibles amb Autocrypt.\n\nLa configuració es xifrarà amb un codi de configuració que es mostrarà aquí i que haureu d\'escriure a l’altre dispositiu.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Envia el missatge de configuració d\'Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Se us ha enviat la vostra configuració. Canvieu a l\'altre dispositiu i obriu el missatge de configuració. Se us demanarà un codi de configuració. Introduïu els dígits següents a l\'indicador.\n\nUn cop fet, l\'altre dispositiu estarà llest per utilitzar Autocrypt.</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Prefereix l\'encriptació d\'extrem a extrem</string>
 
     <!-- system messages -->
@@ -897,6 +913,8 @@
     <string name="remove_member_by_you">Heu eliminat el membre %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Membre %1$s eliminat per %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Membre %1$s eliminat.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Heu abandonat el grup.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -1096,6 +1114,7 @@
     <string name="name_desktop">Nom</string>
     <string name="select_group_image_desktop">Trieu una imatge de grup</string>
     <string name="export_backup_desktop">Exporta la còpia de seguretat</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">S\'ha transferit correctament la configuració Autocrypt!</string>
     <string name="forget_login_confirmation_desktop">Voleu esborrar aquest perfil? S\'esborrarà tot, incloent-hi la configuració, els contactes, els xats, els missatges i el contingut multimèdia. Aquesta acció és definitiva i no es pot desfer.</string>
     <string name="message_detail_sent_desktop">enviat</string>
@@ -1162,7 +1181,6 @@
     <string name="add_to_widget">Afegeix al giny</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat usa la càmera per a fer i enviar fotos i vídeos i per a escanejar codis QR.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat usa els vostres contactes per a mostrar una llista d\'adreces electròniques on podeu escriure. Delta Chat no té cap servidor, els contactes no s\'envien enlloc.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat necessita permisos per a compartir la vostra ubicació durant el temps que heu habilitat la compartició de la ubicació.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat necessita permisos per a compartir la vostra ubicació durant el temps que heu habilitat la compartició de la ubicació.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat usa el vostre micròfon per a enregistrar i enviar missatges de veu i vídeos amb so.</string>

@@ -122,6 +122,7 @@
     <string name="mute_for_seven_days">أكتم لمدة أسبوع</string>
     <!-- contact list -->
     <string name="contacts_title">جهات الإتصا</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">ادخل الإسم أو البريد الإلكتروني</string>
     <string name="chat_camera_unavailable">الكاميرا غير متاحة.</string>
     <string name="chat_share_with_title">شارك مع</string>

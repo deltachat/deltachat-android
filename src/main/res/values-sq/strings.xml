@@ -334,6 +334,7 @@
     <string name="menu_save_log">Ruaje Regjistrin</string>
     <string name="menu_more_options">Më Tepër Mundësi</string>
     <string name="menu_learn_spelling">Mëso Drejtshkrim</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Regjistër Auditimi Fjalosjeje</string>
     <string name="jump_to_message">Hidhu te Mesazh</string>
     <string name="jump_to_original_message">Hidhu te Mesazhi Origjinal</string>
@@ -428,6 +429,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kontakte</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Jepni emër ose adresë email</string>
     <string name="contacts_type_email_above">Shtypni më sipër adresën email</string>
 
@@ -499,9 +501,11 @@
     <string name="show_location_traces">Shfaq gjurmë</string>
     <string name="add_poi">Dërgo pikë interesi</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Mesazhet e sistemit për këtë fjalosje do të shfaqen këtu</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Regjistër Auditimi Fjalosjeje %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Shfaq vetëm mesazhe sistemi dhe informacionesh; e dobishme për gjetjen e veprimeve të fundit pa u dashur të parakalohet nëpër mjaft mesazhe.</string>
 
     <!-- punycode warning / labeled links -->
@@ -535,6 +539,7 @@
     <string name="group_self_not_in_group">Që të kryeni këtë veprim, duhet të jeni anëtar i grupit.</string>
     <string name="profile_encryption">Fshehtëzim</string>
     <string name="profile_shared_chats">Fjalosje të Përbashkëta</string>
+    <!-- deprecated -->
     <string name="related_chats">Fjalosje të Afërta</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Anëtarë të Dikurshëm</string>
@@ -669,6 +674,16 @@
     <string name="proxy_share_link">Jepeni Lidhjen</string>
     <string name="proxy_enabled">Ndërmjetësi u Aktivizua</string>
     <string name="proxy_enabled_hint">Po përdorni një ndërmjetës. Nëse keni problemi për t’u lidhur, provoni një ndërmjetës tjetër.</string>
+    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
+    <string name="transports">Rele</string>
+    <string name="add_transport">Shtoni Rele</string>
+    <string name="remove_transport">Hiqni Rele</string>
+    <string name="edit_transport">Përpunoni Rele</string>
+    <!-- shown if a QR code was scanned that can be used as a transport -->
+    <string name="confirm_add_transport">Të shtohet kjo rele?</string>
+    <string name="invalid_transport_qr">Kodi QR i skanuar s’përmban një rele të vlefshme.</string>
+    <string name="confirm_remove_transport">Të hiqet releja “%1$s”?\n\nKontaktet tuaja munden t’ju kapin vetëm nëse jeni lidhur me ta më herët përmes një releje tjetër.\n\n\n\nNëse jeni në mëdyshje, hiqeni relenë më vonë.</string>
+
     <string name="login_certificate_checks">Kontrolle Dëshmish</string>
     <string name="login_error_mail">Ju lutemi, jepni një adresë email të vlefshme</string>
     <string name="login_error_server">Ju lutemi, jepni një shërbyes / adresë IP të vlefshme</string>
@@ -762,7 +777,9 @@
     <string name="pref_server">Shërbyes</string>
     <string name="pref_encryption">Fshehtëzim</string>
     <string name="pref_manage_keys">Administroni Kyçe</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Të Lexojë Libër Adresash Sistemi</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Ofro krijim fjalosjesh me kontakte prej libri adresash.</string>
     <string name="pref_chats">Fjalosje</string>
     <string name="pref_in_chat_sounds">Tinguj Brenda Fjalosjeje</string>
@@ -779,8 +796,11 @@
     <string name="pref_backup_export_all">Eksporto krejt %1$d proflet</string>
     <string name="pref_backup_export_start_button">Nis Kopjeruajtjen</string>
     <string name="pref_backup_written_to_x">Kopjeruajtje e shkruar me sukses te “%1$s”</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Eksportoni Kyçe të Fshehtë</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Të eksportohen kyçet e fshehtë te “%1$s”?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Kyçe të fshehtë shkruar me sukses te “%1$s”.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Sfond</string>
@@ -792,15 +812,19 @@
     <string name="pref_multidevice_explain">Njëkohësoni mesazhet tuaj në pajisje tuajat të tjera. E aktivizuar automatikisht gjatë shtimit të një pajisjeje të dytë</string>
     <string name="pref_multidevice_change_warn">Mënyra Shumë-Pajisje duhet aktivizuar, kur përdoret i njëjti profil në disa pajisje. Çaktivizojeni këtë rregullim vetëm në se e keni hequr këtë profil nga krejt pajisjet tuaja të tjera.\n\nÇaktivizimi i Mënyrës Shumë-Pajisje, teksa përdoret profili në disa pajisje, do të sjellë mesazhe të humbura dhe probleme të tjera.</string>
     <string name="pref_auto_folder_moves">Kaloji vetvetiu te Dosja DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Bisedat zhvendosen, që të shmanget rrëmuja te dosja Të marrë</string>
     <string name="pref_only_fetch_mvbox_title">Sill Vetëm nga Dosje DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Shpërfill dosje të tjera. Lyp që shërbyesi juaj të kalojë mesazhe fjalosjeje te dosje DeltaChat.</string>
     <string name="pref_show_emails">Shfaq Email-e Klasikë</string>
     <string name="pref_show_emails_no">Jo, vetëm fjalosje</string>
     <string name="pref_show_emails_accepted_contacts">Për kontakte të pranuar</string>
     <string name="pref_show_emails_all">Krejt</string>
     <string name="pref_experimental_features">Veçori Eksperimentale</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Mënyra Zhvillues</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Aktivizon mundësi diagnostikimi dhe mund ta bëjë aplikacionin më pak të qëndrueshëm. Vetëm për zhvillues.</string>
     <string name="pref_background_default">Figurë parazgjedhje</string>
     <string name="pref_background_default_color">Ngjyrë parazgjedhje</string>
@@ -826,6 +850,7 @@
     <string name="disable_imap_idle">Çaktivizo IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Mos e përdor zgjerimin IMAP IDLE, edhe kur shërbyesi e mbulon. Aktivizimi i kësaj mundësie do të vonojë marrjen e mesazheve, aktivizojeni vetëm për testime.</string>
     <string name="send_stats_to_devs">Dërgojuni zhvilluesve të Delta Chat-it statistika</string>
+    <string name="stats_msg_body">Bashkëngjitja përmban statistika anonime përdorimi, që na ndihmojnë të përmirësojmë Delta Chat-in. Faleminderit!</string>
 
 
     <!-- Emoji picker and categories -->
@@ -872,11 +897,15 @@
     <string name="after_5_weeks">Pas 5 javësh</string>
     <string name="autodel_after_1_year">Pas 1 viti</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Dërgo Mesazh Rregullimi Autocrypt-i</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Një “Mesazh Rregullimi Autocrypt-i“ ua jep, në mënyrë të parrezik, rregullimin tuaj për fshehtëzimin skaj-më-skaj pajisjeve të tjera që përdorin Autocrypt-in.\n\nNëse përdorni Delta Chat edhe në pajisjen tjetër, përdorni “Rregullime / Shtoni Pajisje të Dytë”.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Dërgo Mesazh Rregullimi Autocrypt-i</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Rregullimi juaj u dërgua te ju. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do t\’ju kërkohet një kod rregullimi. Shtypni atje shifrat vijuese:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Parapëlqe Fshehtëzim Skaj-Më-Skaj</string>
 
     <!-- system messages -->
@@ -899,6 +928,8 @@
     <string name="remove_member_by_you">Hoqët anëtarin %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Anëtari %1$s u hoq nga %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">U hoq anëtari %1$s.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Ikët nga grupi.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -1013,6 +1044,8 @@
     <string name="qrlogin_ask_login_another">Të hyhet si “%1$s”?\n\nProfili juaj ekzistues s’do të fshihet. Që të kaloni nga një profil i juaji në një tjetër, përdorni zërin “Ndërroni Profil”.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s ju ftoi të bëheni pjesë e këtij grupi.\n\nPo pritet për pajisjen e %2$s që të përgjigjet…</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s ju ftoi të vini në këtë kanal.\n\nPo pritet që të përgjigjet pajisja e %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s u përgjigj, po pritet që të shtohet te grupi…</string>
     <string name="secure_join_wait">Po vendoset fshehtëzim skaj-më-skaj, ju lutemi, pritni…</string>
@@ -1102,6 +1135,7 @@
     <string name="name_desktop">Emër</string>
     <string name="select_group_image_desktop">Përzgjidhni Figurë Grupi</string>
     <string name="export_backup_desktop">Eksportoni Kopjeruajtje</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Ujdisja e Autocrypt-it u shpërngul.</string>
     <string name="forget_login_confirmation_desktop">Të fshihet ky profil? Do të fshihet gjithçka, përfshi ujdisjen tuaj të fshehtëzimit skaj-më-skaj, kontaktet, fjalosjet, mesazhet dhe mediat. Ky veprim s\’mund të zhbëhet.</string>
     <string name="message_detail_sent_desktop">të dërguar</string>
@@ -1168,7 +1202,6 @@
     <string name="add_to_widget">Shtoje në Widget</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat-i e përdor kamerën tuaj për të bërë dhe dërguar foto dhe video dhe për skanuar kode QR.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat i përdor kontaktet tuaja për të shfaqur një listë të adresave të cilave mund t’u shkruani. Delta Chat-i s’ka shërbyes, kontaktet tuaja s’dërgohen gjëkundi.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Që të mund t’u tregojë të tjerëve vendndodhjen tuaj, Delta Chat lyp leje, për aq kohë sa keni aktivizuar tregim vendndodhjeje.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Që të mund t’u tregojë të tjerëve vendndodhjen tuaj, Delta Chat lyp leje, për aq kohë sa keni aktivizuar tregim vendndodhjeje.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat-i përdor mikrofonin tuaj për të incizuar dhe dërguar mesazhe zanorë dhe video me zë.</string>

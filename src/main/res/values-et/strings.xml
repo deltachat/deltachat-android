@@ -338,6 +338,7 @@
     <string name="menu_save_log">Salvesta logi</string>
     <string name="menu_more_options">Täiendavad valikud</string>
     <string name="menu_learn_spelling">Õpi õigekirja</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Vestluse kontroll-logi</string>
     <string name="jump_to_message">Mine sõnumi juurde</string>
     <string name="jump_to_original_message">Mine algse sõnumi juurde</string>
@@ -419,8 +420,8 @@
     <string name="ask_export_attachment">Kui ekspordid manused, siis sinu nutiseadme muud rakendused saavad neile ligi.\n\nKas soovid jätkata?</string>
     <string name="ask_block_contact">Kas soovid selle kontakti blokeerida?\n\nBlokeeritud kontaktide otsesõnumid ja loodud grupid ei saa enam olema nähtavad.\n\nMuude gruppide, kus blokeeritud kontakt on liikmeks, sõnumid saavad jätkuvalt olema nähtavad.</string>
     <string name="ask_unblock_contact">Kas lõpetad kontakti blokeerimise?</string>
-    <string name="ask_delete_contacts">Kas soovid kontaktid kustutada?\n\nPooleli vestluste ja süsteemi aadressiraamatu kontakte ei saa jäädavalt kustutada.</string>
-    <string name="ask_delete_contact">Kas soovid %1$s kontakti kustutada?\n\nPooleli vestluste ja süsteemi aadressiraamatu kontakte ei saa jäädavalt kustutada.</string>
+    <string name="ask_delete_contacts">Kas soovid kontaktid kustutada?\n\nPooleli vestluste kontakte ei saa jäädavalt kustutada.</string>
+    <string name="ask_delete_contact">Kas soovid %1$s kontakti kustutada?\n\nPooleli vestluste kontakte ei saa jäädavalt kustutada.</string>
     <string name="ask_start_chat_with">Kas soovid vestelda kasutajaga %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Kas eemaldad järgnevad kasutajad grupist: %1$s?</string>
@@ -431,6 +432,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kontaktid</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Sisesta nimi või e-posti aadress</string>
     <string name="contacts_type_email_above">Palun sisesta ülale e-posti aadress</string>
 
@@ -499,9 +501,11 @@
 
     <string name="add_poi">Saada huvipunkti teave</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Sellele vestluse süsteemsed teated saavad olema nähtavad siin.</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">%1$s vestluse kontroll-logi</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Näed vaid süsteemi- ja infosõnumeid. Sobib kasutamiseks viimaste tegevuset tuvastamiseks ilma, et peaksid paljusid sõnumeid läbi lappama.</string>
 
     <!-- punycode warning / labeled links -->
@@ -531,6 +535,7 @@
     <string name="group_self_not_in_group">Selle tegevuse jaoks pead olemagrupi liige.</string>
     <string name="profile_encryption">Krüptimine</string>
     <string name="profile_shared_chats">Ühised vestlused</string>
+    <!-- deprecated -->
     <string name="related_chats">Sarnaste osalejatega vestlused</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Varasemad liikmed</string>
@@ -764,7 +769,9 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Krüptimine</string>
     <string name="pref_manage_keys">Halda võtmeid</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Kasuta süsteemi aadressiraamatut</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Paku võimalust lisada vestlusi süsteemi aadressiraamatus leiduvate kontaktide alusel.</string>
     <string name="pref_chats">Vestlused</string>
     <string name="pref_in_chat_sounds">Helid vestluses</string>
@@ -780,8 +787,11 @@
     <string name="pref_backup_export_all">Ekspordi kõik %1$d profiili</string>
     <string name="pref_backup_export_start_button">Alusta varundamist</string>
     <string name="pref_backup_written_to_x">Varukoopia tegemine asukohta „%1$s“ õnnestus.</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Ekspordi salavõtmed</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Kas ekspordime salavõtmed siia: %1$s?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Salavõtmete salvestamine asukohta „%1$s“ õnnestus.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Taustapilt</string>
@@ -794,11 +804,14 @@
     <string name="pref_multidevice_change_warn">Kui kasutad sama profiili mitmes seadmes, siis peab mitme seadme režiimi sisse lülitama. Lülita see seadistus välja vaid siis, kui oled selle profiili eemaldanud kõikidest muudest oma seadmetest.\n\nKui aga lülitad välja siis, kui profiil on kasutusel mitmes seadmes, on tulemuseks kadunud sõnumid ja muud imelikud juhtumised.</string>
     <string name="pref_auto_folder_moves">Tõsta automaatselt DeltaChati kausta</string>
     <string name="pref_only_fetch_mvbox_title">Laadi vaid DeltaChati kasutast</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Eira muid kaustu. See eeldab, et sinu server oskab tõsta vestluste sõnumid DeltaChati kausta.</string>
     <string name="pref_show_emails">Näita klassikalisi e-kirju</string>
     <string name="pref_show_emails_all">Kõik</string>
     <string name="pref_experimental_features">Katselised funktsionaalsused</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Arendaja režiim</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Lülitab sisse veaotsingu tarvikud ja see võib rakenduse töökindlust vähendada. Sobib arendajatele.</string>
     <string name="pref_background_default">Vaikimisi pilt</string>
     <string name="pref_background_default_color">Vaikimisi värv</string>
@@ -824,6 +837,7 @@
     <string name="disable_imap_idle">Lülita IMAP IDLE välja</string>
     <string name="disable_imap_idle_explain">Ära kasuta IMAP IDLE meetodit, seda isegi siis, kui server seda toetab. Sisselülitamisel tekib sõnumite laadimisel viivitusi. Kasuta seda vaid testimiseks.</string>
     <string name="send_stats_to_devs">Saada statistikat Delta Chati kasutajatele</string>
+    <string name="stats_msg_body">Selles manuses leidub anonüümne statistika rakenduse kasutuse kohta ja see aitab meil Delta Chatti paremaks muuta. Suur tänu!</string>
 
 
     <!-- Emoji picker and categories -->
@@ -870,9 +884,11 @@
     <string name="after_5_weeks">5 nädala järel</string>
     <string name="autodel_after_1_year">5 aasta järel</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Saada Autocrypti seadistussõnum</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Saada Autocrypti seadistussõnum</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Eelista läbivat krüptimist</string>
 
     <!-- system messages -->
@@ -886,7 +902,7 @@
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s muutis grupi tunnuspilti.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
-    <string name="member_x_added">Lisanudus uus liige: %1$s.</string>
+    <string name="member_x_added">Lisandus uus liige: %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Sina lisasid uue liikme: %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
@@ -895,6 +911,8 @@
     <string name="remove_member_by_you">Sina eemaldasid liikme: %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s eemaldas liikme: %1$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Grupi liige „%1$s“ on eemaldatud.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Sa lahkusid grupist.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -1007,6 +1025,8 @@
     <string name="qrlogin_ask_login_another">Kas soovid sisse logid oma kontoga „%1$s“ serveris?\n\nSinu olemasolev profiil jääb alles. Profiile saad vahetada käsuga „Vaheta profiili“.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s kutsus sind liituma selle grupiga.\n\nOotan vastust kasutaja %2$s seadmest…</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s kutsus sind liituma selle kanaliga.\n\nOotan vastust kasutaja %2$s seadmest…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s vastas, ootan gruppi lisamist…</string>
     <string name="secure_join_wait">Panen aluse läbivale krüptimisele…</string>
@@ -1096,6 +1116,7 @@
     <string name="name_desktop">Nimi</string>
     <string name="select_group_image_desktop">Vali grupi tunnuspilti</string>
     <string name="export_backup_desktop">Ekspordi varukoopia</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Autocrypti seadistused on edastatud.</string>
     <string name="forget_login_confirmation_desktop">Kas kustutad selle profiili? Kõik profiiliandmed kaovad sellest seadmest,  sealhulgas läbiva krüptimise seadistus, kontaktid, vestlused, sõnumid ja meediumid. Seda tegevust ei saa tagasi pöörata.</string>
     <string name="message_detail_sent_desktop">saadetud</string>
@@ -1162,7 +1183,6 @@
     <string name="add_to_widget">Lisa vidinale</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat kasutab sinu nutiseadme kaamerat pildistamiseks, videote salvestamiseks ja QR-koodide skaneerimiseks.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat kasutab sinu kontakte aadressiloendi kuvamiseks eesmärgiga leida osapooli, kellele saad kirjutada. Kuna rakendusel puudub keskne server, siis sinu kontakte ei saadeta väljaspoole nutiseadet.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat vajab õigust sinu asukoha jagamiseks nii kaua, kui sul see teenus on sisse lülitatud.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat vajab õigust sinu asukoha jagamiseks nii kaua, kui sul see teenus on sisse lülitatud.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat kasutab sinu nutiseadme mikrofoni häälsõnumite ja videote heliriba salvestamiseks.</string>

@@ -239,6 +239,7 @@
     <string name="menu_save_log">Simpan log</string>
     <string name="menu_more_options">Opsi Lainnya</string>
     <string name="menu_learn_spelling">Belajar Ejaan</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Log Audit Obrolan</string>
     <string name="jump_to_message">Lompat ke Pesan</string>
     <string name="copy_json">Salin JSON</string>
@@ -292,6 +293,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kontak</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Masukkan nama atau alamat email</string>
     <string name="contacts_type_email_above">Ketik alamat email di atas</string>
 
@@ -455,14 +457,18 @@
     <string name="pref_backup_export_explain">Cadangan membantu Anda untuk membuat instalasi baru di perangkat ini atau perangkat lain.\n\nDalam cadangan terdapat semua pesan, kontak dan obrolan dan pengaturan Autocrypt ujung ke ujung Anda. Simpan berkas cadangan di tempat yang aman atau hapus secepatnya.</string>
     <string name="pref_backup_export_start_button">Mulai Cadangkan</string>
     <string name="pref_backup_written_to_x">Cadangan berhasil ditulis ke \"%1$s\".</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Ekspor kunci rahasia</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Ekspor kunci rahasia ke \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Kunci rahasia berhasil ditulis ke \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Latar belakang</string>
     <string name="pref_background_btn_default">Menggunakan gambar default</string>
     <string name="pref_background_btn_gallery">Pilih dari galeri</string>
     <string name="pref_auto_folder_moves">Perpindahan otomatis ke berkas DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Percakapan dipindahkan untuk menghindari memenuhi kotak masuk</string>
     <string name="pref_show_emails">Tampilkan email klasik</string>
     <string name="pref_show_emails_no">Tidak, hanya obrolan saja</string>
@@ -496,11 +502,15 @@
     <string name="after_5_weeks">Setelah 5 minggu</string>
     <string name="autodel_after_1_year">Setelah 1 tahun</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Kirim Pengaturan Pesan Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Pengaturan Pesan Autocrypt membagi pengaturan ujung ke ujung Anda secara aman dengan aplikasi Autocrypt-compliant lain.\n\nPengaturan ini akan dienkripsi oleh kode pengaturan yang ditampilkan disini dan harus diketik di perangkat lainnya.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Kirim Pengaturan Pesan Autocrypt</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Pengaturan Anda sudah dikirim ke Anda sendiri. Lihat pesan pengaturan di perangkat yang lain. Seharusnya Anda akan diminta kode pengaturan. Masukkan angka berikut:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Lebih baik enkripsi ujung ke ujung</string>
 
     <!-- system messages -->
@@ -521,6 +531,8 @@
     <string name="remove_member_by_you">Member %1$s telah dikeluarkan oleh saya.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Member %1$s telah dikeluarkan oleh %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Member %1$s telah dikeluarkan.</string>
     <string name="group_image_deleted_by_you">Gambar grup telah dihapus oleh saya.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Gambar grup telah dihapus oleh %1$s.</string>
@@ -596,6 +608,7 @@
     <string name="save_desktop">Menyimpan</string>
     <string name="name_desktop">Nama</string>
     <string name="select_group_image_desktop">Pilih gambar grup</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Pengaturan Autocrypt ditransfer.</string>
     <string name="forget_login_confirmation_desktop">Hapus login ini? Semuanya akan dihapus, termasuk pengaturan ujung ke ujung, kontak, obrolan, pesan dan media. Kalau diklik tidak bisa balik lagi.</string>
     <string name="message_detail_sent_desktop">kirim</string>
