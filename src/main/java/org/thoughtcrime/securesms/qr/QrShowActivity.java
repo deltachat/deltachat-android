@@ -12,13 +12,10 @@ import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class QrShowActivity extends BaseActionBarActivity {
-
-    private final DynamicTheme dynamicTheme = new DynamicTheme();
 
     public final static String CHAT_ID = "chat_id";
 
@@ -30,7 +27,6 @@ public class QrShowActivity extends BaseActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dynamicTheme.onCreate(this);
 
         setContentView(R.layout.activity_qr_show);
         fragment = (QrShowFragment)getSupportFragmentManager().findFragmentById(R.id.qrScannerFragment);
@@ -76,12 +72,6 @@ public class QrShowActivity extends BaseActionBarActivity {
       menu.findItem(R.id.load_from_image).setVisible(false);
       Util.redMenuItem(menu, R.id.withdraw);
       return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        dynamicTheme.onResume(this);
     }
 
     @Override

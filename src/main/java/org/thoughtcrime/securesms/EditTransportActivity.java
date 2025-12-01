@@ -36,7 +36,6 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -57,8 +56,6 @@ public class EditTransportActivity extends BaseActionBarActivity implements DcEv
         SERVER,
         PORT,
     }
-
-    private final DynamicTheme dynamicTheme    = new DynamicTheme();
 
     private TextInputEditText emailInput;
     private TextInputEditText passwordInput;
@@ -85,7 +82,6 @@ public class EditTransportActivity extends BaseActionBarActivity implements DcEv
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        dynamicTheme.onCreate(this);
         rpc = DcHelper.getRpc(this);
         accId = DcHelper.getContext(this).getAccountId();
 
@@ -218,7 +214,6 @@ public class EditTransportActivity extends BaseActionBarActivity implements DcEv
     @Override
     public void onResume() {
         super.onResume();
-        dynamicTheme.onResume(this);
         proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1);
     }
 
