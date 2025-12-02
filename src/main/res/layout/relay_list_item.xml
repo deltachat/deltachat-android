@@ -37,4 +37,16 @@
       android:textSize="16sp"
       tools:text="user@example.com" />
 
+  <ImageView
+      android:id="@+id/edit_button"
+      android:layout_width="48dp"
+      android:layout_height="72dp"
+      android:paddingStart="12dp"
+      android:paddingEnd="12dp"
+      android:clickable="true"
+      android:focusable="true"
+      android:contentDescription="@string/edit_transport"
+      android:background="@drawable/touch_highlight_background"
+      android:src="@drawable/ic_create_white_24dp"
+      app:tint="?attr/conversation_list_item_date_color" />
 </LinearLayout>

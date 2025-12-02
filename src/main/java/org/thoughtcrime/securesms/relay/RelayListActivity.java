@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.relay;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -99,6 +100,13 @@ public class RelayListActivity extends BaseActionBarActivity
         loadRelays();
       });
     }
+  }
+
+  @Override
+  public void onRelayEdit(EnteredLoginParam relay) {
+    Intent intent = new Intent(this, EditRelayActivity.class);
+    intent.putExtra(EditRelayActivity.EXTRA_ADDR, relay.addr);
+    startActivity(intent);
   }
 
   @Override

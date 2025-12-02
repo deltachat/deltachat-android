@@ -24,6 +24,7 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
 
   public interface OnRelayClickListener {
     void onRelayClick(EnteredLoginParam relay);
+    void onRelayEdit(EnteredLoginParam relay);
   }
 
   public RelayListAdapter(OnRelayClickListener listener) {
@@ -63,11 +64,13 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
   public static class RelayViewHolder extends RecyclerView.ViewHolder {
     private final TextView titleText;
     private final ImageView mainIndicator;
+    private final ImageView editButton;
 
     public RelayViewHolder(@NonNull View itemView) {
       super(itemView);
       titleText = itemView.findViewById(R.id.title);
       mainIndicator = itemView.findViewById(R.id.main_indicator);
+      editButton = itemView.findViewById(R.id.edit_button);
     }
 
     public void bind(EnteredLoginParam relay, boolean isMain, OnRelayClickListener listener) {
@@ -77,6 +80,12 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
       itemView.setOnClickListener(v -> {
         if (listener != null) {
           listener.onRelayClick(relay);
+        }
+      });
+
+      editButton.setOnClickListener(v -> {
+        if (listener != null) {
+          listener.onRelayEdit(relay);
         }
       });
     }
