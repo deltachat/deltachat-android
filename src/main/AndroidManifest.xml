@@ -241,7 +241,7 @@
               android:exported="true">
     </activity>
 
-    <activity android:name=".TransportListActivity"
+    <activity android:name=".relay.RelayListActivity"
               android:windowSoftInputMode="stateHidden"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 

@@ -7,8 +7,8 @@
 
     <PreferenceCategory android:title="@string/pref_server">
 
-        <Preference android:key="password_account_settings_button"
-            android:title="@string/edit_transport"/>
+        <Preference android:key="pref_relay_list_button"
+            android:title="@string/transports"/>
 
         <Preference android:key="proxy_settings_button"
             android:title="@string/proxy_settings"/>
