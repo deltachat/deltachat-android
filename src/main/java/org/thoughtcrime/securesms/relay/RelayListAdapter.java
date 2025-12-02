@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.thoughtcrime.securesms.R;
@@ -25,6 +26,7 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
   public interface OnRelayClickListener {
     void onRelayClick(EnteredLoginParam relay);
     void onRelayEdit(EnteredLoginParam relay);
+    void onRelayDelete(EnteredLoginParam relay);
   }
 
   public RelayListAdapter(OnRelayClickListener listener) {
@@ -35,7 +37,7 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
     return mainRelayAddr;
   }
 
-  public void setRelays(List<EnteredLoginParam> relays, String mainRelayAddr) {
+  public void setRelays(@Nullable List<EnteredLoginParam> relays, String mainRelayAddr) {
     this.relays = relays != null ? relays : new ArrayList<>();
     this.mainRelayAddr = mainRelayAddr;
     notifyDataSetChanged();
@@ -65,17 +67,20 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
     private final TextView titleText;
     private final ImageView mainIndicator;
     private final ImageView editButton;
+    private final ImageView deleteButton;
 
     public RelayViewHolder(@NonNull View itemView) {
       super(itemView);
       titleText = itemView.findViewById(R.id.title);
       mainIndicator = itemView.findViewById(R.id.main_indicator);
       editButton = itemView.findViewById(R.id.edit_button);
+      deleteButton = itemView.findViewById(R.id.delete_button);
     }
 
     public void bind(EnteredLoginParam relay, boolean isMain, OnRelayClickListener listener) {
       titleText.setText(relay.addr);
       mainIndicator.setVisibility(isMain ? View.VISIBLE : View.GONE);
+      deleteButton.setVisibility(isMain ? View.GONE : View.VISIBLE);
 
       itemView.setOnClickListener(v -> {
         if (listener != null) {
@@ -86,6 +91,12 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
       editButton.setOnClickListener(v -> {
         if (listener != null) {
           listener.onRelayEdit(relay);
+        }
+      });
+
+      deleteButton.setOnClickListener(v -> {
+        if (listener != null) {
+          listener.onRelayDelete(relay);
         }
       });
     }

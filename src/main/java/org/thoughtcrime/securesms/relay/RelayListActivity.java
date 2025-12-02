@@ -7,6 +7,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -65,8 +66,6 @@ public class RelayListActivity extends BaseActionBarActivity
     loadRelays();
   }
 
-  }
-
   private void loadRelays() {
     Util.runOnAnyBackgroundThread(() -> {
       String mainRelayAddr = "";
@@ -108,6 +107,23 @@ public class RelayListActivity extends BaseActionBarActivity
     Intent intent = new Intent(this, EditRelayActivity.class);
     intent.putExtra(EditRelayActivity.EXTRA_ADDR, relay.addr);
     startActivity(intent);
+  }
+
+  @Override
+  public void onRelayDelete(EnteredLoginParam relay) {
+    new AlertDialog.Builder(this)
+      .setTitle(R.string.remove_transport)
+      .setMessage(getString(R.string.confirm_remove_transport, relay.addr))
+      .setPositiveButton(R.string.ok, (dialog, which) -> {
+        try {
+          rpc.deleteTransport(accId, relay.addr);
+          loadRelays();
+        } catch (RpcException e) {
+          Log.e(TAG, "RPC.deleteTransport() failed", e);
+        }
+      })
+      .setNegativeButton(R.string.cancel, null)
+      .show();
   }
 
   @Override
