@@ -18,6 +18,7 @@
 * Opened in-chat apps got a 'About Apps' menu item
 * Avoid gray avatar on profile creation
 * Add disk usage statistics to log
+* Add new multi-transport experimental feature
 * Update to core 2.29.0
 
 ## v2.25.0
