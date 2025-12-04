@@ -12,9 +12,18 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.qr.QrActivity;
+import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -25,7 +34,7 @@ import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.EnteredLoginParam;
 
 public class RelayListActivity extends BaseActionBarActivity
-  implements RelayListAdapter.OnRelayClickListener {
+  implements RelayListAdapter.OnRelayClickListener, DcEventCenter.DcEventDelegate {
 
   private static final String TAG = RelayListActivity.class.getSimpleName();
 
@@ -48,9 +57,16 @@ public class RelayListActivity extends BaseActionBarActivity
     }
 
     RecyclerView recyclerView = findViewById(R.id.relay_list);
+    PulsingFloatingActionButton fabAdd = findViewById(R.id.fab_add_relay);
 
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(recyclerView);
+    // Apply insets to prevent fab from being covered by system bars
+    ViewUtil.applyWindowInsetsAsMargin(fabAdd);
+
+    fabAdd.setOnClickListener(v -> {
+      new IntentIntegrator(this).setCaptureActivity(QrActivity.class).addExtra(QrActivity.EXTRA_SCAN_RELAY, true).initiateScan();
+    });
 
     LinearLayoutManager layoutManager = new LinearLayoutManager(this);
     // Add the default divider (uses the theme’s `android.R.attr.listDivider`)
@@ -64,6 +80,15 @@ public class RelayListActivity extends BaseActionBarActivity
     recyclerView.setAdapter(adapter);
 
     loadRelays();
+
+    DcEventCenter eventCenter = DcHelper.getEventCenter(this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
+  }
+
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    DcHelper.getEventCenter(this).removeObservers(this);
   }
 
   private void loadRelays() {
@@ -133,5 +158,23 @@ public class RelayListActivity extends BaseActionBarActivity
       return true;
     }
     return super.onOptionsItemSelected(item);
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == IntentIntegrator.REQUEST_CODE) {
+      IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+      QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+      qrCodeHandler.onScanPerformed(scanResult);
+    }
+  }
+
+  @Override
+  public void handleEvent(@NonNull DcEvent event) {
+    int eventId = event.getId();
+    if (eventId == DcContext.DC_EVENT_CONFIGURE_PROGRESS && event.getData1Int() == 1000) {
+      loadRelays();
+    }
   }
 }
