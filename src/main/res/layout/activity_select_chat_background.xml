@@ -2,10 +2,10 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_container"
-    android:fitsSystemWindows="true"
-    android:background="?attr/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+  <include layout="@layout/status_bar_background"/>
 
     <org.thoughtcrime.securesms.components.ScaleStableImageView
         android:id="@+id/preview"

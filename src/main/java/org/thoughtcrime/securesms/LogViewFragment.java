@@ -37,12 +37,11 @@ import androidx.annotation.NonNull;
 import androidx.core.content.PermissionChecker;
 import androidx.fragment.app.Fragment;
 
-import com.b44t.messenger.DcContext;
-
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -54,6 +53,9 @@ import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 
 public class LogViewFragment extends Fragment {
   private EditText logPreview;
@@ -77,6 +79,10 @@ public class LogViewFragment extends Fragment {
     super.onViewCreated(view, savedInstanceState);
 
     logPreview   = (EditText) getView().findViewById(R.id.log_preview);
+
+    // add padding to avoid content hidden behind system bars
+    ViewUtil.applyWindowInsets(getView().findViewById(R.id.content_container), true, false, true, true);
+
     new PopulateLogcatAsyncTask(this).execute();
   }
 
@@ -124,10 +130,7 @@ public class LogViewFragment extends Fragment {
   }
 
   private static String grabLogcat(LogViewFragment fragment) {
-    String command = "logcat -v threadtime -d -t 10000";
-    if (!Prefs.isDeveloperModeEnabled(fragment.getActivity())) {
-      command += " *:I";
-    }
+    String command = "logcat -v threadtime -d -t 10000 *:I";
     try {
       final Process         process        = Runtime.getRuntime().exec(command);
       final BufferedReader  bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -211,7 +214,6 @@ public class LogViewFragment extends Fragment {
     PowerManager powerManager = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
     final PackageManager pm      = context.getPackageManager();
     final StringBuilder  builder = new StringBuilder();
-    final DcContext dcContext = DcHelper.getContext(context);
 
     builder.append("device=")
            .append(Build.MANUFACTURER).append(" ")
@@ -266,8 +268,16 @@ public class LogViewFragment extends Fragment {
       builder.append("Unknown\n");
     }
 
+    final Rpc rpc = DcHelper.getRpc(context);
+    final int accId = DcHelper.getContext(context).getAccountId();
+
     builder.append("\n");
-    builder.append(dcContext.getInfo());
+    try {
+      builder.append(rpc.getStorageUsageReportString(accId));
+      builder.append(rpc.getInfo(accId));
+    } catch (RpcException e) {
+      builder.append(e);
+    }
 
     return builder.toString();
   }

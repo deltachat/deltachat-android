@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="?attr/colorPrimary"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".WelcomeActivity">
+
+  <include layout="@layout/status_bar_background"/>
 
 <LinearLayout
+    android:id="@+id/content_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:background="?android:attr/windowBackground"
-    tools:context=".WelcomeActivity">
+    android:gravity="center_horizontal">
 
     <androidx.legacy.widget.Space
         android:layout_weight="3"
@@ -79,4 +79,4 @@
 
 </LinearLayout>
 
-</RelativeLayout>
+</FrameLayout>

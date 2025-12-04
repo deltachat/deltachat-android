@@ -2,18 +2,24 @@
 
 ## Unreleased
 
+* Target Android 16
 * Change color of links in text messages
+* Improve edge-to-edge support
+* Metadata protection: protect message recipients
 * Allow to withdraw channel invite links and QR codes
+* Allow to open externally links clicked inside in-chat apps
 * Do not show "1 member" when the process of joining the group is not finished
 * Improve handling of video recoding
 * Send .webm videos as file, they are not supported by all platforms
 * Tweak advanced section and wording of some advanced options
 * Fix: avoid crash in push notifications handling
+* Fix: clean up web storage of deleted in-chat apps
 * Expose new "Multi-device mode" option instead of "Delete from server" for chatmail profiles
 * Opened in-chat apps got a 'About Apps' menu item
 * Avoid gray avatar on profile creation
+* Add disk usage statistics to log
 * Add the option (opt-in) to send anonymous statistics to Delta Chat's developers
-* Update to core 2.27.0
+* Update to core 2.29.0
 
 ## v2.25.0
 2025-11

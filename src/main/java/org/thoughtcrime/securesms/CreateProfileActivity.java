@@ -76,7 +76,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     getSupportActionBar().setTitle(R.string.pref_profile_info_headline);
     getSupportActionBar().setDisplayHomeAsUpEnabled(!this.fromWelcome);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
-    getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
 
     attachmentManager = new AttachmentManager(this, () -> {});
     avatarChanged = false;
@@ -181,6 +180,9 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     this.name         = ViewUtil.findById(this, R.id.name_text);
     this.container    = ViewUtil.findById(this, R.id.container);
     this.statusView   = ViewUtil.findById(this, R.id.status_text);
+
+    // add padding to avoid content hidden behind system bars
+    ViewUtil.applyWindowInsets(container);
 
     if (fromWelcome) {
       String addr = DcHelper.get(this, "addr");

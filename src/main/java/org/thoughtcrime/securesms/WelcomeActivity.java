@@ -38,6 +38,7 @@ import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.StreamUtil;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.io.File;
@@ -61,6 +62,9 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.welcome_activity);
+
+        // add padding to avoid content hidden behind system bars
+        ViewUtil.applyWindowInsets(findViewById(R.id.content_container));
 
         Button signUpButton = findViewById(R.id.signup_button);
         Button signInButton = findViewById(R.id.signin_button);
@@ -96,7 +100,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         boolean canGoBack = AccountManager.getInstance().canRollbackAccountCreation(this);
         supportActionBar.setDisplayHomeAsUpEnabled(canGoBack);
         getSupportActionBar().setTitle(canGoBack? R.string.add_account : R.string.welcome_desktop);
-        getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
     }
 
     private void registerForEvents() {

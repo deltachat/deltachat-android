@@ -2,9 +2,11 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true"
-    android:background="?attr/colorPrimary"
+    android:id="@+id/root_layout"
+    android:background="?attr/input_panel_bg_color"
     android:layout_height="match_parent" android:layout_width="match_parent">
+
+    <include layout="@layout/status_bar_background"/>
 
     <org.thoughtcrime.securesms.components.ScaleStableImageView
         android:id="@+id/conversation_background"

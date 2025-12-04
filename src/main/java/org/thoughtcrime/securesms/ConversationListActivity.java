@@ -159,6 +159,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     searchAction             = findViewById(R.id.search_action);
     fragmentContainer        = findViewById(R.id.fragment_container);
 
+    // add margin to avoid content hidden behind system bars
+    ViewUtil.applyWindowInsetsAsMargin(searchToolbar, true, true, true, false);
+
     Bundle bundle = new Bundle();
     conversationListFragment = initFragment(R.id.fragment_container, new ConversationListFragment(), bundle);
 

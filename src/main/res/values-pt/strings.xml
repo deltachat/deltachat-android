@@ -64,7 +64,9 @@
     <string name="hide">Ocultar</string>
     <string name="activate">Activar</string>
     <string name="always">Sempre</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Mostrar palavra-passe</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Ocultar palavra-passe</string>
     <string name="not_now">Agora não</string>
     <string name="never">Nunca</string>
@@ -256,6 +258,7 @@
     <string name="ask_remove_from_channel">Remover %1$s do canal?</string>
     <!-- contact list -->
     <string name="contacts_title">Contactos</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Digite o nome ou endereço de e-mail</string>
     <string name="contacts_type_email_above">Digite o endereço de e-mail acima</string>
 
@@ -322,8 +325,6 @@
     <string name="login_title">Login</string>
     <!-- deprecated -->
     <string name="login_header">Iniciar sessão na sua conta de e-mail</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Para os provedores de e-mail conhecidos as configurações adicionais são configuradas automaticamente. Por vezes, o IMAP precisa estar activado no frontend da web. Consulte seu provedor de e-mail ou amigos para obter ajuda.</string>
     <string name="login_inbox">Caixa de entrada</string>
     <string name="login_imap_login">IMAP nome de login </string>
     <string name="login_imap_server">IMAP servidor</string>
@@ -335,12 +336,6 @@
     <string name="login_smtp_server">SMTP servidor</string>
     <string name="login_smtp_port">SMTP porto</string>
     <string name="login_smtp_security">SMTP segurança</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Método de autorização</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Usar configuração simplificada?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">O endereço inserido pode ser configurado de maneira simples (OAuth 2.0).\n\nNo passo seguinte dê permissão ao Delta Chat para enviar e receber mensagens.\n\nO Delta Chat não recolhe dados de utilizador, permanece tudo no seu dispositivo.</string>
     <string name="login_error_mail">Por favor insira um endereço de e-mail válido</string>
     <string name="login_error_server">Por favor insira um servidor ou endereço IP válido</string>
     <string name="login_error_port">Por favor, insira um porto válido (1-65535)</string>
@@ -401,24 +396,30 @@
     <string name="pref_backup_export_explain">Um backup ajuda-o a configurar uma nova instalação neste ou em outro dispositivo. \n\n O backup conterá todas as mensagens, contactos e converas e a configuração de encriptação Mantenha o arquivo de backup em um local seguro ou exclua-o o mais rápido possível.</string>
     <string name="pref_backup_export_start_button">Inicia backup</string>
     <string name="pref_backup_written_to_x">Backup escrito com sucesso em %1$s</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Exportar chave secreta</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Exportar chave secreta para \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Chaves secretas escritas com sucesso para "%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fundo</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se desabilitar esta opção, verifique se seu servidor e seus outros clientes estão configurados adequadamente. \n\ncaso contrário, as coisas podem não funcionar.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Ver a pasta de enviados</string>
     <string name="pref_auto_folder_moves">Mover pasta automaticamente para o Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">As chats de chat são movidas para evitar atravancar da pasta Inbox</string>
     <string name="pref_show_emails">Exibir e-mails comuns</string>
     <string name="pref_show_emails_no">Não, apenas conversas</string>
     <string name="pref_show_emails_all">Tudo</string>
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Enviar mensagem com a definição da encriptação automática</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">A \"Mensagem de Configuração Autocrypt\" compartilha com segurança a sua configuração de ponta a ponta com outros aplicativos compatíveis com Autocrypt. \n\nA configuração será encriptada por um código de configuração que é exibido aqui e deve ser digitado no outro dispositivo.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Enviar mensagem com a definição da encriptação automática</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">A sua configuração foi-lhe enviada. Entre no outro dispositivo e abra a mensagem de configuração. Deve ser solicitado a fornecer um código de configuração. Digite os seguintes dígitos no prompt.\n\n Assim que estiver concluido, o outro dispositivo estará pronto para usar o Autocrypt.</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Preferir encriptação ponta a ponta</string>
 
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -426,18 +427,20 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">O nome do grupo mudou de \"%1$s\" para \"%2$s\" por %3$s.</string>
     <string name="group_image_changed_by_you">Imagem do grupo modificada por mim.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Imagem do grupo modificada por %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Membro %1$s adicionado por mim.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Membro %1$s adicionado por %2$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Membro %1$s removido por mim.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Membro %1$s removido por %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Membro %1$s removido.</string>
     <string name="group_image_deleted_by_you">Imagem do grupo apagada por mim.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Imagem do grupo apagada por %1$s.</string>
     <string name="qrscan_title">Fazer scan do código QR</string>
     <string name="qrscan_hint">Coloque sua câmera sobre o código QR</string>
@@ -455,7 +458,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Digitalize para se juntar ao geupo \"%1$s\".</string>
     <string name="qrshow_join_contact_title">QR com código de convite</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Digitalize para configurar um contato com %1$s</string>
     <string name="secure_join_wait">A estabelecer ligação cifrada de ponta-a-ponta, por favor aguarde…</string>
     <string name="contact_verified">%1$s verificado.</string>
@@ -505,6 +508,7 @@
     <string name="name_desktop">Nome</string>
     <string name="select_group_image_desktop">Seleccionar a imagem para o grupo</string>
     <string name="export_backup_desktop">Exportar o backup</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Configuração autocrypt transferida com sucesso!</string>
     <string name="forget_login_confirmation_desktop">Apagar este login? Tudo será apagado, incluindo sua configuração de ponta a ponta, contatos, chats, mensagens e mídia. Esta ação é final e não pode ser revertida.</string>
     <string name="message_detail_sent_desktop">enviado</string>

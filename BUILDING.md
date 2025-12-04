@@ -22,24 +22,12 @@ subproject _deltachat-core-rust_:
 
 ## Generate JSON-RPC bindings
 
-To generate the JSON-RPC bindings (ex. `chat.delta.rpc.*` package)
-install the [dcrpcgen tool](https://github.com/chatmail/dcrpcgen)
-then generate the `schema.json` file:
+To generate/update the JSON-RPC bindings (ex. `chat.delta.rpc.*` package)
+install Rust tooling (read sections below) and the [dcrpcgen tool](https://github.com/chatmail/dcrpcgen)
+then generate the code running the script:
 
 ```
-# install deltachat-rpc-server program:
-cargo install --path ./jni/deltachat-core-rust/deltachat-rpc-server
-# check the version of core matches:
-deltachat-rpc-server --version
-# generate the schema:
-deltachat-rpc-server --openrpc > schema.json
-```
-
-then pass the schema file to the `dcrpcgen` tool to generate the
-code:
-
-```
-dcrpcgen java --schema schema.json -o ./src/main/java/
+./scripts/generate-rpc-bindings.sh
 ```
 
 ## Build Using Nix

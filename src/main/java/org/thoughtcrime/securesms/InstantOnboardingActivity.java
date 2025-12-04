@@ -53,6 +53,7 @@ import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.io.File;
@@ -102,7 +103,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.onboarding_create_instant_account);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setElevation(0); // TODO: use custom toolbar instead
 
     boolean fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
     if (DcHelper.getContext(this).isConfigured() == 1) {
@@ -328,6 +328,9 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     this.privacyPolicyBtn = findViewById(R.id.privacy_policy_button);
     this.signUpBtn        = findViewById(R.id.signup_button);
 
+    // add padding to avoid content hidden behind system bars
+    ViewUtil.applyWindowInsets(findViewById(R.id.container));
+
     privacyPolicyBtn.setOnClickListener(view -> {
       if (!isDcLogin) {
         IntentUtils.showInBrowser(this, "https://" + providerHost + "/privacy.html");
@@ -365,7 +368,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   }
 
   private void startRegistrationActivity() {
-    Intent intent = new Intent(this, RegistrationActivity.class);
+    Intent intent = new Intent(this, EditTransportActivity.class);
     startActivity(intent);
   }
 

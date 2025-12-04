@@ -5,19 +5,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.b44t.messenger.DcContext;
 
+import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
-public class QrShowActivity extends AppCompatActivity {
-
-    private final DynamicTheme dynamicTheme = new DynamicTheme();
+public class QrShowActivity extends BaseActionBarActivity {
 
     public final static String CHAT_ID = "chat_id";
 
@@ -29,10 +27,12 @@ public class QrShowActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dynamicTheme.onCreate(this);
 
         setContentView(R.layout.activity_qr_show);
         fragment = (QrShowFragment)getSupportFragmentManager().findFragmentById(R.id.qrScannerFragment);
+
+        // add padding to avoid content hidden behind system bars
+        ViewUtil.applyWindowInsets(findViewById(R.id.qrScannerFragment), false, true, false, false);
 
         dcContext = DcHelper.getContext(this);
         dcEventCenter = DcHelper.getEventCenter(this);
@@ -72,12 +72,6 @@ public class QrShowActivity extends AppCompatActivity {
       menu.findItem(R.id.load_from_image).setVisible(false);
       Util.redMenuItem(menu, R.id.withdraw);
       return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        dynamicTheme.onResume(this);
     }
 
     @Override

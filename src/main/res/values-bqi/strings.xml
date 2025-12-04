@@ -79,7 +79,9 @@
     <string name="always_load_remote_images">شؽواتا دیر ز دسرس هی بوگوئشن</string>
     <string name="once">هیم ی کرت</string>
     <string name="show_warning">نشووݩ داڌن هوشدار</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">نشووݩ داڌن رزم</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">بؽڌار کردن رزم</string>
     <string name="not_now">سکو ن</string>
     <string name="never">هیچ</string>
@@ -424,7 +426,7 @@
     <string name="after_5_weeks">دیندا 5 هفته</string>
     <string name="autodel_after_1_year">دیندا 1 سال</string>
 
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s ز جرگه رئڌ.</string>
     <string name="qrshow_x_joining">%1$s ٱووڌ.</string>
     <string name="qrshow_x_verified">%1$s تاییڌ وابی.</string>

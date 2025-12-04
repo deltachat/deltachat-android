@@ -117,9 +117,6 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   public static void openWebxdcActivity(Context context, int msgId, boolean hideActionBar, String href) {
     if (!Util.isClickedRecently()) {
-      if (Prefs.isDeveloperModeEnabled(context)) {
-        WebView.setWebContentsDebuggingEnabled(true);
-      }
       context.startActivity(getWebxdcIntent(context, msgId, hideActionBar, href));
     }
   }
@@ -151,13 +148,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   }
 
   @Override
+  protected boolean immersiveMode() { return hideActionBar; }
+
+  @Override
   protected void onCreate(Bundle state, boolean ready) {
+    Bundle b = getIntent().getExtras();
+    hideActionBar = b.getBoolean(EXTRA_HIDE_ACTION_BAR, false);
+
     super.onCreate(state, ready);
     rpc = DcHelper.getRpc(this);
     initTTS();
-
-    Bundle b = getIntent().getExtras();
-    hideActionBar = b.getBoolean(EXTRA_HIDE_ACTION_BAR, false);
 
     // enter fullscreen mode if necessary,
     // this is needed here because if the app is opened while already in landscape mode, onConfigurationChanged() is not triggered
@@ -339,16 +339,23 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     }
   }
 
+  @Override
+  protected boolean shouldAskToOpenLink() { return true; }
+
   // This is usually only called when internetAccess == true or for mailto/openpgp4fpr scheme,
   // because when internetAccess == false, the page is loaded inside an iframe,
-  // and WebViewClient.shouldOverrideUrlLoading is not called for HTTP(S) links inside the iframe
+  // and WebViewClient.shouldOverrideUrlLoading is not called for HTTP(S) links inside the iframe unless target=_blank is used
   @Override
   protected boolean openOnlineUrl(String url) {
     Log.i(TAG, "openOnlineUrl: " + url);
-    if (url.startsWith("mailto:") || url.startsWith("openpgp4fpr:")) {
-      return super.openOnlineUrl(url);
+
+    // if there is internet access, allow internal loading of http
+    if (internetAccess && url.startsWith("http")) {
+      // returning `false` continues loading in WebView; returning `true` let WebView abort loading
+      return false;
     }
-    return !internetAccess; // returning `false` continues loading in WebView; returning `true` let WebView abort loading
+
+    return super.openOnlineUrl(url);
   }
 
   @Override

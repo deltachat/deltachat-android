@@ -81,7 +81,9 @@
     <string name="always_load_remote_images">Her Zaman Uzak Görselleri Yükle</string>
     <string name="once">Bir kez</string>
     <string name="show_warning">Uyarı Göster</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Parolayı Göster</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Parolayı Gizle</string>
     <string name="not_now">Şimdi değil</string>
     <string name="never">Hiçbir zaman</string>
@@ -336,6 +338,7 @@
     <string name="menu_save_log">Günlüğü Kaydet</string>
     <string name="menu_more_options">Daha Fazla Seçenek</string>
     <string name="menu_learn_spelling">Yazımı Öğrenin</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Sohbet Denetim Günlüğü</string>
     <string name="jump_to_message">İletiye Atla</string>
     <string name="jump_to_original_message">Özgün İletiye Atla</string>
@@ -418,8 +421,8 @@
     <string name="ask_export_attachment">İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
     <string name="ask_block_contact">Bu kişi engellensin mi?\n\nEngellenen kişiler tarafından oluşturulan doğrudan iletiler ya da gruplar gösterilmeyecek.\n\nEngellenen kişilerle olan diğer gruplar, onların iletilerini gösterecek.</string>
     <string name="ask_unblock_contact">Bu kişi engellenmesin mi?</string>
-    <string name="ask_delete_contacts">Kişiler silinsin mi?\n\nSohbetlerin sürdüğü ya da sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
-    <string name="ask_delete_contact">%1$s kişisi silinsin mi?\n\nSohbetlerin sürdüğü ya da sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
+    <string name="ask_delete_contacts">Kişiler silinsin mi?\n\nSohbetlerin sürdüğü kişiler kalıcı olarak silinemez.</string>
+    <string name="ask_delete_contact">%1$s kişisi silinsin mi?\n\nSohbetlerin sürdüğü kişiler kalıcı olarak silinemez.</string>
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$s gruptan kaldırılsın mı?</string>
@@ -430,6 +433,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kişiler</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Ad ya da e-posta adresi girin</string>
     <string name="contacts_type_email_above">Yukarıya e-posta adresi yazın</string>
 
@@ -502,9 +506,11 @@
     <string name="show_location_traces">İzleri göster</string>
     <string name="add_poi">İlgi çekici noktayı gönder</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Bu sohbet için sistem iletileri burada görünür</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">%1$s için Sohbet Denetim Günlüğü</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Yalnızca sistem ve bilgi iletilerini gösterir; birçok ileti arasında kaydırmadan son sohbet eylemlerini bulmak için kullanışlıdır.</string>
 
     <!-- punycode warning / labeled links -->
@@ -538,6 +544,7 @@
     <string name="group_self_not_in_group">Bu eylemi gerçekleştirmek için grubun bir üyesi olmalısınız.</string>
     <string name="profile_encryption">Şifreleme</string>
     <string name="profile_shared_chats">Ortak\'taki Sohbetler</string>
+    <!-- deprecated -->
     <string name="related_chats">İlgili Sohbetler</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Geçmişteki Üyeler</string>
@@ -571,7 +578,7 @@
     <string name="multidevice_install_dc_on_other_device">Delta Chat\'i diğer aygıtınıza kurun (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Delta Chat\'i başlatın, “Zaten Bir Profilim Var / İkinci Aygıt Olarak Ekle”ye dokunun ve burada gösterilen kodu tarayın</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">%1$s için ikinci aygıtı ayarlamak üzere tarayın</string>
     <string name="multidevice_receiver_title">İkinci Aygıt Olarak Ayarla</string>
     <string name="multidevice_open_settings_on_other_device">Birinci aygıtta “Ayarlar / İkinci Aygıt Ekle”ye gidin ve orada gösterilen kodu tarayın</string>
@@ -631,12 +638,12 @@
     <string name="instant_onboarding_other_server">Chatmail Sunucularını Listele</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">“%1$s” grubuna katılmak için bir profil oluşturun.</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">%1$s ile sohbet etmek için bir profil oluşturun.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">Yeni bir profil oluşturmak ve %1$s ile sohbet başlatmak istiyor musunuz?</string>
-    <!-- Question shown when group's QR code is scanned from onboarding screen -->
-    <string name="instant_onboarding_confirm_group">Yeni bir profil oluşturmak ve “%1$s” sohbet grubuna katılmak istiyor musunuz?</string>
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_group">Yeni bir profil oluşturmak ve “%1$s” grubuna katılmak istiyor musunuz?</string>
 
     <string name="welcome_chat_over_email">Güvenli Merkezi Olmayan Sohbet</string>
     <string name="scan_invitation_code">Çağrı Kodunu Tara</string>
@@ -646,10 +653,6 @@
     <string name="login_header">E-Posta Hesabınıza Giriş Yapın</string>
     <!-- deprecated -->
     <string name="login_explain">Varolan bir e-posta hesabıyla giriş yapın</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak ayarlanır. Bazen IMAP\'in web ayarlarından etkinleştirilmesi gerekir. Yardım için e-posta sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Delta Chat kullanıcı verisi toplamaz; her şey aygıtınızda kalır.</string>
     <string name="login_inbox">Gelen Kutusu</string>
     <string name="login_imap_login">IMAP Giriş Adı</string>
     <string name="login_imap_server">IMAP Sunucusu</string>
@@ -661,8 +664,6 @@
     <string name="login_smtp_server">SMTP Sunucusu</string>
     <string name="login_smtp_port">SMTP Bağlantı Noktası</string>
     <string name="login_smtp_security">SMTP Güvenliği</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Yetkilendirme Yöntemi</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Proxy Kullan</string>
@@ -688,10 +689,6 @@
     <string name="invalid_transport_qr">Taranan QR kodu, geçerli bir taşıma aracı içermiyor.</string>
     <string name="confirm_remove_transport">“%1$s” taşıma aracı kaldırılsın mı?\n\nKişileriniz yalnızca onlara önceden ulaştığınız başka bir taşıma aracı üzerinden size ulaşabilir.\n\nKuşkuluysanız taşıma aracını daha sonra kaldırın.</string>
 
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth 2.0) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'e iletiler gönderme ve alma izni verin.\n\nDelta Chat kullanıcı verisi toplamaz; her şey aygıtınızda kalır.</string>
     <string name="login_certificate_checks">Sertifika Denetimleri</string>
     <string name="login_error_mail">Lütfen geçerli bir e-posta adresi girin</string>
     <string name="login_error_server">Lütfen geçerli bir sunucu / IP adresi girin</string>
@@ -785,7 +782,9 @@
     <string name="pref_server">Sunucu</string>
     <string name="pref_encryption">Şifreleme</string>
     <string name="pref_manage_keys">Anahtarları Yönet</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts">Sistem Adres Defterini Oku</string>
+    <!-- deprecated -->
     <string name="pref_show_system_contacts_explain">Adres defterinden gelen kişilerle sohbetler oluşturmayı teklif edin.</string>
     <string name="pref_chats">Sohbetler</string>
     <string name="pref_in_chat_sounds">Sohbet İçi Sesler</string>
@@ -798,27 +797,30 @@
     <string name="pref_backup_explain">Sohbetleri Dış Depolamaya Yedekle</string>
     <string name="pref_backup_export_explain">Bir yedek, bu ya da başka bir aygıtta yeni bir kurulum ayarlamanıza yardımcı olur.\n\nYedek; tüm iletileri, kişileri ve sohbetleri ve uçtan uca Autocrypt ayarlamanızı içerecek. Yedek dosyasını güvenli bir yerde tutun ya da olanaklıysa en kısa sürede silin.</string>
     <string name="pref_backup_export_this">Bu profili dışa aktar</string>
-    <!-- deprecated -->
-    <string name="pref_backup_export_x">%1$s hesabını dışa aktar</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Tüm %1$d profili dışa aktar</string>
     <string name="pref_backup_export_start_button">Yedeklemeyi Başlat</string>
     <string name="pref_backup_written_to_x">Yedek “%1$s” üzerine başarıyla yazıldı.</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Sır Anahtarları Dışa Aktar</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Sır anahtarlar “%1$s” üzerinde dışa aktarılsın mı?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Sır anahtarlar “%1$s” üzerine başarıyla yazıldı.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Duvar Kâğıdı</string>
     <string name="pref_background_btn_default">Varsayılan Görseli Kullan</string>
     <string name="pref_background_btn_gallery">Galeriden Seç</string>
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçeneği değiştirirseniz, sunucunuzun ve diğer istemcilerinizin uygun olarak yapılandırıldığından emin olun.\n\nDeğilse özellikler hiç çalışmayabilir.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Gönderilen Klasörünü İzle</string>
-    <string name="pref_send_copy_to_self">Kendime Kopya Gönder</string>
-    <string name="pref_send_copy_to_self_explain">Bu hesap çoklu aygıtlarda kullanılırken gereklidir.</string>
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <string name="pref_multidevice">Çoklu Aygıt Modu</string>
+    <string name="pref_multidevice_explain">İletilerinizi diğer aygıtlarınızla eşzamanlayın. İkinci bir aygıt eklendiğinde otomatik olarak etkinleştirilir</string>
+    <string name="pref_multidevice_change_warn">Aynı profili birden fazla aygıtta kullanırken Çoklu Aygıt Modu etkinleştirilmelidir. Bu ayarı yalnızca bu profili diğer tüm aygıtlarınızdan kaldırdıysanız etkisizleştirin.\n\nProfili birden fazla aygıtta kullanırken Çoklu Aygıt Modu\'nu etkisizleştirmek, iletilerin kaçırılmasına ve diğer sorunlara neden olur.</string>
     <string name="pref_auto_folder_moves">DeltaChat Klasörüne Otomatik Olarak Taşı</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Sohbet görüşmeleri, Gelen Kutusu\'ndaki dağınıklığı önlemek için taşınır</string>
     <string name="pref_only_fetch_mvbox_title">Yalnızca DeltaChat Klasöründen Getir</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Diğer klasörleri yoksayar. Sunucunuzun sohbet iletilerini DeltaChat klasörüne taşımasını gerektirir.</string>
     <string name="pref_show_emails">Klasik E-Postaları Göster</string>
     <string name="pref_show_emails_no">Hayır, yalnızca sohbetler</string>
@@ -826,7 +828,9 @@
     <string name="pref_show_emails_all">Tümü</string>
     <string name="pref_experimental_features">Deneysel Özellikler</string>
     <string name="pref_on_demand_location_streaming">İsteğe Bağlı Konum Akışı</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Geliştirici Modu</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Hata ayıklama seçeneklerini etkinleştirir ve uygulamayı daha az kararlı yapabilir. Yalnızca geliştiriciler içindir.</string>
     <string name="pref_background_default">Varsayılan görsel</string>
     <string name="pref_background_default_color">Varsayılan renk</string>
@@ -852,6 +856,7 @@
     <string name="disable_imap_idle">IMAP IDLE\'ı Etkisizleştir</string>
     <string name="disable_imap_idle_explain">Sunucu desteklese bile IMAP IDLE uzantısını kullanmayın. Bu seçeneği etkinleştirmek ileti getirmeyi geciktirecek; yalnızca sınama için etkinleştirin.</string>
     <string name="send_stats_to_devs">Delta Chat\'in geliştiricilerine istatistikleri gönder</string>
+    <string name="stats_msg_body">İlişik, Delta Chat\'i geliştirmemize yardımcı olan belirsiz kullanım istatistikleri içerir. Teşekkür ederiz!</string>
 
 
     <!-- Emoji picker and categories -->
@@ -898,16 +903,18 @@
     <string name="after_5_weeks">5 hafta sonra</string>
     <string name="autodel_after_1_year">1 yıl sonra</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Autocrypt Ayarlama İletisi Gönder</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır.\n\nDelta Chat\'i diğer aygıtta da kullanmak istiyorsanız, bunun yerine “Ayarlar / İkinci Aygıt Ekle”yi kullanın.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi Gönder</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Uçtan Uca Şifrelemeyi Yeğle</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Bu sohbet için bilinmeyen gönderen. Daha fazla ayrıntı için \'bilgi\'ye bakın.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s kişisinden gelen ileti</string>
     <string name="systemmsg_failed_sending_to">%1$s kişisine ileti gönderme başarısız.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -915,69 +922,71 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s tarafından “%1$s” grup adı “%2$s” olarak değiştirildi.</string>
     <string name="group_image_changed_by_you">Grup görselini değiştirdiniz.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s tarafından grup görseli değiştirildi.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">%1$s üyesi eklendi.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">%1$s üyesini eklediniz.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">%2$s tarafından %1$s üyesi eklendi.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">%1$s üyesini kaldırdınız.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s tarafından %1$s üyesi kaldırıldı.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">%1$s üyesi kaldırıldı.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Gruptan ayrıldınız.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="channel_left_by_you">Kanaldan ayrıldınız.</string>
     <string name="you_joined_the_channel">Kanala katıldınız.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s tarafından gruptan ayrılındı.</string>
     <string name="group_image_deleted_by_you">Grup görselini sildiniz.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">%1$s tarafından grup görseli silindi.</string>
     <string name="location_enabled_by_you">Konum akışını etkinleştirdiniz.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$s tarafından konum akışı etkinleştirildi.</string>
     <string name="ephemeral_timer_disabled_by_you">Kaybolan iletiler zamanlayıcısını etkisizleştirdiniz.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı etkisizleştirildi.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Kaybolan iletiler zamanlayıcısını %1$s saniye olarak ayarladınız.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s saniye olarak ayarlandı.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Kaybolan iletiler zamanlayıcısını 1 dakika olarak ayarladınız.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 dakika olarak ayarlandı.</string>
     <string name="ephemeral_timer_1_hour_by_you">Kaybolan iletiler zamanlayıcısını 1 saat olarak ayarladınız.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 saat olarak ayarlandı.</string>
     <string name="ephemeral_timer_1_day_by_you">Kaybolan iletiler zamanlayıcısını 1 gün olarak ayarladınız.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 gün olarak ayarlandı.</string>
     <string name="ephemeral_timer_1_week_by_you">Kaybolan iletiler zamanlayıcısını 1 hafta olarak ayarladınız.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 hafta olarak ayarlandı.</string>
     <string name="ephemeral_timer_1_year_by_you">Kaybolan iletiler zamanlayıcısını 1 yıl olarak ayarladınız.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_year_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 yıl olarak ayarlandı.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Kaybolan iletiler zamanlayıcısını %1$s dakika olarak ayarladınız.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s dakika olarak ayarlandı.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Kaybolan iletiler zamanlayıcısını %1$s saat olarak ayarladınız.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s saat olarak ayarlandı.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Kaybolan iletiler zamanlayıcısını %1$s gün olarak ayarladınız.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s gün olarak ayarlandı.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Kaybolan iletiler zamanlayıcısını %1$s hafta olarak ayarladınız.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s hafta olarak ayarlandı.</string>
     <string name="chat_unencrypted_explanation">Bu sohbetteki iletiler klasik e-posta kullanıyor ve uçtan uca şifreli değil.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">İletiler uçtan uca şifreleniyor. Daha fazlasını öğrenmek için dokunun.</string>
@@ -1027,7 +1036,7 @@
     <string name="qrshow_join_group_hint">“%1$s” grubuna katılmak için bunu tarayın</string>
     <string name="qrshow_join_channel_hint">“%1$s” kanalına katılmak için tarayın</string>
     <string name="qrshow_join_contact_title">QR Çağrı Kodu</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">%1$s ile sohbet etmek için bunu tarayın</string>
     <string name="qrshow_join_contact_no_connection_toast">Internet bağlantısı yok; QR kodu ayarlaması gerçekleştirilemiyor.</string>
     <string name="qraccount_ask_create_and_login">“%1$s” üzerinde yeni profil oluşturulsun ve orada giriş yapılsın mı?</string>
@@ -1039,8 +1048,10 @@
     <string name="qrlogin_ask_login">“%1$s” adresine giriş yapılsın mı?</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">“%1$s” adresine giriş yapılsın mı?\n\nVarolan profiliniz silinmeyecek. Profilleriniz arasında geçiş yapmak için “Profili Değiştir” öğesini kullanın.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s sizi bu gruba katılmaya çağırdı.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s, sizi bu kanala katılmaya çağırdı.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s yanıtladı; gruba eklenmesi bekleniyor…</string>
     <string name="secure_join_wait">Bağlantı kuruluyor, lütfen bekleyin…</string>
@@ -1130,6 +1141,7 @@
     <string name="name_desktop">Ad</string>
     <string name="select_group_image_desktop">Grup Görseli Seç</string>
     <string name="export_backup_desktop">Yedeği Dışa Aktar</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Autocrypt ayarlaması aktarıldı.</string>
     <string name="forget_login_confirmation_desktop">Bu profil silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>
     <string name="message_detail_sent_desktop">gönderilme</string>
@@ -1196,7 +1208,6 @@
     <string name="add_to_widget">Widget\'a Ekle</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat, fotoğraflar ve videolar çekmek ve göndermek için ve QR kodlarını taramak için kameranızı kullanır.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat, yazabileceğiniz adreslerin bir listesini göstermek için kişilerinizi kullanır. Delta Chat\'in sunucusu yoktur; kişileriniz herhangi bir yere gönderilmez.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Konum paylaşımını etkinleştirdiğiniz zaman aralığında konumunuzu paylaşmak için Delta Chat\'e izin gerekir.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Konum paylaşımını etkinleştirdiğiniz zaman aralığında konumunuzu paylaşmak için Delta Chat\'e izin gerekir.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat, sesli iletiler ve sesli videolar kaydetmek ve göndermek için mikrofonunuzu kullanır.</string>

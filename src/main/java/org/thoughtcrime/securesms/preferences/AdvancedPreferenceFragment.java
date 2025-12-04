@@ -34,7 +34,7 @@ import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.RegistrationActivity;
+import org.thoughtcrime.securesms.EditTransportActivity;
 import org.thoughtcrime.securesms.StatsSending;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -66,7 +66,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   CheckBoxPreference mvboxMoveCheckbox;
   CheckBoxPreference onlyFetchMvboxCheckbox;
   CheckBoxPreference webxdcRealtimeCheckbox;
-  CheckBoxPreference showSystemContacts;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -141,15 +140,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       });
     }
 
-    showSystemContacts = (CheckBoxPreference) this.findPreference("pref_show_system_contacts");
-    if (showSystemContacts != null) {
-      showSystemContacts.setOnPreferenceChangeListener((preference, newValue) -> {
-        boolean enabled = (Boolean) newValue;
-        dcContext.setConfigInt("ui.android.show_system_contacts", enabled? 1 : 0);
-        return true;
-      });
-    }
-
     Preference screenSecurity = this.findPreference(Prefs.SCREEN_SECURITY_PREF);
     if (screenSecurity != null) {
       screenSecurity.setOnPreferenceChangeListener(new ScreenShotSecurityListener());
@@ -194,14 +184,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
             .setPositiveButton(R.string.ok, null)
             .show();
         }
-        return true;
-      });
-    }
-
-    Preference developerModeEnabled = this.findPreference("pref_developer_mode_enabled");
-    if (developerModeEnabled != null) {
-      developerModeEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
-        WebView.setWebContentsDebuggingEnabled((Boolean) newValue);
         return true;
       });
     }
@@ -258,10 +240,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     }
 
     if (dcContext.isChatmail()) {
-      showEmails.setVisible(false);
-      showSystemContacts.setVisible(false);
-      mvboxMoveCheckbox.setVisible(false);
-      onlyFetchMvboxCheckbox.setVisible(false);
+      findPreference("pref_category_legacy").setVisible(false);
     }
   }
 
@@ -284,7 +263,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
     onlyFetchMvboxCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_ONLY_FETCH_MVBOX));
     webxdcRealtimeCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_WEBXDC_REALTIME_ENABLED));
-    showSystemContacts.setChecked(0!=dcContext.getConfigInt("ui.android.show_system_contacts"));
   }
 
   @Override
@@ -369,7 +347,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   }
 
   private void openRegistrationActivity() {
-    Intent intent = new Intent(requireActivity(), RegistrationActivity.class);
+    Intent intent = new Intent(requireActivity(), EditTransportActivity.class);
     startActivity(intent);
   }
 

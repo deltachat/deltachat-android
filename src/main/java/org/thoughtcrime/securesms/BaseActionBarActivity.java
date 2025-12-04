@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.lang.reflect.Field;
 
@@ -33,9 +35,24 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     onPreCreate();
-    EdgeToEdge.enable(this);  // docs says to use: WindowCompat.enableEdgeToEdge(getWindow()); but it is not available
     super.onCreate(savedInstanceState);
-    WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView()).setAppearanceLightStatusBars(false); // force white text in status bar
+
+    // Only enable Edge-to-Edge on API 30+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+      // docs says to use: WindowCompat.enableEdgeToEdge(getWindow());
+      // but it actually makes things worse, the next takes care of setting the 3-buttons navigation bar background
+      EdgeToEdge.enable(this);
+
+      // force white text in status bar so it visible over background color
+      WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView()).setAppearanceLightStatusBars(false);
+    }
+  }
+
+  @Override
+  protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+    super.onPostCreate(savedInstanceState);
+    // Apply adjustments to the toolbar for edge-to-edge display
+    ViewUtil.adjustToolbarForE2E(this);
   }
 
   @Override

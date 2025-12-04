@@ -15,14 +15,20 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.webkit.ProxyConfig;
 import androidx.webkit.ProxyController;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
 
+import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
+import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
+
+import java.net.IDN;
 
 public class WebViewActivity extends PassphraseRequiredActionBarActivity
                                implements SearchView.OnQueryTextListener,
@@ -31,6 +37,11 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   private static final String TAG = WebViewActivity.class.getSimpleName();
 
   protected WebView webView;
+
+  /** Return true the window content should display fullscreen/edge-to-edge ex. in the integrated maps app */
+  protected boolean immersiveMode() { return false; }
+
+  protected boolean shouldAskToOpenLink() { return false; }
 
   protected void toggleFakeProxy(boolean enable) {
     if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
@@ -55,12 +66,20 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {
       actionBar.setDisplayHomeAsUpEnabled(true);
-      actionBar.setElevation(0); // TODO: use custom toolbar instead
     }
 
     webView = findViewById(R.id.webview);
+
+    if(immersiveMode()) {
+      // set a shadow in the status bar to make it more readable
+      findViewById(R.id.status_bar_background).setBackgroundResource(R.drawable.search_toolbar_shadow);
+    } else {
+      // add padding to avoid content hidden behind system bars
+      ViewUtil.applyWindowInsets(findViewById(R.id.content_container));
+    }
+
     webView.setWebViewClient(new WebViewClient() {
-      // IMPORTANT: this is will likely not be called inside iframes.
+      // IMPORTANT: this is will likely not be called inside iframes unless target=_blank is used in the anchor/link tag.
       // `shouldOverrideUrlLoading()` is called when the user clicks a URL,
       // returning `true` causes the WebView to abort loading the URL,
       // returning `false` causes the WebView to continue loading the URL as usual.
@@ -77,15 +96,16 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
           switch (schema) {
             case "http":
             case "https":
+            case "gemini":
+            case "tel":
+            case "sms":
             case "mailto":
             case "openpgp4fpr":
+            case "geo":
               return openOnlineUrl(url);
           }
         }
-        // by returning `true`, we also abort loading other URLs in our WebView;
-        // eg. that might be weird or internal protocols.
-        // if we come over really useful things, we should allow that explicitly.
-        return true;
+        return true; // returning `true` aborts loading
       }
 
       @Override
@@ -277,7 +297,28 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   // the default behavior (close the activity) is just fine eg. for Webxdc, Connectivity, HTML-mails
 
   protected boolean openOnlineUrl(String url) {
-    IntentUtils.showInBrowser(this, url);
+    // invite-links should be handled directly
+    String schema = url.split(":")[0].toLowerCase();
+    if (schema.equals("openpgp4fpr") || url.startsWith("https://" + Util.INVITE_DOMAIN + "/")) {
+      new QrCodeHandler(this).handleQrData(url);
+      return true; // abort internal loading
+    }
+
+    if (shouldAskToOpenLink()) {
+      new AlertDialog.Builder(this)
+        .setTitle(R.string.open_url_confirmation)
+        .setMessage(IDN.toASCII(url))
+        .setNeutralButton(R.string.cancel, null)
+        .setPositiveButton(R.string.open, (d, w) -> IntentUtils.showInBrowser(this, url))
+        .setNegativeButton(R.string.global_menu_edit_copy_desktop, (d, w) -> {
+          Util.writeTextToClipboard(this, url);
+          Toast.makeText(this, R.string.copied_to_clipboard, Toast.LENGTH_SHORT).show();
+        })
+        .show();
+    } else {
+      IntentUtils.showInBrowser(this, url);
+    }
+
     // returning `true` causes the WebView to abort loading
     return true;
   }

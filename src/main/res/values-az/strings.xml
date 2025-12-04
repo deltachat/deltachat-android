@@ -179,6 +179,7 @@
     <string name="ask_remove_members">%1$s qrupdan silmək? </string>
     <!-- contact list -->
     <string name="contacts_title">Kontaktlar</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Ad ya e-poçt daxil et</string>
     <string name="contacts_type_email_above">E-poçt ünvanını yazın</string>
 
@@ -246,10 +247,6 @@
     <string name="login_header">Serverinə daxil ol</string>
     <!-- deprecated -->
     <string name="login_explain">Mövcud e-mail hesabı ilə daxil olun</string>
-    <!-- deprecated -->
-    <string name="login_subheader">Məlum elektron poçt provayderləri üçün əlavə parametrlər avtomatik olaraq quraşdırılır. Bəzən IMAP-ın web məkanında aktiv olması lazımdır. Yardım üçün e-poçt provayderinizə və ya dostlarınıza müraciət edin.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Delta Chat serverləri yoxdur, məlumatlarınız cihazınızda qalır!</string>
     <string name="login_inbox">Gələn</string>
     <string name="login_imap_login">IMAP logini</string>
     <string name="login_imap_server">IMAP server</string>
@@ -261,12 +258,6 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP təhlükəsizliyi</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Yetkiləndirmə metodu</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Sadələşdirilmiş tənzimləmə ilə davam edirsiniz?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Daxil edilmiş e-poçt ünvanı sadələşdirilmiş bir quraşdırma (OAuth2) dəstəkləyir. \n\nNövbəti addımda Delta Chat e-poçt tətbiqinizlə söhbət etməyə icazə verin. \n\n Delta Chat serverləri, cihazınızda qalır!</string>
     <string name="login_certificate_checks">Sertifikat yoxlanmaları</string>
     <string name="login_error_mail">Xahiş edirik düzgün bir e-poçt ünvanı daxil et</string>
     <string name="login_error_server">Xahiş edirik, düzgün bir server / IP ünvanı daxil et</string>
@@ -334,18 +325,19 @@
     <string name="pref_backup_export_explain">Ehtiyat nüsxəsi bu və ya digər bir cihazda yeni bir quraşdırma qurmağa kömək edir. \n\nNüsxədə bütün mesajlar, kontaktlar, çatlar və son ucdan uca avtoşifrələmə quraşdırmaınız olacaq. Nüsxə faylını təhlükəsiz yerdə saxlayın və ya mümkün qədər tez silin.</string>
     <string name="pref_backup_export_start_button">Nüsxəyə başla</string>
     <string name="pref_backup_written_to_x">Ehtiyat nüsxə %1$s- ə uğurla yazılmışdır</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Gizli açar ixracı</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain"> \"%1$s\" - ə gizli açar ixracı?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Ehtiyat nüsxə %1$s- ə uğurla yazılmışdır</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fon</string>
     <string name="pref_background_btn_default">Hal hazırdaki şəkili istifadə edin</string>
     <string name="pref_background_btn_gallery">Fotoalbomdan götürün</string>
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçimi ləğv etsəniz, serverinizin və digər müştərilərinizin müvafiq olaraq konfiqurasiya olunduğundan əmin olun. \n\nAyrıca şeylər işləməyəcəkdir.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Göndərilmişlərin qovluğunu izləyin</string>
-    <string name="pref_send_copy_to_self">Özünə kopya göndər</string>
     <string name="pref_auto_folder_moves">DeltaChat qovluğuna avtomatik keçid</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Çat söhbətləri Daxil olanlar qovluğunun yığılmaması üçün taşınır</string>
     <string name="pref_show_emails">Klassik e-poçtları göstər</string>
     <string name="pref_show_emails_no">Xeyir, ancaq çatlar</string>
@@ -355,11 +347,15 @@
     <string name="pref_background_default_color">Özünəməxsus rəng</string>
     <string name="pref_background_custom_image">Şəkil</string>
     <string name="pref_background_custom_color">Rəng</string>
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Autocrypt mesaj ayarı göndər</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Autocrypt Setup Message digər Autocrypt-uyğun proqramlarla təhlükəsiz şəkildə bölüşür. \n\nSizin buradakı quraşdırma koduyla şifrələnir və digər qurğuda yazılmalıdır.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Autocrypt Setup Message-ı göndər</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Sizin açarınız sizə göndərildi. Başqa bir cihaza keçin və mesajın ayarını açın. Siz quraşdırma kodu daxil etməlisiniz. Orada aşağıdakı rəqəmləri daxil edin. Bitirən zaman, başqa bir cihazda Autocrypt istifadə üçün hazır olacaq.</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Ucdan-uca şifrələmə üstünlük təşkil edir</string>
 
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -367,18 +363,18 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Qrupun adı \"%1$s\" - dən \"%2$s\" - yə deyişildi ilə %3$s.</string>
     <string name="group_image_changed_by_you">Qrup şəkili dəyişildi məndən. </string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Qrup şəkili dəyişildi ilə %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Üzv %1$s əlavə olundu məndən. </string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Üzv %1$s əlavə olundu ilə %2$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">%1$s üzv silindi məndən. </string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%1$s üzv silindi ilə %2$s.</string>
     <string name="group_image_deleted_by_you">Qrupun şəkili silindi məndən. </string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Qrupun şəkili silindi ilə %1$s.</string>
     <string name="qrscan_title">Qr kodu skan edin</string>
     <string name="qrscan_hint">QR kodu kamera ilə izləyin</string>
@@ -396,7 +392,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint"> \"%1$s\" qrupuna qoşulmaq üçün bunu skan edin. </string>
     <string name="qrshow_join_contact_title">Dəvət QR-kodu</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">%1$silə əlaqə qurmaq üçün bunu skan edin</string>
     <string name="qrshow_join_contact_no_connection_toast">İnternet bağlantısı yoxdur, QR kodunu qura bilmir.</string>
     <string name="contact_verified">%1$s yoxlanıldı.</string>
@@ -443,6 +439,7 @@
     <string name="name_desktop">Ad</string>
     <string name="select_group_image_desktop">Qrup şəklini seç</string>
     <string name="export_backup_desktop">Ehtiyat nüsxəsinin ixracı</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Autocrypt ayarı müvəffəqiyyətlə köçürüldü!</string>
     <string name="forget_login_confirmation_desktop">Bu giriş silmək istəyirsiniz? Hər şey, sizin \"sondan sona\" quraşdırma, kontaktlar, söhbətlər, mesajlar və daşıyıcıları daxil olmaqla silinəcəkdir. Bu hərəkət son və ləğv edilə bilməz.</string>
     <string name="message_detail_sent_desktop">Göndər</string>

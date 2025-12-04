@@ -71,7 +71,9 @@
     <string name="always_load_remote_images">Увек учитај слике са сервера</string>
     <string name="once">Само једном</string>
     <string name="show_warning">Прикажи упозорење</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="show_password">Прикажи лозинку</string>
+    <!-- deprecated, UI must not offer an option to show the password -->
     <string name="hide_password">Сакри лозинку</string>
     <string name="not_now">Не сада</string>
     <string name="never">Никад</string>
@@ -272,6 +274,7 @@
     <string name="menu_save_log">Сними дневник</string>
     <string name="menu_more_options">Више опција</string>
     <string name="menu_learn_spelling">Научи правопис</string>
+    <!-- deprecated -->
     <string name="menu_chat_audit_log">Дневник ревизије ћаскања</string>
     <string name="jump_to_message">Иди на поруку</string>
     <string name="copy_json">Копирај JSON</string>
@@ -345,6 +348,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Контакти</string>
+    <!-- deprecated -->
     <string name="contacts_enter_name_or_email">Унесите име или е-адресу</string>
     <string name="contacts_type_email_above">Унесите е-адресу изнад</string>
 
@@ -410,9 +414,11 @@
     <string name="show_location_traces">Прикажи трагове</string>
     <string name="add_poi">Пошаљи интересантно место</string>
 
-    <!-- chat audit log -->
+    <!-- deprecated -->
     <string name="chat_audit_log_empty_message">Поруке оперативног система за ово ћаскање ће се појавити овде.</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_title">Дневник ревизије ћаскања за %1$s</string>
+    <!-- deprecated -->
     <string name="chat_audit_log_description">Приказује само информативне и поруке оперативног система; корисно за проналажење последњих радњи ћаскања без листања кроз много порука.</string>
 
     <!-- punycode warning / labeled links -->
@@ -489,10 +495,6 @@
     <string name="login_header">Пријавите се у ваш налог е-поште</string>
     <!-- deprecated -->
     <string name="login_explain">Пријавите се преко постојећег налога е-поште</string>
-    <!-- deprecated -->
-    <string name="login_subheader">За познате пружаоце услуге е-поште, додатне поставке се одређују аутоматски. Каткад, морате омогућити ИМАП у поставкама на веб сучељу ваше е-поште.\n\nПосаветујте се са пружаоцем услуге е-поште или пријатељима ако наиђете на проблеме.</string>
-    <!-- deprecated -->
-    <string name="login_no_servers_hint">Не постоји сервер Делта ћаскања. Апликација користи само сервер ваше е-поште.</string>
     <string name="login_inbox">Пријем</string>
     <string name="login_imap_login">Корисничко име за ИМАП</string>
     <string name="login_imap_server">ИМАП сервер</string>
@@ -504,12 +506,6 @@
     <string name="login_smtp_server">СМТП сервер</string>
     <string name="login_smtp_port">СМТП порт</string>
     <string name="login_smtp_security">СМТП безбедност</string>
-    <!-- deprecated -->
-    <string name="login_auth_method">Начин овлашћења</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_title">Наставите са поједностављеним поставкама?</string>
-    <!-- deprecated -->
-    <string name="login_info_oauth2_text">Унета е-адреса подржава поједностављено подешавање (OAuth 2.0).\n\nУ следећем кораку, дозволите Delta Chat-у да  да дејствује као ваша апликација за ћаскање преко е-поште.\n\nDelta Chat нема сервере и ваши подаци остају на вашем уређају.</string>
     <string name="login_certificate_checks">Провери сертификате</string>
     <string name="login_error_mail">Унесите важећу е-адресу</string>
     <string name="login_error_server">Унесите важеће име сервера или ИП адресу</string>
@@ -601,21 +597,22 @@
     <string name="pref_backup_export_explain">Резервна копија вам помаже да подесите нову инсталацију на овом или другом уређају.\n\nРезервна копија ће садржати све поруке, контакте и ћаскања и ваше комплетно подешавање аутоматског шифровања. Чувајте резервну копију на безбедном месту или је избришите што је пре могуће.</string>
     <string name="pref_backup_export_start_button">Покрени складиштење резервне копије</string>
     <string name="pref_backup_written_to_x">Записивање резервне копије је успешно до „%1$s“.</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_secret_keys">Извези тајне кључеве</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_export_explain">Извези тајне кључеве на „%1$s“?</string>
+    <!-- deprecated -->
     <string name="pref_managekeys_secret_keys_exported_to_x">Записивање тајних кључева је успешно до „%1$s“.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Позадина</string>
     <string name="pref_background_btn_default">Користи дату слику</string>
     <string name="pref_background_btn_gallery">Изабери из галерије</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ако промените ову опцију, морате проверити да су ваш сервер и ваши други клијенти конфигурисани у складу са тим.\n\nУ супротном апликација можда уопште неће функционисати.</string>
-    <!-- deprecated -->
-    <string name="pref_watch_sent_folder">Посматрај директоријум са пошиљкама</string>
-    <string name="pref_send_copy_to_self">Пошаљи копију поруке себи</string>
-    <string name="pref_send_copy_to_self_explain">Обавезно када користите овај налог на више уређаја.</string>
     <string name="pref_auto_folder_moves">Аутоматски премести у DeltaChat директоријум</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Ћаскања се померају да би се избегло затрпавање пријемног сандучета</string>
     <string name="pref_only_fetch_mvbox_title">Примај поруке само из DeltaChat директоријума</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_explain">Игнориши остале директоријуме. Захтева да ваш сервер премести поруке у DeltaChat директоријум.</string>
     <string name="pref_show_emails">Прикажи обичне поруке е-поште</string>
     <string name="pref_show_emails_no">Не, само ћаскања</string>
@@ -623,7 +620,9 @@
     <string name="pref_show_emails_all">Сви</string>
     <string name="pref_experimental_features">Експерименталне могућности</string>
     <string name="pref_on_demand_location_streaming">Проток положаја на захтев</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode">Режим програмера</string>
+    <!-- deprecated -->
     <string name="pref_developer_mode_explain">Активира опције за отклањање грешака и може учинити апликацију мање стабилном. Само за програмере.</string>
     <string name="pref_background_default">Подразумевана позадина</string>
     <string name="pref_background_default_color">Подразумевана боја</string>
@@ -678,16 +677,18 @@
     <string name="after_5_weeks">За 5 недеља</string>
     <string name="autodel_after_1_year">За 1 годину</string>
 
-    <!-- autocrypt -->
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_title">Пошаљите поруку поставки за аутошифровање</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_before">Порука о подешавању аутоматског шифровања безбедно дели ваше комплетно подешавање са другим апликацијама које су компатибилне са аутоматским шифровањем.\n\nПодешавање ће бити шифровано кодом за подешавање приказаним овде и мора се унети на другом уређају.</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_button">Пошаљите поруку поставки за аутошифровање</string>
+    <!-- deprecated -->
     <string name="autocrypt_send_asm_explain_after">Ваше подешавање вам је послато. Пређите на други уређај и отворите поруку за подешавање. На другом уређају од се вас очекује да унесете код за подешавање. Унесите следеће цифре:</string>
+    <!-- deprecated -->
     <string name="autocrypt_prefer_e2ee">Преферирај с-краја-на-крај шифровање</string>
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_unknown_sender_for_chat">Непознати пошиљалац за ово ћаскање. Погледајте „информације“ за више детаља.</string>
     <string name="systemmsg_subject_for_new_contact">Поруке од %1$s</string>
     <string name="systemmsg_failed_sending_to">Слање поруке %1$s је било неуспешно.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
@@ -695,59 +696,61 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Назив групе је измењен из „%1$s“ у „%2$s“ од стране %3$s.</string>
     <string name="group_image_changed_by_you">Слика групе је промењена од мене.</string>
-    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Слика групе је промењена од стране %1$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Члан %1$s је додат од мене.</string>
-    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Члан %1$s је додат од стране %2$s.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Члан %1$s је уклоњен од мене.</string>
-    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Члан %1$s је уклоњен од стране %2$s.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Члан %1$s је уклоњен.</string>
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s је напустио групу.</string>
     <string name="group_image_deleted_by_you">Ви сте обрисали слику групе.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="group_image_deleted_by_other">Слика групе је обрисана од стране %1$s.</string>
     <string name="location_enabled_by_you">Ви сте омогућили проток положаја.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">Проток положаја омогућен од %1$s.</string>
     <string name="ephemeral_timer_disabled_by_you">Онемогућили сте хронометар за нестајуће поруке.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s је онемогућио нестајуће поруке.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s секунде</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s секунде.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_you">Ви сте подесили хронометар за нестајуће поруке на 1 минут.</string>
     <!-- deprecated, usage needs to be removed in core -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s је подесио хронометар за нестајуће поруке на 1 минут.</string>
     <string name="ephemeral_timer_1_hour_by_you">Ви сте подесили хронометар за нестајуће поруке на 1 сат.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$sје подесио хронометар за нестајуће поруке на 1 сат.</string>
     <string name="ephemeral_timer_1_day_by_you">Ви сте подесили хронометар за нестајуће поруке на 1 дан.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_day_by_other">%1$s је подесио хронометар за нестајуће поруке на 1 дан.</string>
     <string name="ephemeral_timer_1_week_by_you">Ви сте подесили хронометар за нестајуће поруке на 1 недељу.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s је подесио хронометар за нестајуће поруке на 1 недељу.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s минутa.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s минута.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s сати.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s сата.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s дана.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s дана.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s недеља.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s недеље.</string>
     <string name="devicemsg_self_deleted">Обрисали сте ћаскање „Сачуване поруке“.\n\nℹ️ Ако желите да користите „Сачуване поруке“ могућност поново, направите ново ћаскање са самим собом.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
@@ -785,7 +788,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Скенирај да се придружиш групи „%1$s“</string>
     <string name="qrshow_join_contact_title">Бар-кôд за потврду</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Очитај да ћаскате са %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Нисте повезани на интернет, није могуће подесити бар-кôд.</string>
     <string name="qraccount_ask_create_and_login">Направите нову е-адресу на „%1$s“ и приступите јој тамо?</string>
@@ -795,7 +798,7 @@
     <string name="qrlogin_ask_login">Пријави се у „%1$s“?</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login_another">Пријави се у „%1$s“? Ваш постојећи налог неће бити избрисан. Користите „Промени налог“ опцију да прелазите са једног на други налог.</string>
-    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$sвас је позвао да се придружите групи.\n\nЧекамо да уређај од %2$sодговори...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s је одговорио и чека да буде додат у групу...</string>
@@ -867,6 +870,7 @@
     <string name="name_desktop">Име</string>
     <string name="select_group_image_desktop">Изабери слику групе</string>
     <string name="export_backup_desktop">Извези резервну копију</string>
+    <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Поставке за аутошифровање су послате.</string>
     <string name="forget_login_confirmation_desktop">Да ли желите да избришете овај налог? Све ће бити избрисано, укључујући и ваше подешавање с-краја-на-крај шифровања, контакти, ћаскања, поруке и медији. Ова радња се не може опозвати.</string>
     <string name="message_detail_sent_desktop">послато</string>
@@ -921,7 +925,6 @@
     <string name="last_check_at">Проверено у %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat користи вашу камеру за снимање и слање фотографија и видео записа и за очитавање бар-кôда.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat користи ваше контакте да прикаже листу е-адреса на које можете слати поруке. Delta Chat нема сервер и ваши контакти се не шаљу нигде.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat захтева дозволу за дељење вашег положаја током периода у коме сте омогућили дељење положаја.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat захтева дозволу за дељење вашег положаја током периода у коме сте омогућили дељење положаја.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat користи микрофон да снима и шаље звучне поруке и видео записе са звуком.</string>

@@ -108,6 +108,11 @@ public class ConversationListFragment extends BaseConversationListFragment
     emptyState   = ViewUtil.findById(view, R.id.empty_state);
     emptySearch  = ViewUtil.findById(view, R.id.empty_search);
 
+    // allow content to be drawn behind the navigation bar
+    list.setClipToPadding(false);
+    // add padding to avoid content hidden behind system bars
+    ViewUtil.applyWindowInsets(list, true, archive, true, true);
+
     if (archive) {
       fab.setVisibility(View.GONE);
       TextView emptyTitle = ViewUtil.findById(view, R.id.empty_title);
@@ -115,6 +120,8 @@ public class ConversationListFragment extends BaseConversationListFragment
     } else {
       fab.setVisibility(View.VISIBLE);
     }
+    // Apply insets to prevent fab from being covered by system bars
+    ViewUtil.applyWindowInsetsAsMargin(fab);
 
     list.setHasFixedSize(true);
     list.setLayoutManager(new LinearLayoutManager(getActivity()));

@@ -13,7 +13,6 @@
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
 
     <!-- dangerous permissions - we need to as the user with a PermissionsRequest -->
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
@@ -56,6 +55,7 @@
                  android:requestLegacyExternalStorage="true"
                  tools:targetApi="TIRAMISU"
                  android:hasFragileUserData="true"
+                 android:enableOnBackInvokedCallback="false"
         >
 
     <!-- android car support, see https://developer.android.com/training/auto/start/,
@@ -234,7 +234,7 @@
               android:theme="@style/TextSecure.LightNoActionBar"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
-    <activity android:name=".RegistrationActivity"
+    <activity android:name=".EditTransportActivity"
               android:launchMode="singleTask"
               android:windowSoftInputMode="stateUnchanged"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
