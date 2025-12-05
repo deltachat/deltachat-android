@@ -451,8 +451,8 @@
     <string name="ask_export_attachment">Экспорт вложений позволит любому приложению на вашем устройстве получить к ним доступ.\n\nПродолжить?</string>
     <string name="ask_block_contact">Заблокировать этот контакт?\n\nЗаблокированные контакты не будут показаны в личных сообщениях или группах, созданных ими.\n\nВ других группах сообщения заблокированных контактов будут по-прежнему доступны.</string>
     <string name="ask_unblock_contact">Разблокировать этот контакт?</string>
-    <string name="ask_delete_contacts">Удалить контакты?\n\nКонтакты из действующих чатов или из системной адресной книги не могут быть удалены навсегда.</string>
-    <string name="ask_delete_contact">Удалить контакт %1$s?\n\nКонтакты из действующих чатов или из системной адресной книги не могут быть удалены навсегда.</string>
+    <string name="ask_delete_contacts">Удалить контакты?\n\nКонтакты из действующих чатов не могут быть удалены навсегда.</string>
+    <string name="ask_delete_contact">Удалить контакт %1$s?\n\nКонтакты из действующих чатов не могут быть удалены навсегда.</string>
     <string name="ask_start_chat_with">Создать чат с %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Удалить %1$s из группы?</string>
@@ -863,6 +863,7 @@
     <string name="pref_show_emails_accepted_contacts">Для принятых контактов</string>
     <string name="pref_show_emails_all">Все</string>
     <string name="pref_experimental_features">Экспериментальные функции</string>
+    <string name="pref_experimental_features_explain">Эти функции могут быть нестабильными и могут быть изменены или удалены</string>
     <string name="pref_on_demand_location_streaming">Трансляция местоположения по запросу</string>
     <!-- deprecated -->
     <string name="pref_developer_mode">Режим разработчика</string>
@@ -892,6 +893,9 @@
     <string name="disable_imap_idle">Отключить IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Не используйте расширение IMAP IDLE даже если сервер поддерживает его. Включение этой опции замедлит получение сообщений, включайте только для тестирования.</string>
     <string name="send_stats_to_devs">Отправить статистику разработчикам Delta Chat</string>
+    <string name="stats_msg_body">Вложение содержит анонимную статистику использования, которая поможет нам улучшить Delta Chat. Спасибо!</string>
+
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Результаты поиска</string>
     <string name="emoji_not_found">Эмодзи не найдены</string>
@@ -1083,6 +1087,8 @@
     <string name="qrlogin_ask_login_another">Авторизоваться в \"%1$s\"?\n\nВаш существующий профиль не будет удалён. Используйте меню \"Сменить профиль\", чтобы переключаться между профилями.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s приглашает вас в группу.\n\nОжидаем ответ от %2$s…</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s приглашает вас присоединиться к этому каналу.\n\nОжидаем ответа устройства %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s ответил(а), ожидаем добавления в группу…</string>
     <string name="secure_join_wait">Устанавливается соединение, пожалуйста, подождите…</string>

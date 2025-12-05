@@ -8,7 +8,7 @@
       <li><a href="#чи-підтримує-delta-chat-вкладення-у-вигляді-фото-відео-тощо">Чи підтримує Delta Chat вкладення у вигляді фото, відео тощо?</a></li>
       <li><a href="#multiple-accounts">Що таке профілі? Як я можу перемикатися між ними?</a></li>
       <li><a href="#хто-бачить-моє-зображення-профілю">Хто бачить моє зображення профілю?</a></li>
-      <li><a href="#signature">Can I set a Bio/Status with Delta Chat?</a></li>
+      <li><a href="#signature">Чи можу я встановити біографію/статус у Delta Chat?</a></li>
       <li><a href="#що-значить-закріплення-приглушення-архівування">Що значить Закріплення, Приглушення, Архівування?</a></li>
       <li><a href="#save">Як працюють “Збережені повідомлення”?</a></li>
       <li><a href="#що-означає-зелена-точка">Що означає зелена точка?</a></li>
@@ -16,16 +16,15 @@
       <li><a href="#edit">Виправлення помилок та видалення повідомлень після надсилання</a></li>
       <li><a href="#ephemeralmsgs">Як працюють повідомлення, що зникають?</a></li>
       <li><a href="#delold">Що станеться, якщо я ввімкну «Видаляти старі повідомлення з пристрою»?</a></li>
-      <li><a href="#remove-account">How can I delete my chat profile?</a></li>
     </ul>
   </li>
-  <li><a href="#groups">Groups</a>
+  <li><a href="#groups">Групи</a>
     <ul>
       <li><a href="#створення-групи">Створення групи</a></li>
-      <li><a href="#addmembers">Add and remove members</a></li>
+      <li><a href="#addmembers">Додавання та видалення учасників</a></li>
       <li><a href="#я-випадково-себе-видалив">Я випадково себе видалив</a></li>
       <li><a href="#я-більше-не-хочу-отримувати-повідомлення-групи">Я більше не хочу отримувати повідомлення групи.</a></li>
-      <li><a href="#cloning-a-group">Cloning a group</a></li>
+      <li><a href="#клонування-групи">Клонування групи</a></li>
     </ul>
   </li>
   <li><a href="#webxdc">In-chat apps</a>
@@ -54,7 +53,7 @@
   </li>
   <li><a href="#advanced">Advanced</a>
     <ul>
-      <li><a href="#experimental-features">Experimental Features</a></li>
+      <li><a href="#експериментальні-функції">Експериментальні функції</a></li>
       <li><a href="#statssending">What is “Send statistics to Delta Chat’s developers”?</a></li>
       <li><a href="#can-i-use-a-classic-email-address-with-delta-chat">Can I use a classic email address with Delta Chat?</a></li>
       <li><a href="#classic-email">How can I configure a chat profile with a classic email address as transport?</a></li>
@@ -65,8 +64,8 @@
   <li><a href="#e2ee">Шифрування та безпека</a>
     <ul>
       <li><a href="#які-стандарти-використовуються-для-наскрізного-шифрування">Які стандарти використовуються для наскрізного шифрування?</a></li>
-      <li><a href="#whene2e">How can I know if messages are end-to-end encrypted?</a></li>
-      <li><a href="#can-i-still-receive-or-send-messages-without-end-to-end-encryption">Can I still receive or send messages without end-to-end encryption?</a></li>
+      <li><a href="#whene2e">Як дізнатися, чи повідомлення зашифровано наскрізним шифруванням?</a></li>
+      <li><a href="#чи-можу-я-отримувати-та-надсилати-пошту-без-наскрізного-шифрування">Чи можу я отримувати та надсилати пошту без наскрізного шифрування?</a></li>
       <li><a href="#e2eeguarantee">Що означає зелена галочка в профілі контакту?</a></li>
       <li><a href="#чи-зашифровані-наскрізно-вкладення-зображення-файли-аудіо-тощо">Чи зашифровані наскрізно вкладення (зображення, файли, аудіо тощо)?</a></li>
       <li><a href="#openpgp-secure">Чи безпечний OpenPGP?</a></li>
@@ -112,20 +111,17 @@
  які пропонують миттєву доставку повідомлень та push-сповіщення для пристроїв iOS та Android.</p>
   </li>
   <li>
-    <p>Pervasive <a href="#multiple-accounts">multi-profile</a> and
-<a href="#multiclient">multi-device</a> support on all platforms
-and between different <a href="https://chatmail.at/clients">chatmail apps</a>.</p>
+    <p>Повсюдна підтримка багатьох <a href="#multiple-accounts">профілів</a> та   <a href="#multiclient">пристроїв</a> на всіх платформах та між різними <a href="https://chatmail.at/clients">поштовими програмами</a>.</p>
   </li>
   <li>
-    <p>Interactive <a href="#webxdc">in-chat apps</a> for gaming and collaboration</p>
+    <p>Інтерактивні <a href="https://webxdc.org/">веб-застосунки у чатах</a> для ігор та співпраці</p>
   </li>
   <li>
-    <p><a href="#security-audits">Audited end-to-end encryption</a>
-safe against network and server attacks.</p>
+    <p><a href="#security-audits">Аудитоване наскрізне шифрування</a>
+ захищене від мережевих та серверних атак.</p>
   </li>
   <li>
-    <p>Free and Open Source software, both app and server side,
-built on <a href="https://github.com/chatmail/core/blob/main/standards.md#standards-used-in-delta-chat">Internet Standards</a>.</p>
+    <p>Вільне програмне забезпечення з відкритим вихідним кодом, як застосунок, так серверна частина, побудоване на основі <a href="https://github.com/chatmail/core/blob/main/standards.md#standards-used-in-delta-chat">Інтернет-стандартів</a>.</p>
   </li>
 </ul>
     
@@ -137,8 +133,7 @@ built on <a href="https://github.com/chatmail/core/blob/main/standards.md#standa
         
       </h3>
 
-<p>First, note that Delta Chat is a private messenger.
-There is no public discovery, <em>you</em> decide about your contacts.</p>
+<p>По-перше, зверніть увагу, що Delta Chat - це приватний месенджер. Тут немає публічного розкриття, <em>ви</em> самі вирішуєте, з ким спілкуватися.</p>
 
 <ul>
   <li>
@@ -156,7 +151,7 @@ through another private chat.</p>
   </li>
 </ul>
 
-<p>Now wait while connection gets established.</p>
+<p>Зараз зачекайте, поки встановлюється з’єднання.</p>
 
 <ul>
   <li>
@@ -169,9 +164,9 @@ the ability to chat is delayed until connectivity is restored.</p>
   </li>
 </ul>
 
-<p>Congratulations!
-You now will automatically use <a href="#e2ee">end-to-end encryption</a> with this contact.
-If you add each other to <a href="#groups">groups</a>, end-to-end encryption will be established among all members.</p>
+<p>Вітаємо! 
+Тепер Ви автоматично використовуватимете <a href="#e2ee">наскрізне шифрування</a> з цим контактом.
+Якщо ви додасте один одного у <a href="#groups">групи</a>, наскрізне шифрування буде встановлено між усіма учасниками.</p>
     
       <h3 id="why-is-a-chat-marked-as-request">
         
@@ -246,7 +241,7 @@ and uses the server only to relay messages.</p>
 
 <p>Пізніше ви можете натиснути на зображення вашого профілю у верхньому лівому кутку, щоб вибрати <strong>Додати профілі</strong> або <strong>Переключити профілі</strong>.</p>
 
-<p>You may want to use separate profiles for political, family or work related activities.</p>
+<p>Ви можете використовувати окремі профілі для політичної, сімейної або робочої діяльності.</p>
 
 <p>Ви також можете дізнатися <a href="#multiclient">як використовувати один і той самий профіль на декількох пристроях</a>.</p>
     
@@ -270,7 +265,7 @@ and uses the server only to relay messages.</p>
       <h3 id="signature">
         
         
-          Can I set a Bio/Status with Delta Chat? <a href="#signature" class="anchor"></a>
+          Чи можу я встановити біографію/статус у Delta Chat? <a href="#signature" class="anchor"></a>
         
         
       </h3>
@@ -447,14 +442,8 @@ the (anyway encrypted) messages may take longer to get deleted from their server
   <li>Щоб увімкнути його, перейдіть до «видалити старі повідомлення з пристрою» в налаштуваннях «Чатів та медіа» . Ви можете встановити часові рамки від «через годину» до «через рік»; 
 Таким чином, <em>усі</em> повідомлення будуть видалені з вашого пристрою, як тільки вони будуть старішими за це.</li>
 </ul>
-    
-      <h3 id="remove-account">
-        
-        
-          How can I delete my chat profile? <a href="#remove-account" class="anchor"></a>
-        
-        
-      </h3>
+
+<p>Як я можу видалити свій профіль у Delta Chat? {#remove-account}</p>
 
 <p>If you are using more than one chat profile,
 you can remove single ones in the top profile switcher menu (on Android and iOS),
@@ -470,12 +459,12 @@ or the respective page from your chosen <a href="https://chatmail.at/relays">3rd
       <h2 id="groups">
         
         
-          Groups <a href="#groups" class="anchor"></a>
+          Групи <a href="#groups" class="anchor"></a>
         
         
       </h2>
 
-<p>Groups let several people chat together privately with <strong>equal rights</strong>.</p>
+<p>Групи дозволяють кільком людям спілкуватися у приватному чаті з <strong>рівними правами</strong>.</p>
 
 <p>Anyone can
 change the group name or avatar,
@@ -483,7 +472,7 @@ change the group name or avatar,
 set <a href="#ephemeralmsgs">disappearing messages</a>,
 and <a href="#edit">delete their own messages</a> from all member’s devices.</p>
 
-<p>Because all members have the same rights, groups work best among <strong>trusted friends and family</strong>.</p>
+<p>Оскільки усі учасники мають однакові права, групи найкраще працюють серед <strong>довірених друзів та родичів</strong>.</p>
     
       <h3 id="створення-групи">
         
@@ -502,15 +491,15 @@ and <a href="#edit">delete their own messages</a> from all member’s devices.</
       <h3 id="addmembers">
         
         
-          Add and remove members <a href="#addmembers" class="anchor"></a>
+          Додавання та видалення учасників <a href="#addmembers" class="anchor"></a>
         
         
       </h3>
 
 <ul>
   <li>
-    <p>All group members have the <strong>same rights</strong>.
-For this reason, everyone can delete any member or add new ones.</p>
+    <p>Усі учасники групи мають <strong>однакові права</strong>.
+Тому кожен може видалити будь-якого учасника або додати нових.</p>
   </li>
   <li>
     <p>To <strong>add or delete members</strong>, tap the group name in the chat and select the member to add or remove.</p>
@@ -560,10 +549,10 @@ However, since groups are <a href="#groups">meant for trusted people</a>, avoid 
   </li>
 </ul>
     
-      <h3 id="cloning-a-group">
+      <h3 id="клонування-групи">
         
         
-          Cloning a group <a href="#cloning-a-group" class="anchor"></a>
+          Клонування групи <a href="#клонування-групи" class="anchor"></a>
         
         
       </h3>
@@ -581,8 +570,8 @@ or right-click the group in the chat list (Desktop).</p>
   </li>
 </ul>
 
-<p>The new group is <strong>fully independent</strong> from the original,
-which continues to work as before.</p>
+<p>Нова група є <strong>цілком незалежною</strong> від оригінальної,
+котра продовжує працювати як раніше.</p>
     
       <h2 id="webxdc">
         
@@ -655,8 +644,8 @@ trust the people you chat with, you can trust the in-chat app as well.</p>
 to get started.</p>
   </li>
   <li>
-    <p>All else you need to know is written in the
-<a href="https://webxdc.org/docs">Webxdc documentation</a>.</p>
+    <p>Все інше, що Вам потрібно знати, написано у
+<a href="https://webxdc.org/docs">документації Webxdc</a>.</p>
   </li>
   <li>
     <p>If you have question, you can ask others with experience
@@ -911,10 +900,10 @@ Welcome to the power of the interoperable chatmail relay network :)</p>
         
       </h2>
     
-      <h3 id="experimental-features">
+      <h3 id="експериментальні-функції">
         
         
-          Experimental Features <a href="#experimental-features" class="anchor"></a>
+          Експериментальні функції <a href="#експериментальні-функції" class="anchor"></a>
         
         
       </h3>
@@ -922,10 +911,10 @@ Welcome to the power of the interoperable chatmail relay network :)</p>
 <p>At <strong>Settings → Advanced → Experimental Features</strong>
 you can try out features we are working on.</p>
 
-<p>The features may be <strong>unstable</strong> and may be <strong>changed or removed</strong>.</p>
+<p>Ці функції можуть бути <strong>нестабільними</strong> та можуть бути <strong>змінені або видалені</strong>.</p>
 
-<p>You can find more information
-and give feedback in the <a href="https://support.delta.chat">Forum</a>.</p>
+<p>Ви можете знайти додаткову інформацію
+та залишити відгук на <a href="https://support.delta.chat">форумі</a>.</p>
     
       <h3 id="statssending">
         
@@ -942,8 +931,8 @@ to send anonymous usage statistics.</p>
 <p>You can turn it on and off at
 <strong>Settings → Advanced → Send statistics to Delta Chat’s developers</strong>.</p>
 
-<p>When you turn it on,
-weekly statistics will be automatically sent to a bot.</p>
+<p>Коли Ви увімкнете цю функцію,
+щотижнева статистика буде автоматично надсилатися боту.</p>
 
 <p>We are interested e.g. in statistics like:</p>
 
@@ -953,7 +942,7 @@ weekly statistics will be automatically sent to a bot.</p>
   <li>How many messages are unencrypted?</li>
 </ul>
 
-<p>We will <em>not</em> collect any personally identifiable information about you.</p>
+<p>Ми <em>не</em> будемо збирати жодних персональних даних, які б могли ідентифікувати Вас особисто.</p>
     
       <h3 id="can-i-use-a-classic-email-address-with-delta-chat">
         
@@ -1067,17 +1056,17 @@ that power <a href="https://chatmail.at/clients">chatmail clients</a> of which D
       <h3 id="whene2e">
         
         
-          How can I know if messages are end-to-end encrypted? <a href="#whene2e" class="anchor"></a>
+          Як дізнатися, чи повідомлення зашифровано наскрізним шифруванням? <a href="#whene2e" class="anchor"></a>
         
         
       </h3>
 
 <p>Всі повідомлення в Delta Chat за замовчуванням <strong>наскрізно зашифровані</strong>. Починаючи з версії 2 Delta Chat (липень 2025 року) на наскрізних зашифрованих повідомленнях більше немає замків або інших подібних маркерів.</p>
     
-      <h3 id="can-i-still-receive-or-send-messages-without-end-to-end-encryption">
+      <h3 id="чи-можу-я-отримувати-та-надсилати-пошту-без-наскрізного-шифрування">
         
         
-          Can I still receive or send messages without end-to-end encryption? <a href="#can-i-still-receive-or-send-messages-without-end-to-end-encryption" class="anchor"></a>
+          Чи можу я отримувати та надсилати пошту без наскрізного шифрування? <a href="#чи-можу-я-отримувати-та-надсилати-пошту-без-наскрізного-шифрування" class="anchor"></a>
         
         
       </h3>
@@ -1194,11 +1183,11 @@ even if the message was not end-to-end encrypted.</p>
 <p>Servers can therefore only see:</p>
 
 <ul>
-  <li>the sender and receiver addresses</li>
-  <li>and the message size.</li>
+  <li>адреси відправника та одержувача</li>
+  <li>та розмір повідомлення.</li>
 </ul>
 
-<p>By default, the addresses are randomly generated.</p>
+<p>За замовчуванням адреси генеруються випадковим чином.</p>
 
 <p>Усі інші метадані повідомлень, контактів і груп містяться в наскрізно зашифрованій частині повідомлень.</p>
     
@@ -1284,9 +1273,12 @@ but an implementation has not been agreed as a priority yet.</p>
 
 <p>Ні.</p>
 
-<p>Delta Chat генерує безпечні ключі OpenPGP відповідно до специфікації Autocrypt 1.1. Ви можете експортувати свій приватний ключ, але не можете імпортувати додаткові приватні ключі.</p>
-
-<p>Загалом, ми не рекомендуємо і не пропонуємо користувачам керувати ключами вручну. Ми хочемо гарантувати, що аудит безпеки може зосередитися на декількох перевірених криптографічних алгоритмах а не на всій широті можливих алгоритмів, дозволених у OpenPGP.</p>
+<p>Delta Chat generates secure OpenPGP keys according to the Autocrypt specification 1.1.
+We do not recommend or offer users to perform manual key management.
+We want to ensure that security audits can focus on a few proven cryptographic algorithms
+instead of the full breadth of possible algorithms allowed with OpenPGP.
+If you want to extract your OpenPGP key, there only is an expert method:
+you need to look it up in the “keypairs” SQLite table of a profile backup tar-file.</p>
     
       <h3 id="security-audits">
         
@@ -1345,7 +1337,7 @@ but an implementation has not been agreed as a priority yet.</p>
 <p>Some features require certain permissions,
 e.g. you need to grant camera permission if you want to <a href="#howtoe2ee">scan an invite QR code</a>.</p>
 
-<p>See <a href="https://delta.chat/en/gdpr#24-app-permissions">Privacy Policy</a> for a detailed overview.</p>
+<p>Дивіться <a href="https://delta.chat/en/gdpr#24-app-permissions">політику конфіденційності</a> для детального огляду.</p>
     
       <h3 id="де-мої-друзі-можуть-знайти-delta-chat">
         
