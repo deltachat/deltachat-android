@@ -152,11 +152,30 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
       return StorageUtil.getVideoUri();
     } else if (contentType.startsWith("audio/")) {
       return StorageUtil.getAudioUri();
-    } else if (contentType.startsWith("image/")) {
+    } else if (isMediaStoreImageType(contentType)) {
       return StorageUtil.getImageUri();
     } else {
       return StorageUtil.getDownloadUri();
     }
+  }
+
+  /**
+   * Checks if the content type is a standard image format supported by Android's MediaStore.
+   * Non-standard image formats (like XCF, PSD, etc.) should be saved to Downloads instead.
+   */
+  private boolean isMediaStoreImageType(@NonNull String contentType) {
+    if (!contentType.startsWith("image/")) {
+      return false;
+    }
+    return contentType.equals("image/jpeg") ||
+      contentType.equals("image/jpg") ||
+      contentType.equals("image/png") ||
+      contentType.equals("image/gif") ||
+      contentType.equals("image/webp") ||
+      contentType.equals("image/bmp") ||
+      contentType.equals("image/heic") ||
+      contentType.equals("image/heif") ||
+      contentType.equals("image/avif");
   }
 
   private @Nullable File ensureExternalPath(@Nullable File path) {
@@ -197,7 +216,7 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
       storage = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
     } else if (contentType.startsWith("audio/")) {
       storage = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
-    } else if (contentType.startsWith("image/")) {
+    } else if (isMediaStoreImageType(contentType)) {
       storage = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
     }
 
