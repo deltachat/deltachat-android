@@ -15,6 +15,7 @@
 * Tweak advanced section and wording of some advanced options
 * Fix: avoid crash in push notifications handling
 * Fix: clean up web storage of deleted in-chat apps
+* Fix: avoid crash when exporting some files with wrong image MIME type
 * Expose new "Multi-device mode" option instead of "Delete from server" for chatmail profiles
 * Opened in-chat apps got a 'About Apps' menu item
 * Avoid gray avatar on profile creation
