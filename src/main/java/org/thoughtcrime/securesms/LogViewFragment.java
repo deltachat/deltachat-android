@@ -274,10 +274,10 @@ public class LogViewFragment extends Fragment {
     builder.append("\n");
     try {
       builder.append(rpc.getStorageUsageReportString(accId));
-      builder.append(rpc.getInfo(accId));
     } catch (RpcException e) {
       builder.append(e);
     }
+    builder.append(DcHelper.getContext(context).getInfo());
 
     return builder.toString();
   }
