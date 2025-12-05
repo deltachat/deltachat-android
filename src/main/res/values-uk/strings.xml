@@ -342,7 +342,7 @@
     <string name="menu_scroll_to_top">Прокрутити на початок</string>
     <string name="menu_help">Допомога</string>
     <!-- use the same term for "Apps" as elsewhere -->
-    <string name="what_is_webxdc">Що таке Webxdc?</string>
+    <string name="what_is_webxdc">Про додатки</string>
     <string name="privacy_policy">Політика конфіденційності</string>
     <string name="menu_select_all">Вибрати все</string>
     <string name="select_chat">Оберіть чат</string>
@@ -451,8 +451,8 @@
     <string name="ask_export_attachment">Якщо експортувати вкладені файли, інші програми на вашому пристрої отримають до них доступ.\n\nПродовжити?</string>
     <string name="ask_block_contact">Заблокувати цей контакт?\n\nПрямі повідомлення або групи, створені заблокованими контактами, не відображатимуться.\n\nІнші групи із заблокованими контактами все одно показуватимуть свої повідомлення.</string>
     <string name="ask_unblock_contact">Розблокувати цей контакт?</string>
-    <string name="ask_delete_contacts">Видалити контакти?\n\nКонтакти з поточними чатами або з системної адресної книги неможливо видалити остаточно.</string>
-    <string name="ask_delete_contact">Видалити %1$s?\n\nКонтакти з діючих чатів та з адресної книги системи не можна видалити назавжди.</string>
+    <string name="ask_delete_contacts">Видалити контакти?\n\nКонтакти з поточними чатами неможливо видалити остаточно.</string>
+    <string name="ask_delete_contact">Видалити %1$s?\n\nКонтакти з поточними чатами не можна видалити назавжди.</string>
     <string name="ask_start_chat_with">Створити чат з %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Видалити %1$s із групи?</string>
@@ -677,9 +677,9 @@
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Створіть профіль для спілкування з %1$s.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
-    <string name="instant_onboarding_confirm_contact">Бажаєте створити новий профіль і почати спілкуватися з %1$s?</string>
+    <string name="instant_onboarding_confirm_contact">Створити новий профіль і почати спілкуватися з %1$s?</string>
     <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
-    <string name="instant_onboarding_confirm_group">Ви хочете створити новий профіль і приєднатися до групи чату \"%1$s\"?</string>
+    <string name="instant_onboarding_confirm_group">Створити новий профіль і приєднатися до \"%1$s\"?</string>
 
     <string name="welcome_chat_over_email">Безпечний децентралізований чат</string>
     <string name="scan_invitation_code">Сканувати код запрошення</string>
@@ -848,6 +848,10 @@
     <string name="pref_background_btn_default">Використовувати тло за замовчуванням</string>
     <string name="pref_background_btn_gallery">Вибрати з галереї</string>
     <string name="pref_imap_folder_warn_disable_defaults">Якщо ви змінюєте цей параметр, переконайтеся, що Ваш сервер та інші Ваші клієнти налаштовані відповідним чином.\n\nІнакше щось може взагалі не працювати.</string>
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <string name="pref_multidevice">Режим роботи з декількома пристроями</string>
+    <string name="pref_multidevice_explain">Синхронізуйте свій повідомлення з іншими пристроями. Автоматично вмикається після додавання другого пристрою</string>
+    <string name="pref_multidevice_change_warn">Режим декількох пристроїв має бути увімкнений, якщо ви використовуєте один і той самий профіль на декількох пристроях. Вимикайте цей параметр, лише якщо ви видалили цей профіль з усіх інших пристроїв.\n\nВимкнення режиму декількох пристроїв під час використання профілю на декількох пристроях призведе до пропусків повідомлення та інших проблем.</string>
     <string name="pref_auto_folder_moves">Автоматично пересувати до папки DeltaChat</string>
     <!-- deprecated -->
     <string name="pref_auto_folder_moves_explain">Чати були переміщені, щоб уникнути плутанини в папці «Вхідні».</string>
@@ -859,6 +863,7 @@
     <string name="pref_show_emails_accepted_contacts">Для прийнятих контактів</string>
     <string name="pref_show_emails_all">Всі</string>
     <string name="pref_experimental_features">Експериментальні функції</string>
+    <string name="pref_experimental_features_explain">Ці функції можуть бути нестабільними і можуть бути змінені або видалені</string>
     <string name="pref_on_demand_location_streaming">Стримінг геоданих за вимогою</string>
     <!-- deprecated -->
     <string name="pref_developer_mode">Режим розробника</string>
@@ -888,6 +893,9 @@
     <string name="disable_imap_idle">Вимкнути IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Не використовувати розширення IMAP IDLE навіть якщо сервер підтримує його. Увімкнення цієї опції затримає отримання повідомлень, вмикайте її лише для тестування.</string>
     <string name="send_stats_to_devs">Надсилати статистику розробникам Delta Chat</string>
+    <string name="stats_msg_body">У вкладенні міститься анонімна статистика використання, яка допоможе нам покращити Delta Chat. Дякуємо!</string>
+
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Результати пошуку</string>
     <string name="emoji_not_found">Емодзі не знайдено</string>
@@ -1050,9 +1058,11 @@
     <string name="qrscan_fingerprint_label">Відбиток</string>
     <string name="withdraw_verifycontact_explain">Цей QR-код можуть відсканувати інші, щоб зв\'язатися з вами.\n\nВи можете скинути його, так що існуючий QR-код або посилання-запрошення більше не буде працювати.</string>
     <string name="withdraw_verifygroup_explain">Цей QR-код можуть відсканувати інші, щоб приєднатися до групи \"%1$s\".\n\nВи можете скинути його, щоб існуючий QR-код або запрошувальне посилання більше не працювали.</string>
+    <string name="withdraw_joinbroadcast_explain">Цей QR-код можуть відсканувати інші, щоб приєднатися до каналу \"%1$s\".\n\nВи можете скинути його, так що існуючий QR-код або запрошення посилання більше не буде працювати.</string>
     <string name="withdraw_qr_code">Скинути QR-код</string>
     <string name="revive_verifycontact_explain">Цей QR-код було скинуто і він більше не активний.</string>
     <string name="revive_verifygroup_explain">Цей QR-код для приєднання до групи \"%1$s\" було скинуто, і він більше не активний.</string>
+    <string name="revive_joinbroadcast_explain">Цей QR-код для приєднання до каналу \"%1$s\" був скинутий і більше не активний.</string>
     <string name="revive_qr_code">Активувати QR-код</string>
     <string name="qrshow_title">Баркод із запрошенням</string>
     <string name="qrshow_x_joining">%1$s приєднався(-лася).</string>
@@ -1077,6 +1087,8 @@
     <string name="qrlogin_ask_login_another">Увійти до \"%1$s\"?\n\nВаш профіль, що вже існує, не буде видалено. Використовуйте \"Перемкнути профіль\" для переключання між профілями.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s запросив (-ла) Вас приєднатися до цієї групи.\n\nОчікуємо на відповідь від пристрою %2$s…</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s запросив вас приєднатися до цього каналу.\n\nЧекаємо на відповідь з пристрою %2$s...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s відповіли, очікуємо на додавання до групи…</string>
     <string name="secure_join_wait">Встановлення гарантованого наскрізного шифрування, будь ласка, зачекайте...</string>

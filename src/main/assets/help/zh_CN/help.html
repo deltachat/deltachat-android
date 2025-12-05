@@ -1410,12 +1410,12 @@ Delta Chat 在此处显示两个指纹。
 
 <p>不。</p>
 
-<p>Delta Chat 采用 Autocrypt 1.1 标准规范生成 OpenPGP 加密密钥。
-用户虽可导出自身私钥进行备份，但系统设计上不支持导入其他私钥。</p>
-
-<p>基于安全考量，系统默认不开放手动密钥管理功能。
-此项设计旨在让安全审计工作聚焦于少量成熟加密算法（如 Autocrypt 标准），
-避免因支持 OpenPGP 协议所允许的所有算法而增加潜在安全风险。</p>
+<p>Delta Chat generates secure OpenPGP keys according to the Autocrypt specification 1.1.
+We do not recommend or offer users to perform manual key management.
+We want to ensure that security audits can focus on a few proven cryptographic algorithms
+instead of the full breadth of possible algorithms allowed with OpenPGP.
+If you want to extract your OpenPGP key, there only is an expert method:
+you need to look it up in the “keypairs” SQLite table of a profile backup tar-file.</p>
     
       <h3 id="security-audits">
         
