@@ -70,8 +70,6 @@ public class AllMediaDocumentsFragment
     this.noMedia      = ViewUtil.findById(view, R.id.no_documents);
     this.gridManager  = new StickyHeaderGridLayoutManager(1);
 
-    // allow content to be drawn behind the navigation bar
-    recyclerView.setClipToPadding(false);
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(recyclerView, true, false, true, true);
 

@@ -827,6 +827,7 @@
     <string name="pref_show_emails_accepted_contacts">Van goedgekeurde contactpersonen</string>
     <string name="pref_show_emails_all">Alles</string>
     <string name="pref_experimental_features">Experimentele functies</string>
+    <string name="pref_experimental_features_explain">Let op: deze functies zijn experimenteel en kunnen te allen tijde worden aangepast of verwijderd</string>
     <string name="pref_on_demand_location_streaming">Locatie delen (op verzoek)</string>
     <!-- deprecated -->
     <string name="pref_developer_mode">Ontwikkelaarsmodus</string>

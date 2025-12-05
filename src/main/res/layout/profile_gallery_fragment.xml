@@ -8,6 +8,7 @@
             android:id="@+id/media_grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="false"
             android:scrollbars="vertical" />
 
     <TextView android:id="@+id/no_images"

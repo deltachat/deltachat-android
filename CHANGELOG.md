@@ -9,6 +9,7 @@
 * Allow to withdraw channel invite links and QR codes
 * Allow to open externally links clicked inside in-chat apps
 * Do not show "1 member" when the process of joining the group is not finished
+* Make search case-insensitive for non-ASCII chat and contact names
 * Improve handling of video recoding
 * Send .webm videos as file, they are not supported by all platforms
 * Tweak advanced section and wording of some advanced options
@@ -17,9 +18,10 @@
 * Expose new "Multi-device mode" option instead of "Delete from server" for chatmail profiles
 * Opened in-chat apps got a 'About Apps' menu item
 * Avoid gray avatar on profile creation
+* Avoid last item in chat list being covered by the floating button
 * Add disk usage statistics to log
 * Add new multi-transport experimental feature
-* Update to core 2.29.0
+* Update to core 2.33.0
 
 ## v2.25.0
 2025-11
