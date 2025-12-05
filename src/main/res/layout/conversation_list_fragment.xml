@@ -45,6 +45,7 @@
                 android:id="@+id/list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingBottom="88dp"
                 android:scrollbars="vertical"
                 android:nextFocusDown="@+id/fab"
                 android:nextFocusForward="@+id/fab"
