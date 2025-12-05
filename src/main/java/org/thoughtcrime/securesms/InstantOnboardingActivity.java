@@ -49,6 +49,7 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
+import org.thoughtcrime.securesms.relay.EditRelayActivity;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -356,7 +357,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       signUpDialog.dismiss();
     });
     view.findViewById(R.id.login_button).setOnClickListener((v) -> {
-      startRegistrationActivity();
+      startActivity(new Intent(this, EditRelayActivity.class));
       signUpDialog.dismiss();
     });
     view.findViewById(R.id.scan_qr_button).setOnClickListener((v) -> {
@@ -365,11 +366,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     });
 
     signUpDialog.show();
-  }
-
-  private void startRegistrationActivity() {
-    Intent intent = new Intent(this, EditTransportActivity.class);
-    startActivity(intent);
   }
 
   private void updateProvider() {

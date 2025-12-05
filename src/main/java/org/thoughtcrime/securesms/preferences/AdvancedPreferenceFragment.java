@@ -7,9 +7,7 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SHOW_EMAILS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_WEBXDC_REALTIME_ENABLED;
-import static org.thoughtcrime.securesms.connect.DcHelper.getRpc;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,7 +15,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,12 +26,10 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
-import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.EditTransportActivity;
+import org.thoughtcrime.securesms.relay.RelayListActivity;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
@@ -47,8 +42,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Objects;
-
-import chat.delta.rpc.RpcException;
 
 
 public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
@@ -207,12 +200,12 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       });
     }
 
-    Preference passwordAndAccount = this.findPreference("password_account_settings_button");
-    if (passwordAndAccount != null) {
-      passwordAndAccount.setOnPreferenceClickListener(((preference) -> {
-        boolean result = ScreenLockUtil.applyScreenLock(requireActivity(), getString(R.string.edit_transport), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_ACCOUNT);
+    Preference relayListBtn = this.findPreference("pref_relay_list_button");
+    if (relayListBtn != null) {
+      relayListBtn.setOnPreferenceClickListener(((preference) -> {
+        boolean result = ScreenLockUtil.applyScreenLock(requireActivity(), getString(R.string.transports), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_ACCOUNT);
         if (!result) {
-          openRegistrationActivity();
+          openRelayListActivity();
         }
         return true;
       }));
@@ -247,7 +240,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
     if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_CONFIRM_CREDENTIALS_ACCOUNT) {
-      openRegistrationActivity();
+      openRelayListActivity();
     }
   }
 
@@ -324,8 +317,8 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     }
   }
 
-  private void openRegistrationActivity() {
-    Intent intent = new Intent(requireActivity(), EditTransportActivity.class);
+  private void openRelayListActivity() {
+    Intent intent = new Intent(requireActivity(), RelayListActivity.class);
     startActivity(intent);
   }
 

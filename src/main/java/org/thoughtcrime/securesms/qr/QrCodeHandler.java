@@ -1,7 +1,9 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.StringRes;
@@ -17,15 +19,25 @@ import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.views.ProgressDialog;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 
 public class QrCodeHandler {
 
+    private static final String TAG = QrCodeHandler.class.getSimpleName();
+
     private final Activity activity;
     private final DcContext dcContext;
+    private final Rpc rpc;
+    private final int accId;
 
     public QrCodeHandler(Activity activity) {
         this.activity = activity;
         dcContext = DcHelper.getContext(activity);
+        rpc = DcHelper.getRpc(activity);
+        accId = dcContext.getAccountId();
     }
 
     public void onScanPerformed(IntentResult scanResult) {
@@ -67,10 +79,7 @@ public class QrCodeHandler {
             case DcContext.DC_QR_ACCOUNT:
             case DcContext.DC_QR_LOGIN:
                 final String scope = qrParsed.getText1();
-                builder.setMessage(activity.getString(qrParsed.getState() == DcContext.DC_QR_ACCOUNT ? R.string.qraccount_ask_create_and_login_another : R.string.qrlogin_ask_login_another, scope));
-                builder.setPositiveButton(R.string.ok, (dialog, which) -> {
-                    AccountManager.getInstance().addAccountFromQr(activity, rawString);
-                });
+                setAddTransportDialog(activity, builder, rawString, scope);
                 builder.setNegativeButton(R.string.cancel, null);
                 builder.setCancelable(false);
                 break;
@@ -245,5 +254,44 @@ public class QrCodeHandler {
             }
         });
         builder.setNegativeButton(android.R.string.cancel, null);
+    }
+
+    private void setAddTransportDialog(Activity activity, AlertDialog.Builder builder, String qrData, String transportName) {
+        builder.setTitle(R.string.confirm_add_transport);
+        builder.setMessage(transportName);
+        builder.setPositiveButton(R.string.ok, (d, w) -> {
+            ProgressDialog progressDialog = new ProgressDialog(activity);
+            progressDialog.setMessage(activity.getResources().getString(R.string.one_moment));
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setCancelable(false);
+            String cancel = activity.getResources().getString(android.R.string.cancel);
+            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, cancel, (d2, w2) -> {
+                dcContext.stopOngoingProcess();
+            });
+            progressDialog.show();
+
+            Util.runOnAnyBackgroundThread(() -> {
+                String error = null;
+                try {
+                    rpc.addTransportFromQr(accId, qrData);
+                } catch (RpcException e) {
+                    Log.w(TAG, e);
+                    error = e.getMessage();
+                }
+                final String finalError = error;
+                Util.runOnMain(() -> {
+                    if (!progressDialog.isShowing()) return; // canceled dialog, nothing to do
+                    if (finalError != null) {
+                        Toast.makeText(activity, finalError, Toast.LENGTH_LONG).show();
+                    }
+                    try {
+                        progressDialog.dismiss();
+                    } catch (IllegalArgumentException e) {
+                        // see https://stackoverflow.com/a/5102572/4557005
+                        Log.w(TAG, e);
+                    }
+                });
+            });
+        });
     }
 }
