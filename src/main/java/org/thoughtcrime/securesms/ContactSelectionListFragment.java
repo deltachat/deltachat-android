@@ -114,8 +114,6 @@ public class ContactSelectionListFragment extends    Fragment
 
     recyclerView            = ViewUtil.findById(view, R.id.recycler_view);
 
-    // allow content to be drawn behind the navigation bar
-    recyclerView.setClipToPadding(false);
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(recyclerView, true, false, true, true);
 
