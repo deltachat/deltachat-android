@@ -117,6 +117,16 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Azken aldiz begiratua %1$s</string>
     <string name="last_seen_unknown">Azken aldiz begiratzea: ezezaguna</string>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
+    <plurals name="n_seconds_ext">
+        <item quantity="one">segundo %d</item>
+        <item quantity="other">%d segundo</item>
+    </plurals>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
+    <plurals name="n_minutes_ext">
+        <item quantity="one">minutu %d</item>
+        <item quantity="other">%d minutu</item>
+    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">min %d</item>
@@ -180,8 +190,10 @@
     <string name="documents">Dokumentuak</string>
     <string name="contact">Kontaktua</string>
     <string name="camera">Kamera</string>
+    <string name="switch_camera">Aldatu kamera</string>
     <string name="toggle_fullscreen">Aldatu pantaila osoa modua</string>
     <string name="location">Kokalekua</string>
+    <string name="locations">Kokalekuak</string>
     <string name="gallery">Galeria</string>
     <string name="images_and_videos">Irudiak eta bideoak</string>
     <string name="file">Fitxategia</string>
@@ -229,6 +241,24 @@
     <string name="menu_new_classic_contact">Gehitu kontaktua eskuz</string>
     <string name="menu_new_chat">Txat berria</string>
     <string name="menu_new_group">Talde berria</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Txateatu honekin...</string>
+    <string name="clone_chat">Klonatu txata</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Kanala</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Kanalak</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Kanal berria</string>
+    <!-- deprecated -->
+    <string name="add_recipients">Gehitu harpidedunak</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Kanalaren izena</string>
+    <string name="email">Posta elektronikoa</string>
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">Posta elektroniko berria</string>
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
+    <string name="subject">Gaia</string>
     <string name="menu_send">Bidali</string>
     <string name="menu_toggle_keyboard">Txandakatu emoji teklatua</string>
     <string name="menu_edit_group">Editatu taldea</string>
@@ -238,10 +268,15 @@
     <string name="menu_unarchive_chat">Berreskuratu txata artxibotik</string>
     <string name="menu_add_attachment">Gehitu eranskina</string>
     <string name="menu_leave_group">Atera taldetik</string>
+    <string name="menu_leave_channel">Utzi kanala</string>
     <string name="menu_delete_chat">Ezabatu txata</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Garbitu txata</string>
+    <string name="delete_contact">Ezabatu kontaktua</string>
     <string name="menu_delete_location">Ezabatu kokaleku hau?</string>
     <string name="menu_message_details">Mezuaren xehetasunak</string>
     <string name="menu_copy_to_clipboard">Kopiatu arbelera</string>
+    <string name="share_invite_link">Partekatu gonbidapen esteka</string>
     <string name="menu_forward">Birbidali mezua</string>
     <string name="menu_reply">Erantzun mezuari</string>
     <string name="menu_mute">Mututu jakinarazpenak</string>

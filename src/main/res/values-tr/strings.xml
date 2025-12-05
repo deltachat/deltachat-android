@@ -827,6 +827,7 @@
     <string name="pref_show_emails_accepted_contacts">Kabul edilen kişiler için</string>
     <string name="pref_show_emails_all">Tümü</string>
     <string name="pref_experimental_features">Deneysel Özellikler</string>
+    <string name="pref_experimental_features_explain">Bu özellikler, kararsız olabilir ve değiştirilebilir ya da kaldırılabilir</string>
     <string name="pref_on_demand_location_streaming">İsteğe Bağlı Konum Akışı</string>
     <!-- deprecated -->
     <string name="pref_developer_mode">Geliştirici Modu</string>

@@ -716,6 +716,7 @@
     <string name="ask_send_files_to_chat">Kas saadad %1$d faili „%2$s“ vestlusesse?</string>
     <string name="ask_send_files_to_selected_chats">Kas saadad %1$d faili „%2$d“ vestlusesse?</string>
     <string name="videos_sent_without_recoding">(Videod saadetakse algupäraste suurte failidena. Videote mahu vähendamiseks lisa nad manustena ükshaaval)</string>
+    <string name="share_text_multiple_chats">Kas saadad selle teksti %1$d vestlusesse?\n\n„%2$s“</string>
     <string name="share_abort">Puuduvate õiguste tõttu on jagamine katkestatud.</string>
 
 
@@ -809,6 +810,7 @@
     <string name="pref_show_emails">Näita klassikalisi e-kirju</string>
     <string name="pref_show_emails_all">Kõik</string>
     <string name="pref_experimental_features">Katselised funktsionaalsused</string>
+    <string name="pref_experimental_features_explain">Need funktsionaalsused ei pruugi korralikult toimida ning nad võivad tulevikus muutuda või sootuks olla eemaldatud</string>
     <!-- deprecated -->
     <string name="pref_developer_mode">Arendaja režiim</string>
     <!-- deprecated -->
@@ -1198,6 +1200,8 @@
     <string name="pref_background_notifications_rationale">Tagamaks, et rakenduse võrguühendus jääb taustal tööle ning sõnumite vastuvõtmine jätkub, siis keela järgmises sammus selle rakenduse jaoks akukasutuse optimeerimine.\n\nDelta Chat kasutab väga vähe nutiseadme ressursse ning oleme eraldi pingutanud, et koormus akule oleks minimaalne.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Kui soovid, et Delta Chat saaks sõnumeid ka taustateenusena toimides, siis klõpsi siin.</string>
+    <string name="perm_enable_bg_already_done">Sa juba oled Delta Chatil lubanud laadida sõnumeid taustal.\n\nKui see siiski ei toimi, siis palun kontrolli rakenduse õigusi süsteemi seadistustest.</string>
+
     <!-- device messages for updates -->
     <string name="update_2_0">Mida on meil uut?\n\n💯 Läbiv krüptimine on töökindel ja seda nüüd igaveseks. Tabalukud 🔒 on läinud!\n\n✉️ Klassikalised e-kirjad, kus läbiv krüptimine on puudu, on märgitud ümbriku ikooniga\n\n😻 Uus ja tõhusam profiilivaade kõikide sinu kontaktide jaoks\n\n🔲 Uus nupp kiireks ligipääsuks vestluses kasutatavate rakendusteni\n\n❤️ Palun toeta meie arendust rahaliselt - nii saame jääda sõltumatuteks ja jätkata selle rakenduse täiustamist: %1$s</string>
 </resources>
