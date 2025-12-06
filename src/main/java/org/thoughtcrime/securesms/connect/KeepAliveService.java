@@ -77,9 +77,15 @@ public class KeepAliveService extends Service {
         return null;
     }
 
+    @Override
     public void onDestroy() {
         Log.i("DeltaChat", "*** KeepAliveService.onDestroy()");
         // the service will be restarted due to START_STICKY automatically, there's nothing more to do.
+    }
+
+    @Override
+    public void onTimeout(int startId, int fgsType) {
+        stopSelf();
     }
 
     static public KeepAliveService getInstance()

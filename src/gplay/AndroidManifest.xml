@@ -11,6 +11,11 @@
 
   <application>
     <service
+        android:name=".connect.KeepAliveService"
+        android:foregroundServiceType="dataSync"
+        android:enabled="true" />
+
+    <service
         android:name=".notifications.FcmReceiveService"
         android:foregroundServiceType="dataSync"
         android:exported="true">
