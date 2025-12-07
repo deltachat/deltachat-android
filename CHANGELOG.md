@@ -20,6 +20,7 @@
 * Avoid gray avatar on profile creation
 * Avoid last item in chat list being covered by the floating button
 * Add disk usage statistics to log
+* New experimental feature: several addresses per profile
 * Update to core 2.33.0
 
 ## v2.25.0
