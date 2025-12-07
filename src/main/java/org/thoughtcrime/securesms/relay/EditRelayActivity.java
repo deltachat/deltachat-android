@@ -1,4 +1,4 @@
-package org.thoughtcrime.securesms;
+package org.thoughtcrime.securesms.relay;
 
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,6 +33,11 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcProvider;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.thoughtcrime.securesms.BaseActionBarActivity;
+import org.thoughtcrime.securesms.ConversationListActivity;
+import org.thoughtcrime.securesms.LogViewActivity;
+import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.WelcomeActivity;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -49,13 +55,16 @@ import chat.delta.rpc.types.EnteredCertificateChecks;
 import chat.delta.rpc.types.EnteredLoginParam;
 import chat.delta.rpc.types.Socket;
 
-public class EditTransportActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
+public class EditRelayActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
     private enum VerificationType {
         EMAIL,
         SERVER,
         PORT,
     }
+
+    private static final String TAG = EditRelayActivity.class.getSimpleName();
+    public final static String EXTRA_ADDR = "extra_addr";
 
     private TextInputEditText emailInput;
     private TextInputEditText passwordInput;
@@ -118,11 +127,26 @@ public class EditTransportActivity extends BaseActionBarActivity implements DcEv
             startActivity(new Intent(this, ProxySettingsActivity.class));
         });
 
+        String addr = getIntent().getStringExtra(EXTRA_ADDR);
         EnteredLoginParam config = null;
         try {
             List<EnteredLoginParam> relays = rpc.listTransports(accId);
-            if (!relays.isEmpty()) config = relays.get(0);
-        } catch (RpcException ignored) {}
+            for (EnteredLoginParam relay : relays) {
+                if (addr != null && addr.equals(relay.addr)) {
+                    config = relay;
+                    break;
+                }
+            }
+            if (config == null && !relays.isEmpty()) {
+                Log.e(TAG, "Error got unknown address: " + addr);
+                finish();
+                return;
+            };
+        } catch (RpcException e) {
+            Log.e(TAG, "Error calling Rpc.listTransports()", e);
+            finish();
+            return;
+        }
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

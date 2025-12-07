@@ -59,6 +59,7 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.reactions.AddReactionView;
 import org.thoughtcrime.securesms.reactions.ReactionsDetailsFragment;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.relay.EditRelayActivity;
 import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
@@ -763,7 +764,9 @@ public class ConversationFragment extends MessageSelectorFragment
                       && messageRecord.getText().contains(self_mail)
                       && getListAdapter().getChat().isDeviceTalk()) {
                       // This is a device message informing the user that the password is wrong
-                      startActivity(new Intent(getActivity(), EditTransportActivity.class));
+                      Intent intent = new Intent(getActivity(), EditRelayActivity.class);
+                      intent.putExtra(EditRelayActivity.EXTRA_ADDR, self_mail);
+                      startActivity(intent);
                     }
                 }
             }

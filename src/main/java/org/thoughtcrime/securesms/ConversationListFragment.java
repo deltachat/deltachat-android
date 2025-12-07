@@ -108,8 +108,6 @@ public class ConversationListFragment extends BaseConversationListFragment
     emptyState   = ViewUtil.findById(view, R.id.empty_state);
     emptySearch  = ViewUtil.findById(view, R.id.empty_search);
 
-    // allow content to be drawn behind the navigation bar
-    list.setClipToPadding(false);
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(list, true, archive, true, true);
 
