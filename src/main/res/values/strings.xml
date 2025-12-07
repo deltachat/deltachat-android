@@ -1145,6 +1145,7 @@
     <string name="export_backup_desktop">Export Backup</string>
     <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Autocrypt setup transferred.</string>
+    <!-- deprecated, use delete_account + delete_account_ask + delete_account_explain_with_name -->
     <string name="forget_login_confirmation_desktop">Delete this profile? Everything will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
     <string name="message_detail_sent_desktop">sent</string>
     <string name="message_detail_received_desktop">received</string>
