@@ -65,6 +65,7 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
 
   public static class RelayViewHolder extends RecyclerView.ViewHolder {
     private final TextView titleText;
+    private final TextView subtitleText;
     private final ImageView mainIndicator;
     private final ImageView editButton;
     private final ImageView deleteButton;
@@ -72,14 +73,17 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
     public RelayViewHolder(@NonNull View itemView) {
       super(itemView);
       titleText = itemView.findViewById(R.id.title);
+      subtitleText = itemView.findViewById(R.id.subtitle);
       mainIndicator = itemView.findViewById(R.id.main_indicator);
       editButton = itemView.findViewById(R.id.edit_button);
       deleteButton = itemView.findViewById(R.id.delete_button);
     }
 
     public void bind(EnteredLoginParam relay, boolean isMain, OnRelayClickListener listener) {
-      titleText.setText(relay.addr);
-      mainIndicator.setVisibility(isMain ? View.VISIBLE : View.GONE);
+      String[] parts = relay.addr.split("@");
+      titleText.setText(parts.length == 2? parts[1] : parts[0]);
+      subtitleText.setText(parts.length == 2? parts[0] : "");
+      mainIndicator.setVisibility(isMain ? View.VISIBLE : View.INVISIBLE);
       deleteButton.setVisibility(isMain ? View.GONE : View.VISIBLE);
 
       itemView.setOnClickListener(v -> {
