@@ -6,7 +6,6 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_BCC_SELF;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SHOW_EMAILS;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_WEBXDC_REALTIME_ENABLED;
 
 import android.content.Context;
 import android.content.Intent;
@@ -53,7 +52,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   CheckBoxPreference multiDeviceCheckbox;
   CheckBoxPreference mvboxMoveCheckbox;
   CheckBoxPreference onlyFetchMvboxCheckbox;
-  CheckBoxPreference webxdcRealtimeCheckbox;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -117,15 +115,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
           return true;
         }
       }));
-    }
-
-    webxdcRealtimeCheckbox = (CheckBoxPreference) this.findPreference("pref_webxdc_realtime_enabled");
-    if (webxdcRealtimeCheckbox != null) {
-      webxdcRealtimeCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
-        boolean enabled = (Boolean) newValue;
-        dcContext.setConfigInt(CONFIG_WEBXDC_REALTIME_ENABLED, enabled? 1 : 0);
-        return true;
-      });
     }
 
     Preference screenSecurity = this.findPreference(Prefs.SCREEN_SECURITY_PREF);
@@ -233,7 +222,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     multiDeviceCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_BCC_SELF));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
     onlyFetchMvboxCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_ONLY_FETCH_MVBOX));
-    webxdcRealtimeCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_WEBXDC_REALTIME_ENABLED));
   }
 
   @Override

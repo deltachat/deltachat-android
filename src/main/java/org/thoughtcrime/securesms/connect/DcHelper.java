@@ -60,7 +60,6 @@ public class DcHelper {
     public static final String CONFIG_MEDIA_QUALITY = "media_quality";
     public static final String CONFIG_PROXY_ENABLED = "proxy_enabled";
     public static final String CONFIG_PROXY_URL = "proxy_url";
-    public static final String CONFIG_WEBXDC_REALTIME_ENABLED = "webxdc_realtime_enabled";
     public static final String CONFIG_PRIVATE_TAG = "private_tag";
 
     public static DcContext getContext(@NonNull Context context) {
