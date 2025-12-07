@@ -43,6 +43,7 @@
 * remove deprecated "companion app" code
 * remove deprecated "Watch Sent Folder" preference
 * remove deprecated "send self-report" preference
+* remove deprecated "real-time apps" switch
 * don't show email address in shared vcard
 * update to core 2.25.0
 
