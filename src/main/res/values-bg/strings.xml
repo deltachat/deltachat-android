@@ -263,8 +263,6 @@
     <string name="menu_save_log">Запис на дневник</string>
     <string name="menu_more_options">Още опции</string>
     <string name="menu_learn_spelling">Запомняне на правописа</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Одитен дневник на чатовете</string>
     <string name="jump_to_message">Към съобщение</string>
     <string name="copy_json">Копиране на JSON</string>
     <string name="replace_draft">Замяна на чернова</string>
@@ -326,8 +324,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Контакти</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Въведете име или адрес за електронна поща</string>
     <string name="contacts_type_email_above">Въведете адрес за електронна поща по-горе</string>
 
 
@@ -393,12 +389,6 @@
     <string name="show_location_traces">Показване на съобщенията за проследяване</string>
     <string name="add_poi">Изпращане на място, представляващо интерес</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">Системните съобщения за този чат ще се появяват тук</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Одитен дневник на чата за %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Показва само системни и информационни съобщения; това е от полза, ако искаме да намерим последните чат действия, без да преминаваме през много на брой съобщения.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -427,8 +417,6 @@
     <string name="group_self_not_in_group">Трябва да сте член на групата, за да изпълните това действие.</string>
     <string name="profile_encryption">Криптиране</string>
     <string name="profile_shared_chats">Споделени чатове</string>
-    <!-- deprecated -->
-    <string name="related_chats">Свързани чатове</string>
     <string name="tab_contact">Контакт</string>
     <string name="tab_group">Група</string>
     <string name="tab_gallery">Галерия</string>
@@ -491,7 +479,7 @@
     <string name="sending">Изпращане…</string>
     <string name="last_msg_sent_successfully">Последното съобщение беше изпратено успешно.</string>
     <string name="not_supported_by_provider">Не се поддържа от Вашия доставчик.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Съобщения</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">Използвани са %1$s от %2$s</string>
@@ -502,7 +490,7 @@
     <string name="onboarding_create_instant_account">Създаване на нов профил</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Вече имам профил</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Вход в класическа електронна поща</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Вашият профил</string>
@@ -527,10 +515,6 @@
     <string name="welcome_chat_over_email">Защитен децентрализиран чат</string>
     <string name="scan_invitation_code">Сканиране на код за покана</string>
     <string name="login_title">Влизане</string>
-    <!-- deprecated -->
-    <string name="login_header">Влизане във Вашия акаунт за електронна поща</string>
-    <!-- deprecated -->
-    <string name="login_explain">Влизане със съществуващ акаунт за електронна поща</string>
     <string name="login_inbox">Входящи</string>
     <string name="login_imap_login"> Име за влизане на IMAP</string>
     <string name="login_imap_server">IMAP сървър</string>
@@ -581,8 +565,6 @@
     <string name="pref_profile_photo">Изображение на профила</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
     <string name="blocked_empty_hint">Блокираните контакти ще се появяват тук.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Парола и акаунт</string>
     <string name="pref_who_can_see_profile_explain">Изображението, името и подписът от Вашия профил ще бъдат изпратени заедно с Вашите съобщения, когато общувате с други потребители.</string>
     <string name="pref_your_name">Вашето име</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -623,10 +605,6 @@
     <string name="pref_server">Сървър</string>
     <string name="pref_encryption">Криптиране</string>
     <string name="pref_manage_keys">Управление на ключове</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">Прочитане на системната адресна книга</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts_explain">Да се предлага създаване на чатове с контакти от адресната книга. За някои доставчици е необходимо първо да се настрои криптиране от край до край.</string>
     <string name="pref_chats">Чатове</string>
     <string name="pref_in_chat_sounds">Звуци в чата</string>
     <string name="pref_view_log">Разглеждане на дневника</string>
@@ -641,33 +619,19 @@
     <string name="pref_backup_export_all">Експортиране на всички %1$d профила</string>
     <string name="pref_backup_export_start_button">Започване на създаването на резервно копие</string>
     <string name="pref_backup_written_to_x">Резервното копие е успешно записано в \"%1$s\".</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Експорт на тайните ключове</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Да бъдат ли експортирани тайните ключове в \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Тайните ключове са записани успешно в \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Фон</string>
     <string name="pref_background_btn_default">Да се използва подразбиращото се изображение</string>
     <string name="pref_background_btn_gallery">Избор от галерията</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ако промение тази опция, се уверете, че Вашият сървър и другите Ви клиенти са конфигурирани по съответен начин.\n\nВ противен случай е възможно нещата въобще да не работят.</string>
     <string name="pref_auto_folder_moves">Автоматично преместване в папката DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Разговорите са преместени, за да се избегне претрупване на папката \"Входящи\"</string>
     <string name="pref_only_fetch_mvbox_title">Да се извлича само от папката DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Другите папки да не бъдат взимани под внимание. Изисква Вашият сървър да премества чат съобщенията в папката DeltaChat.</string>
     <string name="pref_show_emails">Да се показват класически e-mail съобщения</string>
     <string name="pref_show_emails_no">Не, само чатове</string>
     <string name="pref_show_emails_accepted_contacts">За приетите контакти</string>
     <string name="pref_show_emails_all">Всички</string>
     <string name="pref_experimental_features">Експериментални възможности</string>
     <string name="pref_on_demand_location_streaming">Поточно излъчване на местоположението при поискване</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Режим за разработчици</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Активира опциите за отстраняване на грешки и може да направи приложението по-малко стабилно. Само за разработчици.</string>
     <string name="pref_background_default">Подразбиращо се изображение</string>
     <string name="pref_background_default_color">Подразбиращ се цвят</string>
     <string name="pref_background_custom_image">Зададено от Вас изображение</string>
@@ -732,17 +696,6 @@
     <string name="autodel_after_1_week">След 1 седмица</string>
     <string name="after_5_weeks">След 5 седмици</string>
     <string name="autodel_after_1_year">След 1 година</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Изпращане на съобщение за настройка на Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Съобщението за настройка на Autocrypt споделя по сигурен начин Вашата настройка за криптиране \"от край до край\" с други съвместими с Autorcypt приложения.\n\nНастройката се криптира с код, който се показва тук и трябва да бъде въведен на другото устройство.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Изпращане на съобщението за настройка на Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Изпратихте Вашата настройка до себе си. Отворете съобщението за настройка в другото устройство. Би трябвало да Ви бъде поискан код за настройка. Въведете следните цифри:</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Да се предпочита криптиране \"от край до край\"</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Съобщение от %1$s</string>
@@ -841,7 +794,6 @@
     <string name="withdraw_verifygroup_explain">Чрез сканиране на този QR код други хора могат да се присъединяват към крупата \"%1$s\".\n\nМожете да деактивирате QR кода тук и повторно да го активирате, като го сканирате отново.</string>
     <string name="withdraw_qr_code">Деактивиране на QR кода</string>
     <string name="revive_verifycontact_explain">Чрез сканиране на този QR код други хора могат да се свързват с Вас.\n\nQR кодът не е активен на това устройство.</string>
-    <string name="revive_verifygroup_explain">Този QR код е давал възможност други да се присъединяват към групата \"%1$s\" чрез сканирането му.\n\nQR кодът не е активен на това устройство.</string>
     <string name="revive_qr_code">Активиране на QR кода</string>
     <string name="qrshow_title">QR код за покана</string>
     <string name="qrshow_x_joining">%1$s се присъединява.</string>
@@ -948,9 +900,6 @@
     <string name="name_desktop">Име</string>
     <string name="select_group_image_desktop">Изберете изображение за групата</string>
     <string name="export_backup_desktop">Експорт на резервно копие</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Найстроката на Autocrypt е прехвърлена.</string>
-    <string name="forget_login_confirmation_desktop">Да бъде ли изтрита тази регистрация? Всичко ще бъде изтрито, включително Вашата настройка за криптиране \"от край до край\", контакти, чатове, съобщения и медийни файлове. Това действие не може да бъде отменено.</string>
     <string name="message_detail_sent_desktop">изпратено</string>
     <string name="message_detail_received_desktop">получено</string>
     <string name="menu.view.developer.open.log.folder">Отваряне на папката \"Дневник\"</string>

@@ -322,8 +322,6 @@
     <string name="menu_save_log">Gardar rexistro</string>
     <string name="menu_more_options">Máis opcións</string>
     <string name="menu_learn_spelling">Aprender palabras</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Rexistro de auditoría do chat</string>
     <string name="jump_to_message">Ir á mensaxe</string>
     <string name="jump_to_original_message">Ir á mensaxe orixinal</string>
     <string name="copy_json">Copiar JSON</string>
@@ -400,8 +398,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contactos</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Introducir nome ou enderezo de correo</string>
     <string name="contacts_type_email_above">Escribir arriba o enderezo de correo</string>
 
 
@@ -472,12 +468,6 @@
     <string name="show_location_traces">Mostrar trazas</string>
     <string name="add_poi">Enviar punto de interese</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">As mensaxes de sistema deste chat aparecerán aquí</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Rexistro de auditoría para %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Esta vista só mostra mensaxes e info do sistema. Resulta útil para atopar as últimas accións sen ter que desprazarse a través das mensaxes normais.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -510,8 +500,6 @@
     <string name="group_self_not_in_group">Debes ser membro do grupo para executar esta acción.</string>
     <string name="profile_encryption">Cifrado</string>
     <string name="profile_shared_chats">Conversas compartidas</string>
-    <!-- deprecated -->
-    <string name="related_chats">Conversas relacionadas</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Membros anteriores</string>
     <string name="tab_contact">Contacto</string>
@@ -578,7 +566,7 @@
     <string name="sending">Enviando...</string>
     <string name="last_msg_sent_successfully">Enviouse correctamente a última mensaxe.</string>
     <string name="not_supported_by_provider">O teu provedor non ten soporte</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Mensaxes</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">Utilizado %1$s de %2$s</string>
@@ -589,7 +577,7 @@
     <string name="onboarding_create_instant_account">Crear novo perfil</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Xa teño un perfil</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Acceso clásido con correo</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">O teu perfil</string>
@@ -614,10 +602,6 @@
     <string name="welcome_chat_over_email">Conversas Seguras e Descentralizadas</string>
     <string name="scan_invitation_code">Escanear código de convite</string>
     <string name="login_title">Acceder</string>
-    <!-- deprecated -->
-    <string name="login_header">Accede ao teu servidor</string>
-    <!-- deprecated -->
-    <string name="login_explain">Accede cunha conta de correo existente</string>
     <string name="login_inbox">Entrada</string>
     <string name="login_imap_login">identificador IMAP</string>
     <string name="login_imap_server">Servidor IMAP</string>
@@ -682,8 +666,6 @@
     <string name="pref_profile_photo">Imaxe de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
     <string name="blocked_empty_hint">Móstranse aquí os contactos que bloqueas.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Contrasinal e conta</string>
     <string name="pref_who_can_see_profile_explain">A túa foto de perfil e nome móstranse xunto coas túas mensaxes ao comunicarte con outras persoas. A información xa enviada non se pode agochar o borrar.</string>
     <string name="pref_your_name">O teu nome</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -740,33 +722,19 @@
     <string name="pref_backup_export_all">Exportar todos os %1$d perfís</string>
     <string name="pref_backup_export_start_button">Inciar respaldo</string>
     <string name="pref_backup_written_to_x">Respaldo gardado en \"%1$s\".</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Exportar chaves segredas</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Exportar chaves segredas a \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Exportación correcta das chaves a \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fondo</string>
     <string name="pref_background_btn_default">Usar imaxe por omisión</string>
     <string name="pref_background_btn_gallery">Escoller na galería</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se desactivas esta opción, asegúrate de que o servidor e os teus outros clientes están configurados de xeito acorde.\n\nSe non, algo podería fallar.</string>
     <string name="pref_auto_folder_moves">Mover automáticamente ao cartafol DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">As conversas móvense do cartafol de Entrada para evitar saturalo.</string>
     <string name="pref_only_fetch_mvbox_title">Obter só desde cartafol DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Ignorar outros cartafoles. Require que o teu servidor mova as mensaxes de chat ao cartafol DeltaChat.</string>
     <string name="pref_show_emails">Mostrar correos clásicos</string>
     <string name="pref_show_emails_no">Non, só conversas</string>
     <string name="pref_show_emails_accepted_contacts">Para os contactos aceptados</string>
     <string name="pref_show_emails_all">Todos</string>
     <string name="pref_experimental_features">Zona de probas</string>
     <string name="pref_on_demand_location_streaming">Difusión da ubicación por solicitude</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Modo Desenvolvemento</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Activa opcións de depuración e pode desestabilizar a app. Só para desenvolvedoras.</string>
     <string name="pref_background_default">Fondo por omisión</string>
     <string name="pref_background_default_color">Cor por omisión</string>
     <string name="pref_background_custom_image">Imaxe persoal</string>
@@ -825,17 +793,6 @@
     <string name="autodel_after_1_week">Após 1 semana</string>
     <string name="after_5_weeks">Após 5 semanas</string>
     <string name="autodel_after_1_year">Após 1 ano</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Enviar Mensaxe de Configuración Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Unha Mensaxe de Configuración Autocrypt comparte de xeito seguro o teu cifrado extremo-a-extremo con outras apps compatibles con Autocrypt.\n\nO axuste realízase cifrado e protexido cun código que se debe escribir no outro dispositivo.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Enviar Mensaxe de Configuración Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Os axustes envíanse a ti mesma. Vaite ao outro dispositivo e abre a mensaxe de configuración. Debería solicitarche un código. Introduce os seguintes díxitos:</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Preferir cifrado extremo-a-extremo</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Mensaxe de %1$s</string>
@@ -932,7 +889,6 @@
     <string name="withdraw_verifygroup_explain">Este código QR permite que outras persoas se unan ao grupo \"%1$s\".\n\nPodes desactivar aquí o código QR e reactivalo volvéndoo a escanear.</string>
     <string name="withdraw_qr_code">Desactivar código QR</string>
     <string name="revive_verifycontact_explain">Este código QR podía ser escaneado por outras persoas para contactar contigo.\n\nO código QR non está activo neste dispositio.</string>
-    <string name="revive_verifygroup_explain">O código QR podía ser escaneado por outras persoas para unirse ao grupo \"%1$s\".\n\nO código QR non está activo neste dispositivo.</string>
     <string name="revive_qr_code">Activar código QR</string>
     <string name="qrshow_title">Código QR de convite</string>
     <string name="qrshow_x_joining">%1$s uneuse.</string>
@@ -1037,9 +993,6 @@
     <string name="name_desktop">Nome</string>
     <string name="select_group_image_desktop">Escoller imaxe do grupo</string>
     <string name="export_backup_desktop">Exportar respaldo</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Axuste Autocrypt transferido.</string>
-    <string name="forget_login_confirmation_desktop">Eliminar esta conexión? Borrarase todo, incluíndo os axustes de cifrado, contactos, conversas, mensaxes e ficheiros de medios. Esta acción non ten volta atrás.</string>
     <string name="message_detail_sent_desktop">enviado</string>
     <string name="message_detail_received_desktop">recibido</string>
     <string name="menu.view.developer.open.log.folder">Abrir cartafol do rexistro</string>

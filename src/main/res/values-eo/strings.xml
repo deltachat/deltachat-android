@@ -314,8 +314,6 @@
     <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
     <!-- contact list -->
     <string name="contacts_title">Kontaktoj</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Enigi nomon aŭ retadreson</string>
     <string name="contacts_type_email_above">Enigu retadreson supren</string>
 
 
@@ -351,6 +349,7 @@
     <string name="show_location_traces">Montri spurojn</string>
     <string name="add_poi">Sendi punkton de intereso</string>
 
+
     <!-- search -->
     <string name="search">Serĉi</string>
     <string name="search_explain">Serĉi babilojn, kontaktojn, kaj mesaĝojn</string>
@@ -374,8 +373,6 @@
     <string name="send_message">Sendi mesaĝon</string>
 
     <string name="login_title">Ensaluti</string>
-    <!-- deprecated -->
-    <string name="login_header">Ensaluti al via servilo</string>
     <string name="login_inbox">Ricevujo</string>
     <string name="login_imap_login">IMAP salutnomo</string>
     <string name="login_imap_server">IMAP servilo</string>
@@ -405,8 +402,6 @@
 
     <string name="pref_profile_photo">Profilbildo</string>
     <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Pasvorto kaj konto</string>
     <string name="pref_your_name">Via nomo</string>
     <string name="pref_enter_sends">La Eniga klavo kaŭzas sendon</string>
     <string name="pref_enter_sends_explain">Premado de la Eniga klavo sendos mesaĝojn</string>
@@ -446,18 +441,11 @@
     <string name="pref_backup_explain">Savkopii babilojn al ekstera memorilo</string>
     <string name="pref_backup_export_start_button">Komenci savkopiadon</string>
     <string name="pref_backup_written_to_x">Savkopio sukcese konservita al \"%1$s\".</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Eksporti sekretajn ŝlosilojn</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Ĉu eksporti sekretajn ŝlosilojn al \"%1$s\"?</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fono</string>
     <string name="pref_background_btn_default">Uzi defaŭltan bildon</string>
     <string name="pref_background_btn_gallery">Elekti el galerio</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Preferi tutvojan ĉifradon</string>
-
     <!-- notifications  -->
     <string name="notify_reply_button">Respondi</string>
     <string name="notify_new_message">Nova mesaĝo</string>

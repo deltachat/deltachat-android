@@ -334,8 +334,6 @@
     <string name="menu_save_log">Ruaje Regjistrin</string>
     <string name="menu_more_options">Më Tepër Mundësi</string>
     <string name="menu_learn_spelling">Mëso Drejtshkrim</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Regjistër Auditimi Fjalosjeje</string>
     <string name="jump_to_message">Hidhu te Mesazh</string>
     <string name="jump_to_original_message">Hidhu te Mesazhi Origjinal</string>
     <string name="copy_json">Kopjo JSON</string>
@@ -429,8 +427,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kontakte</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Jepni emër ose adresë email</string>
     <string name="contacts_type_email_above">Shtypni më sipër adresën email</string>
 
 
@@ -501,12 +497,6 @@
     <string name="show_location_traces">Shfaq gjurmë</string>
     <string name="add_poi">Dërgo pikë interesi</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">Mesazhet e sistemit për këtë fjalosje do të shfaqen këtu</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Regjistër Auditimi Fjalosjeje %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Shfaq vetëm mesazhe sistemi dhe informacionesh; e dobishme për gjetjen e veprimeve të fundit pa u dashur të parakalohet nëpër mjaft mesazhe.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -539,8 +529,6 @@
     <string name="group_self_not_in_group">Që të kryeni këtë veprim, duhet të jeni anëtar i grupit.</string>
     <string name="profile_encryption">Fshehtëzim</string>
     <string name="profile_shared_chats">Fjalosje të Përbashkëta</string>
-    <!-- deprecated -->
-    <string name="related_chats">Fjalosje të Afërta</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Anëtarë të Dikurshëm</string>
     <string name="tab_contact">Kontakt</string>
@@ -607,7 +595,7 @@
     <string name="sending">Po dërgohet…</string>
     <string name="last_msg_sent_successfully">Mesazhi i fundit i dërguar me sukses.</string>
     <string name="not_supported_by_provider">I pambuluar nga furnizuesi juaj i shërbimit</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Mesazhe</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s nga %2$s gjithsej</string>
@@ -618,7 +606,7 @@
     <string name="onboarding_create_instant_account">Krijoni Profil të Ri</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Kam Tashmë një Profil</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Hyrje Klasike Me Email</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profili Juaj</string>
@@ -644,10 +632,6 @@
     <string name="scan_invitation_code">Skanoni Kod Ftese</string>
     <string name="login_title">Hyni</string>
     <string name="login_advanced_hint">Kjo hyrje është për përdorues të përparuar:\n\n• Mos përdorni një llogari që po e përdorni me një aplikacion tjetër.\n\n• Shërbyesi klasik i email-eve lejon fjalosje pa fshehtëzim skaj-më-skaj, shënuar me një ikonë poste.</string>
-    <!-- deprecated -->
-    <string name="login_header">Hyni te Llogaria juaj Email</string>
-    <!-- deprecated -->
-    <string name="login_explain">Hyni me një llogari email ekzistuese.</string>
     <string name="login_inbox">Të marrë</string>
     <string name="login_imap_login">Emër Hyrjeje në IMAP</string>
     <string name="login_imap_server">Shërbyes IMAP</string>
@@ -674,14 +658,15 @@
     <string name="proxy_share_link">Jepeni Lidhjen</string>
     <string name="proxy_enabled">Ndërmjetësi u Aktivizua</string>
     <string name="proxy_enabled_hint">Po përdorni një ndërmjetës. Nëse keni problemi për t’u lidhur, provoni një ndërmjetës tjetër.</string>
-    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
     <string name="transports">Rele</string>
     <string name="add_transport">Shtoni Rele</string>
     <string name="remove_transport">Hiqni Rele</string>
     <string name="edit_transport">Përpunoni Rele</string>
-    <!-- shown if a QR code was scanned that can be used as a transport -->
+    <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Të shtohet kjo rele?</string>
     <string name="invalid_transport_qr">Kodi QR i skanuar s’përmban një rele të vlefshme.</string>
+    <!-- placeholder will be replaced by a relay server name -->
     <string name="confirm_remove_transport">Të hiqet releja “%1$s”?\n\nKontaktet tuaja munden t’ju kapin vetëm nëse jeni lidhur me ta më herët përmes një releje tjetër.\n\n\n\nNëse jeni në mëdyshje, hiqeni relenë më vonë.</string>
 
     <string name="login_certificate_checks">Kontrolle Dëshmish</string>
@@ -732,8 +717,6 @@
     <string name="pref_profile_photo">Foto Profili</string>
     <string name="pref_blocked_contacts">Kontakte të Bllokuar</string>
     <string name="blocked_empty_hint">Kontaktet e bllokuara do të shfaqen këtu.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Fjalëkalim dhe Llogari</string>
     <string name="pref_who_can_see_profile_explain">Fotoja juaj e profilit, emri dhe jetëshkrimi do të dërgohen tok me mesazhet tuaj, kur komunikoni me përdorues të tjerë.</string>
     <string name="pref_your_name">Emri Juaj</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -777,10 +760,6 @@
     <string name="pref_server">Shërbyes</string>
     <string name="pref_encryption">Fshehtëzim</string>
     <string name="pref_manage_keys">Administroni Kyçe</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">Të Lexojë Libër Adresash Sistemi</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts_explain">Ofro krijim fjalosjesh me kontakte prej libri adresash.</string>
     <string name="pref_chats">Fjalosje</string>
     <string name="pref_in_chat_sounds">Tinguj Brenda Fjalosjeje</string>
     <string name="pref_view_log">Shihni Regjistrin</string>
@@ -796,12 +775,6 @@
     <string name="pref_backup_export_all">Eksporto krejt %1$d proflet</string>
     <string name="pref_backup_export_start_button">Nis Kopjeruajtjen</string>
     <string name="pref_backup_written_to_x">Kopjeruajtje e shkruar me sukses te “%1$s”</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Eksportoni Kyçe të Fshehtë</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Të eksportohen kyçet e fshehtë te “%1$s”?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Kyçe të fshehtë shkruar me sukses te “%1$s”.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Sfond</string>
     <string name="pref_background_btn_default">Përdor Figurën Parazgjedhje</string>
@@ -812,21 +785,13 @@
     <string name="pref_multidevice_explain">Njëkohësoni mesazhet tuaj në pajisje tuajat të tjera. E aktivizuar automatikisht gjatë shtimit të një pajisjeje të dytë</string>
     <string name="pref_multidevice_change_warn">Mënyra Shumë-Pajisje duhet aktivizuar, kur përdoret i njëjti profil në disa pajisje. Çaktivizojeni këtë rregullim vetëm në se e keni hequr këtë profil nga krejt pajisjet tuaja të tjera.\n\nÇaktivizimi i Mënyrës Shumë-Pajisje, teksa përdoret profili në disa pajisje, do të sjellë mesazhe të humbura dhe probleme të tjera.</string>
     <string name="pref_auto_folder_moves">Kaloji vetvetiu te Dosja DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Bisedat zhvendosen, që të shmanget rrëmuja te dosja Të marrë</string>
     <string name="pref_only_fetch_mvbox_title">Sill Vetëm nga Dosje DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Shpërfill dosje të tjera. Lyp që shërbyesi juaj të kalojë mesazhe fjalosjeje te dosje DeltaChat.</string>
     <string name="pref_show_emails">Shfaq Email-e Klasikë</string>
     <string name="pref_show_emails_no">Jo, vetëm fjalosje</string>
     <string name="pref_show_emails_accepted_contacts">Për kontakte të pranuar</string>
     <string name="pref_show_emails_all">Krejt</string>
     <string name="pref_experimental_features">Veçori Eksperimentale</string>
     <string name="pref_experimental_features_explain">Këto veçori mund të jenë të paqëndrueshme dhe mund të ndryshohen, ose hiqen</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Mënyra Zhvillues</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Aktivizon mundësi diagnostikimi dhe mund ta bëjë aplikacionin më pak të qëndrueshëm. Vetëm për zhvillues.</string>
     <string name="pref_background_default">Figurë parazgjedhje</string>
     <string name="pref_background_default_color">Ngjyrë parazgjedhje</string>
     <string name="pref_background_custom_image">Figurë vetjake</string>
@@ -897,17 +862,6 @@
     <string name="autodel_after_1_week">Pas 1 jave</string>
     <string name="after_5_weeks">Pas 5 javësh</string>
     <string name="autodel_after_1_year">Pas 1 viti</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Dërgo Mesazh Rregullimi Autocrypt-i</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Një “Mesazh Rregullimi Autocrypt-i“ ua jep, në mënyrë të parrezik, rregullimin tuaj për fshehtëzimin skaj-më-skaj pajisjeve të tjera që përdorin Autocrypt-in.\n\nNëse përdorni Delta Chat edhe në pajisjen tjetër, përdorni “Rregullime / Shtoni Pajisje të Dytë”.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Dërgo Mesazh Rregullimi Autocrypt-i</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Rregullimi juaj u dërgua te ju. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do t\’ju kërkohet një kod rregullimi. Shtypni atje shifrat vijuese:</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Parapëlqe Fshehtëzim Skaj-Më-Skaj</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Mesazh nga %1$s</string>
@@ -1019,8 +973,6 @@
     <string name="withdraw_joinbroadcast_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e kanalit “%1$s”.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të funksionojnë më.</string>
     <string name="withdraw_qr_code">Riprodho Kodin QR</string>
     <string name="revive_verifycontact_explain">Ky kod QR është riprodhuar dhe s’është më i vlefshëm.</string>
-    <string name="revive_verifygroup_explain">Ky kod QR për pjesëmarrje në grupin “%1$s” është riprodhuar dhe s’është më i vlefshëm.</string>
-    <string name="revive_joinbroadcast_explain">Ky kod QR për pjesëmarrje në kanalin “%1$s” është riprodhuar dhe s’është më i vlefshëm.</string>
     <string name="revive_qr_code">Aktivizoni Kod QR</string>
     <string name="qrshow_title">Kod QR Ftese</string>
     <string name="qrshow_x_joining">%1$s vjen.</string>
@@ -1136,9 +1088,6 @@
     <string name="name_desktop">Emër</string>
     <string name="select_group_image_desktop">Përzgjidhni Figurë Grupi</string>
     <string name="export_backup_desktop">Eksportoni Kopjeruajtje</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Ujdisja e Autocrypt-it u shpërngul.</string>
-    <string name="forget_login_confirmation_desktop">Të fshihet ky profil? Do të fshihet gjithçka, përfshi ujdisjen tuaj të fshehtëzimit skaj-më-skaj, kontaktet, fjalosjet, mesazhet dhe mediat. Ky veprim s\’mund të zhbëhet.</string>
     <string name="message_detail_sent_desktop">të dërguar</string>
     <string name="message_detail_received_desktop">të marrë</string>
     <string name="menu.view.developer.open.log.folder">Hap Dosje Regjistrash</string>
