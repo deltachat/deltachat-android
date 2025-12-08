@@ -387,7 +387,7 @@
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">منپیز وابی</string>
     <string name="sending">هونی افشنه...</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">پیوما</string>
     <string name="sync_all">ورۊ کردن پوی</string>
     <string name="pref_your_name">نوم ایسا</string>

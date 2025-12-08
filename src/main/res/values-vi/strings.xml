@@ -253,8 +253,6 @@
     <string name="menu_save_log">Lưu nhật ký</string>
     <string name="menu_more_options">Tùy chọn khác</string>
     <string name="menu_learn_spelling">Học đánh vần</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Nhật ký kiểm tra trò chuyện</string>
     <string name="jump_to_message">Chuyển tới tin nhắn</string>
     <string name="copy_json">Sao chép JSON</string>
     <string name="replace_draft">Thay thế bản nháp</string>
@@ -313,8 +311,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Danh bạ</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Nhập tên hoặc địa chỉ e-mail</string>
     <string name="contacts_type_email_above">Nhập địa chỉ e-mail ở trên</string>
 
 
@@ -377,12 +373,6 @@
     <string name="show_location_traces">Hiển thị dấu vết</string>
     <string name="add_poi">Gửi điểm ưa thích</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">Tin nhắn hệ thống cho cuộc trò chuyện này xuất hiện ở đây</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Nhật ký kiểm tra trò chuyện cho %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Chỉ hiển thị thông báo hệ thống và thông tin; hữu ích cho việc tìm kiếm các hành động trò chuyện cuối cùng mà không cần phải cuộn qua nhiều tin nhắn.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -411,8 +401,6 @@
     <string name="group_self_not_in_group">Bạn phải là thành viên của nhóm để thực hiện hành động này.</string>
     <string name="profile_encryption">Mã hóa</string>
     <string name="profile_shared_chats">Cuộc trò chuyện được chia sẻ</string>
-    <!-- deprecated -->
-    <string name="related_chats">Cuộc trò chuyện liên quan</string>
     <string name="tab_contact">Liên hệ</string>
     <string name="tab_group">Nhóm</string>
     <string name="tab_gallery">Thư viện</string>
@@ -475,7 +463,7 @@
     <string name="sending">Đang gửi…</string>
     <string name="last_msg_sent_successfully">Tin nhắn cuối cùng được gửi thành công.</string>
     <string name="not_supported_by_provider">Không được nhà cung cấp của bạn hỗ trợ.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Tin nhắn</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s trong tổng số %2$s đã được sử dụng</string>
@@ -483,10 +471,6 @@
 
     <string name="scan_invitation_code">Quét mã mời</string>
     <string name="login_title">Đăng nhập</string>
-    <!-- deprecated -->
-    <string name="login_header">Đăng nhập vào tài khoản E-Mail của bạn</string>
-    <!-- deprecated -->
-    <string name="login_explain">Đăng nhập bằng tài khoản e-mail hiện có</string>
     <string name="login_inbox">Hộp thư đến</string>
     <string name="login_imap_login">Tên đăng nhập IMAP</string>
     <string name="login_imap_server">Máy chủ IMAP</string>
@@ -537,8 +521,6 @@
     <string name="pref_profile_photo">Ảnh hồ sơ</string>
     <string name="pref_blocked_contacts">Liên hệ bị chặn</string>
     <string name="blocked_empty_hint">Các liên hệ bị chặn sẽ xuất hiện ở đây.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Mật khẩu và tài khoản</string>
     <string name="pref_who_can_see_profile_explain">Ảnh hồ sơ, tên và chữ ký của bạn sẽ được gửi cùng với tin nhắn của bạn khi giao tiếp với người dùng khác.</string>
     <string name="pref_your_name">Tên của bạn</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -591,33 +573,19 @@
     <string name="pref_backup_export_all">Xuất tất cả tài khoản %1$d</string>
     <string name="pref_backup_export_start_button">Bắt đầu sao lưu</string>
     <string name="pref_backup_written_to_x">Sao lưu được ghi thành công vào \"%1$s\".</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Xuất khóa bí mật</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Xuất khóa bí mật sang \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Khóa bí mật được ghi thành công vào \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Hình nền</string>
     <string name="pref_background_btn_default">Sử dụng hình ảnh mặc định</string>
     <string name="pref_background_btn_gallery">Chọn từ thư viện</string>
     <string name="pref_imap_folder_warn_disable_defaults">Nếu bạn thay đổi tùy chọn này, hãy đảm bảo rằng máy chủ và các máy khách khác của bạn được cấu hình tương ứng.\n\nNếu không, mọi thứ có thể không hoạt động.</string>
     <string name="pref_auto_folder_moves">Tự động di chuyển đến Thư mục DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Các cuộc trò chuyện được di chuyển để tránh làm lộn xộn Hộp thư đến</string>
     <string name="pref_only_fetch_mvbox_title">Chỉ tìm nạp từ thư mục DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Bỏ qua các thư mục khác. Yêu cầu máy chủ của bạn di chuyển tin nhắn trò chuyện vào thư mục DeltaChat.</string>
     <string name="pref_show_emails">Hiển thị E-mail cổ điển</string>
     <string name="pref_show_emails_no">Không, chỉ trò chuyện</string>
     <string name="pref_show_emails_accepted_contacts">Đối với các liên hệ được chấp nhận</string>
     <string name="pref_show_emails_all">Tất cả</string>
     <string name="pref_experimental_features">Tính năng thử nghiệm</string>
     <string name="pref_on_demand_location_streaming">Truyền phát vị trí theo yêu cầu</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Chế độ nhà phát triển</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Kích hoạt các tùy chọn gỡ lỗi và có thể làm cho ứng dụng kém ổn định hơn. Chỉ dành cho nhà phát triển.</string>
     <string name="pref_background_default">Hình ảnh mặc định</string>
     <string name="pref_background_default_color">Màu mặc định</string>
     <string name="pref_background_custom_image">Hình ảnh tùy chỉnh</string>
@@ -674,17 +642,6 @@
     <string name="autodel_after_1_week">Sau 1 tuần</string>
     <string name="after_5_weeks">Sau 5 tuần</string>
     <string name="autodel_after_1_year">Sau 1 năm</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Gửi tin nhắn thiết lập Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Thông báo thiết lập Autocrypt chia sẻ an toàn thiết lập end-to-end của bạn với các ứng dụng tương thích Autocrypt khác.\n\nThiết lập sẽ được mã hóa bằng mã thiết lập được hiển thị ở đây và phải được nhập trên thiết bị kia.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Gửi tin nhắn thiết lập Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Thiết lập của bạn đã được gửi cho chính bạn. Chuyển sang thiết bị khác và mở thông báo thiết lập. Bạn sẽ được yêu cầu nhập mã thiết lập. Nhập các chữ số sau:</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Ưu tiên mã hóa đầu cuối</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Tin nhắn từ %1$s</string>
@@ -780,7 +737,6 @@
     <string name="withdraw_verifygroup_explain">Những người khác có thể quét mã QR này để tham gia nhóm \"%1$s\".\n\nBạn có thể tắt mã QR tại đây và kích hoạt lại bằng cách quét lại.</string>
     <string name="withdraw_qr_code">Vô hiệu hóa mã QR</string>
     <string name="revive_verifycontact_explain">Mã QR này có thể được người khác quét để liên hệ với bạn.\n\nMã QR không hoạt động trên thiết bị này.</string>
-    <string name="revive_verifygroup_explain">Những người khác có thể quét mã QR này để tham gia nhóm \"%1$s\".\n\nMã QR không hoạt động trên thiết bị này.</string>
     <string name="revive_qr_code">Kích hoạt mã QR</string>
     <string name="qrshow_title">Mã mời QR</string>
     <string name="qrshow_x_joining">%1$s tham gia.</string>
@@ -882,9 +838,6 @@
     <string name="name_desktop">Tên</string>
     <string name="select_group_image_desktop">Chọn hình ảnh nhóm</string>
     <string name="export_backup_desktop">Xuất bản sao lưu</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Đã chuyển thiết lập Autocrypt.</string>
-    <string name="forget_login_confirmation_desktop">Xóa thông tin đăng nhập này? Mọi thứ sẽ bị xóa, bao gồm thiết lập đầu cuối, danh bạ, cuộc trò chuyện, tin nhắn và phương tiện của bạn. Hành động này không thể hoàn tác được.</string>
     <string name="message_detail_sent_desktop">đã gửi</string>
     <string name="message_detail_received_desktop">đã nhận được</string>
     <string name="menu.view.developer.open.log.folder">Mở thư mục nhật ký</string>

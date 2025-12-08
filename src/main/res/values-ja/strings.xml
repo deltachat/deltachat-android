@@ -253,8 +253,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">連絡先一覧</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">名前かメールアドレスを入力</string>
     <string name="contacts_type_email_above">上にメールアドレスを入力してください。</string>
 
 
@@ -299,6 +297,7 @@
     <string name="show_location_traces">トレースを表示する</string>
     <string name="add_poi">指定位置を送る</string>
 
+
     <string name="puny_code_warning_header">疑わしいリンクが検出された</string>
     <!-- search -->
     <string name="search">検索</string>
@@ -336,10 +335,6 @@
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">接続済み</string>
     <string name="login_title">ログイン</string>
-    <!-- deprecated -->
-    <string name="login_header">自分のメールサーバーにログインする</string>
-    <!-- deprecated -->
-    <string name="login_explain">既存のメールアカウントにログインする</string>
     <string name="login_inbox">受信</string>
     <string name="login_imap_login">IMAPログイン名</string>
     <string name="login_imap_server">IMAPサーバー</string>
@@ -387,8 +382,6 @@
     <string name="pref_profile_photo">アイコン画像</string>
     <string name="pref_blocked_contacts">ブロックされた人</string>
     <string name="blocked_empty_hint">ブロックされた連絡先がここに表示されます。</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">パスワードとアカウント</string>
     <string name="pref_who_can_see_profile_explain">アイコン画像や名前は他のユーザーに連絡するとメッセージとともに表示されます。既に送信された情報を削除することができます。</string>
     <string name="pref_your_name">あなたの名前</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -439,19 +432,11 @@
     <string name="pref_backup_export_explain">バックアップは、本デバイスまたは別のデバイスに新たにインストールする際に役立ちます。\n\nこのバックアップには、すべてのメッセージ、連絡先、チャット、およびエンドツーエンドの自動暗号化設定が含まれます。バックアップファイルは安全な場所に保管するか、できるだけ早く削除してください。</string>
     <string name="pref_backup_export_start_button">バックアップを開始する</string>
     <string name="pref_backup_written_to_x">バックアップは%1$sに正常に完了しました。</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">秘密鍵のエクスポート</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">%1$sに秘密鍵をエクスポートしますか？</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">暗号鍵は%1$sに正常に書き込まれました。</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">デフォルトの画像を使う</string>
     <string name="pref_background_btn_gallery">ギャラリーから選ぶ</string>
     <string name="pref_auto_folder_moves">DeltaChatフォルダに自動で移動する</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">チャットは受信箱の邪魔にならないように移動されます。</string>
     <string name="pref_show_emails">一般的なメールを表示する</string>
     <string name="pref_show_emails_no">いいえ、チャットのみ</string>
     <string name="pref_show_emails_accepted_contacts">許可されたユーザーのみ</string>
@@ -494,15 +479,6 @@
     <string name="autodel_after_1_week">1週間後</string>
     <string name="after_5_weeks">5週間後</string>
     <string name="autodel_after_1_year">1年後</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">自動暗号化設定用ﾒｯｾｰｼﾞを送信する</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">｢自動暗号化設定用メッセージ｣は安全に一対一暗号化設定を対応するアプリケーションとの間に設定します｡\n \n 受信側は設定時に表示されるパスコードを入力する必要が有ります｡</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">自動暗号化設定用ﾒｯｾｰｼﾞを送信する</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">エンドツーエンド暗号化を好む</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">%1$sさんからのメッセージ</string>
@@ -629,8 +605,6 @@
     <string name="name_desktop">名前</string>
     <string name="select_group_image_desktop">グループ画像を選択する</string>
     <string name="export_backup_desktop">バックアップをエクスポート</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">自動暗号化設定が転送されました</string>
     <string name="message_detail_sent_desktop">送信済み</string>
     <string name="message_detail_received_desktop">届きました</string>
     <string name="menu.view.developer.open.log.folder">ログフォルダを開く</string>

@@ -31,8 +31,8 @@
   <li><a href="#webxdc">Apps in chat</a>
     <ul>
       <li><a href="#dove-posso-trovare-le-apps-in-chat">Dove posso trovare le apps in chat?</a></li>
-      <li><a href="#how-private-are-in-chat-apps">How private are in-chat apps?</a></li>
-      <li><a href="#create-xdc">How can I create my own in-chat apps?</a></li>
+      <li><a href="#quanto-sono-private-le-apps-di-chat">Quanto sono private le apps di chat?</a></li>
+      <li><a href="#create-xdc">Come posso creare le mie app di chat?</a></li>
     </ul>
   </li>
   <li><a href="#instant-delivery">Consegna messaggi istantanei e Notifiche Push</a>
@@ -57,7 +57,7 @@
       <li><a href="#experimental-features">Experimental Features</a></li>
       <li><a href="#statssending">What is “Send statistics to Delta Chat’s developers”?</a></li>
       <li><a href="#can-i-use-a-classic-email-address-with-delta-chat">Can I use a classic email address with Delta Chat?</a></li>
-      <li><a href="#classic-email">How can I configure a chat profile with a classic email address as transport?</a></li>
+      <li><a href="#classic-email">How can I configure a chat profile with a classic email address as relay?</a></li>
       <li><a href="#vorrei-gestire-il-mio-server-per-delta-chat-cosa-mi-consigliate">Vorrei gestire il mio server per Delta Chat. Cosa mi consigliate?</a></li>
       <li><a href="#sono-interessato-ai-dettagli-tecnici-mi-puoi-dire-di-più">Sono interessato ai dettagli tecnici. Mi puoi dire di più?</a></li>
     </ul>
@@ -633,40 +633,40 @@ Questo rende Delta Chat un servizio di messaggistica davvero espandibile.</p>
     <p>In una chat, utilizzando <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Pulsante Allegato → Apps</strong></p>
   </li>
   <li>
-    <p>You can also <a href="#create-xdc">create your own app</a> and attach it using <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attachment Button → File</strong></p>
+    <p>Puoi anche <a href="#create-xdc">creare la tua app</a> e allegarla usando <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Pulsante Allegato → File</strong></p>
   </li>
 </ul>
     
-      <h3 id="how-private-are-in-chat-apps">
+      <h3 id="quanto-sono-private-le-apps-di-chat">
         
         
-          How private are in-chat apps? <a href="#how-private-are-in-chat-apps" class="anchor"></a>
+          Quanto sono private le apps di chat? <a href="#quanto-sono-private-le-apps-di-chat" class="anchor"></a>
         
         
       </h3>
 
 <ul>
   <li>
-    <p>In-chat apps can not send data to the Internet, or download anything.</p>
+    <p>Le apps di chat non possono inviare dati a Internet né scaricare nulla.</p>
   </li>
   <li>
-    <p>An in-chat app can only exchange data within a Delta Chat chat, with its
-copies on the devices of your chat partners. Other than that, it’s completely
-isolated from the Internet.</p>
+    <p>Un’app in-chat può scambiare dati solo all’interno di una chat Delta Chat, con le sue
+copie sui dispositivi dei tuoi interlocutori. A parte questo, è completamente
+isolata da Internet.</p>
   </li>
   <li>
-    <p>The privacy an in-chat app offers is the privacy of your chat - as long as you
-trust the people you chat with, you can trust the in-chat app as well.</p>
+    <p>La privacy offerta da un’app di chat è la privacy della tua chat: finché
+ti fidi delle persone con cui chatti, puoi fidarti anche dell’app di chat.</p>
   </li>
   <li>
-    <p>This also means: Just like for web links, do not open apps from untrusted contacts.</p>
+    <p>questo significa anche: proprio come per i link web, non aprire app provenienti da contatti non attendibili.</p>
   </li>
 </ul>
     
       <h3 id="create-xdc">
         
         
-          How can I create my own in-chat apps? <a href="#create-xdc" class="anchor"></a>
+          Come posso creare le mie app di chat? <a href="#create-xdc" class="anchor"></a>
         
         
       </h3>
@@ -1053,7 +1053,7 @@ while chatmail apps and relays pervasively enforce end-to-end encryption and sec
   </li>
   <li>
     <p>Non-chatmail apps use email servers as a long-term message archive
-while chatmail clients use email servers for ephemeral instant message transport.</p>
+while chatmail clients use email servers for ephemeral instant message relay.</p>
   </li>
   <li>
     <p>Supporting the full variety of classic email setups
@@ -1065,7 +1065,7 @@ and complicate making chatmail-based messaging more resilient, reliable and fast
       <h3 id="classic-email">
         
         
-          How can I configure a chat profile with a classic email address as transport? <a href="#classic-email" class="anchor"></a>
+          How can I configure a chat profile with a classic email address as relay? <a href="#classic-email" class="anchor"></a>
         
         
       </h3>
@@ -1074,7 +1074,7 @@ and complicate making chatmail-based messaging more resilient, reliable and fast
 unless you are prepared to deal with encrypted messages in the inbox,
 double notifications, accidentally deleted emails or similar annoyances.</p>
 
-<p>You can configure a email address for chatting at <strong>New Profile → Use Other Server → Use Classic Mail as Transport</strong>.
+<p>You can configure a email address for chatting at <strong>New Profile → Use Other Server → Use Classic Mail as Relay</strong>.
 Note that classic email providers will generally not support <a href="#instant-delivery">Push Notifications</a>
 and have other limitations, see <a href="https://providers.delta.chat">Provider Overview</a>.
 Chatmail uses the default INBOX for relay; ensure the provider setup does too. 

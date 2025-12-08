@@ -269,8 +269,6 @@
     <string name="menu_save_log">Spara logg</string>
     <string name="menu_more_options">Mer alternativ</string>
     <string name="menu_learn_spelling">Lär stavning</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Granskningslogg av chatt</string>
     <string name="jump_to_message">Hoppa till meddelande</string>
     <string name="copy_json">Kopiera JSON</string>
     <string name="replace_draft">Ersätt utkast</string>
@@ -332,8 +330,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Ange namn eller e-postadress</string>
     <string name="contacts_type_email_above">Skriv in e-postadressen ovan</string>
 
 
@@ -399,12 +395,6 @@
     <string name="show_location_traces">Visa spår</string>
     <string name="add_poi">Skicka intressant plats</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">Systemmeddelanden för denna chatt visas här</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Chattgranskningslogg för %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Visar endast system- och informationsmeddelanden; användbart för att hitta de senaste chattåtgärderna utan att skrolla igenom många meddelanden.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -433,8 +423,6 @@
     <string name="group_self_not_in_group">Du måste vara medlem i gruppen för att utföra denna åtgärd.</string>
     <string name="profile_encryption">Kryptering</string>
     <string name="profile_shared_chats">Delade chattar</string>
-    <!-- deprecated -->
-    <string name="related_chats">Relaterade chattar</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupp</string>
     <string name="tab_gallery">Galleri</string>
@@ -497,7 +485,7 @@
     <string name="sending">Skickar...</string>
     <string name="last_msg_sent_successfully">Senaste meddelandet skickat felfritt.</string>
     <string name="not_supported_by_provider">Stöds ej av din leverantör.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Meddelanden</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s av %2$s används</string>
@@ -508,7 +496,7 @@
     <string name="onboarding_create_instant_account">Skapa ny profil</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Jag har redan en profil</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Klassisk e-postinloggning</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Din profil</string>
@@ -533,10 +521,6 @@
     <string name="welcome_chat_over_email">Säker decentraliserad chatt</string>
     <string name="scan_invitation_code">Skanna inbjudningskod</string>
     <string name="login_title">Logga in</string>
-    <!-- deprecated -->
-    <string name="login_header">Logga in på din server</string>
-    <!-- deprecated -->
-    <string name="login_explain">Logga in med ett befintligt e-postkonto</string>
     <string name="login_inbox">Inkorg</string>
     <string name="login_imap_login">IMAP inloggningsnamn</string>
     <string name="login_imap_server">IMAP server</string>
@@ -587,8 +571,6 @@
     <string name="pref_profile_photo">Profilbild</string>
     <string name="pref_blocked_contacts">Blockerade kontakter</string>
     <string name="blocked_empty_hint">Blockerade kontakter kommer att visas här.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Lösenord och konto</string>
     <string name="pref_who_can_see_profile_explain">Din profilbild och ditt namn visas tillsammans med dina meddelanden när du kommunicerar med andra användare. Information som redan skickats kan inte tas bort eller flyttas.</string>
     <string name="pref_your_name">Ditt namn</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -629,10 +611,6 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Kryptering</string>
     <string name="pref_manage_keys">Hantera nycklar</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">Läs systemets adressbok</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts_explain">Erbjud att skapa chattar med kontakter från adressboken. Vissa leverantörer behöver först konfigureras för totalsträckskryptering.</string>
     <string name="pref_chats">Chattar</string>
     <string name="pref_in_chat_sounds">Ljud i konversationer</string>
     <string name="pref_view_log">Visa logg</string>
@@ -647,33 +625,19 @@
     <string name="pref_backup_export_all">Exportera all %1$d profiler</string>
     <string name="pref_backup_export_start_button">Starta säkerhetskopiering</string>
     <string name="pref_backup_written_to_x">Säkerhetskopia korrekt skriven till \"%1$s\".</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Exportera säkerhetsnycklar</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Exportera säkerhetsnycklar till \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Säkerhetsnycklar korrekt skrivna till \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Bakgrund</string>
     <string name="pref_background_btn_default">Använd standardbild</string>
     <string name="pref_background_btn_gallery">Välj från galleriet</string>
     <string name="pref_imap_folder_warn_disable_defaults">Om du inaktiverar det här alternativet, tillse att servern och dina andra klienter är konfigurerade i enlighet med detta.\n\nAnnars kanske saker och ting inte fungerar alls.</string>
     <string name="pref_auto_folder_moves">Flyttas automatiskt till DeltaChat-mappen</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Chattkonversationer flyttas automatiskt för att undvika att inkorgen belamras</string>
     <string name="pref_only_fetch_mvbox_title">Hämta endast från DeltaChat-mappen</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Ignorera andra mappar. Kräver att din server flyttar chattmeddelanden till DeltaChat-mappen.</string>
     <string name="pref_show_emails">Visa vanliga e-postmeddelanden</string>
     <string name="pref_show_emails_no">Nej, bara chattar</string>
     <string name="pref_show_emails_accepted_contacts">För godkända kontakter</string>
     <string name="pref_show_emails_all">Alla</string>
     <string name="pref_experimental_features">Experimentella funktioner</string>
     <string name="pref_on_demand_location_streaming">På-begäran platsströmning</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Utvecklarläge</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Aktiverar felsökningsalternativ och kan göra appen mindre stabil. Endast för utvecklare.</string>
     <string name="pref_background_default">Standardbakgrund</string>
     <string name="pref_background_default_color">Standardfärg</string>
     <string name="pref_background_custom_image">Anpassad bild</string>
@@ -740,17 +704,6 @@
     <string name="autodel_after_1_week">Efter 1 vecka</string>
     <string name="after_5_weeks">Efter 5 veckor</string>
     <string name="autodel_after_1_year">Efter 1 år</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Skicka Autocrypt inställningsmeddelande</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Ett meddelande för att ställa in Autocrypt, delar den informationen med andra Autocrypt-anpassade program på ett säkert sätt. Informationen krypteras med en kod som visas här och som måste matas in på den mottagande enheten.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Skicka Autocrypt inställningsmeddelande</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Dina inställningar har skickats till dig själv. Byt till den andra enheten och öppna inställningsmeddelandet. Du kommer att tillfrågas om en inställningskod. Ange följande siffror:</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Föredra slutpunkt-till-slutpunkt-kryptering</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Meddelande från %1$s</string>
@@ -851,7 +804,6 @@
     <string name="withdraw_verifygroup_explain">Denna QR-kod kan skannas av andra för att gå med i gruppen \"%1$s\".\n\nDu kan avaktivera QR-koden här och återaktivera den genom att skanna den igen.</string>
     <string name="withdraw_qr_code">Avaktivera QR-kod</string>
     <string name="revive_verifycontact_explain">Den här QR-koden kan skannas av andra för att kontakta dig.\n\nQR-koden är inte aktiv på den här enheten.</string>
-    <string name="revive_verifygroup_explain">Den här QR-koden kan skannas av andra för att gå med i gruppen \"%1$s\".\n\nQR-koden är inte aktiv på den här enheten.</string>
     <string name="revive_qr_code">Aktivera QR-kod</string>
     <string name="qrshow_title">QR-kod för inbjudan</string>
     <string name="qrshow_x_joining">%1$s anslutna.</string>
@@ -958,9 +910,6 @@
     <string name="name_desktop">Namn</string>
     <string name="select_group_image_desktop">Välj en gruppbild</string>
     <string name="export_backup_desktop">Exportera säkerhetskopia</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Autocrypt-inställning överförd.</string>
-    <string name="forget_login_confirmation_desktop">Ta bort den här inloggningen? Allt kommer att raderas, inklusive din slutpunkt-till-slutpunkt-inställning, dina kontakter, media och meddelanden. Denna åtgärd kan inte ångras.</string>
     <string name="message_detail_sent_desktop">skickat</string>
     <string name="message_detail_received_desktop">mottaget</string>
     <string name="menu.view.developer.open.log.folder">Öppna loggmappen</string>

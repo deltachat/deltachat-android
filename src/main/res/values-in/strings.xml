@@ -239,8 +239,6 @@
     <string name="menu_save_log">Simpan log</string>
     <string name="menu_more_options">Opsi Lainnya</string>
     <string name="menu_learn_spelling">Belajar Ejaan</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Log Audit Obrolan</string>
     <string name="jump_to_message">Lompat ke Pesan</string>
     <string name="copy_json">Salin JSON</string>
     <string name="title_share_location">Bagikan lokasi kepada seluruh anggota grup</string>
@@ -293,8 +291,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kontak</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Masukkan nama atau alamat email</string>
     <string name="contacts_type_email_above">Ketik alamat email di atas</string>
 
 
@@ -336,6 +332,7 @@
     <string name="show_location_traces">Tunjukkan jejak</string>
     <string name="add_poi">Kirim titik menarik</string>
 
+
     <!-- search -->
     <string name="search">Cari</string>
     <string name="search_explain">Mencari obrolan, kontak dan pesan</string>
@@ -363,10 +360,6 @@
     <string name="send_message">Kirim pesan</string>
 
     <string name="login_title">Masuk</string>
-    <!-- deprecated -->
-    <string name="login_header">Masuk ke server Anda</string>
-    <!-- deprecated -->
-    <string name="login_explain">Masuk dengan akun surel yang ada</string>
     <string name="login_inbox">Surel masuk</string>
     <string name="login_imap_login">Nama login IMAP</string>
     <string name="login_imap_server">Server IMAP</string>
@@ -410,8 +403,6 @@
     <string name="pref_profile_info_headline">Info profil Anda</string>
     <string name="pref_profile_photo">Gambar profil</string>
     <string name="pref_blocked_contacts">Kontak yang diblokir</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Kata sandi dan akun</string>
     <string name="pref_who_can_see_profile_explain">Foto dan nama profil Anda akan tampak bersama dengan pesan-pesan ketika berkomunikasi dengan pengguna lain. Informasi yang telah dikirimkan tidak dapat dihapus atau dipindah.</string>
     <string name="pref_your_name">Nama Anda</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -457,19 +448,11 @@
     <string name="pref_backup_export_explain">Cadangan membantu Anda untuk membuat instalasi baru di perangkat ini atau perangkat lain.\n\nDalam cadangan terdapat semua pesan, kontak dan obrolan dan pengaturan Autocrypt ujung ke ujung Anda. Simpan berkas cadangan di tempat yang aman atau hapus secepatnya.</string>
     <string name="pref_backup_export_start_button">Mulai Cadangkan</string>
     <string name="pref_backup_written_to_x">Cadangan berhasil ditulis ke \"%1$s\".</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Ekspor kunci rahasia</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Ekspor kunci rahasia ke \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Kunci rahasia berhasil ditulis ke \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Latar belakang</string>
     <string name="pref_background_btn_default">Menggunakan gambar default</string>
     <string name="pref_background_btn_gallery">Pilih dari galeri</string>
     <string name="pref_auto_folder_moves">Perpindahan otomatis ke berkas DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Percakapan dipindahkan untuk menghindari memenuhi kotak masuk</string>
     <string name="pref_show_emails">Tampilkan email klasik</string>
     <string name="pref_show_emails_no">Tidak, hanya obrolan saja</string>
     <string name="pref_show_emails_accepted_contacts">Untuk kontak yang telah diterima</string>
@@ -501,17 +484,6 @@
     <string name="autodel_after_1_week">Setelah 1 minggu</string>
     <string name="after_5_weeks">Setelah 5 minggu</string>
     <string name="autodel_after_1_year">Setelah 1 tahun</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Kirim Pengaturan Pesan Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Pengaturan Pesan Autocrypt membagi pengaturan ujung ke ujung Anda secara aman dengan aplikasi Autocrypt-compliant lain.\n\nPengaturan ini akan dienkripsi oleh kode pengaturan yang ditampilkan disini dan harus diketik di perangkat lainnya.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Kirim Pengaturan Pesan Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Pengaturan Anda sudah dikirim ke Anda sendiri. Lihat pesan pengaturan di perangkat yang lain. Seharusnya Anda akan diminta kode pengaturan. Masukkan angka berikut:</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Lebih baik enkripsi ujung ke ujung</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>
@@ -608,9 +580,6 @@
     <string name="save_desktop">Menyimpan</string>
     <string name="name_desktop">Nama</string>
     <string name="select_group_image_desktop">Pilih gambar grup</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Pengaturan Autocrypt ditransfer.</string>
-    <string name="forget_login_confirmation_desktop">Hapus login ini? Semuanya akan dihapus, termasuk pengaturan ujung ke ujung, kontak, obrolan, pesan dan media. Kalau diklik tidak bisa balik lagi.</string>
     <string name="message_detail_sent_desktop">kirim</string>
     <string name="message_detail_received_desktop">diterima</string>
     <string name="menu.view.developer.open.log.folder">Buka folder log</string>

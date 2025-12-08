@@ -178,8 +178,6 @@
     <string name="forward_to">Proslijedi do...</string>
     <string name="pref_profile_photo">Profilna slika</string>
     <string name="pref_blocked_contacts">Blokirani kontakti</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Lozinka i račun</string>
     <string name="pref_your_name">Vaše ime</string>
     <string name="pref_enter_sends">Enter šalje poruku</string>
     <string name="pref_enter_sends_explain">Pritisak na Enter će poslati tekst poruku</string>

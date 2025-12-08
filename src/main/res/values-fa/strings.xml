@@ -327,8 +327,6 @@
     <string name="menu_save_log">ذخیره گزارش</string>
     <string name="menu_more_options">گزینه‌های بیشتر</string>
     <string name="menu_learn_spelling">یادگرفتن املا </string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">گزارش بررسی گپ</string>
     <string name="jump_to_message">رفتن به پیام</string>
     <string name="jump_to_original_message">پرش به پیام اصلی</string>
     <string name="copy_json">JSON رونوشت برداری از </string>
@@ -411,8 +409,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">مخاطبین</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">نام یا نشانی رایانامه را وارد کنید</string>
     <string name="contacts_type_email_above">نشانی رایانامه را در بخش بالا وارد کنید</string>
 
 
@@ -484,12 +480,6 @@
     <string name="show_location_traces">نمایش ردپاها</string>
     <string name="add_poi">ارسال نقطه توجه</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">پیام‌های سامانه‌ای این گپ اینجا نمایش داده خواهند شد</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">گزارش حسابرسی گپ برای %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">فقط سامانه و پیام‌های اطلاع‌رسانی را نشان می‌دهد. برای یافتن آخرین کنش‌های گپ بدون لغزش میان بسیاری پیام مفید است.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -522,8 +512,6 @@
     <string name="group_self_not_in_group">برای این کار باید عضو گروه باشید.</string>
     <string name="profile_encryption">رمزگذاری</string>
     <string name="profile_shared_chats">گپ‌های هم‌رسانده</string>
-    <!-- deprecated -->
-    <string name="related_chats">گفتگوهای مرتبط</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">عضو‌های پیشین</string>
     <string name="tab_contact">مخاطب</string>
@@ -591,7 +579,7 @@
     <string name="sending">در حال ارسال...</string>
     <string name="last_msg_sent_successfully">آخرین پیام با موفقیت ارسال شد.</string>
     <string name="not_supported_by_provider">ارائه دهنده شما از این پشتیبانی نمی‌کند</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">پیام‌ها</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">مقدار %1$s از %2$s استفاده شده است. </string>
@@ -602,7 +590,7 @@
     <string name="onboarding_create_instant_account">ایجاد حساب کاربری جدید</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">از قبل یک حساب کاربری دارم</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">ساخت حساب کاربری با حساب رایانامه معمولی</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">نمایه شما</string>
@@ -627,10 +615,6 @@
     <string name="welcome_chat_over_email">گفتگو غیرمتمرکز و ایمن</string>
     <string name="scan_invitation_code">اسکن کردن کد دعوت</string>
     <string name="login_title">ورود</string>
-    <!-- deprecated -->
-    <string name="login_header">به سرور خود وارد شوید</string>
-    <!-- deprecated -->
-    <string name="login_explain">ورود با یک رایانامه موجود</string>
     <string name="login_inbox">ورودی</string>
     <string name="login_imap_login">IMAP Login Name</string>
     <string name="login_imap_server">IMAP Server</string>
@@ -703,8 +687,6 @@
     <string name="pref_profile_photo">تصویر نمایه</string>
     <string name="pref_blocked_contacts">مخاطبین مسدود شده</string>
     <string name="blocked_empty_hint">اگر مخاطبی را مسدود کنید اینجا نمایش داده می‌شود</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">رمزعبور و حساب کاربری</string>
     <string name="pref_who_can_see_profile_explain">وقتی با دیگر کاربران گپ می‌زنید، تصویر نمایه، نام و امضایتان در کنار پیام‌هایتان فرستاده می‌شوند.</string>
     <string name="pref_your_name">اسم شما</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -747,8 +729,6 @@
     <string name="pref_server">کارساز</string>
     <string name="pref_encryption">رمزگذاری</string>
     <string name="pref_manage_keys">مدیریت کلیدها</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">خواندن دفترچه آدرس دستگاه</string>
     <string name="pref_chats">گپ‌ها</string>
     <string name="pref_in_chat_sounds">صداهای درون‌گپی</string>
     <string name="pref_view_log">نمایش گزارش</string>
@@ -763,33 +743,19 @@
     <string name="pref_backup_export_all">برون‌ریزی همه%1$d حساب ها</string>
     <string name="pref_backup_export_start_button">شروع تهیه نسخه پشتیبان</string>
     <string name="pref_backup_written_to_x">نسخه پشتیبان با موفقیت در\"%1$s\" ذخیره شد.</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">صادر کردن کلید خصوصی</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">صادر کردن کلیدهای خصوصی به\"%1$s\"؟</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">کلیدهای خصوصی با موفقیت در\"%1$s\" ذخیره شدند. </string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">پس‌زمینه</string>
     <string name="pref_background_btn_default">استفاده از تصویر پیش‌فرض</string>
     <string name="pref_background_btn_gallery">انتخاب از گالری</string>
     <string name="pref_imap_folder_warn_disable_defaults">اگر این گزینه را غیر فعال می‌کنید از اینکه سرور شما و حساب‌هایتان هم بر این اساس تنظیم شده باشند.\n\n در غیر این صورت ممکن است هیچ چیز کار نکند. </string>
     <string name="pref_auto_folder_moves">انتقال خودکار به پوشه دلتاچت</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">گپ‌ها برای جلوگیری از پر شدن صندوق ورودی جابه‌جا شدند</string>
     <string name="pref_only_fetch_mvbox_title">فقط پوشه دلتاچت را بررسی کن</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">چشم‌پوشی از بقیهٔ پوشه‌ها. لازم است کارساز شما پیام‌ها را به پوشهٔ دلتاچت انتقال دهد.</string>
     <string name="pref_show_emails">نمایش رایانامه‌های معمولی</string>
     <string name="pref_show_emails_no">نه، فقط گپ‌ها</string>
     <string name="pref_show_emails_accepted_contacts">برای مخاطبین پذیرفته شده</string>
     <string name="pref_show_emails_all">همه</string>
     <string name="pref_experimental_features">ویژگی‌های آزمایشی</string>
     <string name="pref_on_demand_location_streaming">هم‌رسانی زندهٔ به‌فرمان مکان</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">حالت برنامه نویسی</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">تنظیم‌های عیب‌یابی را فعال می‌کند که موجب کاهش پایداری نرم‌افزار می‌شوند.  فقط جهت استفاده توسعه دهندگان</string>
     <string name="pref_background_default">پس‌زمینه پیش‌فرض</string>
     <string name="pref_background_default_color">رنگ پیش‌فرض</string>
     <string name="pref_background_custom_image">تصویر ترجیحی</string>
@@ -854,17 +820,6 @@
     <string name="autodel_after_1_week">بعد از ۱ هفته</string>
     <string name="after_5_weeks">بعد از ۵ هفته</string>
     <string name="autodel_after_1_year">بعد از ۱ سال</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">ارسال پیام برپاسازی اتوکریپت</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">پیام برپاسازی آتوکریپت تنظیم‌های رمزگذاری سراسری شما را به شکلی امن با دیگر برنامه‌ها به اشتراک می‌گذارد.\n\n تنظیم‌ها با یک کد برپاسازی که در اینجا نمایش داده می‌شود رمزگذاری می‌شوند و باید در دستگاه دیگر تایپ شود. </string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">ارسال پیام برپاسازی اتوکریپت</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">تنظیم‌های شما برای خودتان ارسال شدند. پیام تنظیم‌ها را در دستگاه دیگر باز کنید. یک کد نصب از شما خواسته می‌شود. این ارقام را وارد کنید</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">ترجیح رمزگذاری گیرنده به گیرنده</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">پیام از %1$s</string>
@@ -970,7 +925,6 @@
     <string name="withdraw_verifygroup_explain">این کد کیوآر می‌تواند توسط دیگران و برای پیوستن به گروه «%1$s» اسکن شود.\n\n شما می‌تواند این کد کیوآر را در اینجا غیرفعال کنید و با اسکن کردن مجدد، آن را فعال نمایید. </string>
     <string name="withdraw_qr_code">غیرفعال کردن کد کیوآر</string>
     <string name="revive_verifycontact_explain">این کد کیو‌آر بازنشانی شده است و دیگر فعال نیست.</string>
-    <string name="revive_verifygroup_explain">این کد کیوآر برای پیوستن به گروه «%1$s» بازنشانی شده‌است و دیگر فعال نیست.</string>
     <string name="revive_qr_code">فعال کردن کد کیوآر</string>
     <string name="qrshow_title">کد دعوت کیوآر</string>
     <string name="qrshow_x_joining">%1$sعضو شد.</string>
@@ -1097,9 +1051,6 @@ GNU GPL ورژن ۳
     <string name="name_desktop">نام</string>
     <string name="select_group_image_desktop">انتخاب تصویر گروه</string>
     <string name="export_backup_desktop">صادر کردن نسخه پشتیبان</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">برپاسازی اتوکریپت انتقال یافت.</string>
-    <string name="forget_login_confirmation_desktop">پاک کردن این حساب؟ همه‌چیز پاک می‌شود که شامل رمزگذاری سراسری، مخاطبین، گپ‌ها، پیام‌ها و رسانه‌ها می‌شود. این عملیات قابل بازگردانی نیست.</string>
     <string name="message_detail_sent_desktop">ارسال شد</string>
     <string name="message_detail_received_desktop">دریافت شد</string>
     <string name="menu.view.developer.open.log.folder">پوشه گزارش را باز کن</string>

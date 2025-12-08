@@ -337,8 +337,6 @@
     <string name="ask_remove_members">Kendu %1$s taldetik?</string>
     <!-- contact list -->
     <string name="contacts_title">Kontaktuak</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Sartu izena edo e-mail helbidea</string>
     <string name="contacts_type_email_above">Idatzi e-mail helbidea goian</string>
 
 
@@ -379,6 +377,7 @@
     <string name="show_location_traces">Erakutsi lorratzak</string>
     <string name="add_poi">Bidali interesezko puntua</string>
 
+
     <!-- search -->
     <string name="search">Bilatu</string>
     <string name="search_explain">Bilatu txatak, kontaktuak, eta mezuak.</string>
@@ -404,10 +403,6 @@
     <string name="send_message">Bidali mezua</string>
 
     <string name="login_title">Hasi saioa</string>
-    <!-- deprecated -->
-    <string name="login_header">Hasi saioa zure zerbitzarian</string>
-    <!-- deprecated -->
-    <string name="login_explain">Badagoen e-mail kontu batekin saioa hasten</string>
     <string name="login_inbox">Sarrera ontzia</string>
     <string name="login_imap_login">IMAP erabiltzaile-izena</string>
     <string name="login_imap_server">IMAP zerbitzaria</string>
@@ -447,8 +442,6 @@
     <string name="pref_profile_info_headline">Zure profileko informazioa</string>
     <string name="pref_profile_photo">Profileko argazkia</string>
     <string name="pref_blocked_contacts">Blokeatutako kontaktuak</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Pasahitza eta kontua</string>
     <string name="pref_who_can_see_profile_explain">Zure profileko argazkia eta izena zure mezuekin batera erakutsiko dira beste erabiltzaileekin komunikatzen zarenean. Informazioa behin bidalita ezin da ezabatu edo kendu.</string>
     <string name="pref_your_name">Zure izena</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -496,20 +489,12 @@
     <string name="pref_backup_export_explain">Babes-kopia batek instalazio berri bat ezartzen laguntzen dizu, bai gailu honetan zein beste batean.\n\nBabes-kopiak mezu guztiak, kontaktuak eta txatak, eta zure Autocrypt ezarpena daramatza. Gorde babes-kopiaren fitxategia toki seguruan edo ezabatu ahalik eta lasterren.</string>
     <string name="pref_backup_export_start_button">Hasi babes-kopia</string>
     <string name="pref_backup_written_to_x">Babes-kopia ongi idatzi da hemen: %1$s</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Esportatu gako sekretuak</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Esportatu gako sekretuak \"%1$s\"-ra?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Gako sekretuak ongi idatzi dira hemen: \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Atzealdea</string>
     <string name="pref_background_btn_default">Erabili lehenetsitako irudia</string>
     <string name="pref_background_btn_gallery">Hautatu galeriatik</string>
     <string name="pref_imap_folder_warn_disable_defaults">Aukera hau desaktibatuz gero, egiaztatu zure zerbitzaria eta beste bezeroen konfigurazioa bat datorrela.\n\nBestela agian gauzak ez dabiltza.</string>
     <string name="pref_auto_folder_moves">Automatikoki mugitzen du DeltaChat karpetara</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Txat elkarrizketak lekuz aldatzen dira sarrera ontzian enbarazu ez egiteko</string>
     <string name="pref_show_emails">Erakutsi ohiko e-mailak</string>
     <string name="pref_show_emails_no">Ez, txatak besterik ez</string>
     <string name="pref_show_emails_accepted_contacts">Onartutako kontaktuena</string>
@@ -531,17 +516,6 @@
     <string name="autodel_after_1_day">Egun bat eta gero</string>
     <string name="autodel_after_1_week">Aste bat eta gero</string>
     <string name="autodel_after_1_year">Urtebete eta gero</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Bidali Autocrypt ezarpen mezua</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">\"Autocrypt ezarpen mezua\" batek modu seguruan partekatzen du zure muturretik muturrerako ezarpena Autocryptekin bateragarriak diren beste aplikazioekin. Ezarpena hemen bistaratutako ezarpen kodearekin zifratuko  da, eta beste gailuan kode hau sartu beharko da.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Bidali Autocrypt ezarpen mezua</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Zure ezarpena zuri bidali zaizu. Aldatu beste gailura eta ireki ezarpen mezua. Ezarpen kode bat eskatuko zaizu, Idatzi honako zenbaki hauek han.\n\nBehin bukatuta, zure beste gailua Autocrypt erabiltzeko prest egongo da.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Hobetsi muturretik muturrerako zifratzea</string>
 
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Nik: Taldearen izena \"%1$s\" izatetik \"%2$s\" izatera aldatu da</string>
@@ -630,9 +604,6 @@
     <string name="name_desktop">Izena</string>
     <string name="select_group_image_desktop">Hautatu taldearen irudia</string>
     <string name="export_backup_desktop">Esportatu babes-kopia</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Ongi igorri da Autocrypt ezarpena!</string>
-    <string name="forget_login_confirmation_desktop">Ezabatu erabiltzaile-izen hau? Dena ezabatuko da, muturretik muturrerako ezarpena, txatak, mezuak eta multimedia barne. Ekintza hau behin betikoa da eta ezin da desegin.</string>
     <string name="message_detail_sent_desktop">bidalita</string>
     <string name="message_detail_received_desktop">jasota</string>
     <string name="menu.view.developer.open.log.folder">Ireki egunkarien karpeta</string>
