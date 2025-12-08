@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.33.0
+2025-12
 
 * Target Android 16
 * Change color of links in text messages
