@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
-public class RelayUtil {
+public class ShareUtil {
     private static final String FORWARDED_MESSAGE_IDS   = "forwarded_message_ids";
     private static final String SHARED_URIS             = "shared_uris";
     private static final String SHARED_CONTACT_ID       = "shared_contact_id";

@@ -18,8 +18,8 @@ package org.thoughtcrime.securesms;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.TEXT_EXTRA;
-import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
-import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.ShareUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent;
 
 import android.content.Intent;
 import android.net.Uri;
