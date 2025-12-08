@@ -1,11 +1,11 @@
 package org.thoughtcrime.securesms.util;
 
-import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
-import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
-import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
-import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.ShareUtil.getForwardedMessageIDs;
+import static org.thoughtcrime.securesms.util.ShareUtil.getSharedText;
+import static org.thoughtcrime.securesms.util.ShareUtil.getSharedUris;
+import static org.thoughtcrime.securesms.util.ShareUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.ShareUtil.isSharing;
+import static org.thoughtcrime.securesms.util.ShareUtil.resetRelayingMessageContent;
 
 import android.app.Activity;
 import android.content.ContentResolver;

@@ -17,9 +17,9 @@
 package org.thoughtcrime.securesms;
 
 import static org.thoughtcrime.securesms.TransportOption.Type;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
-import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
-import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
+import static org.thoughtcrime.securesms.util.ShareUtil.getSharedText;
+import static org.thoughtcrime.securesms.util.ShareUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.ShareUtil.isSharing;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -106,7 +106,7 @@ import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.RelayUtil;
+import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.Util;
@@ -742,8 +742,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleSharing() {
-    ArrayList<Uri> uriList =  RelayUtil.getSharedUris(this);
-    int sharedContactId = RelayUtil.getSharedContactId(this);
+    ArrayList<Uri> uriList =  ShareUtil.getSharedUris(this);
+    int sharedContactId = ShareUtil.getSharedContactId(this);
     if (uriList.size() > 1) {
       askSendingFiles(uriList, () -> SendRelayedMessageUtil.immediatelyRelay(this, chatId));
     } else {
@@ -768,7 +768,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     isEditing = false;
     final SettableFuture<Boolean> future = new SettableFuture<>();
     DcMsg draft = dcContext.getDraft(chatId);
-    final String sharedText = RelayUtil.getSharedText(this);
+    final String sharedText = ShareUtil.getSharedText(this);
 
     if (!draft.isOk()) {
       if (TextUtils.isEmpty(sharedText)) {
