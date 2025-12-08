@@ -348,7 +348,7 @@
     <string name="device_talk">Device Messages</string>
     <string name="device_talk_subtitle">Locally generated messages</string>
     <string name="device_talk_explain">Messages in this chat are generated on your device to inform about app updates and problems during usage.</string>
-    <string name="device_talk_welcome_message2">Get in contact!\n\n🙌 Tap \"QR code\" on the main screen of both devices. Choose \"Scan QR Code\" on one device, and point it at the other\n\n🌍 If not in the same room, scan via video call or share an invite link from \"Scan QR code\"\n\nThen: Enjoy your messenger experience over the largest decentralized network that ever existed: Email. And in contrast to other popular apps, without central control or tracking or selling you, friends, colleagues or family out to large organizations.</string>
+    <string name="device_talk_welcome_message2">Get in contact!\n\n🙌 Tap \"QR code\" on the main screen of both devices. Choose \"Scan QR Code\" on one device, and point it at the other\n\n🌍 If not in the same room, scan via video call or share an invite link from \"Scan QR code\"\n\nThen: Enjoy your decentralized messenger experience. In contrast to other popular apps, without central control or tracking or selling you, friends, colleagues or family out to large organizations.</string>
     <string name="edit_contact">Edit Contact</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Pin Chat</string>
@@ -612,7 +612,7 @@
     <string name="sending">Sending…</string>
     <string name="last_msg_sent_successfully">Last message sent successfully.</string>
     <string name="not_supported_by_provider">Not supported by your provider.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messages</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s of %2$s used</string>
@@ -623,8 +623,8 @@
     <string name="onboarding_create_instant_account">Create New Profile</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">I Already Have a Profile</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Use Classic Email as Transport</string>
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Use Classic Email as Relay</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Your Profile</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -679,15 +679,16 @@
     <string name="proxy_share_link">Share Link</string>
     <string name="proxy_enabled">Proxy Enabled</string>
     <string name="proxy_enabled_hint">You are using a proxy. If you\'re having trouble connecting, try a different proxy.</string>
-    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
-    <string name="transports">Transports</string>
-    <string name="add_transport">Add Transport</string>
-    <string name="remove_transport">Remove Transport</string>
-    <string name="edit_transport">Edit Transport</string>
-    <!-- shown if a QR code was scanned that can be used as a transport -->
-    <string name="confirm_add_transport">Add this transport?</string>
-    <string name="invalid_transport_qr">The scanned QR code does not contain a valid transport.</string>
-    <string name="confirm_remove_transport">Remove transport \"%1$s\"?\n\nYour contacts can only reach you if you\'ve previously contacted them via another transport.\n\nIf in doubt, remove the transport later.</string>
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
+    <string name="transports">Relays</string>
+    <string name="add_transport">Add Relay</string>
+    <string name="remove_transport">Remove Relay</string>
+    <string name="edit_transport">Edit Relay</string>
+    <!-- shown if a QR code was scanned that can be used as a relay -->
+    <string name="confirm_add_transport">Add this relay?</string>
+    <string name="invalid_transport_qr">The scanned QR code does not contain a valid relay.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_transport">Remove relay \"%1$s\"?\n\nYour contacts can only reach you if you\'ve previously contacted them via another relay.\n\nIf in doubt, remove the relay later.</string>
 
     <string name="login_certificate_checks">Certificate Checks</string>
     <string name="login_error_mail">Please enter a valid email address</string>
@@ -1144,6 +1145,7 @@
     <string name="export_backup_desktop">Export Backup</string>
     <!-- deprecated -->
     <string name="autocrypt_correct_desktop">Autocrypt setup transferred.</string>
+    <!-- deprecated, use delete_account + delete_account_ask + delete_account_explain_with_name -->
     <string name="forget_login_confirmation_desktop">Delete this profile? Everything will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
     <string name="message_detail_sent_desktop">sent</string>
     <string name="message_detail_received_desktop">received</string>
