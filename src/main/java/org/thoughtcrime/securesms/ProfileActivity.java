@@ -28,7 +28,7 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.RelayUtil;
+import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -393,9 +393,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     Intent composeIntent = new Intent();
     DcContact dcContact = dcContext.getContact(contactId);
     if (dcContact.isKeyContact()) {
-      RelayUtil.setSharedContactId(composeIntent, contactId);
+      ShareUtil.setSharedContactId(composeIntent, contactId);
     } else {
-      RelayUtil.setSharedText(composeIntent, dcContact.getAddr());
+      ShareUtil.setSharedText(composeIntent, dcContact.getAddr());
     }
     ConversationListRelayingActivity.start(this, composeIntent);
   }

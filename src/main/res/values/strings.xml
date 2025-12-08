@@ -338,8 +338,6 @@
     <string name="menu_save_log">Save Log</string>
     <string name="menu_more_options">More Options</string>
     <string name="menu_learn_spelling">Learn Spelling</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Chat Audit Log</string>
     <string name="jump_to_message">Jump to Message</string>
     <string name="jump_to_original_message">Jump to Original Message</string>
     <string name="copy_json">Copy JSON</string>
@@ -348,7 +346,7 @@
     <string name="device_talk">Device Messages</string>
     <string name="device_talk_subtitle">Locally generated messages</string>
     <string name="device_talk_explain">Messages in this chat are generated on your device to inform about app updates and problems during usage.</string>
-    <string name="device_talk_welcome_message2">Get in contact!\n\n🙌 Tap \"QR code\" on the main screen of both devices. Choose \"Scan QR Code\" on one device, and point it at the other\n\n🌍 If not in the same room, scan via video call or share an invite link from \"Scan QR code\"\n\nThen: Enjoy your messenger experience over the largest decentralized network that ever existed: Email. And in contrast to other popular apps, without central control or tracking or selling you, friends, colleagues or family out to large organizations.</string>
+    <string name="device_talk_welcome_message2">Get in contact!\n\n🙌 Tap \"QR code\" on the main screen of both devices. Choose \"Scan QR Code\" on one device, and point it at the other\n\n🌍 If not in the same room, scan via video call or share an invite link from \"Scan QR code\"\n\nThen: Enjoy your decentralized messenger experience. In contrast to other popular apps, without central control or tracking or selling you, friends, colleagues or family out to large organizations.</string>
     <string name="edit_contact">Edit Contact</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Pin Chat</string>
@@ -433,8 +431,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contacts</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Enter name or email address</string>
     <string name="contacts_type_email_above">Type email address above</string>
 
 
@@ -506,12 +502,6 @@
     <string name="show_location_traces">Show traces</string>
     <string name="add_poi">Send point of interest</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">System messages for this chat appear here</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Chat Audit Log for %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Shows only system and info messages; useful for finding the last chat actions without scrolling through many messages.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -544,8 +534,6 @@
     <string name="group_self_not_in_group">You must be a member of the group to perform this action.</string>
     <string name="profile_encryption">Encryption</string>
     <string name="profile_shared_chats">Chats in Common</string>
-    <!-- deprecated -->
-    <string name="related_chats">Related Chats</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Past Members</string>
     <string name="tab_contact">Contact</string>
@@ -612,7 +600,7 @@
     <string name="sending">Sending…</string>
     <string name="last_msg_sent_successfully">Last message sent successfully.</string>
     <string name="not_supported_by_provider">Not supported by your provider.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messages</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s of %2$s used</string>
@@ -623,8 +611,8 @@
     <string name="onboarding_create_instant_account">Create New Profile</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">I Already Have a Profile</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Use Classic Email as Transport</string>
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Use Classic Email as Relay</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Your Profile</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -649,10 +637,6 @@
     <string name="scan_invitation_code">Scan Invitation Code</string>
     <string name="login_title">Log In</string>
     <string name="login_advanced_hint">This login is for advanced users:\n\n• Do not use an account you\'re using in another app.\n\n• Classic email server allow chats without end-to-end encryption marked by a mail icon.</string>
-    <!-- deprecated -->
-    <string name="login_header">Log into your Email Account</string>
-    <!-- deprecated -->
-    <string name="login_explain">Log in with an existing email account</string>
     <string name="login_inbox">Inbox</string>
     <string name="login_imap_login">IMAP Login Name</string>
     <string name="login_imap_server">IMAP Server</string>
@@ -679,15 +663,16 @@
     <string name="proxy_share_link">Share Link</string>
     <string name="proxy_enabled">Proxy Enabled</string>
     <string name="proxy_enabled_hint">You are using a proxy. If you\'re having trouble connecting, try a different proxy.</string>
-    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
-    <string name="transports">Transports</string>
-    <string name="add_transport">Add Transport</string>
-    <string name="remove_transport">Remove Transport</string>
-    <string name="edit_transport">Edit Transport</string>
-    <!-- shown if a QR code was scanned that can be used as a transport -->
-    <string name="confirm_add_transport">Add this transport?</string>
-    <string name="invalid_transport_qr">The scanned QR code does not contain a valid transport.</string>
-    <string name="confirm_remove_transport">Remove transport \"%1$s\"?\n\nYour contacts can only reach you if you\'ve previously contacted them via another transport.\n\nIf in doubt, remove the transport later.</string>
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
+    <string name="transports">Relays</string>
+    <string name="add_transport">Add Relay</string>
+    <string name="remove_transport">Remove Relay</string>
+    <string name="edit_transport">Edit Relay</string>
+    <!-- shown if a QR code was scanned that can be used as a relay -->
+    <string name="confirm_add_transport">Add this relay?</string>
+    <string name="invalid_transport_qr">The scanned QR code does not contain a valid relay.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_transport">Remove relay \"%1$s\"?\n\nYour contacts can only reach you if you\'ve previously contacted them via another relay.\n\nIf in doubt, remove the relay later.</string>
 
     <string name="login_certificate_checks">Certificate Checks</string>
     <string name="login_error_mail">Please enter a valid email address</string>
@@ -737,8 +722,6 @@
     <string name="pref_profile_photo">Profile Image</string>
     <string name="pref_blocked_contacts">Blocked Contacts</string>
     <string name="blocked_empty_hint">Blocked contacts will appear here.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Password and Account</string>
     <string name="pref_who_can_see_profile_explain">Your profile image, name and bio will be sent together with your messages when communicating with other users.</string>
     <string name="pref_your_name">Your Name</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -782,10 +765,6 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Encryption</string>
     <string name="pref_manage_keys">Manage Keys</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">Read System Address Book</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts_explain">Offer to create chats with contacts from the address book.</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">In-Chat Sounds</string>
     <string name="pref_view_log">View Log</string>
@@ -801,12 +780,6 @@
     <string name="pref_backup_export_all">Export all %1$d profiles</string>
     <string name="pref_backup_export_start_button">Start Backup</string>
     <string name="pref_backup_written_to_x">Backup written successfully to \"%1$s\".</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Export Secret Keys</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Export secret keys to \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Secret keys written successfully to \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Wallpaper</string>
     <string name="pref_background_btn_default">Use Default Image</string>
@@ -829,10 +802,6 @@
     <string name="pref_experimental_features">Experimental Features</string>
     <string name="pref_experimental_features_explain">These features may be unstable and may be changed or removed</string>
     <string name="pref_on_demand_location_streaming">On-demand Location Streaming</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Developer Mode</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Activates debugging options and can make the app less stable. For developers only.</string>
     <string name="pref_background_default">Default image</string>
     <string name="pref_background_default_color">Default color</string>
     <string name="pref_background_custom_image">Custom image</string>
@@ -903,17 +872,6 @@
     <string name="autodel_after_1_week">After 1 week</string>
     <string name="after_5_weeks">After 5 weeks</string>
     <string name="autodel_after_1_year">After 1 year</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Send Autocrypt Setup Message</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">An Autocrypt Setup Message securely shares your end-to-end setup with other Autocrypt-compliant apps.\n\nIf you use Delta Chat on the other device as well, use \"Settings / Add Second Device\" instead.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Send Autocrypt Setup Message</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Your setup has been sent to yourself. Switch to the other device and open the setup message. You should be asked for a setup code. Enter the following digits:</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Prefer End-To-End Encryption</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Message from %1$s</string>
@@ -1025,7 +983,9 @@
     <string name="withdraw_joinbroadcast_explain">This QR code can be scanned by others to join the channel \"%1$s\".\n\nYou can reset it, so that the existing QR code or invite link will no longer work.</string>
     <string name="withdraw_qr_code">Reset QR Code</string>
     <string name="revive_verifycontact_explain">This QR code has been reset and is no longer active.</string>
+    <!-- deprecated, use generic revive_verifycontact_explain instead -->
     <string name="revive_verifygroup_explain">This QR code to join group \"%1$s\" has been reset and is no longer active.</string>
+    <!-- deprecated, use generic revive_verifycontact_explain instead -->
     <string name="revive_joinbroadcast_explain">This QR code to join channel \"%1$s\" has been reset and is no longer active.</string>
     <string name="revive_qr_code">Activate QR Code</string>
     <string name="qrshow_title">QR Invite Code</string>
@@ -1142,9 +1102,6 @@
     <string name="name_desktop">Name</string>
     <string name="select_group_image_desktop">Select Group Image</string>
     <string name="export_backup_desktop">Export Backup</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Autocrypt setup transferred.</string>
-    <string name="forget_login_confirmation_desktop">Delete this profile? Everything will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
     <string name="message_detail_sent_desktop">sent</string>
     <string name="message_detail_received_desktop">received</string>
     <string name="menu.view.developer.open.log.folder">Open the Log Folder</string>

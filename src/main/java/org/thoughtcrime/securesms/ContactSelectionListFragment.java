@@ -17,7 +17,7 @@
 package org.thoughtcrime.securesms;
 
 
-import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent;
 
 import android.app.Activity;
 import android.content.Intent;
