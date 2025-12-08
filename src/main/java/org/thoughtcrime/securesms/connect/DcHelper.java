@@ -35,7 +35,7 @@ import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.FileUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
-import org.thoughtcrime.securesms.util.RelayUtil;
+import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
@@ -299,19 +299,19 @@ public class DcHelper {
   public static void sendToChat(Context activity, byte[] data, String mimeType, String fileName, String text) {
       Intent intent = new Intent(activity, ShareActivity.class);
       intent.setAction(Intent.ACTION_SEND);
-      RelayUtil.setIsFromWebxdc(intent, true);
+      ShareUtil.setIsFromWebxdc(intent, true);
 
       if (data != null) {
           Uri uri = PersistentBlobProvider.getInstance().create(activity, data, mimeType, fileName);
           intent.setType(mimeType);
           intent.putExtra(Intent.EXTRA_STREAM, uri);
-          RelayUtil.setSharedTitle(intent, activity.getString(R.string.send_file_to, fileName));
+          ShareUtil.setSharedTitle(intent, activity.getString(R.string.send_file_to, fileName));
       }
 
       if (text != null) {
           intent.putExtra(Intent.EXTRA_TEXT, text);
           if (data == null) {
-              RelayUtil.setSharedTitle(intent, activity.getString(R.string.send_message_to));
+              ShareUtil.setSharedTitle(intent, activity.getString(R.string.send_message_to));
           }
       }
 

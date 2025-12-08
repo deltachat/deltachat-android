@@ -1,10 +1,10 @@
 package org.thoughtcrime.securesms;
 
-import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
-import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
-import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.ShareUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.ShareUtil.getSharedText;
+import static org.thoughtcrime.securesms.util.ShareUtil.getSharedUris;
+import static org.thoughtcrime.securesms.util.ShareUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -36,7 +36,7 @@ import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionB
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DirectShareUtil;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.RelayUtil;
+import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
@@ -382,7 +382,7 @@ public abstract class BaseConversationListFragment extends Fragment implements A
   @Override
   public boolean onCreateActionMode(ActionMode mode, Menu menu) {
     if (isRelayingMessageContent(getActivity())) {
-      if (RelayUtil.getSharedContactId(getActivity()) != 0) {
+      if (ShareUtil.getSharedContactId(getActivity()) != 0) {
         return false; // no sharing of a contact to multiple recipients at the same time, we can reconsider when that becomes a real-world need
       }
       Context context = getContext();
