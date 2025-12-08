@@ -230,8 +230,6 @@
     <string name="menu_save_log">로그 저장</string>
     <string name="menu_more_options">더 많은 옵션</string>
     <string name="menu_learn_spelling">맞춤법 배우기</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">채팅 로그 검사</string>
     <string name="jump_to_message">메시지로 이동</string>
     <string name="copy_json">JSON 복사</string>
     <string name="replace_draft">초안 대체</string>
@@ -289,8 +287,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">연락처</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">이름 또는 이메일 주소를 입력하세요.</string>
     <string name="contacts_type_email_above">위에 이메일 주소를 입력하세요.</string>
 
 
@@ -346,10 +342,6 @@
     <string name="show_location_traces">기록 보기</string>
     <string name="add_poi">관심 지점 전송</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">이 채팅의 시스템 메시지가 여기에 나타납니다.</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">시스템 및 정보 메시지만 표시합니다. 많은 메시지를 스크롤하지 않고 마지막 채팅 작업을 찾을 때 유용합니다.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -410,7 +402,7 @@
     <string name="sending">전송중...</string>
     <string name="last_msg_sent_successfully">마지막 메시지 전송됨.</string>
     <string name="not_supported_by_provider">공급자가 지원하지 않습니다.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">메시지</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%2$s중 %1$s 사용됨</string>
@@ -418,10 +410,6 @@
 
     <string name="scan_invitation_code">초대 코드 스캔</string>
     <string name="login_title">로그인</string>
-    <!-- deprecated -->
-    <string name="login_header">이메일 계정으로 로그인하시오</string>
-    <!-- deprecated -->
-    <string name="login_explain">존재하는 이메일 계정으로 로그인하시오</string>
     <string name="login_inbox">받은 편지함</string>
     <string name="login_imap_login">IMAP 로그인 이름</string>
     <string name="login_imap_server">IMAP 서버</string>
@@ -470,8 +458,6 @@
     <string name="pref_profile_photo">프로필 사진</string>
     <string name="pref_blocked_contacts">차단 목록</string>
     <string name="blocked_empty_hint">차단된 연락처가 여기에 나타납니다.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">계정 설정</string>
     <string name="pref_who_can_see_profile_explain">다른 사용자와 통신할 때 프로필 이미지, 이름 및 서명이 메시지와 함께 전송됩니다.</string>
     <string name="pref_your_name">내 이름</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -521,31 +507,17 @@
     <string name="pref_backup_export_explain">백업을 사용하면 이 장치 또는 다른 장치에 새 설치를 설정할 수 있습니다.\n\n백업에는 모든 메시지, 연락처 및 채팅과 모든 자동 암호화 설정이 포함됩니다. 백업 파일을 안전한 장소에 보관하거나 가능한 한 빨리 삭제하십시오.</string>
     <string name="pref_backup_export_start_button">백업 시작</string>
     <string name="pref_backup_written_to_x">백업이 \"%1$s\"에 기록되었습니다.</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">암호 키 내보내기</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">암호 키를 \"%1$s\"로 내보내시겠습니까?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">암호 키가 \"%1$s\"에 기록되었습니다.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">채팅방 배경화면</string>
     <string name="pref_background_btn_default">기본 이미지 사용</string>
     <string name="pref_background_btn_gallery">갤러리에서 선택됨</string>
     <string name="pref_imap_folder_warn_disable_defaults">이 선택사항을 변경할 경우, 서버와 다른 클라이언트가 적절하게 구성되어 있는지 확인하십시오.\n\n그렇지 않으면 상황이 전혀 작동하지 않을 수 있습니다.</string>
     <string name="pref_auto_folder_moves">DeltaChat 폴더로 자동 이동</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">받은 문서가 복잡해지지 않도록 대화 내용이 이동됩니다.</string>
     <string name="pref_only_fetch_mvbox_title">DeltaChat 폴더에서만 가져오기</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">다른 폴더는 무시합니다. 서버에서 채팅 메시지를 DeltaChat 폴더로 이동해야 합니다.</string>
     <string name="pref_show_emails_no">아뇨, 오직 채팅만</string>
     <string name="pref_show_emails_accepted_contacts">승인된 연락처의 경우</string>
     <string name="pref_show_emails_all">전부</string>
     <string name="pref_on_demand_location_streaming">주문형 위치 스트리밍</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">개발 모드</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">디버깅 옵션을 활성화하여 앱의 안정성을 떨어뜨릴 수 있습니다. 개발자 전용.</string>
     <string name="pref_background_default">기본 배경</string>
     <string name="pref_background_default_color">기본 색</string>
     <string name="pref_background_custom_image">커스텀 이미지</string>
@@ -591,14 +563,6 @@
     <string name="after_5_weeks">5주 후</string>
     <string name="autodel_after_1_year">1년 후</string>
 
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">자동 암호화 설정된 메시지 전송</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">자동 암호화 설치 메시지는 사용자의 설정을 다른 자동 암호화 호환 앱과 안전하게 공유합니다.\n\n설치는 여기에 표시된 설치 코드에 의해 암호화되며 다른 장치에 입력해야 합니다.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">자동 암호화 설정된 메시지 전송</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">설정이 사용자 자신에게 전송되었습니다. 다른 장치로 전환하고 설정 메시지를 엽니다. 설정 코드를 입력하라는 메시지가 표시됩니다. 다음 숫자를 입력합니다.</string>
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">%1$s가 보낸 메시지</string>
     <string name="systemmsg_failed_sending_to">%1$s에게 메시지를 보내지 못했습니다.</string>
@@ -685,7 +649,6 @@
     <string name="withdraw_verifygroup_explain">이 QR 코드는 다른 사용자가 스캔하여 \"%1$s\" 그룹에 가입할 수 있습니다.\n\n여기서 QR 코드를 비활성화하고 다시 스캔하여 다시 활성화할 수 있습니다.</string>
     <string name="withdraw_qr_code">QR 코드 비활성화</string>
     <string name="revive_verifycontact_explain">이 QR 코드는 다른 사용자가 스캔하여 사용자에게 연락할 수 있습니다.\n\nQR 코드가 이 장치에서 활성화되지 않았습니다.</string>
-    <string name="revive_verifygroup_explain">이 QR 코드는 다른 사람이 스캔하여 그룹 \"%1$s\"에 가입할 수 있다.\n\nQR 코드가 이 장치에서 활성화되지 않았습니다.</string>
     <string name="revive_qr_code">QR 코드 활성화</string>
     <string name="qrshow_title">QR 초대 코드</string>
     <string name="qrshow_x_joining">%1$s가 가입함.</string>
@@ -773,9 +736,6 @@
     <string name="name_desktop">이름</string>
     <string name="select_group_image_desktop">그룹 이미지 선택</string>
     <string name="export_backup_desktop">백업 내보내기</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">자동 암호화 설정이 전송되었습니다.</string>
-    <string name="forget_login_confirmation_desktop">이 로그인을 삭제하시겠습니까? 모든 설정, 연락처, 채팅, 메시지 및 미디어를 포함한 모든 것이 삭제됩니다. 이 작업은 취소할 수 없습니다.</string>
     <string name="message_detail_sent_desktop">보냄</string>
     <string name="message_detail_received_desktop">받음</string>
     <string name="menu.view.developer.open.log.folder">로그 폴더 열기</string>

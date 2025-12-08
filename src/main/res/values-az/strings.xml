@@ -179,8 +179,6 @@
     <string name="ask_remove_members">%1$s qrupdan silmək? </string>
     <!-- contact list -->
     <string name="contacts_title">Kontaktlar</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Ad ya e-poçt daxil et</string>
     <string name="contacts_type_email_above">E-poçt ünvanını yazın</string>
 
 
@@ -220,6 +218,7 @@
     <string name="show_location_traces">İzləri göstərmək</string>
     <string name="add_poi">Maraq nöqtəsini göndərin</string>
 
+
     <!-- search -->
     <string name="search">Axtarış</string>
     <string name="search_explain">Çatlar, kontaktlar və mesajlar axtar</string>
@@ -243,10 +242,6 @@
     <string name="tab_docs_empty_hint">Bu söhbətdə paylaşılan sənədlər, musiqi və digər fayllar burada göstəriləcək.</string>
     <string name="media_preview">Fayllara baxmaq</string>
     <string name="login_title">Daxil ol</string>
-    <!-- deprecated -->
-    <string name="login_header">Serverinə daxil ol</string>
-    <!-- deprecated -->
-    <string name="login_explain">Mövcud e-mail hesabı ilə daxil olun</string>
     <string name="login_inbox">Gələn</string>
     <string name="login_imap_login">IMAP logini</string>
     <string name="login_imap_server">IMAP server</string>
@@ -325,20 +320,12 @@
     <string name="pref_backup_export_explain">Ehtiyat nüsxəsi bu və ya digər bir cihazda yeni bir quraşdırma qurmağa kömək edir. \n\nNüsxədə bütün mesajlar, kontaktlar, çatlar və son ucdan uca avtoşifrələmə quraşdırmaınız olacaq. Nüsxə faylını təhlükəsiz yerdə saxlayın və ya mümkün qədər tez silin.</string>
     <string name="pref_backup_export_start_button">Nüsxəyə başla</string>
     <string name="pref_backup_written_to_x">Ehtiyat nüsxə %1$s- ə uğurla yazılmışdır</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Gizli açar ixracı</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain"> \"%1$s\" - ə gizli açar ixracı?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Ehtiyat nüsxə %1$s- ə uğurla yazılmışdır</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fon</string>
     <string name="pref_background_btn_default">Hal hazırdaki şəkili istifadə edin</string>
     <string name="pref_background_btn_gallery">Fotoalbomdan götürün</string>
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçimi ləğv etsəniz, serverinizin və digər müştərilərinizin müvafiq olaraq konfiqurasiya olunduğundan əmin olun. \n\nAyrıca şeylər işləməyəcəkdir.</string>
     <string name="pref_auto_folder_moves">DeltaChat qovluğuna avtomatik keçid</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Çat söhbətləri Daxil olanlar qovluğunun yığılmaması üçün taşınır</string>
     <string name="pref_show_emails">Klassik e-poçtları göstər</string>
     <string name="pref_show_emails_no">Xeyir, ancaq çatlar</string>
     <string name="pref_show_emails_accepted_contacts">Qəbul edilən kontaktlar üçün</string>
@@ -347,17 +334,6 @@
     <string name="pref_background_default_color">Özünəməxsus rəng</string>
     <string name="pref_background_custom_image">Şəkil</string>
     <string name="pref_background_custom_color">Rəng</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Autocrypt mesaj ayarı göndər</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Autocrypt Setup Message digər Autocrypt-uyğun proqramlarla təhlükəsiz şəkildə bölüşür. \n\nSizin buradakı quraşdırma koduyla şifrələnir və digər qurğuda yazılmalıdır.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Autocrypt Setup Message-ı göndər</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Sizin açarınız sizə göndərildi. Başqa bir cihaza keçin və mesajın ayarını açın. Siz quraşdırma kodu daxil etməlisiniz. Orada aşağıdakı rəqəmləri daxil edin. Bitirən zaman, başqa bir cihazda Autocrypt istifadə üçün hazır olacaq.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Ucdan-uca şifrələmə üstünlük təşkil edir</string>
-
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Qrupun adı \"%1$s\" - dən \"%2$s\" - yə deyişildi məndən. </string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -439,9 +415,6 @@
     <string name="name_desktop">Ad</string>
     <string name="select_group_image_desktop">Qrup şəklini seç</string>
     <string name="export_backup_desktop">Ehtiyat nüsxəsinin ixracı</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Autocrypt ayarı müvəffəqiyyətlə köçürüldü!</string>
-    <string name="forget_login_confirmation_desktop">Bu giriş silmək istəyirsiniz? Hər şey, sizin \"sondan sona\" quraşdırma, kontaktlar, söhbətlər, mesajlar və daşıyıcıları daxil olmaqla silinəcəkdir. Bu hərəkət son və ləğv edilə bilməz.</string>
     <string name="message_detail_sent_desktop">Göndər</string>
     <string name="message_detail_received_desktop">qəbul olundu</string>
     <string name="menu.view.developer.open.log.folder">Loq mələfini açın</string>

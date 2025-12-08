@@ -263,8 +263,6 @@
     <string name="menu_save_log">Tallenna loki</string>
     <string name="menu_more_options">Lisää asetuksia</string>
     <string name="menu_learn_spelling">Opi tavaus</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Keskustelun tarkastusloki</string>
     <string name="jump_to_message">Siirry viestiin</string>
     <string name="copy_json">Kopioi JSON</string>
     <string name="replace_draft">Korvaa luonnos</string>
@@ -326,8 +324,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Yhteystiedot</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Anna nimi tai sähköpostiosoite</string>
     <string name="contacts_type_email_above">Kirjoita sähköpostiosoite ylle</string>
 
 
@@ -393,12 +389,6 @@
     <string name="show_location_traces">Näytä jäljet</string>
     <string name="add_poi">Lähetä erikseen valittu piste</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">Keskustelun järjestelmäviestit näkyvät tässä</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Keskustelun tarkastusloki yhteystiedolle %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Tässä näytetään vain järjestelmä- ja ohjeviestit. Tämä näkymä helpottaa viimeisimpien tapahtumien löytämistä tavallisten viestien joukosta.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -427,8 +417,6 @@
     <string name="group_self_not_in_group">Sinun täytyy olla ryhmän jäsen suorittaaksesi tämän toiminnon.</string>
     <string name="profile_encryption">Salaus</string>
     <string name="profile_shared_chats">Jaetut keskustelut</string>
-    <!-- deprecated -->
-    <string name="related_chats">Liittyvät keskustelut</string>
     <string name="tab_contact">Yhteystieto</string>
     <string name="tab_group">Ryhmä</string>
     <string name="tab_gallery">Galleria</string>
@@ -491,7 +479,7 @@
     <string name="sending">Lähetetään</string>
     <string name="last_msg_sent_successfully">Viimeinen viesti lähetetty onnistuneesti.</string>
     <string name="not_supported_by_provider">Ei tuettu palveluntarjoajallasi.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Viestit</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s / %2$s käytössä</string>
@@ -502,7 +490,7 @@
     <string name="onboarding_create_instant_account">Luo uusi profiili</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Minulla on jo profiili</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Tavanomainen sähköpostikirjautuminen</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profiilisi</string>
@@ -527,10 +515,6 @@
     <string name="welcome_chat_over_email">Turvallinen hajautettu keskustelu</string>
     <string name="scan_invitation_code">Skannaa kutsukoodi</string>
     <string name="login_title">Kirjaudu sisään</string>
-    <!-- deprecated -->
-    <string name="login_header">Kirjaudu sähköpostitilillesi</string>
-    <!-- deprecated -->
-    <string name="login_explain">Kirjaudu olemassa olevalla sähköpostitilillä</string>
     <string name="login_inbox">Saapuvan postin laatikko</string>
     <string name="login_imap_login">IMAP -kirjautumistunnus</string>
     <string name="login_imap_server">IMAP -palvelin</string>
@@ -581,8 +565,6 @@
     <string name="pref_profile_photo">Profiilikuva</string>
     <string name="pref_blocked_contacts">Estetyt yhteystiedot</string>
     <string name="blocked_empty_hint">Estämäsi yhteystiedot näkyvät tässä</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Salasana ja tili</string>
     <string name="pref_who_can_see_profile_explain">Kun kommunikoit muiden käyttäjien kanssa, profiilikuvasi, nimesi ja biosi lähetetään viestiesi ohessa.</string>
     <string name="pref_your_name">Nimesi</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -623,10 +605,6 @@
     <string name="pref_server">Palvelin</string>
     <string name="pref_encryption">Salaus</string>
     <string name="pref_manage_keys">Hallinnoi avaimia</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">Lue laitteen osoitekirja</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts_explain">Tarjoa keskustelujen avaamista yhteystietojen perusteella. Jotkin palveluntarjoajat vaativat ensin päästä-päähän salauksen käyttöönottoa. </string>
     <string name="pref_chats">Keskustelut</string>
     <string name="pref_in_chat_sounds">Keskustelunaikaiset äänet</string>
     <string name="pref_view_log">Näytä loki</string>
@@ -641,33 +619,19 @@
     <string name="pref_backup_export_all">Vie kaikki %1$d profiilia</string>
     <string name="pref_backup_export_start_button">Aloita varmuuskopiointi</string>
     <string name="pref_backup_written_to_x">Varmuuskopio kirjoitettu onnistuneesti kohteeseen \"%1$s\".</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Vie salaiset avaimet</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Vie salaiset avaimet kohteeseen \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Salaiset avaimet kirjoitettu onnistuneesti kohteeseen \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Taustakuva</string>
     <string name="pref_background_btn_default">Käytä oletuskuvaa</string>
     <string name="pref_background_btn_gallery">Valitse galleriasta</string>
     <string name="pref_imap_folder_warn_disable_defaults">Jos muutat tätä asetusta, varmista että palvelimesi ja muut päätelaitteesi ovat määritetty vastaavasti.\n\nMuutoin ne eivät ehkä toimi lainkaan.</string>
     <string name="pref_auto_folder_moves">Siirrä automaattisesti DeltaChat -kansioon</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Saapuneet -kansion täyttämisen välttämiseksi, pikaviestikeskustelut siirretään </string>
     <string name="pref_only_fetch_mvbox_title">Hae vain DeltaChat -kansiosta</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Älä huomioi muita kansioita. Vaatii että palvelimesi siirtää pikaviestit DeltaChat -kansioon.</string>
     <string name="pref_show_emails">Näytä tavanomaiset sähköpostiviestit</string>
     <string name="pref_show_emails_no">Ei, vain pikaviestit</string>
     <string name="pref_show_emails_accepted_contacts">Hyväksytyille yhteystiedoille</string>
     <string name="pref_show_emails_all">Kaikki</string>
     <string name="pref_experimental_features">Kokeelliset ominaisuudet</string>
     <string name="pref_on_demand_location_streaming">Tarvittaessa sijainnin jatkuva jakaminen</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Kehittäjätila</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Kytkee päälle debuggausvaihtoehdot ja saattaa tehdä sovelluksesta epävakaan. Vain kehittäjille.</string>
     <string name="pref_background_default">Oletuskuva</string>
     <string name="pref_background_default_color">Oletusväri</string>
     <string name="pref_background_custom_image">Mukautettu kuva</string>
@@ -732,17 +696,6 @@
     <string name="autodel_after_1_week">1 viikon päästä</string>
     <string name="after_5_weeks">5 viikon päästä</string>
     <string name="autodel_after_1_year">1 vuoden päästä</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Lähetä Autocrypt -käyttöönottoviesti</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Autocrypt -käyttöönottoviesti jakaa turvallisesti päästä-päähän -salauksen asetukset toisten Autocrypt-yhteensopivien sovellusten kanssa.\n\nMäärittely salataan tässä näytettävällä käyttöönottokoodilla, joka on syötettävä toisella laittella.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Lähetä Autocrypt -käyttöönottoviesti</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Käyttöönottoviesti on lähetetty sinulle itsellesi. Avaa viesti toisella laitteella. Sinulta pyydetään käyttöönottokoodia. Anna seuraavat numerot:</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Suosi päästä-päähän -salausta</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Viesti lähettäjältä %1$s</string>
@@ -843,7 +796,6 @@
     <string name="withdraw_verifygroup_explain">Muut voivat skannata tämän QR-koodin liittyäkseen ryhmään \"%1$s\".\n\nVoit kytkeä QR-koodin pois täällä ja aktivoida sen uudelleen skannaamalla.</string>
     <string name="withdraw_qr_code">Kytke QR-koodi pois käytöstä</string>
     <string name="revive_verifycontact_explain">Muut voivat skannata tämän QR-koodin ottaakseen yhteyttä sinuun.\n\nQR-koodi ei ole aktiivinen tällä laitteella.</string>
-    <string name="revive_verifygroup_explain">Muut voivat skannata tämän QR-koodin liittyäkseen ryhmään \"%1$s\".\n\nQR-koodi ei ole aktiivinen tällä laitteella.</string>
     <string name="revive_qr_code">Aktivoi QR-koodi</string>
     <string name="qrshow_title">QR-kutsukoodi</string>
     <string name="qrshow_x_joining">%1$s liittyy</string>
@@ -950,9 +902,6 @@
     <string name="name_desktop">Nimi</string>
     <string name="select_group_image_desktop">Valitse ryhmän kuva</string>
     <string name="export_backup_desktop">Vie varmuuskopio</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Autocrypt-asetukset siirretty.</string>
-    <string name="forget_login_confirmation_desktop">Poista tämä kirjautuminen? Kaikki tiedot poistetaan, mukaan lukien päästä-päähän-salauksen asetukset, yhteystiedot, keskustelut, viestit ja media. Tämä toiminto on peruuttamaton.</string>
     <string name="message_detail_sent_desktop">lähetetty</string>
     <string name="message_detail_received_desktop">vastaanotettu</string>
     <string name="menu.view.developer.open.log.folder">Avaa lokikansio</string>

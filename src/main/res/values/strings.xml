@@ -790,11 +790,7 @@
     <string name="pref_multidevice_explain">Synchronize your messages with your other devices. Automatically enabled on adding a second device</string>
     <string name="pref_multidevice_change_warn">Multi-Device Mode must be enabled when using the same profile on multiple devices. Only disable this setting if you have removed this profile from all your other devices.\n\nDisabling Multi-Device Mode while using the profile on multiple devices will result in missed messages and other problems.</string>
     <string name="pref_auto_folder_moves">Move automatically to DeltaChat Folder</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
     <string name="pref_only_fetch_mvbox_title">Only Fetch from DeltaChat Folder</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Ignore other folders. Requires your server to move chat messages to the DeltaChat folder.</string>
     <string name="pref_show_emails">Show Classic Emails</string>
     <string name="pref_show_emails_no">No, chats only</string>
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
@@ -983,10 +979,6 @@
     <string name="withdraw_joinbroadcast_explain">This QR code can be scanned by others to join the channel \"%1$s\".\n\nYou can reset it, so that the existing QR code or invite link will no longer work.</string>
     <string name="withdraw_qr_code">Reset QR Code</string>
     <string name="revive_verifycontact_explain">This QR code has been reset and is no longer active.</string>
-    <!-- deprecated, use generic revive_verifycontact_explain instead -->
-    <string name="revive_verifygroup_explain">This QR code to join group \"%1$s\" has been reset and is no longer active.</string>
-    <!-- deprecated, use generic revive_verifycontact_explain instead -->
-    <string name="revive_joinbroadcast_explain">This QR code to join channel \"%1$s\" has been reset and is no longer active.</string>
     <string name="revive_qr_code">Activate QR Code</string>
     <string name="qrshow_title">QR Invite Code</string>
     <string name="qrshow_x_joining">%1$s joins.</string>

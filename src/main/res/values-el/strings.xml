@@ -238,8 +238,6 @@
     <string name="menu_save_log">Αποθήκευση</string>
     <string name="menu_more_options">Περισσότερες Επιλογές</string>
     <string name="menu_learn_spelling">Μάθε Ορθογραφία</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Αρχείο Καταγραφής Ελέγχου Συνομιλίας</string>
     <string name="jump_to_message">Μετακίνηση στη Συνομιλία</string>
     <string name="copy_json">Αντιγραφή JSON</string>
     <string name="replace_draft">Αντικατάσταση Σχεδίου</string>
@@ -299,8 +297,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Επαφές</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Εισάγετε όνομα ή διεύθυνση e-mail</string>
     <string name="contacts_type_email_above">Εισάγετε την διεύθυνση e-mail παραπάνω</string>
 
 
@@ -362,12 +358,6 @@
     <string name="show_location_traces">Εμφάνιση ιχνών</string>
     <string name="add_poi">Αποστολή σημείου ενδιαφέροντος</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">Τα μηνύματα συστήματος για αυτήν τη συνομιλία εμφανίζονται εδώ</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Καταγραφή ελέγχου συνομιλίας για %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Εμφανίζει μόνο μηνύματα συστήματος και πληροφοριών. Είναι χρήσιμο για την εύρεση των τελευταίων ενεργειών συνομιλίας χωρίς κύλιση σε πολλά μηνύματα.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -429,7 +419,7 @@
     <string name="sending">Στέλνεται…</string>
     <string name="last_msg_sent_successfully">Το τελευταίο μήνυμα στάλθηκε με επιτυχία.</string>
     <string name="not_supported_by_provider">Δεν υποστηρίζεται από τον πάροχο σας.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Μηνύματα</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s από %2$s χρησιμοποιείται</string>
@@ -437,10 +427,6 @@
 
     <string name="scan_invitation_code">Σάρωση Κωδικού Πρόσκλησης</string>
     <string name="login_title">Σύνδεση</string>
-    <!-- deprecated -->
-    <string name="login_header">Συνδεθείτε στον λογαριασμό σας E-Mail</string>
-    <!-- deprecated -->
-    <string name="login_explain">Συνδεθείτε με έναν υπάρχοντα λογαριασμό e-mail</string>
     <string name="login_inbox">Εισερχόμενα</string>
     <string name="login_imap_login">Όνομα Σύνδεσης IMAP</string>
     <string name="login_imap_server">Διακομιστής IMAP</string>
@@ -491,8 +477,6 @@
     <string name="pref_profile_photo">Εικόνα Προφίλ</string>
     <string name="pref_blocked_contacts">Αποκλεισμένες Επαφές</string>
     <string name="blocked_empty_hint">Οι αποκλεισμένες επαφές θα εμφανίζονται εδώ.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Κωδικός και Λογαριασμός</string>
     <string name="pref_who_can_see_profile_explain">Η εικόνα του προφίλ, το όνομα και η υπογραφή σας θα αποστέλλονται μαζί με τα μηνύματά σας κατά την επικοινωνία με άλλους χρήστες.</string>
     <string name="pref_your_name">Το όνομά σου</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -543,33 +527,19 @@
     <string name="pref_backup_export_explain">Ένα αντίγραφο ασφαλείας σάς βοηθά να ρυθμίσετε μια νέα εγκατάσταση σε αυτήν ή σε άλλη συσκευή.\n\nΤο αντίγραφο ασφαλείας θα περιέχει όλα τα μηνύματα, τις επαφές και τις συνομιλίες και τη ρύθμιση αυτόματης κρυπτογράφησης από άκρο σε άκρο. Φυλάξτε το αρχείο αντιγράφου ασφαλείας σε ασφαλές μέρος ή διαγράψτε το το συντομότερο δυνατό.</string>
     <string name="pref_backup_export_start_button">Ξεκινήστε τη δημιουργία αντιγράφου ασφαλείας</string>
     <string name="pref_backup_written_to_x">Το αντίγραφο ασφαλείας γράφτηκε με επιτυχία στο \"%1$s\".</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Εξαγωγή Μυστικών Κλειδιών</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Εξαγωγή μυστικών κλειδιών στο \"%1$s\";</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Τα μυστικά κλειδιά γράφτηκαν με επιτυχία στο \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Ταπετσαρία συνομιλίας</string>
     <string name="pref_background_btn_default">Χρήση προκαθορισμένου</string>
     <string name="pref_background_btn_gallery">Επιλογή</string>
     <string name="pref_imap_folder_warn_disable_defaults">Εάν αλλάξετε αυτήν την επιλογή, βεβαιωθείτε ότι ο διακομιστής σας και οι άλλοι πελάτες σας έχουν διαμορφωθεί ανάλογα.\n\nΔιαφορετικά, τα πράγματα ενδέχεται να μην λειτουργούν καθόλου.</string>
     <string name="pref_auto_folder_moves">Μετακίνηση αυτόματα στον φάκελο DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Οι συνομιλίες συνομιλίας μετακινούνται για να αποφευχθεί η ακαταστασία των Εισερχομένων</string>
     <string name="pref_only_fetch_mvbox_title">Λήψη μόνο από τον φάκελο DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Αγνοήστε άλλους φακέλους. Απαιτεί τον διακομιστή σας να μετακινήσει μηνύματα συνομιλίας στο φάκελο DeltaChat.</string>
     <string name="pref_show_emails">Εμφάνιση κλασικών E-Mails</string>
     <string name="pref_show_emails_no">Όχι, μόνο συνομιλίες</string>
     <string name="pref_show_emails_accepted_contacts">Για αποδεκτές επαφές</string>
     <string name="pref_show_emails_all">Όλα</string>
     <string name="pref_experimental_features">Πειραματικά Χαρακτηριστικά</string>
     <string name="pref_on_demand_location_streaming">Ροή τοποθεσίας κατ\' απαίτηση</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Λειτουργία για Προγραμματιστές</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Ενεργοποιεί τις επιλογές εντοπισμού σφαλμάτων και μπορεί να κάνει την εφαρμογή λιγότερο σταθερή. Μόνο για προγραμματιστές.</string>
     <string name="pref_background_default">Προεπιλεγμένο φόντο</string>
     <string name="pref_background_default_color">Προεπιλεγμένο χρώμα</string>
     <string name="pref_background_custom_image">Προσαρμοσμένη εικόνα</string>
@@ -622,17 +592,6 @@
     <string name="autodel_after_1_week">Μετά από 1 εβδομάδα</string>
     <string name="after_5_weeks">Μετά από 5 εβδομάδες</string>
     <string name="autodel_after_1_year">Μετά από 1 χρόνο</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Αποστολή μηνύματος ρύθμισης αυτόματης κρυπτογράφησης</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Ένα μήνυμα ρύθμισης αυτόματης κρυπτογράφησης κοινοποιεί με ασφάλεια τη ρύθμισή σας από άκρο σε άκρο με άλλες εφαρμογές συμβατές με την Αυτόματη κρυπτογράφηση.\n\nΗ ρύθμιση θα κρυπτογραφηθεί από έναν κωδικό ρύθμισης που εμφανίζεται εδώ και θα πρέπει να πληκτρολογηθεί στην άλλη συσκευή.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Αποστολή μηνύματος ρύθμισης αυτόματης κρυπτογράφησης</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Η ρύθμισή σας έχει σταλεί στον εαυτό σας. Μεταβείτε στην άλλη συσκευή και ανοίξτε το μήνυμα ρύθμισης. Θα πρέπει να σας ζητηθεί κωδικός ρύθμισης. Εισαγάγετε τα ακόλουθα ψηφία:</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Προτιμήστε την κρυπτογράφηση από άκρο σε άκρο</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Μήνυμα από τον/την %1$s</string>
@@ -722,7 +681,6 @@
     <string name="withdraw_verifygroup_explain">Αυτός ο κωδικός QR μπορεί να σαρωθεί από άλλους για να συμμετάσχουν στην ομάδα \"%1$s\".\n\nΜπορείτε να απενεργοποιήσετε τον κωδικό QR εδώ και να τον ξαναενεργοποιήσετε ξανασαρώνοντάς τον.</string>
     <string name="withdraw_qr_code">Απενεργοποίηση του κωδικού QR</string>
     <string name="revive_verifycontact_explain">Αυτός ο κωδικός QR θα μπορούσε να σαρωθεί από άλλους για να επικοινωνήσουν μαζί σας.\n\nΟ κωδικός QR δεν είναι ενεργός σε αυτήν τη συσκευή.</string>
-    <string name="revive_verifygroup_explain">Αυτός ο κωδικός QR θα μπορούσε να σαρωθεί από άλλους για να συμμετάσχουν στην ομάδα \"%1$s\".\n\nΟ κωδικός QR δεν είναι ενεργός σε αυτήν τη συσκευή.</string>
     <string name="revive_qr_code">Ενεργοποίηση του κωδικού QR</string>
     <string name="qrshow_title">Κωδικός Πρόσκλησης QR</string>
     <string name="qrshow_x_joining">%1$s συνδέθηκε.</string>
@@ -812,9 +770,6 @@
     <string name="name_desktop">Όνομα</string>
     <string name="select_group_image_desktop">Επιλέξτε Εικόνας Ομάδας</string>
     <string name="export_backup_desktop">Εξαγωγή Αντιγράφων Ασφαλείας</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Η ρύθμιση αυτόματης κρυπτογράφησης μεταφέρθηκε.</string>
-    <string name="forget_login_confirmation_desktop">Διαγραφή αυτής της σύνδεσης; Τα πάντα θα διαγραφούν, συμπεριλαμβανομένων των ρυθμίσεων από άκρο σε άκρο, επαφών, συνομιλιών, μηνυμάτων και πολυμέσων. Αυτή η πράξη δε μπορεί να αναιρεθεί.</string>
     <string name="message_detail_sent_desktop">Στάλθηκε</string>
     <string name="message_detail_received_desktop">Παραλήφθηκε</string>
     <string name="menu.view.developer.open.log.folder">Άνοιγμα του φακέλου καταγραφής</string>

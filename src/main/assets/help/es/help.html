@@ -57,7 +57,7 @@
       <li><a href="#experimental-features">Experimental Features</a></li>
       <li><a href="#statssending">What is “Send statistics to Delta Chat’s developers”?</a></li>
       <li><a href="#can-i-use-a-classic-email-address-with-delta-chat">Can I use a classic email address with Delta Chat?</a></li>
-      <li><a href="#classic-email">How can I configure a chat profile with a classic email address as transport?</a></li>
+      <li><a href="#classic-email">How can I configure a chat profile with a classic email address as relay?</a></li>
       <li><a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">I want to manage my own server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#estoy-interesado-en-los-detalles-técnicos-pueden-decirme-más">Estoy interesado en los detalles técnicos. ¿Pueden decirme más?</a></li>
     </ul>
@@ -648,7 +648,7 @@ This makes Delta Chat a truly extensible messenger.</p>
     <p>In-chat apps can not send data to the Internet, or download anything.</p>
   </li>
   <li>
-    <p>An in-chat app can only exchange data within a Delta Chat chat, with its
+    <p>An in-chat app can only exchange data within a chat, with its
 copies on the devices of your chat partners. Other than that, it’s completely
 isolated from the Internet.</p>
   </li>
@@ -1055,7 +1055,7 @@ while chatmail apps and relays pervasively enforce end-to-end encryption and sec
   </li>
   <li>
     <p>Non-chatmail apps use email servers as a long-term message archive
-while chatmail clients use email servers for ephemeral instant message transport.</p>
+while chatmail clients use email servers for ephemeral instant message relay.</p>
   </li>
   <li>
     <p>Supporting the full variety of classic email setups
@@ -1067,7 +1067,7 @@ and complicate making chatmail-based messaging more resilient, reliable and fast
       <h3 id="classic-email">
         
         
-          How can I configure a chat profile with a classic email address as transport? <a href="#classic-email" class="anchor"></a>
+          How can I configure a chat profile with a classic email address as relay? <a href="#classic-email" class="anchor"></a>
         
         
       </h3>
@@ -1076,7 +1076,7 @@ and complicate making chatmail-based messaging more resilient, reliable and fast
 unless you are prepared to deal with encrypted messages in the inbox,
 double notifications, accidentally deleted emails or similar annoyances.</p>
 
-<p>You can configure a email address for chatting at <strong>New Profile → Use Other Server → Use Classic Mail as Transport</strong>.
+<p>You can configure a email address for chatting at <strong>New Profile → Use Other Server → Use Classic Mail as Relay</strong>.
 Note that classic email providers will generally not support <a href="#instant-delivery">Push Notifications</a>
 and have other limitations, see <a href="https://providers.delta.chat">Provider Overview</a>.
 Chatmail uses the default INBOX for relay; ensure the provider setup does too. 

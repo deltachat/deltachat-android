@@ -349,8 +349,6 @@
     <string name="menu_save_log">Salva Registro</string>
     <string name="menu_more_options">Più Opzioni</string>
     <string name="menu_learn_spelling">Impara l\'Ortografia</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Registro Controllo Chat</string>
     <string name="jump_to_message">Vai al Messaggio</string>
     <string name="jump_to_original_message">Vai al Messaggio Originale</string>
     <string name="copy_json">Copia JSON</string>
@@ -448,8 +446,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contatti</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Inserisci nome o indirizzo e-mail</string>
     <string name="contacts_type_email_above">Inserisci sopra l\'indirizzo e-mail</string>
 
 
@@ -524,12 +520,6 @@
     <string name="show_location_traces">Mostra tracce</string>
     <string name="add_poi">Invia punto di interesse</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">I messaggi di sistema per questa chat appariranno qui</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Registro di Controllo Chat per %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Mostra solo i messaggi di sistema e informativi; utile per trovare le ultime azioni nella chat senza dover scorrere molti messaggi.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -562,8 +552,6 @@
     <string name="group_self_not_in_group">Devi essere un membro del gruppo per fare questa azione.</string>
     <string name="profile_encryption">Crittografia</string>
     <string name="profile_shared_chats">Chat in Comune</string>
-    <!-- deprecated -->
-    <string name="related_chats">Chat Correlate</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Membri Passati</string>
     <string name="tab_contact">Contatto</string>
@@ -630,7 +618,7 @@
     <string name="sending">Invio...</string>
     <string name="last_msg_sent_successfully">Ultimo messaggio inviato con successo.</string>
     <string name="not_supported_by_provider">Non supportato dal tuo fornitore.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messaggi</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s di %2$s usati</string>
@@ -641,7 +629,7 @@
     <string name="onboarding_create_instant_account">Crea Nuovo Profilo</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Ho Già un Profilo</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Accesso E-Mail Classico</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Il Tuo Profilo</string>
@@ -667,10 +655,6 @@
     <string name="scan_invitation_code">Scansiona Codice Invito</string>
     <string name="login_title">Accedi</string>
     <string name="login_advanced_hint">Questo accesso è per utenti avanzati:\n\n• Non utilizzare un account che stai utilizzando in un\'altra app.\n\n• Il server e-mail classico consente chat senza crittografia end-to-end, contrassegnate da un\'icona di posta.</string>
-    <!-- deprecated -->
-    <string name="login_header">Accedi al tuo Profilo E-Mail</string>
-    <!-- deprecated -->
-    <string name="login_explain">Accedi con un profilo e-mail esistente</string>
     <string name="login_inbox">In Arrivo</string>
     <string name="login_imap_login">Nome Accesso IMAP</string>
     <string name="login_imap_server">Server IMAP</string>
@@ -697,14 +681,15 @@
     <string name="proxy_share_link">Condividi Collegamento</string>
     <string name="proxy_enabled">Proxy Abilitato</string>
     <string name="proxy_enabled_hint">Stai utilizzando un proxy. Se riscontri problemi di connessione, prova un proxy diverso.</string>
-    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
     <string name="transports">Trasporti</string>
     <string name="add_transport">Aggiungi Trasporto</string>
     <string name="remove_transport">Rimuovi Trasporto</string>
     <string name="edit_transport">Modifica Trasporto</string>
-    <!-- shown if a QR code was scanned that can be used as a transport -->
+    <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Aggiungere questo trasporto?</string>
     <string name="invalid_transport_qr">Il codice QR scansionato non contiene un mezzo di trasporto valido.</string>
+    <!-- placeholder will be replaced by a relay server name -->
     <string name="confirm_remove_transport">Rimuovere il trasporto \"%1$s\"?\n\nI tuoi contatti potranno contattarti solo se li hai contattati in precedenza tramite un altro mezzo di trasporto.\n\nIn caso di dubbio, rimuovi il mezzo di trasporto in un secondo momento.</string>
 
     <string name="login_certificate_checks">Controlli Certificato</string>
@@ -755,8 +740,6 @@
     <string name="pref_profile_photo">Immagine Profilo</string>
     <string name="pref_blocked_contacts">Contatti Bloccati</string>
     <string name="blocked_empty_hint">I contatti bloccati verranno mostrati qui.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Password e Profilo</string>
     <string name="pref_who_can_see_profile_explain">La tua immagine del profilo, il tuo nome e la tua biografia verranno inviati insieme ai tuoi messaggi quando comunichi con altri utenti.</string>
     <string name="pref_your_name">Il tuo Nome</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -800,10 +783,6 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Crittografia</string>
     <string name="pref_manage_keys">Gestisci Chiavi</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">Leggi Rubrica di Sistema</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts_explain">Offri la possibilità di creare chat con i contatti della rubrica.</string>
     <string name="pref_chats">Chat</string>
     <string name="pref_in_chat_sounds">Suoni In-Chat</string>
     <string name="pref_view_log">Vedi Registro</string>
@@ -819,12 +798,6 @@
     <string name="pref_backup_export_all">Esporta tutti i %1$d profili</string>
     <string name="pref_backup_export_start_button">Avvia Backup</string>
     <string name="pref_backup_written_to_x">Backup scritto con successo in %1$s</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Esporta Chiavi Segrete</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Esportare chiavi segrete in \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Chiavi segrete salvate con successo in \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Sfondo</string>
     <string name="pref_background_btn_default">Usa Immagine Predefinita</string>
@@ -835,21 +808,13 @@
     <string name="pref_multidevice_explain">Sincronizza i tuoi messaggi con gli altri dispositivi. Abilitazione automatica all\'aggiunta di un secondo dispositivo.</string>
     <string name="pref_multidevice_change_warn">La Modalità Multi-Dispositivo deve essere abilitata quando si utilizza lo stesso profilo su più dispositivi. Disattivare questa impostazione solo se si è rimosso il profilo da tutti gli altri dispositivi.\n\nDisattivare la Modalità Multi-Dispositivo mentre si utilizza il profilo su più dispositivi causerà la perdita di messaggi e altri problemi.</string>
     <string name="pref_auto_folder_moves">Sposta nella Cartella DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Le conversazioni chat vengono spostate per evitare di ingombrare la Posta in arrivo</string>
     <string name="pref_only_fetch_mvbox_title">Recupera dalla Cartella DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Ignora altre cartelle. Richiede che il tuo server sposti i messaggi delle chat nella cartella DeltaChat.</string>
     <string name="pref_show_emails">Mostra E-mail Classiche</string>
     <string name="pref_show_emails_no">No, solo chat</string>
     <string name="pref_show_emails_accepted_contacts">Per contatti accettati</string>
     <string name="pref_show_emails_all">Sì</string>
     <string name="pref_experimental_features">Caratteristiche Sperimentali</string>
     <string name="pref_on_demand_location_streaming">Trasmissione Posizione su Richiesta</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Modalità Sviluppatore</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Attiva le opzioni di debug e può rendere l\'app meno stabile. Solo per sviluppatori.</string>
     <string name="pref_background_default">Sfondo predefinito</string>
     <string name="pref_background_default_color">Colore predefinito</string>
     <string name="pref_background_custom_image">Immagine personalizzata</string>
@@ -917,17 +882,6 @@
     <string name="autodel_after_1_week">Dopo 1 settimana</string>
     <string name="after_5_weeks">Dopo 5 settimane</string>
     <string name="autodel_after_1_year">Dopo 1 anno</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Invia Messaggio Configurazione Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Un Messaggio Configurazione Autocrypt condivide in modo sicuro la configurazione end-to-end con altre app compatibili con Autocrypt.\n\nSe usi Delta Chat anche su altri dispositivi usa invece \"Impostazioni / Aggiungi Secondo Dispositivo\".</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Invia Messaggio Configurazione Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">La tua configurazione ti è stata inviata. Passa all\'altro dispositivo e apri il messaggio. Dovrebbe venirti richiesto un codice. Inserisci il seguente codice:</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Preferisci Cifratura End-To-End</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Messaggio da %1$s</string>
@@ -1039,8 +993,6 @@
     <string name="withdraw_joinbroadcast_explain">Questo codice QR può essere scansionato da altri per unirsi al canale \"%1$s\".\n\nPuoi reimpostarlo, in modo che il codice QR o il link di invito esistente non funzionino più.</string>
     <string name="withdraw_qr_code">Reimposta Codice QR</string>
     <string name="revive_verifycontact_explain">Questo codice QR è stato reimpostato e non è più attivo.</string>
-    <string name="revive_verifygroup_explain">Questo codice QR per unirsi al gruppo \"%1$s\" è stato reimpostato e non è più attivo.</string>
-    <string name="revive_joinbroadcast_explain">Questo codice QR per unirsi al canale \"%1$s\" è stato reimpostato e non è più attivo.</string>
     <string name="revive_qr_code">Attiva Codice QR </string>
     <string name="qrshow_title">Codice QR Invito</string>
     <string name="qrshow_x_joining">%1$s si unisce.</string>
@@ -1154,9 +1106,6 @@
     <string name="name_desktop">Nome</string>
     <string name="select_group_image_desktop">Seleziona Immagine Gruppo</string>
     <string name="export_backup_desktop">Esporta Backup</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Configurazione Autocrypt trasferita.</string>
-    <string name="forget_login_confirmation_desktop">Eliminare questo Profilo? Tutto verrà eliminato, inclusa la configurazione end-to-end, contatti, chat, i messaggi e i media. Questa azione non può essere annullata.</string>
     <string name="message_detail_sent_desktop">inviato</string>
     <string name="message_detail_received_desktop">ricevuto</string>
     <string name="menu.view.developer.open.log.folder">Apri Cartella Registro</string>
