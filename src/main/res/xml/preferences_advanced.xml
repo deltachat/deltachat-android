@@ -21,11 +21,6 @@
 
     </PreferenceCategory>
 
-    <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-        android:defaultValue="false"
-        android:key="pref_stats_sending"
-        android:title="@string/send_stats_to_devs" />
-
     <PreferenceCategory android:title="@string/pref_experimental_features">
 
         <Preference
@@ -54,6 +49,10 @@
     </PreferenceCategory>
 
     <PreferenceCategory>
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_stats_sending"
+            android:title="@string/send_stats_to_devs" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
