@@ -29,12 +29,6 @@ public class WebxdcGarbageCollectionWorker extends ListenableWorker {
   public @NonNull ListenableFuture<Result> startWork() {
     Log.i(TAG, "Running Webxdc storage garbage collection...");
 
-    Rpc rpc = DcHelper.getRpc(context);
-    if (rpc == null) {
-        Log.e(TAG, "Failed to get access to RPC, Webxdc storage garbage collection aborted.");
-        return;
-    }
-
     final Pattern WEBXDC_URL_PATTERN =
       Pattern.compile("^https?://acc(\\d+)-msg(\\d+)\\.localhost/?");
 
@@ -46,6 +40,13 @@ public class WebxdcGarbageCollectionWorker extends ListenableWorker {
           Log.i(TAG, "Done, no WebView origins found.");
           completer.set(Result.success());
           return;
+        }
+
+        Rpc rpc = DcHelper.getRpc(context);
+        if (rpc == null) {
+            Log.e(TAG, "Failed to get access to RPC, Webxdc storage garbage collection aborted.");
+            completer.set(Result.failure());
+            return;
         }
 
         for (Object key : origins.keySet()) {
