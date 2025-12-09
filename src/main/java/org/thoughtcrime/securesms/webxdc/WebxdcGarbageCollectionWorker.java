@@ -29,6 +29,11 @@ public class WebxdcGarbageCollectionWorker extends ListenableWorker {
   public @NonNull ListenableFuture<Result> startWork() {
     Log.i(TAG, "Running Webxdc storage garbage collection...");
 
+    if (rpc == null) {
+        Log.e(TAG, "Failed to get access to RPC, Webxdc storage garbage collection aborted.");
+        return;
+    }
+
     final Pattern WEBXDC_URL_PATTERN =
       Pattern.compile("^https?://acc(\\d+)-msg(\\d+)\\.localhost/?");
 
