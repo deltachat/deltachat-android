@@ -262,8 +262,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Indtast navn eller e-mailadresse</string>
     <string name="contacts_type_email_above">Indtast e-mailadresse ovenover</string>
 
 
@@ -308,6 +306,7 @@
     <string name="show_location_traces">Vis spor</string>
     <string name="add_poi">Send interessepunkt</string>
 
+
     <!-- search -->
     <string name="search">Søg</string>
     <string name="search_explain">Søg efter samtaler, kontakter og beskeder</string>
@@ -348,17 +347,13 @@
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Forbundet</string>
     <string name="sending">Sender...</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Beskeder</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s af %2$s brugt</string>
 
 
     <string name="login_title">Login</string>
-    <!-- deprecated -->
-    <string name="login_header">Login til server</string>
-    <!-- deprecated -->
-    <string name="login_explain">Login med en eksisterende e-mailkonto</string>
     <string name="login_inbox">Indbakke</string>
     <string name="login_imap_login">IMAP logind navn</string>
     <string name="login_imap_server">IMAP server</string>
@@ -407,8 +402,6 @@
     <string name="pref_profile_photo">Profilbillede</string>
     <string name="pref_blocked_contacts">Blokerede kontakter</string>
     <string name="blocked_empty_hint">Hvis du blokerer kontakter, bliver de vist her.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Adgangskode og konto</string>
     <string name="pref_who_can_see_profile_explain">Profilbillede og navn vises sammen med beskeder, når der kommunikeres med andre brugere. Allerede sendt information kan ikke slettes eller fjernes.</string>
     <string name="pref_your_name">Dit navn</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -459,20 +452,12 @@
     <string name="pref_backup_export_explain">En sikkerhedskopi hjælper til at opsætte en ny installation på denne eller en anden enhed.\n\nSikkerhedskopien indeholder alle beskeder, kontakter og samtaler og end-to-end krypteringsopsætning. Gem sikkerhedskopien et sikkert sted eller slet den så hurtigt som muligt.</string>
     <string name="pref_backup_export_start_button">Start sikkerhedskopiering</string>
     <string name="pref_backup_written_to_x">Sikkerhedskopi skrevet til %1$s</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Eksporter hemmelige nøgler</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Eksporter hemmelige nøgler til \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Hemmelige nøgler skrevet til \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Baggrund</string>
     <string name="pref_background_btn_default">Brug standardbillede</string>
     <string name="pref_background_btn_gallery">Vælg fra galleri</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ved deaktivering af denne indstiiling vær sikker på at server og andre klienter er indstillet tilsvarende.\n\nEllers fungerer det måske slet ikke.</string>
     <string name="pref_auto_folder_moves">Flytter automatisk til DeltaChat mappe</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Samtaler er flyttet for at undgå rodet indbakke</string>
     <string name="pref_show_emails">Vis klassisk e-mail</string>
     <string name="pref_show_emails_no">Nej, kun samtaler</string>
     <string name="pref_show_emails_accepted_contacts">For godkendte kontakter</string>
@@ -519,17 +504,6 @@
     <string name="autodel_after_1_week">Efter 1 uge</string>
     <string name="after_5_weeks">Efter 5 uger</string>
     <string name="autodel_after_1_year">Efter 1 år</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Send Autocrypt opsætning besked</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">En \"Autocrypt opsætning besked\" deler sikkert end-to-end opsætning med andre Autocrypt kompatible programmer.\n\nOpsætning er krypteret med en kode som er vist her og skal indtastes på den anden enhed.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Send autocrypt-opsætningsbesked</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Opsætning er sendt til dig selv. Skift til den anden enhed og åben opsætning beskeden. Der skulle blive spurgt til opsætning kode. Indtast følgende cifre i prompt.\n\nNår færdig vil den anden enhed være klar til at bruge Autocrypt.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Foretræk end-to-end kryptering</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Besked fra %1$s</string>
@@ -672,9 +646,6 @@
     <string name="name_desktop">Navn</string>
     <string name="select_group_image_desktop">Vælg gruppebillede</string>
     <string name="export_backup_desktop">Eksporter sikkerhedskopi</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Autocrypt opsætning overført!</string>
-    <string name="forget_login_confirmation_desktop">Slet login? Alt vil blive slettet, din end-to-end opsætning, kontakter, samtaler, meddelelser og medier. Denne handling er endelig og kan ikke fortrydes.</string>
     <string name="message_detail_sent_desktop">sendt</string>
     <string name="message_detail_received_desktop">modtaget</string>
     <string name="menu.view.developer.open.log.folder">Åbn log mappe</string>

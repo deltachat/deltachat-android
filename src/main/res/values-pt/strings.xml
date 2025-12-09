@@ -258,8 +258,6 @@
     <string name="ask_remove_from_channel">Remover %1$s do canal?</string>
     <!-- contact list -->
     <string name="contacts_title">Contactos</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Digite o nome ou endereço de e-mail</string>
     <string name="contacts_type_email_above">Digite o endereço de e-mail acima</string>
 
 
@@ -323,8 +321,6 @@
     <string name="connectivity_updating">A actualizar…</string>
     <string name="sending">A enviar…</string>
     <string name="login_title">Login</string>
-    <!-- deprecated -->
-    <string name="login_header">Iniciar sessão na sua conta de e-mail</string>
     <string name="login_inbox">Caixa de entrada</string>
     <string name="login_imap_login">IMAP nome de login </string>
     <string name="login_imap_server">IMAP servidor</string>
@@ -396,32 +392,13 @@
     <string name="pref_backup_export_explain">Um backup ajuda-o a configurar uma nova instalação neste ou em outro dispositivo. \n\n O backup conterá todas as mensagens, contactos e converas e a configuração de encriptação Mantenha o arquivo de backup em um local seguro ou exclua-o o mais rápido possível.</string>
     <string name="pref_backup_export_start_button">Inicia backup</string>
     <string name="pref_backup_written_to_x">Backup escrito com sucesso em %1$s</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Exportar chave secreta</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Exportar chave secreta para \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Chaves secretas escritas com sucesso para "%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fundo</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se desabilitar esta opção, verifique se seu servidor e seus outros clientes estão configurados adequadamente. \n\ncaso contrário, as coisas podem não funcionar.</string>
     <string name="pref_auto_folder_moves">Mover pasta automaticamente para o Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">As chats de chat são movidas para evitar atravancar da pasta Inbox</string>
     <string name="pref_show_emails">Exibir e-mails comuns</string>
     <string name="pref_show_emails_no">Não, apenas conversas</string>
     <string name="pref_show_emails_all">Tudo</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Enviar mensagem com a definição da encriptação automática</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">A \"Mensagem de Configuração Autocrypt\" compartilha com segurança a sua configuração de ponta a ponta com outros aplicativos compatíveis com Autocrypt. \n\nA configuração será encriptada por um código de configuração que é exibido aqui e deve ser digitado no outro dispositivo.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Enviar mensagem com a definição da encriptação automática</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">A sua configuração foi-lhe enviada. Entre no outro dispositivo e abra a mensagem de configuração. Deve ser solicitado a fornecer um código de configuração. Digite os seguintes dígitos no prompt.\n\n Assim que estiver concluido, o outro dispositivo estará pronto para usar o Autocrypt.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Preferir encriptação ponta a ponta</string>
-
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">O nome do grupo mudou de \"%1$s\" para \"%2$s\" por mim.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -508,9 +485,6 @@
     <string name="name_desktop">Nome</string>
     <string name="select_group_image_desktop">Seleccionar a imagem para o grupo</string>
     <string name="export_backup_desktop">Exportar o backup</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Configuração autocrypt transferida com sucesso!</string>
-    <string name="forget_login_confirmation_desktop">Apagar este login? Tudo será apagado, incluindo sua configuração de ponta a ponta, contatos, chats, mensagens e mídia. Esta ação é final e não pode ser revertida.</string>
     <string name="message_detail_sent_desktop">enviado</string>
     <string name="message_detail_received_desktop">recebido</string>
     <string name="menu.view.developer.open.log.folder">Abrir pasta de Log</string>

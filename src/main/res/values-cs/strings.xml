@@ -325,8 +325,6 @@
     <string name="menu_save_log">Uložit protokol</string>
     <string name="menu_more_options">Další možnosti</string>
     <string name="menu_learn_spelling">Naučte se pravopis</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Auditní protokol chatu</string>
     <string name="jump_to_message">Přejít na zprávu</string>
     <string name="jump_to_original_message">Přejít na původní zprávu</string>
     <string name="copy_json">Kopírovat JSON</string>
@@ -407,8 +405,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kontakty</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Zadejte jméno nebo e-mail</string>
     <string name="contacts_type_email_above">Zadejte e-mail výše</string>
 
 
@@ -483,12 +479,6 @@
     <string name="show_location_traces">Zobrazit trasy</string>
     <string name="add_poi">Odeslat bod zájmu</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">Zde se zobrazují systémové zprávy pro tento chat</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Auditní protokol pro chat %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Zobrazuje pouze systémové a informační zprávy; užitečné pro nalezení posledních akcí v chatu bez procházení mnoha zpráv.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -521,8 +511,6 @@
     <string name="group_self_not_in_group">Pro tuto akci je nutné být členem této skupiny.</string>
     <string name="profile_encryption">Šifrování</string>
     <string name="profile_shared_chats">Sdílené chaty</string>
-    <!-- deprecated -->
-    <string name="related_chats">Související chaty</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Bývalí členové</string>
     <string name="tab_contact">Kontakt</string>
@@ -589,7 +577,7 @@
     <string name="sending">Odesílání...</string>
     <string name="last_msg_sent_successfully">Poslední zpráva úspěšně odeslána.</string>
     <string name="not_supported_by_provider">Nepodporováno vaším poskytovatelem.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Zprávy</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">Zaplněno %1$s z %2$s</string>
@@ -600,7 +588,7 @@
     <string name="onboarding_create_instant_account">Vytvořit nový profil</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Již mám svůj profil</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Přihlášení ke klasickému e-mailu</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Váš profil</string>
@@ -625,10 +613,6 @@
     <string name="welcome_chat_over_email">Zabezpečený decentralizovaný chat</string>
     <string name="scan_invitation_code">Naskenovat kód pozvánky</string>
     <string name="login_title">Přihlaš se</string>
-    <!-- deprecated -->
-    <string name="login_header">Přihlašte se ke svému e-mailovému účtu</string>
-    <!-- deprecated -->
-    <string name="login_explain">Přihlásit se se stávajícím účtem pro e-mail.</string>
     <string name="login_inbox">Příchozí</string>
     <string name="login_imap_login">IMAP uživatelské jméno</string>
     <string name="login_imap_server">IMAP server</string>
@@ -701,8 +685,6 @@
     <string name="pref_profile_photo">Profilový obrázek</string>
     <string name="pref_blocked_contacts">Blokované kontakty</string>
     <string name="blocked_empty_hint">Zablokované kontakty se zobrazí zde.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Heslo a účet</string>
     <string name="pref_who_can_see_profile_explain">Váš profilový obrázek, jméno a bio budou odeslány společně s vašimi zprávami ostatním uživatelům.</string>
     <string name="pref_your_name">Vaše jméno</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -746,10 +728,6 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Šifrování</string>
     <string name="pref_manage_keys">Správa klíčů</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">Čtení systémových kontaktů</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts_explain">Nabízet vytváření chatů s kontakty z adresáře. Pro některé poskytovatele je nejprve nutné nastavit koncové šifrování.</string>
     <string name="pref_chats">Chaty</string>
     <string name="pref_in_chat_sounds">Zvuky v rámci chatu</string>
     <string name="pref_view_log">Zobrazit protokol</string>
@@ -764,33 +742,19 @@
     <string name="pref_backup_export_all">Exportovat všech %1$d profilů</string>
     <string name="pref_backup_export_start_button">Spustit zálohu</string>
     <string name="pref_backup_written_to_x">Záloha úspěšně zapsána v \"%1$s\"</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Exportovat tajné klíče</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Exportovat tajné klíče do \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Tajné klíče úspěšně zapsány v \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Pozadí</string>
     <string name="pref_background_btn_default">Použít výchozí obrázek</string>
     <string name="pref_background_btn_gallery">Vybrat z galerie</string>
     <string name="pref_imap_folder_warn_disable_defaults">Při změně této volby se ujistěte, že váš server a ostatní klientské aplikace mají odpovídající nastavení.\n\nJinak může vše přestat fungovat.</string>
     <string name="pref_auto_folder_moves">Automaticky přesouvat do složky DeltaChat </string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Zprávy chatů jsou přesouvány, aby nezahlcovaly složku Doručené</string>
     <string name="pref_only_fetch_mvbox_title">Načítat pouze ze složky DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Ignorovat ostatní složky. Vyžaduje, aby váš server přesouval zprávy chatu do složky DeltaChat.</string>
     <string name="pref_show_emails">Zobrazovat běžné e-maily</string>
     <string name="pref_show_emails_no">Ne, pouze chaty</string>
     <string name="pref_show_emails_accepted_contacts">Pro přijaté kontakty</string>
     <string name="pref_show_emails_all">Vše</string>
     <string name="pref_experimental_features">Experimentální funkce </string>
     <string name="pref_on_demand_location_streaming">Streamování polohy na vyžádání</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Vývojový režim</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Povolí debugovací volby a může aplikaci učinit méně stabilní. Pouze pro vývojáře.</string>
     <string name="pref_background_default">Výchozí obrázek</string>
     <string name="pref_background_default_color">Výchozí barva</string>
     <string name="pref_background_custom_image">Vlastní obrázek</string>
@@ -857,17 +821,6 @@
     <string name="autodel_after_1_week">Po 1 týdnu</string>
     <string name="after_5_weeks">Po 5 týdnech</string>
     <string name="autodel_after_1_year">Po 1 roce</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Odeslat zprávu s nastavením Autocryptu</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Pomocí zprávy s nastavením Autocryptu lze sdílet vaše nastavení koncového šifrování s dalšími aplikacemi využívajícími Autocrypt.\n\nNastavení je zašifrované zobrazeným kódem, který musí být zadán na zařízení, na které si přejete nastavení přenést.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Odeslat nastavení Autocryptu</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Vaše nastavení bylo odesláno. Vezměte si zařízení, kam si přejete nastavení přenést, a zprávu na něm otevřete. Mělo by se objevit pole pro zadání kódu. Do něj vložte následující číslice:</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Upřednostňovat koncové šifrování</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Zpráva od uživatele %1$s</string>
@@ -968,7 +921,6 @@
     <string name="withdraw_verifygroup_explain">Tento QR kód mohou ostatní uživatelé použít k připojení ke skupině \"%1$s\".\n\nMůžete také vygenerovat nový, čímž dosavadní QR kód či odkaz s pozvánkou zneplatníte.</string>
     <string name="withdraw_qr_code">Vygenerovat nový QR kód</string>
     <string name="revive_verifycontact_explain">Tento QR kód již není aktivní, protože byl vygenerován nový.</string>
-    <string name="revive_verifygroup_explain">Tento QR kód k připojení ke skupině \"%1$s\" již není aktivní, protože byl vygenerován nový.</string>
     <string name="revive_qr_code">Aktivovat QR kód</string>
     <string name="qrshow_title">QR kód s pozvánkou</string>
     <string name="qrshow_x_joining">Uživatel %1$s se připojil.</string>
@@ -1079,9 +1031,6 @@
     <string name="name_desktop">Jméno</string>
     <string name="select_group_image_desktop">Vybrat obrázek skupiny</string>
     <string name="export_backup_desktop">Exportovat zálohu</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Nastavení Autocryptu přeneseno.</string>
-    <string name="forget_login_confirmation_desktop">Opravdu si přejete smazat tento profil? Všechna data budou smazána, včetně nastavení koncového šifrování, kontaktů, hovorů, zpráv a multimédií. Tuto akci nelze vrátit zpět.</string>
     <string name="message_detail_sent_desktop">odesláno</string>
     <string name="message_detail_received_desktop">přijato</string>
     <string name="menu.view.developer.open.log.folder">Otevřít složku protokolu</string>

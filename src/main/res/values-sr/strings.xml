@@ -274,8 +274,6 @@
     <string name="menu_save_log">Сними дневник</string>
     <string name="menu_more_options">Више опција</string>
     <string name="menu_learn_spelling">Научи правопис</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Дневник ревизије ћаскања</string>
     <string name="jump_to_message">Иди на поруку</string>
     <string name="copy_json">Копирај JSON</string>
     <string name="replace_draft">Замени нацрт</string>
@@ -348,8 +346,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Контакти</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Унесите име или е-адресу</string>
     <string name="contacts_type_email_above">Унесите е-адресу изнад</string>
 
 
@@ -414,12 +410,6 @@
     <string name="show_location_traces">Прикажи трагове</string>
     <string name="add_poi">Пошаљи интересантно место</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">Поруке оперативног система за ово ћаскање ће се појавити овде.</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Дневник ревизије ћаскања за %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Приказује само информативне и поруке оперативног система; корисно за проналажење последњих радњи ћаскања без листања кроз много порука.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -483,7 +473,7 @@
     <string name="sending">Слање...</string>
     <string name="last_msg_sent_successfully">Последња порука је успешно послата.</string>
     <string name="not_supported_by_provider">Није подржано од вашег провајдера.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Поруке</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$sод %2$sискоришћени</string>
@@ -491,10 +481,6 @@
 
     <string name="scan_invitation_code">Скенирај код позива за приступ.</string>
     <string name="login_title">Пријави се</string>
-    <!-- deprecated -->
-    <string name="login_header">Пријавите се у ваш налог е-поште</string>
-    <!-- deprecated -->
-    <string name="login_explain">Пријавите се преко постојећег налога е-поште</string>
     <string name="login_inbox">Пријем</string>
     <string name="login_imap_login">Корисничко име за ИМАП</string>
     <string name="login_imap_server">ИМАП сервер</string>
@@ -545,8 +531,6 @@
     <string name="pref_profile_photo">Слика профила</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
     <string name="blocked_empty_hint">Блокирани контакти ће се појавити овде.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Лозинка и налог</string>
     <string name="pref_who_can_see_profile_explain">Слика вашег профила, име и потпис ће бити послан заједно са вашом поруком када комуницирате са другим корисницима.</string>
     <string name="pref_your_name">Ваше име</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -597,33 +581,19 @@
     <string name="pref_backup_export_explain">Резервна копија вам помаже да подесите нову инсталацију на овом или другом уређају.\n\nРезервна копија ће садржати све поруке, контакте и ћаскања и ваше комплетно подешавање аутоматског шифровања. Чувајте резервну копију на безбедном месту или је избришите што је пре могуће.</string>
     <string name="pref_backup_export_start_button">Покрени складиштење резервне копије</string>
     <string name="pref_backup_written_to_x">Записивање резервне копије је успешно до „%1$s“.</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Извези тајне кључеве</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Извези тајне кључеве на „%1$s“?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Записивање тајних кључева је успешно до „%1$s“.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Позадина</string>
     <string name="pref_background_btn_default">Користи дату слику</string>
     <string name="pref_background_btn_gallery">Изабери из галерије</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ако промените ову опцију, морате проверити да су ваш сервер и ваши други клијенти конфигурисани у складу са тим.\n\nУ супротном апликација можда уопште неће функционисати.</string>
     <string name="pref_auto_folder_moves">Аутоматски премести у DeltaChat директоријум</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Ћаскања се померају да би се избегло затрпавање пријемног сандучета</string>
     <string name="pref_only_fetch_mvbox_title">Примај поруке само из DeltaChat директоријума</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Игнориши остале директоријуме. Захтева да ваш сервер премести поруке у DeltaChat директоријум.</string>
     <string name="pref_show_emails">Прикажи обичне поруке е-поште</string>
     <string name="pref_show_emails_no">Не, само ћаскања</string>
     <string name="pref_show_emails_accepted_contacts">За прихваћене контакте</string>
     <string name="pref_show_emails_all">Сви</string>
     <string name="pref_experimental_features">Експерименталне могућности</string>
     <string name="pref_on_demand_location_streaming">Проток положаја на захтев</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Режим програмера</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Активира опције за отклањање грешака и може учинити апликацију мање стабилном. Само за програмере.</string>
     <string name="pref_background_default">Подразумевана позадина</string>
     <string name="pref_background_default_color">Подразумевана боја</string>
     <string name="pref_background_custom_image">Прилагођена слика</string>
@@ -676,17 +646,6 @@
     <string name="autodel_after_1_week">За 1 недељу</string>
     <string name="after_5_weeks">За 5 недеља</string>
     <string name="autodel_after_1_year">За 1 годину</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Пошаљите поруку поставки за аутошифровање</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Порука о подешавању аутоматског шифровања безбедно дели ваше комплетно подешавање са другим апликацијама које су компатибилне са аутоматским шифровањем.\n\nПодешавање ће бити шифровано кодом за подешавање приказаним овде и мора се унети на другом уређају.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Пошаљите поруку поставки за аутошифровање</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Ваше подешавање вам је послато. Пређите на други уређај и отворите поруку за подешавање. На другом уређају од се вас очекује да унесете код за подешавање. Унесите следеће цифре:</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Преферирај с-краја-на-крај шифровање</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Поруке од %1$s</string>
@@ -778,7 +737,6 @@
     <string name="withdraw_verifygroup_explain">Други могу да очитају овај бар-кôд да би приступили групи „%1$s“.\n\nОвде можете да деактивирате бар-кôд и поново га активирате тако што ћете га поново oчитати.</string>
     <string name="withdraw_qr_code">Деактивирај бар-кôд</string>
     <string name="revive_verifycontact_explain">Други могу да очитају овај бар-кôд да би вас контактирали.\n\nОвај бар-кôд није активан на овом уређају.</string>
-    <string name="revive_verifygroup_explain">Други могу да очитају овај бар-кôд да би приступили групи „%1$s“.\n\nОвај бар-кôд није активан на овом уређају.</string>
     <string name="revive_qr_code">Активирај бар-кôд</string>
     <string name="qrshow_title">Бар-кôд за потврду</string>
     <string name="qrshow_x_joining">%1$s се придружи.</string>
@@ -870,9 +828,6 @@
     <string name="name_desktop">Име</string>
     <string name="select_group_image_desktop">Изабери слику групе</string>
     <string name="export_backup_desktop">Извези резервну копију</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Поставке за аутошифровање су послате.</string>
-    <string name="forget_login_confirmation_desktop">Да ли желите да избришете овај налог? Све ће бити избрисано, укључујући и ваше подешавање с-краја-на-крај шифровања, контакти, ћаскања, поруке и медији. Ова радња се не може опозвати.</string>
     <string name="message_detail_sent_desktop">послато</string>
     <string name="message_detail_received_desktop">примљено</string>
     <string name="menu.view.developer.open.log.folder">Отвори директоријум где се налазе дневници</string>

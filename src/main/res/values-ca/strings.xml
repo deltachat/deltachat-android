@@ -338,8 +338,6 @@
     <string name="menu_save_log">Desa el registre</string>
     <string name="menu_more_options">Més opcions</string>
     <string name="menu_learn_spelling">Aprèn l\'ortografia</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Registre de l\'auditoria de xat</string>
     <string name="jump_to_message">Ves al missatge</string>
     <string name="jump_to_original_message">Vés al Missatge Original</string>
     <string name="copy_json">Copia el JSON</string>
@@ -433,8 +431,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Llista de contactes</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Introduïu el vostre nom o la vostra adreça de correu electrònic</string>
     <string name="contacts_type_email_above">Escriviu l\'adreça d\'email superior</string>
 
 
@@ -506,12 +502,6 @@
     <string name="show_location_traces">Mostra el rastre</string>
     <string name="add_poi">Envia el punt d\'interès</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">Els missatges de sistema d\'aquest xat es mostraran aquí</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Registre de l\'auditoria del xat per %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Només mostra els missatges del sistema i informació. Això és útil per a trobar les últimes accions al xat sense desplaçar-se entre massa missatges.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -544,8 +534,6 @@
     <string name="group_self_not_in_group">Has de ser membre del grup per poder fer això.</string>
     <string name="profile_encryption">Encriptació</string>
     <string name="profile_shared_chats">Xats compartits</string>
-    <!-- deprecated -->
-    <string name="related_chats">Xats relacionats</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Antics membres</string>
     <string name="tab_contact">Contacte</string>
@@ -612,7 +600,7 @@
     <string name="sending">Enviant...</string>
     <string name="last_msg_sent_successfully">Últim missatge enviat bé.</string>
     <string name="not_supported_by_provider">No suportat pel vostre proveïdor.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Missatges</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s de %2$s usats</string>
@@ -623,7 +611,7 @@
     <string name="onboarding_create_instant_account">Crea un perfil nou</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Ja tinc un perfil</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Inici de sessió correu-e clàssic</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">El vostre perfil</string>
@@ -648,10 +636,6 @@
     <string name="welcome_chat_over_email">Xat segur i descentralitzat</string>
     <string name="scan_invitation_code">Escaneja el Codi d\'Invitació</string>
     <string name="login_title">Identifiqueu-vos</string>
-    <!-- deprecated -->
-    <string name="login_header">Identifiqueu-vos al vostre servidor</string>
-    <!-- deprecated -->
-    <string name="login_explain">Inicia sessió amb un compte de correu electrònic existent</string>
     <string name="login_inbox">Safata d\'entrada</string>
     <string name="login_imap_login">Nom d\'identificació IMAP</string>
     <string name="login_imap_server">Servidor IMAP</string>
@@ -724,8 +708,6 @@
     <string name="pref_profile_photo">Fotografia de perfil</string>
     <string name="pref_blocked_contacts">Contactes bloquejats</string>
     <string name="blocked_empty_hint">Els contactes blocats apareixeran aquí.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Contrasenya i compte</string>
     <string name="pref_who_can_see_profile_explain">La vostra imatge de perfil, nom i biografia s\'enviaran amb juntament els missatges que escriviu quant us comuniqueu amb altres usuaris.</string>
     <string name="pref_your_name">El vostre nom</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -769,10 +751,6 @@
     <string name="pref_server">Servidor</string>
     <string name="pref_encryption">Xifratge</string>
     <string name="pref_manage_keys">Gestió de les claus</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">Llegeix la llibreta d\'adreces del sistema</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts_explain">Ofereix de crear xats amb els contactes de la llibreta d\'adreces. Alguns proveïdors necessiten de configurar abans el xifratge d\'extrem a extrem.</string>
     <string name="pref_chats">Xats</string>
     <string name="pref_in_chat_sounds">Sons d\'entrada</string>
     <string name="pref_view_log">Mostra el registre</string>
@@ -787,33 +765,19 @@
     <string name="pref_backup_export_all">Exporta tots %1$d perfils</string>
     <string name="pref_backup_export_start_button">Inicia la còpia de seguretat</string>
     <string name="pref_backup_written_to_x">La còpia de seguretat s\'ha escrit correctament a %1$s</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Exporta les claus secretes</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Exporto les claus secretes a \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Les claus secretes s\'han copiat correctament a \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fons</string>
     <string name="pref_background_btn_default">Usa la imatge per defecte</string>
     <string name="pref_background_btn_gallery">Trieu de la galeria</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si desactiveu aquesta opció, assegureu-vos que el vostre servidor i els altres programes estiguin configurats de la mateixa manera.\n\nAltrament podeu tenir problemes de funcionament.</string>
     <string name="pref_auto_folder_moves">Moure automàticament a la carpeta de Delta Chat</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Les converses de xat s\'han mogut per no atapeir la safata d’entrada</string>
     <string name="pref_only_fetch_mvbox_title">Agafa només de la carpeta de DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Ignora les altres carpetes. Requereix que el vostre servidor mogui els missatges de xat a la carpeta DeltaChat.</string>
     <string name="pref_show_emails">Mostra els correus clàssics</string>
     <string name="pref_show_emails_no">No, només xats</string>
     <string name="pref_show_emails_accepted_contacts">Per a contactes acceptats</string>
     <string name="pref_show_emails_all">Tot</string>
     <string name="pref_experimental_features">Funcionalitats experimentals</string>
     <string name="pref_on_demand_location_streaming">Difusió de la ubicació sota demanda</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Mode de desenvolupador</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Activa les opcions de depuració i pot fer que l\'aplicació sigui menys estable. Només per a desenvolupadors.</string>
     <string name="pref_background_default">Imatge per defecte</string>
     <string name="pref_background_default_color">Color per defecte</string>
     <string name="pref_background_custom_image">Imatge personalitzada</string>
@@ -881,17 +845,6 @@
     <string name="autodel_after_1_week">Després d\'1 setmana</string>
     <string name="after_5_weeks">Després de 5 setmanes</string>
     <string name="autodel_after_1_year">Després d\'1 any</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Envia el missatge de configuració d\'Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Un \"missatge de configuració Autocrypt\" comparteix de forma segura la vostra configuració d\'extrem a extrem amb altres aplicacions compatibles amb Autocrypt.\n\nLa configuració es xifrarà amb un codi de configuració que es mostrarà aquí i que haureu d\'escriure a l’altre dispositiu.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Envia el missatge de configuració d\'Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Se us ha enviat la vostra configuració. Canvieu a l\'altre dispositiu i obriu el missatge de configuració. Se us demanarà un codi de configuració. Introduïu els dígits següents a l\'indicador.\n\nUn cop fet, l\'altre dispositiu estarà llest per utilitzar Autocrypt.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Prefereix l\'encriptació d\'extrem a extrem</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Missatge de %1$s</string>
@@ -1000,7 +953,6 @@
     <string name="withdraw_verifygroup_explain">Altres poden escanejar aquest codi QR per a unir-se al grup «%1$s».\n\nPodeu reinicialitzar-lo, de manera que el codi QR existent, o l\'enllaç d\'invitació, deixarà de funcionar.</string>
     <string name="withdraw_qr_code">Reinicialitza el codi QR</string>
     <string name="revive_verifycontact_explain">Aquest codi QR s\'ha reinicialitzat i ja no és actiu.</string>
-    <string name="revive_verifygroup_explain">Aquest codi QR per a unir-se al grup «%1$s» s\'ha reinicialitzat i ja no és actiu.</string>
     <string name="revive_qr_code">Activa el codi QR</string>
     <string name="qrshow_title">Codi QR d\'invitació</string>
     <string name="qrshow_x_joining">%1$s s\'uneix.</string>
@@ -1114,9 +1066,6 @@
     <string name="name_desktop">Nom</string>
     <string name="select_group_image_desktop">Trieu una imatge de grup</string>
     <string name="export_backup_desktop">Exporta la còpia de seguretat</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">S\'ha transferit correctament la configuració Autocrypt!</string>
-    <string name="forget_login_confirmation_desktop">Voleu esborrar aquest perfil? S\'esborrarà tot, incloent-hi la configuració, els contactes, els xats, els missatges i el contingut multimèdia. Aquesta acció és definitiva i no es pot desfer.</string>
     <string name="message_detail_sent_desktop">enviat</string>
     <string name="message_detail_received_desktop">rebut</string>
     <string name="menu.view.developer.open.log.folder">Obre la carpeta de registre</string>
