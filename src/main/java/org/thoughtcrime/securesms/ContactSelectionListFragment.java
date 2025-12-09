@@ -17,7 +17,7 @@
 package org.thoughtcrime.securesms;
 
 
-import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -114,8 +114,6 @@ public class ContactSelectionListFragment extends    Fragment
 
     recyclerView            = ViewUtil.findById(view, R.id.recycler_view);
 
-    // allow content to be drawn behind the navigation bar
-    recyclerView.setClipToPadding(false);
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(recyclerView, true, false, true, true);
 

@@ -48,7 +48,7 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.RelayUtil;
+import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -108,8 +108,6 @@ public class ConversationListFragment extends BaseConversationListFragment
     emptyState   = ViewUtil.findById(view, R.id.empty_state);
     emptySearch  = ViewUtil.findById(view, R.id.empty_search);
 
-    // allow content to be drawn behind the navigation bar
-    list.setClipToPadding(false);
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(list, true, archive, true, true);
 
@@ -267,7 +265,7 @@ public class ConversationListFragment extends BaseConversationListFragment
     int listflags = 0;
     if (archive) {
       listflags |= DcContext.DC_GCL_ARCHIVED_ONLY;
-    } else if (RelayUtil.isRelayingMessageContent(getActivity())) {
+    } else if (ShareUtil.isRelayingMessageContent(getActivity())) {
       listflags |= DcContext.DC_GCL_FOR_FORWARDING;
     } else {
       listflags |= DcContext.DC_GCL_ADD_ALLDONE_HINT;

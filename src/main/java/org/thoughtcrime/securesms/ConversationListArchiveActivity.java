@@ -2,9 +2,9 @@ package org.thoughtcrime.securesms;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.FROM_ARCHIVED_CHATS_EXTRA;
-import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
-import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
-import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
+import static org.thoughtcrime.securesms.util.ShareUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.ShareUtil.isSharing;
 
 import android.content.Intent;
 import android.os.Bundle;

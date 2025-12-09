@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:clickable="true"
+    android:focusable="true"
+    android:descendantFocusability="blocksDescendants"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:minHeight="72dp"
+    android:background="?attr/conversation_list_item_background"
+    android:gravity="center_vertical">
+
+  <ImageView
+      android:id="@+id/main_indicator"
+      android:layout_width="24dp"
+      android:layout_height="24dp"
+      android:layout_marginEnd="16dp"
+      android:src="@drawable/ic_check_white_24dp"
+      android:contentDescription="@string/def"
+      android:visibility="invisible"
+      app:tint="?attr/colorAccent"
+      tools:visibility="visible" />
+
+  <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:orientation="vertical"
+      android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="?attr/conversation_list_item_contact_color"
+        android:textSize="16sp"
+        style="@style/Signal.Text.Body"
+        tools:text="example.com" />
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-light"
+        tools:text="a2sf029ve"/>
+
+  </LinearLayout>
+
+  <ImageView
+      android:id="@+id/delete_button"
+      android:layout_width="48dp"
+      android:layout_height="72dp"
+      android:paddingStart="12dp"
+      android:paddingEnd="12dp"
+      android:clickable="true"
+      android:focusable="true"
+      android:contentDescription="@string/remove_transport"
+      android:background="@drawable/touch_highlight_background"
+      android:src="@drawable/ic_delete_white_24dp"
+      app:tint="?attr/conversation_list_item_date_color" />
+
+  <ImageView
+      android:id="@+id/edit_button"
+      android:layout_width="48dp"
+      android:layout_height="72dp"
+      android:paddingStart="12dp"
+      android:paddingEnd="12dp"
+      android:clickable="true"
+      android:focusable="true"
+      android:contentDescription="@string/edit_transport"
+      android:background="@drawable/touch_highlight_background"
+      android:src="@drawable/ic_create_white_24dp"
+      app:tint="?attr/conversation_list_item_date_color" />
+
+</LinearLayout>

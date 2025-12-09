@@ -327,8 +327,6 @@
     <string name="menu_save_log">保存日志</string>
     <string name="menu_more_options">更多选项</string>
     <string name="menu_learn_spelling">学习拼写</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">聊天审计日志</string>
     <string name="jump_to_message">跳转到消息</string>
     <string name="jump_to_original_message">跳转到原始消息</string>
     <string name="copy_json">复制 JSON</string>
@@ -418,8 +416,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">联系人</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">输入名称或电子邮件地址</string>
     <string name="contacts_type_email_above">在上方输入电子邮件地址</string>
 
 
@@ -488,12 +484,6 @@
     <string name="show_location_traces">显示轨迹</string>
     <string name="add_poi">发送兴趣点</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">此聊天的系统消息会出现在这里</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">%1$s 的聊天审计日志</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">仅显示系统消息和信息类消息。可用于查找最后的聊天操作而无需滚动许多普通消息。</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -526,8 +516,6 @@
     <string name="group_self_not_in_group">为了执行此操作，您必须是群组成员。</string>
     <string name="profile_encryption">加密</string>
     <string name="profile_shared_chats">共有聊天</string>
-    <!-- deprecated -->
-    <string name="related_chats">相关聊天</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">过去成员</string>
     <string name="tab_contact">联系人</string>
@@ -594,7 +582,7 @@
     <string name="sending">发送中…</string>
     <string name="last_msg_sent_successfully">最后一条消息已成功发送。</string>
     <string name="not_supported_by_provider">不被您的邮件提供商支持。</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">消息</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">已使用 %1$s，共 %2$s</string>
@@ -605,7 +593,7 @@
     <string name="onboarding_create_instant_account">创建新账号</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">我已有账号</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">使用传统电子邮件作为传输</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">个人资料</string>
@@ -631,10 +619,6 @@
     <string name="scan_invitation_code">扫描邀请码</string>
     <string name="login_title">登录</string>
     <string name="login_advanced_hint">此登录适用于高级用户：\n\n• 请勿使用您在其他应用中已使用的账号。\n\n• 传统电子邮件服务器允许进行未端到端加密的聊天，此类聊天以邮件图标标记。</string>
-    <!-- deprecated -->
-    <string name="login_header">登录您的电子邮件账号</string>
-    <!-- deprecated -->
-    <string name="login_explain">使用现有电子邮件账号登录</string>
     <string name="login_inbox">收件箱</string>
     <string name="login_imap_login">IMAP 登录名</string>
     <string name="login_imap_server">IMAP 服务器</string>
@@ -661,14 +645,15 @@
     <string name="proxy_share_link">分享链接</string>
     <string name="proxy_enabled">代理已启用</string>
     <string name="proxy_enabled_hint">您正在使用代理。如果您在连接时遇到问题，请尝试其他代理。</string>
-    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
     <string name="transports">传输</string>
     <string name="add_transport">添加传输</string>
     <string name="remove_transport">移除传输</string>
     <string name="edit_transport">编辑传输</string>
-    <!-- shown if a QR code was scanned that can be used as a transport -->
+    <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">添加此传输？</string>
     <string name="invalid_transport_qr">扫描的二维码不包含有效的传输。</string>
+    <!-- placeholder will be replaced by a relay server name -->
     <string name="confirm_remove_transport">移除传输“%1$s”？\n\n只有您之前通过其他传输联系过您的联系人，他们才能联系到您。\n\n如有疑问，请稍后移除传输。</string>
 
     <string name="login_certificate_checks">证书检查</string>
@@ -719,8 +704,6 @@
     <string name="pref_profile_photo">个人资料图片</string>
     <string name="pref_blocked_contacts">已屏蔽的联系人</string>
     <string name="blocked_empty_hint">被您屏蔽的联系人将显示于此。</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">密码和账号</string>
     <string name="pref_who_can_see_profile_explain">在与其他用户交流时，您的个人资料图片和名称将与您的消息一起发送。</string>
     <string name="pref_your_name">您的名称</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -764,10 +747,6 @@
     <string name="pref_server">服务器</string>
     <string name="pref_encryption">加密</string>
     <string name="pref_manage_keys">管理密钥</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">读取系统通讯录</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts_explain">提供与通讯录中的联系人创建聊天的功能。</string>
     <string name="pref_chats">聊天</string>
     <string name="pref_in_chat_sounds">聊天音</string>
     <string name="pref_view_log">查看日志</string>
@@ -783,12 +762,6 @@
     <string name="pref_backup_export_all">导出全部 %1$d 个账号</string>
     <string name="pref_backup_export_start_button">开始备份</string>
     <string name="pref_backup_written_to_x">备份已成功写入到“%1$s”。</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">导出密钥</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">导出密钥到“%1$s”？</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">密钥已成功写入至\"%1$s\"。</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">使用默认图像</string>
@@ -799,21 +772,14 @@
     <string name="pref_multidevice_explain">将您的消息与其他设备同步。添加第二个设备时自动启用。</string>
     <string name="pref_multidevice_change_warn">在多个设备上使用同一账号时，必须启用多设备模式。仅当您已从所有其他设备中移除此账号后，才能禁用此设置。\n\n在多个设备上使用该账号时禁用多设备模式会导致错过消息和其他问题。</string>
     <string name="pref_auto_folder_moves">自动移动至 DeltaChat 文件夹</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">移动聊天对话以免弄乱收件箱</string>
     <string name="pref_only_fetch_mvbox_title">只从 DeltaChat 文件夹获取</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">忽略其他文件夹。需要你的服务器将聊天消息移动到 DeltaChat 文件夹。</string>
     <string name="pref_show_emails">显示传统电子邮件</string>
     <string name="pref_show_emails_no">不显示，仅聊天</string>
     <string name="pref_show_emails_accepted_contacts">已接受的联系人</string>
     <string name="pref_show_emails_all">全部</string>
     <string name="pref_experimental_features">实验性功能</string>
+    <string name="pref_experimental_features_explain">这些功能可能不稳定，可能会更改或移除</string>
     <string name="pref_on_demand_location_streaming">按需位置流</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">开发者模式</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">激活调试选项。这会降低应用程序稳定性。仅供开发人员使用。</string>
     <string name="pref_background_default">默认背景</string>
     <string name="pref_background_default_color">默认颜色</string>
     <string name="pref_background_custom_image">自定义图像</string>
@@ -884,17 +850,6 @@
     <string name="autodel_after_1_week">1 周后</string>
     <string name="after_5_weeks">5 周后</string>
     <string name="autodel_after_1_year">1 年后</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">发送 Autocrypt 设置消息</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Autocrypt 设置消息可与其他兼容 Autocrypt 的应用安全地共享您的端到端设置。\n\n如果您也在其他设备上使用 Delta Chat，请改用“设置/添加第二台设备”。</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">发送 Autocrypt 设置消息</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">您的设置已发送给您自己。切换到另一台设备并打开该设置消息。 您将被要求输入设置码。 输入以下数字：</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">优先使用端到端加密</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
@@ -1006,8 +961,6 @@
     <string name="withdraw_joinbroadcast_explain">其他人可以扫描此二维码加入频道“%1$s”。\n\n您可以重置该二维码，使现有二维码或邀请链接失效。</string>
     <string name="withdraw_qr_code">重置二维码</string>
     <string name="revive_verifycontact_explain">此二维码已重置，不再有效。</string>
-    <string name="revive_verifygroup_explain">加入群组“%1$s”的二维码已重置，不再有效。</string>
-    <string name="revive_joinbroadcast_explain">加入频道“%1$s”的二维码已重置，不再有效。</string>
     <string name="revive_qr_code">激活二维码</string>
     <string name="qrshow_title">邀请二维码</string>
     <string name="qrshow_x_joining">添加 %1$s。</string>
@@ -1123,9 +1076,6 @@
     <string name="name_desktop">名称</string>
     <string name="select_group_image_desktop">选择群组图像</string>
     <string name="export_backup_desktop">导出备份</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Autocrypt 设置已传输 。</string>
-    <string name="forget_login_confirmation_desktop">删除此登录？所有内容都将会删除，包括您的端到端设置、联系人、聊天、消息和媒体。此操作无法撤销。</string>
     <string name="message_detail_sent_desktop">发送于</string>
     <string name="message_detail_received_desktop">接收于</string>
     <string name="menu.view.developer.open.log.folder">打开日志文件夹</string>

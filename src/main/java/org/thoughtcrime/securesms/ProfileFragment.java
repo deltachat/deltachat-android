@@ -69,8 +69,6 @@ public class ProfileFragment extends Fragment
 
     RecyclerView list = ViewUtil.findById(view, R.id.recycler_view);
 
-    // allow content to be drawn behind the navigation bar
-    list.setClipToPadding(false);
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(list);
 

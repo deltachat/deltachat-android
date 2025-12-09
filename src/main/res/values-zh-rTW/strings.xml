@@ -305,8 +305,6 @@
     <string name="menu_save_log">儲存日誌</string>
     <string name="menu_more_options">更多選項</string>
     <string name="menu_learn_spelling">學習拼寫</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">對話審查紀錄</string>
     <string name="jump_to_message">移動至訊息</string>
     <string name="jump_to_original_message">跳轉到原始訊息</string>
     <string name="copy_json">複製 JSON 內容</string>
@@ -375,8 +373,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">聯絡人清單</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">輸入名稱或電子郵件位址</string>
     <string name="contacts_type_email_above">在上面輸入電子郵件位址</string>
 
 
@@ -443,12 +439,6 @@
     <string name="show_location_traces">顯示移動足跡</string>
     <string name="add_poi">傳送興趣點</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">此聊天的系統消息顯示在此處</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">%1$s的聊天審核日誌</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">僅顯示系統和資訊消息;對於查找上次聊天操作而不滾動流覽許多消息非常有用。</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -481,8 +471,6 @@
     <string name="group_self_not_in_group">你必須先加入群組，才能執行本功能。</string>
     <string name="profile_encryption">加密</string>
     <string name="profile_shared_chats">共享的對話</string>
-    <!-- deprecated -->
-    <string name="related_chats">相關對話</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">以前成員</string>
     <string name="tab_contact">聯絡人</string>
@@ -549,7 +537,7 @@
     <string name="sending">傳送中…</string>
     <string name="last_msg_sent_successfully">已成功送出上一條消息。</string>
     <string name="not_supported_by_provider">您的供應商不支援。</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">訊息</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">使用了 %2$s 中的 %1$s</string>
@@ -560,7 +548,7 @@
     <string name="onboarding_create_instant_account">創建新帳戶</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">我已經有了一個賬戶</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">經典電子郵件登入</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">你的個人檔案</string>
@@ -585,10 +573,6 @@
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
     <string name="scan_invitation_code">掃描邀請碼</string>
     <string name="login_title">登入</string>
-    <!-- deprecated -->
-    <string name="login_header">登入你的電子郵件帳戶</string>
-    <!-- deprecated -->
-    <string name="login_explain">使用現有的電子郵件帳戶登入</string>
     <string name="login_inbox">收件匣</string>
     <string name="login_imap_login">IMAP 帳號</string>
     <string name="login_imap_server">IMAP 伺服器</string>
@@ -661,8 +645,6 @@
     <string name="pref_profile_photo">大頭照</string>
     <string name="pref_blocked_contacts">已封鎖的聯絡人</string>
     <string name="blocked_empty_hint">被封鎖的聯絡人將在此處顯示。</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">密碼和帳戶</string>
     <string name="pref_who_can_see_profile_explain">你的名字和大頭照在通訊的過程中，會提供給對方看到。已傳送的資訊無法被刪除或移除。</string>
     <string name="pref_your_name">你的名字</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -706,10 +688,6 @@
     <string name="pref_server">伺服器</string>
     <string name="pref_encryption">加密</string>
     <string name="pref_manage_keys">管理金鑰</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">讀取系統通訊錄</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts_explain">建議與通訊錄中的聯絡人建立聊天。一些供應商需要先進行端到端加密設置。</string>
     <string name="pref_chats">對話</string>
     <string name="pref_in_chat_sounds">對話內的音效</string>
     <string name="pref_view_log">觀看系統紀錄</string>
@@ -724,33 +702,19 @@
     <string name="pref_backup_export_all">匯出全部%1$d個賬戶</string>
     <string name="pref_backup_export_start_button">開始備份</string>
     <string name="pref_backup_written_to_x">成功備份至 「%1$s」</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">匯出金鑰</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">將金鑰匯出至 「%1$s」 ?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">成功匯出金鑰至「%1$s」。</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">使用預設圖案</string>
     <string name="pref_background_btn_gallery">從相簿中挑選</string>
     <string name="pref_imap_folder_warn_disable_defaults">如果關閉本選項的話，請務必確定你的伺服器和其它客戶端應用程式都使用相同的設定，否則很可能不能運作。</string>
     <string name="pref_auto_folder_moves">自動搬移到 DeltaChat 資料夾</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">搬移對話以避免塞爆收件匣</string>
     <string name="pref_only_fetch_mvbox_title">僅從 DeltaChat 資料夾中獲取</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">忽略其他資料夾。要求您的伺服器將聊天訊息移動到 DeltaChat 資料夾。</string>
     <string name="pref_show_emails">顯示傳統email</string>
     <string name="pref_show_emails_no">只顯示對話</string>
     <string name="pref_show_emails_accepted_contacts">顯示已接受的聯絡人</string>
     <string name="pref_show_emails_all">所有郵件</string>
     <string name="pref_experimental_features">實驗性功能</string>
     <string name="pref_on_demand_location_streaming">按需要位置串流</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">開發者模式</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">啟動調試選項，可能使應用程式不太穩定。僅供開發人員使用。</string>
     <string name="pref_background_default">預設圖片</string>
     <string name="pref_background_default_color">預設顏色</string>
     <string name="pref_background_custom_image">自訂圖片</string>
@@ -818,17 +782,6 @@
     <string name="autodel_after_1_week">1 週後</string>
     <string name="after_5_weeks">5 週後</string>
     <string name="autodel_after_1_year">1 年後</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">傳送AutoCrypt設定訊息</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">「AutoCrypt設定訊息」可以安全地和你使用的其它支援AutoCrypt的 app 共享端到端加密設定。\n\n本訊息含一組設定碼，請在其它支援的設備中輸入這組設定碼。</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">傳送AutoCrypt設定訊息</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">你的設定已經傳送給你自己了。請到其它支援自動加密設定的裝置，開啟設定訊息，並輸入以下的設定碼\n\n輸入完之後，你的其它裝置就可以使用AutoCrypt了。</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">偏好端到端加密</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">來自 %1$s 的訊息</string>
@@ -929,7 +882,6 @@
     <string name="withdraw_verifygroup_explain">其他人可以掃描此 QR 碼以加入群組「%1$s」。\n\n您可以在此處停用 QR 碼，然後再次掃描以重新啟動它。</string>
     <string name="withdraw_qr_code">停用QR碼</string>
     <string name="revive_verifycontact_explain">此 QR 碼可以被其他人掃描以與您聯絡。\n\n此裝置上的 QR 碼未啟用。</string>
-    <string name="revive_verifygroup_explain">其他人可以掃描此 QR 碼以加入群組「%1$s」。\n\n此 QR 碼在此裝置上未啟用。</string>
     <string name="revive_qr_code">啟用QR碼</string>
     <string name="qrshow_title">邀請QR碼</string>
     <string name="qrshow_x_joining">%1$s 加入了。</string>
@@ -1040,9 +992,6 @@
     <string name="name_desktop">名稱</string>
     <string name="select_group_image_desktop">選擇群組圖片</string>
     <string name="export_backup_desktop">匯出備份</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">已傳輸自動加密設定。</string>
-    <string name="forget_login_confirmation_desktop">確定要刪除這裡的登入嗎? 所有的設定都會被刪除，包括端到端加密設定、聯絡人、對話、訊息、媒體檔案等。本動作不能復原。</string>
     <string name="message_detail_sent_desktop">已傳送</string>
     <string name="message_detail_received_desktop">已收到</string>
     <string name="menu.view.developer.open.log.folder">打開日誌資料夾</string>

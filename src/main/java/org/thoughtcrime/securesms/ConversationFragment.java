@@ -17,7 +17,7 @@
 package org.thoughtcrime.securesms;
 
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
-import static org.thoughtcrime.securesms.util.RelayUtil.setForwardingMessageIds;
+import static org.thoughtcrime.securesms.util.ShareUtil.setForwardingMessageIds;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -59,13 +59,13 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.reactions.AddReactionView;
 import org.thoughtcrime.securesms.reactions.ReactionsDetailsFragment;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.relay.EditRelayActivity;
 import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.ConversationAdaptiveActionsToolbar;
-import org.thoughtcrime.securesms.calls.CallUtil;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -766,7 +766,9 @@ public class ConversationFragment extends MessageSelectorFragment
                       && messageRecord.getText().contains(self_mail)
                       && getListAdapter().getChat().isDeviceTalk()) {
                       // This is a device message informing the user that the password is wrong
-                      startActivity(new Intent(getActivity(), EditTransportActivity.class));
+                      Intent intent = new Intent(getActivity(), EditRelayActivity.class);
+                      intent.putExtra(EditRelayActivity.EXTRA_ADDR, self_mail);
+                      startActivity(intent);
                     }
                 }
             }

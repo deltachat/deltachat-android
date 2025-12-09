@@ -20,13 +20,13 @@ import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_URL;
-import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
-import static org.thoughtcrime.securesms.util.RelayUtil.getDirectSharingChatId;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedTitle;
-import static org.thoughtcrime.securesms.util.RelayUtil.isDirectSharing;
-import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
-import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
-import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.ShareUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.ShareUtil.getDirectSharingChatId;
+import static org.thoughtcrime.securesms.util.ShareUtil.getSharedTitle;
+import static org.thoughtcrime.securesms.util.ShareUtil.isDirectSharing;
+import static org.thoughtcrime.securesms.util.ShareUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.ShareUtil.resetRelayingMessageContent;
 
 import android.Manifest;
 import android.content.Intent;
@@ -74,7 +74,7 @@ import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.RelayUtil;
+import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.StorageUtil;
@@ -356,7 +356,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     if (isRelayingMessageContent(this)) {
       inflater.inflate(R.menu.forwarding_menu, menu);
       menu.findItem(R.id.menu_export_attachment).setVisible(
-        RelayUtil.isFromWebxdc(this) && RelayUtil.getSharedUris(this).size() == 1
+        ShareUtil.isFromWebxdc(this) && ShareUtil.getSharedUris(this).size() == 1
       );
     } else {
       inflater.inflate(R.menu.text_secure_normal, menu);
@@ -469,7 +469,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   private void performSave() {
-    ArrayList<Uri> uriList =  RelayUtil.getSharedUris(this);
+    ArrayList<Uri> uriList =  ShareUtil.getSharedUris(this);
     Uri uri = uriList.get(0);
     String mimeType = PersistentBlobProvider.getMimeType(this, uri);
     String fileName = PersistentBlobProvider.getFileName(this, uri);

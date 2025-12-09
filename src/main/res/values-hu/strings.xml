@@ -338,8 +338,6 @@
     <string name="menu_save_log">Naplófájl mentése</string>
     <string name="menu_more_options">További beállítások</string>
     <string name="menu_learn_spelling">Helyesírás tanulása</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Csevegésellenőrzési-naplófájl</string>
     <string name="jump_to_message">Ugrás az üzenetre</string>
     <string name="jump_to_original_message">Ugrás az eredeti üzenetre</string>
     <string name="copy_json">JSON másolása</string>
@@ -433,8 +431,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Névjegyek</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Adjon meg egy nevet vagy egy e-mail-címet</string>
     <string name="contacts_type_email_above">Írja be a fenti e-mail-címet</string>
 
 
@@ -506,12 +502,6 @@
     <string name="show_location_traces">Nyomvonalak megjelenítése</string>
     <string name="add_poi">Érdekes hely megosztása</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">Az ehhez a csevegéshez tartozó rendszerüzenetek itt fognak megjelenni</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Csevegés ellenőrzési naplófájl ehhez: %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Csak a rendszer- és információs üzeneteket jeleníti meg; hasznos a legutóbbi csevegési műveletek megtalálásához anélkül, hogy sok üzenetet görgetne át.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -544,8 +534,6 @@
     <string name="group_self_not_in_group">A csoport tagjának kell lennie, ahhoz, hogy ezt megtehesse.</string>
     <string name="profile_encryption">Titkosítás</string>
     <string name="profile_shared_chats">Közös csevegések</string>
-    <!-- deprecated -->
-    <string name="related_chats">Kapcsolódó csevegések</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Már nem tagok</string>
     <string name="tab_contact">Névjegy</string>
@@ -612,7 +600,7 @@
     <string name="sending">Küldés…</string>
     <string name="last_msg_sent_successfully">Utolsó üzenet sikeresen elküldve.</string>
     <string name="not_supported_by_provider">Az Ön szolgáltatója nem támogatja.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Üzenetek</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s/%2$s használatban</string>
@@ -623,7 +611,7 @@
     <string name="onboarding_create_instant_account">Új profil létrehozása</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Már van profilom</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Klasszikus e-mail bejelentkezés</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profil</string>
@@ -648,10 +636,6 @@
     <string name="welcome_chat_over_email">Biztonságos decentralizált csevegés</string>
     <string name="scan_invitation_code">QR-kód-meghívó beolvasása</string>
     <string name="login_title">Bejelentkezés</string>
-    <!-- deprecated -->
-    <string name="login_header">Jelentkezzen be az e-mail-fiókjába</string>
-    <!-- deprecated -->
-    <string name="login_explain">Bejelentkezés meglévő e-mail-fiókkal</string>
     <string name="login_inbox">Bejövő</string>
     <string name="login_imap_login">IMAP bejelentkezési név</string>
     <string name="login_imap_server">IMAP-kiszolgáló</string>
@@ -726,8 +710,6 @@
     <string name="pref_profile_photo">Profilkép</string>
     <string name="pref_blocked_contacts">Letiltott névjegyek</string>
     <string name="blocked_empty_hint">A letiltott névjegyek itt fognak megjelenni</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Fiók és jelszó</string>
     <string name="pref_who_can_see_profile_explain">A profilképe, neve és névjegye az üzenetekkel együtt kerül elküldésre, amikor más felhasználókkal kommunikál.</string>
     <string name="pref_your_name">Név</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -771,10 +753,6 @@
     <string name="pref_server">Kiszolgáló</string>
     <string name="pref_encryption">Titkosítás</string>
     <string name="pref_manage_keys">Kulcsok kezelése</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">A rendszer névjegyzékének olvasása</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts_explain">Beszélgetések létrehozásának felajánlása az eszköz névjegyzékében lévő partnerekkel.</string>
     <string name="pref_chats">Csevegések</string>
     <string name="pref_in_chat_sounds">Csevegésen belüli hangok</string>
     <string name="pref_view_log">Naplófájl megtekintése</string>
@@ -790,33 +768,19 @@
     <string name="pref_backup_export_all">Az összes (%1$d) profil exportálása</string>
     <string name="pref_backup_export_start_button">Biztonsági mentés készítése</string>
     <string name="pref_backup_written_to_x">A biztonsági mentés sikeresen létrehozva itt: „%1$s”.</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Titkos kulcsok exportálása</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Privát kulcsok exportálása ide: „%1$s”?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">A titkosítási kulcsok sikeresen beíródtak ide: „%1$s”.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Háttérkép</string>
     <string name="pref_background_btn_default">Alapértelemezett kép használata</string>
     <string name="pref_background_btn_gallery">Kiválasztás a galériából</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ha megváltoztatja ezt a beállítást, győződjön meg arról, hogy a kiszolgálója és a többi kliense is ennek megfelelően van beállítva.\n\nMáskülönben előfordulhat, hogy a dolgok egyáltalán nem fognak működni.</string>
     <string name="pref_auto_folder_moves">Automatikus áthelyezés a DeltaChat nevű mappába</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">A csevegések áthelyezésre kerülnek, hogy elkerüljék a bejövő üzenetek mappa zűrzavarát.</string>
     <string name="pref_only_fetch_mvbox_title">Csak a DeltaChat nevű mappából történjen lekérdezés</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Más mappák figyelmen kívül hagyása. A kiszolgálónak a DeltaChat nevű mappába kell áthelyeznie a csevegőüzeneteket.</string>
     <string name="pref_show_emails">Klasszikus e-mailek megjelenítése</string>
     <string name="pref_show_emails_no">Nem, csak csevegések</string>
     <string name="pref_show_emails_accepted_contacts">Elfogadott partnerek számára</string>
     <string name="pref_show_emails_all">Összes</string>
     <string name="pref_experimental_features">Kísérleti funkciók</string>
     <string name="pref_on_demand_location_streaming">On-Demand folyamatos helymegosztás</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Fejlesztői mód</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">A hibakeresési beállítások bekapcsolásával instabillá teheti az alkalmazást. Csak fejlesztőknek ajánlott a bekapcsolása.</string>
     <string name="pref_background_default">Alapértelmezett kép</string>
     <string name="pref_background_default_color">Alapértelmezett szín</string>
     <string name="pref_background_custom_image">Egyéni kép</string>
@@ -884,17 +848,6 @@
     <string name="autodel_after_1_week">1 hét elteltével</string>
     <string name="after_5_weeks">5 hét elteltével</string>
     <string name="autodel_after_1_year">1 év elteltével</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Autocrypt-beállítási üzenet küldése</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Az Autocrypt-beállítási üzenet biztonságosan megosztja a végponttól-végpontig titkosított beállításait más Autocrypt-kompatibilis alkalmazásokkal.\n\nHa a másik eszközön is a Delta Chat alkalmazást használja, akkor válassza inkább a „Beállítások / Második eszköz hozzáadása” lehetőséget helyette.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Autocrypt-beállítási üzenet küldése</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">A beállításokat elküldtük önnek. Váltson a másik eszközre, és nyissa meg a beállítási üzenetet. Meg kell adnia a beállítási kódot. Írja be a következő számjegyeket:</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Végpontok közötti titkosítás előnyben részesítése</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Üzenet tőle: %1$s</string>
@@ -1003,7 +956,6 @@
     <string name="withdraw_verifygroup_explain">Ezt a QR-kódot mások is beolvashatják, hogy csatlakozhassanak a(z) „%1$s” nevű csoporthoz.\n\nA QR-kódot itt kikapcsolhatja, és újra bekapcsolhatja, ha újra beolvassa.</string>
     <string name="withdraw_qr_code">QR-kód kikapcsolása</string>
     <string name="revive_verifycontact_explain">Ezt a QR-kódot mások is beolvashatják, hogy kapcsolatba lépjenek Önnel.\n\nA QR-kód nincs bekapcsolva ezen az eszközön.</string>
-    <string name="revive_verifygroup_explain">Ezt a QR-kódot mások is beolvashatják, hogy csatlakozzanak a(z) „%1$s” nevű csoporthoz.\n\nA QR-kód nincs bekapcsolva ezen az eszközön.</string>
     <string name="revive_qr_code">QR-kód bekapcsolása</string>
     <string name="qrshow_title">QR-kód-meghívó</string>
     <string name="qrshow_x_joining">%1$s csatlakozott.</string>
@@ -1117,9 +1069,6 @@
     <string name="name_desktop">Név</string>
     <string name="select_group_image_desktop">Csoport képének kiválasztása</string>
     <string name="export_backup_desktop">Biztonsági mentés exportálása</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Autocrypt-beállítások átvitele.</string>
-    <string name="forget_login_confirmation_desktop">Törli ezt a profilt? Az összes adata törlődni fog, beleértve a végpontok közötti titkosítási beállításokat, névjegyeket, csevegéseket, üzeneteket és médiát. Ez a művelet nem vonható vissza.</string>
     <string name="message_detail_sent_desktop">elküldött</string>
     <string name="message_detail_received_desktop">érkezett</string>
     <string name="menu.view.developer.open.log.folder">Naplófájlok mappájának megnyitása</string>

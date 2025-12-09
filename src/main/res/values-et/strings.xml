@@ -338,8 +338,6 @@
     <string name="menu_save_log">Salvesta logi</string>
     <string name="menu_more_options">Täiendavad valikud</string>
     <string name="menu_learn_spelling">Õpi õigekirja</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Vestluse kontroll-logi</string>
     <string name="jump_to_message">Mine sõnumi juurde</string>
     <string name="jump_to_original_message">Mine algse sõnumi juurde</string>
     <string name="copy_json">Kopeeri JSON-vormingus</string>
@@ -432,8 +430,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kontaktid</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Sisesta nimi või e-posti aadress</string>
     <string name="contacts_type_email_above">Palun sisesta ülale e-posti aadress</string>
 
 
@@ -501,12 +497,6 @@
 
     <string name="add_poi">Saada huvipunkti teave</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">Sellele vestluse süsteemsed teated saavad olema nähtavad siin.</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">%1$s vestluse kontroll-logi</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Näed vaid süsteemi- ja infosõnumeid. Sobib kasutamiseks viimaste tegevuset tuvastamiseks ilma, et peaksid paljusid sõnumeid läbi lappama.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -535,8 +525,6 @@
     <string name="group_self_not_in_group">Selle tegevuse jaoks pead olemagrupi liige.</string>
     <string name="profile_encryption">Krüptimine</string>
     <string name="profile_shared_chats">Ühised vestlused</string>
-    <!-- deprecated -->
-    <string name="related_chats">Sarnaste osalejatega vestlused</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Varasemad liikmed</string>
     <string name="tab_contact">Kontakt</string>
@@ -603,7 +591,7 @@
     <string name="sending">Saadan…</string>
     <string name="last_msg_sent_successfully">Viimase sõnumi saatmine õnnestus.</string>
     <string name="not_supported_by_provider">Sinu teenusepakkuja ei toeta seda võimalust.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Sõnumid</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">Kasutusel %1$s / %2$s</string>
@@ -614,7 +602,7 @@
     <string name="onboarding_create_instant_account">Loo uus profiil</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Mul juba on profiil olemas</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Klassikaline e-post alusühendusena</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Sinu profiil</string>
@@ -639,10 +627,6 @@
     <string name="scan_invitation_code">Skaneeri kutsekoodi</string>
     <string name="login_title">Logi sisse</string>
     <string name="login_advanced_hint">See sisselogimine sobib  oskuskasutajatele:\n\n• Ära kasuta kontot, mis juba on kasutusel mõnes muus rakenduses.\n\n• Klassikaline e-posti server võimaldab vestlemist vaid ilma läbiva krüptimiseta ja seda märgistab kirja ikoon.</string>
-    <!-- deprecated -->
-    <string name="login_header">Logi sisse oma e-postikontoga</string>
-    <!-- deprecated -->
-    <string name="login_explain">Logi sisse olemasoleva e-postikontoga</string>
     <string name="login_inbox">Saabuvad kirjad</string>
     <string name="login_imap_login">IMAP-i kasutajanimi</string>
     <string name="login_imap_server">IMAP-i server</string>
@@ -669,14 +653,15 @@
     <string name="proxy_share_link">Jaga linki</string>
     <string name="proxy_enabled">Proksiserver on kasutusel</string>
     <string name="proxy_enabled_hint">Sa kasutad proksiserverit. Kui võrguühendus ei toimi korralikult, siis proovi teist proksiserverit.</string>
-    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
     <string name="transports">Alusühendused</string>
     <string name="add_transport">Lisa alusühendus</string>
     <string name="remove_transport">Eemalda alusühendus</string>
     <string name="edit_transport">Muuda alusühendust</string>
-    <!-- shown if a QR code was scanned that can be used as a transport -->
+    <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Kas lisad selle alusühenduse?</string>
     <string name="invalid_transport_qr">Skaneeritud QR-koodis pole korrektset alusühendust</string>
+    <!-- placeholder will be replaced by a relay server name -->
     <string name="confirm_remove_transport">Kas eemaldad „%1$s“ alusühenduse?\n\nSinu kontaktid saavad sind kätte vaid siis, kui oled selleks kasutanud mõnda muud alusühendust.\n\nKui kahtled, siis eemalda alusühendus hiljem.</string>
 
     <string name="login_certificate_checks">Sertifikaadikontrollid</string>
@@ -716,6 +701,7 @@
     <string name="ask_send_files_to_chat">Kas saadad %1$d faili „%2$s“ vestlusesse?</string>
     <string name="ask_send_files_to_selected_chats">Kas saadad %1$d faili „%2$d“ vestlusesse?</string>
     <string name="videos_sent_without_recoding">(Videod saadetakse algupäraste suurte failidena. Videote mahu vähendamiseks lisa nad manustena ükshaaval)</string>
+    <string name="share_text_multiple_chats">Kas saadad selle teksti %1$d vestlusesse?\n\n„%2$s“</string>
     <string name="share_abort">Puuduvate õiguste tõttu on jagamine katkestatud.</string>
 
 
@@ -726,8 +712,6 @@
     <string name="pref_profile_photo">Profiilipilt</string>
     <string name="pref_blocked_contacts">Blokeeritud kontaktid</string>
     <string name="blocked_empty_hint">Blokeeritud kontaktid saavad olema leitavad siin.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Salasõna ja kasutajakonto</string>
     <string name="pref_who_can_see_profile_explain">Kui suhtled teiste kasutajatega, siis koos sinu sõnumitega edastatakse neile ka sinu tunnuspilt, nimi ja kirjeldus/elulugu.</string>
     <string name="pref_your_name">Sinu nimi</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -769,10 +753,6 @@
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Krüptimine</string>
     <string name="pref_manage_keys">Halda võtmeid</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">Kasuta süsteemi aadressiraamatut</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts_explain">Paku võimalust lisada vestlusi süsteemi aadressiraamatus leiduvate kontaktide alusel.</string>
     <string name="pref_chats">Vestlused</string>
     <string name="pref_in_chat_sounds">Helid vestluses</string>
     <string name="pref_view_log">Vaata logi</string>
@@ -787,12 +767,6 @@
     <string name="pref_backup_export_all">Ekspordi kõik %1$d profiili</string>
     <string name="pref_backup_export_start_button">Alusta varundamist</string>
     <string name="pref_backup_written_to_x">Varukoopia tegemine asukohta „%1$s“ õnnestus.</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Ekspordi salavõtmed</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Kas ekspordime salavõtmed siia: %1$s?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Salavõtmete salvestamine asukohta „%1$s“ õnnestus.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Taustapilt</string>
     <string name="pref_background_btn_default">Kasuta vaikimisi pilti</string>
@@ -804,15 +778,10 @@
     <string name="pref_multidevice_change_warn">Kui kasutad sama profiili mitmes seadmes, siis peab mitme seadme režiimi sisse lülitama. Lülita see seadistus välja vaid siis, kui oled selle profiili eemaldanud kõikidest muudest oma seadmetest.\n\nKui aga lülitad välja siis, kui profiil on kasutusel mitmes seadmes, on tulemuseks kadunud sõnumid ja muud imelikud juhtumised.</string>
     <string name="pref_auto_folder_moves">Tõsta automaatselt DeltaChati kausta</string>
     <string name="pref_only_fetch_mvbox_title">Laadi vaid DeltaChati kasutast</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Eira muid kaustu. See eeldab, et sinu server oskab tõsta vestluste sõnumid DeltaChati kausta.</string>
     <string name="pref_show_emails">Näita klassikalisi e-kirju</string>
     <string name="pref_show_emails_all">Kõik</string>
     <string name="pref_experimental_features">Katselised funktsionaalsused</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Arendaja režiim</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Lülitab sisse veaotsingu tarvikud ja see võib rakenduse töökindlust vähendada. Sobib arendajatele.</string>
+    <string name="pref_experimental_features_explain">Need funktsionaalsused ei pruugi korralikult toimida ning nad võivad tulevikus muutuda või sootuks olla eemaldatud</string>
     <string name="pref_background_default">Vaikimisi pilt</string>
     <string name="pref_background_default_color">Vaikimisi värv</string>
     <string name="pref_background_custom_image">Sinu valitud pilt</string>
@@ -883,13 +852,6 @@
     <string name="autodel_after_1_week">5 nädala järel</string>
     <string name="after_5_weeks">5 nädala järel</string>
     <string name="autodel_after_1_year">5 aasta järel</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Saada Autocrypti seadistussõnum</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Saada Autocrypti seadistussõnum</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Eelista läbivat krüptimist</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Sõnum kasutajalt %1$s</string>
@@ -999,8 +961,6 @@
     <string name="withdraw_joinbroadcast_explain">Seda QR-koodi saab kasutada „%1$s“ kanaliga liitumiseks.\n\nKui sa ta lähtestad, siis ei QR-kood ega kutse link pole enam kasutatavad.</string>
     <string name="withdraw_qr_code">Lähtesta QR-kood</string>
     <string name="revive_verifycontact_explain">See QR-kood on lähtestatud ega pole enam kasutatav.</string>
-    <string name="revive_verifygroup_explain">See QR-kood, mis oli mõeldud „%1$s“ grupiga liitumiseks, on lähtestatud ega pole enam kasutatav.</string>
-    <string name="revive_joinbroadcast_explain">See QR-kood, mis oli mõeldud „%1$s“ kanaliga liitumiseks, on lähtestatud ega pole enam kasutatav.</string>
     <string name="revive_qr_code">Aktiveeri QR-kood</string>
     <string name="qrshow_title">Kutse QR-koodina</string>
     <string name="qrshow_x_joining">%1$s liitus.</string>
@@ -1116,9 +1076,6 @@
     <string name="name_desktop">Nimi</string>
     <string name="select_group_image_desktop">Vali grupi tunnuspilti</string>
     <string name="export_backup_desktop">Ekspordi varukoopia</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Autocrypti seadistused on edastatud.</string>
-    <string name="forget_login_confirmation_desktop">Kas kustutad selle profiili? Kõik profiiliandmed kaovad sellest seadmest,  sealhulgas läbiva krüptimise seadistus, kontaktid, vestlused, sõnumid ja meediumid. Seda tegevust ei saa tagasi pöörata.</string>
     <string name="message_detail_sent_desktop">saadetud</string>
     <string name="message_detail_received_desktop">vastuvõetud</string>
     <string name="menu.view.developer.open.log.folder">Ava logifailide kaust</string>
@@ -1198,6 +1155,8 @@
     <string name="pref_background_notifications_rationale">Tagamaks, et rakenduse võrguühendus jääb taustal tööle ning sõnumite vastuvõtmine jätkub, siis keela järgmises sammus selle rakenduse jaoks akukasutuse optimeerimine.\n\nDelta Chat kasutab väga vähe nutiseadme ressursse ning oleme eraldi pingutanud, et koormus akule oleks minimaalne.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Kui soovid, et Delta Chat saaks sõnumeid ka taustateenusena toimides, siis klõpsi siin.</string>
+    <string name="perm_enable_bg_already_done">Sa juba oled Delta Chatil lubanud laadida sõnumeid taustal.\n\nKui see siiski ei toimi, siis palun kontrolli rakenduse õigusi süsteemi seadistustest.</string>
+
     <!-- device messages for updates -->
     <string name="update_2_0">Mida on meil uut?\n\n💯 Läbiv krüptimine on töökindel ja seda nüüd igaveseks. Tabalukud 🔒 on läinud!\n\n✉️ Klassikalised e-kirjad, kus läbiv krüptimine on puudu, on märgitud ümbriku ikooniga\n\n😻 Uus ja tõhusam profiilivaade kõikide sinu kontaktide jaoks\n\n🔲 Uus nupp kiireks ligipääsuks vestluses kasutatavate rakendusteni\n\n❤️ Palun toeta meie arendust rahaliselt - nii saame jääda sõltumatuteks ja jätkata selle rakenduse täiustamist: %1$s</string>
 </resources>

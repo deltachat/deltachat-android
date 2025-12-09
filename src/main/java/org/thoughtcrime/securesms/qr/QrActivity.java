@@ -50,6 +50,8 @@ import chat.delta.rpc.types.SecurejoinUiPath;
 public class QrActivity extends BaseActionBarActivity implements View.OnClickListener {
 
     private final static String TAG = QrActivity.class.getSimpleName();
+    public final static String EXTRA_SCAN_RELAY = "scan_relay";
+
     private final static int REQUEST_CODE_IMAGE = 46243;
     private final static int TAB_SHOW = 0;
     private final static int TAB_SCAN = 1;
@@ -57,6 +59,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private QrShowFragment qrShowFragment;
+    private boolean scanRelay;
 
     @Override
     protected void onPreCreate() {
@@ -67,8 +70,10 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_qr);
+
+        scanRelay = getIntent().getBooleanExtra(EXTRA_SCAN_RELAY, false);
+
         qrShowFragment = new QrShowFragment(this);
         tabLayout = ViewUtil.findById(this, R.id.tab_layout);
         viewPager = ViewUtil.findById(this, R.id.pager);
@@ -77,10 +82,11 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
 
         setSupportActionBar(ViewUtil.findById(this, R.id.toolbar));
         assert getSupportActionBar() != null;
-        getSupportActionBar().setTitle(R.string.menu_new_contact);
+        getSupportActionBar().setTitle(scanRelay? R.string.add_transport : R.string.menu_new_contact);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        viewPager.setCurrentItem(TAB_SHOW);
+        viewPager.setCurrentItem(scanRelay? TAB_SCAN : TAB_SHOW);
+        if (scanRelay) tabLayout.setVisibility(View.GONE);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -108,7 +114,13 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
                     .ifNecessary()
                     .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_camera_denied))
                     .onAllGranted(() -> ((QrScanFragment) adapter.getItem(TAB_SCAN)).handleQrScanWithPermissions(QrActivity.this))
-                    .onAnyDenied(() -> viewPager.setCurrentItem(TAB_SHOW))
+                    .onAnyDenied(() -> {
+                        if (scanRelay) {
+                            finish();
+                        } else {
+                            viewPager.setCurrentItem(TAB_SHOW);
+                        }
+                     })
                     .execute();
         }
     }
@@ -155,7 +167,11 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
         if (permissions.length > 0
                 && Manifest.permission.CAMERA.equals(permissions[0])
                 && grantResults[0] == PackageManager.PERMISSION_DENIED) {
-            viewPager.setCurrentItem(TAB_SHOW);
+            if (scanRelay) {
+                finish();
+            } else {
+                viewPager.setCurrentItem(TAB_SHOW);
+            }
             // Workaround because sometimes something else requested the permissions before this class
             // (probably the CameraView) and then this class didn't notice when it was denied
         }

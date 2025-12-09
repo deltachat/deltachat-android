@@ -270,8 +270,6 @@
     <string name="menu_zoom_out">Mažinti</string>
     <string name="menu_save_log">Įrašyti žurnalą</string>
     <string name="menu_more_options">Daugiau parinkčių</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Pokalbių audito žurnalas</string>
     <string name="copy_json">Kopijuoti JSON</string>
     <string name="replace_draft">Pakeisti juodraštį</string>
     <string name="title_share_location">Bendrinti savo vietą su visais grupės dalyviais</string>
@@ -340,8 +338,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Adresatai</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Įveskite vardą ar el. pašto adresą</string>
     <string name="contacts_type_email_above">Aukščiau įrašykite el. pašto adresą</string>
 
 
@@ -390,13 +386,6 @@
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
     <string name="start_app">Pradėti…</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">Čia atsiras šio pokalbio sisteminės žinutės</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Pokalbio audito žurnalas, skirtas %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Šiame rodinyje yra rodomi tik sisteminiai ir informaciniai pranešimai. Naudinga, jei norite rasti paskiausius pokalbio veiksmus, be būtinybės slinkti per daugelį įprastų žinučių.</string>
-
     <string name="puny_code_warning_header">Aptikta įtartina nuoroda</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Ar tikrai norite apsilankyti %1$s?</string>
@@ -417,8 +406,6 @@
     <string name="group_self_not_in_group">Norėdami atlikti šį veiksmą, privalote būti grupės dalyviu.</string>
     <string name="profile_encryption">Šifravimas</string>
     <string name="profile_shared_chats">Bendrinami pokalbiai</string>
-    <!-- deprecated -->
-    <string name="related_chats">Susiję pokalbiai</string>
     <string name="tab_contact">Adresatas</string>
     <string name="tab_group">Grupė</string>
     <string name="tab_gallery">Galerija</string>
@@ -461,7 +448,7 @@
     <string name="connectivity_connected">Prisijungta</string>
     <string name="sending">Siunčiama…</string>
     <string name="last_msg_sent_successfully">Paskutinė žinutė sėkmingai išsiųsta.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Žinutės</string>
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -476,10 +463,6 @@
     <string name="instant_onboarding_show_more_instances">Naudoti kitą serverį</string>
     <string name="scan_invitation_code">Skenuoti pakvietimo kodą</string>
     <string name="login_title">Prisijungti</string>
-    <!-- deprecated -->
-    <string name="login_header">Prisijungti prie savo serverio</string>
-    <!-- deprecated -->
-    <string name="login_explain">Prisijungti naudojant esamą el. pašto paskyrą</string>
     <string name="login_inbox">Gauta</string>
     <string name="login_imap_login">IMAP prisijungimo vardas</string>
     <string name="login_imap_server">IMAP serveris</string>
@@ -536,8 +519,6 @@
     <string name="pref_profile_photo">Profilio nuotrauka</string>
     <string name="pref_blocked_contacts">Užblokuoti adresatai</string>
     <string name="blocked_empty_hint">Jei užblokuosite adresatus, jie bus rodomi čia.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Slaptažodis ir paskyra</string>
     <string name="pref_who_can_see_profile_explain">Bendraujant su kitais naudotojais, jūsų profilio paveikslas ir vardas bus rodomi kartu su jūsų žinutėmis. Jau išsiųsta informacija negalės būti ištrinta ar pašalinta.</string>
     <string name="pref_your_name">Jūsų vardas</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -592,29 +573,17 @@
     <string name="pref_backup_export_all">Eksportuoti visas %1$d paskyras</string>
     <string name="pref_backup_export_start_button">Pradėti daryti atsarginę kopiją</string>
     <string name="pref_backup_written_to_x">Atsarginė kopija sėkmingai įrašyta į %1$s</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Eksportuoti slaptus raktus</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Eksportuoti slaptus raktus į \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Slapti raktai sėkmingai įrašyti į \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fonas</string>
     <string name="pref_background_btn_default">Naudoti numatytąjį paveikslą</string>
     <string name="pref_background_btn_gallery">Pasirinkti iš galerijos</string>
     <string name="pref_imap_folder_warn_disable_defaults">Jeigu išjungiate šį parametrą, įsitikinkite, kad jūsų serveris ir kiti klientai yra sukonfigūruoti atitinkamai.\n\nPriešingu atveju, tai gali iš viso neveikti.</string>
     <string name="pref_auto_folder_moves">Automatiniai perkėlimai į DeltaChat aplanką</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Pokalbiai yra perkeliami, kad nebūtų sujauktas Gautųjų aplankas</string>
     <string name="pref_show_emails">Rodyti klasikinius el. laiškus</string>
     <string name="pref_show_emails_no">Ne, tik pokalbius</string>
     <string name="pref_show_emails_accepted_contacts">Iš priimtų adresatų</string>
     <string name="pref_show_emails_all">Iš visų</string>
     <string name="pref_experimental_features">Eksperimentinės ypatybės</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Plėtotojo veiksena</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Aktyvuoja derinimo parinktis ir gali paversti programą mažiau stabilią. Tik plėtotojams.</string>
     <string name="pref_background_default">Numatytasis fonas</string>
     <string name="pref_background_default_color">Numatytoji spalva</string>
     <string name="pref_background_custom_image">Tinkintas paveikslas</string>
@@ -662,17 +631,6 @@
     <string name="autodel_after_1_week">Po 1 savaitės</string>
     <string name="after_5_weeks">Po 5 savaičių</string>
     <string name="autodel_after_1_year">Po 1 metų</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Siųsti Autocrypt sąrankos žinutę</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">\"Autocrypt sąrankos žinutė\" saugiai bendrina jūsų ištisinę sąranką su kitomis su Autocrypt suderinamomis programomis.\n\nSąranka bus užšifruota sąrankos kodu, kuris yra rodomas čia ir privalės būti įvestas kitame įrenginyje.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Siųsti Autocrypt sąrankos žinutę</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Jūsų sąranka buvo išsiųsta jums. Persijukite į kitą įrenginį ir atverkite sąrankos žinutę. Jūsų turėtų būti paprašyta sąrankos kodo. Į užklausą įrašykite šiuos skaitmenis.\n\nJums užbaigus, kitas įrenginys bus paruoštas naudoti Autocrypt.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Teikti pirmenybę ištisiniam šifravimui</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Žinutė nuo %1$s</string>
@@ -816,9 +774,6 @@
     <string name="name_desktop">Vardas</string>
     <string name="select_group_image_desktop">Pasirinkti grupės paveikslą</string>
     <string name="export_backup_desktop">Eksportuoti atsarginę kopiją</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Autocrypt sąranka sėkmingai perduota!</string>
-    <string name="forget_login_confirmation_desktop">Ištrinti šį prisijungimą? Viskas bus ištrinta, įskaitant jūsų ištisinę sąranką, adresatus, pokalbius, žinutes ir mediją. Šis veiksmas yra galutinis ir negalės būti panaikintas.</string>
     <string name="message_detail_sent_desktop">išsiųsta</string>
     <string name="message_detail_received_desktop">gauta</string>
     <string name="menu.view.developer.open.log.folder">Atverti žurnalų aplanką</string>

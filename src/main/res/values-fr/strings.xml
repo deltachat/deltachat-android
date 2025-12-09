@@ -329,8 +329,6 @@
     <string name="menu_save_log">Sauvegarder le journal</string>
     <string name="menu_more_options">Plus d\'options</string>
     <string name="menu_learn_spelling">Ajouter au dictionnaire</string>
-    <!-- deprecated -->
-    <string name="menu_chat_audit_log">Journal d\'audit de la discussion</string>
     <string name="jump_to_message">Aller au message</string>
     <string name="jump_to_original_message">Voir le message original</string>
     <string name="copy_json">Copier le JSON</string>
@@ -420,8 +418,6 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contacts</string>
-    <!-- deprecated -->
-    <string name="contacts_enter_name_or_email">Entrer le nom ou l\'adresse de courriel</string>
     <string name="contacts_type_email_above">Saisir l\'adresse de courriel au-dessus</string>
 
 
@@ -495,12 +491,6 @@
     <string name="show_location_traces">Afficher les traces</string>
     <string name="add_poi">Afficher les points d\'intérêt</string>
 
-    <!-- deprecated -->
-    <string name="chat_audit_log_empty_message">Les messages systèmes de cette discussion apparaissent ici</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_title">Journal d\'audit de la discussion pour %1$s</string>
-    <!-- deprecated -->
-    <string name="chat_audit_log_description">Cette vue montre seulement les messages système et d\'information. Utile pour trouver les dernières actions dans la discussion sans défiler à travers beaucoup de messages normaux.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -533,8 +523,6 @@
     <string name="group_self_not_in_group">Vous devez être membre du groupe pour effectuer cette action.</string>
     <string name="profile_encryption">Chiffrement</string>
     <string name="profile_shared_chats">Discussions partagées</string>
-    <!-- deprecated -->
-    <string name="related_chats">Discussions connexes</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Anciens membres</string>
     <string name="tab_contact">Contact</string>
@@ -601,7 +589,7 @@
     <string name="sending">Envoi...</string>
     <string name="last_msg_sent_successfully">Dernier message envoyé avec succès.</string>
     <string name="not_supported_by_provider">Non pris en charge par votre fournisseur de mail.</string>
-    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messages</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s sur %2$s utilisé</string>
@@ -612,7 +600,7 @@
     <string name="onboarding_create_instant_account">Créer un nouveau compte</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Je possède déjà un compte</string>
-    <!-- Stay short here, alternative source string could be "Transport over Classic Email", avoiding maybe the maybe long term "Use". Context: this is Button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Authentification par email classique</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Votre compte</string>
@@ -638,10 +626,6 @@
     <string name="scan_invitation_code">Scanner le code d\'invitation</string>
     <string name="login_title">Connexion</string>
     <string name="login_advanced_hint">Ce type de connexion est pour les utilisateurs avancés:\n\n• N\'utilisez pas le compte pour la connexion à une autre appli.\n\n• Les serveurs de mail classique permettent les conversations non chiffrés de bout-en-bout, celles-ci indiquées par une icône mail.</string>
-    <!-- deprecated -->
-    <string name="login_header">Se connecter au compte courriel</string>
-    <!-- deprecated -->
-    <string name="login_explain">Se connecter avec un compte de courriel existant.</string>
     <string name="login_inbox">Boîte de réception</string>
     <string name="login_imap_login">Utilisateur IMAP</string>
     <string name="login_imap_server">Serveur IMAP</string>
@@ -668,12 +652,12 @@
     <string name="proxy_share_link">Partager le lien</string>
     <string name="proxy_enabled">Proxy activé</string>
     <string name="proxy_enabled_hint">Vous êtes en train d\'utiliser un proxy. Si vous avez des difficultés à vous connecter, essayez un autre proxy.</string>
-    <!-- "Transports", these are the relay servers used, can also be translated as "Transport Servers", if only "Transport" sounds too weird in the destination language -->
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
     <string name="transports">Serveur de relais</string>
     <string name="add_transport">Ajouter un relais</string>
     <string name="remove_transport">Enlever un relais</string>
     <string name="edit_transport">Modifier le relais</string>
-    <!-- shown if a QR code was scanned that can be used as a transport -->
+    <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Ajouter le relais ?</string>
     <string name="login_certificate_checks">Vérification du certificat</string>
     <string name="login_error_mail">Entrez une adresse email valide</string>
@@ -722,8 +706,6 @@
     <string name="pref_profile_photo">Photo de profil</string>
     <string name="pref_blocked_contacts">Contacts bloqués</string>
     <string name="blocked_empty_hint">Si vous bloquez des contacts, ils seront affichés ici.</string>
-    <!-- deprecated -->
-    <string name="pref_password_and_account_settings">Mot de passe et compte</string>
     <string name="pref_who_can_see_profile_explain">Votre image de profil, votre nom et votre signature seront envoyés avec vos messages lorsque vous communiquerez avec d\'autres utilisateurs.</string>
     <string name="pref_your_name">Votre nom</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -767,10 +749,6 @@
     <string name="pref_server">Serveur</string>
     <string name="pref_encryption">Chiffrement</string>
     <string name="pref_manage_keys">Gérer les clés</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts">Lire le carnet d\'adresses du système</string>
-    <!-- deprecated -->
-    <string name="pref_show_system_contacts_explain">Permet de créer des conversations avec des contacts du carnet d\'adresse. Certains fournisseurs doivent d\'abord mettre en place un chiffrement de bout-en-bout.</string>
     <string name="pref_chats">Discussions</string>
     <string name="pref_in_chat_sounds">Sons de messages entrants</string>
     <string name="pref_view_log">Voir le journal</string>
@@ -786,33 +764,19 @@
     <string name="pref_backup_export_all">Exporter les %1$d comptes</string>
     <string name="pref_backup_export_start_button">Démarrer la sauvegarde</string>
     <string name="pref_backup_written_to_x">Sauvegarde effectuée avec succès sur %1$s</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_secret_keys">Exporter les clés secrètes</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_export_explain">Exporter les clés secrètes vers \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="pref_managekeys_secret_keys_exported_to_x">Les clés secrètes ont été écrites avec succès vers \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Arrière-plan</string>
     <string name="pref_background_btn_default">Utilisez l\'image par défaut</string>
     <string name="pref_background_btn_gallery">Sélectionner depuis la galerie</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si vous désactivez cette option, assurez-vous que votre serveur et vos autres clients sont configurés en conséquence.\n\nSinon des choses pourraient ne pas fonctionner du tout.</string>
     <string name="pref_auto_folder_moves">Déplacer automatiquement vers le dossier DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves_explain">Les discussions sont déplacées pour éviter d\'encombrer le dossier Boîte de réception</string>
     <string name="pref_only_fetch_mvbox_title">Ne consulter que le dossier DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_explain">Ignorer les autres répertoires. Cela requiert que votre serveur déplace tous les messages de discussion instantanée dans le dossier DeltaChat.</string>
     <string name="pref_show_emails">Voir les courriels classiques</string>
     <string name="pref_show_emails_no">Non, seulement les discussions</string>
     <string name="pref_show_emails_accepted_contacts">Pour les contacts acceptés</string>
     <string name="pref_show_emails_all">Tout</string>
     <string name="pref_experimental_features">Fonctionnalités expérimentales</string>
     <string name="pref_on_demand_location_streaming">Envoi de la géolocalisation à la demande</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode">Mode développeur</string>
-    <!-- deprecated -->
-    <string name="pref_developer_mode_explain">Active les options de débogage et peut rendre l\'application moins stable. Seulement pour les développeurs.</string>
     <string name="pref_background_default">Image par défaut</string>
     <string name="pref_background_default_color">Couleur par défaut</string>
     <string name="pref_background_custom_image">Image personnalisée</string>
@@ -883,17 +847,6 @@
     <string name="autodel_after_1_week">Après 1 semaine</string>
     <string name="after_5_weeks">Après 5 semaines</string>
     <string name="autodel_after_1_year">Après 1 année</string>
-
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_title">Envoyer le message de configuration Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_before">Un \"Message de configuration d\'Autocrypt\" partages en toute sécurité vos paramètres de bout-en-bout avec les autres applications conformes à Autocrypt.\n\nLa configuration sera chiffrée par un code d\'installation affiché ici et doit être saisi sur l\'autre appareil.</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_button">Envoyer le message de configuration Autocrypt</string>
-    <!-- deprecated -->
-    <string name="autocrypt_send_asm_explain_after">Votre configuration vous a été envoyée. Passez à l\'autre appareil et ouvrez le message de configuration. Un code de configuration devrait vous être demandé. Tapez les chiffres suivants :</string>
-    <!-- deprecated -->
-    <string name="autocrypt_prefer_e2ee">Préférez le chiffrement de bout en bout</string>
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">Message de %1$s</string>
@@ -1005,8 +958,6 @@
     <string name="withdraw_joinbroadcast_explain">Ce code QR peut être scanné pour rejoindre le canal \"%1$s\".\n\nVous pouvez le réinitialiser, afin que ce code QR ou lien d\'invitation soit désactivé.</string>
     <string name="withdraw_qr_code">Réinitialiser le code QR</string>
     <string name="revive_verifycontact_explain">Ce code QR pourrait être scanné par d\'autre personnes pour vous contacter.\n\nCe code QR n\'est pas actif sur cet appareil.</string>
-    <string name="revive_verifygroup_explain">Ce code QR pourrait être scanné par d\'autre personnes pour rejoindre le groupe \"%1$s\".\n\nLe code QR n\'est pas actif sur cet appareil.</string>
-    <string name="revive_joinbroadcast_explain">Le code QR pour rejoindre le canal \"%1$s\" a été réinitialisé et n\'est plus actif.</string>
     <string name="revive_qr_code">Activer le QR Code</string>
     <string name="qrshow_title">QR Code d\'Invitation</string>
     <string name="qrshow_x_joining">%1$s rejoints.</string>
@@ -1121,9 +1072,6 @@
     <string name="name_desktop">Nom</string>
     <string name="select_group_image_desktop">Choisir l\'image de groupe</string>
     <string name="export_backup_desktop">Exporter la sauvegarde</string>
-    <!-- deprecated -->
-    <string name="autocrypt_correct_desktop">Configuration Autocrypt transférée.</string>
-    <string name="forget_login_confirmation_desktop">Supprimer cette connexion ? Tout sera effacé, y compris vos paramètres de chiffrement de bout en bout, vos contacts, discussions, messages et fichiers multimédia. Cette action est irrévocable.</string>
     <string name="message_detail_sent_desktop">envoyé</string>
     <string name="message_detail_received_desktop">reçu</string>
     <string name="menu.view.developer.open.log.folder">Ouvrir le dossier Journal</string>

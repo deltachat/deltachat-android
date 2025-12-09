@@ -1,7 +1,7 @@
 package org.thoughtcrime.securesms.search;
 
 
-import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
