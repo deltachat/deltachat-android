@@ -32,7 +32,7 @@ public class StatsSending {
     DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     msg.setText(context.getString(R.string.stats_device_message));
     int msgId = dcContext.addDeviceMsg("stats_device_message", msg);
-    if(msgId!=0) {
+    if (msgId!=0) {
       Prefs.setStatsDeviceMsgId(context, msgId);
     }
   }
@@ -66,7 +66,7 @@ public class StatsSending {
     try {
       //noinspection DataFlowIssue
       Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS);
-    } catch(NullPointerException e) {
+    } catch (NullPointerException e) {
       //noinspection CallToPrintStackTrace
       e.printStackTrace();
     }
