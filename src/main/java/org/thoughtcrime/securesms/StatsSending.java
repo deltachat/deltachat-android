@@ -21,6 +21,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 import java.util.Locale;
 
 public class StatsSending {
+  /** @noinspection unused: We will start adding a device message once stats-sending is tested a bit */
   public static void maybeAddStatsSendingDeviceMsg(Context context) {
     if (Prefs.getStatsDeviceMsgId(context) != 0) {
       return;
