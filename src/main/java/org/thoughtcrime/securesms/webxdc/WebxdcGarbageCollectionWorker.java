@@ -18,11 +18,11 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 
 public class WebxdcGarbageCollectionWorker extends ListenableWorker {
   private static final String TAG = WebxdcGarbageCollectionWorker.class.getSimpleName();
-  private Rpc rpc;
+  private Context context;
 
   public WebxdcGarbageCollectionWorker(Context context, WorkerParameters params) {
     super(context, params);
-    rpc = DcHelper.getRpc(context);
+    this.context = context;
   }
 
   @Override
@@ -40,6 +40,13 @@ public class WebxdcGarbageCollectionWorker extends ListenableWorker {
           Log.i(TAG, "Done, no WebView origins found.");
           completer.set(Result.success());
           return;
+        }
+
+        Rpc rpc = DcHelper.getRpc(context);
+        if (rpc == null) {
+            Log.e(TAG, "Failed to get access to RPC, Webxdc storage garbage collection aborted.");
+            completer.set(Result.failure());
+            return;
         }
 
         for (Object key : origins.keySet()) {
