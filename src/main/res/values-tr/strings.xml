@@ -612,7 +612,7 @@
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Zaten Bir Profilim Var</string>
     <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Taşıma Aracı Olarak Klasik E-Posta Kullan</string>
+    <string name="manual_account_setup_option">Aktarıcı Olarak Klasik E-Posta Kullan</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profiliniz</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -664,15 +664,15 @@
     <string name="proxy_enabled">Proxy Etkinleştirildi</string>
     <string name="proxy_enabled_hint">Bir proxy kullanıyorsunuz. Bağlanmakta sorun yaşıyorsanız başka bir proxy deneyin.</string>
     <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
-    <string name="transports">Taşıma Araçları</string>
-    <string name="add_transport">Taşıma Aracı Ekle</string>
-    <string name="remove_transport">Taşıma Aracını Kaldır</string>
-    <string name="edit_transport">Taşıma Aracını Düzenle</string>
+    <string name="transports">Aktarıcılar</string>
+    <string name="add_transport">Aktarıcı Ekle</string>
+    <string name="remove_transport">Aktarıcıyı Kaldır</string>
+    <string name="edit_transport">Aktarıcıyı Düzenle</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
-    <string name="confirm_add_transport">Bu taşıma aracı eklensin mi?</string>
-    <string name="invalid_transport_qr">Taranan QR kodu, geçerli bir taşıma aracı içermiyor.</string>
+    <string name="confirm_add_transport">Bu aktarıcı eklensin mi?</string>
+    <string name="invalid_transport_qr">Taranan QR kodu, geçerli bir aktarıcı içermiyor.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_transport">“%1$s” taşıma aracı kaldırılsın mı?\n\nKişileriniz yalnızca onlara önceden ulaştığınız başka bir taşıma aracı üzerinden size ulaşabilir.\n\nKuşkuluysanız taşıma aracını daha sonra kaldırın.</string>
+    <string name="confirm_remove_transport">“%1$s” aktarıcısı kaldırılsın mı?\n\nKişileriniz yalnızca onlara önceden ulaştığınız başka bir aktarıcı üzerinden size ulaşabilir.\n\nKuşkuluysanız aktarıcıyı daha sonra kaldırın.</string>
 
     <string name="login_certificate_checks">Sertifika Denetimleri</string>
     <string name="login_error_mail">Lütfen geçerli bir e-posta adresi girin</string>
