@@ -37,6 +37,7 @@ public class RelayListActivity extends BaseActionBarActivity
   implements RelayListAdapter.OnRelayClickListener, DcEventCenter.DcEventDelegate {
 
   private static final String TAG = RelayListActivity.class.getSimpleName();
+  public static final String EXTRA_QR_DATA = "qr_data";
 
   private RelayListAdapter adapter;
   private Rpc rpc;
@@ -83,6 +84,12 @@ public class RelayListActivity extends BaseActionBarActivity
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
+
+    String qrdata = getIntent().getStringExtra(EXTRA_QR_DATA);
+    if (qrdata != null) {
+      QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+      qrCodeHandler.handleQrData(qrdata);
+    }
   }
 
   @Override

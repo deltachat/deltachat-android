@@ -50,6 +50,7 @@ import org.thoughtcrime.securesms.profiles.AvatarHelper;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.relay.EditRelayActivity;
+import org.thoughtcrime.securesms.relay.RelayListActivity;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -106,11 +107,18 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     boolean fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
+
     if (DcHelper.getContext(this).isConfigured() == 1) {
       // if account is configured it means we didn't come from Welcome screen nor from QR scanner,
-      // instead, user clicked a dcaccount:// URI directly, so we need to switch to a new account:
-      AccountManager.getInstance().beginAccountCreation(this);
+      // instead, user clicked a dcaccount:// URI directly, so we need to just offer to add a new relay
+      Intent intent = new Intent(this, RelayListActivity.class);
+      String qrData = getIntent().getData().toString();
+      intent.putExtra(RelayListActivity.EXTRA_QR_DATA, qrData);
+      startActivity(intent);
+      finish();
+      return;
     }
+
     getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(!fromWelcome) {
       @Override
       public void handleOnBackPressed() {
