@@ -17,6 +17,7 @@ import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.relay.RelayListActivity;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
@@ -282,7 +283,16 @@ public class QrCodeHandler {
                 Util.runOnMain(() -> {
                     if (!progressDialog.isShowing()) return; // canceled dialog, nothing to do
                     if (finalError != null) {
-                        Toast.makeText(activity, finalError, Toast.LENGTH_LONG).show();
+                        new AlertDialog.Builder(activity)
+                           .setTitle(R.string.error)
+                           .setMessage(finalError)
+                           .setPositiveButton(R.string.ok, null)
+                           .show();
+                    } else {
+                        showDoneToast(activity);
+                        if (!(activity instanceof RelayListActivity)) {
+                            activity.startActivity(new Intent(activity, RelayListActivity.class));
+                        }
                     }
                     try {
                         progressDialog.dismiss();
