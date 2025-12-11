@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v2.33.0
+## v2.33.1
 2025-12
 
 * Target Android 16

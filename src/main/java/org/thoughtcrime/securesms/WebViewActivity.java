@@ -104,6 +104,8 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
             case "mailto":
             case "openpgp4fpr":
             case "geo":
+            case "dcaccount":
+            case "dclogin":
               return openOnlineUrl(url);
           }
         }
