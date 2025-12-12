@@ -152,14 +152,6 @@ public class AccountManager {
         dialog.show(((FragmentActivity) activity).getSupportFragmentManager(), null);
     }
 
-    public void addAccountFromQr(Activity activity, String qr) {
-        beginAccountCreation(activity);
-        activity.finishAffinity();
-        Intent intent = new Intent(activity, InstantOnboardingActivity.class);
-        intent.putExtra(InstantOnboardingActivity.QR_ACCOUNT_EXTRA, qr);
-        activity.startActivity(intent);
-    }
-
     public void addAccountFromSecondDevice(Activity activity, String backupQr) {
         switchAccountAndStartActivity(activity, 0, backupQr);
     }
