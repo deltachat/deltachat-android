@@ -119,6 +119,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
         finish();
         return;
       }
+      // if URI is unexpectedly null, then fallback to new profile creation
       AccountManager.getInstance().beginAccountCreation(this);
     }
 
