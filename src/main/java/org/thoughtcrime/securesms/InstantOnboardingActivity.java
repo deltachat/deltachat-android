@@ -111,12 +111,14 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     if (DcHelper.getContext(this).isConfigured() == 1) {
       // if account is configured it means we didn't come from Welcome screen nor from QR scanner,
       // instead, user clicked a dcaccount:// URI directly, so we need to just offer to add a new relay
-      Intent intent = new Intent(this, RelayListActivity.class);
-      String qrData = getIntent().getData().toString();
-      intent.putExtra(RelayListActivity.EXTRA_QR_DATA, qrData);
-      startActivity(intent);
-      finish();
-      return;
+      Uri uri = getIntent().getData();
+      if (uri != null) {
+        Intent intent = new Intent(this, RelayListActivity.class);
+        intent.putExtra(RelayListActivity.EXTRA_QR_DATA, uri.toString());
+        startActivity(intent);
+        finish();
+        return;
+      }
     }
 
     getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(!fromWelcome) {
