@@ -74,7 +74,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private static final String INSTANCES_URL = "https://chatmail.at/relays";
   private static final String DEFAULT_CHATMAIL_HOST = "nine.testrun.org";
 
-  public static final String QR_ACCOUNT_EXTRA = "qr_account_extra";
   public static final String FROM_WELCOME = "from_welcome";
   private static final int REQUEST_CODE_AVATAR = 1;
 
@@ -237,16 +236,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
-  }
-
-  @Override
-  public void onStart() {
-    super.onStart();
-    String accountQr = getIntent().getStringExtra(QR_ACCOUNT_EXTRA);
-    if (accountQr != null) {
-      getIntent().removeExtra(QR_ACCOUNT_EXTRA);
-      setProviderFromQr(accountQr);
-    }
   }
 
   @Override
