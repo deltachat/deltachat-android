@@ -119,6 +119,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
         finish();
         return;
       }
+      AccountManager.getInstance().beginAccountCreation(this);
     }
 
     getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(!fromWelcome) {
