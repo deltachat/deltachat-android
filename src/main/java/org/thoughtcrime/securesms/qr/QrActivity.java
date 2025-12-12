@@ -109,7 +109,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
                     .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_camera_denied))
                     .onAllGranted(() -> ((QrScanFragment) adapter.getItem(TAB_SCAN)).handleQrScanWithPermissions(QrActivity.this))
                     .onAnyDenied(() -> {
-                        if (!scanRelay) {
+                        if (scanRelay) {
                             Toast.makeText(this, getString(R.string.chat_camera_unavailable), Toast.LENGTH_LONG).show();
                         } else {
                             viewPager.setCurrentItem(TAB_SHOW);
