@@ -18,7 +18,7 @@ public abstract class Account {
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String displayName;
     public Integer id;
-    /* Optional tag as "Work", "Family". Meant to help profile owner to differ between profiles with similar names. */
+    /** Optional tag as "Work", "Family". Meant to help profile owner to differ between profiles with similar names. */
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String privateTag;
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)

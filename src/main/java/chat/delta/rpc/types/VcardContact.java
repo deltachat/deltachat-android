@@ -2,19 +2,19 @@
 package chat.delta.rpc.types;
 
 public class VcardContact {
-  /* Email address. */
+  /** Email address. */
   public String addr;
-  /* Contact color as hex string. */
+  /** Contact color as hex string. */
   public String color;
-  /* The contact's name, or the email address if no name was given. */
+  /** The contact's name, or the email address if no name was given. */
   public String displayName;
-  /* Public PGP key in Base64. */
+  /** Public PGP key in Base64. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String key;
-  /* Profile image in Base64. */
+  /** Profile image in Base64. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String profileImage;
-  /* Last update timestamp. */
+  /** Last update timestamp. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Integer timestamp;
 }

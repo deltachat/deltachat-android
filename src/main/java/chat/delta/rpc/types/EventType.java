@@ -20,41 +20,41 @@ public abstract class EventType {
     public String msg;
   }
 
-/* Emitted when SMTP connection is established and login was successful. */
+/** Emitted when SMTP connection is established and login was successful. */
   public static class SmtpConnected extends EventType {
     public String msg;
   }
 
-/* Emitted when IMAP connection is established and login was successful. */
+/** Emitted when IMAP connection is established and login was successful. */
   public static class ImapConnected extends EventType {
     public String msg;
   }
 
-/* Emitted when a message was successfully sent to the SMTP server. */
+/** Emitted when a message was successfully sent to the SMTP server. */
   public static class SmtpMessageSent extends EventType {
     public String msg;
   }
 
-/* Emitted when an IMAP message has been marked as deleted */
+/** Emitted when an IMAP message has been marked as deleted */
   public static class ImapMessageDeleted extends EventType {
     public String msg;
   }
 
-/* Emitted when an IMAP message has been moved */
+/** Emitted when an IMAP message has been moved */
   public static class ImapMessageMoved extends EventType {
     public String msg;
   }
 
-/* Emitted before going into IDLE on the Inbox folder. */
+/** Emitted before going into IDLE on the Inbox folder. */
   public static class ImapInboxIdle extends EventType {
   }
 
-/* Emitted when an new file in the $BLOBDIR was created */
+/** Emitted when an new file in the $BLOBDIR was created */
   public static class NewBlobFile extends EventType {
     public String file;
   }
 
-/* Emitted when an file in the $BLOBDIR was deleted */
+/** Emitted when an file in the $BLOBDIR was deleted */
   public static class DeletedBlobFile extends EventType {
     public String file;
   }
@@ -79,26 +79,26 @@ public abstract class EventType {
     public String msg;
   }
 
-/* An action cannot be performed because the user is not in the group. Reported eg. after a call to setChatName(), setChatProfileImage(), addContactToChat(), removeContactFromChat(), and messages sending functions. */
+/** An action cannot be performed because the user is not in the group. Reported eg. after a call to setChatName(), setChatProfileImage(), addContactToChat(), removeContactFromChat(), and messages sending functions. */
   public static class ErrorSelfNotInGroup extends EventType {
     public String msg;
   }
 
-/* Messages or chats changed.  One or more messages or chats changed for various reasons in the database: - Messages sent, received or removed - Chats created, deleted or archived - A draft has been set */
+/** Messages or chats changed.  One or more messages or chats changed for various reasons in the database: - Messages sent, received or removed - Chats created, deleted or archived - A draft has been set */
   public static class MsgsChanged extends EventType {
-    /* Set if only a single chat is affected by the changes, otherwise 0. */
+    /** Set if only a single chat is affected by the changes, otherwise 0. */
     public Integer chatId;
-    /* Set if only a single message is affected by the changes, otherwise 0. */
+    /** Set if only a single message is affected by the changes, otherwise 0. */
     public Integer msgId;
   }
 
-/* Reactions for the message changed. */
+/** Reactions for the message changed. */
   public static class ReactionsChanged extends EventType {
-    /* ID of the chat which the message belongs to. */
+    /** ID of the chat which the message belongs to. */
     public Integer chatId;
-    /* ID of the contact whose reaction set is changed. */
+    /** ID of the contact whose reaction set is changed. */
     public Integer contactId;
-    /* ID of the message for which reactions were changed. */
+    /** ID of the message for which reactions were changed. */
     public Integer msgId;
   }
 
@@ -108,28 +108,28 @@ public abstract class EventType {
  * In addition to this event, ReactionsChanged is emitted.
  */
   public static class IncomingReaction extends EventType {
-    /* ID of the chat which the message belongs to. */
+    /** ID of the chat which the message belongs to. */
     public Integer chatId;
-    /* ID of the contact whose reaction set is changed. */
+    /** ID of the contact whose reaction set is changed. */
     public Integer contactId;
-    /* ID of the message for which reactions were changed. */
+    /** ID of the message for which reactions were changed. */
     public Integer msgId;
-    /* The reaction. */
+    /** The reaction. */
     public String reaction;
   }
 
-/* Incoming webxdc info or summary update, should be notified. */
+/** Incoming webxdc info or summary update, should be notified. */
   public static class IncomingWebxdcNotify extends EventType {
-    /* ID of the chat. */
+    /** ID of the chat. */
     public Integer chatId;
-    /* ID of the contact sending. */
+    /** ID of the contact sending. */
     public Integer contactId;
-    /* Link assigned to this notification, if any. */
+    /** Link assigned to this notification, if any. */
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String href;
-    /* ID of the added info message or webxdc instance in case of summary change. */
+    /** ID of the added info message or webxdc instance in case of summary change. */
     public Integer msgId;
-    /* Text to notify. */
+    /** Text to notify. */
     public String text;
   }
 
@@ -139,42 +139,42 @@ public abstract class EventType {
  * There is no extra #DC_EVENT_MSGS_CHANGED event sent together with this event.
  */
   public static class IncomingMsg extends EventType {
-    /* ID of the chat where the message is assigned. */
+    /** ID of the chat where the message is assigned. */
     public Integer chatId;
-    /* ID of the message. */
+    /** ID of the message. */
     public Integer msgId;
   }
 
-/* Downloading a bunch of messages just finished. This is an event to allow the UI to only show one notification per message bunch, instead of cluttering the user with many notifications. */
+/** Downloading a bunch of messages just finished. This is an event to allow the UI to only show one notification per message bunch, instead of cluttering the user with many notifications. */
   public static class IncomingMsgBunch extends EventType {
   }
 
-/* Messages were seen or noticed. chat id is always set. */
+/** Messages were seen or noticed. chat id is always set. */
   public static class MsgsNoticed extends EventType {
     public Integer chatId;
   }
 
-/* A single message is sent successfully. State changed from  DC_STATE_OUT_PENDING to DC_STATE_OUT_DELIVERED, see `Message.state`. */
+/** A single message is sent successfully. State changed from  DC_STATE_OUT_PENDING to DC_STATE_OUT_DELIVERED, see `Message.state`. */
   public static class MsgDelivered extends EventType {
-    /* ID of the chat which the message belongs to. */
+    /** ID of the chat which the message belongs to. */
     public Integer chatId;
-    /* ID of the message that was successfully sent. */
+    /** ID of the message that was successfully sent. */
     public Integer msgId;
   }
 
-/* A single message could not be sent. State changed from DC_STATE_OUT_PENDING or DC_STATE_OUT_DELIVERED to DC_STATE_OUT_FAILED, see `Message.state`. */
+/** A single message could not be sent. State changed from DC_STATE_OUT_PENDING or DC_STATE_OUT_DELIVERED to DC_STATE_OUT_FAILED, see `Message.state`. */
   public static class MsgFailed extends EventType {
-    /* ID of the chat which the message belongs to. */
+    /** ID of the chat which the message belongs to. */
     public Integer chatId;
-    /* ID of the message that could not be sent. */
+    /** ID of the message that could not be sent. */
     public Integer msgId;
   }
 
-/* A single message is read by the receiver. State changed from DC_STATE_OUT_DELIVERED to DC_STATE_OUT_MDN_RCVD, see `Message.state`. */
+/** A single message is read by the receiver. State changed from DC_STATE_OUT_DELIVERED to DC_STATE_OUT_MDN_RCVD, see `Message.state`. */
   public static class MsgRead extends EventType {
-    /* ID of the chat which the message belongs to. */
+    /** ID of the chat which the message belongs to. */
     public Integer chatId;
-    /* ID of the message that was read. */
+    /** ID of the message that was read. */
     public Integer msgId;
   }
 
@@ -188,9 +188,9 @@ public abstract class EventType {
  * This event does not indicate the message deletion from the server.
  */
   public static class MsgDeleted extends EventType {
-    /* ID of the chat where the message was prior to deletion. Never 0. */
+    /** ID of the chat where the message was prior to deletion. Never 0. */
     public Integer chatId;
-    /* ID of the deleted message. Never 0. */
+    /** ID of the deleted message. Never 0. */
     public Integer msgId;
   }
 
@@ -203,37 +203,37 @@ public abstract class EventType {
     public Integer chatId;
   }
 
-/* Chat ephemeral timer changed. */
+/** Chat ephemeral timer changed. */
   public static class ChatEphemeralTimerModified extends EventType {
-    /* Chat ID. */
+    /** Chat ID. */
     public Integer chatId;
-    /* New ephemeral timer value. */
+    /** New ephemeral timer value. */
     public Integer timer;
   }
 
-/* Chat deleted. */
+/** Chat deleted. */
   public static class ChatDeleted extends EventType {
-    /* Chat ID. */
+    /** Chat ID. */
     public Integer chat_id;
   }
 
-/* Contact(s) created, renamed, blocked or deleted. */
+/** Contact(s) created, renamed, blocked or deleted. */
   public static class ContactsChanged extends EventType {
-    /* If set, this is the contact_id of an added contact that should be selected. */
+    /** If set, this is the contact_id of an added contact that should be selected. */
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer contactId;
   }
 
-/* Location of one or more contact has changed. */
+/** Location of one or more contact has changed. */
   public static class LocationChanged extends EventType {
-    /* contact_id of the contact for which the location has changed. If the locations of several contacts have been changed, this parameter is set to `None`. */
+    /** contact_id of the contact for which the location has changed. If the locations of several contacts have been changed, this parameter is set to `None`. */
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer contactId;
   }
 
-/* Inform about the configuration progress started by configure(). */
+/** Inform about the configuration progress started by configure(). */
   public static class ConfigureProgress extends EventType {
-    /* Progress comment or error, something to display to the user. */
+    /** Progress comment or error, something to display to the user. */
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String comment;
     /**
@@ -244,9 +244,9 @@ public abstract class EventType {
     public Integer progress;
   }
 
-/* Inform about the import/export progress started by imex(). */
+/** Inform about the import/export progress started by imex(). */
   public static class ImexProgress extends EventType {
-    /* 0=error, 1-999=progress in permille, 1000=success and done */
+    /** 0=error, 1-999=progress in permille, 1000=success and done */
     public Integer progress;
   }
 
@@ -267,62 +267,62 @@ public abstract class EventType {
  * These events are typically sent after a joiner has scanned the QR code generated by getChatSecurejoinQrCodeSvg().
  */
   public static class SecurejoinInviterProgress extends EventType {
-    /* ID of the chat in case of success. */
+    /** ID of the chat in case of success. */
     public Integer chatId;
-    /* The type of the joined chat. This can take the same values as `BasicChat.chatType` ([`crate::api::types::chat::BasicChat::chat_type`]). */
+    /** The type of the joined chat. This can take the same values as `BasicChat.chatType` ([`crate::api::types::chat::BasicChat::chat_type`]). */
     public ChatType chatType;
-    /* ID of the contact that wants to join. */
+    /** ID of the contact that wants to join. */
     public Integer contactId;
-    /* Progress, always 1000. */
+    /** Progress, always 1000. */
     public Integer progress;
   }
 
-/* Progress information of a secure-join handshake from the view of the joiner (Bob, the person who scans the QR code). The events are typically sent while secureJoin(), which may take some time, is executed. */
+/** Progress information of a secure-join handshake from the view of the joiner (Bob, the person who scans the QR code). The events are typically sent while secureJoin(), which may take some time, is executed. */
   public static class SecurejoinJoinerProgress extends EventType {
-    /* ID of the inviting contact. */
+    /** ID of the inviting contact. */
     public Integer contactId;
-    /* Progress as: 400=vg-/vc-request-with-auth sent, typically shown as "alice@addr verified, introducing myself." (Bob has verified alice and waits until Alice does the same for him) 1000=vg-member-added/vc-contact-confirm received */
+    /** Progress as: 400=vg-/vc-request-with-auth sent, typically shown as "alice@addr verified, introducing myself." (Bob has verified alice and waits until Alice does the same for him) 1000=vg-member-added/vc-contact-confirm received */
     public Integer progress;
   }
 
-/* The connectivity to the server changed. This means that you should refresh the connectivity view and possibly the connectivtiy HTML; see getConnectivity() and getConnectivityHtml() for details. */
+/** The connectivity to the server changed. This means that you should refresh the connectivity view and possibly the connectivtiy HTML; see getConnectivity() and getConnectivityHtml() for details. */
   public static class ConnectivityChanged extends EventType {
   }
 
-/* Deprecated by `ConfigSynced`. */
+/** Deprecated by `ConfigSynced`. */
   public static class SelfavatarChanged extends EventType {
   }
 
-/* A multi-device synced config value changed. Maybe the app needs to refresh smth. For uniformity this is emitted on the source device too. The value isn't here, otherwise it would be logged which might not be good for privacy. */
+/** A multi-device synced config value changed. Maybe the app needs to refresh smth. For uniformity this is emitted on the source device too. The value isn't here, otherwise it would be logged which might not be good for privacy. */
   public static class ConfigSynced extends EventType {
-    /* Configuration key. */
+    /** Configuration key. */
     public String key;
   }
 
   public static class WebxdcStatusUpdate extends EventType {
-    /* Message ID. */
+    /** Message ID. */
     public Integer msgId;
-    /* Status update ID. */
+    /** Status update ID. */
     public Integer statusUpdateSerial;
   }
 
-/* Data received over an ephemeral peer channel. */
+/** Data received over an ephemeral peer channel. */
   public static class WebxdcRealtimeData extends EventType {
-    /* Realtime data. */
+    /** Realtime data. */
     public java.util.List<Integer> data;
-    /* Message ID. */
+    /** Message ID. */
     public Integer msgId;
   }
 
-/* Advertisement received over an ephemeral peer channel. This can be used by bots to initiate peer-to-peer communication from their side. */
+/** Advertisement received over an ephemeral peer channel. This can be used by bots to initiate peer-to-peer communication from their side. */
   public static class WebxdcRealtimeAdvertisementReceived extends EventType {
-    /* Message ID of the webxdc instance. */
+    /** Message ID of the webxdc instance. */
     public Integer msgId;
   }
 
-/* Inform that a message containing a webxdc instance has been deleted */
+/** Inform that a message containing a webxdc instance has been deleted */
   public static class WebxdcInstanceDeleted extends EventType {
-    /* ID of the deleted message. */
+    /** ID of the deleted message. */
     public Integer msgId;
   }
 
@@ -342,9 +342,9 @@ public abstract class EventType {
   public static class ChatlistChanged extends EventType {
   }
 
-/* Inform that a single chat list item changed and needs to be rerendered. If `chat_id` is set to None, then all currently visible chats need to be rerendered, and all not-visible items need to be cleared from cache if the UI has a cache. */
+/** Inform that a single chat list item changed and needs to be rerendered. If `chat_id` is set to None, then all currently visible chats need to be rerendered, and all not-visible items need to be cleared from cache if the UI has a cache. */
   public static class ChatlistItemChanged extends EventType {
-    /* ID of the changed chat */
+    /** ID of the changed chat */
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer chatId;
   }
@@ -365,47 +365,47 @@ public abstract class EventType {
   public static class AccountsItemChanged extends EventType {
   }
 
-/* Inform than some events have been skipped due to event channel overflow. */
+/** Inform than some events have been skipped due to event channel overflow. */
   public static class EventChannelOverflow extends EventType {
-    /* Number of events skipped. */
+    /** Number of events skipped. */
     public Integer n;
   }
 
-/* Incoming call. */
+/** Incoming call. */
   public static class IncomingCall extends EventType {
-    /* ID of the chat which the message belongs to. */
+    /** ID of the chat which the message belongs to. */
     public Integer chat_id;
-    /* True if incoming call is a video call. */
+    /** True if incoming call is a video call. */
     public Boolean has_video;
-    /* ID of the info message referring to the call. */
+    /** ID of the info message referring to the call. */
     public Integer msg_id;
-    /* User-defined info as passed to place_outgoing_call() */
+    /** User-defined info as passed to place_outgoing_call() */
     public String place_call_info;
   }
 
-/* Incoming call accepted. This is esp. interesting to stop ringing on other devices. */
+/** Incoming call accepted. This is esp. interesting to stop ringing on other devices. */
   public static class IncomingCallAccepted extends EventType {
-    /* ID of the chat which the message belongs to. */
+    /** ID of the chat which the message belongs to. */
     public Integer chat_id;
-    /* ID of the info message referring to the call. */
+    /** ID of the info message referring to the call. */
     public Integer msg_id;
   }
 
-/* Outgoing call accepted. */
+/** Outgoing call accepted. */
   public static class OutgoingCallAccepted extends EventType {
-    /* User-defined info passed to dc_accept_incoming_call( */
+    /** User-defined info passed to dc_accept_incoming_call( */
     public String accept_call_info;
-    /* ID of the chat which the message belongs to. */
+    /** ID of the chat which the message belongs to. */
     public Integer chat_id;
-    /* ID of the info message referring to the call. */
+    /** ID of the info message referring to the call. */
     public Integer msg_id;
   }
 
-/* Call ended. */
+/** Call ended. */
   public static class CallEnded extends EventType {
-    /* ID of the chat which the message belongs to. */
+    /** ID of the chat which the message belongs to. */
     public Integer chat_id;
-    /* ID of the info message referring to the call. */
+    /** ID of the info message referring to the call. */
     public Integer msg_id;
   }
 
