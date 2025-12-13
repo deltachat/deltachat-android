@@ -11,11 +11,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 @JsonSubTypes({@Type(value = EphemeralTimer.Disabled.class, name="Disabled"), @Type(value = EphemeralTimer.Enabled.class, name="Enabled")})
 public abstract class EphemeralTimer {
 
-/* Timer is disabled. */
+/** Timer is disabled. */
   public static class Disabled extends EphemeralTimer {
   }
 
-/* Timer is enabled. */
+/** Timer is enabled. */
   public static class Enabled extends EphemeralTimer {
     /**
      * Timer duration in seconds.

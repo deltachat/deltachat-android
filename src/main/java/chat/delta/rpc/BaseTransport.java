@@ -94,7 +94,7 @@ public abstract class BaseTransport implements Rpc.Transport {
     }
 
     if (response.error != null) {
-      future.setException(new RpcException(response.error.toString()));
+      future.setException(new RpcException(response.error.message));
     } else if (response.result != null) {
       future.set(response.result);
     } else {
@@ -115,10 +115,15 @@ public abstract class BaseTransport implements Rpc.Transport {
     }
   }
 
+  private static class RpcError {
+    public int code;
+    public String message;
+  }
+
   private static class Response {
     public String jsonrpc;
     public int id;
     public JsonNode result;
-    public JsonNode error;
+    public RpcError error;
   }
 }

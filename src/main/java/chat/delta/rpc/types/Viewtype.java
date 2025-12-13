@@ -4,13 +4,13 @@ package chat.delta.rpc.types;
 public enum Viewtype {
   Unknown,
 
-  /* Text message. */
+  /** Text message. */
   Text,
 
-  /* Image message. If the image is an animated GIF, the type `Viewtype.Gif` should be used. */
+  /** Image message. If the image is an animated GIF, the type `Viewtype.Gif` should be used. */
   Image,
 
-  /* Animated GIF message. */
+  /** Animated GIF message. */
   Gif,
 
   /**
@@ -20,24 +20,24 @@ public enum Viewtype {
    */
   Sticker,
 
-  /* Message containing an Audio file. */
+  /** Message containing an Audio file. */
   Audio,
 
-  /* A voice message that was directly recorded by the user. For all other audio messages, the type `Viewtype.Audio` should be used. */
+  /** A voice message that was directly recorded by the user. For all other audio messages, the type `Viewtype.Audio` should be used. */
   Voice,
 
-  /* Video messages. */
+  /** Video messages. */
   Video,
 
-  /* Message containing any file, eg. a PDF. */
+  /** Message containing any file, eg. a PDF. */
   File,
 
-  /* Message is a call. */
+  /** Message is a call. */
   Call,
 
-  /* Message is an webxdc instance. */
+  /** Message is an webxdc instance. */
   Webxdc,
 
-  /* Message containing shared contacts represented as a vCard (virtual contact file) with email addresses and possibly other fields. Use `parse_vcard()` to retrieve them. */
+  /** Message containing shared contacts represented as a vCard (virtual contact file) with email addresses and possibly other fields. Use `parse_vcard()` to retrieve them. */
   Vcard,
 }

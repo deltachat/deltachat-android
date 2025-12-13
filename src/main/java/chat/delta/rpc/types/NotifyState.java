@@ -2,12 +2,12 @@
 package chat.delta.rpc.types;
 
 public enum NotifyState {
-  /* Not subscribed to push notifications. */
+  /** Not subscribed to push notifications. */
   NotConnected,
 
-  /* Subscribed to heartbeat push notifications. */
+  /** Subscribed to heartbeat push notifications. */
   Heartbeat,
 
-  /* Subscribed to push notifications for new messages. */
+  /** Subscribed to push notifications for new messages. */
   Connected,
 }

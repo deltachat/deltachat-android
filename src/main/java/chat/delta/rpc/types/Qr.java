@@ -17,45 +17,45 @@ public abstract class Qr {
  * If the user agrees, pass this QR code to [`crate::securejoin::join_securejoin`].
  */
   public static class AskVerifyContact extends Qr {
-    /* Authentication code. */
+    /** Authentication code. */
     public String authcode;
-    /* ID of the contact. */
+    /** ID of the contact. */
     public Integer contact_id;
-    /* Fingerprint of the contact key as scanned from the QR code. */
+    /** Fingerprint of the contact key as scanned from the QR code. */
     public String fingerprint;
-    /* Invite number. */
+    /** Invite number. */
     public String invitenumber;
   }
 
-/* Ask the user whether to join the group. */
+/** Ask the user whether to join the group. */
   public static class AskVerifyGroup extends Qr {
-    /* Authentication code. */
+    /** Authentication code. */
     public String authcode;
-    /* ID of the contact. */
+    /** ID of the contact. */
     public Integer contact_id;
-    /* Fingerprint of the contact key as scanned from the QR code. */
+    /** Fingerprint of the contact key as scanned from the QR code. */
     public String fingerprint;
-    /* Group ID. */
+    /** Group ID. */
     public String grpid;
-    /* Group name. */
+    /** Group name. */
     public String grpname;
-    /* Invite number. */
+    /** Invite number. */
     public String invitenumber;
   }
 
-/* Ask the user whether to join the broadcast channel. */
+/** Ask the user whether to join the broadcast channel. */
   public static class AskJoinBroadcast extends Qr {
-    /* Authentication code. */
+    /** Authentication code. */
     public String authcode;
-    /* ID of the contact who owns the broadcast channel and created the QR code. */
+    /** ID of the contact who owns the broadcast channel and created the QR code. */
     public Integer contact_id;
-    /* Fingerprint of the broadcast channel owner's key as scanned from the QR code. */
+    /** Fingerprint of the broadcast channel owner's key as scanned from the QR code. */
     public String fingerprint;
-    /* A string of random characters, uniquely identifying this broadcast channel across all databases/clients. Called `grpid` for historic reasons: The id of multi-user chats is always called `grpid` in the database because groups were once the only multi-user chats. */
+    /** A string of random characters, uniquely identifying this broadcast channel across all databases/clients. Called `grpid` for historic reasons: The id of multi-user chats is always called `grpid` in the database because groups were once the only multi-user chats. */
     public String grpid;
-    /* Invite number. */
+    /** Invite number. */
     public String invitenumber;
-    /* The user-visible name of this broadcast channel */
+    /** The user-visible name of this broadcast channel */
     public String name;
   }
 
@@ -65,41 +65,41 @@ public abstract class Qr {
  * Ask the user if they want to start chatting.
  */
   public static class FprOk extends Qr {
-    /* Contact ID. */
+    /** Contact ID. */
     public Integer contact_id;
   }
 
-/* Scanned fingerprint does not match the last seen fingerprint. */
+/** Scanned fingerprint does not match the last seen fingerprint. */
   public static class FprMismatch extends Qr {
-    /* Contact ID. */
+    /** Contact ID. */
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer contact_id;
   }
 
-/* The scanned QR code contains a fingerprint but no e-mail address. */
+/** The scanned QR code contains a fingerprint but no e-mail address. */
   public static class FprWithoutAddr extends Qr {
-    /* Key fingerprint. */
+    /** Key fingerprint. */
     public String fingerprint;
   }
 
-/* Ask the user if they want to create an account on the given domain. */
+/** Ask the user if they want to create an account on the given domain. */
   public static class Account extends Qr {
-    /* Server domain name. */
+    /** Server domain name. */
     public String domain;
   }
 
-/* Provides a backup that can be retrieved using iroh-net based backup transfer protocol. */
+/** Provides a backup that can be retrieved using iroh-net based backup transfer protocol. */
   public static class Backup2 extends Qr {
-    /* Authentication token. */
+    /** Authentication token. */
     public String auth_token;
-    /* Iroh node address. */
+    /** Iroh node address. */
     public String node_addr;
   }
 
   public static class BackupTooNew extends Qr {
   }
 
-/* Ask the user if they want to use the given service for video chats. */
+/** Ask the user if they want to use the given service for video chats. */
   public static class WebrtcInstance extends Qr {
     public String domain;
     public String instance_pattern;
@@ -111,9 +111,9 @@ public abstract class Qr {
  * Note that HTTP(S) URLs without a path and query parameters are treated as HTTP(S) proxy URL. UI may want to still offer to open the URL in the browser if QR code contents starts with `http://` or `https://` and the QR code was not scanned from the proxy configuration screen.
  */
   public static class Proxy extends Qr {
-    /* Host extracted from the URL to display in the UI. */
+    /** Host extracted from the URL to display in the UI. */
     public String host;
-    /* Port extracted from the URL to display in the UI. */
+    /** Port extracted from the URL to display in the UI. */
     public Integer port;
     /**
      * Proxy URL.
@@ -129,9 +129,9 @@ public abstract class Qr {
  * Optionally, a draft message could be provided. Ask the user if they want to start chatting.
  */
   public static class Addr extends Qr {
-    /* Contact ID. */
+    /** Contact ID. */
     public Integer contact_id;
-    /* Draft message. */
+    /** Draft message. */
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String draft;
   }
@@ -154,91 +154,91 @@ public abstract class Qr {
     public String text;
   }
 
-/* Ask the user if they want to withdraw their own QR code. */
+/** Ask the user if they want to withdraw their own QR code. */
   public static class WithdrawVerifyContact extends Qr {
-    /* Authentication code. */
+    /** Authentication code. */
     public String authcode;
-    /* Contact ID. */
+    /** Contact ID. */
     public Integer contact_id;
-    /* Fingerprint of the contact key as scanned from the QR code. */
+    /** Fingerprint of the contact key as scanned from the QR code. */
     public String fingerprint;
-    /* Invite number. */
+    /** Invite number. */
     public String invitenumber;
   }
 
-/* Ask the user if they want to withdraw their own group invite QR code. */
+/** Ask the user if they want to withdraw their own group invite QR code. */
   public static class WithdrawVerifyGroup extends Qr {
-    /* Authentication code. */
+    /** Authentication code. */
     public String authcode;
-    /* Contact ID. */
+    /** Contact ID. */
     public Integer contact_id;
-    /* Fingerprint of the contact key as scanned from the QR code. */
+    /** Fingerprint of the contact key as scanned from the QR code. */
     public String fingerprint;
-    /* Group ID. */
+    /** Group ID. */
     public String grpid;
-    /* Group name. */
+    /** Group name. */
     public String grpname;
-    /* Invite number. */
+    /** Invite number. */
     public String invitenumber;
   }
 
-/* Ask the user if they want to withdraw their own broadcast channel invite QR code. */
+/** Ask the user if they want to withdraw their own broadcast channel invite QR code. */
   public static class WithdrawJoinBroadcast extends Qr {
-    /* Authentication code. */
+    /** Authentication code. */
     public String authcode;
-    /* Contact ID. Always `ContactId::SELF`. */
+    /** Contact ID. Always `ContactId::SELF`. */
     public Integer contact_id;
-    /* Fingerprint of the contact key as scanned from the QR code. */
+    /** Fingerprint of the contact key as scanned from the QR code. */
     public String fingerprint;
-    /* ID, uniquely identifying this chat. Called grpid for historic reasons. */
+    /** ID, uniquely identifying this chat. Called grpid for historic reasons. */
     public String grpid;
-    /* Invite number. */
+    /** Invite number. */
     public String invitenumber;
-    /* Broadcast name. */
+    /** Broadcast name. */
     public String name;
   }
 
-/* Ask the user if they want to revive their own QR code. */
+/** Ask the user if they want to revive their own QR code. */
   public static class ReviveVerifyContact extends Qr {
-    /* Authentication code. */
+    /** Authentication code. */
     public String authcode;
-    /* Contact ID. */
+    /** Contact ID. */
     public Integer contact_id;
-    /* Fingerprint of the contact key as scanned from the QR code. */
+    /** Fingerprint of the contact key as scanned from the QR code. */
     public String fingerprint;
-    /* Invite number. */
+    /** Invite number. */
     public String invitenumber;
   }
 
-/* Ask the user if they want to revive their own group invite QR code. */
+/** Ask the user if they want to revive their own group invite QR code. */
   public static class ReviveVerifyGroup extends Qr {
-    /* Authentication code. */
+    /** Authentication code. */
     public String authcode;
-    /* Contact ID. */
+    /** Contact ID. */
     public Integer contact_id;
-    /* Fingerprint of the contact key as scanned from the QR code. */
+    /** Fingerprint of the contact key as scanned from the QR code. */
     public String fingerprint;
-    /* Group ID. */
+    /** Group ID. */
     public String grpid;
-    /* Contact ID. */
+    /** Contact ID. */
     public String grpname;
-    /* Invite number. */
+    /** Invite number. */
     public String invitenumber;
   }
 
-/* Ask the user if they want to revive their own broadcast channel invite QR code. */
+/** Ask the user if they want to revive their own broadcast channel invite QR code. */
   public static class ReviveJoinBroadcast extends Qr {
-    /* Authentication code. */
+    /** Authentication code. */
     public String authcode;
-    /* Contact ID. Always `ContactId::SELF`. */
+    /** Contact ID. Always `ContactId::SELF`. */
     public Integer contact_id;
-    /* Fingerprint of the contact key as scanned from the QR code. */
+    /** Fingerprint of the contact key as scanned from the QR code. */
     public String fingerprint;
-    /* Globally unique chat ID. Called grpid for historic reasons. */
+    /** Globally unique chat ID. Called grpid for historic reasons. */
     public String grpid;
-    /* Invite number. */
+    /** Invite number. */
     public String invitenumber;
-    /* Broadcast name. */
+    /** Broadcast name. */
     public String name;
   }
 

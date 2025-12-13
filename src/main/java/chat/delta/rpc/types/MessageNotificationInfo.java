@@ -12,9 +12,9 @@ public class MessageNotificationInfo {
   public String image;
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String imageMimeType;
-  /* also known as summary_text1 */
+  /** also known as summary_text1 */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String summaryPrefix;
-  /* also known as summary_text2 */
+  /** also known as summary_text2 */
   public String summaryText;
 }
