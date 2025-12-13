@@ -32,6 +32,8 @@ import java.util.List;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.EnteredLoginParam;
+import chat.delta.rpc.types.SecurejoinSource;
+import chat.delta.rpc.types.SecurejoinUiPath;
 
 public class RelayListActivity extends BaseActionBarActivity
   implements RelayListAdapter.OnRelayClickListener, DcEventCenter.DcEventDelegate {
@@ -88,7 +90,7 @@ public class RelayListActivity extends BaseActionBarActivity
     String qrdata = getIntent().getStringExtra(EXTRA_QR_DATA);
     if (qrdata != null) {
       QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-      qrCodeHandler.handleQrData(qrdata);
+      qrCodeHandler.handleQrData(qrdata, SecurejoinSource.Unknown, SecurejoinUiPath.Unknown);
     }
   }
 
@@ -173,7 +175,7 @@ public class RelayListActivity extends BaseActionBarActivity
     if (requestCode == IntentIntegrator.REQUEST_CODE) {
       IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
       QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-      qrCodeHandler.onScanPerformed(scanResult);
+      qrCodeHandler.onScanPerformed(scanResult, SecurejoinUiPath.Unknown);
     }
   }
 

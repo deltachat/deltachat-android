@@ -28,6 +28,8 @@ import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import chat.delta.rpc.types.SecurejoinSource;
+
 import java.net.IDN;
 
 public class WebViewActivity extends PassphraseRequiredActionBarActivity
@@ -302,7 +304,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     // invite-links should be handled directly
     String schema = url.split(":")[0].toLowerCase();
     if (schema.equals("openpgp4fpr") || url.startsWith("https://" + Util.INVITE_DOMAIN + "/")) {
-      new QrCodeHandler(this).handleQrData(url);
+      new QrCodeHandler(this).handleQrData(url, SecurejoinSource.InternalLink, null);
       return true; // abort internal loading
     }
 
