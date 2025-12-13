@@ -15,9 +15,9 @@ public abstract class MessageListItem {
     public Integer msg_id;
   }
 
-/* Day marker, separating messages that correspond to different days according to local time. */
+/** Day marker, separating messages that correspond to different days according to local time. */
   public static class DayMarker extends MessageListItem {
-    /* Marker timestamp, for day markers, in unix milliseconds */
+    /** Marker timestamp, for day markers, in unix milliseconds */
     public Integer timestamp;
   }
 

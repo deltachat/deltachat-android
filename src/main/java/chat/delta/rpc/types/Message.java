@@ -7,7 +7,7 @@ public class Message {
   public Integer dimensionsWidth;
   public DownloadState downloadState;
   public Integer duration;
-  /* An error text, if there is one. */
+  /** An error text, if there is one. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String error;
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
@@ -20,13 +20,13 @@ public class Message {
   public Integer fromId;
   public Boolean hasDeviatingTimestamp;
   public Boolean hasHtml;
-  /* Check if a message has a POI location bound to it. These locations are also returned by `get_locations` method. The UI may decide to display a special icon beside such messages. */
+  /** Check if a message has a POI location bound to it. These locations are also returned by `get_locations` method. The UI may decide to display a special icon beside such messages. */
   public Boolean hasLocation;
   public Integer id;
-  /* if is_info is set, this refers to the contact profile that should be opened when the info message is tapped. */
+  /** if is_info is set, this refers to the contact profile that should be opened when the info message is tapped. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Integer infoContactId;
-  /* True if the message was sent by a bot. */
+  /** True if the message was sent by a bot. */
   public Boolean isBot;
   public Boolean isEdited;
   public Boolean isForwarded;
@@ -57,7 +57,7 @@ public class Message {
   public Integer sortTimestamp;
   public Integer state;
   public String subject;
-  /* when is_info is true this describes what type of system message it is */
+  /** when is_info is true this describes what type of system message it is */
   public SystemMessageType systemMessageType;
   public String text;
   public Integer timestamp;

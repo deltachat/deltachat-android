@@ -2,21 +2,21 @@
 package chat.delta.rpc.types;
 
 public enum SecurejoinSource {
-  /* Because of some problem, it is unknown where the QR code came from. */
+  /** Because of some problem, it is unknown where the QR code came from. */
   Unknown,
 
-  /* The user opened a link somewhere outside Delta Chat */
+  /** The user opened a link somewhere outside Delta Chat */
   ExternalLink,
 
-  /* The user clicked on a link in a message inside Delta Chat */
+  /** The user clicked on a link in a message inside Delta Chat */
   InternalLink,
 
-  /* The user clicked "Paste from Clipboard" in the QR scan activity */
+  /** The user clicked "Paste from Clipboard" in the QR scan activity */
   Clipboard,
 
-  /* The user clicked "Load QR code as image" in the QR scan activity */
+  /** The user clicked "Load QR code as image" in the QR scan activity */
   ImageLoaded,
 
-  /* The user scanned a QR code */
+  /** The user scanned a QR code */
   Scan,
 }

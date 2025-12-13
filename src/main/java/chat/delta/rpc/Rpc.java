@@ -23,17 +23,17 @@ public class Rpc {
     this.mapper = transport.getObjectMapper();
   }
 
-  /* Test function. */
+  /** Test function. */
   public void sleep(Float delay) throws RpcException {
     transport.call("sleep", mapper.valueToTree(delay));
   }
 
-  /* Checks if an email address is valid. */
+  /** Checks if an email address is valid. */
   public Boolean checkEmailValidity(String email) throws RpcException {
     return transport.callForResult(new TypeReference<Boolean>(){}, "check_email_validity", mapper.valueToTree(email));
   }
 
-  /* Returns general system info. */
+  /** Returns general system info. */
   public java.util.Map<String, String> getSystemInfo() throws RpcException {
     return transport.callForResult(new TypeReference<java.util.Map<String, String>>(){}, "get_system_info");
   }
@@ -73,12 +73,12 @@ public class Rpc {
     return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_all_account_ids");
   }
 
-  /* Select account in account manager, this saves the last used account to accounts.toml */
+  /** Select account in account manager, this saves the last used account to accounts.toml */
   public void selectAccount(Integer id) throws RpcException {
     transport.call("select_account", mapper.valueToTree(id));
   }
 
-  /* Get the selected account from the account manager (on startup it is read from accounts.toml) */
+  /** Get the selected account from the account manager (on startup it is read from accounts.toml) */
   public Integer getSelectedAccountId() throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "get_selected_account_id");
   }
@@ -93,17 +93,17 @@ public class Rpc {
     transport.call("set_accounts_order", mapper.valueToTree(order));
   }
 
-  /* Get a list of all configured accounts. */
+  /** Get a list of all configured accounts. */
   public java.util.List<Account> getAllAccounts() throws RpcException {
     return transport.callForResult(new TypeReference<java.util.List<Account>>(){}, "get_all_accounts");
   }
 
-  /* Starts background tasks for all accounts. */
+  /** Starts background tasks for all accounts. */
   public void startIoForAllAccounts() throws RpcException {
     transport.call("start_io_for_all_accounts");
   }
 
-  /* Stops background tasks for all accounts. */
+  /** Stops background tasks for all accounts. */
   public void stopIoForAllAccounts() throws RpcException {
     transport.call("stop_io_for_all_accounts");
   }
@@ -123,27 +123,27 @@ public class Rpc {
     transport.call("stop_background_fetch");
   }
 
-  /* Starts background tasks for a single account. */
+  /** Starts background tasks for a single account. */
   public void startIo(Integer accountId) throws RpcException {
     transport.call("start_io", mapper.valueToTree(accountId));
   }
 
-  /* Stops background tasks for a single account. */
+  /** Stops background tasks for a single account. */
   public void stopIo(Integer accountId) throws RpcException {
     transport.call("stop_io", mapper.valueToTree(accountId));
   }
 
-  /* Get top-level info for an account. */
+  /** Get top-level info for an account. */
   public Account getAccountInfo(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<Account>(){}, "get_account_info", mapper.valueToTree(accountId));
   }
 
-  /* Get the current push notification state. */
+  /** Get the current push notification state. */
   public NotifyState getPushState(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<NotifyState>(){}, "get_push_state", mapper.valueToTree(accountId));
   }
 
-  /* Get the combined filesize of an account in bytes */
+  /** Get the combined filesize of an account in bytes */
   public Integer getAccountFileSize(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "get_account_file_size", mapper.valueToTree(accountId));
   }
@@ -160,22 +160,22 @@ public class Rpc {
     return transport.callForResult(new TypeReference<ProviderInfo>(){}, "get_provider_info", mapper.valueToTree(accountId), mapper.valueToTree(email));
   }
 
-  /* Checks if the context is already configured. */
+  /** Checks if the context is already configured. */
   public Boolean isConfigured(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<Boolean>(){}, "is_configured", mapper.valueToTree(accountId));
   }
 
-  /* Get system info for an account. */
+  /** Get system info for an account. */
   public java.util.Map<String, String> getInfo(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<java.util.Map<String, String>>(){}, "get_info", mapper.valueToTree(accountId));
   }
 
-  /* Get storage usage report as formatted string */
+  /** Get storage usage report as formatted string */
   public String getStorageUsageReportString(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "get_storage_usage_report_string", mapper.valueToTree(accountId));
   }
 
-  /* Get the blob dir. */
+  /** Get the blob dir. */
   public String getBlobDir(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "get_blob_dir", mapper.valueToTree(accountId));
   }
@@ -195,17 +195,17 @@ public class Rpc {
     return transport.callForResult(new TypeReference<String>(){}, "get_migration_error", mapper.valueToTree(accountId));
   }
 
-  /* Copy file to blob dir. */
+  /** Copy file to blob dir. */
   public String copyToBlobDir(Integer accountId, String path) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "copy_to_blob_dir", mapper.valueToTree(accountId), mapper.valueToTree(path));
   }
 
-  /* Sets the given configuration key. */
+  /** Sets the given configuration key. */
   public void setConfig(Integer accountId, String key, String value) throws RpcException {
     transport.call("set_config", mapper.valueToTree(accountId), mapper.valueToTree(key), mapper.valueToTree(value));
   }
 
-  /* Updates a batch of configuration values. */
+  /** Updates a batch of configuration values. */
   public void batchSetConfig(Integer accountId, java.util.Map<String, String> config) throws RpcException {
     transport.call("batch_set_config", mapper.valueToTree(accountId), mapper.valueToTree(config));
   }
@@ -225,7 +225,7 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Qr>(){}, "check_qr", mapper.valueToTree(accountId), mapper.valueToTree(qrContent));
   }
 
-  /* Returns configuration value for the given key. */
+  /** Returns configuration value for the given key. */
   public String getConfig(Integer accountId, String key) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "get_config", mapper.valueToTree(accountId), mapper.valueToTree(key));
   }
@@ -284,7 +284,7 @@ public class Rpc {
     transport.call("add_or_update_transport", mapper.valueToTree(accountId), mapper.valueToTree(param));
   }
 
-  /* Deprecated 2025-04. Alias for [Self::add_or_update_transport()]. */
+  /** Deprecated 2025-04. Alias for [Self::add_or_update_transport()]. */
   public void addTransport(Integer accountId, EnteredLoginParam param) throws RpcException {
     transport.call("add_transport", mapper.valueToTree(accountId), mapper.valueToTree(param));
   }
@@ -315,7 +315,7 @@ public class Rpc {
     transport.call("delete_transport", mapper.valueToTree(accountId), mapper.valueToTree(addr));
   }
 
-  /* Signal an ongoing process to stop. */
+  /** Signal an ongoing process to stop. */
   public void stopOngoingProcess(Integer accountId) throws RpcException {
     transport.call("stop_ongoing_process", mapper.valueToTree(accountId));
   }
@@ -608,7 +608,7 @@ public class Rpc {
     return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_chat_contacts", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
   }
 
-  /* Returns contact IDs of the past chat members. */
+  /** Returns contact IDs of the past chat members. */
   public java.util.List<Integer> getPastChatContacts(Integer accountId, Integer chatId) throws RpcException {
     return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_past_chat_contacts", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
   }
@@ -647,7 +647,7 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Integer>(){}, "create_group_chat_unencrypted", mapper.valueToTree(accountId), mapper.valueToTree(name));
   }
 
-  /* Deprecated 2025-07 in favor of create_broadcast(). */
+  /** Deprecated 2025-07 in favor of create_broadcast(). */
   public Integer createBroadcastList(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "create_broadcast_list", mapper.valueToTree(accountId));
   }
@@ -856,7 +856,7 @@ public class Rpc {
     return transport.callForResult(new TypeReference<java.util.Map<String, MessageLoadResult>>(){}, "get_messages", mapper.valueToTree(accountId), mapper.valueToTree(messageIds));
   }
 
-  /* Fetch info desktop needs for creating a notification for a message */
+  /** Fetch info desktop needs for creating a notification for a message */
   public MessageNotificationInfo getMessageNotificationInfo(Integer accountId, Integer messageId) throws RpcException {
     return transport.callForResult(new TypeReference<MessageNotificationInfo>(){}, "get_message_notification_info", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
   }
@@ -888,12 +888,12 @@ public class Rpc {
     return transport.callForResult(new TypeReference<String>(){}, "get_message_info", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
   }
 
-  /* Returns additional information for single message. */
+  /** Returns additional information for single message. */
   public MessageInfo getMessageInfoObject(Integer accountId, Integer messageId) throws RpcException {
     return transport.callForResult(new TypeReference<MessageInfo>(){}, "get_message_info_object", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
   }
 
-  /* Returns contacts that sent read receipts and the time of reading. */
+  /** Returns contacts that sent read receipts and the time of reading. */
   public java.util.List<MessageReadReceipt> getMessageReadReceipts(Integer accountId, Integer messageId) throws RpcException {
     return transport.callForResult(new TypeReference<java.util.List<MessageReadReceipt>>(){}, "get_message_read_receipts", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
   }
@@ -941,7 +941,7 @@ public class Rpc {
     transport.call("save_msgs", mapper.valueToTree(accountId), mapper.valueToTree(messageIds));
   }
 
-  /* Get a single contact options by ID. */
+  /** Get a single contact options by ID. */
   public Contact getContact(Integer accountId, Integer contactId) throws RpcException {
     return transport.callForResult(new TypeReference<Contact>(){}, "get_contact", mapper.valueToTree(accountId), mapper.valueToTree(contactId));
   }
@@ -962,7 +962,7 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Integer>(){}, "create_contact", mapper.valueToTree(accountId), mapper.valueToTree(email), mapper.valueToTree(name));
   }
 
-  /* Returns contact id of the created or existing DM chat with that contact */
+  /** Returns contact id of the created or existing DM chat with that contact */
   public Integer createChatByContactId(Integer accountId, Integer contactId) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "create_chat_by_contact_id", mapper.valueToTree(accountId), mapper.valueToTree(contactId));
   }
@@ -1011,7 +1011,7 @@ public class Rpc {
     transport.call("delete_contact", mapper.valueToTree(accountId), mapper.valueToTree(contactId));
   }
 
-  /* Sets display name for existing contact. */
+  /** Sets display name for existing contact. */
   public void changeContactName(Integer accountId, Integer contactId, String name) throws RpcException {
     transport.call("change_contact_name", mapper.valueToTree(accountId), mapper.valueToTree(contactId), mapper.valueToTree(name));
   }
@@ -1046,7 +1046,7 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Integer>(){}, "lookup_contact_id_by_addr", mapper.valueToTree(accountId), mapper.valueToTree(addr));
   }
 
-  /* Parses a vCard file located at the given path. Returns contacts in their original order. */
+  /** Parses a vCard file located at the given path. Returns contacts in their original order. */
   public java.util.List<VcardContact> parseVcard(String path) throws RpcException {
     return transport.callForResult(new TypeReference<java.util.List<VcardContact>>(){}, "parse_vcard", mapper.valueToTree(path));
   }
@@ -1069,12 +1069,12 @@ public class Rpc {
     return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "import_vcard_contents", mapper.valueToTree(accountId), mapper.valueToTree(vcard));
   }
 
-  /* Returns a vCard containing contacts with the given ids. */
+  /** Returns a vCard containing contacts with the given ids. */
   public String makeVcard(Integer accountId, java.util.List<Integer> contacts) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "make_vcard", mapper.valueToTree(accountId), mapper.valueToTree(contacts));
   }
 
-  /* Sets vCard containing the given contacts to the message draft. */
+  /** Sets vCard containing the given contacts to the message draft. */
   public void setDraftVcard(Integer accountId, Integer msgId, java.util.List<Integer> contacts) throws RpcException {
     transport.call("set_draft_vcard", mapper.valueToTree(accountId), mapper.valueToTree(msgId), mapper.valueToTree(contacts));
   }
@@ -1245,7 +1245,7 @@ public class Rpc {
     return transport.callForResult(new TypeReference<String>(){}, "get_webxdc_status_updates", mapper.valueToTree(accountId), mapper.valueToTree(instanceMsgId), mapper.valueToTree(lastKnownSerial));
   }
 
-  /* Get info from a webxdc message */
+  /** Get info from a webxdc message */
   public WebxdcMessageInfo getWebxdcInfo(Integer accountId, Integer instanceMsgId) throws RpcException {
     return transport.callForResult(new TypeReference<WebxdcMessageInfo>(){}, "get_webxdc_info", mapper.valueToTree(accountId), mapper.valueToTree(instanceMsgId));
   }
@@ -1285,27 +1285,27 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Integer>(){}, "init_webxdc_integration", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
   }
 
-  /* Starts an outgoing call. */
+  /** Starts an outgoing call. */
   public Integer placeOutgoingCall(Integer accountId, Integer chatId, String placeCallInfo) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "place_outgoing_call", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(placeCallInfo));
   }
 
-  /* Accepts an incoming call. */
+  /** Accepts an incoming call. */
   public void acceptIncomingCall(Integer accountId, Integer msgId, String acceptCallInfo) throws RpcException {
     transport.call("accept_incoming_call", mapper.valueToTree(accountId), mapper.valueToTree(msgId), mapper.valueToTree(acceptCallInfo));
   }
 
-  /* Ends incoming or outgoing call. */
+  /** Ends incoming or outgoing call. */
   public void endCall(Integer accountId, Integer msgId) throws RpcException {
     transport.call("end_call", mapper.valueToTree(accountId), mapper.valueToTree(msgId));
   }
 
-  /* Returns information about the call. */
+  /** Returns information about the call. */
   public CallInfo callInfo(Integer accountId, Integer msgId) throws RpcException {
     return transport.callForResult(new TypeReference<CallInfo>(){}, "call_info", mapper.valueToTree(accountId), mapper.valueToTree(msgId));
   }
 
-  /* Returns JSON with ICE servers, to be used for WebRTC video calls. */
+  /** Returns JSON with ICE servers, to be used for WebRTC video calls. */
   public String iceServers(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "ice_servers", mapper.valueToTree(accountId));
   }
@@ -1361,7 +1361,7 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Integer>(){}, "send_reaction", mapper.valueToTree(accountId), mapper.valueToTree(messageId), mapper.valueToTree(reaction));
   }
 
-  /* Returns reactions to the message. */
+  /** Returns reactions to the message. */
   public Reactions getMessageReactions(Integer accountId, Integer messageId) throws RpcException {
     return transport.callForResult(new TypeReference<Reactions>(){}, "get_message_reactions", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
   }
@@ -1374,7 +1374,7 @@ public class Rpc {
     transport.call("send_edit_request", mapper.valueToTree(accountId), mapper.valueToTree(msgId), mapper.valueToTree(newText));
   }
 
-  /* Checks if messages can be sent to a given chat. */
+  /** Checks if messages can be sent to a given chat. */
   public Boolean canSend(Integer accountId, Integer chatId) throws RpcException {
     return transport.callForResult(new TypeReference<Boolean>(){}, "can_send", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
   }
@@ -1392,7 +1392,7 @@ public class Rpc {
     transport.call("remove_draft", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
   }
 
-  /* Get draft for a chat, if any. */
+  /** Get draft for a chat, if any. */
   public Message getDraft(Integer accountId, Integer chatId) throws RpcException {
     return transport.callForResult(new TypeReference<Message>(){}, "get_draft", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
   }
@@ -1401,7 +1401,7 @@ public class Rpc {
     return transport.callForResult(new TypeReference<String>(){}, "misc_get_sticker_folder", mapper.valueToTree(accountId));
   }
 
-  /* Saves a sticker to a collection/folder in the account's sticker folder. */
+  /** Saves a sticker to a collection/folder in the account's sticker folder. */
   public void miscSaveSticker(Integer accountId, Integer msgId, String collection) throws RpcException {
     transport.call("misc_save_sticker", mapper.valueToTree(accountId), mapper.valueToTree(msgId), mapper.valueToTree(collection));
   }
@@ -1414,7 +1414,7 @@ public class Rpc {
     return transport.callForResult(new TypeReference<java.util.Map<String, java.util.List<String>>>(){}, "misc_get_stickers", mapper.valueToTree(accountId));
   }
 
-  /* Returns the messageid of the sent message */
+  /** Returns the messageid of the sent message */
   public Integer miscSendTextMessage(Integer accountId, Integer chatId, String text) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "misc_send_text_message", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(text));
   }

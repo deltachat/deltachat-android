@@ -14,9 +14,9 @@ public class Contact {
   public Boolean e2eeAvail;
   public Integer id;
   public Boolean isBlocked;
-  /* If the contact is a bot. */
+  /** If the contact is a bot. */
   public Boolean isBot;
-  /* Is the contact a key contact. */
+  /** Is the contact a key contact. */
   public Boolean isKeyContact;
   /**
    * True if the contact can be added to protected chats because SELF and contact have verified their fingerprints in both directions.
@@ -24,7 +24,7 @@ public class Contact {
    * See [`Self::verifier_id`]/`Contact.verifierId` for a guidance how to display these information.
    */
   public Boolean isVerified;
-  /* the contact's last seen timestamp */
+  /** the contact's last seen timestamp */
   public Integer lastSeen;
   public String name;
   public String nameAndAddr;
