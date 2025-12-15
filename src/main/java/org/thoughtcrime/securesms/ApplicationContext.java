@@ -76,22 +76,26 @@ public class ApplicationContext extends MultiDexApplication {
     return (ApplicationContext)context.getApplicationContext();
   }
 
-  /**
-   * Get DcAccounts instance, waiting for initialization if necessary.
-   * This method is thread-safe and will block until initialization is complete.
-   */
-  public static DcAccounts getDcAccounts() {
+  private static void ensureInitialized() {
     synchronized (initLock) {
       while (!isInitialized) {
         try {
           initLock.wait();
         } catch (InterruptedException e) {
           Thread.currentThread().interrupt();
-          throw new RuntimeException("Interrupted while waiting for DcAccounts initialization", e);
+          throw new RuntimeException("Interrupted while waiting for initialization", e);
         }
       }
-      return dcAccounts;
     }
+  }
+
+  /**
+   * Get DcAccounts instance, waiting for initialization if necessary.
+   * This method is thread-safe and will block until initialization is complete.
+   */
+  public static DcAccounts getDcAccounts() {
+    ensureInitialized();
+    return dcAccounts;
   }
 
   /**
@@ -99,17 +103,8 @@ public class ApplicationContext extends MultiDexApplication {
    * This method is thread-safe and will block until initialization is complete.
    */
   public Rpc getRpc() {
-    synchronized (initLock) {
-      while (!isInitialized) {
-        try {
-          initLock.wait();
-        } catch (InterruptedException e) {
-          Thread.currentThread().interrupt();
-          throw new RuntimeException("Interrupted while waiting for Rpc initialization", e);
-        }
-      }
-      return rpc;
-    }
+    ensureInitialized();
+    return rpc;
   }
 
   /**
@@ -117,17 +112,8 @@ public class ApplicationContext extends MultiDexApplication {
    * This method is thread-safe and will block until initialization is complete.
    */
   public DcContext getDcContext() {
-    synchronized (initLock) {
-      while (!isInitialized) {
-        try {
-          initLock.wait();
-        } catch (InterruptedException e) {
-          Thread.currentThread().interrupt();
-          throw new RuntimeException("Interrupted while waiting for DcContext initialization", e);
-        }
-      }
-      return dcContext;
-    }
+    ensureInitialized();
+    return dcContext;
   }
 
   /**
