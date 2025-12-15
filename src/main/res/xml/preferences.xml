@@ -6,7 +6,7 @@
             android:key="preference_category_profile"/>
 
     <Preference android:key="preference_category_chats"
-                android:title="@string/pref_chats_and_media"
+                android:title="@string/pref_chats"
                 android:icon="@drawable/ic_forum_24dp"
                 android:layout="@layout/preference_item" />
 
