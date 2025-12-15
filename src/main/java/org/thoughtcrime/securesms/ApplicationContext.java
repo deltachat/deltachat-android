@@ -55,10 +55,13 @@ import chat.delta.rpc.RpcException;
 
 public class ApplicationContext extends MultiDexApplication {
   private static final String TAG = ApplicationContext.class.getSimpleName();
+  private static final Object initLock = new Object();
+  private static volatile boolean isInitialized = false;
 
-  public static DcAccounts      dcAccounts;
-  public Rpc                    rpc;
-  public DcContext              dcContext;
+  private static DcAccounts      dcAccounts;
+  private Rpc                    rpc;
+  private DcContext              dcContext;
+
   public DcLocationManager      dcLocationManager;
   public DcEventCenter          eventCenter;
   public NotificationCenter     notificationCenter;
@@ -71,6 +74,71 @@ public class ApplicationContext extends MultiDexApplication {
 
   public static ApplicationContext getInstance(@NonNull Context context) {
     return (ApplicationContext)context.getApplicationContext();
+  }
+
+  /**
+   * Get DcAccounts instance, waiting for initialization if necessary.
+   * This method is thread-safe and will block until initialization is complete.
+   */
+  public static DcAccounts getDcAccounts() {
+    synchronized (initLock) {
+      while (!isInitialized) {
+        try {
+          initLock.wait();
+        } catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
+          throw new RuntimeException("Interrupted while waiting for DcAccounts initialization", e);
+        }
+      }
+      return dcAccounts;
+    }
+  }
+
+  /**
+   * Get Rpc instance, waiting for initialization if necessary.
+   * This method is thread-safe and will block until initialization is complete.
+   */
+  public Rpc getRpc() {
+    synchronized (initLock) {
+      while (!isInitialized) {
+        try {
+          initLock.wait();
+        } catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
+          throw new RuntimeException("Interrupted while waiting for Rpc initialization", e);
+        }
+      }
+      return rpc;
+    }
+  }
+
+  /**
+   * Get DcContext instance, waiting for initialization if necessary.
+   * This method is thread-safe and will block until initialization is complete.
+   */
+  public DcContext getDcContext() {
+    synchronized (initLock) {
+      while (!isInitialized) {
+        try {
+          initLock.wait();
+        } catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
+          throw new RuntimeException("Interrupted while waiting for DcContext initialization", e);
+        }
+      }
+      return dcContext;
+    }
+  }
+
+  /**
+   * Set DcContext instance. This should only be called by AccountManager when switching accounts,
+   * which only happens after initial initialization is complete.
+   * This method is thread-safe but does NOT trigger initialization or notify waiting threads.
+   */
+  public void setDcContext(DcContext dcContext) {
+    synchronized (initLock) {
+      this.dcContext = dcContext;
+    }
   }
 
   @Override
@@ -88,16 +156,16 @@ public class ApplicationContext extends MultiDexApplication {
 
     System.loadLibrary("native-utils");
 
+    // Initialize DcAccounts in background to avoid ANR during SQL migrations
+    Util.runOnBackground(() -> {
+      synchronized (initLock) {
+        try {
+
     dcAccounts = new DcAccounts(new File(getFilesDir(), "accounts").getAbsolutePath());
     Log.i(TAG, "DcAccounts created");
     rpc = new Rpc(new FFITransport(dcAccounts.getJsonrpcInstance()));
     Log.i(TAG, "Rpc created");
     AccountManager.getInstance().migrateToDcAccounts(this);
-
-    // October-2025 migration: delete deprecated "permanent channel" id
-    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-    notificationManager.deleteNotificationChannel("dc_foreground_notification_ch");
-    // end October-2025 migration
 
     int[] allAccounts = dcAccounts.getAll();
     Log.i(TAG, "Number of profiles: " + allAccounts.length);
@@ -130,6 +198,14 @@ public class ApplicationContext extends MultiDexApplication {
     dcContext = dcAccounts.getSelectedAccount();
     notificationCenter = new NotificationCenter(this);
     eventCenter = new DcEventCenter(this);
+
+    // Mark as initialized before starting threads that depend on it
+    isInitialized = true;
+    initLock.notifyAll();
+    Log.i(TAG, "DcAccounts initialization complete");
+
+    dcLocationManager = new DcLocationManager(this); // depends on dcContext
+
     new Thread(() -> {
       Log.i(TAG, "Starting event loop");
       DcEventEmitter emitter = dcAccounts.getEventEmitter();
@@ -149,6 +225,21 @@ public class ApplicationContext extends MultiDexApplication {
 
     dcAccounts.startIo();
 
+        } catch (Exception e) {
+          Log.e(TAG, "Fatal error during DcAccounts initialization", e);
+          // Mark as initialized even on error to avoid deadlock
+          isInitialized = true;
+          initLock.notifyAll();
+          throw new RuntimeException("Failed to initialize DcAccounts", e);
+        }
+      }
+    });
+
+    // October-2025 migration: delete deprecated "permanent channel" id
+    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+    notificationManager.deleteNotificationChannel("dc_foreground_notification_ch");
+    // end October-2025 migration
+
     new ForegroundDetector(ApplicationContext.getInstance(this));
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -158,7 +249,7 @@ public class ApplicationContext extends MultiDexApplication {
         @Override
         public void onAvailable(@NonNull android.net.Network network) {
           Log.i("DeltaChat", "++++++++++++++++++ NetworkCallback.onAvailable() #" + debugOnAvailableCount++);
-          dcAccounts.maybeNetwork();
+          getDcAccounts().maybeNetwork();
         }
 
         @Override
@@ -187,7 +278,6 @@ public class ApplicationContext extends MultiDexApplication {
     initializeJobManager();
     InChatSounds.getInstance(this);
 
-    dcLocationManager = new DcLocationManager(this);
     DynamicTheme.setDefaultDayNightMode(this);
 
     IntentFilter filter = new IntentFilter(Intent.ACTION_LOCALE_CHANGED);
@@ -236,6 +326,8 @@ public class ApplicationContext extends MultiDexApplication {
             "WebxdcGarbageCollectionWorker",
             ExistingPeriodicWorkPolicy.KEEP,
             webxdcGarbageCollectionRequest);
+
+    Log.i("DeltaChat", "+++++++++++ ApplicationContext.onCreate() finished ++++++++++");
   }
 
   public JobManager getJobManager() {

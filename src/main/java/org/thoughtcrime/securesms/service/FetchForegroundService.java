@@ -45,7 +45,7 @@ public final class FetchForegroundService extends Service {
       // we need to handle the message within 20s, and the time window may be even shorter than 20s,
       // so, use 10s to be safe.
       fetchingSynchronously = true;
-      if (ApplicationContext.dcAccounts.backgroundFetch(10)) {
+      if (ApplicationContext.getDcAccounts().backgroundFetch(10)) {
         // The background fetch was successful, but we need to wait until all events were processed.
         // After all events were processed, we will get DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE,
         // and stop() will be called.
@@ -92,7 +92,7 @@ public final class FetchForegroundService extends Service {
 
     Util.runOnAnyBackgroundThread(() -> {
       Log.i(TAG, "Starting fetch");
-      if (!ApplicationContext.dcAccounts.backgroundFetch(300)) { // as startForeground() was called, there is time
+      if (!ApplicationContext.getDcAccounts().backgroundFetch(300)) { // as startForeground() was called, there is time
         FetchForegroundService.stop(this);
       } // else we stop FetchForegroundService on DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE
     });
@@ -111,7 +111,7 @@ public final class FetchForegroundService extends Service {
 
   @Override
   public void onTimeout(int startId, int fgsType) {
-    ApplicationContext.dcAccounts.stopBackgroundFetch();
+    ApplicationContext.getDcAccounts().stopBackgroundFetch();
     stopSelf();
   }
 

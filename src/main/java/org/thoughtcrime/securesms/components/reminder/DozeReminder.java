@@ -110,7 +110,7 @@ public class DozeReminder {
   }
 
   private static boolean isPushAvailableAndSufficient() {
-    return ApplicationContext.dcAccounts.isAllChatmail()
+    return ApplicationContext.getDcAccounts().isAllChatmail()
       && FcmReceiveService.getToken() != null;
   }
 
