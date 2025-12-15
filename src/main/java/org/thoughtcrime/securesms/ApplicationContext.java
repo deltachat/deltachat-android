@@ -160,71 +160,69 @@ public class ApplicationContext extends MultiDexApplication {
     Util.runOnBackground(() -> {
       synchronized (initLock) {
         try {
+          dcAccounts = new DcAccounts(new File(getFilesDir(), "accounts").getAbsolutePath());
+          Log.i(TAG, "DcAccounts created");
+          rpc = new Rpc(new FFITransport(dcAccounts.getJsonrpcInstance()));
+          Log.i(TAG, "Rpc created");
+          AccountManager.getInstance().migrateToDcAccounts(this);
 
-    dcAccounts = new DcAccounts(new File(getFilesDir(), "accounts").getAbsolutePath());
-    Log.i(TAG, "DcAccounts created");
-    rpc = new Rpc(new FFITransport(dcAccounts.getJsonrpcInstance()));
-    Log.i(TAG, "Rpc created");
-    AccountManager.getInstance().migrateToDcAccounts(this);
+          int[] allAccounts = dcAccounts.getAll();
+          Log.i(TAG, "Number of profiles: " + allAccounts.length);
+          for (int accountId : allAccounts) {
+            DcContext ac = dcAccounts.getAccount(accountId);
+            if (!ac.isOpen()) {
+              try {
+                DatabaseSecret secret = DatabaseSecretProvider.getOrCreateDatabaseSecret(this, accountId);
+                boolean res = ac.open(secret.asString());
+                if (res) Log.i(TAG, "Successfully opened account " + accountId + ", path: " + ac.getBlobdir());
+                else Log.e(TAG, "Error opening account " + accountId + ", path: " + ac.getBlobdir());
+              } catch (Exception e) {
+                Log.e(TAG, "Failed to open account " + accountId + ", path: " + ac.getBlobdir() + ": " + e);
+                e.printStackTrace();
+              }
+            }
 
-    int[] allAccounts = dcAccounts.getAll();
-    Log.i(TAG, "Number of profiles: " + allAccounts.length);
-    for (int accountId : allAccounts) {
-      DcContext ac = dcAccounts.getAccount(accountId);
-      if (!ac.isOpen()) {
-        try {
-          DatabaseSecret secret = DatabaseSecretProvider.getOrCreateDatabaseSecret(this, accountId);
-          boolean res = ac.open(secret.asString());
-          if (res) Log.i(TAG, "Successfully opened account " + accountId + ", path: " + ac.getBlobdir());
-          else Log.e(TAG, "Error opening account " + accountId + ", path: " + ac.getBlobdir());
-        } catch (Exception e) {
-          Log.e(TAG, "Failed to open account " + accountId + ", path: " + ac.getBlobdir() + ": " + e);
-          e.printStackTrace();
-        }
-      }
+            // 2025.11.12: this is needed until core starts ignoring "delete_server_after" for chatmail
+            if (ac.isChatmail()) {
+              ac.setConfig("delete_server_after", null); // reset
+            }
+          }
+          if (allAccounts.length == 0) {
+            try {
+              rpc.addAccount();
+            } catch (RpcException e) {
+              e.printStackTrace();
+            }
+          }
+          dcContext = dcAccounts.getSelectedAccount();
+          notificationCenter = new NotificationCenter(this);
+          eventCenter = new DcEventCenter(this);
 
-      // 2025.11.12: this is needed until core starts ignoring "delete_server_after" for chatmail
-      if (ac.isChatmail()) {
-        ac.setConfig("delete_server_after", null); // reset
-      }
-    }
-    if (allAccounts.length == 0) {
-      try {
-        rpc.addAccount();
-      } catch (RpcException e) {
-        e.printStackTrace();
-      }
-    }
-    dcContext = dcAccounts.getSelectedAccount();
-    notificationCenter = new NotificationCenter(this);
-    eventCenter = new DcEventCenter(this);
+          // Mark as initialized before starting threads that depend on it
+          isInitialized = true;
+          initLock.notifyAll();
+          Log.i(TAG, "DcAccounts initialization complete");
 
-    // Mark as initialized before starting threads that depend on it
-    isInitialized = true;
-    initLock.notifyAll();
-    Log.i(TAG, "DcAccounts initialization complete");
+          dcLocationManager = new DcLocationManager(this); // depends on dcContext
 
-    dcLocationManager = new DcLocationManager(this); // depends on dcContext
+          new Thread(() -> {
+              Log.i(TAG, "Starting event loop");
+              DcEventEmitter emitter = dcAccounts.getEventEmitter();
+              Log.i(TAG, "DcEventEmitter obtained");
+              while (true) {
+                DcEvent event = emitter.getNextEvent();
+                if (event==null) {
+                  break;
+                }
+                eventCenter.handleEvent(event);
+              }
+              Log.i("DeltaChat", "shutting down event handler");
+          }, "eventThread").start();
 
-    new Thread(() -> {
-      Log.i(TAG, "Starting event loop");
-      DcEventEmitter emitter = dcAccounts.getEventEmitter();
-      Log.i(TAG, "DcEventEmitter obtained");
-      while (true) {
-        DcEvent event = emitter.getNextEvent();
-        if (event==null) {
-          break;
-        }
-        eventCenter.handleEvent(event);
-      }
-      Log.i("DeltaChat", "shutting down event handler");
-    }, "eventThread").start();
+          // set translations before starting I/O to avoid sending untranslated MDNs (issue #2288)
+          DcHelper.setStockTranslations(this);
 
-    // set translations before starting I/O to avoid sending untranslated MDNs (issue #2288)
-    DcHelper.setStockTranslations(this);
-
-    dcAccounts.startIo();
-
+          dcAccounts.startIo();
         } catch (Exception e) {
           Log.e(TAG, "Fatal error during DcAccounts initialization", e);
           // Mark as initialized even on error to avoid deadlock
