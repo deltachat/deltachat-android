@@ -400,16 +400,16 @@
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Are you sure you want to leave?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Delete %d chat on all your devices?</item>
-        <item quantity="other">Delete %d chats on all your devices?</item>
+        <item quantity="one">Delete %d chat?</item>
+        <item quantity="other">Delete %d chats?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Delete chat \"%1$s\" on all your devices?</string>
-    <string name="ask_delete_message">Delete this message on all your devices?</string>
+    <string name="ask_delete_named_chat">Delete chat \"%1$s\"?</string>
+    <string name="ask_delete_message">Delete this message?</string>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Delete %d message on all your devices?</item>
-        <item quantity="other">Delete %d messages on all your devices?</item>
+        <item quantity="one">Delete %d message?</item>
+        <item quantity="other">Delete %d messages?</item>
     </plurals>
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Delete %d message?</item>
         <item quantity="other">Delete %d messages?</item>
@@ -483,6 +483,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Mailing List</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Changes to mailing list name and image apply on this device only.</string>
 
     <!-- webxdc -->
