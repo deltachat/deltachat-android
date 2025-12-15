@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Allow to add relay from clipboard or image if camera permission is not granted
+* Avoid crash in the "View Log" screen
 * Remove deprecated "real-time apps" switch
 
 ## v2.33.1

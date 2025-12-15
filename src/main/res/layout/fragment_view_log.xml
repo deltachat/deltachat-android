@@ -28,6 +28,7 @@
                       android:scrollHorizontally="true"
                       android:inputType="textImeMultiLine|textNoSuggestions|textMultiLine"
                       android:textSize="12sp"
+                      android:saveEnabled="false"
                       tools:ignore="UnusedAttribute,SmallSp"/>
         </LinearLayout>
     </ScrollView>
