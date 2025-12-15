@@ -2,15 +2,15 @@
 package chat.delta.rpc.types;
 
 public enum Socket {
-  /* Unspecified socket security, select automatically. */
+  /** Unspecified socket security, select automatically. */
   automatic,
 
-  /* TLS connection. */
+  /** TLS connection. */
   ssl,
 
-  /* STARTTLS connection. */
+  /** STARTTLS connection. */
   starttls,
 
-  /* No TLS, plaintext connection. */
+  /** No TLS, plaintext connection. */
   plain,
 }

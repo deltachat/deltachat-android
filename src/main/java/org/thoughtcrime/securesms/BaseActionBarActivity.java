@@ -37,8 +37,8 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     onPreCreate();
     super.onCreate(savedInstanceState);
 
-    // Only enable Edge-to-Edge on API 30+
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+    // Only enable Edge-to-Edge if it is well supported
+    if (ViewUtil.isEdgeToEdgeSupported()) {
       // docs says to use: WindowCompat.enableEdgeToEdge(getWindow());
       // but it actually makes things worse, the next takes care of setting the 3-buttons navigation bar background
       EdgeToEdge.enable(this);

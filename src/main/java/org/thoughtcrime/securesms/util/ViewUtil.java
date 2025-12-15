@@ -299,6 +299,11 @@ public class ViewUtil {
     return selection;
   }
 
+  /** Return true if the system supports edge-to-edge properly */
+  public static boolean isEdgeToEdgeSupported() {
+    return Build.VERSION.SDK_INT >= VERSION_CODES.R;
+  }
+
   /**
    * Get combined insets from status bar, navigation bar and display cutout areas.
    * 
@@ -335,7 +340,7 @@ public class ViewUtil {
    */
   public static void applyWindowInsetsAsMargin(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
     // Only enable on API 30+ where WindowInsets APIs work correctly
-    if (Build.VERSION.SDK_INT < VERSION_CODES.R) return;
+    if (!isEdgeToEdgeSupported()) return;
 
     // Store the original margin as a tag only if not already stored
     // This prevents losing the true original margin on subsequent calls
@@ -406,7 +411,7 @@ public class ViewUtil {
    */
   public static void applyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
     // Only enable on API 30+ where WindowInsets APIs work correctly
-    if (Build.VERSION.SDK_INT < VERSION_CODES.R) return;
+    if (!isEdgeToEdgeSupported()) return;
 
     // Store the original padding as a tag only if not already stored
     // This prevents losing the true original padding on subsequent calls
@@ -475,7 +480,7 @@ public class ViewUtil {
    */
   public static void adjustToolbarForE2E(@NonNull AppCompatActivity activity) {
     // Only enable on API 30+ where WindowInsets APIs work correctly
-    if (Build.VERSION.SDK_INT < VERSION_CODES.R) return;
+    if (!isEdgeToEdgeSupported()) return;
 
     // The toolbar/app bar should extend behind the status bar with padding applied
     View toolbar = activity.findViewById(R.id.toolbar);

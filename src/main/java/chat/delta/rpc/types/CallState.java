@@ -19,21 +19,21 @@ public abstract class CallState {
   public static class Alerting extends CallState {
   }
 
-/* Active call. */
+/** Active call. */
   public static class Active extends CallState {
   }
 
-/* Completed call that was once active and then was terminated for any reason. */
+/** Completed call that was once active and then was terminated for any reason. */
   public static class Completed extends CallState {
-    /* Call duration in seconds. */
+    /** Call duration in seconds. */
     public Integer duration;
   }
 
-/* Incoming call that was not picked up within a timeout or was explicitly ended by the caller before we picked up. */
+/** Incoming call that was not picked up within a timeout or was explicitly ended by the caller before we picked up. */
   public static class Missed extends CallState {
   }
 
-/* Incoming call that was explicitly ended on our side before picking up or outgoing call that was declined before the timeout. */
+/** Incoming call that was explicitly ended on our side before picking up or outgoing call that was declined before the timeout. */
   public static class Declined extends CallState {
   }
 

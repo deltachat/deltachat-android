@@ -7,27 +7,27 @@ package chat.delta.rpc.types;
  * Usually it will be enough to only set `addr` and `password`, and all the other settings will be autoconfigured.
  */
 public class EnteredLoginParam {
-  /* Email address. */
+  /** Email address. */
   public String addr;
-  /* TLS options: whether to allow invalid certificates and/or invalid hostnames. Default: Automatic */
+  /** TLS options: whether to allow invalid certificates and/or invalid hostnames. Default: Automatic */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public EnteredCertificateChecks certificateChecks;
-  /* Imap server port. */
+  /** Imap server port. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Integer imapPort;
-  /* Imap socket security. */
+  /** Imap socket security. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Socket imapSecurity;
-  /* Imap server hostname or IP address. */
+  /** Imap server hostname or IP address. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String imapServer;
-  /* Imap username. */
+  /** Imap username. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String imapUser;
-  /* If true, login via OAUTH2 (not recommended anymore). Default: false */
+  /** If true, login via OAUTH2 (not recommended anymore). Default: false */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Boolean oauth2;
-  /* Password. */
+  /** Password. */
   public String password;
   /**
    * SMTP Password.
@@ -36,16 +36,16 @@ public class EnteredLoginParam {
    */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String smtpPassword;
-  /* SMTP server port. */
+  /** SMTP server port. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Integer smtpPort;
-  /* SMTP socket security. */
+  /** SMTP socket security. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Socket smtpSecurity;
-  /* SMTP server hostname or IP address. */
+  /** SMTP server hostname or IP address. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String smtpServer;
-  /* SMTP username. */
+  /** SMTP username. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String smtpUser;
 }

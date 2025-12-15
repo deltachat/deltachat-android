@@ -1,6 +1,10 @@
 # Delta Chat Android Changelog
 
-## v2.33.0
+## Unreleased
+
+* Allow to add relay from clipboard or image if camera permission is not granted
+
+## v2.33.1
 2025-12
 
 * Target Android 16

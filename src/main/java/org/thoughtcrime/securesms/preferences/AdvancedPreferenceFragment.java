@@ -31,7 +31,6 @@ import org.thoughtcrime.securesms.relay.RelayListActivity;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.StreamUtil;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -192,10 +191,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     Preference relayListBtn = this.findPreference("pref_relay_list_button");
     if (relayListBtn != null) {
       relayListBtn.setOnPreferenceClickListener(((preference) -> {
-        boolean result = ScreenLockUtil.applyScreenLock(requireActivity(), getString(R.string.transports), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_ACCOUNT);
-        if (!result) {
-          openRelayListActivity();
-        }
+        openRelayListActivity();
         return true;
       }));
     }

@@ -31,12 +31,12 @@ public class FullChat {
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String mailingListAddress;
   public String name;
-  /* Contact IDs of the past chat members. */
+  /** Contact IDs of the past chat members. */
   public java.util.List<Integer> pastContactIds;
   public Boolean pinned;
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String profileImage;
-  /* Note that this is different from [`ChatListItem::is_self_in_group`](`crate::api::types::chat_list::ChatListItemFetchResult::ChatListItem::is_self_in_group`). This property should only be accessed when [`FullChat::chat_type`] is [`Chattype::Group`]. */
+  /** Note that this is different from [`ChatListItem::is_self_in_group`](`crate::api::types::chat_list::ChatListItemFetchResult::ChatListItem::is_self_in_group`). This property should only be accessed when [`FullChat::chat_type`] is [`Chattype::Group`]. */
   public Boolean selfInGroup;
   public Boolean wasSeenRecently;
 }

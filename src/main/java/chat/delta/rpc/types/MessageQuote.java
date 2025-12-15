@@ -18,7 +18,7 @@ public abstract class MessageQuote {
   public static class WithMessage extends MessageQuote {
     public String authorDisplayColor;
     public String authorDisplayName;
-    /* The quoted message does not always belong to the same chat, e.g. when "Reply Privately" is used. */
+    /** The quoted message does not always belong to the same chat, e.g. when "Reply Privately" is used. */
     public Integer chatId;
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String image;

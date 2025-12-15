@@ -4,7 +4,7 @@ package chat.delta.rpc.types;
 public class MessageSearchResult {
   public String authorColor;
   public Integer authorId;
-  /* if sender name if overridden it will show it as ~alias */
+  /** if sender name if overridden it will show it as ~alias */
   public String authorName;
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String authorProfileImage;

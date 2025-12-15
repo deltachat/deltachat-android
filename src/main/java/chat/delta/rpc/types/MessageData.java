@@ -12,7 +12,7 @@ public class MessageData {
   public Pair<Float, Float> location;
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String overrideSenderName;
-  /* Quoted message id. Takes preference over `quoted_text` (see below). */
+  /** Quoted message id. Takes preference over `quoted_text` (see below). */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Integer quotedMessageId;
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)

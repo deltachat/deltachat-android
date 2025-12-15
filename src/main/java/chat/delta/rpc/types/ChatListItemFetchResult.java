@@ -16,7 +16,7 @@ public abstract class ChatListItemFetchResult {
     public String avatarPath;
     public ChatType chatType;
     public String color;
-    /* contact id if this is a dm chat (for view profile entry in context menu) */
+    /** contact id if this is a dm chat (for view profile entry in context menu) */
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer dmChatContact;
     public Integer freshMessageCounter;
@@ -36,7 +36,7 @@ public abstract class ChatListItemFetchResult {
      * See also `is_key_contact` on `Contact`.
      */
     public Boolean isEncrypted;
-    /* deprecated 2025-07, use chat_type instead */
+    /** deprecated 2025-07, use chat_type instead */
     public Boolean isGroup;
     public Boolean isMuted;
     public Boolean isPinned;
@@ -50,7 +50,7 @@ public abstract class ChatListItemFetchResult {
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer lastUpdated;
     public String name;
-    /* showing preview if last chat message is image */
+    /** showing preview if last chat message is image */
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String summaryPreviewImage;
     public Integer summaryStatus;

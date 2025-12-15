@@ -19,21 +19,21 @@ public enum SystemMessageType {
   CallAccepted,
   CallEnded,
 
-  /* 1:1 chats info message telling that SecureJoin has started and the user should wait for it to complete. */
+  /** 1:1 chats info message telling that SecureJoin has started and the user should wait for it to complete. */
   SecurejoinWait,
 
-  /* 1:1 chats info message telling that SecureJoin is still running, but the user may already send messages. */
+  /** 1:1 chats info message telling that SecureJoin is still running, but the user may already send messages. */
   SecurejoinWaitTimeout,
 
-  /* Chat ephemeral message timer is changed. */
+  /** Chat ephemeral message timer is changed. */
   EphemeralTimerChanged,
 
-  /* Self-sent-message that contains only json used for multi-device-sync; if possible, we attach that to other messages as for locations. */
+  /** Self-sent-message that contains only json used for multi-device-sync; if possible, we attach that to other messages as for locations. */
   MultiDeviceSync,
 
-  /* Webxdc info added with `info` set in `send_webxdc_status_update()`. */
+  /** Webxdc info added with `info` set in `send_webxdc_status_update()`. */
   WebxdcInfoMessage,
 
-  /* This message contains a users iroh node address. */
+  /** This message contains a users iroh node address. */
   IrohNodeAddr,
 }

@@ -110,7 +110,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
                     .onAllGranted(() -> ((QrScanFragment) adapter.getItem(TAB_SCAN)).handleQrScanWithPermissions(QrActivity.this))
                     .onAnyDenied(() -> {
                         if (scanRelay) {
-                            finish();
+                            Toast.makeText(this, getString(R.string.chat_camera_unavailable), Toast.LENGTH_LONG).show();
                         } else {
                             viewPager.setCurrentItem(TAB_SHOW);
                         }
@@ -123,7 +123,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
     public boolean onPrepareOptionsMenu(Menu menu) {
       menu.clear();
       getMenuInflater().inflate(R.menu.qr_show, menu);
-      menu.findItem(R.id.new_classic_contact).setVisible(!DcHelper.getContext(this).isChatmail());
+      menu.findItem(R.id.new_classic_contact).setVisible(!scanRelay && !DcHelper.getContext(this).isChatmail());
 
       Util.redMenuItem(menu, R.id.withdraw);
       if(tabLayout.getSelectedTabPosition() == TAB_SCAN) {
@@ -162,7 +162,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
                 && Manifest.permission.CAMERA.equals(permissions[0])
                 && grantResults[0] == PackageManager.PERMISSION_DENIED) {
             if (scanRelay) {
-                finish();
+                Toast.makeText(this, getString(R.string.chat_camera_unavailable), Toast.LENGTH_LONG).show();
             } else {
                 viewPager.setCurrentItem(TAB_SHOW);
             }

@@ -3,7 +3,7 @@ package chat.delta.rpc.types;
 
 public class ProviderInfo {
   public String beforeLoginHint;
-  /* Unique ID, corresponding to provider database filename. */
+  /** Unique ID, corresponding to provider database filename. */
   public String id;
   public String overviewPage;
   public Integer status;

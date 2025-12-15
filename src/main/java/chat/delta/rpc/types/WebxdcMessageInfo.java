@@ -2,7 +2,7 @@
 package chat.delta.rpc.types;
 
 public class WebxdcMessageInfo {
-  /* if the Webxdc represents a document, then this is the name of the document */
+  /** if the Webxdc represents a document, then this is the name of the document */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String document;
   /**
@@ -13,7 +13,7 @@ public class WebxdcMessageInfo {
    * App icons should should be square, the implementations will add round corners etc. as needed.
    */
   public String icon;
-  /* True if full internet access should be granted to the app. */
+  /** True if full internet access should be granted to the app. */
   public Boolean internetAccess;
   /**
    * The name of the app.
@@ -21,16 +21,16 @@ public class WebxdcMessageInfo {
    * Defaults to the filename if not set in the manifest.
    */
   public String name;
-  /* Address to be used for `window.webxdc.selfAddr` in JS land. */
+  /** Address to be used for `window.webxdc.selfAddr` in JS land. */
   public String selfAddr;
-  /* Milliseconds to wait before calling `sendUpdate()` again since the last call. Should be exposed to `window.sendUpdateInterval` in JS land. */
+  /** Milliseconds to wait before calling `sendUpdate()` again since the last call. Should be exposed to `window.sendUpdateInterval` in JS land. */
   public Integer sendUpdateInterval;
-  /* Maximum number of bytes accepted for a serialized update object. Should be exposed to `window.sendUpdateMaxSize` in JS land. */
+  /** Maximum number of bytes accepted for a serialized update object. Should be exposed to `window.sendUpdateMaxSize` in JS land. */
   public Integer sendUpdateMaxSize;
-  /* URL where the source code of the Webxdc and other information can be found; defaults to an empty string. Implementations may offer an menu or a button to open this URL. */
+  /** URL where the source code of the Webxdc and other information can be found; defaults to an empty string. Implementations may offer an menu or a button to open this URL. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String sourceCodeUrl;
-  /* short string describing the state of the app, sth. as "2 votes", "Highscore: 123", can be changed by the apps */
+  /** short string describing the state of the app, sth. as "2 votes", "Highscore: 123", can be changed by the apps */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String summary;
 }

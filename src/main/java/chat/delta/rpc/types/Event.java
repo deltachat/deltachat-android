@@ -2,8 +2,8 @@
 package chat.delta.rpc.types;
 
 public class Event {
-  /* Account ID. */
+  /** Account ID. */
   public Integer contextId;
-  /* Event payload. */
+  /** Event payload. */
   public EventType event;
 }

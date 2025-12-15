@@ -2,12 +2,12 @@
 package chat.delta.rpc.types;
 
 public enum SecurejoinUiPath {
-  /* The UI path is unknown, or the user didn't open the QR code screen at all. */
+  /** The UI path is unknown, or the user didn't open the QR code screen at all. */
   Unknown,
 
-  /* The user directly clicked on the QR icon in the main screen */
+  /** The user directly clicked on the QR icon in the main screen */
   QrIcon,
 
-  /* The user first clicked on the `+` button in the main screen, and then on "New Contact" */
+  /** The user first clicked on the `+` button in the main screen, and then on "New Contact" */
   NewContact,
 }

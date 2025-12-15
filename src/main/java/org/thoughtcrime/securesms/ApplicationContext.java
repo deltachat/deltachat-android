@@ -89,7 +89,9 @@ public class ApplicationContext extends MultiDexApplication {
     System.loadLibrary("native-utils");
 
     dcAccounts = new DcAccounts(new File(getFilesDir(), "accounts").getAbsolutePath());
+    Log.i(TAG, "DcAccounts created");
     rpc = new Rpc(new FFITransport(dcAccounts.getJsonrpcInstance()));
+    Log.i(TAG, "Rpc created");
     AccountManager.getInstance().migrateToDcAccounts(this);
 
     // October-2025 migration: delete deprecated "permanent channel" id
@@ -98,6 +100,7 @@ public class ApplicationContext extends MultiDexApplication {
     // end October-2025 migration
 
     int[] allAccounts = dcAccounts.getAll();
+    Log.i(TAG, "Number of profiles: " + allAccounts.length);
     for (int accountId : allAccounts) {
       DcContext ac = dcAccounts.getAccount(accountId);
       if (!ac.isOpen()) {
@@ -131,7 +134,9 @@ public class ApplicationContext extends MultiDexApplication {
     notificationCenter = new NotificationCenter(this);
     eventCenter = new DcEventCenter(this);
     new Thread(() -> {
+      Log.i(TAG, "Starting event loop");
       DcEventEmitter emitter = dcAccounts.getEventEmitter();
+      Log.i(TAG, "DcEventEmitter obtained");
       while (true) {
         DcEvent event = emitter.getNextEvent();
         if (event==null) {

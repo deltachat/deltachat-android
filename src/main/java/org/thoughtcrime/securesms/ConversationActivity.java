@@ -873,6 +873,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     ImageButton quickCameraToggle = ViewUtil.findById(this, R.id.quick_camera_toggle);
 
+    if (!ViewUtil.isEdgeToEdgeSupported()) {
+      // since insets will not be applied, we need to set top padding to avoid drawing behind toolbar
+      try (TypedArray typedArray = obtainStyledAttributes(new int[]{android.R.attr.actionBarSize})) {
+        int paddingTop = typedArray.getDimensionPixelSize(0, 0);
+        container.setPadding(container.getPaddingLeft(), paddingTop, container.getPaddingRight() , container.getPaddingBottom());
+      }
+    }
     // apply padding top to avoid drawing behind top bar
     ViewUtil.applyWindowInsets(findViewById(R.id.fragment_content), false, true, false, false);
     // apply padding to root to avoid collision with system bars
