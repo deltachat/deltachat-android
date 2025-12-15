@@ -344,9 +344,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     DcMsg dcMsg = dcContext.getMsg(mediaItem.msgId);
     DcChat dcChat = dcContext.getChat(dcMsg.getChatId());
 
-    String text = getResources().getQuantityString(
-      dcChat.isDeviceTalk() ? R.plurals.ask_delete_messages_simple : R.plurals.ask_delete_messages,
-      1, 1);
+    String text = getResources().getQuantityString(R.plurals.ask_delete_messages,1, 1);
     int positiveBtnLabel = dcChat.isSelfTalk() ? R.string.delete : R.string.delete_for_me;
     final int[] messageIds = new int[]{mediaItem.msgId};
 
