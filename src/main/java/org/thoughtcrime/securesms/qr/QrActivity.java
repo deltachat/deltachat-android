@@ -123,7 +123,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
     public boolean onPrepareOptionsMenu(Menu menu) {
       menu.clear();
       getMenuInflater().inflate(R.menu.qr_show, menu);
-      menu.findItem(R.id.new_classic_contact).setVisible(!DcHelper.getContext(this).isChatmail());
+      menu.findItem(R.id.new_classic_contact).setVisible(!scanRelay && !DcHelper.getContext(this).isChatmail());
 
       Util.redMenuItem(menu, R.id.withdraw);
       if(tabLayout.getSelectedTabPosition() == TAB_SCAN) {
