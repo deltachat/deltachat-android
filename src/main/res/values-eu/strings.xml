@@ -463,6 +463,7 @@
     <string name="pref_sound">Soinua</string>
     <string name="pref_silent">Isila</string>
     <string name="pref_privacy">Pribatutasuna</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Txatak eta multimedia</string>
     <string name="pref_system_default">Sisteman lehenetsia</string>
     <!-- Translators: as in "opposite of dark" -->

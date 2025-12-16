@@ -409,7 +409,7 @@
         <item quantity="one">Slett %d melding fra alle dine enheter?</item>
         <item quantity="other">Slett %d meldinger fra alle dine enheter?</item>
     </plurals>
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Slett %d melding?</item>
         <item quantity="other">Slett %d meldinger?</item>
@@ -483,6 +483,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">E-postliste</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Endringer av e-postlistens navn og bilde gjelder bare for denne enheten.</string>
 
     <!-- webxdc -->
@@ -552,6 +553,7 @@
     <string name="pref_sound">Lyd</string>
     <string name="pref_silent">Stille</string>
     <string name="pref_privacy">Personvern</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Chatter og medier</string>
     <string name="pref_system_default">System standard</string>
     <!-- Translators: as in "opposite of dark" -->

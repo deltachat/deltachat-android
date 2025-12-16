@@ -277,7 +277,11 @@
     </plurals>
     <string name="file_saved_to">Αποθήκευση στο \"%1$s\".</string>
 
-    <!-- Used for the deletion of Device messages -->
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Διαγραφή %d μηνύματος;</item>
+        <item quantity="other">Διαγραφή %d μηνυμάτων;</item>
+    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Διαγραφή %d μηνύματος;</item>
         <item quantity="other">Διαγραφή %d μηνυμάτων;</item>
@@ -346,6 +350,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Λίστα Αλληλογραφίας</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Οι αλλαγές στο όνομα και την εικόνα της λίστας αλληλογραφίας ισχύουν μόνο σε αυτήν τη συσκευή.</string>
 
     <!-- webxdc -->
@@ -501,6 +506,7 @@
     <string name="pref_sound">Ήχος</string>
     <string name="pref_silent">Σε σίγαση</string>
     <string name="pref_privacy">Ιδιωτικότητα</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Συνομιλίες και Πολυμέσα</string>
     <string name="pref_system_default">Προκαθορισμένο του συστήματος</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -694,11 +700,12 @@
     <string name="qrshow_join_contact_hint">Σάρωση για συνομιλία με %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Δεν υπάρχει σύνδεση στο διαδίκτυο, δεν είναι δυνατή η ρύθμιση κωδικού QR.</string>
     <string name="qraccount_ask_create_and_login">Δημιουργήστε νέα διεύθυνση e-mail στο \"%1$s\" και συνδεθείτε εκεί;</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Δημιουργήστε νέα διεύθυνση e-mail στο \"%1$s\" και συνδεθείτε εκεί;\n\nΟ υπάρχων λογαριασμός σας δεν θα διαγραφεί. Χρησιμοποιήστε τη λειτουργία \"Εναλλαγή λογαριασμού\" για εναλλαγή μεταξύ των λογαριασμών σας.</string>
     <string name="qraccount_qr_code_cannot_be_used">Ο σαρωμένος κωδικός QR δεν μπορεί να χρησιμοποιηθεί για τη δημιουργία νέου λογαριασμού.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Σύνδεση στο \"%1$s\";</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Σύνδεση στο \"%1$s\";\n\nΟ υπάρχων λογαριασμός σας δεν θα διαγραφεί. Χρησιμοποιήστε τη λειτουργία \"Εναλλαγή λογαριασμού\" για εναλλαγή μεταξύ των λογαριασμών σας.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s σας προσκάλεσε να συμμετάσχετε σε αυτήν την ομάδα.\n\nΑναμονή για απάντηση από τη συσκευή του %2$s…</string>

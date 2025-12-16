@@ -102,10 +102,10 @@
     <string name="cannot_save_file">Impossibile salvare%1$s.</string>
     <string name="copied_to_clipboard">Copiato negli appunti.</string>
     <string name="contacts_headline">Contatti</string>
-    <string name="email_address">Indirizzo E-Mail</string>
+    <string name="email_address">Indirizzo e-mail</string>
     <string name="bad_email_address">Indirizzo e-mail errato.</string>
     <string name="password">Password</string>
-    <string name="existing_password">Password Esistente</string>
+    <string name="existing_password">Password esistente</string>
     <string name="now">Ora</string>
     <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Pericolo</string>
@@ -119,7 +119,7 @@
     <string name="last_seen_at">Ultimo accesso alle %1$s</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative"> Ultimo accesso %1$s</string>
-    <string name="last_seen_unknown">Ultimo accesso: Sconosciuto</string>
+    <string name="last_seen_unknown">Ultimo accesso: sconosciuto</string>
     <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
     <plurals name="n_seconds_ext">
         <item quantity="one">%d secondo</item>
@@ -179,7 +179,7 @@
     <plurals name="n_selected">
         <item quantity="one">%d Selezionato</item>
         <item quantity="many">%d Selezionati</item>
-        <item quantity="other">%d Selezionati</item>
+        <item quantity="other">%d selezionati</item>
     </plurals>
     <string name="selected_colon">Selezionato:</string>
     <string name="self">Io</string>
@@ -423,7 +423,7 @@
         <item quantity="many">Cancella %d messaggi su tutti i tuoi dispositivi?</item>
         <item quantity="other">Cancella %d messaggi su tutti i tuoi dispositivi?</item>
     </plurals>
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Eliminare %d messaggio?</item>
         <item quantity="many">Eliminare %d messaggi?</item>
@@ -501,6 +501,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Elenco di Distribuzione</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Le modifiche al nome e all\'immagine dell\'elenco di distribuzione si applicano solo a questo dispositivo.</string>
 
     <!-- webxdc -->
@@ -629,7 +630,7 @@
     <string name="onboarding_create_instant_account">Crea Nuovo Profilo</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Ho Già un Profilo</string>
-    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Accesso E-Mail Classico</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Il Tuo Profilo</string>
@@ -682,7 +683,7 @@
     <string name="proxy_enabled">Proxy Abilitato</string>
     <string name="proxy_enabled_hint">Stai utilizzando un proxy. Se riscontri problemi di connessione, prova un proxy diverso.</string>
     <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
-    <string name="transports">Trasporti</string>
+    <string name="transports">Ripetitori</string>
     <string name="add_transport">Aggiungi Trasporto</string>
     <string name="remove_transport">Rimuovi Trasporto</string>
     <string name="edit_transport">Modifica Trasporto</string>
@@ -766,6 +767,7 @@
     <string name="pref_sound">Suono</string>
     <string name="pref_silent">Silenzia</string>
     <string name="pref_privacy">Riservatezza</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Chat e Media</string>
     <string name="pref_system_default">Predefinito di sistema</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -814,6 +816,7 @@
     <string name="pref_show_emails_accepted_contacts">Per contatti accettati</string>
     <string name="pref_show_emails_all">Sì</string>
     <string name="pref_experimental_features">Caratteristiche Sperimentali</string>
+    <string name="pref_experimental_features_explain">Queste funzionalità potrebbero essere instabili e potrebbero essere modificate o rimosse</string>
     <string name="pref_on_demand_location_streaming">Trasmissione Posizione su Richiesta</string>
     <string name="pref_background_default">Sfondo predefinito</string>
     <string name="pref_background_default_color">Colore predefinito</string>
@@ -839,6 +842,9 @@
     <string name="disable_imap_idle">Disabilita IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Non utilizzare l\'estensione IMAP IDLE anche se il server la supporta. L\'abilitazione di questa opzione ritarderà il recupero del messaggio, abilitarla solo a scopo di test.</string>
     <string name="send_stats_to_devs">Invia statistiche agli sviluppatori di Delta Chat</string>
+    <string name="stats_msg_body">L\'allegato contiene statistiche di utilizzo anonime, che ci aiutano a migliorare Delta Chat. Grazie!</string>
+
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Risultati Ricerca</string>
     <string name="emoji_not_found">Nessuna emoji trovata</string>
@@ -1007,16 +1013,19 @@
     <string name="qrshow_join_contact_hint">Scansionalo per chattare con %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Nessuna connessione internet, impossibile effettuare l\'impostazione tramite codice QR.</string>
     <string name="qraccount_ask_create_and_login">Creo un nuovo profilo su \"%1$s\" e accedo qui?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Crea un nuovo profilo su \"%1$s\" e accedi qui?\n\nIl tuo profilo esistente non verrà eliminato. Utilizza la voce \"Cambia Profilo\" per passare da un profilo all\'altro.</string>
     <string name="set_name_and_avatar_explain">Imposta un nome che i tuoi contatti riconosceranno. Puoi anche impostare un\'immagine del profilo.</string>
     <string name="please_enter_name">Per piacere inserisci un nome.</string>
     <string name="qraccount_qr_code_cannot_be_used">Il codice QR scansionato non può essere utilizzato per creare un nuovo profilo.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Accedere a \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Accedere a \"%1$s\"?\n\nIl tuo profilo esistente non verrà cancellato. Usa la voce \"Cambia Profilo\" per passare da un profilo all\'altro.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s ti ha invitato ad unirti a questo gruppo.\n\nIn attesa che il dispositivo di %2$s risponda…</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s ti ha invitato a unirti a questo canale.\n\nIn attesa del dispositivo di %2$s che risponda…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s ha risposto, in attesa di essere aggiunto al gruppo…</string>
     <string name="secure_join_wait">Impostazione della crittografia end-to-end, attendere...</string>

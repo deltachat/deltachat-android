@@ -319,7 +319,7 @@
         <item quantity="many">Ištrinti %d žinučių visuose jūsų įrenginiuose?</item>
         <item quantity="other">Ištrinti %d žinutę visuose jūsų įrenginiuose?</item>
     </plurals>
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ištrinti %d žinutę?</item>
         <item quantity="few">Ištrinti %d žinutes?</item>
@@ -542,6 +542,7 @@
     <string name="pref_led_color">Šviesos diodo spalva</string>
     <string name="pref_sound">Garsas</string>
     <string name="pref_privacy">Privatumas</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Pokalbiai ir medija</string>
     <string name="pref_system_default">Sistemos numatytoji</string>
     <!-- Translators: as in "opposite of dark" -->

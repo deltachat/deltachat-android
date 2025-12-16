@@ -2,9 +2,14 @@
 
 ## Unreleased
 
+* Remove deprecated "real-time apps" switch
+
+## v2.34.0
+2025-12
+
 * Allow to add relay from clipboard or image if camera permission is not granted
 * Avoid crash in the "View Log" screen
-* Remove deprecated "real-time apps" switch
+* Update to core 2.34.0
 
 ## v2.33.1
 2025-12

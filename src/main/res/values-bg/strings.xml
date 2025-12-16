@@ -304,7 +304,7 @@
     </plurals>
     <string name="file_saved_to">Файлът е записан в \"%1$s\"</string>
 
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Да бъде ли изтрито %d съобщение?</item>
         <item quantity="other">Да бъдат ли изтрити %d съобщения?</item>
@@ -373,6 +373,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Пощенски списък</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Промените по имена и изображения на пощенски списъци са приложими само за това устройство.</string>
 
     <!-- webxdc -->
@@ -490,7 +491,7 @@
     <string name="onboarding_create_instant_account">Създаване на нов профил</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Вече имам профил</string>
-    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Вход в класическа електронна поща</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Вашият профил</string>
@@ -589,6 +590,7 @@
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Без звук</string>
     <string name="pref_privacy">Поверителност</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Чатове и медийни файлове</string>
     <string name="pref_system_default">Подразбиращото се за системата</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -807,13 +809,14 @@
     <string name="qrshow_join_contact_hint">Сканирайте, за да чатите с %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Няма връзка към Интернет, не може да бъде извършена настройка чрез QR код.</string>
     <string name="qraccount_ask_create_and_login">Да бъде ли създаден нов адрес за електронна поща на \"%1$s\" и да бъде ли осъществено влизане там?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Да бъде ли създаден нов адрес за електронна поща в \"%1$s\" и да бъде ли осъществено влизане там?\n\nВашият съществуващ акаунт няма да бъде изтрит. Използвайте опцията \"Превключване към друг акаунт\", за да превключвате между Вашите акаунти.</string>
     <string name="set_name_and_avatar_explain">Задайте име, което Вашите контакти ще разпознават.  Можете също да установите изображение за профил.</string>
     <string name="please_enter_name">Моля, въведете име.</string>
     <string name="qraccount_qr_code_cannot_be_used">Не може да бъде създаден нов акаунт със сканирания QR код.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Желаете ли да влезете в \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Желаете ли да влезете в \"%1$s\"?\n\nСъщестуващият Ви акаунт няма да бъде изтрит. Превключвайте между акаунтите си чрез \"Превключване към друг акаунт\".</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s Ви покани да се присъедините към тази група.\n\nИзчаква се устройството на %2$s да отговори…</string>
