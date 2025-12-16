@@ -220,7 +220,7 @@ public class DcEventCenter {
         break;
     }
 
-    if (accountId != context.dcContext.getAccountId()) {
+    if (accountId != context.getDcContext().getAccountId()) {
       return 0;
     }
 
