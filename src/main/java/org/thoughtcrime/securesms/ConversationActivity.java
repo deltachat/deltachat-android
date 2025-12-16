@@ -955,8 +955,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     int accountId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, dcContext.getAccountId());
     if (accountId != dcContext.getAccountId()) {
       AccountManager.getInstance().switchAccount(context, accountId);
-      dcContext = context.dcContext;
-      fragment.dcContext = context.dcContext;
+      fragment.dcContext = dcContext = context.getDcContext();
       initializeBackground();
     }
     chatId = getIntent().getIntExtra(CHAT_ID_EXTRA, -1);

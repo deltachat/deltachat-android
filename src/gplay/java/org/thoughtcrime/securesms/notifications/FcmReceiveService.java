@@ -62,7 +62,7 @@ public class FcmReceiveService extends FirebaseMessagingService {
 
       prefixedToken = addPrefix(rawToken);
       Log.i(TAG, "FCM token: " + prefixedToken);
-      ApplicationContext.dcAccounts.setPushDeviceToken(prefixedToken);
+      ApplicationContext.getDcAccounts().setPushDeviceToken(prefixedToken);
       triedRegistering = true;
     });
   }
@@ -104,6 +104,6 @@ public class FcmReceiveService extends FirebaseMessagingService {
   public void onNewToken(@NonNull String rawToken) {
     prefixedToken = addPrefix(rawToken);
     Log.i(TAG, "new FCM token: " + prefixedToken);
-    ApplicationContext.dcAccounts.setPushDeviceToken(prefixedToken);
+    ApplicationContext.getDcAccounts().setPushDeviceToken(prefixedToken);
   }
 }

@@ -66,15 +66,15 @@ public class DcHelper {
     public static final String CONFIG_STATS_ID = "stats_id";
 
     public static DcContext getContext(@NonNull Context context) {
-        return ApplicationContext.getInstance(context).dcContext;
+        return ApplicationContext.getInstance(context).getDcContext();
     }
 
     public static Rpc getRpc(@NonNull Context context) {
-        return ApplicationContext.getInstance(context).rpc;
+        return ApplicationContext.getInstance(context).getRpc();
     }
 
     public static DcAccounts getAccounts(@NonNull Context context) {
-        return ApplicationContext.getInstance(context).dcAccounts;
+        return ApplicationContext.getInstance(context).getDcAccounts();
     }
 
     public static DcEventCenter getEventCenter(@NonNull Context context) {

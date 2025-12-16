@@ -426,7 +426,7 @@ public class NotificationCenter {
     public void notifyCall(int accId, int callId, String payload) {
       Util.runOnAnyBackgroundThread(() -> {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        DcContext dcContext = context.dcAccounts.getAccount(accId);
+        DcContext dcContext = context.getDcAccounts().getAccount(accId);
         int chatId = dcContext.getMsg(callId).getChatId();
         DcChat dcChat = dcContext.getChat(chatId);
         String name = dcChat.getName();
@@ -478,7 +478,7 @@ public class NotificationCenter {
 
     public void notifyMessage(int accountId, int chatId, int msgId) {
       Util.runOnAnyBackgroundThread(() -> {
-        DcContext dcContext = context.dcAccounts.getAccount(accountId);
+        DcContext dcContext = context.getDcAccounts().getAccount(accountId);
         DcChat dcChat = dcContext.getChat(chatId);
 
         DcMsg dcMsg = dcContext.getMsg(msgId);
@@ -508,7 +508,7 @@ public class NotificationCenter {
 
     public void notifyReaction(int accountId, int contactId, int msgId, String reaction) {
       Util.runOnAnyBackgroundThread(() -> {
-        DcContext dcContext = context.dcAccounts.getAccount(accountId);
+        DcContext dcContext = context.getDcAccounts().getAccount(accountId);
         DcMsg dcMsg = dcContext.getMsg(msgId);
 
         NotificationPrivacyPreference privacy = Prefs.getNotificationPrivacy(context);
@@ -530,7 +530,7 @@ public class NotificationCenter {
           return; // showing "New Message" is wrong, just do nothing.
         }
 
-        DcContext dcContext = context.dcAccounts.getAccount(accountId);
+        DcContext dcContext = context.getDcAccounts().getAccount(accountId);
         DcMsg dcMsg = dcContext.getMsg(msgId);
         DcMsg parentMsg;
         if(dcMsg.getType() == DcMsg.DC_MSG_WEBXDC) {
@@ -554,7 +554,7 @@ public class NotificationCenter {
     @WorkerThread
     private void maybeAddNotification(int accountId, DcChat dcChat, int msgId, String shortLine, String tickerLine, boolean playInChatSound, boolean isMention) {
 
-            DcContext dcContext = context.dcAccounts.getAccount(accountId);
+            DcContext dcContext = context.getDcAccounts().getAccount(accountId);
             int chatId = dcChat.getId();
             ChatData chatData = new ChatData(accountId, chatId);
             isMention = isMention && dcContext.isMentionsEnabled();
@@ -602,7 +602,7 @@ public class NotificationCenter {
             }
 
             String accountTag = dcContext.getConfig(CONFIG_PRIVATE_TAG);
-            if (accountTag.isEmpty() && context.dcAccounts.getAll().length > 1) {
+            if (accountTag.isEmpty() && context.getDcAccounts().getAll().length > 1) {
                 accountTag = dcContext.getName();
             }
 

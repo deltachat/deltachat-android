@@ -31,7 +31,7 @@ public class AccountManager {
 
     private void resetDcContext(Context context) {
         ApplicationContext appContext = (ApplicationContext)context.getApplicationContext();
-        appContext.dcContext = ApplicationContext.dcAccounts.getSelectedAccount();
+        appContext.setDcContext(ApplicationContext.getDcAccounts().getSelectedAccount());
         DcHelper.setStockTranslations(context);
         DirectShareUtil.resetAllShortcuts(appContext);
     }
@@ -55,7 +55,7 @@ public class AccountManager {
             for (File file : files) {
                 // old accounts have the pattern "messenger*.db"
                 if (!file.isDirectory() && file.getName().startsWith("messenger") && file.getName().endsWith(".db")) {
-                    int accountId = ApplicationContext.dcAccounts.migrateAccount(file.getAbsolutePath());
+                    int accountId = ApplicationContext.getDcAccounts().migrateAccount(file.getAbsolutePath());
                     if (accountId != 0) {
                         String selName = PreferenceManager.getDefaultSharedPreferences(context)
                                 .getString("curr_account_db_name", "messenger.db");
@@ -70,7 +70,7 @@ public class AccountManager {
           }
 
             if (selectAccountId != 0) {
-                ApplicationContext.dcAccounts.selectAccount(selectAccountId);
+                ApplicationContext.getDcAccounts().selectAccount(selectAccountId);
             }
         } catch (Exception e) {
             Log.e(TAG, "Error in migrateToDcAccounts()", e);
