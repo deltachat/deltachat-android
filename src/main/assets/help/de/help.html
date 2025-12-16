@@ -55,10 +55,11 @@
   <li><a href="#erweitert">Erweitert</a>
     <ul>
       <li><a href="#experimentelle-features">Experimentelle Features</a></li>
-      <li><a href="#statssending">Was ist “Statistik an Delta Chat Entwickler senden”?</a></li>
+      <li><a href="#relays">Was sind Relays?</a></li>
       <li><a href="#kann-ich-eine-klassische-e-mail-adresse-mit-delta-chat-verwenden">Kann ich eine klassische E-Mail-Adresse mit Delta Chat verwenden?</a></li>
       <li><a href="#classic-email">Wie kann ich ein Chat-Profil mit einer klassischen E-Mail-Adresse als Relay konfigurieren?</a></li>
       <li><a href="#ich-möchte-meinen-eigenen-server-für-delta-chat-verwalten-gibt-es-empfehlungen">Ich möchte meinen eigenen Server für Delta Chat verwalten. Gibt es Empfehlungen?</a></li>
+      <li><a href="#statssending">Was ist “Statistik an Delta Chat Entwickler senden”?</a></li>
       <li><a href="#ich-bin-an-technischen-details-interessiert-gibt-es-hierzu-weitere-infos">Ich bin an technischen Details interessiert. Gibt es hierzu weitere Infos?</a></li>
     </ul>
   </li>
@@ -137,13 +138,16 @@ basierend auf <a href="https://github.com/chatmail/core/blob/main/standards.md#s
 Es gibt keine öffentliches Verzeichnis, du entscheiden selbst über deine Kontakte.</p>
 
 <ul>
-  <li>Wenn du <strong>persönlich</strong> mit deinen Freunden oder Familie zusammen bist,
+  <li>
+    <p>Wenn du <strong>persönlich</strong> mit deinen Freunden oder Familie zusammen bist,
 tippe auf das <strong>QR-Code</strong>-Symbol <img style="vertical-align:middle; height:1.3em; margin:1px" src="../qr-icon.png" />
 auf dem Hauptbildschirm.<br />
-Bitte deinen Chatpartner den QR-Code mit Delta Chat zu <strong>scannen</strong>.</li>
+Bitte deinen Chatpartner den QR-Code mit Delta Chat zu <strong>scannen</strong>.</p>
+  </li>
+  <li>
+    <p>Für eine Kontaktaufnahme <strong>aus der Ferne</strong>, klicke im selben Bildschirm auf “Kopieren” oder “Teilen” und sende den <strong>Einladungslink</strong> über einen anderen privaten Chat.</p>
+  </li>
 </ul>
-
-<p>Für eine Kontaktaufnahme <strong>aus der Ferne</strong>, klicke im selben Bildschirm auf “Kopieren” oder “Teilen” und sende den <strong>Einladungslink</strong> über einen anderen privaten Chat.</p>
 
 <p>Wartet nun, bis die Verbindung hergestellt ist.</p>
 
@@ -230,7 +234,7 @@ bzw. <img style="vertical-align:middle; width:0.8em; margin:1px" src="../mic.png
       </h3>
 
 <p>Ein Profil besteht aus <strong>einem Namen, einem Bild</strong> und einigen zusätzlichen Informationen zum Verschlüsseln von Nachrichten.
-Ein Profil existiert nur auf Ihren Geräten
+Ein Profil existiert nur auf deinen Geräten
 und verwendet den Server nur für den Transport von Nachrichten.</p>
 
 <p>Bei der Installation von Delta Chat wird ein erstes Profil erstellt.</p>
@@ -361,7 +365,7 @@ sei es durch den <a href="#edit">Absender</a>, durch <a href="#delold">Automatis
     <p><strong>Zwei Häkchen</strong>  <img style="vertical-align:middle; width:1.5em; margin:1px" src="../tick2.png" alt="" /> bedeuten, dass mindestens ein Gerät des Empfängers zurückgemeldet hat, die Nachricht empfangen zu haben.</p>
   </li>
   <li>
-    <p>Lesebestätigungen können deaktiviert werden. D.h. auch wenn Sie nur ein Häkchen sehen, kann die Nachricht gelesen worden sein.</p>
+    <p>Lesebestätigungen können deaktiviert werden. D.h. auch wenn du nur ein Häkchen siehst, kann die Nachricht gelesen worden sein.</p>
   </li>
   <li>
     <p>Umgekehrt bedeuten zwei Häkchen nicht automatisch, dass ein Mensch die Nachricht gelesen oder verstanden hat ;)</p>
@@ -433,7 +437,7 @@ oder auf andere Weise Nachrichten vor dem Löschen speichern, kopieren oder weit
 
 <ul>
   <li>Wenn du Speicherplatz auf deinem Gerät sparen möchtest, kannst du alte Nachrichten automatisch löschen lassen.</li>
-  <li>Hierzu, öffne die “Chats und Medien”-Einstellungen und dort “Alte Nachrichten vom Gerät löschen”. Du kannst einen Zeitraum zwischen “1 Stunde” und “1 Jahr” festlegen; auf diese Weise werden <em>alle</em> Nachrichten von Ihrem Gerät gelöscht, sobald sie älter als angegeben sind.</li>
+  <li>Hierzu, öffne die “Chats und Medien”-Einstellungen und dort “Alte Nachrichten vom Gerät löschen”. Du kannst einen Zeitraum zwischen “1 Stunde” und “1 Jahr” festlegen; auf diese Weise werden <em>alle</em> Nachrichten von deinem Gerät gelöscht, sobald sie älter als angegeben sind.</li>
 </ul>
     
       <h3 id="remove-account">
@@ -444,16 +448,15 @@ oder auf andere Weise Nachrichten vor dem Löschen speichern, kopieren oder weit
         
       </h3>
 
-<p>If you are using more than one chat profile,
-you can remove single ones in the top profile switcher menu (on Android and iOS),
-or in the sidebar with a right click (in the Desktop app).
-Chat profiles are only removed on the device where deletion was triggered. 
-Chat profiles on other devices will continue to fully function.</p>
+<p>Wenn du mehr als ein Chat-Profil verwendest,
+kannst du einzelne Profile über den Avatar oben links (Android/iOS)
+oder über die Seitenleiste (Desktop, Rechtsklick) entfernen.
+Chat-Profile werden nur auf dem Gerät entfernt, auf dem “Löschen” ausgewählt wurde. 
+Chat-Profile auf anderen Geräten funktionieren uneingeschränkt weiter.</p>
 
-<p>If you use a single default chat profile you can simply uninstall the app.
-This will still automatically trigger deletion of all associated address data on the chatmail server.
-For more info, please refer to <a href="https://nine.testrun.org/info.html#account-deletion">nine.testrun.org address-deletion</a> 
-or the respective page from your chosen <a href="https://chatmail.at/relays">3rd party chatmail server</a>.</p>
+<p>Wenn du ein einzelnes Standard-Chat-Profil verwendest, kannst du die App einfach deinstallieren.
+Dadurch werden automatisch alle zugehörigen Daten gelöscht.
+Weitere Informationen findest du auf der Seite des ausgewählten <a href="https://chatmail.at/relays">Relay</a>.</p>
     
       <h2 id="groups">
         
@@ -463,15 +466,15 @@ or the respective page from your chosen <a href="https://chatmail.at/relays">3rd
         
       </h2>
 
-<p>Groups let several people chat together privately with <strong>equal rights</strong>.</p>
+<p>Gruppen ermöglichen es mehreren Personen, privat miteinander bei <strong>gleichen Rechte</strong> zu chatten.</p>
 
-<p>Anyone can
-change the group name or avatar,
-<a href="#addmembers">add or remove members</a>,
-set <a href="#ephemeralmsgs">disappearing messages</a>,
-and <a href="#edit">delete their own messages</a> from all member’s devices.</p>
+<p>Jeder kann
+den Gruppennamen oder Avatar ändern,
+<a href="#addmembers">Mitglieder hinzufügen oder entfernen</a>,
+<a href="#ephemeralmsgs">Verschwindende Nachrichten</a> einstellen 
+und seine <a href="#edit">eigenen Nachrichten von Geräten der Mitglieder löschen</a>.</p>
 
-<p>Because all members have the same rights, groups work best among <strong>trusted friends and family</strong>.</p>
+<p>Da alle Mitglieder die gleichen Rechte haben, funktionieren Gruppen am besten unter <strong>vertrauten Freunden und Familienmitgliedern</strong>.</p>
     
       <h3 id="eine-gruppe-anlegen">
         
@@ -497,27 +500,20 @@ and <a href="#edit">delete their own messages</a> from all member’s devices.</
 
 <ul>
   <li>
-    <p>All group members have the <strong>same rights</strong>.
-For this reason, everyone can delete any member or add new ones.</p>
+    <p>Alle Gruppenmitglieder haben <strong>dieselben Rechte</strong>. Jeder kann daher jeden löschen oder weitere Mitglieder hinzufügen.</p>
   </li>
   <li>
-    <p>To <strong>add or delete members</strong>, tap the group name in the chat and select the member to add or remove.</p>
+    <p>Um <strong>Mitglieder hinzuzufügen oder zu entfernen</strong>, tippe im Chat auf den Gruppennamen und wähle das Mitglied aus, das du hinzufügen oder entfernen möchtest.</p>
   </li>
   <li>
-    <p>If the member is not yet in your contact list, but <strong>face to face</strong> with you,
-from the same screen, show a <strong>QR code</strong>.<br />
-Ask your chat partner to <strong>scan</strong> the QR image with their Delta Chat app by tapping
-<img style="vertical-align:middle; height:1.3em; margin:1px" src="../qr-icon.png" /> on the main screen.</p>
+    <p>Wenn das Mitglied noch nicht in deiner Kontaktliste ist, sie sich aber <strong>persönlich</strong> treffen, wählen Sie dort <strong>QR-Einladungscode</strong> an. Dein Chat-Partner kann nun den QR-Code mit seiner Delta Chat-App <strong>scannen</strong> indem er auf <img style="vertical-align:middle; height:1.3em; margin:1px" src="../qr-icon.png" /> auf dem Hauptbildschirm tippt.</p>
   </li>
   <li>
-    <p>For a <strong>remote</strong> member addition,
-click “Copy” or “Share” and send the <strong>invite link</strong>
-through another private chat to the new member.</p>
+    <p>Für eine Kontaktaufnahme <strong>aus der Ferne</strong>, tippe dort “Kopieren” oder “Teilen” und sende den Einladungslink über einen anderen privaten Chat zum neuen Mitglied.</p>
   </li>
 </ul>
 
-<p>QR code and invite link can be used to add several members.
-However, since groups are <a href="#groups">meant for trusted people</a>, avoid sharing them publicly.</p>
+<p>Mit einem QR-Code und dem Einladungslink können mehrere Mitglieder hinzugefügt werden. Da Gruppen jedoch <a href="#groups">für vertrauenswürdige Personen gedacht sind</a>, solltest du diese nicht öffentlich teilen.</p>
     
       <h3 id="ich-habe-mich-selbst-versehentlich-gelöscht">
         
@@ -558,21 +554,21 @@ Wenn du der Gruppe später erneut beitreten möchtest, bitten ein anderes Gruppe
         
       </h3>
 
-<p>You can duplicate a group to start a separate discussion
-or to exclude members without them noticing.</p>
+<p>Du kannst eine Gruppe duplizieren, um eine separate Diskussion zu starten
+oder um Mitglieder auszuschließen, ohne dass diese es bemerken.</p>
 
 <ul>
   <li>
-    <p>Open the group profile and tap <strong>Clone Chat</strong> (Android/iOS),
-or right-click the group in the chat list (Desktop).</p>
+    <p>Öffnen das Gruppenprofil und tippe auf <strong>Chat klonen</strong> (Android/iOS)
+oder klicken mit der rechten Maustaste auf die Gruppe in der Chat-Liste (Desktop).</p>
   </li>
   <li>
-    <p>Set a new name, choose an avatar, and adjust the member list if needed.</p>
+    <p>Legen einen neuen Namen fest, wähle einen Avatar und passe gegebenenfalls die Mitgliederliste an.</p>
   </li>
 </ul>
 
-<p>The new group is <strong>fully independent</strong> from the original,
-which continues to work as before.</p>
+<p>Die neue Gruppe ist <strong>völlig unabhängig</strong> von der ursprünglichen,
+die weiterhin wie bisher funktioniert.</p>
     
       <h2 id="webxdc">
         
@@ -582,8 +578,8 @@ which continues to work as before.</p>
         
       </h2>
 
-<p>You can send apps to a chat - games, editors, polls and other tools.
-This makes Delta Chat a truly extensible messenger.</p>
+<p>Du kannst Apps an einen Chat senden – Spiele, Editoren, Umfragen und andere Tools.
+Dies macht Delta Chat zu einem wirklich erweiterbaren Messenger.</p>
     
       <h3 id="wo-bekomme-ich-in-chat-apps">
         
@@ -595,10 +591,10 @@ This makes Delta Chat a truly extensible messenger.</p>
 
 <ul>
   <li>
-    <p>In a chat, using <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attachment Button → Apps</strong></p>
+    <p>Im Chat unter <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Anhängen → Apps</strong></p>
   </li>
   <li>
-    <p>You can also <a href="#create-xdc">create your own app</a> and attach it using <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attachment Button → File</strong></p>
+    <p>Du kannst deine <a href="#create-xdc">eigenen Apps erstellen</a> und mit <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Anhängen → Datei</strong> anhängen</p>
   </li>
 </ul>
     
@@ -612,19 +608,16 @@ This makes Delta Chat a truly extensible messenger.</p>
 
 <ul>
   <li>
-    <p>In-chat apps can not send data to the Internet, or download anything.</p>
+    <p>In-Chat-Apps können keine Daten ins Internet senden oder etwas herunterladen.</p>
   </li>
   <li>
-    <p>An in-chat app can only exchange data within a chat, with its
-copies on the devices of your chat partners. Other than that, it’s completely
-isolated from the Internet.</p>
+    <p>Eine App kann nur Daten innerhalb eines Chats austauschen. Ansonsten ist sie vollständig vom Internet isoliert.</p>
   </li>
   <li>
-    <p>The privacy an in-chat app offers is the privacy of your chat - as long as you
-trust the people you chat with, you can trust the in-chat app as well.</p>
+    <p>Die Privatsphäre, die eine App bietet, ist die Privatsphäre des Chats – solange Sie den Personen, mit denen Sie chatten, vertrauen, können Sie auch der App vertrauen.</p>
   </li>
   <li>
-    <p>This also means: Just like for web links, do not open apps from untrusted contacts.</p>
+    <p>Das bedeutet auch: Genauso wie bei Weblinks, öffne keine Apps von nicht-vertrauenswürdigen Kontakten.</p>
   </li>
 </ul>
     
@@ -638,19 +631,18 @@ trust the people you chat with, you can trust the in-chat app as well.</p>
 
 <ul>
   <li>
-    <p>In-chat apps are zip files with <code class="language-plaintext highlighter-rouge">.xdc</code> extension containing html, css, and javascript code.</p>
+    <p>In-Chat-Apps sind ZIP-Dateien mit der Erweiterung <code class="language-plaintext highlighter-rouge">.xdc</code>, die HTML-, CSS- und JavaScript-Code enthalten.</p>
   </li>
   <li>
-    <p>You can extend the <a href="https://github.com/webxdc/hello">Hello World example app</a>
-to get started.</p>
+    <p>Um loszulegen, kannst du das <a href="https://github.com/webxdc/hello">Hello-World-Beispiel</a> bearbeiten.</p>
   </li>
   <li>
-    <p>All else you need to know is written in the
-<a href="https://webxdc.org/docs">Webxdc documentation</a>.</p>
+    <p>Alle weitere, was du wissen musst, ist in der 
+<a href="https://webxdc.org/docs">Webxdc-Dokumentation</a> beschrieben.</p>
   </li>
   <li>
-    <p>If you have question, you can ask others with experience
-in the <a href="https://support.delta.chat/c/webxdc/20">Delta Chat Forum</a>.</p>
+    <p>Wenn du Fragen hast, kannst du andere mit mehr Erfahrung
+im <a href="https://support.delta.chat/c/webxdc/20">Forum</a> ansprechen.</p>
   </li>
 </ul>
     
@@ -710,8 +702,8 @@ keine Daten an Apple weitergibt, die Apple nicht bereits hat.</p>
         
       </h3>
 
-<p>If a “Push Service” is available, Delta Chat enables Push Notifications
-to achieve instant message delivery for all chatmail users.</p>
+<p>Wenn ein „Push-Dienst“ verfügbar ist, aktiviert Delta Chat Push-Benachrichtigungen,
+um eine sofortige Nachrichtenzustellung für alle Chatmail-Benutzer zu erreichen.</p>
 
 <p>In den Delta-Chat-Einstellungen „Benachrichtigungen“ für „Sofortige Benachrichtigungen“
 kannst du die folgenden Einstellungen ändern, die alle Chat-Profile betreffen:</p>
@@ -724,7 +716,7 @@ Einige Android-Hersteller schränken Apps sogar vollständig ein
 und Delta Chat zeigt möglicherweise keine eingehenden Nachrichten an, bis du die App erneut manuell öffnest.</p>
   </li>
   <li>
-    <p>Hintergrundverbindung erzwingen: Dies ist die Ausweichoption wenn die vorherigen Optionen nicht verfügbar sind oder keine „sofortige Zustellung“ erreichen. Die Aktivierung dieser Option führt zu einer permanenten Benachrichtigung auf Ihrem Telefon, die bei neueren Android-Telefonen manchmal „verkleinert“ werden kann.</p>
+    <p>Hintergrundverbindung erzwingen: Dies ist die Ausweichoption wenn die vorherigen Optionen nicht verfügbar sind oder keine „sofortige Zustellung“ erreichen. Die Aktivierung dieser Option führt zu einer permanenten Benachrichtigung auf deinem Telefon, die bei neueren Android-Telefonen manchmal „verkleinert“ werden kann.</p>
   </li>
 </ul>
 
@@ -739,9 +731,9 @@ können sicher ausprobiert werden, wenn du feststellst, dass Nachrichten nur mit
         
       </h3>
 
-<p>Delta Chat Push Notification support avoids leakage of private information.
-It does not leak profile data, IP address or message content (not even encrypted)
-to any system involved in the delivery of Push Notifications.</p>
+<p>Delta Chats Vorgehensweise, Push-Benachrichtigungen zu verwenden, vermeidet die Weitergabe privater Informationen.
+Es werden keine Profildaten, IP-Adressen oder Nachrichteninhalte (auch nicht verschlüsselt)
+an irgendein System, das an der Zustellung von Push-Benachrichtigungen beteiligt ist, weitergegeben.</p>
 
 <p>So verwendet Delta Chat Push-Benachrichtigungen:</p>
 
@@ -751,21 +743,20 @@ to any system involved in the delivery of Push Notifications.</p>
 auf dem <a href="https://delta.chat/chatmail">Chatmail</a>-Server.</p>
   </li>
   <li>
-    <p>When a <a href="https://delta.chat/chatmail">chatmail</a> server receives a message for a Delta Chat user
-it forwards the encrypted device token to the central Delta Chat notification proxy.</p>
+    <p>Wenn ein <a href="https://delta.chat/chatmail">Chatmail</a>-Server eine Nachricht für einen Delta-Chat-Benutzer erhält
+erhält, leitet er das verschlüsselte Geräte-Token an den zentralen Delta-Chat-Benachrichtigungs-Proxy weiter.</p>
   </li>
   <li>
-    <p>The central Delta Chat notification proxy decrypts the device token
-and forwards it to the respective Push service (Apple, Google, etc.),
-without ever knowing the IP or profile data of Delta Chat users.</p>
+    <p>Der zentrale Delta-Chat-Benachrichtigungs-Proxy entschlüsselt das Geräte-Token und leitet es an den jeweiligen Push-Dienst (Apple, Google, etc.) weiter,
+ohne jemals die Adresse oder IP-Adresse des Delta-Chat-Benutzers zu kennen.</p>
   </li>
   <li>
-    <p>The central Push Service (Apple, Google, etc.)
-wakes up the Delta Chat app on your device
-to check for new messages in the background.
-It does not know about the profile data of the device it wakes up.
-The central Apple/Google Push services never see any profile data (sender or receiver)
-and also never see any message content (also not in encrypted forms).</p>
+    <p>Der zentrale Push-Dienst (Apple, Google, etc.)
+weckt die Delta-Chat-App auf deinem Gerät auf
+um im Hintergrund nach neuen Nachrichten zu suchen.
+Der zentrale Push-Dienst weiß nichts über das Profil des Geräts, das er aufweckt,
+sieht nie eine Adresse (weder Absender noch Empfänger)
+und auch nie den Inhalt einer Nachricht (auch nicht in verschlüsselter Form).</p>
   </li>
 </ul>
 
@@ -773,10 +764,10 @@ and also never see any message content (also not in encrypted forms).</p>
 und vergisst die Geräte-Token, sobald Apple/Google/etc. sie verarbeitet hat,
 normalerweise innerhalb weniger Millisekunden.</p>
 
-<p>Note that the device token is encrypted between apps and notification proxy
-but it is not signed. 
-The notification proxy thus never sees profile data, IP-addresses or
-any cryptographic identity information associated with a user’s device (token).</p>
+<p>Beachten, dass das Geräte-Token zwischen Anwendungen und dem Benachrichtigungs-Proxy verschlüsselt,
+aber nicht signiert ist. 
+Der Benachrichtigungs-Proxy sieht also niemals Profildaten, IP-Adressen oder
+irgendwelche kryptografischen Identitätsinformationen, die mit dem Gerät oder dem Geräte-Token eines Nutzers verbunden sind.</p>
 
 <p>Aufgrund dieses umfassenden Datenschutzkonzepts würde sogar die Beschlagnahmung eines Chatmail-Servers,
 oder die vollständige Beschlagnahmung des zentralen Delta-Chat-Benachrichtigungsproxys
@@ -795,10 +786,9 @@ aber wir wollen, dass die Nutzer eine zuverlässige „Sofortzustellung“ von N
 wie sie es von WhatsApp, Signal oder Telegram kennen,
 ohne im Vorfeld Fragen zu stellen, die eher für erfahrene Nutzer oder Entwickler geeignet sind.</p>
 
-<p>Note that Delta Chat has a <a href="#privacy-notifications">small and privacy-preserving Push Notification system</a>
-that achieves “instant delivery” of messages for all chatmail servers
-including a potential one <a href="https://delta.chat/chatmail#selfhosted">you might setup yourself without our permission</a>.
-Welcome to the power of the interoperable chatmail relay network :)</p>
+<p>Beachte, dass Delta Chat ein <a href="#privacy-notifications">kleines, die Privatsphäre wahrendes Push-Benachrichtigungssystem</a>
+hat, das eine „sofortige Zustellung“ von Nachrichten für alle Chatmail-Server erreicht.
+Einschließlich dem Chatmail-Server, <a href="https://delta.chat/chatmail#selfhosted">den du selbst ohne unsere Erlaubnis einrichten kannst</a>.</p>
     
       <h2 id="multiclient">
         
@@ -897,14 +887,16 @@ versuche, einen <strong>Mobilen Hotspot</strong> auf einem Gerät zu öffnen und
 <p>Diese Methode wird nur empfohlen, wenn “Zweites Gerät hinzufügen”, wie oben beschrieben, nicht funktioniert.</p>
 
 <ul>
-  <li>Auf dem alten Gerät, gehe zu “Einstellungen → Chats und Medien → Chats auf externem Speicher speichern”. Gib deine PIN, dein Muster oder dein Passwort zum Entsperren des Bildschirms ein. Anschließend kannst du auf “Backup starten” klicken. Dadurch wird die Backup-Datei auf deinem Gerät gespeichert. Jetzt musst du sie auf das andere Gerät übertragen.</li>
-  <li>Auf dem neuen Gerät, auf dem Anmeldebildschirm, wähle “Ich habe bereits ein Profil” und dann “Wiederherstellen aus Backup”. Nach dem Import sind deine Chats, Medien und Einstellungen auf das neue Gerät kopiert.
-    <ul>
-      <li><strong>Wenn du iOS verwendest</strong> und auf Schwierigkeiten stößt, hilft dir vielleicht <a href="https://support.delta.chat/t/import-backup-to-ios/1628">diese Anleitung</a>.</li>
-    </ul>
+  <li>
+    <p>Auf dem alten Gerät, gehe zu <strong>Einstellungen → Chats und Medien → Chats auf externem Speicher speichern</strong>. Gib deine PIN, dein Muster oder dein Passwort zum Entsperren des Bildschirms ein. Anschließend kannst du auf “Backup starten” klicken. Dadurch wird die Backup-Datei auf deinem Gerät gespeichert. Jetzt musst du sie auf das andere Gerät übertragen.</p>
   </li>
-  <li>Du bist nun synchronisiert und kannst beide Geräte zum Senden und Empfangen von Ende-zu-Ende-verschlüsselten-Nachrichten mit deinen Kommunikationspartnern verwenden.</li>
+  <li>
+    <p>Auf dem neuen Gerät, auf dem Anmeldebildschirm, wähle <strong>Ich habe bereits ein Profil → Wiederherstellen aus Backup</strong>. Nach dem Import sind deine Chats, Medien und Einstellungen auf das neue Gerät kopiert.
+Wenn du iOS verwendest und auf Schwierigkeiten stößt, hilft dir vielleicht <a href="https://support.delta.chat/t/import-backup-to-ios/1628">diese Anleitung</a>.</p>
+  </li>
 </ul>
+
+<p>Du bist nun synchronisiert und kannst beide Geräte zum Senden und Empfangen von Ende-zu-Ende-verschlüsselten-Nachrichten mit deinen Kommunikationspartnern verwenden.</p>
     
       <h3 id="gibt-es-pläne-für-eine-delta-chat-web-anwendung">
         
@@ -941,36 +933,45 @@ kannst du unfertige Features ausprobieren, an denen gearbeitet wird.</p>
 
 <p>Die Features können <strong>instabil</strong> sein und <strong>geändert oder entfernt</strong> werden.</p>
 
-<p>You can find more information
-and give feedback in the <a href="https://support.delta.chat">Forum</a>.</p>
+<p>Du findest weitere Informationen im <a href="https://support.delta.chat">Forum</a>, wo du auch Feedback geben kannst.</p>
     
-      <h3 id="statssending">
+      <h3 id="relays">
         
         
-          Was ist “Statistik an Delta Chat Entwickler senden”? <a href="#statssending" class="anchor"></a>
+          Was sind Relays? <a href="#relays" class="anchor"></a>
         
         
       </h3>
 
-<p>We would like to improve Delta Chat with your help,
-which is why Delta Chat for Android asks whether you want
-to send anonymous usage statistics.</p>
+<p>Relays werden verwendet, um Nachrichten vorübergehend zu speichern, falls dein Gerät offline ist.
+Relays sind billige und einfache Server,
+die keine Daten wie Gruppenstatus, deinen Namen oder deinen Avatar speichern –
+all das existiert nur auf deinem Gerät.
+Relays werden von verschiedenen Gruppen und Personen betrieben.</p>
 
-<p>You can turn it on and off at
-<strong>Settings → Advanced → Send statistics to Delta Chat’s developers</strong>.</p>
-
-<p>When you turn it on,
-weekly statistics will be automatically sent to a bot.</p>
-
-<p>We are interested e.g. in statistics like:</p>
+<p>Standardmäßig wird nach der Installation ein Relay <strong>automatisch</strong> hinzugefügt;
+darum musst du dich nicht kümmern.
+Wenn du möchtest,
+kannst du jedoch unter <strong>Einstellungen → Erweitert → Relays</strong> Änderungen vornehmen:</p>
 
 <ul>
-  <li>How many contacts are introduced by personally scanning a QR code?</li>
-  <li>Which versions of Delta Chat are being used?</li>
-  <li>How many messages are unencrypted?</li>
+  <li>
+    <p>Du kannst ein Relay <strong>hinzufügen</strong>, indem du einen QR-Code scannst,
+z.B. von <a href="https://chatmail.at/relays">https://chatmail.at/relays</a>.
+Bei mehreren Relays, empfängst du die Nachrichten von allen Relays.</p>
+  </li>
+  <li>
+    <p><strong>Standard</strong> legt das Relay fest, an das deine Chatpartner zukünftig Nachrichten senden.</p>
+  </li>
+  <li>
+    <p>Wenn du ein Relay <strong>entfernst</strong>,
+stelle sicher, dass ein anderes Standard-Relay ausreichend lange verwendet wurde.
+Andernfalls erreichen dich keine Nachrichten von deinen Kontakten.
+Im Zweifelsfall entferne das Relay später.</p>
+  </li>
 </ul>
 
-<p>We will <em>not</em> collect any personally identifiable information about you.</p>
+<p>Weitere Details und zukünftige Möglichkeiten findest du im <a href="https://support.delta.chat">Forum</a>.</p>
     
       <h3 id="kann-ich-eine-klassische-e-mail-adresse-mit-delta-chat-verwenden">
         
@@ -1036,6 +1037,40 @@ except if your users’ devices require Google/Apple <a href="#instant-delivery"
 <a href="https://chatmail.at">Chatmail</a> is a community-driven project that encompasses both the setup of relays
 and <a href="https://github.com/chatmail/core">core Rust developments</a> 
 that power <a href="https://chatmail.at/clients">chatmail clients</a> of which Delta Chat is the most well known.</p>
+    
+      <h3 id="statssending">
+        
+        
+          Was ist “Statistik an Delta Chat Entwickler senden”? <a href="#statssending" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>We would like to improve Delta Chat with your help,
+which is why Delta Chat for Android asks whether you want
+to send anonymous usage statistics.</p>
+
+<p>You can turn it on and off at
+<strong>Settings → Advanced → Send statistics to Delta Chat’s developers</strong>.</p>
+
+<p>When you turn it on,
+weekly statistics will be automatically sent to a bot.</p>
+
+<p>We are interested e.g. in statistics like:</p>
+
+<ul>
+  <li>
+    <p>How many contacts are introduced by personally scanning a QR code?</p>
+  </li>
+  <li>
+    <p>Which versions of Delta Chat are being used?</p>
+  </li>
+  <li>
+    <p>What errors occur for users?</p>
+  </li>
+</ul>
+
+<p>We will <em>not</em> collect any personally identifiable information about you.</p>
     
       <h3 id="ich-bin-an-technischen-details-interessiert-gibt-es-hierzu-weitere-infos">
         
@@ -1104,10 +1139,7 @@ Seit der Veröffentlichung von Delta Chat Version 2 (Juli 2025) gibt es keine Sc
 
 <p>Wenn du die Standard-<a href="https://chatmail.at/relays">Chatmail-Relays</a> verwendest, ist es unmöglich, Nachrichten ohne End-to-End-Verschlüsselung zu empfangen oder zu senden.</p>
 
-<p>If you instead use a <a href="#classic-email">classic email server</a>,
-you can send and receive messages with or without end-to-end encryption.
-Messages lacking end-to-end encryption are marked with an email icon
-<img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
+<p>Wenn du stattdessen ein Profil mit einem <a href="#classic-email">klassischen E-Mail-Server</a> erstellst, kannst du Nachrichten mit und ohne Ende-zu-Ende-Verschlüsselung senden und empfangen.  Nachrichten ohne Ende-zu-Ende-Verschlüsselung werden mit einem E-Mail-Symbol gekennzeichnet  <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
     
       <h3 id="e2eeguarantee">
         
@@ -1181,10 +1213,11 @@ die Sicherheitseigenschaften durch das im Sommer 2023 angenommene
         
       </h3>
 
-<p>Yes, we are following efforts like <a href="https://en.wikipedia.org/wiki/Messaging_Layer_Security">MLS</a>
-but adopting them would mean breaking end-to-end encryption interoperability.
-So it would not be a light decision to take 
-and there must be tangible improvements for users.</p>
+<p>Ja, wir verfolgen Ansätze wie <a href="https://en.wikipedia.org/wiki/Messaging_Layer_Security">MLS</a>. 
+Diese zu übernehmen würde aber bedeuten, die Interoperabilität der Ende-zu-Ende-Verschlüsselung 
+mit allen anderen Anwendungen zu zerstören. 
+Die Entscheidung wäre also nicht leicht zu treffen 
+und müsste spürbare Verbesserungen für die Nutzer bringen.</p>
 
 <p>Delta Chat verfolgt einen ganzheitlichen Ansatz bei der “nutzbaren Sicherheit”: 
 Wir arbeiteten mit vielen Aktivistengruppen sowie mit 
@@ -1222,21 +1255,22 @@ so wie in der Autocrypt-Level-1-Spezifikation definiert.</p>
         
       </h3>
 
-<p>If you are sending or receiving email messages without end-to-end encryption (using a classic email server),
-they are still protected from cell or cable companies who can not read or modify your email messages.
-But both your and your recipient’s email providers
-may read, analyze or modify your messages, including any attachments.</p>
+<p>Wenn du E-Mail-Nachrichten ohne Ende-zu-Ende-Verschlüsselung sendest oder empfängst (mit einem klassischen E-Mail-Server),
+sind sie immer noch vor Mobilfunkanbietern oder Kabelnetzbetreibern geschützt, die deine E-Mail-Nachrichten nicht lesen oder verändern können.</p>
 
-<p>Delta Chat by default uses strict 
-<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS encryption</a> 
-which secures connections between your device and your email provider.
-All of Delta Chat’s TLS-handling has been independently <a href="#security-audits">security audited</a>.
-Moreover, the connection between your and the recipient’s email provider
-will typically be transport-encrypted as well.
-If the involved email servers support <a href="https://datatracker.ietf.org/doc/html/rfc8461">MTA-STS</a>
-then transport encryption will be enforced between email providers
-in which case Delta Chat communications will never be exposed in cleartext to the Internet
-even if the message was not end-to-end encrypted.</p>
+<p>Aber sowohl dein E-Mail-Anbieter als auch der E-Mail-Anbieter des Empfängers 
+können Nachrichten, einschließlich aller Anhänge, lesen, analysieren oder verändern.</p>
+
+<p>Delta Chat verwendet standardmäßig strikte 
+<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS-Verschlüsselung</a>, 
+die die Verbindungen zwischen deinem Gerät und dem E-Mail-Anbieter sichert. 
+Die gesamte TLS-Implementierung wurde unabhängig <a href="#security-audits">sicherheitsgeprüft</a>.
+Die Verbindung zwischen deinem E-Mail-Provider und dem des Empfängers
+ist in der Regel ebenfalls transportverschlüsselt.
+Wenn die beteiligten E-Mail-Server <a href="https://datatracker.ietf.org/doc/html/rfc8461">MTA-STS</a> unterstützen,
+wird TLS zwischen den E-Mail-Anbietern durchgesetzt. 
+In diesem Fall wird die Delta-Chat-Kommunikation niemals im Klartext ins Internet gelangen
+selbst wenn die Nachricht nicht Ende-zu-Ende-verschlüsselt war.</p>
     
       <h3 id="message-metadata">
         
@@ -1351,7 +1385,7 @@ Wir beabsichtigen, PQC-Unterstützung zum <a href="https://github.com/chatmail/c
 <p>Du kannst den Status der Ende-zu-Ende-Verschlüsselung manuell im Dialog “Verschlüsselung”
 (Android/iOS: Benutzerprofil, Desktop: Rechtsklick auf den Chat eines Benutzers) überprüfen.
 Delta Chat zeigt dort zwei Fingerabdrücke an.
-Wenn die gleichen Fingerabdrücke auf Ihrem eigenen Gerät und auf dem Gerät Ihres Kontakts erscheinen,
+Wenn die gleichen Fingerabdrücke auf deinem eigenen Gerät und auf dem Gerät deines Kontakts erscheinen,
 ist die Verbindung sicher.</p>
     
       <h3 id="importkey">
@@ -1454,10 +1488,10 @@ e.g. you need to grant camera permission if you want to <a href="#howtoe2ee">sca
     <p>Falls nicht verfügbar, verwende den <strong>Mirror</strong> auf <a href="https://deltachat.github.io/deltachat-pages">https://deltachat.github.io/deltachat-pages</a></p>
   </li>
   <li>
-    <p>Öffne einen der folgenden <strong>App-Stores und suchen Sie nach „Delta Chat“:</strong> Google Play Store, F-Droid, Huawei App Gallery, iOS und macOS App Store, Microsoft Store</p>
+    <p>Öffne einen der folgenden <strong>App-Stores und suche nach „Delta Chat“:</strong> Google Play Store, F-Droid, Huawei App Gallery, iOS und macOS App Store, Microsoft Store</p>
   </li>
   <li>
-    <p>Im <strong>Paketmanager</strong> Ihrer Linux-Distribution nachschauen</p>
+    <p>Im <strong>Paketmanager</strong> deiner Linux-Distribution nachschauen</p>
   </li>
   <li>
     <p><strong>Android-APKs</strong> sind auch auf <a href="https://github.com/deltachat/deltachat-android/releases">https://github.com/deltachat/deltachat-android/releases</a> verfügbar.</p>

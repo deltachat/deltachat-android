@@ -409,7 +409,7 @@
         <item quantity="one">¿Esborra %d missatge de tots els teus dispositius?</item>
         <item quantity="other">¿Esborra %d missatges de tots els teus dispositius?</item>
     </plurals>
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Vols esborrar %d missatge?</item>
         <item quantity="other">Voleu esborrar %d missatges?</item>
@@ -483,6 +483,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Llista de correu</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Els canvis al nom i la imatge de la llista de correu només s\'aplicaran en aquest dispositiu.</string>
 
     <!-- webxdc -->
@@ -611,7 +612,7 @@
     <string name="onboarding_create_instant_account">Crea un perfil nou</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Ja tinc un perfil</string>
-    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Inici de sessió correu-e clàssic</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">El vostre perfil</string>
@@ -734,6 +735,7 @@
     <string name="pref_sound">So</string>
     <string name="pref_silent">Silenci</string>
     <string name="pref_privacy">Privacitat</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Xats i multimèdia</string>
     <string name="pref_system_default">Per defecte del sistema</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -967,13 +969,14 @@
     <string name="qrshow_join_contact_hint">Escanegeu això per establir contacte amb %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">No hi ha connexió a internet, no es pot fer la configuració amb codi QR.</string>
     <string name="qraccount_ask_create_and_login">Voleu crear un perfil nou a «%1$s» i iniciar sessió allà?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Voleu crear un perfil nou a «%1$s» i iniciar-hi sessió?\n\nEl vostre perfil existent no s\'esborrarà. Useu l\'element «Canvia el perfil» per a canviar entre els vostres perfils.</string>
     <string name="set_name_and_avatar_explain">Indiqueu un nom que els vostres contactes puguin reconèixer. També podeu establir una imatge de perfil.</string>
     <string name="please_enter_name">Introduïu un nom</string>
     <string name="qraccount_qr_code_cannot_be_used">El codi QR escanejat no es pot usar per a configurar un perfil nou.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Voleu iniciar sessió a «%1$s»?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Voleu iniciar «%1$s»?\n\nNo s\'esborrarà el perfil existent. Useu l\'element «Canvia el perfil» per a canviar entre els vostres perfils.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s us ha convidat a unir-vos a aquest grup.\n\nS\'està esperant el dispositiu de %2$s per a respondre...</string>

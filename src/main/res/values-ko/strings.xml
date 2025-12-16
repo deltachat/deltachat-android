@@ -268,7 +268,10 @@
     </plurals>
     <string name="file_saved_to">파일 \"%1$s\"에 저장됨.</string>
 
-    <!-- Used for the deletion of Device messages -->
+    <plurals name="ask_delete_messages">
+        <item quantity="other">%d개의 메시지를 삭제하시겠습니까?</item>
+    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">%d개의 메시지를 삭제하시겠습니까?</item>
     </plurals>
@@ -330,6 +333,7 @@
     <string name="attachment_failed_to_load">첨부 파일을 불러오지 못했습니다.</string>
     <!-- mailing lists -->
     <string name="mailing_list">메일 목록</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">메일링 목록 이름 및 이미지의 변경 사항은 이 장치에만 적용됩니다.</string>
 
     <!-- webxdc -->
@@ -481,6 +485,7 @@
     <string name="pref_sound">알림음</string>
     <string name="pref_silent">무음</string>
     <string name="pref_privacy">개인정보 보호</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">대화 및 미디어</string>
     <string name="pref_system_default">시스템 기본값</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -662,11 +667,12 @@
     <string name="qrshow_join_contact_hint">%1$s과 채팅을 하려면 스캔하시오</string>
     <string name="qrshow_join_contact_no_connection_toast">인터넷에 연결되어 있지 않아 QR 코드 설정을 수행할 수 없습니다.</string>
     <string name="qraccount_ask_create_and_login">\"%1$s\"에서 새 이메일 주소를 만들고 로그인하시겠습니까?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">\"%1$s\"에서 새 이메일 주소를 만들고 로그인하시겠습니까?\n\n기존 계정은 삭제되지 않습니다. 계정 전환 항목을 사용하여 계정 간을 전환합니다.</string>
     <string name="qraccount_qr_code_cannot_be_used">스캔한 QR 코드를 사용하여 새 계정을 설정할 수 없습니다.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">\"%1$s\"에 로그인하시겠습니까?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">\"%1$s\"에 로그인하시겠습니까?\n\n기존 계정은 삭제되지 않습니다. 계정 전환 항목을 사용하여 계정 간을 전환합니다.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s이 그룹에 가입하도록 초대했습니다.\n\n%2$s의 장치가 응답하기를 기다리는 중입니다...</string>

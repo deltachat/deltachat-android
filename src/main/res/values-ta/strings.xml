@@ -190,6 +190,7 @@
     <string name="pref_sound">ஓசை</string>
     <string name="pref_silent">அமைதி</string>
     <string name="pref_privacy">தனியுரிமை</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">அரட்டைகள் மற்றும் ஊடகங்கள்</string>
     <string name="pref_system_default">கருவி இயல்புநிலை</string>
     <!-- Translators: as in "opposite of dark" -->

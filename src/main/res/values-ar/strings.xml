@@ -175,6 +175,7 @@
     <string name="pref_led_color">لون ضوء التنبيه LED</string>
     <string name="pref_sound">الصوت</string>
     <string name="pref_privacy">الخصوصية</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">الدردشة والوسائط</string>
     <string name="pref_system_default">افتراضيات النظام</string>
     <!-- Translators: as in "opposite of dark" -->

@@ -388,14 +388,14 @@
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">是否确定要离开？</string>
     <plurals name="ask_delete_chat">
-        <item quantity="other">是否删除所有设备上的 %d 个聊天？</item>
+        <item quantity="other">删除 %d 个聊天？</item>
     </plurals>
-    <string name="ask_delete_named_chat">是否删除所有设备上的聊天“%1$s”？</string>
-    <string name="ask_delete_message">是否在所有设备上删除此消息？</string>
+    <string name="ask_delete_named_chat">删除聊天“%1$s”？</string>
+    <string name="ask_delete_message">删除此消息？</string>
     <plurals name="ask_delete_messages">
-        <item quantity="other">是否删除所有设备上的 %d 条消息？</item>
+        <item quantity="other">删除 %d 条消息？</item>
     </plurals>
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">删除 %d 条消息吗？</item>
     </plurals>
@@ -465,6 +465,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">邮件列表</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">邮件列表名称和图像的更改仅适用于此设备。 </string>
 
     <!-- webxdc -->
@@ -570,7 +571,7 @@
     <string name="outgoing_messages">消息发送</string>
     <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
     <string name="storage_on_domain">%1$s 上的存储空间</string>
-    <string name="connectivity">连接状态</string>
+    <string name="connectivity">连接</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">未连接</string>
     <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
@@ -593,7 +594,7 @@
     <string name="onboarding_create_instant_account">创建新账号</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">我已有账号</string>
-    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">使用传统电子邮件作为中继</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">个人资料</string>
@@ -618,7 +619,7 @@
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
     <string name="scan_invitation_code">扫描邀请码</string>
     <string name="login_title">登录</string>
-    <string name="login_advanced_hint">此登录适用于高级用户：\n\n• 请勿使用您在其他应用中已使用的账号。\n\n• 传统电子邮件服务器允许进行未端到端加密的聊天，此类聊天以邮件图标标记。</string>
+    <string name="login_advanced_hint">此登录适用于高级用户：\n\n• 请勿使用您在其他应用中已使用的地址。\n\n• 传统电子邮件服务器允许进行未端到端加密的聊天，此类聊天以邮件图标标记。</string>
     <string name="login_inbox">收件箱</string>
     <string name="login_imap_login">IMAP 登录名</string>
     <string name="login_imap_server">IMAP 服务器</string>
@@ -730,6 +731,7 @@
     <string name="pref_sound">声音</string>
     <string name="pref_silent">无声</string>
     <string name="pref_privacy">隐私</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">聊天与媒体</string>
     <string name="pref_system_default">系统默认</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -934,7 +936,7 @@
 
     <string name="devicemsg_self_deleted">您已删除“保存的消息”聊天。\n\nℹ️要再次使用“保存的消息”功能，请创建一个与自己的新聊天。</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️邮件服务商提供的存储空间快满了，已使用 %1$s%%。\n\n如果存储空间用光，您可能无法接收消息。\n\n👉请检查是否可以在提供商的网页界面上删除旧数据，或考虑启用“设置/删除旧消息”。您可以在“设置/连接状态”中查看当前的存储使用情况。</string>
+    <string name="devicemsg_storage_exceeding">⚠️ 您的服务提供者存储空间即将用完：已使用 %1$s%%。\n\n如果存储空间已满，您可能无法接收消息。\n\n👉 请检查您是否可以在服务提供者的网页界面中删除旧数据，并考虑启用“设置/聊天/删除旧消息”。您可以随时在“设置/连接”中查看当前的存储空间使用情况。</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️设备的日期或时间似乎不准确 （%1$s）。\n\n请调整时钟⏰🔧以确保能够正确接收消息。</string>
     <string name="devicemsg_update_reminder">⚠️您的 Delta Chat 版本可能过时了。\n\n这可能会在您的聊天伙伴使用更新的版本时造成问题。并且您缺失了最新功能😳\n请浏览 https://get.delta.chat 或应用商店来获取更新。</string>
@@ -975,13 +977,14 @@
     <string name="qrshow_join_contact_hint">扫描即可与 %1$s 聊天</string>
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
     <string name="qraccount_ask_create_and_login">在“%1$s”创建新的电子邮件地址并登录？</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">在“%1$s”创建新账号并登录？\n\n不会删除您现有的账号。使用“切换账号”在账号之间切换。</string>
     <string name="set_name_and_avatar_explain">设置联系人可以识别的名称，您还可以设置个人资料图片。</string>
     <string name="please_enter_name">请输入名称。</string>
     <string name="qraccount_qr_code_cannot_be_used">扫描的二维码不能用于创建新账号。</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">登录 \"%1$s\"吗？</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">是否登录“%1$s”？\n\n不会删除您现有的账号。使用“切换账号”在账号之间切换。</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s 邀请你加入此群组。\n\n等待 %2$s 的设备回复…</string>
@@ -1109,7 +1112,7 @@
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">停止共享位置</string>
     <string name="a11y_voice_message_hint_ios">录制后，点按两次即可发送。如需舍弃录制内容，请双指滑动。</string>
-    <string name="a11y_connectivity_hint">点按两次即可查看连接详情</string>
+    <string name="a11y_connectivity_hint">双击即可查看连接详情。</string>
     <string name="login_error_no_internet_connection">无互联网连接，登录失败。</string>
     <string name="share_account_not_configured">账号未配置。</string>
     <string name="cannot_play_audio_file">无法播放音频文件。</string>

@@ -400,16 +400,16 @@
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Weet je zeker dat je dit kanaal wilt verlaten?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Wil je %d gesprek verwijderen van al je apparaten?</item>
-        <item quantity="other">Wil je %d gesprekken verwijderen van al je apparaten?</item>
+        <item quantity="one">Wil je %d gesprek verwijderen?</item>
+        <item quantity="other">Wil je %d gesprekken verwijderen?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Wil je ‘%1$s’ verwijderen van al je apparaten?</string>
-    <string name="ask_delete_message">Wil je dit bericht verwijderen van al je apparaten?</string>
+    <string name="ask_delete_named_chat">Wil je ‘%1$s’ verwijderen?</string>
+    <string name="ask_delete_message">Wil je dit bericht verwijderen?</string>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Wil je %d bericht verwijderen van al je apparaten?</item>
-        <item quantity="other">Wil je %d berichten verwijderen van al je apparaten?</item>
+        <item quantity="one">Wil je %d bericht verwijderen?</item>
+        <item quantity="other">Wil je %d berichten verwijderen?</item>
     </plurals>
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Wil je %d bericht verwijderen?</item>
         <item quantity="other">Wil je %d berichten verwijderen?</item>
@@ -483,6 +483,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Mailinglijst</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Wijzigingen aan de mailinglijstnaam en -afbeelding worden alleen op dit apparaat getoond.</string>
 
     <!-- webxdc -->
@@ -611,7 +612,7 @@
     <string name="onboarding_create_instant_account">Account aanmaken</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Ik heb al een account</string>
-    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Inloggen met eigen e-mailadres</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Mijn profiel</string>
@@ -748,6 +749,7 @@
     <string name="pref_sound">Geluid</string>
     <string name="pref_silent">Stil</string>
     <string name="pref_privacy">Privacy</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Gesprekken en media</string>
     <string name="pref_system_default">Systeemstandaard</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -993,13 +995,14 @@
     <string name="qrshow_join_contact_hint">Scan dit om een gesprek te beginnen met %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Geen internetverbinding; kan QR-codes niet instellen.</string>
     <string name="qraccount_ask_create_and_login">Wil je een nieuw e-mailadres aanmaken op ‘%1$s’ en daarmee inloggen?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Wil je een nieuw e-mailadres aanmaken op ‘%1$s’ en daarmee inloggen?\n\nJe reeds aanwezige account wordt niet verwijderd. Druk op de knop ‘Ander account kiezen’ om tussen accounts te schakelen.</string>
     <string name="set_name_and_avatar_explain">Kies een naam die herkenbaar is voor je contactpersonen en, desgewenst, een profielfoto.</string>
     <string name="please_enter_name">Voer een naam in.</string>
     <string name="qraccount_qr_code_cannot_be_used">De gescande QR-code kan niet worden gebruikt om een nieuw account in te stellen.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Inloggen als ‘%1$s’?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Wil je inloggen als ‘%1$s’?\n\nJe reeds aanwezige account wordt niet verwijderd. Druk op de knop ‘Ander account kiezen’ om tussen accounts te schakelen.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s heeft je uitgenodigd voor deze groep.\n\nEr wordt gewacht op antwoord van het apparaat van %2$s…</string>

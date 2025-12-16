@@ -54,19 +54,20 @@
   </li>
   <li><a href="#avanzato">Avanzato</a>
     <ul>
-      <li><a href="#experimental-features">Experimental Features</a></li>
-      <li><a href="#statssending">What is “Send statistics to Delta Chat’s developers”?</a></li>
-      <li><a href="#can-i-use-a-classic-email-address-with-delta-chat">Can I use a classic email address with Delta Chat?</a></li>
-      <li><a href="#classic-email">How can I configure a chat profile with a classic email address as relay?</a></li>
+      <li><a href="#funzionalità-sperimentali">Funzionalità Sperimentali</a></li>
+      <li><a href="#relays">Cosa sono i ripetitori?</a></li>
+      <li><a href="#posso-usare-un-indirizzo-email-classico-con-delta-chat">Posso usare un indirizzo email classico con Delta Chat?</a></li>
+      <li><a href="#classic-email">Come posso configurare un profilo chat con un indirizzo email classico come inoltro?</a></li>
       <li><a href="#vorrei-gestire-il-mio-server-per-delta-chat-cosa-mi-consigliate">Vorrei gestire il mio server per Delta Chat. Cosa mi consigliate?</a></li>
+      <li><a href="#statssending">Che cosa significa “Invia statistiche agli sviluppatori di Delta Chat”?</a></li>
       <li><a href="#sono-interessato-ai-dettagli-tecnici-mi-puoi-dire-di-più">Sono interessato ai dettagli tecnici. Mi puoi dire di più?</a></li>
     </ul>
   </li>
   <li><a href="#e2ee">Crittografia e Sicurezza</a>
     <ul>
       <li><a href="#quali-standards-vengono-utilizzati-per-la-crittografia-end-to-end">Quali standards vengono utilizzati per la crittografia end-to-end?</a></li>
-      <li><a href="#whene2e">How can I know if messages are end-to-end encrypted?</a></li>
-      <li><a href="#can-i-still-receive-or-send-messages-without-end-to-end-encryption">Can I still receive or send messages without end-to-end encryption?</a></li>
+      <li><a href="#whene2e">Come posso sapere se i messaggi sono crittografati end-to-end?</a></li>
+      <li><a href="#posso-ancora-ricevere-o-inviare-messaggi-senza-crittografia-end-to-end">Posso ancora ricevere o inviare messaggi senza crittografia end-to-end?</a></li>
       <li><a href="#e2eeguarantee">Cosa significa il segno di spunta verde nel profilo di un contatto?</a></li>
       <li><a href="#gli-allegati-immagini-file-audio-ecc-sono-crittografati-end-to-end">Gli allegati (immagini, file, audio, ecc.) sono crittografati end-to-end?</a></li>
       <li><a href="#openpgp-secure">OpenPGP è sicuro?</a></li>
@@ -108,7 +109,7 @@ disponibile per piattaforme mobili e desktop.</p>
 <ul>
   <li>
     <p>Creazione istantanea di <strong>profili chat privati</strong>
-con <a href="https://chatmail.at/relays">relay di chat</a>
+con <a href="https://chatmail.at/relays">ripetitori di chat</a>
 sicuri e interoperabili che offrono l’invio di messaggi istantanei e notifiche push per dispositivi iOS e Android.</p>
   </li>
   <li>
@@ -655,7 +656,7 @@ copie sui dispositivi dei tuoi interlocutori. A parte questo, è completamente
 isolata da Internet.</p>
   </li>
   <li>
-    <p>La privacy offerta da un’app di chat è la privacy della tua chat: finché
+    <p>La riservatezza offerta da un’app di chat è la riservatezza della tua chat: finché
 ti fidi delle persone con cui chatti, puoi fidarti anche dell’app di chat.</p>
   </li>
   <li>
@@ -673,19 +674,19 @@ ti fidi delle persone con cui chatti, puoi fidarti anche dell’app di chat.</p>
 
 <ul>
   <li>
-    <p>In-chat apps are zip files with <code class="language-plaintext highlighter-rouge">.xdc</code> extension containing html, css, and javascript code.</p>
+    <p>Le apps in-chat sono file zip con estensione <code class="language-plaintext highlighter-rouge">.xdc</code> contenenti codice HTML, CSS e JavaScript.</p>
   </li>
   <li>
-    <p>You can extend the <a href="https://github.com/webxdc/hello">Hello World example app</a>
-to get started.</p>
+    <p>Puoi estendere l’<a href="https://github.com/webxdc/hello">app di esempio Hello World</a>
+per iniziare.</p>
   </li>
   <li>
-    <p>All else you need to know is written in the
-<a href="https://webxdc.org/docs">Webxdc documentation</a>.</p>
+    <p>Tutto il resto che devi sapere è scritto nella
+<a href="https://webxdc.org/docs">Documentazione di Webxdc</a>.</p>
   </li>
   <li>
-    <p>If you have question, you can ask others with experience
-in the <a href="https://support.delta.chat/c/webxdc/20">Delta Chat Forum</a>.</p>
+    <p>Se hai domande, puoi chiedere ad altri utenti esperti
+nel <a href="https://support.delta.chat/c/webxdc/20">Forum Chat Delta</a>.</p>
   </li>
 </ul>
     
@@ -732,9 +733,9 @@ invece del codice proprietario di Google sul telefono.</p>
 
 <p>Sì, Delta Chat utilizza automaticamente le notifiche push per i profili <a href="https://delta.chat/chatmail">chatmail</a>.
 E no, non esiste alcuna alternativa sui telefoni Apple per ottenere la consegna dei messaggi istantanei
-perché i dispositivi Apple non consentono a Delta Chat di recuperare i dati in background.
+perché i dispositivi Apple non consentono a Delta Chat di recuperare i dati in secondo piano.
 Le notifiche push vengono attivate automaticamente per gli utenti iOS perché
-<a href="#privacy-notifications">Sistema di notifiche push che tutela la privacy di Delta Chat</a>
+<a href="#privacy-notifications">Sistema di notifiche push che tutela la riservatezza di Delta Chat</a>
 non espone ad Apple i dati che non possiede già.</p>
     
       <h3 id="android-push">
@@ -745,8 +746,8 @@ non espone ad Apple i dati che non possiede già.</p>
         
       </h3>
 
-<p>If a “Push Service” is available, Delta Chat enables Push Notifications
-to achieve instant message delivery for all chatmail users.</p>
+<p>Se è disponibile un “Servizio Push”, Delta Chat abilita le Notifiche Push
+per garantire la consegna istantanea dei messaggi a tutti gli utenti chatmail.</p>
 
 <p>Nelle impostazioni “Notifiche” di Delta Chat per “Consegna istantanea”
 puoi modificare le seguenti impostazioni che interessano tutti i profili chat:</p>
@@ -781,9 +782,9 @@ che a volte può essere “minimizzato” con i recenti telefoni Android.</p>
         
       </h3>
 
-<p>Delta Chat Push Notification support avoids leakage of private information.
-It does not leak profile data, IP address or message content (not even encrypted)
-to any system involved in the delivery of Push Notifications.</p>
+<p>Il supporto alle Notifiche Push di Delta Chat impedisce la fuga di informazioni private.
+Non divulga dati del profilo, indirizzo IP o contenuto dei messaggi (nemmeno crittografati)
+a nessun sistema coinvolto nella trasmissione delle Notifiche Push.</p>
 
 <p>Ecco come le app Delta Chat eseguono l’invio delle Notifiche Push:</p>
 
@@ -792,21 +793,21 @@ to any system involved in the delivery of Push Notifications.</p>
     <p>Un’app Delta Chat ottiene un “token del dispositivo” localmente, lo crittografa e lo memorizza sul server <a href="https://delta.chat/chatmail">chatmail</a>.</p>
   </li>
   <li>
-    <p>When a <a href="https://delta.chat/chatmail">chatmail</a> server receives a message for a Delta Chat user
-it forwards the encrypted device token to the central Delta Chat notification proxy.</p>
+    <p>Quando un server <a href="https://delta.chat/chatmail">chatmail</a> riceve un messaggio per un utente Delta Chat
+inoltra il token del dispositivo crittografato al proxy di notifica centrale di Delta Chat.</p>
   </li>
   <li>
-    <p>The central Delta Chat notification proxy decrypts the device token
-and forwards it to the respective Push service (Apple, Google, etc.),
-without ever knowing the IP or profile data of Delta Chat users.</p>
+    <p>Il proxy di notifica centrale di Delta Chat decripta il token del dispositivo
+e lo inoltra al rispettivo servizio Push (Apple, Google, ecc.),
+senza mai conoscere l’IP o i dati del profilo degli utenti di Delta Chat.</p>
   </li>
   <li>
-    <p>The central Push Service (Apple, Google, etc.)
-wakes up the Delta Chat app on your device
-to check for new messages in the background.
-It does not know about the profile data of the device it wakes up.
-The central Apple/Google Push services never see any profile data (sender or receiver)
-and also never see any message content (also not in encrypted forms).</p>
+    <p>Il Servizio Push centrale (Apple, Google, ecc.)
+attiva l’app Delta Chat sul tuo dispositivo
+per verificare la presenza di nuovi messaggi in background.
+Non conosce i dati del profilo del dispositivo che attiva.
+I servizi Push centrali di Apple/Google non vedono mai alcun dato del profilo (mittente o destinatario)
+e non vedono mai il contenuto dei messaggi (nemmeno in formato crittografato).</p>
   </li>
 </ul>
 
@@ -814,10 +815,10 @@ and also never see any message content (also not in encrypted forms).</p>
 e si dimentica dei gettoni del dispositivo non appena Apple/Google/ecc li elabora,
 di solito nel giro di pochi millisecondi.</p>
 
-<p>Note that the device token is encrypted between apps and notification proxy
-but it is not signed. 
-The notification proxy thus never sees profile data, IP-addresses or
-any cryptographic identity information associated with a user’s device (token).</p>
+<p>Si noti che il token del dispositivo è crittografato tra le apps e il proxy di notifica
+ma non è firmato.
+Il proxy di notifica, quindi, non vede mai i dati del profilo, gli indirizzi IP o
+alcune informazioni crittografiche sull’identità associate al dispositivo di un utente (token).</p>
 
 <p>Come risultato di questo disegno complessivo sulla riservatezza, anche il sequestro di un server chatmail,
 o il sequestro totale del proxy di notifica centrale di Delta Chat
@@ -836,10 +837,10 @@ ma vogliamo che gli utenti sperimentino in modo affidabile la “consegna istant
 come sperimentano dalle app Whatsapp, Signal o Telegram,
 senza porre domande in anticipo, più adatte a utenti esperti o sviluppatori.</p>
 
-<p>Note that Delta Chat has a <a href="#privacy-notifications">small and privacy-preserving Push Notification system</a>
-that achieves “instant delivery” of messages for all chatmail servers
-including a potential one <a href="https://delta.chat/chatmail#selfhosted">you might setup yourself without our permission</a>.
-Welcome to the power of the interoperable chatmail relay network :)</p>
+<p>Tieni presente che Delta Chat ha un <a href="#privacy-notifications">sistema di notifiche push piccolo e rispettoso della riservatezza</a>
+che garantisce la “consegna istantanea” dei messaggi a tutti i server di chatmail
+incluso un potenziale <a href="https://delta.chat/chatmail#selfhosted">che potresti configurare autonomamente senza il nostro permesso</a>.
+Benvenuti nella potenza della rete di inoltro interoperabile di chatmail :)</p>
     
       <h2 id="multiclient">
         
@@ -948,19 +949,16 @@ provate il <strong>trasferimento manuale</strong> descritto di seguito</p>
 <p>Questo metodo è consigliato solo se “Aggiungi Secondo Dispositivo” come descritto sopra non funziona.</p>
 
 <ul>
-  <li>Sul vecchio dispositivo, vai su “Impostazioni -&gt; Chat e Media -&gt; Backup Chat su Memoria Esterna”. Inserisci il tuo
-PIN, sequenza o password di sblocco dello schermo. Quindi puoi fare clic su “Avvia
-Backup”. Questo salva il file di backup sul tuo dispositivo. Ora devi trasferirlo
-in qualche modo all’altro dispositivo.</li>
-  <li>Sul nuovo dispositivo, nella schermata di accesso, invece di accedere al tuo profilo
-e-mail, seleziona “Importa backup”. Dopo l’importazione, le tue conversazioni, la crittografia
-i tasti e i supporti devono essere copiati sul nuovo dispositivo.</li>
-  <li><strong>Se usi iOS:</strong> e incontri difficoltà, forse
-<a href="https://support.delta.chat/t/import-backup-to-ios/1628">questa guida</a>
-Aiutarti.</li>
-  <li>Ora sei sincronizzato e puoi utilizzare entrambi i dispositivi per inviare e ricevere
-messaggi crittografati end-to-end con i tuoi partner di comunicazione.</li>
+  <li>
+    <p>Sul vecchio dispositivo, vai su <strong>Impostazioni → Chat e Media → Backup Chat su Memoria Esterna</strong>. Inserisci il tuo PIN, sequenza o password di sblocco dello schermo. Quindi puoi fare clic su “Avvia Backup”. Questo salva il file di backup sul tuo dispositivo. Ora devi trasferirlo in qualche modo all’altro dispositivo.</p>
+  </li>
+  <li>
+    <p>Sul nuovo dispositivo, nella schermata di accesso, invece di accedere al tuo profilo e-mail, seleziona <strong>Importa backup</strong>. Dopo l’importazione, le tue conversazioni, la crittografia i tasti e i supporti devono essere copiati sul nuovo dispositivo.
+ Se usi iOS: e incontri difficoltà, forse <a href="https://support.delta.chat/t/import-backup-to-ios/1628">questa guida</a> Aiutarti.</p>
+  </li>
 </ul>
+
+<p>Ora sei sincronizzato e puoi utilizzare entrambi i dispositivi per inviare e ricevere messaggi crittografati end-to-end con i tuoi partner di comunicazione.</p>
     
       <h3 id="sono-previsti-piani-per-lintroduzione-di-un-client-web-delta-chat">
         
@@ -989,97 +987,106 @@ o l’AppImage per Linux. Le trovi su
         
       </h2>
     
-      <h3 id="experimental-features">
+      <h3 id="funzionalità-sperimentali">
         
         
-          Experimental Features <a href="#experimental-features" class="anchor"></a>
+          Funzionalità Sperimentali <a href="#funzionalità-sperimentali" class="anchor"></a>
         
         
       </h3>
 
-<p>At <strong>Settings → Advanced → Experimental Features</strong>
-you can try out features we are working on.</p>
+<p>In <strong>Impostazioni → Avanzate → Funzionalità Sperimentali</strong>
+puoi provare le funzionalità su cui stiamo lavorando.</p>
 
-<p>The features may be <strong>unstable</strong> and may be <strong>changed or removed</strong>.</p>
+<p>Le funzionalità potrebbero essere <strong>instabili</strong> e potrebbero essere <strong>modificate o rimosse</strong>.</p>
 
-<p>You can find more information
-and give feedback in the <a href="https://support.delta.chat">Forum</a>.</p>
+<p>Puoi trovare maggiori informazioni
+e lasciare un riscontro nel <a href="https://support.delta.chat">Forum</a>.</p>
     
-      <h3 id="statssending">
+      <h3 id="relays">
         
         
-          What is “Send statistics to Delta Chat’s developers”? <a href="#statssending" class="anchor"></a>
+          Cosa sono i ripetitori? <a href="#relays" class="anchor"></a>
         
         
       </h3>
 
-<p>We would like to improve Delta Chat with your help,
-which is why Delta Chat for Android asks whether you want
-to send anonymous usage statistics.</p>
+<p>I ripetitori vengono utilizzati per conservare temporaneamente i messaggi nel caso in cui il dispositivo sia offline.
+I ripetitori sono server economici e poco intelligenti,
+che non memorizzano dati come stati di gruppo, nome o avatar,
+tutti dati che esistono solo sul dispositivo.
+I ripetitori sono gestiti da gruppi e persone diverse.</p>
 
-<p>You can turn it on and off at
-<strong>Settings → Advanced → Send statistics to Delta Chat’s developers</strong>.</p>
-
-<p>When you turn it on,
-weekly statistics will be automatically sent to a bot.</p>
-
-<p>We are interested e.g. in statistics like:</p>
+<p>Per impostazione predefinita, dopo l’installazione, un ripetitore viene <strong>configurato automaticamente</strong>,
+quindi non è necessario preoccuparsene.
+Tuttavia, se lo si desidera,
+è possibile configurare i ripetitori in <strong>Impostazioni → Avanzate → Ripetitori</strong>:</p>
 
 <ul>
-  <li>How many contacts are introduced by personally scanning a QR code?</li>
-  <li>Which versions of Delta Chat are being used?</li>
-  <li>How many messages are unencrypted?</li>
+  <li>
+    <p>Puoi <strong>aggiungere</strong> un ripetitore scansionando il suo codice QR;<a href="https://chatmail.at/relays">https://chatmail.at/relays</a> ne mostra alcuni noti.
+Se hai più ripetitori, riceverai messaggi su tutti.</p>
+  </li>
+  <li>
+    <p>L’opzione <strong>predefinita</strong> definisce quella a cui i tuoi partner di chat invieranno messaggi futuri.</p>
+  </li>
+  <li>
+    <p>Se <strong>rimuovi</strong> un ripetitore,
+assicurati che un altro ripetitore predefinito sia stato utilizzato per un periodo di tempo sufficiente.
+In caso contrario, i messaggi dei tuoi interlocutori di chat non ti   arriveranno.In caso di dubbio, rimuovilo in seguito.</p>
+  </li>
 </ul>
 
-<p>We will <em>not</em> collect any personally identifiable information about you.</p>
+<p>Per maggiori dettagli e future possibilità di utilizzo dei ripetitori,
+potete seguire le discussioni nel <a href="https://support.delta.chat">Forum</a>.</p>
     
-      <h3 id="can-i-use-a-classic-email-address-with-delta-chat">
+      <h3 id="posso-usare-un-indirizzo-email-classico-con-delta-chat">
         
         
-          Can I use a classic email address with Delta Chat? <a href="#can-i-use-a-classic-email-address-with-delta-chat" class="anchor"></a>
+          Posso usare un indirizzo email classico con Delta Chat? <a href="#posso-usare-un-indirizzo-email-classico-con-delta-chat" class="anchor"></a>
         
         
       </h3>
 
-<p>Yes, but only if the email address is used exclusively by <a href="https://chatmail.at/clients">chatmail clients</a>.</p>
+<p>Sì, ma solo se l’indirizzo e-mail viene utilizzato esclusivamente dai <a href="https://chatmail.at/clients">client di chatmail</a>.</p>
 
-<p>It is not supported to share usage of an email address with non-chatmail apps or web-based mailers,
-for the following reasons:</p>
+<p>Non è supportata la condivisione dell’utilizzo di un indirizzo email con apps diverse dalle chatmail o con servizi di posta basati sul web,
+per i seguenti motivi:</p>
 
 <ul>
   <li>
-    <p>Non-chatmail apps are largely not accomplishing automatic end-to-end email encryption for their users,
-while chatmail apps and relays pervasively enforce end-to-end encryption and security standards.</p>
+    <p>Le apps non-chatmail non implementano in gran parte la crittografia end-to-end automatica delle email per i propri utenti,
+mentre le app e i ripetitori di chatmail applicano in modo pervasivo la crittografia end-to-end e gli standard di sicurezza.</p>
   </li>
   <li>
-    <p>Non-chatmail apps use email servers as a long-term message archive
-while chatmail clients use email servers for ephemeral instant message relay.</p>
+    <p>Le apps non-chatmail utilizzano i server email come archivio di messaggi a lungo termine,
+mentre i client di chatmail utilizzano i server email per l’inoltro temporaneo di messaggi istantanei.</p>
   </li>
   <li>
-    <p>Supporting the full variety of classic email setups
-would require considerable development and maintenance efforts,
-and complicate making chatmail-based messaging more resilient, reliable and fast.</p>
+    <p>Supportare l’intera gamma di configurazioni email classiche
+richiederebbe notevoli sforzi di sviluppo e manutenzione
+e renderebbe più complicato rendere la messaggistica basata su chatmail più resiliente, affidabile e veloce.</p>
   </li>
 </ul>
     
       <h3 id="classic-email">
         
         
-          How can I configure a chat profile with a classic email address as relay? <a href="#classic-email" class="anchor"></a>
+          Come posso configurare un profilo chat con un indirizzo email classico come inoltro? <a href="#classic-email" class="anchor"></a>
         
         
       </h3>
 
-<p>First off, <strong>please do not use the same classic email address also from non-chatmail classic email apps</strong>
-unless you are prepared to deal with encrypted messages in the inbox,
-double notifications, accidentally deleted emails or similar annoyances.</p>
+<p>Innanzitutto, <strong>ti preghiamo di non utilizzare lo stesso indirizzo email classico anche da apps email classiche diverse da chatmail</strong>
+a meno che tu non sia disposto ad affrontare messaggi crittografati nella posta in arrivo,
+doppie notifiche, email eliminate accidentalmente o fastidi simili.</p>
 
-<p>You can configure a email address for chatting at <strong>New Profile → Use Other Server → Use Classic Mail as Relay</strong>.
-Note that classic email providers will generally not support <a href="#instant-delivery">Push Notifications</a>
-and have other limitations, see <a href="https://providers.delta.chat">Provider Overview</a>.
-Chatmail uses the default INBOX for relay; ensure the provider setup does too. 
-A chat profile using a classic email address allows to to send and receive unencrypted messages.
-These messages, and the chats they appear in, are marked with an email icon
+<p>Puoi configurare un indirizzo email per la chat in <strong>Crea Nuovo Profilo → Usa Altro Server → Accesso E-Mail Classico come inoltro</strong>.
+Tieni presente che i fornitori email classici generalmente non supportano le <a href="#instant-delivery">Notifiche Push</a>
+e presentano altre limitazioni, consulta <a href="https://providers.delta.chat">Panoramica Fornitori</a>.
+Chatmail utilizza la POSTA IN ARRIVO predefinita per gli inoltri; assicurati che anche la configurazione del fornitore la faccia.
+Un profilo chat che utilizza un indirizzo email classico consente di inviare e ricevere messaggi non crittografati.
+Questi messaggi e le chat in cui compaiono sono contrassegnati da un’icona email.
 <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
     
       <h3 id="vorrei-gestire-il-mio-server-per-delta-chat-cosa-mi-consigliate">
@@ -1090,13 +1097,47 @@ These messages, and the chats they appear in, are marked with an email icon
         
       </h3>
 
-<p>Any well behaving email server setup will do fine 
-except if your users’ devices require Google/Apple <a href="#instant-delivery">Push Notifications</a> to work properly.</p>
+<p>Qualsiasi configurazione di server email funzionante andrà bene,
+a meno che i dispositivi dei tuoi utenti non richiedano le <a href="#instant-delivery">Notifiche Push</a> di Google/Apple per funzionare correttamente.</p>
 
-<p>We generally recommend to <a href="https://chatmail.at/doc/relay/getting_started.html">set up a chatmail relay</a>. 
-<a href="https://chatmail.at">Chatmail</a> is a community-driven project that encompasses both the setup of relays
-and <a href="https://github.com/chatmail/core">core Rust developments</a> 
-that power <a href="https://chatmail.at/clients">chatmail clients</a> of which Delta Chat is the most well known.</p>
+<p>Generalmente consigliamo di <a href="https://chatmail.at/doc/relay/getting_started.html">configurare un ripetitore di chatmail</a>.
+<a href="https://chatmail.at">Chatmail</a> è un progetto guidato dalla comunità che comprende sia la configurazione dei ripetitori
+sia <a href="https://github.com/chatmail/core">gli sviluppi principali in Rust</a>
+che alimentano i <a href="https://chatmail.at/clients">client di chatmail</a>, di cui Delta Chat è il più noto.</p>
+    
+      <h3 id="statssending">
+        
+        
+          Che cosa significa “Invia statistiche agli sviluppatori di Delta Chat”? <a href="#statssending" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Vorremmo migliorare Delta Chat con il tuo aiuto,
+ecco perché Delta Chat per Android ti chiede se desideri
+inviare statistiche di utilizzo anonime.</p>
+
+<p>Puoi attivarla e disattivarla da
+<strong>Impostazioni → Avanzate → Invia statistiche agli sviluppatori di Delta Chat</strong>.</p>
+
+<p>Quando lo attivi,
+statistiche settimanali verranno inviate automaticamente a un bot.</p>
+
+<p>Siamo interessati, ad esempio, a statistiche come:</p>
+
+<ul>
+  <li>
+    <p>Quanti contatti vengono introdotti tramite la scansione personale di un codice QR?</p>
+  </li>
+  <li>
+    <p>Quali versioni di Delta Chat vengono utilizzate?</p>
+  </li>
+  <li>
+    <p>Quali errori si verificano per gli utenti?</p>
+  </li>
+</ul>
+
+<p><em>Non</em> raccoglieremo alcuna informazione personale identificabile su di te.</p>
     
       <h3 id="sono-interessato-ai-dettagli-tecnici-mi-puoi-dire-di-più">
         
@@ -1150,7 +1191,7 @@ consente ai destinatari di utilizzare la crittografia end-to-end con il contatto
       <h3 id="whene2e">
         
         
-          How can I know if messages are end-to-end encrypted? <a href="#whene2e" class="anchor"></a>
+          Come posso sapere se i messaggi sono crittografati end-to-end? <a href="#whene2e" class="anchor"></a>
         
         
       </h3>
@@ -1159,10 +1200,10 @@ consente ai destinatari di utilizzare la crittografia end-to-end con il contatto
 Dalla serie di rilasci della Versione 2 di Delta Chat (Luglio 2025)
 non ci sono più lucchetti o marcatori simili, sui messaggi crittografati end-to-end.</p>
     
-      <h3 id="can-i-still-receive-or-send-messages-without-end-to-end-encryption">
+      <h3 id="posso-ancora-ricevere-o-inviare-messaggi-senza-crittografia-end-to-end">
         
         
-          Can I still receive or send messages without end-to-end encryption? <a href="#can-i-still-receive-or-send-messages-without-end-to-end-encryption" class="anchor"></a>
+          Posso ancora ricevere o inviare messaggi senza crittografia end-to-end? <a href="#posso-ancora-ricevere-o-inviare-messaggi-senza-crittografia-end-to-end" class="anchor"></a>
         
         
       </h3>
@@ -1170,9 +1211,9 @@ non ci sono più lucchetti o marcatori simili, sui messaggi crittografati end-to
 <p>Se si utilizzano i <a href="https://chatmail.at/relays">relays di chatmail</a>,
 è impossibile ricevere o inviare messaggi senza la crittografia end-to-end.</p>
 
-<p>If you instead use a <a href="#classic-email">classic email server</a>,
-you can send and receive messages with or without end-to-end encryption.
-Messages lacking end-to-end encryption are marked with an email icon
+<p>Se invece utilizzi un <a href="#classic-email">server email classico</a>,
+puoi inviare e ricevere messaggi con o senza crittografia end-to-end.
+I messaggi privi di crittografia end-to-end sono contrassegnati dall’icona di un’e-mail
 <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
     
       <h3 id="e2eeguarantee">
@@ -1247,10 +1288,10 @@ per migliorare ulteriormente le caratteristiche di sicurezza implementando il
         
       </h3>
 
-<p>Yes, we are following efforts like <a href="https://en.wikipedia.org/wiki/Messaging_Layer_Security">MLS</a>
-but adopting them would mean breaking end-to-end encryption interoperability.
-So it would not be a light decision to take 
-and there must be tangible improvements for users.</p>
+<p>Sì, stiamo seguendo iniziative come <a href="https://en.wikipedia.org/wiki/Messaging_Layer_Security">MLS</a>
+ma adottarle significherebbe interrompere l’interoperabilità della crittografia end-to-end.
+Quindi non sarebbe una decisione facile da prendere
+e devono esserci miglioramenti tangibili per gli utenti.</p>
 
 <p>Delta Chat adotta un approccio olistico di “sicurezza utilizzabile”.
 e lavora anche con una vasta gamma di gruppi di attivisti
@@ -1288,21 +1329,21 @@ come definito dalla specifica Autocrypt Level 1.</p>
         
       </h3>
 
-<p>If you are sending or receiving email messages without end-to-end encryption (using a classic email server),
-they are still protected from cell or cable companies who can not read or modify your email messages.
-But both your and your recipient’s email providers
-may read, analyze or modify your messages, including any attachments.</p>
+<p>Se invii o ricevi messaggi email senza crittografia end-to-end (utilizzando un server email classico),
+questi sono comunque protetti dalle compagnie telefoniche o via cavo che non possono leggere o modificare i tuoi messaggi.
+Tuttavia, sia il tuo fornitore email che quello del destinatario
+potrebbero leggere, analizzare o modificare i tuoi messaggi, inclusi eventuali allegati.</p>
 
-<p>Delta Chat by default uses strict 
-<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS encryption</a> 
-which secures connections between your device and your email provider.
-All of Delta Chat’s TLS-handling has been independently <a href="#security-audits">security audited</a>.
-Moreover, the connection between your and the recipient’s email provider
-will typically be transport-encrypted as well.
-If the involved email servers support <a href="https://datatracker.ietf.org/doc/html/rfc8461">MTA-STS</a>
-then transport encryption will be enforced between email providers
-in which case Delta Chat communications will never be exposed in cleartext to the Internet
-even if the message was not end-to-end encrypted.</p>
+<p>Delta Chat utilizza per impostazione predefinita una rigorosa
+<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">crittografia TLS</a>
+che protegge le connessioni tra il tuo dispositivo e il tuo fornitore email.
+Tutta la gestione TLS di Delta Chat è stata sottoposta a <a href="#security-audits">verifica di sicurezza</a> indipendenti.
+Inoltre, anche la connessione tra il tuo fornitore email e quello del destinatario
+sarà in genere crittografata tramite trasporto.
+Se i server email coinvolti supportano <a href="https://datatracker.ietf.org/doc/html/rfc8461">MTA-STS</a>
+la crittografia tramite trasporto verrà applicata tra i fornitori email,
+nel qual caso le comunicazioni di Delta Chat non saranno mai esposte in chiaro su Internet,
+anche se il messaggio non è stato crittografato end-to-end.</p>
     
       <h3 id="message-metadata">
         
@@ -1316,14 +1357,14 @@ even if the message was not end-to-end encrypted.</p>
 le apps Delta Chat non memorizzano alcun metadato sui contatti o sui gruppi sui server, né in forma crittografata.
 Tutti i metadati dei gruppi sono invece crittografati end-to-end e memorizzati esclusivamente sui dispositivi degli utenti finali.</p>
 
-<p>Servers can therefore only see:</p>
+<p>I server possono quindi vedere solo:</p>
 
 <ul>
-  <li>the sender and receiver addresses</li>
-  <li>and the message size.</li>
+  <li>gli indirizzi del mittente e del destinatario</li>
+  <li>e la dimensione del messaggio.</li>
 </ul>
 
-<p>By default, the addresses are randomly generated.</p>
+<p>Per impostazione predefinita, gli indirizzi vengono generati in modo casuale.</p>
 
 <p>Tutti gli altri metadati dei messaggi, dei contatti e dei gruppi risiedono nella parte crittografata end-to-end dei messaggi.</p>
     
@@ -1335,15 +1376,15 @@ Tutti i metadati dei gruppi sono invece crittografati end-to-end e memorizzati e
         
       </h3>
 
-<p>Both for protecting against metadata-collecting servers 
-as well as against the threat of device seizure
-we recommend to use a <a href="https://chatmail.at/relays">chatmail relay</a>
-to create chat profiles using random addresses for transport. 
-Note that Delta Chat apps on all platforms support multiple profiles
-so you can easily use situation-specific profiles next to your “main” profile
-with the knowledge that all their data, along with all metadata, will be deleted.
-Moreover, if a device is seized then chat contacts using short-lived profiles
-can not be identified easily.</p>
+<p>Sia per proteggersi dai server che raccolgono metadati
+sia dal rischio di sequestro del dispositivo,
+consigliamo di utilizzare un <a href="https://chatmail.at/relays">ripetitore chatmail</a>
+per creare profili di chat utilizzando indirizzi casuali per il trasporto.
+Nota: le app Delta Chat su tutte le piattaforme supportano più profili,
+quindi puoi facilmente utilizzare profili specifici per ogni situazione accanto al tuo profilo “principale”,
+con la consapevolezza che tutti i loro dati, insieme a tutti i metadati, verranno eliminati.
+Inoltre, se un dispositivo viene sequestrato, i contatti di chat che utilizzano profili di breve durata
+non possono essere identificati facilmente.</p>
     
       <h3 id="sealedsender">
         
@@ -1360,11 +1401,11 @@ per impedire che la propria infrastruttura server venga a conoscenza di chi sta 
 È particolarmente importante perché il server Signal conosce il numero di cellulare di ciascun profilo,
 che di solito è associato a un’identità tramite passaporto.</p>
 
-<p>Even if <a href="https://chatmail.at/relays">chatmail relays</a> 
-do not ask for any private data (including no phone numbers), 
-it might still be worthwhile to protect relational metadata between addresses. 
-We don’t foresee bigger problems in using random throw-away addresses for sealed sending
-but an implementation has not been agreed as a priority yet.</p>
+<p>Anche se i <a href="https://chatmail.at/relays">ripetitori chatmail</a>
+non richiedono dati privati ​​(inclusi numeri di telefono),
+potrebbe comunque valere la pena proteggere i metadati relazionali tra gli indirizzi.
+Non prevediamo problemi maggiori nell’utilizzo di indirizzi casuali usa e getta per l’invio sigillato,
+ma un’implementazione non è stata ancora concordata come priorità.</p>
     
       <h3 id="pfs">
         
@@ -1431,12 +1472,12 @@ la connessione è sicura.</p>
 
 <p>No.</p>
 
-<p>Delta Chat generates secure OpenPGP keys according to the Autocrypt specification 1.1.
-We do not recommend or offer users to perform manual key management.
-We want to ensure that security audits can focus on a few proven cryptographic algorithms
-instead of the full breadth of possible algorithms allowed with OpenPGP.
-If you want to extract your OpenPGP key, there only is an expert method:
-you need to look it up in the “keypairs” SQLite table of a profile backup tar-file.</p>
+<p>Delta Chat genera chiavi OpenPGP sicure secondo la specifica Autocrypt 1.1.
+Non consigliamo né offriamo agli utenti la gestione manuale delle chiavi.
+Vogliamo garantire che le revisioni di sicurezza possano concentrarsi su pochi algoritmi crittografici collaudati
+anziché sull’intera gamma di possibili algoritmi consentiti con OpenPGP.
+Se si desidera estrarre la propria chiave OpenPGP, esiste solo un metodo avanzato:
+è necessario cercarla nella tabella SQLite “keypairs” di un file tar di backup del profilo.</p>
     
       <h3 id="security-audits">
         
@@ -1474,7 +1515,7 @@ Consulta il nostro post sul blog su <a href="https://delta.chat/en/2024-03-25-cr
 articolo di ricerca pubblicato successivamente.</p>
   </li>
   <li>
-    <p>A partire dal 2023, abbiamo risolto i problemi di sicurezza e privacy con il servizio “web
+    <p>A partire dal 2023, abbiamo risolto i problemi di sicurezza e riservatezza con il servizio “web
 app condivise in una chat”, relativa ai guasti del sandboxing
 soprattutto con Chromium. Successivamente abbiamo ottenuto una sicurezza indipendente
 audit da Cure53 e tutti i problemi rilevati sono stati risolti nella serie di app 1.36 rilasciata nell’aprile 2023.
@@ -1531,10 +1572,10 @@ Puoi leggere il <a href="https://delta.chat/assets/blog/2019-first-security-revi
         
       </h3>
 
-<p>Some features require certain permissions,
-e.g. you need to grant camera permission if you want to <a href="#howtoe2ee">scan an invite QR code</a>.</p>
+<p>Alcune funzionalità richiedono determinate autorizzazioni,
+ad esempio, è necessario concedere l’autorizzazione alla fotocamera se si desidera <a href="#howtoe2ee">scansionare un codice QR di invito</a>.</p>
 
-<p>See <a href="https://delta.chat/en/gdpr#24-app-permissions">Privacy Policy</a> for a detailed overview.</p>
+<p>Per una panoramica dettagliata, consultare l’ <a href="https://delta.chat/en/gdpr#24-app-permissions">Informativa sulla riservatezza</a>.</p>
     
       <h3 id="dove-possono-trovare-delta-chat-i-miei-amici">
         
@@ -1554,8 +1595,8 @@ e.g. you need to grant camera permission if you want to <a href="#howtoe2ee">sca
     <p>Se non disponibile, utilizzare <strong>mirror</strong> su <a href="https://deltachat.github.io/deltachat-pages">https://deltachat.github.io/deltachat-pages</a></p>
   </li>
   <li>
-    <p>Open one of the following <strong>app stores and search for “Delta Chat”:</strong>
-Google Play Store, F-Droid, Huawei App Gallery, iOS and macOS App Store, Microsoft Store</p>
+    <p>Apri uno dei seguenti <strong>app stores e cerca “Delta Chat”:</strong>
+Google Play Store, F-Droid, Huawei App Gallery, iOS e macOS App Store, Microsoft Store</p>
   </li>
   <li>
     <p>Controlla il <strong>gestore pacchetti</strong> delle tue distribuzioni Linux</p>
@@ -1605,15 +1646,13 @@ per fornire nuove funzionalità per tutte le piattaforme.</p>
 completando i collegamenti Rust/Python e avviando un ecosistema Chat-bot.</p>
   </li>
   <li>
-    <p>In 2021 we received further EU funding for two Next-Generation-Internet
-proposals, namely for <a href="https://dapsi.ngi.eu/hall-of-fame/eppd/">EPPD - email provider portability directory</a> (~97K EUR) and <a href="https://nlnet.nl/project/EmailPorting/">AEAP - email address porting</a> (~90K EUR) which resulted in better multi-profile support, improved QR-code contact and group setups and many networking improvements on all platforms.</p>
+    <p>Nel 2021 abbiamo ricevuto ulteriori finanziamenti dall’UE per due proposte di Next-Generation-Internet, ovvero per <a href="https://dapsi.ngi.eu/hall-of-fame/eppd/">EPPD - directory di portabilità dei provider di posta elettronica</a> (~97.000 EUR) e <a href="https://nlnet.nl/project/EmailPorting/">AEAP - portabilità degli indirizzi email</a> (~90.000 EUR), che hanno portato a un migliore supporto multi-profilo, a un miglioramento delle impostazioni di contatto e di gruppo tramite codice QR e a numerosi miglioramenti di rete su tutte le piattaforme.</p>
   </li>
   <li>
-    <p>From End 2021 till March 2023 we received <em>Internet Freedom</em> funding (500K USD) from the
-U.S. Bureau of Democracy, Human Rights and Labor (DRL). 
-This funding supported our long-running goals to make Delta Chat more usable 
-and compatible with a wide range of email servers world-wide, and more resilient and secure
-in places often affected by internet censorship and shutdowns.</p>
+    <p>Da fine 2021 a marzo 2023 abbiamo ricevuto un finanziamento <em>Internet Freedom</em> (500.000 USD) dall’Ufficio per la Democrazia, i Diritti Umani e il Lavoro (DRL) degli Stati Uniti.
+Questo finanziamento ha supportato i nostri obiettivi a lungo termine: rendere Delta Chat più utilizzabile
+e compatibile con un’ampia gamma di server email in tutto il mondo, e più resiliente e sicura
+in luoghi spesso colpiti da censura e blocchi di Internet.</p>
   </li>
   <li>
     <p>2023-2024 abbiamo completato con successo il progetto <a href="https://www.opentech.fund/projects-we-support/supported-projects/secure-chat-mail-with-delta-chat/">Chatmail Sicuro</a> finanziato da OTF, 

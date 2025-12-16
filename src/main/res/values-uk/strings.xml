@@ -437,7 +437,7 @@
         <item quantity="many">¿Видалити %d повідомлень на всіх Ваших пристроях?</item>
         <item quantity="other">¿Видалити %d повідомлень на всіх Ваших пристроях?</item>
     </plurals>
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Видалити %d повідомлення?</item>
         <item quantity="few">Видалити %d повідомлення?</item>
@@ -519,6 +519,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Список адресатів</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Зміни в назві списку розсилки та зображенні стосуються лише цього пристрою.</string>
 
     <!-- webxdc -->
@@ -647,7 +648,7 @@
     <string name="onboarding_create_instant_account">Створити новий профіль</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">У мене вже є профіль</string>
-    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Транспорт через класичну електронну пошту</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Ваш профіль</string>
@@ -784,6 +785,7 @@
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Беззвучний</string>
     <string name="pref_privacy">Конфіденційність</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Чати й медіа</string>
     <string name="pref_system_default">За замовчуванням системи</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -1029,13 +1031,14 @@
     <string name="qrshow_join_contact_hint">Відскануйте код, щоб спілкуватись з %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Відсутнє інтернет з\'єднання, не вдалося налаштувати QR-код.</string>
     <string name="qraccount_ask_create_and_login">Створити новий профіль на \"%1$s\" і увійти в нього?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Створити новий профіль на \"%1$s\" і увійти в нього?\n\nВаш поточний профіль не буде видалено. Використовуйте \"Перемкнути профіль\".</string>
     <string name="set_name_and_avatar_explain">Встановіть ім’я, яке розпізнають ваші контакти. Ви також можете встановити зображення профілю.</string>
     <string name="please_enter_name">Будь ласка, введіть ім\'я.</string>
     <string name="qraccount_qr_code_cannot_be_used">Вісканований QR-код не може бути використаний для створення нового профілю.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Увійти до \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Увійти до \"%1$s\"?\n\nВаш профіль, що вже існує, не буде видалено. Використовуйте \"Перемкнути профіль\" для переключання між профілями.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s запросив (-ла) Вас приєднатися до цієї групи.\n\nОчікуємо на відповідь від пристрою %2$s…</string>

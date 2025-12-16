@@ -323,7 +323,12 @@
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Да ли сте сигурни да желите да напустите?</string>
-    <!-- Used for the deletion of Device messages -->
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Да ли желите да избришите %d поруку?</item>
+        <item quantity="few">Да ли желите да избришите %d поруке?</item>
+        <item quantity="other">Да ли желите да избришите %d поруке?</item>
+    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Да ли желите да избришите %d поруку?</item>
         <item quantity="few">Да ли желите да избришите %d поруке?</item>
@@ -398,6 +403,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Списак имејл адреса</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Промене имена и слике са листе за слање примењују се само на овом уређају.</string>
 
     <!-- webxdc -->
@@ -555,6 +561,7 @@
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Без звука</string>
     <string name="pref_privacy">Приватност</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Ћаскања и медији</string>
     <string name="pref_system_default">Подразумеване поставке оперативног система</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -750,11 +757,12 @@
     <string name="qrshow_join_contact_hint">Очитај да ћаскате са %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Нисте повезани на интернет, није могуће подесити бар-кôд.</string>
     <string name="qraccount_ask_create_and_login">Направите нову е-адресу на „%1$s“ и приступите јој тамо?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Направите нову е-адресу на „%1$s“ и приступите јој тамо?\n\nВаш постојећи налог неће бити избрисан. Користите „Промени налог“ да пређете са једног налога на други.</string>
     <string name="qraccount_qr_code_cannot_be_used">Очитани бар-кôд не може бити коришћен да подеси нови налог.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Пријави се у „%1$s“?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Пријави се у „%1$s“? Ваш постојећи налог неће бити избрисан. Користите „Промени налог“ опцију да прелазите са једног на други налог.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$sвас је позвао да се придружите групи.\n\nЧекамо да уређај од %2$sодговори...</string>

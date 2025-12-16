@@ -292,7 +292,10 @@
     </plurals>
     <string name="file_saved_to">Tệp đã được lưu vào \"%1$s\".</string>
 
-    <!-- Used for the deletion of Device messages -->
+    <plurals name="ask_delete_messages">
+        <item quantity="other">Xóa %d tin nhắn?</item>
+    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">Xóa %d tin nhắn?</item>
     </plurals>
@@ -357,6 +360,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Danh sách gửi thư</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Những thay đổi về tên và hình ảnh danh sách gửi thư chỉ áp dụng trên thiết bị này.</string>
 
     <!-- webxdc -->
@@ -545,6 +549,7 @@
     <string name="pref_sound">Âm thanh</string>
     <string name="pref_silent">Im lặng</string>
     <string name="pref_privacy">Quyền riêng tư</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Trò chuyện và Phương tiện</string>
     <string name="pref_system_default">Mặc định hệ thống</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -750,11 +755,12 @@
     <string name="qrshow_join_contact_hint">Quét để trò chuyện với %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Không có kết nối internet, không thể thực hiện thiết lập mã QR.</string>
     <string name="qraccount_ask_create_and_login">Tạo địa chỉ email mới trên \"%1$s\" và đăng nhập vào đó?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Tạo địa chỉ email mới trên \"%1$s\" và đăng nhập vào đó?\n\nTài khoản hiện tại của bạn sẽ không bị xóa. Sử dụng mục \"Chuyển tài khoản\" để chuyển đổi giữa các tài khoản của bạn.</string>
     <string name="qraccount_qr_code_cannot_be_used">Mã QR được quét không thể được sử dụng để thiết lập tài khoản mới.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Đăng nhập vào \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Đăng nhập vào \"%1$s\"?\n\nTài khoản hiện tại của bạn sẽ không bị xóa. Sử dụng mục \"Chuyển tài khoản\" để chuyển đổi giữa các tài khoản của bạn.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s đã mời bạn tham gia nhóm này.\n\nĐang chờ thiết bị của %2$s trả lời…</string>

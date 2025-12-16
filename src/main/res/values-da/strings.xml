@@ -242,7 +242,11 @@
     </plurals>
     <string name="file_saved_to">Fil gemt til \"%1$s\".</string>
 
-    <!-- Used for the deletion of Device messages -->
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Slet %d besked?</item>
+        <item quantity="other">Slet %d beskeder?</item>
+    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Slet %d besked?</item>
         <item quantity="other">Slet %d beskeder?</item>
@@ -426,6 +430,7 @@
     <string name="pref_sound">Lyd</string>
     <string name="pref_silent">Stille</string>
     <string name="pref_privacy">Privatliv</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Samtaler og medie</string>
     <string name="pref_system_default">Systemstandard</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -590,6 +595,7 @@
     <string name="qrshow_join_contact_hint">Skan dette for at indstille kontakt med %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Ingen internet forbindelse, kan ikke udføre QR kode opsætning.</string>
     <string name="qraccount_ask_create_and_login">Opret ny e-mail adresse på \"%1$s\" og log ind der?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Opret ny e-mail adresse på \"%1$s\" og log ind der?\n\nDin eksisterende konto bliver ikke slettet. Brug \"Skift konto\" for at skifte imellem dine konti.</string>
     <string name="qraccount_qr_code_cannot_be_used">Den skannede QR-kode kan ikke bruges til at opsætte en ny konto.</string>
     <string name="contact_verified">%1$s bekræftet.</string>

@@ -304,7 +304,12 @@
     </plurals>
     <string name="file_saved_to">Arquivo salvo em \"%1$s\".</string>
 
-    <!-- Used for the deletion of Device messages -->
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Apagar %d mensagem?</item>
+        <item quantity="many">Apagar %d mensagens?</item>
+        <item quantity="other">Apagar %d mensagens?</item>
+    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Apagar %d mensagem?</item>
         <item quantity="many">Apagar %d mensagens?</item>
@@ -377,6 +382,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Lista de e-mail</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Alterações ao nome e imagem da lista de e-mails só se aplicam a este dispositivo.</string>
 
     <!-- webxdc -->
@@ -559,6 +565,7 @@
     <string name="pref_sound">Som</string>
     <string name="pref_silent">Silêncio</string>
     <string name="pref_privacy">Privacidade</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Conversas e mídia</string>
     <string name="pref_system_default">Padrão do sistema</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -754,11 +761,12 @@
     <string name="qrshow_join_contact_hint">Escanear para estabelecer contato com %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Sem conexão à rede não é possível realizar configuração por código QR.</string>
     <string name="qraccount_ask_create_and_login">Criar novo endereço de e-mail em \"%1$s\" e entrar nele?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Criar novo endereço de e-mail em \"%1$s\"  e entrar nele?\n\n nSua conta existente não será excluída. Use o item \"Trocar conta\" para alternar entre suas contas.</string>
     <string name="qraccount_qr_code_cannot_be_used">O código QR lido não pode ser usado para configurar uma nova conta.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Conectar-se em \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Conectar-se em \"%1$s\"?\n\nSua conta existente não será excluída. Use a opção \"Mudar conta\" para alternar entre suas contas.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$ste convidou para entrar neste grupo.\n\nEsperando o dispositivo de %2$s responder...</string>

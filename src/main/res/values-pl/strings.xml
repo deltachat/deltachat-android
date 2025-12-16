@@ -437,7 +437,7 @@
         <item quantity="many">Usunąć %d wiadomości ze wszystkich urządzeń?</item>
         <item quantity="other">Usunąć %d wiadomości ze wszystkich urządzeń?</item>
     </plurals>
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Usunąć %d wiadomość?</item>
         <item quantity="few">Usunąć %d wiadomości?</item>
@@ -519,6 +519,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Lista mailingowa</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Zmiany nazwy i obrazu listy adresowej dotyczą tylko tego urządzenia.</string>
 
     <!-- webxdc -->
@@ -647,7 +648,7 @@
     <string name="onboarding_create_instant_account">Utwórz nowy profil</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Mam już profil</string>
-    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Transport przez klasyczny e-mail</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Twój profil</string>
@@ -784,6 +785,7 @@
     <string name="pref_sound">Dźwięk</string>
     <string name="pref_silent">Cichy</string>
     <string name="pref_privacy">Prywatność</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Czaty i media</string>
     <string name="pref_system_default">Domyślny systemu</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -1025,13 +1027,14 @@
     <string name="qrshow_join_contact_hint">Zeskanuj go w celu skonfigurowania kontaktu z %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Brak połączenia z Internetem, nie można przeprowadzić konfiguracji kodu QR.</string>
     <string name="qraccount_ask_create_and_login">Utworzyć nowy adres e-mail „%1$s” i się zalogować?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Utworzyć nowy adres e-mail „%1$s” i się zalogować?\n\nTwoje istniejące konto nie zostanie usunięte. Użyj opcji „Przełącz konto”, aby przełączać się między kontami.</string>
     <string name="set_name_and_avatar_explain">Ustaw nazwę, którą rozpoznają twoje kontakty. Możesz także ustawić zdjęcie profilowe.</string>
     <string name="please_enter_name">Wpisz nazwę.</string>
     <string name="qraccount_qr_code_cannot_be_used">Zeskanowanego kodu QR nie można użyć do założenia nowego konta.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Zalogować się do „%1$s”?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Zalogować się do „%1$s”?\n\nTwoje istniejące konto nie zostanie usunięte. Użyj opcji „Przełącz konto”, aby przełączyć się między swoimi kontami.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">Użytkownik %1$s zaprosił cię do dołączenia do tej grupy.\n\nCzekam na odpowiedź urządzenia %2$s…</string>
