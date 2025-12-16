@@ -11,6 +11,7 @@
 * Target Android 16
 * Change color of links in text messages
 * Improve edge-to-edge support
+* Add the option (opt-in) to send anonymous statistics to Delta Chat's developers
 * Metadata protection: protect message recipients
 * Allow to withdraw channel invite links and QR codes
 * Allow to open externally links clicked inside in-chat apps

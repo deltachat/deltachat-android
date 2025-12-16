@@ -12,12 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
-import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
 
 import java.util.ArrayList;
@@ -46,6 +44,7 @@ public class Prefs {
   public  static final String SCREEN_SECURITY_PREF             = "pref_screen_security";
   private static final String ENTER_SENDS_PREF                 = "pref_enter_sends";
   private static final String PROMPTED_DOZE_MSG_ID_PREF        = "pref_prompted_doze_msg_id";
+  private static final String STATS_DEVICE_MSG_ID_PREF         = "pref_stats_device_msg_id";
   public  static final String DOZE_ASKED_DIRECTLY              = "pref_doze_asked_directly";
   public  static final String ASKED_FOR_NOTIFICATION_PERMISSION= "pref_asked_for_notification_permission";
   private static final String IN_THREAD_NOTIFICATION_PREF      = "pref_key_inthread_notifications";
@@ -152,6 +151,14 @@ public class Prefs {
 
   public static int getPrompteDozeMsgId(Context context) {
     return getIntegerPreference(context, PROMPTED_DOZE_MSG_ID_PREF, 0);
+  }
+
+  public static void setStatsDeviceMsgId(Context context, int msg_id) {
+    setIntegerPreference(context, STATS_DEVICE_MSG_ID_PREF, msg_id);
+  }
+
+  public static int getStatsDeviceMsgId(Context context) {
+    return getIntegerPreference(context, STATS_DEVICE_MSG_ID_PREF, 0);
   }
 
   public static boolean isPushEnabled(Context context) {
