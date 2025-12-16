@@ -346,6 +346,7 @@
     <string name="device_talk">Seadme sõnumid</string>
     <string name="device_talk_subtitle">Kohalikus seadmes loodud sõnumid</string>
     <string name="device_talk_explain">Selle vestluse sõnumid on koostatud selles nutiseadmes ja nende abil teavitatakse sind rakenduse uuendustest ja märgatud probleemidest.</string>
+    <string name="device_talk_welcome_message2">Asu suhtlema!\n\n🙌 Klõpsa mõlema seadme põhivaates valikut „QR-kood“. Vali ühes seadmes „Skaneeri QR-koodi“ ja suuna ta teisele seadmele\n\n🌍 Kui te pole üheskoos samas kohas, siis skaneeri videokõne vahendusel või edasta „Skaneeri QR-koodi“ valikus leiduv kutselink\n\nSeejärel saadki kasutada meie meeldivat ja hajutatud sõnumilahendust. Suure kontrastina teiste sarnaste populaarsete rakendustega puudub meil keskne kontroll ning keegi ei jälita sind, sinu peret, sõpru ega kolleege ning müü sinu andmeid teistele osapooltele.</string>
     <string name="edit_contact">Muuda kontakti</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Tõsta vestlus esile</string>
@@ -408,7 +409,7 @@
         <item quantity="one">Kas kustutad %d sõnumi kõikidest oma seadmetest?</item>
         <item quantity="other">Kas kustutad %d sõnumit kõikidest oma seadmetest?</item>
     </plurals>
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Kas soovid kustutada %d sõnumi?</item>
         <item quantity="other">Kas soovid kustutada %d sõnumit?</item>
@@ -470,6 +471,7 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Salvesta sõnum</string>
     <string name="saved_messages">Salvestatud sõnumid</string>
+    <string name="saved_messages_explain">• Mugavaks ligipääsuks edasta sõnumid siia\n\n• Tee märkmeid või koosta häälmemosid\n\n• Lisa talletamiseks meediafaile</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Salvestatud</string>
     <string name="save_as">Salvesta kui</string>
@@ -481,6 +483,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Postiloend</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Postiloendi nime ja tunnuspildi muudatused kehtivad vaid selles seadmes.</string>
 
     <!-- webxdc -->
@@ -495,6 +498,8 @@
     <string name="enable_realtime">Reaalajas toimivad rakendused</string>
     <string name="enable_realtime_explain">Vestlustega seotud rakendused võivad kasutada reaalajas ühendusi. Kui valik on kasutusel, siis vestluste osapooltel on võimalik peale rakenduse käivitamist tuvastada sinu IP-aadress.</string>
 
+    <!-- map -->
+    <string name="filter_map_on_time">Näita asukohti ajavahemike kaupa</string>
     <string name="add_poi">Saada huvipunkti teave</string>
 
 
@@ -504,6 +509,10 @@
     <string name="puny_code_warning_header">Tuvastasin kahtlase lingi</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Kas oled kindel, et soovid avada „%1$s“?</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">Selles lingis võivad olla petlikult sarnased tähed teistest tähestikest. Kui klõpsad linki „%1$s“, siis tegelikult avaneb „%2$s“. Kui sa midagi sellist ei eeldanud, siis võib olla tegemist ohtliku lingiga.</string>
+
+
     <!-- search -->
     <string name="search">Otsi</string>
     <string name="search_in_chat">Otsi vestlusest</string>
@@ -602,7 +611,7 @@
     <string name="onboarding_create_instant_account">Loo uus profiil</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Mul juba on profiil olemas</string>
-    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Klassikaline e-post alusühendusena</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Sinu profiil</string>
@@ -723,6 +732,8 @@
     <string name="pref_outgoing_worse">Kõige kehvem kvaliteet, aga väikseim maht</string>
     <string name="pref_vibrate">Väristamine</string>
     <string name="pref_screen_security">Ekraani turvalisus</string>
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
+    <string name="pref_screen_security_explain">Palu, et operatsioonisüsteem keelaks ekraanitõmmiste tegemise hiljutiste sõnumite loendis ja rakenduse sees, kuid palun arvesta, et see ei pruugi olla alati tagatud</string>
     <string name="pref_screen_security_please_restart_hint">Ekraaniturvalisusega seotud seadistuste kasutamisele võtmiseks palun käivita rakendus uuesti.</string>
     <string name="pref_notifications">Teavitused</string>
     <string name="pref_mention_notifications">Mainimised</string>
@@ -736,6 +747,7 @@
     <string name="pref_sound">Heli</string>
     <string name="pref_silent">Vaikne</string>
     <string name="pref_privacy">Privaatsus</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Vestlused ja meediumid</string>
     <string name="pref_system_default">Süsteemi vaikimisi valik</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -762,6 +774,7 @@
     <string name="pref_other">Muu</string>
     <string name="pref_backup">Varundus</string>
     <string name="pref_backup_explain">Varunda vestlused välisesse andmeruumi</string>
+    <string name="pref_backup_export_explain">Varukoopia abil saad teha uut paigaldust selles või muus nutiseadmes.\n\nVarukoopias sisalduvad kõik sõnumid, kontaktid ja vestlused vastavalt sinu Autocrypti seadistustele. Palun hoia varukoopiat turvalises kohas või kustuta ta niipea, kui võimalik.</string>
     <string name="pref_backup_export_this">Ekspordi see profiil</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Ekspordi kõik %1$d profiili</string>
@@ -779,9 +792,12 @@
     <string name="pref_auto_folder_moves">Tõsta automaatselt DeltaChati kausta</string>
     <string name="pref_only_fetch_mvbox_title">Laadi vaid DeltaChati kasutast</string>
     <string name="pref_show_emails">Näita klassikalisi e-kirju</string>
+    <string name="pref_show_emails_no">Ei, vaid vestlustele</string>
+    <string name="pref_show_emails_accepted_contacts">Kinnitatud kontaktidele</string>
     <string name="pref_show_emails_all">Kõik</string>
     <string name="pref_experimental_features">Katselised funktsionaalsused</string>
     <string name="pref_experimental_features_explain">Need funktsionaalsused ei pruugi korralikult toimida ning nad võivad tulevikus muutuda või sootuks olla eemaldatud</string>
+    <string name="pref_on_demand_location_streaming">Asukoha jagamine vastavalt tellimisele.</string>
     <string name="pref_background_default">Vaikimisi pilt</string>
     <string name="pref_background_default_color">Vaikimisi värv</string>
     <string name="pref_background_custom_image">Sinu valitud pilt</string>
@@ -935,6 +951,8 @@
     <string name="learn_more">Lisateave</string>
 
     <string name="devicemsg_self_deleted">Sa kustutasid vestluse nimega „Salvestatud sõnumid“.\n\nℹ️ Kui tahad uuesti kasutada võimalust „Salvestatud sõnumid“, siis lisa vestlus iseendaga.</string>
+    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Sinu poolt teenusepakkuja juures kasutatav andmeruum hakkab täis saama: %1$s%% on juba kasutusel.\n\nKui andmeruum on täis, siis sa ilmselt ei pruugi enam sõnumeid saada.\n\n👉 Palun kontrolli, kas sul on võimalik teenusepakkuja veebiliidesest vanu sõnumeid kustutada või veelgi parem on, kui kasutad automaatse kustutamise võimalust: „Seadistused“ → „Vestlused“ → „Kustuta vanad sõnumid“. Hetkel kasutatavat andmeruumi mahutu saad alati kontrollida siit: „Seadistused“ → „Ühenduvus“.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Sinu seadme kuupäev või kellaaeg tundub olema ebatäpne (%1$s).\n\nPalun seadista kella ⏰🔧 ja taga, et sõnumivahetus, sh selle krüptimine toimib korrektselt.</string>
     <string name="devicemsg_update_reminder">⚠️ Sinu kasutatav Delta Chati versioon võib olla aegunud.\n\nKuna sinu vestluspartnerid ilmselt kasutavad uuemaid versioone, ja sinu oma ei oska uuemaid funktsionaalsusi, siis võib tekkida probleeme 😳\nUuenduste teavet leiad https://get.delta.chat saidist või oma rakendustepoest.</string>
@@ -975,13 +993,14 @@
     <string name="qrshow_join_contact_hint">Skaneeri vestlemaks kasutajaga „%1$s“</string>
     <string name="qrshow_join_contact_no_connection_toast">Internetiühendus puudub ja QR-koodil põhinevat seadistamist kasutada ei saa.</string>
     <string name="qraccount_ask_create_and_login">Kas lood uue profiili nimega „%1$s“ ja logid sinna sisse?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Kas soovid lisada uue profiili „%1$s“ serverisse ja sellega sisse logida?\n\nSinu olemasolev profiil jääb alles. Profiile saad vahetada käsuga „Vaheta profiili“.</string>
     <string name="set_name_and_avatar_explain">Vali nimi, mida sinu kontaktid ära tunnevad. Saad ka lisada profiili tunnuspildi.</string>
     <string name="please_enter_name">Palun sisesta nimi.</string>
     <string name="qraccount_qr_code_cannot_be_used">Selle skaneeritud QR-koodi abil ei saa uut profiili kasutusele võtta.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Kas logid sisse „%1$s“ profiili?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Kas soovid sisse logid oma kontoga „%1$s“ serveris?\n\nSinu olemasolev profiil jääb alles. Profiile saad vahetada käsuga „Vaheta profiili“.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s kutsus sind liituma selle grupiga.\n\nOotan vastust kasutaja %2$s seadmest…</string>
@@ -1147,6 +1166,8 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat soovib pilte salvestada sinu fotode kogusse.</string>
     <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat võib kasutada Face ID teenust sinu kohaliku profiili kaitsmiseks, varukoopia tegemiseks ja täiendavate seadmete seadistamiseks.</string>
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_instant_delivery">Kohene kättetoimetamine</string>
     <string name="pref_background_notifications">Kasuta ühendust taustal</string>
     <string name="pref_background_notifications_explain">Eeldab, et akukasutuse optimeerimine on lülitatud välja. Kasuta siis, kui sõnumid pole õigeaegselt näha.</string>
     <string name="pref_reliable_service">Kasuta ühendust taustal</string>

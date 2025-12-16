@@ -273,7 +273,10 @@
     </plurals>
     <string name="file_saved_to">Berkas disimpan ke \"%1$s\".</string>
 
-    <!-- Used for the deletion of Device messages -->
+    <plurals name="ask_delete_messages">
+        <item quantity="other">Menghapus pesan %d?</item>
+    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="other">Menghapus pesan %d?</item>
     </plurals>
@@ -425,6 +428,7 @@
     <string name="pref_sound">Suara</string>
     <string name="pref_silent">Sunyi</string>
     <string name="pref_privacy">Privasi</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Obrolan dan media</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Cahaya</string>
@@ -529,6 +533,7 @@
     <string name="qrshow_join_contact_hint">Pindai ini untuk mengatur kontak dengan%1$s.</string>
     <string name="qrshow_join_contact_no_connection_toast">Tidak ada koneksi internet, tidak bisa menjalankan kode pengaturan QR.</string>
     <string name="qraccount_ask_create_and_login">Buat alamat email baru di \"%1$s\" dan login di sana?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Buat alamat email baru di\"%1$s\" dan masuk ke sana?\n\nAkun yang sudah ada tidak akan di hapus. Gunakankan item \"Ganti akun\" untuk mengganti akun anda</string>
     <string name="qraccount_qr_code_cannot_be_used">Kode QR yang dipindai tidak dapat digunakan untuk mengatur akun baru.</string>
     <string name="contact_verified">%1$sdiverifikasi.</string>

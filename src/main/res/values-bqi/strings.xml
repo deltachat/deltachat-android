@@ -322,9 +322,13 @@
 
     <string name="file_saved_to">فایل من «%1$s» زفت وابی.</string>
 
-    <!-- Used for the deletion of Device messages -->
+    <plurals name="ask_delete_messages">
+        <item quantity="one">اخۊی %d پیوم پاک بۊ؟</item>
+        <item quantity="other">اخۊی %d پیوم پاک بۊ؟</item>
+    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
-        <item quantity="one">êxuy %d payom pāk bu?</item>
+        <item quantity="one">اخۊی %d پیوم پاک بۊ؟</item>
         <item quantity="other">اخۊی %d پیوم پاک بۊ؟</item>
     </plurals>
     <string name="ask_start_chat_with">گوفت وو لوفت وا %1$s؟</string>

@@ -160,6 +160,7 @@
     <string name="pref_sound">శబ్ధం</string>
     <string name="pref_silent">మౌనం</string>
     <string name="pref_privacy">గోప్యత</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">ముచ్చట్లు మరియు ప్రసార మాధ్యమం</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">లైటు</string>

@@ -366,6 +366,7 @@
     <string name="pref_sound">دەنگ</string>
     <string name="pref_silent">بێدەنگ</string>
     <string name="pref_privacy">پاراستنی تاکەکەسی</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">وتووێژ و ڕەنگاڵەکان</string>
     <string name="pref_system_default">بنەڕەتی سیستەم</string>
     <!-- Translators: as in "opposite of dark" -->

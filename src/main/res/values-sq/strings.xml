@@ -405,7 +405,7 @@
         <item quantity="one">Të fshihet %d mesazh në krejt pajisjet tuaja?</item>
         <item quantity="other">Të fshihen %d mesazhe në krejt pajisjet tuaja?</item>
     </plurals>
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Të fshihet %d mesazh?</item>
         <item quantity="other">Të fshihen %d mesazhe?</item>
@@ -479,6 +479,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Listë Postimesh</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Ndryshime në emër dhe figurë liste postimesh aplikohen vetëm në këtë pajisje.</string>
 
     <!-- webxdc -->
@@ -606,7 +607,7 @@
     <string name="onboarding_create_instant_account">Krijoni Profil të Ri</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Kam Tashmë një Profil</string>
-    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Hyrje Klasike Me Email</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profili Juaj</string>
@@ -743,6 +744,7 @@
     <string name="pref_sound">Tingull</string>
     <string name="pref_silent">Heshtazi</string>
     <string name="pref_privacy">Privatësi</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Fjalosje dhe Media</string>
     <string name="pref_system_default">Parazgjedhje sistemi</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -987,13 +989,14 @@
     <string name="qrshow_join_contact_hint">Që të bisedoni me %1$s, skanojeni</string>
     <string name="qrshow_join_contact_no_connection_toast">S\’ka lidhje në internet, s\’bëhet dot ujdisja e kodit QR.</string>
     <string name="qraccount_ask_create_and_login">Të krijohet profil i ri te “%1$s” dhe të bëhet hyrja atje?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Të krijohet profil i ri në “%1$s” dhe të bëhet hyrja atje?\n\nProfili juaj ekzistues s’do të fshihet. Që të kaloni nga një profil në tjetrin, përdorni zërin “Ndërroni Profil”.</string>
     <string name="set_name_and_avatar_explain">Caktoni një emër, që kontaktet tuaj do ta njohin. Mundeni edhe të caktoni një emër profili.</string>
     <string name="please_enter_name">Ju lutemi, jepni një emër.</string>
     <string name="qraccount_qr_code_cannot_be_used">Kodi QR i skanuar s’mund të përdoret për të ujdisur një profil të ri.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Të hyhet si “%1$s”?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Të hyhet si “%1$s”?\n\nProfili juaj ekzistues s’do të fshihet. Që të kaloni nga një profil i juaji në një tjetër, përdorni zërin “Ndërroni Profil”.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s ju ftoi të bëheni pjesë e këtij grupi.\n\nPo pritet për pajisjen e %2$s që të përgjigjet…</string>
