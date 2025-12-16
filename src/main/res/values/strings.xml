@@ -749,6 +749,7 @@
     <string name="pref_sound">Sound</string>
     <string name="pref_silent">Silent</string>
     <string name="pref_privacy">Privacy</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Chats and Media</string>
     <string name="pref_system_default">System default</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -823,8 +824,13 @@
     <string name="disable_imap_idle">Disable IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Do not use IMAP IDLE extension even if the server supports it. Enabling this option will delay message retrieval, enable it only for testing.</string>
     <string name="send_stats_to_devs">Send statistics to Delta Chat\'s developers</string>
-    <string name="stats_msg_body">The attachment contains anonymous usage statistics, which help us improve Delta Chat. Thank you!</string>
-
+    <string name="stats_device_message">Do you want to help improve Delta Chat and support research by sending weekly anonymous usage statistics?\n\n👉 Tap here… 👈</string>
+    <string name="stats_confirmation_dialog">Do you want to help improve Delta Chat and support research by sending weekly anonymous usage statistics?</string>
+    <string name="stats_thanks">Thank you! You can always disable the sending at \"Settings -> Advanced\".\n\nDo you additionally have 5 minutes to take part in a scientific study on the security of Delta Chat?</string>
+    <string name="stats_disable_dialog">Sending of statistics is already enabled.\n\nDo you want to disable it?</string>
+    <string name="disable">Disable</string>
+    <string name="stats_keep_sending">Keep sending</string>
+    <string name="stats_msg_body">The attachment contains anonymous usage statistics, which helps us improve Delta Chat. See https://delta.chat/help#statssending for more information. Thank you!</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Search Results</string>
@@ -953,7 +959,7 @@
 
     <string name="devicemsg_self_deleted">You deleted the \"Saved messages\" chat.\n\nℹ️ To use the \"Saved messages\" feature again, create a new chat with yourself.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Your provider\'s storage is about to run out: %1$s%% are already used.\n\nYou may not be able to receive messages if storage is full.\n\n👉 Please check if you can delete old data in the provider\'s web interface and consider enabling \"Settings / Chats and Media / Delete Old Messages\". You can check your current storage usage anytime at \"Settings / Connectivity\".</string>
+    <string name="devicemsg_storage_exceeding">⚠️ Your provider\'s storage is about to run out: %1$s%% are already used.\n\nYou may not be able to receive messages if storage is full.\n\n👉 Please check if you can delete old data in the provider\'s web interface and consider enabling \"Settings / Chats / Delete Old Messages\". You can check your current storage usage anytime at \"Settings / Connectivity\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Date or time on your device seems to be inaccurate (%1$s).\n\nAdjust your clock ⏰🔧 to ensure your messages are received correctly.</string>
     <string name="devicemsg_update_reminder">⚠️ Your Delta Chat version might be outdated.\n\nThis may cause problems because your chat partners use newer versions - and you are missing the latest features 😳\nPlease check https://get.delta.chat or your app store for updates.</string>

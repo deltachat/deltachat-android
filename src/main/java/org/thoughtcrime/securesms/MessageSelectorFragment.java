@@ -76,9 +76,7 @@ public abstract class MessageSelectorFragment
       canDeleteForAll = false;
     }
 
-    String text = getActivity().getResources().getQuantityString(
-      dcChat.isDeviceTalk() ? R.plurals.ask_delete_messages_simple : R.plurals.ask_delete_messages,
-      messageIds.length, messageIds.length);
+    String text = getActivity().getResources().getQuantityString(R.plurals.ask_delete_messages, messageIds.length, messageIds.length);
     int positiveBtnLabel = dcChat.isSelfTalk() ? R.string.delete : R.string.delete_for_me;
 
     AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity())

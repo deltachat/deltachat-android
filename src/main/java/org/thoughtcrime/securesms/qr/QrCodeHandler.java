@@ -25,9 +25,21 @@ import org.thoughtcrime.securesms.util.views.ProgressDialog;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 
-public class QrCodeHandler {
+import chat.delta.rpc.types.SecurejoinSource;
+import chat.delta.rpc.types.SecurejoinUiPath;
 
+public class QrCodeHandler {
     private static final String TAG = QrCodeHandler.class.getSimpleName();
+
+    public static int SECUREJOIN_SOURCE_EXTERNAL_LINK = 1;
+    public static int SECUREJOIN_SOURCE_INTERNAL_LINK = 2;
+    public static int SECUREJOIN_SOURCE_CLIPBOARD = 3;
+    public static int SECUREJOIN_SOURCE_IMAGE_LOADED = 4;
+    public static int SECUREJOIN_SOURCE_SCAN = 5;
+
+    public static int SECUREJOIN_UIPATH_QR_ICON = 1;
+    public static int SECUREJOIN_UIPATH_NEW_CONTACT = 2;
+
 
     private final Activity activity;
     private final DcContext dcContext;
@@ -41,15 +53,15 @@ public class QrCodeHandler {
         accId = dcContext.getAccountId();
     }
 
-    public void onScanPerformed(IntentResult scanResult) {
+    public void onScanPerformed(IntentResult scanResult, SecurejoinUiPath uipath) {
         if (scanResult == null || scanResult.getFormatName() == null) {
             return; // aborted
         }
 
-        handleQrData(scanResult.getContents());
+        handleQrData(scanResult.getContents(), SecurejoinSource.Scan, uipath);
     }
 
-    public void handleQrData(String rawString) {
+    public void handleQrData(String rawString, SecurejoinSource source, SecurejoinUiPath uiPath) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         final DcLot qrParsed = dcContext.checkQr(rawString);
         String name = dcContext.getContact(qrParsed.getId()).getDisplayName();
@@ -57,7 +69,7 @@ public class QrCodeHandler {
             case DcContext.DC_QR_ASK_VERIFYCONTACT:
             case DcContext.DC_QR_ASK_VERIFYGROUP:
             case DcContext.DC_QR_ASK_JOIN_BROADCAST:
-                showVerifyContactOrGroup(activity, builder, rawString, qrParsed, name);
+                showVerifyContactOrGroup(activity, builder, rawString, qrParsed, name, source, uiPath);
                 break;
 
             case DcContext.DC_QR_FPR_WITHOUT_ADDR:
@@ -224,7 +236,13 @@ public class QrCodeHandler {
         });
     }
 
-    private void showVerifyContactOrGroup(Activity activity, AlertDialog.Builder builder, String qrRawString, DcLot qrParsed, String name) {
+  private void showVerifyContactOrGroup(Activity activity,
+                                        AlertDialog.Builder builder,
+                                        String qrRawString,
+                                        DcLot qrParsed,
+                                        String name,
+                                        SecurejoinSource source,
+                                        SecurejoinUiPath uipath) {
         String msg;
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ASK_VERIFYGROUP:
@@ -239,17 +257,17 @@ public class QrCodeHandler {
         }
         builder.setMessage(msg);
         builder.setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
-            DcHelper.getEventCenter(activity).captureNextError();
-            int newChatId = dcContext.joinSecurejoin(qrRawString);
-            DcHelper.getEventCenter(activity).endCaptureNextError();
+            try {
+                int newChatId = DcHelper.getRpc(activity).secureJoinWithUxInfo(dcContext.getAccountId(), qrRawString, source, uipath);
+                if (newChatId == 0) throw new Exception("Securejoin failed to create a chat");
 
-            if (newChatId != 0) {
                 Intent intent = new Intent(activity, ConversationActivity.class);
                 intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, newChatId);
                 activity.startActivity(intent);
-            } else {
+            } catch (Exception e) {
+                e.printStackTrace();
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
-                builder1.setMessage(dcContext.getLastError());
+                builder1.setMessage(e.getMessage());
                 builder1.setPositiveButton(android.R.string.ok, null);
                 builder1.create().show();
             }

@@ -61,6 +61,8 @@ public class DcHelper {
     public static final String CONFIG_PROXY_ENABLED = "proxy_enabled";
     public static final String CONFIG_PROXY_URL = "proxy_url";
     public static final String CONFIG_PRIVATE_TAG = "private_tag";
+    public static final String CONFIG_STATS_SENDING = "stats_sending";
+    public static final String CONFIG_STATS_ID = "stats_id";
 
     public static DcContext getContext(@NonNull Context context) {
         return ApplicationContext.getInstance(context).dcContext;

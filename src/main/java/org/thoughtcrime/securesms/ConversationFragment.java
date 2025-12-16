@@ -744,6 +744,9 @@ public class ConversationFragment extends MessageSelectorFragment
             else if(DozeReminder.isDozeReminderMsg(getContext(), messageRecord)) {
                 DozeReminder.dozeReminderTapped(getContext());
             }
+            else if(StatsSending.isStatsSendingDeviceMsg(getContext(), messageRecord)) {
+                StatsSending.statsDeviceMsgTapped(getActivity());
+            }
             else if(messageRecord.getInfoType() == DcMsg.DC_INFO_WEBXDC_INFO_MESSAGE) {
                 if (messageRecord.getParent() != null) {
                     // if the parent webxdc message still exists
