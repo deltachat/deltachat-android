@@ -19,6 +19,8 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
 
+import chat.delta.rpc.types.SecurejoinSource;
+
 public class LongClickCopySpan extends ClickableSpan {
   private static final String PREFIX_MAILTO = "mailto:";
   private static final String PREFIX_TEL = "tel:";
@@ -80,13 +82,13 @@ public class LongClickCopySpan extends ClickableSpan {
       }
     } else if (Util.isInviteURL(url)) {
       QrCodeHandler qrCodeHandler = new QrCodeHandler((Activity) widget.getContext());
-      qrCodeHandler.handleQrData(url);
+      qrCodeHandler.handleQrData(url, SecurejoinSource.InternalLink, null);
     } else {
       Activity activity = (Activity) widget.getContext();
       DcContext dcContext = DcHelper.getContext(activity);
       if (dcContext.checkQr(url).getState() == DcContext.DC_QR_PROXY) {
         QrCodeHandler qrCodeHandler = new QrCodeHandler(activity);
-        qrCodeHandler.handleQrData(url);
+        qrCodeHandler.handleQrData(url, null, null);
       } else {
         IntentUtils.showInBrowser(widget.getContext(), url);
       }

@@ -5,6 +5,7 @@ import static android.text.InputType.TYPE_TEXT_VARIATION_URI;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_BCC_SELF;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_STATS_SENDING;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SHOW_EMAILS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_WEBXDC_REALTIME_ENABLED;
 
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,8 +31,10 @@ import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.relay.RelayListActivity;
+import org.thoughtcrime.securesms.StatsSending;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.StreamUtil;
 import org.thoughtcrime.securesms.util.Util;
@@ -49,6 +53,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   private static final String TAG = AdvancedPreferenceFragment.class.getSimpleName();
 
   private ListPreference showEmails;
+  CheckBoxPreference selfReportingCheckbox;
   CheckBoxPreference multiDeviceCheckbox;
   CheckBoxPreference mvboxMoveCheckbox;
   CheckBoxPreference onlyFetchMvboxCheckbox;
@@ -191,6 +196,22 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       });
     }
 
+    selfReportingCheckbox = this.findPreference("pref_stats_sending");
+    if (selfReportingCheckbox != null) {
+      selfReportingCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
+        boolean enabled = (Boolean) newValue;
+        if (enabled) {
+          StatsSending.showStatsConfirmationDialog(requireActivity(), () -> {
+            ((CheckBoxPreference)preference).setChecked(true);
+          });
+          return false;
+        } else {
+          dcContext.setConfigInt(CONFIG_STATS_SENDING, 0);
+          return true;
+        }
+      });
+    }
+
     Preference proxySettings = this.findPreference("proxy_settings_button");
     if (proxySettings != null) {
       proxySettings.setOnPreferenceClickListener((preference) -> {
@@ -226,6 +247,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     showEmails.setValue(value);
     updateListSummary(showEmails, value);
 
+    selfReportingCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_STATS_SENDING));
     multiDeviceCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_BCC_SELF));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
     onlyFetchMvboxCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_ONLY_FETCH_MVBOX));

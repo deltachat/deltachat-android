@@ -39,6 +39,8 @@ import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.MailtoUtil;
 
+import chat.delta.rpc.types.SecurejoinUiPath;
+
 /**
  * Activity container for starting a new conversation.
  *
@@ -137,7 +139,7 @@ public class NewConversationActivity extends ContactSelectionActivity {
       case IntentIntegrator.REQUEST_CODE:
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.onScanPerformed(scanResult);
+        qrCodeHandler.onScanPerformed(scanResult, SecurejoinUiPath.NewContact);
         break;
       default:
         break;
