@@ -294,7 +294,12 @@
     </plurals>
     <string name="file_saved_to">Fișier salvat la \"%1$s\".</string>
 
-    <!-- Used for the deletion of Device messages -->
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Ștergeți %d mesaj?</item>
+        <item quantity="few">Ștergeți %d mesaje?</item>
+        <item quantity="other">Ștergeți %d de mesaje?</item>
+    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Ștergeți %d mesaj?</item>
         <item quantity="few">Ștergeți %d mesaje?</item>
@@ -367,6 +372,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Lista de corespondență</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Modificările aduse numelui și imaginii listei de corespondență se aplică numai pe acest dispozitiv.</string>
 
     <!-- webxdc -->
@@ -544,6 +550,7 @@
     <string name="pref_sound">Sunet</string>
     <string name="pref_silent">Silențios</string>
     <string name="pref_privacy">Confidențialitate</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Discuții și mass-media</string>
     <string name="pref_system_default">Sistem implicit</string>
     <!-- Translators: as in "opposite of dark" -->

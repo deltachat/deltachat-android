@@ -385,7 +385,7 @@
         <item quantity="one">آیا می‌خواهید از روی تمام دستگاه‌هایتان %d پیام را حذف کنید؟</item>
         <item quantity="other">آیا می‌خواهید از روی تمام دستگاه‌هایتان %d پیام را حذف کنید؟</item>
     </plurals>
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">می‌خواهید %dپیام پاک شود؟</item>
         <item quantity="other">می‌خواهید %d پیام پاک شود؟</item>
@@ -461,6 +461,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">فهرست پستی</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">تغییرات انجام شده روی نام و تصویر فهست پستی فقط در این دستگاه اعمال شود.</string>
 
     <!-- webxdc -->
@@ -590,7 +591,7 @@
     <string name="onboarding_create_instant_account">ایجاد حساب کاربری جدید</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">از قبل یک حساب کاربری دارم</string>
-    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">ساخت حساب کاربری با حساب رایانامه معمولی</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">نمایه شما</string>
@@ -712,6 +713,7 @@
     <string name="pref_sound">صدا</string>
     <string name="pref_silent">سکوت</string>
     <string name="pref_privacy">حریم خصوصی</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">گپ‌ها و رسانه</string>
     <string name="pref_system_default">پیش‌فرض سیستم</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -938,6 +940,7 @@
     <string name="qrshow_join_contact_hint">برای ارتباط با %1$s این را اسکن کنید.</string>
     <string name="qrshow_join_contact_no_connection_toast">اتصال اینترنت نیست. نمیتوان نصب کد کیوآر را انجام داد. </string>
     <string name="qraccount_ask_create_and_login">ایجاد رایانامهٔ جدید روی «%1$s» و ورود به آنجا؟</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">نشانی جدید رایانامه روی «%1$s» ایجاد شده  و به آن وارد شود؟
  حساب فعلی شما پاک نمی‌شود. از بخش «تغییر حساب کاربری» برای جابجایی بین حساب‌ها استفاده کنید</string>
     <string name="set_name_and_avatar_explain">اسمی انتخاب کنید که مخاطبینتان با آن شما را بشناسند. می توانید برای خود عکسی هم انتخاب کنید.</string>
@@ -945,7 +948,7 @@
     <string name="qraccount_qr_code_cannot_be_used">این کد کیوآر اسکن شده را نمی‌توان برای راه‌اندازی حساب جدید استفاده کرد. </string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">آیا به \"%1$s\" وارد شوید؟</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">آیا به «%1$s» وارد شوید؟\n\nحساب موجود شما حذف نخواهد شد. برای جابه‌جایی میان حساب‌هایتان از «تغییر حساب» استفاده کنید.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">کاربر %1$s شما را دعوت کرده است تا عضو این گروه شوید.

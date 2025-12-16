@@ -4,6 +4,7 @@
 
 * Allow to add relay from clipboard or image if camera permission is not granted
 * Avoid crash in the "View Log" screen
+* Update to core 2.34.0
 
 ## v2.33.1
 2025-12

@@ -304,7 +304,11 @@
     </plurals>
     <string name="file_saved_to">Tiedosto tallennettu \"%1$s\".</string>
 
-    <!-- Used for the deletion of Device messages -->
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Poista %d viesti?</item>
+        <item quantity="other">Poista %d viestiä?</item>
+    </plurals>
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Poista %d viesti?</item>
         <item quantity="other">Poista %d viestiä?</item>
@@ -373,6 +377,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Sähköpostilista</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">Muutokset sähköpostilistan nimeen ja kuvaan tallentuvat vain tähän laitteeseen.</string>
 
     <!-- webxdc -->
@@ -490,7 +495,7 @@
     <string name="onboarding_create_instant_account">Luo uusi profiili</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Minulla on jo profiili</string>
-    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Tavanomainen sähköpostikirjautuminen</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profiilisi</string>
@@ -589,6 +594,7 @@
     <string name="pref_sound">Ääni</string>
     <string name="pref_silent">Äänetön</string>
     <string name="pref_privacy">Yksityisyys</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Keskustelut ja media</string>
     <string name="pref_system_default">Järjestelmän oletus</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -809,13 +815,14 @@
     <string name="qrshow_join_contact_hint">Skannaa aloittaaksesi keskustelun käyttäjän %1$s kanssa</string>
     <string name="qrshow_join_contact_no_connection_toast">Ei internetyhteyttä, QR-koodin luominen ei onnistu.</string>
     <string name="qraccount_ask_create_and_login">Luo uusi sähköpostiosoite palvelimella \"%1$s\" ja kirjaudu sisään?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Luo uusi sähköpostiosoite palvelimella \"%1$s\" ja kirjaudu sisään?\n\nNykyistä tiliäsi ei poisteta. Käytä valintaa \"Vaihda tiliä\" vaihtaaksesi tilien välillä.</string>
     <string name="set_name_and_avatar_explain">Aseta nimi jonka yhteystietosi tunnistavat. Voit myös asettaa profiilikuvan.</string>
     <string name="please_enter_name">Syötä nimi.</string>
     <string name="qraccount_qr_code_cannot_be_used">Uutta tiliä ei voida luoda skannatulla QR-koodilla.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Haluatko kirjautua osoitteella \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Haluatko kirjautua osoitteella \"%1$s\"?\n\nNykyistä tiliäsi ei poisteta. Käytä \"Vaihda tiliä\" -kohtaa vaihtaaksesi tiliesi välillä.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s kutsui sinut tähän ryhmään.\n\nOdotetaan vastausta yhteystiedon %2$s laitteelta...</string>

@@ -54,10 +54,11 @@
   <li><a href="#advanced">Advanced</a>
     <ul>
       <li><a href="#експериментальні-функції">Експериментальні функції</a></li>
-      <li><a href="#statssending">What is “Send statistics to Delta Chat’s developers”?</a></li>
+      <li><a href="#relays">What are Relays?</a></li>
       <li><a href="#can-i-use-a-classic-email-address-with-delta-chat">Can I use a classic email address with Delta Chat?</a></li>
       <li><a href="#classic-email">How can I configure a chat profile with a classic email address as relay?</a></li>
       <li><a href="#я-хочу-керувати-власним-сервером-для-delta-chat-що-ви-порекомендуєте">Я хочу керувати власним сервером для Delta Chat. Що ви порекомендуєте?</a></li>
+      <li><a href="#statssending">What is “Send statistics to Delta Chat’s developers”?</a></li>
       <li><a href="#мене-цікавлять-технічні-деталі-можете-розповісти-більше">Мене цікавлять технічні деталі. Можете розповісти більше?</a></li>
     </ul>
   </li>
@@ -872,11 +873,14 @@ Welcome to the power of the interoperable chatmail relay network :)</p>
 <p>Цей спосіб рекомендований, лише якщо «Додати другий пристрій», як описано вище, не працює.</p>
 
 <ul>
-  <li>На старому пристрої перейдіть до “Налаштування -&gt; Чати та медіа -&gt; Експортувати резервну копію”. Введіть свій   PIN-код, графічний ключ або пароль розблокування екрана. Потім ви можете натиснути на “Почати резервне копіювання”. Це збереже файл резервної копії на вашому пристрої. Тепер вам потрібно якось перенести його на інший пристрій.</li>
-  <li>На новому пристрої в меню “У мене вже є профіль” виберіть “Відновити з резервної копії”. Після імпорту ваші розмови, ключі шифрування   ключі шифрування та медіа повинні бути скопійовані на новий пристрій.</li>
-  <li>Якщо ви користуєтеся iOS:** і у вас виникли труднощі, можливо <a href="https://support.delta.chat/t/import-backup-to-ios/1628">цей посібник</a> допоможе вам.</li>
-  <li>Тепер ви синхронізовані і можете використовувати обидва пристрої для надсилання та отримання наскрізних зашифрованих повідомлень зі своїми партнерами по спілкуванню.</li>
+  <li>
+    <p>На старому пристрої перейдіть до <strong>Налаштування → Чати та медіа → Експортувати резервну копію</strong>. Введіть свій PIN-код, графічний ключ або пароль розблокування екрана. Потім ви можете натиснути на “Почати резервне копіювання”. Це збереже файл резервної копії на вашому пристрої. Тепер вам потрібно якось перенести його на інший пристрій.</p>
+  </li>
+  <li>На новому пристрої в меню <strong>У мене вже є профіль</strong> виберіть <strong>Відновити з резервної копії</strong>. Після імпорту ваші розмови, ключі шифрування ключі шифрування та медіа повинні бути скопійовані на новий пристрій.</li>
+  <li>Якщо ви користуєтеся iOS: і у вас виникли труднощі, можливо <a href="https://support.delta.chat/t/import-backup-to-ios/1628">цей посібник</a> допоможе вам.</li>
 </ul>
+
+<p>Тепер ви синхронізовані і можете використовувати обидва пристрої для надсилання та отримання наскрізних зашифрованих повідомлень зі своїми партнерами по спілкуванню.</p>
     
       <h3 id="чи-планується-впровадження-веб-клієнта-delta-chat">
         
@@ -916,33 +920,44 @@ you can try out features we are working on.</p>
 <p>Ви можете знайти додаткову інформацію
 та залишити відгук на <a href="https://support.delta.chat">форумі</a>.</p>
     
-      <h3 id="statssending">
+      <h3 id="relays">
         
         
-          What is “Send statistics to Delta Chat’s developers”? <a href="#statssending" class="anchor"></a>
+          What are Relays? <a href="#relays" class="anchor"></a>
         
         
       </h3>
 
-<p>We would like to improve Delta Chat with your help,
-which is why Delta Chat for Android asks whether you want
-to send anonymous usage statistics.</p>
+<p>Relays are used to temporarily hold messages in case your device is offline.
+Relays are cheap and dumb servers,
+that do not store data as group states, your name or avatar -
+all that exist only on your device.
+Relays are operated by different groups and people.</p>
 
-<p>You can turn it on and off at
-<strong>Settings → Advanced → Send statistics to Delta Chat’s developers</strong>.</p>
-
-<p>Коли Ви увімкнете цю функцію,
-щотижнева статистика буде автоматично надсилатися боту.</p>
-
-<p>We are interested e.g. in statistics like:</p>
+<p>By default, after installation, a relay is <strong>automatically set up</strong>,
+so you do not need to care about that.
+However, if you want to,
+you can configure relays at At <strong>Settings → Advanced → Relays</strong>:</p>
 
 <ul>
-  <li>How many contacts are introduced by personally scanning a QR code?</li>
-  <li>Which versions of Delta Chat are being used?</li>
-  <li>How many messages are unencrypted?</li>
+  <li>
+    <p>You can <strong>add</strong> a relay by scanning its QR code;
+<a href="https://chatmail.at/relays">https://chatmail.at/relays</a> shows some known ones.
+If you have multiple relays, your will receive messages on all of them.</p>
+  </li>
+  <li>
+    <p>The <strong>default</strong> defines the one where your chat partners send future messages to.</p>
+  </li>
+  <li>
+    <p>If you <strong>remove</strong> a relay,
+make sure another default relay was used for a sufficient amount of time.
+Otherwise, messages from your chat partners won’t reach you.
+If in doubt, remove later.</p>
+  </li>
 </ul>
 
-<p>Ми <em>не</em> будемо збирати жодних персональних даних, які б могли ідентифікувати Вас особисто.</p>
+<p>For more details and future possibilities of relays,
+you can follow discussions in the <a href="https://support.delta.chat">Forum</a>.</p>
     
       <h3 id="can-i-use-a-classic-email-address-with-delta-chat">
         
@@ -1008,6 +1023,40 @@ except if your users’ devices require Google/Apple <a href="#instant-delivery"
 <a href="https://chatmail.at">Chatmail</a> is a community-driven project that encompasses both the setup of relays
 and <a href="https://github.com/chatmail/core">core Rust developments</a> 
 that power <a href="https://chatmail.at/clients">chatmail clients</a> of which Delta Chat is the most well known.</p>
+    
+      <h3 id="statssending">
+        
+        
+          What is “Send statistics to Delta Chat’s developers”? <a href="#statssending" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>We would like to improve Delta Chat with your help,
+which is why Delta Chat for Android asks whether you want
+to send anonymous usage statistics.</p>
+
+<p>You can turn it on and off at
+<strong>Settings → Advanced → Send statistics to Delta Chat’s developers</strong>.</p>
+
+<p>Коли Ви увімкнете цю функцію,
+щотижнева статистика буде автоматично надсилатися боту.</p>
+
+<p>We are interested e.g. in statistics like:</p>
+
+<ul>
+  <li>
+    <p>How many contacts are introduced by personally scanning a QR code?</p>
+  </li>
+  <li>
+    <p>Which versions of Delta Chat are being used?</p>
+  </li>
+  <li>
+    <p>What errors occur for users?</p>
+  </li>
+</ul>
+
+<p>Ми <em>не</em> будемо збирати жодних персональних даних, які б могли ідентифікувати Вас особисто.</p>
     
       <h3 id="мене-цікавлять-технічні-деталі-можете-розповісти-більше">
         
@@ -1154,21 +1203,9 @@ and there must be tangible improvements for users.</p>
         
       </h3>
 
-<p>If you are sending or receiving email messages without end-to-end encryption (using a classic email server),
-they are still protected from cell or cable companies who can not read or modify your email messages.
-But both your and your recipient’s email providers
-may read, analyze or modify your messages, including any attachments.</p>
+<p>Якщо ви надсилаєте або отримуєте електронні листи без наскрізного шифрування (використовуючи класичний сервер електронної пошти), вони все одно захищені від мобільних або кабельних компаній, які не можуть читати чи змінювати ваші повідомлення. Однак як ваш, так і поштовий провайдер одержувача можуть читати, аналізувати або змінювати ваші листи, включаючи будь-які вкладення.</p>
 
-<p>Delta Chat by default uses strict 
-<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS encryption</a> 
-which secures connections between your device and your email provider.
-All of Delta Chat’s TLS-handling has been independently <a href="#security-audits">security audited</a>.
-Moreover, the connection between your and the recipient’s email provider
-will typically be transport-encrypted as well.
-If the involved email servers support <a href="https://datatracker.ietf.org/doc/html/rfc8461">MTA-STS</a>
-then transport encryption will be enforced between email providers
-in which case Delta Chat communications will never be exposed in cleartext to the Internet
-even if the message was not end-to-end encrypted.</p>
+<p>За замовчуванням Delta Chat використовує суворе <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS-шифрування</a> яке захищає з’єднання між вашим пристроєм і провайдером електронної пошти. Вся робота з TLS-шифруванням Delta Chat пройшла незалежний <a href="#security-audits">аудит безпеки</a>. Крім того, з’єднання між вашим провайдером та провайдером електронної пошти одержувача зазвичай також шифрується при передачі даних. Якщо задіяні поштові сервери підтримують <a href="https://datatracker.ietf.org/doc/html/rfc8461">MTA-STS</a> то між провайдерами електронної пошти буде застосовуватися транспортне шифрування в цьому випадку повідомлення Delta Chat ніколи не будуть доступні в Інтернеті у вигляді відкритого тексту навіть якщо повідомлення не було наскрізь зашифровано.</p>
     
       <h3 id="message-metadata">
         

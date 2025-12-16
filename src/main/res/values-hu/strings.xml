@@ -409,7 +409,7 @@
         <item quantity="one">Töröl %d üzenetet az összes eszközén?</item>
         <item quantity="other">Töröl %d üzenetet az összes eszközén?</item>
     </plurals>
-    <!-- Used for the deletion of Device messages -->
+    <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">%d üzenet törlése?</item>
         <item quantity="other">%d üzenet törlése?</item>
@@ -483,6 +483,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Levelezőlista</string>
+    <!-- deprecated -->
     <string name="mailing_list_profile_info">A levelezőlista nevének és képének módosítása csak ezen az eszközön érvényes.</string>
 
     <!-- webxdc -->
@@ -611,7 +612,7 @@
     <string name="onboarding_create_instant_account">Új profil létrehozása</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Már van profilom</string>
-    <!-- This is a button and a title, allowing to log in to existing, classic email accounts, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Klasszikus e-mail bejelentkezés</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profil</string>
@@ -736,6 +737,7 @@
     <string name="pref_sound">Hang</string>
     <string name="pref_silent">Csendes</string>
     <string name="pref_privacy">Adatvédelem</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Csevegések és média</string>
     <string name="pref_system_default">Rendszer alapértelmezett</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -970,13 +972,14 @@
     <string name="qrshow_join_contact_hint">QR-kód beolvasása a csevegéshez vele: „%1$s”</string>
     <string name="qrshow_join_contact_no_connection_toast">Nincs internetkapcsolat, nem lehet elvégezni a QR-kód beállítását.</string>
     <string name="qraccount_ask_create_and_login">Új profil létrehozása a(z) „%1$s” oldalon és bejelentkezés ott?</string>
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qraccount_ask_create_and_login_another">Új profil létrehozása a(z) „%1$s” oldalon, és bejelentkezés ott?\n\nA meglévő profilja nem törlődik. A „Profilváltás” elemmel válthat a profiljai között.</string>
     <string name="set_name_and_avatar_explain">Adjon meg egy olyan nevet, amelyet a partnerei felismernek. Beállíthat egy profilképet is.</string>
     <string name="please_enter_name">Adjon meg egy nevet.</string>
     <string name="qraccount_qr_code_cannot_be_used">A beolvasott QR-kód nem használható új profil beállítására.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Bejelentkezés ide: „%1$s”?</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Bejelentkezés ide: „%1$s”?\n\nA meglévő profilját nem töröljük. A „Profilváltás” elemmel válthat a profiljai között.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s meghívta önt, hogy csatlakozzon ehhez a csoporthoz.\n\n%2$s eszközére várakozás a válaszhoz…</string>

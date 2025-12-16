@@ -55,10 +55,11 @@
   <li><a href="#advanced">Advanced</a>
     <ul>
       <li><a href="#experimental-features">Experimental Features</a></li>
-      <li><a href="#statssending">What is “Send statistics to Delta Chat’s developers”?</a></li>
+      <li><a href="#relays">What are Relays?</a></li>
       <li><a href="#can-i-use-a-classic-email-address-with-delta-chat">Can I use a classic email address with Delta Chat?</a></li>
       <li><a href="#classic-email">How can I configure a chat profile with a classic email address as relay?</a></li>
       <li><a href="#i-want-to-manage-my-own-server-for-delta-chat-what-do-you-recommend">I want to manage my own server for Delta Chat. What do you recommend?</a></li>
+      <li><a href="#statssending">What is “Send statistics to Delta Chat’s developers”?</a></li>
       <li><a href="#im-interested-in-the-technical-details-can-you-tell-me-more">I’m interested in the technical details. Can you tell me more?</a></li>
     </ul>
   </li>
@@ -949,22 +950,21 @@ try the <strong>manual transfer</strong> described below</p>
 <p>This method is only recommended if “Add Second Device” as described above does not work.</p>
 
 <ul>
-  <li>On the old device, go to “Settings -&gt; Chats and media -&gt; Export Backup”. Enter your
+  <li>
+    <p>On the old device, go to <strong>Settings → Chats → Export Backup</strong>. Enter your
 screen unlock PIN, pattern, or password. Then you can click on “Start
 Backup”. This saves the backup file to your device. Now you have to transfer
-it to the other device somehow.</li>
-  <li>On the new device, in the “I already have a profile” menu,
-choose “restore from backup”. After import, your conversations, encryption
-keys, and media should be copied to the new device.
-    <ul>
-      <li><strong>If you use iOS:</strong> and you encounter difficulties, maybe
-<a href="https://support.delta.chat/t/import-backup-to-ios/1628">this guide</a> will
-help you.</li>
-    </ul>
+it to the other device somehow.</p>
   </li>
-  <li>You are now synchronized, and can use both devices for sending and receiving
-end-to-end encrypted messages with your communication partners.</li>
+  <li>
+    <p>On the new device, select <strong>I Already Have a Profile → Restore from Backup</strong>.
+If you use iOS and encounter difficulties,
+<a href="https://support.delta.chat/t/import-backup-to-ios/1628">this guide</a> might help you.</p>
+  </li>
 </ul>
+
+<p>You are now synchronized, and can use both devices for sending and receiving
+end-to-end encrypted messages with your communication partners.</p>
     
       <h3 id="are-there-any-plans-for-introducing-a-delta-chat-web-client">
         
@@ -1009,33 +1009,44 @@ you can try out features we are working on.</p>
 <p>You can find more information
 and give feedback in the <a href="https://support.delta.chat">Forum</a>.</p>
     
-      <h3 id="statssending">
+      <h3 id="relays">
         
         
-          What is “Send statistics to Delta Chat’s developers”? <a href="#statssending" class="anchor"></a>
+          What are Relays? <a href="#relays" class="anchor"></a>
         
         
       </h3>
 
-<p>We would like to improve Delta Chat with your help,
-which is why Delta Chat for Android asks whether you want
-to send anonymous usage statistics.</p>
+<p>Relays are used to temporarily hold messages in case your device is offline.
+Relays are cheap and dumb servers,
+that do not store data as group states, your name or avatar -
+all that exist only on your device.
+Relays are operated by different groups and people.</p>
 
-<p>You can turn it on and off at
-<strong>Settings → Advanced → Send statistics to Delta Chat’s developers</strong>.</p>
-
-<p>When you turn it on,
-weekly statistics will be automatically sent to a bot.</p>
-
-<p>We are interested e.g. in statistics like:</p>
+<p>By default, after installation, a relay is <strong>automatically set up</strong>,
+so you do not need to care about that.
+However, if you want to,
+you can configure relays at At <strong>Settings → Advanced → Relays</strong>:</p>
 
 <ul>
-  <li>How many contacts are introduced by personally scanning a QR code?</li>
-  <li>Which versions of Delta Chat are being used?</li>
-  <li>How many messages are unencrypted?</li>
+  <li>
+    <p>You can <strong>add</strong> a relay by scanning its QR code;
+<a href="https://chatmail.at/relays">https://chatmail.at/relays</a> shows some known ones.
+If you have multiple relays, your will receive messages on all of them.</p>
+  </li>
+  <li>
+    <p>The <strong>default</strong> defines the one where your chat partners send future messages to.</p>
+  </li>
+  <li>
+    <p>If you <strong>remove</strong> a relay,
+make sure another default relay was used for a sufficient amount of time.
+Otherwise, messages from your chat partners won’t reach you.
+If in doubt, remove later.</p>
+  </li>
 </ul>
 
-<p>We will <em>not</em> collect any personally identifiable information about you.</p>
+<p>For more details and future possibilities of relays,
+you can follow discussions in the <a href="https://support.delta.chat">Forum</a>.</p>
     
       <h3 id="can-i-use-a-classic-email-address-with-delta-chat">
         
@@ -1101,6 +1112,40 @@ except if your users’ devices require Google/Apple <a href="#instant-delivery"
 <a href="https://chatmail.at">Chatmail</a> is a community-driven project that encompasses both the setup of relays
 and <a href="https://github.com/chatmail/core">core Rust developments</a> 
 that power <a href="https://chatmail.at/clients">chatmail clients</a> of which Delta Chat is the most well known.</p>
+    
+      <h3 id="statssending">
+        
+        
+          What is “Send statistics to Delta Chat’s developers”? <a href="#statssending" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>We would like to improve Delta Chat with your help,
+which is why Delta Chat for Android asks whether you want
+to send anonymous usage statistics.</p>
+
+<p>You can turn it on and off at
+<strong>Settings → Advanced → Send statistics to Delta Chat’s developers</strong>.</p>
+
+<p>When you turn it on,
+weekly statistics will be automatically sent to a bot.</p>
+
+<p>We are interested e.g. in statistics like:</p>
+
+<ul>
+  <li>
+    <p>How many contacts are introduced by personally scanning a QR code?</p>
+  </li>
+  <li>
+    <p>Which versions of Delta Chat are being used?</p>
+  </li>
+  <li>
+    <p>What errors occur for users?</p>
+  </li>
+</ul>
+
+<p>We will <em>not</em> collect any personally identifiable information about you.</p>
     
       <h3 id="im-interested-in-the-technical-details-can-you-tell-me-more">
         

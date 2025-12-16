@@ -416,6 +416,7 @@
     <string name="pref_sound">Sono</string>
     <string name="pref_silent">Silenta</string>
     <string name="pref_privacy">Privateco</string>
+    <!-- deprecated, use pref_chats -->
     <string name="pref_chats_and_media">Interparoloj kaj aŭdvidaĵoj</string>
     <string name="pref_system_default">Sistema defaŭlto</string>
     <!-- Translators: as in "opposite of dark" -->
