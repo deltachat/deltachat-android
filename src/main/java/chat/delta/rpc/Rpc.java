@@ -1332,6 +1332,14 @@ public class Rpc {
   }
 
   /**
+   * Forward messages to a chat in another account.
+   * See [`Self::forward_messages`] for more info.
+   */
+  public void forwardMessagesToAccount(Integer srcAccountId, java.util.List<Integer> srcMessageIds, Integer dstAccountId, Integer dstChatId) throws RpcException {
+    transport.call("forward_messages_to_account", mapper.valueToTree(srcAccountId), mapper.valueToTree(srcMessageIds), mapper.valueToTree(dstAccountId), mapper.valueToTree(dstChatId));
+  }
+
+  /**
    * Resend messages and make information available for newly added chat members.
    * Resending sends out the original message, however, recipients and webxdc-status may differ.
    * Clients that already have the original message can still ignore the resent message as
