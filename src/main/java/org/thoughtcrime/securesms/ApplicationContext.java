@@ -171,7 +171,7 @@ public class ApplicationContext extends MultiDexApplication {
             // 2025.12.07: revert to enabled since the setting was removed
             ac.setConfigInt("webxdc_realtime_enabled", 1);
 
-            // 2025.11.12: this is needed until core starts ignoring "delete_server_after" for chatmail
+            // 2025-11-12: this is needed until core starts ignoring "delete_server_after" for chatmail
             if (ac.isChatmail()) {
               ac.setConfig("delete_server_after", null); // reset
             }
