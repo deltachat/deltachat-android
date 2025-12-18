@@ -66,12 +66,6 @@
             android:summary="@string/pref_incognito_keyboard_explain"
             android:title="@string/pref_incognito_keyboard" />
 
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="true"
-            android:key="pref_webxdc_realtime_enabled"
-            android:summary="@string/enable_realtime_explain"
-            android:title="@string/enable_realtime"/>
-
     </PreferenceCategory>
 
     <PreferenceCategory android:key="pref_category_legacy" android:title="Legacy">

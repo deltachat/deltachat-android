@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Remove deprecated "real-time apps" switch
+
 ## v2.34.0
 2025-12
 
