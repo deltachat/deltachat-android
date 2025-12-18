@@ -47,8 +47,14 @@ import chat.delta.rpc.RpcException;
 public class AccountSelectionListFragment extends DialogFragment implements DcEventCenter.DcEventDelegate
 {
   private static final String TAG = AccountSelectionListFragment.class.getSimpleName();
+  private final ConversationListActivity activity;
   private RecyclerView recyclerView;
   private AccountSelectionListAdapter adapter;
+
+  public AccountSelectionListFragment(ConversationListActivity activity) {
+    super();
+    this.activity = activity;
+  }
 
   @NonNull
   @Override
@@ -132,7 +138,7 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
   private void onContextItemSelected(MenuItem item, int accountId) {
     int itemId = item.getItemId();
     if (itemId == R.id.delete) {
-      onDeleteAccount(accountId);
+      onDeleteProfile(accountId);
     } else if (itemId == R.id.menu_mute_notifications) {
       onToggleMute(accountId);
     } else if (itemId == R.id.menu_set_tag) {
@@ -167,8 +173,6 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
   }
 
   private void onSetTag(int accountId) {
-    Activity activity = getActivity();
-    if (activity == null) return;
     AccountSelectionListFragment.this.dismiss();
 
     DcContext dcContext = DcHelper.getAccounts(activity).getAccount(accountId);
@@ -190,10 +194,8 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
       .show();
   }
 
-  private void onDeleteAccount(int accountId) {
-    Activity activity = getActivity();
+  private void onDeleteProfile(int accountId) {
     AccountSelectionListFragment.this.dismiss();
-    if (activity == null) return;
     DcAccounts accounts = DcHelper.getAccounts(activity);
     Rpc rpc = DcHelper.getRpc(activity);
 
@@ -229,22 +231,7 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
       .setTitle(R.string.delete_account)
       .setView(dialogView)
       .setNegativeButton(R.string.cancel, (d, which) -> AccountManager.getInstance().showSwitchAccountMenu(activity))
-      .setPositiveButton(R.string.delete, (d2, which2) -> {
-          boolean selected = accountId == accounts.getSelectedAccount().getAccountId();
-          DcHelper.getNotificationCenter(activity).removeAllNotifications(accountId);
-          accounts.removeAccount(accountId);
-          if (selected) {
-            DcContext selAcc = accounts.getSelectedAccount();
-            AccountManager.getInstance().switchAccountAndStartActivity(activity, selAcc.isOk()? selAcc.getAccountId() : 0);
-          } else {
-            AccountManager.getInstance().showSwitchAccountMenu(activity);
-          }
-
-          // title update needed to show "Delta Chat" in case there is only one profile left
-          if (activity instanceof ConversationListActivity) {
-            ((ConversationListActivity)activity).refreshTitle();
-          }
-      })
+      .setPositiveButton(R.string.delete, (d2, w2) -> activity.onDeleteProfile(accountId))
       .show();
     Util.redPositiveButton(dialog);
   }
