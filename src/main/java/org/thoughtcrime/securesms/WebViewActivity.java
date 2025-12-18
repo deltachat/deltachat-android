@@ -304,7 +304,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     // invite-links should be handled directly
     String schema = url.split(":")[0].toLowerCase();
     if (schema.equals("openpgp4fpr") || url.startsWith("https://" + Util.INVITE_DOMAIN + "/")) {
-      new QrCodeHandler(this).handleQrData(url, SecurejoinSource.InternalLink, null);
+      new QrCodeHandler(this).handleOnlySecureJoinQr(url, SecurejoinSource.InternalLink, null);
       return true; // abort internal loading
     }
 

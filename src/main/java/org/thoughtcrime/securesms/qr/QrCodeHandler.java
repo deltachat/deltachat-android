@@ -19,6 +19,7 @@ import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.relay.RelayListActivity;
 import org.thoughtcrime.securesms.util.IntentUtils;
+import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
@@ -53,118 +54,182 @@ public class QrCodeHandler {
         accId = dcContext.getAccountId();
     }
 
-    public void onScanPerformed(IntentResult scanResult, SecurejoinUiPath uipath) {
-        if (scanResult == null || scanResult.getFormatName() == null) {
-            return; // aborted
-        }
-
-        handleQrData(scanResult.getContents(), SecurejoinSource.Scan, uipath);
+  /** Process only QR about getting in contact or joining chats */
+  public void handleOnlySecureJoinQr(String rawString, SecurejoinSource source, SecurejoinUiPath uiPath) {
+    final DcLot qrParsed = dcContext.checkQr(rawString);
+    if (!handleSecureJoinQr(qrParsed, rawString, source, uiPath)) {
+      handleDefault(new AlertDialog.Builder(activity), rawString, qrParsed);
     }
+  }
 
-    public void handleQrData(String rawString, SecurejoinSource source, SecurejoinUiPath uiPath) {
+  private boolean handleSecureJoinQr(DcLot qrParsed, String rawString, SecurejoinSource source, SecurejoinUiPath uiPath) {
+    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+    String name = dcContext.getContact(qrParsed.getId()).getDisplayName();
+    switch (qrParsed.getState()) {
+      case DcContext.DC_QR_ASK_VERIFYCONTACT:
+      case DcContext.DC_QR_ASK_VERIFYGROUP:
+      case DcContext.DC_QR_ASK_JOIN_BROADCAST:
+        showVerifyContactOrGroup(builder, rawString, qrParsed, name, source, uiPath);
+        break;
+
+      case DcContext.DC_QR_WITHDRAW_VERIFYCONTACT:
+      case DcContext.DC_QR_WITHDRAW_VERIFYGROUP:
+      case DcContext.DC_QR_WITHDRAW_JOINBROADCAST:
+        String message = qrParsed.getState() == DcContext.DC_QR_WITHDRAW_VERIFYCONTACT ? activity.getString(R.string.withdraw_verifycontact_explain)
+          : qrParsed.getState() == DcContext.DC_QR_WITHDRAW_VERIFYCONTACT ? activity.getString(R.string.withdraw_verifygroup_explain, qrParsed.getText1())
+          : activity.getString(R.string.withdraw_joinbroadcast_explain, qrParsed.getText1());
+        builder.setTitle(R.string.qrshow_title);
+        builder.setMessage(message);
+        builder.setNeutralButton(R.string.reset, (dialog, which) -> {
+          dcContext.setConfigFromQr(rawString);
+        });
+        builder.setPositiveButton(R.string.ok, null);
+        Util.redButton(builder.show(), AlertDialog.BUTTON_NEUTRAL);
+        return true;
+
+      case DcContext.DC_QR_REVIVE_VERIFYCONTACT:
+      case DcContext.DC_QR_REVIVE_VERIFYGROUP:
+      case DcContext.DC_QR_REVIVE_JOINBROADCAST:
+        builder.setTitle(R.string.qrshow_title);
+        builder.setMessage(activity.getString(R.string.revive_verifycontact_explain));
+        builder.setNeutralButton(R.string.revive_qr_code, (dialog, which) -> {
+          dcContext.setConfigFromQr(rawString);
+        });
+        builder.setPositiveButton(R.string.ok, null);
+        break;
+
+      case DcContext.DC_QR_FPR_WITHOUT_ADDR:
+        showVerifyFingerprintWithoutAddress(builder, qrParsed);
+        break;
+
+      case DcContext.DC_QR_FPR_MISMATCH:
+        showFingerPrintError(builder, name);
+        break;
+
+      case DcContext.DC_QR_FPR_OK:
+      case DcContext.DC_QR_ADDR:
+        showFingerprintOrQrSuccess(builder, qrParsed, name);
+        break;
+
+      default:
+        return false;
+    }
+    builder.create().show();
+    return true;
+  }
+
+  /** Process only QR about adding relays/profiles (DCACCOUNT: / DCLOGIN:) */
+  public void handleOnlyAddRelayQr(String rawString) {
+    final DcLot qrParsed = dcContext.checkQr(rawString);
+    if (!handleAddRelayQr(qrParsed, rawString)) {
+      handleDefault(new AlertDialog.Builder(activity), rawString, qrParsed);
+    }
+  }
+
+  private boolean handleAddRelayQr(DcLot qrParsed, String rawString) {
+    switch (qrParsed.getState()) {
+      case DcContext.DC_QR_ACCOUNT:
+      case DcContext.DC_QR_LOGIN:
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        final DcLot qrParsed = dcContext.checkQr(rawString);
-        String name = dcContext.getContact(qrParsed.getId()).getDisplayName();
-        switch (qrParsed.getState()) {
-            case DcContext.DC_QR_ASK_VERIFYCONTACT:
-            case DcContext.DC_QR_ASK_VERIFYGROUP:
-            case DcContext.DC_QR_ASK_JOIN_BROADCAST:
-                showVerifyContactOrGroup(activity, builder, rawString, qrParsed, name, source, uiPath);
-                break;
-
-            case DcContext.DC_QR_FPR_WITHOUT_ADDR:
-                showVerifyFingerprintWithoutAddress(builder, qrParsed);
-                break;
-
-            case DcContext.DC_QR_FPR_MISMATCH:
-                showFingerPrintError(builder, name);
-                break;
-
-            case DcContext.DC_QR_FPR_OK:
-            case DcContext.DC_QR_ADDR:
-                showFingerprintOrQrSuccess(builder, qrParsed, name);
-                break;
-
-            case DcContext.DC_QR_URL:
-                showQrUrl(builder, qrParsed);
-                break;
-
-            case DcContext.DC_QR_ACCOUNT:
-            case DcContext.DC_QR_LOGIN:
-                final String scope = qrParsed.getText1();
-                setAddTransportDialog(activity, builder, rawString, scope);
-                builder.setNegativeButton(R.string.cancel, null);
-                builder.setCancelable(false);
-                break;
-
-            case DcContext.DC_QR_BACKUP2:
-                builder.setTitle(R.string.multidevice_receiver_title);
-                builder.setMessage(activity.getString(R.string.multidevice_receiver_scanning_ask) + "\n\n" + activity.getString(R.string.multidevice_same_network_hint));
-                builder.setPositiveButton(R.string.perm_continue, (dialog, which) -> {
-                  AccountManager.getInstance().addAccountFromSecondDevice(activity, rawString);
-                });
-                builder.setNegativeButton(R.string.cancel, null);
-                builder.setCancelable(false);
-
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-                BackupTransferActivity.appendSSID(activity, alertDialog.findViewById(android.R.id.message));
-                return;
-
-            case DcContext.DC_QR_BACKUP_TOO_NEW:
-                builder.setTitle(R.string.multidevice_receiver_title);
-                builder.setMessage(activity.getString(R.string.multidevice_receiver_needs_update));
-                builder.setNegativeButton(R.string.ok, null);
-                break;
-
-            case DcContext.DC_QR_PROXY:
-                builder.setTitle(R.string.proxy_use_proxy);
-                builder.setMessage(activity.getString(R.string.proxy_use_proxy_confirm, qrParsed.getText1()));
-                builder.setPositiveButton(R.string.proxy_use_proxy, (dlg, btn) -> {
-                    dcContext.setConfigFromQr(rawString);
-                    dcContext.restartIo();
-                    showDoneToast(activity);
-                });
-                if (rawString.toLowerCase().startsWith("http")) {
-                    builder.setNeutralButton(R.string.open, (d, b) -> IntentUtils.showInBrowser(activity, rawString));
-                }
-                builder.setNegativeButton(R.string.cancel, null);
-                builder.setCancelable(false);
-                break;
-
-            case DcContext.DC_QR_WITHDRAW_VERIFYCONTACT:
-            case DcContext.DC_QR_WITHDRAW_VERIFYGROUP:
-            case DcContext.DC_QR_WITHDRAW_JOINBROADCAST:
-                String message = qrParsed.getState() == DcContext.DC_QR_WITHDRAW_VERIFYCONTACT ? activity.getString(R.string.withdraw_verifycontact_explain)
-                               : qrParsed.getState() == DcContext.DC_QR_WITHDRAW_VERIFYCONTACT ? activity.getString(R.string.withdraw_verifygroup_explain, qrParsed.getText1())
-                               : activity.getString(R.string.withdraw_joinbroadcast_explain, qrParsed.getText1());
-                builder.setTitle(R.string.qrshow_title);
-                builder.setMessage(message);
-                builder.setNeutralButton(R.string.reset, (dialog, which) -> {
-                    dcContext.setConfigFromQr(rawString);
-                });
-                builder.setPositiveButton(R.string.ok, null);
-                AlertDialog withdrawDialog = builder.show();
-                Util.redButton(withdrawDialog, AlertDialog.BUTTON_NEUTRAL);
-                return;
-
-            case DcContext.DC_QR_REVIVE_VERIFYCONTACT:
-            case DcContext.DC_QR_REVIVE_VERIFYGROUP:
-            case DcContext.DC_QR_REVIVE_JOINBROADCAST:
-                builder.setTitle(R.string.qrshow_title);
-                builder.setMessage(activity.getString(R.string.revive_verifycontact_explain));
-                builder.setNeutralButton(R.string.revive_qr_code, (dialog, which) -> {
-                    dcContext.setConfigFromQr(rawString);
-                });
-                builder.setPositiveButton(R.string.ok, null);
-                break;
-
-            default:
-                handleDefault(builder, rawString, qrParsed);
-                break;
-        }
+        builder.setTitle(R.string.confirm_add_transport);
+        builder.setMessage(qrParsed.getText1());
+        builder.setPositiveButton(R.string.ok, (d, w) -> {
+            if (activity instanceof RelayListActivity) {
+              // no need to protect with lock, RelayListActivity is already protected
+              addRelay(rawString);
+            } else {
+              boolean result = ScreenLockUtil.applyScreenLock(activity, activity.getString(R.string.add_transport), activity.getString(R.string.enter_system_secret_to_continue), ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS);
+              if (!result) {
+                addRelay(rawString);
+              }
+            }
+          });
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.setCancelable(false);
         builder.create().show();
+        return true;
+      default:
+        return false;
     }
+  }
+
+  /** Process a proxy QR, returns true if a dialog was shown, false if the QR is not a proxy QR */
+  public boolean handleProxyQr(String rawString) {
+    return handleProxyQr(dcContext.checkQr(rawString), rawString);
+  }
+
+  private boolean handleProxyQr(DcLot qrParsed, String rawString) {
+    if (qrParsed.getState() == DcContext.DC_QR_PROXY) {
+      AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+      builder.setTitle(R.string.proxy_use_proxy);
+      builder.setMessage(activity.getString(R.string.proxy_use_proxy_confirm, qrParsed.getText1()));
+      builder.setPositiveButton(R.string.proxy_use_proxy, (dlg, btn) -> {
+        dcContext.setConfigFromQr(rawString);
+        dcContext.restartIo();
+        showDoneToast();
+      });
+      if (rawString.toLowerCase().startsWith("http")) {
+        builder.setNeutralButton(R.string.open, (d, b) -> IntentUtils.showInBrowser(activity, rawString));
+      }
+      builder.setNegativeButton(R.string.cancel, null);
+      builder.setCancelable(false);
+      builder.create().show();
+      return true;
+    }
+    return false;
+  }
+
+  /** Process a backup QR, returns true if a dialog was shown, false if the QR is not a backup QR */
+  public boolean handleBackupQr(String rawString) {
+    return handleBackupQr(dcContext.checkQr(rawString), rawString);
+  }
+
+  private boolean handleBackupQr(DcLot qrParsed, String rawString) {
+    switch (qrParsed.getState()) {
+      case DcContext.DC_QR_BACKUP2:
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(R.string.multidevice_receiver_title);
+        builder.setMessage(activity.getString(R.string.multidevice_receiver_scanning_ask) + "\n\n" + activity.getString(R.string.multidevice_same_network_hint));
+        builder.setPositiveButton(R.string.perm_continue, (dialog, which) -> {
+            AccountManager.getInstance().addAccountFromSecondDevice(activity, rawString);
+          });
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.setCancelable(false);
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        BackupTransferActivity.appendSSID(activity, alertDialog.findViewById(android.R.id.message));
+        return true;
+
+      case DcContext.DC_QR_BACKUP_TOO_NEW:
+        new AlertDialog.Builder(activity)
+          .setTitle(R.string.multidevice_receiver_title)
+          .setMessage(activity.getString(R.string.multidevice_receiver_needs_update))
+          .setNegativeButton(R.string.ok, null)
+          .create().show();
+        return true;
+
+      default:
+        return false;
+    }
+  }
+
+  /** Handle any kind of QR showing an AlertDialog adapted to the QR type. */
+  public void handleQrData(String rawString, SecurejoinSource source, SecurejoinUiPath uiPath) {
+    final DcLot qrParsed = dcContext.checkQr(rawString);
+    if (handleSecureJoinQr(qrParsed, rawString, source, uiPath)
+        || handleAddRelayQr(qrParsed, rawString)
+        || handleProxyQr(qrParsed, rawString)
+        || handleBackupQr(qrParsed, rawString)) return;
+
+    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+    if (qrParsed.getState() == DcContext.DC_QR_URL) {
+      showQrUrl(builder, qrParsed);
+    } else {
+      handleDefault(builder, rawString, qrParsed);
+    }
+    builder.create().show();
+  }
 
     private void handleDefault(AlertDialog.Builder builder, String qrRawString, DcLot qrParsed) {
         String msg;
@@ -187,7 +252,7 @@ public class QrCodeHandler {
         builder.setPositiveButton(android.R.string.ok, null);
         builder.setNeutralButton(R.string.menu_copy_to_clipboard, (dialog, which) -> {
             Util.writeTextToClipboard(activity, scannedText);
-            showDoneToast(activity);
+            showDoneToast();
         });
     }
 
@@ -199,11 +264,11 @@ public class QrCodeHandler {
         builder.setNegativeButton(android.R.string.cancel, null);
         builder.setNeutralButton(R.string.menu_copy_to_clipboard, (dialog, which) -> {
             Util.writeTextToClipboard(activity, url);
-            showDoneToast(activity);
+            showDoneToast();
         });
     }
 
-    private void showDoneToast(Activity activity) {
+    private void showDoneToast() {
         Toast.makeText(activity, activity.getString(R.string.done), Toast.LENGTH_SHORT).show();
     }
 
@@ -232,12 +297,11 @@ public class QrCodeHandler {
         builder.setPositiveButton(android.R.string.ok, null);
         builder.setNeutralButton(R.string.menu_copy_to_clipboard, (dialog, which) -> {
             Util.writeTextToClipboard(activity, qrParsed.getText1());
-            showDoneToast(activity);
+            showDoneToast();
         });
     }
 
-  private void showVerifyContactOrGroup(Activity activity,
-                                        AlertDialog.Builder builder,
+  private void showVerifyContactOrGroup(AlertDialog.Builder builder,
                                         String qrRawString,
                                         DcLot qrParsed,
                                         String name,
@@ -275,51 +339,47 @@ public class QrCodeHandler {
         builder.setNegativeButton(android.R.string.cancel, null);
     }
 
-    private void setAddTransportDialog(Activity activity, AlertDialog.Builder builder, String qrData, String transportName) {
-        builder.setTitle(R.string.confirm_add_transport);
-        builder.setMessage(transportName);
-        builder.setPositiveButton(R.string.ok, (d, w) -> {
-            ProgressDialog progressDialog = new ProgressDialog(activity);
-            progressDialog.setMessage(activity.getResources().getString(R.string.one_moment));
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.setCancelable(false);
-            String cancel = activity.getResources().getString(android.R.string.cancel);
-            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, cancel, (d2, w2) -> {
-                dcContext.stopOngoingProcess();
-            });
-            progressDialog.show();
+    public void addRelay(String qrData) {
+      ProgressDialog progressDialog = new ProgressDialog(activity);
+      progressDialog.setMessage(activity.getResources().getString(R.string.one_moment));
+      progressDialog.setCanceledOnTouchOutside(false);
+      progressDialog.setCancelable(false);
+      String cancel = activity.getResources().getString(android.R.string.cancel);
+      progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, cancel, (d, w) -> {
+        dcContext.stopOngoingProcess();
+      });
+      progressDialog.show();
 
-            Util.runOnAnyBackgroundThread(() -> {
-                String error = null;
-                try {
-                    rpc.addTransportFromQr(accId, qrData);
-                } catch (RpcException e) {
-                    Log.w(TAG, e);
-                    error = e.getMessage();
-                }
-                final String finalError = error;
-                Util.runOnMain(() -> {
-                    if (!progressDialog.isShowing()) return; // canceled dialog, nothing to do
-                    if (finalError != null) {
-                        new AlertDialog.Builder(activity)
-                           .setTitle(R.string.error)
-                           .setMessage(finalError)
-                           .setPositiveButton(R.string.ok, null)
-                           .show();
-                    } else {
-                        showDoneToast(activity);
-                        if (!(activity instanceof RelayListActivity)) {
-                            activity.startActivity(new Intent(activity, RelayListActivity.class));
-                        }
-                    }
-                    try {
-                        progressDialog.dismiss();
-                    } catch (IllegalArgumentException e) {
-                        // see https://stackoverflow.com/a/5102572/4557005
-                        Log.w(TAG, e);
-                    }
-                });
-            });
+      Util.runOnAnyBackgroundThread(() -> {
+        String error = null;
+        try {
+          rpc.addTransportFromQr(accId, qrData);
+        } catch (RpcException e) {
+          Log.w(TAG, e);
+          error = e.getMessage();
+        }
+        final String finalError = error;
+        Util.runOnMain(() -> {
+          if (!progressDialog.isShowing()) return; // canceled dialog, nothing to do
+          if (finalError != null) {
+            new AlertDialog.Builder(activity)
+              .setTitle(R.string.error)
+              .setMessage(finalError)
+              .setPositiveButton(R.string.ok, null)
+              .show();
+          } else {
+            showDoneToast();
+            if (!(activity instanceof RelayListActivity)) {
+              activity.startActivity(new Intent(activity, RelayListActivity.class));
+            }
+          }
+          try {
+            progressDialog.dismiss();
+          } catch (IllegalArgumentException e) {
+            // see https://stackoverflow.com/a/5102572/4557005
+            Log.w(TAG, e);
+          }
         });
+      });
     }
 }

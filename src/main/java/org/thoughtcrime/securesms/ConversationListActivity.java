@@ -74,6 +74,7 @@ import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
@@ -105,6 +106,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private ImageView                searchAction;
   private ViewGroup                fragmentContainer;
   private ViewGroup                selfAvatarContainer;
+
+  /** used to store temporarily scanned QR to pass it back to QrCodeHandler when ScreenLockUtil is used */
+  private String qrData = null;
 
   @Override
   protected void onPreCreate() {
@@ -491,7 +495,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
       if (uri.getScheme().equalsIgnoreCase(OPENPGP4FPR) || Util.isInviteURL(uri)) {
         QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.handleQrData(uri.toString(), SecurejoinSource.ExternalLink, null);
+        qrCodeHandler.handleOnlySecureJoinQr(uri.toString(), SecurejoinSource.ExternalLink, null);
       }
     }
   }
@@ -569,11 +573,22 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
+    if (resultCode != RESULT_OK) return;
+
+    QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
     switch (requestCode) {
       case IntentIntegrator.REQUEST_CODE:
-        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.onScanPerformed(scanResult, SecurejoinUiPath.QrIcon);
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(resultCode, data);
+        qrData = scanResult.getContents();
+        qrCodeHandler.handleQrData(qrData, SecurejoinSource.Scan, SecurejoinUiPath.QrIcon);
+        break;
+      case ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS:
+        // QrCodeHandler requested user authorization before adding a relay
+        // and it was granted, so proceed to add the relay
+        if (qrData != null) {
+          qrCodeHandler.addRelay(qrData);
+          qrData = null;
+        }
         break;
       default:
         break;
