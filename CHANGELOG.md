@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Remove deprecated "real-time apps" switch
+* Protect profile deletion and relays management with system lock/pin
 
 ## v2.34.0
 2025-12
