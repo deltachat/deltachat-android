@@ -163,11 +163,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
       String addr = null;
 
       if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
-        if (isOutBroadcast) {
-          name = context.getString(R.string.add_recipients);
-        } else {
-          name = context.getString(R.string.group_add_members);
-        }
+        name = context.getString(R.string.group_add_members);
       }
       else if (contactId == DcContact.DC_CONTACT_ID_QR_INVITE) {
         name = context.getString(R.string.qrshow_title);
