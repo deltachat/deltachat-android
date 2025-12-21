@@ -149,7 +149,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
     initializeAvatarView();
 
-    SelectedContactsAdapter adapter = new SelectedContactsAdapter(this, GlideApp.with(this), broadcast, unencrypted);
+    SelectedContactsAdapter adapter = new SelectedContactsAdapter(this, GlideApp.with(this), broadcast);
     adapter.setItemClickListener(this);
     lv.setAdapter(adapter);
 
