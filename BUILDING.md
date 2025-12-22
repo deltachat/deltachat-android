@@ -243,3 +243,14 @@ $ANDROID_NDK_ROOT/ndk-stack --sym obj/local/armeabi-v7a --dump crash.txt > decod
 `obj/local/armeabi-v7a` is the extracted path from `deltachat-gplay-release-X.X.X.apk-symbols.zip` file from https://download.delta.chat/android/symbols/
 
 Replace `armeabi-v7a` by the correct architecture the logs come from (can be guessed by trial and error)
+
+### Mapping back minified crash reports
+
+With the use of R8 minifier, class and package names get shortened to single letters,
+to map back to the original class names in crash reports:
+
+```
+$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/retrace -verbose mapping.txt < crash.txt > decoded-crash.txt
+```
+
+`mapping.txt` is the extracted file from `deltachat-gplay-release-X.X.X.apk-symbols.zip` file from https://download.delta.chat/android/symbols/
