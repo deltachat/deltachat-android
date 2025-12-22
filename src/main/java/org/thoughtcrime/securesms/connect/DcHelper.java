@@ -77,11 +77,11 @@ public class DcHelper {
     }
 
     public static DcEventCenter getEventCenter(@NonNull Context context) {
-        return ApplicationContext.getInstance(context).eventCenter;
+        return ApplicationContext.getInstance(context).getEventCenter();
     }
 
     public static NotificationCenter getNotificationCenter(@NonNull Context context) {
-        return ApplicationContext.getInstance(context).notificationCenter;
+        return ApplicationContext.getInstance(context).getNotificationCenter();
     }
 
     public static boolean isConfigured(Context context) {

@@ -16,6 +16,8 @@ import java.util.Observer;
 
 import static android.content.Context.BIND_AUTO_CREATE;
 
+import com.b44t.messenger.DcContext;
+
 public class DcLocationManager implements Observer {
 
     private static final String TAG = DcLocationManager.class.getSimpleName();
@@ -40,10 +42,10 @@ public class DcLocationManager implements Observer {
         }
     };
 
-    public DcLocationManager(Context context) {
+    public DcLocationManager(Context context, DcContext dcContext) {
         this.context = context.getApplicationContext();
         DcLocation.getInstance().addObserver(this);
-        if (DcHelper.getContext(context).isSendingLocationsToChat(0)) {
+        if (dcContext.isSendingLocationsToChat(0)) {
             startLocationEngine();
         }
     }
