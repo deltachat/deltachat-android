@@ -33,7 +33,7 @@ rsync --progress $APK jekyll@download.delta.chat:/var/www/html/download/android/
 cd ../..
 SYMBOLS_ZIP="$APK-symbols.zip"
 rm $SYMBOLS_ZIP
-zip -r $SYMBOLS_ZIP obj
+zip -r $SYMBOLS_ZIP obj build/outputs/mapping/gplayRelease/mapping.txt
 ls -l $SYMBOLS_ZIP
 rsync --progress $SYMBOLS_ZIP jekyll@download.delta.chat:/var/www/html/download/android/symbols/
 
