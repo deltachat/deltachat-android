@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Remove deprecated "real-time apps" switch
+* Fix: Remove address from profile switcher
 
 ## v2.34.0
 2025-12
