@@ -208,10 +208,8 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       case IntentIntegrator.REQUEST_CODE:
         String qrRaw = data.getStringExtra(RegistrationQrActivity.QRDATA_EXTRA);
         if (qrRaw == null) {
-          IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-          if (scanResult != null && scanResult.getFormatName() != null) {
-            qrRaw = scanResult.getContents();
-          }
+          IntentResult scanResult = IntentIntegrator.parseActivityResult(resultCode, data);
+          qrRaw = scanResult.getContents();
         }
         if (qrRaw != null) {
           setProviderFromQr(qrRaw);

@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms.qr;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -27,11 +26,10 @@ import com.google.zxing.MultiFormatReader;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Result;
+import com.google.zxing.client.android.Intents;
 import com.google.zxing.common.HybridBinarizer;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
-import org.thoughtcrime.securesms.ConversationListActivity;
-import org.thoughtcrime.securesms.NewConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.NewContactActivity;
@@ -43,9 +41,6 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-
-import chat.delta.rpc.types.SecurejoinSource;
-import chat.delta.rpc.types.SecurejoinUiPath;
 
 public class QrActivity extends BaseActionBarActivity implements View.OnClickListener {
 
@@ -154,8 +149,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
       } else if (itemId == R.id.load_from_image) {
         AttachmentManager.selectImage(this, REQUEST_CODE_IMAGE);
       } else if (itemId == R.id.paste) {
-        QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.handleQrData(Util.getTextFromClipboard(this), SecurejoinSource.Clipboard, getUiPath());
+        setQrResult(Util.getTextFromClipboard(this));
       }
 
         return false;
@@ -203,10 +197,10 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
                         RGBLuminanceSource source = new RGBLuminanceSource(width, height, pixels);
                         BinaryBitmap bBitmap = new BinaryBitmap(new HybridBinarizer(source));
                         MultiFormatReader reader = new MultiFormatReader();
+
                         try {
                             Result result = reader.decode(bBitmap);
-                            QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-                            qrCodeHandler.handleQrData(result.getText(), SecurejoinSource.ImageLoaded, getUiPath());
+                            setQrResult(result.getText());
                         } catch (NotFoundException e) {
                             Log.e(TAG, "decode exception", e);
                             Toast.makeText(this, getString(R.string.qrscan_failed), Toast.LENGTH_LONG).show();
@@ -219,19 +213,11 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
         }
     }
 
-    private SecurejoinUiPath getUiPath() {
-        SecurejoinUiPath uiPath = null;
-        ComponentName caller = this.getCallingActivity();
-        if (caller != null) {
-            if (caller.getClassName().equals(NewConversationActivity.class.getName())) {
-                uiPath = SecurejoinUiPath.NewContact;
-            } else if (caller.getClassName().equals(ConversationListActivity.class.getName())
-                    // RoutingActivity is an alias for ConversationListActivity
-                    || caller.getClassName().endsWith(".RoutingActivity")) {
-                uiPath = SecurejoinUiPath.QrIcon;
-            }
-        }
-        return uiPath;
+    private void setQrResult(String qrData) {
+        Intent intent = new Intent();
+        intent.putExtra(Intents.Scan.RESULT, qrData);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     @Override
