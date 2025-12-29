@@ -62,9 +62,9 @@ public class ApplicationContext extends MultiDexApplication {
   private Rpc                    rpc;
   private DcContext              dcContext;
 
-  public DcLocationManager      dcLocationManager;
-  public DcEventCenter          eventCenter;
-  public NotificationCenter     notificationCenter;
+  private DcLocationManager      dcLocationManager;
+  private DcEventCenter          eventCenter;
+  private NotificationCenter     notificationCenter;
   private JobManager            jobManager;
 
   private int                   debugOnAvailableCount;
@@ -127,6 +127,33 @@ public class ApplicationContext extends MultiDexApplication {
     }
   }
 
+  /**
+   * Get DcLocationManager instance, waiting for initialization if necessary.
+   * This method is thread-safe and will block until initialization is complete.
+   */
+  public DcLocationManager getLocationManager() {
+    ensureInitialized();
+    return dcLocationManager;
+  }
+
+  /**
+   * Get DcEventCenter instance, waiting for initialization if necessary.
+   * This method is thread-safe and will block until initialization is complete.
+   */
+  public DcEventCenter getEventCenter() {
+    ensureInitialized();
+    return eventCenter;
+  }
+
+  /**
+   * Get NotificationCenter instance, waiting for initialization if necessary.
+   * This method is thread-safe and will block until initialization is complete.
+   */
+  public NotificationCenter getNotificationCenter() {
+    ensureInitialized();
+    return notificationCenter;
+  }
+
   @Override
   public void onCreate() {
     super.onCreate();
@@ -187,13 +214,12 @@ public class ApplicationContext extends MultiDexApplication {
           dcContext = dcAccounts.getSelectedAccount();
           notificationCenter = new NotificationCenter(this);
           eventCenter = new DcEventCenter(this);
+          dcLocationManager = new DcLocationManager(this, dcContext);
 
           // Mark as initialized before starting threads that depend on it
           isInitialized = true;
           initLock.notifyAll();
           Log.i(TAG, "DcAccounts initialization complete");
-
-          dcLocationManager = new DcLocationManager(this); // depends on dcContext
 
           new Thread(() -> {
               Log.i(TAG, "Starting event loop");

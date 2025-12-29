@@ -473,7 +473,7 @@ public class AttachmentManager {
 
   public static void selectLocation(Activity activity, int chatId) {
     ApplicationContext applicationContext = ApplicationContext.getInstance(activity);
-    DcLocationManager dcLocationManager = applicationContext.dcLocationManager;
+    DcLocationManager dcLocationManager = applicationContext.getLocationManager();
 
     if (DcHelper.getContext(applicationContext).isSendingLocationsToChat(chatId)) {
       dcLocationManager.stopSharingLocation(chatId);
