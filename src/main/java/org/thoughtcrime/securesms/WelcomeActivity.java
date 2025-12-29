@@ -22,7 +22,6 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.DcLot;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -32,6 +31,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.qr.BackupTransferActivity;
+import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;
@@ -336,39 +336,14 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         if (requestCode==IntentIntegrator.REQUEST_CODE) {
             String qrRaw = data.getStringExtra(RegistrationQrActivity.QRDATA_EXTRA);
             if (qrRaw == null) {
-                IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-                if (scanResult == null || scanResult.getFormatName() == null) {
-                    return; // aborted
-                }
+                IntentResult scanResult = IntentIntegrator.parseActivityResult(resultCode, data);
                 qrRaw = scanResult.getContents();
             }
-            DcLot qrParsed = dcContext.checkQr(qrRaw);
-            switch (qrParsed.getState()) {
-                case DcContext.DC_QR_BACKUP2:
-                  final String finalQrRaw = qrRaw;
-                  new AlertDialog.Builder(this)
-                            .setTitle(R.string.multidevice_receiver_title)
-                            .setMessage(R.string.multidevice_receiver_scanning_ask)
-                            .setPositiveButton(R.string.perm_continue, (dialog, which) -> startBackupTransfer(finalQrRaw))
-                            .setNegativeButton(R.string.cancel, null)
-                            .setCancelable(false)
-                            .show();
-                    break;
-
-                case DcContext.DC_QR_BACKUP_TOO_NEW:
-                    new AlertDialog.Builder(this)
-                            .setTitle(R.string.multidevice_receiver_title)
-                            .setMessage(R.string.multidevice_receiver_needs_update)
-                            .setPositiveButton(R.string.ok, null)
-                            .show();
-                    break;
-
-                default:
-                    new AlertDialog.Builder(this)
-                            .setMessage(R.string.qraccount_qr_code_cannot_be_used)
-                            .setPositiveButton(R.string.ok, null)
-                            .show();
-                    break;
+            if (!new QrCodeHandler(this).handleBackupQr(qrRaw)) {
+                new AlertDialog.Builder(this)
+                    .setMessage(R.string.qraccount_qr_code_cannot_be_used)
+                    .setPositiveButton(R.string.ok, null)
+                    .show();
             }
         } else if (requestCode == PICK_BACKUP) {
             Uri uri = (data != null ? data.getData() : null);

@@ -24,6 +24,7 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
+import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -32,8 +33,6 @@ import java.util.List;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.EnteredLoginParam;
-import chat.delta.rpc.types.SecurejoinSource;
-import chat.delta.rpc.types.SecurejoinUiPath;
 
 public class RelayListActivity extends BaseActionBarActivity
   implements RelayListAdapter.OnRelayClickListener, DcEventCenter.DcEventDelegate {
@@ -44,6 +43,9 @@ public class RelayListActivity extends BaseActionBarActivity
   private RelayListAdapter adapter;
   private Rpc rpc;
   private int accId;
+
+  /** QR provided via Intent extras needs to be saved to pass it to QrCodeHandler when authorization finishes */
+  private String qrData = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,15 @@ public class RelayListActivity extends BaseActionBarActivity
     // Apply insets to prevent fab from being covered by system bars
     ViewUtil.applyWindowInsetsAsMargin(fabAdd);
 
+    qrData = getIntent().getStringExtra(EXTRA_QR_DATA);
+    if (qrData != null) {
+      // when the activity is opened with a QR data, we need to ask for authorization first
+      boolean result = ScreenLockUtil.applyScreenLock(this, getString(R.string.add_transport), getString(R.string.enter_system_secret_to_continue), ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS);
+      if (!result) {
+        new QrCodeHandler(this).handleOnlyAddRelayQr(qrData);
+      }
+    }
+
     fabAdd.setOnClickListener(v -> {
       new IntentIntegrator(this).setCaptureActivity(QrActivity.class).addExtra(QrActivity.EXTRA_SCAN_RELAY, true).initiateScan();
     });
@@ -86,12 +97,6 @@ public class RelayListActivity extends BaseActionBarActivity
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
-
-    String qrdata = getIntent().getStringExtra(EXTRA_QR_DATA);
-    if (qrdata != null) {
-      QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-      qrCodeHandler.handleQrData(qrdata, SecurejoinSource.Unknown, SecurejoinUiPath.Unknown);
-    }
   }
 
   @Override
@@ -172,10 +177,22 @@ public class RelayListActivity extends BaseActionBarActivity
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
+    if (resultCode != RESULT_OK) {
+      // if user canceled unlocking, then finish
+      if (requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) finish();
+      return;
+    }
+
+    QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
     if (requestCode == IntentIntegrator.REQUEST_CODE) {
-      IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-      QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-      qrCodeHandler.onScanPerformed(scanResult, SecurejoinUiPath.Unknown);
+      IntentResult scanResult = IntentIntegrator.parseActivityResult(resultCode, data);
+      qrCodeHandler.handleOnlyAddRelayQr(scanResult.getContents());
+    } else if (requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) {
+      // user authorized, then proceed to handle the QR data
+      if (qrData != null) {
+        qrCodeHandler.handleOnlyAddRelayQr(qrData);
+        qrData = null;
+      }
     }
   }
 
