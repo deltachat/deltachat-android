@@ -76,9 +76,6 @@ public class AccountSelectionListItem extends LinearLayout {
         name = self.getAddr();
       }
       addrOrTag = dcContext.getConfig(CONFIG_PRIVATE_TAG);
-      if ("".equals(addrOrTag) && !dcContext.isChatmail()) {
-        addrOrTag = self.getAddr();
-      }
       unreadCount = dcContext.getFreshMsgs().length;
       recipient = new Recipient(getContext(), self, name);
       this.contactPhotoImage.setConnectivity(dcContext.getConnectivity());
