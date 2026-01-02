@@ -26,6 +26,7 @@
       <li><a href="#mi-sono-cancellato-per-sbaglio">Mi sono cancellato per sbaglio.</a></li>
       <li><a href="#non-desidero-più-ricevere-i-messaggi-di-un-gruppo">Non desidero più ricevere i messaggi di un gruppo.</a></li>
       <li><a href="#clonazione-di-un-gruppo">Clonazione di un gruppo</a></li>
+      <li><a href="#quanti-membri-possono-partecipare-a-un-singolo-gruppo">Quanti membri possono partecipare a un singolo gruppo?</a></li>
     </ul>
   </li>
   <li><a href="#webxdc">Apps in chat</a>
@@ -54,7 +55,7 @@
   </li>
   <li><a href="#avanzato">Avanzato</a>
     <ul>
-      <li><a href="#funzionalità-sperimentali">Funzionalità Sperimentali</a></li>
+      <li><a href="#experiments">Funzionalità Sperimentali</a></li>
       <li><a href="#relays">Cosa sono i ripetitori?</a></li>
       <li><a href="#posso-usare-un-indirizzo-email-classico-con-delta-chat">Posso usare un indirizzo email classico con Delta Chat?</a></li>
       <li><a href="#classic-email">Come posso configurare un profilo chat con un indirizzo email classico come inoltro?</a></li>
@@ -76,6 +77,7 @@
       <li><a href="#tls">I messaggi contrassegnati dall’icona della posta sono esposti su Internet?</a></li>
       <li><a href="#message-metadata">In che modo Delta Chat protegge i metadati nei messaggi?</a></li>
       <li><a href="#device-seizure">Come proteggere i metadati e contatti quando un dispositivo viene sequestrato?</a></li>
+      <li><a href="#chi-vede-il-mio-indirizzo-ip">Chi vede il mio Indirizzo IP?</a></li>
       <li><a href="#sealedsender">Delta Chat supporta “Mittente Sigillato”?</a></li>
       <li><a href="#pfs">Delta Chat supporta Perfect Forward Secrecy?</a></li>
       <li><a href="#pqc">Delta Chat supporta la Crittografia Post-Quantistica?</a></li>
@@ -185,7 +187,7 @@ Se vi aggiungete a vicenda a <a href="#groups">gruppi</a>, la crittografia end-t
 <p>Essendo un messenger privato,
 solo gli amici e i familiari con cui <a href="#howtoe2ee">condividi il tuo codice QR o il link di invito</a> possono scriverti.</p>
 
-<p>I tuoi amici potrebbero condividere i tuoi contatti con altri amici; ciò apparirà come una <strong>richiesta</strong>.</p>
+<p>I tuoi amici potrebbero condividere i tuoi contatti con altri amici; ciò apparirà come una <b style="border: 1px solid currentColor; padding: 0 3px; font-size:90%">Richiesta</b></p>
 
 <ul>
   <li>
@@ -223,15 +225,10 @@ e potrà toccarla per iniziare a chattare con il primo contatto.</p>
         
       </h3>
 
-<ul>
-  <li>
-    <p>Sì. Immagini, video, files, messaggi vocali ecc. possono essere inviati utilizzando <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Allegato-</strong>
+<p>Sì. Immagini, video, files, messaggi vocali ecc. possono essere inviati utilizzando <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Allegato-</strong>
 o <img style="vertical-align:middle; width:0.8em; margin:1px" src="../mic.png" alt="Microphone" /> pulsanti <strong>Messaggio Vocale</strong></p>
-  </li>
-  <li>
-    <p>Per le prestazioni, le immagini sono ottimizzate e inviate in dimensioni inferiori per impostazione predefinita, ma è possibile inviarle come “file” per preservare l’originale.</p>
-  </li>
-</ul>
+
+<p>Per le prestazioni, le immagini sono ottimizzate e inviate in dimensioni inferiori per impostazione predefinita, ma è possibile inviarle come “file” per preservare l’originale.</p>
     
       <h3 id="multiple-accounts">
         
@@ -262,16 +259,11 @@ o <strong>Cambiare Profili</strong>.</p>
         
       </h3>
 
-<ul>
-  <li>
-    <p>Puoi aggiungere un’immagine del profilo nelle tue impostazioni. Se scrivi ai tuoi contatti
+<p>Puoi aggiungere un’immagine del profilo nelle tue impostazioni. Se scrivi ai tuoi contatti
 o li aggiungi tramite codice QR, la vedranno automaticamente come immagine del tuo profilo.</p>
-  </li>
-  <li>
-    <p>Per motivi di privacy, nessuno vede la tua immagine del profilo finché non scrivi un
+
+<p>Per motivi di privacy, nessuno vede la tua immagine del profilo finché non scrivi un
 messaggio a loro.</p>
-  </li>
-</ul>
     
       <h3 id="signature">
         
@@ -304,8 +296,7 @@ lo vedrà quando visualizzerà i tuoi dati di contatto.</p>
     <p><strong>Silenzia chat</strong> se non vuoi ricevere notifiche da queste. Le chat silenziate restano al loro posto e puoi anche fissare una chat silenziata.</p>
   </li>
   <li>
-    <p><strong>Archivia chats</strong> se non vuoi più vederle nel tuo elenco chat.
-Le chat archiviate rimangono accessibili sopra l’elenco delle chat o tramite la ricerca.</p>
+    <p><strong>Archivia chats</strong> se non vuoi più vederle nel tuo elenco chat. Le chat archiviate rimangono accessibili sopra l’elenco delle chat o tramite la ricerca.</p>
   </li>
   <li>
     <p>Quando una chat archiviata riceve un nuovo messaggio, a meno che non sia silenziata, <strong>salterà fuori dall’archivio</strong> e tornerà nell’elenco delle chat.
@@ -377,23 +368,19 @@ e anche gli altri non sempre vedranno che sei “online”.</p>
 
 <ul>
   <li>
-    <p><strong>Un segno di spunta</strong> <img style="vertical-align:middle; width:1.5em; margin:1px" src="../tick1.png" alt="" />
-significa che il messaggio è stato inviato correttamente al tuo fornitore.</p>
+    <p><strong>Una spunta</strong> <img style="vertical-align:middle; width:1.5em; margin:1px" src="../tick1.png" alt="" />
+significa che il messaggio è stato inviato correttamente al <a href="#relays">ripetitore</a>.</p>
   </li>
   <li>
-    <p><strong>Due spunte</strong>  <img style="vertical-align:middle; width:1.5em; margin:1px" src="../tick2.png" alt="" />
-significa che almeno il dispositivo di un destinatario
-ha segnalato di aver ricevuto il messaggio.</p>
-  </li>
-  <li>
-    <p>I destinatari potrebbero aver disattivato le conferme di lettura,
-quindi anche se vedi solo un segno di spunta, il messaggio potrebbe essere stato letto.</p>
-  </li>
-  <li>
-    <p>Al contrario, due spunte non significano automaticamente
-che un essere umano abbia letto o compreso il messaggio ;)</p>
+    <p><strong>Due spunte</strong> <img style="vertical-align:middle; width:1.5em; margin:1px" src="../tick2.png" alt="" />
+indica che il tuo contatto ha letto il messaggio.</p>
   </li>
 </ul>
+
+<p>In <a href="#groups">gruppi</a> il secondo segno di spunta significa che almeno un membro ha segnalato di aver letto il messaggio.</p>
+
+<p>Riceverai la seconda spunta solo se sia tu che uno dei destinatari che hanno letto il messaggio
+avete abilitato <strong>Impostazioni → Chat → Conferme di Lettura</strong>.</p>
     
       <h3 id="edit">
         
@@ -462,14 +449,9 @@ i messaggi (comunque crittografati) potrebbero richiedere più tempo per essere 
         
       </h3>
 
-<ul>
-  <li>Se si desidera risparmiare spazio sul dispositivo, è possibile scegliere di eliminare i vecchi
-messaggi automaticamente.</li>
-  <li>Per attivarla, andare su “Elimina Messaggi dal Dispositivo” nelle impostazioni di “Chat e Media”.
-È possibile impostare un intervallo di tempo compreso tra “Dopo 1 ora” e “Dopo 1 anno”;
-in questo modo, <em>tutti</em> i messaggi saranno eliminati dal dispositivo non appena saranno
-più vecchi di quel periodo.</li>
-</ul>
+<p>Se si desidera risparmiare spazio sul dispositivo, è possibile scegliere di eliminare i vecchi messaggi automaticamente.</p>
+
+<p>Per attivarla, andare su “Elimina Messaggi dal Dispositivo” nelle impostazioni di “Chat e Media”. È possibile impostare un intervallo di tempo compreso tra “Dopo 1 ora” e “Dopo 1 anno”; in questo modo, <em>tutti</em> i messaggi saranno eliminati dal dispositivo non appena saranno più vecchi di quel periodo.</p>
     
       <h3 id="remove-account">
         
@@ -517,9 +499,15 @@ ed <a href="#edit">eliminare i propri messaggi</a> dai dispositivi di tutti i me
       </h3>
 
 <ul>
-  <li>Seleziona <strong>Nuova chat</strong> e poi <strong>Nuovo gruppo</strong> dal menu nell’angolo in alto a destra o premi il pulsante corrispondente su Android/iOS.</li>
-  <li>Nella schermata successiva, seleziona i <strong>membri del gruppo</strong> e definisci un <strong>nome del gruppo</strong>. Puoi anche selezionare un <strong>avatar di gruppo</strong>.</li>
-  <li>Non appena scrivi il <strong>primo messaggio</strong> nel gruppo, tutti i membri vengono informati del nuovo gruppo e possono rispondere nel gruppo (finché non scrivi un messaggio nel gruppo il gruppo è invisibile ai membri).</li>
+  <li>
+    <p>Seleziona <strong>Nuova chat</strong> e poi <strong>Nuovo gruppo</strong> dal menu nell’angolo in alto a destra o premi il pulsante corrispondente su Android/iOS.</p>
+  </li>
+  <li>
+    <p>Nella schermata successiva, seleziona i <strong>membri del gruppo</strong> e definisci un <strong>nome del gruppo</strong>. Puoi anche selezionare un <strong>avatar di gruppo</strong>.</p>
+  </li>
+  <li>
+    <p>Non appena scrivi il <strong>primo messaggio</strong> nel gruppo, tutti i membri vengono informati del nuovo gruppo e possono rispondere nel gruppo (finché non scrivi un messaggio nel gruppo il gruppo è invisibile ai membri).</p>
+  </li>
 </ul>
     
       <h3 id="addmembers">
@@ -530,11 +518,10 @@ ed <a href="#edit">eliminare i propri messaggi</a> dai dispositivi di tutti i me
         
       </h3>
 
+<p>Tutti i membri del gruppo hanno gli <strong>stessi diritti</strong>.
+  Per questo motivo, tutti possono eliminare qualsiasi membro o aggiungerne di nuovi.</p>
+
 <ul>
-  <li>
-    <p>Tutti i membri del gruppo hanno gli <strong>stessi diritti</strong>.
-Per questo motivo, tutti possono eliminare qualsiasi membro o aggiungerne di nuovi.</p>
-  </li>
   <li>
     <p>Per <strong>aggiungere o eliminare membri</strong>, tocca il nome del gruppo nella chat e seleziona il membro da aggiungere o rimuovere.</p>
   </li>
@@ -562,10 +549,8 @@ Tuttavia, poiché i gruppi sono <a href="#groups">destinati a persone fidate</a>
         
       </h3>
 
-<ul>
-  <li>Poiché non sei più un membro del gruppo, non puoi aggiungerti di nuovo.
-Tuttavia, nessun problema, chiedi a qualsiasi altro membro del gruppo in una normale chat di aggiungerti nuovamente.</li>
-</ul>
+<p>Poiché non sei più un membro del gruppo, non puoi aggiungerti di nuovo.
+Tuttavia, nessun problema, chiedi a qualsiasi altro membro del gruppo in una normale chat di aggiungerti nuovamente.</p>
     
       <h3 id="non-desidero-più-ricevere-i-messaggi-di-un-gruppo">
         
@@ -576,15 +561,12 @@ Tuttavia, nessun problema, chiedi a qualsiasi altro membro del gruppo in una nor
       </h3>
 
 <ul>
-  <li>
-    <p>Elimina te stesso dall’elenco dei membri o elimina l’intera chat.
-Se vuoi unirti di nuovo al gruppo in un secondo momento, chiedi a un altro membro del gruppo di aggiungerti di nuovo.</p>
-  </li>
-  <li>
-    <p>In alternativa, puoi anche “Silenziare” un gruppo - così facendo riceverai tutti i messaggi e
-puoi ancora scrivere, ma non viene più notificato alcun nuovo messaggio.</p>
-  </li>
+  <li>Elimina te stesso dall’elenco dei membri o elimina l’intera chat.
+Se vuoi unirti di nuovo al gruppo in un secondo momento, chiedi a un altro membro del gruppo di aggiungerti di nuovo.</li>
 </ul>
+
+<p>In alternativa, puoi anche “Silenziare” un gruppo - così facendo riceverai tutti i messaggi e
+puoi ancora scrivere, ma non viene più notificato alcun nuovo messaggio.</p>
     
       <h3 id="clonazione-di-un-gruppo">
         
@@ -609,6 +591,21 @@ oppure fai clic con il pulsante destro del mouse sul gruppo nell’elenco delle 
 
 <p>Il nuovo gruppo è <strong>completamente indipendente</strong> dall’originale,
 che continua a funzionare come prima.</p>
+    
+      <h3 id="quanti-membri-possono-partecipare-a-un-singolo-gruppo">
+        
+        
+          Quanti membri possono partecipare a un singolo gruppo? <a href="#quanti-membri-possono-partecipare-a-un-singolo-gruppo" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Non esiste un limite tecnico preciso,
+ma non è consigliabile superare i 150.</p>
+
+<p>Man mano che i gruppi diventano più grandi, possono diventare socialmente instabili e potrebbero aver bisogno di una gerarchia,
+dove Delta Chat è un servizio di messaggistica privato per chattare con <a href="#groups">uguali diritti</a>.
+Vedi <a href="https://en.wikipedia.org/wiki/Dunbar%27s_number">numero di Dunbar</a> per ulteriori approfondimenti.</p>
     
       <h2 id="webxdc">
         
@@ -897,7 +894,7 @@ Un dispositivo non è necessario perché l’altro funzioni.</p>
     <p>Verificare che entrambi i dispositivi siano nella <strong>stessa rete o Wi-Fi</strong>.</p>
   </li>
   <li>
-    <p>Su <strong>Windows</strong>, vai su <strong>Pannello di controllo / Rete e Internet</strong>
+    <p>Su <strong>Windows</strong>, vai su “Pannello di controllo / Rete e Internet”
 e assicurati che <strong>Rete Privata</strong> sia selezionata come “Tipo di profilo di rete”
 (dopo il trasferimento è possibile ripristinare il valore originale)</p>
   </li>
@@ -987,10 +984,10 @@ o l’AppImage per Linux. Le trovi su
         
       </h2>
     
-      <h3 id="funzionalità-sperimentali">
+      <h3 id="experiments">
         
         
-          Funzionalità Sperimentali <a href="#funzionalità-sperimentali" class="anchor"></a>
+          Funzionalità Sperimentali <a href="#experiments" class="anchor"></a>
         
         
       </h3>
@@ -1147,9 +1144,7 @@ statistiche settimanali verranno inviate automaticamente a un bot.</p>
         
       </h3>
 
-<ul>
-  <li>Vedi <a href="https://github.com/chatmail/core/blob/main/standards.md#standards-used-in-delta-chat">Standard usati in Delta Chat</a>.</li>
-</ul>
+<p>Vedi <a href="https://github.com/chatmail/core/blob/main/standards.md#standards-used-in-delta-chat">Standard usati in Delta Chat</a>.</p>
     
       <h2 id="e2ee">
         
@@ -1385,6 +1380,32 @@ quindi puoi facilmente utilizzare profili specifici per ogni situazione accanto 
 con la consapevolezza che tutti i loro dati, insieme a tutti i metadati, verranno eliminati.
 Inoltre, se un dispositivo viene sequestrato, i contatti di chat che utilizzano profili di breve durata
 non possono essere identificati facilmente.</p>
+    
+      <h3 id="chi-vede-il-mio-indirizzo-ip">
+        
+        
+          Chi vede il mio Indirizzo IP? <a href="#chi-vede-il-mio-indirizzo-ip" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Il <a href="#relays">ripetitore</a> utilizzato deve conoscere il tuo indirizzo IP,
+e talvolta anche i dispositivi dei tuoi contatti se avete una <a href="#experiments">chiamata</a>
+o utilizzate <a href="#webxdc">apps</a> insieme.</p>
+
+<p>Gli indirizzi IP sono necessari per la connettività e l’efficienza.
+Non sono né persistenti né esposti.
+Si noti che l’indirizzo IP
+non è come un indirizzo dettagliato che si fornisce a un servizio di consegna,
+ma molto più generico, che spesso definisce solo la regione o il paese.</p>
+
+<p>Poiché questo è il modo in cui Internet e altri servizi di messaggistica funzionano di default,
+non offriamo opzioni né poniamo domande in anticipo.</p>
+
+<p>Se ritieni che il tuo indirizzo IP rappresenti un rischio per la sicurezza o la privacy,
+ti consigliamo di utilizzare una VPN, in combinazione con la modalità di blocco del sistema.
+Esplorare le opzioni in tutte le app del tuo sistema lascerà delle lacune.
+Ad esempio, cliccare su un link espone gli indirizzi IP a sconosciuti e rappresenta il rischio di gran lunga maggiore.</p>
     
       <h3 id="sealedsender">
         

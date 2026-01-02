@@ -707,7 +707,7 @@
 
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
-    <string name="forward_to">Weiterleiten an ...</string>
+    <string name="forward_to">Weiterleiten an…</string>
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">%1$d Dateien an \"%2$s\" senden?</string>
     <string name="ask_send_files_to_selected_chats">%1$d Datei(en) an %2$d Chats senden?</string>
@@ -1005,12 +1005,12 @@
     <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
     <string name="qrlogin_ask_login_another">Bei \"%1$s\" anmelden?\n\nDein bisheriges Profil wird dabei nicht gelöscht. Du kannst mit der Option \"Profil wechseln\" jederzeit zwischen den Profilen hin- und herschalten.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">%1$s hat dich zu dieser Gruppe eingeladen.\n\nWarte auf die Antwort des Gerätes von %2$s...</string>
+    <string name="secure_join_started">%1$s hat dich zu dieser Gruppe eingeladen.\n\nWarte auf die Antwort des Gerätes von %2$s…</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_channel_started">%1$s hat dich zu diesem Kanal eingeladen.\n\nWarte auf die Antwort des Gerätes von %2$s...</string>
+    <string name="secure_join_channel_started">%1$s hat dich zu diesem Kanal eingeladen.\n\nWarte auf die Antwort des Gerätes von %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_replies">%1$s antwortet. Warte, zur Gruppe hinzugefügt zu werden...</string>
-    <string name="secure_join_wait">Verbindungsaufbau, bitte warten...</string>
+    <string name="secure_join_replies">%1$s antwortet. Warte, zur Gruppe hinzugefügt zu werden…</string>
+    <string name="secure_join_wait">Verbindungsaufbau, bitte warten…</string>
     <string name="contact_verified">%1$s eingeführt.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Eingeführt von %1$s</string>
