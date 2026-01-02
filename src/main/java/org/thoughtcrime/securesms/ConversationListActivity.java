@@ -74,6 +74,7 @@ import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
@@ -95,6 +96,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
   public static final String ACCOUNT_ID_EXTRA = "account_id";
   public static final String FROM_WELCOME   = "from_welcome";
+  private static final int REQUEST_CODE_CONFIRM_CREDENTIALS_DELETE_PROFILE = ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS+1;
 
   private ConversationListFragment conversationListFragment;
   public TextView                  title;
@@ -105,6 +107,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private ImageView                searchAction;
   private ViewGroup                fragmentContainer;
   private ViewGroup                selfAvatarContainer;
+
+  /** used to store temporarily scanned QR to pass it back to QrCodeHandler when ScreenLockUtil is used */
+  private String qrData = null;
+  /** used to store temporarily profile ID to delete after authorization is granted via ScreenLockUtil */
+  private int deleteProfileId = 0;
 
   @Override
   protected void onPreCreate() {
@@ -491,7 +498,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
       if (uri.getScheme().equalsIgnoreCase(OPENPGP4FPR) || Util.isInviteURL(uri)) {
         QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.handleQrData(uri.toString(), SecurejoinSource.ExternalLink, null);
+        qrCodeHandler.handleOnlySecureJoinQr(uri.toString(), SecurejoinSource.ExternalLink, null);
       }
     }
   }
@@ -566,14 +573,55 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
   }
 
+  public void onDeleteProfile(int profileId) {
+    deleteProfileId = profileId;
+    boolean result = ScreenLockUtil.applyScreenLock(this, getString(R.string.delete_account), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_DELETE_PROFILE);
+    if (!result) {
+      deleteProfile(profileId);
+    }
+  }
+
+  private void deleteProfile(int profileId) {
+    DcAccounts accounts = DcHelper.getAccounts(this);
+    boolean selected = profileId == accounts.getSelectedAccount().getAccountId();
+    DcHelper.getNotificationCenter(this).removeAllNotifications(profileId);
+    accounts.removeAccount(profileId);
+    if (selected) {
+      DcContext selAcc = accounts.getSelectedAccount();
+      AccountManager.getInstance().switchAccountAndStartActivity(this, selAcc.isOk()? selAcc.getAccountId() : 0);
+    } else {
+      AccountManager.getInstance().showSwitchAccountMenu(this);
+    }
+
+    // title update needed to show "Delta Chat" in case there is only one profile left
+    refreshTitle();
+  }
+
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
+    if (resultCode != RESULT_OK) return;
+
+    QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
     switch (requestCode) {
       case IntentIntegrator.REQUEST_CODE:
-        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.onScanPerformed(scanResult, SecurejoinUiPath.QrIcon);
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(resultCode, data);
+        qrData = scanResult.getContents();
+        qrCodeHandler.handleQrData(qrData, SecurejoinSource.Scan, SecurejoinUiPath.QrIcon);
+        break;
+      case ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS:
+        // QrCodeHandler requested user authorization before adding a relay
+        // and it was granted, so proceed to add the relay
+        if (qrData != null) {
+          qrCodeHandler.addRelay(qrData);
+          qrData = null;
+        }
+        break;
+      case REQUEST_CODE_CONFIRM_CREDENTIALS_DELETE_PROFILE:
+        if (deleteProfileId != 0) {
+          deleteProfile(deleteProfileId);
+          deleteProfileId = 0;
+        }
         break;
       default:
         break;
