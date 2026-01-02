@@ -15,7 +15,7 @@
       <li><a href="#was-bedeuten-die-häkchen-neben-den-ausgehenden-nachrichten">Was bedeuten die Häkchen neben den ausgehenden Nachrichten?</a></li>
       <li><a href="#edit">Schreibfehler korrigieren und Nachrichten nach dem Senden löschen</a></li>
       <li><a href="#ephemeralmsgs">Wie funktionieren “Verschwindende Nachrichten”?</a></li>
-      <li><a href="#delold">Was passiert, wenn ich “Alte Nachrichten vom Gerät löschen” aktiviere?</a></li>
+      <li><a href="#delold">Was passiert, wenn ich “Nachrichten vom Gerät löschen” aktiviere?</a></li>
       <li><a href="#remove-account">Wie kann ich mein Chat-Profil löschen?</a></li>
     </ul>
   </li>
@@ -26,6 +26,7 @@
       <li><a href="#ich-habe-mich-selbst-versehentlich-gelöscht">Ich habe mich selbst versehentlich gelöscht.</a></li>
       <li><a href="#ich-möchte-keine-nachrichten-einer-gruppe-mehr-empfangen">Ich möchte keine Nachrichten einer Gruppe mehr empfangen.</a></li>
       <li><a href="#eine-gruppe-klonen">Eine Gruppe klonen</a></li>
+      <li><a href="#wie-viele-mitglieder-können-in-einer-einzelnen-gruppe-sein">Wie viele Mitglieder können in einer einzelnen Gruppe sein?</a></li>
     </ul>
   </li>
   <li><a href="#webxdc">In-Chat-Apps</a>
@@ -54,7 +55,7 @@
   </li>
   <li><a href="#erweitert">Erweitert</a>
     <ul>
-      <li><a href="#experimentelle-features">Experimentelle Features</a></li>
+      <li><a href="#experiments">Experimentelle Features</a></li>
       <li><a href="#relays">Was sind Relays?</a></li>
       <li><a href="#kann-ich-eine-klassische-e-mail-adresse-mit-delta-chat-verwenden">Kann ich eine klassische E-Mail-Adresse mit Delta Chat verwenden?</a></li>
       <li><a href="#classic-email">Wie kann ich ein Chat-Profil mit einer klassischen E-Mail-Adresse als Relay konfigurieren?</a></li>
@@ -76,6 +77,7 @@
       <li><a href="#tls">Sind mit dem Mail-Symbol markierte Nachrichten im Internet sichtbar?</a></li>
       <li><a href="#message-metadata">Wie schützt Delta Chat Metadaten in Nachrichten?</a></li>
       <li><a href="#device-seizure">Wie schützt man Metadaten und Kontakte, wenn ein Gerät beschlagnahmt wird?</a></li>
+      <li><a href="#wer-sieht-meine-ip-adresse">Wer sieht meine IP-Adresse?</a></li>
       <li><a href="#sealedsender">Unterstützt Delta Chat „Sealed Sender“?</a></li>
       <li><a href="#pfs">Unterstützt Delta Chat “Perfect Forward Secrecy”?</a></li>
       <li><a href="#pqc">Unterstützt Delta Chat Post-Quantum-Verschlüsselung?</a></li>
@@ -177,7 +179,7 @@ wird eine Ende-zu-Ende-Verschlüsselung zwischen allen Mitgliedern eingerichtet.
 
 <p>Da Delta Chat ein privater Messenger ist, können dir zunächst nur Freunde und Familienmitglieder, denen du deinen <a href="#howtoe2ee">QR-Code oder Einladungslink</a> schickst, schreiben.</p>
 
-<p>Deine Freunde können deine Kontaktdaten dann mit anderen Freunden teilen. Dies wird als <strong>Anfrage</strong> angezeigt.</p>
+<p>Deine Freunde können deine Kontaktdaten dann mit anderen Freunden teilen. Dies wird als <b style="border: 1px solid currentColor; padding: 0 3px; font-size:90%">Anfrage</b> angezeigt.</p>
 
 <ul>
   <li>
@@ -215,15 +217,10 @@ kann darauf tippen, um mit dem ersten Kontakt zu chatten.</p>
         
       </h3>
 
-<ul>
-  <li>
-    <p>Ja. Bilder, Videos, Dateien, Sprachnachrichten und mehr können über die <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Anhang-</strong>
-bzw. <img style="vertical-align:middle; width:0.8em; margin:1px" src="../mic.png" alt="Microphone" /> <strong>Sprachnachricht</strong>-Buttons hinzugefügt werden</p>
-  </li>
-  <li>
-    <p>Um die Leistung zu verbessern, werden die Bilder standardmäßig optimiert und in einer kleineren Größe gesendet, aber du kannst sie auch als “Datei” senden, um das Original zu erhalten.</p>
-  </li>
-</ul>
+<p>Ja. Bilder, Videos, Dateien, Sprachnachrichten und mehr können über die <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Anhang-</strong>
+  bzw. <img style="vertical-align:middle; width:0.8em; margin:1px" src="../mic.png" alt="Microphone" /> <strong>Sprachnachricht</strong>-Buttons hinzugefügt werden</p>
+
+<p>Um die Leistung zu verbessern, werden die Bilder standardmäßig optimiert und in einer kleineren Größe gesendet, aber du kannst sie auch als “Datei” senden, um das Original zu erhalten.</p>
     
       <h3 id="multiple-accounts">
         
@@ -254,14 +251,9 @@ oder <strong>Profile zu wechseln</strong>.</p>
         
       </h3>
 
-<ul>
-  <li>
-    <p>Du kannst ein Profilbild in den Einstellungen hinzufügen. Wenn du deinen Kontakten eine Nachricht sendest oder sie über einen QR-Code hinzufügst, sehen diese automatisch dein Profilbild.</p>
-  </li>
-  <li>
-    <p>Aus Datenschutzgründen sieht niemand dein Profilbild, dem du nicht zuvor eine Nachricht gesendet hast.</p>
-  </li>
-</ul>
+<p>Du kannst ein Profilbild in den Einstellungen hinzufügen. Wenn du deinen Kontakten eine Nachricht sendest oder sie über einen QR-Code hinzufügst, sehen diese automatisch dein Profilbild.</p>
+
+<p>Aus Datenschutzgründen sieht niemand dein Profilbild, dem du nicht zuvor eine Nachricht gesendet hast.</p>
     
       <h3 id="signature">
         
@@ -293,7 +285,7 @@ Sobald du eine Nachricht an einen Kontakt sendest, kann dieser deine Signatur in
     <p><strong>Stummgeschaltete Chats</strong> erhalten keine Benachrichtigungen, bleiben ansonsten aber an ihrem Platz. Du kannst auch stummgeschaltete Chats anheften.</p>
   </li>
   <li>
-    <p><strong>Archiviere Chats</strong>, wenn du diese nicht mehr in deiner Chatliste sehen möchtest. Archivierte Chats bleiben oberhalb der Chatliste oder über die Suche zugänglich.</p>
+    <p><strong>Archiviere Chats</strong>, wenn du diese nicht mehr in deiner Chatliste sehen möchtest; sie bleiben oberhalb der Chatliste oder über die Suche zugänglich und werden als <b style="border: 1px solid currentColor; padding: 0 3px; font-size:90%">Archiviert</b> gekennzeichnet</p>
   </li>
   <li>
     <p>Wenn ein archivierter Chat eine neue Nachricht erhält, wird er, sofern er nicht stummgeschaltet ist, <strong>wieder in die normale Chatliste verschoben</strong>.  <strong>Stummgeschaltete Chats bleiben archiviert</strong>, bis du sie manuell aus dem Archiv entfernst.</p>
@@ -359,18 +351,16 @@ sei es durch den <a href="#edit">Absender</a>, durch <a href="#delold">Automatis
 
 <ul>
   <li>
-    <p><strong>Ein Häkchen</strong> <img style="vertical-align:middle; width:1.5em; margin:1px" src="../tick1.png" alt="" /> bedeutet, dass die Nachricht erfolgreich versandt wurde.</p>
+    <p><strong>Ein Häkchen</strong> <img style="vertical-align:middle; width:1.5em; margin:1px" src="../tick1.png" alt="" /> bedeutet, dass die Nachricht erfolgreich versandt wurde und das <a href="#relays">Relay</a> erreicht hat.</p>
   </li>
   <li>
-    <p><strong>Zwei Häkchen</strong>  <img style="vertical-align:middle; width:1.5em; margin:1px" src="../tick2.png" alt="" /> bedeuten, dass mindestens ein Gerät des Empfängers zurückgemeldet hat, die Nachricht empfangen zu haben.</p>
-  </li>
-  <li>
-    <p>Lesebestätigungen können deaktiviert werden. D.h. auch wenn du nur ein Häkchen siehst, kann die Nachricht gelesen worden sein.</p>
-  </li>
-  <li>
-    <p>Umgekehrt bedeuten zwei Häkchen nicht automatisch, dass ein Mensch die Nachricht gelesen oder verstanden hat ;)</p>
+    <p><strong>Zwei Häkchen</strong>  <img style="vertical-align:middle; width:1.5em; margin:1px" src="../tick2.png" alt="" /> bedeuten, dass der Empfänger die Nachricht gelesen hat.</p>
   </li>
 </ul>
+
+<p>In <a href="#groups">Gruppen</a> bedeutet das zweite Häkchen, dass die Nachricht von mindestens einem Mitglied gelesen wurde.</p>
+
+<p>Du erhälst nur dann das zweite Häkchen, wenn sowohl du als auch einer der Empfänger, die die Nachricht gelesen haben, <strong>Einstellungen → Chats → Lesebestätigungen</strong> aktiviert haben.</p>
     
       <h3 id="edit">
         
@@ -430,15 +420,14 @@ oder auf andere Weise Nachrichten vor dem Löschen speichern, kopieren oder weit
       <h3 id="delold">
         
         
-          Was passiert, wenn ich “Alte Nachrichten vom Gerät löschen” aktiviere? <a href="#delold" class="anchor"></a>
+          Was passiert, wenn ich “Nachrichten vom Gerät löschen” aktiviere? <a href="#delold" class="anchor"></a>
         
         
       </h3>
 
-<ul>
-  <li>Wenn du Speicherplatz auf deinem Gerät sparen möchtest, kannst du alte Nachrichten automatisch löschen lassen.</li>
-  <li>Hierzu, öffne die “Chats und Medien”-Einstellungen und dort “Alte Nachrichten vom Gerät löschen”. Du kannst einen Zeitraum zwischen “1 Stunde” und “1 Jahr” festlegen; auf diese Weise werden <em>alle</em> Nachrichten von deinem Gerät gelöscht, sobald sie älter als angegeben sind.</li>
-</ul>
+<p>Wenn du Speicherplatz auf deinem Gerät sparen möchtest, kannst du alte Nachrichten automatisch löschen lassen.</p>
+
+<p>Hierzu, öffne <strong>Einstellungen → Chats → Nachrichten vom Gerät löschen</strong>. Du kannst einen Zeitraum zwischen “1 Stunde” und “1 Jahr” festlegen; auf diese Weise werden alleNachrichten von deinem Gerät gelöscht, sobald sie älter als angegeben sind.</p>
     
       <h3 id="remove-account">
         
@@ -485,9 +474,15 @@ und seine <a href="#edit">eigenen Nachrichten von Geräten der Mitglieder lösch
       </h3>
 
 <ul>
-  <li>Wähle <strong>Neuer Chat</strong> und dann <strong>Neue Gruppe</strong> aus dem Menü oben rechts oder über das entsprechende Symbol unter Android/iOS.</li>
-  <li>Wähle auf dem folgenden Bildschirm die <strong>Gruppenmitglieder</strong> aus und klicke auf das Häkchen in der oberen rechten Ecke. Danach kannst du einen <strong>Gruppennamen</strong> und auch einen <strong>Gruppenbild</strong>  festlegen.</li>
-  <li>Sobald du die <strong>erste Nachricht</strong> in die Gruppe schreibst, werden alle Mitglieder über die neue Gruppe informiert und können in der Gruppe antworten (solange du keine Nachricht in die Gruppe schreibst, ist die Gruppe für die Gruppenmitglieder nicht sichtbar).</li>
+  <li>
+    <p>Wähle <strong>Neuer Chat</strong> und dann <strong>Neue Gruppe</strong> aus dem Menü oben rechts oder über das entsprechende Symbol unter Android/iOS.</p>
+  </li>
+  <li>
+    <p>Wähle auf dem folgenden Bildschirm die <strong>Gruppenmitglieder</strong> aus und klicke auf das Häkchen in der oberen rechten Ecke. Danach kannst du einen <strong>Gruppennamen</strong> und auch einen <strong>Gruppenbild</strong>  festlegen.</p>
+  </li>
+  <li>
+    <p>Sobald du die <strong>erste Nachricht</strong> in die Gruppe schreibst, werden alle Mitglieder über die neue Gruppe informiert und können in der Gruppe antworten (solange du keine Nachricht in die Gruppe schreibst, ist die Gruppe für die Gruppenmitglieder nicht sichtbar).</p>
+  </li>
 </ul>
     
       <h3 id="addmembers">
@@ -498,10 +493,9 @@ und seine <a href="#edit">eigenen Nachrichten von Geräten der Mitglieder lösch
         
       </h3>
 
+<p>Alle Gruppenmitglieder haben <strong>dieselben Rechte</strong>. Jeder kann daher jeden löschen oder weitere Mitglieder hinzufügen.</p>
+
 <ul>
-  <li>
-    <p>Alle Gruppenmitglieder haben <strong>dieselben Rechte</strong>. Jeder kann daher jeden löschen oder weitere Mitglieder hinzufügen.</p>
-  </li>
   <li>
     <p>Um <strong>Mitglieder hinzuzufügen oder zu entfernen</strong>, tippe im Chat auf den Gruppennamen und wähle das Mitglied aus, das du hinzufügen oder entfernen möchtest.</p>
   </li>
@@ -523,10 +517,8 @@ und seine <a href="#edit">eigenen Nachrichten von Geräten der Mitglieder lösch
         
       </h3>
 
-<ul>
-  <li>Da du kein Gruppenmitglied mehr bist, kannst du sich selbst nicht mehr hinzufügen.
-Kein Problem, bitte einfach ein anderes Gruppenmitglied in einem normalen Chat, dich hinzuzufügen.</li>
-</ul>
+<p>Da du kein Gruppenmitglied mehr bist, kannst du sich selbst nicht mehr hinzufügen.
+Kein Problem, bitte einfach ein anderes Gruppenmitglied in einem normalen Chat, dich hinzuzufügen.</p>
     
       <h3 id="ich-möchte-keine-nachrichten-einer-gruppe-mehr-empfangen">
         
@@ -537,14 +529,11 @@ Kein Problem, bitte einfach ein anderes Gruppenmitglied in einem normalen Chat, 
       </h3>
 
 <ul>
-  <li>
-    <p>Lösche dich entweder aus der Mitgliederliste oder lösche den gesamten Chat. 
-Wenn du der Gruppe später erneut beitreten möchtest, bitten ein anderes Gruppenmitglied, dich hinzuzufügen.</p>
-  </li>
-  <li>
-    <p>Alternativ kannst du eine Gruppe auch “stummschalten” - dies bedeutet, dass du weiterhin alle Nachrichten erhälst und neue schreiben kannst, aber nicht mehr über neue Nachrichten informiert wirst.</p>
-  </li>
+  <li>Lösche dich entweder aus der Mitgliederliste oder lösche den gesamten Chat. 
+Wenn du der Gruppe später erneut beitreten möchtest, bitten ein anderes Gruppenmitglied, dich hinzuzufügen.</li>
 </ul>
+
+<p>Alternativ kannst du eine Gruppe auch “stummschalten” - dies bedeutet, dass du weiterhin alle Nachrichten erhälst und neue schreiben kannst, aber nicht mehr über neue Nachrichten informiert wirst.</p>
     
       <h3 id="eine-gruppe-klonen">
         
@@ -569,6 +558,19 @@ oder klicken mit der rechten Maustaste auf die Gruppe in der Chat-Liste (Desktop
 
 <p>Die neue Gruppe ist <strong>völlig unabhängig</strong> von der ursprünglichen,
 die weiterhin wie bisher funktioniert.</p>
+    
+      <h3 id="wie-viele-mitglieder-können-in-einer-einzelnen-gruppe-sein">
+        
+        
+          Wie viele Mitglieder können in einer einzelnen Gruppe sein? <a href="#wie-viele-mitglieder-können-in-einer-einzelnen-gruppe-sein" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Es gibt keine technische Begrenzung,
+aber mehr als 150 sind nicht empfohlen.</p>
+
+<p>Wenn Gruppen größer werden, können sie sozial instabil werden und benötigen möglicherweise eine Hierarchie - und Delta Chat ist ein privater Messenger für Chats mit <a href="#groups">gleichen Rechten</a>. Vgl. <a href="https://de.wikipedia.org/wiki/Dunbar-Zahl">Dunbar-Zahl</a>.</p>
     
       <h2 id="webxdc">
         
@@ -841,7 +843,7 @@ Einschließlich dem Chatmail-Server, <a href="https://delta.chat/chatmail#selfho
     <p>Vergewissere dich, dass beide Geräte mit dem <strong>gleichen Wi-Fi, WLAN oder Netzwerk</strong> verbunden sind.</p>
   </li>
   <li>
-    <p>Unter <strong>Windows</strong>, <strong>Systemsteuerung / Netzwerk und Internet</strong> öffnen
+    <p>Unter <strong>Windows</strong>, “Systemsteuerung / Netzwerk und Internet” öffnen
 und sicherstellen, dass <strong>Privates Netzwerk</strong> als “Netzwerkprofiltyp” ausgewählt ist.
 (nach der Übertragung kann wieder der ursprüngliche Wert verwendet werden)</p>
   </li>
@@ -920,10 +922,10 @@ Wenn du iOS verwendest und auf Schwierigkeiten stößt, hilft dir vielleicht <a 
         
       </h2>
     
-      <h3 id="experimentelle-features">
+      <h3 id="experiments">
         
         
-          Experimentelle Features <a href="#experimentelle-features" class="anchor"></a>
+          Experimentelle Features <a href="#experiments" class="anchor"></a>
         
         
       </h3>
@@ -981,24 +983,23 @@ Im Zweifelsfall entferne das Relay später.</p>
         
       </h3>
 
-<p>Yes, but only if the email address is used exclusively by <a href="https://chatmail.at/clients">chatmail clients</a>.</p>
+<p>Ja, aber nur, wenn die E-Mail-Adresse ausschließlich von <a href="https://chatmail.at/clients">Chatmail-Clients</a> verwendet wird.</p>
 
-<p>It is not supported to share usage of an email address with non-chatmail apps or web-based mailers,
-for the following reasons:</p>
+<p>Die gemeinsame Nutzung einer E-Mail-Adresse mit Nicht-Chatmail-Apps oder webbasierten Mailprogrammen wird aus folgenden Gründen nicht unterstützt:</p>
 
 <ul>
   <li>
-    <p>Non-chatmail apps are largely not accomplishing automatic end-to-end email encryption for their users,
-while chatmail apps and relays pervasively enforce end-to-end encryption and security standards.</p>
+    <p>Nicht-Chatmail-Apps bieten ihren Nutzern größtenteils keine automatische End-to-End-Verschlüsselung,
+während Chatmail-Apps und Relays durchgängig End-to-End-Verschlüsselung und Sicherheitsstandards durchsetzen.</p>
   </li>
   <li>
-    <p>Non-chatmail apps use email servers as a long-term message archive
-while chatmail clients use email servers for ephemeral instant message relay.</p>
+    <p>Nicht-Chatmail-Anwendungen nutzen E-Mail-Server als langfristiges Nachrichtenarchiv,
+während Chatmail-Clients E-Mail-Server für die kurzlebige Weiterleitung von Nachrichten verwenden.</p>
   </li>
   <li>
-    <p>Supporting the full variety of classic email setups
-would require considerable development and maintenance efforts,
-and complicate making chatmail-based messaging more resilient, reliable and fast.</p>
+    <p>Die Unterstützung der gesamten Bandbreite klassischer E-Mail-Konfigurationen
+würde einen erheblichen Entwicklungs- und Wartungsaufwand erfordern
+und Chatmail-basiertes Messaging weniger robust, zuverlässig und schnell machen.</p>
   </li>
 </ul>
     
@@ -1010,17 +1011,15 @@ and complicate making chatmail-based messaging more resilient, reliable and fast
         
       </h3>
 
-<p>First off, <strong>please do not use the same classic email address also from non-chatmail classic email apps</strong>
-unless you are prepared to deal with encrypted messages in the inbox,
-double notifications, accidentally deleted emails or similar annoyances.</p>
+<p>Zunächst einmal, <strong>verwenden bitte nicht dieselbe klassische E-Mail-Adresse auch in anderen klassischen E-Mail-Anwendungen</strong>,
+es sei denn, du bist sind bereit, dich mit verschlüsselten Nachrichten im Posteingang,
+doppelten Benachrichtigungen, versehentlich gelöschten E-Mails oder ähnlichen Ärgernissen auseinanderzusetzen.</p>
 
-<p>You can configure a email address for chatting at <strong>New Profile → Use Other Server → Use Classic Mail as Relay</strong>.
-Note that classic email providers will generally not support <a href="#instant-delivery">Push Notifications</a>
-and have other limitations, see <a href="https://providers.delta.chat">Provider Overview</a>.
-Chatmail uses the default INBOX for relay; ensure the provider setup does too. 
-A chat profile using a classic email address allows to to send and receive unencrypted messages.
-These messages, and the chats they appear in, are marked with an email icon
-<img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
+<p>Sie können eine E-Mail-Adresse unter <strong>Neues Profil → Anderen Server verwenden → Klassische E-Mail als Relay</strong> konfigurieren.
+Beachten Sie, dass klassische E-Mail-Anbieter in der Regel keine <a href="#instant-delivery">Push-Benachrichtigungen</a> unterstützen
+und andere Einschränkungen haben, siehe <a href="https://providers.delta.chat">Provider-Overview</a>.
+Chatmail verwendet den Standard-INBOX für die Weiterleitung; stellen Sie sicher, dass dies auch bei der Einrichtung Ihres Anbieters der Fall ist. 
+Ein Chat-Profil mit klassischer E-Mail-Adresse, ermöglicht das Senden und Empfangen unverschlüsselter Nachrichten; diese sind mit dem E-Mail-Symbol <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />  gekennzeichnet.</p>
     
       <h3 id="ich-möchte-meinen-eigenen-server-für-delta-chat-verwalten-gibt-es-empfehlungen">
         
@@ -1030,13 +1029,13 @@ These messages, and the chats they appear in, are marked with an email icon
         
       </h3>
 
-<p>Any well behaving email server setup will do fine 
-except if your users’ devices require Google/Apple <a href="#instant-delivery">Push Notifications</a> to work properly.</p>
+<p>Jede gut funktionierende E-Mail-Server-Konfiguration ist geeignet, 
+es sei denn, die Geräte Ihrer Benutzer erfordern Google/Apple <a href="#instant-delivery">Push-Benachrichtigungen</a>, um ordnungsgemäß zu funktionieren.</p>
 
-<p>We generally recommend to <a href="https://chatmail.at/doc/relay/getting_started.html">set up a chatmail relay</a>. 
-<a href="https://chatmail.at">Chatmail</a> is a community-driven project that encompasses both the setup of relays
-and <a href="https://github.com/chatmail/core">core Rust developments</a> 
-that power <a href="https://chatmail.at/clients">chatmail clients</a> of which Delta Chat is the most well known.</p>
+<p>Wir empfehlen generell, <a href="https://chatmail.at/doc/relay/getting_started.html">ein Chatmail-Relay einzurichten</a>. 
+<a href="https://chatmail.at">Chatmail</a> ist ein Community-basiertes Projekt, das sowohl die Einrichtung von Relays
+als auch <a href="https://github.com/chatmail/core">Entwicklungen in Rust</a> 
+für die <a href="https://chatmail.at/clients">Chatmail-Clients</a> umfasst, von denen Delta Chat der bekannteste ist.</p>
     
       <h3 id="statssending">
         
@@ -1080,9 +1079,7 @@ weekly statistics will be automatically sent to a bot.</p>
         
       </h3>
 
-<ul>
-  <li>Siehe hierzu <a href="https://github.com/chatmail/core/blob/main/standards.md#standards-used-in-delta-chat">in Delta Chat genutzte Standards</a>.</li>
-</ul>
+<p>Siehe hierzu <a href="https://github.com/chatmail/core/blob/main/standards.md#standards-used-in-delta-chat">in Delta Chat genutzte Standards</a>.</p>
     
       <h2 id="e2ee">
         
@@ -1149,16 +1146,15 @@ Seit der Veröffentlichung von Delta Chat Version 2 (Juli 2025) gibt es keine Sc
         
       </h3>
 
-<p>A contact profile might show a green checkmark
+<p>Ein Kontaktprofile kann ein grünes Häkchen 
 <img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
-and an “Introduced by” line.
-Every green-checkmarked contact either did a direct <a href="#howtoe2ee">QR-scan</a> with you
-or was introduced by a another green-checkmarked contact.
-Introductions happen automatically when adding members to groups. 
-Whoever adds a green-checkmarked contact to a group with only green-checkmarked members 
-becomes an introducer. 
-In a contact profile you can tap on the “Introduced by …” text repeatedly
-until you get to the one with whom you directly did a <a href="#howtoe2ee">QR-scan</a>.</p>
+und “Eingeführt von” enthalten. 
+Jeder so markierte Kontakt hat entweder einen direkten <a href="#howtoe2ee">QR-Scan</a> mit Ihnen durchgeführt
+oder wurde von einem anderen Kontakt mit grünem Häkchen eingeführt.
+Das Einführen geschieht automatisch, wenn Sie Mitglieder zu Gruppen hinzufügen. 
+Wer einen Kontakt mit grünem Häkchen zu einer Gruppe hinzufügt, wird zum Einführenden.
+In einem Kontaktprofil können Sie wiederholt auf den Text “Eingeführt von” tippen
+bis Sie zu demjenigen gelangen, mit dem Sie einen direkten <a href="#howtoe2ee">QR-Scan</a> gemacht haben.</p>
 
 <p>Für eine ausführlichere Diskussion der “Garantierten Ende-zu-Ende-Verschlüsselung”,
 siehe <a href="https://securejoin.delta.chat/en/latest/new.html">Secure-Join-Protokolle</a>
@@ -1313,6 +1309,32 @@ with the knowledge that all their data, along with all metadata, will be deleted
 Moreover, if a device is seized then chat contacts using short-lived profiles
 can not be identified easily.</p>
     
+      <h3 id="wer-sieht-meine-ip-adresse">
+        
+        
+          Wer sieht meine IP-Adresse? <a href="#wer-sieht-meine-ip-adresse" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Das verwendete <a href="#relays">Rekay</a> muss Ihre IP-Adresse kennen,
+sowie manchmal auch die Geräte Ihrer Kontakte, wenn Sie einen <a href="#experiments">Anruf</a> tätigen
+oder gemeinsam <a href="#webxdc">Apps</a> verwenden.</p>
+
+<p>IP-Adressen sind für Verbindungen und für Effizienz erforderlich.
+Sie werden weder gespeichert noch offengelegt.
+Beachten Sie, dass die IP-Adresse
+nicht mit einer Adresse, die Sie einem Lieferdienst geben,  vergleichbar ist - 
+sondern viel gröber ist und oft nur die Region oder das Land angibt.</p>
+
+<p>Da dies die Standardfunktion des Internets und anderer Messenger ist,
+bieten wir hier keine Optionen an und stellen auch keine Fragen im Voraus.</p>
+
+<p>Wenn Sie Ihre IP-Adresse als Sicherheits- oder Datenschutzrisiko betrachten,
+empfehlen wir Ihnen, ein VPN in Kombination mit dem System-Lockdown-Modus zu verwenden.
+Alle einzelnen Apps auf Ihrem System nach IP-Optionen abzusuchen wird nicht zufriedenstellen sein;
+beispielsweise legt das Antippen eines Links IP-Adressen gegenüber unbekannten Parteien offen und stellt hier das weitaus größere Risiko dar.</p>
+    
       <h3 id="sealedsender">
         
         
@@ -1321,7 +1343,7 @@ can not be identified easily.</p>
         
       </h3>
 
-<p>Nein, noch nichts.</p>
+<p>Nein, noch nicht.</p>
 
 <p>Der Signal-Messenger führte 2018 <a href="https://signal.org/blog/sealed-sender/">“Sealed Sender”</a> ein
 um seine Serverinfrastruktur darüber im Unklaren zu lassen, wer eine Nachricht an eine Gruppe von Empfängern sendet. 
@@ -1342,7 +1364,7 @@ but an implementation has not been agreed as a priority yet.</p>
         
       </h3>
 
-<p>Nein, noch nichts.</p>
+<p>Nein, noch nicht.</p>
 
 <p>Delta Chat today doesn’t support Perfect Forward Secrecy (PFS).
 This means that if your private decryption key is leaked,
@@ -1368,7 +1390,7 @@ which would make it available in all <a href="https://chatmail.at/clients">chatm
         
       </h3>
 
-<p>Nein, noch nichts.</p>
+<p>Nein, noch nicht.</p>
 
 <p>Delta Chat verwendet die Rust OpenPGP-Bibliothek <a href="https://github.com/rpgp/rpgp">rPGP</a>
 die den neuesten <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-pqc/">IETF Post-Quantum-Cryptography OpenPGP Entwurf</a> unterstützt. 

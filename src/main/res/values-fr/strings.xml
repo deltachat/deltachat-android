@@ -120,6 +120,18 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Dernière activité %1$s</string>
     <string name="last_seen_unknown">Vu·e pour la dernière fois : inconnu</string>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
+    <plurals name="n_seconds_ext">
+        <item quantity="one">%d seconde</item>
+        <item quantity="many">%d secondes</item>
+        <item quantity="other">%d secondes</item>
+    </plurals>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
+    <plurals name="n_minutes_ext">
+        <item quantity="one">%d minute</item>
+        <item quantity="many">%d minutes</item>
+        <item quantity="other">%d minutes</item>
+    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -169,6 +181,7 @@
         <item quantity="many">%d Sélectionnés</item>
         <item quantity="other">%d Sélectionnés</item>
     </plurals>
+    <string name="selected_colon">Sélectionné:</string>
     <string name="self">Moi</string>
     <string name="draft">Brouillon</string>
     <string name="image">Image</string>
@@ -201,6 +214,7 @@
     <string name="images_and_videos">Images et vidéos</string>
     <string name="file">Fichier</string>
     <string name="files">Fichiers</string>
+    <string name="files_attach_hint">Envoyer les fichiers au format original et les images en non compressé</string>
     <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
     <string name="choose_from_files">Choisir depuis vos fichiers</string>
     <string name="choose_from_gallery">Choisir depuis la gallerie</string>
@@ -388,6 +402,11 @@
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Êtes-vous sûr de vouloir quitter la discussion ?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Supprimer %d discussion ?</item>
+        <item quantity="many">Supprimer %d discussions ?</item>
+        <item quantity="other">Supprimer %d discussions ?</item>
+    </plurals>
     <string name="ask_delete_named_chat">Supprimer la conversation \"%1$s\" de tous vos appareils ?</string>
     <string name="ask_delete_message">Supprimer ce message de tous vos appareils ?</string>
     <plurals name="ask_delete_messages">
@@ -696,6 +715,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Envoyer %1$d fichiers à « %2$s » ?</string>
     <string name="ask_send_files_to_selected_chats">Envoyer %1$d fichier(s) à %2$d discussions ?</string>
+    <string name="videos_sent_without_recoding">(Les vidéos sont envoyés au format original, en conséquence volumineux. Pour envoyer des fichiers de plus petite taille, joignez-les séparément.)</string>
     <string name="share_text_multiple_chats">Envoyer ce texte à %1$d discussions ?\n\n« %2$s »</string>
     <string name="share_abort">Partage annulé en raison de permissions manquantes.</string>
 
@@ -771,6 +791,10 @@
     <string name="pref_background_btn_default">Utilisez l\'image par défaut</string>
     <string name="pref_background_btn_gallery">Sélectionner depuis la galerie</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si vous désactivez cette option, assurez-vous que votre serveur et vos autres clients sont configurés en conséquence.\n\nSinon des choses pourraient ne pas fonctionner du tout.</string>
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <string name="pref_multidevice">Mode multi-appareils</string>
+    <string name="pref_multidevice_explain">Synchronise vos messages avec vos autres appareils. Activé automatiquement lors de l\'ajout d\'un second appareil</string>
+    <string name="pref_multidevice_change_warn">Le mode multi-appareils doit être activé quand vous utilisez le mêmeprofil/compte sur plusieurs appareils. Désactivez cette option seulement si vousavez supprimé le profil de vos autres appareils.\n\nDésactiver le mode alors que vous utilisez le compte sur de multiples appareils causera le manquement de messages et autres problèmes.</string>
     <string name="pref_auto_folder_moves">Déplacer automatiquement vers le dossier DeltaChat</string>
     <string name="pref_only_fetch_mvbox_title">Ne consulter que le dossier DeltaChat</string>
     <string name="pref_show_emails">Voir les courriels classiques</string>
@@ -778,6 +802,7 @@
     <string name="pref_show_emails_accepted_contacts">Pour les contacts acceptés</string>
     <string name="pref_show_emails_all">Tout</string>
     <string name="pref_experimental_features">Fonctionnalités expérimentales</string>
+    <string name="pref_experimental_features_explain">Ces fonctionnalités peuvent être instable et être changées ou supprimées dans le futur</string>
     <string name="pref_on_demand_location_streaming">Envoi de la géolocalisation à la demande</string>
     <string name="pref_background_default">Image par défaut</string>
     <string name="pref_background_default_color">Couleur par défaut</string>
@@ -968,6 +993,7 @@
     <string name="qrshow_join_group_title">QR code d\'invitation</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Scannez ceci pour rejoindre le groupe \"%1$s\".</string>
+    <string name="qrshow_join_channel_hint">Scanner pour rejoindre le canal \"%1$s\"</string>
     <string name="qrshow_join_contact_title">QR code d\'invitation</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Scanner pour discuter avec %1$s</string>

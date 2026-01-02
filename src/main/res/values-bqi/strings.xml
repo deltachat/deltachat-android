@@ -345,13 +345,13 @@
         <item quantity="other">%d پیوم نۊ</item>
     </plurals>
     <string name="chat_record_slide_to_cancel">سی رڌ کردن بکشس.</string>
-    <string name="chat_share_with_title">یک رسۊوی وا</string>
+    <string name="chat_share_with_title">یک رسۊوی وا...</string>
     <string name="chat_input_placeholder">پیوم</string>
     <string name="chat_request_label">درخاست</string>
     <string name="chat_no_messages">پیومؽ نؽ.</string>
     <string name="chat_self_talk_subtitle">پیومایی ک سی خوم فشنام.</string>
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
-    <string name="save_message">زفت کردن</string>
+    <string name="save_message">زفت کردن پیوم</string>
     <string name="saved_messages">پیوما زفت بیڌه</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">زفت وابی</string>
