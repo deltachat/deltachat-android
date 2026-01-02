@@ -400,14 +400,14 @@
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ayrılmak istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Tüm aygıtlarınızdaki %d sohbet silinsin mi?</item>
-        <item quantity="other">Tüm aygıtlarınızdaki %d sohbet silinsin mi?</item>
+        <item quantity="one">%d sohbet silinsin mi?</item>
+        <item quantity="other">%d sohbet silinsin mi?</item>
     </plurals>
-    <string name="ask_delete_named_chat">Tüm aygıtlarınızdaki “%1$s” sohbeti silinsin mi?</string>
-    <string name="ask_delete_message">Tüm aygıtlarınızdaki bu ileti silinsin mi?</string>
+    <string name="ask_delete_named_chat">“%1$s” sohbeti silinsin mi?</string>
+    <string name="ask_delete_message">Bu ileti silinsin mi?</string>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Tüm aygıtlarınızdaki %d ileti silinsin mi?</item>
-        <item quantity="other">Tüm aygıtlarınızdaki %d ileti silinsin mi?</item>
+        <item quantity="one">%d ileti silinsin mi?</item>
+        <item quantity="other">%d ileti silinsin mi?</item>
     </plurals>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
@@ -954,7 +954,7 @@
 
     <string name="devicemsg_self_deleted">“Kaydedilen İletiler” sohbetini sildiniz.\n\nℹ️ “Kaydedilen İletiler” özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolaması dolmak üzere: %1$s%% zaten kullanımda.\n\nDepolama tam dolduğunda iletileri alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve “Ayarlar / Sohbetler ve Ortamlar / Eski İletileri Sil”i etkinleştirmeyi düşünün. Herhangi bir zamanda şu anki depolama kullanımınızı “Ayarlar / Bağlanabilirlik”ten denetleyebilirsiniz.</string>
+    <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolaması dolmak üzere: %1$s%% zaten kullanımda.\n\nDepolama tam dolduğunda iletileri alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve “Ayarlar / Sohbetler / Eski İletileri Sil”i etkinleştirmeyi düşünün. Herhangi bir zamanda şu anki depolama kullanımınızı “Ayarlar / Bağlanabilirlik”ten denetleyebilirsiniz.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Aygıtınızdaki tarih ya da saat yanlış görünüyor (%1$s).\n\nİletilerinizin doğru şekilde alınmasını sağlamak için saatinizi ⏰🔧 ayarlayın.</string>
     <string name="devicemsg_update_reminder">⚠️ Delta Chat sürümünüz eski olabilir.\n\nBu, sorunlara neden olabilir; çünkü sohbet ortaklarınız daha yeni sürümleri kullanıyor - ve en yeni özellikleri kaybediyorsunuz 😳\nGüncelleştirmeler için lütfen https://get.delta.chat ya da uygulama mağazanızı denetleyin.</string>

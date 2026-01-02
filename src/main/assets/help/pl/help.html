@@ -26,6 +26,7 @@
       <li><a href="#usunąłem-się-przez-przypadek">Usunąłem się przez przypadek.</a></li>
       <li><a href="#nie-chcę-już-otrzymywać-wiadomości-od-grupy">Nie chcę już otrzymywać wiadomości od grupy.</a></li>
       <li><a href="#cloning-a-group">Cloning a group</a></li>
+      <li><a href="#how-many-members-can-participate-in-a-single-group">How many members can participate in a single group?</a></li>
     </ul>
   </li>
   <li><a href="#webxdc">In-chat apps</a>
@@ -54,7 +55,7 @@
   </li>
   <li><a href="#zaawansowane">Zaawansowane</a>
     <ul>
-      <li><a href="#experimental-features">Experimental Features</a></li>
+      <li><a href="#experiments">Experimental Features</a></li>
       <li><a href="#relays">What are Relays?</a></li>
       <li><a href="#can-i-use-a-classic-email-address-with-delta-chat">Can I use a classic email address with Delta Chat?</a></li>
       <li><a href="#classic-email">How can I configure a chat profile with a classic email address as relay?</a></li>
@@ -76,6 +77,7 @@
       <li><a href="#tls">Czy wiadomości oznaczone ikoną poczty są widoczne w internecie?</a></li>
       <li><a href="#message-metadata">W jaki sposób Delta Chat chroni metadane w wiadomościach?</a></li>
       <li><a href="#device-seizure">Jak chronić metadane i kontakty w przypadku przejęcia urządzenia?</a></li>
+      <li><a href="#who-sees-my-ip-address">Who sees my IP Address?</a></li>
       <li><a href="#sealedsender">Czy Delta Chat obsługuje funkcję „Sealed Sender”?</a></li>
       <li><a href="#pfs">Czy Delta Chat obsługuje funkcję Perfect Forward Secrecy?</a></li>
       <li><a href="#pqc">Czy Delta Chat obsługuje kryptografię postkwantową?</a></li>
@@ -185,7 +187,8 @@ If you add each other to <a href="#groups">groups</a>, end-to-end encryption wil
 <p>As being a private messenger,
 only friends and family you <a href="#howtoe2ee">share your QR code or invite link with</a> can write to you.</p>
 
-<p>Your friends may share your contact with other friends, this appears as a <strong>request</strong>.</p>
+<p>Your friends may share your contact with other friends,
+this appears as <b style="border: 1px solid currentColor; padding: 0 3px; font-size:90%">Request</b></p>
 
 <ul>
   <li>
@@ -221,15 +224,10 @@ and can tap it to start chatting with the first contact.</p>
         
       </h3>
 
-<ul>
-  <li>
-    <p>Tak. Images, videos, files, voice messages etc. can be sent using the <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attachment-</strong>
+<p>Tak. Images, videos, files, voice messages etc. can be sent using the <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attachment-</strong>
 or <img style="vertical-align:middle; width:0.8em; margin:1px" src="../mic.png" alt="Microphone" /> <strong>Voice Message</strong> buttons</p>
-  </li>
-  <li>
-    <p>Ze względu na wydajność obrazy są domyślnie optymalizowane i wysyłane w mniejszym rozmiarze, ale można je wysłać jako „plik”, aby zachować oryginał.</p>
-  </li>
-</ul>
+
+<p>Ze względu na wydajność obrazy są domyślnie optymalizowane i wysyłane w mniejszym rozmiarze, ale można je wysłać jako „plik”, aby zachować oryginał.</p>
     
       <h3 id="multiple-accounts">
         
@@ -259,14 +257,9 @@ and uses the server only to relay messages.</p>
         
       </h3>
 
-<ul>
-  <li>
-    <p>Możesz dodać zdjęcie profilowe w swoich ustawieniach. Jeśli napiszesz do swoich kontaktów lub dodasz je za pomocą kodu QR, automatycznie zobaczą je jako Twoje zdjęcie profilowe.</p>
-  </li>
-  <li>
-    <p>Ze względów prywatności nikt nie widzi Twojego zdjęcia profilowego, dopóki nie napiszesz do niego wiadomości.</p>
-  </li>
-</ul>
+<p>Możesz dodać zdjęcie profilowe w swoich ustawieniach. Jeśli napiszesz do swoich kontaktów lub dodasz je za pomocą kodu QR, automatycznie zobaczą je jako Twoje zdjęcie profilowe.</p>
+
+<p>Ze względów prywatności nikt nie widzi Twojego zdjęcia profilowego, dopóki nie napiszesz do niego wiadomości.</p>
     
       <h3 id="signature">
         
@@ -366,22 +359,18 @@ and others will as well not always see that you are “online”.</p>
 <ul>
   <li>
     <p><strong>One tick</strong> <img style="vertical-align:middle; width:1.5em; margin:1px" src="../tick1.png" alt="" />
-means that the message was sent successfully to your provider.</p>
+means that the message was sent successfully to the <a href="#relays">relay</a>.</p>
   </li>
   <li>
     <p><strong>Two ticks</strong>  <img style="vertical-align:middle; width:1.5em; margin:1px" src="../tick2.png" alt="" />
-mean that at least one recipient’s device
-reported back to having received the message.</p>
-  </li>
-  <li>
-    <p>Recipients may have disabled read-receipts,
-so even if you see only one tick, the message may have been read.</p>
-  </li>
-  <li>
-    <p>The other way round, two ticks do not automatically mean
-that a human has read or understood the message ;)</p>
+indicate your contact has read the message.</p>
   </li>
 </ul>
+
+<p>In <a href="#groups">groups</a> the second tick means that at least one member has reported back having read the message.</p>
+
+<p>You will only get the second tick if both you and one of the recipients who read the message
+has <strong>Settings → Chats → Read Receipts</strong> enabled.</p>
     
       <h3 id="edit">
         
@@ -438,10 +427,9 @@ the (anyway encrypted) messages may take longer to get deleted from their server
         
       </h3>
 
-<ul>
-  <li>Jeśli chcesz zaoszczędzić miejsce na urządzeniu, możesz wybrać opcję automatycznego usuwania starych wiadomości.</li>
-  <li>Aby ją włączyć, przejdź do „Usuń wiadomości z urządzenia” w ustawieniach w sekcji „Czaty i media”. Możesz ustawić przedział czasowy pomiędzy „po 1 godzinie” a „po 1 roku”; w ten sposób <em>wszystkie</em> wiadomości zostaną usunięte z urządzenia, gdy tylko staną się starsze.</li>
-</ul>
+<p>Jeśli chcesz zaoszczędzić miejsce na urządzeniu, możesz wybrać opcję automatycznego usuwania starych wiadomości.</p>
+
+<p>Aby ją włączyć, przejdź do „Usuń wiadomości z urządzenia” w ustawieniach w sekcji „Czaty i media”. Możesz ustawić przedział czasowy pomiędzy „po 1 godzinie” a „po 1 roku”; w ten sposób <em>wszystkie</em> wiadomości zostaną usunięte z urządzenia, gdy tylko staną się starsze.</p>
     
       <h3 id="remove-account">
         
@@ -489,9 +477,15 @@ and <a href="#edit">delete their own messages</a> from all member’s devices.</
       </h3>
 
 <ul>
-  <li>Wybierz <strong>Nowy czat</strong>, a następnie <strong>Nowa grupa</strong> z menu w prawym górnym rogu lub naciśnij odpowiedni przycisk na Androidzie / iOS.</li>
-  <li>Na następnym ekranie wybierz <strong>członków grupy</strong> i zdefiniuj <strong>nazwę grupy</strong>. Możesz też wybrać awatar <strong>grupy</strong>.</li>
-  <li>Zaraz po napisaniu pierwszej wiadomości w grupie wszyscy członkowie zostaną poinformowani o nowej grupie i mogą odpowiedzieć w grupie (jeżeli nie napiszesz wiadomości w grupie, grupa jest niewidoczna dla członków).</li>
+  <li>
+    <p>Wybierz <strong>Nowy czat</strong>, a następnie <strong>Nowa grupa</strong> z menu w prawym górnym rogu lub naciśnij odpowiedni przycisk na Androidzie / iOS.</p>
+  </li>
+  <li>
+    <p>Na następnym ekranie wybierz <strong>członków grupy</strong> i zdefiniuj <strong>nazwę grupy</strong>. Możesz też wybrać awatar <strong>grupy</strong>.</p>
+  </li>
+  <li>
+    <p>Zaraz po napisaniu pierwszej wiadomości w grupie wszyscy członkowie zostaną poinformowani o nowej grupie i mogą odpowiedzieć w grupie (jeżeli nie napiszesz wiadomości w grupie, grupa jest niewidoczna dla członków).</p>
+  </li>
 </ul>
     
       <h3 id="addmembers">
@@ -502,11 +496,10 @@ and <a href="#edit">delete their own messages</a> from all member’s devices.</
         
       </h3>
 
-<ul>
-  <li>
-    <p>All group members have the <strong>same rights</strong>.
+<p>All group members have the <strong>same rights</strong>.
 For this reason, everyone can delete any member or add new ones.</p>
-  </li>
+
+<ul>
   <li>
     <p>To <strong>add or delete members</strong>, tap the group name in the chat and select the member to add or remove.</p>
   </li>
@@ -534,10 +527,8 @@ However, since groups are <a href="#groups">meant for trusted people</a>, avoid 
         
       </h3>
 
-<ul>
-  <li>Ponieważ nie jesteś członkiem grupy, nie możesz dodać siebie ponownie. 
-Jednak nie ma problemu, po prostu poproś dowolnego członka grupy na normalnym czacie, aby dodał cię ponownie.</li>
-</ul>
+<p>Ponieważ nie jesteś członkiem grupy, nie możesz dodać siebie ponownie. 
+  Jednak nie ma problemu, po prostu poproś dowolnego członka grupy na normalnym czacie, aby dodał cię ponownie.</p>
     
       <h3 id="nie-chcę-już-otrzymywać-wiadomości-od-grupy">
         
@@ -548,15 +539,12 @@ Jednak nie ma problemu, po prostu poproś dowolnego członka grupy na normalnym 
       </h3>
 
 <ul>
-  <li>
-    <p>Usuń siebie z listy członków lub usuń cały czat. 
-Jeśli później będziesz chciał ponownie dołączyć do grupy, poproś innego członka grupy, aby dodał cię do grupy.</p>
-  </li>
-  <li>
-    <p>Alternatywnie możesz też „Wyłączyć powiadomienia” dla grupy  dzięki temu otrzymasz wszystkie wiadomości i 
-nadal będziesz mógł pisać, ale nie będziesz już powiadamiany o żadnych nowych wiadomościach.</p>
-  </li>
+  <li>Usuń siebie z listy członków lub usuń cały czat. 
+Jeśli później będziesz chciał ponownie dołączyć do grupy, poproś innego członka grupy, aby dodał cię do grupy.</li>
 </ul>
+
+<p>Alternatywnie możesz też „Wyłączyć powiadomienia” dla grupy  dzięki temu otrzymasz wszystkie wiadomości i 
+  nadal będziesz mógł pisać, ale nie będziesz już powiadamiany o żadnych nowych wiadomościach.</p>
     
       <h3 id="cloning-a-group">
         
@@ -581,6 +569,21 @@ or right-click the group in the chat list (Desktop).</p>
 
 <p>The new group is <strong>fully independent</strong> from the original,
 which continues to work as before.</p>
+    
+      <h3 id="how-many-members-can-participate-in-a-single-group">
+        
+        
+          How many members can participate in a single group? <a href="#how-many-members-can-participate-in-a-single-group" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>There is no strict technical limit,
+but more than 150 is not recommended.</p>
+
+<p>As groups get larger, they can become socially unstable and may need a hierarchy -
+where Delta Chat is a private messenger for chatting with <a href="#groups">equal rights</a>.
+See <a href="https://en.wikipedia.org/wiki/Dunbar%27s_number">Dunbar’s number</a> for more insights.</p>
     
       <h2 id="webxdc">
         
@@ -834,7 +837,7 @@ Welcome to the power of the interoperable chatmail relay network :)</p>
     <p>Sprawdź dokładnie, czy oba urządzenia są w tym <strong>samym Wi-Fi lub tej samej sieci</strong></p>
   </li>
   <li>
-    <p>Na <strong>Windowsie</strong>, przejdź do <strong>Panel sterowania / Sieć i internet</strong> i upewnij się, że <strong>Sieć prywatna</strong> jest wybrana jako “Typ profilu sieci”
+    <p>Na <strong>Windowsie</strong>, przejdź do “Panel sterowania / Sieć i internet” i upewnij się, że <strong>Sieć prywatna</strong> jest wybrana jako “Typ profilu sieci”
 (po przeniesieniu możesz wrócić do pierwotnej wartości)</p>
   </li>
   <li>
@@ -911,10 +914,10 @@ Jeśli korzystasz z iOS i napotykasz trudności, może <a href="https://support.
         
       </h2>
     
-      <h3 id="experimental-features">
+      <h3 id="experiments">
         
         
-          Experimental Features <a href="#experimental-features" class="anchor"></a>
+          Experimental Features <a href="#experiments" class="anchor"></a>
         
         
       </h3>
@@ -950,7 +953,7 @@ you can configure relays at At <strong>Settings → Advanced → Relays</strong>
   <li>
     <p>You can <strong>add</strong> a relay by scanning its QR code;
 <a href="https://chatmail.at/relays">https://chatmail.at/relays</a> shows some known ones.
-If you have multiple relays, your will receive messages on all of them.</p>
+If you have multiple relays, you will receive messages on all of them.</p>
   </li>
   <li>
     <p>The <strong>default</strong> defines the one where your chat partners send future messages to.</p>
@@ -1073,9 +1076,7 @@ weekly statistics will be automatically sent to a bot.</p>
         
       </h3>
 
-<ul>
-  <li>Zobacz <a href="https://github.com/chatmail/core/blob/main/standards.md#standards-used-in-delta-chat">Standardy używane w Delta Chat</a>.</li>
-</ul>
+<p>Zobacz <a href="https://github.com/chatmail/core/blob/main/standards.md#standards-used-in-delta-chat">Standardy używane w Delta Chat</a>.</p>
     
       <h2 id="e2ee">
         
@@ -1261,6 +1262,32 @@ so you can easily use situation-specific profiles next to your “main” profil
 with the knowledge that all their data, along with all metadata, will be deleted.
 Moreover, if a device is seized then chat contacts using short-lived profiles
 can not be identified easily.</p>
+    
+      <h3 id="who-sees-my-ip-address">
+        
+        
+          Who sees my IP Address? <a href="#who-sees-my-ip-address" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>The used <a href="#relays">relay</a> needs to know your IP Address,
+as well as sometimes your contact’s devices if you have a <a href="#experiments">call</a>
+or use <a href="#webxdc">apps</a> together.</p>
+
+<p>IP Addresses are needed for connectivity and efficiency.
+They are neither persisted nor exposed.
+Note that the IP Address
+is not like a detailed address you give to a delivery service,
+but much more coarse, often defining region or country only.</p>
+
+<p>As this is just how the internet and other messengers work by default,
+we do not offer options here or ask upfront questions.</p>
+
+<p>If you see your IP Address as a security or privacy risk,
+we recommend to use a VPN, in combination with system lockdown mode.
+Hunting down options in all apps on your system will leave gaps.
+For example, tapping a link exposes IP Addresses to unknown parties and is the by far larger risk here.</p>
     
       <h3 id="sealedsender">
         

@@ -15,7 +15,7 @@
       <li><a href="#what-do-the-ticks-shown-beside-outgoing-messages-mean">What do the ticks shown beside outgoing messages mean?</a></li>
       <li><a href="#edit">Correct typos and delete messages after sending</a></li>
       <li><a href="#ephemeralmsgs">How do disappearing messages work?</a></li>
-      <li><a href="#delold">What happens if I turn on “Delete old messages from device”?</a></li>
+      <li><a href="#delold">What happens if I turn on “Delete Messages from Device”?</a></li>
       <li><a href="#remove-account">How can I delete my chat profile?</a></li>
     </ul>
   </li>
@@ -26,6 +26,7 @@
       <li><a href="#kdyź-se-nedopatřením-odstraníš">Kdyź se nedopatřením odstraníš.</a></li>
       <li><a href="#nechci-již-přijímat-zprávy-ze-skupiny">Nechci již přijímat zprávy ze skupiny.</a></li>
       <li><a href="#cloning-a-group">Cloning a group</a></li>
+      <li><a href="#how-many-members-can-participate-in-a-single-group">How many members can participate in a single group?</a></li>
     </ul>
   </li>
   <li><a href="#webxdc">In-chat apps</a>
@@ -54,7 +55,7 @@
   </li>
   <li><a href="#advanced">Advanced</a>
     <ul>
-      <li><a href="#experimental-features">Experimental Features</a></li>
+      <li><a href="#experiments">Experimental Features</a></li>
       <li><a href="#relays">What are Relays?</a></li>
       <li><a href="#can-i-use-a-classic-email-address-with-delta-chat">Can I use a classic email address with Delta Chat?</a></li>
       <li><a href="#classic-email">How can I configure a chat profile with a classic email address as relay?</a></li>
@@ -76,6 +77,7 @@
       <li><a href="#tls">Are messages marked with the mail icon exposed on the Internet?</a></li>
       <li><a href="#message-metadata">How does Delta Chat protect metadata in messages?</a></li>
       <li><a href="#device-seizure">How to protect metadata and contacts when a device is seized?</a></li>
+      <li><a href="#who-sees-my-ip-address">Who sees my IP Address?</a></li>
       <li><a href="#sealedsender">Does Delta Chat support “Sealed Sender”?</a></li>
       <li><a href="#pfs">Does Delta Chat support Perfect Forward Secrecy?</a></li>
       <li><a href="#pqc">Does Delta Chat support Post-Quantum-Cryptography?</a></li>
@@ -185,7 +187,8 @@ If you add each other to <a href="#groups">groups</a>, end-to-end encryption wil
 <p>As being a private messenger,
 only friends and family you <a href="#howtoe2ee">share your QR code or invite link with</a> can write to you.</p>
 
-<p>Your friends may share your contact with other friends, this appears as a <strong>request</strong>.</p>
+<p>Your friends may share your contact with other friends,
+this appears as <b style="border: 1px solid currentColor; padding: 0 3px; font-size:90%">Request</b></p>
 
 <ul>
   <li>
@@ -223,15 +226,10 @@ and can tap it to start chatting with the first contact.</p>
         
       </h3>
 
-<ul>
-  <li>
-    <p>Yes. Images, videos, files, voice messages etc. can be sent using the <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attachment-</strong>
+<p>Yes. Images, videos, files, voice messages etc. can be sent using the <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attachment-</strong>
 or <img style="vertical-align:middle; width:0.8em; margin:1px" src="../mic.png" alt="Microphone" /> <strong>Voice Message</strong> buttons</p>
-  </li>
-  <li>
-    <p>For performance, images are optimized and sent at a smaller size by default, but you can send it as a “file” to preserve the original.</p>
-  </li>
-</ul>
+
+<p>For performance, images are optimized and sent at a smaller size by default, but you can send it as a “file” to preserve the original.</p>
     
       <h3 id="multiple-accounts">
         
@@ -262,14 +260,11 @@ or to <strong>Switch Profiles</strong>.</p>
         
       </h3>
 
-<ul>
-  <li>
-    <p>Profilový obrázek lze zvolit v nastavení. Když napíšeš svému kontaktu,
+<p>Profilový obrázek lze zvolit v nastavení. Když napíšeš svému kontaktu,
 nebo přidáš nový vyfocením QR kódu, tyto kontakty automaticky uvidí tvůj profilový obrázek.</p>
-  </li>
-  <li>
-    <p>Z důvodu soukromí nikdo nevidí tvůj profilový obrázek dokud jim nenapíšeš.</p>
-  </li>
+
+<ul>
+  <li>Z důvodu soukromí nikdo nevidí tvůj profilový obrázek dokud jim nenapíšeš.</li>
 </ul>
     
       <h3 id="signature">
@@ -304,7 +299,8 @@ they will see it when they view your contact details.</p>
   </li>
   <li>
     <p><strong>Archive chats</strong> if you do not want to see them in your chat list any longer.
-Archived chats remain accessible above the chat list or via search.</p>
+They remain accessible above the chat list or via search
+and are marked by <b style="border: 1px solid currentColor; padding: 0 3px; font-size:90%">Archived</b></p>
   </li>
   <li>
     <p>When an archived chat gets a new message, unless muted, it will <strong>pop out of the archive</strong> and back into your chat list.
@@ -339,7 +335,7 @@ By tapping <img style="vertical-align:middle; width:1.2em; margin:1px" src="../g
 you can go back to the original message in the original chat</p>
   </li>
   <li>
-    <p>Finally, you can also use “Save Messages” to take <strong>personal notes</strong> - open the chat, type something, add a photo or a voice message etc.</p>
+    <p>Finally, you can also use “Saved Messages” to take <strong>personal notes</strong> - open the chat, type something, add a photo or a voice message etc.</p>
   </li>
   <li>
     <p>As “Saved Message” are synced, they can become very handy for transferring data between devices</p>
@@ -376,22 +372,18 @@ and others will as well not always see that you are “online”.</p>
 <ul>
   <li>
     <p><strong>One tick</strong> <img style="vertical-align:middle; width:1.5em; margin:1px" src="../tick1.png" alt="" />
-means that the message was sent successfully to your provider.</p>
+means that the message was sent successfully to the <a href="#relays">relay</a>.</p>
   </li>
   <li>
     <p><strong>Two ticks</strong>  <img style="vertical-align:middle; width:1.5em; margin:1px" src="../tick2.png" alt="" />
-mean that at least one recipient’s device
-reported back to having received the message.</p>
-  </li>
-  <li>
-    <p>Recipients may have disabled read-receipts,
-so even if you see only one tick, the message may have been read.</p>
-  </li>
-  <li>
-    <p>The other way round, two ticks do not automatically mean
-that a human has read or understood the message ;)</p>
+indicate your contact has read the message.</p>
   </li>
 </ul>
+
+<p>In <a href="#groups">groups</a> the second tick means that at least one member has reported back having read the message.</p>
+
+<p>You will only get the second tick if both you and one of the recipients who read the message
+has <strong>Settings → Chats → Read Receipts</strong> enabled.</p>
     
       <h3 id="edit">
         
@@ -456,19 +448,18 @@ the (anyway encrypted) messages may take longer to get deleted from their server
       <h3 id="delold">
         
         
-          What happens if I turn on “Delete old messages from device”? <a href="#delold" class="anchor"></a>
+          What happens if I turn on “Delete Messages from Device”? <a href="#delold" class="anchor"></a>
         
         
       </h3>
 
-<ul>
-  <li>If you want to save storage on your device, you can choose to delete old
-messages automatically.</li>
-  <li>To turn it on, go to “delete old messages from device” in the “Chats &amp; Media”
-settings. You can set a timeframe between “after an hour” and “after a year”;
+<p>If you want to save storage on your device, you can choose to delete old
+messages automatically.</p>
+
+<p>To turn it on, go to <strong>Settings → Chats → Delete Message from Device</strong>.
+You can set a timeframe between “after an hour” and “after a year”;
 this way, <em>all</em> messages will be deleted from your device as soon as they are
-older than that.</li>
-</ul>
+older than that.</p>
     
       <h3 id="remove-account">
         
@@ -516,9 +507,15 @@ and <a href="#edit">delete their own messages</a> from all member’s devices.</
       </h3>
 
 <ul>
-  <li>Z menu v pravém horním rohu, nebo stiskem příslušného tlačítka na Androidu / iOS vyber <strong>Nový hovor</strong> a pak <strong>Nová skupina</strong>.</li>
-  <li>Na další obrazovce, vyber <strong>členy skupiny</strong> a zadej <strong>Název skupiny</strong>. Také můžeš vybrat  <strong>obrázek skupiny</strong>.</li>
-  <li>Jakmile do skupiny pošleš <strong>první zprávu</strong>, všichni členové budou vyrozuměni o nové skupině a mohou do ní také psát (dokud nepošleš první zprávu členové skupiny o ní nebudou vědět).</li>
+  <li>
+    <p>Z menu v pravém horním rohu, nebo stiskem příslušného tlačítka na Androidu / iOS vyber <strong>Nový hovor</strong> a pak <strong>Nová skupina</strong>.</p>
+  </li>
+  <li>
+    <p>Na další obrazovce, vyber <strong>členy skupiny</strong> a zadej <strong>Název skupiny</strong>. Také můžeš vybrat  <strong>obrázek skupiny</strong>.</p>
+  </li>
+  <li>
+    <p>Jakmile do skupiny pošleš <strong>první zprávu</strong>, všichni členové budou vyrozuměni o nové skupině a mohou do ní také psát (dokud nepošleš první zprávu členové skupiny o ní nebudou vědět).</p>
+  </li>
 </ul>
     
       <h3 id="addmembers">
@@ -529,11 +526,10 @@ and <a href="#edit">delete their own messages</a> from all member’s devices.</
         
       </h3>
 
-<ul>
-  <li>
-    <p>All group members have the <strong>same rights</strong>.
+<p>All group members have the <strong>same rights</strong>.
 For this reason, everyone can delete any member or add new ones.</p>
-  </li>
+
+<ul>
   <li>
     <p>To <strong>add or delete members</strong>, tap the group name in the chat and select the member to add or remove.</p>
   </li>
@@ -561,10 +557,8 @@ However, since groups are <a href="#groups">meant for trusted people</a>, avoid 
         
       </h3>
 
-<ul>
-  <li>Když nejsi členem skupiny nelze se znovu připojit. Nicméně, není to velká potíž - 
-požádej běžnou zprávou jiného člena skupiny o znovupřipojení.</li>
-</ul>
+<p>Když nejsi členem skupiny nelze se znovu připojit. Nicméně, není to velká potíž - 
+požádej běžnou zprávou jiného člena skupiny o znovupřipojení.</p>
     
       <h3 id="nechci-již-přijímat-zprávy-ze-skupiny">
         
@@ -575,15 +569,12 @@ požádej běžnou zprávou jiného člena skupiny o znovupřipojení.</li>
       </h3>
 
 <ul>
-  <li>
-    <p>Buď se odeber ze seznamu členů a nebo vymaž celý skupinový hovor.
-K opětovnému připojení v budoucnu požádej nějakého člena skupiny o znovupřidání.</p>
-  </li>
-  <li>
-    <p>Jiná možnost je “Umlčení” skupiny, což znamená nadále přijímat a také posílat zprávy, 
-ale nebudeš dostávat upozrnění na nově příchozí zprávy.</p>
-  </li>
+  <li>Buď se odeber ze seznamu členů a nebo vymaž celý skupinový hovor.
+K opětovnému připojení v budoucnu požádej nějakého člena skupiny o znovupřidání.</li>
 </ul>
+
+<p>Jiná možnost je “Umlčení” skupiny, což znamená nadále přijímat a také posílat zprávy, 
+ale nebudeš dostávat upozrnění na nově příchozí zprávy.</p>
     
       <h3 id="cloning-a-group">
         
@@ -608,6 +599,21 @@ or right-click the group in the chat list (Desktop).</p>
 
 <p>The new group is <strong>fully independent</strong> from the original,
 which continues to work as before.</p>
+    
+      <h3 id="how-many-members-can-participate-in-a-single-group">
+        
+        
+          How many members can participate in a single group? <a href="#how-many-members-can-participate-in-a-single-group" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>There is no strict technical limit,
+but more than 150 is not recommended.</p>
+
+<p>As groups get larger, they can become socially unstable and may need a hierarchy -
+where Delta Chat is a private messenger for chatting with <a href="#groups">equal rights</a>.
+See <a href="https://en.wikipedia.org/wiki/Dunbar%27s_number">Dunbar’s number</a> for more insights.</p>
     
       <h2 id="webxdc">
         
@@ -897,7 +903,7 @@ One device is not needed for the other to work.</p>
     <p>Double-check both devices are in the <strong>same Wi-Fi or network</strong></p>
   </li>
   <li>
-    <p>On <strong>Windows</strong>, go to <strong>Control Panel / Network and Internet</strong>
+    <p>On <strong>Windows</strong>, go to “Control Panel / Network and Internet”
 and make sure, <strong>Private Network</strong> is selected as “Network profile type”
 (after transfer, you can change back to the original value)</p>
   </li>
@@ -991,10 +997,10 @@ Všechny softwarové balíčky jsou na <a href="https://get.delta.chat">get.delt
         
       </h2>
     
-      <h3 id="experimental-features">
+      <h3 id="experiments">
         
         
-          Experimental Features <a href="#experimental-features" class="anchor"></a>
+          Experimental Features <a href="#experiments" class="anchor"></a>
         
         
       </h3>
@@ -1030,7 +1036,7 @@ you can configure relays at At <strong>Settings → Advanced → Relays</strong>
   <li>
     <p>You can <strong>add</strong> a relay by scanning its QR code;
 <a href="https://chatmail.at/relays">https://chatmail.at/relays</a> shows some known ones.
-If you have multiple relays, your will receive messages on all of them.</p>
+If you have multiple relays, you will receive messages on all of them.</p>
   </li>
   <li>
     <p>The <strong>default</strong> defines the one where your chat partners send future messages to.</p>
@@ -1153,9 +1159,7 @@ weekly statistics will be automatically sent to a bot.</p>
         
       </h3>
 
-<ul>
-  <li>Dobrý začátek je <a href="https://github.com/chatmail/core/blob/main/standards.md#standards-used-in-delta-chat">Standards used in Delta Chat</a>.</li>
-</ul>
+<p>Dobrý začátek je <a href="https://github.com/chatmail/core/blob/main/standards.md#standards-used-in-delta-chat">Standards used in Delta Chat</a>.</p>
     
       <h2 id="e2ee">
         
@@ -1393,6 +1397,32 @@ so you can easily use situation-specific profiles next to your “main” profil
 with the knowledge that all their data, along with all metadata, will be deleted.
 Moreover, if a device is seized then chat contacts using short-lived profiles
 can not be identified easily.</p>
+    
+      <h3 id="who-sees-my-ip-address">
+        
+        
+          Who sees my IP Address? <a href="#who-sees-my-ip-address" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>The used <a href="#relays">relay</a> needs to know your IP Address,
+as well as sometimes your contact’s devices if you have a <a href="#experiments">call</a>
+or use <a href="#webxdc">apps</a> together.</p>
+
+<p>IP Addresses are needed for connectivity and efficiency.
+They are neither persisted nor exposed.
+Note that the IP Address
+is not like a detailed address you give to a delivery service,
+but much more coarse, often defining region or country only.</p>
+
+<p>As this is just how the internet and other messengers work by default,
+we do not offer options here or ask upfront questions.</p>
+
+<p>If you see your IP Address as a security or privacy risk,
+we recommend to use a VPN, in combination with system lockdown mode.
+Hunting down options in all apps on your system will leave gaps.
+For example, tapping a link exposes IP Addresses to unknown parties and is the by far larger risk here.</p>
     
       <h3 id="sealedsender">
         

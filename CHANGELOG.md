@@ -5,6 +5,7 @@
 * Remove deprecated "real-time apps" switch
 * Fix: Remove address from profile switcher
 * Protect profile deletion and relays management with system lock/pin
+* Update to core 2.35.0
 
 ## v2.34.0
 2025-12
