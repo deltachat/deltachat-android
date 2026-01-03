@@ -35,6 +35,7 @@ public class DcContext {
     public final static int DC_EVENT_INCOMING_CALL_ACCEPTED      = 2560;
     public final static int DC_EVENT_OUTGOING_CALL_ACCEPTED      = 2570;
     public final static int DC_EVENT_CALL_ENDED                  = 2580;
+    public final static int DC_EVENT_TRANSPORTS_MODIFIED         = 2600;
 
     public final static int DC_IMEX_EXPORT_SELF_KEYS = 1;
     public final static int DC_IMEX_IMPORT_SELF_KEYS = 2;
