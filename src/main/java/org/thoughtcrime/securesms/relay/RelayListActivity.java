@@ -97,6 +97,7 @@ public class RelayListActivity extends BaseActionBarActivity
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_TRANSPORTS_MODIFIED, this);
   }
 
   @Override
@@ -199,7 +200,9 @@ public class RelayListActivity extends BaseActionBarActivity
   @Override
   public void handleEvent(@NonNull DcEvent event) {
     int eventId = event.getId();
-    if (eventId == DcContext.DC_EVENT_CONFIGURE_PROGRESS && event.getData1Int() == 1000) {
+    if (eventId == DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
+      if (event.getData1Int() == 1000) loadRelays();
+    } else if (eventId == DcContext.DC_EVENT_TRANSPORTS_MODIFIED) {
       loadRelays();
     }
   }
