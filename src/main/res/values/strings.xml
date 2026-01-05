@@ -570,7 +570,7 @@
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Scan to set up second device for %1$s</string>
     <string name="multidevice_receiver_title">Add as Second Device</string>
-    <string name="multidevice_open_settings_on_other_device">On the first device, go to “Settings / Add Second Device“ and scan the code shown there</string>
+    <string name="multidevice_open_settings_on_other_device">On the first device, start Delta Chat, go to “Settings / Add Second Device“ and scan the code shown there</string>
     <string name="multidevice_receiver_scanning_ask">Copy the profile from the other device to this device?</string>
     <string name="multidevice_receiver_needs_update">The profile you want to import is from a newer Delta Chat version.\n\nTo continue setting up second device, please update this device to the latest version of Delta Chat.</string>
     <string name="multidevice_abort">Abort setting up second device?</string>
