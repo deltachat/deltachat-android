@@ -120,6 +120,16 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">آخرین بار دیده‌شده در %1$s</string>
     <string name="last_seen_unknown">آخرین زمان مشاهده: نامشخص</string>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
+    <plurals name="n_seconds_ext">
+        <item quantity="one">%d ثانیه</item>
+        <item quantity="other">%dثانیه</item>
+    </plurals>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
+    <plurals name="n_minutes_ext">
+        <item quantity="one">%d دقیقه</item>
+        <item quantity="other">%d دقیقه</item>
+    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d دقیقه</item>
@@ -153,7 +163,7 @@
     </plurals>
     <plurals name="n_recipients">
         <item quantity="one">%d گیرنده</item>
-        <item quantity="other">%d گیرنده‌ </item>
+        <item quantity="other">%d دنبال‌کننده </item>
     </plurals>
     <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
@@ -235,8 +245,7 @@
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">مخاطب جدید</string>
     <string name="menu_new_classic_contact">اضافه کردن مخاطب به صورت دستی</string>
-    <string name="new_classic_contact_explain">مخاطبینی که دستی اضافه شده‌اند می توانند برای ارسال پیام به حساب ایمیل معمولی
- استفاده شوند و رمزگذاری سراسری برای آن‌ها تضمین نمی‌شود.</string>
+    <string name="new_classic_contact_explain">مخاطبینی که دستی اضافه شده‌اند می توانند برای ارسال پیام به حساب رایانامه معمولی استفاده شوند و رمزگذاری سراسری برای آن‌ها تضمین نمی‌شود.</string>
     <string name="menu_new_chat">گپ جدید</string>
     <string name="menu_new_group">گروه جدید</string>
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
@@ -249,9 +258,10 @@
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">کانال جدید</string>
     <!-- deprecated -->
-    <string name="add_recipients">افزودن گیرنده</string>
+    <string name="add_recipients">افزودن دنبال‌کننده</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">نام کانال</string>
+    <string name="email">رایانامه</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">رایانامه جدید</string>
     <!-- the "Subject" of an email, use the term common in classic email apps -->
@@ -309,7 +319,7 @@
     <string name="menu_scroll_to_top">رفن تا بالا</string>
     <string name="menu_help">کمک</string>
     <!-- use the same term for "Apps" as elsewhere -->
-    <string name="what_is_webxdc">Webxdc چیست؟</string>
+    <string name="what_is_webxdc">مینی برنامه‌ها چیستند؟</string>
     <string name="privacy_policy">خط مشی رازداری</string>
     <string name="menu_select_all">انتخاب همه</string>
     <string name="select_chat">انتخاب چت</string>
@@ -372,18 +382,32 @@
     </plurals>
     <string name="file_saved_to">پرونده  در «%1$s» ذخیره شد.</string>
 
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">تماس</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">جواب دادن</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">رد کردن</string>
+    <string name="outgoing_call">تماس خروجی</string>
+    <string name="incoming_call">تماس ورودی</string>
+    <string name="declined_call">تماس رد شده</string>
+    <string name="canceled_call">تماس لغو شده</string>
+    <string name="missed_call">تماس از دست رفته</string>
+    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
+    <string name="call_date_and_duration">%1$s، %2$s</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">آیا مطمئنید می‌خواهید بروید؟</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">آیا می‌خواهید از روی همهٔ دستگاه‌هایتان %d گپ را حذف کنید؟</item>
-        <item quantity="other">آیا می‌خواهید از روی همهٔ دستگاه‌هایتان %d گپ را حذف کنید؟</item>
+        <item quantity="other">آیا می‌خواهید %d گپ را حذف کنید؟</item>
     </plurals>
-    <string name="ask_delete_named_chat">حذف گفتگوی «%1$s» از همه‌ی دستگاه‌های شما؟</string>
-    <string name="ask_delete_message">می‌خواهید این پیام را از همهٔ دستگاه‌هایتان حذف کنید؟</string>
+    <string name="ask_delete_named_chat">حذف گپ «%1$s»؟</string>
+    <string name="ask_delete_message">حذف این پیام؟</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">آیا می‌خواهید از روی تمام دستگاه‌هایتان %d پیام را حذف کنید؟</item>
-        <item quantity="other">آیا می‌خواهید از روی تمام دستگاه‌هایتان %d پیام را حذف کنید؟</item>
+        <item quantity="other">حذف %dپیام؟</item>
     </plurals>
     <!-- deprecated, use ask_delete_messages -->
     <plurals name="ask_delete_messages_simple">
@@ -397,8 +421,8 @@
 شما دیگر پیامی به صورت مستقیم از این مخاطب دریافت نخواهید کرد. همچنین گروه‌های ایجاد شده توسط این مخاطب نمایش داده نخواهند شد.\n\n
 با این وجود، گروه‌هایی که این مخاطب در آن حضور دارند نمایش داده خواهد شد.</string>
     <string name="ask_unblock_contact">رفع مسدودیت این مخاطب؟</string>
-    <string name="ask_delete_contacts">مخاطبین حذف شوند؟\n\nمخاطبینی که گپ فعال دارند و مخاطبینی که در دفتر تلفن سامانه هستند را نمی‌توان به صورت دائمی حذف کرد. </string>
-    <string name="ask_delete_contact">حذف مخاطب %1$s؟ \n\nمخاطبین با گپ فعال و مخاطبینی که در دفتر تلفن سامانه هستند را نمی‌توان به صورت دائمی حذف کرد. </string>
+    <string name="ask_delete_contacts">مخاطب‌ها حذف شوند؟\n\nمخاطب‌هایی که گپ فعال دارند را نمی‌توان به صورت دائمی حذف کرد. </string>
+    <string name="ask_delete_contact">حذف مخاطب %1$s؟ \n\nمخاطب‌ها با گپ فعال و مخاطب‌هایی که در دفتر تلفن سامانه هستند را نمی‌توان به صورت دائمی حذف کرد. </string>
     <string name="ask_start_chat_with">گپ زدن با %1$s؟</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">حذف %1$s از گروه؟</string>
@@ -438,7 +462,7 @@
     <string name="chat_record_explain">برای ضبط پیام صوتی فشار داده و نگهدارید، برای ارسال رها کنید. </string>
     <string name="chat_no_chats_yet_title">گفتگویی وجود ندارد.\nبرای شروع گفتگو جدید دکمه «+» را فشار دهید.</string>
     <string name="chat_all_archived">تمام گپ‌ها بایگانی شده‌اند. /n برای شروع گپ جدید، «+» را فشار دهید. </string>
-    <string name="chat_share_with_title">اشتراک گذاری با</string>
+    <string name="chat_share_with_title">اشتراک گذاری با...</string>
     <string name="chat_input_placeholder">پیام</string>
     <string name="chat_archived_label">بایگانی شد</string>
     <string name="chat_request_label">درخواست</string>
@@ -447,7 +471,7 @@
     <string name="chat_self_talk_subtitle">پیام‌هایی که برای خودم  ارسال کرده‌ام. </string>
     <string name="archive_empty_hint">اگر گپ‌ها را بایگانی کنید در اینجا نمایش داده می‌شوند. </string>
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
-    <string name="save_message">ذخیره</string>
+    <string name="save_message">ذخیره پیام</string>
     <string name="saved_messages">پیام‌های ذخیره شده. </string>
     <string name="saved_messages_explain">برای دسترسی راحت‌تر پیام‌ها را به اینجا هدایت کنید\n\n• می‌توانید یادداشت متنی یا صوتی تهیه کنید\n\n• برای ذخیره رسانه‌ آن را ضمیمه کنید. </string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -592,7 +616,7 @@
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">از قبل یک حساب کاربری دارم</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">ساخت حساب کاربری با حساب رایانامه معمولی</string>
+    <string name="manual_account_setup_option">استفاده از رایانامه معمولی به عنوان رله</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">نمایه شما</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -647,7 +671,7 @@
     <string name="login_error_required_fields">لطفاً یک نشانی رایانامه و گذرواژهٔ معتبر وارد کنید</string>
     <string name="import_backup_title">وارد کردن نسخه پشتیبانی</string>
     <string name="import_backup_ask">نسخه پشتیبانی در\"%1$s\" پیدا شد.\n\n آیا می‌خواهید همه داده‌ها و تنظیم‌ها از آن وارد شود؟</string>
-    <string name="import_backup_no_backup_found">نسخه پشتیبانی پیدا نشد.\n\n نسخه پشتیبانی را در\"%1$s\" کپی کرده و دوباره امتحان کنید. در غیر این صورت می‌توانید \"شروع پیام‌رسانی\" را فشار دهید دا فرایند به صورت عادی ادامه یابد. </string>
+    <string name="import_backup_no_backup_found">نسخهٔ پشتیبانی پیدا نشد.\n\n نسخهٔ پشتیبان را در«%1$s» کپی کرده و دوباره امتحان کنید.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">نمی‌توانیم به عنوان «%1$s» وارد شویم. لطفاً درستی نشانی رایانامه و گذرواژه را بررسی کنید. </string>
     <!-- TLS certificate checks -->
@@ -741,6 +765,7 @@
     <string name="pref_backup">نسخه پشتیبان</string>
     <string name="pref_backup_explain">تهیهٔ پشتیبان از گپ‌ها در ذخیره‌گاه خارجی</string>
     <string name="pref_backup_export_explain">تهیهٔ پشتیبان به شما  کمک می‌کند روی این دستگاه یا دستگاه دیگر نرم‌افزار را دوباره نصب کنید.\n\nپشتیبان حاوی تمام پیام‌ها، مخاطبین، گپ‌ها و برپاسازی اتوکریپت سرتاسر شما خواهد بود. پروندهٔ پشتیبانی را در یک جای امن نگه دارید و در اسرع وقت آن را پاک کنید.</string>
+    <string name="pref_backup_export_this">برون‌ریزی این نمایه</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">برون‌ریزی همه%1$d حساب ها</string>
     <string name="pref_backup_export_start_button">شروع تهیه نسخه پشتیبان</string>
@@ -750,6 +775,8 @@
     <string name="pref_background_btn_default">استفاده از تصویر پیش‌فرض</string>
     <string name="pref_background_btn_gallery">انتخاب از گالری</string>
     <string name="pref_imap_folder_warn_disable_defaults">اگر این گزینه را غیر فعال می‌کنید از اینکه سرور شما و حساب‌هایتان هم بر این اساس تنظیم شده باشند.\n\n در غیر این صورت ممکن است هیچ چیز کار نکند. </string>
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <string name="pref_multidevice">حالت چند دستگاهی</string>
     <string name="pref_auto_folder_moves">انتقال خودکار به پوشه دلتاچت</string>
     <string name="pref_only_fetch_mvbox_title">فقط پوشه دلتاچت را بررسی کن</string>
     <string name="pref_show_emails">نمایش رایانامه‌های معمولی</string>
@@ -812,7 +839,7 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_server_ask">آیا می‌خواهید %1$d پیام را اکنون و تمام پیام‌های آیندهٔ «%2$s»  را پاک کنید؟/n/n⚠️ این شامل رایانامه‌ها، رسانه و «پیام‌های ذخیره شده» در همه پوشه‌های کارساز(سرور) می‌شود/n/n⚠️ اگر می‌خواهید داده‌ها در کارساز باقی بمانند از این قابلیت استفاده نکنید/n/n⚠️ اگر به‌جز دلتاچت از دیگر نرم‌افزارهای رایانامه هم استفاده می‌کنید این قابلیت را به کار نگیرید.</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">این شامل رایانامه‌ها، رسانه‌ها و «پیام‌های ذخیره شده» در تمام پوشه‌های کارساز(سرور) می‌شود. اگر می‌خواهید داده‌ها را در کارساز نگه دارید از این قابلیت استفاده نکنید. اگر از دیگر نرم‌افزارهای رایانامه به‌جز دلتاچت استفاده می‌کنید از این قابلیت استفاده نکنید.</string>
+    <string name="autodel_server_enabled_hint">این شامل رایانامه‌ها، رسانه‌ها و «پیام‌های ذخیره شده» در تمام پوشه‌های کارساز(سرور) می‌شود. اگر می‌خواهید داده‌ها را در کارساز نگه دارید از این قابلیت استفاده نکنید. اگر از دیگر نرم‌افزارهای رایانامه به‌جز دلتاچت استفاده می‌کنید هم از این قابلیت استفاده نکنید.</string>
     <string name="autodel_confirm">متوجه هستم، همه پیام‌ها حذف شوند</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">یک بار بعد از بارگیری</string>
@@ -844,7 +871,12 @@
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">عضو گروه، %1$s، توسط %2$s حذف شد. </string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
-    <string name="member_x_removed">عضویت %1$sحذف شد. </string>
+    <string name="member_x_removed">%1$sاز گروه حذف شد. </string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="group_left_by_you">شما گروه را ترک کردید</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="channel_left_by_you">شما کانال را ترک کردید</string>
+    <string name="you_joined_the_channel">شما به کانال ملحق شدید</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">ترک گروه توسط %1$s.</string>
     <string name="group_image_deleted_by_you">شما تصویر گروه را حذف کردید.</string>
@@ -873,6 +905,9 @@
     <string name="ephemeral_timer_1_week_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی 1 هفته تنظیم کرده‌اید.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %1$s روی 1 هفته تنظیم شد.</string>
+    <string name="ephemeral_timer_1_year_by_you">شما تایمر پیام‌های محو شونده را روی ۱ سال تنظیم کردید</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_1_year_by_other">تایمر پیام‌های محو شونده توسط %1$s بر روی ۱ سال تنظیم شده‌اند.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی %1$s دقیقه تنظیم کردید.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
@@ -889,17 +924,16 @@
     <string name="ephemeral_timer_weeks_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی %1$s هفته تنظیم کردید.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %2$s روی %1$s هفته تنظیم شد.</string>
-    <string name="chat_protection_enabled_tap_to_learn_more">رمزنگاری سرتاسر پیام ها از این به بعد تضمین می شود. برای اطلاعات بیشتر ضربه بزنید.</string>
-    <string name="chat_protection_enabled_explanation">رمزنگاری سراسری پیام‌های این گفتگو اکنون تضمین می‌شود. رمزنگاری سراسری باعث می‌شود پیام‌هایتان بین شما و مخاطبین شما محرمانه بماند. حتی ارائه‌دهندهٔ رایانامه شما هم نمی‌تواند آن‌ها را بخواند.</string>
+    <string name="chat_unencrypted_explanation">پیام‌ها در این گپ از رایانامه معمولی استفاده می‌کنند و به صورت سراسری رمزنگاری نشده‌اند.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">رمزنگاری سراسری پیام‌ها از این به بعد تضمین می شود. برای اطلاعات بیشتر ضربه بزنید.</string>
+    <string name="chat_protection_enabled_explanation">رمزنگاری سراسری پیام‌های این گفتگو تضمین می‌شود. رمزنگاری سراسری باعث می‌شود پیام‌هایتان بین شما و مخاطبین شما محرمانه بماند. حتی ارائه‌دهنده‌ها و رله‌ها هم نمی‌توانند آن‌ها را بخوانند.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s به رمزنگاری سراسری نیاز دارد که هنوز برای این گپ پیکره‌بندی نشده است. برای یادگیری بیش‌تر این‌جا بزنید.</string>
     <string name="invalid_unencrypted_explanation">برای برقراری رمزنگاری سراسری، می‌توانید به صورت حضوری با مخاطب‌های خود دیدار کنید و کد کیوآر آن‌ها را برای معرفی اسکن کنید.</string>
     <string name="learn_more">بیشتر بدانید</string>
 
     <string name="devicemsg_self_deleted">شما گپ «پیام‌های ذخیره شده» را پاک کردید.\n\nℹ️ برای استفادهٔ دوباره از «پیام‌های ذخیره شده» کافی است یک گپ جدید با خودتان درست کنید. </string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">هشدار⚠️، میزان فضای در دسترس کارساز رایانامه شما در حال تمام شدن است. %1$s از %% استفاده شده است. 
-اگر فضا کاملا پر شده باشد دیگر امکان دریافت پیام را نخواهید داشت.  
-👈 لطفا پیام‌های قدیمی در رایانامه خود را از طریق نسخه وب رایانامه پاک کنید. همچنین می‌توانید گزینه پاک کردن پیام‌های قدیمی در دلتاچت را فعال نمایید. هروقت خواستید می‌توانید فضای در دسترس را از تنظیم‌ها/اتصال‌ها بررسی کنید. </string>
+    <string name="devicemsg_storage_exceeding"> ⚠️ میزان فضای در دسترس کارساز رایانامه شما در حال تمام شدن است. %1$s از %% استفاده شده است. اگر فضا کاملا پر شده باشد دیگر امکان دریافت پیام را نخواهید داشت.  👈 لطفا پیام‌های قدیمی در رایانامه خود را از طریق نسخهٔ وب رایانامه پاک کنید. همچنین می‌توانید گزینه پاک کردن پیام‌های قدیمی در دلتاچت را فعال نمایید. هروقت خواستید می‌توانید فضای در دسترس را از «تنظیم‌ها / اتصال‌ها» بررسی کنید. </string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">هشدار⚠️ به نظر می‌رسد زمان و تاریخ دستگاه شما دقیق نیست(%1$s).
 ساعت دستگاه خود را تنظیم کنید ⏰🔧 تا پیام‌ها به درستی دریافت شوند. </string>
@@ -918,6 +952,7 @@
     <string name="qrscan_hint_desktop">کد کیو‌آر را زیر دوربین بگیرید</string>
     <string name="qrscan_failed">امکان رمزگشایی کد کیوآر وجود ندارد</string>
     <string name="qrscan_ask_join_group">آیا می خواهید به گروه\"%1$s\" ملحق شوید؟</string>
+    <string name="qrscan_ask_join_channel">آیا می‌خواهید عضو کانال «%1$s» شوید؟</string>
     <string name="qrscan_fingerprint_mismatch">اثرانگشت اسکن شده با انچه که برای %1$sمشاهده شده بود انطباق ندارد. </string>
     <string name="qrscan_no_addr_found">این کیوآر حاوی یک شناساگر است. ولی آدرس رایانامه‌ای در آن نیست. \n\n برای یک تأییدیه به روش‌های دیگر لطفا ابتدا یک ارتباط رمزگذاری شده با دریافت کننده برقرار کنید. </string>
     <string name="qrscan_contains_text">کیوآر کد اسکن شده:\n\n %1$s</string>
@@ -955,11 +990,12 @@
 در انتظار دستگاه %2$s برای پاسخگویی...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">کاربر %1$s پاسخ داد، در انتظار اضافه شدن به گروه...</string>
-    <string name="secure_join_wait">در حال برقراری رمزگذاری سراسری تضمین‌شده، لطفا صبر کنید...</string>
+    <string name="secure_join_wait">در حال برقراری ارتباط، لطفا صبر کنید...</string>
     <string name="contact_verified">%1$s تأیید شد.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">احراز هویت شده توسط %1$s</string>
     <string name="verified_by_you">تأیید شده توسط من</string>
+    <string name="verified_by_unknown">معرفی شده</string>
     <!-- deprecated -->
     <string name="verified_contact_required_explain">برای تضمین رمزنگاری سراسری شما تنها می‌توانید مخاطب‌هایی که یک تیک سبز دارند به این گروه اضافه کنید.\n\nمی‌توانید با مخاطب‌هایتان حضوری ملاقات کنید و برای معرفی، کد QR آن‌ها را اسکن کنید.</string>
     <string name="mailto_dialog_header_select_chat">گپ را برای ارسال پیام انتخاب کنید</string>
@@ -977,6 +1013,7 @@
     <string name="notify_name_only">فقط نام</string>
     <string name="notify_no_name_or_message">بدون نام یا پیام</string>
     <string name="notifications_disabled">اعلان‌ها غیرفعال شد</string>
+    <string name="unreliable_bg_notifications">فعال‌سازی «اتصال پس‌زمینه اجباری» برای این‌که همیشه اعلان‌ها برسند</string>
     <string name="new_messages">پیام‌های جدید</string>
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">شما پیام‌های جدیدی دارید</string>
@@ -1051,6 +1088,8 @@ GNU GPL ورژن ۳
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">حذف</string>
     <string name="save_desktop">ذخیره</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">ذخیره نکردن</string>
     <string name="name_desktop">نام</string>
     <string name="select_group_image_desktop">انتخاب تصویر گروه</string>
     <string name="export_backup_desktop">صادر کردن نسخه پشتیبان</string>
@@ -1105,9 +1144,17 @@ GNU GPL ورژن ۳
     <string name="notifications_avg_hours">به صورت متوسط هر %1$d ساعت</string>
     <string name="last_check_at">بررسی شده در %1$s</string>
     <string name="system_settings">تنظیم‌های سیستم</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">ویرایش نوع، مدال‌ها، پیش‌نمایش و غیره</string>
     <!-- iOS shortcut widget -->
     <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
     <string name="shortcuts_widget_title">میانبرها</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="shortcuts_widget_description">استفاده از «اضافه کردن ابزارک» دلتاچت برای اضافه کردن گزینه‌ها</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="remove_from_widget">حذف از ابزارک</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="add_to_widget">اضافه کردن به ابزارک</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">دلتاچت برای گرفتن و ارسال عکس و فیلم و برای اسکن کردن کیوآر کد از دوربین شما استفاده می‌کند. </string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">دلتاچت برای  هم‌رسانی مکان شما در زمانی که آن به کار انداخته‌اید، به مجوز نیاز دارد. </string>
@@ -1129,4 +1176,6 @@ GNU GPL ورژن ۳
     <string name="perm_enable_bg_reminder_title">برای دریافت پیام‌ها به صورت پس زمینه در دلتاچت این جا را ضربه بزنید. </string>
     <string name="perm_enable_bg_already_done">قبلا اجازه دسترسی به فعالیت در پس زمینه را به دلتاچت داده‌اید. \n\n اگر پیام‌ها هنوز هم در شرایط پس زمینه نمی‌آمد لطفا تنظیم‌های سیستم را نیز بررسی نمایید. </string>
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_2_0">چه خبر هست؟\n\n💯 رمزنگاری سراسری اکنون قابل اعتماد و دائمی هست. قفل‌ها 🔒 دیگر نیستند!\n\n✉️ رایانامه معمولی بدون رمزنگاری سراسری هم‌اکنون با یک نشان حرفی نشان‌گذاری شده‌اند!\n\n🔲 دکمهٔ جدید برای دسترسی سریع به مینی برنامه‌های استفاده شده در چت\n\nلطفا برای مستقل ماندن ما و ادامه دادن بهبود‌ها کمک مالی کنید: %1$sدر صورتی که ساکن ایران هستید، رمزارز نیز می‌توانید بفرستید.</string>
+</resources>
