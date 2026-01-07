@@ -14,12 +14,11 @@ import androidx.core.content.ContextCompat;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ForegroundDetector;
-import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.Util;
 
 public final class FetchForegroundService extends Service {
-  private static final String TAG = FcmReceiveService.class.getSimpleName();
+  private static final String TAG = FetchForegroundService.class.getSimpleName();
   private static final Object SERVICE_LOCK = new Object();
   private static final Object STOP_NOTIFIER = new Object();
   private static volatile boolean fetchingSynchronously = false;
