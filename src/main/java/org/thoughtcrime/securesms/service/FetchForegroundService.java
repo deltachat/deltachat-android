@@ -80,12 +80,11 @@ public final class FetchForegroundService extends Service {
         } // else we stop FetchForegroundService on DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE
       });
     } catch (Exception e) {
-      Log.w(TAG, "Error calling startForeground(): " + e + ", fetching in background.");
-      fetchSynchronously();
+      Log.e(TAG, "Error calling startForeground()", e);
     }
   }
 
-  private static void fetchSynchronously() {
+  public static void fetchSynchronously() {
     // According to the documentation https://firebase.google.com/docs/cloud-messaging/android/receive,
     // we need to handle the message within 20s, and the time window may be even shorter than 20s,
     // so, use 10s to be safe.
