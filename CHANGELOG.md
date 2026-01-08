@@ -1,5 +1,11 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Don't notify notification-to-all from in-chat apps if the chat is muted
+* Allow to see inbox quota for all relays in connectivity screen
+* Update to core 2.36.0
+
 ## v2.35.0
 2026-01
 
