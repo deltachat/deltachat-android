@@ -80,10 +80,6 @@
     <string name="always_load_remote_images">Ngarko Përherë Figura të Largëta</string>
     <string name="once">Vetëm një herë</string>
     <string name="show_warning">Shfaq Sinjalizim</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Shfaqe Fjalëkalimin</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Fshihe Fjalëkalimin</string>
     <string name="not_now">Jo tani</string>
     <string name="never">Kurrë</string>
     <string name="one_moment">Një çast…</string>
@@ -405,11 +401,6 @@
         <item quantity="one">Të fshihet %d mesazh në krejt pajisjet tuaja?</item>
         <item quantity="other">Të fshihen %d mesazhe në krejt pajisjet tuaja?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Të fshihet %d mesazh?</item>
-        <item quantity="other">Të fshihen %d mesazhe?</item>
-    </plurals>
     <string name="ask_forward">Të përcillen mesazhet te %1$s?</string>
     <string name="ask_forward_multiple">Të përcillen mesazhet te %1$d fjalosje?</string>
     <string name="ask_export_attachment">Eksportimi i bashkëngjitjeve do t\’u lejojë aplikacioneve të tjerë në pajisjen tuaj t\’i përdorin ato.\n\nTë vazhdohet?</string>
@@ -479,8 +470,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Listë Postimesh</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Ndryshime në emër dhe figurë liste postimesh aplikohen vetëm në këtë pajisje.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -582,7 +571,7 @@
     <string name="incoming_messages">Mesazhe të Marrë</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mesazhe të Dërguar</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Depozitim në %1$s</string>
     <string name="connectivity">Aftësi lidhjeje</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -818,8 +807,13 @@
     <string name="disable_imap_idle">Çaktivizo IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Mos e përdor zgjerimin IMAP IDLE, edhe kur shërbyesi e mbulon. Aktivizimi i kësaj mundësie do të vonojë marrjen e mesazheve, aktivizojeni vetëm për testime.</string>
     <string name="send_stats_to_devs">Dërgojuni zhvilluesve të Delta Chat-it statistika</string>
+    <string name="stats_device_message">Doni të ndihmoni të përmirësohet Delta Chat-i dhe të mbështetni kërkimin duke dërguar statistika javore anonime përdorimi?\n\n👉 Prekni këtu… 👈</string>
+    <string name="stats_confirmation_dialog">Doni të ndihmoni të përmirësohet Delta Chat-i dhe të mbështetni kërkimin duke dërguar statistika javore anonime përdorimi?</string>
+    <string name="stats_thanks">Faleminderit! Mundeni përherë të çaktivizoni dërgimin, që nga Rregullime -> Të mëtejshme.\n\nA keni dhe 5 minuta që të merrni pjesë në një studim shkencor rreth sigurisë së Delta Chat-it?</string>
+    <string name="stats_disable_dialog">Dërgimi i statistikave është tashmë i aktivizuar.\n\nDoni të çaktivizohet?</string>
+    <string name="disable">Çaktivizoje</string>
+    <string name="stats_keep_sending">Vazhdo t’i dërgosh</string>
     <string name="stats_msg_body">Bashkëngjitja përmban statistika anonime përdorimi, që na ndihmojnë të përmirësojmë Delta Chat-in. Faleminderit!</string>
-
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Përfundime Kërkimi</string>
@@ -989,15 +983,11 @@
     <string name="qrshow_join_contact_hint">Që të bisedoni me %1$s, skanojeni</string>
     <string name="qrshow_join_contact_no_connection_toast">S\’ka lidhje në internet, s\’bëhet dot ujdisja e kodit QR.</string>
     <string name="qraccount_ask_create_and_login">Të krijohet profil i ri te “%1$s” dhe të bëhet hyrja atje?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Të krijohet profil i ri në “%1$s” dhe të bëhet hyrja atje?\n\nProfili juaj ekzistues s’do të fshihet. Që të kaloni nga një profil në tjetrin, përdorni zërin “Ndërroni Profil”.</string>
     <string name="set_name_and_avatar_explain">Caktoni një emër, që kontaktet tuaj do ta njohin. Mundeni edhe të caktoni një emër profili.</string>
     <string name="please_enter_name">Ju lutemi, jepni një emër.</string>
     <string name="qraccount_qr_code_cannot_be_used">Kodi QR i skanuar s’mund të përdoret për të ujdisur një profil të ri.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Të hyhet si “%1$s”?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">Të hyhet si “%1$s”?\n\nProfili juaj ekzistues s’do të fshihet. Që të kaloni nga një profil i juaji në një tjetër, përdorni zërin “Ndërroni Profil”.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s ju ftoi të bëheni pjesë e këtij grupi.\n\nPo pritet për pajisjen e %2$s që të përgjigjet…</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->

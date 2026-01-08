@@ -68,10 +68,6 @@
     <string name="always_load_remote_images">Sempre Carregar Imagens Remotas</string>
     <string name="once">Uma vez</string>
     <string name="show_warning">Mostrar Aviso</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Mostrar senha</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Ocultar senha</string>
     <string name="not_now">Mais tarde</string>
     <string name="never">Nunca</string>
     <string name="one_moment">Um momento...</string>
@@ -309,12 +305,6 @@
         <item quantity="many">Apagar %d mensagens?</item>
         <item quantity="other">Apagar %d mensagens?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Apagar %d mensagem?</item>
-        <item quantity="many">Apagar %d mensagens?</item>
-        <item quantity="other">Apagar %d mensagens?</item>
-    </plurals>
     <string name="ask_forward">Encaminhar mensagens para %1$s?</string>
     <string name="ask_forward_multiple">Encaminhar mensagens para 1%1$d conversas?</string>
     <string name="ask_export_attachment">Exportar o anexo? Anexos exportados poderão ser acessados por outros aplicativos.\n\nContinuar?</string>
@@ -382,8 +372,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Lista de e-mail</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Alterações ao nome e imagem da lista de e-mails só se aplicam a este dispositivo.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -469,7 +457,7 @@
     <string name="incoming_messages">Mensagens Recebidas</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mensagens Enviadas</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Armazenamento em %1$s</string>
     <string name="connectivity">Conectividade</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -761,13 +749,9 @@
     <string name="qrshow_join_contact_hint">Escanear para estabelecer contato com %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Sem conexão à rede não é possível realizar configuração por código QR.</string>
     <string name="qraccount_ask_create_and_login">Criar novo endereço de e-mail em \"%1$s\" e entrar nele?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Criar novo endereço de e-mail em \"%1$s\"  e entrar nele?\n\n nSua conta existente não será excluída. Use o item \"Trocar conta\" para alternar entre suas contas.</string>
     <string name="qraccount_qr_code_cannot_be_used">O código QR lido não pode ser usado para configurar uma nova conta.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Conectar-se em \"%1$s\"?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">Conectar-se em \"%1$s\"?\n\nSua conta existente não será excluída. Use a opção \"Mudar conta\" para alternar entre suas contas.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$ste convidou para entrar neste grupo.\n\nEsperando o dispositivo de %2$s responder...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->

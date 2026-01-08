@@ -65,10 +65,6 @@
     <string name="always_load_remote_images">Lataa aina kuvat verkosta</string>
     <string name="once">Kerran</string>
     <string name="show_warning">Näytä varoitus</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Näytä salasana</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Piilota salasana</string>
     <string name="not_now">Ei nyt</string>
     <string name="never">Ei koskaan</string>
     <string name="one_moment">Hetki...</string>
@@ -308,11 +304,6 @@
         <item quantity="one">Poista %d viesti?</item>
         <item quantity="other">Poista %d viestiä?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Poista %d viesti?</item>
-        <item quantity="other">Poista %d viestiä?</item>
-    </plurals>
     <string name="ask_forward">Välitä viestit yhteystiedolle %1$s?</string>
     <string name="ask_forward_multiple">Välitä viestit %1$d keskustelulle?</string>
     <string name="ask_export_attachment">Liitteiden vieminen antaa muille laitteen sovelluksille mahdollisuuden lukea niitä.\n\nJatka?</string>
@@ -377,8 +368,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Sähköpostilista</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Muutokset sähköpostilistan nimeen ja kuvaan tallentuvat vain tähän laitteeseen.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -470,7 +459,7 @@
     <string name="incoming_messages">Saapuvat viestit</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Lähtevät viestit</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Tallennustila palvelimella %1$s</string>
     <string name="connectivity">Yhteys</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -815,15 +804,11 @@
     <string name="qrshow_join_contact_hint">Skannaa aloittaaksesi keskustelun käyttäjän %1$s kanssa</string>
     <string name="qrshow_join_contact_no_connection_toast">Ei internetyhteyttä, QR-koodin luominen ei onnistu.</string>
     <string name="qraccount_ask_create_and_login">Luo uusi sähköpostiosoite palvelimella \"%1$s\" ja kirjaudu sisään?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Luo uusi sähköpostiosoite palvelimella \"%1$s\" ja kirjaudu sisään?\n\nNykyistä tiliäsi ei poisteta. Käytä valintaa \"Vaihda tiliä\" vaihtaaksesi tilien välillä.</string>
     <string name="set_name_and_avatar_explain">Aseta nimi jonka yhteystietosi tunnistavat. Voit myös asettaa profiilikuvan.</string>
     <string name="please_enter_name">Syötä nimi.</string>
     <string name="qraccount_qr_code_cannot_be_used">Uutta tiliä ei voida luoda skannatulla QR-koodilla.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Haluatko kirjautua osoitteella \"%1$s\"?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">Haluatko kirjautua osoitteella \"%1$s\"?\n\nNykyistä tiliäsi ei poisteta. Käytä \"Vaihda tiliä\" -kohtaa vaihtaaksesi tiliesi välillä.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s kutsui sinut tähän ryhmään.\n\nOdotetaan vastausta yhteystiedon %2$s laitteelta...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->

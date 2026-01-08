@@ -43,10 +43,6 @@
     <string name="show_full_message">هەموو پەیامەکە پیشان بدە...</string>
     <string name="always">هەمیشە</string>
     <string name="once">یەکجار</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">تێپەڕوشەکە پیشان بدە</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">تێپەڕوشەکە بشارەوە</string>
     <string name="not_now">ئێستا نا</string>
     <string name="never">قەت</string>
     <string name="done">ئەنجام بوو</string>
@@ -279,6 +275,7 @@
     <string name="attachment_failed_to_load">پێوەلکاوەکە دانەگیرا</string>
     <!-- mailing lists -->
     <string name="mailing_list">لیستەی ئیمەیلەکان</string>
+
     <!-- map -->
     <string name="filter_map_on_time">شوێنەکان لە نێو چوارچێوەی کاتدا پیشان بدرێت؟</string>
     <string name="show_location_traces">پیشاندانی شوێنپێ</string>

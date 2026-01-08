@@ -30,10 +30,6 @@
     <string name="save">Spremi</string>
     <string name="media">Medij</string>
     <string name="main_menu">Glavni izbornik</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Prikaži lozinku</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Sakrij lozinku</string>
     <string name="not_now">Ne sada</string>
     <string name="never">Nikada</string>
     <string name="one_moment">Samo trenutak...</string>

@@ -65,10 +65,6 @@
     <string name="always_load_remote_images">Винаги да се зареждат отдалечените изображения</string>
     <string name="once">Веднъж</string>
     <string name="show_warning">Показване на предупреждение</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Показване на паролата</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Скриване на паролата</string>
     <string name="not_now">Не сега</string>
     <string name="never">Никога</string>
     <string name="one_moment">Един момент...</string>
@@ -304,11 +300,6 @@
     </plurals>
     <string name="file_saved_to">Файлът е записан в \"%1$s\"</string>
 
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Да бъде ли изтрито %d съобщение?</item>
-        <item quantity="other">Да бъдат ли изтрити %d съобщения?</item>
-    </plurals>
     <string name="ask_forward">Да бъдат ли препратени съобщенията на %1$s?</string>
     <string name="ask_forward_multiple">Да бъдат ли препратени съобщенията към %1$d чата?</string>
     <string name="ask_export_attachment">Експортирането на прикачените файлове ще даде възможност други приложения на Вашето устройство да имат достъп до тях.\n\nИскате ли да продължите?</string>
@@ -373,8 +364,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Пощенски списък</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Промените по имена и изображения на пощенски списъци са приложими само за това устройство.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -466,7 +455,7 @@
     <string name="incoming_messages">Входящи съобщения</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Изходящи съобщения</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Съхранение върху %1$s</string>
     <string name="connectivity">Свързаност</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -809,15 +798,11 @@
     <string name="qrshow_join_contact_hint">Сканирайте, за да чатите с %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Няма връзка към Интернет, не може да бъде извършена настройка чрез QR код.</string>
     <string name="qraccount_ask_create_and_login">Да бъде ли създаден нов адрес за електронна поща на \"%1$s\" и да бъде ли осъществено влизане там?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Да бъде ли създаден нов адрес за електронна поща в \"%1$s\" и да бъде ли осъществено влизане там?\n\nВашият съществуващ акаунт няма да бъде изтрит. Използвайте опцията \"Превключване към друг акаунт\", за да превключвате между Вашите акаунти.</string>
     <string name="set_name_and_avatar_explain">Задайте име, което Вашите контакти ще разпознават.  Можете също да установите изображение за профил.</string>
     <string name="please_enter_name">Моля, въведете име.</string>
     <string name="qraccount_qr_code_cannot_be_used">Не може да бъде създаден нов акаунт със сканирания QR код.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Желаете ли да влезете в \"%1$s\"?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">Желаете ли да влезете в \"%1$s\"?\n\nСъщестуващият Ви акаунт няма да бъде изтрит. Превключвайте между акаунтите си чрез \"Превключване към друг акаунт\".</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s Ви покани да се присъедините към тази група.\n\nИзчаква се устройството на %2$s да отговори…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->

@@ -81,10 +81,6 @@
     <string name="always_load_remote_images">Last alltid eksterne bilder</string>
     <string name="once">Én gang</string>
     <string name="show_warning">Vis advarsel</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Vis passord</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Skjul passord</string>
     <string name="not_now">Ikke nå</string>
     <string name="never">Aldri</string>
     <string name="one_moment">Et øyeblikk…</string>
@@ -409,11 +405,6 @@
         <item quantity="one">Slett %d melding fra alle dine enheter?</item>
         <item quantity="other">Slett %d meldinger fra alle dine enheter?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Slett %d melding?</item>
-        <item quantity="other">Slett %d meldinger?</item>
-    </plurals>
     <string name="ask_forward">Videresend meldinger til %1$s?</string>
     <string name="ask_forward_multiple">Videresend meldinger til %1$d chatter?</string>
     <string name="ask_export_attachment">Eksporter vedlegg? Eksport av vedlegg vil gi andre apper på din enhet tilgang til dem\n\nFortsett?</string>
@@ -483,8 +474,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">E-postliste</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Endringer av e-postlistens navn og bilde gjelder bare for denne enheten.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->

@@ -66,10 +66,6 @@
     <string name="always_load_remote_images">Läs alltid in fjärrbilder</string>
     <string name="once">en gång</string>
     <string name="show_warning">Visa varning</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Visa lösenord</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Dölj lösenord</string>
     <string name="not_now">Inte nu</string>
     <string name="never">Aldrig</string>
     <string name="one_moment">Ett ögonblick...</string>
@@ -314,11 +310,6 @@
         <item quantity="one">Vill du ta bort %d meddelande?</item>
         <item quantity="other">Vill du ta bort %d meddelanden?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Vill du ta bort %d meddelande?</item>
-        <item quantity="other">Vill du ta bort %d meddelanden?</item>
-    </plurals>
     <string name="ask_forward">Vidarebefordra meddelanden till %1$s?</string>
     <string name="ask_forward_multiple">Vill du vidarebefordra meddelanden till %1$d chattar?</string>
     <string name="ask_export_attachment">Exportera bilagor? Exporterade bilagor tillåter andra appar på din enhet att komma åt dem.\n\nVill du fortsätta?</string>
@@ -383,8 +374,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Mejllista</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Ändringar av namn och på e-postlistan bild, gäller endast för den här enheten.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -476,7 +465,7 @@
     <string name="incoming_messages">Inkommande meddelanden</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Utgående meddelanden</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Lagring på %1$s</string>
     <string name="connectivity">Anslutning</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -823,15 +812,11 @@
     <string name="qrshow_join_contact_hint">Skanna det här för att få kontakt med %1$s.</string>
     <string name="qrshow_join_contact_no_connection_toast">Ingen internetanslutning, kan inte utföra QR-kod-inställning.</string>
     <string name="qraccount_ask_create_and_login">Skapa ny e-postadress på \"%1$s\" och logga in där?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Vill du skapa en ny e-postadress på \"%1$s\" och logga in där?\n\nDitt befintliga konto kommer inte att tas bort. Använd \"Byt konto\" för att växla mellan dina konton.</string>
     <string name="set_name_and_avatar_explain">Ange ett namn som dina kontakter kommer att känna igen. Du kan också ange en profilbild.</string>
     <string name="please_enter_name">Ange ett namn.</string>
     <string name="qraccount_qr_code_cannot_be_used">Den skannade QR-koden kan inte användas för att konfigurera ett nytt konto.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Vill du logga in på \"%1$s\"?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">Vill du logga in på \"%1$s\"?\n\nDin befintliga profil kommer inte att raderas. Använd alternativet \"Byt profil\" för att växla mellan dina profiler.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s bjöd in dig att gå med i den här gruppen.\n\nVäntar på att enheten hos %2$s ska svara...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->

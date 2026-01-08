@@ -65,10 +65,6 @@
     <string name="always_load_remote_images">Luôn tải hình ảnh từ xa</string>
     <string name="once">Một lần</string>
     <string name="show_warning">Hiển thị cảnh báo</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Hiển thị mật khẩu</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Ẩn mật khẩu</string>
     <string name="not_now">Không phải bây giờ</string>
     <string name="never">Không bao giờ</string>
     <string name="one_moment">Một lát…</string>
@@ -295,10 +291,6 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">Xóa %d tin nhắn?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="other">Xóa %d tin nhắn?</item>
-    </plurals>
     <string name="ask_forward">Chuyển tiếp tin nhắn tới %1$s?</string>
     <string name="ask_forward_multiple">Chuyển tiếp tin nhắn tới %1$d cuộc trò chuyện?</string>
     <string name="ask_export_attachment">Xuất tệp đính kèm sẽ cho phép các ứng dụng khác trên thiết bị của bạn truy cập chúng.\n\nTiếp tục?</string>
@@ -360,8 +352,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Danh sách gửi thư</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Những thay đổi về tên và hình ảnh danh sách gửi thư chỉ áp dụng trên thiết bị này.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -453,7 +443,7 @@
     <string name="incoming_messages">Tin nhắn đến</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Tin nhắn đi</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Lưu trữ trên %1$s</string>
     <string name="connectivity">Kết nối</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -755,13 +745,9 @@
     <string name="qrshow_join_contact_hint">Quét để trò chuyện với %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Không có kết nối internet, không thể thực hiện thiết lập mã QR.</string>
     <string name="qraccount_ask_create_and_login">Tạo địa chỉ email mới trên \"%1$s\" và đăng nhập vào đó?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Tạo địa chỉ email mới trên \"%1$s\" và đăng nhập vào đó?\n\nTài khoản hiện tại của bạn sẽ không bị xóa. Sử dụng mục \"Chuyển tài khoản\" để chuyển đổi giữa các tài khoản của bạn.</string>
     <string name="qraccount_qr_code_cannot_be_used">Mã QR được quét không thể được sử dụng để thiết lập tài khoản mới.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Đăng nhập vào \"%1$s\"?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">Đăng nhập vào \"%1$s\"?\n\nTài khoản hiện tại của bạn sẽ không bị xóa. Sử dụng mục \"Chuyển tài khoản\" để chuyển đổi giữa các tài khoản của bạn.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s đã mời bạn tham gia nhóm này.\n\nĐang chờ thiết bị của %2$s trả lời…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
