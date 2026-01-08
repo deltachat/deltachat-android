@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.35.0
+2026-01
 
 * Protect profile deletion and relays management with system lock/pin
 * Fix: Remove address from profile switcher
