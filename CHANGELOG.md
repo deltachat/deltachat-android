@@ -4,6 +4,7 @@
 
 * Don't notify notification-to-all from in-chat apps if the chat is muted
 * Allow to see inbox quota for all relays in connectivity screen
+* Truncate file names in the middle, not at the end; important information are more often at the end
 * Update to core 2.36.0
 
 ## v2.35.0

@@ -37,9 +37,8 @@
                           android:layout_height="wrap_content"
                           style="@style/Signal.Text.Body"
                           android:singleLine="true"
-                          android:maxLines="1"
                           android:clickable="false"
-                          android:ellipsize="end"
+                          android:ellipsize="middle"
                           android:textColor="@color/document_icon_text"
                           tools:text="The-Anarchist-Tension-by-Alfredo-Bonanno.pdf"/>
 
