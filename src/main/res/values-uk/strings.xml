@@ -81,10 +81,6 @@
     <string name="always_load_remote_images">Завжди завантажувати віддалені зображення</string>
     <string name="once">Один раз</string>
     <string name="show_warning">Показати попередження</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Показати пароль</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Приховати пароль</string>
     <string name="not_now">Не зараз</string>
     <string name="never">Ніколи</string>
     <string name="one_moment">Зачекайте, будь ласка...</string>
@@ -437,13 +433,6 @@
         <item quantity="many">¿Видалити %d повідомлень на всіх Ваших пристроях?</item>
         <item quantity="other">¿Видалити %d повідомлень на всіх Ваших пристроях?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Видалити %d повідомлення?</item>
-        <item quantity="few">Видалити %d повідомлення?</item>
-        <item quantity="many">Видалити %d повідомлень?</item>
-        <item quantity="other">Видалити %d повідомлень?</item>
-    </plurals>
     <string name="ask_forward">Переслати повідомлення %1$s?</string>
     <string name="ask_forward_multiple">Переслати повідомлення в %1$d?</string>
     <string name="ask_export_attachment">Якщо експортувати вкладені файли, інші програми на вашому пристрої отримають до них доступ.\n\nПродовжити?</string>
@@ -519,8 +508,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Список адресатів</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Зміни в назві списку розсилки та зображенні стосуються лише цього пристрою.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -623,7 +610,7 @@
     <string name="incoming_messages">Вхідні повідомлення</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Вихідні повідомлення</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Сховище на %1$s</string>
     <string name="connectivity">Підключення</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -862,7 +849,6 @@
     <string name="send_stats_to_devs">Надсилати статистику розробникам Delta Chat</string>
     <string name="stats_msg_body">У вкладенні міститься анонімна статистика використання, яка допоможе нам покращити Delta Chat. Дякуємо!</string>
 
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Результати пошуку</string>
     <string name="emoji_not_found">Емодзі не знайдено</string>
@@ -1031,15 +1017,11 @@
     <string name="qrshow_join_contact_hint">Відскануйте код, щоб спілкуватись з %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Відсутнє інтернет з\'єднання, не вдалося налаштувати QR-код.</string>
     <string name="qraccount_ask_create_and_login">Створити новий профіль на \"%1$s\" і увійти в нього?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Створити новий профіль на \"%1$s\" і увійти в нього?\n\nВаш поточний профіль не буде видалено. Використовуйте \"Перемкнути профіль\".</string>
     <string name="set_name_and_avatar_explain">Встановіть ім’я, яке розпізнають ваші контакти. Ви також можете встановити зображення профілю.</string>
     <string name="please_enter_name">Будь ласка, введіть ім\'я.</string>
     <string name="qraccount_qr_code_cannot_be_used">Вісканований QR-код не може бути використаний для створення нового профілю.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Увійти до \"%1$s\"?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">Увійти до \"%1$s\"?\n\nВаш профіль, що вже існує, не буде видалено. Використовуйте \"Перемкнути профіль\" для переключання між профілями.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s запросив (-ла) Вас приєднатися до цієї групи.\n\nОчікуємо на відповідь від пристрою %2$s…</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->

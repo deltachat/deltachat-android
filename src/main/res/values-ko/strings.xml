@@ -56,10 +56,6 @@
     <string name="load_remote_content_ask">원격 이미지는 당신을 추적하기 위해 사용될 수 있습니다.\n\n이 설정은 폰트와 다른 콘텐츠를 불러오는 것도 허용합니다. 만약 비활성화되어도, 내장 또는 캐시된 이미지를 볼 수 있습니다.\n\n원격 이미지를 불러올까요?</string>
     <string name="always">항상</string>
     <string name="once">한 번만</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">비밀번호 보이기</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">비밀번호 숨기기</string>
     <string name="not_now">나중에</string>
     <string name="never">절대</string>
     <string name="one_moment">잠시만 기다려 주세요…</string>
@@ -271,10 +267,6 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">%d개의 메시지를 삭제하시겠습니까?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="other">%d개의 메시지를 삭제하시겠습니까?</item>
-    </plurals>
     <string name="ask_forward">%1$s님에게 메시지를 전달할까요?</string>
     <string name="ask_forward_multiple">%1$d 채팅으로 메시지를 전달하시겠습니까?</string>
     <string name="ask_export_attachment">첨부 파일을 내보내면 단말기의 다른 앱에서 해당 첨부 파일에 액세스할 수 있습니다.\n\n계속하시겠습니까?</string>
@@ -333,8 +325,6 @@
     <string name="attachment_failed_to_load">첨부 파일을 불러오지 못했습니다.</string>
     <!-- mailing lists -->
     <string name="mailing_list">메일 목록</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">메일링 목록 이름 및 이미지의 변경 사항은 이 장치에만 적용됩니다.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -392,7 +382,7 @@
     <string name="incoming_messages">수신 메시지</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">발신 메시지</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">%1$s에 저장됨</string>
     <string name="connectivity">연결</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -667,13 +657,9 @@
     <string name="qrshow_join_contact_hint">%1$s과 채팅을 하려면 스캔하시오</string>
     <string name="qrshow_join_contact_no_connection_toast">인터넷에 연결되어 있지 않아 QR 코드 설정을 수행할 수 없습니다.</string>
     <string name="qraccount_ask_create_and_login">\"%1$s\"에서 새 이메일 주소를 만들고 로그인하시겠습니까?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">\"%1$s\"에서 새 이메일 주소를 만들고 로그인하시겠습니까?\n\n기존 계정은 삭제되지 않습니다. 계정 전환 항목을 사용하여 계정 간을 전환합니다.</string>
     <string name="qraccount_qr_code_cannot_be_used">스캔한 QR 코드를 사용하여 새 계정을 설정할 수 없습니다.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">\"%1$s\"에 로그인하시겠습니까?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">\"%1$s\"에 로그인하시겠습니까?\n\n기존 계정은 삭제되지 않습니다. 계정 전환 항목을 사용하여 계정 간을 전환합니다.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s이 그룹에 가입하도록 초대했습니다.\n\n%2$s의 장치가 응답하기를 기다리는 중입니다...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->

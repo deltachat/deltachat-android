@@ -81,10 +81,6 @@
     <string name="always_load_remote_images">Vždy načítat vzdálené obrázky</string>
     <string name="once">Jednou</string>
     <string name="show_warning">Zobrazovat varování</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Zobrazit heslo</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Skrýt heslo</string>
     <string name="not_now">Teď ne</string>
     <string name="never">Nikdy</string>
     <string name="one_moment">Okamžik...</string>
@@ -437,13 +433,6 @@
         <item quantity="many">Smazat %d zpráv ze všech Vašich zařízení?</item>
         <item quantity="other">Smazat %d zpráv ze všech vašich zařízení?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Smazat %d zprávu?</item>
-        <item quantity="few">Smazat %d zprávy?</item>
-        <item quantity="many">Smazat %d zpráv?</item>
-        <item quantity="other">Smazat %d zpráv?</item>
-    </plurals>
     <string name="ask_forward">Přejete si přeposlat zprávy do chatu %1$s?</string>
     <string name="ask_forward_multiple">Přejete si přeposlat zprávy do %1$d chatů?</string>
     <string name="ask_export_attachment">Uložením příloh je zpřístupníte ostatním aplikacím na tomto zařízení.\n\nPřejete si pokračovat?</string>
@@ -519,8 +508,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">E-mailový seznam</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Změny názvu a obrázku e-mailového seznamu se projeví pouze na tomto zařízení.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -623,7 +610,7 @@
     <string name="incoming_messages">Příchozí zprávy</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Odchozí zprávy</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Úložiště na %1$s</string>
     <string name="connectivity">Připojení</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -862,7 +849,6 @@
     <string name="send_stats_to_devs">Odeslat statistiky vývojářům Delta Chatu</string>
     <string name="stats_msg_body">Příloha obsahuje anonymní statistiky používání, které nám pomáhají zlepšovat službu Delta Chat. Děkujeme vám!</string>
 
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Výsledky hledání</string>
     <string name="emoji_not_found">Emoji nenalezeno</string>
@@ -1031,15 +1017,11 @@
     <string name="qrshow_join_contact_hint">Naskenujte k navázání spojení s uživatelem %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Žádné připojení k Internetu. Zprovoznění QR kódem nelze provést.</string>
     <string name="qraccount_ask_create_and_login">Přejete si vytvořit nový profil na \"%1$s\" a připojit se k němu?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Přejete si vytvořit nový profil na \"%1$s\" a přihlásit se k němu?\n\nVáš stávající profil nebude smazán. K přepínání mezi profily můžete využít volbu \"Přepnout profil\".</string>
     <string name="set_name_and_avatar_explain">Nastavte si jméno, podle kterého vás ostatní poznají. Můžete si také nastavit profilový obrázek.</string>
     <string name="please_enter_name">Prosím, zadejte jméno.</string>
     <string name="qraccount_qr_code_cannot_be_used">Tento QR kód neumožňuje nastavení nového účtu.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Přejete si přihlásit k \"%1$s\"?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">Přejete si přihlásit k \"%1$s\"?\n\nVáš stávající profil nebude smazán. K přepínání mezi profily můžete využít volbu \"Přepnout profil\".</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">Uživatel %1$s vás pozval do této skupiny.\n\nČekání na odpověď od zařízení uživatele %2$s...</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->

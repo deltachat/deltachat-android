@@ -81,10 +81,6 @@
     <string name="always_load_remote_images">總是載入遠端圖片</string>
     <string name="once">僅一次</string>
     <string name="show_warning">顯示警告</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">顯示密碼</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">隱藏密碼</string>
     <string name="not_now">現在不要</string>
     <string name="never">永遠不要</string>
     <string name="one_moment">請稍候⋯</string>
@@ -354,10 +350,6 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">是否刪除所有裝置上的%d條訊息？</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="other">刪除%d則訊息？</item>
-    </plurals>
     <string name="ask_forward">轉發訊息給%1$s？</string>
     <string name="ask_forward_multiple">轉發訊息到%1$d個聊天？</string>
     <string name="ask_export_attachment">要匯出附件嗎？匯出的附件可以用裝置上的其它應用程式打開。\n\n要繼續嗎？</string>
@@ -420,8 +412,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">郵寄列表</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">郵寄列表名稱和圖片的變更僅適用於此裝置。</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -524,7 +514,7 @@
     <string name="incoming_messages">傳入訊息</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">傳出訊息</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">%1$s上的存儲空間</string>
     <string name="connectivity">連接狀態</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -897,15 +887,11 @@
     <string name="qrshow_join_contact_hint">掃描 QRCode 以新增 %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">沒有互聯網連接，無法執行QR碼設置。</string>
     <string name="qraccount_ask_create_and_login">在 「%1$s」 上建立賬戶並登入？</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">在「%1$s」上建立新賬戶並登入？\n\n您現有的賬戶不會被刪除。使用「切換賬戶」來在您的賬戶之間切換。</string>
     <string name="set_name_and_avatar_explain">設置聯絡人可以識別的名稱。您還可以設置大頭貼。</string>
     <string name="please_enter_name">請輸入名稱。</string>
     <string name="qraccount_qr_code_cannot_be_used">掃描的 QR 碼不能用於建立新賬戶。</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">登入「%1$s」？</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">登入「%1$s」？\n\n您現有的賬戶不會被刪除。使用「切換賬戶」項在您的賬戶之間切換。</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s邀請您加入此群組。\n\n正在等待%2$s裝置的回覆...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->

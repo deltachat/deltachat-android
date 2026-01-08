@@ -71,10 +71,6 @@
     <string name="always_load_remote_images">Увек учитај слике са сервера</string>
     <string name="once">Само једном</string>
     <string name="show_warning">Прикажи упозорење</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Прикажи лозинку</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Сакри лозинку</string>
     <string name="not_now">Не сада</string>
     <string name="never">Никад</string>
     <string name="one_moment">Тренутак...</string>
@@ -328,12 +324,6 @@
         <item quantity="few">Да ли желите да избришите %d поруке?</item>
         <item quantity="other">Да ли желите да избришите %d поруке?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Да ли желите да избришите %d поруку?</item>
-        <item quantity="few">Да ли желите да избришите %d поруке?</item>
-        <item quantity="other">Да ли желите да избришите %d поруке?</item>
-    </plurals>
     <string name="ask_forward">Да ли желите да проследите поруке %1$s?</string>
     <string name="ask_forward_multiple">Да ли желите да проследим поруке за %1$dћаскања?</string>
     <string name="ask_export_attachment">Извоз прилога ће омогућити другим апликацијама на вашем уређају да им приступе.\n\nДа ли желите ли да наставите?</string>
@@ -403,8 +393,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Списак имејл адреса</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Промене имена и слике са листе за слање примењују се само на овом уређају.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -465,7 +453,7 @@
     <string name="incoming_messages">Долазеће поруке</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Одлазеће поруке</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Складиштење на %1$s</string>
     <string name="connectivity">Повезаност</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -757,13 +745,9 @@
     <string name="qrshow_join_contact_hint">Очитај да ћаскате са %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Нисте повезани на интернет, није могуће подесити бар-кôд.</string>
     <string name="qraccount_ask_create_and_login">Направите нову е-адресу на „%1$s“ и приступите јој тамо?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Направите нову е-адресу на „%1$s“ и приступите јој тамо?\n\nВаш постојећи налог неће бити избрисан. Користите „Промени налог“ да пређете са једног налога на други.</string>
     <string name="qraccount_qr_code_cannot_be_used">Очитани бар-кôд не може бити коришћен да подеси нови налог.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Пријави се у „%1$s“?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">Пријави се у „%1$s“? Ваш постојећи налог неће бити избрисан. Користите „Промени налог“ опцију да прелазите са једног на други налог.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$sвас је позвао да се придружите групи.\n\nЧекамо да уређај од %2$sодговори...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->

@@ -75,10 +75,6 @@
     <string name="always_load_remote_images">Ĉiam ŝargu forajn bildojn</string>
     <string name="once">Unufoje</string>
     <string name="show_warning">Afiŝu averton</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Montri pasvorton</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Kaŝi pasvorton</string>
     <string name="not_now">Ne nun</string>
     <string name="never">Neniam</string>
     <string name="one_moment">Unu momenton…</string>

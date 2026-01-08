@@ -60,10 +60,6 @@
     <string name="always">Selalu</string>
     <string name="once">Sekali</string>
     <string name="show_warning">Tampilkan Peringatan</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Tunjukkan kata kunci</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Sembunyikan kata kunci</string>
     <string name="not_now">Tidak sekarang</string>
     <string name="never">Tidak pernah</string>
     <string name="one_moment">Sebentar...</string>
@@ -274,10 +270,6 @@
     <string name="file_saved_to">Berkas disimpan ke \"%1$s\".</string>
 
     <plurals name="ask_delete_messages">
-        <item quantity="other">Menghapus pesan %d?</item>
-    </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
         <item quantity="other">Menghapus pesan %d?</item>
     </plurals>
     <string name="ask_forward">Teruskan pesan ke %1$s?</string>
@@ -533,8 +525,6 @@
     <string name="qrshow_join_contact_hint">Pindai ini untuk mengatur kontak dengan%1$s.</string>
     <string name="qrshow_join_contact_no_connection_toast">Tidak ada koneksi internet, tidak bisa menjalankan kode pengaturan QR.</string>
     <string name="qraccount_ask_create_and_login">Buat alamat email baru di \"%1$s\" dan login di sana?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Buat alamat email baru di\"%1$s\" dan masuk ke sana?\n\nAkun yang sudah ada tidak akan di hapus. Gunakankan item \"Ganti akun\" untuk mengganti akun anda</string>
     <string name="qraccount_qr_code_cannot_be_used">Kode QR yang dipindai tidak dapat digunakan untuk mengatur akun baru.</string>
     <string name="contact_verified">%1$sdiverifikasi.</string>
     <!-- notifications  -->

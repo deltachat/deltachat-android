@@ -53,10 +53,6 @@
     <string name="load_remote_content_ask">リモート画像で追跡ができる。\n\nこの設定はフォントや他のコンテツを読み込むことも許可する。無効にしても埋め込まれた画像やキャッシュされた画像を表示されます。\n\nリモート画像を読み込む？</string>
     <string name="always">常に</string>
     <string name="once">一回のみ</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">パスワードを表示する</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">パスワードを非表示する</string>
     <string name="not_now">今はしない</string>
     <string name="never">しない</string>
     <string name="one_moment">お待ち下さい…</string>
@@ -294,6 +290,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">メーリングリスト</string>
+
     <string name="show_location_traces">トレースを表示する</string>
     <string name="add_poi">指定位置を送る</string>
 

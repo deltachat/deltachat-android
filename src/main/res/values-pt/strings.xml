@@ -64,10 +64,6 @@
     <string name="hide">Ocultar</string>
     <string name="activate">Activar</string>
     <string name="always">Sempre</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Mostrar palavra-passe</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Ocultar palavra-passe</string>
     <string name="not_now">Agora não</string>
     <string name="never">Nunca</string>
     <string name="one_moment">Um momento...</string>
@@ -240,12 +236,6 @@
         <item quantity="other">Enviar %d ficheiros para %s?</item>
     </plurals>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Apagar %d mensagem?</item>
-        <item quantity="many">Apagar %d mensagens?</item>
-        <item quantity="other">Apagar %d mensagens?</item>
-    </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
         <item quantity="one">Apagar %d mensagem?</item>
         <item quantity="many">Apagar %d mensagens?</item>
         <item quantity="other">Apagar %d mensagens?</item>

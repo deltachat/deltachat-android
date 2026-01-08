@@ -40,10 +40,6 @@
     <string name="profile">Profilu</string>
     <string name="main_menu">Menù printzipale</string>
     <string name="start_chat">Faghe incumintzare una tzarrada</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Ammustra sa crae de intrada</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Cua sa crae de intrada</string>
     <string name="not_now">Como nono</string>
     <string name="never">Mai</string>
     <string name="one_moment">Unu momentu...</string>

@@ -62,10 +62,6 @@
     <string name="always_load_remote_images">Încărcați întotdeauna imagini la distanță</string>
     <string name="once">Odată ce</string>
     <string name="show_warning">Afișați avertismentul</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Afișați parola</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Ascundeți parola</string>
     <string name="not_now">Nu acum</string>
     <string name="never">Niciodata</string>
     <string name="one_moment">Un moment...</string>
@@ -299,12 +295,6 @@
         <item quantity="few">Ștergeți %d mesaje?</item>
         <item quantity="other">Ștergeți %d de mesaje?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Ștergeți %d mesaj?</item>
-        <item quantity="few">Ștergeți %d mesaje?</item>
-        <item quantity="other">Ștergeți %d de mesaje?</item>
-    </plurals>
     <string name="ask_forward">Transmiteți mesajele către %1$s?</string>
     <string name="ask_forward_multiple">Transmiteți mesajele către %1$d chat-uri?</string>
     <string name="ask_export_attachment">Exportul atașamentelor va permite altor aplicații de pe dispozitivul dumneavoastră să le acceseze them.\n\nContinue?</string>
@@ -372,8 +362,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Lista de corespondență</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Modificările aduse numelui și imaginii listei de corespondență se aplică numai pe acest dispozitiv.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -454,7 +442,7 @@
     <string name="incoming_messages">Mesaje primite</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mesaje de ieșire</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Depozitarea pe %1$s</string>
     <string name="connectivity">Conectivitate</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
