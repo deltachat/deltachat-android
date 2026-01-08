@@ -81,10 +81,6 @@
     <string name="always_load_remote_images">Cargar siempre imágenes remotas</string>
     <string name="once">Una vez</string>
     <string name="show_warning">Mostrar advertencia</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Mostrar contraseña</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Ocultar contraseña</string>
     <string name="not_now">Ahora no</string>
     <string name="never">Nunca</string>
     <string name="one_moment">Un momento…</string>
@@ -423,12 +419,6 @@
         <item quantity="many">¿Eliminar %d mensajes de todos tus dispositivos?</item>
         <item quantity="other">¿Eliminar %d mensajes de todos tus dispositivos?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">¿Eliminar %d mensaje?</item>
-        <item quantity="many">¿Eliminar %d mensajes?</item>
-        <item quantity="other">¿Eliminar %d mensajes?</item>
-    </plurals>
     <string name="ask_forward">¿Reenviar mensajes a %1$s?</string>
     <string name="ask_forward_multiple">¿Reenviar mensajes a %1$d chats?</string>
     <string name="ask_export_attachment">Los adjuntos exportados serán accesibles desde cualquier otra aplicación en su dispositivo. ¿Continuar?</string>
@@ -501,8 +491,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Lista de correo</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Los cambios en el nombre y la imagen de la lista de correo solo se aplican a este dispositivo.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -605,7 +593,7 @@
     <string name="incoming_messages">Mensajes entrantes</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mensajes salientes</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Almacenamiento en %1$s</string>
     <string name="connectivity">Conectividad</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -1010,15 +998,11 @@ Desactiva este ajuste solo si has eliminado este perfil de todos tus demás disp
     <string name="qrshow_join_contact_hint">Escanea esto para configurar un contacto con %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">No hay conexión a Internet, no se puede configurar con código QR.</string>
     <string name="qraccount_ask_create_and_login">¿Crear una nueva dirección de correo en \"%1$s\" e ingresar allí?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">¿Crear una nueva dirección de correo en \"%1$s\" e ingresar ahí?\n\nTu cuenta existente no será eliminada. Usar el ítem \"Cambiar cuenta\" para cambiar entre tus cuentas.</string>
     <string name="set_name_and_avatar_explain">Establece un nombre que tus contactos puedan reconocer. También puedes establecer una foto de perfil.</string>
     <string name="please_enter_name">Por favor, introduce un nombre.</string>
     <string name="qraccount_qr_code_cannot_be_used">El código QR escaneado no puede ser usado para configurar una nueva cuenta.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">¿Iniciar sesión en \"%1$s\"?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">¿Iniciar sesión en \"%1$s\"?\n\nTu cuenta existente no será eliminada. Usa la opción \"Cambiar cuenta\" para cambiar entre tus cuentas.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s te invitó a unirte a este grupo.\n\nEsperando que el dispositivo de %2$s responda…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->

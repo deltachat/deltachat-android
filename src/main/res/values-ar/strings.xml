@@ -28,10 +28,6 @@
     <string name="media">الوسائط</string>
     <string name="main_menu">القائمة الرئيسية</string>
     <string name="start_chat">ابدأ الدردشة</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">اظهر الكلمة السرية</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">أخفِ الكلمة السرية</string>
     <string name="not_now">ليس الآن</string>
     <string name="never">أبدا</string>
     <string name="one_moment">لحظة…</string>

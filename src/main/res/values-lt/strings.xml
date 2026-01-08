@@ -64,10 +64,6 @@
     <string name="always_load_remote_images">Visada įkelti nuotolinius paveikslus</string>
     <string name="once">Vieną kartą</string>
     <string name="show_warning">Rodyti įspėjimą</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Rodyti slaptažodį</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Slėpti slaptažodį</string>
     <string name="not_now">Ne dabar</string>
     <string name="never">Niekada</string>
     <string name="one_moment">Minutėlę…</string>
@@ -318,13 +314,6 @@
         <item quantity="few">Ištrinti %d žinutes visuose jūsų įrenginiuose?</item>
         <item quantity="many">Ištrinti %d žinučių visuose jūsų įrenginiuose?</item>
         <item quantity="other">Ištrinti %d žinutę visuose jūsų įrenginiuose?</item>
-    </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Ištrinti %d žinutę?</item>
-        <item quantity="few">Ištrinti %d žinutes?</item>
-        <item quantity="many">Ištrinti %d žinučių?</item>
-        <item quantity="other">Ištrinti %d žinutę?</item>
     </plurals>
     <string name="ask_forward">Persiųsti žinutes %1$s?</string>
     <string name="ask_export_attachment">Eksportuoti priedą? Priedų eksportavimas leis bet kurioms kitoms programėlėms jūsų įrenginyje turėti prieigą prie šių priedų.\n\nTęsti?</string>

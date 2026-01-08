@@ -81,10 +81,6 @@
     <string name="always_load_remote_images">Externe afbeeldingen altijd laden</string>
     <string name="once">Eenmalig</string>
     <string name="show_warning">Waarschuwing tonen</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Wachtwoord tonen</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Wachtwoord verbergen</string>
     <string name="not_now">Niet nu</string>
     <string name="never">Nooit</string>
     <string name="one_moment">Even geduld…</string>
@@ -409,11 +405,6 @@
         <item quantity="one">Wil je %d bericht verwijderen?</item>
         <item quantity="other">Wil je %d berichten verwijderen?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Wil je %d bericht verwijderen?</item>
-        <item quantity="other">Wil je %d berichten verwijderen?</item>
-    </plurals>
     <string name="ask_forward">Wil je de berichten doorsturen aan %1$s?</string>
     <string name="ask_forward_multiple">Wil je de berichten doorsturen naar %1$d gesprekken?</string>
     <string name="ask_export_attachment">Als je de bijlage exporteert, geef je andere apps op je apparaat toegang om hem uit te lezen.\n\nWil je doorgaan?</string>
@@ -483,8 +474,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Mailinglijst</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Wijzigingen aan de mailinglijstnaam en -afbeelding worden alleen op dit apparaat getoond.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -587,7 +576,7 @@
     <string name="incoming_messages">Inkomende berichten</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Uitgaande berichten</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Opslag op %1$s</string>
     <string name="connectivity">Verbindingen</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -824,8 +813,13 @@
     <string name="disable_imap_idle">IMAP IDLE uitschakelen</string>
     <string name="disable_imap_idle_explain">Maak geen gebruik van IMAP IDLE, zelfs niet als de server het ondersteunt. Schakel deze optie in om het ophalen van berichten te vertragen. Let op: gebruik deze optie alleen voor testdoeleinden.</string>
     <string name="send_stats_to_devs">Statistieken delen met Delta Chat-ontwikkelaars</string>
+    <string name="stats_device_message">Wil je helpen Delta Chat te verbeteren en voor onderzoeksdoeleinden iedere week volledig anonieme, automatische gebruiksstatistieken in te sturen?\n\n👉 Druk dan hier… 👈</string>
+    <string name="stats_confirmation_dialog">Wil je helpen Delta Chat te verbeteren en voor onderzoeksdoeleinden iedere week volledig anonieme, automatische gebruiksstatistieken in te sturen?</string>
+    <string name="stats_thanks">Hartelijk dank! Je kunt deze instelling te allen tijde aanpassen via ‘Instellingen → Geavanceerd’.\n\nHeb je nog 5 minuutjes om deel te nemen aan een wetenschappelijk onderzoek aangaande beveiliging van Delta Chat?</string>
+    <string name="stats_disable_dialog">Het insturen van statistieken is al ingeschakeld.\n\nWil je dit uitschakelen?</string>
+    <string name="disable">Uitschakelen</string>
+    <string name="stats_keep_sending">Niet uitschakelen</string>
     <string name="stats_msg_body">De bijlage bevat anonieme gebruiksstatistieken die ons helpen Delta Chat te verbeteren. Bij voorbaat dank!</string>
-
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Zoekresultaten</string>
@@ -995,15 +989,11 @@
     <string name="qrshow_join_contact_hint">Scan dit om een gesprek te beginnen met %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Geen internetverbinding; kan QR-codes niet instellen.</string>
     <string name="qraccount_ask_create_and_login">Wil je een nieuw e-mailadres aanmaken op ‘%1$s’ en daarmee inloggen?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Wil je een nieuw e-mailadres aanmaken op ‘%1$s’ en daarmee inloggen?\n\nJe reeds aanwezige account wordt niet verwijderd. Druk op de knop ‘Ander account kiezen’ om tussen accounts te schakelen.</string>
     <string name="set_name_and_avatar_explain">Kies een naam die herkenbaar is voor je contactpersonen en, desgewenst, een profielfoto.</string>
     <string name="please_enter_name">Voer een naam in.</string>
     <string name="qraccount_qr_code_cannot_be_used">De gescande QR-code kan niet worden gebruikt om een nieuw account in te stellen.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Inloggen als ‘%1$s’?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">Wil je inloggen als ‘%1$s’?\n\nJe reeds aanwezige account wordt niet verwijderd. Druk op de knop ‘Ander account kiezen’ om tussen accounts te schakelen.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s heeft je uitgenodigd voor deze groep.\n\nEr wordt gewacht op antwoord van het apparaat van %2$s…</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->

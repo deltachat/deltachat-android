@@ -81,10 +81,6 @@
     <string name="always_load_remote_images">Descargar sempre imaxes remotas</string>
     <string name="once">Unha vez</string>
     <string name="show_warning">Mostrar aviso</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Mostrar contrasinal</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Agochar contrasinal</string>
     <string name="not_now">Agora non</string>
     <string name="never">Nunca</string>
     <string name="one_moment">Un momento…</string>
@@ -376,11 +372,6 @@
         <item quantity="one">Eliminar %d mensaxe en todos os teus dispositivos?</item>
         <item quantity="other">Eliminar %d mensaxes en todos os teus dispositivos?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Borrar %d mensaxe?</item>
-        <item quantity="other">Borrar %d mensaxes?</item>
-    </plurals>
     <string name="ask_forward">Reenviar mensaxes a %1$s?</string>
     <string name="ask_forward_multiple">¿Reenviar mensaxes a %1$d conversas?</string>
     <string name="ask_export_attachment">Exportar anexo? Ao exportar anexos outras aplicacións no dispositivo terán acceso a eles.\n\nGardar?</string>
@@ -449,8 +440,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Lista de correo</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Cambios no nome da lista de correo e imaxe só se aplican neste dispositivo.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -553,7 +542,7 @@
     <string name="incoming_messages">Mensaxes entrantes</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mensaxes saíntes</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Almacenar en %1$s</string>
     <string name="connectivity">Conectividade</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -904,8 +893,6 @@
     <string name="qrshow_join_contact_hint">Escanea esto para conectar con %1$s-</string>
     <string name="qrshow_join_contact_no_connection_toast">Sen conexión a internet, non se pode facer o axuste por código QR</string>
     <string name="qraccount_ask_create_and_login">Crear un novo enderezo de correo en \"%1$s\" e acceder ali?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Crear un novo enderezo de email en \"%1$s\" e acceder?\n\nNon se eliminará a conta actual. Usa \"Cambiar de conta\" para cambiar entre as túas contas.</string>
     <string name="set_name_and_avatar_explain">Define un nome recoñecíbel polos teus contactos. Tamén podes definir unha imaxe de perfil.</string>
     <string name="please_enter_name">Por favor introduce un nome.</string>
     <string name="qraccount_qr_code_cannot_be_used">O código QR escaneado non se pode utilizar para crear unha nova conta.</string>

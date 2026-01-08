@@ -81,10 +81,6 @@
     <string name="always_load_remote_images">Bilder immer nachladen</string>
     <string name="once">Einmal</string>
     <string name="show_warning">Warnung anzeigen</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Passwort anzeigen</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Passwort verstecken</string>
     <string name="not_now">Nicht jetzt</string>
     <string name="never">Nie</string>
     <string name="one_moment">Einen Moment …</string>
@@ -409,11 +405,6 @@
         <item quantity="one">%d Nachricht löschen?</item>
         <item quantity="other">%d Nachrichten löschen?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">%d Nachricht löschen?</item>
-        <item quantity="other">%d Nachrichten löschen?</item>
-    </plurals>
     <string name="ask_forward">Nachricht weiterleiten an %1$s?</string>
     <string name="ask_forward_multiple">Nachrichten an %1$d Chats weiterleiten?</string>
     <string name="ask_export_attachment">Das Exportieren von Anhängen ermöglicht es allen anderen Anwendungen auf deinem Gerät, auf diese zuzugreifen.\n\nFortfahren? </string>
@@ -483,8 +474,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Mailingliste</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Änderungen an Name und Bild der Mailingliste gelten nur für dieses Gerät.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -570,7 +559,7 @@
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Scannen, um ein zweites Gerät für %1$s hinzuzufügen</string>
     <string name="multidevice_receiver_title">Als Zweitgerät hinzufügen</string>
-    <string name="multidevice_open_settings_on_other_device">Auf dem ersten Gerät, gehe zu \"Einstellungen / Zweitgerät hinzufügen\" und scanne den dort angezeigten Code</string>
+    <string name="multidevice_open_settings_on_other_device">Auf dem ersten Gerät, öffne Delta Chat, dann \"Einstellungen / Zweitgerät hinzufügen\" und scanne den dort angezeigten Code</string>
     <string name="multidevice_receiver_scanning_ask">Das Profil vom anderen Gerät auf dieses Gerät kopieren?</string>
     <string name="multidevice_receiver_needs_update">Das Profil, das du importieren möchtest, stammt aus einer neueren Delta-Chat-Version.\n\nUm Fortzufahren, aktualisiere dieses Gerät bitte auf die neueste Version von Delta Chat.</string>
     <string name="multidevice_abort">Einrichtung des Zweitgeräts beenden?</string>
@@ -587,7 +576,7 @@
     <string name="incoming_messages">Eingehende Nachrichten</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Ausgehende Nachrichten</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Speicher auf %1$s</string>
     <string name="connectivity">Verbindungsstatus</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -824,8 +813,13 @@
     <string name="disable_imap_idle">IMAP IDLE deaktivieren</string>
     <string name="disable_imap_idle_explain">IMAP IDLE ausschalten, selbst wenn vom Server unterstützt. Die Aktivierung dieser Option verzögert den Abruf von Nachrichten; nur zu Testzwecken aktivieren</string>
     <string name="send_stats_to_devs">Statistik an Delta Chat Entwickler senden</string>
+    <string name="stats_device_message">Möchtest du helfen, Delta Chat zu verbessern, indem du wöchentlich anonyme Nutzungsstatistiken sendest?\n\n👉 Hier tippen … 👈</string>
+    <string name="stats_confirmation_dialog">Möchtest du helfen, Delta Chat zu verbessern, indem du wöchentlich anonyme Nutzungsstatistiken sendest?</string>
+    <string name="stats_thanks">Danke! Du kannst das Senden der Statistik jederzeit unter \"Einstellungen / Erweitert\" ausschalten.\n\nHast du zusätzlich 5 Minuten Zeit, um an einer wissenschaftlichen Studie zur Sicherheit von Delta Chat teilzunehmen?</string>
+    <string name="stats_disable_dialog">Das Senden von Statistiken ist bereits eingeschaltet.\n\nMöchtest du es ausschalten?</string>
+    <string name="disable">Ausschalten</string>
+    <string name="stats_keep_sending">Weiter senden</string>
     <string name="stats_msg_body">Der Anhang enthält anonyme Statistiken, die uns helfen, Delta Chat zu verbessern. Vielen Dank!</string>
-
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Suchergebnisse</string>
@@ -995,15 +989,11 @@
     <string name="qrshow_join_contact_hint">Scannen für Chat mit %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Keine Verbindung zum Internet, Austausch des QR-Codes nicht möglich.</string>
     <string name="qraccount_ask_create_and_login">Profil auf \"%1$s\" erzeugen und dort anmelden?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Profil auf \"%1$s\" erzeugen und dort anmelden?\n\nDein bisheriges Profil wird dabei nicht gelöscht. Du kannst mit der Option \"Profil wechseln\" jederzeit zwischen den Konten hin- und herschalten.</string>
     <string name="set_name_and_avatar_explain">Lege einen Namen fest, unter dem deine Kontakte dich kennen. Du kannst auch ein Profilbild festlegen.</string>
     <string name="please_enter_name">Bitte gib einen Namen an.</string>
     <string name="qraccount_qr_code_cannot_be_used">Der eingescannte QR-Code kann nicht dazu verwendet werden, eine neues Profil zu erstellen.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Bei \"%1$s\" anmelden?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">Bei \"%1$s\" anmelden?\n\nDein bisheriges Profil wird dabei nicht gelöscht. Du kannst mit der Option \"Profil wechseln\" jederzeit zwischen den Profilen hin- und herschalten.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s hat dich zu dieser Gruppe eingeladen.\n\nWarte auf die Antwort des Gerätes von %2$s…</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->

@@ -81,10 +81,6 @@
     <string name="always_load_remote_images">始终加载远程图像</string>
     <string name="once">仅一次</string>
     <string name="show_warning">显示警告</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">显示密码</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">隐藏密码</string>
     <string name="not_now">现在不</string>
     <string name="never">从不</string>
     <string name="one_moment">稍等片刻…</string>
@@ -395,10 +391,6 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">删除 %d 条消息？</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="other">删除 %d 条消息吗？</item>
-    </plurals>
     <string name="ask_forward">将消息转发给 %1$s？</string>
     <string name="ask_forward_multiple">转发消息到 %1$d 个聊天？</string>
     <string name="ask_export_attachment">导出附件将允许您设备上的其他应用程序访问这些附件。\n\n是否继续？</string>
@@ -465,8 +457,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">邮件列表</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">邮件列表名称和图像的更改仅适用于此设备。 </string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -552,7 +542,7 @@
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">扫描此处为 %1$s 设置第二台设备</string>
     <string name="multidevice_receiver_title">添加为第二台设备</string>
-    <string name="multidevice_open_settings_on_other_device">在第一台设备上，转到“设置/添加第二台设备”并扫描显示的二维码</string>
+    <string name="multidevice_open_settings_on_other_device">在第一台设备上，启动 Delta Chat，转到“设置/添加第二台设备”，然后扫描显示的二维码</string>
     <string name="multidevice_receiver_scanning_ask">是否将账号从其他设备复制到此设备？</string>
     <string name="multidevice_receiver_needs_update">你想导入的配置文件来自较新的 Delta Chat 版本。\n\n要继续设置第二台设备，请更新此设备上的 Delta Chat 到最新版。</string>
     <string name="multidevice_abort">中止第二台设备的设置吗？</string>
@@ -569,7 +559,7 @@
     <string name="incoming_messages">消息接收</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">消息发送</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">%1$s 上的存储空间</string>
     <string name="connectivity">连接</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -771,7 +761,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">若要更改此选项，请您务必调整服务器以及其他客户端的相应设置。\n\n否则软件可能无法正常工作。</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
     <string name="pref_multidevice">多设备模式</string>
-    <string name="pref_multidevice_explain">将您的消息与其他设备同步。添加第二个设备时自动启用。</string>
+    <string name="pref_multidevice_explain">将您的消息与其他设备同步。添加第二台设备时自动启用</string>
     <string name="pref_multidevice_change_warn">在多个设备上使用同一账号时，必须启用多设备模式。仅当您已从所有其他设备中移除此账号后，才能禁用此设置。\n\n在多个设备上使用该账号时禁用多设备模式会导致错过消息和其他问题。</string>
     <string name="pref_auto_folder_moves">自动移动至 DeltaChat 文件夹</string>
     <string name="pref_only_fetch_mvbox_title">只从 DeltaChat 文件夹获取</string>
@@ -806,8 +796,13 @@
     <string name="disable_imap_idle">禁用 IMAP IDLE</string>
     <string name="disable_imap_idle_explain">即便服务器支持，也不要使用 IMAP IDLE 扩展。启用后会造成消息获取延迟，请仅出于测试目的启用该功能。</string>
     <string name="send_stats_to_devs">发送统计数据给 Delta Chat 开发者</string>
-    <string name="stats_msg_body">附件包含匿名使用统计数据，这些数据将帮助我们改进 Delta Chat。谢谢！</string>
-
+    <string name="stats_device_message">您是否愿意通过每周发送匿名使用统计数据来帮助改进 Delta Chat 并支持相关研究？\n\n👉 点击此处… 👈</string>
+    <string name="stats_confirmation_dialog">您是否愿意通过每周发送匿名使用统计数据来帮助改进 Delta Chat 并支持相关研究？</string>
+    <string name="stats_thanks">谢谢！您随时可以在“设置 -> 高级”中禁用发送功能。\n\n您是否愿意抽出 5 分钟时间参与一项关于 Delta Chat 安全性的科学研究？</string>
+    <string name="stats_disable_dialog">统计数据发送功能已启用。\n\n是否要禁用此功能？</string>
+    <string name="disable">禁用</string>
+    <string name="stats_keep_sending">继续发送</string>
+    <string name="stats_msg_body">附件包含匿名使用统计数据，这有助于我们改进 Delta Chat。如需了解详情，请访问 https://delta.chat/help#statssending 。谢谢！</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">搜索结果</string>
@@ -977,15 +972,11 @@
     <string name="qrshow_join_contact_hint">扫描即可与 %1$s 聊天</string>
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
     <string name="qraccount_ask_create_and_login">在“%1$s”创建新的电子邮件地址并登录？</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">在“%1$s”创建新账号并登录？\n\n不会删除您现有的账号。使用“切换账号”在账号之间切换。</string>
     <string name="set_name_and_avatar_explain">设置联系人可以识别的名称，您还可以设置个人资料图片。</string>
     <string name="please_enter_name">请输入名称。</string>
     <string name="qraccount_qr_code_cannot_be_used">扫描的二维码不能用于创建新账号。</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">登录 \"%1$s\"吗？</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">是否登录“%1$s”？\n\n不会删除您现有的账号。使用“切换账号”在账号之间切换。</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s 邀请你加入此群组。\n\n等待 %2$s 的设备回复…</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->

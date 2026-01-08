@@ -81,10 +81,6 @@
     <string name="always_load_remote_images">Carrega sempre les imatges remotes</string>
     <string name="once">Una vegada</string>
     <string name="show_warning">Mostra l\'advertiment</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Mostra la contrasenya</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Amaga la contrasenya</string>
     <string name="not_now">Ara no</string>
     <string name="never">Mai</string>
     <string name="one_moment">Espereu...</string>
@@ -409,11 +405,6 @@
         <item quantity="one">¿Esborra %d missatge de tots els teus dispositius?</item>
         <item quantity="other">¿Esborra %d missatges de tots els teus dispositius?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Vols esborrar %d missatge?</item>
-        <item quantity="other">Voleu esborrar %d missatges?</item>
-    </plurals>
     <string name="ask_forward">Reenvia missatges a %1$s?</string>
     <string name="ask_forward_multiple">Voleu reenviar els missatges a %1$d xats?</string>
     <string name="ask_export_attachment">En exportar els adjunts permetreu que altres aplicacions del dispositiu hi puguin accedir.\n\nVoleu continuar?</string>
@@ -483,8 +474,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Llista de correu</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Els canvis al nom i la imatge de la llista de correu només s\'aplicaran en aquest dispositiu.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -587,7 +576,7 @@
     <string name="incoming_messages">Missatges entrants</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Missatges sortints</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Emmagatzematge a %1$s.</string>
     <string name="connectivity">Connectivitat</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -969,15 +958,11 @@
     <string name="qrshow_join_contact_hint">Escanegeu això per establir contacte amb %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">No hi ha connexió a internet, no es pot fer la configuració amb codi QR.</string>
     <string name="qraccount_ask_create_and_login">Voleu crear un perfil nou a «%1$s» i iniciar sessió allà?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Voleu crear un perfil nou a «%1$s» i iniciar-hi sessió?\n\nEl vostre perfil existent no s\'esborrarà. Useu l\'element «Canvia el perfil» per a canviar entre els vostres perfils.</string>
     <string name="set_name_and_avatar_explain">Indiqueu un nom que els vostres contactes puguin reconèixer. També podeu establir una imatge de perfil.</string>
     <string name="please_enter_name">Introduïu un nom</string>
     <string name="qraccount_qr_code_cannot_be_used">El codi QR escanejat no es pot usar per a configurar un perfil nou.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Voleu iniciar sessió a «%1$s»?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">Voleu iniciar «%1$s»?\n\nNo s\'esborrarà el perfil existent. Useu l\'element «Canvia el perfil» per a canviar entre els vostres perfils.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s us ha convidat a unir-vos a aquest grup.\n\nS\'està esperant el dispositiu de %2$s per a respondre...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->

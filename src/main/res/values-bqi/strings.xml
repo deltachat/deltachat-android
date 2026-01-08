@@ -79,10 +79,6 @@
     <string name="always_load_remote_images">شؽواتا دیر ز دسرس هی بوگوئشن</string>
     <string name="once">هیم ی کرت</string>
     <string name="show_warning">نشووݩ داڌن هوشدار</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">نشووݩ داڌن رزم</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">بؽڌار کردن رزم</string>
     <string name="not_now">سکو ن</string>
     <string name="never">هیچ</string>
     <string name="one_moment">ی دمووݩ...</string>
@@ -326,11 +322,6 @@
         <item quantity="one">اخۊی %d پیوم پاک بۊ؟</item>
         <item quantity="other">اخۊی %d پیوم پاک بۊ؟</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">اخۊی %d پیوم پاک بۊ؟</item>
-        <item quantity="other">اخۊی %d پیوم پاک بۊ؟</item>
-    </plurals>
     <string name="ask_start_chat_with">گوفت وو لوفت وا %1$s؟</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">پاک کردن %1$s ز جرگه؟</string>
@@ -359,6 +350,7 @@
     <string name="retry_send">ز نۊ سی فشناڌن پیوم تقلا کوݩ</string>
     <!-- mailing lists -->
     <string name="mailing_list">نومگه پوستی</string>
+
     <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
     <string name="send_file_to">فشناڌن \"%1$s\" و...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
@@ -382,7 +374,7 @@
     <string name="media_preview">نشووݩ داڌن وارسگر</string>
     <string name="send_message">فشناڌن پیوم</string>
 
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">زفت کردن من %1$s</string>
     <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">هونی منپیز ابۊ...</string>

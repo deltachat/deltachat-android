@@ -81,10 +81,6 @@
     <string name="always_load_remote_images">تصاویر دوردست همیشه بار شوند</string>
     <string name="once">همین یک بار</string>
     <string name="show_warning">نمایش هشدار</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">نمایش رمزعبور</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">مخفی کردن رمز عبور</string>
     <string name="not_now">اکنون نه</string>
     <string name="never">هرگز</string>
     <string name="one_moment">یک لحظه...</string>
@@ -409,11 +405,6 @@
         <item quantity="one">آیا می‌خواهید از روی تمام دستگاه‌هایتان %d پیام را حذف کنید؟</item>
         <item quantity="other">حذف %dپیام؟</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">می‌خواهید %dپیام پاک شود؟</item>
-        <item quantity="other">می‌خواهید %d پیام پاک شود؟</item>
-    </plurals>
     <string name="ask_forward">پیام‌ها به %1$s هدایت شوند؟</string>
     <string name="ask_forward_multiple">انتقال پیام‌ها به %1$d گپ؟</string>
     <string name="ask_export_attachment">ضمیمه صادر شود؟ صادر کردن ضمیمه باعث می‌شود دیگر نرم‌افزارهای روی دستگاه شما بتوانند به آن دسترسی داشته باشند. \n\nادامه می‌دهید؟</string>
@@ -485,8 +476,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">فهرست پستی</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">تغییرات انجام شده روی نام و تصویر فهست پستی فقط در این دستگاه اعمال شود.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -590,7 +579,7 @@
     <string name="incoming_messages">پیام‌های ورودی</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">پیام‌های خروجی</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">ذخیره کردن در %1$s</string>
     <string name="connectivity">اتصال‌ها</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -975,16 +964,11 @@
     <string name="qrshow_join_contact_hint">برای ارتباط با %1$s این را اسکن کنید.</string>
     <string name="qrshow_join_contact_no_connection_toast">اتصال اینترنت نیست. نمیتوان نصب کد کیوآر را انجام داد. </string>
     <string name="qraccount_ask_create_and_login">ایجاد رایانامهٔ جدید روی «%1$s» و ورود به آنجا؟</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">نشانی جدید رایانامه روی «%1$s» ایجاد شده  و به آن وارد شود؟
- حساب فعلی شما پاک نمی‌شود. از بخش «تغییر حساب کاربری» برای جابجایی بین حساب‌ها استفاده کنید</string>
     <string name="set_name_and_avatar_explain">اسمی انتخاب کنید که مخاطبینتان با آن شما را بشناسند. می توانید برای خود عکسی هم انتخاب کنید.</string>
     <string name="please_enter_name">لطفا یک نام وارد کنید.</string>
     <string name="qraccount_qr_code_cannot_be_used">این کد کیوآر اسکن شده را نمی‌توان برای راه‌اندازی حساب جدید استفاده کرد. </string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">آیا به \"%1$s\" وارد شوید؟</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">آیا به «%1$s» وارد شوید؟\n\nحساب موجود شما حذف نخواهد شد. برای جابه‌جایی میان حساب‌هایتان از «تغییر حساب» استفاده کنید.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">کاربر %1$s شما را دعوت کرده است تا عضو این گروه شوید.
 در انتظار دستگاه %2$s برای پاسخگویی...</string>

@@ -81,10 +81,6 @@
     <string name="always_load_remote_images">Carica Sempre Immagini Remote</string>
     <string name="once">Una Volta</string>
     <string name="show_warning">Mostra Avviso</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Mostra Password</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Nascondi Password</string>
     <string name="not_now">Non ora</string>
     <string name="never">Mai</string>
     <string name="one_moment">Un momento…</string>
@@ -423,12 +419,6 @@
         <item quantity="many">Cancella %d messaggi su tutti i tuoi dispositivi?</item>
         <item quantity="other">Cancella %d messaggi su tutti i tuoi dispositivi?</item>
     </plurals>
-    <!-- deprecated, use ask_delete_messages -->
-    <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Eliminare %d messaggio?</item>
-        <item quantity="many">Eliminare %d messaggi?</item>
-        <item quantity="other">Eliminare %d messaggi?</item>
-    </plurals>
     <string name="ask_forward">Inoltrare messaggi a %1$s?</string>
     <string name="ask_forward_multiple">Inoltra messaggi a %1$d chat?</string>
     <string name="ask_export_attachment">Esportare allegati permetterà ad ogni altra app sul tuo dispositivo di accedervi.\n\nContinuare?</string>
@@ -501,8 +491,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Elenco di Distribuzione</string>
-    <!-- deprecated -->
-    <string name="mailing_list_profile_info">Le modifiche al nome e all\'immagine dell\'elenco di distribuzione si applicano solo a questo dispositivo.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -605,7 +593,7 @@
     <string name="incoming_messages">Messaggi in Arrivo</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Messaggi in Uscita</string>
-    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by a domain -->
+    <!-- deprecated -->
     <string name="storage_on_domain">Spazio su %1$s</string>
     <string name="connectivity">Connettività</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
@@ -842,8 +830,13 @@
     <string name="disable_imap_idle">Disabilita IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Non utilizzare l\'estensione IMAP IDLE anche se il server la supporta. L\'abilitazione di questa opzione ritarderà il recupero del messaggio, abilitarla solo a scopo di test.</string>
     <string name="send_stats_to_devs">Invia statistiche agli sviluppatori di Delta Chat</string>
+    <string name="stats_device_message">Vuoi contribuire a migliorare Delta Chat e sostenere la ricerca inviando statistiche di utilizzo anonime settimanali?\n\n👉 Tocca qui… 👈</string>
+    <string name="stats_confirmation_dialog">Vuoi contribuire a migliorare Delta Chat e sostenere la ricerca inviando statistiche di utilizzo anonime settimanali?</string>
+    <string name="stats_thanks">Grazie! Puoi sempre disattivare l\'invio da \"Impostazioni -> Avanzate\".\n\nHai anche 5 minuti per partecipare a uno studio scientifico sulla sicurezza di Delta Chat?</string>
+    <string name="stats_disable_dialog">L\'invio delle statistiche è già abilitato.\n\nVuoi disattivarlo?</string>
+    <string name="disable">Disabilita</string>
+    <string name="stats_keep_sending">Continua a inviare</string>
     <string name="stats_msg_body">L\'allegato contiene statistiche di utilizzo anonime, che ci aiutano a migliorare Delta Chat. Grazie!</string>
-
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Risultati Ricerca</string>
@@ -1013,15 +1006,11 @@
     <string name="qrshow_join_contact_hint">Scansionalo per chattare con %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Nessuna connessione internet, impossibile effettuare l\'impostazione tramite codice QR.</string>
     <string name="qraccount_ask_create_and_login">Creo un nuovo profilo su \"%1$s\" e accedo qui?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qraccount_ask_create_and_login_another">Crea un nuovo profilo su \"%1$s\" e accedi qui?\n\nIl tuo profilo esistente non verrà eliminato. Utilizza la voce \"Cambia Profilo\" per passare da un profilo all\'altro.</string>
     <string name="set_name_and_avatar_explain">Imposta un nome che i tuoi contatti riconosceranno. Puoi anche impostare un\'immagine del profilo.</string>
     <string name="please_enter_name">Per piacere inserisci un nome.</string>
     <string name="qraccount_qr_code_cannot_be_used">Il codice QR scansionato non può essere utilizzato per creare un nuovo profilo.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Accedere a \"%1$s\"?</string>
-    <!-- deprecated, use confirm_add_transport when scanning such a QR code from the main scanner -->
-    <string name="qrlogin_ask_login_another">Accedere a \"%1$s\"?\n\nIl tuo profilo esistente non verrà cancellato. Usa la voce \"Cambia Profilo\" per passare da un profilo all\'altro.</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s ti ha invitato ad unirti a questo gruppo.\n\nIn attesa che il dispositivo di %2$s risponda…</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->

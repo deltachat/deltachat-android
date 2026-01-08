@@ -78,10 +78,6 @@
     <string name="always_load_remote_images">Kargatu urrutiko irudiak beti</string>
     <string name="once">Behin</string>
     <string name="show_warning">Erakutsi abisua</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="show_password">Erakutsi pasahitza</string>
-    <!-- deprecated, UI must not offer an option to show the password -->
-    <string name="hide_password">Ezkutatu pasahitza</string>
     <string name="not_now">Orain ez</string>
     <string name="never">Inoiz ez</string>
     <string name="one_moment">Unetxo bat...</string>
