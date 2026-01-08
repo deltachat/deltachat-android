@@ -2,9 +2,10 @@
 
 ## Unreleased
 
-* Remove deprecated "real-time apps" switch
-* Fix: Remove address from profile switcher
 * Protect profile deletion and relays management with system lock/pin
+* Fix: Remove address from profile switcher
+* Fix: Avoid crash if the system doesn't allow to start foreground service
+* Remove deprecated "real-time apps" switch
 * Update to core 2.35.0
 
 ## v2.34.0

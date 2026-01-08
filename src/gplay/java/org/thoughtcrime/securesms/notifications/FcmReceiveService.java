@@ -91,7 +91,19 @@ public class FcmReceiveService extends FirebaseMessagingService {
   @Override
   public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
     Log.i(TAG, "FCM push notification received");
-    FetchForegroundService.start(this);
+    // Note: The system can downgrade the high priority messages to normal priority
+    // if the app is not using the high priority messages for surfacing time sensitive
+    // content to the user. If the message's priority is downgraded, your app cannot
+    // start a foreground service and attempting to start one results in a
+    // ForegroundServiceStartNotAllowedException.
+    // So, it's recommended to check the result of RemoteMessage.getPriority() and
+    // confirm it's PRIORITY_HIGH() before attempting to start a foreground service.
+    // source: https://developer.android.com/develop/background-work/services/fgs/restrictions-bg-start
+    if (remoteMessage.getPriority() == RemoteMessage.PRIORITY_HIGH) {
+      FetchForegroundService.start(this);
+    } else {
+      FetchForegroundService.fetchSynchronously();
+    }
   }
 
   @Override

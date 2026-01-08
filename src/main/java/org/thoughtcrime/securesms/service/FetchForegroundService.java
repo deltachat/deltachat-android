@@ -14,12 +14,11 @@ import androidx.core.content.ContextCompat;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ForegroundDetector;
-import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.Util;
 
 public final class FetchForegroundService extends Service {
-  private static final String TAG = FcmReceiveService.class.getSimpleName();
+  private static final String TAG = FetchForegroundService.class.getSimpleName();
   private static final Object SERVICE_LOCK = new Object();
   private static final Object STOP_NOTIFIER = new Object();
   private static volatile boolean fetchingSynchronously = false;
@@ -41,24 +40,7 @@ public final class FetchForegroundService extends Service {
       }
     } catch (Exception e) {
       Log.w(TAG, "Failed to start foreground service: " + e + ", fetching in background.");
-      // According to the documentation https://firebase.google.com/docs/cloud-messaging/android/receive,
-      // we need to handle the message within 20s, and the time window may be even shorter than 20s,
-      // so, use 10s to be safe.
-      fetchingSynchronously = true;
-      if (ApplicationContext.getDcAccounts().backgroundFetch(10)) {
-        // The background fetch was successful, but we need to wait until all events were processed.
-        // After all events were processed, we will get DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE,
-        // and stop() will be called.
-        synchronized (STOP_NOTIFIER) {
-          while (fetchingSynchronously) {
-            try {
-              // The `wait()` needs to be enclosed in a while loop because there may be
-              // "spurious wake-ups", i.e. `wait()` may return even though `notifyAll()` wasn't called.
-              STOP_NOTIFIER.wait();
-            } catch (InterruptedException ex) {}
-          }
-        }
-      }
+      fetchSynchronously();
     }
   }
 
@@ -88,14 +70,39 @@ public final class FetchForegroundService extends Service {
       .setSmallIcon(R.drawable.notification_permanent)
       .build();
 
-    startForeground(NotificationCenter.ID_FETCH, notification);
+    try {
+      startForeground(NotificationCenter.ID_FETCH, notification);
 
-    Util.runOnAnyBackgroundThread(() -> {
-      Log.i(TAG, "Starting fetch");
-      if (!ApplicationContext.getDcAccounts().backgroundFetch(300)) { // as startForeground() was called, there is time
-        FetchForegroundService.stop(this);
-      } // else we stop FetchForegroundService on DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE
-    });
+      Util.runOnAnyBackgroundThread(() -> {
+        Log.i(TAG, "Starting fetch");
+        if (!ApplicationContext.getDcAccounts().backgroundFetch(300)) { // as startForeground() was called, there is time
+          FetchForegroundService.stop(this);
+        } // else we stop FetchForegroundService on DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE
+      });
+    } catch (Exception e) {
+      Log.e(TAG, "Error calling startForeground()", e);
+    }
+  }
+
+  public static void fetchSynchronously() {
+    // According to the documentation https://firebase.google.com/docs/cloud-messaging/android/receive,
+    // we need to handle the message within 20s, and the time window may be even shorter than 20s,
+    // so, use 10s to be safe.
+    fetchingSynchronously = true;
+    if (ApplicationContext.getDcAccounts().backgroundFetch(10)) {
+      // The background fetch was successful, but we need to wait until all events were processed.
+      // After all events were processed, we will get DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE,
+      // and stop() will be called.
+      synchronized (STOP_NOTIFIER) {
+        while (fetchingSynchronously) {
+          try {
+            // The `wait()` needs to be enclosed in a while loop because there may be
+            // "spurious wake-ups", i.e. `wait()` may return even though `notifyAll()` wasn't called.
+            STOP_NOTIFIER.wait();
+          } catch (InterruptedException ex) {}
+        }
+      }
+    }
   }
 
   @Override
