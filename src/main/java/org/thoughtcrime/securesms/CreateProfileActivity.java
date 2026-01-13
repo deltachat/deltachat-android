@@ -49,8 +49,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   private static final String TAG = CreateProfileActivity.class.getSimpleName();
 
-  public static final String FROM_WELCOME   = "from_welcome";
-
   private static final int REQUEST_CODE_AVATAR = 1;
 
   private InputAwareLayout       container;
@@ -58,7 +56,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   private EditText               name;
   private EditText               statusView;
 
-  private boolean fromWelcome;
   private boolean avatarChanged;
   private boolean imageLoaded;
 
@@ -69,12 +66,11 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   @Override
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
-    this.fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
 
     setContentView(R.layout.profile_create_activity);
 
     getSupportActionBar().setTitle(R.string.pref_profile_info_headline);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(!this.fromWelcome);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
     attachmentManager = new AttachmentManager(this, () -> {});
@@ -110,8 +106,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   public void onBackPressed() {
     if (container.isInputOpen()) {
       container.hideCurrentInput(name);
-    } else if (fromWelcome) {
-      updateProfile();
     } else {
       super.onBackPressed();
     }
@@ -184,14 +178,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(container);
 
-    if (fromWelcome) {
-      String addr = DcHelper.get(this, "addr");
-      loginSuccessText.setText(R.string.set_name_and_avatar_explain);
-      ViewUtil.findById(this, R.id.status_text_layout).setVisibility(View.GONE);
-      ViewUtil.findById(this, R.id.information_label).setVisibility(View.GONE);
-    } else {
-      loginSuccessText.setVisibility(View.GONE);
-    }
+    loginSuccessText.setVisibility(View.GONE);
   }
 
   private void initializeProfileName() {
@@ -258,11 +245,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
         if (result) {
           attachmentManager.cleanup();
-          if (fromWelcome) {
-            Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
-            intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
-            startActivity(intent);
-          }
           finish();
         } else        {
           Toast.makeText(CreateProfileActivity.this, R.string.error, Toast.LENGTH_LONG).show();
