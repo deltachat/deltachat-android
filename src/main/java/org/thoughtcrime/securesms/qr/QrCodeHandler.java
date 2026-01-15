@@ -58,7 +58,9 @@ public class QrCodeHandler {
   public void handleOnlySecureJoinQr(String rawString, SecurejoinSource source, SecurejoinUiPath uiPath) {
     final DcLot qrParsed = dcContext.checkQr(rawString);
     if (!handleSecureJoinQr(qrParsed, rawString, source, uiPath)) {
-      handleDefault(new AlertDialog.Builder(activity), rawString, qrParsed);
+      AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+      handleDefault(builder, rawString, qrParsed);
+      builder.create().show();
     }
   }
 
@@ -122,7 +124,9 @@ public class QrCodeHandler {
   public void handleOnlyAddRelayQr(String rawString) {
     final DcLot qrParsed = dcContext.checkQr(rawString);
     if (!handleAddRelayQr(qrParsed, rawString)) {
-      handleDefault(new AlertDialog.Builder(activity), rawString, qrParsed);
+      AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+      handleDefault(builder, rawString, qrParsed);
+      builder.create().show();
     }
   }
 
