@@ -6,6 +6,7 @@
 * Allow to see inbox quota for all relays in connectivity screen
 * Truncate file names in the middle, not at the end; important information are more often at the end
 * Remove email address from user profile
+* Make QR code larger on "Add Second Device" screen
 * Fix: Show dialog if pasted QR codes are invalid
 * Update to core 2.36.0
 

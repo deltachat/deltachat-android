@@ -1927,7 +1927,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcBackupProvider_getQr(JNIEnv *env, jo
 
 JNIEXPORT jstring Java_com_b44t_messenger_DcBackupProvider_getQrSvg(JNIEnv *env, jobject obj)
 {
-    char* temp = dc_backup_provider_get_qr_svg(get_dc_backup_provider(env, obj));
+    char* temp = dc_create_qr_svg(dc_backup_provider_get_qr(get_dc_backup_provider(env, obj)));
         jstring ret = JSTRING_NEW(temp);
     dc_str_unref(temp);
     return ret;
