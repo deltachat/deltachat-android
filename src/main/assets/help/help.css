@@ -6,6 +6,10 @@ a {
   text-decoration: none;
 }
 
+a[href^='http']::after {
+    content: " ↗";
+}
+
 h2, h3, h4 {
   margin-top: 2rem;
 }
