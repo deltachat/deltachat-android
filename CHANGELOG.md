@@ -9,6 +9,7 @@
 * Mark external links with " ↗" to make them clear
 * Make QR code larger on "Add Second Device" screen
 * Fix: Show dialog if pasted QR codes are invalid
+* Fix: Select correct account when returning from conversation launched through home screen shortcut from different account
 * Update to core 2.36.0
 
 ## v2.35.0

@@ -269,6 +269,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
       composeIntent = getBaseShareIntent(ConversationActivity.class);
       composeIntent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
       composeIntent.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, accId);
+      composeIntent.putExtra(ConversationActivity.FROM_HOME_SHORTCUT, true);
       ShareUtil.setSharedUris(composeIntent, resolvedExtras);
       startActivity(composeIntent);
     } else {

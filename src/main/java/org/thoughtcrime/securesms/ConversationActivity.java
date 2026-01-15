@@ -152,6 +152,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public static final String FROM_ARCHIVED_CHATS_EXTRA = "from_archived";
   public static final String TEXT_EXTRA              = "draft_text";
   public static final String STARTING_POSITION_EXTRA = "starting_position";
+  public static final String FROM_HOME_SHORTCUT           = "from_home_shortcut";
 
   private static final int PICK_GALLERY        = 1;
   private static final int PICK_DOCUMENT       = 2;
@@ -608,11 +609,23 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleReturnToConversationList(@Nullable Bundle extras) {
     boolean archived = getIntent().getBooleanExtra(FROM_ARCHIVED_CHATS_EXTRA, false);
-    Intent intent = new Intent(this, (archived ? ConversationListArchiveActivity.class : ConversationListActivity.class));
-    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    if (extras != null) intent.putExtras(extras);
-    startActivity(intent);
-    finish();
+    boolean fromShortcut = getIntent().getBooleanExtra(FROM_HOME_SHORTCUT, false);
+
+    if (fromShortcut) {
+      // Always reset selected account when launched from shortcut.
+      // Shouldn't need to reload list in this case.
+      int accountId = getIntent().getIntExtra(
+        ACCOUNT_ID_EXTRA,
+        DcHelper.getAccounts(this).getSelectedAccount().getAccountId()
+      );
+      AccountManager.getInstance().switchAccountAndStartActivity(this, accountId);
+    } else {
+      Intent intent = new Intent(this, (archived ? ConversationListArchiveActivity.class : ConversationListActivity.class));
+      intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+      if (extras != null) intent.putExtras(extras);
+      startActivity(intent);
+      finish();
+    }
   }
 
   private void handleMuteNotifications() {
