@@ -54,6 +54,7 @@ import org.thoughtcrime.securesms.relay.RelayListActivity;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.TextUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
@@ -345,6 +346,11 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
   private void showOtherOptionsDialog() {
     View view = View.inflate(this, R.layout.signup_options_view, null);
+    Button otherServerButton = view.findViewById(R.id.use_other_server);
+    if (otherServerButton != null) {
+      otherServerButton.setText(
+        TextUtil.markAsExternal(getString(R.string.instant_onboarding_other_server)));
+    }
     AlertDialog signUpDialog = new AlertDialog.Builder(this)
       .setView(view)
       .setTitle(R.string.instant_onboarding_show_more_instances)
@@ -376,9 +382,11 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       signUpBtn.setText(R.string.instant_onboarding_create);
       privacyPolicyBtn.setTextColor(getResources().getColor(R.color.delta_accent));
       if (DEFAULT_CHATMAIL_HOST.equals(providerHost)) {
-        privacyPolicyBtn.setText(getString(R.string.instant_onboarding_agree_default2, providerHost));
+        privacyPolicyBtn.setText(TextUtil.markAsExternal(
+          getString(R.string.instant_onboarding_agree_default2, providerHost)));
       } else {
-        privacyPolicyBtn.setText(getString(R.string.instant_onboarding_agree_instance, providerHost));
+        privacyPolicyBtn.setText(TextUtil.markAsExternal(
+          getString(R.string.instant_onboarding_agree_instance, providerHost)));
       }
     }
   }
