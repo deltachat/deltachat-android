@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.thoughtcrime.securesms.util.TextUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.InputStream;
@@ -51,6 +52,28 @@ public class LocalHelpActivity extends WebViewActivity
   public boolean onPrepareOptionsMenu(Menu menu) {
     super.onPrepareOptionsMenu(menu);
     this.getMenuInflater().inflate(R.menu.local_help, menu);
+
+    // Append " ↗" to external link buttons
+    MenuItem item = menu.findItem(R.id.learn_more);
+    if (item != null) {
+      item.setTitle(TextUtil.markAsExternal(getString(R.string.delta_chat_homepage)));
+    }
+
+    item = menu.findItem(R.id.privacy_policy);
+    if (item != null) {
+      item.setTitle(TextUtil.markAsExternal(getString(R.string.privacy_policy)));
+    }
+
+    item = menu.findItem(R.id.contribute);
+    if (item != null) {
+      item.setTitle(TextUtil.markAsExternal(getString(R.string.contribute)));
+    }
+
+    item = menu.findItem(R.id.report_issue);
+    if (item != null) {
+      item.setTitle(TextUtil.markAsExternal(getString(R.string.global_menu_help_report_desktop)));
+    }
+
     return true;
   }
 
