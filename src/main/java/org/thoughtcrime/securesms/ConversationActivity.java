@@ -193,6 +193,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private boolean    isSecurityInitialized    = false;
   private boolean successfulForwardingAttempt = false;
   private boolean isEditing = false;
+  private boolean switchedProfile = false;
 
   @Override
   protected void onCreate(Bundle state, boolean ready) {
@@ -607,6 +608,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleReturnToConversationList(@Nullable Bundle extras) {
+    if (switchedProfile) { // force refreshing of chatlist
+      if (extras == null) extras = new Bundle();
+      extras.putInt(ConversationListFragment.RELOAD_LIST, 1);
+    }
+
     boolean archived = getIntent().getBooleanExtra(FROM_ARCHIVED_CHATS_EXTRA, false);
     Intent intent = new Intent(this, (archived ? ConversationListArchiveActivity.class : ConversationListActivity.class));
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -954,6 +960,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void initializeResources() {
     int accountId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, dcContext.getAccountId());
     if (accountId != dcContext.getAccountId()) {
+      switchedProfile = true;
       AccountManager.getInstance().switchAccount(context, accountId);
       fragment.dcContext = dcContext = context.getDcContext();
       initializeBackground();
