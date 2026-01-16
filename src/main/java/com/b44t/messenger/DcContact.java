@@ -13,6 +13,7 @@ public class DcContact {
     public final static int DC_CONTACT_ID_NEW_BROADCAST      = -5; //   - " -
     public final static int DC_CONTACT_ID_ADD_ACCOUNT        = -6; //      - " -
     public final static int DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP = -7; //      - " -
+    public final static int DC_CONTACT_ID_EMPTY_FILTER_RESULT = -8; //      - " -
 
     public DcContact(long contactCPtr) {
         this.contactCPtr = contactCPtr;

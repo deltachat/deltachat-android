@@ -65,6 +65,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
   private final GlideRequests                 glideRequests;
   private final Set<Integer>                  selectedContacts = new HashSet<>();
   private final SparseIntArray                actionModeSelection = new SparseIntArray();
+  private String                              cursorFilter;
 
   @Override
   public int getItemCount() {
@@ -107,6 +108,10 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
 
   private boolean isActionModeEnabled() {
     return actionModeSelection.size() != 0;
+  }
+
+  public void updateFilter(String cursorFilter) {
+    this.cursorFilter = cursorFilter;
   }
 
   public abstract static class ViewHolder extends RecyclerView.ViewHolder {
@@ -274,6 +279,8 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
       name = context.getString(R.string.new_channel);
     } else if (id == DcContact.DC_CONTACT_ID_QR_INVITE) {
       name = context.getString(R.string.menu_new_contact);
+    } else if (id == DcContact.DC_CONTACT_ID_EMPTY_FILTER_RESULT) {
+      name = context.getString(R.string.search_no_result_for_x, this.cursorFilter);
     } else {
       dcContact = getContact(i);
       name = dcContact.getDisplayName();
@@ -317,7 +324,11 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
   }
 
   public void changeData(DcContactsLoader.Ret loaderRet) {
-    this.dcContactList = loaderRet==null? new int[0] : loaderRet.ids;
+    if (loaderRet == null || loaderRet.ids.length == 0) {
+      this.dcContactList = new int[]{DcContact.DC_CONTACT_ID_EMPTY_FILTER_RESULT};
+    } else {
+      this.dcContactList = loaderRet.ids;
+    }
     recordCache.clear();
     notifyDataSetChanged();
   }

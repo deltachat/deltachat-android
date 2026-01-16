@@ -250,6 +250,10 @@ public class ContactSelectionListFragment extends    Fragment
 
   public void setQueryFilter(String filter) {
     this.cursorFilter = filter;
+    ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
+    if (adapter != null) {
+      adapter.updateFilter(this.cursorFilter);
+    }
     this.getLoaderManager().restartLoader(0, null, this);
   }
 
