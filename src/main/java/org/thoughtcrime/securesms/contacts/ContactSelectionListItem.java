@@ -69,7 +69,8 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
      || specialId==DcContact.DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP
      || specialId==DcContact.DC_CONTACT_ID_NEW_BROADCAST
      || specialId==DcContact.DC_CONTACT_ID_ADD_MEMBER
-     || specialId==DcContact.DC_CONTACT_ID_QR_INVITE) {
+     || specialId==DcContact.DC_CONTACT_ID_QR_INVITE
+     || specialId==DcContact.DC_CONTACT_ID_EMPTY_FILTER_RESULT) {
       this.nameView.setTypeface(null, Typeface.BOLD);
     }
     else {
@@ -82,7 +83,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     }
     if (specialId == DcContact.DC_CONTACT_ID_QR_INVITE) {
       this.avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_qr_code_24).asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
-    } else {
+    } else if (specialId != DcContact.DC_CONTACT_ID_EMPTY_FILTER_RESULT) {
       this.avatar.setAvatar(glideRequests, recipient, false);
     }
     this.avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
@@ -90,8 +91,10 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     setText(name, number, label, contact);
     setEnabled(enabled);
 
-    if (multiSelect) this.checkBox.setVisibility(View.VISIBLE);
-    else             this.checkBox.setVisibility(View.GONE);
+    if (multiSelect && specialId != DcContact.DC_CONTACT_ID_EMPTY_FILTER_RESULT)
+      this.checkBox.setVisibility(View.VISIBLE);
+    else
+      this.checkBox.setVisibility(View.GONE);
   }
 
   public void setChecked(boolean selected) {
