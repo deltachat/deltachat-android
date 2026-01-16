@@ -280,7 +280,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter<ContactSel
     } else if (id == DcContact.DC_CONTACT_ID_QR_INVITE) {
       name = context.getString(R.string.menu_new_contact);
     } else if (id == DcContact.DC_CONTACT_ID_EMPTY_FILTER_RESULT) {
-      name = context.getString(R.string.filter_no_result, this.cursorFilter);
+      name = context.getString(R.string.search_no_result_for_x, this.cursorFilter);
     } else {
       dcContact = getContact(i);
       name = dcContact.getDisplayName();
