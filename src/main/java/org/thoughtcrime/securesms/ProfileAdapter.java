@@ -38,6 +38,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
   public static final int ITEM_ALL_MEDIA_BUTTON = 30;
   public static final int ITEM_SEND_MESSAGE_BUTTON = 35;
   public static final int ITEM_LAST_SEEN = 40;
+  public static final int ITEM_BLOCKED = 43;
   public static final int ITEM_INTRODUCED_BY = 45;
   public static final int ITEM_HEADER = 53;
   public static final int ITEM_MEMBERS = 55;
@@ -139,7 +140,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     } else if (viewType == ITEM_ALL_MEDIA_BUTTON || viewType == ITEM_SEND_MESSAGE_BUTTON) {
       final ProfileTextItem item = (ProfileTextItem)layoutInflater.inflate(R.layout.profile_text_item_button, parent, false);
       return new ViewHolder(item);
-    } else if (viewType == ITEM_LAST_SEEN || viewType == ITEM_INTRODUCED_BY) {
+    } else if (viewType == ITEM_LAST_SEEN || viewType == ITEM_INTRODUCED_BY || viewType == ITEM_BLOCKED) {
       final ProfileTextItem item = (ProfileTextItem)layoutInflater.inflate(R.layout.profile_text_item_small, parent, false);
       return new ViewHolder(item);
     } else {
@@ -205,9 +206,9 @@ public class ProfileAdapter extends RecyclerView.Adapter
     else if(holder.itemView instanceof ProfileTextItem) {
       ProfileTextItem item = (ProfileTextItem) holder.itemView;
       item.setOnClickListener(view -> clickListener.onSettingsClicked(data.viewType));
-      boolean tintIcon = data.viewType != ITEM_INTRODUCED_BY;
+      boolean tintIcon = data.viewType != ITEM_INTRODUCED_BY && data.viewType != ITEM_BLOCKED;
       item.set(data.label, data.icon, tintIcon);
-      if (data.viewType == ITEM_LAST_SEEN) {
+      if (data.viewType == ITEM_BLOCKED) {
         int padding = (int)((float)context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding) * 1.2);
         item.setPadding(item.getPaddingLeft(), item.getPaddingTop(), item.getPaddingRight(), padding);
       } else if (data.viewType == ITEM_INTRODUCED_BY) {
@@ -300,6 +301,10 @@ public class ProfileAdapter extends RecyclerView.Adapter
         lastSeenTxt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, lastSeenTimestamp));
       }
       itemData.add(new ItemData(ITEM_LAST_SEEN, lastSeenTxt, 0));
+    }
+
+    if (dcContact != null && !isDeviceTalk && !isSelfTalk && dcContact.isBlocked()) {
+      itemData.add(new ItemData(ITEM_BLOCKED, context.getString(R.string.contact_blocked), R.drawable.contact_blocked_24));
     }
 
     if (memberList!=null && !isInBroadcast && !isMailingList) {
