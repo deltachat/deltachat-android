@@ -12,6 +12,7 @@
 * Show hint for empty contact search results
 * Fix: Show dialog if pasted QR codes are invalid
 * Fix: Refresh chat list when returning from conversation if selected profile changed
+* Fix: Update menu when using "select all" in contact selection
 * Update to core 2.36.0
 
 ## v2.35.0
