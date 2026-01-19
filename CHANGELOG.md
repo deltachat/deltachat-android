@@ -9,6 +9,7 @@
 * Mark external links with " ↗" to make them clear
 * Make QR code larger on "Add Second Device" screen
 * Add indication for blocked contacts in user profile
+* Show hint for empty contact search results
 * Fix: Show dialog if pasted QR codes are invalid
 * Fix: Refresh chat list when returning from conversation if selected profile changed
 * Update to core 2.36.0

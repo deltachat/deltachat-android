@@ -29,6 +29,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -84,6 +85,7 @@ public class ContactSelectionListFragment extends    Fragment
   private OnContactSelectedListener onContactSelectedListener;
   private String                    cursorFilter;
   private RecyclerView              recyclerView;
+  private TextView                  emptyView;
   private ActionMode                actionMode;
   private ActionMode.Callback       actionModeCallback;
 
@@ -113,6 +115,7 @@ public class ContactSelectionListFragment extends    Fragment
     View view = inflater.inflate(R.layout.contact_selection_list_fragment, container, false);
 
     recyclerView            = ViewUtil.findById(view, R.id.recycler_view);
+    emptyView               = ViewUtil.findById(view, android.R.id.empty);
 
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(recyclerView, true, false, true, true);
@@ -266,7 +269,17 @@ public class ContactSelectionListFragment extends    Fragment
 
   @Override
   public void onLoadFinished(Loader<DcContactsLoader.Ret> loader, DcContactsLoader.Ret data) {
-    ((ContactSelectionListAdapter) recyclerView.getAdapter()).changeData(data);
+    ContactSelectionListAdapter adapter = (ContactSelectionListAdapter) recyclerView.getAdapter();
+    adapter.changeData(data);
+    if (emptyView != null) {
+      if (adapter.getItemCount() > 0) {
+        emptyView.setVisibility(View.GONE);
+        emptyView.setText("");
+      } else {
+        emptyView.setVisibility(View.VISIBLE);
+        emptyView.setText(getString(R.string.search_no_result_for_x, cursorFilter));
+      }
+    }
   }
 
   @Override
