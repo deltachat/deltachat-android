@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.preference.PreferenceManager;
 
@@ -14,7 +13,6 @@ import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ConversationListActivity;
-import org.thoughtcrime.securesms.InstantOnboardingActivity;
 import org.thoughtcrime.securesms.WelcomeActivity;
 import org.thoughtcrime.securesms.accounts.AccountSelectionListFragment;
 
@@ -123,10 +121,6 @@ public class AccountManager {
     }
 
     public void switchAccountAndStartActivity(Activity activity, int destAccountId) {
-        switchAccountAndStartActivity(activity, destAccountId, null);
-    }
-
-    private void switchAccountAndStartActivity(Activity activity, int destAccountId, @Nullable String backupQr) {
         if (destAccountId==0) {
             beginAccountCreation(activity);
         } else {
@@ -134,12 +128,8 @@ public class AccountManager {
         }
 
         activity.finishAffinity();
-        if (destAccountId==0) {
-            Intent intent = new Intent(activity, WelcomeActivity.class);
-            if (backupQr != null) {
-                intent.putExtra(WelcomeActivity.BACKUP_QR_EXTRA, backupQr);
-            }
-            activity.startActivity(intent);
+        if (destAccountId == 0) {
+            activity.startActivity(new Intent(activity, WelcomeActivity.class));
         } else {
             activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
         }
@@ -153,6 +143,15 @@ public class AccountManager {
     }
 
     public void addAccountFromSecondDevice(Activity activity, String backupQr) {
-        switchAccountAndStartActivity(activity, 0, backupQr);
+        DcAccounts accounts = DcHelper.getAccounts(activity);
+        if (accounts.getSelectedAccount().isConfigured() == 1) {
+            // the selected account is already configured, create a new one
+            beginAccountCreation(activity);
+        }
+
+        activity.finishAffinity();
+        Intent intent = new Intent(activity, WelcomeActivity.class);
+        intent.putExtra(WelcomeActivity.BACKUP_QR_EXTRA, backupQr);
+        activity.startActivity(intent);
     }
 }
