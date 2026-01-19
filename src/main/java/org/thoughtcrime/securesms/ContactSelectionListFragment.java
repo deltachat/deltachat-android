@@ -127,8 +127,7 @@ public class ContactSelectionListFragment extends    Fragment
       public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         MenuInflater inflater = getActivity().getMenuInflater();
         inflater.inflate(R.menu.contact_list, menu);
-        setCorrectMenuVisibility(menu);
-        actionMode.setTitle("1");
+        updateActionModeState(actionMode);
         return true;
       }
 
@@ -165,19 +164,16 @@ public class ContactSelectionListFragment extends    Fragment
 
   private void handleSelectAll() {
     getContactSelectionListAdapter().selectAll();
-    updateActionModeTitle();
+    updateActionModeState(actionMode);
   }
 
-  private void updateActionModeTitle() {
-    actionMode.setTitle(String.valueOf(getContactSelectionListAdapter().getActionModeSelection().size()));
-  }
-
-  private void setCorrectMenuVisibility(Menu menu) {
-    ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
-    if (adapter.getActionModeSelection().size() > 1) {
-      menu.findItem(R.id.menu_view_profile).setVisible(false);
+  private void updateActionModeState(ActionMode actionMode) {
+    int size = getContactSelectionListAdapter().getActionModeSelection().size();
+    if (size == 0) {
+      actionMode.finish();
     } else {
-      menu.findItem(R.id.menu_view_profile).setVisible(true);
+      actionMode.getMenu().findItem(R.id.menu_view_profile).setVisible(size == 1);
+      actionMode.setTitle(String.valueOf(size));
     }
   }
 
@@ -293,10 +289,7 @@ public class ContactSelectionListFragment extends    Fragment
     {
       if (handleActionMode) {
         if (actionMode != null) {
-          Menu menu = actionMode.getMenu();
-          setCorrectMenuVisibility(menu);
-          updateActionModeTitle();
-          finishActionModeIfSelectionIsEmpty();
+          updateActionModeState(actionMode);
         }
         return;
       }
@@ -334,16 +327,10 @@ public class ContactSelectionListFragment extends    Fragment
       if (actionMode == null) {
         actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(actionModeCallback);
       } else {
-          finishActionModeIfSelectionIsEmpty();
+        updateActionModeState(actionMode);
       }
     }
   }
-
-    private void finishActionModeIfSelectionIsEmpty() {
-        if (getContactSelectionListAdapter().getActionModeSelection().size() == 0) {
-            actionMode.finish();
-        }
-    }
 
     public void setOnContactSelectedListener(OnContactSelectedListener onContactSelectedListener) {
     this.onContactSelectedListener = onContactSelectedListener;
