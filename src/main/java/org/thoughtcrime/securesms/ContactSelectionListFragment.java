@@ -22,6 +22,7 @@ import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -272,12 +273,11 @@ public class ContactSelectionListFragment extends    Fragment
     ContactSelectionListAdapter adapter = (ContactSelectionListAdapter) recyclerView.getAdapter();
     adapter.changeData(data);
     if (emptyView != null) {
-      if (adapter.getItemCount() > 0) {
+      if (adapter.getItemCount() > 0 || TextUtils.isEmpty(cursorFilter)) {
         emptyView.setVisibility(View.GONE);
-        emptyView.setText("");
       } else {
-        emptyView.setVisibility(View.VISIBLE);
         emptyView.setText(getString(R.string.search_no_result_for_x, cursorFilter));
+        emptyView.setVisibility(View.VISIBLE);
       }
     }
   }
