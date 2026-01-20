@@ -453,6 +453,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     } else if (itemId == R.id.menu_export_attachment) {
       handleSaveAttachment();
       return true;
+    } else if (itemId == R.id.menu_switch_account) {
+      AccountManager.getInstance().showSwitchAccountMenu(this);
+      return true;
     }
 
     return false;
