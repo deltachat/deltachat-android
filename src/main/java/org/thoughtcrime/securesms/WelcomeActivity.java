@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -90,6 +91,19 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         registerForEvents();
         initializeActionBar();
 
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                AccountManager accountManager = AccountManager.getInstance();
+                if (accountManager.canRollbackAccountCreation(WelcomeActivity.this)) {
+                    accountManager.rollbackAccountCreation(WelcomeActivity.this);
+                } else {
+                    setEnabled(false);
+                    getOnBackPressedDispatcher().onBackPressed();
+                }
+            }
+        });
+
         DcHelper.maybeShowMigrationError(this);
     }
 
@@ -135,7 +149,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
         switch (item.getItemId()) {
         case android.R.id.home:
-            onBackPressed();
+            getOnBackPressedDispatcher().onBackPressed();
             return true;
         }
 
@@ -382,16 +396,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        AccountManager accountManager = AccountManager.getInstance();
-        if (accountManager.canRollbackAccountCreation(this)) {
-            accountManager.rollbackAccountCreation(this);
-        } else {
-            super.onBackPressed();
         }
     }
 }

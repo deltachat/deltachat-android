@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.activity.OnBackPressedCallback;
+
 import org.thoughtcrime.securesms.util.TextUtil;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -44,6 +46,18 @@ public class LocalHelpActivity extends WebViewActivity
     } catch(Exception e) {
       e.printStackTrace();
     }
+
+    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+      @Override
+      public void handleOnBackPressed() {
+        if (webView.canGoBack()) {
+          webView.goBack();
+        } else {
+          setEnabled(false);
+          getOnBackPressedDispatcher().onBackPressed();
+        }
+      }
+    });
 
     webView.loadUrl("file:///android_asset/" + helpPath.replace("LANG", helpLang) + (section!=null? section : ""));
   }
@@ -98,15 +112,6 @@ public class LocalHelpActivity extends WebViewActivity
       return true;
     }
     return false;
-  }
-
-  @Override
-  public void onBackPressed() {
-    if (webView.canGoBack()) {
-      webView.goBack();
-    } else {
-      super.onBackPressed();
-    }
   }
 
   private boolean assetExists(String fileName) {
