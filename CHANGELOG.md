@@ -13,6 +13,7 @@
 * Fix: Show dialog if pasted QR codes are invalid
 * Fix: Refresh chat list when returning from conversation if selected profile changed
 * Fix: Update menu when using "select all" in contact selection
+* Fix: Avoid empty profiles after using "add as second device" from welcome screen
 * Update to core 2.36.0
 
 ## v2.35.0
