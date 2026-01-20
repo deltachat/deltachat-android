@@ -573,6 +573,13 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
   }
 
+  public void onProfileSwitched(int profileId) {
+    refreshAvatar();
+    refreshUnreadIndicator();
+    refreshTitle();
+    conversationListFragment.loadChatlist();
+  }
+
   public void onDeleteProfile(int profileId) {
     deleteProfileId = profileId;
     boolean result = ScreenLockUtil.applyScreenLock(this, getString(R.string.delete_account), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_DELETE_PROFILE);
