@@ -457,7 +457,7 @@ public class ConversationFragment extends MessageSelectorFragment
     private void handleForwardMessage(final Set<DcMsg> messageRecords) {
         Intent composeIntent = new Intent();
         int[] msgIds = DcMsg.msgSetToIds(messageRecords);
-        setForwardingMessageIds(composeIntent, msgIds);
+        setForwardingMessageIds(composeIntent, msgIds, DcHelper.getContext(getContext()).getAccountId());
         ConversationListRelayingActivity.start(this, composeIntent);
         getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
     }

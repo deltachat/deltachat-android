@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.util;
 
+import static org.thoughtcrime.securesms.util.ShareUtil.getForwardedMessageAccountId;
 import static org.thoughtcrime.securesms.util.ShareUtil.getForwardedMessageIDs;
 import static org.thoughtcrime.securesms.util.ShareUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.ShareUtil.getSharedUris;
@@ -26,6 +27,11 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 
 public class SendRelayedMessageUtil {
 
@@ -36,12 +42,27 @@ public class SendRelayedMessageUtil {
   public static void immediatelyRelay(Activity activity, final Long[] chatIds) {
     ConversationListRelayingActivity.finishActivity();
     if (isForwarding(activity)) {
+      int forwardedMsgAccId = getForwardedMessageAccountId(activity);
       int[] forwardedMessageIDs = getForwardedMessageIDs(activity);
       resetRelayingMessageContent(activity);
-      if (forwardedMessageIDs == null) return;
+      if (forwardedMessageIDs == null || forwardedMsgAccId <= 0) return;
 
       Util.runOnAnyBackgroundThread(() -> {
         DcContext dcContext = DcHelper.getContext(activity);
+        if (forwardedMsgAccId != dcContext.getAccountId()) {
+          Rpc rpc = DcHelper.getRpc(activity);
+          int accId = dcContext.getAccountId();
+          List<Integer> list = Util.toList(forwardedMessageIDs);
+          for (long longChatId : chatIds) {
+            try {
+              rpc.forwardMessagesToAccount(forwardedMsgAccId, list, accId, (int)longChatId);
+            } catch (RpcException e) {
+              e.printStackTrace();
+            }
+          }
+          return;
+        }
+
         for (long longChatId : chatIds) {
           int chatId = (int) longChatId;
           if (dcContext.getChat(chatId).isSelfTalk()) {
