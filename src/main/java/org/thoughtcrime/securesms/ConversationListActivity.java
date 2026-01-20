@@ -16,8 +16,6 @@
  */
 package org.thoughtcrime.securesms;
 
-import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
-import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_URL;
 import static org.thoughtcrime.securesms.util.ShareUtil.acquireRelayMessageContent;
@@ -112,6 +110,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private String qrData = null;
   /** used to store temporarily profile ID to delete after authorization is granted via ScreenLockUtil */
   private int deleteProfileId = 0;
+  private boolean switchedProfile = false;
 
   @Override
   protected void onPreCreate() {
@@ -254,6 +253,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       return;
     }
     super.onNewIntent(intent);
+    switchedProfile = false;
     setIntent(intent);
     refresh();
     conversationListFragment.onNewIntent();
@@ -523,15 +523,16 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     searchToolbar.clearFocus();
 
     final DcContext dcContext = DcHelper.getContext(this);
-    if (isForwarding(this) && dcContext.getChat(chatId).isSelfTalk()) {
+    if (isForwarding(this) && dcContext.getChat(chatId).isSelfTalk() && !switchedProfile) {
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
       Toast.makeText(this, DynamicTheme.getCheckmarkEmoji(this) + " " + getString(R.string.saved), Toast.LENGTH_SHORT).show();
       handleResetRelaying();
       finish();
     } else {
       Intent intent = new Intent(this, ConversationActivity.class);
-      intent.putExtra(CHAT_ID_EXTRA, chatId);
-      intent.putExtra(STARTING_POSITION_EXTRA, startingPosition);
+      intent.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, dcContext.getAccountId());
+      intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+      intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
       if (isRelayingMessageContent(this)) {
         acquireRelayMessageContent(this, intent);
       }
@@ -555,8 +556,13 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   public void onBackPressed() {
     if (searchToolbar.isVisible()) searchToolbar.collapse();
     else if (isRelayingMessageContent(this)) {
-      handleResetRelaying();
-      finish();
+      if (switchedProfile) {
+        finishAffinity();
+        startActivity(new Intent(this, ConversationListActivity.class));
+      } else {
+        handleResetRelaying();
+        finish();
+      }
     } else super.onBackPressed();
   }
 
@@ -577,6 +583,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   public void onProfileSwitched(int profileId) {
+    switchedProfile = true;
     refreshAvatar();
     refreshUnreadIndicator();
     refreshTitle();
