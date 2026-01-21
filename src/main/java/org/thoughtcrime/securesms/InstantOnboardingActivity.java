@@ -23,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -39,7 +38,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.components.AvatarSelector;
-import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
@@ -75,7 +73,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private static final String INSTANCES_URL = "https://chatmail.at/relays";
   private static final String DEFAULT_CHATMAIL_HOST = "nine.testrun.org";
 
-  public static final String FROM_WELCOME = "from_welcome";
   private static final int REQUEST_CODE_AVATAR = 1;
 
   private ImageView avatar;
@@ -106,9 +103,9 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.onboarding_create_instant_account);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    boolean fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
+    boolean configured  = DcHelper.getContext(this).isConfigured() == 1;
 
-    if (DcHelper.getContext(this).isConfigured() == 1) {
+    if (configured) {
       // if account is configured it means we didn't come from Welcome screen nor from QR scanner,
       // instead, user clicked a dcaccount:// URI directly, so we need to just offer to add a new relay
       Uri uri = getIntent().getData();
@@ -116,24 +113,10 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
         Intent intent = new Intent(this, RelayListActivity.class);
         intent.putExtra(RelayListActivity.EXTRA_QR_DATA, uri.toString());
         startActivity(intent);
-        finish();
-        return;
       }
-      // if URI is unexpectedly null, then fallback to new profile creation
-      AccountManager.getInstance().beginAccountCreation(this);
+      finish();
+      return;
     }
-
-    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(!fromWelcome) {
-      @Override
-      public void handleOnBackPressed() {
-        AccountManager accountManager = AccountManager.getInstance();
-        if (accountManager.canRollbackAccountCreation(InstantOnboardingActivity.this)) {
-          accountManager.rollbackAccountCreation(InstantOnboardingActivity.this);
-        } else {
-          finish();
-        }
-      }
-    });
 
     isDcLogin = false;
     providerHost = DEFAULT_CHATMAIL_HOST;

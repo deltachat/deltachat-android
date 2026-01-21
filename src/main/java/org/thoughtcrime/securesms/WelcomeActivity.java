@@ -84,7 +84,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
           signInDialog.dismiss();
         });
 
-        signUpButton.setOnClickListener((v) -> startInstantOnboardingActivity());
+        signUpButton.setOnClickListener((v) -> startActivity(new Intent(this, InstantOnboardingActivity.class)));
         signInButton.setOnClickListener((v) -> signInDialog.show());
 
         registerForEvents();
@@ -167,12 +167,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
-    }
-
-    private void startInstantOnboardingActivity() {
-        Intent intent = new Intent(this, InstantOnboardingActivity.class);
-        intent.putExtra(InstantOnboardingActivity.FROM_WELCOME, true);
-        startActivity(intent);
     }
 
     private void startAddAsSecondDeviceActivity() {
