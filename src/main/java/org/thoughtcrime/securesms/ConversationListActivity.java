@@ -43,6 +43,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
@@ -172,6 +173,28 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     conversationListFragment = initFragment(R.id.fragment_container, new ConversationListFragment(), bundle);
 
     initializeSearchListener();
+
+    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+      @Override
+      public void handleOnBackPressed() {
+        if (searchToolbar.isVisible()) {
+          searchToolbar.collapse();
+        } else {
+          if (isRelayingMessageContent(ConversationListActivity.this)) {
+            if (switchedProfile) {
+              finishAffinity();
+              startActivity(new Intent(ConversationListActivity.this, ConversationListActivity.class));
+              return;
+            } else {
+              handleResetRelaying();
+            }
+          }
+
+          setEnabled(false);
+          getOnBackPressedDispatcher().onBackPressed();
+        }
+      }
+    });
 
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
 
@@ -445,7 +468,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       startActivity(new Intent(this, ProxySettingsActivity.class));
       return true;
     } else if (itemId == android.R.id.home) {
-      onBackPressed();
+      getOnBackPressedDispatcher().onBackPressed();
       return true;
     } else if (itemId == R.id.menu_all_media) {
       startActivity(new Intent(this, AllMediaActivity.class));
@@ -488,7 +511,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     };
     SaveAttachmentTask saveTask = new SaveAttachmentTask(this);
     saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, attachments);
-    onBackPressed();
+    getOnBackPressedDispatcher().onBackPressed();
   }
 
   private void handleOpenpgp4fpr() {
@@ -550,20 +573,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     }
     startActivity(intent);
     overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
-  }
-
-  @Override
-  public void onBackPressed() {
-    if (searchToolbar.isVisible()) searchToolbar.collapse();
-    else if (isRelayingMessageContent(this)) {
-      if (switchedProfile) {
-        finishAffinity();
-        startActivity(new Intent(this, ConversationListActivity.class));
-      } else {
-        handleResetRelaying();
-        finish();
-      }
-    } else super.onBackPressed();
   }
 
   private void createChat() {

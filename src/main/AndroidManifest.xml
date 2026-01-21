@@ -55,7 +55,6 @@
                  android:requestLegacyExternalStorage="true"
                  tools:targetApi="TIRAMISU"
                  android:hasFragileUserData="true"
-                 android:enableOnBackInvokedCallback="false"
         >
 
     <!-- android car support, see https://developer.android.com/training/auto/start/,
