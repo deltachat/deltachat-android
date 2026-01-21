@@ -49,9 +49,9 @@ public class SendRelayedMessageUtil {
 
       Util.runOnAnyBackgroundThread(() -> {
         DcContext dcContext = DcHelper.getContext(activity);
-        if (forwardedMsgAccId != dcContext.getAccountId()) {
+        int accId = dcContext.getAccountId();
+        if (forwardedMsgAccId != accId) {
           Rpc rpc = DcHelper.getRpc(activity);
-          int accId = dcContext.getAccountId();
           List<Integer> list = Util.toList(forwardedMessageIDs);
           for (long longChatId : chatIds) {
             try {
