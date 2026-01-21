@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -56,6 +57,8 @@ public class BackupTransferActivity extends BaseActionBarActivity {
     private boolean notificationControllerClosed = false;
     public boolean warnAboutCopiedQrCodeOnAbort = false;
 
+    private OnBackPressedCallback backPressedCallback;
+
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -89,6 +92,15 @@ public class BackupTransferActivity extends BaseActionBarActivity {
 
         // add padding to avoid content hidden behind system bars
         ViewUtil.applyWindowInsets(findViewById(R.id.backup_provider_fragment));
+
+        backPressedCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+              finishOrAskToFinish();
+            }
+        };
+
+        getOnBackPressedDispatcher().addCallback(this, backPressedCallback);
     }
 
     @Override
@@ -108,17 +120,12 @@ public class BackupTransferActivity extends BaseActionBarActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        finishOrAskToFinish();
-    }
-
-    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
       int itemId = item.getItemId();
       if (itemId == android.R.id.home) {
-        finishOrAskToFinish();
+        getOnBackPressedDispatcher().onBackPressed();
         return true;
       } else if (itemId == R.id.troubleshooting) {
         DcHelper.openHelp(this, "#multiclient");

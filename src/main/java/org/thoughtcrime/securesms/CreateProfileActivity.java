@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.loader.app.LoaderManager;
 
@@ -79,6 +80,18 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     initializeProfileName();
     initializeProfileAvatar();
     initializeStatusText();
+
+    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+      @Override
+      public void handleOnBackPressed() {
+        if (container.isInputOpen()) {
+          container.hideCurrentInput(name);
+        } else {
+          setEnabled(false);
+          getOnBackPressedDispatcher().onBackPressed();
+        }
+      }
+    });
   }
 
   @Override
@@ -93,22 +106,13 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     super.onOptionsItemSelected(item);
     int itemId = item.getItemId();
     if (itemId == android.R.id.home) {
-      onBackPressed();
+      getOnBackPressedDispatcher().onBackPressed();
       return true;
     } else if (itemId == R.id.menu_create_profile) {
       updateProfile();
     }
 
     return false;
-  }
-
-  @Override
-  public void onBackPressed() {
-    if (container.isInputOpen()) {
-      container.hideCurrentInput(name);
-    } else {
-      super.onBackPressed();
-    }
   }
 
   @Override
