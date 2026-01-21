@@ -106,7 +106,6 @@ public class ConversationFragment extends MessageSelectorFragment
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        this.dcContext = DcHelper.getContext(getContext());
 
         DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
         eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
@@ -208,7 +207,7 @@ public class ConversationFragment extends MessageSelectorFragment
     public void onResume() {
         super.onResume();
 
-        Util.runOnBackground(() -> dcContext.marknoticedChat((int) chatId));
+        Util.runOnBackground(() -> DcHelper.getContext(getContext()).marknoticedChat((int) chatId));
         if (list.getAdapter() != null) {
             list.getAdapter().notifyDataSetChanged();
         }
@@ -287,7 +286,7 @@ public class ConversationFragment extends MessageSelectorFragment
             dateDecoration = new StickyHeaderDecoration(adapter, false, false);
             list.addItemDecoration(dateDecoration);
 
-            int freshMsgs = dcContext.getFreshMsgCount((int) chatId);
+            int freshMsgs = DcHelper.getContext(getContext()).getFreshMsgCount((int) chatId);
             SetStartingPositionLinearLayoutManager layoutManager = (SetStartingPositionLinearLayoutManager) list.getLayoutManager();
             if (startingPosition > -1) {
                 layoutManager.setStartingPosition(startingPosition);
@@ -429,6 +428,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
         StringBuilder result = new StringBuilder();
 
+        DcContext dcContext = DcHelper.getContext(getContext());
         DcMsg prevMsg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
         for (DcMsg msg : dcMsgsList) {
             if (result.length() > 0) {
@@ -485,6 +485,7 @@ public class ConversationFragment extends MessageSelectorFragment
     private void handleReplyMessagePrivately(final DcMsg msg) {
 
         if (getActivity() != null) {
+            DcContext dcContext = DcHelper.getContext(getContext());
             int privateChatId = dcContext.createChatByContactId(msg.getFromId());
             DcMsg replyMsg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
             replyMsg.setQuote(msg);
@@ -501,6 +502,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
     private void handleToggleSave(final Set<DcMsg> messageRecords) {
         DcMsg msg = getSelectedMessageRecord(messageRecords);
+        DcContext dcContext = DcHelper.getContext(getContext());
         if (msg.getSavedMsgId() != 0) {
           dcContext.deleteMsgs(new int[]{msg.getSavedMsgId()});
         } else {
@@ -574,7 +576,7 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     private void updateLocationButton() {
-        floatingLocationButton.setVisibility(dcContext.isSendingLocationsToChat((int) chatId)? View.VISIBLE : View.GONE);
+        floatingLocationButton.setVisibility(DcHelper.getContext(getContext()).isSendingLocationsToChat((int) chatId)? View.VISIBLE : View.GONE);
     }
 
     private void scrollAndHighlight(final int pos, boolean smooth) {
@@ -719,7 +721,7 @@ public class ConversationFragment extends MessageSelectorFragment
                 index++;
             }
         }
-        Util.runOnAnyBackgroundThread(() -> dcContext.markseenMsgs(ids));
+        Util.runOnAnyBackgroundThread(() -> DcHelper.getContext(getContext()).markseenMsgs(ids));
     }
 
     private class ConversationFragmentItemClickListener implements ItemClickListener {
@@ -761,7 +763,7 @@ public class ConversationFragment extends MessageSelectorFragment
                     startActivity(intent);
                 }
                 else {
-                    String self_mail = dcContext.getConfig("configured_mail_user");
+                    String self_mail = DcHelper.getContext(getContext()).getConfig("configured_mail_user");
                     if (self_mail != null && !self_mail.isEmpty()
                       && messageRecord.getText().contains(self_mail)
                       && getListAdapter().getChat().isDeviceTalk()) {
@@ -800,7 +802,7 @@ public class ConversationFragment extends MessageSelectorFragment
             if (foreignChatId != 0 && foreignChatId != chatId) {
                 Intent intent = new Intent(getActivity(), ConversationActivity.class);
                 intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, foreignChatId);
-                int start = DcMsg.getMessagePosition(original, dcContext);
+                int start = DcMsg.getMessagePosition(original, DcHelper.getContext(getContext()));
                 intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, start);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 ((ConversationActivity) getActivity()).hideSoftKeyboard();
@@ -816,7 +818,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
         @Override
         public void onJumpToOriginalClicked(DcMsg messageRecord) {
-            jumpToOriginal(dcContext.getMsg(messageRecord.getOriginalMsgId()));
+            jumpToOriginal(DcHelper.getContext(getContext()).getMsg(messageRecord.getOriginalMsgId()));
         }
 
         @Override
@@ -835,7 +837,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
       @Override
       public void onDownloadClicked(DcMsg messageRecord) {
-        dcContext.downloadFullMsg(messageRecord.getId());
+        DcHelper.getContext(getContext()).downloadFullMsg(messageRecord.getId());
       }
 
       @Override

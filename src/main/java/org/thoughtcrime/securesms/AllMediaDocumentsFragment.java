@@ -54,7 +54,6 @@ public class AllMediaDocumentsFragment
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
 
-    dcContext = DcHelper.getContext(getContext());
     chatId = getArguments().getInt(CHAT_ID_EXTRA, -1);
     viewtype1 = getArguments().getInt(VIEWTYPE1, 0);
     viewtype2 = getArguments().getInt(VIEWTYPE2, 0);
