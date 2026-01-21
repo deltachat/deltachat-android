@@ -480,22 +480,6 @@ public class ConversationItem extends BaseConversationItem
   private void setMediaAttributes(@NonNull DcMsg           messageRecord,
                                            boolean         showSender)
   {
-    class SetDurationListener implements AudioSlidePlayer.Listener {
-      @Override
-      public void onStart() {}
-
-      @Override
-      public void onStop() {}
-
-      @Override
-      public void onProgress(AudioSlide slide, double progress, long millis) {}
-
-      @Override
-      public void onReceivedDuration(int millis) {
-        messageRecord.lateFilingMediaSize(0,0, millis);
-        audioViewStub.get().setDuration(millis);
-      }
-    }
     if (hasAudio(messageRecord)) {
       audioViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
@@ -507,11 +491,6 @@ public class ConversationItem extends BaseConversationItem
 
       //noinspection ConstantConditions
       int duration = messageRecord.getDuration();
-      if (duration == 0) {
-        AudioSlide audio = new AudioSlide(context, messageRecord);
-        AudioSlidePlayer audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, new SetDurationListener());
-        audioSlidePlayer.requestDuration();
-      }
 
       audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
       audioViewStub.get().setOnClickListener(passthroughClickListener);

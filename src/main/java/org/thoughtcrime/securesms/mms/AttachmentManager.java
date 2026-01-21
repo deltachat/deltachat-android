@@ -90,7 +90,7 @@ public class AttachmentManager {
 
   private RemovableEditableMediaView removableMediaView;
   private ThumbnailView              thumbnail;
-  private AudioView                  audioView;
+  private AudioView                  audioView;   // TODO: Model shall not directly manipulate View
   private DocumentView               documentView;
   private WebxdcView                 webxdcView;
   private VcardView                  vcardView;
@@ -152,8 +152,6 @@ public class AttachmentManager {
 
       markGarbage(getSlideUri());
       slide = Optional.absent();
-
-      audioView.cleanup();
     }
   }
 

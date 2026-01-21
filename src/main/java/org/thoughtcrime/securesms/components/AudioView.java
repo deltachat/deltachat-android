@@ -1,14 +1,15 @@
 package org.thoughtcrime.securesms.components;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimatedVectorDrawable;
-import android.media.AudioAttributes;
-import android.media.AudioFocusRequest;
 import android.media.AudioManager;
-import android.os.Build;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -19,16 +20,21 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.media3.common.MediaItem;
+import androidx.media3.common.Player;
+import androidx.media3.session.MediaController;
+import androidx.media3.session.SessionToken;
+
+import com.google.common.util.concurrent.ListenableFuture;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.mms.AudioSlide;
+import org.thoughtcrime.securesms.service.AudioPlaybackService;
 import org.thoughtcrime.securesms.util.DateUtils;
 
-import java.io.IOException;
 
-
-public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener {
+public class AudioView extends FrameLayout {
 
   private static final String TAG = AudioView.class.getSimpleName();
 
@@ -40,9 +46,14 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   private final @NonNull TextView        title;
   private final @NonNull View            mask;
 
-  private @Nullable AudioSlidePlayer   audioSlidePlayer;
+  private @Nullable MediaController      mediaController;
+  private Handler                        progressHandler;
+  private Runnable                       progressUpdater;
+  private boolean                        isUserSeeking = false;
   private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener;
   private int backwardsCounter;
+  private Uri                            audioUri;
+  private ListenableFuture<MediaController> mediaControllerFuture;
 
   public AudioView(Context context) {
     this(context, null);
@@ -66,16 +77,122 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
 
     this.timestamp.setText("00:00");
 
-    this.playButton.setOnClickListener(new PlayClickedListener());
-    this.pauseButton.setOnClickListener(new PauseClickedListener());
-    this.seekBar.setOnSeekBarChangeListener(new SeekBarModifiedListener());
-
     this.playButton.setImageDrawable(context.getDrawable(R.drawable.play_icon));
     this.pauseButton.setImageDrawable(context.getDrawable(R.drawable.pause_icon));
     this.playButton.setBackground(context.getDrawable(R.drawable.ic_circle_fill_white_48dp));
     this.pauseButton.setBackground(context.getDrawable(R.drawable.ic_circle_fill_white_48dp));
 
+    progressHandler = new Handler(Looper.getMainLooper());
+
     setTint(getContext().getResources().getColor(R.color.audio_icon));
+  }
+
+  @Override
+  protected void onAttachedToWindow() {
+    super.onAttachedToWindow();
+    initializeController();
+  }
+
+  private void initializeController() {
+    Context context = getContext();
+    SessionToken sessionToken = new SessionToken(context,
+      new ComponentName(context, AudioPlaybackService.class));
+    mediaControllerFuture = new MediaController.Builder(context, sessionToken)
+      .buildAsync();
+    mediaControllerFuture.addListener(() -> {
+      try {
+        mediaController = mediaControllerFuture.get();
+        setupControls();
+        updateUIFromController();
+      } catch (Exception e) {
+        Log.e(TAG, "Error connecting to audio playback service", e);
+      }
+    }, ContextCompat.getMainExecutor(context));
+  }
+
+  private void updateUIFromController() {
+    // TODO
+    // Or better just use a ViewModel
+  }
+
+  private void setupControls() {
+    if (mediaController == null) return;
+    if (audioUri == null) return;
+
+    mediaController.addListener(new Player.Listener() {
+      @Override
+      public void onEvents(Player player, Player.Events events) {
+        if (events.containsAny(Player.EVENT_IS_PLAYING_CHANGED)) {
+          if (player.isPlaying()) {
+            if (pauseButton.getVisibility() != View.VISIBLE) {
+              togglePlayToPause();
+            }
+            startUpdateProgress();
+          } else if (!player.isPlaying()) {
+            if (playButton.getVisibility() != View.VISIBLE) {
+              togglePauseToPlay();
+            }
+            stopUpdateProgress();
+          }
+        }
+      }
+    });
+
+    playButton.setOnClickListener(v -> {
+      Log.w(TAG, "playButton onClick");
+      MediaItem currentItem = mediaController.getCurrentMediaItem();
+      if (currentItem == null ||
+        (currentItem.localConfiguration != null && !audioUri.equals(currentItem.localConfiguration.uri))) {
+        // Different media
+        MediaItem mediaItem = MediaItem.fromUri(audioUri);
+        mediaController.setMediaItem(mediaItem);
+        mediaController.prepare();
+        mediaController.play();
+        togglePlayToPause();
+      } else {
+        // Same media, just resume
+        if (!mediaController.isPlaying()) {
+          mediaController.play();
+          togglePlayToPause();
+        }
+      }
+    });
+    pauseButton.setOnClickListener(v -> {
+      Log.w(TAG, "pauseButton onClick");
+      if (mediaController.isPlaying()) {
+        togglePauseToPlay();
+        mediaController.pause();
+      }
+    });
+    seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+      @Override
+      public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        if (fromUser) {
+          timestamp.setText(DateUtils.getFormatedDuration(progress));
+        }
+      }
+
+      @Override
+      public void onStartTrackingTouch(SeekBar seekBar) {
+        isUserSeeking = true;
+        stopUpdateProgress();
+      }
+
+      @Override
+      public void onStopTrackingTouch(SeekBar seekBar) {
+        isUserSeeking = false;
+        if (mediaController != null) {
+          mediaController.seekTo(seekBar.getProgress());
+        }
+        startUpdateProgress();
+      }
+    });
+  }
+
+  @Override
+  protected void onDetachedFromWindow() {
+    releaseController();
+    super.onDetachedFromWindow();
   }
 
   public void setAudio(final @NonNull AudioSlide audio, int duration)
@@ -83,7 +200,7 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     controlToggle.displayQuick(playButton);
     seekBar.setEnabled(true);
     seekBar.setProgress(0);
-    audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, this);
+    audioUri = audio.getUri();
     timestamp.setText(DateUtils.getFormatedDuration(duration));
 
     if(audio.asAttachment().isVoiceNote() || !audio.getFileName().isPresent()) {
@@ -131,61 +248,57 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     return desc;
   }
 
+  @Deprecated
   public void setDuration(int duration) {
     if (getProgress()==0)
       this.timestamp.setText(DateUtils.getFormatedDuration(duration));
   }
 
-  public void cleanup() {
-    if (this.audioSlidePlayer != null && pauseButton.getVisibility() == View.VISIBLE) {
-      this.audioSlidePlayer.stop();
+  public void releaseController() {
+    if (mediaController != null && mediaControllerFuture != null) {
+      MediaController.releaseFuture(mediaControllerFuture);
     }
   }
 
-  @Override
-  public void onReceivedDuration(int millis) {
-    this.timestamp.setText(DateUtils.getFormatedDuration(millis));
+  // Poll progress and update UI
+  private void startUpdateProgress() {
+    if (progressUpdater == null) {
+      progressUpdater = new Runnable() {
+        @Override
+        public void run() {
+          if (mediaController != null && !isUserSeeking) {
+            updateProgress();
+            // Update every 100ms for smooth progress
+            progressHandler.postDelayed(this, 100);
+          }
+        }
+      };
+    }
+    progressHandler.removeCallbacks(progressUpdater);
+    progressHandler.post(progressUpdater);
   }
 
-  @Override
-  public void onStart() {
-    if (this.pauseButton.getVisibility() != View.VISIBLE) {
-      togglePlayToPause();
+  private void stopUpdateProgress() {
+    if (progressUpdater != null) {
+      progressHandler.removeCallbacks(progressUpdater);
     }
   }
 
-  @Override
-  public void onStop() {
-    if (this.playButton.getVisibility() != View.VISIBLE) {
-      togglePauseToPlay();
-    }
+  private void updateProgress() {
+    if (mediaController == null) return;
 
-    if (seekBar.getProgress() + 5 >= seekBar.getMax()) {
-      backwardsCounter = 4;
-      onProgress(audioSlidePlayer.getAudioSlide(), 0.0, -1);
+    long currentPosition = mediaController.getCurrentPosition();
+    long duration = mediaController.getDuration();
+
+    if (duration > 0) {
+      seekBar.setMax((int) duration);
+      seekBar.setProgress((int) currentPosition);
+      timestamp.setText(DateUtils.getFormatedDuration(currentPosition));
     }
   }
 
   public void disablePlayer(boolean disable) {
     this.mask.setVisibility(disable? View.VISIBLE : View.GONE);
-  }
-
-  @Override
-  public void onProgress(AudioSlide slide, double progress, long millis) {
-    if (!audioSlidePlayer.getAudioSlide().equals(slide)) {
-      return;
-    }
-    int seekProgress = (int) Math.floor(progress * this.seekBar.getMax());
-
-    if (seekProgress > seekBar.getProgress() || backwardsCounter > 3) {
-      backwardsCounter = 0;
-      this.seekBar.setProgress(seekProgress);
-      if (millis != -1) {
-        this.timestamp.setText(DateUtils.getFormatedDuration(millis));
-      }
-    } else {
-      backwardsCounter++;
-    }
   }
 
   public void setTint(int foregroundTint) {
@@ -223,79 +336,5 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     AnimatedVectorDrawable pauseToPlayDrawable = (AnimatedVectorDrawable) getContext().getDrawable(R.drawable.pause_to_play_animation);
     playButton.setImageDrawable(pauseToPlayDrawable);
     pauseToPlayDrawable.start();
-  }
-
-  private class PlayClickedListener implements View.OnClickListener {
-    @Override
-    public void onClick(View v) {
-      try {
-        Log.w(TAG, "playbutton onClick");
-        if (audioSlidePlayer != null) {
-          if (Build.VERSION.SDK_INT >= 26) {
-            if (audioFocusChangeListener == null) {
-              audioFocusChangeListener = focusChange -> {
-                if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
-                  pauseButton.performClick();
-                }
-              };
-            }
-
-            AudioAttributes playbackAttributes = new AudioAttributes.Builder()
-              .setUsage(AudioAttributes.USAGE_VOICE_COMMUNICATION)
-              .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
-              .build();
-
-            AudioFocusRequest focusRequest = new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
-              .setAudioAttributes(playbackAttributes)
-              .setAcceptsDelayedFocusGain(false)
-              .setWillPauseWhenDucked(false)
-              .setOnAudioFocusChangeListener(audioFocusChangeListener)
-              .build();
-
-            AudioManager audioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
-            audioManager.requestAudioFocus(focusRequest);
-          }
-
-          togglePlayToPause();
-          audioSlidePlayer.play(getProgress());
-        }
-      } catch (IOException e) {
-        Log.w(TAG, e);
-      }
-    }
-  }
-
-  private class PauseClickedListener implements View.OnClickListener {
-    @Override
-    public void onClick(View v) {
-      Log.w(TAG, "pausebutton onClick");
-      if (audioSlidePlayer != null) {
-        togglePauseToPlay();
-        audioSlidePlayer.stop();
-      }
-    }
-  }
-
-  private class SeekBarModifiedListener implements SeekBar.OnSeekBarChangeListener {
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {}
-
-    @Override
-    public synchronized void onStartTrackingTouch(SeekBar seekBar) {
-      if (audioSlidePlayer != null && pauseButton.getVisibility() == View.VISIBLE) {
-        audioSlidePlayer.stop();
-      }
-    }
-
-    @Override
-    public synchronized void onStopTrackingTouch(SeekBar seekBar) {
-      try {
-        if (audioSlidePlayer != null && pauseButton.getVisibility() == View.VISIBLE) {
-          audioSlidePlayer.play(getProgress());
-        }
-      } catch (IOException e) {
-        Log.w(TAG, e);
-      }
-    }
   }
 }

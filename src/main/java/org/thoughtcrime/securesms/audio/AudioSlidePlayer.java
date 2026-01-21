@@ -38,6 +38,7 @@ import org.thoughtcrime.securesms.video.exo.AttachmentDataSourceFactory;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 
+@Deprecated
 public class AudioSlidePlayer {
 
   private static final String TAG = AudioSlidePlayer.class.getSimpleName();
