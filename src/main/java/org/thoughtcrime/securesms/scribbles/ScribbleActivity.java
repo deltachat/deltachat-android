@@ -27,11 +27,4 @@ public class ScribbleActivity extends PassphraseRequiredActionBarActivity {
     boolean cropAvatar = getIntent().getBooleanExtra(CROP_AVATAR, false);
     imageEditorFragment = initFragment(R.id.scribble_container, ImageEditorFragment.newInstance(getIntent().getData(), cropAvatar));
   }
-
-/*  @Override
-  public void onBackPressed() {
-    if (!imageEditorFragment.onBackPressed()) {
-      super.onBackPressed();
-    }
-  } */
 }

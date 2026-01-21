@@ -57,6 +57,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -233,6 +234,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           }
         });
       }
+    });
+
+    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+        @Override
+        public void handleOnBackPressed() {
+            if (container.isInputOpen()) {
+                container.hideCurrentInput(composeText);
+            } else {
+                handleReturnToConversationList();
+            }
+        }
     });
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(this);
@@ -564,15 +576,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     return false;
-  }
-
-  @Override
-  public void onBackPressed() {
-    if (container.isInputOpen()){
-      container.hideCurrentInput(composeText);
-    } else {
-      handleReturnToConversationList();
-    }
   }
 
   @Override
