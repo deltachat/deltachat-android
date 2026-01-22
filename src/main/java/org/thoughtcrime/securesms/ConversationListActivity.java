@@ -176,10 +176,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
 
     TooltipCompat.setTooltipText(selfAvatar, getText(R.string.switch_account));
-    selfAvatar.setOnClickListener(v -> AccountManager.getInstance().showSwitchAccountMenu(this));
+    selfAvatar.setOnClickListener(v -> AccountManager.getInstance().showSwitchAccountMenu(this, false));
     findViewById(R.id.avatar_and_title).setOnClickListener(v -> {
       if (!isRelayingMessageContent(this)) {
-        AccountManager.getInstance().showSwitchAccountMenu(this);
+        AccountManager.getInstance().showSwitchAccountMenu(this, false);
       }
     });
 
@@ -453,7 +453,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       handleSaveAttachment();
       return true;
     } else if (itemId == R.id.menu_switch_account) {
-      AccountManager.getInstance().showSwitchAccountMenu(this);
+      AccountManager.getInstance().showSwitchAccountMenu(this, true);
       return true;
     }
 
@@ -627,7 +627,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       DcContext selAcc = accounts.getSelectedAccount();
       AccountManager.getInstance().switchAccountAndStartActivity(this, selAcc.isOk()? selAcc.getAccountId() : 0);
     } else {
-      AccountManager.getInstance().showSwitchAccountMenu(this);
+      AccountManager.getInstance().showSwitchAccountMenu(this, false);
     }
 
     // title update needed to show "Delta Chat" in case there is only one profile left
