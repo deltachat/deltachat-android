@@ -123,6 +123,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
     addDeviceMessages(getIntent().getBooleanExtra(FROM_WELCOME, false));
+    if (getIntent().getIntExtra(ACCOUNT_ID_EXTRA, -1) <= 0) {
+      getIntent().putExtra(ACCOUNT_ID_EXTRA, DcHelper.getContext(this).getAccountId());
+    }
 
     // create view
     setContentView(R.layout.conversation_list_activity);
@@ -254,6 +257,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     }
     super.onNewIntent(intent);
     setIntent(intent);
+    if (getIntent().getIntExtra(ACCOUNT_ID_EXTRA, -1) <= 0) {
+      getIntent().putExtra(ACCOUNT_ID_EXTRA, DcHelper.getContext(this).getAccountId());
+    }
     refresh();
     conversationListFragment.onNewIntent();
     invalidateOptionsMenu();
@@ -266,12 +272,14 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       DcHelper.getNotificationCenter(this).removeAllNotifications(accountId);
     }
     if (accountId != dcContext.getAccountId()) {
-      AccountManager.getInstance().switchAccountAndStartActivity(this, accountId);
+      AccountManager.getInstance().switchAccount(this, accountId);
+      onProfileSwitched(accountId);
+    } else {
+      refreshAvatar();
+      refreshUnreadIndicator();
+      refreshTitle();
     }
 
-    refreshAvatar();
-    refreshUnreadIndicator();
-    refreshTitle();
     handleOpenpgp4fpr();
     if (isDirectSharing(this)) {
       openConversation(getDirectSharingChatId(this), -1);
@@ -625,7 +633,12 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     accounts.removeAccount(profileId);
     if (selected) {
       DcContext selAcc = accounts.getSelectedAccount();
-      AccountManager.getInstance().switchAccountAndStartActivity(this, selAcc.isOk()? selAcc.getAccountId() : 0);
+      if (selAcc.isOk()) {
+        AccountManager.getInstance().switchAccount(this, selAcc.getAccountId());
+        onProfileSwitched(selAcc.getAccountId());
+      } else {
+        AccountManager.getInstance().switchAccountAndStartActivity(this, 0);
+      }
     } else {
       AccountManager.getInstance().showSwitchAccountMenu(this, false);
     }
