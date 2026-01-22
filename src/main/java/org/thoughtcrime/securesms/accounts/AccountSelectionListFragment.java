@@ -103,8 +103,7 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
     DcAccounts accounts = DcHelper.getAccounts(getActivity());
     int[] accountIds = accounts.getAll();
 
-    int count = (selectOnly? 0 : 1) + accountIds.length;
-    int[] ids = new int[count];
+    int[] ids = new int[(selectOnly? 0 : 1) + accountIds.length];
     int j = 0;
     for (int accountId : accountIds) {
       ids[j++] = accountId;

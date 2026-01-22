@@ -977,9 +977,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeResources() {
-    DcContext dcContext = DcHelper.getContext(context);
-    int accountId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, dcContext.getAccountId());
-    if (accountId != dcContext.getAccountId()) {
+    int selectedAccId = DcHelper.getContext(context).getAccountId();
+    int accountId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, selectedAccId);
+    if (accountId != selectedAccId) {
       switchedProfile = true;
       AccountManager.getInstance().switchAccount(context, accountId);
       initializeBackground();
@@ -987,7 +987,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     chatId = getIntent().getIntExtra(CHAT_ID_EXTRA, -1);
     if(chatId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
-    dcChat           = dcContext.getChat(chatId);
+    dcChat           = DcHelper.getContext(context).getChat(chatId);
     recipient        = new Recipient(this, dcChat);
     glideRequests    = GlideApp.with(this);
 
