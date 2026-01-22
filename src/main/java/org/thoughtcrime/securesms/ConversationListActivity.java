@@ -122,37 +122,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
-    // update messages - for new messages, do not reuse or modify strings but create new ones.
-    // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
-    try {
-      DcContext dcContext = DcHelper.getContext(this);
-      final String deviceMsgLabel = "update_2_0_0_android-h";
-      if (!dcContext.wasDeviceMsgEverAdded(deviceMsgLabel)) {
-        DcMsg msg = null;
-        if (!getIntent().getBooleanExtra(FROM_WELCOME, false)) {
-          msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-
-          // InputStream inputStream = getResources().getAssets().open("device-messages/green-checkmark.jpg");
-          // String outputFile = DcHelper.getBlobdirFile(dcContext, "green-checkmark", ".jpg");
-          // Util.copy(inputStream, new FileOutputStream(outputFile));
-          // msg.setFile(outputFile, "image/jpeg");
-
-          msg.setText(getString(R.string.update_2_0, "https://delta.chat/donate"));
-        }
-        dcContext.addDeviceMsg(deviceMsgLabel, msg);
-
-        if (Prefs.getStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, "").equals(deviceMsgLabel)) {
-          int deviceChatId = dcContext.getChatIdByContactId(DcContact.DC_CONTACT_ID_DEVICE);
-          if (deviceChatId != 0) {
-            dcContext.marknoticedChat(deviceChatId);
-          }
-        }
-        Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, deviceMsgLabel);
-      }
-
-    } catch(Exception e) {
-      e.printStackTrace();
-    }
+    addDeviceMessages(getIntent().getBooleanExtra(FROM_WELCOME, false));
 
     // create view
     setContentView(R.layout.conversation_list_activity);
@@ -598,7 +568,42 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
   }
 
+  private void addDeviceMessages(boolean fromWelcome) {
+    // update messages - for new messages, do not reuse or modify strings but create new ones.
+    // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
+    try {
+      DcContext dcContext = DcHelper.getContext(this);
+      final String deviceMsgLabel = "update_2_0_0_android-h";
+      if (!dcContext.wasDeviceMsgEverAdded(deviceMsgLabel)) {
+        DcMsg msg = null;
+        if (!fromWelcome) {
+          msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+
+          // InputStream inputStream = getResources().getAssets().open("device-messages/green-checkmark.jpg");
+          // String outputFile = DcHelper.getBlobdirFile(dcContext, "green-checkmark", ".jpg");
+          // Util.copy(inputStream, new FileOutputStream(outputFile));
+          // msg.setFile(outputFile, "image/jpeg");
+
+          msg.setText(getString(R.string.update_2_0, "https://delta.chat/donate"));
+        }
+        dcContext.addDeviceMsg(deviceMsgLabel, msg);
+
+        if (Prefs.getStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, "").equals(deviceMsgLabel)) {
+          int deviceChatId = dcContext.getChatIdByContactId(DcContact.DC_CONTACT_ID_DEVICE);
+          if (deviceChatId != 0) {
+            dcContext.marknoticedChat(deviceChatId);
+          }
+        }
+        Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, deviceMsgLabel);
+      }
+
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
   public void onProfileSwitched(int profileId) {
+    addDeviceMessages(false);
     refreshAvatar();
     refreshUnreadIndicator();
     refreshTitle();
