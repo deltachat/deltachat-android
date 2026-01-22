@@ -23,10 +23,12 @@ import static org.thoughtcrime.securesms.util.ShareUtil.getDirectSharingChatId;
 import static org.thoughtcrime.securesms.util.ShareUtil.getSharedTitle;
 import static org.thoughtcrime.securesms.util.ShareUtil.isDirectSharing;
 import static org.thoughtcrime.securesms.util.ShareUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.ShareUtil.getForwardedMessageAccountId;
 import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.ShareUtil.resetRelayingMessageContent;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -111,7 +113,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private String qrData = null;
   /** used to store temporarily profile ID to delete after authorization is granted via ScreenLockUtil */
   private int deleteProfileId = 0;
-  private boolean switchedProfile = false;
 
   @Override
   protected void onPreCreate() {
@@ -180,10 +181,16 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         if (searchToolbar.isVisible()) {
           searchToolbar.collapse();
         } else {
-          if (isRelayingMessageContent(ConversationListActivity.this)) {
-            if (switchedProfile) {
+          Activity activity = ConversationListActivity.this;
+          if (isRelayingMessageContent(activity)) {
+            int selectedAccId = DcHelper.getContext(activity).getAccountId();
+            int initialAccId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, selectedAccId);
+            if (initialAccId != selectedAccId) {
+              // allowing to go back is dangerous, it could be activity on previously selected account,
+              // instead of figuring out account rollback in onResume in each activity (conversation, gallery, media preview, webxdc, etc.)
+              // just clear the back stack and stay in newly selected account
               finishAffinity();
-              startActivity(new Intent(ConversationListActivity.this, ConversationListActivity.class));
+              startActivity(new Intent(activity, ConversationListActivity.class));
               return;
             } else {
               handleResetRelaying();
@@ -276,7 +283,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       return;
     }
     super.onNewIntent(intent);
-    switchedProfile = false;
     setIntent(intent);
     refresh();
     conversationListFragment.onNewIntent();
@@ -546,7 +552,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     searchToolbar.clearFocus();
 
     final DcContext dcContext = DcHelper.getContext(this);
-    if (isForwarding(this) && dcContext.getChat(chatId).isSelfTalk() && !switchedProfile) {
+    int fwdAccId = getForwardedMessageAccountId(this);
+    if (fwdAccId == dcContext.getAccountId() && dcContext.getChat(chatId).isSelfTalk()) {
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
       Toast.makeText(this, DynamicTheme.getCheckmarkEmoji(this) + " " + getString(R.string.saved), Toast.LENGTH_SHORT).show();
       handleResetRelaying();
@@ -592,7 +599,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   public void onProfileSwitched(int profileId) {
-    switchedProfile = true;
     refreshAvatar();
     refreshUnreadIndicator();
     refreshTitle();
