@@ -22,6 +22,7 @@ public abstract class MessageLoadResult {
     public String error;
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String file;
+    /** The size of the file in bytes, if applicable. If message is a pre-message, then this is the size of the file to be downloaded. */
     public Integer fileBytes;
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String fileMime;

@@ -282,7 +282,7 @@
     <string name="menu_message_details">Nachrichteninfo</string>
     <string name="menu_copy_to_clipboard">In Zwischenablage kopieren</string>
     <string name="share_invite_link">Einladungslink teilen</string>
-    <string name="share_invite_link_explain">Teile den Link nur mit Personen, denen du vertrauen. Alle, die diesen Link haben, können einen Chat mit dir starten.</string>
+    <string name="share_invite_link_explain">Teile den Link nur mit Personen, denen du vertraust. Alle, die diesen Link haben, können einen Chat mit dir starten.</string>
     <string name="invite_friends">Freunde einladen</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Kontaktiere mich auf Delta Chat:\n%1$s</string>
@@ -1002,6 +1002,7 @@
     <string name="secure_join_replies">%1$s antwortet. Warte, zur Gruppe hinzugefügt zu werden…</string>
     <string name="secure_join_wait">Verbindungsaufbau, bitte warten…</string>
     <string name="contact_verified">%1$s eingeführt.</string>
+    <string name="contact_blocked">Du hast den Kontakt blockiert</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Eingeführt von %1$s</string>
     <string name="verified_by_you">Durch mich eingeführt</string>

@@ -1002,6 +1002,7 @@
     <string name="secure_join_replies">%1$s heeft geantwoord en wacht op toelating tot de groep…</string>
     <string name="secure_join_wait">Bezig met opzetten van eind-tot-eindversleuteling…</string>
     <string name="contact_verified">%1$s is goedgekeurd.</string>
+    <string name="contact_blocked">Je hebt deze contactpersoon geblokkeerd</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Geïntroduceerd door %1$s</string>
     <string name="verified_by_you">Geïntroduceerd door mij</string>

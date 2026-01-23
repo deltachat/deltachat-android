@@ -813,6 +813,9 @@
     <string name="disable_imap_idle">Lülita IMAP IDLE välja</string>
     <string name="disable_imap_idle_explain">Ära kasuta IMAP IDLE meetodit, seda isegi siis, kui server seda toetab. Sisselülitamisel tekib sõnumite laadimisel viivitusi. Kasuta seda vaid testimiseks.</string>
     <string name="send_stats_to_devs">Saada statistikat Delta Chati kasutajatele</string>
+    <string name="stats_device_message">Kas sa tahad aidata Delta Chati paremaks muuta? Siis luba rakendusel kord nädalas saata anonüümset statistikat kasutuse kohta.\n\n👉 Klõpsa siia… 👈</string>
+    <string name="stats_confirmation_dialog">Kas sa tahad aidata Delta Chati paremaks muuta? Siis luba rakendusel kord nädalas saata anonüümset statistikat kasutuse kohta.</string>
+    <string name="stats_thanks">Suur tänu! Soovi korral võid saatmise siit välja lülitada: „Seadistused“ → „Täiendavad seadistused“.\n\nKas sul on ka 5 minuti jagu aega osalemaks Delta Chati turvalisust käsitlevas teaduslikus uuringus?</string>
     <string name="stats_disable_dialog">Statistika saatmine on juba kasutusel\n\nKas sa tahaksid ta välja lülitada?</string>
     <string name="disable">Lülita välja</string>
     <string name="stats_keep_sending">Jätka saatmist</string>
@@ -999,6 +1002,7 @@
     <string name="secure_join_replies">%1$s vastas, ootan gruppi lisamist…</string>
     <string name="secure_join_wait">Panen aluse läbivale krüptimisele…</string>
     <string name="contact_verified">%1$s lisas vestlusesse.</string>
+    <string name="contact_blocked">Sina blokeerisid selle kontakti</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">%1$s lisas kontakti vestlusesse</string>
     <string name="verified_by_you">Mina lisasin kontakti vestlusesse</string>

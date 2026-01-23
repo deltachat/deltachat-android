@@ -1002,6 +1002,7 @@
     <string name="secure_join_replies">%1$s yanıtladı; gruba eklenmesi bekleniyor…</string>
     <string name="secure_join_wait">Bağlantı kuruluyor, lütfen bekleyin…</string>
     <string name="contact_verified">%1$s tanıtıldı.</string>
+    <string name="contact_blocked">Kişiyi engellediniz</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">%1$s tarafından tanıtıldı</string>
     <string name="verified_by_you">Benim tarafımdan tanıtıldı</string>

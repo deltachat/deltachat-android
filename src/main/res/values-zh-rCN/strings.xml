@@ -985,6 +985,7 @@
     <string name="secure_join_replies">%1$s 已回复，等待被加入群组…</string>
     <string name="secure_join_wait">正在建立连接，请稍候…</string>
     <string name="contact_verified">%1$s 已验证。</string>
+    <string name="contact_blocked">您已屏蔽该联系人</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">验证人 %1$s</string>
     <string name="verified_by_you">由您验证</string>
