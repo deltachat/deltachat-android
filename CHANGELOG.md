@@ -14,7 +14,8 @@
 * Fix: Refresh chat list when returning from conversation if selected profile changed
 * Fix: Update menu when using "select all" in contact selection
 * Fix: Avoid empty profiles after using "add as second device" from welcome screen
-* Update to core 2.36.0
+* Fix multi-device seen messages synchronization when using multiple relays
+* Update to core 2.39.0
 
 ## v2.35.0
 2026-01

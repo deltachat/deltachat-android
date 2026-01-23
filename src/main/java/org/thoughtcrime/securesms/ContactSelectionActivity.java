@@ -81,8 +81,9 @@ public abstract class ContactSelectionActivity extends PassphraseRequiredActionB
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
 
-    switch (item.getItemId()) {
-      case android.R.id.home:   super.onBackPressed(); return true;
+    if (item.getItemId() == android.R.id.home) {
+      getOnBackPressedDispatcher().onBackPressed();
+      return true;
     }
 
     return false;

@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import androidx.activity.OnBackPressedCallback;
+
 import com.b44t.messenger.DcChat;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -33,6 +35,21 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
     Bundle bundle = new Bundle();
     bundle.putBoolean(ConversationListFragment.ARCHIVE, true);
     initFragment(R.id.fragment, new ConversationListFragment(), bundle);
+
+    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+      @Override
+      public void handleOnBackPressed() {
+        if (!isRelayingMessageContent(ConversationListArchiveActivity.this)) {
+          // Load the ConversationListActivity in case it's not existent for some reason
+          Intent intent = new Intent(ConversationListArchiveActivity.this, ConversationListActivity.class);
+          intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+          startActivity(intent);
+        }
+
+        setEnabled(false);
+        getOnBackPressedDispatcher().onBackPressed();
+      }
+    });
   }
 
   @Override
@@ -63,7 +80,7 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
 
     int itemId = item.getItemId();
     if (itemId == android.R.id.home) {
-      onBackPressed();
+      getOnBackPressedDispatcher().onBackPressed();
       return true;
     } else if (itemId == R.id.mark_as_read) {
       DcHelper.getContext(this).marknoticedChat(DcChat.DC_CHAT_ID_ARCHIVED_LINK);
@@ -71,20 +88,6 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
     }
 
     return false;
-  }
-
-  @Override
-  public void onBackPressed() {
-    if (isRelayingMessageContent(this)) {
-      // Go back to the ConversationListRelayingActivity
-      super.onBackPressed();
-    } else {
-      // Load the ConversationListActivity in case it's not existent for some reason
-      Intent intent = new Intent(this, ConversationListActivity.class);
-      intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-      startActivity(intent);
-      finish();
-    }
   }
 
   @Override

@@ -1036,6 +1036,7 @@
     <string name="secure_join_replies">%1$s ответил(а), ожидаем добавления в группу…</string>
     <string name="secure_join_wait">Устанавливается соединение, пожалуйста, подождите…</string>
     <string name="contact_verified">%1$s подтверждён.</string>
+    <string name="contact_blocked">Вы заблокировали контакт</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Подтверждён: %1$s</string>
     <string name="verified_by_you">Подтверждён: Лично</string>
