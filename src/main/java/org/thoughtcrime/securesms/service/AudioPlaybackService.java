@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms.service;
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.provider.MediaStore;
 
 import androidx.annotation.Nullable;
@@ -8,6 +10,8 @@ import androidx.media3.common.C;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.session.MediaSession;
 import androidx.media3.session.MediaSessionService;
+
+import org.thoughtcrime.securesms.ConversationListActivity;
 
 public class AudioPlaybackService extends MediaSessionService {
 
@@ -28,7 +32,16 @@ public class AudioPlaybackService extends MediaSessionService {
       .setHandleAudioBecomingNoisy(true)
       .build();
 
+    // This is for click on the notification to go back to app
+    // TODO: Go to the right conversation
+    Intent intent = new Intent(this, ConversationListActivity.class);
+    PendingIntent pendingIntent = PendingIntent.getActivity(
+      this, 0, intent,
+      PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+    );
+
     session = new MediaSession.Builder(this, player)
+      .setSessionActivity(pendingIntent)
       .build();
   }
 

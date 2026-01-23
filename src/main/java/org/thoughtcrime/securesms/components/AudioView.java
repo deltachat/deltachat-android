@@ -111,8 +111,13 @@ public class AudioView extends FrameLayout {
   }
 
   private void updateUIFromController() {
-    // TODO
-    // Or better just use a ViewModel
+    if (mediaController == null) return;
+
+    if (mediaController.isPlaying()) {
+      updateUIForPlay();
+    } else if (!mediaController.isPlaying()) {
+      updateUIForPause();
+    }
   }
 
   private void setupControls() {
@@ -124,15 +129,15 @@ public class AudioView extends FrameLayout {
       public void onEvents(Player player, Player.Events events) {
         if (events.containsAny(Player.EVENT_IS_PLAYING_CHANGED)) {
           if (player.isPlaying()) {
-            if (pauseButton.getVisibility() != View.VISIBLE) {
-              togglePlayToPause();
-            }
-            startUpdateProgress();
+            updateUIForPlay();
           } else if (!player.isPlaying()) {
-            if (playButton.getVisibility() != View.VISIBLE) {
-              togglePauseToPlay();
-            }
-            stopUpdateProgress();
+            updateUIForPause();
+          }
+        }
+        if (events.containsAny(Player.EVENT_PLAYBACK_STATE_CHANGED)) {
+          if (player.getPlaybackState() == Player.STATE_ENDED
+            && player.getAvailableCommands().contains(Player.COMMAND_PLAY_PAUSE)) {
+            mediaController.setPlayWhenReady(false);
           }
         }
       }
@@ -148,20 +153,20 @@ public class AudioView extends FrameLayout {
         mediaController.setMediaItem(mediaItem);
         mediaController.prepare();
         mediaController.play();
-        togglePlayToPause();
+        updateUIForPlay();
       } else {
         // Same media, just resume
         if (!mediaController.isPlaying()) {
           mediaController.play();
-          togglePlayToPause();
+          updateUIForPlay();
         }
       }
     });
     pauseButton.setOnClickListener(v -> {
       Log.w(TAG, "pauseButton onClick");
       if (mediaController.isPlaying()) {
-        togglePauseToPlay();
         mediaController.pause();
+        updateUIForPause();
       }
     });
     seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -187,6 +192,20 @@ public class AudioView extends FrameLayout {
         startUpdateProgress();
       }
     });
+  }
+
+  private void updateUIForPlay() {
+    if (pauseButton.getVisibility() != View.VISIBLE) {
+      togglePlayToPause();
+    }
+    startUpdateProgress();
+  }
+
+  private void updateUIForPause() {
+    if (playButton.getVisibility() != View.VISIBLE) {
+      togglePauseToPlay();
+    }
+    stopUpdateProgress();
   }
 
   @Override
@@ -282,6 +301,7 @@ public class AudioView extends FrameLayout {
     if (progressUpdater != null) {
       progressHandler.removeCallbacks(progressUpdater);
     }
+    updateProgress();  // Make sure the UI is aligned even when update has stopped
   }
 
   private void updateProgress() {
