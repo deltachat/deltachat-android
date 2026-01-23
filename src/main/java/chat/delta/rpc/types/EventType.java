@@ -412,7 +412,9 @@ public abstract class EventType {
 /**
  * One or more transports has changed.
  * <p>
- * This event is used for tests to detect when transport synchronization messages arrives. UIs don't need to use it, it is unlikely that user modifies transports on multiple devices simultaneously.
+ * UI should update the list.
+ * <p>
+ * This event is emitted when transport synchronization messages arrives, but not when the UI modifies the transport list by itself.
  */
   public static class TransportsModified extends EventType {
   }

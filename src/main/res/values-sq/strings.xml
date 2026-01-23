@@ -996,6 +996,7 @@
     <string name="secure_join_replies">%1$s u përgjigj, po pritet që të shtohet te grupi…</string>
     <string name="secure_join_wait">Po vendoset fshehtëzim skaj-më-skaj, ju lutemi, pritni…</string>
     <string name="contact_verified">%1$s u soll.</string>
+    <string name="contact_blocked">E bllokuat kontaktin</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Sjellë nga %1$s</string>
     <string name="verified_by_you">Sjellë nga unë</string>

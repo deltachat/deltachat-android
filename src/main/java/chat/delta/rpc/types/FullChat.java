@@ -7,7 +7,6 @@ public class FullChat {
   public ChatType chatType;
   public String color;
   public java.util.List<Integer> contactIds;
-  public java.util.List<Contact> contacts;
   public Integer ephemeralTimer;
   public Integer freshMessageCounter;
   public Integer id;

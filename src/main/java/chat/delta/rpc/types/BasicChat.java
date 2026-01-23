@@ -2,7 +2,7 @@
 package chat.delta.rpc.types;
 
 /**
- * cheaper version of fullchat, omits: - contacts - contact_ids - fresh_message_counter - ephemeral_timer - self_in_group - was_seen_recently - can_send
+ * cheaper version of fullchat, omits: - contact_ids - fresh_message_counter - ephemeral_timer - self_in_group - was_seen_recently - can_send
  * <p>
  * used when you only need the basic metadata of a chat like type, name, profile picture
  */
