@@ -211,11 +211,11 @@ public class Rpc {
   }
 
   /**
-   * Set configuration values from a QR code. (technically from the URI that is stored in the qrcode)
-   * Before this function is called, `checkQr()` should confirm the type of the
-   * QR code is `account` or `webrtcInstance`.
+   * Set configuration values from a QR code (technically from the URI stored in it).
+   * Before this function is called, `check_qr()` should be used to get the QR code type.
    * <p>
-   * Internally, the function will call dc_set_config() with the appropriate keys,
+   * "DCACCOUNT:" and "DCLOGIN:" QR codes configure the account, but I/O mustn't be started for
+   * such QR codes, consider using [`Self::add_transport_from_qr`] which also restarts I/O.
    */
   public void setConfigFromQr(Integer accountId, String qrContent) throws RpcException {
     transport.call("set_config_from_qr", mapper.valueToTree(accountId), mapper.valueToTree(qrContent));
@@ -232,6 +232,11 @@ public class Rpc {
 
   public java.util.Map<String, String> batchGetConfig(Integer accountId, java.util.List<String> keys) throws RpcException {
     return transport.callForResult(new TypeReference<java.util.Map<String, String>>(){}, "batch_get_config", mapper.valueToTree(accountId), mapper.valueToTree(keys));
+  }
+
+  /** Returns all `ui.*` config keys that were set by the UI. */
+  public java.util.List<String> getAllUiConfigKeys(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<String>>(){}, "get_all_ui_config_keys", mapper.valueToTree(accountId));
   }
 
   public void setStockStrings(java.util.Map<String, String> strings) throws RpcException {
@@ -449,11 +454,11 @@ public class Rpc {
    * Delete a chat.
    * <p>
    * Messages are deleted from the device and the chat database entry is deleted.
-   * After that, the event #DC_EVENT_MSGS_CHANGED is posted.
+   * After that, a `MsgsChanged` event is emitted.
+   * Messages are deleted from the server in background.
    * <p>
    * Things that are _not done_ implicitly:
    * <p>
-   * - Messages are **not deleted from the server**.
    * - The chat or the contact is **not blocked**, so new messages from the user/the group may appear as a contact request
    * and the user may create the chat again.
    * - **Groups are not left** - this would
@@ -734,10 +739,25 @@ public class Rpc {
   }
 
   /**
+   * Mark all messages in all chats as _noticed_.
+   * Skips messages from blocked contacts, but does not skip messages in muted chats.
+   * <p>
+   * _Noticed_ messages are no longer _fresh_ and do not count as being unseen
+   * but are still waiting for being marked as "seen" using markseen_msgs()
+   * (read receipts aren't sent for noticed messages).
+   * <p>
+   * Calling this function usually results in the event #DC_EVENT_MSGS_NOTICED.
+   * See also markseen_msgs().
+   */
+  public void marknoticedAllChats(Integer accountId) throws RpcException {
+    transport.call("marknoticed_all_chats", mapper.valueToTree(accountId));
+  }
+
+  /**
    * Mark all messages in a chat as _noticed_.
    * _Noticed_ messages are no longer _fresh_ and do not count as being unseen
    * but are still waiting for being marked as "seen" using markseen_msgs()
-   * (IMAP/MDNs is not done for noticed messages).
+   * (read receipts aren't sent for noticed messages).
    * <p>
    * Calling this function usually results in the event #DC_EVENT_MSGS_NOTICED.
    * See also markseen_msgs().
@@ -891,6 +911,15 @@ public class Rpc {
   /** Returns additional information for single message. */
   public MessageInfo getMessageInfoObject(Integer accountId, Integer messageId) throws RpcException {
     return transport.callForResult(new TypeReference<MessageInfo>(){}, "get_message_info_object", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
+  }
+
+  /**
+   * Returns count of read receipts on message.
+   * <p>
+   * This view count is meant as a feedback measure for the channel owner only.
+   */
+  public Integer getMessageReadReceiptCount(Integer accountId, Integer messageId) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "get_message_read_receipt_count", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
   }
 
   /** Returns contacts that sent read receipts and the time of reading. */
