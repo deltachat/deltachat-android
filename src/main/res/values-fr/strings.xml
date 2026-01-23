@@ -267,6 +267,9 @@
     <string name="add_recipients">Ajouter des destinataires</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nom du canal</string>
+    <string name="email">Courriel</string>
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">Nouveau courriel</string>
     <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Sujet</string>
     <string name="menu_send">Envoyer</string>
@@ -463,6 +466,7 @@
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archivé</string>
     <string name="chat_request_label">Invitation</string>
+    <string name="chat_request_label_explain">Inclure les messages d\'invitations dans les compteurs et notifications</string>
     <string name="chat_no_messages">Aucun message.</string>
     <string name="chat_self_talk_subtitle">Messages envoyés à moi-même</string>
     <string name="archive_empty_hint">Les discussions archivées apparaîtront ici.</string>
@@ -816,6 +820,12 @@
     <string name="disable_imap_idle">Désactiver IMAP IDLE</string>
     <string name="disable_imap_idle_explain">N\'utilisez pas d\'extension IMAP IDLE, même si elle est prise en charge par votre serveur, car elle provoque des retards dans la récupération des messages. Activez cette option uniquement pour effectuer des tests.</string>
     <string name="send_stats_to_devs">Envoyer les statistiques aux développeurs Delta Chat</string>
+    <string name="stats_device_message">Voulez-vous aider à améliorer Delta Chat et soutenir notre recherche en envoyant des statistiques d\'utilisation hebdomadaires ?\n\n👉 Touchez ici... 👈</string>
+    <string name="stats_confirmation_dialog">Voulez-vous aider à améliorer Delta Chat et soutenir notre recherche en envoyant des statistiques d\'utilisation hebdomadaires ?</string>
+    <string name="stats_thanks">Merci ! Vous pouvez toujours désactiver l\'envoi dans \"Paramètres -> Avancé\".\n\nAvez-vous en plus 5 minutes pour participer à une étude scientifique sur la sécurité de Delta Chat ?</string>
+    <string name="stats_disable_dialog">L\'envoi de statistiques est déjà activé.\n\nSouhaitez-vous le désactiver ?</string>
+    <string name="disable">Désactiver</string>
+    <string name="stats_keep_sending">Continuer l\'envoi</string>
     <string name="stats_msg_body">La pièce jointe contient des statistiques d\'usage anonymisés, qui nous aide à améliorer Delta Chat. Merci !</string>
 
     <!-- Emoji picker and categories -->
@@ -986,7 +996,7 @@
     <string name="qrshow_join_contact_hint">Scanner pour discuter avec %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Pas de connexion Internet, ne peut pas effectuer la configuration du QR code.</string>
     <string name="qraccount_ask_create_and_login">Créer une nouvelle adresse de courriel sur « %1$s » et se connecter ici ?</string>
-    <string name="set_name_and_avatar_explain">Choisissez un nom que vos contacts reconnaîtrons. Vous pouvez également définir une image pour votre profile.</string>
+    <string name="set_name_and_avatar_explain">Choisissez un nom que vos contacts reconnaîtrons. Vous pouvez également définir une image pour votre profil.</string>
     <string name="please_enter_name">Veuillez saisir un nom.</string>
     <string name="qraccount_qr_code_cannot_be_used">Le code QR scanné ne peut pas être utilisé pour ouvrir un nouveau compte.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
@@ -999,6 +1009,7 @@
     <string name="secure_join_replies">%1$s a répondu, en attente d’être ajouté au groupe…</string>
     <string name="secure_join_wait">Chiffrement de bout en bout en cours d\'établissement, merci de patienter...</string>
     <string name="contact_verified">%1$s connu.</string>
+    <string name="contact_blocked">Vous avez bloqué le contact</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Connu par %1$s</string>
     <string name="verified_by_you">Connu par vous</string>

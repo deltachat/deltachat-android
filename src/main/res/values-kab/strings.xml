@@ -176,7 +176,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Tamenṭaḍt</string>
     <string name="add_to_sticker_collection">Rnu ɣer tegrumma n tamenṭaḍt</string>
-    <string name="add_stickers_instructions">Akken ad ternuḍ tamenṭaḍt, sit ɣef \" ldi akaram n tmenṭaḍt \", snulfu-d akaram anaddaw i ukemmus-ik-im n tmenṭaḍt, zuɣer tugna akked ifuyla n tmenṭaḍt din</string>
+    <string name="add_stickers_instructions">Akken ad ternuḍ tamenṭaḍt, sit ɣef \" ldi akaram n tmenṭaḍt \", snulfu-d akaram anaddaw i ukemmus-ik·im n tmenṭaḍt, zuɣer tugna akked ifuyla n tmenṭaḍt din</string>
     <string name="open_sticker_folder">Ldi akaran n tmenṭaḍt</string>
     <string name="images">Tugniwin</string>
     <string name="audio">Ameslaw</string>
@@ -282,7 +282,7 @@
     <string name="menu_message_details">Talɣut n yizen</string>
     <string name="menu_copy_to_clipboard">Nɣel ɣer tecfawt</string>
     <string name="share_invite_link">Bḍu aseɣwen n tinnubga</string>
-    <string name="share_invite_link_explain">Yal yiwen s useɣwen-a yezmer ad iwali amaɣnu-ik-im daɣen ad yebdu adiwenni yid-k-m. Bḍu-t kan d wid i tettamneḍ.</string>
+    <string name="share_invite_link_explain">Yal yiwen s useɣwen-a yezmer ad iwali amaɣnu-ik·im daɣen ad yebdu adiwenni yid-k·m. Bḍu-t kan d wid i tettamneḍ.</string>
     <string name="invite_friends">Snubeg imeddukal</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Nermes-iyi-d deg Delta:\n%1$s</string>
@@ -341,7 +341,7 @@
     <string name="title_share_location">Bḍu adeg akked iɛeggalen n ugraw meṛṛa</string>
     <string name="device_talk">Iznan n yibenk</string>
     <string name="device_talk_subtitle">Slalen-d iznan seg yidis adigan</string>
-    <string name="device_talk_explain">Iznan n udiwenni-a ttlalen-d deg yibenk-ik-im kken ad d-mlen ileqman akked wuguren n usnas deg useqdec.</string>
+    <string name="device_talk_explain">Iznan n udiwenni-a ttlalen-d deg yibenk-ik·im kken ad d-mlen ileqman akked wuguren n usnas deg useqdec.</string>
     <string name="edit_contact">Ẓreg anermis</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Senteḍ adiwenni</string>
@@ -357,7 +357,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Rnu ɣer ugdil agejdan</string>
     <string name="donate">Mudd tawsa</string>
-    <string name="donate_device_msg">❤️ Yettban-iyi-d dakken aql-ik-im tḥemmled Delta Chat!\n\nMa ulac aɣilif, mudd-d tawsa akken ad tḍemneḍ d akken Delta Chat ad yeqqim baṭel i yal yiwen.\n\nMa d Delta Chat baṭel i useqdec d uɣbalu yeldin, taneflit tesqam-d idrimen. Mudd-aɣ-d afus ad neḥrez Delta Chat d ilelli u ad t-nerr d imgerrez ugar ɣer zdat.\n\nhttps://delta.chat/donate</string>
+    <string name="donate_device_msg">❤️ Yettban-iyi-d dakken aql-ik·im tḥemmled Delta Chat!\n\nMa ulac aɣilif, mudd-d tawsa akken ad tḍemneḍ d akken Delta Chat ad yeqqim baṭel i yal yiwen.\n\nMa d Delta Chat baṭel i useqdec d uɣbalu yeldin, taneflit tesqam-d idrimen. Mudd-aɣ-d afus ad neḥrez Delta Chat d ilelli u ad t-nerr d imgerrez ugar ɣer zdat.\n\nhttps://delta.chat/donate</string>
 
     <string name="mute_for_one_hour"> Sgugem i 1 usrag</string>
     <string name="mute_for_eight_hours">Sgugem i 8 yisragen</string>
@@ -394,15 +394,23 @@
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Tetḥeqqeḍ tebɣiḍ ad truḥeḍ? </string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Kkes %d n udiwenni?</item>
+        <item quantity="other">Kkes %d n tdiwenniyin?</item>
+    </plurals>
+    <string name="ask_delete_named_chat">Kkes adiwenni \"%1$s\"?</string>
+    <string name="ask_delete_message">Kkes izen-a?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Kkes %d n yizen?</item>
         <item quantity="other">Kkes %d n yiznan?</item>
     </plurals>
     <string name="ask_forward">Welleh iznan ɣer %1$s?</string>
     <string name="ask_forward_multiple">Welleh iznan ɣer %1$d n yidiwenniyen?</string>
-    <string name="ask_export_attachment">Asifeḍ n imeddayen ad yeǧǧ isnasen-nniḍen deg yibenk-ik-im ad kecmen ɣur-sen.\n\nad tkemmleḍ?</string>
+    <string name="ask_export_attachment">Asifeḍ n imeddayen ad yeǧǧ isnasen-nniḍen deg yibenk-ik·im ad kecmen ɣur-sen.\n\nad tkemmleḍ?</string>
     <string name="ask_block_contact">Sewḥel anermis-agi?\n\nUr d-ttbanen ara yiznan usriden neɣ igrawen i d-yettwaxelqen s yinermisen iweḥlen.\n\nIgrawen-nniḍen yesεan inermisen iweḥlen mazal ad d-sseknen iznan-nsen.</string>
     <string name="ask_unblock_contact">Kkes asewḥel i unermis-a </string>
+    <string name="ask_delete_contacts">Kkes inermisen?\n\nInermisen s udiwenni i d-iteddun ulamek ara ttwakksen i lebda.</string>
+    <string name="ask_delete_contact">Kkes anermis %1$s?\n\nInermisen s udiwenni i d-iteddun ulamek ara ttwakksen i lebda.</string>
     <string name="ask_start_chat_with">Qeṣṣir d %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Kkes %1$s seg unagraw?</string>
@@ -436,7 +444,7 @@
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Azen izen i %1$s.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
-    <string name="chat_new_channel_hint">Ibuda d afecku seg waṭas nniḍen i usiweḍ n yiznan-ik-im. </string>
+    <string name="chat_new_channel_hint">Ibuda d afecku seg waṭas nniḍen i usiweḍ n yiznan-ik·im. </string>
     <string name="chat_new_group_hint">Wiyaḍ ad walin kan agraw-agi ticki tuzneḍ izen amezwaru.</string>
     <string name="chat_record_slide_to_cancel">Zuɣer akken ad tesfesxeḍ</string>
     <string name="chat_record_explain">Sit u ṭṭef akken ad teskelseḍ izen n taɣect, serreḥ i tuzna</string>
@@ -476,7 +484,7 @@
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Azen izen i...</string>
     <string name="enable_realtime">Isnasen n wakud ilaw</string>
-    <string name="enable_realtime_explain">Rmed tuqqna n walud tilawt i yisnasen icudden ɣer idiwenniyen. Ma yella yermed, imttekkiyen n udiwenni zemren ad d-afen tansa-ik-im IP ticki tebdiḍ asnas.</string>
+    <string name="enable_realtime_explain">Rmed tuqqna n walud tilawt i yisnasen icudden ɣer idiwenniyen. Ma yella yermed, imttekkiyen n udiwenni zemren ad d-afen tansa-ik·im IP ticki tebdiḍ asnas.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Sken-d imeḍqan deg ukatar n wakud</string>
@@ -544,7 +552,7 @@
     <string name="multidevice_title">Rnu ibenk wis sin</string>
     <string name="multidevice_same_network_hint">Wali ma yella sin n yibenkan-a deg yiwen n uzeṭṭa Wi-Fi neɣ deg yiwen n uẓeṭṭa</string>
     <string name="multidevice_this_creates_a_qr_code">Aya ad yernu tangalt QR i yezmer ad yeḍumm ibenk wis sin akken ad yenɣel amaɣnu.\n\nḍmen d akken ula d yiwen n umnadi neɣ n tkamra ur yezmer ad iwali agdil-a.</string>
-    <string name="multidevice_install_dc_on_other_device">Sebded delta Chat ɣef yibenk-ik-im nniḍen (https://get.delta.chat)</string>
+    <string name="multidevice_install_dc_on_other_device">Sebded delta Chat ɣef yibenk-ik·im nniḍen (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Bdu Delta Chat, sit “Sεiɣ yakan amaɣnu / Rnu am yibenk wis sin” sakin ḍumm tangalt i d-yettwaseknen dagi</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
@@ -555,7 +563,7 @@
     <string name="multidevice_receiver_needs_update">Amaɣnu i tebɣiḍ ad d-tketreḍ seg lqem amaynut n Delta Chat.\n\nAkken ad tkemleḍ asebded n yibenk wis sin, ma ulac aɣilif leqqem ibenk-agi ɣer lqem aneggaru n Delta Chat. </string>
     <string name="multidevice_abort">Sefsex asbadu n yibenk wis sin?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Aya ad yili d arameɣtu i tangalt QR i d-yettwanɣelen ɣer tecfawt.</string>
-    <string name="multidevice_transfer_done_devicemsg">ℹ️ Amaɣnu yettusiweḍ ɣer yibenk-ik wis sin.</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Amaɣnu yettusiweḍ ɣer yibenk-ik·im wis sin.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Aheggi n umaɣnu...</string>
     <!-- Shown beside progress bar, stay short -->
@@ -580,7 +588,7 @@
     <string name="connectivity_connected">Yettwaqqen</string>
     <string name="sending">Tuzna...</string>
     <string name="last_msg_sent_successfully">Izen aneggaru yettwazen akken iwata. </string>
-    <string name="not_supported_by_provider">ur yettusefrak ara ɣer usaǧǧaw-ik-im.</string>
+    <string name="not_supported_by_provider">ur yettusefrak ara ɣer usaǧǧaw-ik·im.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Iznan</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
@@ -592,8 +600,10 @@
     <string name="onboarding_create_instant_account">Rnu amaɣnu amaynut</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Ɣur-i yakan amaɣnu</string>
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Seqdec imayl aklasiki am Umsiweḍ</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
-    <string name="instant_onboarding_title">Amaɣnu-ik-im</string>
+    <string name="instant_onboarding_title">Amaɣnu-ik·im</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
     <string name="instant_onboarding_agree_default2">Tsertit tabaḍnit i %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
@@ -615,6 +625,7 @@
     <string name="welcome_chat_over_email">Adiwenni Aɣelsan Aruslemmas</string>
     <string name="scan_invitation_code">Ḍumm tangalt n tinnubga</string>
     <string name="login_title">Kcem</string>
+    <string name="login_advanced_hint">Tuqqna-agi i yiseqdacen leqqayen:\n\n• Ur sseqdac ara tansa i tseqdaceḍ deg usnas nniḍen.\n\n• Aqeddac n yimayl aklasik yesirig anekcum war awgelhen seg yixef ɣer yixef yettwacerḍen s tignit n yimayl.</string>
     <string name="login_inbox">Tanaka n urmas</string>
     <string name="login_imap_login">Isem n tuqqna IMAP. </string>
     <string name="login_imap_server">Aqeddac IMAP</string>
@@ -637,10 +648,21 @@
     <string name="proxy_delete">Kkes apṛuksi</string>
     <string name="proxy_delete_explain">Tebɣiḍ ad tekkseḍ \"%1$s\"?</string>
     <string name="proxy_use_proxy_confirm">Tebɣiḍ ad tesqedceḍ apṛuksi \"%1$s\"?</string>
-    <string name="proxy_share_explain">Imeddukal-ik zemren ad rnun apṛuksi-a s uḍumm n tengalt QR. </string>
+    <string name="proxy_share_explain">Imeddukal-ik·im zemren ad rnun apṛuksi-a s uḍumm n tengalt QR. </string>
     <string name="proxy_share_link">Bḍu aseɣwen</string>
     <string name="proxy_enabled">Apṛuksi yermed</string>
-    <string name="proxy_enabled_hint">Aql-ik-im tesseqdaced apṛuksi. Ma tesɛiḍ ugur deg tuqqna, ɛreḍ apṛuksi-nniḍen.</string>
+    <string name="proxy_enabled_hint">Aql-ik·im tesseqdaced apṛuksi. Ma tesɛiḍ ugur deg tuqqna, ɛreḍ apṛuksi-nniḍen.</string>
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
+    <string name="transports">Imsawaḍen</string>
+    <string name="add_transport">Rnu amsiweḍ</string>
+    <string name="remove_transport">Kkes amsiweḍ</string>
+    <string name="edit_transport">Ẓreg amsiweḍ</string>
+    <!-- shown if a QR code was scanned that can be used as a relay -->
+    <string name="confirm_add_transport">Rnu amsiweḍ-agi?</string>
+    <string name="invalid_transport_qr">Tangalt QR ittusemḍen ur tesɛi ara amsiweḍ ameɣtu</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_transport">Kkes amsiweḍ \"%1$s\"?\n\nInermisen-ik·im ur zmiren ara ad k·im-id-awḍen ala ma tnermseḍ-ten yakan s umsiweḍ-nniḍen.\n\nMa yella ccekk, kkes amsiweḍ ticki.</string>
+
     <string name="login_certificate_checks">Asenqed n uselkin</string>
     <string name="login_error_mail">Ma ulac aɣilif, sekcem tansa imayl tameɣtut</string>
     <string name="login_error_server">Ma ulac aɣilif, sekcem aqeddac ameɣtu / tansa IP.</string>
@@ -658,11 +680,11 @@
     <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
     <string name="profile_tag">Tabzimt n umaɣnu</string>
     <string name="profile_tag_hint">eg. Axeddim, Tawacult</string>
-    <string name="profile_tag_explain">Sbadu tabzimt i d-yettbanen kan i kečč-kemm ; mudd-d afus ad temgirrdeḍ gar imeɣna-ik-im. </string>
+    <string name="profile_tag_explain">Sbadu tabzimt i d-yettbanen kan i kečč·kemm ; mudd-d afus ad temgirrdeḍ gar imeɣna-ik·im. </string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Ddu d asawen</string>
     <string name="delete_account">Kkes amaɣnu</string>
-    <string name="delete_account_ask">Tebɣiḍ ad tekkseḍ isefka n umaɣnu-inek-inem? </string>
+    <string name="delete_account_ask">Tebɣiḍ ad tekkseḍ isefka n umaɣnu-inek·inem? </string>
     <string name="delete_account_explain_with_name">Akk isefka n umaɣnu n \"%s\" ɣef yibenk-a ad ttwakksen, ula d asebded n uwgelhen seg yixef ɣer yixef, Inermisen, idiwenniyin, iznan akked umidya. Tigawt-a ur tezmir ara ad tuɣal ar deffir.</string>
     <string name="unconfigured_account">Amaɣnu ur yettwaswel ara</string>
     <string name="unconfigured_account_hint">Ldi amaɣnu akken ad t-tesweleḍ</string>
@@ -685,12 +707,12 @@
     <!-- preferences -->
     <string name="pref_using_custom"> Aseqdec asagen: %s</string>
     <string name="pref_using_default">Aseqdec amezwer: %s</string>
-    <string name="pref_profile_info_headline">Amaɣnu-inek-inem</string>
+    <string name="pref_profile_info_headline">Amaɣnu-inek·inem</string>
     <string name="pref_profile_photo">Tugna n umaɣnu</string>
     <string name="pref_blocked_contacts">Inermisen yettusweḥlen</string>
     <string name="blocked_empty_hint">Inermisen yettusweḥlen ad d-banen dagi. </string>
-    <string name="pref_who_can_see_profile_explain">Tugna-ik-im n umaɣnu, isem-ik-im akked tmeddurt ad ttwaznen akked iznan-ik-im ticki ttemseɣwalent akked iseqdacen-nniḍen.</string>
-    <string name="pref_your_name">Isem-ik-im</string>
+    <string name="pref_who_can_see_profile_explain">Tugna-ik·im n umaɣnu, isem-ik·im akked tmeddurt ad ttwaznen akked iznan-ik·im ticki ttemseɣwalent akked iseqdacen-nniḍen.</string>
+    <string name="pref_your_name">Isem-ik·im</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Tameddurt</string>
     <string name="pref_enter_sends">Kcem tisura i umazan</string>
@@ -705,7 +727,7 @@
     <string name="pref_screen_security_please_restart_hint">Akken ad tesneseḍ tawila n tɣellist n ugdil, ales asenker n usnas. </string>
     <string name="pref_notifications">Ilɣa</string>
     <string name="pref_mention_notifications">Tibdarin</string>
-    <string name="pref_mention_notifications_explain">Deg igrawen igugmen, iznan n telɣut rzuḍ ɣer-k-m, am tririyin neɣ tiririyin n tigawt</string>
+    <string name="pref_mention_notifications_explain">Deg igrawen igugmen, iznan n telɣut rzuḍ ɣer-k·m, am tririyin neɣ tiririyin n tigawt</string>
     <string name="pref_notifications_show">Sken</string>
     <string name="pref_notifications_priority">Tazwart</string>
     <string name="pref_notifications_explain">Rmed ilɣa n unagraw i yiznan imaynuten</string>
@@ -742,7 +764,7 @@
     <string name="pref_other">Wayeḍ</string>
     <string name="pref_backup">Aḥraz</string>
     <string name="pref_backup_explain">Aḥraz n idiwenniyen ɣer tkatut tazɣarayt</string>
-    <string name="pref_backup_export_explain">Aḥraz ad ak-d-imudd afus ad tesbeddeḍ asebded amaynut ɣef wagi neɣ ɣef yibenk nniḍen.\n\nAḥraz ad yegber akk iznan, inermisen akked idiwenniyen akked usebded awurman n uwgelhen si tazwara ar tagara. Ḥrez afaylu n uḥrez deg umḍiq aɣelsan neɣ kkes-it s zreb. </string>
+    <string name="pref_backup_export_explain">Aḥraz ad ak·m-d-imudd afus ad tesbeddeḍ asebded amaynut ɣef wagi neɣ ɣef yibenk nniḍen.\n\nAḥraz ad yegber akk iznan, inermisen akked idiwenniyen akked usebded awurman n uwgelhen si tazwara ar tagara. Ḥrez afaylu n uḥrez deg umḍiq aɣelsan neɣ kkes-it s zreb. </string>
     <string name="pref_backup_export_this">Sifeḍ amaɣnu-agi</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Sifeḍ akk %1$d Imuɣna</string>
@@ -752,11 +774,11 @@
     <string name="pref_background">Tugniwin n ugilal</string>
     <string name="pref_background_btn_default">Seqdec tugna tamezwert</string>
     <string name="pref_background_btn_gallery">Fren seg timidelt</string>
-    <string name="pref_imap_folder_warn_disable_defaults">Ma tbeddleḍ aɣewwaṛ-a, senqed aqeddac-ik-im d yimsaɣen-ik-im-nniḍen ad ttuswelen akken iwata.\n\nMa ulac, yezmer lḥal ur tteddunt ara akk tɣawsiwin.</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Ma tbeddleḍ aɣewwaṛ-a, senqed aqeddac-ik·im d yimsaɣen-ik·im-nniḍen ad ttuswelen akken iwata.\n\nMa ulac, yezmer lḥal ur tteddunt ara akk tɣawsiwin.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
     <string name="pref_multidevice">Askar n tugett n yibenk</string>
-    <string name="pref_multidevice_explain">Mtawi iznan-ik akked ibenkan-nniḍen. Irmed s wudem awurman deg tmerna n yibenk wis sin</string>
-    <string name="pref_multidevice_change_warn">Askar aget-ibenk yessefk ad yettwarmed mi ara tesqedceḍ yiwen n umaɣnu deg ddeqs n yibenkan. Sens kan aɣewwaṛ-agi ma yella tekkseḍ amaɣnu-yagi seg yibenkan-ik-im nniḍen.\n\nAsens n usakar n waget-ibenk mi ara tesqedceḍ amaɣnu ɣef ddeqs n yibenkan ad d-yeglu s yiznan yettwazeglen akked wuguren-nniḍen.</string>
+    <string name="pref_multidevice_explain">Mtawi iznan-ik·im akked ibenkan-nniḍen. Irmed s wudem awurman deg tmerna n yibenk wis sin</string>
+    <string name="pref_multidevice_change_warn">Askar aget-ibenk yessefk ad yettwarmed mi ara tesqedceḍ yiwen n umaɣnu deg ddeqs n yibenkan. Sens kan aɣewwaṛ-agi ma yella tekkseḍ amaɣnu-yagi seg yibenkan-ik·im nniḍen.\n\nAsens n usakar n waget-ibenk mi ara tesqedceḍ amaɣnu ɣef ddeqs n yibenkan ad d-yeglu s yiznan yettwazeglen akked wuguren-nniḍen.</string>
     <string name="pref_auto_folder_moves">Ddu s wudem awurman ɣer ukaram n DeltaChat</string>
     <string name="pref_only_fetch_mvbox_title">Awi-d kan seg akaram n DeltaChat</string>
     <string name="pref_show_emails">Sken imaylen iklasanen</string>
@@ -764,6 +786,7 @@
     <string name="pref_show_emails_accepted_contacts">I yinermisen yettwaqeblen</string>
     <string name="pref_show_emails_all">Akk</string>
     <string name="pref_experimental_features">Timahilin tirmitanin</string>
+    <string name="pref_experimental_features_explain">Timahilin-agi zemrent ad ilint ur rkident ara, daɣen zemrent ad ttwabeddlent neɣ ad ttwakksent</string>
     <string name="pref_on_demand_location_streaming">Seddu asuddem deg wadig s usuter</string>
     <string name="pref_background_default">Tugna tamezwert</string>
     <string name="pref_background_default_color">Ini amezwer</string>
@@ -782,13 +805,21 @@
     <string name="download_max_available_until">Sader-d afellay i yellan alamma d %1$s</string>
     <string name="select_profile">Fren amaɣnu</string>
     <string name="profile_image_select">Fren tugna n umaɣnu</string>
-    <string name="select_your_new_profile_image">Fren tugna-ik-im tamaynut n umaɣnu</string>
+    <string name="select_your_new_profile_image">Fren tugna-ik·im tamaynut n umaɣnu</string>
     <string name="profile_image_delete">Kkes tugna n umaɣnu</string>
     <string name="pref_show_tray_icon">Sken Tignit n ufaggag n waddad</string>
     <string name="pref_edit_profile">Ẓreg amaɣnu</string>
     <string name="disable_imap_idle">Sens IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Ur seqdac ara asiɣzef IMAP IDLE xas yella uqeddac isefrak-it. Asireg uɣewwaṛ-agi ad yerr izen iɛeṭṭel akken ad d-yuɣal, rmed-it kan i usekyed. </string>
     <string name="send_stats_to_devs">Azen tidaddanin i yineflayen n DeltaChat</string>
+    <string name="stats_device_message">Tebɣiḍ ad tεawneḍ deg usnerni n Delta Chat u ad tεawneḍ anadi s tuzna n tesnaddadin n useqdec udrigen?\n\n👉 Tekki da... 👈</string>
+    <string name="stats_confirmation_dialog">Tebɣiḍ ad tεawneḍ deg usnerni n Delta Chat u ad tεawneḍ anadi s tuzna n tesnaddadin n useqdec udrigen?</string>
+    <string name="stats_thanks">Tanemmirt! Tzemreḍ dima ad tessenseḍ tuzna deg \"Iɣewwaṛen -> Talqayt\".\n\nƔur-k·m ugar n 5 n tesdatin akken ad ttekkiḍ deg yiwet n tezrawt tussnant ɣef tɣellist n Delta Chat?</string>
+    <string name="stats_disable_dialog">Tuzzna n tdaddanin termed yakan.\n\nTebɣiḍ ad t-tessexsiḍ?</string>
+    <string name="disable">Sens</string>
+    <string name="stats_keep_sending">Eǧǧ tuzna</string>
+    <string name="stats_msg_body">Afaylu amedday yegber tiddadanin tudrigin, i ɣ-iεawnen ad nesnerni Delta Chat. Wali https://delta.chat/help#statssending i wugar n telɣut. Tanemmirt-ik·im!</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Igmaḍ n unadi</string>
     <string name="emoji_not_found">Ulac imujit</string>
@@ -853,6 +884,8 @@
     <string name="remove_member_by_you">Tekkseḍ aɛeggal %1$s</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Aɛeggal %1$s yettwakkes sɣur %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">Aεeggal %1$s yettwakkes.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Teffɣeḍ seg ugraw.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -907,15 +940,17 @@
     <string name="ephemeral_timer_weeks_by_other">Amkud n yiznan ur nettdum ara yettwasbed ar %1$s n yimalas sɣur %2$s.</string>
     <string name="chat_unencrypted_explanation">Iznan deg udiwenni-a sseqdacen imayl aklasiki, ur ttwawgelhen ara seg yixef ɣer yixef.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Iznan ttwawgelhen seg yixef ɣer yixef. Sit akken ad tissineḍ ugar.</string>
-    <string name="chat_protection_enabled_explanation">Iznan akk yellan deg udiwenni-a ttwawgelhen seg yixef ɣer yixef.\n\nAwgelhen n yixef ɣer yixef yettaǧǧa iznan d usligen gar-ak-am d yecriken n udiwenni. Ula d iqeddacen, isaǧǧawen neɣ isawaḍen ur zemren ad ten-ɣren.</string>
+    <string name="chat_protection_enabled_explanation">Iznan akk yellan deg udiwenni-a ttwawgelhen seg yixef ɣer yixef.\n\nAwgelhen n yixef ɣer yixef yettaǧǧa iznan d usligen gar-ak·am d yecriken n udiwenni. Ula d iqeddacen, isaǧǧawen neɣ imsawaḍen ur zemren ad ten-ɣren.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️%1$s Yesra awgelhen n yixef ɣer yixef ur nelli ara yakan i udiwenni-a. Sit akken ad tissineḍ ugar.</string>
     <string name="invalid_unencrypted_explanation">Akken ad tesbeddeḍ awgelhen n yixef ɣer yixef, tzemreḍ ad temlileḍ inermisen s timmad-nsen u ad ḍummeḍ tangalt-nsen QR akken ad ten-id-tesmendeḍ.</string>
     <string name="learn_more">Issin ugar</string>
 
-    <string name="devicemsg_self_deleted">Tekkseḍ adiwenni n \" iznan yettwakelsen \".\n\nℹ️ Akken ad tesqedceḍ tamahilt \" iznan yettwakelsen \", rnu adiwenni amaynut akked yiman-ik-im. </string>
+    <string name="devicemsg_self_deleted">Tekkseḍ adiwenni n \" iznan yettwakelsen \".\n\nℹ️ Akken ad tesqedceḍ tamahilt \" iznan yettwakelsen \", rnu adiwenni amaynut akked yiman-ik·im. </string>
+    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️Asaǧǧaw-ik·im n usekles qrib ad yaččar: %1$s%% yettwaseqdec yakan.\n\nAhat ur tezmireḍ ara ad d-remseḍ iznan ma yella asekles yeččur.\n\n 👉 Ttxil-k·m senqed ma yella tzemreḍ ad tekkseḍ isefka iqburen deg ugrudem n web n isaǧǧawen syin rmed \"Iɣewwaṛen / Idiwenniyen / Kkes iznan iqbuṛen\". Tzemreḍ ad tesneqdeḍ aseqdec n usekles-inek·inem amiran deg \"Iɣewwaṛen / tuqqna\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
-    <string name="devicemsg_bad_time">⚠️ Azemz neɣ akud deg yibenk-ik-im yettban-d ur iṣeḥḥa ara (%1$s).\n\nṢeggem tamasragt-nnek ⏰🔧Akken ad neḍmen d akken iznan-ik-im ad ttwaremsen akken iwata. </string>
-    <string name="devicemsg_update_reminder">⚠️Yezmer lḥal alqem-ik-im n Delta Chat d aqbur.\n\nAya yezmer ad d-yeglu s wuguren acku imendiden-ik-im n udiwenni sseqdacen ileqman imaynuten - yerna txuṣṣeḍ timahilin tineggura 😳\nTtxil-k-m, ssefqed https://get.delta.chat neɣ taḥanut-nnek-nnem n usnas i uleqqem.</string>
+    <string name="devicemsg_bad_time">⚠️ Azemz neɣ akud deg yibenk-ik·im yettban-d ur iṣeḥḥa ara (%1$s).\n\nṢeggem tamasragt-ik·im ⏰🔧Akken ad neḍmen d akken iznan-ik·im ad ttwaremsen akken iwata. </string>
+    <string name="devicemsg_update_reminder">⚠️Yezmer lḥal alqem-ik·im n Delta Chat d aqbur.\n\nAya yezmer ad d-yeglu s wuguren acku imendiden-ik·im n udiwenni sseqdacen ileqman imaynuten - yerna txuṣṣeḍ timahilin tineggura 😳\nTtxil-k·m, ssefqed https://get.delta.chat neɣ taḥanut-nnek·nnem n usnas i uleqqem.</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">Kkes assekeṛ akken ad tkemmleḍ</string>
@@ -924,7 +959,7 @@
     <string name="qr_code">Tangalt QR</string>
     <string name="load_qr_code_as_image">Sali tangalt QR am tugna</string>
     <string name="qrscan_title">Ḍumm Tangalt QR</string>
-    <string name="qrscan_hint">Ṭṭef takamra-nnek-nnem nnig n tangalt QR</string>
+    <string name="qrscan_hint">Ṭṭef takamra-nnek·nnem nnig n tangalt QR</string>
     <string name="qrscan_hint_desktop">Awi tangalt QR ɣer tkamiṛat</string>
     <string name="qrscan_failed">Tangalt QR ur tezmir ara ad ttwakestengel</string>
     <string name="qrscan_ask_join_group">Tebɣiḍ ad tettekkiḍ deg ugraw \"%1$s\"?</string>
@@ -934,7 +969,7 @@
     <string name="qrscan_contains_text">Aḍris n tengalt QR yettwaḍummen:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL n tangalt QR yettwaḍummen:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Adsil umḍin</string>
-    <string name="withdraw_verifycontact_explain">Tangalt-a QR tezmer ad tt-id-ḍummen wiyaḍ akken ad k-id-nermsen.\n\nTzemreḍ ad talseḍ awennez, akken tangalt QR yellan neɣ aseɣwen n uεraḍ ur iteddu ara.</string>
+    <string name="withdraw_verifycontact_explain">Tangalt-a QR tezmer ad tt-id-ḍummen wiyaḍ akken ad k·m-id-nermsen.\n\nTzemreḍ ad talseḍ awennez, akken tangalt QR yellan neɣ aseɣwen n uεraḍ ur iteddu ara.</string>
     <string name="withdraw_verifygroup_explain">Tangalt-a QR tezmer ad tt-id-ḍummen wiyaḍ akken ad kecmen ɣer ugraw \"%1$s\".\n\nTzemreḍ ad talseḍ awennez, akken tangalt QR yellan neɣ aseɣwen n uεraḍ ur iteddu ara.</string>
     <string name="withdraw_joinbroadcast_explain">Tangalt-a QR tezmer ad tt-id-ḍummen wiyaḍ akken ad ddun ɣer ubadu \"%1$s\".\n\nTzemreḍ ad talseḍ awennez, akken tangalt QR yellan neɣ aseɣwen n uεraḍ ur iteddu ara.</string>
     <string name="withdraw_qr_code">Ales Awennez n Tangalt QR</string>
@@ -953,16 +988,18 @@
     <string name="qrshow_join_contact_hint">Ḍumm iwakken ad tmeslayeḍ d %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Ulac tuqqna internet, ur izmir ara ad isebded tangalt QR.</string>
     <string name="qraccount_ask_create_and_login">Rnu amaɣnu amaynut di \"%1$s\" sakin tkecmeḍ dinna?</string>
-    <string name="set_name_and_avatar_explain">Sbadu isem ara ɛeqlen inermisen-ik. Tzemreḍ daɣen ad tesbaduḍ tugna n umaɣnu.</string>
+    <string name="set_name_and_avatar_explain">Sbadu isem ara ɛeqlen inermisen-ik·im. Tzemreḍ daɣen ad tesbaduḍ tugna n umaɣnu.</string>
     <string name="please_enter_name">Ma ulac aɣilif, sekcem isem.</string>
     <string name="qraccount_qr_code_cannot_be_used">Tangalt QR tettwaḍummen ur tezmir ara ad tettwaseqdec i usebded n umaɣnu amaynut. </string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Kcem ɣer \"%1$s\"?</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">%1$s yeɛreḍ-ik-im-id ad d-ternud ɣer ugraw-a.\n\nRǧu ibenk n %2$s ad d-yerr...</string>
+    <string name="secure_join_started">%1$s yeɛreḍ-ik·im-id ad d-ternud ɣer ugraw-a.\n\nRǧu ibenk n %2$s ad d-yerr...</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s inced-ik·m-id ad tkecmeḍ ɣer ubadu-a.\n\nAṛǧu n yibenk n %2$s akken ad d-yerr tiririt...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s yerra-d, rǧu i tmerna-as ɣer ugraw...</string>
-    <string name="secure_join_wait">Asbeddi n tuqqna, ttxil-k-m rǧu...</string>
+    <string name="secure_join_wait">Asbeddi n tuqqna, ttxil-k·m rǧu...</string>
     <string name="contact_verified">%1$s ittwasenked.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Yettwasenked sɣur %1$s</string>
@@ -1091,7 +1128,7 @@
     <string name="open_settings">Ldi iɣewwaṛen</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">Kter inermisen n yibenk</string>
-    <string name="import_device_contacts_hint">Iwakken ad tmeslayeḍ akked inermisen seg yibenk-ik-im, ldi Iɣewwaṛen sakkin rmed \"Iinermisen\".</string>
+    <string name="import_device_contacts_hint">Iwakken ad tmeslayeḍ akked inermisen seg yibenk-ik·im, ldi Iɣewwaṛen sakkin rmed \"Iinermisen\".</string>
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Ittwasens deg Delta Chat</string>
     <string name="disabled_in_system_settings">Ittwasens deg iɣewwaren n unagraw</string>
@@ -1112,26 +1149,26 @@
     <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
     <string name="add_to_widget">Rnu ɣer uwiǧet</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat yesseqdac takamrat-ik-im akken ad d-yeṭṭfeḍ tiwlafin d tvidyutin yerna ad i uḍummu tingalin QR.</string>
-    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat isra ad tebḍuḍ ideg-inek-inem ɣef wakud i tesremdeḍ ad tebḍuḍ ideg.</string>
-    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat yesra tasiregt akken ad yebḍu adig-inek-inem deg wakud i tremdeḍ buṭṭu n wadig.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat yesseqdac takamrat-ik·im akken ad d-yeṭṭfeḍ tiwlafin d tvidyutin yerna ad i uḍummu tingalin QR.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat isra ad tebḍuḍ ideg-inek·inem ɣef wakud i tesremdeḍ ad tebḍuḍ ideg.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat yesra tasiregt akken ad yebḍu adig-inek·inem deg wakud i tremdeḍ buṭṭu n wadig.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat yesseqdac amikrufun-ik·im i usekles d tuzna n yiznan n taɣect akked d tvidyutin s imesli.</string>
-    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat ad k-yeǧǧ ad tferneḍ anwa tiwlafin seg temkarḍit-ik-im ara tazneḍ.</string>
-    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat yebɣa ad yessekles tugniwin ɣer temkarḍit-ik-im n tewlafin.</string>
-    <string name="InfoPlist_NSFaceIDUsageDescription">Delta cat yezmer ad iseqdec ID n wudem i ummesten n umaɣnu-ik-im adigan, asnulfu n uḥraz akked usebded n yibenk wis sin.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat ad k-yeǧǧ ad tferneḍ anwa tiwlafin seg temkarḍit-ik·im ara tazneḍ.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat yebɣa ad yessekles tugniwin ɣer temkarḍit-ik·im n tewlafin.</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta cat yezmer ad iseqdec ID n wudem i ummesten n umaɣnu-ik·im adigan, asnulfu n uḥraz akked usebded n yibenk wis sin.</string>
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">asiweḍ dindin</string>
     <string name="pref_background_notifications">Seqdec tuqqna n ugilal</string>
-    <string name="pref_background_notifications_explain">Yesra ad yettwazgel useggem n tbatrit, seqdec ma yella ilɣa ur d-ttawḍen ara di lawan. </string>
+    <string name="pref_background_notifications_explain">Yesra ad yettwazgel useggem n udɣaɣ, seqdec ma yella ilɣa ur d-ttawḍen ara di lawan. </string>
     <string name="pref_reliable_service">Ḥettem tuqqna n ugilal</string>
     <string name="pref_reliable_service_explain">ad d-yeglu s telɣut timezgit</string>
 
-    <string name="pref_background_notifications_rationale">Akken ad tḥerzeḍ tuqqna daɣen ad d-remseḍ iznan deg ugilal, zgel aseggem n tbatrit deg usurif ay d-itteddun.\n\nDelṭa Chat yesseqdac kra n teɣbula udiɣ ur ttḥewwil ara akken ad yečč aṭas deg tbatrit.</string>
+    <string name="pref_background_notifications_rationale">Akken ad tḥerzeḍ tuqqna daɣen ad d-remseḍ iznan deg ugilal, zgel aseggem n tbatrit deg usurif ay d-itteddun.\n\nDelṭa Chat yesseqdac kra n teɣbula udiɣ ur ttḥewwil ara akken ad yečč aṭas deg udɣaɣ-ik.im.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Sit dagi akken ad tremseḍ iznan ticki Delta Chat yella deg ugilal.</string>
-    <string name="perm_enable_bg_already_done">Tsirgeḍ yakan Delta Chat i wakken ad d-remseḍ iznan deg ugilal.\n\nMa yella iznan ur d-ttawḍen ara deg ugilal, ttxil-k-m senqed daɣen iɣewwaṛen n unagraw.</string>
+    <string name="perm_enable_bg_already_done">Tsirgeḍ yakan Delta Chat i wakken ad d-remseḍ iznan deg ugilal.\n\nMa yella iznan ur d-ttawḍen ara deg ugilal, ttxil-k·m senqed daɣen iɣewwaṛen n unagraw.</string>
 
     <!-- device messages for updates -->
-    <string name="update_2_0">D acu i d amaynut?\n\n💯Awgelhen n yixef ɣer yixef d ayen iɣef ara tettekleḍ u i lebda. Inekcaman 🔒 ruḥen!\n\n✉️ Imayl aklasik war awgelhen yettwacreḍ s usekkil azamulan.\n\n 😻 Agdil amaynut yettwasneflin n umaɣnu i akk inermisen-ik-im\n\n🔲 Taqeffalt tamaynutt i unekcum uzrib ɣer yisnasen yettwasqedcen deg udiwenni usrid\n\n❤️ Ma ulac aɣilif mudd-aɣ-d afus akken ad neqqim d imunanen, daɣen ad nkemmel ad d-nawi asnerni: %1$s</string>
+    <string name="update_2_0">D acu i d amaynut?\n\n💯Awgelhen n yixef ɣer yixef d ayen iɣef ara tettekleḍ u i lebda. Inekcaman 🔒 ruḥen!\n\n✉️ Imayl aklasik war awgelhen yettwacreḍ s usekkil azamulan.\n\n 😻 Agdil amaynut yettwasneflin n umaɣnu i akk inermisen-ik·im\n\n🔲 Taqeffalt tamaynutt i unekcum uzrib ɣer yisnasen yettwasqedcen deg udiwenni usrid\n\n❤️ Ma ulac aɣilif mudd-aɣ-d afus akken ad neqqim d imunanen, daɣen ad nkemmel ad d-nawi asnerni: %1$s</string>
 </resources>
