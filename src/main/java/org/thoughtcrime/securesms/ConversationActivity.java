@@ -245,17 +245,23 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         }
     });
 
+    setDcEventListener();
+    handleRelaying();
+  }
+
+  private setDcEventListener() {
     DcEventCenter eventCenter = DcHelper.getEventCenter(this);
-    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
-    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED, this);
-    eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    // first cleanup in case it was already registered for other chat
+    eventCenter.removeObservers(this);
+
+    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED, this);
+    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
 
     if (!isMultiUser()) {
-      eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
-      eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+      eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+      eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_MSG_READ, this);
     }
-
-    handleRelaying();
   }
 
   @Override
@@ -281,6 +287,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     });
 
+    setDcEventListener(); // reset event listener
     handleRelaying();
 
     if (fragment != null) {
