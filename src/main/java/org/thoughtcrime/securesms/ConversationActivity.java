@@ -249,7 +249,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     handleRelaying();
   }
 
-  private setDcEventListener() {
+  private void setDcEventListener() {
     DcEventCenter eventCenter = DcHelper.getEventCenter(this);
     // first cleanup in case it was already registered for other chat
     eventCenter.removeObservers(this);
