@@ -16,8 +16,6 @@
  */
 package org.thoughtcrime.securesms;
 
-import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
-import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_URL;
 import static org.thoughtcrime.securesms.util.ShareUtil.acquireRelayMessageContent;
@@ -25,10 +23,12 @@ import static org.thoughtcrime.securesms.util.ShareUtil.getDirectSharingChatId;
 import static org.thoughtcrime.securesms.util.ShareUtil.getSharedTitle;
 import static org.thoughtcrime.securesms.util.ShareUtil.isDirectSharing;
 import static org.thoughtcrime.securesms.util.ShareUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.ShareUtil.getForwardedMessageAccountId;
 import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.ShareUtil.resetRelayingMessageContent;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -122,36 +122,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
-    // update messages - for new messages, do not reuse or modify strings but create new ones.
-    // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
-    try {
-      DcContext dcContext = DcHelper.getContext(this);
-      final String deviceMsgLabel = "update_2_0_0_android-h";
-      if (!dcContext.wasDeviceMsgEverAdded(deviceMsgLabel)) {
-        DcMsg msg = null;
-        if (!getIntent().getBooleanExtra(FROM_WELCOME, false)) {
-          msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-
-          // InputStream inputStream = getResources().getAssets().open("device-messages/green-checkmark.jpg");
-          // String outputFile = DcHelper.getBlobdirFile(dcContext, "green-checkmark", ".jpg");
-          // Util.copy(inputStream, new FileOutputStream(outputFile));
-          // msg.setFile(outputFile, "image/jpeg");
-
-          msg.setText(getString(R.string.update_2_0, "https://delta.chat/donate"));
-        }
-        dcContext.addDeviceMsg(deviceMsgLabel, msg);
-
-        if (Prefs.getStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, "").equals(deviceMsgLabel)) {
-          int deviceChatId = dcContext.getChatIdByContactId(DcContact.DC_CONTACT_ID_DEVICE);
-          if (deviceChatId != 0) {
-            dcContext.marknoticedChat(deviceChatId);
-          }
-        }
-        Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, deviceMsgLabel);
-      }
-
-    } catch(Exception e) {
-      e.printStackTrace();
+    addDeviceMessages(getIntent().getBooleanExtra(FROM_WELCOME, false));
+    if (getIntent().getIntExtra(ACCOUNT_ID_EXTRA, -1) <= 0) {
+      getIntent().putExtra(ACCOUNT_ID_EXTRA, DcHelper.getContext(this).getAccountId());
     }
 
     // create view
@@ -181,8 +154,20 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         if (searchToolbar.isVisible()) {
           searchToolbar.collapse();
         } else {
-          if (isRelayingMessageContent(ConversationListActivity.this)) {
-            handleResetRelaying();
+          Activity activity = ConversationListActivity.this;
+          if (isRelayingMessageContent(activity)) {
+            int selectedAccId = DcHelper.getContext(activity).getAccountId();
+            int initialAccId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, selectedAccId);
+            if (initialAccId != selectedAccId) {
+              // allowing to go back is dangerous, it could be activity on previously selected account,
+              // instead of figuring out account rollback in onResume in each activity (conversation, gallery, media preview, webxdc, etc.)
+              // just clear the back stack and stay in newly selected account
+              finishAffinity();
+              startActivity(new Intent(activity, ConversationListActivity.class));
+              return;
+            } else {
+              handleResetRelaying();
+            }
           }
 
           setEnabled(false);
@@ -194,10 +179,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
 
     TooltipCompat.setTooltipText(selfAvatar, getText(R.string.switch_account));
-    selfAvatar.setOnClickListener(v -> AccountManager.getInstance().showSwitchAccountMenu(this));
+    selfAvatar.setOnClickListener(v -> AccountManager.getInstance().showSwitchAccountMenu(this, false));
     findViewById(R.id.avatar_and_title).setOnClickListener(v -> {
       if (!isRelayingMessageContent(this)) {
-        AccountManager.getInstance().showSwitchAccountMenu(this);
+        AccountManager.getInstance().showSwitchAccountMenu(this, false);
       }
     });
 
@@ -272,24 +257,29 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     }
     super.onNewIntent(intent);
     setIntent(intent);
+    if (getIntent().getIntExtra(ACCOUNT_ID_EXTRA, -1) <= 0) {
+      getIntent().putExtra(ACCOUNT_ID_EXTRA, DcHelper.getContext(this).getAccountId());
+    }
     refresh();
     conversationListFragment.onNewIntent();
     invalidateOptionsMenu();
   }
 
   private void refresh() {
-    DcContext dcContext = DcHelper.getContext(this);
-    int accountId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, dcContext.getAccountId());
+    int selectedAccId = DcHelper.getContext(this).getAccountId();
+    int accountId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, selectedAccId);
     if (getIntent().getBooleanExtra(CLEAR_NOTIFICATIONS, false)) {
       DcHelper.getNotificationCenter(this).removeAllNotifications(accountId);
     }
-    if (accountId != dcContext.getAccountId()) {
-      AccountManager.getInstance().switchAccountAndStartActivity(this, accountId);
+    if (accountId != selectedAccId) {
+      AccountManager.getInstance().switchAccount(this, accountId);
+      onProfileSwitched(accountId);
+    } else {
+      refreshAvatar();
+      refreshUnreadIndicator();
+      refreshTitle();
     }
 
-    refreshAvatar();
-    refreshUnreadIndicator();
-    refreshTitle();
     handleOpenpgp4fpr();
     if (isDirectSharing(this)) {
       openConversation(getDirectSharingChatId(this), -1);
@@ -470,6 +460,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     } else if (itemId == R.id.menu_export_attachment) {
       handleSaveAttachment();
       return true;
+    } else if (itemId == R.id.menu_switch_account) {
+      AccountManager.getInstance().showSwitchAccountMenu(this, true);
+      return true;
     }
 
     return false;
@@ -537,15 +530,17 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     searchToolbar.clearFocus();
 
     final DcContext dcContext = DcHelper.getContext(this);
-    if (isForwarding(this) && dcContext.getChat(chatId).isSelfTalk()) {
+    int fwdAccId = getForwardedMessageAccountId(this);
+    if (fwdAccId == dcContext.getAccountId() && dcContext.getChat(chatId).isSelfTalk()) {
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
       Toast.makeText(this, DynamicTheme.getCheckmarkEmoji(this) + " " + getString(R.string.saved), Toast.LENGTH_SHORT).show();
       handleResetRelaying();
       finish();
     } else {
       Intent intent = new Intent(this, ConversationActivity.class);
-      intent.putExtra(CHAT_ID_EXTRA, chatId);
-      intent.putExtra(STARTING_POSITION_EXTRA, startingPosition);
+      intent.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, dcContext.getAccountId());
+      intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+      intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
       if (isRelayingMessageContent(this)) {
         acquireRelayMessageContent(this, intent);
       }
@@ -581,6 +576,48 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
   }
 
+  private void addDeviceMessages(boolean fromWelcome) {
+    // update messages - for new messages, do not reuse or modify strings but create new ones.
+    // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
+    try {
+      DcContext dcContext = DcHelper.getContext(this);
+      final String deviceMsgLabel = "update_2_0_0_android-h";
+      if (!dcContext.wasDeviceMsgEverAdded(deviceMsgLabel)) {
+        DcMsg msg = null;
+        if (!fromWelcome) {
+          msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+
+          // InputStream inputStream = getResources().getAssets().open("device-messages/green-checkmark.jpg");
+          // String outputFile = DcHelper.getBlobdirFile(dcContext, "green-checkmark", ".jpg");
+          // Util.copy(inputStream, new FileOutputStream(outputFile));
+          // msg.setFile(outputFile, "image/jpeg");
+
+          msg.setText(getString(R.string.update_2_0, "https://delta.chat/donate"));
+        }
+        dcContext.addDeviceMsg(deviceMsgLabel, msg);
+
+        if (Prefs.getStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, "").equals(deviceMsgLabel)) {
+          int deviceChatId = dcContext.getChatIdByContactId(DcContact.DC_CONTACT_ID_DEVICE);
+          if (deviceChatId != 0) {
+            dcContext.marknoticedChat(deviceChatId);
+          }
+        }
+        Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, deviceMsgLabel);
+      }
+
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void onProfileSwitched(int profileId) {
+    addDeviceMessages(false);
+    refreshAvatar();
+    refreshUnreadIndicator();
+    refreshTitle();
+    conversationListFragment.loadChatlist();
+  }
+
   public void onDeleteProfile(int profileId) {
     deleteProfileId = profileId;
     boolean result = ScreenLockUtil.applyScreenLock(this, getString(R.string.delete_account), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_DELETE_PROFILE);
@@ -596,9 +633,14 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     accounts.removeAccount(profileId);
     if (selected) {
       DcContext selAcc = accounts.getSelectedAccount();
-      AccountManager.getInstance().switchAccountAndStartActivity(this, selAcc.isOk()? selAcc.getAccountId() : 0);
+      if (selAcc.isOk()) {
+        AccountManager.getInstance().switchAccount(this, selAcc.getAccountId());
+        onProfileSwitched(selAcc.getAccountId());
+      } else {
+        AccountManager.getInstance().switchAccountAndStartActivity(this, 0);
+      }
     } else {
-      AccountManager.getInstance().showSwitchAccountMenu(this);
+      AccountManager.getInstance().showSwitchAccountMenu(this, false);
     }
 
     // title update needed to show "Delta Chat" in case there is only one profile left

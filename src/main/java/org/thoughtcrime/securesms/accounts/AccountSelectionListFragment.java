@@ -50,10 +50,12 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
   private final ConversationListActivity activity;
   private RecyclerView recyclerView;
   private AccountSelectionListAdapter adapter;
+  private final boolean selectOnly;
 
-  public AccountSelectionListFragment(ConversationListActivity activity) {
+  public AccountSelectionListFragment(ConversationListActivity activity, boolean selectOnly) {
     super();
     this.activity = activity;
+    this.selectOnly = selectOnly;
   }
 
   @NonNull
@@ -61,10 +63,12 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity())
             .setTitle(R.string.switch_account)
-            .setNeutralButton(R.string.connectivity, ((dialog, which) -> {
-              startActivity(new Intent(getActivity(), ConnectivityActivity.class));
-            }))
             .setNegativeButton(R.string.cancel, null);
+    if (!selectOnly) {
+      builder.setNeutralButton(R.string.connectivity, ((dialog, which) -> {
+        startActivity(new Intent(getActivity(), ConnectivityActivity.class));
+      }));
+    }
 
     LayoutInflater inflater = requireActivity().getLayoutInflater();
     View view = inflater.inflate(R.layout.account_selection_list_fragment, null);
@@ -99,18 +103,20 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
     DcAccounts accounts = DcHelper.getAccounts(getActivity());
     int[] accountIds = accounts.getAll();
 
-    int[] ids = new int[accountIds.length + 1];
+    int[] ids = new int[(selectOnly? 0 : 1) + accountIds.length];
     int j = 0;
     for (int accountId : accountIds) {
       ids[j++] = accountId;
     }
-    ids[j] = DC_CONTACT_ID_ADD_ACCOUNT;
+    if (!selectOnly) ids[j] = DC_CONTACT_ID_ADD_ACCOUNT;
     adapter.changeData(ids, accounts.getSelectedAccount().getAccountId());
   }
 
   @Override
   public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, ContextMenu.ContextMenuInfo menuInfo) {
     super.onCreateContextMenu(menu, v, menuInfo);
+    if (selectOnly) return;
+
     requireActivity().getMenuInflater().inflate(R.menu.account_item_context, menu);
 
     AccountSelectionListItem listItem = (AccountSelectionListItem) v;
@@ -188,9 +194,9 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
       .setPositiveButton(android.R.string.ok, (d, b) -> {
         String newTag = inputField.getText().toString().trim();
         dcContext.setConfig(CONFIG_PRIVATE_TAG, newTag);
-        AccountManager.getInstance().showSwitchAccountMenu(activity);
+        AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly);
       })
-      .setNegativeButton(R.string.cancel, (d, b) -> AccountManager.getInstance().showSwitchAccountMenu(activity))
+      .setNegativeButton(R.string.cancel, (d, b) -> AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly))
       .show();
   }
 
@@ -230,7 +236,7 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
     AlertDialog dialog = new AlertDialog.Builder(activity)
       .setTitle(R.string.delete_account)
       .setView(dialogView)
-      .setNegativeButton(R.string.cancel, (d, which) -> AccountManager.getInstance().showSwitchAccountMenu(activity))
+      .setNegativeButton(R.string.cancel, (d, which) -> AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly))
       .setPositiveButton(R.string.delete, (d2, w2) -> activity.onDeleteProfile(accountId))
       .show();
     Util.redPositiveButton(dialog);
@@ -247,13 +253,13 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
 
     @Override
     public void onItemClick(AccountSelectionListItem contact) {
-      Activity activity = requireActivity();
       AccountSelectionListFragment.this.dismiss();
       int accountId = contact.getAccountId();
       if (accountId == DC_CONTACT_ID_ADD_ACCOUNT) {
         AccountManager.getInstance().switchAccountAndStartActivity(activity, 0);
       } else if (accountId != DcHelper.getAccounts(activity).getSelectedAccount().getAccountId()) {
-        AccountManager.getInstance().switchAccountAndStartActivity(activity, accountId);
+        AccountManager.getInstance().switchAccount(activity, accountId);
+        activity.onProfileSwitched(accountId);
       }
     }
   }

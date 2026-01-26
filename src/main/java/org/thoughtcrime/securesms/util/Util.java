@@ -53,7 +53,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
@@ -109,6 +111,14 @@ public class Util {
     } catch (Exception e) {
       e.printStackTrace();
     }
+  }
+
+  public static List<Integer> toList(int[] array) {
+    ArrayList<Integer> list = new ArrayList<>(array.length);
+    for (int i : array) {
+      list.add(i);
+    }
+    return list;
   }
 
   public static @NonNull int[] appendInt(@Nullable int[] cur, int val) {

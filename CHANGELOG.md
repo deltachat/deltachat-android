@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Improve switch speed when changing profiles
+* Allow to switch profile when sharing or forwarding
 * Don't notify notification-to-all from in-chat apps if the chat is muted
 * Allow to see inbox quota for all relays in connectivity screen
 * Truncate file names in the middle, not at the end; important information are more often at the end
@@ -15,7 +17,7 @@
 * Fix: Update menu when using "select all" in contact selection
 * Fix: Avoid empty profiles after using "add as second device" from welcome screen
 * Fix multi-device seen messages synchronization when using multiple relays
-* Update to core 2.38.0
+* Update to core 2.39.0
 
 ## v2.35.0
 2026-01

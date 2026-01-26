@@ -5,4 +5,7 @@
     <item android:title="@string/menu_export_attachment"
           android:id="@+id/menu_export_attachment" />
 
+    <item android:title="@string/switch_account"
+          android:id="@+id/menu_switch_account" />
+
 </menu>

@@ -185,7 +185,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private ApplicationContext context;
   private Recipient  recipient;
-  private DcContext  dcContext;
   private Rpc rpc;
   private DcChat     dcChat                = new DcChat(0, 0);
   private int        chatId;
@@ -199,7 +198,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onCreate(Bundle state, boolean ready) {
     this.context = ApplicationContext.getInstance(getApplicationContext());
-    this.dcContext = DcHelper.getContext(context);
     this.rpc = DcHelper.getRpc(context);
 
     supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
@@ -247,17 +245,23 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         }
     });
 
+    setDcEventListener();
+    handleRelaying();
+  }
+
+  private void setDcEventListener() {
     DcEventCenter eventCenter = DcHelper.getEventCenter(this);
-    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
-    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED, this);
-    eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    // first cleanup in case it was already registered for other chat
+    eventCenter.removeObservers(this);
+
+    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED, this);
+    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
 
     if (!isMultiUser()) {
-      eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
-      eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+      eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+      eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_MSG_READ, this);
     }
-
-    handleRelaying();
   }
 
   @Override
@@ -283,6 +287,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     });
 
+    setDcEventListener(); // reset event listener
     handleRelaying();
 
     if (fragment != null) {
@@ -309,7 +314,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     titleView.setTitle(glideRequests, dcChat);
 
-    DcHelper.getNotificationCenter(this).updateVisibleChat(dcContext.getAccountId(), chatId);
+    try {
+      int accId = rpc.getSelectedAccountId();
+      DcHelper.getNotificationCenter(this).updateVisibleChat(accId, chatId);
+    } catch (RpcException e) {
+      Log.e(TAG, "rpc.getSelectedAccountId() failed", e);
+    }
+
 
     attachmentManager.onResume();
   }
@@ -399,7 +410,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       break;
 
     case GROUP_EDIT:
-      dcChat = dcContext.getChat(chatId);
+      dcChat = DcHelper.getContext(context).getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
       break;
 
@@ -600,6 +611,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   //////// Event Handlers
 
   private void handleEphemeralMessages() {
+      DcContext dcContext = DcHelper.getContext(context);
       int preselected = dcContext.getChatEphemeralTimer(chatId);
       EphemeralMessagesDialog.show(this, preselected, duration -> {
         dcContext.setChatEphemeralTimer(chatId, (int) duration);
@@ -625,6 +637,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleMuteNotifications() {
+    DcContext dcContext = DcHelper.getContext(context);
     if(!dcChat.isMuted()) {
       MuteDialog.show(this, duration -> {
         dcContext.setChatMuteDuration(chatId, duration);
@@ -660,7 +673,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     AlertDialog dialog = new AlertDialog.Builder(this)
       .setMessage(getString(R.string.ask_leave_group))
       .setPositiveButton(leaveLabel, (d, which) -> {
-        dcContext.removeContactFromChat(chatId, DcContact.DC_CONTACT_ID_SELF);
+        DcHelper.getContext(context).removeContactFromChat(chatId, DcContact.DC_CONTACT_ID_SELF);
         Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
       })
       .setNegativeButton(R.string.cancel, null)
@@ -669,6 +682,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleArchiveChat() {
+    DcContext dcContext = DcHelper.getContext(context);
     int newVisibility = isArchived() ?
             DcChat.DC_CHAT_VISIBILITY_NORMAL : DcChat.DC_CHAT_VISIBILITY_ARCHIVED;
     dcContext.setChatVisibility(chatId, newVisibility);
@@ -684,7 +698,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     AlertDialog dialog = new AlertDialog.Builder(this)
         .setMessage(getResources().getString(R.string.ask_delete_named_chat, dcChat.getName()))
         .setPositiveButton(R.string.delete, (d, which) -> {
-          dcContext.deleteChat(chatId);
+          DcHelper.getContext(context).deleteChat(chatId);
           DirectShareUtil.clearShortcut(this, chatId);
           finish();
         })
@@ -714,6 +728,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleForwarding() {
+    DcContext dcContext = DcHelper.getContext(context);
     DcChat dcChat = dcContext.getChat(chatId);
     if (dcChat.isSelfTalk()) {
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
@@ -759,9 +774,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       if (sharedContactId != 0) {
         addAttachmentContactInfo(sharedContactId);
       } else if (uriList.isEmpty()) {
-        dcContext.setDraft(chatId, SendRelayedMessageUtil.createMessage(this, null, getSharedText(this)));
+        DcHelper.getContext(context).setDraft(chatId, SendRelayedMessageUtil.createMessage(this, null, getSharedText(this)));
       } else {
-        dcContext.setDraft(chatId, SendRelayedMessageUtil.createMessage(this, uriList.get(0), getSharedText(this)));
+        DcHelper.getContext(context).setDraft(chatId, SendRelayedMessageUtil.createMessage(this, uriList.get(0), getSharedText(this)));
       }
       initializeDraft();
     }
@@ -776,7 +791,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private ListenableFuture<Boolean> initializeDraft() {
     isEditing = false;
     final SettableFuture<Boolean> future = new SettableFuture<>();
-    DcMsg draft = dcContext.getDraft(chatId);
+    DcMsg draft = DcHelper.getContext(context).getDraft(chatId);
     final String sharedText = ShareUtil.getSharedText(this);
 
     if (!draft.isOk()) {
@@ -932,7 +947,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeBackground() {
-    String backgroundImagePath = Prefs.getBackgroundImagePath(this, dcContext.getAccountId());
+    int accId;
+    try {
+      accId = rpc.getSelectedAccountId();
+    } catch (RpcException e) {
+      Log.e(TAG, "rpc.getSelectedAccountId() failed", e);
+      return;
+    }
+
+    String backgroundImagePath = Prefs.getBackgroundImagePath(this, accId);
     Drawable background;
     if(!backgroundImagePath.isEmpty()) {
       background = Drawable.createFromPath(backgroundImagePath);
@@ -961,17 +984,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeResources() {
-    int accountId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, dcContext.getAccountId());
-    if (accountId != dcContext.getAccountId()) {
+    int selectedAccId = DcHelper.getContext(context).getAccountId();
+    int accountId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, selectedAccId);
+    if (accountId != selectedAccId) {
       switchedProfile = true;
       AccountManager.getInstance().switchAccount(context, accountId);
-      fragment.dcContext = dcContext = context.getDcContext();
       initializeBackground();
     }
     chatId = getIntent().getIntExtra(CHAT_ID_EXTRA, -1);
     if(chatId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
-    dcChat           = dcContext.getChat(chatId);
+    dcChat           = DcHelper.getContext(context).getChat(chatId);
     recipient        = new Recipient(this, dcChat);
     glideRequests    = GlideApp.with(this);
 
@@ -1036,11 +1059,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     try {
-      byte[] vcard = rpc.makeVcard(dcContext.getAccountId(), Collections.singletonList(contactId)).getBytes();
+      byte[] vcard = rpc.makeVcard(rpc.getSelectedAccountId(), Collections.singletonList(contactId)).getBytes();
       String mimeType = "application/octet-stream";
       setMedia(PersistentBlobProvider.getInstance().create(this, vcard, mimeType, "vcard.vcf"), MediaType.DOCUMENT);
     } catch (RpcException e) {
-      Log.e(TAG, "makeVcard() failed", e);
+      Log.e(TAG, "RPC failed", e);
     }
   }
 
@@ -1077,6 +1100,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       inputPanel.clearQuote();
     }
 
+    DcContext dcContext = DcHelper.getContext(context);
     Util.runOnAnyBackgroundThread(() -> {
       DcMsg msg = null;
       int recompress = 0;
@@ -1205,7 +1229,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (refreshFragment) {
       fragment.reload(recipient, chatId);
-      DcHelper.getNotificationCenter(this).updateVisibleChat(dcContext.getAccountId(), chatId);
+      try {
+        int accId = rpc.getSelectedAccountId();
+        DcHelper.getNotificationCenter(this).updateVisibleChat(accId, chatId);
+      } catch (RpcException e) {
+        Log.e(TAG, "rpc.getSelectedAccountId() failed", e);
+      }
     }
 
     fragment.scrollToBottom();
@@ -1367,6 +1396,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Optional<QuoteModel> quote = inputPanel.getQuote();
     inputPanel.clearQuote();
 
+    DcContext dcContext = DcHelper.getContext(context);
     DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_STICKER);
     if (quote.isPresent()) {
       msg.setQuote(quote.get().getQuotedMsg());
@@ -1487,7 +1517,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (isEditing) composeText.setText("");
     isEditing = false;
     // If you modify these lines you may also want to modify ConversationItem.setQuote():
-    Recipient author = new Recipient(this, dcContext.getContact(msg.getFromId()));
+    Recipient author = new Recipient(this, DcHelper.getContext(context).getContact(msg.getFromId()));
 
     SlideDeck slideDeck = new SlideDeck();
     if (msg.hasFile()) {
@@ -1510,7 +1540,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void handleEditMessage(DcMsg msg) {
     isEditing = true;
-    Recipient author = new Recipient(this, dcContext.getContact(msg.getFromId()));
+    Recipient author = new Recipient(this, DcHelper.getContext(context).getContact(msg.getFromId()));
 
     SlideDeck slideDeck = new SlideDeck();
     String text = msg.getSummarytext(500);
@@ -1535,6 +1565,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void handleEvent(@NonNull DcEvent event) {
+    DcContext dcContext = DcHelper.getContext(context);
+    if (event.getAccountId() != dcContext.getAccountId()) return;
+
     int eventId = event.getId();
     if ((eventId == DcContext.DC_EVENT_CHAT_MODIFIED && event.getData1Int() == chatId)
      || (eventId == DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED && event.getData1Int() == chatId)
@@ -1621,7 +1654,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     String normQuery = query.trim();
-    searchResult = dcContext.searchMsgs(chatId, normQuery);
+    searchResult = DcHelper.getContext(context).searchMsgs(chatId, normQuery);
 
     if(searchResult.length>0) {
       searchResultPosition = searchResult.length - 1;
@@ -1652,7 +1685,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     messageRequestBottomView.setVisibility(View.VISIBLE);
     messageRequestBottomView.setAcceptOnClickListener(v -> {
-      dcContext.acceptChat(chatId);
+      DcHelper.getContext(context).acceptChat(chatId);
       messageRequestBottomView.setVisibility(View.GONE);
       composePanel.setVisibility(View.VISIBLE);
     });
@@ -1670,7 +1703,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         // avoid showing compose panel on receiving DC_EVENT_CONTACTS_CHANGED for the chat that is no longer a request after blocking
         DcHelper.getEventCenter(this).removeObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
 
-        dcContext.blockChat(chatId);
+        DcHelper.getContext(context).blockChat(chatId);
         Bundle extras = new Bundle();
         extras.putInt(ConversationListFragment.RELOAD_LIST, 1);
         handleReturnToConversationList(extras);
