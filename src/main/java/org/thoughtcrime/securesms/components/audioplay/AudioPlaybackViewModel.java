@@ -1,0 +1,187 @@
+package org.thoughtcrime.securesms.components.audioplay;
+
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
+
+import androidx.annotation.Nullable;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.media3.common.MediaItem;
+import androidx.media3.common.Player;
+import androidx.media3.session.MediaController;
+
+import com.google.common.util.concurrent.ListenableFuture;
+
+import java.util.concurrent.Future;
+
+
+public class AudioPlaybackViewModel extends ViewModel {
+  private final MutableLiveData<AudioPlaybackState> playbackState;
+  private @Nullable MediaController mediaController;
+  private final Handler handler;
+  private boolean isUserSeeking = false;
+
+  public AudioPlaybackViewModel() {
+    playbackState = new MutableLiveData<>(AudioPlaybackState.idle());
+    handler = new Handler(Looper.getMainLooper());
+  }
+
+  public LiveData<AudioPlaybackState> getPlaybackState() {
+    return playbackState;
+  }
+
+  public void setMediaController(@Nullable MediaController controller) {
+    this.mediaController = controller;
+    setupPlayerListener();
+  }
+
+  // Public methods
+  public void playAudio(Uri audioUri) {
+    if (mediaController == null) return;
+
+    AudioPlaybackState currentState = playbackState.getValue();
+
+    updateState(audioUri, AudioPlaybackState.PlaybackStatus.LOADING, 0, 0);
+
+    // Set media item if we have a different audio
+    if (currentState != null && currentState.getAudioUri() != null
+      && !currentState.getAudioUri().equals(audioUri)) {
+      MediaItem mediaItem = MediaItem.fromUri(audioUri);
+      mediaController.setMediaItem(mediaItem);
+      mediaController.prepare();
+    }
+
+    play();
+  }
+
+  public void pause() {
+    if (mediaController != null) {
+      mediaController.pause();
+
+      stopUpdateProgress();
+    }
+  }
+
+  public void play() {
+    if (mediaController != null) {
+      mediaController.play();
+    }
+  }
+
+  public void seekTo(long position) {
+    if (mediaController != null) {
+      mediaController.seekTo(position);
+    }
+  }
+
+  // Shouldn't be needed for voice messages, but may be useful later
+  public void stop() {
+    if (mediaController != null) {
+      mediaController.stop();
+    }
+    stopUpdateProgress();
+    playbackState.setValue(AudioPlaybackState.idle());
+  }
+
+  public void setUserSeeking(boolean isUserSeeking) {
+    this.isUserSeeking = isUserSeeking;
+  }
+
+  // Private methods
+  private void setupPlayerListener() {
+    if (mediaController == null) return;
+
+    mediaController.addListener(new Player.Listener() {
+      @Override
+      public void onEvents(Player player, Player.Events events) {
+        if (events.containsAny(Player.EVENT_IS_PLAYING_CHANGED)) {
+          if (player.isPlaying()) {
+            startUpdateProgress();
+          } else {
+            stopUpdateProgress();
+          }
+          updateCurrentState();
+        }
+        if (events.containsAny(Player.EVENT_PLAYBACK_STATE_CHANGED)) {
+          if (player.getPlaybackState() == Player.STATE_READY) {
+            updateCurrentState();
+          } else if (player.getPlaybackState() == Player.STATE_ENDED) {
+            // This is to prevent automatically playing after the audio
+            // has been play to the end once, then user dragged the seek bar again
+            mediaController.setPlayWhenReady(false);
+          }
+        }
+        if (events.containsAny(Player.EVENT_PLAYER_ERROR)) {
+          updateCurrentAudioState(AudioPlaybackState.PlaybackStatus.ERROR, 0, 0);
+        }
+      }
+    });
+  }
+
+  private void updateCurrentState() {
+    if (mediaController == null) return;
+
+    AudioPlaybackState.PlaybackStatus status;
+    if (mediaController.isPlaying()) {
+      status = AudioPlaybackState.PlaybackStatus.PLAYING;
+    } else if (mediaController.getPlaybackState() == Player.STATE_READY
+      || mediaController.getPlaybackState() == Player.STATE_ENDED) {
+      status = AudioPlaybackState.PlaybackStatus.PAUSED;
+    } else {
+      status = AudioPlaybackState.PlaybackStatus.IDLE;
+    }
+
+    updateCurrentAudioState(status,
+      mediaController.getCurrentPosition(),
+      mediaController.getDuration());
+  }
+
+  private void updateState(Uri audioUri,
+                           AudioPlaybackState.PlaybackStatus status,
+                           long position,
+                           long duration) {
+    playbackState.setValue(new AudioPlaybackState(
+      audioUri, status, position, duration
+    ));
+  }
+
+  private void updateCurrentAudioState(AudioPlaybackState.PlaybackStatus status,
+                                       long position,
+                                       long duration) {
+    AudioPlaybackState current = playbackState.getValue();
+
+    if (current != null) {
+      updateState(current.getAudioUri(), status, position, duration);
+    }
+  }
+
+  // Progress tracking
+  private final Runnable progressRunnable = new Runnable() {
+    @Override
+    public void run() {
+      if (mediaController != null && mediaController.isPlaying() && !isUserSeeking) {
+        updateCurrentAudioState(AudioPlaybackState.PlaybackStatus.PLAYING,
+          mediaController.getCurrentPosition(),
+          mediaController.getDuration());
+        handler.postDelayed(this, 100); // Update every 100ms
+      }
+    }
+  };
+
+  private void startUpdateProgress() {
+    stopUpdateProgress();
+    handler.post(progressRunnable);
+  }
+
+  private void stopUpdateProgress() {
+    handler.removeCallbacks(progressRunnable);
+  }
+
+  @Override
+  protected void onCleared() {
+    super.onCleared();
+    stopUpdateProgress();
+  }
+}

@@ -21,6 +21,7 @@ import static org.thoughtcrime.securesms.util.ShareUtil.setForwardingMessageIds;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -38,8 +39,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.media3.session.MediaController;
+import androidx.media3.session.SessionToken;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
@@ -49,8 +55,10 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
+import com.google.common.util.concurrent.ListenableFuture;
 
 import org.thoughtcrime.securesms.ConversationAdapter.ItemClickListener;
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -60,6 +68,7 @@ import org.thoughtcrime.securesms.reactions.AddReactionView;
 import org.thoughtcrime.securesms.reactions.ReactionsDetailsFragment;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.relay.EditRelayActivity;
+import org.thoughtcrime.securesms.service.AudioPlaybackService;
 import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
@@ -103,12 +112,15 @@ public class ConversationFragment extends MessageSelectorFragment
     private AddReactionView             addReactionView;
     private TextView                    noMessageTextView;
     private Timer                       reloadTimer;
+    private @Nullable MediaController   mediaController;
+    private ListenableFuture<MediaController> mediaControllerFuture;
+    private AudioPlaybackViewModel      playbackViewModel;
 
     public boolean isPaused;
     private Debouncer markseenDebouncer;
     private Rpc rpc;
 
-    @Override
+  @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         rpc = DcHelper.getRpc(getContext());
@@ -130,6 +142,8 @@ public class ConversationFragment extends MessageSelectorFragment
                 Util.runOnMain(ConversationFragment.this::reloadList);
             }
         }, 60 * 1000, 60 * 1000);
+
+      playbackViewModel = new ViewModelProvider(this).get(AudioPlaybackViewModel.class);
     }
 
     @Override
@@ -162,11 +176,29 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     @Override
-    public void onActivityCreated(Bundle bundle) {
-        super.onActivityCreated(bundle);
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         initializeResources();
         initializeListAdapter();
+    }
+
+    private void initializeMediaController() {
+      Context context = getContext();
+      if (context == null) return;
+
+      SessionToken sessionToken = new SessionToken(context,
+        new ComponentName(context, AudioPlaybackService.class));
+      mediaControllerFuture = new MediaController.Builder(context, sessionToken)
+        .buildAsync();
+      mediaControllerFuture.addListener(() -> {
+        try {
+          mediaController = mediaControllerFuture.get();
+          playbackViewModel.setMediaController(mediaController);
+        } catch (Exception e) {
+          Log.e(TAG, "Error connecting to audio playback service", e);
+        }
+      }, ContextCompat.getMainExecutor(context));
     }
 
     private void setNoMessageText() {
@@ -200,6 +232,11 @@ public class ConversationFragment extends MessageSelectorFragment
     public void onDestroy() {
         DcHelper.getEventCenter(getContext()).removeObservers(this);
         reloadTimer.cancel();
+        if (mediaController != null) {
+          MediaController.releaseFuture(mediaControllerFuture);
+          mediaController = null;
+          playbackViewModel.setMediaController(null);
+        }
         super.onDestroy();
     }
 
@@ -290,6 +327,7 @@ public class ConversationFragment extends MessageSelectorFragment
         if (this.recipient != null && this.chatId != -1) {
             ConversationAdapter adapter = new ConversationAdapter(getActivity(), this.recipient.getChat(), GlideApp.with(this), selectionClickListener, this.recipient);
             list.setAdapter(adapter);
+            adapter.setPlaybackViewModel(playbackViewModel);
 
             if (dateDecoration != null) {
                 list.removeItemDecoration(dateDecoration);

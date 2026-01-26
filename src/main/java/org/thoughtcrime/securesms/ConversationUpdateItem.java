@@ -15,6 +15,7 @@ import com.b44t.messenger.DcMsg;
 
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.components.DeliveryStatusView;
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.JsonUtils;
@@ -61,9 +62,10 @@ public class ConversationUpdateItem extends BaseConversationItem
                    @NonNull GlideRequests           glideRequests,
                    @NonNull Set<DcMsg>              batchSelected,
                    @NonNull Recipient               conversationRecipient,
-                            boolean                 pulseUpdate)
+                   boolean                          pulseUpdate,
+                   @Nullable AudioPlaybackViewModel playbackViewModel)
   {
-    bind(messageRecord, dcChat, batchSelected, pulseUpdate, conversationRecipient);
+    bindPartial(messageRecord, dcChat, batchSelected, pulseUpdate, conversationRecipient);
     setGenericInfoRecord(messageRecord);
   }
 

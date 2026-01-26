@@ -41,8 +41,8 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
-import org.thoughtcrime.securesms.components.AudioView;
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
+import org.thoughtcrime.securesms.components.audioplay.AudioView;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.BorderlessImageView;
 import org.thoughtcrime.securesms.components.CallItemView;
@@ -180,9 +180,10 @@ public class ConversationItem extends BaseConversationItem
                    @NonNull GlideRequests           glideRequests,
                    @NonNull Set<DcMsg>              batchSelected,
                    @NonNull Recipient               recipients,
-                   boolean                          pulseHighlight)
+                   boolean                          pulseHighlight,
+                   @Nullable AudioPlaybackViewModel playbackViewModel)
   {
-    bind(messageRecord, dcChat, batchSelected, pulseHighlight, recipients);
+    bindPartial(messageRecord, dcChat, batchSelected, pulseHighlight, recipients);
     this.glideRequests          = glideRequests;
     this.showSender             = ((dcChat.isMultiUser() || dcChat.isSelfTalk()) && !messageRecord.isOutgoing()) || messageRecord.getOverrideSenderName() != null;
 
@@ -203,7 +204,7 @@ public class ConversationItem extends BaseConversationItem
 
     setGutterSizes(messageRecord, showSender);
     setMessageShape(messageRecord);
-    setMediaAttributes(messageRecord, showSender);
+    setMediaAttributes(messageRecord, showSender, playbackViewModel);
     setBodyText(messageRecord);
     setBubbleState(messageRecord);
     setContactPhoto();
@@ -478,7 +479,8 @@ public class ConversationItem extends BaseConversationItem
   }
 
   private void setMediaAttributes(@NonNull DcMsg           messageRecord,
-                                           boolean         showSender)
+                                  boolean                  showSender,
+                                  AudioPlaybackViewModel   playbackViewModel)
   {
     if (hasAudio(messageRecord)) {
       audioViewStub.get().setVisibility(View.VISIBLE);
@@ -492,6 +494,7 @@ public class ConversationItem extends BaseConversationItem
       //noinspection ConstantConditions
       int duration = messageRecord.getDuration();
 
+      audioViewStub.get().setPlaybackViewModel(playbackViewModel);
       audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
       audioViewStub.get().setOnClickListener(passthroughClickListener);
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);

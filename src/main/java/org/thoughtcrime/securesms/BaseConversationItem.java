@@ -48,11 +48,11 @@ public abstract class BaseConversationItem extends LinearLayout
     this.rpc = DcHelper.getRpc(context);
   }
 
-  protected void bind(@NonNull DcMsg            messageRecord,
-                      @NonNull DcChat           dcChat,
-                      @NonNull Set<DcMsg>       batchSelected,
-                      boolean                   pulseHighlight,
-                      @NonNull Recipient        conversationRecipient)
+  protected void bindPartial(@NonNull DcMsg            messageRecord,
+                             @NonNull DcChat           dcChat,
+                             @NonNull Set<DcMsg>       batchSelected,
+                             boolean                   pulseHighlight,
+                             @NonNull Recipient        conversationRecipient)
   {
     this.messageRecord  = messageRecord;
     this.dcChat         = dcChat;

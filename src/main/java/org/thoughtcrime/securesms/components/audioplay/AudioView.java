@@ -1,4 +1,4 @@
-package org.thoughtcrime.securesms.components;
+package org.thoughtcrime.securesms.components.audioplay;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -21,6 +21,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
 import androidx.media3.common.MediaItem;
 import androidx.media3.common.Player;
 import androidx.media3.session.MediaController;
@@ -29,6 +30,7 @@ import androidx.media3.session.SessionToken;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.components.AnimatingToggle;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.service.AudioPlaybackService;
 import org.thoughtcrime.securesms.util.DateUtils;
@@ -54,6 +56,9 @@ public class AudioView extends FrameLayout {
   private int backwardsCounter;
   private Uri                            audioUri;
   private ListenableFuture<MediaController> mediaControllerFuture;
+  private AudioPlaybackViewModel         viewModel;
+
+  private final Observer<AudioPlaybackState> stateObserver = this::onPlaybackStateChanged;
 
   public AudioView(Context context) {
     this(context, null);
@@ -210,8 +215,15 @@ public class AudioView extends FrameLayout {
 
   @Override
   protected void onDetachedFromWindow() {
-    releaseController();
+    if (viewModel != null) {
+      viewModel.getPlaybackState().removeObserver(stateObserver);
+    }
     super.onDetachedFromWindow();
+  }
+
+  public void setPlaybackViewModel(AudioPlaybackViewModel viewModel) {
+    // For now ViewModel is used directly for simplicity, since there is no reuse
+    this.viewModel = viewModel;
   }
 
   public void setAudio(final @NonNull AudioSlide audio, int duration)
@@ -356,5 +368,36 @@ public class AudioView extends FrameLayout {
     AnimatedVectorDrawable pauseToPlayDrawable = (AnimatedVectorDrawable) getContext().getDrawable(R.drawable.pause_to_play_animation);
     playButton.setImageDrawable(pauseToPlayDrawable);
     pauseToPlayDrawable.start();
+  }
+
+  private void onPlaybackStateChanged(AudioPlaybackState state) {
+    if (audioUri == null || state == null) return;
+
+    // Check if this state is about this message
+    boolean isThisMessage = audioUri.equals(state.getAudioUri());
+
+    if (isThisMessage) {
+      updateUIForPlaybackState(state);
+    } else {
+      updateUIForPause();
+    }
+  }
+
+  // TODO: also need to update seeking
+  private void updateUIForPlaybackState(AudioPlaybackState state) {
+    switch (state.getStatus()) {
+      case PLAYING:
+        updateUIForPlay();
+        break;
+
+      case PAUSED:
+        updateUIForPause();
+        break;
+
+      case LOADING:
+      case ERROR:
+        // No special handling yet
+        break;
+    }
   }
 }
