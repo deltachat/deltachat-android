@@ -101,6 +101,10 @@ public class ThreadRecord {
     return spannable;
   }
 
+  public boolean isOutChannel() {
+    return recipient.getChat() != null && recipient.getChat().isOutBroadcast();
+  }
+
   public int getUnreadCount() {
     return unreadCount;
   }
