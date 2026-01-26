@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DateUtils;
 
 public class ConversationItemFooter extends LinearLayout {
@@ -27,23 +28,25 @@ public class ConversationItemFooter extends LinearLayout {
   private DeliveryStatusView  deliveryStatusView;
   private Integer             textColor = null;
   private int                 callDuration = 0;
+  private Context context;
 
   public ConversationItemFooter(Context context) {
     super(context);
-    init(null);
+    init(context, null);
   }
 
   public ConversationItemFooter(Context context, @Nullable AttributeSet attrs) {
     super(context, attrs);
-    init(attrs);
+    init(context, attrs);
   }
 
   public ConversationItemFooter(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
-    init(attrs);
+    init(context, attrs);
   }
 
-  private void init(@Nullable AttributeSet attrs) {
+  private void init(Context context, @Nullable AttributeSet attrs) {
+    this.context = context;
     inflate(getContext(), R.layout.conversation_item_footer, this);
 
     dateView              = findViewById(R.id.footer_date);
@@ -106,6 +109,10 @@ public class ConversationItemFooter extends LinearLayout {
     }
   }
 
+  private boolean isOutChannel(@NonNull DcMsg messageRecord) {
+    return DcHelper.getContext(context).getChat(messageRecord.getChatId()).isOutBroadcast();
+  }
+
   private void presentDeliveryStatus(@NonNull DcMsg messageRecord) {
     // isDownloading is temporary and should be checked first.
     boolean isDownloading = messageRecord.getDownloadState() == DcMsg.DC_DOWNLOAD_IN_PROGRESS;
@@ -114,7 +121,7 @@ public class ConversationItemFooter extends LinearLayout {
          if (isDownloading)                deliveryStatusView.setDownloading();
     else if (messageRecord.isPending())    deliveryStatusView.setPending();
     else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
-    else if (!messageRecord.isOutgoing() || isCall)  deliveryStatusView.setNone();
+    else if (!messageRecord.isOutgoing() || isCall || isOutChannel(messageRecord))  deliveryStatusView.setNone();
     else if (messageRecord.isRemoteRead()) deliveryStatusView.setRead();
     else if (messageRecord.isDelivered())  deliveryStatusView.setSent();
     else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
