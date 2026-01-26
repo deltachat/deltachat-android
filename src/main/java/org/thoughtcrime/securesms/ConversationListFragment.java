@@ -260,7 +260,7 @@ public class ConversationListFragment extends BaseConversationListFragment
     });
   }
 
-  private void loadChatlist() {
+  public void loadChatlist() {
     int listflags = 0;
     if (archive) {
       listflags |= DcContext.DC_GCL_ARCHIVED_ONLY;

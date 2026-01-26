@@ -52,7 +52,6 @@ public class AllMediaGalleryFragment
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
 
-    dcContext = DcHelper.getContext(getContext());
     chatId = getArguments().getInt(CHAT_ID_EXTRA, -1);
 
     getLoaderManager().initLoader(0, null, this);

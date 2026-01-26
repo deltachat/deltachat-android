@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 
 public class ShareUtil {
+    private static final String FORWARDED_MESSAGE_ACCID = "forwarded_message_accid";
     private static final String FORWARDED_MESSAGE_IDS   = "forwarded_message_ids";
     private static final String SHARED_URIS             = "shared_uris";
     private static final String SHARED_CONTACT_ID       = "shared_contact_id";
@@ -24,11 +25,7 @@ public class ShareUtil {
     }
 
     public static boolean isForwarding(Activity activity) {
-        try {
-            return activity.getIntent().getIntArrayExtra(FORWARDED_MESSAGE_IDS) != null;
-        } catch (NullPointerException npe) {
-            return false;
-        }
+        return getForwardedMessageAccountId(activity) > 0;
     }
 
     public static boolean isSharing(Activity activity) {
@@ -58,6 +55,14 @@ public class ShareUtil {
     public static int getDirectSharingChatId(Activity activity) {
         try {
             return activity.getIntent().getIntExtra(DIRECT_SHARING_CHAT_ID, -1);
+        } catch (NullPointerException npe) {
+            return -1;
+        }
+    }
+
+    public static int getForwardedMessageAccountId(Activity activity) {
+        try {
+            return activity.getIntent().getIntExtra(FORWARDED_MESSAGE_ACCID, -1);
         } catch (NullPointerException npe) {
             return -1;
         }
@@ -111,6 +116,7 @@ public class ShareUtil {
 
     public static void resetRelayingMessageContent(Activity activity) {
         try {
+            activity.getIntent().removeExtra(FORWARDED_MESSAGE_ACCID);
             activity.getIntent().removeExtra(FORWARDED_MESSAGE_IDS);
             activity.getIntent().removeExtra(SHARED_URIS);
             activity.getIntent().removeExtra(SHARED_CONTACT_ID);
@@ -124,7 +130,8 @@ public class ShareUtil {
 
     public static void acquireRelayMessageContent(Activity currentActivity, @NonNull Intent newActivityIntent) {
         if (isForwarding(currentActivity)) {
-            newActivityIntent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(currentActivity));
+            int accId = getForwardedMessageAccountId(currentActivity);
+            setForwardingMessageIds(newActivityIntent, getForwardedMessageIDs(currentActivity), accId);
         } else if (isSharing(currentActivity)) {
             newActivityIntent.putExtra(IS_SHARING, true);
             if (isDirectSharing(currentActivity)) {
@@ -142,7 +149,8 @@ public class ShareUtil {
         }
     }
 
-    public static void setForwardingMessageIds(Intent composeIntent, int[] messageIds) {
+    public static void setForwardingMessageIds(Intent composeIntent, int[] messageIds, int accId) {
+        composeIntent.putExtra(FORWARDED_MESSAGE_ACCID, accId);
         composeIntent.putExtra(FORWARDED_MESSAGE_IDS, messageIds);
     }
 

@@ -67,12 +67,16 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.ConversationAdaptiveActionsToolbar;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 
 @SuppressLint("StaticFieldLeak")
 public class ConversationFragment extends MessageSelectorFragment
@@ -102,11 +106,12 @@ public class ConversationFragment extends MessageSelectorFragment
 
     public boolean isPaused;
     private Debouncer markseenDebouncer;
+    private Rpc rpc;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        this.dcContext = DcHelper.getContext(getContext());
+        rpc = DcHelper.getRpc(getContext());
 
         DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
         eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
@@ -207,8 +212,13 @@ public class ConversationFragment extends MessageSelectorFragment
     @Override
     public void onResume() {
         super.onResume();
-
-        Util.runOnBackground(() -> dcContext.marknoticedChat((int) chatId));
+        Util.runOnBackground(() -> {
+          try {
+            rpc.marknoticedChat(rpc.getSelectedAccountId(), (int) chatId);
+          } catch (RpcException e) {
+              Log.e(TAG, "RPC error", e);
+          }
+        });
         if (list.getAdapter() != null) {
             list.getAdapter().notifyDataSetChanged();
         }
@@ -287,7 +297,12 @@ public class ConversationFragment extends MessageSelectorFragment
             dateDecoration = new StickyHeaderDecoration(adapter, false, false);
             list.addItemDecoration(dateDecoration);
 
-            int freshMsgs = dcContext.getFreshMsgCount((int) chatId);
+            int freshMsgs = 0;
+            try {
+              freshMsgs = rpc.getFreshMsgCnt(rpc.getSelectedAccountId(), (int) chatId);
+            } catch (RpcException e) {
+              Log.e(TAG, "RPC error", e);
+            }
             SetStartingPositionLinearLayoutManager layoutManager = (SetStartingPositionLinearLayoutManager) list.getLayoutManager();
             if (startingPosition > -1) {
                 layoutManager.setStartingPosition(startingPosition);
@@ -429,6 +444,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
         StringBuilder result = new StringBuilder();
 
+        DcContext dcContext = DcHelper.getContext(getContext());
         DcMsg prevMsg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
         for (DcMsg msg : dcMsgsList) {
             if (result.length() > 0) {
@@ -457,9 +473,13 @@ public class ConversationFragment extends MessageSelectorFragment
     private void handleForwardMessage(final Set<DcMsg> messageRecords) {
         Intent composeIntent = new Intent();
         int[] msgIds = DcMsg.msgSetToIds(messageRecords);
-        setForwardingMessageIds(composeIntent, msgIds);
-        ConversationListRelayingActivity.start(this, composeIntent);
-        getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
+        try {
+          setForwardingMessageIds(composeIntent, msgIds, rpc.getSelectedAccountId());
+          ConversationListRelayingActivity.start(this, composeIntent);
+          getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
+        } catch (RpcException e) {
+          Log.e(TAG, "RPC error", e);
+        }
     }
 
     @SuppressLint("RestrictedApi")
@@ -485,6 +505,7 @@ public class ConversationFragment extends MessageSelectorFragment
     private void handleReplyMessagePrivately(final DcMsg msg) {
 
         if (getActivity() != null) {
+            DcContext dcContext = DcHelper.getContext(getActivity());
             int privateChatId = dcContext.createChatByContactId(msg.getFromId());
             DcMsg replyMsg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
             replyMsg.setQuote(msg);
@@ -501,10 +522,14 @@ public class ConversationFragment extends MessageSelectorFragment
 
     private void handleToggleSave(final Set<DcMsg> messageRecords) {
         DcMsg msg = getSelectedMessageRecord(messageRecords);
-        if (msg.getSavedMsgId() != 0) {
-          dcContext.deleteMsgs(new int[]{msg.getSavedMsgId()});
-        } else {
-          dcContext.saveMsgs(new int[]{msg.getId()});
+        try {
+          if (msg.getSavedMsgId() != 0) {
+            rpc.deleteMessages(rpc.getSelectedAccountId(), Collections.singletonList(msg.getSavedMsgId()));
+          } else {
+            rpc.saveMsgs(rpc.getSelectedAccountId(), Collections.singletonList(msg.getId()));
+          }
+        } catch (RpcException e) {
+          Log.e(TAG, "RPC error", e);
         }
     }
 
@@ -574,7 +599,7 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     private void updateLocationButton() {
-        floatingLocationButton.setVisibility(dcContext.isSendingLocationsToChat((int) chatId)? View.VISIBLE : View.GONE);
+        floatingLocationButton.setVisibility(DcHelper.getContext(getContext()).isSendingLocationsToChat((int) chatId)? View.VISIBLE : View.GONE);
     }
 
     private void scrollAndHighlight(final int pos, boolean smooth) {
@@ -710,16 +735,20 @@ public class ConversationFragment extends MessageSelectorFragment
             return;
         }
 
-        int[] ids = new int[lastPos - firstPos + 1];
-        int index = 0;
+        ArrayList<Integer> ids = new ArrayList<>(lastPos - firstPos + 1);
         for(int pos = firstPos; pos <= lastPos; pos++) {
             DcMsg message = ((ConversationAdapter) list.getAdapter()).getMsg(pos);
             if (message.getFromId() != DC_CONTACT_ID_SELF) {
-                ids[index] = message.getId();
-                index++;
+                ids.add(message.getId());
             }
         }
-        Util.runOnAnyBackgroundThread(() -> dcContext.markseenMsgs(ids));
+        Util.runOnAnyBackgroundThread(() -> {
+          try {
+            rpc.markseenMsgs(rpc.getSelectedAccountId(), ids);
+          } catch (RpcException e) {
+            Log.e(TAG, "RPC error", e);
+          }
+        });
     }
 
     private class ConversationFragmentItemClickListener implements ItemClickListener {
@@ -761,7 +790,7 @@ public class ConversationFragment extends MessageSelectorFragment
                     startActivity(intent);
                 }
                 else {
-                    String self_mail = dcContext.getConfig("configured_mail_user");
+                    String self_mail = DcHelper.getContext(getContext()).getConfig("configured_mail_user");
                     if (self_mail != null && !self_mail.isEmpty()
                       && messageRecord.getText().contains(self_mail)
                       && getListAdapter().getChat().isDeviceTalk()) {
@@ -800,7 +829,7 @@ public class ConversationFragment extends MessageSelectorFragment
             if (foreignChatId != 0 && foreignChatId != chatId) {
                 Intent intent = new Intent(getActivity(), ConversationActivity.class);
                 intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, foreignChatId);
-                int start = DcMsg.getMessagePosition(original, dcContext);
+                int start = DcMsg.getMessagePosition(original, DcHelper.getContext(getContext()));
                 intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, start);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 ((ConversationActivity) getActivity()).hideSoftKeyboard();
@@ -816,7 +845,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
         @Override
         public void onJumpToOriginalClicked(DcMsg messageRecord) {
-            jumpToOriginal(dcContext.getMsg(messageRecord.getOriginalMsgId()));
+            jumpToOriginal(DcHelper.getContext(getContext()).getMsg(messageRecord.getOriginalMsgId()));
         }
 
         @Override
@@ -835,7 +864,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
       @Override
       public void onDownloadClicked(DcMsg messageRecord) {
-        dcContext.downloadFullMsg(messageRecord.getId());
+        DcHelper.getContext(getContext()).downloadFullMsg(messageRecord.getId());
       }
 
       @Override

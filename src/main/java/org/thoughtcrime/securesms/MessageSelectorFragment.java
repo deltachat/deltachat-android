@@ -32,7 +32,6 @@ public abstract class MessageSelectorFragment
     implements DcEventCenter.DcEventDelegate
 {
   protected ActionMode actionMode;
-  protected DcContext dcContext;
 
   protected abstract void setCorrectMenuVisibility(Menu menu);
 
@@ -48,7 +47,7 @@ public abstract class MessageSelectorFragment
   protected void handleDisplayDetails(DcMsg dcMsg) {
     View view = View.inflate(getActivity(), R.layout.message_details_view, null);
     TextView detailsText = view.findViewById(R.id.details_text);
-    detailsText.setText(dcContext.getMsgInfo(dcMsg.getId()));
+    detailsText.setText(DcHelper.getContext(getContext()).getMsgInfo(dcMsg.getId()));
 
     AlertDialog d = new AlertDialog.Builder(getActivity())
             .setView(view)
@@ -62,6 +61,7 @@ public abstract class MessageSelectorFragment
   }
 
   protected void handleDeleteMessages(int chatId, final int[] messageIds) {
+    DcContext dcContext = DcHelper.getContext(getContext());
     DcChat dcChat = dcContext.getChat(chatId);
     boolean canDeleteForAll = true;
     if (dcChat.isEncrypted() && dcChat.canSend() && !dcChat.isSelfTalk()) {
@@ -135,7 +135,7 @@ public abstract class MessageSelectorFragment
   protected void handleShowInChat(final DcMsg dcMsg) {
     Intent intent = new Intent(getContext(), ConversationActivity.class);
     intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, dcMsg.getChatId());
-    intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, DcMsg.getMessagePosition(dcMsg, dcContext));
+    intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, DcMsg.getMessagePosition(dcMsg, DcHelper.getContext(getContext())));
     startActivity(intent);
   }
 
@@ -145,6 +145,7 @@ public abstract class MessageSelectorFragment
 
   protected void handleResendMessage(final Set<DcMsg> dcMsgsSet) {
     int[] ids = DcMsg.msgSetToIds(dcMsgsSet);
+    DcContext dcContext = DcHelper.getContext(getContext());
     Util.runOnAnyBackgroundThread(() -> {
       boolean success = dcContext.resendMsgs(ids);
       Util.runOnMain(() -> {
