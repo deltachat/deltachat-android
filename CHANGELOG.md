@@ -4,6 +4,7 @@
 
 * Improve switch speed when changing profiles
 * Allow to switch profile when sharing or forwarding
+* Display message views count for channel owners
 * Don't notify notification-to-all from in-chat apps if the chat is muted
 * Allow to see inbox quota for all relays in connectivity screen
 * Truncate file names in the middle, not at the end; important information are more often at the end
