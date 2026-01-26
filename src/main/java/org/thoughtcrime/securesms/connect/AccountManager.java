@@ -137,8 +137,8 @@ public class AccountManager {
 
     // ui
 
-    public void showSwitchAccountMenu(ConversationListActivity activity) {
-        AccountSelectionListFragment dialog = new AccountSelectionListFragment(activity);
+    public void showSwitchAccountMenu(ConversationListActivity activity, boolean selectOnly) {
+        AccountSelectionListFragment dialog = new AccountSelectionListFragment(activity, selectOnly);
         dialog.show(((FragmentActivity) activity).getSupportFragmentManager(), null);
     }
 
