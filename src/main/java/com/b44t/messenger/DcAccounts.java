@@ -4,6 +4,7 @@ public class DcAccounts {
 
     public DcAccounts(String dir) {
         accountsCPtr = createAccountsCPtr(dir);
+        if (accountsCPtr == 0) throw new RuntimeException("createAccountsCPtr() returned null pointer");
     }
 
     @Override
