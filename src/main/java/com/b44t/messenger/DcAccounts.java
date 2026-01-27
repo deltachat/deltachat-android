@@ -2,8 +2,8 @@ package com.b44t.messenger;
 
 public class DcAccounts {
 
-    public DcAccounts(String dir) {
-        accountsCPtr = createAccountsCPtr(dir);
+    public DcAccounts(String dir, DcEventChannel channel) {
+        accountsCPtr = createAccountsCPtr(dir, channel);
         if (accountsCPtr == 0) throw new RuntimeException("createAccountsCPtr() returned null pointer");
     }
 
@@ -38,7 +38,7 @@ public class DcAccounts {
 
     // working with raw c-data
     private long         accountsCPtr;          // CAVE: the name is referenced in the JNI
-    private native long  createAccountsCPtr     (String dir);
+    private native long  createAccountsCPtr     (String dir, DcEventChannel channel);
     private native void  unrefAccountsCPtr      ();
     private native long  getEventEmitterCPtr    ();
     private native long  getJsonrpcInstanceCPtr ();
