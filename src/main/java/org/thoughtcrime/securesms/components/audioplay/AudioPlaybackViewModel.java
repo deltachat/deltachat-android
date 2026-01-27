@@ -34,11 +34,15 @@ public class AudioPlaybackViewModel extends ViewModel {
 
   public void setMediaController(@Nullable MediaController controller) {
     this.mediaController = controller;
+    if (mediaController != null && mediaController.isPlaying()) {
+      startUpdateProgress();
+    }
+    updateCurrentState(true);
     setupPlayerListener();
   }
 
   // Public methods
-  public void playAudio(Uri audioUri) {
+  public void loadAudioAndPlay(Uri audioUri) {
     if (mediaController == null) return;
 
     AudioPlaybackState currentState = playbackState.getValue();
@@ -46,8 +50,9 @@ public class AudioPlaybackViewModel extends ViewModel {
     updateState(audioUri, AudioPlaybackState.PlaybackStatus.LOADING, 0, 0);
 
     // Set media item if we have a different audio
-    if (currentState != null && currentState.getAudioUri() != null
-      && !currentState.getAudioUri().equals(audioUri)) {
+    if (currentState != null && (
+      currentState.getAudioUri() == null ||
+        currentState.getAudioUri() != null && !currentState.getAudioUri().equals(audioUri))) {
       MediaItem mediaItem = MediaItem.fromUri(audioUri);
       mediaController.setMediaItem(mediaItem);
       mediaController.prepare();
@@ -59,8 +64,6 @@ public class AudioPlaybackViewModel extends ViewModel {
   public void pause() {
     if (mediaController != null) {
       mediaController.pause();
-
-      stopUpdateProgress();
     }
   }
 
@@ -76,7 +79,7 @@ public class AudioPlaybackViewModel extends ViewModel {
     }
   }
 
-  // Shouldn't be needed for voice messages, but may be useful later
+  // Shouldn't need it for voice messages, but may be useful later
   public void stop() {
     if (mediaController != null) {
       mediaController.stop();
@@ -102,11 +105,11 @@ public class AudioPlaybackViewModel extends ViewModel {
           } else {
             stopUpdateProgress();
           }
-          updateCurrentState();
+          updateCurrentState(false);
         }
         if (events.containsAny(Player.EVENT_PLAYBACK_STATE_CHANGED)) {
           if (player.getPlaybackState() == Player.STATE_READY) {
-            updateCurrentState();
+            updateCurrentState(false);
           } else if (player.getPlaybackState() == Player.STATE_ENDED) {
             // This is to prevent automatically playing after the audio
             // has been play to the end once, then user dragged the seek bar again
@@ -120,7 +123,7 @@ public class AudioPlaybackViewModel extends ViewModel {
     });
   }
 
-  private void updateCurrentState() {
+  private void updateCurrentState(boolean queryCurrentUri) {
     if (mediaController == null) return;
 
     AudioPlaybackState.PlaybackStatus status;
@@ -133,7 +136,18 @@ public class AudioPlaybackViewModel extends ViewModel {
       status = AudioPlaybackState.PlaybackStatus.IDLE;
     }
 
-    updateCurrentAudioState(status,
+    Uri currentUri = null;
+    if (playbackState.getValue() != null) {
+      currentUri = playbackState.getValue().getAudioUri();
+    }
+    if (queryCurrentUri || playbackState.getValue() == null) {
+      MediaItem item = mediaController.getCurrentMediaItem();
+      if (item != null && item.localConfiguration != null) {
+        currentUri = item.localConfiguration.uri;
+      }
+    }
+    updateState(currentUri,
+      status,
       mediaController.getCurrentPosition(),
       mediaController.getDuration());
   }
@@ -165,7 +179,7 @@ public class AudioPlaybackViewModel extends ViewModel {
         updateCurrentAudioState(AudioPlaybackState.PlaybackStatus.PLAYING,
           mediaController.getCurrentPosition(),
           mediaController.getDuration());
-        handler.postDelayed(this, 100); // Update every 100ms
+        handler.postDelayed(this, 100);
       }
     }
   };
@@ -181,7 +195,7 @@ public class AudioPlaybackViewModel extends ViewModel {
 
   @Override
   protected void onCleared() {
-    super.onCleared();
     stopUpdateProgress();
+    super.onCleared();
   }
 }

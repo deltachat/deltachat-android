@@ -115,6 +115,8 @@ public abstract class BaseConversationItem extends LinearLayout
 
     public void onClick(View v) {
       if (!shouldInterceptClicks(messageRecord) && parent != null) {
+        // The click workaround on ConversationItem shall be revised.
+        // In fact, it is probably better rethinking accessibility approach for the items.
         if (batchSelected.isEmpty() && Util.isTouchExplorationEnabled(context)) {
           BaseConversationItem.this.onAccessibilityClick();
         }

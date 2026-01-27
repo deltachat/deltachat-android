@@ -120,7 +120,7 @@ public class ConversationFragment extends MessageSelectorFragment
     private Debouncer markseenDebouncer;
     private Rpc rpc;
 
-  @Override
+    @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         rpc = DcHelper.getRpc(getContext());
@@ -143,7 +143,8 @@ public class ConversationFragment extends MessageSelectorFragment
             }
         }, 60 * 1000, 60 * 1000);
 
-      playbackViewModel = new ViewModelProvider(this).get(AudioPlaybackViewModel.class);
+        playbackViewModel = new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class);
+        initializeMediaController();
     }
 
     @Override

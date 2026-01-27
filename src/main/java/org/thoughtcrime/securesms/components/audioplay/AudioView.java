@@ -1,15 +1,9 @@
 package org.thoughtcrime.securesms.components.audioplay;
 
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff;
 import android.graphics.Rect;
-import android.graphics.drawable.AnimatedVectorDrawable;
-import android.media.AudioManager;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -19,20 +13,13 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.lifecycle.Observer;
-import androidx.media3.common.MediaItem;
-import androidx.media3.common.Player;
-import androidx.media3.session.MediaController;
-import androidx.media3.session.SessionToken;
-
-import com.google.common.util.concurrent.ListenableFuture;
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.components.AnimatingToggle;
 import org.thoughtcrime.securesms.mms.AudioSlide;
-import org.thoughtcrime.securesms.service.AudioPlaybackService;
 import org.thoughtcrime.securesms.util.DateUtils;
 
 
@@ -40,25 +27,20 @@ public class AudioView extends FrameLayout {
 
   private static final String TAG = AudioView.class.getSimpleName();
 
-  private final @NonNull AnimatingToggle controlToggle;
-  private final @NonNull ImageView       playButton;
-  private final @NonNull ImageView       pauseButton;
+  private final @NonNull ImageView       playPauseButton;
+  private final AnimatedVectorDrawableCompat playToPauseDrawable;
+  private final AnimatedVectorDrawableCompat pauseToPlayDrawable;
+  private final Drawable                 playDrawable;
+  private final Drawable                 pauseDrawable;
   private final @NonNull SeekBar         seekBar;
   private final @NonNull TextView        timestamp;
   private final @NonNull TextView        title;
   private final @NonNull View            mask;
 
-  private @Nullable MediaController      mediaController;
-  private Handler                        progressHandler;
-  private Runnable                       progressUpdater;
-  private boolean                        isUserSeeking = false;
-  private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener;
-  private int backwardsCounter;
   private Uri                            audioUri;
-  private ListenableFuture<MediaController> mediaControllerFuture;
   private AudioPlaybackViewModel         viewModel;
-
   private final Observer<AudioPlaybackState> stateObserver = this::onPlaybackStateChanged;
+  private boolean                        isPlaying;
 
   public AudioView(Context context) {
     this(context, null);
@@ -72,108 +54,64 @@ public class AudioView extends FrameLayout {
     super(context, attrs, defStyleAttr);
     inflate(context, R.layout.audio_view, this);
 
-    this.controlToggle    = (AnimatingToggle) findViewById(R.id.control_toggle);
-    this.playButton       = (ImageView) findViewById(R.id.play);
-    this.pauseButton      = (ImageView) findViewById(R.id.pause);
-    this.seekBar          = (SeekBar) findViewById(R.id.seek);
-    this.timestamp        = (TextView) findViewById(R.id.timestamp);
-    this.title            = (TextView) findViewById(R.id.title);
+    this.playPauseButton  = findViewById(R.id.play_pause);
+    this.seekBar          = findViewById(R.id.seek);
+    this.timestamp        = findViewById(R.id.timestamp);
+    this.title            = findViewById(R.id.title);
     this.mask             = findViewById(R.id.interception_mask);
 
     this.timestamp.setText("00:00");
 
-    this.playButton.setImageDrawable(context.getDrawable(R.drawable.play_icon));
-    this.pauseButton.setImageDrawable(context.getDrawable(R.drawable.pause_icon));
-    this.playButton.setBackground(context.getDrawable(R.drawable.ic_circle_fill_white_48dp));
-    this.pauseButton.setBackground(context.getDrawable(R.drawable.ic_circle_fill_white_48dp));
+    // Load drawables once
+    this.playToPauseDrawable = AnimatedVectorDrawableCompat.create(
+      getContext(), R.drawable.play_to_pause_animation);
+    this.pauseToPlayDrawable = AnimatedVectorDrawableCompat.create(
+      getContext(), R.drawable.pause_to_play_animation);
+    this.playDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.play_icon);
+    this.pauseDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.pause_icon);
 
-    progressHandler = new Handler(Looper.getMainLooper());
-
-    setTint(getContext().getResources().getColor(R.color.audio_icon));
+    Animatable2Compat.AnimationCallback animationCallback = new Animatable2Compat.AnimationCallback() {
+      @Override
+      public void onAnimationEnd(Drawable drawable) {
+        Drawable endState = isPlaying ? pauseDrawable : playDrawable;
+        playPauseButton.setImageDrawable(endState);
+      }
+    };
+    if (playToPauseDrawable != null) {
+      playToPauseDrawable.registerAnimationCallback(animationCallback);
+    }
+    if (pauseToPlayDrawable != null) {
+      pauseToPlayDrawable.registerAnimationCallback(animationCallback);
+    }
   }
 
   @Override
   protected void onAttachedToWindow() {
     super.onAttachedToWindow();
-    initializeController();
-  }
-
-  private void initializeController() {
-    Context context = getContext();
-    SessionToken sessionToken = new SessionToken(context,
-      new ComponentName(context, AudioPlaybackService.class));
-    mediaControllerFuture = new MediaController.Builder(context, sessionToken)
-      .buildAsync();
-    mediaControllerFuture.addListener(() -> {
-      try {
-        mediaController = mediaControllerFuture.get();
-        setupControls();
-        updateUIFromController();
-      } catch (Exception e) {
-        Log.e(TAG, "Error connecting to audio playback service", e);
-      }
-    }, ContextCompat.getMainExecutor(context));
-  }
-
-  private void updateUIFromController() {
-    if (mediaController == null) return;
-
-    if (mediaController.isPlaying()) {
-      updateUIForPlay();
-    } else if (!mediaController.isPlaying()) {
-      updateUIForPause();
-    }
+    setupControls();
   }
 
   private void setupControls() {
-    if (mediaController == null) return;
-    if (audioUri == null) return;
+    playPauseButton.setOnClickListener(v -> {
+      Log.w(TAG, "playPauseButton onClick");
 
-    mediaController.addListener(new Player.Listener() {
-      @Override
-      public void onEvents(Player player, Player.Events events) {
-        if (events.containsAny(Player.EVENT_IS_PLAYING_CHANGED)) {
-          if (player.isPlaying()) {
-            updateUIForPlay();
-          } else if (!player.isPlaying()) {
-            updateUIForPause();
-          }
-        }
-        if (events.containsAny(Player.EVENT_PLAYBACK_STATE_CHANGED)) {
-          if (player.getPlaybackState() == Player.STATE_ENDED
-            && player.getAvailableCommands().contains(Player.COMMAND_PLAY_PAUSE)) {
-            mediaController.setPlayWhenReady(false);
-          }
-        }
-      }
-    });
+      if (viewModel == null || audioUri == null) return;
 
-    playButton.setOnClickListener(v -> {
-      Log.w(TAG, "playButton onClick");
-      MediaItem currentItem = mediaController.getCurrentMediaItem();
-      if (currentItem == null ||
-        (currentItem.localConfiguration != null && !audioUri.equals(currentItem.localConfiguration.uri))) {
-        // Different media
-        MediaItem mediaItem = MediaItem.fromUri(audioUri);
-        mediaController.setMediaItem(mediaItem);
-        mediaController.prepare();
-        mediaController.play();
-        updateUIForPlay();
+      AudioPlaybackState state = viewModel.getPlaybackState().getValue();
+
+      if (state != null && audioUri.equals(state.getAudioUri())) {
+        // Same audio
+        if (state.getStatus() == AudioPlaybackState.PlaybackStatus.PLAYING) {
+          viewModel.pause();
+        } else {
+          viewModel.play();
+        }
       } else {
-        // Same media, just resume
-        if (!mediaController.isPlaying()) {
-          mediaController.play();
-          updateUIForPlay();
-        }
+        // Different audio
+        viewModel.loadAudioAndPlay(audioUri);
       }
     });
-    pauseButton.setOnClickListener(v -> {
-      Log.w(TAG, "pauseButton onClick");
-      if (mediaController.isPlaying()) {
-        mediaController.pause();
-        updateUIForPause();
-      }
-    });
+
     seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
       @Override
       public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -184,33 +122,15 @@ public class AudioView extends FrameLayout {
 
       @Override
       public void onStartTrackingTouch(SeekBar seekBar) {
-        isUserSeeking = true;
-        stopUpdateProgress();
+        viewModel.setUserSeeking(true);
       }
 
       @Override
       public void onStopTrackingTouch(SeekBar seekBar) {
-        isUserSeeking = false;
-        if (mediaController != null) {
-          mediaController.seekTo(seekBar.getProgress());
-        }
-        startUpdateProgress();
+        viewModel.setUserSeeking(false);
+        viewModel.seekTo(seekBar.getProgress());
       }
     });
-  }
-
-  private void updateUIForPlay() {
-    if (pauseButton.getVisibility() != View.VISIBLE) {
-      togglePlayToPause();
-    }
-    startUpdateProgress();
-  }
-
-  private void updateUIForPause() {
-    if (playButton.getVisibility() != View.VISIBLE) {
-      togglePauseToPlay();
-    }
-    stopUpdateProgress();
   }
 
   @Override
@@ -218,20 +138,35 @@ public class AudioView extends FrameLayout {
     if (viewModel != null) {
       viewModel.getPlaybackState().removeObserver(stateObserver);
     }
+    if (playToPauseDrawable != null) {
+      playToPauseDrawable.clearAnimationCallbacks();
+    }
+    if (pauseToPlayDrawable != null) {
+      pauseToPlayDrawable.clearAnimationCallbacks();
+    }
     super.onDetachedFromWindow();
   }
 
   public void setPlaybackViewModel(AudioPlaybackViewModel viewModel) {
-    // For now ViewModel is used directly for simplicity, since there is no reuse
+    if (this.viewModel != null) {
+      this.viewModel.getPlaybackState().removeObserver(stateObserver);
+    }
+
+    // ViewModel is used directly for simplicity, since there is no reuse yet
     this.viewModel = viewModel;
+
+    if (viewModel != null) {
+      viewModel.getPlaybackState().observeForever(stateObserver);
+    }
   }
 
   public void setAudio(final @NonNull AudioSlide audio, int duration)
   {
-    controlToggle.displayQuick(playButton);
+    audioUri = audio.getUri();
+    playPauseButton.setImageDrawable(playDrawable);
+
     seekBar.setEnabled(true);
     seekBar.setProgress(0);
-    audioUri = audio.getUri();
     timestamp.setText(DateUtils.getFormatedDuration(duration));
 
     if(audio.asAttachment().isVoiceNote() || !audio.getFileName().isPresent()) {
@@ -253,16 +188,11 @@ public class AudioView extends FrameLayout {
   public void setOnLongClickListener(OnLongClickListener listener) {
     super.setOnLongClickListener(listener);
     this.mask.setOnLongClickListener(listener);
-    this.playButton.setOnLongClickListener(listener);
-    this.pauseButton.setOnLongClickListener(listener);
+    this.playPauseButton.setOnLongClickListener(listener);
   }
 
   public void togglePlay() {
-    if (this.playButton.getVisibility() == View.VISIBLE) {
-        playButton.performClick();
-    } else {
-        pauseButton.performClick();
-    }
+    playPauseButton.performClick();
   }
 
   public String getDescription() {
@@ -285,61 +215,19 @@ public class AudioView extends FrameLayout {
       this.timestamp.setText(DateUtils.getFormatedDuration(duration));
   }
 
-  public void releaseController() {
-    if (mediaController != null && mediaControllerFuture != null) {
-      MediaController.releaseFuture(mediaControllerFuture);
-    }
-  }
-
-  // Poll progress and update UI
-  private void startUpdateProgress() {
-    if (progressUpdater == null) {
-      progressUpdater = new Runnable() {
-        @Override
-        public void run() {
-          if (mediaController != null && !isUserSeeking) {
-            updateProgress();
-            // Update every 100ms for smooth progress
-            progressHandler.postDelayed(this, 100);
-          }
-        }
-      };
-    }
-    progressHandler.removeCallbacks(progressUpdater);
-    progressHandler.post(progressUpdater);
-  }
-
-  private void stopUpdateProgress() {
-    if (progressUpdater != null) {
-      progressHandler.removeCallbacks(progressUpdater);
-    }
-    updateProgress();  // Make sure the UI is aligned even when update has stopped
-  }
-
-  private void updateProgress() {
-    if (mediaController == null) return;
-
-    long currentPosition = mediaController.getCurrentPosition();
-    long duration = mediaController.getDuration();
+  private void updateProgress(AudioPlaybackState state) {
+    int duration = (int) state.getDuration();
+    int position = (int) state.getCurrentPosition();
 
     if (duration > 0) {
-      seekBar.setMax((int) duration);
-      seekBar.setProgress((int) currentPosition);
-      timestamp.setText(DateUtils.getFormatedDuration(currentPosition));
+      seekBar.setMax(duration);
+      seekBar.setProgress(position);
+      timestamp.setText(DateUtils.getFormatedDuration(position));
     }
   }
 
   public void disablePlayer(boolean disable) {
     this.mask.setVisibility(disable? View.VISIBLE : View.GONE);
-  }
-
-  public void setTint(int foregroundTint) {
-    this.playButton.setBackgroundTintList(ColorStateList.valueOf(foregroundTint));
-    this.pauseButton.setBackgroundTintList(ColorStateList.valueOf(foregroundTint));
-
-    this.seekBar.getProgressDrawable().setColorFilter(foregroundTint, PorterDuff.Mode.SRC_IN);
-
-    this.seekBar.getThumb().setColorFilter(foregroundTint, PorterDuff.Mode.SRC_IN);
   }
 
   public void getSeekBarGlobalVisibleRect(@NonNull Rect rect) {
@@ -354,20 +242,27 @@ public class AudioView extends FrameLayout {
     }
   }
 
-  private void togglePlayToPause() {
-    controlToggle.displayQuick(pauseButton);
+  private void togglePlayPause(boolean expectedPlaying) {
+    isPlaying = expectedPlaying;
+    Drawable expectedDrawable = expectedPlaying ? pauseDrawable : playDrawable;
 
-    AnimatedVectorDrawable playToPauseDrawable = (AnimatedVectorDrawable) getContext().getDrawable(R.drawable.play_to_pause_animation);
-    pauseButton.setImageDrawable(playToPauseDrawable);
-    playToPauseDrawable.start();
-  }
+    boolean isAnimating = false;
+    Drawable currentDrawable = playPauseButton.getDrawable();
+    if (currentDrawable instanceof AnimatedVectorDrawableCompat) {
+      isAnimating = ((AnimatedVectorDrawableCompat) currentDrawable).isRunning();
+    }
+    if (!isAnimating && playPauseButton.getDrawable() != expectedDrawable) {
+      AnimatedVectorDrawableCompat animDrawable = expectedPlaying ? playToPauseDrawable : pauseToPlayDrawable;
+      String contentDescription = getContext().getString(
+        expectedPlaying ? R.string.menu_pause : R.string.menu_play);
 
-  private void togglePauseToPlay() {
-    controlToggle.displayQuick(playButton);
+      if (animDrawable != null) {
+        playPauseButton.setImageDrawable(animDrawable);
+        playPauseButton.setContentDescription(contentDescription);
 
-    AnimatedVectorDrawable pauseToPlayDrawable = (AnimatedVectorDrawable) getContext().getDrawable(R.drawable.pause_to_play_animation);
-    playButton.setImageDrawable(pauseToPlayDrawable);
-    pauseToPlayDrawable.start();
+        animDrawable.start();
+      }
+    }
   }
 
   private void onPlaybackStateChanged(AudioPlaybackState state) {
@@ -379,19 +274,20 @@ public class AudioView extends FrameLayout {
     if (isThisMessage) {
       updateUIForPlaybackState(state);
     } else {
-      updateUIForPause();
+      togglePlayPause(false);
     }
   }
 
-  // TODO: also need to update seeking
   private void updateUIForPlaybackState(AudioPlaybackState state) {
     switch (state.getStatus()) {
       case PLAYING:
-        updateUIForPlay();
+        togglePlayPause(true);
+        updateProgress(state);
         break;
 
       case PAUSED:
-        updateUIForPause();
+        togglePlayPause(false);
+        updateProgress(state);
         break;
 
       case LOADING:

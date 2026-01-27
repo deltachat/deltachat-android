@@ -173,7 +173,7 @@ dependencies {
     implementation 'androidx.work:work-runtime:2.9.1'
     implementation 'androidx.emoji2:emoji2-emojipicker:1.5.0'
     implementation 'com.google.guava:guava:31.1-android'
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.19.1' // TODO: I am keeping the exoplayer dependencies for Video, but we shall migrate them at some point
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.19.1' // FIXME: I am keeping the exoplayer dependencies for Video, but we shall migrate them at some point
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.19.1'
     implementation "androidx.media3:media3-exoplayer:$media3_version"
     implementation "androidx.media3:media3-session:$media3_version"

@@ -90,7 +90,7 @@ public class AttachmentManager {
 
   private RemovableEditableMediaView removableMediaView;
   private ThumbnailView              thumbnail;
-  private AudioView                  audioView;   // TODO: Model shall not directly manipulate View
+  private AudioView                  audioView;   // TODO: set up ViewModel too
   private DocumentView               documentView;
   private WebxdcView                 webxdcView;
   private VcardView                  vcardView;

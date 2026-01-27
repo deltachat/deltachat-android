@@ -60,7 +60,7 @@ import java.util.Set;
  * @author Moxie Marlinspike
  *
  */
-// TODO: this breaks type checks, that is why there are so many casts.
+// FIXME: this breaks type checks, that is why there are so many casts.
 public class ConversationAdapter <V extends View & BindableConversationItem>
     extends RecyclerView.Adapter
   implements StickyHeaderDecoration.StickyHeaderAdapter<HeaderViewHolder>
