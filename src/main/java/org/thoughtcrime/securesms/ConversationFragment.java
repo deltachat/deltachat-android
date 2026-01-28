@@ -304,6 +304,7 @@ public class ConversationFragment extends MessageSelectorFragment
             AudioPlaybackViewModel playbackViewModel =
               new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class);
             adapter.setPlaybackViewModel(playbackViewModel);
+            adapter.setAudioPlayPauseListener(((ConversationActivity) requireActivity()));
 
             if (dateDecoration != null) {
                 list.removeItemDecoration(dateDecoration);

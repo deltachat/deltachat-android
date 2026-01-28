@@ -36,6 +36,7 @@ public class AudioView extends FrameLayout {
   private final @NonNull TextView        timestamp;
   private final @NonNull TextView        title;
   private final @NonNull View            mask;
+  private OnActionListener               listener;
 
   private int msgId;
   private Uri                            audioUri;
@@ -111,6 +112,10 @@ public class AudioView extends FrameLayout {
         // Different audio
         // Note: they can be the same *physical* file, but in different messages
         viewModel.loadAudioAndPlay(msgId, audioUri);
+      }
+
+      if (listener != null) {
+        listener.onPlayPauseButtonClicked(v);
       }
     });
 
@@ -192,6 +197,14 @@ public class AudioView extends FrameLayout {
     super.setOnLongClickListener(listener);
     this.mask.setOnLongClickListener(listener);
     this.playPauseButton.setOnLongClickListener(listener);
+  }
+
+  public interface OnActionListener {
+    void onPlayPauseButtonClicked(View view);
+  }
+
+  public void setOnActionListener(OnActionListener listener) {
+    this.listener = listener;
   }
 
   public void togglePlay() {

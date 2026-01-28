@@ -94,6 +94,7 @@ import org.thoughtcrime.securesms.components.KeyboardAwareLinearLayout.OnKeyboar
 import org.thoughtcrime.securesms.components.ScaleStableImageView;
 import org.thoughtcrime.securesms.components.SendButton;
 import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
+import org.thoughtcrime.securesms.components.audioplay.AudioView;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -148,14 +149,13 @@ import chat.delta.util.SettableFuture;
  */
 @SuppressLint("StaticFieldLeak")
 public class ConversationActivity extends PassphraseRequiredActionBarActivity
-    implements ConversationFragment.ConversationFragmentListener,
-               AttachmentManager.AttachmentListener,
-               SearchView.OnQueryTextListener,
-               DcEventCenter.DcEventDelegate,
-               OnKeyboardShownListener,
-               InputPanel.Listener,
-               InputPanel.MediaListener
-{
+  implements ConversationFragment.ConversationFragmentListener,
+  AttachmentManager.AttachmentListener,
+  SearchView.OnQueryTextListener,
+  DcEventCenter.DcEventDelegate,
+  OnKeyboardShownListener,
+  InputPanel.Listener,
+  InputPanel.MediaListener, AudioView.OnActionListener {
   private static final String TAG = ConversationActivity.class.getSimpleName();
 
   public static final String ACCOUNT_ID_EXTRA        = "account_id";
@@ -289,10 +289,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     mediaControllerFuture.addListener(() -> {
       try {
         mediaController = mediaControllerFuture.get();
-        addActivityContext(
-          this.getIntent().getExtras(),
-          this.getClass().getName()
-        );
         playbackViewModel.setMediaController(mediaController);
       } catch (Exception e) {
         Log.e(TAG, "Error connecting to audio playback service", e);
@@ -1462,6 +1458,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   // Listeners
+
+  @Override
+  public void onPlayPauseButtonClicked(View view) {
+    addActivityContext(
+      this.getIntent().getExtras(),
+      this.getClass().getName()
+    );
+  }
 
   private class AttachmentTypeListener implements AttachmentTypeSelector.AttachmentClickedListener {
     @Override

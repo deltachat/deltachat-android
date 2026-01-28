@@ -54,9 +54,10 @@ public class AudioPlaybackViewModel extends ViewModel {
 
     updateState(msgId, audioUri, AudioPlaybackState.PlaybackStatus.LOADING, 0, 0);
 
-    // Set media item if we have a different audio. Message ID doesn't matter here.
+    // Set media item if we have a different audio.
     if (currentState != null && (
-      currentState.getAudioUri() == null ||
+        msgId != currentState.getMsgId() ||
+        currentState.getAudioUri() == null ||
         currentState.getAudioUri() != null && !currentState.getAudioUri().equals(audioUri))) {
       MediaItem mediaItem = new MediaItem.Builder()
         .setMediaId(String.valueOf(msgId))

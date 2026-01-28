@@ -181,7 +181,8 @@ public class ConversationItem extends BaseConversationItem
                    @NonNull Set<DcMsg>              batchSelected,
                    @NonNull Recipient               recipients,
                    boolean                          pulseHighlight,
-                   @Nullable AudioPlaybackViewModel playbackViewModel)
+                   @Nullable AudioPlaybackViewModel playbackViewModel,
+                   AudioView.OnActionListener       audioPlayPauseListener)
   {
     bindPartial(messageRecord, dcChat, batchSelected, pulseHighlight, recipients);
     this.glideRequests          = glideRequests;
@@ -204,7 +205,7 @@ public class ConversationItem extends BaseConversationItem
 
     setGutterSizes(messageRecord, showSender);
     setMessageShape(messageRecord);
-    setMediaAttributes(messageRecord, showSender, playbackViewModel);
+    setMediaAttributes(messageRecord, showSender, playbackViewModel, audioPlayPauseListener);
     setBodyText(messageRecord);
     setBubbleState(messageRecord);
     setContactPhoto();
@@ -480,7 +481,8 @@ public class ConversationItem extends BaseConversationItem
 
   private void setMediaAttributes(@NonNull DcMsg           messageRecord,
                                   boolean                  showSender,
-                                  AudioPlaybackViewModel   playbackViewModel)
+                                  AudioPlaybackViewModel   playbackViewModel,
+                                  AudioView.OnActionListener audioPlayPauseListener)
   {
     if (hasAudio(messageRecord)) {
       audioViewStub.get().setVisibility(View.VISIBLE);
@@ -495,6 +497,7 @@ public class ConversationItem extends BaseConversationItem
       int duration = messageRecord.getDuration();
 
       audioViewStub.get().setPlaybackViewModel(playbackViewModel);
+      audioViewStub.get().setOnActionListener(audioPlayPauseListener);
       audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
       audioViewStub.get().setOnClickListener(passthroughClickListener);
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
