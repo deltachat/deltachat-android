@@ -1,16 +1,24 @@
 package org.thoughtcrime.securesms;
 
+import android.content.ComponentName;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.media3.session.MediaController;
+import androidx.media3.session.SessionCommand;
+import androidx.media3.session.SessionToken;
 import androidx.viewpager.widget.ViewPager;
 
 import com.b44t.messenger.DcChat;
@@ -18,11 +26,13 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 import com.google.android.material.tabs.TabLayout;
+import com.google.common.util.concurrent.ListenableFuture;
 
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.service.AudioPlaybackService;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.ArrayList;
@@ -30,6 +40,7 @@ import java.util.ArrayList;
 public class AllMediaActivity extends PassphraseRequiredActionBarActivity
                              implements DcEventCenter.DcEventDelegate
 {
+  private static final String TAG = AllMediaActivity.class.getSimpleName();
 
   public static final String CHAT_ID_EXTRA    = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
@@ -56,6 +67,10 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
   private Toolbar            toolbar;
   private TabLayout          tabLayout;
   private ViewPager          viewPager;
+
+  private @Nullable MediaController mediaController;
+  private ListenableFuture<MediaController> mediaControllerFuture;
+  private AudioPlaybackViewModel playbackViewModel;
 
   @Override
   protected void onPreCreate() {
@@ -91,11 +106,19 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     DcEventCenter eventCenter = DcHelper.getEventCenter(this);
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+
+    playbackViewModel = new ViewModelProvider(this).get(AudioPlaybackViewModel.class);
+    initializeMediaController();
   }
 
   @Override
   public void onDestroy() {
     DcHelper.getEventCenter(this).removeObservers(this);
+    if (mediaController != null) {
+      MediaController.releaseFuture(mediaControllerFuture);
+      mediaController = null;
+      playbackViewModel.setMediaController(null);
+    }
     super.onDestroy();
   }
 
@@ -122,6 +145,40 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     this.viewPager = ViewUtil.findById(this, R.id.pager);
     this.toolbar   = ViewUtil.findById(this, R.id.toolbar);
     this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
+  }
+
+  private void initializeMediaController() {
+    SessionToken sessionToken = new SessionToken(this,
+      new ComponentName(this, AudioPlaybackService.class));
+    mediaControllerFuture = new MediaController.Builder(this, sessionToken)
+      .buildAsync();
+    mediaControllerFuture.addListener(() -> {
+      try {
+        mediaController = mediaControllerFuture.get();
+        addActivityContext(
+          this.getIntent().getExtras(),
+          this.getClass().getName()
+        );
+        playbackViewModel.setMediaController(mediaController);
+      } catch (Exception e) {
+        Log.e(TAG, "Error connecting to audio playback service", e);
+      }
+    }, ContextCompat.getMainExecutor(this));
+  }
+
+  private void addActivityContext(Bundle extras, String activityClassName) {
+    if (mediaController == null) return;
+
+    Bundle commandArgs = new Bundle();
+    commandArgs.putString("activity_class", activityClassName);
+    if (extras != null) {
+      commandArgs.putAll(extras);
+    }
+
+    SessionCommand updateContextCommand =
+      new SessionCommand("UPDATE_ACTIVITY_CONTEXT", Bundle.EMPTY);
+
+    mediaController.sendCustomCommand(updateContextCommand, commandArgs);
   }
 
   private boolean isGlobalGallery() {

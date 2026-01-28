@@ -49,13 +49,13 @@ import org.thoughtcrime.securesms.WebxdcActivity;
 import org.thoughtcrime.securesms.WebxdcStoreActivity;
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.UriAttachment;
-import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
-import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.RemovableEditableMediaView;
 import org.thoughtcrime.securesms.components.ThumbnailView;
 import org.thoughtcrime.securesms.components.VcardView;
 import org.thoughtcrime.securesms.components.WebxdcView;
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
+import org.thoughtcrime.securesms.components.audioplay.AudioView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
@@ -152,8 +152,6 @@ public class AttachmentManager {
 
       markGarbage(getSlideUri());
       slide = Optional.absent();
-
-      audioView.cleanup();
     }
   }
 
@@ -235,7 +233,8 @@ public class AttachmentManager {
                                             @NonNull final MediaType mediaType,
                                             final int width,
                                             final int height,
-                                            final int chatId)
+                                            final int chatId,
+                                            AudioPlaybackViewModel playbackViewModel)
   {
     inflateStub();
 
@@ -285,24 +284,7 @@ public class AttachmentManager {
           setAttachmentPresent(true);
 
           if (slide.hasAudio()) {
-            class SetDurationListener implements AudioSlidePlayer.Listener {
-              @Override
-              public void onStart() {}
-
-              @Override
-              public void onStop() {}
-
-              @Override
-              public void onProgress(AudioSlide slide, double progress, long millis) {}
-
-              @Override
-              public void onReceivedDuration(int millis) {
-                ((AudioView) removableMediaView.getCurrent()).setDuration(millis);
-              }
-            }
-            AudioSlidePlayer audioSlidePlayer = AudioSlidePlayer.createFor(context, (AudioSlide) slide, new SetDurationListener());
-            audioSlidePlayer.requestDuration();
-
+            audioView.setPlaybackViewModel(playbackViewModel);
             audioView.setAudio((AudioSlide) slide, 0);
             removableMediaView.display(audioView, false);
             result.set(true);

@@ -40,6 +40,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
@@ -51,6 +52,7 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.ItemClickListener;
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -162,14 +164,14 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     @Override
-    public void onActivityCreated(Bundle bundle) {
-        super.onActivityCreated(bundle);
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         initializeResources();
         initializeListAdapter();
     }
 
-    private void setNoMessageText() {
+  private void setNoMessageText() {
         DcChat dcChat = getListAdapter().getChat();
         if(dcChat.isMultiUser()){
             if (dcChat.isInBroadcast() || dcChat.isOutBroadcast()) {
@@ -290,6 +292,10 @@ public class ConversationFragment extends MessageSelectorFragment
         if (this.recipient != null && this.chatId != -1) {
             ConversationAdapter adapter = new ConversationAdapter(getActivity(), this.recipient.getChat(), GlideApp.with(this), selectionClickListener, this.recipient);
             list.setAdapter(adapter);
+            AudioPlaybackViewModel playbackViewModel =
+              new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class);
+            adapter.setPlaybackViewModel(playbackViewModel);
+            adapter.setAudioPlayPauseListener(((ConversationActivity) requireActivity()));
 
             if (dateDecoration != null) {
                 list.removeItemDecoration(dateDecoration);

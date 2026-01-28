@@ -48,11 +48,11 @@ public abstract class BaseConversationItem extends LinearLayout
     this.rpc = DcHelper.getRpc(context);
   }
 
-  protected void bind(@NonNull DcMsg            messageRecord,
-                      @NonNull DcChat           dcChat,
-                      @NonNull Set<DcMsg>       batchSelected,
-                      boolean                   pulseHighlight,
-                      @NonNull Recipient        conversationRecipient)
+  protected void bindPartial(@NonNull DcMsg            messageRecord,
+                             @NonNull DcChat           dcChat,
+                             @NonNull Set<DcMsg>       batchSelected,
+                             boolean                   pulseHighlight,
+                             @NonNull Recipient        conversationRecipient)
   {
     this.messageRecord  = messageRecord;
     this.dcChat         = dcChat;
@@ -115,6 +115,8 @@ public abstract class BaseConversationItem extends LinearLayout
 
     public void onClick(View v) {
       if (!shouldInterceptClicks(messageRecord) && parent != null) {
+        // The click workaround on ConversationItem shall be revised.
+        // In fact, it is probably better rethinking accessibility approach for the items.
         if (batchSelected.isEmpty() && Util.isTouchExplorationEnabled(context)) {
           BaseConversationItem.this.onAccessibilityClick();
         }
