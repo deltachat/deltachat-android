@@ -41,8 +41,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
-import org.thoughtcrime.securesms.components.audioplay.AudioView;
+import org.thoughtcrime.securesms.calls.CallUtil;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.BorderlessImageView;
 import org.thoughtcrime.securesms.components.CallItemView;
@@ -52,6 +51,8 @@ import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.QuoteView;
 import org.thoughtcrime.securesms.components.VcardView;
 import org.thoughtcrime.securesms.components.WebxdcView;
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
+import org.thoughtcrime.securesms.components.audioplay.AudioView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
@@ -70,7 +71,6 @@ import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
-import org.thoughtcrime.securesms.calls.CallUtil;
 
 import java.util.List;
 import java.util.Set;

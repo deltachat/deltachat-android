@@ -13,12 +13,6 @@ import androidx.media3.common.MediaItem;
 import androidx.media3.common.Player;
 import androidx.media3.session.MediaController;
 
-import com.google.common.util.concurrent.ListenableFuture;
-
-import org.thoughtcrime.securesms.connect.AccountManager;
-
-import java.util.concurrent.Future;
-
 
 public class AudioPlaybackViewModel extends ViewModel {
   private static final String TAG = AudioPlaybackViewModel.class.getSimpleName();

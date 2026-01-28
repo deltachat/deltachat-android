@@ -68,7 +68,6 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.WindowCompat;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.media3.session.MediaController;
 import androidx.media3.session.SessionCommand;
@@ -84,6 +83,7 @@ import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.audio.AudioRecorder;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
+import org.thoughtcrime.securesms.calls.CallUtil;
 import org.thoughtcrime.securesms.components.AnimatingToggle;
 import org.thoughtcrime.securesms.components.AttachmentTypeSelector;
 import org.thoughtcrime.securesms.components.ComposeText;
@@ -117,16 +117,15 @@ import org.thoughtcrime.securesms.service.AudioPlaybackService;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.ServiceUtil;
+import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 import org.thoughtcrime.securesms.video.recode.VideoRecoder;
-import org.thoughtcrime.securesms.calls.CallUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -136,7 +135,6 @@ import java.util.concurrent.ExecutionException;
 
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
-// TODO: why do we need customize Futures?
 import chat.delta.util.ListenableFuture;
 import chat.delta.util.SettableFuture;
 

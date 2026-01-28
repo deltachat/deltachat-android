@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms.service;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -22,7 +21,6 @@ import androidx.media3.session.SessionResult;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 
-import org.thoughtcrime.securesms.AllMediaDocumentsFragment;
 import org.thoughtcrime.securesms.ConversationListActivity;
 
 public class AudioPlaybackService extends MediaSessionService {
