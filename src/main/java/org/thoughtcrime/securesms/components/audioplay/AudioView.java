@@ -37,6 +37,7 @@ public class AudioView extends FrameLayout {
   private final @NonNull TextView        title;
   private final @NonNull View            mask;
 
+  private int msgId;
   private Uri                            audioUri;
   private AudioPlaybackViewModel         viewModel;
   private final Observer<AudioPlaybackState> stateObserver = this::onPlaybackStateChanged;
@@ -99,7 +100,7 @@ public class AudioView extends FrameLayout {
 
       AudioPlaybackState state = viewModel.getPlaybackState().getValue();
 
-      if (state != null && audioUri.equals(state.getAudioUri())) {
+      if (state != null && msgId == state.getMsgId() && audioUri.equals(state.getAudioUri())) {
         // Same audio
         if (state.getStatus() == AudioPlaybackState.PlaybackStatus.PLAYING) {
           viewModel.pause();
@@ -108,7 +109,8 @@ public class AudioView extends FrameLayout {
         }
       } else {
         // Different audio
-        viewModel.loadAudioAndPlay(audioUri);
+        // Note: they can be the same *physical* file, but in different messages
+        viewModel.loadAudioAndPlay(msgId, audioUri);
       }
     });
 
@@ -162,6 +164,7 @@ public class AudioView extends FrameLayout {
 
   public void setAudio(final @NonNull AudioSlide audio, int duration)
   {
+    msgId = audio.getDcMsgId();
     audioUri = audio.getUri();
     playPauseButton.setImageDrawable(playDrawable);
 
@@ -255,7 +258,7 @@ public class AudioView extends FrameLayout {
     if (audioUri == null || state == null) return;
 
     // Check if this state is about this message
-    boolean isThisMessage = audioUri.equals(state.getAudioUri());
+    boolean isThisMessage = msgId == state.getMsgId() && audioUri.equals(state.getAudioUri());
 
     if (isThisMessage) {
       updateUIForPlaybackState(state);

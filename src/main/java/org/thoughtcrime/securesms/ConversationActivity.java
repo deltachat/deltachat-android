@@ -25,6 +25,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -65,7 +66,13 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.WindowCompat;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.media3.session.MediaController;
+import androidx.media3.session.SessionCommand;
+import androidx.media3.session.SessionToken;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -86,6 +93,7 @@ import org.thoughtcrime.securesms.components.InputPanel;
 import org.thoughtcrime.securesms.components.KeyboardAwareLinearLayout.OnKeyboardShownListener;
 import org.thoughtcrime.securesms.components.ScaleStableImageView;
 import org.thoughtcrime.securesms.components.SendButton;
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -104,6 +112,7 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
+import org.thoughtcrime.securesms.service.AudioPlaybackService;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -126,6 +135,7 @@ import java.util.concurrent.ExecutionException;
 
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
+// TODO: why do we need customize Futures?
 import chat.delta.util.ListenableFuture;
 import chat.delta.util.SettableFuture;
 
@@ -182,6 +192,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   MediaKeyboard          emojiPicker;
   protected HidingLinearLayout     quickAttachmentToggle;
   private   InputPanel             inputPanel;
+  private   @Nullable MediaController mediaController;
+  private   com.google.common.util.concurrent.ListenableFuture<MediaController> mediaControllerFuture;
+  private   AudioPlaybackViewModel playbackViewModel;
 
   private ApplicationContext context;
   private Recipient  recipient;
@@ -214,6 +227,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     initializeActionBar();
     initializeViews();
     initializeResources();
+
+    playbackViewModel = new ViewModelProvider(this).get(AudioPlaybackViewModel.class);
+    initializeMediaController();
+
     initializeSecurity(false, isDefaultSms).addListener(new AssertedSuccessListener<Boolean>() {
       @Override
       public void onSuccess(Boolean result) {
@@ -262,6 +279,40 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
       eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_MSG_READ, this);
     }
+  }
+
+  private void initializeMediaController() {
+    SessionToken sessionToken = new SessionToken(this,
+      new ComponentName(this, AudioPlaybackService.class));
+    mediaControllerFuture = new MediaController.Builder(this, sessionToken)
+      .buildAsync();
+    mediaControllerFuture.addListener(() -> {
+      try {
+        mediaController = mediaControllerFuture.get();
+        addActivityContext(
+          this.getIntent().getExtras(),
+          this.getClass().getName()
+        );
+        playbackViewModel.setMediaController(mediaController);
+      } catch (Exception e) {
+        Log.e(TAG, "Error connecting to audio playback service", e);
+      }
+    }, ContextCompat.getMainExecutor(this));
+  }
+
+  private void addActivityContext(Bundle extras, String activityClassName) {
+    if (mediaController == null) return;
+
+    Bundle commandArgs = new Bundle();
+    commandArgs.putString("activity_class", activityClassName);
+    if (extras != null) {
+      commandArgs.putAll(extras);
+    }
+
+    SessionCommand updateContextCommand =
+      new SessionCommand("UPDATE_ACTIVITY_CONTEXT", Bundle.EMPTY);
+
+    mediaController.sendCustomCommand(updateContextCommand, commandArgs);
   }
 
   @Override
@@ -354,6 +405,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onDestroy() {
     DcHelper.getEventCenter(this).removeObservers(this);
+    if (mediaController != null) {
+      MediaController.releaseFuture(mediaControllerFuture);
+      mediaController = null;
+      playbackViewModel.setMediaController(null);
+    }
     super.onDestroy();
   }
 
@@ -1046,11 +1102,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return new SettableFuture<>(false);
     }
 
-    return attachmentManager.setMedia(glideRequests, uri, null, mediaType, 0, 0, chatId);
+    return attachmentManager.setMedia(glideRequests, uri, null, mediaType, 0, 0, chatId, playbackViewModel);
   }
 
   private ListenableFuture<Boolean> setMedia(DcMsg msg, @NonNull MediaType mediaType) {
-    return attachmentManager.setMedia(glideRequests, Uri.fromFile(new File(msg.getFile())), msg, mediaType, 0, 0, chatId);
+    return attachmentManager.setMedia(glideRequests, Uri.fromFile(new File(msg.getFile())), msg, mediaType, 0, 0, chatId, playbackViewModel);
   }
 
   private void addAttachmentContactInfo(int contactId) {

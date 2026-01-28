@@ -114,9 +114,6 @@ public class ConversationFragment extends MessageSelectorFragment
     private AddReactionView             addReactionView;
     private TextView                    noMessageTextView;
     private Timer                       reloadTimer;
-    private @Nullable MediaController   mediaController;
-    private ListenableFuture<MediaController> mediaControllerFuture;
-    private AudioPlaybackViewModel      playbackViewModel;
 
     public boolean isPaused;
     private Debouncer markseenDebouncer;
@@ -144,9 +141,6 @@ public class ConversationFragment extends MessageSelectorFragment
                 Util.runOnMain(ConversationFragment.this::reloadList);
             }
         }, 60 * 1000, 60 * 1000);
-
-        playbackViewModel = new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class);
-        initializeMediaController();
     }
 
     @Override
@@ -186,42 +180,6 @@ public class ConversationFragment extends MessageSelectorFragment
         initializeListAdapter();
     }
 
-    private void initializeMediaController() {
-      FragmentActivity activity = requireActivity();
-
-      SessionToken sessionToken = new SessionToken(activity,
-        new ComponentName(activity, AudioPlaybackService.class));
-      mediaControllerFuture = new MediaController.Builder(activity, sessionToken)
-        .buildAsync();
-      mediaControllerFuture.addListener(() -> {
-        try {
-          mediaController = mediaControllerFuture.get();
-          addActivityContext(
-            activity.getIntent().getExtras(),
-            activity.getClass().getName()
-          );
-          playbackViewModel.setMediaController(mediaController);
-        } catch (Exception e) {
-          Log.e(TAG, "Error connecting to audio playback service", e);
-        }
-      }, ContextCompat.getMainExecutor(activity));
-    }
-
-    private void addActivityContext(Bundle extras, String activityClassName) {
-      if (mediaController == null) return;
-
-      Bundle commandArgs = new Bundle();
-      commandArgs.putString("activity_class", activityClassName);
-      if (extras != null) {
-        commandArgs.putAll(extras);
-      }
-
-      SessionCommand updateContextCommand =
-        new SessionCommand("UPDATE_ACTIVITY_CONTEXT", Bundle.EMPTY);
-
-      mediaController.sendCustomCommand(updateContextCommand, commandArgs);
-    }
-
   private void setNoMessageText() {
         DcChat dcChat = getListAdapter().getChat();
         if(dcChat.isMultiUser()){
@@ -253,11 +211,6 @@ public class ConversationFragment extends MessageSelectorFragment
     public void onDestroy() {
         DcHelper.getEventCenter(getContext()).removeObservers(this);
         reloadTimer.cancel();
-        if (mediaController != null) {
-          MediaController.releaseFuture(mediaControllerFuture);
-          mediaController = null;
-          playbackViewModel.setMediaController(null);
-        }
         super.onDestroy();
     }
 
@@ -348,6 +301,8 @@ public class ConversationFragment extends MessageSelectorFragment
         if (this.recipient != null && this.chatId != -1) {
             ConversationAdapter adapter = new ConversationAdapter(getActivity(), this.recipient.getChat(), GlideApp.with(this), selectionClickListener, this.recipient);
             list.setAdapter(adapter);
+            AudioPlaybackViewModel playbackViewModel =
+              new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class);
             adapter.setPlaybackViewModel(playbackViewModel);
 
             if (dateDecoration != null) {

@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.components.audioplay;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
@@ -14,10 +15,14 @@ import androidx.media3.session.MediaController;
 
 import com.google.common.util.concurrent.ListenableFuture;
 
+import org.thoughtcrime.securesms.connect.AccountManager;
+
 import java.util.concurrent.Future;
 
 
 public class AudioPlaybackViewModel extends ViewModel {
+  private static final String TAG = AudioPlaybackViewModel.class.getSimpleName();
+
   private final MutableLiveData<AudioPlaybackState> playbackState;
   private @Nullable MediaController mediaController;
   private final Handler handler;
@@ -42,18 +47,21 @@ public class AudioPlaybackViewModel extends ViewModel {
   }
 
   // Public methods
-  public void loadAudioAndPlay(Uri audioUri) {
+  public void loadAudioAndPlay(int msgId, Uri audioUri) {
     if (mediaController == null) return;
 
     AudioPlaybackState currentState = playbackState.getValue();
 
-    updateState(audioUri, AudioPlaybackState.PlaybackStatus.LOADING, 0, 0);
+    updateState(msgId, audioUri, AudioPlaybackState.PlaybackStatus.LOADING, 0, 0);
 
-    // Set media item if we have a different audio
+    // Set media item if we have a different audio. Message ID doesn't matter here.
     if (currentState != null && (
       currentState.getAudioUri() == null ||
         currentState.getAudioUri() != null && !currentState.getAudioUri().equals(audioUri))) {
-      MediaItem mediaItem = MediaItem.fromUri(audioUri);
+      MediaItem mediaItem = new MediaItem.Builder()
+        .setMediaId(String.valueOf(msgId))
+        .setUri(audioUri)
+        .build();
       mediaController.setMediaItem(mediaItem);
       mediaController.prepare();
     }
@@ -123,7 +131,7 @@ public class AudioPlaybackViewModel extends ViewModel {
     });
   }
 
-  private void updateCurrentState(boolean queryCurrentUri) {
+  private void updateCurrentState(boolean queryPlaying) {
     if (mediaController == null) return;
 
     AudioPlaybackState.PlaybackStatus status;
@@ -137,27 +145,39 @@ public class AudioPlaybackViewModel extends ViewModel {
     }
 
     Uri currentUri = null;
+    int currentMsgId = 0;
     if (playbackState.getValue() != null) {
+      currentMsgId = playbackState.getValue().getMsgId();
       currentUri = playbackState.getValue().getAudioUri();
     }
-    if (queryCurrentUri || playbackState.getValue() == null) {
+    if (queryPlaying || playbackState.getValue() == null) {
       MediaItem item = mediaController.getCurrentMediaItem();
-      if (item != null && item.localConfiguration != null) {
-        currentUri = item.localConfiguration.uri;
+      if (item != null) {
+        try {
+          currentMsgId = Integer.parseInt(item.mediaId);
+        } catch (NumberFormatException e) {
+          Log.w(TAG, "Invalid integer", e);
+        }
+        if (item.localConfiguration != null) {
+          currentUri = item.localConfiguration.uri;
+        }
       }
     }
-    updateState(currentUri,
+    updateState(
+      currentMsgId,
+      currentUri,
       status,
       mediaController.getCurrentPosition(),
       mediaController.getDuration());
   }
 
-  private void updateState(Uri audioUri,
+  private void updateState(int msgId,
+                           Uri audioUri,
                            AudioPlaybackState.PlaybackStatus status,
                            long position,
                            long duration) {
     playbackState.setValue(new AudioPlaybackState(
-      audioUri, status, position, duration
+      msgId, audioUri, status, position, duration
     ));
   }
 
@@ -167,7 +187,7 @@ public class AudioPlaybackViewModel extends ViewModel {
     AudioPlaybackState current = playbackState.getValue();
 
     if (current != null) {
-      updateState(current.getAudioUri(), status, position, duration);
+      updateState(current.getMsgId(), current.getAudioUri(), status, position, duration);
     }
   }
 
