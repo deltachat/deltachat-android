@@ -43,8 +43,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.media3.session.MediaController;
+import androidx.media3.session.SessionCommand;
 import androidx.media3.session.SessionToken;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -185,24 +187,42 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     private void initializeMediaController() {
-      Context context = getContext();
-      if (context == null) return;
+      FragmentActivity activity = requireActivity();
 
-      SessionToken sessionToken = new SessionToken(context,
-        new ComponentName(context, AudioPlaybackService.class));
-      mediaControllerFuture = new MediaController.Builder(context, sessionToken)
+      SessionToken sessionToken = new SessionToken(activity,
+        new ComponentName(activity, AudioPlaybackService.class));
+      mediaControllerFuture = new MediaController.Builder(activity, sessionToken)
         .buildAsync();
       mediaControllerFuture.addListener(() -> {
         try {
           mediaController = mediaControllerFuture.get();
+          addActivityContext(
+            activity.getIntent().getExtras(),
+            activity.getClass().getName()
+          );
           playbackViewModel.setMediaController(mediaController);
         } catch (Exception e) {
           Log.e(TAG, "Error connecting to audio playback service", e);
         }
-      }, ContextCompat.getMainExecutor(context));
+      }, ContextCompat.getMainExecutor(activity));
     }
 
-    private void setNoMessageText() {
+    private void addActivityContext(Bundle extras, String activityClassName) {
+      if (mediaController == null) return;
+
+      Bundle commandArgs = new Bundle();
+      commandArgs.putString("activity_class", activityClassName);
+      if (extras != null) {
+        commandArgs.putAll(extras);
+      }
+
+      SessionCommand updateContextCommand =
+        new SessionCommand("UPDATE_ACTIVITY_CONTEXT", Bundle.EMPTY);
+
+      mediaController.sendCustomCommand(updateContextCommand, commandArgs);
+    }
+
+  private void setNoMessageText() {
         DcChat dcChat = getListAdapter().getChat();
         if(dcChat.isMultiUser()){
             if (dcChat.isInBroadcast() || dcChat.isOutBroadcast()) {

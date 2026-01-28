@@ -2,10 +2,12 @@ package org.thoughtcrime.securesms;
 
 import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,20 +16,28 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
+import androidx.media3.session.MediaController;
+import androidx.media3.session.SessionToken;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
+import com.google.common.util.concurrent.ListenableFuture;
 
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader;
+import org.thoughtcrime.securesms.service.AudioPlaybackService;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Set;
@@ -72,9 +82,11 @@ public class AllMediaDocumentsFragment
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(recyclerView, true, false, true, true);
 
-    this.recyclerView.setAdapter(new AllMediaDocumentsAdapter(getContext(),
-        new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()),
-        this));
+    AllMediaDocumentsAdapter adapter = new AllMediaDocumentsAdapter(getContext(),
+      new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()),
+      this);
+    this.recyclerView.setAdapter(adapter);
+    adapter.setPlaybackViewModel(new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class));
     this.recyclerView.setLayoutManager(gridManager);
     this.recyclerView.setHasFixedSize(true);
 

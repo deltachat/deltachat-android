@@ -209,12 +209,6 @@ public class AudioView extends FrameLayout {
     return desc;
   }
 
-  @Deprecated
-  public void setDuration(int duration) {
-    if (getProgress()==0)
-      this.timestamp.setText(DateUtils.getFormatedDuration(duration));
-  }
-
   private void updateProgress(AudioPlaybackState state) {
     int duration = (int) state.getDuration();
     int position = (int) state.getCurrentPosition();
@@ -232,14 +226,6 @@ public class AudioView extends FrameLayout {
 
   public void getSeekBarGlobalVisibleRect(@NonNull Rect rect) {
     seekBar.getGlobalVisibleRect(rect);
-  }
-
-  private double getProgress() {
-    if (this.seekBar.getProgress() <= 0 || this.seekBar.getMax() <= 0) {
-      return 0;
-    } else {
-      return (double)this.seekBar.getProgress() / (double)this.seekBar.getMax();
-    }
   }
 
   private void togglePlayPause(boolean expectedPlaying) {

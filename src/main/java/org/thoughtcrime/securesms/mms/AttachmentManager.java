@@ -90,7 +90,7 @@ public class AttachmentManager {
 
   private RemovableEditableMediaView removableMediaView;
   private ThumbnailView              thumbnail;
-  private AudioView                  audioView;   // TODO: set up ViewModel too
+//  private AudioView                  audioView;   // TODO: is this used?
   private DocumentView               documentView;
   private WebxdcView                 webxdcView;
   private VcardView                  vcardView;
@@ -114,7 +114,7 @@ public class AttachmentManager {
       View root = attachmentViewStub.get();
 
       this.thumbnail          = ViewUtil.findById(root, R.id.attachment_thumbnail);
-      this.audioView          = ViewUtil.findById(root, R.id.attachment_audio);
+//      this.audioView          = ViewUtil.findById(root, R.id.attachment_audio);
       this.documentView       = ViewUtil.findById(root, R.id.attachment_document);
       this.webxdcView         = ViewUtil.findById(root, R.id.attachment_webxdc);
       this.vcardView          = ViewUtil.findById(root, R.id.attachment_vcard);
@@ -283,26 +283,26 @@ public class AttachmentManager {
           setAttachmentPresent(true);
 
           if (slide.hasAudio()) {
-            class SetDurationListener implements AudioSlidePlayer.Listener {
-              @Override
-              public void onStart() {}
-
-              @Override
-              public void onStop() {}
-
-              @Override
-              public void onProgress(AudioSlide slide, double progress, long millis) {}
-
-              @Override
-              public void onReceivedDuration(int millis) {
-                ((AudioView) removableMediaView.getCurrent()).setDuration(millis);
-              }
-            }
-            AudioSlidePlayer audioSlidePlayer = AudioSlidePlayer.createFor(context, (AudioSlide) slide, new SetDurationListener());
-            audioSlidePlayer.requestDuration();
-
-            audioView.setAudio((AudioSlide) slide, 0);
-            removableMediaView.display(audioView, false);
+//            class SetDurationListener implements AudioSlidePlayer.Listener {
+//              @Override
+//              public void onStart() {}
+//
+//              @Override
+//              public void onStop() {}
+//
+//              @Override
+//              public void onProgress(AudioSlide slide, double progress, long millis) {}
+//
+//              @Override
+//              public void onReceivedDuration(int millis) {
+//                ((AudioView) removableMediaView.getCurrent()).setDuration(millis);
+//              }
+//            }
+//            AudioSlidePlayer audioSlidePlayer = AudioSlidePlayer.createFor(context, (AudioSlide) slide, new SetDurationListener());
+//            audioSlidePlayer.requestDuration();
+//
+//            audioView.setAudio((AudioSlide) slide, 0);
+//            removableMediaView.display(audioView, false);
             result.set(true);
           } else if (slide.isVcard()) {
               vcardView.setVcard(glideRequests, (VcardSlide)slide, DcHelper.getRpc(context));
