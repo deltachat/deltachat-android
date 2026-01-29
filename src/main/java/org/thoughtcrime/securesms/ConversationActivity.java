@@ -995,9 +995,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if(chatId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
     dcChat           = DcHelper.getContext(context).getChat(chatId);
-    if (dcChat.isDeviceTalk() ||
-      isMultiUser() && dcChat.isInBroadcast()) {
+    if (dcChat.isDeviceTalk() || dcChat.isInBroadcast()) {
       ViewUtil.applyWindowInsets(findViewById(R.id.root_layout), true, false, true, false);
+      ViewUtil.applyWindowInsets(findViewById(R.id.fragment_content), false, true, false, true);
+      fragment.hideBottomDivider();
     }
     recipient        = new Recipient(this, dcChat);
     glideRequests    = GlideApp.with(this);
