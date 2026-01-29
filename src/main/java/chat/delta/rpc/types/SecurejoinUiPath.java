@@ -10,4 +10,7 @@ public enum SecurejoinUiPath {
 
   /** The user first clicked on the `+` button in the main screen, and then on "New Contact" */
   NewContact,
+
+  /** The user scanned a join QR code when creating a new profile from Instant Onborading Screen */
+  InstantOnboarding,
 }
