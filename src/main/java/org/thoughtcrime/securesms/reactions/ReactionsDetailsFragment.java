@@ -36,19 +36,24 @@ import chat.delta.rpc.types.Reactions;
 
 public class ReactionsDetailsFragment extends DialogFragment implements DcEventCenter.DcEventDelegate {
   private static final String TAG = ReactionsDetailsFragment.class.getSimpleName();
+  private static final String ARG_MSG_ID = "msg_id";
 
   private RecyclerView recyclerView;
   private ReactionRecipientsAdapter adapter;
-  private final int msgId;
+  private int msgId;
 
-  public ReactionsDetailsFragment(int msgId) {
-    super();
-    this.msgId = msgId;
+  public static ReactionsDetailsFragment newInstance(int msgId) {
+    ReactionsDetailsFragment fragment = new ReactionsDetailsFragment();
+    Bundle args = new Bundle();
+    args.putInt(ARG_MSG_ID, msgId);
+    fragment.setArguments(args);
+    return fragment;
   }
 
   @NonNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
+    msgId = getArguments() != null? getArguments().getInt(ARG_MSG_ID, 0) : 0;
     adapter = new ReactionRecipientsAdapter(requireActivity(), GlideApp.with(requireActivity()), new ListClickListener());
 
     LayoutInflater inflater = requireActivity().getLayoutInflater();

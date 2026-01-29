@@ -18,6 +18,7 @@
 * Fix: Update menu when using "select all" in contact selection
 * Fix: Avoid empty profiles after using "add as second device" from welcome screen
 * Fix multi-device seen messages synchronization when using multiple relays
+* Avoid crash when the app is minimized with profile switcher or reactions dialogs open
 * Update to core 2.39.0
 
 ## v2.35.0

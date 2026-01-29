@@ -869,7 +869,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
       @Override
       public void onReactionClicked(DcMsg messageRecord) {
-        ReactionsDetailsFragment dialog = new ReactionsDetailsFragment(messageRecord.getId());
+        ReactionsDetailsFragment dialog = ReactionsDetailsFragment.newInstance(messageRecord.getId());
         dialog.show(getActivity().getSupportFragmentManager(), null);
       }
     }
