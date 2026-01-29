@@ -50,6 +50,7 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
   private static final String ARG_SELECT_ONLY = "select_only";
   private RecyclerView recyclerView;
   private AccountSelectionListAdapter adapter;
+  private boolean selectOnly;
 
   public static AccountSelectionListFragment newInstance(boolean selectOnly) {
     AccountSelectionListFragment fragment = new AccountSelectionListFragment();
@@ -59,17 +60,14 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
     return fragment;
   }
 
-  private boolean selectOnly() {
-    return getArguments() != null && getArguments().getBoolean(ARG_SELECT_ONLY, false);
-  }
-
   @NonNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
+    selectOnly = getArguments() != null && getArguments().getBoolean(ARG_SELECT_ONLY, false);
     AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity())
             .setTitle(R.string.switch_account)
             .setNegativeButton(R.string.cancel, null);
-    if (!selectOnly()) {
+    if (!selectOnly) {
       builder.setNeutralButton(R.string.connectivity, ((dialog, which) -> {
         startActivity(new Intent(getActivity(), ConnectivityActivity.class));
       }));
@@ -104,24 +102,23 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
 
   private void refreshData() {
     if (adapter == null) return;
-    boolean selOnly = selectOnly();
 
     DcAccounts accounts = DcHelper.getAccounts(getActivity());
     int[] accountIds = accounts.getAll();
 
-    int[] ids = new int[(selOnly? 0 : 1) + accountIds.length];
+    int[] ids = new int[(selectOnly? 0 : 1) + accountIds.length];
     int j = 0;
     for (int accountId : accountIds) {
       ids[j++] = accountId;
     }
-    if (!selOnly) ids[j] = DC_CONTACT_ID_ADD_ACCOUNT;
+    if (!selectOnly) ids[j] = DC_CONTACT_ID_ADD_ACCOUNT;
     adapter.changeData(ids, accounts.getSelectedAccount().getAccountId());
   }
 
   @Override
   public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, ContextMenu.ContextMenuInfo menuInfo) {
     super.onCreateContextMenu(menu, v, menuInfo);
-    if (selectOnly()) return;
+    if (selectOnly) return;
 
     requireActivity().getMenuInflater().inflate(R.menu.account_item_context, menu);
 
@@ -201,9 +198,9 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
       .setPositiveButton(android.R.string.ok, (d, b) -> {
         String newTag = inputField.getText().toString().trim();
         dcContext.setConfig(CONFIG_PRIVATE_TAG, newTag);
-        AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly());
+        AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly);
       })
-      .setNegativeButton(R.string.cancel, (d, b) -> AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly()))
+      .setNegativeButton(R.string.cancel, (d, b) -> AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly))
       .show();
   }
 
@@ -244,7 +241,7 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
     AlertDialog dialog = new AlertDialog.Builder(activity)
       .setTitle(R.string.delete_account)
       .setView(dialogView)
-      .setNegativeButton(R.string.cancel, (d, which) -> AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly()))
+      .setNegativeButton(R.string.cancel, (d, which) -> AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly))
       .setPositiveButton(R.string.delete, (d2, w2) -> activity.onDeleteProfile(accountId))
       .show();
     Util.redPositiveButton(dialog);
