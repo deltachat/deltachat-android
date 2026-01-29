@@ -23,6 +23,7 @@ import androidx.work.WorkManager;
 import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.DcEventChannel;
 import com.b44t.messenger.DcEventEmitter;
 import com.b44t.messenger.FFITransport;
 
@@ -173,7 +174,29 @@ public class ApplicationContext extends MultiDexApplication {
     Util.runOnBackground(() -> {
       synchronized (initLock) {
         try {
-          dcAccounts = new DcAccounts(new File(getFilesDir(), "accounts").getAbsolutePath());
+          DcEventChannel eventChannel = new DcEventChannel();
+          DcEventEmitter emitter = eventChannel.getEventEmitter();
+          eventCenter = new DcEventCenter(this);
+
+          new Thread(() -> {
+              Log.i(TAG, "Starting event loop");
+              while (true) {
+                DcEvent event = emitter.getNextEvent();
+                if (event == null) {
+                  break;
+                }
+                if (isInitialized) {
+                  eventCenter.handleEvent(event);
+                } else {
+                  // not fully initialized, only handle logging events,
+                  // ex. account migrations during DcAccounts initialization
+                  eventCenter.handleLogging(event);
+                }
+              }
+              Log.i("DeltaChat", "shutting down event handler");
+          }, "eventThread").start();
+
+          dcAccounts = new DcAccounts(new File(getFilesDir(), "accounts").getAbsolutePath(), eventChannel);
           Log.i(TAG, "DcAccounts created");
           rpc = new Rpc(new FFITransport(dcAccounts.getJsonrpcInstance()));
           Log.i(TAG, "Rpc created");
@@ -213,27 +236,11 @@ public class ApplicationContext extends MultiDexApplication {
           }
           dcContext = dcAccounts.getSelectedAccount();
           notificationCenter = new NotificationCenter(this);
-          eventCenter = new DcEventCenter(this);
           dcLocationManager = new DcLocationManager(this, dcContext);
 
-          // Mark as initialized before starting threads that depend on it
           isInitialized = true;
           initLock.notifyAll();
           Log.i(TAG, "DcAccounts initialization complete");
-
-          new Thread(() -> {
-              Log.i(TAG, "Starting event loop");
-              DcEventEmitter emitter = dcAccounts.getEventEmitter();
-              Log.i(TAG, "DcEventEmitter obtained");
-              while (true) {
-                DcEvent event = emitter.getNextEvent();
-                if (event==null) {
-                  break;
-                }
-                eventCenter.handleEvent(event);
-              }
-              Log.i("DeltaChat", "shutting down event handler");
-          }, "eventThread").start();
 
           // set translations before starting I/O to avoid sending untranslated MDNs (issue #2288)
           DcHelper.setStockTranslations(this);

@@ -164,6 +164,23 @@ public class DcEventCenter {
     });
   }
 
+  public void handleLogging(@NonNull DcEvent event) {
+    final String logPrefix = "[accId="+event.getAccountId()+ "] ";
+    switch (event.getId()) {
+      case DcContext.DC_EVENT_INFO:
+        Log.i("DeltaChat", logPrefix + event.getData2Str());
+        break;
+
+      case DcContext.DC_EVENT_WARNING:
+        Log.w("DeltaChat", logPrefix + event.getData2Str());
+        break;
+
+      case DcContext.DC_EVENT_ERROR:
+        Log.e("DeltaChat", logPrefix + event.getData2Str());
+        break;
+    }
+  }
+
   public long handleEvent(@NonNull DcEvent event) {
     int accountId = event.getAccountId();
     int id = event.getId();
@@ -205,20 +222,7 @@ public class DcEventCenter {
         return 0;
     }
 
-    final String logPrefix = "[accId="+accountId + "] ";
-    switch (id) {
-      case DcContext.DC_EVENT_INFO:
-        Log.i("DeltaChat", logPrefix + event.getData2Str());
-        break;
-
-      case DcContext.DC_EVENT_WARNING:
-        Log.w("DeltaChat", logPrefix + event.getData2Str());
-        break;
-
-      case DcContext.DC_EVENT_ERROR:
-        Log.e("DeltaChat", logPrefix + event.getData2Str());
-        break;
-    }
+    handleLogging(event);
 
     if (accountId != context.getDcContext().getAccountId()) {
       return 0;
