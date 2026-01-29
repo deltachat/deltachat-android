@@ -47,20 +47,23 @@ import chat.delta.rpc.RpcException;
 public class AccountSelectionListFragment extends DialogFragment implements DcEventCenter.DcEventDelegate
 {
   private static final String TAG = AccountSelectionListFragment.class.getSimpleName();
-  private final ConversationListActivity activity;
+  private static final String ARG_SELECT_ONLY = "select_only";
   private RecyclerView recyclerView;
   private AccountSelectionListAdapter adapter;
-  private final boolean selectOnly;
+  private boolean selectOnly;
 
-  public AccountSelectionListFragment(ConversationListActivity activity, boolean selectOnly) {
-    super();
-    this.activity = activity;
-    this.selectOnly = selectOnly;
+  public static AccountSelectionListFragment newInstance(boolean selectOnly) {
+    AccountSelectionListFragment fragment = new AccountSelectionListFragment();
+    Bundle args = new Bundle();
+    args.putBoolean(ARG_SELECT_ONLY, selectOnly);
+    fragment.setArguments(args);
+    return fragment;
   }
 
   @NonNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
+    selectOnly = getArguments() != null && getArguments().getBoolean(ARG_SELECT_ONLY, false);
     AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity())
             .setTitle(R.string.switch_account)
             .setNegativeButton(R.string.cancel, null);
@@ -179,6 +182,7 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
   }
 
   private void onSetTag(int accountId) {
+    ConversationListActivity activity = (ConversationListActivity)requireActivity();
     AccountSelectionListFragment.this.dismiss();
 
     DcContext dcContext = DcHelper.getAccounts(activity).getAccount(accountId);
@@ -202,6 +206,7 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
 
   private void onDeleteProfile(int accountId) {
     AccountSelectionListFragment.this.dismiss();
+    ConversationListActivity activity = (ConversationListActivity)requireActivity();
     DcAccounts accounts = DcHelper.getAccounts(activity);
     Rpc rpc = DcHelper.getRpc(activity);
 
@@ -254,6 +259,7 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
     @Override
     public void onItemClick(AccountSelectionListItem contact) {
       AccountSelectionListFragment.this.dismiss();
+      ConversationListActivity activity = (ConversationListActivity)requireActivity();
       int accountId = contact.getAccountId();
       if (accountId == DC_CONTACT_ID_ADD_ACCOUNT) {
         AccountManager.getInstance().switchAccountAndStartActivity(activity, 0);
