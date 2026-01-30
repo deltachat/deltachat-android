@@ -1088,8 +1088,8 @@
     <string name="name_desktop">Name</string>
     <string name="select_group_image_desktop">Select Group Image</string>
     <string name="export_backup_desktop">Export Backup</string>
-    <string name="message_detail_sent_desktop">sent</string>
-    <string name="message_detail_received_desktop">received</string>
+    <string name="message_detail_sent_desktop">Sent</string>
+    <string name="message_detail_received_desktop">Received</string>
     <string name="menu.view.developer.open.log.folder">Open the Log Folder</string>
     <string name="menu.view.developer.open.current.log.file">Open Current Logfile</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Tray icon cannot be disabled as Delta Chat was started with the --minimized option.</string>
