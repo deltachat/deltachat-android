@@ -22,10 +22,7 @@ import static org.thoughtcrime.securesms.util.ShareUtil.acquireRelayMessageConte
 import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -37,7 +34,6 @@ import com.google.zxing.integration.android.IntentResult;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
-import org.thoughtcrime.securesms.util.MailtoUtil;
 
 import chat.delta.rpc.types.SecurejoinSource;
 import chat.delta.rpc.types.SecurejoinUiPath;
@@ -57,48 +53,6 @@ public class NewConversationActivity extends ContactSelectionActivity {
     super.onCreate(bundle, ready);
     assert getSupportActionBar() != null;
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    handleIntent();
-  }
-
-  private void handleIntent() {
-    Intent intent = getIntent();
-    String action = intent.getAction();
-    if(Intent.ACTION_VIEW.equals(action) || Intent.ACTION_SENDTO.equals(action)) {
-      try {
-        Uri uri = intent.getData();
-        if(uri != null) {
-          String scheme = uri.getScheme();
-          if(MailtoUtil.isMailto(uri)) {
-            String textToShare = MailtoUtil.getText(uri);
-            String[] recipientsArray = MailtoUtil.getRecipients(uri);
-            if (recipientsArray.length >= 1) {
-              if (!textToShare.isEmpty()) {
-                getIntent().putExtra(TEXT_EXTRA, textToShare);
-              }
-              final String addr = recipientsArray[0];
-              final DcContext dcContext = DcHelper.getContext(this);
-              int contactId = dcContext.lookupContactIdByAddr(addr);
-              if (contactId == 0 && dcContext.mayBeValidAddr(addr)) {
-                contactId = dcContext.createContact(null, recipientsArray[0]);
-              }
-              if (contactId == 0) {
-                Toast.makeText(this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
-              } else {
-                onContactSelected(contactId);
-              }
-            } else {
-              Intent shareIntent = new Intent(this, ShareActivity.class);
-              shareIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
-              startActivity(shareIntent);
-              finish();
-            }
-          }
-        }
-      }
-      catch(Exception e) {
-        Log.e(TAG, "start activity from external 'mailto:' link failed", e);
-      }
-    }
   }
 
   @Override
