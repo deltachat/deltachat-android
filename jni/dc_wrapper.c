@@ -153,6 +153,42 @@ static uint32_t* jintArray2uint32Pointer(JNIEnv* env, jintArray ja, int* ret_icn
 }
 
 
+/************************************************************
+ * DcEventChannel
+ ************************************************************/
+
+static dc_event_channel_t* get_dc_event_channel(JNIEnv *env, jobject obj)
+{
+    static jfieldID fid = 0;
+    if (fid==0) {
+        jclass cls = (*env)->GetObjectClass(env, obj);
+        fid = (*env)->GetFieldID(env, cls, "eventChannelCPtr", "J" /*Signature, J=long*/);
+    }
+    if (fid) {
+        return (dc_event_channel_t*)(*env)->GetLongField(env, obj, fid);
+    }
+    return NULL;
+}
+
+
+JNIEXPORT jlong Java_com_b44t_messenger_DcEventChannel_createEventChannelCPtr(JNIEnv *env, jobject obj)
+{
+    return (jlong)dc_event_channel_new();
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcEventChannel_unrefEventChannelCPtr(JNIEnv *env, jobject obj)
+{
+    dc_event_channel_unref(get_dc_event_channel(env, obj));
+}
+
+
+JNIEXPORT jlong Java_com_b44t_messenger_DcEventChannel_getEventEmitterCPtr(JNIEnv *env, jobject obj)
+{
+    return (jlong)dc_event_channel_get_event_emitter(get_dc_event_channel(env, obj));
+}
+
+
 /*******************************************************************************
  * DcAccounts
  ******************************************************************************/
@@ -172,11 +208,11 @@ static dc_accounts_t* get_dc_accounts(JNIEnv *env, jobject obj)
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcAccounts_createAccountsCPtr(JNIEnv *env, jobject obj, jstring dir)
+JNIEXPORT jlong Java_com_b44t_messenger_DcAccounts_createAccountsCPtr(JNIEnv *env, jobject obj, jstring dir, jobject chanObj)
 {
     CHAR_REF(dir);
         int writable = 1;
-        jlong accountsCPtr = (jlong)dc_accounts_new(dirPtr, writable);
+        jlong accountsCPtr = (jlong)dc_accounts_new_with_event_channel(dirPtr, writable, get_dc_event_channel(env, chanObj));
     CHAR_UNREF(dir);
     return accountsCPtr;
 }
