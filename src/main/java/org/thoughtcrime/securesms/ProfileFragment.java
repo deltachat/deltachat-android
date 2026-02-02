@@ -310,11 +310,27 @@ public class ProfileFragment extends Fragment
     super.onActivityResult(requestCode, resultCode, data);
     if (requestCode==REQUEST_CODE_PICK_CONTACT && resultCode==Activity.RESULT_OK && data!=null) {
       List<Integer> selected = data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA);
-      if(selected == null) return;
+      List<Integer> deselected = data.getIntegerArrayListExtra(ContactMultiSelectionActivity.DESELECTED_CONTACTS_EXTRA);
       Util.runOnAnyBackgroundThread(() -> {
-        for (Integer contactId : selected) {
-          if (contactId!=null) {
-            dcContext.addContactToChat(chatId, contactId);
+        if (deselected != null) {
+          // Remove members that were deselected
+          int[] members = dcContext.getChatContacts(chatId);
+          for (int contactId : deselected) {
+            for (int memberId : members) {
+              if (memberId == contactId) {
+                dcContext.removeContactFromChat(chatId, memberId);
+                break;
+              }
+            }
+          }
+        }
+
+        if (selected != null) {
+          // Add new members
+          for (Integer contactId : selected) {
+            if (contactId != null) {
+              dcContext.addContactToChat(chatId, contactId);
+            }
           }
         }
       });

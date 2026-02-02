@@ -58,6 +58,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -83,6 +84,7 @@ public class ContactSelectionListFragment extends    Fragment
   private DcContext dcContext;
 
   private Set<Integer>              selectedContacts;
+  private Set<Integer>              deselectedContacts;
   private OnContactSelectedListener onContactSelectedListener;
   private String                    cursorFilter;
   private RecyclerView              recyclerView;
@@ -226,6 +228,15 @@ public class ContactSelectionListFragment extends    Fragment
     return selected;
   }
 
+  public @NonNull List<Integer> getDeselectedContacts() {
+    List<Integer> deselected = new LinkedList<>();
+    if (deselectedContacts != null) {
+      deselected.addAll(deselectedContacts);
+    }
+
+    return deselected;
+  }
+
   private boolean isMulti() {
     return getActivity().getIntent().getBooleanExtra(MULTI_SELECT, false);
   }
@@ -241,6 +252,7 @@ public class ContactSelectionListFragment extends    Fragment
             isMulti(),
             true);
     selectedContacts = adapter.getSelectedContacts();
+    deselectedContacts = new HashSet<>();
     ArrayList<Integer> preselectedContacts = getActivity().getIntent().getIntegerArrayListExtra(PRESELECTED_CONTACTS);
     if(preselectedContacts!=null) {
       selectedContacts.addAll(preselectedContacts);
@@ -309,12 +321,14 @@ public class ContactSelectionListFragment extends    Fragment
         }
 
         selectedContacts.add(contactId);
+        deselectedContacts.remove(contactId);
         contact.setChecked(true);
         if (onContactSelectedListener != null) {
           onContactSelectedListener.onContactSelected(contactId);
         }
       } else {
         selectedContacts.remove(contactId);
+        deselectedContacts.add(contactId);
         contact.setChecked(false);
         if (onContactSelectedListener != null) {
           onContactSelectedListener.onContactDeselected(contactId);
@@ -355,6 +369,7 @@ public class ContactSelectionListFragment extends    Fragment
       int contactId = data.getIntExtra(NewContactActivity.CONTACT_ID_EXTRA, 0);
       if (contactId != 0) {
         selectedContacts.add(contactId);
+        deselectedContacts.remove(contactId);
       }
       getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);
     }
