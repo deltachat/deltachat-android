@@ -17,6 +17,7 @@
 * Fix: Refresh chat list when returning from conversation if selected profile changed
 * Fix: Update menu when using "select all" in contact selection
 * Fix: Avoid empty profiles after using "add as second device" from welcome screen
+* Fix: Remove from group deselected members in the contact selection list
 * Fix multi-device seen messages synchronization when using multiple relays
 * Fix layout problems inside in-chat apps
 * Avoid crash when the app is minimized with profile switcher or reactions dialogs open
