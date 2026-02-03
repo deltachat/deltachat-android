@@ -82,7 +82,6 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.audio.AudioRecorder;
-import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.calls.CallUtil;
 import org.thoughtcrime.securesms.components.AnimatingToggle;
 import org.thoughtcrime.securesms.components.AttachmentTypeSelector;
@@ -379,7 +378,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     DcHelper.getNotificationCenter(this).clearVisibleChat();
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
     inputPanel.onPause();
-    AudioSlidePlayer.stopAll();
   }
 
   @Override

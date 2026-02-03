@@ -32,6 +32,7 @@ public class AudioView extends FrameLayout {
   private final AnimatedVectorDrawableCompat pauseToPlayDrawable;
   private final Drawable                 playDrawable;
   private final Drawable                 pauseDrawable;
+  private final Animatable2Compat.AnimationCallback animationCallback;
   private final @NonNull SeekBar         seekBar;
   private final @NonNull TextView        timestamp;
   private final @NonNull TextView        title;
@@ -72,19 +73,13 @@ public class AudioView extends FrameLayout {
     this.playDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.play_icon);
     this.pauseDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.pause_icon);
 
-    Animatable2Compat.AnimationCallback animationCallback = new Animatable2Compat.AnimationCallback() {
+    this.animationCallback = new Animatable2Compat.AnimationCallback() {
       @Override
       public void onAnimationEnd(Drawable drawable) {
         Drawable endState = isPlaying ? pauseDrawable : playDrawable;
         playPauseButton.setImageDrawable(endState);
       }
     };
-    if (playToPauseDrawable != null) {
-      playToPauseDrawable.registerAnimationCallback(animationCallback);
-    }
-    if (pauseToPlayDrawable != null) {
-      pauseToPlayDrawable.registerAnimationCallback(animationCallback);
-    }
   }
 
   @Override
@@ -138,6 +133,13 @@ public class AudioView extends FrameLayout {
         viewModel.seekTo(seekBar.getProgress());
       }
     });
+
+    if (playToPauseDrawable != null) {
+      playToPauseDrawable.registerAnimationCallback(animationCallback);
+    }
+    if (pauseToPlayDrawable != null) {
+      pauseToPlayDrawable.registerAnimationCallback(animationCallback);
+    }
   }
 
   @Override
