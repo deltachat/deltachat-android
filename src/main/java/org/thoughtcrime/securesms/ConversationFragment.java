@@ -108,9 +108,9 @@ public class ConversationFragment extends MessageSelectorFragment
     public boolean isPaused;
     private Debouncer markseenDebouncer;
     private Rpc rpc;
-    private boolean pendingHideBottomDivider;
+    private boolean pendingAdjustBottomLayout;
 
-  @Override
+    @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         rpc = DcHelper.getRpc(getContext());
@@ -161,9 +161,10 @@ public class ConversationFragment extends MessageSelectorFragment
         // with hardware layers, drawing may result in errors as "OpenGLRenderer: Path too large to be rendered into a texture"
         list.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
-        if (pendingHideBottomDivider) {
+        if (pendingAdjustBottomLayout) {
           bottomDivider.setVisibility(View.GONE);
-          pendingHideBottomDivider = false;
+          ViewUtil.applyWindowInsets(list, false, true, false, true);
+          pendingAdjustBottomLayout = false;
         }
 
         return view;
@@ -204,13 +205,14 @@ public class ConversationFragment extends MessageSelectorFragment
         }
     }
 
-    public void hideBottomDivider() {
+    public void handleAdjustBottomLayout() {
       if (bottomDivider != null) {
         bottomDivider.setVisibility(View.GONE);
-        pendingHideBottomDivider = false;
+        ViewUtil.applyWindowInsets(list, false, true, false, true);
+        pendingAdjustBottomLayout = false;
       }
       else {
-        pendingHideBottomDivider = true;
+        pendingAdjustBottomLayout = true;
       }
     }
 
