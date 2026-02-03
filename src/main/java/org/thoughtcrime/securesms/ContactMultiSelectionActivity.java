@@ -34,6 +34,7 @@ import java.util.List;
 public class ContactMultiSelectionActivity extends ContactSelectionActivity {
 
   public static final String CONTACTS_EXTRA = "contacts_extra";
+  public static final String DESELECTED_CONTACTS_EXTRA = "deselected_contacts_extra";
 
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
@@ -71,7 +72,9 @@ public class ContactMultiSelectionActivity extends ContactSelectionActivity {
   private void saveSelection() {
     Intent resultIntent = getIntent();
     List<Integer> selectedContacts = contactsFragment.getSelectedContacts();
+    List<Integer> deselectedContacts = contactsFragment.getDeselectedContacts();
     resultIntent.putIntegerArrayListExtra(CONTACTS_EXTRA, new ArrayList<>(selectedContacts));
+    resultIntent.putIntegerArrayListExtra(DESELECTED_CONTACTS_EXTRA, new ArrayList<>(deselectedContacts));
     setResult(RESULT_OK, resultIntent);
   }
 }
