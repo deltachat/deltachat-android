@@ -390,11 +390,27 @@ public class ViewUtil {
   /**
    * Apply window insets to a view by adding padding to avoid  drawing elements behind system bars.
    * Convenience method that applies insets to all sides.
+   * IME insets are propagated to child views.
    * 
    * @param view The view to apply insets to
    */
   public static void applyWindowInsets(@NonNull View view) {
-    applyWindowInsets(view, true, true, true, true);
+    applyWindowInsets(view, true, true, true, true, false);
+  }
+
+  /**
+   * Apply window insets to a view by adding padding to avoid drawing elements behind system bars.
+   *
+   * IME insets are propagated to child views.
+   *
+   * @param view The view to apply insets to
+   * @param left Whether to apply left inset
+   * @param top Whether to apply top inset
+   * @param right Whether to apply right inset
+   * @param bottom Whether to apply bottom inset
+   */
+  public static void applyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+    applyWindowInsets(view, left, top, right, bottom, false);
   }
 
   /**
@@ -408,8 +424,9 @@ public class ViewUtil {
    * @param top Whether to apply top inset
    * @param right Whether to apply right inset
    * @param bottom Whether to apply bottom inset
+   * @param consumeImeInsets Whether to consume IME insets so they don't propagate to child views
    */
-  public static void applyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+  public static void applyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom, boolean consumeImeInsets) {
     // Only enable on API 30+ where WindowInsets APIs work correctly
     if (!isEdgeToEdgeSupported()) return;
 
@@ -442,6 +459,11 @@ public class ViewUtil {
           bottom ? basePaddingBottom + insets.bottom : basePaddingBottom
       );
 
+      if (consumeImeInsets) {
+        windowInsets = new WindowInsetsCompat.Builder(windowInsets)
+          .setInsets(WindowInsetsCompat.Type.ime(), Insets.NONE)
+          .build();
+      }
       return windowInsets;
     });
 
