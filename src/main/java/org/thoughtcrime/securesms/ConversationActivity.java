@@ -995,10 +995,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if(chatId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
     dcChat           = DcHelper.getContext(context).getChat(chatId);
-    if (!dcChat.canSend()) {
-      ViewUtil.applyWindowInsets(findViewById(R.id.root_layout), true, false, true, false);
-      fragment.handleAdjustBottomLayout();
-    }
     recipient        = new Recipient(this, dcChat);
     glideRequests    = GlideApp.with(this);
 
@@ -1010,10 +1006,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (dcChat.canSend()) {
       composePanel.setVisibility(View.VISIBLE);
       attachmentManager.setHidden(false);
+      ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, true);
+      fragment.handleRemoveBottomInsets();
     } else {
       composePanel.setVisibility(View.GONE);
       attachmentManager.setHidden(true);
       hideSoftKeyboard();
+      ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, false);
+      fragment.handleAddBottomInsets();
     }
   }
 

@@ -108,7 +108,8 @@ public class ConversationFragment extends MessageSelectorFragment
     public boolean isPaused;
     private Debouncer markseenDebouncer;
     private Rpc rpc;
-    private boolean pendingAdjustBottomLayout;
+    private boolean pendingAddBottomInsets;
+    private boolean pendingRemoveBottomInsets;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -161,10 +162,18 @@ public class ConversationFragment extends MessageSelectorFragment
         // with hardware layers, drawing may result in errors as "OpenGLRenderer: Path too large to be rendered into a texture"
         list.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
-        if (pendingAdjustBottomLayout) {
+        if (pendingAddBottomInsets) {
           bottomDivider.setVisibility(View.GONE);
           ViewUtil.applyWindowInsets(list, false, true, false, true);
-          pendingAdjustBottomLayout = false;
+          ViewUtil.forceApplyWindowInsetsAsMargin(scrollToBottomButton, true, true, true, true);
+          pendingAddBottomInsets = false;
+        }
+
+        if (pendingRemoveBottomInsets) {
+          bottomDivider.setVisibility(View.VISIBLE);
+          ViewUtil.applyWindowInsets(list, false, true, false, false);
+          ViewUtil.forceApplyWindowInsetsAsMargin(scrollToBottomButton, true, true, true, false);
+          pendingRemoveBottomInsets = false;
         }
 
         return view;
@@ -205,14 +214,25 @@ public class ConversationFragment extends MessageSelectorFragment
         }
     }
 
-    public void handleAdjustBottomLayout() {
+    public void handleAddBottomInsets() {
       if (bottomDivider != null) {
         bottomDivider.setVisibility(View.GONE);
         ViewUtil.applyWindowInsets(list, false, true, false, true);
-        pendingAdjustBottomLayout = false;
+        ViewUtil.forceApplyWindowInsetsAsMargin(scrollToBottomButton, false, false, false, true);
+        pendingAddBottomInsets = false;
+      } else {
+        pendingAddBottomInsets = true;
       }
-      else {
-        pendingAdjustBottomLayout = true;
+    }
+
+    public void handleRemoveBottomInsets() {
+      if (bottomDivider != null) {
+        bottomDivider.setVisibility(View.VISIBLE);
+        ViewUtil.applyWindowInsets(list, false, true, false, false);
+        ViewUtil.forceApplyWindowInsetsAsMargin(scrollToBottomButton, false, false, false, false);
+        pendingRemoveBottomInsets = false;
+      } else {
+        pendingRemoveBottomInsets = true;
       }
     }
 
