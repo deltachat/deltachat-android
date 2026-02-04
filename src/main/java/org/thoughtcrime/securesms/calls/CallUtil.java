@@ -18,19 +18,19 @@ import java.nio.charset.StandardCharsets;
 public class CallUtil {
   private static final String TAG = CallUtil.class.getSimpleName();
 
-  public static void startCall(Activity activity, int chatId) {
+  public static void startCall(Activity activity, int chatId, boolean audioOnly) {
     Permissions.with(activity)
       .request(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
       .ifNecessary()
       .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_camera_denied))
       .onAllGranted(() -> {
           int accId = DcHelper.getContext(activity).getAccountId();
-          startCall(activity, accId, chatId);
+          startCall(activity, accId, chatId, audioOnly);
         })
       .execute();
   }
 
-  public static void startCall(Context context, int accId, int chatId) {
+  public static void startCall(Context context, int accId, int chatId, boolean audioOnly) {
     Intent intent = new Intent(context, CallActivity.class);
     intent.setAction(Intent.ACTION_VIEW);
     intent.putExtra(CallActivity.EXTRA_ACCOUNT_ID, accId);

@@ -380,6 +380,8 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Call</string>
+    <string name="start_audio_call">Audio Call</string>
+    <string name="start_video_call">Video Call</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Answer</string>
     <!-- the action "to decline" a call, not: "the decline" -->
