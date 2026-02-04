@@ -1088,8 +1088,8 @@
     <string name="name_desktop">Naam</string>
     <string name="select_group_image_desktop">Kies een groepsafbeelding</string>
     <string name="export_backup_desktop">Reservekopie exporteren</string>
-    <string name="message_detail_sent_desktop">verstuurd</string>
-    <string name="message_detail_received_desktop">ontvangen</string>
+    <string name="message_detail_sent_desktop">Verstuurd</string>
+    <string name="message_detail_received_desktop">Ontvangen</string>
     <string name="menu.view.developer.open.log.folder">Map met logbestanden openen</string>
     <string name="menu.view.developer.open.current.log.file">Huidig logbestand openen</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Het systeemvakpictogram is uitgeschakeld omdat Delta Chat is gestart met de optie --minimized</string>

@@ -2,7 +2,7 @@
 package chat.delta.rpc.types;
 
 public class CallInfo {
-  /** True if SDP offer has a video. */
+  /** True if the call is started as a video call. */
   public Boolean hasVideo;
   /**
    * SDP offer.
