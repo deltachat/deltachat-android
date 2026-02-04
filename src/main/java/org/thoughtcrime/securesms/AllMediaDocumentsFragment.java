@@ -243,12 +243,13 @@ public class AllMediaDocumentsFragment
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem menuItem) {
       int itemId = menuItem.getItemId();
+      AudioPlaybackViewModel playbackViewModel = new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class);
       if (itemId == R.id.details) {
         handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
         mode.finish();
         return true;
       } else if (itemId == R.id.delete) {
-        handleDeleteMessages(chatId, getListAdapter().getSelectedMedia());
+        handleDeleteMessages(chatId, getListAdapter().getSelectedMedia(), playbackViewModel::stopByIds, playbackViewModel::stopByIds);
         mode.finish();
         return true;
       } else if (itemId == R.id.share) {

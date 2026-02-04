@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -26,6 +27,7 @@ import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.Set;
+import java.util.function.Consumer;
 
 public abstract class MessageSelectorFragment
     extends Fragment
@@ -57,10 +59,14 @@ public abstract class MessageSelectorFragment
   }
 
   protected void handleDeleteMessages(int chatId, final Set<DcMsg> messageRecords) {
-    handleDeleteMessages(chatId, DcMsg.msgSetToIds(messageRecords));
+    handleDeleteMessages(chatId, DcMsg.msgSetToIds(messageRecords), null, null);
   }
 
-  protected void handleDeleteMessages(int chatId, final int[] messageIds) {
+  protected void handleDeleteMessages(int chatId, final Set<DcMsg> messageRecords, Consumer<int[]> deleteForMeListenerExtra, Consumer<int[]> deleteForAllListenerExtra) {
+    handleDeleteMessages(chatId, DcMsg.msgSetToIds(messageRecords), deleteForMeListenerExtra, deleteForAllListenerExtra);
+  }
+
+  protected void handleDeleteMessages(int chatId, final int[] messageIds, Consumer<int[]> deleteForMeListenerExtra, Consumer<int[]> deleteForAllListenerExtra) {
     DcContext dcContext = DcHelper.getContext(getContext());
     DcChat dcChat = dcContext.getChat(chatId);
     boolean canDeleteForAll = true;
@@ -79,20 +85,24 @@ public abstract class MessageSelectorFragment
     String text = getActivity().getResources().getQuantityString(R.plurals.ask_delete_messages, messageIds.length, messageIds.length);
     int positiveBtnLabel = dcChat.isSelfTalk() ? R.string.delete : R.string.delete_for_me;
 
+    DialogInterface.OnClickListener deleteForMeListener = (d, which) -> {
+      Util.runOnAnyBackgroundThread(() -> dcContext.deleteMsgs(messageIds));
+      if (actionMode != null) actionMode.finish();
+      if (deleteForMeListenerExtra != null) deleteForMeListenerExtra.accept(messageIds);
+    };
     AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity())
       .setMessage(text)
       .setCancelable(true)
       .setNeutralButton(android.R.string.cancel, null)
-      .setPositiveButton(positiveBtnLabel, (d, which) -> {
-        Util.runOnAnyBackgroundThread(() -> dcContext.deleteMsgs(messageIds));
-        if (actionMode != null) actionMode.finish();
-      });
+      .setPositiveButton(positiveBtnLabel, deleteForMeListener);
 
     if(canDeleteForAll) {
-      builder.setNegativeButton(R.string.delete_for_everyone, (d, which) -> {
+      DialogInterface.OnClickListener deleteForAllListener = (d, which) -> {
         Util.runOnAnyBackgroundThread(() -> dcContext.sendDeleteRequest(messageIds));
         if (actionMode != null) actionMode.finish();
-      });
+        if (deleteForAllListenerExtra != null) deleteForAllListenerExtra.accept(messageIds);
+      };
+      builder.setNegativeButton(R.string.delete_for_everyone, deleteForAllListener);
       AlertDialog dialog = builder.show();
       Util.redButton(dialog, AlertDialog.BUTTON_NEGATIVE);
       Util.redPositiveButton(dialog);

@@ -394,7 +394,14 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     public void handleClearChat() {
-        handleDeleteMessages((int) chatId, getListAdapter().getMessageIds());
+        AudioPlaybackViewModel playbackViewModel =
+          new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class);
+
+        handleDeleteMessages(
+          (int) chatId,
+          getListAdapter().getMessageIds(),
+          playbackViewModel::stopByIds,
+          playbackViewModel::stopByIds);
     }
 
     private ConversationAdapter getListAdapter() {
@@ -924,12 +931,15 @@ public class ConversationFragment extends MessageSelectorFragment
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             hideAddReactionView();
           int itemId = item.getItemId();
+          AudioPlaybackViewModel playbackViewModel =
+            new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class);
+
           if (itemId == R.id.menu_context_copy) {
             handleCopyMessage(getListAdapter().getSelectedItems());
             actionMode.finish();
             return true;
           } else if (itemId == R.id.menu_context_delete_message) {
-            handleDeleteMessages((int) chatId, getListAdapter().getSelectedItems());
+            handleDeleteMessages((int) chatId, getListAdapter().getSelectedItems(), playbackViewModel::stopByIds, playbackViewModel::stopByIds);
             return true;
           } else if (itemId == R.id.menu_context_share) {
             DcHelper.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);

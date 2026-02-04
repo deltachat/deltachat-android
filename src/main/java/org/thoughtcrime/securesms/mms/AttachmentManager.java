@@ -121,7 +121,7 @@ public class AttachmentManager {
       //this.mapView            = ViewUtil.findById(root, R.id.attachment_location);
       this.removableMediaView = ViewUtil.findById(root, R.id.removable_media_view);
 
-      removableMediaView.setRemoveClickListener(new RemoveButtonListener());
+      removableMediaView.addRemoveClickListener(new RemoveButtonListener());
       removableMediaView.setEditClickListener(new EditButtonListener());
       thumbnail.setOnClickListener(new ThumbnailClickListener());
     }
@@ -287,6 +287,9 @@ public class AttachmentManager {
             audioView.setPlaybackViewModel(playbackViewModel);
             audioView.setAudio((AudioSlide) slide, 0);
             removableMediaView.display(audioView, false);
+            removableMediaView.addRemoveClickListener(v -> {
+              playbackViewModel.stop(audioView.getMsgId(), audioView.getAudioUri());
+            });
             result.set(true);
           } else if (slide.isVcard()) {
               vcardView.setVcard(glideRequests, (VcardSlide)slide, DcHelper.getRpc(context));

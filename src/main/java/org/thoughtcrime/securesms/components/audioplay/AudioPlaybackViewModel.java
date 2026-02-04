@@ -44,15 +44,10 @@ public class AudioPlaybackViewModel extends ViewModel {
   public void loadAudioAndPlay(int msgId, Uri audioUri) {
     if (mediaController == null) return;
 
-    AudioPlaybackState currentState = playbackState.getValue();
-
-    updateState(msgId, audioUri, AudioPlaybackState.PlaybackStatus.LOADING, 0, 0);
-
     // Set media item if we have a different audio.
-    if (currentState != null && (
-        msgId != currentState.getMsgId() ||
-        currentState.getAudioUri() == null ||
-        currentState.getAudioUri() != null && !currentState.getAudioUri().equals(audioUri))) {
+    if (isDifferentAudio(msgId, audioUri)) {
+      updateState(msgId, audioUri, AudioPlaybackState.PlaybackStatus.LOADING, 0, 0);
+
       MediaItem mediaItem = new MediaItem.Builder()
         .setMediaId(String.valueOf(msgId))
         .setUri(audioUri)
@@ -61,34 +56,60 @@ public class AudioPlaybackViewModel extends ViewModel {
       mediaController.prepare();
     }
 
-    play();
+    play(msgId, audioUri);
+  }
+  private boolean isSameAudio(int msgId, Uri audioUri) {
+    return !isDifferentAudio(msgId, audioUri);
   }
 
-  public void pause() {
-    if (mediaController != null) {
+  private boolean isDifferentAudio(int msgId, Uri audioUri) {
+    AudioPlaybackState currentState = playbackState.getValue();
+
+    return currentState != null && (
+      msgId != currentState.getMsgId() ||
+        currentState.getAudioUri() == null ||
+        currentState.getAudioUri() != null && !currentState.getAudioUri().equals(audioUri));
+  }
+
+  public void pause(int msgId, Uri audioUri) {
+    if (mediaController != null && isSameAudio(msgId, audioUri)) {
       mediaController.pause();
     }
   }
 
-  public void play() {
-    if (mediaController != null) {
+  public void play(int msgId, Uri audioUri) {
+    if (mediaController != null && isSameAudio(msgId, audioUri)) {
       mediaController.play();
     }
   }
 
-  public void seekTo(long position) {
-    if (mediaController != null) {
+  public void seekTo(long position, int msgId, Uri audioUri) {
+    if (mediaController != null && isSameAudio(msgId, audioUri)) {
       mediaController.seekTo(position);
     }
   }
 
-  // Shouldn't need it for voice messages, but may be useful later
-  public void stop() {
-    if (mediaController != null) {
+  public void stop(int msgId, Uri audioUri) {
+    if (mediaController != null && isSameAudio(msgId, audioUri)) {
       mediaController.stop();
+      stopUpdateProgress();
+      playbackState.setValue(AudioPlaybackState.idle());
     }
-    stopUpdateProgress();
-    playbackState.setValue(AudioPlaybackState.idle());
+  }
+
+  // A special method for deleting message, where we only use message Ids
+  public void stopByIds(int[] msgIds) {
+    AudioPlaybackState currentState = playbackState.getValue();
+
+    if (mediaController != null && currentState != null) {
+      for (int msgId : msgIds) {
+        if (msgId == currentState.getMsgId()) {
+          mediaController.stop();
+          stopUpdateProgress();
+          playbackState.setValue(AudioPlaybackState.idle());
+        }
+      }
+    }
   }
 
   public void setUserSeeking(boolean isUserSeeking) {

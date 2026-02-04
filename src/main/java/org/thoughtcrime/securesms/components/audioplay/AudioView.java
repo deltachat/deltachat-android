@@ -39,7 +39,7 @@ public class AudioView extends FrameLayout {
   private final @NonNull View            mask;
   private OnActionListener               listener;
 
-  private int msgId;
+  private int                            msgId;
   private Uri                            audioUri;
   private AudioPlaybackViewModel         viewModel;
   private final Observer<AudioPlaybackState> stateObserver = this::onPlaybackStateChanged;
@@ -99,9 +99,9 @@ public class AudioView extends FrameLayout {
       if (state != null && msgId == state.getMsgId() && audioUri.equals(state.getAudioUri())) {
         // Same audio
         if (state.getStatus() == AudioPlaybackState.PlaybackStatus.PLAYING) {
-          viewModel.pause();
+          viewModel.pause(msgId, audioUri);
         } else {
-          viewModel.play();
+          viewModel.play(msgId, audioUri);
         }
       } else {
         // Different audio
@@ -130,7 +130,7 @@ public class AudioView extends FrameLayout {
       @Override
       public void onStopTrackingTouch(SeekBar seekBar) {
         viewModel.setUserSeeking(false);
-        viewModel.seekTo(seekBar.getProgress());
+        viewModel.seekTo(seekBar.getProgress(), msgId, audioUri);
       }
     });
 
@@ -199,6 +199,14 @@ public class AudioView extends FrameLayout {
     super.setOnLongClickListener(listener);
     this.mask.setOnLongClickListener(listener);
     this.playPauseButton.setOnLongClickListener(listener);
+  }
+
+  public int getMsgId() {
+    return msgId;
+  }
+
+  public Uri getAudioUri() {
+    return audioUri;
   }
 
   public interface OnActionListener {
