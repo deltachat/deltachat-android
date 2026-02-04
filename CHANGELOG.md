@@ -22,6 +22,7 @@
 * Fix mailto handling
 * Fix layout problems inside in-chat apps
 * Avoid crash when the app is minimized with profile switcher or reactions dialogs open
+* Remove "trash icon" option from contact selection list when adding members to group
 * Update to core 2.39.0
 
 ## v2.35.0
