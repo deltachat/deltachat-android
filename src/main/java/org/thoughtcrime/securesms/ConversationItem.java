@@ -998,7 +998,7 @@ public class ConversationItem extends BaseConversationItem
               int callId = messageRecord.getId();
               CallUtil.openCall(getContext(), accId, chatId, callId, callInfo.sdpOffer);
           } else {
-              CallUtil.startCall(getContext(), accId, chatId, false); // TODO: core api needed to get if call message is audio-only
+              CallUtil.startCall(getContext(), accId, chatId, !callInfo.hasVideo);
           }
       }
     }

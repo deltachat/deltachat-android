@@ -35,8 +35,8 @@ public class CallUtil {
     intent.setAction(Intent.ACTION_VIEW);
     intent.putExtra(CallActivity.EXTRA_ACCOUNT_ID, accId);
     intent.putExtra(CallActivity.EXTRA_CHAT_ID, chatId);
-    String query = audioOnly? "?noOutgoingVideoInitially" : "";
-    intent.putExtra(CallActivity.EXTRA_HASH, query + "#startCall");
+    intent.putExtra(CallActivity.EXTRA_AUDIO_ONLY, audioOnly);
+    intent.putExtra(CallActivity.EXTRA_HASH, "#startCall");
     context.startActivity(intent);
   }
 

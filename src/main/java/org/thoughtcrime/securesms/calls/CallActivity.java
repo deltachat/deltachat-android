@@ -43,12 +43,14 @@ public class CallActivity extends WebViewActivity implements DcEventCenter.DcEve
   public static final String EXTRA_CHAT_ID = "chat_id";
   public static final String EXTRA_CALL_ID = "call_id";
   public static final String EXTRA_HASH = "hash";
+  public static final String EXTRA_AUDIO_ONLY = "audio_only";
 
   private DcContext dcContext;
   private Rpc rpc;
   private int accId;
   private int chatId;
   private int callId;
+  private boolean audioOnly;
   private boolean ended = false;
 
   @SuppressLint("SetJavaScriptEnabled")
@@ -58,7 +60,9 @@ public class CallActivity extends WebViewActivity implements DcEventCenter.DcEve
 
     Bundle bundle = getIntent().getExtras();
     assert bundle != null;
+    audioOnly = bundle.getBoolean(EXTRA_AUDIO_ONLY, false);
     String hash = bundle.getString(EXTRA_HASH, "");
+    String query = audioOnly? "?noOutgoingVideoInitially" : "";
     accId = bundle.getInt(EXTRA_ACCOUNT_ID, -1);
     chatId = bundle.getInt(EXTRA_CHAT_ID, 0);
     callId = bundle.getInt(EXTRA_CALL_ID, 0);
@@ -94,7 +98,7 @@ public class CallActivity extends WebViewActivity implements DcEventCenter.DcEve
       .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_camera_denied))
       .onAllGranted(() -> {
         String url = "file:///android_asset/calls/index.html";
-        webView.loadUrl(url + hash);
+        webView.loadUrl(url + query + hash);
       }).onAnyDenied(this::finish)
       .execute();
   }
