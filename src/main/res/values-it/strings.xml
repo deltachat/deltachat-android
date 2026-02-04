@@ -1019,6 +1019,7 @@
     <string name="secure_join_replies">%1$s ha risposto, in attesa di essere aggiunto al gruppo…</string>
     <string name="secure_join_wait">Impostazione della crittografia end-to-end, attendere...</string>
     <string name="contact_verified">%1$s introdotto.</string>
+    <string name="contact_blocked">Hai bloccato il contatto</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Introdotto da %1$s</string>
     <string name="verified_by_you">Introdotto da me</string>
