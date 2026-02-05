@@ -5,6 +5,10 @@
     <string name="ok">OK</string>
     <string name="cancel">Avbryt</string>
     <string name="clear_search">Rensa sök</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Länk</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Skanna</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="select">Välj</string>
@@ -24,29 +28,40 @@
     <string name="join">Anslut</string>
     <string name="rejoin">Återanslut</string>
     <string name="delete">Ta bort</string>
+    <string name="delete_for_me">Ta bort för mig</string>
+    <string name="delete_for_everyone">Ta bort för alla</string>
     <string name="info">Info</string>
     <string name="update">Uppdatera</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Bilaga</string>
+    <!-- the placeholder will be replaced by the name of the image or file to attach -->
+    <string name="ask_attach">Vill du bifoga \"%1$s\"?</string>
     <string name="back">Tillbaka</string>
     <string name="close">Stäng</string>
     <string name="close_window">Stäng fönster</string>
     <string name="forward">Vidarebefordra</string>
     <string name="create">Skapa</string>
+    <string name="reset">Återställ</string>
     <string name="later">Senare</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Skicka igen</string>
+    <string name="edited">Redigerad</string>
+    <string name="edit_message">Redigera meddelande</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arkivera</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Avarkivera</string>
     <string name="mute">Tyst</string>
+    <string name="muted">Tystad</string>
     <string name="ephemeral_messages">Försvinnande meddelanden</string>
     <string name="ephemeral_messages_hint">Dessa inställningar tillämpas för alla deltagare som använder Delta Chat. De kan dock kopiera, spara och vidarebefordra meddelanden eller använda andra e-postklienter.</string>
     <string name="save">Spara</string>
     <string name="chat">Chatt</string>
     <string name="media">Media</string>
+    <string name="apps_and_media">Appar &amp; Media</string>
     <string name="profile">Profil</string>
+    <string name="all_profiles">Alla profiler</string>
+    <string name="current_profile">Aktuell profil</string>
     <string name="main_menu">Huvudmeny</string>
     <string name="start_chat">Starta chatt</string>
     <string name="show_full_message">Visa hela meddelandet...</string>
@@ -79,6 +94,8 @@
     <string name="no_app_to_handle_data">Kan inte hitta någon app som hanterar denna typ av data.</string>
     <string name="no_browser_installed">Ingen webbläsare installerad.</string>
     <string name="file_not_found">Kunde inte hitta %1$s.</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">Kan inte spara %1$s.</string>
     <string name="copied_to_clipboard">Kopierad till urklipp.</string>
     <string name="contacts_headline">Kontakter</string>
     <string name="email_address">E-postadress</string>
@@ -99,6 +116,16 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Sågs senast %1$s</string>
     <string name="last_seen_unknown">Sågs senast: Okänt</string>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
+    <plurals name="n_seconds_ext">
+        <item quantity="one">%d sekund</item>
+        <item quantity="other">%d sekunder</item>
+    </plurals>
+    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
+    <plurals name="n_minutes_ext">
+        <item quantity="one">%d minut</item>
+        <item quantity="other">%d minuter</item>
+    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -122,6 +149,10 @@
         <item quantity="one">%d meddelande</item>
         <item quantity="other">%d meddelanden</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d reaktion</item>
+        <item quantity="other">%d reaktioner</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d medlem</item>
         <item quantity="other">%d medlemmar</item>
@@ -135,6 +166,7 @@
         <item quantity="one">%dmarkerade</item>
         <item quantity="other">%d markerad</item>
     </plurals>
+    <string name="selected_colon">Markerat:</string>
     <string name="self">Jag</string>
     <string name="draft">Utkast</string>
     <string name="image">Bild</string>
@@ -168,10 +200,25 @@
     <string name="images_and_videos">Bilder och videor</string>
     <string name="file">Arkiv</string>
     <string name="files">Filer</string>
+    <string name="files_attach_hint">Skicka originalfiler och okomprimerade bilder</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Välj från Filer</string>
+    <string name="choose_from_gallery">Välj från Galleri</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">App</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Appar</string>
+    <string name="webxdc_store_url">URL till appväljare</string>
+    <string name="webxdc_store_url_explain">Om angivet, kommer URL:en att användas som appväljare istället för standardväljare</string>
+    <string name="webxdc_draft_hint">Tryck \"Skicka\" för att dela</string>
+    <string name="home">Hem</string>
+    <string name="games">Spel</string>
+    <string name="tools">Verktyg</string>
+    <string name="app_size">Storlek</string>
+    <string name="app_date_published">Publicerad</string>
+    <string name="add_to_chat">Lägg till i chatten</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Bläddra</string>
     <string name="unknown">Okänd</string>
 
     <string name="green">Grön</string>
@@ -199,9 +246,24 @@
     <string name="new_classic_contact_explain">Manuellt tillagda kontakter kan användas för att sms:a till klassisk e-post och är inte garanterat totalsträckskrypterat.</string>
     <string name="menu_new_chat">Ny chatt</string>
     <string name="menu_new_group">Ny grupp</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Chatta med...</string>
     <string name="clone_chat">Klona chatt</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Kanal</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Kanaler</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Ny kanal</string>
     <!-- deprecated -->
     <string name="add_recipients">Lägg till mottagare</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Kanalnamn</string>
+    <string name="email">E-post</string>
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">Ny e-post</string>
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
+    <string name="subject">Ämne</string>
     <string name="menu_send">Skicka</string>
     <string name="menu_toggle_keyboard">Byt emoji-tangentbord</string>
     <string name="menu_edit_group">Redigera grupp</string>
@@ -211,6 +273,7 @@
     <string name="menu_unarchive_chat">Avarkivera chatt</string>
     <string name="menu_add_attachment">Lägg till bilaga</string>
     <string name="menu_leave_group">Lämna grupp</string>
+    <string name="menu_leave_channel">Lämna kanalen</string>
     <string name="menu_delete_chat">Ta bort chatt</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Rensa chatt</string>
@@ -219,6 +282,7 @@
     <string name="menu_message_details">Meddelandedetaljer</string>
     <string name="menu_copy_to_clipboard">Kopiera till urklipp</string>
     <string name="share_invite_link">Dela inbjudningslänk</string>
+    <string name="share_invite_link_explain">Vem som helst med den här länken kan se din profil och börja chatta med dig. Dela den bara med personer som du litar på.</string>
     <string name="invite_friends">Bjud in vänner</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Kontakta mig på Delta Chat:\n%1$s</string>
@@ -236,6 +300,7 @@
     <string name="menu_export_attachment">Exportera bilaga</string>
     <string name="menu_export_attachments">Exportera bilaga</string>
     <string name="menu_all_media">All media</string>
+    <string name="all_apps_and_media">Alla appar &amp; media</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Visa i chatten</string>
     <string name="show_app_in_chat">Visa app i chatt</string>
@@ -257,6 +322,10 @@
     <string name="select_chat">Välj chatt</string>
     <string name="select_more">Välj flera</string>
     <string name="menu_edit_name">Redigera namn</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
+    <string name="edit_name_explain">Ange ett chattnamn som kommer att visas för dig istället för \"%1$s\". Lämnas tomt om du vill använda kontaktens valda namn.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
+    <string name="edit_name_placeholder">Chattnamn för \"%1$s\"</string>
     <string name="menu_settings">Inställningar</string>
     <string name="menu_advanced">Avancerat</string>
     <string name="menu_view_profile">Visa profil</string>
@@ -266,6 +335,7 @@
     <string name="menu_more_options">Mer alternativ</string>
     <string name="menu_learn_spelling">Lär stavning</string>
     <string name="jump_to_message">Hoppa till meddelande</string>
+    <string name="jump_to_original_message">Hoppa till ursprungligt meddelande</string>
     <string name="copy_json">Kopiera JSON</string>
     <string name="replace_draft">Ersätt utkast</string>
     <string name="title_share_location">Dela plats med alla gruppmedlemmar</string>
@@ -288,6 +358,8 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Lägg till på hemskärmen</string>
     <string name="donate">Donera</string>
+    <string name="donate_device_msg">❤️ Det verkar som att du gillar Delta Chat!\n\nVänligen överväg att donera för att hjälpa till att säkerställa att Delta Chat förblir gratis för alla.\n\nÄven om Delta Chat är gratis att använda och öppen källkod, kostar utvecklingen pengar. Hjälp oss att hålla Delta Chat oberoende och göra det ännu bättre i framtiden.\n\nhttps://delta.chat/donate</string>
+
     <string name="mute_for_one_hour">Tysta 1 timma</string>
     <string name="mute_for_eight_hours">Tysta 8 timmar</string>
     <string name="mute_for_one_day">Tysta 1 dag</string>
@@ -306,6 +378,29 @@
     </plurals>
     <string name="file_saved_to">Filen är sparad i \"%1$s\".</string>
 
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">Ring upp</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">Svara</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">Avböj</string>
+    <string name="outgoing_call">Utgående samtal</string>
+    <string name="incoming_call">Inkommande samtal</string>
+    <string name="declined_call">Nekade samtal</string>
+    <string name="canceled_call">Avbrutna samtal</string>
+    <string name="missed_call">Missade samtal</string>
+    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
+    <string name="call_date_and_duration">%1$s, %2$s</string>
+
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Vill du verkligen lämna?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Vill du ta bort %d chatt?</item>
+        <item quantity="other">Vill du ta bort %d chattar?</item>
+    </plurals>
+    <string name="ask_delete_named_chat">Vill du ta bort chatten\"%1$s\"?</string>
+    <string name="ask_delete_message">Vill du ta bort detta meddelande?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Vill du ta bort %d meddelande?</item>
         <item quantity="other">Vill du ta bort %d meddelanden?</item>
@@ -320,6 +415,8 @@
     <string name="ask_start_chat_with">Chatta med %1$s ?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Ta bort %1$s från gruppen?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Vill du ta bort %1$s från kanalen?</string>
     <string name="open_url_confirmation">Vill du öppna denna länk?</string>
 
 
@@ -347,6 +444,8 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Skicka ett meddelande till %1$s.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">Kanaler är ett en-till-många-verktyg för att skicka ut dina meddelanden.</string>
     <string name="chat_new_group_hint">Komponera det första meddelandet, så att andra kan svara inom denna grupp.\n\n• Det är okej om inte alla medlemmar använder Delta Chat.\n\n• Det kan ta en stund innan det första meddelandet levereras.</string>
     <string name="chat_record_slide_to_cancel">Svep för att avbryta</string>
     <string name="chat_record_explain">Tryck och håll ner för att spela in ett röstmeddelande, släpp för att skicka.</string>
@@ -356,6 +455,7 @@
     <string name="chat_input_placeholder">Meddelande</string>
     <string name="chat_archived_label">Arkiverat</string>
     <string name="chat_request_label">Efterfråga</string>
+    <string name="chat_request_label_explain">Inkludera förfrågningar i räknare och meddelanden</string>
     <string name="chat_no_messages">Inga meddelanden.</string>
     <string name="chat_self_talk_subtitle">Meddelanden jag skickat till mig själv</string>
     <string name="archive_empty_hint">Arkiverde chattar kommer att visas här.</string>
@@ -384,6 +484,9 @@
     <string name="send_file_to">Skicka \"%1$s\" till...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Skicka meddelande till...</string>
+    <string name="enable_realtime">Realtidsappar</string>
+    <string name="enable_realtime_explain">Aktivera realtidsanslutningar för appar som är kopplade till chattar. Om detta är aktiverat kan chattpartners kanske få reda på din IP-adress när du startar en app.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Visa platser inom tidsramen</string>
     <string name="show_location_traces">Visa spår</string>
@@ -406,6 +509,10 @@
     <string name="search_files">Sök filer</string>
     <string name="search_explain">Sök efter chattar, kontakter och meddelanden</string>
     <string name="search_no_result_for_x">Inga resultat hittades för \" %s \"</string>
+    <!-- Adjective, as in "Show Unread Messages" -->
+    <string name="search_unread">Olästa</string>
+
+
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Gruppnamn</string>
     <string name="group_avatar">Gruppbild</string>
@@ -417,6 +524,8 @@
     <string name="group_self_not_in_group">Du måste vara medlem i gruppen för att utföra denna åtgärd.</string>
     <string name="profile_encryption">Kryptering</string>
     <string name="profile_shared_chats">Delade chattar</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Tidigare medlemmar</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupp</string>
     <string name="tab_gallery">Galleri</string>
@@ -430,6 +539,7 @@
     <string name="tab_audio_empty_hint">Ljudfiler och röstmeddelanden delade i denna chatt kommer att visas här.</string>
     <string name="tab_webxdc_empty_hint">Appar delade i denna chatt kommer att visas här.</string>
     <string name="tab_all_media_empty_hint">Media delad i någon chatt kommer att visas här.</string>
+    <string name="all_files_empty_hint">Dokument och andra filer som bifogas en chatt visas här.</string>
     <string name="all_apps_empty_hint">Appar som tas emot eller skickas i en chatt visas här.</string>
     <string name="media_preview">Förhandsvisning av media</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
@@ -451,6 +561,7 @@
     <string name="multidevice_receiver_title">Lägg till som andra enhet</string>
     <string name="multidevice_open_settings_on_other_device">På den första enheten går du till \"Inställningar / Lägg till en andra enhet\" och skannar koden som visas där</string>
     <string name="multidevice_receiver_scanning_ask">Vill du kopiera profilen från den andra enheten till den här enheten?</string>
+    <string name="multidevice_receiver_needs_update">Profilen du vill importera är från en nyare version av Delta Chat. \n\nFör att fortsätta konfigurera den andra enheten måste du uppdatera den här enheten till den senaste versionen av Delta Chat.</string>
     <string name="multidevice_abort">Vill du avbryta konfigurationen av den andra enheten?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Detta kommer att ogiltigförklara QR-koden som kopierats till urklipp.</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profilen överförd till din andra enhet.</string>
@@ -515,6 +626,7 @@
     <string name="welcome_chat_over_email">Säker decentraliserad chatt</string>
     <string name="scan_invitation_code">Skanna inbjudningskod</string>
     <string name="login_title">Logga in</string>
+    <string name="login_advanced_hint">Denna inloggning är för avancerade användare:\n\n- Använd inte en adress som du använder i en annan app.\n\n- Klassisk e-postserver tillåter chattar utan totalsträckskryptering, markerad med en e-postikon.</string>
     <string name="login_inbox">Inkorg</string>
     <string name="login_imap_login">IMAP inloggningsnamn</string>
     <string name="login_imap_server">IMAP server</string>
@@ -526,6 +638,18 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP säkerhet</string>
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
+    <string name="proxy_settings">Proxy</string>
+    <string name="proxy_use_proxy">Använd proxy</string>
+    <string name="proxy_add">Lägg till proxy</string>
+    <string name="proxy_add_explain">Proxytyper som stöds: HTTP(S), SOCKS5 och Shadowsocks.</string>
+    <string name="proxy_add_url_hint">Ange proxylänk här</string>
+    <string name="proxy_invalid">Ogiltig proxy eller stöd saknas</string>
+    <string name="proxy_list_header">Sparade proxyer</string>
+    <string name="proxy_delete">Ta bort proxy</string>
+    <string name="proxy_delete_explain">Vill du verkligen ta bort \"%1$s\"?</string>
+    <string name="proxy_use_proxy_confirm">Vill du använda proxyn \"%1$s\"?</string>
+    <string name="proxy_share_explain">Dina vänner kan lägga till denna proxy genom att skanna QR-koden.</string>
     <string name="login_certificate_checks">Certifikatkontroller</string>
     <string name="login_error_mail">Ange en giltig e-postadress</string>
     <string name="login_error_server">Ange en giltig server/IP-adress</string>

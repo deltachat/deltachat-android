@@ -1088,8 +1088,8 @@
     <string name="name_desktop">Name</string>
     <string name="select_group_image_desktop">Gruppenbild auswählen</string>
     <string name="export_backup_desktop">Backup exportieren</string>
-    <string name="message_detail_sent_desktop">gesendet</string>
-    <string name="message_detail_received_desktop">empfangen</string>
+    <string name="message_detail_sent_desktop">Gesendet</string>
+    <string name="message_detail_received_desktop">Empfangen</string>
     <string name="menu.view.developer.open.log.folder">Log-Ordner öffnen</string>
     <string name="menu.view.developer.open.current.log.file">Aktuelle Logdatei öffnen</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Benachrichtigungssymbol kann nicht deaktiviert werden, da Delta Chat mit der Option --minimized gestartet wurde.</string>
