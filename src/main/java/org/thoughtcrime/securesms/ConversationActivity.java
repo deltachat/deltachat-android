@@ -1009,10 +1009,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (dcChat.canSend()) {
       composePanel.setVisibility(View.VISIBLE);
       attachmentManager.setHidden(false);
-      if (isInitialization) {
-        ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, true);
-        fragment.handleRemoveBottomInsets();
-      }
+      ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, true);
+      fragment.handleRemoveBottomInsets();
     } else {
       composePanel.setVisibility(View.GONE);
       attachmentManager.setHidden(true);
