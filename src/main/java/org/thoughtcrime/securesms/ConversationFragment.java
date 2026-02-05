@@ -164,14 +164,14 @@ public class ConversationFragment extends MessageSelectorFragment
 
         if (pendingAddBottomInsets) {
           bottomDivider.setVisibility(View.GONE);
-          ViewUtil.applyWindowInsets(list, false, true, false, true);
+          ViewUtil.forceApplyWindowInsets(list, false, true, false, true);
           ViewUtil.forceApplyWindowInsetsAsMargin(scrollToBottomButton, true, true, true, true);
           pendingAddBottomInsets = false;
         }
 
         if (pendingRemoveBottomInsets) {
           bottomDivider.setVisibility(View.VISIBLE);
-          ViewUtil.applyWindowInsets(list, false, true, false, false);
+          ViewUtil.forceApplyWindowInsets(list, false, true, false, false);
           ViewUtil.forceApplyWindowInsetsAsMargin(scrollToBottomButton, true, true, true, false);
           pendingRemoveBottomInsets = false;
         }
@@ -217,7 +217,7 @@ public class ConversationFragment extends MessageSelectorFragment
     public void handleAddBottomInsets() {
       if (bottomDivider != null) {
         bottomDivider.setVisibility(View.GONE);
-        ViewUtil.applyWindowInsets(list, false, true, false, true);
+        ViewUtil.forceApplyWindowInsets(list, false, true, false, true);
         ViewUtil.forceApplyWindowInsetsAsMargin(scrollToBottomButton, false, false, false, true);
         pendingAddBottomInsets = false;
       } else {
@@ -228,7 +228,7 @@ public class ConversationFragment extends MessageSelectorFragment
     public void handleRemoveBottomInsets() {
       if (bottomDivider != null) {
         bottomDivider.setVisibility(View.VISIBLE);
-        ViewUtil.applyWindowInsets(list, false, true, false, false);
+        ViewUtil.forceApplyWindowInsets(list, false, true, false, false);
         ViewUtil.forceApplyWindowInsetsAsMargin(scrollToBottomButton, false, false, false, false);
         pendingRemoveBottomInsets = false;
       } else {
