@@ -26,9 +26,22 @@
         app:showAsAction="always"/>
 
     <item android:id="@+id/menu_start_call"
-        android:title="@string/start_call"
-        android:icon="@drawable/baseline_call_24"
-        app:showAsAction="always" />
+          android:title="@string/start_call"
+          app:showAsAction="always"
+          android:icon="@drawable/baseline_call_24">
+      <menu>
+        <item android:id="@+id/menu_start_audio_call"
+              android:title="@string/start_audio_call"
+              android:icon="@drawable/baseline_call_24"
+              app:iconTint="?attr/menu_icon_tint"
+              />
+        <item android:id="@+id/menu_start_video_call"
+              android:title="@string/start_video_call"
+              android:icon="@drawable/ic_videocam_white_24dp"
+              app:iconTint="?attr/menu_icon_tint"
+              />
+        </menu>
+    </item>
 
     <item android:id="@+id/menu_all_media"
         android:title="@string/apps_and_media"
