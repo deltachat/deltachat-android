@@ -172,7 +172,7 @@ public class CallActivity extends WebViewActivity implements DcEventCenter.DcEve
     @JavascriptInterface
     public void startCall(String payload) {
       try {
-        callId = rpc.placeOutgoingCall(accId, chatId, payload, true);
+        callId = rpc.placeOutgoingCall(accId, chatId, payload, !audioOnly);
       } catch (RpcException e) {
         Log.e(TAG, "Error", e);
       }
