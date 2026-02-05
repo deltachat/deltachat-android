@@ -210,8 +210,6 @@ public class DcHelper {
     dcContext.setStockTranslation(178, context.getString(R.string.member_x_removed));
     dcContext.setStockTranslation(190, context.getString(R.string.secure_join_wait));
     dcContext.setStockTranslation(193, context.getString(R.string.donate_device_msg));
-    dcContext.setStockTranslation(194, context.getString(R.string.outgoing_call));
-    dcContext.setStockTranslation(195, context.getString(R.string.incoming_call));
     dcContext.setStockTranslation(196, context.getString(R.string.declined_call));
     dcContext.setStockTranslation(197, context.getString(R.string.canceled_call));
     dcContext.setStockTranslation(198, context.getString(R.string.missed_call));
@@ -223,6 +221,10 @@ public class DcHelper {
     dcContext.setStockTranslation(220, context.getString(R.string.proxy_enabled));
     dcContext.setStockTranslation(221, context.getString(R.string.proxy_enabled_hint));
     dcContext.setStockTranslation(230, context.getString(R.string.chat_unencrypted_explanation));
+    dcContext.setStockTranslation(232, context.getString(R.string.outgoing_audio_call));
+    dcContext.setStockTranslation(233, context.getString(R.string.outgoing_video_call));
+    dcContext.setStockTranslation(234, context.getString(R.string.incoming_audio_call));
+    dcContext.setStockTranslation(235, context.getString(R.string.incoming_video_call));
   }
 
   public static File getImexDir() {
