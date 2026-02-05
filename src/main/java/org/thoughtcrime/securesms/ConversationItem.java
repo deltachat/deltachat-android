@@ -996,9 +996,9 @@ public class ConversationItem extends BaseConversationItem
           int chatId = messageRecord.getChatId();
           if (!messageRecord.isOutgoing() && callInfo.state instanceof CallState.Alerting) {
               int callId = messageRecord.getId();
-              CallUtil.openCall(getContext(), accId, chatId, callId, callInfo.sdpOffer);
+              CallUtil.openCall(getContext(), accId, chatId, callId, callInfo.sdpOffer, callInfo.hasVideo);
           } else {
-              CallUtil.startCall(getContext(), accId, chatId);
+              CallUtil.startCall(getContext(), accId, chatId, callInfo.hasVideo);
           }
       }
     }
