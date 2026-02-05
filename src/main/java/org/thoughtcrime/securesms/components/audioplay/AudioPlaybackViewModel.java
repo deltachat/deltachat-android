@@ -17,6 +17,8 @@ import androidx.media3.session.MediaController;
 public class AudioPlaybackViewModel extends ViewModel {
   private static final String TAG = AudioPlaybackViewModel.class.getSimpleName();
 
+  private static final int NON_MESSAGE_AUDIO_MSG_ID = 0;  // Audios not attached to a message doesn't have message id.
+
   private final MutableLiveData<AudioPlaybackState> playbackState;
   private @Nullable MediaController mediaController;
   private final Handler handler;
@@ -97,8 +99,12 @@ public class AudioPlaybackViewModel extends ViewModel {
     }
   }
 
+  public void stopNonMessageAudioPlayback() {
+    stopByIds(NON_MESSAGE_AUDIO_MSG_ID);
+  }
+
   // A special method for deleting message, where we only use message Ids
-  public void stopByIds(int[] msgIds) {
+  public void stopByIds(int... msgIds) {
     AudioPlaybackState currentState = playbackState.getValue();
 
     if (mediaController != null && currentState != null) {

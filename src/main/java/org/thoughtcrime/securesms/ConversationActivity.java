@@ -679,6 +679,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       extras.putInt(ConversationListFragment.RELOAD_LIST, 1);
     }
 
+    playbackViewModel.stopNonMessageAudioPlayback();
+
     boolean archived = getIntent().getBooleanExtra(FROM_ARCHIVED_CHATS_EXTRA, false);
     Intent intent = new Intent(this, (archived ? ConversationListArchiveActivity.class : ConversationListActivity.class));
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -1150,6 +1152,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       composeText.setText("");
       inputPanel.clearQuote();
     }
+
+    // Stop draft audio playback regardless, since it is unlikely
+    // we will need background playback for drafts
+    playbackViewModel.stopNonMessageAudioPlayback();
 
     DcContext dcContext = DcHelper.getContext(context);
     Util.runOnAnyBackgroundThread(() -> {
