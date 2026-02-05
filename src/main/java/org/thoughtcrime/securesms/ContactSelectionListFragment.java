@@ -129,6 +129,7 @@ public class ContactSelectionListFragment extends    Fragment
       public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         MenuInflater inflater = getActivity().getMenuInflater();
         inflater.inflate(R.menu.contact_list, menu);
+        menu.findItem(R.id.menu_delete_selected).setVisible(!isMulti());
         updateActionModeState(actionMode);
         return true;
       }
