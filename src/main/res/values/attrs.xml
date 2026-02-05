@@ -79,6 +79,7 @@
     <attr name="menu_reply_icon" format="reference" />
 
     <attr name="pref_icon_tint" format="color"/>
+    <attr name="menu_icon_tint" format="color" />
 
     <attr name="quote_missing_icon_color" format="color" />
     <attr name="quote_dismiss_button_tint" format="color" />
