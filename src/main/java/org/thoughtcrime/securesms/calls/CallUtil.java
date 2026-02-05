@@ -40,7 +40,7 @@ public class CallUtil {
     context.startActivity(intent);
   }
 
-  public static void openCall(Context context, int accId, int chatId, int callId, String payload) {
+  public static void openCall(Context context, int accId, int chatId, int callId, String payload, boolean audioOnly) {
     String base64 = Base64.encodeToString(payload.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
     String hash = "";
     try {
@@ -54,6 +54,7 @@ public class CallUtil {
     intent.putExtra(CallActivity.EXTRA_ACCOUNT_ID, accId);
     intent.putExtra(CallActivity.EXTRA_CHAT_ID, chatId);
     intent.putExtra(CallActivity.EXTRA_CALL_ID, callId);
+    intent.putExtra(CallActivity.EXTRA_AUDIO_ONLY, audioOnly);
     intent.putExtra(CallActivity.EXTRA_HASH, hash);
     context.startActivity(intent);
   }
