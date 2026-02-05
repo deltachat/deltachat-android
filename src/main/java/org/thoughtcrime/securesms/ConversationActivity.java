@@ -567,10 +567,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       WebxdcActivity.openMaps(this, chatId);
       return true;
     } else if (itemId == R.id.menu_start_audio_call) {
-      CallUtil.startCall(this, chatId, true);
+      CallUtil.startCall(this, chatId, false);
       return true;
     } else if (itemId == R.id.menu_start_video_call) {
-      CallUtil.startCall(this, chatId, false);
+      CallUtil.startCall(this, chatId, true);
       return true;
     } else if (itemId == R.id.menu_all_media) {
       handleAllMedia();

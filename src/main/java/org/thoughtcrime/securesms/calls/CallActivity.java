@@ -43,14 +43,14 @@ public class CallActivity extends WebViewActivity implements DcEventCenter.DcEve
   public static final String EXTRA_CHAT_ID = "chat_id";
   public static final String EXTRA_CALL_ID = "call_id";
   public static final String EXTRA_HASH = "hash";
-  public static final String EXTRA_AUDIO_ONLY = "audio_only";
+  public static final String EXTRA_HAS_VIDEO = "has_video";
 
   private DcContext dcContext;
   private Rpc rpc;
   private int accId;
   private int chatId;
   private int callId;
-  private boolean audioOnly;
+  private boolean hasVideo;
   private boolean ended = false;
 
   @SuppressLint("SetJavaScriptEnabled")
@@ -60,9 +60,9 @@ public class CallActivity extends WebViewActivity implements DcEventCenter.DcEve
 
     Bundle bundle = getIntent().getExtras();
     assert bundle != null;
-    audioOnly = bundle.getBoolean(EXTRA_AUDIO_ONLY, false);
+    hasVideo = bundle.getBoolean(EXTRA_HAS_VIDEO, true);
     String hash = bundle.getString(EXTRA_HASH, "");
-    String query = audioOnly? "?noOutgoingVideoInitially" : "";
+    String query = hasVideo? "" : "?noOutgoingVideoInitially";
     accId = bundle.getInt(EXTRA_ACCOUNT_ID, -1);
     chatId = bundle.getInt(EXTRA_CHAT_ID, 0);
     callId = bundle.getInt(EXTRA_CALL_ID, 0);
@@ -172,7 +172,7 @@ public class CallActivity extends WebViewActivity implements DcEventCenter.DcEve
     @JavascriptInterface
     public void startCall(String payload) {
       try {
-        callId = rpc.placeOutgoingCall(accId, chatId, payload, !audioOnly);
+        callId = rpc.placeOutgoingCall(accId, chatId, payload, hasVideo);
       } catch (RpcException e) {
         Log.e(TAG, "Error", e);
       }

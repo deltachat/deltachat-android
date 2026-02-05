@@ -166,7 +166,7 @@ public class NotificationCenter {
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
-    public PendingIntent getOpenCallIntent(ChatData chatData, int callId, String payload, boolean autoAccept, boolean audioOnly) {
+    public PendingIntent getOpenCallIntent(ChatData chatData, int callId, String payload, boolean autoAccept, boolean hasVideo) {
         final Intent chatIntent = new Intent(context, ConversationActivity.class)
             .putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, chatData.accountId)
             .putExtra(ConversationActivity.CHAT_ID_EXTRA, chatData.chatId)
@@ -186,7 +186,7 @@ public class NotificationCenter {
         intent.putExtra(CallActivity.EXTRA_CHAT_ID, chatData.chatId);
         intent.putExtra(CallActivity.EXTRA_CALL_ID, callId);
         intent.putExtra(CallActivity.EXTRA_HASH, hash);
-        intent.putExtra(CallActivity.EXTRA_AUDIO_ONLY, audioOnly);
+        intent.putExtra(CallActivity.EXTRA_HAS_VIDEO, hasVideo);
         intent.setPackage(context.getPackageName());
         return TaskStackBuilder.create(context)
             .addNextIntentWithParentStack(chatIntent)
@@ -430,12 +430,12 @@ public class NotificationCenter {
       Util.runOnAnyBackgroundThread(() -> {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         DcContext dcContext = context.getDcAccounts().getAccount(accId);
-        boolean audioOnly;
+        boolean hasVideo;
         try {
-          audioOnly = !context.getRpc().callInfo(accId, callId).hasVideo;
+          hasVideo = context.getRpc().callInfo(accId, callId).hasVideo;
         } catch (RpcException e) {
           Log.e(TAG, "Rpc.callInfo() failed", e);
-          audioOnly = true;
+          hasVideo = false;
         }
         int chatId = dcContext.getMsg(callId).getChatId();
         DcChat dcChat = dcContext.getChat(chatId);
@@ -444,7 +444,7 @@ public class NotificationCenter {
         String notificationChannel = getCallNotificationChannel(notificationManager, chatData, name);
 
         PendingIntent declineCallIntent = getDeclineCallIntent(chatData, callId);
-        PendingIntent openCallIntent = getOpenCallIntent(chatData, callId, payload, false, audioOnly);
+        PendingIntent openCallIntent = getOpenCallIntent(chatData, callId, payload, false, hasVideo);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationChannel)
           .setSmallIcon(R.drawable.icon_notification)
@@ -469,7 +469,7 @@ public class NotificationCenter {
           new NotificationCompat.Action.Builder(
             R.drawable.baseline_call_24,
             context.getString(R.string.answer_call),
-            getOpenCallIntent(chatData, callId, payload, true, audioOnly)).build());
+            getOpenCallIntent(chatData, callId, payload, true, hasVideo)).build());
 
         Bitmap bitmap = getAvatar(dcChat);
         if (bitmap != null) {
