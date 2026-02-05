@@ -100,6 +100,7 @@ public class ConversationFragment extends MessageSelectorFragment
     private StickyHeaderDecoration      dateDecoration;
     private View                        scrollToBottomButton;
     private View                        floatingLocationButton;
+    private View                        bottomDivider;
     private AddReactionView             addReactionView;
     private TextView                    noMessageTextView;
     private Timer                       reloadTimer;
@@ -107,6 +108,8 @@ public class ConversationFragment extends MessageSelectorFragment
     public boolean isPaused;
     private Debouncer markseenDebouncer;
     private Rpc rpc;
+    private boolean pendingAddBottomInsets;
+    private boolean pendingRemoveBottomInsets;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -140,6 +143,7 @@ public class ConversationFragment extends MessageSelectorFragment
         floatingLocationButton = ViewUtil.findById(view, R.id.floating_location_button);
         addReactionView        = ViewUtil.findById(view, R.id.add_reaction_view);
         noMessageTextView      = ViewUtil.findById(view, R.id.no_messages_text_view);
+        bottomDivider          = ViewUtil.findById(view, R.id.bottom_divider);
 
         scrollToBottomButton.setOnClickListener(v -> scrollToBottom());
 
@@ -157,6 +161,20 @@ public class ConversationFragment extends MessageSelectorFragment
         // setLayerType() is needed to allow larger items (long texts in our case)
         // with hardware layers, drawing may result in errors as "OpenGLRenderer: Path too large to be rendered into a texture"
         list.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+
+        if (pendingAddBottomInsets) {
+          bottomDivider.setVisibility(View.GONE);
+          ViewUtil.forceApplyWindowInsets(list, false, true, false, true);
+          ViewUtil.forceApplyWindowInsetsAsMargin(scrollToBottomButton, true, true, true, true);
+          pendingAddBottomInsets = false;
+        }
+
+        if (pendingRemoveBottomInsets) {
+          bottomDivider.setVisibility(View.VISIBLE);
+          ViewUtil.forceApplyWindowInsets(list, false, true, false, false);
+          ViewUtil.forceApplyWindowInsetsAsMargin(scrollToBottomButton, true, true, true, false);
+          pendingRemoveBottomInsets = false;
+        }
 
         return view;
     }
@@ -194,6 +212,28 @@ public class ConversationFragment extends MessageSelectorFragment
             String message = getString(R.string.chat_new_one_to_one_hint, dcChat.getName());
             noMessageTextView.setText(message);
         }
+    }
+
+    public void handleAddBottomInsets() {
+      if (bottomDivider != null) {
+        bottomDivider.setVisibility(View.GONE);
+        ViewUtil.forceApplyWindowInsets(list, false, true, false, true);
+        ViewUtil.forceApplyWindowInsetsAsMargin(scrollToBottomButton, false, false, false, true);
+        pendingAddBottomInsets = false;
+      } else {
+        pendingAddBottomInsets = true;
+      }
+    }
+
+    public void handleRemoveBottomInsets() {
+      if (bottomDivider != null) {
+        bottomDivider.setVisibility(View.VISIBLE);
+        ViewUtil.forceApplyWindowInsets(list, false, true, false, false);
+        ViewUtil.forceApplyWindowInsetsAsMargin(scrollToBottomButton, false, false, false, false);
+        pendingRemoveBottomInsets = false;
+      } else {
+        pendingRemoveBottomInsets = true;
+      }
     }
 
     @Override
