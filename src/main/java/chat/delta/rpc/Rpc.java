@@ -1315,8 +1315,8 @@ public class Rpc {
   }
 
   /** Starts an outgoing call. */
-  public Integer placeOutgoingCall(Integer accountId, Integer chatId, String placeCallInfo) throws RpcException {
-    return transport.callForResult(new TypeReference<Integer>(){}, "place_outgoing_call", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(placeCallInfo));
+  public Integer placeOutgoingCall(Integer accountId, Integer chatId, String placeCallInfo, Boolean hasVideo) throws RpcException {
+    return transport.callForResult(new TypeReference<Integer>(){}, "place_outgoing_call", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(placeCallInfo), mapper.valueToTree(hasVideo));
   }
 
   /** Accepts an incoming call. */

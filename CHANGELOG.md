@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.40.0
+2026-02
 
 * Improve switch speed when changing profiles
 * Allow to switch profile when sharing or forwarding
@@ -12,6 +13,7 @@
 * Mark external links with " ↗" to make them clear
 * Make QR code larger on "Add Second Device" screen
 * Add indication for blocked contacts in user profile
+* Allow to start calls with video disabled
 * Show hint for empty contact search results
 * Add background playing for voice messages and other audio files
 * Fix: Show dialog if pasted QR codes are invalid
@@ -20,9 +22,11 @@
 * Fix: Avoid empty profiles after using "add as second device" from welcome screen
 * Fix: Remove from group deselected members in the contact selection list
 * Fix multi-device seen messages synchronization when using multiple relays
+* Fix mailto handling
 * Fix layout problems inside in-chat apps
 * Avoid crash when the app is minimized with profile switcher or reactions dialogs open
-* Update to core 2.39.0
+* Remove "trash icon" option from contact selection list when adding members to group
+* Update to core 2.40.0
 
 ## v2.35.0
 2026-01

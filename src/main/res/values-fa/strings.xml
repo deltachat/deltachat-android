@@ -21,10 +21,10 @@
     <string name="none">هیچ‌کدام</string>
     <string name="automatic">خودکار</string>
     <string name="strict">سخت‌گیرانه</string>
-    <string name="open">گشودن</string>
+    <string name="open">بازکردن</string>
     <string name="download">بارگیری</string>
     <string name="downloading">در حال بارگیری…</string>
-    <string name="open_attachment">گشودن پیوست</string>
+    <string name="open_attachment">بازکردن پیوست</string>
     <string name="join">پیوستن</string>
     <string name="rejoin">پیوستن مجدد</string>
     <string name="delete">حذف</string>
@@ -54,7 +54,7 @@
     <string name="mute">سکوت</string>
     <string name="muted">بی‌صدا</string>
     <string name="ephemeral_messages">پیام‌های ناپدید شونده</string>
-    <string name="ephemeral_messages_hint">این روی تمام عضو‌های این گپ، اگر از دلتاچت استفاده کنند، اعمال می‌شود. ولی همچنان می‌توانند پیام‌ها را رونوشت، ذخیره و هدایت کنند.</string>
+    <string name="ephemeral_messages_hint">شامل همه کسانی که در این گفتگو حضور دارند می‌شود. آن‌ها همچنان می‌توانند پیام‌ها را هدایت و ذخیره کرده یا از آن‌ها رونوشت بگیرند. </string>
     <string name="save">ذخیره</string>
     <string name="chat">گپ</string>
     <string name="media">رسانه</string>
@@ -76,9 +76,9 @@
     <string name="activate">فعال کردن</string>
     <string name="load_remote_content">بارگیری تصاویر از بیرون</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">تصاویر مربوط به نشانی‌های اینترنتی دیگر می‌توانند برای ردیابی شما استفاده شوند. \n\n این تنظیم‌ها همچنین برای بارگیری فونت‌ها و دیگر محتواها استفاده می‌شوند. اگر غیرفعال باشد ممکن است همچنان تصویر‌های درون پیام و تصویر‌های بارگیری شده را ببینید. \n\n آيا تصاویر خارجی بارگیری شوند؟</string>
+    <string name="load_remote_content_ask">تصاویر مربوط به نشانی‌های اینترنتی دیگر می‌توانند برای ردیابی شما استفاده شوند. \n\n این تنظیمات همچنین برای بارگیری فونت‌ها و دیگر محتواها استفاده می‌شود. اگر غیرفعال باشد ممکن است همچنان تصویر‌های درون پیام و تصویر‌های بارگیری شده را ببینید. \n\n آيا تصاویر خارجی بارگیری شوند؟</string>
     <string name="always">همیشه</string>
-    <string name="always_load_remote_images">تصاویر دوردست همیشه بار شوند</string>
+    <string name="always_load_remote_images">تصاویر با منبع بیرونی همیشه بارگیری شوند</string>
     <string name="once">همین یک بار</string>
     <string name="show_warning">نمایش هشدار</string>
     <string name="not_now">اکنون نه</string>
@@ -208,6 +208,8 @@
     <string name="webxdc_app">برنامه</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">برنامه‌ها</string>
+    <string name="webxdc_store_url">آدرس مخزن برنامه‌ها</string>
+    <string name="webxdc_store_url_explain">اگر آن را تنظیم کنید، از این آدرس برای مخزن برنامه‌ها به جای آدرس پیش‌فرض استفاده می‌شود</string>
     <string name="webxdc_draft_hint">برای به اشتراک گذاری روی «ارسال» بزنید</string>
     <string name="home">خانه</string>
     <string name="games">بازی‌ها</string>
@@ -629,6 +631,7 @@
     <string name="welcome_chat_over_email">گفتگو غیرمتمرکز و ایمن</string>
     <string name="scan_invitation_code">اسکن کردن کد دعوت</string>
     <string name="login_title">ورود</string>
+    <string name="login_advanced_hint">این برای کاربر‌های حرفه‌ای است:\n\n • از یک آدرس که در برنامه‌ای دیگر استفاده می‌کنید استفاده نکنید.\n\n • ارائه‌دهندهٔ رایانامه کلاسیک اجازه خواهد داد که گپ‌ها بدون رمزنگاری سراسری باشند. این گپ‌ها به وسیلهٔ یک نماد نامه نشانه‌گذاری می‌شوند.</string>
     <string name="login_inbox">ورودی</string>
     <string name="login_imap_login">IMAP Login Name</string>
     <string name="login_imap_server">IMAP Server</string>
@@ -653,6 +656,19 @@
     <string name="proxy_use_proxy_confirm">می‌خواهید از پروکسی «%1$s» استفاده کنید؟</string>
     <string name="proxy_share_explain">دوست‌هایتان می‌توانند با اسکن کردن کد QR این پروکسی را اضافه کنند.</string>
     <string name="proxy_share_link">اشتراک گذاشتن پیوند</string>
+    <string name="proxy_enabled">پروکسی فعال شده</string>
+    <string name="proxy_enabled_hint">شما از یک پروکسی استفاده می‌کنید. اگر مشکل وصل شدن داری، یک پروکسی دیگر استفاده کنید.</string>
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
+    <string name="transports">رله‌ها</string>
+    <string name="add_transport">اضافه کردن رله</string>
+    <string name="remove_transport">حذف رله</string>
+    <string name="edit_transport">ویرایش رله</string>
+    <!-- shown if a QR code was scanned that can be used as a relay -->
+    <string name="confirm_add_transport">اضافه کردن این رله؟</string>
+    <string name="invalid_transport_qr">کیو‌آر کد اسکن شده دارای یک رلهٔ معتبر نیست.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_transport">حذف کردن رلهٔ «%1$s»؟\n\n مخاطب‌های شما تنها در صورتی می‌توانند با شما ارتباط برقرار کنند که قبلا از طریق یک رلهٔ دیگر با آن‌ها تماس داشته‌اید.\n\n در صورت تردید، این رله را بعدا حذف کنید.</string>
+
     <string name="login_certificate_checks">بررسی‌های گواهینامه</string>
     <string name="login_error_mail">لطفاً یک نشانی رایانامهٔ معتبر وارد کنید</string>
     <string name="login_error_server">لطفا یک کارساز / نشانی آی‌پی صحیح وارد کنید</string>
@@ -716,6 +732,7 @@
     <string name="pref_screen_security_explain">درخواست مسدود کردن عکس گرفتن از صفحه در لیست اخیر و درون نرم‌افزار</string>
     <string name="pref_screen_security_please_restart_hint">برای اعمال کردن تنظیم‌های امنیت صفحه لطفا نرم‌افزار را بسته و دوباره باز کنید.</string>
     <string name="pref_notifications">اعلان‌ها</string>
+    <string name="pref_mention_notifications">اشاره‌ها(منشن‌ها)</string>
     <string name="pref_mention_notifications_explain">در گروه‌های بی‌صدا شده، برای پیام‌های مستقیم به خودتان، مانند پاسخ‌ها یا واکنش‌ها، اعلان دریافت کنید.</string>
     <string name="pref_notifications_show">نمایش</string>
     <string name="pref_notifications_priority">اولویت</string>
@@ -766,6 +783,8 @@
     <string name="pref_imap_folder_warn_disable_defaults">اگر این گزینه را غیر فعال می‌کنید از اینکه سرور شما و حساب‌هایتان هم بر این اساس تنظیم شده باشند.\n\n در غیر این صورت ممکن است هیچ چیز کار نکند. </string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
     <string name="pref_multidevice">حالت چند دستگاهی</string>
+    <string name="pref_multidevice_explain">همگام‌سازی پیام‌های شما با دیگر دستگاه‌هایتان. در صورت اضافه کردن دستگاه دوم به صورت خودکار فعال می‌شود.</string>
+    <string name="pref_multidevice_change_warn">حالت چند دستگاهی زمانی که از یک نمایه روی چند دستگاه استفاده می‌کنید باید فعال شود. تنها در صورتی این تنظیم را غیرفعال کنید که این نمایه را از روی همهٔ دیگر دستگاه‌هایتان حذف کرده‌اید. \n\n غیرفعال کردن حالت چند دستگاهی زمانی که یک نمایه را روی چند دستگاه دارید باعث می‌شود که بعضی پیام‌ها گم شوند و همچنین مشکل‌های دیگری به وجود می‌آورد.</string>
     <string name="pref_auto_folder_moves">انتقال خودکار به پوشه دلتاچت</string>
     <string name="pref_only_fetch_mvbox_title">فقط پوشه دلتاچت را بررسی کن</string>
     <string name="pref_show_emails">نمایش رایانامه‌های معمولی</string>
@@ -773,6 +792,7 @@
     <string name="pref_show_emails_accepted_contacts">برای مخاطبین پذیرفته شده</string>
     <string name="pref_show_emails_all">همه</string>
     <string name="pref_experimental_features">ویژگی‌های آزمایشی</string>
+    <string name="pref_experimental_features_explain">این ویژگی‌ها ممکن است ناپایدار باشند و همچنین ممکن است بعدا تغییر کنند یا حذف شوند</string>
     <string name="pref_on_demand_location_streaming">هم‌رسانی زندهٔ به‌فرمان مکان</string>
     <string name="pref_background_default">پس‌زمینه پیش‌فرض</string>
     <string name="pref_background_default_color">رنگ پیش‌فرض</string>
@@ -796,7 +816,16 @@
     <string name="pref_show_tray_icon">نمایش نمادک در زیر صفحه</string>
     <string name="pref_edit_profile">ویرایش نمایه</string>
     <string name="disable_imap_idle">غیر فعال‌سازی IMAP IDLE</string>
+    <string name="disable_imap_idle_explain">استفاده نکردن از افزونهٔ IMAP IDLE حتی در صورتی که ارائه‌دهنده از آن پشتیبانی می‌کند. فعال‌سازی این گزینه باعث می‌شوند دریافت پیام‌ها به تاخیر بیوفتد. تنها برای آزمایش آن را فعال کنید.</string>
     <string name="send_stats_to_devs">ارسال آمار برای توسعه‌دهندگان دلتاچت</string>
+    <string name="stats_device_message">آیا می‌خواهید با فرستادن آمار استفادهٔ هفتگی به بهبود دلتاچت کمک کنید؟ 👈این‌جا را بزنید...👉</string>
+    <string name="stats_confirmation_dialog">می‌خواهید با فرستادن گزارش‌های ناشناس استفادهٔ هفتگی به بهبود دلتاچت کمک کنید؟</string>
+    <string name="stats_thanks">ممنون! هر زمان که خواستید می‌توانید فرستادن آمار‌ها را در «تنظیم‌ها - پیشرفته» غیرفعال کنید\n\n علاوه بر این، تمایل دارید ۵ دقیقه در یک تحقیق علمی راجع به امنیت دلتاچت شرکت کنید؟</string>
+    <string name="stats_disable_dialog">ارسال آمار‌ها قبلا فعال شدن است.\n\n می‌خواهید آن را غیر فعال کنید؟</string>
+    <string name="disable">غیرفعال کردن</string>
+    <string name="stats_keep_sending">ادامه‌دادن به ارسال</string>
+    <string name="stats_msg_body">این پیوست شامل آمار استفادهٔ ناشناس است که به ما کمک می‌کند دلتاچت را بهبود دهیم. برای اطلاعات بیش‌تر https://delta.chat/help#statssending را ببینید. متشکریم!</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">نتایج جستجو</string>
     <string name="emoji_not_found">شکلکی پیدا نشد</string>
@@ -829,6 +858,8 @@
     <string name="autodel_server_ask">آیا می‌خواهید %1$d پیام را اکنون و تمام پیام‌های آیندهٔ «%2$s»  را پاک کنید؟/n/n⚠️ این شامل رایانامه‌ها، رسانه و «پیام‌های ذخیره شده» در همه پوشه‌های کارساز(سرور) می‌شود/n/n⚠️ اگر می‌خواهید داده‌ها در کارساز باقی بمانند از این قابلیت استفاده نکنید/n/n⚠️ اگر به‌جز دلتاچت از دیگر نرم‌افزارهای رایانامه هم استفاده می‌کنید این قابلیت را به کار نگیرید.</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">این شامل رایانامه‌ها، رسانه‌ها و «پیام‌های ذخیره شده» در تمام پوشه‌های کارساز(سرور) می‌شود. اگر می‌خواهید داده‌ها را در کارساز نگه دارید از این قابلیت استفاده نکنید. اگر از دیگر نرم‌افزارهای رایانامه به‌جز دلتاچت استفاده می‌کنید هم از این قابلیت استفاده نکنید.</string>
+    <string name="autodel_server_warn_multi_device_title">فعال‌سازی حذف بلافاصله</string>
+    <string name="autodel_server_warn_multi_device">اگر حذف بلافاصله را فعال کنید، نمی‌توانید این نمایه را روی چند دستگاه داشته باشید.</string>
     <string name="autodel_confirm">متوجه هستم، همه پیام‌ها حذف شوند</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">یک بار بعد از بارگیری</string>
@@ -949,6 +980,7 @@
     <string name="qrscan_fingerprint_label">اثر انگشت</string>
     <string name="withdraw_verifycontact_explain">دیگران برای ارتباط با شما می‌توانند این کد کیوآر را اسکن کنند. \n\n می‌توان کد کیوآر را در اینجا غیر فعال کنید و با اسکن کردن مجدد، آن را فعال کنید. </string>
     <string name="withdraw_verifygroup_explain">این کد کیوآر می‌تواند توسط دیگران و برای پیوستن به گروه «%1$s» اسکن شود.\n\n شما می‌تواند این کد کیوآر را در اینجا غیرفعال کنید و با اسکن کردن مجدد، آن را فعال نمایید. </string>
+    <string name="withdraw_joinbroadcast_explain">این کد کیوآر می‌تواند توسط بقیه برای پیوستن به کانال «%1$s» اسکن شود. \n\n می‌توانید آن را بازنشانی کنید تا کد یا پیوند دعوت فعلی از کار بیوفتد.</string>
     <string name="withdraw_qr_code">غیرفعال کردن کد کیوآر</string>
     <string name="revive_verifycontact_explain">این کد کیو‌آر بازنشانی شده است و دیگر فعال نیست.</string>
     <string name="revive_qr_code">فعال کردن کد کیوآر</string>
@@ -959,6 +991,7 @@
     <string name="qrshow_join_group_title">کد دعوت کیوآر</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">برای عضو شدن در گروه\"%1$s\" این را اسکن کنید.</string>
+    <string name="qrshow_join_channel_hint">برای ملحق شدن به کانال «%1$s» اسکن کنید</string>
     <string name="qrshow_join_contact_title">کد دعوت کیوآر</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">برای ارتباط با %1$s این را اسکن کنید.</string>
@@ -972,10 +1005,13 @@
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">کاربر %1$s شما را دعوت کرده است تا عضو این گروه شوید.
 در انتظار دستگاه %2$s برای پاسخگویی...</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$sشما را به این کانال دعوت کرده است.\n\n منتظر دستگاه %2$s برای پاسخ‌دادن هستیم...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">کاربر %1$s پاسخ داد، در انتظار اضافه شدن به گروه...</string>
     <string name="secure_join_wait">در حال برقراری ارتباط، لطفا صبر کنید...</string>
     <string name="contact_verified">%1$s تأیید شد.</string>
+    <string name="contact_blocked">شما این مخاطب را مسدود کردید.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">احراز هویت شده توسط %1$s</string>
     <string name="verified_by_you">تأیید شده توسط من</string>
