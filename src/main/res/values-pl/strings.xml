@@ -1036,6 +1036,7 @@
     <string name="secure_join_replies">Użytkownik %1$s odpowiedział, czekając na dodanie do grupy…</string>
     <string name="secure_join_wait">Ustanawiam połączenie, proszę czekać…</string>
     <string name="contact_verified">Kontakt %1$s zweryfikowany.</string>
+    <string name="contact_blocked">Zablokowano kontakt</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Kontakt zweryfikowany przez %1$s</string>
     <string name="verified_by_you">Kontakt zweryfikowany przez ciebie</string>
@@ -1121,8 +1122,8 @@
     <string name="name_desktop">Nazwa</string>
     <string name="select_group_image_desktop">Wybierz obraz grupy</string>
     <string name="export_backup_desktop">Eksport kopii zapasowej</string>
-    <string name="message_detail_sent_desktop">wysłane</string>
-    <string name="message_detail_received_desktop">odebrane</string>
+    <string name="message_detail_sent_desktop">Wysłana</string>
+    <string name="message_detail_received_desktop">Odebrana</string>
     <string name="menu.view.developer.open.log.folder">Otwórz folder dziennika</string>
     <string name="menu.view.developer.open.current.log.file">Otwórz bieżący plik dziennika</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Ikona w zasobniku nie może być wyłączona, ponieważ Delta Chat został uruchomiony z opcją --minimized.</string>

@@ -5,6 +5,10 @@
     <string name="ok">Gerai</string>
     <string name="cancel">Atsisakyti</string>
     <string name="clear_search">Išvalyti paiešką</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Nuoroda</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Skenuoti</string>
     <string name="yes">Taip</string>
     <string name="no">Ne</string>
     <string name="on">Įjungta</string>
@@ -47,6 +51,7 @@
     <string name="ephemeral_messages_hint">Šie nustatymai taikomi visiems Delta Chat besinaudojantiems dalyviams. Vis dėlto, jie gali kopijuoti, įrašyti ir persiųsti žinutes arba naudoti kitas el. pašto kliento programas.</string>
     <string name="save">Įrašyti</string>
     <string name="media">Medija</string>
+    <string name="apps_and_media">Programėlės ir medija</string>
     <string name="profile">Profilis</string>
     <string name="all_profiles">Visi profiliai</string>
     <string name="current_profile">Dabartinis profilis</string>
@@ -83,7 +88,7 @@
     <string name="email_address">El. pašto adresas</string>
     <string name="bad_email_address">Blogas el. pašto adresas.</string>
     <string name="password">Slaptažodis</string>
-    <string name="existing_password">Esamas slaptažodis</string>
+    <string name="existing_password">Dabartinis slaptažodis</string>
     <string name="now">Dabar</string>
     <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Dėmesio</string>
@@ -176,7 +181,7 @@
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Privati programėlė</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
-    <string name="webxdc_apps">Privačios programėlės</string>
+    <string name="webxdc_apps">Programėlės</string>
     <string name="games">Žaidimai</string>
     <string name="app_size">Dydis</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -207,8 +212,11 @@
     <string name="menu_new_classic_contact">Pridėti adresatą rankiniu būdu</string>
     <string name="menu_new_chat">Naujas pokalbis</string>
     <string name="menu_new_group">Nauja grupė</string>
+    <string name="clone_chat">Dubliuoti pokalbį</string>
     <!-- deprecated -->
     <string name="add_recipients">Pridėti gavėjus</string>
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">Naujas el. laiškas</string>
     <!-- the "Subject" of an email, use the term common in classic email apps -->
     <string name="subject">Tema</string>
     <string name="menu_send">Siųsti</string>
@@ -227,6 +235,7 @@
     <string name="menu_delete_location">Ištrinti šią vietą?</string>
     <string name="menu_message_details">Išsamesnė žinutės informacija</string>
     <string name="menu_copy_to_clipboard">Kopijuoti į iškarpinę</string>
+    <string name="share_invite_link_explain">Kiekvienas, turintis šią nuorodą, gali peržiūrėti jūsų profilį ar pradėti su jumis pokalbį. Bendrinkite ją tik su žmonėmis, kuriais pasitikite.</string>
     <string name="menu_copy_selection_to_clipboard">Kopijuoti žymėjimą</string>
     <string name="menu_copy_link_to_clipboard">Kopijuoti nuorodą</string>
     <string name="menu_copy_text_to_clipboard">Kopijuoti tekstą</string>
@@ -241,6 +250,7 @@
     <string name="menu_export_attachment">Eksportuoti priedą</string>
     <string name="menu_export_attachments">Eksportuoti priedus</string>
     <string name="menu_all_media">Visa medija</string>
+    <string name="all_apps_and_media">Visos programėlės ir medija</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Rodyti pokalbyje</string>
     <string name="menu_share">Bendrinti</string>
@@ -255,7 +265,7 @@
     <string name="menu_scroll_to_top">Slinkti į viršų</string>
     <string name="menu_help">Žinynas</string>
     <!-- use the same term for "Apps" as elsewhere -->
-    <string name="what_is_webxdc">Kas yra „Webxdc“?</string>
+    <string name="what_is_webxdc">Apie programėles</string>
     <string name="privacy_policy">Privatumo politika</string>
     <string name="menu_select_all">Žymėti viską</string>
     <string name="menu_edit_name">Taisyti vardą</string>
@@ -360,6 +370,7 @@
     <string name="chat_share_with_title">Bendrinti su</string>
     <string name="chat_input_placeholder">Žinutė</string>
     <string name="chat_archived_label">Archyvuotas</string>
+    <string name="chat_request_label">Užklausa</string>
     <string name="chat_no_messages">Žinučių nėra.</string>
     <string name="chat_self_talk_subtitle">Žinutės, kurias siunčiu asmeniškai sau</string>
     <string name="archive_empty_hint">Jei archyvuosite pokalbius, jie bus rodomi čia.</string>
@@ -406,7 +417,6 @@
     <string name="tab_image_empty_hint">Čia bus rodomi šiame pokalbyje bendrinti paveikslai.</string>
     <string name="tab_video_empty_hint">Čia bus rodomi šiame pokalbyje bendrinti vaizdo įrašai.</string>
     <string name="tab_audio_empty_hint">Čia bus rodomi šiame pokalbyje bendrinti garso įrašų failai ir balso žinutės.</string>
-    <string name="tab_webxdc_empty_hint">Čia bus rodomos šiame pokalbyje bendrintos privačios programėlės.</string>
     <string name="tab_all_media_empty_hint">Čia bus rodoma bet kuriame pokalbyje bendrinama medija.</string>
     <string name="media_preview">Medijos peržiūra</string>
     <string name="send_message">Siųsti žinutę</string>
@@ -415,8 +425,15 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Pridėti antrąjį įrenginį</string>
     <string name="multidevice_same_network_hint">Įsitikinkite, kad abu įrenginiai yra prisijungę prie to pačio belaidžio (Wi-Fi) arba laidinio tinklo</string>
+    <string name="multidevice_this_creates_a_qr_code">Tai sukuria QR kodą, kurį antrasis įrenginys gali nuskenuoti, kad nukopijuotų profilį.\n\nĮsitikinkite, kad joks pašalinis stebėtojas ar kamera nematys lango, kuris bus parodytas paspaudus mygtuką.</string>
+    <string name="multidevice_install_dc_on_other_device">Įsidiekite Delta Chat kitame savo įrenginyje (https://get.delta.chat)</string>
+    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <string name="multidevice_tap_scan_on_other_device">Paleiskite Delta Chat, bakstelėkite „Aš jau turiu profilį / Pridėti kaip antrąjį įrenginį“ ir nuskenuokite čia rodomą kodą</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
+    <string name="multidevice_qr_subtitle">Nuskenuokite norėdami nustatyti antrąjį įrenginį, skirtą %1$s</string>
     <string name="multidevice_receiver_title">Pridėti kaip antrąjį įrenginį</string>
     <string name="multidevice_open_settings_on_other_device">Pirmajame įrenginyje pereikite į „Nustatymai / Pridėti antrąjį įrenginį“ ir nuskenuokite ten rodomą kodą</string>
+    <string name="multidevice_abort">Nutraukti antrojo įrenginio nustatymą?</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Ruošiama paskyra…</string>
     <string name="troubleshooting">Nesklandumų šalinimas</string>
@@ -426,6 +443,8 @@
     <string name="incoming_messages">Gaunamosios žinutės</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Siunčiamosios žinutės</string>
+    <!-- deprecated -->
+    <string name="storage_on_domain">Saugykla ties %1$s</string>
     <string name="connectivity">Jungiamumas</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Neprisijungta</string>
@@ -437,6 +456,7 @@
     <string name="connectivity_connected">Prisijungta</string>
     <string name="sending">Siunčiama…</string>
     <string name="last_msg_sent_successfully">Paskutinė žinutė sėkmingai išsiųsta.</string>
+    <string name="not_supported_by_provider">Jūsų teikėjas nepalaiko šios ypatybės.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Žinutės</string>
     <!-- welcome and login -->
@@ -444,14 +464,21 @@
     <string name="onboarding_create_instant_account">Sukurti naują profilį</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Aš jau turiu profilį</string>
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Naudoti klasikinį el. paštą kaip retransliavimą</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Jūsų profilis</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
     <string name="instant_onboarding_agree_default2">%1$s privatumo politika</string>
+    <!-- Confirmation button on the instant onboarding screen -->
+    <string name="instant_onboarding_create">Sutinku ir sukurti profilį</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Naudoti kitą serverį</string>
+    <string name="instant_onboarding_other_server">Išvardyti retransliavimo serverius</string>
+    <string name="welcome_chat_over_email">Saugūs decentralizuoti pokalbiai</string>
     <string name="scan_invitation_code">Skenuoti pakvietimo kodą</string>
     <string name="login_title">Prisijungti</string>
+    <string name="login_advanced_hint">Šis prisijungimas skirtas patyrusiems naudotojams:\n\n• Nenaudokite adreso, kurį naudojate kitoje programoje.\n\n• Klasikinis el. pašto serveris leidžia pokalbius be ištisinio šifravimo, pažymėtus voko piktograma.</string>
     <string name="login_inbox">Gauta</string>
     <string name="login_imap_login">IMAP prisijungimo vardas</string>
     <string name="login_imap_server">IMAP serveris</string>
@@ -468,10 +495,13 @@
     <string name="proxy_use_proxy">Naudoti įgaliotąjį serverį</string>
     <string name="proxy_add">Pridėti įgaliotąjį serverį</string>
     <string name="proxy_add_explain">Palaikomi įgaliotųjų serverių tipai: HTTP(S), SOCKS5 ir Shadowsocks.</string>
+    <string name="proxy_add_url_hint">Įveskite čia įgaliotojo serverio nuorodą</string>
     <string name="proxy_list_header">Įrašyti įgaliotieji serveriai</string>
     <string name="proxy_delete">Ištrinti įgaliotąjį serverį</string>
     <string name="proxy_delete_explain">Ar tikrai norite ištrinti „%1$s“?</string>
     <string name="proxy_use_proxy_confirm">Ar norite naudoti įgaliotąjį serverį „%1$s“?</string>
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
+    <string name="transports">Retransliavimai</string>
     <string name="login_certificate_checks">Liudijimų patikrinimai</string>
     <string name="login_error_mail">Įveskite teisingą el. pašto adresą.</string>
     <string name="login_error_server">Įveskite teisingą serverį / IP adresą</string>
@@ -523,6 +553,8 @@
     <string name="pref_screen_security_explain">Prašyti blokuoti ekrano kopijas paskiausiųjų sąraše ir programėlės viduje</string>
     <string name="pref_screen_security_please_restart_hint">Norėdami pritaikyti ekrano saugumo nustatymą, paleiskite programėlę iš naujo.</string>
     <string name="pref_notifications">Pranešimai</string>
+    <string name="pref_mention_notifications">Paminėjimai</string>
+    <string name="pref_mention_notifications_explain">Grupėse, kuriose išjungti pranešimai, pranešti apie jums adresuotas žinutes, tokias kaip atsakymai ar reakcijos</string>
     <string name="pref_notifications_show">Rodyti</string>
     <string name="pref_notifications_priority">Pirmenybė</string>
     <string name="pref_notifications_explain">Įjungti sistemos pranešimus apie naujas žinutes</string>
@@ -558,7 +590,8 @@
     <string name="pref_other">Kita</string>
     <string name="pref_backup">Atsarginė kopija</string>
     <string name="pref_backup_explain">Padaro atsarginę pokalbių kopiją į išorinę saugyklą</string>
-    <string name="pref_backup_export_explain">Atsarginė kopija padeda jums nusistatyti naują diegimą šiame ar kitame įrenginyje.\n\nAtsarginėje kopijoje bus visos žinutės, adresatai ir pokalbiai bei jūsų ištisinė Autocrypt sąranka. Atsarginės kopijos failą laikykite saugioje vietoje arba kaip įmanoma greičiau jį ištrinkite.</string>
+    <string name="pref_backup_export_explain">Atsarginė kopija padeda jums nusistatyti naują diegimą šiame ar kitame įrenginyje.\n\nAtsarginėje kopijoje bus visos žinutės, adresatai ir pokalbiai bei jūsų ištisinio perdavimo „Autocrypt“ sąranka. Atsarginės kopijos failą laikykite saugioje vietoje arba kaip įmanoma greičiau jį ištrinkite.</string>
+    <string name="pref_backup_export_this">Eksportuoti šį profilį</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Eksportuoti visas %1$d paskyras</string>
     <string name="pref_backup_export_start_button">Pradėti daryti atsarginę kopiją</string>
@@ -568,6 +601,8 @@
     <string name="pref_background_btn_default">Naudoti numatytąjį paveikslą</string>
     <string name="pref_background_btn_gallery">Pasirinkti iš galerijos</string>
     <string name="pref_imap_folder_warn_disable_defaults">Jeigu išjungiate šį parametrą, įsitikinkite, kad jūsų serveris ir kiti klientai yra sukonfigūruoti atitinkamai.\n\nPriešingu atveju, tai gali iš viso neveikti.</string>
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <string name="pref_multidevice">Kelių įrenginių veiksena</string>
     <string name="pref_auto_folder_moves">Automatiniai perkėlimai į DeltaChat aplanką</string>
     <string name="pref_show_emails">Rodyti klasikinius el. laiškus</string>
     <string name="pref_show_emails_no">Ne, tik pokalbius</string>
@@ -579,7 +614,7 @@
     <string name="pref_background_custom_image">Tinkintas paveikslas</string>
     <string name="pref_background_custom_color">Tinkinta spalva</string>
     <string name="export_aborted">Eksportavimas nutrauktas.</string>
-    <string name="auto_download_messages">Automatinis žinučių atsisiuntimas</string>
+    <string name="auto_download_messages">Automatinis žinučių atsiuntimas</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">Iki %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Iki %1$s, iš esmės, blogos kokybės paveikslus</string>
@@ -587,7 +622,9 @@
     <string name="download_failed">Atsiuntimas nepavyko</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s žinutė</string>
-    <string name="profile_image_delete">Ištrinti profilio paveikslą</string>
+    <string name="profile_image_select">Pasirinkti profilio nuotrauką</string>
+    <string name="select_your_new_profile_image">Pasirinkite naują profilio nuotrauką</string>
+    <string name="profile_image_delete">Ištrinti profilio nuotrauką</string>
     <string name="pref_show_tray_icon">Rodyti dėklo piktogramą</string>
     <string name="pref_edit_profile">Taisyti profilį</string>
     <string name="send_stats_to_devs">Siųsti statistiką Delta Chat plėtotojams</string>
@@ -671,6 +708,9 @@
     <string name="ephemeral_timer_weeks_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į %1$s sav.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s nustatė išnykstančių žinučių laikmatį į %1$s sav. </string>
+    <string name="chat_unencrypted_explanation">Žinutės šiame pokalbyje naudoja klasikinius el. laiškus ir nėra šifruotos ištisinio perdavimo būdu.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">Žinutės yra šifruotos ištisinio perdavimo būdu. Bakstelėkite norėdami sužinoti daugiau.</string>
+    <string name="chat_protection_enabled_explanation">Visos žinutės šiame pokalbyje yra šifruotos ištisinio perdavimo būdu.\n\nIštisinis šifravimas išlaiko žinutes tarp jūsų ir jūsų pokalbio partnerių privačias. Netgi serveriai, teikėjai ar retransliavimai negali jų perskaityti.</string>
     <string name="learn_more">Sužinoti daugiau</string>
 
     <!-- %1%s will be replaced by date and time in some human-readable format -->
@@ -698,9 +738,10 @@
     <string name="qrshow_join_group_hint">Nuskenuokite tai, norėdami prisijungti prie \"%1$s\" grupės.</string>
     <string name="qrshow_join_contact_title">QR pakvietimo kodas</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
-    <string name="qrshow_join_contact_hint">Nuskenuokite tai, norėdami užmegzti kontaktą su %1$s</string>
+    <string name="qrshow_join_contact_hint">Nuskenuokite norėdami pradėti pokalbį su %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Nėra interneto ryšio, nepavyksta atlikti QR kodo sąrankos.</string>
     <string name="qraccount_ask_create_and_login">Sukurti naują el. pašto adresą ties „%1$s“ ir prisijungti ten?</string>
+    <string name="set_name_and_avatar_explain">Nusistatykite vardą, kurį jūsų adresatai atpažins. Taip pat galite nusistatyti profilio nuotrauką.</string>
     <string name="please_enter_name">Įrašykite vardą.</string>
     <string name="qraccount_qr_code_cannot_be_used">Nuskenuotas QR kodas negali būti naudojamas naujos paskyros nustatymui.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
@@ -797,6 +838,7 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat naudoja mikrofoną, kad įrašytų ir siųstų balso žinutes bei vaizdo įrašus su garsu.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat leis jums pasirinkti, kurias nuotraukas iš savo kolekcijos išsiųsti.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat nori įrašyti paveikslus į jūsų nuotraukų kolekciją.</string>
+    <string name="pref_background_notifications">Naudoti foninį ryšį</string>
     <string name="pref_background_notifications_rationale">Norėdami palaikyti ryšį su savo el. pašto serveriu ir gauti žinutes fone, kitame žingsnyje nepaisykite akumuliatoriaus optimizavimų (leiskite vykdyti programą fone).\n\nDelta Chat naudoja nedaug išteklių ir rūpinasi, kad neeikvotų jūsų akumuliatoriaus energijos.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Bakstelėkite čia, norėdami gauti žinutes, kol Delta Chat veikia fone.</string>

@@ -71,6 +71,8 @@ public class CallItemView extends FrameLayout {
       title.setText(isOutgoing? R.string.outgoing_call : R.string.incoming_call);
     }
 
+    icon.setImageResource(callInfo.hasVideo? R.drawable.ic_videocam_white_24dp : R.drawable.baseline_call_24);
+
     int[] attrs;
     if (isOutgoing) {
       attrs = new int[]{
