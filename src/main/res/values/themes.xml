@@ -133,6 +133,7 @@
         <item name="menu_reply_icon">@drawable/ic_reply_white_24dp</item>
 
         <item name="pref_icon_tint">@color/delta_primary</item>
+        <item name="menu_icon_tint">@color/black</item>
         <item name="icon_tint">@color/grey_700</item>
         <item name="icon_tint_dark">@color/grey_100</item>
 
@@ -243,6 +244,7 @@
         <item name="menu_reply_icon">@drawable/ic_reply_white_24dp</item>
 
         <item name="pref_icon_tint">@color/core_white</item>
+        <item name="menu_icon_tint">@color/white</item>
         <item name="icon_tint">@color/grey_100</item>
         <item name="icon_tint_dark">?icon_tint</item>
 
