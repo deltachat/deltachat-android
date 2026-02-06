@@ -89,6 +89,13 @@ public class AudioView extends FrameLayout {
   }
 
   private void setupControls() {
+    // Set up observer in a very specific case when the view is detached and then re-attached,
+    // but binding from adapter has not happened yet
+    if (viewModel != null) {
+      viewModel.getPlaybackState().removeObserver(stateObserver);
+      viewModel.getPlaybackState().observeForever(stateObserver);
+    }
+
     playPauseButton.setOnClickListener(v -> {
       Log.w(TAG, "playPauseButton onClick");
 
