@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ActionMode;
+import androidx.core.util.Consumer;
 import androidx.fragment.app.Fragment;
 
 import com.b44t.messenger.DcChat;
@@ -27,7 +28,6 @@ import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.Set;
-import java.util.function.Consumer;
 
 public abstract class MessageSelectorFragment
     extends Fragment
