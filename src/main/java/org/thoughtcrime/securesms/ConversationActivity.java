@@ -1051,18 +1051,24 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     recipient        = new Recipient(this, dcChat);
     glideRequests    = GlideApp.with(this);
 
-    setComposePanelVisibility();
+    setComposePanelVisibility(true);
     initializeContactRequest();
   }
 
-  private void setComposePanelVisibility() {
+  private void setComposePanelVisibility(boolean isInitialization) {
     if (dcChat.canSend()) {
       composePanel.setVisibility(View.VISIBLE);
       attachmentManager.setHidden(false);
+      ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, true);
+      fragment.handleRemoveBottomInsets();
     } else {
       composePanel.setVisibility(View.GONE);
       attachmentManager.setHidden(true);
       hideSoftKeyboard();
+      if (isInitialization) {
+        ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, false);
+        fragment.handleAddBottomInsets();
+      }
     }
   }
 
@@ -1640,7 +1646,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
       initializeSecurity(isSecureText, isDefaultSms);
-      setComposePanelVisibility();
+      setComposePanelVisibility(false);
       initializeContactRequest();
     } else if ((eventId == DcContext.DC_EVENT_INCOMING_MSG
                 || eventId == DcContext.DC_EVENT_MSG_READ)

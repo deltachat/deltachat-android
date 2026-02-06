@@ -323,7 +323,15 @@ public class ViewUtil {
    * @param view The view to apply insets to
    */
   public static void applyWindowInsetsAsMargin(@NonNull View view) {
-    applyWindowInsetsAsMargin(view, true, true, true, true);
+    applyWindowInsetsAsMargin(view, true, true, true, true, false);
+  }
+
+  public static void applyWindowInsetsAsMargin(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+    applyWindowInsetsAsMargin(view, left, top, right, bottom, false);
+  }
+
+  public static void forceApplyWindowInsetsAsMargin(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+    applyWindowInsetsAsMargin(view, left, top, right, bottom, true);
   }
 
   /**
@@ -337,8 +345,9 @@ public class ViewUtil {
    * @param top Whether to apply top inset
    * @param right Whether to apply right inset
    * @param bottom Whether to apply bottom inset
+   * @param forceDispatch Whether to force application of insets
    */
-  public static void applyWindowInsetsAsMargin(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+  public static void applyWindowInsetsAsMargin(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom, boolean forceDispatch) {
     // Only enable on API 30+ where WindowInsets APIs work correctly
     if (!isEdgeToEdgeSupported()) return;
 
@@ -371,10 +380,10 @@ public class ViewUtil {
       ViewGroup.LayoutParams layoutParams = v.getLayoutParams();
       if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
         ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) layoutParams;
-        marginParams.leftMargin = baseMarginLeft + insets.left;
-        marginParams.topMargin = baseMarginTop + insets.top;
-        marginParams.rightMargin = baseMarginRight + insets.right;
-        marginParams.bottomMargin = baseMarginBottom + insets.bottom;
+        marginParams.leftMargin = left ? baseMarginLeft + insets.left : baseMarginLeft;
+        marginParams.topMargin = top ? baseMarginTop + insets.top : baseMarginTop;
+        marginParams.rightMargin = right ? baseMarginRight + insets.right : baseMarginRight;
+        marginParams.bottomMargin = bottom ? baseMarginBottom + insets.bottom : baseMarginBottom;
         v.setLayoutParams(marginParams);
       }
 
@@ -383,7 +392,14 @@ public class ViewUtil {
 
     // Request the initial insets to be dispatched if the view is attached
     if (view.isAttachedToWindow()) {
-      ViewCompat.requestApplyInsets(view);
+      if (forceDispatch) {
+        WindowInsetsCompat insets = ViewCompat.getRootWindowInsets(view);
+        if (insets != null) {
+          ViewCompat.dispatchApplyWindowInsets(view, insets);
+        }
+      } else {
+        ViewCompat.requestApplyInsets(view);
+      }
     }
   }
 
@@ -395,7 +411,7 @@ public class ViewUtil {
    * @param view The view to apply insets to
    */
   public static void applyWindowInsets(@NonNull View view) {
-    applyWindowInsets(view, true, true, true, true, false);
+    applyWindowInsets(view, true, true, true, true, false, false);
   }
 
   /**
@@ -410,7 +426,20 @@ public class ViewUtil {
    * @param bottom Whether to apply bottom inset
    */
   public static void applyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
-    applyWindowInsets(view, left, top, right, bottom, false);
+    applyWindowInsets(view, left, top, right, bottom, false, false);
+  }
+
+  /**
+   * Force applying window insets to a view by adding padding to avoid drawing elements behind system bars.
+   *
+   * @param view The view to apply insets to
+   * @param left Whether to apply left inset
+   * @param top Whether to apply top inset
+   * @param right Whether to apply right inset
+   * @param bottom Whether to apply bottom inset
+   */
+  public static void forceApplyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+    applyWindowInsets(view, left, top, right, bottom, false, true);
   }
 
   /**
@@ -425,8 +454,9 @@ public class ViewUtil {
    * @param right Whether to apply right inset
    * @param bottom Whether to apply bottom inset
    * @param consumeImeInsets Whether to consume IME insets so they don't propagate to child views
+   * @param forceDispatch Force application of Insets, regardless if system think it shall dispatch
    */
-  public static void applyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom, boolean consumeImeInsets) {
+  public static void applyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom, boolean consumeImeInsets, boolean forceDispatch) {
     // Only enable on API 30+ where WindowInsets APIs work correctly
     if (!isEdgeToEdgeSupported()) return;
 
@@ -469,7 +499,14 @@ public class ViewUtil {
 
     // Request the initial insets to be dispatched if the view is attached
     if (view.isAttachedToWindow()) {
-      ViewCompat.requestApplyInsets(view);
+      if (forceDispatch) {
+        WindowInsetsCompat insets = ViewCompat.getRootWindowInsets(view);
+        if (insets != null) {
+          ViewCompat.dispatchApplyWindowInsets(view, insets);
+        }
+      } else {
+        ViewCompat.requestApplyInsets(view);
+      }
     }
   }
 
