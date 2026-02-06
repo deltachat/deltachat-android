@@ -12,5 +12,6 @@ public enum SecurejoinUiPath {
   NewContact,
 
   /** The user scanned a join QR code when creating a new profile from Instant Onborading Screen */
-  InstantOnboarding,
+  // FIXME: need to be added in core
+  // InstantOnboarding,
 }

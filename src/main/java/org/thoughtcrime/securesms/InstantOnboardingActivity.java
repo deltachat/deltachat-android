@@ -61,6 +61,8 @@ import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
@@ -84,6 +86,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private boolean avatarChanged;
   private boolean imageLoaded;
   private String providerHost;
+  private String providerQrData;
   private String rawQrData;
   private DcLot  parsedQrData;
   private boolean isDcLogin;
@@ -97,6 +100,8 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private boolean cancelled;
 
   private DcContext dcContext;
+
+  private ExecutorService executor = Executors.newSingleThreadExecutor();
 
   @Override
   public void onCreate(Bundle bundle) {
@@ -124,7 +129,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     isDcLogin = false;
     providerHost = DEFAULT_CHATMAIL_HOST;
-    rawQrData = DCACCOUNT + ":" + providerHost;
+    providerQrData = DCACCOUNT + ":" + providerHost;
     attachmentManager = new AttachmentManager(this, () -> {});
     avatarChanged = false;
     registerForEvents();
@@ -213,7 +218,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
         isDcLogin = true;  // Intentional fall-through
       case DcContext.DC_QR_ACCOUNT:
         providerHost = qrParsed.getText1();
-        rawQrData = rawQr;
+        providerQrData = rawQr;
         updateProvider();
         break;
       case DcContext.DC_QR_ASK_VERIFYCONTACT:
@@ -276,6 +281,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   public void onDestroy() {
     super.onDestroy();
     DcHelper.getEventCenter(this).removeObservers(this);
+    executor.shutdown();
   }
 
   private void handleIntent() {
@@ -465,11 +471,15 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
     intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
+    if (isContactInvitation || isGroupInvitation) {
+      intent.putExtra(ConversationListActivity.FROM_WELCOME_LAUNCH_CHAT, true);
+      intent.putExtra(ConversationListActivity.FROM_WELCOME_RAW_QR, rawQrData);
+    }
+
     startActivity(intent);
     finishAffinity();
   }
 
-  @SuppressLint("StaticFieldLeak")
   private void createProfile() {
     if (TextUtils.isEmpty(this.name.getText())) {
       Toast.makeText(this, R.string.please_enter_name, Toast.LENGTH_LONG).show();
@@ -477,38 +487,31 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     }
     final String name = this.name.getText().toString();
 
-    // FIXME: deprecated and also (unlikely but possible) memory leak
-    new AsyncTask<Void, Void, Boolean>() {
-      @Override
-      protected Boolean doInBackground(Void... params) {
-        Context context    = InstantOnboardingActivity.this;
-        DcHelper.set(context, DcHelper.CONFIG_DISPLAY_NAME, name);
+    executor.execute(() -> {
+      Context context = InstantOnboardingActivity.this;
+      DcHelper.set(context, DcHelper.CONFIG_DISPLAY_NAME, name);
 
-        if (avatarChanged) {
-          try {
-            AvatarHelper.setSelfAvatar(InstantOnboardingActivity.this, avatarBmp);
-            Prefs.setProfileAvatarId(InstantOnboardingActivity.this, new SecureRandom().nextInt());
-          } catch (IOException e) {
-            Log.w(TAG, e);
-            return false;
-          }
+      boolean result = true;
+      if (avatarChanged) {
+        try {
+          AvatarHelper.setSelfAvatar(InstantOnboardingActivity.this, avatarBmp);
+          Prefs.setProfileAvatarId(InstantOnboardingActivity.this, new SecureRandom().nextInt());
+        } catch (IOException e) {
+          Log.w(TAG, e);
+          result = false;
         }
-
-        return true;
       }
 
-      @Override
-      public void onPostExecute(Boolean result) {
-        super.onPostExecute(result);
-
-        if (result) {
+      boolean finalResult = result;
+      runOnUiThread(() -> {
+        if (finalResult) {
           attachmentManager.cleanup();
-          startQrAccountCreation(rawQrData);
+          startQrAccountCreation(providerQrData);
         } else {
           Toast.makeText(InstantOnboardingActivity.this, R.string.error, Toast.LENGTH_LONG).show();
         }
-      }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+      });
+    });
   }
 
   private void startQrAccountCreation(String qrCode)
