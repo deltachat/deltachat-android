@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 
@@ -105,7 +106,7 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
           finish();
         };
 
-        showConfirmDialog(rawQr, okCallback);
+        showConfirmDialog(rawQr, okCallback, null);
 
         return true;
       }
@@ -113,7 +114,7 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
         return false;
     }
 
-    private void showConfirmDialog(String rawQr, Runnable okCallback) {
+    private void showConfirmDialog(String rawQr, @NonNull Runnable okCallback, @Nullable Runnable cancelCallback) {
       DcLot qrParsed = dcContext.checkQr(rawQr);
 
       String dialogMsg = "";
@@ -130,7 +131,11 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
         .setPositiveButton("OK", (dialog, which) -> {
           okCallback.run();
         })
-        .setNegativeButton("Cancel", null)
+        .setNegativeButton("Cancel", (dialog, which) -> {
+          if (cancelCallback != null) {
+            cancelCallback.run();
+          }
+        })
         .show();
 
       confirmDialog.getButton(AlertDialog.BUTTON_POSITIVE)
@@ -148,7 +153,10 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
         capture.setResultInterceptor((result, finishCallback) -> {
           String rawQr = result.getText();
 
-          showConfirmDialog(rawQr, finishCallback);
+          showConfirmDialog(rawQr, finishCallback, () -> {
+            barcodeScannerView.resume();
+            capture.decode();
+          });
         });
 
         capture.initializeFromIntent(intent, savedInstanceState);
