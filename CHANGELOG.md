@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Allow scanning Invitation Code when creating a new profile
+
 ## v2.40.0
 2026-02
 
