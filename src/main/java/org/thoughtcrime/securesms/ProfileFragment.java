@@ -140,10 +140,10 @@ public class ProfileFragment extends Fragment
   }
 
   @Override
-  public void onStatusLongClicked() {
+  public void onStatusLongClicked(boolean isMultiUser) {
       Context context = requireContext();
       new AlertDialog.Builder(context)
-        .setTitle(R.string.pref_default_status_label)
+        .setTitle(isMultiUser? R.string.chat_description : R.string.pref_default_status_label)
         .setItems(new CharSequence[]{
             context.getString(R.string.menu_copy_to_clipboard)
           },
