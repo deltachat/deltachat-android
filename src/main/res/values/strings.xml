@@ -884,6 +884,9 @@
     <string name="group_image_changed_by_you">You changed the group image.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Group image changed by %1$s.</string>
+    <string name="chat_description_changed_by_you">You changed the chat description.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">Chat description changed by %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Member %1$s added.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
