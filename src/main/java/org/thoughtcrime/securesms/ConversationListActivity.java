@@ -97,7 +97,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
   public static final String ACCOUNT_ID_EXTRA = "account_id";
   public static final String FROM_WELCOME   = "from_welcome";
-  public static final String FROM_WELCOME_LAUNCH_CHAT   = "from_welcome_launch_chat";
   public static final String FROM_WELCOME_RAW_QR   = "from_welcome_raw_qr";
   private static final int REQUEST_CODE_CONFIRM_CREDENTIALS_DELETE_PROFILE = ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS+1;
 
@@ -194,10 +193,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     DcHelper.maybeShowMigrationError(this);
 
+    String rawQrString = getIntent().getStringExtra(FROM_WELCOME_RAW_QR);
     // Launch chat directly, if coming from onboarding with a join chat/group QR
-    if (getIntent().getBooleanExtra(FROM_WELCOME_LAUNCH_CHAT, false)) {
+    if (rawQrString != null) {
       QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-      String rawQrString = getIntent().getStringExtra(FROM_WELCOME_RAW_QR);
       qrCodeHandler.secureJoinByQr(rawQrString, SecurejoinSource.Scan, SecurejoinUiPath.Unknown);
     }
   }

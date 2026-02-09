@@ -472,7 +472,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
     intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
     if (isContactInvitation || isGroupInvitation) {
-      intent.putExtra(ConversationListActivity.FROM_WELCOME_LAUNCH_CHAT, true);
       intent.putExtra(ConversationListActivity.FROM_WELCOME_RAW_QR, rawQrData);
     }
 
