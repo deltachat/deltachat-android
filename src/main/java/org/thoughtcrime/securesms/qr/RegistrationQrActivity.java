@@ -139,6 +139,8 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
             }
           })
           .show();
+      } else {
+        okCallback.run();
       }
     }
 
