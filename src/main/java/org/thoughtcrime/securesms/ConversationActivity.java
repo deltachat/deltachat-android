@@ -1059,16 +1059,20 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (dcChat.canSend()) {
       composePanel.setVisibility(View.VISIBLE);
       attachmentManager.setHidden(false);
-      ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, true);
-      fragment.handleRemoveBottomInsets();
+      // FIXME: disabled for now to avoid problems with chat scrolling and keyboard covering input bar
+      // ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, true);
+      // fragment.handleRemoveBottomInsets();
     } else {
       composePanel.setVisibility(View.GONE);
       attachmentManager.setHidden(true);
       hideSoftKeyboard();
+      // FIXME: disabled for now to avoid problems with chat scrolling and keyboard covering input bar
+      /*
       if (isInitialization) {
         ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, false);
         fragment.handleAddBottomInsets();
       }
+      */
     }
   }
 
