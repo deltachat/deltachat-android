@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +26,7 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
 
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader;
@@ -72,9 +74,11 @@ public class AllMediaDocumentsFragment
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(recyclerView, true, false, true, true);
 
-    this.recyclerView.setAdapter(new AllMediaDocumentsAdapter(getContext(),
-        new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()),
-        this));
+    AllMediaDocumentsAdapter adapter = new AllMediaDocumentsAdapter(getContext(),
+      new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()),
+      this);
+    this.recyclerView.setAdapter(adapter);
+    adapter.setPlaybackViewModel(new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class));
     this.recyclerView.setLayoutManager(gridManager);
     this.recyclerView.setHasFixedSize(true);
 
@@ -239,12 +243,13 @@ public class AllMediaDocumentsFragment
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem menuItem) {
       int itemId = menuItem.getItemId();
+      AudioPlaybackViewModel playbackViewModel = new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class);
       if (itemId == R.id.details) {
         handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
         mode.finish();
         return true;
       } else if (itemId == R.id.delete) {
-        handleDeleteMessages(chatId, getListAdapter().getSelectedMedia());
+        handleDeleteMessages(chatId, getListAdapter().getSelectedMedia(), playbackViewModel::stopByIds, playbackViewModel::stopByIds);
         mode.finish();
         return true;
       } else if (itemId == R.id.share) {

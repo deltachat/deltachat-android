@@ -25,6 +25,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -65,7 +66,12 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.WindowCompat;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.media3.session.MediaController;
+import androidx.media3.session.SessionCommand;
+import androidx.media3.session.SessionToken;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -76,7 +82,7 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.audio.AudioRecorder;
-import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
+import org.thoughtcrime.securesms.calls.CallUtil;
 import org.thoughtcrime.securesms.components.AnimatingToggle;
 import org.thoughtcrime.securesms.components.AttachmentTypeSelector;
 import org.thoughtcrime.securesms.components.ComposeText;
@@ -86,6 +92,8 @@ import org.thoughtcrime.securesms.components.InputPanel;
 import org.thoughtcrime.securesms.components.KeyboardAwareLinearLayout.OnKeyboardShownListener;
 import org.thoughtcrime.securesms.components.ScaleStableImageView;
 import org.thoughtcrime.securesms.components.SendButton;
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
+import org.thoughtcrime.securesms.components.audioplay.AudioView;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -104,19 +112,19 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
+import org.thoughtcrime.securesms.service.AudioPlaybackService;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.ServiceUtil;
+import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 import org.thoughtcrime.securesms.video.recode.VideoRecoder;
-import org.thoughtcrime.securesms.calls.CallUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -138,14 +146,13 @@ import chat.delta.util.SettableFuture;
  */
 @SuppressLint("StaticFieldLeak")
 public class ConversationActivity extends PassphraseRequiredActionBarActivity
-    implements ConversationFragment.ConversationFragmentListener,
-               AttachmentManager.AttachmentListener,
-               SearchView.OnQueryTextListener,
-               DcEventCenter.DcEventDelegate,
-               OnKeyboardShownListener,
-               InputPanel.Listener,
-               InputPanel.MediaListener
-{
+  implements ConversationFragment.ConversationFragmentListener,
+  AttachmentManager.AttachmentListener,
+  SearchView.OnQueryTextListener,
+  DcEventCenter.DcEventDelegate,
+  OnKeyboardShownListener,
+  InputPanel.Listener,
+  InputPanel.MediaListener, AudioView.OnActionListener {
   private static final String TAG = ConversationActivity.class.getSimpleName();
 
   public static final String ACCOUNT_ID_EXTRA        = "account_id";
@@ -182,6 +189,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   MediaKeyboard          emojiPicker;
   protected HidingLinearLayout     quickAttachmentToggle;
   private   InputPanel             inputPanel;
+  private   @Nullable MediaController mediaController;
+  private   com.google.common.util.concurrent.ListenableFuture<MediaController> mediaControllerFuture;
+  private   AudioPlaybackViewModel playbackViewModel;
 
   private ApplicationContext context;
   private Recipient  recipient;
@@ -214,6 +224,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     initializeActionBar();
     initializeViews();
     initializeResources();
+
+    playbackViewModel = new ViewModelProvider(this).get(AudioPlaybackViewModel.class);
+    initializeMediaController();
+
     initializeSecurity(false, isDefaultSms).addListener(new AssertedSuccessListener<Boolean>() {
       @Override
       public void onSuccess(Boolean result) {
@@ -262,6 +276,36 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
       eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_MSG_READ, this);
     }
+  }
+
+  private void initializeMediaController() {
+    SessionToken sessionToken = new SessionToken(this,
+      new ComponentName(this, AudioPlaybackService.class));
+    mediaControllerFuture = new MediaController.Builder(this, sessionToken)
+      .buildAsync();
+    mediaControllerFuture.addListener(() -> {
+      try {
+        mediaController = mediaControllerFuture.get();
+        playbackViewModel.setMediaController(mediaController);
+      } catch (Exception e) {
+        Log.e(TAG, "Error connecting to audio playback service", e);
+      }
+    }, ContextCompat.getMainExecutor(this));
+  }
+
+  private void addActivityContext(Bundle extras, String activityClassName) {
+    if (mediaController == null) return;
+
+    Bundle commandArgs = new Bundle();
+    commandArgs.putString("activity_class", activityClassName);
+    if (extras != null) {
+      commandArgs.putAll(extras);
+    }
+
+    SessionCommand updateContextCommand =
+      new SessionCommand("UPDATE_ACTIVITY_CONTEXT", Bundle.EMPTY);
+
+    mediaController.sendCustomCommand(updateContextCommand, commandArgs);
   }
 
   @Override
@@ -334,7 +378,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     DcHelper.getNotificationCenter(this).clearVisibleChat();
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
     inputPanel.onPause();
-    AudioSlidePlayer.stopAll();
   }
 
   @Override
@@ -354,6 +397,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onDestroy() {
     DcHelper.getEventCenter(this).removeObservers(this);
+    if (mediaController != null) {
+      MediaController.releaseFuture(mediaControllerFuture);
+      mediaController = null;
+      playbackViewModel.setMediaController(null);
+    }
     super.onDestroy();
   }
 
@@ -630,6 +678,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       if (extras == null) extras = new Bundle();
       extras.putInt(ConversationListFragment.RELOAD_LIST, 1);
     }
+
+    playbackViewModel.stopNonMessageAudioPlayback();
 
     boolean archived = getIntent().getBooleanExtra(FROM_ARCHIVED_CHATS_EXTRA, false);
     Intent intent = new Intent(this, (archived ? ConversationListArchiveActivity.class : ConversationListActivity.class));
@@ -1055,11 +1105,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return new SettableFuture<>(false);
     }
 
-    return attachmentManager.setMedia(glideRequests, uri, null, mediaType, 0, 0, chatId);
+    return attachmentManager.setMedia(glideRequests, uri, null, mediaType, 0, 0, chatId, playbackViewModel);
   }
 
   private ListenableFuture<Boolean> setMedia(DcMsg msg, @NonNull MediaType mediaType) {
-    return attachmentManager.setMedia(glideRequests, Uri.fromFile(new File(msg.getFile())), msg, mediaType, 0, 0, chatId);
+    return attachmentManager.setMedia(glideRequests, Uri.fromFile(new File(msg.getFile())), msg, mediaType, 0, 0, chatId, playbackViewModel);
   }
 
   private void addAttachmentContactInfo(int contactId) {
@@ -1108,6 +1158,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       composeText.setText("");
       inputPanel.clearQuote();
     }
+
+    // Stop draft audio playback regardless, since it is unlikely
+    // we will need background playback for drafts
+    playbackViewModel.stopNonMessageAudioPlayback();
 
     DcContext dcContext = DcHelper.getContext(context);
     Util.runOnAnyBackgroundThread(() -> {
@@ -1415,6 +1469,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   // Listeners
+
+  @Override
+  public void onPlayPauseButtonClicked(View view) {
+    addActivityContext(
+      this.getIntent().getExtras(),
+      this.getClass().getName()
+    );
+  }
 
   private class AttachmentTypeListener implements AttachmentTypeSelector.AttachmentClickedListener {
     @Override

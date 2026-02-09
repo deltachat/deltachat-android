@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-       xmlns:tools="http://schemas.android.com/tools"
-       tools:context="org.thoughtcrime.securesms.components.AudioView">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout android:id="@+id/audio_widget_container"
                   android:orientation="vertical"
@@ -12,39 +10,19 @@
                       android:layout_height="fill_parent"
                       android:orientation="horizontal">
 
-            <org.thoughtcrime.securesms.components.AnimatingToggle
-                    android:id="@+id/control_toggle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center">
-
-                <ImageView android:id="@+id/play"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center_vertical"
-                           android:gravity="center_vertical"
-                           android:clickable="true"
-                           android:visibility="gone"
-                           android:background="@drawable/circle_touch_highlight_background"
-                           android:src="@drawable/ic_play_circle_fill_white_48dp"
-                           android:scaleType="centerInside"
-                           tools:visibility="gone"
-                           android:contentDescription="@string/menu_play"/>
-
-                <ImageView android:id="@+id/pause"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center_vertical"
-                           android:gravity="center_vertical"
-                           android:clickable="true"
-                           android:visibility="gone"
-                           android:background="@drawable/circle_touch_highlight_background"
-                           android:src="@drawable/ic_pause_circle_fill_white_48dp"
-                           android:scaleType="centerInside"
-                           android:contentDescription="@string/menu_pause"/>
-
-            </org.thoughtcrime.securesms.components.AnimatingToggle>
+            <ImageView android:id="@+id/play_pause"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center_vertical"
+                       android:focusable="true"
+                       android:gravity="center_vertical"
+                       android:clickable="true"
+                       android:visibility="visible"
+                       android:background="@drawable/ic_circle_fill_white_48dp"
+                       android:backgroundTint="@color/audio_icon"
+                       android:src="@drawable/play_icon"
+                       android:scaleType="centerInside"
+                       android:contentDescription="@string/menu_play"/>
 
             <LinearLayout android:layout_width="fill_parent"
                           android:layout_height="fill_parent"
@@ -54,7 +32,11 @@
                          android:layout_width="fill_parent"
                          android:layout_height="0dp"
                          android:layout_weight="2"
-                         android:layout_gravity="center_vertical"/>
+                         android:layout_gravity="center_vertical"
+                         android:progressTint="@color/audio_icon"
+                         android:progressTintMode="src_in"
+                         android:thumbTint="@color/audio_icon"
+                         android:thumbTintMode="src_in"/>
 
                 <LinearLayout android:layout_width="fill_parent"
                               android:layout_height="wrap_content"

@@ -6,6 +6,8 @@ import androidx.annotation.Nullable;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
+import org.thoughtcrime.securesms.components.audioplay.AudioView;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 
@@ -17,7 +19,9 @@ public interface BindableConversationItem extends Unbindable {
             @NonNull GlideRequests           glideRequests,
             @NonNull Set<DcMsg>              batchSelected,
             @NonNull Recipient               recipients,
-                     boolean                 pulseHighlight);
+            boolean                          pulseHighlight,
+            @Nullable AudioPlaybackViewModel playbackViewModel,
+            AudioView.OnActionListener       audioPlayPauseListener);
 
   DcMsg getMessageRecord();
 
