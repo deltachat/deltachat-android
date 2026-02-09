@@ -137,9 +137,6 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
           }
         })
         .show();
-
-      confirmDialog.getButton(AlertDialog.BUTTON_POSITIVE)
-        .setTextColor(ContextCompat.getColor(this, R.color.core_blue));
     }
 
   @Override
