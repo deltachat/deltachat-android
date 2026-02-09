@@ -151,12 +151,6 @@ public class ConversationItemFooter extends LinearLayout {
     else if (messageRecord.isDelivered())  deliveryStatusView.setSent();
     else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
     else                                   deliveryStatusView.setPending();
-
-    if (messageRecord.isFailed()) {
-      deliveryStatusView.setTint(Color.RED);
-    } else {
-      deliveryStatusView.setTint(textColor); // Reset the color to the standard color (because the footer is re-used in a RecyclerView)
-    }
   }
 
   public String getDescription() {
