@@ -325,25 +325,29 @@ public class QrCodeHandler {
         }
         builder.setMessage(msg);
         builder.setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
-            try {
-                int newChatId = DcHelper.getRpc(activity).secureJoinWithUxInfo(dcContext.getAccountId(), qrRawString, source, uipath);
-                if (newChatId == 0) throw new Exception("Securejoin failed to create a chat");
-
-                Intent intent = new Intent(activity, ConversationActivity.class);
-                intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, newChatId);
-                activity.startActivity(intent);
-            } catch (Exception e) {
-                e.printStackTrace();
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
-                builder1.setMessage(e.getMessage());
-                builder1.setPositiveButton(android.R.string.ok, null);
-                builder1.create().show();
-            }
+          secureJoinByQr(qrRawString, source, uipath);
         });
         builder.setNegativeButton(android.R.string.cancel, null);
     }
 
-    public void addRelay(String qrData) {
+  public void secureJoinByQr(String qrRawString, SecurejoinSource source, SecurejoinUiPath uipath) {
+      try {
+          int newChatId = DcHelper.getRpc(activity).secureJoinWithUxInfo(dcContext.getAccountId(), qrRawString, source, uipath);
+          if (newChatId == 0) throw new Exception("Securejoin failed to create a chat");
+
+          Intent intent = new Intent(activity, ConversationActivity.class);
+          intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, newChatId);
+          activity.startActivity(intent);
+      } catch (Exception e) {
+          e.printStackTrace();
+          AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
+          builder1.setMessage(e.getMessage());
+          builder1.setPositiveButton(android.R.string.ok, null);
+          builder1.create().show();
+      }
+  }
+
+  public void addRelay(String qrData) {
       ProgressDialog progressDialog = new ProgressDialog(activity);
       progressDialog.setMessage(activity.getResources().getString(R.string.one_moment));
       progressDialog.setCanceledOnTouchOutside(false);

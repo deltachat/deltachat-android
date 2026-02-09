@@ -61,6 +61,8 @@ import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
@@ -77,6 +79,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
   private ImageView avatar;
   private EditText name;
+  private TextView invitationText;
   private TextView privacyPolicyBtn;
   private Button signUpBtn;
 
@@ -84,7 +87,11 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private boolean imageLoaded;
   private String providerHost;
   private String providerQrData;
+  private String rawQrData;
+  private DcLot  parsedQrData;
   private boolean isDcLogin;
+  private boolean isContactInvitation;
+  private boolean isGroupInvitation;
 
   private AttachmentManager attachmentManager;
   private Bitmap avatarBmp;
@@ -93,6 +100,8 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private boolean cancelled;
 
   private DcContext dcContext;
+
+  private ExecutorService executor = Executors.newSingleThreadExecutor();
 
   @Override
   public void onCreate(Bundle bundle) {
@@ -204,17 +213,31 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
   private void setProviderFromQr(String rawQr) {
     DcLot qrParsed = dcContext.checkQr(rawQr);
-    boolean isDcLogin = qrParsed.getState() == DcContext.DC_QR_LOGIN;
-    if (isDcLogin || qrParsed.getState() == DcContext.DC_QR_ACCOUNT) {
-      this.isDcLogin = isDcLogin;
-      providerHost = qrParsed.getText1();
-      providerQrData = rawQr;
-      updateProvider();
-    } else {
-      new AlertDialog.Builder(this)
-        .setMessage(R.string.qraccount_qr_code_cannot_be_used)
-        .setPositiveButton(R.string.ok, null)
-        .show();
+    switch (qrParsed.getState()) {
+      case DcContext.DC_QR_LOGIN:
+        isDcLogin = true;  // Intentional fall-through
+      case DcContext.DC_QR_ACCOUNT:
+        providerHost = qrParsed.getText1();
+        providerQrData = rawQr;
+        updateProvider();
+        break;
+      case DcContext.DC_QR_ASK_VERIFYCONTACT:
+        isContactInvitation = true;
+        rawQrData = rawQr;
+        parsedQrData = qrParsed;
+        updateProvider();
+        break;
+      case DcContext.DC_QR_ASK_VERIFYGROUP:
+        isGroupInvitation = true;
+        rawQrData = rawQr;
+        parsedQrData = qrParsed;
+        updateProvider();
+        break;
+      default:
+        new AlertDialog.Builder(this)
+          .setMessage(R.string.qraccount_qr_code_cannot_be_used)
+          .setPositiveButton(R.string.ok, null)
+          .show();
     }
   }
 
@@ -258,6 +281,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   public void onDestroy() {
     super.onDestroy();
     DcHelper.getEventCenter(this).removeObservers(this);
+    executor.shutdown();
   }
 
   private void handleIntent() {
@@ -309,6 +333,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private void initializeResources() {
     this.avatar           = findViewById(R.id.avatar);
     this.name             = findViewById(R.id.name_text);
+    this.invitationText   = findViewById(R.id.invitation_label);
     this.privacyPolicyBtn = findViewById(R.id.privacy_policy_button);
     this.signUpBtn        = findViewById(R.id.signup_button);
 
@@ -364,6 +389,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     } else {
       signUpBtn.setText(R.string.instant_onboarding_create);
       privacyPolicyBtn.setTextColor(getResources().getColor(R.color.delta_accent));
+
       if (DEFAULT_CHATMAIL_HOST.equals(providerHost)) {
         privacyPolicyBtn.setText(TextUtil.markAsExternal(
           getString(R.string.instant_onboarding_agree_default2, providerHost)));
@@ -371,6 +397,19 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
         privacyPolicyBtn.setText(TextUtil.markAsExternal(
           getString(R.string.instant_onboarding_agree_instance, providerHost)));
       }
+
+      if (parsedQrData != null) {
+        if (isContactInvitation) {
+          String name = dcContext.getContact(parsedQrData.getId()).getDisplayName();
+          invitationText.setText(this.getString(R.string.instant_onboarding_contact_info, name));
+          invitationText.setVisibility(View.VISIBLE);
+        } else if (isGroupInvitation) {
+          String groupName = parsedQrData.getText1();
+          invitationText.setText(this.getString(R.string.instant_onboarding_group_info, groupName));
+          invitationText.setVisibility(View.VISIBLE);
+        }
+      }
+
     }
   }
 
@@ -432,11 +471,14 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
     intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
+    if (isContactInvitation || isGroupInvitation) {
+      intent.putExtra(ConversationListActivity.FROM_WELCOME_RAW_QR, rawQrData);
+    }
+
     startActivity(intent);
     finishAffinity();
   }
 
-  @SuppressLint("StaticFieldLeak")
   private void createProfile() {
     if (TextUtils.isEmpty(this.name.getText())) {
       Toast.makeText(this, R.string.please_enter_name, Toast.LENGTH_LONG).show();
@@ -444,37 +486,31 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     }
     final String name = this.name.getText().toString();
 
-    new AsyncTask<Void, Void, Boolean>() {
-      @Override
-      protected Boolean doInBackground(Void... params) {
-        Context context    = InstantOnboardingActivity.this;
-        DcHelper.set(context, DcHelper.CONFIG_DISPLAY_NAME, name);
+    executor.execute(() -> {
+      Context context = InstantOnboardingActivity.this;
+      DcHelper.set(context, DcHelper.CONFIG_DISPLAY_NAME, name);
 
-        if (avatarChanged) {
-          try {
-            AvatarHelper.setSelfAvatar(InstantOnboardingActivity.this, avatarBmp);
-            Prefs.setProfileAvatarId(InstantOnboardingActivity.this, new SecureRandom().nextInt());
-          } catch (IOException e) {
-            Log.w(TAG, e);
-            return false;
-          }
+      boolean result = true;
+      if (avatarChanged) {
+        try {
+          AvatarHelper.setSelfAvatar(InstantOnboardingActivity.this, avatarBmp);
+          Prefs.setProfileAvatarId(InstantOnboardingActivity.this, new SecureRandom().nextInt());
+        } catch (IOException e) {
+          Log.w(TAG, e);
+          result = false;
         }
-
-        return true;
       }
 
-      @Override
-      public void onPostExecute(Boolean result) {
-        super.onPostExecute(result);
-
-        if (result) {
+      boolean finalResult = result;
+      runOnUiThread(() -> {
+        if (finalResult) {
           attachmentManager.cleanup();
           startQrAccountCreation(providerQrData);
         } else {
           Toast.makeText(InstantOnboardingActivity.this, R.string.error, Toast.LENGTH_LONG).show();
         }
-      }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+      });
+    });
   }
 
   private void startQrAccountCreation(String qrCode)

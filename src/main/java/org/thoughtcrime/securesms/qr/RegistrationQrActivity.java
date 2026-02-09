@@ -10,8 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 
-import com.journeyapps.barcodescanner.CaptureManager;
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcLot;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
@@ -26,9 +30,11 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
     public static final String ADD_AS_SECOND_DEVICE_EXTRA = "add_as_second_device";
     public static final String QRDATA_EXTRA = "qrdata";
 
-    private CaptureManager capture;
+    private CustomCaptureManager capture;
 
     private CompoundBarcodeView barcodeScannerView;
+
+    private DcContext dcContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +72,8 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
                 .onAnyResult(this::handleQrScanWithPermissions)
                 .onAnyDenied(this::handleQrScanWithDeniedPermission)
                 .execute();
+
+        dcContext = DcHelper.getContext(this);
     }
 
     private void handleQrScanWithPermissions() {
@@ -89,23 +97,70 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
         DcHelper.openHelp(this, "#multiclient");
         return true;
       } else if (itemId == R.id.menu_paste) {
-        Intent intent = new Intent();
-        intent.putExtra(QRDATA_EXTRA, Util.getTextFromClipboard(this));
-        setResult(Activity.RESULT_OK, intent);
-        finish();
+        String rawQr = Util.getTextFromClipboard(this);
+
+        Runnable okCallback = () -> {
+          Intent intent = new Intent();
+          intent.putExtra(QRDATA_EXTRA, rawQr);
+          setResult(Activity.RESULT_OK, intent);
+          finish();
+        };
+
+        showConfirmDialog(rawQr, okCallback, null);
+
         return true;
       }
 
         return false;
     }
 
-    @Override
+    private void showConfirmDialog(String rawQr, @NonNull Runnable okCallback, @Nullable Runnable cancelCallback) {
+      DcLot qrParsed = dcContext.checkQr(rawQr);
+
+      String dialogMsg = "";
+      if (qrParsed.getState() == DcContext.DC_QR_ASK_VERIFYCONTACT) {
+        String name = dcContext.getContact(qrParsed.getId()).getDisplayName();
+        dialogMsg = getString(R.string.instant_onboarding_confirm_contact, name);
+      } else if (qrParsed.getState() == DcContext.DC_QR_ASK_VERIFYGROUP) {
+        String groupName = qrParsed.getText1();
+        dialogMsg = getString(R.string.instant_onboarding_confirm_group, groupName);
+      }
+
+      if (qrParsed.getState() == DcContext.DC_QR_ASK_VERIFYCONTACT
+        || qrParsed.getState() == DcContext.DC_QR_ASK_VERIFYGROUP) {
+        AlertDialog confirmDialog = new AlertDialog.Builder(this)
+          .setMessage(dialogMsg)
+          .setPositiveButton("OK", (dialog, which) -> {
+            okCallback.run();
+          })
+          .setNegativeButton("Cancel", (dialog, which) -> {
+            if (cancelCallback != null) {
+              cancelCallback.run();
+            }
+          })
+          .show();
+      } else {
+        okCallback.run();
+      }
+    }
+
+  @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
     }
 
     private void init(CompoundBarcodeView barcodeScannerView, Intent intent, Bundle savedInstanceState) {
-        capture = new CaptureManager(this, barcodeScannerView);
+        capture = new CustomCaptureManager(this, barcodeScannerView);
+
+        capture.setResultInterceptor((result, finishCallback) -> {
+          String rawQr = result.getText();
+
+          showConfirmDialog(rawQr, finishCallback, () -> {
+            barcodeScannerView.resume();
+            capture.decode();
+          });
+        });
+
         capture.initializeFromIntent(intent, savedInstanceState);
         capture.decode();
     }
