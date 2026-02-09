@@ -39,6 +39,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
 
     <!-- force compiling emojipicker on sdk<21; runtime checks are required then -->
     <uses-sdk tools:overrideLibrary="androidx.emoji2.emojipicker"/>
@@ -391,6 +392,15 @@
     <service
         android:name=".service.FetchForegroundService"
         android:foregroundServiceType="dataSync" />
+
+    <service
+        android:name=".service.AudioPlaybackService"
+        android:foregroundServiceType="mediaPlayback"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="androidx.media3.session.MediaSessionService"/>
+        </intent-filter>
+    </service>
 
     <receiver android:name=".notifications.MarkReadReceiver"
               android:enabled="true"

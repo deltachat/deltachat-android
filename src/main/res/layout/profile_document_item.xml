@@ -17,7 +17,7 @@
             android:layout_weight="1"
             android:visibility="gone"/>
 
-    <org.thoughtcrime.securesms.components.AudioView
+    <org.thoughtcrime.securesms.components.audioplay.AudioView
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/audio_view"

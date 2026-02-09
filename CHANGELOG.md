@@ -15,6 +15,7 @@
 * Add indication for blocked contacts in user profile
 * Allow to start calls with video disabled
 * Show hint for empty contact search results
+* Add background playing for voice messages and other audio files
 * Fix: Show dialog if pasted QR codes are invalid
 * Fix: Refresh chat list when returning from conversation if selected profile changed
 * Fix: Update menu when using "select all" in contact selection

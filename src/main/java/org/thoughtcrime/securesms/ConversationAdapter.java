@@ -34,6 +34,8 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.HeaderViewHolder;
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
+import org.thoughtcrime.securesms.components.audioplay.AudioView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -59,6 +61,7 @@ import java.util.Set;
  * @author Moxie Marlinspike
  *
  */
+// FIXME: this breaks type checks, that is why there are so many casts.
 public class ConversationAdapter <V extends View & BindableConversationItem>
     extends RecyclerView.Adapter
   implements StickyHeaderDecoration.StickyHeaderAdapter<HeaderViewHolder>
@@ -97,6 +100,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private long                 pulseHighlightingSince = -1;
   private int                  lastSeenPosition = -1;
   private long                 lastSeen = -1;
+  private AudioPlaybackViewModel playbackViewModel;
+  private AudioView.OnActionListener audioPlayPauseListener;
 
   protected static class ViewHolder extends RecyclerView.ViewHolder {
     public <V extends View & BindableConversationItem> ViewHolder(final @NonNull V itemView) {
@@ -170,6 +175,14 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return fromDb;
   }
 
+  public void setPlaybackViewModel(AudioPlaybackViewModel playbackViewModel) {
+    this.playbackViewModel = playbackViewModel;
+  }
+
+  public void setAudioPlayPauseListener(AudioView.OnActionListener audioPlayPauseListener) {
+    this.audioPlayPauseListener = audioPlayPauseListener;
+  }
+
   /**
    * Returns the position of the message with msgId in the chat list, counted from the top
    */
@@ -237,7 +250,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     long elapsed = now - pulseHighlightingSince;
     boolean pulseHighlight = (positionCurrentlyPulseHighlighting == position && elapsed < PULSE_HIGHLIGHT_MILLIS);
 
-    holder.getItem().bind(getMsg(position), dcChat, glideRequests, batchSelected, recipient, pulseHighlight);
+    holder.getItem().bind(getMsg(position), dcChat, glideRequests, batchSelected, recipient, pulseHighlight, playbackViewModel, audioPlayPauseListener);
   }
 
   @Override
