@@ -233,7 +233,7 @@ public class ConversationListFragment extends BaseConversationListFragment
   private final Object loadChatlistLock = new Object();
   private boolean inLoadChatlist;
   private boolean needsAnotherLoad;
-  private void loadChatlistAsync() {
+  public void loadChatlistAsync() {
     synchronized (loadChatlistLock) {
       needsAnotherLoad = true;
       if (inLoadChatlist) {
@@ -260,7 +260,7 @@ public class ConversationListFragment extends BaseConversationListFragment
     });
   }
 
-  public void loadChatlist() {
+  private void loadChatlist() {
     int listflags = 0;
     if (archive) {
       listflags |= DcContext.DC_GCL_ARCHIVED_ONLY;

@@ -615,7 +615,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     refreshAvatar();
     refreshUnreadIndicator();
     refreshTitle();
-    conversationListFragment.loadChatlist();
+    conversationListFragment.loadChatlistAsync();
   }
 
   public void onDeleteProfile(int profileId) {
