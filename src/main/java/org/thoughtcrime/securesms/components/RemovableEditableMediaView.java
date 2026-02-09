@@ -11,6 +11,9 @@ import android.widget.ImageView;
 
 import org.thoughtcrime.securesms.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RemovableEditableMediaView extends FrameLayout {
 
   private final @NonNull ImageView remove;
@@ -19,6 +22,7 @@ public class RemovableEditableMediaView extends FrameLayout {
   private final int removeSize;
 
   private @Nullable View current;
+  private final List<OnClickListener> removeClickListeners = new ArrayList<>();
 
   public RemovableEditableMediaView(Context context) {
     this(context, null);
@@ -72,8 +76,22 @@ public class RemovableEditableMediaView extends FrameLayout {
     return current;
   }
 
-  public void setRemoveClickListener(View.OnClickListener listener) {
-    this.remove.setOnClickListener(listener);
+  public void addRemoveClickListener(View.OnClickListener listener) {
+    removeClickListeners.add(listener);
+    updateRemoveClickListener();
+  }
+
+  public void removeRemoveClickListener(View.OnClickListener listener) {
+    removeClickListeners.remove(listener);
+    updateRemoveClickListener();
+  }
+
+  private void updateRemoveClickListener() {
+    this.remove.setOnClickListener(v -> {
+      for (OnClickListener listener : removeClickListeners) {
+        listener.onClick(v);
+      }
+    });
   }
 
   public void setEditClickListener(View.OnClickListener listener) {

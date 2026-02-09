@@ -11,9 +11,10 @@ import androidx.annotation.NonNull;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridAdapter;
 
-import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.WebxdcView;
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
+import org.thoughtcrime.securesms.components.audioplay.AudioView;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader.BucketedThreadMedia;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
@@ -31,7 +32,8 @@ class AllMediaDocumentsAdapter extends StickyHeaderGridAdapter {
   private final ItemClickListener   itemClickListener;
   private final Set<DcMsg>          selected;
 
-  private  BucketedThreadMedia media;
+  private  BucketedThreadMedia      media;
+  private AudioPlaybackViewModel    playbackViewModel;
 
   private static class ViewHolder extends StickyHeaderGridAdapter.ItemViewHolder {
     private final DocumentView documentView;
@@ -71,6 +73,10 @@ class AllMediaDocumentsAdapter extends StickyHeaderGridAdapter {
     this.media = media;
   }
 
+  public void setPlaybackViewModel(AudioPlaybackViewModel playbackViewModel) {
+    this.playbackViewModel = playbackViewModel;
+  }
+
   @Override
   public StickyHeaderGridAdapter.HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent, int headerType) {
     return new HeaderHolder(LayoutInflater.from(context).inflate(R.layout.contact_selection_list_divider, parent, false));
@@ -97,6 +103,7 @@ class AllMediaDocumentsAdapter extends StickyHeaderGridAdapter {
       viewHolder.webxdcView.setVisibility(View.GONE);
 
       viewHolder.audioView.setVisibility(View.VISIBLE);
+      viewHolder.audioView.setPlaybackViewModel(playbackViewModel);
       viewHolder.audioView.setAudio((AudioSlide)slide, dcMsg.getDuration());
       viewHolder.audioView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
       viewHolder.audioView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
