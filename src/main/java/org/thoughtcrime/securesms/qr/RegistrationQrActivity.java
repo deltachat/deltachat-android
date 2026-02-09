@@ -126,17 +126,20 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
         dialogMsg = getString(R.string.instant_onboarding_confirm_group, groupName);
       }
 
-      AlertDialog confirmDialog = new AlertDialog.Builder(this)
-        .setMessage(dialogMsg)
-        .setPositiveButton("OK", (dialog, which) -> {
-          okCallback.run();
-        })
-        .setNegativeButton("Cancel", (dialog, which) -> {
-          if (cancelCallback != null) {
-            cancelCallback.run();
-          }
-        })
-        .show();
+      if (qrParsed.getState() == DcContext.DC_QR_ASK_VERIFYCONTACT
+        || qrParsed.getState() == DcContext.DC_QR_ASK_VERIFYGROUP) {
+        AlertDialog confirmDialog = new AlertDialog.Builder(this)
+          .setMessage(dialogMsg)
+          .setPositiveButton("OK", (dialog, which) -> {
+            okCallback.run();
+          })
+          .setNegativeButton("Cancel", (dialog, which) -> {
+            if (cancelCallback != null) {
+              cancelCallback.run();
+            }
+          })
+          .show();
+      }
     }
 
   @Override
