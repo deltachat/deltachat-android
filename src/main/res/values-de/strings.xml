@@ -380,12 +380,20 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Anrufen</string>
+    <string name="start_audio_call">Sprachanruf</string>
+    <string name="start_video_call">Videoanruf</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Annehmen</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Ablehnen</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Ausgehender Anruf</string>
+    <string name="outgoing_audio_call">Ausgehender Sprachanruf</string>
+    <string name="outgoing_video_call">Ausgehender Videoanruf</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Eingehender Anruf</string>
+    <string name="incoming_audio_call">Eingehender Sprachanruf</string>
+    <string name="incoming_video_call">Eingehender Videoanruf</string>
     <string name="declined_call">Abgelehnter Anruf</string>
     <string name="canceled_call">Abgebrochener Anruf</string>
     <string name="missed_call">Verpasster Anruf</string>

@@ -1045,31 +1045,31 @@ für die <a href="https://chatmail.at/clients">Chatmail-Clients</a> umfasst, von
         
       </h3>
 
-<p>We would like to improve Delta Chat with your help,
-which is why Delta Chat for Android asks whether you want
-to send anonymous usage statistics.</p>
+<p>Wir möchten Delta Chat mit deiner Hilfe verbessern.
+Deshalb fragt Delta Chat für Android, ob du
+anonyme Nutzungsstatistiken senden möchtest.</p>
 
-<p>You can turn it on and off at
-<strong>Settings → Advanced → Send statistics to Delta Chat’s developers</strong>.</p>
+<p>Du kannst dies unter
+<strong>Einstellungen → Erweitert → Statistik an Delta Chat Entwickler senden</strong> ein- und ausschalten.</p>
 
-<p>When you turn it on,
-weekly statistics will be automatically sent to a bot.</p>
+<p>Wenn eingeschaltet,
+werden wöchentlich Statistiken automatisch an einen Bot gesendet.</p>
 
-<p>We are interested e.g. in statistics like:</p>
+<p>Wir sind beispielsweise an folgenden Statistiken interessiert:</p>
 
 <ul>
   <li>
-    <p>How many contacts are introduced by personally scanning a QR code?</p>
+    <p>Wie viele Kontakte werden durch das persönliche Scannen eines QR-Codes hergestellt?</p>
   </li>
   <li>
-    <p>Which versions of Delta Chat are being used?</p>
+    <p>Welche Versionen von Delta Chat werden verwendet?</p>
   </li>
   <li>
-    <p>What errors occur for users?</p>
+    <p>Welche Fehler treten bei Benutzern auf?</p>
   </li>
 </ul>
 
-<p>We will <em>not</em> collect any personally identifiable information about you.</p>
+<p>Wir werden <em>keinerlei</em> personenbezogene Daten über dich sammeln.</p>
     
       <h3 id="ich-bin-an-technischen-details-interessiert-gibt-es-hierzu-weitere-infos">
         
@@ -1106,6 +1106,10 @@ zum Austausch von Verschlüsselungsinformationen durch Scannen von QR-Codes oder
   </li>
   <li>
     <p><a href="https://autocrypt.org">Autocrypt</a> wird verwendet, um automatisch eine Ende-zu-Ende-Verschlüsselung zwischen Kontakten und allen Mitgliedern einer Gruppe herzustellen.</p>
+  </li>
+  <li>
+    <p><a href="https://autocrypt2.org">Autocrypt v2</a>, dessen vollständige Implementierung für 2026 geplant ist, 
+wir post-quantum-resistente Verschlüsselung und Forward Secrecy einführen.</p>
   </li>
   <li>
     <p><a href="https://github.com/chatmail/core/blob/main/spec.md#attaching-a-contact-to-a-message">Teilen eines Kontakts im Chat</a>
@@ -1280,14 +1284,14 @@ selbst wenn die Nachricht nicht Ende-zu-Ende-verschlüsselt war.</p>
 speichern Delta-Chat-Apps keine Metadaten über Kontakte oder Gruppen auf Servern. Auch nicht in verschlüsselter Form. 
 Stattdessen werden alle Gruppen-Metadaten durchgängig verschlüsselt und ausschließlich auf den Endgeräten der Nutzer gespeichert.</p>
 
-<p>Servers can therefore only see:</p>
+<p>Server können daher nur das folgende sehen:</p>
 
 <ul>
-  <li>the sender and receiver addresses</li>
-  <li>and the message size.</li>
+  <li>die Absender- und Empfängeradressen</li>
+  <li>und die Größe der Nachricht.</li>
 </ul>
 
-<p>By default, the addresses are randomly generated.</p>
+<p>Standardmäßig werden die Adressen zufällig generiert.</p>
 
 <p>Alle anderen Metadaten zu Nachrichten, Kontakten und Gruppen befinden sich im Ende-zu-Ende-verschlüsselten Teil der Nachrichten.</p>
     
@@ -1299,15 +1303,15 @@ Stattdessen werden alle Gruppen-Metadaten durchgängig verschlüsselt und aussch
         
       </h3>
 
-<p>Both for protecting against metadata-collecting servers 
-as well as against the threat of device seizure
-we recommend to use a <a href="https://chatmail.at/relays">chatmail relay</a>
-to create chat profiles using random addresses for transport. 
-Note that Delta Chat apps on all platforms support multiple profiles
-so you can easily use situation-specific profiles next to your “main” profile
-with the knowledge that all their data, along with all metadata, will be deleted.
-Moreover, if a device is seized then chat contacts using short-lived profiles
-can not be identified easily.</p>
+<p>Sowohl zum Schutz vor Servern, die Metadaten sammeln, 
+als auch als Schutz bei Beschlagnahmung von Geräten
+empfehlen wir die Verwendung eines <a href="https://chatmail.at/relays">Chatmail-Relays</a>,
+um Chat-Profile mit zufälligen Adressen für den Transport zu erstellen. 
+Beachte, dass Delta-Chat-Apps mehrere Profile unterstützen,
+sodass du neben deinem „Hauptprofil” ganz einfach situationsspezifische Profile verwenden kannst,
+mit der Gewissheit, dass alle Daten sowie alle Metadaten gelöscht werden.
+Darüber hinaus können Chat-Kontakte, die kurzlebige Profile verwenden,
+im Falle einer Beschlagnahmung des Geräts nicht ohne Weiteres identifiziert werden.</p>
     
       <h3 id="wer-sieht-meine-ip-adresse">
         
@@ -1350,11 +1354,10 @@ um seine Serverinfrastruktur darüber im Unklaren zu lassen, wer eine Nachricht 
 Dies ist besonders wichtig, weil der Signal-Server die Handynummer jedes Kontos kennt,
 die in der Regel mit einer Passidentität verbunden ist.</p>
 
-<p>Even if <a href="https://chatmail.at/relays">chatmail relays</a> 
-do not ask for any private data (including no phone numbers), 
-it might still be worthwhile to protect relational metadata between addresses. 
-We don’t foresee bigger problems in using random throw-away addresses for sealed sending
-but an implementation has not been agreed as a priority yet.</p>
+<p>Auch wenn <a href="https://chatmail.at/relays">Chatmail-Relays</a> 
+keine privaten Daten (einschließlich Telefonnummern) abfragen, 
+könnte es dennoch sinnvoll sein, Metadaten zwischen Adressen zu schützen. 
+Wir sehen keine größeren Probleme bei der Verwendung von zufälligen Wegwerfadressen für aber eine Umsetzung wurde noch nicht als priorisiert.</p>
     
       <h3 id="pfs">
         
@@ -1364,23 +1367,20 @@ but an implementation has not been agreed as a priority yet.</p>
         
       </h3>
 
-<p>Nein, noch nicht.</p>
+<p>Noch nicht, aber es kommt mit <a href="https://autocrypt2.org">Autocrypt v2</a>.</p>
 
-<p>Delta Chat today doesn’t support Perfect Forward Secrecy (PFS).
-This means that if your private decryption key is leaked,
-and someone has collected your prior in-transit messages,
-they will be able to decrypt and read them using the leaked decryption key.
-Note that Forward Secrecy only increases security if you delete messages. 
-Otherwise, someone obtaining your decryption keys
-is typically also able to get all your non-deleted messages
-and doesn’t even need to decrypt any previously collected messages.</p>
+<p>Delta Chat unterstützt derzeit keine Perfect Forward Secrecy (PFS).
+Das bedeutet, dass, wenn Ihr privater Schlüssel offengelegt wird
+und jemand Ihre früheren Nachrichten während der Übertragung gesammelt hat,
+diese mit dem offengelegten Schlüssel entschlüsselt und gelesen werden können.
+Beachten Sie, dass Forward Secrecy die Sicherheit nur erhöht, wenn du Nachrichten löschst. 
+Andernfalls kann jemand, der deinen Schlüssel erhält,
+in der Regel auch alle deine nicht gelöschten Nachrichten abrufen
+und muss zuvor gesammelte Nachrichten nicht einmal entschlüsseln.</p>
 
-<p>We designed a Forward Secrecy approach that withstood 
-initial examination from some cryptographers and implementation experts 
-but is pending a more formal write up 
-to ascertain it reliably works in federated messaging and with multi-device usage,
-before it could be implemented in <a href="https://github.com/chatmail/core">chatmail core</a>,
-which would make it available in all <a href="https://chatmail.at/clients">chatmail clients</a>.</p>
+<p><a href="https://autocrypt2.org">Autocrypt v2</a>, dessen vollständige Implementierung für 2026 geplant ist,
+wird durch automatische Schlüsselrotation eine zuverlässige Löschung (Forward Secrecy) gewährleisten.
+Dieser Ansatz ist im Entwurf <a href="https://datatracker.ietf.org/doc/draft-autocrypt-openpgp-v2-cert/">Autocrypt v2 OpenPGP Certificates</a> festgelegt.</p>
     
       <h3 id="pqc">
         
@@ -1390,11 +1390,13 @@ which would make it available in all <a href="https://chatmail.at/clients">chatm
         
       </h3>
 
-<p>Nein, noch nicht.</p>
+<p>Noch nicht, aber es kommt mit <a href="https://autocrypt2.org">Autocrypt v2</a>.</p>
 
-<p>Delta Chat verwendet die Rust OpenPGP-Bibliothek <a href="https://github.com/rpgp/rpgp">rPGP</a>
-die den neuesten <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-pqc/">IETF Post-Quantum-Cryptography OpenPGP Entwurf</a> unterstützt. 
-Wir beabsichtigen, PQC-Unterstützung zum <a href="https://github.com/chatmail/core">chatmail core</a> hinzuzufügen, sobald der Entwurf bei der IETF in Zusammenarbeit mit anderen OpenPGP-Implementierern fertiggestellt ist.</p>
+<p><a href="https://autocrypt2.org">Autocrypt v2</a>, dessen vollständige Implementierung für 2026 geplant ist,
+wird eine post-quantum-resistente Verschlüsselung zum Schutz vor Angriffen durch Quantencomputer bieten.
+Delta Chat verwendet die Rust-OpenPGP-Bibliothek <a href="https://github.com/rpgp/rpgp">rPGP</a>,
+die den neuesten <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-pqc/">IETF Post-Quantum-Kryptografie OpenPGP Entfurf</a> unterstützt.
+Die Implementierung ist in <a href="https://datatracker.ietf.org/doc/draft-autocrypt-openpgp-v2-cert/">Autocrypt v2 OpenPGP Certificates</a> festgelegt.</p>
     
       <h3 id="wie-kann-ich-die-verschlüsselung-manuell-überprüfen">
         
@@ -1420,12 +1422,11 @@ ist die Verbindung sicher.</p>
 
 <p>Nein.</p>
 
-<p>Delta Chat generates secure OpenPGP keys according to the Autocrypt specification 1.1.
-We do not recommend or offer users to perform manual key management.
-We want to ensure that security audits can focus on a few proven cryptographic algorithms
-instead of the full breadth of possible algorithms allowed with OpenPGP.
-If you want to extract your OpenPGP key, there only is an expert method:
-you need to look it up in the “keypairs” SQLite table of a profile backup tar-file.</p>
+<p>Delta Chat generiert sichere OpenPGP-Schlüssel gemäß der Autocrypt-Spezifikation 1.1.
+Wir bieten Benutzern keine manuelle Schlüsselverwaltung an, noch empfehlen diese.
+Wir wollen sicherstellen, dass sich Sicherheitsüberprüfungen auf einige wenige bewährte kryptografische Algorithmen konzentrieren können,
+anstatt auf die gesamte Bandbreite der mit OpenPGP zulässigen Algorithmen.
+Wenn Sie Ihren OpenPGP-Schlüssel extrahieren möchten, gibt es nur eine Methode für Experten: Sie müssen ihn in der SQLite-Tabelle „keypairs” des Backups nachschlagen.</p>
     
       <h3 id="security-audits">
         
@@ -1535,31 +1536,24 @@ Wir nutzen vielmehr öffentliche Finanzierungsquellen, die bisher aus der EU und
 
 <ul>
   <li>
-    <p>In 2023 and 2024 we got accepted in the Next Generation Internet (NGI)
-program for our work in <a href="https://nlnet.nl/project/WebXDC-Push/">webxdc PUSH</a>,
-along with collaboration partners working on
-<a href="https://nlnet.nl/project/Webxdc-Evolve/">webxdc evolve</a>,
-<a href="https://nlnet.nl/project/WebXDC-XMPP/">webxdc XMPP</a>,
-<a href="https://nlnet.nl/project/DeltaTouch/">DeltaTouch</a> and
-<a href="https://nlnet.nl/project/DeltaTauri/">DeltaTauri</a>.
-All of these projects are partially completed or to be completed in early 2025.</p>
+    <p>2023 und 2024 wurden wir in das Next-Generation-Internet-Programm (NGI)
+für unsere Arbeit an <a href="https://nlnet.nl/project/WebXDC-Push/">Webxdc-PUSH</a> aufgenommen,
+zusammen mit Kooperationspartnern, die an 
+<a href="https://nlnet.nl/project/Webxdc-Evolve/">Webxdc-Evolve</a>, 
+<a href="https://nlnet.nl/project/WebXDC-XMPP/">Webxdc-XMPP</a>, 
+<a href="https://nlnet.nl/project/DeltaTouch/">DeltaTouch</a> und 
+<a href="https://nlnet.nl/project/DeltaTauri/">DeltaTauri</a>. 
+Alle diese Projekte sind teilweise abgeschlossen oder sollen Anfang 2025 abgeschlossen werden.</p>
   </li>
   <li>
     <p>Im Jahr 2021 erhielten wir weitere EU-Mittel für zwei “Next-Generation-Internet”-Anträge, nämlich für <a href="https://dapsi.ngi.eu/hall-of-fame/eppd/">EPPD - E-Mail-Provider-Portabilitätsverzeichnis</a> (~97K EUR) und <a href="https://nlnet.nl/project/EmailPorting/">AEAP - E-Mail-Adressportierung</a> (~90K EUR). Ziel sind bessere Unterstützung von Mehrfachkonten, verbesserten QR-Code-Kontakt- und -Gruppen-Setups sowie Netzwerkverbesserungen auf allen Plattformen.</p>
   </li>
   <li>
-    <p>The <a href="https://nlnet.nl/">NLnet foundation</a> granted in 2019/2020 EUR 46K for
-completing Rust/Python bindings and instigating a Chat-bot eco-system.</p>
+    <p>Die <a href="https://nlnet.nl/">NLnet-Stiftung</a> bewilligte 2019/2020 46K  EUR für die Fertigstellung von Rust-/Python-Bindungs und die Einrichtung eines Chat-Bot-Ökosystems.</p>
   </li>
   <li>
-    <p>The <a href="https://opentechfund.org">Open Technology Fund</a> gave us a
-first 2018/2019 grant (~$200K) during which we majorly improved the Android app
-and released a first Desktop app beta version, and which moreover
-moored our feature developments in UX research in human rights contexts,
-see our concluding <a href="https://delta.chat/en/2019-07-19-uxreport">Needfinding and UX report</a>.
-The second 2019/2020 grant (~$300K) helped us to
-release Delta/iOS versions, to convert our core library to Rust, and
-to provide new features for all platforms.</p>
+    <p>Der <a href="https://opentechfund.org">Open Technology Fund</a> hat Delta Chat erstmals 2018/2019 bezuschusst; mit dieser Förderung (~$200K) wurden hauptsächlich die Android-App verbessert sowie das Release der Desktop-App in einer Betaversion ermöglicht. Basierend auf Nutzererfahrungen im Menschenrechtskontext wurden zudem verschiedene Funktionen entwickelt, siehe unseren Bericht <a href="https://delta.chat/en/2019-07-19-uxreport">Needfinding and UX report</a>.
+Die zweite Förderung 2019/2020 (~$300K) half uns bei der  Erstellung der iOS-Version, unsere Kernbibliothek in die Programmiersprache “Rust” zu konvertieren und neue Funktionen für alle Plattformen bereitzustellen.</p>
   </li>
   <li>
     <p>Das EU-Projekt <a href="https://nextleap.eu">NEXTLEAP</a> finanzierte 2017 und 2018 die Entwicklung und Implementierung von “Verifizierten Gruppen” und “Setup Kontakt” und half auch bei der Integration der Ende-zu-Ende-Verschlüsselung durch <a href="https://autocrypt.org">Autocrypt</a>.</p>

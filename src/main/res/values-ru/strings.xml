@@ -404,12 +404,20 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Позвонить</string>
+    <string name="start_audio_call">Аудиозвонок</string>
+    <string name="start_video_call">Видеозвонок</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Ответить</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Отклонить</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Исходящий звонок</string>
+    <string name="outgoing_audio_call">Исходящий аудиозвонок</string>
+    <string name="outgoing_video_call">Исходящий видеозвонок</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Входящий звонок</string>
+    <string name="incoming_audio_call">Входящий аудиозвонок</string>
+    <string name="incoming_video_call">Входящий видеозвонок</string>
     <string name="declined_call">Отклонённый звонок</string>
     <string name="canceled_call">Отменённый звонок</string>
     <string name="missed_call">Пропущенный звонок</string>
