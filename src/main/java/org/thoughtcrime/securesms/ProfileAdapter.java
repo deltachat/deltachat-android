@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,8 +31,13 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
+
 public class ProfileAdapter extends RecyclerView.Adapter
 {
+  private static final String TAG = ProfileAdapter.class.getSimpleName();
+
   public static final int ITEM_AVATAR = 10;
   public static final int ITEM_DIVIDER = 20;
   public static final int ITEM_SIGNATURE = 25;
@@ -195,7 +201,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
     }
     else if(holder.itemView instanceof ProfileStatusItem) {
       ProfileStatusItem item = (ProfileStatusItem) holder.itemView;
-      item.setOnLongClickListener(view -> {clickListener.onStatusLongClicked(); return true;});
+      item.setOnLongClickListener(view -> {clickListener.onStatusLongClicked(dcContact == null); return true;});
       item.set(data.label);
     }
     else if(holder.itemView instanceof ProfileAvatarItem) {
@@ -230,7 +236,7 @@ public class ProfileAdapter extends RecyclerView.Adapter
 
   public interface ItemClickListener {
     void onSettingsClicked(int settingsId);
-    void onStatusLongClicked();
+    void onStatusLongClicked(boolean isMultiUser);
     void onSharedChatClicked(int chatId);
     void onMemberClicked(int contactId);
     void onMemberLongClicked(int contactId);
@@ -278,8 +284,21 @@ public class ProfileAdapter extends RecyclerView.Adapter
 
     itemData.add(new ItemData(ITEM_AVATAR, null, 0));
 
-    if (isSelfTalk || dcContact != null && !dcContact.getStatus().isEmpty()) {
-      itemDataStatusText = isSelfTalk ? context.getString(R.string.saved_messages_explain) : dcContact.getStatus();
+    if (isSelfTalk) {
+      itemDataStatusText = context.getString(R.string.saved_messages_explain);
+    } else if (dcContact != null) {
+      itemDataStatusText = dcContact.getStatus();
+    } else if (dcChat != null && dcChat.isEncrypted()) {
+      // Load group or channel description
+      try {
+        Rpc rpc = DcHelper.getRpc(context);
+        itemDataStatusText = rpc.getChatDescription(rpc.getSelectedAccountId(), dcChat.getId());
+      } catch (RpcException e) {
+        Log.e(TAG, "RPC error", e);
+      }
+    }
+
+    if (!itemDataStatusText.isEmpty()) {
       itemData.add(new ItemData(ITEM_SIGNATURE, itemDataStatusText, 0));
     } else {
       itemData.add(new ItemData(ITEM_DIVIDER, null, 0));

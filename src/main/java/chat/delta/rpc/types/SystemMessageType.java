@@ -4,6 +4,7 @@ package chat.delta.rpc.types;
 public enum SystemMessageType {
   Unknown,
   GroupNameChanged,
+  GroupDescriptionChanged,
   GroupImageChanged,
   MemberAddedToGroup,
   MemberRemovedFromGroup,
