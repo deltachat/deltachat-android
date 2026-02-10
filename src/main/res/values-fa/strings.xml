@@ -382,12 +382,20 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">تماس</string>
+    <string name="start_audio_call">تماس صوتی</string>
+    <string name="start_video_call">تماس تصویری</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">جواب دادن</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">رد کردن</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">تماس خروجی</string>
+    <string name="outgoing_audio_call">تماس صوتی خروجی</string>
+    <string name="outgoing_video_call">تماس تصویری خروجی</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">تماس ورودی</string>
+    <string name="incoming_audio_call">تماس صوتی ورودی</string>
+    <string name="incoming_video_call">تماس تصویری ورودی</string>
     <string name="declined_call">تماس رد شده</string>
     <string name="canceled_call">تماس لغو شده</string>
     <string name="missed_call">تماس از دست رفته</string>

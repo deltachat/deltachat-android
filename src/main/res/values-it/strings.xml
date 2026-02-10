@@ -392,12 +392,20 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Chiama</string>
+    <string name="start_audio_call">Chiamata Audio</string>
+    <string name="start_video_call">Chiamata Video</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Rispondi</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Rifiuta</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Chiamata in uscita</string>
+    <string name="outgoing_audio_call">Chiamata in uscita</string>
+    <string name="outgoing_video_call">Videochiamata in uscita</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Chiamata in arrivo</string>
+    <string name="incoming_audio_call">Chiamata in arrivo</string>
+    <string name="incoming_video_call">Videochiamata in arrivo</string>
     <string name="declined_call">Chiamata rifiutata</string>
     <string name="canceled_call">Chiamata annullata</string>
     <string name="missed_call">Chiamata persa</string>

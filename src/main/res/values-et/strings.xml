@@ -380,12 +380,20 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Helista</string>
+    <string name="start_audio_call">Häälkõne</string>
+    <string name="start_video_call">Videokõne</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Vasta</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Keeldu</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Väljuv kõne</string>
+    <string name="outgoing_audio_call">Väljuv häälkõne</string>
+    <string name="outgoing_video_call">Väljuv videokõne</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Saabuv kõne</string>
+    <string name="incoming_audio_call">Saabuv häälkõne</string>
+    <string name="incoming_video_call">Saabuv videokõne</string>
     <string name="declined_call">Keeldutud kõne</string>
     <string name="canceled_call">katkestatud kõne</string>
     <string name="missed_call">Märkamata kõne</string>

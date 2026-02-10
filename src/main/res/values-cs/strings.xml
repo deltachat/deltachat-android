@@ -408,7 +408,9 @@
     <string name="answer_call">Zvedni</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Pokles</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Odchozí hovor</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Příchozí hovor</string>
     <string name="declined_call">Odmítnutý hovor</string>
     <string name="canceled_call">Zrušený hovor</string>

@@ -376,11 +376,15 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Thirreni</string>
+    <string name="start_audio_call">Thirrje Me Zë</string>
+    <string name="start_video_call">Thirrje Me Video</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Përgjigjuni</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Hidhe poshtë</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Thirrje e dërguar</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Thirrje e marrë</string>
     <string name="declined_call">Thirrje e hedhur poshtë</string>
     <string name="canceled_call">Thirrje e anuluar</string>

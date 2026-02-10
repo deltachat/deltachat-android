@@ -396,7 +396,9 @@
     <string name="answer_call">Décrocher</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Raccrocher</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Appel sortant</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Appel entrant</string>
     <string name="declined_call">Appel rejeté</string>
     <string name="canceled_call">Appel annulé</string>

@@ -1192,6 +1192,10 @@ to exchange encryption setup information through QR-code scanning or “invite l
 establishing end-to-end encryption between contacts and all members of a group chat.</p>
   </li>
   <li>
+    <p><a href="https://autocrypt2.org">Autocrypt v2</a>, scheduled for full implementation in 2026, 
+will bring post-quantum resistant encryption and forward secrecy.</p>
+  </li>
+  <li>
     <p><a href="https://github.com/chatmail/core/blob/main/spec.md#attaching-a-contact-to-a-message">Sharing a contact to a
 chat</a>
 enables receivers to use end-to-end encryption with the contact.</p>
@@ -1455,7 +1459,7 @@ but an implementation has not been agreed as a priority yet.</p>
         
       </h3>
 
-<p>No, not yet.</p>
+<p>Not yet, but it’s coming with <a href="https://autocrypt2.org">Autocrypt v2</a>.</p>
 
 <p>Delta Chat today doesn’t support Perfect Forward Secrecy (PFS).
 This means that if your private decryption key is leaked,
@@ -1466,12 +1470,9 @@ Otherwise, someone obtaining your decryption keys
 is typically also able to get all your non-deleted messages
 and doesn’t even need to decrypt any previously collected messages.</p>
 
-<p>We designed a Forward Secrecy approach that withstood 
-initial examination from some cryptographers and implementation experts 
-but is pending a more formal write up 
-to ascertain it reliably works in federated messaging and with multi-device usage,
-before it could be implemented in <a href="https://github.com/chatmail/core">chatmail core</a>,
-which would make it available in all <a href="https://chatmail.at/clients">chatmail clients</a>.</p>
+<p><a href="https://autocrypt2.org">Autocrypt v2</a>, scheduled for full implementation in 2026,
+will provide reliable deletion (forward secrecy) through automatic key rotation.
+This approach is specified in the <a href="https://datatracker.ietf.org/doc/draft-autocrypt-openpgp-v2-cert/">Autocrypt v2 OpenPGP Certificates</a> draft.</p>
     
       <h3 id="pqc">
         
@@ -1481,12 +1482,13 @@ which would make it available in all <a href="https://chatmail.at/clients">chatm
         
       </h3>
 
-<p>No, not yet.</p>
+<p>Not yet, but it’s coming with <a href="https://autocrypt2.org">Autocrypt v2</a>.</p>
 
-<p>Delta Chat uses the Rust OpenPGP library <a href="https://github.com/rpgp/rpgp">rPGP</a>
-which supports the latest <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-pqc/">IETF Post-Quantum-Cryptography OpenPGP draft</a>. 
-We aim to add PQC support in <a href="https://github.com/chatmail/core">chatmail core</a>  after the draft is finalized at the IETF
-in collaboration with other OpenPGP implementers.</p>
+<p><a href="https://autocrypt2.org">Autocrypt v2</a>, scheduled for full implementation in 2026,
+will bring post-quantum resistant encryption to protect against quantum computer attacks.
+Delta Chat uses the Rust OpenPGP library <a href="https://github.com/rpgp/rpgp">rPGP</a>
+which supports the latest <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-pqc/">IETF Post-Quantum-Cryptography OpenPGP draft</a>.
+The implementation is specified in the <a href="https://datatracker.ietf.org/doc/draft-autocrypt-openpgp-v2-cert/">Autocrypt v2 OpenPGP Certificates</a> draft.</p>
     
       <h3 id="how-can-i-manually-check-encryption-information">
         
@@ -1675,28 +1677,31 @@ along with collaboration partners working on
 All of these projects are partially completed or to be completed in early 2025.</p>
   </li>
   <li>
-    <p>In 2021 we received further EU funding for two Next-Generation-Internet
-proposals, namely for <a href="https://dapsi.ngi.eu/hall-of-fame/eppd/">EPPD - email provider portability directory</a> (~97K EUR) and <a href="https://nlnet.nl/project/EmailPorting/">AEAP - email address porting</a> (~90K EUR) which resulted in better multi-profile support, improved QR-code contact and group setups and many networking improvements on all platforms.</p>
+    <p>Më 2021-n morëm financime të mëtejshme nga BE për dy propozime që shtrihen në
+“Internetin e Brezit Tjetër”, konkretisht për <a href="https://dapsi.ngi.eu/hall-of-fame/eppd/">EPPD - e-mail provider portability directory</a> (~97K euro) dhe <a href="https://nlnet.nl/project/EmailPorting/">AEAP - email address porting</a> (~90K euro) që sollën mbulim më të mirë për përdorues me shumë
+llogari, përmirësim të gjërave për kontakte me kod QR dhe grupe, si dhe mjaft
+përmirësime në punën në rrjet për krejt platformat.</p>
   </li>
   <li>
-    <p>The <a href="https://nlnet.nl/">NLnet foundation</a> granted in 2019/2020 EUR 46K for
-completing Rust/Python bindings and instigating a Chat-bot eco-system.</p>
+    <p><a href="https://nlnet.nl/">Fondacioni NLnet</a> dhuroi 46K euro gjatë 2019/2020 për
+plotësimin e <em>Rust/Python bindings</em> dhe për t’i dhënë udhë një ekosistemi
+Chat-bot.</p>
   </li>
   <li>
-    <p>The <a href="https://opentechfund.org">Open Technology Fund</a> gave us a
-first 2018/2019 grant (~$200K) during which we majorly improved the Android app
-and released a first Desktop app beta version, and which moreover
-moored our feature developments in UX research in human rights contexts,
-see our concluding <a href="https://delta.chat/en/2019-07-19-uxreport">Needfinding and UX report</a>.
-The second 2019/2020 grant (~$300K) helped us to
-release Delta/iOS versions, to convert our core library to Rust, and
-to provide new features for all platforms.</p>
+    <p><a href="https://opentechfund.org">Open Technology Fund</a> na dha grantin e parë 
+për 2018/2019 (~200 mijë dollarë) me të cilin përmirësuam ndjeshëm aplikacionin
+për Android dhe hodhëm në qarkullim një version të parë beta aplikacioni për Desktop,
+si dhe i afroi më tepër zhvillimet tona për veçori me kërkime UX në kontekste të drejtash të njeriut, 
+shihni <a href="https://delta.chat/en/2019-07-19-uxreport">raportin tonë përfundimtar “Needfinding and UX”</a>.
+Granti i dytë për 2019/2020 (~$300K) na ndihmoi të hedhim në qarkullim 
+versione Delta/iOS, për të shndërruar bibliotekën tonë bazë në Rust, si dhe
+për të sjellë veçori të reja për krejt platformat.</p>
   </li>
   <li>
-    <p>The <a href="https://nextleap.eu">NEXTLEAP</a> EU project funded the research
-and implementation of verified groups and setup contact protocols
-in 2017 and 2018 and also helped to integrate end-to-end Encryption
-through <a href="https://autocrypt.org">Autocrypt</a>.</p>
+    <p>Projekti <a href="https://nextleap.eu">NEXTLEAP</a> i BE-së financoi kërkimin
+për dhe sendërtimin e grupeve të verifikuara dhe protokolleve të
+ujdisjes së kontakteve më 2017-n dhe 2018-n dhe ndihmoi gjithashtu
+të integrohet Fshehtëzim Skaj-më-Skaj përmes <a href="https://autocrypt.org">Autocrypt</a>.</p>
   </li>
   <li>
     <p>Ndonjëherë marrim dhurime unike nga individë privatë. 

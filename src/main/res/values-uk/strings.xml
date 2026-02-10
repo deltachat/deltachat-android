@@ -408,7 +408,9 @@
     <string name="answer_call">Відповісти</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Відхилити</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Вихідний дзвінок</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Вхідний дзвінок</string>
     <string name="declined_call">Відхилений дзвінок</string>
     <string name="canceled_call">Скасований дзвінок</string>

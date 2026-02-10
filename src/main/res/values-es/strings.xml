@@ -392,12 +392,20 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Llamar</string>
+    <string name="start_audio_call">Llamada</string>
+    <string name="start_video_call">Videollamada</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Contestar</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Rechazar</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Llamada saliente</string>
+    <string name="outgoing_audio_call">Llamada saliente</string>
+    <string name="outgoing_video_call">Videollamada saliente</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Llamada entrante</string>
+    <string name="incoming_audio_call">Llamada entrante</string>
+    <string name="incoming_video_call">Videollamada entrante</string>
     <string name="declined_call">Llamada rechazada</string>
     <string name="canceled_call">Llamada cancelada</string>
     <string name="missed_call">Llamada perdida</string>
@@ -805,6 +813,7 @@ Desactiva este ajuste solo si has eliminado este perfil de todos tus demás disp
     <string name="pref_show_emails_accepted_contacts">Para contactos aceptados</string>
     <string name="pref_show_emails_all">Todos</string>
     <string name="pref_experimental_features">Características experimentales</string>
+    <string name="pref_experimental_features_explain">Estas funciones pueden ser inestables y pueden ser modificadas o eliminadas</string>
     <string name="pref_on_demand_location_streaming">Transmisión de ubicación bajo demanda</string>
     <string name="pref_background_default">Fondo por defecto</string>
     <string name="pref_background_default_color">Color por defecto</string>
@@ -830,6 +839,14 @@ Desactiva este ajuste solo si has eliminado este perfil de todos tus demás disp
     <string name="disable_imap_idle">Deshabilitar IMAP IDLE</string>
     <string name="disable_imap_idle_explain">No utilizar la extensión IMAP IDLE aunque el servidor la admita. Habilitar esta opción retrasará el recibo de mensajes, actívala solo para pruebas.</string>
     <string name="send_stats_to_devs">Enviar estadísticas a los desarrolladores  de Delta Chat</string>
+    <string name="stats_device_message">¿Quieres ayudar a mejorar Delta Chat y apoyar la investigación enviando estadísticas de uso anónimas semanales?\n\n👉 Pulsa aquí… 👈</string>
+    <string name="stats_confirmation_dialog">¿Quieres ayudar a mejorar Delta Chat y apoyar la investigación enviando estadísticas de uso anónimas semanales?</string>
+    <string name="stats_thanks">¡Gracias! Siempre puedes desactivar el envío en \"Configuración -> Avanzado\".\n\n¿Tienes 5 minutos adicionales para participar en un estudio científico sobre la seguridad de Delta Chat?</string>
+    <string name="stats_disable_dialog">El envío de estadísticas ya está habilitado.\n\n¿Quieres deshabilitarlo?</string>
+    <string name="disable">Desactivar</string>
+    <string name="stats_keep_sending">Seguir enviando</string>
+    <string name="stats_msg_body">El archivo adjunto contiene estadísticas de uso anónimas que nos ayudan a mejorar Delta Chat. Consulta https://delta.chat/help#statssending para más información. ¡Gracias!</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resultados de la búsqueda</string>
     <string name="emoji_not_found">No se encontraron emojis</string>
@@ -1005,10 +1022,13 @@ Desactiva este ajuste solo si has eliminado este perfil de todos tus demás disp
     <string name="qrlogin_ask_login">¿Iniciar sesión en \"%1$s\"?</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s te invitó a unirte a este grupo.\n\nEsperando que el dispositivo de %2$s responda…</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s te invitó a unirte a este canal.\n\nEsperando que el dispositivo de %2$s responda…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s respondió, esperando ser agregado al grupo…</string>
     <string name="secure_join_wait">Estableciendo cifrado de extremo a extremo garantizado, por favor, espere...</string>
     <string name="contact_verified">%1$s verificado.</string>
+    <string name="contact_blocked">Contacto bloqueado</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Verificado por %1$s</string>
     <string name="verified_by_you">Verificado por ti</string>
