@@ -384,7 +384,9 @@
     <string name="answer_call">Svara</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Avböj</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Utgående samtal</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Inkommande samtal</string>
     <string name="declined_call">Nekade samtal</string>
     <string name="canceled_call">Avbrutna samtal</string>

@@ -1185,6 +1185,10 @@ to exchange encryption setup information through QR-code scanning or “invite l
 establishing end-to-end encryption between contacts and all members of a group chat.</p>
   </li>
   <li>
+    <p><a href="https://autocrypt2.org">Autocrypt v2</a>, scheduled for full implementation in 2026, 
+will bring post-quantum resistant encryption and forward secrecy.</p>
+  </li>
+  <li>
     <p><a href="https://github.com/chatmail/core/blob/main/spec.md#attaching-a-contact-to-a-message">Sharing a contact to a
 chat</a>
 enables receivers to use end-to-end encryption with the contact.</p>
@@ -1448,7 +1452,7 @@ but an implementation has not been agreed as a priority yet.</p>
         
       </h3>
 
-<p>No, not yet.</p>
+<p>Not yet, but it’s coming with <a href="https://autocrypt2.org">Autocrypt v2</a>.</p>
 
 <p>Delta Chat today doesn’t support Perfect Forward Secrecy (PFS).
 This means that if your private decryption key is leaked,
@@ -1459,12 +1463,9 @@ Otherwise, someone obtaining your decryption keys
 is typically also able to get all your non-deleted messages
 and doesn’t even need to decrypt any previously collected messages.</p>
 
-<p>We designed a Forward Secrecy approach that withstood 
-initial examination from some cryptographers and implementation experts 
-but is pending a more formal write up 
-to ascertain it reliably works in federated messaging and with multi-device usage,
-before it could be implemented in <a href="https://github.com/chatmail/core">chatmail core</a>,
-which would make it available in all <a href="https://chatmail.at/clients">chatmail clients</a>.</p>
+<p><a href="https://autocrypt2.org">Autocrypt v2</a>, scheduled for full implementation in 2026,
+will provide reliable deletion (forward secrecy) through automatic key rotation.
+This approach is specified in the <a href="https://datatracker.ietf.org/doc/draft-autocrypt-openpgp-v2-cert/">Autocrypt v2 OpenPGP Certificates</a> draft.</p>
     
       <h3 id="pqc">
         
@@ -1474,12 +1475,13 @@ which would make it available in all <a href="https://chatmail.at/clients">chatm
         
       </h3>
 
-<p>No, not yet.</p>
+<p>Not yet, but it’s coming with <a href="https://autocrypt2.org">Autocrypt v2</a>.</p>
 
-<p>Delta Chat uses the Rust OpenPGP library <a href="https://github.com/rpgp/rpgp">rPGP</a>
-which supports the latest <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-pqc/">IETF Post-Quantum-Cryptography OpenPGP draft</a>. 
-We aim to add PQC support in <a href="https://github.com/chatmail/core">chatmail core</a>  after the draft is finalized at the IETF
-in collaboration with other OpenPGP implementers.</p>
+<p><a href="https://autocrypt2.org">Autocrypt v2</a>, scheduled for full implementation in 2026,
+will bring post-quantum resistant encryption to protect against quantum computer attacks.
+Delta Chat uses the Rust OpenPGP library <a href="https://github.com/rpgp/rpgp">rPGP</a>
+which supports the latest <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-pqc/">IETF Post-Quantum-Cryptography OpenPGP draft</a>.
+The implementation is specified in the <a href="https://datatracker.ietf.org/doc/draft-autocrypt-openpgp-v2-cert/">Autocrypt v2 OpenPGP Certificates</a> draft.</p>
     
       <h3 id="how-can-i-manually-check-encryption-information">
         

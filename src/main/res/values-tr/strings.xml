@@ -380,12 +380,20 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Ara</string>
+    <string name="start_audio_call">Sesli Arama</string>
+    <string name="start_video_call">Görüntülü Arama</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Yanıtla</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Reddet</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Giden arama</string>
+    <string name="outgoing_audio_call">Giden sesli arama</string>
+    <string name="outgoing_video_call">Giden görüntülü arama</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Gelen arama</string>
+    <string name="incoming_audio_call">Gelen sesli arama</string>
+    <string name="incoming_video_call">Gelen görüntülü arama</string>
     <string name="declined_call">Reddedilen arama</string>
     <string name="canceled_call">İptal edilen arama</string>
     <string name="missed_call">Yanıtlanmayan arama</string>
@@ -1088,8 +1096,8 @@
     <string name="name_desktop">Ad</string>
     <string name="select_group_image_desktop">Grup Görseli Seç</string>
     <string name="export_backup_desktop">Yedeği Dışa Aktar</string>
-    <string name="message_detail_sent_desktop">gönderilme</string>
-    <string name="message_detail_received_desktop">alınma</string>
+    <string name="message_detail_sent_desktop">Gönderilme</string>
+    <string name="message_detail_received_desktop">Alınma</string>
     <string name="menu.view.developer.open.log.folder">Günlük Klasörünü Aç</string>
     <string name="menu.view.developer.open.current.log.file">Şu Anki Günlük Dosyasını Aç</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Delta Chat --minimized seçeneğiyle başlatıldığından tepsi simgesi etkisizleştirilemez.</string>

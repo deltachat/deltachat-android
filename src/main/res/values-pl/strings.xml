@@ -404,12 +404,20 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Zadzwoń</string>
+    <string name="start_audio_call">Połączenie audio</string>
+    <string name="start_video_call">Połączenie wideo</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Odbierz</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Odrzuć</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Połączenie wychodzące</string>
+    <string name="outgoing_audio_call">Wychodzące połączenie audio</string>
+    <string name="outgoing_video_call">Wychodzące połączenie wideo</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Połączenie przychodzące</string>
+    <string name="incoming_audio_call">Przychodzące połączenie audio</string>
+    <string name="incoming_video_call">Przychodzące połączenie wideo</string>
     <string name="declined_call">Połączenie odrzucone</string>
     <string name="canceled_call">Połączenie anulowane</string>
     <string name="missed_call">Połączenie anulowane</string>

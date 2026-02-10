@@ -368,12 +368,20 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">呼叫</string>
+    <string name="start_audio_call">音频通话</string>
+    <string name="start_video_call">视频通话</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">接听</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">拒接</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">去电</string>
+    <string name="outgoing_audio_call">音频通话去电</string>
+    <string name="outgoing_video_call">视频通话去电</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">来电</string>
+    <string name="incoming_audio_call">音频通话来电</string>
+    <string name="incoming_video_call">视频通话来电</string>
     <string name="declined_call">已拒接的来电</string>
     <string name="canceled_call">已取消的通话</string>
     <string name="missed_call">未接来电</string>
