@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.42.0
+2026-02
 
 * Improve switch speed when changing profiles
 * Allow to switch profile when sharing or forwarding
