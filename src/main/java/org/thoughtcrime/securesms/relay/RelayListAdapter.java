@@ -67,16 +67,12 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
     private final TextView titleText;
     private final TextView subtitleText;
     private final ImageView mainIndicator;
-    private final ImageView editButton;
-    private final ImageView deleteButton;
 
     public RelayViewHolder(@NonNull View itemView) {
       super(itemView);
       titleText = itemView.findViewById(R.id.title);
       subtitleText = itemView.findViewById(R.id.subtitle);
       mainIndicator = itemView.findViewById(R.id.main_indicator);
-      editButton = itemView.findViewById(R.id.edit_button);
-      deleteButton = itemView.findViewById(R.id.delete_button);
     }
 
     public void bind(EnteredLoginParam relay, boolean isMain, OnRelayClickListener listener) {
