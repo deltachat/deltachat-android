@@ -25,8 +25,7 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
 
   public interface OnRelayClickListener {
     void onRelayClick(EnteredLoginParam relay);
-    void onRelayEdit(EnteredLoginParam relay);
-    void onRelayDelete(EnteredLoginParam relay);
+    void onRelayLongClick(View view, EnteredLoginParam relay);
   }
 
   public RelayListAdapter(OnRelayClickListener listener) {
@@ -80,7 +79,6 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
       titleText.setText(parts.length == 2? parts[1] : parts[0]);
       subtitleText.setText(parts.length == 2? parts[0] : "");
       mainIndicator.setVisibility(isMain ? View.VISIBLE : View.INVISIBLE);
-      deleteButton.setVisibility(isMain ? View.GONE : View.VISIBLE);
 
       itemView.setOnClickListener(v -> {
         if (listener != null) {
@@ -88,16 +86,11 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
         }
       });
 
-      editButton.setOnClickListener(v -> {
+      itemView.setOnLongClickListener(v -> {
         if (listener != null) {
-          listener.onRelayEdit(relay);
+          listener.onRelayLongClick(v, relay);
         }
-      });
-
-      deleteButton.setOnClickListener(v -> {
-        if (listener != null) {
-          listener.onRelayDelete(relay);
-        }
+        return true;
       });
     }
   }
