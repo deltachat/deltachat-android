@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Add context menu in long-pressing relays items instead of showing buttons
+
 ## v2.42.0
 2026-02
 
