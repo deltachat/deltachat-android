@@ -3,7 +3,9 @@ package org.thoughtcrime.securesms.relay;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -46,6 +48,9 @@ public class RelayListActivity extends BaseActionBarActivity
 
   /** QR provided via Intent extras needs to be saved to pass it to QrCodeHandler when authorization finishes */
   private String qrData = null;
+
+  /** Relay selected for context menu via onRelayLongClick() */
+  private EnteredLoginParam contextMenuRelay = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -143,14 +148,54 @@ public class RelayListActivity extends BaseActionBarActivity
   }
 
   @Override
-  public void onRelayEdit(EnteredLoginParam relay) {
+  public void onRelayLongClick(View view, EnteredLoginParam relay) {
+    contextMenuRelay = relay;
+    registerForContextMenu(view);
+    openContextMenu(view);
+    unregisterForContextMenu(view);
+  }
+
+  @Override
+  public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+    super.onCreateContextMenu(menu, v, menuInfo);
+    getMenuInflater().inflate(R.menu.relay_item_context, menu);
+
+    boolean nonNullAddr = contextMenuRelay != null && contextMenuRelay.addr != null;
+    boolean isMain = nonNullAddr && contextMenuRelay.addr.equals(adapter.getMainRelay());
+    menu.findItem(R.id.menu_delete_relay).setVisible(!isMain);
+  }
+
+  @Override
+  public void onContextMenuClosed(android.view.Menu menu) {
+    super.onContextMenuClosed(menu);
+    contextMenuRelay = null;
+  }
+
+  @Override
+  public boolean onContextItemSelected(@NonNull MenuItem item) {
+    if (contextMenuRelay == null) return super.onContextItemSelected(item);
+
+    int itemId = item.getItemId();
+    if (itemId == R.id.menu_edit_relay) {
+      onRelayEdit(contextMenuRelay);
+      contextMenuRelay = null;
+      return true;
+    } else if (itemId == R.id.menu_delete_relay) {
+      onRelayDelete(contextMenuRelay);
+      contextMenuRelay = null;
+      return true;
+    }
+
+    return super.onContextItemSelected(item);
+  }
+
+  private void onRelayEdit(EnteredLoginParam relay) {
     Intent intent = new Intent(this, EditRelayActivity.class);
     intent.putExtra(EditRelayActivity.EXTRA_ADDR, relay.addr);
     startActivity(intent);
   }
 
-  @Override
-  public void onRelayDelete(EnteredLoginParam relay) {
+  private void onRelayDelete(EnteredLoginParam relay) {
     new AlertDialog.Builder(this)
       .setTitle(R.string.remove_transport)
       .setMessage(getString(R.string.confirm_remove_transport, relay.addr))
