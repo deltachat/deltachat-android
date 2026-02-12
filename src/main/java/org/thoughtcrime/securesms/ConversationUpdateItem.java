@@ -123,12 +123,6 @@ public class ConversationUpdateItem extends BaseConversationItem
     else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
     else if (messageRecord.isPending())    deliveryStatusView.setPending();
     else                                   deliveryStatusView.setNone();
-
-    if (messageRecord.isFailed()) {
-      deliveryStatusView.setTint(Color.RED);
-    } else {
-      deliveryStatusView.setTint(textColor);
-    }
   }
 
   @Override
