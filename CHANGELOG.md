@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Add context menu in long-pressing relays items instead of showing buttons
+* Enhanced video player UI
 
 ## v2.42.0
 2026-02
