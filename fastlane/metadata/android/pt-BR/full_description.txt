@@ -1,0 +1,17 @@
+Delta Chat é um aplicativo de mensagens instantâneas confiável e descentralizado, que é fácil de usar com amigos, família, grupos e organizações. Delta Chat é desenvolvido por uma comunidade dedicada de desenvolvimento FOSS que lança melhorias e novas funcionalidades várias vezes por ano, em muitas lojas e plataformas do mundo todo.
+
+Resumo de funcionalidades:
+
+• Anônimo. Onboarding instantâneo sem número de telefone, e-mail, ou outros dados privados.
+
+• Flexível. Suporta múltiplos perfis e é fácil de configurar em múltiplos dispositivos.
+
+• Extensível. Adicione ferramentas como listas de compras, calendários ou jogos a qualquer grupo.
+
+• Confiável. Funciona em condições de rede ruins ou hostis.
+
+• Seguro. Criptografia de ponta-a-ponta auditada, segura contra ataques de rede e servidor.
+
+• Soberano. Pode ser executado com seu próprio endereço de e-mail ou servidor.
+
+• FOSS. Programa de código totalmente Aberto e Gratuito, construído sob Internet Standards.
