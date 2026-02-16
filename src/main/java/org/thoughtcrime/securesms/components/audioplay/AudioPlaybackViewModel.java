@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms.components.audioplay;
 
+import android.content.Context;
+import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
@@ -13,6 +15,13 @@ import androidx.media3.common.MediaItem;
 import androidx.media3.common.Player;
 import androidx.media3.session.MediaController;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 
 public class AudioPlaybackViewModel extends ViewModel {
   private static final String TAG = AudioPlaybackViewModel.class.getSimpleName();
@@ -20,6 +29,11 @@ public class AudioPlaybackViewModel extends ViewModel {
   private static final int NON_MESSAGE_AUDIO_MSG_ID = 0;  // Audios not attached to a message doesn't have message id.
 
   private final MutableLiveData<AudioPlaybackState> playbackState;
+
+  private final MutableLiveData<Map<Integer, Long>> durations = new MutableLiveData<>(new HashMap<>());
+  private final Set<Integer> extractionInProgress = new HashSet<>();
+  private final ExecutorService extractionExecutor = Executors.newFixedThreadPool(2);
+
   private @Nullable MediaController mediaController;
   private final Handler handler;
   private boolean isUserSeeking = false;
@@ -71,6 +85,58 @@ public class AudioPlaybackViewModel extends ViewModel {
       msgId != currentState.getMsgId() ||
         currentState.getAudioUri() == null ||
         currentState.getAudioUri() != null && !currentState.getAudioUri().equals(audioUri));
+  }
+
+  public LiveData<Map<Integer, Long>> getDurations() {
+    return durations;
+  }
+
+  public void ensureDurationLoaded(Context context, int msgId, Uri audioUri) {
+    // Check cache
+    Map<Integer, Long> currentDurations = durations.getValue();
+    if (currentDurations != null && currentDurations.containsKey(msgId)) {
+      return;
+    }
+
+    // Check extracting
+    synchronized (extractionInProgress) {
+      if (extractionInProgress.contains(msgId)) {
+        return;
+      }
+      extractionInProgress.add(msgId);
+    }
+
+    // Extract in background
+    extractionExecutor.execute(() -> {
+      long duration = extractDurationFromAudio(context, audioUri);
+
+      handler.post(() -> {
+        Map<Integer, Long> updatedDurations = new HashMap<>(durations.getValue());
+        updatedDurations.put(msgId, duration);
+        durations.setValue(updatedDurations);
+      });
+
+      synchronized (extractionInProgress) {
+        extractionInProgress.remove(msgId);
+      }
+    });
+  }
+
+  private long extractDurationFromAudio(Context context, Uri audioUri) {
+    MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+    try {
+      retriever.setDataSource(context, audioUri);
+      String durationStr = retriever.extractMetadata(
+        MediaMetadataRetriever.METADATA_KEY_DURATION
+      );
+      return durationStr != null ? Long.parseLong(durationStr) : 0;
+    } catch (Exception e) {
+      return 0;
+    } finally {
+      try {
+        retriever.release();
+      } catch (Exception ignored) {}
+    }
   }
 
   public void pause(int msgId, Uri audioUri) {
@@ -198,6 +264,14 @@ public class AudioPlaybackViewModel extends ViewModel {
                            AudioPlaybackState.PlaybackStatus status,
                            long position,
                            long duration) {
+    // Sanitize longs
+    if (position < 0 || position > Integer.MAX_VALUE) {
+      position = 0;
+    }
+    if (duration < 0 || duration > Integer.MAX_VALUE) {
+      duration = 0;
+    }
+
     playbackState.setValue(new AudioPlaybackState(
       msgId, audioUri, status, position, duration
     ));
@@ -238,6 +312,7 @@ public class AudioPlaybackViewModel extends ViewModel {
   @Override
   protected void onCleared() {
     stopUpdateProgress();
+    extractionExecutor.shutdown();
     super.onCleared();
   }
 }

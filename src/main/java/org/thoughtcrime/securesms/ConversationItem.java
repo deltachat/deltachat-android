@@ -493,12 +493,9 @@ public class ConversationItem extends BaseConversationItem
       if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
       if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
 
-      //noinspection ConstantConditions
-      int duration = messageRecord.getDuration();
-
       audioViewStub.get().setPlaybackViewModel(playbackViewModel);
       audioViewStub.get().setOnActionListener(audioPlayPauseListener);
-      audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
+      audioViewStub.get().setAudio(new AudioSlide(context, messageRecord));
       audioViewStub.get().setOnClickListener(passthroughClickListener);
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
       audioViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);

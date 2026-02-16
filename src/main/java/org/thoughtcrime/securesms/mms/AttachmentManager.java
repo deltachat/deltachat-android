@@ -285,7 +285,7 @@ public class AttachmentManager {
 
           if (slide.hasAudio()) {
             audioView.setPlaybackViewModel(playbackViewModel);
-            audioView.setAudio((AudioSlide) slide, 0);
+            audioView.setAudio((AudioSlide) slide);
             removableMediaView.display(audioView, false);
             removableMediaView.addRemoveClickListener(v -> {
               playbackViewModel.stop(audioView.getMsgId(), audioView.getAudioUri());
