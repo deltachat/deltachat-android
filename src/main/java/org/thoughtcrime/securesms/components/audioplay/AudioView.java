@@ -22,6 +22,8 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.util.DateUtils;
 
+import java.util.Map;
+
 
 public class AudioView extends FrameLayout {
 
@@ -39,10 +41,13 @@ public class AudioView extends FrameLayout {
   private final @NonNull View            mask;
   private OnActionListener               listener;
 
-  private int                            msgId;
+  private int                            msgId = -1;
   private Uri                            audioUri;
+  private int                            progress;
+  private int                            duration;
   private AudioPlaybackViewModel         viewModel;
   private final Observer<AudioPlaybackState> stateObserver = this::onPlaybackStateChanged;
+  private final Observer<Map<Integer, Long>> durationObserver = this::onDurationsChanged;
   private boolean                        isPlaying;
 
   public AudioView(Context context) {
@@ -63,7 +68,7 @@ public class AudioView extends FrameLayout {
     this.title            = findViewById(R.id.title);
     this.mask             = findViewById(R.id.interception_mask);
 
-    this.timestamp.setText("00:00");
+    updateTimestamps();
 
     // Load drawables once
     this.playToPauseDrawable = AnimatedVectorDrawableCompat.create(
@@ -94,6 +99,9 @@ public class AudioView extends FrameLayout {
     if (viewModel != null) {
       viewModel.getPlaybackState().removeObserver(stateObserver);
       viewModel.getPlaybackState().observeForever(stateObserver);
+
+      viewModel.getDurations().removeObserver(durationObserver);
+      viewModel.getDurations().observeForever(durationObserver);
     }
 
     playPauseButton.setOnClickListener(v -> {
@@ -125,7 +133,8 @@ public class AudioView extends FrameLayout {
       @Override
       public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         if (fromUser) {
-          timestamp.setText(DateUtils.getFormatedDuration(progress));
+          AudioView.this.progress = progress;
+          updateTimestamps();
         }
       }
 
@@ -153,6 +162,7 @@ public class AudioView extends FrameLayout {
   protected void onDetachedFromWindow() {
     if (viewModel != null) {
       viewModel.getPlaybackState().removeObserver(stateObserver);
+      viewModel.getDurations().removeObserver(durationObserver);
     }
     if (playToPauseDrawable != null) {
       playToPauseDrawable.clearAnimationCallbacks();
@@ -166,6 +176,7 @@ public class AudioView extends FrameLayout {
   public void setPlaybackViewModel(AudioPlaybackViewModel viewModel) {
     if (this.viewModel != null) {
       this.viewModel.getPlaybackState().removeObserver(stateObserver);
+      this.viewModel.getDurations().removeObserver(durationObserver);
     }
 
     // ViewModel is used directly for simplicity, since there is no reuse yet
@@ -173,10 +184,11 @@ public class AudioView extends FrameLayout {
 
     if (viewModel != null) {
       viewModel.getPlaybackState().observeForever(stateObserver);
+      viewModel.getDurations().observeForever(durationObserver);
     }
   }
 
-  public void setAudio(final @NonNull AudioSlide audio, int duration)
+  public void setAudio(final @NonNull AudioSlide audio)
   {
     msgId = audio.getDcMsgId();
     audioUri = audio.getUri();
@@ -184,7 +196,15 @@ public class AudioView extends FrameLayout {
 
     seekBar.setEnabled(true);
     seekBar.setProgress(0);
-    timestamp.setText(DateUtils.getFormatedDuration(duration));
+
+    // Get duration
+    Map<Integer, Long> durations = viewModel.getDurations().getValue();
+    if (durations != null && durations.containsKey(msgId)) {
+      this.duration = Math.toIntExact(durations.get(msgId));
+      updateTimestamps();
+    } else {
+      viewModel.ensureDurationLoaded(getContext(), msgId, audioUri);
+    }
 
     if(audio.asAttachment().isVoiceNote() || !audio.getFileName().isPresent()) {
       title.setVisibility(View.GONE);
@@ -243,13 +263,15 @@ public class AudioView extends FrameLayout {
   }
 
   private void updateProgress(AudioPlaybackState state) {
-    int duration = (int) state.getDuration();
-    int position = (int) state.getCurrentPosition();
+    int duration = Math.toIntExact(state.getDuration());
+    int position = Math.toIntExact(state.getCurrentPosition());
 
     if (duration > 0) {
-      seekBar.setMax(duration);
+      this.progress = position;
+      this.duration = duration;
+      updateTimestamps();
       seekBar.setProgress(position);
-      timestamp.setText(DateUtils.getFormatedDuration(position));
+      seekBar.setMax(duration);
     }
   }
 
@@ -314,5 +336,29 @@ public class AudioView extends FrameLayout {
         // No special handling yet
         break;
     }
+  }
+
+  private void onDurationsChanged(Map<Integer, Long> durations) {
+    AudioPlaybackState state = viewModel.getPlaybackState().getValue();
+
+    // When there is no playback happening, msgId can be -1 and audioUri is null
+    if (state != null &&
+      msgId >= 0 && msgId == state.getMsgId() &&
+      audioUri != null && audioUri.equals(state.getAudioUri())) {
+      return;   // Is playing this message
+    }
+
+    Long duration = durations.get(msgId);
+    if (duration != null && seekBar.getMax() <= 100) {
+      this.duration = Math.toIntExact(duration);
+      updateTimestamps();
+      seekBar.setMax(this.duration);
+    }
+  }
+
+  private void updateTimestamps() {
+    String progressText = DateUtils.getFormatedDuration(progress);
+    String durationText = DateUtils.getFormatedDuration(duration);
+    timestamp.setText(String.format("%s / %s", progressText, durationText));
   }
 }

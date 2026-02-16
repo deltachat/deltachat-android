@@ -104,7 +104,7 @@ class AllMediaDocumentsAdapter extends StickyHeaderGridAdapter {
 
       viewHolder.audioView.setVisibility(View.VISIBLE);
       viewHolder.audioView.setPlaybackViewModel(playbackViewModel);
-      viewHolder.audioView.setAudio((AudioSlide)slide, dcMsg.getDuration());
+      viewHolder.audioView.setAudio((AudioSlide)slide);
       viewHolder.audioView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
       viewHolder.audioView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
       viewHolder.audioView.disablePlayer(!selected.isEmpty());
