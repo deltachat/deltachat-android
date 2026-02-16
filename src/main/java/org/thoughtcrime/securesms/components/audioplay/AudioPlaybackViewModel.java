@@ -264,6 +264,14 @@ public class AudioPlaybackViewModel extends ViewModel {
                            AudioPlaybackState.PlaybackStatus status,
                            long position,
                            long duration) {
+    // Sanitize longs
+    if (position < 0 || position > Integer.MAX_VALUE) {
+      position = 0;
+    }
+    if (duration < 0 || duration > Integer.MAX_VALUE) {
+      duration = 0;
+    }
+
     playbackState.setValue(new AudioPlaybackState(
       msgId, audioUri, status, position, duration
     ));
