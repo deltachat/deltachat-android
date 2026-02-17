@@ -51,7 +51,9 @@
     <string name="archive">Arkiver</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Fjern fra arkiv</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Demp</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Dempet</string>
     <string name="ephemeral_messages">Forsvinnende meldinger</string>
     <string name="ephemeral_messages_hint">Disse innstillingene gjelder alle deltakerne som bruker Delta Chat. Men de kan kopiere, lagre og videresende meldinger eller bruke annen e-postklient.</string>
@@ -179,6 +181,7 @@
     <string name="add_stickers_instructions">For å legge til merker, trykk på "Åpne merkemappe", lag en undermappe for merkepakken, og dra bilder og merkefiler dit</string>
     <string name="open_sticker_folder">Åpne merkemappe</string>
     <string name="images">Bilder</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Lyd</string>
     <string name="voice_message">Stemmemelding</string>
     <string name="forwarded">Videresendt</string>
@@ -215,6 +218,7 @@
     <string name="games">Spill</string>
     <string name="tools">Verktøy</string>
     <string name="app_size">Størrelse</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Publisert</string>
     <string name="add_to_chat">Legg til Chat</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -532,6 +536,7 @@
     <string name="pref_your_name">Mitt navn</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Signaturtekst</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Send med \"Enter\"</string>
     <string name="pref_vibrate">Vibrer</string>
     <string name="pref_screen_security">Skjermsikkerhet</string>

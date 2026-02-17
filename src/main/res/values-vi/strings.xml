@@ -40,6 +40,7 @@
     <string name="archive">Lưu trữ</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Hủy lưu trữ</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Tắt tiếng</string>
     <string name="ephemeral_messages">Tin nhắn biến mất</string>
     <string name="ephemeral_messages_hint">Áp dụng cho tất cả thành viên của cuộc trò chuyện này nếu họ sử dụng Delta Chat; họ vẫn có thể sao chép, lưu và chuyển tiếp thư hoặc sử dụng các ứng dụng e-mail khác.</string>
@@ -138,6 +139,7 @@
     <string name="add_stickers_instructions">Để thêm nhãn dán, hãy nhấn vào "Mở thư mục nhãn dán", tạo thư mục con cho gói nhãn dán của bạn rồi kéo tệp hình ảnh và nhãn dán vào đó</string>
     <string name="open_sticker_folder">Mở thư mục nhãn dán</string>
     <string name="images">Hình ảnh</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Âm thanh</string>
     <string name="voice_message">Tin nhắn thoại</string>
     <string name="forwarded">Đã chuyển tiếp</string>
@@ -519,6 +521,7 @@
     <string name="pref_your_name">Tên của bạn</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Văn bản chữ ký</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Nhập khóa gửi</string>
     <string name="pref_enter_sends_explain">Nhấn phím Enter sẽ gửi tin nhắn văn bản</string>
     <string name="pref_outgoing_media_quality">Chất lượng phương tiện truyền thông đi</string>

@@ -51,7 +51,9 @@
     <string name="archive">Archivia</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Ripristina</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Silenzia</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Silenziato</string>
     <string name="ephemeral_messages">Messaggi a Scomparsa</string>
     <string name="ephemeral_messages_hint">Si applica a tutti i membri di questa chat; possono comunque copiare, salvare e inoltrare i messaggi.</string>
@@ -190,6 +192,7 @@
     <string name="add_stickers_instructions">Per aggiungere adesivi, tocca \"Apri Cartella Adesivi\", crea una sottocartella per il tuo pacchetto di adesivi e trascina lì i file di immagini e adesivi</string>
     <string name="open_sticker_folder">Apri Cartella Adesivi</string>
     <string name="images">Immagini</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
     <string name="voice_message">Messaggio Vocale</string>
     <string name="forwarded">Inoltrato</string>
@@ -226,6 +229,7 @@
     <string name="games">Giochi</string>
     <string name="tools">Strumenti</string>
     <string name="app_size">Dimensione</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Pubblicato</string>
     <string name="add_to_chat">Aggiungi alla Chat</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -741,6 +745,7 @@
     <string name="pref_your_name">Il tuo Nome</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Biografia</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Spedisci con Invio</string>
     <string name="pref_enter_sends_explain">Premendo il tasto Invio invierà i messaggi</string>
     <string name="pref_outgoing_media_quality">Qualità Media in Uscita</string>
@@ -829,6 +834,7 @@
     <string name="n_bytes_message">%1$s messaggio</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Scaricamento disponibile massimo fino a %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Seleziona il Profilo</string>
     <string name="profile_image_select">Seleziona Immagine Profilo</string>
     <string name="select_your_new_profile_image">Seleziona la tua nuova immagine profilo</string>

@@ -31,6 +31,7 @@
     <string name="archive">ئەرشیڤ کردن</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">دەرهێنان لە ئەرشیڤ</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">بێدەنگ کردن</string>
     <string name="ephemeral_messages">ئەو پەیامانەی بزر دەبن</string>
     <string name="ephemeral_messages_hint">ئەم ڕێکخستنانە بۆ هەموو بەکارهێنەرانی دێڵتا چات دەبن. ئەگەرچی ئەوان دەتوانن پەیامەکان کۆپی بکەن، پاشەکەوتیان بکەن و بڵاویان بکەنەوە یان لە پۆستێکی ئەلیکترۆنی دیکە کەڵک بگرن.</string>
@@ -104,6 +105,7 @@
     <string name="reply_noun">وەڵام دانەوە</string>
     <string name="gif">گیف</string>
     <string name="images">وێنەکان</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">دەنگ</string>
     <string name="voice_message">پەیامی دەنگی</string>
     <string name="forwarded_message">پەیامی هاوبەشکراو</string>
@@ -346,6 +348,7 @@
     <string name="pref_your_name">ناو</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">دەقی واژۆ</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">کلیلی \"ئینتەر\" بنێرێت</string>
     <string name="pref_enter_sends_explain">دەستنان بە کلیلی \"ئینتەر\"دا، پەیامەکان دەنێرێت.</string>
     <string name="pref_outgoing_media_quality">چۆنێتی ڕەنگاڵە هەناردنییەکان</string>

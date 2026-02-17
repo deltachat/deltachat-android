@@ -2,12 +2,6 @@
 
 ## Unreleased
 
-* Add context menu in long-pressing relays items instead of showing buttons
-* Enhanced video player UI
-
-## v2.42.0
-2026-02
-
 * Improve switch speed when changing profiles
 * Allow to switch profile when sharing or forwarding
 * Display message views count for channel owners
@@ -22,6 +16,8 @@
 * Show hint for empty contact search results
 * Add background playing for voice messages and other audio files
 * Allow scanning Invitation Code when creating a new profile
+* Add context menu in long-pressing relays items instead of showing buttons
+* Enhanced video player UI
 * Fix: Show dialog if pasted QR codes are invalid
 * Fix: Refresh chat list when returning from conversation if selected profile changed
 * Fix: Update menu when using "select all" in contact selection
@@ -30,9 +26,10 @@
 * Fix multi-device seen messages synchronization when using multiple relays
 * Fix mailto handling
 * Fix layout problems inside in-chat apps
+* Fix real-time for in-chat apps that need it
 * Avoid crash when the app is minimized with profile switcher or reactions dialogs open
 * Remove "trash icon" option from contact selection list when adding members to group
-* Update to core 2.42.0
+* Update to core 2.43.0
 
 ## v2.35.0
 2026-01

@@ -51,7 +51,9 @@
     <string name="archive">بایگانی</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">خروج از بایگانی</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">سکوت</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">بی‌صدا</string>
     <string name="ephemeral_messages">پیام‌های ناپدید شونده</string>
     <string name="ephemeral_messages_hint">شامل همه کسانی که در این گفتگو حضور دارند می‌شود. آن‌ها همچنان می‌توانند پیام‌ها را هدایت و ذخیره کرده یا از آن‌ها رونوشت بگیرند. </string>
@@ -179,6 +181,7 @@
     <string name="add_stickers_instructions">برای اضافه کردن برچسب روی «بازکردن پوشهٔ برچسب» بزنید، یک زیرپوشه برای دستهٔ برچسب خود درست کنید و برچسب‌ها را به آن‌جا بکشید</string>
     <string name="open_sticker_folder">بازکردن پوشه استیکر</string>
     <string name="images">تصاویر</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">صدا</string>
     <string name="voice_message">پیام صوتی</string>
     <string name="forwarded">هدایت</string>
@@ -215,6 +218,7 @@
     <string name="games">بازی‌ها</string>
     <string name="tools">ابزار</string>
     <string name="app_size">اندازه</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">انتشار</string>
     <string name="add_to_chat">افزودن به گفتگو</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -729,6 +733,7 @@
     <string name="pref_your_name">اسم شما</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">متن امضا</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">ورود کلیدهای ارسال</string>
     <string name="pref_enter_sends_explain">فشاردادن کلید اینتر پیام‌ها را ارسال می‌کند</string>
     <string name="pref_outgoing_media_quality">کیفیت رسانه خروجی</string>
@@ -817,6 +822,7 @@
     <string name="n_bytes_message">پیام %1$s </string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">سقف دانلود تا %1$s فعال خواهد بود</string>
+    <!-- deprecated -->
     <string name="select_profile">انتخاب نمایه</string>
     <string name="profile_image_select">انتخاب تصویر نمایه</string>
     <string name="select_your_new_profile_image">تصویر نمایهٔ جدیدتان را برگزینید</string>

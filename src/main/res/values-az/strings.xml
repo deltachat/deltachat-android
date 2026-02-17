@@ -26,6 +26,7 @@
     <string name="archive">Arxivləşmə</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Arxivdən çıxarma</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Səssiz</string>
     <string name="ephemeral_messages">Yox olan mesajlar</string>
     <string name="save">Saxla</string>
@@ -87,6 +88,7 @@
     <string name="image">Şəkil</string>
     <string name="gif">Gif</string>
     <string name="images">Şəkillər</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
     <string name="voice_message">Səsli mesaj</string>
     <string name="forwarded_message">Köçürülmüş mesaj</string>
@@ -278,6 +280,7 @@
     <string name="pref_your_name">Adın</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Yazını mətni</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter açarı ilə göndərmək</string>
     <string name="pref_enter_sends_explain">Enter düyməsini basaraq mətn mesajları göndərəcək</string>
     <string name="pref_outgoing_media_quality">Göndərilən medianın keyfiyyatı</string>
