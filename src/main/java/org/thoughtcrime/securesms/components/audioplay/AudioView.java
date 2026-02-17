@@ -195,7 +195,6 @@ public class AudioView extends FrameLayout {
     playPauseButton.setImageDrawable(playDrawable);
 
     seekBar.setEnabled(true);
-    seekBar.setProgress(0);
 
     // Get duration
     Map<Integer, Long> durations = viewModel.getDurations().getValue();
@@ -270,8 +269,6 @@ public class AudioView extends FrameLayout {
       this.progress = position;
       this.duration = duration;
       updateTimestamps();
-      seekBar.setProgress(position);
-      seekBar.setMax(duration);
     }
   }
 
@@ -316,6 +313,10 @@ public class AudioView extends FrameLayout {
       updateUIForPlaybackState(state);
     } else {
       togglePlayPause(false);
+
+      // Also clear progress to avoid confusion
+      this.progress = 0;
+      updateTimestamps();
     }
   }
 
@@ -360,5 +361,7 @@ public class AudioView extends FrameLayout {
     String progressText = DateUtils.getFormatedDuration(progress);
     String durationText = DateUtils.getFormatedDuration(duration);
     timestamp.setText(String.format("%s / %s", progressText, durationText));
+    seekBar.setProgress(progress);
+    seekBar.setMax(duration);
   }
 }
