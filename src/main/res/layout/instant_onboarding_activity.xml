@@ -42,6 +42,17 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/invitation_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="start"
+        android:visibility="gone"
+        android:textColor="@color/gray50" />
+
+    <TextView
         android:id="@+id/information_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

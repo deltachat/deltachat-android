@@ -50,6 +50,7 @@
     <string name="archive">Archivovať</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Zrušiť archiváciu</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Stíšiť</string>
     <string name="ephemeral_messages">Miznúce správy</string>
     <string name="ephemeral_messages_hint">Tieto nastavenia platia pre všetkých účastníkov používajúcich Delta Chat. Môžu však kopírovať, ukladať a preposielať správy alebo používať iných e-mailových klientov.</string>
@@ -184,6 +185,7 @@
     <string name="add_stickers_instructions">Pre pridanie nálepiek, ťuknite na \"Otvoriť priečinok s nálepkami\", vytvorte priečinok pre svoju sadu nálepiek a prekopírujte doň nálepky</string>
     <string name="open_sticker_folder">Otvoriť priečinok s nálepkami</string>
     <string name="images">Snímky</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Zvuk</string>
     <string name="voice_message">Hlasová správa</string>
     <string name="forwarded">Preposlané</string>
@@ -655,6 +657,7 @@ Ak chcete pokračovať, aktualizujte toto zariadenie na najnovšiu verziu Delta 
     <string name="pref_your_name">Vaše meno</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Text v podpise</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Zadajte odoslanie kľúča</string>
     <string name="pref_enter_sends_explain">Textové správy sa odošlú po stlačení Enteru</string>
     <string name="pref_outgoing_media_quality">Kvalita odchádzajúcich médií</string>
@@ -735,6 +738,7 @@ Ak chcete pokračovať, aktualizujte toto zariadenie na najnovšiu verziu Delta 
     <string name="n_bytes_message">%1$s správa</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Maximálny počet stiahnutí k dispozícii do %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Vybrať účet</string>
     <string name="profile_image_select">Vyberte profilový obrázok</string>
     <string name="select_your_new_profile_image">Vyberte svoj nový profilový obrázok</string>

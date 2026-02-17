@@ -702,8 +702,13 @@ public class Rpc {
    * <p>
    * See also [`Self::get_chat_description`] / `getChatDescription()`.
    */
+<<<<<<< adb/chat-description
   public void setChatDescription(Integer accountId, Integer chatId, String newDescription) throws RpcException {
     transport.call("set_chat_description", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(newDescription));
+=======
+  public void setChatDescription(Integer accountId, Integer chatId, String description) throws RpcException {
+    transport.call("set_chat_description", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(description));
+>>>>>>> main
   }
 
   /**

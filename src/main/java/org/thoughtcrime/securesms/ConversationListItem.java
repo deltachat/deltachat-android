@@ -268,12 +268,6 @@ public class ConversationListItem extends RelativeLayout
       } else {
         deliveryStatusIndicator.setNone();
       }
-
-      if (state == DcMsg.DC_STATE_OUT_FAILED) {
-        deliveryStatusIndicator.setTint(Color.RED);
-      } else {
-        deliveryStatusIndicator.resetTint();
-      }
     }
 
     int unreadCount = thread.getUnreadCount();

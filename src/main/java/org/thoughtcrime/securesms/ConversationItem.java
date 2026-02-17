@@ -41,8 +41,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
-import org.thoughtcrime.securesms.components.AudioView;
+import org.thoughtcrime.securesms.calls.CallUtil;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.BorderlessImageView;
 import org.thoughtcrime.securesms.components.CallItemView;
@@ -52,6 +51,8 @@ import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.QuoteView;
 import org.thoughtcrime.securesms.components.VcardView;
 import org.thoughtcrime.securesms.components.WebxdcView;
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
+import org.thoughtcrime.securesms.components.audioplay.AudioView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
@@ -70,7 +71,6 @@ import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
-import org.thoughtcrime.securesms.calls.CallUtil;
 
 import java.util.List;
 import java.util.Set;
@@ -180,9 +180,11 @@ public class ConversationItem extends BaseConversationItem
                    @NonNull GlideRequests           glideRequests,
                    @NonNull Set<DcMsg>              batchSelected,
                    @NonNull Recipient               recipients,
-                   boolean                          pulseHighlight)
+                   boolean                          pulseHighlight,
+                   @Nullable AudioPlaybackViewModel playbackViewModel,
+                   AudioView.OnActionListener       audioPlayPauseListener)
   {
-    bind(messageRecord, dcChat, batchSelected, pulseHighlight, recipients);
+    bindPartial(messageRecord, dcChat, batchSelected, pulseHighlight, recipients);
     this.glideRequests          = glideRequests;
     this.showSender             = ((dcChat.isMultiUser() || dcChat.isSelfTalk()) && !messageRecord.isOutgoing()) || messageRecord.getOverrideSenderName() != null;
 
@@ -203,7 +205,7 @@ public class ConversationItem extends BaseConversationItem
 
     setGutterSizes(messageRecord, showSender);
     setMessageShape(messageRecord);
-    setMediaAttributes(messageRecord, showSender);
+    setMediaAttributes(messageRecord, showSender, playbackViewModel, audioPlayPauseListener);
     setBodyText(messageRecord);
     setBubbleState(messageRecord);
     setContactPhoto();
@@ -478,24 +480,10 @@ public class ConversationItem extends BaseConversationItem
   }
 
   private void setMediaAttributes(@NonNull DcMsg           messageRecord,
-                                           boolean         showSender)
+                                  boolean                  showSender,
+                                  AudioPlaybackViewModel   playbackViewModel,
+                                  AudioView.OnActionListener audioPlayPauseListener)
   {
-    class SetDurationListener implements AudioSlidePlayer.Listener {
-      @Override
-      public void onStart() {}
-
-      @Override
-      public void onStop() {}
-
-      @Override
-      public void onProgress(AudioSlide slide, double progress, long millis) {}
-
-      @Override
-      public void onReceivedDuration(int millis) {
-        messageRecord.lateFilingMediaSize(0,0, millis);
-        audioViewStub.get().setDuration(millis);
-      }
-    }
     if (hasAudio(messageRecord)) {
       audioViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
@@ -505,15 +493,9 @@ public class ConversationItem extends BaseConversationItem
       if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
       if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
 
-      //noinspection ConstantConditions
-      int duration = messageRecord.getDuration();
-      if (duration == 0) {
-        AudioSlide audio = new AudioSlide(context, messageRecord);
-        AudioSlidePlayer audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, new SetDurationListener());
-        audioSlidePlayer.requestDuration();
-      }
-
-      audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
+      audioViewStub.get().setPlaybackViewModel(playbackViewModel);
+      audioViewStub.get().setOnActionListener(audioPlayPauseListener);
+      audioViewStub.get().setAudio(new AudioSlide(context, messageRecord));
       audioViewStub.get().setOnClickListener(passthroughClickListener);
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
       audioViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);

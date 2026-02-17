@@ -37,6 +37,7 @@
     <string name="archive">Arhivare</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Dezarhivare</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Silențios</string>
     <string name="ephemeral_messages">Mesaje dispărute</string>
     <string name="ephemeral_messages_hint">Se aplică tuturor membrilor acestui chat dacă folosesc Delta Chat; aceștia pot în continuare să copieze, să salveze și să redirecționeze mesajele sau să utilizeze alți clienți de e-mail.</string>
@@ -146,6 +147,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Abțibild</string>
     <string name="images">Imagini</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
     <string name="voice_message">Mesaj vocal</string>
     <string name="forwarded">Redirecționat</string>
@@ -518,6 +520,7 @@
     <string name="pref_your_name">Numele dumneavoastră</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Semnătură Text</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Tasta Enter trimite</string>
     <string name="pref_enter_sends_explain">Apăsarea tastei Enter va trimite mesaje text</string>
     <string name="pref_outgoing_media_quality">Calitatea Mediilor de Ieșire</string>

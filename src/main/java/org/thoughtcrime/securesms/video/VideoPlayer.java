@@ -36,7 +36,7 @@ import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.ProgressiveMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
-import com.google.android.exoplayer2.ui.PlayerView;
+import com.google.android.exoplayer2.ui.StyledPlayerView;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
@@ -48,7 +48,7 @@ import org.thoughtcrime.securesms.video.exo.AttachmentDataSourceFactory;
 
 public class VideoPlayer extends FrameLayout {
 
-  @Nullable private final PlayerView exoView;
+  @Nullable private final StyledPlayerView exoView;
 
   @Nullable private       SimpleExoPlayer     exoPlayer;
   @Nullable private       Window              window;

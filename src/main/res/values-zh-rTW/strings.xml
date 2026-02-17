@@ -51,7 +51,9 @@
     <string name="archive">封存</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">取消封存</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">靜音</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">勿擾</string>
     <string name="ephemeral_messages">自動銷毀訊息</string>
     <string name="ephemeral_messages_hint">這些設定將會套用在所有使用 Delta Chat 的聊天成員上。但他們依然可以複製、儲存和轉發訊息，或使用其他的電子郵件客戶端。</string>
@@ -160,6 +162,7 @@
     <string name="add_stickers_instructions">要添加貼圖，請點擊「打開貼圖資料夾」 ，為您的貼圖包創建一個子資料夾，然後將圖像和貼圖檔拖拽到那裡</string>
     <string name="open_sticker_folder">開啟貼圖資料夾</string>
     <string name="images">圖片</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">音訊</string>
     <string name="voice_message">語音訊息</string>
     <string name="forwarded">已轉發</string>
@@ -196,6 +199,7 @@
     <string name="games">游戲</string>
     <string name="tools">工具</string>
     <string name="app_size">尺寸大小</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">已發佈</string>
     <string name="add_to_chat">添加到聊天</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -640,6 +644,7 @@
     <string name="pref_your_name">你的名字</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">簽名檔</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">換行鍵送出訊息</string>
     <string name="pref_enter_sends_explain">按下換行鍵就送出訊息</string>
     <string name="pref_outgoing_media_quality">傳送的媒體品質</string>
@@ -722,6 +727,7 @@
     <string name="n_bytes_message">%1$s 訊息</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">下載有效期至%1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">選擇賬戶</string>
     <string name="profile_image_select">選擇大頭貼</string>
     <string name="select_your_new_profile_image">選擇新的大頭貼</string>
