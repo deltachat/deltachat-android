@@ -51,7 +51,9 @@
     <string name="archive">Архівувати</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Розархівувати</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Вимкнути сповіщення</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Вимкнено</string>
     <string name="ephemeral_messages">Зникаючі повідомлення</string>
     <string name="ephemeral_messages_hint">Застосовується до всіх учасників цього чату; вони все ще можуть копіювати, зберігати та пересилати повідомлення.</string>
@@ -201,7 +203,8 @@
     <string name="add_stickers_instructions">Аби додати стікери, торкніться \"Відкрити директорію наклейок\", створіть субдерикторію для вашого стікерпаку та перетягніть туди зображення і файли стікерів</string>
     <string name="open_sticker_folder">Відкрити директорію наклейок</string>
     <string name="images">Зображення</string>
-    <string name="audio">Авдійо</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
+    <string name="audio">Аудіо</string>
     <string name="voice_message">Голосове повідомлення</string>
     <string name="forwarded">Переслане</string>
     <string name="forwarded_message">Переслане повідомлення</string>
@@ -237,6 +240,7 @@
     <string name="games">Ігри</string>
     <string name="tools">Інструменти</string>
     <string name="app_size">Розмір</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Опубліковано</string>
     <string name="add_to_chat">Додати до чату</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -752,6 +756,7 @@
     <string name="pref_your_name">Ваше ім\'я</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Текст підпису</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Відправляти клявішею   Enter</string>
     <string name="pref_enter_sends_explain">Натискаючи клявішу   Enter відправлятимете текстові повідомлення</string>
     <string name="pref_outgoing_media_quality">Якість вихідних медіа файлів</string>
@@ -840,6 +845,7 @@
     <string name="n_bytes_message">Повідомлення розміром %1$s\'</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Доступний для завантаження максимум до %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Вибрати Профіль</string>
     <string name="profile_image_select">Вибрати зображення профілю</string>
     <string name="select_your_new_profile_image">Вибрати ваше нове зображення профілю</string>

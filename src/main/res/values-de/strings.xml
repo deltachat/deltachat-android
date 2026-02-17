@@ -51,7 +51,9 @@
     <string name="archive">Archivieren</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Dearchivieren</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Stumm</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Stumm</string>
     <string name="ephemeral_messages">Verschwindende Nachrichten</string>
     <string name="ephemeral_messages_hint">Gilt für alle Gruppenmitglieder, die Delta Chat verwenden. Nachrichten können kopiert, gespeichert oder weitergeleitet werden.</string>
@@ -179,6 +181,7 @@
     <string name="add_stickers_instructions">Um Sticker hinzuzufügen, tippe auf \"Sticker-Ordner öffnen\", erstelle einen Unterordner für dein Sticker-Paket und ziehe Bild- und Sticker-Dateien dorthin.</string>
     <string name="open_sticker_folder">Sticker-Ordner öffnen</string>
     <string name="images">Bilder</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
     <string name="voice_message">Sprachnachricht</string>
     <string name="forwarded">Weitergeleitet</string>
@@ -215,6 +218,7 @@
     <string name="games">Spiele</string>
     <string name="tools">Tools</string>
     <string name="app_size">Größe</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Veröffentlicht</string>
     <string name="add_to_chat">Zum Chat hinzufügen</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -724,6 +728,7 @@
     <string name="pref_your_name">Mein Name</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Signatur</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter-Taste sendet</string>
     <string name="pref_enter_sends_explain">Durch Drücken der Eingabetaste werden Textnachrichten gesendet.</string>
     <string name="pref_outgoing_media_quality">Medienqualität beim Senden</string>
@@ -812,6 +817,7 @@
     <string name="n_bytes_message">%1$s Nachricht</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Download max. verfügbar bis %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Profil auswählen</string>
     <string name="profile_image_select">Profilbild auswählen</string>
     <string name="select_your_new_profile_image">Wählen dein Profilbild aus</string>

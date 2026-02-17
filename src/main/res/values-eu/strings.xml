@@ -51,7 +51,9 @@
     <string name="archive">Artxibatu</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Berreskuratu artxibotik</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Isilarazi</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Isilarazia</string>
     <string name="ephemeral_messages">Mezuen desagerpena</string>
     <string name="ephemeral_messages_hint">Txat honetako kide guztiei aplikatzen zaie; mezuak kopiatu, gorde eta birbidali ahal izango dituzte oraindik ere.</string>
@@ -179,6 +181,7 @@
     <string name="add_stickers_instructions">Stickerretara gehitzeko, klik egin \"Ireki sticker karpeta\"  aukeran, sortu azpikarpeta bat zure sticker multzoarentzat eta arrastatu irudi eta sticker fitxategiak bertara.</string>
     <string name="open_sticker_folder">Ireki sticker karpeta</string>
     <string name="images">Irudiak</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audioa</string>
     <string name="voice_message">Ahots-mezua</string>
     <string name="forwarded">Birbidalia</string>
@@ -215,6 +218,7 @@
     <string name="games">Jokoak</string>
     <string name="tools">Tresnak</string>
     <string name="app_size">Tamaina</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Argitaratua</string>
     <string name="add_to_chat">Gehitu txatera</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -560,7 +564,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Gehitu bigarren gailua</string>
     <string name="multidevice_same_network_hint">Ziurtatu gailu biak Wi-Fi edo sare berera konektatuta daudela.</string>
-    <string name="multidevice_this_creates_a_qr_code">Honek QR kode bat sortuko du, bigarren gailuak eskaneatu eta profila kopiatu dezan.\n\nZiurtatu nahi ez duzun begiralerik edo kamerarik ezin duela ondorengo pantaila ikusi.</string>
+    <string name="multidevice_this_creates_a_qr_code">Honek QR kode bat sortuko du, bigarren gailuak eskaneatu eta profila kopiatu dezan.\n\nZiurtatu zuk nahi ez duzun inork ez ezein kamerak ezin duela ondorengo pantaila ikusi.</string>
     <string name="multidevice_install_dc_on_other_device">Instalatu Delta Chat zure beste gailuan (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Abiarazi Delta Chat, sakatu “Badut profil bat / Gehitu bigarren gailu gisa” eta eskaneatu hemen agertzen den kodea.</string>
@@ -586,7 +590,7 @@
     <string name="outgoing_messages">Irteerako mezuak</string>
     <!-- deprecated -->
     <string name="storage_on_domain">%1$s(e)ko biltegiratzea</string>
-    <string name="connectivity">Konektagarritasuna</string>
+    <string name="connectivity">Konexioa</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Konektatu gabe</string>
     <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
@@ -601,7 +605,7 @@
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Mezuak</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
-    <string name="part_of_total_used">%2$s(e)tik %1$s erabilita</string>
+    <string name="part_of_total_used">%2$setik %1$s erabilita</string>
 
 
     <!-- welcome and login -->
@@ -647,19 +651,19 @@
     <string name="login_smtp_port">SMTP ataka</string>
     <string name="login_smtp_security">SMTP segurtasuna</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
-    <string name="proxy_settings">Proxy-a</string>
-    <string name="proxy_use_proxy">Erabili proxy-a</string>
-    <string name="proxy_add">Gehitu proxy-a</string>
+    <string name="proxy_settings">Proxya</string>
+    <string name="proxy_use_proxy">Erabili proxya</string>
+    <string name="proxy_add">Gehitu proxya</string>
     <string name="proxy_add_explain">Onartutako proxy motak: HTTP(S), SOCKS5 eta Shadowsocks.</string>
-    <string name="proxy_add_url_hint">Sartu proxy-aren esteka hemen</string>
+    <string name="proxy_add_url_hint">Sartu proxyaren esteka hemen</string>
     <string name="proxy_invalid">Proxy baliogabea edo ez-bateragarria</string>
-    <string name="proxy_list_header">Gordetako proxy-ak</string>
-    <string name="proxy_delete">Ezabatu proxy-a</string>
+    <string name="proxy_list_header">Gordetako proxyak</string>
+    <string name="proxy_delete">Ezabatu proxya</string>
     <string name="proxy_delete_explain">Ziur zaude \"%1$s\" ezabatu nahi duzula?</string>
     <string name="proxy_use_proxy_confirm">\"%1$s\" proxia erabili nahi duzu?</string>
     <string name="proxy_share_explain">Zure lagunek QR kodea eskaneatuta gehitu dezakete proxy hau.</string>
     <string name="proxy_share_link">Partekatu esteka</string>
-    <string name="proxy_enabled">Proxy-a gaituta</string>
+    <string name="proxy_enabled">Proxya gaitu da</string>
     <string name="proxy_enabled_hint">Proxy bat erabiltzen ari zara. Konektatzeko arazoak badituzu, probatu beste proxy bat.</string>
     <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
     <string name="transports">Erreleak</string>
@@ -677,9 +681,9 @@
     <string name="login_error_server">Sartu baliozko zerbitzari / IP helbide bat</string>
     <string name="login_error_port">Sartu baliozko ataka bat  (1–65535)</string>
     <string name="login_error_required_fields">Sartu baliozko e-mail helbidea eta pasahitza</string>
-    <string name="import_backup_title">Inportatu babes-kopia</string>
-    <string name="import_backup_ask">Babes-kopia aurkitu da:  \"%1$s\".\n\nInportatu nahi duzu eta bertako datu eta ezarpenak erabili?</string>
-    <string name="import_backup_no_backup_found">Ez da babes-kopiarik aurkitu.\n\nKopiatu babes-kopia \"%1$s\" karpetan eta saiatu berriro.</string>
+    <string name="import_backup_title">Inportatu babeskopia</string>
+    <string name="import_backup_ask">Babeskopia aurkitu da:  \"%1$s\".\n\nInportatu nahi duzu eta bertako datu eta ezarpenak erabili?</string>
+    <string name="import_backup_no_backup_found">Ez da babeskopiarik aurkitu.\n\nKopiatu babeskopia \"%1$s\" karpetan eta saiatu berriro.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Ezin da \"%1$s\" bezala saioa hasi. Egiaztatu E-mail helbidea eta pasahitza zuzenak diren.</string>
     <!-- TLS certificate checks -->
@@ -724,19 +728,20 @@
     <string name="pref_your_name">Zure izena</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Sinaduraren testua</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter teklarekin bidali</string>
     <string name="pref_enter_sends_explain">Enter tekla sakatzeak mezua bidaliko du</string>
     <string name="pref_outgoing_media_quality">Bidalitako multimediaren kalitatea</string>
     <string name="pref_outgoing_balanced">Orekatua</string>
     <string name="pref_outgoing_worse">Kalitate txarragoa, tamaina txikia</string>
     <string name="pref_vibrate">Bibratu</string>
-    <string name="pref_screen_security">Pantaila segurtasuna</string>
+    <string name="pref_screen_security">Pantaila-segurtasuna</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
-    <string name="pref_screen_security_explain">Eskatu pantaila-argazkiak blokeatzea azkenak zerrendan eta aplikazio barruan.</string>
-    <string name="pref_screen_security_please_restart_hint">Pantailaren segurtasun ezarpenak aplikatzeko berrabiarazi aplikazioa.</string>
+    <string name="pref_screen_security_explain">Eskatu pantaila-argazkiak blokeatzea azkenen zerrendan eta aplikazio barruan.</string>
+    <string name="pref_screen_security_please_restart_hint">Pantailaren segurtasun-ezarpenak aplikatzeko berrabiarazi aplikazioa.</string>
     <string name="pref_notifications">Jakinarazpenak</string>
     <string name="pref_mention_notifications">Aipamenak</string>
-    <string name="pref_mention_notifications_explain">Mutututako taldeetan, jakinarazi zuretzat diren mezuak, hala nola erantzunak edo erreakzioak</string>
+    <string name="pref_mention_notifications_explain">Mutututako taldeetan, jaso zuretzat diren mezuen jakinarazpenak, hala nola erantzunak edo erreakzioak</string>
     <string name="pref_notifications_show">Erakutsi</string>
     <string name="pref_notifications_priority">Lehentasuna</string>
     <string name="pref_notifications_explain">Gaitu sistemaren jakinarazpenak mezu berrientzat</string>
@@ -765,23 +770,23 @@
     <string name="pref_encryption">Zifratua</string>
     <string name="pref_manage_keys">Kudeatu gakoak</string>
     <string name="pref_chats">Txatak</string>
-    <string name="pref_in_chat_sounds">Txat bitarteko soinuak</string>
+    <string name="pref_in_chat_sounds">Txat barruko soinuak</string>
     <string name="pref_view_log">Ikusi egunkaria</string>
     <string name="pref_saved_log">Egunkaria deskargen karpetan gorde da</string>
     <string name="pref_save_log_failed">Huts egin du egunkaria gordetzean</string>
     <string name="pref_log_header">Egunkaria</string>
     <string name="pref_other">Bestelakoa</string>
     <string name="pref_backup">Babeskopia</string>
-    <string name="pref_backup_explain">Egin txaten babes-kopia kanpo biltegian</string>
-    <string name="pref_backup_export_explain">Babes-kopia batek instalazio berri bat ezartzen laguntzen dizu, bai gailu honetan zein beste batean.\n\nBabes-kopiak mezu guztiak, kontaktuak eta txatak, eta zure Autocrypt ezarpena daramatza. Gorde babes-kopiaren fitxategia toki seguruan edo ezabatu ahalik eta lasterren.</string>
+    <string name="pref_backup_explain">Egin txaten babeskopia kanpo biltegian</string>
+    <string name="pref_backup_export_explain">Babeskopia batek instalazio berri bat ezartzen laguntzen dizu, bai gailu honetan zein beste batean.\n\nBabeskopiak mezu guztiak, kontaktuak eta txatak, eta zure Autocrypt ezarpena daramatza. Gorde babeskopiaren fitxategia toki seguruan edo ezabatu ahalik eta lasterren.</string>
     <string name="pref_backup_export_this">Esportatu kontu hau</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Esportatu %1$d kontu guztiak</string>
-    <string name="pref_backup_export_start_button">Hasi babes-kopia</string>
-    <string name="pref_backup_written_to_x">Babes-kopia ongi idatzi da hemen: %1$s</string>
+    <string name="pref_backup_export_start_button">Hasi babeskopia</string>
+    <string name="pref_backup_written_to_x">Babeskopia ongi idatzi da hemen: %1$s</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Atzealdea</string>
-    <string name="pref_background_btn_default">Erabili lehenetsitako irudia</string>
+    <string name="pref_background_btn_default">Erabili irudi lehenetsia</string>
     <string name="pref_background_btn_gallery">Hautatu galeriatik</string>
     <string name="pref_imap_folder_warn_disable_defaults">Aukera hau desaktibatuz gero, egiaztatu zure zerbitzaria eta beste bezeroen konfigurazioa bat datorrela.\n\nBestela agian gauzak ez dabiltza.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
@@ -795,23 +800,24 @@
     <string name="pref_show_emails_accepted_contacts">Onartutako kontaktuena</string>
     <string name="pref_show_emails_all">Denak</string>
     <string name="pref_experimental_features">Ezaugarri esperimentalak</string>
-    <string name="pref_experimental_features_explain">Ezaugarri hauek ezegonkorrak izan daitezke eta aldatu edo kendu egin daitezke.</string>
+    <string name="pref_experimental_features_explain">Baliteke ezaugarri hauek ezegonkorrak izatea eta gerora aldatzea edo kentzea.</string>
     <string name="pref_on_demand_location_streaming">Eskaripeko kokapena zuzenean partekatzea</string>
-    <string name="pref_background_default">Lehenetsitako atzealdea</string>
-    <string name="pref_background_default_color">Lehenetsitako kolorea</string>
+    <string name="pref_background_default">Atzealde lehenetsia</string>
+    <string name="pref_background_default_color">Kolore lehenetsia</string>
     <string name="pref_background_custom_image">Irudi pertsonalizatua</string>
     <string name="pref_background_custom_color">Kolore pertsonalizatua</string>
     <string name="export_aborted">Esportazioa bertan behera geratu da.</string>
     <string name="auto_download_messages">Deskargatu mezuak automatikoki</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
-    <string name="up_to_x">%1$s(e)ra arte</string>
-    <string name="up_to_x_most_worse_quality_images">%1$s(e)ra arte, kalitate txarreneko irudiak</string>
-    <string name="up_to_x_most_balanced_quality_images">%1$s(e)ra arte, kalitate orekatueneko irudiak</string>
+    <string name="up_to_x">%1$s arte</string>
+    <string name="up_to_x_most_worse_quality_images">%1$s arte: kalitate txarreneko irudiak</string>
+    <string name="up_to_x_most_balanced_quality_images">%1$s arte: kalitate orekatueneko irudiak</string>
     <string name="download_failed">Deskargak huts egin du</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s mezu</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Deskargatu eskuragarri dagoen gehienezkoa %1$s arte</string>
+    <!-- deprecated -->
     <string name="select_profile">Aukeratu kontua</string>
     <string name="profile_image_select">Aukeratu abatarra</string>
     <string name="select_your_new_profile_image">Aukeratu zure abatar berria</string>
@@ -866,11 +872,11 @@
     <string name="autodel_confirm">Ulertzen dut, ezabatu mezuk guzti hauek</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Berehala</string>
-    <string name="after_5_minutes">5 minutu pasatutakoan</string>
+    <string name="after_5_minutes">5 minutu eta gero</string>
     <string name="autodel_after_1_hour">Ordubete eta gero</string>
     <string name="autodel_after_1_day">Egun bat eta gero</string>
     <string name="autodel_after_1_week">Aste bat eta gero</string>
-    <string name="after_5_weeks">5 aste pasatutakoan</string>
+    <string name="after_5_weeks">5 aste eta gero</string>
     <string name="autodel_after_1_year">Urtebete eta gero</string>
 
     <!-- system messages -->
@@ -884,11 +890,11 @@
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s(e)k: Taldearen irudia aldatuta</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
-    <string name="member_x_added">%1$s kidea gehituta.</string>
+    <string name="member_x_added">%1$s kidea gehitu da.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
-    <string name="add_member_by_you">Nik: %1$s kidea gehituta</string>
+    <string name="add_member_by_you">Nik: %1$s kidea gehitu dut</string>
     <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
-    <string name="add_member_by_other">%2$s(e)k: %1$s kidea gehituta</string>
+    <string name="add_member_by_other">%2$s(e)k: %1$s kidea gehitu du</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Nik: %1$s kidea kenduta</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
@@ -1095,7 +1101,7 @@
     <string name="unsave">Gorde gabe utzi</string>
     <string name="name_desktop">Izena</string>
     <string name="select_group_image_desktop">Hautatu taldearen irudia</string>
-    <string name="export_backup_desktop">Esportatu babes-kopia</string>
+    <string name="export_backup_desktop">Esportatu babeskopia</string>
     <string name="message_detail_sent_desktop">bidalita</string>
     <string name="message_detail_received_desktop">jasota</string>
     <string name="menu.view.developer.open.log.folder">Ireki egunkarien karpeta</string>
@@ -1170,7 +1176,7 @@
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Berehalako bidalketa</string>
     <string name="pref_background_notifications">Erabili atzeko planoko konexioa</string>
-    <string name="pref_background_notifications_explain">Bateriaren optimizazioak alde batera uztea eskatzen du, erabili jakinarazpenak garaiz iristen ez badira.</string>
+    <string name="pref_background_notifications_explain">Bateriaren optimizazioa alde batera utziko du. Erabili hau jakinarazpenak garaiz iristen ez badira.</string>
     <string name="pref_reliable_service">Behartu atzeko planoko konexioa</string>
     <string name="pref_reliable_service_explain">Jakinarazpen iraunkorra sortzen du</string>
 

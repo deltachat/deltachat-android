@@ -43,7 +43,9 @@
     <string name="archive">Архивирај</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Деархивирај</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Утишај</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Утишано</string>
     <string name="ephemeral_messages">Нестајуће поруке</string>
     <string name="ephemeral_messages_hint">Односи се на све чланове овог ћаскања ако користе Delta Chat; и даље могу да копирају, сниме и прослеђују поруке или да користе друге клијенте за е-пошту.</string>
@@ -159,6 +161,7 @@
     <string name="sticker">Налепница</string>
     <string name="add_to_sticker_collection">Додај у колекцију налепница</string>
     <string name="images">Слике</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Звук</string>
     <string name="voice_message">Гласовна порука</string>
     <string name="forwarded">Прослеђено</string>
@@ -187,6 +190,7 @@
     <string name="games">Игре</string>
     <string name="tools">Алати</string>
     <string name="app_size">Величина</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Објављено</string>
     <string name="unknown">Непознато</string>
 
@@ -529,6 +533,7 @@
     <string name="pref_your_name">Ваше име</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Текст потписа</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Шаљи ЕНТЕР тастером</string>
     <string name="pref_enter_sends_explain">Притиском на ЕНТЕР тастер тексутале поруке ће бити послате</string>
     <string name="pref_outgoing_media_quality">Квалитет медија за слање</string>

@@ -43,6 +43,7 @@
     <string name="archive">Arquivar</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Desarquivar</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Silenciar</string>
     <string name="ephemeral_messages">Mensagens efêmeras</string>
     <string name="ephemeral_messages_hint">Essas configurações se aplicam a todos os participantes usando o Delta Chat. No entanto, eles podem copiar, salvar e encaminhar mensagens ou usar outros clientes de email.</string>
@@ -154,6 +155,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Sticker</string>
     <string name="images">Imagens</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Áudio</string>
     <string name="voice_message">Mensagem de voz</string>
     <string name="forwarded">Encaminhado</string>
@@ -533,6 +535,7 @@
     <string name="pref_your_name">Seu nome</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Assinatura</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">O botão enter envia</string>
     <string name="pref_enter_sends_explain">As mensagens serão enviadas pressionando-se o enter</string>
     <string name="pref_outgoing_media_quality">Qualidade de mídia de saída</string>

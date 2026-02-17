@@ -26,6 +26,7 @@
     <string name="archive">ఆర్కైవ్</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">ఆర్కైవ్ రద్దు</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">నిశబ్ధం</string>
     <string name="ephemeral_messages">అదృశ్యమవుతున్న సందేశాలు</string>
     <string name="save">భద్రపరుచు</string>
@@ -58,6 +59,7 @@
     <string name="image">చిత్రం</string>
     <string name="gif">Gif</string>
     <string name="images">చిత్రాలు</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">ఆడియో</string>
     <string name="voice_message">మాట సందేశం</string>
     <string name="forwarded_message">ఫార్వర్డ్ చేయబడిన సందేసం</string>
@@ -148,6 +150,7 @@
     <string name="pref_profile_photo">రూపచిత్రం</string>
     <string name="pref_blocked_contacts">నిరోధించిన పరిచయాలు</string>
     <string name="pref_your_name">మీ పేరు</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">\"ఎంటర్\" నొక్కితే పంపు</string>
     <string name="pref_vibrate">వైబ్రేషన్</string>
     <string name="pref_screen_security">స్క్రీన్ భద్రత</string>

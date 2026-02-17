@@ -35,6 +35,7 @@
     <string name="archive">アーカイブ</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">元に戻す</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">ミュート</string>
     <string name="ephemeral_messages">消えるメッセージ</string>
     <string name="ephemeral_messages_hint">この設定は、Delta Chatの利用する参加者に適用されます。ただし、参加者はメッセージをコピーしたり、保存したり、転送したり、他のアプリを利用したりすることができます。</string>
@@ -109,6 +110,7 @@
     <string name="reply_noun">返信</string>
     <string name="gif">Gif</string>
     <string name="images">画像</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">音楽</string>
     <string name="voice_message">音声メッセージ</string>
     <string name="forwarded">転送された</string>
@@ -383,6 +385,7 @@
     <string name="pref_your_name">あなたの名前</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">署名</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">エンターキーで送信</string>
     <string name="pref_enter_sends_explain">エンターキーを押すとテキストメッセージが送信されます</string>
     <string name="pref_outgoing_media_quality">送信する画像や映像の画質</string>

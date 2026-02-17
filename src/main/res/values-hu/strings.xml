@@ -51,7 +51,9 @@
     <string name="archive">Archiválás</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Archiválás visszavonása</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Némítás</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Némított</string>
     <string name="ephemeral_messages">Eltűnő üzenetek</string>
     <string name="ephemeral_messages_hint">A csevegés összes tagjára vonatkozik; az üzeneteket továbbra is másolhatják, menthetik és továbbíthatják.</string>
@@ -179,6 +181,7 @@
     <string name="add_stickers_instructions">A matricák hozzáadásához koppintson a „Matricamappa megnyitása” lehetőségre, hozzon létre egy almappát a matricacsomagnak, és húzza oda a kép- és matricafájlokat.</string>
     <string name="open_sticker_folder">Matricamappa megnyitása</string>
     <string name="images">Képek</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Hang</string>
     <string name="voice_message">Hangüzenet</string>
     <string name="forwarded">Továbbított</string>
@@ -215,6 +218,7 @@
     <string name="games">Játékok</string>
     <string name="tools">Eszközök</string>
     <string name="app_size">Méret</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Közzétéve</string>
     <string name="add_to_chat">Hozzáadás csevegéshez</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -706,6 +710,7 @@
     <string name="pref_your_name">Név</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Névjegy</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Küldés „Enterrel”</string>
     <string name="pref_enter_sends_explain">Az „Enter” billentyű megnyomásával szöveges üzeneteket küldhet</string>
     <string name="pref_outgoing_media_quality">Kimenő média minősége</string>
@@ -789,6 +794,7 @@
     <string name="n_bytes_message">%1$s üzenet</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Letöltés maximum ennyi ideig visszamenőleg: %1$s </string>
+    <!-- deprecated -->
     <string name="select_profile">Profil kiválasztása</string>
     <string name="profile_image_select">Profilkép kiválasztása</string>
     <string name="select_your_new_profile_image">Válassza ki az új profilképet</string>

@@ -51,7 +51,9 @@
     <string name="archive">Arşivle</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Arşivleme</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Sessize Al</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Sessize alındı</string>
     <string name="ephemeral_messages">Kaybolan İletiler</string>
     <string name="ephemeral_messages_hint">Bu sohbetin tüm üyelerine uygulanır; onlar hâlâ iletileri kopyalayabilir, kaydedebilir ve iletebilir.</string>
@@ -179,6 +181,7 @@
     <string name="add_stickers_instructions">Çıkartmalar eklemek için “Çıkartma Klasörünü Aç”a dokunun, çıkartma paketiniz için bir alt klasör oluşturun ve görseli ve çıkartma dosyalarını oraya sürükleyin</string>
     <string name="open_sticker_folder">Çıkartma Klasörünü Aç</string>
     <string name="images">Görseller</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Ses</string>
     <string name="voice_message">Sesli İleti</string>
     <string name="forwarded">İletildi</string>
@@ -215,6 +218,7 @@
     <string name="games">Oyunlar</string>
     <string name="tools">Araçlar</string>
     <string name="app_size">Boyut</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Yayımlanma</string>
     <string name="add_to_chat">Sohbete Ekle</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -724,6 +728,7 @@
     <string name="pref_your_name">Adınız</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Biyografi</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter Tuşu Göndersin</string>
     <string name="pref_enter_sends_explain">Enter tuşuna basma, metin iletileri gönderecek</string>
     <string name="pref_outgoing_media_quality">Giden Ortam Kalitesi</string>
@@ -812,6 +817,7 @@
     <string name="n_bytes_message">%1$s ileti</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">İndirme en fazla %1$s zamanına kadar kullanılabilir</string>
+    <!-- deprecated -->
     <string name="select_profile">Profil Seç</string>
     <string name="profile_image_select">Profil Görseli Seç</string>
     <string name="select_your_new_profile_image">Yeni profil görselinizi seçin</string>

@@ -682,7 +682,8 @@ public class Rpc {
    * Set group name.
    * <p>
    * If the group is already _promoted_ (any message was sent to the group),
-   * all group members are informed by a special status message that is sent automatically by this function.
+   * or if this is a brodacast channel,
+   * all members are informed by a special status message that is sent automatically by this function.
    * <p>
    * Sends out #DC_EVENT_CHAT_MODIFIED and #DC_EVENT_MSGS_CHANGED if a status message was sent.
    */
@@ -691,10 +692,36 @@ public class Rpc {
   }
 
   /**
+   * Set group or broadcast channel description.
+   * <p>
+   * If the group is already _promoted_ (any message was sent to the group),
+   * or if this is a brodacast channel,
+   * all members are informed by a special status message that is sent automatically by this function.
+   * <p>
+   * Sends out #DC_EVENT_CHAT_MODIFIED and #DC_EVENT_MSGS_CHANGED if a status message was sent.
+   * <p>
+   * See also [`Self::get_chat_description`] / `getChatDescription()`.
+   */
+  public void setChatDescription(Integer accountId, Integer chatId, String description) throws RpcException {
+    transport.call("set_chat_description", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(description));
+  }
+
+  /**
+   * Load the chat description from the database.
+   * <p>
+   * UIs show this in the profile page of the chat,
+   * it is settable by [`Self::set_chat_description`] / `setChatDescription()`.
+   */
+  public String getChatDescription(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_chat_description", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
    * Set group profile image.
    * <p>
    * If the group is already _promoted_ (any message was sent to the group),
-   * all group members are informed by a special status message that is sent automatically by this function.
+   * or if this is a brodacast channel,
+   * all members are informed by a special status message that is sent automatically by this function.
    * <p>
    * Sends out #DC_EVENT_CHAT_MODIFIED and #DC_EVENT_MSGS_CHANGED if a status message was sent.
    * <p>
