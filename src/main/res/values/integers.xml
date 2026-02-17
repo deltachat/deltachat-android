@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="play_button_animation_duration">300</integer>
+    <integer name="emoji_grid_columns">9</integer>
 </resources>
