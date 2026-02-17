@@ -179,6 +179,7 @@
     <string name="add_stickers_instructions">To add stickers, tap "Open Sticker Folder", create a subfolder for your sticker pack, and drag image and sticker files there</string>
     <string name="open_sticker_folder">Open Sticker Folder</string>
     <string name="images">Images</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
     <string name="voice_message">Voice Message</string>
     <string name="forwarded">Forwarded</string>
