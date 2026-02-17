@@ -51,7 +51,9 @@
     <string name="archive">归档</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">取消归档</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">静音</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">已静音</string>
     <string name="ephemeral_messages">消息定时销毁</string>
     <string name="ephemeral_messages_hint">适用于此聊天的所有成员；他们仍然可以复制、保存和转发消息。</string>
@@ -168,6 +170,7 @@
     <string name="add_stickers_instructions">要添加贴纸，请点按“打开贴纸文件夹”，为贴纸包创建一个子文件夹，然后将图片和贴纸文件拖动到那里</string>
     <string name="open_sticker_folder">打开贴纸文件夹</string>
     <string name="images">图片</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">音频</string>
     <string name="voice_message">语音消息</string>
     <string name="forwarded">转发了</string>
@@ -204,6 +207,7 @@
     <string name="games">游戏</string>
     <string name="tools">工具</string>
     <string name="app_size">大小</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">已发布</string>
     <string name="add_to_chat">添加到聊天</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -707,6 +711,7 @@
     <string name="pref_your_name">您的名称</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">签名档</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter 键发送</string>
     <string name="pref_enter_sends_explain">按 Enter 键发送文本消息</string>
     <string name="pref_outgoing_media_quality">发出媒体质量</string>
@@ -795,6 +800,7 @@
     <string name="n_bytes_message">%1$s 消息</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">下载最晚于 %1$s 前可用</string>
+    <!-- deprecated -->
     <string name="select_profile">选择账号</string>
     <string name="profile_image_select">选择个人资料图片</string>
     <string name="select_your_new_profile_image">选择新的个人资料图片</string>

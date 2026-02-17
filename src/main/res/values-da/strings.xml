@@ -35,6 +35,7 @@
     <string name="archive">Arkivér</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Fortryd arkivering</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Udsæt</string>
     <string name="ephemeral_messages">Beskeder med tidsudløb</string>
     <string name="ephemeral_messages_hint">Disse indstillinger gælder for alle deltagere der bruger Delta Chat. De kan dog kopiere, gemme og videresende beskeder eller bruge andre e-mail klienter. </string>
@@ -114,6 +115,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Klistermærker</string>
     <string name="images">Billeder</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Lyd</string>
     <string name="voice_message">Tale besked</string>
     <string name="forwarded">Videresendt</string>
@@ -401,6 +403,7 @@
     <string name="pref_your_name">Dit navn</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Underskrift tekst</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter tast sender</string>
     <string name="pref_enter_sends_explain">Tryk på enter tast vil sende tekst beskeden</string>
     <string name="pref_outgoing_media_quality">Udgående medie kvalitet</string>

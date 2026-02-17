@@ -26,6 +26,7 @@
     <string name="archive">காப்பகத்தை</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">மீட்டெடுக்கலாம்</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">ஓசையற்ற</string>
     <string name="ephemeral_messages">காணாமல் போகும் செய்திகள்</string>
     <string name="save">சேமி</string>
@@ -78,6 +79,7 @@
     <string name="image">படம்</string>
     <string name="gif">GIF</string>
     <string name="images">புகைப்படங்கள்</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">ஒலி</string>
     <string name="voice_message">குரல் செய்தி</string>
     <string name="forwarded_message">மேல அனுப்பப்பட்ட சேதி</string>
@@ -178,6 +180,7 @@
     <string name="pref_profile_info_headline">உங்கள் சுயவிவரத் தகவல்</string>
     <string name="pref_blocked_contacts">தடுக்கபட்ட தொடர்புகள்</string>
     <string name="pref_your_name">எனது பெயர்</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">\"enter\" மூலம் அனுப்பவும்</string>
     <string name="pref_vibrate">அதிர்வு உண்டாக்கு</string>
     <string name="pref_screen_security">திரை பாதுகாப்பு</string>

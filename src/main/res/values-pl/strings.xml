@@ -51,7 +51,9 @@
     <string name="archive">Archiwizuj</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Przywróć z archiwum</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Wyłącz powiadomienia</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Wyciszony</string>
     <string name="ephemeral_messages">Znikające wiadomości</string>
     <string name="ephemeral_messages_hint">Dotyczy wszystkich członków tego czatu. Nadal mogą kopiować, zapisywać i przesyłać wiadomości.</string>
@@ -201,6 +203,7 @@
     <string name="add_stickers_instructions">Aby dodać naklejki, dotknij „Otwórz folder naklejek”, utwórz podfolder dla swojego pakietu naklejek i przeciągnij do niego pliki obrazów i naklejek</string>
     <string name="open_sticker_folder">Otwórz folder naklejek</string>
     <string name="images">Obrazy</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
     <string name="voice_message">Wiadomość głosowa</string>
     <string name="forwarded">Przekazana</string>
@@ -237,6 +240,7 @@
     <string name="games">Gry</string>
     <string name="tools">Narzędzia</string>
     <string name="app_size">Rozmiar</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Opublikowany</string>
     <string name="add_to_chat">Dodaj do czatu</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -758,6 +762,7 @@
     <string name="pref_your_name">Twoja nazwa</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Tekst podpisu</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter wysyła</string>
     <string name="pref_enter_sends_explain">Naciśnięcie Enter wysyła wiadomości tekstowe</string>
     <string name="pref_outgoing_media_quality">Jakość mediów wychodzących</string>
@@ -846,6 +851,7 @@
     <string name="n_bytes_message">Wiadomość %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Maksymalna ilość do pobrania dostępna do %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Wybierz profil</string>
     <string name="profile_image_select">Wybierz zdjęcie profilowe</string>
     <string name="select_your_new_profile_image">Wybierz nowe zdjęcie profilowe</string>

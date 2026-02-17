@@ -51,7 +51,9 @@
     <string name="archive">Archivovat</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Vyjmout z archivu</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Ztlumit</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Ztlumeno</string>
     <string name="ephemeral_messages">Mizející zprávy</string>
     <string name="ephemeral_messages_hint">Volba platí pro všechny členy tohoto chatu, kteří používají Delta Chat; stále ale mohou kopírovat, ukládat a přeposílat zprávy nebo používat jiné e-mailové klienty, které tuto volbu nerespektují.</string>
@@ -201,6 +203,7 @@
     <string name="add_stickers_instructions">Přejete-li si přidat nálepky, klepněte na „Otevřít složku nálepek“, vytvořte podsložku pro balíček nálepek a přetáhněte do ní soubory obrázků a nálepek</string>
     <string name="open_sticker_folder">Otevřít složku nálepek</string>
     <string name="images">Obrázky</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Zvukové záznamy</string>
     <string name="voice_message">Hlasová zpráva</string>
     <string name="forwarded">Přeposlané</string>
@@ -237,6 +240,7 @@
     <string name="games">Hry</string>
     <string name="tools">Nástroje</string>
     <string name="app_size">Velikost</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Zveřejněno</string>
     <string name="add_to_chat">Přidat do chatu</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -752,6 +756,7 @@
     <string name="pref_your_name">Vaše jméno</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Bio</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter odesílá</string>
     <string name="pref_enter_sends_explain">Stisk klávesy Enter odešle zprávu</string>
     <string name="pref_outgoing_media_quality">Kvalita odesílaných multimédií</string>
@@ -840,6 +845,7 @@
     <string name="n_bytes_message">%1$s zpráva</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Stahovat dostupné maximum do %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Vyberte profil</string>
     <string name="profile_image_select">Vybrat profilový obrázek</string>
     <string name="select_your_new_profile_image">Vyberte si svůj nový profilový obrázek</string>

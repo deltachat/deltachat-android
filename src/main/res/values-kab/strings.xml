@@ -51,7 +51,9 @@
     <string name="archive">Aɣbaṛ </string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Kkes aɣbaṛ</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Sgugem</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Yettwasgugmen </string>
     <string name="ephemeral_messages">Iznan ur nettdum ara</string>
     <string name="ephemeral_messages_hint">Ad isnes akk imttekkiyen n udiwenni-a; mazal zemren ad nɣelen, ad ḥerzen, neɣ ad sniflen awelleh n yiznan.</string>
@@ -179,6 +181,7 @@
     <string name="add_stickers_instructions">Akken ad ternuḍ tamenṭaḍt, sit ɣef \" ldi akaram n tmenṭaḍt \", snulfu-d akaram anaddaw i ukemmus-ik·im n tmenṭaḍt, zuɣer tugna akked ifuyla n tmenṭaḍt din</string>
     <string name="open_sticker_folder">Ldi akaran n tmenṭaḍt</string>
     <string name="images">Tugniwin</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Ameslaw</string>
     <string name="voice_message">Izen n taɣect</string>
     <string name="forwarded">Yettuwelleh</string>
@@ -215,6 +218,7 @@
     <string name="games">Uraren</string>
     <string name="tools">Ifecka</string>
     <string name="app_size">Tiddi</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Yeffeɣ-d</string>
     <string name="add_to_chat">Rnu ɣer udiwenni usrid</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -379,14 +383,20 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Siwel</string>
+    <string name="start_audio_call">Asiwel n umeslaw</string>
+    <string name="start_video_call">Asiwel n tvidyut</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Err</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Agi</string>
     <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Tiɣri tuffiɣt</string>
+    <string name="outgoing_audio_call">Asiwel n umeslaw uffiɣ</string>
+    <string name="outgoing_video_call">Asiwel n uvidyu uffiɣ</string>
     <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Tiɣri i d-ikecmen</string>
+    <string name="incoming_audio_call">Asiwel n umeslaw ukcim</string>
+    <string name="incoming_video_call">Asiwel n uvidyu ukcim</string>
     <string name="declined_call">Tiɣri tettwagi</string>
     <string name="canceled_call">Tiɣri tettwasefsex</string>
     <string name="missed_call">Tiɣri ittwazeglen</string>
@@ -717,6 +727,7 @@
     <string name="pref_your_name">Isem-ik·im</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Tameddurt</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Kcem tisura i umazan</string>
     <string name="pref_enter_sends_explain">Asiti ɣef tanast Kcem ad yazen aḍris n yiznan</string>
     <string name="pref_outgoing_media_quality">Taɣara n umidya</string>
@@ -805,6 +816,7 @@
     <string name="n_bytes_message">Izen %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Sader-d afellay i yellan alamma d %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Fren amaɣnu</string>
     <string name="profile_image_select">Fren tugna n umaɣnu</string>
     <string name="select_your_new_profile_image">Fren tugna-ik·im tamaynut n umaɣnu</string>
@@ -1003,6 +1015,7 @@
     <string name="secure_join_replies">%1$s yerra-d, rǧu i tmerna-as ɣer ugraw...</string>
     <string name="secure_join_wait">Asbeddi n tuqqna, ttxil-k·m rǧu...</string>
     <string name="contact_verified">%1$s ittwasenked.</string>
+    <string name="contact_blocked">Tesweḥleḍ anermis</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Yettwasenked sɣur %1$s</string>
     <string name="verified_by_you">Yettwasenked sɣur nekk</string>

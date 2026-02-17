@@ -21,6 +21,7 @@
     <string name="back">العودة</string>
     <string name="close">إغلاق</string>
     <string name="forward">إعادة توجيه</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">حجب المكرفون.</string>
     <string name="ephemeral_messages">الرسائل المُختفية</string>
     <string name="save">حفظ</string>
@@ -55,6 +56,7 @@
     <string name="image">صورة</string>
     <string name="gif">صورة GIF</string>
     <string name="images">الصور</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">الصوت</string>
     <string name="voice_message">رسالة صوتية</string>
     <string name="video">فيديو</string>
@@ -163,6 +165,7 @@
     <string name="pref_your_name">اسمك</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">التوقيع</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">مفتاح الدخول يقوم بالإرسا</string>
     <string name="pref_vibrate">إهتز</string>
     <string name="pref_screen_security">تأمين الشاشة</string>

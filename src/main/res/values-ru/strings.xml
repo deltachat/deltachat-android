@@ -51,7 +51,9 @@
     <string name="archive">Отправить в архив</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Вернуть из архива</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Отключить уведомления</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Беззвучный</string>
     <string name="ephemeral_messages">Исчезающие сообщения</string>
     <string name="ephemeral_messages_hint">Применяется ко всем участникам этого чата, но они по-прежнему могут копировать, сохранять и пересылать сообщения.</string>
@@ -201,6 +203,7 @@
     <string name="add_stickers_instructions">Для добавления стикеров, нажмите \"Открыть папку стикеров\", создайте подпапку для набора ваших стикеров и перетащите туда изображения и файлы стикеров</string>
     <string name="open_sticker_folder">Открыть папку стикеров</string>
     <string name="images">Изображения</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Аудио</string>
     <string name="voice_message">Голосовое сообщение</string>
     <string name="forwarded">Переслано</string>
@@ -237,6 +240,7 @@
     <string name="games">Игры</string>
     <string name="tools">Инструменты</string>
     <string name="app_size">Размер</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Опубликовано</string>
     <string name="add_to_chat">Добавить в чат</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -758,6 +762,7 @@
     <string name="pref_your_name">Ваше имя</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">О себе</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Отправка по Enter</string>
     <string name="pref_enter_sends_explain">Нажатие клавиши Enter отправит текстовые сообщения</string>
     <string name="pref_outgoing_media_quality">Качество отправляемых медиафайлов</string>
@@ -846,6 +851,7 @@
     <string name="n_bytes_message">%1$s сообщение</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Максимальная загрузка доступна до %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Выбрать профиль</string>
     <string name="profile_image_select">Выбрать изображение профиля</string>
     <string name="select_your_new_profile_image">Выбрать новое изображение профиля</string>

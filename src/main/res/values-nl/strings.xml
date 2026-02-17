@@ -51,7 +51,9 @@
     <string name="archive">Archiveren</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">De-archiveren</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Negeren</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Genegeerd</string>
     <string name="ephemeral_messages">Verdwijnende berichten</string>
     <string name="ephemeral_messages_hint">Deze instellingen zijn van toepassing op alle deelnemers die Delta Chat gebruiken. Ze kunnen echter wél berichten kopiëren, opslaan of doorsturen middels andere e-mailapps.</string>
@@ -179,6 +181,7 @@
     <string name="add_stickers_instructions">Stickers toevoegen kan als volgt: druk op ‘Stickermap openen’, maak een onderliggende map aan voor je pakket en plaats afbeeldings- en stickerbestanden in de map.</string>
     <string name="open_sticker_folder">Stickermap openen</string>
     <string name="images">Afbeeldingen</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
     <string name="voice_message">Spraakbericht</string>
     <string name="forwarded">Doorgestuurd</string>
@@ -215,6 +218,7 @@
     <string name="games">Games</string>
     <string name="tools">Hulpmiddelen</string>
     <string name="app_size">Grootte</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Publicatiedatum</string>
     <string name="add_to_chat">Toevoegen aan gesprek</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -724,6 +728,7 @@
     <string name="pref_your_name">Je naam</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Handtekeningtekst</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Versturen met enter</string>
     <string name="pref_enter_sends_explain">Druk op de entertoets om tekstberichten te versturen</string>
     <string name="pref_outgoing_media_quality">Kwaliteit van verstuurde media</string>
@@ -812,6 +817,7 @@
     <string name="n_bytes_message">%1$s bericht</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Maximaal downloaden tot en met een aantal van %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Kies een profiel</string>
     <string name="profile_image_select">Profielfoto kiezen</string>
     <string name="select_your_new_profile_image">Kies een nieuwe profielfoto</string>
@@ -1005,7 +1011,7 @@
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s heeft je uitgenodigd voor deze groep.\n\nEr wordt gewacht op antwoord van het apparaat van %2$s…</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_channel_started">%1$s heeft je uitgenodigd voor dit groep.\n\nEr wordt gewacht op antwoord van het apparaat van %2$s…</string>
+    <string name="secure_join_channel_started">%1$s heeft je uitgenodigd voor dit kanaal.\n\nEr wordt gewacht op antwoord van het apparaat van %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s heeft geantwoord en wacht op toelating tot de groep…</string>
     <string name="secure_join_wait">Bezig met opzetten van eind-tot-eindversleuteling…</string>

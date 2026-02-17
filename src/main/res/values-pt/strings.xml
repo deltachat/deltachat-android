@@ -45,6 +45,7 @@
     <string name="archive">Arquivar</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Desarquivar</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Silenciar</string>
     <string name="ephemeral_messages">Destruição de mensagens</string>
     <string name="save">Guardar</string>
@@ -124,6 +125,7 @@
     <string name="reply_noun">Resposta</string>
     <string name="gif">Gif</string>
     <string name="images">Imagens</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Áudio</string>
     <string name="voice_message">Mensagem de voz</string>
     <string name="forwarded_message">Reencaminhada</string>
@@ -350,6 +352,7 @@
     <string name="pref_your_name">O seu nome</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Informação do estado</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Tecla ENTER para enviar</string>
     <string name="pref_enter_sends_explain">Pressionar a tecla ENTER enviará mensagens de texto</string>
     <string name="pref_vibrate">Vibrar</string>

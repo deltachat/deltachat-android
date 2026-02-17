@@ -25,6 +25,7 @@
     <string name="archive">Arhiviraj</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Dearhiviraj</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Prigušiti</string>
     <string name="ephemeral_messages">Nestajuće poruke</string>
     <string name="save">Spremi</string>
@@ -175,6 +176,7 @@
     <string name="pref_profile_photo">Profilna slika</string>
     <string name="pref_blocked_contacts">Blokirani kontakti</string>
     <string name="pref_your_name">Vaše ime</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter šalje poruku</string>
     <string name="pref_enter_sends_explain">Pritisak na Enter će poslati tekst poruku</string>
     <string name="pref_vibrate">Vibracija</string>

@@ -40,6 +40,7 @@
     <string name="archive">Arkistoi</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Poista arkistosta</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Mykistä</string>
     <string name="ephemeral_messages">Katoavat viestit</string>
     <string name="ephemeral_messages_hint">Nämä asetukset pätevät kaikkiin Delta Chat -käyttäjiin. He voivat kuitenkin kopioida, tallentaa ja välittää viestejä tai käyttää toisia sähköpostisovelluksia.</string>
@@ -146,6 +147,7 @@
     <string name="add_stickers_instructions">Saat lisättyä tarroja valitsemalla \"Avaa tarrakansio\", luomalla alikansion tarrakokoelmallesi ja raahaamalla tarratiedostosi sinne</string>
     <string name="open_sticker_folder">Avaa tarrakansio</string>
     <string name="images">Kuvat</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Äänite</string>
     <string name="voice_message">Ääniviesti</string>
     <string name="forwarded">Välitetty</string>
@@ -563,6 +565,7 @@
     <string name="pref_your_name">Nimesi</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Bio</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Lähetä Enter -näppäimellä</string>
     <string name="pref_enter_sends_explain">Enter-näppäimen painaminen lähettää viestin</string>
     <string name="pref_outgoing_media_quality">Lähtevän median laatu</string>

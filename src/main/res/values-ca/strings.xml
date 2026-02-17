@@ -51,7 +51,9 @@
     <string name="archive">Arxiva</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Treu de l\'arxiu</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Silencia</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Silenciat</string>
     <string name="ephemeral_messages">Missatges efímers</string>
     <string name="ephemeral_messages_hint">Aquestes opcions s\'apliquen a tots els integrants del xat que utiltizen Delta Chat. Tot i així, poden copiar, desar o reenviar missatges o utilitzar altres clients de correu.</string>
@@ -179,6 +181,7 @@
     <string name="add_stickers_instructions">Per a afegir adhesius: premeu \"Obre la carpeta d\'adhesius\", creeu una subcarpeta per a la vostra col·lecció d\'adhesius i arrossegueu-hi la imatge i els fitxers d\'adhesius.</string>
     <string name="open_sticker_folder">Obre la carpeta d\'adhesius</string>
     <string name="images">Imatges</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Àudio</string>
     <string name="voice_message">Missatge de veu</string>
     <string name="forwarded">Reenviat</string>
@@ -215,6 +218,7 @@
     <string name="games">Jocs</string>
     <string name="tools">Eines</string>
     <string name="app_size">Mida</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Publicat</string>
     <string name="add_to_chat">Afegeix al xat</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -380,14 +384,20 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Truca</string>
+    <string name="start_audio_call">Trucada de veu</string>
+    <string name="start_video_call">Videotrucada</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Respon</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Rebutja</string>
     <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Trucada sortint</string>
+    <string name="outgoing_audio_call">Trucada de veu sortint</string>
+    <string name="outgoing_video_call">Videotrucada sortint</string>
     <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Trucada entrant</string>
+    <string name="incoming_audio_call">Trucada de veu entrant</string>
+    <string name="incoming_video_call">Videotrucada entrant</string>
     <string name="declined_call">Trucada rebutjada</string>
     <string name="canceled_call">Trucada cancel·lada</string>
     <string name="missed_call">Trucada perduda</string>
@@ -628,6 +638,7 @@
     <string name="welcome_chat_over_email">Xat segur i descentralitzat</string>
     <string name="scan_invitation_code">Escaneja el Codi d\'Invitació</string>
     <string name="login_title">Identifiqueu-vos</string>
+    <string name="login_advanced_hint">Aquest inici de sessió és per a usuaris avançats:\n\n• No feu servir una adreça que utilitzeu a una altra app.\n\n• Les adreces de correu tradicional admeten xats sense xifratge d\'extrem a extrem, indicades amb una icona de correu.</string>
     <string name="login_inbox">Safata d\'entrada</string>
     <string name="login_imap_login">Nom d\'identificació IMAP</string>
     <string name="login_imap_server">Servidor IMAP</string>
@@ -647,11 +658,13 @@
     <string name="proxy_add_url_hint">Introduïu l\'enllaç del servidor intermediari aquí</string>
     <string name="proxy_invalid">Servidor intermediari no compatible o invàlid</string>
     <string name="proxy_list_header">Proxies desats</string>
-    <string name="proxy_delete">Esborra el proxy</string>
+    <string name="proxy_delete">Esborra el servidor intermediari</string>
     <string name="proxy_delete_explain">Esteu segur de voler esborrar «%1$s»?</string>
-    <string name="proxy_use_proxy_confirm">Voleu utilitzar el proxy \"%1$s\"?</string>
+    <string name="proxy_use_proxy_confirm">Voleu utilitzar el servidor intermediari \"%1$s\"?</string>
     <string name="proxy_share_explain">Els vostres amics poden afegir aquest servidor intermediari escanejant el codi QR.</string>
     <string name="proxy_share_link">Comparteix l\'enllaç</string>
+    <string name="proxy_enabled">Servidor intermediari activat</string>
+    <string name="proxy_enabled_hint">Esteu fent servir un servidor intermediari. Si teniu problemes per a connectar-vos, proveu un servidor intermediari diferent.</string>
     <string name="login_certificate_checks">El certificat coincideix</string>
     <string name="login_error_mail">Si us plau poseu una adreça d\'email vàlida</string>
     <string name="login_error_server">Si us plau poseu un servidor / adreça IP vàlida</string>
@@ -704,6 +717,7 @@
     <string name="pref_your_name">El vostre nom</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Signatura</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">La tecla «Retorn» envia</string>
     <string name="pref_enter_sends_explain">Els missatges s\'enviaran prement la tecla «Retorn»</string>
     <string name="pref_outgoing_media_quality">Qualitat del contingut multimèdia sortint</string>
@@ -754,6 +768,7 @@
     <string name="pref_backup">Còpia de seguretat</string>
     <string name="pref_backup_explain">Copia els xats a un magatzem extern</string>
     <string name="pref_backup_export_explain">La còpia de seguretat és útil a l\'hora de reinstal·lar l\'aplicació en aquest dispositiu o en un altre.\n\nLa còpia tindrà tot els missatges, contactes i xats i la configuració d\'extrem a extrem d\'Autocrypt. Conserveu el fitxer de la còpia en un lloc segur o esborreu-lo tan aviat com pugueu.</string>
+    <string name="pref_backup_export_this">Exporta aquest perfil</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exporta tots %1$d perfils</string>
     <string name="pref_backup_export_start_button">Inicia la còpia de seguretat</string>
@@ -763,6 +778,10 @@
     <string name="pref_background_btn_default">Usa la imatge per defecte</string>
     <string name="pref_background_btn_gallery">Trieu de la galeria</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si desactiveu aquesta opció, assegureu-vos que el vostre servidor i els altres programes estiguin configurats de la mateixa manera.\n\nAltrament podeu tenir problemes de funcionament.</string>
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <string name="pref_multidevice">Mode multidispositiu</string>
+    <string name="pref_multidevice_explain">Sincronitza els vostres missatges amb els vostres altres dispositius. Activat automàticament quan s\'afegeix un segon dispositiu.</string>
+    <string name="pref_multidevice_change_warn">El mode multidispositiu ha d\'estar habilitat quan feu servir el mateix compte des de diferents perfils. Només desactiveu aquesta opció si heu suprimit aquest perfil de tots els vostres altres dispositius.\n\nDesactivar aquesta opció mentre es fa servir en el mateix perfil en múltiples dispositius farà que es perdin missatges i hi hagi altres problemes.</string>
     <string name="pref_auto_folder_moves">Moure automàticament a la carpeta de Delta Chat</string>
     <string name="pref_only_fetch_mvbox_title">Agafa només de la carpeta de DeltaChat</string>
     <string name="pref_show_emails">Mostra els correus clàssics</string>
@@ -770,6 +789,7 @@
     <string name="pref_show_emails_accepted_contacts">Per a contactes acceptats</string>
     <string name="pref_show_emails_all">Tot</string>
     <string name="pref_experimental_features">Funcionalitats experimentals</string>
+    <string name="pref_experimental_features_explain">Aquestes funcionalitats poden ser inestables i poden canviar o ser suprimides</string>
     <string name="pref_on_demand_location_streaming">Difusió de la ubicació sota demanda</string>
     <string name="pref_background_default">Imatge per defecte</string>
     <string name="pref_background_default_color">Color per defecte</string>
@@ -786,6 +806,7 @@
     <string name="n_bytes_message">%1$s missatge</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Baixa el màxim disponible fins a %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Trieu Perfil</string>
     <string name="profile_image_select">Trieu la imatge de perfil</string>
     <string name="select_your_new_profile_image">Trieu la imatge nova de perfil</string>
@@ -795,6 +816,14 @@
     <string name="disable_imap_idle">Desactiva IMAP IDLE</string>
     <string name="disable_imap_idle_explain">No usis l\'extensió IMAP IDLE encara que el servidor la permeti. Activar aquesta opció endarreria l\'obtenció de missatges, activeu-ho només per a proves.</string>
     <string name="send_stats_to_devs">Envia estadístiques als desenvolupadors del Delta Chat</string>
+    <string name="stats_device_message">Voleu ajudar a millorar Delta Chat i donar suport a la recerca enviant estadístiques d\'ús anònimes setmanalment?\n\n👉 Feu clic aquí… 👈</string>
+    <string name="stats_confirmation_dialog">Voleu ajudar a millorar Delta Chat i donar suport a la recerca enviant estadístiques d\'ús anònimes setmanalment?</string>
+    <string name="stats_thanks">Moltes gràcies! Sempre podeu desactivar l\'enviament a «Preferències -> Avançat».\n\nTeniu 5 minuts addicionals per a participar en un estudi científic sobre Delta Chat?</string>
+    <string name="stats_disable_dialog">L\'enviament d\'estadístiques ja està activat.\n\nVoleu desactivar-lo?</string>
+    <string name="disable">Desactiva</string>
+    <string name="stats_keep_sending">Continua enviant</string>
+    <string name="stats_msg_body">El fitxer adjunt conté estadístiques d\'ús anònimes que ens ajuden a millorar el Delta Chat. Veieu https://delta.chat/help#statssending per a més informació. Gràcies!</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resultats de la cerca</string>
     <string name="emoji_not_found">No s\'ha trobat cap emoji</string>
@@ -913,6 +942,7 @@
     <string name="ephemeral_timer_weeks_by_you">Heu definit el temporitzador dels missatges fonedissos a %1$s setmanes.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s ha definit el temporitzador dels missatges efímers a %1$s setmanes.</string>
+    <string name="chat_unencrypted_explanation">Els missatges en aquest xat fan servir el correu electrònic tradicional i no estan xifrats d\'extrem a extrem.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Us garantim que a partir d\'ara els missatges són xifrats d\'extrem a extrem. Toqueu per a obtenir més informació.</string>
     <string name="chat_protection_enabled_explanation">Ara es garanteix que tots els missatges d\'aquest xat són xifrats d\'extrem a extrem.\n\nEl xifratge d\'extrem a extrem manté privats els missatges entre vós i els companys de xat. Ni tan sols el vostre proveïdor de correu electrònic pot llegir-los.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">%1$srequereix xifratge d\'extrem a extrem, que encara no s\'ha configurat per a aquest xat. Toqueu per a obtenir més informació.</string>
@@ -937,6 +967,7 @@
     <string name="qrscan_hint_desktop">Mou el codi QR a la càmera</string>
     <string name="qrscan_failed">No s\'ha pogut descodificar el codi QR</string>
     <string name="qrscan_ask_join_group">Voleu unir-vos al grup «%1$s»?</string>
+    <string name="qrscan_ask_join_channel">Voleu unir-vos al canal \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">L\'empremta escanejada no coincideix amb l\'última empremta de %1$s</string>
     <string name="qrscan_no_addr_found">Aquest codi QR conté una empremta digital, però no hi ha cap adreça de correu electrònic.\n\nPer a una verificació fora de banda, establiu primer una connexió xifrada amb el destinatari.</string>
     <string name="qrscan_contains_text">Text del codi QR escanejat:\n\n%1$s</string>
@@ -944,6 +975,7 @@
     <string name="qrscan_fingerprint_label">Empremta</string>
     <string name="withdraw_verifycontact_explain">Altres persones que vulguin contactar amb vós poden escanejar aquest codi QR.\n\nPodeu reinicialitzar-lo, de manera que el codi QR o enllaç actual existent ja no servirà.</string>
     <string name="withdraw_verifygroup_explain">Altres poden escanejar aquest codi QR per a unir-se al grup «%1$s».\n\nPodeu reinicialitzar-lo, de manera que el codi QR existent, o l\'enllaç d\'invitació, deixarà de funcionar.</string>
+    <string name="withdraw_joinbroadcast_explain">Altres poden escanejar aquest codi QR per a unir-se al canal «%1$s».\n\nPodeu reinicialitzar-lo, de manera que el codi QR existent, o l\'enllaç d\'invitació, deixarà de funcionar.</string>
     <string name="withdraw_qr_code">Reinicialitza el codi QR</string>
     <string name="revive_verifycontact_explain">Aquest codi QR s\'ha reinicialitzat i ja no és actiu.</string>
     <string name="revive_qr_code">Activa el codi QR</string>
@@ -967,10 +999,13 @@
     <string name="qrlogin_ask_login">Voleu iniciar sessió a «%1$s»?</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s us ha convidat a unir-vos a aquest grup.\n\nS\'està esperant el dispositiu de %2$s per a respondre...</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s us ha convidat a unir-vos a aquest canal.\n\nS\'està esperant que el dispositiu de %2$s respongui.</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s ha respost, espereu per a ser afegit al grup...</string>
     <string name="secure_join_wait">S\'està establint el xifratge d\'extrem a extrem garantit, espereu...</string>
     <string name="contact_verified">%1$s verificat.</string>
+    <string name="contact_blocked">Heu blocat el contacte</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Afegit per %1$s</string>
     <string name="verified_by_you">Afegit per mi</string>

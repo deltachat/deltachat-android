@@ -50,7 +50,9 @@
     <string name="archive">Arkivoje</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Çarkivoje</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Heshtoje</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Heshtuar</string>
     <string name="ephemeral_messages">Mesazhe Që Zhduken</string>
     <string name="ephemeral_messages_hint">Këto rregullime zbatohen mbi krejt pjesëmarrësit që përdorin Delta Chat-in. Sidoqoftë, ata mund të kopjojnë, ruajnë dhe përcjellin mesazhe ose të përdorin klientë të tjerë email-i.</string>
@@ -178,6 +180,7 @@
     <string name="add_stickers_instructions">Që të shtoni ngjitës, prekni “Hap Dosje Ngjitësish”, krijoni një nëndosje për paketën e ngjitësit tuaj dhe tërhiqni në të figurë dhe kartela ngjitësi</string>
     <string name="open_sticker_folder">Hap Dosje Ngjitësish</string>
     <string name="images">Figura</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
     <string name="voice_message">Mesazh Zanor</string>
     <string name="forwarded">Përcjellë</string>
@@ -715,6 +718,7 @@
     <string name="pref_your_name">Emri Juaj</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Jetëshkrim</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Tasti Enter Dërgon</string>
     <string name="pref_enter_sends_explain">Shtypja e tastit Enter do të dërgojë mesazhe tekst</string>
     <string name="pref_outgoing_media_quality">Cilësi Mediash Në Dalje</string>
@@ -802,6 +806,7 @@
     <string name="n_bytes_message">Mesazh %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Shkarko maksimumin e mundshëm deri më %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Përzgjidhni Profil</string>
     <string name="profile_image_select">Përzgjidhni Figurë Profili</string>
     <string name="select_your_new_profile_image">Përzgjidhni figurën tuaj të re të profilit</string>

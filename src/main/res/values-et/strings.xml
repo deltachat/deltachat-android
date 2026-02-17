@@ -51,7 +51,9 @@
     <string name="archive">Arhiveeri</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Tõsta arhiivist välja</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Summuta</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Summutatud</string>
     <string name="ephemeral_messages">Isekustuvad sõnumid</string>
     <string name="ephemeral_messages_hint">Kehtib kõikidele selles vestluses osalejatele - aga siiski saavad nad sõnumeid kopeerida, salvestada ja edastada.</string>
@@ -179,6 +181,7 @@
     <string name="add_stickers_instructions">Kleepsude lisamiseks klõpsi valikut „Ava kleepsude kaust“, loo oma kleepsupaki jaoks sinna alamkaust ning lohista pildi- ja kleepsufailid sinna</string>
     <string name="open_sticker_folder">Ava kleepsude kaust</string>
     <string name="images">Pildid</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Heli</string>
     <string name="voice_message">Hääsõnum</string>
     <string name="forwarded">Edastatud</string>
@@ -215,6 +218,7 @@
     <string name="games">Mängud</string>
     <string name="tools">Tarvikud</string>
     <string name="app_size">Suurus</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Avaldatud</string>
     <string name="add_to_chat">Lisa vestlusele</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -724,6 +728,7 @@
     <string name="pref_your_name">Sinu nimi</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Elulugu/allkiri/moto</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Sisestusklahv saadab sõnumi</string>
     <string name="pref_enter_sends_explain">Sisestusklahvi vajutamisega saadad sõnumi ära</string>
     <string name="pref_outgoing_media_quality">Saadetava meediumi kvaliteet</string>
@@ -812,6 +817,7 @@
     <string name="n_bytes_message">Sõnum suurusega %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Allalaadimise ülempiir on saadaval kuni %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Vali profiil</string>
     <string name="profile_image_select">Vali profiilipilt</string>
     <string name="select_your_new_profile_image">Vali oma uus profiilipilt</string>
