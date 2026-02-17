@@ -68,7 +68,7 @@ public class AudioView extends FrameLayout {
     this.title            = findViewById(R.id.title);
     this.mask             = findViewById(R.id.interception_mask);
 
-    updateTimestamps();
+    updateTimestampsAndSeekBar();
 
     // Load drawables once
     this.playToPauseDrawable = AnimatedVectorDrawableCompat.create(
@@ -134,7 +134,7 @@ public class AudioView extends FrameLayout {
       public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         if (fromUser) {
           AudioView.this.progress = progress;
-          updateTimestamps();
+          updateTimestampsAndSeekBar();
         }
       }
 
@@ -195,13 +195,12 @@ public class AudioView extends FrameLayout {
     playPauseButton.setImageDrawable(playDrawable);
 
     seekBar.setEnabled(true);
-    seekBar.setProgress(0);
 
     // Get duration
     Map<Integer, Long> durations = viewModel.getDurations().getValue();
     if (durations != null && durations.containsKey(msgId)) {
       this.duration = Math.toIntExact(durations.get(msgId));
-      updateTimestamps();
+      updateTimestampsAndSeekBar();
     } else {
       viewModel.ensureDurationLoaded(getContext(), msgId, audioUri);
     }
@@ -269,9 +268,7 @@ public class AudioView extends FrameLayout {
     if (duration > 0) {
       this.progress = position;
       this.duration = duration;
-      updateTimestamps();
-      seekBar.setProgress(position);
-      seekBar.setMax(duration);
+      updateTimestampsAndSeekBar();
     }
   }
 
@@ -316,6 +313,10 @@ public class AudioView extends FrameLayout {
       updateUIForPlaybackState(state);
     } else {
       togglePlayPause(false);
+
+      // Also clear progress to avoid confusion
+      this.progress = 0;
+      updateTimestampsAndSeekBar();
     }
   }
 
@@ -351,14 +352,16 @@ public class AudioView extends FrameLayout {
     Long duration = durations.get(msgId);
     if (duration != null && seekBar.getMax() <= 100) {
       this.duration = Math.toIntExact(duration);
-      updateTimestamps();
+      updateTimestampsAndSeekBar();
       seekBar.setMax(this.duration);
     }
   }
 
-  private void updateTimestamps() {
+  private void updateTimestampsAndSeekBar() {
     String progressText = DateUtils.getFormatedDuration(progress);
     String durationText = DateUtils.getFormatedDuration(duration);
     timestamp.setText(String.format("%s / %s", progressText, durationText));
+    seekBar.setProgress(progress);
+    seekBar.setMax(duration);
   }
 }
