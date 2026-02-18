@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,6 +42,7 @@ import java.util.List;
 public class ProfileFragment extends Fragment
              implements ProfileAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
 
+  private static final String TAG = ProfileFragment.class.getSimpleName();
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
 
@@ -64,13 +66,14 @@ public class ProfileFragment extends Fragment
     pickContactLauncher = registerForActivityResult(
       new ActivityResultContracts.StartActivityForResult(),
       result -> {
-        if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
-          Intent data = result.getData();
+        Intent data = result.getData();
+        Log.i(TAG, "Received result from activity, resultCode=" + result.getResultCode() + ", data=" + data);
+        if (result.getResultCode() == Activity.RESULT_OK && data != null) {
           List<Integer> selected = data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA);
           List<Integer> deselected = data.getIntegerArrayListExtra(ContactMultiSelectionActivity.DESELECTED_CONTACTS_EXTRA);
           Util.runOnAnyBackgroundThread(() -> {
-            if (deselected != null) {
-              // Remove members that were deselected
+            if (deselected != null) { // Remove members that were deselected
+              Log.i(TAG, deselected.size() + " members removed");
               int[] members = dcContext.getChatContacts(chatId);
               for (int contactId : deselected) {
                 for (int memberId : members) {
@@ -82,8 +85,8 @@ public class ProfileFragment extends Fragment
               }
             }
 
-            if (selected != null) {
-              // Add new members
+            if (selected != null) { // Add new members
+              Log.i(TAG, selected.size() + " members added");
               for (Integer contactId : selected) {
                 if (contactId != null) {
                   dcContext.addContactToChat(chatId, contactId);
