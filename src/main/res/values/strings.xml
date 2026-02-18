@@ -728,6 +728,7 @@
     <string name="pref_your_name">Your Name</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Bio</string>
+    <string name="chat_description">Description</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter Key Sends</string>
     <string name="pref_enter_sends_explain">Pressing the Enter key will send text messages</string>
@@ -889,6 +890,9 @@
     <string name="group_image_changed_by_you">You changed the group image.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Group image changed by %1$s.</string>
+    <string name="chat_description_changed_by_you">You changed the chat description.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">Chat description changed by %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Member %1$s added.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
