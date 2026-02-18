@@ -51,7 +51,9 @@
     <string name="archive">Archivar</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Des-archivar</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Silenciar</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Silenciar</string>
     <string name="ephemeral_messages">Desaparición de mensajes</string>
     <string name="ephemeral_messages_hint">Estos ajustes se aplican a todos los participantes que usan Delta Chat. Sin embargo, pueden copiar, guardar y reenviar mensajes o usar otros clientes de correo</string>
@@ -190,6 +192,7 @@
     <string name="add_stickers_instructions">Para añadir stickers, toca en \"Abrir carpeta de stickers\", crea una subcarpeta para tu colección de stickers y copia imágenes y stickers allí</string>
     <string name="open_sticker_folder">Abrir la carpeta de stickers</string>
     <string name="images">Imágenes</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
     <string name="voice_message">Mensaje de voz</string>
     <string name="forwarded">Reenviado</string>
@@ -226,6 +229,7 @@
     <string name="games">Juegos</string>
     <string name="tools">Herramientas</string>
     <string name="app_size">Tamaño</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Publicado</string>
     <string name="add_to_chat">Agregar al chat</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -741,6 +745,7 @@
     <string name="pref_your_name">Tu nombre</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Texto de firma</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Tecla Intro envía</string>
     <string name="pref_enter_sends_explain">La tecla Intro enviará tu mensaje</string>
     <string name="pref_outgoing_media_quality">Calidad de multimedia saliente</string>
@@ -830,6 +835,7 @@ Desactiva este ajuste solo si has eliminado este perfil de todos tus demás disp
     <string name="n_bytes_message">Mensaje de %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Descarga disponible hasta %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Seleccionar perfil</string>
     <string name="profile_image_select">Seleccionar imagen de perfil</string>
     <string name="select_your_new_profile_image">Seleccionar tu nueva imagen de perfil</string>

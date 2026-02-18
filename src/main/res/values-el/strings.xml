@@ -37,6 +37,7 @@
     <string name="archive">Αρχειοθέτηση</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Αποαρχειοθ</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Σίγαση</string>
     <string name="ephemeral_messages">Μηνύματα που εξαφανίζονται</string>
     <string name="ephemeral_messages_hint">Ισχύει για όλα τα μέλη της συνομιλίας αν χρησιμοποιούν Delta Chat: έχουν την δυνατότητα αντιγραφής, αποθήκευσης, και κοινοποίησης μηνυμάτων ή χρήση άλλων  e-mail πελατών.</string>
@@ -132,6 +133,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Αυτοκόλλητο</string>
     <string name="images">Εικόνες</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Ήχοι</string>
     <string name="voice_message">Μήνυμα φωνής</string>
     <string name="forwarded">Κοινοποίηση</string>
@@ -475,6 +477,7 @@
     <string name="pref_your_name">Το όνομά σου</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Υπογραφή</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Το Enter στέλνει</string>
     <string name="pref_enter_sends_explain">Τα μηνύματα θα στέλνονται με το πάτημα του Enter</string>
     <string name="pref_outgoing_media_quality">Ποιότητα Εξερχόμενων Μέσων</string>

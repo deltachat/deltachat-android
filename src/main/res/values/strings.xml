@@ -51,7 +51,9 @@
     <string name="archive">Archive</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Unarchive</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Mute</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Muted</string>
     <string name="ephemeral_messages">Disappearing Messages</string>
     <string name="ephemeral_messages_hint">Applies to all members of this chat; they can still copy, save, and forward messages.</string>
@@ -182,6 +184,7 @@
     <string name="ask_delete_sticker">Delete this sticker?</string>
     <string name="sticker_picker_empty_hint">Tap a sticker to add it here.</string>
     <string name="images">Images</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
     <string name="voice_message">Voice Message</string>
     <string name="forwarded">Forwarded</string>
@@ -218,6 +221,7 @@
     <string name="games">Games</string>
     <string name="tools">Tools</string>
     <string name="app_size">Size</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Published</string>
     <string name="add_to_chat">Add to Chat</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -711,7 +715,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Send %1$d files to \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Send %1$d file(s) to %2$d chats?</string>
-    <string name="videos_sent_without_recoding">(Videos are sent as original, big files. To send videos as smaller files, attach them separately)</string>
+    <string name="videos_sent_without_recoding">(Sending multiple videos will send them as-is, which may be large. To make them smaller and save data, you can send each video in its own message)</string>
     <string name="share_text_multiple_chats">Send this text to %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Sharing aborted due to missing permissions.</string>
 
@@ -727,6 +731,8 @@
     <string name="pref_your_name">Your Name</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Bio</string>
+    <string name="chat_description">Description</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter Key Sends</string>
     <string name="pref_enter_sends_explain">Pressing the Enter key will send text messages</string>
     <string name="pref_outgoing_media_quality">Outgoing Media Quality</string>
@@ -815,6 +821,7 @@
     <string name="n_bytes_message">%1$s message</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Download maximum available until %1$s</string>
+    <!-- deprecated -->
     <string name="select_profile">Select Profile</string>
     <string name="profile_image_select">Select Profile Image</string>
     <string name="select_your_new_profile_image">Select your new profile image</string>
@@ -886,6 +893,9 @@
     <string name="group_image_changed_by_you">You changed the group image.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Group image changed by %1$s.</string>
+    <string name="chat_description_changed_by_you">You changed the chat description.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">Chat description changed by %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Member %1$s added.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->

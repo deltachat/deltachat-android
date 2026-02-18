@@ -51,7 +51,9 @@
     <string name="archive">بایگۊوی</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">و در زیڌن ز بایگۊوی</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">بؽ دونگ</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">بؽ دونگ</string>
     <string name="ephemeral_messages">پیوما بؽڌارکۊنی</string>
     <string name="ephemeral_messages_hint">یو ری پوی منتورا ای گوفت وو لوفت، ٱر دلتا چت ن و کار بگرن ائمال ابۊ. ولی هنی ترن پیوما ن لف گیری، زفت وو فوروارد کونن.</string>
@@ -163,6 +165,7 @@
     <string name="add_stickers_instructions">سی ٱووردن برچسب ری «گۊشیڌن دوبلگه برچسب» بزنین، ی لم دوبلگه ای سی کتن برچسب خوتووݩ وورکل کۊنین وو برچسبا ن و اوچو بکشین</string>
     <string name="open_sticker_folder">گۊشیڌن دوبلگه استیکر</string>
     <string name="images">شؽواتا</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">دونگ</string>
     <string name="voice_message">پیوم دونگ</string>
     <string name="forwarded">فوروارد وابیڌه</string>
@@ -199,6 +202,7 @@
     <string name="games">بازی یل</string>
     <string name="tools">ٱوزار</string>
     <string name="app_size">هندا</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">تیجنیڌن</string>
     <string name="add_to_chat">ٱووردن و گوفت وو لوفت</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->

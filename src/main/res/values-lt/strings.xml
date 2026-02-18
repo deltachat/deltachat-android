@@ -183,6 +183,7 @@
     <string name="add_stickers_instructions">Norėdami pridėti lipdukų, bakstelėkite „Atverti lipdukų aplanką“, sukurkite savo lipdukų paketui poaplankį ir tempkite į jį paveikslų ir lipdukų failus</string>
     <string name="open_sticker_folder">Atverti lipdukų aplanką</string>
     <string name="images">Paveikslai</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Garso įrašai</string>
     <string name="voice_message">Balso žinutė</string>
     <string name="forwarded">Persiųsta</string>
@@ -212,6 +213,7 @@
     <string name="games">Žaidimai</string>
     <string name="tools">Įrankiai</string>
     <string name="app_size">Dydis</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Paskelbta</string>
     <string name="add_to_chat">Pridėti į pokalbį</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
@@ -240,6 +242,7 @@
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Naujas adresatas</string>
     <string name="menu_new_classic_contact">Pridėti adresatą rankiniu būdu</string>
+    <string name="new_classic_contact_explain">Rankiniu būdu pridėtiems adresatams galima rašyti klasikinius el. laiškus, kurie, negarantuojama, jog bus šifruoti ištisiniu būdu.</string>
     <string name="menu_new_chat">Naujas pokalbis</string>
     <string name="menu_new_group">Nauja grupė</string>
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
@@ -326,6 +329,8 @@
     <string name="menu_zoom_out">Mažinti</string>
     <string name="menu_save_log">Įrašyti žurnalą</string>
     <string name="menu_more_options">Daugiau parinkčių</string>
+    <string name="jump_to_message">Peršokti į žinutę</string>
+    <string name="jump_to_original_message">Peršokti į pradinę žinutę</string>
     <string name="copy_json">Kopijuoti JSON</string>
     <string name="replace_draft">Pakeisti juodraštį</string>
     <string name="title_share_location">Bendrinti savo vietą su visais grupės dalyviais</string>
@@ -345,6 +350,8 @@
     <string name="reply_privately">Atsakyti privačiai</string>
     <string name="source_code">Pirminis kodas</string>
     <string name="donate">Paaukoti</string>
+    <string name="donate_device_msg">❤️ Atrodo, kad mėgaujatės naudodami Delta Chat!\n\nApsvarstykite galimybę paaukoti, kad užtikrintumėte, jog Delta Chat ir toliau visiems būtų nemokama.\n\nNors Delta Chat yra nemokama ir atvirojo kodo, jos plėtojimas kainuoja pinigus. Padėkite mums išlaikyti Delta Chat nepriklausomą ir paversti ją ateityje dar labiau nuostabia.\n\nhttps://delta.chat/donate</string>
+
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
     <string name="mute_for_eight_hours">Išjungti 8 valandoms</string>
     <string name="mute_for_one_day">Išjungti 1 dienai</string>
@@ -367,10 +374,28 @@
     <string name="answer_call">Atsiliepti</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Atmesti</string>
+    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
+    <string name="outgoing_call">Išsiunčiamasis skambutis</string>
+    <string name="outgoing_audio_call">Išsiunčiamasis garso skambutis</string>
+    <string name="outgoing_video_call">Išsiunčiamasis vaizdo skambutis</string>
+    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
+    <string name="incoming_call">Gaunamasis skambutis</string>
+    <string name="incoming_audio_call">Gaunamasis garso skambutis</string>
+    <string name="incoming_video_call">Gaunamasis vaizdo skambutis</string>
     <string name="missed_call">Praleistas skambutis</string>
     <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
     <string name="call_date_and_duration">%1$s, %2$s</string>
 
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Ar tikrai norite išeiti?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Ištrinti %d pokalbį?</item>
+        <item quantity="few">Ištrinti %d pokalbius?</item>
+        <item quantity="many">Ištrinti %d pokalbių?</item>
+        <item quantity="other">Ištrinti %d pokalbį?</item>
+    </plurals>
+    <string name="ask_delete_named_chat">Ištrinti pokalbį „%1$s“?</string>
     <string name="ask_delete_message">Ištrinti šią žinutę visuose jūsų įrenginiuose?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Ištrinti %d žinutę visuose jūsų įrenginiuose?</item>
@@ -385,6 +410,8 @@
     <string name="ask_start_chat_with">Pradėti pokalbį su %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Pašalinti %1$s iš grupės?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Pašalinti %1$s iš kanalo?</string>
     <string name="open_url_confirmation">Ar norite atverti šią nuorodą?</string>
 
 
@@ -419,6 +446,7 @@
     <string name="chat_new_group_hint">Rašykite pirmąją žinutę, taip leisdami kitiems atsakyti šioje grupėje..\n\n• Nieko tokio, jei ne visi dalyviai naudoja Delta Chat.\n\n• Pirmosios žinutės pristatymas gali šiek tiek užtrukti.</string>
     <string name="chat_record_slide_to_cancel">Perbraukite, norėdami atsisakyti</string>
     <string name="chat_record_explain">Bakstelėkite ir laikykite, norėdami įrašyti balso žinutę. Atleiskite, norėdami išsiųsti</string>
+    <string name="chat_no_chats_yet_title">Nėra pokalbių.\nPaspauskite „+“ norėdami pradėti naują pokalbį.</string>
     <string name="chat_all_archived">Visi pokalbiai archyvuoti.\nPaspauskite „+“ norėdami pradėti naują pokalbį.</string>
     <string name="chat_share_with_title">Bendrinti su</string>
     <string name="chat_input_placeholder">Žinutė</string>
@@ -434,14 +462,23 @@
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Įrašyta</string>
     <string name="save_as">Įrašyti kaip</string>
+    <string name="retry_send">Bandyti iš naujo išsiųsti žinutę</string>
     <string name="cannot_display_unsuported_file_type">Nepavyksta atvaizduoti šio failo tipo: %s</string>
     <string name="attachment_failed_to_load">Nepavyko įkelti priedo</string>
+    <!-- mailing lists -->
+    <string name="mailing_list">Pašto prenumeratos sąrašas</string>
+
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
     <string name="start_app">Pradėti…</string>
+    <string name="enable_realtime">Tikralaikės programėlės</string>
     <string name="puny_code_warning_header">Aptikta įtartina nuoroda</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Ar tikrai norite apsilankyti %1$s?</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">Ši nuoroda gali iškreipti simbolius atvaizduodama juos kaip panašius simbolius iš kitų abėcėlių. Ši nuoroda, pavadinimu %1$s nukreips į %2$s kas savo ruožtu yra normalu ne lotynų simboliams. Jei tokių simbolių nesitikėjote, gali būti, jog ši nuoroda yra kenksminga.</string>
+
+
     <!-- search -->
     <string name="search">Ieškoti</string>
     <string name="search_in_chat">Ieškoti pokalbyje</string>
@@ -486,16 +523,22 @@
     <string name="multidevice_qr_subtitle">Nuskenuokite norėdami nustatyti antrąjį įrenginį, skirtą %1$s</string>
     <string name="multidevice_receiver_title">Pridėti kaip antrąjį įrenginį</string>
     <string name="multidevice_open_settings_on_other_device">Pirmajame įrenginyje pereikite į „Nustatymai / Pridėti antrąjį įrenginį“ ir nuskenuokite ten rodomą kodą</string>
+    <string name="multidevice_receiver_scanning_ask">Kopijuoti profilį iš kito įrenginio į šį įrenginį?</string>
+    <string name="multidevice_receiver_needs_update">Profilis, kurį norite importuoti, yra iš naujesnės Delta Chat versijos.\n\nNorėdami tęsti ir nustatyti antrąjį įrenginį, atnaujinkite šiame įrenginyje Delta Chat į naujausią versiją.</string>
     <string name="multidevice_abort">Nutraukti antrojo įrenginio nustatymą?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">Tai padarys į iškarpinę nukopijuotą QR kodą negaliojantį.</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Profilis perduotas į jūsų antrąjį įrenginį.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Ruošiama paskyra…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">Perduodama…</string>
     <string name="troubleshooting">Nesklandumų šalinimas</string>
 
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Gaunamosios žinutės</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
-    <string name="outgoing_messages">Siunčiamosios žinutės</string>
+    <string name="outgoing_messages">Išsiunčiamosios žinutės</string>
     <!-- deprecated -->
     <string name="storage_on_domain">Saugykla ties %1$s</string>
     <string name="connectivity">Jungiamumas</string>
@@ -512,6 +555,10 @@
     <string name="not_supported_by_provider">Jūsų teikėjas nepalaiko šios ypatybės.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Žinutės</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">Panaudota %1$s iš %2$s</string>
+
+
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Sukurti naują profilį</string>
@@ -528,6 +575,10 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Naudoti kitą serverį</string>
     <string name="instant_onboarding_other_server">Išvardyti retransliavimo serverius</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <string name="instant_onboarding_group_info">Sukurti profilį, kad būtų prisijungta prie grupės „%1$s“.</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
+    <string name="instant_onboarding_contact_info">Sukurti profilį, kad būtų pradėtas pokalbis su %1$s.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">Sukurti naują profilį ir pradėti pokalbį su %1$s?</string>
     <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
@@ -554,12 +605,25 @@
     <string name="proxy_add">Pridėti įgaliotąjį serverį</string>
     <string name="proxy_add_explain">Palaikomi įgaliotųjų serverių tipai: HTTP(S), SOCKS5 ir Shadowsocks.</string>
     <string name="proxy_add_url_hint">Įveskite čia įgaliotojo serverio nuorodą</string>
+    <string name="proxy_invalid">Neteisingas arba nepalaikomas įgaliotasis serveris</string>
     <string name="proxy_list_header">Įrašyti įgaliotieji serveriai</string>
     <string name="proxy_delete">Ištrinti įgaliotąjį serverį</string>
     <string name="proxy_delete_explain">Ar tikrai norite ištrinti „%1$s“?</string>
     <string name="proxy_use_proxy_confirm">Ar norite naudoti įgaliotąjį serverį „%1$s“?</string>
+    <string name="proxy_share_explain">Jūsų draugai gali pridėti šį įgaliotąjį serverį skenuodami QR kodą.</string>
+    <string name="proxy_enabled">Įgaliotasis serveris įjungtas</string>
+    <string name="proxy_enabled_hint">Jūs naudojate įgaliotąjį serverį. Jei kyla problemų su jungiamumu, pamėginkite kitą įgaliotąjį serverį.</string>
     <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
     <string name="transports">Retransliavimai</string>
+    <string name="add_transport">Pridėti retransliavimą</string>
+    <string name="remove_transport">Šalinti retransliavimą</string>
+    <string name="edit_transport">Taisyti retransliavimą</string>
+    <!-- shown if a QR code was scanned that can be used as a relay -->
+    <string name="confirm_add_transport">Pridėti šį retransliavimą?</string>
+    <string name="invalid_transport_qr">Nuskenuotame QR kode nėra tinkamo retransliavimo.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_transport">Šalinti retransliavimą „%1$s“?\n\nJūsų adresatai galės su jumis susisiekti tik tuo atveju, jei anksčiau buvote su jais susisiekę per kitą retransliavimą.\n\nJei abejojate, pašalinkite retransliavimą vėliau.</string>
+
     <string name="login_certificate_checks">Liudijimų patikrinimai</string>
     <string name="login_error_mail">Įveskite teisingą el. pašto adresą.</string>
     <string name="login_error_server">Įveskite teisingą serverį / IP adresą</string>
@@ -577,7 +641,10 @@
     <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
     <string name="profile_tag">Profilio etiketė</string>
     <string name="profile_tag_hint">pvz., Darbas, Šeima</string>
-    <string name="delete_account">Ištrinti paskyrą</string>
+    <string name="profile_tag_explain">Nustatykite tik jums matomą etiketę, padėsiančią jums atskirti profilius.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">Perkelti į viršų</string>
+    <string name="delete_account">Ištrinti profilį</string>
     <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
     <string name="delete_account_explain_with_name">Visi „%s“ paskyros duomenys šiame įrenginyje bus ištrinti, įskaitant jūsų ištisinio šifravimo sąranką, adresatus, pokalbius, žinutes ir mediją. Šį veiksmą nebeįmanoma bus atšaukti.</string>
     <string name="unconfigured_account">Nesukonfigūruota paskyra</string>
@@ -592,7 +659,7 @@
     <string name="share_abort">Bendrinimas nutrauktas dėl trūkstamų leidimų.</string>
 
 
-    <string name="pref_profile_info_headline">Jūsų profilio informacija</string>
+    <string name="pref_profile_info_headline">Jūsų profilis</string>
     <string name="pref_profile_photo">Profilio nuotrauka</string>
     <string name="pref_blocked_contacts">Užblokuoti adresatai</string>
     <string name="blocked_empty_hint">Jei užblokuosite adresatus, jie bus rodomi čia.</string>
@@ -600,9 +667,10 @@
     <string name="pref_your_name">Jūsų vardas</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Parašo tekstas</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Įvedimo (Enter) klavišas išsiunčia</string>
     <string name="pref_enter_sends_explain">Paspaudus įvedimo (Enter) klavišą, bus išsiunčiamos tekstinės žinutės</string>
-    <string name="pref_outgoing_media_quality">Išsiunčiamos medijos kokybė</string>
+    <string name="pref_outgoing_media_quality">Išsiunčiamosios medijos kokybė</string>
     <string name="pref_outgoing_balanced">Subalansuota</string>
     <string name="pref_outgoing_worse">Blogesnė kokybė, mažas dydis</string>
     <string name="pref_vibrate">Vibruoti</string>
@@ -661,12 +729,14 @@
     <string name="pref_imap_folder_warn_disable_defaults">Jeigu išjungiate šį parametrą, įsitikinkite, kad jūsų serveris ir kiti klientai yra sukonfigūruoti atitinkamai.\n\nPriešingu atveju, tai gali iš viso neveikti.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
     <string name="pref_multidevice">Kelių įrenginių veiksena</string>
+    <string name="pref_multidevice_explain">Sinchronizuoti jūsų žinutes su kitais įrenginiais. Automatiškai įjungta, kai pridėtas antrasis įrenginys</string>
     <string name="pref_auto_folder_moves">Automatiniai perkėlimai į DeltaChat aplanką</string>
     <string name="pref_show_emails">Rodyti klasikinius el. laiškus</string>
     <string name="pref_show_emails_no">Ne, tik pokalbius</string>
     <string name="pref_show_emails_accepted_contacts">Iš priimtų adresatų</string>
     <string name="pref_show_emails_all">Iš visų</string>
     <string name="pref_experimental_features">Eksperimentinės ypatybės</string>
+    <string name="pref_experimental_features_explain">Šios ypatybės gali būti nestabilios ir gali būti pakeistos ar pašalintos</string>
     <string name="pref_background_default">Numatytasis fonas</string>
     <string name="pref_background_default_color">Numatytoji spalva</string>
     <string name="pref_background_custom_image">Tinkintas paveikslas</string>
@@ -687,6 +757,10 @@
     <string name="pref_edit_profile">Taisyti profilį</string>
     <string name="disable_imap_idle">Išjungti IMAP IDLE</string>
     <string name="send_stats_to_devs">Siųsti statistiką Delta Chat plėtotojams</string>
+    <string name="stats_device_message">Ar norite padėti tobulinti Delta Chat ir pagelbėti tyrimams, kas savaitę siunčiant anoniminę statistiką apie naudojimąsi Delta Chat?\n\n👉 Bakstelėkite čia… 👈</string>
+    <string name="stats_confirmation_dialog">Ar norite padėti tobulinti Delta Chat ir pagelbėti tyrimams, kas savaitę siunčiant anoniminę statistiką apie naudojimąsi Delta Chat?</string>
+    <string name="disable">Išjungti</string>
+    <string name="stats_keep_sending">Siųsti ir toliau</string>
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Paieškos rezultatai</string>
     <string name="emoji_not_found">Nerasta jokių šypsniukų</string>
@@ -786,6 +860,7 @@
     <string name="chat_unencrypted_explanation">Žinutės šiame pokalbyje naudoja klasikinius el. laiškus ir nėra šifruotos ištisinio perdavimo būdu.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Žinutės yra šifruotos ištisinio perdavimo būdu. Bakstelėkite norėdami sužinoti daugiau.</string>
     <string name="chat_protection_enabled_explanation">Visos žinutės šiame pokalbyje yra šifruotos ištisinio perdavimo būdu.\n\nIštisinis šifravimas išlaiko žinutes tarp jūsų ir jūsų pokalbio partnerių privačias. Netgi serveriai, teikėjai ar retransliavimai negali jų perskaityti.</string>
+    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s reikalauja ištisinio šifravimo, kuris kol kas nėra nustatytas šiam pokalbiui. Bakstelėkite norėdami sužinoti daugiau.</string>
     <string name="learn_more">Sužinoti daugiau</string>
 
     <!-- %1%s will be replaced by date and time in some human-readable format -->
@@ -805,6 +880,7 @@
     <string name="qrscan_contains_url">Nuskenuoto QR kodo URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Kontrolinis kodas</string>
     <string name="withdraw_qr_code">Pasyvinti QR kodą</string>
+    <string name="revive_verifycontact_explain">Šis QR kodas buvo atstatytas ir daugiau nebėra aktyvus.</string>
     <string name="revive_qr_code">Aktyvuoti QR kodą</string>
     <string name="qrshow_title">QR pakvietimo kodas</string>
     <string name="qrshow_x_verified">%1$s patvirtintas.</string>
@@ -812,6 +888,7 @@
     <string name="qrshow_join_group_title">QR pakvietimo kodas</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Nuskenuokite tai, norėdami prisijungti prie \"%1$s\" grupės.</string>
+    <string name="qrshow_join_channel_hint">Nuskenuokite norėdami prisijungti prie kanalo „%1$s“</string>
     <string name="qrshow_join_contact_title">QR pakvietimo kodas</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Nuskenuokite norėdami pradėti pokalbį su %1$s</string>
@@ -828,6 +905,8 @@
     <string name="contact_verified">%1$s patvirtintas.</string>
     <string name="contact_blocked">Jūs užblokavote adresatą</string>
     <string name="mailto_dialog_header_select_chat">Pasirinkite pokalbį, į kurį siųsti žinutę</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="confirm_replace_draft">Pokalbyje „%1$s“ jau yra žinutės juodraštis. Ar norite jį pakeisti?</string>
     <string name="mailto_link_could_not_be_decoded">nepavyko dekoduoti mailto nuorodos: %1$s</string>
 
     <!-- notifications  -->
@@ -927,4 +1006,6 @@
     <string name="perm_enable_bg_reminder_title">Bakstelėkite čia, norėdami gauti žinutes, kol Delta Chat veikia fone.</string>
     <string name="perm_enable_bg_already_done">Jūs jau leidote Delta Chat gauti žinutes fone.\n\nJei žinutės vis tiek nepristatomos fone, patikrinkite taip pat savo sistemos nustatymus.</string>
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_2_0">Kas naujo?\n\n💯 Ištisinis šifravimas yra patikimas ir visą laiką. Pakabinamųjų spynų 🔒 nebėra!\n\n✉️ Klasikiniai el. laiškai be ištisinio šifravimo yra pažymėti voko simboliu\n\n😻 Naujas, pagerintas profilio langas visiems jūsų adresatams\n\n🔲 Naujas mygtukas, skirtas greitai pasiekti pokalbyje naudojamas programėles\n\n❤️ Prašome paaukoti, kad padėtumėte mums išlikti nepriklausomiems ir galėtume toliau teikti patobulinimus: %1$s</string>
+</resources>

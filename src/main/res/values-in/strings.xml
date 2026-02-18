@@ -38,6 +38,7 @@
     <string name="archive">Arsip</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Tidak diarsip</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Diam</string>
     <string name="ephemeral_messages">Pesan yang berhilangan</string>
     <string name="ephemeral_messages_hint">Pengaturan ini berlaku untuk semua peserta yang menggunakan Delta Chat. Namun, mereka dapat menyalin, menyimpan, dan meneruskan pesan atau menggunakan klien email lainnya.</string>
@@ -130,6 +131,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Stiker</string>
     <string name="images">Gambar</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
     <string name="voice_message">Pesan suara</string>
     <string name="forwarded">Diteruskan</string>
@@ -402,6 +404,7 @@
     <string name="pref_your_name">Nama Anda</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Signature text</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Tombol Enter mengirim</string>
     <string name="pref_enter_sends_explain">Menekan tombol Enter akan mengirimkan teks pesan</string>
     <string name="pref_outgoing_media_quality">Kualitas media yang dikirim</string>
