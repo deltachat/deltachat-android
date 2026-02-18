@@ -180,7 +180,7 @@
     <string name="open_sticker_folder">Open Sticker Folder</string>
     <string name="ask_add_sticker_to_collection">Add this sticker to your collection?</string>
     <string name="ask_delete_sticker">Delete this sticker?</string>
-    <string name="sticker_picker_empty_hint">Saved stickers will appear here.</string>
+    <string name="sticker_picker_empty_hint">Tap a sticker to add it here.</string>
     <string name="images">Images</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Voice Message</string>
