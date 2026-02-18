@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -28,6 +30,8 @@ import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
+  private ActivityResultLauncher<Intent> screenLockLauncher;
+
   private ListPreference mediaQuality;
   private ListPreference autoDownload;
   private CheckBoxPreference readReceiptsCheckbox;
@@ -38,6 +42,15 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   @Override
   public void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
+
+    screenLockLauncher = registerForActivityResult(
+      new ActivityResultContracts.StartActivityForResult(),
+      result -> {
+        if (result.getResultCode() == RESULT_OK) {
+          performBackup();
+        }
+      }
+    );
 
     mediaQuality = (ListPreference) this.findPreference("pref_compression");
     if (mediaQuality != null) {
@@ -151,14 +164,6 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     }
   }
 
-  @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP) {
-      performBackup();
-    }
-  }
-
   public static CharSequence getSummary(Context context) {
     DcContext dcContext = DcHelper.getContext(context);
     final String onRes = context.getString(R.string.on);
@@ -253,7 +258,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private class BackupListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(@NonNull Preference preference) {
-      boolean result = ScreenLockUtil.applyScreenLock(requireActivity(), getString(R.string.pref_backup), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP);
+      boolean result = ScreenLockUtil.applyScreenLock(requireActivity(), getString(R.string.pref_backup), getString(R.string.enter_system_secret_to_continue), screenLockLauncher);
       if (!result) {
         performBackup();
       }
