@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Allow to set chat description
+
 ## v2.43.0
 2026-02
 

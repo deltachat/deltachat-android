@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -44,12 +45,14 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 
 public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
                                  implements ItemClickListener
 {
 
+  private static final String TAG = GroupCreateActivity.class.getSimpleName();
   public static final String EDIT_GROUP_CHAT_ID = "edit_group_chat_id";
   public static final String CREATE_BROADCAST = "create_broadcast";
   public static final String UNENCRYPTED = "unencrypted";
@@ -63,6 +66,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private boolean unencrypted;
   private boolean broadcast;
   private EditText     groupName;
+  private EditText     chatDescription;
   private ListView     lv;
   private ImageView    avatar;
   private Bitmap       avatarBmp;
@@ -140,6 +144,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     lv                  = ViewUtil.findById(this, R.id.selected_contacts_list);
     avatar              = ViewUtil.findById(this, R.id.avatar);
     groupName           = ViewUtil.findById(this, R.id.group_name);
+    chatDescription     = ViewUtil.findById(this, R.id.chat_description);
     TextView chatHints  = ViewUtil.findById(this, R.id.chat_hints);
 
     // add padding to avoid content hidden behind system bars
@@ -178,6 +183,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     } else if (unencrypted) {
       avatar.setVisibility(View.GONE);
       groupName.setHint(R.string.subject);
+      findViewById(R.id.chat_description_container).setVisibility(View.GONE);
       chatHints.setVisibility(View.GONE);
     } else {
       chatHints.setVisibility(View.GONE);
@@ -186,6 +192,14 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if(isEdit()) {
       groupName.setText(dcContext.getChat(groupChatId).getName());
       lv.setVisibility(View.GONE);
+
+      Rpc rpc = DcHelper.getRpc(this);
+      try {
+        String description = rpc.getChatDescription(rpc.getSelectedAccountId(), groupChatId);
+        chatDescription.setText(description);
+      } catch (RpcException e) {
+        Log.e(TAG, "RPC error", e);
+      }
     }
   }
 
@@ -261,22 +275,22 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void createGroup(String groupName) {
-    if (broadcast) {
-      try {
-        groupChatId = DcHelper.getRpc(this).createBroadcast(dcContext.getAccountId(), groupName);
-      } catch (RpcException e) {
-        e.printStackTrace();
-        return;
+    Rpc rpc = DcHelper.getRpc(this);
+    int accId;
+    try {
+      accId = rpc.getSelectedAccountId();
+      if (broadcast) {
+        groupChatId = rpc.createBroadcast(accId, groupName);
+      } else if (unencrypted) {
+        groupChatId = rpc.createGroupChatUnencrypted(accId, groupName);
+      } else {
+        groupChatId = rpc.createGroupChat(accId, groupName, false);
       }
-    } else if (unencrypted) {
-      try {
-        groupChatId = DcHelper.getRpc(this).createGroupChatUnencrypted(dcContext.getAccountId(), groupName);
-      } catch (RpcException e) {
-        e.printStackTrace();
-        return;
-      }
-    } else {
-      groupChatId = dcContext.createGroupChat(groupName);
+
+      rpc.setChatDescription(accId, groupChatId, getChatDescription());
+    } catch (RpcException e) {
+      Log.e(TAG, "RPC error", e);
+      return;
     }
 
     for (int contactId : getAdapter().getContacts()) {
@@ -307,6 +321,14 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     }
     dcContext.setChatName(groupChatId, groupName);
 
+    Rpc rpc = DcHelper.getRpc(this);
+    String description = getChatDescription();
+    try {
+      rpc.setChatDescription(rpc.getSelectedAccountId(), groupChatId, description);
+    } catch (RpcException e) {
+      Log.e(TAG, "RPC error", e);
+    }
+
     if (avatarChanged) AvatarHelper.setGroupAvatar(this, groupChatId, avatarBmp);
 
     attachmentManager.cleanup();
@@ -329,6 +351,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       }
     }
     return ret;
+  }
+
+  private @Nullable String getChatDescription() {
+    return chatDescription.getText() != null ? chatDescription.getText().toString().trim() : "";
   }
 
   @Override
