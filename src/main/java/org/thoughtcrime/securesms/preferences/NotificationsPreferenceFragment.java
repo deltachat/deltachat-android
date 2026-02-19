@@ -16,6 +16,8 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationManagerCompat;
@@ -34,16 +36,33 @@ import org.thoughtcrime.securesms.util.Prefs;
 public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
   private static final String TAG = NotificationsPreferenceFragment.class.getSimpleName();
-  private static final int REQUEST_CODE_NOTIFICATION_SELECTED = 1;
 
   private CheckBoxPreference ignoreBattery;
   private CheckBoxPreference notificationsEnabled;
   private CheckBoxPreference mentionNotifEnabled;
   private CheckBoxPreference reliableService;
+  private ActivityResultLauncher<Intent> ringtonePickerLauncher;
 
   @Override
   public void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
+
+    ringtonePickerLauncher = registerForActivityResult(
+      new ActivityResultContracts.StartActivityForResult(),
+      result -> {
+        if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+          Uri uri = result.getData().getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+
+          if (Settings.System.DEFAULT_NOTIFICATION_URI.equals(uri)) {
+            Prefs.removeNotificationRingtone(getContext());
+          } else {
+            Prefs.setNotificationRingtone(getContext(), uri != null ? uri : Uri.EMPTY);
+          }
+
+          initializeRingtoneSummary(findPreference(Prefs.RINGTONE_PREF));
+        }
+      }
+    );
 
     this.findPreference(Prefs.LED_COLOR_PREF)
         .setOnPreferenceChangeListener(new ListSummaryListener());
@@ -65,8 +84,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
           intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
           intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI, Settings.System.DEFAULT_NOTIFICATION_URI);
           intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, current);
-
-          startActivityForResult(intent, REQUEST_CODE_NOTIFICATION_SELECTED);
+          ringtonePickerLauncher.launch(intent);
 
           return true;
         });
@@ -135,22 +153,6 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     reliableService.setOnPreferenceChangeListener(null);
     reliableService.setChecked(Prefs.reliableService(getActivity()));
     reliableService.setOnPreferenceChangeListener(this);
-  }
-
-  @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode == REQUEST_CODE_NOTIFICATION_SELECTED && resultCode == RESULT_OK && data != null) {
-      Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
-
-      if (Settings.System.DEFAULT_NOTIFICATION_URI.equals(uri)) {
-        Prefs.removeNotificationRingtone(getContext());
-      } else {
-        Prefs.setNotificationRingtone(getContext(), uri != null ? uri : Uri.EMPTY);
-      }
-
-      initializeRingtoneSummary(findPreference(Prefs.RINGTONE_PREF));
-    }
   }
 
   @Override
