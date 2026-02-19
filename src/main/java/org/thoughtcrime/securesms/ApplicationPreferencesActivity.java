@@ -22,6 +22,8 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -88,18 +90,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   }
 
   @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data)
-  {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (resultCode == RESULT_OK && requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) {
-      showBackupProvider();
-      return;
-    }
-    Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment);
-    fragment.onActivityResult(requestCode, resultCode, data);
-  }
-
-  @Override
   public boolean onSupportNavigateUp() {
     FragmentManager fragmentManager = getSupportFragmentManager();
     if (fragmentManager.getBackStackEntryCount() > 0) {
@@ -130,10 +120,20 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   }
 
   public static class ApplicationPreferenceFragment extends CorrectedPreferenceFragment implements DcEventCenter.DcEventDelegate {
+    private ActivityResultLauncher<Intent> screenLockLauncher;
 
     @Override
     public void onCreate(Bundle icicle) {
       super.onCreate(icicle);
+
+      screenLockLauncher = registerForActivityResult(
+        new ActivityResultContracts.StartActivityForResult(),
+        result -> {
+          if (result.getResultCode() == RESULT_OK) {
+            ((ApplicationPreferencesActivity)getActivity()).showBackupProvider();
+          }
+        }
+      );
 
       this.findPreference(PREFERENCE_CATEGORY_PROFILE)
           .setOnPreferenceClickListener(new ProfileClickListener());
@@ -238,7 +238,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
         case PREFERENCE_CATEGORY_MULTIDEVICE:
           if (!ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.multidevice_title),
               getString(R.string.multidevice_this_creates_a_qr_code) + "\n\n" + getString(R.string.enter_system_secret_to_continue),
-              ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS)) {
+              screenLockLauncher)) {
             new AlertDialog.Builder(getActivity())
               .setTitle(R.string.multidevice_title)
               .setMessage(R.string.multidevice_this_creates_a_qr_code)
