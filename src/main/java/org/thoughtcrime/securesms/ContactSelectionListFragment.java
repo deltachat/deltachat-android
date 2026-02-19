@@ -95,9 +95,10 @@ public class ContactSelectionListFragment extends    Fragment
   private ActivityResultLauncher<Intent> newContactLauncher;
 
   @Override
-  public void onActivityCreated(Bundle icicle) {
-    super.onActivityCreated(icicle);
+  public void onCreate(Bundle paramBundle) {
+    super.onCreate(paramBundle);
 
+    dcContext = DcHelper.getContext(requireContext());
     newContactLauncher = registerForActivityResult(
       new ActivityResultContracts.StartActivityForResult(),
       result -> {
@@ -107,14 +108,10 @@ public class ContactSelectionListFragment extends    Fragment
             selectedContacts.add(contactId);
             deselectedContacts.remove(contactId);
           }
-          getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);
+          LoaderManager.getInstance(this).restartLoader(0, null, ContactSelectionListFragment.this);
         }
       }
     );
-
-    dcContext = DcHelper.getContext(getActivity());
-    DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
-    initializeCursor();
   }
 
   @Override
@@ -177,6 +174,9 @@ public class ContactSelectionListFragment extends    Fragment
         getContactSelectionListAdapter().resetActionModeSelection();
       }
     };
+
+    DcHelper.getEventCenter(requireActivity()).addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    initializeCursor();
 
     return view;
   }
