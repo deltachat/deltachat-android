@@ -288,7 +288,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       }
 
       String description = getChatDescription();
-      if (!description.isEmpty) {
+      if (!description.isEmpty()) {
         rpc.setChatDescription(accId, groupChatId, description);
       }
     } catch (RpcException e) {
@@ -356,7 +356,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     return ret;
   }
 
-  private @Nullable String getChatDescription() {
+  private String getChatDescription() {
     return chatDescription.getText() != null ? chatDescription.getText().toString().trim() : "";
   }
 
