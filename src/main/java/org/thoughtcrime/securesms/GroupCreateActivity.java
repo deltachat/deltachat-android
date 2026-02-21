@@ -287,7 +287,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         groupChatId = rpc.createGroupChat(accId, groupName, false);
       }
 
-      rpc.setChatDescription(accId, groupChatId, getChatDescription());
+      String description = getChatDescription();
+      if (!description.isEmpty) {
+        rpc.setChatDescription(accId, groupChatId, description);
+      }
     } catch (RpcException e) {
       Log.e(TAG, "RPC error", e);
       return;
