@@ -834,6 +834,11 @@ public class ConversationFragment extends MessageSelectorFragment
                     WebxdcActivity.openWebxdcActivity(getContext(), messageRecord.getParent(), messageRecord.getWebxdcHref());
                 }
             }
+            else if (messageRecord.getInfoType() == DcMsg.DC_INFO_CHAT_DESCRIPTION_CHANGED) {
+                Intent intent = new Intent(getContext(), ProfileActivity.class);
+                intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, (int) chatId);
+                startActivity(intent);
+            }
             else {
                 int infoContactId = messageRecord.getInfoContactId();
                 if (infoContactId != 0 && infoContactId != DC_CONTACT_ID_SELF) {
