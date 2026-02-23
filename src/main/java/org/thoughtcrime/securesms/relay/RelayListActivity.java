@@ -51,6 +51,7 @@ public class RelayListActivity extends BaseActionBarActivity
   /** QR provided via Intent extras needs to be saved to pass it to QrCodeHandler when authorization finishes */
   private String qrData = null;
   private ActivityResultLauncher<Intent> screenLockLauncher;
+  private ActivityResultLauncher<Intent> qrScannerLauncher;
 
   /** Relay selected for context menu via onRelayLongClick() */
   private EnteredLoginParam contextMenuRelay = null;
@@ -60,6 +61,15 @@ public class RelayListActivity extends BaseActionBarActivity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_relay_list);
 
+    qrScannerLauncher = registerForActivityResult(
+      new ActivityResultContracts.StartActivityForResult(),
+      result -> {
+        if (result.getResultCode() == RESULT_OK) {
+          IntentResult scanResult = IntentIntegrator.parseActivityResult(result.getResultCode(), result.getData());
+          new QrCodeHandler(this).handleOnlyAddRelayQr(scanResult.getContents(), null);
+        }
+      }
+    );
     screenLockLauncher = registerForActivityResult(
       new ActivityResultContracts.StartActivityForResult(),
       result -> {
@@ -103,7 +113,11 @@ public class RelayListActivity extends BaseActionBarActivity
     }
 
     fabAdd.setOnClickListener(v -> {
-      new IntentIntegrator(this).setCaptureActivity(QrActivity.class).addExtra(QrActivity.EXTRA_SCAN_RELAY, true).initiateScan();
+      Intent intent = new IntentIntegrator(this)
+        .setCaptureActivity(QrActivity.class)
+        .addExtra(QrActivity.EXTRA_SCAN_RELAY, true)
+        .createScanIntent();
+      qrScannerLauncher.launch(intent);
     });
 
     LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -237,15 +251,6 @@ public class RelayListActivity extends BaseActionBarActivity
       return true;
     }
     return super.onOptionsItemSelected(item);
-  }
-
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (resultCode == RESULT_OK && requestCode == IntentIntegrator.REQUEST_CODE) {
-      IntentResult scanResult = IntentIntegrator.parseActivityResult(resultCode, data);
-      new QrCodeHandler(this).handleOnlyAddRelayQr(scanResult.getContents(), null);
-    }
   }
 
   @Override

@@ -114,6 +114,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   /** used to store temporarily scanned QR to pass it back to QrCodeHandler when ScreenLockUtil is used */
   private String qrData = null;
   private ActivityResultLauncher<Intent> relayLockLauncher;
+  private ActivityResultLauncher<Intent> qrScannerLauncher;
 
   /** used to store temporarily profile ID to delete after authorization is granted via ScreenLockUtil */
   private int deleteProfileId = 0;
@@ -148,6 +149,16 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
             deleteProfile(deleteProfileId);
             deleteProfileId = 0;
           }
+        }
+      }
+    );
+    qrScannerLauncher = registerForActivityResult(
+      new ActivityResultContracts.StartActivityForResult(),
+      result -> {
+        if (result.getResultCode() == RESULT_OK) {
+          IntentResult scanResult = IntentIntegrator.parseActivityResult(result.getResultCode(), result.getData());
+          qrData = scanResult.getContents();
+          new QrCodeHandler(this).handleQrData(qrData, SecurejoinSource.Scan, SecurejoinUiPath.QrIcon, relayLockLauncher);
         }
       }
     );
@@ -480,7 +491,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       startActivity(new Intent(this, ApplicationPreferencesActivity.class));
       return true;
     } else if (itemId == R.id.menu_qr) {
-      new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
+      Intent intent = new IntentIntegrator(this)
+        .setCaptureActivity(QrActivity.class)
+        .createScanIntent();
+      qrScannerLauncher.launch(intent);
       return true;
     } else if (itemId == R.id.menu_global_map) {
       WebxdcActivity.openMaps(this, 0);
@@ -682,18 +696,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     // title update needed to show "Delta Chat" in case there is only one profile left
     refreshTitle();
-  }
-
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (resultCode != RESULT_OK) return;
-
-    if (requestCode == IntentIntegrator.REQUEST_CODE) {
-      IntentResult scanResult = IntentIntegrator.parseActivityResult(resultCode, data);
-      qrData = scanResult.getContents();
-      new QrCodeHandler(this).handleQrData(qrData, SecurejoinSource.Scan, SecurejoinUiPath.QrIcon, relayLockLauncher);
-    }
   }
 
   @Override
