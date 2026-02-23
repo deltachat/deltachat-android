@@ -5,17 +5,17 @@ import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 
+import androidx.activity.result.ActivityResultLauncher;
+
 public class ScreenLockUtil {
 
-    public static final int REQUEST_CODE_CONFIRM_CREDENTIALS = 1001;
-
-    public static boolean applyScreenLock(Activity activity, String title, String descr, int requestCode) {
+    public static boolean applyScreenLock(Activity activity, String title, String descr, ActivityResultLauncher<Intent> launcher) {
         KeyguardManager keyguardManager = (KeyguardManager) activity.getSystemService(Context.KEYGUARD_SERVICE);
         Intent intent;
         if (keyguardManager != null) {
             intent = keyguardManager.createConfirmDeviceCredentialIntent(title, descr);
             if (intent != null) {
-                activity.startActivityForResult(intent, requestCode);
+                launcher.launch(intent);
                 return true;
             }
         }

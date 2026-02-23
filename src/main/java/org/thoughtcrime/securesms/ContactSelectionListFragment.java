@@ -32,6 +32,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -79,7 +81,6 @@ public class ContactSelectionListFragment extends    Fragment
   public static final String SELECT_UNENCRYPTED_EXTRA = "select_unencrypted_extra";
   public static final String ALLOW_CREATION = "allow_creation";
   public static final String PRESELECTED_CONTACTS = "preselected_contacts";
-  public static final int CONTACT_ADDR_RESULT_CODE = 61123;
 
   private DcContext dcContext;
 
@@ -91,14 +92,26 @@ public class ContactSelectionListFragment extends    Fragment
   private TextView                  emptyView;
   private ActionMode                actionMode;
   private ActionMode.Callback       actionModeCallback;
+  private ActivityResultLauncher<Intent> newContactLauncher;
 
   @Override
-  public void onActivityCreated(Bundle icicle) {
-    super.onActivityCreated(icicle);
+  public void onCreate(Bundle paramBundle) {
+    super.onCreate(paramBundle);
 
-    dcContext = DcHelper.getContext(getActivity());
-    DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
-    initializeCursor();
+    dcContext = DcHelper.getContext(requireContext());
+    newContactLauncher = registerForActivityResult(
+      new ActivityResultContracts.StartActivityForResult(),
+      result -> {
+        if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+          int contactId = result.getData().getIntExtra(NewContactActivity.CONTACT_ID_EXTRA, 0);
+          if (contactId != 0) {
+            selectedContacts.add(contactId);
+            deselectedContacts.remove(contactId);
+          }
+          LoaderManager.getInstance(this).restartLoader(0, null, ContactSelectionListFragment.this);
+        }
+      }
+    );
   }
 
   @Override
@@ -161,6 +174,9 @@ public class ContactSelectionListFragment extends    Fragment
         getContactSelectionListAdapter().resetActionModeSelection();
       }
     };
+
+    DcHelper.getEventCenter(requireActivity()).addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    initializeCursor();
 
     return view;
   }
@@ -314,7 +330,7 @@ public class ContactSelectionListFragment extends    Fragment
             intent.putExtra(NewContactActivity.ADDR_EXTRA, cursorFilter);
           }
           if (isMulti()) {
-            startActivityForResult(intent, CONTACT_ADDR_RESULT_CODE);
+            newContactLauncher.launch(intent);
           } else {
             requireContext().startActivity(intent);
           }
@@ -363,16 +379,4 @@ public class ContactSelectionListFragment extends    Fragment
     }
   }
 
-  @Override
-  public void onActivityResult(int reqCode, int resultCode, final Intent data) {
-    super.onActivityResult(reqCode, resultCode, data);
-    if (resultCode == Activity.RESULT_OK && reqCode == CONTACT_ADDR_RESULT_CODE) {
-      int contactId = data.getIntExtra(NewContactActivity.CONTACT_ID_EXTRA, 0);
-      if (contactId != 0) {
-        selectedContacts.add(contactId);
-        deselectedContacts.remove(contactId);
-      }
-      getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);
-    }
-  }
 }

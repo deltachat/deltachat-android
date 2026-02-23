@@ -86,7 +86,6 @@ public class ConversationFragment extends MessageSelectorFragment
     private static final String TAG       = ConversationFragment.class.getSimpleName();
 
     private static final int SCROLL_ANIMATION_THRESHOLD = 50;
-    private static final int CODE_ADD_EDIT_CONTACT      = 77;
 
     private final ActionModeCallback actionModeCallback     = new ActionModeCallback();
     private final ItemClickListener  selectionClickListener = new ConversationFragmentItemClickListener();
@@ -930,17 +929,6 @@ public class ConversationFragment extends MessageSelectorFragment
         ReactionsDetailsFragment dialog = ReactionsDetailsFragment.newInstance(messageRecord.getId());
         dialog.show(getActivity().getSupportFragmentManager(), null);
       }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == CODE_ADD_EDIT_CONTACT && getContext() != null) {
-//      ApplicationContext.getInstance(getContext().getApplicationContext())
-//                        .getJobManager()
-//                        .add(new DirectoryRefreshJob(getContext().getApplicationContext(), false));
-        }
     }
 
     private class ActionModeCallback implements ActionMode.Callback {

@@ -19,7 +19,6 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;
-import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.util.Arrays;
@@ -27,9 +26,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceFragment implements DcEventCenter.DcEventDelegate {
-  protected static final int REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP = ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS + 1;
-  protected static final int REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS = REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP + 1;
-  protected static final int REQUEST_CODE_CONFIRM_CREDENTIALS_ACCOUNT = REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS + 1;
   protected DcContext dcContext;
   private NotificationController notificationController;
 
