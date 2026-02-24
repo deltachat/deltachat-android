@@ -54,6 +54,8 @@ public class Prefs {
   public static final String NOTIFICATION_PRIVACY_PREF = "pref_notification_privacy";
   public static final String NOTIFICATION_PRIORITY_PREF = "pref_notification_priority";
 
+  public  static final String USE_UNIFIEDPUSH = "pref_use_unifiedpush";
+
   private static final String PROFILE_AVATAR_ID_PREF = "pref_profile_avatar_id";
   public static final String INCOGNITO_KEYBORAD_PREF = "pref_incognito_keyboard";
 
@@ -263,6 +265,16 @@ public class Prefs {
   public static boolean reliableService(Context context) {
     boolean defaultVal = !(isFcmPushEnabled(context) || UnifiedPush.getAckDistributor(context) != null);
     return getBooleanPreference(context, RELIABLE_SERVICE_PREF, defaultVal);
+  }
+
+  public static void setUnifiedPush(Context context, boolean value) {
+    setBooleanPreference(context, USE_UNIFIEDPUSH, value);
+  }
+
+  public static boolean unifiedPush(Context context) {
+    // By default, allow UnifiedPush.
+    // This is never used if the flavor supports Play Services.
+    return getBooleanPreference(context, USE_UNIFIEDPUSH, true);
   }
 
   // vibrate
