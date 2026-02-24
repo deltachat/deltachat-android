@@ -248,6 +248,11 @@ public class Prefs {
     return result == null ? null : Uri.parse(result);
   }
 
+  public static void resetReliableService(Context context) {
+    final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+    prefs.edit().remove(RELIABLE_SERVICE_PREF).apply();
+  }
+
   public static void setReliableService(Context context, boolean value) {
     setBooleanPreference(context, RELIABLE_SERVICE_PREF, value);
   }
