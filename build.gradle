@@ -9,6 +9,9 @@ repositories {
     maven {
         url "https://www.jitpack.io"
         name 'JitPack Github wrapper'
+        content {
+            includeGroupByRegex("com\\.github\\..*")
+        }
     }
 }
 
