@@ -1400,4 +1400,5 @@
         letter symbol\n\n😻 New enhanced profile screen for all your contacts\n\n🔲 New button for
         quick access to apps used in a chat\n\n❤️ Please donate to help us remain independent and
         continue to bring improvements: %1$s</string>
+    <string name="dialog_introduce_unifiedpush_selection">You are about to select your UnifiedPush service.</string>
 </resources>
