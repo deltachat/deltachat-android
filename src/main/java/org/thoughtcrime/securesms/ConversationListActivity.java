@@ -334,7 +334,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       // Do nothing, the application supports FCM
       return;
     }
-    // TODO(UP) return if UP is disabled
+    if (!Prefs.unifiedPush(this)) {
+      // return if UnifiedPush is explicitly disabled
+      return;
+    }
     if (UnifiedPush.getAckDistributor(this) != null) {
       // Do nothing, UnifiedPush is initialized with ApplicationContext
       return;
@@ -353,7 +356,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
             if (success) {
               ApplicationContext.getInstance(this).initializePush();
             } else {
-              // TODO(UP): disable UnifiedPush
+              // The user has closed the OS dialog, we consider they don't want UnifiedPush
+              Prefs.setUnifiedPush(this, false);
             }
             return null;
           });
