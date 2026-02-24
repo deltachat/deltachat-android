@@ -19,6 +19,7 @@ import java.util.Set;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
+import org.unifiedpush.android.connector.UnifiedPush;
 
 public class Prefs {
 
@@ -181,7 +182,7 @@ public class Prefs {
     return getIntegerPreference(context, STATS_DEVICE_MSG_ID_PREF, 0);
   }
 
-  public static boolean isPushEnabled(Context context) {
+  public static boolean isFcmPushEnabled(Context context) {
     return BuildConfig.USE_PLAY_SERVICES;
   }
 
@@ -259,7 +260,8 @@ public class Prefs {
     }
 
     // if the key was unset, then calculate default value
-    return !isPushEnabled(context) || !DcHelper.getAccounts(context).isAllChatmail();
+    return !(isFcmPushEnabled(context) || UnifiedPush.getAckDistributor(context) != null)
+        || !DcHelper.getAccounts(context).isAllChatmail();
   }
 
   // vibrate
