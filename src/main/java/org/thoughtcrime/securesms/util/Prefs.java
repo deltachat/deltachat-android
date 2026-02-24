@@ -19,6 +19,7 @@ import java.util.Set;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
+import org.unifiedpush.android.connector.UnifiedPush;
 
 public class Prefs {
 
@@ -199,7 +200,7 @@ public class Prefs {
     return getLongPreference(context, UPDATE_LAST_CHECK_PREF, 0);
   }
 
-  public static boolean isPushEnabled(Context context) {
+  public static boolean isFcmPushEnabled(Context context) {
     return BuildConfig.USE_PLAY_SERVICES;
   }
 
@@ -260,7 +261,8 @@ public class Prefs {
   }
 
   public static boolean reliableService(Context context) {
-    return getBooleanPreference(context, RELIABLE_SERVICE_PREF, !isPushEnabled(context));
+    boolean defaultVal = !(isFcmPushEnabled(context) || UnifiedPush.getAckDistributor(context) != null);
+    return getBooleanPreference(context, RELIABLE_SERVICE_PREF, defaultVal);
   }
 
   // vibrate
