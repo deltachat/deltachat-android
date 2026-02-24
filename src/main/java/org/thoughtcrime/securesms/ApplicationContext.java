@@ -41,12 +41,14 @@ import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.notifications.InChatSounds;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
+import org.thoughtcrime.securesms.service.UnifiedPushService;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.webxdc.WebxdcGarbageCollectionWorker;
+import org.unifiedpush.android.connector.UnifiedPush;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -312,29 +314,7 @@ public class ApplicationContext extends MultiDexApplication {
 
     AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
-    if (Prefs.isPushEnabled(this)) {
-      FcmReceiveService.register(this);
-    } else {
-      Log.i(TAG, "FCM disabled at build time");
-      // MAYBE TODO: i think the ApplicationContext is also created
-      // when the app is stated by FetchWorker timeouts.
-      // in this case, the normal threads shall not be started.
-      Constraints constraints = new Constraints.Builder()
-              .setRequiredNetworkType(NetworkType.CONNECTED)
-              .build();
-      PeriodicWorkRequest fetchWorkRequest = new PeriodicWorkRequest.Builder(
-              FetchWorker.class,
-              PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, // usually 15 minutes
-              TimeUnit.MILLISECONDS,
-              PeriodicWorkRequest.MIN_PERIODIC_FLEX_MILLIS, // the start may be preferred by up to 5 minutes, so we run every 10-15 minutes
-              TimeUnit.MILLISECONDS)
-              .setConstraints(constraints)
-              .build();
-      WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-              "FetchWorker",
-              ExistingPeriodicWorkPolicy.KEEP,
-              fetchWorkRequest);
-    }
+    initializePush();
 
     PeriodicWorkRequest webxdcGarbageCollectionRequest = new PeriodicWorkRequest.Builder(
             WebxdcGarbageCollectionWorker.class,
@@ -353,6 +333,40 @@ public class ApplicationContext extends MultiDexApplication {
 
   public JobManager getJobManager() {
     return jobManager;
+  }
+
+  public void initializePush() {
+    Log.d(TAG, "Initializing push");
+    String workTag = "FetchWorker";
+    if (Prefs.isFcmPushEnabled(this)) {
+      FcmReceiveService.register(this);
+      // We use getSavedDistrbutor and not getAckDistributor, because initializePush
+      // is called after saving the distributor, but register is called by this function
+      // We can't be acked before
+    } else if (UnifiedPush.getSavedDistributor(this) != null) {
+      UnifiedPushService.register(this);
+      WorkManager.getInstance(this).cancelAllWorkByTag(workTag);
+    } else {
+      Log.i(TAG, "FCM disabled at build time");
+      // MAYBE TODO: i think the ApplicationContext is also created
+      // when the app is stated by FetchWorker timeouts.
+      // in this case, the normal threads shall not be started.
+      Constraints constraints = new Constraints.Builder()
+        .setRequiredNetworkType(NetworkType.CONNECTED)
+        .build();
+      PeriodicWorkRequest fetchWorkRequest = new PeriodicWorkRequest.Builder(
+        FetchWorker.class,
+        PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, // usually 15 minutes
+        TimeUnit.MILLISECONDS,
+        PeriodicWorkRequest.MIN_PERIODIC_FLEX_MILLIS, // the start may be preferred by up to 5 minutes, so we run every 10-15 minutes
+        TimeUnit.MILLISECONDS)
+        .setConstraints(constraints)
+        .build();
+      WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+        workTag,
+        ExistingPeriodicWorkPolicy.KEEP,
+        fetchWorkRequest);
+    }
   }
 
   private void initializeLogging() {

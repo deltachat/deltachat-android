@@ -32,7 +32,16 @@ public class KeepAliveService extends Service {
         // this checks only stock-android settings, several os have additional "optimizers" that ignore this setting.
         // therefore, the most reliable way to not get killed is a permanent-foreground-notification.
         if (Prefs.reliableService(context))  {
+            Log.d(TAG, "Starting");
             startSelf(context);
+        } else {
+            Log.d(TAG, "Ignoring");
+        }
+    }
+
+    public static void maybeStopSelf(Context context) {
+        if (!Prefs.reliableService(context)) {
+            context.stopService(new Intent(context, KeepAliveService.class));
         }
     }
 

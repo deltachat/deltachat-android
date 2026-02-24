@@ -84,6 +84,9 @@ import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
+import org.unifiedpush.android.connector.UnifiedPush;
+import org.unifiedpush.android.connector.data.ResolvedDistributor;
+
 import chat.delta.rpc.types.SecurejoinSource;
 import chat.delta.rpc.types.SecurejoinUiPath;
 
@@ -239,6 +242,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
       qrCodeHandler.secureJoinByQr(rawQrString, SecurejoinSource.Scan, SecurejoinUiPath.Unknown);
     }
+
+    mayInitUnifiedPush();
   }
 
   /**
@@ -295,6 +300,35 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     }
 
     if (!wrongArch) Prefs.setBooleanPreference(this, NDK_ARCH_WARNED, false);
+  }
+
+  private void mayInitUnifiedPush() {
+    if (Prefs.isFcmPushEnabled(this)) {
+      // Do nothing, the application supports FCM
+      return;
+    }
+    //TODO(UP) return if UP is disabled
+    if (UnifiedPush.getAckDistributor(this) != null) {
+      // Do nothing, UnifiedPush is initialized with ApplicationContext
+      return;
+    }
+    ResolvedDistributor resolvedDistributor = UnifiedPush.INSTANCE.resolveDefaultDistributor(this);
+    if (resolvedDistributor instanceof ResolvedDistributor.Found) {
+      // We now have a default distributor -> we use it
+      UnifiedPush.saveDistributor(this, ((ResolvedDistributor.Found) resolvedDistributor).getPackageName());
+      ApplicationContext.getInstance(this).initializePush();
+    } else if (resolvedDistributor instanceof ResolvedDistributor.ToSelect) {
+      //TODO(UP): Dialog
+      UnifiedPush.tryUseDefaultDistributor(this, success -> {
+        if (success) {
+          ApplicationContext.getInstance(this).initializePush();
+        } else {
+          // TODO(UP): disable UnifiedPush
+        }
+        return null;
+      });
+    }
+    // Else do nothing: the periodic sync is already setup during ApplicationContext init
   }
 
   @Override
