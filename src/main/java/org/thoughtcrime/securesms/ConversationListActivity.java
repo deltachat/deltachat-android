@@ -324,6 +324,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       //TODO(UP): Dialog
       UnifiedPush.tryUseDefaultDistributor(this, success -> {
         if (success) {
+          Prefs.resetReliableService(this);
           ApplicationContext.getInstance(this).initializePush();
         } else {
           // The user has closed the OS dialog, we consider they don't want UnifiedPush
