@@ -443,6 +443,8 @@
         <item quantity="many">%d naujų žinučių</item>
         <item quantity="other">%d nauja žinutė</item>
     </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Siųsti žinutę naudotojui %1$s.</string>
     <string name="chat_new_group_hint">Rašykite pirmąją žinutę, taip leisdami kitiems atsakyti šioje grupėje..\n\n• Nieko tokio, jei ne visi dalyviai naudoja Delta Chat.\n\n• Pirmosios žinutės pristatymas gali šiek tiek užtrukti.</string>
     <string name="chat_record_slide_to_cancel">Perbraukite, norėdami atsisakyti</string>
     <string name="chat_record_explain">Bakstelėkite ir laikykite, norėdami įrašyti balso žinutę. Atleiskite, norėdami išsiųsti</string>
@@ -458,7 +460,7 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Įrašyti</string>
     <string name="saved_messages">Įrašytos žinutės</string>
-    <string name="saved_messages_explain">• Persiųskite žinutes čia, kad lengvai jas pasiektumėte\n\n• Rašykitės pastabas ar įrašinėkite balso žinutes\n\n• Pridėkite mediją, norėdami ją išsaugoti</string>
+    <string name="saved_messages_explain">• Persiųskite žinutes čia, kad lengvai jas pasiektumėte\n\n• Rašykitės pastabas ar įrašinėkite balso žinutes\n\n• Pridėkite mediją, norėdami ją išsisaugoti</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Įrašyta</string>
     <string name="save_as">Įrašyti kaip</string>
@@ -496,6 +498,8 @@
     <string name="group_self_not_in_group">Norėdami atlikti šį veiksmą, privalote būti grupės dalyviu.</string>
     <string name="profile_encryption">Šifravimas</string>
     <string name="profile_shared_chats">Bendrinami pokalbiai</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Ankstesni dalyviai</string>
     <string name="tab_contact">Adresatas</string>
     <string name="tab_group">Grupė</string>
     <string name="tab_gallery">Galerija</string>
@@ -667,6 +671,7 @@
     <string name="pref_your_name">Jūsų vardas</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Parašo tekstas</string>
+    <string name="chat_description">Aprašas</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Įvedimo (Enter) klavišas išsiunčia</string>
     <string name="pref_enter_sends_explain">Paspaudus įvedimo (Enter) klavišą, bus išsiunčiamos tekstinės žinutės</string>
@@ -863,8 +868,11 @@
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s reikalauja ištisinio šifravimo, kuris kol kas nėra nustatytas šiam pokalbiui. Bakstelėkite norėdami sužinoti daugiau.</string>
     <string name="learn_more">Sužinoti daugiau</string>
 
+    <string name="devicemsg_self_deleted">Jūs ištrynėte „Įrašytų žinučių“ pokalbį.\n\nℹ️ Norėdami vėl naudotis „Įrašytų žinučių“ ypatybe, sukurkite naują pokalbį su savimi.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Atrodo, kad jūsų įrenginyje yra nustatyta netiksli data ar laikas (%1$s).\n\nSuderinkite savo laikrodį ⏰🔧 kad užtikrintumėte, jog žinutės bus gaunamos teisingai.</string>
+    <string name="devicemsg_update_reminder">⚠️ Gali būti, kad jūsų Delta Chat versija yra pasenusi.\n\nTai gali sukelti problemų, nes jūsų pokalbių partneriai naudoja naujesnę versiją ir jūs netenkate galimybės naudotis naujausiomis ypatybėmis 😳\nPatikrinkite, ar yra atnaujinimų, apsilankę adresu https://get.delta.chat arba atvėrę programėlių parduotuvę.</string>
+
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">Atrakinkite, norėdami tęsti</string>
 
@@ -899,6 +907,10 @@
     <string name="qraccount_qr_code_cannot_be_used">Nuskenuotas QR kodas negali būti naudojamas naujos paskyros nustatymui.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Prisijungti prie „%1$s“?</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_started">%1$s pakvietė jus prisijungti prie šios grupės.\n\nLaukiama, kol atsakys naudotojo %2$s įrenginys…</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s pakvietė jus prisijungti prie šio kanalo.\n\nLaukiama, kol atsakys naudotojo %2$s įrenginys…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s atsakė, laukiama, kol būsite pridėti į grupę…</string>
     <string name="secure_join_wait">Užmezgiamas ryšys, palaukite…</string>
@@ -964,8 +976,8 @@
     <string name="name_desktop">Vardas</string>
     <string name="select_group_image_desktop">Pasirinkti grupės paveikslą</string>
     <string name="export_backup_desktop">Eksportuoti atsarginę kopiją</string>
-    <string name="message_detail_sent_desktop">išsiųsta</string>
-    <string name="message_detail_received_desktop">gauta</string>
+    <string name="message_detail_sent_desktop">Išsiųsta</string>
+    <string name="message_detail_received_desktop">Gauta</string>
     <string name="menu.view.developer.open.log.folder">Atverti žurnalų aplanką</string>
     <string name="menu.view.developer.open.current.log.file">Atverti dabartinio žurnalo failą</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Dėklo piktograma negali būti išjungta, nes Delta Chat buvo paleista naudojant --minimized parinktį.</string>
@@ -996,11 +1008,17 @@
     <string name="disabled_in_system_settings">Išjungta sistemos nustatymuose</string>
     <string name="notifications_avg_minutes">Vidutiniškai kas %1$d min.</string>
     <string name="notifications_avg_hours">Vidutiniškai kas %1$d val.</string>
+    <string name="last_check_at">Tikrinta %1$s</string>
     <string name="system_settings">Sistemos nustatymai</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat naudoja mikrofoną, kad įrašytų ir siųstų balso žinutes bei vaizdo įrašus su garsu.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat leis jums pasirinkti, kurias nuotraukas iš savo kolekcijos išsiųsti.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat nori įrašyti paveikslus į jūsų nuotraukų kolekciją.</string>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_instant_delivery">Greitas pristatymas</string>
     <string name="pref_background_notifications">Naudoti foninį ryšį</string>
+    <string name="pref_reliable_service">Priverstinai naudoti foninį ryšį</string>
+    <string name="pref_reliable_service_explain">Rodo pastovų pranešimą</string>
+
     <string name="pref_background_notifications_rationale">Norėdami palaikyti ryšį su savo el. pašto serveriu ir gauti žinutes fone, kitame žingsnyje nepaisykite akumuliatoriaus optimizavimų (leiskite vykdyti programą fone).\n\nDelta Chat naudoja nedaug išteklių ir rūpinasi, kad neeikvotų jūsų akumuliatoriaus energijos.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Bakstelėkite čia, norėdami gauti žinutes, kol Delta Chat veikia fone.</string>

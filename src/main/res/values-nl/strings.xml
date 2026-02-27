@@ -728,6 +728,7 @@
     <string name="pref_your_name">Je naam</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Handtekeningtekst</string>
+    <string name="chat_description">Beschrijving</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Versturen met enter</string>
     <string name="pref_enter_sends_explain">Druk op de entertoets om tekstberichten te versturen</string>
@@ -889,6 +890,9 @@
     <string name="group_image_changed_by_you">Je hebt de groepsfoto gewijzigd.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">De groepsfoto is gewijzigd door %1$s.</string>
+    <string name="chat_description_changed_by_you">Je hebt de gespreksbeschrijving aangepast.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">De gespreksbeschrijving is aangepast door %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">‘%1$s’ is toegevoegd.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->

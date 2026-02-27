@@ -11,7 +11,7 @@
     <string name="scan">Сканувати</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
-    <string name="select">Вибрати</string>
+    <string name="select">Обрати</string>
     <string name="on">Увімкнено</string>
     <string name="off">Вимкнено</string>
     <string name="def">За замовчуванням</string>
@@ -30,7 +30,7 @@
     <string name="delete">Видалити</string>
     <string name="delete_for_me">Видалити для мене</string>
     <string name="delete_for_everyone">Видалити для всіх</string>
-    <string name="info">Відомості</string>
+    <string name="info">Інформація</string>
     <string name="update">Оновити</string>
     <string name="emoji">Емодзі</string>
     <string name="attachment">Вкладення</string>
@@ -172,10 +172,10 @@
         <item quantity="other">%d реакцій</item>
     </plurals>
     <plurals name="n_members">
-        <item quantity="one">%d участвує</item>
-        <item quantity="few">%d участвують</item>
-        <item quantity="many">%d участвують</item>
-        <item quantity="other">%d участвують</item>
+        <item quantity="one">%d учасник</item>
+        <item quantity="few">%d учасників</item>
+        <item quantity="many">%d учасників</item>
+        <item quantity="other">%d учасників</item>
     </plurals>
     <plurals name="n_recipients">
         <item quantity="one">%d одержувач</item>
@@ -185,12 +185,12 @@
     </plurals>
     <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
-        <item quantity="one">%d вибрано</item>
-        <item quantity="few">%d вибрано</item>
-        <item quantity="many">%d вибрано</item>
-        <item quantity="other">%d вибрано</item>
+        <item quantity="one">%d обрано</item>
+        <item quantity="few">%d обрано</item>
+        <item quantity="many">%d обрано</item>
+        <item quantity="other">%d обрано</item>
     </plurals>
-    <string name="selected_colon">Вибрано:</string>
+    <string name="selected_colon">Обрано:</string>
     <string name="self">Я</string>
     <string name="draft">Чернетка</string>
     <string name="image">Зображення</string>
@@ -293,7 +293,7 @@
     <string name="menu_send">Послати</string>
     <string name="menu_toggle_keyboard">Увімкнути емодзі-клавіатуру</string>
     <string name="menu_edit_group">Редагувати групу</string>
-    <string name="menu_group_name_and_image">Назва й емблема групи</string>
+    <string name="menu_group_name_and_image">Назва групи та зображення</string>
     <string name="menu_show_global_map">Показати всі місця</string>
     <string name="menu_archive_chat">Архівувати чат</string>
     <string name="menu_unarchive_chat">Розархівувати чат</string>
@@ -342,7 +342,7 @@
     <string name="menu_scroll_to_top">Прокрутити на початок</string>
     <string name="menu_help">Допомога</string>
     <!-- use the same term for "Apps" as elsewhere -->
-    <string name="what_is_webxdc">Про додатки</string>
+    <string name="what_is_webxdc">Про застосунки</string>
     <string name="privacy_policy">Політика конфіденційності</string>
     <string name="menu_select_all">Вибрати все</string>
     <string name="select_chat">Оберіть чат</string>
@@ -364,7 +364,7 @@
     <string name="jump_to_original_message">Перейти до оригінального повідомлення</string>
     <string name="copy_json">Копіювати JSON</string>
     <string name="replace_draft">Замінити чернетку</string>
-    <string name="title_share_location">Ділитися геоданими з усіма членами групи</string>
+    <string name="title_share_location">Поділитися місцеперебуванням з усіма учасниками групи</string>
     <string name="device_talk">Повідомлення пристрою</string>
     <string name="device_talk_subtitle">Локально згенеровані повідомлення</string>
     <string name="device_talk_explain">Повідомлення у цьому чаті згенеровані на вашому пристрої для інформування про оновлення та проблеми при використанні.</string>
@@ -408,14 +408,20 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Дзвонити</string>
+    <string name="start_audio_call">Аудіовиклик</string>
+    <string name="start_video_call">Відеовиклик</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Відповісти</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Відхилити</string>
     <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Вихідний дзвінок</string>
+    <string name="outgoing_audio_call">Вихідний аудіовиклик</string>
+    <string name="outgoing_video_call">Вихідний відеовиклик</string>
     <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Вхідний дзвінок</string>
+    <string name="incoming_audio_call">Вхідний аудіовиклик</string>
+    <string name="incoming_video_call">Вхідний відеовиклик</string>
     <string name="declined_call">Відхилений дзвінок</string>
     <string name="canceled_call">Скасований дзвінок</string>
     <string name="missed_call">Пропущений дзвінок</string>
@@ -555,13 +561,13 @@
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Назва групи</string>
-    <string name="group_avatar">Емблема групи</string>
-    <string name="remove_group_image">Видалить емблему групи</string>
-    <string name="change_group_image">Ізміни́ть емблему групи</string>
+    <string name="group_avatar">Зображення групи</string>
+    <string name="remove_group_image">Видалити зображення групи</string>
+    <string name="change_group_image">Змінити зображення групи</string>
     <string name="group_create_button">Створити групу</string>
     <string name="group_please_enter_group_name">Уведіть назву групі.</string>
-    <string name="group_add_members">Додати учасництво</string>
-    <string name="group_self_not_in_group">Потрібно участвувати в групі, щоби виконати цю дію.</string>
+    <string name="group_add_members">Додати учасників</string>
+    <string name="group_self_not_in_group">Лише учасник групи має змогу виконати цю дію.</string>
     <string name="profile_encryption">Шифрування</string>
     <string name="profile_shared_chats">Спільні з вами чати</string>
     <!-- Separator between the list of actual members and past members -->
@@ -740,7 +746,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Послати %1$d файл·и·ів у «%2$s»?</string>
     <string name="ask_send_files_to_selected_chats">Послати %1$d файл·и·ів у %2$d чати?</string>
-    <string name="videos_sent_without_recoding">(Відеозаписи надішлються ориґінальними, обсяжними файлами. Щоби надіслати відео меншими файлами, прикріпіть їх окремо)</string>
+    <string name="videos_sent_without_recoding">(При надсиланні декількох відео, вони будуть надіслані у незмінному вигляді, що може бути проблемою через великий розмір файлів. Щоб зменшити їх розмір та заощадити дані, Ви можете надсилати кожне відео окремим повідомленням)</string>
     <string name="share_text_multiple_chats">Надіслати це́й текст у %1$d чат·и·ів?\n\n«%2$s»</string>
     <string name="share_abort">Надсилання обірване через відсутність дозволів.</string>
 
@@ -756,6 +762,7 @@
     <string name="pref_your_name">Ваше ім\'я</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Текст підпису</string>
+    <string name="chat_description">Опис</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Відправляти клявішею   Enter</string>
     <string name="pref_enter_sends_explain">Натискаючи клявішу   Enter відправлятимете текстові повідомлення</string>
@@ -914,9 +921,12 @@
     <string name="group_name_changed_by_you">Ви змінили назву групи з \"%1$s\" на \"%2$s\".</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s змінив (-ла) назву групи з \"%1$s\" на \"%2$s\".</string>
-    <string name="group_image_changed_by_you">Ви змінили емблему групи.</string>
+    <string name="group_image_changed_by_you">Зображення групи змінено.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
-    <string name="group_image_changed_by_other">Емблему групи %1$s міняє.</string>
+    <string name="group_image_changed_by_other">%1$s змінює зображення групи.</string>
+    <string name="chat_description_changed_by_you">Опис чату змінено</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">%1$s змінює опис чату.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Додано учасника %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
@@ -936,9 +946,9 @@
     <string name="you_joined_the_channel">Ви приєдналися до каналу.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s залишив (-ла) групу.</string>
-    <string name="group_image_deleted_by_you">Ви видалили емблему групи.</string>
+    <string name="group_image_deleted_by_you">Зображення групи видалено.</string>
     <!-- %1$s will be replaced by name of the contact -->
-    <string name="group_image_deleted_by_other">Емблему групи видаляє %1$s.</string>
+    <string name="group_image_deleted_by_other">%1$s видаляє зображення групи.</string>
     <string name="location_enabled_by_you">Ви увімкнули стримінг геоданих.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$s увімкнув (-ла) стримінг геоданих.</string>
@@ -985,7 +995,7 @@
     <string name="chat_protection_enabled_tap_to_learn_more">Відтепер повідомлення гарантовано будуть мати наскрізне шифрування. Торкніться, щоб дізнатися більше.</string>
     <string name="chat_protection_enabled_explanation">Тепер гарантовано, що всі повідомлення в цьому чаті наскрізь зашифровані.\n\nНаскрізне шифрування зберігає конфіденційність повідомлень між вами і вашими партнерами по чату. Навіть сервери, провайдери або ретранслятори не можуть їх прочитати.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s вимагає наскрізного шифрування, яке ще не налаштоване для цього чату. Натисніть, щоб дізнатися більше.</string>
-    <string name="invalid_unencrypted_explanation">Для налагодження наскрізного шифрування можна зустрітись із контактною особою та відсканувати баркод із її пристрою, щоби представити її.</string>
+    <string name="invalid_unencrypted_explanation">Щоб встановити наскрізне шифрування, Ви можете зустрітися з контактами особисто та відсканувати їх QR-код.</string>
     <string name="learn_more">Дізнатися більше</string>
 
     <string name="devicemsg_self_deleted">Ви видалили чат \"Збережені повідомлення\".\n\nℹ️ Аби використовувати функцію \"Збережені повідомлення\" знову, створіть новий чат самі із собою.</string>
@@ -1018,15 +1028,15 @@
     <string name="withdraw_qr_code">Скинути QR-код</string>
     <string name="revive_verifycontact_explain">Цей QR-код було скинуто і він більше не активний.</string>
     <string name="revive_qr_code">Активувати QR-код</string>
-    <string name="qrshow_title">Баркод із запрошенням</string>
+    <string name="qrshow_title">QR-код запрошення</string>
     <string name="qrshow_x_joining">%1$s приєднався(-лася).</string>
     <string name="qrshow_x_verified">%1$s представлено.</string>
     <string name="qrshow_x_has_joined_group">%1$s приєднався(-лася) до групи.</string>
-    <string name="qrshow_join_group_title">Баркод із запрошенням</string>
+    <string name="qrshow_join_group_title">QR-код запрошення</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Відскануйте код, щоб приєднатися до групи \"%1$s\".</string>
     <string name="qrshow_join_channel_hint">Відскануйте щоб приєднатися до каналу \"%1$s\"</string>
-    <string name="qrshow_join_contact_title">Запрошувальний баркод</string>
+    <string name="qrshow_join_contact_title">QR-код запрошення</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Відскануйте код, щоб спілкуватись з %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Відсутнє інтернет з\'єднання, не вдалося налаштувати QR-код.</string>
@@ -1127,8 +1137,8 @@
     <string name="save_desktop">Зберегти</string>
     <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
     <string name="unsave">Відмінити збереження</string>
-    <string name="name_desktop">Імʼя</string>
-    <string name="select_group_image_desktop">Вибрати емблему групи</string>
+    <string name="name_desktop">Ім\'я</string>
+    <string name="select_group_image_desktop">Оберіть зображення групи</string>
     <string name="export_backup_desktop">Експорт резервної копії</string>
     <string name="message_detail_sent_desktop">Надіслано</string>
     <string name="message_detail_received_desktop">Отримано</string>

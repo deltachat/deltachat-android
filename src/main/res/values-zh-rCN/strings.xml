@@ -695,7 +695,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">发送 %1$d 个文件到“%2$s”？</string>
     <string name="ask_send_files_to_selected_chats">发送 %1$d 个文件到 %2$d 个聊天？</string>
-    <string name="videos_sent_without_recoding">（视频以未经处理的大文件形式发送。要发送较小的视频文件，请分别附加它们）</string>
+    <string name="videos_sent_without_recoding">（发送多个视频将按原样发送，文件可能很大。为了减小文件体积并节省流量，您可以将每个视频单独发送一条消息。）</string>
     <string name="share_text_multiple_chats">发送这段文字到 %1$d 个聊天？\n\n\"%2$s“</string>
     <string name="share_abort">由于缺少权限，分享中止。</string>
 
@@ -711,6 +711,7 @@
     <string name="pref_your_name">您的名称</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">签名档</string>
+    <string name="chat_description">描述</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter 键发送</string>
     <string name="pref_enter_sends_explain">按 Enter 键发送文本消息</string>
@@ -872,6 +873,9 @@
     <string name="group_image_changed_by_you">你更改了群组图像</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s 更改了群组图像</string>
+    <string name="chat_description_changed_by_you">您更改了聊天描述。</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">聊天描述已由 %1$s 更改。</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">添加了成员 %1$s 。</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
