@@ -746,7 +746,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Отправить %1$d файла(ов) в \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Отправить %1$d файл(ов) в %2$d чата(ов)?</string>
-    <string name="videos_sent_without_recoding">(Видеофайлы отправляются в исходном виде, без сжатия. Чтобы отправить видео в более компактном виде, прикрепите их отдельно)</string>
+    <string name="videos_sent_without_recoding">(Отправка нескольких видео приведет к их отправке в исходном виде, что может потребовать значительного объема данных. Чтобы уменьшить размер файлов и сэкономить трафик, отправляйте каждое видео в отдельном сообщении.)</string>
     <string name="share_text_multiple_chats">Отправить текст в %1$d чата(ов)?\n\n\"%2$s\"</string>
     <string name="share_abort">Общий доступ прерван из-за отсутствия необходимых разрешений.</string>
 
@@ -762,6 +762,7 @@
     <string name="pref_your_name">Ваше имя</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">О себе</string>
+    <string name="chat_description">Описание</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Отправка по Enter</string>
     <string name="pref_enter_sends_explain">Нажатие клавиши Enter отправит текстовые сообщения</string>
@@ -923,6 +924,9 @@
     <string name="group_image_changed_by_you">Вы изменили изображение группы.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s меняет изображение группы.</string>
+    <string name="chat_description_changed_by_you">Вы изменили описание чата.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">Описание чата изменено пользователем %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Добавлен участник %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->

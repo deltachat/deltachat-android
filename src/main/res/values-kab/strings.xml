@@ -727,6 +727,7 @@
     <string name="pref_your_name">Isem-ik·im</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Tameddurt</string>
+    <string name="chat_description">Aglam</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Kcem tisura i umazan</string>
     <string name="pref_enter_sends_explain">Asiti ɣef tanast Kcem ad yazen aḍris n yiznan</string>
@@ -888,6 +889,9 @@
     <string name="group_image_changed_by_you">Tbeddleḍ tugna n ugraw. </string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Tugna n ugraw tettwabeddel sɣur %1$s.</string>
+    <string name="chat_description_changed_by_you">Tbeddleḍ aglam n udiwenni.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">Aglam n udiwenni yettwabeddel sɣur %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Aɛeggal %1$s yettwarna. </string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
@@ -1179,7 +1183,7 @@
     <string name="pref_reliable_service">Ḥettem tuqqna n ugilal</string>
     <string name="pref_reliable_service_explain">ad d-yeglu s telɣut timezgit</string>
 
-    <string name="pref_background_notifications_rationale">Akken ad tḥerzeḍ tuqqna daɣen ad d-remseḍ iznan deg ugilal, zgel aseggem n tbatrit deg usurif ay d-itteddun.\n\nDelṭa Chat yesseqdac kra n teɣbula udiɣ ur ttḥewwil ara akken ad yečč aṭas deg udɣaɣ-ik.im.</string>
+    <string name="pref_background_notifications_rationale">Akken ad tḥerzeḍ tuqqna daɣen ad d-remseḍ iznan deg ugilal, zgel aseggem n udɣaɣ deg usurif ay d-itteddun.\n\nDelta Chat yesseqdac kra n teɣbula u yernu ur ttḥewwil ara akken ad yečč aṭas deg udɣaɣ-ik·im.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Sit dagi akken ad tremseḍ iznan ticki Delta Chat yella deg ugilal.</string>
     <string name="perm_enable_bg_already_done">Tsirgeḍ yakan Delta Chat i wakken ad d-remseḍ iznan deg ugilal.\n\nMa yella iznan ur d-ttawḍen ara deg ugilal, ttxil-k·m senqed daɣen iɣewwaṛen n unagraw.</string>
