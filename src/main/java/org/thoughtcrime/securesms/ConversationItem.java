@@ -22,6 +22,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
+import android.os.Build;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -977,10 +978,15 @@ public class ConversationItem extends BaseConversationItem
           int accId = dcContext.getAccountId();
           int chatId = messageRecord.getChatId();
           if (!messageRecord.isOutgoing() && callInfo.state instanceof CallState.Alerting) {
-              int callId = messageRecord.getId();
-              CallUtil.openCall(getContext(), accId, chatId, callId, callInfo.sdpOffer, callInfo.hasVideo);
+            // We have notification now
           } else {
-              CallUtil.startCall(getContext(), accId, chatId, callInfo.hasVideo);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+              if (callInfo.hasVideo) {
+                CallUtil.startVideoCall(getContext(), chatId);
+              } else {
+                CallUtil.startAudioCall(getContext(), chatId);
+              }
+            }
           }
       }
     }

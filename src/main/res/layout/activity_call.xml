@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/call_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:fitsSystemWindows="false">
+
+    <!-- Remote Video (Full Screen, Black background) -->
+    <org.webrtc.SurfaceViewRenderer
+        android:id="@+id/remote_video_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Top Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:background="@color/signal_dark_surface"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/display_name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/signal_dark_on_surface"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="John Doe" />
+
+            <TextView
+                android:id="@+id/status_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/signal_dark_on_surface_variant"
+                android:textSize="14sp"
+                tools:text="Connecting..." />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Local Video (Rounded corners, Top Right) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/local_video_container"
+        android:layout_width="90dp"
+        android:layout_height="120dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/top_bar"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <org.webrtc.SurfaceViewRenderer
+            android:id="@+id/local_video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Caller Icon (during incoming call prompt) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/caller_icon_container"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:visibility="gone"
+        app:cardCornerRadius="70dp"
+        app:cardElevation="8dp"
+        app:strokeWidth="3dp"
+        app:strokeColor="@color/signal_dark_on_surface_variant"
+        app:layout_constraintTop_toBottomOf="@id/top_bar"
+        app:layout_constraintBottom_toTopOf="@id/incoming_call_prompt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.35"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/caller_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:contentDescription="Caller photo"
+            tools:src="@drawable/ic_person" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Answer Mode Selector -->
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/answer_mode_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:singleSelection="true"
+        app:selectionRequired="true"
+        app:layout_constraintTop_toBottomOf="@id/caller_icon_container"
+        app:layout_constraintBottom_toTopOf="@id/incoming_call_prompt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        tools:visibility="visible">
+
+        <Button
+            android:id="@+id/answer_audio_only_button"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Audio"
+            android:textSize="14sp"
+            android:minWidth="100dp"
+            app:icon="@drawable/ic_call"
+            app:iconGravity="textStart"
+            app:iconSize="20dp" />
+
+        <Button
+            android:id="@+id/answer_video_button"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Video"
+            android:textSize="14sp"
+            android:minWidth="100dp"
+            app:icon="@drawable/ic_videocam_on"
+            app:iconGravity="textStart"
+            app:iconSize="20dp" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <!-- Incoming Call Buttons -->
+    <LinearLayout
+        android:id="@+id/incoming_call_prompt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="24dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        tools:visibility="visible">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/decline_button"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Decline"
+            android:textSize="15sp"
+            app:icon="@drawable/ic_call_end"
+            app:iconGravity="textStart"
+            app:cornerRadius="28dp"
+            style="@style/Widget.Material3.Button.TonalButton"
+            app:backgroundTint="@color/signal_red" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/answer_button"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Answer"
+            android:textSize="15sp"
+            app:icon="@drawable/ic_call"
+            app:iconGravity="textStart"
+            app:cornerRadius="28dp"
+            style="@style/Widget.Material3.Button"
+            app:backgroundTint="@color/signal_green" />
+
+    </LinearLayout>
+
+    <!-- Bottom Sheet Container (Material3 style) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bottom_sheet_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/signal_dark_surface_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_max="600dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Drag Handle -->
+            <View
+                android:layout_width="32dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/bottom_sheet_handle"
+                android:alpha="0.4" />
+
+            <!-- Call Controls -->
+            <LinearLayout
+                android:id="@+id/call_controls_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingTop="16dp"
+                android:paddingBottom="24dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+                <!-- Mute Button -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/mute_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mic_on"
+                        android:contentDescription="Toggle microphone"
+                        app:tint="@color/signal_dark_on_surface"
+                        app:backgroundTint="@color/signal_dark_surface_3"
+                        app:fabSize="normal"
+                        app:borderWidth="0dp" />
+
+                </LinearLayout>
+
+                <!-- Video Button -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/video_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_videocam_on"
+                        android:contentDescription="Toggle camera"
+                        app:tint="@color/signal_dark_on_surface"
+                        app:backgroundTint="@color/signal_dark_surface_3"
+                        app:fabSize="normal"
+                        app:borderWidth="0dp" />
+
+                </LinearLayout>
+
+                <!-- End Call Button -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/end_call_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_call_end"
+                        android:contentDescription="End call"
+                        app:tint="@android:color/white"
+                        app:backgroundTint="@color/signal_red"
+                        app:fabSize="normal"
+                        app:borderWidth="0dp" />
+
+                </LinearLayout>
+
+                <!-- Speaker Button -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/speaker_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_volume_up"
+                        android:contentDescription="Audio output"
+                        app:tint="@color/signal_dark_on_surface"
+                        app:backgroundTint="@color/signal_dark_surface_3"
+                        app:fabSize="normal"
+                        app:borderWidth="0dp" />
+
+                </LinearLayout>
+
+                <!-- Switch Camera Button -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/switch_camera_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_switch_camera"
+                        android:contentDescription="Switch camera"
+                        app:tint="@color/signal_dark_on_surface"
+                        app:backgroundTint="@color/signal_dark_surface_3"
+                        app:fabSize="normal"
+                        app:borderWidth="0dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
