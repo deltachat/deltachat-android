@@ -728,6 +728,7 @@
     <string name="pref_your_name">Zure izena</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Sinaduraren testua</string>
+    <string name="chat_description">Deskribapena</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter teklarekin bidali</string>
     <string name="pref_enter_sends_explain">Enter tekla sakatzeak mezua bidaliko du</string>
@@ -853,9 +854,9 @@
     <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
     <string name="react">Erreakzionatu</string>
     <!-- %1$s will be replaced by an emoji. %2$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %2$s will often not being visible). Eg. 'You reacted 👍 to "Found my suitcase"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer and work as well. -->
-    <string name="reaction_by_you">%1$s erreakzionatu zenion \"%2$s\"(e)ri.</string>
+    <string name="reaction_by_you">%1$s adierazi diozu \"%2$s\"(e)ri.</string>
     <!-- %1$s will be replaced a name. %2$s will be replaced by an emoji. %3$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %3$s will often not being visible). Eg. 'Alice reacted 👍 to "Nice photos"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer work as well. -->
-    <string name="reaction_by_other">%1$s(e)k %2$s erreakzionatu zion \"%3$s\"(e)ri</string>
+    <string name="reaction_by_other">%1$s(e)k %2$s adierazi dio \"%3$s\"(e)ri</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Ezabatu mezu zaharrak</string>
@@ -883,20 +884,23 @@
     <string name="systemmsg_subject_for_new_contact">%1$s(r)en mezua</string>
     <string name="systemmsg_failed_sending_to">Huts egin du %1$s(r)i mezua bidaltzean.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
-    <string name="group_name_changed_by_you">Nik: Taldearen izena \"%1$s\" izatetik \"%2$s\" izatera aldatu da</string>
+    <string name="group_name_changed_by_you">Taldearen izena aldatu duzu, \"%1$s\" izatetik \"%2$s\" izatera.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
-    <string name="group_name_changed_by_other">%3$s(e)k: Taldearen izena \"%1$s\" izatetik \"%2$s\" izatera aldatu da</string>
-    <string name="group_image_changed_by_you">Nik: Taldearen irudia aldatuta</string>
+    <string name="group_name_changed_by_other">%3$s(e)k taldearen izena aldatu du, \"%1$s\" izatetik \"%2$s\" izatera.</string>
+    <string name="group_image_changed_by_you">Taldearen irudia aldatu duzu.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
-    <string name="group_image_changed_by_other">%1$s(e)k: Taldearen irudia aldatuta</string>
+    <string name="group_image_changed_by_other">%1$s(e)k taldearen irudia aldatu du</string>
+    <string name="chat_description_changed_by_you">Txaten deskribapena aldatu duzu.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">%1$s(e)k txataren deskribapena aldatu du</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">%1$s kidea gehitu da.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
-    <string name="add_member_by_you">Nik: %1$s kidea gehitu dut</string>
+    <string name="add_member_by_you">%1$s kidea gehitu duzu.</string>
     <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">%2$s(e)k: %1$s kidea gehitu du</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
-    <string name="remove_member_by_you">Nik: %1$s kidea kenduta</string>
+    <string name="remove_member_by_you">%1$s kidea kendu duzu.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s(e)k: %1$s kidea kenduta</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
@@ -908,9 +912,9 @@
     <string name="you_joined_the_channel">Kanalera batu zara.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s(e)k taldea utzi du.</string>
-    <string name="group_image_deleted_by_you">Nik: Taldearen irudia ezabatuta</string>
+    <string name="group_image_deleted_by_you">Taldearen irudia ezabatu duzu.</string>
     <!-- %1$s will be replaced by name of the contact -->
-    <string name="group_image_deleted_by_other">%1$s(e)k: Taldearen irudia ezabatuta</string>
+    <string name="group_image_deleted_by_other">%1$s(e)k taldearen irudia ezabatu du.</string>
     <string name="location_enabled_by_you">Kokapena zuzenean partekatzea aktibatu duzu.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$s(e)k kokapena zuzenean partekatzea aktibatu du.</string>

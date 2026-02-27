@@ -3,6 +3,9 @@
 ## Unreleased
 
 * Allow to set chat description
+* Fix: keep original sent timestamp for resent messages
+* Fix: make clicking on broadcast member-added messages work always
+* Update to core 2.44.0
 
 ## v2.43.0
 2026-02
