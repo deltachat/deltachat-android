@@ -7,6 +7,8 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -48,6 +50,8 @@ public class RelayListActivity extends BaseActionBarActivity
 
   /** QR provided via Intent extras needs to be saved to pass it to QrCodeHandler when authorization finishes */
   private String qrData = null;
+  private ActivityResultLauncher<Intent> screenLockLauncher;
+  private ActivityResultLauncher<Intent> qrScannerLauncher;
 
   /** Relay selected for context menu via onRelayLongClick() */
   private EnteredLoginParam contextMenuRelay = null;
@@ -56,6 +60,31 @@ public class RelayListActivity extends BaseActionBarActivity
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_relay_list);
+
+    qrScannerLauncher = registerForActivityResult(
+      new ActivityResultContracts.StartActivityForResult(),
+      result -> {
+        if (result.getResultCode() == RESULT_OK) {
+          IntentResult scanResult = IntentIntegrator.parseActivityResult(result.getResultCode(), result.getData());
+          new QrCodeHandler(this).handleOnlyAddRelayQr(scanResult.getContents(), null);
+        }
+      }
+    );
+    screenLockLauncher = registerForActivityResult(
+      new ActivityResultContracts.StartActivityForResult(),
+      result -> {
+        if (result.getResultCode() != RESULT_OK) {
+          // if user canceled unlocking, then finish
+          finish();
+          return;
+        }
+        // user authorized, then proceed to handle the QR data
+        if (qrData != null) {
+          new QrCodeHandler(this).handleOnlyAddRelayQr(qrData, null);
+          qrData = null;
+        }
+      }
+    );
 
     rpc = DcHelper.getRpc(this);
     accId = DcHelper.getContext(this).getAccountId();
@@ -77,14 +106,18 @@ public class RelayListActivity extends BaseActionBarActivity
     qrData = getIntent().getStringExtra(EXTRA_QR_DATA);
     if (qrData != null) {
       // when the activity is opened with a QR data, we need to ask for authorization first
-      boolean result = ScreenLockUtil.applyScreenLock(this, getString(R.string.add_transport), getString(R.string.enter_system_secret_to_continue), ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS);
+      boolean result = ScreenLockUtil.applyScreenLock(this, getString(R.string.add_transport), getString(R.string.enter_system_secret_to_continue), screenLockLauncher);
       if (!result) {
-        new QrCodeHandler(this).handleOnlyAddRelayQr(qrData);
+        new QrCodeHandler(this).handleOnlyAddRelayQr(qrData, null);
       }
     }
 
     fabAdd.setOnClickListener(v -> {
-      new IntentIntegrator(this).setCaptureActivity(QrActivity.class).addExtra(QrActivity.EXTRA_SCAN_RELAY, true).initiateScan();
+      Intent intent = new IntentIntegrator(this)
+        .setCaptureActivity(QrActivity.class)
+        .addExtra(QrActivity.EXTRA_SCAN_RELAY, true)
+        .createScanIntent();
+      qrScannerLauncher.launch(intent);
     });
 
     LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -218,28 +251,6 @@ public class RelayListActivity extends BaseActionBarActivity
       return true;
     }
     return super.onOptionsItemSelected(item);
-  }
-
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (resultCode != RESULT_OK) {
-      // if user canceled unlocking, then finish
-      if (requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) finish();
-      return;
-    }
-
-    QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-    if (requestCode == IntentIntegrator.REQUEST_CODE) {
-      IntentResult scanResult = IntentIntegrator.parseActivityResult(resultCode, data);
-      qrCodeHandler.handleOnlyAddRelayQr(scanResult.getContents());
-    } else if (requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) {
-      // user authorized, then proceed to handle the QR data
-      if (qrData != null) {
-        qrCodeHandler.handleOnlyAddRelayQr(qrData);
-        qrData = null;
-      }
-    }
   }
 
   @Override

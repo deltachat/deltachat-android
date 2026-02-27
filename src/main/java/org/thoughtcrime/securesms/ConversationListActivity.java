@@ -46,6 +46,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
@@ -98,7 +100,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   public static final String ACCOUNT_ID_EXTRA = "account_id";
   public static final String FROM_WELCOME   = "from_welcome";
   public static final String FROM_WELCOME_RAW_QR   = "from_welcome_raw_qr";
-  private static final int REQUEST_CODE_CONFIRM_CREDENTIALS_DELETE_PROFILE = ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS+1;
 
   private ConversationListFragment conversationListFragment;
   public TextView                  title;
@@ -112,8 +113,12 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   /** used to store temporarily scanned QR to pass it back to QrCodeHandler when ScreenLockUtil is used */
   private String qrData = null;
+  private ActivityResultLauncher<Intent> relayLockLauncher;
+  private ActivityResultLauncher<Intent> qrScannerLauncher;
+
   /** used to store temporarily profile ID to delete after authorization is granted via ScreenLockUtil */
   private int deleteProfileId = 0;
+  private ActivityResultLauncher<Intent> deleteProfileLockLauncher;
 
   @Override
   protected void onPreCreate() {
@@ -123,6 +128,41 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
+    relayLockLauncher = registerForActivityResult(
+      new ActivityResultContracts.StartActivityForResult(),
+      result -> {
+        if (result.getResultCode() == RESULT_OK) {
+          // QrCodeHandler requested user authorization before adding a relay
+          // and it was granted, so proceed to add the relay
+          if (qrData != null) {
+            new QrCodeHandler(this).addRelay(qrData);
+            qrData = null;
+          }
+        }
+      }
+    );
+    deleteProfileLockLauncher = registerForActivityResult(
+      new ActivityResultContracts.StartActivityForResult(),
+      result -> {
+        if (result.getResultCode() == RESULT_OK) {
+          if (deleteProfileId != 0) {
+            deleteProfile(deleteProfileId);
+            deleteProfileId = 0;
+          }
+        }
+      }
+    );
+    qrScannerLauncher = registerForActivityResult(
+      new ActivityResultContracts.StartActivityForResult(),
+      result -> {
+        if (result.getResultCode() == RESULT_OK) {
+          IntentResult scanResult = IntentIntegrator.parseActivityResult(result.getResultCode(), result.getData());
+          qrData = scanResult.getContents();
+          new QrCodeHandler(this).handleQrData(qrData, SecurejoinSource.Scan, SecurejoinUiPath.QrIcon, relayLockLauncher);
+        }
+      }
+    );
+
     addDeviceMessages(getIntent().getBooleanExtra(FROM_WELCOME, false));
     if (getIntent().getIntExtra(ACCOUNT_ID_EXTRA, -1) <= 0) {
       getIntent().putExtra(ACCOUNT_ID_EXTRA, DcHelper.getContext(this).getAccountId());
@@ -451,7 +491,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       startActivity(new Intent(this, ApplicationPreferencesActivity.class));
       return true;
     } else if (itemId == R.id.menu_qr) {
-      new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
+      Intent intent = new IntentIntegrator(this)
+        .setCaptureActivity(QrActivity.class)
+        .createScanIntent();
+      qrScannerLauncher.launch(intent);
       return true;
     } else if (itemId == R.id.menu_global_map) {
       WebxdcActivity.openMaps(this, 0);
@@ -628,7 +671,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   public void onDeleteProfile(int profileId) {
     deleteProfileId = profileId;
-    boolean result = ScreenLockUtil.applyScreenLock(this, getString(R.string.delete_account), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_DELETE_PROFILE);
+    boolean result = ScreenLockUtil.applyScreenLock(this, getString(R.string.delete_account), getString(R.string.enter_system_secret_to_continue), deleteProfileLockLauncher);
     if (!result) {
       deleteProfile(profileId);
     }
@@ -653,37 +696,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     // title update needed to show "Delta Chat" in case there is only one profile left
     refreshTitle();
-  }
-
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (resultCode != RESULT_OK) return;
-
-    QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-    switch (requestCode) {
-      case IntentIntegrator.REQUEST_CODE:
-        IntentResult scanResult = IntentIntegrator.parseActivityResult(resultCode, data);
-        qrData = scanResult.getContents();
-        qrCodeHandler.handleQrData(qrData, SecurejoinSource.Scan, SecurejoinUiPath.QrIcon);
-        break;
-      case ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS:
-        // QrCodeHandler requested user authorization before adding a relay
-        // and it was granted, so proceed to add the relay
-        if (qrData != null) {
-          qrCodeHandler.addRelay(qrData);
-          qrData = null;
-        }
-        break;
-      case REQUEST_CODE_CONFIRM_CREDENTIALS_DELETE_PROFILE:
-        if (deleteProfileId != 0) {
-          deleteProfile(deleteProfileId);
-          deleteProfileId = 0;
-        }
-        break;
-      default:
-        break;
-    }
   }
 
   @Override

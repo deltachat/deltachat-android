@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,11 +42,11 @@ import java.util.List;
 public class ProfileFragment extends Fragment
              implements ProfileAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
 
+  private static final String TAG = ProfileFragment.class.getSimpleName();
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
 
-  private static final int REQUEST_CODE_PICK_CONTACT = 2;
-
+  private ActivityResultLauncher<Intent> pickContactLauncher;
   private ProfileAdapter adapter;
   private ActionMode             actionMode;
   private final ActionModeCallback actionModeCallback = new ActionModeCallback();
@@ -60,6 +63,40 @@ public class ProfileFragment extends Fragment
     chatId = getArguments() != null ? getArguments().getInt(CHAT_ID_EXTRA, -1) : -1;
     contactId = getArguments().getInt(CONTACT_ID_EXTRA, -1);
     dcContext = DcHelper.getContext(requireContext());
+    pickContactLauncher = registerForActivityResult(
+      new ActivityResultContracts.StartActivityForResult(),
+      result -> {
+        Intent data = result.getData();
+        Log.i(TAG, "Received result from activity, resultCode=" + result.getResultCode() + ", data=" + data);
+        if (result.getResultCode() == Activity.RESULT_OK && data != null) {
+          List<Integer> selected = data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA);
+          List<Integer> deselected = data.getIntegerArrayListExtra(ContactMultiSelectionActivity.DESELECTED_CONTACTS_EXTRA);
+          Util.runOnAnyBackgroundThread(() -> {
+            if (deselected != null) { // Remove members that were deselected
+              Log.i(TAG, deselected.size() + " members removed");
+              int[] members = dcContext.getChatContacts(chatId);
+              for (int contactId : deselected) {
+                for (int memberId : members) {
+                  if (memberId == contactId) {
+                    dcContext.removeContactFromChat(chatId, memberId);
+                    break;
+                  }
+                }
+              }
+            }
+
+            if (selected != null) { // Add new members
+              Log.i(TAG, selected.size() + " members added");
+              for (Integer contactId : selected) {
+                if (contactId != null) {
+                  dcContext.addContactToChat(chatId, contactId);
+                }
+              }
+            }
+          });
+        }
+      }
+    );
   }
 
   @Override
@@ -210,7 +247,7 @@ public class ProfileFragment extends Fragment
       preselectedContacts.add(memberId);
     }
     intent.putExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselectedContacts);
-    startActivityForResult(intent, REQUEST_CODE_PICK_CONTACT);
+    pickContactLauncher.launch(intent);
   }
 
   public void onQrInvite() {
@@ -302,38 +339,6 @@ public class ProfileFragment extends Fragment
     public void onDestroyActionMode(ActionMode mode) {
       actionMode = null;
       adapter.clearSelection();
-    }
-  }
-
-  @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode==REQUEST_CODE_PICK_CONTACT && resultCode==Activity.RESULT_OK && data!=null) {
-      List<Integer> selected = data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA);
-      List<Integer> deselected = data.getIntegerArrayListExtra(ContactMultiSelectionActivity.DESELECTED_CONTACTS_EXTRA);
-      Util.runOnAnyBackgroundThread(() -> {
-        if (deselected != null) {
-          // Remove members that were deselected
-          int[] members = dcContext.getChatContacts(chatId);
-          for (int contactId : deselected) {
-            for (int memberId : members) {
-              if (memberId == contactId) {
-                dcContext.removeContactFromChat(chatId, memberId);
-                break;
-              }
-            }
-          }
-        }
-
-        if (selected != null) {
-          // Add new members
-          for (Integer contactId : selected) {
-            if (contactId != null) {
-              dcContext.addContactToChat(chatId, contactId);
-            }
-          }
-        }
-      });
     }
   }
 }

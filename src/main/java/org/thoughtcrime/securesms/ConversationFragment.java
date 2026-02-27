@@ -88,7 +88,6 @@ public class ConversationFragment extends MessageSelectorFragment
     private static final String TAG       = ConversationFragment.class.getSimpleName();
 
     private static final int SCROLL_ANIMATION_THRESHOLD = 50;
-    private static final int CODE_ADD_EDIT_CONTACT      = 77;
 
     private final ActionModeCallback actionModeCallback     = new ActionModeCallback();
     private final ItemClickListener  selectionClickListener = new ConversationFragmentItemClickListener();
@@ -882,6 +881,11 @@ public class ConversationFragment extends MessageSelectorFragment
                     WebxdcActivity.openWebxdcActivity(getContext(), messageRecord.getParent(), messageRecord.getWebxdcHref());
                 }
             }
+            else if (messageRecord.getInfoType() == DcMsg.DC_INFO_CHAT_DESCRIPTION_CHANGED) {
+                Intent intent = new Intent(getContext(), ProfileActivity.class);
+                intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, (int) chatId);
+                startActivity(intent);
+            }
             else {
                 int infoContactId = messageRecord.getInfoContactId();
                 if (infoContactId != 0 && infoContactId != DC_CONTACT_ID_SELF) {
@@ -984,17 +988,6 @@ public class ConversationFragment extends MessageSelectorFragment
           .setNegativeButton(R.string.cancel, null)
           .show();
       }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == CODE_ADD_EDIT_CONTACT && getContext() != null) {
-//      ApplicationContext.getInstance(getContext().getApplicationContext())
-//                        .getJobManager()
-//                        .add(new DirectoryRefreshJob(getContext().getApplicationContext(), false));
-        }
     }
 
     private class ActionModeCallback implements ActionMode.Callback {

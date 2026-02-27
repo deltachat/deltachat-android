@@ -53,6 +53,11 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Event>(){}, "get_next_event");
   }
 
+  /** Waits for at least one event and return a batch of events. */
+  public java.util.List<Event> getNextEventBatch() throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Event>>(){}, "get_next_event_batch");
+  }
+
   public Integer addAccount() throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "add_account");
   }

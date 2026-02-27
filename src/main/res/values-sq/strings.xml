@@ -387,8 +387,12 @@
     <string name="end_call">Hidhe poshtë</string>
     <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
     <string name="outgoing_call">Thirrje e dërguar</string>
+    <string name="outgoing_audio_call">Thirrje audio e dërguar</string>
+    <string name="outgoing_video_call">Thirrje video e dërguar</string>
     <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
     <string name="incoming_call">Thirrje e marrë</string>
+    <string name="incoming_audio_call">Thirrje audio e marrë</string>
+    <string name="incoming_video_call">Thirrje video e marrë</string>
     <string name="declined_call">Thirrje e hedhur poshtë</string>
     <string name="canceled_call">Thirrje e anuluar</string>
     <string name="missed_call">Thirrje e humbur</string>
@@ -718,6 +722,7 @@
     <string name="pref_your_name">Emri Juaj</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Jetëshkrim</string>
+    <string name="chat_description">Përshkrim</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Tasti Enter Dërgon</string>
     <string name="pref_enter_sends_explain">Shtypja e tastit Enter do të dërgojë mesazhe tekst</string>
@@ -878,6 +883,9 @@
     <string name="group_image_changed_by_you">Ndryshuat figurën e grupit</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Figura e grupit u ndryshua nga %1$s.</string>
+    <string name="chat_description_changed_by_you">Ndryshuat përshkrimin e fjalosjes.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">Përshkrimi i fjalosjes u ndryshua nga %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">U shtua anëtar %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
