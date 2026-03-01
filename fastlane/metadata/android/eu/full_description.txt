@@ -1,0 +1,17 @@
+Delta Chat mezularitza deszentralizatu fidagarria da, lagunekin, senideekin, taldeekin eta erakundeekin erabiltzeko erraza eta dibertigarria. Delta Chat FOSS kolaboratzaileen komunitate dedikatu batek garatu du, eta urtean hainbat aldiz batera kaleratzen ditu hobekuntzak eta funtzio berriak, mundu osoko denda eta plataforma askotan.
+
+Ezaugarriak begirada batean:
+
+• Anonimoa. Berehalako onboarding-a telefono zenbakirik, posta elektronikorik edo bestelako datu pribaturik gabe.
+
+• Malgua. Txat profil ugari onartzen ditu eta erraza da hainbat gailutan konfiguratzea.
+
+• Hedagarria. Gehitu erosketa zerrendak, egutegiak edo joko aplikazioak bezalako tresnak edozein txat-era.
+
+• Fidagarria. Sare baldintza txarretan eta aurkarietan funtzionatzen du.
+
+• Segurua. Muturretik muturrerako enkriptazio ikuskatua, sare eta zerbitzari erasoen aurka segurua.
+
+• Subiranoa. Zure posta elektroniko helbidearekin edo zerbitzariarekin exekutatu daiteke.
+
+• FOSS. Kode irekiko/libreko softwarea guztiz, Interneteko estandarretan oinarrituta.
