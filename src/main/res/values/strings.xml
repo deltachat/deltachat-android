@@ -263,6 +263,11 @@
     <string name="add_recipients">Add Subscribers</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Channel Name</string>
+    <!-- The number of times a message is shown in channels, may be used for alt-text or a11y -->
+    <plurals name="n_views">
+        <item quantity="one">%d view</item>
+        <item quantity="other">%d views</item>
+    </plurals>
     <string name="email">Email</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">New Email</string>
