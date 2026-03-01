@@ -180,6 +180,9 @@
     <string name="add_to_sticker_collection">Add to Sticker Collection</string>
     <string name="add_stickers_instructions">To add stickers, tap "Open Sticker Folder", create a subfolder for your sticker pack, and drag image and sticker files there</string>
     <string name="open_sticker_folder">Open Sticker Folder</string>
+    <string name="ask_add_sticker_to_collection">Add this sticker to your collection?</string>
+    <string name="ask_delete_sticker">Delete this sticker?</string>
+    <string name="sticker_picker_empty_hint">Tap a sticker to add it here.</string>
     <string name="images">Images</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
