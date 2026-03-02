@@ -263,7 +263,7 @@
     <string name="add_recipients">Add Subscribers</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Channel Name</string>
-    <!-- The number of times a message is shown in channels, may be used for alt-text or a11y -->
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
     <plurals name="n_views">
         <item quantity="one">%d view</item>
         <item quantity="other">%d views</item>
