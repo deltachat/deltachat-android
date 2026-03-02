@@ -16,9 +16,12 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -40,6 +43,9 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS"/>
 
     <!-- force compiling emojipicker on sdk<21; runtime checks are required then -->
     <uses-sdk tools:overrideLibrary="androidx.emoji2.emojipicker"/>
@@ -355,9 +361,13 @@
     </activity>
 
     <activity android:name=".calls.CallActivity"
-              android:label=""
-              android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode">
+              android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboard|keyboardHidden"
+              android:launchMode="singleTask"
+              android:taskAffinity=".calls.PipCallTask"
+              android:theme="@style/Theme.App.NoActionBar.Fullscreen"
+              android:exported="false"
+              android:supportsPictureInPicture="true"
+              android:autoRemoveFromRecents="true">
     </activity>
 
     <activity android:name=".WebxdcActivity"
@@ -402,20 +412,18 @@
         </intent-filter>
     </service>
 
+    <service
+        android:name=".calls.CallService"
+        android:enabled="true"
+        android:exported="false"
+        android:foregroundServiceType="camera|microphone" />
+
     <receiver android:name=".notifications.MarkReadReceiver"
               android:enabled="true"
               android:exported="false">
         <intent-filter>
             <action android:name="org.thoughtcrime.securesms.notifications.MARK_NOTICED"/>
             <action android:name="org.thoughtcrime.securesms.notifications.CANCEL"/>
-        </intent-filter>
-    </receiver>
-
-    <receiver android:name=".notifications.DeclineCallReceiver"
-              android:enabled="true"
-              android:exported="false">
-        <intent-filter>
-            <action android:name="org.thoughtcrime.securesms.notifications.DECLINE_CALL_NOTICED"/>
         </intent-filter>
     </receiver>
 
