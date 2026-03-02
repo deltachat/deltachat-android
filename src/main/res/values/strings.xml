@@ -259,8 +259,6 @@
     <string name="channels">Channels</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">New Channel</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Add Subscribers</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Channel Name</string>
     <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
@@ -395,12 +393,8 @@
     <string name="answer_call">Answer</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Decline</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Outgoing call</string>
     <string name="outgoing_audio_call">Outgoing audio call</string>
     <string name="outgoing_video_call">Outgoing video call</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Incoming call</string>
     <string name="incoming_audio_call">Incoming audio call</string>
     <string name="incoming_video_call">Incoming video call</string>
     <string name="declined_call">Declined call</string>
@@ -593,8 +587,6 @@
     <string name="incoming_messages">Incoming Messages</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Outgoing Messages</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Storage on %1$s</string>
     <string name="connectivity">Connectivity</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Not connected</string>
@@ -757,8 +749,6 @@
     <string name="pref_sound">Sound</string>
     <string name="pref_silent">Silent</string>
     <string name="pref_privacy">Privacy</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Chats and Media</string>
     <string name="pref_system_default">System default</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Light</string>
@@ -823,8 +813,6 @@
     <string name="n_bytes_message">%1$s message</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Download maximum available until %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Select Profile</string>
     <string name="profile_image_select">Select Profile Image</string>
     <string name="select_your_new_profile_image">Select your new profile image</string>
     <string name="profile_image_delete">Delete Profile Image</string>
@@ -930,10 +918,6 @@
     <string name="ephemeral_timer_seconds_by_you">You set disappearing messages timer to %1$s seconds</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Disappearing messages timer set to %1$s seconds by %2$s.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">You set disappearing messages timer to 1 minute.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Disappearing messages timer set to 1 minute by %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">You set disappearing messages timer to 1 hour.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Disappearing messages timer set to 1 hour by %1$s.</string>
@@ -1030,8 +1014,6 @@
     <string name="verified_by">Introduced by %1$s</string>
     <string name="verified_by_you">Introduced by me</string>
     <string name="verified_by_unknown">Introduced</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">To guarantee end-to-end-encryption, you can only add contacts with a green checkmark to this group.\n\nYou may meet contacts in person and scan their QR Code to introduce them.</string>
     <string name="mailto_dialog_header_select_chat">Select chat to send the message to</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s already has a draft message, do you want to replace it?</string>
