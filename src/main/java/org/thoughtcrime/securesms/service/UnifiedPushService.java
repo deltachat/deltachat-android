@@ -10,6 +10,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import javax.annotation.Nullable;
+import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.unifiedpush.android.connector.FailedReason;
 import org.unifiedpush.android.connector.PushService;
@@ -110,6 +111,6 @@ public class UnifiedPushService extends PushService {
   }
 
   public static void register(Context context) {
-    UnifiedPush.register(context, INSTANCE_DEFAULT, null, null);
+    UnifiedPush.register(context, INSTANCE_DEFAULT, null, BuildConfig.VAPID_KEY);
   }
 }
