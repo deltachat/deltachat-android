@@ -210,6 +210,7 @@ public class DcEventCenter {
         break;
 
       case DcContext.DC_EVENT_MSGS_NOTICED:
+      case DcContext.DC_EVENT_MSG_DELETED:
         DcHelper.getNotificationCenter(context).removeNotifications(accountId, event.getData1Int());
         break;
 
