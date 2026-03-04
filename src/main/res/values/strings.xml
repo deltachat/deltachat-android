@@ -740,6 +740,10 @@
     <string name="pref_notifications">Notifications</string>
     <string name="pref_mention_notifications">Mentions</string>
     <string name="pref_mention_notifications_explain">In muted groups, notify messages directed to you, like replies or reactions</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="prev_calls">Calls</string>
+    <!-- Details about what the "Calls" notification settings does -->
+    <string name="prev_calls_explain">Show call screen on incoming calls</string>
     <string name="pref_notifications_show">Show</string>
     <string name="pref_notifications_priority">Priority</string>
     <string name="pref_notifications_explain">Enable system notifications for new messages</string>
