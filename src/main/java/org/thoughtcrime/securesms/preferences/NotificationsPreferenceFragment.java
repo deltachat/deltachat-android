@@ -30,6 +30,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.unifiedpush.android.connector.UnifiedPush;
 
 public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment
     implements Preference.OnPreferenceChangeListener {
@@ -270,11 +271,17 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
         || notificationManager.areNotificationsEnabled()) {
       if (DcHelper.getContext(context).isMuted()) {
         return detailed ? context.getString(R.string.off) : "";
-      }
-      if (FcmReceiveService.getToken() == null && !Prefs.reliableService(context)) {
+      } else if (Prefs.reliableService(context)) {
+        return detailed ? context.getString(R.string.on) : "";
+      } else if (FcmReceiveService.getToken() != null) {
+        // Always show
+        return context.getString(R.string.pref_notification_desc_using_google_push);
+      } else if (UnifiedPush.getAckDistributor(context) != null) {
+        // Always show
+        return context.getString(R.string.pref_notification_desc_using_unifiedpush);
+      } else {
         return "⚠️ " + context.getString(R.string.unreliable_bg_notifications);
       }
-      return detailed ? context.getString(R.string.on) : "";
     } else {
       return "⚠️ " + context.getString(R.string.disabled_in_system_settings);
     }
