@@ -55,7 +55,7 @@ android {
         buildConfigField("String", "TEST_ADDR", buildConfigProperty("TEST_ADDR"))
         buildConfigField("String", "TEST_MAIL_PW", buildConfigProperty("TEST_MAIL_PW"))
         buildConfigField("String", "NDK_ARCH", getNdkArch())
-        buildConfigField("String", "VAPID_KEY", "\"BG3RlodkBbX8YOu_3ZYCLuwJEkNKYo4QhS2iNp29Yon0Aw5m9uIgaAK7a0b5GfrC9cSLAR3JrcY5sQLZ0Xn9gCw\"")
+        buildConfigField("String", "VAPID_KEY", "\"BHNce1sXk99bpkFFYwiSR3Lp4n54PiS-Y0S9iX6R7va7sxQ5hE7ll6DMKlKs2tFT9POq92gLygezT7o0fkQU8NE\"")
     }
 
     compileOptions {
