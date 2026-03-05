@@ -23,7 +23,7 @@ public class UnifiedPushUtils {
       // Do nothing, the application supports FCM
       return;
     }
-    if (!Prefs.unifiedPush(activity)) {
+    if (Prefs.unifiedPushDisabled(activity)) {
       // return if UnifiedPush is explicitly disabled
       return;
     }
@@ -59,7 +59,7 @@ public class UnifiedPushUtils {
       private final Activity context = activity;
       @Override
       public void onCancel() {
-        Prefs.setUnifiedPush(context, false);
+        Prefs.disableUnifiedPush(context);
       }
 
       @Override
@@ -70,7 +70,7 @@ public class UnifiedPushUtils {
             ApplicationContext.getInstance(context).initializePush();
           } else {
             // The user has closed the OS dialog, we consider they don't want UnifiedPush
-            Prefs.setUnifiedPush(context, false);
+            Prefs.disableUnifiedPush(context);
           }
           return null;
         });
