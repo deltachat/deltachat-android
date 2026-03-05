@@ -53,7 +53,7 @@ public class Prefs {
   public  static final String NOTIFICATION_PRIVACY_PREF        = "pref_notification_privacy";
   public  static final String NOTIFICATION_PRIORITY_PREF       = "pref_notification_priority";
 
-  public  static final String USE_UNIFIEDPUSH                  = "pref_use_unifiedpush";
+  public  static final String DISABLE_UNIFIEDPUSH              = "pref_disable_unifiedpush";
 
   private static final String PROFILE_AVATAR_ID_PREF           = "pref_profile_avatar_id";
   public  static final String INCOGNITO_KEYBORAD_PREF          = "pref_incognito_keyboard";
@@ -248,14 +248,29 @@ public class Prefs {
       || !DcHelper.getAccounts(context).isAllChatmail();
   }
 
-  public static void setUnifiedPush(Context context, boolean value) {
-    setBooleanPreference(context, USE_UNIFIEDPUSH, value);
+  /**
+   * Allow UnifiedPush to be used if a distributor is available
+   * <p>UnifiedPush is never used if the flavor uses the Play Services</p>
+   * <p>We use 2 functions enableUnifiedPush/disableUnifiedPush to make things more clear</p>
+   * @param context
+   */
+  public static void enableUnifiedPush(Context context) {
+    setBooleanPreference(context, DISABLE_UNIFIEDPUSH, false);
   }
 
-  public static boolean unifiedPush(Context context) {
+  /**
+   * Allow UnifiedPush to be used if a distributor is available
+   * <p>We use 2 functions enableUnifiedPush/disableUnifiedPush to make things more clear</p>
+   * @param context
+   */
+  public static void disableUnifiedPush(Context context) {
+    setBooleanPreference(context, DISABLE_UNIFIEDPUSH, true);
+  }
+
+  public static boolean unifiedPushDisabled(Context context) {
     // By default, allow UnifiedPush.
     // This is never used if the flavor supports Play Services.
-    return getBooleanPreference(context, USE_UNIFIEDPUSH, true);
+    return getBooleanPreference(context, DISABLE_UNIFIEDPUSH, false);
   }
 
   // vibrate
