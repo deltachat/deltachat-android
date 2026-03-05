@@ -1,5 +1,8 @@
 # Delta Chat Android Changelog
 
+## Next
+* Add support for UnifiedPush
+
 ## v2.47.0
 2026-03
 
