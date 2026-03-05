@@ -211,7 +211,7 @@ dependencies {
         exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
     }
 
-    implementation('org.unifiedpush.android:connector:3.3.1')
+    implementation('org.unifiedpush.android:connector:3.3.2')
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.assertj:assertj-core:3.27.3'

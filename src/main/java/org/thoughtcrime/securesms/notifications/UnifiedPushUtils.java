@@ -31,7 +31,7 @@ public class UnifiedPushUtils {
       // Do nothing, UnifiedPush is initialized with ApplicationContext
       return;
     }
-    ResolvedDistributor resolvedDistributor = UnifiedPush.INSTANCE.resolveDefaultDistributor(activity);
+    ResolvedDistributor resolvedDistributor = UnifiedPush.resolveDefaultDistributor(activity);
     if (resolvedDistributor instanceof ResolvedDistributor.Found) {
       // We now have a default distributor -> we use it
       UnifiedPush.saveDistributor(activity, ((ResolvedDistributor.Found) resolvedDistributor).getPackageName());

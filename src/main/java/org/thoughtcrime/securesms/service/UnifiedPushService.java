@@ -94,7 +94,7 @@ public class UnifiedPushService extends PushService {
   @Override
   public void onUnregistered(@NonNull String _s) {
     Log.w(TAG, "Unregistered");
-    ResolvedDistributor res = UnifiedPush.INSTANCE.resolveDefaultDistributor(this);
+    ResolvedDistributor res = UnifiedPush.resolveDefaultDistributor(this);
     // We are using a single registration for all accounts, we don't need
     // to wait a few seconds to get other instance unregistrations.
     // We can process this unregistration now
