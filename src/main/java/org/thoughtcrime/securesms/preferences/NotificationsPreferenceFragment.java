@@ -30,6 +30,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.notifications.UnifiedPushUtils;
+import org.thoughtcrime.securesms.service.UnifiedPushService;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.unifiedpush.android.connector.UnifiedPush;
 
@@ -172,6 +173,8 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     Prefs.setReliableService(context, enabled);
     if (enabled) {
       KeepAliveService.startSelf(context);
+      Prefs.disableUnifiedPush(context);
+      UnifiedPushService.unregister(context);
     } else {
       context.stopService(new Intent(context, KeepAliveService.class));
       // Re-enable UnifiedPush when the user disable the foreground service.
