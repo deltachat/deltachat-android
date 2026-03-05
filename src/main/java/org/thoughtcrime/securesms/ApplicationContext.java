@@ -337,7 +337,6 @@ public class ApplicationContext extends MultiDexApplication {
 
   public void initializePush() {
     Log.d(TAG, "Initializing push");
-    String workTag = "FetchWorker";
     if (Prefs.isFcmPushEnabled(this)) {
       FcmReceiveService.register(this);
       // We use getSavedDistrbutor and not getAckDistributor, because initializePush
@@ -345,7 +344,6 @@ public class ApplicationContext extends MultiDexApplication {
       // We can't be acked before
     } else if (UnifiedPush.getSavedDistributor(this) != null) {
       UnifiedPushService.register(this);
-      WorkManager.getInstance(this).cancelAllWorkByTag(workTag);
     } else {
       Log.i(TAG, "FCM disabled at build time");
       // MAYBE TODO: i think the ApplicationContext is also created
@@ -363,7 +361,7 @@ public class ApplicationContext extends MultiDexApplication {
         .setConstraints(constraints)
         .build();
       WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-        workTag,
+        FetchWorker.periodicWorkTag,
         ExistingPeriodicWorkPolicy.KEEP,
         fetchWorkRequest);
     }

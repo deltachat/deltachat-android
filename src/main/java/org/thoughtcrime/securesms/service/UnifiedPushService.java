@@ -17,9 +17,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.work.WorkManager;
 
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.FetchWorker;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.IntentUtils;
@@ -49,6 +51,7 @@ public class UnifiedPushService extends PushService {
     }
     getDcAccounts().setPushDeviceToken(token);
     KeepAliveService.maybeStopSelf(this);
+    WorkManager.getInstance(this).cancelAllWorkByTag(FetchWorker.periodicWorkTag);
   }
 
   @Override
