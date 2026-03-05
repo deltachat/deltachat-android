@@ -155,4 +155,8 @@ public class UnifiedPushService extends PushService {
   public static void register(Context context) {
     UnifiedPush.register(context, INSTANCE_DEFAULT, null, BuildConfig.VAPID_KEY);
   }
+
+  public static void unregister(Context context) {
+    UnifiedPush.unregister(context, INSTANCE_DEFAULT);
+  }
 }
