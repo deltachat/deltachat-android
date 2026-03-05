@@ -8,6 +8,10 @@ import androidx.work.WorkerParameters;
 import org.thoughtcrime.securesms.util.Util;
 
 public class FetchWorker extends Worker {
+  /**
+   * Tag used for the periodic worker if push isn't available
+   */
+  public static final String periodicWorkTag = "FetchWorker";
   private final @NonNull Context context;
 
   public FetchWorker(@NonNull Context context, @NonNull WorkerParameters params) {
