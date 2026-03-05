@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Add support for UnifiedPush
 * Allow to select multiple files for sending
 * Add notifications for missed calls
 * Video call preview now accurately shows what is sent to remote
