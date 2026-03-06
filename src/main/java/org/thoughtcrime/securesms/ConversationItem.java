@@ -965,6 +965,8 @@ public class ConversationItem extends BaseConversationItem
     public void onClick(final View v, final Slide slide) {
       if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
+      } else if (eventListener != null) {
+        eventListener.onStickerClicked(messageRecord);
       }
     }
   }

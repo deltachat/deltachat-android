@@ -1442,6 +1442,18 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     isEditing = false;
   }
 
+  @Override
+  public void onStickerPicked(Uri stickerUri) {
+    if (isEditing) return;
+    sendSticker(stickerUri, "image/webp");
+  }
+
+  public void refreshStickerPicker() {
+    if (emojiPicker != null) {
+      emojiPicker.refreshStickerPicker();
+    }
+  }
+
   // media selected by the system keyboard
   @Override
   public void onMediaSelected(@NonNull Uri uri, String contentType) {
