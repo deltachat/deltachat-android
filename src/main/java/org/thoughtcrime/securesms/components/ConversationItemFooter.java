@@ -32,7 +32,6 @@ public class ConversationItemFooter extends LinearLayout {
   private ImageView           locationIndicatorView;
   private DeliveryStatusView  deliveryStatusView;
   private Integer             textColor = null;
-  private int                 callDuration = 0;
   private Context context;
   private Rpc rpc;
 
@@ -72,11 +71,6 @@ public class ConversationItemFooter extends LinearLayout {
     }
   }
 
-  /* Call duration in seconds. Only >0 if this is a call message */
-  public void setCallDuration(int duration) {
-    callDuration = duration;
-  }
-
   public void setMessageRecord(@NonNull DcMsg messageRecord) {
     presentDate(messageRecord);
     boolean bookmark = messageRecord.getOriginalMsgId() != 0 || messageRecord.getSavedMsgId() != 0;
@@ -112,7 +106,7 @@ public class ConversationItemFooter extends LinearLayout {
     presentDeliveryStatus(messageRecord, isOutChannel);
   }
 
-  public void setTextColor(int color) {
+  private void setTextColor(int color) {
     textColor = color;
     dateView.setTextColor(color);
     editedView.setTextColor(color);
@@ -126,27 +120,17 @@ public class ConversationItemFooter extends LinearLayout {
 
   private void presentDate(@NonNull DcMsg dcMsg) {
     dateView.forceLayout();
-    Context context = getContext();
-    String date = dcMsg.getType() == DcMsg.DC_MSG_CALL?
-      DateUtils.getExtendedTimeSpanString(context, dcMsg.getTimestamp())
-      : DateUtils.getExtendedRelativeTimeSpanString(context, dcMsg.getTimestamp());
-    if (callDuration > 0) {
-      String duration = DateUtils.getFormattedCallDuration(context, callDuration);
-      dateView.setText(context.getString(R.string.call_date_and_duration, date, duration));
-    } else {
-      dateView.setText(date);
-    }
+    dateView.setText(DateUtils.getExtendedRelativeTimeSpanString(getContext(), dcMsg.getTimestamp()));
   }
 
   private void presentDeliveryStatus(@NonNull DcMsg messageRecord, boolean isOutChannel) {
     // isDownloading is temporary and should be checked first.
     boolean isDownloading = messageRecord.getDownloadState() == DcMsg.DC_DOWNLOAD_IN_PROGRESS;
-    boolean isCall = messageRecord.getType() == DcMsg.DC_MSG_CALL;
 
          if (isDownloading)                deliveryStatusView.setDownloading();
     else if (messageRecord.isPending())    deliveryStatusView.setPending();
     else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
-    else if (!messageRecord.isOutgoing() || isCall || isOutChannel)  deliveryStatusView.setNone();
+    else if (!messageRecord.isOutgoing() || isOutChannel)  deliveryStatusView.setNone();
     else if (messageRecord.isRemoteRead()) deliveryStatusView.setRead();
     else if (messageRecord.isDelivered())  deliveryStatusView.setSent();
     else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();

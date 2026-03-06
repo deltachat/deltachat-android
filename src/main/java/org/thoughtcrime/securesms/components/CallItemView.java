@@ -21,7 +21,6 @@ public class CallItemView extends FrameLayout {
 
   private final @NonNull ImageView icon;
   private final @NonNull TextView title;
-  private final @NonNull ConversationItemFooter footer;
   private CallInfo callInfo;
   private CallClickListener viewListener;
 
@@ -40,7 +39,6 @@ public class CallItemView extends FrameLayout {
 
     this.icon = findViewById(R.id.call_icon);
     this.title = findViewById(R.id.title);
-    this.footer = findViewById(R.id.footer);
 
     setOnClickListener(v -> {
       if (viewListener != null && callInfo != null) {
@@ -55,11 +53,14 @@ public class CallItemView extends FrameLayout {
 
   public void setCallItem(boolean isOutgoing, CallInfo callInfo) {
     this.callInfo = callInfo;
+
+    /* TODO: move to extra line
     if (callInfo.state instanceof CallState.Completed) {
       footer.setCallDuration(((CallState.Completed) callInfo.state).duration);
     } else {
       footer.setCallDuration(0); // reset
     }
+    */
 
     if (callInfo.state instanceof CallState.Missed) {
       title.setText(R.string.missed_call);
@@ -79,26 +80,19 @@ public class CallItemView extends FrameLayout {
     if (isOutgoing) {
       attrs = new int[]{
         R.attr.conversation_item_outgoing_text_primary_color,
-        R.attr.conversation_item_outgoing_text_secondary_color,
       };
     } else {
       attrs = new int[]{
         R.attr.conversation_item_incoming_text_primary_color,
-        R.attr.conversation_item_incoming_text_secondary_color,
       };
     }
     try (TypedArray ta = getContext().obtainStyledAttributes(attrs)) {
       icon.setColorFilter(ta.getColor(0, Color.BLACK));
-      footer.setTextColor(ta.getColor(1, Color.BLACK));
     }
   }
 
-  public ConversationItemFooter getFooter() {
-    return footer;
-  }
-
   public String getDescription() {
-    return title.getText() + "\n" + footer.getDescription();
+    return title.getText() + "\nTODO"; /* + footer.getDescription(); */
   }
 
   public interface CallClickListener {
