@@ -9,10 +9,17 @@
     android:gravity="center_vertical"
     android:focusable="true">
 
+  <ImageView
+      android:id="@+id/call_icon"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:contentDescription="@null" />
+
   <LinearLayout android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
                 android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -29,11 +36,6 @@
 
   </LinearLayout>
 
-  <ImageView
-      android:id="@+id/call_icon"
-      android:layout_width="30dp"
-      android:layout_height="30dp"
-      android:contentDescription="@null"
-      />
+
 
 </LinearLayout>
