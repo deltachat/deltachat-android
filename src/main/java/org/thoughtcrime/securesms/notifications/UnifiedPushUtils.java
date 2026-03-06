@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Util;
 import org.unifiedpush.android.connector.UnifiedPush;
 import org.unifiedpush.android.connector.data.ResolvedDistributor;
 
@@ -18,17 +19,36 @@ public class UnifiedPushUtils {
     void onConfirm();
   }
 
-  public static void mayInitUnifiedPush(Activity activity) {
+  public interface InitCallback{
+    void onInit(InitStatus status);
+  }
+
+  public enum InitStatus {
+    /**
+     * Push is configured
+     */
+    HasPush,
+    /**
+     * There is no push: we need to ask for doze reminder
+     */
+    NoPush,
+    /**
+     * Push is being setting up, we <i>should</i> have Push in a few seconds
+     */
+    PushInit
+  }
+
+  public static void mayInitUnifiedPush(Activity activity, InitCallback initCallback) {
     if (Prefs.isFcmPushEnabled(activity)) {
-      // Do nothing, the application supports FCM
+      initCallback.onInit(InitStatus.HasPush);
       return;
     }
     if (Prefs.unifiedPushDisabled(activity)) {
-      // return if UnifiedPush is explicitly disabled
+      initCallback.onInit(InitStatus.NoPush);
       return;
     }
     if (UnifiedPush.getAckDistributor(activity) != null) {
-      // Do nothing, UnifiedPush is initialized with ApplicationContext
+      initCallback.onInit(InitStatus.HasPush);
       return;
     }
     ResolvedDistributor resolvedDistributor = UnifiedPush.resolveDefaultDistributor(activity);
@@ -36,10 +56,12 @@ public class UnifiedPushUtils {
       // We now have a default distributor -> we use it
       UnifiedPush.saveDistributor(activity, ((ResolvedDistributor.Found) resolvedDistributor).getPackageName());
       ApplicationContext.getInstance(activity).initializePush();
+      initCallback.onInit(InitStatus.PushInit);
     } else if (resolvedDistributor instanceof ResolvedDistributor.ToSelect) {
-      selectUnifiedPushDistributor(activity);
+      selectUnifiedPushDistributor(activity, initCallback);
+    } else {
+      initCallback.onInit(InitStatus.NoPush);
     }
-    // Else do nothing: the periodic sync is already setup during ApplicationContext init
   }
 
 
@@ -54,12 +76,13 @@ public class UnifiedPushUtils {
  * <p>Note: The user necessarily knows about UnifiedPush: they have installed and enabled UnifiedPush
  * on at least 2 distributors.</p>
  */
-  private static void selectUnifiedPushDistributor(Activity activity) {
+  private static void selectUnifiedPushDistributor(Activity activity, InitCallback initCallback) {
     DialogCallback callback = new DialogCallback() {
       private final Activity context = activity;
       @Override
       public void onCancel() {
         Prefs.disableUnifiedPush(context);
+        initCallback.onInit(InitStatus.NoPush);
       }
 
       @Override
@@ -68,9 +91,11 @@ public class UnifiedPushUtils {
           if (success) {
             Prefs.resetReliableService(context);
             ApplicationContext.getInstance(context).initializePush();
+            initCallback.onInit(InitStatus.PushInit);
           } else {
             // The user has closed the OS dialog, we consider they don't want UnifiedPush
             Prefs.disableUnifiedPush(context);
+            initCallback.onInit(InitStatus.NoPush);
           }
           return null;
         });
@@ -87,5 +112,27 @@ public class UnifiedPushUtils {
       .setNegativeButton(android.R.string.cancel, (_d, _i) -> callback.onCancel())
       .setPositiveButton(android.R.string.ok, (_d, _i) -> callback.onConfirm())
       .show();
+  }
+
+  /**
+   * Returns directly if we don't have registered for UnifiedPush, or if we are already registered,
+   * and we have received an endpoint. Else, wait for the endpoint, or a registration failed.
+   * @param context
+   */
+  public static void waitForRegisterFinished(Context context) {
+    // Wait 5 secs at most
+    for (int i = 0; i < 50; ++i) {
+      // This is the distributor we registered to
+      String saved = UnifiedPush.getSavedDistributor(context);
+      // This is the distributor we registered to, which has sent an endpoint
+      String ack = UnifiedPush.getAckDistributor(context);
+      // If we don't have a saved distributor (saved == null: 1. we never registered,
+      // or 2. it received registrationFailed during the first registration
+      // or 3. we were unregistered)
+      // Or if we received an endpoint (saved.equals(ack))
+      // => return
+      if (saved == null || saved.equals(ack)) return;
+      Util.sleep(100);
+    }
   }
 }

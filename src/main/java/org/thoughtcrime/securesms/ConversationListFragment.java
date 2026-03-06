@@ -45,6 +45,7 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
+import org.thoughtcrime.securesms.notifications.UnifiedPushUtils;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ShareUtil;
@@ -85,6 +86,8 @@ public class ConversationListFragment extends BaseConversationListFragment
     eventCenter.addObserver(DcContext.DC_EVENT_REACTIONS_CHANGED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_SELFAVATAR_CHANGED, this);
+
+    updateReminders();
   }
 
   @Override
@@ -137,8 +140,6 @@ public class ConversationListFragment extends BaseConversationListFragment
   @Override
   public void onResume() {
     super.onResume();
-
-    updateReminders();
 
     if (requireActivity().getIntent().getIntExtra(RELOAD_LIST, 0) == 1 && !chatlistJustLoaded) {
       loadChatlist();
@@ -194,6 +195,7 @@ public class ConversationListFragment extends BaseConversationListFragment
             DozeReminder.addDozeReminderDeviceMsg(context);
           }
           FcmReceiveService.waitForRegisterFinished();
+          UnifiedPushUtils.waitForRegisterFinished(context);
         } catch (Exception e) {
           e.printStackTrace();
         }
@@ -211,7 +213,7 @@ public class ConversationListFragment extends BaseConversationListFragment
                 .ifNecessary()
                 .onAllGranted(
                     () -> {
-                      DozeReminder.maybeAskDirectly(activity);
+                      onPostNotificationsGranted();
                     })
                 .onAnyDenied(
                     () -> {
@@ -230,11 +232,30 @@ public class ConversationListFragment extends BaseConversationListFragment
             PermissionChecker.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS)
               == PermissionChecker.PERMISSION_GRANTED
           ) {
-            DozeReminder.maybeAskDirectly(activity);
+            onPostNotificationsGranted();
           }
         } else {
-          DozeReminder.maybeAskDirectly(activity);
+          onPostNotificationsGranted();
         }
+      }
+
+      private void onPostNotificationsGranted() {
+        UnifiedPushUtils.InitCallback initCallback = status -> {
+          switch (status) {
+            case NoPush:
+              DozeReminder.maybeAskDirectly(activity);
+              break;
+            case PushInit:
+              // This will wait for UnifiedPush to be registered
+              updateReminders();
+              break;
+            case HasPush:
+              // Do nothing
+              break;
+          }
+        };
+
+        UnifiedPushUtils.mayInitUnifiedPush(activity, initCallback);
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, activity);
   }
