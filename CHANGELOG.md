@@ -5,6 +5,7 @@
 * Allow to set chat description
 * Fix: keep original sent timestamp for resent messages
 * Fix: make clicking on broadcast member-added messages work always
+* Fix: remove notification when a message is deleted by sender
 * Update to core 2.44.0
 
 ## v2.43.0
