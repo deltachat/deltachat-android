@@ -181,7 +181,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       // This also allow users who have disabled UnifiedPush by mistake to reset it.
       Prefs.enableUnifiedPush(context);
       // If the build supports UnifiedPush, we init it
-      UnifiedPushUtils.mayInitUnifiedPush(getActivity());
+      UnifiedPushUtils.mayInitUnifiedPush(getActivity(), s -> {});
     }
     notificationsEnabled.setSummary(getSummary(context, false));
     return true;

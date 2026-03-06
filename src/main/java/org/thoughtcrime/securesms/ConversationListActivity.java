@@ -68,7 +68,6 @@ import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DirectShareUtil;
 import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.notifications.UnifiedPushUtils;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
@@ -255,8 +254,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
       qrCodeHandler.secureJoinByQr(rawQrString, SecurejoinSource.Scan, SecurejoinUiPath.Unknown);
     }
-
-    UnifiedPushUtils.mayInitUnifiedPush(this);
   }
 
   /**
