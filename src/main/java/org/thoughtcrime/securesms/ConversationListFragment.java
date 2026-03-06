@@ -29,6 +29,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.content.PermissionChecker;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.b44t.messenger.DcChatlist;
@@ -225,7 +226,10 @@ public class ConversationListFragment extends BaseConversationListFragment
                       dcContext.addDeviceMsg("android.notifications-disabled", msg);
                     })
                 .execute();
-          } else {
+          } else if (
+            PermissionChecker.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS)
+              == PermissionChecker.PERMISSION_GRANTED
+          ) {
             DozeReminder.maybeAskDirectly(activity);
           }
         } else {
