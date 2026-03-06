@@ -118,16 +118,12 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Last seen %1$s</string>
     <string name="last_seen_unknown">Last seen: Unknown</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d second</item>
-        <item quantity="other">%d seconds</item>
-    </plurals>
     <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d minute</item>
-        <item quantity="other">%d minutes</item>
+    <plurals name="call_duration_minutes">
+        <item quantity="one">%d minute duration</item>
+        <item quantity="other">%d minutes duration</item>
     </plurals>
+    <string name="call_duration_less_than_a_minute">Less than a minute</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -400,8 +396,6 @@
     <string name="declined_call">Declined call</string>
     <string name="canceled_call">Canceled call</string>
     <string name="missed_call">Missed call</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
