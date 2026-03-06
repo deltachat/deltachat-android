@@ -1178,4 +1178,7 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">What\'s new?\n\n💯 End-to-end encryption is reliable and forever now. Padlocks 🔒 are gone!\n\n✉️ Classic email without end-to-end encryption is marked with a letter symbol\n\n😻 New enhanced profile screen for all your contacts\n\n🔲 New button for quick access to apps used in a chat\n\n❤️ Please donate to help us remain independent and continue to bring improvements: %1$s</string>
+    <string name="dialog_introduce_unifiedpush_selection">You are about to select your UnifiedPush service.</string>
+    <string name="notification_reconfigure_notifications">The application has been unregistered for notifications. Open the app to reconfigure.</string>
+    <string name="pref_notification_desc_using_unifiedpush">Using UnifiedPush</string>
 </resources>

@@ -6,6 +6,7 @@
 * Fix: keep original sent timestamp for resent messages
 * Fix: make clicking on broadcast member-added messages work always
 * Update to core 2.44.0
+* Add support for UnifiedPush
 
 ## v2.43.0
 2026-02

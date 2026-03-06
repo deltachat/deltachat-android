@@ -17,6 +17,7 @@ import com.b44t.messenger.DcContext;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
+import org.unifiedpush.android.connector.UnifiedPush;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -51,6 +52,8 @@ public class Prefs {
 
   public  static final String NOTIFICATION_PRIVACY_PREF        = "pref_notification_privacy";
   public  static final String NOTIFICATION_PRIORITY_PREF       = "pref_notification_priority";
+
+  public  static final String DISABLE_UNIFIEDPUSH              = "pref_disable_unifiedpush";
 
   private static final String PROFILE_AVATAR_ID_PREF           = "pref_profile_avatar_id";
   public  static final String INCOGNITO_KEYBORAD_PREF          = "pref_incognito_keyboard";
@@ -161,7 +164,7 @@ public class Prefs {
     return getIntegerPreference(context, STATS_DEVICE_MSG_ID_PREF, 0);
   }
 
-  public static boolean isPushEnabled(Context context) {
+  public static boolean isFcmPushEnabled(Context context) {
       return BuildConfig.USE_PLAY_SERVICES;
   }
 
@@ -223,6 +226,11 @@ public class Prefs {
     return result==null? null : Uri.parse(result);
   }
 
+  public static void resetReliableService(Context context) {
+    final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+    prefs.edit().remove(RELIABLE_SERVICE_PREF).apply();
+  }
+
   public static void setReliableService(Context context, boolean value) {
     setBooleanPreference(context, RELIABLE_SERVICE_PREF, value);
   }
@@ -236,7 +244,33 @@ public class Prefs {
     }
 
     // if the key was unset, then calculate default value
-    return !isPushEnabled(context) || !DcHelper.getAccounts(context).isAllChatmail();
+    return !(isFcmPushEnabled(context) || UnifiedPush.getAckDistributor(context) != null)
+      || !DcHelper.getAccounts(context).isAllChatmail();
+  }
+
+  /**
+   * Allow UnifiedPush to be used if a distributor is available
+   * <p>UnifiedPush is never used if the flavor uses the Play Services</p>
+   * <p>We use 2 functions enableUnifiedPush/disableUnifiedPush to make things more clear</p>
+   * @param context
+   */
+  public static void enableUnifiedPush(Context context) {
+    setBooleanPreference(context, DISABLE_UNIFIEDPUSH, false);
+  }
+
+  /**
+   * Allow UnifiedPush to be used if a distributor is available
+   * <p>We use 2 functions enableUnifiedPush/disableUnifiedPush to make things more clear</p>
+   * @param context
+   */
+  public static void disableUnifiedPush(Context context) {
+    setBooleanPreference(context, DISABLE_UNIFIEDPUSH, true);
+  }
+
+  public static boolean unifiedPushDisabled(Context context) {
+    // By default, allow UnifiedPush.
+    // This is never used if the flavor supports Play Services.
+    return getBooleanPreference(context, DISABLE_UNIFIEDPUSH, false);
   }
 
   // vibrate
