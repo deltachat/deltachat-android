@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;

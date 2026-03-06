@@ -34,6 +34,16 @@
         android:textColor="?conversation_item_outgoing_text_primary_color"
         tools:text="Incoming call" />
 
+      <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/duration"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:ellipsize="marquee"
+          android:singleLine="true"
+          android:fontFamily="sans-serif"
+          android:textColor="?conversation_item_incoming_text_secondary_color"
+          tools:text="Incoming call" />
+
   </LinearLayout>
 
 
