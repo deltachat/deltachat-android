@@ -1402,6 +1402,5 @@
         continue to bring improvements: %1$s</string>
     <string name="dialog_introduce_unifiedpush_selection">You are about to select your UnifiedPush service.</string>
     <string name="notification_reconfigure_notifications">The application has been unregistered for notifications. Open the app to reconfigure.</string>
-    <string name="pref_notification_desc_using_google_push">Using Google push</string>
     <string name="pref_notification_desc_using_unifiedpush">Using UnifiedPush</string>
 </resources>

@@ -283,8 +283,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       } else if (Prefs.reliableService(context)) {
         return detailed ? context.getString(R.string.on) : "";
       } else if (FcmReceiveService.getToken() != null) {
-        // Always show
-        return context.getString(R.string.pref_notification_desc_using_google_push);
+        return detailed? context.getString(R.string.on) : "";
       } else if (UnifiedPush.getAckDistributor(context) != null) {
         // Always show
         return context.getString(R.string.pref_notification_desc_using_unifiedpush);
