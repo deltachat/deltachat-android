@@ -121,11 +121,11 @@ public class DateUtils extends android.text.format.DateUtils {
 
   public static String getFormattedCallDuration(Context c, int seconds) {
     if (seconds < 60) {
-      return c.getResources().getQuantityString(R.plurals.n_seconds_ext, seconds, seconds);
+      return c.getResources().getString(R.string.call_duration_less_than_a_minute);
     }
 
     int mins = seconds / 60;
-    return c.getResources().getQuantityString(R.plurals.n_minutes_ext, mins, mins);
+    return c.getResources().getQuantityString(R.plurals.call_duration_minutes, mins, mins);
   }
 
   public static String getFormattedTimespan(Context c, int timestamp) {
