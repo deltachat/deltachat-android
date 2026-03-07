@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.util.Base64;
 import android.util.Log;
 
+import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -14,6 +16,8 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+
+import chat.delta.rpc.types.CallInfo;
 
 public class CallUtil {
   private static final String TAG = CallUtil.class.getSimpleName();
@@ -59,4 +63,19 @@ public class CallUtil {
     context.startActivity(intent);
   }
 
+  public static void startAudioCall(ApplicationContext context, Activity activity, int chatId) {
+    startCall(activity, chatId, false);
+  }
+
+  public static void startVideoCall(ApplicationContext context, Activity activity, int chatId) {
+    startCall(activity, chatId, true);
+  }
+
+    public static void answerIncomingCallFromMessage(Context context, int accId, int chatId, int callId, CallInfo callInfo) {
+      openCall(context, accId, chatId, callId, callInfo.sdpOffer, callInfo.hasVideo);
+    }
+
+    public static void startOutgoingCallFromMessage(Context context, int accId, int chatId, CallInfo callInfo) {
+      startCall(context, accId, chatId, callInfo.hasVideo);
+    }
 }

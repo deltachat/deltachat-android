@@ -34,6 +34,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.Browser;
@@ -615,10 +616,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       WebxdcActivity.openMaps(this, chatId);
       return true;
     } else if (itemId == R.id.menu_start_audio_call) {
-      CallUtil.startCall(this, chatId, false);
+      CallUtil.startAudioCall(context, this, chatId);
       return true;
     } else if (itemId == R.id.menu_start_video_call) {
-      CallUtil.startCall(this, chatId, true);
+      CallUtil.startVideoCall(context, this, chatId);
       return true;
     } else if (itemId == R.id.menu_all_media) {
       handleAllMedia();

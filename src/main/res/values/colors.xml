@@ -73,4 +73,16 @@
     <color name="reaction_pill_text_color_selected">@color/reaction_pill_text_color</color>
 
     <color name="delete_account_item_bg">#eeeeee</color>
+
+    <!-- Signal-like dark theme colors -->
+    <color name="signal_dark_background">#1B1C1F</color>
+    <color name="signal_dark_surface">#1B1C1F</color>
+    <color name="signal_dark_surface_1">#23242A</color>
+    <color name="signal_dark_surface_2">#272A31</color>
+    <color name="signal_dark_surface_3">#2C2F37</color>
+    <color name="signal_dark_on_surface">#E2E1E5</color>
+    <color name="signal_dark_on_surface_variant">#BEBFC5</color>
+    <color name="signal_primary">#B6C5FA</color>
+    <color name="signal_red">#BA1B1B</color>
+    <color name="signal_green">#4CAF50</color>
 </resources>

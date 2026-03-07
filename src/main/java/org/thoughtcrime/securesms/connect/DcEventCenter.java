@@ -10,6 +10,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 
 import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.service.FetchForegroundService;
 import org.thoughtcrime.securesms.util.Util;
@@ -201,12 +202,12 @@ public class DcEventCenter {
         break;
 
       case DcContext.DC_EVENT_INCOMING_CALL:
-        DcHelper.getNotificationCenter(context).notifyCall(accountId, event.getData1Int(), event.getData2Str());
+      DcHelper.getNotificationCenter(context).notifyCall(accountId, event.getData1Int(), event.getData2Str());
         break;
 
       case DcContext.DC_EVENT_INCOMING_CALL_ACCEPTED:
       case DcContext.DC_EVENT_CALL_ENDED:
-        DcHelper.getNotificationCenter(context).removeCallNotification(accountId, event.getData1Int());
+      DcHelper.getNotificationCenter(context).removeCallNotification(accountId, event.getData1Int());
         break;
 
       case DcContext.DC_EVENT_MSGS_NOTICED:
