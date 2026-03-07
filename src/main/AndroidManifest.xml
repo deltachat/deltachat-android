@@ -354,12 +354,6 @@
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
     </activity>
 
-    <activity android:name=".calls.CallActivity"
-              android:label=""
-              android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode">
-    </activity>
-
     <activity android:name=".WebxdcActivity"
               android:label=""
               android:theme="@style/TextSecure.LightTheme"
@@ -402,20 +396,18 @@
         </intent-filter>
     </service>
 
+    <service
+        android:name=".calls.CallService"
+        android:enabled="true"
+        android:exported="false"
+        android:foregroundServiceType="camera|microphone" />
+
     <receiver android:name=".notifications.MarkReadReceiver"
               android:enabled="true"
               android:exported="false">
         <intent-filter>
             <action android:name="org.thoughtcrime.securesms.notifications.MARK_NOTICED"/>
             <action android:name="org.thoughtcrime.securesms.notifications.CANCEL"/>
-        </intent-filter>
-    </receiver>
-
-    <receiver android:name=".notifications.DeclineCallReceiver"
-              android:enabled="true"
-              android:exported="false">
-        <intent-filter>
-            <action android:name="org.thoughtcrime.securesms.notifications.DECLINE_CALL_NOTICED"/>
         </intent-filter>
     </receiver>
 

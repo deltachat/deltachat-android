@@ -299,6 +299,8 @@ public class ApplicationContext extends MultiDexApplication {
     initializeJobManager();
     InChatSounds.getInstance(this);
 
+    LegacyCompatHelper.appContextInit(this);
+
     DynamicTheme.setDefaultDayNightMode(this);
 
     IntentFilter filter = new IntentFilter(Intent.ACTION_LOCALE_CHANGED);
@@ -349,6 +351,12 @@ public class ApplicationContext extends MultiDexApplication {
             webxdcGarbageCollectionRequest);
 
     Log.i("DeltaChat", "+++++++++++ ApplicationContext.onCreate() finished ++++++++++");
+  }
+
+  @Override
+  public void onTerminate() {
+    super.onTerminate();
+    LegacyCompatHelper.appContextOnTerminate();
   }
 
   public JobManager getJobManager() {

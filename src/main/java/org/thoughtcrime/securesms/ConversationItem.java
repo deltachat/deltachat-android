@@ -974,14 +974,14 @@ public class ConversationItem extends BaseConversationItem
       if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
       } else {
-          int accId = dcContext.getAccountId();
-          int chatId = messageRecord.getChatId();
-          if (!messageRecord.isOutgoing() && callInfo.state instanceof CallState.Alerting) {
-              int callId = messageRecord.getId();
-              CallUtil.openCall(getContext(), accId, chatId, callId, callInfo.sdpOffer, callInfo.hasVideo);
-          } else {
-              CallUtil.startCall(getContext(), accId, chatId, callInfo.hasVideo);
-          }
+        int accId = dcContext.getAccountId();
+        int chatId = messageRecord.getChatId();
+        if (!messageRecord.isOutgoing() && callInfo.state instanceof CallState.Alerting) {
+          int callId = messageRecord.getId();
+          CallUtil.answerIncomingCallFromMessage(getContext(), accId, chatId, callId, callInfo);
+        } else {
+          CallUtil.startOutgoingCallFromMessage(getContext(), accId, chatId, callInfo);
+        }
       }
     }
   }

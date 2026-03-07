@@ -13,3 +13,8 @@
 -keep class org.thoughtcrime.securesms.crypto.KeyStoreHelper* { *; }
 
 -dontwarn com.google.firebase.analytics.connector.AnalyticsConnector
+
+# Keep WebRTC classes
+-keep class org.webrtc.** { *; }
+-keepclassmembers class org.webrtc.** { *; }
+-keepattributes InnerClasses

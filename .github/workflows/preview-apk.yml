@@ -46,10 +46,16 @@ jobs:
           scripts/install-toolchains.sh && scripts/ndk-make.sh arm64-v8a
 
       - name: Build APK
-        run: ./gradlew --no-daemon -PABI_FILTER=arm64-v8a assembleGplayDebug
+        run: ./gradlew --no-daemon -PbuildAbis=arm64-v8a assembleGplayLegacyDebug assembleGplayModernDebug
 
-      - name: Upload APK
+      - name: Upload Gplay Legacy Debug APKs
         uses: actions/upload-artifact@v4
         with:
-          name: app-preview.apk
-          path: 'build/outputs/apk/gplay/debug/*.apk'
+          name: gplay-legacy-debug-arm64
+          path: build/outputs/apk/gplayLegacy/debug/*.apk
+
+      - name: Upload Gplay Modern Debug APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: gplay-modern-debug-arm64
+          path: build/outputs/apk/gplayModern/debug/*.apk
