@@ -247,6 +247,16 @@ public class ConversationListFragment extends BaseConversationListFragment
               DozeReminder.maybeAskDirectly(activity);
               break;
             case PushInit:
+              // If reliable service is enabled while an UnifiedPush distributor is installed on the
+              // system, it disables UnifiedPush, and mayInitUnifiedPush always calls this callback
+              // with NoPush => we never enter this switch branch, and never
+              // reset reliable service in this case.
+              //
+              // But, if reliableService was set before UnifiedPush support, or when the user didn't
+              // have any UnifiedPush service installed, then UnifiedPush isn't disabled.
+              // So, if this callback is called with PushInit, it means the user now have a
+              // distributor on their system, and we need to reset reliableService to the default.
+              Prefs.resetReliableService(activity);
               // This will wait for UnifiedPush to be registered
               updateReminders();
               break;
