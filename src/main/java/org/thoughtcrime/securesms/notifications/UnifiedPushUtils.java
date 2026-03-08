@@ -38,6 +38,11 @@ public class UnifiedPushUtils {
     PushInit
   }
 
+  /**
+   * Init UnifiedPush if FCM isn't enabled and UnifiedPush isn't disabled
+   * @param activity Activity
+   * @param initCallback Callback with [InitStatus]
+   */
   public static void mayInitUnifiedPush(Activity activity, InitCallback initCallback) {
     if (Prefs.isFcmPushEnabled(activity)) {
       initCallback.onInit(InitStatus.HasPush);
@@ -89,7 +94,6 @@ public class UnifiedPushUtils {
       public void onConfirm() {
         UnifiedPush.tryUseDefaultDistributor(context, success -> {
           if (success) {
-            Prefs.resetReliableService(context);
             ApplicationContext.getInstance(context).initializePush();
             initCallback.onInit(InitStatus.PushInit);
           } else {
