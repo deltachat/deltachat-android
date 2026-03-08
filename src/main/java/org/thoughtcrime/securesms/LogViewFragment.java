@@ -49,9 +49,11 @@ import java.util.Date;
 import java.util.Locale;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
+import org.thoughtcrime.securesms.service.UnifiedPushService;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
+import org.unifiedpush.android.connector.UnifiedPush;
 
 public class LogViewFragment extends Fragment {
   private EditText logPreview;
@@ -281,9 +283,19 @@ public class LogViewFragment extends Fragment {
         builder.append("post-notifications-granted=<not needed>").append("\n");
       }
 
-      final String token = FcmReceiveService.getToken();
-      builder.append("push-enabled=").append(Prefs.isFcmPushEnabled(context)).append("\n");
-      builder.append("push-token=").append(token == null ? "<empty>" : token).append("\n");
+      final String fcmToken = FcmReceiveService.getToken();
+      final Boolean fcmEnabled = Prefs.isFcmPushEnabled(context);
+      builder.append("fcm-enabled=").append(Prefs.isFcmPushEnabled(context)).append("\n");
+      if (fcmEnabled) {
+        builder.append("push-token=").append(fcmToken == null ? "<empty>" : fcmToken).append("\n");
+      } else {
+        final String ackDistrib = UnifiedPush.getAckDistributor(context);
+        final String upToken = UnifiedPushService.getToken();
+        builder.append("unifiedpush-disabled=").append(Prefs.unifiedPushDisabled(context)).append("\n");
+        builder.append("unifiedpush-registered=").append(ackDistrib != null).append("\n");
+        builder.append("unifiedpush-distrib=").append(ackDistrib == null ? "null" : ackDistrib).append("\n");
+        builder.append("push-token=").append(upToken == null ? "<empty>" : upToken).append("\n");
+      }
     } catch (Exception e) {
       builder.append("Unknown\n");
     }
