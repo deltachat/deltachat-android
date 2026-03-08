@@ -169,12 +169,20 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   @Override
   public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
     Context context = getContext();
+    if (context == null) {
+      Log.w(TAG, "onPreferenceChange called without context");
+      return true;
+    }
     boolean enabled = (Boolean) newValue;
     Prefs.setReliableService(context, enabled);
     if (enabled) {
       KeepAliveService.startSelf(context);
-      Prefs.disableUnifiedPush(context);
-      UnifiedPushService.unregister(context);
+      if (!UnifiedPush.getDistributors(context).isEmpty()) {
+        // If reliable service is set when the system has an UnifiedPush distributor:
+        // we disable UnifiedPush.
+        Prefs.disableUnifiedPush(context);
+        UnifiedPushService.unregister(context);
+      }
     } else {
       context.stopService(new Intent(context, KeepAliveService.class));
       // Re-enable UnifiedPush when the user disable the foreground service.
