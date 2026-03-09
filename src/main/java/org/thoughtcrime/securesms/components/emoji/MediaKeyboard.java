@@ -41,34 +41,10 @@ public class MediaKeyboard extends LinearLayout implements InputView, Consumer<E
     super(context, attrs);
   }
 
-  public void setKeyboardListener(@Nullable MediaKeyboardListener listener) {
-    this.keyboardListener = listener;
-  }
-
   @Override
-  public boolean isShowing() {
-    return getVisibility() == VISIBLE;
-  }
+  public void onFinishInflate() {
+    super.onFinishInflate();
 
-  @Override
-  public void show(int height, boolean immediate) {
-    ViewGroup.LayoutParams params = getLayoutParams();
-    params.height = height;
-    Log.i(TAG, "showing emoji drawer with height " + params.height);
-    setLayoutParams(params);
-
-    show();
-  }
-
-  public void show() {
-    if (emojiPicker == null) {
-      setupViews();
-    }
-    setVisibility(VISIBLE);
-    if (keyboardListener != null) keyboardListener.onShown();
-  }
-
-  private void setupViews() {
     emojiPicker = findViewById(R.id.emoji_picker);
     stickerPicker = findViewById(R.id.sticker_picker);
     stickerPickerContainer = findViewById(R.id.sticker_picker_container);
@@ -108,6 +84,30 @@ public class MediaKeyboard extends LinearLayout implements InputView, Consumer<E
         }
       });
     }
+  }
+
+  public void setKeyboardListener(@Nullable MediaKeyboardListener listener) {
+    this.keyboardListener = listener;
+  }
+
+  @Override
+  public boolean isShowing() {
+    return getVisibility() == VISIBLE;
+  }
+
+  @Override
+  public void show(int height, boolean immediate) {
+    ViewGroup.LayoutParams params = getLayoutParams();
+    params.height = height;
+    Log.i(TAG, "showing emoji drawer with height " + params.height);
+    setLayoutParams(params);
+
+    show();
+  }
+
+  public void show() {
+    setVisibility(VISIBLE);
+    if (keyboardListener != null) keyboardListener.onShown();
   }
 
   private void showEmojiPicker() {
