@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Allow to set chat description
+* Unified date display in call bubbles
 * Fix: keep original sent timestamp for resent messages
 * Fix: make clicking on broadcast member-added messages work always
 * Update to core 2.44.0
