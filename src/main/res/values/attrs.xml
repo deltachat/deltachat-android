@@ -86,7 +86,6 @@
 
     <attr name="profile_toolbar_background" format="color"/>
     <attr name="profile_toolbar_foreground" format="color"/>
-    <attr name="profile_header_foreground" format="color"/>
     <attr name="profile_document_foreground" format="color"/>
 
     <attr name="search_toolbar_background" format="color"/>
