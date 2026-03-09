@@ -146,7 +146,6 @@ public class DcHelper {
     dcContext.setStockTranslation(100, context.getString(R.string.download_max_available_until));
     dcContext.setStockTranslation(103, context.getString(R.string.incoming_messages));
     dcContext.setStockTranslation(104, context.getString(R.string.outgoing_messages));
-    dcContext.setStockTranslation(105, context.getString(R.string.storage_on_domain));
     dcContext.setStockTranslation(107, context.getString(R.string.connectivity_connected));
     dcContext.setStockTranslation(108, context.getString(R.string.connectivity_connecting));
     dcContext.setStockTranslation(109, context.getString(R.string.connectivity_updating));

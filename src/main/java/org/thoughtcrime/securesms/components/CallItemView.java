@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.util.DateUtils;
 
 import chat.delta.rpc.types.CallInfo;
 import chat.delta.rpc.types.CallState;
@@ -21,7 +22,7 @@ public class CallItemView extends FrameLayout {
 
   private final @NonNull ImageView icon;
   private final @NonNull TextView title;
-  private final @NonNull ConversationItemFooter footer;
+  private final @NonNull TextView duration;
   private CallInfo callInfo;
   private CallClickListener viewListener;
 
@@ -40,7 +41,7 @@ public class CallItemView extends FrameLayout {
 
     this.icon = findViewById(R.id.call_icon);
     this.title = findViewById(R.id.title);
-    this.footer = findViewById(R.id.footer);
+    this.duration = findViewById(R.id.duration);
 
     setOnClickListener(v -> {
       if (viewListener != null && callInfo != null) {
@@ -55,10 +56,12 @@ public class CallItemView extends FrameLayout {
 
   public void setCallItem(boolean isOutgoing, CallInfo callInfo) {
     this.callInfo = callInfo;
+
     if (callInfo.state instanceof CallState.Completed) {
-      footer.setCallDuration(((CallState.Completed) callInfo.state).duration);
+      duration.setText(DateUtils.getFormattedCallDuration(getContext(), ((CallState.Completed) callInfo.state).duration));
+      duration.setVisibility(VISIBLE);
     } else {
-      footer.setCallDuration(0); // reset
+      duration.setVisibility(GONE);
     }
 
     if (callInfo.state instanceof CallState.Missed) {
@@ -79,26 +82,19 @@ public class CallItemView extends FrameLayout {
     if (isOutgoing) {
       attrs = new int[]{
         R.attr.conversation_item_outgoing_text_primary_color,
-        R.attr.conversation_item_outgoing_text_secondary_color,
       };
     } else {
       attrs = new int[]{
         R.attr.conversation_item_incoming_text_primary_color,
-        R.attr.conversation_item_incoming_text_secondary_color,
       };
     }
     try (TypedArray ta = getContext().obtainStyledAttributes(attrs)) {
       icon.setColorFilter(ta.getColor(0, Color.BLACK));
-      footer.setTextColor(ta.getColor(1, Color.BLACK));
     }
   }
 
-  public ConversationItemFooter getFooter() {
-    return footer;
-  }
-
   public String getDescription() {
-    return title.getText() + "\n" + footer.getDescription();
+    return title.getText() + (duration.getVisibility()==VISIBLE ? ("\n" + duration.getText()) : "");
   }
 
   public interface CallClickListener {

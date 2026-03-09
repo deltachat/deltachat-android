@@ -9,10 +9,17 @@
     android:gravity="center_vertical"
     android:focusable="true">
 
+  <ImageView
+      android:id="@+id/call_icon"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:contentDescription="@null" />
+
   <LinearLayout android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
                 android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -27,23 +34,18 @@
         android:textColor="?conversation_item_outgoing_text_primary_color"
         tools:text="Incoming call" />
 
-    <org.thoughtcrime.securesms.components.ConversationItemFooter
-        android:id="@+id/footer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:gravity="start"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        />
+      <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/duration"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:ellipsize="marquee"
+          android:singleLine="true"
+          android:fontFamily="sans-serif"
+          android:textColor="?conversation_item_incoming_text_secondary_color"
+          tools:text="Incoming call" />
 
   </LinearLayout>
 
-  <ImageView
-      android:id="@+id/call_icon"
-      android:layout_width="30dp"
-      android:layout_height="30dp"
-      android:contentDescription="@null"
-      />
+
 
 </LinearLayout>
