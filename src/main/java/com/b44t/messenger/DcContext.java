@@ -15,6 +15,7 @@ public class DcContext {
     public final static int DC_EVENT_MSG_DELIVERED               = 2010;
     public final static int DC_EVENT_MSG_FAILED                  = 2012;
     public final static int DC_EVENT_MSG_READ                    = 2015;
+    public final static int DC_EVENT_MSG_DELETED                 = 2016;
     public final static int DC_EVENT_CHAT_MODIFIED               = 2020;
     public final static int DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED = 2021;
     public final static int DC_EVENT_CHAT_DELETED                = 2023;
