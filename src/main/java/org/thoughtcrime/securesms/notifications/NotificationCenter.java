@@ -592,6 +592,11 @@ public class NotificationCenter {
             lastAudibleNotification = now;
         }
 
+
+        // create a basic notification
+        // even without a name or message displayed,
+        // it makes sense to use separate notification channels and to open the respective chat directly -
+        // the user may eg. have chosen a different sound
         String notificationChannel = getNotificationChannel(notificationManager, chatData, dcChat);
 
         LinkedHashMap<Integer, String> messagesForInbox = null;
@@ -741,7 +746,12 @@ public class NotificationCenter {
             builder.setNumber(messageCount);
 
             // Show notification
-            notificationManager.notify(String.valueOf(accountId), ID_MSG_OFFSET + chatId, builder.build());
+            // try..catch potentially needed for very specific devices
+            try {
+                notificationManager.notify(String.valueOf(accountId), ID_MSG_OFFSET + chatId, builder.build());
+            } catch (Exception e) {
+                Log.e(TAG, "cannot add notification", e);
+            }
 
             // Group notifications in a summary (Android 7+)
             if (includeSummary && Build.VERSION.SDK_INT >= 24) {
