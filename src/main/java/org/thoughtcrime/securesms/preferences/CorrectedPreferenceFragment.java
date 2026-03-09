@@ -9,8 +9,6 @@ import androidx.fragment.app.DialogFragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import org.thoughtcrime.securesms.components.CustomDefaultPreference;
-
 public abstract class CorrectedPreferenceFragment extends PreferenceFragmentCompat {
 
   @Override
@@ -29,10 +27,6 @@ public abstract class CorrectedPreferenceFragment extends PreferenceFragmentComp
   @Override
   public void onDisplayPreferenceDialog(@NonNull Preference preference) {
     DialogFragment dialogFragment = null;
-
-    if (preference instanceof CustomDefaultPreference) {
-      dialogFragment = CustomDefaultPreference.CustomDefaultPreferenceDialogFragmentCompat.newInstance(preference.getKey());
-    }
 
     if (dialogFragment != null) {
       dialogFragment.setTargetFragment(this, 0);
