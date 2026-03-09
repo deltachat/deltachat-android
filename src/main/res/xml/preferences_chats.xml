@@ -21,7 +21,7 @@
     <ListPreference
         android:key="pref_compression"
         android:title="@string/pref_outgoing_media_quality"
-        android:dependency="pref_compression"
+        android:dialogLayout="@layout/pref_dialog_with_hint"
         android:entries="@array/pref_compression_entries"
         android:entryValues="@array/pref_compression_values"
         android:defaultValue="0" />
