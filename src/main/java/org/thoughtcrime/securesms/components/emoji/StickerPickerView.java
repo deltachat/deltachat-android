@@ -1,9 +1,7 @@
 package org.thoughtcrime.securesms.components.emoji;
 
 import android.content.Context;
-import android.net.Uri;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,17 +20,13 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 
 import java.io.File;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StickerPickerView extends RecyclerView {
 
-  private static final String TAG = StickerPickerView.class.getSimpleName();
   private static final String STICKER_FOLDER = "stickers";
 
-  @Nullable private StickerPickerListener listener;
-  private GlideRequests glideRequests;
   private File stickerDir;
 
   public StickerPickerView(@NonNull Context context) {
@@ -46,19 +40,20 @@ public class StickerPickerView extends RecyclerView {
   }
 
   private void init(Context context) {
-    glideRequests = GlideApp.with(context);
     stickerDir = new File(context.getFilesDir(), STICKER_FOLDER);
+    setAdapter(new StickerAdapter(context));
     setLayoutManager(new GridLayoutManager(context, 4));
     loadStickers();
   }
 
   public void setStickerPickerListener(@Nullable StickerPickerListener listener) {
-    this.listener = listener;
+    assert getAdapter() != null;
+    ((StickerAdapter)getAdapter()).setStickerPickerListener(listener);
   }
 
   public void loadStickers() {
-    List<File> stickerFiles = getSavedStickers();
-    setAdapter(new StickerAdapter(getContext(), glideRequests, stickerFiles, listener));
+    assert getAdapter() != null;
+    ((StickerAdapter)getAdapter()).changeData(getSavedStickers());
   }
 
   private List<File> getSavedStickers() {
@@ -78,12 +73,7 @@ public class StickerPickerView extends RecyclerView {
     }
 
     // Sort stickers just to provide consistent order
-    Collections.sort(stickerFiles, new Comparator<File>() {
-      @Override
-      public int compare(File f1, File f2) {
-        return f1.getName().compareToIgnoreCase(f2.getName());
-      }
-    });
+    Collections.sort(stickerFiles, (f1, f2) -> f1.getName().compareToIgnoreCase(f2.getName()));
 
     return stickerFiles;
   }
@@ -97,18 +87,22 @@ public class StickerPickerView extends RecyclerView {
 
     private final Context context;
     private final GlideRequests glideRequests;
-    private final List<File> stickerFiles;
     private final LayoutInflater layoutInflater;
-    private final StickerPickerListener listener;
+    private StickerPickerListener listener;
+    private List<File> stickerFiles = new ArrayList<>();
 
-    StickerAdapter(@NonNull Context context, 
-                    @NonNull GlideRequests glideRequests, 
-                    @NonNull List<File> stickerFiles,
-                    @Nullable StickerPickerListener listener) {
+    StickerAdapter(@NonNull Context context) {
       this.context = context;
-      this.glideRequests = glideRequests;
-      this.stickerFiles = stickerFiles;
+      this.glideRequests = GlideApp.with(context);
       this.layoutInflater = LayoutInflater.from(context);
+    }
+
+    public void changeData(@NonNull List<File> stickerFiles) {
+      this.stickerFiles = stickerFiles;
+      notifyDataSetChanged();
+    }
+
+    public void setStickerPickerListener(@Nullable StickerPickerListener listener) {
       this.listener = listener;
     }
 
