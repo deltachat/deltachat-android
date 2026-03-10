@@ -530,7 +530,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (dcChat.shallLeaveBeforeDelete(DcHelper.getContext(context))) {
       if (dcChat.isInBroadcast()) {
-        menu.findItem(R.id.menu_leave).setTitle(R.string.menu_leave_channel).setVisible(true);
+        menu.findItem(R.id.menu_leave).setTitle(R.string.menu_leave_channel);
       }
       menu.findItem(R.id.menu_leave).setVisible(true);
       menu.findItem(R.id.menu_delete_chat).setVisible(false);
