@@ -71,9 +71,9 @@ public class CallItemView extends FrameLayout {
     } else if (callInfo.state instanceof CallState.Declined) {
       title.setText(R.string.declined_call);
     } else if (callInfo.hasVideo) {
-      title.setText(isOutgoing? R.string.outgoing_video_call : R.string.incoming_video_call);
+      title.setText(R.string.video_call);
     } else {
-      title.setText(isOutgoing? R.string.outgoing_audio_call : R.string.incoming_audio_call);
+      title.setText(R.string.audio_call);
     }
 
     icon.setImageResource(callInfo.hasVideo? R.drawable.ic_videocam_white_24dp : R.drawable.baseline_call_24);
