@@ -38,6 +38,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 import androidx.lifecycle.ViewModelProvider;
@@ -69,6 +70,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.ConversationAdaptiveActionsToolbar;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -534,6 +536,51 @@ public class ConversationFragment extends MessageSelectorFragment
         }
     }
 
+    private void handleSaveSticker(final DcMsg message) {
+        if (message.getType() != DcMsg.DC_MSG_STICKER) {
+            return;
+        }
+
+        File stickerFile = message.getFileAsFile();
+        if (stickerFile == null || !stickerFile.exists()) {
+            Toast.makeText(getContext(), R.string.error, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Create stickers directory in internal storage
+        File stickersDir = new File(getContext().getFilesDir(), "stickers");
+        if (!stickersDir.exists()) {
+            stickersDir.mkdirs();
+        }
+
+        // Copy sticker to stickers directory
+        String extension = stickerFile.getName();
+        int dotPos = extension.lastIndexOf('.');
+        if (dotPos >= 0) {
+          extension = extension.substring(dotPos + 1);
+        }
+        String fileName = System.currentTimeMillis() + "." + extension;
+        File destFile = new File(stickersDir, fileName);
+
+        try (java.io.FileInputStream in = new java.io.FileInputStream(stickerFile);
+             java.io.FileOutputStream out = new java.io.FileOutputStream(destFile)) {
+            byte[] buffer = new byte[1024];
+            int read;
+            while ((read = in.read(buffer)) != -1) {
+                out.write(buffer, 0, read);
+            }
+            Toast.makeText(getContext(), R.string.saved, Toast.LENGTH_SHORT).show();
+
+            // Refresh sticker picker to show the newly added sticker
+            if (getActivity() instanceof ConversationActivity) {
+                ((ConversationActivity) getActivity()).refreshStickerPicker();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error saving sticker", e);
+            Toast.makeText(getContext(), R.string.error, Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @SuppressLint("RestrictedApi")
     private void handleReplyMessage(final DcMsg message) {
         if (getActivity() != null) {
@@ -928,6 +975,18 @@ public class ConversationFragment extends MessageSelectorFragment
       public void onReactionClicked(DcMsg messageRecord) {
         ReactionsDetailsFragment dialog = ReactionsDetailsFragment.newInstance(messageRecord.getId());
         dialog.show(getActivity().getSupportFragmentManager(), null);
+      }
+
+      @Override
+      public void onStickerClicked(DcMsg messageRecord) {
+        new AlertDialog.Builder(getContext())
+          .setTitle(R.string.add_to_sticker_collection)
+          .setMessage(R.string.ask_add_sticker_to_collection)
+          .setPositiveButton(R.string.ok, (dialog, which) -> {
+            handleSaveSticker(messageRecord);
+          })
+          .setNegativeButton(R.string.cancel, null)
+          .show();
       }
     }
 
