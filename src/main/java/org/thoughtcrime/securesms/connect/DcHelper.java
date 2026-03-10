@@ -220,10 +220,10 @@ public class DcHelper {
     dcContext.setStockTranslation(220, context.getString(R.string.proxy_enabled));
     dcContext.setStockTranslation(221, context.getString(R.string.proxy_enabled_hint));
     dcContext.setStockTranslation(230, context.getString(R.string.chat_unencrypted_explanation));
-    dcContext.setStockTranslation(232, context.getString(R.string.outgoing_audio_call));
-    dcContext.setStockTranslation(233, context.getString(R.string.outgoing_video_call));
-    dcContext.setStockTranslation(234, context.getString(R.string.incoming_audio_call));
-    dcContext.setStockTranslation(235, context.getString(R.string.incoming_video_call));
+    dcContext.setStockTranslation(232, context.getString(R.string.audio_call));
+    dcContext.setStockTranslation(233, context.getString(R.string.video_call));
+    dcContext.setStockTranslation(234, context.getString(R.string.audio_call));
+    dcContext.setStockTranslation(235, context.getString(R.string.video_call));
     dcContext.setStockTranslation(240, context.getString(R.string.chat_description_changed_by_you));
     dcContext.setStockTranslation(241, context.getString(R.string.chat_description_changed_by_other));
   }
