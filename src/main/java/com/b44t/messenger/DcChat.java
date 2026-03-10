@@ -1,5 +1,7 @@
 package com.b44t.messenger;
 
+import org.thoughtcrime.securesms.util.Util;
+
 public class DcChat {
 
     public static final int DC_CHAT_TYPE_UNDEFINED   = 0;
@@ -54,6 +56,16 @@ public class DcChat {
     public boolean isMultiUser() {
       int type = getType();
       return type != DC_CHAT_TYPE_SINGLE;
+    }
+
+    public boolean shallLeaveBeforeDelete(DcContext dcContext) {
+      if (isInBroadcast()) {
+        final int[] members = dcContext.getChatContacts(getId());
+        return Util.contains(members, DcContact.DC_CONTACT_ID_SELF);
+      } else if (isMultiUser() && isEncrypted() && canSend() && !isOutBroadcast() && !isMailingList()) {
+        return true;
+      }
+      return false;
     }
 
     public boolean isMailingList() {
