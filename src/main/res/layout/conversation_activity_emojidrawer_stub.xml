@@ -1,19 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- WARNING: on modifications also update the layout-land folder. -->
 <org.thoughtcrime.securesms.components.emoji.MediaKeyboard
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/emoji_drawer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:visibility="gone">
 
-  <androidx.emoji2.emojipicker.EmojiPickerView
-      xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto"
-      android:id="@+id/emoji_picker"
+  <FrameLayout
+      android:id="@+id/media_keyboard_container"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:background="?emoji_drawer_background">
+
+    <androidx.emoji2.emojipicker.EmojiPickerView
+        android:id="@+id/emoji_picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?emoji_drawer_background"
+        app:emojiGridColumns="@integer/emoji_grid_columns"/>
+
+    <FrameLayout
+        android:id="@+id/sticker_picker_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+      <org.thoughtcrime.securesms.components.emoji.StickerPickerView
+          android:id="@+id/sticker_picker"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="?emoji_drawer_background"
+          android:paddingTop="5dp"
+          android:clipToPadding="false"
+          android:clipChildren="false"/>
+
+      <TextView
+          android:id="@+id/sticker_picker_empty"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:text="@string/sticker_picker_empty_hint"
+          android:textColor="?android:attr/textColorSecondary"
+          android:textSize="16sp"
+          android:visibility="gone"/>
+
+    </FrameLayout>
+
+  </FrameLayout>
+
+  <com.google.android.material.tabs.TabLayout
+      android:id="@+id/media_keyboard_tabs"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
       android:background="?emoji_drawer_background"
-      app:emojiGridColumns="9"/>
+      app:tabMode="fixed"
+      app:tabGravity="center"
+      app:tabIndicatorGravity="top"
+      app:tabIconTint="?attr/colorControlNormal"
+      app:tabPaddingStart="16dp"
+      app:tabPaddingEnd="16dp"
+      app:tabPaddingTop="10dp"
+      app:tabPaddingBottom="10dp"
+      />
 
 </org.thoughtcrime.securesms.components.emoji.MediaKeyboard>
