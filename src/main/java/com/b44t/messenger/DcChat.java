@@ -62,7 +62,7 @@ public class DcChat {
       if (isInBroadcast()) {
         final int[] members = dcContext.getChatContacts(getId());
         return Util.contains(members, DcContact.DC_CONTACT_ID_SELF);
-      } else if (isMultiUser() && isEncrypted() && canSend() && !isOutBroadcast() && !isMailingList()) {
+      } else if (isMultiUser() && isEncrypted() && canSend() && !isOutBroadcast()) {
         return true;
       }
       return false;
