@@ -73,17 +73,14 @@ esp. before/after screenshots.
 
 ### Coding Conventions
 
-Source files are partly derived from different other open source projects
-and may follow different coding styles and conventions.
-
-If you do a PR fixing a bug or adding a feature,
-please embrace the coding convention you see in the corresponding files,
-so that the result fits well together.
-
-Do not refactor or rename things in the same PR
-to make the diff small and the PR easy to review.
-
 Project language is Java.
+
+Code formatting is enforced via [Spotless](https://github.com/diffplug/spotless) Gradle plugin.
+Auto-format all files by running `./gradlew spotlessApply` before opening a PR.
+CI will fail if files are not formatted correctly so make sure to run the formatter before pushing.
+
+If you do a PR fixing a bug or adding a feature, do not refactor or rename things in the same PR
+to make the diff small and the PR easy to review.
 
 By using [Delta Chat Core](https://github.com/deltachat/deltachat-core-rust)
 there is already a strong separation between "UI" and "Model".
