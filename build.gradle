@@ -167,7 +167,7 @@ spotless {
         trimTrailingWhitespace()
         endWithNewline()
     }
-     groovy {
+    groovy {
         target '*.gradle'
         greclipse()
         leadingTabsToSpaces(4)
