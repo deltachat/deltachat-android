@@ -729,7 +729,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       .setNegativeButton(R.string.menu_leave_and_delete, (d, which) -> {
         DcHelper.getContext(context).removeContactFromChat(chatId, DcContact.DC_CONTACT_ID_SELF);
         DcHelper.getContext(context).deleteChat(chatId);
-        Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
+        DirectShareUtil.clearShortcut(this, chatId);
+        finish();
       })
       .setNeutralButton(R.string.cancel, null)
       .show();
@@ -753,7 +754,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void handleDeleteChat() {
     AlertDialog dialog = new AlertDialog.Builder(this)
         .setMessage(getResources().getString(R.string.ask_delete_named_chat, dcChat.getName()))
-        .setPositiveButton(R.string.delete, (d, which) -> {
+        .setPositiveButton(R.string.delete_for_me, (d, which) -> {
           DcHelper.getContext(context).deleteChat(chatId);
           DirectShareUtil.clearShortcut(this, chatId);
           finish();
