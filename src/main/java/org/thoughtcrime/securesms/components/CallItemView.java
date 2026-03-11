@@ -8,14 +8,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-
-import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.util.DateUtils;
-
 import chat.delta.rpc.types.CallInfo;
 import chat.delta.rpc.types.CallState;
+import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.util.DateUtils;
 
 public class CallItemView extends FrameLayout {
   private static final String TAG = CallItemView.class.getSimpleName();
@@ -43,11 +40,12 @@ public class CallItemView extends FrameLayout {
     this.title = findViewById(R.id.title);
     this.duration = findViewById(R.id.duration);
 
-    setOnClickListener(v -> {
-      if (viewListener != null && callInfo != null) {
-        viewListener.onClick(v, callInfo);
-      }
-    });
+    setOnClickListener(
+        v -> {
+          if (viewListener != null && callInfo != null) {
+            viewListener.onClick(v, callInfo);
+          }
+        });
   }
 
   public void setCallClickListener(CallClickListener listener) {
@@ -58,7 +56,9 @@ public class CallItemView extends FrameLayout {
     this.callInfo = callInfo;
 
     if (callInfo.state instanceof CallState.Completed) {
-      duration.setText(DateUtils.getFormattedCallDuration(getContext(), ((CallState.Completed) callInfo.state).duration));
+      duration.setText(
+          DateUtils.getFormattedCallDuration(
+              getContext(), ((CallState.Completed) callInfo.state).duration));
       duration.setVisibility(VISIBLE);
     } else {
       duration.setVisibility(GONE);
@@ -76,17 +76,20 @@ public class CallItemView extends FrameLayout {
       title.setText(R.string.audio_call);
     }
 
-    icon.setImageResource(callInfo.hasVideo? R.drawable.ic_videocam_white_24dp : R.drawable.baseline_call_24);
+    icon.setImageResource(
+        callInfo.hasVideo ? R.drawable.ic_videocam_white_24dp : R.drawable.baseline_call_24);
 
     int[] attrs;
     if (isOutgoing) {
-      attrs = new int[]{
-        R.attr.conversation_item_outgoing_text_primary_color,
-      };
+      attrs =
+          new int[] {
+            R.attr.conversation_item_outgoing_text_primary_color,
+          };
     } else {
-      attrs = new int[]{
-        R.attr.conversation_item_incoming_text_primary_color,
-      };
+      attrs =
+          new int[] {
+            R.attr.conversation_item_incoming_text_primary_color,
+          };
     }
     try (TypedArray ta = getContext().obtainStyledAttributes(attrs)) {
       icon.setColorFilter(ta.getColor(0, Color.BLACK));
@@ -94,7 +97,8 @@ public class CallItemView extends FrameLayout {
   }
 
   public String getDescription() {
-    return title.getText() + (duration.getVisibility()==VISIBLE ? ("\n" + duration.getText()) : "");
+    return title.getText()
+        + (duration.getVisibility() == VISIBLE ? ("\n" + duration.getText()) : "");
   }
 
   public interface CallClickListener {

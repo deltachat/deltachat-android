@@ -13,18 +13,17 @@
     android:clipToPadding="false"
     android:clipChildren="false">
 
-  <androidx.appcompat.widget.AppCompatImageView
-      android:id="@+id/jumpto_icon"
-      android:layout_width="35dp"
-      android:layout_height="35dp"
-      android:layout_gravity="center_vertical"
-      android:layout_marginStart="@dimen/conversation_individual_left_gutter"
-      android:padding="5dp"
-      android:src="@drawable/rounded_arrow_forward_24"
-      android:background="@drawable/jumpto_btn_bg"
-      android:contentDescription="@string/show_in_chat"
-      android:visibility="gone"
-      />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/jumpto_icon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/conversation_individual_left_gutter"
+        android:padding="5dp"
+        android:src="@drawable/rounded_arrow_forward_24"
+        android:background="@drawable/jumpto_btn_bg"
+        android:contentDescription="@string/show_in_chat"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:id="@+id/container"
@@ -86,7 +85,7 @@
                     android:maxLines="1"
                     android:ellipsize="end"
                     tools:visibility="visible"
-                    tools:text="Bob"/>
+                    tools:text="Bob" />
 
             </LinearLayout>
 
@@ -101,7 +100,7 @@
                 app:message_type="incoming"
                 app:quote_colorPrimary="?attr/conversation_item_quote_text_color"
                 app:quote_colorSecondary="?attr/conversation_item_quote_text_color"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <ViewStub
                 android:id="@+id/image_view_stub"
@@ -176,7 +175,7 @@
                 android:textColor="?conversation_item_outgoing_text_primary_color"
                 android:textColorLink="?attr/colorAccent"
                 android:importantForAccessibility="no"
-                tools:text="Mango pickle lorem ipsum"/>
+                tools:text="Mango pickle lorem ipsum" />
 
             <Button
                 android:id="@+id/msg_action_button"
@@ -192,7 +191,7 @@
                 android:minHeight="1dp"
                 android:minWidth="0dp"
                 android:text="@string/show_full_message"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/show_full_button"
@@ -210,7 +209,7 @@
                 android:background="@drawable/touch_highlight_background_strong"
                 android:textColor="@color/delta_accent_darker"
                 android:text="@string/show_full_message"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
             <org.thoughtcrime.securesms.components.ConversationItemFooter
                 android:id="@+id/conversation_item_footer"
@@ -224,7 +223,7 @@
                 android:gravity="end"
                 android:clipChildren="false"
                 android:clipToPadding="false"
-                app:footer_text_color="?attr/conversation_item_outgoing_text_secondary_color"/>
+                app:footer_text_color="?attr/conversation_item_outgoing_text_secondary_color" />
 
         </LinearLayout>
 
@@ -239,7 +238,7 @@
             app:message_type="outgoing" />
 
         <!-- the following view is only left because it is used as a reference for positioning above.
-         removing would require some re-layouting, it's just not done yet.-->
+            removing would require some re-layouting, it's just not done yet. -->
         <View
             android:visibility="gone"
             android:id="@+id/indicators_parent"
