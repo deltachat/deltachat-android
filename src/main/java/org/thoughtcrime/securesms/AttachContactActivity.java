@@ -2,8 +2,6 @@ package org.thoughtcrime.securesms;
 
 import android.content.Intent;
 
-import org.thoughtcrime.securesms.connect.DcHelper;
-
 public class AttachContactActivity extends ContactSelectionActivity {
 
   public static final String CONTACT_ID_EXTRA = "contact_id_extra";

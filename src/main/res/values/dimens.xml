@@ -50,6 +50,6 @@
 
     <dimen name="contact_selection_actions_tap_area">10dp</dimen>
 
-	<dimen name="quote_thumb_size">45dp</dimen>
+    <dimen name="quote_thumb_size">45dp</dimen>
 
 </resources>

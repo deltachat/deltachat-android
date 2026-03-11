@@ -6,7 +6,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -14,10 +13,8 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-
 import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -39,17 +36,18 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
-      case android.R.id.home: finish(); return true;
+      case android.R.id.home:
+        finish();
+        return true;
     }
 
     return false;
   }
 
-  public static class BlockedAndShareContactsFragment
-          extends Fragment
-          implements LoaderManager.LoaderCallbacks<DcContactsLoader.Ret>,
-          DcEventCenter.DcEventDelegate, ContactSelectionListAdapter.ItemClickListener {
-
+  public static class BlockedAndShareContactsFragment extends Fragment
+      implements LoaderManager.LoaderCallbacks<DcContactsLoader.Ret>,
+          DcEventCenter.DcEventDelegate,
+          ContactSelectionListAdapter.ItemClickListener {
 
     private RecyclerView recyclerView;
     private TextView emptyStateView;
@@ -57,7 +55,7 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
       View view = inflater.inflate(R.layout.contact_selection_list_fragment, container, false);
-      recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
+      recyclerView = ViewUtil.findById(view, R.id.recycler_view);
       recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
       // add padding to avoid content hidden behind system bars
@@ -81,11 +79,8 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
     }
 
     private void initializeAdapter() {
-      ContactSelectionListAdapter adapter = new ContactSelectionListAdapter(getActivity(),
-              GlideApp.with(this),
-              this,
-              false,
-              false);
+      ContactSelectionListAdapter adapter =
+          new ContactSelectionListAdapter(getActivity(), GlideApp.with(this), this, false, false);
       recyclerView.setAdapter(adapter);
     }
 
@@ -112,7 +107,7 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
 
     @Override
     public void handleEvent(@NonNull DcEvent event) {
-      if (event.getId()==DcContext.DC_EVENT_CONTACTS_CHANGED) {
+      if (event.getId() == DcContext.DC_EVENT_CONTACTS_CHANGED) {
         restartLoader();
       }
     }
@@ -128,10 +123,12 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
     @Override
     public void onItemClick(ContactSelectionListItem item, boolean handleActionMode) {
       new AlertDialog.Builder(getActivity())
-              .setMessage(R.string.ask_unblock_contact)
-              .setCancelable(true)
-              .setNegativeButton(android.R.string.cancel, null)
-              .setPositiveButton(R.string.menu_unblock_contact, (dialog, which) -> unblockContact(item.getContactId())).show();
+          .setMessage(R.string.ask_unblock_contact)
+          .setCancelable(true)
+          .setNegativeButton(android.R.string.cancel, null)
+          .setPositiveButton(
+              R.string.menu_unblock_contact, (dialog, which) -> unblockContact(item.getContactId()))
+          .show();
     }
 
     private void unblockContact(int contactId) {
@@ -143,5 +140,4 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
     @Override
     public void onItemLongClick(ContactSelectionListItem view) {}
   }
-
 }

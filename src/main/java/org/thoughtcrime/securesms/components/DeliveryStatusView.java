@@ -6,14 +6,13 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.AccessibilityUtil;
 
 public class DeliveryStatusView {
 
   private final ImageView deliveryIndicator;
-  private final Context   context;
+  private final Context context;
   private static RotateAnimation prepareAnimation;
   private static RotateAnimation sendingAnimation;
   private boolean animated;
@@ -23,14 +22,13 @@ public class DeliveryStatusView {
     this.context = deliveryIndicator.getContext();
   }
 
-  private void animatePrepare()
-  {
+  private void animatePrepare() {
     if (AccessibilityUtil.areAnimationsDisabled(context)) return;
-    
-    if(prepareAnimation ==null) {
-      prepareAnimation = new RotateAnimation(360f, 0f,
-          Animation.RELATIVE_TO_SELF, 0.5f,
-          Animation.RELATIVE_TO_SELF, 0.5f);
+
+    if (prepareAnimation == null) {
+      prepareAnimation =
+          new RotateAnimation(
+              360f, 0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
       prepareAnimation.setInterpolator(new LinearInterpolator());
       prepareAnimation.setDuration(2500);
       prepareAnimation.setRepeatCount(Animation.INFINITE);
@@ -40,14 +38,13 @@ public class DeliveryStatusView {
     animated = true;
   }
 
-  private void animateSending()
-  {
+  private void animateSending() {
     if (AccessibilityUtil.areAnimationsDisabled(context)) return;
 
-    if(sendingAnimation ==null) {
-      sendingAnimation = new RotateAnimation(0, 360f,
-          Animation.RELATIVE_TO_SELF, 0.5f,
-          Animation.RELATIVE_TO_SELF, 0.5f);
+    if (sendingAnimation == null) {
+      sendingAnimation =
+          new RotateAnimation(
+              0, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
       sendingAnimation.setInterpolator(new LinearInterpolator());
       sendingAnimation.setDuration(1500);
       sendingAnimation.setRepeatCount(Animation.INFINITE);
@@ -57,9 +54,8 @@ public class DeliveryStatusView {
     animated = true;
   }
 
-  private void clearAnimation()
-  {
-    if(animated) {
+  private void clearAnimation() {
+    if (animated) {
       deliveryIndicator.clearAnimation();
       animated = false;
     }
@@ -80,21 +76,24 @@ public class DeliveryStatusView {
   public void setPreparing() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
-    deliveryIndicator.setContentDescription(context.getString(R.string.a11y_delivery_status_sending));
+    deliveryIndicator.setContentDescription(
+        context.getString(R.string.a11y_delivery_status_sending));
     animatePrepare();
   }
 
   public void setPending() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
-    deliveryIndicator.setContentDescription(context.getString(R.string.a11y_delivery_status_sending));
+    deliveryIndicator.setContentDescription(
+        context.getString(R.string.a11y_delivery_status_sending));
     animateSending();
   }
 
   public void setSent() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sent);
-    deliveryIndicator.setContentDescription(context.getString(R.string.a11y_delivery_status_delivered));
+    deliveryIndicator.setContentDescription(
+        context.getString(R.string.a11y_delivery_status_delivered));
     clearAnimation();
   }
 
@@ -108,7 +107,8 @@ public class DeliveryStatusView {
   public void setFailed() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_failed);
-    deliveryIndicator.setContentDescription(context.getString(R.string.a11y_delivery_status_invalid));
+    deliveryIndicator.setContentDescription(
+        context.getString(R.string.a11y_delivery_status_invalid));
     clearAnimation();
   }
 

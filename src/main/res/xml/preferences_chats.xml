@@ -1,49 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Preference android:key="preference_category_blocked"
+    <Preference
+        android:key="preference_category_blocked"
         android:title="@string/pref_blocked_contacts" />
 
     <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-        android:defaultValue="false" android:key="pref_read_receipts"
+        android:defaultValue="false"
+        android:key="pref_read_receipts"
         android:summary="@string/pref_read_receipts_explain"
         android:title="@string/pref_read_receipts" />
 
     <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-        android:defaultValue="false" android:key="pref_enter_sends"
+        android:defaultValue="false"
+        android:key="pref_enter_sends"
         android:summary="@string/pref_enter_sends_explain"
         android:title="@string/pref_enter_sends" />
 
-    <ListPreference android:key="pref_compression"
+    <ListPreference
+        android:key="pref_compression"
         android:title="@string/pref_outgoing_media_quality"
         android:dialogLayout="@layout/pref_dialog_with_hint"
         android:entries="@array/pref_compression_entries"
         android:entryValues="@array/pref_compression_values"
         android:defaultValue="0" />
 
-    <ListPreference android:key="auto_download"
+    <ListPreference
+        android:key="auto_download"
         android:title="@string/auto_download_messages"
         android:entries="@array/pref_download_limit_entries"
         android:entryValues="@array/pref_download_limit_values" />
 
-    <PreferenceCategory
-        android:title="@string/delete_old_messages">
-        <ListPreference android:key="autodel_device"
+    <PreferenceCategory android:title="@string/delete_old_messages">
+        <ListPreference
+            android:key="autodel_device"
             android:title="@string/autodel_device_title"
             android:entries="@array/autodel_device_durations"
             android:entryValues="@array/autodel_device_values" />
 
-        <ListPreference android:key="autodel_server"
+        <ListPreference
+            android:key="autodel_server"
             android:title="@string/autodel_server_title"
             android:entries="@array/autodel_server_durations"
             android:entryValues="@array/autodel_server_values" />
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/pref_backup">
-        <Preference android:key="pref_backup"
+    <PreferenceCategory android:title="@string/pref_backup">
+        <Preference
+            android:key="pref_backup"
             android:title="@string/export_backup_desktop" />
     </PreferenceCategory>
 

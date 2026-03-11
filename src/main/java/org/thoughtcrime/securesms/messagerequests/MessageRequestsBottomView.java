@@ -3,17 +3,15 @@ package org.thoughtcrime.securesms.messagerequests;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.Button;
-
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class MessageRequestsBottomView extends ConstraintLayout {
 
   private AppCompatTextView question;
-  private Button            accept;
+  private Button accept;
   private Button block;
 
   public MessageRequestsBottomView(Context context) {
@@ -35,8 +33,8 @@ public class MessageRequestsBottomView extends ConstraintLayout {
     inflate(getContext(), R.layout.message_request_bottom_bar, this);
 
     question = findViewById(R.id.message_request_question);
-    accept   = findViewById(R.id.message_request_accept);
-    block    = findViewById(R.id.message_request_block);
+    accept = findViewById(R.id.message_request_accept);
+    block = findViewById(R.id.message_request_block);
   }
 
   public void setAcceptOnClickListener(OnClickListener acceptOnClickListener) {

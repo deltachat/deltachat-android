@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.components;
 
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.net.Uri;
@@ -12,14 +11,14 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
+import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.VcardContact;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
+import java.util.List;
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.attachments.Attachment;
@@ -34,33 +33,28 @@ import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.Util;
 
-import java.util.List;
-
-import chat.delta.rpc.RpcException;
-import chat.delta.rpc.types.VcardContact;
-
 public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
   private static final String TAG = QuoteView.class.getSimpleName();
 
-  private static final int MESSAGE_TYPE_PREVIEW  = 0;
+  private static final int MESSAGE_TYPE_PREVIEW = 0;
 
   private ViewGroup mainView;
-  private TextView  authorView;
-  private TextView  bodyView;
+  private TextView authorView;
+  private TextView bodyView;
   private ImageView quoteBarView;
   private ImageView thumbnailView;
-  private View      attachmentVideoOverlayView;
+  private View attachmentVideoOverlayView;
   private ViewGroup attachmentContainerView;
   private ImageView dismissView;
 
   private DcMsg quotedMsg;
-  private DcContact     author;
-  private CharSequence  body;
-  private SlideDeck     attachments;
-  private int           messageType;
-  private boolean       hasSticker;
-  private boolean       isEdit;
+  private DcContact author;
+  private CharSequence body;
+  private SlideDeck attachments;
+  private int messageType;
+  private boolean hasSticker;
+  private boolean isEdit;
 
   public QuoteView(Context context) {
     super(context);
@@ -85,17 +79,18 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private void initialize(@Nullable AttributeSet attrs) {
     inflate(getContext(), R.layout.quote_view, this);
 
-    this.mainView                     = findViewById(R.id.quote_main);
-    this.authorView                   = findViewById(R.id.quote_author);
-    this.bodyView                     = findViewById(R.id.quote_text);
-    this.quoteBarView                 = findViewById(R.id.quote_bar);
-    this.thumbnailView                = findViewById(R.id.quote_thumbnail);
-    this.attachmentVideoOverlayView   = findViewById(R.id.quote_video_overlay);
-    this.attachmentContainerView      = findViewById(R.id.quote_attachment_container);
-    this.dismissView                  = findViewById(R.id.quote_dismiss);
+    this.mainView = findViewById(R.id.quote_main);
+    this.authorView = findViewById(R.id.quote_author);
+    this.bodyView = findViewById(R.id.quote_text);
+    this.quoteBarView = findViewById(R.id.quote_bar);
+    this.thumbnailView = findViewById(R.id.quote_thumbnail);
+    this.attachmentVideoOverlayView = findViewById(R.id.quote_video_overlay);
+    this.attachmentContainerView = findViewById(R.id.quote_attachment_container);
+    this.dismissView = findViewById(R.id.quote_dismiss);
 
     if (attrs != null) {
-      TypedArray typedArray     = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.QuoteView, 0, 0);
+      TypedArray typedArray =
+          getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.QuoteView, 0, 0);
       messageType = typedArray.getInt(R.styleable.QuoteView_message_type, 0);
       typedArray.recycle();
 
@@ -110,19 +105,19 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     dismissView.setOnClickListener(view -> setVisibility(GONE));
   }
 
-  public void setQuote(GlideRequests glideRequests,
-                       DcMsg msg,
-                       @Nullable Recipient author,
-                       @Nullable CharSequence body,
-                       @NonNull SlideDeck attachments,
-                       boolean hasSticker,
-                       boolean isEdit)
-  {
-    quotedMsg        = msg;
-    this.author      = author != null ? author.getDcContact() : null;
-    this.body        = body;
+  public void setQuote(
+      GlideRequests glideRequests,
+      DcMsg msg,
+      @Nullable Recipient author,
+      @Nullable CharSequence body,
+      @NonNull SlideDeck attachments,
+      boolean hasSticker,
+      boolean isEdit) {
+    quotedMsg = msg;
+    this.author = author != null ? author.getDcContact() : null;
+    this.body = body;
     this.attachments = attachments;
-    this.hasSticker  = hasSticker;
+    this.hasSticker = hasSticker;
     this.isEdit = isEdit;
 
     if (hasSticker) {
@@ -136,7 +131,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
   public void dismiss() {
     this.author = null;
-    this.body   = null;
+    this.body = null;
 
     setVisibility(GONE);
   }
@@ -161,7 +156,8 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
       if (contact == null) {
         authorView.setText(getContext().getString(R.string.forwarded_message));
       } else {
-        authorView.setText(getContext().getString(R.string.forwarded_by, quotedMsg.getSenderName(contact)));
+        authorView.setText(
+            getContext().getString(R.string.forwarded_by, quotedMsg.getSenderName(contact)));
       }
       authorView.setTextColor(getForwardedColor());
       quoteBarView.setBackgroundColor(getForwardedColor());
@@ -193,9 +189,10 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     }
   }
 
-  private void setQuoteAttachment(@NonNull GlideRequests glideRequests, @NonNull SlideDeck slideDeck) {
+  private void setQuoteAttachment(
+      @NonNull GlideRequests glideRequests, @NonNull SlideDeck slideDeck) {
     List<Slide> slides = slideDeck.getSlides();
-    Slide slide = slides.isEmpty()? null : slides.get(0);
+    Slide slide = slides.isEmpty() ? null : slides.get(0);
 
     attachmentVideoOverlayView.setVisibility(GONE);
 
@@ -208,25 +205,28 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
         try {
           JSONObject info = quotedMsg.getWebxdcInfo();
           byte[] blob = quotedMsg.getWebxdcBlob(info.getString("icon"));
-          glideRequests.load(blob)
-                  .centerCrop()
-                  .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
-                  .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                  .into(thumbnailView);
+          glideRequests
+              .load(blob)
+              .centerCrop()
+              .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
+              .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+              .into(thumbnailView);
         } catch (Exception e) {
           Log.e(TAG, "failed to get webxdc icon", e);
           thumbnailView.setVisibility(GONE);
         }
       } else if (slide.isVcard()) {
         try {
-          VcardContact vcardContact = DcHelper.getRpc(getContext()).parseVcard(quotedMsg.getFile()).get(0);
+          VcardContact vcardContact =
+              DcHelper.getRpc(getContext()).parseVcard(quotedMsg.getFile()).get(0);
           Recipient recipient = new Recipient(getContext(), vcardContact);
-          glideRequests.load(recipient.getContactPhoto(getContext()))
-            .error(recipient.getFallbackAvatarDrawable(getContext(), false))
-            .centerCrop()
-            .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .into(thumbnailView);
+          glideRequests
+              .load(recipient.getContactPhoto(getContext()))
+              .error(recipient.getFallbackAvatarDrawable(getContext(), false))
+              .centerCrop()
+              .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
+              .diskCacheStrategy(DiskCacheStrategy.NONE)
+              .into(thumbnailView);
         } catch (RpcException e) {
           Log.e(TAG, "failed to parse vCard", e);
           thumbnailView.setVisibility(GONE);
@@ -235,18 +235,20 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
         Uri thumbnailUri = slide.getUri();
         if (slide.hasVideo()) {
           attachmentVideoOverlayView.setVisibility(VISIBLE);
-          MediaUtil.createVideoThumbnailIfNeeded(getContext(), slide.getUri(), slide.getThumbnailUri(), null);
+          MediaUtil.createVideoThumbnailIfNeeded(
+              getContext(), slide.getUri(), slide.getThumbnailUri(), null);
           thumbnailUri = slide.getThumbnailUri();
         }
         if (thumbnailUri != null) {
-          glideRequests.load(new DecryptableUri(thumbnailUri))
-                  .centerCrop()
-                  .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
-                  .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                  .into(thumbnailView);
+          glideRequests
+              .load(new DecryptableUri(thumbnailUri))
+              .centerCrop()
+              .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
+              .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+              .into(thumbnailView);
         }
       }
-    } else if(slide != null && slide.hasAudio()) {
+    } else if (slide != null && slide.hasAudio()) {
       thumbnailView.setVisibility(GONE);
       attachmentContainerView.setVisibility(GONE);
     } else if (slide != null && slide.hasDocument()) {
@@ -279,7 +281,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   }
 
   private int getForwardedColor() {
-    return getResources().getColor(hasSticker? R.color.core_dark_05 : R.color.unknown_sender);
+    return getResources().getColor(hasSticker ? R.color.core_dark_05 : R.color.unknown_sender);
   }
 
   private int getEditColor() {

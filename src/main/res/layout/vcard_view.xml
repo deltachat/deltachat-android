@@ -8,35 +8,35 @@
     android:gravity="center_vertical"
     android:focusable="true">
 
-  <org.thoughtcrime.securesms.components.AvatarView
-      android:id="@+id/avatar"
-      android:layout_width="40dp"
-      android:layout_height="40dp" />
+    <org.thoughtcrime.securesms.components.AvatarView
+        android:id="@+id/avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
 
-  <LinearLayout android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:paddingRight="16dp"
-                android:paddingEnd="16dp"
-                android:orientation="vertical">
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:drawablePadding="5dp"
-        android:ellipsize="marquee"
-        android:singleLine="true"
-        android:fontFamily="sans-serif"
-        android:textSize="16sp"
-        tools:text="Frieeeeeeedrich Nieeeeeeeeeetzsche" />
-    <!-- Attention: Using android:maxLines="1", if the name is an emoji followed by a
-         long word and the chat is muted, then the long word is not shown at all
-         (instead of using `…`). That's why we use android:singleLine="true" -->
+        android:layout_weight="1"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:orientation="vertical">
 
-  </LinearLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+            android:drawablePadding="5dp"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            tools:text="Frieeeeeeedrich Nieeeeeeeeeetzsche" />
+        <!-- Attention: Using android:maxLines="1", if the name is an emoji followed by a long word and
+            the chat is muted, then the long word is not shown at all (instead of using `…`). That's why we use android:singleLine="true" -->
+
+    </LinearLayout>
 
 </org.thoughtcrime.securesms.contacts.ContactSelectionListItem>

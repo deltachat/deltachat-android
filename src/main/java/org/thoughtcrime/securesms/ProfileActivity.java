@@ -14,17 +14,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
-
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-
+import java.io.File;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
@@ -33,31 +33,25 @@ import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.io.File;
-
-import chat.delta.rpc.Rpc;
-import chat.delta.rpc.RpcException;
-
 public class ProfileActivity extends PassphraseRequiredActionBarActivity
-                             implements DcEventCenter.DcEventDelegate
-{
+    implements DcEventCenter.DcEventDelegate {
 
-  public static final String CHAT_ID_EXTRA    = "chat_id";
+  public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
 
   private static final int REQUEST_CODE_PICK_RINGTONE = 1;
 
-  private DcContext            dcContext;
+  private DcContext dcContext;
   private Rpc rpc;
-  private int                  chatId;
-  private boolean              chatIsMultiUser;
-  private boolean              chatIsDeviceTalk;
-  private boolean              chatIsMailingList;
-  private boolean              chatIsOutBroadcast;
-  private boolean              chatIsInBroadcast;
-  private int                  contactId;
-  private boolean              contactIsBot;
-  private Toolbar              toolbar;
+  private int chatId;
+  private boolean chatIsMultiUser;
+  private boolean chatIsDeviceTalk;
+  private boolean chatIsMailingList;
+  private boolean chatIsOutBroadcast;
+  private boolean chatIsInBroadcast;
+  private int contactId;
+  private boolean contactIsBot;
+  private Toolbar toolbar;
 
   @Override
   protected void onPreCreate() {
@@ -111,7 +105,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
       if (chatId != 0) {
         DcChat dcChat = dcContext.getChat(chatId);
-        menu.findItem(R.id.menu_clone).setVisible(chatIsMultiUser && !chatIsInBroadcast && !chatIsOutBroadcast && !chatIsMailingList);
+        menu.findItem(R.id.menu_clone)
+            .setVisible(
+                chatIsMultiUser && !chatIsInBroadcast && !chatIsOutBroadcast && !chatIsMailingList);
         if (chatIsDeviceTalk) {
           menu.findItem(R.id.edit_name).setVisible(false);
           menu.findItem(R.id.show_encr_info).setVisible(false);
@@ -121,9 +117,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           if (chatIsOutBroadcast) {
             canReceive = false;
           } else {
-            if (!dcChat.isEncrypted()
-                || !dcChat.canSend()
-                || chatIsMailingList) {
+            if (!dcChat.isEncrypted() || !dcChat.canSend() || chatIsMailingList) {
               menu.findItem(R.id.edit_name).setVisible(false);
             }
           }
@@ -156,14 +150,18 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   @Override
   public boolean onPrepareOptionsMenu(Menu menu) {
     MenuItem item = menu.findItem(R.id.block_contact);
-    if(item!=null) {
-      item.setTitle(dcContext.getContact(contactId).isBlocked()? R.string.menu_unblock_contact : R.string.menu_block_contact);
+    if (item != null) {
+      item.setTitle(
+          dcContext.getContact(contactId).isBlocked()
+              ? R.string.menu_unblock_contact
+              : R.string.menu_block_contact);
       Util.redMenuItem(menu, R.id.block_contact);
     }
 
     item = menu.findItem(R.id.menu_mute_notifications);
-    if(item!=null) {
-      item.setTitle(dcContext.getChat(chatId).isMuted()? R.string.menu_unmute : R.string.menu_mute);
+    if (item != null) {
+      item.setTitle(
+          dcContext.getChat(chatId).isMuted() ? R.string.menu_unmute : R.string.menu_mute);
     }
 
     super.onPrepareOptionsMenu(menu);
@@ -183,48 +181,47 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void handleEvent(@NonNull DcEvent event) {
-  }
+  public void handleEvent(@NonNull DcEvent event) {}
 
   private void initializeResources() {
-    chatId           = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
-    contactId        = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
-    contactIsBot     = false;
-    chatIsMultiUser  = false;
+    chatId = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
+    contactId = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
+    contactIsBot = false;
+    chatIsMultiUser = false;
     chatIsDeviceTalk = false;
-    chatIsMailingList= false;
+    chatIsMailingList = false;
     chatIsInBroadcast = false;
     chatIsOutBroadcast = false;
 
-    if (contactId!=0) {
+    if (contactId != 0) {
       DcContact dcContact = dcContext.getContact(contactId);
       chatId = dcContext.getChatIdByContactId(contactId);
       contactIsBot = dcContact.isBot();
     }
 
-    if(chatId!=0) {
+    if (chatId != 0) {
       DcChat dcChat = dcContext.getChat(chatId);
       chatIsMultiUser = dcChat.isMultiUser();
       chatIsDeviceTalk = dcChat.isDeviceTalk();
       chatIsMailingList = dcChat.isMailingList();
       chatIsInBroadcast = dcChat.isInBroadcast();
       chatIsOutBroadcast = dcChat.isOutBroadcast();
-      if(!chatIsMultiUser) {
+      if (!chatIsMultiUser) {
         final int[] members = dcContext.getChatContacts(chatId);
-        contactId = members.length>=1? members[0] : 0;
+        contactId = members.length >= 1 ? members[0] : 0;
       }
     }
 
-    this.toolbar   = ViewUtil.findById(this, R.id.toolbar);
+    this.toolbar = ViewUtil.findById(this, R.id.toolbar);
   }
 
   private boolean isContactProfile() {
     // contact-profiles are profiles without a chat or with a one-to-one chat
-    return contactId!=0 && (chatId==0 || !chatIsMultiUser);
+    return contactId != 0 && (chatId == 0 || !chatIsMultiUser);
   }
 
   private boolean isSelfProfile() {
-    return isContactProfile() && contactId==DcContact.DC_CONTACT_ID_SELF;
+    return isContactProfile() && contactId == DcContact.DC_CONTACT_ID_SELF;
   }
 
   // handle events
@@ -271,8 +268,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private void onNotifyOnOff() {
     if (dcContext.getChat(chatId).isMuted()) {
       setMuted(0);
-    }
-    else {
+    } else {
       MuteDialog.show(this, this::setMuted);
     }
   }
@@ -287,7 +283,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     Uri current = Prefs.getChatRingtone(this, dcContext.getAccountId(), chatId);
     Uri defaultUri = Prefs.getNotificationRingtone(this);
 
-    if      (current == null)              current = Settings.System.DEFAULT_NOTIFICATION_URI;
+    if (current == null) current = Settings.System.DEFAULT_NOTIFICATION_URI;
     else if (current.toString().isEmpty()) current = null;
 
     Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
@@ -302,15 +298,23 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   private void onVibrateSettings() {
     int checkedItem = Prefs.getChatVibrate(this, dcContext.getAccountId(), chatId).getId();
-    int[] selectedChoice = new int[]{checkedItem};
+    int[] selectedChoice = new int[] {checkedItem};
     new AlertDialog.Builder(this)
-            .setTitle(R.string.pref_vibrate)
-            .setSingleChoiceItems(R.array.recipient_vibrate_entries, checkedItem,
-                    (dialog, which) -> selectedChoice[0] = which)
-            .setPositiveButton(R.string.ok,
-                    (dialog, which) -> Prefs.setChatVibrate(this, dcContext.getAccountId(), chatId, Prefs.VibrateState.fromId(selectedChoice[0])))
-            .setNegativeButton(R.string.cancel, null)
-            .show();
+        .setTitle(R.string.pref_vibrate)
+        .setSingleChoiceItems(
+            R.array.recipient_vibrate_entries,
+            checkedItem,
+            (dialog, which) -> selectedChoice[0] = which)
+        .setPositiveButton(
+            R.string.ok,
+            (dialog, which) ->
+                Prefs.setChatVibrate(
+                    this,
+                    dcContext.getAccountId(),
+                    chatId,
+                    Prefs.VibrateState.fromId(selectedChoice[0])))
+        .setNegativeButton(R.string.cancel, null)
+        .show();
   }
 
   public void onEnlargeAvatar() {
@@ -318,7 +322,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     String title;
     Uri profileImageUri;
     boolean enlargeAvatar = true;
-    if(chatId!=0) {
+    if (chatId != 0) {
       DcChat dcChat = dcContext.getChat(chatId);
       profileImagePath = dcChat.getProfileImage();
       title = dcChat.getName();
@@ -339,11 +343,10 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       intent.setDataAndType(profileImageUri, type);
       intent.putExtra(MediaPreviewActivity.ACTIVITY_TITLE_EXTRA, title);
       intent.putExtra( // show edit-button, if the user is allowed to edit the name/avatar
-              MediaPreviewActivity.EDIT_AVATAR_CHAT_ID,
-              (chatIsMultiUser && !chatIsInBroadcast && !chatIsMailingList) ? chatId : 0
-      );
+          MediaPreviewActivity.EDIT_AVATAR_CHAT_ID,
+          (chatIsMultiUser && !chatIsInBroadcast && !chatIsMailingList) ? chatId : 0);
       startActivity(intent);
-    } else if (chatIsMultiUser){
+    } else if (chatIsMultiUser) {
       onEditName();
     }
   }
@@ -356,8 +359,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
         startActivity(intent);
       }
-    }
-    else {
+    } else {
       int accountId = dcContext.getAccountId();
       DcContact dcContact = dcContext.getContact(contactId);
 
@@ -376,14 +378,16 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           .setTitle(R.string.menu_edit_name)
           .setMessage(getString(R.string.edit_name_explain, authName))
           .setView(gl)
-          .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
-            String newName = inputField.getText().toString();
-            try {
-              rpc.changeContactName(accountId, contactId, newName);
-            } catch (RpcException e) {
-              e.printStackTrace();
-            }
-          })
+          .setPositiveButton(
+              android.R.string.ok,
+              (dialog, whichButton) -> {
+                String newName = inputField.getText().toString();
+                try {
+                  rpc.changeContactName(accountId, contactId, newName);
+                } catch (RpcException e) {
+                  e.printStackTrace();
+                }
+              })
           .setNegativeButton(android.R.string.cancel, null)
           .setCancelable(false)
           .show();
@@ -408,12 +412,15 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void onEncrInfo() {
-    String infoStr = isContactProfile() ?
-      dcContext.getContactEncrInfo(contactId) : dcContext.getChatEncrInfo(chatId);
-    AlertDialog dialog = new AlertDialog.Builder(this)
-        .setMessage(infoStr)
-        .setPositiveButton(android.R.string.ok, null)
-        .show();
+    String infoStr =
+        isContactProfile()
+            ? dcContext.getContactEncrInfo(contactId)
+            : dcContext.getChatEncrInfo(chatId);
+    AlertDialog dialog =
+        new AlertDialog.Builder(this)
+            .setMessage(infoStr)
+            .setPositiveButton(android.R.string.ok, null)
+            .show();
     TextView messageView = dialog.findViewById(android.R.id.message);
     if (messageView != null) {
       messageView.setTextIsSelectable(true);
@@ -422,23 +429,29 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   private void onBlockContact() {
     DcContact dcContact = dcContext.getContact(contactId);
-    if(dcContact.isBlocked()) {
+    if (dcContact.isBlocked()) {
       new AlertDialog.Builder(this)
           .setMessage(R.string.ask_unblock_contact)
           .setCancelable(true)
           .setNegativeButton(android.R.string.cancel, null)
-          .setPositiveButton(R.string.menu_unblock_contact, (dialog, which) -> {
-            dcContext.blockContact(contactId, 0);
-          }).show();
-    }
-    else {
-      AlertDialog dialog = new AlertDialog.Builder(this)
-          .setMessage(R.string.ask_block_contact)
-          .setCancelable(true)
-          .setNegativeButton(android.R.string.cancel, null)
-          .setPositiveButton(R.string.menu_block_contact, (d, which) -> {
-            dcContext.blockContact(contactId, 1);
-          }).show();
+          .setPositiveButton(
+              R.string.menu_unblock_contact,
+              (dialog, which) -> {
+                dcContext.blockContact(contactId, 0);
+              })
+          .show();
+    } else {
+      AlertDialog dialog =
+          new AlertDialog.Builder(this)
+              .setMessage(R.string.ask_block_contact)
+              .setCancelable(true)
+              .setNegativeButton(android.R.string.cancel, null)
+              .setPositiveButton(
+                  R.string.menu_block_contact,
+                  (d, which) -> {
+                    dcContext.blockContact(contactId, 1);
+                  })
+              .show();
       Util.redPositiveButton(dialog);
     }
   }
@@ -452,15 +465,16 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode==REQUEST_CODE_PICK_RINGTONE && resultCode== Activity.RESULT_OK && data!=null) {
+    if (requestCode == REQUEST_CODE_PICK_RINGTONE
+        && resultCode == Activity.RESULT_OK
+        && data != null) {
       Uri value = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
       Uri defaultValue = Prefs.getNotificationRingtone(this);
 
       if (defaultValue.equals(value)) value = null;
-      else if (value == null)         value = Uri.EMPTY;
+      else if (value == null) value = Uri.EMPTY;
 
       Prefs.setChatRingtone(this, dcContext.getAccountId(), chatId, value);
     }
   }
-
 }

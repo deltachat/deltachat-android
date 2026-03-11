@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -14,7 +13,6 @@ import androidx.lifecycle.ViewModel;
 import androidx.media3.common.MediaItem;
 import androidx.media3.common.Player;
 import androidx.media3.session.MediaController;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -22,15 +20,16 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
 public class AudioPlaybackViewModel extends ViewModel {
   private static final String TAG = AudioPlaybackViewModel.class.getSimpleName();
 
-  private static final int NON_MESSAGE_AUDIO_MSG_ID = 0;  // Audios not attached to a message doesn't have message id.
+  private static final int NON_MESSAGE_AUDIO_MSG_ID =
+      0; // Audios not attached to a message doesn't have message id.
 
   private final MutableLiveData<AudioPlaybackState> playbackState;
 
-  private final MutableLiveData<Map<Integer, Long>> durations = new MutableLiveData<>(new HashMap<>());
+  private final MutableLiveData<Map<Integer, Long>> durations =
+      new MutableLiveData<>(new HashMap<>());
   private final Set<Integer> extractionInProgress = new HashSet<>();
   private final ExecutorService extractionExecutor = Executors.newFixedThreadPool(2);
 
@@ -64,16 +63,15 @@ public class AudioPlaybackViewModel extends ViewModel {
     if (isDifferentAudio(msgId, audioUri)) {
       updateState(msgId, audioUri, AudioPlaybackState.PlaybackStatus.LOADING, 0, 0);
 
-      MediaItem mediaItem = new MediaItem.Builder()
-        .setMediaId(String.valueOf(msgId))
-        .setUri(audioUri)
-        .build();
+      MediaItem mediaItem =
+          new MediaItem.Builder().setMediaId(String.valueOf(msgId)).setUri(audioUri).build();
       mediaController.setMediaItem(mediaItem);
       mediaController.prepare();
     }
 
     play(msgId, audioUri);
   }
+
   private boolean isSameAudio(int msgId, Uri audioUri) {
     return !isDifferentAudio(msgId, audioUri);
   }
@@ -81,10 +79,10 @@ public class AudioPlaybackViewModel extends ViewModel {
   private boolean isDifferentAudio(int msgId, Uri audioUri) {
     AudioPlaybackState currentState = playbackState.getValue();
 
-    return currentState != null && (
-      msgId != currentState.getMsgId() ||
-        currentState.getAudioUri() == null ||
-        currentState.getAudioUri() != null && !currentState.getAudioUri().equals(audioUri));
+    return currentState != null
+        && (msgId != currentState.getMsgId()
+            || currentState.getAudioUri() == null
+            || currentState.getAudioUri() != null && !currentState.getAudioUri().equals(audioUri));
   }
 
   public LiveData<Map<Integer, Long>> getDurations() {
@@ -107,35 +105,36 @@ public class AudioPlaybackViewModel extends ViewModel {
     }
 
     // Extract in background
-    extractionExecutor.execute(() -> {
-      long duration = extractDurationFromAudio(context, audioUri);
+    extractionExecutor.execute(
+        () -> {
+          long duration = extractDurationFromAudio(context, audioUri);
 
-      handler.post(() -> {
-        Map<Integer, Long> updatedDurations = new HashMap<>(durations.getValue());
-        updatedDurations.put(msgId, duration);
-        durations.setValue(updatedDurations);
-      });
+          handler.post(
+              () -> {
+                Map<Integer, Long> updatedDurations = new HashMap<>(durations.getValue());
+                updatedDurations.put(msgId, duration);
+                durations.setValue(updatedDurations);
+              });
 
-      synchronized (extractionInProgress) {
-        extractionInProgress.remove(msgId);
-      }
-    });
+          synchronized (extractionInProgress) {
+            extractionInProgress.remove(msgId);
+          }
+        });
   }
 
   private long extractDurationFromAudio(Context context, Uri audioUri) {
     MediaMetadataRetriever retriever = new MediaMetadataRetriever();
     try {
       retriever.setDataSource(context, audioUri);
-      String durationStr = retriever.extractMetadata(
-        MediaMetadataRetriever.METADATA_KEY_DURATION
-      );
+      String durationStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
       return durationStr != null ? Long.parseLong(durationStr) : 0;
     } catch (Exception e) {
       return 0;
     } finally {
       try {
         retriever.release();
-      } catch (Exception ignored) {}
+      } catch (Exception ignored) {
+      }
     }
   }
 
@@ -192,31 +191,32 @@ public class AudioPlaybackViewModel extends ViewModel {
   private void setupPlayerListener() {
     if (mediaController == null) return;
 
-    mediaController.addListener(new Player.Listener() {
-      @Override
-      public void onEvents(Player player, Player.Events events) {
-        if (events.containsAny(Player.EVENT_IS_PLAYING_CHANGED)) {
-          if (player.isPlaying()) {
-            startUpdateProgress();
-          } else {
-            stopUpdateProgress();
+    mediaController.addListener(
+        new Player.Listener() {
+          @Override
+          public void onEvents(Player player, Player.Events events) {
+            if (events.containsAny(Player.EVENT_IS_PLAYING_CHANGED)) {
+              if (player.isPlaying()) {
+                startUpdateProgress();
+              } else {
+                stopUpdateProgress();
+              }
+              updateCurrentState(false);
+            }
+            if (events.containsAny(Player.EVENT_PLAYBACK_STATE_CHANGED)) {
+              if (player.getPlaybackState() == Player.STATE_READY) {
+                updateCurrentState(false);
+              } else if (player.getPlaybackState() == Player.STATE_ENDED) {
+                // This is to prevent automatically playing after the audio
+                // has been play to the end once, then user dragged the seek bar again
+                mediaController.setPlayWhenReady(false);
+              }
+            }
+            if (events.containsAny(Player.EVENT_PLAYER_ERROR)) {
+              updateCurrentAudioState(AudioPlaybackState.PlaybackStatus.ERROR, 0, 0);
+            }
           }
-          updateCurrentState(false);
-        }
-        if (events.containsAny(Player.EVENT_PLAYBACK_STATE_CHANGED)) {
-          if (player.getPlaybackState() == Player.STATE_READY) {
-            updateCurrentState(false);
-          } else if (player.getPlaybackState() == Player.STATE_ENDED) {
-            // This is to prevent automatically playing after the audio
-            // has been play to the end once, then user dragged the seek bar again
-            mediaController.setPlayWhenReady(false);
-          }
-        }
-        if (events.containsAny(Player.EVENT_PLAYER_ERROR)) {
-          updateCurrentAudioState(AudioPlaybackState.PlaybackStatus.ERROR, 0, 0);
-        }
-      }
-    });
+        });
   }
 
   private void updateCurrentState(boolean queryPlaying) {
@@ -226,7 +226,7 @@ public class AudioPlaybackViewModel extends ViewModel {
     if (mediaController.isPlaying()) {
       status = AudioPlaybackState.PlaybackStatus.PLAYING;
     } else if (mediaController.getPlaybackState() == Player.STATE_READY
-      || mediaController.getPlaybackState() == Player.STATE_ENDED) {
+        || mediaController.getPlaybackState() == Player.STATE_ENDED) {
       status = AudioPlaybackState.PlaybackStatus.PAUSED;
     } else {
       status = AudioPlaybackState.PlaybackStatus.IDLE;
@@ -252,18 +252,19 @@ public class AudioPlaybackViewModel extends ViewModel {
       }
     }
     updateState(
-      currentMsgId,
-      currentUri,
-      status,
-      mediaController.getCurrentPosition(),
-      mediaController.getDuration());
+        currentMsgId,
+        currentUri,
+        status,
+        mediaController.getCurrentPosition(),
+        mediaController.getDuration());
   }
 
-  private void updateState(int msgId,
-                           Uri audioUri,
-                           AudioPlaybackState.PlaybackStatus status,
-                           long position,
-                           long duration) {
+  private void updateState(
+      int msgId,
+      Uri audioUri,
+      AudioPlaybackState.PlaybackStatus status,
+      long position,
+      long duration) {
     // Sanitize longs
     if (position < 0 || position > Integer.MAX_VALUE) {
       position = 0;
@@ -272,14 +273,11 @@ public class AudioPlaybackViewModel extends ViewModel {
       duration = 0;
     }
 
-    playbackState.setValue(new AudioPlaybackState(
-      msgId, audioUri, status, position, duration
-    ));
+    playbackState.setValue(new AudioPlaybackState(msgId, audioUri, status, position, duration));
   }
 
-  private void updateCurrentAudioState(AudioPlaybackState.PlaybackStatus status,
-                                       long position,
-                                       long duration) {
+  private void updateCurrentAudioState(
+      AudioPlaybackState.PlaybackStatus status, long position, long duration) {
     AudioPlaybackState current = playbackState.getValue();
 
     if (current != null) {
@@ -288,17 +286,19 @@ public class AudioPlaybackViewModel extends ViewModel {
   }
 
   // Progress tracking
-  private final Runnable progressRunnable = new Runnable() {
-    @Override
-    public void run() {
-      if (mediaController != null && mediaController.isPlaying() && !isUserSeeking) {
-        updateCurrentAudioState(AudioPlaybackState.PlaybackStatus.PLAYING,
-          mediaController.getCurrentPosition(),
-          mediaController.getDuration());
-        handler.postDelayed(this, 100);
-      }
-    }
-  };
+  private final Runnable progressRunnable =
+      new Runnable() {
+        @Override
+        public void run() {
+          if (mediaController != null && mediaController.isPlaying() && !isUserSeeking) {
+            updateCurrentAudioState(
+                AudioPlaybackState.PlaybackStatus.PLAYING,
+                mediaController.getCurrentPosition(),
+                mediaController.getDuration());
+            handler.postDelayed(this, 100);
+          }
+        }
+      };
 
   private void startUpdateProgress() {
     stopUpdateProgress();

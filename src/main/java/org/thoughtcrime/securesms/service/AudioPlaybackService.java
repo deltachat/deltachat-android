@@ -4,7 +4,6 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.OptIn;
@@ -17,10 +16,8 @@ import androidx.media3.session.MediaSessionService;
 import androidx.media3.session.SessionCommand;
 import androidx.media3.session.SessionCommands;
 import androidx.media3.session.SessionResult;
-
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-
 import org.thoughtcrime.securesms.ConversationListActivity;
 
 public class AudioPlaybackService extends MediaSessionService {
@@ -34,60 +31,60 @@ public class AudioPlaybackService extends MediaSessionService {
   public void onCreate() {
     super.onCreate();
 
-    AudioAttributes audioAttributes = new AudioAttributes.Builder()
-      .setUsage(C.USAGE_MEDIA)  // USAGE_VOICE_COMMUNICATION is for VoIP calls
-      .setContentType(C.AUDIO_CONTENT_TYPE_SPEECH)
-      .build();
+    AudioAttributes audioAttributes =
+        new AudioAttributes.Builder()
+            .setUsage(C.USAGE_MEDIA) // USAGE_VOICE_COMMUNICATION is for VoIP calls
+            .setContentType(C.AUDIO_CONTENT_TYPE_SPEECH)
+            .build();
 
-    player = new ExoPlayer.Builder(this)
-      .setAudioAttributes(audioAttributes, true)
-      .setHandleAudioBecomingNoisy(true)
-      .build();
+    player =
+        new ExoPlayer.Builder(this)
+            .setAudioAttributes(audioAttributes, true)
+            .setHandleAudioBecomingNoisy(true)
+            .build();
 
     // This is for click on the notification to go back to app
     Intent intent = new Intent(this, ConversationListActivity.class);
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-    PendingIntent initialIntent = PendingIntent.getActivity(
-      this, 0, intent,
-      PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
-    );
+    PendingIntent initialIntent =
+        PendingIntent.getActivity(
+            this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
-    session = new MediaSession.Builder(this, player)
-      .setSessionActivity(initialIntent)
-      .setCallback(new MediaSession.Callback() {
+    session =
+        new MediaSession.Builder(this, player)
+            .setSessionActivity(initialIntent)
+            .setCallback(
+                new MediaSession.Callback() {
 
-        @OptIn(markerClass = UnstableApi.class)
-        @Override
-        public MediaSession.ConnectionResult onConnect(
-          MediaSession session,
-          MediaSession.ControllerInfo controller
-        ) {
-          SessionCommands sessionCommands = MediaSession
-            .ConnectionResult.DEFAULT_SESSION_COMMANDS.buildUpon()
-            .add(new SessionCommand("UPDATE_ACTIVITY_CONTEXT", new Bundle()))
+                  @OptIn(markerClass = UnstableApi.class)
+                  @Override
+                  public MediaSession.ConnectionResult onConnect(
+                      MediaSession session, MediaSession.ControllerInfo controller) {
+                    SessionCommands sessionCommands =
+                        MediaSession.ConnectionResult.DEFAULT_SESSION_COMMANDS
+                            .buildUpon()
+                            .add(new SessionCommand("UPDATE_ACTIVITY_CONTEXT", new Bundle()))
+                            .build();
+
+                    return new MediaSession.ConnectionResult.AcceptedResultBuilder(session)
+                        .setAvailableSessionCommands(sessionCommands)
+                        .build();
+                  }
+
+                  @NonNull
+                  @Override
+                  public ListenableFuture<SessionResult> onCustomCommand(
+                      MediaSession session,
+                      MediaSession.ControllerInfo controller,
+                      SessionCommand customCommand,
+                      Bundle args) {
+                    if ("UPDATE_ACTIVITY_CONTEXT".equals(customCommand.customAction)) {
+                      updateSessionActivity(args);
+                    }
+                    return Futures.immediateFuture(new SessionResult(SessionResult.RESULT_SUCCESS));
+                  }
+                })
             .build();
-
-          return new MediaSession.ConnectionResult.AcceptedResultBuilder(session)
-            .setAvailableSessionCommands(sessionCommands)
-            .build();
-        }
-
-        @NonNull
-        @Override
-        public ListenableFuture<SessionResult> onCustomCommand(
-          MediaSession session,
-          MediaSession.ControllerInfo controller,
-          SessionCommand customCommand,
-          Bundle args
-        ) {
-          if ("UPDATE_ACTIVITY_CONTEXT".equals(customCommand.customAction)) {
-            updateSessionActivity(args);
-          }
-          return Futures.immediateFuture(
-            new SessionResult(SessionResult.RESULT_SUCCESS));
-        }
-      })
-      .build();
   }
 
   @OptIn(markerClass = UnstableApi.class)
@@ -104,12 +101,12 @@ public class AudioPlaybackService extends MediaSessionService {
           intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
           intent.putExtras(args);
 
-          PendingIntent pendingIntent = PendingIntent.getActivity(
-            this,
-            0,
-            intent,
-            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
-          );
+          PendingIntent pendingIntent =
+              PendingIntent.getActivity(
+                  this,
+                  0,
+                  intent,
+                  PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
           session.setSessionActivity(pendingIntent);
         }

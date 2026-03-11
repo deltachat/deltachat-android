@@ -8,13 +8,13 @@
     tools:parentTag="org.thoughtcrime.securesms.components.AvatarView">
 
     <org.thoughtcrime.securesms.components.AvatarImageView
-            android:id="@+id/avatar_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:foreground="@drawable/contact_photo_background"
-            android:cropToPadding="true"
-            tools:src="@color/blue_600"
-            android:contentDescription="@null" />
+        android:id="@+id/avatar_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="@drawable/contact_photo_background"
+        android:cropToPadding="true"
+        tools:src="@color/blue_600"
+        android:contentDescription="@null" />
 
     <ImageView
         android:id="@+id/status_indicator"
@@ -22,28 +22,28 @@
         android:layout_height="0dp"
 
         app:layout_constraintStart_toStartOf="@+id/start_guideline"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintTop_toTopOf="@+id/top_guideline"
-         app:layout_constraintBottom_toBottomOf="parent"
-         app:layout_constraintWidth_max="34dp"
-         app:layout_constraintHeight_max="34dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_max="34dp"
+        app:layout_constraintHeight_max="34dp"
 
         android:src="@drawable/ic_circle_status_online"
         android:contentDescription="@null"
         android:visibility="gone" />
 
     <androidx.constraintlayout.widget.Guideline
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:id="@+id/start_guideline"
-         app:layout_constraintGuide_percent=".69"
-         android:orientation="vertical"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/start_guideline"
+        app:layout_constraintGuide_percent=".69"
+        android:orientation="vertical" />
 
-     <androidx.constraintlayout.widget.Guideline
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:id="@+id/top_guideline"
-         app:layout_constraintGuide_percent=".69"
-         android:orientation="horizontal"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_guideline"
+        app:layout_constraintGuide_percent=".69"
+        android:orientation="horizontal" />
 
 </merge>

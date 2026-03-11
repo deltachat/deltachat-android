@@ -7,12 +7,12 @@
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
-    <include layout="@layout/status_bar_background"/>
+    <include layout="@layout/status_bar_background" />
 
     <androidx.legacy.widget.Space
         android:layout_weight="2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -33,6 +33,6 @@
     <androidx.legacy.widget.Space
         android:layout_weight="2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp" />
 
 </LinearLayout>

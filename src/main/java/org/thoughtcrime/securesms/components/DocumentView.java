@@ -1,15 +1,13 @@
 package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
-
-import androidx.annotation.AttrRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
+import androidx.annotation.AttrRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
@@ -18,8 +16,8 @@ import org.thoughtcrime.securesms.util.guava.Optional;
 
 public class DocumentView extends FrameLayout {
 
-  private final @NonNull TextView        fileName;
-  private final @NonNull TextView        fileSize;
+  private final @NonNull TextView fileName;
+  private final @NonNull TextView fileSize;
 
   private @Nullable SlideClickListener viewListener;
 
@@ -31,24 +29,26 @@ public class DocumentView extends FrameLayout {
     this(context, attrs, 0);
   }
 
-  public DocumentView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
+  public DocumentView(
+      @NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
     super(context, attrs, defStyleAttr);
     inflate(context, R.layout.document_view, this);
 
-    this.fileName         = findViewById(R.id.file_name);
-    this.fileSize         = findViewById(R.id.file_size);
+    this.fileName = findViewById(R.id.file_name);
+    this.fileSize = findViewById(R.id.file_size);
   }
 
   public void setDocumentClickListener(@Nullable SlideClickListener listener) {
     this.viewListener = listener;
   }
 
-  public void setDocument(final @NonNull DocumentSlide documentSlide)
-  {
+  public void setDocument(final @NonNull DocumentSlide documentSlide) {
     this.fileName.setText(documentSlide.getFileName().or(getContext().getString(R.string.unknown)));
 
-    String fileSize = Util.getPrettyFileSize(documentSlide.getFileSize())
-        + " " + getFileType(documentSlide.getFileName()).toUpperCase();
+    String fileSize =
+        Util.getPrettyFileSize(documentSlide.getFileSize())
+            + " "
+            + getFileType(documentSlide.getFileName()).toUpperCase();
     this.fileSize.setText(fileSize);
 
     this.setOnClickListener(new OpenClickedListener(documentSlide));
@@ -108,5 +108,4 @@ public class DocumentView extends FrameLayout {
       }
     }
   }
-
 }

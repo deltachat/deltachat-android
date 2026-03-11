@@ -21,7 +21,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +28,6 @@ import java.util.List;
  * Activity container for selecting a list of contacts.
  *
  * @author Moxie Marlinspike
- *
  */
 public class ContactMultiSelectionActivity extends ContactSelectionActivity {
 
@@ -74,7 +72,8 @@ public class ContactMultiSelectionActivity extends ContactSelectionActivity {
     List<Integer> selectedContacts = contactsFragment.getSelectedContacts();
     List<Integer> deselectedContacts = contactsFragment.getDeselectedContacts();
     resultIntent.putIntegerArrayListExtra(CONTACTS_EXTRA, new ArrayList<>(selectedContacts));
-    resultIntent.putIntegerArrayListExtra(DESELECTED_CONTACTS_EXTRA, new ArrayList<>(deselectedContacts));
+    resultIntent.putIntegerArrayListExtra(
+        DESELECTED_CONTACTS_EXTRA, new ArrayList<>(deselectedContacts));
     setResult(RESULT_OK, resultIntent);
   }
 }

@@ -9,5 +9,4 @@
     android:textColor="@color/delta_accent"
     android:textSize="16sp"
     android:textStyle="bold"
-    android:typeface="sans"
-    />
+    android:typeface="sans" />

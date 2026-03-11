@@ -6,16 +6,6 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.core.view.ContentInfoCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.inputmethod.EditorInfoCompat;
-import androidx.core.view.inputmethod.InputConnectionCompat;
-import androidx.core.view.inputmethod.InputContentInfoCompat;
-import androidx.core.os.BuildCompat;
-
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -26,14 +16,22 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.core.os.BuildCompat;
+import androidx.core.view.ContentInfoCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.inputmethod.EditorInfoCompat;
+import androidx.core.view.inputmethod.InputConnectionCompat;
+import androidx.core.view.inputmethod.InputContentInfoCompat;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.TransportOption;
 import org.thoughtcrime.securesms.util.Prefs;
 
 public class ComposeText extends AppCompatEditText {
 
-  private CharSequence    hint;
+  private CharSequence hint;
   private SpannableString subHint;
 
   @Nullable private InputPanel.MediaListener mediaListener;
@@ -60,13 +58,14 @@ public class ComposeText extends AppCompatEditText {
         id = android.R.id.pasteAsPlainText;
       } else if (ViewCompat.getOnReceiveContentMimeTypes(this) != null) {
         // older device, manually paste as plain text
-        ClipboardManager cm = (ClipboardManager) getContext().getSystemService(
-          Context.CLIPBOARD_SERVICE);
+        ClipboardManager cm =
+            (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = (cm == null) ? null : cm.getPrimaryClip();
         if (clip != null && clip.getItemCount() > 0) {
-          ContentInfoCompat payload = new ContentInfoCompat.Builder(clip, ContentInfoCompat.SOURCE_CLIPBOARD)
-            .setFlags(ContentInfoCompat.FLAG_CONVERT_TO_PLAIN_TEXT)
-            .build();
+          ContentInfoCompat payload =
+              new ContentInfoCompat.Builder(clip, ContentInfoCompat.SOURCE_CLIPBOARD)
+                  .setFlags(ContentInfoCompat.FLAG_CONVERT_TO_PLAIN_TEXT)
+                  .build();
           ViewCompat.performReceiveContent(this, payload);
         }
         return true;
@@ -75,7 +74,7 @@ public class ComposeText extends AppCompatEditText {
     return super.onTextContextMenuItem(id);
   }
 
-  public String getTextTrimmed(){
+  public String getTextTrimmed() {
     return getText().toString().trim();
   }
 
@@ -85,9 +84,11 @@ public class ComposeText extends AppCompatEditText {
 
     if (!TextUtils.isEmpty(hint)) {
       if (!TextUtils.isEmpty(subHint)) {
-        setHint(new SpannableStringBuilder().append(ellipsizeToWidth(hint))
-                                            .append("\n")
-                                            .append(ellipsizeToWidth(subHint)));
+        setHint(
+            new SpannableStringBuilder()
+                .append(ellipsizeToWidth(hint))
+                .append("\n")
+                .append(ellipsizeToWidth(subHint)));
       } else {
         setHint(ellipsizeToWidth(hint));
       }
@@ -95,10 +96,8 @@ public class ComposeText extends AppCompatEditText {
   }
 
   private CharSequence ellipsizeToWidth(CharSequence text) {
-    return TextUtils.ellipsize(text,
-                               getPaint(),
-                               getWidth() - getPaddingLeft() - getPaddingRight(),
-                               TruncateAt.END);
+    return TextUtils.ellipsize(
+        text, getPaint(), getWidth() - getPaddingLeft() - getPaddingRight(), TruncateAt.END);
   }
 
   public void setHint(@NonNull String hint, @Nullable CharSequence subHint) {
@@ -106,15 +105,18 @@ public class ComposeText extends AppCompatEditText {
 
     if (subHint != null) {
       this.subHint = new SpannableString(subHint);
-      this.subHint.setSpan(new RelativeSizeSpan(0.5f), 0, subHint.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+      this.subHint.setSpan(
+          new RelativeSizeSpan(0.5f), 0, subHint.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
     } else {
       this.subHint = null;
     }
 
     if (this.subHint != null) {
-      super.setHint(new SpannableStringBuilder().append(ellipsizeToWidth(this.hint))
-                                                .append("\n")
-                                                .append(ellipsizeToWidth(this.subHint)));
+      super.setHint(
+          new SpannableStringBuilder()
+              .append(ellipsizeToWidth(this.hint))
+              .append("\n")
+              .append(ellipsizeToWidth(this.subHint)));
     } else {
       super.setHint(ellipsizeToWidth(this.hint));
     }
@@ -129,33 +131,36 @@ public class ComposeText extends AppCompatEditText {
     // as this removes the ability to compose multi-line messages.
 
     int imeOptions = (getImeOptions() & ~EditorInfo.IME_MASK_ACTION) | EditorInfo.IME_ACTION_SEND;
-    int inputType  = getInputType();
+    int inputType = getInputType();
 
-    if (isLandscape()) setImeActionLabel(getContext().getString(R.string.menu_send), EditorInfo.IME_ACTION_SEND);
-    else               setImeActionLabel(null, 0);
+    if (isLandscape())
+      setImeActionLabel(getContext().getString(R.string.menu_send), EditorInfo.IME_ACTION_SEND);
+    else setImeActionLabel(null, 0);
 
     setInputType(inputType);
     setImeOptions(imeOptions);
-    setHint(transport.getComposeHint(),null);
+    setHint(transport.getComposeHint(), null);
   }
 
   @Override
   public InputConnection onCreateInputConnection(@NonNull EditorInfo editorInfo) {
     InputConnection inputConnection = super.onCreateInputConnection(editorInfo);
 
-    if(Prefs.isEnterSendsEnabled(getContext())) {
+    if (Prefs.isEnterSendsEnabled(getContext())) {
       editorInfo.imeOptions &= ~EditorInfo.IME_FLAG_NO_ENTER_ACTION;
     }
 
-    if (mediaListener == null)      return inputConnection;
-    if (inputConnection == null)    return null;
+    if (mediaListener == null) return inputConnection;
+    if (inputConnection == null) return null;
 
     // media with mime-types defined by setContentMimeTypes() may be selected in the system keyboard
     // and are passed to onCommitContent() then;
     // from there we use them as stickers.
-    EditorInfoCompat.setContentMimeTypes(editorInfo, new String[] {"image/jpeg", "image/png", "image/gif", "image/webp"});
+    EditorInfoCompat.setContentMimeTypes(
+        editorInfo, new String[] {"image/jpeg", "image/png", "image/gif", "image/webp"});
 
-    return InputConnectionCompat.createWrapper(inputConnection, editorInfo, new CommitContentListener(mediaListener));
+    return InputConnectionCompat.createWrapper(
+        inputConnection, editorInfo, new CommitContentListener(mediaListener));
   }
 
   public void setMediaListener(@Nullable InputPanel.MediaListener mediaListener) {
@@ -168,7 +173,8 @@ public class ComposeText extends AppCompatEditText {
     }
   }
 
-  private static class CommitContentListener implements InputConnectionCompat.OnCommitContentListener {
+  private static class CommitContentListener
+      implements InputConnectionCompat.OnCommitContentListener {
 
     private static final String TAG = CommitContentListener.class.getName();
 
@@ -179,8 +185,10 @@ public class ComposeText extends AppCompatEditText {
     }
 
     @Override
-    public boolean onCommitContent(@NonNull InputContentInfoCompat inputContentInfo, int flags, Bundle opts) {
-      if (BuildCompat.isAtLeastNMR1() && (flags & InputConnectionCompat.INPUT_CONTENT_GRANT_READ_URI_PERMISSION) != 0) {
+    public boolean onCommitContent(
+        @NonNull InputContentInfoCompat inputContentInfo, int flags, Bundle opts) {
+      if (BuildCompat.isAtLeastNMR1()
+          && (flags & InputConnectionCompat.INPUT_CONTENT_GRANT_READ_URI_PERMISSION) != 0) {
         try {
           inputContentInfo.requestPermission();
         } catch (Exception e) {
@@ -190,8 +198,8 @@ public class ComposeText extends AppCompatEditText {
       }
 
       if (inputContentInfo.getDescription().getMimeTypeCount() > 0) {
-        mediaListener.onMediaSelected(inputContentInfo.getContentUri(),
-                                      inputContentInfo.getDescription().getMimeType(0));
+        mediaListener.onMediaSelected(
+            inputContentInfo.getContentUri(), inputContentInfo.getDescription().getMimeType(0));
 
         return true;
       }
@@ -199,5 +207,4 @@ public class ComposeText extends AppCompatEditText {
       return false;
     }
   }
-
 }

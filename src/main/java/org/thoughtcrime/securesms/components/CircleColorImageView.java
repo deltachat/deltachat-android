@@ -5,14 +5,13 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
-
+import androidx.appcompat.widget.AppCompatImageView;
 import org.thoughtcrime.securesms.R;
 
 public class CircleColorImageView extends AppCompatImageView {
 
- public CircleColorImageView(Context context) {
+  public CircleColorImageView(Context context) {
     this(context, null);
   }
 
@@ -26,8 +25,12 @@ public class CircleColorImageView extends AppCompatImageView {
     int circleColor = Color.WHITE;
 
     if (attrs != null) {
-      try (TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CircleColorImageView, 0, 0)) {
-        circleColor = typedArray.getColor(R.styleable.CircleColorImageView_circleColor, Color.WHITE);
+      try (TypedArray typedArray =
+          context
+              .getTheme()
+              .obtainStyledAttributes(attrs, R.styleable.CircleColorImageView, 0, 0)) {
+        circleColor =
+            typedArray.getColor(R.styleable.CircleColorImageView_circleColor, Color.WHITE);
       }
     }
 

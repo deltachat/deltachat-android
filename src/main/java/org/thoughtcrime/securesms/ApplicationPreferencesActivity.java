@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -32,10 +31,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.Preference;
-
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -56,23 +53,21 @@ import org.thoughtcrime.securesms.util.ViewUtil;
  * The Activity for application preference display and management.
  *
  * @author Moxie Marlinspike
- *
  */
-
 public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarActivity
-    implements SharedPreferences.OnSharedPreferenceChangeListener
-{
-  private static final String PREFERENCE_CATEGORY_PROFILE        = "preference_category_profile";
-  private static final String PREFERENCE_CATEGORY_NOTIFICATIONS  = "preference_category_notifications";
-  private static final String PREFERENCE_CATEGORY_APPEARANCE     = "preference_category_appearance";
-  private static final String PREFERENCE_CATEGORY_CHATS          = "preference_category_chats";
-  private static final String PREFERENCE_CATEGORY_MULTIDEVICE    = "preference_category_multidevice";
-  private static final String PREFERENCE_CATEGORY_ADVANCED       = "preference_category_advanced";
-  private static final String PREFERENCE_CATEGORY_CONNECTIVITY   = "preference_category_connectivity";
-  private static final String PREFERENCE_CATEGORY_DONATE         = "preference_category_donate";
-  private static final String PREFERENCE_CATEGORY_HELP           = "preference_category_help";
+    implements SharedPreferences.OnSharedPreferenceChangeListener {
+  private static final String PREFERENCE_CATEGORY_PROFILE = "preference_category_profile";
+  private static final String PREFERENCE_CATEGORY_NOTIFICATIONS =
+      "preference_category_notifications";
+  private static final String PREFERENCE_CATEGORY_APPEARANCE = "preference_category_appearance";
+  private static final String PREFERENCE_CATEGORY_CHATS = "preference_category_chats";
+  private static final String PREFERENCE_CATEGORY_MULTIDEVICE = "preference_category_multidevice";
+  private static final String PREFERENCE_CATEGORY_ADVANCED = "preference_category_advanced";
+  private static final String PREFERENCE_CATEGORY_CONNECTIVITY = "preference_category_connectivity";
+  private static final String PREFERENCE_CATEGORY_DONATE = "preference_category_donate";
+  private static final String PREFERENCE_CATEGORY_HELP = "preference_category_help";
 
-  public static final int REQUEST_CODE_SET_BACKGROUND            = 11;
+  public static final int REQUEST_CODE_SET_BACKGROUND = 11;
 
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
@@ -113,42 +108,49 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
 
   public void showBackupProvider() {
     Intent intent = new Intent(this, BackupTransferActivity.class);
-    intent.putExtra(BackupTransferActivity.TRANSFER_MODE, BackupTransferActivity.TransferMode.SENDER_SHOW_QR.getInt());
+    intent.putExtra(
+        BackupTransferActivity.TRANSFER_MODE,
+        BackupTransferActivity.TransferMode.SENDER_SHOW_QR.getInt());
     startActivity(intent);
-    overridePendingTransition(0, 0); // let the activity appear in the same way as the other pages (which are mostly fragments)
+    overridePendingTransition(
+        0, 0); // let the activity appear in the same way as the other pages (which are mostly
+    // fragments)
     finishAffinity(); // see comment (**2) in BackupTransferActivity.doFinish()
   }
 
-  public static class ApplicationPreferenceFragment extends CorrectedPreferenceFragment implements DcEventCenter.DcEventDelegate {
+  public static class ApplicationPreferenceFragment extends CorrectedPreferenceFragment
+      implements DcEventCenter.DcEventDelegate {
     private ActivityResultLauncher<Intent> screenLockLauncher;
 
     @Override
     public void onCreate(Bundle icicle) {
       super.onCreate(icicle);
 
-      screenLockLauncher = registerForActivityResult(
-        new ActivityResultContracts.StartActivityForResult(),
-        result -> {
-          if (result.getResultCode() == RESULT_OK) {
-            ((ApplicationPreferencesActivity)getActivity()).showBackupProvider();
-          }
-        }
-      );
+      screenLockLauncher =
+          registerForActivityResult(
+              new ActivityResultContracts.StartActivityForResult(),
+              result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                  ((ApplicationPreferencesActivity) getActivity()).showBackupProvider();
+                }
+              });
 
       this.findPreference(PREFERENCE_CATEGORY_PROFILE)
           .setOnPreferenceClickListener(new ProfileClickListener());
       this.findPreference(PREFERENCE_CATEGORY_NOTIFICATIONS)
-        .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_NOTIFICATIONS));
+          .setOnPreferenceClickListener(
+              new CategoryClickListener(PREFERENCE_CATEGORY_NOTIFICATIONS));
       this.findPreference(PREFERENCE_CATEGORY_CONNECTIVITY)
-        .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_CONNECTIVITY));
+          .setOnPreferenceClickListener(
+              new CategoryClickListener(PREFERENCE_CATEGORY_CONNECTIVITY));
       this.findPreference(PREFERENCE_CATEGORY_APPEARANCE)
-        .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_APPEARANCE));
+          .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_APPEARANCE));
       this.findPreference(PREFERENCE_CATEGORY_CHATS)
-        .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_CHATS));
+          .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_CHATS));
       this.findPreference(PREFERENCE_CATEGORY_MULTIDEVICE)
-        .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_MULTIDEVICE));
+          .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_MULTIDEVICE));
       this.findPreference(PREFERENCE_CATEGORY_ADVANCED)
-        .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_ADVANCED));
+          .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_ADVANCED));
 
       this.findPreference(PREFERENCE_CATEGORY_DONATE)
           .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_DONATE));
@@ -156,7 +158,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       this.findPreference(PREFERENCE_CATEGORY_HELP)
           .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_HELP));
 
-      DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
+      DcHelper.getEventCenter(getActivity())
+          .addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
     }
 
     @Override
@@ -168,7 +171,9 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     public void onResume() {
       super.onResume();
       //noinspection ConstantConditions
-      ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.menu_settings);
+      ((ApplicationPreferencesActivity) getActivity())
+          .getSupportActionBar()
+          .setTitle(R.string.menu_settings);
       setCategorySummaries();
     }
 
@@ -182,12 +187,14 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     public void handleEvent(@NonNull DcEvent event) {
       if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
         this.findPreference(PREFERENCE_CATEGORY_CONNECTIVITY)
-                .setSummary(DcHelper.getConnectivitySummary(getActivity(), getString(R.string.connectivity_connected)));
+            .setSummary(
+                DcHelper.getConnectivitySummary(
+                    getActivity(), getString(R.string.connectivity_connected)));
       }
     }
 
     private void setCategorySummaries() {
-      ((ProfilePreference)this.findPreference(PREFERENCE_CATEGORY_PROFILE)).refresh();
+      ((ProfilePreference) this.findPreference(PREFERENCE_CATEGORY_PROFILE)).refresh();
 
       this.findPreference(PREFERENCE_CATEGORY_NOTIFICATIONS)
           .setSummary(NotificationsPreferenceFragment.getSummary(getActivity()));
@@ -196,7 +203,9 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       this.findPreference(PREFERENCE_CATEGORY_CHATS)
           .setSummary(ChatsPreferenceFragment.getSummary(getActivity()));
       this.findPreference(PREFERENCE_CATEGORY_CONNECTIVITY)
-          .setSummary(DcHelper.getConnectivitySummary(getActivity(), getString(R.string.connectivity_connected)));
+          .setSummary(
+              DcHelper.getConnectivitySummary(
+                  getActivity(), getString(R.string.connectivity_connected)));
       this.findPreference(PREFERENCE_CATEGORY_HELP)
           .setSummary(AdvancedPreferenceFragment.getVersion(getActivity()));
     }
@@ -213,60 +222,73 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
         Fragment fragment = null;
 
         switch (category) {
-        case PREFERENCE_CATEGORY_NOTIFICATIONS:
-          NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getActivity());
-          if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || notificationManager.areNotificationsEnabled()) {
-            fragment = new NotificationsPreferenceFragment();
-          } else {
-            new AlertDialog.Builder(getActivity())
-              .setTitle(R.string.notifications_disabled)
-              .setMessage(R.string.perm_explain_access_to_notifications_denied)
-              .setPositiveButton(R.string.perm_continue, (dialog, which) -> getActivity().startActivity(Permissions.getApplicationSettingsIntent(getActivity())))
-              .setNegativeButton(android.R.string.cancel, null)
-              .show();
-          }
-          break;
-        case PREFERENCE_CATEGORY_CONNECTIVITY:
-          startActivity(new Intent(getActivity(), ConnectivityActivity.class));
-          break;
-        case PREFERENCE_CATEGORY_APPEARANCE:
-          fragment = new AppearancePreferenceFragment();
-          break;
-        case PREFERENCE_CATEGORY_CHATS:
-          fragment = new ChatsPreferenceFragment();
-          break;
-        case PREFERENCE_CATEGORY_MULTIDEVICE:
-          if (!ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.multidevice_title),
-              getString(R.string.multidevice_this_creates_a_qr_code) + "\n\n" + getString(R.string.enter_system_secret_to_continue),
-              screenLockLauncher)) {
-            new AlertDialog.Builder(getActivity())
-              .setTitle(R.string.multidevice_title)
-              .setMessage(R.string.multidevice_this_creates_a_qr_code)
-              .setPositiveButton(R.string.perm_continue,
-                (dialog, which) -> ((ApplicationPreferencesActivity)getActivity()).showBackupProvider())
-              .setNegativeButton(R.string.cancel, null)
-              .show();
-            ;
-          }
-          break;
-        case PREFERENCE_CATEGORY_ADVANCED:
-          fragment = new AdvancedPreferenceFragment();
-          break;
-        case PREFERENCE_CATEGORY_DONATE:
-          IntentUtils.showInBrowser(requireActivity(), "https://delta.chat/donate");
-          break;
-        case PREFERENCE_CATEGORY_HELP:
-          startActivity(new Intent(getActivity(), LocalHelpActivity.class));
-          break;
-        default:
-          throw new AssertionError();
+          case PREFERENCE_CATEGORY_NOTIFICATIONS:
+            NotificationManagerCompat notificationManager =
+                NotificationManagerCompat.from(getActivity());
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU
+                || notificationManager.areNotificationsEnabled()) {
+              fragment = new NotificationsPreferenceFragment();
+            } else {
+              new AlertDialog.Builder(getActivity())
+                  .setTitle(R.string.notifications_disabled)
+                  .setMessage(R.string.perm_explain_access_to_notifications_denied)
+                  .setPositiveButton(
+                      R.string.perm_continue,
+                      (dialog, which) ->
+                          getActivity()
+                              .startActivity(
+                                  Permissions.getApplicationSettingsIntent(getActivity())))
+                  .setNegativeButton(android.R.string.cancel, null)
+                  .show();
+            }
+            break;
+          case PREFERENCE_CATEGORY_CONNECTIVITY:
+            startActivity(new Intent(getActivity(), ConnectivityActivity.class));
+            break;
+          case PREFERENCE_CATEGORY_APPEARANCE:
+            fragment = new AppearancePreferenceFragment();
+            break;
+          case PREFERENCE_CATEGORY_CHATS:
+            fragment = new ChatsPreferenceFragment();
+            break;
+          case PREFERENCE_CATEGORY_MULTIDEVICE:
+            if (!ScreenLockUtil.applyScreenLock(
+                getActivity(),
+                getString(R.string.multidevice_title),
+                getString(R.string.multidevice_this_creates_a_qr_code)
+                    + "\n\n"
+                    + getString(R.string.enter_system_secret_to_continue),
+                screenLockLauncher)) {
+              new AlertDialog.Builder(getActivity())
+                  .setTitle(R.string.multidevice_title)
+                  .setMessage(R.string.multidevice_this_creates_a_qr_code)
+                  .setPositiveButton(
+                      R.string.perm_continue,
+                      (dialog, which) ->
+                          ((ApplicationPreferencesActivity) getActivity()).showBackupProvider())
+                  .setNegativeButton(R.string.cancel, null)
+                  .show();
+              ;
+            }
+            break;
+          case PREFERENCE_CATEGORY_ADVANCED:
+            fragment = new AdvancedPreferenceFragment();
+            break;
+          case PREFERENCE_CATEGORY_DONATE:
+            IntentUtils.showInBrowser(requireActivity(), "https://delta.chat/donate");
+            break;
+          case PREFERENCE_CATEGORY_HELP:
+            startActivity(new Intent(getActivity(), LocalHelpActivity.class));
+            break;
+          default:
+            throw new AssertionError();
         }
 
         if (fragment != null) {
           Bundle args = new Bundle();
           fragment.setArguments(args);
 
-          FragmentManager     fragmentManager     = getActivity().getSupportFragmentManager();
+          FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
           FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
           fragmentTransaction.replace(R.id.fragment, fragment);
           fragmentTransaction.addToBackStack(null);
@@ -288,7 +310,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   }
 
   @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+  public void onRequestPermissionsResult(
+      int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 }
