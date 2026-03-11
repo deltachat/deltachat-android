@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.app.Activity;
-
 import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
@@ -21,9 +20,11 @@ public class CustomCaptureManager extends CaptureManager {
   @Override
   protected void returnResult(BarcodeResult rawResult) {
     if (interceptor != null) {
-      interceptor.onResult(rawResult, () -> {
-        super.returnResult(rawResult);
-      });
+      interceptor.onResult(
+          rawResult,
+          () -> {
+            super.returnResult(rawResult);
+          });
     } else {
       super.returnResult(rawResult);
     }

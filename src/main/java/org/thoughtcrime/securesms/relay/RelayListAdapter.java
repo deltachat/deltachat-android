@@ -5,17 +5,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.thoughtcrime.securesms.R;
-
+import chat.delta.rpc.types.EnteredLoginParam;
 import java.util.ArrayList;
 import java.util.List;
-
-import chat.delta.rpc.types.EnteredLoginParam;
+import org.thoughtcrime.securesms.R;
 
 public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.RelayViewHolder> {
 
@@ -25,6 +21,7 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
 
   public interface OnRelayClickListener {
     void onRelayClick(EnteredLoginParam relay);
+
     void onRelayLongClick(View view, EnteredLoginParam relay);
   }
 
@@ -45,8 +42,8 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
   @NonNull
   @Override
   public RelayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(parent.getContext())
-      .inflate(R.layout.relay_list_item, parent, false);
+    View view =
+        LayoutInflater.from(parent.getContext()).inflate(R.layout.relay_list_item, parent, false);
     return new RelayViewHolder(view);
   }
 
@@ -76,22 +73,24 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
 
     public void bind(EnteredLoginParam relay, boolean isMain, OnRelayClickListener listener) {
       String[] parts = relay.addr.split("@");
-      titleText.setText(parts.length == 2? parts[1] : parts[0]);
-      subtitleText.setText(parts.length == 2? parts[0] : "");
+      titleText.setText(parts.length == 2 ? parts[1] : parts[0]);
+      subtitleText.setText(parts.length == 2 ? parts[0] : "");
       mainIndicator.setVisibility(isMain ? View.VISIBLE : View.INVISIBLE);
 
-      itemView.setOnClickListener(v -> {
-        if (listener != null) {
-          listener.onRelayClick(relay);
-        }
-      });
+      itemView.setOnClickListener(
+          v -> {
+            if (listener != null) {
+              listener.onRelayClick(relay);
+            }
+          });
 
-      itemView.setOnLongClickListener(v -> {
-        if (listener != null) {
-          listener.onRelayLongClick(v, relay);
-        }
-        return true;
-      });
+      itemView.setOnLongClickListener(
+          v -> {
+            if (listener != null) {
+              listener.onRelayLongClick(v, relay);
+            }
+            return true;
+          });
     }
   }
 }

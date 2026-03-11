@@ -21,10 +21,8 @@ import android.util.AttributeSet;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.MediaItem;
@@ -40,7 +38,6 @@ import com.google.android.exoplayer2.ui.StyledPlayerView;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -50,8 +47,8 @@ public class VideoPlayer extends FrameLayout {
 
   @Nullable private final StyledPlayerView exoView;
 
-  @Nullable private       SimpleExoPlayer     exoPlayer;
-  @Nullable private       Window              window;
+  @Nullable private SimpleExoPlayer exoPlayer;
+  @Nullable private Window window;
 
   public VideoPlayer(Context context) {
     this(context, null);
@@ -69,8 +66,7 @@ public class VideoPlayer extends FrameLayout {
     this.exoView = ViewUtil.findById(this, R.id.video_view);
   }
 
-  public void setVideoSource(@NonNull VideoSlide videoSource, boolean autoplay)
-  {
+  public void setVideoSource(@NonNull VideoSlide videoSource, boolean autoplay) {
     setExoViewSource(videoSource, autoplay);
   }
 
@@ -90,27 +86,30 @@ public class VideoPlayer extends FrameLayout {
     this.window = window;
   }
 
-  private void setExoViewSource(@NonNull VideoSlide videoSource, boolean autoplay)
-  {
-    BandwidthMeter         bandwidthMeter             = new DefaultBandwidthMeter.Builder(getContext()).build();
-    TrackSelector          trackSelector              = new DefaultTrackSelector(getContext());
-    LoadControl            loadControl                = new DefaultLoadControl();
+  private void setExoViewSource(@NonNull VideoSlide videoSource, boolean autoplay) {
+    BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter.Builder(getContext()).build();
+    TrackSelector trackSelector = new DefaultTrackSelector(getContext());
+    LoadControl loadControl = new DefaultLoadControl();
 
-    exoPlayer = new SimpleExoPlayer.Builder(getContext())
-      .setTrackSelector(trackSelector)
-      .setBandwidthMeter(bandwidthMeter)
-      .setLoadControl(loadControl)
-      .build();
+    exoPlayer =
+        new SimpleExoPlayer.Builder(getContext())
+            .setTrackSelector(trackSelector)
+            .setBandwidthMeter(bandwidthMeter)
+            .setLoadControl(loadControl)
+            .build();
     exoPlayer.addListener(new ExoPlayerListener(window));
     //noinspection ConstantConditions
     exoView.setPlayer(exoPlayer);
 
-    DefaultDataSourceFactory    defaultDataSourceFactory    = new DefaultDataSourceFactory(getContext(), "GenericUserAgent", null);
-    AttachmentDataSourceFactory attachmentDataSourceFactory = new AttachmentDataSourceFactory(defaultDataSourceFactory);
-    ExtractorsFactory           extractorsFactory           = new DefaultExtractorsFactory();
+    DefaultDataSourceFactory defaultDataSourceFactory =
+        new DefaultDataSourceFactory(getContext(), "GenericUserAgent", null);
+    AttachmentDataSourceFactory attachmentDataSourceFactory =
+        new AttachmentDataSourceFactory(defaultDataSourceFactory);
+    ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
 
-    MediaSource mediaSource = new ProgressiveMediaSource.Factory(attachmentDataSourceFactory, extractorsFactory)
-      .createMediaSource(MediaItem.fromUri(videoSource.getUri()));
+    MediaSource mediaSource =
+        new ProgressiveMediaSource.Factory(attachmentDataSourceFactory, extractorsFactory)
+            .createMediaSource(MediaItem.fromUri(videoSource.getUri()));
 
     exoPlayer.prepare(mediaSource);
     exoPlayer.setPlayWhenReady(autoplay);
@@ -125,7 +124,7 @@ public class VideoPlayer extends FrameLayout {
 
     @Override
     public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-      switch(playbackState) {
+      switch (playbackState) {
         case Player.STATE_IDLE:
         case Player.STATE_BUFFERING:
         case Player.STATE_ENDED:
@@ -143,6 +142,4 @@ public class VideoPlayer extends FrameLayout {
       }
     }
   }
-
-
 }

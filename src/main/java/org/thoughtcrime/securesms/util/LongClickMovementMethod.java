@@ -11,9 +11,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.core.content.ContextCompat;
-
 import org.thoughtcrime.securesms.R;
 
 public class LongClickMovementMethod extends LinkMovementMethod {
@@ -25,34 +23,36 @@ public class LongClickMovementMethod extends LinkMovementMethod {
   private LongClickCopySpan currentSpan;
 
   private LongClickMovementMethod(final Context context) {
-    gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
-      @Override
-      public void onLongPress(MotionEvent e) {
-        if (currentSpan != null && widget != null) {
-          currentSpan.onLongClick(widget);
-          widget = null;
-          currentSpan = null;
-        }
-      }
+    gestureDetector =
+        new GestureDetector(
+            context,
+            new GestureDetector.SimpleOnGestureListener() {
+              @Override
+              public void onLongPress(MotionEvent e) {
+                if (currentSpan != null && widget != null) {
+                  currentSpan.onLongClick(widget);
+                  widget = null;
+                  currentSpan = null;
+                }
+              }
 
-      @Override
-      public boolean onSingleTapUp(MotionEvent e) {
-        if (currentSpan != null && widget != null) {
-          currentSpan.onClick(widget);
-          widget = null;
-          currentSpan = null;
-        }
-        return true;
-      }
-    });
+              @Override
+              public boolean onSingleTapUp(MotionEvent e) {
+                if (currentSpan != null && widget != null) {
+                  currentSpan.onClick(widget);
+                  widget = null;
+                  currentSpan = null;
+                }
+                return true;
+              }
+            });
   }
 
   @Override
   public boolean onTouchEvent(TextView widget, Spannable buffer, MotionEvent event) {
     int action = event.getAction();
 
-    if (action == MotionEvent.ACTION_UP ||
-            action == MotionEvent.ACTION_DOWN) {
+    if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_DOWN) {
       int x = (int) event.getX();
       int y = (int) event.getY();
 
@@ -70,10 +70,10 @@ public class LongClickMovementMethod extends LinkMovementMethod {
       if (longClickCopySpan.length != 0) {
         LongClickCopySpan aSingleSpan = longClickCopySpan[0];
         if (action == MotionEvent.ACTION_DOWN) {
-          Selection.setSelection(buffer, buffer.getSpanStart(aSingleSpan),
-                  buffer.getSpanEnd(aSingleSpan));
-          aSingleSpan.setHighlighted(true,
-                  ContextCompat.getColor(widget.getContext(), R.color.touch_highlight));
+          Selection.setSelection(
+              buffer, buffer.getSpanStart(aSingleSpan), buffer.getSpanEnd(aSingleSpan));
+          aSingleSpan.setHighlighted(
+              true, ContextCompat.getColor(widget.getContext(), R.color.touch_highlight));
         } else {
           Selection.removeSelection(buffer);
           aSingleSpan.setHighlighted(false, Color.TRANSPARENT);
@@ -85,8 +85,11 @@ public class LongClickMovementMethod extends LinkMovementMethod {
       }
     } else if (action == MotionEvent.ACTION_CANCEL) {
       // Remove Selections.
-      LongClickCopySpan[] spans = buffer.getSpans(Selection.getSelectionStart(buffer),
-              Selection.getSelectionEnd(buffer), LongClickCopySpan.class);
+      LongClickCopySpan[] spans =
+          buffer.getSpans(
+              Selection.getSelectionStart(buffer),
+              Selection.getSelectionEnd(buffer),
+              LongClickCopySpan.class);
       for (LongClickCopySpan aSpan : spans) {
         aSpan.setHighlighted(false, Color.TRANSPARENT);
       }

@@ -1,8 +1,6 @@
 package org.thoughtcrime.securesms.util.views;
 
-
 import android.view.ViewStub;
-
 import androidx.annotation.NonNull;
 
 public class Stub<T> {
@@ -16,7 +14,7 @@ public class Stub<T> {
 
   public T get() {
     if (view == null) {
-      view = (T)viewStub.inflate();
+      view = (T) viewStub.inflate();
       viewStub = null;
     }
 
@@ -26,5 +24,4 @@ public class Stub<T> {
   public boolean resolved() {
     return view != null;
   }
-
 }

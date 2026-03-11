@@ -8,22 +8,19 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Consumer;
 import androidx.emoji2.emojipicker.EmojiPickerView;
 import androidx.emoji2.emojipicker.EmojiViewItem;
-
 import com.google.android.material.tabs.TabLayout;
-
+import java.io.File;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.InputAwareLayout.InputView;
 import org.thoughtcrime.securesms.util.ResUtil;
 
-import java.io.File;
-
-public class MediaKeyboard extends LinearLayout implements InputView, Consumer<EmojiViewItem>, StickerPickerView.StickerPickerListener {
+public class MediaKeyboard extends LinearLayout
+    implements InputView, Consumer<EmojiViewItem>, StickerPickerView.StickerPickerListener {
 
   private static final String TAG = MediaKeyboard.class.getSimpleName();
 
@@ -65,24 +62,23 @@ public class MediaKeyboard extends LinearLayout implements InputView, Consumer<E
       tabLayout.addTab(tabLayout.newTab().setIcon(emojiIcon));
       tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_sticker_24));
 
-      tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-        @Override
-        public void onTabSelected(TabLayout.Tab tab) {
-          if (tab.getPosition() == 0) {
-            showEmojiPicker();
-          } else {
-            showStickerPicker();
-          }
-        }
+      tabLayout.addOnTabSelectedListener(
+          new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+              if (tab.getPosition() == 0) {
+                showEmojiPicker();
+              } else {
+                showStickerPicker();
+              }
+            }
 
-        @Override
-        public void onTabUnselected(TabLayout.Tab tab) {
-        }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
 
-        @Override
-        public void onTabReselected(TabLayout.Tab tab) {
-        }
-      });
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+          });
     }
   }
 
@@ -134,7 +130,8 @@ public class MediaKeyboard extends LinearLayout implements InputView, Consumer<E
 
   private void updateStickerEmptyState() {
     if (stickerPicker != null && stickerPickerEmpty != null) {
-      boolean hasStickers = stickerPicker.getAdapter() != null && stickerPicker.getAdapter().getItemCount() > 0;
+      boolean hasStickers =
+          stickerPicker.getAdapter() != null && stickerPicker.getAdapter().getItemCount() > 0;
       stickerPickerEmpty.setVisibility(hasStickers ? View.GONE : View.VISIBLE);
     }
   }
@@ -172,8 +169,11 @@ public class MediaKeyboard extends LinearLayout implements InputView, Consumer<E
 
   public interface MediaKeyboardListener {
     void onShown();
+
     void onHidden();
+
     void onEmojiPicked(String emoji);
+
     void onStickerPicked(Uri stickerUri);
   }
 }

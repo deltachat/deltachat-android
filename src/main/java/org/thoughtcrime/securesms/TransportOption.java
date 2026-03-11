@@ -9,18 +9,18 @@ public class TransportOption {
     NORMAL_MAIL
   }
 
-  private final int                             drawable;
-  private final @NonNull String                 text;
-  private final @NonNull String                 composeHint;
+  private final int drawable;
+  private final @NonNull String text;
+  private final @NonNull String composeHint;
 
-  public TransportOption(@NonNull  Type type,
-                         @DrawableRes int drawable,
-                         @NonNull String text,
-                         @NonNull String composeHint)
-  {
-    this.drawable            = drawable;
-    this.text                = text;
-    this.composeHint         = composeHint;
+  public TransportOption(
+      @NonNull Type type,
+      @DrawableRes int drawable,
+      @NonNull String text,
+      @NonNull String composeHint) {
+    this.drawable = drawable;
+    this.text = text;
+    this.composeHint = composeHint;
   }
 
   public @NonNull Type getType() {

@@ -5,16 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.thoughtcrime.securesms.R;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import org.thoughtcrime.securesms.R;
 
 public class ColorPaletteAdapter extends RecyclerView.Adapter<ColorPaletteAdapter.ColorViewHolder> {
 
@@ -24,7 +21,8 @@ public class ColorPaletteAdapter extends RecyclerView.Adapter<ColorPaletteAdapte
 
   @Override
   public @NonNull ColorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-    return new ColorViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_color, parent, false));
+    return new ColorViewHolder(
+        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_color, parent, false));
   }
 
   @Override

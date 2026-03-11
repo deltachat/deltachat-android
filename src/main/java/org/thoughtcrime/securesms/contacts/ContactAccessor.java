@@ -1,18 +1,16 @@
 /**
  * Copyright (C) 2011 Whisper Systems
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * <p>This program is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>You should have received a copy of the GNU General Public License along with this program. If
+ * not, see <http://www.gnu.org/licenses/>.
  */
 package org.thoughtcrime.securesms.contacts;
 
@@ -20,28 +18,24 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 import android.util.Log;
-
-import org.thoughtcrime.securesms.ContactSelectionListFragment;
-import org.thoughtcrime.securesms.util.Hash;
-import org.thoughtcrime.securesms.util.Prefs;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import org.thoughtcrime.securesms.ContactSelectionListFragment;
+import org.thoughtcrime.securesms.util.Hash;
+import org.thoughtcrime.securesms.util.Prefs;
 
 /**
- * This class was originally a layer of indirection between
- * ContactAccessorNewApi and ContactAccesorOldApi, which corresponded
- * to the API changes between 1.x and 2.x.
+ * This class was originally a layer of indirection between ContactAccessorNewApi and
+ * ContactAccesorOldApi, which corresponded to the API changes between 1.x and 2.x.
  *
- * Now that we no longer support 1.x, this class mostly serves as a place
- * to encapsulate Contact-related logic.  It's still a singleton, mostly
- * just because that's how it's currently called from everywhere.
+ * <p>Now that we no longer support 1.x, this class mostly serves as a place to encapsulate
+ * Contact-related logic. It's still a singleton, mostly just because that's how it's currently
+ * called from everywhere.
  *
  * @author Moxie Marlinspike
  */
-
 public class ContactAccessor {
   private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
 
@@ -58,8 +52,14 @@ public class ContactAccessor {
   }
 
   public Cursor getAllSystemContacts(Context context) {
-    String[] projection = {ContactsContract.Data.DISPLAY_NAME, ContactsContract.CommonDataKinds.Email.ADDRESS, ContactsContract.Data.CONTACT_ID};
-    return context.getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, projection, null, null, null);
+    String[] projection = {
+      ContactsContract.Data.DISPLAY_NAME,
+      ContactsContract.CommonDataKinds.Email.ADDRESS,
+      ContactsContract.Data.CONTACT_ID
+    };
+    return context
+        .getContentResolver()
+        .query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, projection, null, null, null);
   }
 
   public String getAllSystemContactsAsString(Context context) {
@@ -78,7 +78,7 @@ public class ContactAccessor {
         } else {
           name = "";
         }
-      } catch(Exception e) {
+      } catch (Exception e) {
         Log.e(TAG, "Can't get contact name: " + e);
         name = "";
       }
@@ -90,7 +90,7 @@ public class ContactAccessor {
           mail = mail.replace("\r", ""); // remove characters later used as field separator
           mail = mail.replace("\n", "");
         }
-      } catch(Exception e) {
+      } catch (Exception e) {
         Log.e(TAG, "Can't get contact addr: " + e);
       }
 
@@ -101,11 +101,11 @@ public class ContactAccessor {
         contactPhotoIdentifiers.add(hashedIdentifierAndId);
       }
       if (mail != null && !mail.isEmpty() && !mailList.contains(mail)) {
-          mailList.add(mail);
-          if (name.isEmpty()) {
-            name = mail;
-          }
-          result.append(name).append("\n").append(mail).append("\n");
+        mailList.add(mail);
+        if (name.isEmpty()) {
+          name = mail;
+        }
+        result.append(name).append("\n").append(mail).append("\n");
       }
     }
     Prefs.setSystemContactPhotos(context, contactPhotoIdentifiers);

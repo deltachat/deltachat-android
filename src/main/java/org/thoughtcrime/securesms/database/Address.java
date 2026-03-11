@@ -1,27 +1,26 @@
 package org.thoughtcrime.securesms.database;
 
-
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import androidx.annotation.NonNull;
 
 public class Address implements Parcelable, Comparable<Address> {
 
-  public static final Parcelable.Creator<Address> CREATOR = new Parcelable.Creator<Address>() {
-    public Address createFromParcel(Parcel in) {
-      return new Address(in);
-    }
+  public static final Parcelable.Creator<Address> CREATOR =
+      new Parcelable.Creator<Address>() {
+        public Address createFromParcel(Parcel in) {
+          return new Address(in);
+        }
 
-    public Address[] newArray(int size) {
-      return new Address[size];
-    }
-  };
+        public Address[] newArray(int size) {
+          return new Address[size];
+        }
+      };
 
   public static final Address UNKNOWN = new Address("Unknown");
 
-  private final static String DC_CHAT_PREFIX = "dc:";
-  private final static String DC_CONTACT_PREFIX = "dcc:";
+  private static final String DC_CHAT_PREFIX = "dc:";
+  private static final String DC_CONTACT_PREFIX = "dcc:";
 
   private final String address;
 
@@ -46,17 +45,23 @@ public class Address implements Parcelable, Comparable<Address> {
     return new Address(serialized);
   }
 
-  public boolean isDcChat() { return address.startsWith(DC_CHAT_PREFIX); };
+  public boolean isDcChat() {
+    return address.startsWith(DC_CHAT_PREFIX);
+  }
+  ;
 
-  public boolean isDcContact() { return address.startsWith(DC_CONTACT_PREFIX); };
+  public boolean isDcContact() {
+    return address.startsWith(DC_CONTACT_PREFIX);
+  }
+  ;
 
   public int getDcChatId() {
-    if(!isDcChat()) throw new AssertionError("Not dc chat: " + address);
+    if (!isDcChat()) throw new AssertionError("Not dc chat: " + address);
     return Integer.valueOf(address.substring(DC_CHAT_PREFIX.length()));
   }
 
   public int getDcContactId() {
-    if(!isDcContact()) throw new AssertionError("Not dc contact: " + address);
+    if (!isDcContact()) throw new AssertionError("Not dc contact: " + address);
     return Integer.valueOf(address.substring(DC_CONTACT_PREFIX.length()));
   }
 

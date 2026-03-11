@@ -3,15 +3,11 @@ package org.thoughtcrime.securesms.contacts.avatars;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
-
 import com.amulyakhare.textdrawable.TextDrawable;
-
-import org.thoughtcrime.securesms.R;
-
 import java.util.regex.Pattern;
+import org.thoughtcrime.securesms.R;
 
 public class GeneratedContactPhoto implements FallbackContactPhoto {
 
@@ -20,7 +16,7 @@ public class GeneratedContactPhoto implements FallbackContactPhoto {
   private final String name;
 
   public GeneratedContactPhoto(@NonNull String name) {
-    this.name  = name;
+    this.name = name;
   }
 
   @Override
@@ -29,17 +25,21 @@ public class GeneratedContactPhoto implements FallbackContactPhoto {
   }
 
   public Drawable asDrawable(Context context, int color, boolean roundShape) {
-    int targetSize = context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);
+    int targetSize =
+        context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);
 
-    TextDrawable.IShapeBuilder builder = TextDrawable.builder()
-      .beginConfig()
-      .width(targetSize)
-      .height(targetSize)
-      .textColor(Color.WHITE)
-      .bold()
-      .toUpperCase()
-      .endConfig();
-    return roundShape? builder.buildRound(getCharacter(name), color) : builder.buildRect(getCharacter(name), color);
+    TextDrawable.IShapeBuilder builder =
+        TextDrawable.builder()
+            .beginConfig()
+            .width(targetSize)
+            .height(targetSize)
+            .textColor(Color.WHITE)
+            .bold()
+            .toUpperCase()
+            .endConfig();
+    return roundShape
+        ? builder.buildRound(getCharacter(name), color)
+        : builder.buildRect(getCharacter(name), color);
   }
 
   private String getCharacter(String name) {
@@ -55,6 +55,5 @@ public class GeneratedContactPhoto implements FallbackContactPhoto {
   @Override
   public Drawable asCallCard(Context context) {
     return AppCompatResources.getDrawable(context, R.drawable.ic_person_large);
-
   }
 }

@@ -3,27 +3,25 @@ package org.thoughtcrime.securesms.util.task;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.AsyncTask;
-
 import androidx.annotation.Nullable;
-
+import java.lang.ref.WeakReference;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
-import java.lang.ref.WeakReference;
-
-public abstract class ProgressDialogAsyncTask<Params, Progress, Result> extends AsyncTask<Params, Progress, Result> {
+public abstract class ProgressDialogAsyncTask<Params, Progress, Result>
+    extends AsyncTask<Params, Progress, Result> {
 
   private final WeakReference<Context> contextReference;
-  private       ProgressDialog         progress;
-  private final String                 title;
-  private final String                 message;
-  private       boolean                cancelable;
-  private       OnCancelListener       onCancelListener;
+  private ProgressDialog progress;
+  private final String title;
+  private final String message;
+  private boolean cancelable;
+  private OnCancelListener onCancelListener;
 
   public ProgressDialogAsyncTask(Context context, String title, String message) {
     super();
     this.contextReference = new WeakReference<>(context);
-    this.title            = title;
-    this.message          = message;
+    this.title = title;
+    this.message = message;
   }
 
   public void setCancelable(@Nullable OnCancelListener onCancelListener) {
@@ -43,7 +41,7 @@ public abstract class ProgressDialogAsyncTask<Params, Progress, Result> extends 
   protected void onPostExecute(Result result) {
     try {
       if (progress != null) progress.dismiss();
-    } catch(Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
@@ -52,4 +50,3 @@ public abstract class ProgressDialogAsyncTask<Params, Progress, Result> extends 
     return contextReference.get();
   }
 }
-

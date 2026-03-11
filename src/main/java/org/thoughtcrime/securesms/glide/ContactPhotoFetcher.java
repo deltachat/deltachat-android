@@ -1,28 +1,23 @@
 package org.thoughtcrime.securesms.glide;
 
-
 import android.content.Context;
-
 import androidx.annotation.NonNull;
-
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.data.DataFetcher;
-
-import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
-
 import java.io.IOException;
 import java.io.InputStream;
+import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 
 class ContactPhotoFetcher implements DataFetcher<InputStream> {
 
-  private final Context   context;
+  private final Context context;
   private final ContactPhoto contactPhoto;
 
   private InputStream inputStream;
 
   ContactPhotoFetcher(@NonNull Context context, @NonNull ContactPhoto contactPhoto) {
-    this.context      = context.getApplicationContext();
+    this.context = context.getApplicationContext();
     this.contactPhoto = contactPhoto;
   }
 
@@ -40,13 +35,12 @@ class ContactPhotoFetcher implements DataFetcher<InputStream> {
   public void cleanup() {
     try {
       if (inputStream != null) inputStream.close();
-    } catch (IOException ignored) {}
+    } catch (IOException ignored) {
+    }
   }
 
   @Override
-  public void cancel() {
-
-  }
+  public void cancel() {}
 
   @NonNull
   @Override

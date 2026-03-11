@@ -1,14 +1,11 @@
 package org.thoughtcrime.securesms.crypto;
 
-
 import android.os.Build;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.util.Base64;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
@@ -18,9 +15,6 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-import org.thoughtcrime.securesms.util.JsonUtils;
-
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
@@ -31,7 +25,6 @@ import java.security.NoSuchProviderException;
 import java.security.UnrecoverableEntryException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
-
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -39,11 +32,12 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.GCMParameterSpec;
+import org.thoughtcrime.securesms.util.JsonUtils;
 
 public final class KeyStoreHelper {
 
   private static final String ANDROID_KEY_STORE = "AndroidKeyStore";
-  private static final String KEY_ALIAS         = "DeltaSecret";
+  private static final String KEY_ALIAS = "DeltaSecret";
 
   @RequiresApi(Build.VERSION_CODES.M)
   public static SealedData seal(@NonNull byte[] input) {
@@ -53,11 +47,15 @@ public final class KeyStoreHelper {
       Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
       cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 
-      byte[] iv   = cipher.getIV();
+      byte[] iv = cipher.getIV();
       byte[] data = cipher.doFinal(input);
 
       return new SealedData(iv, data);
-    } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException e) {
+    } catch (NoSuchAlgorithmException
+        | NoSuchPaddingException
+        | InvalidKeyException
+        | IllegalBlockSizeException
+        | BadPaddingException e) {
       throw new AssertionError(e);
     }
   }
@@ -71,7 +69,12 @@ public final class KeyStoreHelper {
       cipher.init(Cipher.DECRYPT_MODE, secretKey, new GCMParameterSpec(128, sealedData.iv));
 
       return cipher.doFinal(sealedData.data);
-    } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
+    } catch (NoSuchAlgorithmException
+        | NoSuchPaddingException
+        | InvalidKeyException
+        | InvalidAlgorithmParameterException
+        | IllegalBlockSizeException
+        | BadPaddingException e) {
       throw new AssertionError(e);
     }
   }
@@ -79,14 +82,17 @@ public final class KeyStoreHelper {
   @RequiresApi(Build.VERSION_CODES.M)
   private static SecretKey getOrCreateKeyStoreEntry() {
     if (hasKeyStoreEntry()) return getKeyStoreEntry();
-    else                    return createKeyStoreEntry();
+    else return createKeyStoreEntry();
   }
 
   @RequiresApi(Build.VERSION_CODES.M)
   private static SecretKey createKeyStoreEntry() {
     try {
-      KeyGenerator keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, ANDROID_KEY_STORE);
-      KeyGenParameterSpec keyGenParameterSpec = new KeyGenParameterSpec.Builder(KEY_ALIAS, KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+      KeyGenerator keyGenerator =
+          KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, ANDROID_KEY_STORE);
+      KeyGenParameterSpec keyGenParameterSpec =
+          new KeyGenParameterSpec.Builder(
+                  KEY_ALIAS, KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
               .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
               .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
               .build();
@@ -94,7 +100,9 @@ public final class KeyStoreHelper {
       keyGenerator.init(keyGenParameterSpec);
 
       return keyGenerator.generateKey();
-    } catch (NoSuchAlgorithmException | NoSuchProviderException | InvalidAlgorithmParameterException e) {
+    } catch (NoSuchAlgorithmException
+        | NoSuchProviderException
+        | InvalidAlgorithmParameterException e) {
       throw new AssertionError(e);
     }
   }
@@ -143,7 +151,8 @@ public final class KeyStoreHelper {
       KeyStore ks = KeyStore.getInstance(ANDROID_KEY_STORE);
       ks.load(null);
 
-      return ks.containsAlias(KEY_ALIAS) && ks.entryInstanceOf(KEY_ALIAS, KeyStore.SecretKeyEntry.class);
+      return ks.containsAlias(KEY_ALIAS)
+          && ks.entryInstanceOf(KEY_ALIAS, KeyStore.SecretKeyEntry.class);
     } catch (KeyStoreException | IOException | NoSuchAlgorithmException | CertificateException e) {
       throw new AssertionError(e);
     }
@@ -162,12 +171,14 @@ public final class KeyStoreHelper {
     private byte[] data;
 
     SealedData(@NonNull byte[] iv, @NonNull byte[] data) {
-      this.iv   = iv;
+      this.iv = iv;
       this.data = data;
     }
 
     @SuppressWarnings("unused")
-    public SealedData() { /* needed by JsonUtils.fromJson() */ }
+    public SealedData() {
+      /* needed by JsonUtils.fromJson() */
+    }
 
     public String serialize() {
       try {
@@ -187,7 +198,8 @@ public final class KeyStoreHelper {
 
     private static class ByteArraySerializer extends JsonSerializer<byte[]> {
       @Override
-      public void serialize(byte[] value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+      public void serialize(byte[] value, JsonGenerator gen, SerializerProvider serializers)
+          throws IOException {
         gen.writeString(Base64.encodeToString(value, Base64.NO_WRAP | Base64.NO_PADDING));
       }
     }
@@ -199,7 +211,5 @@ public final class KeyStoreHelper {
         return Base64.decode(p.getValueAsString(), Base64.NO_WRAP | Base64.NO_PADDING);
       }
     }
-
   }
-
 }

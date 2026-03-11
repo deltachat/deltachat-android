@@ -8,7 +8,7 @@ import android.view.inputmethod.InputMethodManager;
 
 public class ServiceUtil {
   public static InputMethodManager getInputMethodManager(Context context) {
-    return (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
+    return (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
   }
 
   public static WindowManager getWindowManager(Context context) {
@@ -16,6 +16,6 @@ public class ServiceUtil {
   }
 
   public static Vibrator getVibrator(Context context) {
-    return  (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
+    return (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
   }
 }

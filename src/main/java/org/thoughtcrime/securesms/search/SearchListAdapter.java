@@ -5,16 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
-
+import java.util.Set;
 import org.thoughtcrime.securesms.BaseConversationListAdapter;
 import org.thoughtcrime.securesms.ConversationListItem;
 import org.thoughtcrime.securesms.R;
@@ -24,39 +22,37 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 
-import java.util.Set;
-
-class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.SearchResultViewHolder>
-                        implements StickyHeaderDecoration.StickyHeaderAdapter<SearchListAdapter.HeaderViewHolder>
-{
-  private static final int TYPE_CHATS         = 1;
-  private static final int TYPE_CONTACTS      = 2;
-  private static final int TYPE_MESSAGES      = 3;
+class SearchListAdapter
+    extends BaseConversationListAdapter<SearchListAdapter.SearchResultViewHolder>
+    implements StickyHeaderDecoration.StickyHeaderAdapter<SearchListAdapter.HeaderViewHolder> {
+  private static final int TYPE_CHATS = 1;
+  private static final int TYPE_CONTACTS = 2;
+  private static final int TYPE_MESSAGES = 3;
 
   private final GlideRequests glideRequests;
   private final EventListener eventListener;
 
-  @NonNull
-  private SearchResult searchResult = SearchResult.EMPTY;
+  @NonNull private SearchResult searchResult = SearchResult.EMPTY;
 
-  final Context              context;
-  final DcContext            dcContext; // reset on account switching is not needed because SearchFragment and SearchListAdapter are recreated in every search start
+  final Context context;
+  final DcContext dcContext; // reset on account switching is not needed because SearchFragment and
 
-  SearchListAdapter(Context                context,
-                    @NonNull GlideRequests glideRequests,
-                    @NonNull EventListener eventListener)
-  {
+  // SearchListAdapter are recreated in every search start
+
+  SearchListAdapter(
+      Context context, @NonNull GlideRequests glideRequests, @NonNull EventListener eventListener) {
     this.glideRequests = glideRequests;
     this.eventListener = eventListener;
-    this.context       = context;
-    this.dcContext     = DcHelper.getContext(context);
+    this.context = context;
+    this.dcContext = DcHelper.getContext(context);
   }
 
   @NonNull
   @Override
   public SearchResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-    return new SearchResultViewHolder(LayoutInflater.from(parent.getContext())
-                                                    .inflate(R.layout.conversation_list_item_view, parent, false));
+    return new SearchResultViewHolder(
+        LayoutInflater.from(parent.getContext())
+            .inflate(R.layout.conversation_list_item_view, parent, false));
   }
 
   @Override
@@ -64,7 +60,14 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
     DcChatlist.Item conversationResult = getConversationResult(position);
 
     if (conversationResult != null) {
-      holder.bind(context, conversationResult, glideRequests, eventListener, batchSet, batchMode, searchResult.getQuery());
+      holder.bind(
+          context,
+          conversationResult,
+          glideRequests,
+          eventListener,
+          batchSet,
+          batchMode,
+          searchResult.getQuery());
       return;
     }
 
@@ -105,13 +108,14 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
 
   @Override
   public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-    return new HeaderViewHolder(LayoutInflater.from(parent.getContext())
-                                              .inflate(R.layout.contact_selection_list_divider, parent, false));
+    return new HeaderViewHolder(
+        LayoutInflater.from(parent.getContext())
+            .inflate(R.layout.contact_selection_list_divider, parent, false));
   }
 
   @Override
   public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
-    int headerType = (int)getHeaderId(position);
+    int headerType = (int) getHeaderId(position);
     int textId = R.plurals.n_messages;
     int count = 1;
     boolean maybeLimitedTo1000 = false;
@@ -128,13 +132,17 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
       case TYPE_MESSAGES:
         textId = R.plurals.n_messages;
         count = searchResult.getMessages().length;
-        maybeLimitedTo1000 = count==1000; // a count of 1000 results may be limited, see documentation of dc_search_msgs()
+        maybeLimitedTo1000 =
+            count == 1000; // a count of 1000 results may be limited, see documentation of
+        // dc_search_msgs()
         break;
     }
 
     String title = context.getResources().getQuantityString(textId, count, count);
     if (maybeLimitedTo1000) {
-      title = title.replace("000", "000+"); // skipping the first digit allows formattings as "1.000" or "1,000"
+      title =
+          title.replace(
+              "000", "000+"); // skipping the first digit allows formattings as "1.000" or "1,000"
     }
     viewHolder.bind(title);
   }
@@ -147,7 +155,7 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
   @Override
   public void selectAllThreads() {
     for (int i = 0; i < searchResult.getChats().getCnt(); i++) {
-      batchSet.add((long)searchResult.getChats().getItem(i).chatId);
+      batchSet.add((long) searchResult.getChats().getItem(i).chatId);
     }
     notifyDataSetChanged();
   }
@@ -186,8 +194,11 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
 
   public interface EventListener {
     void onConversationClicked(@NonNull DcChatlist.Item chatlistItem);
+
     void onConversationLongClicked(@NonNull DcChatlist.Item chatlistItem);
+
     void onContactClicked(@NonNull DcContact contact);
+
     void onMessageClicked(@NonNull DcMsg message);
   }
 
@@ -200,38 +211,48 @@ class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.Se
       root = (ConversationListItem) itemView;
     }
 
-    void bind(Context   context,
-              @NonNull  DcChatlist.Item chatlistItem,
-              @NonNull  GlideRequests glideRequests,
-              @NonNull  EventListener eventListener,
-              @NonNull Set<Long> selectedThreads,
-              boolean   batchMode,
-              @Nullable String        query)
-    {
+    void bind(
+        Context context,
+        @NonNull DcChatlist.Item chatlistItem,
+        @NonNull GlideRequests glideRequests,
+        @NonNull EventListener eventListener,
+        @NonNull Set<Long> selectedThreads,
+        boolean batchMode,
+        @Nullable String query) {
       DcContext dcContext = DcHelper.getContext(context);
-      ThreadRecord threadRecord = DcHelper.getThreadRecord(context, chatlistItem.summary, dcContext.getChat(chatlistItem.chatId));
-      root.bind(threadRecord, chatlistItem.msgId, chatlistItem.summary, glideRequests, selectedThreads, batchMode, query);
+      ThreadRecord threadRecord =
+          DcHelper.getThreadRecord(
+              context, chatlistItem.summary, dcContext.getChat(chatlistItem.chatId));
+      root.bind(
+          threadRecord,
+          chatlistItem.msgId,
+          chatlistItem.summary,
+          glideRequests,
+          selectedThreads,
+          batchMode,
+          query);
       root.setOnClickListener(view -> eventListener.onConversationClicked(chatlistItem));
-      root.setOnLongClickListener(view -> {
-        eventListener.onConversationLongClicked(chatlistItem);
-        return true;
-      });
+      root.setOnLongClickListener(
+          view -> {
+            eventListener.onConversationLongClicked(chatlistItem);
+            return true;
+          });
     }
 
-    void bind(@NonNull  DcContact     contactResult,
-              @NonNull  GlideRequests glideRequests,
-              @NonNull  EventListener eventListener,
-              @Nullable String        query)
-    {
+    void bind(
+        @NonNull DcContact contactResult,
+        @NonNull GlideRequests glideRequests,
+        @NonNull EventListener eventListener,
+        @Nullable String query) {
       root.bind(contactResult, glideRequests, query);
       root.setOnClickListener(view -> eventListener.onContactClicked(contactResult));
     }
 
-    void bind(@NonNull  DcMsg         messageResult,
-              @NonNull  GlideRequests glideRequests,
-              @NonNull  EventListener eventListener,
-              @Nullable String        query)
-    {
+    void bind(
+        @NonNull DcMsg messageResult,
+        @NonNull GlideRequests glideRequests,
+        @NonNull EventListener eventListener,
+        @Nullable String query) {
       root.bind(messageResult, glideRequests, query);
       root.setOnClickListener(view -> eventListener.onMessageClicked(messageResult));
     }

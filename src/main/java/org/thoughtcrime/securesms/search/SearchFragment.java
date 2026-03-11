@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.search;
 
-
 import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent;
 
 import android.content.res.Configuration;
@@ -10,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -18,14 +16,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
-
+import java.util.Set;
 import org.thoughtcrime.securesms.BaseConversationListAdapter;
 import org.thoughtcrime.securesms.BaseConversationListFragment;
 import org.thoughtcrime.securesms.ConversationListActivity;
@@ -36,22 +33,18 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 
-import java.util.Set;
-
-/**
- * A fragment that is displayed to do full-text search of messages, groups, and contacts.
- */
+/** A fragment that is displayed to do full-text search of messages, groups, and contacts. */
 public class SearchFragment extends BaseConversationListFragment
-        implements SearchListAdapter.EventListener, DcEventCenter.DcEventDelegate {
+    implements SearchListAdapter.EventListener, DcEventCenter.DcEventDelegate {
 
-  public static final String TAG          = "SearchFragment";
+  public static final String TAG = "SearchFragment";
 
-  private TextView               noResultsView;
+  private TextView noResultsView;
   private StickyHeaderDecoration listDecoration;
 
-  private SearchViewModel   viewModel;
+  private SearchViewModel viewModel;
   private SearchListAdapter listAdapter;
-  private String            pendingQuery;
+  private String pendingQuery;
 
   public static SearchFragment newInstance() {
     Bundle args = new Bundle();
@@ -66,7 +59,10 @@ public class SearchFragment extends BaseConversationListFragment
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    viewModel = ViewModelProviders.of(this, (ViewModelProvider.Factory) new SearchViewModel.Factory(requireContext())).get(SearchViewModel.class);
+    viewModel =
+        ViewModelProviders.of(
+                this, (ViewModelProvider.Factory) new SearchViewModel.Factory(requireContext()))
+            .get(SearchViewModel.class);
     DcEventCenter eventCenter = DcHelper.getEventCenter(requireContext());
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
@@ -85,7 +81,10 @@ public class SearchFragment extends BaseConversationListFragment
 
   @Nullable
   @Override
-  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+  public View onCreateView(
+      @NonNull LayoutInflater inflater,
+      @Nullable ViewGroup container,
+      @Nullable Bundle savedInstanceState) {
     return inflater.inflate(R.layout.fragment_search, container, false);
   }
 
@@ -93,9 +92,9 @@ public class SearchFragment extends BaseConversationListFragment
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     noResultsView = view.findViewById(R.id.search_no_results);
     RecyclerView listView = view.findViewById(R.id.search_list);
-    fab           = view.findViewById(R.id.fab);
+    fab = view.findViewById(R.id.fab);
 
-    listAdapter    = new SearchListAdapter(getContext(), GlideApp.with(this), this);
+    listAdapter = new SearchListAdapter(getContext(), GlideApp.with(this), this);
     listDecoration = new StickyHeaderDecoration(listAdapter, false, true);
 
     fab.setVisibility(View.GONE);
@@ -108,24 +107,29 @@ public class SearchFragment extends BaseConversationListFragment
   public void onStart() {
     super.onStart();
     viewModel.setForwardingMode(isRelayingMessageContent(getActivity()));
-    viewModel.getSearchResult().observe(this, result -> {
-      result = result != null ? result : SearchResult.EMPTY;
+    viewModel
+        .getSearchResult()
+        .observe(
+            this,
+            result -> {
+              result = result != null ? result : SearchResult.EMPTY;
 
-      listAdapter.updateResults(result);
-      listDecoration.invalidateLayouts();
+              listAdapter.updateResults(result);
+              listDecoration.invalidateLayouts();
 
-      if (result.isEmpty()) {
-        if (TextUtils.isEmpty(viewModel.getLastQuery().trim())) {
-          noResultsView.setVisibility(View.GONE);
-        } else {
-          noResultsView.setVisibility(View.VISIBLE);
-          noResultsView.setText(getString(R.string.search_no_result_for_x, viewModel.getLastQuery()));
-        }
-      } else {
-        noResultsView.setVisibility(View.VISIBLE);
-        noResultsView.setText("");
-      }
-    });
+              if (result.isEmpty()) {
+                if (TextUtils.isEmpty(viewModel.getLastQuery().trim())) {
+                  noResultsView.setVisibility(View.GONE);
+                } else {
+                  noResultsView.setVisibility(View.VISIBLE);
+                  noResultsView.setText(
+                      getString(R.string.search_no_result_for_x, viewModel.getLastQuery()));
+                }
+              } else {
+                noResultsView.setVisibility(View.VISIBLE);
+                noResultsView.setText("");
+              }
+            });
   }
 
   @Override
@@ -163,17 +167,19 @@ public class SearchFragment extends BaseConversationListFragment
     if (conversationList != null) {
       DcContext dcContext = DcHelper.getContext(requireContext());
       int chatId = dcContext.getChatIdByContactId(contact.getId());
-      if(chatId==0) {
+      if (chatId == 0) {
         new AlertDialog.Builder(requireContext())
             .setMessage(getString(R.string.ask_start_chat_with, contact.getDisplayName()))
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-              int chatId1 = dcContext.createChatByContactId(contact.getId());
-              conversationList.onCreateConversation(chatId1);
-            }).show();
-      }
-      else {
+            .setPositiveButton(
+                android.R.string.ok,
+                (dialog, which) -> {
+                  int chatId1 = dcContext.createChatByContactId(contact.getId());
+                  conversationList.onCreateConversation(chatId1);
+                })
+            .show();
+      } else {
         conversationList.onCreateConversation(chatId);
       }
     }
@@ -214,7 +220,7 @@ public class SearchFragment extends BaseConversationListFragment
     DcContext dcContext = DcHelper.getContext(requireActivity());
     final Set<Long> selectedChats = listAdapter.getBatchSelections();
     for (long chatId : selectedChats) {
-      DcChat dcChat = dcContext.getChat((int)chatId);
+      DcChat dcChat = dcContext.getChat((int) chatId);
       if (dcChat.getVisibility() != DcChat.DC_CHAT_VISIBILITY_ARCHIVED) {
         return true;
       }
