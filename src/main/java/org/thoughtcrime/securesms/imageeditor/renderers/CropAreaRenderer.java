@@ -6,40 +6,38 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.os.Parcel;
-
 import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.imageeditor.Bounds;
 import org.thoughtcrime.securesms.imageeditor.Renderer;
 import org.thoughtcrime.securesms.imageeditor.RendererContext;
 
 /**
- * Renders a box outside of the current crop area using {@link R.color#crop_area_renderer_outer_color}
- * and around the edge it renders the markers for the thumbs using {@link R.color#crop_area_renderer_edge_color},
- * {@link R.dimen#crop_area_renderer_edge_thickness} and {@link R.dimen#crop_area_renderer_edge_size}.
- * <p>
- * Hit tests outside of the bounds.
+ * Renders a box outside of the current crop area using {@link
+ * R.color#crop_area_renderer_outer_color} and around the edge it renders the markers for the thumbs
+ * using {@link R.color#crop_area_renderer_edge_color}, {@link
+ * R.dimen#crop_area_renderer_edge_thickness} and {@link R.dimen#crop_area_renderer_edge_size}.
+ *
+ * <p>Hit tests outside of the bounds.
  */
 public final class CropAreaRenderer implements Renderer {
 
-  @ColorRes
-  private final int     color;
+  @ColorRes private final int color;
   private final boolean renderCenterThumbs;
 
-  private final Path cropClipPath   = new Path();
+  private final Path cropClipPath = new Path();
   private final Path screenClipPath = new Path();
 
-  private final RectF dst   = new RectF();
+  private final RectF dst = new RectF();
   private final Paint paint = new Paint();
 
   @Override
   public void render(@NonNull RendererContext rendererContext) {
     rendererContext.save();
 
-    Canvas    canvas    = rendererContext.canvas;
+    Canvas canvas = rendererContext.canvas;
     Resources resources = rendererContext.context.getResources();
 
     canvas.clipPath(cropClipPath);
@@ -47,10 +45,16 @@ public final class CropAreaRenderer implements Renderer {
 
     rendererContext.mapRect(dst, Bounds.FULL_BOUNDS);
 
-    final int thickness = resources.getDimensionPixelSize(R.dimen.crop_area_renderer_edge_thickness);
-    final int size      = (int) Math.min(resources.getDimensionPixelSize(R.dimen.crop_area_renderer_edge_size), Math.min(dst.width(), dst.height()) / 3f - 10);
+    final int thickness =
+        resources.getDimensionPixelSize(R.dimen.crop_area_renderer_edge_thickness);
+    final int size =
+        (int)
+            Math.min(
+                resources.getDimensionPixelSize(R.dimen.crop_area_renderer_edge_size),
+                Math.min(dst.width(), dst.height()) / 3f - 10);
 
-    paint.setColor(ResourcesCompat.getColor(resources, R.color.crop_area_renderer_edge_color, null));
+    paint.setColor(
+        ResourcesCompat.getColor(resources, R.color.crop_area_renderer_edge_color, null));
 
     rendererContext.canvasMatrix.setToIdentity();
     screenClipPath.reset();
@@ -92,7 +96,7 @@ public final class CropAreaRenderer implements Renderer {
   }
 
   public CropAreaRenderer(@ColorRes int color, boolean renderCenterThumbs) {
-    this.color              = color;
+    this.color = color;
     this.renderCenterThumbs = renderCenterThumbs;
 
     cropClipPath.toggleInverseFillType();
@@ -109,18 +113,18 @@ public final class CropAreaRenderer implements Renderer {
     return !Bounds.contains(x, y);
   }
 
-  public static final Creator<CropAreaRenderer> CREATOR = new Creator<CropAreaRenderer>() {
-    @Override
-    public @NonNull CropAreaRenderer createFromParcel(@NonNull Parcel in) {
-      return new CropAreaRenderer(in.readInt(),
-                                  in.readByte() == 1);
-    }
+  public static final Creator<CropAreaRenderer> CREATOR =
+      new Creator<CropAreaRenderer>() {
+        @Override
+        public @NonNull CropAreaRenderer createFromParcel(@NonNull Parcel in) {
+          return new CropAreaRenderer(in.readInt(), in.readByte() == 1);
+        }
 
-    @Override
-    public @NonNull CropAreaRenderer[] newArray(int size) {
-      return new CropAreaRenderer[size];
-    }
-  };
+        @Override
+        public @NonNull CropAreaRenderer[] newArray(int size) {
+          return new CropAreaRenderer[size];
+        }
+      };
 
   @Override
   public void writeToParcel(Parcel dest, int flags) {
