@@ -4,3 +4,4 @@ splitMultiAttrs=true
 indentMultipleAttributes=true
 indentationChar=space
 indentationSize=4
+spaceBeforeEmptyCloseTag=true
