@@ -3,13 +3,8 @@ package org.thoughtcrime.securesms.imageeditor.model;
 import android.graphics.Matrix;
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import org.thoughtcrime.securesms.imageeditor.Renderer;
-import org.thoughtcrime.securesms.imageeditor.RendererContext;
-
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -17,65 +12,62 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import org.thoughtcrime.securesms.imageeditor.Renderer;
+import org.thoughtcrime.securesms.imageeditor.RendererContext;
 
 /**
  * An image consists of a tree of {@link EditorElement}s.
- * <p>
- * Each element has some persisted state:
- * - An optional {@link Renderer} so that it can draw itself.
- * - A list of child elements that make the tree possible.
- * - Its own transformation matrix, which applies to itself and all its children.
- * - A set of flags controlling visibility, selectablity etc.
- * <p>
- * Then some temporary state.
- * - A editor matrix for displaying as yet uncommitted edits.
- * - An animation matrix for animating from one matrix to another.
- * - Deleted children to allow them to fade out on delete.
- * - Temporary flags, for temporary visibility, selectablity etc.
+ *
+ * <p>Each element has some persisted state: - An optional {@link Renderer} so that it can draw
+ * itself. - A list of child elements that make the tree possible. - Its own transformation matrix,
+ * which applies to itself and all its children. - A set of flags controlling visibility,
+ * selectablity etc.
+ *
+ * <p>Then some temporary state. - A editor matrix for displaying as yet uncommitted edits. - An
+ * animation matrix for animating from one matrix to another. - Deleted children to allow them to
+ * fade out on delete. - Temporary flags, for temporary visibility, selectablity etc.
  */
 public final class EditorElement implements Parcelable {
 
-  private static final Comparator<EditorElement> Z_ORDER_COMPARATOR = (e1, e2) -> Integer.compare(e1.zOrder, e2.zOrder);
+  private static final Comparator<EditorElement> Z_ORDER_COMPARATOR =
+      (e1, e2) -> Integer.compare(e1.zOrder, e2.zOrder);
 
-  private final UUID        id;
+  private final UUID id;
   private final EditorFlags flags;
-  private final Matrix      localMatrix  = new Matrix();
-  private final Matrix      editorMatrix = new Matrix();
-  private final int         zOrder;
+  private final Matrix localMatrix = new Matrix();
+  private final Matrix editorMatrix = new Matrix();
+  private final int zOrder;
 
-  @Nullable
-  private final Renderer renderer;
+  @Nullable private final Renderer renderer;
 
   private final Matrix temp = new Matrix();
 
   private final Matrix tempMatrix = new Matrix();
 
-  private final List<EditorElement> children        = new LinkedList<>();
+  private final List<EditorElement> children = new LinkedList<>();
   private final List<EditorElement> deletedChildren = new LinkedList<>();
 
-  @NonNull
-  private AnimationMatrix animationMatrix = AnimationMatrix.NULL;
+  @NonNull private AnimationMatrix animationMatrix = AnimationMatrix.NULL;
 
-  @NonNull
-  private AlphaAnimation alphaAnimation = AlphaAnimation.NULL_1;
+  @NonNull private AlphaAnimation alphaAnimation = AlphaAnimation.NULL_1;
 
   public EditorElement(@Nullable Renderer renderer) {
     this(renderer, 0);
   }
 
   public EditorElement(@Nullable Renderer renderer, int zOrder) {
-    this.id       = UUID.randomUUID();
-    this.flags    = new EditorFlags();
+    this.id = UUID.randomUUID();
+    this.flags = new EditorFlags();
     this.renderer = renderer;
-    this.zOrder   = zOrder;
+    this.zOrder = zOrder;
   }
 
   private EditorElement(Parcel in) {
-    id       = ParcelUtils.readUUID(in);
-    flags    = new EditorFlags(in.readInt());
+    id = ParcelUtils.readUUID(in);
+    flags = new EditorFlags(in.readInt());
     ParcelUtils.readMatrix(localMatrix, in);
     renderer = in.readParcelable(Renderer.class.getClassLoader());
-    zOrder   = in.readInt();
+    zOrder = in.readInt();
     in.readTypedList(children, EditorElement.CREATOR);
   }
 
@@ -88,12 +80,12 @@ public final class EditorElement implements Parcelable {
   }
 
   /**
-   * Iff Visible,
-   * Renders tree with the following localMatrix:
-   * <p>
-   * viewModelMatrix * localMatrix * editorMatrix * animationMatrix
-   * <p>
-   * Child nodes are supplied with a viewModelMatrix' = viewModelMatrix * localMatrix * editorMatrix * animationMatrix
+   * Iff Visible, Renders tree with the following localMatrix:
+   *
+   * <p>viewModelMatrix * localMatrix * editorMatrix * animationMatrix
+   *
+   * <p>Child nodes are supplied with a viewModelMatrix' = viewModelMatrix * localMatrix *
+   * editorMatrix * animationMatrix
    *
    * @param rendererContext Canvas to draw on to.
    */
@@ -132,7 +124,8 @@ public final class EditorElement implements Parcelable {
     renderer.render(rendererContext);
   }
 
-  private static void drawChildren(@NonNull List<EditorElement> children, @NonNull RendererContext rendererContext) {
+  private static void drawChildren(
+      @NonNull List<EditorElement> children, @NonNull RendererContext rendererContext) {
     for (EditorElement element : children) {
       if (element.zOrder >= 0) {
         element.draw(rendererContext);
@@ -153,23 +146,34 @@ public final class EditorElement implements Parcelable {
     return editorMatrix;
   }
 
-  EditorElement findElement(@NonNull EditorElement toFind, @NonNull Matrix viewMatrix, @NonNull Matrix outInverseModelMatrix) {
-    return findElement(viewMatrix, outInverseModelMatrix, (element, inverseMatrix) -> toFind == element);
+  EditorElement findElement(
+      @NonNull EditorElement toFind,
+      @NonNull Matrix viewMatrix,
+      @NonNull Matrix outInverseModelMatrix) {
+    return findElement(
+        viewMatrix, outInverseModelMatrix, (element, inverseMatrix) -> toFind == element);
   }
 
-  EditorElement findElementAt(float x, float y, @NonNull Matrix viewModelMatrix, @NonNull Matrix outInverseModelMatrix) {
+  EditorElement findElementAt(
+      float x, float y, @NonNull Matrix viewModelMatrix, @NonNull Matrix outInverseModelMatrix) {
     final float[] dst = new float[2];
-    final float[] src = { x, y };
+    final float[] src = {x, y};
 
-    return findElement(viewModelMatrix, outInverseModelMatrix, (element, inverseMatrix) -> {
-      Renderer renderer = element.renderer;
-      if (renderer == null) return false;
-      inverseMatrix.mapPoints(dst, src);
-      return element.flags.isSelectable() && renderer.hitTest(dst[0], dst[1]);
-    });
+    return findElement(
+        viewModelMatrix,
+        outInverseModelMatrix,
+        (element, inverseMatrix) -> {
+          Renderer renderer = element.renderer;
+          if (renderer == null) return false;
+          inverseMatrix.mapPoints(dst, src);
+          return element.flags.isSelectable() && renderer.hitTest(dst[0], dst[1]);
+        });
   }
 
-  public EditorElement findElement(@NonNull Matrix viewModelMatrix, @NonNull Matrix outInverseModelMatrix, @NonNull FindElementPredicate predicate) {
+  public EditorElement findElement(
+      @NonNull Matrix viewModelMatrix,
+      @NonNull Matrix outInverseModelMatrix,
+      @NonNull FindElementPredicate predicate) {
     temp.set(viewModelMatrix);
 
     temp.preConcat(localMatrix);
@@ -178,7 +182,8 @@ public final class EditorElement implements Parcelable {
     if (temp.invert(tempMatrix)) {
 
       for (int i = children.size() - 1; i >= 0; i--) {
-        EditorElement elementAt = children.get(i).findElement(temp, outInverseModelMatrix, predicate);
+        EditorElement elementAt =
+            children.get(i).findElement(temp, outInverseModelMatrix, predicate);
         if (elementAt != null) {
           return elementAt;
         }
@@ -235,7 +240,8 @@ public final class EditorElement implements Parcelable {
     alphaAnimation = AlphaAnimation.animate(0, 1, invalidate);
   }
 
-  @Nullable EditorElement parentOf(@NonNull EditorElement element) {
+  @Nullable
+  EditorElement parentOf(@NonNull EditorElement element) {
     if (children.contains(element)) {
       return this;
     }
@@ -304,10 +310,11 @@ public final class EditorElement implements Parcelable {
 
   /**
    * @param destination Matrix to change
-   * @param source      Matrix value to set
-   * @param invalidate  Callback to allow animation
+   * @param source Matrix value to set
+   * @param invalidate Callback to allow animation
    */
-  private void setMatrixWithAnimation(@NonNull Matrix destination, @NonNull Matrix source, @Nullable Runnable invalidate) {
+  private void setMatrixWithAnimation(
+      @NonNull Matrix destination, @NonNull Matrix source, @Nullable Runnable invalidate) {
     Matrix old = new Matrix(destination);
     animationMatrix.stop();
     animationMatrix.preConcatValueTo(old);
@@ -325,17 +332,18 @@ public final class EditorElement implements Parcelable {
     animationMatrix.stop();
   }
 
-  public static final Creator<EditorElement> CREATOR = new Creator<EditorElement>() {
-    @Override
-    public EditorElement createFromParcel(Parcel in) {
-      return new EditorElement(in);
-    }
+  public static final Creator<EditorElement> CREATOR =
+      new Creator<EditorElement>() {
+        @Override
+        public EditorElement createFromParcel(Parcel in) {
+          return new EditorElement(in);
+        }
 
-    @Override
-    public EditorElement[] newArray(int size) {
-      return new EditorElement[size];
-    }
-  };
+        @Override
+        public EditorElement[] newArray(int size) {
+          return new EditorElement[size];
+        }
+      };
 
   @Override
   public int describeContents() {

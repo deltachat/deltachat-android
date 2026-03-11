@@ -3,28 +3,27 @@ package org.thoughtcrime.securesms.imageeditor;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.RectF;
-
 import androidx.annotation.NonNull;
 
 /**
  * Tracks the current matrix for a canvas.
- * <p>
- * This is because you cannot reliably call {@link Canvas#setMatrix(Matrix)}.
- * {@link Canvas#getMatrix()} provides this hint in its documentation:
- * "track relevant transform state outside of the canvas."
- * <p>
- * To achieve this, any changes to the canvas matrix must be done via this class, including save and
- * restore operations where the matrix was altered in between.
+ *
+ * <p>This is because you cannot reliably call {@link Canvas#setMatrix(Matrix)}. {@link
+ * Canvas#getMatrix()} provides this hint in its documentation: "track relevant transform state
+ * outside of the canvas."
+ *
+ * <p>To achieve this, any changes to the canvas matrix must be done via this class, including save
+ * and restore operations where the matrix was altered in between.
  */
 public final class CanvasMatrix {
 
-  private final static int STACK_HEIGHT_LIMIT = 16;
+  private static final int STACK_HEIGHT_LIMIT = 16;
 
-  private final Canvas   canvas;
-  private final Matrix   canvasMatrix   = new Matrix();
-  private final Matrix   temp           = new Matrix();
-  private final Matrix[] stack          = new Matrix[STACK_HEIGHT_LIMIT];
-  private       int      stackHeight;
+  private final Canvas canvas;
+  private final Matrix canvasMatrix = new Matrix();
+  private final Matrix temp = new Matrix();
+  private final Matrix[] stack = new Matrix[STACK_HEIGHT_LIMIT];
+  private int stackHeight;
 
   CanvasMatrix(Canvas canvas) {
     this.canvas = canvas;

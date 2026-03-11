@@ -4,19 +4,20 @@ import androidx.annotation.NonNull;
 
 /**
  * Flags for an {@link EditorElement}.
- * <p>
- * Values you set are not persisted unless you call {@link #persist()}.
- * <p>
- * This allows temporary state for editing and an easy way to revert to the persisted state via {@link #reset()}.
+ *
+ * <p>Values you set are not persisted unless you call {@link #persist()}.
+ *
+ * <p>This allows temporary state for editing and an easy way to revert to the persisted state via
+ * {@link #reset()}.
  */
 public final class EditorFlags {
 
-  private static final int ASPECT_LOCK      = 1;
-  private static final int ROTATE_LOCK      = 2;
-  private static final int SELECTABLE       = 4;
-  private static final int VISIBLE          = 8;
+  private static final int ASPECT_LOCK = 1;
+  private static final int ROTATE_LOCK = 2;
+  private static final int SELECTABLE = 4;
+  private static final int VISIBLE = 8;
   private static final int CHILDREN_VISIBLE = 16;
-  private static final int EDITABLE         = 32;
+  private static final int EDITABLE = 32;
 
   private int flags;
   private int markedFlags;

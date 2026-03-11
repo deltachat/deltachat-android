@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 
 final class InBoundsMemory {
 
-  private final Matrix lastGoodUserCrop  = new Matrix();
+  private final Matrix lastGoodUserCrop = new Matrix();
   private final Matrix lastGoodMainImage = new Matrix();
 
   void push(@Nullable EditorElement mainImage, @NonNull EditorElement userCrop) {
@@ -21,7 +21,10 @@ final class InBoundsMemory {
     lastGoodUserCrop.preConcat(userCrop.getEditorMatrix());
   }
 
-  void restore(@Nullable EditorElement mainImage, @NonNull EditorElement cropEditorElement, @Nullable Runnable invalidate) {
+  void restore(
+      @Nullable EditorElement mainImage,
+      @NonNull EditorElement cropEditorElement,
+      @Nullable Runnable invalidate) {
     if (mainImage != null) {
       mainImage.animateLocalTo(lastGoodMainImage, invalidate);
     }

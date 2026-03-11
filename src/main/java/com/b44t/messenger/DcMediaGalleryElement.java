@@ -1,14 +1,14 @@
 package com.b44t.messenger;
 
-/**
- * Contains a list of media entries, their respective positions and ability to move through it.
- */
+/** Contains a list of media entries, their respective positions and ability to move through it. */
 public class DcMediaGalleryElement {
 
   final int[] mediaMsgs;
   int position;
   final DcContext context;
-  public DcMediaGalleryElement(int[] mediaMsgs, int position, DcContext context, boolean leftIsRecent) {
+
+  public DcMediaGalleryElement(
+      int[] mediaMsgs, int position, DcContext context, boolean leftIsRecent) {
     this.mediaMsgs = mediaMsgs;
     this.position = position;
     this.context = context;
@@ -33,7 +33,7 @@ public class DcMediaGalleryElement {
   }
 
   public void moveToPosition(int newPosition) {
-    if(newPosition < 0 || newPosition >= mediaMsgs.length)
+    if (newPosition < 0 || newPosition >= mediaMsgs.length)
       throw new IllegalArgumentException("can't move outside of known area.");
     position = newPosition;
   }

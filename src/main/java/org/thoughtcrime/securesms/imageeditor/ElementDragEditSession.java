@@ -2,9 +2,7 @@ package org.thoughtcrime.securesms.imageeditor;
 
 import android.graphics.Matrix;
 import android.graphics.PointF;
-
 import androidx.annotation.NonNull;
-
 import org.thoughtcrime.securesms.imageeditor.model.EditorElement;
 
 final class ElementDragEditSession extends ElementEditSession {
@@ -13,10 +11,14 @@ final class ElementDragEditSession extends ElementEditSession {
     super(selected, inverseMatrix);
   }
 
-  static ElementDragEditSession startDrag(@NonNull EditorElement selected, @NonNull Matrix inverseViewModelMatrix, @NonNull PointF point) {
+  static ElementDragEditSession startDrag(
+      @NonNull EditorElement selected,
+      @NonNull Matrix inverseViewModelMatrix,
+      @NonNull PointF point) {
     if (!selected.getFlags().isEditable()) return null;
 
-    ElementDragEditSession elementDragEditSession = new ElementDragEditSession(selected, inverseViewModelMatrix);
+    ElementDragEditSession elementDragEditSession =
+        new ElementDragEditSession(selected, inverseViewModelMatrix);
     elementDragEditSession.setScreenStartPoint(0, point);
     elementDragEditSession.setScreenEndPoint(0, point);
 
@@ -27,8 +29,11 @@ final class ElementDragEditSession extends ElementEditSession {
   public void movePoint(int p, @NonNull PointF point) {
     setScreenEndPoint(p, point);
 
-    selected.getEditorMatrix()
-            .setTranslate(endPointElement[0].x - startPointElement[0].x, endPointElement[0].y - startPointElement[0].y);
+    selected
+        .getEditorMatrix()
+        .setTranslate(
+            endPointElement[0].x - startPointElement[0].x,
+            endPointElement[0].y - startPointElement[0].y);
   }
 
   @Override
