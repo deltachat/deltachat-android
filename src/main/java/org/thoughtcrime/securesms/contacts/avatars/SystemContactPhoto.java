@@ -1,34 +1,32 @@
 package org.thoughtcrime.securesms.contacts.avatars;
 
-
 import android.content.Context;
 import android.net.Uri;
 import android.provider.ContactsContract;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.util.Conversions;
-
 import java.io.InputStream;
 import java.security.MessageDigest;
+import org.thoughtcrime.securesms.database.Address;
+import org.thoughtcrime.securesms.util.Conversions;
 
 public class SystemContactPhoto implements ContactPhoto {
 
   private final @NonNull Address address;
-  private final @NonNull Uri     contactPhotoUri;
-  private final          long    lastModifiedTime;
+  private final @NonNull Uri contactPhotoUri;
+  private final long lastModifiedTime;
 
-  public SystemContactPhoto(@NonNull Address address, @NonNull Uri contactPhotoUri, long lastModifiedTime) {
-    this.address          = address;
-    this.contactPhotoUri  = contactPhotoUri;
+  public SystemContactPhoto(
+      @NonNull Address address, @NonNull Uri contactPhotoUri, long lastModifiedTime) {
+    this.address = address;
+    this.contactPhotoUri = contactPhotoUri;
     this.lastModifiedTime = lastModifiedTime;
   }
 
   @Override
-  public InputStream openInputStream(Context context)  {
-    return ContactsContract.Contacts.openContactPhotoInputStream(context.getContentResolver(), contactPhotoUri, true);
+  public InputStream openInputStream(Context context) {
+    return ContactsContract.Contacts.openContactPhotoInputStream(
+        context.getContentResolver(), contactPhotoUri, true);
   }
 
   @Nullable
@@ -53,14 +51,15 @@ public class SystemContactPhoto implements ContactPhoto {
   public boolean equals(Object other) {
     if (other == null || !(other instanceof SystemContactPhoto)) return false;
 
-    SystemContactPhoto that = (SystemContactPhoto)other;
+    SystemContactPhoto that = (SystemContactPhoto) other;
 
-    return this.address.equals(that.address) && this.contactPhotoUri.equals(that.contactPhotoUri) && this.lastModifiedTime == that.lastModifiedTime;
+    return this.address.equals(that.address)
+        && this.contactPhotoUri.equals(that.contactPhotoUri)
+        && this.lastModifiedTime == that.lastModifiedTime;
   }
 
   @Override
   public int hashCode() {
-    return address.hashCode() ^ contactPhotoUri.hashCode() ^ (int)lastModifiedTime;
+    return address.hashCode() ^ contactPhotoUri.hashCode() ^ (int) lastModifiedTime;
   }
-
 }

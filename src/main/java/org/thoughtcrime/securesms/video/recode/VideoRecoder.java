@@ -6,9 +6,7 @@ import android.media.MediaCodecInfo;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.util.Log;
-
 import androidx.appcompat.app.AlertDialog;
-
 import com.b44t.messenger.DcMsg;
 import com.coremedia.iso.IsoFile;
 import com.coremedia.iso.boxes.Box;
@@ -19,20 +17,18 @@ import com.coremedia.iso.boxes.TrackBox;
 import com.coremedia.iso.boxes.TrackHeaderBox;
 import com.googlecode.mp4parser.util.Matrix;
 import com.googlecode.mp4parser.util.Path;
-
-import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.Util;
-
 import java.io.File;
 import java.nio.ByteBuffer;
 import java.util.List;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Util;
 
 public class VideoRecoder {
 
   private static final String TAG = VideoRecoder.class.getSimpleName();
 
-  private final static String MIME_TYPE = "video/avc";
+  private static final String MIME_TYPE = "video/avc";
   private final boolean cancelCurrentVideoConversion = false;
   private final Object videoConvertSync = new Object();
 
@@ -64,7 +60,15 @@ public class VideoRecoder {
     return -5;
   }
 
-  private long readAndWriteTrack(MediaExtractor extractor, MP4Builder mediaMuxer, MediaCodec.BufferInfo info, long start, long end, File file, boolean isAudio) throws Exception {
+  private long readAndWriteTrack(
+      MediaExtractor extractor,
+      MP4Builder mediaMuxer,
+      MediaCodec.BufferInfo info,
+      long start,
+      long end,
+      File file,
+      boolean isAudio)
+      throws Exception {
     int trackIndex = selectTrack(extractor, isAudio);
     if (trackIndex >= 0) {
       extractor.selectTrack(trackIndex);
@@ -106,7 +110,7 @@ public class VideoRecoder {
                 info.offset = 0;
                 info.flags = extractor.getSampleFlags();
                 if (mediaMuxer.writeSampleData(muxerTrackIndex, buffer, info, isAudio)) {
-                  //didWriteData(messageObject, file, false, false);
+                  // didWriteData(messageObject, file, false, false);
                 }
               }
               lastTimestamp = info.presentationTimeUs;
@@ -166,7 +170,7 @@ public class VideoRecoder {
 
     File inputFile = new File(videoEditedInfo.originalPath);
     if (!inputFile.canRead()) {
-      //didWriteData(messageObject, cacheFile, true, true);
+      // didWriteData(messageObject, cacheFile, true, true);
       Log.w(TAG, "Could not read video file to be recoded");
       return false;
     }
@@ -192,7 +196,10 @@ public class VideoRecoder {
 
         checkConversionCanceled();
 
-        if (resultVideoBitrate<originalVideoBitrate || resultWidth != originalWidth || resultHeight != originalHeight || rotateRender != 0) {
+        if (resultVideoBitrate < originalVideoBitrate
+            || resultWidth != originalWidth
+            || resultHeight != originalHeight
+            || rotateRender != 0) {
           int videoIndex;
           videoIndex = selectTrack(extractor, false);
           if (videoIndex >= 0) {
@@ -210,7 +217,7 @@ public class VideoRecoder {
 
               int colorFormat;
               colorFormat = MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface;
-              //Log.i("DeltaChat", "colorFormat = " + colorFormat);
+              // Log.i("DeltaChat", "colorFormat = " + colorFormat);
 
               extractor.selectTrack(videoIndex);
               if (startTime > 0) {
@@ -220,9 +227,11 @@ public class VideoRecoder {
               }
               MediaFormat inputFormat = extractor.getTrackFormat(videoIndex);
 
-              MediaFormat outputFormat = MediaFormat.createVideoFormat(MIME_TYPE, resultWidth, resultHeight);
+              MediaFormat outputFormat =
+                  MediaFormat.createVideoFormat(MIME_TYPE, resultWidth, resultHeight);
               outputFormat.setInteger(MediaFormat.KEY_COLOR_FORMAT, colorFormat);
-              outputFormat.setInteger(MediaFormat.KEY_BIT_RATE, resultVideoBitrate != 0 ? resultVideoBitrate : 921600);
+              outputFormat.setInteger(
+                  MediaFormat.KEY_BIT_RATE, resultVideoBitrate != 0 ? resultVideoBitrate : 921600);
               outputFormat.setInteger(MediaFormat.KEY_FRAME_RATE, 25);
               outputFormat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 10);
 
@@ -255,10 +264,12 @@ public class VideoRecoder {
                       inputBuf = decoder.getInputBuffer(inputBufIndex);
                       int chunkSize = extractor.readSampleData(inputBuf, 0);
                       if (chunkSize < 0) {
-                        decoder.queueInputBuffer(inputBufIndex, 0, 0, 0L, MediaCodec.BUFFER_FLAG_END_OF_STREAM);
+                        decoder.queueInputBuffer(
+                            inputBufIndex, 0, 0, 0L, MediaCodec.BUFFER_FLAG_END_OF_STREAM);
                         inputDone = true;
                       } else {
-                        decoder.queueInputBuffer(inputBufIndex, 0, chunkSize, extractor.getSampleTime(), 0);
+                        decoder.queueInputBuffer(
+                            inputBufIndex, 0, chunkSize, extractor.getSampleTime(), 0);
                         extractor.advance();
                       }
                     }
@@ -268,7 +279,8 @@ public class VideoRecoder {
                   if (eof) {
                     int inputBufIndex = decoder.dequeueInputBuffer(TIMEOUT_USEC);
                     if (inputBufIndex >= 0) {
-                      decoder.queueInputBuffer(inputBufIndex, 0, 0, 0L, MediaCodec.BUFFER_FLAG_END_OF_STREAM);
+                      decoder.queueInputBuffer(
+                          inputBufIndex, 0, 0, 0L, MediaCodec.BUFFER_FLAG_END_OF_STREAM);
                       inputDone = true;
                     }
                   }
@@ -288,17 +300,19 @@ public class VideoRecoder {
                       videoTrackIndex = mediaMuxer.addTrack(newFormat, false);
                     }
                   } else if (encoderStatus < 0) {
-                    throw new RuntimeException("unexpected result from encoder.dequeueOutputBuffer: " + encoderStatus);
+                    throw new RuntimeException(
+                        "unexpected result from encoder.dequeueOutputBuffer: " + encoderStatus);
                   } else {
                     ByteBuffer encodedData;
                     encodedData = encoder.getOutputBuffer(encoderStatus);
                     if (encodedData == null) {
-                      throw new RuntimeException("encoderOutputBuffer " + encoderStatus + " was null");
+                      throw new RuntimeException(
+                          "encoderOutputBuffer " + encoderStatus + " was null");
                     }
                     if (info.size > 1) {
                       if ((info.flags & MediaCodec.BUFFER_FLAG_CODEC_CONFIG) == 0) {
                         if (mediaMuxer.writeSampleData(videoTrackIndex, encodedData, info, false)) {
-                          //didWriteData(messageObject, cacheFile, false, false);
+                          // didWriteData(messageObject, cacheFile, false, false);
                         }
                       } else if (videoTrackIndex == -5) {
                         byte[] csd = new byte[info.size];
@@ -309,7 +323,10 @@ public class VideoRecoder {
                         ByteBuffer pps = null;
                         for (int a = info.size - 1; a >= 0; a--) {
                           if (a > 3) {
-                            if (csd[a] == 1 && csd[a - 1] == 0 && csd[a - 2] == 0 && csd[a - 3] == 0) {
+                            if (csd[a] == 1
+                                && csd[a - 1] == 0
+                                && csd[a - 2] == 0
+                                && csd[a - 3] == 0) {
                               sps = ByteBuffer.allocate(a - 3);
                               pps = ByteBuffer.allocate(info.size - (a - 3));
                               sps.put(csd, 0, a - 3).position(0);
@@ -321,7 +338,8 @@ public class VideoRecoder {
                           }
                         }
 
-                        MediaFormat newFormat = MediaFormat.createVideoFormat(MIME_TYPE, resultWidth, resultHeight);
+                        MediaFormat newFormat =
+                            MediaFormat.createVideoFormat(MIME_TYPE, resultWidth, resultHeight);
                         if (sps != null && pps != null) {
                           newFormat.setByteBuffer("csd-0", sps);
                           newFormat.setByteBuffer("csd-1", pps);
@@ -344,9 +362,10 @@ public class VideoRecoder {
 
                     } else if (decoderStatus == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) {
                       MediaFormat newFormat = decoder.getOutputFormat();
-                      //Log.i("DeltaChat", "newFormat = " + newFormat);
+                      // Log.i("DeltaChat", "newFormat = " + newFormat);
                     } else if (decoderStatus < 0) {
-                      throw new RuntimeException("unexpected result from decoder.dequeueOutputBuffer: " + decoderStatus);
+                      throw new RuntimeException(
+                          "unexpected result from decoder.dequeueOutputBuffer: " + decoderStatus);
                     } else {
                       boolean doRender;
                       doRender = info.size != 0;
@@ -359,7 +378,8 @@ public class VideoRecoder {
                       if (startTime > 0 && videoTime == -1) {
                         if (info.presentationTimeUs < startTime) {
                           doRender = false;
-                          //Log.i("DeltaChat", "drop frame startTime = " + startTime + " present time = " + info.presentationTimeUs);
+                          // Log.i("DeltaChat", "drop frame startTime = " + startTime + " present
+                          // time = " + info.presentationTimeUs);
                         } else {
                           videoTime = info.presentationTimeUs;
                         }
@@ -381,7 +401,7 @@ public class VideoRecoder {
                       }
                       if ((info.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
                         decoderOutputAvailable = false;
-                        //Log.i("DeltaChat", "decoder stream end");
+                        // Log.i("DeltaChat", "decoder stream end");
                         encoder.signalEndOfInputStream();
                       }
                     }
@@ -392,7 +412,7 @@ public class VideoRecoder {
                 videoStartTime = videoTime;
               }
             } catch (Exception e) {
-              Log.w(TAG,"Recoding video failed unexpectedly", e);
+              Log.w(TAG, "Recoding video failed unexpectedly", e);
               error = true;
             }
 
@@ -416,7 +436,8 @@ public class VideoRecoder {
             checkConversionCanceled();
           }
         } else {
-          long videoTime = readAndWriteTrack(extractor, mediaMuxer, info, startTime, endTime, cacheFile, false);
+          long videoTime =
+              readAndWriteTrack(extractor, mediaMuxer, info, startTime, endTime, cacheFile, false);
           if (videoTime != -1) {
             videoStartTime = videoTime;
           }
@@ -425,7 +446,7 @@ public class VideoRecoder {
           readAndWriteTrack(extractor, mediaMuxer, info, videoStartTime, endTime, cacheFile, true);
         }
       } catch (Exception e) {
-        Log.w(TAG,"Recoding video failed unexpectedly/2", e);
+        Log.w(TAG, "Recoding video failed unexpectedly/2", e);
         error = true;
       } finally {
         if (extractor != null) {
@@ -435,38 +456,38 @@ public class VideoRecoder {
           try {
             mediaMuxer.finishMovie(false);
           } catch (Exception e) {
-            Log.w(TAG,"Flushing video failed unexpectedly", e);
+            Log.w(TAG, "Flushing video failed unexpectedly", e);
           }
         }
-        //Log.i("DeltaChat", "time = " + (System.currentTimeMillis() - time));
+        // Log.i("DeltaChat", "time = " + (System.currentTimeMillis() - time));
       }
     } else {
-      //didWriteData(messageObject, cacheFile, true, true);
-      Log.w(TAG,"Video width or height are 0, refusing recode.");
+      // didWriteData(messageObject, cacheFile, true, true);
+      Log.w(TAG, "Video width or height are 0, refusing recode.");
       return false;
     }
-    //didWriteData(messageObject, cacheFile, true, error);
+    // didWriteData(messageObject, cacheFile, true, error);
     return true;
   }
 
   private static class VideoEditedInfo {
     String originalPath;
-    float  originalDurationMs;
-    long   originalAudioBytes;
-    int    originalRotationValue;
-    int    originalWidth;
-    int    originalHeight;
-    int    originalVideoBitrate;
+    float originalDurationMs;
+    long originalAudioBytes;
+    int originalRotationValue;
+    int originalWidth;
+    int originalHeight;
+    int originalVideoBitrate;
 
-    long   startTime;
-    long   endTime;
-    int    rotationValue;
+    long startTime;
+    long endTime;
+    int rotationValue;
 
-    int    resultWidth;
-    int    resultHeight;
-    int    resultVideoBitrate;
+    int resultWidth;
+    int resultHeight;
+    int resultVideoBitrate;
 
-    int    estimatedBytes;
+    int estimatedBytes;
   }
 
   private static VideoEditedInfo getVideoEditInfoFromFile(String videoPath) {
@@ -492,11 +513,13 @@ public class VideoRecoder {
         try {
           MediaBox mediaBox = trackBox.getMediaBox();
           MediaHeaderBox mediaHeaderBox = mediaBox.getMediaHeaderBox();
-          SampleSizeBox sampleSizeBox = mediaBox.getMediaInformationBox().getSampleTableBox().getSampleSizeBox();
+          SampleSizeBox sampleSizeBox =
+              mediaBox.getMediaInformationBox().getSampleTableBox().getSampleSizeBox();
           for (long size : sampleSizeBox.getSampleSizes()) {
             sampleSizes += size;
           }
-          float originalVideoSeconds = (float) mediaHeaderBox.getDuration() / (float) mediaHeaderBox.getTimescale();
+          float originalVideoSeconds =
+              (float) mediaHeaderBox.getDuration() / (float) mediaHeaderBox.getTimescale();
           trackBitrate = (int) (sampleSizes * 8 / originalVideoSeconds);
           vei.originalDurationMs = originalVideoSeconds * 1000;
         } catch (Exception e) {
@@ -534,20 +557,22 @@ public class VideoRecoder {
     return vei;
   }
 
-  private static int calculateEstimatedSize(float timeDelta, int resultBitrate, float originalDurationMs, long originalAudioBytes) {
-    long videoFramesSize = (long) (resultBitrate / 8 * (originalDurationMs /1000));
+  private static int calculateEstimatedSize(
+      float timeDelta, int resultBitrate, float originalDurationMs, long originalAudioBytes) {
+    long videoFramesSize = (long) (resultBitrate / 8 * (originalDurationMs / 1000));
     int size = (int) ((originalAudioBytes + videoFramesSize) * timeDelta);
     return size;
   }
 
-  private static void alert(Context context, String str)
-  {
+  private static void alert(Context context, String str) {
     Log.e(TAG, str);
-    Util.runOnMain(() -> new AlertDialog.Builder(context)
-      .setCancelable(false)
-      .setMessage(str)
-      .setPositiveButton(android.R.string.ok, null)
-      .show());
+    Util.runOnMain(
+        () ->
+            new AlertDialog.Builder(context)
+                .setCancelable(false)
+                .setMessage(str)
+                .setPositiveButton(android.R.string.ok, null)
+                .show());
   }
 
   // prepareVideo() assumes the msg object is set up properly to being sent;
@@ -555,7 +580,8 @@ public class VideoRecoder {
   // return: true=video might be prepared, can be sent, false=error
   public static boolean prepareVideo(Context context, int chatId, DcMsg msg) {
     final long MAX_BYTES = DcHelper.getInt(context, "sys.msgsize_max_recommended");
-    final String TOO_BIG_FILE = "Video cannot be compressed to a reasonable size. Try a shorter video or a lower quality.";
+    final String TOO_BIG_FILE =
+        "Video cannot be compressed to a reasonable size. Try a shorter video or a lower quality.";
     try {
       String inPath = msg.getFile();
       Log.i(TAG, "Preparing video: " + inPath);
@@ -564,7 +590,7 @@ public class VideoRecoder {
       VideoEditedInfo vei = getVideoEditInfoFromFile(inPath);
       if (vei == null) {
         Log.w(TAG, String.format("Recoding failed for %s: cannot get info", inPath));
-        if (msg.getFilebytes() > MAX_BYTES+MAX_BYTES/4) {
+        if (msg.getFilebytes() > MAX_BYTES + MAX_BYTES / 4) {
           alert(context, TOO_BIG_FILE);
           return false;
         }
@@ -582,19 +608,27 @@ public class VideoRecoder {
       } else {
         msg.setDimension(vei.originalWidth, vei.originalHeight);
       }
-      msg.setDuration((int)vei.originalDurationMs);
+      msg.setDuration((int) vei.originalDurationMs);
 
       // check if video bitrate is already reasonable
-      final int  MAX_KBPS = 1500000;
+      final int MAX_KBPS = 1500000;
       long inBytes = new File(inPath).length();
-      if (inBytes > 0 && inBytes <= MAX_BYTES && vei.originalVideoBitrate <= MAX_KBPS*2 /*be tolerant as long the file size matches*/) {
-        Log.i(TAG, String.format("recoding for %s is not needed, %d bytes and %d kbps are ok", inPath, inBytes, vei.originalVideoBitrate));
+      if (inBytes > 0
+          && inBytes <= MAX_BYTES
+          && vei.originalVideoBitrate
+              <= MAX_KBPS * 2 /*be tolerant as long the file size matches*/) {
+        Log.i(
+            TAG,
+            String.format(
+                "recoding for %s is not needed, %d bytes and %d kbps are ok",
+                inPath, inBytes, vei.originalVideoBitrate));
         return true;
       }
 
       // calculate new video bitrate, sth. between 200 kbps and 1500 kbps
       long resultDurationMs = (long) vei.originalDurationMs;
-      long maxVideoBytes = MAX_BYTES - vei.originalAudioBytes - resultDurationMs /*10 kbps codec overhead*/;
+      long maxVideoBytes =
+          MAX_BYTES - vei.originalAudioBytes - resultDurationMs /*10 kbps codec overhead*/;
       vei.resultVideoBitrate = (int) (maxVideoBytes / Math.max(1, resultDurationMs / 1000) * 8);
 
       if (vei.resultVideoBitrate < 200000) {
@@ -615,7 +649,10 @@ public class VideoRecoder {
       vei.resultWidth = vei.originalWidth;
       vei.resultHeight = vei.originalHeight;
       if (vei.resultWidth > maxSide || vei.resultHeight > maxSide) {
-        float scale = vei.resultWidth > vei.resultHeight ? (float) maxSide / vei.resultWidth : (float) maxSide / vei.resultHeight;
+        float scale =
+            vei.resultWidth > vei.resultHeight
+                ? (float) maxSide / vei.resultWidth
+                : (float) maxSide / vei.resultHeight;
         vei.resultWidth *= scale;
         vei.resultHeight *= scale;
       }
@@ -629,10 +666,14 @@ public class VideoRecoder {
       msg.setDuration((int) resultDurationMs);
 
       // calculate bytes
-      vei.estimatedBytes = VideoRecoder.calculateEstimatedSize((float) resultDurationMs / vei.originalDurationMs,
-          vei.resultVideoBitrate, vei.originalDurationMs, vei.originalAudioBytes);
+      vei.estimatedBytes =
+          VideoRecoder.calculateEstimatedSize(
+              (float) resultDurationMs / vei.originalDurationMs,
+              vei.resultVideoBitrate,
+              vei.originalDurationMs,
+              vei.originalAudioBytes);
 
-      if (vei.estimatedBytes > MAX_BYTES+MAX_BYTES/4) {
+      if (vei.estimatedBytes > MAX_BYTES + MAX_BYTES / 4) {
         alert(context, TOO_BIG_FILE);
         return false;
       }
@@ -641,15 +682,17 @@ public class VideoRecoder {
       String tempPath = DcHelper.getBlobdirFile(DcHelper.getContext(context), inPath);
       VideoRecoder videoRecoder = new VideoRecoder();
       if (!videoRecoder.convertVideo(vei, tempPath)) {
-        alert(context, String.format("Recoding failed for %s: cannot convert to temporary file %s", inPath, tempPath));
+        alert(
+            context,
+            String.format(
+                "Recoding failed for %s: cannot convert to temporary file %s", inPath, tempPath));
         return false;
       }
 
       msg.setFileAndDeduplicate(tempPath, msg.getFilename(), msg.getFilemime());
 
       Log.i(TAG, String.format("recoding for %s done", inPath));
-    }
-    catch(Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
 

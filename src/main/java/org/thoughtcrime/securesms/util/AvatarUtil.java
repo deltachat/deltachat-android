@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.Base64;
-
 import java.io.ByteArrayOutputStream;
 
 public class AvatarUtil {
@@ -47,5 +46,4 @@ public class AvatarUtil {
     String base64 = Base64.encodeToString(bytes, Base64.NO_WRAP);
     return "data:image/jpeg;base64," + base64;
   }
-
 }

@@ -20,53 +20,51 @@ package org.thoughtcrime.securesms.database.model;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.b44t.messenger.DcLot;
-
 import org.thoughtcrime.securesms.recipients.Recipient;
 
 /**
  * The message record model which represents thread heading messages.
  *
  * @author Moxie Marlinspike
- *
  */
 public class ThreadRecord {
 
-  private final Recipient  recipient;
-  private final long       dateReceived;
-  private final long       threadId;
-  private final String     body;
+  private final Recipient recipient;
+  private final long dateReceived;
+  private final long threadId;
+  private final String body;
 
-  private           final int     unreadCount;
-  private           final int     visibility;
-  private           final boolean isSendingLocations;
-  private           final boolean isMuted;
-  private           final boolean isContactRequest;
-  private @Nullable final DcLot   dcSummary;
+  private final int unreadCount;
+  private final int visibility;
+  private final boolean isSendingLocations;
+  private final boolean isMuted;
+  private final boolean isContactRequest;
+  private @Nullable final DcLot dcSummary;
 
-  public ThreadRecord(@NonNull String body,
-                      @NonNull Recipient recipient, long dateReceived, int unreadCount,
-                      long threadId,
-                      int visibility,
-                      boolean isSendingLocations,
-                      boolean isMuted,
-                      boolean isContactRequest,
-                      @Nullable DcLot dcSummary)
-  {
-    this.threadId             = threadId;
-    this.recipient            = recipient;
-    this.dateReceived         = dateReceived;
-    this.body                 = body;
-    this.unreadCount      = unreadCount;
-    this.visibility       = visibility;
+  public ThreadRecord(
+      @NonNull String body,
+      @NonNull Recipient recipient,
+      long dateReceived,
+      int unreadCount,
+      long threadId,
+      int visibility,
+      boolean isSendingLocations,
+      boolean isMuted,
+      boolean isContactRequest,
+      @Nullable DcLot dcSummary) {
+    this.threadId = threadId;
+    this.recipient = recipient;
+    this.dateReceived = dateReceived;
+    this.body = body;
+    this.unreadCount = unreadCount;
+    this.visibility = visibility;
     this.isSendingLocations = isSendingLocations;
-    this.isMuted          = isMuted;
+    this.isMuted = isMuted;
     this.isContactRequest = isContactRequest;
-    this.dcSummary        = dcSummary;
+    this.dcSummary = dcSummary;
   }
 
   public @NonNull String getBody() {
@@ -86,7 +84,7 @@ public class ThreadRecord {
   }
 
   public SpannableString getDisplayBody() {
-    if(dcSummary!=null && dcSummary.getText1Meaning()==DcLot.DC_TEXT1_DRAFT) {
+    if (dcSummary != null && dcSummary.getText1Meaning() == DcLot.DC_TEXT1_DRAFT) {
       String draftText = dcSummary.getText1() + ":";
       return emphasisAdded(draftText + " " + dcSummary.getText2(), 0, draftText.length());
     } else {
@@ -96,8 +94,11 @@ public class ThreadRecord {
 
   private SpannableString emphasisAdded(String sequence, int start, int end) {
     SpannableString spannable = new SpannableString(sequence);
-    spannable.setSpan(new StyleSpan(android.graphics.Typeface.ITALIC),
-                      start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+    spannable.setSpan(
+        new StyleSpan(android.graphics.Typeface.ITALIC),
+        start,
+        end,
+        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
     return spannable;
   }
 
@@ -118,11 +119,11 @@ public class ThreadRecord {
   }
 
   public boolean isSendingLocations() {
-    return  isSendingLocations;
+    return isSendingLocations;
   }
 
   public boolean isMuted() {
-    return  isMuted;
+    return isMuted;
   }
 
   public boolean isContactRequest() {

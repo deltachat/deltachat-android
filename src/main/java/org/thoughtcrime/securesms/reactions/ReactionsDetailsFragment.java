@@ -6,17 +6,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.Reactions;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import org.thoughtcrime.securesms.ProfileActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -25,16 +29,8 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.Pair;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import chat.delta.rpc.Rpc;
-import chat.delta.rpc.RpcException;
-import chat.delta.rpc.types.Reactions;
-
-public class ReactionsDetailsFragment extends DialogFragment implements DcEventCenter.DcEventDelegate {
+public class ReactionsDetailsFragment extends DialogFragment
+    implements DcEventCenter.DcEventDelegate {
   private static final String TAG = ReactionsDetailsFragment.class.getSimpleName();
   private static final String ARG_MSG_ID = "msg_id";
 
@@ -53,8 +49,10 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
   @NonNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
-    msgId = getArguments() != null? getArguments().getInt(ARG_MSG_ID, 0) : 0;
-    adapter = new ReactionRecipientsAdapter(requireActivity(), GlideApp.with(requireActivity()), new ListClickListener());
+    msgId = getArguments() != null ? getArguments().getInt(ARG_MSG_ID, 0) : 0;
+    adapter =
+        new ReactionRecipientsAdapter(
+            requireActivity(), GlideApp.with(requireActivity()), new ListClickListener());
 
     LayoutInflater inflater = requireActivity().getLayoutInflater();
     View view = inflater.inflate(R.layout.reactions_details_fragment, null);
@@ -68,7 +66,8 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
     DcEventCenter eventCenter = DcHelper.getEventCenter(requireContext());
     eventCenter.addObserver(DcContext.DC_EVENT_REACTIONS_CHANGED, this);
 
-    AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity())
+    AlertDialog.Builder builder =
+        new AlertDialog.Builder(requireActivity())
             .setTitle(R.string.reactions)
             .setNegativeButton(R.string.ok, null);
     return builder.setView(view).create();
@@ -95,18 +94,20 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
 
     int accId = DcHelper.getContext(requireActivity()).getAccountId();
     try {
-      final Reactions reactions = DcHelper.getRpc(requireActivity()).getMessageReactions(accId, msgId);
+      final Reactions reactions =
+          DcHelper.getRpc(requireActivity()).getMessageReactions(accId, msgId);
       ArrayList<Pair<Integer, String>> contactsReactions = new ArrayList<>();
       if (reactions != null) {
         Map<String, List<String>> reactionsByContact = reactions.reactionsByContact;
-        List<String> selfReactions = reactionsByContact.remove(String.valueOf(DcContact.DC_CONTACT_ID_SELF));
-        for (String contact: reactionsByContact.keySet()) {
-          for (String reaction: reactionsByContact.get(contact)) {
+        List<String> selfReactions =
+            reactionsByContact.remove(String.valueOf(DcContact.DC_CONTACT_ID_SELF));
+        for (String contact : reactionsByContact.keySet()) {
+          for (String reaction : reactionsByContact.get(contact)) {
             contactsReactions.add(new Pair<>(Integer.parseInt(contact), reaction));
           }
         }
         if (selfReactions != null) {
-          for (String reaction: selfReactions) {
+          for (String reaction : selfReactions) {
             contactsReactions.add(new Pair<>(DcContact.DC_CONTACT_ID_SELF, reaction));
           }
         }
@@ -129,12 +130,13 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
       final Reactions reactions = rpc.getMessageReactions(accId, msgId);
       if (reactions != null) {
         final Map<String, List<String>> reactionsByContact = reactions.reactionsByContact;
-        final List<String> selfReactions = reactionsByContact.get(String.valueOf(DcContact.DC_CONTACT_ID_SELF));
+        final List<String> selfReactions =
+            reactionsByContact.get(String.valueOf(DcContact.DC_CONTACT_ID_SELF));
         if (selfReactions != null && !selfReactions.isEmpty()) {
           result = selfReactions.get(0);
         }
       }
-    } catch(RpcException e) {
+    } catch (RpcException e) {
       e.printStackTrace();
     }
     return result;
@@ -151,7 +153,7 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
       } else {
         rpc.sendReaction(accId, msgId, Collections.singletonList(reaction));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
@@ -160,11 +162,11 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
 
     @Override
     public void onItemClick(ReactionRecipientItem item) {
-        int contactId = item.getContactId();
-        if (contactId != DcContact.DC_CONTACT_ID_SELF) {
-          ReactionsDetailsFragment.this.dismiss();
-          openConversation(contactId);
-        }
+      int contactId = item.getContactId();
+      if (contactId != DcContact.DC_CONTACT_ID_SELF) {
+        ReactionsDetailsFragment.this.dismiss();
+        openConversation(contactId);
+      }
     }
 
     @Override
@@ -173,5 +175,4 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
       ReactionsDetailsFragment.this.dismiss();
     }
   }
-
 }

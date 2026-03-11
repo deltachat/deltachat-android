@@ -12,13 +12,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.mms.GlideRequests;
@@ -28,13 +25,13 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class AccountSelectionListItem extends LinearLayout {
 
-  private AvatarView      contactPhotoImage;
-  private View            addrContainer;
-  private TextView        addrOrTagView;
-  private TextView        nameView;
-  private ImageView       unreadIndicator;
+  private AvatarView contactPhotoImage;
+  private View addrContainer;
+  private TextView addrOrTagView;
+  private TextView nameView;
+  private ImageView unreadIndicator;
 
-  private int           accountId;
+  private int accountId;
 
   public AccountSelectionListItem(Context context) {
     super(context);
@@ -48,16 +45,21 @@ public class AccountSelectionListItem extends LinearLayout {
   protected void onFinishInflate() {
     super.onFinishInflate();
     this.contactPhotoImage = findViewById(R.id.contact_photo_image);
-    this.addrContainer     = findViewById(R.id.addr_container);
-    this.addrOrTagView     = findViewById(R.id.addr_or_tag);
-    this.nameView          = findViewById(R.id.name);
-    this.unreadIndicator   = findViewById(R.id.unread_indicator);
+    this.addrContainer = findViewById(R.id.addr_container);
+    this.addrOrTagView = findViewById(R.id.addr_or_tag);
+    this.nameView = findViewById(R.id.name);
+    this.unreadIndicator = findViewById(R.id.unread_indicator);
 
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContext dcContext, boolean selected, AccountSelectionListFragment fragment) {
-    this.accountId     = accountId;
+  public void bind(
+      @NonNull GlideRequests glideRequests,
+      int accountId,
+      DcContext dcContext,
+      boolean selected,
+      AccountSelectionListFragment fragment) {
+    this.accountId = accountId;
     DcContact self = null;
     String name;
     String addrOrTag = null;
@@ -82,7 +84,8 @@ public class AccountSelectionListItem extends LinearLayout {
     }
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
 
-    nameView.setCompoundDrawablesWithIntrinsicBounds(isMuted? R.drawable.ic_volume_off_grey600_18dp : 0, 0, 0, 0);
+    nameView.setCompoundDrawablesWithIntrinsicBounds(
+        isMuted ? R.drawable.ic_volume_off_grey600_18dp : 0, 0, 0, 0);
 
     setSelected(selected);
     if (selected) {
@@ -108,11 +111,19 @@ public class AccountSelectionListItem extends LinearLayout {
   }
 
   private void updateUnreadIndicator(int unreadCount, boolean isMuted) {
-    if(unreadCount == 0) {
+    if (unreadCount == 0) {
       unreadIndicator.setVisibility(View.GONE);
     } else {
-      final int color = getResources().getColor(isMuted ? (ThemeUtil.isDarkTheme(getContext()) ? R.color.unread_count_muted_dark : R.color.unread_count_muted) : R.color.unread_count);
-      unreadIndicator.setImageDrawable(TextDrawable.builder()
+      final int color =
+          getResources()
+              .getColor(
+                  isMuted
+                      ? (ThemeUtil.isDarkTheme(getContext())
+                          ? R.color.unread_count_muted_dark
+                          : R.color.unread_count_muted)
+                      : R.color.unread_count);
+      unreadIndicator.setImageDrawable(
+          TextDrawable.builder()
               .beginConfig()
               .width(ViewUtil.dpToPx(getContext(), 24))
               .height(ViewUtil.dpToPx(getContext(), 24))
@@ -125,9 +136,9 @@ public class AccountSelectionListItem extends LinearLayout {
   }
 
   private void setText(String name, String addrOrTag) {
-    this.nameView.setText(name==null? "#" : name);
+    this.nameView.setText(name == null ? "#" : name);
 
-    if(!TextUtils.isEmpty(addrOrTag)) {
+    if (!TextUtils.isEmpty(addrOrTag)) {
       this.addrOrTagView.setText(addrOrTag);
       this.addrContainer.setVisibility(View.VISIBLE);
     } else {

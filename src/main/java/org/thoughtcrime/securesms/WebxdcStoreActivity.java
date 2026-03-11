@@ -13,11 +13,13 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
-
 import androidx.appcompat.app.ActionBar;
-
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.HttpResponse;
 import com.b44t.messenger.DcContext;
-
+import java.io.ByteArrayInputStream;
+import java.util.HashMap;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.util.IntentUtils;
@@ -26,13 +28,6 @@ import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
-
-import java.io.ByteArrayInputStream;
-import java.util.HashMap;
-
-import chat.delta.rpc.Rpc;
-import chat.delta.rpc.RpcException;
-import chat.delta.rpc.types.HttpResponse;
 
 public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
   private static final String TAG = WebxdcStoreActivity.class.getSimpleName();
@@ -56,42 +51,58 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
       actionBar.setTitle(R.string.webxdc_apps);
     }
 
-    webView.setWebViewClient(new WebViewClient() {
-      @Override
-      public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        String ext = MediaUtil.getFileExtensionFromUrl(Uri.parse(url).getPath());
-        if ("xdc".equals(ext)) {
-          Util.runOnAnyBackgroundThread(() -> {
-            try {
-              HttpResponse httpResponse = rpc.getHttpResponse(dcContext.getAccountId(), url);
-              byte[] blob = JsonUtils.decodeBase64(httpResponse.blob);
-              Uri uri = PersistentBlobProvider.getInstance().create(WebxdcStoreActivity.this, blob, "application/octet-stream", "app.xdc");
-              Intent intent = new Intent();
-              intent.setData(uri);
-              setResult(Activity.RESULT_OK, intent);
-              finish();
-            } catch (RpcException e) {
-              e.printStackTrace();
-              Util.runOnMain(() -> Toast.makeText(WebxdcStoreActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show());
+    webView.setWebViewClient(
+        new WebViewClient() {
+          @Override
+          public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            String ext = MediaUtil.getFileExtensionFromUrl(Uri.parse(url).getPath());
+            if ("xdc".equals(ext)) {
+              Util.runOnAnyBackgroundThread(
+                  () -> {
+                    try {
+                      HttpResponse httpResponse =
+                          rpc.getHttpResponse(dcContext.getAccountId(), url);
+                      byte[] blob = JsonUtils.decodeBase64(httpResponse.blob);
+                      Uri uri =
+                          PersistentBlobProvider.getInstance()
+                              .create(
+                                  WebxdcStoreActivity.this,
+                                  blob,
+                                  "application/octet-stream",
+                                  "app.xdc");
+                      Intent intent = new Intent();
+                      intent.setData(uri);
+                      setResult(Activity.RESULT_OK, intent);
+                      finish();
+                    } catch (RpcException e) {
+                      e.printStackTrace();
+                      Util.runOnMain(
+                          () ->
+                              Toast.makeText(
+                                      WebxdcStoreActivity.this,
+                                      "Error: " + e.getMessage(),
+                                      Toast.LENGTH_LONG)
+                                  .show());
+                    }
+                  });
+            } else {
+              IntentUtils.showInBrowser(WebxdcStoreActivity.this, url);
             }
-          });
-        } else {
-          IntentUtils.showInBrowser(WebxdcStoreActivity.this, url);
-        }
-        return true;
-      }
+            return true;
+          }
 
-      @TargetApi(Build.VERSION_CODES.N)
-      @Override
-      public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-        return shouldOverrideUrlLoading(view, request.getUrl().toString());
-      }
+          @TargetApi(Build.VERSION_CODES.N)
+          @Override
+          public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+            return shouldOverrideUrlLoading(view, request.getUrl().toString());
+          }
 
-      @Override
-      public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-        return interceptRequest(request.getUrl().toString());
-      }
-    });
+          @Override
+          public WebResourceResponse shouldInterceptRequest(
+              WebView view, WebResourceRequest request) {
+            return interceptRequest(request.getUrl().toString());
+          }
+        });
 
     WebSettings webSettings = webView.getSettings();
     webSettings.setJavaScriptEnabled(true);
@@ -102,7 +113,8 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
     webSettings.setAllowUniversalAccessFromFileURLs(false);
     webSettings.setDatabaseEnabled(true);
     webSettings.setDomStorageEnabled(true);
-    webView.setNetworkAvailable(true); // this does not block network but sets `window.navigator.isOnline` in js land
+    webView.setNetworkAvailable(
+        true); // this does not block network but sets `window.navigator.isOnline` in js land
 
     webView.loadUrl(Prefs.getWebxdcStoreUrl(this));
   }
@@ -124,7 +136,9 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
       res = new WebResourceResponse(mimeType, httpResponse.encoding, data);
     } catch (Exception e) {
       e.printStackTrace();
-      ByteArrayInputStream data = new ByteArrayInputStream(("Could not load apps. Are you online?\n\n" + e.getMessage()).getBytes());
+      ByteArrayInputStream data =
+          new ByteArrayInputStream(
+              ("Could not load apps. Are you online?\n\n" + e.getMessage()).getBytes());
       res = new WebResourceResponse("text/plain", "UTF-8", data);
     }
 
@@ -144,5 +158,4 @@ public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
     }
     return false;
   }
-
 }

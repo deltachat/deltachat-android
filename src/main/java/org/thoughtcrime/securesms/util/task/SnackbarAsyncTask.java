@@ -2,48 +2,43 @@ package org.thoughtcrime.securesms.util.task;
 
 import android.os.AsyncTask;
 import android.view.View;
-
 import androidx.annotation.Nullable;
-
 import com.google.android.material.snackbar.Snackbar;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
-public abstract class SnackbarAsyncTask<Params>
-    extends AsyncTask<Params, Void, Void>
-    implements View.OnClickListener
-{
+public abstract class SnackbarAsyncTask<Params> extends AsyncTask<Params, Void, Void>
+    implements View.OnClickListener {
 
-  private final View    view;
-  private final String  snackbarText;
-  private final String  snackbarActionText;
-  private final int     snackbarDuration;
+  private final View view;
+  private final String snackbarText;
+  private final String snackbarActionText;
+  private final int snackbarDuration;
   private final boolean showProgress;
 
-  private @Nullable Params         reversibleParameter;
+  private @Nullable Params reversibleParameter;
   private @Nullable ProgressDialog progressDialog;
 
-  public SnackbarAsyncTask(View view,
-                           String snackbarText,
-                           String snackbarActionText,
-                           int snackbarDuration,
-                           boolean showProgress)
-  {
-    this.view                = view;
-    this.snackbarText        = snackbarText;
-    this.snackbarActionText  = snackbarActionText;
-    this.snackbarDuration    = snackbarDuration;
-    this.showProgress        = showProgress;
+  public SnackbarAsyncTask(
+      View view,
+      String snackbarText,
+      String snackbarActionText,
+      int snackbarDuration,
+      boolean showProgress) {
+    this.view = view;
+    this.snackbarText = snackbarText;
+    this.snackbarActionText = snackbarActionText;
+    this.snackbarDuration = snackbarDuration;
+    this.showProgress = showProgress;
   }
 
   @Override
   protected void onPreExecute() {
     if (this.showProgress) {
-      this.progressDialog = ProgressDialog.show(view.getContext(),
-          "", view.getContext().getString(R.string.one_moment), true, false);
-    }
-    else {
+      this.progressDialog =
+          ProgressDialog.show(
+              view.getContext(), "", view.getContext().getString(R.string.one_moment), true, false);
+    } else {
       this.progressDialog = null;
     }
   }
@@ -51,7 +46,7 @@ public abstract class SnackbarAsyncTask<Params>
   @SafeVarargs
   @Override
   protected final Void doInBackground(Params... params) {
-    this.reversibleParameter = params != null && params.length > 0 ?params[0] : null;
+    this.reversibleParameter = params != null && params.length > 0 ? params[0] : null;
     executeAction(reversibleParameter);
     return null;
   }
@@ -64,9 +59,9 @@ public abstract class SnackbarAsyncTask<Params>
     }
 
     Snackbar.make(view, snackbarText, snackbarDuration)
-            .setAction(snackbarActionText, this)
-            .setActionTextColor(view.getResources().getColor(R.color.white))
-            .show();
+        .setAction(snackbarActionText, this)
+        .setActionTextColor(view.getResources().getColor(R.color.white))
+        .show();
   }
 
   @Override
@@ -75,7 +70,7 @@ public abstract class SnackbarAsyncTask<Params>
       @Override
       protected void onPreExecute() {
         if (showProgress) progressDialog = ProgressDialog.show(view.getContext(), "", "", true);
-        else              progressDialog = null;
+        else progressDialog = null;
       }
 
       @Override
@@ -95,6 +90,6 @@ public abstract class SnackbarAsyncTask<Params>
   }
 
   protected abstract void executeAction(@Nullable Params parameter);
-  protected abstract void reverseAction(@Nullable Params parameter);
 
+  protected abstract void reverseAction(@Nullable Params parameter);
 }

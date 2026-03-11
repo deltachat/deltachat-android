@@ -12,19 +12,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
-
+import java.util.Set;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
@@ -32,13 +30,9 @@ import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.util.Set;
-
-public class AllMediaGalleryFragment
-    extends MessageSelectorFragment
+public class AllMediaGalleryFragment extends MessageSelectorFragment
     implements LoaderManager.LoaderCallbacks<BucketedThreadMediaLoader.BucketedThreadMedia>,
-               AllMediaGalleryAdapter.ItemClickListener
-{
+        AllMediaGalleryAdapter.ItemClickListener {
   public static final String CHAT_ID_EXTRA = "chat_id";
 
   protected TextView noMedia;
@@ -46,7 +40,7 @@ public class AllMediaGalleryFragment
   private StickyHeaderGridLayoutManager gridManager;
   private final ActionModeCallback actionModeCallback = new ActionModeCallback();
 
-  private int                  chatId;
+  private int chatId;
 
   @Override
   public void onCreate(Bundle bundle) {
@@ -58,20 +52,23 @@ public class AllMediaGalleryFragment
   }
 
   @Override
-  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+  public View onCreateView(
+      @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.profile_gallery_fragment, container, false);
 
     this.recyclerView = ViewUtil.findById(view, R.id.media_grid);
-    this.noMedia      = ViewUtil.findById(view, R.id.no_images);
-    this.gridManager  = new StickyHeaderGridLayoutManager(getCols());
+    this.noMedia = ViewUtil.findById(view, R.id.no_images);
+    this.gridManager = new StickyHeaderGridLayoutManager(getCols());
 
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(recyclerView, true, false, true, true);
 
-    this.recyclerView.setAdapter(new AllMediaGalleryAdapter(getContext(),
-                                                         GlideApp.with(this),
-                                                         new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()),
-                                                         this));
+    this.recyclerView.setAdapter(
+        new AllMediaGalleryAdapter(
+            getContext(),
+            GlideApp.with(this),
+            new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()),
+            this));
     this.recyclerView.setLayoutManager(gridManager);
     this.recyclerView.setHasFixedSize(true);
 
@@ -94,7 +91,9 @@ public class AllMediaGalleryFragment
   }
 
   private int getCols() {
-    return getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE? 5 : 3;
+    return getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE
+        ? 5
+        : 3;
   }
 
   @Override
@@ -107,12 +106,16 @@ public class AllMediaGalleryFragment
   }
 
   @Override
-  public Loader<BucketedThreadMediaLoader.BucketedThreadMedia> onCreateLoader(int i, Bundle bundle) {
-    return new BucketedThreadMediaLoader(getContext(), chatId, DcMsg.DC_MSG_IMAGE, DcMsg.DC_MSG_GIF, DcMsg.DC_MSG_VIDEO);
+  public Loader<BucketedThreadMediaLoader.BucketedThreadMedia> onCreateLoader(
+      int i, Bundle bundle) {
+    return new BucketedThreadMediaLoader(
+        getContext(), chatId, DcMsg.DC_MSG_IMAGE, DcMsg.DC_MSG_GIF, DcMsg.DC_MSG_VIDEO);
   }
 
   @Override
-  public void onLoadFinished(Loader<BucketedThreadMediaLoader.BucketedThreadMedia> loader, BucketedThreadMediaLoader.BucketedThreadMedia bucketedThreadMedia) {
+  public void onLoadFinished(
+      Loader<BucketedThreadMediaLoader.BucketedThreadMedia> loader,
+      BucketedThreadMediaLoader.BucketedThreadMedia bucketedThreadMedia) {
     ((AllMediaGalleryAdapter) recyclerView.getAdapter()).setMedia(bucketedThreadMedia);
     ((AllMediaGalleryAdapter) recyclerView.getAdapter()).notifyAllSectionsDataSetChanged();
 
@@ -125,7 +128,8 @@ public class AllMediaGalleryFragment
 
   @Override
   public void onLoaderReset(Loader<BucketedThreadMediaLoader.BucketedThreadMedia> cursorLoader) {
-    ((AllMediaGalleryAdapter) recyclerView.getAdapter()).setMedia(new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()));
+    ((AllMediaGalleryAdapter) recyclerView.getAdapter())
+        .setMedia(new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()));
   }
 
   @Override

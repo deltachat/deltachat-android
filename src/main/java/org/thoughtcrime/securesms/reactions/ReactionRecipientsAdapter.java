@@ -4,23 +4,19 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
+import java.util.ArrayList;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.Pair;
 
-import java.util.ArrayList;
-
-public class ReactionRecipientsAdapter extends RecyclerView.Adapter
-{
+public class ReactionRecipientsAdapter extends RecyclerView.Adapter {
   private @NonNull ArrayList<Pair<Integer, String>> contactsReactions = new ArrayList<>();
-  private final LayoutInflater                layoutInflater;
-  private final ItemClickListener             clickListener;
-  private final GlideRequests                 glideRequests;
+  private final LayoutInflater layoutInflater;
+  private final ItemClickListener clickListener;
+  private final GlideRequests glideRequests;
 
   @Override
   public int getItemCount() {
@@ -34,24 +30,29 @@ public class ReactionRecipientsAdapter extends RecyclerView.Adapter
     }
 
     public abstract void bind(@NonNull GlideRequests glideRequests, int contactId, String reaction);
+
     public abstract void unbind(@NonNull GlideRequests glideRequests);
   }
 
   public static class ReactionViewHolder extends ViewHolder {
 
-    ReactionViewHolder(@NonNull  final View itemView,
-                       @Nullable final ItemClickListener clickListener) {
+    ReactionViewHolder(
+        @NonNull final View itemView, @Nullable final ItemClickListener clickListener) {
       super(itemView);
-      itemView.setOnClickListener(view -> {
-        if (clickListener != null) {
-          clickListener.onItemClick(getView());
-        }
-      });
-      ((ReactionRecipientItem) itemView).getReactionView().setOnClickListener(view -> {
-        if (clickListener != null) {
-          clickListener.onReactionClick(getView());
-        }
-      });
+      itemView.setOnClickListener(
+          view -> {
+            if (clickListener != null) {
+              clickListener.onItemClick(getView());
+            }
+          });
+      ((ReactionRecipientItem) itemView)
+          .getReactionView()
+          .setOnClickListener(
+              view -> {
+                if (clickListener != null) {
+                  clickListener.onReactionClick(getView());
+                }
+              });
     }
 
     public ReactionRecipientItem getView() {
@@ -68,10 +69,10 @@ public class ReactionRecipientsAdapter extends RecyclerView.Adapter
     }
   }
 
-  public ReactionRecipientsAdapter(@NonNull  Context context,
-                                   @NonNull  GlideRequests glideRequests,
-                                   @Nullable ItemClickListener clickListener)
-  {
+  public ReactionRecipientsAdapter(
+      @NonNull Context context,
+      @NonNull GlideRequests glideRequests,
+      @Nullable ItemClickListener clickListener) {
     super();
     this.layoutInflater = LayoutInflater.from(context);
     this.glideRequests = glideRequests;
@@ -80,8 +81,10 @@ public class ReactionRecipientsAdapter extends RecyclerView.Adapter
 
   @NonNull
   @Override
-  public ReactionRecipientsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-    return new ReactionViewHolder(layoutInflater.inflate(R.layout.reaction_recipient_item, parent, false), clickListener);
+  public ReactionRecipientsAdapter.ViewHolder onCreateViewHolder(
+      @NonNull ViewGroup parent, int viewType) {
+    return new ReactionViewHolder(
+        layoutInflater.inflate(R.layout.reaction_recipient_item, parent, false), clickListener);
   }
 
   @Override
@@ -98,11 +101,12 @@ public class ReactionRecipientsAdapter extends RecyclerView.Adapter
 
   public interface ItemClickListener {
     void onItemClick(ReactionRecipientItem item);
+
     void onReactionClick(ReactionRecipientItem item);
   }
 
   public void changeData(ArrayList<Pair<Integer, String>> contactsReactions) {
-    this.contactsReactions = contactsReactions==null? new ArrayList<>() : contactsReactions;
+    this.contactsReactions = contactsReactions == null ? new ArrayList<>() : contactsReactions;
     notifyDataSetChanged();
   }
 }

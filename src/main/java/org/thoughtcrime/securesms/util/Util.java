@@ -37,15 +37,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.accessibility.AccessibilityManager;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.os.ConfigurationCompat;
-
-import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.components.ComposeText;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -59,6 +54,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
+import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.components.ComposeText;
 
 public class Util {
   private static final String TAG = Util.class.getSimpleName();
@@ -85,14 +82,14 @@ public class Util {
 
   public static CharSequence getBoldedString(String value) {
     SpannableString spanned = new SpannableString(value);
-    spanned.setSpan(new StyleSpan(Typeface.BOLD), 0,
-                    spanned.length(),
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+    spanned.setSpan(
+        new StyleSpan(Typeface.BOLD), 0, spanned.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
     return spanned;
   }
 
-  private static final int redDestructiveColor = 0xffff0c16; // typical "destructive red" for light/dark mode
+  private static final int redDestructiveColor =
+      0xffff0c16; // typical "destructive red" for light/dark mode
 
   public static void redMenuItem(Menu menu, int id) {
     MenuItem item = menu.findItem(id);
@@ -123,7 +120,7 @@ public class Util {
 
   public static @NonNull int[] appendInt(@Nullable int[] cur, int val) {
     if (cur == null) {
-      return new int[] { val };
+      return new int[] {val};
     }
     final int N = cur.length;
     int[] ret = new int[N + 1];
@@ -185,11 +182,10 @@ public class Util {
       File fromFile = new File(fromPath);
       File toFile = new File(toPath);
       toFile.delete();
-      if(fromFile.renameTo(toFile)) {
+      if (fromFile.renameTo(toFile)) {
         success = true;
       }
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
 
@@ -198,11 +194,10 @@ public class Util {
       try {
         InputStream fromStream = new FileInputStream(fromPath);
         OutputStream toStream = new FileOutputStream(toPath);
-        if(Util.copy(fromStream, toStream)>0) {
+        if (Util.copy(fromStream, toStream) > 0) {
           success = true;
         }
-      }
-      catch (Exception e) {
+      } catch (Exception e) {
         e.printStackTrace();
       }
     }
@@ -222,7 +217,7 @@ public class Util {
 
   public static void runOnMain(final @NonNull Runnable runnable) {
     if (isMainThread()) runnable.run();
-    else                handler.post(runnable);
+    else handler.post(runnable);
   }
 
   public static void runOnMainDelayed(final @NonNull Runnable runnable, long delayMillis) {
@@ -234,13 +229,14 @@ public class Util {
       runnable.run();
     } else {
       final CountDownLatch sync = new CountDownLatch(1);
-      runOnMain(() -> {
-        try {
-          runnable.run();
-        } finally {
-          sync.countDown();
-        }
-      });
+      runOnMain(
+          () -> {
+            try {
+              runnable.run();
+            } finally {
+              sync.countDown();
+            }
+          });
       try {
         sync.await();
       } catch (InterruptedException ie) {
@@ -262,9 +258,11 @@ public class Util {
   }
 
   public static void runOnBackgroundDelayed(final @NonNull Runnable runnable, long delayMillis) {
-    handler.postDelayed(() -> {
-      AsyncTask.THREAD_POOL_EXECUTOR.execute(runnable);
-    }, delayMillis);
+    handler.postDelayed(
+        () -> {
+          AsyncTask.THREAD_POOL_EXECUTOR.execute(runnable);
+        },
+        delayMillis);
   }
 
   public static boolean equals(@Nullable Object a, @Nullable Object b) {
@@ -276,7 +274,8 @@ public class Util {
   }
 
   public static boolean isLowMemory(Context context) {
-    ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+    ActivityManager activityManager =
+        (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
 
     return activityManager.isLowRamDevice() || activityManager.getLargeMemoryClass() <= 64;
   }
@@ -291,15 +290,16 @@ public class Util {
 
   public static void writeTextToClipboard(@NonNull Context context, @NonNull String text) {
     android.content.ClipboardManager clipboard =
-            (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
     ClipData clip = ClipData.newPlainText(context.getString(R.string.app_name), text);
     clipboard.setPrimaryClip(clip);
   }
 
   public static String getTextFromClipboard(@NonNull Context context) {
     android.content.ClipboardManager clipboard =
-            (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-    if (clipboard.hasPrimaryClip() && clipboard.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
+        (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+    if (clipboard.hasPrimaryClip()
+        && clipboard.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
       ClipData.Item item = clipboard.getPrimaryClip().getItemAt(0);
       return item.getText().toString();
     }
@@ -307,25 +307,22 @@ public class Util {
   }
 
   public static int toIntExact(long value) {
-    if ((int)value != value) {
+    if ((int) value != value) {
       throw new ArithmeticException("integer overflow");
     }
-    return (int)value;
+    return (int) value;
   }
 
   public static int objectToInt(Object value) {
     try {
-      if(value instanceof String) {
-          return Integer.parseInt((String)value);
-      }
-      else if (value instanceof Boolean) {
-        return (Boolean)value? 1 : 0;
-      }
-      else if (value instanceof Integer) {
-        return (Integer)value;
-      }
-      else if (value instanceof Long) {
-        return toIntExact((Long)value);
+      if (value instanceof String) {
+        return Integer.parseInt((String) value);
+      } else if (value instanceof Boolean) {
+        return (Boolean) value ? 1 : 0;
+      } else if (value instanceof Integer) {
+        return (Integer) value;
+      } else if (value instanceof Long) {
+        return toIntExact((Long) value);
       }
     } catch (Exception e) {
     }
@@ -335,10 +332,12 @@ public class Util {
   public static String getPrettyFileSize(long sizeBytes) {
     if (sizeBytes <= 0) return "0";
 
-    String[] units       = new String[]{"B", "kB", "MB", "GB", "TB"};
-    int      digitGroups = (int) (Math.log10(sizeBytes) / Math.log10(1024));
+    String[] units = new String[] {"B", "kB", "MB", "GB", "TB"};
+    int digitGroups = (int) (Math.log10(sizeBytes) / Math.log10(1024));
 
-    return new DecimalFormat("#,##0.#").format(sizeBytes/Math.pow(1024, digitGroups)) + " " + units[digitGroups];
+    return new DecimalFormat("#,##0.#").format(sizeBytes / Math.pow(1024, digitGroups))
+        + " "
+        + units[digitGroups];
   }
 
   public static void sleep(long millis) {
@@ -356,6 +355,7 @@ public class Util {
   }
 
   private static long lastClickTime = 0;
+
   public static boolean isClickedRecently() {
     long now = System.currentTimeMillis();
     if (now - lastClickTime < 500) {
@@ -367,11 +367,14 @@ public class Util {
   }
 
   private static AccessibilityManager accessibilityManager;
+
   public static boolean isTouchExplorationEnabled(Context context) {
     try {
       if (accessibilityManager == null) {
         Context applicationContext = context.getApplicationContext();
-        accessibilityManager = ((AccessibilityManager) applicationContext.getSystemService(Context.ACCESSIBILITY_SERVICE));
+        accessibilityManager =
+            ((AccessibilityManager)
+                applicationContext.getSystemService(Context.ACCESSIBILITY_SERVICE));
       }
       return accessibilityManager.isTouchExplorationEnabled();
     } catch (Exception e) {
@@ -381,15 +384,17 @@ public class Util {
 
   private static Locale lastLocale = null;
 
-  public synchronized static Locale getLocale() {
+  public static synchronized Locale getLocale() {
     if (lastLocale == null) {
       try {
-        lastLocale = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).get(0);
+        lastLocale =
+            ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).get(0);
       } catch (Exception e) {
         e.printStackTrace();
       }
       if (lastLocale == null) {
-        // Locale.getDefault() returns the locale the App was STARTED in, not the locale of the system.
+        // Locale.getDefault() returns the locale the App was STARTED in, not the locale of the
+        // system.
         // It just happens to be the same for the majority of use cases.
         lastLocale = Locale.getDefault();
       }
@@ -397,7 +402,7 @@ public class Util {
     return lastLocale;
   }
 
-  public synchronized static void localeChanged() {
+  public static synchronized void localeChanged() {
     lastLocale = null;
   }
 

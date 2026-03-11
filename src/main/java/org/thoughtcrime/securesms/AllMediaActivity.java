@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -20,14 +19,13 @@ import androidx.media3.session.MediaController;
 import androidx.media3.session.SessionCommand;
 import androidx.media3.session.SessionToken;
 import androidx.viewpager.widget.ViewPager;
-
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 import com.google.android.material.tabs.TabLayout;
 import com.google.common.util.concurrent.ListenableFuture;
-
+import java.util.ArrayList;
 import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -35,38 +33,37 @@ import org.thoughtcrime.securesms.service.AudioPlaybackService;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.util.ArrayList;
-
 public class AllMediaActivity extends PassphraseRequiredActionBarActivity
-                             implements DcEventCenter.DcEventDelegate
-{
+    implements DcEventCenter.DcEventDelegate {
   private static final String TAG = AllMediaActivity.class.getSimpleName();
 
-  public static final String CHAT_ID_EXTRA    = "chat_id";
+  public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
-  public static final String FORCE_GALLERY    = "force_gallery";
+  public static final String FORCE_GALLERY = "force_gallery";
 
   static class TabData {
     final int title;
     final int type1;
     final int type2;
     final int type3;
+
     TabData(int title, int type1, int type2, int type3) {
       this.title = title;
       this.type1 = type1;
       this.type2 = type2;
       this.type3 = type3;
     }
-  };
+  }
+  ;
 
-  private DcContext            dcContext;
-  private int                  chatId;
-  private int                  contactId;
+  private DcContext dcContext;
+  private int chatId;
+  private int contactId;
 
   private final ArrayList<TabData> tabs = new ArrayList<>();
-  private Toolbar            toolbar;
-  private TabLayout          tabLayout;
-  private ViewPager          viewPager;
+  private Toolbar toolbar;
+  private TabLayout tabLayout;
+  private ViewPager viewPager;
 
   private @Nullable MediaController mediaController;
   private ListenableFuture<MediaController> mediaControllerFuture;
@@ -82,7 +79,9 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onCreate(Bundle bundle, boolean ready) {
     tabs.add(new TabData(R.string.webxdc_apps, DcMsg.DC_MSG_WEBXDC, 0, 0));
-    tabs.add(new TabData(R.string.tab_gallery, DcMsg.DC_MSG_IMAGE, DcMsg.DC_MSG_GIF, DcMsg.DC_MSG_VIDEO));
+    tabs.add(
+        new TabData(
+            R.string.tab_gallery, DcMsg.DC_MSG_IMAGE, DcMsg.DC_MSG_GIF, DcMsg.DC_MSG_VIDEO));
     tabs.add(new TabData(R.string.audio, DcMsg.DC_MSG_AUDIO, DcMsg.DC_MSG_VOICE, 0));
     tabs.add(new TabData(R.string.files, DcMsg.DC_MSG_FILE, 0, 0));
 
@@ -94,7 +93,8 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     ActionBar supportActionBar = getSupportActionBar();
     if (supportActionBar != null) {
       supportActionBar.setDisplayHomeAsUpEnabled(true);
-      supportActionBar.setTitle(isGlobalGallery() ? R.string.menu_all_media : R.string.apps_and_media);
+      supportActionBar.setTitle(
+          isGlobalGallery() ? R.string.menu_all_media : R.string.apps_and_media);
     }
 
     this.tabLayout.setupWithViewPager(viewPager);
@@ -123,47 +123,44 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void handleEvent(@NonNull DcEvent event) {
-  }
+  public void handleEvent(@NonNull DcEvent event) {}
 
   private void initializeResources() {
-    chatId           = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
-    contactId        = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
+    chatId = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
+    contactId = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
 
-    if (contactId!=0) {
+    if (contactId != 0) {
       chatId = dcContext.getChatIdByContactId(contactId);
     }
 
-    if(chatId!=0) {
+    if (chatId != 0) {
       DcChat dcChat = dcContext.getChat(chatId);
-      if(!dcChat.isMultiUser()) {
+      if (!dcChat.isMultiUser()) {
         final int[] members = dcContext.getChatContacts(chatId);
-        contactId = members.length>=1? members[0] : 0;
+        contactId = members.length >= 1 ? members[0] : 0;
       }
     }
 
     this.viewPager = ViewUtil.findById(this, R.id.pager);
-    this.toolbar   = ViewUtil.findById(this, R.id.toolbar);
+    this.toolbar = ViewUtil.findById(this, R.id.toolbar);
     this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
   }
 
   private void initializeMediaController() {
-    SessionToken sessionToken = new SessionToken(this,
-      new ComponentName(this, AudioPlaybackService.class));
-    mediaControllerFuture = new MediaController.Builder(this, sessionToken)
-      .buildAsync();
-    mediaControllerFuture.addListener(() -> {
-      try {
-        mediaController = mediaControllerFuture.get();
-        addActivityContext(
-          this.getIntent().getExtras(),
-          this.getClass().getName()
-        );
-        playbackViewModel.setMediaController(mediaController);
-      } catch (Exception e) {
-        Log.e(TAG, "Error connecting to audio playback service", e);
-      }
-    }, ContextCompat.getMainExecutor(this));
+    SessionToken sessionToken =
+        new SessionToken(this, new ComponentName(this, AudioPlaybackService.class));
+    mediaControllerFuture = new MediaController.Builder(this, sessionToken).buildAsync();
+    mediaControllerFuture.addListener(
+        () -> {
+          try {
+            mediaController = mediaControllerFuture.get();
+            addActivityContext(this.getIntent().getExtras(), this.getClass().getName());
+            playbackViewModel.setMediaController(mediaController);
+          } catch (Exception e) {
+            Log.e(TAG, "Error connecting to audio playback service", e);
+          }
+        },
+        ContextCompat.getMainExecutor(this));
   }
 
   private void addActivityContext(Bundle extras, String activityClassName) {
@@ -176,13 +173,13 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     }
 
     SessionCommand updateContextCommand =
-      new SessionCommand("UPDATE_ACTIVITY_CONTEXT", Bundle.EMPTY);
+        new SessionCommand("UPDATE_ACTIVITY_CONTEXT", Bundle.EMPTY);
 
     mediaController.sendCustomCommand(updateContextCommand, commandArgs);
   }
 
   private boolean isGlobalGallery() {
-    return contactId==0 && chatId==0;
+    return contactId == 0 && chatId == 0;
   }
 
   private class AllMediaPagerAdapter extends FragmentStatePagerAdapter {
@@ -216,10 +213,14 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
 
       if (data.type1 == DcMsg.DC_MSG_IMAGE) {
         fragment = new AllMediaGalleryFragment();
-        args.putInt(AllMediaGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
+        args.putInt(
+            AllMediaGalleryFragment.CHAT_ID_EXTRA,
+            (chatId == 0 && !isGlobalGallery()) ? -1 : chatId);
       } else {
         fragment = new AllMediaDocumentsFragment();
-        args.putInt(AllMediaDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalGallery())? -1 : chatId);
+        args.putInt(
+            AllMediaDocumentsFragment.CHAT_ID_EXTRA,
+            (chatId == 0 && !isGlobalGallery()) ? -1 : chatId);
         args.putInt(AllMediaDocumentsFragment.VIEWTYPE1, data.type1);
         args.putInt(AllMediaDocumentsFragment.VIEWTYPE2, data.type2);
       }

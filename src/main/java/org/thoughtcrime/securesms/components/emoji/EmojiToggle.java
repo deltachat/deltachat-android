@@ -3,20 +3,17 @@ package org.thoughtcrime.securesms.components.emoji;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-
 import androidx.appcompat.widget.AppCompatImageButton;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.ResUtil;
 
 public class EmojiToggle extends AppCompatImageButton {
 
   private Drawable emojiToggle;
-//  private Drawable stickerToggle;
+  //  private Drawable stickerToggle;
 
   private Drawable mediaToggle;
   private Drawable imeToggle;
-
 
   public EmojiToggle(Context context) {
     super(context);
@@ -42,10 +39,11 @@ public class EmojiToggle extends AppCompatImageButton {
   }
 
   private void initialize() {
-    this.emojiToggle   = ResUtil.getDrawable(getContext(), R.attr.conversation_emoji_toggle);
-//    this.stickerToggle = ResUtil.getDrawable(getContext(), R.attr.conversation_sticker_toggle);
-    this.imeToggle     = ResUtil.getDrawable(getContext(), R.attr.conversation_keyboard_toggle);
-    this.mediaToggle   = emojiToggle;
+    this.emojiToggle = ResUtil.getDrawable(getContext(), R.attr.conversation_emoji_toggle);
+    //    this.stickerToggle = ResUtil.getDrawable(getContext(),
+    // R.attr.conversation_sticker_toggle);
+    this.imeToggle = ResUtil.getDrawable(getContext(), R.attr.conversation_keyboard_toggle);
+    this.mediaToggle = emojiToggle;
 
     setToMedia();
   }
@@ -59,7 +57,7 @@ public class EmojiToggle extends AppCompatImageButton {
   }
 
   public boolean isStickerMode() {
-    //return this.mediaToggle == stickerToggle;
+    // return this.mediaToggle == stickerToggle;
     return false;
   }
 }

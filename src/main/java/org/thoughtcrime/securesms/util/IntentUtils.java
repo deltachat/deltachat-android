@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.util;
 
-
 import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -9,17 +8,15 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-
-import org.thoughtcrime.securesms.R;
-
 import java.util.List;
+import org.thoughtcrime.securesms.R;
 
 public class IntentUtils {
 
   public static boolean isResolvable(@NonNull Context context, @NonNull Intent intent) {
-    List<ResolveInfo> resolveInfoList = context.getPackageManager().queryIntentActivities(intent, 0);
+    List<ResolveInfo> resolveInfoList =
+        context.getPackageManager().queryIntentActivities(intent, 0);
     return resolveInfoList != null && resolveInfoList.size() > 1;
   }
 

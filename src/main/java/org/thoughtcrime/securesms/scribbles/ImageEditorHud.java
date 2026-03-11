@@ -2,57 +2,51 @@ package org.thoughtcrime.securesms.scribbles;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.scribbles.widget.ColorPaletteAdapter;
-import org.thoughtcrime.securesms.scribbles.widget.VerticalSlideColorPicker;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.scribbles.widget.ColorPaletteAdapter;
+import org.thoughtcrime.securesms.scribbles.widget.VerticalSlideColorPicker;
 
 /**
- * The HUD (heads-up display) that contains all of the tools for interacting with
- * {@link org.thoughtcrime.securesms.imageeditor.ImageEditorView}
+ * The HUD (heads-up display) that contains all of the tools for interacting with {@link
+ * org.thoughtcrime.securesms.imageeditor.ImageEditorView}
  */
 public final class ImageEditorHud extends LinearLayout {
 
-  private View                     cropButton;
-  private View                     cropFlipButton;
-  private View                     cropRotateButton;
-  private View                     drawButton;
-  private View                     highlightButton;
-  private View                     blurButton;
-  private View                     textButton;
-  private View                     stickerButton;
-  private View                     undoButton;
-  private View                     saveButton;
-  private View                     deleteButton;
-  private View                     confirmButton;
+  private View cropButton;
+  private View cropFlipButton;
+  private View cropRotateButton;
+  private View drawButton;
+  private View highlightButton;
+  private View blurButton;
+  private View textButton;
+  private View stickerButton;
+  private View undoButton;
+  private View saveButton;
+  private View deleteButton;
+  private View confirmButton;
   private VerticalSlideColorPicker colorPicker;
-  private RecyclerView             colorPalette;
-  private View                     scribbleBlurHelpText;
+  private RecyclerView colorPalette;
+  private View scribbleBlurHelpText;
 
-  @NonNull
-  private EventListener              eventListener = NULL_EVENT_LISTENER;
-  @Nullable
-  private ColorPaletteAdapter        colorPaletteAdapter;
+  @NonNull private EventListener eventListener = NULL_EVENT_LISTENER;
+  @Nullable private ColorPaletteAdapter colorPaletteAdapter;
 
   private final Map<Mode, Set<View>> visibilityModeMap = new HashMap<>();
-  private final Set<View>            allViews          = new HashSet<>();
+  private final Set<View> allViews = new HashSet<>();
 
-  private Mode    currentMode;
+  private Mode currentMode;
   private boolean undoAvailable;
 
   public ImageEditorHud(@NonNull Context context) {
@@ -74,21 +68,21 @@ public final class ImageEditorHud extends LinearLayout {
     inflate(getContext(), R.layout.image_editor_hud, this);
     setOrientation(VERTICAL);
 
-    cropButton       = findViewById(R.id.scribble_crop_button);
-    cropFlipButton   = findViewById(R.id.scribble_crop_flip);
+    cropButton = findViewById(R.id.scribble_crop_button);
+    cropFlipButton = findViewById(R.id.scribble_crop_flip);
     cropRotateButton = findViewById(R.id.scribble_crop_rotate);
-    colorPalette     = findViewById(R.id.scribble_color_palette);
-    drawButton       = findViewById(R.id.scribble_draw_button);
-    highlightButton  = findViewById(R.id.scribble_highlight_button);
-    blurButton       = findViewById(R.id.scribble_blur_button);
-    textButton       = findViewById(R.id.scribble_text_button);
-    stickerButton    = findViewById(R.id.scribble_sticker_button);
-    undoButton       = findViewById(R.id.scribble_undo_button);
-    saveButton       = findViewById(R.id.scribble_save_button);
-    deleteButton     = findViewById(R.id.scribble_delete_button);
-    confirmButton    = findViewById(R.id.scribble_confirm_button);
-    colorPicker      = findViewById(R.id.scribble_color_picker);
-    scribbleBlurHelpText  = findViewById(R.id.scribble_blur_help_text);
+    colorPalette = findViewById(R.id.scribble_color_palette);
+    drawButton = findViewById(R.id.scribble_draw_button);
+    highlightButton = findViewById(R.id.scribble_highlight_button);
+    blurButton = findViewById(R.id.scribble_blur_button);
+    textButton = findViewById(R.id.scribble_text_button);
+    stickerButton = findViewById(R.id.scribble_sticker_button);
+    undoButton = findViewById(R.id.scribble_undo_button);
+    saveButton = findViewById(R.id.scribble_save_button);
+    deleteButton = findViewById(R.id.scribble_delete_button);
+    confirmButton = findViewById(R.id.scribble_confirm_button);
+    colorPicker = findViewById(R.id.scribble_color_picker);
+    scribbleBlurHelpText = findViewById(R.id.scribble_blur_help_text);
 
     initializeViews();
     initializeVisibilityMap();
@@ -96,7 +90,16 @@ public final class ImageEditorHud extends LinearLayout {
   }
 
   private void initializeVisibilityMap() {
-    setVisibleViewsWhenInMode(Mode.NONE, drawButton, highlightButton, blurButton, textButton, stickerButton, cropButton, undoButton, saveButton);
+    setVisibleViewsWhenInMode(
+        Mode.NONE,
+        drawButton,
+        highlightButton,
+        blurButton,
+        textButton,
+        stickerButton,
+        cropButton,
+        undoButton,
+        saveButton);
 
     setVisibleViewsWhenInMode(Mode.DRAW, confirmButton, undoButton, colorPicker, colorPalette);
 
@@ -108,7 +111,8 @@ public final class ImageEditorHud extends LinearLayout {
 
     setVisibleViewsWhenInMode(Mode.MOVE_DELETE, confirmButton, deleteButton);
 
-    setVisibleViewsWhenInMode(Mode.CROP, confirmButton, cropFlipButton, cropRotateButton, undoButton);
+    setVisibleViewsWhenInMode(
+        Mode.CROP, confirmButton, cropFlipButton, cropRotateButton, undoButton);
 
     for (Set<View> views : visibilityModeMap.values()) {
       allViews.addAll(views);
@@ -122,10 +126,11 @@ public final class ImageEditorHud extends LinearLayout {
   private void initializeViews() {
     undoButton.setOnClickListener(v -> eventListener.onUndo());
 
-    deleteButton.setOnClickListener(v -> {
-      eventListener.onDelete();
-      setMode(Mode.NONE);
-    });
+    deleteButton.setOnClickListener(
+        v -> {
+          eventListener.onDelete();
+          setMode(Mode.NONE);
+        });
 
     cropButton.setOnClickListener(v -> setMode(Mode.CROP));
     cropFlipButton.setOnClickListener(v -> eventListener.onFlipHorizontal());
@@ -178,10 +183,18 @@ public final class ImageEditorHud extends LinearLayout {
     updateButtonVisibility(mode);
 
     switch (mode) {
-      case DRAW:      presentModeDraw();      break;
-      case HIGHLIGHT: presentModeHighlight(); break;
-      case TEXT:      presentModeText();      break;
-      case BLUR:      presentModeBlur();      break;
+      case DRAW:
+        presentModeDraw();
+        break;
+      case HIGHLIGHT:
+        presentModeHighlight();
+        break;
+      case TEXT:
+        presentModeText();
+        break;
+      case BLUR:
+        presentModeBlur();
+        break;
     }
 
     if (notify) {
@@ -198,9 +211,9 @@ public final class ImageEditorHud extends LinearLayout {
   }
 
   private boolean buttonIsVisible(@Nullable Set<View> visibleButtons, @NonNull View button) {
-    return visibleButtons != null &&
-           visibleButtons.contains(button) &&
-           (button != undoButton || undoAvailable);
+    return visibleButtons != null
+        && visibleButtons.contains(button)
+        && (button != undoButton || undoAvailable);
   }
 
   private void presentModeBlur() {
@@ -223,9 +236,11 @@ public final class ImageEditorHud extends LinearLayout {
     colorPicker.setActiveColor(Color.WHITE);
   }
 
-  private final VerticalSlideColorPicker.OnColorChangeListener standardOnColorChangeListener = selectedColor -> eventListener.onColorChange(selectedColor);
+  private final VerticalSlideColorPicker.OnColorChangeListener standardOnColorChangeListener =
+      selectedColor -> eventListener.onColorChange(selectedColor);
 
-  private final VerticalSlideColorPicker.OnColorChangeListener highlightOnColorChangeListener = selectedColor -> eventListener.onColorChange(replaceAlphaWith128(selectedColor));
+  private final VerticalSlideColorPicker.OnColorChangeListener highlightOnColorChangeListener =
+      selectedColor -> eventListener.onColorChange(replaceAlphaWith128(selectedColor));
 
   private static int replaceAlphaWith128(int color) {
     return color & ~0xff000000 | 0x80000000;
@@ -234,7 +249,8 @@ public final class ImageEditorHud extends LinearLayout {
   public void setUndoAvailability(boolean undoAvailable) {
     this.undoAvailable = undoAvailable;
 
-    undoButton.setVisibility(buttonIsVisible(visibilityModeMap.get(currentMode), undoButton) ? VISIBLE : GONE);
+    undoButton.setVisibility(
+        buttonIsVisible(visibilityModeMap.get(currentMode), undoButton) ? VISIBLE : GONE);
   }
 
   public enum Mode {
@@ -249,47 +265,47 @@ public final class ImageEditorHud extends LinearLayout {
 
   public interface EventListener {
     void onModeStarted(@NonNull Mode mode);
+
     void onColorChange(int color);
+
     void onUndo();
+
     void onDelete();
+
     void onSave();
+
     void onFlipHorizontal();
+
     void onRotate90AntiClockwise();
+
     void onRequestFullScreen(boolean fullScreen, boolean hideKeyboard);
   }
 
-  private static final EventListener NULL_EVENT_LISTENER = new EventListener() {
+  private static final EventListener NULL_EVENT_LISTENER =
+      new EventListener() {
 
-    @Override
-    public void onModeStarted(@NonNull Mode mode) {
-    }
+        @Override
+        public void onModeStarted(@NonNull Mode mode) {}
 
-    @Override
-    public void onColorChange(int color) {
-    }
+        @Override
+        public void onColorChange(int color) {}
 
-    @Override
-    public void onUndo() {
-    }
+        @Override
+        public void onUndo() {}
 
-    @Override
-    public void onDelete() {
-    }
+        @Override
+        public void onDelete() {}
 
-    @Override
-    public void onSave() {
-    }
+        @Override
+        public void onSave() {}
 
-    @Override
-    public void onFlipHorizontal() {
-    }
+        @Override
+        public void onFlipHorizontal() {}
 
-    @Override
-    public void onRotate90AntiClockwise() {
-    }
+        @Override
+        public void onRotate90AntiClockwise() {}
 
-    @Override
-    public void onRequestFullScreen(boolean fullScreen, boolean hideKeyboard) {
-    }
-  };
+        @Override
+        public void onRequestFullScreen(boolean fullScreen, boolean hideKeyboard) {}
+      };
 }

@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms.search.model;
 
 import androidx.annotation.NonNull;
-
 import com.b44t.messenger.DcChatlist;
 
 /**
@@ -10,22 +9,23 @@ import com.b44t.messenger.DcChatlist;
  */
 public class SearchResult {
 
-  public static final SearchResult EMPTY = new SearchResult("", new int[]{}, new DcChatlist(0, 0), new int[]{});
+  public static final SearchResult EMPTY =
+      new SearchResult("", new int[] {}, new DcChatlist(0, 0), new int[] {});
 
-  private final String     query;
-  private final int[]      contacts;
+  private final String query;
+  private final int[] contacts;
   private final DcChatlist conversations;
-  private final int[]      messages;
+  private final int[] messages;
 
-  public SearchResult(@NonNull String     query,
-                      @NonNull int[]      contacts,
-                      @NonNull DcChatlist conversations,
-                      @NonNull int[]      messages)
-  {
-    this.query         = query;
-    this.contacts      = contacts;
+  public SearchResult(
+      @NonNull String query,
+      @NonNull int[] contacts,
+      @NonNull DcChatlist conversations,
+      @NonNull int[] messages) {
+    this.query = query;
+    this.contacts = contacts;
     this.conversations = conversations;
-    this.messages      = messages;
+    this.messages = messages;
   }
 
   public int[] getContacts() {
