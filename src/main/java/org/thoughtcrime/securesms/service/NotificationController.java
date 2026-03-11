@@ -5,25 +5,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
-
 import androidx.annotation.NonNull;
-
 import java.util.concurrent.atomic.AtomicReference;
 
-/**
- * Class to control notifications triggered by GenericForeGroundService.
- *
- */
+/** Class to control notifications triggered by GenericForeGroundService. */
 public final class NotificationController {
 
   private final @NonNull Context context;
   private final int id;
 
-  private int     progress;
-  private int     progressMax;
+  private int progress;
+  private int progressMax;
   private boolean indeterminate;
-  private String  message = "";
-  private long    percent = -1;
+  private String message = "";
+  private long percent = -1;
 
   private final ServiceConnection serviceConnection;
 
@@ -31,26 +26,31 @@ public final class NotificationController {
 
   NotificationController(@NonNull Context context, int id) {
     this.context = context;
-    this.id      = id;
+    this.id = id;
 
-    serviceConnection = new ServiceConnection() {
-      @Override
-      public void onServiceConnected(ComponentName name, IBinder service) {
-        GenericForegroundService.LocalBinder binder = (GenericForegroundService.LocalBinder) service;
-        GenericForegroundService genericForegroundService = binder.getService();
+    serviceConnection =
+        new ServiceConnection() {
+          @Override
+          public void onServiceConnected(ComponentName name, IBinder service) {
+            GenericForegroundService.LocalBinder binder =
+                (GenericForegroundService.LocalBinder) service;
+            GenericForegroundService genericForegroundService = binder.getService();
 
-        NotificationController.this.service.set(genericForegroundService);
+            NotificationController.this.service.set(genericForegroundService);
 
-        updateProgressOnService();
-      }
+            updateProgressOnService();
+          }
 
-      @Override
-      public void onServiceDisconnected(ComponentName name) {
-        service.set(null);
-      }
-    };
+          @Override
+          public void onServiceDisconnected(ComponentName name) {
+            service.set(null);
+          }
+        };
 
-    context.bindService(new Intent(context, GenericForegroundService.class), serviceConnection, Context.BIND_AUTO_CREATE);
+    context.bindService(
+        new Intent(context, GenericForegroundService.class),
+        serviceConnection,
+        Context.BIND_AUTO_CREATE);
   }
 
   public int getId() {
@@ -61,7 +61,7 @@ public final class NotificationController {
     try {
       GenericForegroundService.stopForegroundTask(context, id);
       context.unbindService(serviceConnection);
-    } catch(Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
@@ -74,16 +74,18 @@ public final class NotificationController {
     setProgress((int) newProgressMax, (int) newProgress, false, newMessage);
   }
 
-  private synchronized void setProgress(int newProgressMax, int newProgress, boolean indeterminant, @NonNull String newMessage) {
+  private synchronized void setProgress(
+      int newProgressMax, int newProgress, boolean indeterminant, @NonNull String newMessage) {
     int newPercent = newProgressMax != 0 ? 100 * newProgress / newProgressMax : -1;
 
-    boolean same = newPercent == percent && indeterminate == indeterminant && newMessage.equals(message);
+    boolean same =
+        newPercent == percent && indeterminate == indeterminant && newMessage.equals(message);
 
-    percent       = newPercent;
-    progress      = newProgress;
-    progressMax   = newProgressMax;
+    percent = newPercent;
+    progress = newProgress;
+    progressMax = newProgressMax;
     indeterminate = indeterminant;
-    message       = newMessage;
+    message = newMessage;
 
     if (same) return;
 
@@ -95,6 +97,6 @@ public final class NotificationController {
 
     if (genericForegroundService == null) return;
 
-    genericForegroundService.replaceProgress(id, progressMax, progress, indeterminate,  message);
+    genericForegroundService.replaceProgress(id, progressMax, progress, indeterminate, message);
   }
 }

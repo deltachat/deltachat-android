@@ -24,23 +24,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.core.app.RemoteInput;
-
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
-
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Util;
 
-
-/**
- * Get the response text from the Wearable Device and sends an message as a reply
- */
+/** Get the response text from the Wearable Device and sends an message as a reply */
 public class RemoteReplyReceiver extends BroadcastReceiver {
 
-  public static final String TAG           = RemoteReplyReceiver.class.getSimpleName();
-  public static final String REPLY_ACTION  = "org.thoughtcrime.securesms.notifications.WEAR_REPLY";
+  public static final String TAG = RemoteReplyReceiver.class.getSimpleName();
+  public static final String REPLY_ACTION = "org.thoughtcrime.securesms.notifications.WEAR_REPLY";
   public static final String ACCOUNT_ID_EXTRA = "account_id";
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String MSG_ID_EXTRA = "msg_id";
@@ -60,20 +54,21 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
     final CharSequence responseText = remoteInput.getCharSequence(EXTRA_REMOTE_REPLY);
 
     if (responseText != null) {
-      Util.runOnAnyBackgroundThread(() -> {
-        DcContext dcContext = DcHelper.getAccounts(context).getAccount(accountId);
-        dcContext.marknoticedChat(chatId);
-        dcContext.markseenMsgs(new int[]{msgId});
-        if (dcContext.getChat(chatId).isContactRequest()) {
-          dcContext.acceptChat(chatId);
-        }
+      Util.runOnAnyBackgroundThread(
+          () -> {
+            DcContext dcContext = DcHelper.getAccounts(context).getAccount(accountId);
+            dcContext.marknoticedChat(chatId);
+            dcContext.markseenMsgs(new int[] {msgId});
+            if (dcContext.getChat(chatId).isContactRequest()) {
+              dcContext.acceptChat(chatId);
+            }
 
-        DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-        msg.setText(responseText.toString());
-        dcContext.sendMsg(chatId, msg);
+            DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+            msg.setText(responseText.toString());
+            dcContext.sendMsg(chatId, msg);
 
-        DcHelper.getNotificationCenter(context).removeNotifications(accountId, chatId);
-      });
+            DcHelper.getNotificationCenter(context).removeNotifications(accountId, chatId);
+          });
     }
   }
 }
