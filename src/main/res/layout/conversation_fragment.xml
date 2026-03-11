@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:id="@+id/conversation_container"
-             android:layout_width="fill_parent"
-             android:layout_height="match_parent">
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/conversation_container"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@android:id/list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="8dp"
-            android:scrollbars="vertical"
-            android:cacheColorHint="?conversation_background"
-            android:clipChildren="false"
-            android:clipToPadding="false"/>
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="8dp"
+        android:scrollbars="vertical"
+        android:cacheColorHint="?conversation_background"
+        android:clipChildren="false"
+        android:clipToPadding="false" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/no_messages_text_view"
@@ -23,16 +24,15 @@
         android:layout_gravity="center"
         android:visibility="visible"
         style="@style/NoMessagesTextView"
-        tools:text="@string/chat_new_one_to_one_hint"
-        />
+        tools:text="@string/chat_new_one_to_one_hint" />
 
     <View
         android:id="@+id/bottom_divider"
         android:layout_width="match_parent"
-          android:layout_height="2dp"
-          android:layout_gravity="bottom"
-          android:background="@drawable/compose_divider_background"
-          android:alpha="1" />
+        android:layout_height="2dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/compose_divider_background"
+        android:alpha="1" />
 
     <ImageButton
         android:id="@+id/floating_location_button"
@@ -49,7 +49,7 @@
         android:alpha="0.9"
         android:contentDescription="Location streaming enabled"
         android:src="@drawable/ic_location_on_white_24dp"
-        android:tint="@color/location_icon"/>
+        android:tint="@color/location_icon" />
 
     <ImageButton
         android:id="@+id/scroll_to_bottom_button"
@@ -69,7 +69,7 @@
         android:elevation="1dp"
         android:alpha="0.9"
         android:contentDescription="@string/menu_scroll_to_bottom"
-        android:src="@drawable/ic_search_down"/>
+        android:src="@drawable/ic_search_down" />
 
     <org.thoughtcrime.securesms.reactions.AddReactionView
         android:id="@+id/add_reaction_view"
@@ -89,38 +89,38 @@
             android:text="👍"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/AddReaction"/>
+            style="@style/AddReaction" />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/reaction_1"
             android:text="👎"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/AddReaction"/>
+            style="@style/AddReaction" />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/reaction_2"
             android:text="❤️"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/AddReaction"/>
+            style="@style/AddReaction" />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/reaction_3"
             android:text="😂"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/AddReaction"/>
+            style="@style/AddReaction" />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/reaction_4"
             android:text="🙁"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/AddReaction"/>
+            style="@style/AddReaction" />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/reaction_any"
             android:text="⋯"
             android:textColor="?attr/pref_icon_tint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/AddReaction"/>
+            style="@style/AddReaction" />
     </org.thoughtcrime.securesms.reactions.AddReactionView>
 
 </FrameLayout>

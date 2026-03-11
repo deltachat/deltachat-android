@@ -3,8 +3,8 @@
     <color name="delta_primary">#ff415e6b</color>
     <color name="delta_primary_lite">#4c6e7d</color>
 
-    <!-- delta_accent fits in light and in darkmode;
-     delta_accent_darker can be used for less-covered areas as non-bold text  -->
+    <!-- delta_accent fits in light and in darkmode; delta_accent_darker can be used for less-covered
+        areas as non-bold text -->
     <color name="delta_accent">#42A5F5</color>
     <color name="delta_accent_darker">#ff2090ea</color>
 
@@ -62,7 +62,7 @@
     <color name="pinned_bg_dark">#222222</color>
 
     <!-- unknown_sender fits in dark mode and lite mode (also other chat/contact colors fit in both modes);
-         unknown_sender is used for the sender-name/quote-bar if the sender is unknown -->
+        unknown_sender is used for the sender-name/quote-bar if the sender is unknown -->
     <color name="unknown_sender">#ff999999</color>
 
     <color name="reaction_pill_background">#ffffff</color>

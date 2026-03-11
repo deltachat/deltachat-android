@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <org.thoughtcrime.securesms.ProfileTextItem
-             xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:background="?attr/conversation_list_item_background"
-             android:focusable="true"
-             android:padding="16dp">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/conversation_list_item_background"
+    android:focusable="true"
+    android:padding="16dp">
 
-    <LinearLayout android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 

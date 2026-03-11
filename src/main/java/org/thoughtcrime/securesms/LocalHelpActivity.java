@@ -4,21 +4,19 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import androidx.activity.OnBackPressedCallback;
-
+import java.io.InputStream;
+import java.util.Locale;
 import org.thoughtcrime.securesms.util.TextUtil;
 import org.thoughtcrime.securesms.util.Util;
 
-import java.io.InputStream;
-import java.util.Locale;
-
-public class LocalHelpActivity extends WebViewActivity
-{
+public class LocalHelpActivity extends WebViewActivity {
   public static final String SECTION_EXTRA = "section_extra";
 
   @Override
-  protected boolean allowInLockedMode() { return true; }
+  protected boolean allowInLockedMode() {
+    return true;
+  }
 
   @Override
   protected void onCreate(Bundle state, boolean ready) {
@@ -35,31 +33,37 @@ public class LocalHelpActivity extends WebViewActivity
       String appCountry = locale.getCountry();
       if (assetExists(helpPath.replace("LANG", appLang))) {
         helpLang = appLang;
-      } else if (assetExists(helpPath.replace("LANG", appLang+"_"+appCountry))) {
-        helpLang = appLang+"_"+appCountry;
+      } else if (assetExists(helpPath.replace("LANG", appLang + "_" + appCountry))) {
+        helpLang = appLang + "_" + appCountry;
       } else {
         appLang = appLang.substring(0, 2);
         if (assetExists(helpPath.replace("LANG", appLang))) {
           helpLang = appLang;
         }
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
 
-    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
-      @Override
-      public void handleOnBackPressed() {
-        if (webView.canGoBack()) {
-          webView.goBack();
-        } else {
-          setEnabled(false);
-          getOnBackPressedDispatcher().onBackPressed();
-        }
-      }
-    });
+    getOnBackPressedDispatcher()
+        .addCallback(
+            this,
+            new OnBackPressedCallback(true) {
+              @Override
+              public void handleOnBackPressed() {
+                if (webView.canGoBack()) {
+                  webView.goBack();
+                } else {
+                  setEnabled(false);
+                  getOnBackPressedDispatcher().onBackPressed();
+                }
+              }
+            });
 
-    webView.loadUrl("file:///android_asset/" + helpPath.replace("LANG", helpLang) + (section!=null? section : ""));
+    webView.loadUrl(
+        "file:///android_asset/"
+            + helpPath.replace("LANG", helpLang)
+            + (section != null ? section : ""));
   }
 
   @Override
@@ -124,7 +128,7 @@ public class LocalHelpActivity extends WebViewActivity
       InputStream is = assetManager.open(fileName);
       exists = true;
       is.close();
-    } catch(Exception e) {
+    } catch (Exception e) {
       ; // a non-existent asset is no error, the function's purpose is to check exactly that.
     }
     return exists;

@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.components.viewpager;
 
-
 import androidx.viewpager.widget.ViewPager;
 
 public abstract class ExtendedOnPageChangedListener implements ViewPager.OnPageChangeListener {
@@ -8,9 +7,7 @@ public abstract class ExtendedOnPageChangedListener implements ViewPager.OnPageC
   private Integer currentPage = null;
 
   @Override
-  public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-  }
+  public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
   @Override
   public void onPageSelected(int position) {
@@ -21,9 +18,5 @@ public abstract class ExtendedOnPageChangedListener implements ViewPager.OnPageC
   public abstract void onPageUnselected(int position);
 
   @Override
-  public void onPageScrollStateChanged(int state) {
-
-  }
-
-
+  public void onPageScrollStateChanged(int state) {}
 }

@@ -4,27 +4,24 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import java.lang.ref.WeakReference;
 
 /**
  * "Relaying" means "Forwarding or Sharing".
  *
- * When forwarding or sharing, we show the ConversationListActivity to the user.
- * However, ConversationListActivity has `launchMode="singleTask"`, which means that this will
- * destroy the existing ConversationListActivity.
+ * <p>When forwarding or sharing, we show the ConversationListActivity to the user. However,
+ * ConversationListActivity has `launchMode="singleTask"`, which means that this will destroy the
+ * existing ConversationListActivity.
  *
- * In API 20-29, `startActivityForResult()` could be used instead of `startActivity()`
- * to override this behavior and get two instances of ConversationListActivity.
+ * <p>In API 20-29, `startActivityForResult()` could be used instead of `startActivity()` to
+ * override this behavior and get two instances of ConversationListActivity.
  *
- * As this is not possible anymore starting with API 30, we needed another solution, and created
+ * <p>As this is not possible anymore starting with API 30, we needed another solution, and created
  * this activity here.
  *
- * See https://github.com/deltachat/deltachat-android/issues/1704.
+ * <p>See https://github.com/deltachat/deltachat-android/issues/1704.
  */
-
 public class ConversationListRelayingActivity extends ConversationListActivity {
   static WeakReference<ConversationListRelayingActivity> INSTANCE = null;
 
@@ -42,7 +39,8 @@ public class ConversationListRelayingActivity extends ConversationListActivity {
 
   // =================== Static Methods ===================
   public static void start(Fragment fragment, Intent intent) {
-    intent.setComponent(new ComponentName(fragment.getContext(), ConversationListRelayingActivity.class));
+    intent.setComponent(
+        new ComponentName(fragment.getContext(), ConversationListRelayingActivity.class));
     fragment.startActivity(intent);
   }
 

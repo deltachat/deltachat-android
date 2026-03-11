@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms;
 
 import android.view.MotionEvent;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 

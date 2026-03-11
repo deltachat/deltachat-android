@@ -1,73 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout android:id="@+id/audio_widget_container"
-                  android:orientation="vertical"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/audio_widget_container"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <LinearLayout android:layout_width="fill_parent"
-                      android:layout_height="fill_parent"
-                      android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal">
 
-            <ImageView android:id="@+id/play_pause"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center_vertical"
-                       android:focusable="true"
-                       android:gravity="center_vertical"
-                       android:clickable="true"
-                       android:visibility="visible"
-                       android:background="@drawable/ic_circle_fill_white_48dp"
-                       android:backgroundTint="@color/audio_icon"
-                       android:src="@drawable/play_icon"
-                       android:scaleType="centerInside"
-                       android:contentDescription="@string/menu_play"/>
+            <ImageView
+                android:id="@+id/play_pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:visibility="visible"
+                android:background="@drawable/ic_circle_fill_white_48dp"
+                android:backgroundTint="@color/audio_icon"
+                android:src="@drawable/play_icon"
+                android:scaleType="centerInside"
+                android:contentDescription="@string/menu_play" />
 
-            <LinearLayout android:layout_width="fill_parent"
-                          android:layout_height="fill_parent"
-                          android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
 
-                <SeekBar android:id="@+id/seek"
-                         android:layout_width="fill_parent"
-                         android:layout_height="0dp"
-                         android:layout_weight="2"
-                         android:layout_gravity="center_vertical"
-                         android:progressTint="@color/audio_icon"
-                         android:progressTintMode="src_in"
-                         android:thumbTint="@color/audio_icon"
-                         android:thumbTintMode="src_in"/>
+                <SeekBar
+                    android:id="@+id/seek"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:layout_gravity="center_vertical"
+                    android:progressTint="@color/audio_icon"
+                    android:progressTintMode="src_in"
+                    android:thumbTint="@color/audio_icon"
+                    android:thumbTintMode="src_in" />
 
-                <LinearLayout android:layout_width="fill_parent"
-                              android:layout_height="wrap_content"
-                              android:layout_gravity="top"
-                              android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:orientation="horizontal">
 
-                    <TextView android:id="@+id/timestamp"
-                              android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:layout_marginLeft="8dp"
-                              android:layout_marginRight="8dp"
-                              android:textAppearance="?android:attr/textAppearanceSmall"
-                              android:textColor="@color/audio_icon"
-                              style="@style/Signal.Text.Caption"
-                              android:autoLink="none"
-                              android:ellipsize="end"
-                              android:singleLine="true"
-                              android:visibility="visible"/>
+                    <TextView
+                        android:id="@+id/timestamp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/audio_icon"
+                        style="@style/Signal.Text.Caption"
+                        android:autoLink="none"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:visibility="visible" />
 
-                    <TextView android:id="@+id/title"
-                              android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:layout_marginRight="8dp"
-                              android:layout_marginEnd="8dp"
-                              android:textAppearance="?android:attr/textAppearanceSmall"
-                              android:textColor="@color/audio_icon"
-                              style="@style/Signal.Text.Caption"
-                              android:autoLink="none"
-                              android:ellipsize="end"
-                              android:singleLine="true"
-                              android:visibility="visible"/>
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/audio_icon"
+                        style="@style/Signal.Text.Caption"
+                        android:autoLink="none"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:visibility="visible" />
 
                 </LinearLayout>
 

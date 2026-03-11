@@ -1,16 +1,9 @@
 package org.thoughtcrime.securesms.components;
 
-
 import android.animation.Animator;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
-import androidx.annotation.MainThread;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MenuItem;
@@ -19,7 +12,11 @@ import android.view.ViewAnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-
+import androidx.annotation.MainThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.animation.AnimationCompleteListener;
 
@@ -56,9 +53,11 @@ public class SearchToolbar extends LinearLayout {
       return;
     }
 
-    Drawable drawable = getContext().getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
+    Drawable drawable =
+        getContext().getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
     drawable.mutate();
-    drawable.setColorFilter(getContext().getResources().getColor(R.color.grey_700), PorterDuff.Mode.SRC_IN);
+    drawable.setColorFilter(
+        getContext().getResources().getColor(R.color.grey_700), PorterDuff.Mode.SRC_IN);
 
     toolbar.setNavigationIcon(drawable);
     toolbar.inflateMenu(R.menu.conversation_list_search);
@@ -72,53 +71,57 @@ public class SearchToolbar extends LinearLayout {
 
     if (searchText != null) {
       searchText.setHint(R.string.search);
-      searchText.setOnEditorActionListener((textView, actionId, keyEvent) -> {
-        if (EditorInfo.IME_ACTION_DONE == actionId) {
-          searchView.clearFocus();
-          return true;
-        }
-        return false;
-      });
+      searchText.setOnEditorActionListener(
+          (textView, actionId, keyEvent) -> {
+            if (EditorInfo.IME_ACTION_DONE == actionId) {
+              searchView.clearFocus();
+              return true;
+            }
+            return false;
+          });
     } else {
       searchView.setQueryHint(getResources().getString(R.string.search));
     }
 
-    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-      @Override
-      public boolean onQueryTextSubmit(String query) {
-        if (listener != null) listener.onSearchTextChange(query);
-        return true;
-      }
+    searchView.setOnQueryTextListener(
+        new SearchView.OnQueryTextListener() {
+          @Override
+          public boolean onQueryTextSubmit(String query) {
+            if (listener != null) listener.onSearchTextChange(query);
+            return true;
+          }
 
-      @Override
-      public boolean onQueryTextChange(String newText) {
-        return onQueryTextSubmit(newText);
-      }
-    });
+          @Override
+          public boolean onQueryTextChange(String newText) {
+            return onQueryTextSubmit(newText);
+          }
+        });
 
-    searchItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
-      @Override
-      public boolean onMenuItemActionExpand(MenuItem item) {
-        return true;
-      }
+    searchItem.setOnActionExpandListener(
+        new MenuItem.OnActionExpandListener() {
+          @Override
+          public boolean onMenuItemActionExpand(MenuItem item) {
+            return true;
+          }
 
-      @Override
-      public boolean onMenuItemActionCollapse(MenuItem item) {
-        hide();
-        return true;
-      }
-    });
+          @Override
+          public boolean onMenuItemActionCollapse(MenuItem item) {
+            hide();
+            return true;
+          }
+        });
 
     MenuItem searchUnread = toolbar.getMenu().findItem(R.id.search_unread);
-    searchUnread.setOnMenuItemClickListener(item -> {
-      String t = searchText.getText().toString();
-      if (!t.contains("is:unread")) {
-        t += (t.isEmpty() ? "" : " ") + "is:unread ";
-      }
-      searchText.setText(t);
-      searchText.setSelection(t.length(), t.length());
-      return true;
-    });
+    searchUnread.setOnMenuItemClickListener(
+        item -> {
+          String t = searchText.getText().toString();
+          if (!t.contains("is:unread")) {
+            t += (t.isEmpty() ? "" : " ") + "is:unread ";
+          }
+          searchText.setText(t);
+          searchText.setSelection(t.length(), t.length());
+          return true;
+        });
 
     toolbar.setNavigationOnClickListener(v -> hide());
   }
@@ -131,7 +134,8 @@ public class SearchToolbar extends LinearLayout {
 
       searchItem.expandActionView();
 
-      Animator animator = ViewAnimationUtils.createCircularReveal(this, (int) x, (int) y, 0, getWidth());
+      Animator animator =
+          ViewAnimationUtils.createCircularReveal(this, (int) x, (int) y, 0, getWidth());
       animator.setDuration(400);
 
       setVisibility(View.VISIBLE);
@@ -147,17 +151,18 @@ public class SearchToolbar extends LinearLayout {
   private void hide() {
     if (getVisibility() == View.VISIBLE) {
 
-
       if (listener != null) listener.onSearchClosed();
 
-      Animator animator = ViewAnimationUtils.createCircularReveal(this, (int) x, (int) y, getWidth(), 0);
+      Animator animator =
+          ViewAnimationUtils.createCircularReveal(this, (int) x, (int) y, getWidth(), 0);
       animator.setDuration(400);
-      animator.addListener(new AnimationCompleteListener() {
-        @Override
-        public void onAnimationEnd(@NonNull Animator animation) {
-          setVisibility(View.INVISIBLE);
-        }
-      });
+      animator.addListener(
+          new AnimationCompleteListener() {
+            @Override
+            public void onAnimationEnd(@NonNull Animator animation) {
+              setVisibility(View.INVISIBLE);
+            }
+          });
       animator.start();
     }
   }
@@ -173,7 +178,7 @@ public class SearchToolbar extends LinearLayout {
 
   public interface SearchListener {
     void onSearchTextChange(String text);
+
     void onSearchClosed();
   }
-
 }

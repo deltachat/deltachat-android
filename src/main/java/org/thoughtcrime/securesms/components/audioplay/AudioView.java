@@ -11,44 +11,40 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.lifecycle.Observer;
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
-
+import java.util.Map;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.util.DateUtils;
-
-import java.util.Map;
-
 
 public class AudioView extends FrameLayout {
 
   private static final String TAG = AudioView.class.getSimpleName();
 
-  private final @NonNull ImageView       playPauseButton;
+  private final @NonNull ImageView playPauseButton;
   private final AnimatedVectorDrawableCompat playToPauseDrawable;
   private final AnimatedVectorDrawableCompat pauseToPlayDrawable;
-  private final Drawable                 playDrawable;
-  private final Drawable                 pauseDrawable;
+  private final Drawable playDrawable;
+  private final Drawable pauseDrawable;
   private final Animatable2Compat.AnimationCallback animationCallback;
-  private final @NonNull SeekBar         seekBar;
-  private final @NonNull TextView        timestamp;
-  private final @NonNull TextView        title;
-  private final @NonNull View            mask;
-  private OnActionListener               listener;
+  private final @NonNull SeekBar seekBar;
+  private final @NonNull TextView timestamp;
+  private final @NonNull TextView title;
+  private final @NonNull View mask;
+  private OnActionListener listener;
 
-  private int                            msgId = -1;
-  private Uri                            audioUri;
-  private int                            progress;
-  private int                            duration;
-  private AudioPlaybackViewModel         viewModel;
+  private int msgId = -1;
+  private Uri audioUri;
+  private int progress;
+  private int duration;
+  private AudioPlaybackViewModel viewModel;
   private final Observer<AudioPlaybackState> stateObserver = this::onPlaybackStateChanged;
   private final Observer<Map<Integer, Long>> durationObserver = this::onDurationsChanged;
-  private boolean                        isPlaying;
+  private boolean isPlaying;
 
   public AudioView(Context context) {
     this(context, null);
@@ -62,29 +58,30 @@ public class AudioView extends FrameLayout {
     super(context, attrs, defStyleAttr);
     inflate(context, R.layout.audio_view, this);
 
-    this.playPauseButton  = findViewById(R.id.play_pause);
-    this.seekBar          = findViewById(R.id.seek);
-    this.timestamp        = findViewById(R.id.timestamp);
-    this.title            = findViewById(R.id.title);
-    this.mask             = findViewById(R.id.interception_mask);
+    this.playPauseButton = findViewById(R.id.play_pause);
+    this.seekBar = findViewById(R.id.seek);
+    this.timestamp = findViewById(R.id.timestamp);
+    this.title = findViewById(R.id.title);
+    this.mask = findViewById(R.id.interception_mask);
 
     updateTimestampsAndSeekBar();
 
     // Load drawables once
-    this.playToPauseDrawable = AnimatedVectorDrawableCompat.create(
-      getContext(), R.drawable.play_to_pause_animation);
-    this.pauseToPlayDrawable = AnimatedVectorDrawableCompat.create(
-      getContext(), R.drawable.pause_to_play_animation);
+    this.playToPauseDrawable =
+        AnimatedVectorDrawableCompat.create(getContext(), R.drawable.play_to_pause_animation);
+    this.pauseToPlayDrawable =
+        AnimatedVectorDrawableCompat.create(getContext(), R.drawable.pause_to_play_animation);
     this.playDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.play_icon);
     this.pauseDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.pause_icon);
 
-    this.animationCallback = new Animatable2Compat.AnimationCallback() {
-      @Override
-      public void onAnimationEnd(Drawable drawable) {
-        Drawable endState = isPlaying ? pauseDrawable : playDrawable;
-        playPauseButton.setImageDrawable(endState);
-      }
-    };
+    this.animationCallback =
+        new Animatable2Compat.AnimationCallback() {
+          @Override
+          public void onAnimationEnd(Drawable drawable) {
+            Drawable endState = isPlaying ? pauseDrawable : playDrawable;
+            playPauseButton.setImageDrawable(endState);
+          }
+        };
   }
 
   @Override
@@ -104,51 +101,53 @@ public class AudioView extends FrameLayout {
       viewModel.getDurations().observeForever(durationObserver);
     }
 
-    playPauseButton.setOnClickListener(v -> {
-      Log.w(TAG, "playPauseButton onClick");
+    playPauseButton.setOnClickListener(
+        v -> {
+          Log.w(TAG, "playPauseButton onClick");
 
-      if (viewModel == null || audioUri == null) return;
+          if (viewModel == null || audioUri == null) return;
 
-      AudioPlaybackState state = viewModel.getPlaybackState().getValue();
+          AudioPlaybackState state = viewModel.getPlaybackState().getValue();
 
-      if (state != null && msgId == state.getMsgId() && audioUri.equals(state.getAudioUri())) {
-        // Same audio
-        if (state.getStatus() == AudioPlaybackState.PlaybackStatus.PLAYING) {
-          viewModel.pause(msgId, audioUri);
-        } else {
-          viewModel.play(msgId, audioUri);
-        }
-      } else {
-        // Different audio
-        // Note: they can be the same *physical* file, but in different messages
-        viewModel.loadAudioAndPlay(msgId, audioUri);
-      }
+          if (state != null && msgId == state.getMsgId() && audioUri.equals(state.getAudioUri())) {
+            // Same audio
+            if (state.getStatus() == AudioPlaybackState.PlaybackStatus.PLAYING) {
+              viewModel.pause(msgId, audioUri);
+            } else {
+              viewModel.play(msgId, audioUri);
+            }
+          } else {
+            // Different audio
+            // Note: they can be the same *physical* file, but in different messages
+            viewModel.loadAudioAndPlay(msgId, audioUri);
+          }
 
-      if (listener != null) {
-        listener.onPlayPauseButtonClicked(v);
-      }
-    });
+          if (listener != null) {
+            listener.onPlayPauseButtonClicked(v);
+          }
+        });
 
-    seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-      @Override
-      public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        if (fromUser) {
-          AudioView.this.progress = progress;
-          updateTimestampsAndSeekBar();
-        }
-      }
+    seekBar.setOnSeekBarChangeListener(
+        new SeekBar.OnSeekBarChangeListener() {
+          @Override
+          public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            if (fromUser) {
+              AudioView.this.progress = progress;
+              updateTimestampsAndSeekBar();
+            }
+          }
 
-      @Override
-      public void onStartTrackingTouch(SeekBar seekBar) {
-        viewModel.setUserSeeking(true);
-      }
+          @Override
+          public void onStartTrackingTouch(SeekBar seekBar) {
+            viewModel.setUserSeeking(true);
+          }
 
-      @Override
-      public void onStopTrackingTouch(SeekBar seekBar) {
-        viewModel.setUserSeeking(false);
-        viewModel.seekTo(seekBar.getProgress(), msgId, audioUri);
-      }
-    });
+          @Override
+          public void onStopTrackingTouch(SeekBar seekBar) {
+            viewModel.setUserSeeking(false);
+            viewModel.seekTo(seekBar.getProgress(), msgId, audioUri);
+          }
+        });
 
     if (playToPauseDrawable != null) {
       playToPauseDrawable.registerAnimationCallback(animationCallback);
@@ -188,8 +187,7 @@ public class AudioView extends FrameLayout {
     }
   }
 
-  public void setAudio(final @NonNull AudioSlide audio)
-  {
+  public void setAudio(final @NonNull AudioSlide audio) {
     msgId = audio.getDcMsgId();
     audioUri = audio.getUri();
     playPauseButton.setImageDrawable(playDrawable);
@@ -205,10 +203,9 @@ public class AudioView extends FrameLayout {
       viewModel.ensureDurationLoaded(getContext(), msgId, audioUri);
     }
 
-    if(audio.asAttachment().isVoiceNote() || !audio.getFileName().isPresent()) {
+    if (audio.asAttachment().isVoiceNote() || !audio.getFileName().isPresent()) {
       title.setVisibility(View.GONE);
-    }
-    else {
+    } else {
       title.setText(audio.getFileName().get());
       title.setVisibility(View.VISIBLE);
     }
@@ -256,7 +253,7 @@ public class AudioView extends FrameLayout {
     }
     desc += "\n" + this.timestamp.getText();
     if (title.getVisibility() == View.VISIBLE) {
-        desc += "\n" + this.title.getText();
+      desc += "\n" + this.title.getText();
     }
     return desc;
   }
@@ -273,7 +270,7 @@ public class AudioView extends FrameLayout {
   }
 
   public void disablePlayer(boolean disable) {
-    this.mask.setVisibility(disable? View.VISIBLE : View.GONE);
+    this.mask.setVisibility(disable ? View.VISIBLE : View.GONE);
   }
 
   public void getSeekBarGlobalVisibleRect(@NonNull Rect rect) {
@@ -290,9 +287,10 @@ public class AudioView extends FrameLayout {
       isAnimating = ((AnimatedVectorDrawableCompat) currentDrawable).isRunning();
     }
     if (!isAnimating && playPauseButton.getDrawable() != expectedDrawable) {
-      AnimatedVectorDrawableCompat animDrawable = expectedPlaying ? playToPauseDrawable : pauseToPlayDrawable;
-      String contentDescription = getContext().getString(
-        expectedPlaying ? R.string.menu_pause : R.string.menu_play);
+      AnimatedVectorDrawableCompat animDrawable =
+          expectedPlaying ? playToPauseDrawable : pauseToPlayDrawable;
+      String contentDescription =
+          getContext().getString(expectedPlaying ? R.string.menu_pause : R.string.menu_play);
 
       if (animDrawable != null) {
         playPauseButton.setImageDrawable(animDrawable);
@@ -343,10 +341,12 @@ public class AudioView extends FrameLayout {
     AudioPlaybackState state = viewModel.getPlaybackState().getValue();
 
     // When there is no playback happening, msgId can be -1 and audioUri is null
-    if (state != null &&
-      msgId >= 0 && msgId == state.getMsgId() &&
-      audioUri != null && audioUri.equals(state.getAudioUri())) {
-      return;   // Is playing this message
+    if (state != null
+        && msgId >= 0
+        && msgId == state.getMsgId()
+        && audioUri != null
+        && audioUri.equals(state.getAudioUri())) {
+      return; // Is playing this message
     }
 
     Long duration = durations.get(msgId);

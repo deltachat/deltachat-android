@@ -7,21 +7,21 @@
     android:orientation="vertical"
     tools:context=".proxy.ProxySettingsActivity">
 
-  <include layout="@layout/status_bar_background"/>
+    <include layout="@layout/status_bar_background" />
 
-  <androidx.appcompat.widget.SwitchCompat
-      android:id="@+id/proxy_switch"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:padding="16dp"
-      android:text="@string/proxy_use_proxy" />
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/proxy_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/proxy_use_proxy" />
 
-  <!-- clipToPadding is needed so ViewUtil.applyWindowInsets() works properly -->
-  <ListView
-      android:id="@+id/proxy_list"
-      android:paddingTop="10dp"
-      android:clipToPadding="false"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content" />
+    <!-- clipToPadding is needed so ViewUtil.applyWindowInsets() works properly -->
+    <ListView
+        android:id="@+id/proxy_list"
+        android:paddingTop="10dp"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

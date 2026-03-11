@@ -14,6 +14,6 @@
         android:paddingBottom="8dp"
         android:textIsSelectable="true"
         android:autoLink="web|email"
-        style="@style/Signal.Text.Body"/>
+        style="@style/Signal.Text.Body" />
 
 </ScrollView>

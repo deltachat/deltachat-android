@@ -27,13 +27,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"/>
+            android:layout_marginRight="8dp" />
 
     </LinearLayout>
 
     <androidx.legacy.widget.Space
         android:id="@+id/noButtonsSpacer"
         android:layout_width="match_parent"
-        android:layout_height="16dp"/>
+        android:layout_height="16dp" />
 
 </LinearLayout>

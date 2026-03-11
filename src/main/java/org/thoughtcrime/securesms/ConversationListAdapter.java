@@ -20,48 +20,44 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
-
+import java.lang.ref.WeakReference;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.ViewUtil;
-
-import java.lang.ref.WeakReference;
 
 /**
  * A CursorAdapter for building a list of conversation threads.
  *
  * @author Moxie Marlinspike
  */
-class ConversationListAdapter extends BaseConversationListAdapter<ConversationListAdapter.ViewHolder> {
+class ConversationListAdapter
+    extends BaseConversationListAdapter<ConversationListAdapter.ViewHolder> {
 
   private static final int MESSAGE_TYPE_SWITCH_ARCHIVE = 1;
-  private static final int MESSAGE_TYPE_THREAD         = 2;
-  private static final int MESSAGE_TYPE_INBOX_ZERO     = 3;
+  private static final int MESSAGE_TYPE_THREAD = 2;
+  private static final int MESSAGE_TYPE_INBOX_ZERO = 3;
 
-  private final WeakReference<Context>         context;
-  private @NonNull        DcContext            dcContext;
-  private @NonNull        DcChatlist           dcChatlist;
-  private final @NonNull  GlideRequests        glideRequests;
-  private final @NonNull  LayoutInflater       inflater;
-  private final @Nullable ItemClickListener    clickListener;
+  private final WeakReference<Context> context;
+  private @NonNull DcContext dcContext;
+  private @NonNull DcChatlist dcChatlist;
+  private final @NonNull GlideRequests glideRequests;
+  private final @NonNull LayoutInflater inflater;
+  private final @Nullable ItemClickListener clickListener;
 
   protected static class ViewHolder extends RecyclerView.ViewHolder {
-    public <V extends View & BindableConversationListItem> ViewHolder(final @NonNull V itemView)
-    {
+    public <V extends View & BindableConversationListItem> ViewHolder(final @NonNull V itemView) {
       super(itemView);
     }
 
     public BindableConversationListItem getItem() {
-      return (BindableConversationListItem)itemView;
+      return (BindableConversationListItem) itemView;
     }
   }
 
@@ -75,17 +71,17 @@ class ConversationListAdapter extends BaseConversationListAdapter<ConversationLi
     return dcChatlist.getChatId(i);
   }
 
-  ConversationListAdapter(@NonNull Context context,
-                          @NonNull GlideRequests glideRequests,
-                          @Nullable ItemClickListener clickListener)
-  {
+  ConversationListAdapter(
+      @NonNull Context context,
+      @NonNull GlideRequests glideRequests,
+      @Nullable ItemClickListener clickListener) {
     super();
-    this.context        = new WeakReference<>(context);
-    this.glideRequests  = glideRequests;
-    this.dcContext      = DcHelper.getContext(context);
-    this.dcChatlist     = new DcChatlist(0, 0);
-    this.inflater       = LayoutInflater.from(context);
-    this.clickListener  = clickListener;
+    this.context = new WeakReference<>(context);
+    this.glideRequests = glideRequests;
+    this.dcContext = DcHelper.getContext(context);
+    this.dcChatlist = new DcChatlist(0, 0);
+    this.inflater = LayoutInflater.from(context);
+    this.clickListener = clickListener;
     setHasStableIds(true);
   }
 
@@ -93,29 +89,37 @@ class ConversationListAdapter extends BaseConversationListAdapter<ConversationLi
   @Override
   public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     if (viewType == MESSAGE_TYPE_SWITCH_ARCHIVE) {
-      final ConversationListItem item = (ConversationListItem)inflater.inflate(R.layout.conversation_list_item_view, parent, false);
+      final ConversationListItem item =
+          (ConversationListItem)
+              inflater.inflate(R.layout.conversation_list_item_view, parent, false);
       item.getLayoutParams().height = ViewUtil.dpToPx(54);
       item.findViewById(R.id.subject).setVisibility(View.GONE);
       item.findViewById(R.id.date).setVisibility(View.GONE);
-      item.setOnClickListener(v -> {
-        if (clickListener != null) clickListener.onSwitchToArchive();
-      });
+      item.setOnClickListener(
+          v -> {
+            if (clickListener != null) clickListener.onSwitchToArchive();
+          });
 
       return new ViewHolder(item);
     } else if (viewType == MESSAGE_TYPE_INBOX_ZERO) {
-      return new ViewHolder((ConversationListItemInboxZero)inflater.inflate(R.layout.conversation_list_item_inbox_zero, parent, false));
+      return new ViewHolder(
+          (ConversationListItemInboxZero)
+              inflater.inflate(R.layout.conversation_list_item_inbox_zero, parent, false));
     } else {
-      final ConversationListItem item = (ConversationListItem)inflater.inflate(R.layout.conversation_list_item_view,
-                                                                               parent, false);
+      final ConversationListItem item =
+          (ConversationListItem)
+              inflater.inflate(R.layout.conversation_list_item_view, parent, false);
 
-      item.setOnClickListener(view -> {
-        if (clickListener != null) clickListener.onItemClick(item);
-      });
+      item.setOnClickListener(
+          view -> {
+            if (clickListener != null) clickListener.onItemClick(item);
+          });
 
-      item.setOnLongClickListener(view -> {
-        if (clickListener != null) clickListener.onItemLongClick(item);
-        return true;
-      });
+      item.setOnLongClickListener(
+          view -> {
+            if (clickListener != null) clickListener.onItemLongClick(item);
+            return true;
+          });
 
       return new ViewHolder(item);
     }
@@ -130,7 +134,15 @@ class ConversationListAdapter extends BaseConversationListAdapter<ConversationLi
 
     DcChat chat = dcContext.getChat(dcChatlist.getChatId(i));
     DcLot summary = dcChatlist.getSummary(i, chat);
-    viewHolder.getItem().bind(DcHelper.getThreadRecord(context, summary, chat), dcChatlist.getMsgId(i), summary, glideRequests, batchSet, batchMode);
+    viewHolder
+        .getItem()
+        .bind(
+            DcHelper.getThreadRecord(context, summary, chat),
+            dcChatlist.getMsgId(i),
+            summary,
+            glideRequests,
+            batchSet,
+            batchMode);
   }
 
   @Override
@@ -139,7 +151,7 @@ class ConversationListAdapter extends BaseConversationListAdapter<ConversationLi
 
     if (chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK) {
       return MESSAGE_TYPE_SWITCH_ARCHIVE;
-    } else if(chatId == DcChat.DC_CHAT_ID_ALLDONE_HINT) {
+    } else if (chatId == DcChat.DC_CHAT_ID_ALLDONE_HINT) {
       return MESSAGE_TYPE_INBOX_ZERO;
     } else {
       return MESSAGE_TYPE_THREAD;
@@ -159,7 +171,9 @@ class ConversationListAdapter extends BaseConversationListAdapter<ConversationLi
 
   interface ItemClickListener {
     void onItemClick(ConversationListItem item);
+
     void onItemLongClick(ConversationListItem item);
+
     void onSwitchToArchive();
   }
 
@@ -169,7 +183,7 @@ class ConversationListAdapter extends BaseConversationListAdapter<ConversationLi
       return;
     }
     if (chatlist == null) {
-      dcChatlist =  new DcChatlist(0, 0);
+      dcChatlist = new DcChatlist(0, 0);
     } else {
       dcChatlist = chatlist;
       dcContext = DcHelper.getContext(context);

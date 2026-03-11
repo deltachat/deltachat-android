@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 
@@ -50,7 +49,9 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   // The app is "locked" to an activity if you will.
   // In "Locked Mode" the user should not leave that activity otherwise the state would be lost -
   // so eg. tapping app icon or notifications MUST NOT replace activity stack.
-  // However, sometimes it is fine to allow to pushing activities in these situations, 
+  // However, sometimes it is fine to allow to pushing activities in these situations,
   // like to see the logs or offline help.
-  protected boolean allowInLockedMode() { return false; }
+  protected boolean allowInLockedMode() {
+    return false;
+  }
 }

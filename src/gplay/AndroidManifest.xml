@@ -3,8 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- force compiling emojipicker on sdk<21 and firebase on sdk<19; runtime
-        checks are required then -->
+    <!-- force compiling emojipicker on sdk<21 and firebase on sdk<19; runtime checks are required then -->
     <uses-sdk
         tools:overrideLibrary="androidx.emoji2.emojipicker, com.google.firebase.messaging, com.google.android.gms.cloudmessaging" />
 
@@ -19,11 +18,15 @@
         android:value="false" />
 
     <application>
-        <service android:name=".connect.KeepAliveService"
-            android:foregroundServiceType="dataSync" android:enabled="true" />
+        <service
+            android:name=".connect.KeepAliveService"
+            android:foregroundServiceType="dataSync"
+            android:enabled="true" />
 
-        <service android:name=".notifications.FcmReceiveService"
-            android:foregroundServiceType="dataSync" android:exported="true">
+        <service
+            android:name=".notifications.FcmReceiveService"
+            android:foregroundServiceType="dataSync"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

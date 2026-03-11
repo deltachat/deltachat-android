@@ -5,14 +5,13 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
-
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
-
+import java.io.ByteArrayInputStream;
+import java.util.Set;
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.components.DeliveryStatusView;
 import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
@@ -21,14 +20,10 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.JsonUtils;
 
-import java.io.ByteArrayInputStream;
-import java.util.Set;
-
-public class ConversationUpdateItem extends BaseConversationItem
-{
-  private DeliveryStatusView  deliveryStatusView;
-  private AppCompatImageView  appIcon;
-  private int                 textColor;
+public class ConversationUpdateItem extends BaseConversationItem {
+  private DeliveryStatusView deliveryStatusView;
+  private AppCompatImageView appIcon;
+  private int textColor;
 
   public ConversationUpdateItem(Context context) {
     this(context, null);
@@ -44,10 +39,9 @@ public class ConversationUpdateItem extends BaseConversationItem
 
     initializeAttributes();
 
-    bodyText           = findViewById(R.id.conversation_update_body);
+    bodyText = findViewById(R.id.conversation_update_body);
     deliveryStatusView = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
-    appIcon            = findViewById(R.id.app_icon);
-
+    appIcon = findViewById(R.id.app_icon);
 
     bodyText.setOnLongClickListener(passthroughClickListener);
     bodyText.setOnClickListener(passthroughClickListener);
@@ -58,24 +52,25 @@ public class ConversationUpdateItem extends BaseConversationItem
   }
 
   @Override
-  public void bind(@NonNull DcMsg                   messageRecord,
-                   @NonNull DcChat                  dcChat,
-                   @NonNull GlideRequests           glideRequests,
-                   @NonNull Set<DcMsg>              batchSelected,
-                   @NonNull Recipient               conversationRecipient,
-                   boolean                          pulseUpdate,
-                   @Nullable AudioPlaybackViewModel playbackViewModel,
-                   AudioView.OnActionListener       audioPlayPauseListener)
-  {
+  public void bind(
+      @NonNull DcMsg messageRecord,
+      @NonNull DcChat dcChat,
+      @NonNull GlideRequests glideRequests,
+      @NonNull Set<DcMsg> batchSelected,
+      @NonNull Recipient conversationRecipient,
+      boolean pulseUpdate,
+      @Nullable AudioPlaybackViewModel playbackViewModel,
+      AudioView.OnActionListener audioPlayPauseListener) {
     bindPartial(messageRecord, dcChat, batchSelected, pulseUpdate, conversationRecipient);
     setGenericInfoRecord(messageRecord);
   }
 
   private void initializeAttributes() {
-    final int[]      attributes = new int[] {
-        R.attr.conversation_item_update_text_color,
-    };
-    final TypedArray attrs      = context.obtainStyledAttributes(attributes);
+    final int[] attributes =
+        new int[] {
+          R.attr.conversation_item_update_text_color,
+        };
+    final TypedArray attrs = context.obtainStyledAttributes(attributes);
 
     textColor = attrs.getColor(0, Color.WHITE);
     attrs.recycle();
@@ -118,14 +113,13 @@ public class ConversationUpdateItem extends BaseConversationItem
     bodyText.setText(messageRecord.getDisplayBody());
     bodyText.setVisibility(VISIBLE);
 
-    if      (messageRecord.isFailed())     deliveryStatusView.setFailed();
-    else if (!messageRecord.isOutgoing())  deliveryStatusView.setNone();
-    else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
-    else if (messageRecord.isPending())    deliveryStatusView.setPending();
-    else                                   deliveryStatusView.setNone();
+    if (messageRecord.isFailed()) deliveryStatusView.setFailed();
+    else if (!messageRecord.isOutgoing()) deliveryStatusView.setNone();
+    else if (messageRecord.isPreparing()) deliveryStatusView.setPreparing();
+    else if (messageRecord.isPending()) deliveryStatusView.setPending();
+    else deliveryStatusView.setNone();
   }
 
   @Override
-  public void unbind() {
-  }
+  public void unbind() {}
 }

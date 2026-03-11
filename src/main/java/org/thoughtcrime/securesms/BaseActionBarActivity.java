@@ -1,13 +1,11 @@
 package org.thoughtcrime.securesms;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
-
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
@@ -15,13 +13,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.fragment.app.Fragment;
-
+import java.lang.reflect.Field;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
-
-import java.lang.reflect.Field;
-
 
 public abstract class BaseActionBarActivity extends AppCompatActivity {
 
@@ -40,11 +35,13 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     // Only enable Edge-to-Edge if it is well supported
     if (ViewUtil.isEdgeToEdgeSupported()) {
       // docs says to use: WindowCompat.enableEdgeToEdge(getWindow());
-      // but it actually makes things worse, the next takes care of setting the 3-buttons navigation bar background
+      // but it actually makes things worse, the next takes care of setting the 3-buttons navigation
+      // bar background
       EdgeToEdge.enable(this);
 
       // force white text in status bar so it visible over background color
-      WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView()).setAppearanceLightStatusBars(false);
+      WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
+          .setAppearanceLightStatusBars(false);
     }
   }
 
@@ -68,14 +65,12 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     }
   }
 
-  /**
-   * Modified from: http://stackoverflow.com/a/13098824
-   */
+  /** Modified from: http://stackoverflow.com/a/13098824 */
   private void forceOverflowMenu() {
     try {
-      ViewConfiguration config       = ViewConfiguration.get(this);
-      Field             menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
-      if(menuKeyField != null) {
+      ViewConfiguration config = ViewConfiguration.get(this);
+      Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
+      if (menuKeyField != null) {
         menuKeyField.setAccessible(true);
         menuKeyField.setBoolean(config, false);
       }
@@ -97,21 +92,18 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
       } else if (item == searchItem) {
         ; // searchItem is just always visible
       } else {
-        item.setVisible(!visible); // if search is shown, other items are hidden - and the other way round
+        item.setVisible(
+            !visible); // if search is shown, other items are hidden - and the other way round
       }
     }
   }
 
-  protected <T extends Fragment> T initFragment(@IdRes int target,
-                                                @NonNull T fragment)
-  {
+  protected <T extends Fragment> T initFragment(@IdRes int target, @NonNull T fragment) {
     return initFragment(target, fragment, null);
   }
 
-  protected <T extends Fragment> T initFragment(@IdRes int target,
-                                                @NonNull T fragment,
-                                                @Nullable Bundle extras)
-  {
+  protected <T extends Fragment> T initFragment(
+      @IdRes int target, @NonNull T fragment, @Nullable Bundle extras) {
     Bundle args = new Bundle();
 
     if (extras != null) {
@@ -119,9 +111,10 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     }
 
     fragment.setArguments(args);
-    getSupportFragmentManager().beginTransaction()
-      .replace(target, fragment)
-      .commitAllowingStateLoss();
+    getSupportFragmentManager()
+        .beginTransaction()
+        .replace(target, fragment)
+        .commitAllowingStateLoss();
     return fragment;
   }
 }

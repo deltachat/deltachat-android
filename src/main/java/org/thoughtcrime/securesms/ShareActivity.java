@@ -24,15 +24,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.pm.ShortcutManagerCompat;
-
 import com.b44t.messenger.DcContext;
-
+import java.util.ArrayList;
+import java.util.List;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -41,24 +40,21 @@ import org.thoughtcrime.securesms.util.MailtoUtil;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ShareUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * An activity to quickly share content with chats
  *
  * @author Jake McGinty
  */
-public class ShareActivity extends PassphraseRequiredActionBarActivity implements ResolveMediaTask.OnMediaResolvedListener
-{
+public class ShareActivity extends PassphraseRequiredActionBarActivity
+    implements ResolveMediaTask.OnMediaResolvedListener {
   private static final String TAG = ShareActivity.class.getSimpleName();
 
   public static final String EXTRA_ACC_ID = "acc_id";
   public static final String EXTRA_CHAT_ID = "chat_id";
 
-  private ArrayList<Uri>               resolvedExtras;
-  private DcContext                    dcContext;
-  private boolean                      isResolvingUrisOnMainThread;
+  private ArrayList<Uri> resolvedExtras;
+  private DcContext dcContext;
+  private boolean isResolvingUrisOnMainThread;
 
   @Override
   protected void onPreCreate() {
@@ -115,10 +111,10 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
       }
     }
 
-    if (Intent.ACTION_SEND.equals(getIntent().getAction()) &&
-            getIntent().getParcelableExtra(Intent.EXTRA_STREAM) != null) {
-        Uri uri = getIntent().getParcelableExtra(Intent.EXTRA_STREAM);
-        streamExtras.add(uri);
+    if (Intent.ACTION_SEND.equals(getIntent().getAction())
+        && getIntent().getParcelableExtra(Intent.EXTRA_STREAM) != null) {
+      Uri uri = getIntent().getParcelableExtra(Intent.EXTRA_STREAM);
+      streamExtras.add(uri);
     } else if (getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM) != null) {
       streamExtras = getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM);
     }
@@ -135,7 +131,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
   }
 
   private boolean needsFilePermission(List<Uri> uris) {
-    for(Uri uri : uris) {
+    for (Uri uri : uris) {
       // uri may be null, however, hasFileScheme() just returns false in this case
       if (hasFileScheme(uri)) {
         return true;
@@ -146,17 +142,19 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
 
   private void requestPermissionForFiles(List<Uri> streamExtras) {
     Permissions.with(this)
-            .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-            .alwaysGrantOnSdk33()
-            .ifNecessary()
-            .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
-            .onAllGranted(() -> resolveUris(streamExtras))
-            .onAnyDenied(this::abortShare)
-            .execute();
+        .request(
+            Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+        .alwaysGrantOnSdk33()
+        .ifNecessary()
+        .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
+        .onAllGranted(() -> resolveUris(streamExtras))
+        .onAnyDenied(this::abortShare)
+        .execute();
   }
 
   @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+  public void onRequestPermissionsResult(
+      int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 
@@ -185,7 +183,9 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
     switch (item.getItemId()) {
-    case android.R.id.home:     finish();                return true;
+      case android.R.id.home:
+        finish();
+        return true;
     }
     return false;
   }
@@ -197,15 +197,16 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
     }
 
     if (!ResolveMediaTask.isExecuting() && !isResolvingUrisOnMainThread) {
-     handleResolvedMedia(getIntent());
+      handleResolvedMedia(getIntent());
     }
   }
 
   private void handleResolvedMedia(Intent intent) {
-    int       accId            = intent.getIntExtra(EXTRA_ACC_ID, -1);
-    int       chatId           = intent.getIntExtra(EXTRA_CHAT_ID, -1);
+    int accId = intent.getIntExtra(EXTRA_ACC_ID, -1);
+    int chatId = intent.getIntExtra(EXTRA_CHAT_ID, -1);
 
-    // the intent coming from shortcuts in the share selector might not include the custom extras but the shortcut ID
+    // the intent coming from shortcuts in the share selector might not include the custom extras
+    // but the shortcut ID
     String shortcutId = intent.getStringExtra(ShortcutManagerCompat.EXTRA_SHORTCUT_ID);
     if ((chatId == -1 || accId == -1) && shortcutId != null && shortcutId.startsWith("chat-")) {
       String[] args = shortcutId.split("-");
@@ -217,47 +218,47 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
 
     String[] extraEmail = getIntent().getStringArrayExtra(Intent.EXTRA_EMAIL);
     /*
-    usually, external app will try to start "e-mail sharing" intent, providing it:
-    1. address(s), packed in array, marked as Intent.EXTRA_EMAIL - mandatory
-    2. shared content (files, pics, video), packed in Intent.EXTRA_STREAM - optional
+      usually, external app will try to start "e-mail sharing" intent, providing it:
+      1. address(s), packed in array, marked as Intent.EXTRA_EMAIL - mandatory
+      2. shared content (files, pics, video), packed in Intent.EXTRA_STREAM - optional
 
-    here is a sample code to trigger this routine from within external app:
+      here is a sample code to trigger this routine from within external app:
 
-    try {
-      Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-              "mailto", "someone@example.com", null));
-      File f = new File(getFilesDir() + "/somebinaryfile.bin");
-      f.createNewFile();
-      f.setReadable(true, false);
-      byte[] b = new byte[1024];
-      new Random().nextBytes(b);
-      FileOutputStream fOut = new FileOutputStream(f);
-      DataOutputStream dataStream = new DataOutputStream(fOut);
-      dataStream.write(b);
-      dataStream.close();
+      try {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", "someone@example.com", null));
+        File f = new File(getFilesDir() + "/somebinaryfile.bin");
+        f.createNewFile();
+        f.setReadable(true, false);
+        byte[] b = new byte[1024];
+        new Random().nextBytes(b);
+        FileOutputStream fOut = new FileOutputStream(f);
+        DataOutputStream dataStream = new DataOutputStream(fOut);
+        dataStream.write(b);
+        dataStream.close();
 
-      Uri sharedURI = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", f);
-      emailIntent.setAction(Intent.ACTION_SEND);
-      emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"someone@example.com"});
-      emailIntent.setType("text/plain");
-      emailIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-      emailIntent.putExtra(Intent.EXTRA_STREAM, sharedURI);
+        Uri sharedURI = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", f);
+        emailIntent.setAction(Intent.ACTION_SEND);
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"someone@example.com"});
+        emailIntent.setType("text/plain");
+        emailIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        emailIntent.putExtra(Intent.EXTRA_STREAM, sharedURI);
 
-      // to EXPLICITLY fire DC's sharing activity:
-      // emailIntent.setComponent(new ComponentName("com.b44t.messenger.beta", "org.thoughtcrime.securesms.ShareActivity"));
+        // to EXPLICITLY fire DC's sharing activity:
+        // emailIntent.setComponent(new ComponentName("com.b44t.messenger.beta", "org.thoughtcrime.securesms.ShareActivity"));
 
-      startActivity(emailIntent);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }catch (ActivityNotFoundException e) {
-    }
-  */
+        startActivity(emailIntent);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }catch (ActivityNotFoundException e) {
+      }
+    */
 
-    if(chatId == -1 && extraEmail != null && extraEmail.length > 0) {
+    if (chatId == -1 && extraEmail != null && extraEmail.length > 0) {
       final String addr = extraEmail[0];
       int contactId = dcContext.lookupContactIdByAddr(addr);
 
-      if(contactId == 0) {
+      if (contactId == 0) {
         contactId = dcContext.createContact(null, addr);
       }
 
@@ -285,13 +286,13 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
 
     String title = ShareUtil.getSharedTitle(this);
     if (title != null) {
-        ShareUtil.setSharedTitle(intent, title);
+      ShareUtil.setSharedTitle(intent, title);
     }
 
     String text = getIntent().getStringExtra(Intent.EXTRA_TEXT);
-    if (text==null) {
+    if (text == null) {
       CharSequence cs = getIntent().getCharSequenceExtra(Intent.EXTRA_TEXT);
-      if (cs!=null) {
+      if (cs != null) {
         text = cs.toString();
       }
     }
@@ -318,10 +319,9 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
   }
 
   private boolean hasFileScheme(Uri uri) {
-    if (uri==null) {
+    if (uri == null) {
       return false;
     }
     return "file".equals(uri.getScheme());
   }
-
 }

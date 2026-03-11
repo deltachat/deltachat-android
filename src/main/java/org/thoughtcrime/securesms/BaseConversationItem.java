@@ -5,41 +5,36 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-
+import chat.delta.rpc.Rpc;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
-
+import java.util.HashSet;
+import java.util.Set;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Util;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import chat.delta.rpc.Rpc;
-
 public abstract class BaseConversationItem extends LinearLayout
-    implements BindableConversationItem
-{
+    implements BindableConversationItem {
   static final long PULSE_HIGHLIGHT_MILLIS = 500;
 
-  protected DcMsg         messageRecord;
-  protected DcChat        dcChat;
-  protected TextView      bodyText;
+  protected DcMsg messageRecord;
+  protected DcChat dcChat;
+  protected TextView bodyText;
 
-  protected final Context              context;
-  protected final DcContext            dcContext;
+  protected final Context context;
+  protected final DcContext dcContext;
   protected final Rpc rpc;
-  protected Recipient                  conversationRecipient;
+  protected Recipient conversationRecipient;
 
-  protected @NonNull  Set<DcMsg> batchSelected = new HashSet<>();
+  protected @NonNull Set<DcMsg> batchSelected = new HashSet<>();
 
-  protected final PassthroughClickListener passthroughClickListener = new PassthroughClickListener();
+  protected final PassthroughClickListener passthroughClickListener =
+      new PassthroughClickListener();
 
   public BaseConversationItem(Context context, AttributeSet attrs) {
     super(context, attrs);
@@ -48,16 +43,16 @@ public abstract class BaseConversationItem extends LinearLayout
     this.rpc = DcHelper.getRpc(context);
   }
 
-  protected void bindPartial(@NonNull DcMsg            messageRecord,
-                             @NonNull DcChat           dcChat,
-                             @NonNull Set<DcMsg>       batchSelected,
-                             boolean                   pulseHighlight,
-                             @NonNull Recipient        conversationRecipient)
-  {
-    this.messageRecord  = messageRecord;
-    this.dcChat         = dcChat;
-    this.batchSelected  = batchSelected;
-    this.conversationRecipient  = conversationRecipient;
+  protected void bindPartial(
+      @NonNull DcMsg messageRecord,
+      @NonNull DcChat dcChat,
+      @NonNull Set<DcMsg> batchSelected,
+      boolean pulseHighlight,
+      @NonNull Recipient conversationRecipient) {
+    this.messageRecord = messageRecord;
+    this.dcChat = dcChat;
+    this.batchSelected = batchSelected;
+    this.conversationRecipient = conversationRecipient;
     setInteractionState(messageRecord, pulseHighlight);
   }
 
@@ -81,15 +76,16 @@ public abstract class BaseConversationItem extends LinearLayout
 
   protected boolean shouldInterceptClicks(DcMsg messageRecord) {
     return batchSelected.isEmpty()
-            && (messageRecord.isFailed()
-                || messageRecord.getInfoType() == DcMsg.DC_INFO_CHAT_E2EE
-                || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED
-                || messageRecord.getInfoType() == DcMsg.DC_INFO_INVALID_UNENCRYPTED_MAIL);
+        && (messageRecord.isFailed()
+            || messageRecord.getInfoType() == DcMsg.DC_INFO_CHAT_E2EE
+            || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED
+            || messageRecord.getInfoType() == DcMsg.DC_INFO_INVALID_UNENCRYPTED_MAIL);
   }
 
   protected void onAccessibilityClick() {}
 
-  protected class PassthroughClickListener implements View.OnLongClickListener, View.OnClickListener {
+  protected class PassthroughClickListener
+      implements View.OnLongClickListener, View.OnClickListener {
 
     @Override
     public boolean onLongClick(View v) {
@@ -126,13 +122,15 @@ public abstract class BaseConversationItem extends LinearLayout
         TextView detailsText = view.findViewById(R.id.details_text);
         detailsText.setText(messageRecord.getError());
 
-        AlertDialog d = new AlertDialog.Builder(context)
+        AlertDialog d =
+            new AlertDialog.Builder(context)
                 .setView(view)
                 .setTitle(R.string.error)
                 .setPositiveButton(R.string.ok, null)
                 .create();
         d.show();
-      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_CHAT_E2EE || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED) {
+      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_CHAT_E2EE
+          || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED) {
         DcHelper.showProtectionEnabledDialog(context);
       } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_INVALID_UNENCRYPTED_MAIL) {
         DcHelper.showInvalidUnencryptedDialog(context);

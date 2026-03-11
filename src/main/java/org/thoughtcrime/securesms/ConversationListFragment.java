@@ -29,16 +29,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
-
+import java.util.Timer;
+import java.util.TimerTask;
 import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
@@ -52,25 +51,21 @@ import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-
 public class ConversationListFragment extends BaseConversationListFragment
-        implements ItemClickListener, DcEventCenter.DcEventDelegate {
+    implements ItemClickListener, DcEventCenter.DcEventDelegate {
   public static final String ARCHIVE = "archive";
   public static final String RELOAD_LIST = "reload_list";
 
   private static final String TAG = ConversationListFragment.class.getSimpleName();
 
-  private RecyclerView                list;
-  private View                        emptyState;
-  private TextView                    emptySearch;
-  private final String                queryFilter  = "";
-  private boolean                     archive;
-  private Timer                       reloadTimer;
-  private boolean                     chatlistJustLoaded;
-  private boolean                     reloadTimerInstantly;
+  private RecyclerView list;
+  private View emptyState;
+  private TextView emptySearch;
+  private final String queryFilter = "";
+  private boolean archive;
+  private Timer reloadTimer;
+  private boolean chatlistJustLoaded;
+  private boolean reloadTimerInstantly;
 
   @Override
   public void onCreate(Bundle icicle) {
@@ -103,10 +98,10 @@ public class ConversationListFragment extends BaseConversationListFragment
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle bundle) {
     final View view = inflater.inflate(R.layout.conversation_list_fragment, container, false);
 
-    list         = ViewUtil.findById(view, R.id.list);
-    fab          = ViewUtil.findById(view, R.id.fab);
-    emptyState   = ViewUtil.findById(view, R.id.empty_state);
-    emptySearch  = ViewUtil.findById(view, R.id.empty_search);
+    list = ViewUtil.findById(view, R.id.list);
+    fab = ViewUtil.findById(view, R.id.fab);
+    emptyState = ViewUtil.findById(view, R.id.empty_state);
+    emptySearch = ViewUtil.findById(view, R.id.empty_search);
 
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(list, true, archive, true, true);
@@ -145,22 +140,25 @@ public class ConversationListFragment extends BaseConversationListFragment
 
     updateReminders();
 
-    if (requireActivity().getIntent().getIntExtra(RELOAD_LIST, 0) == 1
-        && !chatlistJustLoaded) {
+    if (requireActivity().getIntent().getIntExtra(RELOAD_LIST, 0) == 1 && !chatlistJustLoaded) {
       loadChatlist();
       reloadTimerInstantly = false;
     }
     chatlistJustLoaded = false;
 
     reloadTimer = new Timer();
-    reloadTimer.scheduleAtFixedRate(new TimerTask() {
-      @Override
-      public void run() {
-        Util.runOnMain(() -> {
-          list.getAdapter().notifyDataSetChanged();
-        });
-      }
-    }, reloadTimerInstantly? 0 : 60 * 1000, 60 * 1000);
+    reloadTimer.scheduleAtFixedRate(
+        new TimerTask() {
+          @Override
+          public void run() {
+            Util.runOnMain(
+                () -> {
+                  list.getAdapter().notifyDataSetChanged();
+                });
+          }
+        },
+        reloadTimerInstantly ? 0 : 60 * 1000,
+        60 * 1000);
   }
 
   @Override
@@ -184,7 +182,8 @@ public class ConversationListFragment extends BaseConversationListFragment
 
   @SuppressLint({"StaticFieldLeak", "NewApi"})
   private void updateReminders() {
-    // by the time onPostExecute() is asynchronously run, getActivity() might return null, so get the activity here:
+    // by the time onPostExecute() is asynchronously run, getActivity() might return null, so get
+    // the activity here:
     Activity activity = requireActivity();
     new AsyncTask<Context, Void, Void>() {
       @Override
@@ -204,22 +203,29 @@ public class ConversationListFragment extends BaseConversationListFragment
       @Override
       protected void onPostExecute(Void result) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-          if (!Prefs.getBooleanPreference(activity, Prefs.ASKED_FOR_NOTIFICATION_PERMISSION, false)) {
+          if (!Prefs.getBooleanPreference(
+              activity, Prefs.ASKED_FOR_NOTIFICATION_PERMISSION, false)) {
             Prefs.setBooleanPreference(activity, Prefs.ASKED_FOR_NOTIFICATION_PERMISSION, true);
             Permissions.with(activity)
-              .request(Manifest.permission.POST_NOTIFICATIONS)
-              .ifNecessary()
-              .onAllGranted(() -> {
-                DozeReminder.maybeAskDirectly(activity);
-              })
-              .onAnyDenied(() -> {
-                final DcContext dcContext = DcHelper.getContext(activity);
-                DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-                msg.setText("\uD83D\uDC49 "+activity.getString(R.string.notifications_disabled)+" \uD83D\uDC48\n\n"
-                  +activity.getString(R.string.perm_explain_access_to_notifications_denied));
-                dcContext.addDeviceMsg("android.notifications-disabled", msg);
-              })
-              .execute();
+                .request(Manifest.permission.POST_NOTIFICATIONS)
+                .ifNecessary()
+                .onAllGranted(
+                    () -> {
+                      DozeReminder.maybeAskDirectly(activity);
+                    })
+                .onAnyDenied(
+                    () -> {
+                      final DcContext dcContext = DcHelper.getContext(activity);
+                      DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+                      msg.setText(
+                          "\uD83D\uDC49 "
+                              + activity.getString(R.string.notifications_disabled)
+                              + " \uD83D\uDC48\n\n"
+                              + activity.getString(
+                                  R.string.perm_explain_access_to_notifications_denied));
+                      dcContext.addDeviceMsg("android.notifications-disabled", msg);
+                    })
+                .execute();
           } else {
             DozeReminder.maybeAskDirectly(activity);
           }
@@ -233,6 +239,7 @@ public class ConversationListFragment extends BaseConversationListFragment
   private final Object loadChatlistLock = new Object();
   private boolean inLoadChatlist;
   private boolean needsAnotherLoad;
+
   public void loadChatlistAsync() {
     synchronized (loadChatlistLock) {
       needsAnotherLoad = true;
@@ -243,21 +250,22 @@ public class ConversationListFragment extends BaseConversationListFragment
       inLoadChatlist = true;
     }
 
-    Util.runOnAnyBackgroundThread(() -> {
-      while(true) {
-        synchronized (loadChatlistLock) {
-          if (!needsAnotherLoad) {
-            inLoadChatlist = false;
-            return;
-          }
-          needsAnotherLoad = false;
-        }
+    Util.runOnAnyBackgroundThread(
+        () -> {
+          while (true) {
+            synchronized (loadChatlistLock) {
+              if (!needsAnotherLoad) {
+                inLoadChatlist = false;
+                return;
+              }
+              needsAnotherLoad = false;
+            }
 
-        Log.i(TAG, "executing debounced chatlist loading");
-        loadChatlist();
-        Util.sleep(100);
-      }
-    });
+            Log.i(TAG, "executing debounced chatlist loading");
+            loadChatlist();
+            Util.sleep(100);
+          }
+        });
   }
 
   private void loadChatlist() {
@@ -272,32 +280,36 @@ public class ConversationListFragment extends BaseConversationListFragment
 
     Context context = getContext();
     if (context == null) {
-      // can't load chat list at this time, see: https://github.com/deltachat/deltachat-android/issues/2012
+      // can't load chat list at this time, see:
+      // https://github.com/deltachat/deltachat-android/issues/2012
       Log.w(TAG, "Ignoring call to loadChatlist()");
       return;
     }
-    DcChatlist chatlist = DcHelper.getContext(context).getChatlist(listflags, queryFilter.isEmpty() ? null : queryFilter, 0);
+    DcChatlist chatlist =
+        DcHelper.getContext(context)
+            .getChatlist(listflags, queryFilter.isEmpty() ? null : queryFilter, 0);
 
-    Util.runOnMain(() -> {
-      if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter)) {
-        list.setVisibility(View.INVISIBLE);
-        emptyState.setVisibility(View.VISIBLE);
-        emptySearch.setVisibility(View.INVISIBLE);
-        fab.startPulse(3 * 1000);
-      } else if (chatlist.getCnt() <= 0 && !TextUtils.isEmpty(queryFilter)) {
-        list.setVisibility(View.INVISIBLE);
-        emptyState.setVisibility(View.GONE);
-        emptySearch.setVisibility(View.VISIBLE);
-        emptySearch.setText(getString(R.string.search_no_result_for_x, queryFilter));
-      } else {
-        list.setVisibility(View.VISIBLE);
-        emptyState.setVisibility(View.GONE);
-        emptySearch.setVisibility(View.INVISIBLE);
-        fab.stopPulse();
-      }
+    Util.runOnMain(
+        () -> {
+          if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter)) {
+            list.setVisibility(View.INVISIBLE);
+            emptyState.setVisibility(View.VISIBLE);
+            emptySearch.setVisibility(View.INVISIBLE);
+            fab.startPulse(3 * 1000);
+          } else if (chatlist.getCnt() <= 0 && !TextUtils.isEmpty(queryFilter)) {
+            list.setVisibility(View.INVISIBLE);
+            emptyState.setVisibility(View.GONE);
+            emptySearch.setVisibility(View.VISIBLE);
+            emptySearch.setText(getString(R.string.search_no_result_for_x, queryFilter));
+          } else {
+            list.setVisibility(View.VISIBLE);
+            emptyState.setVisibility(View.GONE);
+            emptySearch.setVisibility(View.INVISIBLE);
+            fab.stopPulse();
+          }
 
-      ((ConversationListAdapter)list.getAdapter()).changeData(chatlist);
-    });
+          ((ConversationListAdapter) list.getAdapter()).changeData(chatlist);
+        });
   }
 
   @Override
@@ -307,12 +319,12 @@ public class ConversationListFragment extends BaseConversationListFragment
 
   @Override
   protected void setFabVisibility(boolean isActionMode) {
-    fab.setVisibility((isActionMode || !archive)? View.VISIBLE : View.GONE);
+    fab.setVisibility((isActionMode || !archive) ? View.VISIBLE : View.GONE);
   }
 
   @Override
   public void onItemClick(ConversationListItem item) {
-      onItemClick(item.getChatId());
+    onItemClick(item.getChatId());
   }
 
   @Override
@@ -322,14 +334,15 @@ public class ConversationListFragment extends BaseConversationListFragment
 
   @Override
   public void onSwitchToArchive() {
-    ((ConversationSelectedListener)requireActivity()).onSwitchToArchive();
+    ((ConversationSelectedListener) requireActivity()).onSwitchToArchive();
   }
 
   @Override
   public void handleEvent(@NonNull DcEvent event) {
     final int accId = event.getAccountId();
     if (event.getId() == DcContext.DC_EVENT_CHAT_DELETED) {
-      DcHelper.getNotificationCenter(requireActivity()).removeNotifications(accId, event.getData1Int());
+      DcHelper.getNotificationCenter(requireActivity())
+          .removeNotifications(accId, event.getData1Int());
     } else if (accId != DcHelper.getContext(requireActivity()).getAccountId()) {
       Activity activity = getActivity();
       if (activity instanceof ConversationListActivity) {
@@ -352,7 +365,4 @@ public class ConversationListFragment extends BaseConversationListFragment
       loadChatlistAsync();
     }
   }
-
 }
-
-

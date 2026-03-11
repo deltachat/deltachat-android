@@ -5,16 +5,14 @@ import android.text.SpannableString;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-
 import androidx.appcompat.widget.AppCompatTextView;
-
 import org.thoughtcrime.securesms.util.Linkifier;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
 
 public class ProfileStatusItem extends LinearLayout {
 
   private AppCompatTextView statusTextView;
-  private final PassthroughClickListener passthroughClickListener   = new PassthroughClickListener();
+  private final PassthroughClickListener passthroughClickListener = new PassthroughClickListener();
 
   public ProfileStatusItem(Context context) {
     super(context);

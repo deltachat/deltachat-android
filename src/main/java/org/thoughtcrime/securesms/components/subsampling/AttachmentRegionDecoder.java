@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.components.subsampling;
 
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,13 +8,10 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.util.Log;
-
 import com.davemorrissey.labs.subscaleview.decoder.ImageRegionDecoder;
 import com.davemorrissey.labs.subscaleview.decoder.SkiaImageRegionDecoder;
-
-import org.thoughtcrime.securesms.mms.PartAuthority;
-
 import java.io.InputStream;
+import org.thoughtcrime.securesms.mms.PartAuthority;
 
 public class AttachmentRegionDecoder implements ImageRegionDecoder {
 
@@ -49,15 +45,16 @@ public class AttachmentRegionDecoder implements ImageRegionDecoder {
       return passthrough.decodeRegion(rect, sampleSize);
     }
 
-    synchronized(this) {
+    synchronized (this) {
       BitmapFactory.Options options = new BitmapFactory.Options();
-      options.inSampleSize      = sampleSize;
+      options.inSampleSize = sampleSize;
       options.inPreferredConfig = Bitmap.Config.RGB_565;
 
       Bitmap bitmap = bitmapRegionDecoder.decodeRegion(rect, options);
 
       if (bitmap == null) {
-        throw new RuntimeException("Skia image decoder returned null bitmap - image format may not be supported");
+        throw new RuntimeException(
+            "Skia image decoder returned null bitmap - image format may not be supported");
       }
 
       return bitmap;
@@ -66,8 +63,8 @@ public class AttachmentRegionDecoder implements ImageRegionDecoder {
 
   public boolean isReady() {
     Log.w(TAG, "isReady");
-    return (passthrough != null && passthrough.isReady()) ||
-           (bitmapRegionDecoder != null && !bitmapRegionDecoder.isRecycled());
+    return (passthrough != null && passthrough.isReady())
+        || (bitmapRegionDecoder != null && !bitmapRegionDecoder.isRecycled());
   }
 
   public void recycle() {

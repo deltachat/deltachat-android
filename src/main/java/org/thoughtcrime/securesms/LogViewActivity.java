@@ -9,15 +9,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentTransaction;
-
+import java.io.File;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.FileProviderUtil;
-
-import java.io.File;
 
 public class LogViewActivity extends BaseActionBarActivity {
 
@@ -60,18 +57,20 @@ public class LogViewActivity extends BaseActionBarActivity {
       return true;
     } else if (itemId == R.id.save_log) {
       Permissions.with(this)
-        .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        .alwaysGrantOnSdk30()
-        .ifNecessary()
-        .onAllGranted(() -> {
-          File outputDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-          boolean success = logViewFragment.saveLogFile(outputDir) != null;
-          new AlertDialog.Builder(this)
-            .setMessage(success ? R.string.pref_saved_log : R.string.pref_save_log_failed)
-            .setPositiveButton(android.R.string.ok, null)
-            .show();
-        })
-        .execute();
+          .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+          .alwaysGrantOnSdk30()
+          .ifNecessary()
+          .onAllGranted(
+              () -> {
+                File outputDir =
+                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                boolean success = logViewFragment.saveLogFile(outputDir) != null;
+                new AlertDialog.Builder(this)
+                    .setMessage(success ? R.string.pref_saved_log : R.string.pref_save_log_failed)
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show();
+              })
+          .execute();
       return true;
     } else if (itemId == R.id.share_log) {
       shareLog();
@@ -110,7 +109,8 @@ public class LogViewActivity extends BaseActionBarActivity {
   }
 
   @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+  public void onRequestPermissionsResult(
+      int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 }

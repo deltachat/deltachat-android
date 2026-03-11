@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="@string/menu_scroll_to_top"
+    <item
+        android:title="@string/menu_scroll_to_top"
         android:id="@+id/log_scroll_up" />
 
-    <item android:title="@string/delta_chat_homepage"
+    <item
+        android:title="@string/delta_chat_homepage"
         android:id="@+id/learn_more"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
-    <item android:title="@string/privacy_policy"
+    <item
+        android:title="@string/privacy_policy"
         android:id="@+id/privacy_policy"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
-    <item android:title="@string/contribute"
+    <item
+        android:title="@string/contribute"
         android:id="@+id/contribute"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
-    <item android:title="@string/global_menu_help_report_desktop"
+    <item
+        android:title="@string/global_menu_help_report_desktop"
         android:id="@+id/report_issue"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
 </menu>

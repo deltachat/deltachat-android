@@ -1,18 +1,16 @@
 package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-
-import org.thoughtcrime.securesms.R;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import org.thoughtcrime.securesms.R;
 
 public class RemovableEditableMediaView extends FrameLayout {
 
@@ -35,8 +33,12 @@ public class RemovableEditableMediaView extends FrameLayout {
   public RemovableEditableMediaView(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
 
-    this.remove     = (ImageView)LayoutInflater.from(context).inflate(R.layout.media_view_remove_button, this, false);
-    this.edit       = (ImageView)LayoutInflater.from(context).inflate(R.layout.media_view_edit_button, this, false);
+    this.remove =
+        (ImageView)
+            LayoutInflater.from(context).inflate(R.layout.media_view_remove_button, this, false);
+    this.edit =
+        (ImageView)
+            LayoutInflater.from(context).inflate(R.layout.media_view_edit_button, this, false);
 
     this.removeSize = getResources().getDimensionPixelSize(R.dimen.media_bubble_remove_button_size);
 
@@ -53,12 +55,13 @@ public class RemovableEditableMediaView extends FrameLayout {
 
   public void display(@Nullable View view, boolean editable) {
     edit.setVisibility(editable ? View.VISIBLE : View.GONE);
-    
+
     if (view == current) return;
     if (current != null) current.setVisibility(View.GONE);
 
     if (view != null) {
-      view.setPadding(view.getPaddingLeft(), removeSize / 2, removeSize / 2, view.getPaddingRight());
+      view.setPadding(
+          view.getPaddingLeft(), removeSize / 2, removeSize / 2, view.getPaddingRight());
       edit.setPadding(0, 0, removeSize / 2, 0);
 
       view.setVisibility(View.VISIBLE);
@@ -87,11 +90,12 @@ public class RemovableEditableMediaView extends FrameLayout {
   }
 
   private void updateRemoveClickListener() {
-    this.remove.setOnClickListener(v -> {
-      for (OnClickListener listener : removeClickListeners) {
-        listener.onClick(v);
-      }
-    });
+    this.remove.setOnClickListener(
+        v -> {
+          for (OnClickListener listener : removeClickListeners) {
+            listener.onClick(v);
+          }
+        });
   }
 
   public void setEditClickListener(View.OnClickListener listener) {

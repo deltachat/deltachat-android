@@ -5,11 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.loader.app.LoaderManager;
-import androidx.core.content.ContextCompat;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -24,7 +19,10 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.loader.app.LoaderManager;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -33,47 +31,53 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class AttachmentTypeSelector extends PopupWindow {
 
-  public static final int ADD_GALLERY       = 1;
-  public static final int ADD_DOCUMENT      = 2;
-  public static final int ADD_CONTACT_INFO  = 3;
-  public static final int TAKE_PHOTO        = 4;
-  public static final int ADD_LOCATION      = 5;
-  public static final int RECORD_VIDEO      = 6;
-  public static final int ADD_WEBXDC        = 7;
+  public static final int ADD_GALLERY = 1;
+  public static final int ADD_DOCUMENT = 2;
+  public static final int ADD_CONTACT_INFO = 3;
+  public static final int TAKE_PHOTO = 4;
+  public static final int ADD_LOCATION = 5;
+  public static final int RECORD_VIDEO = 6;
+  public static final int ADD_WEBXDC = 7;
 
   private static final int ANIMATION_DURATION = 300;
 
-  private final @NonNull LoaderManager       loaderManager;
+  private final @NonNull LoaderManager loaderManager;
   private final @NonNull RecentPhotoViewRail recentRail;
-  private final @NonNull ImageView           imageButton;
-  private final @NonNull ImageView           documentButton;
-  private final @NonNull ImageView           contactButton;
-  private final @NonNull ImageView           cameraButton;
-  private final @NonNull ImageView           videoButton;
-  private final @NonNull ImageView           locationButton;
-  private final @NonNull ImageView           webxdcButton;
+  private final @NonNull ImageView imageButton;
+  private final @NonNull ImageView documentButton;
+  private final @NonNull ImageView contactButton;
+  private final @NonNull ImageView cameraButton;
+  private final @NonNull ImageView videoButton;
+  private final @NonNull ImageView locationButton;
+  private final @NonNull ImageView webxdcButton;
 
-  private @Nullable View                      currentAnchor;
+  private @Nullable View currentAnchor;
   private @Nullable AttachmentClickedListener listener;
   private final int chatId;
 
-  public AttachmentTypeSelector(@NonNull Context context, @NonNull LoaderManager loaderManager, @Nullable AttachmentClickedListener listener, int chatId) {
+  public AttachmentTypeSelector(
+      @NonNull Context context,
+      @NonNull LoaderManager loaderManager,
+      @Nullable AttachmentClickedListener listener,
+      int chatId) {
     super(context);
 
-    LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    LinearLayout   layout   = (LinearLayout) inflater.inflate(R.layout.attachment_type_selector, null, true);
+    LayoutInflater inflater =
+        (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    LinearLayout layout =
+        (LinearLayout) inflater.inflate(R.layout.attachment_type_selector, null, true);
 
-    this.listener       = listener;
-    this.loaderManager  = loaderManager;
-    this.chatId         = chatId;
-    this.recentRail     = ViewUtil.findById(layout, R.id.recent_photos);
-    this.imageButton    = ViewUtil.findById(layout, R.id.gallery_button);
+    this.listener = listener;
+    this.loaderManager = loaderManager;
+    this.chatId = chatId;
+    this.recentRail = ViewUtil.findById(layout, R.id.recent_photos);
+    this.imageButton = ViewUtil.findById(layout, R.id.gallery_button);
     this.documentButton = ViewUtil.findById(layout, R.id.document_button);
-    this.contactButton  = ViewUtil.findById(layout, R.id.contact_button);
-    this.cameraButton   = ViewUtil.findById(layout, R.id.camera_button);
-    this.videoButton    = ViewUtil.findById(layout, R.id.record_video_button);
+    this.contactButton = ViewUtil.findById(layout, R.id.contact_button);
+    this.cameraButton = ViewUtil.findById(layout, R.id.camera_button);
+    this.videoButton = ViewUtil.findById(layout, R.id.record_video_button);
     this.locationButton = ViewUtil.findById(layout, R.id.location_button);
-    this.webxdcButton   = ViewUtil.findById(layout, R.id.webxdc_button);
+    this.webxdcButton = ViewUtil.findById(layout, R.id.webxdc_button);
 
     this.imageButton.setOnClickListener(new PropagatingClickListener(ADD_GALLERY));
     this.documentButton.setOnClickListener(new PropagatingClickListener(ADD_DOCUMENT));
@@ -115,14 +119,17 @@ public class AttachmentTypeSelector extends PopupWindow {
 
     showAtLocation(anchor, Gravity.BOTTOM, 0, 0);
 
-    getContentView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-      @Override
-      public void onGlobalLayout() {
-        getContentView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    getContentView()
+        .getViewTreeObserver()
+        .addOnGlobalLayoutListener(
+            new ViewTreeObserver.OnGlobalLayoutListener() {
+              @Override
+              public void onGlobalLayout() {
+                getContentView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
 
-        animateWindowInCircular(anchor, getContentView());
-      }
-    });
+                animateWindowInCircular(anchor, getContentView());
+              }
+            });
 
     animateButtonIn(cameraButton, ANIMATION_DURATION / 2);
     animateButtonIn(videoButton, ANIMATION_DURATION / 2);
@@ -155,8 +162,16 @@ public class AttachmentTypeSelector extends PopupWindow {
 
   private void animateButtonIn(View button, int delay) {
     AnimationSet animation = new AnimationSet(true);
-    Animation scale = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f,
-                                         Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.0f);
+    Animation scale =
+        new ScaleAnimation(
+            0.0f,
+            1.0f,
+            0.0f,
+            1.0f,
+            Animation.RELATIVE_TO_SELF,
+            0.5f,
+            Animation.RELATIVE_TO_SELF,
+            0.0f);
 
     animation.addAnimation(scale);
     animation.setInterpolator(new OvershootInterpolator(1));
@@ -167,63 +182,65 @@ public class AttachmentTypeSelector extends PopupWindow {
 
   private void animateWindowInCircular(@Nullable View anchor, @NonNull View contentView) {
     Pair<Integer, Integer> coordinates = getClickOrigin(anchor, contentView);
-    Animator animator = ViewAnimationUtils.createCircularReveal(contentView,
-                                                                coordinates.first,
-                                                                coordinates.second,
-                                                                0,
-                                                                Math.max(contentView.getWidth(), contentView.getHeight()));
+    Animator animator =
+        ViewAnimationUtils.createCircularReveal(
+            contentView,
+            coordinates.first,
+            coordinates.second,
+            0,
+            Math.max(contentView.getWidth(), contentView.getHeight()));
     animator.setDuration(ANIMATION_DURATION);
     animator.start();
   }
 
   private void animateWindowOutCircular(@Nullable View anchor, @NonNull View contentView) {
     Pair<Integer, Integer> coordinates = getClickOrigin(anchor, contentView);
-    Animator               animator    = ViewAnimationUtils.createCircularReveal(getContentView(),
-                                                                                 coordinates.first,
-                                                                                 coordinates.second,
-                                                                                 Math.max(getContentView().getWidth(), getContentView().getHeight()),
-                                                                                 0);
+    Animator animator =
+        ViewAnimationUtils.createCircularReveal(
+            getContentView(),
+            coordinates.first,
+            coordinates.second,
+            Math.max(getContentView().getWidth(), getContentView().getHeight()),
+            0);
 
     animator.setDuration(ANIMATION_DURATION);
-    animator.addListener(new Animator.AnimatorListener() {
-      @Override
-      public void onAnimationStart(@NonNull Animator animation) {
-      }
+    animator.addListener(
+        new Animator.AnimatorListener() {
+          @Override
+          public void onAnimationStart(@NonNull Animator animation) {}
 
-      @Override
-      public void onAnimationEnd(@NonNull Animator animation) {
-        AttachmentTypeSelector.super.dismiss();
-      }
+          @Override
+          public void onAnimationEnd(@NonNull Animator animation) {
+            AttachmentTypeSelector.super.dismiss();
+          }
 
-      @Override
-      public void onAnimationCancel(@NonNull Animator animation) {
-      }
+          @Override
+          public void onAnimationCancel(@NonNull Animator animation) {}
 
-      @Override
-      public void onAnimationRepeat(@NonNull Animator animation) {
-      }
-    });
+          @Override
+          public void onAnimationRepeat(@NonNull Animator animation) {}
+        });
 
     animator.start();
   }
 
   private void animateWindowOutTranslate(@NonNull View contentView) {
-    Animation animation = new TranslateAnimation(0, 0, 0, contentView.getTop() + contentView.getHeight());
+    Animation animation =
+        new TranslateAnimation(0, 0, 0, contentView.getTop() + contentView.getHeight());
     animation.setDuration(ANIMATION_DURATION);
-    animation.setAnimationListener(new Animation.AnimationListener() {
-      @Override
-      public void onAnimationStart(Animation animation) {
-      }
+    animation.setAnimationListener(
+        new Animation.AnimationListener() {
+          @Override
+          public void onAnimationStart(Animation animation) {}
 
-      @Override
-      public void onAnimationEnd(Animation animation) {
-        AttachmentTypeSelector.super.dismiss();
-      }
+          @Override
+          public void onAnimationEnd(Animation animation) {
+            AttachmentTypeSelector.super.dismiss();
+          }
 
-      @Override
-      public void onAnimationRepeat(Animation animation) {
-      }
-    });
+          @Override
+          public void onAnimationRepeat(Animation animation) {}
+        });
 
     getContentView().startAnimation(animation);
   }
@@ -268,12 +285,11 @@ public class AttachmentTypeSelector extends PopupWindow {
 
       if (listener != null) listener.onClick(type);
     }
-
   }
 
   public interface AttachmentClickedListener {
     public void onClick(int type);
+
     public void onQuickAttachment(Uri uri);
   }
-
 }
