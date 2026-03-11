@@ -1,18 +1,10 @@
 package org.thoughtcrime.securesms.database.loaders;
 
-
 import android.content.Context;
-
 import androidx.annotation.NonNull;
 import androidx.loader.content.AsyncTaskLoader;
-
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
-
-import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.util.Util;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,15 +14,20 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Util;
 
-public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMediaLoader.BucketedThreadMedia> {
+public class BucketedThreadMediaLoader
+    extends AsyncTaskLoader<BucketedThreadMediaLoader.BucketedThreadMedia> {
 
   private final int chatId;
   private final int msgType1;
   private final int msgType2;
   private final int msgType3;
 
-  public BucketedThreadMediaLoader(@NonNull Context context, int chatId, int msgType1, int msgType2, int msgType3) {
+  public BucketedThreadMediaLoader(
+      @NonNull Context context, int chatId, int msgType1, int msgType2, int msgType3) {
     super(context);
     this.chatId = chatId;
     this.msgType1 = msgType1;
@@ -53,16 +50,15 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
   }
 
   @Override
-  protected void onAbandon() {
-  }
+  protected void onAbandon() {}
 
   @Override
   public BucketedThreadMedia loadInBackground() {
-    BucketedThreadMedia result   = new BucketedThreadMedia(getContext());
+    BucketedThreadMedia result = new BucketedThreadMedia(getContext());
     DcContext context = DcHelper.getContext(getContext());
-    if(chatId!=-1 /*0=all, -1=none*/) {
+    if (chatId != -1 /*0=all, -1=none*/) {
       int[] messages = context.getChatMedia(chatId, msgType1, msgType2, msgType3);
-      for(int nextId : messages) {
+      for (int nextId : messages) {
         result.add(context.getMsg(nextId));
       }
     }
@@ -72,37 +68,59 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
 
   public static class BucketedThreadMedia {
 
-    private final TimeBucket   TODAY;
-    private final TimeBucket   YESTERDAY;
-    private final TimeBucket   THIS_WEEK;
-    private final TimeBucket   LAST_WEEK;
-    private final TimeBucket   THIS_MONTH;
-    private final TimeBucket   LAST_MONTH;
+    private final TimeBucket TODAY;
+    private final TimeBucket YESTERDAY;
+    private final TimeBucket THIS_WEEK;
+    private final TimeBucket LAST_WEEK;
+    private final TimeBucket THIS_MONTH;
+    private final TimeBucket LAST_MONTH;
     private final MonthBuckets OLDER;
 
     private final TimeBucket[] TIME_SECTIONS;
 
     public BucketedThreadMedia(@NonNull Context context) {
       // from today midnight until the end of human time
-      this.TODAY         = new TimeBucket(context.getString(R.string.today),
-          addToCalendarFromTodayMidnight(Calendar.DAY_OF_YEAR, 0), Long.MAX_VALUE);
+      this.TODAY =
+          new TimeBucket(
+              context.getString(R.string.today),
+              addToCalendarFromTodayMidnight(Calendar.DAY_OF_YEAR, 0),
+              Long.MAX_VALUE);
       // from yesterday midnight until today midnight
-      this.YESTERDAY     = new TimeBucket(context.getString(R.string.yesterday),
-          addToCalendarFromTodayMidnight(Calendar.DAY_OF_YEAR, -1), TODAY.startTime);
-      // from the closest start of week until yesterday midnight (that can be a negative timespace and thus be empty)
-      this.THIS_WEEK     = new TimeBucket(context.getString(R.string.this_week),
-          setInCalendarFromTodayMidnight(Calendar.DAY_OF_WEEK, getCalendar().getFirstDayOfWeek()), YESTERDAY.startTime);
+      this.YESTERDAY =
+          new TimeBucket(
+              context.getString(R.string.yesterday),
+              addToCalendarFromTodayMidnight(Calendar.DAY_OF_YEAR, -1),
+              TODAY.startTime);
+      // from the closest start of week until yesterday midnight (that can be a negative timespace
+      // and thus be empty)
+      this.THIS_WEEK =
+          new TimeBucket(
+              context.getString(R.string.this_week),
+              setInCalendarFromTodayMidnight(
+                  Calendar.DAY_OF_WEEK, getCalendar().getFirstDayOfWeek()),
+              YESTERDAY.startTime);
       // from the closest start of week one week back until the closest start of week.
-      this.LAST_WEEK     = new TimeBucket(context.getString(R.string.last_week),
-          addToCalendarFrom(THIS_WEEK.startTime, Calendar.WEEK_OF_YEAR, -1), THIS_WEEK.startTime);
-      // from the closest 1st of a month until one week prior to the closest start of week (can be negative and thus empty)
-      this.THIS_MONTH    = new TimeBucket(context.getString(R.string.this_month),
-          setInCalendarFromTodayMidnight(Calendar.DAY_OF_MONTH, 1), LAST_WEEK.startTime);
+      this.LAST_WEEK =
+          new TimeBucket(
+              context.getString(R.string.last_week),
+              addToCalendarFrom(THIS_WEEK.startTime, Calendar.WEEK_OF_YEAR, -1),
+              THIS_WEEK.startTime);
+      // from the closest 1st of a month until one week prior to the closest start of week (can be
+      // negative and thus empty)
+      this.THIS_MONTH =
+          new TimeBucket(
+              context.getString(R.string.this_month),
+              setInCalendarFromTodayMidnight(Calendar.DAY_OF_MONTH, 1),
+              LAST_WEEK.startTime);
       // from the closest 1st of a month, one month back to the closest 1st of a month
-      this.LAST_MONTH    = new TimeBucket(context.getString(R.string.last_month),
-          addToCalendarFrom(THIS_MONTH.startTime, Calendar.MONTH, -1), LAST_WEEK.startTime);
-      this.TIME_SECTIONS = new TimeBucket[]{TODAY, YESTERDAY, THIS_WEEK, LAST_WEEK, THIS_MONTH, LAST_MONTH};
-      this.OLDER         = new MonthBuckets();
+      this.LAST_MONTH =
+          new TimeBucket(
+              context.getString(R.string.last_month),
+              addToCalendarFrom(THIS_MONTH.startTime, Calendar.MONTH, -1),
+              LAST_WEEK.startTime);
+      this.TIME_SECTIONS =
+          new TimeBucket[] {TODAY, YESTERDAY, THIS_WEEK, LAST_WEEK, THIS_MONTH, LAST_MONTH};
+      this.OLDER = new MonthBuckets();
     }
 
     public void add(DcMsg imageMessage) {
@@ -141,7 +159,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
       }
 
       if (section < activeTimeBuckets.size()) return activeTimeBuckets.get(section).getItemCount();
-      else                                    return OLDER.getSectionItemCount(section - activeTimeBuckets.size());
+      else return OLDER.getSectionItemCount(section - activeTimeBuckets.size());
     }
 
     public DcMsg get(int section, int item) {
@@ -151,7 +169,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
       }
 
       if (section < activeTimeBuckets.size()) return activeTimeBuckets.get(section).getItem(item);
-      else                                    return OLDER.getItem(section - activeTimeBuckets.size(), item);
+      else return OLDER.getItem(section - activeTimeBuckets.size(), item);
     }
 
     public String getName(int section) {
@@ -161,7 +179,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
       }
 
       if (section < activeTimeBuckets.size()) return activeTimeBuckets.get(section).getName();
-      else                                    return OLDER.getName(section - activeTimeBuckets.size());
+      else return OLDER.getName(section - activeTimeBuckets.size());
     }
 
     // tests should override this function to deliver a preset calendar.
@@ -201,12 +219,12 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
 
       private final LinkedList<DcMsg> records = new LinkedList<>();
 
-      private final long   startTime;
+      private final long startTime;
       private final long endTime;
       private final String name;
 
       TimeBucket(String name, long startTime, long endTime) {
-        this.name      = name;
+        this.name = name;
         this.startTime = startTime;
         this.endTime = endTime;
       }
@@ -244,9 +262,9 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(record.getTimestamp());
 
-        int  year  = calendar.get(Calendar.YEAR) - 1900;
-        int  month = calendar.get(Calendar.MONTH);
-        Date date  = new Date(year, month, 1);
+        int year = calendar.get(Calendar.YEAR) - 1900;
+        int month = calendar.get(Calendar.MONTH);
+        Date date = new Date(year, month, 1);
 
         if (months.containsKey(date)) {
           months.get(date).addFirst(record);

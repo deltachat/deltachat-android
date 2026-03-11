@@ -10,22 +10,19 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Parcel;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
-
+import java.util.concurrent.ExecutionException;
 import org.thoughtcrime.securesms.imageeditor.Bounds;
 import org.thoughtcrime.securesms.imageeditor.Renderer;
 import org.thoughtcrime.securesms.imageeditor.RendererContext;
@@ -36,38 +33,36 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequest;
 import org.thoughtcrime.securesms.util.BitmapUtil;
 
-import java.util.concurrent.ExecutionException;
-
 /**
  * Uses Glide to load an image and implements a {@link Renderer}.
  *
- * The image can be encrypted.
+ * <p>The image can be encrypted.
  */
 final class UriGlideRenderer implements Renderer {
 
   private static final String TAG = UriGlideRenderer.class.getSimpleName();
 
   private static final int PREVIEW_DIMENSION_LIMIT = 2048;
-  private static final int MAX_BLUR_DIMENSION      = 300;
+  private static final int MAX_BLUR_DIMENSION = 300;
 
-  private final Uri     imageUri;
-  private final Paint   paint                 = new Paint();
-  private final Matrix  imageProjectionMatrix = new Matrix();
-  private final Matrix  temp                  = new Matrix();
-  private final Matrix  blurScaleMatrix       = new Matrix();
+  private final Uri imageUri;
+  private final Paint paint = new Paint();
+  private final Matrix imageProjectionMatrix = new Matrix();
+  private final Matrix temp = new Matrix();
+  private final Matrix blurScaleMatrix = new Matrix();
   private final boolean decryptable;
-  private final int     maxWidth;
-  private final int     maxHeight;
+  private final int maxWidth;
+  private final int maxHeight;
 
-  @Nullable private Bitmap         bitmap;
-  @Nullable private Bitmap         blurredBitmap;
-  @Nullable private Paint          blurPaint;
+  @Nullable private Bitmap bitmap;
+  @Nullable private Bitmap blurredBitmap;
+  @Nullable private Paint blurPaint;
 
   UriGlideRenderer(@NonNull Uri imageUri, boolean decryptable, int maxWidth, int maxHeight) {
-    this.imageUri    = imageUri;
+    this.imageUri = imageUri;
     this.decryptable = decryptable;
-    this.maxWidth    = maxWidth;
-    this.maxHeight   = maxHeight;
+    this.maxWidth = maxWidth;
+    this.maxHeight = maxHeight;
     paint.setAntiAlias(true);
     paint.setFilterBitmap(true);
     paint.setDither(true);
@@ -84,19 +79,22 @@ final class UriGlideRenderer implements Renderer {
           throw new RuntimeException(e);
         }
       } else {
-        getBitmapGlideRequest(rendererContext.context, true).into(new CustomTarget<Bitmap>() {
-          @Override
-          public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-            setBitmap(rendererContext, resource);
+        getBitmapGlideRequest(rendererContext.context, true)
+            .into(
+                new CustomTarget<Bitmap>() {
+                  @Override
+                  public void onResourceReady(
+                      @NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                    setBitmap(rendererContext, resource);
 
-            rendererContext.invalidate.onInvalidate(UriGlideRenderer.this);
-          }
+                    rendererContext.invalidate.onInvalidate(UriGlideRenderer.this);
+                  }
 
-          @Override
-          public void onLoadCleared(@Nullable Drawable placeholder) {
-            bitmap = null;
-          }
-        });
+                  @Override
+                  public void onLoadCleared(@Nullable Drawable placeholder) {
+                    bitmap = null;
+                  }
+                });
       }
     }
 
@@ -111,7 +109,11 @@ final class UriGlideRenderer implements Renderer {
       int alpha = paint.getAlpha();
       paint.setAlpha(rendererContext.getAlpha(alpha));
 
-      rendererContext.canvas.drawBitmap(bitmap, 0, 0, rendererContext.getMaskPaint() != null ? rendererContext.getMaskPaint() : paint);
+      rendererContext.canvas.drawBitmap(
+          bitmap,
+          0,
+          0,
+          rendererContext.getMaskPaint() != null ? rendererContext.getMaskPaint() : paint);
 
       paint.setAlpha(alpha);
 
@@ -119,28 +121,29 @@ final class UriGlideRenderer implements Renderer {
 
       renderBlurOverlay(rendererContext);
     } else if (rendererContext.isBlockingLoad()) {
-      // If failed to load, we draw a black out, in case image was sticker positioned to cover private info.
+      // If failed to load, we draw a black out, in case image was sticker positioned to cover
+      // private info.
       rendererContext.canvas.drawRect(Bounds.FULL_BOUNDS, paint);
     }
   }
 
   private void renderBlurOverlay(RendererContext rendererContext) {
-      boolean renderMask = false;
+    boolean renderMask = false;
 
-      for (EditorElement child : rendererContext.getChildren()) {
-        if (child.getZOrder() == EditorModel.Z_MASK) {
-          renderMask = true;
-          if (blurPaint == null) {
-            blurPaint = new Paint();
-            blurPaint.setAntiAlias(true);
-            blurPaint.setFilterBitmap(true);
-            blurPaint.setDither(true);
-          }
-          blurPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-          rendererContext.setMaskPaint(blurPaint);
-          child.draw(rendererContext);
+    for (EditorElement child : rendererContext.getChildren()) {
+      if (child.getZOrder() == EditorModel.Z_MASK) {
+        renderMask = true;
+        if (blurPaint == null) {
+          blurPaint = new Paint();
+          blurPaint.setAntiAlias(true);
+          blurPaint.setFilterBitmap(true);
+          blurPaint.setDither(true);
         }
+        blurPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+        rendererContext.setMaskPaint(blurPaint);
+        child.draw(rendererContext);
       }
+    }
 
     if (renderMask) {
       rendererContext.save();
@@ -152,9 +155,10 @@ final class UriGlideRenderer implements Renderer {
       if (blurredBitmap == null) {
         blurredBitmap = blur(bitmap, rendererContext.context);
 
-        blurScaleMatrix.setRectToRect(new RectF(0, 0, blurredBitmap.getWidth(), blurredBitmap.getHeight()),
-                                      new RectF(0, 0, bitmap.getWidth(), bitmap.getHeight()),
-                                      Matrix.ScaleToFit.FILL);
+        blurScaleMatrix.setRectToRect(
+            new RectF(0, 0, blurredBitmap.getWidth(), blurredBitmap.getHeight()),
+            new RectF(0, 0, bitmap.getWidth(), bitmap.getHeight()),
+            Matrix.ScaleToFit.FILL);
       }
 
       rendererContext.canvas.concat(blurScaleMatrix);
@@ -166,20 +170,23 @@ final class UriGlideRenderer implements Renderer {
   }
 
   private GlideRequest<Bitmap> getBitmapGlideRequest(@NonNull Context context, boolean preview) {
-    int width  = this.maxWidth;
+    int width = this.maxWidth;
     int height = this.maxHeight;
 
     if (preview) {
-      width  = Math.min(width,  PREVIEW_DIMENSION_LIMIT);
+      width = Math.min(width, PREVIEW_DIMENSION_LIMIT);
       height = Math.min(height, PREVIEW_DIMENSION_LIMIT);
     }
 
     return GlideApp.with(context)
-                   .asBitmap()
-                   .diskCacheStrategy(DiskCacheStrategy.NONE)
-                   .override(width, height)
-                   .centerInside()
-                   .load(decryptable && imageUri!=null ? new DecryptableStreamUriLoader.DecryptableUri(imageUri) : imageUri);
+        .asBitmap()
+        .diskCacheStrategy(DiskCacheStrategy.NONE)
+        .override(width, height)
+        .centerInside()
+        .load(
+            decryptable && imageUri != null
+                ? new DecryptableStreamUriLoader.DecryptableUri(imageUri)
+                : imageUri);
   }
 
   @Override
@@ -195,7 +202,7 @@ final class UriGlideRenderer implements Renderer {
     imageProjectionMatrix.invert(temp);
 
     float[] onBmp = new float[2];
-    temp.mapPoints(onBmp, new float[]{ x, y });
+    temp.mapPoints(onBmp, new float[] {x, y});
 
     int xInt = (int) onBmp[0];
     int yInt = (int) onBmp[1];
@@ -221,9 +228,12 @@ final class UriGlideRenderer implements Renderer {
   private void setBitmap(@NonNull RendererContext rendererContext, @Nullable Bitmap bitmap) {
     this.bitmap = bitmap;
     if (bitmap != null) {
-      RectF from  = new RectF(0, 0, bitmap.getWidth(), bitmap.getHeight());
+      RectF from = new RectF(0, 0, bitmap.getWidth(), bitmap.getHeight());
       imageProjectionMatrix.setRectToRect(from, Bounds.FULL_BOUNDS, Matrix.ScaleToFit.CENTER);
-      rendererContext.rendererReady.onReady(UriGlideRenderer.this, cropMatrix(bitmap), new Point(bitmap.getWidth(), bitmap.getHeight()));
+      rendererContext.rendererReady.onReady(
+          UriGlideRenderer.this,
+          cropMatrix(bitmap),
+          new Point(bitmap.getWidth(), bitmap.getHeight()));
     }
   }
 
@@ -239,15 +249,28 @@ final class UriGlideRenderer implements Renderer {
 
   @RequiresApi(17)
   private static @NonNull Bitmap blur(Bitmap bitmap, Context context) {
-    Point  previewSize = scaleKeepingAspectRatio(new Point(bitmap.getWidth(), bitmap.getHeight()), PREVIEW_DIMENSION_LIMIT);
-    Point  blurSize    = scaleKeepingAspectRatio(new Point(previewSize.x / 2, previewSize.y / 2 ), MAX_BLUR_DIMENSION);
-    Bitmap small       = BitmapUtil.createScaledBitmap(bitmap, blurSize.x, blurSize.y);
+    Point previewSize =
+        scaleKeepingAspectRatio(
+            new Point(bitmap.getWidth(), bitmap.getHeight()), PREVIEW_DIMENSION_LIMIT);
+    Point blurSize =
+        scaleKeepingAspectRatio(
+            new Point(previewSize.x / 2, previewSize.y / 2), MAX_BLUR_DIMENSION);
+    Bitmap small = BitmapUtil.createScaledBitmap(bitmap, blurSize.x, blurSize.y);
 
-    Log.d(TAG, "Bitmap: " + bitmap.getWidth() + "x" + bitmap.getHeight() + ", Blur: " + blurSize.x + "x" + blurSize.y);
+    Log.d(
+        TAG,
+        "Bitmap: "
+            + bitmap.getWidth()
+            + "x"
+            + bitmap.getHeight()
+            + ", Blur: "
+            + blurSize.x
+            + "x"
+            + blurSize.y);
 
-    RenderScript        rs     = RenderScript.create(context);
-    Allocation          input  = Allocation.createFromBitmap(rs, small);
-    Allocation          output = Allocation.createTyped(rs, input.getType());
+    RenderScript rs = RenderScript.create(context);
+    Allocation input = Allocation.createFromBitmap(rs, small);
+    Allocation output = Allocation.createTyped(rs, input.getType());
     ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
 
     script.setRadius(25f);
@@ -267,7 +290,7 @@ final class UriGlideRenderer implements Renderer {
       outX = maxDimen;
       outY = maxDimen;
 
-      float widthRatio  = dimens.x  / (float) maxDimen;
+      float widthRatio = dimens.x / (float) maxDimen;
       float heightRatio = dimens.y / (float) maxDimen;
 
       if (widthRatio > heightRatio) {
@@ -280,21 +303,19 @@ final class UriGlideRenderer implements Renderer {
     return new Point(outX, outY);
   }
 
-  public static final Creator<UriGlideRenderer> CREATOR = new Creator<UriGlideRenderer>() {
-    @Override
-    public UriGlideRenderer createFromParcel(Parcel in) {
-      return new UriGlideRenderer(Uri.parse(in.readString()),
-                                  in.readInt() == 1,
-                                  in.readInt(),
-                                  in.readInt()
-                                 );
-    }
+  public static final Creator<UriGlideRenderer> CREATOR =
+      new Creator<UriGlideRenderer>() {
+        @Override
+        public UriGlideRenderer createFromParcel(Parcel in) {
+          return new UriGlideRenderer(
+              Uri.parse(in.readString()), in.readInt() == 1, in.readInt(), in.readInt());
+        }
 
-    @Override
-    public UriGlideRenderer[] newArray(int size) {
-      return new UriGlideRenderer[size];
-    }
-  };
+        @Override
+        public UriGlideRenderer[] newArray(int size) {
+          return new UriGlideRenderer[size];
+        }
+      };
 
   @Override
   public int describeContents() {
@@ -303,7 +324,7 @@ final class UriGlideRenderer implements Renderer {
 
   @Override
   public void writeToParcel(Parcel dest, int flags) {
-    dest.writeString(imageUri!=null? imageUri.toString() : "");
+    dest.writeString(imageUri != null ? imageUri.toString() : "");
     dest.writeInt(decryptable ? 1 : 0);
     dest.writeInt(maxWidth);
     dest.writeInt(maxHeight);

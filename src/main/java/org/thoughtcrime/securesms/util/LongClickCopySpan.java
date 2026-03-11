@@ -7,19 +7,15 @@ import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AlertDialog;
-
+import chat.delta.rpc.types.SecurejoinSource;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
-
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
-
-import chat.delta.rpc.types.SecurejoinSource;
 
 public class LongClickCopySpan extends ClickableSpan {
   private static final String PREFIX_MAILTO = "mailto:";
@@ -27,8 +23,7 @@ public class LongClickCopySpan extends ClickableSpan {
   private static final String PREFIX_CMD = "cmd:";
 
   private boolean isHighlighted;
-  @ColorInt
-  private int highlightColor;
+  @ColorInt private int highlightColor;
   private final String url;
 
   public LongClickCopySpan(String url) {
@@ -66,16 +61,21 @@ public class LongClickCopySpan extends ClickableSpan {
           contactId = dcContext.createContact(null, addr);
         }
         DcContact contact = dcContext.getContact(contactId);
-        if (contact.getId() != 0 && !contact.isBlocked() && dcContext.getChatIdByContactId(contact.getId()) != 0) {
+        if (contact.getId() != 0
+            && !contact.isBlocked()
+            && dcContext.getChatIdByContactId(contact.getId()) != 0) {
           openChat(activity, contact);
         } else {
           new AlertDialog.Builder(activity)
-                  .setMessage(activity.getString(R.string.ask_start_chat_with, contact.getDisplayName()))
-                  .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+              .setMessage(
+                  activity.getString(R.string.ask_start_chat_with, contact.getDisplayName()))
+              .setPositiveButton(
+                  android.R.string.ok,
+                  (dialog, which) -> {
                     openChat(activity, contact);
                   })
-                  .setNegativeButton(R.string.cancel, null)
-                  .show();
+              .setNegativeButton(R.string.cancel, null)
+              .show();
         }
       } catch (Exception e) {
         e.printStackTrace();
@@ -96,17 +96,21 @@ public class LongClickCopySpan extends ClickableSpan {
 
     if (url.startsWith(PREFIX_CMD)) {
       Util.writeTextToClipboard(context, url.substring(PREFIX_CMD.length()));
-      Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+      Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT)
+          .show();
     } else {
       String preparedUrl = prepareUrl(url);
       new AlertDialog.Builder(context)
           .setTitle(preparedUrl)
-          .setItems(new CharSequence[]{
-                  context.getString(R.string.menu_copy_to_clipboard)
-              },
+          .setItems(
+              new CharSequence[] {context.getString(R.string.menu_copy_to_clipboard)},
               (dialogInterface, i) -> {
                 Util.writeTextToClipboard(context, preparedUrl);
-                Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                        context,
+                        context.getString(R.string.copied_to_clipboard),
+                        Toast.LENGTH_SHORT)
+                    .show();
               })
           .setNegativeButton(R.string.cancel, null)
           .show();

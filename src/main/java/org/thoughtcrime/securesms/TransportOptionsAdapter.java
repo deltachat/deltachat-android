@@ -7,12 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-
-import org.thoughtcrime.securesms.util.ViewUtil;
-
 import java.util.List;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class TransportOptionsAdapter extends BaseAdapter {
 
@@ -20,11 +17,10 @@ public class TransportOptionsAdapter extends BaseAdapter {
 
   private List<TransportOption> enabledTransports;
 
-  public TransportOptionsAdapter(@NonNull Context context,
-                                 @NonNull List<TransportOption> enabledTransports)
-  {
+  public TransportOptionsAdapter(
+      @NonNull Context context, @NonNull List<TransportOption> enabledTransports) {
     super();
-    this.inflater          = LayoutInflater.from(context);
+    this.inflater = LayoutInflater.from(context);
     this.enabledTransports = enabledTransports;
   }
 
@@ -53,10 +49,10 @@ public class TransportOptionsAdapter extends BaseAdapter {
       convertView = inflater.inflate(R.layout.transport_selection_list_item, parent, false);
     }
 
-    TransportOption transport   = (TransportOption) getItem(position);
-    ImageView       imageView   = ViewUtil.findById(convertView, R.id.icon);
-    TextView        textView    = ViewUtil.findById(convertView, R.id.text);
-    TextView        subtextView = ViewUtil.findById(convertView, R.id.subtext);
+    TransportOption transport = (TransportOption) getItem(position);
+    ImageView imageView = ViewUtil.findById(convertView, R.id.icon);
+    TextView textView = ViewUtil.findById(convertView, R.id.text);
+    TextView subtextView = ViewUtil.findById(convertView, R.id.subtext);
 
     imageView.setImageResource(transport.getDrawable());
     textView.setText(transport.getDescription());

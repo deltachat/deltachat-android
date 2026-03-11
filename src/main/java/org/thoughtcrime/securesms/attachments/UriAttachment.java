@@ -6,16 +6,31 @@ import androidx.annotation.Nullable;
 
 public class UriAttachment extends Attachment {
 
-  private final @NonNull  Uri dataUri;
+  private final @NonNull Uri dataUri;
   private final @Nullable Uri thumbnailUri;
 
-  public UriAttachment(@NonNull Uri dataUri, @Nullable Uri thumbnailUri,
-                       @NonNull String contentType, int transferState, long size, int width, int height,
-                       @Nullable String fileName, @Nullable String fastPreflightId,
-                       boolean voiceNote)
-  {
-    super(contentType, transferState, size, fileName, null, fastPreflightId, voiceNote, width, height);
-    this.dataUri      = dataUri;
+  public UriAttachment(
+      @NonNull Uri dataUri,
+      @Nullable Uri thumbnailUri,
+      @NonNull String contentType,
+      int transferState,
+      long size,
+      int width,
+      int height,
+      @Nullable String fileName,
+      @Nullable String fastPreflightId,
+      boolean voiceNote) {
+    super(
+        contentType,
+        transferState,
+        size,
+        fileName,
+        null,
+        fastPreflightId,
+        voiceNote,
+        width,
+        height);
+    this.dataUri = dataUri;
     this.thumbnailUri = thumbnailUri;
   }
 

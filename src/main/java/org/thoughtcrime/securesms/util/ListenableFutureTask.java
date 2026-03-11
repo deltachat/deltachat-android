@@ -1,23 +1,20 @@
 /**
  * Copyright (C) 2014 Open Whisper Systems
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * <p>This program is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>You should have received a copy of the GNU General Public License along with this program. If
+ * not, see <http://www.gnu.org/licenses/>.
  */
 package org.thoughtcrime.securesms.util;
 
 import androidx.annotation.Nullable;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -29,11 +26,9 @@ public class ListenableFutureTask<V> extends FutureTask<V> {
 
   private final List<FutureTaskListener<V>> listeners = new LinkedList<>();
 
-  @Nullable
-  private final Object identifier;
+  @Nullable private final Object identifier;
 
-  @Nullable
-  private final Executor callbackExecutor;
+  @Nullable private final Executor callbackExecutor;
 
   public ListenableFutureTask(Callable<V> callable) {
     this(callable, null);
@@ -43,25 +38,26 @@ public class ListenableFutureTask<V> extends FutureTask<V> {
     this(callable, identifier, null);
   }
 
-  public ListenableFutureTask(Callable<V> callable, @Nullable Object identifier, @Nullable Executor callbackExecutor) {
+  public ListenableFutureTask(
+      Callable<V> callable, @Nullable Object identifier, @Nullable Executor callbackExecutor) {
     super(callable);
-    this.identifier       = identifier;
+    this.identifier = identifier;
     this.callbackExecutor = callbackExecutor;
   }
-
 
   public ListenableFutureTask(final V result) {
     this(result, null);
   }
 
   public ListenableFutureTask(final V result, @Nullable Object identifier) {
-    super(new Callable<V>() {
-      @Override
-      public V call() throws Exception {
-        return result;
-      }
-    });
-    this.identifier       = identifier;
+    super(
+        new Callable<V>() {
+          @Override
+          public V call() throws Exception {
+            return result;
+          }
+        });
+    this.identifier = identifier;
     this.callbackExecutor = null;
     this.run();
   }
@@ -84,17 +80,18 @@ public class ListenableFutureTask<V> extends FutureTask<V> {
   }
 
   private void callback() {
-    Runnable callbackRunnable = new Runnable() {
-      @Override
-      public void run() {
-        for (FutureTaskListener<V> listener : listeners) {
-          callback(listener);
-        }
-      }
-    };
+    Runnable callbackRunnable =
+        new Runnable() {
+          @Override
+          public void run() {
+            for (FutureTaskListener<V> listener : listeners) {
+              callback(listener);
+            }
+          }
+        };
 
     if (callbackExecutor == null) callbackRunnable.run();
-    else                          callbackExecutor.execute(callbackRunnable);
+    else callbackExecutor.execute(callbackRunnable);
   }
 
   private void callback(FutureTaskListener<V> listener) {
@@ -121,6 +118,6 @@ public class ListenableFutureTask<V> extends FutureTask<V> {
   @Override
   public int hashCode() {
     if (identifier != null) return identifier.hashCode();
-    else                    return super.hashCode();
+    else return super.hashCode();
   }
 }

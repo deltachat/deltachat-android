@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -15,12 +14,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.EnteredLoginParam;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
+import java.util.List;
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
@@ -32,14 +33,8 @@ import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.util.List;
-
-import chat.delta.rpc.Rpc;
-import chat.delta.rpc.RpcException;
-import chat.delta.rpc.types.EnteredLoginParam;
-
 public class RelayListActivity extends BaseActionBarActivity
-  implements RelayListAdapter.OnRelayClickListener, DcEventCenter.DcEventDelegate {
+    implements RelayListAdapter.OnRelayClickListener, DcEventCenter.DcEventDelegate {
 
   private static final String TAG = RelayListActivity.class.getSimpleName();
   public static final String EXTRA_QR_DATA = "qr_data";
@@ -48,8 +43,12 @@ public class RelayListActivity extends BaseActionBarActivity
   private Rpc rpc;
   private int accId;
 
-  /** QR provided via Intent extras needs to be saved to pass it to QrCodeHandler when authorization finishes */
+  /**
+   * QR provided via Intent extras needs to be saved to pass it to QrCodeHandler when authorization
+   * finishes
+   */
   private String qrData = null;
+
   private ActivityResultLauncher<Intent> screenLockLauncher;
   private ActivityResultLauncher<Intent> qrScannerLauncher;
 
@@ -61,30 +60,31 @@ public class RelayListActivity extends BaseActionBarActivity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_relay_list);
 
-    qrScannerLauncher = registerForActivityResult(
-      new ActivityResultContracts.StartActivityForResult(),
-      result -> {
-        if (result.getResultCode() == RESULT_OK) {
-          IntentResult scanResult = IntentIntegrator.parseActivityResult(result.getResultCode(), result.getData());
-          new QrCodeHandler(this).handleOnlyAddRelayQr(scanResult.getContents(), null);
-        }
-      }
-    );
-    screenLockLauncher = registerForActivityResult(
-      new ActivityResultContracts.StartActivityForResult(),
-      result -> {
-        if (result.getResultCode() != RESULT_OK) {
-          // if user canceled unlocking, then finish
-          finish();
-          return;
-        }
-        // user authorized, then proceed to handle the QR data
-        if (qrData != null) {
-          new QrCodeHandler(this).handleOnlyAddRelayQr(qrData, null);
-          qrData = null;
-        }
-      }
-    );
+    qrScannerLauncher =
+        registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+              if (result.getResultCode() == RESULT_OK) {
+                IntentResult scanResult =
+                    IntentIntegrator.parseActivityResult(result.getResultCode(), result.getData());
+                new QrCodeHandler(this).handleOnlyAddRelayQr(scanResult.getContents(), null);
+              }
+            });
+    screenLockLauncher =
+        registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+              if (result.getResultCode() != RESULT_OK) {
+                // if user canceled unlocking, then finish
+                finish();
+                return;
+              }
+              // user authorized, then proceed to handle the QR data
+              if (qrData != null) {
+                new QrCodeHandler(this).handleOnlyAddRelayQr(qrData, null);
+                qrData = null;
+              }
+            });
 
     rpc = DcHelper.getRpc(this);
     accId = DcHelper.getContext(this).getAccountId();
@@ -106,25 +106,31 @@ public class RelayListActivity extends BaseActionBarActivity
     qrData = getIntent().getStringExtra(EXTRA_QR_DATA);
     if (qrData != null) {
       // when the activity is opened with a QR data, we need to ask for authorization first
-      boolean result = ScreenLockUtil.applyScreenLock(this, getString(R.string.add_transport), getString(R.string.enter_system_secret_to_continue), screenLockLauncher);
+      boolean result =
+          ScreenLockUtil.applyScreenLock(
+              this,
+              getString(R.string.add_transport),
+              getString(R.string.enter_system_secret_to_continue),
+              screenLockLauncher);
       if (!result) {
         new QrCodeHandler(this).handleOnlyAddRelayQr(qrData, null);
       }
     }
 
-    fabAdd.setOnClickListener(v -> {
-      Intent intent = new IntentIntegrator(this)
-        .setCaptureActivity(QrActivity.class)
-        .addExtra(QrActivity.EXTRA_SCAN_RELAY, true)
-        .createScanIntent();
-      qrScannerLauncher.launch(intent);
-    });
+    fabAdd.setOnClickListener(
+        v -> {
+          Intent intent =
+              new IntentIntegrator(this)
+                  .setCaptureActivity(QrActivity.class)
+                  .addExtra(QrActivity.EXTRA_SCAN_RELAY, true)
+                  .createScanIntent();
+          qrScannerLauncher.launch(intent);
+        });
 
     LinearLayoutManager layoutManager = new LinearLayoutManager(this);
     // Add the default divider (uses the theme’s `android.R.attr.listDivider`)
-    DividerItemDecoration divider = new DividerItemDecoration(
-      recyclerView.getContext(),
-      layoutManager.getOrientation());
+    DividerItemDecoration divider =
+        new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
     recyclerView.addItemDecoration(divider);
     recyclerView.setLayoutManager(layoutManager);
 
@@ -145,38 +151,40 @@ public class RelayListActivity extends BaseActionBarActivity
   }
 
   private void loadRelays() {
-    Util.runOnAnyBackgroundThread(() -> {
-      String mainRelayAddr = "";
-      try {
-        mainRelayAddr = rpc.getConfig(accId, DcHelper.CONFIG_CONFIGURED_ADDRESS);
-      } catch (RpcException e) {
-        Log.e(TAG, "RPC.getConfig() failed", e);
-      }
-      String finalMainRelayAddr = mainRelayAddr;
+    Util.runOnAnyBackgroundThread(
+        () -> {
+          String mainRelayAddr = "";
+          try {
+            mainRelayAddr = rpc.getConfig(accId, DcHelper.CONFIG_CONFIGURED_ADDRESS);
+          } catch (RpcException e) {
+            Log.e(TAG, "RPC.getConfig() failed", e);
+          }
+          String finalMainRelayAddr = mainRelayAddr;
 
-      try {
-        List<EnteredLoginParam> relays = rpc.listTransports(accId);
+          try {
+            List<EnteredLoginParam> relays = rpc.listTransports(accId);
 
-        Util.runOnMain(() -> adapter.setRelays(relays, finalMainRelayAddr));
-      } catch (RpcException e) {
-        Log.e(TAG, "RPC.listTransports() failed", e);
-        Util.runOnMain(() -> adapter.setRelays(null, finalMainRelayAddr));
-      }
-    });
+            Util.runOnMain(() -> adapter.setRelays(relays, finalMainRelayAddr));
+          } catch (RpcException e) {
+            Log.e(TAG, "RPC.listTransports() failed", e);
+            Util.runOnMain(() -> adapter.setRelays(null, finalMainRelayAddr));
+          }
+        });
   }
 
   @Override
   public void onRelayClick(EnteredLoginParam relay) {
     if (relay.addr != null && !relay.addr.equals(adapter.getMainRelay())) {
-      Util.runOnAnyBackgroundThread(() -> {
-        try {
-          rpc.setConfig(accId, DcHelper.CONFIG_CONFIGURED_ADDRESS, relay.addr);
-        } catch (RpcException e) {
-          Log.e(TAG, "RPC.setConfig() failed", e);
-        }
+      Util.runOnAnyBackgroundThread(
+          () -> {
+            try {
+              rpc.setConfig(accId, DcHelper.CONFIG_CONFIGURED_ADDRESS, relay.addr);
+            } catch (RpcException e) {
+              Log.e(TAG, "RPC.setConfig() failed", e);
+            }
 
-        loadRelays();
-      });
+            loadRelays();
+          });
     }
   }
 
@@ -230,18 +238,20 @@ public class RelayListActivity extends BaseActionBarActivity
 
   private void onRelayDelete(EnteredLoginParam relay) {
     new AlertDialog.Builder(this)
-      .setTitle(R.string.remove_transport)
-      .setMessage(getString(R.string.confirm_remove_transport, relay.addr))
-      .setPositiveButton(R.string.ok, (dialog, which) -> {
-        try {
-          rpc.deleteTransport(accId, relay.addr);
-          loadRelays();
-        } catch (RpcException e) {
-          Log.e(TAG, "RPC.deleteTransport() failed", e);
-        }
-      })
-      .setNegativeButton(R.string.cancel, null)
-      .show();
+        .setTitle(R.string.remove_transport)
+        .setMessage(getString(R.string.confirm_remove_transport, relay.addr))
+        .setPositiveButton(
+            R.string.ok,
+            (dialog, which) -> {
+              try {
+                rpc.deleteTransport(accId, relay.addr);
+                loadRelays();
+              } catch (RpcException e) {
+                Log.e(TAG, "RPC.deleteTransport() failed", e);
+              }
+            })
+        .setNegativeButton(R.string.cancel, null)
+        .show();
   }
 
   @Override

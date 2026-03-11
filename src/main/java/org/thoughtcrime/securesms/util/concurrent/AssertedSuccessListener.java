@@ -1,8 +1,7 @@
 package org.thoughtcrime.securesms.util.concurrent;
 
-import java.util.concurrent.ExecutionException;
-
 import chat.delta.util.ListenableFuture;
+import java.util.concurrent.ExecutionException;
 
 public abstract class AssertedSuccessListener<T> implements ListenableFuture.Listener<T> {
   @Override

@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms.providers;
 
 import androidx.annotation.NonNull;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,8 +9,8 @@ import java.util.Map;
 
 public class SingleUseBlobProvider {
 
-  public  static final String AUTHORITY   = "org.thoughtcrime.securesms";
-  public  static final String PATH        = "memory/*/#";
+  public static final String AUTHORITY = "org.thoughtcrime.securesms";
+  public static final String PATH = "memory/*/#";
 
   private final Map<Long, byte[]> cache = new HashMap<>();
 
@@ -28,8 +27,6 @@ public class SingleUseBlobProvider {
     cache.remove(id);
 
     if (cached != null) return new ByteArrayInputStream(cached);
-    else                throw new IOException("ID not found: " + id);
-
+    else throw new IOException("ID not found: " + id);
   }
-
 }

@@ -33,14 +33,20 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-
+import chat.delta.rpc.RpcException;
+import chat.delta.util.ListenableFuture;
+import chat.delta.util.SettableFuture;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
-
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.MediaPreviewActivity;
 import org.thoughtcrime.securesms.R;
@@ -67,44 +73,31 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.Stub;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
-import chat.delta.rpc.RpcException;
-import chat.delta.util.ListenableFuture;
-import chat.delta.util.SettableFuture;
-
-
 public class AttachmentManager {
 
-  private final static String TAG = AttachmentManager.class.getSimpleName();
+  private static final String TAG = AttachmentManager.class.getSimpleName();
 
-  private final @NonNull Context                    context;
-  private final @NonNull Stub<View>                 attachmentViewStub;
-  private final @NonNull
-  AttachmentListener attachmentListener;
+  private final @NonNull Context context;
+  private final @NonNull Stub<View> attachmentViewStub;
+  private final @NonNull AttachmentListener attachmentListener;
 
   private RemovableEditableMediaView removableMediaView;
-  private ThumbnailView              thumbnail;
-  private AudioView                  audioView;
-  private DocumentView               documentView;
-  private WebxdcView                 webxdcView;
-  private VcardView                  vcardView;
-  //private SignalMapView              mapView;
+  private ThumbnailView thumbnail;
+  private AudioView audioView;
+  private DocumentView documentView;
+  private WebxdcView webxdcView;
+  private VcardView vcardView;
+  // private SignalMapView              mapView;
 
-  private final @NonNull  List<Uri>       garbage = new LinkedList<>();
-  private @NonNull  Optional<Slide> slide   = Optional.absent();
-  private @Nullable Uri             imageCaptureUri;
-  private @Nullable Uri             videoCaptureUri;
-  private boolean                   attachmentPresent;
-  private boolean                   hidden;
+  private final @NonNull List<Uri> garbage = new LinkedList<>();
+  private @NonNull Optional<Slide> slide = Optional.absent();
+  private @Nullable Uri imageCaptureUri;
+  private @Nullable Uri videoCaptureUri;
+  private boolean attachmentPresent;
+  private boolean hidden;
 
   public AttachmentManager(@NonNull Activity activity, @NonNull AttachmentListener listener) {
-    this.context            = activity;
+    this.context = activity;
     this.attachmentListener = listener;
     this.attachmentViewStub = ViewUtil.findStubById(activity, R.id.attachment_editor_stub);
   }
@@ -113,37 +106,37 @@ public class AttachmentManager {
     if (!attachmentViewStub.resolved()) {
       View root = attachmentViewStub.get();
 
-      this.thumbnail          = ViewUtil.findById(root, R.id.attachment_thumbnail);
-      this.audioView          = ViewUtil.findById(root, R.id.attachment_audio);
-      this.documentView       = ViewUtil.findById(root, R.id.attachment_document);
-      this.webxdcView         = ViewUtil.findById(root, R.id.attachment_webxdc);
-      this.vcardView          = ViewUtil.findById(root, R.id.attachment_vcard);
-      //this.mapView            = ViewUtil.findById(root, R.id.attachment_location);
+      this.thumbnail = ViewUtil.findById(root, R.id.attachment_thumbnail);
+      this.audioView = ViewUtil.findById(root, R.id.attachment_audio);
+      this.documentView = ViewUtil.findById(root, R.id.attachment_document);
+      this.webxdcView = ViewUtil.findById(root, R.id.attachment_webxdc);
+      this.vcardView = ViewUtil.findById(root, R.id.attachment_vcard);
+      // this.mapView            = ViewUtil.findById(root, R.id.attachment_location);
       this.removableMediaView = ViewUtil.findById(root, R.id.removable_media_view);
 
       removableMediaView.addRemoveClickListener(new RemoveButtonListener());
       removableMediaView.setEditClickListener(new EditButtonListener());
       thumbnail.setOnClickListener(new ThumbnailClickListener());
     }
-
   }
 
   public void clear(@NonNull GlideRequests glideRequests, boolean animate) {
     if (attachmentViewStub.resolved()) {
 
       if (animate) {
-        ViewUtil.fadeOut(attachmentViewStub.get(), 200).addListener(new ListenableFuture.Listener<Boolean>() {
-          @Override
-          public void onSuccess(Boolean result) {
-            thumbnail.clear(glideRequests);
-            setAttachmentPresent(false);
-            attachmentListener.onAttachmentChanged();
-          }
+        ViewUtil.fadeOut(attachmentViewStub.get(), 200)
+            .addListener(
+                new ListenableFuture.Listener<Boolean>() {
+                  @Override
+                  public void onSuccess(Boolean result) {
+                    thumbnail.clear(glideRequests);
+                    setAttachmentPresent(false);
+                    attachmentListener.onAttachmentChanged();
+                  }
 
-          @Override
-          public void onFailure(ExecutionException e) {
-          }
-        });
+                  @Override
+                  public void onFailure(ExecutionException e) {}
+                });
       } else {
         thumbnail.clear(glideRequests);
         setAttachmentPresent(false);
@@ -162,7 +155,7 @@ public class AttachmentManager {
 
     imageCaptureUri = null;
     videoCaptureUri = null;
-    slide           = Optional.absent();
+    slide = Optional.absent();
 
     Iterator<Uri> iterator = garbage.listIterator();
 
@@ -187,13 +180,15 @@ public class AttachmentManager {
   }
 
   private void setSlide(@NonNull Slide slide) {
-    if (getSlideUri() != null)                                              cleanup(getSlideUri());
-    if (imageCaptureUri != null && !imageCaptureUri.equals(slide.getUri())) cleanup(imageCaptureUri);
-    if (videoCaptureUri != null && !videoCaptureUri.equals(slide.getUri())) cleanup(videoCaptureUri);
+    if (getSlideUri() != null) cleanup(getSlideUri());
+    if (imageCaptureUri != null && !imageCaptureUri.equals(slide.getUri()))
+      cleanup(imageCaptureUri);
+    if (videoCaptureUri != null && !videoCaptureUri.equals(slide.getUri()))
+      cleanup(videoCaptureUri);
 
     this.imageCaptureUri = null;
     this.videoCaptureUri = null;
-    this.slide           = Optional.of(slide);
+    this.slide = Optional.of(slide);
   }
 
   /*
@@ -227,15 +222,15 @@ public class AttachmentManager {
   */
 
   @SuppressLint("StaticFieldLeak")
-  public ListenableFuture<Boolean> setMedia(@NonNull final GlideRequests glideRequests,
-                                            @NonNull final Uri uri,
-                                            @Nullable final DcMsg msg,
-                                            @NonNull final MediaType mediaType,
-                                            final int width,
-                                            final int height,
-                                            final int chatId,
-                                            AudioPlaybackViewModel playbackViewModel)
-  {
+  public ListenableFuture<Boolean> setMedia(
+      @NonNull final GlideRequests glideRequests,
+      @NonNull final Uri uri,
+      @Nullable final DcMsg msg,
+      @NonNull final MediaType mediaType,
+      final int width,
+      final int height,
+      final int chatId,
+      AudioPlaybackViewModel playbackViewModel) {
     inflateStub();
 
     final SettableFuture<Boolean> result = new SettableFuture<>();
@@ -252,14 +247,13 @@ public class AttachmentManager {
         try {
           if (msg != null && msg.getType() == DcMsg.DC_MSG_WEBXDC) {
             return new DocumentSlide(context, msg);
-          }
-          else if (PartAuthority.isLocalUri(uri)) {
+          } else if (PartAuthority.isLocalUri(uri)) {
             return getManuallyCalculatedSlideInfo(uri, width, height, msg);
           } else {
             Slide result = getContentResolverSlideInfo(uri, width, height, chatId);
 
             if (result == null) return getManuallyCalculatedSlideInfo(uri, width, height, msg);
-            else                return result;
+            else return result;
           }
         } catch (IOException e) {
           Log.w(TAG, e);
@@ -287,20 +281,23 @@ public class AttachmentManager {
             audioView.setPlaybackViewModel(playbackViewModel);
             audioView.setAudio((AudioSlide) slide);
             removableMediaView.display(audioView, false);
-            removableMediaView.addRemoveClickListener(v -> {
-              playbackViewModel.stop(audioView.getMsgId(), audioView.getAudioUri());
-            });
+            removableMediaView.addRemoveClickListener(
+                v -> {
+                  playbackViewModel.stop(audioView.getMsgId(), audioView.getAudioUri());
+                });
             result.set(true);
           } else if (slide.isVcard()) {
-              vcardView.setVcard(glideRequests, (VcardSlide)slide, DcHelper.getRpc(context));
-              removableMediaView.display(vcardView, false);
+            vcardView.setVcard(glideRequests, (VcardSlide) slide, DcHelper.getRpc(context));
+            removableMediaView.display(vcardView, false);
           } else if (slide.hasDocument()) {
             if (slide.isWebxdcDocument()) {
-              DcMsg instance = msg != null ? msg : DcHelper.getContext(context).getMsg(slide.dcMsgId);
+              DcMsg instance =
+                  msg != null ? msg : DcHelper.getContext(context).getMsg(slide.dcMsgId);
               webxdcView.setWebxdc(instance, context.getString(R.string.webxdc_draft_hint));
-              webxdcView.setWebxdcClickListener((v, s) -> {
-                WebxdcActivity.openWebxdcActivity(context, instance);
-              });
+              webxdcView.setWebxdcClickListener(
+                  (v, s) -> {
+                    WebxdcActivity.openWebxdcActivity(context, instance);
+                  });
               removableMediaView.display(webxdcView, false);
             } else {
               documentView.setDocument((DocumentSlide) slide);
@@ -309,7 +306,9 @@ public class AttachmentManager {
             result.set(true);
           } else {
             Attachment attachment = slide.asAttachment();
-            result.deferTo(thumbnail.setImageResource(glideRequests, slide, attachment.getWidth(), attachment.getHeight()));
+            result.deferTo(
+                thumbnail.setImageResource(
+                    glideRequests, slide, attachment.getWidth(), attachment.getHeight()));
             removableMediaView.display(thumbnail, mediaType == MediaType.IMAGE);
           }
 
@@ -317,13 +316,15 @@ public class AttachmentManager {
         }
       }
 
-      private @Nullable Slide getContentResolverSlideInfo(Uri uri, int width, int height, int chatId) {
+      private @Nullable Slide getContentResolverSlideInfo(
+          Uri uri, int width, int height, int chatId) {
 
-        long   start  = System.currentTimeMillis();
+        long start = System.currentTimeMillis();
         try (Cursor cursor = context.getContentResolver().query(uri, null, null, null, null)) {
 
           if (cursor != null && cursor.moveToFirst()) {
-            String fileName = cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME));
+            String fileName =
+                cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME));
             long fileSize = cursor.getLong(cursor.getColumnIndexOrThrow(OpenableColumns.SIZE));
             String mimeType = context.getContentResolver().getType(uri);
 
@@ -333,17 +334,25 @@ public class AttachmentManager {
               height = dimens.second;
             }
 
-            Log.w(TAG, "remote slide with size " + fileSize + " took " + (System.currentTimeMillis() - start) + "ms");
-            return mediaType.createSlide(context, uri, fileName, mimeType, fileSize, width, height, chatId);
+            Log.w(
+                TAG,
+                "remote slide with size "
+                    + fileSize
+                    + " took "
+                    + (System.currentTimeMillis() - start)
+                    + "ms");
+            return mediaType.createSlide(
+                context, uri, fileName, mimeType, fileSize, width, height, chatId);
           }
         }
 
         return null;
       }
 
-      private @NonNull Slide getManuallyCalculatedSlideInfo(Uri uri, int width, int height, @Nullable DcMsg msg) throws IOException {
-        long start      = System.currentTimeMillis();
-        Long mediaSize  = null;
+      private @NonNull Slide getManuallyCalculatedSlideInfo(
+          Uri uri, int width, int height, @Nullable DcMsg msg) throws IOException {
+        long start = System.currentTimeMillis();
+        Long mediaSize = null;
         String fileName = null;
         String mimeType = null;
 
@@ -368,20 +377,27 @@ public class AttachmentManager {
 
         if (width == 0 || height == 0) {
           Pair<Integer, Integer> dimens = MediaUtil.getDimensions(context, mimeType, uri);
-          width  = dimens.first;
+          width = dimens.first;
           height = dimens.second;
         }
 
         if (fileName == null) {
           try {
             fileName = new File(uri.getPath()).getName();
-          } catch(Exception e) {
+          } catch (Exception e) {
             Log.w(TAG, "Could not get file name from uri: " + e);
           }
         }
 
-        Log.w(TAG, "local slide with size " + mediaSize + " took " + (System.currentTimeMillis() - start) + "ms");
-        return mediaType.createSlide(context, uri, fileName, mimeType, mediaSize, width, height, chatId);
+        Log.w(
+            TAG,
+            "local slide with size "
+                + mediaSize
+                + " took "
+                + (System.currentTimeMillis() - start)
+                + "ms");
+        return mediaType.createSlide(
+            context, uri, fileName, mimeType, mediaSize, width, height, chatId);
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
@@ -394,7 +410,9 @@ public class AttachmentManager {
     if (slide.isPresent()) {
       if (slide.get().isWebxdcDocument()) {
         if (webxdcView != null) {
-          webxdcView.setWebxdc(DcHelper.getContext(context).getMsg(slide.get().dcMsgId), context.getString(R.string.webxdc_draft_hint));
+          webxdcView.setWebxdc(
+              DcHelper.getContext(context).getMsg(slide.get().dcMsgId),
+              context.getString(R.string.webxdc_draft_hint));
         }
       }
     }
@@ -413,7 +431,10 @@ public class AttachmentManager {
   public static @Nullable String getFileName(Context context, Uri uri) {
     String result = null;
     if ("content".equals(uri.getScheme())) {
-      try (Cursor cursor = context.getContentResolver().query(uri, new String[]{OpenableColumns.DISPLAY_NAME}, null, null, null)) {
+      try (Cursor cursor =
+          context
+              .getContentResolver()
+              .query(uri, new String[] {OpenableColumns.DISPLAY_NAME}, null, null, null)) {
         if (cursor != null && cursor.moveToFirst()) {
           result = cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME));
         }
@@ -436,24 +457,36 @@ public class AttachmentManager {
 
   public static void selectGallery(Activity activity, int requestCode) {
     // to enable camera roll,
-    // we're asking for "gallery permissions" also on newer systems that do not strictly require that.
-    // (asking directly after tapping "attachment" would be not-so-good as the user may want to attach sth. else
+    // we're asking for "gallery permissions" also on newer systems that do not strictly require
+    // that.
+    // (asking directly after tapping "attachment" would be not-so-good as the user may want to
+    // attach sth. else
     // and asking for permissions is better done on-point)
     Permissions.with(activity)
-               .request(Permissions.galleryPermissions())
-               .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
-               .onAllGranted(() -> selectMediaType(activity, "image/*", new String[] {"image/*", "video/*"}, requestCode, null, true))
-               .execute();
+        .request(Permissions.galleryPermissions())
+        .ifNecessary()
+        .withPermanentDenialDialog(
+            activity.getString(R.string.perm_explain_access_to_storage_denied))
+        .onAllGranted(
+            () ->
+                selectMediaType(
+                    activity,
+                    "image/*",
+                    new String[] {"image/*", "video/*"},
+                    requestCode,
+                    null,
+                    true))
+        .execute();
   }
 
   public static void selectImage(Activity activity, int requestCode) {
     Permissions.with(activity)
-            .request(Permissions.galleryPermissions())
-            .ifNecessary()
-            .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
-            .onAllGranted(() -> selectMediaType(activity, "image/*", null, requestCode))
-            .execute();
+        .request(Permissions.galleryPermissions())
+        .ifNecessary()
+        .withPermanentDenialDialog(
+            activity.getString(R.string.perm_explain_access_to_storage_denied))
+        .onAllGranted(() -> selectMediaType(activity, "image/*", null, requestCode))
+        .execute();
   }
 
   public static void selectLocation(Activity activity, int chatId) {
@@ -465,25 +498,37 @@ public class AttachmentManager {
       return;
     }
 
-    // see https://support.google.com/googleplay/android-developer/answer/9799150#zippy=%2Cstep-provide-prominent-in-app-disclosure
+    // see
+    // https://support.google.com/googleplay/android-developer/answer/9799150#zippy=%2Cstep-provide-prominent-in-app-disclosure
     // for rationale dialog requirements
-    Permissions.PermissionsBuilder permissionsBuilder = Permissions.with(activity)
+    Permissions.PermissionsBuilder permissionsBuilder =
+        Permissions.with(activity)
             .ifNecessary()
-            .withRationaleDialog("To share your live location with chat members, allow Delta Chat to use your location data.\n\nTo make live location work gaplessly, location data is used even when the app is closed or not in use.", R.drawable.ic_location_on_white_24dp)
-            .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_location_denied))
-            .onAllGranted(() -> {
-              ShareLocationDialog.show(activity, durationInSeconds -> {
-                if (durationInSeconds == 1) {
-                  dcLocationManager.shareLastLocation(chatId);
-                } else {
-                  dcLocationManager.shareLocation(durationInSeconds, chatId);
-                }
-              });
-            });
+            .withRationaleDialog(
+                "To share your live location with chat members, allow Delta Chat to use your location data.\n\nTo make live location work gaplessly, location data is used even when the app is closed or not in use.",
+                R.drawable.ic_location_on_white_24dp)
+            .withPermanentDenialDialog(
+                activity.getString(R.string.perm_explain_access_to_location_denied))
+            .onAllGranted(
+                () -> {
+                  ShareLocationDialog.show(
+                      activity,
+                      durationInSeconds -> {
+                        if (durationInSeconds == 1) {
+                          dcLocationManager.shareLastLocation(chatId);
+                        } else {
+                          dcLocationManager.shareLocation(durationInSeconds, chatId);
+                        }
+                      });
+                });
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-      permissionsBuilder.request(Manifest.permission.ACCESS_BACKGROUND_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION);
+      permissionsBuilder.request(
+          Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+          Manifest.permission.ACCESS_FINE_LOCATION,
+          Manifest.permission.ACCESS_COARSE_LOCATION);
     } else {
-      permissionsBuilder.request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION);
+      permissionsBuilder.request(
+          Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION);
     }
     permissionsBuilder.execute();
   }
@@ -502,67 +547,87 @@ public class AttachmentManager {
 
   public void capturePhoto(Activity activity, int requestCode) {
     Permissions.with(activity)
-               .request(Manifest.permission.CAMERA)
-               .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_camera_denied))
-               .onAllGranted(() -> {
-                 try {
-                   Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                   if (captureIntent.resolveActivity(activity.getPackageManager()) != null) {
-                     if (imageCaptureUri == null) {
-                       imageCaptureUri = PersistentBlobProvider.getInstance().createForExternal(context, MediaUtil.IMAGE_JPEG);
-                     }
-                     Log.w(TAG, "imageCaptureUri path is " + imageCaptureUri.getPath());
-                     captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageCaptureUri);
-                     activity.startActivityForResult(captureIntent, requestCode);
-                   }
-                 } catch (Exception e) {
-                   Log.w(TAG, e);
-                 }
-               })
-               .execute();
+        .request(Manifest.permission.CAMERA)
+        .ifNecessary()
+        .withPermanentDenialDialog(
+            activity.getString(R.string.perm_explain_access_to_camera_denied))
+        .onAllGranted(
+            () -> {
+              try {
+                Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (captureIntent.resolveActivity(activity.getPackageManager()) != null) {
+                  if (imageCaptureUri == null) {
+                    imageCaptureUri =
+                        PersistentBlobProvider.getInstance()
+                            .createForExternal(context, MediaUtil.IMAGE_JPEG);
+                  }
+                  Log.w(TAG, "imageCaptureUri path is " + imageCaptureUri.getPath());
+                  captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageCaptureUri);
+                  activity.startActivityForResult(captureIntent, requestCode);
+                }
+              } catch (Exception e) {
+                Log.w(TAG, e);
+              }
+            })
+        .execute();
   }
 
   public void captureVideo(Activity activity, int requestCode) {
     Permissions.with(activity)
         .request(Manifest.permission.CAMERA)
         .ifNecessary()
-        .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_camera_denied))
-        .onAllGranted(() -> {
-          try {
-            Intent captureIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-            if (captureIntent.resolveActivity(activity.getPackageManager()) != null) {
-              if (videoCaptureUri==null) {
-                videoCaptureUri = PersistentBlobProvider.getInstance().createForExternal(context, "video/mp4");
+        .withPermanentDenialDialog(
+            activity.getString(R.string.perm_explain_access_to_camera_denied))
+        .onAllGranted(
+            () -> {
+              try {
+                Intent captureIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+                if (captureIntent.resolveActivity(activity.getPackageManager()) != null) {
+                  if (videoCaptureUri == null) {
+                    videoCaptureUri =
+                        PersistentBlobProvider.getInstance()
+                            .createForExternal(context, "video/mp4");
+                  }
+                  Log.w(TAG, "videoCaptureUri path is " + videoCaptureUri.getPath());
+                  captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, videoCaptureUri);
+                  captureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                  captureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                  activity.startActivityForResult(captureIntent, requestCode);
+                } else {
+                  new AlertDialog.Builder(activity)
+                      .setCancelable(false)
+                      .setMessage("Video recording not available")
+                      .setPositiveButton(android.R.string.ok, null)
+                      .show();
+                }
+              } catch (Exception e) {
+                Log.w(TAG, e);
               }
-              Log.w(TAG, "videoCaptureUri path is " + videoCaptureUri.getPath());
-              captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, videoCaptureUri);
-              captureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-              captureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-              activity.startActivityForResult(captureIntent, requestCode);
-            } else {
-              new AlertDialog.Builder(activity)
-                .setCancelable(false)
-                .setMessage("Video recording not available")
-                .setPositiveButton(android.R.string.ok, null)
-                .show();
-            }
-          } catch (Exception e) {
-            Log.w(TAG, e);
-          }
-        })
+            })
         .execute();
   }
 
-  public static void selectMediaType(Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode) {
+  public static void selectMediaType(
+      Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode) {
     selectMediaType(activity, type, extraMimeType, requestCode, null, false);
   }
 
-  public static void selectMediaType(Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode, @Nullable Uri initialUri) {
+  public static void selectMediaType(
+      Activity activity,
+      @NonNull String type,
+      @Nullable String[] extraMimeType,
+      int requestCode,
+      @Nullable Uri initialUri) {
     selectMediaType(activity, type, extraMimeType, requestCode, initialUri, false);
   }
 
-  public static void selectMediaType(Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode, @Nullable Uri initialUri, boolean allowMultiple) {
+  public static void selectMediaType(
+      Activity activity,
+      @NonNull String type,
+      @Nullable String[] extraMimeType,
+      int requestCode,
+      @Nullable Uri initialUri,
+      boolean allowMultiple) {
     final Intent intent = new Intent();
     intent.setType(type);
 
@@ -640,53 +705,75 @@ public class AttachmentManager {
   }
 
   public enum MediaType {
-    IMAGE, GIF, AUDIO, VIDEO, DOCUMENT;
+    IMAGE,
+    GIF,
+    AUDIO,
+    VIDEO,
+    DOCUMENT;
 
-    public @NonNull Slide createSlide(@NonNull  Context context,
-                                      @NonNull  Uri     uri,
-                                      @Nullable String fileName,
-                                      @Nullable String mimeType,
-                                                long    dataSize,
-                                                int     width,
-                                                int     height,
-                                                int     chatId)
-    {
+    public @NonNull Slide createSlide(
+        @NonNull Context context,
+        @NonNull Uri uri,
+        @Nullable String fileName,
+        @Nullable String mimeType,
+        long dataSize,
+        int width,
+        int height,
+        int chatId) {
       if (mimeType == null) {
         mimeType = "application/octet-stream";
       }
 
       switch (this) {
-      case IMAGE:    return new ImageSlide(context, uri, fileName, dataSize, width, height);
-      case GIF:      return new GifSlide(context, uri, fileName, dataSize, width, height);
-      case AUDIO:    return new AudioSlide(context, uri, dataSize, false, fileName);
-      case VIDEO:    return new VideoSlide(context, uri, fileName, dataSize);
-      case DOCUMENT:
-        // We have to special-case Webxdc slides: The user can interact with them as soon as a draft
-        // is set. Therefore we need to create a DcMsg already now.
-        if (fileName != null && fileName.endsWith(".xdc")) {
-          DcContext dcContext = DcHelper.getContext(context);
-          DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_WEBXDC);
-          Attachment attachment = new UriAttachment(uri, null, MediaUtil.WEBXDC, AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, fileName, null, false);
-          String path = attachment.getRealPath(context);
-          msg.setFileAndDeduplicate(path, fileName, MediaUtil.WEBXDC);
-          dcContext.setDraft(chatId, msg);
-          return new DocumentSlide(context, msg);
-        }
-
-        if (mimeType.equals(MediaUtil.VCARD) || (fileName != null && (fileName.endsWith(".vcf") || fileName.endsWith(".vcard")))) {
-          VcardSlide slide = new VcardSlide(context, uri, dataSize, fileName);
-          String path = slide.asAttachment().getRealPath(context);
-          try {
-            if (DcHelper.getRpc(context).parseVcard(path).size() == 1) {
-              return slide;
-            }
-          } catch (RpcException e) {
-            Log.e(TAG, "Error in call to rpc.parseVcard()", e);
+        case IMAGE:
+          return new ImageSlide(context, uri, fileName, dataSize, width, height);
+        case GIF:
+          return new GifSlide(context, uri, fileName, dataSize, width, height);
+        case AUDIO:
+          return new AudioSlide(context, uri, dataSize, false, fileName);
+        case VIDEO:
+          return new VideoSlide(context, uri, fileName, dataSize);
+        case DOCUMENT:
+          // We have to special-case Webxdc slides: The user can interact with them as soon as a
+          // draft
+          // is set. Therefore we need to create a DcMsg already now.
+          if (fileName != null && fileName.endsWith(".xdc")) {
+            DcContext dcContext = DcHelper.getContext(context);
+            DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_WEBXDC);
+            Attachment attachment =
+                new UriAttachment(
+                    uri,
+                    null,
+                    MediaUtil.WEBXDC,
+                    AttachmentDatabase.TRANSFER_PROGRESS_STARTED,
+                    0,
+                    0,
+                    0,
+                    fileName,
+                    null,
+                    false);
+            String path = attachment.getRealPath(context);
+            msg.setFileAndDeduplicate(path, fileName, MediaUtil.WEBXDC);
+            dcContext.setDraft(chatId, msg);
+            return new DocumentSlide(context, msg);
           }
-        }
 
-        return new DocumentSlide(context, uri, mimeType, dataSize, fileName);
-      default:       throw  new AssertionError("unrecognized enum");
+          if (mimeType.equals(MediaUtil.VCARD)
+              || (fileName != null && (fileName.endsWith(".vcf") || fileName.endsWith(".vcard")))) {
+            VcardSlide slide = new VcardSlide(context, uri, dataSize, fileName);
+            String path = slide.asAttachment().getRealPath(context);
+            try {
+              if (DcHelper.getRpc(context).parseVcard(path).size() == 1) {
+                return slide;
+              }
+            } catch (RpcException e) {
+              Log.e(TAG, "Error in call to rpc.parseVcard()", e);
+            }
+          }
+
+          return new DocumentSlide(context, uri, mimeType, dataSize, fileName);
+        default:
+          throw new AssertionError("unrecognized enum");
       }
     }
   }

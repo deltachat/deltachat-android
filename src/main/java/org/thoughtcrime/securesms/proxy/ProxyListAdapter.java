@@ -10,19 +10,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
-
-import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.DcHelper;
-
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 
 public class ProxyListAdapter extends BaseAdapter {
   private enum ProxyState {
@@ -31,15 +27,14 @@ public class ProxyListAdapter extends BaseAdapter {
     NOT_CONNECTED,
   }
 
-  @NonNull  private final Context context;
-  @NonNull  private final DcContext dcContext;
-  @NonNull  private final List<String> proxies = new LinkedList<>();
+  @NonNull private final Context context;
+  @NonNull private final DcContext dcContext;
+  @NonNull private final List<String> proxies = new LinkedList<>();
   @Nullable private ItemClickListener itemClickListener;
   @Nullable private ProxyState proxyState;
   @Nullable private String selectedProxy;
 
-  public ProxyListAdapter(@NonNull Context context)
-  {
+  public ProxyListAdapter(@NonNull Context context) {
     this.context = context;
     this.dcContext = DcHelper.getContext(context);
   }
@@ -70,7 +65,7 @@ public class ProxyListAdapter extends BaseAdapter {
     ImageView checkmark = v.findViewById(R.id.checkmark);
     TextView status = v.findViewById(R.id.status);
 
-    final String proxyUrl = (String)getItem(position);
+    final String proxyUrl = (String) getItem(position);
     final DcLot qrParsed = dcContext.checkQr(proxyUrl);
     if (qrParsed.getState() == DcContext.DC_QR_PROXY) {
       host.setText(qrParsed.getText1());
@@ -81,7 +76,7 @@ public class ProxyListAdapter extends BaseAdapter {
     }
     if (proxyUrl.equals(selectedProxy)) {
       checkmark.setVisibility(View.VISIBLE);
-      if(dcContext.isConfigured() == 1 && dcContext.getConfigInt(CONFIG_PROXY_ENABLED) == 1) {
+      if (dcContext.isConfigured() == 1 && dcContext.getConfigInt(CONFIG_PROXY_ENABLED) == 1) {
         status.setVisibility(View.VISIBLE);
         status.setText(getConnectivityString());
       } else {
@@ -92,21 +87,26 @@ public class ProxyListAdapter extends BaseAdapter {
       status.setVisibility(View.GONE);
     }
 
-    v.setOnClickListener(view -> {
-      if (itemClickListener != null) {
-        itemClickListener.onItemClick(proxyUrl);
-      }
-    });
-    v.findViewById(R.id.share).setOnClickListener(view -> {
-      if (itemClickListener != null) {
-        itemClickListener.onItemShare(proxyUrl);
-      }
-    });
-    v.findViewById(R.id.delete).setOnClickListener(view -> {
-      if (itemClickListener != null) {
-        itemClickListener.onItemDelete(proxyUrl);
-      }
-    });
+    v.setOnClickListener(
+        view -> {
+          if (itemClickListener != null) {
+            itemClickListener.onItemClick(proxyUrl);
+          }
+        });
+    v.findViewById(R.id.share)
+        .setOnClickListener(
+            view -> {
+              if (itemClickListener != null) {
+                itemClickListener.onItemShare(proxyUrl);
+              }
+            });
+    v.findViewById(R.id.delete)
+        .setOnClickListener(
+            view -> {
+              if (itemClickListener != null) {
+                itemClickListener.onItemDelete(proxyUrl);
+              }
+            });
 
     return v;
   }
@@ -116,7 +116,7 @@ public class ProxyListAdapter extends BaseAdapter {
     if (!TextUtils.isEmpty(newProxies)) {
       Collections.addAll(proxies, newProxies.split("\n"));
     }
-    selectedProxy = proxies.isEmpty()? null : proxies.get(0);
+    selectedProxy = proxies.isEmpty() ? null : proxies.get(0);
     proxyState = null; // to force notifyDataSetChanged() in refreshConnectivity()
     refreshConnectivity();
   }
@@ -168,8 +168,9 @@ public class ProxyListAdapter extends BaseAdapter {
 
   public interface ItemClickListener {
     void onItemClick(String proxyUrl);
+
     void onItemShare(String proxyUrl);
+
     void onItemDelete(String proxyUrl);
   }
-
 }

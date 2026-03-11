@@ -1,11 +1,8 @@
 package org.thoughtcrime.securesms.crypto;
 
-
 import androidx.annotation.NonNull;
-
-import org.thoughtcrime.securesms.util.Hex;
-
 import java.io.IOException;
+import org.thoughtcrime.securesms.util.Hex;
 
 public class DatabaseSecret {
 
@@ -18,7 +15,7 @@ public class DatabaseSecret {
   }
 
   public DatabaseSecret(@NonNull String encoded) throws IOException {
-    this.key     = Hex.fromStringCondensed(encoded);
+    this.key = Hex.fromStringCondensed(encoded);
     this.encoded = encoded;
   }
 

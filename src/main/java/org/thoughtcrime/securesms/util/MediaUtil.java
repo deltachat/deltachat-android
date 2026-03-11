@@ -8,15 +8,18 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 import android.webkit.MimeTypeMap;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
-
 import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.ExecutionException;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader.DecryptableUri;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
@@ -30,27 +33,19 @@ import org.thoughtcrime.securesms.mms.VcardSlide;
 import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.ExecutionException;
-
 public class MediaUtil {
 
   private static final String TAG = MediaUtil.class.getSimpleName();
 
-  public static final String IMAGE_WEBP        = "image/webp";
-  public static final String IMAGE_JPEG        = "image/jpeg";
-  public static final String IMAGE_GIF         = "image/gif";
-  public static final String AUDIO_AAC         = "audio/aac";
+  public static final String IMAGE_WEBP = "image/webp";
+  public static final String IMAGE_JPEG = "image/jpeg";
+  public static final String IMAGE_GIF = "image/gif";
+  public static final String AUDIO_AAC = "audio/aac";
   public static final String AUDIO_UNSPECIFIED = "audio/*";
   public static final String VIDEO_UNSPECIFIED = "video/*";
-  public static final String OCTET             = "application/octet-stream";
-  public static final String WEBXDC            = "application/webxdc+zip";
-  public static final String VCARD             = "text/vcard";
-
+  public static final String OCTET = "application/octet-stream";
+  public static final String WEBXDC = "application/webxdc+zip";
+  public static final String VCARD = "text/vcard";
 
   public static Slide getSlideForMsg(Context context, DcMsg dcMsg) {
     Slide slide = null;
@@ -62,13 +57,11 @@ public class MediaUtil {
       slide = new StickerSlide(context, dcMsg);
     } else if (dcMsg.getType() == DcMsg.DC_MSG_VIDEO) {
       slide = new VideoSlide(context, dcMsg);
-    } else if (dcMsg.getType() == DcMsg.DC_MSG_AUDIO
-            || dcMsg.getType() == DcMsg.DC_MSG_VOICE) {
+    } else if (dcMsg.getType() == DcMsg.DC_MSG_AUDIO || dcMsg.getType() == DcMsg.DC_MSG_VOICE) {
       slide = new AudioSlide(context, dcMsg);
     } else if (dcMsg.getType() == DcMsg.DC_MSG_VCARD) {
       slide = new VcardSlide(context, dcMsg);
-    } else if (dcMsg.getType() == DcMsg.DC_MSG_FILE
-            || dcMsg.getType() == DcMsg.DC_MSG_WEBXDC) {
+    } else if (dcMsg.getType() == DcMsg.DC_MSG_FILE || dcMsg.getType() == DcMsg.DC_MSG_WEBXDC) {
       slide = new DocumentSlide(context, dcMsg);
     }
 
@@ -96,20 +89,18 @@ public class MediaUtil {
   public static @Nullable String getCorrectedMimeType(@Nullable String mimeType) {
     if (mimeType == null) return null;
 
-    switch(mimeType) {
-    case "image/jpg":
-      return MimeTypeMap.getSingleton().hasMimeType(IMAGE_JPEG)
-             ? IMAGE_JPEG
-             : mimeType;
-    default:
-      return mimeType;
+    switch (mimeType) {
+      case "image/jpg":
+        return MimeTypeMap.getSingleton().hasMimeType(IMAGE_JPEG) ? IMAGE_JPEG : mimeType;
+      default:
+        return mimeType;
     }
   }
 
   /**
-   * This is a version of android.webkit.MimeTypeMap.getFileExtensionFromUrl() that
-   * doesn't refuse to do its job when there are characters in the URL it doesn't know.
-   * Using MimeTypeMap.getFileExtensionFromUrl() led to bugs like this one:
+   * This is a version of android.webkit.MimeTypeMap.getFileExtensionFromUrl() that doesn't refuse
+   * to do its job when there are characters in the URL it doesn't know. Using
+   * MimeTypeMap.getFileExtensionFromUrl() led to bugs like this one:
    * https://github.com/deltachat/deltachat-android/issues/2306
    *
    * @return The url's file extension, or "" if there is none.
@@ -128,8 +119,7 @@ public class MediaUtil {
     }
 
     int filenamePos = url.lastIndexOf('/');
-    String filename =
-            0 <= filenamePos ? url.substring(filenamePos + 1) : url;
+    String filename = 0 <= filenamePos ? url.substring(filenamePos + 1) : url;
 
     if (!filename.isEmpty()) {
       int dotPos = filename.lastIndexOf('.');
@@ -145,9 +135,9 @@ public class MediaUtil {
     InputStream in = PartAuthority.getAttachmentStream(context, uri);
     if (in == null) throw new IOException("Couldn't obtain input stream.");
 
-    long   size   = 0;
+    long size = 0;
     byte[] buffer = new byte[4096];
-    int    read;
+    int read;
 
     while ((read = in.read(buffer)) != -1) {
       size += read;
@@ -158,7 +148,8 @@ public class MediaUtil {
   }
 
   @WorkerThread
-  public static Pair<Integer, Integer> getDimensions(@NonNull Context context, @Nullable String contentType, @Nullable Uri uri) {
+  public static Pair<Integer, Integer> getDimensions(
+      @NonNull Context context, @Nullable String contentType, @Nullable Uri uri) {
     if (uri == null || !MediaUtil.isImageType(contentType)) {
       return new Pair<>(0, 0);
     }
@@ -167,7 +158,8 @@ public class MediaUtil {
 
     if (MediaUtil.isGif(contentType)) {
       try {
-        GifDrawable drawable = GlideApp.with(context)
+        GifDrawable drawable =
+            GlideApp.with(context)
                 .asGif()
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -257,22 +249,24 @@ public class MediaUtil {
       this.width = width;
       this.height = height;
     }
+
     public int width;
     public int height;
   }
 
-  public static boolean createVideoThumbnailIfNeeded(Context context, Uri dataUri, Uri thumbnailUri, ThumbnailSize retWh) {
+  public static boolean createVideoThumbnailIfNeeded(
+      Context context, Uri dataUri, Uri thumbnailUri, ThumbnailSize retWh) {
     boolean success = false;
     try {
       File thumbnailFile = new File(thumbnailUri.getPath());
       File dataFile = new File(dataUri.getPath());
-      if (!thumbnailFile.exists() || dataFile.lastModified()>thumbnailFile.lastModified()) {
+      if (!thumbnailFile.exists() || dataFile.lastModified() > thumbnailFile.lastModified()) {
         Bitmap bitmap = null;
 
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         retriever.setDataSource(context, dataUri);
         bitmap = retriever.getFrameAtTime(-1);
-        if (retWh!=null) {
+        if (retWh != null) {
           retWh.width = bitmap.getWidth();
           retWh.height = bitmap.getHeight();
         }
@@ -284,20 +278,19 @@ public class MediaUtil {
           success = true;
         }
       }
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return success;
   }
 
   public static String getExtensionFromMimeType(String contentType) {
-    String extension =  MimeTypeMap.getSingleton().getExtensionFromMimeType(contentType);
+    String extension = MimeTypeMap.getSingleton().getExtensionFromMimeType(contentType);
     if (extension != null) {
       return extension;
     }
 
-    //custom handling needed for unsupported extensions on Android 4.X
+    // custom handling needed for unsupported extensions on Android 4.X
     switch (contentType) {
       case AUDIO_AAC:
         return "aac";
@@ -310,5 +303,4 @@ public class MediaUtil {
     }
     return null;
   }
-
 }

@@ -6,15 +6,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
-
+import chat.delta.rpc.types.SecurejoinSource;
+import chat.delta.rpc.types.SecurejoinUiPath;
 import com.b44t.messenger.DcContext;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
@@ -22,11 +21,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import chat.delta.rpc.types.SecurejoinSource;
-import chat.delta.rpc.types.SecurejoinUiPath;
-
-public class NewContactActivity extends PassphraseRequiredActionBarActivity
-{
+public class NewContactActivity extends PassphraseRequiredActionBarActivity {
 
   public static final String ADDR_EXTRA = "contact_addr";
   public static final String CONTACT_ID_EXTRA = "contact_id";
@@ -53,12 +48,13 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
     nameInput = ViewUtil.findById(this, R.id.name_text);
     addrInput = ViewUtil.findById(this, R.id.email_text);
     addrInput.setText(getIntent().getStringExtra(ADDR_EXTRA));
-    addrInput.setOnFocusChangeListener((view, focused) -> {
-        String addr = addrInput.getText() == null? "" : addrInput.getText().toString();
-        if(!focused && !dcContext.mayBeValidAddr(addr)) {
-          addrInput.setError(getString(R.string.login_error_mail));
-        }
-    });
+    addrInput.setOnFocusChangeListener(
+        (view, focused) -> {
+          String addr = addrInput.getText() == null ? "" : addrInput.getText().toString();
+          if (!focused && !dcContext.mayBeValidAddr(addr)) {
+            addrInput.setError(getString(R.string.login_error_mail));
+          }
+        });
   }
 
   @Override
@@ -108,7 +104,8 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
     if (resultCode == RESULT_OK && requestCode == IntentIntegrator.REQUEST_CODE) {
       IntentResult scanResult = IntentIntegrator.parseActivityResult(resultCode, data);
       QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-      qrCodeHandler.handleOnlySecureJoinQr(scanResult.getContents(), SecurejoinSource.Scan, SecurejoinUiPath.NewContact);
+      qrCodeHandler.handleOnlySecureJoinQr(
+          scanResult.getContents(), SecurejoinSource.Scan, SecurejoinUiPath.NewContact);
     }
   }
 }
