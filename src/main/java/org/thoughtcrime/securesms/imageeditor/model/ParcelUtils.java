@@ -4,13 +4,11 @@ import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.os.Parcel;
 import androidx.annotation.NonNull;
-
 import java.util.UUID;
 
 public final class ParcelUtils {
 
-  private ParcelUtils() {
-  }
+  private ParcelUtils() {}
 
   public static void writeMatrix(@NonNull Parcel dest, @NonNull Matrix matrix) {
     float[] values = new float[9];
@@ -38,9 +36,9 @@ public final class ParcelUtils {
   }
 
   public static @NonNull RectF readRectF(@NonNull Parcel in) {
-    float left   = in.readFloat();
-    float top    = in.readFloat();
-    float right  = in.readFloat();
+    float left = in.readFloat();
+    float top = in.readFloat();
+    float right = in.readFloat();
     float bottom = in.readFloat();
     return new RectF(left, top, right, bottom);
   }

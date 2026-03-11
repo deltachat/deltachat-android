@@ -1,89 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Preference android:key="pref_view_log"
-        android:title="@string/pref_view_log"/>
+        android:title="@string/pref_view_log" />
 
-    <PreferenceCategory android:title="@string/pref_server">
+    <PreferenceCategory
+        android:title="@string/pref_server">
 
         <Preference android:key="pref_relay_list_button"
-            android:title="@string/transports"/>
+            android:title="@string/transports" />
 
         <Preference android:key="proxy_settings_button"
-            android:title="@string/proxy_settings"/>
+            android:title="@string/proxy_settings" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="true"
-            android:key="pref_bcc_self"
+            android:defaultValue="true" android:key="pref_bcc_self"
             android:title="@string/pref_multidevice"
-            android:summary="@string/pref_multidevice_explain"/>
+            android:summary="@string/pref_multidevice_explain" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/pref_experimental_features">
+    <PreferenceCategory
+        android:title="@string/pref_experimental_features">
 
         <Preference
             android:summary="@string/pref_experimental_features_explain"
             android:selectable="false" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_calls_enabled"
-            android:title="Debug Calls"/>
+            android:defaultValue="false" android:key="pref_calls_enabled"
+            android:title="Debug Calls" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_new_broadcast_list"
-            android:title="@string/channels"/>
+            android:defaultValue="false" android:key="pref_new_broadcast_list"
+            android:title="@string/channels" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_location_streaming_enabled"
-            android:title="@string/pref_on_demand_location_streaming"/>
+            android:title="@string/pref_on_demand_location_streaming" />
 
         <Preference android:key="pref_webxdc_store_url"
             android:title="@string/webxdc_store_url"
-            android:summary="@string/none"/>
+            android:summary="@string/none" />
 
     </PreferenceCategory>
 
     <PreferenceCategory>
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_stats_sending"
+            android:defaultValue="false" android:key="pref_stats_sending"
             android:title="@string/send_stats_to_devs" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_screen_security"
+            android:defaultValue="false" android:key="pref_screen_security"
             android:summary="@string/pref_screen_security_explain"
             android:title="@string/pref_screen_security" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_incognito_keyboard"
+            android:defaultValue="false" android:key="pref_incognito_keyboard"
             android:summary="@string/pref_incognito_keyboard_explain"
             android:title="@string/pref_incognito_keyboard" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="pref_category_legacy" android:title="Legacy">
+    <PreferenceCategory
+        android:key="pref_category_legacy" android:title="Legacy">
 
-        <ListPreference
-            android:key="pref_show_emails"
+        <ListPreference android:key="pref_show_emails"
             android:title="@string/pref_show_emails"
             android:entries="@array/pref_show_emails_entries"
             android:entryValues="@array/pref_show_emails_values" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="true"
-            android:key="pref_mvbox_move"
-            android:title="@string/pref_auto_folder_moves"/>
+            android:defaultValue="true" android:key="pref_mvbox_move"
+            android:title="@string/pref_auto_folder_moves" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_only_fetch_mvbox"
+            android:defaultValue="false" android:key="pref_only_fetch_mvbox"
             android:title="@string/pref_only_fetch_mvbox_title" />
 
     </PreferenceCategory>

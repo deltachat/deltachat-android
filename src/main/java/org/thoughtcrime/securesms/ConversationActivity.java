@@ -528,15 +528,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
     }
 
-    if (isMultiUser()) {
-      if (dcChat.isInBroadcast() && !dcChat.isContactRequest()) {
-        menu.findItem(R.id.menu_leave).setTitle(R.string.menu_leave_channel).setVisible(true);
-      } else if (dcChat.isEncrypted()
-          && dcChat.canSend()
-          && !dcChat.isOutBroadcast()
-          && !dcChat.isMailingList()) {
-        menu.findItem(R.id.menu_leave).setVisible(true);
+    if (dcChat.shallLeaveBeforeDelete(DcHelper.getContext(context))) {
+      if (dcChat.isInBroadcast()) {
+        menu.findItem(R.id.menu_leave).setTitle(R.string.menu_leave_channel);
       }
+      menu.findItem(R.id.menu_leave).setVisible(true);
+      menu.findItem(R.id.menu_delete_chat).setVisible(false);
     }
 
     if (isArchived()) {
@@ -729,9 +726,16 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         DcHelper.getContext(context).removeContactFromChat(chatId, DcContact.DC_CONTACT_ID_SELF);
         Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
       })
-      .setNegativeButton(R.string.cancel, null)
+      .setNegativeButton(R.string.menu_leave_and_delete, (d, which) -> {
+        DcHelper.getContext(context).removeContactFromChat(chatId, DcContact.DC_CONTACT_ID_SELF);
+        DcHelper.getContext(context).deleteChat(chatId);
+        DirectShareUtil.clearShortcut(this, chatId);
+        finish();
+      })
+      .setNeutralButton(R.string.cancel, null)
       .show();
     Util.redPositiveButton(dialog);
+    Util.redButton(dialog, AlertDialog.BUTTON_NEGATIVE);
   }
 
   private void handleArchiveChat() {
@@ -750,7 +754,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void handleDeleteChat() {
     AlertDialog dialog = new AlertDialog.Builder(this)
         .setMessage(getResources().getString(R.string.ask_delete_named_chat, dcChat.getName()))
-        .setPositiveButton(R.string.delete, (d, which) -> {
+        .setPositiveButton(R.string.delete_for_me, (d, which) -> {
           DcHelper.getContext(context).deleteChat(chatId);
           DirectShareUtil.clearShortcut(this, chatId);
           finish();

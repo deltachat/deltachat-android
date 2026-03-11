@@ -5,20 +5,18 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import java.util.Arrays;
 
 /**
  * Given points for a line to go though, automatically finds control points.
- * <p>
- * Based on  http://www.particleincell.com/2012/bezier-splines/
- * <p>
- * Can then draw that line to a {@link Canvas} given a {@link Paint}.
- * <p>
- * Allocation efficient so that adding new points does not result in lots of array allocations.
+ *
+ * <p>Based on http://www.particleincell.com/2012/bezier-splines/
+ *
+ * <p>Can then draw that line to a {@link Canvas} given a {@link Paint}.
+ *
+ * <p>Allocation efficient so that adding new points does not result in lots of array allocations.
  */
 final class AutomaticControlPointBezierLine implements Parcelable {
 
@@ -57,8 +55,8 @@ final class AutomaticControlPointBezierLine implements Parcelable {
   /**
    * Adds a new point to the end of the line but ignores points that are too close to the last.
    *
-   * @param x         new x point
-   * @param y         new y point
+   * @param x new x point
+   * @param y new y point
    * @param thickness the maximum distance to allow, line thickness is recommended.
    */
   void addPointFiltered(float x, float y, float thickness) {
@@ -135,7 +133,7 @@ final class AutomaticControlPointBezierLine implements Parcelable {
    * Draw the line.
    *
    * @param canvas The canvas to draw on.
-   * @param paint  The paint to use.
+   * @param paint The paint to use.
    */
   void draw(@NonNull Canvas canvas, @NonNull Paint paint) {
     canvas.drawPath(path, paint);
@@ -148,11 +146,11 @@ final class AutomaticControlPointBezierLine implements Parcelable {
   private float[] r;
 
   /**
-   * Based on  http://www.particleincell.com/2012/bezier-splines/
+   * Based on http://www.particleincell.com/2012/bezier-splines/
    *
-   * @param k     knots x or y, must be at least 2 entries
-   * @param p1    corresponding first control point x or y
-   * @param p2    corresponding second control point x or y
+   * @param k knots x or y, must be at least 2 entries
+   * @param p1 corresponding first control point x or y
+   * @param p2 corresponding second control point x or y
    * @param count number of k to process
    */
   private void computeControlPoints(float[] k, float[] p1, float[] p2, int count) {
@@ -198,19 +196,20 @@ final class AutomaticControlPointBezierLine implements Parcelable {
     p2[n - 1] = 0.5f * (k[n] + p1[n - 1]);
   }
 
-  public static final Creator<AutomaticControlPointBezierLine> CREATOR = new Creator<AutomaticControlPointBezierLine>() {
-    @Override
-    public AutomaticControlPointBezierLine createFromParcel(Parcel in) {
-      float[] x = in.createFloatArray();
-      float[] y = in.createFloatArray();
-      return new AutomaticControlPointBezierLine(x, y, x != null ? x.length : 0);
-    }
+  public static final Creator<AutomaticControlPointBezierLine> CREATOR =
+      new Creator<AutomaticControlPointBezierLine>() {
+        @Override
+        public AutomaticControlPointBezierLine createFromParcel(Parcel in) {
+          float[] x = in.createFloatArray();
+          float[] y = in.createFloatArray();
+          return new AutomaticControlPointBezierLine(x, y, x != null ? x.length : 0);
+        }
 
-    @Override
-    public AutomaticControlPointBezierLine[] newArray(int size) {
-      return new AutomaticControlPointBezierLine[size];
-    }
-  };
+        @Override
+        public AutomaticControlPointBezierLine[] newArray(int size) {
+          return new AutomaticControlPointBezierLine[size];
+        }
+      };
 
   @Override
   public int describeContents() {

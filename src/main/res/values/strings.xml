@@ -281,6 +281,7 @@
     <string name="menu_add_attachment">Add Attachment</string>
     <string name="menu_leave_group">Leave Group</string>
     <string name="menu_leave_channel">Leave Channel</string>
+    <string name="menu_leave_and_delete">Leave &amp; Delete for Me</string>
     <string name="menu_delete_chat">Delete Chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Clear Chat</string>
@@ -387,15 +388,25 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Call</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Audio Call</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Video Call</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Answer</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Decline</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Audio call</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Video call</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Outgoing audio call</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Outgoing video call</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Incoming audio call</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Incoming video call</string>
     <string name="declined_call">Declined call</string>
     <string name="canceled_call">Canceled call</string>

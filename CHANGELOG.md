@@ -6,6 +6,7 @@
 * Unified date display in call bubbles
 * Explain at "Settings / Chats / Outgoing Media Quality" how to send original quality
 * Add a basic sticker picker
+* Leave groups and channels before deletion
 * Fix: keep original sent timestamp for resent messages
 * Fix: make clicking on broadcast member-added messages work always
 * Fix: remove notification when a message is deleted by sender

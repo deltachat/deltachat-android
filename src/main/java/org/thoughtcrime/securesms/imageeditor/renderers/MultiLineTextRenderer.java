@@ -10,44 +10,40 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.os.Parcel;
 import android.view.animation.Interpolator;
-
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
+import java.util.ArrayList;
+import java.util.List;
 import org.thoughtcrime.securesms.imageeditor.Bounds;
 import org.thoughtcrime.securesms.imageeditor.ColorableRenderer;
 import org.thoughtcrime.securesms.imageeditor.RendererContext;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Renders multiple lines of {@link #text} in the specified {@link #color}.
- * <p>
- * Scales down the text size of long lines to fit inside the {@link Bounds} width.
+ *
+ * <p>Scales down the text size of long lines to fit inside the {@link Bounds} width.
  */
-public final class MultiLineTextRenderer extends InvalidateableRenderer implements ColorableRenderer {
+public final class MultiLineTextRenderer extends InvalidateableRenderer
+    implements ColorableRenderer {
 
-  @NonNull
-  private String text = "";
+  @NonNull private String text = "";
 
-  @ColorInt
-  private int color;
+  @ColorInt private int color;
 
-  private final Paint paint          = new Paint();
+  private final Paint paint = new Paint();
   private final Paint selectionPaint = new Paint();
 
   private final float textScale;
 
-  private int     selStart;
-  private int     selEnd;
+  private int selStart;
+  private int selEnd;
   private boolean hasFocus;
 
   private List<Line> lines = emptyList();
 
   private ValueAnimator cursorAnimator;
-  private float         cursorAnimatedValue;
+  private float cursorAnimatedValue;
 
   private final Matrix recommendedEditorMatrix = new Matrix();
 
@@ -133,20 +129,20 @@ public final class MultiLineTextRenderer extends InvalidateableRenderer implemen
   }
 
   private class Line {
-    private final Matrix accentMatrix            = new Matrix();
-    private final Matrix decentMatrix            = new Matrix();
-    private final Matrix projectionMatrix        = new Matrix();
+    private final Matrix accentMatrix = new Matrix();
+    private final Matrix decentMatrix = new Matrix();
+    private final Matrix projectionMatrix = new Matrix();
     private final Matrix inverseProjectionMatrix = new Matrix();
-    private final RectF  selectionBounds         = new RectF();
-    private final RectF  textBounds              = new RectF();
+    private final RectF selectionBounds = new RectF();
+    private final RectF textBounds = new RectF();
 
     private String text;
-    private int    selStart;
-    private int    selEnd;
-    private float  ascentInBounds;
-    private float  descentInBounds;
-    private float  scale = 1f;
-    private float  heightInBounds;
+    private int selStart;
+    private int selEnd;
+    private float ascentInBounds;
+    private float descentInBounds;
+    private float scale = 1f;
+    private float heightInBounds;
 
     Line(String text) {
       this.text = text;
@@ -155,7 +151,7 @@ public final class MultiLineTextRenderer extends InvalidateableRenderer implemen
 
     private void recalculate() {
       RectF maxTextBounds = new RectF();
-      Rect  temp          = new Rect();
+      Rect temp = new Rect();
 
       getTextBoundsWithoutTrim(text, 0, text.length(), temp);
       textBounds.set(temp);
@@ -183,23 +179,24 @@ public final class MultiLineTextRenderer extends InvalidateableRenderer implemen
           paint.getTextBounds("|", 0, 1, temp);
           int width = temp.width();
 
-          temp.left  -= width;
+          temp.left -= width;
           temp.right -= width;
         }
 
-        temp.left  += startTemp.right;
+        temp.left += startTemp.right;
         temp.right += startTemp.right;
         selectionBounds.set(temp);
       }
 
-      projectionMatrix.setRectToRect(new RectF(maxTextBounds), Bounds.FULL_BOUNDS, Matrix.ScaleToFit.CENTER);
+      projectionMatrix.setRectToRect(
+          new RectF(maxTextBounds), Bounds.FULL_BOUNDS, Matrix.ScaleToFit.CENTER);
       removeTranslate(projectionMatrix);
 
-      float[] pts = { 0, paint.ascent(), 0, paint.descent() };
+      float[] pts = {0, paint.ascent(), 0, paint.descent()};
       projectionMatrix.mapPoints(pts);
-      ascentInBounds  = pts[1];
+      ascentInBounds = pts[1];
       descentInBounds = pts[3];
-      heightInBounds  = descentInBounds - ascentInBounds;
+      heightInBounds = descentInBounds - ascentInBounds;
 
       projectionMatrix.preTranslate(-textBounds.centerX(), 0);
       projectionMatrix.invert(inverseProjectionMatrix);
@@ -220,20 +217,20 @@ public final class MultiLineTextRenderer extends InvalidateableRenderer implemen
     }
 
     private boolean showSelectionOrCursor() {
-      return (selStart >= 0             || selEnd >= 0) &&
-             (selStart <= text.length() || selEnd <= text.length());
+      return (selStart >= 0 || selEnd >= 0)
+          && (selStart <= text.length() || selEnd <= text.length());
     }
 
     private boolean containsSelectionEnd() {
-      return (selEnd >= 0) &&
-             (selEnd <= text.length());
+      return (selEnd >= 0) && (selEnd <= text.length());
     }
 
     private void getTextBoundsWithoutTrim(String text, int start, int end, Rect result) {
-      Rect extra   = new Rect();
+      Rect extra = new Rect();
       Rect xBounds = new Rect();
 
-      String cannotBeTrimmed = "x" + text.substring(Math.max(0, start), Math.min(text.length(), end)) + "x";
+      String cannotBeTrimmed =
+          "x" + text.substring(Math.max(0, start), Math.min(text.length(), end)) + "x";
 
       paint.getTextBounds(cannotBeTrimmed, 0, cannotBeTrimmed.length(), extra);
       paint.getTextBounds("x", 0, 1, xBounds);
@@ -241,14 +238,14 @@ public final class MultiLineTextRenderer extends InvalidateableRenderer implemen
       result.right -= 2 * xBounds.width();
 
       int temp = result.left;
-      result.left  -= temp;
+      result.left -= temp;
       result.right -= temp;
     }
 
     public boolean contains(float x, float y) {
       float[] dst = new float[2];
 
-      inverseProjectionMatrix.mapPoints(dst, new float[]{ x, y });
+      inverseProjectionMatrix.mapPoints(dst, new float[] {x, y});
 
       return textBounds.contains(dst[0], dst[1]);
     }
@@ -293,7 +290,7 @@ public final class MultiLineTextRenderer extends InvalidateableRenderer implemen
     void setSelection(int selStart, int selEnd) {
       if (selStart != this.selStart || selEnd != this.selEnd) {
         this.selStart = selStart;
-        this.selEnd   = selEnd;
+        this.selEnd = selEnd;
         recalculate();
       }
     }
@@ -333,7 +330,7 @@ public final class MultiLineTextRenderer extends InvalidateableRenderer implemen
       int length = line.text.length() + 1; // one for new line
 
       selStart -= length;
-      selEnd   -= length;
+      selEnd -= length;
     }
   }
 
@@ -349,10 +346,11 @@ public final class MultiLineTextRenderer extends InvalidateableRenderer implemen
         cursorAnimator.setInterpolator(pulseInterpolator());
         cursorAnimator.setRepeatCount(ValueAnimator.INFINITE);
         cursorAnimator.setDuration(1000);
-        cursorAnimator.addUpdateListener(animation -> {
-          cursorAnimatedValue = (float) animation.getAnimatedValue();
-          invalidate();
-        });
+        cursorAnimator.addUpdateListener(
+            animation -> {
+              cursorAnimatedValue = (float) animation.getAnimatedValue();
+              invalidate();
+            });
         cursorAnimator.start();
       } else {
         invalidate();
@@ -360,17 +358,18 @@ public final class MultiLineTextRenderer extends InvalidateableRenderer implemen
     }
   }
 
-  public static final Creator<MultiLineTextRenderer> CREATOR = new Creator<MultiLineTextRenderer>() {
-    @Override
-    public MultiLineTextRenderer createFromParcel(Parcel in) {
-      return new MultiLineTextRenderer(in.readString(), in.readInt());
-    }
+  public static final Creator<MultiLineTextRenderer> CREATOR =
+      new Creator<MultiLineTextRenderer>() {
+        @Override
+        public MultiLineTextRenderer createFromParcel(Parcel in) {
+          return new MultiLineTextRenderer(in.readString(), in.readInt());
+        }
 
-    @Override
-    public MultiLineTextRenderer[] newArray(int size) {
-      return new MultiLineTextRenderer[size];
-    }
-  };
+        @Override
+        public MultiLineTextRenderer[] newArray(int size) {
+          return new MultiLineTextRenderer[size];
+        }
+      };
 
   @Override
   public int describeContents() {

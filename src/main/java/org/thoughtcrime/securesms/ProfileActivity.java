@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -409,10 +410,14 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private void onEncrInfo() {
     String infoStr = isContactProfile() ?
       dcContext.getContactEncrInfo(contactId) : dcContext.getChatEncrInfo(chatId);
-    new AlertDialog.Builder(this)
+    AlertDialog dialog = new AlertDialog.Builder(this)
         .setMessage(infoStr)
         .setPositiveButton(android.R.string.ok, null)
         .show();
+    TextView messageView = dialog.findViewById(android.R.id.message);
+    if (messageView != null) {
+      messageView.setTextIsSelectable(true);
+    }
   }
 
   private void onBlockContact() {
