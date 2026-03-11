@@ -4,16 +4,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
-
-import org.thoughtcrime.securesms.util.ViewUtil;
-
 import java.text.BreakIterator;
 import java.util.Locale;
 import java.util.regex.Pattern;
-
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class AutoScaledEmojiTextView extends AppCompatTextView {
 
@@ -22,7 +18,9 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
     with spaces, *, # and 0-9 removed and the corresponding emojis added explicitly
     to avoid matching normal text with such characters
   */
-  private static final Pattern emojiRegex = Pattern.compile("([🏻-🏿😀😃😄😁😆😅🤣😂🙂🙃🫠😉😊😇🥰😍🤩😘😗☺😚😙🥲😋😛😜🤪😝🤑🤗🤭🫢🫣🤫🤔🫡🤐🤨😐😑😶🫥😏😒🙄😬🤥🫨😌😔😪🤤😴😷🤒🤕🤢🤮🤧🥵🥶🥴😵🤯🤠🥳🥸😎🤓🧐😕🫤😟🙁☹😮😯😲😳🥺🥹😦-😨😰😥😢😭😱😖😣😞😓😩😫🥱😤😡😠🤬😈👿💀☠💩🤡👹-👻👽👾🤖😺😸😹😻-😽🙀😿😾🙈-🙊💌💘💝💖💗💓💞💕💟❣💔❤🩷🧡💛💚💙🩵💜🤎🖤🩶🤍💋💯💢💥💫💦💨🕳💬🗨🗯💭💤👋🤚🖐✋🖖🫱-🫴🫷🫸👌🤌🤏✌🤞🫰🤟🤘🤙👈👉👆🖕👇☝🫵👍👎✊👊🤛🤜👏🙌🫶👐🤲🤝🙏✍💅🤳💪🦾🦿🦵🦶👂🦻👃🧠🫀🫁🦷🦴👀👁👅👄🫦👶🧒👦👧🧑👱👨🧔👩🧓👴👵🙍🙎🙅🙆💁🙋🧏🙇🤦🤷👮🕵💂🥷👷🫅🤴👸👳👲🧕🤵👰🤰🫃🫄🤱👼🎅🤶🦸🦹🧙-🧟🧌💆💇🚶🧍🧎🏃💃🕺🕴👯🧖🧗🤺🏇⛷🏂🏌🏄🚣🏊⛹🏋🚴🚵🤸🤼-🤾🤹🧘🛀🛌👭👫👬💏💑🗣👤👥🫂👪👣🦰🦱🦳🦲🐵🐒🦍🦧🐶🐕🦮🐩🐺🦊🦝🐱🐈🦁🐯🐅🐆🐴🫎🫏🐎🦄🦓🦌🦬🐮🐂-🐄🐷🐖🐗🐽🐏🐑🐐🐪🐫🦙🦒🐘🦣🦏🦛🐭🐁🐀🐹🐰🐇🐿🦫🦔🦇🐻🐨🐼🦥🦦🦨🦘🦡🐾🦃🐔🐓🐣-🐧🕊🦅🦆🦢🦉🦤🪶🦩🦚🦜🪽🪿🐸🐊🐢🦎🐍🐲🐉🦕🦖🐳🐋🐬🦭🐟-🐡🦈🐙🐚🪸🪼🐌🦋🐛-🐝🪲🐞🦗🪳🕷🕸🦂🦟🪰🪱🦠💐🌸💮🪷🏵🌹🥀🌺-🌼🌷🪻🌱🪴🌲-🌵🌾🌿☘🍀-🍃🪹🪺🍄🍇-🍍🥭🍎-🍓🫐🥝🍅🫒🥥🥑🍆🥔🥕🌽🌶🫑🥒🥬🥦🧄🧅🥜🫘🌰🫚🫛🍞🥐🥖🫓🥨🥯🥞🧇🧀🍖🍗🥩🥓🍔🍟🍕🌭🥪🌮🌯🫔🥙🧆🥚🍳🥘🍲🫕🥣🥗🍿🧈🧂🥫🍱🍘-🍝🍠🍢-🍥🥮🍡🥟-🥡🦀🦞🦐🦑🦪🍦-🍪🎂🍰🧁🥧🍫-🍯🍼🥛☕🫖🍵🍶🍾🍷-🍻🥂🥃🫗🥤🧋🧃🧉🧊🥢🍽🍴🥄🔪🫙🏺🌍-🌐🗺🗾🧭🏔⛰🌋🗻🏕🏖🏜-🏟🏛🏗🧱🪨🪵🛖🏘🏚🏠-🏦🏨-🏭🏯🏰💒🗼🗽⛪🕌🛕🕍⛩🕋⛲⛺🌁🌃🏙🌄-🌇🌉♨🎠🛝🎡🎢💈🎪🚂-🚊🚝🚞🚋-🚎🚐-🚙🛻🚚-🚜🏎🏍🛵🦽🦼🛺🚲🛴🛹🛼🚏🛣🛤🛢⛽🛞🚨🚥🚦🛑🚧⚓🛟⛵🛶🚤🛳⛴🛥🚢✈🛩🛫🛬🪂💺🚁🚟-🚡🛰🚀🛸🛎🧳⌛⏳⌚⏰-⏲🕰🕛🕧🕐🕜🕑🕝🕒🕞🕓🕟🕔🕠🕕🕡🕖🕢🕗🕣🕘🕤🕙🕥🕚🕦🌑-🌜🌡☀🌝🌞🪐⭐🌟🌠🌌☁⛅⛈🌤-🌬🌀🌈🌂☂☔⛱⚡❄☃⛄☄🔥💧🌊🎃🎄🎆🎇🧨✨🎈-🎋🎍-🎑🧧🎀🎁🎗🎟🎫🎖🏆🏅🥇-🥉⚽⚾🥎🏀🏐🏈🏉🎾🥏🎳🏏🏑🏒🥍🏓🏸🥊🥋🥅⛳⛸🎣🤿🎽🎿🛷🥌🎯🪀🪁🔫🎱🔮🪄🎮🕹🎰🎲🧩🧸🪅🪩🪆♠♥♦♣♟🃏🀄🎴🎭🖼🎨🧵🪡🧶🪢👓🕶🥽🥼🦺👔-👖🧣-🧦👗👘🥻🩱-🩳👙👚🪭👛-👝🛍🎒🩴👞👟🥾🥿👠👡🩰👢🪮👑👒🎩🎓🧢🪖⛑📿💄💍💎🔇-🔊📢📣📯🔔🔕🎼🎵🎶🎙-🎛🎤🎧📻🎷🪗🎸-🎻🪕🥁🪘🪇🪈📱📲☎📞-📠🔋🪫🔌💻🖥🖨⌨🖱🖲💽-📀🧮🎥🎞📽🎬📺📷-📹📼🔍🔎🕯💡🔦🏮🪔📔-📚📓📒📃📜📄📰🗞📑🔖🏷💰🪙💴-💸💳🧾💹✉📧-📩📤-📦📫📪📬-📮🗳✏✒🖋🖊🖌🖍📝💼📁📂🗂📅📆🗒🗓📇-📎🖇📏📐✂🗃🗄🗑🔒🔓🔏-🔑🗝🔨🪓⛏⚒🛠🗡⚔💣🪃🏹🛡🪚🔧🪛🔩⚙🗜⚖🦯🔗⛓🪝🧰🧲🪜⚗🧪-🧬🔬🔭📡💉🩸💊🩹🩼🩺🩻🚪🛗🪞🪟🛏🛋🪑🚽🪠🚿🛁🪤🪒🧴🧷🧹-🧻🪣🧼🫧🪥🧽🧯🛒🚬⚰🪦⚱🧿🪬🗿🪧🪪🏧🚮🚰♿🚹-🚼🚾🛂-🛅⚠🚸⛔🚫🚳🚭🚯🚱🚷📵🔞☢☣⬆↗➡↘⬇↙⬅↖↕↔↩↪⤴⤵🔃🔄🔙-🔝🛐⚛🕉✡☸☯✝☦☪☮🕎🔯🪯♈-♓⛎🔀-🔂▶⏩⏭⏯◀⏪⏮🔼⏫🔽⏬⏸-⏺⏏🎦🔅🔆📶🛜📳📴♀♂⚧✖➕-➗🟰♾‼⁉❓-❕❗〰💱💲⚕♻⚜🔱📛🔰⭕✅☑✔❌❎➰➿〽✳✴❇©®™🔟-🔤🅰🆎🅱🆑-🆓ℹ🆔Ⓜ🆕🆖🅾🆗🅿🆘-🆚🈁🈂🈷🈶🈯🉐🈹🈚🈲🉑🈸🈴🈳㊗㊙🈺🈵🔴🟠-🟢🔵🟣🟤⚫⚪🟥🟧-🟩🟦🟪🟫⬛⬜◼◻◾◽▪▫🔶-🔻💠🔘🔳🔲🏁🚩🎌🏴🏳🇦-🇿\uD83E\uDD89\uD83E\uDD8F\uD83E\uDDBE\uD83E\uDDC6\uD83E\uddcd\uD83E\udddf\uD83E\ude99]|#️⃣|\\*️⃣|0️⃣|1️⃣|2️⃣|3️⃣|4️⃣|5️⃣|6️⃣|7️⃣|8️⃣|9️⃣)+.*");
+  private static final Pattern emojiRegex =
+      Pattern.compile(
+          "([🏻-🏿😀😃😄😁😆😅🤣😂🙂🙃🫠😉😊😇🥰😍🤩😘😗☺😚😙🥲😋😛😜🤪😝🤑🤗🤭🫢🫣🤫🤔🫡🤐🤨😐😑😶🫥😏😒🙄😬🤥🫨😌😔😪🤤😴😷🤒🤕🤢🤮🤧🥵🥶🥴😵🤯🤠🥳🥸😎🤓🧐😕🫤😟🙁☹😮😯😲😳🥺🥹😦-😨😰😥😢😭😱😖😣😞😓😩😫🥱😤😡😠🤬😈👿💀☠💩🤡👹-👻👽👾🤖😺😸😹😻-😽🙀😿😾🙈-🙊💌💘💝💖💗💓💞💕💟❣💔❤🩷🧡💛💚💙🩵💜🤎🖤🩶🤍💋💯💢💥💫💦💨🕳💬🗨🗯💭💤👋🤚🖐✋🖖🫱-🫴🫷🫸👌🤌🤏✌🤞🫰🤟🤘🤙👈👉👆🖕👇☝🫵👍👎✊👊🤛🤜👏🙌🫶👐🤲🤝🙏✍💅🤳💪🦾🦿🦵🦶👂🦻👃🧠🫀🫁🦷🦴👀👁👅👄🫦👶🧒👦👧🧑👱👨🧔👩🧓👴👵🙍🙎🙅🙆💁🙋🧏🙇🤦🤷👮🕵💂🥷👷🫅🤴👸👳👲🧕🤵👰🤰🫃🫄🤱👼🎅🤶🦸🦹🧙-🧟🧌💆💇🚶🧍🧎🏃💃🕺🕴👯🧖🧗🤺🏇⛷🏂🏌🏄🚣🏊⛹🏋🚴🚵🤸🤼-🤾🤹🧘🛀🛌👭👫👬💏💑🗣👤👥🫂👪👣🦰🦱🦳🦲🐵🐒🦍🦧🐶🐕🦮🐩🐺🦊🦝🐱🐈🦁🐯🐅🐆🐴🫎🫏🐎🦄🦓🦌🦬🐮🐂-🐄🐷🐖🐗🐽🐏🐑🐐🐪🐫🦙🦒🐘🦣🦏🦛🐭🐁🐀🐹🐰🐇🐿🦫🦔🦇🐻🐨🐼🦥🦦🦨🦘🦡🐾🦃🐔🐓🐣-🐧🕊🦅🦆🦢🦉🦤🪶🦩🦚🦜🪽🪿🐸🐊🐢🦎🐍🐲🐉🦕🦖🐳🐋🐬🦭🐟-🐡🦈🐙🐚🪸🪼🐌🦋🐛-🐝🪲🐞🦗🪳🕷🕸🦂🦟🪰🪱🦠💐🌸💮🪷🏵🌹🥀🌺-🌼🌷🪻🌱🪴🌲-🌵🌾🌿☘🍀-🍃🪹🪺🍄🍇-🍍🥭🍎-🍓🫐🥝🍅🫒🥥🥑🍆🥔🥕🌽🌶🫑🥒🥬🥦🧄🧅🥜🫘🌰🫚🫛🍞🥐🥖🫓🥨🥯🥞🧇🧀🍖🍗🥩🥓🍔🍟🍕🌭🥪🌮🌯🫔🥙🧆🥚🍳🥘🍲🫕🥣🥗🍿🧈🧂🥫🍱🍘-🍝🍠🍢-🍥🥮🍡🥟-🥡🦀🦞🦐🦑🦪🍦-🍪🎂🍰🧁🥧🍫-🍯🍼🥛☕🫖🍵🍶🍾🍷-🍻🥂🥃🫗🥤🧋🧃🧉🧊🥢🍽🍴🥄🔪🫙🏺🌍-🌐🗺🗾🧭🏔⛰🌋🗻🏕🏖🏜-🏟🏛🏗🧱🪨🪵🛖🏘🏚🏠-🏦🏨-🏭🏯🏰💒🗼🗽⛪🕌🛕🕍⛩🕋⛲⛺🌁🌃🏙🌄-🌇🌉♨🎠🛝🎡🎢💈🎪🚂-🚊🚝🚞🚋-🚎🚐-🚙🛻🚚-🚜🏎🏍🛵🦽🦼🛺🚲🛴🛹🛼🚏🛣🛤🛢⛽🛞🚨🚥🚦🛑🚧⚓🛟⛵🛶🚤🛳⛴🛥🚢✈🛩🛫🛬🪂💺🚁🚟-🚡🛰🚀🛸🛎🧳⌛⏳⌚⏰-⏲🕰🕛🕧🕐🕜🕑🕝🕒🕞🕓🕟🕔🕠🕕🕡🕖🕢🕗🕣🕘🕤🕙🕥🕚🕦🌑-🌜🌡☀🌝🌞🪐⭐🌟🌠🌌☁⛅⛈🌤-🌬🌀🌈🌂☂☔⛱⚡❄☃⛄☄🔥💧🌊🎃🎄🎆🎇🧨✨🎈-🎋🎍-🎑🧧🎀🎁🎗🎟🎫🎖🏆🏅🥇-🥉⚽⚾🥎🏀🏐🏈🏉🎾🥏🎳🏏🏑🏒🥍🏓🏸🥊🥋🥅⛳⛸🎣🤿🎽🎿🛷🥌🎯🪀🪁🔫🎱🔮🪄🎮🕹🎰🎲🧩🧸🪅🪩🪆♠♥♦♣♟🃏🀄🎴🎭🖼🎨🧵🪡🧶🪢👓🕶🥽🥼🦺👔-👖🧣-🧦👗👘🥻🩱-🩳👙👚🪭👛-👝🛍🎒🩴👞👟🥾🥿👠👡🩰👢🪮👑👒🎩🎓🧢🪖⛑📿💄💍💎🔇-🔊📢📣📯🔔🔕🎼🎵🎶🎙-🎛🎤🎧📻🎷🪗🎸-🎻🪕🥁🪘🪇🪈📱📲☎📞-📠🔋🪫🔌💻🖥🖨⌨🖱🖲💽-📀🧮🎥🎞📽🎬📺📷-📹📼🔍🔎🕯💡🔦🏮🪔📔-📚📓📒📃📜📄📰🗞📑🔖🏷💰🪙💴-💸💳🧾💹✉📧-📩📤-📦📫📪📬-📮🗳✏✒🖋🖊🖌🖍📝💼📁📂🗂📅📆🗒🗓📇-📎🖇📏📐✂🗃🗄🗑🔒🔓🔏-🔑🗝🔨🪓⛏⚒🛠🗡⚔💣🪃🏹🛡🪚🔧🪛🔩⚙🗜⚖🦯🔗⛓🪝🧰🧲🪜⚗🧪-🧬🔬🔭📡💉🩸💊🩹🩼🩺🩻🚪🛗🪞🪟🛏🛋🪑🚽🪠🚿🛁🪤🪒🧴🧷🧹-🧻🪣🧼🫧🪥🧽🧯🛒🚬⚰🪦⚱🧿🪬🗿🪧🪪🏧🚮🚰♿🚹-🚼🚾🛂-🛅⚠🚸⛔🚫🚳🚭🚯🚱🚷📵🔞☢☣⬆↗➡↘⬇↙⬅↖↕↔↩↪⤴⤵🔃🔄🔙-🔝🛐⚛🕉✡☸☯✝☦☪☮🕎🔯🪯♈-♓⛎🔀-🔂▶⏩⏭⏯◀⏪⏮🔼⏫🔽⏬⏸-⏺⏏🎦🔅🔆📶🛜📳📴♀♂⚧✖➕-➗🟰♾‼⁉❓-❕❗〰💱💲⚕♻⚜🔱📛🔰⭕✅☑✔❌❎➰➿〽✳✴❇©®™🔟-🔤🅰🆎🅱🆑-🆓ℹ🆔Ⓜ🆕🆖🅾🆗🅿🆘-🆚🈁🈂🈷🈶🈯🉐🈹🈚🈲🉑🈸🈴🈳㊗㊙🈺🈵🔴🟠-🟢🔵🟣🟤⚫⚪🟥🟧-🟩🟦🟪🟫⬛⬜◼◻◾◽▪▫🔶-🔻💠🔘🔳🔲🏁🚩🎌🏴🏳🇦-🇿\uD83E\uDD89\uD83E\uDD8F\uD83E\uDDBE\uD83E\uDDC6\uD83E\uddcd\uD83E\udddf\uD83E\ude99]|#️⃣|\\*️⃣|0️⃣|1️⃣|2️⃣|3️⃣|4️⃣|5️⃣|6️⃣|7️⃣|8️⃣|9️⃣)+.*");
   private float originalFontSize;
 
   public AutoScaledEmojiTextView(Context context) {
@@ -35,7 +33,8 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
 
   public AutoScaledEmojiTextView(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
-    try (TypedArray typedArray = context.obtainStyledAttributes(attrs, new int[]{android.R.attr.textSize})) {
+    try (TypedArray typedArray =
+        context.obtainStyledAttributes(attrs, new int[] {android.R.attr.textSize})) {
       originalFontSize = ViewUtil.pxToSp(context, typedArray.getDimensionPixelSize(0, 0));
       if (originalFontSize == 0) {
         originalFontSize = 16f;
@@ -98,7 +97,9 @@ public class AutoScaledEmojiTextView extends AppCompatTextView {
 
     // Iterate over the text and count graphemes
     int start = graphemeIterator.first();
-    for (int end = graphemeIterator.next(); end != BreakIterator.DONE; start = end, end = graphemeIterator.next()) {
+    for (int end = graphemeIterator.next();
+        end != BreakIterator.DONE;
+        start = end, end = graphemeIterator.next()) {
       String grapheme = text.substring(start, end);
       if (!emojiRegex.matcher(grapheme).matches()) return -1;
       if (++graphemeCount > max) return -1;

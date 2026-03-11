@@ -1,13 +1,9 @@
 package org.thoughtcrime.securesms.mms;
 
 import android.content.Context;
-
 import androidx.annotation.NonNull;
-
 import com.b44t.messenger.DcMsg;
-
 import org.thoughtcrime.securesms.attachments.DcAttachment;
-
 
 public class StickerSlide extends Slide {
 

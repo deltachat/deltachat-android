@@ -17,17 +17,15 @@ package org.thoughtcrime.securesms.util;
  */
 
 import android.content.Context;
-
 import androidx.loader.content.AsyncTaskLoader;
 
 /**
- * Loader which extends AsyncTaskLoaders and handles caveats
- * as pointed out in http://code.google.com/p/android/issues/detail?id=14944.
+ * Loader which extends AsyncTaskLoaders and handles caveats as pointed out in
+ * http://code.google.com/p/android/issues/detail?id=14944.
  *
- * Based on CursorLoader.java in the Fragment compatibility package
+ * <p>Based on CursorLoader.java in the Fragment compatibility package
  *
  * @author Alexander Blom (me@alexanderblom.se)
- *
  * @param <D> data type
  */
 public abstract class AsyncLoader<D> extends AsyncTaskLoader<D> {
@@ -48,7 +46,6 @@ public abstract class AsyncLoader<D> extends AsyncTaskLoader<D> {
 
     super.deliverResult(data);
   }
-
 
   @Override
   protected void onStartLoading() {
@@ -76,6 +73,4 @@ public abstract class AsyncLoader<D> extends AsyncTaskLoader<D> {
 
     data = null;
   }
-
-
 }

@@ -7,14 +7,8 @@ import android.content.UriMatcher;
 import android.net.Uri;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import org.thoughtcrime.securesms.util.FileProviderUtil;
-import org.thoughtcrime.securesms.util.MediaUtil;
-import org.thoughtcrime.securesms.util.Util;
-
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,29 +18,35 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import org.thoughtcrime.securesms.util.FileProviderUtil;
+import org.thoughtcrime.securesms.util.MediaUtil;
+import org.thoughtcrime.securesms.util.Util;
 
 public class PersistentBlobProvider {
 
   private static final String TAG = PersistentBlobProvider.class.getSimpleName();
 
-  private static final String     URI_STRING            = "content://org.thoughtcrime.securesms/capture-new";
-  public  static final Uri        CONTENT_URI           = Uri.parse(URI_STRING);
-  public  static final String     AUTHORITY             = "org.thoughtcrime.securesms";
-  public  static final String     EXPECTED_PATH_OLD     = "capture/*/*/#";
-  public  static final String     EXPECTED_PATH_NEW     = "capture-new/*/*/*/*/#";
+  private static final String URI_STRING = "content://org.thoughtcrime.securesms/capture-new";
+  public static final Uri CONTENT_URI = Uri.parse(URI_STRING);
+  public static final String AUTHORITY = "org.thoughtcrime.securesms";
+  public static final String EXPECTED_PATH_OLD = "capture/*/*/#";
+  public static final String EXPECTED_PATH_NEW = "capture-new/*/*/*/*/#";
 
-  private static final int        MIMETYPE_PATH_SEGMENT = 1;
-  public static final int         FILENAME_PATH_SEGMENT = 2;
-  private static final int        FILESIZE_PATH_SEGMENT = 3;
+  private static final int MIMETYPE_PATH_SEGMENT = 1;
+  public static final int FILENAME_PATH_SEGMENT = 2;
+  private static final int FILESIZE_PATH_SEGMENT = 3;
 
-  private static final String     BLOB_EXTENSION        = "blob";
-  private static final int        MATCH_OLD             = 1;
-  private static final int        MATCH_NEW             = 2;
+  private static final String BLOB_EXTENSION = "blob";
+  private static final int MATCH_OLD = 1;
+  private static final int MATCH_NEW = 2;
 
-  private static final UriMatcher MATCHER               = new UriMatcher(UriMatcher.NO_MATCH) {{
-    addURI(AUTHORITY, EXPECTED_PATH_OLD, MATCH_OLD);
-    addURI(AUTHORITY, EXPECTED_PATH_NEW, MATCH_NEW);
-  }};
+  private static final UriMatcher MATCHER =
+      new UriMatcher(UriMatcher.NO_MATCH) {
+        {
+          addURI(AUTHORITY, EXPECTED_PATH_OLD, MATCH_OLD);
+          addURI(AUTHORITY, EXPECTED_PATH_NEW, MATCH_NEW);
+        }
+      };
 
   private static volatile PersistentBlobProvider instance;
 
@@ -62,75 +62,85 @@ public class PersistentBlobProvider {
   }
 
   @SuppressLint("UseSparseArrays")
-  private final ExecutorService   executor = Executors.newCachedThreadPool();
+  private final ExecutorService executor = Executors.newCachedThreadPool();
 
-  private PersistentBlobProvider() {
-  }
+  private PersistentBlobProvider() {}
 
-  public Uri create(@NonNull Context context,
-                    @NonNull  byte[] blobBytes,
-                    @NonNull  String mimeType,
-                    @Nullable String fileName)
-  {
+  public Uri create(
+      @NonNull Context context,
+      @NonNull byte[] blobBytes,
+      @NonNull String mimeType,
+      @Nullable String fileName) {
     final long id = System.currentTimeMillis();
     if (fileName == null) {
       fileName = "file." + MediaUtil.getExtensionFromMimeType(mimeType);
     }
-    return create(context, new ByteArrayInputStream(blobBytes), id, mimeType, fileName, (long) blobBytes.length);
+    return create(
+        context,
+        new ByteArrayInputStream(blobBytes),
+        id,
+        mimeType,
+        fileName,
+        (long) blobBytes.length);
   }
 
-  public Uri create(@NonNull Context context,
-                    @NonNull  InputStream input,
-                    @NonNull  String mimeType,
-                    @Nullable String fileName,
-                    @Nullable Long   fileSize)
-  {
+  public Uri create(
+      @NonNull Context context,
+      @NonNull InputStream input,
+      @NonNull String mimeType,
+      @Nullable String fileName,
+      @Nullable Long fileSize) {
     if (fileName == null) {
       fileName = "file." + MediaUtil.getExtensionFromMimeType(mimeType);
     }
     return create(context, input, System.currentTimeMillis(), mimeType, fileName, fileSize);
   }
 
-  private Uri create(@NonNull Context context,
-                     @NonNull  InputStream input,
-                               long id,
-                     @NonNull  String mimeType,
-                     @Nullable String fileName,
-                     @Nullable Long fileSize)
-  {
+  private Uri create(
+      @NonNull Context context,
+      @NonNull InputStream input,
+      long id,
+      @NonNull String mimeType,
+      @Nullable String fileName,
+      @Nullable Long fileSize) {
     persistToDisk(context, id, input);
-    final Uri uniqueUri = CONTENT_URI.buildUpon()
-                                     .appendPath(mimeType)
-                                     .appendPath(fileName)
-                                     .appendEncodedPath(String.valueOf(fileSize))
-                                     .appendEncodedPath(String.valueOf(System.currentTimeMillis()))
-                                     .build();
+    final Uri uniqueUri =
+        CONTENT_URI
+            .buildUpon()
+            .appendPath(mimeType)
+            .appendPath(fileName)
+            .appendEncodedPath(String.valueOf(fileSize))
+            .appendEncodedPath(String.valueOf(System.currentTimeMillis()))
+            .build();
     return ContentUris.withAppendedId(uniqueUri, id);
   }
 
-  private void persistToDisk(@NonNull Context context,
-                             final long id, final InputStream input)
-  {
-    executor.submit(() -> {
-      try {
-        OutputStream output = new FileOutputStream(getFile(context, id));
-        Util.copy(input, output);
-      } catch (IOException e) {
-        Log.w(TAG, e);
-      }
-    });
+  private void persistToDisk(@NonNull Context context, final long id, final InputStream input) {
+    executor.submit(
+        () -> {
+          try {
+            OutputStream output = new FileOutputStream(getFile(context, id));
+            Util.copy(input, output);
+          } catch (IOException e) {
+            Log.w(TAG, e);
+          }
+        });
   }
 
-  public Uri createForExternal(@NonNull Context context, @NonNull String mimeType) throws IOException, IllegalStateException, NullPointerException {
-    File target = new File(getExternalDir(context), System.currentTimeMillis() + "." + getExtensionFromMimeType(mimeType));
+  public Uri createForExternal(@NonNull Context context, @NonNull String mimeType)
+      throws IOException, IllegalStateException, NullPointerException {
+    File target =
+        new File(
+            getExternalDir(context),
+            System.currentTimeMillis() + "." + getExtensionFromMimeType(mimeType));
     return FileProviderUtil.getUriFor(context, target);
   }
 
   public boolean delete(@NonNull Context context, @NonNull Uri uri) {
     switch (MATCHER.match(uri)) {
-    case MATCH_OLD:
-    case MATCH_NEW:
-      return getFile(context, ContentUris.parseId(uri)).delete();
+      case MATCH_OLD:
+      case MATCH_NEW:
+        return getFile(context, ContentUris.parseId(uri)).delete();
     }
 
     //noinspection SimplifiableIfStatement
@@ -147,13 +157,13 @@ public class PersistentBlobProvider {
   }
 
   private File getFile(@NonNull Context context, long id) {
-    File legacy      = getLegacyFile(context, id);
-    File cache       = getCacheFile(context, id);
+    File legacy = getLegacyFile(context, id);
+    File cache = getCacheFile(context, id);
     File modernCache = getModernCacheFile(context, id);
 
-    if      (legacy.exists()) return legacy;
-    else if (cache.exists())  return cache;
-    else                      return modernCache;
+    if (legacy.exists()) return legacy;
+    else if (cache.exists()) return cache;
+    else return modernCache;
   }
 
   private File getLegacyFile(@NonNull Context context, long id) {
@@ -168,15 +178,17 @@ public class PersistentBlobProvider {
     return new File(context.getCacheDir(), "capture-m-" + id + "." + BLOB_EXTENSION);
   }
 
-  public static @Nullable String getMimeType(@NonNull Context context, @NonNull Uri persistentBlobUri) {
+  public static @Nullable String getMimeType(
+      @NonNull Context context, @NonNull Uri persistentBlobUri) {
     if (!isAuthority(context, persistentBlobUri)) return null;
     return isExternalBlobUri(context, persistentBlobUri)
         ? getMimeTypeFromExtension(persistentBlobUri)
         : persistentBlobUri.getPathSegments().get(MIMETYPE_PATH_SEGMENT);
   }
 
-  public static @Nullable String getFileName(@NonNull Context context, @NonNull Uri persistentBlobUri) {
-    if (!isAuthority(context, persistentBlobUri))      return null;
+  public static @Nullable String getFileName(
+      @NonNull Context context, @NonNull Uri persistentBlobUri) {
+    if (!isAuthority(context, persistentBlobUri)) return null;
     if (isExternalBlobUri(context, persistentBlobUri)) return null;
     if (MATCHER.match(persistentBlobUri) == MATCH_OLD) return null;
 
@@ -184,7 +196,7 @@ public class PersistentBlobProvider {
   }
 
   public static @Nullable Long getFileSize(@NonNull Context context, Uri persistentBlobUri) {
-    if (!isAuthority(context, persistentBlobUri))      return null;
+    if (!isAuthority(context, persistentBlobUri)) return null;
     if (isExternalBlobUri(context, persistentBlobUri)) return null;
     if (MATCHER.match(persistentBlobUri) == MATCH_OLD) return null;
 
@@ -202,14 +214,15 @@ public class PersistentBlobProvider {
   }
 
   private static @NonNull String getMimeTypeFromExtension(@NonNull Uri uri) {
-    final String mimeType = MimeTypeMap.getSingleton()
-        .getMimeTypeFromExtension(MediaUtil.getFileExtensionFromUrl(uri.toString()));
+    final String mimeType =
+        MimeTypeMap.getSingleton()
+            .getMimeTypeFromExtension(MediaUtil.getFileExtensionFromUrl(uri.toString()));
     return mimeType != null ? mimeType : "application/octet-stream";
   }
 
   private static @NonNull File getExternalDir(Context context) throws IOException {
     File externalDir = context.getExternalCacheDir();
-    if (externalDir==null) {
+    if (externalDir == null) {
       externalDir = context.getCacheDir();
     }
     if (externalDir == null) {

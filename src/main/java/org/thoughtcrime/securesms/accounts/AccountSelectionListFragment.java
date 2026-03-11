@@ -15,18 +15,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-
+import java.util.Arrays;
 import org.thoughtcrime.securesms.ConnectivityActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
@@ -39,13 +39,8 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.util.Arrays;
-
-import chat.delta.rpc.Rpc;
-import chat.delta.rpc.RpcException;
-
-public class AccountSelectionListFragment extends DialogFragment implements DcEventCenter.DcEventDelegate
-{
+public class AccountSelectionListFragment extends DialogFragment
+    implements DcEventCenter.DcEventDelegate {
   private static final String TAG = AccountSelectionListFragment.class.getSimpleName();
   private static final String ARG_SELECT_ONLY = "select_only";
   private RecyclerView recyclerView;
@@ -64,13 +59,16 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     selectOnly = getArguments() != null && getArguments().getBoolean(ARG_SELECT_ONLY, false);
-    AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity())
+    AlertDialog.Builder builder =
+        new AlertDialog.Builder(requireActivity())
             .setTitle(R.string.switch_account)
             .setNegativeButton(R.string.cancel, null);
     if (!selectOnly) {
-      builder.setNeutralButton(R.string.connectivity, ((dialog, which) -> {
-        startActivity(new Intent(getActivity(), ConnectivityActivity.class));
-      }));
+      builder.setNeutralButton(
+          R.string.connectivity,
+          ((dialog, which) -> {
+            startActivity(new Intent(getActivity(), ConnectivityActivity.class));
+          }));
     }
 
     LayoutInflater inflater = requireActivity().getLayoutInflater();
@@ -78,7 +76,9 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
     recyclerView = ViewUtil.findById(view, R.id.recycler_view);
     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-    adapter = new AccountSelectionListAdapter(this, GlideApp.with(getActivity()), new ListClickListener());
+    adapter =
+        new AccountSelectionListAdapter(
+            this, GlideApp.with(getActivity()), new ListClickListener());
     recyclerView.setAdapter(adapter);
     refreshData();
     DcEventCenter eventCenter = DcHelper.getEventCenter(requireActivity());
@@ -106,7 +106,7 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
     DcAccounts accounts = DcHelper.getAccounts(getActivity());
     int[] accountIds = accounts.getAll();
 
-    int[] ids = new int[(selectOnly? 0 : 1) + accountIds.length];
+    int[] ids = new int[(selectOnly ? 0 : 1) + accountIds.length];
     int j = 0;
     for (int accountId : accountIds) {
       ids[j++] = accountId;
@@ -116,7 +116,8 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
   }
 
   @Override
-  public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, ContextMenu.ContextMenuInfo menuInfo) {
+  public void onCreateContextMenu(
+      @NonNull ContextMenu menu, @NonNull View v, ContextMenu.ContextMenuInfo menuInfo) {
     super.onCreateContextMenu(menu, v, menuInfo);
     if (selectOnly) return;
 
@@ -133,11 +134,13 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
     }
 
     // hack to make onContextItemSelected() work with DialogFragment,
-    // see https://stackoverflow.com/questions/15929026/oncontextitemselected-does-not-get-called-in-a-dialogfragment
-    MenuItem.OnMenuItemClickListener listener = item -> {
-      onContextItemSelected(item, accountId);
-      return true;
-    };
+    // see
+    // https://stackoverflow.com/questions/15929026/oncontextitemselected-does-not-get-called-in-a-dialogfragment
+    MenuItem.OnMenuItemClickListener listener =
+        item -> {
+          onContextItemSelected(item, accountId);
+          return true;
+        };
     for (int i = 0, n = menu.size(); i < n; i++) {
       menu.getItem(i).setOnMenuItemClickListener(listener);
     }
@@ -182,7 +185,7 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
   }
 
   private void onSetTag(int accountId) {
-    ConversationListActivity activity = (ConversationListActivity)requireActivity();
+    ConversationListActivity activity = (ConversationListActivity) requireActivity();
     AccountSelectionListFragment.this.dismiss();
 
     DcContext dcContext = DcHelper.getAccounts(activity).getAccount(accountId);
@@ -192,21 +195,25 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
     inputField.setText(dcContext.getConfig(CONFIG_PRIVATE_TAG));
 
     new AlertDialog.Builder(activity)
-      .setTitle(R.string.profile_tag)
-      .setMessage(R.string.profile_tag_explain)
-      .setView(view)
-      .setPositiveButton(android.R.string.ok, (d, b) -> {
-        String newTag = inputField.getText().toString().trim();
-        dcContext.setConfig(CONFIG_PRIVATE_TAG, newTag);
-        AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly);
-      })
-      .setNegativeButton(R.string.cancel, (d, b) -> AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly))
-      .show();
+        .setTitle(R.string.profile_tag)
+        .setMessage(R.string.profile_tag_explain)
+        .setView(view)
+        .setPositiveButton(
+            android.R.string.ok,
+            (d, b) -> {
+              String newTag = inputField.getText().toString().trim();
+              dcContext.setConfig(CONFIG_PRIVATE_TAG, newTag);
+              AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly);
+            })
+        .setNegativeButton(
+            R.string.cancel,
+            (d, b) -> AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly))
+        .show();
   }
 
   private void onDeleteProfile(int accountId) {
     AccountSelectionListFragment.this.dismiss();
-    ConversationListActivity activity = (ConversationListActivity)requireActivity();
+    ConversationListActivity activity = (ConversationListActivity) requireActivity();
     DcAccounts accounts = DcHelper.getAccounts(activity);
     Rpc rpc = DcHelper.getRpc(activity);
 
@@ -226,24 +233,30 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
     avatar.setAvatar(GlideApp.with(activity), recipient, false);
     nameView.setText(name);
     addrView.setText(contact.getAddr());
-    Util.runOnAnyBackgroundThread(() -> {
-      try {
-        final int sizeBytes = rpc.getAccountFileSize(accountId);
-        Util.runOnMain(() -> {
-          sizeView.setText(Util.getPrettyFileSize(sizeBytes));
+    Util.runOnAnyBackgroundThread(
+        () -> {
+          try {
+            final int sizeBytes = rpc.getAccountFileSize(accountId);
+            Util.runOnMain(
+                () -> {
+                  sizeView.setText(Util.getPrettyFileSize(sizeBytes));
+                });
+          } catch (RpcException e) {
+            Log.e(TAG, "Error calling rpc.getAccountFileSize()", e);
+          }
         });
-      } catch (RpcException e) {
-        Log.e(TAG, "Error calling rpc.getAccountFileSize()", e);
-      }
-    });
     description.setText(activity.getString(R.string.delete_account_explain_with_name, name));
 
-    AlertDialog dialog = new AlertDialog.Builder(activity)
-      .setTitle(R.string.delete_account)
-      .setView(dialogView)
-      .setNegativeButton(R.string.cancel, (d, which) -> AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly))
-      .setPositiveButton(R.string.delete, (d2, w2) -> activity.onDeleteProfile(accountId))
-      .show();
+    AlertDialog dialog =
+        new AlertDialog.Builder(activity)
+            .setTitle(R.string.delete_account)
+            .setView(dialogView)
+            .setNegativeButton(
+                R.string.cancel,
+                (d, which) ->
+                    AccountManager.getInstance().showSwitchAccountMenu(activity, selectOnly))
+            .setPositiveButton(R.string.delete, (d2, w2) -> activity.onDeleteProfile(accountId))
+            .show();
     Util.redPositiveButton(dialog);
   }
 
@@ -259,7 +272,7 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
     @Override
     public void onItemClick(AccountSelectionListItem contact) {
       AccountSelectionListFragment.this.dismiss();
-      ConversationListActivity activity = (ConversationListActivity)requireActivity();
+      ConversationListActivity activity = (ConversationListActivity) requireActivity();
       int accountId = contact.getAccountId();
       if (accountId == DC_CONTACT_ID_ADD_ACCOUNT) {
         AccountManager.getInstance().switchAccountAndStartActivity(activity, 0);
@@ -269,5 +282,4 @@ public class AccountSelectionListFragment extends DialogFragment implements DcEv
       }
     }
   }
-
 }

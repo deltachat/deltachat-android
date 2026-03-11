@@ -1,17 +1,14 @@
 package org.thoughtcrime.securesms.util;
 
 import android.util.Base64;
-
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class JsonUtils {
 
@@ -57,7 +54,7 @@ public class JsonUtils {
   public static String optString(JSONObject obj, String name) {
     try {
       return obj.optString(name);
-    } catch(Exception e) {
+    } catch (Exception e) {
       return "";
     }
   }
@@ -65,7 +62,7 @@ public class JsonUtils {
   public static boolean optBoolean(JSONObject obj, String name) {
     try {
       return obj.optBoolean(name);
-    } catch(Exception e) {
+    } catch (Exception e) {
       return false;
     }
   }
@@ -80,7 +77,7 @@ public class JsonUtils {
 
     public String getString(String name) throws JSONException {
       if (delegate.isNull(name)) return null;
-      else                       return delegate.getString(name);
+      else return delegate.getString(name);
     }
 
     public long getLong(String name) throws JSONException {

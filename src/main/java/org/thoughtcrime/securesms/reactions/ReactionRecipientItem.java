@@ -5,11 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-
 import com.b44t.messenger.DcContact;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -20,11 +17,11 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 public class ReactionRecipientItem extends LinearLayout {
 
   private AvatarImageView contactPhotoImage;
-  private TextView        nameView;
-  private TextView        reactionView;
+  private TextView nameView;
+  private TextView reactionView;
 
-  private int             contactId;
-  private String          reaction;
+  private int contactId;
+  private String reaction;
 
   public ReactionRecipientItem(Context context) {
     super(context);
@@ -38,15 +35,15 @@ public class ReactionRecipientItem extends LinearLayout {
   protected void onFinishInflate() {
     super.onFinishInflate();
     this.contactPhotoImage = findViewById(R.id.contact_photo_image);
-    this.nameView          = findViewById(R.id.name);
-    this.reactionView      = findViewById(R.id.reaction);
+    this.nameView = findViewById(R.id.name);
+    this.reactionView = findViewById(R.id.reaction);
 
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
   public void bind(@NonNull GlideRequests glideRequests, int contactId, String reaction) {
-    this.contactId      = contactId;
-    this.reaction       = reaction;
+    this.contactId = contactId;
+    this.reaction = reaction;
     DcContact dcContact = DcHelper.getContext(getContext()).getContact(contactId);
     Recipient recipient = new Recipient(getContext(), dcContact);
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);

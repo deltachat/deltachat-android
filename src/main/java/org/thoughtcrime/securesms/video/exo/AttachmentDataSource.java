@@ -1,13 +1,10 @@
 package org.thoughtcrime.securesms.video.exo;
 
-
 import android.net.Uri;
-
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DataSpec;
 import com.google.android.exoplayer2.upstream.DefaultDataSource;
 import com.google.android.exoplayer2.upstream.TransferListener;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -24,8 +21,7 @@ public class AttachmentDataSource implements DataSource {
   }
 
   @Override
-  public void addTransferListener(TransferListener transferListener) {
-  }
+  public void addTransferListener(TransferListener transferListener) {}
 
   @Override
   public long open(DataSpec dataSpec) throws IOException {

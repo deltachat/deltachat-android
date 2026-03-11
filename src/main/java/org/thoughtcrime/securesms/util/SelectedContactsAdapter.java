@@ -12,42 +12,36 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
-
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
-
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
 public class SelectedContactsAdapter extends BaseAdapter {
-  @NonNull  private final Context                context;
-  @Nullable private ItemClickListener            itemClickListener;
-  @NonNull  private final List<Integer>          contacts = new LinkedList<>();
+  @NonNull private final Context context;
+  @Nullable private ItemClickListener itemClickListener;
+  @NonNull private final List<Integer> contacts = new LinkedList<>();
   private final boolean isBroadcast;
-  @NonNull  private final DcContext              dcContext;
-  @NonNull  private final GlideRequests          glideRequests;
+  @NonNull private final DcContext dcContext;
+  @NonNull private final GlideRequests glideRequests;
 
-  public SelectedContactsAdapter(@NonNull Context context,
-                                   @NonNull  GlideRequests glideRequests,
-                                   boolean isBroadcast)
-  {
-    this.context       = context;
+  public SelectedContactsAdapter(
+      @NonNull Context context, @NonNull GlideRequests glideRequests, boolean isBroadcast) {
+    this.context = context;
     this.glideRequests = glideRequests;
-    this.isBroadcast   = isBroadcast;
-    this.dcContext     = DcHelper.getContext(context);
+    this.isBroadcast = isBroadcast;
+    this.dcContext = DcHelper.getContext(context);
   }
 
   public void changeData(Collection<Integer> contactIds) {
@@ -105,14 +99,15 @@ public class SelectedContactsAdapter extends BaseAdapter {
 
     AvatarImageView avatar = v.findViewById(R.id.contact_photo_image);
     AppCompatTextView name = v.findViewById(R.id.name);
-    TextView        phone  = v.findViewById(R.id.phone);
-    ImageButton     delete = v.findViewById(R.id.delete);
+    TextView phone = v.findViewById(R.id.phone);
+    ImageButton delete = v.findViewById(R.id.delete);
 
-    final int contactId = (int)getItem(position);
-    final boolean modifiable = contactId != DC_CONTACT_ID_ADD_MEMBER && contactId != DC_CONTACT_ID_SELF;
+    final int contactId = (int) getItem(position);
+    final boolean modifiable =
+        contactId != DC_CONTACT_ID_ADD_MEMBER && contactId != DC_CONTACT_ID_SELF;
     Recipient recipient = null;
 
-    if(contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
+    if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
       name.setText(context.getString(R.string.group_add_members));
       name.setTypeface(null, Typeface.BOLD);
       phone.setVisibility(View.GONE);
@@ -128,17 +123,19 @@ public class SelectedContactsAdapter extends BaseAdapter {
     avatar.clear(glideRequests);
     avatar.setAvatar(glideRequests, recipient, false);
     delete.setVisibility(modifiable ? View.VISIBLE : View.GONE);
-    delete.setColorFilter(DynamicTheme.isDarkTheme(context)? Color.WHITE : Color.BLACK);
-    delete.setOnClickListener(view -> {
-      if (itemClickListener != null) {
-        itemClickListener.onItemDeleteClick(contacts.get(position));
-      }
-    });
-    v.setOnClickListener(view -> {
-      if (itemClickListener != null) {
-        itemClickListener.onItemClick(contacts.get(position));
-      }
-    });
+    delete.setColorFilter(DynamicTheme.isDarkTheme(context) ? Color.WHITE : Color.BLACK);
+    delete.setOnClickListener(
+        view -> {
+          if (itemClickListener != null) {
+            itemClickListener.onItemDeleteClick(contacts.get(position));
+          }
+        });
+    v.setOnClickListener(
+        view -> {
+          if (itemClickListener != null) {
+            itemClickListener.onItemClick(contacts.get(position));
+          }
+        });
 
     return v;
   }
@@ -149,6 +146,7 @@ public class SelectedContactsAdapter extends BaseAdapter {
 
   public interface ItemClickListener {
     void onItemClick(int contactId);
+
     void onItemDeleteClick(int contactId);
   }
 }

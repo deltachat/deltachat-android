@@ -1,18 +1,16 @@
 /**
  * Copyright (C) 2015 Open Whisper Systems
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * <p>This program is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>You should have received a copy of the GNU General Public License along with this program. If
+ * not, see <http://www.gnu.org/licenses/>.
  */
 package org.thoughtcrime.securesms.util;
 
@@ -36,7 +34,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.AbsSpinner;
 import android.widget.TextView;
-
 import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
@@ -47,15 +44,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
-
+import chat.delta.util.ListenableFuture;
+import chat.delta.util.SettableFuture;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.views.Stub;
 
-import chat.delta.util.ListenableFuture;
-import chat.delta.util.SettableFuture;
-
 public class ViewUtil {
-  private final static String TAG = ViewUtil.class.getSimpleName();
+  private static final String TAG = ViewUtil.class.getSimpleName();
 
   @SuppressWarnings("deprecation")
   public static void setBackground(final @NonNull View v, final @Nullable Drawable drawable) {
@@ -74,7 +69,8 @@ public class ViewUtil {
     return ViewCompat.getX(v);
   }
 
-  public static void swapChildInPlace(ViewGroup parent, View toRemove, View toAdd, int defaultIndex) {
+  public static void swapChildInPlace(
+      ViewGroup parent, View toRemove, View toAdd, int defaultIndex) {
     int childIndex = parent.indexOfChild(toRemove);
     if (childIndex > -1) parent.removeView(toRemove);
     parent.addView(toAdd, childIndex > -1 ? childIndex : defaultIndex);
@@ -82,7 +78,7 @@ public class ViewUtil {
 
   @SuppressWarnings("unchecked")
   public static <T extends View> T inflateStub(@NonNull View parent, @IdRes int stubId) {
-    return (T)((ViewStub)parent.findViewById(stubId)).inflate();
+    return (T) ((ViewStub) parent.findViewById(stubId)).inflate();
   }
 
   @SuppressWarnings("unchecked")
@@ -96,7 +92,7 @@ public class ViewUtil {
   }
 
   public static <T extends View> Stub<T> findStubById(@NonNull Activity parent, @IdRes int resId) {
-    return new Stub<T>((ViewStub)parent.findViewById(resId));
+    return new Stub<T>((ViewStub) parent.findViewById(resId));
   }
 
   private static Animation getAlphaAnimation(float from, float to, int duration) {
@@ -114,11 +110,13 @@ public class ViewUtil {
     return fadeOut(view, duration, View.GONE);
   }
 
-  public static ListenableFuture<Boolean> fadeOut(@NonNull View view, int duration, int visibility) {
+  public static ListenableFuture<Boolean> fadeOut(
+      @NonNull View view, int duration, int visibility) {
     return animateOut(view, getAlphaAnimation(1f, 0f, duration), visibility);
   }
 
-  public static ListenableFuture<Boolean> animateOut(final @NonNull View view, final @NonNull Animation animation, final int visibility) {
+  public static ListenableFuture<Boolean> animateOut(
+      final @NonNull View view, final @NonNull Animation animation, final int visibility) {
     final SettableFuture future = new SettableFuture();
     if (view.getVisibility() == visibility) {
       future.set(true);
@@ -129,19 +127,20 @@ public class ViewUtil {
       view.clearAnimation();
       animation.reset();
       animation.setStartTime(0);
-      animation.setAnimationListener(new Animation.AnimationListener() {
-        @Override
-        public void onAnimationStart(Animation animation) {}
+      animation.setAnimationListener(
+          new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {}
 
-        @Override
-        public void onAnimationRepeat(Animation animation) {}
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
 
-        @Override
-        public void onAnimationEnd(Animation animation) {
-          view.setVisibility(visibility);
-          future.set(true);
-        }
-      });
+            @Override
+            public void onAnimationEnd(Animation animation) {
+              view.setVisibility(visibility);
+              future.set(true);
+            }
+          });
       view.startAnimation(animation);
     }
     return future;
@@ -163,15 +162,14 @@ public class ViewUtil {
   }
 
   @SuppressWarnings("unchecked")
-  public static <T extends View> T inflate(@NonNull   LayoutInflater inflater,
-                                           @NonNull   ViewGroup      parent,
-                                           @LayoutRes int            layoutResId)
-  {
-    return (T)(inflater.inflate(layoutResId, parent, false));
+  public static <T extends View> T inflate(
+      @NonNull LayoutInflater inflater, @NonNull ViewGroup parent, @LayoutRes int layoutResId) {
+    return (T) (inflater.inflate(layoutResId, parent, false));
   }
 
   @SuppressLint("RtlHardcoded")
-  public static void setTextViewGravityStart(final @NonNull TextView textView, @NonNull Context context) {
+  public static void setTextViewGravityStart(
+      final @NonNull TextView textView, @NonNull Context context) {
     if (Util.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL) {
       textView.setGravity(Gravity.RIGHT);
     } else {
@@ -202,7 +200,7 @@ public class ViewUtil {
   }
 
   public static int dpToPx(Context context, int dp) {
-    return (int)((dp * context.getResources().getDisplayMetrics().density) + 0.5);
+    return (int) ((dp * context.getResources().getDisplayMetrics().density) + 0.5);
   }
 
   public static float pxToSp(Context context, int px) {
@@ -218,7 +216,7 @@ public class ViewUtil {
   }
 
   public static void updateLayoutParams(@NonNull View view, int width, int height) {
-    view.getLayoutParams().width  = width;
+    view.getLayoutParams().width = width;
     view.getLayoutParams().height = height;
     view.requestLayout();
   }
@@ -263,7 +261,8 @@ public class ViewUtil {
   }
 
   public static void setPaddingTop(@NonNull View view, int padding) {
-    view.setPadding(view.getPaddingLeft(), padding, view.getPaddingRight(), view.getPaddingBottom());
+    view.setPadding(
+        view.getPaddingLeft(), padding, view.getPaddingRight(), view.getPaddingBottom());
   }
 
   public static void setPaddingBottom(@NonNull View view, int padding) {
@@ -279,7 +278,7 @@ public class ViewUtil {
     if (Build.VERSION.SDK_INT > 29 && rootWindowInsets != null) {
       return rootWindowInsets.getInsets(WindowInsetsCompat.Type.statusBars()).top;
     } else {
-      int result     = 0;
+      int result = 0;
       int resourceId = view.getResources().getIdentifier("status_bar_height", "dimen", "android");
       if (resourceId > 0) {
         result = view.getResources().getDimensionPixelSize(resourceId);
@@ -290,7 +289,8 @@ public class ViewUtil {
 
   // Checks if a selection is valid for a given Spinner view.
   // Returns given selection if valid.
-  // Otherwise, to avoid ArrayIndexOutOfBoundsException, 0 is returned, assuming to refer to a good default.
+  // Otherwise, to avoid ArrayIndexOutOfBoundsException, 0 is returned, assuming to refer to a good
+  // default.
   public static int checkBounds(int selection, AbsSpinner view) {
     if (selection < 0 || selection >= view.getCount()) {
       Log.w(TAG, "index " + selection + " out of bounds of " + view.toString());
@@ -306,7 +306,7 @@ public class ViewUtil {
 
   /**
    * Get combined insets from status bar, navigation bar and display cutout areas.
-   * 
+   *
    * @param windowInsets The window insets to extract from
    * @return Combined insets using the maximum values from system bars and display cutout
    */
@@ -319,27 +319,29 @@ public class ViewUtil {
   /**
    * Apply window insets to a view by adding margin to avoid drawing it behind system bars.
    * Convenience method that applies insets to all sides.
-   * 
+   *
    * @param view The view to apply insets to
    */
   public static void applyWindowInsetsAsMargin(@NonNull View view) {
     applyWindowInsetsAsMargin(view, true, true, true, true, false);
   }
 
-  public static void applyWindowInsetsAsMargin(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+  public static void applyWindowInsetsAsMargin(
+      @NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
     applyWindowInsetsAsMargin(view, left, top, right, bottom, false);
   }
 
-  public static void forceApplyWindowInsetsAsMargin(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+  public static void forceApplyWindowInsetsAsMargin(
+      @NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
     applyWindowInsetsAsMargin(view, left, top, right, bottom, true);
   }
 
   /**
    * Apply window insets to a view by adding margin to avoid drawing it behind system bars.
-   * 
-   * This method stores the original margin values in view tags to ensure that
-   * margin doesn't accumulate on multiple inset applications.
-   * 
+   *
+   * <p>This method stores the original margin values in view tags to ensure that margin doesn't
+   * accumulate on multiple inset applications.
+   *
    * @param view The view to apply insets to
    * @param left Whether to apply left inset
    * @param top Whether to apply top inset
@@ -347,7 +349,13 @@ public class ViewUtil {
    * @param bottom Whether to apply bottom inset
    * @param forceDispatch Whether to force application of insets
    */
-  public static void applyWindowInsetsAsMargin(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom, boolean forceDispatch) {
+  public static void applyWindowInsetsAsMargin(
+      @NonNull View view,
+      boolean left,
+      boolean top,
+      boolean right,
+      boolean bottom,
+      boolean forceDispatch) {
     // Only enable on API 30+ where WindowInsets APIs work correctly
     if (!isEdgeToEdgeSupported()) return;
 
@@ -364,31 +372,34 @@ public class ViewUtil {
       }
     }
 
-    ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
-      Insets insets = getCombinedInsets(windowInsets);
+    ViewCompat.setOnApplyWindowInsetsListener(
+        view,
+        (v, windowInsets) -> {
+          Insets insets = getCombinedInsets(windowInsets);
 
-      // Retrieve the original margin values from tags with null checks
-      Integer leftTag = (Integer) v.getTag(R.id.tag_window_insets_margin_left);
-      Integer topTag = (Integer) v.getTag(R.id.tag_window_insets_margin_top);
-      Integer rightTag = (Integer) v.getTag(R.id.tag_window_insets_margin_right);
-      Integer bottomTag = (Integer) v.getTag(R.id.tag_window_insets_margin_bottom);
-      int baseMarginLeft = leftTag != null ? leftTag : 0;
-      int baseMarginTop = topTag != null ? topTag : 0;
-      int baseMarginRight = rightTag != null ? rightTag : 0;
-      int baseMarginBottom = bottomTag != null ? bottomTag : 0;
+          // Retrieve the original margin values from tags with null checks
+          Integer leftTag = (Integer) v.getTag(R.id.tag_window_insets_margin_left);
+          Integer topTag = (Integer) v.getTag(R.id.tag_window_insets_margin_top);
+          Integer rightTag = (Integer) v.getTag(R.id.tag_window_insets_margin_right);
+          Integer bottomTag = (Integer) v.getTag(R.id.tag_window_insets_margin_bottom);
+          int baseMarginLeft = leftTag != null ? leftTag : 0;
+          int baseMarginTop = topTag != null ? topTag : 0;
+          int baseMarginRight = rightTag != null ? rightTag : 0;
+          int baseMarginBottom = bottomTag != null ? bottomTag : 0;
 
-      ViewGroup.LayoutParams layoutParams = v.getLayoutParams();
-      if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
-        ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) layoutParams;
-        marginParams.leftMargin = left ? baseMarginLeft + insets.left : baseMarginLeft;
-        marginParams.topMargin = top ? baseMarginTop + insets.top : baseMarginTop;
-        marginParams.rightMargin = right ? baseMarginRight + insets.right : baseMarginRight;
-        marginParams.bottomMargin = bottom ? baseMarginBottom + insets.bottom : baseMarginBottom;
-        v.setLayoutParams(marginParams);
-      }
+          ViewGroup.LayoutParams layoutParams = v.getLayoutParams();
+          if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) layoutParams;
+            marginParams.leftMargin = left ? baseMarginLeft + insets.left : baseMarginLeft;
+            marginParams.topMargin = top ? baseMarginTop + insets.top : baseMarginTop;
+            marginParams.rightMargin = right ? baseMarginRight + insets.right : baseMarginRight;
+            marginParams.bottomMargin =
+                bottom ? baseMarginBottom + insets.bottom : baseMarginBottom;
+            v.setLayoutParams(marginParams);
+          }
 
-      return windowInsets;
-    });
+          return windowInsets;
+        });
 
     // Request the initial insets to be dispatched if the view is attached
     if (view.isAttachedToWindow()) {
@@ -404,10 +415,9 @@ public class ViewUtil {
   }
 
   /**
-   * Apply window insets to a view by adding padding to avoid  drawing elements behind system bars.
-   * Convenience method that applies insets to all sides.
-   * IME insets are propagated to child views.
-   * 
+   * Apply window insets to a view by adding padding to avoid drawing elements behind system bars.
+   * Convenience method that applies insets to all sides. IME insets are propagated to child views.
+   *
    * @param view The view to apply insets to
    */
   public static void applyWindowInsets(@NonNull View view) {
@@ -417,7 +427,7 @@ public class ViewUtil {
   /**
    * Apply window insets to a view by adding padding to avoid drawing elements behind system bars.
    *
-   * IME insets are propagated to child views.
+   * <p>IME insets are propagated to child views.
    *
    * @param view The view to apply insets to
    * @param left Whether to apply left inset
@@ -425,12 +435,14 @@ public class ViewUtil {
    * @param right Whether to apply right inset
    * @param bottom Whether to apply bottom inset
    */
-  public static void applyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+  public static void applyWindowInsets(
+      @NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
     applyWindowInsets(view, left, top, right, bottom, false, false);
   }
 
   /**
-   * Force applying window insets to a view by adding padding to avoid drawing elements behind system bars.
+   * Force applying window insets to a view by adding padding to avoid drawing elements behind
+   * system bars.
    *
    * @param view The view to apply insets to
    * @param left Whether to apply left inset
@@ -438,16 +450,17 @@ public class ViewUtil {
    * @param right Whether to apply right inset
    * @param bottom Whether to apply bottom inset
    */
-  public static void forceApplyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
+  public static void forceApplyWindowInsets(
+      @NonNull View view, boolean left, boolean top, boolean right, boolean bottom) {
     applyWindowInsets(view, left, top, right, bottom, false, true);
   }
 
   /**
    * Apply window insets to a view by adding padding to avoid drawing elements behind system bars.
-   * 
-   * This method stores the original padding values in view tags to ensure that
-   * padding doesn't accumulate on multiple inset applications.
-   * 
+   *
+   * <p>This method stores the original padding values in view tags to ensure that padding doesn't
+   * accumulate on multiple inset applications.
+   *
    * @param view The view to apply insets to
    * @param left Whether to apply left inset
    * @param top Whether to apply top inset
@@ -456,7 +469,14 @@ public class ViewUtil {
    * @param consumeImeInsets Whether to consume IME insets so they don't propagate to child views
    * @param forceDispatch Force application of Insets, regardless if system think it shall dispatch
    */
-  public static void applyWindowInsets(@NonNull View view, boolean left, boolean top, boolean right, boolean bottom, boolean consumeImeInsets, boolean forceDispatch) {
+  public static void applyWindowInsets(
+      @NonNull View view,
+      boolean left,
+      boolean top,
+      boolean right,
+      boolean bottom,
+      boolean consumeImeInsets,
+      boolean forceDispatch) {
     // Only enable on API 30+ where WindowInsets APIs work correctly
     if (!isEdgeToEdgeSupported()) return;
 
@@ -469,33 +489,35 @@ public class ViewUtil {
       view.setTag(R.id.tag_window_insets_padding_bottom, view.getPaddingBottom());
     }
 
-    ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
-      Insets insets = getCombinedInsets(windowInsets);
+    ViewCompat.setOnApplyWindowInsetsListener(
+        view,
+        (v, windowInsets) -> {
+          Insets insets = getCombinedInsets(windowInsets);
 
-      // Retrieve the original padding values from tags with null checks
-      Integer leftTag = (Integer) v.getTag(R.id.tag_window_insets_padding_left);
-      Integer topTag = (Integer) v.getTag(R.id.tag_window_insets_padding_top);
-      Integer rightTag = (Integer) v.getTag(R.id.tag_window_insets_padding_right);
-      Integer bottomTag = (Integer) v.getTag(R.id.tag_window_insets_padding_bottom);
-      int basePaddingLeft = leftTag != null ? leftTag : 0;
-      int basePaddingTop = topTag != null ? topTag : 0;
-      int basePaddingRight = rightTag != null ? rightTag : 0;
-      int basePaddingBottom = bottomTag != null ? bottomTag : 0;
+          // Retrieve the original padding values from tags with null checks
+          Integer leftTag = (Integer) v.getTag(R.id.tag_window_insets_padding_left);
+          Integer topTag = (Integer) v.getTag(R.id.tag_window_insets_padding_top);
+          Integer rightTag = (Integer) v.getTag(R.id.tag_window_insets_padding_right);
+          Integer bottomTag = (Integer) v.getTag(R.id.tag_window_insets_padding_bottom);
+          int basePaddingLeft = leftTag != null ? leftTag : 0;
+          int basePaddingTop = topTag != null ? topTag : 0;
+          int basePaddingRight = rightTag != null ? rightTag : 0;
+          int basePaddingBottom = bottomTag != null ? bottomTag : 0;
 
-      v.setPadding(
-          left ? basePaddingLeft + insets.left : basePaddingLeft,
-          top ? basePaddingTop + insets.top : basePaddingTop,
-          right ? basePaddingRight + insets.right : basePaddingRight,
-          bottom ? basePaddingBottom + insets.bottom : basePaddingBottom
-      );
+          v.setPadding(
+              left ? basePaddingLeft + insets.left : basePaddingLeft,
+              top ? basePaddingTop + insets.top : basePaddingTop,
+              right ? basePaddingRight + insets.right : basePaddingRight,
+              bottom ? basePaddingBottom + insets.bottom : basePaddingBottom);
 
-      if (consumeImeInsets) {
-        windowInsets = new WindowInsetsCompat.Builder(windowInsets)
-          .setInsets(WindowInsetsCompat.Type.ime(), Insets.NONE)
-          .build();
-      }
-      return windowInsets;
-    });
+          if (consumeImeInsets) {
+            windowInsets =
+                new WindowInsetsCompat.Builder(windowInsets)
+                    .setInsets(WindowInsetsCompat.Type.ime(), Insets.NONE)
+                    .build();
+          }
+          return windowInsets;
+        });
 
     // Request the initial insets to be dispatched if the view is attached
     if (view.isAttachedToWindow()) {
@@ -510,21 +532,21 @@ public class ViewUtil {
     }
   }
 
-  /**
-   * Apply the top status bar inset as the height of a view.
-   */
+  /** Apply the top status bar inset as the height of a view. */
   private static void applyTopInsetAsHeight(@NonNull View view) {
-    ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
-      Insets insets = getCombinedInsets(windowInsets);
+    ViewCompat.setOnApplyWindowInsetsListener(
+        view,
+        (v, windowInsets) -> {
+          Insets insets = getCombinedInsets(windowInsets);
 
-      android.view.ViewGroup.LayoutParams params = v.getLayoutParams();
-      if (params != null) {
-        params.height = insets.top;
-        v.setLayoutParams(params);
-      }
+          android.view.ViewGroup.LayoutParams params = v.getLayoutParams();
+          if (params != null) {
+            params.height = insets.top;
+            v.setLayoutParams(params);
+          }
 
-      return windowInsets;
-    });
+          return windowInsets;
+        });
 
     // Request the initial insets to be dispatched if the view is attached
     if (view.isAttachedToWindow()) {
@@ -533,8 +555,9 @@ public class ViewUtil {
   }
 
   /**
-   * Apply adjustments to the activity's custom toolbar or set height of R.id.status_bar_background for proper Edge-to-Edge display.
-   * 
+   * Apply adjustments to the activity's custom toolbar or set height of R.id.status_bar_background
+   * for proper Edge-to-Edge display.
+   *
    * @param activity The activity to apply the adjustments to
    */
   public static void adjustToolbarForE2E(@NonNull AppCompatActivity activity) {
@@ -565,5 +588,4 @@ public class ViewUtil {
       }
     }
   }
-
 }

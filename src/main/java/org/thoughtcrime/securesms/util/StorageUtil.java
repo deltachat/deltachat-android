@@ -6,25 +6,22 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import org.thoughtcrime.securesms.permissions.Permissions;
 
 public class StorageUtil {
 
   public static boolean canWriteToMediaStore(Context context) {
-    return Build.VERSION.SDK_INT > 28 ||
-            Permissions.hasAll(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+    return Build.VERSION.SDK_INT > 28
+        || Permissions.hasAll(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
   }
 
   public static @NonNull Uri getVideoUri() {
     return MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
   }
 
-  public static @NonNull
-  Uri getAudioUri() {
+  public static @NonNull Uri getAudioUri() {
     return MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
   }
 

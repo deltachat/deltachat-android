@@ -6,22 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-
-import java.io.File;
-import java.util.Collections;
-import java.util.ArrayList;
-import java.util.List;
 
 public class StickerPickerView extends RecyclerView {
 
@@ -48,17 +44,17 @@ public class StickerPickerView extends RecyclerView {
 
   public void setStickerPickerListener(@Nullable StickerPickerListener listener) {
     assert getAdapter() != null;
-    ((StickerAdapter)getAdapter()).setStickerPickerListener(listener);
+    ((StickerAdapter) getAdapter()).setStickerPickerListener(listener);
   }
 
   public void loadStickers() {
     assert getAdapter() != null;
-    ((StickerAdapter)getAdapter()).changeData(getSavedStickers());
+    ((StickerAdapter) getAdapter()).changeData(getSavedStickers());
   }
 
   private List<File> getSavedStickers() {
     List<File> stickerFiles = new ArrayList<>();
-    
+
     if (!stickerDir.exists()) {
       return stickerFiles;
     }
@@ -80,6 +76,7 @@ public class StickerPickerView extends RecyclerView {
 
   public interface StickerPickerListener {
     void onStickerSelected(@NonNull File stickerFile);
+
     void onStickerDeleted(@NonNull File stickerFile);
   }
 
@@ -117,9 +114,7 @@ public class StickerPickerView extends RecyclerView {
       File stickerFile = stickerFiles.get(position);
       holder.stickerFile = stickerFile;
 
-      glideRequests.load(stickerFile)
-                   .diskCacheStrategy(DiskCacheStrategy.NONE)
-                   .into(holder.image);
+      glideRequests.load(stickerFile).diskCacheStrategy(DiskCacheStrategy.NONE).into(holder.image);
     }
 
     @Override
@@ -136,22 +131,24 @@ public class StickerPickerView extends RecyclerView {
     private void deleteSticker(File stickerFile) {
       if (stickerFile != null && stickerFile.exists()) {
         new androidx.appcompat.app.AlertDialog.Builder(context)
-          .setTitle(R.string.delete)
-          .setMessage(R.string.ask_delete_sticker)
-          .setPositiveButton(R.string.delete, (dialog, which) -> {
-            if (stickerFile.delete()) {
-              int position = stickerFiles.indexOf(stickerFile);
-              if (position >= 0) {
-                stickerFiles.remove(position);
-                notifyItemRemoved(position);
-              }
-              if (listener != null) {
-                listener.onStickerDeleted(stickerFile);
-              }
-            }
-          })
-          .setNegativeButton(R.string.cancel, null)
-          .show();
+            .setTitle(R.string.delete)
+            .setMessage(R.string.ask_delete_sticker)
+            .setPositiveButton(
+                R.string.delete,
+                (dialog, which) -> {
+                  if (stickerFile.delete()) {
+                    int position = stickerFiles.indexOf(stickerFile);
+                    if (position >= 0) {
+                      stickerFiles.remove(position);
+                      notifyItemRemoved(position);
+                    }
+                    if (listener != null) {
+                      listener.onStickerDeleted(stickerFile);
+                    }
+                  }
+                })
+            .setNegativeButton(R.string.cancel, null)
+            .show();
       }
     }
 
@@ -163,18 +160,20 @@ public class StickerPickerView extends RecyclerView {
       StickerViewHolder(View itemView) {
         super(itemView);
         image = itemView.findViewById(R.id.sticker_image);
-        itemView.setOnClickListener(view -> {
-          if (listener != null && stickerFile != null) {
-            listener.onStickerSelected(stickerFile);
-          }
-        });
-        itemView.setOnLongClickListener(view -> {
-          if (stickerFile != null) {
-            deleteSticker(stickerFile);
-            return true;
-          }
-          return false;
-        });
+        itemView.setOnClickListener(
+            view -> {
+              if (listener != null && stickerFile != null) {
+                listener.onStickerSelected(stickerFile);
+              }
+            });
+        itemView.setOnLongClickListener(
+            view -> {
+              if (stickerFile != null) {
+                deleteSticker(stickerFile);
+                return true;
+              }
+              return false;
+            });
       }
     }
   }

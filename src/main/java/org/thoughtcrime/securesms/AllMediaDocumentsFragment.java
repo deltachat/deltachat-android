@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
@@ -20,25 +19,20 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
-
+import java.util.Set;
 import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.util.Set;
-
-public class AllMediaDocumentsFragment
-    extends MessageSelectorFragment
+public class AllMediaDocumentsFragment extends MessageSelectorFragment
     implements LoaderManager.LoaderCallbacks<BucketedThreadMediaLoader.BucketedThreadMedia>,
-               AllMediaDocumentsAdapter.ItemClickListener
-{
+        AllMediaDocumentsAdapter.ItemClickListener {
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String VIEWTYPE1 = "viewtype1";
   public static final String VIEWTYPE2 = "viewtype2";
@@ -50,7 +44,7 @@ public class AllMediaDocumentsFragment
   private int viewtype1;
   private int viewtype2;
 
-  protected int                chatId;
+  protected int chatId;
 
   @Override
   public void onCreate(Bundle bundle) {
@@ -64,21 +58,23 @@ public class AllMediaDocumentsFragment
   }
 
   @Override
-  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+  public View onCreateView(
+      @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.profile_documents_fragment, container, false);
 
     this.recyclerView = ViewUtil.findById(view, R.id.recycler_view);
-    this.noMedia      = ViewUtil.findById(view, R.id.no_documents);
-    this.gridManager  = new StickyHeaderGridLayoutManager(1);
+    this.noMedia = ViewUtil.findById(view, R.id.no_documents);
+    this.gridManager = new StickyHeaderGridLayoutManager(1);
 
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(recyclerView, true, false, true, true);
 
-    AllMediaDocumentsAdapter adapter = new AllMediaDocumentsAdapter(getContext(),
-      new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()),
-      this);
+    AllMediaDocumentsAdapter adapter =
+        new AllMediaDocumentsAdapter(
+            getContext(), new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()), this);
     this.recyclerView.setAdapter(adapter);
-    adapter.setPlaybackViewModel(new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class));
+    adapter.setPlaybackViewModel(
+        new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class));
     this.recyclerView.setLayoutManager(gridManager);
     this.recyclerView.setHasFixedSize(true);
 
@@ -109,12 +105,15 @@ public class AllMediaDocumentsFragment
   }
 
   @Override
-  public Loader<BucketedThreadMediaLoader.BucketedThreadMedia> onCreateLoader(int i, Bundle bundle) {
+  public Loader<BucketedThreadMediaLoader.BucketedThreadMedia> onCreateLoader(
+      int i, Bundle bundle) {
     return new BucketedThreadMediaLoader(getContext(), chatId, viewtype1, viewtype2, 0);
   }
 
   @Override
-  public void onLoadFinished(Loader<BucketedThreadMediaLoader.BucketedThreadMedia> loader, BucketedThreadMediaLoader.BucketedThreadMedia bucketedThreadMedia) {
+  public void onLoadFinished(
+      Loader<BucketedThreadMediaLoader.BucketedThreadMedia> loader,
+      BucketedThreadMediaLoader.BucketedThreadMedia bucketedThreadMedia) {
     ((AllMediaDocumentsAdapter) recyclerView.getAdapter()).setMedia(bucketedThreadMedia);
     ((AllMediaDocumentsAdapter) recyclerView.getAdapter()).notifyAllSectionsDataSetChanged();
 
@@ -122,7 +121,7 @@ public class AllMediaDocumentsFragment
     if (chatId == DC_CHAT_NO_CHAT) {
       if (viewtype1 == DcMsg.DC_MSG_WEBXDC) {
         noMedia.setText(R.string.all_apps_empty_hint);
-      } else if (viewtype1 == DcMsg.DC_MSG_FILE){
+      } else if (viewtype1 == DcMsg.DC_MSG_FILE) {
         noMedia.setText(R.string.all_files_empty_hint);
       } else {
         noMedia.setText(R.string.tab_all_media_empty_hint);
@@ -137,7 +136,8 @@ public class AllMediaDocumentsFragment
 
   @Override
   public void onLoaderReset(Loader<BucketedThreadMediaLoader.BucketedThreadMedia> cursorLoader) {
-    ((AllMediaDocumentsAdapter) recyclerView.getAdapter()).setMedia(new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()));
+    ((AllMediaDocumentsAdapter) recyclerView.getAdapter())
+        .setMedia(new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()));
   }
 
   @Override
@@ -168,7 +168,7 @@ public class AllMediaDocumentsFragment
 
   private void handleMediaPreviewClick(@NonNull DcMsg dcMsg) {
     // audio is started by the play-button
-    if (dcMsg.getType()==DcMsg.DC_MSG_AUDIO || dcMsg.getType()==DcMsg.DC_MSG_VOICE) {
+    if (dcMsg.getType() == DcMsg.DC_MSG_AUDIO || dcMsg.getType() == DcMsg.DC_MSG_VOICE) {
       return;
     }
 
@@ -216,7 +216,8 @@ public class AllMediaDocumentsFragment
     }
     menu.findItem(R.id.menu_resend).setVisible(canResend);
 
-    boolean webxdcApp = singleSelection && messageRecords.iterator().next().getType() == DcMsg.DC_MSG_WEBXDC;
+    boolean webxdcApp =
+        singleSelection && messageRecords.iterator().next().getType() == DcMsg.DC_MSG_WEBXDC;
     menu.findItem(R.id.menu_add_to_home_screen).setVisible(webxdcApp);
   }
 
@@ -243,20 +244,26 @@ public class AllMediaDocumentsFragment
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem menuItem) {
       int itemId = menuItem.getItemId();
-      AudioPlaybackViewModel playbackViewModel = new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class);
+      AudioPlaybackViewModel playbackViewModel =
+          new ViewModelProvider(requireActivity()).get(AudioPlaybackViewModel.class);
       if (itemId == R.id.details) {
         handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
         mode.finish();
         return true;
       } else if (itemId == R.id.delete) {
-        handleDeleteMessages(chatId, getListAdapter().getSelectedMedia(), playbackViewModel::stopByIds, playbackViewModel::stopByIds);
+        handleDeleteMessages(
+            chatId,
+            getListAdapter().getSelectedMedia(),
+            playbackViewModel::stopByIds,
+            playbackViewModel::stopByIds);
         mode.finish();
         return true;
       } else if (itemId == R.id.share) {
         handleShare(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
         return true;
       } else if (itemId == R.id.menu_add_to_home_screen) {
-        WebxdcActivity.addToHomeScreen(getActivity(), getSelectedMessageRecord(getListAdapter().getSelectedMedia()).getId());
+        WebxdcActivity.addToHomeScreen(
+            getActivity(), getSelectedMessageRecord(getListAdapter().getSelectedMedia()).getId());
         mode.finish();
         return true;
       } else if (itemId == R.id.show_in_chat) {

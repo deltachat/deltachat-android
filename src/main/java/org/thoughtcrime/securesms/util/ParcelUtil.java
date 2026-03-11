@@ -24,5 +24,4 @@ public class ParcelUtil {
     Parcel parcel = deserialize(bytes);
     return creator.createFromParcel(parcel);
   }
-
 }
