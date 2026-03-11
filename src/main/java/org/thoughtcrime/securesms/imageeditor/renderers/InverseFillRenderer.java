@@ -4,15 +4,14 @@ import android.graphics.Path;
 import android.os.Parcel;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
-
 import org.thoughtcrime.securesms.imageeditor.Bounds;
 import org.thoughtcrime.securesms.imageeditor.Renderer;
 import org.thoughtcrime.securesms.imageeditor.RendererContext;
 
 /**
  * Renders the {@link color} outside of the {@link Bounds}.
- * <p>
- * Hit tests outside of the bounds.
+ *
+ * <p>Hit tests outside of the bounds.
  */
 public final class InverseFillRenderer implements Renderer {
 
@@ -47,17 +46,18 @@ public final class InverseFillRenderer implements Renderer {
     return !Bounds.contains(x, y);
   }
 
-  public static final Creator<InverseFillRenderer> CREATOR = new Creator<InverseFillRenderer>() {
-    @Override
-    public InverseFillRenderer createFromParcel(Parcel in) {
-      return new InverseFillRenderer(in);
-    }
+  public static final Creator<InverseFillRenderer> CREATOR =
+      new Creator<InverseFillRenderer>() {
+        @Override
+        public InverseFillRenderer createFromParcel(Parcel in) {
+          return new InverseFillRenderer(in);
+        }
 
-    @Override
-    public InverseFillRenderer[] newArray(int size) {
-      return new InverseFillRenderer[size];
-    }
-  };
+        @Override
+        public InverseFillRenderer[] newArray(int size) {
+          return new InverseFillRenderer[size];
+        }
+      };
 
   @Override
   public int describeContents() {

@@ -4,22 +4,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import java.util.Arrays;
 import java.util.Stack;
 
 /**
  * Contains a stack of elements for undo and redo stacks.
- * <p>
- * Elements are mutable, so this stack serializes the element and keeps a stack of serialized data.
- * <p>
- * The stack has a {@link #limit} and if it exceeds that limit during a push the second to earliest item
- * is removed so that it can always go back to the first state. Effectively collapsing the history for
- * the start of the stack.
+ *
+ * <p>Elements are mutable, so this stack serializes the element and keeps a stack of serialized
+ * data.
+ *
+ * <p>The stack has a {@link #limit} and if it exceeds that limit during a push the second to
+ * earliest item is removed so that it can always go back to the first state. Effectively collapsing
+ * the history for the start of the stack.
  */
 final class ElementStack implements Parcelable {
 
-  private final int           limit;
+  private final int limit;
   private final Stack<byte[]> stack = new Stack<>();
 
   ElementStack(int limit) {
@@ -37,15 +37,15 @@ final class ElementStack implements Parcelable {
   /**
    * Pushes an element to the stack iff the element's serialized value is different to any found at
    * the top of the stack.
-   * <p>
-   * Removes the second to earliest item if it is overflowing.
+   *
+   * <p>Removes the second to earliest item if it is overflowing.
    *
    * @param element new editor element state.
    * @return true iff the pushed item was different to the top item.
    */
   boolean tryPush(@NonNull EditorElement element) {
-    byte[]  bytes = getBytes(element);
-    boolean push  = stack.isEmpty() || !Arrays.equals(bytes, stack.peek());
+    byte[] bytes = getBytes(element);
+    boolean push = stack.isEmpty() || !Arrays.equals(bytes, stack.peek());
 
     if (push) {
       stack.push(bytes);
@@ -68,14 +68,13 @@ final class ElementStack implements Parcelable {
     return bytes;
   }
 
-  /**
-   * Pops the first different state from the supplied element.
-   */
-  @Nullable EditorElement pop(@NonNull EditorElement element) {
+  /** Pops the first different state from the supplied element. */
+  @Nullable
+  EditorElement pop(@NonNull EditorElement element) {
     if (stack.empty()) return null;
 
     byte[] elementBytes = getBytes(element);
-    byte[] stackData    = null;
+    byte[] stackData = null;
 
     while (!stack.empty() && stackData == null) {
       byte[] topData = stack.pop();
@@ -101,17 +100,18 @@ final class ElementStack implements Parcelable {
     stack.clear();
   }
 
-  public static final Creator<ElementStack> CREATOR = new Creator<ElementStack>() {
-    @Override
-    public ElementStack createFromParcel(Parcel in) {
-      return new ElementStack(in);
-    }
+  public static final Creator<ElementStack> CREATOR =
+      new Creator<ElementStack>() {
+        @Override
+        public ElementStack createFromParcel(Parcel in) {
+          return new ElementStack(in);
+        }
 
-    @Override
-    public ElementStack[] newArray(int size) {
-      return new ElementStack[size];
-    }
-  };
+        @Override
+        public ElementStack[] newArray(int size) {
+          return new ElementStack[size];
+        }
+      };
 
   @Override
   public int describeContents() {

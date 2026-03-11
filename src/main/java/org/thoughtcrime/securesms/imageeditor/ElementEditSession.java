@@ -2,9 +2,7 @@ package org.thoughtcrime.securesms.imageeditor;
 
 import android.graphics.Matrix;
 import android.graphics.PointF;
-
 import androidx.annotation.NonNull;
-
 import org.thoughtcrime.securesms.imageeditor.model.EditorElement;
 
 abstract class ElementEditSession implements EditSession {
@@ -14,9 +12,9 @@ abstract class ElementEditSession implements EditSession {
   final EditorElement selected;
 
   final PointF[] startPointElement = newTwoPointArray();
-  final PointF[] endPointElement   = newTwoPointArray();
-  final PointF[] startPointScreen  = newTwoPointArray();
-  final PointF[] endPointScreen    = newTwoPointArray();
+  final PointF[] endPointElement = newTwoPointArray();
+  final PointF[] startPointScreen = newTwoPointArray();
+  final PointF[] endPointScreen = newTwoPointArray();
 
   ElementEditSession(@NonNull EditorElement selected, @NonNull Matrix inverseMatrix) {
     this.selected = selected;
@@ -57,12 +55,12 @@ abstract class ElementEditSession implements EditSession {
   /**
    * Map src to dst using the matrix.
    *
-   * @param dst    Output point.
+   * @param dst Output point.
    * @param matrix Matrix to transform point with.
-   * @param src    Input point.
+   * @param src Input point.
    */
   private static void mapPoint(@NonNull PointF dst, @NonNull Matrix matrix, @NonNull PointF src) {
-    float[] in = { src.x, src.y };
+    float[] in = {src.x, src.y};
     float[] out = new float[2];
     matrix.mapPoints(out, in);
     dst.set(out[0], out[1]);

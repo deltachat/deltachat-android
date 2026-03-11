@@ -2,26 +2,31 @@ package org.thoughtcrime.securesms.imageeditor;
 
 import android.graphics.Matrix;
 import android.graphics.PointF;
-
 import androidx.annotation.NonNull;
-
 import org.thoughtcrime.securesms.imageeditor.model.EditorElement;
 import org.thoughtcrime.securesms.imageeditor.model.ThumbRenderer;
 
 class ThumbDragEditSession extends ElementEditSession {
 
-  @NonNull
-  private final ThumbRenderer.ControlPoint controlPoint;
+  @NonNull private final ThumbRenderer.ControlPoint controlPoint;
 
-  private ThumbDragEditSession(@NonNull EditorElement selected, @NonNull ThumbRenderer.ControlPoint controlPoint, @NonNull Matrix inverseMatrix) {
+  private ThumbDragEditSession(
+      @NonNull EditorElement selected,
+      @NonNull ThumbRenderer.ControlPoint controlPoint,
+      @NonNull Matrix inverseMatrix) {
     super(selected, inverseMatrix);
     this.controlPoint = controlPoint;
   }
 
-  static EditSession startDrag(@NonNull EditorElement selected, @NonNull Matrix inverseViewModelMatrix, @NonNull ThumbRenderer.ControlPoint controlPoint, @NonNull PointF point) {
+  static EditSession startDrag(
+      @NonNull EditorElement selected,
+      @NonNull Matrix inverseViewModelMatrix,
+      @NonNull ThumbRenderer.ControlPoint controlPoint,
+      @NonNull PointF point) {
     if (!selected.getFlags().isEditable()) return null;
 
-    ElementEditSession elementDragEditSession = new ThumbDragEditSession(selected, controlPoint, inverseViewModelMatrix);
+    ElementEditSession elementDragEditSession =
+        new ThumbDragEditSession(selected, controlPoint, inverseViewModelMatrix);
     elementDragEditSession.setScreenStartPoint(0, point);
     elementDragEditSession.setScreenEndPoint(0, point);
     return elementDragEditSession;
@@ -48,13 +53,20 @@ class ThumbDragEditSession extends ElementEditSession {
 
     float defaultScale = aspectLocked ? 2 : 1;
 
-    float scaleX = controlPoint.isVerticalCenter()   ? defaultScale : (xEnd - x) / (controlPoint.getX() - x);
-    float scaleY = controlPoint.isHorizontalCenter() ? defaultScale : (yEnd - y) / (controlPoint.getY() - y);
+    float scaleX =
+        controlPoint.isVerticalCenter() ? defaultScale : (xEnd - x) / (controlPoint.getX() - x);
+    float scaleY =
+        controlPoint.isHorizontalCenter() ? defaultScale : (yEnd - y) / (controlPoint.getY() - y);
 
     scale(editorMatrix, aspectLocked, scaleX, scaleY, controlPoint.opposite());
   }
 
-  private void scale(Matrix editorMatrix, boolean aspectLocked, float scaleX, float scaleY, ThumbRenderer.ControlPoint around) {
+  private void scale(
+      Matrix editorMatrix,
+      boolean aspectLocked,
+      float scaleX,
+      float scaleY,
+      ThumbRenderer.ControlPoint around) {
     float x = around.getX();
     float y = around.getY();
     editorMatrix.postTranslate(-x, -y);

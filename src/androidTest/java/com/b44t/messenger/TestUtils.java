@@ -11,7 +11,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.UiController;
@@ -19,7 +18,6 @@ import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.util.TreeIterables;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-
 import org.hamcrest.Matcher;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
@@ -60,10 +58,12 @@ public class TestUtils {
   }
 
   @NonNull
-  public static ActivityScenarioRule<ConversationListActivity> getOfflineActivityRule(boolean useExistingChats) {
+  public static ActivityScenarioRule<ConversationListActivity> getOfflineActivityRule(
+      boolean useExistingChats) {
     Intent intent =
-            Intent.makeMainActivity(
-                    new ComponentName(getInstrumentation().getTargetContext(), ConversationListActivity.class));
+        Intent.makeMainActivity(
+            new ComponentName(
+                getInstrumentation().getTargetContext(), ConversationListActivity.class));
     if (!useExistingChats) {
       createOfflineAccount();
     }
@@ -72,18 +72,22 @@ public class TestUtils {
   }
 
   @NonNull
-  public static <T extends Activity> ActivityScenarioRule<T> getOnlineActivityRule(Class<T> activityClass) {
+  public static <T extends Activity> ActivityScenarioRule<T> getOnlineActivityRule(
+      Class<T> activityClass) {
     Context context = getInstrumentation().getTargetContext();
     AccountManager.getInstance().beginAccountCreation(context);
     prepare();
-    return new ActivityScenarioRule<>(new Intent(getInstrumentation().getTargetContext(), activityClass));
+    return new ActivityScenarioRule<>(
+        new Intent(getInstrumentation().getTargetContext(), activityClass));
   }
 
   private static void prepare() {
-    Prefs.setBooleanPreference(getInstrumentation().getTargetContext(), Prefs.DOZE_ASKED_DIRECTLY, true);
+    Prefs.setBooleanPreference(
+        getInstrumentation().getTargetContext(), Prefs.DOZE_ASKED_DIRECTLY, true);
     if (!AccessibilityUtil.areAnimationsDisabled(getInstrumentation().getTargetContext())) {
-      throw new RuntimeException("To run the tests, disable animations at Developer options' " +
-              "-> 'Window/Transition/Animator animation scale' -> Set all 3 to 'off'");
+      throw new RuntimeException(
+          "To run the tests, disable animations at Developer options' "
+              + "-> 'Window/Transition/Animator animation scale' -> Set all 3 to 'off'");
     }
   }
 
@@ -116,26 +120,22 @@ public class TestUtils {
         }
 
         throw new NoMatchingViewException.Builder()
-                .withRootView(view)
-                .withViewMatcher(matcher)
-                .build();
+            .withRootView(view)
+            .withViewMatcher(matcher)
+            .build();
       }
     };
   }
 
   /**
-   * Perform action of implicitly waiting for a certain view.
-   * This differs from EspressoExtensions.searchFor in that,
-   * upon failure to locate an element, it will fetch a new root view
-   * in which to traverse searching for our @param match
+   * Perform action of implicitly waiting for a certain view. This differs from
+   * EspressoExtensions.searchFor in that, upon failure to locate an element, it will fetch a new
+   * root view in which to traverse searching for our @param match
    *
    * @param viewMatcher ViewMatcher used to find our view
    */
   public static ViewInteraction waitForView(
-          Matcher<View> viewMatcher,
-          int waitMillis,
-          int waitMillisPerTry
-  ) {
+      Matcher<View> viewMatcher, int waitMillis, int waitMillisPerTry) {
 
     // Derive the max tries
     int maxTries = (int) (waitMillis / waitMillisPerTry);
@@ -164,12 +164,11 @@ public class TestUtils {
   }
 
   /**
-   * Normally, you would do
-   * onView(withId(R.id.send_button)).perform(click());
-   * to send the draft message. However, in order to change the send button to the attach button
-   * while there is no draft, the send button is made invisible and the attach button is made
-   * visible instead. This confuses the test framework.<br/><br/>
-   *
+   * Normally, you would do onView(withId(R.id.send_button)).perform(click()); to send the draft
+   * message. However, in order to change the send button to the attach button while there is no
+   * draft, the send button is made invisible and the attach button is made visible instead. This
+   * confuses the test framework.<br>
+   * <br>
    * So, this is a workaround for pressing the send button.
    */
   public static void pressSend() {

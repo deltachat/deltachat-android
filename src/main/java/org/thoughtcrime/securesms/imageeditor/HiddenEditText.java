@@ -10,33 +10,25 @@ import android.view.Gravity;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
-
 import org.thoughtcrime.securesms.imageeditor.model.EditorElement;
 import org.thoughtcrime.securesms.imageeditor.renderers.MultiLineTextRenderer;
 
-/**
- * Invisible {@link android.widget.EditText} that is used during in-image text editing.
- */
+/** Invisible {@link android.widget.EditText} that is used during in-image text editing. */
 final class HiddenEditText extends AppCompatEditText {
 
   @SuppressLint("InlinedApi")
   private static final int INCOGNITO_KEYBOARD_IME = EditorInfo.IME_FLAG_NO_PERSONALIZED_LEARNING;
 
-  @Nullable
-  private EditorElement currentTextEditorElement;
+  @Nullable private EditorElement currentTextEditorElement;
 
-  @Nullable
-  private MultiLineTextRenderer currentTextEntity;
+  @Nullable private MultiLineTextRenderer currentTextEntity;
 
-  @Nullable
-  private Runnable onEndEdit;
+  @Nullable private Runnable onEndEdit;
 
-  @Nullable
-  private OnEditOrSelectionChange onEditOrSelectionChange;
+  @Nullable private OnEditOrSelectionChange onEditOrSelectionChange;
 
   public HiddenEditText(Context context) {
     super(context);
@@ -87,21 +79,26 @@ final class HiddenEditText extends AppCompatEditText {
   }
 
   private void postEditOrSelectionChange() {
-    if (currentTextEditorElement != null && currentTextEntity != null && onEditOrSelectionChange != null) {
+    if (currentTextEditorElement != null
+        && currentTextEntity != null
+        && onEditOrSelectionChange != null) {
       onEditOrSelectionChange.onChange(currentTextEditorElement, currentTextEntity);
     }
   }
 
-  @Nullable MultiLineTextRenderer getCurrentTextEntity() {
+  @Nullable
+  MultiLineTextRenderer getCurrentTextEntity() {
     return currentTextEntity;
   }
 
-  @Nullable EditorElement getCurrentTextEditorElement() {
+  @Nullable
+  EditorElement getCurrentTextEditorElement() {
     return currentTextEditorElement;
   }
 
   public void setCurrentTextEditorElement(@Nullable EditorElement currentTextEditorElement) {
-    if (currentTextEditorElement != null && currentTextEditorElement.getRenderer() instanceof MultiLineTextRenderer) {
+    if (currentTextEditorElement != null
+        && currentTextEditorElement.getRenderer() instanceof MultiLineTextRenderer) {
       this.currentTextEditorElement = currentTextEditorElement;
       setCurrentTextEntity((MultiLineTextRenderer) currentTextEditorElement.getRenderer());
     } else {
@@ -143,10 +140,12 @@ final class HiddenEditText extends AppCompatEditText {
 
     if (currentTextEntity != null && focus) {
       currentTextEntity.setFocused(true);
-      InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+      InputMethodManager imm =
+          (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
       imm.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT);
       if (!imm.isAcceptingText()) {
-        imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_IMPLICIT_ONLY);
+        imm.toggleSoftInput(
+            InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_IMPLICIT_ONLY);
       }
     }
 
@@ -154,24 +153,29 @@ final class HiddenEditText extends AppCompatEditText {
   }
 
   public void hideKeyboard() {
-    InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+    InputMethodManager imm =
+        (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
     imm.hideSoftInputFromWindow(getWindowToken(), InputMethodManager.HIDE_IMPLICIT_ONLY);
   }
 
   public void setIncognitoKeyboardEnabled(boolean incognitoKeyboardEnabled) {
-    setImeOptions(incognitoKeyboardEnabled ? getImeOptions() |  INCOGNITO_KEYBOARD_IME
-                                           : getImeOptions() & ~INCOGNITO_KEYBOARD_IME);
+    setImeOptions(
+        incognitoKeyboardEnabled
+            ? getImeOptions() | INCOGNITO_KEYBOARD_IME
+            : getImeOptions() & ~INCOGNITO_KEYBOARD_IME);
   }
 
   public void setOnEndEdit(@Nullable Runnable onEndEdit) {
     this.onEndEdit = onEndEdit;
   }
 
-  public void setOnEditOrSelectionChange(@Nullable OnEditOrSelectionChange onEditOrSelectionChange) {
+  public void setOnEditOrSelectionChange(
+      @Nullable OnEditOrSelectionChange onEditOrSelectionChange) {
     this.onEditOrSelectionChange = onEditOrSelectionChange;
   }
 
   public interface OnEditOrSelectionChange {
-    void onChange(@NonNull EditorElement editorElement, @NonNull MultiLineTextRenderer textRenderer);
+    void onChange(
+        @NonNull EditorElement editorElement, @NonNull MultiLineTextRenderer textRenderer);
   }
 }
