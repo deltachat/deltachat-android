@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<org.thoughtcrime.securesms.ConversationUpdateItem xmlns:android="http://schemas.android.com/apk/res/android"
+<org.thoughtcrime.securesms.ConversationUpdateItem
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -40,7 +41,7 @@
                 android:scaleType="centerCrop"
                 android:visibility="gone" />
 
-            <!--Links should be clickable, see https://github.com/deltachat/deltachat-android/issues/1546-->
+            <!--Links should be clickable, see https://github.com/deltachat/deltachat-android/issues/1546 -->
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/conversation_update_body"
                 style="@style/Delta.Text.UpdateHeader"
@@ -54,7 +55,8 @@
 
         </LinearLayout>
 
-        <ImageView android:id="@+id/delivery_indicator"
+        <ImageView
+            android:id="@+id/delivery_indicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
