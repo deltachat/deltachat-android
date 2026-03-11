@@ -163,8 +163,7 @@ spotless {
     }
     format 'xml', {
         target 'src/*/res/**/*.xml', 'src/*/AndroidManifest.xml'
-        eclipseWtp('xml')
-        leadingTabsToSpaces(4)
+        eclipseWtp('xml').configFile('spotless/eclipse-wtp-xml.prefs')
         trimTrailingWhitespace()
         endWithNewline()
     }
