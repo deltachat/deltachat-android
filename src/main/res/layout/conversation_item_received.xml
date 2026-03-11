@@ -13,265 +13,263 @@
     android:clipToPadding="false"
     android:clipChildren="false">
 
-  <androidx.constraintlayout.widget.ConstraintLayout
-	  android:layout_width="match_parent"
-	  android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/container"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/conversation_individual_right_gutter"
-        android:layout_marginEnd="@dimen/conversation_individual_right_gutter"
-        android:layout_marginBottom="@dimen/below_bubble"
-        android:paddingLeft="6dp"
-        android:paddingStart="6dp"
-        android:clipToPadding="false"
-        android:clipChildren="false"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/jumpto_icon"
-        >
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/reply_icon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignStart="@id/body_bubble"
-            android:layout_alignTop="@id/body_bubble"
-            android:layout_alignBottom="@id/body_bubble"
-            android:alpha="0"
-            app:srcCompat="?menu_reply_icon"
-            android:tint="?icon_tint"
-            android:layout_alignLeft="@id/body_bubble" />
-
-        <FrameLayout
-            android:id="@+id/contact_photo_container"
-            android:layout_width="36dp"
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignBottom="@id/body_bubble">
-
-            <org.thoughtcrime.securesms.components.AvatarImageView
-                android:id="@+id/contact_photo"
-                android:foreground="@drawable/contact_photo_background"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginBottom="1dp"
-                android:cropToPadding="true"
-                android:contentDescription="@string/pref_profile_photo" />
-
-        </FrameLayout>
-
-        <LinearLayout
-            android:id="@+id/body_bubble"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/message_bubble_edge_margin"
-            android:layout_marginEnd="@dimen/message_bubble_edge_margin"
-            android:layout_marginLeft="6dp"
-            android:layout_marginStart="6dp"
-            android:layout_toRightOf="@id/contact_photo_container"
-            android:layout_toEndOf="@id/contact_photo_container"
-            android:orientation="vertical"
+            android:layout_marginRight="@dimen/conversation_individual_right_gutter"
+            android:layout_marginEnd="@dimen/conversation_individual_right_gutter"
+            android:layout_marginBottom="@dimen/below_bubble"
+            android:paddingLeft="6dp"
+            android:paddingStart="6dp"
             android:clipToPadding="false"
             android:clipChildren="false"
-            android:background="@color/white"
-            tools:backgroundTint="@color/core_light_10">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/jumpto_icon">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/reply_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignStart="@id/body_bubble"
+                android:layout_alignTop="@id/body_bubble"
+                android:layout_alignBottom="@id/body_bubble"
+                android:alpha="0"
+                app:srcCompat="?menu_reply_icon"
+                android:tint="?icon_tint"
+                android:layout_alignLeft="@id/body_bubble" />
+
+            <FrameLayout
+                android:id="@+id/contact_photo_container"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignBottom="@id/body_bubble">
+
+                <org.thoughtcrime.securesms.components.AvatarImageView
+                    android:id="@+id/contact_photo"
+                    android:foreground="@drawable/contact_photo_background"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginBottom="1dp"
+                    android:cropToPadding="true"
+                    android:contentDescription="@string/pref_profile_photo" />
+
+            </FrameLayout>
 
             <LinearLayout
-                android:id="@+id/group_sender_holder"
+                android:id="@+id/body_bubble"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/message_bubble_top_padding"
-                android:layout_marginBottom="2dp"
-                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-                android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                tools:visibility="visible">
+                android:layout_marginRight="@dimen/message_bubble_edge_margin"
+                android:layout_marginEnd="@dimen/message_bubble_edge_margin"
+                android:layout_marginLeft="6dp"
+                android:layout_marginStart="6dp"
+                android:layout_toRightOf="@id/contact_photo_container"
+                android:layout_toEndOf="@id/contact_photo_container"
+                android:orientation="vertical"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                android:background="@color/white"
+                tools:backgroundTint="@color/core_light_10">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/group_message_sender"
+                <LinearLayout
+                    android:id="@+id/group_sender_holder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="4sp"
-                    android:layout_marginEnd="4sp"
-                    style="@style/Signal.Text.Preview"
-                    android:fontFamily="sans-serif-medium"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    tools:visibility="visible"
-                    tools:text="Alice"/>
+                    android:layout_marginTop="@dimen/message_bubble_top_padding"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                    android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/group_message_sender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4sp"
+                        android:layout_marginEnd="4sp"
+                        style="@style/Signal.Text.Preview"
+                        android:fontFamily="sans-serif-medium"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        tools:visibility="visible"
+                        tools:text="Alice" />
+
+                </LinearLayout>
+
+                <org.thoughtcrime.securesms.components.QuoteView
+                    android:id="@+id/quote_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/message_bubble_top_padding"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:visibility="gone"
+                    app:message_type="incoming"
+                    app:quote_colorPrimary="?attr/conversation_item_quote_text_color"
+                    app:quote_colorSecondary="?attr/conversation_item_quote_text_color"
+                    tools:visibility="visible" />
+
+                <ViewStub
+                    android:id="@+id/image_view_stub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout="@layout/conversation_item_received_thumbnail" />
+
+                <ViewStub
+                    android:id="@+id/sticker_view_stub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout="@layout/conversation_item_sticker" />
+
+                <ViewStub
+                    android:id="@+id/audio_view_stub"
+                    android:layout="@layout/conversation_item_received_audio"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/message_bubble_top_padding"
+                    android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                    android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
+
+                <ViewStub
+                    android:id="@+id/document_view_stub"
+                    android:layout="@layout/conversation_item_received_document"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/message_bubble_top_padding"
+                    android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
+                    android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                    android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
+
+                <ViewStub
+                    android:id="@+id/webxdc_view_stub"
+                    android:layout="@layout/conversation_item_webxdc"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/message_bubble_top_padding"
+                    android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
+                    android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                    android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
+
+                <ViewStub
+                    android:id="@+id/vcard_view_stub"
+                    android:layout="@layout/conversation_item_vcard"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/message_bubble_top_padding"
+                    android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
+                    android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                    android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
+
+                <ViewStub
+                    android:id="@+id/call_view_stub"
+                    android:layout="@layout/conversation_item_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/message_bubble_top_padding"
+                    android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
+                    android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                    android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
+
+                <org.thoughtcrime.securesms.components.emoji.AutoScaledEmojiTextView
+                    android:id="@+id/conversation_item_body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
+                    android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                    android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
+                    style="@style/Signal.Text.Body"
+                    android:paddingTop="@dimen/message_bubble_top_padding"
+                    android:textColor="?conversation_item_incoming_text_primary_color"
+                    android:textColorLink="?attr/colorAccent"
+                    android:importantForAccessibility="no"
+                    tools:text="Mango pickle lorem ipsum" />
+
+                <Button
+                    android:id="@+id/msg_action_button"
+                    android:visibility="gone"
+                    style="@style/ButtonPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                    android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
+                    android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
+                    android:padding="@dimen/message_bubble_showmore_padding"
+                    android:minHeight="1dp"
+                    android:minWidth="0dp"
+                    android:text="@string/show_full_message"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/show_full_button"
+                    android:visibility="gone"
+                    style="@style/Signal.Text.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                    android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
+                    android:paddingTop="@dimen/message_bubble_showmore_padding"
+                    android:paddingBottom="@dimen/message_bubble_showmore_padding"
+                    android:minHeight="1dp"
+                    android:minWidth="0dp"
+                    android:background="@drawable/touch_highlight_background_strong"
+                    android:textColor="@color/delta_accent_darker"
+                    android:text="@string/show_full_message"
+                    android:textAllCaps="false" />
+
+                <org.thoughtcrime.securesms.components.ConversationItemFooter
+                    android:id="@+id/conversation_item_footer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-4dp"
+                    android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                    android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
+                    android:layout_marginBottom="@dimen/message_bubble_bottom_padding"
+                    android:layout_gravity="end"
+                    android:gravity="end"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:alpha="0.7"
+                    app:footer_text_color="?conversation_item_incoming_text_secondary_color" />
 
             </LinearLayout>
 
-            <org.thoughtcrime.securesms.components.QuoteView
-                android:id="@+id/quote_view"
+            <org.thoughtcrime.securesms.reactions.ReactionsConversationView
+                android:id="@+id/reactions_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/message_bubble_top_padding"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"
-                android:visibility="gone"
-                app:message_type="incoming"
-                app:quote_colorPrimary="?attr/conversation_item_quote_text_color"
-                app:quote_colorSecondary="?attr/conversation_item_quote_text_color"
-                tools:visibility="visible"/>
-
-            <ViewStub
-                android:id="@+id/image_view_stub"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout="@layout/conversation_item_received_thumbnail" />
-
-            <ViewStub
-                android:id="@+id/sticker_view_stub"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout="@layout/conversation_item_sticker" />
-
-            <ViewStub
-                android:id="@+id/audio_view_stub"
-                android:layout="@layout/conversation_item_received_audio"
-                android:layout_width="210dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/message_bubble_top_padding"
-                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-                android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
-
-            <ViewStub
-                android:id="@+id/document_view_stub"
-                android:layout="@layout/conversation_item_received_document"
-                android:layout_width="210dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/message_bubble_top_padding"
-                android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
-                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-                android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
-
-            <ViewStub
-                android:id="@+id/webxdc_view_stub"
-                android:layout="@layout/conversation_item_webxdc"
-                android:layout_width="210dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/message_bubble_top_padding"
-                android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
-                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-                android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
-
-            <ViewStub
-                android:id="@+id/vcard_view_stub"
-                android:layout="@layout/conversation_item_vcard"
-                android:layout_width="210dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/message_bubble_top_padding"
-                android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
-                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-                android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
-
-            <ViewStub
-                android:id="@+id/call_view_stub"
-                android:layout="@layout/conversation_item_call"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/message_bubble_top_padding"
-                android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
-                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-                android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
-
-            <org.thoughtcrime.securesms.components.emoji.AutoScaledEmojiTextView
-                android:id="@+id/conversation_item_body"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
-                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-                android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
-                style="@style/Signal.Text.Body"
-                android:paddingTop="@dimen/message_bubble_top_padding"
-                android:textColor="?conversation_item_incoming_text_primary_color"
-                android:textColorLink="?attr/colorAccent"
-                android:importantForAccessibility="no"
-                tools:text="Mango pickle lorem ipsum"/>
-
-            <Button
-                android:id="@+id/msg_action_button"
-                android:visibility="gone"
-                style="@style/ButtonPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-                android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
-                android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
-                android:padding="@dimen/message_bubble_showmore_padding"
-                android:minHeight="1dp"
-                android:minWidth="0dp"
-                android:text="@string/show_full_message"
-                android:textAllCaps="false"/>
-
-            <Button
-                android:id="@+id/show_full_button"
-                android:visibility="gone"
-                style="@style/Signal.Text.Body"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-                android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
-                android:paddingTop="@dimen/message_bubble_showmore_padding"
-                android:paddingBottom="@dimen/message_bubble_showmore_padding"
-                android:minHeight="1dp"
-                android:minWidth="0dp"
-                android:background="@drawable/touch_highlight_background_strong"
-                android:textColor="@color/delta_accent_darker"
-                android:text="@string/show_full_message"
-                android:textAllCaps="false"/>
-
-            <org.thoughtcrime.securesms.components.ConversationItemFooter
-                android:id="@+id/conversation_item_footer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_below="@id/body_bubble"
+                android:layout_alignStart="@id/body_bubble"
                 android:layout_marginTop="-4dp"
-                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-                android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
-                android:layout_marginBottom="@dimen/message_bubble_bottom_padding"
-                android:layout_gravity="end"
-                android:gravity="end"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:alpha="0.7"
-                app:footer_text_color="?conversation_item_incoming_text_secondary_color"/>
+                android:orientation="horizontal"
+                app:message_type="incoming" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <org.thoughtcrime.securesms.reactions.ReactionsConversationView
-            android:id="@+id/reactions_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/body_bubble"
-            android:layout_alignStart="@id/body_bubble"
-            android:layout_marginTop="-4dp"
-            android:orientation="horizontal"
-            app:message_type="incoming" />
-
-    </RelativeLayout>
-
-  <androidx.appcompat.widget.AppCompatImageView
-      android:id="@+id/jumpto_icon"
-      android:layout_width="35dp"
-      android:layout_height="35dp"
-      android:layout_marginEnd="@dimen/conversation_individual_right_gutter"
-      android:padding="5dp"
-      android:src="@drawable/rounded_arrow_forward_24"
-      android:background="@drawable/jumpto_btn_bg"
-      android:contentDescription="@string/show_in_chat"
-      android:visibility="gone"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintBottom_toBottomOf="parent"
-      />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/jumpto_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="@dimen/conversation_individual_right_gutter"
+            android:padding="5dp"
+            android:src="@drawable/rounded_arrow_forward_24"
+            android:background="@drawable/jumpto_btn_bg"
+            android:contentDescription="@string/show_in_chat"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </org.thoughtcrime.securesms.ConversationItem>
