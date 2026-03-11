@@ -2,15 +2,11 @@ package org.thoughtcrime.securesms;
 
 import android.content.Context;
 import android.os.Parcelable;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-/**
- * Like LinearLayoutManager but you can set a starting position
- */
+/** Like LinearLayoutManager but you can set a starting position */
 class SetStartingPositionLinearLayoutManager extends LinearLayoutManager {
 
   private int pendingStartingPos = -1;

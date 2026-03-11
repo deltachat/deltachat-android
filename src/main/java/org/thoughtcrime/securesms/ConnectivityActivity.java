@@ -2,12 +2,9 @@ package org.thoughtcrime.securesms;
 
 import android.os.Bundle;
 import android.view.Menu;
-
 import androidx.annotation.NonNull;
-
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
@@ -35,8 +32,10 @@ public class ConnectivityActivity extends WebViewActivity implements DcEventCent
   }
 
   private void refresh() {
-    final String connectivityHtml = DcHelper.getContext(this).getConnectivityHtml()
-                                      .replace("</style>", " html { color-scheme: dark light; }</style>");
+    final String connectivityHtml =
+        DcHelper.getContext(this)
+            .getConnectivityHtml()
+            .replace("</style>", " html { color-scheme: dark light; }</style>");
     webView.loadDataWithBaseURL(null, connectivityHtml, "text/html", "utf-8", null);
   }
 

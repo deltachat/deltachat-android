@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/status_bar_background"/>
+    <include layout="@layout/status_bar_background" />
 
     <LinearLayout
         android:id="@+id/group_image_holder"
@@ -19,7 +19,8 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
-        <androidx.appcompat.widget.AppCompatImageView android:id="@+id/avatar"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/avatar"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginEnd="10dp"
@@ -35,7 +36,7 @@
             android:maxLength="255"
             android:inputType="textAutoCorrect"
             android:hint="@string/group_name">
-          <requestFocus />
+            <requestFocus />
         </androidx.appcompat.widget.AppCompatEditText>
     </LinearLayout>
 
@@ -47,14 +48,14 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp">
 
-      <androidx.appcompat.widget.AppCompatEditText
-          android:id="@+id/chat_description"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:gravity="top|start"
-          android:hint="@string/chat_description"
-          android:inputType="textMultiLine"
-          android:maxLines="3" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/chat_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|start"
+            android:hint="@string/chat_description"
+            android:inputType="textMultiLine"
+            android:maxLines="3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -68,8 +69,9 @@
         android:textSize="18sp"
         android:text="@string/chat_new_channel_hint" />
 
-  <!-- clipToPadding is needed so ViewUtil.applyWindowInsets() works properly -->
-    <ListView android:id="@+id/selected_contacts_list"
+    <!-- clipToPadding is needed so ViewUtil.applyWindowInsets() works properly -->
+    <ListView
+        android:id="@+id/selected_contacts_list"
         android:clipToPadding="false"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"

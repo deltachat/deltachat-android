@@ -11,22 +11,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import androidx.activity.OnBackPressedCallback;
-
 import com.b44t.messenger.DcChat;
-
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 public class ConversationListArchiveActivity extends PassphraseRequiredActionBarActivity
-    implements ConversationListFragment.ConversationSelectedListener
-{
+    implements ConversationListFragment.ConversationSelectedListener {
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
     setContentView(R.layout.activity_conversation_list_archive);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     if (isRelayingMessageContent(this)) {
-      getSupportActionBar().setTitle(isSharing(this) ? R.string.chat_share_with_title : R.string.forward_to);
+      getSupportActionBar()
+          .setTitle(isSharing(this) ? R.string.chat_share_with_title : R.string.forward_to);
       getSupportActionBar().setSubtitle(R.string.chat_archived_label);
     } else {
       getSupportActionBar().setTitle(R.string.chat_archived_label);
@@ -36,20 +33,25 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
     bundle.putBoolean(ConversationListFragment.ARCHIVE, true);
     initFragment(R.id.fragment, new ConversationListFragment(), bundle);
 
-    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
-      @Override
-      public void handleOnBackPressed() {
-        if (!isRelayingMessageContent(ConversationListArchiveActivity.this)) {
-          // Load the ConversationListActivity in case it's not existent for some reason
-          Intent intent = new Intent(ConversationListArchiveActivity.this, ConversationListActivity.class);
-          intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-          startActivity(intent);
-        }
+    getOnBackPressedDispatcher()
+        .addCallback(
+            this,
+            new OnBackPressedCallback(true) {
+              @Override
+              public void handleOnBackPressed() {
+                if (!isRelayingMessageContent(ConversationListArchiveActivity.this)) {
+                  // Load the ConversationListActivity in case it's not existent for some reason
+                  Intent intent =
+                      new Intent(
+                          ConversationListArchiveActivity.this, ConversationListActivity.class);
+                  intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                  startActivity(intent);
+                }
 
-        setEnabled(false);
-        getOnBackPressedDispatcher().onBackPressed();
-      }
-    });
+                setEnabled(false);
+                getOnBackPressedDispatcher().onBackPressed();
+              }
+            });
   }
 
   @Override

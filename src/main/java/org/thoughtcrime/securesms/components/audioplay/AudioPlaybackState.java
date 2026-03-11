@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms.components.audioplay;
 
 import android.net.Uri;
-
 import androidx.annotation.Nullable;
 
 public class AudioPlaybackState {
@@ -19,11 +18,12 @@ public class AudioPlaybackState {
     ERROR
   }
 
-  public AudioPlaybackState(int msgId,
-                            @Nullable Uri audioUri,
-                            PlaybackStatus status,
-                            long currentPosition,
-                            long duration) {
+  public AudioPlaybackState(
+      int msgId,
+      @Nullable Uri audioUri,
+      PlaybackStatus status,
+      long currentPosition,
+      long duration) {
     this.msgId = msgId;
     this.audioUri = audioUri;
     this.status = status;

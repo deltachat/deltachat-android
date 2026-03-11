@@ -1,8 +1,6 @@
 package org.thoughtcrime.securesms.animation;
 
-
 import android.animation.Animator;
-
 import androidx.annotation.NonNull;
 
 public abstract class AnimationCompleteListener implements Animator.AnimatorListener {
@@ -14,6 +12,7 @@ public abstract class AnimationCompleteListener implements Animator.AnimatorList
 
   @Override
   public final void onAnimationCancel(@NonNull Animator animation) {}
+
   @Override
   public final void onAnimationRepeat(@NonNull Animator animation) {}
 }

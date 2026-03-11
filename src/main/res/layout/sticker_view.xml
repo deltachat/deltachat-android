@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/sticker_missing_background"
         android:visibility="gone"
-        tools:visibility="visible"/>
+        tools:visibility="visible" />
 
     <org.thoughtcrime.securesms.components.ThumbnailView
         android:id="@+id/sticker_thumbnail"
@@ -34,6 +34,6 @@
         android:paddingBottom="@dimen/transparent_footer_padding"
         android:paddingLeft="@dimen/transparent_footer_padding"
         android:paddingRight="@dimen/transparent_footer_padding"
-        app:footer_text_color="@color/core_white"/>
+        app:footer_text_color="@color/core_white" />
 
 </merge>

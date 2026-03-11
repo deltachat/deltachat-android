@@ -1,19 +1,18 @@
 package org.thoughtcrime.securesms.preferences;
 
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -21,11 +20,8 @@ import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceFragment implements DcEventCenter.DcEventDelegate {
+public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceFragment
+    implements DcEventCenter.DcEventDelegate {
   protected DcContext dcContext;
   private NotificationController notificationController;
 
@@ -78,8 +74,8 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     ListPreference listPref = (ListPreference) preference;
     int entryIndex = Arrays.asList(listPref.getEntryValues()).indexOf(value);
     return entryIndex >= 0 && entryIndex < listPref.getEntries().length
-            ? listPref.getEntries()[entryIndex].toString()
-            : getString(R.string.unknown);
+        ? listPref.getEntries()[entryIndex].toString()
+        : getString(R.string.unknown);
   }
 
   protected void updateListSummary(Preference preference, Object value) {
@@ -114,14 +110,13 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     }
   }
 
-  protected void startImexOne(int what)
-  {
+  protected void startImexOne(int what) {
     String path = DcHelper.getImexDir().getAbsolutePath();
     startImexOne(what, path, path);
   }
 
   protected void startImexOne(int what, String imexPath, String pathAsDisplayedToUser) {
-    imexAccounts = new int[]{ dcContext.getAccountId() };
+    imexAccounts = new int[] {dcContext.getAccountId()};
     imexProgress = new HashMap<>();
     accountsDone = 0;
     showProgressDialog();
@@ -129,10 +124,11 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   }
 
   protected ProgressDialog progressDialog = null;
-  protected int            progressWhat = 0;
-  protected String         pathAsDisplayedToUser = "";
-  protected void startImexInner(int accountId, int what, String imexPath, String pathAsDisplayedToUser)
-  {
+  protected int progressWhat = 0;
+  protected String pathAsDisplayedToUser = "";
+
+  protected void startImexInner(
+      int accountId, int what, String imexPath, String pathAsDisplayedToUser) {
     DcContext dcContext = DcHelper.getAccounts(getActivity()).getAccount(accountId);
     this.pathAsDisplayedToUser = pathAsDisplayedToUser;
     progressWhat = what;
@@ -146,8 +142,10 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   }
 
   private void showProgressDialog() {
-    notificationController = GenericForegroundService.startForegroundTask(getContext(), getString(R.string.export_backup_desktop));
-    if( progressDialog!=null ) {
+    notificationController =
+        GenericForegroundService.startForegroundTask(
+            getContext(), getString(R.string.export_backup_desktop));
+    if (progressDialog != null) {
       progressDialog.dismiss();
       progressDialog = null;
     }
@@ -155,11 +153,14 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     progressDialog.setMessage(getActivity().getString(R.string.one_moment));
     progressDialog.setCanceledOnTouchOutside(false);
     progressDialog.setCancelable(false);
-    progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getActivity().getString(android.R.string.cancel), (dialog, which) -> {
-      notificationController.close();
-      notificationController = null;
-      stopOngoingProcess();
-    });
+    progressDialog.setButton(
+        DialogInterface.BUTTON_NEGATIVE,
+        getActivity().getString(android.R.string.cancel),
+        (dialog, which) -> {
+          notificationController.close();
+          notificationController = null;
+          stopOngoingProcess();
+        });
     progressDialog.show();
   }
 
@@ -173,13 +174,13 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
 
   @Override
   public void handleEvent(@NonNull DcEvent event) {
-    if (event.getId()== DcContext.DC_EVENT_IMEX_PROGRESS) {
+    if (event.getId() == DcContext.DC_EVENT_IMEX_PROGRESS) {
       NotificationController notifController = notificationController;
       if (notifController == null) return;
 
       long progress = event.getData1Int();
       Context context = getActivity();
-      if (progress==0/*error/aborted*/) {
+      if (progress == 0 /*error/aborted*/) {
         notifController.close();
         notificationController = null;
         stopOngoingProcess();
@@ -187,19 +188,17 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
         progressDialog = null;
         DcContext dcContext = DcHelper.getAccounts(context).getAccount(event.getAccountId());
         new AlertDialog.Builder(context)
-          .setMessage(dcContext.getLastError())
-          .setPositiveButton(android.R.string.ok, null)
-          .show();
-      }
-      else if (progress<1000/*progress in permille*/) {
+            .setMessage(dcContext.getLastError())
+            .setPositiveButton(android.R.string.ok, null)
+            .show();
+      } else if (progress < 1000 /*progress in permille*/) {
         imexProgress.put(event.getAccountId(), (int) progress);
         int totalProgress = getTotalProgress();
         int percent = totalProgress / (10 * imexAccounts.length);
         String formattedPercent = percent > 0 ? String.format(" %d%%", percent) : "";
         progressDialog.setMessage(getResources().getString(R.string.one_moment) + formattedPercent);
         notifController.setProgress(1000L * imexAccounts.length, totalProgress, formattedPercent);
-      }
-      else if (progress==1000/*done*/) {
+      } else if (progress == 1000 /*done*/) {
         accountsDone++;
         if (accountsDone == imexAccounts.length) {
           notifController.close();
@@ -207,12 +206,12 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
           progressDialog.dismiss();
           progressDialog = null;
           new AlertDialog.Builder(context)
-            .setMessage(context.getString(R.string.pref_backup_written_to_x, pathAsDisplayedToUser))
-            .setPositiveButton(android.R.string.ok, null)
-            .show();
+              .setMessage(
+                  context.getString(R.string.pref_backup_written_to_x, pathAsDisplayedToUser))
+              .setPositiveButton(android.R.string.ok, null)
+              .show();
         }
       }
     }
   }
-
 }

@@ -71,7 +71,7 @@
                 android:nextFocusForward="@+id/send_button"
                 android:nextFocusRight="@+id/send_button"
                 tools:visibility="invisible"
-                tools:hint="Send message" >
+                tools:hint="Send message">
                 <requestFocus />
             </org.thoughtcrime.securesms.components.ComposeText>
 
@@ -105,7 +105,7 @@
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
-                  <include layout="@layout/microphone_recorder_view" />
+                    <include layout="@layout/microphone_recorder_view" />
 
                 </org.thoughtcrime.securesms.components.MicrophoneRecorderView>
 
@@ -113,7 +113,7 @@
 
         </LinearLayout>
 
-	<include layout="@layout/recording_layout" />
+        <include layout="@layout/recording_layout" />
 
     </FrameLayout>
 

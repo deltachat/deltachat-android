@@ -18,7 +18,6 @@ package org.thoughtcrime.securesms;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import org.thoughtcrime.securesms.components.ContactFilterToolbar;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -27,11 +26,9 @@ import org.thoughtcrime.securesms.util.ViewUtil;
  * Base activity container for selecting a list of contacts.
  *
  * @author Moxie Marlinspike
- *
  */
 public abstract class ContactSelectionActivity extends PassphraseRequiredActionBarActivity
-                                               implements ContactSelectionListFragment.OnContactSelectedListener
-{
+    implements ContactSelectionListFragment.OnContactSelectedListener {
   private static final String TAG = ContactSelectionActivity.class.getSimpleName();
 
   protected ContactSelectionListFragment contactsFragment;
@@ -61,7 +58,7 @@ public abstract class ContactSelectionActivity extends PassphraseRequiredActionB
     this.toolbar = ViewUtil.findById(this, R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    assert  getSupportActionBar() != null;
+    assert getSupportActionBar() != null;
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
     getSupportActionBar().setIcon(null);
@@ -69,7 +66,9 @@ public abstract class ContactSelectionActivity extends PassphraseRequiredActionB
   }
 
   private void initializeResources() {
-    contactsFragment = (ContactSelectionListFragment) getSupportFragmentManager().findFragmentById(R.id.contact_selection_list_fragment);
+    contactsFragment =
+        (ContactSelectionListFragment)
+            getSupportFragmentManager().findFragmentById(R.id.contact_selection_list_fragment);
     contactsFragment.setOnContactSelectedListener(this);
   }
 

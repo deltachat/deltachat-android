@@ -7,30 +7,26 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 import com.b44t.messenger.DcMsg;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DateUtils;
 
-import chat.delta.rpc.Rpc;
-import chat.delta.rpc.RpcException;
-
 public class ConversationItemFooter extends LinearLayout {
 
-  private TextView            dateView;
-  private TextView            editedView;
-  private TextView            viewsLabel;
-  private ImageView           viewsIcon;
-  private ImageView           bookmarkIndicatorView;
-  private ImageView           emailIndicatorView;
-  private ImageView           locationIndicatorView;
-  private DeliveryStatusView  deliveryStatusView;
-  private Integer             textColor = null;
+  private TextView dateView;
+  private TextView editedView;
+  private TextView viewsLabel;
+  private ImageView viewsIcon;
+  private ImageView bookmarkIndicatorView;
+  private ImageView emailIndicatorView;
+  private ImageView locationIndicatorView;
+  private DeliveryStatusView deliveryStatusView;
+  private Integer textColor = null;
   private Context context;
   private Rpc rpc;
 
@@ -54,18 +50,24 @@ public class ConversationItemFooter extends LinearLayout {
     this.rpc = DcHelper.getRpc(context);
     inflate(getContext(), R.layout.conversation_item_footer, this);
 
-    dateView              = findViewById(R.id.footer_date);
-    editedView            = findViewById(R.id.footer_edited);
-    viewsLabel            = findViewById(R.id.footer_views);
-    viewsIcon             = findViewById(R.id.footer_views_icon);
+    dateView = findViewById(R.id.footer_date);
+    editedView = findViewById(R.id.footer_edited);
+    viewsLabel = findViewById(R.id.footer_views);
+    viewsIcon = findViewById(R.id.footer_views_icon);
     bookmarkIndicatorView = findViewById(R.id.footer_bookmark_indicator);
-    emailIndicatorView   = findViewById(R.id.footer_email_indicator);
+    emailIndicatorView = findViewById(R.id.footer_email_indicator);
     locationIndicatorView = findViewById(R.id.footer_location_indicator);
-    deliveryStatusView    = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
+    deliveryStatusView = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
 
     if (attrs != null) {
-      try (TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemFooter, 0, 0)) {
-        setTextColor(typedArray.getInt(R.styleable.ConversationItemFooter_footer_text_color, getResources().getColor(R.color.core_white)));
+      try (TypedArray typedArray =
+          getContext()
+              .getTheme()
+              .obtainStyledAttributes(attrs, R.styleable.ConversationItemFooter, 0, 0)) {
+        setTextColor(
+            typedArray.getInt(
+                R.styleable.ConversationItemFooter_footer_text_color,
+                getResources().getColor(R.color.core_white)));
       }
     }
   }
@@ -77,7 +79,10 @@ public class ConversationItemFooter extends LinearLayout {
     editedView.setVisibility(messageRecord.isEdited() ? View.VISIBLE : View.GONE);
 
     int downloadState = messageRecord.getDownloadState();
-    if (messageRecord.isSecure() || downloadState == DcMsg.DC_DOWNLOAD_AVAILABLE || downloadState == DcMsg.DC_DOWNLOAD_FAILURE || downloadState == DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
+    if (messageRecord.isSecure()
+        || downloadState == DcMsg.DC_DOWNLOAD_AVAILABLE
+        || downloadState == DcMsg.DC_DOWNLOAD_FAILURE
+        || downloadState == DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
       emailIndicatorView.setVisibility(View.GONE);
     } else {
       emailIndicatorView.setVisibility(View.VISIBLE);
@@ -85,7 +90,8 @@ public class ConversationItemFooter extends LinearLayout {
 
     locationIndicatorView.setVisibility(messageRecord.hasLocation() ? View.VISIBLE : View.GONE);
 
-    boolean isOutChannel = DcHelper.getContext(context).getChat(messageRecord.getChatId()).isOutBroadcast();
+    boolean isOutChannel =
+        DcHelper.getContext(context).getChat(messageRecord.getChatId()).isOutBroadcast();
 
     if (isOutChannel && messageRecord.isOutgoing()) {
       try {
@@ -119,29 +125,30 @@ public class ConversationItemFooter extends LinearLayout {
 
   private void presentDate(@NonNull DcMsg dcMsg) {
     dateView.forceLayout();
-    dateView.setText(DateUtils.getExtendedRelativeTimeSpanString(getContext(), dcMsg.getTimestamp()));
+    dateView.setText(
+        DateUtils.getExtendedRelativeTimeSpanString(getContext(), dcMsg.getTimestamp()));
   }
 
   private void presentDeliveryStatus(@NonNull DcMsg messageRecord, boolean isOutChannel) {
     // isDownloading is temporary and should be checked first.
     boolean isDownloading = messageRecord.getDownloadState() == DcMsg.DC_DOWNLOAD_IN_PROGRESS;
 
-         if (isDownloading)                deliveryStatusView.setDownloading();
-    else if (messageRecord.isPending())    deliveryStatusView.setPending();
-    else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
-    else if (!messageRecord.isOutgoing() || isOutChannel)  deliveryStatusView.setNone();
+    if (isDownloading) deliveryStatusView.setDownloading();
+    else if (messageRecord.isPending()) deliveryStatusView.setPending();
+    else if (messageRecord.isFailed()) deliveryStatusView.setFailed();
+    else if (!messageRecord.isOutgoing() || isOutChannel) deliveryStatusView.setNone();
     else if (messageRecord.isRemoteRead()) deliveryStatusView.setRead();
-    else if (messageRecord.isDelivered())  deliveryStatusView.setSent();
-    else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
-    else                                   deliveryStatusView.setPending();
+    else if (messageRecord.isDelivered()) deliveryStatusView.setSent();
+    else if (messageRecord.isPreparing()) deliveryStatusView.setPreparing();
+    else deliveryStatusView.setPending();
   }
 
   public String getDescription() {
-      String desc = dateView.getText().toString();
-      String deliveryDesc = deliveryStatusView.getDescription();
-      if (!"".equals(deliveryDesc)) {
-          desc += "\n" + deliveryDesc;
-      }
-      return desc;
+    String desc = dateView.getText().toString();
+    String deliveryDesc = deliveryStatusView.getDescription();
+    if (!"".equals(deliveryDesc)) {
+      desc += "\n" + deliveryDesc;
+    }
+    return desc;
   }
 }

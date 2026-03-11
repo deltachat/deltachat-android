@@ -16,18 +16,20 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.loader.app.LoaderManager;
-
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
-
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Objects;
 import org.thoughtcrime.securesms.components.AvatarSelector;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
@@ -41,16 +43,8 @@ import org.thoughtcrime.securesms.util.SelectedContactsAdapter.ItemClickListener
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Objects;
-
-import chat.delta.rpc.Rpc;
-import chat.delta.rpc.RpcException;
-
 public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
-                                 implements ItemClickListener
-{
+    implements ItemClickListener {
 
   private static final String TAG = GroupCreateActivity.class.getSimpleName();
   public static final String EDIT_GROUP_CHAT_ID = "edit_group_chat_id";
@@ -65,15 +59,15 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private boolean unencrypted;
   private boolean broadcast;
-  private EditText     groupName;
-  private EditText     chatDescription;
-  private ListView     lv;
-  private ImageView    avatar;
-  private Bitmap       avatarBmp;
-  private int          groupChatId;
-  private boolean      isEdit;
-  private boolean      avatarChanged;
-  private boolean      imageLoaded;
+  private EditText groupName;
+  private EditText chatDescription;
+  private ListView lv;
+  private ImageView avatar;
+  private Bitmap avatarBmp;
+  private int groupChatId;
+  private boolean isEdit;
+  private boolean avatarChanged;
+  private boolean imageLoaded;
   private AttachmentManager attachmentManager;
 
   @Override
@@ -91,7 +85,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
     // groupChatId may be set during creation,
     // so always check isEdit()
-    if(groupChatId !=0) {
+    if (groupChatId != 0) {
       isEdit = true;
       DcChat dcChat = dcContext.getChat(groupChatId);
       broadcast = dcChat.isOutBroadcast();
@@ -100,7 +94,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
     int chatId = getIntent().getIntExtra(CLONE_CHAT_EXTRA, 0);
     if (chatId != 0) {
-      DcChat dcChat  = dcContext.getChat(chatId);
+      DcChat dcChat = dcContext.getChat(chatId);
       broadcast = dcChat.isOutBroadcast();
       unencrypted = !dcChat.isEncrypted();
     }
@@ -125,27 +119,24 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     groupName.setEnabled(true);
 
     String title;
-    if(isEdit()) {
+    if (isEdit()) {
       title = getString(R.string.global_menu_edit_desktop);
-    }
-    else if(broadcast) {
+    } else if (broadcast) {
       title = getString(R.string.new_channel);
-    }
-    else if(unencrypted) {
+    } else if (unencrypted) {
       title = getString(R.string.new_email);
-    }
-    else {
+    } else {
       title = getString(R.string.menu_new_group);
     }
     getSupportActionBar().setTitle(title);
   }
 
   private void initializeResources() {
-    lv                  = ViewUtil.findById(this, R.id.selected_contacts_list);
-    avatar              = ViewUtil.findById(this, R.id.avatar);
-    groupName           = ViewUtil.findById(this, R.id.group_name);
-    chatDescription     = ViewUtil.findById(this, R.id.chat_description);
-    TextView chatHints  = ViewUtil.findById(this, R.id.chat_hints);
+    lv = ViewUtil.findById(this, R.id.selected_contacts_list);
+    avatar = ViewUtil.findById(this, R.id.avatar);
+    groupName = ViewUtil.findById(this, R.id.group_name);
+    chatDescription = ViewUtil.findById(this, R.id.chat_description);
+    TextView chatHints = ViewUtil.findById(this, R.id.chat_hints);
 
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(lv, false, false, false, true);
@@ -154,7 +145,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
     initializeAvatarView();
 
-    SelectedContactsAdapter adapter = new SelectedContactsAdapter(this, GlideApp.with(this), broadcast);
+    SelectedContactsAdapter adapter =
+        new SelectedContactsAdapter(this, GlideApp.with(this), broadcast);
     adapter.setItemClickListener(this);
     lv.setAdapter(adapter);
 
@@ -189,7 +181,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       chatHints.setVisibility(View.GONE);
     }
 
-    if(isEdit()) {
+    if (isEdit()) {
       groupName.setText(dcContext.getChat(groupChatId).getName());
       lv.setVisibility(View.GONE);
 
@@ -210,19 +202,22 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       File avatarFile = new File(avatarPath);
       if (avatarFile.exists()) {
         imageLoaded = true;
-        GlideApp.with(this)
-                .load(avatarFile)
-                .circleCrop()
-                .into(avatar);
+        GlideApp.with(this).load(avatarFile).circleCrop().into(avatar);
       }
     }
     if (!imageLoaded) {
-      avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_group_white_24dp).asDrawable(this, ThemeUtil.getDummyContactColor(this)));
+      avatar.setImageDrawable(
+          new ResourceContactPhoto(R.drawable.ic_group_white_24dp)
+              .asDrawable(this, ThemeUtil.getDummyContactColor(this)));
     }
-    avatar.setOnClickListener(view ->
-            new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener(), imageLoaded)
-                    .show(this, avatar)
-    );
+    avatar.setOnClickListener(
+        view ->
+            new AvatarSelector(
+                    this,
+                    LoaderManager.getInstance(this),
+                    new AvatarSelectedListener(),
+                    imageLoaded)
+                .show(this, avatar));
   }
 
   @Override
@@ -299,7 +294,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     for (int contactId : getAdapter().getContacts()) {
       dcContext.addContactToChat(groupChatId, contactId);
     }
-    if (avatarBmp!=null) {
+    if (avatarBmp != null) {
       AvatarHelper.setGroupAvatar(this, groupChatId, avatarBmp);
     }
 
@@ -311,8 +306,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private boolean showGroupNameEmptyToast(String groupName) {
-    if(groupName == null) {
-      Toast.makeText(this, getString(R.string.group_please_enter_group_name), Toast.LENGTH_LONG).show();
+    if (groupName == null) {
+      Toast.makeText(this, getString(R.string.group_please_enter_group_name), Toast.LENGTH_LONG)
+          .show();
       return true;
     }
     return false;
@@ -342,14 +338,14 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private SelectedContactsAdapter getAdapter() {
-    return (SelectedContactsAdapter)lv.getAdapter();
+    return (SelectedContactsAdapter) lv.getAdapter();
   }
 
   private @Nullable String getGroupName() {
     String ret = groupName.getText() != null ? groupName.getText().toString() : null;
-    if(ret!=null) {
+    if (ret != null) {
       ret = ret.trim();
-      if(ret.isEmpty()) {
+      if (ret.isEmpty()) {
         ret = null;
       }
     }
@@ -361,7 +357,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+  public void onRequestPermissionsResult(
+      int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
@@ -370,19 +367,20 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   public void onActivityResult(int reqCode, int resultCode, final Intent data) {
     super.onActivityResult(reqCode, resultCode, data);
 
-    if (resultCode != Activity.RESULT_OK)
-      return;
+    if (resultCode != Activity.RESULT_OK) return;
 
     switch (reqCode) {
       case REQUEST_CODE_AVATAR:
-        Uri inputFile  = (data != null ? data.getData() : null);
+        Uri inputFile = (data != null ? data.getData() : null);
         onFileSelected(inputFile);
         break;
 
       case PICK_CONTACT:
         ArrayList<Integer> contactIds = new ArrayList<>();
-        for (Integer contactId : Objects.requireNonNull(data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA))) {
-          if(contactId != null) {
+        for (Integer contactId :
+            Objects.requireNonNull(
+                data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA))) {
+          if (contactId != null) {
             contactIds.add(contactId);
           }
         }
@@ -397,15 +395,17 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private void setAvatarView(Uri output) {
     GlideApp.with(this)
-            .asBitmap()
-            .load(output)
-            .skipMemoryCache(true)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .centerCrop()
-            .override(AvatarHelper.AVATAR_SIZE, AvatarHelper.AVATAR_SIZE)
-            .into(new CustomTarget<Bitmap>() {
+        .asBitmap()
+        .load(output)
+        .skipMemoryCache(true)
+        .diskCacheStrategy(DiskCacheStrategy.NONE)
+        .centerCrop()
+        .override(AvatarHelper.AVATAR_SIZE, AvatarHelper.AVATAR_SIZE)
+        .into(
+            new CustomTarget<Bitmap>() {
               @Override
-              public void onResourceReady(@NonNull Bitmap resource, Transition<? super Bitmap> transition) {
+              public void onResourceReady(
+                  @NonNull Bitmap resource, Transition<? super Bitmap> transition) {
                 setAvatar(output, resource);
               }
 
@@ -419,17 +419,16 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     avatarChanged = true;
     imageLoaded = true;
     GlideApp.with(this)
-            .load(model)
-            .circleCrop()
-            .skipMemoryCache(true)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .into(avatar);
+        .load(model)
+        .circleCrop()
+        .skipMemoryCache(true)
+        .diskCacheStrategy(DiskCacheStrategy.NONE)
+        .into(avatar);
   }
 
   private boolean isEdit() {
     return isEdit;
   }
-
 
   private class AvatarSelectedListener implements AvatarSelector.AttachmentClickedListener {
     @Override
@@ -442,7 +441,11 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
           avatarBmp = null;
           imageLoaded = false;
           avatarChanged = true;
-          avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_group_white_24dp).asDrawable(GroupCreateActivity.this, ThemeUtil.getDummyContactColor(GroupCreateActivity.this)));
+          avatar.setImageDrawable(
+              new ResourceContactPhoto(R.drawable.ic_group_white_24dp)
+                  .asDrawable(
+                      GroupCreateActivity.this,
+                      ThemeUtil.getDummyContactColor(GroupCreateActivity.this)));
           break;
         case AvatarSelector.TAKE_PHOTO:
           attachmentManager.capturePhoto(GroupCreateActivity.this, REQUEST_CODE_AVATAR);

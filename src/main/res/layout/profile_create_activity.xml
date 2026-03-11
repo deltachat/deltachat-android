@@ -5,38 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <include layout="@layout/status_bar_background"/>
+    <include layout="@layout/status_bar_background" />
 
-<org.thoughtcrime.securesms.components.InputAwareLayout
+    <org.thoughtcrime.securesms.components.InputAwareLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="20dp"
         android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/login_success_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="start"
-        android:text=""
-        android:textSize="16sp"
-        android:textColor="?android:attr/textColorPrimary" />
+        <TextView
+            android:id="@+id/login_success_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="start"
+            android:text=""
+            android:textSize="16sp"
+            android:textColor="?android:attr/textColorPrimary" />
 
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_marginLeft="16dp"
-                      android:layout_marginRight="16dp"
-                      android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
 
-            <ImageView android:id="@+id/avatar"
-                       android:layout_width="64dp"
-                       android:layout_height="64dp"
-                       android:contentDescription="@string/pref_profile_photo"
-                       android:transitionName="avatar"/>
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="@string/pref_profile_photo"
+                android:transitionName="avatar" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/name"
@@ -54,35 +56,35 @@
 
         </LinearLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/status_text_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp">
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/status_text"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/status_text_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="top|start"
-            android:hint="@string/pref_default_status_label"
-            android:inputType="textMultiLine"
-            android:maxLines="3" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp">
 
-    <TextView
-        android:id="@+id/information_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
-        android:gravity="start"
-        android:text="@string/pref_who_can_see_profile_explain"
-        android:textColor="@color/gray50" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/status_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|start"
+                android:hint="@string/pref_default_status_label"
+                android:inputType="textMultiLine"
+                android:maxLines="3" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-</org.thoughtcrime.securesms.components.InputAwareLayout>
+        <TextView
+            android:id="@+id/information_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:gravity="start"
+            android:text="@string/pref_who_can_see_profile_explain"
+            android:textColor="@color/gray50" />
+
+    </org.thoughtcrime.securesms.components.InputAwareLayout>
 
 </FrameLayout>

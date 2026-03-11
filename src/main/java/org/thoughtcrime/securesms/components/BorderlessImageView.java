@@ -5,10 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
@@ -17,7 +15,7 @@ import org.thoughtcrime.securesms.mms.SlideClickListener;
 public class BorderlessImageView extends FrameLayout {
 
   private ThumbnailView image;
-  private View          missingShade;
+  private View missingShade;
   private ConversationItemFooter footer;
 
   public BorderlessImageView(@NonNull Context context) {
@@ -33,9 +31,9 @@ public class BorderlessImageView extends FrameLayout {
   private void init() {
     inflate(getContext(), R.layout.sticker_view, this);
 
-    this.image        = findViewById(R.id.sticker_thumbnail);
+    this.image = findViewById(R.id.sticker_thumbnail);
     this.missingShade = findViewById(R.id.sticker_missing_shade);
-    this.footer       = findViewById(R.id.sticker_footer);
+    this.footer = findViewById(R.id.sticker_footer);
   }
 
   @Override
@@ -61,7 +59,8 @@ public class BorderlessImageView extends FrameLayout {
       image.setImageResource(glideRequests, slide);
     } else {
       image.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      image.setImageResource(glideRequests, slide, slide.asAttachment().getWidth(), slide.asAttachment().getHeight());
+      image.setImageResource(
+          glideRequests, slide, slide.asAttachment().getWidth(), slide.asAttachment().getHeight());
     }
 
     missingShade.setVisibility(showControls ? View.VISIBLE : View.GONE);
@@ -78,5 +77,4 @@ public class BorderlessImageView extends FrameLayout {
   public void setThumbnailClickListener(@NonNull SlideClickListener listener) {
     image.setThumbnailClickListener(listener);
   }
-
 }

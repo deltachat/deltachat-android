@@ -6,25 +6,23 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:background="?attr/conversation_list_item_background"
-    android:paddingEnd="6dp"
-    >
+    android:paddingEnd="6dp">
 
-  <TextView
-      android:id="@+id/host"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentStart="true"
-      android:layout_toStartOf="@id/share"
-      android:paddingStart="16dp"
-      android:paddingTop="10dp"
-      android:drawablePadding="5dp"
-      android:singleLine="true"
-      android:ellipsize="marquee"
-      android:fontFamily="sans-serif"
-      android:textSize="16sp"
-      tools:text="127.0.0.1:1080"
-      />
+    <TextView
+        android:id="@+id/host"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/share"
+        android:paddingStart="16dp"
+        android:paddingTop="10dp"
+        android:drawablePadding="5dp"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:fontFamily="sans-serif"
+        android:textSize="16sp"
+        tools:text="127.0.0.1:1080" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -35,8 +33,7 @@
         android:layout_marginTop="5dp"
         android:paddingStart="16dp"
         android:paddingBottom="10dp"
-        android:gravity="center_vertical"
-        >
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/protocol"
@@ -51,31 +48,28 @@
             android:textColor="?attr/conversation_list_item_date_color"
             android:background="@drawable/archived_indicator_background"
             style="@style/Signal.Text.Caption"
-            tools:text="socks5"
-            />
+            tools:text="socks5" />
 
-      <ImageView
-          android:id="@+id/checkmark"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center_vertical|end"
-          android:layout_marginEnd="5dp"
-          android:contentDescription="@null"
-          android:src="@drawable/ic_delivery_status_sent"
-          app:tint="?attr/conversation_list_item_date_color"
-          />
+        <ImageView
+            android:id="@+id/checkmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_delivery_status_sent"
+            app:tint="?attr/conversation_list_item_date_color" />
 
-      <TextView
-          android:id="@+id/status"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:singleLine="true"
-          android:ellipsize="marquee"
-          android:textAppearance="?android:attr/textAppearanceSmall"
-          android:textSize="14sp"
-          android:fontFamily="sans-serif-light"
-          tools:text="@string/connectivity_connected"
-          />
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-light"
+            tools:text="@string/connectivity_connected" />
 
     </LinearLayout>
 
@@ -88,8 +82,7 @@
         android:contentDescription="@string/menu_share"
         android:background="@drawable/touch_highlight_background"
         android:src="@drawable/ic_share_white_24dp"
-        app:tint="?attr/conversation_list_item_date_color"
-        />
+        app:tint="?attr/conversation_list_item_date_color" />
 
     <ImageButton
         android:id="@+id/delete"
@@ -100,7 +93,6 @@
         android:contentDescription="@string/delete"
         android:background="@drawable/touch_highlight_background"
         android:src="@drawable/ic_delete_white_24dp"
-        app:tint="?attr/conversation_list_item_date_color"
-        />
+        app:tint="?attr/conversation_list_item_date_color" />
 
 </RelativeLayout>

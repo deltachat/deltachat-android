@@ -13,5 +13,4 @@ public class BootReceiver extends BroadcastReceiver {
     // there's nothing more to do here as all initialisation stuff is already done in
     // on program startup which is done before this broadcast is sent.
   }
-
 }

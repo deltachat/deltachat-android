@@ -20,10 +20,10 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_URL;
 import static org.thoughtcrime.securesms.util.ShareUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.ShareUtil.getDirectSharingChatId;
+import static org.thoughtcrime.securesms.util.ShareUtil.getForwardedMessageAccountId;
 import static org.thoughtcrime.securesms.util.ShareUtil.getSharedTitle;
 import static org.thoughtcrime.securesms.util.ShareUtil.isDirectSharing;
 import static org.thoughtcrime.securesms.util.ShareUtil.isForwarding;
-import static org.thoughtcrime.securesms.util.ShareUtil.getForwardedMessageAccountId;
 import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.ShareUtil.resetRelayingMessageContent;
 
@@ -44,7 +44,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -52,7 +51,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.TooltipCompat;
-
+import chat.delta.rpc.types.SecurejoinSource;
+import chat.delta.rpc.types.SecurejoinUiPath;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContact;
@@ -60,7 +60,8 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
+import java.util.ArrayList;
+import java.util.Date;
 import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -77,47 +78,49 @@ import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.ScreenLockUtil;
-import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
+import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
+import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import chat.delta.rpc.types.SecurejoinSource;
-import chat.delta.rpc.types.SecurejoinUiPath;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
-    implements ConversationListFragment.ConversationSelectedListener
-{
+    implements ConversationListFragment.ConversationSelectedListener {
   private static final String TAG = ConversationListActivity.class.getSimpleName();
   private static final String OPENPGP4FPR = "openpgp4fpr";
   private static final String NDK_ARCH_WARNED = "ndk_arch_warned";
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
   public static final String ACCOUNT_ID_EXTRA = "account_id";
-  public static final String FROM_WELCOME   = "from_welcome";
-  public static final String FROM_WELCOME_RAW_QR   = "from_welcome_raw_qr";
+  public static final String FROM_WELCOME = "from_welcome";
+  public static final String FROM_WELCOME_RAW_QR = "from_welcome_raw_qr";
 
   private ConversationListFragment conversationListFragment;
-  public TextView                  title;
-  private AvatarView               selfAvatar;
-  private ImageView                unreadIndicator;
-  private SearchFragment           searchFragment;
-  private SearchToolbar            searchToolbar;
-  private ImageView                searchAction;
-  private ViewGroup                fragmentContainer;
-  private ViewGroup                selfAvatarContainer;
+  public TextView title;
+  private AvatarView selfAvatar;
+  private ImageView unreadIndicator;
+  private SearchFragment searchFragment;
+  private SearchToolbar searchToolbar;
+  private ImageView searchAction;
+  private ViewGroup fragmentContainer;
+  private ViewGroup selfAvatarContainer;
 
-  /** used to store temporarily scanned QR to pass it back to QrCodeHandler when ScreenLockUtil is used */
+  /**
+   * used to store temporarily scanned QR to pass it back to QrCodeHandler when ScreenLockUtil is
+   * used
+   */
   private String qrData = null;
+
   private ActivityResultLauncher<Intent> relayLockLauncher;
   private ActivityResultLauncher<Intent> qrScannerLauncher;
 
-  /** used to store temporarily profile ID to delete after authorization is granted via ScreenLockUtil */
+  /**
+   * used to store temporarily profile ID to delete after authorization is granted via
+   * ScreenLockUtil
+   */
   private int deleteProfileId = 0;
+
   private ActivityResultLauncher<Intent> deleteProfileLockLauncher;
 
   @Override
@@ -128,40 +131,43 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
-    relayLockLauncher = registerForActivityResult(
-      new ActivityResultContracts.StartActivityForResult(),
-      result -> {
-        if (result.getResultCode() == RESULT_OK) {
-          // QrCodeHandler requested user authorization before adding a relay
-          // and it was granted, so proceed to add the relay
-          if (qrData != null) {
-            new QrCodeHandler(this).addRelay(qrData);
-            qrData = null;
-          }
-        }
-      }
-    );
-    deleteProfileLockLauncher = registerForActivityResult(
-      new ActivityResultContracts.StartActivityForResult(),
-      result -> {
-        if (result.getResultCode() == RESULT_OK) {
-          if (deleteProfileId != 0) {
-            deleteProfile(deleteProfileId);
-            deleteProfileId = 0;
-          }
-        }
-      }
-    );
-    qrScannerLauncher = registerForActivityResult(
-      new ActivityResultContracts.StartActivityForResult(),
-      result -> {
-        if (result.getResultCode() == RESULT_OK) {
-          IntentResult scanResult = IntentIntegrator.parseActivityResult(result.getResultCode(), result.getData());
-          qrData = scanResult.getContents();
-          new QrCodeHandler(this).handleQrData(qrData, SecurejoinSource.Scan, SecurejoinUiPath.QrIcon, relayLockLauncher);
-        }
-      }
-    );
+    relayLockLauncher =
+        registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+              if (result.getResultCode() == RESULT_OK) {
+                // QrCodeHandler requested user authorization before adding a relay
+                // and it was granted, so proceed to add the relay
+                if (qrData != null) {
+                  new QrCodeHandler(this).addRelay(qrData);
+                  qrData = null;
+                }
+              }
+            });
+    deleteProfileLockLauncher =
+        registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+              if (result.getResultCode() == RESULT_OK) {
+                if (deleteProfileId != 0) {
+                  deleteProfile(deleteProfileId);
+                  deleteProfileId = 0;
+                }
+              }
+            });
+    qrScannerLauncher =
+        registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+              if (result.getResultCode() == RESULT_OK) {
+                IntentResult scanResult =
+                    IntentIntegrator.parseActivityResult(result.getResultCode(), result.getData());
+                qrData = scanResult.getContents();
+                new QrCodeHandler(this)
+                    .handleQrData(
+                        qrData, SecurejoinSource.Scan, SecurejoinUiPath.QrIcon, relayLockLauncher);
+              }
+            });
 
     addDeviceMessages(getIntent().getBooleanExtra(FROM_WELCOME, false));
     if (getIntent().getIntExtra(ACCOUNT_ID_EXTRA, -1) <= 0) {
@@ -173,59 +179,68 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
-    selfAvatar               = findViewById(R.id.self_avatar);
-    selfAvatarContainer      = findViewById(R.id.self_avatar_container);
-    unreadIndicator          = findViewById(R.id.unread_indicator);
-    title                    = findViewById(R.id.toolbar_title);
-    searchToolbar            = findViewById(R.id.search_toolbar);
-    searchAction             = findViewById(R.id.search_action);
-    fragmentContainer        = findViewById(R.id.fragment_container);
+    selfAvatar = findViewById(R.id.self_avatar);
+    selfAvatarContainer = findViewById(R.id.self_avatar_container);
+    unreadIndicator = findViewById(R.id.unread_indicator);
+    title = findViewById(R.id.toolbar_title);
+    searchToolbar = findViewById(R.id.search_toolbar);
+    searchAction = findViewById(R.id.search_action);
+    fragmentContainer = findViewById(R.id.fragment_container);
 
     // add margin to avoid content hidden behind system bars
     ViewUtil.applyWindowInsetsAsMargin(searchToolbar, true, true, true, false);
 
     Bundle bundle = new Bundle();
-    conversationListFragment = initFragment(R.id.fragment_container, new ConversationListFragment(), bundle);
+    conversationListFragment =
+        initFragment(R.id.fragment_container, new ConversationListFragment(), bundle);
 
     initializeSearchListener();
 
-    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
-      @Override
-      public void handleOnBackPressed() {
-        if (searchToolbar.isVisible()) {
-          searchToolbar.collapse();
-        } else {
-          Activity activity = ConversationListActivity.this;
-          if (isRelayingMessageContent(activity)) {
-            int selectedAccId = DcHelper.getContext(activity).getAccountId();
-            int initialAccId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, selectedAccId);
-            if (initialAccId != selectedAccId) {
-              // allowing to go back is dangerous, it could be activity on previously selected account,
-              // instead of figuring out account rollback in onResume in each activity (conversation, gallery, media preview, webxdc, etc.)
-              // just clear the back stack and stay in newly selected account
-              finishAffinity();
-              startActivity(new Intent(activity, ConversationListActivity.class));
-              return;
-            } else {
-              handleResetRelaying();
-            }
-          }
+    getOnBackPressedDispatcher()
+        .addCallback(
+            this,
+            new OnBackPressedCallback(true) {
+              @Override
+              public void handleOnBackPressed() {
+                if (searchToolbar.isVisible()) {
+                  searchToolbar.collapse();
+                } else {
+                  Activity activity = ConversationListActivity.this;
+                  if (isRelayingMessageContent(activity)) {
+                    int selectedAccId = DcHelper.getContext(activity).getAccountId();
+                    int initialAccId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, selectedAccId);
+                    if (initialAccId != selectedAccId) {
+                      // allowing to go back is dangerous, it could be activity on previously
+                      // selected account,
+                      // instead of figuring out account rollback in onResume in each activity
+                      // (conversation, gallery, media preview, webxdc, etc.)
+                      // just clear the back stack and stay in newly selected account
+                      finishAffinity();
+                      startActivity(new Intent(activity, ConversationListActivity.class));
+                      return;
+                    } else {
+                      handleResetRelaying();
+                    }
+                  }
 
-          setEnabled(false);
-          getOnBackPressedDispatcher().onBackPressed();
-        }
-      }
-    });
+                  setEnabled(false);
+                  getOnBackPressedDispatcher().onBackPressed();
+                }
+              }
+            });
 
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
 
     TooltipCompat.setTooltipText(selfAvatar, getText(R.string.switch_account));
-    selfAvatar.setOnClickListener(v -> AccountManager.getInstance().showSwitchAccountMenu(this, false));
-    findViewById(R.id.avatar_and_title).setOnClickListener(v -> {
-      if (!isRelayingMessageContent(this)) {
-        AccountManager.getInstance().showSwitchAccountMenu(this, false);
-      }
-    });
+    selfAvatar.setOnClickListener(
+        v -> AccountManager.getInstance().showSwitchAccountMenu(this, false));
+    findViewById(R.id.avatar_and_title)
+        .setOnClickListener(
+            v -> {
+              if (!isRelayingMessageContent(this)) {
+                AccountManager.getInstance().showSwitchAccountMenu(this, false);
+              }
+            });
 
     refresh();
 
@@ -245,7 +260,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
    * If the build script is invoked with a specific architecture (e.g.`ndk-make.sh arm64-v8a`), it
    * will compile the core only for this arch. This method checks if the arch was correct.
    *
-   * In order to do this, `ndk-make.sh` writes its argument into the file `ndkArch`.
+   * <p>In order to do this, `ndk-make.sh` writes its argument into the file `ndkArch`.
    * `getNdkArch()` in `build.gradle` then reads this file and its content is assigned to
    * `BuildConfig.NDK_ARCH`.
    */
@@ -258,7 +273,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       String arch;
 
       // armv8l is 32 bit mode in 64 bit CPU:
-      if (archProperty.startsWith("armv7") || archProperty.startsWith("armv8l")) arch = "armeabi-v7a";
+      if (archProperty.startsWith("armv7") || archProperty.startsWith("armv8l"))
+        arch = "armeabi-v7a";
       else if (archProperty.equals("aarch64")) arch = "arm64-v8a";
       else if (archProperty.equals("i686")) arch = "x86";
       else if (archProperty.equals("x86_64")) arch = "x86_64";
@@ -272,23 +288,35 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
         String message;
         if (arch.equals("")) {
-          message = "This phone has the unknown architecture " + archProperty + ".\n\n"+
-                  "Please open an issue at https://github.com/deltachat/deltachat-android/issues.";
+          message =
+              "This phone has the unknown architecture "
+                  + archProperty
+                  + ".\n\n"
+                  + "Please open an issue at https://github.com/deltachat/deltachat-android/issues.";
         } else {
-          message = "Apparently you used `ndk-make.sh " + BuildConfig.NDK_ARCH + "`, but this device is " + arch + ".\n\n" +
-                  "You can use the app, but changes you made to the Rust code were not applied.\n\n" +
-                  "To compile in your changes, you can:\n" +
-                  "- Either run `ndk-make.sh " + arch + "` to build only for " + arch + " in debug mode\n" +
-                  "- Or run `ndk-make.sh` without argument to build for all architectures in release mode\n\n" +
-                  "If something doesn't work, please open an issue at https://github.com/deltachat/deltachat-android/issues!!";
+          message =
+              "Apparently you used `ndk-make.sh "
+                  + BuildConfig.NDK_ARCH
+                  + "`, but this device is "
+                  + arch
+                  + ".\n\n"
+                  + "You can use the app, but changes you made to the Rust code were not applied.\n\n"
+                  + "To compile in your changes, you can:\n"
+                  + "- Either run `ndk-make.sh "
+                  + arch
+                  + "` to build only for "
+                  + arch
+                  + " in debug mode\n"
+                  + "- Or run `ndk-make.sh` without argument to build for all architectures in release mode\n\n"
+                  + "If something doesn't work, please open an issue at https://github.com/deltachat/deltachat-android/issues!!";
         }
         Log.e(TAG, message);
 
         if (!Prefs.getBooleanPreference(this, NDK_ARCH_WARNED, false)) {
           new AlertDialog.Builder(this)
-                  .setMessage(message)
-                  .setPositiveButton(android.R.string.ok, null)
-                  .show();
+              .setMessage(message)
+              .setPositiveButton(android.R.string.ok, null)
+              .show();
           Prefs.setBooleanPreference(this, NDK_ARCH_WARNED, true);
         }
       }
@@ -349,9 +377,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     } else {
       boolean multiProfile = DcHelper.getAccounts(this).getAll().length > 1;
-      String defText = multiProfile? DcHelper.getContext(this).getName() : getString(R.string.app_name);
+      String defText =
+          multiProfile ? DcHelper.getContext(this).getName() : getString(R.string.app_name);
       title.setText(DcHelper.getConnectivitySummary(this, defText));
-      // refreshTitle is called by ConversationListFragment when connectivity changes so update connectivity dot here
+      // refreshTitle is called by ConversationListFragment when connectivity changes so update
+      // connectivity dot here
       selfAvatar.setConnectivity(DcHelper.getContext(this).getConnectivity());
       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
@@ -387,17 +417,19 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       }
     }
 
-    if(unreadCount == 0) {
+    if (unreadCount == 0) {
       unreadIndicator.setVisibility(View.GONE);
     } else {
-      unreadIndicator.setImageDrawable(TextDrawable.builder()
+      unreadIndicator.setImageDrawable(
+          TextDrawable.builder()
               .beginConfig()
               .width(ViewUtil.dpToPx(this, 24))
               .height(ViewUtil.dpToPx(this, 24))
               .textColor(Color.WHITE)
               .bold()
               .endConfig()
-              .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.unread_count)));
+              .buildRound(
+                  String.valueOf(unreadCount), getResources().getColor(R.color.unread_count)));
       unreadIndicator.setVisibility(View.VISIBLE);
     }
   }
@@ -417,9 +449,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     if (isRelayingMessageContent(this)) {
       inflater.inflate(R.menu.forwarding_menu, menu);
-      menu.findItem(R.id.menu_export_attachment).setVisible(
-        ShareUtil.isFromWebxdc(this) && ShareUtil.getSharedUris(this).size() == 1
-      );
+      menu.findItem(R.id.menu_export_attachment)
+          .setVisible(ShareUtil.isFromWebxdc(this) && ShareUtil.getSharedUris(this).size() == 1);
     } else {
       inflater.inflate(R.menu.text_secure_normal, menu);
       menu.findItem(R.id.menu_global_map).setVisible(Prefs.isLocationStreamingEnabled(this));
@@ -428,7 +459,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         proxyItem.setVisible(false);
       } else {
         boolean proxyEnabled = DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1;
-        proxyItem.setIcon(proxyEnabled? R.drawable.ic_proxy_enabled_24 : R.drawable.ic_proxy_disabled_24);
+        proxyItem.setIcon(
+            proxyEnabled ? R.drawable.ic_proxy_enabled_24 : R.drawable.ic_proxy_disabled_24);
         proxyItem.setVisible(true);
       }
     }
@@ -438,42 +470,42 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   private void initializeSearchListener() {
-    searchAction.setOnClickListener(v -> {
-      searchToolbar.display(searchAction.getX() + (searchAction.getWidth() / 2),
-                            searchAction.getY() + (searchAction.getHeight() / 2));
-    });
+    searchAction.setOnClickListener(
+        v -> {
+          searchToolbar.display(
+              searchAction.getX() + (searchAction.getWidth() / 2),
+              searchAction.getY() + (searchAction.getHeight() / 2));
+        });
 
-    searchToolbar.setListener(new SearchToolbar.SearchListener() {
-      @Override
-      public void onSearchTextChange(String text) {
-        String trimmed = text.trim();
+    searchToolbar.setListener(
+        new SearchToolbar.SearchListener() {
+          @Override
+          public void onSearchTextChange(String text) {
+            String trimmed = text.trim();
 
-        if (trimmed.length() > 0) {
-          if (searchFragment == null) {
-            searchFragment = SearchFragment.newInstance();
-            getSupportFragmentManager().beginTransaction()
-                                       .add(R.id.fragment_container, searchFragment, null)
-                                       .commit();
+            if (trimmed.length() > 0) {
+              if (searchFragment == null) {
+                searchFragment = SearchFragment.newInstance();
+                getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.fragment_container, searchFragment, null)
+                    .commit();
+              }
+              searchFragment.updateSearchQuery(trimmed);
+            } else if (searchFragment != null) {
+              getSupportFragmentManager().beginTransaction().remove(searchFragment).commit();
+              searchFragment = null;
+            }
           }
-          searchFragment.updateSearchQuery(trimmed);
-        } else if (searchFragment != null) {
-          getSupportFragmentManager().beginTransaction()
-                                     .remove(searchFragment)
-                                     .commit();
-          searchFragment = null;
-        }
-      }
 
-      @Override
-      public void onSearchClosed() {
-        if (searchFragment != null) {
-          getSupportFragmentManager().beginTransaction()
-                                     .remove(searchFragment)
-                                     .commit();
-          searchFragment = null;
-        }
-      }
-    });
+          @Override
+          public void onSearchClosed() {
+            if (searchFragment != null) {
+              getSupportFragmentManager().beginTransaction().remove(searchFragment).commit();
+              searchFragment = null;
+            }
+          }
+        });
   }
 
   @Override
@@ -491,9 +523,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       startActivity(new Intent(this, ApplicationPreferencesActivity.class));
       return true;
     } else if (itemId == R.id.menu_qr) {
-      Intent intent = new IntentIntegrator(this)
-        .setCaptureActivity(QrActivity.class)
-        .createScanIntent();
+      Intent intent =
+          new IntentIntegrator(this).setCaptureActivity(QrActivity.class).createScanIntent();
       qrScannerLauncher.launch(intent);
       return true;
     } else if (itemId == R.id.menu_global_map) {
@@ -520,38 +551,40 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   private void handleSaveAttachment() {
-    SaveAttachmentTask.showWarningDialog(this, (dialogInterface, i) -> {
-      if (StorageUtil.canWriteToMediaStore(this)) {
-        performSave();
-        return;
-      }
+    SaveAttachmentTask.showWarningDialog(
+        this,
+        (dialogInterface, i) -> {
+          if (StorageUtil.canWriteToMediaStore(this)) {
+            performSave();
+            return;
+          }
 
-      Permissions.with(this)
+          Permissions.with(this)
               .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
               .alwaysGrantOnSdk30()
               .ifNecessary()
               .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
               .onAllGranted(this::performSave)
               .execute();
-    });
+        });
   }
 
   private void performSave() {
-    ArrayList<Uri> uriList =  ShareUtil.getSharedUris(this);
+    ArrayList<Uri> uriList = ShareUtil.getSharedUris(this);
     Uri uri = uriList.get(0);
     String mimeType = PersistentBlobProvider.getMimeType(this, uri);
     String fileName = PersistentBlobProvider.getFileName(this, uri);
-    SaveAttachmentTask.Attachment[] attachments = new SaveAttachmentTask.Attachment[]{
-      new SaveAttachmentTask.Attachment(uri, mimeType, new Date().getTime(), fileName)
-    };
+    SaveAttachmentTask.Attachment[] attachments =
+        new SaveAttachmentTask.Attachment[] {
+          new SaveAttachmentTask.Attachment(uri, mimeType, new Date().getTime(), fileName)
+        };
     SaveAttachmentTask saveTask = new SaveAttachmentTask(this);
     saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, attachments);
     getOnBackPressedDispatcher().onBackPressed();
   }
 
   private void handleOpenpgp4fpr() {
-    if (getIntent() != null &&
-            Intent.ACTION_VIEW.equals(getIntent().getAction())) {
+    if (getIntent() != null && Intent.ACTION_VIEW.equals(getIntent().getAction())) {
       Uri uri = getIntent().getData();
       if (uri == null) {
         return;
@@ -584,7 +617,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     int fwdAccId = getForwardedMessageAccountId(this);
     if (fwdAccId == dcContext.getAccountId() && dcContext.getChat(chatId).isSelfTalk()) {
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
-      Toast.makeText(this, DynamicTheme.getCheckmarkEmoji(this) + " " + getString(R.string.saved), Toast.LENGTH_SHORT).show();
+      Toast.makeText(
+              this,
+              DynamicTheme.getCheckmarkEmoji(this) + " " + getString(R.string.saved),
+              Toast.LENGTH_SHORT)
+          .show();
       handleResetRelaying();
       finish();
     } else {
@@ -629,7 +666,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   private void addDeviceMessages(boolean fromWelcome) {
     // update messages - for new messages, do not reuse or modify strings but create new ones.
-    // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
+    // it is not needed to keep all past update messages, however, when deleted, also the strings
+    // should be deleted.
     try {
       DcContext dcContext = DcHelper.getContext(this);
       final String deviceMsgLabel = "update_2_0_0_android-h";
@@ -638,7 +676,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         if (!fromWelcome) {
           msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
 
-          // InputStream inputStream = getResources().getAssets().open("device-messages/green-checkmark.jpg");
+          // InputStream inputStream =
+          // getResources().getAssets().open("device-messages/green-checkmark.jpg");
           // String outputFile = DcHelper.getBlobdirFile(dcContext, "green-checkmark", ".jpg");
           // Util.copy(inputStream, new FileOutputStream(outputFile));
           // msg.setFile(outputFile, "image/jpeg");
@@ -647,7 +686,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         }
         dcContext.addDeviceMsg(deviceMsgLabel, msg);
 
-        if (Prefs.getStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, "").equals(deviceMsgLabel)) {
+        if (Prefs.getStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, "")
+            .equals(deviceMsgLabel)) {
           int deviceChatId = dcContext.getChatIdByContactId(DcContact.DC_CONTACT_ID_DEVICE);
           if (deviceChatId != 0) {
             dcContext.marknoticedChat(deviceChatId);
@@ -656,7 +696,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, deviceMsgLabel);
       }
 
-    } catch(Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
@@ -671,7 +711,12 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   public void onDeleteProfile(int profileId) {
     deleteProfileId = profileId;
-    boolean result = ScreenLockUtil.applyScreenLock(this, getString(R.string.delete_account), getString(R.string.enter_system_secret_to_continue), deleteProfileLockLauncher);
+    boolean result =
+        ScreenLockUtil.applyScreenLock(
+            this,
+            getString(R.string.delete_account),
+            getString(R.string.enter_system_secret_to_continue),
+            deleteProfileLockLauncher);
     if (!result) {
       deleteProfile(profileId);
     }
@@ -699,7 +744,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+  public void onRequestPermissionsResult(
+      int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 }

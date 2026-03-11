@@ -7,8 +7,10 @@
         android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
 
     <application>
-        <service android:name=".connect.KeepAliveService"
-            android:foregroundServiceType="specialUse" android:enabled="true" />
+        <service
+            android:name=".connect.KeepAliveService"
+            android:foregroundServiceType="specialUse"
+            android:enabled="true" />
     </application>
 
 </manifest>

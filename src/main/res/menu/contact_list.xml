@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="@string/menu_view_profile"
+    <item
+        android:title="@string/menu_view_profile"
         android:id="@+id/menu_view_profile"
         android:icon="?menu_info_icon"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 
-    <item android:title="@string/delete_contact"
-          android:id="@+id/menu_delete_selected"
-          android:icon="?menu_trash_icon"
-          app:showAsAction="always" />
+    <item
+        android:title="@string/delete_contact"
+        android:id="@+id/menu_delete_selected"
+        android:icon="?menu_trash_icon"
+        app:showAsAction="always" />
 
-    <item android:title="@string/menu_select_all"
-          android:id="@+id/menu_select_all"
-          app:showAsAction="never"/>
+    <item
+        android:title="@string/menu_select_all"
+        android:id="@+id/menu_select_all"
+        app:showAsAction="never" />
 
 </menu>

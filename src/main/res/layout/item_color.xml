@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:src="@drawable/circle_white"/>
+        android:src="@drawable/circle_white" />
 
     <ImageView
         android:id="@+id/palette_item_foreground"
@@ -17,6 +17,6 @@
         android:layout_height="16dp"
         android:src="@drawable/circle_white"
         android:layout_gravity="center"
-        tools:tint="@color/red"/>
+        tools:tint="@color/red" />
 
 </FrameLayout>

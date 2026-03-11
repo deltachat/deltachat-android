@@ -15,48 +15,48 @@
     android:background="?attr/conversation_list_item_background"
     android:gravity="center_vertical">
 
-  <ImageView
-      android:id="@+id/main_indicator"
-      android:layout_width="24dp"
-      android:layout_height="24dp"
-      android:layout_marginEnd="16dp"
-      android:src="@drawable/ic_check_white_24dp"
-      android:contentDescription="@string/def"
-      android:visibility="invisible"
-      app:tint="?attr/colorAccent"
-      tools:visibility="visible" />
+    <ImageView
+        android:id="@+id/main_indicator"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_check_white_24dp"
+        android:contentDescription="@string/def"
+        android:visibility="invisible"
+        app:tint="?attr/colorAccent"
+        tools:visibility="visible" />
 
-  <LinearLayout
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_weight="1"
-      android:orientation="vertical"
-      android:gravity="center_vertical">
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:fontFamily="sans-serif-medium"
-        android:textColor="?attr/conversation_list_item_contact_color"
-        android:textSize="16sp"
-        style="@style/Signal.Text.Body"
-        tools:text="example.com" />
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="14sp"
-        android:fontFamily="sans-serif-light"
-        tools:text="a2sf029ve"/>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="?attr/conversation_list_item_contact_color"
+            android:textSize="16sp"
+            style="@style/Signal.Text.Body"
+            tools:text="example.com" />
 
-  </LinearLayout>
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-light"
+            tools:text="a2sf029ve" />
+
+    </LinearLayout>
 
 </LinearLayout>
