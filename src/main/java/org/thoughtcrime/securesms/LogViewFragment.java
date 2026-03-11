@@ -32,17 +32,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-
 import androidx.annotation.NonNull;
 import androidx.core.content.PermissionChecker;
 import androidx.fragment.app.Fragment;
-
-import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.notifications.FcmReceiveService;
-import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.util.ViewUtil;
-
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -53,15 +47,16 @@ import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
-import chat.delta.rpc.Rpc;
-import chat.delta.rpc.RpcException;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.notifications.FcmReceiveService;
+import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class LogViewFragment extends Fragment {
   private EditText logPreview;
 
-  public LogViewFragment() {
-  }
+  public LogViewFragment() {}
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -69,8 +64,8 @@ public class LogViewFragment extends Fragment {
   }
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
+  public View onCreateView(
+      LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     return inflater.inflate(R.layout.fragment_view_log, container, false);
   }
 
@@ -78,19 +73,22 @@ public class LogViewFragment extends Fragment {
   public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    logPreview   = (EditText) getView().findViewById(R.id.log_preview);
+    logPreview = (EditText) getView().findViewById(R.id.log_preview);
 
     // add padding to avoid content hidden behind system bars
-    ViewUtil.applyWindowInsets(getView().findViewById(R.id.content_container), true, false, true, true);
+    ViewUtil.applyWindowInsets(
+        getView().findViewById(R.id.content_container), true, false, true, true);
 
     new PopulateLogcatAsyncTask(this).execute();
   }
 
   public String getLogText() {
-    return logPreview==null? "null" : logPreview.getText().toString();
+    return logPreview == null ? "null" : logPreview.getText().toString();
   }
 
-  public Float getLogTextSize() { return logPreview.getTextSize(); }
+  public Float getLogTextSize() {
+    return logPreview.getTextSize();
+  }
 
   public void setLogTextSize(Float textSize) {
     logPreview.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
@@ -107,16 +105,16 @@ public class LogViewFragment extends Fragment {
   }
 
   public File saveLogFile(File outputDir) {
-    File             logFile     = null;
-    SimpleDateFormat dateFormat  = new SimpleDateFormat("yyyyMMdd-HHmmss");
-    Date             now         = new Date();
-    String           logFileName = "deltachat-log-" + dateFormat.format(now) + ".txt";
+    File logFile = null;
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
+    Date now = new Date();
+    String logFileName = "deltachat-log-" + dateFormat.format(now) + ".txt";
 
     try {
-      String logText =  logPreview.getText().toString();
-      if(!logText.trim().equals("")){
+      String logText = logPreview.getText().toString();
+      if (!logText.trim().equals("")) {
         logFile = new File(outputDir + "/" + logFileName);
-        if(!logFile.exists()) logFile.createNewFile();
+        if (!logFile.exists()) logFile.createNewFile();
 
         FileWriter logFileWriter = new FileWriter(logFile, false);
         BufferedWriter logFileBufferWriter = new BufferedWriter(logFileWriter);
@@ -132,10 +130,11 @@ public class LogViewFragment extends Fragment {
   private static String grabLogcat(LogViewFragment fragment) {
     String command = "logcat -v threadtime -d -t 10000 *:I";
     try {
-      final Process         process        = Runtime.getRuntime().exec(command);
-      final BufferedReader  bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-      final StringBuilder   log            = new StringBuilder();
-      final String          separator      = System.getProperty("line.separator");
+      final Process process = Runtime.getRuntime().exec(command);
+      final BufferedReader bufferedReader =
+          new BufferedReader(new InputStreamReader(process.getInputStream()));
+      final StringBuilder log = new StringBuilder();
+      final String separator = System.getProperty("line.separator");
 
       String line;
       while ((line = bufferedReader.readLine()) != null) {
@@ -152,7 +151,7 @@ public class LogViewFragment extends Fragment {
     }
   }
 
-  private class PopulateLogcatAsyncTask extends AsyncTask<Void,Void,String> {
+  private class PopulateLogcatAsyncTask extends AsyncTask<Void, Void, String> {
     private final WeakReference<LogViewFragment> weakFragment;
 
     public PopulateLogcatAsyncTask(LogViewFragment fragment) {
@@ -164,8 +163,10 @@ public class LogViewFragment extends Fragment {
       LogViewFragment fragment = weakFragment.get();
       if (fragment == null) return null;
 
-      return "**This log may contain sensitive information. If you want to post it publicly you may examine and edit it beforehand.**\n\n" +
-          buildDescription(fragment) + "\n" + grabLogcat(fragment);
+      return "**This log may contain sensitive information. If you want to post it publicly you may examine and edit it beforehand.**\n\n"
+          + buildDescription(fragment)
+          + "\n"
+          + grabLogcat(fragment);
     }
 
     @Override
@@ -179,7 +180,8 @@ public class LogViewFragment extends Fragment {
       super.onPostExecute(logcat);
       if (TextUtils.isEmpty(logcat)) {
         // the log is in english, so it is fine if some of explaining strings are in english as well
-        logPreview.setText("Could not read the log on your device. You can still use ADB to get a debug log instead.");
+        logPreview.setText(
+            "Could not read the log on your device. You can still use ADB to get a debug log instead.");
         return;
       }
       logPreview.setText(logcat);
@@ -192,15 +194,18 @@ public class LogViewFragment extends Fragment {
 
   public static String getMemoryUsage(Context context) {
     Runtime info = Runtime.getRuntime();
-    return String.format(Locale.ENGLISH, "%dM (%.2f%% free, %dM max)",
-                         asMegs(info.totalMemory()),
-                         (float)info.freeMemory() / info.totalMemory() * 100f,
-                         asMegs(info.maxMemory()));
+    return String.format(
+        Locale.ENGLISH,
+        "%dM (%.2f%% free, %dM max)",
+        asMegs(info.totalMemory()),
+        (float) info.freeMemory() / info.totalMemory() * 100f,
+        asMegs(info.maxMemory()));
   }
 
   public static String getMemoryClass(Context context) {
-    ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-    String          lowMem          = "";
+    ActivityManager activityManager =
+        (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+    String lowMem = "";
 
     if (activityManager.isLowRamDevice()) {
       lowMem = ", low-mem device";
@@ -211,17 +216,26 @@ public class LogViewFragment extends Fragment {
   private static String buildDescription(LogViewFragment fragment) {
     Context context = fragment.getActivity();
 
-    PowerManager powerManager = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
-    final PackageManager pm      = context.getPackageManager();
-    final StringBuilder  builder = new StringBuilder();
+    PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+    final PackageManager pm = context.getPackageManager();
+    final StringBuilder builder = new StringBuilder();
 
-    builder.append("device=")
-           .append(Build.MANUFACTURER).append(" ")
-           .append(Build.MODEL).append(" (")
-           .append(Build.PRODUCT).append(")\n");
-    builder.append("android=").append(VERSION.RELEASE).append(" (")
-                               .append(VERSION.INCREMENTAL).append(", ")
-                               .append(Build.DISPLAY).append(")\n");
+    builder
+        .append("device=")
+        .append(Build.MANUFACTURER)
+        .append(" ")
+        .append(Build.MODEL)
+        .append(" (")
+        .append(Build.PRODUCT)
+        .append(")\n");
+    builder
+        .append("android=")
+        .append(VERSION.RELEASE)
+        .append(" (")
+        .append(VERSION.INCREMENTAL)
+        .append(", ")
+        .append(Build.DISPLAY)
+        .append(")\n");
     builder.append("sdk=").append(Build.VERSION.SDK_INT).append("\n");
     builder.append("memory=").append(getMemoryUsage(context)).append("\n");
     builder.append("memoryClass=").append(getMemoryClass(context)).append("\n");
@@ -229,25 +243,29 @@ public class LogViewFragment extends Fragment {
     builder.append("applicationId=").append(BuildConfig.APPLICATION_ID).append("\n");
     builder.append("app=");
     try {
-      builder.append(pm.getApplicationLabel(pm.getApplicationInfo(context.getPackageName(), 0)))
-             .append(" ")
-             .append(pm.getPackageInfo(context.getPackageName(), 0).versionName)
-             .append("-")
-             .append(BuildConfig.FLAVOR)
-             .append(BuildConfig.DEBUG? "-debug" : "")
-             .append("\n");
-      builder.append("versionCode=")
-             .append(pm.getPackageInfo(context.getPackageName(), 0).versionCode)
-             .append("\n");
-      builder.append("installer=")
-             .append(pm.getInstallerPackageName(context.getPackageName()))
-             .append("\n");
-      if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        builder.append("ignoreBatteryOptimizations=").append(
-            powerManager.isIgnoringBatteryOptimizations(context.getPackageName())).append("\n");
+      builder
+          .append(pm.getApplicationLabel(pm.getApplicationInfo(context.getPackageName(), 0)))
+          .append(" ")
+          .append(pm.getPackageInfo(context.getPackageName(), 0).versionName)
+          .append("-")
+          .append(BuildConfig.FLAVOR)
+          .append(BuildConfig.DEBUG ? "-debug" : "")
+          .append("\n");
+      builder
+          .append("versionCode=")
+          .append(pm.getPackageInfo(context.getPackageName(), 0).versionCode)
+          .append("\n");
+      builder
+          .append("installer=")
+          .append(pm.getInstallerPackageName(context.getPackageName()))
+          .append("\n");
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        builder
+            .append("ignoreBatteryOptimizations=")
+            .append(powerManager.isIgnoringBatteryOptimizations(context.getPackageName()))
+            .append("\n");
       }
-      builder.append("reliableService=").append(
-              Prefs.reliableService(context)).append("\n");
+      builder.append("reliableService=").append(Prefs.reliableService(context)).append("\n");
 
       Locale locale = Util.getLocale();
       builder.append("lang=").append(locale.toString()).append("\n");
@@ -255,7 +273,9 @@ public class LogViewFragment extends Fragment {
       builder.append("rtl=").append(isRtl).append("\n");
 
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-        boolean notifPermGranted = PermissionChecker.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PermissionChecker.PERMISSION_GRANTED;
+        boolean notifPermGranted =
+            PermissionChecker.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
+                == PermissionChecker.PERMISSION_GRANTED;
         builder.append("post-notifications-granted=").append(notifPermGranted).append("\n");
       } else {
         builder.append("post-notifications-granted=<not needed>").append("\n");

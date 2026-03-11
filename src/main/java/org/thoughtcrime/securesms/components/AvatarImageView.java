@@ -2,14 +2,11 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
 import android.content.Intent;
-
+import android.util.AttributeSet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
-import android.util.AttributeSet;
-
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
 import org.thoughtcrime.securesms.ProfileActivity;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.GeneratedContactPhoto;
@@ -37,19 +34,25 @@ public class AvatarImageView extends AppCompatImageView {
     super.setOnClickListener(listener);
   }
 
-  public void setAvatar(@NonNull GlideRequests requestManager, @Nullable Recipient recipient, boolean quickContactEnabled) {
+  public void setAvatar(
+      @NonNull GlideRequests requestManager,
+      @Nullable Recipient recipient,
+      boolean quickContactEnabled) {
     if (recipient != null) {
       ContactPhoto contactPhoto = recipient.getContactPhoto(getContext());
-      requestManager.load(contactPhoto)
-                    .error(recipient.getFallbackAvatarDrawable(getContext()))
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .circleCrop()
-                    .into(this);
-      if(quickContactEnabled) {
+      requestManager
+          .load(contactPhoto)
+          .error(recipient.getFallbackAvatarDrawable(getContext()))
+          .diskCacheStrategy(DiskCacheStrategy.NONE)
+          .circleCrop()
+          .into(this);
+      if (quickContactEnabled) {
         setAvatarClickHandler(recipient);
       }
     } else {
-      setImageDrawable(new GeneratedContactPhoto("+").asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
+      setImageDrawable(
+          new GeneratedContactPhoto("+")
+              .asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
       if (listener != null) super.setOnClickListener(listener);
     }
   }
@@ -60,16 +63,17 @@ public class AvatarImageView extends AppCompatImageView {
 
   private void setAvatarClickHandler(final Recipient recipient) {
     if (!recipient.isMultiUserRecipient()) {
-      super.setOnClickListener(v -> {
-        if(recipient.getAddress().isDcContact()) {
-          Intent intent = new Intent(getContext(), ProfileActivity.class);
-          intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, recipient.getAddress().getDcContactId());
-          getContext().startActivity(intent);
-        }
-      });
+      super.setOnClickListener(
+          v -> {
+            if (recipient.getAddress().isDcContact()) {
+              Intent intent = new Intent(getContext(), ProfileActivity.class);
+              intent.putExtra(
+                  ProfileActivity.CONTACT_ID_EXTRA, recipient.getAddress().getDcContactId());
+              getContext().startActivity(intent);
+            }
+          });
     } else {
       super.setOnClickListener(listener);
     }
   }
-
 }

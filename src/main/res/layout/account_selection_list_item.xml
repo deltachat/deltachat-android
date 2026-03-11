@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <org.thoughtcrime.securesms.accounts.AccountSelectionListItem
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:focusable="true"
-        android:background="?attr/conversation_list_item_background"
-        android:paddingLeft="16dp"
-        android:paddingStart="16dp"
-        android:paddingRight="16dp"
-        android:paddingEnd="16dp">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:focusable="true"
+    android:background="?attr/conversation_list_item_background"
+    android:paddingLeft="16dp"
+    android:paddingStart="16dp"
+    android:paddingRight="16dp"
+    android:paddingEnd="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="45dp"
         android:layout_height="50dp">
 
         <org.thoughtcrime.securesms.components.AvatarView
-                android:id="@+id/contact_photo_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@null" />
+            android:id="@+id/contact_photo_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@null" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout android:layout_width="0dp"
-                  android:layout_height="wrap_content"
-                  android:layout_weight="1"
-                  android:layout_marginLeft="11dp"
-                  android:layout_marginStart="11dp"
-                  android:paddingRight="16dp"
-                  android:paddingEnd="16dp"
-                  android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/name"
@@ -48,32 +49,33 @@
             android:fontFamily="sans-serif"
             android:textSize="16sp"
             tools:text="Frieeeeeeedrich Nieeeeeeeeeetzsche" />
-            <!-- Attention: Using android:maxLines="1", if the name is an emoji followed by a
-            long word and the chat is muted, then the long word is not shown at all
-            (instead of using `…`). That's why we use android:singleLine="true" -->
+        <!-- Attention: Using android:maxLines="1", if the name is an emoji followed by a long word and
+            the chat is muted, then the long word is not shown at all (instead of using `…`). That's why we use android:singleLine="true" -->
 
-        <LinearLayout android:id="@+id/addr_container"
-                      android:orientation="horizontal"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/addr_container"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-          <androidx.appcompat.widget.AppCompatTextView
-              android:id="@+id/addr_or_tag"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:singleLine="true"
-              android:ellipsize="marquee"
-              android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textSize="14sp"
-              android:fontFamily="sans-serif-light"
-              tools:text="user@example.com" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/addr_or_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-light"
+                tools:text="user@example.com" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <ImageView android:id="@+id/unread_indicator"
-               android:layout_width="24dp"
-               android:layout_height="24dp"/>
+    <ImageView
+        android:id="@+id/unread_indicator"
+        android:layout_width="24dp"
+        android:layout_height="24dp" />
 
 </org.thoughtcrime.securesms.accounts.AccountSelectionListItem>

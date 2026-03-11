@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <org.thoughtcrime.securesms.components.ConversationItemThumbnail
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/image_view"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/media_bubble_default_dimens"
-        android:contentDescription="@string/image"
-        android:visibility="gone"
-        android:elevation="8dp"
-        tools:src="@drawable/ic_video_light"
-        tools:visibility="gone" />
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/image_view"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/media_bubble_default_dimens"
+    android:contentDescription="@string/image"
+    android:visibility="gone"
+    android:elevation="8dp"
+    tools:src="@drawable/ic_video_light"
+    tools:visibility="gone" />

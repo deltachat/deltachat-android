@@ -1,81 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="@string/search"
+    <item
+        android:title="@string/search"
         android:id="@+id/menu_search_chat"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|never" />
 
-    <item android:title="0/0"
+    <item
+        android:title="0/0"
         android:id="@+id/menu_search_counter"
         android:visible="false"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
-    <item android:title="@string/back"
+    <item
+        android:title="@string/back"
         android:id="@+id/menu_search_up"
         android:icon="@drawable/ic_search_up"
         android:visible="false"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
-    <item android:title="@string/next"
+    <item
+        android:title="@string/next"
         android:id="@+id/menu_search_down"
         android:icon="@drawable/ic_search_down"
         android:visible="false"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
-    <item android:id="@+id/menu_start_call"
-          android:title="@string/start_call"
-          app:showAsAction="always"
-          android:icon="@drawable/baseline_call_24">
-      <menu>
-        <item android:id="@+id/menu_start_audio_call"
-              android:title="@string/start_audio_call"
-              android:icon="@drawable/baseline_call_24"
-              app:iconTint="?attr/menu_icon_tint"
-              />
-        <item android:id="@+id/menu_start_video_call"
-              android:title="@string/start_video_call"
-              android:icon="@drawable/ic_videocam_white_24dp"
-              app:iconTint="?attr/menu_icon_tint"
-              />
+    <item
+        android:id="@+id/menu_start_call"
+        android:title="@string/start_call"
+        app:showAsAction="always"
+        android:icon="@drawable/baseline_call_24">
+        <menu>
+            <item
+                android:id="@+id/menu_start_audio_call"
+                android:title="@string/start_audio_call"
+                android:icon="@drawable/baseline_call_24"
+                app:iconTint="?attr/menu_icon_tint" />
+            <item
+                android:id="@+id/menu_start_video_call"
+                android:title="@string/start_video_call"
+                android:icon="@drawable/ic_videocam_white_24dp"
+                app:iconTint="?attr/menu_icon_tint" />
         </menu>
     </item>
 
-    <item android:id="@+id/menu_all_media"
+    <item
+        android:id="@+id/menu_all_media"
         android:title="@string/apps_and_media"
         android:icon="@drawable/ic_apps_24"
         app:showAsAction="always" />
 
-    <item android:id="@+id/menu_ephemeral_messages"
+    <item
+        android:id="@+id/menu_ephemeral_messages"
         android:title="@string/ephemeral_messages" />
 
-    <item android:title="@string/menu_mute"
-        android:id="@+id/menu_mute_notifications"/>
+    <item
+        android:title="@string/menu_mute"
+        android:id="@+id/menu_mute_notifications" />
 
-    <item android:id="@+id/menu_show_map"
+    <item
+        android:id="@+id/menu_show_map"
         android:title="@string/tab_map"
         android:icon="@drawable/ic_map_white_24dp"
         app:showAsAction="never" />
 
-    <item android:title="@string/menu_archive_chat"
-        android:id="@+id/menu_archive_chat"/>
+    <item
+        android:title="@string/menu_archive_chat"
+        android:id="@+id/menu_archive_chat" />
 
     <item android:title="@string/menu_more_options">
         <menu>
-            <item android:title="@string/menu_add_attachment"
+            <item
+                android:title="@string/menu_add_attachment"
                 android:id="@+id/menu_add_attachment" />
 
-            <item android:title="@string/clear_chat"
-                android:id="@+id/menu_clear_chat"/>
+            <item
+                android:title="@string/clear_chat"
+                android:id="@+id/menu_clear_chat" />
 
-            <item android:id="@+id/menu_leave"
+            <item
+                android:id="@+id/menu_leave"
                 android:visible="false"
-                android:title="@string/menu_leave_group"/>
+                android:title="@string/menu_leave_group" />
 
-            <item android:title="@string/menu_delete_chat"
-                android:id="@+id/menu_delete_chat"/>
+            <item
+                android:title="@string/menu_delete_chat"
+                android:id="@+id/menu_delete_chat" />
         </menu>
     </item>
 

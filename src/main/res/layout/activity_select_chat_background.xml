@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <include layout="@layout/status_bar_background"/>
+    <include layout="@layout/status_bar_background" />
 
     <org.thoughtcrime.securesms.components.ScaleStableImageView
         android:id="@+id/preview"

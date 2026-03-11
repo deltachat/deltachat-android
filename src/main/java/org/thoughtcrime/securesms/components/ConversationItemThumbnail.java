@@ -10,12 +10,12 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
-
+import chat.delta.util.ListenableFuture;
+import java.util.concurrent.ExecutionException;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.mms.GlideRequests;
@@ -23,10 +23,6 @@ import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.Util;
-
-import java.util.concurrent.ExecutionException;
-
-import chat.delta.util.ListenableFuture;
 
 public class ConversationItemThumbnail extends FrameLayout {
 
@@ -46,15 +42,15 @@ public class ConversationItemThumbnail extends FrameLayout {
     DARK_THEME_OUTLINE_PAINT.setAntiAlias(true);
   }
 
-  private final float[] radii   = new float[8];
-  private final RectF   bounds  = new RectF();
-  private final Path    corners = new Path();
+  private final float[] radii = new float[8];
+  private final RectF bounds = new RectF();
+  private final Path corners = new Path();
 
-  private ThumbnailView          thumbnail;
-  private ImageView              shade;
+  private ThumbnailView thumbnail;
+  private ImageView shade;
   private ConversationItemFooter footer;
-  private Paint                  outlinePaint;
-  private CornerMask             cornerMask;
+  private Paint outlinePaint;
+  private CornerMask cornerMask;
   private int naturalWidth;
   private int naturalHeight;
 
@@ -76,11 +72,12 @@ public class ConversationItemThumbnail extends FrameLayout {
   private void init() {
     inflate(getContext(), R.layout.conversation_item_thumbnail, this);
 
-    this.thumbnail    = findViewById(R.id.conversation_thumbnail_image);
-    this.shade        = findViewById(R.id.conversation_thumbnail_shade);
-    this.footer       = findViewById(R.id.conversation_thumbnail_footer);
-    this.outlinePaint = ThemeUtil.isDarkTheme(getContext()) ? DARK_THEME_OUTLINE_PAINT : LIGHT_THEME_OUTLINE_PAINT;
-    this.cornerMask   = new CornerMask(this);
+    this.thumbnail = findViewById(R.id.conversation_thumbnail_image);
+    this.shade = findViewById(R.id.conversation_thumbnail_shade);
+    this.footer = findViewById(R.id.conversation_thumbnail_footer);
+    this.outlinePaint =
+        ThemeUtil.isDarkTheme(getContext()) ? DARK_THEME_OUTLINE_PAINT : LIGHT_THEME_OUTLINE_PAINT;
+    this.cornerMask = new CornerMask(this);
 
     setTouchDelegate(thumbnail.getTouchDelegate());
   }
@@ -125,9 +122,9 @@ public class ConversationItemThumbnail extends FrameLayout {
 
     final float halfStrokeWidth = outlinePaint.getStrokeWidth() / 2;
 
-    bounds.left   = halfStrokeWidth;
-    bounds.top    = halfStrokeWidth;
-    bounds.right  = canvas.getWidth() - halfStrokeWidth;
+    bounds.left = halfStrokeWidth;
+    bounds.top = halfStrokeWidth;
+    bounds.right = canvas.getWidth() - halfStrokeWidth;
     bounds.bottom = canvas.getHeight() - halfStrokeWidth;
 
     corners.reset();
@@ -170,17 +167,18 @@ public class ConversationItemThumbnail extends FrameLayout {
   }
 
   private void refreshSlideAttachmentState(ListenableFuture<Boolean> signal, Slide slide) {
-    signal.addListener(new ListenableFuture.Listener<Boolean>() {
-      @Override
-      public void onSuccess(Boolean result) {
-        slide.asAttachment().setTransferState(AttachmentDatabase.TRANSFER_PROGRESS_DONE);
-      }
+    signal.addListener(
+        new ListenableFuture.Listener<Boolean>() {
+          @Override
+          public void onSuccess(Boolean result) {
+            slide.asAttachment().setTransferState(AttachmentDatabase.TRANSFER_PROGRESS_DONE);
+          }
 
-      @Override
-      public void onFailure(ExecutionException e) {
-        slide.asAttachment().setTransferState(AttachmentDatabase.TRANSFER_PROGRESS_FAILED);
-      }
-    });
+          @Override
+          public void onFailure(ExecutionException e) {
+            slide.asAttachment().setTransferState(AttachmentDatabase.TRANSFER_PROGRESS_FAILED);
+          }
+        });
   }
 
   public void setThumbnailClickListener(SlideClickListener listener) {
@@ -193,9 +191,11 @@ public class ConversationItemThumbnail extends FrameLayout {
   }
 
   @UiThread
-  public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
-                               int naturalWidth, int naturalHeight)
-  {
+  public void setImageResource(
+      @NonNull GlideRequests glideRequests,
+      @NonNull Slide slide,
+      int naturalWidth,
+      int naturalHeight) {
     this.naturalWidth = naturalWidth;
     this.naturalHeight = naturalHeight;
     refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide), slide);

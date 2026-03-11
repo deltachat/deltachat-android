@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms.preferences;
 
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.preference.PreferenceFragmentCompat;
 
 public abstract class CorrectedPreferenceFragment extends PreferenceFragmentCompat {

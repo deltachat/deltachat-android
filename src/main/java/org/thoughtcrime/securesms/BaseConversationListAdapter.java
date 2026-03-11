@@ -1,14 +1,14 @@
 package org.thoughtcrime.securesms;
 
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class BaseConversationListAdapter<T extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<T> {
-  protected final Set<Long> batchSet  = Collections.synchronizedSet(new HashSet<Long>());
-  protected       boolean   batchMode = false;
+public abstract class BaseConversationListAdapter<T extends RecyclerView.ViewHolder>
+    extends RecyclerView.Adapter<T> {
+  protected final Set<Long> batchSet = Collections.synchronizedSet(new HashSet<Long>());
+  protected boolean batchMode = false;
 
   public abstract void selectAllThreads();
 

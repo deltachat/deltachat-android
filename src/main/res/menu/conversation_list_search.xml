@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-            android:id="@+id/action_filter_search"
-            android:title=" "
-            app:actionViewClass="androidx.appcompat.widget.SearchView"
-            app:showAsAction="collapseActionView|always" />
+        android:id="@+id/action_filter_search"
+        android:title=" "
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="collapseActionView|always" />
 
-    <item android:title="@string/search_unread"
+    <item
+        android:title="@string/search_unread"
         android:id="@+id/search_unread"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
 </menu>

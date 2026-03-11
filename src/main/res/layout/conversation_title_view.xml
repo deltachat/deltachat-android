@@ -1,41 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <org.thoughtcrime.securesms.ConversationTitleView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical">
 
-    <ImageView android:id="@+id/up_button"
-               android:layout_width="wrap_content"
-               android:layout_height="match_parent"
-               android:src="@drawable/ic_arrow_back_white_24dp"
-               android:clickable="true"
-               android:paddingRight="12dp"
-               android:paddingEnd="12dp"
-               android:paddingStart="12dp"
-               android:paddingLeft="12dp"
-               android:layout_marginRight="4dp"
-               android:layout_marginEnd="4dp"
-               android:layout_alignParentLeft="true"
-               android:layout_alignParentStart="true"
-               android:layout_centerVertical="true"
-               android:contentDescription="@string/back"
-               android:visibility="visible"/>
+    <ImageView
+        android:id="@+id/up_button"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_arrow_back_white_24dp"
+        android:clickable="true"
+        android:paddingRight="12dp"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:paddingLeft="12dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/back"
+        android:visibility="visible" />
 
     <org.thoughtcrime.securesms.components.AvatarView
-            android:id="@+id/avatar"
-            android:layout_width="46dp"
-            android:layout_height="46dp"
-            android:layout_toRightOf="@id/up_button"
-            android:layout_toEndOf="@id/up_button"
-            android:layout_centerVertical="true"
-            android:cropToPadding="true"
-            android:clickable="true"
-            app:inverted="true"
-            android:contentDescription="@string/pref_profile_photo"/>
+        android:id="@+id/avatar"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_toRightOf="@id/up_button"
+        android:layout_toEndOf="@id/up_button"
+        android:layout_centerVertical="true"
+        android:cropToPadding="true"
+        android:clickable="true"
+        app:inverted="true"
+        android:contentDescription="@string/pref_profile_photo" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -48,7 +49,8 @@
         android:layout_toEndOf="@id/avatar"
         android:layout_toRightOf="@id/avatar">
 
-        <LinearLayout android:orientation="horizontal"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
@@ -64,9 +66,9 @@
                 android:transitionName="recipient_name"
                 android:layout_weight="1"
                 tools:text="Jules Bonnot" />
-                <!-- Attention: Using android:maxLines="1", if the name is an emoji followed by a
-                long word and the chat is muted, then the long word is not shown at all
-                (instead of using `…`). That's why we use android:singleLine="true" -->
+            <!-- Attention: Using android:maxLines="1", if the name is an emoji followed by a long word
+                and the chat is muted, then the long word is not shown at all (instead of using `…`). That's why we use
+                android:singleLine="true" -->
 
             <ImageView
                 android:id="@+id/ephemeral_icon"

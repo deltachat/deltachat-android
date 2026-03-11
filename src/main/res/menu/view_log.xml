@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/save_log"
+    <item
+        android:id="@+id/save_log"
         android:title="@string/menu_save_log" />
-    <item android:title="@string/menu_share"
+    <item
+        android:title="@string/menu_share"
         android:icon="@drawable/ic_share_white_24dp"
         android:id="@+id/share_log"
         app:showAsAction="ifRoom" />
-    <item android:title="@string/menu_zoom_in"
+    <item
+        android:title="@string/menu_zoom_in"
         android:id="@+id/log_zoom_in" />
-    <item android:title="@string/menu_zoom_out"
+    <item
+        android:title="@string/menu_zoom_out"
         android:id="@+id/log_zoom_out" />
-    <item android:title="@string/menu_scroll_to_top"
-          android:id="@+id/log_scroll_up" />
-    <item android:title="@string/menu_scroll_to_bottom"
+    <item
+        android:title="@string/menu_scroll_to_top"
+        android:id="@+id/log_scroll_up" />
+    <item
+        android:title="@string/menu_scroll_to_bottom"
         android:id="@+id/log_scroll_down" />
 
 </menu>

@@ -7,18 +7,19 @@ import android.content.pm.ShortcutManager;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.pm.ShortcutInfoCompat;
 import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
-
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.thoughtcrime.securesms.ShareActivity;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -28,18 +29,13 @@ import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.DrawableUtil;
 import org.thoughtcrime.securesms.util.Util;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
 /**
  * The Signal code has a similar class called ConversationUtil.
  *
- * This class uses the Sharing Shortcuts API to publish dynamic launcher shortcuts (the ones that
+ * <p>This class uses the Sharing Shortcuts API to publish dynamic launcher shortcuts (the ones that
  * appear when you long-press on an app) and direct-sharing-shortcuts.
  *
- * It replaces the class DirectShareService, because DirectShareService used the
+ * <p>It replaces the class DirectShareService, because DirectShareService used the
  * ChooserTargetService API, which was replaced by the Sharing Shortcuts API.
  */
 public class DirectShareUtil {
@@ -49,55 +45,61 @@ public class DirectShareUtil {
 
   public static void clearShortcut(@NonNull Context context, int chatId) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      Util.runOnAnyBackgroundThread(() -> {
-        try {
-          ShortcutManagerCompat.removeDynamicShortcuts(context, Collections.singletonList(Integer.toString(chatId)));
-        } catch (Exception e) {
-          Log.e(TAG, "Clearing shortcut failed", e);
-        }
-      });
+      Util.runOnAnyBackgroundThread(
+          () -> {
+            try {
+              ShortcutManagerCompat.removeDynamicShortcuts(
+                  context, Collections.singletonList(Integer.toString(chatId)));
+            } catch (Exception e) {
+              Log.e(TAG, "Clearing shortcut failed", e);
+            }
+          });
     }
   }
 
   public static void resetAllShortcuts(@NonNull Context context) {
-    Util.runOnBackground(() -> {
-      try {
-        ShortcutManagerCompat.removeAllDynamicShortcuts(context);
-        triggerRefreshDirectShare(context);
-      } catch (Exception e) {
-        Log.e(TAG, "Resetting shortcuts failed", e);
-      }
-    });
+    Util.runOnBackground(
+        () -> {
+          try {
+            ShortcutManagerCompat.removeAllDynamicShortcuts(context);
+            triggerRefreshDirectShare(context);
+          } catch (Exception e) {
+            Log.e(TAG, "Resetting shortcuts failed", e);
+          }
+        });
   }
 
   public static void triggerRefreshDirectShare(Context context) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-      Util.runOnBackgroundDelayed(() -> {
-        try {
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1
+      Util.runOnBackgroundDelayed(
+          () -> {
+            try {
+              if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1
                   && context.getSystemService(ShortcutManager.class).isRateLimitingActive()) {
-            return;
-          }
+                return;
+              }
 
-          int maxShortcuts = ShortcutManagerCompat.getMaxShortcutCountPerActivity(context);
-          List<ShortcutInfoCompat> currentShortcuts = ShortcutManagerCompat.getDynamicShortcuts(context);
-          List<ShortcutInfoCompat> newShortcuts = getChooserTargets(context);
+              int maxShortcuts = ShortcutManagerCompat.getMaxShortcutCountPerActivity(context);
+              List<ShortcutInfoCompat> currentShortcuts =
+                  ShortcutManagerCompat.getDynamicShortcuts(context);
+              List<ShortcutInfoCompat> newShortcuts = getChooserTargets(context);
 
-          if (maxShortcuts > 0
+              if (maxShortcuts > 0
                   && currentShortcuts.size() + newShortcuts.size() > maxShortcuts) {
-            ShortcutManagerCompat.removeAllDynamicShortcuts(context);
-          }
+                ShortcutManagerCompat.removeAllDynamicShortcuts(context);
+              }
 
-          boolean success = ShortcutManagerCompat.addDynamicShortcuts(context, newShortcuts);
-          Log.i(TAG, "Updated dynamic shortcuts, success: " + success);
-        } catch(Exception e) {
-          Log.e(TAG, "Updating dynamic shortcuts failed: " + e);
-        }
+              boolean success = ShortcutManagerCompat.addDynamicShortcuts(context, newShortcuts);
+              Log.i(TAG, "Updated dynamic shortcuts, success: " + success);
+            } catch (Exception e) {
+              Log.e(TAG, "Updating dynamic shortcuts failed: " + e);
+            }
 
-        // Wait  1500ms, this is called by onResume(), and we want to make sure that refreshing
-        // shortcuts does not delay loading of the chatlist
-      }, 1500);
+            // Wait  1500ms, this is called by onResume(), and we want to make sure that refreshing
+            // shortcuts does not delay loading of the chatlist
+          },
+          1500);
     }
   }
 
@@ -106,11 +108,9 @@ public class DirectShareUtil {
     List<ShortcutInfoCompat> results = new LinkedList<>();
     DcContext dcContext = DcHelper.getContext(context);
 
-    DcChatlist chatlist = dcContext.getChatlist(
-            DcContext.DC_GCL_FOR_FORWARDING | DcContext.DC_GCL_NO_SPECIALS,
-            null,
-            0
-    );
+    DcChatlist chatlist =
+        dcContext.getChatlist(
+            DcContext.DC_GCL_FOR_FORWARDING | DcContext.DC_GCL_NO_SPECIALS, null, 0);
     int max = 5;
     if (chatlist.getCnt() < max) {
       max = chatlist.getCnt();
@@ -128,10 +128,12 @@ public class DirectShareUtil {
 
       Recipient recipient = new Recipient(context, chat);
       Bitmap avatar = getIconForShortcut(context, recipient);
-      results.add(new ShortcutInfoCompat.Builder(context, "chat-" + dcContext.getAccountId() + "-" + chat.getId())
+      results.add(
+          new ShortcutInfoCompat.Builder(
+                  context, "chat-" + dcContext.getAccountId() + "-" + chat.getId())
               .setShortLabel(chat.getName())
               .setLongLived(true)
-              .setRank(i+1)
+              .setRank(i + 1)
               .setIcon(IconCompat.createWithAdaptiveBitmap(avatar))
               .setCategories(Collections.singleton(SHORTCUT_CATEGORY))
               .setIntent(intent)
@@ -150,22 +152,32 @@ public class DirectShareUtil {
     }
   }
 
-  private static @NonNull Bitmap getShortcutInfoBitmap(@NonNull Context context, @NonNull Recipient recipient) throws ExecutionException, InterruptedException {
-    return DrawableUtil.wrapBitmapForShortcutInfo(request(GlideApp.with(context).asBitmap(), context, recipient).submit().get());
+  private static @NonNull Bitmap getShortcutInfoBitmap(
+      @NonNull Context context, @NonNull Recipient recipient)
+      throws ExecutionException, InterruptedException {
+    return DrawableUtil.wrapBitmapForShortcutInfo(
+        request(GlideApp.with(context).asBitmap(), context, recipient).submit().get());
   }
 
   private static Bitmap getFallbackDrawable(Context context, @NonNull Recipient recipient) {
-    return BitmapUtil.createFromDrawable(recipient.getFallbackAvatarDrawable(context, false),
-            context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width),
-            context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height));
+    return BitmapUtil.createFromDrawable(
+        recipient.getFallbackAvatarDrawable(context, false),
+        context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width),
+        context
+            .getResources()
+            .getDimensionPixelSize(android.R.dimen.notification_large_icon_height));
   }
 
-  private static <T> GlideRequest<T> request(@NonNull GlideRequest<T> glideRequest, @NonNull Context context, @NonNull Recipient recipient) {
+  private static <T> GlideRequest<T> request(
+      @NonNull GlideRequest<T> glideRequest,
+      @NonNull Context context,
+      @NonNull Recipient recipient) {
     final ContactPhoto photo;
     photo = recipient.getContactPhoto(context);
 
-    return glideRequest.load(photo)
-            .error(getFallbackDrawable(context, recipient))
-            .diskCacheStrategy(DiskCacheStrategy.ALL);
+    return glideRequest
+        .load(photo)
+        .error(getFallbackDrawable(context, recipient))
+        .diskCacheStrategy(DiskCacheStrategy.ALL);
   }
 }

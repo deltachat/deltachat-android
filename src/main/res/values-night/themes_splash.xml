@@ -2,7 +2,9 @@
 
 <resources>
 
-    <style name="TextSecure.Splash" parent="@style/TextSecure.DarkNoActionBar">
+    <style
+        name="TextSecure.Splash"
+        parent="@style/TextSecure.DarkNoActionBar">
     </style>
 
 </resources>

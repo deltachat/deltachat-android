@@ -7,17 +7,16 @@ import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
-
-import androidx.annotation.NonNull;
 import android.view.View;
+import androidx.annotation.NonNull;
 
 public class CornerMask {
 
-  private final float[] radii      = new float[8];
-  private final Paint   clearPaint = new Paint();
-  private final Path    outline    = new Path();
-  private final Path    corners    = new Path();
-  private final RectF   bounds     = new RectF();
+  private final float[] radii = new float[8];
+  private final Paint clearPaint = new Paint();
+  private final Path outline = new Path();
+  private final Path corners = new Path();
+  private final RectF bounds = new RectF();
 
   public CornerMask(@NonNull View view) {
     view.setLayerType(View.LAYER_TYPE_HARDWARE, null);
@@ -29,9 +28,9 @@ public class CornerMask {
   }
 
   public void mask(Canvas canvas) {
-    bounds.left   = 0;
-    bounds.top    = 0;
-    bounds.right  = canvas.getWidth();
+    bounds.left = 0;
+    bounds.top = 0;
+    bounds.right = canvas.getWidth();
     bounds.bottom = canvas.getHeight();
 
     corners.reset();

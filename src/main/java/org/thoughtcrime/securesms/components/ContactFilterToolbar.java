@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
 import android.graphics.Rect;
-import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -12,18 +11,18 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
+import androidx.appcompat.widget.Toolbar;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ContactFilterToolbar extends Toolbar {
-  private   OnFilterChangedListener listener;
+  private OnFilterChangedListener listener;
 
-  private final EditText        searchText;
+  private final EditText searchText;
   private final AnimatingToggle toggle;
-  private final ImageView       clearToggle;
-  private final LinearLayout    toggleContainer;
-  private boolean         useClearButton;
+  private final ImageView clearToggle;
+  private final LinearLayout toggleContainer;
+  private boolean useClearButton;
 
   public ContactFilterToolbar(Context context) {
     this(context, null);
@@ -38,42 +37,40 @@ public class ContactFilterToolbar extends Toolbar {
     super(context, attrs, defStyleAttr);
     inflate(context, R.layout.contact_filter_toolbar, this);
 
-    this.searchText      = ViewUtil.findById(this, R.id.search_view);
-    this.toggle          = ViewUtil.findById(this, R.id.button_toggle);
-    this.clearToggle     = ViewUtil.findById(this, R.id.search_clear);
+    this.searchText = ViewUtil.findById(this, R.id.search_view);
+    this.toggle = ViewUtil.findById(this, R.id.button_toggle);
+    this.clearToggle = ViewUtil.findById(this, R.id.search_clear);
     this.toggleContainer = ViewUtil.findById(this, R.id.toggle_container);
 
-    searchText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+    searchText.setInputType(
+        InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
-    this.clearToggle.setOnClickListener(v -> {
-      searchText.setText("");
-      displayTogglingView(null);
-    });
-
-    this.searchText.addTextChangedListener(new TextWatcher() {
-      @Override
-      public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-      }
-
-      @Override
-      public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-      }
-
-      @Override
-      public void afterTextChanged(Editable s) {
-        if (!SearchUtil.isEmpty(searchText)) {
-          if(useClearButton) {
-            displayTogglingView(clearToggle);
-          }
-        }
-        else {
+    this.clearToggle.setOnClickListener(
+        v -> {
+          searchText.setText("");
           displayTogglingView(null);
-        }
-        notifyListener();
-      }
-    });
+        });
+
+    this.searchText.addTextChangedListener(
+        new TextWatcher() {
+          @Override
+          public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+          @Override
+          public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+          @Override
+          public void afterTextChanged(Editable s) {
+            if (!SearchUtil.isEmpty(searchText)) {
+              if (useClearButton) {
+                displayTogglingView(clearToggle);
+              }
+            } else {
+              displayTogglingView(null);
+            }
+            notifyListener();
+          }
+        });
 
     setLogo(null);
     setContentInsetStartWithNavigation(0);
@@ -104,25 +101,27 @@ public class ContactFilterToolbar extends Toolbar {
 
   private void displayTogglingView(View view) {
     toggle.display(view);
-    if (view!=null) {
+    if (view != null) {
       expandTapArea(toggleContainer, view);
     }
   }
 
   private void expandTapArea(final View container, final View child) {
-    final int padding = getResources().getDimensionPixelSize(R.dimen.contact_selection_actions_tap_area);
+    final int padding =
+        getResources().getDimensionPixelSize(R.dimen.contact_selection_actions_tap_area);
 
-    container.post(() -> {
-      Rect rect = new Rect();
-      child.getHitRect(rect);
+    container.post(
+        () -> {
+          Rect rect = new Rect();
+          child.getHitRect(rect);
 
-      rect.top -= padding;
-      rect.left -= padding;
-      rect.right += padding;
-      rect.bottom += padding;
+          rect.top -= padding;
+          rect.left -= padding;
+          rect.right += padding;
+          rect.bottom += padding;
 
-      container.setTouchDelegate(new TouchDelegate(rect, child));
-    });
+          container.setTouchDelegate(new TouchDelegate(rect, child));
+        });
   }
 
   private static class SearchUtil {

@@ -3,5 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:duration="@integer/play_button_animation_duration"
     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
-    android:propertyName="rotation" android:valueFrom="0"
-    android:valueTo="90" android:valueType="floatType" />
+    android:propertyName="rotation"
+    android:valueFrom="0"
+    android:valueTo="90"
+    android:valueType="floatType" />

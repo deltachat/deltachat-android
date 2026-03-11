@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms;
 
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -19,15 +18,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.loader.app.LoaderManager;
-
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-
+import java.io.File;
+import java.io.IOException;
+import java.security.SecureRandom;
 import org.thoughtcrime.securesms.components.AvatarSelector;
 import org.thoughtcrime.securesms.components.InputAwareLayout;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -40,11 +39,6 @@ import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.io.File;
-import java.io.IOException;
-import java.security.SecureRandom;
-
-
 @SuppressLint("StaticFieldLeak")
 public class CreateProfileActivity extends BaseActionBarActivity {
 
@@ -52,17 +46,16 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   private static final int REQUEST_CODE_AVATAR = 1;
 
-  private InputAwareLayout       container;
-  private ImageView              avatar;
-  private EditText               name;
-  private EditText               statusView;
+  private InputAwareLayout container;
+  private ImageView avatar;
+  private EditText name;
+  private EditText statusView;
 
   private boolean avatarChanged;
   private boolean imageLoaded;
 
   private Bitmap avatarBmp;
   private AttachmentManager attachmentManager;
-
 
   @Override
   public void onCreate(Bundle bundle) {
@@ -81,17 +74,20 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     initializeProfileAvatar();
     initializeStatusText();
 
-    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
-      @Override
-      public void handleOnBackPressed() {
-        if (container.isInputOpen()) {
-          container.hideCurrentInput(name);
-        } else {
-          setEnabled(false);
-          getOnBackPressedDispatcher().onBackPressed();
-        }
-      }
-    });
+    getOnBackPressedDispatcher()
+        .addCallback(
+            this,
+            new OnBackPressedCallback(true) {
+              @Override
+              public void handleOnBackPressed() {
+                if (container.isInputOpen()) {
+                  container.hideCurrentInput(name);
+                } else {
+                  setEnabled(false);
+                  getOnBackPressedDispatcher().onBackPressed();
+                }
+              }
+            });
   }
 
   @Override
@@ -116,7 +112,8 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   }
 
   @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+  public void onRequestPermissionsResult(
+      int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 
@@ -125,12 +122,12 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     super.onActivityResult(requestCode, resultCode, data);
 
     if (resultCode != Activity.RESULT_OK) {
-        return;
+      return;
     }
 
     switch (requestCode) {
       case REQUEST_CODE_AVATAR:
-        Uri inputFile  = (data != null ? data.getData() : null);
+        Uri inputFile = (data != null ? data.getData() : null);
         onFileSelected(inputFile);
         break;
 
@@ -142,26 +139,28 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   private void setAvatarView(Uri output) {
     GlideApp.with(this)
-            .asBitmap()
-            .load(output)
-            .skipMemoryCache(true)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .centerCrop()
-            .override(AvatarHelper.AVATAR_SIZE, AvatarHelper.AVATAR_SIZE)
-        .into(new SimpleTarget<Bitmap>() {
+        .asBitmap()
+        .load(output)
+        .skipMemoryCache(true)
+        .diskCacheStrategy(DiskCacheStrategy.NONE)
+        .centerCrop()
+        .override(AvatarHelper.AVATAR_SIZE, AvatarHelper.AVATAR_SIZE)
+        .into(
+            new SimpleTarget<Bitmap>() {
               @Override
-              public void onResourceReady(@NonNull Bitmap resource, Transition<? super Bitmap> transition) {
+              public void onResourceReady(
+                  @NonNull Bitmap resource, Transition<? super Bitmap> transition) {
                 avatarChanged = true;
                 imageLoaded = true;
                 avatarBmp = resource;
               }
             });
     GlideApp.with(this)
-            .load(output)
-            .circleCrop()
-            .skipMemoryCache(true)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .into(avatar);
+        .load(output)
+        .circleCrop()
+        .skipMemoryCache(true)
+        .diskCacheStrategy(DiskCacheStrategy.NONE)
+        .into(avatar);
   }
 
   private void onFileSelected(Uri inputFile) {
@@ -173,11 +172,11 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   }
 
   private void initializeResources() {
-    TextView loginSuccessText              = ViewUtil.findById(this, R.id.login_success_text);
-    this.avatar       = ViewUtil.findById(this, R.id.avatar);
-    this.name         = ViewUtil.findById(this, R.id.name_text);
-    this.container    = ViewUtil.findById(this, R.id.container);
-    this.statusView   = ViewUtil.findById(this, R.id.status_text);
+    TextView loginSuccessText = ViewUtil.findById(this, R.id.login_success_text);
+    this.avatar = ViewUtil.findById(this, R.id.avatar);
+    this.name = ViewUtil.findById(this, R.id.name_text);
+    this.container = ViewUtil.findById(this, R.id.container);
+    this.statusView = ViewUtil.findById(this, R.id.status_text);
 
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(container);
@@ -186,7 +185,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   }
 
   private void initializeProfileName() {
-    String profileName  = DcHelper.get(this, DcHelper.CONFIG_DISPLAY_NAME);
+    String profileName = DcHelper.get(this, DcHelper.CONFIG_DISPLAY_NAME);
     if (!TextUtils.isEmpty(profileName)) {
       name.setText(profileName);
       name.setSelection(profileName.length(), profileName.length());
@@ -197,18 +196,21 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     File avatarFile = AvatarHelper.getSelfAvatarFile(this);
     if (avatarFile.exists() && avatarFile.length() > 0) {
       imageLoaded = true;
-      GlideApp.with(this)
-              .load(avatarFile)
-              .circleCrop()
-              .into(avatar);
+      GlideApp.with(this).load(avatarFile).circleCrop().into(avatar);
     } else {
       imageLoaded = false;
-      avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(this, getResources().getColor(R.color.grey_400)));
+      avatar.setImageDrawable(
+          new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp)
+              .asDrawable(this, getResources().getColor(R.color.grey_400)));
     }
-    avatar.setOnClickListener(view ->
-            new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener(), imageLoaded)
-                    .show(this, avatar)
-    );
+    avatar.setOnClickListener(
+        view ->
+            new AvatarSelector(
+                    this,
+                    LoaderManager.getInstance(this),
+                    new AvatarSelectedListener(),
+                    imageLoaded)
+                .show(this, avatar));
   }
 
   private void initializeStatusText() {
@@ -226,7 +228,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     new AsyncTask<Void, Void, Boolean>() {
       @Override
       protected Boolean doInBackground(Void... params) {
-        Context context    = CreateProfileActivity.this;
+        Context context = CreateProfileActivity.this;
         DcHelper.set(context, DcHelper.CONFIG_DISPLAY_NAME, name);
         setStatusText();
 
@@ -250,7 +252,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
         if (result) {
           attachmentManager.cleanup();
           finish();
-        } else        {
+        } else {
           Toast.makeText(CreateProfileActivity.this, R.string.error, Toast.LENGTH_LONG).show();
         }
       }
@@ -273,7 +275,10 @@ public class CreateProfileActivity extends BaseActionBarActivity {
           avatarBmp = null;
           imageLoaded = false;
           avatarChanged = true;
-          avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(CreateProfileActivity.this, getResources().getColor(R.color.grey_400)));
+          avatar.setImageDrawable(
+              new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp)
+                  .asDrawable(
+                      CreateProfileActivity.this, getResources().getColor(R.color.grey_400)));
           break;
         case AvatarSelector.TAKE_PHOTO:
           attachmentManager.capturePhoto(CreateProfileActivity.this, REQUEST_CODE_AVATAR);

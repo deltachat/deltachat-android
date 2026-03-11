@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.components.recyclerview;
 
-
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,10 +16,9 @@ public class DeleteItemAnimator extends DefaultItemAnimator {
   }
 
   @Override
-  public boolean animateMove(RecyclerView.ViewHolder viewHolder, int fromX, int fromY, int toX, int toY) {
+  public boolean animateMove(
+      RecyclerView.ViewHolder viewHolder, int fromX, int fromY, int toX, int toY) {
     dispatchMoveFinished(viewHolder);
     return false;
   }
-
-
 }
