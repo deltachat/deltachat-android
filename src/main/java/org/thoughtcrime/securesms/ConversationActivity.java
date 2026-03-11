@@ -754,7 +754,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void handleDeleteChat() {
     AlertDialog dialog = new AlertDialog.Builder(this)
         .setMessage(getResources().getString(R.string.ask_delete_named_chat, dcChat.getName()))
-        .setPositiveButton(R.string.delete, (d, which) -> {
+        .setPositiveButton(R.string.delete_for_me, (d, which) -> {
           DcHelper.getContext(context).deleteChat(chatId);
           DirectShareUtil.clearShortcut(this, chatId);
           finish();
