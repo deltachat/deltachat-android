@@ -1369,7 +1369,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     future.addListener(new ListenableFuture.Listener<Pair<Uri, Long>>() {
       @Override
       public void onSuccess(final @NonNull Pair<Uri, Long> result) {
-        AudioSlide audioSlide     = new AudioSlide(ConversationActivity.this, result.first, result.second, MediaUtil.AUDIO_AAC, true);
+        AudioSlide audioSlide     = new AudioSlide(ConversationActivity.this, result.first, result.second, MediaUtil.AUDIO_M4A, true);
         SlideDeck  slideDeck      = new SlideDeck();
         slideDeck.addSlide(audioSlide);
 

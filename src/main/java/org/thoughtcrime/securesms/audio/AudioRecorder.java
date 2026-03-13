@@ -2,14 +2,18 @@ package org.thoughtcrime.securesms.audio;
 
 import android.content.Context;
 import android.net.Uri;
-import android.os.ParcelFileDescriptor;
 import android.util.Log;
 import android.util.Pair;
 import androidx.annotation.NonNull;
 import chat.delta.util.ListenableFuture;
 import chat.delta.util.SettableFuture;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.atomic.AtomicReference;
+
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ThreadUtil;
@@ -24,8 +28,18 @@ public class AudioRecorder {
   private final Context context;
   private final PersistentBlobProvider blobProvider;
 
-  private AudioCodec audioCodec;
-  private Uri captureUri;
+  private final AtomicReference<RecordingState> recordingState =
+    new AtomicReference<>(null);
+
+  private static class RecordingState {
+    final AudioCodec audioCodec;
+    final String outputFilePath;
+
+    RecordingState(AudioCodec audioCodec, String outputFilePath) {
+      this.audioCodec = audioCodec;
+      this.outputFilePath = outputFilePath;
+    }
+  }
 
   public AudioRecorder(@NonNull Context context) {
     this.context = context;
@@ -36,29 +50,27 @@ public class AudioRecorder {
     Log.w(TAG, "startRecording()");
 
     executor.execute(
-        () -> {
-          Log.w(TAG, "Running startRecording() + " + Thread.currentThread().getId());
-          try {
-            if (audioCodec != null) {
-              throw new AssertionError("We can only record once at a time.");
-            }
-
-            ParcelFileDescriptor[] fds = ParcelFileDescriptor.createPipe();
-
-            captureUri =
-                blobProvider.create(
-                    context,
-                    new ParcelFileDescriptor.AutoCloseInputStream(fds[0]),
-                    MediaUtil.AUDIO_AAC,
-                    "voice.aac",
-                    null);
-            audioCodec = new AudioCodec(context);
-
-            audioCodec.start(new ParcelFileDescriptor.AutoCloseOutputStream(fds[1]));
-          } catch (IOException e) {
-            Log.w(TAG, e);
+      () -> {
+        Log.w(TAG, "Running startRecording() + " + Thread.currentThread().getId());
+        try {
+          RecordingState currentState = recordingState.get();
+          if (currentState != null) {
+            throw new AssertionError("We can only record once at a time.");
           }
-        });
+
+          // Create temporary file for M4A output
+          File outputFile = File.createTempFile("voice", ".m4a", context.getCacheDir());
+          String outputFilePath = outputFile.getAbsolutePath();
+
+          AudioCodec audioCodec = new AudioCodec(context, outputFilePath);
+          recordingState.set(new RecordingState(audioCodec, outputFilePath));
+
+          audioCodec.start();
+        } catch (IOException e) {
+          Log.w(TAG, e);
+          recordingState.set(null);
+        }
+      });
   }
 
   public @NonNull ListenableFuture<Pair<Uri, Long>> stopRecording() {
@@ -67,26 +79,64 @@ public class AudioRecorder {
     final SettableFuture<Pair<Uri, Long>> future = new SettableFuture<>();
 
     executor.execute(
-        () -> {
-          if (audioCodec == null) {
-            sendToFuture(
-                future, new IOException("MediaRecorder was never initialized successfully!"));
+      () -> {
+        RecordingState state = recordingState.getAndSet(null);
+
+        if (state == null || state.audioCodec == null) {
+          sendToFuture(
+            future, new IOException("MediaRecorder was never initialized successfully!"));
+          return;
+        }
+
+        state.audioCodec.stop();
+
+        FileInputStream fis = null;
+        try {
+          File outputFile = new File(state.outputFilePath);
+
+          if (!outputFile.exists()) {
+            sendToFuture(future, new IOException("Output file does not exist"));
             return;
           }
 
-          audioCodec.stop();
+          fis = new FileInputStream(outputFile);
+
+          // Move file to blob storage
+          Uri captureUri =
+            blobProvider.create(
+              context,
+              fis,
+              MediaUtil.AUDIO_M4A,
+              "voice.m4a",
+              null);
+
+          long size = outputFile.length();
 
           try {
-            long size = MediaUtil.getMediaSize(context, captureUri);
-            sendToFuture(future, new Pair<>(captureUri, size));
-          } catch (IOException ioe) {
-            Log.w(TAG, ioe);
-            sendToFuture(future, ioe);
+            fis.close();
+            fis = null;
+          } catch (IOException e) {
+            Log.w(TAG, "Error closing FileInputStream", e);
           }
 
-          audioCodec = null;
-          captureUri = null;
-        });
+          if (!outputFile.delete()) {
+            Log.w(TAG, "Failed to delete temp file: " + outputFile.getAbsolutePath());
+          }
+
+          sendToFuture(future, new Pair<>(captureUri, size));
+        } catch (IOException ioe) {
+          Log.w(TAG, ioe);
+          sendToFuture(future, ioe);
+        } finally {
+          if (fis != null) {
+            try {
+              fis.close();
+            } catch (IOException e) {
+              Log.w(TAG, "Error closing FileInputStream in finally block", e);
+            }
+          }
+        }
+      });
 
     return future;
   }
