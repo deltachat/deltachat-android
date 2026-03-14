@@ -120,11 +120,11 @@
     <string name="last_seen_unknown">Vist per darrer cop: desconegut</string>
     <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
     <plurals name="call_duration_minutes">
-        <item quantity="one">%d durada d\\'un minut</item>
+        <item quantity="one">%d durada d\'un minut</item>
         <item quantity="other">%d minuts de durada</item>
     </plurals>
     <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
-    <string name="call_duration_less_than_a_minute">Menys d\\'1 minut</string>
+    <string name="call_duration_less_than_a_minute">Menys d\'1 minut</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
