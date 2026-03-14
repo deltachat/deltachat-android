@@ -977,21 +977,19 @@ public class ConversationItem extends BaseConversationItem
         performClick();
       } else {
           int chatId = messageRecord.getChatId();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
           if (!messageRecord.isOutgoing() && callInfo.state instanceof CallState.Alerting) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-              int callId = messageRecord.getId();
-              CallCoordinator coordinator = CallCoordinator.getInstance(context);
-              coordinator.showIncomingCallScreen(callId);
-            }
+            int callId = messageRecord.getId();
+            CallCoordinator coordinator = CallCoordinator.getInstance(context);
+            coordinator.showIncomingCallScreen(callId);
           } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-              if (callInfo.hasVideo) {
-                CallUtil.startVideoCall(getContext(), chatId);
-              } else {
-                CallUtil.startAudioCall(getContext(), chatId);
-              }
+            if (callInfo.hasVideo) {
+              CallUtil.startVideoCall(getContext(), chatId);
+            } else {
+              CallUtil.startAudioCall(getContext(), chatId);
             }
           }
+        }
       }
     }
   }

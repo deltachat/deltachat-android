@@ -1,11 +1,13 @@
 package org.thoughtcrime.securesms.webrtc;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,6 +46,7 @@ import java.util.concurrent.TimeUnit;
  * Manages WebRTC PeerConnection.
  * Mirrors TypeScript CallsManager.
  */
+@RequiresApi(Build.VERSION_CODES.M)
 public class WebRTCClient {
 
   private static final String TAG = WebRTCClient.class.getSimpleName();

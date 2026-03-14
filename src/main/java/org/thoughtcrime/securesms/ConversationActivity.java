@@ -501,6 +501,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
+
   @Override
   public boolean onPrepareOptionsMenu(Menu menu) {
     menu.clear();
@@ -519,6 +520,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     menu.findItem(R.id.menu_start_call).setVisible(
       Prefs.isCallsEnabled(this)
+      && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
       && dcChat.canSend()
       && dcChat.isEncrypted()
       && !dcChat.isSelfTalk()

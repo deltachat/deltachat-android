@@ -300,9 +300,8 @@ public class ApplicationContext extends MultiDexApplication {
     initializeJobManager();
     InChatSounds.getInstance(this);
 
-    EglUtils.getEglBase();
-
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      EglUtils.getEglBase();
       CallCoordinator.getInstance(this);
     }
 
@@ -361,7 +360,9 @@ public class ApplicationContext extends MultiDexApplication {
   @Override
   public void onTerminate() {
     super.onTerminate();
-    EglUtils.release();
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      EglUtils.release();
+    }
   }
 
   public JobManager getJobManager() {
