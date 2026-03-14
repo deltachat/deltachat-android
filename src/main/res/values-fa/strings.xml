@@ -118,16 +118,6 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">آخرین بار دیده‌شده در %1$s</string>
     <string name="last_seen_unknown">آخرین زمان مشاهده: نامشخص</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d ثانیه</item>
-        <item quantity="other">%dثانیه</item>
-    </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d دقیقه</item>
-        <item quantity="other">%d دقیقه</item>
-    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d دقیقه</item>
@@ -259,8 +249,6 @@
     <string name="channels">کانال‌ها</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">کانال جدید</string>
-    <!-- deprecated -->
-    <string name="add_recipients">افزودن دنبال‌کننده</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">نام کانال</string>
     <string name="email">رایانامه</string>
@@ -386,25 +374,25 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">تماس</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">تماس صوتی</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">تماس تصویری</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">جواب دادن</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">رد کردن</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">تماس خروجی</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">تماس صوتی خروجی</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">تماس تصویری خروجی</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">تماس ورودی</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">تماس صوتی ورودی</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">تماس تصویری ورودی</string>
     <string name="declined_call">تماس رد شده</string>
     <string name="canceled_call">تماس لغو شده</string>
     <string name="missed_call">تماس از دست رفته</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s، %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -593,8 +581,6 @@
     <string name="incoming_messages">پیام‌های ورودی</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">پیام‌های خروجی</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">ذخیره کردن در %1$s</string>
     <string name="connectivity">اتصال‌ها</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">متصل نیست</string>
@@ -723,8 +709,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">استفاده از ترجیحی: %s</string>
-    <string name="pref_using_default">استفاده از پیش‌فرض: %s</string>
     <string name="pref_profile_info_headline">اطلاعات نمایهٔ شما</string>
     <string name="pref_profile_photo">تصویر نمایه</string>
     <string name="pref_blocked_contacts">مخاطبین مسدود شده</string>
@@ -756,8 +740,6 @@
     <string name="pref_sound">صدا</string>
     <string name="pref_silent">سکوت</string>
     <string name="pref_privacy">حریم خصوصی</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">گپ‌ها و رسانه</string>
     <string name="pref_system_default">پیش‌فرض سیستم</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">روشن</string>
@@ -822,8 +804,6 @@
     <string name="n_bytes_message">پیام %1$s </string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">سقف دانلود تا %1$s فعال خواهد بود</string>
-    <!-- deprecated -->
-    <string name="select_profile">انتخاب نمایه</string>
     <string name="profile_image_select">انتخاب تصویر نمایه</string>
     <string name="select_your_new_profile_image">تصویر نمایهٔ جدیدتان را برگزینید</string>
     <string name="profile_image_delete">حذف تصویر نمایه</string>
@@ -926,10 +906,6 @@
     <string name="ephemeral_timer_seconds_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی %1$s ثانیه تنظیم کردید</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %2$s روی %1$s ثانیه تنظیم شد.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی 1 دقیقه تنظیم کرده‌اید.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %1$s روی 1 دقیقه تنظیم شد.</string>
     <string name="ephemeral_timer_1_hour_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی 1 ساعت تنظیم کرده‌اید.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %1$s روی 1 ساعت تنظیم شد.</string>
@@ -1030,8 +1006,6 @@
     <string name="verified_by">احراز هویت شده توسط %1$s</string>
     <string name="verified_by_you">تأیید شده توسط من</string>
     <string name="verified_by_unknown">معرفی شده</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">برای تضمین رمزنگاری سراسری شما تنها می‌توانید مخاطب‌هایی که یک تیک سبز دارند به این گروه اضافه کنید.\n\nمی‌توانید با مخاطب‌هایتان حضوری ملاقات کنید و برای معرفی، کد QR آن‌ها را اسکن کنید.</string>
     <string name="mailto_dialog_header_select_chat">گپ را برای ارسال پیام انتخاب کنید</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s هم‌اکنون هم یک پیام پیش‌نویس دارد؛ آیا می‌خواهید آن را جایگزین کنید؟</string>

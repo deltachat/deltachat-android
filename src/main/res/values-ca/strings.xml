@@ -28,7 +28,7 @@
     <string name="join">Uneix-te</string>
     <string name="rejoin">Torna a unir-te</string>
     <string name="delete">Esborra</string>
-    <string name="delete_for_me">Elimina per a mi</string>
+    <string name="delete_for_me">Esborra per a mi</string>
     <string name="delete_for_everyone">Esborra per a tothom</string>
     <string name="info">Info</string>
     <string name="update">Actualitza</string>
@@ -118,16 +118,13 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Vist per darrer cop: %1$s</string>
     <string name="last_seen_unknown">Vist per darrer cop: desconegut</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d segon</item>
-        <item quantity="other">%d segons</item>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">%d durada d\'un minut</item>
+        <item quantity="other">%d minuts de durada</item>
     </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d minut</item>
-        <item quantity="other">%d minuts</item>
-    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">Menys d\'1 minut</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -259,10 +256,13 @@
     <string name="channels">Canals</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nou Canal</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Afegeix destinataris</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nom del Canal</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">%d vista</item>
+        <item quantity="other">%d visualitzacions</item>
+    </plurals>
     <string name="email">Correu electrònic</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Nou correu electrònic</string>
@@ -384,25 +384,25 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Truca</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Trucada de veu</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Videotrucada</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Respon</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Rebutja</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Trucada sortint</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Trucada de veu sortint</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Videotrucada sortint</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Trucada entrant</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Trucada de veu entrant</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Videotrucada entrant</string>
     <string name="declined_call">Trucada rebutjada</string>
     <string name="canceled_call">Trucada cancel·lada</string>
     <string name="missed_call">Trucada perduda</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -491,7 +491,7 @@
     <!-- "Start..." button for an app -->
     <string name="start_app">Comença...</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
-    <string name="accept_request_first">Si us plau accepteu primer el requeriment del xat.</string>
+    <string name="accept_request_first">Si us plau accepteu primer la sol·licitud del xat.</string>
     <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
     <string name="send_file_to">Envia \"%1$s\" a…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
@@ -588,8 +588,6 @@
     <string name="incoming_messages">Missatges entrants</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Missatges sortints</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Emmagatzematge a %1$s.</string>
     <string name="connectivity">Connectivitat</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Desconnectat</string>
@@ -638,7 +636,7 @@
     <string name="welcome_chat_over_email">Xat segur i descentralitzat</string>
     <string name="scan_invitation_code">Escaneja el Codi d\'Invitació</string>
     <string name="login_title">Identifiqueu-vos</string>
-    <string name="login_advanced_hint">Aquest inici de sessió és per a usuaris avançats:\n\n• No feu servir una adreça que utilitzeu a una altra app.\n\n• Les adreces de correu tradicional admeten xats sense xifratge d\'extrem a extrem, indicades amb una icona de correu.</string>
+    <string name="login_advanced_hint">Aquest inici de sessió és per a usuaris avançats:\n\n• No feu servir una adreça que utilitzeu a una altra app.\n\n• Les adreces de correu tradicional admeten xats sense xifrar d\'extrem a extrem, indicades amb una icona de correu.</string>
     <string name="login_inbox">Safata d\'entrada</string>
     <string name="login_imap_login">Nom d\'identificació IMAP</string>
     <string name="login_imap_server">Servidor IMAP</string>
@@ -665,6 +663,17 @@
     <string name="proxy_share_link">Comparteix l\'enllaç</string>
     <string name="proxy_enabled">Servidor intermediari activat</string>
     <string name="proxy_enabled_hint">Esteu fent servir un servidor intermediari. Si teniu problemes per a connectar-vos, proveu un servidor intermediari diferent.</string>
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
+    <string name="transports">Relés</string>
+    <string name="add_transport">Afegir Relé</string>
+    <string name="remove_transport">Elimina Relé</string>
+    <string name="edit_transport">Edita Relé</string>
+    <!-- shown if a QR code was scanned that can be used as a relay -->
+    <string name="confirm_add_transport">Afegeix aquest relé?</string>
+    <string name="invalid_transport_qr">El codi QR escanejat no conté un relé vàlid.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_transport">Eliminar relé \"%1$s\"?\n\nEls teus contactes només poden contactar amb tu si ja els has contactat prèviament a través d\'un altre relé.\n\nSi dubtes, elimina el relé més tard.</string>
+
     <string name="login_certificate_checks">El certificat coincideix</string>
     <string name="login_error_mail">Si us plau poseu una adreça d\'email vàlida</string>
     <string name="login_error_server">Si us plau poseu un servidor / adreça IP vàlida</string>
@@ -677,17 +686,17 @@
     <string name="login_error_cannot_login">No es pot iniciar la sessió com a \"%1$s\". Comproveu que l\'adreça electrònica i la contrasenya són correctes.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accepta certificats no vàlids</string>
-    <string name="switch_account">Canvia el perfil</string>
-    <string name="add_account">Afegeix un compte</string>
+    <string name="switch_account">Canvia de perfil</string>
+    <string name="add_account">Afegeix un perfil</string>
     <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
-    <string name="profile_tag">Etiqueta de Perfil</string>
+    <string name="profile_tag">Etiqueta del Perfil</string>
     <string name="profile_tag_hint">p.ex. treball, família</string>
-    <string name="profile_tag_explain">Configureu una etiqueta visible només per a vosaltres; ajudant-vos a diferir entre els vostres perfils.</string>
+    <string name="profile_tag_explain">Configureu una etiqueta visible només per a vosaltres; ajudant-vos a diferenciar entre els vostres perfils.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Desplaçat a l\'inici</string>
     <string name="delete_account">Esborra el perfil</string>
     <string name="delete_account_ask">Esteu segur de voler esborrar les dades del vostre perfil?</string>
-    <string name="delete_account_explain_with_name">S\'esborraran totes les dades del perfil «%s» en aquest dispositiu, incloent-hi la configuració de xifratge d\'extrem a extrem, contactes, xats, missatges i contingut multimèdia. Aquesta acció no es pot desfer.</string>
+    <string name="delete_account_explain_with_name">S\'esborraran totes les dades del perfil «%s» en aquest dispositiu, incloent-hi la configuració de xifrat d\'extrem a extrem, contactes, xats, missatges i contingut multimèdia. Aquesta acció no es pot desfer.</string>
     <string name="unconfigured_account">Perfil sense configurar</string>
     <string name="unconfigured_account_hint">Obriu el per perfil per a configurar-lo.</string>
     <string name="try_connect_now">Prova de connectar-hi ara</string>
@@ -707,16 +716,15 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Ús personalitzat: %s</string>
-    <string name="pref_using_default">Ús per defecte: %s</string>
     <string name="pref_profile_info_headline">El vostre perfil</string>
     <string name="pref_profile_photo">Fotografia de perfil</string>
     <string name="pref_blocked_contacts">Contactes bloquejats</string>
     <string name="blocked_empty_hint">Els contactes blocats apareixeran aquí.</string>
-    <string name="pref_who_can_see_profile_explain">La vostra imatge de perfil, nom i biografia s\'enviaran amb juntament els missatges que escriviu quant us comuniqueu amb altres usuaris.</string>
+    <string name="pref_who_can_see_profile_explain">La vostra imatge de perfil, nom i signatura s\'enviaran juntament amb els missatges que escriviu quant us comuniqueu amb altres usuaris.</string>
     <string name="pref_your_name">El vostre nom</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Signatura</string>
+    <string name="chat_description">Descripció</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">La tecla «Retorn» envia</string>
     <string name="pref_enter_sends_explain">Els missatges s\'enviaran prement la tecla «Retorn»</string>
@@ -740,8 +748,6 @@
     <string name="pref_sound">So</string>
     <string name="pref_silent">Silenci</string>
     <string name="pref_privacy">Privacitat</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Xats i multimèdia</string>
     <string name="pref_system_default">Per defecte del sistema</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Clar</string>
@@ -781,7 +787,7 @@
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
     <string name="pref_multidevice">Mode multidispositiu</string>
     <string name="pref_multidevice_explain">Sincronitza els vostres missatges amb els vostres altres dispositius. Activat automàticament quan s\'afegeix un segon dispositiu.</string>
-    <string name="pref_multidevice_change_warn">El mode multidispositiu ha d\'estar habilitat quan feu servir el mateix compte des de diferents perfils. Només desactiveu aquesta opció si heu suprimit aquest perfil de tots els vostres altres dispositius.\n\nDesactivar aquesta opció mentre es fa servir en el mateix perfil en múltiples dispositius farà que es perdin missatges i hi hagi altres problemes.</string>
+    <string name="pref_multidevice_change_warn">El mode multidispositiu ha d\'estar habilitat quan feu servir el mateix perfil des de diferents dispositius. Desactiva aquesta opció només si has esborrat aquest perfil de tots els altres dispositius.\n\nDesactivar aquesta opció mentre es fa servir el mateix perfil en múltiples dispositius farà que es perdin missatges i hi hagi altres problemes.</string>
     <string name="pref_auto_folder_moves">Moure automàticament a la carpeta de Delta Chat</string>
     <string name="pref_only_fetch_mvbox_title">Agafa només de la carpeta de DeltaChat</string>
     <string name="pref_show_emails">Mostra els correus clàssics</string>
@@ -806,8 +812,6 @@
     <string name="n_bytes_message">%1$s missatge</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Baixa el màxim disponible fins a %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Trieu Perfil</string>
     <string name="profile_image_select">Trieu la imatge de perfil</string>
     <string name="select_your_new_profile_image">Trieu la imatge nova de perfil</string>
     <string name="profile_image_delete">Esborra la imatge del perfil</string>
@@ -878,6 +882,9 @@
     <string name="group_image_changed_by_you">Heu canviat la imatge de grup.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Imatge de grup canviada per %1$s.</string>
+    <string name="chat_description_changed_by_you">Has modificat la descripció del xat.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">Descripció del xat modificada per %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">S\'ha afegit el membre %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
@@ -910,10 +917,6 @@
     <string name="ephemeral_timer_seconds_by_you">Heu definit el temporitzador dels missatges efímers a %1$s segons.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s ha definit el temporitzador dels missatges efímers a %1$s segons.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Heu definit el temporitzador dels missatges fonedissos a 1 segon.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s ha definit el temporitzador dels missatges efímers a 1  minut.</string>
     <string name="ephemeral_timer_1_hour_by_you">Heu definit el temporitzador dels missatges fonedissos a 1 hora.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s ha definit el temporitzador dels missatges efímers a 1 hora.</string>
@@ -973,7 +976,7 @@
     <string name="qrscan_contains_text">Text del codi QR escanejat:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL del codi QR escanejat:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Empremta</string>
-    <string name="withdraw_verifycontact_explain">Altres persones que vulguin contactar amb vós poden escanejar aquest codi QR.\n\nPodeu reinicialitzar-lo, de manera que el codi QR o enllaç actual existent ja no servirà.</string>
+    <string name="withdraw_verifycontact_explain">Altres persones que vulguin contactar amb vós poden escanejar aquest codi QR.\n\nPodeu reinicialitzar-lo, de manera que el codi QR o enllaç d\'invitació existent ja no servirà.</string>
     <string name="withdraw_verifygroup_explain">Altres poden escanejar aquest codi QR per a unir-se al grup «%1$s».\n\nPodeu reinicialitzar-lo, de manera que el codi QR existent, o l\'enllaç d\'invitació, deixarà de funcionar.</string>
     <string name="withdraw_joinbroadcast_explain">Altres poden escanejar aquest codi QR per a unir-se al canal «%1$s».\n\nPodeu reinicialitzar-lo, de manera que el codi QR existent, o l\'enllaç d\'invitació, deixarà de funcionar.</string>
     <string name="withdraw_qr_code">Reinicialitza el codi QR</string>
@@ -981,7 +984,7 @@
     <string name="revive_qr_code">Activa el codi QR</string>
     <string name="qrshow_title">Codi QR d\'invitació</string>
     <string name="qrshow_x_joining">%1$s s\'uneix.</string>
-    <string name="qrshow_x_verified">%1$s verificat.</string>
+    <string name="qrshow_x_verified">%1$s afegit.</string>
     <string name="qrshow_x_has_joined_group">%1$s s\'ha unit al grup.</string>
     <string name="qrshow_join_group_title">Codi QR d\'invitació</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
@@ -1004,14 +1007,12 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s ha respost, espereu per a ser afegit al grup...</string>
     <string name="secure_join_wait">S\'està establint el xifratge d\'extrem a extrem garantit, espereu...</string>
-    <string name="contact_verified">%1$s verificat.</string>
+    <string name="contact_verified">%1$s afegit.</string>
     <string name="contact_blocked">Heu blocat el contacte</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Afegit per %1$s</string>
     <string name="verified_by_you">Afegit per mi</string>
     <string name="verified_by_unknown">Afegit</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Per a garantir el xifrat extrem a extrem, només podeu afegir a aquest grup contactes que tinguin la marca verda.\n\nPodeu trobar-vos en persona amb els contactes per a escanejar els seus codis QR i poder-los afegir. </string>
     <string name="mailto_dialog_header_select_chat">Trieu el xat on enviar el missatge</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s ja té un missatge d\'esborrany, voleu substituir-lo?</string>
@@ -1175,5 +1176,5 @@
     <string name="perm_enable_bg_already_done">Ja heu autoritzat Delta Chat a rebre missatges en segon pla.\n\nSi encara no us arriben els missatge, reviseu els paràmetres de sistema.</string>
 
     <!-- device messages for updates -->
-    <string name="update_2_0">Què hi ha de nou?\n\n💯 L’encriptació de punta a punta és fiable i permanent. Els candaus 🔒 han desaparegut!\n\n✉️ El correu electrònic clàssic sense encriptació de punta a punta es mostra amb el símbol d\'un sobre.\n\n😻 Nova pantalla de perfil millorada per a tots els teus contactes.\n\n🔲 Nou botó per accedir ràpidament a les aplicacions utilitzades als xats.\n\n❤️ Si us plau, fes una donació per ajudar-nos a continuar independents i seguir aportant millores: %1$s</string>
+    <string name="update_2_0">Què hi ha de nou?\n\n💯 El xifrat d\'extrem a extrem és fiable i permanent. Els candaus 🔒 han desaparegut!\n\n✉️ El correu electrònic clàssic sense xifrar d\'extrem a extrem es mostra amb el símbol d\'un sobre.\n\n😻 Nova pantalla de perfil millorada per a tots els teus contactes.\n\n🔲 Nou botó per accedir ràpidament a les aplicacions utilitzades als xats.\n\n❤️ Si us plau, fes una donació per ajudar-nos a continuar independents i seguir aportant millores: %1$s</string>
 </resources>

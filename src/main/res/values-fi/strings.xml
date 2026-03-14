@@ -200,8 +200,6 @@
     <string name="menu_new_chat">Uusi keskustelu</string>
     <string name="menu_new_group">Uusi ryhmä</string>
     <string name="clone_chat">Kloonaa keskustelu</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Lisää vastaanottajia</string>
     <string name="menu_send">Lähetä</string>
     <string name="menu_toggle_keyboard">Näytä emoji-näppäimistö</string>
     <string name="menu_edit_group">Muokkaa ryhmää</string>
@@ -461,8 +459,6 @@
     <string name="incoming_messages">Saapuvat viestit</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Lähtevät viestit</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Tallennustila palvelimella %1$s</string>
     <string name="connectivity">Yhteys</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Ei yhdistetty</string>
@@ -555,8 +551,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Käytetään mukautettua: %s</string>
-    <string name="pref_using_default">Käytetään oletusta: %s</string>
     <string name="pref_profile_info_headline">Profiilisi</string>
     <string name="pref_profile_photo">Profiilikuva</string>
     <string name="pref_blocked_contacts">Estetyt yhteystiedot</string>
@@ -586,8 +580,6 @@
     <string name="pref_sound">Ääni</string>
     <string name="pref_silent">Äänetön</string>
     <string name="pref_privacy">Yksityisyys</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Keskustelut ja media</string>
     <string name="pref_system_default">Järjestelmän oletus</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Vaalea</string>
@@ -732,10 +724,6 @@
     <string name="ephemeral_timer_seconds_by_you">Katoavien viestien ajastin asetettu %1$s sekuntiin minun toimestani.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Katoavien viestien ajastin asetettu %1$s sekuntiin käyttäjän %2$s toimesta.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Katoavien viestien ajastin asetettu 1 minuuttiin minun toimestani.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Katoavien viestien ajastin asetettu 1 minuuttiin käyttäjän %1$s toimesta.</string>
     <string name="ephemeral_timer_1_hour_by_you">Katoavien viestien ajastin asetettu 1 tuntiin minun toimestani.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Katoavien viestien ajastin asetettu 1 tuntiin käyttäjän %1$s toimesta.</string>
@@ -821,8 +809,6 @@
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">%1$s lisäsi</string>
     <string name="verified_by_you">Lisäämäni</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Päästä-päähän -salauksen takaamiseksi, voit lisätä ryhmään ainoastaan yhteystietoja joilla on vihreä \"oikein\" -merkki.\n\nVoit tavata yhteystietoja kasvotusten ja skannata heidän QR -koodinsa niin saat lisättyä salauksen käyttöön</string>
     <string name="mailto_dialog_header_select_chat">Valitse keskustelu viestien lähettämiseen</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">Keskustelussa %1$s on jo luonnos. Haluatko korvata sen?</string>

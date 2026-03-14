@@ -157,8 +157,6 @@
     <string name="import_backup_title">استيراد نسخة احتياطية</string>
     <string name="delete_account">حذف الحساب</string>
     <!-- preferences -->
-    <string name="pref_using_custom">استخدام التخصيص: %s</string>
-    <string name="pref_using_default">مستخدم كافتراضي: %s</string>
     <string name="pref_profile_info_headline">معلومات ملفك التعريفي</string>
     <string name="pref_profile_photo">صورة الملف التعريفي</string>
     <string name="pref_blocked_contacts">المراسلون المحبوسون</string>
@@ -174,8 +172,6 @@
     <string name="pref_led_color">لون ضوء التنبيه LED</string>
     <string name="pref_sound">الصوت</string>
     <string name="pref_privacy">الخصوصية</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">الدردشة والوسائط</string>
     <string name="pref_system_default">افتراضيات النظام</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">فاتح</string>
