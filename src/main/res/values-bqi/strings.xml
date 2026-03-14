@@ -378,8 +378,6 @@
     <string name="media_preview">نشووݩ داڌن وارسگر</string>
     <string name="send_message">فشناڌن پیوم</string>
 
-    <!-- deprecated -->
-    <string name="storage_on_domain">زفت کردن من %1$s</string>
     <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">هونی منپیز ابۊ...</string>
     <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->

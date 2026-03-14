@@ -118,20 +118,15 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Последнее посещение: %1$s</string>
     <string name="last_seen_unknown">Последнее посещение: Неизвестно</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d секунда</item>
-        <item quantity="few">%d секунды</item>
-        <item quantity="many">%d секунд</item>
-        <item quantity="other">%d секунд</item>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">Длительность: %d минута</item>
+        <item quantity="few">Длительность: %d минуты</item>
+        <item quantity="many">Длительность: %d минут</item>
+        <item quantity="other">Длительность: %d минут</item>
     </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d минута</item>
-        <item quantity="few">%d минуты</item>
-        <item quantity="many">%d минут</item>
-        <item quantity="other">%d минут</item>
-    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">Менее 1 минуты</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d минуту</item>
@@ -281,10 +276,15 @@
     <string name="channels">Каналы</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Новый канал</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Добавить получателей</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Название канала</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">%d просмотр</item>
+        <item quantity="few">%d просмотра</item>
+        <item quantity="many">%d просмотров</item>
+        <item quantity="other">%d просмотров</item>
+    </plurals>
     <string name="email">Электронная почта</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Новое письмо</string>
@@ -408,25 +408,25 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Позвонить</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Аудиозвонок</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Видеозвонок</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Ответить</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Отклонить</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Исходящий звонок</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Исходящий аудиозвонок</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Исходящий видеозвонок</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Входящий звонок</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Входящий аудиозвонок</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Входящий видеозвонок</string>
     <string name="declined_call">Отклонённый звонок</string>
     <string name="canceled_call">Отменённый звонок</string>
     <string name="missed_call">Пропущенный звонок</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -622,8 +622,6 @@
     <string name="incoming_messages">Входящие сообщения</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Исходящие сообщения</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Хранилище на %1$s</string>
     <string name="connectivity">Соединение</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Нет соединения</string>
@@ -752,8 +750,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Использовать персональное: %s</string>
-    <string name="pref_using_default">Используется по умолчанию: %s</string>
     <string name="pref_profile_info_headline">Ваш профиль</string>
     <string name="pref_profile_photo">Изображение профиля</string>
     <string name="pref_blocked_contacts">Заблокированные контакты</string>
@@ -767,6 +763,7 @@
     <string name="pref_enter_sends">Отправка по Enter</string>
     <string name="pref_enter_sends_explain">Нажатие клавиши Enter отправит текстовые сообщения</string>
     <string name="pref_outgoing_media_quality">Качество отправляемых медиафайлов</string>
+    <string name="pref_outgoing_media_quality_hint">Чтобы отправить файлы в оригинальном качестве, прикрепляйте их как \"Файл\". Это потребует больше трафика для вас и ваших получателей.</string>
     <string name="pref_outgoing_balanced">Сбалансированное</string>
     <string name="pref_outgoing_worse">Низкое качество, малый размер</string>
     <string name="pref_vibrate">Вибрация</string>
@@ -777,6 +774,10 @@
     <string name="pref_notifications">Уведомления</string>
     <string name="pref_mention_notifications">Упоминания</string>
     <string name="pref_mention_notifications_explain">В группах с отключенными уведомлениями, оповещать о сообщениях, адресованных вам, например об ответах или реакциях</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">Звонки</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">Показывать экран входящего вызова</string>
     <string name="pref_notifications_show">Показывать</string>
     <string name="pref_notifications_priority">Приоритет</string>
     <string name="pref_notifications_explain">Включить системные уведомления для новых сообщений</string>
@@ -786,8 +787,6 @@
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Беззвучный</string>
     <string name="pref_privacy">Конфиденциальность</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Чаты и медиафайлы</string>
     <string name="pref_system_default">По умолчанию</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Светлая</string>
@@ -852,8 +851,6 @@
     <string name="n_bytes_message">%1$s сообщение</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Максимальная загрузка доступна до %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Выбрать профиль</string>
     <string name="profile_image_select">Выбрать изображение профиля</string>
     <string name="select_your_new_profile_image">Выбрать новое изображение профиля</string>
     <string name="profile_image_delete">Удалить изображение профиля</string>
@@ -959,10 +956,6 @@
     <string name="ephemeral_timer_seconds_by_you">Вы включили автоудаление сообщений через %1$s сек</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s включает автоудаление сообщений через %1$s сек</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Вы включили автоудаление сообщений через 1 минуту.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s включает автоудаление сообщений через 1 минуту.</string>
     <string name="ephemeral_timer_1_hour_by_you">Вы включили автоудаление сообщений через 1 час.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s включает автоудаление сообщений через 1 час.</string>
@@ -1059,8 +1052,6 @@
     <string name="verified_by">Подтверждён: %1$s</string>
     <string name="verified_by_you">Подтверждён: Лично</string>
     <string name="verified_by_unknown">Подтверждён</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Чтобы обеспечить сквозное шифрование, вы можете добавлять в эту группу только контакты с зеленой галочкой.\n\nВы можете встретиться с контактами лично и отсканировать их QR-код, чтобы подтвердить их личность.</string>
     <string name="mailto_dialog_header_select_chat">Выберите чат, чтобы отправить сообщение</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s уже имеет черновик, вы хотите его заменить?</string>

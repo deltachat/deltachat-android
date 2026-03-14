@@ -174,8 +174,6 @@
     <string name="menu_new_contact">대화상대 추가</string>
     <string name="menu_new_chat">채팅 시작</string>
     <string name="menu_new_group">새 그룹</string>
-    <!-- deprecated -->
-    <string name="add_recipients">수신자 추가</string>
     <string name="menu_send">보내기</string>
     <string name="menu_toggle_keyboard">이모티콘 키보드 전환</string>
     <string name="menu_edit_group">그룹 편집</string>
@@ -384,8 +382,6 @@
     <string name="incoming_messages">수신 메시지</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">발신 메시지</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">%1$s에 저장됨</string>
     <string name="connectivity">연결</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">연결되지 않음</string>
@@ -448,8 +444,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">사용자 정의 사용: %s</string>
-    <string name="pref_using_default">기본값 사용: %s</string>
     <string name="pref_profile_info_headline">내 프로필</string>
     <string name="pref_profile_photo">프로필 사진</string>
     <string name="pref_blocked_contacts">차단 목록</string>
@@ -478,8 +472,6 @@
     <string name="pref_sound">알림음</string>
     <string name="pref_silent">무음</string>
     <string name="pref_privacy">개인정보 보호</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">대화 및 미디어</string>
     <string name="pref_system_default">시스템 기본값</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">밝게</string>
@@ -592,10 +584,6 @@
     <string name="ephemeral_timer_seconds_by_you">사라지는 메시지 타이머를 %1$s초로 설정함.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s가 사라지는 메시지 타이머를 %1$s초로 설정함.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">사라지는 메시지 타이머를 1분으로 설정함.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s가 사라지는 메시지 타이머를 1분으로 설정함.</string>
     <string name="ephemeral_timer_1_hour_by_you">사라지는 메시지 타이머를 1시간으로 설정함.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s가 사라지는 메시지 타이머를 1시간으로 설정함.</string>

@@ -118,16 +118,13 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Viimati nähtud: %1$s</string>
     <string name="last_seen_unknown">Viimati nähtud: pole teada</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d sekund</item>
-        <item quantity="other">%d sekundit</item>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">kestusega %d minut</item>
+        <item quantity="other">kestusega %d minutit</item>
     </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d minut</item>
-        <item quantity="other">%d minutit</item>
-    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">alla ühe minuti</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -180,6 +177,9 @@
     <string name="add_to_sticker_collection">Lisa kleepsude kogumikku</string>
     <string name="add_stickers_instructions">Kleepsude lisamiseks klõpsi valikut „Ava kleepsude kaust“, loo oma kleepsupaki jaoks sinna alamkaust ning lohista pildi- ja kleepsufailid sinna</string>
     <string name="open_sticker_folder">Ava kleepsude kaust</string>
+    <string name="ask_add_sticker_to_collection">Kas lisad selle kleepsu oma kogumikku?</string>
+    <string name="ask_delete_sticker">Kas kustutad selle kleepsu?</string>
+    <string name="sticker_picker_empty_hint">Klõpsa kleepsu lisamiseks siia.</string>
     <string name="images">Pildid</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Heli</string>
@@ -259,10 +259,13 @@
     <string name="channels">Kanalid</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Uus kanal</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Lisa saajaid</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Kanali nimi</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">Nähtud %d kord</item>
+        <item quantity="other">Nähtud %d korda</item>
+    </plurals>
     <string name="email">E-post</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Uus e-kiri</string>
@@ -278,6 +281,7 @@
     <string name="menu_add_attachment">Lisa manus</string>
     <string name="menu_leave_group">Lahku grupist</string>
     <string name="menu_leave_channel">Lahku kanalist</string>
+    <string name="menu_leave_and_delete">Lahku ja kustuta minu jaoks</string>
     <string name="menu_delete_chat">Kustuta vestlus</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Eemalda vestluse sisu</string>
@@ -384,25 +388,29 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Helista</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Häälkõne</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Videokõne</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Vasta</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Keeldu</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Väljuv kõne</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Häälkõne</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Videokõne</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Väljuv häälkõne</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Väljuv videokõne</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Saabuv kõne</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Saabuv häälkõne</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Saabuv videokõne</string>
     <string name="declined_call">Keeldutud kõne</string>
     <string name="canceled_call">katkestatud kõne</string>
     <string name="missed_call">Märkamata kõne</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -588,8 +596,6 @@
     <string name="incoming_messages">Saabuvad sõnumid</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Väljuvad sõnumid</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Andmeruum domeenis %1$s</string>
     <string name="connectivity">Ühenduvus</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Pole ühendatud</string>
@@ -718,8 +724,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Kasutan kohandatud väärtust: %s</string>
-    <string name="pref_using_default">Kasutan vaikimisi väärtust: %s</string>
     <string name="pref_profile_info_headline">Sinu profiil</string>
     <string name="pref_profile_photo">Profiilipilt</string>
     <string name="pref_blocked_contacts">Blokeeritud kontaktid</string>
@@ -733,6 +737,7 @@
     <string name="pref_enter_sends">Sisestusklahv saadab sõnumi</string>
     <string name="pref_enter_sends_explain">Sisestusklahvi vajutamisega saadad sõnumi ära</string>
     <string name="pref_outgoing_media_quality">Saadetava meediumi kvaliteet</string>
+    <string name="pref_outgoing_media_quality_hint">Saatmaks algse kvaliteediga, palun vali manuse tüübiks „Fail“ ning arvesta, et nii sinu kui saaja puhul kasutatakse suuremat andmemahtu.</string>
     <string name="pref_outgoing_balanced">Tasakaalustatud</string>
     <string name="pref_outgoing_worse">Kõige kehvem kvaliteet, aga väikseim maht</string>
     <string name="pref_vibrate">Väristamine</string>
@@ -743,6 +748,10 @@
     <string name="pref_notifications">Teavitused</string>
     <string name="pref_mention_notifications">Mainimised</string>
     <string name="pref_mention_notifications_explain">Summutatud gruppides teavita sinule suunatud sõnumitest, milleks võivad olla vastused või reageerimised</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">Kõned</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">Saabuvate kõnede puhul näita kõvaadet</string>
     <string name="pref_notifications_show">Näita</string>
     <string name="pref_notifications_priority">Prioriteet</string>
     <string name="pref_notifications_explain">Kasuta uute sõnumite puhul süsteemi teavitusi</string>
@@ -752,8 +761,6 @@
     <string name="pref_sound">Heli</string>
     <string name="pref_silent">Vaikne</string>
     <string name="pref_privacy">Privaatsus</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Vestlused ja meediumid</string>
     <string name="pref_system_default">Süsteemi vaikimisi valik</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Hele kujundus</string>
@@ -818,8 +825,6 @@
     <string name="n_bytes_message">Sõnum suurusega %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Allalaadimise ülempiir on saadaval kuni %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Vali profiil</string>
     <string name="profile_image_select">Vali profiilipilt</string>
     <string name="select_your_new_profile_image">Vali oma uus profiilipilt</string>
     <string name="profile_image_delete">Kustuta profiilipilt</string>
@@ -925,10 +930,6 @@
     <string name="ephemeral_timer_seconds_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks %1$s sekundit.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s määras isekustuvate sõnumite kehtivuseks %1$s sekundit.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks 1 minuti.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s määras isekustuvate sõnumite kehtivuseks 1 minuti.</string>
     <string name="ephemeral_timer_1_hour_by_you">Sa määrasid isekustuvate sõnumite kehtivuseks 1 tunni.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s määras isekustuvate sõnumite kehtivuseks 1 tunni.</string>
@@ -1025,8 +1026,6 @@
     <string name="verified_by">%1$s lisas kontakti vestlusesse</string>
     <string name="verified_by_you">Mina lisasin kontakti vestlusesse</string>
     <string name="verified_by_unknown">Vestlusesse lisatud</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Selleks, et läbiv krüptimine toimiks garanteeritult, sa võid sellesse vestlusesse lisada vaid rohelise linnukesega kontakte.\n\nParim viis on omavahel kohtuda ning teise osapoole QR-koodi skaneerimisega lisada ta vestlusesse.</string>
     <string name="mailto_dialog_header_select_chat">Vali vestlus, kuhu soovid sõnumi saata</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">Vestluses „%1$s“ juba on üks sõnumi kavand, kas sa soovid selle asendada?</string>

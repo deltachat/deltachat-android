@@ -7,11 +7,18 @@
 * Explain at "Settings / Chats / Outgoing Media Quality" how to send original quality
 * Add a basic sticker picker
 * Leave groups and channels before deletion
+* Further minimize metadata in messages and while getting in contact.
+* Increase resilience of multi-relay usage: if on relay goes down, messages are still received in the others.
 * Fix: keep original sent timestamp for resent messages
 * Fix: make clicking on broadcast member-added messages work always
 * Fix: remove notification when a message is deleted by sender
+<<<<<<< adb/issue-3508
 * Fix: avoid "reply privately" not quoting the selected message sometimes
 * Update to core 2.44.0
+=======
+* Some more bug fixes and updated translations
+* Update to core 2.45.0
+>>>>>>> main
 
 ## v2.43.0
 2026-02

@@ -118,18 +118,14 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative"> Ultimo accesso %1$s</string>
     <string name="last_seen_unknown">Ultimo accesso: sconosciuto</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d secondo</item>
-        <item quantity="many">%d secondi</item>
-        <item quantity="other">%d secondi</item>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">%d minuto di durata</item>
+        <item quantity="many">%d minuti di durata</item>
+        <item quantity="other">%d minuti di durata</item>
     </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d minuto</item>
-        <item quantity="many">%d minuti</item>
-        <item quantity="other">%d minuti</item>
-    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">Meno di 1 minuto</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -270,10 +266,14 @@
     <string name="channels">Canali</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nuovo Canale</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Aggiungi Destinatari</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nome Canale</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">%d visualizzazione</item>
+        <item quantity="many">%d visualizzazioni</item>
+        <item quantity="other">%d visualizzazioni</item>
+    </plurals>
     <string name="email">E-Mail</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Nuova E-Mail</string>
@@ -396,25 +396,25 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Chiama</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Chiamata Audio</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Chiamata Video</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Rispondi</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Rifiuta</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Chiamata in uscita</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Chiamata in uscita</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Videochiamata in uscita</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Chiamata in arrivo</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Chiamata in arrivo</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Videochiamata in arrivo</string>
     <string name="declined_call">Chiamata rifiutata</string>
     <string name="canceled_call">Chiamata annullata</string>
     <string name="missed_call">Chiamata persa</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -605,8 +605,6 @@
     <string name="incoming_messages">Messaggi in Arrivo</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Messaggi in Uscita</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Spazio su %1$s</string>
     <string name="connectivity">Connettività</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Non connesso</string>
@@ -735,8 +733,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Personalizzazione in uso: %s</string>
-    <string name="pref_using_default">Usa predefinito: %s</string>
     <string name="pref_profile_info_headline">Il tuo Profilo</string>
     <string name="pref_profile_photo">Immagine Profilo</string>
     <string name="pref_blocked_contacts">Contatti Bloccati</string>
@@ -760,6 +756,10 @@
     <string name="pref_notifications">Notifiche</string>
     <string name="pref_mention_notifications">Menzioni</string>
     <string name="pref_mention_notifications_explain">Nei gruppi silenziati notifica i messaggi indirizzati a te, come risposte o reazioni</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">Chiamate</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">Mostra la schermata delle chiamate in arrivo</string>
     <string name="pref_notifications_show">Mostra</string>
     <string name="pref_notifications_priority">Priorità</string>
     <string name="pref_notifications_explain">Abilita le notifiche di sistema per i nuovi messaggi</string>
@@ -769,8 +769,6 @@
     <string name="pref_sound">Suono</string>
     <string name="pref_silent">Silenzia</string>
     <string name="pref_privacy">Riservatezza</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Chat e Media</string>
     <string name="pref_system_default">Predefinito di sistema</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Chiaro</string>
@@ -835,8 +833,6 @@
     <string name="n_bytes_message">%1$s messaggio</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Scaricamento disponibile massimo fino a %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Seleziona il Profilo</string>
     <string name="profile_image_select">Seleziona Immagine Profilo</string>
     <string name="select_your_new_profile_image">Seleziona la tua nuova immagine profilo</string>
     <string name="profile_image_delete">Elimina Immagine Profilo</string>
@@ -942,10 +938,6 @@
     <string name="ephemeral_timer_seconds_by_you">Hai impostato il timer dei messaggi a scomparsa su %1$s secondi</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Timer messaggi a scomparsa impostato su %1$s secondi da %2$s.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Hai impostato il timer dei messaggi a scomparsa su 1 minuto.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Timer messaggi a scomparsa impostato su 1 minuto da %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Hai impostato il timer dei messaggi a scomparsa su 1 ora.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Timer messaggi a scomparsa impostato su 1 ora da %1$s.</string>
@@ -1042,8 +1034,6 @@
     <string name="verified_by">Introdotto da %1$s</string>
     <string name="verified_by_you">Introdotto da me</string>
     <string name="verified_by_unknown">Introdotto</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Per garantire la crittografia end-to-end, puoi aggiungere a questo gruppo solo i contatti con un segno di spunta verde.\n\nPuoi incontrare i contatti di persona e scansionare il loro Codice QR per verificarli.</string>
     <string name="mailto_dialog_header_select_chat">Seleziona la chat a cui inviare il messaggio</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s ha già una bozza di messaggio, vuoi sostituirla?</string>

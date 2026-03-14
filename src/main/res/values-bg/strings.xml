@@ -200,8 +200,6 @@
     <string name="menu_new_chat">Нов чат</string>
     <string name="menu_new_group">Нова група</string>
     <string name="clone_chat">Клониране на чат</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Добавяне на получатели</string>
     <string name="menu_send">Изпращане</string>
     <string name="menu_toggle_keyboard">Включване/изключване на Emoji клавиатура</string>
     <string name="menu_edit_group">Редактиране на група</string>
@@ -457,8 +455,6 @@
     <string name="incoming_messages">Входящи съобщения</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Изходящи съобщения</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Съхранение върху %1$s</string>
     <string name="connectivity">Свързаност</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Не сте свързани</string>
@@ -551,8 +547,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Използва се дефинирано от Вас: %s</string>
-    <string name="pref_using_default">Използва се подразбиращо се: %s</string>
     <string name="pref_profile_info_headline">Информация от Вашия профил</string>
     <string name="pref_profile_photo">Изображение на профила</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
@@ -582,8 +576,6 @@
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Без звук</string>
     <string name="pref_privacy">Поверителност</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Чатове и медийни файлове</string>
     <string name="pref_system_default">Подразбиращото се за системата</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Светъл</string>
@@ -726,10 +718,6 @@
     <string name="ephemeral_timer_seconds_by_you">Установихте таймера на изчезващите съобщения на %1$s</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Таймерът на изчезващите съобщение е установен на %1$sсек. от %2$s.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Установихте таймера на изчезващите съобщения на 1 минута.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Таймерът на изчезващите съобщения е установен на 1 минута от %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Установихте таймера на изчезващите съобщения на 1 час.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Таймерът на изчезващите съобщения е установен на 1 час от %1$s.</string>
@@ -815,8 +803,6 @@
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Проверен от%1$s</string>
     <string name="verified_by_you">Представен от мен</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">За да се гарантира криптирането от край до край, можете да добавяте в тази група само контакти, отбелязани със зелена отметка.\n\nБихте могли да се срещнете с лицата, с които желаете да контактувате, лично и да сканирате техните QR кодове, за да ги въведете.</string>
     <string name="mailto_dialog_header_select_chat">Изберете чат, към който да бъде пратено съобщението</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s вече има съобщение чернова, искате ли да го замените?</string>

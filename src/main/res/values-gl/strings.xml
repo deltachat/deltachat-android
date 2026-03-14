@@ -243,8 +243,6 @@
     <string name="channels">Canles</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nova Canle</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Engadir correspondentes</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nome da Canle</string>
     <string name="email">Email</string>
@@ -546,8 +544,6 @@
     <string name="incoming_messages">Mensaxes entrantes</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mensaxes saíntes</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Almacenar en %1$s</string>
     <string name="connectivity">Conectividade</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Non conectado</string>
@@ -654,8 +650,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Utilizar personalizado: %s</string>
-    <string name="pref_using_default">Utilizando por omisión: %s</string>
     <string name="pref_profile_info_headline">Info do teu perfil</string>
     <string name="pref_profile_photo">Imaxe de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
@@ -687,8 +681,6 @@
     <string name="pref_sound">Son</string>
     <string name="pref_silent">Mudo</string>
     <string name="pref_privacy">Intimidade</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Conversas e medios</string>
     <string name="pref_system_default">Por omsión no sistema</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Claro</string>
@@ -746,8 +738,6 @@
     <string name="n_bytes_message">%1$s mensaxe</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Descarga o máximo dispoñible ata %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Seleccionar Perfil</string>
     <string name="profile_image_select">Elixe imaxe de perfil</string>
     <string name="select_your_new_profile_image">Elixe a túa nova imaxe de perfil</string>
     <string name="profile_image_delete">Elimina a imaxe de perfil</string>
@@ -828,10 +818,6 @@
     <string name="ephemeral_timer_seconds_by_you">Estableceches que as mensaxes desaparezan en  %1$s s</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">O temporizador de desaparición de mensaxes establecido en %1$s segundos por %2$s.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Puxeches en 1 minuto o temporizador de desaparición de mensaxes.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Temporizador de desaparición de mensaxes definido en 1 minuto por %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Definiches o temporizador de desaparición de mensaxes en 1 hora.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Temporizador de desaparición de mensaxes definido en 1 hora por %1$s.</string>
@@ -911,8 +897,6 @@
     <string name="verified_by">Introducido/a por %1$s</string>
     <string name="verified_by_you">Introducido/a por min</string>
     <string name="verified_by_unknown">Introducido/a</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Para garantir cifrado extremo-a-extremo, só podes adicionar contactos com un visto verde a este grupo.\n\nPodes encontrarche con contactos en persoa e escanear os seus códigos QR para os introducir.</string>
     <string name="mailto_dialog_header_select_chat">Elexir chat ao que enviar a mensaxe</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s xa ten un borrador, queres susbstituílo?</string>

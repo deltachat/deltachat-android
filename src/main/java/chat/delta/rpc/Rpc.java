@@ -509,6 +509,8 @@ public class Rpc {
    * if `checkQr()` returns `askVerifyContact` or `askVerifyGroup`
    * an out-of-band-verification can be joined using `secure_join()`
    * <p>
+   * @deprecated as of 2026-03; use create_qr_svg(get_chat_securejoin_qr_code()) instead.
+   * <p>
    * chat_id: If set to a group-chat-id,
    * the Verified-Group-Invite protocol is offered in the QR code;
    * works for protected groups as well as for normal groups.
@@ -1211,10 +1213,17 @@ public class Rpc {
    * even if there is no concurrent call to [`CommandApi::provide_backup`],
    * but will fail after 60 seconds to avoid deadlocks.
    * <p>
+   * @deprecated as of 2026-03; use `create_qr_svg(get_backup_qr())` instead.
+   * <p>
    * Returns the QR code rendered as an SVG image.
    */
   public String getBackupQrSvg(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "get_backup_qr_svg", mapper.valueToTree(accountId));
+  }
+
+  /** Renders the given text as a QR code SVG image. */
+  public String createQrSvg(String text) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "create_qr_svg", mapper.valueToTree(text));
   }
 
   /**
