@@ -118,20 +118,6 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Останній раз бачили %1$s</string>
     <string name="last_seen_unknown">Останній раз бачили: Невідомо.</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d секунда</item>
-        <item quantity="few">%d секунди</item>
-        <item quantity="many">%d секунд </item>
-        <item quantity="other">%d секунд</item>
-    </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d хвилина</item>
-        <item quantity="few">%d хвилини</item>
-        <item quantity="many">%d хвилин</item>
-        <item quantity="other">%d хвилин</item>
-    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d хвилину</item>
@@ -281,8 +267,6 @@
     <string name="channels">Канали</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Новий Канал</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Додати одержувачів</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Назва Каналу</string>
     <string name="email">E-Mail</string>
@@ -408,25 +392,25 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Дзвонити</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Аудіовиклик</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Відеовиклик</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Відповісти</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Відхилити</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Вихідний дзвінок</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Вихідний аудіовиклик</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Вихідний відеовиклик</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Вхідний дзвінок</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Вхідний аудіовиклик</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Вхідний відеовиклик</string>
     <string name="declined_call">Відхилений дзвінок</string>
     <string name="canceled_call">Скасований дзвінок</string>
     <string name="missed_call">Пропущений дзвінок</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -622,8 +606,6 @@
     <string name="incoming_messages">Вхідні повідомлення</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Вихідні повідомлення</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Сховище на %1$s</string>
     <string name="connectivity">Підключення</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Не з\'єднано</string>
@@ -752,8 +734,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Використовувати персоналізовано: %s</string>
-    <string name="pref_using_default">Використовувати за замовчуванням: %s</string>
     <string name="pref_profile_info_headline">Ваш профіль</string>
     <string name="pref_profile_photo">Зображення профілю</string>
     <string name="pref_blocked_contacts">Заблоковані контакти</string>
@@ -786,8 +766,6 @@
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Беззвучний</string>
     <string name="pref_privacy">Конфіденційність</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Чати й медіа</string>
     <string name="pref_system_default">За замовчуванням системи</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Світла</string>
@@ -852,8 +830,6 @@
     <string name="n_bytes_message">Повідомлення розміром %1$s\'</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Доступний для завантаження максимум до %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Вибрати Профіль</string>
     <string name="profile_image_select">Вибрати зображення профілю</string>
     <string name="select_your_new_profile_image">Вибрати ваше нове зображення профілю</string>
     <string name="profile_image_delete">Видалити зображення профілю</string>
@@ -959,10 +935,6 @@
     <string name="ephemeral_timer_seconds_by_you">Ви встановили таймер зникнення повідомлень на %1$s сек.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s встановив (-ла) таймер повідомлень, що зникають на %1$s сек.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Ви встановили таймер зникнення повідомлень на 1 хвилину.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s встановив (-ла) таймер зникнення повідомлень на 1 хвилину.</string>
     <string name="ephemeral_timer_1_hour_by_you">Ви встановили таймер зникнення повідомлень на 1 годину.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s встановив (-ла) таймер зникнення повідомлень на 1 годину.</string>
@@ -1059,8 +1031,6 @@
     <string name="verified_by">Представни·ця: %1$s</string>
     <string name="verified_by_you">Представлено мною</string>
     <string name="verified_by_unknown">Представлено</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Аби наскрізне шифрування лишалося ґарантованим, у цю групу можна додавати лише контактних осіб із зеленою галочкою.\n\nМожна зустрітись із контактною особою та відсканувати баркод із її пристрою, щоби представити її.</string>
     <string name="mailto_dialog_header_select_chat">Виберіть чат, куди потрібно надіслати повідомлення</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s уже містить чернетку повідомлення, бажаєте її замінити?</string>

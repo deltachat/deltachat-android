@@ -118,14 +118,12 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">最后上线 %1$s</string>
     <string name="last_seen_unknown">最后上线：未知</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="other">%d 秒</item>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="other">时长：%d 分钟</item>
     </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="other">%d 分钟</item>
-    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">不到 1 分钟</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="other">%d 分钟</item>
@@ -169,6 +167,9 @@
     <string name="add_to_sticker_collection">添加到贴纸收藏集</string>
     <string name="add_stickers_instructions">要添加贴纸，请点按“打开贴纸文件夹”，为贴纸包创建一个子文件夹，然后将图片和贴纸文件拖动到那里</string>
     <string name="open_sticker_folder">打开贴纸文件夹</string>
+    <string name="ask_add_sticker_to_collection">将此贴纸添加到您的收藏集？</string>
+    <string name="ask_delete_sticker">删除此贴纸？</string>
+    <string name="sticker_picker_empty_hint">点按贴纸即可将其添加到此处。</string>
     <string name="images">图片</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">音频</string>
@@ -248,10 +249,12 @@
     <string name="channels">频道</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">新建频道</string>
-    <!-- deprecated -->
-    <string name="add_recipients">添加订阅者</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">频道名称</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="other">%d 次查看</item>
+    </plurals>
     <string name="email">邮件</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">新建邮件</string>
@@ -267,6 +270,7 @@
     <string name="menu_add_attachment">添加附件</string>
     <string name="menu_leave_group">离开群组</string>
     <string name="menu_leave_channel">离开频道</string>
+    <string name="menu_leave_and_delete">离开并为我删除</string>
     <string name="menu_delete_chat">删除聊天</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">清空聊天记录</string>
@@ -372,25 +376,29 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">呼叫</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">音频通话</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">视频通话</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">接听</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">拒接</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">去电</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">音频通话</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">视频通话</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">音频通话去电</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">视频通话去电</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">来电</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">音频通话来电</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">视频通话来电</string>
     <string name="declined_call">已拒接的来电</string>
     <string name="canceled_call">已取消的通话</string>
     <string name="missed_call">未接来电</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -571,8 +579,6 @@
     <string name="incoming_messages">消息接收</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">消息发送</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">%1$s 上的存储空间</string>
     <string name="connectivity">连接</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">未连接</string>
@@ -701,8 +707,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">使用自定义值： %s</string>
-    <string name="pref_using_default">使用默认值： %s</string>
     <string name="pref_profile_info_headline">您的个人资料</string>
     <string name="pref_profile_photo">个人资料图片</string>
     <string name="pref_blocked_contacts">已屏蔽的联系人</string>
@@ -716,6 +720,7 @@
     <string name="pref_enter_sends">Enter 键发送</string>
     <string name="pref_enter_sends_explain">按 Enter 键发送文本消息</string>
     <string name="pref_outgoing_media_quality">发出媒体质量</string>
+    <string name="pref_outgoing_media_quality_hint">如需发送原始质量的媒体，请将媒体以“文件”形式附加。此方式会消耗您和接收者更多的数据使用量。</string>
     <string name="pref_outgoing_balanced">平衡</string>
     <string name="pref_outgoing_worse">体积小，但质量更差</string>
     <string name="pref_vibrate">振动</string>
@@ -726,6 +731,10 @@
     <string name="pref_notifications">通知</string>
     <string name="pref_mention_notifications">提及</string>
     <string name="pref_mention_notifications_explain">在静音群中，通知直接与你相关的消息，比如回复或回应</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">通话</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">来电时显示通话屏幕</string>
     <string name="pref_notifications_show">显示</string>
     <string name="pref_notifications_priority">优先级</string>
     <string name="pref_notifications_explain">为新消息启用系统通知</string>
@@ -735,8 +744,6 @@
     <string name="pref_sound">声音</string>
     <string name="pref_silent">无声</string>
     <string name="pref_privacy">隐私</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">聊天与媒体</string>
     <string name="pref_system_default">系统默认</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">明亮</string>
@@ -801,8 +808,6 @@
     <string name="n_bytes_message">%1$s 消息</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">下载最晚于 %1$s 前可用</string>
-    <!-- deprecated -->
-    <string name="select_profile">选择账号</string>
     <string name="profile_image_select">选择个人资料图片</string>
     <string name="select_your_new_profile_image">选择新的个人资料图片</string>
     <string name="profile_image_delete">删除个人资料图片</string>
@@ -908,10 +913,6 @@
     <string name="ephemeral_timer_seconds_by_you">你将消息定时销毁计时器设置为 %1$s 秒</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s 将消息定时销毁计时器设为 %1$s 秒</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">你将消息定时销毁计时器设为 1 分钟</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s 将消息定时销毁计时器设为 1 分钟</string>
     <string name="ephemeral_timer_1_hour_by_you">你将消息定时销毁计时器设为 1 小时</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s 将消息定时销毁计时器设为 1 小时</string>
@@ -1008,8 +1009,6 @@
     <string name="verified_by">验证人 %1$s</string>
     <string name="verified_by_you">由您验证</string>
     <string name="verified_by_unknown">已验证</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">要确保端到端加密，你只能将带有绿色验证标识的联系人到此群中。\n\n你可以亲自和未验证联系人线下碰面并扫描联系人二维码来验证。</string>
     <string name="mailto_dialog_header_select_chat">选择要发送消息的聊天</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s 已经有一条草稿消息，是否要替换？</string>

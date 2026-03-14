@@ -196,8 +196,6 @@
     <string name="menu_new_contact">Contact Nou</string>
     <string name="menu_new_chat">Chat Nou</string>
     <string name="menu_new_group">Grup Nou</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Adăugați Destinatari</string>
     <string name="menu_send">Trimiteți</string>
     <string name="menu_toggle_keyboard">Comutați Tastatura Emoji</string>
     <string name="menu_edit_group">Editați grupul</string>
@@ -444,8 +442,6 @@
     <string name="incoming_messages">Mesaje primite</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mesaje de ieșire</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Depozitarea pe %1$s</string>
     <string name="connectivity">Conectivitate</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Nu este conectat</string>
@@ -510,8 +506,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Folosind o comandă personalizată: %s</string>
-    <string name="pref_using_default">Utilizarea implicită: %s</string>
     <string name="pref_profile_info_headline">Informații despre profilul dumneavoastră</string>
     <string name="pref_profile_photo">Imagine de profil</string>
     <string name="pref_blocked_contacts">Contacte blocate</string>
@@ -541,8 +535,6 @@
     <string name="pref_sound">Sunet</string>
     <string name="pref_silent">Silențios</string>
     <string name="pref_privacy">Confidențialitate</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Discuții și mass-media</string>
     <string name="pref_system_default">Sistem implicit</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Lumină</string>

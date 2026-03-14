@@ -271,8 +271,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">:Xüsusi istifadə %s</string>
-    <string name="pref_using_default">Varsayılan istifadə: %s</string>
     <string name="pref_profile_info_headline">Profil məlumatınız</string>
     <string name="pref_profile_photo">Profil şəkili</string>
     <string name="pref_blocked_contacts">Bloklanmış kontaktlar</string>
@@ -298,8 +296,6 @@
     <string name="pref_sound">Səs</string>
     <string name="pref_silent">Səssiz</string>
     <string name="pref_privacy">Gizlilik</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Çatlar və faillar</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Açıq</string>
     <string name="pref_dark_theme">Tünd</string>
