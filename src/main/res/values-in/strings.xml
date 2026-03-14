@@ -181,8 +181,6 @@
     <string name="menu_new_contact">Kontak baru</string>
     <string name="menu_new_chat">Obrolan baru</string>
     <string name="menu_new_group">Grup baru</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Tambahkan Penerima</string>
     <string name="menu_send">Terkirim</string>
     <string name="menu_toggle_keyboard">Tekan tombol emoji keyboard</string>
     <string name="menu_edit_group">Edit grup</string>
@@ -395,8 +393,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Menggunakan custom: %s</string>
-    <string name="pref_using_default">Menggunakan default: %s</string>
     <string name="pref_profile_info_headline">Info profil Anda</string>
     <string name="pref_profile_photo">Gambar profil</string>
     <string name="pref_blocked_contacts">Kontak yang diblokir</string>
@@ -423,8 +419,6 @@
     <string name="pref_sound">Suara</string>
     <string name="pref_silent">Sunyi</string>
     <string name="pref_privacy">Privasi</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Obrolan dan media</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Cahaya</string>
     <string name="pref_dark_theme">Gelap</string>

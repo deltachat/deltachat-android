@@ -345,8 +345,6 @@
     <string name="forward_to">Reencaminhar ...</string>
     <string name="ask_send_files_to_selected_chats">Enviar %1$d arquivo(s) para %2$d conversas?</string>
     <!-- preferences -->
-    <string name="pref_using_custom">Utilizando personalizado %s</string>
-    <string name="pref_using_default">Utilizando padrão: %s</string>
     <string name="pref_profile_info_headline">O seu perfil</string>
     <string name="pref_profile_photo">Foto do perfil</string>
     <string name="pref_blocked_contacts">Bloquear contactos</string>
@@ -369,8 +367,6 @@
     <string name="pref_sound">Som</string>
     <string name="pref_silent">Silêncio</string>
     <string name="pref_privacy">Privacidade</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">chats e mídia</string>
     <string name="pref_system_default">Configuração por omissão</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Luz</string>

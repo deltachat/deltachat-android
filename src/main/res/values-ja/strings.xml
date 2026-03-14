@@ -375,8 +375,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">カスタムを使う：%s</string>
-    <string name="pref_using_default">デフォルトを使う：%s</string>
     <string name="pref_profile_info_headline">ユーザープロファイル</string>
     <string name="pref_profile_photo">アイコン画像</string>
     <string name="pref_blocked_contacts">ブロックされた人</string>
@@ -406,8 +404,6 @@
     <string name="pref_sound">通知音</string>
     <string name="pref_silent">無音</string>
     <string name="pref_privacy">機密保護</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">チャットと写真･動画･音楽</string>
     <string name="pref_system_default">システム既定</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">白</string>
@@ -511,10 +507,6 @@
     <string name="ephemeral_timer_seconds_by_you">自分から消えるメッセージを%1$s秒にしました。</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$sから消えるメッセージを%1$s秒にしました。</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">自分から消えるメッセージを1分にしました。</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$sから消えるメッセージを1分にしました。</string>
     <string name="ephemeral_timer_1_hour_by_you">自分から消えるメッセージを1時間にしました。</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$sから消えるメッセージを1時間にしました。</string>

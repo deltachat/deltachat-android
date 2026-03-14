@@ -118,20 +118,6 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">Ostatnio widziano %1$s</string>
     <string name="last_seen_unknown">Ostatnio widziano: nie wiadomo</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d sekunda</item>
-        <item quantity="few">%d sekundy</item>
-        <item quantity="many">%d sekund</item>
-        <item quantity="other">%d sekundy</item>
-    </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d minuta</item>
-        <item quantity="few">%d minuty </item>
-        <item quantity="many">%d minut</item>
-        <item quantity="other">%d minuty</item>
-    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -281,8 +267,6 @@
     <string name="channels">Kanały</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nowy kanał</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Dodaj subskrybentów</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nazwa kanału</string>
     <string name="email">E-mail</string>
@@ -408,25 +392,25 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Zadzwoń</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Połączenie audio</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Połączenie wideo</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Odbierz</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Odrzuć</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Połączenie wychodzące</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Wychodzące połączenie audio</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Wychodzące połączenie wideo</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Połączenie przychodzące</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Przychodzące połączenie audio</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Przychodzące połączenie wideo</string>
     <string name="declined_call">Połączenie odrzucone</string>
     <string name="canceled_call">Połączenie anulowane</string>
     <string name="missed_call">Połączenie anulowane</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -622,8 +606,6 @@
     <string name="incoming_messages">Wiadomości przychodzące</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Wiadomości wychodzące</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Zajętość skrzynki %1$s</string>
     <string name="connectivity">Łączność</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Nie połączony</string>
@@ -752,8 +734,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Używanie niestandardowe: %s</string>
-    <string name="pref_using_default">Użyj domyślne: %s</string>
     <string name="pref_profile_info_headline">Twój profil</string>
     <string name="pref_profile_photo">Zdjęcie profilowe</string>
     <string name="pref_blocked_contacts">Zablokowane kontakty</string>
@@ -785,8 +765,6 @@
     <string name="pref_sound">Dźwięk</string>
     <string name="pref_silent">Cichy</string>
     <string name="pref_privacy">Prywatność</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Czaty i media</string>
     <string name="pref_system_default">Domyślny systemu</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Jasny</string>
@@ -851,8 +829,6 @@
     <string name="n_bytes_message">Wiadomość %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Maksymalna ilość do pobrania dostępna do %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Wybierz profil</string>
     <string name="profile_image_select">Wybierz zdjęcie profilowe</string>
     <string name="select_your_new_profile_image">Wybierz nowe zdjęcie profilowe</string>
     <string name="profile_image_delete">Usuń zdjęcie profilowe</string>
@@ -955,10 +931,6 @@
     <string name="ephemeral_timer_seconds_by_you">Ustawiono zegar znikających wiadomości na %1$s s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Użytkownik %2$s ustawił zegar znikających wiadomości na %1$s s.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Ustawiono zegar znikających wiadomości na 1 minutę.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Użytkownik %1$s ustawił zegar znikających wiadomości na 1 minutę.</string>
     <string name="ephemeral_timer_1_hour_by_you">Ustawiono zegar znikających wiadomości na 1 godzinę.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Użytkownik %1$s ustawił zegar znikających wiadomości na 1 godzinę.</string>
@@ -1055,8 +1027,6 @@
     <string name="verified_by">Kontakt zweryfikowany przez %1$s</string>
     <string name="verified_by_you">Kontakt zweryfikowany przez ciebie</string>
     <string name="verified_by_unknown">Zweryfikowano</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Aby zagwarantować szyfrowanie end-to-end, do tej grupy możesz dodawać wyłącznie kontakty oznaczone zielonym znacznikiem wyboru.\n\nMożesz spotkać się z kontaktami osobiście i zeskanować ich kod QR, aby je zweryfikować.</string>
     <string name="mailto_dialog_header_select_chat">Wybierz czat, do którego chcesz wysłać wiadomość</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">Na czacie %1$s jest już wersja robocza wiadomości, czy chcesz ją zastąpić?</string>

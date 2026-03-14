@@ -339,8 +339,6 @@
     <string name="forward_to">هەناردن بۆ...</string>
     <string name="share_text_multiple_chats">ئەم دەقە دەنێریت بۆ %1$d وتووێژ؟n\n\"%2$s\"</string>
     <!-- preferences -->
-    <string name="pref_using_custom">بەکارهێنانی دڵخواز: %s</string>
-    <string name="pref_using_default">بەکارهێنانی بنەڕەتی: %s</string>
     <string name="pref_profile_info_headline">زانیارییەکانی پرۆفایلەکەت</string>
     <string name="pref_profile_photo">وێنەی لادیمەن</string>
     <string name="pref_blocked_contacts">هەژمارە ئاستەنگکراوەکان</string>
@@ -366,8 +364,6 @@
     <string name="pref_sound">دەنگ</string>
     <string name="pref_silent">بێدەنگ</string>
     <string name="pref_privacy">پاراستنی تاکەکەسی</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">وتووێژ و ڕەنگاڵەکان</string>
     <string name="pref_system_default">بنەڕەتی سیستەم</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">ڕووناک</string>

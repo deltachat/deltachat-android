@@ -118,6 +118,12 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">最後上線時間：%1$s</string>
     <string name="last_seen_unknown">最後上線時間：未知</string>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="other">持續時間%d分鐘</item>
+    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">少於 1 分鐘</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="other">%d分鐘前</item>
@@ -161,6 +167,9 @@
     <string name="add_to_sticker_collection">新增至貼圖集</string>
     <string name="add_stickers_instructions">要添加貼圖，請點擊「打開貼圖資料夾」 ，為您的貼圖包創建一個子資料夾，然後將圖像和貼圖檔拖拽到那裡</string>
     <string name="open_sticker_folder">開啟貼圖資料夾</string>
+    <string name="ask_add_sticker_to_collection">將這個貼圖加入你的收藏嗎？</string>
+    <string name="ask_delete_sticker">移除這個貼圖？</string>
+    <string name="sticker_picker_empty_hint">點擊貼圖以將其添加到這裡。</string>
     <string name="images">圖片</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">音訊</string>
@@ -234,8 +243,23 @@
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">與……聊天</string>
     <string name="clone_chat">克隆聊天</string>
-    <!-- deprecated -->
-    <string name="add_recipients">新增對象</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">頻道</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">頻道</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">新頻道</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">頻道名稱</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="other">%d次觀看</item>
+    </plurals>
+    <string name="email">郵件</string>
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">新郵件</string>
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
+    <string name="subject">主題</string>
     <string name="menu_send">送出</string>
     <string name="menu_toggle_keyboard">切換表情符號鍵盤</string>
     <string name="menu_edit_group">編輯群組</string>
@@ -245,6 +269,8 @@
     <string name="menu_unarchive_chat">對話解除封存</string>
     <string name="menu_add_attachment">新增附件</string>
     <string name="menu_leave_group">退出群組</string>
+    <string name="menu_leave_channel">離開頻道</string>
+    <string name="menu_leave_and_delete">離開并爲我刪除</string>
     <string name="menu_delete_chat">刪除對話</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">清除對話</string>
@@ -329,6 +355,8 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">新增至主畫面</string>
     <string name="donate">捐贈</string>
+    <string name="donate_device_msg">❤️ 您似乎很喜歡 Delta Chat！\n\n請考慮捐款以幫助Delta Chat確保對每個人保持免費。/n/n雖然 Delta Chat 可以免費使用並且是開源的，但開發需要資金。幫助我們保持 Delta Chat 的獨立性，並在未來讓它更棒。\n\nhttps://delta.chat/donate</string>
+
     <string name="mute_for_one_hour">靜音1小時</string>
     <string name="mute_for_eight_hours">靜音8小時</string>
     <string name="mute_for_one_day">靜音1天</string>
@@ -346,6 +374,35 @@
     </plurals>
     <string name="file_saved_to">檔案已儲存至「%1$s」。</string>
 
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">通話</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
+    <string name="start_audio_call">音訊通話</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
+    <string name="start_video_call">視訊通話</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">接聽</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">拒接</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">音訊通話</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">視訊通話</string>
+    <!-- deprecated, use "Audio call" instead -->
+    <string name="outgoing_audio_call">撥出音訊通話</string>
+    <!-- deprecated, use "Video call" instead -->
+    <string name="outgoing_video_call">撥出視訊通話</string>
+    <!-- deprecated, use "Audio call" instead -->
+    <string name="incoming_audio_call">撥入音訊通話</string>
+    <!-- deprecated, use "Video call" instead -->
+    <string name="incoming_video_call">撥出視訊通話</string>
+    <string name="declined_call">已拒接來電</string>
+    <string name="canceled_call">已取消通話</string>
+    <string name="missed_call">未接來電</string>
+
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">確定要離開？</string>
     <plurals name="ask_delete_chat">
         <item quantity="other">刪除您所有裝置上的%d個聊天記錄？</item>
     </plurals>
@@ -364,6 +421,8 @@
     <string name="ask_start_chat_with">要和%1$s開始對話嗎？</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">要把%1$s移出群組嗎？</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">將%1$s從頻道中移除？</string>
     <string name="open_url_confirmation">你想開啟此連結嗎？</string>
 
 
@@ -388,6 +447,8 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">向 %1$s 傳送訊息。</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">頻道是一種用於一對多廣播訊息的工具。</string>
     <string name="chat_new_group_hint">只有在你傳送第一條訊息後，其他人才會看到此群組。</string>
     <string name="chat_record_slide_to_cancel">滑動以取消</string>
     <string name="chat_record_explain">按住錄音，放開後傳送</string>
@@ -518,8 +579,6 @@
     <string name="incoming_messages">傳入訊息</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">傳出訊息</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">%1$s上的存儲空間</string>
     <string name="connectivity">連接狀態</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">未連接</string>
@@ -568,6 +627,7 @@
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
     <string name="scan_invitation_code">掃描邀請碼</string>
     <string name="login_title">登入</string>
+    <string name="login_advanced_hint">此登入適用於進階使用者：\n\n• 不要使用你在其他應用程式中使用的位址。\n\n• 傳統的電子郵件伺服器允許未使用端對端加密的聊天，並以郵件圖示標示。</string>
     <string name="login_inbox">收件匣</string>
     <string name="login_imap_login">IMAP 帳號</string>
     <string name="login_imap_server">IMAP 伺服器</string>
@@ -582,7 +642,7 @@
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">代理伺服器</string>
     <string name="proxy_use_proxy">使用代理伺服器</string>
-    <string name="proxy_add">添加代理伺服器</string>
+    <string name="proxy_add">新增代理伺服器</string>
     <string name="proxy_add_explain">支援的代理伺服器類型：HTTP（S）、SOCKS5 和 Shadowsocks。</string>
     <string name="proxy_add_url_hint">在此處輸入代理伺服器連結</string>
     <string name="proxy_invalid">代理伺服器無效或不受支援</string>
@@ -592,6 +652,19 @@
     <string name="proxy_use_proxy_confirm">是否要使用代理 「%1$s」？</string>
     <string name="proxy_share_explain">您的朋友可以通過掃描QR碼來添加此代理。</string>
     <string name="proxy_share_link">分享連結</string>
+    <string name="proxy_enabled">已啓用代理伺服器連接</string>
+    <string name="proxy_enabled_hint">你正在使用代理伺服器連接。如果你在連線時遇到問題，請嘗試其他代理伺服器。</string>
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
+    <string name="transports">中繼伺服器</string>
+    <string name="add_transport">新增中繼伺服器</string>
+    <string name="remove_transport">移除中繼伺服器</string>
+    <string name="edit_transport">編輯中繼伺服器</string>
+    <!-- shown if a QR code was scanned that can be used as a relay -->
+    <string name="confirm_add_transport">新增這個中繼伺服器？</string>
+    <string name="invalid_transport_qr">掃描的 QR 碼不包含有效的中繼伺服器。</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_transport">是否移除中繼伺服器“%1$s”？\n\n移除后您的聯絡人只有之前通過其他中繼伺服器聯絡過您，他們才可以繼續聯絡您。\n\n如有疑問，請稍後移除中繼伺服器。</string>
+
     <string name="login_certificate_checks">憑證檢查</string>
     <string name="login_error_mail">請輸入有效的電子郵件位址</string>
     <string name="login_error_server">請輸入有效的伺服器／IP 位址</string>
@@ -634,8 +707,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">使用自訂值: %s</string>
-    <string name="pref_using_default">使用預設值: %s</string>
     <string name="pref_profile_info_headline">你的個人資料</string>
     <string name="pref_profile_photo">大頭照</string>
     <string name="pref_blocked_contacts">已封鎖的聯絡人</string>
@@ -644,10 +715,12 @@
     <string name="pref_your_name">你的名字</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">簽名檔</string>
+    <string name="chat_description">描述</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">換行鍵送出訊息</string>
     <string name="pref_enter_sends_explain">按下換行鍵就送出訊息</string>
     <string name="pref_outgoing_media_quality">傳送的媒體品質</string>
+    <string name="pref_outgoing_media_quality_hint">若要傳送原始品質的媒體，請將媒體作為「檔案」附加。這會消耗你和收件人大量的數據使用量。</string>
     <string name="pref_outgoing_balanced">普通</string>
     <string name="pref_outgoing_worse">低品質</string>
     <string name="pref_vibrate">振動</string>
@@ -658,6 +731,10 @@
     <string name="pref_notifications">通知設定</string>
     <string name="pref_mention_notifications">提到</string>
     <string name="pref_mention_notifications_explain">在勿擾的群組中，通知傳送給您的訊息，例如回復或回應</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">通話</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">來電時顯示通話畫面</string>
     <string name="pref_notifications_show">顯示通知</string>
     <string name="pref_notifications_priority">通知優先權</string>
     <string name="pref_notifications_explain">為新訊息啟用系統通知</string>
@@ -667,8 +744,6 @@
     <string name="pref_sound">音效</string>
     <string name="pref_silent">靜音</string>
     <string name="pref_privacy">隱私權設定</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">對話和媒體設定</string>
     <string name="pref_system_default">系統預設</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">亮色</string>
@@ -695,6 +770,7 @@
     <string name="pref_backup">備份</string>
     <string name="pref_backup_explain">將備份另存至外部儲存媒體</string>
     <string name="pref_backup_export_explain">備份可以讓你把設定及對話紀錄轉移到這台或其它裝置上。\n\n備份內容包括所有的訊息、聯絡人、對話、端到端AutoCrypt設定。請務必將備份檔存放在安全的地方，並在轉移後儘快刪除。</string>
+    <string name="pref_backup_export_this">匯出此賬戶</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">匯出全部%1$d個賬戶</string>
     <string name="pref_backup_export_start_button">開始備份</string>
@@ -704,6 +780,10 @@
     <string name="pref_background_btn_default">使用預設圖案</string>
     <string name="pref_background_btn_gallery">從相簿中挑選</string>
     <string name="pref_imap_folder_warn_disable_defaults">如果關閉本選項的話，請務必確定你的伺服器和其它客戶端應用程式都使用相同的設定，否則很可能不能運作。</string>
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <string name="pref_multidevice">多裝置模式</string>
+    <string name="pref_multidevice_explain">將您的訊息與其他裝置同步。新增第二個裝置時自動啟用</string>
+    <string name="pref_multidevice_change_warn">在多個裝置上使用同一的帳戶時，必須啟用多裝置模式。只有在您已從所有其他設備移除此帳戶後，才可以禁用此設定。\n\n在多個裝置上使用該帳戶時禁用多裝置模式將導致漏接訊息及其他問題。</string>
     <string name="pref_auto_folder_moves">自動搬移到 DeltaChat 資料夾</string>
     <string name="pref_only_fetch_mvbox_title">僅從 DeltaChat 資料夾中獲取</string>
     <string name="pref_show_emails">顯示傳統email</string>
@@ -711,6 +791,7 @@
     <string name="pref_show_emails_accepted_contacts">顯示已接受的聯絡人</string>
     <string name="pref_show_emails_all">所有郵件</string>
     <string name="pref_experimental_features">實驗性功能</string>
+    <string name="pref_experimental_features_explain">這些功能可能不穩定，並且可能會被更改或移除</string>
     <string name="pref_on_demand_location_streaming">按需要位置串流</string>
     <string name="pref_background_default">預設圖片</string>
     <string name="pref_background_default_color">預設顏色</string>
@@ -727,8 +808,6 @@
     <string name="n_bytes_message">%1$s 訊息</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">下載有效期至%1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">選擇賬戶</string>
     <string name="profile_image_select">選擇大頭貼</string>
     <string name="select_your_new_profile_image">選擇新的大頭貼</string>
     <string name="profile_image_delete">刪除大頭貼</string>
@@ -737,6 +816,14 @@
     <string name="disable_imap_idle">禁用 IMAP IDLE</string>
     <string name="disable_imap_idle_explain">即使伺服器支援 IMAP IDLE 擴展，也不要使用它。啟用此選項會延遲訊息檢索，僅對測試啟用此選項。</string>
     <string name="send_stats_to_devs">將統計數據發送給 Delta Chat 的開發人員</string>
+    <string name="stats_device_message">你想透過每週傳送匿名使用統計數據來幫助改進 Delta Chat 並支持研究嗎？\n\n👉 點擊這裡… 👈</string>
+    <string name="stats_confirmation_dialog">你想透過每週寄送匿名使用統計資料來幫助改善 Delta Chat 並支持研究嗎？</string>
+    <string name="stats_thanks">謝謝你！你可以隨時在「設定 -> 進階」中關閉傳送。\n\n是否愿意用 5 分鐘的時間參加Delta Chat 的安全性科學研究嗎？</string>
+    <string name="stats_disable_dialog">統計數據的傳送已啟用。\n\n你想要停用它嗎？</string>
+    <string name="disable">禁用</string>
+    <string name="stats_keep_sending">繼續傳送</string>
+    <string name="stats_msg_body">附件包含匿名使用統計數據，這有助於我們改進 Delta Chat。更多資訊請參見 https://delta.chat/help#statssending 。謝謝！</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">搜尋結果</string>
     <string name="emoji_not_found">找不到表情符號</string>
@@ -791,6 +878,9 @@
     <string name="group_image_changed_by_you">我已更改群組圖片。</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s已更改群組圖片。</string>
+    <string name="chat_description_changed_by_you">你更改了聊天描述。</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">聊天描述已被%1$s更改。</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">已新增成員 %1$s。</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
@@ -803,6 +893,11 @@
     <string name="remove_member_by_other">%2$s已移除成員 %1$s</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">已移除成員 %1$s</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="group_left_by_you">你已離開該群組。</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="channel_left_by_you">你已離開該頻道。</string>
+    <string name="you_joined_the_channel">你已加入該頻道。</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s 退出了群組。</string>
     <string name="group_image_deleted_by_you">我已刪除群組圖片。</string>
@@ -818,10 +913,6 @@
     <string name="ephemeral_timer_seconds_by_you">您將自動刪除訊息計時器設置為%1$s秒</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s設置自動刪除訊息計時器為%1$s秒。</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">您將自動刪除訊息計時器設置為 1 分鐘。</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s將自動刪除訊息計時器設置為 1 分鐘。</string>
     <string name="ephemeral_timer_1_hour_by_you">您將自動刪除訊息計時器設置為 1 小時。</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s將自動刪除訊息計時器設置為 1 分鐘。</string>
@@ -831,6 +922,9 @@
     <string name="ephemeral_timer_1_week_by_you">您將自動刪除訊息計時器設置為 1週。</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">%1$s將自動刪除訊息計時器設置為 1週。</string>
+    <string name="ephemeral_timer_1_year_by_you">您將自動刪除訊息計時器設置為 1年。</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_1_year_by_other">%1$s將自動刪除訊息計時器設置為 1年。</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">您將自動刪除訊息計時器設置為%1$s分鐘。</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
@@ -847,6 +941,7 @@
     <string name="ephemeral_timer_weeks_by_you">您將自動刪除訊息計時器設置為%1$s週。</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s將自動刪除訊息計時器設置為%1$s週。</string>
+    <string name="chat_unencrypted_explanation">此聊天中的訊息使用傳統電子郵件，並未進行端對端加密。</string>
     <string name="chat_protection_enabled_tap_to_learn_more">從現在開始，保證消息進行端到端加密。輕觸以瞭解更多資訊。</string>
     <string name="chat_protection_enabled_explanation">現在可以保證此聊天中的所有消息都是端到端加密的。\n\n端到端加密使您和您的聊天夥伴之間的消息保持私密。甚至您的電子郵件供應商也無法讀取它們。</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s需要端到端加密，但尚未為此聊天設置。輕觸以瞭解更多資訊。</string>
@@ -871,6 +966,7 @@
     <string name="qrscan_hint_desktop">將 QR 碼移動到相機</string>
     <string name="qrscan_failed">QR 碼無法識別</string>
     <string name="qrscan_ask_join_group">你要參加群組 「%1$s」嗎?</string>
+    <string name="qrscan_ask_join_channel">是否加入頻道“%1$s”？</string>
     <string name="qrscan_fingerprint_mismatch">掃描的指紋與的最後一次看到%1$s的指紋不匹配。</string>
     <string name="qrscan_no_addr_found">此 QR 碼包含指紋，但不包含電子郵件位址。\n\n要進行帶外驗證，請先與收件者建立加密連接。</string>
     <string name="qrscan_contains_text">掃描的 QR 碼文本：\n\n%1$s</string>
@@ -878,6 +974,7 @@
     <string name="qrscan_fingerprint_label">指紋</string>
     <string name="withdraw_verifycontact_explain">其他人可以掃描此QR碼與您聯絡。您可以在此處停用QR碼，然後再次掃描以重新啟動它。</string>
     <string name="withdraw_verifygroup_explain">其他人可以掃描此 QR 碼以加入群組「%1$s」。\n\n您可以在此處停用 QR 碼，然後再次掃描以重新啟動它。</string>
+    <string name="withdraw_joinbroadcast_explain">其他人可以掃描這個 QR 碼以加入此頻道“%1$s”。\n\n您可以重置它，這樣現有的 QR 碼或邀請連結將不再有效。</string>
     <string name="withdraw_qr_code">停用QR碼</string>
     <string name="revive_verifycontact_explain">此 QR 碼可以被其他人掃描以與您聯絡。\n\n此裝置上的 QR 碼未啟用。</string>
     <string name="revive_qr_code">啟用QR碼</string>
@@ -888,6 +985,7 @@
     <string name="qrshow_join_group_title">邀請QR碼</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">掃描加入群組「%1$s」</string>
+    <string name="qrshow_join_channel_hint">掃描以加入頻道“%1$s”</string>
     <string name="qrshow_join_contact_title">QR 圖碼邀請碼</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">掃描 QRCode 以新增 %1$s</string>
@@ -900,15 +998,17 @@
     <string name="qrlogin_ask_login">登入「%1$s」？</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s邀請您加入此群組。\n\n正在等待%2$s裝置的回覆...</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s邀請你加入這個頻道。\n\n正在等待%2$s的裝置的回應…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s已回覆，等待被添加到群組中...</string>
     <string name="secure_join_wait">正在建立有保證的端到端加密，請稍候...</string>
     <string name="contact_verified">%1$s已介紹。</string>
+    <string name="contact_blocked">你已封鎖該聯絡人</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">由%1$s介紹</string>
     <string name="verified_by_you">由我介紹</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">為了保證端到端加密，您只能將帶有綠色驗證標識的聯絡人添加到此群組。\n\n您可以當面掃描聯絡人的QR碼以介紹他們。</string>
+    <string name="verified_by_unknown">已驗證</string>
     <string name="mailto_dialog_header_select_chat">選擇要將消息發送到的聊天</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s已有草稿消息，是否要替換它？</string>
@@ -924,6 +1024,7 @@
     <string name="notify_name_only">僅名稱</string>
     <string name="notify_no_name_or_message">沒有名稱或訊息</string>
     <string name="notifications_disabled">通知已停用</string>
+    <string name="unreliable_bg_notifications">啟用「強制背景連線」以確保完成通知。</string>
     <string name="new_messages">新訊息</string>
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">你有新訊息</string>
@@ -1044,11 +1145,11 @@
     <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
     <string name="shortcuts_widget_title">捷徑</string>
     <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
-    <string name="shortcuts_widget_description">使用 Delta Chat 的“添加到小工具”添加項目</string>
+    <string name="shortcuts_widget_description">使用 Delta Chat 的“新增到小工具”添加項目</string>
     <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
     <string name="remove_from_widget">從小工具中移除</string>
     <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
-    <string name="add_to_widget">添加到小工具</string>
+    <string name="add_to_widget">新增到小工具</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用您的相機拍攝和傳送照片和影片，以及掃描QR碼。</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat 需要存取權才能在您啟用位置共用的時間範圍內共用您的位置。</string>
@@ -1070,4 +1171,7 @@
     <string name="perm_enable_bg_reminder_title">點擊此處可在 Delta Chat 處於後台時接收訊息。</string>
     <string name="perm_enable_bg_already_done">您已經允許 Delta Chat 在後台接收訊息。\n\n如果消息仍未在後台到達，請同時檢查您的系統設定。</string>
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_2_0">新版變化？
+💯 端對端加密現在可靠且永久有效。鎖頭圖標🔒已經消失！\n\n✉️ 沒有端對端加密的傳統電子郵件會以信件符號✉️標示\n\n😻 為你的所有聯絡人提供全新增強的個人資料頁面\n\n🔲 新按鈕可快速存取聊天中使用的應用程式\n\n❤️ 請捐款以幫助我們保持獨立並持續提供改進：%1$s</string>
+</resources>
