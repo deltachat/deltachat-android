@@ -10,13 +10,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.PowerManager;
 import android.util.Log;
 import android.util.Rational;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,8 +40,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
-import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.EglUtils;
@@ -85,7 +84,7 @@ public class CallActivity extends AppCompatActivity {
 
   // Layouts and elements
   private ConstraintLayout topBar;
-  private MaterialCardView bottomSheetContainer;
+  private LinearLayout bottomLayoutContainer;
   private CardView localVideoContainer;
   private ImageButton endCallButton;
   private MaterialButton answerButton;
@@ -97,11 +96,14 @@ public class CallActivity extends AppCompatActivity {
 
   private final MediatorLiveData<Boolean> videoConfigChanged = new MediatorLiveData<>();
 
+  // Misc
+
+  private PowerManager.WakeLock proximityWakeLock;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    // TODO: check if we need landscape layout
     setContentView(R.layout.activity_call);
 
     setupWindowFlags();
@@ -109,6 +111,8 @@ public class CallActivity extends AppCompatActivity {
     initializeViews();
 
     setupInsets();
+
+    initializeProximityWakeLock();
 
     if (!hasRequiredPermissions()) {
       requestRequiredPermissions();
@@ -121,12 +125,12 @@ public class CallActivity extends AppCompatActivity {
 
       if (isInPipMode) {
         topBar.setVisibility(View.GONE);
-        bottomSheetContainer.setVisibility(View.GONE);
+        bottomLayoutContainer.setVisibility(View.GONE);
         localVideoContainer.setVisibility(View.GONE);
         incomingCallPrompt.setVisibility(View.GONE);
       } else {
         topBar.setVisibility(View.VISIBLE);
-        bottomSheetContainer.setVisibility(View.VISIBLE);
+        bottomLayoutContainer.setVisibility(View.VISIBLE);
         if (viewModel != null) {
           CallViewModel.CallState state = viewModel.getCallState().getValue();
           if (state != null) {
@@ -135,6 +139,8 @@ public class CallActivity extends AppCompatActivity {
         }
         layoutVideos();
       }
+
+      updateProximityWakeLock();
     });
 
     initializeViewModel();
@@ -236,9 +242,29 @@ public class CallActivity extends AppCompatActivity {
     controller.setAppearanceLightNavigationBars(false);
   }
 
+  private void initializeProximityWakeLock() {
+    PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+
+    if (powerManager == null) {
+      Log.w(TAG, "PowerManager not available");
+      return;
+    }
+
+    if (powerManager.isWakeLockLevelSupported(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK)) {
+      proximityWakeLock = powerManager.newWakeLock(
+        PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK,
+        "DeltaChat:ProximityLock"
+      );
+      proximityWakeLock.setReferenceCounted(false);
+      Log.d(TAG, "Proximity wake lock initialized");
+    } else {
+      Log.w(TAG, "Proximity wake lock not supported on this device");
+    }
+  }
+
   private void initializeViews() {
     topBar = findViewById(R.id.top_bar);
-    bottomSheetContainer = findViewById(R.id.bottom_sheet_container);
+    bottomLayoutContainer = findViewById(R.id.call_controls_layout);
     localVideoContainer = findViewById(R.id.local_video_container);
 
     localVideoView = findViewById(R.id.local_video_view);
@@ -407,7 +433,10 @@ public class CallActivity extends AppCompatActivity {
         R.drawable.ic_videocam_on : R.drawable.ic_videocam_off);
     });
 
-    viewModel.getCurrentAudioEndpoint().observe(this, this::updateSpeakerButton);
+    viewModel.getCurrentAudioEndpoint().observe(this, endpoint -> {
+      updateSpeakerButton(endpoint);
+      updateProximityWakeLock();
+    });
 
     viewModel.getAvailableAudioEndpoints().observe(this, endpoints -> {
       // Need observe to trigger flow emit
@@ -466,7 +495,7 @@ public class CallActivity extends AppCompatActivity {
       case INITIALIZING:
         statusText.setText("Initializing...");
         incomingCallPrompt.setVisibility(View.GONE);
-        bottomSheetContainer.setVisibility(View.GONE);
+        bottomLayoutContainer.setVisibility(View.GONE);
         callerIconContainer.setVisibility(View.GONE);
         answerModeSelector.setVisibility(View.GONE);
         remoteAvatarView.setVisibility(View.GONE);
@@ -475,7 +504,7 @@ public class CallActivity extends AppCompatActivity {
       case PROMPTING_USER_ACCEPT:
         statusText.setText("Incoming call");
         incomingCallPrompt.setVisibility(View.VISIBLE);
-        bottomSheetContainer.setVisibility(View.GONE);
+        bottomLayoutContainer.setVisibility(View.GONE);
         callerIconContainer.setVisibility(View.VISIBLE);
         answerModeSelector.setVisibility(View.VISIBLE);
         remoteAvatarView.setVisibility(View.GONE);
@@ -485,7 +514,7 @@ public class CallActivity extends AppCompatActivity {
       case RINGING:
         statusText.setText("Ringing...");
         incomingCallPrompt.setVisibility(View.GONE);
-        bottomSheetContainer.setVisibility(View.VISIBLE);
+        bottomLayoutContainer.setVisibility(View.VISIBLE);
         callerIconContainer.setVisibility(View.GONE);
         answerModeSelector.setVisibility(View.GONE);
         remoteAvatarView.setVisibility(View.VISIBLE);
@@ -494,7 +523,7 @@ public class CallActivity extends AppCompatActivity {
       case CONNECTING:
         statusText.setText("Connecting...");
         incomingCallPrompt.setVisibility(View.GONE);
-        bottomSheetContainer.setVisibility(View.VISIBLE);
+        bottomLayoutContainer.setVisibility(View.VISIBLE);
         callerIconContainer.setVisibility(View.GONE);
         answerModeSelector.setVisibility(View.GONE);
         remoteAvatarView.setVisibility(View.VISIBLE);
@@ -503,7 +532,7 @@ public class CallActivity extends AppCompatActivity {
       case CONNECTED:
         statusText.setText("Connected");
         incomingCallPrompt.setVisibility(View.GONE);
-        bottomSheetContainer.setVisibility(View.VISIBLE);
+        bottomLayoutContainer.setVisibility(View.VISIBLE);
         callerIconContainer.setVisibility(View.GONE);
         answerModeSelector.setVisibility(View.GONE);
         remoteAvatarView.setVisibility(View.VISIBLE);
@@ -522,7 +551,7 @@ public class CallActivity extends AppCompatActivity {
       case ERROR:
         statusText.setText("Call failed");
         incomingCallPrompt.setVisibility(View.GONE);
-        bottomSheetContainer.setVisibility(View.GONE);
+        bottomLayoutContainer.setVisibility(View.GONE);
         callerIconContainer.setVisibility(View.GONE);
         answerModeSelector.setVisibility(View.GONE);
         remoteAvatarView.setVisibility(View.VISIBLE);
@@ -534,6 +563,8 @@ public class CallActivity extends AppCompatActivity {
         }, 2500);
         break;
     }
+
+    updateProximityWakeLock();
   }
 
   private void updateSpeakerButton(CallEndpointCompat endpoint) {
@@ -569,6 +600,37 @@ public class CallActivity extends AppCompatActivity {
     );
 
     dialog.show();
+  }
+
+  private void updateProximityWakeLock() {
+    if (proximityWakeLock == null) {
+      return;
+    }
+
+    boolean shouldHoldLock = shouldHoldLock();
+
+    // Acquire or release based on conditions
+    if (shouldHoldLock && !proximityWakeLock.isHeld()) {
+      proximityWakeLock.acquire(10 * 60 * 1000L);
+      Log.d(TAG, "Proximity wake lock acquired");
+    } else if (!shouldHoldLock && proximityWakeLock.isHeld()) {
+      // Prevent screen from turning on immediately if phone is still near face
+      proximityWakeLock.release(PowerManager.RELEASE_FLAG_WAIT_FOR_NO_PROXIMITY);
+      Log.d(TAG, "Proximity wake lock released with wait flag");
+    }
+  }
+
+  private boolean shouldHoldLock() {
+    CallViewModel.CallState state = viewModel.getCallState().getValue();
+    CallEndpointCompat endpoint = viewModel.getCurrentAudioEndpoint().getValue();
+
+    return (state == CallViewModel.CallState.CONNECTED ||
+      state == CallViewModel.CallState.RINGING ||
+      state == CallViewModel.CallState.CONNECTING ||
+      state == CallViewModel.CallState.RECONNECTING) &&
+      endpoint != null &&
+      endpoint.getType() == CallEndpointCompat.TYPE_EARPIECE &&
+      !isInPictureInPictureMode();
   }
 
   private void initializeAnswerModeSelector() {
@@ -778,6 +840,17 @@ public class CallActivity extends AppCompatActivity {
   }
 
   // Cleanup
+
+  @Override
+  protected void onPause() {
+    super.onPause();
+
+    if (proximityWakeLock != null && proximityWakeLock.isHeld()) {
+      proximityWakeLock.release();
+      Log.d(TAG, "Proximity wake lock released in onDestroy");
+    }
+
+  }
 
   @Override
   protected void onDestroy() {

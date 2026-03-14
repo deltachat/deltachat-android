@@ -50,7 +50,10 @@ public class CallUtil {
   }
 
   @Nullable
+  @RequiresApi(api = Build.VERSION_CODES.M)
   protected static Icon getIconFromChat(Context context, DcChat dcChat) {
+    Log.d(TAG, "getIconFromChat: thread=" + Thread.currentThread().getName());
+
     try {
       Recipient recipient = new Recipient(context, dcChat);
       ContactPhoto contactPhoto = recipient.getContactPhoto(context);
@@ -74,12 +77,18 @@ public class CallUtil {
       }
 
       if (bitmap != null) {
-        return Icon.createWithBitmap(bitmap);
+        Log.d(TAG, "Bitmap loaded: " + bitmap.getWidth() + "x" + bitmap.getHeight()
+                + ", config=" + bitmap.getConfig() + ", recycled=" + bitmap.isRecycled());
+        Icon icon = Icon.createWithBitmap(bitmap);
+        Log.d(TAG, "Icon created successfully");
+        return icon;
       }
+
     } catch (Exception e) {
       Log.e(TAG, "Failed to load caller icon", e);
     }
 
+    Log.w(TAG, "Returning null icon");
     return null;
   }
 

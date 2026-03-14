@@ -57,9 +57,12 @@ import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
 import kotlin.coroutines.EmptyCoroutineContext;
+import kotlinx.coroutines.BuildersKt;
 import kotlinx.coroutines.CoroutineScope;
 import kotlinx.coroutines.CoroutineScopeKt;
 import kotlinx.coroutines.Dispatchers;
+import kotlinx.coroutines.flow.Flow;
+import kotlinx.coroutines.flow.FlowKt;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class CallCoordinator implements DcEventCenter.DcEventDelegate {
@@ -78,6 +81,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private final NotificationManagerCompat notificationManager;
   private final Rpc rpc;
   private CoroutineScope audioFlowScope;
+  private final Handler mainHandler = new Handler(Looper.getMainLooper());
 
   // LiveData for Observable State
   private final MutableLiveData<PeerConnection.PeerConnectionState> connectionState =
@@ -115,6 +119,15 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
   private CallControlScope activeCallControlScope;
   private CallViewModel activeCallViewModel;
+  private CallEndpointCompat preferredStartingEndpoint;
+
+  private final Runnable outgoingRingtoneRunnable = () -> {
+    synchronized (CallCoordinator.this) {
+      if (callService != null && activeCallId != null) {
+        callService.startOutgoingRingtone();
+      }
+    }
+  };
 
   private CallCoordinator(Context context) {
     this.appContext = context.getApplicationContext();
@@ -181,41 +194,53 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     serviceConnection = new ServiceConnection() {
       @Override
       public void onServiceConnected(ComponentName name, IBinder service) {
-        CallService.LocalBinder binder = (CallService.LocalBinder) service;
-        callService = binder.getService();
-        Log.d(TAG, "Bound to CallService");
+        synchronized (CallCoordinator.this) {
+          CallService.LocalBinder binder = (CallService.LocalBinder) service;
+          callService = binder.getService();
+          Log.d(TAG, "Bound to CallService");
 
-        if (!isIncomingCall) {
-
-          // For outgoing call, show notification immediately
-          String calleeName = displayName.getValue();
-          if (calleeName == null) {
-            calleeName = "Unknown";
+          if (activeAccId == null || activeCallId == null) {
+            Log.d(TAG, "Call already ended, not initializing service");
+            stopAndUnbindService();
+            notificationManager.cancel(NOTIFICATION_ID_CALL);
+            return;
           }
 
-          showOrUpdateOngoingNotification("Calling " + calleeName + "...");
-        }
+          if (!isIncomingCall) {
 
-        // Initialize call
-        callService.initializeCall();
+            // For outgoing call, show notification immediately
+            String calleeName = displayName.getValue();
+            if (calleeName == null) {
+              calleeName = "Unknown";
+            }
 
-        if (isIncomingCall) {
-          callService.startIncomingRingtone();
-        } else {
-          callService.startOutgoingRingtone();
+            showOrUpdateOngoingNotification("Calling " + calleeName + "...");
+          }
+
+          // Initialize call
+          callService.initializeCall();
+
+          if (isIncomingCall) {
+            callService.startIncomingRingtone();
+          } else {
+            mainHandler.removeCallbacks(outgoingRingtoneRunnable);
+            mainHandler.postDelayed(outgoingRingtoneRunnable, 1500);
+          }
         }
       }
 
       @Override
       public void onServiceDisconnected(ComponentName name) {
-        callService = null;
-        isServiceBound = false;
+        synchronized (CallCoordinator.this) {
+          callService = null;
+          isServiceBound = false;
+        }
         Log.d(TAG, "Unbound from CallService");
       }
     };
   }
 
-  private void startAndBindService() {
+  private synchronized void startAndBindService() {
     Intent serviceIntent = new Intent(this.appContext, CallService.class);
     this.appContext.startService(serviceIntent);
 
@@ -229,7 +254,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     Log.d(TAG, "Bind service result: " + isServiceBound);
   }
 
-  private void stopAndUnbindService() {
+  private synchronized void stopAndUnbindService() {
     if (isServiceBound) {
       try {
         this.appContext.unbindService(serviceConnection);
@@ -414,18 +439,23 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
   }
 
-  public String getPendingOfferSdp() {
+  public synchronized String getPendingOfferSdp() {
     return pendingOfferSdp;
   }
 
-  public void clearPendingOfferSdp() {
+  public synchronized void clearPendingOfferSdp() {
     pendingOfferSdp = null;
   }
 
   // RPC Signaling (CallService)
 
-  public void handleOfferReady(String offerSdp) {
+  public synchronized void handleOfferReady(String offerSdp) {
     Log.d(TAG, "Offer SDP ready, sending via RPC");
+
+    if (activeAccId == null || activeCallId == null) {
+      Log.d(TAG, "Call ended, not handling offer");
+      return;
+    }
 
     new Thread(() -> {
       try {
@@ -463,7 +493,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
   // Call Control Methods (CallViewModel)
 
-  public void showIncomingCallScreen(int callId) {
+  public synchronized void showIncomingCallScreen(int callId) {
     if (!isIncomingCall) {
       Log.d(TAG, "Not an incoming call");
       return;
@@ -508,7 +538,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     Log.d(TAG, "Answering call: " + callId);
   }
 
-  public void declineCall() {
+  public synchronized void declineCall() {
     Log.d(TAG, "declineCall called");
 
     if (activeCallId == null) {
@@ -556,7 +586,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     cleanupCall(activeAccId, activeCallId);
   }
 
-  public void hangUp() {
+  public synchronized void hangUp() {
     Log.d(TAG, "hangUp called");
 
     if (activeCallId == null) {
@@ -646,7 +676,37 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
   // Setup Audio Endpoint Flow Collection
 
-  private void setupAudioEndpointCollection(CallControlScope scope) {
+  private CallEndpointCompat getPreferredStartingEndpoint(boolean startsWithVideo) {
+    try {
+      Flow<List<CallEndpointCompat>> endpointsFlow =
+        callsManager.getAvailableStartingCallEndpoints();
+
+      // Block and get first emission from Flow
+      List<CallEndpointCompat> endpoints =
+        BuildersKt.runBlocking(
+          EmptyCoroutineContext.INSTANCE,
+          (scope, continuation) -> FlowKt.first(endpointsFlow, continuation)
+        );
+
+      // For audio-only calls, prefer earpiece
+      if (!startsWithVideo && !endpoints.isEmpty()) {
+        for (CallEndpointCompat endpoint : endpoints) {
+          if (endpoint.getType() == CallEndpointCompat.TYPE_EARPIECE) {
+            Log.d(TAG, "Pre-selected earpiece for audio-only call");
+            return endpoint;
+          }
+        }
+      }
+
+      return null;
+
+    } catch (Exception e) {
+      Log.e(TAG, "Failed to get preferred starting endpoint", e);
+      return null;
+    }
+  }
+
+  private synchronized void setupAudioEndpointCollection(CallControlScope scope) {
     Log.d(TAG, "Setting up audio endpoint flow collection");
 
     // Create CoroutineScope for Flow collection
@@ -665,6 +725,9 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
         (value != null ? value.size() : 0));
       availableAudioEndpoints.setValue(value);
 
+      // Turns out the system Bluetooth/AudioService will trigger a second audio change
+      // And Telecom tries to prevent it but doesn't always success, so a delayed
+      // switch is still needed as a backup
       if (!hasAutoSelectedEarpiece && !startsWithVideo) {
         hasAutoSelectedEarpiece = true;
 
@@ -678,28 +741,30 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
             }
           }
 
-          if (earpieceEndpoint != null) {
+          final CallEndpointCompat finalEarpieceEndpoint = earpieceEndpoint;
+
+          mainHandler.postDelayed(() -> {
+          if (finalEarpieceEndpoint != null) {
             Log.d(TAG, "Auto-selecting earpiece for audio-only outgoing call");
-            requestAudioEndpointChange(earpieceEndpoint);
+            requestAudioEndpointChange(finalEarpieceEndpoint);
           } else {
             Log.d(TAG, "No earpiece endpoint available on this device");
           }
 
           // Only start collecting current audio endpoint after we made the selection
           // The delay is to avoid a Telecom problem where at the beginning it will switch endpoints rapidly
-          new Handler(Looper.getMainLooper()).postDelayed(() -> {
             startCurrentEndpointCollection(scope);
-          }, 500);
+          }, 1000);
         }
       } else {
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+        mainHandler.postDelayed(() -> {
           startCurrentEndpointCollection(scope);
         }, 500);
       }
     });
   }
 
-  private void startCurrentEndpointCollection(CallControlScope scope) {
+  private synchronized void startCurrentEndpointCollection(CallControlScope scope) {
     if (currentAudioEndpointSource != null) {
       return;
     }
@@ -726,7 +791,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   }
 
   // Request Audio Endpoint Change
-  public void requestAudioEndpointChange(CallEndpointCompat endpoint) {
+  public synchronized void requestAudioEndpointChange(CallEndpointCompat endpoint) {
     Log.d(TAG, "Requesting audio endpoint change to: " + endpoint.getName());
 
     if (activeCallControlScope == null) {
@@ -759,7 +824,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
   // Helper (CallService)
 
-  public String fetchIceServers() throws RpcException {
+  public synchronized String fetchIceServers() throws RpcException {
     if (activeAccId == null) {
       throw new RpcException("No active account");
     }
@@ -805,7 +870,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }).start();
   }
 
-  private void onIncomingCall(int accId, int callId, String offerSdp, boolean startsWithVideo) {
+  private synchronized void onIncomingCall(int accId, int callId, String offerSdp, boolean startsWithVideo) {
     Log.d(TAG, "onIncomingCall: accId=" + accId + ", callId=" + callId);
 
     if (activeCallId != null) {
@@ -832,6 +897,8 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     displayName.postValue(callerName);
     displayIcon.postValue(callerIcon);
 
+    this.preferredStartingEndpoint = getPreferredStartingEndpoint(startsWithVideo);
+
     // Add to CallsManager
     CallAttributesCompat callAttributes = createCallAttributes(
       callerName, callId, true);
@@ -843,7 +910,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     startAndBindService();
   }
 
-  private void onIncomingCallAccepted(int callId) {
+  private synchronized void onIncomingCallAccepted(int callId) {
     Log.d(TAG, "onIncomingCallAccepted: callId=" + callId);
 
     if (activeCallId == null || !activeCallId.equals(callId)) {
@@ -899,7 +966,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     showOrUpdateOngoingNotification("Call with " + calleeName);
   }
 
-  private void onCallEnded(int accId, int callId) {
+  private synchronized void onCallEnded(int accId, int callId) {
     Log.d(TAG, "onCallEnded: accId=" + accId + ", callId=" + callId);
 
     if (callService != null) {
@@ -935,7 +1002,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     cleanupCall(accId, callId);
   }
 
-  private void handleConnectionEnded(PeerConnection.PeerConnectionState state) {
+  private synchronized void handleConnectionEnded(PeerConnection.PeerConnectionState state) {
     Log.d(TAG, "handleConnectionEnded: " + state);
 
     if (activeCallId == null) {
@@ -958,7 +1025,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   /**
    * Cleanup call state, used for clean up not initialized from backend events
    */
-  public void cleanupCall(int accId, int callId) {
+  public synchronized void cleanupCall(int accId, int callId) {
     Log.d(TAG, "cleanupCall: accId=" + accId + ", callId=" + callId);
 
     if (activeCallId != null && !activeCallId.equals(callId) ||
@@ -973,13 +1040,16 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     this.activeChatId = null;
     this.activeCallControlScope = null;
     this.activeCallViewModel = null;
+    this.preferredStartingEndpoint = null;
     this.isIncomingCall = false;
     this.startsWithVideo = false;
     this.pendingOfferSdp = null;
     this.hasNotifiedBackend = false;
     this.hasAutoSelectedEarpiece = false;
 
-    new Handler(Looper.getMainLooper()).post(() -> {
+    mainHandler.removeCallbacks(outgoingRingtoneRunnable);
+
+    mainHandler.post(() -> {
       if (currentAudioEndpointSource != null) {
         currentAudioEndpoint.removeSource(currentAudioEndpointSource);
         currentAudioEndpointSource = null;
@@ -1012,13 +1082,13 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     Log.d(TAG, "Call cleanup complete");
   }
 
-  private void notifyBackendCallEnded() {
+  private synchronized void notifyBackendCallEnded() {
     if (hasNotifiedBackend) {
       Log.d(TAG, "Backend already notified of call end");
       return;
     }
 
-    if (activeCallId == null || activeCallId < 0) {
+    if (activeAccId == null || activeCallId == null || activeCallId < 0) {
       Log.w(TAG, "Cannot notify backend, invalid callId");
       return;
     }
@@ -1053,7 +1123,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     availableAudioEndpoints.postValue(null);
   }
 
-  public void initiateOutgoingCall(int accId, int chatId, boolean startsWithVideo) {
+  public synchronized void initiateOutgoingCall(int accId, int chatId, boolean startsWithVideo) {
     Log.d(TAG, "Initiating outgoing call:accId=" + accId + ", chatId=" + chatId);
 
     if (activeCallId != null) {
@@ -1089,17 +1159,22 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     DcContext dcContext = ApplicationContext.getDcAccounts().getAccount(accId);
     DcChat dcChat = dcContext.getChat(chatId);
     String calleeName = getNameFromChat(dcChat);
-    Icon calleeIcon = getIconFromChat(this.appContext, dcChat);
-
     displayName.postValue(calleeName);
-    displayIcon.postValue(calleeIcon);
+
+    // This is fine because icon is UI only and not used elsewhere
+    new Thread(() -> {
+      Icon calleeIcon = getIconFromChat(this.appContext, dcChat);
+      displayIcon.postValue(calleeIcon);
+    }).start();
+
+    this.preferredStartingEndpoint = getPreferredStartingEndpoint(startsWithVideo);
 
     startAndBindService();
 
     launchCallActivity();
   }
 
-  public void completeOutgoingCall(int accId, int callId, int chatId) {
+  public synchronized void completeOutgoingCall(int accId, int callId, int chatId) {
     Log.d(TAG, "Completing outgoing call with accId=" + accId + ", callId=" + callId);
 
     if (activeAccId == null || activeCallId == null || activeChatId == null) {
@@ -1169,7 +1244,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
           Log.d(TAG, "CallControlScope initialized");
           activeCallControlScope = scope;
 
-          new Handler(Looper.getMainLooper()).post(() -> {
+          mainHandler.post(() -> {
             setupAudioEndpointCollection(scope);
           });
 
@@ -1206,7 +1281,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
         CallAttributesCompat.DIRECTION_OUTGOING,
       CallAttributesCompat.CALL_TYPE_VIDEO_CALL,
       CallAttributesCompat.SUPPORTS_SET_INACTIVE,
-      null
+      this.preferredStartingEndpoint
     );
   }
 
@@ -1386,42 +1461,34 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     Log.d(TAG, "Launching CallActivity, hasActiveViewModel: " + (activeCallViewModel != null));
   }
 
-  public void setActiveCallViewModel(CallViewModel viewModel) {
+  public synchronized void setActiveCallViewModel(CallViewModel viewModel) {
     this.activeCallViewModel = viewModel;
   }
 
-  public void clearActiveCallViewModel() {
+  public synchronized void clearActiveCallViewModel() {
     this.activeCallViewModel = null;
   }
 
-  public CallControlScope getActiveCallControlScope() {
-    return activeCallControlScope;
-  }
-
-  public CallService getCallService() {
-    return callService;
-  }
-
-  public boolean hasActiveCall() {
+  public synchronized boolean hasActiveCall() {
     return activeCallId != null;
   }
 
-  public boolean hasOngoingCall() {
+  public synchronized boolean hasOngoingCall() {
     if (activeCallId == null) return false;
 
     PeerConnection.PeerConnectionState state = connectionState.getValue();
     return state != null && state != PeerConnection.PeerConnectionState.NEW;
   }
 
-  public boolean isIncomingCall() {
+  public synchronized boolean isIncomingCall() {
     return isIncomingCall;
   }
 
-  public boolean isStartsWithVideo() {
+  public synchronized boolean isStartsWithVideo() {
     return startsWithVideo;
   }
 
-  public void setStartsWithVideo(boolean startsWithVideo) {
+  public synchronized void setStartsWithVideo(boolean startsWithVideo) {
     this.startsWithVideo = startsWithVideo;
   }
 
