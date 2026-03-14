@@ -25,6 +25,8 @@ public abstract class Qr {
     public String fingerprint;
     /** Invite number. */
     public String invitenumber;
+    /** Whether the inviter supports the new Securejoin v3 protocol */
+    public Boolean is_v3;
   }
 
 /** Ask the user whether to join the group. */
@@ -41,6 +43,8 @@ public abstract class Qr {
     public String grpname;
     /** Invite number. */
     public String invitenumber;
+    /** Whether the inviter supports the new Securejoin v3 protocol */
+    public Boolean is_v3;
   }
 
 /** Ask the user whether to join the broadcast channel. */
@@ -55,6 +59,8 @@ public abstract class Qr {
     public String grpid;
     /** Invite number. */
     public String invitenumber;
+    /** Whether the inviter supports the new Securejoin v3 protocol */
+    public Boolean is_v3;
     /** The user-visible name of this broadcast channel */
     public String name;
   }

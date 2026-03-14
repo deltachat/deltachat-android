@@ -393,8 +393,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Bruger tilpasset: %s</string>
-    <string name="pref_using_default">Bruger standard: %s</string>
     <string name="pref_profile_info_headline">Profil information</string>
     <string name="pref_profile_photo">Profilbillede</string>
     <string name="pref_blocked_contacts">Blokerede kontakter</string>
@@ -424,8 +422,6 @@
     <string name="pref_sound">Lyd</string>
     <string name="pref_silent">Stille</string>
     <string name="pref_privacy">Privatliv</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Samtaler og medie</string>
     <string name="pref_system_default">Systemstandard</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Lys</string>
@@ -534,10 +530,6 @@
     <string name="ephemeral_timer_seconds_by_you">Tidsudløb for beskeder sat til %1$s s af mig.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Tidsudløb for beskeder sat til %1$s s af %2$s.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Tidsudløb for beskeder sat til 1 minut af mig.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Tidsudløb for beskeder sat til 1 minut af %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Tidsudløb for beskeder sat til 1 time af mig.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Tidsudløb for beskeder sat til 1 time af %1$s.</string>
