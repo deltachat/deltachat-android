@@ -22,6 +22,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
+import android.os.Build;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -41,6 +42,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.calls.CallCoordinator;
 import org.thoughtcrime.securesms.calls.CallUtil;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.BorderlessImageView;
@@ -974,13 +976,21 @@ public class ConversationItem extends BaseConversationItem
       if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
       } else {
-          int accId = dcContext.getAccountId();
           int chatId = messageRecord.getChatId();
           if (!messageRecord.isOutgoing() && callInfo.state instanceof CallState.Alerting) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
               int callId = messageRecord.getId();
-              CallUtil.openCall(getContext(), accId, chatId, callId, callInfo.sdpOffer, callInfo.hasVideo);
+              CallCoordinator coordinator = CallCoordinator.getInstance(context);
+              coordinator.showIncomingCallScreen(callId);
+            }
           } else {
-              CallUtil.startCall(getContext(), accId, chatId, callInfo.hasVideo);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+              if (callInfo.hasVideo) {
+                CallUtil.startVideoCall(getContext(), chatId);
+              } else {
+                CallUtil.startAudioCall(getContext(), chatId);
+              }
+            }
           }
       }
     }

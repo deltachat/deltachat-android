@@ -33,7 +33,7 @@ android {
         applicationId "com.b44t.messenger"
         multiDexEnabled true
 
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 36
 
         vectorDrawables.useSupportLibrary = true
@@ -155,6 +155,11 @@ dependencies {
     def media3_version = "1.8.0"   // 1.9.0 need minSdkVersion 23
 
     implementation 'androidx.concurrent:concurrent-futures:1.3.0'
+    implementation 'androidx.core:core:1.17.0'
+    implementation 'androidx.core:core-telecom:1.0.1'
+    implementation 'im.conversations.webrtc:webrtc-android:129.0.0'
+    // For Kotlin->Java interpolation
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.10.0'
     implementation 'androidx.sharetarget:sharetarget:1.2.0'
     implementation 'androidx.webkit:webkit:1.14.0'
     implementation 'androidx.multidex:multidex:2.0.1'

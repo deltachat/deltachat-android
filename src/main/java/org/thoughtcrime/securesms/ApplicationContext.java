@@ -27,6 +27,7 @@ import com.b44t.messenger.DcEventChannel;
 import com.b44t.messenger.DcEventEmitter;
 import com.b44t.messenger.FFITransport;
 
+import org.thoughtcrime.securesms.calls.CallCoordinator;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -299,6 +300,12 @@ public class ApplicationContext extends MultiDexApplication {
     initializeJobManager();
     InChatSounds.getInstance(this);
 
+    EglUtils.getEglBase();
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      CallCoordinator.getInstance(this);
+    }
+
     DynamicTheme.setDefaultDayNightMode(this);
 
     IntentFilter filter = new IntentFilter(Intent.ACTION_LOCALE_CHANGED);
@@ -349,6 +356,12 @@ public class ApplicationContext extends MultiDexApplication {
             webxdcGarbageCollectionRequest);
 
     Log.i("DeltaChat", "+++++++++++ ApplicationContext.onCreate() finished ++++++++++");
+  }
+
+  @Override
+  public void onTerminate() {
+    super.onTerminate();
+    EglUtils.release();
   }
 
   public JobManager getJobManager() {
