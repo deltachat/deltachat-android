@@ -41,6 +41,7 @@ public class MediaUtil {
   public static final String IMAGE_JPEG = "image/jpeg";
   public static final String IMAGE_GIF = "image/gif";
   public static final String AUDIO_AAC = "audio/aac";
+  public static final String AUDIO_M4A = "audio/mp4";
   public static final String AUDIO_UNSPECIFIED = "audio/*";
   public static final String VIDEO_UNSPECIFIED = "video/*";
   public static final String OCTET = "application/octet-stream";
@@ -294,6 +295,8 @@ public class MediaUtil {
     switch (contentType) {
       case AUDIO_AAC:
         return "aac";
+      case AUDIO_M4A:
+        return "m4a";
       case IMAGE_WEBP:
         return "webp";
       case WEBXDC:
