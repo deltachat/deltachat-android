@@ -118,16 +118,6 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
     <string name="last_seen_relative">yettwaẓer i tikkelt taneggarut %1$s</string>
     <string name="last_seen_unknown">yettwaẓer i tikkelt taneggarut: Arussin</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d n tasint</item>
-        <item quantity="other">%d n tasinin</item>
-    </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d n tesdat</item>
-        <item quantity="other">%d n tesdatin</item>
-    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d n tesdat</item>
@@ -259,8 +249,6 @@
     <string name="channels">Ibuda</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Abadu amaynut</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Rni imeltaɣen</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Isen n ubadu</string>
     <string name="email">Imayl</string>
@@ -383,25 +371,25 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Siwel</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Asiwel n umeslaw</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Asiwel n tvidyut</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Err</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Agi</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Tiɣri tuffiɣt</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Asiwel n umeslaw uffiɣ</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Asiwel n uvidyu uffiɣ</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Tiɣri i d-ikecmen</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Asiwel n umeslaw ukcim</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Asiwel n uvidyu ukcim</string>
     <string name="declined_call">Tiɣri tettwagi</string>
     <string name="canceled_call">Tiɣri tettwasefsex</string>
     <string name="missed_call">Tiɣri ittwazeglen</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -587,8 +575,6 @@
     <string name="incoming_messages">Iznan ukcimen</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Iznan uffiɣen</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Aḥraz deg %1$s</string>
     <string name="connectivity">Tuqqna</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Ur yeqqin ara</string>
@@ -717,8 +703,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom"> Aseqdec asagen: %s</string>
-    <string name="pref_using_default">Aseqdec amezwer: %s</string>
     <string name="pref_profile_info_headline">Amaɣnu-inek·inem</string>
     <string name="pref_profile_photo">Tugna n umaɣnu</string>
     <string name="pref_blocked_contacts">Inermisen yettusweḥlen</string>
@@ -751,8 +735,6 @@
     <string name="pref_sound">Imesli</string>
     <string name="pref_silent">Asusam</string>
     <string name="pref_privacy">Tabaḍnit</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Idiwenniyen d Umidya</string>
     <string name="pref_system_default">Anagraw amezwer</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Aceɛlal </string>
@@ -817,8 +799,6 @@
     <string name="n_bytes_message">Izen %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Sader-d afellay i yellan alamma d %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Fren amaɣnu</string>
     <string name="profile_image_select">Fren tugna n umaɣnu</string>
     <string name="select_your_new_profile_image">Fren tugna-ik·im tamaynut n umaɣnu</string>
     <string name="profile_image_delete">Kkes tugna n umaɣnu</string>
@@ -924,10 +904,6 @@
     <string name="ephemeral_timer_seconds_by_you">Tesbedḍeḍ amkud n yiznan ur nettdum ara ɣer %1$s n tesdatin</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Amkud n yiznan ur nettdum ara yettwasbed ar %1$s n tesdatin sɣur %2$s.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Tesbeddeḍ amkud n yiznan ur nettdum ara ɣer 1 n tesdat.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Amkud n yiznan ur nettdum ara yettwasbed ar 1 n tesdat sɣur %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Tesbeddeḍ amkud n yiznan ue nettdum ara ɣer 1 n usrag.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Amkud n yiznan ur nettdum ara yettwasbed ar 1 n usrag sɣur %1$s.</string>
@@ -1024,8 +1000,6 @@
     <string name="verified_by">Yettwasenked sɣur %1$s</string>
     <string name="verified_by_you">Yettwasenked sɣur nekk</string>
     <string name="verified_by_unknown">Yettwasenked</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Akken ad tḍemneḍ awgelhan n yixef ɣer yixef, tzemreḍ kan ad ternuḍ inermisen s tecreḍt n usenqed tadalt i ugraw-a.\n\nTzemreḍ ad temlileḍ inermisen s timmad-nsen u ad tesḍummeḍ tangalt-nsen QR akken ad ten-senkdeḍ.</string>
     <string name="mailto_dialog_header_select_chat">Fren adiwenni i tuzna n yizen ɣer</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s ɣur-s yakkan izen n urewway, tebɣiḍ ad t-tbeddleḍ?</string>

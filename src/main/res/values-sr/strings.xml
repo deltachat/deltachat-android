@@ -217,8 +217,6 @@
     <string name="menu_new_contact">Нови контакт</string>
     <string name="menu_new_chat">Ново ћаскање</string>
     <string name="menu_new_group">Нова група</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Додај примаоце</string>
     <string name="menu_send">Пошаљи</string>
     <string name="menu_toggle_keyboard">Емоџи тастатура</string>
     <string name="menu_edit_group">Уреди групу</string>
@@ -457,8 +455,6 @@
     <string name="incoming_messages">Долазеће поруке</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Одлазеће поруке</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Складиштење на %1$s</string>
     <string name="connectivity">Повезаност</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Нисте повезани</string>
@@ -523,8 +519,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Користи поручен: %s</string>
-    <string name="pref_using_default">Користи уобичајено: %s</string>
     <string name="pref_profile_info_headline">Подаци вашег профила</string>
     <string name="pref_profile_photo">Слика профила</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
@@ -554,8 +548,6 @@
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Без звука</string>
     <string name="pref_privacy">Приватност</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Ћаскања и медији</string>
     <string name="pref_system_default">Подразумеване поставке оперативног система</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Светла</string>
@@ -682,10 +674,6 @@
     <string name="ephemeral_timer_seconds_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s секунде</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s секунде.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Ви сте подесили хронометар за нестајуће поруке на 1 минут.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s је подесио хронометар за нестајуће поруке на 1 минут.</string>
     <string name="ephemeral_timer_1_hour_by_you">Ви сте подесили хронометар за нестајуће поруке на 1 сат.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$sје подесио хронометар за нестајуће поруке на 1 сат.</string>
