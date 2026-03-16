@@ -12,13 +12,9 @@
 * Fix: keep original sent timestamp for resent messages
 * Fix: make clicking on broadcast member-added messages work always
 * Fix: remove notification when a message is deleted by sender
-<<<<<<< adb/issue-3508
 * Fix: avoid "reply privately" not quoting the selected message sometimes
-* Update to core 2.44.0
-=======
 * Some more bug fixes and updated translations
 * Update to core 2.45.0
->>>>>>> main
 
 ## v2.43.0
 2026-02
