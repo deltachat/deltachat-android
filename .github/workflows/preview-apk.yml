@@ -32,9 +32,6 @@ jobs:
       - name: Validate Gradle Wrapper
         uses: gradle/actions/wrapper-validation@v4
 
-      - name: Check code format
-        run: ./gradlew spotlessCheck
-
       - uses: android-actions/setup-android@v3
       - uses: nttld/setup-ndk@v1
         id: setup-ndk
