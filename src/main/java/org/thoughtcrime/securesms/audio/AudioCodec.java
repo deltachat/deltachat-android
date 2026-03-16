@@ -6,20 +6,18 @@ import android.media.AudioRecord;
 import android.media.MediaCodec;
 import android.media.MediaCodecInfo;
 import android.media.MediaFormat;
+import android.media.MediaMuxer;
 import android.media.MediaRecorder;
 import android.util.Log;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.Util;
 
 public class AudioCodec {
 
   private static final String TAG = AudioCodec.class.getSimpleName();
 
   private static final int SAMPLE_RATE = 44100;
-  private static final int SAMPLE_RATE_INDEX = 4;
   private static final int CHANNELS = 1;
   private static final int BIT_RATE_BALANCED = 32000;
   private static final int BIT_RATE_WORSE = 24000;
@@ -27,11 +25,14 @@ public class AudioCodec {
   private final int bufferSize;
   private final MediaCodec mediaCodec;
   private final AudioRecord audioRecord;
+  private final String outputPath;
 
-  private boolean running = true;
-  private boolean finished = false;
+  private volatile boolean running = true;
+  private volatile boolean finished = false;
+  private long startTime = 0;
 
-  public AudioCodec(Context context) throws IOException {
+  public AudioCodec(Context context, String outputPath) throws IOException {
+    this.outputPath = outputPath;
     this.bufferSize =
         AudioRecord.getMinBufferSize(
             SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
@@ -43,7 +44,7 @@ public class AudioCodec {
     try {
       audioRecord.startRecording();
     } catch (Exception e) {
-      Log.w(TAG, e);
+      Log.w(TAG, "Failed to start recording", e);
       mediaCodec.release();
       throw new IOException(e);
     }
@@ -51,41 +52,147 @@ public class AudioCodec {
 
   public synchronized void stop() {
     running = false;
-    while (!finished) Util.wait(this, 0);
+    while (!finished) {
+      try {
+        wait(5000);
+        if (!finished) {
+          Log.w(TAG, "Timeout waiting for recording to finish");
+          break;
+        }
+      } catch (InterruptedException ie) {
+        Log.w(TAG, "Interrupted while waiting for recording to finish", ie);
+        Thread.currentThread().interrupt();
+        break;
+      }
+    }
   }
 
-  public void start(final OutputStream outputStream) {
+  public void start() {
     new Thread(
-            new Runnable() {
-              @Override
-              public void run() {
-                MediaCodec.BufferInfo bufferInfo = new MediaCodec.BufferInfo();
-                byte[] audioRecordData = new byte[bufferSize];
-                ByteBuffer[] codecInputBuffers = mediaCodec.getInputBuffers();
-                ByteBuffer[] codecOutputBuffers = mediaCodec.getOutputBuffers();
+            () -> {
+              this.startTime = System.nanoTime();
+
+              MediaCodec.BufferInfo bufferInfo = new MediaCodec.BufferInfo();
+              byte[] audioRecordData = new byte[bufferSize];
+              MediaMuxer muxer = null;
+              int audioTrackIndex = -1;
+              boolean muxerStarted = false;
+
+              try {
+                muxer = new MediaMuxer(outputPath, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);
+
+                while (true) {
+                  boolean running = isRunning();
+
+                  handleCodecInput(audioRecord, audioRecordData, mediaCodec, running);
+                  int codecOutputBufferIndex = mediaCodec.dequeueOutputBuffer(bufferInfo, 2000);
+
+                  while (codecOutputBufferIndex != MediaCodec.INFO_TRY_AGAIN_LATER) {
+                    if (codecOutputBufferIndex == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) {
+                      // Get the format to add track to muxer
+                      if (muxerStarted) {
+                        Log.w(TAG, "Output format changed after muxer started, ignoring");
+                        codecOutputBufferIndex = mediaCodec.dequeueOutputBuffer(bufferInfo, 0);
+                        continue;
+                      }
+                      MediaFormat newFormat = mediaCodec.getOutputFormat();
+                      Log.d(TAG, "Output format changed: " + newFormat);
+                      audioTrackIndex = muxer.addTrack(newFormat);
+                      muxer.start();
+                      muxerStarted = true;
+                      Log.d(TAG, "Muxer started");
+                    } else if (codecOutputBufferIndex >= 0) {
+                      ByteBuffer encodedData = mediaCodec.getOutputBuffer(codecOutputBufferIndex);
+
+                      if ((bufferInfo.flags & MediaCodec.BUFFER_FLAG_CODEC_CONFIG) != 0) {
+                        // Codec config info, not actual data, skip it
+                        Log.d(TAG, "Ignoring CODEC_CONFIG buffer");
+                        bufferInfo.size = 0;
+                      }
+
+                      if (bufferInfo.size != 0 && encodedData != null) {
+                        if (!muxerStarted) {
+                          Log.w(TAG, "Muxer not started, dropping encoded data");
+                        } else {
+                          encodedData.position(bufferInfo.offset);
+                          encodedData.limit(bufferInfo.offset + bufferInfo.size);
+                          muxer.writeSampleData(audioTrackIndex, encodedData, bufferInfo);
+                        }
+
+                        // Adjust ByteBuffer to match BufferInfo
+                        encodedData.position(bufferInfo.offset);
+                        encodedData.limit(bufferInfo.offset + bufferInfo.size);
+
+                        // Write sample data to muxer
+                        muxer.writeSampleData(audioTrackIndex, encodedData, bufferInfo);
+                      }
+
+                      mediaCodec.releaseOutputBuffer(codecOutputBufferIndex, false);
+
+                      // Check for end of stream
+                      if ((bufferInfo.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
+                        Log.d(TAG, "End of stream reached");
+                        break;
+                      }
+                    }
+
+                    codecOutputBufferIndex = mediaCodec.dequeueOutputBuffer(bufferInfo, 0);
+                  }
+
+                  if (!running && (bufferInfo.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
+                    break;
+                  }
+                }
+              } catch (Exception e) {
+                Log.w(TAG, "Error during encoding", e);
+              } finally {
+                try {
+                  if (muxerStarted && muxer != null) {
+                    try {
+                      muxer.stop();
+                      Log.d(TAG, "Muxer stopped");
+                    } catch (IllegalStateException e) {
+                      Log.w(TAG, "Muxer already stopped", e);
+                    }
+                  }
+                } catch (Exception e) {
+                  Log.w(TAG, "Error stopping muxer", e);
+                }
+
+                if (muxer != null) {
+                  try {
+                    muxer.release();
+                    Log.d(TAG, "Muxer released");
+                  } catch (Exception e) {
+                    Log.w(TAG, "Error releasing muxer", e);
+                  }
+                }
 
                 try {
-                  while (true) {
-                    boolean running = isRunning();
-
-                    handleCodecInput(
-                        audioRecord, audioRecordData, mediaCodec, codecInputBuffers, running);
-                    handleCodecOutput(mediaCodec, codecOutputBuffers, bufferInfo, outputStream);
-
-                    if (!running) break;
-                  }
-                } catch (IOException e) {
-                  Log.w(TAG, e);
-                } finally {
                   mediaCodec.stop();
-                  audioRecord.stop();
-
-                  mediaCodec.release();
-                  audioRecord.release();
-
-                  Util.close(outputStream);
-                  setFinished();
+                } catch (Exception e) {
+                  Log.w(TAG, "Error stopping codec", e);
                 }
+
+                try {
+                  audioRecord.stop();
+                } catch (Exception e) {
+                  Log.w(TAG, "Error stopping audio record", e);
+                }
+
+                try {
+                  mediaCodec.release();
+                } catch (Exception e) {
+                  Log.w(TAG, "Error releasing codec", e);
+                }
+
+                try {
+                  audioRecord.release();
+                } catch (Exception e) {
+                  Log.w(TAG, "Error releasing audio record", e);
+                }
+
+                setFinished();
               }
             },
             AudioCodec.class.getSimpleName())
@@ -102,75 +209,35 @@ public class AudioCodec {
   }
 
   private void handleCodecInput(
-      AudioRecord audioRecord,
-      byte[] audioRecordData,
-      MediaCodec mediaCodec,
-      ByteBuffer[] codecInputBuffers,
-      boolean running) {
+      AudioRecord audioRecord, byte[] audioRecordData, MediaCodec mediaCodec, boolean running) {
     int length = audioRecord.read(audioRecordData, 0, audioRecordData.length);
+
+    if (length < 0) {
+      Log.w(TAG, "Error reading from AudioRecord: " + length);
+      return;
+    }
+
     int codecInputBufferIndex = mediaCodec.dequeueInputBuffer(10 * 1000);
 
     if (codecInputBufferIndex >= 0) {
-      ByteBuffer codecBuffer = codecInputBuffers[codecInputBufferIndex];
-      codecBuffer.clear();
-      codecBuffer.put(audioRecordData);
-      mediaCodec.queueInputBuffer(
-          codecInputBufferIndex, 0, length, 0, running ? 0 : MediaCodec.BUFFER_FLAG_END_OF_STREAM);
-    }
-  }
+      ByteBuffer codecBuffer = mediaCodec.getInputBuffer(codecInputBufferIndex);
 
-  private void handleCodecOutput(
-      MediaCodec mediaCodec,
-      ByteBuffer[] codecOutputBuffers,
-      MediaCodec.BufferInfo bufferInfo,
-      OutputStream outputStream)
-      throws IOException {
-    int codecOutputBufferIndex = mediaCodec.dequeueOutputBuffer(bufferInfo, 0);
-
-    while (codecOutputBufferIndex != MediaCodec.INFO_TRY_AGAIN_LATER) {
-      if (codecOutputBufferIndex >= 0) {
-        ByteBuffer encoderOutputBuffer = codecOutputBuffers[codecOutputBufferIndex];
-
-        encoderOutputBuffer.position(bufferInfo.offset);
-        encoderOutputBuffer.limit(bufferInfo.offset + bufferInfo.size);
-
-        if ((bufferInfo.flags & MediaCodec.BUFFER_FLAG_CODEC_CONFIG)
-            != MediaCodec.BUFFER_FLAG_CODEC_CONFIG) {
-          byte[] header = createAdtsHeader(bufferInfo.size - bufferInfo.offset);
-
-          outputStream.write(header);
-
-          byte[] data = new byte[encoderOutputBuffer.remaining()];
-          encoderOutputBuffer.get(data);
-          outputStream.write(data);
-        }
-
-        encoderOutputBuffer.clear();
-
-        mediaCodec.releaseOutputBuffer(codecOutputBufferIndex, false);
-      } else if (codecOutputBufferIndex == MediaCodec.INFO_OUTPUT_BUFFERS_CHANGED) {
-        codecOutputBuffers = mediaCodec.getOutputBuffers();
+      if (codecBuffer != null) {
+        codecBuffer.clear();
+        codecBuffer.put(audioRecordData, 0, length);
+        long presentationTimeUs = getPresentationTimeUs();
+        mediaCodec.queueInputBuffer(
+            codecInputBufferIndex,
+            0,
+            length,
+            presentationTimeUs,
+            running ? 0 : MediaCodec.BUFFER_FLAG_END_OF_STREAM);
       }
-
-      codecOutputBufferIndex = mediaCodec.dequeueOutputBuffer(bufferInfo, 0);
     }
   }
 
-  private byte[] createAdtsHeader(int length) {
-    int frameLength = length + 7;
-    byte[] adtsHeader = new byte[7];
-
-    adtsHeader[0] = (byte) 0xFF; // Sync Word
-    adtsHeader[1] = (byte) 0xF1; // MPEG-4, Layer (0), No CRC
-    adtsHeader[2] = (byte) ((MediaCodecInfo.CodecProfileLevel.AACObjectLC - 1) << 6);
-    adtsHeader[2] |= (((byte) SAMPLE_RATE_INDEX) << 2);
-    adtsHeader[2] |= (((byte) CHANNELS) >> 2);
-    adtsHeader[3] = (byte) (((CHANNELS & 3) << 6) | ((frameLength >> 11) & 0x03));
-    adtsHeader[4] = (byte) ((frameLength >> 3) & 0xFF);
-    adtsHeader[5] = (byte) (((frameLength & 0x07) << 5) | 0x1f);
-    adtsHeader[6] = (byte) 0xFC;
-
-    return adtsHeader;
+  private long getPresentationTimeUs() {
+    return (System.nanoTime() - startTime) / 1000;
   }
 
   private AudioRecord createAudioRecord(int bufferSize) {
@@ -184,11 +251,9 @@ public class AudioCodec {
 
   private MediaCodec createMediaCodec(Context context, int bufferSize) throws IOException {
     MediaCodec mediaCodec = MediaCodec.createEncoderByType("audio/mp4a-latm");
-    MediaFormat mediaFormat = new MediaFormat();
 
-    mediaFormat.setString(MediaFormat.KEY_MIME, "audio/mp4a-latm");
-    mediaFormat.setInteger(MediaFormat.KEY_SAMPLE_RATE, SAMPLE_RATE);
-    mediaFormat.setInteger(MediaFormat.KEY_CHANNEL_COUNT, CHANNELS);
+    MediaFormat mediaFormat =
+        MediaFormat.createAudioFormat("audio/mp4a-latm", SAMPLE_RATE, CHANNELS);
     mediaFormat.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, bufferSize);
     mediaFormat.setInteger(
         MediaFormat.KEY_BIT_RATE,
