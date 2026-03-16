@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Bone</string>
@@ -37,7 +39,9 @@
     <string name="create">Krei</string>
     <string name="reset">Restartigi</string>
     <string name="later">Poste</string>
-    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used
+        in a menu and should be as short as possible. Resending may be needed after failures or to repost old
+        messages to new members. -->
     <string name="resend">Resendi</string>
     <string name="edited">Redaktita</string>
     <string name="edit_message">Redakti mesaĝon</string>
@@ -45,12 +49,15 @@
     <string name="archive">Arĥivi</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Malarĥivi</string>
-    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause
+        notifications -->
     <string name="mute">Muta sciigoj</string>
-    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make
+        noise or cause notifications -->
     <string name="muted">Silentigita</string>
     <string name="ephemeral_messages">Memviŝontaj mesaĝoj</string>
-    <string name="ephemeral_messages_hint">Aplikebla al ĉiuj anoj de tiu ĉi babilejo kiuj uzas Delta Chat; ili ankoraŭ povas kopii, konservi kaj plusendi mesaĝojn, kaj uzi aliajn retpoŝtajn klientojn.</string>
+    <string name="ephemeral_messages_hint">Aplikebla al ĉiuj anoj de tiu ĉi babilejo kiuj uzas Delta Chat; ili ankoraŭ
+        povas kopii, konservi kaj plusendi mesaĝojn, kaj uzi aliajn retpoŝtajn klientojn.</string>
     <string name="save">Konservi</string>
     <string name="chat">Babilo</string>
     <string name="media">Aŭdovidaĵoj</string>
@@ -61,10 +68,12 @@
     <string name="main_menu">Ĉefa menuo</string>
     <string name="start_chat">Komenci Babiladon</string>
     <string name="show_full_message">Afiŝu la tutan mesaĝon...</string>
-    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that
+        hint can make translations easier :) -->
     <string name="mark_all_as_read">Marki ĉiujn legitaj</string>
     <string name="mark_as_read">Marki kiel legita</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to
+        read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Legi</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Ŝarĝado...</string>
@@ -72,7 +81,10 @@
     <string name="activate">Aktivigi</string>
     <string name="load_remote_content">Ŝargu forajn bildojn </string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">La foraj bildoj povas spuri vin.\n\nTiu ĉi agordo povas ankaŭ ŝargi tiparojn kaj aliajn enhavojn. Malŝaltite, enkorpigitaj aŭ kaŝmemorigitaj bildoj povas aperi.\n\nŜargu forajn bildojn? </string>
+    <string name="load_remote_content_ask">La foraj bildoj povas spuri vin.\n\nTiu ĉi agordo povas ankaŭ ŝargi tiparojn
+        kaj aliajn enhavojn. Malŝaltite, enkorpigitaj aŭ kaŝmemorigitaj bildoj povas aperi.\n\nŜargu
+        forajn bildojn?
+    </string>
     <string name="always">Ĉiam</string>
     <string name="always_load_remote_images">Ĉiam ŝargu forajn bildojn</string>
     <string name="once">Unufoje</string>
@@ -107,9 +119,12 @@
     <string name="this_month">Ĉi-monate</string>
     <string name="last_week">Pasint-semajne</string>
     <string name="last_month">Pasint-monate</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder
+        will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Laste vidita je%1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder
+        will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples
+        and languages) -->
     <string name="last_seen_relative">Laste vidita %1$s</string>
     <string name="last_seen_unknown">Laste vidita: nedisponebla informo</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
@@ -155,7 +170,8 @@
     <string name="self">Mi</string>
     <string name="draft">Malneto</string>
     <string name="image">Bildo</string>
-    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb
+        (not: "to reply") -->
     <string name="reply_noun">Respondi</string>
     <string name="gif">Gif</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
@@ -172,7 +188,8 @@
     <string name="documents">Dokumentoj</string>
     <string name="contact">Kontakto</string>
     <string name="camera">Fotilo</string>
-    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button"
+        in cameras -->
     <string name="capture">Kapti</string>
     <string name="switch_camera">Elektu alian kameraon</string>
     <string name="toggle_fullscreen">Baskulu el/al la plena ekrano</string>
@@ -182,9 +199,11 @@
     <string name="images_and_videos">Bildoj kaj videoj</string>
     <string name="file">Dosiero</string>
     <string name="files">Dosieroj</string>
-    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay
+        close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Apo</string>
-    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please
+        stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Apoj</string>
     <string name="unknown">Nekonata</string>
 
@@ -221,7 +240,9 @@
     <string name="menu_add_attachment">Aldoni kunsendaĵon</string>
     <string name="menu_leave_group">Forlasi grupon</string>
     <string name="menu_delete_chat">Forigi babilon</string>
-    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty
+        afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat"
+        would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Viŝi la babilejon</string>
     <string name="delete_contact">Forviŝi Kontakton</string>
     <string name="menu_delete_location">Ĉu forigi tiun ĉi lokon?</string>
@@ -271,7 +292,8 @@
     <string name="title_share_location">Konigi lokon al ĉiuj grupanoj</string>
     <string name="device_talk">Aparataj mesaĝoj</string>
     <string name="device_talk_subtitle">Loke generitaj mesaĝoj</string>
-    <string name="device_talk_explain">Mesaĝoj en tiu ĉi babilo estas surloke generataj de via Delta Chat apo. Ĝiaj kreintoj uzas ilin por informi pri apaj ĝisdatigoj kaj problemoj dum uzado.</string>
+    <string name="device_talk_explain">Mesaĝoj en tiu ĉi babilo estas surloke generataj de via Delta Chat apo. Ĝiaj
+        kreintoj uzas ilin por informi pri apaj ĝisdatigoj kaj problemoj dum uzado.</string>
     <string name="edit_contact">Redakti kontakton</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Alpingli babilon</string>
@@ -329,7 +351,8 @@
     <string name="chat_archived_label">Enarĥivigitaj</string>
     <string name="chat_no_messages">Neniu mesaĝo.</string>
     <string name="chat_self_talk_subtitle">Mesaĝoj senditaj al mi mem</string>
-    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed
+        esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Konservi</string>
     <string name="saved_messages">Konservitaj mesaĝoj</string>
     <string name="retry_send">Reprovi sendi mesaĝon</string>
@@ -390,13 +413,15 @@
     <string name="pref_profile_photo">Profilbildo</string>
     <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>
     <string name="pref_your_name">Via nomo</string>
-    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead
+        of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">La Eniga klavo kaŭzas sendon</string>
     <string name="pref_enter_sends_explain">Premado de la Eniga klavo sendos mesaĝojn</string>
     <string name="pref_vibrate">Vibrado</string>
     <string name="pref_screen_security">Ekrana sekureco</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
-    <string name="pref_screen_security_explain">Neebligi ekrankopiojn en la listo de ĵus uzitaj aplikaĵoj kaj ene de la aplikaĵo mem</string>
+    <string name="pref_screen_security_explain">Neebligi ekrankopiojn en la listo de ĵus uzitaj aplikaĵoj kaj ene de la
+        aplikaĵo mem</string>
     <string name="pref_notifications">Sciigoj</string>
     <string name="pref_notifications_show">Montri</string>
     <string name="pref_notifications_priority">Prioritato</string>
@@ -428,12 +453,13 @@
     <string name="pref_backup_explain">Savkopii babilojn al ekstera memorilo</string>
     <string name="pref_backup_export_start_button">Komenci savkopiadon</string>
     <string name="pref_backup_written_to_x">Savkopio sukcese konservita al \"%1$s\".</string>
-    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper"
+        or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fono</string>
     <string name="pref_background_btn_default">Uzi defaŭltan bildon</string>
     <string name="pref_background_btn_gallery">Elekti el galerio</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Respondi</string>
     <string name="notify_new_message">Nova mesaĝo</string>
     <string name="notify_priority_high">Alta</string>
@@ -454,4 +480,4 @@
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">Forviŝi</string>
     <string name="save_desktop">Konservi</string>
-    </resources>
+</resources>

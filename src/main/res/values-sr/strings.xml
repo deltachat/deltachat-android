@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">У реду</string>
@@ -35,7 +37,9 @@
     <string name="close_window">Затвори прозор</string>
     <string name="forward">Проследи</string>
     <string name="reset">Поништи</string>
-    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used
+        in a menu and should be as short as possible. Resending may be needed after failures or to repost old
+        messages to new members. -->
     <string name="resend">Пошаљи поново</string>
     <string name="edited">Измењено</string>
     <string name="edit_message">Промени поруку</string>
@@ -43,12 +47,15 @@
     <string name="archive">Архивирај</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Деархивирај</string>
-    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause
+        notifications -->
     <string name="mute">Утишај</string>
-    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make
+        noise or cause notifications -->
     <string name="muted">Утишано</string>
     <string name="ephemeral_messages">Нестајуће поруке</string>
-    <string name="ephemeral_messages_hint">Односи се на све чланове овог ћаскања ако користе Delta Chat; и даље могу да копирају, сниме и прослеђују поруке или да користе друге клијенте за е-пошту.</string>
+    <string name="ephemeral_messages_hint">Односи се на све чланове овог ћаскања ако користе Delta Chat; и даље могу да
+        копирају, сниме и прослеђују поруке или да користе друге клијенте за е-пошту.</string>
     <string name="save">Сачувај</string>
     <string name="chat">Ћаскање</string>
     <string name="media">Медији</string>
@@ -57,10 +64,12 @@
     <string name="main_menu">Главни мени</string>
     <string name="start_chat">Започните ћаскање</string>
     <string name="show_full_message">Прикажи поруку у њеној целости...</string>
-    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that
+        hint can make translations easier :) -->
     <string name="mark_all_as_read">Означи све као прочитано</string>
     <string name="mark_as_read">Означи као прочитано</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to
+        read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Прочитано</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Учитавање...</string>
@@ -68,7 +77,9 @@
     <string name="activate">Активирај</string>
     <string name="load_remote_content">Учитај слике са сервера</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">Слике са сервера могу да вас прате\n\nОво подешавање такође може да учита додатне фонтове и други садржај. Ако је онемогућено, могу се појавити уграђене или ускладиштене слике.\n\nДа ли желите да учитате слике са сервера?</string>
+    <string name="load_remote_content_ask">Слике са сервера могу да вас прате\n\nОво подешавање такође може да учита
+        додатне фонтове и други садржај. Ако је онемогућено, могу се појавити уграђене или
+        ускладиштене слике.\n\nДа ли желите да учитате слике са сервера?</string>
     <string name="always">Увек</string>
     <string name="always_load_remote_images">Увек учитај слике са сервера</string>
     <string name="once">Само једном</string>
@@ -101,9 +112,12 @@
     <string name="this_month">Овог месеца</string>
     <string name="last_week">Прошле недеље</string>
     <string name="last_month">Прошлог месеца</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder
+        will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Последњи пут виђен %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder
+        will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples
+        and languages) -->
     <string name="last_seen_relative">Последњи пут виђен %1$s</string>
     <string name="last_seen_unknown">Последњи пут виђен: Непознато</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
@@ -154,7 +168,8 @@
     <string name="self">Ја</string>
     <string name="draft">Нацрт</string>
     <string name="image">Слика</string>
-    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb
+        (not: "to reply") -->
     <string name="reply_noun">Одговор</string>
     <string name="gif">ГИФ</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
@@ -173,7 +188,8 @@
     <string name="contact">Особа</string>
     <string name="bot">Бот</string>
     <string name="camera">Камера</string>
-    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button"
+        in cameras -->
     <string name="capture">Сними</string>
     <string name="switch_camera">Промени камеру</string>
     <string name="toggle_fullscreen">Обрће режим пуног екрана</string>
@@ -183,9 +199,11 @@
     <string name="images_and_videos">Слике и видео записи</string>
     <string name="file">Фајл</string>
     <string name="files">Фајлови</string>
-    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay
+        close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Приватна апликација</string>
-    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please
+        stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Приватне апликације</string>
     <string name="games">Игре</string>
     <string name="tools">Алати</string>
@@ -227,7 +245,9 @@
     <string name="menu_add_attachment">Додај прилог</string>
     <string name="menu_leave_group">Напусти групу</string>
     <string name="menu_delete_chat">Обриши ћаскање</string>
-    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty
+        afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat"
+        would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Обриши ћаскање</string>
     <string name="delete_contact">Избриши контакт</string>
     <string name="menu_delete_location">Избриши овај положај?</string>
@@ -278,7 +298,8 @@
     <string name="title_share_location">Подели положај са свим члановима групе</string>
     <string name="device_talk">Поруке уређаја</string>
     <string name="device_talk_subtitle">Поруке генерисане на уређају</string>
-    <string name="device_talk_explain">Поруке у овом ћаскању се генеришу на вашем уређају да обавештавају о ажурирањима апликација и проблемима током коришћења.</string>
+    <string name="device_talk_explain">Поруке у овом ћаскању се генеришу на вашем уређају да обавештавају о
+        ажурирањима апликација и проблемима током коришћења.</string>
     <string name="edit_contact">Измени контакт</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Закачи ћаскање</string>
@@ -291,7 +312,8 @@
     <string name="ConversationFragment_quoted_message_not_found">Оригинална порука није пронађена</string>
     <string name="reply_privately">Одговори у приватној поруци</string>
     <string name="source_code">Изворни код</string>
-    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps
+        that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Додај на главни екран</string>
     <string name="mute_for_one_hour">Утишај на 1 сат</string>
     <string name="mute_for_eight_hours">Утишај на 8 сата</string>
@@ -319,7 +341,8 @@
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Одби</string>
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want
+        to leave the chat?" would work as well -->
     <string name="ask_leave_group">Да ли сте сигурни да желите да напустите?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Да ли желите да избришите %d поруку?</item>
@@ -328,11 +351,16 @@
     </plurals>
     <string name="ask_forward">Да ли желите да проследите поруке %1$s?</string>
     <string name="ask_forward_multiple">Да ли желите да проследим поруке за %1$dћаскања?</string>
-    <string name="ask_export_attachment">Извоз прилога ће омогућити другим апликацијама на вашем уређају да им приступе.\n\nДа ли желите ли да наставите?</string>
-    <string name="ask_block_contact">Да ли желите да блокирајте овај контакт? Ви више нећете примати поруке од њих.</string>
-    <string name="ask_unblock_contact">Да ли желите да деблокирате овај контакт? Биће вам омогућено да опет примате поруке од њих.</string>
-    <string name="ask_delete_contacts">Да ли желите да избришете контакте?\n\nКонтакти са ћаскањима у току или из системског адресара се не могу трајно избрисати.</string>
-    <string name="ask_delete_contact">Да ли желите да избришете %1$s контакт?\n\nКонтакти са ћаскањима у току или из системског адресара се не могу трајно избрисати.</string>
+    <string name="ask_export_attachment">Извоз прилога ће омогућити другим апликацијама на вашем уређају да им
+        приступе.\n\nДа ли желите ли да наставите?</string>
+    <string name="ask_block_contact">Да ли желите да блокирајте овај контакт? Ви више нећете примати поруке од
+        њих.</string>
+    <string name="ask_unblock_contact">Да ли желите да деблокирате овај контакт? Биће вам омогућено да опет примате
+        поруке од њих.</string>
+    <string name="ask_delete_contacts">Да ли желите да избришете контакте?\n\nКонтакти са ћаскањима у току или из
+        системског адресара се не могу трајно избрисати.</string>
+    <string name="ask_delete_contact">Да ли желите да избришете %1$s контакт?\n\nКонтакти са ћаскањима у току или
+        из системског адресара се не могу трајно избрисати.</string>
     <string name="ask_start_chat_with">Да ли желите да ћаскате са %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Да ли желите да уклонитите %1$s из групе?</string>
@@ -380,17 +408,20 @@
     <string name="chat_no_messages">Нема порука.</string>
     <string name="chat_self_talk_subtitle">Поруке које сам слао себи</string>
     <string name="archive_empty_hint">Архивирана ћаскања ће се појавити овде.</string>
-    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed
+        esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Сачувај</string>
     <string name="saved_messages">Сачуване поруке</string>
-    <string name="saved_messages_explain">• Проследи поруке овде за лакши приступ\n\n• Направите текстуалне или звучне белешке\n\n• Приложите медиј  да би га снимили</string>
+    <string name="saved_messages_explain">• Проследи поруке овде за лакши приступ\n\n• Направите текстуалне или звучне
+        белешке\n\n• Приложите медиј да би га снимили</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Снимљено</string>
     <string name="save_as">Сними као</string>
     <string name="retry_send">Покушај поново да пошаљеш поруку</string>
     <string name="cannot_display_unsuported_file_type">Тип фајла %sне може бити приказан</string>
     <string name="attachment_failed_to_load">Учитавање прилога је неуспешно</string>
-    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from
+        the record button while recording continues -->
     <string name="lock_recording">Закључај снимање</string>
 
     <!-- mailing lists -->
@@ -413,8 +444,11 @@
     <string name="puny_code_warning_header">Детектован је сумњив линк</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Јесте ли сигурни да желите да приступите %1$s?</string>
-    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Ова веза може погрешно приказати знакове са сличним изгледом из различитих алфабета. Праћење означене везе %1$s ће довести до %2$s што је нормално за нелатинске знакове. Ако нисте очекивали такве ликове, ова веза би могла бити штетна.</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder
+        is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">Ова веза може погрешно приказати знакове са сличним изгледом из различитих
+        алфабета. Праћење означене везе %1$s ће довести до %2$s што је нормално за нелатинске
+        знакове. Ако нисте очекивали такве ликове, ова веза би могла бити штетна.</string>
 
 
     <!-- search -->
@@ -446,7 +480,8 @@
     <string name="tab_video_empty_hint">Видео записи подељени у овом ћаскању ће се појавити овде.</string>
     <string name="tab_audio_empty_hint">Звучне поруке и записи подељене у овом ћаскању ће се појавити овде.</string>
     <string name="tab_webxdc_empty_hint">Приватне апликације подељене у овом ћаскању ће се појавити овде.</string>
-    <string name="all_apps_empty_hint">Приватне апликације примљене или послате у било ком ћаскању ће се појавити овде.</string>
+    <string name="all_apps_empty_hint">Приватне апликације примљене или послате у било ком ћаскању ће се појавити
+        овде.</string>
     <string name="media_preview">Преглед медијума</string>
     <string name="send_message">Пошаљи поруку</string>
 
@@ -458,9 +493,11 @@
     <string name="connectivity">Повезаност</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Нисте повезани</string>
-    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single
+        character (…), not three (...) -->
     <string name="connectivity_connecting">Повезивање...</string>
-    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things);
+        prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">Ажурирање...</string>
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Повезани</string>
@@ -492,17 +529,22 @@
     <string name="login_error_port">Унесите важећи порт (1-65535)</string>
     <string name="login_error_required_fields">Унесите важећу е-адресу и лозинку</string>
     <string name="import_backup_title">Увези резервну копију</string>
-    <string name="import_backup_ask">Резервна копија пронађена у „%1$s“.\n\nЖелите ли да увезете и користите све њене податке и поставке?</string>
-    <string name="import_backup_no_backup_found">Нема резервних копија.\n\nКопирајте резервну копију у „%1$s“ и покушајте поново.</string>
+    <string name="import_backup_ask">Резервна копија пронађена у „%1$s“.\n\nЖелите ли да увезете и користите све
+        њене податке и поставке?</string>
+    <string name="import_backup_no_backup_found">Нема резервних копија.\n\nКопирајте резервну копију у „%1$s“ и покушајте
+        поново.</string>
     <!-- %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">Не могу да се пријавим као „%1$s“. Проверите да ли су е-адреса и лозинка тачни.</string>
+    <string name="login_error_cannot_login">Не могу да се пријавим као „%1$s“. Проверите да ли су е-адреса и лозинка
+        тачни.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Прихватите и неважеће сертификате</string>
     <string name="switch_account">Промени налог</string>
     <string name="add_account">Додај налог</string>
     <string name="delete_account">Избриши налог</string>
     <string name="delete_account_ask">Да ли сте сигурни да желите да избришете све податке са вашег налога?</string>
-    <string name="delete_account_explain_with_name">Сви подаци о налогу за „%s“ на овом уређају ће бити избрисани, укључујући подешавања  с-краја-на-крај шифровања, контакте, ћаскања, поруке и медије. Ако се ова радња изврши, она се касније не може поништити.</string>
+    <string name="delete_account_explain_with_name">Сви подаци о налогу за „%s“ на овом уређају ће бити избрисани, укључујући
+        подешавања с-краја-на-крај шифровања, контакте, ћаскања, поруке и медије. Ако се ова радња
+        изврши, она се касније не може поништити.</string>
     <string name="unconfigured_account">Налог није конфигурисан</string>
     <string name="unconfigured_account_hint">Отворите налог да би сте га конфигурисали.</string>
     <string name="try_connect_now">Пробај да се повежеш сада</string>
@@ -523,11 +565,13 @@
     <string name="pref_profile_photo">Слика профила</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
     <string name="blocked_empty_hint">Блокирани контакти ће се појавити овде.</string>
-    <string name="pref_who_can_see_profile_explain">Слика вашег профила, име и потпис ће бити послан заједно са вашом поруком када комуницирате са другим корисницима.</string>
+    <string name="pref_who_can_see_profile_explain">Слика вашег профила, име и потпис ће бити послан заједно са вашом поруком
+        када комуницирате са другим корисницима.</string>
     <string name="pref_your_name">Ваше име</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Текст потписа</string>
-    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead
+        of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Шаљи ЕНТЕР тастером</string>
     <string name="pref_enter_sends_explain">Притиском на ЕНТЕР тастер тексутале поруке ће бити послате</string>
     <string name="pref_outgoing_media_quality">Квалитет медија за слање</string>
@@ -559,7 +603,8 @@
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Затражи од тастатуре да онемогући персонализовано учење</string>
     <string name="pref_read_receipts">Примај и шаљи поруке читања</string>
-    <string name="pref_read_receipts_explain">Уколико су извештаји читања онемогућени, нећете видети када неко прочита ваше поруке.</string>
+    <string name="pref_read_receipts_explain">Уколико су извештаји читања онемогућени, нећете видети када неко прочита
+        ваше поруке.</string>
     <string name="pref_manage_keys">Управљај кључевима</string>
     <string name="pref_chats">Ћаскања</string>
     <string name="pref_in_chat_sounds">Звуци ћаскања</string>
@@ -570,14 +615,20 @@
     <string name="pref_other">Остало</string>
     <string name="pref_backup">Резервна копија</string>
     <string name="pref_backup_explain">Направи резервну копију ћаскања на спољашњем складишту меморије.</string>
-    <string name="pref_backup_export_explain">Резервна копија вам помаже да подесите нову инсталацију на овом или другом уређају.\n\nРезервна копија ће садржати све поруке, контакте и ћаскања и ваше комплетно подешавање аутоматског шифровања. Чувајте резервну копију на безбедном месту или је избришите што је пре могуће.</string>
+    <string name="pref_backup_export_explain">Резервна копија вам помаже да подесите нову инсталацију на овом или другом
+        уређају.\n\nРезервна копија ће садржати све поруке, контакте и ћаскања и ваше комплетно
+        подешавање аутоматског шифровања. Чувајте резервну копију на безбедном месту или је
+        избришите што је пре могуће.</string>
     <string name="pref_backup_export_start_button">Покрени складиштење резервне копије</string>
     <string name="pref_backup_written_to_x">Записивање резервне копије је успешно до „%1$s“.</string>
-    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper"
+        or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Позадина</string>
     <string name="pref_background_btn_default">Користи дату слику</string>
     <string name="pref_background_btn_gallery">Изабери из галерије</string>
-    <string name="pref_imap_folder_warn_disable_defaults">Ако промените ову опцију, морате проверити да су ваш сервер и ваши други клијенти конфигурисани у складу са тим.\n\nУ супротном апликација можда уопште неће функционисати.</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Ако промените ову опцију, морате проверити да су ваш сервер и ваши други
+        клијенти конфигурисани у складу са тим.\n\nУ супротном апликација можда уопште неће
+        функционисати.</string>
     <string name="pref_auto_folder_moves">Аутоматски премести у DeltaChat директоријум</string>
     <string name="pref_only_fetch_mvbox_title">Примај поруке само из DeltaChat директоријума</string>
     <string name="pref_show_emails">Прикажи обичне поруке е-поште</string>
@@ -597,7 +648,8 @@
     <string name="up_to_x_most_worse_quality_images">Повећано на %1$s, најлошији квалитет слика</string>
     <string name="up_to_x_most_balanced_quality_images">Повећано на %1$s, уравнотежен квалитет слика</string>
     <string name="download_failed">Преузимање није успело</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string
+        eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s поруке</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Преузмите максимално доступно до %1$s</string>
@@ -623,12 +675,22 @@
     <string name="delete_old_messages">Избриши старе поруке</string>
     <string name="autodel_device_title">Избриши поруке са уређаја</string>
     <string name="autodel_server_title">Избриши поруке са сервера</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_device_ask">Да ли желите да избришете %1$d поруке сада и све новопреузете поруке „%2$s“ у будућности?\n\n• Ово укључује све медије\n\n• Поруке ће бити избрисане без обзира да ли су виђене или не\n\n• \"Сачуване поруке\" неће бити избрисане на уређају</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Да ли желите да избришете %1$d поруке сада и све новопреузете поруке „%2$s“ у будућности?\n\n⚠️ Ово укључује све поруке е-поште, медије и „Сачуване поруке“ у свим директоријумима на серверу\n\n⚠️ Немојте користити ову функцију ако користите било које друге клијенте е-поште осим Delta Chat-а</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Ово укључује све поруке е-поште, медије и „Сачуване поруке“ у свим директоријумима на серверу. Немојте користити ову функцију ако користите било које друге клијенте е-поште осим Delta Chat-а.</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will
+        be replaced by a timespan option. -->
+    <string name="autodel_device_ask">Да ли желите да избришете %1$d поруке сада и све новопреузете поруке „%2$s“
+        у будућности?\n\n• Ово укључује све медије\n\n• Поруке ће бити избрисане без обзира да ли су
+        виђене или не\n\n• \"Сачуване поруке\" неће бити избрисане на уређају</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will
+        be replaced by a timespan option. -->
+    <string name="autodel_server_ask">Да ли желите да избришете %1$d поруке сада и све новопреузете поруке „%2$s“
+        у будућности?\n\n⚠️ Ово укључује све поруке е-поште, медије и „Сачуване поруке“ у свим
+        директоријумима на серверу\n\n⚠️ Немојте користити ову функцију ако користите било које
+        друге клијенте е-поште осим Delta Chat-а</string>
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind
+        about the impact -->
+    <string name="autodel_server_enabled_hint">Ово укључује све поруке е-поште, медије и „Сачуване поруке“ у свим
+        директоријумима на серверу. Немојте користити ову функцију ако користите било које друге
+        клијенте е-поште осим Delta Chat-а.</string>
     <string name="autodel_confirm">Разумем и желим да избришем све ове поруке</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Одмах</string>
@@ -644,22 +706,27 @@
     <string name="systemmsg_failed_sending_to">Слање поруке %1$s је било неуспешно.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Назив групе је измењен из „%1$s“ у „%2$s“ од мене.</string>
-    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s
+        will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Назив групе је измењен из „%1$s“ у „%2$s“ од стране %3$s.</string>
     <string name="group_image_changed_by_you">Слика групе је промењена од мене.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Слика групе је промењена од стране %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Члан %1$s је додат од мене.</string>
-    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name
+        of the contact who did the action -->
     <string name="add_member_by_other">Члан %1$s је додат од стране %2$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Члан %1$s је уклоњен од мене.</string>
-    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by
+        name of the contact who did the action -->
     <string name="remove_member_by_other">Члан %1$s је уклоњен од стране %2$s.</string>
-    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when
+        it's unclear who did the action -->
     <string name="member_x_removed">Члан %1$s је уклоњен.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the
+        group -->
     <string name="group_left_by_other">%1$s је напустио групу.</string>
     <string name="group_image_deleted_by_you">Ви сте обрисали слику групе.</string>
     <!-- %1$s will be replaced by name of the contact -->
@@ -672,7 +739,8 @@
     <string name="ephemeral_timer_disabled_by_other">%1$s је онемогућио нестајуће поруке.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s секунде</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be
+        replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s секунде.</string>
     <string name="ephemeral_timer_1_hour_by_you">Ви сте подесили хронометар за нестајуће поруке на 1 сат.</string>
     <!-- %1$s will be replaced by name of the contact -->
@@ -685,28 +753,44 @@
     <string name="ephemeral_timer_1_week_by_other">%1$s је подесио хронометар за нестајуће поруке на 1 недељу.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s минутa.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be
+        replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s минута.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s сати.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced
+        by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s сата.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s дана.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced
+        by name of the contact -->
     <string name="ephemeral_timer_days_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s дана.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s недеља.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced
+        by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s недеље.</string>
-    <string name="devicemsg_self_deleted">Обрисали сте ћаскање „Сачуване поруке“.\n\nℹ️ Ако желите да користите „Сачуване поруке“ могућност поново, направите ново ћаскање са самим собом.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Складишни простор вашег имејл провајдера ће ускоро да понестане: %1$s%% већ се користи.\n\nМожда нећете моћи да примате поруке ако је складиште пунo.\n\n👉 Проверите да ли можете да избришете старе податке у веб интерфејсу провајдера и размислите да омогућите „Подешавања / Избриши старе поруке“ опцију. Можете да проверите тренутну употребу меморијског простора у било ком тренутку у „Подешавања / Повезивање“.</string>
+    <string name="devicemsg_self_deleted">Обрисали сте ћаскање „Сачуване поруке“.\n\nℹ️ Ако желите да користите
+        „Сачуване поруке“ могућност поново, направите ново ћаскање са самим собом.</string>
+    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to
+        use a percentage sign, type in two of them, eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Складишни простор вашег имејл провајдера ће ускоро да понестане: %1$s%%
+        већ се користи.\n\nМожда нећете моћи да примате поруке ако је складиште пунo.\n\n👉
+        Проверите да ли можете да избришете старе податке у веб интерфејсу провајдера и размислите
+        да омогућите „Подешавања / Избриши старе поруке“ опцију. Можете да проверите тренутну
+        употребу меморијског простора у било ком тренутку у „Подешавања / Повезивање“.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
-    <string name="devicemsg_bad_time">⚠️ Изгледа да датум или време на вашем уређају нису тачни (%1$s).\n\nПодесите сат ⏰🔧 да бисте били сигурни да ће ваше поруке бити правилно примљене.</string>
-    <string name="devicemsg_update_reminder">⚠️ Ваша Delta Chat верзија је можда застарела.\n\nОво може да изазове проблеме јер ваши контакти за ћаскање користе новије верзије - а вама недостају најновије функционалности 😳\nДа би ажурирали апликацију проверите https://get.delta.chat или продавницу за апликација.</string>
+    <string name="devicemsg_bad_time">⚠️ Изгледа да датум или време на вашем уређају нису тачни
+        (%1$s).\n\nПодесите сат ⏰🔧 да бисте били сигурни да ће ваше поруке бити правилно примљене.</string>
+    <string name="devicemsg_update_reminder">⚠️ Ваша Delta Chat верзија је можда застарела.\n\nОво може да изазове
+        проблеме јер ваши контакти за ћаскање користе новије верзије - а вама недостају најновије
+        функционалности 😳\nДа би ажурирали апликацију проверите https://get.delta.chat или
+        продавницу за апликација.</string>
 
-    <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
+    <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc.
+        to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second
+        Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">Унесите своју системску тајну да бисте наставили.</string>
 
     <!-- qr code stuff -->
@@ -717,43 +801,54 @@
     <string name="qrscan_failed">Бар-кôд не може бити декодиран</string>
     <string name="qrscan_ask_join_group">Да ли желите да се придружите групи „%1$s“?</string>
     <string name="qrscan_fingerprint_mismatch">Очитани отисак не одговара последње виђеном отиску за %1$s.</string>
-    <string name="qrscan_no_addr_found">Овај бар-кôд садржи отисак али нема е-адресу.\n\nЗа потврду преко других канала, најпре установите шифровану везу са примаоцем.</string>
+    <string name="qrscan_no_addr_found">Овај бар-кôд садржи отисак али нема е-адресу.\n\nЗа потврду преко других
+        канала, најпре установите шифровану везу са примаоцем.</string>
     <string name="qrscan_contains_text">Очитани текст бар-кôда:\n\n%1$s</string>
     <string name="qrscan_contains_url">Очитани бар-кôда везе:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Отисак</string>
-    <string name="withdraw_verifycontact_explain">Други могу да очитају овај бар-кôд да би вас контактирали.\n\nОвде можете да деактивирате бар-кôд и поново га активирате тако што ћете га поново oчитати.</string>
-    <string name="withdraw_verifygroup_explain">Други могу да очитају овај бар-кôд да би приступили групи „%1$s“.\n\nОвде можете да деактивирате бар-кôд и поново га активирате тако што ћете га поново oчитати.</string>
+    <string name="withdraw_verifycontact_explain">Други могу да очитају овај бар-кôд да би вас контактирали.\n\nОвде можете да
+        деактивирате бар-кôд и поново га активирате тако што ћете га поново oчитати.</string>
+    <string name="withdraw_verifygroup_explain">Други могу да очитају овај бар-кôд да би приступили групи „%1$s“.\n\nОвде
+        можете да деактивирате бар-кôд и поново га активирате тако што ћете га поново oчитати.</string>
     <string name="withdraw_qr_code">Деактивирај бар-кôд</string>
-    <string name="revive_verifycontact_explain">Други могу да очитају овај бар-кôд да би вас контактирали.\n\nОвај бар-кôд није активан на овом уређају.</string>
+    <string name="revive_verifycontact_explain">Други могу да очитају овај бар-кôд да би вас контактирали.\n\nОвај бар-кôд
+        није активан на овом уређају.</string>
     <string name="revive_qr_code">Активирај бар-кôд</string>
     <string name="qrshow_title">Бар-кôд за потврду</string>
     <string name="qrshow_x_joining">%1$s се придружи.</string>
     <string name="qrshow_x_verified">%1$s потврђен.</string>
     <string name="qrshow_x_has_joined_group">%1$s се безбедно придружи групи.</string>
     <string name="qrshow_join_group_title">Бар-кôд за потврду</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text
+        as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join
+        group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Скенирај да се придружиш групи „%1$s“</string>
     <string name="qrshow_join_contact_title">Бар-кôд за потврду</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text
+        as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat
+        with Alice" -->
     <string name="qrshow_join_contact_hint">Очитај да ћаскате са %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Нисте повезани на интернет, није могуће подесити бар-кôд.</string>
     <string name="qraccount_ask_create_and_login">Направите нову е-адресу на „%1$s“ и приступите јој тамо?</string>
     <string name="qraccount_qr_code_cannot_be_used">Очитани бар-кôд не може бити коришћен да подеси нови налог.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Пријави се у „%1$s“?</string>
-    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">%1$sвас је позвао да се придружите групи.\n\nЧекамо да уређај од %2$sодговори...</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced
+        by the name of the inviter. -->
+    <string name="secure_join_started">%1$sвас је позвао да се придружите групи.\n\nЧекамо да уређај од
+        %2$sодговори...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s је одговорио и чека да буде додат у групу...</string>
     <string name="contact_verified">%1$s потврђен.</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced
+        the contact. -->
     <string name="verified_by">Проверено од %1$s</string>
     <string name="mailto_dialog_header_select_chat">Изабери ћаскање у које желите да пошаљете поруку</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s већ има нацрт поруке, да ли желите да је замените?</string>
     <string name="mailto_link_could_not_be_decoded">mailto веза не може бити декодирана: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Одговори</string>
     <string name="notify_new_message">Нова порука</string>
     <string name="notify_background_connection_enabled">Веза у позадини је омогућена</string>
@@ -765,11 +860,17 @@
     <!-- permissions -->
     <string name="perm_required_title">Дозвола је потребна</string>
     <string name="perm_continue">Настави</string>
-    <string name="perm_explain_access_to_camera_denied">Да бисте снимили фотографије или видео снимке, идите на подешавања апликације, изаберите „Дозволе“ и омогућите „Камеру“.</string>
-    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
-    <string name="perm_explain_access_to_mic_denied">Да бисте послали звучне записе, идите на подешавања апликације, изаберите „Дозволе“ и омогућите „Микрофон“.</string>
-    <string name="perm_explain_access_to_storage_denied">Да бисте примали или слали датотеке, идите на подешавања апликације, изаберите „Дозволе“ и омогућите „Складиштење“.</string>
-    <string name="perm_explain_access_to_location_denied">Да приложите положај, идите у подешавања апликације и изаберите „Дозволе“ и омогућите „Положај/Локацију“.</string>
+    <string name="perm_explain_access_to_camera_denied">Да бисте снимили фотографије или видео снимке, идите на подешавања
+        апликације, изаберите „Дозволе“ и омогућите „Камеру“.</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access
+        was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise:
+        things shift around often and there are too many system we support to track every detail and click path -->
+    <string name="perm_explain_access_to_mic_denied">Да бисте послали звучне записе, идите на подешавања апликације, изаберите
+        „Дозволе“ и омогућите „Микрофон“.</string>
+    <string name="perm_explain_access_to_storage_denied">Да бисте примали или слали датотеке, идите на подешавања апликације,
+        изаберите „Дозволе“ и омогућите „Складиштење“.</string>
+    <string name="perm_explain_access_to_location_denied">Да приложите положај, идите у подешавања апликације и изаберите „Дозволе“ и
+        омогућите „Положај/Локацију“.</string>
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Цртајте било где да би сте замутили</string>
     <string name="ImageEditorHud_add_text">Додај текст</string>
@@ -780,9 +881,11 @@
     <string name="ImageEditorHud_flip">Окрени</string>
     <string name="ImageEditorHud_rotate">Обрни</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do
+        not add generic strings here -->
     <string name="about_offical_app_desktop">Ово је званична Delta Chat апликација за рачунар.</string>
-    <string name="about_licensed_under_desktop">Овај програм је лиценциран под ГНУ ГПЛ верзија 3 лиценцом и изворни код је доступан на Гитхабу.</string>
+    <string name="about_licensed_under_desktop">Овај програм је лиценциран под ГНУ ГПЛ верзија 3 лиценцом и изворни код је
+        доступан на Гитхабу.</string>
     <string name="welcome_desktop">Добродошли у Delta Chat.</string>
     <string name="global_menu_preferences_language_desktop">Језик</string>
     <string name="global_menu_file_desktop">Фајл</string>
@@ -817,11 +920,15 @@
     <string name="message_detail_received_desktop">примљено</string>
     <string name="menu.view.developer.open.log.folder">Отвори директоријум где се налазе дневници</string>
     <string name="menu.view.developer.open.current.log.file">Отвори тренутни дневник</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Иконица на системској касети не може да се онемогући јер је Delta Chat покренут са --minimized опцијом.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">Иконица на системској касети не може да се онемогући јер је Delta Chat покренут
+        са --minimized опцијом.</string>
     <string name="no_spellcheck_suggestions_found">Нема предлога за исправке правописа.</string>
     <string name="show_window">Прикажи прозор</string>
 
-    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal
+        command strings are used) -->
     <string name="keybindings">Комбинације тастера</string>
     <string name="switch_between_chats">Пребацивање између ћаскања</string>
     <string name="scroll_messages">Листај поруке</string>
@@ -832,7 +939,8 @@
     <string name="force_refresh_network">Принуди на освежавање мреже</string>
     <string name="insert_newline">Додај нову линију</string>
 
-    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever
+        possible -->
     <string name="a11y_delivery_status_error">Статус испоруке: Грешка</string>
     <string name="a11y_delivery_status_sending">Статус испоруке: Шаљем</string>
     <string name="a11y_delivery_status_draft">Статус испоруке: Нацрт</string>
@@ -845,34 +953,48 @@
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Престаните са дељењем положаја</string>
-    <string name="a11y_voice_message_hint_ios">Након снимања, двапут додирните да бисте послали. Да бисте одбацили снимак, трљајте га са два прста.</string>
+    <string name="a11y_voice_message_hint_ios">Након снимања, двапут додирните да бисте послали. Да бисте одбацили снимак,
+        трљајте га са два прста.</string>
     <string name="a11y_connectivity_hint">Двапут додирните да прегледате детаље о повезивању.</string>
     <string name="login_error_no_internet_connection">Неуспешна пријава на налог, нисте повезани на интернет.</string>
     <string name="share_account_not_configured">Налог није још конфигурисан.</string>
     <string name="cannot_play_audio_file">Овај звучни запис не може репродуковати.</string>
     <!-- iOS camera permission alert -->
-    <string name="perm_ios_explain_access_to_camera_denied">Да би направили фотографије, видео записе или читач бар-кôда, отворите поставке на оперативном систему и омогућите приступу камери.</string>
+    <string name="perm_ios_explain_access_to_camera_denied">Да би направили фотографије, видео записе или читач бар-кôда, отворите
+        поставке на оперативном систему и омогућите приступу камери.</string>
     <string name="open_settings">Отвори поставке</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">Увезите контакте са уређаја</string>
-    <string name="import_device_contacts_hint">Да би ћаскали са контактима са вашег уређаја отворите поставке и омогућите приступ контактима.</string>
+    <string name="import_device_contacts_hint">Да би ћаскали са контактима са вашег уређаја отворите поставке и омогућите
+        приступ контактима.</string>
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Онемогућено у Delta Chat</string>
     <string name="disabled_in_system_settings">Онемогућено у поставкама оперативног система</string>
-    <string name="bg_app_refresh_disabled">„Освежавање апликације у позадини“ је онемогућено у поставкама оперативног система</string>
+    <string name="bg_app_refresh_disabled">„Освежавање апликације у позадини“ је онемогућено у поставкама оперативног
+        система</string>
     <string name="notifications_avg_minutes">У просеку сваких %1$dминута</string>
     <string name="notifications_avg_hours">У просеку сваких %1$dсати</string>
     <string name="last_check_at">Проверено у %1$s</string>
-    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat користи вашу камеру за снимање и слање фотографија и видео записа и за очитавање бар-кôда.</string>
-    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat захтева дозволу за дељење вашег положаја током периода у коме сте омогућили дељење положаја.</string>
-    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat захтева дозволу за дељење вашег положаја током периода у коме сте омогућили дељење положаја.</string>
-    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat користи микрофон да снима и шаље звучне поруке и видео записе са звуком.</string>
-    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat ће вам дозволити да изаберете које од слика из вашег фото албума желите да пошаљете.</string>
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations
+        in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat користи вашу камеру за снимање и слање фотографија и видео записа
+        и за очитавање бар-кôда.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat захтева дозволу за дељење вашег положаја током периода у коме сте
+        омогућили дељење положаја.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat захтева дозволу за дељење вашег положаја током периода у коме сте
+        омогућили дељење положаја.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat користи микрофон да снима и шаље звучне поруке и видео записе са
+        звуком.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat ће вам дозволити да изаберете које од слика из вашег фото албума
+        желите да пошаљете.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat жели да сними слике у ваш фото албум.</string>
-    <string name="pref_background_notifications_rationale">Да би сте одржавали везу са вашим сервером за е-пошту и да би сте примали поруке у позадини, игноришите оптимизације ефикасности батерије у следећем кораку.\n\nDelta Chat не користи много енергије и води рачуна да вам не испразни батерију.</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_background_notifications_rationale">Да би сте одржавали везу са вашим сервером за е-пошту и да би сте примали
+        поруке у позадини, игноришите оптимизације ефикасности батерије у следећем кораку.\n\nDelta
+        Chat не користи много енергије и води рачуна да вам не испразни батерију.</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the
+        drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Додирните овде да би примали поруке када је Delta Chat у позадини.</string>
-    <string name="perm_enable_bg_already_done">Ви сте већ омогућили Delta Chat-у достављање порука у позадини.\n\nАко поруке и даље не стижу у позадини, погледајте поставке у оперативном систему.</string>
+    <string name="perm_enable_bg_already_done">Ви сте већ омогућили Delta Chat-у достављање порука у позадини.\n\nАко
+        поруке и даље не стижу у позадини, погледајте поставке у оперативном систему.</string>
 
-    </resources>
+</resources>
